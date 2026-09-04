@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0C review baseline.**
+**Accepted — Phase 0C product/release planning baseline. This is not a Frozen implementation specification.**
 
 This document converts the accepted platform/product blueprint into a bounded first commercial release scope. It does not freeze technology choices, database schema, role implementation, payroll formulas, or vendor-specific integration details.
 
