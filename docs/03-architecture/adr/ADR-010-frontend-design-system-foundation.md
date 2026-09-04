@@ -22,6 +22,8 @@ Use the following UI foundation:
 
 Feature code should normally import project-owned components rather than raw third-party primitives.
 
+The initial browser target is modern maintained evergreen Chrome/Edge/Safari/Firefox versions compatible with the selected Next.js/Tailwind line. Supporting obsolete/legacy browser engines is not a V1 requirement unless a concrete customer contract introduces it.
+
 ## Required architecture rules
 
 1. Do not duplicate foundational controls such as Button, Input, Select, Dialog, Drawer/Sheet, Form feedback, Tabs, Menu, Badge, Empty state, Loading state, and similar recurring patterns inside feature folders.
@@ -32,6 +34,7 @@ Feature code should normally import project-owned components rather than raw thi
 6. Accessibility, keyboard, focus, and touch behavior remain part of component acceptance.
 7. shadcn components are added selectively when required; do not bulk-import an unused component catalogue.
 8. The Design System must not become a separate product/framework before repeated patterns justify abstractions.
+9. The exact supported-browser matrix is documented and tested during frontend bootstrap; legacy support must be justified by a real requirement rather than assumed.
 
 ## Component ownership model
 
@@ -64,7 +67,8 @@ Do not generalize a pattern until at least concrete product flows demonstrate it
 - responsive/mobile behavior can diverge in composition without duplicating business logic;
 - accessibility primitives reduce common low-level implementation risk;
 - open-code components remain fully customizable for the product's visual identity;
-- the team must actively maintain its owned component layer instead of treating third-party defaults as finished UX.
+- the team must actively maintain its owned component layer instead of treating third-party defaults as finished UX;
+- V1 avoids legacy-browser compatibility cost unless the market proves it necessary.
 
 ## Rejected alternatives
 
@@ -79,3 +83,7 @@ Rejected for now because it creates more visual/behavioral lock-in than the prod
 ### Build every accessible primitive from scratch
 
 Rejected as unnecessary risk and effort when mature headless primitives exist.
+
+### Carry legacy-browser compatibility by default
+
+Rejected because it adds CSS/polyfill/testing complexity without a demonstrated customer requirement.
