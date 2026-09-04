@@ -2,7 +2,7 @@
 
 ## Status
 
-**Accepted — Phase 0C product/release planning baseline. This is not a Frozen implementation specification.**
+**Accepted — Phase 0C product-scope baseline.**
 
 This document converts the accepted platform/product blueprint into a bounded first commercial release scope. It does not freeze technology choices, database schema, role implementation, payroll formulas, or vendor-specific integration details.
 
@@ -20,6 +20,8 @@ V1 must complete one commercially coherent job:
 > A company can onboard its workforce, define the minimum work/pay context, capture and review time/leave/employee-finance effects, produce a correct payroll run, review and lock it, then issue payslips/exports — while Tech Edge can operate the tenant, entitlements and access safely.
 
 V1 is not intended to be a full ERP, a full talent suite, a generic workflow platform, or a self-service SaaS billing product.
+
+Every V1 capability must also comply with `DEC-016`: a supported workflow cannot create an operational dead end. Deferred sophistication must end in an explicit safe status, correction/closure path, reconciliation path, operator action, export, or external handoff. Post-launch depth is tracked in `post-v1-operational-completion-roadmap.md`.
 
 ## Scope classes
 
@@ -174,6 +176,7 @@ V1 entitlement evaluation must follow these principles:
 5. Historical financial/compliance records remain preserved. Read/export behavior after entitlement loss is specified per sensitive capability rather than handled by destructive deletion.
 6. Limits are explicit values such as employee/site/device limits, not package-name conditionals.
 7. Subscription-specific overrides are supported conceptually because commercial contracts may not map cleanly to fixed public packages.
+8. In-flight records affected by entitlement/limit changes require an explicit continuation, read-only, correction, export, or closure rule; they must not become hidden stranded state.
 
 ## V1 commercial-control boundary
 
@@ -199,7 +202,7 @@ V1 does **not** require:
 - partner commission accounting;
 - a general commercial CRM.
 
-These can be added when real volume justifies them without changing the entitlement architecture.
+These can be added when real volume justifies them without changing the entitlement architecture. Until then, the Tech Edge control plane is the explicit operational boundary for commercial access state.
 
 ## Personas for V1 acceptance
 
@@ -252,6 +255,8 @@ The following are deliberately out of scope for V1 even if technically useful la
 - self-service SaaS billing/payment/coupon engine;
 - advanced BI/AI workforce analytics.
 
+An exclusion is not permission to leave an active V1 workflow unfinished. When an excluded capability would normally continue the process, the owning V1 Spec must define the explicit handoff/terminal boundary.
+
 ## Decisions intentionally left for formal capability Specs
 
 Phase 0C defines product capability boundaries. The following must be frozen before their implementation begins:
@@ -267,5 +272,7 @@ Phase 0C defines product capability boundaries. The following must be frozen bef
 - exact biometric vendor/protocol selected for first adapter;
 - mobile geofence radius, spoofing/risk handling, offline behavior and privacy UX;
 - exact technology stack, persistence schema and deployment topology.
+
+Every formal capability Spec must also include its Workflow Completion Map: entry, intermediate state ownership, final states, rejection/cancellation where relevant, correction/reversal/reopen paths, reconciliation/external handoff, behavior when entitlement/permission changes affect in-flight work, historical visibility, and post-V1 operational depth deliberately deferred.
 
 These are not permission for Codex to invent behavior. They are explicit Phase 0D specification inputs.
