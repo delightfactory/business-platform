@@ -69,8 +69,8 @@ A tenant must have at minimum:
 V1 platform access states are:
 
 - `active` — normal tenant access subject to permissions and entitlements;
-- `suspended` — tenant user access to normal business operations is blocked or restricted according to the suspension policy; data is preserved;
-- `archived` — tenant is no longer operationally active; data remains preserved according to retention policy and cannot be silently reused as a new tenant.
+- `suspended` — normal tenant business operations are denied; tenant data is preserved, while Tech Edge control-plane and explicitly allowed recovery/administrative operations remain available;
+- `archived` — normal tenant business operations are denied and the tenant is no longer treated as operationally active; data remains preserved according to retention policy and cannot be silently reused as a new tenant.
 
 A separate commercial contract/subscription status may later have more detailed states. Tenant lifecycle and commercial billing concepts must not be collapsed into one field merely for convenience.
 
@@ -253,7 +253,9 @@ Effective tenant entitlement follows this conceptual precedence:
 
 1. explicit tenant/contract/subscription override, when present;
 2. assigned plan/bundle entitlement, when a plan/bundle model is used;
-3. capability default only where the product intentionally defines a default.
+3. deliberate capability default only for capabilities explicitly classified by the product as included Platform Core behavior.
+
+Commercial and optional capabilities are **deny-by-default** when no effective grant exists. Missing or incomplete entitlement data must never fail open.
 
 An explicit deny override must be able to disable a capability otherwise enabled by a plan. An explicit enable override may enable a capability outside the plan when commercially authorized.
 
@@ -422,7 +424,7 @@ The application must distinguish internally between:
 - unauthorized permission;
 - capability not entitled;
 - commercial/resource limit reached;
-- tenant suspended;
+- tenant suspended or archived;
 - resource not found within authorized scope.
 
 External messages may intentionally avoid leaking sensitive existence information, but the server-side outcome and audit/diagnostics must preserve the correct reason.
@@ -437,15 +439,16 @@ Wave 1 is not Done unless all are true:
 2. Cross-tenant access is denied at the authoritative layer.
 3. Platform operators and tenant roles are separate authority classes.
 4. Entitlements and permissions are independently enforced.
-5. Capability/package names do not enter business-domain branching logic.
-6. Entitlement disable/suspension never deletes customer data automatically.
-7. Limits do not destructively trim existing data.
-8. Employee/user identity coupling is not introduced by Platform Core.
-9. Sites do not create a second permission system.
-10. Sensitive platform changes are auditable without copying sensitive business payloads.
-11. Tenant/legal-entity/site lifecycle changes preserve historical references.
-12. No generic engine or infrastructure is added without a current Wave 1 requirement.
-13. A mandatory audited sensitive mutation cannot succeed while its mandatory success audit event is silently lost.
+5. Commercial/optional capabilities fail closed when no effective entitlement grant exists.
+6. Capability/package names do not enter business-domain branching logic.
+7. Entitlement disable/suspension never deletes customer data automatically.
+8. Limits do not destructively trim existing data.
+9. Employee/user identity coupling is not introduced by Platform Core.
+10. Sites do not create a second permission system.
+11. Sensitive platform changes are auditable without copying sensitive business payloads.
+12. Tenant/legal-entity/site lifecycle changes preserve historical references.
+13. No generic engine or infrastructure is added without a current Wave 1 requirement.
+14. A mandatory audited sensitive mutation cannot succeed while its mandatory success audit event is silently lost.
 
 ---
 
@@ -458,7 +461,8 @@ Wave 1 is not Done unless all are true:
 - explicit switch selects authorized tenant context;
 - requesting an unowned tenant context is denied;
 - inactive membership is denied immediately without deleting history;
-- tenant suspension blocks normal tenant operations without deleting data.
+- tenant suspension blocks normal tenant operations without deleting data while Tech Edge recovery/administration remains possible;
+- archived tenant blocks normal tenant operations and remains historically preserved.
 
 ## 12.2 Isolation
 
@@ -479,6 +483,7 @@ Wave 1 is not Done unless all are true:
 
 - plan/bundle entitlement can enable a capability;
 - explicit override can enable or deny according to precedence;
+- missing optional/commercial entitlement state is denied rather than enabled;
 - effective entitlement is inspectable;
 - capability dependency violations are rejected;
 - limit blocks new growth at threshold;
