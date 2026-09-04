@@ -13,6 +13,7 @@ This log records product and architecture decisions that materially constrain fu
 | DEC-007 | 2026-09-04 | Commercial packaging is implemented through capabilities/entitlements rather than hard-coded package-specific product branches. | Accepted |
 | DEC-008 | 2026-09-04 | Legacy systems are donor platforms only. Reuse requires an explicit extraction audit and classification before code is adopted. | Accepted |
 | DEC-009 | 2026-09-04 | The repository is documentation-first during Phase 0; production feature development begins only after required product and architecture baselines are reviewed. | Accepted |
+| DEC-010 | 2026-09-04 | The primary product surface is an adaptive web application: desktop/laptop must deliver a desktop-class business-app experience, mobile must deliver a purpose-designed native-style experience, and recurring UI/interaction behavior must be governed through reusable shared design-system primitives. | Accepted |
 
 ## Decision states
 
