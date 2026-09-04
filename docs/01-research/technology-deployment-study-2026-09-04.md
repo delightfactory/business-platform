@@ -206,6 +206,18 @@ Bootstrap policy:
 
 Do not pin a stale patch version in a permanent architecture decision.
 
+## Browser baseline
+
+The recommended Tailwind CSS 4.x / current Next.js stack targets modern evergreen browsers. Tailwind 4's documented baseline is newer than some legacy enterprise browser installations.
+
+Proposed product rule:
+
+- support modern maintained Chrome/Edge/Safari/Firefox baselines compatible with the selected framework/design-system stack;
+- do not carry legacy-browser polyfill/CSS complexity in V1 unless a real contracted customer requirement justifies it;
+- document the exact supported-browser matrix during frontend bootstrap and test against that matrix.
+
+This keeps the adaptive desktop/mobile requirement focused on screen/input quality rather than unsupported legacy engines.
+
 ## Frontend / Design System recommendation
 
 Use:
