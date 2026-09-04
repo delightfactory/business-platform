@@ -360,10 +360,13 @@ At minimum:
 - platform-operator actions affecting a tenant;
 - security-sensitive configuration changes.
 
-## 7.3 Audit safety
+## 7.3 Audit safety and consistency
 
 - passwords, secrets, auth tokens, raw biometric payloads, exact payroll contents, and unnecessary personal data must never be copied into platform audit payloads;
-- audit failures for critical sensitive actions must follow an explicit consistency strategy in implementation; they must not silently disappear;
+- for every action classified as requiring a mandatory successful audit event, the protected mutation must not be acknowledged as successfully committed unless its audit event is durably persisted through the same consistency boundary;
+- preferred implementation is atomic persistence; if later architecture requires asynchronous delivery it must use a durable transactional/outbox-style mechanism or equivalent that cannot leave a successful protected mutation permanently unaudited;
+- best-effort fail-open audit for mandatory sensitive success events is prohibited;
+- denied/failed-operation security telemetry may use a separate non-transactional path when no protected mutation committed;
 - audit records themselves are authorization-protected and tenant/platform scoped.
 
 ---
@@ -442,6 +445,7 @@ Wave 1 is not Done unless all are true:
 10. Sensitive platform changes are auditable without copying sensitive business payloads.
 11. Tenant/legal-entity/site lifecycle changes preserve historical references.
 12. No generic engine or infrastructure is added without a current Wave 1 requirement.
+13. A mandatory audited sensitive mutation cannot succeed while its mandatory success audit event is silently lost.
 
 ---
 
@@ -484,6 +488,7 @@ Wave 1 is not Done unless all are true:
 ## 12.5 Audit
 
 - all mandatory Wave 1 sensitive events produce reviewable audit records;
+- a simulated mandatory-audit persistence failure proves the protected sensitive mutation does not commit/acknowledge success without its audit record;
 - unauthorized/denied sensitive actions are captured where security value justifies it;
 - audit payload review proves prohibited sensitive values are absent;
 - actor, target tenant, action, time, and outcome are attributable.
@@ -511,6 +516,7 @@ Before this specification may become Frozen for Wave 1 implementation, the follo
 - ADR-002 — Explicit Tenant Context and authoritative isolation.
 - ADR-003 — Entitlement precedence, limits, and non-destructive disable semantics.
 - ADR-004 — Authorization model: permission catalog + role templates, no fixed universal role enum.
+- ADR-005 — Sensitive audit consistency must fail closed.
 
 Technology/deployment ADRs may be completed in the same Phase 0D before coding begins; they do not change the behavioral invariants in this specification.
 
