@@ -84,6 +84,18 @@ Attendance is source-neutral. Inputs may include:
 
 Inputs are normalized before attendance policy and payroll logic consume them.
 
+## Product experience model
+
+The primary product surface is a professional web application with an adaptive application experience across screen classes.
+
+- Desktop and laptop should provide a desktop-class business application experience with efficient information density, stable navigation, and productive review/data workflows.
+- Mobile should provide a deliberately composed, native-style application experience rather than a compressed desktop layout.
+- Tablet/intermediate layouts must be intentional where interaction or information structure materially changes.
+- Shared application-shell, design-token, component, form, feedback, navigation, accessibility, and responsive primitives should be centrally governed and reused across domains.
+- UX consistency includes workflow behavior and system states, not only styling.
+
+Detailed frontend behavior and quality rules are governed by `docs/05-engineering/frontend-ux-baseline.md`.
+
 ## Commercial capability model
 
 Stable capabilities are exposed as entitlements. Commercial package names are compositions of entitlements rather than code paths.
