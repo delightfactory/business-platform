@@ -6,7 +6,10 @@ A change is Done only when implementation, verification, and governing documenta
 
 - acceptance criteria are satisfied;
 - expected failure/edge behavior is covered where material;
-- no known critical path is left dependent on undocumented manual intervention.
+- every material workflow introduced or changed has a reachable supported operational end state or an explicit external handoff;
+- cancellation/rejection/correction/reversal/reconciliation paths are complete where required by the governing specification;
+- no known critical path is left dependent on undocumented manual intervention;
+- a deferred downstream capability does not leave the current workflow stranded without a clear status, export, operator action, or other governed continuation path.
 
 ## Engineering completion
 
@@ -26,6 +29,7 @@ For material user-facing changes:
 - shared design-system primitives are used or deliberately extended instead of duplicating recurring controls/patterns;
 - loading, empty, validation, failure, success, and sensitive-confirmation states are complete where relevant;
 - essential actions remain accessible across supported screen sizes and input modes;
+- users can identify the current state, available next action, and final/handed-off outcome of the workflow;
 - accessibility behavior is verified to the level appropriate for the affected components/workflow;
 - UX acceptance evidence is reviewable when the change materially affects user interaction or layout.
 
@@ -43,13 +47,15 @@ For payroll, money, statutory, or finalized records:
 - calculations/state transitions are deterministic and reviewable;
 - historical outcomes remain reproducible;
 - mutable configuration cannot silently rewrite finalized history;
-- corrections use an explicit adjustment/reversal/amendment path rather than hidden mutation.
+- corrections use an explicit adjustment/reversal/amendment path rather than hidden mutation;
+- operational completion includes a defined reconciliation/settlement/payment-status or external-handoff state where actual money movement is outside the product scope.
 
 ## Documentation completion
 
 - public behavior and material constraints are documented;
 - decision log/ADR is updated if a baseline changed;
-- release scope is updated if the change alters commitments.
+- release scope is updated if the change alters commitments;
+- deferred operational depth that is intentionally postponed is recorded in the appropriate capability/roadmap backlog rather than silently forgotten.
 
 ## Qualification rule
 
