@@ -25,7 +25,15 @@ Each ADR should include:
 
 Use sequential identifiers such as:
 
-`ADR-0001-short-decision-name.md`
+`ADR-001-short-decision-name.md`
+
+## Current Phase 0D Platform Foundation ADRs
+
+- `ADR-001-tenant-legal-entity-site-separation.md`
+- `ADR-002-explicit-tenant-context-and-isolation.md`
+- `ADR-003-entitlement-precedence-and-disable-semantics.md`
+- `ADR-004-authorization-permissions-and-role-templates.md`
+- `ADR-005-sensitive-audit-consistency.md`
 
 ## Rule
 
