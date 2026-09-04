@@ -29,6 +29,14 @@
 - [ ] No new Confidential/Restricted data category or retention behavior is introduced.
 - [ ] Data classification/privacy handling reviewed where applicable.
 
+## Frontend / UX
+
+- [ ] No material user-facing layout/interaction behavior is affected.
+- [ ] Representative mobile and desktop/laptop behavior is verified where applicable.
+- [ ] Shared design-system primitives are reused/extended instead of duplicated where applicable.
+- [ ] Loading/empty/validation/failure/success/confirmation states are covered where applicable.
+- [ ] Accessibility and input-mode behavior reviewed where applicable.
+
 ## Financial / sensitive behavior
 
 - [ ] No financial, payroll, compliance, or irreversible state is affected.
