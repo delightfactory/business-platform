@@ -14,6 +14,7 @@
 
 - [ ] No governing product/architecture decision changes.
 - [ ] Governing documentation / Decision Log / ADR updated as required.
+- [ ] Governing specification status and amendment impact reviewed where applicable.
 
 ## Tenancy and security
 
@@ -21,10 +22,12 @@
 - [ ] Tenant isolation / authorization impact reviewed and tested where applicable.
 - [ ] No secrets, credentials, or private customer data are included.
 
-## Data / migrations
+## Data / privacy / migrations
 
 - [ ] No persistent-data change.
 - [ ] Migration/schema change is reproducible and reviewed.
+- [ ] No new Confidential/Restricted data category or retention behavior is introduced.
+- [ ] Data classification/privacy handling reviewed where applicable.
 
 ## Financial / sensitive behavior
 
