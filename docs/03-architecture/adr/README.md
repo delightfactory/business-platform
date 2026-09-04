@@ -45,7 +45,7 @@ Use sequential identifiers such as:
 - `ADR-009-vercel-supabase-environments-and-preview-isolation.md`
 - `ADR-010-frontend-design-system-foundation.md`
 
-All ADRs above remain Proposed until the Phase 0D acceptance/freeze review explicitly accepts them.
+All ADRs above remain Proposed until the Phase 0D acceptance/freeze review explicitly accepts them. ADR-006 through ADR-010 are required technology decisions for Wave 1 bootstrap; accepting only the behavioral ADRs does not authorize implementation.
 
 ## Rule
 
