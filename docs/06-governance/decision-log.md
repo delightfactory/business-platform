@@ -19,6 +19,7 @@ This log records product and architecture decisions that materially constrain fu
 | DEC-013 | 2026-09-04 | V1 Attendance is source-neutral and includes manual entry, spreadsheet import, one prioritized biometric connector, and optional mobile geofence attendance; universal device support and continuous employee location tracking are explicitly outside V1. | Accepted |
 | DEC-014 | 2026-09-04 | Full Contracts/Documents, ESS/MSS, advanced approval/workflow, Talent and Expenses are deferred from V1; focused employee/manager surfaces may exist only where required by a V1 workflow such as mobile attendance or bounded review. | Accepted |
 | DEC-015 | 2026-09-04 | Removing/suspending an optional entitlement must never automatically delete tenant data or make finalized financial/compliance history unreproducible; entitlement denial is enforced authoritatively and historical-access behavior is capability-specific. | Accepted |
+| DEC-016 | 2026-09-04 | Every material workflow must have a supported operational end state or explicit external handoff; deferred sophistication must not leave V1 processes at dead ends, and post-launch roadmap work should deepen lifecycle completion and automation without forcing flow rewrites. | Accepted |
 
 ## Decision states
 
