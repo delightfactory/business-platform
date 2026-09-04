@@ -17,6 +17,18 @@ A change is Done only when implementation, verification, and governing documenta
 - temporary debug/test artifacts are removed;
 - generated artifacts are consistent where applicable.
 
+## User experience completion
+
+For material user-facing changes:
+
+- the workflow behaves correctly at representative mobile and desktop/laptop viewport classes, and at intermediate sizes where the layout materially changes;
+- no core workflow relies on desktop-only composition or accidental responsive shrinkage;
+- shared design-system primitives are used or deliberately extended instead of duplicating recurring controls/patterns;
+- loading, empty, validation, failure, success, and sensitive-confirmation states are complete where relevant;
+- essential actions remain accessible across supported screen sizes and input modes;
+- accessibility behavior is verified to the level appropriate for the affected components/workflow;
+- UX acceptance evidence is reviewable when the change materially affects user interaction or layout.
+
 ## Security and tenancy completion
 
 - authorization is enforced at an authoritative layer;
