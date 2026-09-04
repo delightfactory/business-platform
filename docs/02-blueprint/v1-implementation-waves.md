@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0C execution sequence.**
+**Accepted — Phase 0C execution-planning baseline. This is not permission to implement unresolved behavior without Frozen Specs.**
 
 This roadmap translates the V1 capability decomposition into implementation waves while preserving the repository's Definition of Ready/Done and Complexity Budget.
 
