@@ -12,6 +12,7 @@ This specification governs the minimum shared SaaS foundation required before te
 - Accepted Master Product Blueprint.
 - Accepted V1 Capability Decomposition.
 - Accepted V1 Implementation Waves.
+- Accepted `DEC-016` No Dead-End Workflows principle and Post-V1 Operational Completion Roadmap.
 - Completed Edara SaaS Extraction Audit.
 - Architecture Principles, Security Baseline, Data Classification/Privacy baseline, Definition of Ready, and Definition of Done.
 
@@ -45,6 +46,20 @@ Wave 1 must not expand into:
 - native mobile applications;
 - microservices or event-bus infrastructure without demonstrated need.
 
+## Operational completion rule
+
+Wave 1 may remain intentionally small, but no platform workflow may create an operational dead end. Each material lifecycle must define a supported terminal/closure state or explicit governed handoff.
+
+Examples:
+
+- tenant onboarding ends in a usable active tenant or an explicit failed/cancelled onboarding outcome;
+- membership invitation/creation must have activation, deactivation/removal, and support-recovery semantics rather than remaining indefinitely ambiguous;
+- tenant suspension/reactivation/archive are explicit access states, not hidden flags with undefined operational behavior;
+- entitlement or limit changes must leave existing data in a governed preserved state and make the next allowed action clear;
+- when commercial billing automation is deferred, the Tech Edge control plane is the explicit operational handoff rather than leaving subscription/access state unresolved.
+
+Post-launch expansion may automate these handoffs, but V1 must already make them explicit and supportable.
+
 ---
 
 # 1. Core organization model
@@ -69,8 +84,8 @@ A tenant must have at minimum:
 V1 platform access states are:
 
 - `active` — normal tenant access subject to permissions and entitlements;
-- `suspended` — normal tenant business operations are denied; tenant data is preserved, while Tech Edge control-plane and explicitly allowed recovery/administrative operations remain available;
-- `archived` — normal tenant business operations are denied and the tenant is no longer treated as operationally active; data remains preserved according to retention policy and cannot be silently reused as a new tenant.
+- `suspended` — normal tenant business operations are blocked; data is preserved; controlled Tech Edge administration/recovery remains available;
+- `archived` — tenant is no longer operationally active; normal tenant business operations remain unavailable; data remains preserved according to retention policy; controlled platform administration/export/recovery may remain available according to policy; the identity cannot be silently reused as a new tenant.
 
 A separate commercial contract/subscription status may later have more detailed states. Tenant lifecycle and commercial billing concepts must not be collapsed into one field merely for convenience.
 
@@ -253,11 +268,11 @@ Effective tenant entitlement follows this conceptual precedence:
 
 1. explicit tenant/contract/subscription override, when present;
 2. assigned plan/bundle entitlement, when a plan/bundle model is used;
-3. deliberate capability default only for capabilities explicitly classified by the product as included Platform Core behavior.
-
-Commercial and optional capabilities are **deny-by-default** when no effective grant exists. Missing or incomplete entitlement data must never fail open.
+3. capability default only where the product intentionally defines a default.
 
 An explicit deny override must be able to disable a capability otherwise enabled by a plan. An explicit enable override may enable a capability outside the plan when commercially authorized.
+
+For optional/commercial capabilities, absence of an effective grant is deny-by-default. A capability must never become enabled merely because plan/override data is missing or evaluation is ambiguous.
 
 The implementation may use a simpler internal representation in V1 if it preserves these semantics and future plan composition without data migration that changes meaning.
 
@@ -365,11 +380,12 @@ At minimum:
 ## 7.3 Audit safety and consistency
 
 - passwords, secrets, auth tokens, raw biometric payloads, exact payroll contents, and unnecessary personal data must never be copied into platform audit payloads;
-- for every action classified as requiring a mandatory successful audit event, the protected mutation must not be acknowledged as successfully committed unless its audit event is durably persisted through the same consistency boundary;
-- preferred implementation is atomic persistence; if later architecture requires asynchronous delivery it must use a durable transactional/outbox-style mechanism or equivalent that cannot leave a successful protected mutation permanently unaudited;
-- best-effort fail-open audit for mandatory sensitive success events is prohibited;
-- denied/failed-operation security telemetry may use a separate non-transactional path when no protected mutation committed;
-- audit records themselves are authorization-protected and tenant/platform scoped.
+- audit records themselves are authorization-protected and tenant/platform scoped;
+- for actions classified as requiring mandatory success audit, the protected state change and its success audit record must share a consistency boundary: the operation must not be acknowledged/committed as successful if durable audit persistence fails;
+- denied/failed attempt audit may use a separate safe diagnostic path when it cannot share the business transaction, but failures must remain observable and must not convert the denied business operation into success;
+- the mandatory-success-audit classification is defined by the governing specification, not inferred ad hoc by UI code.
+
+See `ADR-005-sensitive-audit-consistency.md`.
 
 ---
 
@@ -412,6 +428,12 @@ The platform foundation UI must comply with `frontend-ux-baseline.md`.
 - tenant target context is always visible before sensitive operator actions;
 - destructive/access-changing actions require appropriate confirmation.
 
+## 9.4 Workflow continuity
+
+- platform workflows must expose current state and available next actions clearly;
+- a user must not reach a successful creation/update state that has no governed completion, cancellation, recovery, or external-handoff path;
+- in-flight records affected by membership, tenant status, entitlement, or limit changes must have defined continuation/recovery behavior rather than becoming invisible stranded state.
+
 ---
 
 # 10. Error and denial semantics
@@ -424,7 +446,7 @@ The application must distinguish internally between:
 - unauthorized permission;
 - capability not entitled;
 - commercial/resource limit reached;
-- tenant suspended or archived;
+- tenant suspended;
 - resource not found within authorized scope.
 
 External messages may intentionally avoid leaking sensitive existence information, but the server-side outcome and audit/diagnostics must preserve the correct reason.
@@ -439,16 +461,17 @@ Wave 1 is not Done unless all are true:
 2. Cross-tenant access is denied at the authoritative layer.
 3. Platform operators and tenant roles are separate authority classes.
 4. Entitlements and permissions are independently enforced.
-5. Commercial/optional capabilities fail closed when no effective entitlement grant exists.
-6. Capability/package names do not enter business-domain branching logic.
-7. Entitlement disable/suspension never deletes customer data automatically.
-8. Limits do not destructively trim existing data.
-9. Employee/user identity coupling is not introduced by Platform Core.
-10. Sites do not create a second permission system.
-11. Sensitive platform changes are auditable without copying sensitive business payloads.
-12. Tenant/legal-entity/site lifecycle changes preserve historical references.
-13. No generic engine or infrastructure is added without a current Wave 1 requirement.
-14. A mandatory audited sensitive mutation cannot succeed while its mandatory success audit event is silently lost.
+5. Capability/package names do not enter business-domain branching logic.
+6. Entitlement disable/suspension never deletes customer data automatically.
+7. Limits do not destructively trim existing data.
+8. Employee/user identity coupling is not introduced by Platform Core.
+9. Sites do not create a second permission system.
+10. Sensitive platform changes are auditable without copying sensitive business payloads.
+11. Tenant/legal-entity/site lifecycle changes preserve historical references.
+12. No generic engine or infrastructure is added without a current Wave 1 requirement.
+13. Commercial/optional capabilities fail closed when no effective entitlement grant exists.
+14. Suspended/archived tenants cannot perform normal tenant business operations; controlled platform administration/recovery remains separately governed.
+15. No Wave 1 lifecycle creates a stranded operational state without a supported terminal/closure or explicit handoff path.
 
 ---
 
@@ -457,12 +480,14 @@ Wave 1 is not Done unless all are true:
 ## 12.1 Tenant and membership
 
 - create tenant and initial owner/admin membership;
+- onboarding reaches an explicit active outcome or explicit failed/cancelled recovery path;
 - one user can hold active memberships in two tenants;
 - explicit switch selects authorized tenant context;
 - requesting an unowned tenant context is denied;
 - inactive membership is denied immediately without deleting history;
-- tenant suspension blocks normal tenant operations without deleting data while Tech Edge recovery/administration remains possible;
-- archived tenant blocks normal tenant operations and remains historically preserved.
+- membership invitation/activation/deactivation/removal has defined non-stranded states;
+- tenant suspension blocks normal tenant operations without deleting data;
+- tenant reactivation restores allowed operation without reconstructing the tenant identity/data.
 
 ## 12.2 Isolation
 
@@ -483,17 +508,18 @@ Wave 1 is not Done unless all are true:
 
 - plan/bundle entitlement can enable a capability;
 - explicit override can enable or deny according to precedence;
-- missing optional/commercial entitlement state is denied rather than enabled;
+- absence of an effective optional/commercial entitlement grant denies access;
 - effective entitlement is inspectable;
 - capability dependency violations are rejected;
 - limit blocks new growth at threshold;
 - lowering a limit below current usage preserves existing data;
-- disabling a capability preserves data/history while blocking prohibited operations.
+- disabling a capability preserves data/history while blocking prohibited operations;
+- capability disable/limit changes leave existing/in-flight records in defined visible/recoverable states rather than stranded hidden state.
 
 ## 12.5 Audit
 
 - all mandatory Wave 1 sensitive events produce reviewable audit records;
-- a simulated mandatory-audit persistence failure proves the protected sensitive mutation does not commit/acknowledge success without its audit record;
+- a mandatory-audit protected mutation cannot commit/return success when its success audit persistence fails;
 - unauthorized/denied sensitive actions are captured where security value justifies it;
 - audit payload review proves prohibited sensitive values are absent;
 - actor, target tenant, action, time, and outcome are attributable.
@@ -503,7 +529,8 @@ Wave 1 is not Done unless all are true:
 - representative tenant admin workflows pass desktop/laptop and mobile acceptance;
 - tenant switching is unambiguous and safe;
 - control-plane tenant target context is always clear;
-- disabled entitlement UX matches server-authoritative behavior.
+- disabled entitlement UX matches server-authoritative behavior;
+- representative workflow states show a valid next action, terminal outcome, or explicit external/operator handoff.
 
 ## 12.7 Reproducibility
 
@@ -521,7 +548,7 @@ Before this specification may become Frozen for Wave 1 implementation, the follo
 - ADR-002 — Explicit Tenant Context and authoritative isolation.
 - ADR-003 — Entitlement precedence, limits, and non-destructive disable semantics.
 - ADR-004 — Authorization model: permission catalog + role templates, no fixed universal role enum.
-- ADR-005 — Sensitive audit consistency must fail closed.
+- ADR-005 — Mandatory sensitive audit consistency / fail-closed protected mutations.
 
 Technology/deployment ADRs may be completed in the same Phase 0D before coding begins; they do not change the behavioral invariants in this specification.
 
@@ -531,6 +558,7 @@ This specification may move from Proposed to Frozen only when:
 
 - supporting ADRs are Accepted;
 - no material tenant/isolation/authorization/entitlement/control-plane behavior is unresolved;
+- lifecycle completion/handoff behavior for every material Wave 1 process is explicit;
 - security/privacy review finds no contradiction with the baselines;
 - acceptance criteria are testable with the selected implementation approach;
 - technology choices selected for Wave 1 can satisfy these invariants without weakening them.
