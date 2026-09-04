@@ -11,17 +11,20 @@ A work item is ready for implementation when the team can execute it without inv
 - dependencies are identified;
 - security and tenant-isolation impact is understood;
 - persistent-data impact is understood;
+- data classification/privacy impact is understood where personal, financial, location, biometric-related, or otherwise sensitive data is involved;
 - acceptance criteria are testable;
 - required policy/configuration behavior is defined;
+- the governing product specification is Frozen when the work requires a formal specification baseline;
 - unresolved decisions that could materially change implementation are closed or explicitly deferred.
 
 ## Additional requirements for critical work
 
-Payroll, authorization, tenant isolation, financial state, and destructive operations require explicit invariants and failure behavior before implementation begins.
+Payroll, authorization, tenant isolation, financial state, sensitive-data handling, and destructive operations require explicit invariants and failure behavior before implementation begins.
 
 ## Not Ready examples
 
 - "make payroll flexible" without defined policy boundaries;
 - "support all biometric devices" without an adapter scope;
 - "make workflows configurable" without concrete workflow cases;
-- implementing a future domain merely to prepare for possible expansion.
+- implementing a future domain merely to prepare for possible expansion;
+- starting implementation from a Proposed specification when material behavior is still unresolved.
