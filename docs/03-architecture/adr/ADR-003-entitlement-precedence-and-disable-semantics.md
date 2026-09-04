@@ -14,7 +14,9 @@ Capabilities use stable product keys. Effective tenant access follows this conce
 
 1. explicit tenant/contract/subscription override;
 2. assigned plan/bundle entitlement when used;
-3. deliberate capability default where defined.
+3. deliberate capability default only for capabilities explicitly classified by the product as included Platform Core behavior.
+
+Commercial/optional capabilities are **deny-by-default** when no effective grant exists. Absence of entitlement data must not fail open.
 
 An explicit deny can override a plan enable. An explicit enable can extend a plan where commercially authorized.
 
@@ -28,6 +30,7 @@ If a lowered limit is below current usage, existing data remains; new growth is 
 
 - package names/prices can change without domain-code branches;
 - negotiated customers can receive controlled overrides;
+- missing/corrupt optional entitlement state does not accidentally grant a paid capability;
 - historical payroll/compliance remains reproducible after commercial changes;
 - UI can structurally hide disabled capabilities while the server remains authoritative.
 
@@ -36,6 +39,10 @@ If a lowered limit is below current usage, existing data remains; new growth is 
 ### Hard-code Starter/Pro/Enterprise branches
 
 Rejected because pricing/packaging evolution would force code changes and tenant-specific exceptions.
+
+### Treat missing entitlement state as enabled
+
+Rejected because commercial/security enforcement would fail open.
 
 ### Delete data when entitlement ends
 
