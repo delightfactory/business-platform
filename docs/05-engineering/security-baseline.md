@@ -4,6 +4,8 @@
 
 Define minimum security expectations that cannot be traded away for delivery speed.
 
+This baseline works together with `data-classification-and-privacy.md`; security controls must reflect the sensitivity of the data and operation involved.
+
 ## Tenant isolation
 
 - Tenant-owned data must be scoped by authoritative tenant context.
@@ -26,6 +28,7 @@ Define minimum security expectations that cannot be traded away for delivery spe
 - Collect only data needed for active product functions.
 - Location and biometric-related information requires explicit minimization and stronger handling.
 - Logs and audit records must avoid unnecessary exposure of sensitive payloads.
+- New categories of Confidential or Restricted data require explicit handling review according to `data-classification-and-privacy.md`.
 
 ## Sensitive operations
 
