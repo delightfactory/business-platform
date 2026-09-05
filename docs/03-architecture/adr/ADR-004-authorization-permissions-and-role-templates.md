@@ -2,13 +2,15 @@
 
 ## Status
 
-**Accepted — Phase 0D Platform Foundation freeze review, 2026-09-05.**
+**Accepted — Phase 0D Platform Foundation freeze review, hardened by pre-merge review 2026-09-05.**
 
 ## Context
 
 The donor SaaS used useful module/action permission patterns but also accumulated fixed role assumptions and branch-level permission complexity. The new platform must support simple onboarding now while allowing HR and future domains to add authority without changing a universal role enum.
 
 The Foundation also needs explicit root-of-trust rules so that role/membership changes cannot orphan a tenant, silently rewrite existing customer authority, or manufacture Platform Operator access from an ordinary tenant role.
+
+A separate concern is how the **first** Platform Operator authority is established and how the product recovers if the last recoverable Operator manager is lost. Leaving that choice to implementation would make infrastructure credentials the accidental product root of trust.
 
 ## Decision
 
@@ -55,20 +57,63 @@ These semantics concern application administration authority and must never be i
 
 A pending invitation does not grant access. Membership access is effective only in an explicit active state and only with separately assigned authority.
 
-Invitation/Membership lifecycle completion semantics are governed by the Platform Foundation Specification and the accepted 2026-09-05 freeze-review amendment; role assignment must not bypass those lifecycle rules.
+Invitation/Membership lifecycle completion semantics are governed by the Platform Foundation Specification and accepted 2026-09-05 amendments; role assignment must not bypass those lifecycle rules.
 
 ## Platform Operator authority
 
 Tech Edge Platform Operator authority is a separate Platform authority class and cannot be granted through tenant role assignment.
 
+Wave 1 uses an application-owned `PlatformOperatorGrant` authority record or equivalent authoritative representation tied to an authenticated User/principal.
+
 Rules:
 
 - Platform Operator grants/revocations are governed outside tenant role assignments;
 - normal tenant administrators cannot grant, revoke, or manufacture Platform Operator authority;
-- granting or revoking Platform Operator authority is a sensitive audited Platform operation;
+- granting or revoking Platform Operator authority is a sensitive mandatory-audited Platform operation;
 - Platform Operator status does not imply tenant Membership, and tenant Membership does not imply Platform Operator status;
 - infrastructure bypass credentials such as `service_role` are not a product-level Platform Operator identity;
-- when a Platform Operator acts on tenant-owned state, the target Tenant is explicit and the operation is bounded by the operator capability being exercised.
+- when a Platform Operator acts on tenant-owned state, the target Tenant is explicit and the operation is bounded by the operator capability being exercised;
+- Platform Operator authority does not silently bypass Tenant lifecycle, same-Tenant relationship, or protected business lifecycle invariants.
+
+### Operator-management authority
+
+Managing Platform Operator grants requires a stable Platform permission/capability such as `platform.operator.manage`.
+
+After initial bootstrap:
+
+- only an **active** Platform Operator with operator-management authority can grant/revoke ordinary Platform Operator authority;
+- normal tenant roles can never receive this authority;
+- the system prevents normal operator-management operations from removing the final active recoverable Operator with `platform.operator.manage` authority.
+
+The exact permission-key spelling may be finalized consistently with the Platform permission namespace, but the authority semantics above are fixed.
+
+### First Platform Operator bootstrap
+
+The first recoverable Platform Operator is established through a **repository-controlled one-time bootstrap/maintenance command**.
+
+Requirements:
+
+- the command is server/maintenance-only and is not exposed through normal tenant or control-plane UI/API routes;
+- it uses a deployment-scoped bootstrap/recovery principal or secret held outside tenant-controlled data;
+- the bootstrap principal is represented in mandatory audit as a distinct actor class such as `platform_bootstrap`;
+- infrastructure credentials may execute the persistence operation but are never the product actor identity;
+- the operation establishes the first authenticated Platform Operator grant and its mandatory success audit in one protected consistency boundary where practical;
+- after successful first bootstrap, the bootstrap credential/path is disabled, rotated, or otherwise made non-routine.
+
+### Break-glass recovery
+
+A narrow repository-controlled recovery command may re-establish one Operator manager if no recoverable active Operator manager exists or an explicitly declared emergency requires recovery.
+
+The break-glass path:
+
+- is never available to tenant users;
+- is not a normal control-plane action;
+- uses separately controlled deployment/recovery authority;
+- requires an explicit reason and target authenticated principal;
+- creates a mandatory audit event;
+- does not turn `service_role` or another database bypass credential into a durable product actor.
+
+Wave 1 does not require four-eyes approval, enterprise IAM, or a generic privileged-access-management subsystem.
 
 Generic user impersonation remains outside V1 unless separately designed and accepted.
 
@@ -81,7 +126,9 @@ Generic user impersonation remains outside V1 unless separately designed and acc
 - UI visibility remains secondary to authoritative permission enforcement;
 - existing tenant authority cannot drift silently because a shared template changed;
 - an operational tenant cannot be accidentally left without a recoverable administrator;
-- Platform Operator authority remains structurally separate from customer-controlled RBAC.
+- Platform Operator authority remains structurally separate from customer-controlled RBAC and infrastructure credentials;
+- the first Operator and emergency recovery paths are explicit rather than invented during implementation;
+- no enterprise IAM subsystem is introduced prematurely.
 
 ## Rejected alternatives
 
@@ -100,6 +147,14 @@ Rejected because it creates competing authorization sources and hard-to-audit pr
 ### Tenant role that can grant Platform Operator authority
 
 Rejected because Platform Operator is a separate trust domain and must not be customer-manufacturable.
+
+### Treat `service_role` as the first or permanent Platform Operator
+
+Rejected because an infrastructure bypass credential is an execution mechanism, not an accountable product principal or authorization model.
+
+### Leave first-operator bootstrap as an undocumented seed/manual database edit
+
+Rejected because the platform's highest product authority would then depend on an unreviewed hidden root of trust.
 
 ### Page/button permission keys
 
