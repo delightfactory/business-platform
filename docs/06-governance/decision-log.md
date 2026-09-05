@@ -20,6 +20,7 @@ This log records product and architecture decisions that materially constrain fu
 | DEC-014 | 2026-09-04 | Full Contracts/Documents, ESS/MSS, advanced approval/workflow, Talent and Expenses are deferred from V1; focused employee/manager surfaces may exist only where required by a V1 workflow such as mobile attendance or bounded review. | Accepted |
 | DEC-015 | 2026-09-04 | Removing/suspending an optional entitlement must never automatically delete tenant data or make finalized financial/compliance history unreproducible; entitlement denial is enforced authoritatively and historical-access behavior is capability-specific. | Accepted |
 | DEC-016 | 2026-09-04 | Every material workflow must have a supported operational end state or explicit external handoff; deferred sophistication must not leave V1 processes at dead ends, and post-launch roadmap work should deepen lifecycle completion and automation without forcing flow rewrites. | Accepted |
+| DEC-017 | 2026-09-05 | ADR-001 through ADR-010 are accepted as the coherent architecture baseline for Wave 1 and the Platform Foundation Specification is Frozen after the independent freeze review and corrective amendment. Wave 1 may begin only from this adopted Foundation baseline; later Business Domain waves remain blocked until their own governing Product Specs are Frozen. | Accepted |
 
 ## Decision states
 
