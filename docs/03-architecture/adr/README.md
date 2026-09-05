@@ -31,21 +31,25 @@ Use sequential identifiers such as:
 
 ### Behavioral / platform model
 
-- `ADR-001-tenant-legal-entity-site-separation.md`
-- `ADR-002-explicit-tenant-context-and-isolation.md`
-- `ADR-003-entitlement-precedence-and-disable-semantics.md`
-- `ADR-004-authorization-permissions-and-role-templates.md`
-- `ADR-005-sensitive-audit-consistency.md`
+- `ADR-001-tenant-legal-entity-site-separation.md` — **Accepted**
+- `ADR-002-explicit-tenant-context-and-isolation.md` — **Accepted**
+- `ADR-003-entitlement-precedence-and-disable-semantics.md` — **Accepted**
+- `ADR-004-authorization-permissions-and-role-templates.md` — **Accepted**
+- `ADR-005-sensitive-audit-consistency.md` — **Accepted**
 
 ### Technology / deployment
 
-- `ADR-006-nextjs-node-web-runtime.md`
-- `ADR-007-supabase-postgres-auth-storage.md`
-- `ADR-008-authoritative-data-access-and-transaction-boundaries.md`
-- `ADR-009-vercel-supabase-environments-and-preview-isolation.md`
-- `ADR-010-frontend-design-system-foundation.md`
+- `ADR-006-nextjs-node-web-runtime.md` — **Accepted**
+- `ADR-007-supabase-postgres-auth-storage.md` — **Accepted**
+- `ADR-008-authoritative-data-access-and-transaction-boundaries.md` — **Accepted**
+- `ADR-009-vercel-supabase-environments-and-preview-isolation.md` — **Accepted**
+- `ADR-010-frontend-design-system-foundation.md` — **Accepted**
 
-All ADRs above remain Proposed until the Phase 0D acceptance/freeze review explicitly accepts them. ADR-006 through ADR-010 are required technology decisions for Wave 1 bootstrap; accepting only the behavioral ADRs does not authorize implementation.
+ADR-001 through ADR-010 were accepted together in the **2026-09-05 Phase 0D Platform Foundation freeze review** after the corrective constraints in `docs/04-product-specs/platform-foundation-freeze-review-amendment-2026-09-05.md` were incorporated into the governing Foundation set.
+
+The accepted ADR set and the Frozen Platform Foundation Specification jointly govern Wave 1 — Platform Spine. The Technology & Deployment Architecture Study remains supporting research/evidence; the Accepted ADRs are the implementation authority.
+
+Later Business Domain implementation remains blocked until each Domain's own governing Product Spec is Frozen under the staged Phase 0D gate.
 
 ## Rule
 
