@@ -2,7 +2,7 @@
 
 ## Status
 
-**Accepted — Phase 0C execution-planning baseline.**
+**Accepted — Phase 0C execution-planning baseline, amended by Phase 0D freeze review on 2026-09-05.**
 
 This roadmap translates the V1 capability decomposition into implementation waves while preserving the repository's Definition of Ready/Done, Complexity Budget, and `DEC-016` No Dead-End Workflows rule.
 
@@ -69,28 +69,38 @@ Required outputs:
 
 Every implementation-ready Product Spec produced in Phase 0D must include a Workflow Completion Map covering entry, intermediate ownership, terminal states, rejection/cancellation where applicable, correction/reversal/reopen behavior, reconciliation/external handoffs, entitlement/permission changes affecting in-flight work, historical visibility, and deliberately deferred post-V1 maturity items.
 
-### Phase 0D exit gate
+### Staged Phase 0D freeze gate
 
-Implementation may begin only when:
+Phase 0D uses dependency-driven staged freezes rather than one all-or-nothing coding gate.
 
-- no material V1 behavior is left for Codex to invent;
-- core state machines/invariants are explicit;
-- every material workflow has a defined end state or explicit handoff;
-- authorization and tenant-isolation expectations are testable;
-- payroll/financial correction and historical-reproducibility rules are explicit;
-- first attendance integration scope is bounded;
-- governing specs required by the first implementation wave are **Frozen**.
+Wave 1 — Platform Spine may begin only when:
+
+- the Platform Foundation Specification is **Frozen**;
+- ADR-001 through ADR-010 are **Accepted** as one coherent implementation set;
+- no material Platform Foundation behavior is left for Codex to invent;
+- tenant isolation, authoritative access, Membership/authorization, entitlements, Platform Operator authority, audit, and lifecycle completion are testable and unambiguous.
+
+Later Business Domain waves remain blocked until their own governing Product Specs are **Frozen**. In particular:
+
+- Wave 2 requires the People & Work Context Spec;
+- Wave 3 requires the Attendance & Leave Spec;
+- Wave 4 requires the Employee Finance & Payroll Spec;
+- Wave 5 requires the Attendance Channel Spec.
+
+A later Spec may be authored while an earlier independent Wave is implemented, but its Product Code cannot start from a merely `Proposed` Spec.
+
+The umbrella Phase 0D is fully complete only when all implementation-ready V1 Product Specs required by this roadmap have passed their respective freeze gates.
 
 ---
 
 ## Wave 1 — Platform Spine
 
-**Goal:** establish the smallest safe, domain-neutral SaaS foundation on which HR can run.
+**Goal:** establish the smallest safe, domain-neutral SaaS foundation on which HR and future Business Domains can run.
 
 ### Capabilities
 
 - PLT-001 Tenant/customer account.
-- PLT-002 Employer/legal entity.
+- PLT-002 Legal Entity identity/lifecycle foundation.
 - PLT-003 Sites/branches.
 - PLT-004 Authentication.
 - PLT-005 Membership + explicit tenant context.
@@ -98,13 +108,14 @@ Implementation may begin only when:
 - PLT-007 Entitlements + limits + contract-specific overrides.
 - PLT-008 Minimum Tech Edge control plane.
 - PLT-009 Sensitive-operation audit foundation.
-- PLT-010 Minimum versioned configuration primitives required by downstream specs.
+- PLT-010 Minimum shared temporal/versioning contract required by downstream specs; no generic business-rules/configuration engine.
 
 ### Intentionally not included
 
 - self-service billing/payment gateway;
 - public signup funnel;
 - generic workflow engine;
+- generic rules/configuration engine;
 - broad notifications platform;
 - generic API product;
 - future business-domain tables.
@@ -112,28 +123,41 @@ Implementation may begin only when:
 ### Wave 1 critical invariants
 
 - no tenant-owned record can be read/written cross-tenant through supported access paths;
-- a user with multiple memberships must operate under explicit tenant context;
+- no tenant-owned relationship can persist a cross-tenant foreign reference through a supported write path;
+- a user with multiple memberships must operate under explicit validated tenant context;
 - UI visibility is not authorization;
+- direct database/Data API mutations are allowed only where complete authoritative tenant + permission + entitlement + lifecycle enforcement exists; otherwise the operation uses a narrow command/RPC boundary;
 - entitlement denial and permission denial are distinguishable concerns;
 - disabling an entitlement cannot delete tenant data;
 - no role or permission system is duplicated at the site/branch layer;
+- default role-template changes cannot silently rewrite existing tenant authority;
+- an operational tenant cannot be left without a recoverable protected administrator;
+- Platform Operator authority is separate from tenant roles and infrastructure bypass credentials;
+- mandatory sensitive audit is append-only to normal runtime application/operator authority and remains atomic with protected success transitions where required;
 - privileged helpers are narrowly scoped and security-reviewed;
-- tenant/membership/entitlement lifecycle operations never leave invisible or ownerless in-flight states.
+- tenant/membership/entitlement lifecycle operations never leave invisible or ownerless in-flight states;
+- Platform Legal Entity remains domain-neutral; HR/Payroll decides when that identity acts as an Employer for a domain relationship;
+- PLT-010 does not become the owner of HR/Payroll or future-domain business rules.
 
 ### Required qualification evidence
 
 - clean database/environment bootstrap;
 - positive + negative tenant-isolation tests;
+- negative same-tenant referential-integrity tests using valid identifiers from another Tenant;
 - multi-membership tenant-switch tests;
-- authorization negative tests;
+- authorization negative tests including direct-access bypass attempts;
+- authoritative access-matrix qualification for direct read/direct mutation/command/operator/system paths;
 - entitlement enable/disable/override/limit tests;
-- platform-operator versus tenant-user boundary tests;
-- lifecycle completion/recovery tests for tenant, membership, and entitlement changes;
+- protected last-administrator/self-demotion/removal tests;
+- role-template non-silent-change tests;
+- Platform Operator versus tenant-user boundary tests;
+- mandatory-audit atomicity and append-only runtime tests;
+- lifecycle completion/recovery tests for tenant, invitation, membership, operator, and entitlement changes;
 - migration/config reproducibility.
 
 ### Wave 1 exit
 
-A tenant can be onboarded safely and receive a bounded set of purchased capabilities, with explicit suspend/reactivate/recovery and entitlement-continuity behavior, but no claim is made yet that the HR product is commercially complete.
+A tenant can be onboarded safely and receive a bounded set of purchased capabilities under an explicit, testable authority model, with recoverable administrator ownership, same-tenant data integrity, explicit suspend/reactivate/recovery, and entitlement-continuity behavior. No claim is made yet that the HR product is commercially complete.
 
 ---
 
@@ -428,4 +452,4 @@ Do not weaken a failed gate to preserve schedule. Correct the implementation or 
 
 ## Next planning action after Phase 0C approval
 
-Proceed to **Phase 0D — Implementation-Ready Specs & ADRs**, starting with the Platform Foundation Specification because Wave 1 blocks every tenant-owned business domain.
+Proceed to **Phase 0D — Implementation-Ready Specs & ADRs**, starting with the Platform Foundation Specification because Wave 1 blocks every tenant-owned Business Domain.
