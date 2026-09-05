@@ -4,7 +4,7 @@
 
 **Accepted corrective pre-merge amendment.**
 
-This amendment closes the remaining material ambiguities identified by the independent pre-merge review of PR #4 at reviewed HEAD `ad7b9d891445efc2cd6f95aa40df79b5ffd30796`.
+This amendment closes the remaining material ambiguities identified by the independent pre-merge review of PR #4 at reviewed HEAD `ad7b9d891445efc2cd6f95aa40df79b5ffd30796`, plus the two residual ambiguities found by the focused re-review of hardened HEAD `6a40b1535bbf7515dd7e7d04b4cc42cb1615b1b7`.
 
 It amends, where applicable:
 
@@ -59,28 +59,30 @@ Rules:
 
 ## 2.2 First-operator bootstrap
 
-The first recoverable Platform Operator is established through a **repository-controlled one-time bootstrap/maintenance command**.
+The first **active recoverable Platform Operator manager** is established through a **repository-controlled one-time bootstrap/maintenance command**.
 
 Requirements:
 
 - the command is server/maintenance-only and is not exposed as a normal application endpoint;
 - it uses a deployment-scoped bootstrap/recovery principal or secret stored outside tenant-controlled data;
 - the bootstrap principal is recorded in audit as a distinct actor class such as `platform_bootstrap`; infrastructure credentials may execute the command but are not recorded as the human/product actor;
-- the operation creates the first authenticated Operator grant and mandatory success audit atomically where practical;
+- the bootstrap operation grants the target authenticated principal active Platform Operator authority **including operator-management authority equivalent to `platform.operator.manage`**; creating an ordinary Operator without operator-management authority does not satisfy initial bootstrap;
+- the first Operator-manager grant and its mandatory success audit commit in one protected transaction/consistency boundary, and bootstrap must not report success unless both persist;
 - the bootstrap credential/path is disabled, rotated, or otherwise made non-routine after successful bootstrap.
 
 ## 2.3 Last-operator-manager protection and break-glass recovery
 
 The system must not allow normal Operator grant/revoke operations to remove the final active recoverable Operator with `platform.operator.manage` authority.
 
-A narrow repository-controlled break-glass recovery command may re-establish one Operator manager when no recoverable manager exists or when an explicitly declared emergency requires it.
+A narrow repository-controlled break-glass recovery command may re-establish one **active Operator manager with operator-management authority** when no recoverable manager exists or when an explicitly declared emergency requires it.
 
 The break-glass path:
 
 - is not available to tenant users;
 - is not a normal control-plane UI action;
 - uses separately controlled deployment/recovery authority;
-- records a mandatory audit event with reason and target principal;
+- records an explicit reason and target authenticated principal;
+- creates the recovered Operator-manager authority and mandatory audit in the protected consistency boundary required by ADR-005;
 - does not turn `service_role` into a durable product actor.
 
 No four-eyes approval engine or enterprise IAM subsystem is required in Wave 1.
@@ -140,10 +142,42 @@ The authoritative commercial-access representation is the smallest model needed 
 
 Conceptually these may be represented as `TenantCapabilityGrant` / `TenantCapabilityLimit` or equivalent records. Exact table names are implementation detail.
 
+## 4.1 Effective-time semantics
+
+Every direct entitlement or Limit record uses a half-open effective interval:
+
+`[valid_from, valid_until)`
+
 Rules:
 
+- `valid_until = null` means no scheduled end;
+- when present, `valid_until` must be strictly later than `valid_from`;
+- once `valid_until` is reached, that record is no longer effective at authoritative evaluation time;
+- no manual Tenant-status mutation or background job is required for correctness of expiry.
+
+## 4.2 Deterministic direct-entitlement invariant
+
+For one Tenant + Capability, **at most one direct grant/denial decision may be effective at any instant**.
+
+Therefore:
+
+- grant and denial intervals for the same Tenant + Capability cannot overlap;
+- multiple grants or multiple denials for the same Tenant + Capability cannot overlap;
+- replacement/supersession closes the previous effective interval before the replacement becomes effective;
+- the non-overlap rule is enforced authoritatively by database constraint or an unavoidable protected mutation invariant, not by UI convention;
+- if corrupted/legacy data ever produces multiple effective direct decisions at evaluation time, authoritative evaluation **fails closed as denied**, surfaces an actionable control-plane integrity error, and never uses last-write-wins, row order, insertion time, or another implicit tie-breaker.
+
+For Capability Limits, the same rule applies per Tenant + Capability + Limit key/type:
+
+- at most one Limit record may be effective at any instant for that key;
+- replacement closes/supersedes the prior interval before the replacement becomes effective;
+- if conflicting effective Limits are detected, new growth/consumption governed by that Limit fails closed until the ambiguity is corrected;
+- existing data is preserved and is never deleted or silently reduced merely because the Limit state is ambiguous;
+- the evaluator never chooses a Limit by insertion order, arbitrary timestamp tie-break, or row ordering.
+
+## 4.3 Commercial boundary rules
+
 - direct effective grants/denials and limits are the Wave 1 source of truth for customer product access;
-- an expired `valid_until` means the grant is no longer effective at authoritative evaluation time; no manual Tenant status mutation is required to make the Capability unavailable;
 - Tenant lifecycle state is separate from commercial entitlement state;
 - package/plan composition may be added later as an input to the same effective-entitlement contract, without changing Domain capability keys;
 - negotiated/manual contract information may be stored as a bounded reference/reason, but Wave 1 does not require a full contract/subscription state machine;
@@ -173,10 +207,14 @@ Before PR #4 is merged, the exact candidate revision must confirm:
 - Tenant lifecycle state is present in the ADR-008 authoritative access contract/matrix;
 - suspended/archived tenant-user business access fails closed through direct and command paths;
 - archive/restore/reactivate semantics are explicit and auditable;
-- first Platform Operator bootstrap, operator-management authority, last-manager protection, and break-glass recovery are defined;
+- first bootstrap creates an **active recoverable Operator manager with operator-management authority**, not an ordinary Operator;
+- first Operator-manager bootstrap and break-glass recovery obey ADR-005 mandatory-audit consistency and cannot report success without durable audit;
+- last-Operator-manager protection and break-glass recovery are defined;
 - invite-only email/password, verified-email claim, 7-day expiry, reissue, idempotent acceptance, and Membership reactivation semantics are consistent;
 - Wave 1 commercial access uses direct effective-dated grants/limits rather than an unimplemented Subscription source of truth;
+- entitlement intervals are half-open and conflicting effective direct decisions/limits are prevented authoritatively or fail closed if corrupt state is encountered;
 - PLT-002 and related accepted scope wording are domain-neutral;
+- ADR-008 consistently requires active Membership for tenant-user access paths;
 - no Product Code, migrations, secrets, or production configuration are introduced by these documentation corrections;
 - `main` remains unchanged until the explicit merge decision;
 - review threads are clear and PR metadata names the exact final reviewed HEAD.
