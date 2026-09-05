@@ -35,10 +35,32 @@ A Capability Limit supports the same effective-time/source semantics where usefu
 Rules:
 
 - direct grants/denials and limits are the Wave 1 authoritative source of truth for customer product access;
+- an entitlement/limit record is effective over a half-open interval `[valid_from, valid_until)`; `valid_until = null` means no scheduled end, and when present `valid_until` must be strictly later than `valid_from`;
 - when `valid_until` has passed, the grant is no longer effective at authoritative evaluation time; no hidden manual Tenant-status mutation is required;
 - Tenant lifecycle state remains separate from commercial entitlement state;
 - negotiated/manual contract information may be recorded as a bounded reference/reason without building a Subscription/Contract state machine;
 - Wave 1 does **not** require a Subscription entity, Billing entity, Invoice lifecycle, payment gateway, or generic Commercial Agreement subsystem.
+
+### Deterministic effective-record invariant
+
+For one Tenant + Capability, the authoritative direct-entitlement model permits **at most one effective direct decision record at any instant**.
+
+Therefore:
+
+- a grant and denial for the same Tenant + Capability must not overlap in effective time;
+- two grants or two denials for the same Tenant + Capability must not overlap in effective time;
+- changing a commercial decision closes/supersedes the prior interval before the replacement becomes effective;
+- the database or the single protected mutation path must enforce the non-overlap invariant authoritatively; UI convention is insufficient;
+- if corrupted/legacy data ever causes more than one effective direct decision at evaluation time, the Capability evaluation **fails closed as denied**, surfaces an actionable control-plane integrity error, and never uses last-write-wins, row order, or another implicit tie-breaker.
+
+For Capability Limits, the same rule applies per Tenant + Capability + **Limit key/type**:
+
+- at most one effective Limit record may exist at any instant for the same limit key;
+- replacement closes/supersedes the prior interval before the new Limit becomes effective;
+- if conflicting effective Limit records are detected, operations governed by that Limit fail closed for new growth/consumption until the ambiguity is corrected; existing data is preserved and not deleted or silently reduced;
+- the evaluator never chooses a Limit by insertion order, timestamp tie-break, or arbitrary row ordering.
+
+These are behavioral invariants. The exact PostgreSQL constraint, exclusion mechanism, or transactional implementation is an implementation detail so long as no supported write path can create an overlap.
 
 ### Effective-entitlement precedence
 
@@ -65,6 +87,8 @@ If a lowered limit is below current usage, existing data remains; new growth is 
 ## Consequences
 
 - Wave 1 has one concrete commercial-access source of truth rather than an implied Subscription subsystem;
+- entitlement and Limit evaluation is deterministic and cannot depend on row ordering or last-write-wins behavior;
+- ambiguous/corrupt entitlement state fails closed rather than accidentally granting paid access;
 - package names/prices can change without domain-code branches;
 - negotiated customers can receive controlled direct effective-dated grants and overrides;
 - expiry can be evaluated authoritatively without an operational job being the sole correctness mechanism;
@@ -82,6 +106,14 @@ Rejected because direct effective-dated grants/limits satisfy the current operat
 ### Leave the commercial source of truth undefined between direct grants and subscription state
 
 Rejected because PLT-007/PLT-008 implementation would otherwise invent a material product model.
+
+### Allow overlapping direct decisions and use last-write-wins
+
+Rejected because access to paid Capabilities would depend on storage/update ordering rather than an explicit product rule.
+
+### Resolve conflicting Limits by arbitrary timestamp or row ordering
+
+Rejected because resource enforcement must be deterministic and fail closed under ambiguous state.
 
 ### Hard-code Starter/Pro/Enterprise branches
 
