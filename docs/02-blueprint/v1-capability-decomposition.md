@@ -2,9 +2,9 @@
 
 ## Status
 
-**Accepted — Phase 0C product/release planning baseline. This is not a Frozen implementation specification.**
+**Accepted — Phase 0C product-scope baseline, amended by accepted Phase 0D Platform Foundation decisions through 2026-09-05.**
 
-This document converts the accepted platform/product blueprint into a bounded first commercial release scope. It does not freeze technology choices, database schema, role implementation, payroll formulas, or vendor-specific integration details.
+This document converts the accepted platform/product blueprint into a bounded first commercial release scope. It does not freeze payroll formulas or vendor-specific integration details. Platform Foundation behavior and technology choices are further constrained by the Frozen Platform Foundation Specification and Accepted ADRs.
 
 Baseline used for this decomposition:
 
@@ -12,6 +12,7 @@ Baseline used for this decomposition:
 - Accepted Master Product Blueprint
 - Accepted Product and Architecture Principles
 - Completed `edara-saas` extraction audit
+- Accepted Phase 0D Platform Foundation amendments where they explicitly narrow this baseline
 
 ## Release objective
 
@@ -20,6 +21,8 @@ V1 must complete one commercially coherent job:
 > A company can onboard its workforce, define the minimum work/pay context, capture and review time/leave/employee-finance effects, produce a correct payroll run, review and lock it, then issue payslips/exports — while Tech Edge can operate the tenant, entitlements and access safely.
 
 V1 is not intended to be a full ERP, a full talent suite, a generic workflow platform, or a self-service SaaS billing product.
+
+Every V1 capability must also comply with `DEC-016`: a supported workflow cannot create an operational dead end. Deferred sophistication must end in an explicit safe status, correction/closure path, reconciliation path, operator action, export, or external handoff. Post-launch depth is tracked in `post-v1-operational-completion-roadmap.md`.
 
 ## Scope classes
 
@@ -34,29 +37,29 @@ V1 is not intended to be a full ERP, a full talent suite, a generic workflow pla
 
 | ID | Capability | Scope | Commercial entitlement | Depends on | Authoritative owner | V1 boundary |
 |---|---|---|---|---|---|---|
-| PLT-001 | Tenant / customer account | Mandatory V1 | Platform Core | — | Platform Core | Tenant is the primary isolation/commercial boundary. |
-| PLT-002 | Employer / legal entity | Mandatory V1 | Platform Core | PLT-001 | Platform Core | Represents the payroll/employment legal boundary. Must not be conflated irreversibly with the tenant. V1 may present a simple one-entity onboarding path while the model allows more than one. |
+| PLT-001 | Tenant / customer account | Mandatory V1 | Platform Core | — | Platform Core | Tenant is the primary isolation/commercial boundary. Lifecycle state is an authoritative access gate, not a UI flag. |
+| PLT-002 | Legal Entity identity/lifecycle foundation | Mandatory V1 | Platform Core | PLT-001 | Platform Core | Domain-neutral legal/business identity inside a Tenant. V1 may create one default Legal Entity for simple customers while allowing more than one. HR/Payroll owns Employer semantics and payroll/statutory attributes that reference it. |
 | PLT-003 | Sites / branches | Mandatory V1 | Platform Core; limits may vary | PLT-001, PLT-002 | Platform Core | Domain-neutral physical/operating locations. One-site tenants remain simple. |
-| PLT-004 | Authentication | Mandatory V1 | Platform Core | — | Platform Core | Human login identity only; an employee does not require a user account. |
-| PLT-005 | Membership and explicit tenant context | Mandatory V1 | Platform Core | PLT-001, PLT-004 | Platform Core | Users may belong to more than one tenant. No implicit `first tenant` or hidden `LIMIT 1` authority. |
-| PLT-006 | Authorization foundation | Mandatory V1 | Platform Core | PLT-005 | Platform Core | Server-authoritative permissions. Entitlements and permissions remain separate concerns. |
-| PLT-007 | Capability catalog, entitlements and limits | Mandatory V1 | Platform Core | PLT-001 | Platform Core | Stable capability keys + tenant/subscription assignment + optional limits. Package names/prices are not product logic. |
-| PLT-008 | Tech Edge control plane | Mandatory V1 | Internal Platform Ops | PLT-001, PLT-007 | Platform Core | Create/onboard tenant, assign capabilities/limits, inspect status, suspend/reactivate access. No large self-service billing requirement. |
-| PLT-009 | Sensitive-operation audit foundation | Mandatory V1 | Platform Core | PLT-004, PLT-005 | Platform Core | Targeted audit events for sensitive actions. No indiscriminate full-row sensitive snapshots. |
-| PLT-010 | Versioned configuration foundation | Foundation-only | Platform Core | PLT-001 | Platform Core | Minimum primitives for effective-dated/versioned policy where historical correctness requires it. Not a generic rule engine. |
+| PLT-004 | Authentication | Mandatory V1 | Platform Core | — | Platform Core | Invite-only verified email/password identity in Wave 1. Public self-signup is disabled. Authentication alone never grants Tenant authority; an Employee does not require a User account. |
+| PLT-005 | Membership and explicit tenant context | Mandatory V1 | Platform Core | PLT-001, PLT-004 | Platform Core | Users may belong to more than one Tenant. One persistent User+Tenant Membership relationship uses explicit active/inactive access state. No implicit `first tenant` or hidden `LIMIT 1` authority. |
+| PLT-006 | Authorization foundation | Mandatory V1 | Platform Core | PLT-005 | Platform Core | Server/data-authoritative permissions. Entitlements, Tenant lifecycle, and permissions remain separate required concerns. |
+| PLT-007 | Capability catalog, entitlements and limits | Mandatory V1 | Platform Core | PLT-001 | Platform Core | Stable capability keys + direct effective-dated tenant grants/denials + optional effective-dated limits. Plans/subscriptions may later compose into the same entitlement contract but are not a Wave 1 source-of-truth requirement. |
+| PLT-008 | Tech Edge control plane | Mandatory V1 | Internal Platform Ops | PLT-001, PLT-007 | Platform Core | Create/onboard Tenant, manage direct capability grants/limits, inspect status, and perform explicit suspend/reactivate/archive/restore operations. No large self-service billing requirement. |
+| PLT-009 | Sensitive-operation audit foundation | Mandatory V1 | Platform Core | PLT-004, PLT-005 | Platform Core | Targeted append-only audit events for sensitive actions. No indiscriminate full-row sensitive snapshots. |
+| PLT-010 | Shared temporal/versioning contract | Foundation-only | Platform Core | PLT-001 | Platform Core | Minimum shared effective-date/version-reference conventions where historical correctness requires them. Actual HR/Payroll business rules stay in the owning Domain. Not a generic rule/config engine. |
 | PLT-011 | Files/storage foundation | Foundation-only | Platform Core | PLT-001 | Platform Core | Only what V1 imports/exports/payslips/evidence require. No generic document-management suite. |
 | PLT-012 | Integration boundary + import/export foundation | Mandatory V1 | Platform Core; advanced API access later | PLT-001 | Platform Core / Integration boundary | Adapters and import/export contracts. Business rules remain in owning domains. |
 | PLT-013 | Persistent notification/inbox platform | Deferred | Later | — | Platform Core | Domain feedback/status can exist without building a universal inbox in V1. |
-| PLT-014 | Self-service SaaS billing, payment gateway, coupons | Deferred | Later | PLT-007, PLT-008 | Platform Commercial Ops | Commercial contracts can be managed operationally while the product enforces entitlements. |
+| PLT-014 | Self-service SaaS billing, payment gateway, coupons | Deferred | Later | PLT-007, PLT-008 | Platform Commercial Ops | Commercial agreements can be managed operationally outside a billing subsystem while Wave 1 enforces direct effective-dated grants/limits with bounded commercial references. |
 | PLT-015 | Public API/webhook product entitlement | Deferred | `platform.integrations.api` | PLT-012 | Platform Core | Integration seams are designed now; broad customer-facing API product comes after concrete use cases. |
 
 ### HR — People
 
 | ID | Capability | Scope | Entitlement | Depends on | Authoritative owner | V1 boundary |
 |---|---|---|---|---|---|---|
-| HRP-001 | Employee Core | Mandatory V1 | `hr.people` | PLT-001, PLT-002 | HR / People | Employee identity, status and employment relationship. No login requirement. |
+| HRP-001 | Employee Core | Mandatory V1 | `hr.people` | PLT-001, PLT-002 | HR / People | Employee/workforce identity and lifecycle. Employment/Employer semantics are owned by HR and reference the shared Legal Entity. No login requirement. |
 | HRP-002 | Departments / jobs / reporting context | Mandatory V1 | `hr.people` | HRP-001, PLT-003 | HR / People | Bounded organization context required for HR operations; not a universal organization-graph engine. |
-| HRP-003 | Employment and compensation facts | Mandatory V1 | `hr.people` | HRP-001 | HR / People | Start/end status, pay basis, base compensation and payroll-relevant employment facts. Exact supported pay bases are frozen later in Payroll Specs. |
+| HRP-003 | Employment and compensation facts | Mandatory V1 | `hr.people` | HRP-001 | HR / People | Employment relationship, legal Employer reference, start/end status, pay basis, base compensation and payroll-relevant employment facts. Exact supported pay bases are frozen later in Payroll Specs. |
 | HRP-004 | Employee ↔ user account link | Foundation-only | Platform Core / target feature | HRP-001, PLT-004 | HR / People + Platform identity link | Optional per employee. Required only for user-facing employee channels such as mobile attendance. |
 | HRP-005 | Workforce bulk import | Mandatory V1 | `hr.people` | HRP-001 | HR / People | Safe onboarding import with validation/reject reporting. No hidden direct DB load. |
 
@@ -135,10 +138,11 @@ Platform Tenant
   -> Entitlements
 
 Tenant
-  -> Employer Legal Entity
+  -> Legal Entity
   -> Sites
 
 HR People
+  -> Employment / Employer relationship referencing Legal Entity
   -> Attendance
   -> Leave
   -> Employee Finance
@@ -146,7 +150,7 @@ HR People
   -> Contracts [later]
 
 Payroll
-  -> People + Compensation + Payroll Configuration
+  -> People + Employment/Compensation + Payroll Configuration
   <- approved inputs from Attendance [when enabled]
   <- approved inputs from Leave [when enabled]
   <- approved inputs from Employee Finance [when enabled]
@@ -162,18 +166,23 @@ Payroll
 - Mobile Attendance must not require Biometric attendance.
 - An Employee must not require a User account.
 - A disabled optional capability must not make historical finalized payroll unreproducible.
+- Platform Legal Entity identity must not depend on HR/Payroll being enabled.
+- Wave 1 commercial entitlement truth must not depend on a Subscription/Billing subsystem.
 
 ## Entitlement behavior
 
 V1 entitlement evaluation must follow these principles:
 
 1. Entitlement is enforced at an authoritative server/data boundary, not only in navigation.
-2. UI for a disabled optional capability should disappear or become structurally unavailable; do not show dead controls as the default UX.
-3. Capability dependency validation prevents impossible configurations.
-4. Capability removal/suspension must never automatically delete customer data.
-5. Historical financial/compliance records remain preserved. Read/export behavior after entitlement loss is specified per sensitive capability rather than handled by destructive deletion.
-6. Limits are explicit values such as employee/site/device limits, not package-name conditionals.
-7. Subscription-specific overrides are supported conceptually because commercial contracts may not map cleanly to fixed public packages.
+2. Tenant lifecycle/access state is checked independently; a valid Entitlement cannot reopen a suspended/archived Tenant.
+3. UI for a disabled optional capability should disappear or become structurally unavailable; do not show dead controls as the default UX.
+4. Capability dependency validation prevents impossible configurations.
+5. Capability removal/suspension/expiry must never automatically delete customer data.
+6. Historical financial/compliance records remain preserved. Read/export behavior after entitlement loss is specified per sensitive capability rather than handled by destructive deletion.
+7. Limits are explicit values such as employee/site/device limits, not package-name conditionals.
+8. **Direct effective-dated Tenant Capability grants/denials and Limits are the Wave 1 commercial-access source of truth.** Plans/bundles/subscriptions may later compose into the same evaluation contract but are not required to make Wave 1 coherent.
+9. An optional `valid_until` ends a grant authoritatively at evaluation time without requiring Tenant suspension.
+10. In-flight records affected by entitlement/limit changes require an explicit continuation, read-only, correction, export, or closure rule; they must not become hidden stranded state.
 
 ## V1 commercial-control boundary
 
@@ -181,15 +190,19 @@ V1 needs a **Control Plane**, not a full billing company inside the product.
 
 Tech Edge must be able to:
 
-- onboard a tenant;
-- establish its employer/legal entity and sites;
-- assign HR capabilities and limits;
-- record subscription/contract access state;
-- suspend/reactivate access safely;
-- inspect core tenant status;
-- preserve an audit trail of sensitive platform operations.
+- onboard a Tenant;
+- establish its initial Legal Entity and Sites;
+- assign effective-dated Capability grants/denials and Limits;
+- record a bounded commercial/source reference and reason where needed;
+- inspect effective Entitlement state and validity;
+- suspend/reactivate Tenant access safely;
+- archive and explicitly restore a Tenant through governed recovery;
+- inspect core Tenant status;
+- preserve an audit trail of sensitive Platform operations.
 
-V1 does **not** require:
+V1 deliberately does **not** require a Subscription/Commercial Agreement entity as product authority. Manual selling/contract administration may occur operationally outside the product while the Platform stores the direct effective-dated grants/limits that determine product access.
+
+V1 also does **not** require:
 
 - public self-signup;
 - automatic card charging;
@@ -199,28 +212,29 @@ V1 does **not** require:
 - partner commission accounting;
 - a general commercial CRM.
 
-These can be added when real volume justifies them without changing the entitlement architecture.
+These can be added when real volume justifies them without changing the entitlement architecture. Until then, the Tech Edge control plane and direct grants/limits are the explicit operational boundary for commercial product access.
 
 ## Personas for V1 acceptance
 
 These are acceptance personas, not a frozen universal role enum.
 
-- **Tech Edge Platform Operator** — operates tenants, subscription state and entitlements.
-- **Tenant Owner / Admin** — administers company HR access and core settings.
-- **HR Officer** — manages people, attendance, leave and employee-finance records.
-- **Payroll Officer** — prepares/reviews payroll and payroll outputs.
-- **Manager / Supervisor** — performs only the bounded review/approval actions granted to that user.
+- **Tech Edge Platform Operator** — operates Tenants, direct commercial access grants/limits, lifecycle/recovery, and Platform authority according to separately governed Operator permissions.
+- **Tenant Owner / Admin** — administers company access and core settings within the Tenant authority boundary.
+- **HR Officer** — manages people, attendance, leave and employee-finance records where entitled/permitted.
+- **Payroll Officer** — prepares/reviews payroll and payroll outputs where entitled/permitted.
+- **Manager / Supervisor** — performs only the bounded review/approval actions granted to that User.
 - **Employee** — no account required by default; account is required only for enabled employee-facing channels such as mobile attendance.
 
-Exact permission keys, default role templates and escalation rules are frozen in an Authorization Specification before implementation.
+Platform Operator bootstrap/root-of-trust and Platform role-template semantics are frozen by ADR-004 and the Platform Foundation amendments. Domain-specific HR permission/role behavior is frozen in the owning Domain Specs before those waves begin.
 
 ## Data authority map
 
 | Data / outcome | Authoritative owner |
 |---|---|
-| Tenant, membership, entitlement, permission assignment | Platform Core |
-| Employer/legal entity and site identity | Platform Core |
-| Employee/employment/compensation facts | HR / People |
+| Tenant, Membership, entitlement grants/limits, permission assignment | Platform Core |
+| Platform Operator grants / operator-management authority | Platform Core, separate Platform trust boundary |
+| Legal Entity and Site identity/lifecycle | Platform Core |
+| Employee/employment/Employer-reference/compensation facts | HR / People |
 | Raw and normalized attendance events | HR / Time |
 | Attendance interpretation/exceptions/overtime facts | HR / Time |
 | Leave records/balances | HR / Leave |
@@ -250,11 +264,14 @@ The following are deliberately out of scope for V1 even if technically useful la
 - native iOS/Android applications;
 - broad customer-facing API/webhook platform;
 - self-service SaaS billing/payment/coupon engine;
+- **full Subscription/Billing/Commercial Agreement product subsystem**;
 - advanced BI/AI workforce analytics.
+
+An exclusion is not permission to leave an active V1 workflow unfinished. When an excluded capability would normally continue the process, the owning V1 Spec must define the explicit handoff/terminal boundary.
 
 ## Decisions intentionally left for formal capability Specs
 
-Phase 0C defines product capability boundaries. The following must be frozen before their implementation begins:
+Phase 0C defines product capability boundaries, amended by the Frozen Phase 0D Platform Foundation. The following domain-specific decisions must be frozen before their implementation begins:
 
 - exact supported pay bases and payroll component formulas;
 - Egypt statutory calculation details and effective-date mechanics;
@@ -263,9 +280,10 @@ Phase 0C defines product capability boundaries. The following must be frozen bef
 - overtime policy variants;
 - penalty/reward semantics and approval requirements;
 - advance installment edge cases;
-- exact authorization matrix/default role templates;
+- HR-domain permission mappings/default role templates beyond the accepted Platform Foundation roles;
 - exact biometric vendor/protocol selected for first adapter;
-- mobile geofence radius, spoofing/risk handling, offline behavior and privacy UX;
-- exact technology stack, persistence schema and deployment topology.
+- mobile geofence radius, spoofing/risk handling, offline behavior and privacy UX.
 
-These are not permission for Codex to invent behavior. They are explicit Phase 0D specification inputs.
+Platform Foundation implementation details that remain intentionally non-material include physical table/schema names, exact indexes, and the concrete choice among implementation mechanisms expressly allowed by the Accepted ADRs. They are not permission for Codex to invent product behavior.
+
+Every formal capability Spec must also include its Workflow Completion Map: entry, intermediate state ownership, final states, rejection/cancellation where relevant, correction/reversal/reopen paths, reconciliation/external handoff, behavior when entitlement/permission changes affect in-flight work, historical visibility, and post-V1 operational depth deliberately deferred.

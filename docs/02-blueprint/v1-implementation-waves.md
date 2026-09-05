@@ -2,11 +2,13 @@
 
 ## Status
 
-**Accepted — Phase 0C execution-planning baseline. This is not permission to implement unresolved behavior without Frozen Specs.**
+**Accepted — Phase 0C execution-planning baseline, amended by Phase 0D freeze and pre-merge hardening reviews on 2026-09-05.**
 
-This roadmap translates the V1 capability decomposition into implementation waves while preserving the repository's Definition of Ready/Done and Complexity Budget.
+This roadmap translates the V1 capability decomposition into implementation waves while preserving the repository's Definition of Ready/Done, Complexity Budget, and `DEC-016` No Dead-End Workflows rule.
 
 The waves are dependency-driven. They are not permission to implement unresolved product rules inside code.
+
+A wave may be deliberately small, but each capability slice must reach a supported operational end state or an explicit governed handoff. Post-launch depth is tracked in `post-v1-operational-completion-roadmap.md` rather than left as undocumented incompleteness.
 
 ## Guiding rule
 
@@ -65,41 +67,56 @@ Required outputs:
    - deployment/environment strategy;
    - testing and migration execution baseline.
 
-### Phase 0D exit gate
+Every implementation-ready Product Spec produced in Phase 0D must include a Workflow Completion Map covering entry, intermediate ownership, terminal states, rejection/cancellation where applicable, correction/reversal/reopen behavior, reconciliation/external handoffs, entitlement/permission changes affecting in-flight work, historical visibility, and deliberately deferred post-V1 maturity items.
 
-Implementation may begin only when:
+### Staged Phase 0D freeze gate
 
-- no material V1 behavior is left for Codex to invent;
-- core state machines/invariants are explicit;
-- authorization and tenant-isolation expectations are testable;
-- payroll/financial correction and historical-reproducibility rules are explicit;
-- first attendance integration scope is bounded;
-- governing specs required by the first implementation wave are **Frozen**.
+Phase 0D uses dependency-driven staged freezes rather than one all-or-nothing coding gate.
+
+Wave 1 — Platform Spine may begin only when:
+
+- the Platform Foundation Specification is **Frozen** and all accepted Foundation amendments are incorporated or explicitly governing;
+- ADR-001 through ADR-010 are **Accepted** as one coherent implementation set;
+- no material Platform Foundation behavior is left for Codex to invent;
+- tenant isolation, Tenant lifecycle access, authoritative data access, Membership/authorization, entitlements, Platform Operator root-of-trust, audit, and lifecycle completion are testable and unambiguous.
+
+Later Business Domain waves remain blocked until their own governing Product Specs are **Frozen**. In particular:
+
+- Wave 2 requires the People & Work Context Spec;
+- Wave 3 requires the Attendance & Leave Spec;
+- Wave 4 requires the Employee Finance & Payroll Spec;
+- Wave 5 requires the Attendance Channel Spec.
+
+A later Spec may be authored while an earlier independent Wave is implemented, but its Product Code cannot start from a merely `Proposed` Spec.
+
+The umbrella Phase 0D is fully complete only when all implementation-ready V1 Product Specs required by this roadmap have passed their respective freeze gates.
 
 ---
 
 ## Wave 1 — Platform Spine
 
-**Goal:** establish the smallest safe, domain-neutral SaaS foundation on which HR can run.
+**Goal:** establish the smallest safe, domain-neutral SaaS foundation on which HR and future Business Domains can run.
 
 ### Capabilities
 
-- PLT-001 Tenant/customer account.
-- PLT-002 Employer/legal entity.
+- PLT-001 Tenant/customer account with authoritative `active` / `suspended` / `archived` lifecycle access semantics.
+- PLT-002 Legal Entity identity/lifecycle foundation.
 - PLT-003 Sites/branches.
-- PLT-004 Authentication.
-- PLT-005 Membership + explicit tenant context.
+- PLT-004 Invite-only verified email/password Authentication; public self-signup disabled.
+- PLT-005 Membership + explicit tenant context + bounded invitation lifecycle.
 - PLT-006 Authorization foundation.
-- PLT-007 Entitlements + limits + contract-specific overrides.
-- PLT-008 Minimum Tech Edge control plane.
+- PLT-007 Direct effective-dated tenant Capability grants/denials + Limits as Wave 1 commercial-access truth; future plan/subscription composition remains deferred.
+- PLT-008 Minimum Tech Edge control plane including suspend/reactivate/archive/restore and bounded commercial-access management.
 - PLT-009 Sensitive-operation audit foundation.
-- PLT-010 Minimum versioned configuration primitives required by downstream specs.
+- PLT-010 Minimum shared temporal/versioning contract required by downstream specs; no generic business-rules/configuration engine.
 
 ### Intentionally not included
 
+- Subscription/Billing/Invoice/Commercial Agreement subsystem;
 - self-service billing/payment gateway;
 - public signup funnel;
 - generic workflow engine;
+- generic rules/configuration engine;
 - broad notifications platform;
 - generic API product;
 - future business-domain tables.
@@ -107,26 +124,55 @@ Implementation may begin only when:
 ### Wave 1 critical invariants
 
 - no tenant-owned record can be read/written cross-tenant through supported access paths;
-- a user with multiple memberships must operate under explicit tenant context;
+- no tenant-owned relationship can persist a cross-tenant foreign reference through a supported write path;
+- a User with multiple Memberships must operate under explicit validated Tenant context;
+- **Tenant lifecycle state is an independent authoritative access gate**: suspended/archived Tenant business access cannot be reopened by valid Membership, Permission, or Entitlement;
+- normal tenant-user business read/write/search/export is denied for `suspended`; only a minimal non-sensitive status/support surface may remain;
+- tenant-user tenant-owned access is denied for `archived`; restore is an explicit Platform Operator recovery action to `suspended`, followed by separate reactivation to `active`;
 - UI visibility is not authorization;
+- direct database/Data API mutations are allowed only where complete authoritative Tenant state + tenant scope + Permission + Entitlement + lifecycle enforcement exists; otherwise the operation uses a narrow command/RPC boundary;
 - entitlement denial and permission denial are distinguishable concerns;
-- disabling an entitlement cannot delete tenant data;
+- direct effective-dated Capability grants/denials and Limits are the Wave 1 commercial source of truth; expiry is authoritative at evaluation time;
+- disabling/expiring an Entitlement cannot delete tenant data;
 - no role or permission system is duplicated at the site/branch layer;
-- privileged helpers are narrowly scoped and security-reviewed.
+- default role-template changes cannot silently rewrite existing tenant authority;
+- an operational Tenant cannot be left without a recoverable protected Tenant administrator;
+- invite acceptance is verified-email-bound and idempotent; invitation reissue cannot leave two claimable active tokens for the same Tenant + target email;
+- one persistent Membership identity per User + Tenant is preserved; access removal becomes inactive/revoked history rather than destructive deletion;
+- Platform Operator authority is separate from tenant roles and infrastructure bypass credentials;
+- first Platform Operator bootstrap and emergency Operator-manager recovery use repository-controlled maintenance boundaries and never treat `service_role` as the product actor;
+- normal Operator management cannot remove the final recoverable Operator manager;
+- mandatory sensitive audit is append-only to normal runtime application/operator authority and remains atomic with protected success transitions where required;
+- privileged helpers are narrowly scoped and security-reviewed;
+- tenant/invitation/membership/operator/entitlement lifecycle operations never leave invisible or ownerless in-flight states;
+- Platform Legal Entity remains domain-neutral; HR/Payroll decides when that identity acts as an Employer for a domain relationship;
+- PLT-010 does not become the owner of HR/Payroll or future-domain business rules.
 
 ### Required qualification evidence
 
 - clean database/environment bootstrap;
 - positive + negative tenant-isolation tests;
+- negative same-tenant referential-integrity tests using valid identifiers from another Tenant;
 - multi-membership tenant-switch tests;
-- authorization negative tests;
-- entitlement enable/disable/override/limit tests;
-- platform-operator versus tenant-user boundary tests;
+- authorization negative tests including direct-access bypass attempts;
+- authoritative access-matrix qualification for direct read/direct mutation/command/operator/system paths;
+- Tenant lifecycle access tests proving valid Membership/Permission/Entitlement cannot read/write/export normal business data while suspended/archived;
+- archive -> suspended restore and separate suspended -> active reactivation tests;
+- invitation tests for verified-email claim, 7-day expiry, reissue revocation, replay/idempotent acceptance, and duplicate-Membership prevention;
+- Membership inactive/reactivation tests proving prior roles are not silently restored;
+- direct entitlement enable/deny/expiry/override/limit tests;
+- protected last-Tenant-administrator/self-demotion/removal tests;
+- role-template non-silent-change tests;
+- first Platform Operator bootstrap test using the repository-controlled maintenance path;
+- last Operator-manager protection + break-glass recovery qualification;
+- Platform Operator versus tenant-user boundary tests;
+- mandatory-audit atomicity and append-only runtime tests;
+- lifecycle completion/recovery tests for Tenant, invitation, Membership, Operator, and Entitlement changes;
 - migration/config reproducibility.
 
 ### Wave 1 exit
 
-A tenant can be onboarded safely and receive a bounded set of purchased capabilities, but no claim is made yet that the HR product is commercially complete.
+A Tenant can be onboarded safely and receive a bounded set of effective-dated purchased Capabilities under one explicit, testable authority model, with recoverable Tenant and Platform ownership, same-Tenant data integrity, explicit suspend/reactivate/archive/restore semantics, invite/Membership recovery, and non-destructive entitlement continuity. No claim is made yet that the HR product is commercially complete.
 
 ---
 
@@ -138,7 +184,7 @@ A tenant can be onboarded safely and receive a bounded set of purchased capabili
 
 - HRP-001 Employee Core.
 - HRP-002 Departments/jobs/reporting context.
-- HRP-003 Employment and compensation facts.
+- HRP-003 Employment and compensation facts, including Employer relationship referencing Platform Legal Entity.
 - HRP-004 Optional employee-user linkage foundation.
 - HRP-005 Workforce bulk import.
 - HRT-001 Work policies and shifts.
@@ -146,10 +192,11 @@ A tenant can be onboarded safely and receive a bounded set of purchased capabili
 ### Critical invariants
 
 - employee can exist without `auth/user` identity;
-- employee belongs to the correct tenant/legal employer boundary;
+- employee/employment belongs to the correct Tenant and HR-owned Employer relationship referencing the correct Platform Legal Entity;
 - historical employment/pay facts required by finalized payroll cannot be silently rewritten;
 - imports are validated and fail visibly rather than partially mutating silently;
-- organization/site entities remain Platform-owned, while employee/job/work rules remain HR-owned.
+- employee lifecycle includes defined active/inactive/end/correction behavior under the People Spec;
+- Legal Entity/Site identities remain Platform-owned, while Employer/employment/job/work rules remain HR-owned.
 
 ### Qualification evidence
 
@@ -161,7 +208,7 @@ A tenant can be onboarded safely and receive a bounded set of purchased capabili
 
 ### Wave 2 exit
 
-An HR operator can onboard and structure a workforce with sufficient employment and work-policy context for downstream time/payroll processing.
+An HR operator can onboard and structure a workforce with sufficient employment and work-policy context for downstream time/payroll processing, and employees can leave the active lifecycle without requiring deferred Contracts/Documents/ESS capabilities.
 
 ---
 
@@ -187,8 +234,10 @@ An HR operator can onboard and structure a workforce with sufficient employment 
 - source event, interpreted fact and payroll financial effect are distinct records/concepts;
 - raw attendance never silently creates an irreversible deduction;
 - missing/duplicate/replayed source events are handled deterministically;
+- unresolved attendance remains visible/actionable rather than disappearing into an undefined state;
 - correction preserves provenance/auditability;
 - leave and attendance can operate independently where logically valid;
+- leave requests have defined terminal/actionable states rather than remaining indefinitely submitted;
 - simple approval behavior remains domain-bounded, not a hidden generic workflow engine.
 
 ### Qualification evidence
@@ -197,13 +246,14 @@ An HR operator can onboard and structure a workforce with sufficient employment 
 - duplicate/idempotency/replay tests;
 - attendance-policy edge cases defined by Specs;
 - missing-punch and correction regression tests;
-- leave balance/approval tests;
+- unresolved-exception visibility/ownership tests;
+- leave balance/approval/cancel-reject lifecycle tests as defined by Specs;
 - explicit proof that raw attendance cannot directly finalize money impact;
 - representative mobile/desktop operator workflows.
 
 ### Wave 3 exit
 
-The platform can produce trusted, reviewable attendance/leave/overtime facts from manual/imported data and expose approved payroll inputs through the defined boundary.
+The platform can produce trusted, reviewable attendance/leave/overtime facts from manual/imported data, resolve or visibly own exceptions, and expose approved payroll inputs through the defined boundary.
 
 ---
 
@@ -238,24 +288,27 @@ The platform can produce trusted, reviewable attendance/leave/overtime facts fro
 - locked payroll cannot be silently mutated/recalculated;
 - post-lock corrections use explicit adjustment/reversal/amendment semantics;
 - advance balances and installment deductions remain reconcilable;
-- statutory rule versions used by a finalized run are preserved.
+- employee-finance items always have a settlement/reconciliation or explicit external-cash handoff path where applicable;
+- statutory rule versions used by a finalized run are preserved;
+- actual bank payment/accounting execution being outside V1 is represented by explicit export/payment-status handoffs rather than a dead end.
 
 ### Qualification evidence
 
 - deterministic payroll calculation tests;
 - statutory-boundary and effective-date tests;
 - salary component/input combination tests;
-- advance/installment reconciliation tests;
+- advance/installment reconciliation/settlement tests;
 - state-transition authorization tests;
 - lock immutability tests;
 - post-lock correction tests;
 - historical reproduction test after configuration/rule changes;
-- fresh-environment E2E: employee → time/leave/finance inputs → payroll → review → approval → lock → payslip/export;
+- payroll export/payment-status handoff tests;
+- fresh-environment E2E: employee → time/leave/finance inputs → payroll → review → approval → lock → payslip/export/payment status;
 - independently reviewable calculation evidence for representative scenarios.
 
 ### Wave 4 exit
 
-**Commercial Core milestone:** the product can manage a bounded workforce/payroll cycle end to end using manual/spreadsheet attendance input. This is the first point at which controlled pilot selling can begin if the launch customer does not require an unimplemented attendance channel.
+**Commercial Core milestone:** the product can manage a bounded workforce/payroll cycle end to end using manual/spreadsheet attendance input. Payroll and employee-finance processes have explicit completion, correction, reconciliation, and external payment/accounting handoff states. This is the first point at which controlled pilot selling can begin if the launch customer does not require an unimplemented attendance channel.
 
 ---
 
@@ -276,7 +329,8 @@ The platform can produce trusted, reviewable attendance/leave/overtime facts fro
 - no promise of universal device compatibility;
 - connector handles transport/mapping/retry/replay, not payroll rules;
 - normalized attendance contract is unchanged when a new vendor is later added;
-- LAN-only device integration may use a bounded local connector/gateway if the selected hardware requires it.
+- LAN-only device integration may use a bounded local connector/gateway if the selected hardware requires it;
+- connector failures/retries have visible actionable states; source records are not silently lost.
 
 ### Mobile boundaries
 
@@ -284,7 +338,8 @@ The platform can produce trusted, reviewable attendance/leave/overtime facts fro
 - no continuous employee tracking by default;
 - mobile attendance is separately entitled from biometric attendance;
 - mobile punch access requires a linked user account; other employees still do not require login accounts;
-- privacy, permission-denied, location-unavailable, offline and replay behavior must be explicit in the Specs.
+- privacy, permission-denied, location-unavailable, offline and replay behavior must be explicit in the Specs;
+- failed/offline punches have explicit retry/rejection/evidence behavior rather than ambiguous submission state.
 
 ### Qualification evidence
 
@@ -293,12 +348,13 @@ The platform can produce trusted, reviewable attendance/leave/overtime facts fro
 - device/source provenance visible in attendance evidence;
 - geofence inside/outside/boundary tests;
 - permission denied/location unavailable/offline behavior;
+- visible actionable integration failure states;
 - mobile security and tenant/user linkage negative tests;
 - representative real-device and real-mobile acceptance before claiming support.
 
 ### Wave 5 exit
 
-V1 supports both requested attendance-channel families through optional entitlements while preserving a single Attendance Core.
+V1 supports both requested attendance-channel families through optional entitlements while preserving a single Attendance Core, with integration failures becoming actionable/recoverable states rather than lost or stranded events.
 
 ---
 
@@ -309,10 +365,11 @@ V1 supports both requested attendance-channel families through optional entitlem
 ### Required work
 
 - onboarding flow for real tenant setup;
-- safe entitlement/limit operations through Tech Edge control plane;
+- safe direct entitlement/limit operations through Tech Edge control plane;
 - role/permission defaults refined from pilot workflows;
 - operational exports/imports and recovery procedures;
 - core reports/reconciliation views;
+- audit of all primary V1 Workflow Completion Maps for dead ends, ownerless states, and undocumented manual handoffs;
 - Arabic-first UX copy/polish if confirmed by the Product Spec for this product;
 - desktop/laptop and mobile acceptance across all primary workflows;
 - accessibility/keyboard/touch review appropriate to each surface;
@@ -321,13 +378,14 @@ V1 supports both requested attendance-channel families through optional entitlem
 - support diagnostics without exposing sensitive tenant data;
 - fresh-environment migration rehearsal;
 - security/privacy review for employee, payroll, location and biometric-related data;
-- seeded/demo tenant strategy without production data.
+- seeded/demo tenant strategy without production data;
+- post-launch operational-completion backlog linked to `post-v1-operational-completion-roadmap.md` for deliberately deferred maturity work.
 
 ### V1 release qualification
 
 The exact release candidate revision must demonstrate:
 
-1. Tenant onboarding and entitlement assignment.
+1. Tenant onboarding and direct entitlement assignment.
 2. Cross-tenant isolation and authoritative authorization.
 3. Employee onboarding/import without mandatory user accounts.
 4. Work-policy/shift assignment.
@@ -347,13 +405,14 @@ The exact release candidate revision must demonstrate:
 18. Representative desktop/laptop and mobile acceptance.
 19. No committed secrets/sensitive production data.
 20. Governing Specs, ADRs and release scope aligned to the exact candidate.
+21. No primary V1 workflow has an undefined terminal state, ownerless in-flight state, or undocumented downstream/manual handoff.
 
 ## Commercial release boundary
 
 ### In V1
 
 - Platform tenant/membership/isolation/authorization/entitlement spine.
-- Tech Edge manual control plane for customer access/contracts/limits.
+- Tech Edge manual control plane for Tenant lifecycle plus direct effective-dated Capability grants/denials and Limits; bounded commercial references only, no Subscription subsystem.
 - People and workforce import.
 - Work policies/shifts.
 - Attendance core, manual and spreadsheet input.
@@ -370,6 +429,7 @@ The exact release candidate revision must demonstrate:
 
 ### Not in V1
 
+- Subscription/Billing/Invoice/Commercial Agreement product subsystem;
 - self-service billing/payment gateway/coupons;
 - full Contracts/Documents capability;
 - full ESS/MSS portals;
@@ -384,6 +444,8 @@ The exact release candidate revision must demonstrate:
 - advanced analytics/AI;
 - future CRM/Sales/Inventory/Procurement/Finance domains.
 
+Items excluded from V1 must not create invisible holes in V1 workflows. Where the excluded system would normally continue the process, V1 must expose the explicit completion/handoff boundary defined by the owning Spec.
+
 ## Recommended coding sequence inside each wave
 
 Within a wave, prefer thin vertical slices that reach authoritative persistence and tests rather than building all UI first or all database structure first.
@@ -391,10 +453,11 @@ Within a wave, prefer thin vertical slices that reach authoritative persistence 
 Typical slice order:
 
 ```text
-Frozen Spec
+Frozen Spec + Workflow Completion Map
   -> migration / data invariant
   -> authoritative service/RPC/application behavior
   -> authorization/tenant-isolation tests
+  -> lifecycle/end-state/correction-handoff tests
   -> domain tests
   -> UI workflow
   -> desktop/mobile acceptance
@@ -405,4 +468,4 @@ Do not weaken a failed gate to preserve schedule. Correct the implementation or 
 
 ## Next planning action after Phase 0C approval
 
-Proceed to **Phase 0D — Implementation-Ready Specs & ADRs**, starting with the Platform Foundation Specification because Wave 1 blocks every tenant-owned business domain.
+Proceed to **Phase 0D — Implementation-Ready Specs & ADRs**, starting with the Platform Foundation Specification because Wave 1 blocks every tenant-owned Business Domain.

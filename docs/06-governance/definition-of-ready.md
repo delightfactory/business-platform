@@ -9,6 +9,8 @@ A work item is ready for implementation when the team can execute it without inv
 - out-of-scope behavior is stated when ambiguity is likely;
 - relevant domain owner/boundary is known;
 - dependencies are identified;
+- the workflow entry point, supported operational end state(s), and any required handoff/closure path are defined;
+- cancellation/rejection/correction/reversal/reconciliation behavior is defined where material to the workflow;
 - security and tenant-isolation impact is understood;
 - persistent-data impact is understood;
 - data classification/privacy impact is understood where personal, financial, location, biometric-related, or otherwise sensitive data is involved;
@@ -25,6 +27,7 @@ For material frontend/user-facing work, readiness additionally requires:
 - expected desktop/laptop and mobile behavior is defined where layout or interaction differs materially;
 - reusable design-system primitives are identified instead of introducing duplicate base components;
 - loading, empty, validation, failure, success, cancellation, and sensitive-confirmation states are considered where relevant;
+- the user always has a clear next action, terminal state, or explicit external handoff rather than reaching an unexplained dead end;
 - entitlement/permission-disabled behavior is understood;
 - accessibility and touch/keyboard implications are considered where relevant.
 
@@ -39,6 +42,7 @@ Payroll, authorization, tenant isolation, financial state, sensitive-data handli
 - "make payroll flexible" without defined policy boundaries;
 - "support all biometric devices" without an adapter scope;
 - "make workflows configurable" without concrete workflow cases;
+- a process that creates a record but has no defined completion, cancellation, correction, or handoff state;
 - implementing a future domain merely to prepare for possible expansion;
 - starting implementation from a Proposed specification when material behavior is still unresolved;
 - designing a desktop-only workflow and deferring mobile behavior to an unspecified later cleanup when the capability is part of the supported web application.

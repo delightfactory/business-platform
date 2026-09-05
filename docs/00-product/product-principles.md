@@ -49,3 +49,11 @@ Commercial packages may change frequently. Product capabilities therefore map to
 ## 12. Expand by adding domains, not rewriting the platform
 
 Future CRM, Sales, Inventory, Procurement, and Finance capabilities should extend the platform through bounded domains and shared core services.
+
+## 13. No dead-end workflows
+
+A capability is not operationally complete merely because its main create/edit screen works. Every supported workflow must reach a clear, supported operational outcome.
+
+For each material process, specifications must define the relevant completion, rejection/cancellation, correction/reversal, archival/closure, reconciliation, or external-handoff path. If a downstream capability is deliberately deferred, V1 must still provide an explicit safe stopping point or handoff such as an export, status, operator action, or documented external continuation.
+
+Post-launch expansion should deepen operational completeness and automation without requiring the original flow to be abandoned or rebuilt from scratch.
