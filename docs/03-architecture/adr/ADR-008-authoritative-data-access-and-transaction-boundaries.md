@@ -82,7 +82,7 @@ Rules:
 
 A tenant identifier supplied by a client may express the requested tenant context, but it is not trusted as authorization truth.
 
-The authoritative layer validates the concrete Tenant against current application-owned Membership or separately governed Platform Operator state before tenant-owned access proceeds. It also evaluates the current Tenant lifecycle state. Authorization must not rely solely on stale JWT/custom claims, client headers, route parameters, remembered UI state, or a stale cached Tenant status.
+The authoritative layer validates the concrete Tenant against current **active** application-owned Membership or separately governed Platform Operator state before tenant-owned access proceeds. It also evaluates the current Tenant lifecycle state. Authorization must not rely solely on stale JWT/custom claims, client headers, route parameters, remembered UI state, or a stale cached Tenant status.
 
 ## Tenant lifecycle access rule
 
@@ -119,9 +119,9 @@ The following matrix is the Wave 1 default. A governing Product Spec may narrow 
 | Operation family | Allowed access path | Authoritative checks required |
 | --- | --- | --- |
 | Public/non-tenant data intentionally exposed by product | Deliberately exposed read only | Object grant + product-specific visibility rule |
-| Minimal suspended-tenant status/support surface | Deliberately exposed bounded read only | Authenticated principal + validated Tenant + current Membership + Tenant state is `suspended` + explicitly non-sensitive bounded projection; no normal business data |
+| Minimal suspended-tenant status/support surface | Deliberately exposed bounded read only | Authenticated principal + validated Tenant + **active Membership** + Tenant state is `suspended` + explicitly non-sensitive bounded projection; no normal business data |
 | Tenant-scoped normal read | Direct read only where explicitly allowlisted; otherwise protected query boundary | Authenticated principal + validated Tenant + active Membership/Operator authority + **Tenant state permits operation** + row/resource scope + required Permission/Entitlement |
-| Simple tenant-scoped mutation | Direct mutation only where complete DB-authoritative policy is feasible; otherwise command/RPC | Authenticated principal + validated Tenant + Membership + **Tenant state permits operation** + Permission + Entitlement/Limit + row/resource ownership + same-tenant relationship invariants + lifecycle preconditions |
+| Simple tenant-scoped mutation | Direct mutation only where complete DB-authoritative policy is feasible; otherwise command/RPC | Authenticated principal + validated Tenant + **active Membership** + **Tenant state permits operation** + Permission + Entitlement/Limit + row/resource ownership + same-tenant relationship invariants + lifecycle preconditions |
 | Membership / role / permission / entitlement / limit / tenant-lifecycle mutation | Narrow application command / transactional RPC | Explicit authority for protected action + target Tenant + current Tenant state + transition/lifecycle invariants + mandatory audit where classified |
 | Multi-write or mandatory-audit transition | Transactional command/RPC or equally atomic server-side DB transaction | Full operation authority + Tenant state permits operation + all business invariants + atomic mandatory success audit |
 | Platform Operator action against tenant data | Server-only operator command | Valid Platform Operator authority + explicit target Tenant + current Tenant state + state-specific operator capability + audit + preserved tenant/business invariants |
