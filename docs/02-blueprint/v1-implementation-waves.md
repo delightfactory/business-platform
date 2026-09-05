@@ -2,7 +2,7 @@
 
 ## Status
 
-**Accepted — Phase 0C execution-planning baseline, amended by Phase 0D freeze review on 2026-09-05.**
+**Accepted — Phase 0C execution-planning baseline, amended by Phase 0D freeze and pre-merge hardening reviews on 2026-09-05.**
 
 This roadmap translates the V1 capability decomposition into implementation waves while preserving the repository's Definition of Ready/Done, Complexity Budget, and `DEC-016` No Dead-End Workflows rule.
 
@@ -75,10 +75,10 @@ Phase 0D uses dependency-driven staged freezes rather than one all-or-nothing co
 
 Wave 1 — Platform Spine may begin only when:
 
-- the Platform Foundation Specification is **Frozen**;
+- the Platform Foundation Specification is **Frozen** and all accepted Foundation amendments are incorporated or explicitly governing;
 - ADR-001 through ADR-010 are **Accepted** as one coherent implementation set;
 - no material Platform Foundation behavior is left for Codex to invent;
-- tenant isolation, authoritative access, Membership/authorization, entitlements, Platform Operator authority, audit, and lifecycle completion are testable and unambiguous.
+- tenant isolation, Tenant lifecycle access, authoritative data access, Membership/authorization, entitlements, Platform Operator root-of-trust, audit, and lifecycle completion are testable and unambiguous.
 
 Later Business Domain waves remain blocked until their own governing Product Specs are **Frozen**. In particular:
 
@@ -99,19 +99,20 @@ The umbrella Phase 0D is fully complete only when all implementation-ready V1 Pr
 
 ### Capabilities
 
-- PLT-001 Tenant/customer account.
+- PLT-001 Tenant/customer account with authoritative `active` / `suspended` / `archived` lifecycle access semantics.
 - PLT-002 Legal Entity identity/lifecycle foundation.
 - PLT-003 Sites/branches.
-- PLT-004 Authentication.
-- PLT-005 Membership + explicit tenant context.
+- PLT-004 Invite-only verified email/password Authentication; public self-signup disabled.
+- PLT-005 Membership + explicit tenant context + bounded invitation lifecycle.
 - PLT-006 Authorization foundation.
-- PLT-007 Entitlements + limits + contract-specific overrides.
-- PLT-008 Minimum Tech Edge control plane.
+- PLT-007 Direct effective-dated tenant Capability grants/denials + Limits as Wave 1 commercial-access truth; future plan/subscription composition remains deferred.
+- PLT-008 Minimum Tech Edge control plane including suspend/reactivate/archive/restore and bounded commercial-access management.
 - PLT-009 Sensitive-operation audit foundation.
 - PLT-010 Minimum shared temporal/versioning contract required by downstream specs; no generic business-rules/configuration engine.
 
 ### Intentionally not included
 
+- Subscription/Billing/Invoice/Commercial Agreement subsystem;
 - self-service billing/payment gateway;
 - public signup funnel;
 - generic workflow engine;
@@ -124,18 +125,26 @@ The umbrella Phase 0D is fully complete only when all implementation-ready V1 Pr
 
 - no tenant-owned record can be read/written cross-tenant through supported access paths;
 - no tenant-owned relationship can persist a cross-tenant foreign reference through a supported write path;
-- a user with multiple memberships must operate under explicit validated tenant context;
+- a User with multiple Memberships must operate under explicit validated Tenant context;
+- **Tenant lifecycle state is an independent authoritative access gate**: suspended/archived Tenant business access cannot be reopened by valid Membership, Permission, or Entitlement;
+- normal tenant-user business read/write/search/export is denied for `suspended`; only a minimal non-sensitive status/support surface may remain;
+- tenant-user tenant-owned access is denied for `archived`; restore is an explicit Platform Operator recovery action to `suspended`, followed by separate reactivation to `active`;
 - UI visibility is not authorization;
-- direct database/Data API mutations are allowed only where complete authoritative tenant + permission + entitlement + lifecycle enforcement exists; otherwise the operation uses a narrow command/RPC boundary;
+- direct database/Data API mutations are allowed only where complete authoritative Tenant state + tenant scope + Permission + Entitlement + lifecycle enforcement exists; otherwise the operation uses a narrow command/RPC boundary;
 - entitlement denial and permission denial are distinguishable concerns;
-- disabling an entitlement cannot delete tenant data;
+- direct effective-dated Capability grants/denials and Limits are the Wave 1 commercial source of truth; expiry is authoritative at evaluation time;
+- disabling/expiring an Entitlement cannot delete tenant data;
 - no role or permission system is duplicated at the site/branch layer;
 - default role-template changes cannot silently rewrite existing tenant authority;
-- an operational tenant cannot be left without a recoverable protected administrator;
+- an operational Tenant cannot be left without a recoverable protected Tenant administrator;
+- invite acceptance is verified-email-bound and idempotent; invitation reissue cannot leave two claimable active tokens for the same Tenant + target email;
+- one persistent Membership identity per User + Tenant is preserved; access removal becomes inactive/revoked history rather than destructive deletion;
 - Platform Operator authority is separate from tenant roles and infrastructure bypass credentials;
+- first Platform Operator bootstrap and emergency Operator-manager recovery use repository-controlled maintenance boundaries and never treat `service_role` as the product actor;
+- normal Operator management cannot remove the final recoverable Operator manager;
 - mandatory sensitive audit is append-only to normal runtime application/operator authority and remains atomic with protected success transitions where required;
 - privileged helpers are narrowly scoped and security-reviewed;
-- tenant/membership/entitlement lifecycle operations never leave invisible or ownerless in-flight states;
+- tenant/invitation/membership/operator/entitlement lifecycle operations never leave invisible or ownerless in-flight states;
 - Platform Legal Entity remains domain-neutral; HR/Payroll decides when that identity acts as an Employer for a domain relationship;
 - PLT-010 does not become the owner of HR/Payroll or future-domain business rules.
 
@@ -147,17 +156,23 @@ The umbrella Phase 0D is fully complete only when all implementation-ready V1 Pr
 - multi-membership tenant-switch tests;
 - authorization negative tests including direct-access bypass attempts;
 - authoritative access-matrix qualification for direct read/direct mutation/command/operator/system paths;
-- entitlement enable/disable/override/limit tests;
-- protected last-administrator/self-demotion/removal tests;
+- Tenant lifecycle access tests proving valid Membership/Permission/Entitlement cannot read/write/export normal business data while suspended/archived;
+- archive -> suspended restore and separate suspended -> active reactivation tests;
+- invitation tests for verified-email claim, 7-day expiry, reissue revocation, replay/idempotent acceptance, and duplicate-Membership prevention;
+- Membership inactive/reactivation tests proving prior roles are not silently restored;
+- direct entitlement enable/deny/expiry/override/limit tests;
+- protected last-Tenant-administrator/self-demotion/removal tests;
 - role-template non-silent-change tests;
+- first Platform Operator bootstrap test using the repository-controlled maintenance path;
+- last Operator-manager protection + break-glass recovery qualification;
 - Platform Operator versus tenant-user boundary tests;
 - mandatory-audit atomicity and append-only runtime tests;
-- lifecycle completion/recovery tests for tenant, invitation, membership, operator, and entitlement changes;
+- lifecycle completion/recovery tests for Tenant, invitation, Membership, Operator, and Entitlement changes;
 - migration/config reproducibility.
 
 ### Wave 1 exit
 
-A tenant can be onboarded safely and receive a bounded set of purchased capabilities under an explicit, testable authority model, with recoverable administrator ownership, same-tenant data integrity, explicit suspend/reactivate/recovery, and entitlement-continuity behavior. No claim is made yet that the HR product is commercially complete.
+A Tenant can be onboarded safely and receive a bounded set of effective-dated purchased Capabilities under one explicit, testable authority model, with recoverable Tenant and Platform ownership, same-Tenant data integrity, explicit suspend/reactivate/archive/restore semantics, invite/Membership recovery, and non-destructive entitlement continuity. No claim is made yet that the HR product is commercially complete.
 
 ---
 
@@ -169,7 +184,7 @@ A tenant can be onboarded safely and receive a bounded set of purchased capabili
 
 - HRP-001 Employee Core.
 - HRP-002 Departments/jobs/reporting context.
-- HRP-003 Employment and compensation facts.
+- HRP-003 Employment and compensation facts, including Employer relationship referencing Platform Legal Entity.
 - HRP-004 Optional employee-user linkage foundation.
 - HRP-005 Workforce bulk import.
 - HRT-001 Work policies and shifts.
@@ -177,11 +192,11 @@ A tenant can be onboarded safely and receive a bounded set of purchased capabili
 ### Critical invariants
 
 - employee can exist without `auth/user` identity;
-- employee belongs to the correct tenant/legal employer boundary;
+- employee/employment belongs to the correct Tenant and HR-owned Employer relationship referencing the correct Platform Legal Entity;
 - historical employment/pay facts required by finalized payroll cannot be silently rewritten;
 - imports are validated and fail visibly rather than partially mutating silently;
 - employee lifecycle includes defined active/inactive/end/correction behavior under the People Spec;
-- organization/site entities remain Platform-owned, while employee/job/work rules remain HR-owned.
+- Legal Entity/Site identities remain Platform-owned, while Employer/employment/job/work rules remain HR-owned.
 
 ### Qualification evidence
 
@@ -350,7 +365,7 @@ V1 supports both requested attendance-channel families through optional entitlem
 ### Required work
 
 - onboarding flow for real tenant setup;
-- safe entitlement/limit operations through Tech Edge control plane;
+- safe direct entitlement/limit operations through Tech Edge control plane;
 - role/permission defaults refined from pilot workflows;
 - operational exports/imports and recovery procedures;
 - core reports/reconciliation views;
@@ -370,7 +385,7 @@ V1 supports both requested attendance-channel families through optional entitlem
 
 The exact release candidate revision must demonstrate:
 
-1. Tenant onboarding and entitlement assignment.
+1. Tenant onboarding and direct entitlement assignment.
 2. Cross-tenant isolation and authoritative authorization.
 3. Employee onboarding/import without mandatory user accounts.
 4. Work-policy/shift assignment.
@@ -397,7 +412,7 @@ The exact release candidate revision must demonstrate:
 ### In V1
 
 - Platform tenant/membership/isolation/authorization/entitlement spine.
-- Tech Edge manual control plane for customer access/contracts/limits.
+- Tech Edge manual control plane for Tenant lifecycle plus direct effective-dated Capability grants/denials and Limits; bounded commercial references only, no Subscription subsystem.
 - People and workforce import.
 - Work policies/shifts.
 - Attendance core, manual and spreadsheet input.
@@ -414,6 +429,7 @@ The exact release candidate revision must demonstrate:
 
 ### Not in V1
 
+- Subscription/Billing/Invoice/Commercial Agreement product subsystem;
 - self-service billing/payment gateway/coupons;
 - full Contracts/Documents capability;
 - full ESS/MSS portals;
