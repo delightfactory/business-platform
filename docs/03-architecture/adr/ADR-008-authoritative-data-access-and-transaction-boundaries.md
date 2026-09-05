@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed**
+**Accepted — Phase 0D Platform Foundation freeze review, 2026-09-05.**
 
 ## Context
 
