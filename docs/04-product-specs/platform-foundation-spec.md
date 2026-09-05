@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D implementation-readiness draft, consolidated after the 2026-09-05 freeze review.**
+**Frozen — Phase 0D Platform Foundation baseline accepted 2026-09-05.**
 
 This specification governs the minimum shared SaaS foundation required before tenant-owned Business Domain Product Code is implemented. It defines product/behavioral invariants, ownership boundaries, and acceptance criteria without turning Platform Core into the architectural root of HR or any future Business Domain.
 
