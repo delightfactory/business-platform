@@ -89,7 +89,7 @@ The exact permission-key spelling may be finalized consistently with the Platfor
 
 ### First Platform Operator bootstrap
 
-The first recoverable Platform Operator is established through a **repository-controlled one-time bootstrap/maintenance command**.
+The first **active recoverable Platform Operator manager** is established through a **repository-controlled one-time bootstrap/maintenance command**.
 
 Requirements:
 
@@ -97,12 +97,13 @@ Requirements:
 - it uses a deployment-scoped bootstrap/recovery principal or secret held outside tenant-controlled data;
 - the bootstrap principal is represented in mandatory audit as a distinct actor class such as `platform_bootstrap`;
 - infrastructure credentials may execute the persistence operation but are never the product actor identity;
-- the operation establishes the first authenticated Platform Operator grant and its mandatory success audit in one protected consistency boundary where practical;
+- the bootstrap operation grants the target authenticated principal active Platform Operator authority **including operator-management authority equivalent to `platform.operator.manage`**; bootstrapping an ordinary non-manager Operator does not satisfy initial bootstrap;
+- the first Operator-manager grant and its mandatory success audit commit in one protected transaction/consistency boundary, and the bootstrap must not report success unless both persist;
 - after successful first bootstrap, the bootstrap credential/path is disabled, rotated, or otherwise made non-routine.
 
 ### Break-glass recovery
 
-A narrow repository-controlled recovery command may re-establish one Operator manager if no recoverable active Operator manager exists or an explicitly declared emergency requires recovery.
+A narrow repository-controlled recovery command may re-establish one **active Operator manager with operator-management authority** if no recoverable active Operator manager exists or an explicitly declared emergency requires recovery.
 
 The break-glass path:
 
@@ -110,7 +111,7 @@ The break-glass path:
 - is not a normal control-plane action;
 - uses separately controlled deployment/recovery authority;
 - requires an explicit reason and target authenticated principal;
-- creates a mandatory audit event;
+- creates the recovered Operator-manager authority and mandatory audit in the protected consistency boundary required by ADR-005;
 - does not turn `service_role` or another database bypass credential into a durable product actor.
 
 Wave 1 does not require four-eyes approval, enterprise IAM, or a generic privileged-access-management subsystem.
@@ -127,6 +128,7 @@ Generic user impersonation remains outside V1 unless separately designed and acc
 - existing tenant authority cannot drift silently because a shared template changed;
 - an operational tenant cannot be accidentally left without a recoverable administrator;
 - Platform Operator authority remains structurally separate from customer-controlled RBAC and infrastructure credentials;
+- the first bootstrap necessarily creates an Operator manager capable of establishing later Operator authority without immediate break-glass recovery;
 - the first Operator and emergency recovery paths are explicit rather than invented during implementation;
 - no enterprise IAM subsystem is introduced prematurely.
 
@@ -151,6 +153,10 @@ Rejected because Platform Operator is a separate trust domain and must not be cu
 ### Treat `service_role` as the first or permanent Platform Operator
 
 Rejected because an infrastructure bypass credential is an execution mechanism, not an accountable product principal or authorization model.
+
+### Bootstrap an ordinary Operator without operator-management authority
+
+Rejected because the initial root of trust would be unable to establish subsequent Operator authority without immediately invoking break-glass recovery.
 
 ### Leave first-operator bootstrap as an undocumented seed/manual database edit
 
