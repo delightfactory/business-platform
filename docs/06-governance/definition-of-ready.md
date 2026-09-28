@@ -46,3 +46,18 @@ Payroll, authorization, tenant isolation, financial state, sensitive-data handli
 - implementing a future domain merely to prepare for possible expansion;
 - starting implementation from a Proposed specification when material behavior is still unresolved;
 - designing a desktop-only workflow and deferring mobile behavior to an unspecified later cleanup when the capability is part of the supported web application.
+
+
+## Operational-simplicity readiness
+
+For a material user-facing workflow, implementation is not Ready until:
+
+- the user's primary business job and shortest safe happy path are explicit;
+- fields/actions that can be defaulted, inherited or derived are identified so they are not unnecessarily requested;
+- advanced/exception configuration has a progressive-disclosure plan rather than appearing in the default workflow;
+- technical/internal concepts that must remain hidden from normal users are identified;
+- the normal case and the exception-review case are separated where doing so materially reduces repetitive work;
+- errors and blocked states have a plain-language next action;
+- any necessary complexity that cannot be hidden has a demonstrated business reason.
+
+If the design exposes complexity merely because the backend model contains it, the work item is not Ready.

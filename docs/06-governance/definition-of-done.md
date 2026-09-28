@@ -60,3 +60,19 @@ For payroll, money, statutory, or finalized records:
 ## Qualification rule
 
 Critical qualification evidence must refer to the exact revision proposed for merge/release. A later code change invalidates qualification evidence that depends on changed behavior.
+
+
+## Operational-simplicity completion
+
+Material user-facing work is not Done when it is merely functional. It must also demonstrate that:
+
+- the primary task can be completed without understanding backend/database/security implementation concepts;
+- redundant user input has been removed where the system can safely derive/default the value;
+- advanced options do not clutter the ordinary workflow;
+- exception-oriented views focus users on records requiring action;
+- the current state and next action are understandable without reading technical documentation;
+- failure messages identify the operational problem and recovery action;
+- financial/security/compliance consequences remain explicit despite simplification;
+- representative usability acceptance checks show no avoidable screens, fields or decisions in the primary flow.
+
+A workflow may fail this gate even when automated functional tests pass.

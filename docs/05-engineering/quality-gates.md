@@ -54,3 +54,19 @@ A release candidate must be evaluated against the agreed release Definition of D
 - treating UI visibility as authorization;
 - declaring a critical workflow complete without authoritative-state verification;
 - adding infrastructure that has no current operational requirement merely to make the architecture appear more sophisticated.
+
+
+## Operational simplicity gate
+
+For material user-facing workflows, qualification must verify more than functional success.
+
+Evidence should confirm that:
+
+- the shortest safe happy path contains no avoidable screens, fields or decisions;
+- values that can be safely derived/defaulted are not repeatedly requested;
+- advanced/internal configuration does not clutter the normal task;
+- normal records do not require repetitive manual review when an exception-oriented workflow can safely focus attention;
+- users can understand current state, consequence and next action without implementation knowledge;
+- technical failure states resolve to plain-language recovery actions.
+
+A workflow that passes backend tests but exposes unnecessary implementation complexity is not release-qualified.
