@@ -2,11 +2,25 @@
 
 ## Status
 
-Proposed amendment for review before Cube 0 execution.
+Accepted amendment before Cube 0 execution.
 
 ## Purpose
 
-This amendment converts the architecture review findings into implementation-governing decisions. It does not change the platform vision or modular architecture. It removes ambiguity between specifications, execution cubes, and acceptance criteria.
+This amendment converts architecture review findings into implementation-governing decisions. It does not change the platform vision or modular architecture. It removes ambiguity between specifications, execution cubes and acceptance criteria.
+
+## Amended documents
+
+This amendment governs clarification updates to:
+
+- `docs/07-execution/v1-cube-execution-plan.md`
+  - Cube scope and completion contract.
+- `docs/04-product-specs/tenant-branding-capability-spec.md`
+  - Tenant branding versus legal identity boundary.
+- `docs/04-product-specs/authorization-access-control-v1-spec.md`
+  - Authorization V1 boundaries.
+- `docs/04-product-specs/employee-finance-payroll-spec.md`
+  - Payroll calendar behavior.
+- HR domain specifications where lifecycle status requires alignment.
 
 ## Source of truth rule
 
@@ -80,7 +94,7 @@ Platform Operator authority remains separate from Tenant roles according to ADR-
 
 ## Branding and identity boundary
 
-Tenant branding controls the experience identity.
+Tenant branding controls experience identity.
 
 Legal Entity identity controls official business documents where a legal employer identity is required.
 
