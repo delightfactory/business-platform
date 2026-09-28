@@ -227,7 +227,9 @@ Attendance owns the determination of **time quantity and approval**, not the fin
 
 V1 overtime flow:
 
-`worked beyond policy threshold -> overtime candidate -> auto-approve if explicitly permitted by policy OR reviewer approve/reject -> approved overtime quantity -> Payroll input`
+`worked beyond policy threshold -> overtime candidate -> classify -> auto-approve if explicitly permitted by policy OR reviewer approve/reject -> approved overtime quantity -> Payroll input`
+
+Approved overtime carries the applicable category needed by Payroll, including ordinary daytime/nighttime overtime and, where applicable, weekly-rest or official-holiday work.
 
 Rules:
 
@@ -258,7 +260,7 @@ After approval, Time may publish/version an approved payroll input containing on
 
 - late minutes;
 - unpaid absence units;
-- approved overtime minutes;
+- approved overtime minutes plus the applicable overtime/rest-day/holiday category;
 - paid/unpaid work units where relevant;
 - source Work Instance and effective policy version.
 
@@ -360,6 +362,7 @@ Key standard-worker anchors include:
 - weekly rest: at least 24 consecutive paid hours after no more than 6 consecutive work days, subject to lawful aggregation exceptions;
 - exceptional additional work under Article 121: overtime compensation must not be less than the ordinary hourly wage plus 35% for daytime overtime and plus 70% for nighttime overtime; work on the weekly rest day receives the statutory compensatory treatment and substitute day;
 - total presence under the Article 121 exceptional-work rule must not exceed 12 hours/day;
+- official-holiday work follows the compensation/substitute-day rule in Article 129 rather than being treated as ordinary overtime;
 - annual paid leave under Article 124: 15 days in the first year, 21 days from the second year, 30 days after 10 complete years of service with one or more employers or after age 50, and 45 days for covered persons with disabilities/dwarfism; service below one year is prorated after at least six months, with the statutory additional seven days for covered hazardous/harmful/remote work.
 
 These are **effective-dated statutory policy data/constraints**, not scattered hard-coded UI defaults. The product must support lawful exceptions/categories without weakening the default baseline. Where legal classification or an exception is uncertain, the system must require explicit authorized configuration/evidence rather than silently treating the Employee as exempt.
