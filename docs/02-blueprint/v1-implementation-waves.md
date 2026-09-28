@@ -55,10 +55,11 @@ Required outputs:
    - payslip/export/payment-status behavior.
 
 5. Attendance Channel Specification
-   - first biometric adapter target;
+   - vendor-neutral biometric/device adapter contract;
    - mobile geofence behavior/privacy/offline constraints;
    - device/user mappings;
-   - replay/deduplication/error handling.
+   - replay/deduplication/error handling;
+   - a bounded vendor adapter sub-spec is required before vendor-specific HRT-008 code begins; the Channel Core must not guess hardware merely to complete Phase 0D.
 
 6. Technology/Deployment ADR set
    - exact web/application stack;
@@ -85,7 +86,7 @@ Later Business Domain waves remain blocked until their own governing Product Spe
 - Wave 2 requires the People & Work Context Spec;
 - Wave 3 requires the Attendance & Leave Spec;
 - Wave 4 requires the Employee Finance & Payroll Spec;
-- Wave 5 requires the Attendance Channel Spec.
+- Wave 5 requires the Attendance Channel Spec; vendor-specific biometric adapter implementation additionally requires the selected vendor/protocol adapter sub-spec required by DEC-021.
 
 A later Spec may be authored while an earlier independent Wave is implemented, but its Product Code cannot start from a merely `Proposed` Spec.
 
@@ -326,6 +327,7 @@ The platform can produce trusted, reviewable attendance/leave/overtime facts fro
 ### Biometric boundaries
 
 - one prioritized practical connector path is V1 scope;
+- the generic Channel Core may be Frozen before that hardware is selected, but vendor-specific implementation remains blocked until a reviewed adapter sub-spec records the actual vendor/protocol, mapping, idempotency, outage/replay, security/privacy and qualification evidence;
 - no promise of universal device compatibility;
 - connector handles transport/mapping/retry/replay, not payroll rules;
 - normalized attendance contract is unchanged when a new vendor is later added;
