@@ -57,3 +57,18 @@ A capability is not operationally complete merely because its main create/edit s
 For each material process, specifications must define the relevant completion, rejection/cancellation, correction/reversal, archival/closure, reconciliation, or external-handoff path. If a downstream capability is deliberately deferred, V1 must still provide an explicit safe stopping point or handoff such as an export, status, operator action, or documented external continuation.
 
 Post-launch expansion should deepen operational completeness and automation without requiring the original flow to be abandoned or rebuilt from scratch.
+
+
+## 14. Complexity stays behind the product boundary
+
+The product absorbs technical and domain complexity so ordinary users can operate through business intent, current state, and a clear next action.
+
+- backend state machines, IDs, versioning, tenancy/security mechanics, integration transport and calculation internals are not normal user-facing concepts;
+- safe defaults and derived values replace repeated or unnecessary user input;
+- advanced configuration is progressively disclosed to the roles and situations that need it;
+- exception-oriented workflows focus attention on items requiring judgment rather than forcing users to review normal records one by one;
+- technical errors are translated into plain-language operational outcomes and recovery actions;
+- mobile and desktop composition may differ to keep the task direct on each device;
+- simplicity never means hiding material financial, security, compliance, approval, or irreversible consequences.
+
+A workflow that is technically capable but unnecessarily confusing, repetitive, or implementation-shaped is not considered product-complete.
