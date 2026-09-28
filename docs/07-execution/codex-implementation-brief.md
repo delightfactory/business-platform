@@ -64,6 +64,21 @@ Required first-class foundations:
 
 Domain screens must compose approved primitives and must not create isolated visual systems.
 
+## Tenant Branding Gate
+
+Tenant identity is a shared Platform capability, not a feature-specific implementation.
+
+Implementation must support tenant-specific identity through configuration:
+
+- tenant display identity;
+- organization logo/assets;
+- branding information used by reports and official documents;
+- safe branding tokens where supported.
+
+Do not create customer branding through code forks, hard-coded customer checks or separate UI implementations.
+
+Business domains must consume the shared Tenant Branding capability instead of implementing independent branding logic.
+
 ## Device experience requirements
 
 The application must not behave as a desktop website squeezed into smaller screens.
