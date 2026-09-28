@@ -346,7 +346,29 @@ Rules:
 - unpaid leave produces an approved Payroll input through the domain boundary;
 - paid leave can affect Attendance interpretation without necessarily reducing pay.
 
-## 13. Attendance/Leave operational simplicity contract
+## 13. Egypt statutory work-time/leave baseline
+
+For standard private-sector Employees governed by Egypt Labour Law No. 14 of 2025, the initial Egypt policy pack must encode and test the applicable statutory baseline rather than relying only on tenant-entered values.
+
+Official law reviewed for the initial baseline: https://portal.eta.gov.eg/sites/default/files/2026-03/law.no_.14.of_.2025.pdf
+
+Key standard-worker anchors include:
+
+- ordinary actual work: no more than 8 hours/day or 48 hours/week, excluding meal/rest breaks, subject to lawful category-specific exceptions;
+- break periods: aggregate at least 1 hour and ordinarily no more than 5 consecutive work hours without a break, subject to ministerial exceptions;
+- ordinary span between start and end including breaks: generally no more than 10 hours/day, with specified special-category exceptions;
+- weekly rest: at least 24 consecutive paid hours after no more than 6 consecutive work days, subject to lawful aggregation exceptions;
+- exceptional additional work under Article 121: overtime compensation must not be less than the ordinary hourly wage plus 35% for daytime overtime and plus 70% for nighttime overtime; work on the weekly rest day receives the statutory compensatory treatment and substitute day;
+- total presence under the Article 121 exceptional-work rule must not exceed 12 hours/day;
+- annual paid leave under Article 124: 15 days in the first year, 21 days from the second year, 30 days after 10 complete years of service with one or more employers or after age 50, and 45 days for covered persons with disabilities/dwarfism; service below one year is prorated after at least six months, with the statutory additional seven days for covered hazardous/harmful/remote work.
+
+These are **effective-dated statutory policy data/constraints**, not scattered hard-coded UI defaults. The product must support lawful exceptions/categories without weakening the default baseline. Where legal classification or an exception is uncertain, the system must require explicit authorized configuration/evidence rather than silently treating the Employee as exempt.
+
+Tenant policy may be more favorable where legally allowed. A configuration that appears less favorable than an applicable mandatory floor must be blocked or surfaced as a compliance-blocking validation according to the active verified statutory pack.
+
+The statutory pack must retain source/version/effective-date metadata so future legal amendments do not reinterpret historical approved attendance or leave.
+
+## 14. Attendance/Leave operational simplicity contract
 
 Normal users should operate through:
 
@@ -368,7 +390,7 @@ Required UX constraints:
 
 Simplicity must not hide unresolved punches, unpaid leave, or consequences that may affect Payroll.
 
-## 14. Permissions
+## 15. Permissions
 
 Permission families include at least:
 
@@ -384,7 +406,7 @@ Permission families include at least:
 
 Exact key spelling may be normalized during implementation.
 
-## 15. Workflow Completion Maps
+## 16. Workflow Completion Maps
 
 ### Ordinary attendance
 
@@ -413,7 +435,7 @@ If Attendance/Leave entitlement is removed:
 - in-flight requests/exceptions remain available to authorized closure/export/correction rules defined for the capability;
 - data is never deleted automatically.
 
-## 16. Acceptance criteria
+## 17. Acceptance criteria
 
 The Spec is satisfied only when:
 
@@ -430,7 +452,7 @@ The Spec is satisfied only when:
 - representative mobile/desktop workflows satisfy the operational-simplicity contract;
 - cross-Tenant relationship and access negative tests pass.
 
-## Deferred maturity
+## 18. Deferred maturity
 
 Later work may add:
 
