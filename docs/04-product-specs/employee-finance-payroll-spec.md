@@ -160,7 +160,7 @@ An approved Payroll Input contains:
 
 Examples:
 
-- approved overtime minutes;
+- approved overtime minutes with daytime/nighttime/weekly-rest/official-holiday category where applicable;
 - unpaid absence days;
 - late minutes;
 - unpaid leave units;
@@ -228,7 +228,23 @@ Rules:
 - corrections create reversing/compensating entries;
 - an Employee cannot be “settled” while a non-zero unexplained balance remains.
 
-## 8. Payroll run state machine
+## 8. Egypt employment-law deduction safeguards
+
+Employee Finance and Payroll must not treat tenant configuration as permission to violate an applicable statutory deduction floor/ceiling.
+
+For the initial standard private-sector Egypt compliance pack, Labour Law No. 14 of 2025 is a governing source:
+https://portal.eta.gov.eg/sites/default/files/2026-03/law.no_.14.of_.2025.pdf
+
+The rule pack must model, where applicable to the Employee/case:
+
+- Article 113 employer-loan recovery limit: no more than 10% of the worker's wage may be deducted to repay money lent by the employer during the employment contract, and the employer may not charge interest on that loan;
+- Article 114 general wage assignment/attachment/deduction ceiling: ordinarily no more than 25% of the relevant wage base, with the statutory higher ceiling for alimony and the statutory precedence/calculation basis;
+- Article 115 requirement that the employer provide a statement of wage details, which the Payroll payslip/output must be capable of satisfying operationally;
+- overtime/rest-day/official-holiday valuation must consume the approved Time classification and the active verified Labour-Law rule pack; a tenant policy may be more favorable where permitted but may not silently configure a lower mandatory statutory value.
+
+Because legal applicability can vary by worker/category and later amendments, these are effective-dated compliance rules with source/version metadata, not UI constants. Where a statutory classification exception applies, it must be explicit and authorized.
+
+## 9. Payroll run state machine
 
 Business-facing states:
 
@@ -255,7 +271,7 @@ Lock persists a frozen calculation context sufficient to explain/reproduce:
 
 A locked run is never reopened and rewritten in place.
 
-## 9. Calculation lifecycle
+## 10. Calculation lifecycle
 
 Normal user flow:
 
@@ -271,7 +287,7 @@ If an input/configuration that affects an unlocked calculated run changes:
 - approval/lock is blocked until recalculated;
 - the user sees the specific affected reason, not an opaque “version conflict”.
 
-## 10. Review and variance
+## 11. Review and variance
 
 The review surface must prioritize what needs human attention.
 
@@ -291,7 +307,7 @@ A configurable materiality threshold may reduce noise, but it must not hide bloc
 
 The system must not require the user to open every Employee when the run is clean.
 
-## 11. Post-lock correction
+## 12. Post-lock correction
 
 Locked history is immutable.
 
@@ -314,7 +330,7 @@ If payment has been recorded:
 
 No “unlock payroll” button exists in V1.
 
-## 12. Payment status and external handoff
+## 13. Payment status and external handoff
 
 V1 does not execute bank payment.
 
@@ -335,7 +351,7 @@ The payment ledger/status must reconcile to the locked payable amount. Correctio
 
 Accounting/GL posting remains an explicit export/external handoff.
 
-## 13. Payslip
+## 14. Payslip
 
 Payslip is generated from a locked authoritative run/amendment only.
 
@@ -353,7 +369,7 @@ Technical rule IDs and internal database identifiers are not shown.
 
 If a run is superseded before payment, the old payslip is visibly superseded/invalidated for ordinary distribution while remaining historically retained under authorized access.
 
-## 14. Payroll export and reporting
+## 15. Payroll export and reporting
 
 V1 supports:
 
@@ -367,7 +383,7 @@ V1 supports:
 
 Exports are Tenant/Employer scoped, permission-protected and generated from authoritative run versions.
 
-## 15. Egyptian statutory rule packs
+## 16. Egyptian statutory rule packs
 
 ### Architecture
 
@@ -417,7 +433,7 @@ Production qualification requires representative golden scenarios compared to th
 
 If the official source and a product rule pack disagree, Payroll fails qualification; the test is not weakened.
 
-## 16. YTD and mid-year onboarding
+## 17. YTD and mid-year onboarding
 
 Payroll must support opening year-to-date values when a Tenant starts using the system after the tax year has begun.
 
@@ -437,7 +453,7 @@ Opening YTD values:
 
 This avoids producing incorrect tax merely because the SaaS was adopted mid-year.
 
-## 17. Termination/final-period boundary
+## 18. Termination/final-period boundary
 
 Ending Employment must not create a dead end.
 
@@ -451,7 +467,7 @@ V1 supports:
 
 Specialized termination-benefit formulas not yet supported must be an explicit governed external/manual handoff, never a hidden omission.
 
-## 18. Rounding and determinism
+## 19. Rounding and determinism
 
 - ordinary monetary components use the application's defined decimal rounding contract;
 - statutory calculations follow the active official rule-pack rounding semantics;
@@ -459,7 +475,7 @@ Specialized termination-benefit formulas not yet supported must be an explicit g
 - repeated calculation from identical frozen inputs/rules yields identical results;
 - the calculation output includes enough line-level explanation to trace net pay.
 
-## 19. Operational simplicity / UX contract
+## 20. Operational simplicity / UX contract
 
 Payroll must hide backend complexity without hiding material consequences.
 
@@ -478,7 +494,7 @@ Required experience:
 
 Simplicity may never weaken approval, authorization, audit or historical correctness.
 
-## 20. Permissions and separation of duties
+## 21. Permissions and separation of duties
 
 Permission families include at least:
 
@@ -498,7 +514,7 @@ Permission families include at least:
 
 A Tenant may allow one person to hold multiple permissions in a small organization; the architecture must not require enterprise segregation. Sensitive actions remain explicit and audited.
 
-## 21. Workflow Completion Maps
+## 22. Workflow Completion Maps
 
 ### Normal payroll
 
@@ -524,7 +540,7 @@ A Tenant may allow one person to hold multiple permissions in a small organizati
 
 Payroll entitlement loss never deletes locked results. New run operations are blocked, while historical view/export and required correction/closure behavior follows the governed capability policy.
 
-## 22. Acceptance criteria
+## 23. Acceptance criteria
 
 The Spec is satisfied only when:
 
@@ -541,7 +557,7 @@ The Spec is satisfied only when:
 - cross-Tenant/permission negative tests pass;
 - payroll workflow satisfies the operational-simplicity contract on representative desktop/mobile views.
 
-## Deferred maturity
+## 24. Deferred maturity
 
 Later specifications may add:
 
