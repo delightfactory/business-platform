@@ -48,6 +48,35 @@ Do not invent material product behavior inside code. If a missing decision affec
    - Mobile attendance
    - Biometric adapter only after approved vendor adapter specification
 
+## Design System and Application Shell Gate
+
+Before implementing domain screens, establish the shared application experience foundation.
+
+Required first-class foundations:
+
+- responsive application shell;
+- navigation patterns appropriate to desktop, tablet and mobile;
+- shared design tokens;
+- typography, spacing and semantic color system;
+- reusable form, table, card, dialog, sheet, drawer and feedback primitives;
+- loading, empty, validation, error and success state patterns;
+- accessibility and interaction behavior in shared components.
+
+Domain screens must compose approved primitives and must not create isolated visual systems.
+
+## Device experience requirements
+
+The application must not behave as a desktop website squeezed into smaller screens.
+
+Every material workflow must be designed for:
+
+- mobile: native-style touch workflow, compact forms, reachable primary actions, no unnecessary horizontal scrolling;
+- tablet: intentional intermediate composition, not accidental breakpoint behavior;
+- laptop/desktop: productive business application experience with appropriate density, tables, comparison and keyboard/pointer efficiency;
+- large desktop where relevant: avoid excessive stretching and preserve hierarchy.
+
+Responsive behavior is part of feature completeness, not post-release polish.
+
 ## Non-negotiable engineering rules
 
 - Domain logic must not live inside UI pages.
@@ -82,5 +111,6 @@ Every wave requires:
 - authorization negative tests;
 - lifecycle completion tests;
 - correction/reversal tests where applicable;
-- desktop and mobile UX acceptance;
+- desktop, tablet and mobile UX acceptance;
+- visual/interaction evidence for material user-facing workflows;
 - exact revision qualification before merge.
