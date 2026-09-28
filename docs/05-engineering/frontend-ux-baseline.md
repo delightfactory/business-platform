@@ -182,3 +182,26 @@ The following are not acceptable default practices:
 Material changes to shared design tokens, application shell behavior, core navigation, foundational interaction patterns, or reusable component contracts must be reviewed as shared frontend architecture because they affect multiple domains.
 
 Ordinary domain-screen composition using existing approved primitives remains a normal implementation detail and must not require unnecessary governance overhead.
+
+
+## Operational simplicity and complexity shielding
+
+User-facing complexity has a budget. The system may be sophisticated internally, but the ordinary workflow must remain task-oriented.
+
+Required design rules:
+
+- start from the user's business job, not from the database/domain object graph;
+- show one dominant next action where the workflow has a clear primary action;
+- prefer sensible defaults, inheritance and derived values over repeated manual selection/entry;
+- collapse or defer advanced configuration until the user explicitly needs it and has authority to change it;
+- do not expose internal UUIDs, RLS/tenant mechanics, version IDs, idempotency concepts, raw state-machine names, transport/protocol details or calculation internals as ordinary workflow concepts;
+- present exceptions requiring judgment as focused queues rather than requiring users to inspect every normal record;
+- preserve context after actions and return the user to a useful next state;
+- translate technical failures into plain-language operational meaning plus a recovery action;
+- avoid redundant confirmation dialogs for reversible low-risk actions, while retaining clear confirmation for financial, security-sensitive, destructive or irreversible actions;
+- use business summaries first and allow authorized drill-down to evidence/calculation detail on demand;
+- do not require users to configure capabilities that can be safely inferred from a simple default Tenant setup.
+
+A technically correct workflow that forces users to understand implementation mechanics, repeatedly enters derivable data, or navigates unnecessary intermediate screens fails UX acceptance.
+
+Complexity shielding is not permission to conceal important consequences. Financial impact, authorization limitations, compliance implications, unresolved exceptions and irreversible actions must remain visible in plain business language.
