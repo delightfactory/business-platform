@@ -11,28 +11,29 @@ This log records product and architecture decisions that materially constrain fu
 | DEC-005 | 2026-09-04 | Digital contract management is optional; an employee can participate in attendance/payroll without a system-managed contract document. | Accepted |
 | DEC-006 | 2026-09-04 | Product complexity is progressive: optional capabilities must not burden tenants that do not use them. | Accepted |
 | DEC-007 | 2026-09-04 | Commercial packaging is implemented through capabilities/entitlements rather than hard-coded package-specific product branches. | Accepted |
-| DEC-008 | 2026-09-04 | Legacy systems are donor platforms only. Reuse requires an explicit extraction audit and classification before code is adopted. | Accepted |
-| DEC-009 | 2026-09-04 | The repository is documentation-first during Phase 0; production feature development begins only after required product and architecture baselines are reviewed. | Accepted |
-| DEC-010 | 2026-09-04 | The primary product surface is an adaptive web application: desktop/laptop must deliver a desktop-class business-app experience, mobile must deliver a purpose-designed native-style experience, and recurring UI/interaction behavior must be governed through reusable shared design-system primitives. | Accepted |
-| DEC-011 | 2026-09-04 | V1 requires a Tech Edge-operated Tenant/commercial-access control plane with direct effective-dated Capability grants/denials and Limits as the Wave 1 access source of truth. A full Subscription/Billing/Invoice/Commercial Agreement subsystem, public self-service billing, payment gateways and coupon engines are deferred until commercial volume justifies them. | Accepted |
-| DEC-012 | 2026-09-04 | Payroll depends on People/compensation/payroll configuration, not on Attendance, Leave or Employee Finance entitlements; enabled HR domains contribute through explicit approved payroll-input boundaries. | Accepted |
-| DEC-013 | 2026-09-04 | V1 Attendance is source-neutral and includes manual entry, spreadsheet import, one prioritized biometric connector, and optional mobile geofence attendance; universal device support and continuous employee location tracking are explicitly outside V1. | Accepted |
-| DEC-014 | 2026-09-04 | Full Contracts/Documents, ESS/MSS, advanced approval/workflow, Talent and Expenses are deferred from V1; focused employee/manager surfaces may exist only where required by a V1 workflow such as mobile attendance or bounded review. | Accepted |
-| DEC-015 | 2026-09-04 | Removing/suspending/expiring an optional entitlement must never automatically delete tenant data or make finalized financial/compliance history unreproducible; entitlement denial is enforced authoritatively and historical-access behavior is capability-specific. | Accepted |
-| DEC-016 | 2026-09-04 | Every material workflow must have a supported operational end state or explicit external handoff; deferred sophistication must not leave V1 processes at dead ends, and post-launch roadmap work should deepen lifecycle completion and automation without forcing flow rewrites. | Accepted |
-| DEC-017 | 2026-09-05 | ADR-001 through ADR-010 are accepted as the coherent architecture baseline for Wave 1 and the Platform Foundation Specification is Frozen after the independent freeze review and corrective amendment. Wave 1 may begin only from this adopted Foundation baseline; later Business Domain waves remain blocked until their own governing Product Specs are Frozen. | Accepted |
-| DEC-018 | 2026-09-05 | The independent pre-merge review hardens the Frozen Foundation before adoption: Tenant lifecycle state is an authoritative access gate; Platform Operator authority has an explicit repository-controlled bootstrap/recovery root of trust; Wave 1 authentication is invite-only verified email/password with bounded invitation/Membership semantics; Wave 1 commercial access is direct effective-dated Capability grants/denials and Limits rather than a Subscription subsystem; and Platform Legal Entity remains domain-neutral while HR owns Employer semantics. | Accepted |
-| DEC-019 | 2026-09-05 | Final pre-merge hardening requires the first Platform bootstrap to create an active recoverable Operator manager with operator-management authority and mandatory audit consistency; direct entitlement decisions and Limits use non-overlapping half-open effective intervals, with authoritative non-overlap enforcement and fail-closed behavior if ambiguous effective state is ever detected. | Accepted |
-| DEC-020 | 2026-09-28 | Operational simplicity / complexity shielding is a product-wide constraint: implementation and domain complexity must be absorbed behind task-oriented UX, safe defaults, progressive disclosure and exception-focused workflows; simplicity must not hide material financial/security/compliance consequences. | Accepted |
-| DEC-021 | 2026-09-28 | Attendance Channel Core may be Frozen without guessing a biometric vendor. Vendor-neutral mapping/idempotency/privacy/mobile behavior is governed by the Channel Spec; vendor-specific HRT-008 code remains blocked until a bounded reviewed adapter sub-spec identifies the real hardware/protocol and qualification evidence. | Accepted |
+| DEC-008 | 2026-09-04 | Legacy systems are donor platforms only. Reuse requires explicit extraction audit and classification before code adoption. | Accepted |
+| DEC-009 | 2026-09-04 | Repository is documentation-first during Phase 0; feature development begins only after required baselines are reviewed. | Accepted |
+| DEC-010 | 2026-09-04 | Adaptive web application experience with shared design-system primitives is required. | Accepted |
+| DEC-011 | 2026-09-04 | V1 uses Tech Edge-operated Tenant/commercial-access control with effective-dated capability grants/limits; full billing subsystem deferred. | Accepted |
+| DEC-012 | 2026-09-04 | Payroll consumes explicit approved inputs and does not technically depend on Attendance/Leave/Employee Finance entitlements. | Accepted |
+| DEC-013 | 2026-09-04 | V1 Attendance is source-neutral with manual/import paths, one prioritized biometric connector, and optional mobile geofence. | Accepted |
+| DEC-014 | 2026-09-04 | Full Contracts/Documents, ESS/MSS, advanced workflows and Talent are deferred from V1. | Accepted |
+| DEC-015 | 2026-09-04 | Entitlement removal must never destroy data or make finalized history unreproducible. | Accepted |
+| DEC-016 | 2026-09-04 | Every material workflow requires a supported end state or explicit handoff; no dead-end workflows. | Accepted |
+| DEC-017 | 2026-09-05 | ADR-001 through ADR-010 are the architecture baseline and Foundation freeze gate. | Accepted |
+| DEC-018 | 2026-09-05 | Platform lifecycle, Operator authority, invitation lifecycle and effective access rules are hardened baseline constraints. | Accepted |
+| DEC-019 | 2026-09-05 | Operator bootstrap and deterministic entitlement semantics require protected consistency and fail-closed ambiguity handling. | Accepted |
+| DEC-020 | 2026-09-28 | Complexity shielding is a product-wide constraint. | Accepted |
+| DEC-021 | 2026-09-28 | Attendance channels remain vendor-neutral until a reviewed adapter specification exists. | Accepted |
+| DEC-022 | 2026-09-28 | Final Implementation Readiness Amendment is accepted as a governing clarification. It expands Cube 0 scope, clarifies authorization boundaries, branding identity ownership, People/Attendance ownership, Payroll Calendar behavior and cube completion contracts. | Accepted |
 
 ## Decision states
 
-- **Proposed** — under review, not an implementation assumption.
-- **Accepted** — approved and may constrain implementation.
-- **Superseded** — replaced by a later decision; history remains.
-- **Rejected** — considered and explicitly not adopted.
+- Proposed — under review.
+- Accepted — approved and constraining implementation.
+- Superseded — replaced by later decision.
+- Rejected — considered and not adopted.
 
 ## Rule
 
-Material decisions should later receive a dedicated ADR when they require technical rationale, alternatives, consequences, or migration implications. This log remains the high-level index.
+Material decisions should receive dedicated ADRs when they require technical rationale, alternatives, consequences or migration implications.
