@@ -2,45 +2,71 @@
 
 ## Purpose
 
-This document converts the V1 implementation roadmap into execution cubes. A cube is considered complete only when its capability, UX, security, tests, documentation and operational flow are complete.
+This document converts the V1 roadmap into implementation cubes. A cube is complete only when its capability, UX, security, tests, documentation and operational workflow are complete.
 
-The objective is not the fastest feature delivery. The objective is a strong foundation with minimum unnecessary complexity.
+The objective is maximum product quality with minimum unnecessary complexity.
 
 ## Cube execution rules
 
 Every cube must:
 
-- follow Frozen Product Specs and Accepted ADRs;
-- complete its full business workflow, not isolated screens;
+- follow Accepted ADRs and Frozen Product Specifications;
+- complete business workflows, not isolated screens;
 - avoid dead-end states;
-- avoid speculative abstractions and over-engineering;
 - hide technical complexity from users;
-- provide responsive experiences for mobile, tablet and desktop;
-- include acceptance evidence before moving to the next cube.
-
-A cube is not complete because the code compiles or a happy path works.
+- support mobile, tablet and desktop experiences;
+- provide acceptance evidence before moving forward.
 
 ## Cube 0 — Platform Foundation & Experience Layer
 
 Goal:
-Create the reusable SaaS foundation.
+Create the complete reusable SaaS foundation.
+
+### Tenant foundation
 
 Includes:
 
-- Tenant model.
+- Tenant lifecycle.
 - Tenant isolation.
+- Legal Entity foundation.
+- Sites.
+- Tenant settings foundation.
 - Tenant branding foundation.
-- Users and memberships.
-- Roles and permissions.
-- Audit foundation.
+
+### Identity and access foundation
+
+Includes:
+
+- Users.
+- Memberships.
+- Invitations.
+- Roles.
+- Permissions.
+- Authorization enforcement.
+- Platform Operator separation.
+- Sensitive access audit.
+
+### Platform operations
+
+Includes:
+
+- Entitlements.
+- Limits.
+- Operator control flows.
 - Effective dating/versioning primitives.
+- Recovery-safe administrative operations.
+
+### Experience foundation
+
+Includes:
+
 - Application shell.
-- Design system.
-- Responsive navigation and layouts.
+- Design system primitives.
+- Responsive navigation.
+- Mobile/tablet/desktop layouts.
+- Shared feedback states.
 
-Completion:
-
-A new organization can exist independently, have its own identity, users and permissions, and the application experience works correctly across devices.
+Cube 0 completion means a new organization can exist independently, have its own identity, users, permissions and operate through the application experience safely across devices.
 
 ## Cube 1 — People Foundation
 
@@ -53,14 +79,13 @@ Includes:
 - Employment relationship.
 - Departments.
 - Jobs.
-- Sites.
+- Sites context.
 - Reporting context.
 - Work assignments.
+- Effective work-policy assignment.
 - Compensation foundation.
 
-Completion:
-
-A company can onboard employees, update their employment context, transfer them, end employment and preserve history.
+People owns employee context. It does not calculate attendance.
 
 ## Cube 2 — Attendance Engine
 
@@ -78,26 +103,20 @@ Includes:
 - Exceptions.
 - Corrections.
 
-Completion:
-
-Normal attendance flows automatically, while exceptional cases have clear review and correction paths.
+Attendance owns time interpretation and calculations.
 
 ## Cube 3 — Leave Management
 
 Goal:
-Manage employee leave without unnecessary complexity.
+Manage leave lifecycle with clear downstream effects.
 
 Includes:
 
 - Leave types.
 - Balances.
 - Leave records.
-- Approval flow.
-- Payroll impact inputs.
-
-Completion:
-
-Leave has complete lifecycle handling from creation to approval/cancellation and downstream impact.
+- Approval path.
+- Payroll input effects.
 
 ## Cube 4 — Payroll Core
 
@@ -119,10 +138,7 @@ Includes:
 - Payslips.
 - Exports.
 - Payment status.
-
-Completion:
-
-Payroll can be prepared, reviewed, finalized and corrected without rewriting history.
+- Correction/amendment paths.
 
 ## Cube 5 — Attendance Channels
 
@@ -136,59 +152,53 @@ Includes:
 - Vendor-neutral biometric boundary.
 - Device adapters only after approved vendor specification.
 
-Completion:
-
-Attendance sources feed the same trusted attendance model without coupling the product to a specific vendor.
-
 ## Quality gates for every cube
 
 ### Functional
 
 - Complete workflow.
-- Validations.
+- Validation.
 - Error handling.
-- Empty/loading states.
+- Loading/empty states.
 - Correction paths.
 
 ### Security
 
 - Tenant isolation tests.
-- Authorization tests.
+- Authorization negative tests.
 - Sensitive action audit.
 
 ### Data integrity
 
 - Migration reproducibility.
 - Historical correctness.
-- Version/effective-date behavior.
+- Effective-date behavior.
 
 ### UX
 
 - Mobile acceptance.
 - Tablet acceptance.
 - Desktop acceptance.
-- Shared design system compliance.
-- No unnecessary complexity exposed to users.
+- Design system compliance.
+- No unnecessary technical complexity exposed.
 
 ### Engineering
 
 - Domain boundaries respected.
-- No business logic hidden inside UI.
-- No unnecessary generic frameworks.
+- Business logic not hidden inside UI.
 - No premature abstraction.
+- No unnecessary generic frameworks.
 
-## Anti-overengineering rules
+## Release qualification gate
 
-Do not introduce unless a real V1 requirement exists:
+Completing Cubes 0-5 does not automatically mean production release readiness. Final qualification includes:
 
-- generic workflow engines;
-- generic rules engines;
-- microservices;
-- broad configuration builders;
-- dynamic forms everywhere;
-- speculative integrations;
-- enterprise complexity unsupported by actual workflows.
+- operational recovery verification;
+- customer onboarding validation;
+- security verification;
+- statutory/legal validation;
+- pilot acceptance.
 
 ## Completion principle
 
-Build each cube completely, validate it, then move forward. Do not create future functionality by weakening current quality.
+Build each cube completely, validate it, then move forward. Never weaken current quality to create future functionality.
