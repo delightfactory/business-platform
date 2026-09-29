@@ -1,25 +1,39 @@
 # Business Platform
 
-A modular, multi-tenant business SaaS platform.
+The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. The repository is moving from the Phase 0 documentation baseline into Cube 0 implementation. This commit provides a locally runnable application foundation only; it does not contain business workflows or connect to a database.
 
-The platform is intentionally domain-oriented rather than HR-oriented. HR & Payroll will be the first commercial domain, while the shared Platform Core is designed to support additional business domains over time without tenant-specific code forks.
+## Local setup
 
-## Current phase
+Requirements: Node.js 24 and npm. Install the Supabase CLI and Docker Desktop to run the local Supabase stack.
 
-**Phase 0 — Product & Engineering Foundation**
+```powershell
+npm ci
+Copy-Item .env.example .env.local
+npm run dev
+```
 
-No production feature development has started. The repository is being established as the source of truth for product vision, architecture decisions, scope boundaries, engineering standards, and delivery governance before implementation begins.
+Open <http://localhost:3000>. The Arabic RTL page is explicitly labeled as a development foundation. Tenant setup and authentication workflows are the next implementation slices.
 
-## Core principles
+To initialize and run Supabase locally:
 
-- Platform-first architecture; HR is the first business domain, not the platform foundation.
-- Multi-tenancy and tenant isolation are first-class concerns.
-- Simple by default; complexity appears only when a customer needs it.
-- Build for current requirements while preserving clean expansion seams.
-- Avoid both overengineering and harmful shortcuts.
-- Configuration and entitlements are preferred over customer-specific code forks.
-- Sensitive, financial, and security-critical operations require correctness, traceability, and explicit quality gates.
+```powershell
+supabase start
+```
 
-## Documentation
+The repository contains the CLI-generated `supabase/config.toml`; no product schema, migrations, seed data, or Auth flow is included yet. Keep local/preview configuration separate from production as required by ADR-009.
 
-The formal product blueprint, architecture decisions, engineering standards, governance rules, research, and reuse audits will live under `docs/` and evolve through reviewed pull requests.
+The local Auth configuration disables public sign-up and requires email confirmation in preparation for the approved invite-only workflow. No application login path is connected yet.
+
+## Local quality gates
+
+```powershell
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs these gates on pull requests.
+
+## Governing documentation
+
+The approved product, architecture, security, and execution baseline is indexed in [docs/README.md](docs/README.md). New business behavior must follow those specifications and reach `main` through a reviewed PR.
