@@ -70,18 +70,31 @@ export default async function TenantPage({ params, searchParams }: {
   return (
     <main className="app-shell">
       <TenantNavigation tenantId={tenantId} tenantName={String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')} current="home" />
-      <section className="work-card" aria-labelledby="tenant-title">
-        <p className="eyebrow">مساحة مسؤول الشركة</p>
-        <h1 id="tenant-title"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></h1>
-        <p className="intro">حالة الشركة: {lifecycleText(snapshot.lifecycle_state)}</p>
-        <dl className="snapshot-grid">
-          <div><dt>الكيان القانوني الافتراضي</dt><dd>{String(entity?.name ?? 'غير متاح')}</dd></div>
-          <div><dt>الموقع الافتراضي</dt><dd>{String(site?.name ?? 'غير متاح')}</dd></div>
-          <div><dt>المستخدمون</dt><dd>{usageText(snapshot.seat_limit_mode, snapshot.seat_limit, snapshot.seat_usage, 'مستخدمين')}</dd></div>
-          <div><dt>المواقع</dt><dd>{usageText(snapshot.site_limit_mode, snapshot.site_limit, snapshot.site_usage, 'مواقع')}</dd></div>
-        </dl>
-        <p className="field-hint">هذه مساحة تأسيسية لمسؤول الشركة.</p>
-      </section>
+      <div className="tenant-home" aria-labelledby="tenant-title">
+        <header className="tenant-home-heading">
+          <p className="eyebrow">مساحة الشركة</p>
+          <div className="tenant-home-title"><h1 id="tenant-title"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></h1>
+            <span className="entity-status is-active">{lifecycleText(snapshot.lifecycle_state)}</span></div>
+          <p>تابع إعداد الشركة واستخدامها من مكان واحد.</p>
+        </header>
+        <section className="tenant-home-summary" aria-labelledby="tenant-summary-title">
+          <h2 id="tenant-summary-title">لمحة سريعة</h2>
+          <dl className="snapshot-grid">
+            <div><dt>المستخدمون</dt><dd>{usageText(snapshot.seat_limit_mode, snapshot.seat_limit, snapshot.seat_usage, 'مستخدمين')}</dd></div>
+            <div><dt>الفروع</dt><dd>{usageText(snapshot.site_limit_mode, snapshot.site_limit, snapshot.site_usage, 'فروع')}</dd></div>
+            <div><dt>الجهة الأساسية</dt><dd>{String(entity?.name ?? 'غير متاح')}</dd></div>
+            <div><dt>الفرع الأساسي</dt><dd>{String(site?.name ?? 'غير متاح')}</dd></div>
+          </dl>
+        </section>
+        <section className="tenant-home-tasks" aria-labelledby="tenant-tasks-title">
+          <h2 id="tenant-tasks-title">إدارة الشركة</h2>
+          <ul className="tenant-task-list">
+            <TenantTaskLink href={`/tenant/${tenantId}/users`} title="المستخدمون والدعوات" detail="ادعُ الفريق وراجع صلاحياته وحالة الدعوات." />
+            <TenantTaskLink href={`/tenant/${tenantId}/entities-sites`} title="الجهات والفروع" detail="أضف الفروع أو حدّث بيانات الجهات المرتبطة بالشركة." />
+            <TenantTaskLink href={`/tenant/${tenantId}/branding`} title="هوية الشركة" detail="اضبط الاسم الظاهر والشعار واللون المستخدم داخل المساحة." />
+          </ul>
+        </section>
+      </div>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>
   );
@@ -89,6 +102,10 @@ export default async function TenantPage({ params, searchParams }: {
 
 function objectValue(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
+}
+
+function TenantTaskLink({ href, title, detail }: { href: string; title: string; detail: string }) {
+  return <li><Link href={href} className="tenant-task-link"><span><strong>{title}</strong><small>{detail}</small></span><span aria-hidden="true">←</span></Link></li>;
 }
 
 function lifecycleText(value: unknown) {
