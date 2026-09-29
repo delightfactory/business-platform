@@ -13,10 +13,12 @@
     "typecheck": "tsc --noEmit",
     "operator:bootstrap": "node scripts/platform-operator-maintenance.mjs bootstrap",
     "operator:recover": "node scripts/platform-operator-maintenance.mjs recover",
-    "test:db:operator": "supabase test db --local supabase/tests/platform_operator_authority.test.sql"
+    "test:db:operator": "supabase test db --local"
   },
   "dependencies": {
     "@fontsource/cairo": "5.3.0",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.2",
     "next": "16.3.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
