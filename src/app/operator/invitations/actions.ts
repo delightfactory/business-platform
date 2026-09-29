@@ -4,7 +4,37 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 
-export async function createInvitationAction(formData: FormData) {
+export type InvitationFormState = {
+  error: 'invalid' | 'setup' | 'forbidden' | null;
+  attempt: number;
+  values: {
+    idempotencyKey: string;
+    tenantName: string;
+    entityName: string;
+    siteName: string;
+    targetEmail: string;
+    seatsMode: 'limited' | 'unlimited';
+    seatsLimit: string;
+    sitesMode: 'limited' | 'unlimited';
+    sitesLimit: string;
+  };
+};
+
+export async function createInvitationAction(previous: InvitationFormState, formData: FormData): Promise<InvitationFormState> {
+  const values: InvitationFormState['values'] = {
+    idempotencyKey: textField(formData, 'idempotencyKey').slice(0, 36),
+    tenantName: textField(formData, 'tenantName').slice(0, 160),
+    entityName: textField(formData, 'entityName').slice(0, 160),
+    siteName: textField(formData, 'siteName').slice(0, 160),
+    targetEmail: textField(formData, 'targetEmail').slice(0, 254),
+    seatsMode: limitMode(formData, 'seats'),
+    seatsLimit: textField(formData, 'seatsLimit').slice(0, 20),
+    sitesMode: limitMode(formData, 'sites'),
+    sitesLimit: textField(formData, 'sitesLimit').slice(0, 20),
+  };
+  const failed = (error: InvitationFormState['error']): InvitationFormState => ({
+    error, attempt: previous.attempt + 1, values,
+  });
   const key = textField(formData, 'idempotencyKey');
   const tenantName = textField(formData, 'tenantName');
   const entityName = textField(formData, 'entityName');
@@ -16,11 +46,11 @@ export async function createInvitationAction(formData: FormData) {
   const siteLimit = parseLimit(formData, 'sites', siteMode);
 
   if (!/^[0-9a-f-]{36}$/i.test(key) || !tenantName || !siteName || !email || seatLimit === INVALID || siteLimit === INVALID) {
-    redirect('/operator/invitations?state=invalid');
+    return failed('invalid');
   }
 
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect('/operator/invitations?state=setup');
+  if (!supabase) return failed('setup');
   const { data, error } = await supabase.rpc('create_tenant_admin_invitation', {
     p_idempotency_key: key,
     p_tenant_name: tenantName,
@@ -32,7 +62,7 @@ export async function createInvitationAction(formData: FormData) {
     p_site_limit_mode: siteMode,
     p_site_limit: siteLimit,
   });
-  if (error || !isInvitation(data)) redirect('/operator/invitations?state=forbidden');
+  if (error || !isInvitation(data)) return failed('forbidden');
   if (data.created !== true) {
     const state = data.lifecycle_state === 'accepted' ? 'already-accepted'
       : data.lifecycle_state === 'revoked' ? 'already-revoked'

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { verifyMemberInvitationAction } from './actions';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 type Search = Promise<{ token_hash?: string; type?: string; invitation_id?: string; issuance?: string; state?: string }>;
@@ -22,7 +23,7 @@ export default async function MemberInvitationCallbackPage({ searchParams }: { s
             <input type="hidden" name="type" value={query.type} />
             <input type="hidden" name="invitationId" value={query.invitation_id} />
             <input type="hidden" name="issuance" value={query.issuance} />
-            <button className="primary-button" type="submit">التحقق والمتابعة</button>
+            <SubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
           </form>
         </> : <p className="intro" role="alert">{query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب إعادة إرسال الدعوة.' : 'رابط الدعوة غير مكتمل. افتح أحدث رسالة وصلتك.'}</p>}
       </section>

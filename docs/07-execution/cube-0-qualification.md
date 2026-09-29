@@ -1,8 +1,27 @@
 # Cube 0 qualification record
 
+## Development transition decision (2026-09-30)
+
+**GO to Cube 1 on the verified Cube 0 engineering baseline.** The owner explicitly deferred hands-on physical-phone acceptance until several cubes can be reviewed together on Vercel with a live database. This is a scheduling decision, not evidence that the phone or an actual screen reader passed. PR #43 and the checks below are sufficient for development transition; integrated product acceptance remains a release gate before a customer pilot or production launch. Revisit the Operator and Tenant journeys on the deployed, representative-data build, record the owner verdict and device/assistive observations, and repair any findings before that release gate closes.
+
+## Final local closeout review (2026-09-30)
+
+The [interface and interaction audit](cube-0-interface-audit.md) records Tenant and Operator success/denial journeys on PR #43 head `d02ef9fff457c0bd6b17e703edac1aa95bc6b271`, persistent state and audit checks, a repaired HR/Payroll entitlement UI dependency, a complete 768px task, pointer and emulated-touch menu/toast checks, and screenshots. Local build and lint passed, and GitHub's lint/typecheck/build check succeeded on that exact commit. A targeted lifecycle SQL run passed 41/42 assertions on the populated demo database; the only failure was an exact Tenant count that assumed a clean fixture. Its stale-state and audit-rollback assertions passed. No database migration changed in this pass.
+
+**Integrated product acceptance remains open.** No physical phone was attached for real-device testing, an actual screen-reader pass has not been observed, and the owner has not accepted the rendered journeys at the reviewed commit. The development transition above does not represent those observations.
+
 ## Product experience decision after phone feedback (2026-09-29)
 
 The user reviewed the mobile experience after the qualification below and rejected its visual hierarchy, terminology, navigation, and crowded task flows as below the intended institutional SaaS quality. **The engineering and security evidence below remains valid for its reviewed commit, but the statement that Cube 0 is ready for the next cube is superseded for product experience. Cube 0 UX acceptance is open.** Do not use the earlier engineering decision as a product design sign-off.
+
+The [platform experience architecture](../05-engineering/platform-experience-architecture.md) defines the domain-neutral shell and future Business Domain expansion contract. The [Cube 0 experience redesign blueprint](../05-engineering/cube-0-experience-redesign.md) applies it to Operator and Tenant journeys. Implementation progress is recorded below; neither the documents nor the implementation commits constitute UX acceptance.
+
+### Historical isolated redesign progress at `8073a5d` (PR #43, draft)
+
+- The shared Operator/Tenant shell now provides a persistent desktop rail, a compact mobile context header, a working modal menu, a short mobile destination bar, active route state, and pending navigation feedback. It reserves a Business Domain navigation group without exposing unbuilt domains.
+- Tenant members and invitations have separate views. Member invitation, Legal Entity creation, and Site creation are focused pages. Operator First Admin invitation is a separate focused page. Branding uses a side-by-side preview on wide screens. Consequential forms have pending controls, and success notices are dismissible near the top of the workspace.
+- Local `npm run build`, `npm run lint`, and TypeScript checks passed for the redesign. In a 390 px browser view with representative Tenant data, the home rendered without horizontal overflow and the mobile menu opened, showed authorised destinations, and closed when a destination was selected.
+- Follow-up signed-in browser checks through the public HTTPS demo confirmed both disposable local accounts: the Tenant user reached the Legal Entity collection, focused Entity creation page, separate member/invitation views, and focused member invitation page; the Operator reached its home and focused First Admin invitation page. At 390 px the inspected screens remained within the viewport, and route links showed pending feedback. This was browser evidence on the host, not physical outside-network phone acceptance. The toast, mutation, keyboard, and tablet gaps from this earlier snapshot were subsequently checked as recorded above and in the interface audit. GitHub Actions later completed successfully on the exact PR head; this PR remains draft pending product acceptance.
 
 Before closing Cube 0, review the live Operator and Tenant journeys on a phone, tablet, and desktop with representative data: create/invite a company administrator, inspect invitations, manage company limits and access, switch companies, manage users and branches, and recover from denied or suspended access. Each journey must have a clear next action, plain Arabic, visible persistent state, transient feedback in the appropriate place, a correction path, reachable navigation, and no normal horizontal page scrolling. Record the actual flow and screenshots; a build or passing database tests alone do not close this gate.
 

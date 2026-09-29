@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { acceptMemberInvitationAction, setMemberInvitationPasswordAction } from './actions';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 type Search = Promise<{ id?: string; issuance?: string; state?: string }>;
@@ -29,10 +30,10 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
           <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
           <p className="field-hint">ثمانية أحرف على الأقل. ستُستخدم كلمة المرور نفسها لكل مساحاتك.</p>
-          <button className="primary-button" type="submit">حفظ كلمة المرور</button>
+          <SubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
         </form> : <form className="auth-form" action={acceptMemberInvitationAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
-          <button className="primary-button" type="submit">قبول الدعوة</button>
+          <SubmitButton label="قبول الدعوة" pendingLabel="جارٍ القبول…" />
         </form>}
       </section>
     </main>

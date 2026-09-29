@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
-import { PageFrame, TenantNavigation } from '@/components/context-navigation';
+import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { manageLegalEntityAction, manageSiteAction } from '../actions';
+import { RecordActionForm } from './RecordActionForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,7 +40,6 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
   return (
     <PageFrame footer="بيانات الشركة">
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
-      <TenantNavigation tenantId={tenantId} tenantName={snapshot.tenant_name} current="entities-sites" />
       <section className="work-card task-page tenant-detail-header" aria-labelledby="entity-title">
         <Link className="back-link" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</Link>
         <p className="eyebrow">جهة قانونية</p>
@@ -54,44 +53,30 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
         {canEntities && <div className="task-actions">
           <details className="task-disclosure">
             <summary className="secondary-button">تعديل بيانات الجهة</summary>
-            <form action={manageLegalEntityAction} className="auth-form compact-form">
-              <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="entityId" value={entity.id} />
-              <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="update" />
-              <label htmlFor="entity-display-name">اسم الجهة داخل المنصة</label>
-              <input id="entity-display-name" name="displayName" defaultValue={entity.display_name} required maxLength={160} />
-              <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-              <input id="entity-legal-name" name="legalName" defaultValue={entity.legal_name ?? ''} maxLength={200} />
-              <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
-              <label htmlFor="entity-update-reason">سبب التعديل</label>
-              <input id="entity-update-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">حفظ بيانات الجهة</button>
-            </form>
+            <RecordActionForm tenantId={tenantId} entityId={entity.id} action="update" displayName={entity.display_name}
+              legalName={entity.legal_name ?? ''} label="حفظ بيانات الجهة" />
           </details>
           {entity.is_active && !entity.is_default && <details className="task-disclosure">
             <summary className="secondary-button">جعلها الجهة الافتراضية</summary>
-            <form action={manageLegalEntityAction} className="auth-form compact-form">
-              <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="entityId" value={entity.id} />
-              <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="default" />
-              <label htmlFor="entity-default-reason">سبب التغيير</label><input id="entity-default-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">تأكيد الاختيار</button>
-            </form>
+            <RecordActionForm tenantId={tenantId} entityId={entity.id} action="default" label="تأكيد اختيار الجهة الأساسية" />
           </details>}
           {entity.is_active && Number(entity.active_site_count ?? 0) > 0
             ? <p className="field-hint">عطّل المواقع التابعة أولًا قبل تعطيل الجهة.</p>
             : entity.is_active ? <details className="task-disclosure danger-disclosure">
               <summary className="secondary-button">تعطيل الجهة</summary>
-              <EntityStateForm tenantId={tenantId} entityId={entity.id} action="deactivate" />
+              <RecordActionForm tenantId={tenantId} entityId={entity.id} action="deactivate" label="تأكيد تعطيل الجهة" />
             </details> : <details className="task-disclosure">
               <summary className="secondary-button">إعادة تفعيل الجهة</summary>
-              <EntityStateForm tenantId={tenantId} entityId={entity.id} action="reactivate" />
+              <RecordActionForm tenantId={tenantId} entityId={entity.id} action="reactivate" label="تأكيد إعادة تفعيل الجهة" />
             </details>}
         </div>}
       </section>
 
       <section className="work-card task-page tenant-detail-sites" aria-labelledby="sites-title">
-        <div className="record-title-row"><h2 id="sites-title">الفروع والمواقع</h2>
-          <span className="record-meta">{snapshot.site_limit?.mode === 'unlimited'
+        <div className="record-title-row"><div><h2 id="sites-title">الفروع والمواقع</h2>
+          <span className="record-meta">الفروع النشطة بالشركة: {snapshot.site_limit?.mode === 'unlimited'
             ? `${activeSites} نشط · بلا حد أقصى` : `${activeSites} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`}</span></div>
+          {canSites && entity.is_active && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</Link>}</div>
         <p className="field-hint">يُسجَّل كل فرع أو موقع عمل تحت الجهة القانونية التي يتبعها.</p>
         {!canSites && <p className="form-message" role="status">عرض التفاصيل يتطلب صلاحية إدارة المواقع.</p>}
         {canSites && entity.sites.length === 0 && <div className="empty-state"><p>لا توجد فروع أو مواقع مسجلة لهذه الجهة.</p></div>}
@@ -103,70 +88,32 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
               {site.is_default && <p className="record-meta">الموقع الافتراضي للشركة</p>}
             </div>
             <details className="task-disclosure site-actions-disclosure">
-              <summary className="secondary-button">إجراءات الفرع</summary>
+              <summary className="secondary-button" aria-label={`إجراءات فرع ${site.display_name}`}>إجراءات الفرع</summary>
               <div className="task-actions">
                 <details className="task-disclosure"><summary className="secondary-button">تعديل الاسم</summary>
-                <form action={manageSiteAction} className="auth-form compact-form">
-                  <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="siteId" value={site.id} />
-                  <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="update" />
-                  <label htmlFor={`site-name-${site.id}`}>اسم الفرع أو الموقع</label>
-                  <input id={`site-name-${site.id}`} name="displayName" defaultValue={site.display_name} required maxLength={160} />
-                  <label htmlFor={`site-update-reason-${site.id}`}>سبب تعديل الاسم</label>
-                  <input id={`site-update-reason-${site.id}`} name="reason" required minLength={3} maxLength={500} />
-                  <button className="secondary-button" type="submit">حفظ الاسم</button>
-                </form></details>
+                <RecordActionForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="update"
+                  displayName={site.display_name} label="حفظ اسم الفرع" /></details>
                 {site.is_active && !site.is_default && <details className="task-disclosure"><summary className="secondary-button">جعله الفرع الأساسي</summary>
-                  <SiteStateForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="default" label="تأكيد اختيار الفرع الأساسي" />
+                  <RecordActionForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="default"
+                    displayName={site.display_name} label="تأكيد اختيار الفرع الأساسي" />
                 </details>}
                 {site.is_active ? <details className="task-disclosure danger-disclosure"><summary className="secondary-button">تعطيل الفرع</summary>
-                  <SiteStateForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="deactivate" label="تأكيد تعطيل الفرع" />
+                  <RecordActionForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="deactivate"
+                    displayName={site.display_name} label="تأكيد تعطيل الفرع" />
                 </details>
                   : !entity.is_active ? <p className="field-hint">أعد تفعيل الجهة أولًا لإعادة تفعيل هذا الموقع.</p>
                     : full ? <p className="field-hint">اكتمل الحد. عطّل موقعًا آخر أو اطلب رفع الحد قبل إعادة التفعيل.</p>
                       : <details className="task-disclosure"><summary className="secondary-button">إعادة تفعيل الفرع</summary>
-                        <SiteStateForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="reactivate" label="تأكيد إعادة التفعيل" />
+                        <RecordActionForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="reactivate"
+                          displayName={site.display_name} label="تأكيد إعادة تفعيل الفرع" />
                       </details>}
               </div>
             </details>
           </li>)}
         </ul>}
-        {canSites && entity.is_active && <details className="task-disclosure">
-          <summary className="secondary-button">إضافة فرع أو موقع</summary>
-          {full ? <p className="form-message capacity-message" role="status">اكتمل حد المواقع. عطّل موقعًا غير مستخدم، أو اطلب من مسؤول الاشتراك أو دعم المنصة رفع الحد.</p> : (
-            <form action={manageSiteAction} className="auth-form compact-form">
-              <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="legalEntityId" value={entity.id} />
-              <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="create" />
-              <label htmlFor="site-name">اسم الفرع أو الموقع</label><input id="site-name" name="displayName" required maxLength={160} />
-              <label htmlFor="site-create-reason">سبب الإضافة</label><input id="site-create-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">إضافة الفرع أو الموقع</button>
-            </form>
-          )}
-        </details>}
       </section>
     </PageFrame>
   );
-}
-
-function EntityStateForm({ tenantId, entityId, action }: { tenantId: string; entityId: string; action: 'deactivate' | 'reactivate' }) {
-  const label = action === 'deactivate' ? 'سبب التعطيل' : 'سبب إعادة التفعيل';
-  return <form action={manageLegalEntityAction} className="auth-form compact-form">
-    <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="entityId" value={entityId} />
-    <input type="hidden" name="returnEntityId" value={entityId} /><input type="hidden" name="action" value={action} />
-    <label htmlFor={`entity-state-reason-${action}`}>{label}</label><input id={`entity-state-reason-${action}`} name="reason" required minLength={3} maxLength={500} />
-    <button className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} type="submit">{action === 'deactivate' ? 'تأكيد التعطيل' : 'تأكيد إعادة التفعيل'}</button>
-  </form>;
-}
-
-function SiteStateForm({ tenantId, entityId, siteId, action, label }: {
-  tenantId: string; entityId: string; siteId: string; action: 'default' | 'deactivate' | 'reactivate'; label: string;
-}) {
-  return <form action={manageSiteAction} className="auth-form compact-form">
-    <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="siteId" value={siteId} />
-    <input type="hidden" name="returnEntityId" value={entityId} /><input type="hidden" name="action" value={action} />
-    <label htmlFor={`site-reason-${action}-${siteId}`}>{action === 'default' ? 'سبب تغيير الموقع الافتراضي' : action === 'deactivate' ? 'سبب التعطيل' : 'سبب إعادة التفعيل'}</label>
-    <input id={`site-reason-${action}-${siteId}`} name="reason" required minLength={3} maxLength={500} />
-    <button className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} type="submit">{label}</button>
-  </form>;
 }
 
 function feedbackForState(state?: string) {
@@ -198,7 +145,7 @@ function feedbackForState(state?: string) {
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
-  return <PageFrame><TenantNavigation tenantId={tenantId} tenantName="الشركة" current="entities-sites" />
+  return <PageFrame>
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></section></PageFrame>;
 }

@@ -4,6 +4,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantLifecycleAction } from '../actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { OperatorActionForm } from '@/app/operator/operator-action-form';
 
 export const dynamic = 'force-dynamic';
 
@@ -62,14 +63,13 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
               <details className="role-change-confirmation">
               <summary className={`secondary-button ${transition.target === 'archived' ? 'danger-action' : ''}`}>متابعة {transition.label}</summary>
               <p className="field-hint">سيُطبق هذا الإجراء على <bdi>{tenant.tenant_name}</bdi>.</p>
-              <form action={changeTenantLifecycleAction} className="auth-form compact-form">
+              <OperatorActionForm action={changeTenantLifecycleAction} errorMessages={lifecycleErrors} className="auth-form compact-form" buttonClassName={transition.target === 'archived' ? 'danger-button' : 'primary-button'} label={`تأكيد ${transition.label} وتسجيل السبب`}>
                 <input type="hidden" name="tenantId" value={tenant.tenant_id} />
                 <input type="hidden" name="expectedState" value={tenant.lifecycle_state} />
                 <input type="hidden" name="targetState" value={transition.target} />
                 <label htmlFor={`reason-${transition.target}`}>سبب الإجراء</label>
                 <textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
-                <button className={transition.target === 'archived' ? 'danger-button' : 'primary-button'} type="submit">تأكيد {transition.label} وتسجيل السبب</button>
-              </form>
+              </OperatorActionForm>
               </details>
             </article>
           ))}
@@ -103,7 +103,9 @@ function stateLabel(state: string) {
 }
 
 function messageFor(state: string) {
-  const messages: Record<string, string> = {
+  return lifecycleErrors[state] ?? 'تعذر إتمام الإجراء.';
+}
+const lifecycleErrors: Record<string, string> = {
     active: 'أُعيد تشغيل الشركة.', suspended: 'عُلّقت الشركة.', archived: 'أُرشفت الشركة.',
     invalid: 'تعذر التحقق من الإجراء.', reason: 'أدخل سببًا من 3 إلى 500 حرف.',
     transition: 'هذا الانتقال غير مسموح من الحالة الحالية.',
@@ -111,9 +113,7 @@ function messageFor(state: string) {
     'not-found': 'لم نعثر على الشركة المطلوبة.',
     failed: 'تعذر حفظ التغيير. لم تُعتمد أي حالة بلا سجل تدقيق.',
     setup: 'إعداد الاتصال غير مكتمل.',
-  };
-  return messages[state] ?? 'تعذر إتمام الإجراء.';
-}
+};
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail }: { title: string; detail: string }) {

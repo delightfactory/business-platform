@@ -25,7 +25,7 @@ export default async function EntitlementsPage() {
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
     <section className="work-card operator-collection" aria-labelledby="entitlements-title">
-      <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title">الشركات</h1>
+      <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title">الوحدات المتاحة للشركات</h1>
       <p className="intro">الإتاحة والإنهاء لا يحذفان بيانات الشركة. تُسجل كل مراجعة مع سببها.</p>
       {tenants.length === 0 ? <p className="intro">لا توجد شركات بعد.</p> : <ul className="member-list">
         {tenants.map((tenant) => <li className="member-card" key={tenant.tenant_id}>

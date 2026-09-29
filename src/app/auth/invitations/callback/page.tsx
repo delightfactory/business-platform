@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { signOutAction } from '@/app/auth/actions';
 import { verifyInvitationLinkAction } from './actions';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,7 +36,7 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
               <input type="hidden" name="type" value={params.type} />
               <input type="hidden" name="invitationId" value={params.invitation_id} />
               <input type="hidden" name="issuance" value={params.issuance} />
-              <button className="primary-button" type="submit">التحقق والمتابعة</button>
+              <SubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
             </form>
           </>
         ) : (

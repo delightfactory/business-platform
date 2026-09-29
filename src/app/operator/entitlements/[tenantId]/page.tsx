@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { OperatorActionForm } from '@/app/operator/operator-action-form';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantEntitlementAction } from '../actions';
 
@@ -29,6 +30,8 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   const tenant = data as Snapshot;
   if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== 2) return <Status title="بيانات الإتاحة غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
+  const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
+    && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
 
   return <main className="app-shell">
     {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث إتاحة الوحدة وتسجيل السبب." />}
@@ -40,12 +43,12 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
-      <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} />)}</div>
+      <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} />)}</div>
     </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
   </main>;
 }
 
-function DecisionCard({ tenantId, decision }: { tenantId: string; decision: Decision }) {
+function DecisionCard({ tenantId, decision, peopleAvailable }: { tenantId: string; decision: Decision; peopleAvailable: boolean }) {
   const people = decision.capability_key === 'hr.people';
   const label = people ? 'إدارة الموارد البشرية' : 'الرواتب';
   const enabled = decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled;
@@ -59,25 +62,24 @@ function DecisionCard({ tenantId, decision }: { tenantId: string; decision: Deci
       : 'لم تُتح هذه الوحدة للشركة بعد.'}</p>}
     {decision.status === 'conflict' && <p className="form-message" role="alert">تعارض في القرارات السارية؛ الإتاحة مغلقة حتى إصلاح البيانات.</p>}
     {decision.status === 'future_conflict' && <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</p>}
-    {decision.capability_key === 'hr.payroll' && !decision.evaluator_enabled &&
-      <p className="field-hint">تحتاج الرواتب إلى إتاحة الموارد البشرية أولًا.</p>}
+    {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
+      <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
     {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
-      <summary className="secondary-button">{decision.status === 'missing' ? 'تحديد الإتاحة' : 'تغيير القرار'}</summary>
-      <form action={changeTenantEntitlementAction} className="auth-form">
+      <summary className="secondary-button">{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</summary>
+      <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ إتاحة ${label}`}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
         <label htmlFor={`${decision.capability_key}-decision`}>القرار</label>
-        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted ? 'grant' : 'deny'}>
-          <option value="grant">إتاحة</option><option value="deny">منع</option>
+        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || peopleAvailable) ? 'grant' : 'deny'}>
+          <option value="grant" disabled={!people && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
         </select>
         <label htmlFor={`${decision.capability_key}-expiry`}>آخر يوم سريان (اختياري، بتوقيت القاهرة)</label>
         <input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
         <label htmlFor={`${decision.capability_key}-reason`}>سبب التغيير</label>
         <textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
-        <button className="primary-button" type="submit">تأكيد القرار</button>
-      </form>
+      </OperatorActionForm>
     </details>}
   </article>;
 }
@@ -86,7 +88,9 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function dateLabel(value: string) { return new Date(value).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
-  const messages: Record<string, string> = {
+  return entitlementErrors[state] ?? 'تعذر إتمام الإجراء.';
+}
+const entitlementErrors: Record<string, string> = {
     invalid: 'تحقق من بيانات القرار.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
     forbidden: 'لم تعد لديك صلاحية إدارة الإتاحة.', 'not-found': 'الشركة غير متاحة.',
     'people-required': 'أتح الموارد البشرية أولًا، واجعل نهاية إتاحة الرواتب لا تتجاوز نهاية إتاحة الموارد البشرية.',
@@ -94,7 +98,5 @@ function stateText(state: string) {
     'future-conflict': 'يوجد قرار مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد قرارات فعّالة متعارضة؛ لم يتغير شيء.',
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'تعذر تحديث القرار. لم يُعتمد التغيير دون سجل تدقيق.',
-  };
-  return messages[state] ?? 'تعذر إتمام الإجراء.';
-}
+};
 function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link></section></main>; }

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { TenantNavigation } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { BrandingEditor } from './BrandingEditor';
@@ -35,10 +34,10 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
 
   return <main className="app-shell">
     {query.state === 'saved' && <FeedbackToast key={crypto.randomUUID()} message={stateText('saved')} />}
-    <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} current="branding" />
-    <section className="work-card" aria-labelledby="branding-title">
-      <p className="eyebrow">إعداد الهوية</p><h1 id="branding-title"><bdi>{branding.tenant_name}</bdi></h1>
-      <p className="intro">اسم العرض والشعار واللون الرئيسي لمساحة الشركة.</p>
+    <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
+      <h1 id="branding-title">هوية الشركة</h1>
+      <p>اضبط الاسم والشعار واللون الذي يراه فريق <bdi>{branding.tenant_name}</bdi>.</p></div></header>
+    <section className="workspace-branding-panel" aria-labelledby="branding-title">
       {query.state && query.state !== 'saved' && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}

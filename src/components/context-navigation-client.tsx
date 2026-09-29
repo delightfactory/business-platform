@@ -1,25 +1,58 @@
 'use client';
 
-import Link from 'next/link';
+import Image from 'next/image';
+import Link, { useLinkStatus } from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { signOutAction } from '@/app/auth/actions';
 
-export type ContextLink = { href: string; label: string; current?: boolean };
+export type ContextLink = { href: string; label: string };
+
+type Props = {
+  homeHref: string;
+  homeLabel: string;
+  contextLabel: string;
+  links: ContextLink[];
+  businessLinks: ContextLink[];
+  mode: 'operator' | 'tenant';
+  logoUrl?: string | null;
+  switchHref?: string;
+  switchLabel?: string;
+};
+
+function LinkProgress() {
+  const { pending } = useLinkStatus();
+  return <>
+    <span className={`workspace-link-progress${pending ? ' is-pending' : ''}`} aria-hidden="true" />
+    {pending && <span className="workspace-link-loading" role="status" aria-label="جارٍ فتح الصفحة" />}
+  </>;
+}
+
+function WorkspaceLink({ item, pathname, onClick, exact = false }: {
+  item: ContextLink;
+  pathname: string;
+  onClick?: () => void;
+  exact?: boolean;
+}) {
+  const current = pathname === item.href || (!exact && pathname.startsWith(`${item.href}/`));
+  return <Link href={item.href} aria-current={current ? 'page' : undefined} onClick={onClick}>
+    <span>{item.label}</span><LinkProgress />
+  </Link>;
+}
 
 export function ContextNavigationClient({
-  homeHref, homeLabel, contextLabel, links, switchHref, switchLabel, deriveContext = false, showContextTitle = true,
-}: {
-  homeHref: string; homeLabel: string; contextLabel: string; links: ContextLink[];
-  switchHref?: string; switchLabel?: string; deriveContext?: boolean; showContextTitle?: boolean;
-}) {
+  homeHref, homeLabel, contextLabel, links, businessLinks, mode, logoUrl, switchHref, switchLabel,
+}: Props) {
   const pathname = usePathname();
   const mobileDialog = useRef<HTMLDialogElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const previousOverflow = useRef('');
   const menuOwnsScrollLock = useRef(false);
-  const allLinks = [...links, ...(switchHref && switchLabel ? [{ href: switchHref, label: switchLabel }] : [])];
+  const homeLink = { href: homeHref, label: 'الرئيسية' };
+  const allLinks = [...businessLinks, ...links];
   const activeLink = allLinks.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
-  const title = deriveContext ? activeLink?.label ?? (pathname === homeHref ? 'المهام' : contextLabel) : contextLabel;
+  const pageTitle = pathname === homeHref ? 'الرئيسية' : activeLink?.label ?? contextLabel;
+  const primaryLinks = (mode === 'tenant' && businessLinks.length > 0 ? businessLinks : links).slice(0, 2);
 
   useEffect(() => {
     if (mobileDialog.current?.open) mobileDialog.current.close();
@@ -29,11 +62,13 @@ export function ContextNavigationClient({
   }, []);
 
   function openMobileMenu() {
-    if (!mobileDialog.current) return;
+    const dialog = mobileDialog.current;
+    if (!dialog || dialog.open) return;
     previousOverflow.current = document.body.style.overflow;
-    mobileDialog.current.showModal();
+    dialog.showModal();
     document.body.style.overflow = 'hidden';
     menuOwnsScrollLock.current = true;
+    setMenuOpen(true);
   }
 
   function closeMobileMenu() {
@@ -41,43 +76,75 @@ export function ContextNavigationClient({
   }
 
   function handleMobileMenuClose() {
-    if (!menuOwnsScrollLock.current) return;
-    document.body.style.overflow = previousOverflow.current;
+    if (menuOwnsScrollLock.current) document.body.style.overflow = previousOverflow.current;
     menuOwnsScrollLock.current = false;
+    setMenuOpen(false);
   }
 
-  return (
-    <header className="context-header">
-      <div className="context-identity">
-        <Link className="context-home" href={homeHref} aria-label={homeLabel} aria-current={pathname === homeHref ? 'page' : undefined}>
-          <span className="brand-mark" aria-hidden="true">م</span>
-          <span>{homeLabel}</span>
-        </Link>
-        {showContextTitle && <><span className="context-divider" aria-hidden="true">/</span><bdi className="context-title">{title}</bdi></>}
-      </div>
+  const identity = <>
+    {logoUrl ? <Image src={logoUrl} alt="" width={36} height={36} unoptimized className="workspace-logo" />
+      : <span className="workspace-logo workspace-monogram" aria-hidden="true">م</span>}
+    <span className="workspace-identity-text"><small>{mode === 'operator' ? 'إدارة المنصة' : homeLabel}</small><bdi>{mode === 'operator' ? homeLabel : contextLabel}</bdi></span>
+  </>;
 
-      <nav className="context-desktop-nav" aria-label="التنقل في المنصة">
-        {allLinks.map((item) => <Link key={item.href} href={item.href} aria-current={pathname === item.href || pathname.startsWith(`${item.href}/`) ? 'page' : undefined}>{item.label}</Link>)}
-        <form action={signOutAction}><button type="submit">خروج</button></form>
+  return <div className="workspace-navigation">
+    <aside className="workspace-sidebar" aria-label="التنقل الرئيسي">
+      <Link className="workspace-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
+      {mode === 'operator' && <span className="workspace-mode">وضع المشغّل</span>}
+      <nav className="workspace-sidebar-links" aria-label="أقسام مساحة العمل">
+        <WorkspaceLink item={homeLink} pathname={pathname} exact />
+        {businessLinks.length > 0 && <div className="workspace-nav-group">
+          <p>مجالات العمل</p>
+          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+        </div>}
+        {links.length > 0 && <div className="workspace-nav-group">
+          <p>{mode === 'operator' ? 'تشغيل المنصة' : 'إدارة الشركة'}</p>
+          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+        </div>}
       </nav>
-
-      <div className="context-mobile-nav">
-        <button className="context-menu-trigger" type="button" aria-haspopup="dialog" onClick={openMobileMenu}>القائمة <span aria-hidden="true">☰</span></button>
-        <dialog className="context-mobile-dialog" ref={mobileDialog} aria-label="قائمة التنقل"
-          onClose={handleMobileMenuClose}
-          onClick={(event) => {
-            const bounds = event.currentTarget.getBoundingClientRect();
-            if (event.clientX < bounds.left || event.clientX > bounds.right) closeMobileMenu();
-          }}>
-          <div className="context-dialog-heading"><strong>التنقل</strong><button type="button" autoFocus onClick={closeMobileMenu} aria-label="إغلاق القائمة">×</button></div>
-          <nav aria-label="التنقل في المنصة">
-            <Link href={homeHref} aria-current={pathname === homeHref ? 'page' : undefined} onClick={closeMobileMenu}>{homeLabel}</Link>
-            {allLinks.map((item) => <Link key={item.href} href={item.href} aria-current={pathname === item.href || pathname.startsWith(`${item.href}/`) ? 'page' : undefined}
-              onClick={closeMobileMenu}>{item.label}</Link>)}
-            <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
-          </nav>
-        </dialog>
+      <div className="workspace-sidebar-footer">
+        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} />}
+        <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
       </div>
+    </aside>
+
+    <header className="workspace-mobile-header">
+      <Link className="workspace-mobile-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
+      <span className="workspace-mobile-location"><bdi>{pageTitle}</bdi></span>
+      <button type="button" className="workspace-mobile-menu-button" onClick={openMobileMenu}
+        aria-label="فتح قائمة التنقل" aria-haspopup="dialog" aria-expanded={menuOpen}>
+        <span aria-hidden="true">☰</span>
+      </button>
     </header>
-  );
+
+    <nav className="workspace-mobile-tabs" aria-label="التنقل السريع">
+      <WorkspaceLink item={homeLink} pathname={pathname} exact />
+      {primaryLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+      <button type="button" onClick={openMobileMenu} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={menuOpen}>
+        <span aria-hidden="true">☰</span><span>المزيد</span>
+      </button>
+    </nav>
+
+    <dialog className="workspace-mobile-dialog" ref={mobileDialog} aria-label="قائمة أقسام المنصة"
+      onClose={handleMobileMenuClose}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) closeMobileMenu();
+      }}>
+      <div className="workspace-dialog-heading">
+        <span>{mode === 'operator' ? 'تشغيل المنصة' : contextLabel}</span>
+        <button type="button" onClick={closeMobileMenu} aria-label="إغلاق القائمة">×</button>
+      </div>
+      <nav aria-label="كل الأقسام">
+        <WorkspaceLink item={homeLink} pathname={pathname} onClick={closeMobileMenu} exact />
+        {businessLinks.length > 0 && <div className="workspace-dialog-group"><p>مجالات العمل</p>
+          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} onClick={closeMobileMenu} />)}
+        </div>}
+        {links.length > 0 && <div className="workspace-dialog-group"><p>{mode === 'operator' ? 'تشغيل المنصة' : 'إدارة الشركة'}</p>
+          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} onClick={closeMobileMenu} />)}
+        </div>}
+        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} onClick={closeMobileMenu} />}
+        <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
+      </nav>
+    </dialog>
+  </div>;
 }

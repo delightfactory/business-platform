@@ -7,22 +7,28 @@ export function ContextNavigation({
   homeLabel,
   contextLabel,
   links,
+  mode,
+  logoUrl,
+  businessLinks = [],
   switchHref,
   switchLabel,
-  showContextTitle = true,
 }: {
   homeHref: string;
   homeLabel: string;
   contextLabel: string;
   links: ContextLink[];
+  mode: 'operator' | 'tenant';
+  logoUrl?: string | null;
+  businessLinks?: ContextLink[];
   switchHref?: string;
   switchLabel?: string;
-  showContextTitle?: boolean;
 }) {
-  return <ContextNavigationClient homeHref={homeHref} homeLabel={homeLabel} contextLabel={contextLabel} links={links} switchHref={switchHref} switchLabel={switchLabel} showContextTitle={showContextTitle} />;
+  return <ContextNavigationClient homeHref={homeHref} homeLabel={homeLabel} contextLabel={contextLabel}
+    links={links} businessLinks={businessLinks} mode={mode} logoUrl={logoUrl}
+    switchHref={switchHref} switchLabel={switchLabel} />;
 }
 
-export async function OperatorNavigation({ current }: { current: string }) {
+export async function OperatorNavigation() {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
   if (supabase) {
@@ -34,37 +40,29 @@ export async function OperatorNavigation({ current }: { current: string }) {
         supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
         supabase.rpc('current_operator_can_manage_commercial_access'),
       ]);
-      if (operator.data) links.push({ href: '/operator/operators', label: 'المشغّلون', current: current === 'operators' });
+      if (lifecycle.data) links.push({ href: '/operator/tenants', label: 'الشركات' });
       if (onboarding.data) {
-        links.push({ href: '/operator/onboarding', label: 'إعداد شركة', current: current === 'onboarding' });
-        links.push({ href: '/operator/invitations', label: 'دعوات الشركة', current: current === 'invitations' });
+        links.push({ href: '/operator/invitations', label: 'دعوات الشركات' });
+        links.push({ href: '/operator/onboarding', label: 'إعداد شركة' });
       }
-      if (lifecycle.data) links.push({ href: '/operator/tenants', label: 'حالة الشركات', current: current === 'tenants' });
       if (commercial.data) {
-        links.push({ href: '/operator/commercial', label: 'الحدود', current: current === 'commercial' });
-        links.push({ href: '/operator/entitlements', label: 'إتاحة الوحدات', current: current === 'entitlements' });
+        links.push({ href: '/operator/commercial', label: 'حدود الاشتراك' });
+        links.push({ href: '/operator/entitlements', label: 'الوحدات المتاحة' });
       }
+      if (operator.data) links.push({ href: '/operator/operators', label: 'المشغّلون' });
     }
   }
-  return <ContextNavigationClient homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel={currentLabel(current)} links={links} deriveContext />;
-}
-
-function currentLabel(current: string) {
-  const labels: Record<string, string> = {
-    home: 'المهام', operators: 'المشغّلون', onboarding: 'إعداد شركة', invitations: 'دعوات الشركة',
-    tenants: 'حالة الشركات', commercial: 'الحدود', entitlements: 'إتاحة الوحدات',
-  };
-  return labels[current] ?? 'تشغيل المنصة';
+  return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;
 }
 
 export async function TenantNavigation({
   tenantId,
   tenantName,
-  current,
+  logoUrl,
 }: {
   tenantId: string;
   tenantName: string;
-  current: 'home' | 'users' | 'entities-sites' | 'branding';
+  logoUrl?: string | null;
 }) {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
@@ -79,20 +77,20 @@ export async function TenantNavigation({
         supabase.rpc('current_tenant_spaces'),
       ]);
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
-      if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون', current: current === 'users' });
+      if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
       const identity = entitiesSites.data && typeof entitiesSites.data === 'object' && !Array.isArray(entitiesSites.data)
         ? entitiesSites.data as Record<string, unknown> : null;
       if (identity?.can_manage_legal_entities === true || identity?.can_manage_sites === true) {
-        links.push({ href: `/tenant/${tenantId}/entities-sites`, label: 'الجهات والفروع', current: current === 'entities-sites' });
+        links.push({ href: `/tenant/${tenantId}/entities-sites`, label: 'الجهات والفروع' });
       }
       const brand = branding.data && typeof branding.data === 'object' && !Array.isArray(branding.data)
         ? branding.data as Record<string, unknown> : null;
-      if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة', current: current === 'branding' });
+      if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة' });
     }
   }
   return <ContextNavigation homeHref={`/tenant/${tenantId}`} homeLabel="مساحة الشركة" contextLabel={tenantName}
-    links={links.map((item) => ({ ...item, current: current === 'home' ? false : item.current }))}
-    switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} showContextTitle={false} />;
+    links={links} mode="tenant" logoUrl={logoUrl}
+    switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} />;
 }
 
 export function PageFrame({ children, footer = 'منصة الأعمال' }: { children: ReactNode; footer?: string }) {

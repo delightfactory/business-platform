@@ -10,10 +10,10 @@ export async function changeTenantEntitlementAction(formData: FormData) {
   const expiresOn = text(formData, 'expiresOn');
   const reason = text(formData, 'reason');
   if (!isUuid(tenantId) || !['hr.people', 'hr.payroll'].includes(capability)
-    || !['grant', 'deny'].includes(decision) || (expiresOn && !/^\d{4}-\d{2}-\d{2}$/.test(expiresOn))) go(tenantId, 'invalid');
-  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason');
+    || !['grant', 'deny'].includes(decision) || (expiresOn && !/^\d{4}-\d{2}-\d{2}$/.test(expiresOn))) return 'invalid';
+  if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();
-  if (!supabase) go(tenantId, 'setup');
+  if (!supabase) return 'setup';
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
   const { error } = await supabase.rpc('change_tenant_capability_entitlement', {
@@ -23,7 +23,7 @@ export async function changeTenantEntitlementAction(formData: FormData) {
     p_valid_until: expiresOn || null,
     p_reason: reason,
   });
-  if (error) go(tenantId, mapError(error.message));
+  if (error) return mapError(error.message);
   redirect(`/operator/entitlements/${tenantId}?state=updated`);
 }
 
@@ -40,8 +40,4 @@ function mapError(message: string) {
   if (message.includes('tenant_entitlement_reason_required')) return 'reason';
   if (message.includes('tenant_entitlement_input_invalid')) return 'invalid';
   return 'failed';
-}
-function go(tenantId: string, state: string): never {
-  if (!isUuid(tenantId)) redirect('/operator/entitlements?state=invalid');
-  redirect(`/operator/entitlements/${tenantId}?state=${encodeURIComponent(state)}`);
 }

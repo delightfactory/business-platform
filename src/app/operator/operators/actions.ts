@@ -11,11 +11,11 @@ export async function changeOperatorGrantAction(formData: FormData) {
   const canManageLifecycle = formData.get('canManageTenantLifecycle') === 'on';
   const canManageCommercial = formData.get('canManageCommercialAccess') === 'on';
   const reason = text(formData, 'reason');
-  if (!validEmail(email) || !['grant', 'update', 'revoke'].includes(action)) go('invalid');
-  if (action !== 'revoke' && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial) go('capability');
-  if (reason.length < 3 || reason.length > 500) go('reason');
+  if (!validEmail(email) || !['grant', 'update', 'revoke'].includes(action)) return 'invalid';
+  if (action !== 'revoke' && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial) return 'capability';
+  if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();
-  if (!supabase) go('setup');
+  if (!supabase) return 'setup';
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('change_platform_operator_grant', {
@@ -23,8 +23,8 @@ export async function changeOperatorGrantAction(formData: FormData) {
     p_can_onboard_tenants: canOnboard, p_can_manage_tenant_lifecycle: canManageLifecycle,
     p_can_manage_commercial_access: canManageCommercial, p_reason: reason,
   });
-  if (error) go(mapError(error.message));
-  if (!data || typeof data !== 'object' || Array.isArray(data)) go('failed');
+  if (error) return mapError(error.message);
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return 'failed';
   const result = data as Record<string, unknown>;
   if (result.state === 'revoke' && typeof result.email === 'string'
     && result.email.toLowerCase() === user.email?.toLowerCase()) {
@@ -44,6 +44,7 @@ export async function changeOperatorGrantAction(formData: FormData) {
           : result.state === 'already-revoked' ? 'already-revoked'
             : result.state === 'not-active' ? 'not-active'
               : result.state === 'unchanged' ? 'unchanged' : 'failed';
+  if (state === 'already-active' || state === 'already-revoked' || state === 'not-active' || state === 'unchanged' || state === 'failed') return state;
   go(state);
 }
 

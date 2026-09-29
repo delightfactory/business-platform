@@ -94,7 +94,7 @@ The primary product surface is a professional web application with an adaptive a
 - Shared application-shell, design-token, component, form, feedback, navigation, accessibility, and responsive primitives should be centrally governed and reused across domains.
 - UX consistency includes workflow behavior and system states, not only styling.
 
-Detailed frontend behavior and quality rules are governed by `docs/05-engineering/frontend-ux-baseline.md`.
+Detailed frontend behavior and quality rules are governed by `docs/05-engineering/frontend-ux-baseline.md`. The application-wide workspace and Business Domain navigation contract is recorded in `docs/05-engineering/platform-experience-architecture.md`.
 
 ## Commercial capability model
 

@@ -4,6 +4,8 @@
 
 Define the experience and implementation guardrails for the web application so every product surface behaves like a professional application across desktop, laptop, tablet, and mobile without fragmenting into separate UI implementations.
 
+Use the [platform experience architecture](platform-experience-architecture.md) for the shared shell and future Business Domain expansion. The current [Cube 0 experience redesign](cube-0-experience-redesign.md) applies that structure to Operator and Tenant journeys.
+
 ## Product experience objective
 
 Business Platform is delivered as a web application, but the experience must adapt convincingly to the device context:
@@ -57,6 +59,16 @@ At minimum, the shared design system should eventually cover, as required by act
 A component must not be made generic merely because reuse is imaginable. Reusable primitives are justified when they represent a recurring product interaction or visual contract.
 
 ## Single-source improvement principle
+
+### Cube 0 control and surface contract
+
+- Action buttons use Cairo 600 at 14 px, an 8 px radius, and a shared minimum height of 40 px on desktop and 44 px at widths up to 900 px. Labels may wrap when necessary; never clip a translated action to force a fixed height.
+- Use the filled brand treatment for the task's primary action, a neutral bordered treatment for secondary actions, and the danger treatment for consequential destructive confirmation. A subtle top highlight and small shadow identify a pressable control; continuous shine, pulsing, and decorative card movement are not part of this system.
+- Buttons size to their content. Full width is reserved for focused authentication and deliberately featured mobile tasks. List actions wrap in a consistent group; they do not inherit the surrounding heading size or stretch to fill a grid cell.
+- Disclosure actions include a directional indicator that reflects their open state. Keyboard focus is visible, pending actions prevent duplicate submission, and reduced-motion preferences suppress interaction movement.
+- Forms align labels, fields, and actions consistently. A focused form panel does not add another bordered card around the same form. Surface elevation stays subtle; tinted summaries and focus feedback derive from the Tenant brand color while error and destructive states retain semantic colors.
+
+Verify the computed sizes and rendered appearance in representative list, detail, form, and authentication screens after changing these shared rules. This contract applies to future Business Domains as they are added.
 
 When a recurring component or interaction is improved, the change should normally propagate from the shared implementation rather than require editing every screen independently.
 

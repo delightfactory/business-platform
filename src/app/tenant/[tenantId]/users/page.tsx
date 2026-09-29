@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { TenantNavigation } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { inviteMemberAction, reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
+import { SubmitButton } from '@/components/submit-button';
+import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
-type SearchParams = Promise<{ state?: string }>;
+type SearchParams = Promise<{ state?: string; view?: string }>;
 type Row = { user_id: string; email: string; access_state: string; role_key: string | null; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
 
@@ -27,37 +27,33 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const result = data as Record<string, unknown>;
   const memberships = Array.isArray(result.memberships) ? result.memberships as Row[] : [];
   const invitations = Array.isArray(result.invitations) ? result.invitations as Invitation[] : [];
-  const snapshotValue = snapshot as Record<string, unknown>;
   const limit = objectValue(result.seat_limit);
   const used = Number(result.seat_usage ?? 0);
 
   const success = successMessage(query.state);
+  const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
+    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
   const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
     ? stateMessage(query.state) : null;
   return (
     <main className="app-shell">
       {success && <FeedbackToast key={crypto.randomUUID()} message={success} />}
-      <TenantNavigation tenantId={tenantId} tenantName={String(snapshotValue.tenant_name ?? 'الشركة')} current="users" />
-      <section className="work-card tenant-users-overview" aria-labelledby="members-title">
-        <p className="eyebrow">إدارة الوصول</p>
-        <h1 id="members-title">مستخدمو الشركة</h1>
-        <p className="usage-line">المستخدمون النشطون: <strong>{limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong></p>
+      <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
+        <h1 id="members-title">المستخدمون والدعوات</h1>
+        <p>تابع وصول فريقك، وأرسل دعوات جديدة عند الحاجة.</p></div>
+        <Link className="primary-button" href={`/tenant/${tenantId}/users/invite`}>دعوة عضو</Link>
+      </header>
+      <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
+        <span>الدعوات المعلّقة لا تُحتسب قبل قبولها.</span></div>
+      <section className="workspace-notices" aria-labelledby="members-title">
         {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
-        {canManageRoles && <p className="field-hint">يمكن تعديل أدوار المستخدمين من القائمة أدناه.</p>}
         {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
-        <details className="task-disclosure member-invite-disclosure">
-        <summary className="primary-button">دعوة عضو</summary>
-        <form className="auth-form member-invite-form" action={inviteMemberAction}>
-          <input type="hidden" name="tenantId" value={tenantId} />
-          <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
-          <label htmlFor="member-email">البريد الإلكتروني</label>
-          <input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} />
-          <p className="field-hint">سيُضاف الحساب بدور «عضو». تعيين مسؤول جديد يحتاج إجراءً منفصلًا.</p>
-          <button className="primary-button" type="submit">إرسال الدعوة</button>
-        </form>
-        </details>
       </section>
-      <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
+      <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
+        <Link href={`/tenant/${tenantId}/users`} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberships.length}</span></Link>
+        <Link href={`/tenant/${tenantId}/users?view=invitations`} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitations.length}</span></Link>
+      </nav>
+      {!showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
         {memberships.length === 0 ? <p className="intro">لا يوجد مستخدمون بعد.</p> : (
           <ul>{memberships.map((row) => (
@@ -78,21 +74,21 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
                     <input type="hidden" name="roleAction" value={row.protected_admin ? 'demote' : 'promote'} />
-                    <button className="secondary-button" type="submit">{row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'}</button>
+                    <SubmitButton className="secondary-button" label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
                   </form>
                 </details>}
                 {!row.protected_admin && <form action={setMemberAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
-                  <button className="secondary-button" type="submit">{row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'}</button>
+                  <SubmitButton className="secondary-button" label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
                 </form>}
               </div>
             </li>
           ))}</ul>
         )}
-      </section>
-      <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
+      </section>}
+      {showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
         <h2 id="pending-title">الدعوات</h2>
         {invitations.length === 0 ? <p className="intro">لا توجد دعوات.</p> : (
           <ul>{invitations.map((invitation) => (
@@ -111,18 +107,18 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <form action={reissueMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <button className="secondary-button" type="submit">إعادة إرسال</button>
+                  <SubmitButton className="secondary-button" label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
                 </form>
                 <form action={revokeMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <button className="secondary-button" type="submit">إلغاء الدعوة</button>
+                  <SubmitButton className="secondary-button" label="إلغاء الدعوة" />
                 </form>
               </div>}
             </li>
           ))}</ul>
         )}
-      </section>
+      </section>}
       <footer className="footer">منصة الأعمال · مستخدمو الشركة</footer>
     </main>
   );

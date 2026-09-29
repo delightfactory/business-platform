@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { signInAction } from '@/app/auth/actions';
+import { safeAuthNext } from '../safe-next';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,11 +18,7 @@ type SearchParams = Promise<{ state?: string; next?: string }>;
 
 export default async function LoginPage({ searchParams }: { searchParams: SearchParams }) {
   const { state, next: requestedNext } = await searchParams;
-  const tenantPath = /^\/tenant\/[0-9a-f-]{36}(?:\/(?:users|branding))?$/i;
-  const invitationPath = /^\/auth\/(?:membership-)?invitations\/accept\?id=[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}&issuance=\d+$/i;
-  const next = requestedNext && (tenantPath.test(requestedNext) || invitationPath.test(requestedNext))
-    ? requestedNext
-    : '';
+  const next = safeAuthNext(requestedNext ?? '');
 
   return (
     <main className="app-shell">
@@ -39,7 +37,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
           <input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr" />
           <label htmlFor="password">كلمة المرور</label>
           <input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} dir="ltr" />
-          <button className="primary-button" type="submit">دخول</button>
+          <SubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />
         </form>
         <p className="auth-links"><Link href="/auth/forgot-password">نسيت كلمة المرور؟</Link></p>
         <p className="foundation-note">إنشاء الحسابات غير متاح من هذه الصفحة.</p>
