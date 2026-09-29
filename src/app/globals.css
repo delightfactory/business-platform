@@ -182,6 +182,20 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .operator-capability-list { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0 0; padding: 0; list-style: none; }
 .operator-capability-list li { padding: .3rem .55rem; border-radius: .4rem; background: #f1f5f6; color: #34515a; font-size: .78rem; }
 .operator-grant-actions .danger-action { color: var(--color-danger); border-color: var(--color-danger); }
+.operator-area .operator-lifecycle-detail { width: min(100%, var(--work-content-max)); padding: 0; border: 0; box-shadow: none; background: transparent; }
+.operator-lifecycle-detail > .entity-status { margin: .8rem 0 .3rem; }
+.operator-lifecycle-detail > .intro { max-width: 40rem; margin: .7rem 0 1.5rem; }
+.operator-lifecycle-detail > h2 { margin: 0 0 1rem; font-size: 1.2rem; }
+.lifecycle-choice-list { display: grid; gap: .75rem; }
+.lifecycle-choice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem; padding: 1.25rem 1.35rem; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
+.lifecycle-choice > div { min-width: 0; max-width: 38rem; }
+.lifecycle-choice h3, .lifecycle-choice p { margin: 0; }
+.lifecycle-choice h3 { font-size: 1rem; }
+.lifecycle-choice p { margin-top: .35rem; color: var(--color-muted); line-height: 1.7; }
+.lifecycle-choice details { min-width: min(100%, 16rem); max-width: 100%; }
+.lifecycle-choice details[open] { flex-basis: min(100%, 32rem); }
+.lifecycle-choice details .field-hint { margin-top: .75rem; }
+.lifecycle-choice details .danger-action { color: var(--color-danger); border-color: var(--color-danger); }
 .app-shell > .tenant-collection { width: min(100%, var(--work-content-max)); border: 0; box-shadow: none; background: transparent; padding: 0; }
 .tenant-collection > .intro { max-width: none; margin: .25rem 0 .5rem; }
 .tenant-collection .usage-line { width: fit-content; max-width: 100%; padding: .45rem .75rem; font-size: .88rem; }
