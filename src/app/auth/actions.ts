@@ -2,11 +2,12 @@
 
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { safeAuthNext } from './safe-next';
 
 export async function signInAction(formData: FormData) {
   const email = String(formData.get('email') ?? '').trim();
   const password = String(formData.get('password') ?? '');
-  const next = safeTenantNext(String(formData.get('next') ?? ''));
+  const next = safeAuthNext(String(formData.get('next') ?? ''));
   const returnTo = next ? `&next=${encodeURIComponent(next)}` : '';
   if (!email || !password) redirect(`/auth/login?state=invalid${returnTo}`);
   const supabase = await createSupabaseServerClient();
@@ -21,12 +22,6 @@ export async function signInAction(formData: FormData) {
   }
   if (Array.isArray(memberships) && memberships.length > 1) redirect('/tenant/select');
   redirect('/operator');
-}
-
-function safeTenantNext(value: string) {
-  const tenantPath = /^\/tenant\/[0-9a-f-]{36}(?:\/(?:users|branding|entities-sites(?:\/[0-9a-f-]{36})?))?$/i;
-  const invitationPath = /^\/auth\/(?:membership-)?invitations\/accept\?id=[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}&issuance=\d+$/i;
-  return tenantPath.test(value) || invitationPath.test(value) ? value : null;
 }
 
 export async function requestPasswordResetAction(formData: FormData) {

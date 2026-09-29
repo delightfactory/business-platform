@@ -1,0 +1,22 @@
+'use client';
+
+import { useActionState } from 'react';
+import Link from 'next/link';
+import { SubmitButton } from '@/components/submit-button';
+import { createSiteFormAction, type NewSiteState } from '../../../actions';
+
+export function NewSiteForm({ tenantId, entityId }: { tenantId: string; entityId: string }) {
+  const initial: NewSiteState = { displayName: '', reason: '', error: '', attempt: 0 };
+  const [state, action] = useActionState(createSiteFormAction, initial);
+  return <form key={state.attempt} action={action} className="auth-form compact-form">
+    <input type="hidden" name="tenantId" value={tenantId} />
+    <input type="hidden" name="legalEntityId" value={entityId} />
+    <label htmlFor="site-name">اسم الفرع أو الموقع</label>
+    <input id="site-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
+    <label htmlFor="site-create-reason">سبب الإضافة</label>
+    <input id="site-create-reason" name="reason" required minLength={3} maxLength={500} defaultValue={state.reason} />
+    {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
+    <div className="workspace-form-actions"><SubmitButton label="إضافة الفرع" pendingLabel="جارٍ الإضافة…" />
+      <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>إلغاء</Link></div>
+  </form>;
+}

@@ -4,6 +4,27 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 
+export type InviteMemberState = { email: string; idempotencyKey: string; error: string; attempt: number };
+
+export async function inviteMemberFormAction(previous: InviteMemberState, formData: FormData): Promise<InviteMemberState> {
+  const tenantId = field(formData, 'tenantId');
+  const email = field(formData, 'email').toLowerCase();
+  const key = previous.idempotencyKey;
+  const failure = (code: string): InviteMemberState => ({ email, idempotencyKey: key, error: inviteErrorText(code), attempt: previous.attempt + 1 });
+  if (!isUuid(tenantId) || !isUuid(key) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return failure('invalid');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) return failure('setup');
+  const { data, error } = await supabase.rpc('create_tenant_member_invitation', {
+    p_tenant_id: tenantId, p_target_email: email, p_idempotency_key: key,
+  });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return failure(mapError(error?.message));
+  const invitation = data as Record<string, unknown>;
+  if (invitation.state === 'already_member') return failure('already-member');
+  if (invitation.created !== true) return failure(invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
+  const sent = await deliverMemberInvitation(supabase, invitation);
+  redirect(`/tenant/${tenantId}/users?state=created-${sent}`);
+}
+
 export async function inviteMemberAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const email = field(formData, 'email').toLowerCase();
@@ -142,6 +163,21 @@ function mapError(message?: string) {
   if (message?.includes('tenant_admin_role_template_unavailable') || message?.includes('tenant_member_role_template_unavailable')) return 'role-setup';
   if (message?.includes('tenant_members_manage_forbidden')) return 'forbidden';
   return 'failed';
+}
+function inviteErrorText(code: string) {
+  const messages: Record<string, string> = {
+    invalid: 'راجع البريد الإلكتروني وأعد المحاولة.',
+    setup: 'خدمة الدعوات غير متاحة الآن. أعد المحاولة لاحقًا.',
+    'already-member': 'هذا الشخص عضو بالفعل في الشركة.',
+    'pending-exists': 'توجد دعوة معلقة لهذا البريد. راجع الدعوات لإعادة إرسالها.',
+    existing: 'توجد دعوة سابقة لهذا البريد. راجع قائمة الدعوات.',
+    'limit-full': 'اكتمل حد المستخدمين النشطين. راجع الاشتراك أو عطّل حسابًا غير مستخدم.',
+    'issuer-lost': 'لم تعد لديك صلاحية إرسال الدعوات. حدّث الصفحة أو راجع مدير الشركة.',
+    'target-unavailable': 'لا يمكن دعوة هذا البريد حاليًا.',
+    'key-conflict': 'تعذر إكمال المحاولة السابقة. حدّث الصفحة وأعد المحاولة.',
+    forbidden: 'ليس لديك صلاحية إرسال الدعوات.',
+  };
+  return messages[code] ?? 'تعذر إرسال الدعوة. أعد المحاولة.';
 }
 function go(tenantId: string, state: string): never {
   redirect(isUuid(tenantId) ? `/tenant/${tenantId}/users?state=${encodeURIComponent(state)}` : '/auth/login?state=invalid');

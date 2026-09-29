@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { inviteMemberAction } from '../actions';
+import { InviteMemberForm } from './InviteMemberForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,15 +28,7 @@ export default async function InviteMemberPage({ params }: { params: Promise<{ t
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>لا يُحجز مقعد قبل قبول الدعوة.</span></div>
       <section className="workspace-form-panel" aria-label="بيانات الدعوة">
-        <form className="auth-form compact-form" action={inviteMemberAction}>
-          <input type="hidden" name="tenantId" value={tenantId} />
-          <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
-          <label htmlFor="member-email">البريد الإلكتروني</label>
-          <input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} autoFocus />
-          <p className="field-hint">سيدخل بدور «عضو». يمكنك تعديل دوره بعد قبوله الدعوة.</p>
-          <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…" />
-            <Link className="secondary-button" href={`/tenant/${tenantId}/users`}>إلغاء</Link></div>
-        </form>
+        <InviteMemberForm tenantId={tenantId} idempotencyKey={crypto.randomUUID()} />
       </section>
     </div>
   </PageFrame>;

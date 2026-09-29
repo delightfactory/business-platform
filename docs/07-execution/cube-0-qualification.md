@@ -1,5 +1,11 @@
 # Cube 0 qualification record
 
+## Final local closeout review (2026-09-30)
+
+The [interface and interaction audit](cube-0-interface-audit.md) now records current-build Tenant and Operator success/denial journeys, persistent state and audit checks, a repaired HR/Payroll entitlement UI dependency, a complete 768px task, pointer and emulated-touch menu/toast checks, screenshots, and successful build/lint checks. A targeted lifecycle SQL run passed its stale-state and audit-rollback assertions; its only failure was a fixture-sensitive exact Tenant count on the populated demo database. No database migration changed in this pass.
+
+**Decision remains open for final Cube 0 product acceptance.** No physical phone was attached for real-device testing, and an actual screen-reader pass has not been observed. The earlier positive engineering decision and these browser checks do not represent those two observations. The current fixes must also be associated with the final reviewed Git revision before the status is changed.
+
 ## Product experience decision after phone feedback (2026-09-29)
 
 The user reviewed the mobile experience after the qualification below and rejected its visual hierarchy, terminology, navigation, and crowded task flows as below the intended institutional SaaS quality. **The engineering and security evidence below remains valid for its reviewed commit, but the statement that Cube 0 is ready for the next cube is superseded for product experience. Cube 0 UX acceptance is open.** Do not use the earlier engineering decision as a product design sign-off.

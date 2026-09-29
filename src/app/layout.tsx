@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@fontsource/cairo/400.css";
+import "@fontsource/cairo/600.css";
 import "@fontsource/cairo/700.css";
 import "./globals.css";
 import "./workspace.css";

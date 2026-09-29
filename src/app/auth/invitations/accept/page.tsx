@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { acceptInvitationAction, setInvitationPasswordAction } from './actions';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,14 +47,14 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
             <label htmlFor="password">أنشئ كلمة مرور لحسابك</label>
             <input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
             <p className="field-hint">ثمانية أحرف على الأقل. لا تتغير كلمات مرور أي حسابات أخرى.</p>
-            <button className="primary-button" type="submit">حفظ كلمة المرور</button>
+            <SubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
           </form>
         ) : (
           <form className="auth-form" action={acceptInvitationAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
             <input type="hidden" name="issuance" value={issuance} />
             <p>سيبقى تسجيل الدخول الحالي وكلمة المرور كما هما.</p>
-            <button className="primary-button" type="submit">تأكيد الدعوة وإنشاء الشركة</button>
+            <SubmitButton label="تأكيد الدعوة وإنشاء الشركة" pendingLabel="جارٍ إنشاء الشركة…" />
           </form>
         )}
       </section>

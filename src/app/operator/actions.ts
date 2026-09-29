@@ -5,7 +5,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export async function onboardTenantAction(formData: FormData) {
   const idempotencyKey = textField(formData, 'idempotencyKey');
-  if (!/^[0-9a-f-]{36}$/i.test(idempotencyKey)) redirect('/operator/onboarding?state=failed');
+  if (!/^[0-9a-f-]{36}$/i.test(idempotencyKey)) return 'failed';
 
   const tenantName = textField(formData, 'tenantName');
   const entityName = textField(formData, 'entityName');
@@ -17,11 +17,11 @@ export async function onboardTenantAction(formData: FormData) {
   const siteLimit = parseLimit(formData, 'sites', siteMode);
 
   if (!tenantName || !siteName || !adminEmail || seatLimit === INVALID || siteLimit === INVALID) {
-    redirectWithState(idempotencyKey, 'limit');
+    return 'limit';
   }
 
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirectWithState(idempotencyKey, 'setup');
+  if (!supabase) return 'setup';
   const { data, error } = await supabase.rpc('onboard_tenant', {
     p_idempotency_key: idempotencyKey,
     p_tenant_name: tenantName,
@@ -40,14 +40,10 @@ export async function onboardTenantAction(formData: FormData) {
       : error.message.includes('onboarding_invalid_limit') ? 'limit'
       : error.message.includes('onboarding_idempotency_conflict') ? 'conflict'
       : 'failed';
-    redirectWithState(idempotencyKey, state);
+    return state;
   }
-  if (!data || typeof data !== 'object' || Array.isArray(data)) redirectWithState(idempotencyKey, 'failed');
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return 'failed';
   redirect(`/operator/onboarding?key=${encodeURIComponent(idempotencyKey)}`);
-}
-
-function redirectWithState(key: string, state: string): never {
-  redirect(`/operator/onboarding?key=${encodeURIComponent(key)}&state=${encodeURIComponent(state)}`);
 }
 
 const INVALID = Symbol('invalid limit');

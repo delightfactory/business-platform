@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { manageLegalEntityAction } from '../actions';
+import { NewEntityForm } from './NewEntityForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,19 +23,7 @@ export default async function NewLegalEntityPage({ params }: { params: Promise<{
       <header className="workspace-page-heading"><div><p className="eyebrow">الجهات والفروع</p>
         <h1>إضافة جهة</h1><p>أدخل بيانات الجهة. ستتمكن من إضافة فروعها بعد حفظها.</p></div></header>
       <section className="workspace-form-panel" aria-label="بيانات الجهة">
-        <form action={manageLegalEntityAction} className="auth-form compact-form">
-          <input type="hidden" name="tenantId" value={tenantId} />
-          <input type="hidden" name="action" value="create" />
-          <label htmlFor="entity-display-name">اسم الجهة</label>
-          <input id="entity-display-name" name="displayName" required maxLength={160} autoFocus />
-          <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-          <input id="entity-legal-name" name="legalName" maxLength={200} />
-          <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر للمستخدمين.</p>
-          <label htmlFor="entity-create-reason">سبب الإضافة</label>
-          <input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} />
-          <div className="workspace-form-actions"><SubmitButton label="إضافة الجهة" pendingLabel="جارٍ الإضافة…" />
-            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>إلغاء</Link></div>
-        </form>
+        <NewEntityForm tenantId={tenantId} />
       </section>
     </div>
   </PageFrame>;

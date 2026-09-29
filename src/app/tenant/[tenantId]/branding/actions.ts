@@ -3,11 +3,14 @@
 import { randomUUID } from 'node:crypto';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 
 const bucket = 'tenant-branding';
 const maxLogoBytes = 2 * 1024 * 1024;
 
-export async function saveTenantBrandingAction(formData: FormData) {
+export type BrandingFormState = { error: string };
+
+export async function saveTenantBrandingFormAction(_previous: BrandingFormState, formData: FormData): Promise<BrandingFormState> {
   const tenantId = text(formData, 'tenantId');
   const displayName = text(formData, 'displayName');
   const color = text(formData, 'color');
@@ -15,39 +18,40 @@ export async function saveTenantBrandingAction(formData: FormData) {
   const removeLogo = formData.get('removeLogo') === 'on';
   const fileField = formData.get('logo');
   const file = fileField instanceof File && fileField.size > 0 ? fileField : null;
+  const failure = (code: string): BrandingFormState => ({ error: brandingErrorText(code) });
   if (!isUuid(tenantId) || !['teal', 'blue', 'violet', 'emerald'].includes(color)
-    || (removeLogo && file) || displayName.length > 160) go(tenantId, 'invalid');
-  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason');
-
+    || (removeLogo && file) || displayName.length > 160) return failure('invalid');
+  if (reason.length < 3 || reason.length > 500) return failure('reason');
   const supabase = await createSupabaseServerClient();
-  if (!supabase) go(tenantId, 'setup');
+  if (!supabase) return failure('setup');
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/auth/login?state=no-session');
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/branding`)}`);
   const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
-  if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) go(tenantId, 'forbidden');
-  if ((snapshot as Record<string, unknown>).can_manage_branding !== true) go(tenantId, 'forbidden');
+  if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)
+    || (snapshot as Record<string, unknown>).can_manage_branding !== true) return failure('forbidden');
 
   let objectPath: string | null = null;
   if (file) {
     const mime = await verifiedImageMime(file);
-    if (!mime || file.size > maxLogoBytes) go(tenantId, 'file');
+    if (!mime || file.size > maxLogoBytes) return failure('file');
     const extension = mime === 'image/jpeg' ? 'jpg' : mime === 'image/png' ? 'png' : 'webp';
     objectPath = `tenants/${tenantId}/logos/${randomUUID()}.${extension}`;
     const { error } = await supabase.storage.from(bucket).upload(objectPath, file, {
       cacheControl: '3600', contentType: mime, upsert: false,
     });
-    if (error) go(tenantId, 'upload-failed');
+    if (error) return failure('upload-failed');
   }
-
   const { error } = await supabase.rpc('save_tenant_branding', {
-    p_tenant_id: tenantId,
-    p_display_name: displayName || null,
-    p_primary_color_key: color,
-    p_logo_object_path: objectPath,
-    p_remove_logo: removeLogo,
-    p_reason: reason,
+    p_tenant_id: tenantId, p_display_name: displayName || null, p_primary_color_key: color,
+    p_logo_object_path: objectPath, p_remove_logo: removeLogo, p_reason: reason,
   });
-  if (error) go(tenantId, mapError(error.message));
+  if (error) {
+    if (objectPath) {
+      const cleanup = createSupabaseAdminClient() ?? supabase;
+      await cleanup.storage.from(bucket).remove([objectPath]);
+    }
+    return failure(mapError(error.message));
+  }
   redirect(`/tenant/${tenantId}/branding?state=saved`);
 }
 
@@ -74,7 +78,17 @@ function mapError(message: string) {
   if (message.includes('tenant_branding_input_invalid')) return 'invalid';
   return 'save-failed';
 }
-function go(tenantId: string, state: string): never {
-  if (!isUuid(tenantId)) redirect('/tenant/select?state=invalid');
-  redirect(`/tenant/${tenantId}/branding?state=${encodeURIComponent(state)}`);
+function brandingErrorText(code: string) {
+  const messages: Record<string, string> = {
+    invalid: 'تحقق من الاسم واللون والصورة المختارة.',
+    reason: 'اكتب سببًا من 3 إلى 500 حرف.',
+    setup: 'إعداد الاتصال غير مكتمل.',
+    forbidden: 'تغيير الهوية متاح لمسؤول الشركة فقط.',
+    unavailable: 'الشركة غير متاحة حاليًا.',
+    file: 'اختر صورة PNG أو JPG أو WebP لا يتجاوز حجمها 2MB.',
+    'upload-failed': 'تعذر رفع الصورة. لم يتغير إعداد الهوية.',
+    'save-failed': 'تعذر حفظ الهوية. لم يتغير الإعداد الحالي. يمكنك المحاولة مرة أخرى.',
+    logo: 'تعذر التحقق من الصورة الحالية. يمكنك استبدالها أو إزالة عرضها.',
+  };
+  return messages[code] ?? 'تعذر حفظ الهوية. أعد المحاولة.';
 }

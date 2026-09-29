@@ -4,7 +4,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeOperatorGrantAction } from './actions';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { SubmitButton } from '@/components/submit-button';
+import { OperatorActionForm } from '@/app/operator/operator-action-form';
 
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
@@ -39,7 +39,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
         {query.state && !success && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
         <details className="operator-grant-form">
           <summary className="primary-button">إضافة مشغّل</summary>
-          <form action={changeOperatorGrantAction} className="auth-form">
+          <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} label="تأكيد منح الصلاحية المحددة">
             <h2>منح صلاحية مشغّل</h2>
             <label htmlFor="newEmail">بريد الحساب المؤكد</label>
             <input id="newEmail" name="email" type="email" autoComplete="email" required maxLength={254} dir="ltr" />
@@ -48,8 +48,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             <textarea id="newReason" name="reason" required minLength={3} maxLength={500} rows={3} />
             <input type="hidden" name="action" value="grant" />
             <p className="field-hint">يجب أن يكون الحساب موجودًا، مؤكد البريد، وقادرًا على تسجيل الدخول. لا تُنشئ هذه الصفحة حسابات جديدة.</p>
-            <SubmitButton label="تأكيد منح الصلاحية المحددة" />
-          </form>
+          </OperatorActionForm>
         </details>
       </section>
       <section className="work-card operator-grants-list" aria-labelledby="grants-list-title">
@@ -63,25 +62,25 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             </div>
             <div className="operator-grant-actions">
               {grant.recoverable && <>
-              <details className="role-change-confirmation"><summary className="secondary-button">{grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}</summary>
-                <form action={changeOperatorGrantAction} className="auth-form compact-form">
+              <details className="role-change-confirmation"><summary className="secondary-button" aria-label={`${grant.is_active ? 'تعديل مهام' : 'إعادة منح مهام'} ${grant.email}`}>{grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}</summary>
+                <p className="field-hint">الحساب: <bdi>{grant.email}</bdi></p>
+                <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}>
                   <input type="hidden" name="email" value={grant.email} />
                   <input type="hidden" name="action" value={grant.is_active ? 'update' : 'grant'} />
                   <CapabilityFields prefix={grant.user_id} defaults={grant} />
                   <label htmlFor={`reason-${grant.user_id}`}>{grant.is_active ? 'سبب التعديل' : 'سبب إعادة المنح'}</label>
                   <textarea id={`reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
-                  <SubmitButton className="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'} />
-                </form>
+                </OperatorActionForm>
               </details></>}
-              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action">سحب الصلاحية</summary>
+              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action" aria-label={`سحب صلاحية ${grant.email}`}>سحب الصلاحية</summary>
                 <p className="field-hint">سيُوقف هذا المنح وتُسحب كل المهام المرتبطة به. يُحفظ السبب وسجل ما قبل/بعد التغيير.</p>
-                <form action={changeOperatorGrantAction} className="auth-form compact-form">
+                <p className="field-hint">الحساب: <bdi>{grant.email}</bdi></p>
+                <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label="تأكيد سحب الصلاحية">
                   <input type="hidden" name="email" value={grant.email} /><input type="hidden" name="action" value="revoke" />
                   <input type="hidden" name="canManageOperators" value="off" /><input type="hidden" name="canOnboardTenants" value="off" />
                   <label htmlFor={`revoke-reason-${grant.user_id}`}>سبب السحب</label>
                   <textarea id={`revoke-reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
-                  <SubmitButton className="secondary-button" label="تأكيد سحب الصلاحية" />
-                </form>
+                </OperatorActionForm>
               </details>}
             </div>
           </li>)}
@@ -107,7 +106,9 @@ function capabilityNames(grant: Grant) {
 }
 
 function stateText(state: string) {
-  const messages: Record<string, string> = {
+  return operatorErrors[state] ?? 'تعذر إتمام الإجراء.';
+}
+const operatorErrors: Record<string, string> = {
     granted: 'مُنحت المهام المحددة وسُجل السبب.', updated: 'حُدّثت المهام وسُجلت حالة ما قبل التغيير وبعده.',
     revoked: 'سُحبت صلاحية المشغّل وسُجل السبب.', 'already-active': 'للحساب منح نشط بالفعل؛ استخدم تعديل المهام.',
     'already-revoked': 'المنح مسحوب بالفعل.', 'not-active': 'لا يوجد منح نشط لتعديله.', unchanged: 'لم يتغير المنح.',
@@ -115,9 +116,7 @@ function stateText(state: string) {
     reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.', forbidden: 'لا تسمح صلاحيتك الحالية بإدارة المشغّلين.',
     'target-unavailable': 'الحساب غير موجود أو لم يؤكد بريده أو لا يستطيع تسجيل الدخول بعد.',
     'last-manager': 'لا يمكن سحب مهمة إدارة المشغّلين من آخر مدير مؤهل.', failed: 'تعذر حفظ التغيير. لم تُعتمد أي حالة بلا سجل تدقيق.',
-  };
-  return messages[state] ?? 'تعذر إتمام الإجراء.';
-}
+};
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header>
     <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>

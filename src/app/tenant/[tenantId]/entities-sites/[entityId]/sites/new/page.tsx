@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { manageSiteAction } from '../../../actions';
+import { NewSiteForm } from './NewSiteForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,18 +33,7 @@ export default async function NewSitePage({ params }: { params: Promise<{ tenant
       <div className="workspace-page-summary"><strong>{limit?.mode === 'unlimited' ? `${usage} فرع نشط · بلا حد أقصى` : `${usage} من ${String(limit?.value ?? 'غير متاح')} فروع نشطة`}</strong></div>
       {full ? <p className="form-message capacity-message" role="status">اكتمل حد الفروع. عطّل فرعًا غير مستخدم أو اطلب رفع الحد.</p>
         : <section className="workspace-form-panel" aria-label="بيانات الفرع">
-          <form action={manageSiteAction} className="auth-form compact-form">
-            <input type="hidden" name="tenantId" value={tenantId} />
-            <input type="hidden" name="legalEntityId" value={entityId} />
-            <input type="hidden" name="returnEntityId" value={entityId} />
-            <input type="hidden" name="action" value="create" />
-            <label htmlFor="site-name">اسم الفرع أو الموقع</label>
-            <input id="site-name" name="displayName" required maxLength={160} autoFocus />
-            <label htmlFor="site-create-reason">سبب الإضافة</label>
-            <input id="site-create-reason" name="reason" required minLength={3} maxLength={500} />
-            <div className="workspace-form-actions"><SubmitButton label="إضافة الفرع" pendingLabel="جارٍ الإضافة…" />
-              <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>إلغاء</Link></div>
-          </form>
+          <NewSiteForm tenantId={tenantId} entityId={entityId} />
         </section>}
     </div>
   </PageFrame>;

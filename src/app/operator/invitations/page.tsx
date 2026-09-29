@@ -26,11 +26,14 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/auth/login?state=no-session');
+  if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
   const { data: capable } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (!capable) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
-  const { data } = await supabase.rpc('tenant_admin_invitation_list');
-  const rows = Array.isArray(data) ? (data as InvitationRow[]) : [];
+  const { data, error } = await supabase.rpc('tenant_admin_invitation_list');
+  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
+  const rows = data as InvitationRow[];
+  const selected = rows.find((row) => row.id === params.id);
+  const visibleRows = selected ? [selected, ...rows.filter((row) => row.id !== selected.id)] : rows;
   const success = params.state === 'created-sent' || params.state === 'reissued-sent' || params.state === 'revoked';
 
   return (
@@ -52,9 +55,10 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
         <h2 id="history-title">الدعوات وحالتها</h2>
         {rows.length === 0 ? <p className="intro">لا توجد دعوات بعد.</p> : (
           <ul>
-            {rows.map((row) => (
-              <li key={row.id} className="invitation-row">
+            {visibleRows.map((row) => (
+              <li key={row.id} id={`invitation-${row.id}`} className="invitation-row">
                 <div>
+                  {row.id === selected?.id && <p className="field-hint">الدعوة المرتبطة بآخر إجراء</p>}
                   <h3>{row.tenant_name}</h3>
                   <p><bdi>{row.target_email}</bdi></p>
                   <p className={`entity-status ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</p>
