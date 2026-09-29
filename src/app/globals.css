@@ -10,6 +10,7 @@
   --color-brand: #126b68;
   --color-brand-soft: #e6f3f1;
   --color-focus: #0b72d9;
+  --color-danger: #963e38;
   --radius-card: 1.25rem;
   --shadow-card: 0 18px 55px rgb(23 43 58 / 8%);
   --space-page: clamp(1rem, 4vw, 3rem);
@@ -111,6 +112,8 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .primary-button, .secondary-button { min-height: 2.9rem; display: inline-flex; align-items: center; justify-content: center; padding: .6rem 1rem; border: 0; border-radius: .65rem; color: white; background: var(--color-brand); font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; }
 .auth-form .primary-button { margin-top: .6rem; }
 .secondary-button { color: var(--color-brand); border: 1px solid var(--color-brand); background: white; }
+.danger-button { min-height: 2.9rem; display: inline-flex; align-items: center; justify-content: center; padding: .6rem 1rem; border: 1px solid var(--color-danger); border-radius: .65rem; color: white; background: var(--color-danger); font: inherit; font-weight: 700; cursor: pointer; }
+.danger-disclosure > summary.secondary-button { border-color: var(--color-danger); color: var(--color-danger); }
 .topbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .context-header { position: relative; z-index: 5; min-height: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--color-border); }
 .operator-area > .context-header { width: min(calc(100% - 2rem), 76rem); margin-inline: auto; }
@@ -156,6 +159,22 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .tenant-create-disclosure { margin: .3rem 0; }
 .tenant-create-disclosure[open] { width: min(100%, 40rem); padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
 .tenant-create-disclosure .compact-form { margin-top: 1rem; }
+.app-shell > .tenant-detail-header, .app-shell > .tenant-detail-sites { width: min(100%, var(--work-content-max)); box-shadow: none; }
+.app-shell > .tenant-detail-header { gap: .45rem; margin-bottom: .25rem; padding: 0; border: 0; background: transparent; }
+.tenant-detail-header .record-title-row { margin-top: .15rem; }
+.tenant-detail-header > .record-meta { margin: 0; }
+.tenant-detail-header .task-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; margin-top: .75rem; }
+.tenant-detail-header .task-actions > .field-hint { margin: 0; }
+.tenant-detail-header .task-disclosure[open], .tenant-detail-sites > .task-disclosure[open] { width: min(100%, 40rem); padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
+.app-shell > .tenant-detail-sites { margin-top: .5rem; padding: clamp(1.2rem, 2.5vw, 1.75rem); border-radius: .9rem; }
+.tenant-detail-sites .record-list { gap: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: .8rem; }
+.tenant-detail-sites .record-card { border: 0; border-radius: 0; }
+.tenant-detail-sites .record-card + .record-card { border-top: 1px solid var(--color-border); }
+.tenant-detail-sites .record-meta { margin-top: .2rem; }
+.site-actions-disclosure[open] { flex-basis: 100%; }
+.site-actions-disclosure > .task-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .6rem; margin-top: .75rem; }
+.site-actions-disclosure > .task-actions > .task-disclosure[open] { width: min(100%, 28rem); padding: .75rem; border: 1px solid var(--color-border); border-radius: .7rem; background: #fbfcfd; }
+.site-actions-disclosure .compact-form { margin-top: .75rem; }
 .tenant-home { align-self: start; justify-self: center; width: min(100%, var(--work-content-max)); margin: clamp(1.5rem, 4vw, 3.5rem) 0; }
 .tenant-home-heading { margin-bottom: 1.5rem; }
 .tenant-home-title { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1rem; }
