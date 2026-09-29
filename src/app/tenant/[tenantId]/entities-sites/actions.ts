@@ -7,13 +7,15 @@ export async function manageLegalEntityAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const action = field(formData, 'action');
   const entityId = field(formData, 'entityId');
+  const returnEntityId = field(formData, 'returnEntityId');
   const displayName = field(formData, 'displayName');
   const legalName = field(formData, 'legalName');
   const reason = field(formData, 'reason');
-  if (!isUuid(tenantId) || !isEntityAction(action) || (action !== 'create' && !isUuid(entityId))) go(tenantId, 'invalid');
-  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason');
+  if (!isUuid(tenantId) || !isEntityAction(action) || (action !== 'create' && !isUuid(entityId))
+    || (returnEntityId && !isUuid(returnEntityId))) go(tenantId, 'invalid');
+  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason', returnEntityId || entityId);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) go(tenantId, 'setup');
+  if (!supabase) go(tenantId, 'setup', returnEntityId || entityId);
   const { data, error } = await supabase.rpc('manage_tenant_legal_entity', {
     p_tenant_id: tenantId,
     p_action: action,
@@ -22,9 +24,11 @@ export async function manageLegalEntityAction(formData: FormData) {
     p_legal_name: legalName || null,
     p_reason: reason,
   });
-  if (error) go(tenantId, mapError(error.message));
-  const state = data && typeof data === 'object' && !Array.isArray(data) ? (data as Record<string, unknown>).state : null;
-  go(tenantId, typeof state === 'string' ? `entity-${state}` : 'failed');
+  if (error) go(tenantId, mapError(error.message), returnEntityId || entityId);
+  const result = data && typeof data === 'object' && !Array.isArray(data) ? data as Record<string, unknown> : null;
+  const state = typeof result?.state === 'string' ? result.state : 'failed';
+  const resultEntityId = typeof result?.entity_id === 'string' && isUuid(result.entity_id) ? result.entity_id : '';
+  go(tenantId, `entity-${state}`, returnEntityId || entityId || resultEntityId);
 }
 
 export async function manageSiteAction(formData: FormData) {
@@ -32,14 +36,16 @@ export async function manageSiteAction(formData: FormData) {
   const action = field(formData, 'action');
   const siteId = field(formData, 'siteId');
   const legalEntityId = field(formData, 'legalEntityId');
+  const returnEntityId = field(formData, 'returnEntityId');
   const displayName = field(formData, 'displayName');
   const reason = field(formData, 'reason');
   if (!isUuid(tenantId) || !isSiteAction(action)
     || (action !== 'create' && !isUuid(siteId))
-    || (action === 'create' && !isUuid(legalEntityId))) go(tenantId, 'invalid');
-  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason');
+    || (action === 'create' && !isUuid(legalEntityId))
+    || (returnEntityId && !isUuid(returnEntityId))) go(tenantId, 'invalid');
+  if (reason.length < 3 || reason.length > 500) go(tenantId, 'reason', returnEntityId || legalEntityId);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) go(tenantId, 'setup');
+  if (!supabase) go(tenantId, 'setup', returnEntityId || legalEntityId);
   const { data, error } = await supabase.rpc('manage_tenant_site', {
     p_tenant_id: tenantId,
     p_action: action,
@@ -48,9 +54,9 @@ export async function manageSiteAction(formData: FormData) {
     p_display_name: displayName || null,
     p_reason: reason,
   });
-  if (error) go(tenantId, mapError(error.message));
+  if (error) go(tenantId, mapError(error.message), returnEntityId || legalEntityId);
   const state = data && typeof data === 'object' && !Array.isArray(data) ? (data as Record<string, unknown>).state : null;
-  go(tenantId, typeof state === 'string' ? `site-${state}` : 'failed');
+  go(tenantId, typeof state === 'string' ? `site-${state}` : 'failed', returnEntityId || legalEntityId);
 }
 
 function field(data: FormData, name: string) { return String(data.get(name) ?? '').trim(); }
@@ -75,7 +81,8 @@ function mapError(message: string) {
   if (message.includes('unavailable')) return 'unavailable';
   return 'failed';
 }
-function go(tenantId: string, state: string): never {
+function go(tenantId: string, state: string, entityId?: string): never {
   if (!isUuid(tenantId)) redirect('/auth/login?state=invalid');
+  if (entityId && isUuid(entityId)) redirect(`/tenant/${tenantId}/entities-sites/${entityId}?state=${encodeURIComponent(state)}`);
   redirect(`/tenant/${tenantId}/entities-sites?state=${encodeURIComponent(state)}`);
 }

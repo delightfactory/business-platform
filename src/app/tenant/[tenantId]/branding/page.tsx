@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+import { TenantNavigation } from '@/components/context-navigation';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { BrandingEditor } from './BrandingEditor';
 
@@ -33,13 +34,12 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   }
 
   return <main className="app-shell">
-    <header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة للشركة</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+    {query.state === 'saved' && <FeedbackToast key={crypto.randomUUID()} message={stateText('saved')} />}
+    <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} current="branding" />
     <section className="work-card" aria-labelledby="branding-title">
       <p className="eyebrow">إعداد الهوية</p><h1 id="branding-title"><bdi>{branding.tenant_name}</bdi></h1>
       <p className="intro">اسم العرض والشعار واللون الرئيسي لمساحة الشركة.</p>
-      {query.state && <p className={`form-message ${query.state.includes('failed') || query.state === 'file' ? 'form-error' : ''}`} role={query.state === 'saved' ? 'status' : 'alert'}>{stateText(query.state)}</p>}
+      {query.state && query.state !== 'saved' && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}
         hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} />

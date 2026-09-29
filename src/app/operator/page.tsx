@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -28,15 +29,10 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
 
   return (
     <main className="app-shell">
-      <header className="topbar">
-        <Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
-      </header>
+      {(query.state === 'updated-self' || query.state === 'revoked-self') && <FeedbackToast key={crypto.randomUUID()} message={query.state === 'updated-self' ? 'تم تحديث صلاحياتك. انتقلت إلى المهام المتاحة لحسابك.' : 'سُحبت صلاحية تشغيل المنصة من حسابك.'} />}
       <section className="work-card" aria-labelledby="operator-title">
         <p className="eyebrow">مساحة المشغّل</p>
         <h1 id="operator-title">مهام تشغيل المنصة</h1>
-        {query.state === 'updated-self' && <p className="form-message" role="status">تم تحديث صلاحياتك. انتقلت إلى المهام التي ما زالت متاحة لحسابك.</p>}
-        {query.state === 'revoked-self' && <p className="form-message" role="status">سُحبت صلاحيات المشغّل من حسابك.</p>}
         <div className="operator-task-list">
           {canManage && <Link className="primary-button" href="/operator/operators">إدارة مشغّلي المنصة</Link>}
           {canOnboard && <Link className="secondary-button" href="/operator/onboarding">إعداد شركة</Link>}
