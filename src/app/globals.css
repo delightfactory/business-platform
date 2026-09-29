@@ -211,6 +211,16 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .tenant-task-link small { margin-top: .2rem; color: var(--color-muted); font-size: .8rem; line-height: 1.7; }
 .tenant-task-link > span:last-child { color: var(--color-brand); font-size: 1.25rem; }
 .tenant-task-link:hover strong { color: var(--color-brand); }
+.app-shell > .tenant-users-overview, .app-shell > .tenant-users-list { width: min(100%, var(--work-content-max)); padding: 0; border: 0; box-shadow: none; background: transparent; }
+.tenant-users-overview > .usage-line { width: fit-content; max-width: 100%; margin: 1rem 0 .5rem; padding: .45rem .75rem; font-size: .88rem; }
+.tenant-users-overview > .field-hint { margin: .3rem 0; }
+.tenant-users-overview .member-invite-disclosure[open] { width: min(100%, 36rem); padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
+.tenant-users-list ul { gap: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
+.tenant-users-list .invitation-row { border: 0; border-radius: 0; padding: 1.15rem 1.35rem; }
+.tenant-users-list .invitation-row + .invitation-row { border-top: 1px solid var(--color-border); }
+.tenant-users-list .invitation-row > div:first-child { min-width: 0; }
+.tenant-users-list .invitation-row h3, .tenant-users-list .invitation-row p { overflow-wrap: anywhere; }
+.tenant-users-list .invitation-row .entity-status { margin-top: .45rem; }
 .context-identity { display: flex; align-items: center; gap: .65rem; min-width: 0; }
 .context-home { display: inline-flex; align-items: center; gap: .55rem; flex: 0 0 auto; text-decoration: none; font-weight: 700; }
 .context-home .brand-mark { width: 2rem; height: 2rem; border-radius: .55rem; }

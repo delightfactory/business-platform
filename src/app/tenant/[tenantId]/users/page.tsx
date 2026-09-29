@@ -38,12 +38,12 @@ export default async function TenantUsersPage({ params, searchParams }: { params
     <main className="app-shell">
       {success && <FeedbackToast key={crypto.randomUUID()} message={success} />}
       <TenantNavigation tenantId={tenantId} tenantName={String(snapshotValue.tenant_name ?? 'الشركة')} current="users" />
-      <section className="work-card" aria-labelledby="members-title">
+      <section className="work-card tenant-users-overview" aria-labelledby="members-title">
         <p className="eyebrow">إدارة الوصول</p>
         <h1 id="members-title">مستخدمو الشركة</h1>
-        <p className="intro">المقاعد المستخدمة: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</p>
+        <p className="usage-line">المستخدمون النشطون: <strong>{limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong></p>
         {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
-        {canManageRoles && <p className="field-hint">ترقية العضو تمنحه صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل، وتغيير الدور لا يضيف مقعدًا.</p>}
+        {canManageRoles && <p className="field-hint">يمكن تعديل أدوار المستخدمين من القائمة أدناه.</p>}
         {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
         <details className="task-disclosure member-invite-disclosure">
         <summary className="primary-button">دعوة عضو</summary>
@@ -57,14 +57,15 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         </form>
         </details>
       </section>
-      <section className="work-card invitation-list" aria-labelledby="member-list-title">
+      <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
         {memberships.length === 0 ? <p className="intro">لا يوجد مستخدمون بعد.</p> : (
           <ul>{memberships.map((row) => (
             <li className="invitation-row" key={row.user_id}>
               <div>
                 <h3><bdi>{row.email}</bdi></h3>
-                <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'} · {row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
+                <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
+                <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
               </div>
               <div className="invitation-actions">
@@ -91,14 +92,15 @@ export default async function TenantUsersPage({ params, searchParams }: { params
           ))}</ul>
         )}
       </section>
-      <section className="work-card invitation-list" aria-labelledby="pending-title">
+      <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
         <h2 id="pending-title">الدعوات</h2>
         {invitations.length === 0 ? <p className="intro">لا توجد دعوات.</p> : (
           <ul>{invitations.map((invitation) => (
             <li className="invitation-row" key={invitation.id}>
               <div>
                 <h3><bdi>{invitation.target_email}</bdi></h3>
-                <p>{invitationText(invitation.lifecycle_state)} · {deliveryText(invitation.delivery_state)}</p>
+                <p className={`entity-status ${invitation.lifecycle_state === 'accepted' ? 'is-active' : invitation.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{invitationText(invitation.lifecycle_state)}</p>
+                <p>{deliveryText(invitation.delivery_state)}</p>
                 {invitation.lifecycle_state === 'pending' && invitation.delivery_state !== 'sent' &&
                   <p className="form-message capacity-message" role="status">{invitation.delivery_state === 'failed'
                     ? 'تعذر إرسال البريد. استخدم «إعادة إرسال» بعد التحقق من العنوان.'
@@ -121,7 +123,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
           ))}</ul>
         )}
       </section>
-      <footer className="footer"><Link href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></footer>
+      <footer className="footer">منصة الأعمال · مستخدمو الشركة</footer>
     </main>
   );
 }
