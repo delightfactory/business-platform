@@ -36,6 +36,8 @@ A Tenant administrator can invite a Member from `/tenant/<tenant-id>/users`. Pen
 
 Authorized Tenant users can manage shared Legal Entities and Sites from `/tenant/<tenant-id>/entities-sites`. Entity display name and optional legal name are separate values; Site identity stays attached to its Legal Entity. Site creation/reactivation uses the effective `max_sites` limit across all Entities and checks it under the Tenant lock. Records are deactivated rather than deleted, and each change writes an append-only audit event with a reason. A Tenant can temporarily have no active default while setup or recovery is needed.
 
+Tenant Admins can set a Tenant display-name override, one of four safe primary colors, and a private Tenant-scoped logo at `/tenant/<tenant-id>/branding`. The displayed name falls back to the Tenant name and never changes a Legal Entity's legal name. Branding files are private, readable only by active Tenant members through short-lived signed URLs, and writable only by Tenant Admins. Replacing or removing a logo does not delete its stored object; unused files may remain until a separate maintenance cleanup is implemented.
+
 When the user limit is `1`, replacing its only Admin uses the Operator limit control: raise the limit from `1` to `2`, invite and accept the replacement as a Member, promote the replacement, demote the former Admin, deactivate the former Admin's membership to free the second seat, then lower the limit from `2` to `1`. Demotion alone does not free a seat because the membership remains active.
 
 ## Local quality gates
@@ -51,6 +53,7 @@ npm run test:db:admin-roles
 npm run test:db:operator-management
 npm run test:db:entities-sites
 npm run test:db:commercial
+npm run test:db:branding
 ```
 
 Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs lint, typecheck, and build on pull requests. Database tests require the local Supabase stack with current migrations applied (`supabase migration up --local`, or `supabase db reset --local` for a disposable clean database).

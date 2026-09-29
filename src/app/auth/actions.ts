@@ -24,7 +24,7 @@ export async function signInAction(formData: FormData) {
 }
 
 function safeTenantNext(value: string) {
-  const tenantPath = /^\/tenant\/[0-9a-f-]{36}(?:\/users)?$/i;
+  const tenantPath = /^\/tenant\/[0-9a-f-]{36}(?:\/(?:users|branding))?$/i;
   const invitationPath = /^\/auth\/(?:membership-)?invitations\/accept\?id=[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}&issuance=\d+$/i;
   return tenantPath.test(value) || invitationPath.test(value) ? value : null;
 }

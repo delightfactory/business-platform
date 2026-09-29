@@ -69,6 +69,9 @@ export default async function TenantPage({ params, searchParams }: {
   }
 
   const snapshot = data as Record<string, unknown>;
+  const { data: brandingData } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const branding = brandingData && typeof brandingData === 'object' && !Array.isArray(brandingData)
+    ? brandingData as Record<string, unknown> : null;
   const entity = objectValue(snapshot.default_legal_entity);
   const site = objectValue(snapshot.default_site);
 
@@ -81,7 +84,7 @@ export default async function TenantPage({ params, searchParams }: {
       </header>
       <section className="work-card" aria-labelledby="tenant-title">
         <p className="eyebrow">مساحة مسؤول الشركة</p>
-        <h1 id="tenant-title">{String(snapshot.tenant_name ?? 'الشركة')}</h1>
+        <h1 id="tenant-title"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></h1>
         <p className="intro">حالة الشركة: {lifecycleText(snapshot.lifecycle_state)}</p>
         <dl className="snapshot-grid">
           <div><dt>الكيان القانوني الافتراضي</dt><dd>{String(entity?.name ?? 'غير متاح')}</dd></div>
@@ -92,6 +95,7 @@ export default async function TenantPage({ params, searchParams }: {
         <p className="field-hint">هذه مساحة تأسيسية لمسؤول الشركة.</p>
         <Link className="primary-button" href={`/tenant/${tenantId}/users`}>إدارة مستخدمي الشركة</Link>
         <Link className="secondary-button tenant-foundation-link" href={`/tenant/${tenantId}/entities-sites`}>الكيانات والمواقع</Link>
+        <Link className="secondary-button tenant-foundation-link" href={`/tenant/${tenantId}/branding`}>هوية الشركة</Link>
       </section>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>
