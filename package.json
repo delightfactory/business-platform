@@ -16,7 +16,8 @@
     "test:db:operator": "supabase test db --local",
     "test:db:invitations": "supabase test db --local supabase/tests/tenant_admin_invitations.test.sql",
     "test:db:members": "supabase test db --local supabase/tests/tenant_member_invitations.test.sql",
-    "test:db:admin-roles": "supabase test db --local supabase/tests/tenant_admin_role_governance.test.sql"
+    "test:db:admin-roles": "supabase test db --local supabase/tests/tenant_admin_role_governance.test.sql",
+    "test:db:operator-management": "supabase test db --local supabase/tests/platform_operator_management.test.sql"
   },
   "dependencies": {
     "@fontsource/cairo": "5.3.0",

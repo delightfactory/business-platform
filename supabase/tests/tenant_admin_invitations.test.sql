@@ -22,7 +22,7 @@ INSERT INTO platform_private.platform_operator_grants(user_id,is_active,can_mana
 VALUES
  ('c3000000-0000-4000-8000-000000000001',true,false,true),
  ('c3000000-0000-4000-8000-000000000002',true,false,true),
- ('c3000000-0000-4000-8000-000000000003',true,false,false);
+ ('c3000000-0000-4000-8000-000000000003',true,true,false);
 CREATE TEMP TABLE invite_requests(label text,result jsonb);
 GRANT SELECT,INSERT ON invite_requests TO authenticated,service_role;
 
@@ -149,7 +149,7 @@ SELECT ok((SELECT result->>'created'='false' AND result->>'lifecycle_state'='acc
 SELECT is((SELECT result->>'tenant_id' FROM accepted_replay),(SELECT result->>'tenant_id' FROM accepted_result),
   'same accepted user can safely replay the current issuance');
 
-UPDATE platform_private.platform_operator_grants SET can_onboard_tenants=false WHERE user_id='c3000000-0000-4000-8000-000000000001';
+UPDATE platform_private.platform_operator_grants SET is_active=false,can_onboard_tenants=false WHERE user_id='c3000000-0000-4000-8000-000000000001';
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','c3000000-0000-4000-8000-000000000014',true);
 SELECT throws_ok(

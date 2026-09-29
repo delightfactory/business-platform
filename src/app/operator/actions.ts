@@ -5,7 +5,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export async function onboardTenantAction(formData: FormData) {
   const idempotencyKey = textField(formData, 'idempotencyKey');
-  if (!/^[0-9a-f-]{36}$/i.test(idempotencyKey)) redirect('/operator?state=failed');
+  if (!/^[0-9a-f-]{36}$/i.test(idempotencyKey)) redirect('/operator/onboarding?state=failed');
 
   const tenantName = textField(formData, 'tenantName');
   const entityName = textField(formData, 'entityName');
@@ -43,11 +43,11 @@ export async function onboardTenantAction(formData: FormData) {
     redirectWithState(idempotencyKey, state);
   }
   if (!data || typeof data !== 'object' || Array.isArray(data)) redirectWithState(idempotencyKey, 'failed');
-  redirect(`/operator?key=${encodeURIComponent(idempotencyKey)}`);
+  redirect(`/operator/onboarding?key=${encodeURIComponent(idempotencyKey)}`);
 }
 
 function redirectWithState(key: string, state: string): never {
-  redirect(`/operator?key=${encodeURIComponent(key)}&state=${encodeURIComponent(state)}`);
+  redirect(`/operator/onboarding?key=${encodeURIComponent(key)}&state=${encodeURIComponent(state)}`);
 }
 
 const INVALID = Symbol('invalid limit');

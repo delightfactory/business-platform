@@ -9,6 +9,7 @@ const messages: Record<string, string> = {
   'no-session': 'انتهت الجلسة. سجّل الدخول للمتابعة.',
   updated: 'تم تحديث كلمة المرور. سجّل الدخول بكلمتك الجديدة.',
   'signed-out': 'تم تسجيل الخروج.',
+  'operator-revoked': 'سُحبت صلاحية تشغيل المنصة من هذا الحساب وسُجّل الخروج. لم تتغير عضويات الشركات.',
 };
 
 type SearchParams = Promise<{ state?: string; next?: string }>;
