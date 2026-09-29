@@ -24,6 +24,23 @@ The visual language is restrained and practical: Cairo for Arabic, a legible typ
 
 The same shared shell serves Operator and Tenant. Its navigation content and context label change with permissions. Operator is visibly marked as platform operation; Tenant shows the active company and a clear company switch when available. No Operator impersonation is introduced.
 
+### Visual direction to prototype before broad implementation
+
+Use an **operations desk**, not a dashboard kit, as the composition metaphor. A stable dark-ink navigation plane establishes place. The work plane is light and almost flat; row separators and aligned columns communicate relationships. Reserve the Tenant accent for selection and primary actions. Status colour never carries meaning alone. Use Cairo at readable regular and bold weights; avoid oversized display text on task pages. The record name and current state lead each detail page, while secondary metadata recedes. Shadows should signal an actual floating surface such as a task sheet, not appear on every list item.
+
+Prototype the Operator invitation collection and the Tenant Legal Entity/Site detail first because together they expose the hardest decisions: permissions, pending states, long forms, nested records, RTL, and phone density. Capture 360 px, tablet, and desktop views before turning the visual language into shared components. A prototype that looks attractive but hides the invitation state or Site parent relationship fails.
+
+### Spatial rules
+
+| Surface | Phone | Tablet | Desktop |
+| --- | --- | --- | --- |
+| App frame | Compact context header; high-frequency destinations within reach; full authorised menu through a labelled sheet | Context header plus explicit menu; use width for the work content | Persistent navigation rail and bounded work canvas |
+| Collection | Page title and one primary action, then dense readable rows with name, state, and one next action | Rows with more metadata in aligned columns | Compact table-like rows, optional detail pane only where comparison helps |
+| Record detail | Identity/status, relevant facts, related records, then rare actions | Single or two-column according to task | Facts and related records may sit side by side; risk actions remain separate |
+| Focused task | Full screen with an obvious cancel/back action and a visible submit area above the keyboard when practical | Focused panel or page | Panel for short edits; dedicated page for the longer First Admin invitation |
+
+The Operator invitation task has several required fields and limits. It deserves a focused page with small groups rather than a narrow drawer or an arbitrary three-step wizard. A short edit such as changing one limit can use a panel. Dangerous state changes use a confirmation that describes their effect. These choices are based on task size and consequence, not one universal component rule.
+
 ## Information architecture
 
 | Page role | User question | Default composition |
@@ -40,12 +57,39 @@ The same shared shell serves Operator and Tenant. Its navigation content and con
 3. **Manage commercial access:** select a Tenant, read current seat and Site usage beside each current limit, change one limit or entitlement at a time, supply a reason, and see the effective decision after return. Keep conflict/future-conflict states visible and actionable according to current rules.
 4. **Manage Operators:** see who has each active capability; grant, change, or revoke one account's capability set in a focused task, with an explicit confirmation for revocation and protected-account constraints.
 
+#### Representative Operator screen flow
+
+```text
+Operator home
+  → "دعوة مسؤول لشركة جديدة" (primary when authorised)
+  → focused invitation task: company identity / first administrator / initial seat and Site limits
+  → submit pending; retain values and explain any field or delivery failure
+  → invitation collection with the new row selected:
+       "بانتظار القبول" + delivery state + reissue/revoke when valid
+  → after acceptance, Tenant appears in company collection with active state
+```
+
+The invitation collection and the company collection are separate because an unaccepted invitation is not a Tenant. Their relationship is explicit, without showing a pending invitation as an inactive company.
+
 ### Tenant journeys
 
 1. **Work in the right company:** the active company stays visible in the frame; a user with multiple memberships can switch without confusing company data. Suspended, archived, denied, and missing-membership paths explain what happened and provide the available route back.
 2. **Manage people:** show members and pending invitations as distinguishable views; make invitation the primary action where authorised; each row exposes its current role/state and only its relevant reissue, revoke, disable, reactivate, promote, or demote action. Protected Admin constraints are explained at the decision point.
 3. **Manage Legal Entities and Sites:** show a compact Legal Entity collection and each Entity's Site count; enter an Entity detail to see its Sites. Add a Legal Entity from the collection, add a Site within its parent Entity, and keep default/active state on the relevant row. Rare or risky changes should not be rendered as a wall of open controls.
 4. **Set company identity:** separate display name, logo, and colour from legal identity. Keep a realistic preview next to the form on wide screens and after the controls on a phone. Show the saved state in context.
+
+#### Representative Tenant screen flow
+
+```text
+Company home
+  → "الفروع" (common-language navigation; page explains legal grouping once)
+  → Legal Entity collection: registered identity and Site count per Entity
+  → Entity detail: name/default state + Site rows and current active state
+  → "إضافة فرع" within this Entity → focused short task
+  → pending state → return to same Entity with new Site row visible
+```
+
+If there is only the default Legal Entity, the first view can lead with its Sites and keep the legal grouping discoverable in the page context. Multiple Entities remain visible as distinct groups. This is progressive disclosure of complexity, not a change in data model.
 
 ## Shared shell by device
 
@@ -75,6 +119,18 @@ Build only repeated interactions: `AppShell`, `ContextNav`, `PageHeading`, `Reco
 2. **Tenant work:** home, people/invitations, Legal Entity/Site collection and detail, branding. Complete each journey with empty, pending, success, failure, and denied states before starting the next.
 3. **Operator work:** home and First Admin invitation, Tenant collection/lifecycle, limits/entitlements, Operator access. Verify that invitation wording reflects delayed Tenant creation.
 4. **Whole-product qualification:** representative Operator and Tenant journeys at phone, tablet, and desktop; keyboard and touch; Arabic wording; RTL; no normal horizontal scroll; user review of the rendered result. Record screenshots, reviewed commit, and unresolved observations in the Cube 0 qualification record. Existing database assertions remain engineering evidence, not UX acceptance.
+
+### Design and review capabilities used at each gate
+
+| Gate | Applied capability | Concrete output |
+| --- | --- | --- |
+| Understand work | `enterprise-workflow-ux` and `product-flow-ux` | Actor, shortest real path, decision, result, failure and recovery map |
+| Choose a visual direction | `frontend-design` (the installed Anthropic-origin skill) | Type, colour, density, navigation geometry and two representative screen compositions, checked for generic SaaS patterns |
+| Write the interface | `arabic-ux-writing` | Page titles, actions, statuses, errors and empty states in consistent ordinary Arabic |
+| Check rendered experience | `product-design:audit` plus browser inspection | Screenshots and findings tied to real Operator/Tenant steps at phone, tablet and desktop widths |
+| Check capability closure | `backend-ui-closure` | Every shipped action reachable by its authorised role, with its true result and recovery path |
+
+These skills are aids to judgment. A skill name, mockup, or passing build is not a user-acceptance result. Install or create another skill only if a specific missing capability emerges during the work; duplicated design checklists add noise without improving the interface.
 
 ## Acceptance gate
 
