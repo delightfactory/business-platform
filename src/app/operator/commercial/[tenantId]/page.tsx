@@ -33,11 +33,11 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-    <section className="work-card operator-limit-detail" aria-labelledby="commercial-title">
+    <section className="work-card operator-setting-detail" aria-labelledby="commercial-title">
       <p className="eyebrow">حدود الاستخدام</p><h1 id="commercial-title"><bdi>{tenant.display_name}</bdi></h1>
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
-      <div className="operator-limit-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
+      <div className="operator-setting-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
     </section><footer className="footer">منصة الأعمال · حدود الاستخدام</footer>
   </main>;
 }
@@ -48,7 +48,7 @@ function LimitCard({ tenantId, limit }: { tenantId: string; limit: Limit }) {
     && limit.mode === 'limited' && limit.value !== null && limit.usage > limit.value;
   const atCapacity = (limit.status === 'effective' || limit.status === 'future_conflict')
     && limit.mode === 'limited' && limit.value !== null && limit.usage === limit.value;
-  return <article className="operator-limit-card" aria-labelledby={`${limit.capability_key}-title`}>
+  return <article className="operator-setting-card" aria-labelledby={`${limit.capability_key}-title`}>
     <h2 id={`${limit.capability_key}-title`}>{users ? 'المستخدمون' : 'الفروع'}</h2>
     <p>{users ? 'المستخدمون النشطون' : 'الفروع النشطة'}: <strong>{limit.usage}</strong></p>
     {limit.status === 'missing' ? <p className="form-message" role="status">لا يوجد حد فعّال؛ أنشئ حدًا جديدًا لتفعيل إدارة النمو.</p>
