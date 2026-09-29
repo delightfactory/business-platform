@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantLifecycleAction } from '../actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,30 +42,36 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
         </nav>
       </header>
-      <section className="work-card" aria-labelledby="tenant-title">
+      {query.state === 'updated' && query.to === tenant.lifecycle_state &&
+        <FeedbackToast key={crypto.randomUUID()} message="تم حفظ حالة الشركة وتسجيل السبب." />}
+      <section className="work-card operator-lifecycle-detail" aria-labelledby="tenant-title">
         <p className="eyebrow">إدارة حالة الشركة</p>
         <h1 id="tenant-title">{tenant.tenant_name}</h1>
-        <p className="intro">الحالة الحالية: <strong>{stateLabel(tenant.lifecycle_state)}</strong></p>
-        {query.state === 'stale' && <p className="form-message" role="status">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</p>}
+        <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : tenant.lifecycle_state === 'suspended' ? 'is-pending' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+        <p className="intro">اختر الإجراء المناسب. سيتطلب تأكيده سببًا ويُسجل التغيير للمراجعة.</p>
+        {query.state === 'stale' && <p className="form-message capacity-message" role="alert">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</p>}
         {query.state && query.state !== 'stale' && query.state !== 'updated'
-          && <p className="form-message" role="status">{messageFor(query.state)}</p>}
-        {query.state === 'updated' && query.to === tenant.lifecycle_state
-          ? <p className="form-message" role="status">تم حفظ الحالة الجديدة وسجل السبب.</p>
-          : query.state === 'updated' && <p className="form-message" role="status">تغيّرت حالة الشركة بعد الإجراء. الحالة الحالية معروضة أدناه.</p>}
-        <div className="lifecycle-actions">
+          && <p className="form-message form-error" role="alert">{messageFor(query.state)}</p>}
+        {query.state === 'updated' && query.to !== tenant.lifecycle_state
+          && <p className="form-message capacity-message" role="status">تغيّرت حالة الشركة بعد الإجراء. الحالة الحالية معروضة أدناه.</p>}
+        <h2>الإجراءات المتاحة</h2>
+        <div className="lifecycle-choice-list">
           {transitions.map((transition) => (
-            <details className="role-change-confirmation" key={transition.target}>
-              <summary className="secondary-button">{transition.label}</summary>
-              <p className="field-hint">أنت على وشك {transition.label} الشركة <bdi>{tenant.tenant_name}</bdi>. {transition.description}</p>
+            <article className="lifecycle-choice" key={transition.target}>
+              <div><h3>{transition.label}</h3><p>{transition.description}</p></div>
+              <details className="role-change-confirmation">
+              <summary className={`secondary-button ${transition.target === 'archived' ? 'danger-action' : ''}`}>متابعة {transition.label}</summary>
+              <p className="field-hint">سيُطبق هذا الإجراء على <bdi>{tenant.tenant_name}</bdi>.</p>
               <form action={changeTenantLifecycleAction} className="auth-form compact-form">
                 <input type="hidden" name="tenantId" value={tenant.tenant_id} />
                 <input type="hidden" name="expectedState" value={tenant.lifecycle_state} />
                 <input type="hidden" name="targetState" value={transition.target} />
                 <label htmlFor={`reason-${transition.target}`}>سبب الإجراء</label>
                 <textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
-                <button className="primary-button" type="submit">تأكيد الإجراء وحفظ السبب</button>
+                <button className={transition.target === 'archived' ? 'danger-button' : 'primary-button'} type="submit">تأكيد {transition.label} وتسجيل السبب</button>
               </form>
-            </details>
+              </details>
+            </article>
           ))}
         </div>
       </section>
