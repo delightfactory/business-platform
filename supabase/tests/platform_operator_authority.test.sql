@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(34);
+SELECT plan(39);
 
 SELECT ok(
   NOT has_schema_privilege('authenticated', 'platform_private', 'USAGE'),
@@ -22,12 +22,14 @@ SELECT ok(
   'service_role cannot read operator grants directly'
 );
 
-INSERT INTO auth.users (id, aud, role, email, email_confirmed_at, raw_app_meta_data, raw_user_meta_data)
+INSERT INTO auth.users (id, aud, role, email, encrypted_password, invited_at, email_confirmed_at, raw_app_meta_data, raw_user_meta_data)
 VALUES
-  ('a15c3b4e-18a9-4aa0-91c9-a00000000001', 'authenticated', 'authenticated', 'bootstrap-one@example.test', pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
-  ('a15c3b4e-18a9-4aa0-91c9-a00000000002', 'authenticated', 'authenticated', 'bootstrap-two@example.test', pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
-  ('a15c3b4e-18a9-4aa0-91c9-a00000000003', 'authenticated', 'authenticated', 'bootstrap-three@example.test', pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
-  ('a15c3b4e-18a9-4aa0-91c9-a00000000004', 'authenticated', 'authenticated', 'bootstrap-four-unconfirmed@example.test', NULL, '{}'::jsonb, '{}'::jsonb);
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000001', 'authenticated', 'authenticated', 'bootstrap-one@example.test', 'hash', NULL, pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000002', 'authenticated', 'authenticated', 'bootstrap-two@example.test', 'hash', NULL, pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000003', 'authenticated', 'authenticated', 'bootstrap-three@example.test', 'hash', NULL, pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000004', 'authenticated', 'authenticated', 'bootstrap-four-unconfirmed@example.test', 'hash', NULL, NULL, '{}'::jsonb, '{}'::jsonb),
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000006', 'authenticated', 'authenticated', 'bootstrap-six-invited-unready@example.test', 'invite-hash', pg_catalog.now(), pg_catalog.now(), '{}'::jsonb, '{}'::jsonb),
+  ('a15c3b4e-18a9-4aa0-91c9-a00000000008', 'authenticated', 'authenticated', 'bootstrap-eight@example.test', 'hash', NULL, pg_catalog.now(), '{}'::jsonb, '{}'::jsonb);
 
 SELECT throws_ok(
   $$SELECT platform_private.bootstrap_operator_manager('a15c3b4e-18a9-4aa0-91c9-a00000000004'::uuid)$$,
@@ -40,6 +42,18 @@ SELECT throws_ok(
   '22023',
   'The target must be an existing, enabled Auth user with a verified email',
   'recovery refuses an Auth user who cannot sign in with verified email'
+);
+SELECT throws_ok(
+  $$SELECT platform_private.bootstrap_operator_manager('a15c3b4e-18a9-4aa0-91c9-a00000000006'::uuid)$$,
+  '22023',
+  'The target must be an existing, enabled Auth user with a verified email',
+  'bootstrap refuses an invited account without password readiness'
+);
+SELECT throws_ok(
+  $$SELECT platform_private.recover_operator_manager('a15c3b4e-18a9-4aa0-91c9-a00000000006'::uuid, 'invited target check', false)$$,
+  '22023',
+  'The target must be an existing, enabled Auth user with a verified email',
+  'recovery refuses an invited account without password readiness'
 );
 SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000004'::uuid),
@@ -97,7 +111,7 @@ SELECT is(
 SELECT throws_ok(
   $$SELECT platform_private.recover_operator_manager('a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid, 'undeclared incident', false)$$,
   '55000',
-  'A manager is active; declare and explain an emergency to recover another',
+  'A recoverable manager is active; declare and explain an emergency to recover another',
   'recovery cannot add a manager over an active manager without emergency declaration'
 );
 
@@ -163,6 +177,21 @@ SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_grants WHERE is_active AND can_manage_operators),
   1::bigint,
   'the last-manager guard also preserves the row against deletion'
+);
+UPDATE auth.users SET banned_until = pg_catalog.now() + interval '1 day'
+WHERE id = 'a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid;
+SELECT lives_ok(
+  $$SELECT platform_private.recover_operator_manager('a15c3b4e-18a9-4aa0-91c9-a00000000008'::uuid, 'recover after remaining manager became unavailable', false)$$,
+  'maintenance recovery proceeds without emergency when the active grant is not recoverable'
+);
+SELECT is(
+  (SELECT is_emergency FROM platform_private.platform_operator_audit_events WHERE target_user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000008'::uuid),
+  false,
+  'non-emergency recovery is audited without an emergency declaration'
+);
+SELECT ok(
+  (SELECT is_active AND can_manage_operators FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000008'::uuid),
+  'recovery creates an active manager grant'
 );
 SELECT throws_ok(
   $$UPDATE platform_private.platform_operator_audit_events SET reason = 'rewritten' WHERE target_user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid$$,

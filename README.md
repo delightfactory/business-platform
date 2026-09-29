@@ -22,7 +22,9 @@ Open <http://localhost:3000>. The local API uses port `55321` to avoid collision
 
 Authentication is invite-only email/password; public signup is disabled. Password recovery, first-Admin invitations, and Tenant Member invitations have separate callbacks. Invitation acceptance requires the verified Auth email to match the pending invitation. Local Auth mail is captured by Mailpit at <http://127.0.0.1:55324>. The server-side invitation sender requires `SUPABASE_SECRET_KEY`; never prefix it with `NEXT_PUBLIC_` or expose it to browser code. Templates under `supabase/templates` configure local Supabase only; restart the local stack after changing them. Production requires an allowlisted app origin, matching hosted invitation templates, and configured SMTP before sending real invitations.
 
-The `/operator` flow verifies the current Auth user and reads current Operator authority from the database. A pending first-Admin invitation creates no Tenant or seat; acceptance atomically creates the Tenant, default Legal Entity/Site, protected Admin membership, capability limits, and audit records. An invitation remains recoverable through explicit reissue or revocation; each newer issuance invalidates older links.
+The `/operator` hub verifies the current Auth user and shows only tasks granted by current database authority. `/operator/operators` lets an active `can_manage_operators` manager grant, update, or revoke the implemented capabilities `can_manage_operators` and `can_onboard_tenants` for an existing verified Auth account with a usable login credential. Every change requires a reason and records before/after state atomically in the append-only Operator audit. A grant must contain at least one implemented capability; revocation has a separate confirmation action. `/operator/onboarding` and `/operator/invitations` remain limited to the `can_onboard_tenants` task.
+
+A pending first-Admin invitation creates no Tenant or seat; acceptance atomically creates the Tenant, default Legal Entity/Site, protected Admin membership, capability limits, and audit records. An invitation remains recoverable through explicit reissue or revocation; each newer issuance invalidates older links. Maintenance bootstrap and recovery require an existing verified account with a usable password credential; invited accounts must first record password readiness.
 
 A Tenant administrator can invite a Member from `/tenant/<tenant-id>/users`. Pending invitations grant no access and consume no seat. Acceptance, disablement, and reactivation enforce the current Tenant state, permission, and effective user limit in the database. A Member invitation assigns the fixed Member role; an authorized Tenant Admin can then promote an active Member or demote an Admin from the same page. Each role change is audited atomically, preserves Domain role assignments, and leaves seat usage unchanged. The final recoverable Admin cannot be demoted.
 
@@ -38,11 +40,12 @@ npm run test:db:operator
 npm run test:db:invitations
 npm run test:db:members
 npm run test:db:admin-roles
+npm run test:db:operator-management
 ```
 
 Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs lint, typecheck, and build on pull requests. Database tests require the local Supabase stack with current migrations applied (`supabase migration up --local`, or `supabase db reset --local` for a disposable clean database).
 
-Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`.
+Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Operator authority checks are in `supabase/tests/platform_operator_authority.test.sql` and `supabase/tests/platform_operator_management.test.sql`. Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`.
 
 ## Governing documentation
 

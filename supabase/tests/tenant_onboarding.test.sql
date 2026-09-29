@@ -19,7 +19,7 @@ INSERT INTO platform_private.platform_operator_grants (user_id, is_active, can_m
 VALUES
  ('b2000000-0000-4000-8000-000000000001', true, true, true),
  ('b2000000-0000-4000-8000-000000000002', true, false, true),
- ('b2000000-0000-4000-8000-000000000003', true, false, false);
+ ('b2000000-0000-4000-8000-000000000003', true, true, false);
 
 CREATE TEMP TABLE onboarding_alpha (result jsonb);
 CREATE TEMP TABLE onboarding_beta (result jsonb);
@@ -107,7 +107,7 @@ SELECT is(
   'result lookup returns only the current actor result'
 );
 RESET ROLE;
-UPDATE platform_private.platform_operator_grants SET can_onboard_tenants = false
+UPDATE platform_private.platform_operator_grants SET is_active = false, can_onboard_tenants = false
 WHERE user_id = 'b2000000-0000-4000-8000-000000000002';
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub', 'b2000000-0000-4000-8000-000000000002', true);
@@ -117,7 +117,7 @@ SELECT is(
   'result lookup is denied after onboarding capability is revoked'
 );
 RESET ROLE;
-UPDATE platform_private.platform_operator_grants SET can_onboard_tenants = true
+UPDATE platform_private.platform_operator_grants SET is_active = true, can_onboard_tenants = true
 WHERE user_id = 'b2000000-0000-4000-8000-000000000002';
 UPDATE auth.users SET banned_until = now() + interval '1 day' WHERE id = 'b2000000-0000-4000-8000-000000000012';
 SET LOCAL ROLE authenticated;
