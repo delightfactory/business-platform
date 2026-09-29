@@ -35,23 +35,39 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
   const entities = Array.isArray(snapshot.entities) ? snapshot.entities : [];
   const canEntities = snapshot.can_manage_legal_entities === true;
   const siteLimitText = snapshot.site_limit?.mode === 'unlimited'
-    ? `المواقع النشطة: ${Number(snapshot.site_usage ?? 0)} · بلا حد أقصى`
-    : `المواقع النشطة: ${Number(snapshot.site_usage ?? 0)} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`;
+    ? `الفروع النشطة: ${Number(snapshot.site_usage ?? 0)} · بلا حد أقصى`
+    : `الفروع النشطة: ${Number(snapshot.site_usage ?? 0)} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`;
   const feedback = feedbackForState(query.state);
 
   return (
     <PageFrame footer="إعداد الشركة">
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
       <TenantNavigation tenantId={tenantId} tenantName={snapshot.tenant_name} current="entities-sites" />
-      <section className="work-card task-page" aria-labelledby="entities-sites-title">
+      <section className="work-card task-page tenant-collection" aria-labelledby="entities-sites-title">
         <p className="eyebrow">بيانات الشركة</p>
-        <h1 id="entities-sites-title">الجهات القانونية والفروع</h1>
-        <p className="intro">كل جهة قانونية لها اسم مستقل، ويمكن أن تتبعها فروع أو مواقع عمل متعددة.</p>
+        <h1 id="entities-sites-title">الجهات والفروع</h1>
+        <p className="intro">اعرض الجهات التابعة للشركة والفروع المرتبطة بكل جهة.</p>
         <div className="usage-line"><strong>{siteLimitText}</strong></div>
         {feedback.error && <p className="form-message form-error" role="alert">{feedback.error}</p>}
         {feedback.info && <p className="form-message" role="status">{feedback.info}</p>}
         {!entities.some((entity) => entity.is_active && entity.is_default) &&
           <p className="form-message" role="status">لا توجد جهة افتراضية نشطة؛ اختر جهة نشطة من تفاصيلها.</p>}
+
+        {canEntities && <details className="task-disclosure tenant-create-disclosure">
+          <summary className="secondary-button">إضافة جهة</summary>
+          <form action={manageLegalEntityAction} className="auth-form compact-form">
+            <input type="hidden" name="tenantId" value={tenantId} />
+            <input type="hidden" name="action" value="create" />
+            <label htmlFor="entity-display-name">اسم الجهة داخل المنصة</label>
+            <input id="entity-display-name" name="displayName" required maxLength={160} />
+            <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
+            <input id="entity-legal-name" name="legalName" maxLength={200} />
+            <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
+            <label htmlFor="entity-create-reason">سبب الإضافة</label>
+            <input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} />
+            <button className="primary-button" type="submit">إضافة الجهة</button>
+          </form>
+        </details>}
 
         {entities.length === 0 ? <div className="empty-state">
           <h2>لا توجد جهات مسجلة</h2>
@@ -64,26 +80,11 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
                 <span className={`entity-status ${entity.is_active ? 'is-active' : 'is-inactive'}`}>{entity.is_active ? 'نشط' : 'غير نشط'}</span>
               </div>
               {entity.legal_name && <p className="record-meta">الاسم القانوني: <bdi>{entity.legal_name}</bdi></p>}
-              <p className="record-meta">{entity.is_default ? 'الجهة الافتراضية' : 'جهة قانونية'} · الفروع والمواقع النشطة: {Number(entity.active_site_count ?? 0)}</p>
+              <p className="record-meta">{entity.is_default ? 'الجهة الأساسية' : 'جهة قانونية'} · الفروع النشطة: {Number(entity.active_site_count ?? 0)}</p>
             </div>
-            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>تفاصيل الجهة والفروع</Link>
+            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض الجهة والفروع</Link>
           </li>)}
         </ul>}
-        {canEntities && <details className="task-disclosure">
-          <summary className="secondary-button">إضافة جهة قانونية</summary>
-          <form action={manageLegalEntityAction} className="auth-form compact-form">
-            <input type="hidden" name="tenantId" value={tenantId} />
-            <input type="hidden" name="action" value="create" />
-            <label htmlFor="entity-display-name">اسم الجهة داخل المنصة</label>
-            <input id="entity-display-name" name="displayName" required maxLength={160} />
-            <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-            <input id="entity-legal-name" name="legalName" maxLength={200} />
-            <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
-            <label htmlFor="entity-create-reason">سبب الإضافة</label>
-            <input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} />
-            <button className="primary-button" type="submit">إضافة الجهة</button>
-          </form>
-        </details>}
       </section>
     </PageFrame>
   );
