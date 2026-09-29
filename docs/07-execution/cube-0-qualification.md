@@ -6,7 +6,14 @@ The user reviewed the mobile experience after the qualification below and reject
 
 Before closing Cube 0, review the live Operator and Tenant journeys on a phone, tablet, and desktop with representative data: create/invite a company administrator, inspect invitations, manage company limits and access, switch companies, manage users and branches, and recover from denied or suspended access. Each journey must have a clear next action, plain Arabic, visible persistent state, transient feedback in the appropriate place, a correction path, reachable navigation, and no normal horizontal page scrolling. Record the actual flow and screenshots; a build or passing database tests alone do not close this gate.
 
-The improvements in PRs #30–#33 address parts of the reported friction. The remaining experience must be reviewed as a whole before an updated GO decision, including consistency of the shared navigation and the detailed task screens. The [frontend UX baseline](../05-engineering/frontend-ux-baseline.md) records the reference patterns and review method.
+The improvements in PRs #30–#40 address the reported navigation, feedback, dense task pages, terminology, and action clarity across the Operator and Tenant paths. The remaining experience must be reviewed as a whole before an updated GO decision, including consistency of the shared navigation and the detailed task screens. The [frontend UX baseline](../05-engineering/frontend-ux-baseline.md) records the reference patterns and review method.
+
+### UX correction evidence at `5cfe016` (2026-09-29)
+
+- Operator home has a persistent desktop navigation rail, a mobile dialog menu, a primary onboarding task, and grouped links. Operator invitation history, company limits, entitlement settings, operator grants, and lifecycle decisions now show their status and next action without a long stack of undifferentiated forms.
+- Tenant home has a compact status and usage overview. Entity and Site administration separates lists from creation and risky actions. Users and invitations have scannable lists and a focused invitation action. Success feedback appears as a transient toast, with errors beside the task that needs correction.
+- Desktop and 360 px browser inspections covered these corrected screens with representative company data. The invitation, operator grant, and archive confirmation forms were opened on mobile; those screens had no normal horizontal page overflow. The public HTTPS demo displayed the merged lifecycle screen after PR #40. PRs #30–#40 passed their GitHub lint, typecheck, and build checks.
+- This is implementation evidence, **not final UX acceptance**. Complete the full Operator/Tenant journey review on a real phone and tablet, including keyboard and assistive interaction, state recovery, and the user’s hands-on judgment. Capture screenshots and record the reviewed commit and any remaining defects before changing this decision.
 
 ## Scope and decision
 
