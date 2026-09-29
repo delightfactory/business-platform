@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
-import { inviteMemberAction, reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction } from './actions';
+import { inviteMemberAction, reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +22,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
   const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
   if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
+  const { data: canManageRoles } = await supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId });
   const result = data as Record<string, unknown>;
   const memberships = Array.isArray(result.memberships) ? result.memberships as Row[] : [];
   const invitations = Array.isArray(result.invitations) ? result.invitations as Invitation[] : [];
@@ -40,6 +41,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         <p className="eyebrow">إدارة الوصول</p>
         <h1 id="members-title">مستخدمو الشركة</h1>
         <p className="intro">المقاعد المستخدمة: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</p>
+        {canManageRoles && <p className="field-hint">ترقية العضو تمنحه صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل، وتغيير الدور لا يضيف مقعدًا.</p>}
         {query.state && <p className="form-message" role="status">{stateMessage(query.state)}</p>}
         <form className="auth-form member-invite-form" action={inviteMemberAction}>
           <input type="hidden" name="tenantId" value={tenantId} />
@@ -58,14 +60,28 @@ export default async function TenantUsersPage({ params, searchParams }: { params
               <div>
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'} · {row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
-                {row.protected_admin && <p className="field-hint">إدارة المسؤولين تتم بإجراء مستقل.</p>}
+                {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
               </div>
-              {!row.protected_admin && <form action={setMemberAccessAction}>
-                <input type="hidden" name="tenantId" value={tenantId} />
-                <input type="hidden" name="userId" value={row.user_id} />
-                <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
-                <button className="secondary-button" type="submit">{row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'}</button>
-              </form>}
+              <div className="invitation-actions">
+                {canManageRoles && row.access_state === 'active' && <details className="role-change-confirmation">
+                  <summary className="secondary-button">{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</summary>
+                  <p className="field-hint">{row.protected_admin
+                    ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
+                    : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المقاعد.</p>
+                  <form action={changeTenantAdminRoleAction}>
+                    <input type="hidden" name="tenantId" value={tenantId} />
+                    <input type="hidden" name="userId" value={row.user_id} />
+                    <input type="hidden" name="roleAction" value={row.protected_admin ? 'demote' : 'promote'} />
+                    <button className="secondary-button" type="submit">{row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'}</button>
+                  </form>
+                </details>}
+                {!row.protected_admin && <form action={setMemberAccessAction}>
+                  <input type="hidden" name="tenantId" value={tenantId} />
+                  <input type="hidden" name="userId" value={row.user_id} />
+                  <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
+                  <button className="secondary-button" type="submit">{row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'}</button>
+                </form>}
+              </div>
             </li>
           ))}</ul>
         )}
@@ -126,7 +142,15 @@ function stateMessage(state: string) {
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     'admin-governed': 'تغيير مسؤول الشركة يحتاج إجراءً منفصلًا.', 'key-conflict': 'تعذر إعادة استخدام الطلب نفسه ببيانات مختلفة.',
     'issuer-lost': 'لا يمكن إعادة إرسال هذه الدعوة لأن مُصدرها لم يعد يملك صلاحية إدارة الأعضاء. ألغها وأنشئ دعوة جديدة من حساب مخوّل.',
-    'target-unavailable': 'لا يمكن إعادة تفعيل العضوية لأن الحساب محذوف أو محظور أو لم يؤكد بريده بعد.',
+    'target-unavailable': 'لا يمكن تنفيذ هذا التغيير لأن الحساب محذوف أو محظور أو لم يؤكد بريده أو لم يكتمل إعداد كلمة مروره.',
+    promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
+    demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
+    already_admin: 'هذا المستخدم مسؤول بالفعل؛ لم يتغير الدور.',
+    already_member: 'هذا المستخدم عضو بالفعل؛ لم يتغير الدور.',
+    'role-forbidden': 'تحتاج إدارة أدوار المسؤولين إلى صلاحية إدارة الشركة وإدارة الأعضاء.',
+    'last-admin': 'لا يمكن خفض آخر مسؤول مؤهل. رقِّ مسؤولًا بديلًا أولًا.',
+    'role-setup': 'قالب الدور الأساسي غير متاح؛ لم يتغير أي تعيين.',
+    'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
   };
   return labels[state] ?? 'تعذر تنفيذ الإجراء.';
 }
