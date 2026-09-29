@@ -99,3 +99,43 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .auth-links a { color: var(--color-brand); font-weight: 700; }
 .form-message { padding: .8rem 1rem; border: 1px solid #b8d8d4; border-radius: .6rem; background: var(--color-brand-soft); line-height: 1.8; }
 @media (max-width: 600px) { .auth-card { width: 100%; padding: 1.5rem 1.15rem; } }
+
+.work-card {
+  align-self: start;
+  justify-self: center;
+  width: min(100%, 48rem);
+  margin: clamp(1.25rem, 4vh, 3rem) 0;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.work-card h1 { text-align: start; }
+.work-card > .intro { margin-inline: 0; }
+.onboarding-form { grid-template-columns: 1fr; }
+.auth-form select {
+  min-height: 3rem;
+  width: 100%;
+  border: 1px solid #a9bac3;
+  border-radius: .6rem;
+  padding: .55rem .75rem;
+  background: white;
+  color: var(--color-text);
+  font: inherit;
+}
+.auth-form select:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.field-hint { margin: -.25rem 0 .4rem; color: var(--color-muted); font-size: .88rem; line-height: 1.75; }
+.limit-fields { display: grid; gap: .65rem; min-width: 0; margin: .25rem 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; }
+.limit-fields legend { padding: 0 .35rem; font-weight: 700; }
+.success-panel { display: grid; gap: .6rem; margin-top: 1.5rem; padding: 1.15rem; border: 1px solid #b8d8d4; border-radius: .8rem; background: var(--color-brand-soft); line-height: 1.8; }
+.success-panel h2, .success-panel p { margin: 0; }
+.success-panel .primary-button { margin-top: .5rem; }
+.snapshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+.snapshot-grid > div { min-width: 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: .75rem; background: #fbfcfd; }
+.snapshot-grid dt { color: var(--color-muted); font-size: .85rem; }
+.snapshot-grid dd { margin: .35rem 0 0; font-weight: 700; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .work-card { width: 100%; margin: 1rem 0; padding: 1.25rem 1rem; }
+  .snapshot-grid { grid-template-columns: 1fr; }
+}
