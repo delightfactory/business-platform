@@ -3,9 +3,11 @@ SELECT no_plan();
 
 SELECT has_function('public','current_operator_can_manage_operators',ARRAY[]::name[],'current manager capability RPC exists');
 SELECT has_function('public','platform_operator_grant_list',ARRAY[]::name[],'bounded Operator grant list exists');
-SELECT has_function('public','change_platform_operator_grant',ARRAY['text','text','boolean','boolean','text']::name[],'transactional grant command exists');
+SELECT has_function('public','change_platform_operator_grant',ARRAY['text','text','boolean','boolean','boolean','text']::name[],'transactional grant command exists');
 SELECT ok(NOT has_function_privilege('anon','public.platform_operator_grant_list()','EXECUTE'),'anon cannot list Operator grants');
-SELECT ok(NOT has_function_privilege('service_role','public.change_platform_operator_grant(text,text,boolean,boolean,text)','EXECUTE'),'service_role has no product grant-management endpoint');
+SELECT has_function('public','change_platform_operator_grant',ARRAY['text','text','boolean','boolean','boolean','text']::name[],'single management RPC accepts three independent capabilities');
+SELECT ok(pg_catalog.to_regprocedure('public.change_platform_operator_grant(text,text,boolean,boolean,text)') IS NULL,'legacy grant RPC overload is removed');
+SELECT ok(NOT has_function_privilege('service_role','public.change_platform_operator_grant(text,text,boolean,boolean,boolean,text)','EXECUTE'),'service_role has no product grant-management endpoint');
 SELECT ok(NOT has_table_privilege('authenticated','platform_private.platform_operator_grants','SELECT'),'authenticated cannot read grant table directly');
 
 INSERT INTO auth.users(id,aud,role,email,encrypted_password,invited_at,email_confirmed_at,banned_until,raw_app_meta_data,raw_user_meta_data,created_at,updated_at)
@@ -30,31 +32,32 @@ SELECT throws_ok($$SELECT platform_private.recover_operator_manager('f1000000-00
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000001',true);
 SELECT ok(public.current_operator_can_manage_operators(),'manager capability is read from current active grant');
+SELECT ok(NOT public.current_operator_can_manage_tenant_lifecycle(),'lifecycle authority is not inherited from other Operator capabilities');
 SELECT is(pg_catalog.jsonb_array_length(public.platform_operator_grant_list()),3,'manager sees only bounded grant rows');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('unverified@example.test','grant',false,true,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('unverified@example.test','grant',false,true,false,'valid reason')$$,
   '22023','platform_operator_target_unavailable','unverified account is rejected');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('banned@example.test','grant',false,true,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('banned@example.test','grant',false,true,false,'valid reason')$$,
   '22023','platform_operator_target_unavailable','banned account is rejected');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('invited-unready@example.test','grant',false,true,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('invited-unready@example.test','grant',false,true,false,'valid reason')$$,
   '22023','platform_operator_target_unavailable','invited account without password readiness is rejected');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('missing@example.test','grant',false,true,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('missing@example.test','grant',false,true,false,'valid reason')$$,
   '22023','platform_operator_target_unavailable','missing Auth account cannot receive a grant');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,false,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,false,false,'valid reason')$$,
   '22023','platform_operator_capability_required','grant with no task is rejected');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,true,'   ')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,true,false,'   ')$$,
   '22023','platform_operator_reason_required','grant requires an explicit reason');
 
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000002',true);
 SELECT ok(NOT public.current_operator_can_manage_operators(),'onboarding-only Operator cannot manage grant authority');
 SELECT throws_ok($$SELECT public.platform_operator_grant_list()$$,'42501','platform_operator_manage_forbidden','onboarding-only Operator cannot list grants');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,true,'valid reason')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','grant',false,true,false,'valid reason')$$,
   '42501','platform_operator_manage_forbidden','onboarding-only Operator cannot grant authority');
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000007',true);
 SELECT ok(public.current_operator_can_manage_operators(),'manager-only Operator sees management capability');
 SELECT ok(NOT public.current_operator_can_onboard_tenants(),'manager-only Operator does not inherit onboarding');
 
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000001',true);
-SELECT is(public.change_platform_operator_grant('target-user@example.test','grant',false,true,'Set up tenant onboarding coverage')->>'state','grant',
+SELECT is(public.change_platform_operator_grant('target-user@example.test','grant',false,true,false,'Set up tenant onboarding coverage')->>'state','grant',
   'manager can grant only the onboarding task');
 RESET ROLE;
 SELECT is((SELECT action FROM platform_private.platform_operator_audit_events WHERE target_user_id='f1000000-0000-4000-8000-000000000003'),
@@ -68,9 +71,9 @@ SELECT is((SELECT reason FROM platform_private.platform_operator_audit_events WH
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000001',true);
-SELECT is(public.change_platform_operator_grant('target-user@example.test','update',true,true,'Add operator coverage')->>'state','update',
-  'manager can explicitly update an active grant');
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','update',false,false,'Remove all tasks')$$,
+SELECT is(public.change_platform_operator_grant('target-user@example.test','update',true,true,true,'Add operator coverage')->>'state','update',
+  'manager can explicitly update an active grant with lifecycle authority');
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','update',false,false,false,'Remove all tasks')$$,
   '22023','platform_operator_capability_required','clearing tasks in update cannot silently revoke');
 RESET ROLE;
 SELECT is((SELECT action FROM platform_private.platform_operator_audit_events WHERE target_user_id='f1000000-0000-4000-8000-000000000003' ORDER BY id DESC LIMIT 1),
@@ -79,6 +82,12 @@ SELECT is((SELECT before_state->>'can_onboard_tenants' FROM platform_private.pla
   'true','update audit captures before state');
 SELECT is((SELECT after_state->>'can_manage_operators' FROM platform_private.platform_operator_audit_events WHERE target_user_id='f1000000-0000-4000-8000-000000000003' ORDER BY id DESC LIMIT 1),
   'true','update audit captures after state');
+SELECT is((SELECT after_state->>'can_manage_tenant_lifecycle' FROM platform_private.platform_operator_audit_events WHERE target_user_id='f1000000-0000-4000-8000-000000000003' ORDER BY id DESC LIMIT 1),
+  'true','update audit records independent lifecycle authority');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000003',true);
+SELECT ok(public.current_operator_can_manage_tenant_lifecycle(),'the explicit lifecycle task is read from the current grant');
+RESET ROLE;
 
 CREATE FUNCTION platform_private.fail_test_operator_management_audit() RETURNS trigger LANGUAGE plpgsql SET search_path='' AS $function$
 BEGIN
@@ -90,7 +99,7 @@ CREATE TRIGGER fail_test_operator_management_audit BEFORE INSERT ON platform_pri
 FOR EACH ROW EXECUTE FUNCTION platform_private.fail_test_operator_management_audit();
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000001',true);
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','update',false,true,'Audit rollback check')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','update',false,true,false,'Audit rollback check')$$,
   '55000','operator_management_audit_failure','audit failure aborts the permission update');
 RESET ROLE;
 DROP TRIGGER fail_test_operator_management_audit ON platform_private.platform_operator_audit_events;
@@ -100,9 +109,9 @@ SELECT is((SELECT can_manage_operators FROM platform_private.platform_operator_g
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000001',true);
-SELECT is(public.change_platform_operator_grant('manager-only@example.test','revoke',false,false,'Remove redundant manager duty')->>'state','revoke',
+SELECT is(public.change_platform_operator_grant('manager-only@example.test','revoke',false,false,false,'Remove redundant manager duty')->>'state','revoke',
   'a recoverable manager can revoke another manager while one remains');
-SELECT is(public.change_platform_operator_grant('manager-a@example.test','revoke',false,false,'Rotate operator duties')->>'state','revoke',
+SELECT is(public.change_platform_operator_grant('manager-a@example.test','revoke',false,false,false,'Rotate operator duties')->>'state','revoke',
   'manager may revoke self while another recoverable manager remains');
 SELECT ok(NOT public.current_operator_can_manage_operators(),'self-revoked manager immediately loses current authority');
 RESET ROLE;
@@ -113,16 +122,16 @@ SELECT is((SELECT after_state->>'is_active' FROM platform_private.platform_opera
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000002',true);
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('onboard-only@example.test','revoke',false,false,'Last manager test')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('onboard-only@example.test','revoke',false,false,false,'Last manager test')$$,
   '42501','platform_operator_manage_forbidden','onboarding-only Operator cannot revoke last manager');
 RESET ROLE;
 SELECT is((SELECT count(*)::integer FROM platform_private.platform_operator_grants WHERE user_id='f1000000-0000-4000-8000-000000000002' AND is_active),1,
   'failed final-manager removal leaves the grant active');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000003',true);
-SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','revoke',false,false,'Last manager test')$$,
+SELECT throws_ok($$SELECT public.change_platform_operator_grant('target-user@example.test','revoke',false,false,false,'Last manager test')$$,
   '23514','platform_operator_last_manager','last recoverable manager cannot revoke self');
-SELECT is(public.change_platform_operator_grant('manager-a@example.test','grant',false,true,'Restore onboarding task')->>'state','grant',
+SELECT is(public.change_platform_operator_grant('manager-a@example.test','grant',false,true,false,'Restore onboarding task')->>'state','grant',
   'manager can regrant a previously revoked account');
 RESET ROLE;
 SELECT ok((SELECT is_active AND NOT can_manage_operators AND can_onboard_tenants FROM platform_private.platform_operator_grants WHERE user_id='f1000000-0000-4000-8000-000000000001'),

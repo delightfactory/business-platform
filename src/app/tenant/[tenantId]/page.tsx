@@ -17,6 +17,21 @@ export default async function TenantPage({ params, searchParams }: {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
 
+  const { data: accessStatus, error: accessStatusError } = await supabase.rpc('tenant_lifecycle_status', { p_tenant_id: tenantId });
+  if (accessStatusError || !accessStatus || typeof accessStatus !== 'object' || Array.isArray(accessStatus)) {
+    return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." />;
+  }
+  const status = accessStatus as Record<string, unknown>;
+  if (status.lifecycle_state === 'suspended') {
+    return <TenantStatus title="الشركة معلّقة" detail={`مساحة ${String(status.tenant_name ?? 'الشركة')} معلّقة حاليًا. لا تتاح بيانات العمل حتى استعادة تشغيل الشركة. تواصل مع دعم المنصة إذا كنت تحتاج إلى استعادة الوصول.`} showSwitch />;
+  }
+  if (status.lifecycle_state === 'archived') {
+    return <TenantStatus title="المساحة غير متاحة" detail="هذه الشركة غير متاحة حاليًا." showSwitch />;
+  }
+  if (status.lifecycle_state !== 'active') {
+    return <TenantStatus title="المساحة غير متاحة" detail="تعذر التحقق من حالة الشركة." />;
+  }
+
   const { data: adminData, error: adminError } = await supabase.rpc('tenant_admin_snapshot', { p_tenant_id: tenantId });
   if (adminError) {
     const { data: memberData, error: memberError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
@@ -96,12 +111,15 @@ function usageText(mode: unknown, limit: unknown, usage: unknown, noun: string) 
   return `${used} من ${String(limit)} ${noun}`;
 }
 
-function TenantStatus({ title, detail }: { title: string; detail: string }) {
+function TenantStatus({ title, detail, showSwitch = false }: { title: string; detail: string; showSwitch?: boolean }) {
   return (
     <main className="app-shell">
       <header className="topbar">
         <Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <nav className="topbar-actions" aria-label="إجراءات الحساب">
+          {showSwitch && <Link className="secondary-button" href="/tenant/select">تبديل الشركة</Link>}
+          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        </nav>
       </header>
       <section className="auth-card" aria-labelledby="tenant-status-title">
         <p className="eyebrow">مساحة الشركة</p>

@@ -18,11 +18,12 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
 
-  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }] = await Promise.all([
+  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators'),
     supabase.rpc('current_operator_can_onboard_tenants'),
+    supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
   ]);
-  if (manageError || onboardError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
+  if (manageError || onboardError || lifecycleError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
 
   return (
     <main className="app-shell">
@@ -39,7 +40,8 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           {canManage && <Link className="primary-button" href="/operator/operators">إدارة مشغّلي المنصة</Link>}
           {canOnboard && <Link className="secondary-button" href="/operator/onboarding">إعداد شركة</Link>}
           {canOnboard && <Link className="secondary-button" href="/operator/invitations">دعوة مسؤول شركة</Link>}
-          {!canManage && !canOnboard && <p className="intro">لا توجد مهام تشغيل ممنوحة لهذا الحساب حاليًا.</p>}
+          {canManageLifecycle && <Link className="secondary-button" href="/operator/tenants">إدارة حالة الشركات</Link>}
+          {!canManage && !canOnboard && !canManageLifecycle && <p className="intro">لا توجد مهام تشغيل ممنوحة لهذا الحساب حاليًا.</p>}
         </div>
       </section>
       <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>

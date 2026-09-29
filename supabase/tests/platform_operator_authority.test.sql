@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(39);
+SELECT plan(41);
 
 SELECT ok(
   NOT has_schema_privilege('authenticated', 'platform_private', 'USAGE'),
@@ -76,6 +76,11 @@ SELECT is(
   'the first grant includes operator-management authority'
 );
 SELECT is(
+  (SELECT can_manage_tenant_lifecycle FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000001'::uuid),
+  true,
+  'maintenance bootstrap explicitly grants lifecycle authority'
+);
+SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_audit_events WHERE target_user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000001'::uuid),
   1::bigint,
   'bootstrap persists exactly one audit event with its grant'
@@ -128,6 +133,11 @@ SELECT is(
   (SELECT is_emergency FROM platform_private.platform_operator_audit_events WHERE target_user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid),
   true,
   'the emergency declaration is retained in audit'
+);
+SELECT is(
+  (SELECT can_manage_tenant_lifecycle FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid),
+  true,
+  'maintenance recovery explicitly grants lifecycle authority'
 );
 SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_grants WHERE is_active AND can_manage_operators),

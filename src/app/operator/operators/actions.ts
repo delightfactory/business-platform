@@ -8,9 +8,10 @@ export async function changeOperatorGrantAction(formData: FormData) {
   const action = text(formData, 'action');
   const canManage = formData.get('canManageOperators') === 'on';
   const canOnboard = formData.get('canOnboardTenants') === 'on';
+  const canManageLifecycle = formData.get('canManageTenantLifecycle') === 'on';
   const reason = text(formData, 'reason');
   if (!validEmail(email) || !['grant', 'update', 'revoke'].includes(action)) go('invalid');
-  if (action !== 'revoke' && !canManage && !canOnboard) go('capability');
+  if (action !== 'revoke' && !canManage && !canOnboard && !canManageLifecycle) go('capability');
   if (reason.length < 3 || reason.length > 500) go('reason');
   const supabase = await createSupabaseServerClient();
   if (!supabase) go('setup');
@@ -18,7 +19,7 @@ export async function changeOperatorGrantAction(formData: FormData) {
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('change_platform_operator_grant', {
     p_target_email: email, p_action: action, p_can_manage_operators: canManage,
-    p_can_onboard_tenants: canOnboard, p_reason: reason,
+    p_can_onboard_tenants: canOnboard, p_can_manage_tenant_lifecycle: canManageLifecycle, p_reason: reason,
   });
   if (error) go(mapError(error.message));
   if (!data || typeof data !== 'object' || Array.isArray(data)) go('failed');
@@ -30,7 +31,9 @@ export async function changeOperatorGrantAction(formData: FormData) {
   }
   if (result.state === 'update' && typeof result.email === 'string'
     && result.email.toLowerCase() === user.email?.toLowerCase() && result.can_manage_operators === false) {
-    redirect(result.can_onboard_tenants === true ? '/operator?state=updated-self' : '/auth/login?state=operator-revoked');
+    redirect(result.can_onboard_tenants === true || result.can_manage_tenant_lifecycle === true
+      ? '/operator?state=updated-self'
+      : '/auth/login?state=operator-revoked');
   }
   const state = result.state === 'grant' ? 'granted'
     : result.state === 'update' ? 'updated'
