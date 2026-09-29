@@ -4,7 +4,7 @@
 
 Define the experience and implementation guardrails for the web application so every product surface behaves like a professional application across desktop, laptop, tablet, and mobile without fragmenting into separate UI implementations.
 
-For the current Cube 0 Operator and Tenant redesign, use the [experience redesign blueprint](cube-0-experience-redesign.md) to turn these guardrails into concrete journeys and acceptance criteria.
+Use the [platform experience architecture](platform-experience-architecture.md) for the shared shell and future Business Domain expansion. The current [Cube 0 experience redesign](cube-0-experience-redesign.md) applies that structure to Operator and Tenant journeys.
 
 ## Product experience objective
 

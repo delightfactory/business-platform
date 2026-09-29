@@ -57,6 +57,8 @@ Do not invent material product behavior inside code. If a missing decision affec
 
 Before implementing domain screens, establish the shared application experience foundation.
 
+Use the [platform experience architecture](../05-engineering/platform-experience-architecture.md) to design the workspace and Business Domain hierarchy first. Prove the shared shell with zero, one, and several available Domain entries before using the current Cube 0 Operator/Tenant screens as task examples. Do not make HR or Tenant administration the permanent root of the application.
+
 Required first-class foundations:
 
 - responsive application shell;

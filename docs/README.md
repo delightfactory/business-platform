@@ -32,7 +32,7 @@ A newer document does not automatically supersede an older accepted baseline. Ma
 
 ## Experience baseline
 
-User-facing implementation is governed by `05-engineering/frontend-ux-baseline.md`. Responsive/adaptive behavior, reusable design-system primitives, interaction states, accessibility, and UX-flow consistency are product-quality requirements rather than post-implementation polish.
+User-facing implementation is governed by `05-engineering/frontend-ux-baseline.md`. The [platform experience architecture](05-engineering/platform-experience-architecture.md) defines the working shared-shell and Business Domain navigation structure; the [Cube 0 experience redesign](05-engineering/cube-0-experience-redesign.md) applies it to current Operator and Tenant tasks. Responsive/adaptive behavior, reusable design-system primitives, interaction states, accessibility, and UX-flow consistency are product-quality requirements rather than post-implementation polish.
 
 ## Public-safe documentation
 

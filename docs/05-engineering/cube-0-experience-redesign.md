@@ -1,6 +1,6 @@
 # Cube 0 experience redesign: Operator and Tenant
 
-Status: design direction for implementation and device review. It is not UX acceptance.
+Status: design direction for implementation and device review. It is not UX acceptance. The [platform experience architecture](platform-experience-architecture.md) governs the application-wide shell and future Business Domain expansion; this document applies it to the current Operator and Tenant administration journeys.
 
 ## Why this redesign is necessary
 
@@ -28,7 +28,7 @@ The same shared shell serves Operator and Tenant. Its navigation content and con
 
 Use an **operations desk**, not a dashboard kit, as the composition metaphor. A stable dark-ink navigation plane establishes place. The work plane is light and almost flat; row separators and aligned columns communicate relationships. Reserve the Tenant accent for selection and primary actions. Status colour never carries meaning alone. Use Cairo at readable regular and bold weights; avoid oversized display text on task pages. The record name and current state lead each detail page, while secondary metadata recedes. Shadows should signal an actual floating surface such as a task sheet, not appear on every list item.
 
-Prototype the Operator invitation collection and the Tenant Legal Entity/Site detail first because together they expose the hardest decisions: permissions, pending states, long forms, nested records, RTL, and phone density. Capture 360 px, tablet, and desktop views before turning the visual language into shared components. A prototype that looks attractive but hides the invitation state or Site parent relationship fails.
+Prototype the **application frame and workspace navigation first** with zero, one, and several fixture Business Domains, multiple Tenants, and Operator access. Then use the Operator invitation collection and Tenant Legal Entity/Site detail to pressure-test the frame against real Cube 0 tasks: permissions, pending states, long forms, nested records, RTL, and phone density. Capture 360 px, tablet, and desktop views before turning the visual language into shared components. A prototype that looks attractive but hides the invitation state, Site parent relationship, or available Domain choices fails.
 
 ### Spatial rules
 
@@ -115,7 +115,7 @@ Build only repeated interactions: `AppShell`, `ContextNav`, `PageHeading`, `Reco
 
 ## Coherent implementation sequence
 
-1. **Frame and interaction foundation:** shared Operator/Tenant shell, device navigation, design tokens, action pending state, feedback placement. Verify route access and navigation on actual phone/browser conditions before moving on.
+1. **Platform frame and interaction foundation:** one domain-neutral shell with distinct Operator/Tenant contexts, Tenant switching, a scalable Business areas slot, device navigation, design tokens, action pending state, and feedback placement. Review the frame with zero, one, and several fixture Domains without shipping future-module placeholders. Verify route access and navigation on actual phone/browser conditions before moving on.
 2. **Tenant work:** home, people/invitations, Legal Entity/Site collection and detail, branding. Complete each journey with empty, pending, success, failure, and denied states before starting the next.
 3. **Operator work:** home and First Admin invitation, Tenant collection/lifecycle, limits/entitlements, Operator access. Verify that invitation wording reflects delayed Tenant creation.
 4. **Whole-product qualification:** representative Operator and Tenant journeys at phone, tablet, and desktop; keyboard and touch; Arabic wording; RTL; no normal horizontal scroll; user review of the rendered result. Record screenshots, reviewed commit, and unresolved observations in the Cube 0 qualification record. Existing database assertions remain engineering evidence, not UX acceptance.
@@ -125,7 +125,7 @@ Build only repeated interactions: `AppShell`, `ContextNav`, `PageHeading`, `Reco
 | Gate | Applied capability | Concrete output |
 | --- | --- | --- |
 | Understand work | `enterprise-workflow-ux` and `product-flow-ux` | Actor, shortest real path, decision, result, failure and recovery map |
-| Choose a visual direction | `frontend-design` (the installed Anthropic-origin skill) | Type, colour, density, navigation geometry and two representative screen compositions, checked for generic SaaS patterns |
+| Choose a visual direction | `frontend-design` (the installed Anthropic-origin skill) | Platform shell, workspace/Domain hierarchy, type, colour, density, navigation geometry and representative task compositions, checked for generic SaaS patterns |
 | Write the interface | `arabic-ux-writing` | Page titles, actions, statuses, errors and empty states in consistent ordinary Arabic |
 | Check rendered experience | `product-design:audit` plus browser inspection | Screenshots and findings tied to real Operator/Tenant steps at phone, tablet and desktop widths |
 | Check capability closure | `backend-ui-closure` | Every shipped action reachable by its authorised role, with its true result and recovery path |
