@@ -1,5 +1,13 @@
 # Cube 0 qualification record
 
+## Product experience decision after phone feedback (2026-09-29)
+
+The user reviewed the mobile experience after the qualification below and rejected its visual hierarchy, terminology, navigation, and crowded task flows as below the intended institutional SaaS quality. **The engineering and security evidence below remains valid for its reviewed commit, but the statement that Cube 0 is ready for the next cube is superseded for product experience. Cube 0 UX acceptance is open.** Do not use the earlier engineering decision as a product design sign-off.
+
+Before closing Cube 0, review the live Operator and Tenant journeys on a phone, tablet, and desktop with representative data: create/invite a company administrator, inspect invitations, manage company limits and access, switch companies, manage users and branches, and recover from denied or suspended access. Each journey must have a clear next action, plain Arabic, visible persistent state, transient feedback in the appropriate place, a correction path, reachable navigation, and no normal horizontal page scrolling. Record the actual flow and screenshots; a build or passing database tests alone do not close this gate.
+
+The improvements in PRs #30–#33 address parts of the reported friction. The remaining experience must be reviewed as a whole before an updated GO decision, including consistency of the shared navigation and the detailed task screens. The [frontend UX baseline](../05-engineering/frontend-ux-baseline.md) records the reference patterns and review method.
+
 ## Scope and decision
 
 This record checks the Platform Foundation & Experience Layer against the [Cube execution plan](v1-cube-execution-plan.md) and [final readiness amendment](final-implementation-readiness-amendment.md). The reviewed `main` commit is `df0f658906cc6461aa667dd2a8c977f6918c8258` (2026-09-29). Cube 0 establishes the shared SaaS foundation; HR and Payroll behavior starts in later cubes.
