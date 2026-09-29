@@ -34,18 +34,18 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
 
   return (
     <main className="app-shell">
+      {success && <FeedbackToast key={crypto.randomUUID()} message={stateMessage(params.state ?? '')} />}
       <header className="topbar">
         <Link className="brand" href="/operator">منصة الأعمال</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
       </header>
-      <section className="work-card" aria-labelledby="invite-title">
+      <section className="work-card operator-invitations-overview" aria-labelledby="invite-title">
         <p className="eyebrow">إعداد الشركات</p>
         <h1 id="invite-title">دعوات مسؤولي الشركات</h1>
         <p className="intro">أنشئ شركة بدعوة مسؤولها الأول، وتابع حالة الدعوات هنا. لن تُنشأ الشركة قبل قبول الدعوة.</p>
-        {success && <FeedbackToast key={crypto.randomUUID()} message={stateMessage(params.state ?? '')} />}
         {params.state && !success && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
-        <details className="operator-grant-form" open={params.state === 'invalid'}>
-          <summary className="secondary-button">دعوة مسؤول لشركة جديدة</summary>
+        <details className="operator-grant-form operator-invite-disclosure" open={params.state === 'invalid'}>
+          <summary className="primary-button">دعوة مسؤول لشركة جديدة</summary>
           <p className="field-hint">أدخل بيانات الشركة وحدود الاشتراك، ثم أرسل الدعوة للمسؤول الأول.</p>
           <form className="auth-form onboarding-form" action={createInvitationAction}>
             <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
@@ -54,7 +54,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
             <label htmlFor="entityName">اسم الجهة القانونية (اختياري)</label>
             <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
             <label htmlFor="siteName">اسم الفرع أو الموقع الرئيسي</label>
-            <input id="siteName" name="siteName" required maxLength={160} />
+            <input id="siteName" name="siteName" defaultValue="المقر الرئيسي" required maxLength={160} />
             <label htmlFor="targetEmail">بريد المسؤول الأول</label>
             <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" required maxLength={254} />
             <LimitFields kind="seats" label="عدد المستخدمين" />
@@ -62,8 +62,9 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
             <button className="primary-button" type="submit">إرسال الدعوة</button>
           </form>
         </details>
+        <Link className="back-link" href="/operator/onboarding">إعداد شركة لمسؤول لديه حساب بالفعل</Link>
       </section>
-      <section className="work-card invitation-list" aria-labelledby="history-title">
+      <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
         {rows.length === 0 ? <p className="intro">لا توجد دعوات بعد.</p> : (
           <ul>
@@ -72,7 +73,8 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                 <div>
                   <h3>{row.tenant_name}</h3>
                   <p><bdi>{row.target_email}</bdi></p>
-                  <p>{lifecycleText(row.lifecycle_state)}{row.lifecycle_state === 'pending' && <> · {deliveryText(row.delivery_state)}</>}</p>
+                  <p className={`entity-status ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</p>
+                  {row.lifecycle_state === 'pending' && <p>{deliveryText(row.delivery_state)}</p>}
                   {row.lifecycle_state === 'pending' && row.delivery_state !== 'sent' && <p className="field-hint">يمكنك إعادة الإرسال. كل إصدار جديد يبطل الرابط السابق.</p>}
                   {row.lifecycle_state === 'accepted' && <p className="field-hint">اكتمل إنشاء الشركة ومسؤولها.</p>}
                 </div>
@@ -93,7 +95,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
           </ul>
         )}
       </section>
-      <footer className="footer"><Link href="/operator/onboarding">إعداد شركة بحساب مسؤول موجود</Link></footer>
+      <footer className="footer">منصة الأعمال · دعوات الشركات</footer>
     </main>
   );
 }
