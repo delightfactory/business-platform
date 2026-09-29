@@ -60,6 +60,8 @@ Package versions are exact and `package-lock.json` is committed for reproducible
 
 Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Operator authority checks are in `supabase/tests/platform_operator_authority.test.sql` and `supabase/tests/platform_operator_management.test.sql`. Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`; Legal Entity and Site checks are in `supabase/tests/tenant_legal_entities_sites.test.sql`.
 
+Sensitive audit events can be reviewed by a controlled, read-only maintenance command documented in [supabase/maintenance/README.md](supabase/maintenance/README.md). Ordinary Operator and Tenant actions do not imply permission to browse all audit history.
+
 ## Governing documentation
 
 The approved product, architecture, security, and execution baseline is indexed in [docs/README.md](docs/README.md). New business behavior must follow those specifications and reach `main` through a reviewed PR.

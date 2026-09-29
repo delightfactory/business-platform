@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "operator:bootstrap": "node scripts/platform-operator-maintenance.mjs bootstrap",
     "operator:recover": "node scripts/platform-operator-maintenance.mjs recover",
+    "operator:audit": "node scripts/platform-audit-review.mjs",
     "test:db:operator": "supabase test db --local",
     "test:db:invitations": "supabase test db --local supabase/tests/tenant_admin_invitations.test.sql",
     "test:db:members": "supabase test db --local supabase/tests/tenant_member_invitations.test.sql",
