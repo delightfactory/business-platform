@@ -11,7 +11,7 @@ This repository treats product and engineering documentation as part of the prod
 - `04-product-specs/` — implementation-ready product specifications once Phase 0 decisions are sufficiently mature.
 - `05-engineering/` — engineering, database, security, privacy, frontend/UX, testing, and quality standards.
 - `06-governance/` — source-of-truth rules, decision log, change control, specification lifecycle, repository governance, Definition of Ready, and Definition of Done.
-- `07-execution/` — Cube plan, implementation brief, and scoped execution-readiness amendments.
+- `07-execution/` — Cube plan, implementation brief, execution-readiness amendments, and [Cube 0 qualification evidence](07-execution/cube-0-qualification.md).
 - `07-reuse-audits/` — controlled audits of donor systems and reusable implementation assets.
 
 ## Authority model

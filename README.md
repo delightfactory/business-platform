@@ -1,6 +1,6 @@
 # Business Platform
 
-The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. Cube 0 currently covers invite-only Operator onboarding and Tenant Member invitations; the remaining Platform workflows and business domains are future slices.
+The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. Cube 0 provides the reusable Platform foundation: invite-only access, Tenant onboarding and lifecycle, Legal Entities and Sites, membership and role governance, Operator controls, commercial limits and entitlements, audit and recovery operations, Tenant branding, and an Arabic-first responsive shell. Business domains remain future cubes. See the [Cube 0 qualification record](docs/07-execution/cube-0-qualification.md) for the implemented scope and evidence.
 
 ## Local setup
 
@@ -53,6 +53,7 @@ npm run test:db:admin-roles
 npm run test:db:operator-management
 npm run test:db:entities-sites
 npm run test:db:commercial
+npm run test:db:entitlements
 npm run test:db:branding
 ```
 
