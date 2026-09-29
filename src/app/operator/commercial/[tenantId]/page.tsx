@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeCommercialLimitAction } from '../actions';
 
@@ -28,15 +29,15 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   if (!Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
 
   return <main className="app-shell">
+    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث الحد وتسجيل السبب." />}
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-    <section className="work-card" aria-labelledby="commercial-title">
+    <section className="work-card operator-limit-detail" aria-labelledby="commercial-title">
       <p className="eyebrow">حدود الاستخدام</p><h1 id="commercial-title"><bdi>{tenant.display_name}</bdi></h1>
-      <p className="intro">حالة الشركة: {stateLabel(tenant.lifecycle_state)}</p>
-      {query.state === 'updated' && <p className="form-message" role="status">تم تحديث الحد الفعّال وتسجيل السبب.</p>}
+      <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
-      <div className="member-list">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
+      <div className="operator-limit-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
     </section><footer className="footer">منصة الأعمال · حدود الاستخدام</footer>
   </main>;
 }
@@ -47,18 +48,18 @@ function LimitCard({ tenantId, limit }: { tenantId: string; limit: Limit }) {
     && limit.mode === 'limited' && limit.value !== null && limit.usage > limit.value;
   const atCapacity = (limit.status === 'effective' || limit.status === 'future_conflict')
     && limit.mode === 'limited' && limit.value !== null && limit.usage === limit.value;
-  return <article className="work-card" aria-labelledby={`${limit.capability_key}-title`}>
-    <h2 id={`${limit.capability_key}-title`}>{users ? 'المستخدمون' : 'المواقع'}</h2>
-    <p>{users ? 'العضويات النشطة' : 'المواقع النشطة'}: {limit.usage}</p>
+  return <article className="operator-limit-card" aria-labelledby={`${limit.capability_key}-title`}>
+    <h2 id={`${limit.capability_key}-title`}>{users ? 'المستخدمون' : 'الفروع'}</h2>
+    <p>{users ? 'المستخدمون النشطون' : 'الفروع النشطة'}: <strong>{limit.usage}</strong></p>
     {limit.status === 'missing' ? <p className="form-message" role="status">لا يوجد حد فعّال؛ أنشئ حدًا جديدًا لتفعيل إدارة النمو.</p>
       : limit.status === 'conflict' ? <p className="form-message" role="alert">تعارض في سجلات الحد. أصلح البيانات قبل إجراء تغيير.</p>
         : limit.status === 'future_conflict' ? <p className="form-message" role="alert">يوجد حد مستقبلي يتعارض مع التغيير الجديد. عالج الجدول الزمني عبر مسار صيانة.</p>
           : null}
     {limit.status !== 'conflict' && limit.mode && <>
-      <p>الحد الحالي: {limit.mode === 'unlimited' ? 'غير محدود' : limit.value}</p>
+      <p>الحد الحالي: <strong>{limit.mode === 'unlimited' ? 'غير محدود' : limit.value}</strong></p>
       {over && <p className="form-message" role="status">تبقى الموارد الموجودة فعّالة. لا يمكن إضافة {users ? 'عضويات' : 'مواقع'} جديدة إلا عندما يصبح الاستخدام أقل من الحد أو يُرفع الحد. يمكن لمسؤول الشركة تعطيل {users ? 'عضويات' : 'مواقع'} غير مستخدمة، أو يمكن طلب رفع الحد.</p>}
       {atCapacity && <p className="field-hint">بلغ الاستخدام الحد. لا يمكن إضافة جديد إلا عندما يصبح الاستخدام أقل من الحد أو يُرفع الحد؛ مسؤول الشركة يدير تعطيل الموارد غير المستخدمة.</p>}
-      {limit.valid_from && <p className="field-hint">يسري منذ: {new Date(limit.valid_from).toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' })} بتوقيت القاهرة</p>}
+      {limit.valid_from && <p className="field-hint">ساري من {new Date(limit.valid_from).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     </>}
     {limit.status !== 'conflict' && limit.status !== 'future_conflict' && <details className="operator-grant-form"><summary className="secondary-button">{limit.status === 'missing' ? 'إنشاء حد' : 'تغيير الحد'}</summary>
       <form action={changeCommercialLimitAction} className="auth-form">

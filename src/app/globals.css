@@ -149,6 +149,15 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .operator-collection .member-card + .member-card { border-top: 1px solid var(--color-border); }
 .operator-collection .member-card h2 { margin: 0 0 .5rem; font-size: 1rem; }
 .operator-collection .member-card .entity-status { margin: 0; }
+.operator-area .operator-limit-detail { width: min(100%, var(--work-content-max)); padding: 0; border: 0; box-shadow: none; background: transparent; }
+.operator-limit-detail > .entity-status { margin: .65rem 0 0; }
+.operator-limit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr)); align-items: start; gap: 1rem; margin-top: 1.5rem; }
+.operator-limit-card { min-width: 0; padding: clamp(1.2rem, 2.5vw, 1.75rem); border: 1px solid var(--color-border); border-radius: .9rem; background: white; }
+.operator-limit-card h2 { margin: 0 0 1rem; font-size: 1.2rem; }
+.operator-limit-card > p { margin: .35rem 0; color: var(--color-muted); }
+.operator-limit-card > p strong { color: var(--color-text); }
+.operator-limit-card > .operator-grant-form { margin: 1.15rem 0 0; padding: 0; border: 0; }
+.operator-limit-card > .operator-grant-form[open] { padding: 1rem; border: 1px solid var(--color-border); }
 .app-shell > .tenant-collection { width: min(100%, var(--work-content-max)); border: 0; box-shadow: none; background: transparent; padding: 0; }
 .tenant-collection > .intro { max-width: none; margin: .25rem 0 .5rem; }
 .tenant-collection .usage-line { width: fit-content; max-width: 100%; padding: .45rem .75rem; font-size: .88rem; }
