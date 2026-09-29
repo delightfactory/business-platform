@@ -10,7 +10,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "operator:bootstrap": "node scripts/platform-operator-maintenance.mjs bootstrap",
+    "operator:recover": "node scripts/platform-operator-maintenance.mjs recover",
+    "test:db:operator": "supabase test db --local supabase/tests/platform_operator_authority.test.sql"
   },
   "dependencies": {
     "next": "16.3.6",
@@ -24,6 +27,7 @@
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.2",
     "eslint-config-next": "16.3.6",
+    "pg": "8.23.0",
     "postcss": "8.5.28",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3"
