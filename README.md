@@ -1,28 +1,28 @@
 # Business Platform
 
-The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. The repository is moving from the Phase 0 documentation baseline into Cube 0 implementation. This commit provides a locally runnable application foundation only; it does not contain business workflows or connect to a database.
+The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. This repository contains the local app foundation and a narrow invite-only Operator entry path; it does not implement Tenant onboarding or business workflows.
 
 ## Local setup
 
-Requirements: Node.js 24 and npm. Install the Supabase CLI and Docker Desktop to run the local Supabase stack.
+Requirements: Node.js 24, npm, Supabase CLI, and Docker Desktop.
 
 ```powershell
 npm ci
 Copy-Item .env.example .env.local
-npm run dev
 ```
 
-Open <http://localhost:3000>. The Arabic RTL page is explicitly labeled as a development foundation. Tenant setup and authentication workflows are the next implementation slices.
-
-To initialize and run Supabase locally:
+Start Supabase locally, copy the local publishable key from its status output into `.env.local`, then run the app:
 
 ```powershell
 supabase start
+npm run dev
 ```
 
-The repository contains the CLI-generated `supabase/config.toml`; no product schema, migrations, seed data, or Auth flow is included yet. Keep local/preview configuration separate from production as required by ADR-009.
+Open <http://localhost:3000>. The local API uses port `55321` to avoid collisions with another local Supabase project. Keep local/preview configuration separate from production as required by ADR-009. With missing environment values, the login and Operator pages show setup states without needing live Supabase during build.
 
-The local Auth configuration disables public sign-up and requires email confirmation in preparation for the approved invite-only workflow. No application login path is connected yet.
+Authentication is invite-only email/password; public signup is disabled. Password recovery uses the Supabase PKCE callback. Local Auth mail is captured by Inbucket at <http://127.0.0.1:55324>. Production password recovery requires configured SMTP and an allowlisted app callback URL. No service-role key is used by the web app.
+
+The `/operator` page verifies the current Auth user and reads only that caller's current grant through `current_platform_operator_status()`. Tenant onboarding and further Operator management workflows are separate future slices.
 
 ## Local quality gates
 
@@ -30,11 +30,12 @@ The local Auth configuration disables public sign-up and requires email confirma
 npm run lint
 npm run typecheck
 npm run build
+npm run test:db:operator
 ```
 
-Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs these gates on pull requests.
+Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs lint, typecheck, and build on pull requests. The focused DB command requires the local Supabase stack and applies migrations first.
 
-Platform Operator maintenance bootstrap/recovery instructions and the focused local pgTAP command are in [supabase/maintenance/README.md](supabase/maintenance/README.md).
+Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md).
 
 ## Governing documentation
 
