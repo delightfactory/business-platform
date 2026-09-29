@@ -18,12 +18,13 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
 
-  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }] = await Promise.all([
+  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }, { data: canManageCommercial, error: commercialError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators'),
     supabase.rpc('current_operator_can_onboard_tenants'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
+    supabase.rpc('current_operator_can_manage_commercial_access'),
   ]);
-  if (manageError || onboardError || lifecycleError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
+  if (manageError || onboardError || lifecycleError || commercialError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
 
   return (
     <main className="app-shell">
@@ -41,7 +42,8 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           {canOnboard && <Link className="secondary-button" href="/operator/onboarding">إعداد شركة</Link>}
           {canOnboard && <Link className="secondary-button" href="/operator/invitations">دعوة مسؤول شركة</Link>}
           {canManageLifecycle && <Link className="secondary-button" href="/operator/tenants">إدارة حالة الشركات</Link>}
-          {!canManage && !canOnboard && !canManageLifecycle && <p className="intro">لا توجد مهام تشغيل ممنوحة لهذا الحساب حاليًا.</p>}
+          {canManageCommercial && <Link className="secondary-button" href="/operator/commercial">إدارة حدود الاستخدام</Link>}
+          {!canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && <p className="intro">لا توجد مهام تشغيل ممنوحة لهذا الحساب حاليًا.</p>}
         </div>
       </section>
       <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>
