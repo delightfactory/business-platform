@@ -4,6 +4,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantLifecycleAction } from '../actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,7 +69,7 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
                 <input type="hidden" name="targetState" value={transition.target} />
                 <label htmlFor={`reason-${transition.target}`}>سبب الإجراء</label>
                 <textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
-                <button className={transition.target === 'archived' ? 'danger-button' : 'primary-button'} type="submit">تأكيد {transition.label} وتسجيل السبب</button>
+                <SubmitButton className={transition.target === 'archived' ? 'danger-button' : 'primary-button'} label={`تأكيد ${transition.label} وتسجيل السبب`} />
               </form>
               </details>
             </article>

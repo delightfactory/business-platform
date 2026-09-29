@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { TenantNavigation } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
@@ -44,7 +43,6 @@ export default async function TenantPage({ params, searchParams }: {
     return (
       <main className="app-shell">
         {query.state === 'admin-demoted' && <FeedbackToast key={crypto.randomUUID()} message="تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة." />}
-        <TenantNavigation tenantId={tenantId} tenantName={String(member.tenant_name ?? 'الشركة')} current="home" />
         <section className="work-card" aria-labelledby="tenant-title">
           <p className="eyebrow">مساحة الشركة</p><h1 id="tenant-title">{String(member.tenant_name ?? 'الشركة')}</h1>
           <p className="intro">أنت عضو في هذه الشركة.</p>
@@ -69,7 +67,6 @@ export default async function TenantPage({ params, searchParams }: {
 
   return (
     <main className="app-shell">
-      <TenantNavigation tenantId={tenantId} tenantName={String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')} current="home" />
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
           <p className="eyebrow">مساحة الشركة</p>

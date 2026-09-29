@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
-import { PageFrame, TenantNavigation } from '@/components/context-navigation';
+import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { manageLegalEntityAction, manageSiteAction } from '../actions';
 
@@ -40,7 +41,6 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
   return (
     <PageFrame footer="بيانات الشركة">
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
-      <TenantNavigation tenantId={tenantId} tenantName={snapshot.tenant_name} current="entities-sites" />
       <section className="work-card task-page tenant-detail-header" aria-labelledby="entity-title">
         <Link className="back-link" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</Link>
         <p className="eyebrow">جهة قانونية</p>
@@ -64,7 +64,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
               <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
               <label htmlFor="entity-update-reason">سبب التعديل</label>
               <input id="entity-update-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">حفظ بيانات الجهة</button>
+              <SubmitButton label="حفظ بيانات الجهة" pendingLabel="جارٍ الحفظ…" />
             </form>
           </details>
           {entity.is_active && !entity.is_default && <details className="task-disclosure">
@@ -73,7 +73,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
               <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="entityId" value={entity.id} />
               <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="default" />
               <label htmlFor="entity-default-reason">سبب التغيير</label><input id="entity-default-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">تأكيد الاختيار</button>
+              <SubmitButton label="تأكيد الاختيار" />
             </form>
           </details>}
           {entity.is_active && Number(entity.active_site_count ?? 0) > 0
@@ -113,7 +113,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
                   <input id={`site-name-${site.id}`} name="displayName" defaultValue={site.display_name} required maxLength={160} />
                   <label htmlFor={`site-update-reason-${site.id}`}>سبب تعديل الاسم</label>
                   <input id={`site-update-reason-${site.id}`} name="reason" required minLength={3} maxLength={500} />
-                  <button className="secondary-button" type="submit">حفظ الاسم</button>
+                  <SubmitButton className="secondary-button" label="حفظ الاسم" pendingLabel="جارٍ الحفظ…" />
                 </form></details>
                 {site.is_active && !site.is_default && <details className="task-disclosure"><summary className="secondary-button">جعله الفرع الأساسي</summary>
                   <SiteStateForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="default" label="تأكيد اختيار الفرع الأساسي" />
@@ -138,7 +138,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
               <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="create" />
               <label htmlFor="site-name">اسم الفرع أو الموقع</label><input id="site-name" name="displayName" required maxLength={160} />
               <label htmlFor="site-create-reason">سبب الإضافة</label><input id="site-create-reason" name="reason" required minLength={3} maxLength={500} />
-              <button className="primary-button" type="submit">إضافة الفرع أو الموقع</button>
+              <SubmitButton label="إضافة الفرع أو الموقع" pendingLabel="جارٍ الإضافة…" />
             </form>
           )}
         </details>}
@@ -153,7 +153,7 @@ function EntityStateForm({ tenantId, entityId, action }: { tenantId: string; ent
     <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="entityId" value={entityId} />
     <input type="hidden" name="returnEntityId" value={entityId} /><input type="hidden" name="action" value={action} />
     <label htmlFor={`entity-state-reason-${action}`}>{label}</label><input id={`entity-state-reason-${action}`} name="reason" required minLength={3} maxLength={500} />
-    <button className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} type="submit">{action === 'deactivate' ? 'تأكيد التعطيل' : 'تأكيد إعادة التفعيل'}</button>
+    <SubmitButton className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} label={action === 'deactivate' ? 'تأكيد التعطيل' : 'تأكيد إعادة التفعيل'} />
   </form>;
 }
 
@@ -165,7 +165,7 @@ function SiteStateForm({ tenantId, entityId, siteId, action, label }: {
     <input type="hidden" name="returnEntityId" value={entityId} /><input type="hidden" name="action" value={action} />
     <label htmlFor={`site-reason-${action}-${siteId}`}>{action === 'default' ? 'سبب تغيير الموقع الافتراضي' : action === 'deactivate' ? 'سبب التعطيل' : 'سبب إعادة التفعيل'}</label>
     <input id={`site-reason-${action}-${siteId}`} name="reason" required minLength={3} maxLength={500} />
-    <button className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} type="submit">{label}</button>
+    <SubmitButton className={action === 'deactivate' ? 'danger-button' : 'secondary-button'} label={label} />
   </form>;
 }
 
@@ -198,7 +198,7 @@ function feedbackForState(state?: string) {
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
-  return <PageFrame><TenantNavigation tenantId={tenantId} tenantName="الشركة" current="entities-sites" />
+  return <PageFrame>
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></section></PageFrame>;
 }

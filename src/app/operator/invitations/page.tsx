@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { SubmitButton } from '@/components/submit-button';
 import { createInvitationAction, reissueInvitationAction, revokeInvitationAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -59,7 +60,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
             <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" required maxLength={254} />
             <LimitFields kind="seats" label="عدد المستخدمين" />
             <LimitFields kind="sites" label="عدد الفروع والمواقع" />
-            <button className="primary-button" type="submit">إرسال الدعوة</button>
+            <SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…" />
           </form>
         </details>
         <Link className="back-link" href="/operator/onboarding">إعداد شركة لمسؤول لديه حساب بالفعل</Link>
@@ -82,11 +83,11 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   <div className="invitation-actions">
                     <form action={reissueInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <button className="secondary-button" type="submit">إعادة إرسال دعوة جديدة</button>
+                      <SubmitButton className="secondary-button" label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
                     </form>
                     <form action={revokeInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <button className="secondary-button" type="submit">إلغاء الدعوة</button>
+                      <SubmitButton className="secondary-button" label="إلغاء الدعوة" />
                     </form>
                   </div>
                 )}

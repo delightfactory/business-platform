@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { onboardTenantAction } from '@/app/operator/actions';
+import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -41,7 +42,7 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
             <input id="adminEmail" name="adminEmail" type="email" autoComplete="email" required maxLength={254} />
             <p className="field-hint">يجب أن يكون الحساب موجودًا ومؤكد البريد. لا يتم إنشاء حساب جديد هنا.</p>
             <LimitFields kind="seats" label="حد المستخدمين" /><LimitFields kind="sites" label="حد المواقع" />
-            <button className="primary-button" type="submit">إنشاء الشركة</button>
+            <SubmitButton label="إنشاء الشركة" pendingLabel="جارٍ إنشاء الشركة…" />
           </form>
         )}
       </section><footer className="footer">منصة الأعمال · تأسيس الشركات</footer>

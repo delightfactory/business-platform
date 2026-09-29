@@ -12,6 +12,6 @@ export function FeedbackToast({ message }: { message: string | null }) {
   if (!message || !visible) return null;
   return <div className="feedback-toast" role="status" aria-live="polite" aria-atomic="true">
     <span>{message}</span>
-    <button type="button" onClick={() => setVisible(false)} aria-label="إغلاق رسالة النجاح">إغلاق</button>
+    <button type="button" onClick={() => setVisible(false)} aria-label="إغلاق الإشعار">×</button>
   </div>;
 }

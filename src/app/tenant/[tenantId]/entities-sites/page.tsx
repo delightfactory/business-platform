@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { PageFrame, TenantNavigation } from '@/components/context-navigation';
+import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { manageLegalEntityAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,36 +41,21 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
   return (
     <PageFrame footer="إعداد الشركة">
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
-      <TenantNavigation tenantId={tenantId} tenantName={snapshot.tenant_name} current="entities-sites" />
-      <section className="work-card task-page tenant-collection" aria-labelledby="entities-sites-title">
-        <p className="eyebrow">بيانات الشركة</p>
-        <h1 id="entities-sites-title">الجهات والفروع</h1>
-        <p className="intro">اعرض الجهات التابعة للشركة والفروع المرتبطة بكل جهة.</p>
-        <div className="usage-line"><strong>{siteLimitText}</strong></div>
+      <header className="workspace-page-heading">
+        <div><p className="eyebrow">إدارة الشركة</p><h1 id="entities-sites-title">الجهات والفروع</h1>
+          <p>رتّب الجهات التابعة للشركة، ثم أدر فروع كل جهة من صفحتها.</p></div>
+        {canEntities && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites/new`}>إضافة جهة</Link>}
+      </header>
+      <div className="workspace-page-summary"><strong>{siteLimitText}</strong><span>الفروع المعطّلة محفوظة ولا تُحتسب ضمن الحد.</span></div>
+      <section className="workspace-records-panel tenant-collection" aria-labelledby="entities-sites-title">
         {feedback.error && <p className="form-message form-error" role="alert">{feedback.error}</p>}
         {feedback.info && <p className="form-message" role="status">{feedback.info}</p>}
         {!entities.some((entity) => entity.is_active && entity.is_default) &&
           <p className="form-message" role="status">لا توجد جهة افتراضية نشطة؛ اختر جهة نشطة من تفاصيلها.</p>}
 
-        {canEntities && <details className="task-disclosure tenant-create-disclosure">
-          <summary className="secondary-button">إضافة جهة</summary>
-          <form action={manageLegalEntityAction} className="auth-form compact-form">
-            <input type="hidden" name="tenantId" value={tenantId} />
-            <input type="hidden" name="action" value="create" />
-            <label htmlFor="entity-display-name">اسم الجهة داخل المنصة</label>
-            <input id="entity-display-name" name="displayName" required maxLength={160} />
-            <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-            <input id="entity-legal-name" name="legalName" maxLength={200} />
-            <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
-            <label htmlFor="entity-create-reason">سبب الإضافة</label>
-            <input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} />
-            <button className="primary-button" type="submit">إضافة الجهة</button>
-          </form>
-        </details>}
-
         {entities.length === 0 ? <div className="empty-state">
           <h2>لا توجد جهات مسجلة</h2>
-          <p>{canEntities ? 'أضف جهة قانونية للبدء بإعداد الفروع والمواقع.' : 'اطلب من مسؤول الجهات القانونية إضافة جهة.'}</p>
+          <p>{canEntities ? 'أضف الجهة الأولى، ثم أنشئ فروعها من صفحة التفاصيل.' : 'اطلب من مسؤول الشركة إضافة جهة.'}</p>
         </div> : <ul className="record-list">
           {entities.map((entity) => <li className="record-card" key={entity.id}>
             <div className="record-main">
@@ -82,7 +66,7 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
               {entity.legal_name && <p className="record-meta">الاسم القانوني: <bdi>{entity.legal_name}</bdi></p>}
               <p className="record-meta">{entity.is_default ? 'الجهة الأساسية' : 'جهة قانونية'} · الفروع النشطة: {Number(entity.active_site_count ?? 0)}</p>
             </div>
-            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض الجهة والفروع</Link>
+            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض التفاصيل</Link>
           </li>)}
         </ul>}
       </section>
@@ -125,7 +109,7 @@ function feedbackForState(state?: string) {
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
-  return <PageFrame><TenantNavigation tenantId={tenantId} tenantName="الشركة" current="entities-sites" />
+  return <PageFrame>
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></section></PageFrame>;
 }

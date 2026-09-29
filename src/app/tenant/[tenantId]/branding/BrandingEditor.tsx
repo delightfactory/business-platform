@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState, type CSSProperties } from 'react';
+import { SubmitButton } from '@/components/submit-button';
 import { saveTenantBrandingAction } from './actions';
 
 const colors = {
@@ -84,7 +85,7 @@ export function BrandingEditor({
 
           <label htmlFor="tenant-brand-reason">سبب التغيير</label>
           <textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3} />
-          <button className="primary-button" type="submit">حفظ ومعاينة الهوية</button>
+          <SubmitButton label="حفظ الهوية" pendingLabel="جارٍ الحفظ…" />
         </form>
       )}
     </div>

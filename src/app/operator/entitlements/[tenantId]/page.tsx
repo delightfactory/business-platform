@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantEntitlementAction } from '../actions';
 
@@ -76,7 +77,7 @@ function DecisionCard({ tenantId, decision }: { tenantId: string; decision: Deci
         <input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
         <label htmlFor={`${decision.capability_key}-reason`}>سبب التغيير</label>
         <textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
-        <button className="primary-button" type="submit">تأكيد القرار</button>
+        <SubmitButton label="تأكيد القرار" />
       </form>
     </details>}
   </article>;

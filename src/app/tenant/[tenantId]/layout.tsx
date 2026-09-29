@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import type { CSSProperties, ReactNode } from 'react';
+import { TenantNavigation } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -25,12 +25,8 @@ export default async function TenantBrandingLayout({ children, params }: { child
     logoUrl = signed?.signedUrl ?? null;
   }
 
-  return <div className="tenant-branding-context" style={{ '--color-brand': color } as CSSProperties}>
-    <div className="tenant-branding-strip" aria-label="هوية الشركة">
-      {logoUrl ? <Image src={logoUrl} alt={`شعار ${branding.tenant_name}`} width={40} height={40} unoptimized />
-        : <span className="tenant-branding-mark" aria-hidden="true">م</span>}
-      <bdi>{branding.tenant_name}</bdi>
-    </div>
-    {children}
+  return <div className="tenant-area workspace-frame" data-workspace="tenant" style={{ '--color-brand': color } as CSSProperties}>
+    <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />
+    <div className="workspace-content">{children}</div>
   </div>;
 }

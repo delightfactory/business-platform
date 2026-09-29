@@ -4,6 +4,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeOperatorGrantAction } from './actions';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
@@ -47,7 +48,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             <textarea id="newReason" name="reason" required minLength={3} maxLength={500} rows={3} />
             <input type="hidden" name="action" value="grant" />
             <p className="field-hint">يجب أن يكون الحساب موجودًا، مؤكد البريد، وقادرًا على تسجيل الدخول. لا تُنشئ هذه الصفحة حسابات جديدة.</p>
-            <button className="primary-button" type="submit">تأكيد منح الصلاحية المحددة</button>
+            <SubmitButton label="تأكيد منح الصلاحية المحددة" />
           </form>
         </details>
       </section>
@@ -69,7 +70,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <CapabilityFields prefix={grant.user_id} defaults={grant} />
                   <label htmlFor={`reason-${grant.user_id}`}>{grant.is_active ? 'سبب التعديل' : 'سبب إعادة المنح'}</label>
                   <textarea id={`reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
-                  <button className="secondary-button" type="submit">{grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}</button>
+                  <SubmitButton className="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'} />
                 </form>
               </details></>}
               {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action">سحب الصلاحية</summary>
@@ -79,7 +80,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <input type="hidden" name="canManageOperators" value="off" /><input type="hidden" name="canOnboardTenants" value="off" />
                   <label htmlFor={`revoke-reason-${grant.user_id}`}>سبب السحب</label>
                   <textarea id={`revoke-reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
-                  <button className="secondary-button" type="submit">تأكيد سحب الصلاحية</button>
+                  <SubmitButton className="secondary-button" label="تأكيد سحب الصلاحية" />
                 </form>
               </details>}
             </div>
