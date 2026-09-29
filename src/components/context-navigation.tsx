@@ -68,14 +68,17 @@ export async function TenantNavigation({
 }) {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
+  let canSwitchTenant = false;
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding] = await Promise.all([
+      const [members, entitiesSites, branding, spaces] = await Promise.all([
         supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
+        supabase.rpc('current_tenant_spaces'),
       ]);
+      canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون', current: current === 'users' });
       const identity = entitiesSites.data && typeof entitiesSites.data === 'object' && !Array.isArray(entitiesSites.data)
         ? entitiesSites.data as Record<string, unknown> : null;
@@ -89,7 +92,7 @@ export async function TenantNavigation({
   }
   return <ContextNavigation homeHref={`/tenant/${tenantId}`} homeLabel="مساحة الشركة" contextLabel={tenantName}
     links={links.map((item) => ({ ...item, current: current === 'home' ? false : item.current }))}
-    switchHref="/tenant/select" switchLabel="تبديل الشركة" showContextTitle={false} />;
+    switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} showContextTitle={false} />;
 }
 
 export function PageFrame({ children, footer = 'منصة الأعمال' }: { children: ReactNode; footer?: string }) {
