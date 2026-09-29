@@ -4,6 +4,8 @@
 
 Implementation must follow the Frozen Product Specifications and Accepted ADRs in this repository.
 
+Use `docs/06-governance/source-of-truth.md` for precedence and conflict handling. The V1 Cube Execution Plan defines the bounded delivery slices; the implementation waves define capability ownership and release qualification. Use the approved repository revision of the Frozen specifications as the implementation baseline.
+
 Do not invent material product behavior inside code. If a missing decision affects domain behavior, stop at that boundary and raise a specification amendment.
 
 ## Build sequence
@@ -18,6 +20,7 @@ Do not invent material product behavior inside code. If a missing decision affec
    - Entitlements
    - Audit
    - Temporal/versioning foundation
+   - Tenant branding and responsive application shell under the Cube 0 experience gate
 
 2. Wave 2 — People & Work Context
    - Employee Core
@@ -25,9 +28,11 @@ Do not invent material product behavior inside code. If a missing decision affec
    - Compensation facts
    - Work assignments
    - Workforce import
+   - Bounded named Work Policy/Shift definitions required for effective assignment
 
 3. Wave 3 — Attendance & Leave
    - Canonical attendance events
+   - Manual/admin entry and validated spreadsheet attendance import
    - Interpretation
    - Exceptions
    - Corrections

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D freeze candidate, 2026-09-28.**
+**Frozen — final documentation alignment approved 2026-09-29.**
 
 This specification governs Wave 4 — Employee Finance & Payroll Core. It freezes the end-to-end financial workflow required for the first commercially coherent HR release while keeping mutable Egyptian statutory values versioned rather than hard-coded into product logic.
 
@@ -69,16 +69,18 @@ V1 payroll frequency is **monthly**.
 
 A Payroll Period is identified by:
 
-- Tenant;
-- Employer Legal Entity;
-- calendar year/month;
-- local period start/end;
+- immutable period identity;
+- Tenant and Employer Legal Entity;
+- the effective Employer-scoped Payroll Calendar version;
+- immutable local start/end dates and a human-readable business label;
 - status.
 
 A Payroll Run belongs to exactly one Employer + Payroll Period.
 
 Rules:
 
+- generated periods for one Employer cannot overlap or leave a gap while its Payroll Calendar is active;
+- a business label or calendar year/month is not the period's authoritative date boundary;
 - one active authoritative run chain per Employer + Period;
 - Site/Department may be filters/reporting dimensions, not separate payroll legal authority;
 - a run includes Employees whose Employment/payroll eligibility overlaps the period under the effective configuration;
@@ -320,13 +322,14 @@ If a material error is discovered before payment is recorded:
 - the amendment contains the changed inputs/context and complete new payable result;
 - audit clearly links original and replacement.
 
-### Paid or externally settled
+### Any payment recorded or externally settled
 
-If payment has been recorded:
+If any payment amount has been recorded, including a `partially_paid` run:
 
 - correction becomes a linked positive/negative Payroll Adjustment targeted to the next open Payroll Period by default;
-- the original paid run remains unchanged;
+- the original locked payable and its payment ledger remain unchanged; a replacement Amendment Run is not used after payment starts;
 - a separately approved external settlement may be recorded when next-period carry-forward is not appropriate.
+- the correction record reconciles the amount already paid, the remaining original obligation, and the compensating amount or external settlement. No paid amount is silently paid again or erased.
 
 No “unlock payroll” button exists in V1.
 
@@ -347,7 +350,7 @@ Payment recording may include:
 - external bank/cash/reference note;
 - actor.
 
-The payment ledger/status must reconcile to the locked payable amount. Corrections after paid status follow the correction rules above.
+The payment ledger/status must reconcile to the locked payable amount. Corrections after any recorded payment, including partial payment, follow the correction rules above.
 
 Accounting/GL posting remains an explicit export/external handoff.
 
@@ -550,6 +553,7 @@ The Spec is satisfied only when:
 - locked history is immutable and reproducible;
 - source/config changes mark unlocked runs stale;
 - post-lock amendment/correction paths are complete;
+- a partial payment prevents replacement of the locked payable, and its linked correction reconciles paid and remaining amounts;
 - advances/installments reconcile to zero or an explicit outstanding balance;
 - payment status has an explicit external handoff;
 - YTD opening values support mid-year onboarding;

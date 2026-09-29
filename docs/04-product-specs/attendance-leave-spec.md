@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D freeze candidate, 2026-09-28.**
+**Frozen — final documentation alignment approved 2026-09-29.**
 
 This specification governs Wave 3 — Attendance, Exceptions & Leave. It freezes the authoritative Time-domain behavior that turns source events and leave records into reviewable facts without allowing raw attendance to silently become irreversible payroll money.
 

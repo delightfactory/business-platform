@@ -65,8 +65,9 @@ Includes:
 - Responsive navigation.
 - Mobile/tablet/desktop layouts.
 - Shared feedback states.
+- Arabic-first RTL behavior and consistent date/number/EGP presentation for the initial Egypt release.
 
-Cube 0 completion means a new organization can exist independently, have its own identity, users, permissions and operate through the application experience safely across devices.
+Cube 0 completion means a new organization can be onboarded with Legal Entity/Site, a recoverable protected administrator, bounded commercial access and branding; invited users can operate only in their authorized Tenant, while Tech Edge can manage lifecycle/recovery through audited Operator flows. The representative admin and Operator journeys work across mobile, tablet and desktop, and the Platform Foundation qualification matrix passes on a clean environment.
 
 ## Cube 1 — People Foundation
 
@@ -82,10 +83,14 @@ Includes:
 - Sites context.
 - Reporting context.
 - Work assignments.
-- Effective work-policy assignment.
+- Bounded named Work Policy and Shift template definitions owned by Time, sufficient for assignment when Attendance is enabled.
+- Effective work-policy assignment where Attendance is enabled; People and Payroll onboarding do not require that entitlement.
 - Compensation foundation.
+- Workforce bulk import with validation and reject reporting.
 
-People owns employee context. It does not calculate attendance.
+People owns employee context and effective assignments; Time owns the named policy/shift definitions. Cube 1 does not interpret attendance.
+
+Completion: A company can create or import employees, update employment and assignments, transfer them, change compensation, end employment and rehire while preserving history and a visible correction path for locked-payroll effects.
 
 ## Cube 2 — Attendance Engine
 
@@ -94,16 +99,20 @@ Convert attendance evidence into trusted work facts.
 
 Includes:
 
-- Work policies.
-- Shift definitions.
+- Effective Work Policy/Shift interpretation parameters.
 - Attendance events.
+- Manual/admin event entry.
+- Validated spreadsheet attendance import.
 - Interpretation engine.
 - Overnight shifts.
 - Missing punch handling.
 - Exceptions.
 - Corrections.
+- Approved, versioned non-financial Payroll input facts.
 
 Attendance owns time interpretation and calculations.
+
+Completion: Manual and spreadsheet sources produce trusted attendance facts. Clean days follow the configured approval path, while missing or ambiguous evidence remains in an owned review queue with correction and downstream handoff.
 
 ## Cube 3 — Leave Management
 
@@ -118,6 +127,8 @@ Includes:
 - Approval path.
 - Payroll input effects.
 
+Completion: Leave moves from entry/request to approval, rejection or cancellation with reversible balance entries and explicit Attendance/Payroll effects where applicable.
+
 ## Cube 4 — Payroll Core
 
 Goal:
@@ -129,8 +140,9 @@ Includes:
 - Cutoff configuration.
 - Payroll periods.
 - Salary components.
-- Adjustments.
-- Advances.
+- Penalty/reward adjustments and approved inputs.
+- Advances, installments, settlement and balance reconciliation.
+- Versioned Egypt statutory rule packs and opening YTD values.
 - Calculation.
 - Review.
 - Approval.
@@ -139,6 +151,9 @@ Includes:
 - Exports.
 - Payment status.
 - Correction/amendment paths.
+- Core payroll variance, statutory, outstanding-balance and payment reports.
+
+Completion: Payroll runs with People and compensation even when Attendance/Leave/Employee Finance are not entitled; enabled domains contribute approved inputs. An authorized team can calculate, review, approve, lock, issue payslips/exports, record and reconcile payment, and correct results without rewriting locked history. Production statutory qualification remains part of the release gate.
 
 ## Cube 5 — Attendance Channels
 
@@ -147,10 +162,14 @@ Connect attendance sources safely.
 
 Includes:
 
-- Import channels.
+- One prioritized biometric/device connector behind the approved vendor sub-gate.
 - Mobile attendance.
 - Vendor-neutral biometric boundary.
-- Device adapters only after approved vendor specification.
+- Source mapping, replay/idempotency and visible connector health/failure states.
+
+Spreadsheet attendance import belongs to Cube 2. A vendor-specific adapter starts only after its reviewed hardware/protocol sub-spec.
+
+Completion: Enabled mobile and qualified device channels submit to the same canonical Attendance model without source-specific time or payroll rules; a failed, unmapped or offline event has a visible retry/recovery outcome. Support is claimed only after real device/mobile acceptance evidence for the chosen channel.
 
 ## Quality gates for every cube
 
