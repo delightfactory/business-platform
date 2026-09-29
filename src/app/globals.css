@@ -168,7 +168,34 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .lifecycle-actions { display: grid; gap: .75rem; margin-top: 1.25rem; }
 .lifecycle-actions details { min-width: 0; padding: .85rem; border: 1px solid var(--color-border); border-radius: .8rem; }
 .lifecycle-actions summary { width: fit-content; }
+.tenant-foundation-link { margin-inline-start: .5rem; }
+.entity-card { display: grid; gap: 1.25rem; }
+.entity-heading, .section-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+.entity-heading h2, .entity-heading h4, .section-heading h3 { margin: 0; }
+.entity-status { display: inline-flex; min-height: 2rem; align-items: center; padding: .25rem .65rem; border-radius: 99px; font-size: .82rem; font-weight: 700; }
+.entity-status.is-active { color: #155e52; background: #e5f5f1; }
+.entity-status.is-inactive { color: #59666d; background: #eef1f3; }
+.entity-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .65rem; }
+.entity-action-panel { min-width: min(100%, 14rem); padding: .6rem; border: 1px solid var(--color-border); border-radius: .75rem; }
+.entity-action-panel summary { width: fit-content; cursor: pointer; }
+.inline-action-form { display: flex; flex-wrap: wrap; align-items: end; gap: .5rem; }
+.inline-action-form label { flex-basis: 100%; }
+.inline-action-form input { min-height: 2.9rem; border: 1px solid #a9bac3; border-radius: .6rem; padding: .55rem .75rem; font: inherit; }
+.inline-action-form input:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.entities-sites-form { max-width: 34rem; }
+.entity-sites { display: grid; gap: .75rem; padding-top: 1rem; border-top: 1px solid var(--color-border); }
+.section-heading h3 { font-size: 1.15rem; }
+.entity-site-list { display: grid; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+.entity-site-card { display: grid; gap: .8rem; min-width: 0; padding: .85rem; border: 1px solid var(--color-border); border-radius: .8rem; }
+.entity-site-card h4 { overflow-wrap: anywhere; }
+.site-create-area { margin-top: .5rem; padding: 1rem; border: 1px dashed #a9bac3; border-radius: .8rem; }
+.site-create-area h4 { margin: 0; }
+.capacity-message { border-color: #dfb990; background: #fff7ed; }
 @media (max-width: 600px) {
   .work-card { width: 100%; margin: 1rem 0; padding: 1.25rem 1rem; }
   .snapshot-grid { grid-template-columns: 1fr; }
+  .tenant-foundation-link { margin: .5rem 0 0; }
+  .entity-action-panel { width: 100%; }
+  .entity-actions { display: grid; grid-template-columns: minmax(0,1fr); }
+  .inline-action-form > input:not([type="hidden"]) { flex: 1 1 100%; }
 }

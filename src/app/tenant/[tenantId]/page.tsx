@@ -34,11 +34,17 @@ export default async function TenantPage({ params, searchParams }: {
 
   const { data: adminData, error: adminError } = await supabase.rpc('tenant_admin_snapshot', { p_tenant_id: tenantId });
   if (adminError) {
-    const { data: memberData, error: memberError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
+    const [{ data: memberData, error: memberError }, { data: entitySiteData }] = await Promise.all([
+      supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId }),
+      supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
+    ]);
     if (memberError || !memberData || typeof memberData !== 'object' || Array.isArray(memberData)) {
       return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." />;
     }
     const member = memberData as Record<string, unknown>;
+    const entitySitePermissions = entitySiteData && typeof entitySiteData === 'object' && !Array.isArray(entitySiteData)
+      ? entitySiteData as Record<string, unknown> : null;
+    const canManageEntitiesSites = entitySitePermissions?.can_manage_legal_entities === true || entitySitePermissions?.can_manage_sites === true;
     return (
       <main className="app-shell">
         <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
@@ -51,6 +57,7 @@ export default async function TenantPage({ params, searchParams }: {
           {query.state === 'admin-demoted' && <p className="form-message" role="status">تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة.</p>}
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
+          {canManageEntitiesSites && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites`}>الكيانات والمواقع</Link>}
         </section>
         <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
       </main>
@@ -84,6 +91,7 @@ export default async function TenantPage({ params, searchParams }: {
         </dl>
         <p className="field-hint">هذه مساحة تأسيسية لمسؤول الشركة.</p>
         <Link className="primary-button" href={`/tenant/${tenantId}/users`}>إدارة مستخدمي الشركة</Link>
+        <Link className="secondary-button tenant-foundation-link" href={`/tenant/${tenantId}/entities-sites`}>الكيانات والمواقع</Link>
       </section>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>

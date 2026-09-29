@@ -30,6 +30,8 @@ A pending first-Admin invitation creates no Tenant or seat; acceptance atomicall
 
 A Tenant administrator can invite a Member from `/tenant/<tenant-id>/users`. Pending invitations grant no access and consume no seat. Acceptance, disablement, and reactivation enforce the current Tenant state, permission, and effective user limit in the database. A Member invitation assigns the fixed Member role; an authorized Tenant Admin can then promote an active Member or demote an Admin from the same page. Each role change is audited atomically, preserves Domain role assignments, and leaves seat usage unchanged. The final recoverable Admin cannot be demoted.
 
+Authorized Tenant users can manage shared Legal Entities and Sites from `/tenant/<tenant-id>/entities-sites`. Entity display name and optional legal name are separate values; Site identity stays attached to its Legal Entity. Site creation/reactivation uses the effective `max_sites` limit across all Entities and checks it under the Tenant lock. Records are deactivated rather than deleted, and each change writes an append-only audit event with a reason. A Tenant can temporarily have no active default while setup or recovery is needed.
+
 When the user limit is `1`, replacing its only Admin requires a later Operator limit-control workflow: raise the limit from `1` to `2`, invite and accept the replacement as a Member, promote the replacement, demote the former Admin, deactivate the former Admin's membership to free the second seat, then lower the limit from `2` to `1`. Demotion alone does not free a seat because the membership remains active. The Operator limit-control workflow is not implemented yet, so Cube 0 is not operationally complete for this replacement case until that control exists.
 
 ## Local quality gates
@@ -43,11 +45,12 @@ npm run test:db:invitations
 npm run test:db:members
 npm run test:db:admin-roles
 npm run test:db:operator-management
+npm run test:db:entities-sites
 ```
 
 Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs lint, typecheck, and build on pull requests. Database tests require the local Supabase stack with current migrations applied (`supabase migration up --local`, or `supabase db reset --local` for a disposable clean database).
 
-Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Operator authority checks are in `supabase/tests/platform_operator_authority.test.sql` and `supabase/tests/platform_operator_management.test.sql`. Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`.
+Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Operator authority checks are in `supabase/tests/platform_operator_authority.test.sql` and `supabase/tests/platform_operator_management.test.sql`. Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`; Legal Entity and Site checks are in `supabase/tests/tenant_legal_entities_sites.test.sql`.
 
 ## Governing documentation
 
