@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
         { key: 'Cache-Control', value: 'private, no-store, max-age=0' },
         { key: 'Referrer-Policy', value: 'no-referrer' },
       ],
+    }, {
+      source: '/auth/membership-invitations/callback',
+      headers: [
+        { key: 'Cache-Control', value: 'private, no-store, max-age=0' },
+        { key: 'Referrer-Policy', value: 'no-referrer' },
+      ],
     }];
   },
 };

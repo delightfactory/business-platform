@@ -13,11 +13,20 @@ export async function signInAction(formData: FormData) {
   if (!supabase) redirect(`/auth/login?state=setup${returnTo}`);
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) redirect(`/auth/login?state=invalid${returnTo}`);
-  redirect(next ?? '/operator');
+  if (next) redirect(next);
+  const { data: memberships } = await supabase.rpc('current_tenant_memberships');
+  if (Array.isArray(memberships) && memberships.length === 1) {
+    const tenantId = (memberships[0] as Record<string, unknown>).tenant_id;
+    if (typeof tenantId === 'string' && /^[0-9a-f-]{36}$/i.test(tenantId)) redirect(`/tenant/${tenantId}`);
+  }
+  if (Array.isArray(memberships) && memberships.length > 1) redirect('/tenant/select');
+  redirect('/operator');
 }
 
 function safeTenantNext(value: string) {
-  return /^\/tenant\/[0-9a-f-]{36}$/i.test(value) ? value : null;
+  const tenantPath = /^\/tenant\/[0-9a-f-]{36}(?:\/users)?$/i;
+  const invitationPath = /^\/auth\/(?:membership-)?invitations\/accept\?id=[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}&issuance=\d+$/i;
+  return tenantPath.test(value) || invitationPath.test(value) ? value : null;
 }
 
 export async function requestPasswordResetAction(formData: FormData) {
