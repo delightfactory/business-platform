@@ -31,12 +31,12 @@ export default async function TenantPage({ params }: { params: Promise<{ tenantI
       <section className="work-card" aria-labelledby="tenant-title">
         <p className="eyebrow">مساحة مسؤول الشركة</p>
         <h1 id="tenant-title">{String(snapshot.tenant_name ?? 'الشركة')}</h1>
-        <p className="intro">حالة الشركة: {String(snapshot.lifecycle_state ?? 'غير متاح')}</p>
+        <p className="intro">حالة الشركة: {lifecycleText(snapshot.lifecycle_state)}</p>
         <dl className="snapshot-grid">
           <div><dt>الكيان القانوني الافتراضي</dt><dd>{String(entity?.name ?? 'غير متاح')}</dd></div>
           <div><dt>الموقع الافتراضي</dt><dd>{String(site?.name ?? 'غير متاح')}</dd></div>
-          <div><dt>المستخدمون</dt><dd>{limitText(snapshot.seat_limit_mode, snapshot.seat_limit)} · {String(snapshot.seat_usage ?? 0)} مستخدم</dd></div>
-          <div><dt>المواقع</dt><dd>{limitText(snapshot.site_limit_mode, snapshot.site_limit)} · {String(snapshot.site_usage ?? 0)} موقع</dd></div>
+          <div><dt>المستخدمون</dt><dd>{usageText(snapshot.seat_limit_mode, snapshot.seat_limit, snapshot.seat_usage, 'مستخدمين')}</dd></div>
+          <div><dt>المواقع</dt><dd>{usageText(snapshot.site_limit_mode, snapshot.site_limit, snapshot.site_usage, 'مواقع')}</dd></div>
         </dl>
         <p className="field-hint">هذه مساحة تأسيسية لمسؤول الشركة. إدارة المستخدمين والعمليات ستضاف في مراحل لاحقة.</p>
       </section>
@@ -49,8 +49,21 @@ function objectValue(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
 }
 
-function limitText(mode: unknown, value: unknown) {
-  return mode === 'unlimited' ? 'غير محدود' : String(value ?? 'غير متاح');
+function lifecycleText(value: unknown) {
+  const labels: Record<string, string> = {
+    active: 'نشطة',
+    suspended: 'معلّقة',
+    closing: 'قيد الإغلاق',
+    closed: 'مغلقة',
+  };
+  return typeof value === 'string' ? labels[value] ?? 'غير متاحة' : 'غير متاحة';
+}
+
+function usageText(mode: unknown, limit: unknown, usage: unknown, noun: string) {
+  const used = String(usage ?? 0);
+  if (mode === 'unlimited') return `${used} ${noun} · بلا حد أقصى`;
+  if (mode !== 'limited' || limit === null || limit === undefined) return 'الحد غير متاح';
+  return `${used} من ${String(limit)} ${noun}`;
 }
 
 function TenantStatus({ title, detail }: { title: string; detail: string }) {
