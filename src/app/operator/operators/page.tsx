@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
 type Grant = {
   user_id: string; email: string; is_active: boolean; can_manage_operators: boolean;
-  can_onboard_tenants: boolean; can_manage_tenant_lifecycle: boolean; recoverable: boolean; updated_at: string;
+  can_onboard_tenants: boolean; can_manage_tenant_lifecycle: boolean; can_manage_commercial_access: boolean; recoverable: boolean; updated_at: string;
 };
 
 export default async function OperatorGrantsPage({ searchParams }: { searchParams: Query }) {
@@ -31,7 +31,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
       <section className="work-card" aria-labelledby="operators-title">
         <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
-        <p className="intro">تُدار هنا مهام إدارة المشغّلين وإعداد الشركات وإدارة حالة الشركات. السبب مطلوب لكل تغيير.</p>
+        <p className="intro">تُدار هنا مهام المشغّلين وإعداد الشركات وإدارة حالة الشركات وحدود الاستخدام. السبب مطلوب لكل تغيير.</p>
         {query.state && <p className="form-message" role="status">{stateText(query.state)}</p>}
         <details className="operator-grant-form">
           <summary className="secondary-button">إضافة مهمة لمستخدم موجود</summary>
@@ -67,7 +67,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                 </form>
               </details></>}
               {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button">سحب صلاحية المشغّل</summary>
-                <p className="field-hint">سيُوقف هذا المنح ويُسحب كلتا المهمتين. يُحفظ السبب وسجل ما قبل/بعد التغيير.</p>
+                <p className="field-hint">سيُوقف هذا المنح وتُسحب كل المهام المرتبطة به. يُحفظ السبب وسجل ما قبل/بعد التغيير.</p>
                 <form action={changeOperatorGrantAction} className="auth-form compact-form">
                   <input type="hidden" name="email" value={grant.email} /><input type="hidden" name="action" value="revoke" />
                   <input type="hidden" name="canManageOperators" value="off" /><input type="hidden" name="canOnboardTenants" value="off" />
@@ -84,18 +84,19 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   );
 }
 
-function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle'> }) {
+function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle' | 'can_manage_commercial_access'> }) {
   return <fieldset className="limit-fields"><legend>المهام الممنوحة</legend>
     <label className="check-option"><input type="checkbox" name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
     <label className="check-option"><input type="checkbox" name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
     <label className="check-option"><input type="checkbox" name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
+    <label className="check-option"><input type="checkbox" name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
     <span className="field-hint" id={`${prefix}-capability-hint`}>اختر مهمة واحدة على الأقل. سحب الصلاحيات يتم بإجراء مستقل.</span>
   </fieldset>;
 }
 
 function capabilityNames(grant: Grant) {
   return [grant.can_manage_operators && 'إدارة المشغّلين', grant.can_onboard_tenants && 'إعداد الشركات',
-    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات'].filter(Boolean).join(' · ') || 'لا توجد مهمة';
+    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام'].filter(Boolean).join(' · ') || 'لا توجد مهمة';
 }
 
 function stateText(state: string) {

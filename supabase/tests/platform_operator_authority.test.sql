@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(41);
+SELECT plan(43);
 
 SELECT ok(
   NOT has_schema_privilege('authenticated', 'platform_private', 'USAGE'),
@@ -80,6 +80,8 @@ SELECT is(
   true,
   'maintenance bootstrap explicitly grants lifecycle authority'
 );
+SELECT is((SELECT can_manage_commercial_access FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000001'::uuid),
+  true,'maintenance bootstrap explicitly grants commercial controls');
 SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_audit_events WHERE target_user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000001'::uuid),
   1::bigint,
@@ -139,6 +141,8 @@ SELECT is(
   true,
   'maintenance recovery explicitly grants lifecycle authority'
 );
+SELECT is((SELECT can_manage_commercial_access FROM platform_private.platform_operator_grants WHERE user_id = 'a15c3b4e-18a9-4aa0-91c9-a00000000002'::uuid),
+  true,'maintenance recovery explicitly grants commercial controls');
 SELECT is(
   (SELECT count(*) FROM platform_private.platform_operator_grants WHERE is_active AND can_manage_operators),
   2::bigint,
