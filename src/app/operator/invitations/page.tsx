@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { createInvitationAction, reissueInvitationAction, revokeInvitationAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -29,6 +30,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   if (!capable) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
   const { data } = await supabase.rpc('tenant_admin_invitation_list');
   const rows = Array.isArray(data) ? (data as InvitationRow[]) : [];
+  const success = params.state === 'created-sent' || params.state === 'reissued-sent' || params.state === 'revoked';
 
   return (
     <main className="app-shell">
@@ -38,23 +40,28 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
       </header>
       <section className="work-card" aria-labelledby="invite-title">
         <p className="eyebrow">إعداد الشركات</p>
-        <h1 id="invite-title">دعوة أول مسؤول للشركة</h1>
-        <p className="intro">لن تُنشأ الشركة أو تُحتسب المقاعد قبل قبول الدعوة وإعداد المسؤول لحسابه.</p>
-        {params.state && <p className="form-message" role="status">{stateMessage(params.state)}</p>}
-        <form className="auth-form onboarding-form" action={createInvitationAction}>
-          <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
-          <label htmlFor="tenantName">اسم الشركة</label>
-          <input id="tenantName" name="tenantName" required maxLength={160} />
-          <label htmlFor="entityName">اسم الكيان القانوني الافتراضي (اختياري)</label>
-          <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
-          <label htmlFor="siteName">اسم الموقع الافتراضي</label>
-          <input id="siteName" name="siteName" required maxLength={160} />
-          <label htmlFor="targetEmail">البريد الإلكتروني للمسؤول الأول</label>
-          <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" required maxLength={254} />
-          <LimitFields kind="seats" label="حد المستخدمين" />
-          <LimitFields kind="sites" label="حد المواقع" />
-          <button className="primary-button" type="submit">إرسال دعوة المسؤول</button>
-        </form>
+        <h1 id="invite-title">دعوات مسؤولي الشركات</h1>
+        <p className="intro">أنشئ شركة بدعوة مسؤولها الأول، وتابع حالة الدعوات هنا. لن تُنشأ الشركة قبل قبول الدعوة.</p>
+        {success && <FeedbackToast key={crypto.randomUUID()} message={stateMessage(params.state ?? '')} />}
+        {params.state && !success && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
+        <details className="operator-grant-form" open={params.state === 'invalid'}>
+          <summary className="secondary-button">دعوة مسؤول لشركة جديدة</summary>
+          <p className="field-hint">أدخل بيانات الشركة وحدود الاشتراك، ثم أرسل الدعوة للمسؤول الأول.</p>
+          <form className="auth-form onboarding-form" action={createInvitationAction}>
+            <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
+            <label htmlFor="tenantName">اسم الشركة</label>
+            <input id="tenantName" name="tenantName" required maxLength={160} />
+            <label htmlFor="entityName">اسم الجهة القانونية (اختياري)</label>
+            <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
+            <label htmlFor="siteName">اسم الفرع أو الموقع الرئيسي</label>
+            <input id="siteName" name="siteName" required maxLength={160} />
+            <label htmlFor="targetEmail">بريد المسؤول الأول</label>
+            <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" required maxLength={254} />
+            <LimitFields kind="seats" label="عدد المستخدمين" />
+            <LimitFields kind="sites" label="عدد الفروع والمواقع" />
+            <button className="primary-button" type="submit">إرسال الدعوة</button>
+          </form>
+        </details>
       </section>
       <section className="work-card invitation-list" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
@@ -65,7 +72,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                 <div>
                   <h3>{row.tenant_name}</h3>
                   <p><bdi>{row.target_email}</bdi></p>
-                  <p>{lifecycleText(row.lifecycle_state)} · {deliveryText(row.delivery_state)}</p>
+                  <p>{lifecycleText(row.lifecycle_state)}{row.lifecycle_state === 'pending' && <> · {deliveryText(row.delivery_state)}</>}</p>
                   {row.lifecycle_state === 'pending' && row.delivery_state !== 'sent' && <p className="field-hint">يمكنك إعادة الإرسال. كل إصدار جديد يبطل الرابط السابق.</p>}
                   {row.lifecycle_state === 'accepted' && <p className="field-hint">اكتمل إنشاء الشركة ومسؤولها.</p>}
                 </div>
@@ -86,7 +93,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
           </ul>
         )}
       </section>
-      <footer className="footer"><Link href="/operator">إعداد شركة بحساب مسؤول موجود</Link></footer>
+      <footer className="footer"><Link href="/operator/onboarding">إعداد شركة بحساب مسؤول موجود</Link></footer>
     </main>
   );
 }
@@ -125,6 +132,9 @@ function stateMessage(state: string) {
     'reissued-failed': 'تحدّث إصدار الدعوة وأصبح الرابط السابق غير صالح، لكن تعذر إرسال البريد الجديد.',
     'reissued-unknown': 'تحدّث إصدار الدعوة وأصبح الرابط السابق غير صالح، لكن حالة إرسال البريد الجديد غير مؤكدة.',
     revoked: 'أُلغيت الدعوة. لن ينشئ رابطها صلاحية للشركة.',
+    existing: 'هذه الدعوة مسجلة من قبل. راجع حالتها أدناه.',
+    'already-accepted': 'قُبلت الدعوة بالفعل وأُنشئت الشركة.',
+    'already-revoked': 'هذه الدعوة ملغاة بالفعل.',
     expired: 'انتهت صلاحية الدعوة. يمكنك إنشاء دعوة جديدة.',
     invalid: 'تحقق من البريد والبيانات، ويجب أن يكون كل حد رقمًا موجبًا أو غير محدود.',
     setup: 'إعداد Supabase أو مفتاح إرسال الدعوات غير مكتمل.',
