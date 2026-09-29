@@ -21,7 +21,7 @@ export default async function TenantPage({ params, searchParams }: {
 
   const { data: accessStatus, error: accessStatusError } = await supabase.rpc('tenant_lifecycle_status', { p_tenant_id: tenantId });
   if (accessStatusError || !accessStatus || typeof accessStatus !== 'object' || Array.isArray(accessStatus)) {
-    return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." />;
+    return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." showSwitch />;
   }
   const status = accessStatus as Record<string, unknown>;
   if (status.lifecycle_state === 'suspended') {
@@ -31,14 +31,14 @@ export default async function TenantPage({ params, searchParams }: {
     return <TenantStatus title="المساحة غير متاحة" detail="هذه الشركة غير متاحة حاليًا." showSwitch />;
   }
   if (status.lifecycle_state !== 'active') {
-    return <TenantStatus title="المساحة غير متاحة" detail="تعذر التحقق من حالة الشركة." />;
+    return <TenantStatus title="المساحة غير متاحة" detail="تعذر التحقق من حالة الشركة." showSwitch />;
   }
 
   const { data: adminData, error: adminError } = await supabase.rpc('tenant_admin_snapshot', { p_tenant_id: tenantId });
   if (adminError) {
     const { data: memberData, error: memberError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
     if (memberError || !memberData || typeof memberData !== 'object' || Array.isArray(memberData)) {
-      return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." />;
+      return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." showSwitch />;
     }
     const member = memberData as Record<string, unknown>;
     return (
@@ -57,7 +57,7 @@ export default async function TenantPage({ params, searchParams }: {
   }
   const data = adminData;
   if (!data || typeof data !== 'object' || Array.isArray(data)) {
-    return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب صلاحية مسؤول لهذه الشركة أو أن الشركة غير متاحة." />;
+    return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب صلاحية مسؤول لهذه الشركة أو أن الشركة غير متاحة." showSwitch />;
   }
 
   const snapshot = data as Record<string, unknown>;
@@ -114,7 +114,6 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
       <header className="topbar">
         <Link className="brand" href="/">منصة الأعمال</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          {showSwitch && <Link className="secondary-button" href="/tenant/select">تبديل الشركة</Link>}
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
         </nav>
       </header>
@@ -122,6 +121,7 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
         <p className="eyebrow">مساحة الشركة</p>
         <h1 id="tenant-status-title">{title}</h1>
         <p className="intro">{detail}</p>
+        {showSwitch && <Link className="secondary-button" href="/tenant/select">اختر شركة أخرى</Link>}
       </section>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>
