@@ -191,6 +191,18 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .site-create-area { margin-top: .5rem; padding: 1rem; border: 1px dashed #a9bac3; border-radius: .8rem; }
 .site-create-area h4 { margin: 0; }
 .capacity-message { border-color: #dfb990; background: #fff7ed; }
+.tenant-branding-context { min-height: 100svh; }
+.tenant-branding-strip { display: flex; align-items: center; gap: .65rem; width: fit-content; max-width: 100%; margin: .8rem auto 0; padding: .4rem .8rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface); color: var(--color-brand); font-weight: 700; }
+.tenant-branding-strip bdi { min-width: 0; overflow-wrap: anywhere; }
+.tenant-branding-strip img { width: 2.25rem; height: 2.25rem; border-radius: .5rem; object-fit: contain; }
+.tenant-branding-mark, .branding-preview-mark { display: grid; flex: 0 0 2.25rem; width: 2.25rem; height: 2.25rem; place-items: center; border-radius: .6rem; background: var(--color-brand); color: white; }
+.branding-editor-layout { display: grid; gap: 1.25rem; }
+.branding-preview { padding: 1rem; border: 1px solid var(--color-border); border-radius: .85rem; background: #fbfcfd; }
+.branding-preview-card { display: flex; align-items: center; gap: .85rem; min-height: 5rem; padding: 1rem; border: 1px solid var(--color-border); border-inline-start: .35rem solid var(--color-brand); border-radius: .75rem; background: white; }
+.branding-preview-card img { width: 4rem; height: 4rem; border-radius: .65rem; object-fit: contain; }
+.branding-preview-card strong { overflow-wrap: anywhere; font-size: 1.1rem; }
+.branding-preview-mark { flex-basis: 4rem; width: 4rem; height: 4rem; font-size: 1.4rem; }
+.form-error { border-color: #e7b3b3; background: #fff2f2; color: #8b2525; }
 @media (max-width: 600px) {
   .work-card { width: 100%; margin: 1rem 0; padding: 1.25rem 1rem; }
   .snapshot-grid { grid-template-columns: 1fr; }
@@ -198,4 +210,5 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
   .entity-action-panel { width: 100%; }
   .entity-actions { display: grid; grid-template-columns: minmax(0,1fr); }
   .inline-action-form > input:not([type="hidden"]) { flex: 1 1 100%; }
+  .tenant-branding-strip { margin-top: .55rem; }
 }
