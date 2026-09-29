@@ -1,10 +1,14 @@
 # Cube 0 qualification record
 
+## Development transition decision (2026-09-30)
+
+**GO to Cube 1 on the verified Cube 0 engineering baseline.** The owner explicitly deferred hands-on physical-phone acceptance until several cubes can be reviewed together on Vercel with a live database. This is a scheduling decision, not evidence that the phone or an actual screen reader passed. PR #43 and the checks below are sufficient for development transition; integrated product acceptance remains a release gate before a customer pilot or production launch. Revisit the Operator and Tenant journeys on the deployed, representative-data build, record the owner verdict and device/assistive observations, and repair any findings before that release gate closes.
+
 ## Final local closeout review (2026-09-30)
 
 The [interface and interaction audit](cube-0-interface-audit.md) records Tenant and Operator success/denial journeys on PR #43 head `d02ef9fff457c0bd6b17e703edac1aa95bc6b271`, persistent state and audit checks, a repaired HR/Payroll entitlement UI dependency, a complete 768px task, pointer and emulated-touch menu/toast checks, and screenshots. Local build and lint passed, and GitHub's lint/typecheck/build check succeeded on that exact commit. A targeted lifecycle SQL run passed 41/42 assertions on the populated demo database; the only failure was an exact Tenant count that assumed a clean fixture. Its stale-state and audit-rollback assertions passed. No database migration changed in this pass.
 
-**Decision remains open for final Cube 0 product acceptance.** No physical phone was attached for real-device testing, an actual screen-reader pass has not been observed, and the owner has not accepted the rendered journeys at the reviewed commit. The earlier positive engineering decision, exact-commit CI, and browser checks do not represent those observations.
+**Integrated product acceptance remains open.** No physical phone was attached for real-device testing, an actual screen-reader pass has not been observed, and the owner has not accepted the rendered journeys at the reviewed commit. The development transition above does not represent those observations.
 
 ## Product experience decision after phone feedback (2026-09-29)
 
