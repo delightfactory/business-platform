@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { signOutAction } from '@/app/auth/actions';
+import { TenantNavigation } from '@/components/context-navigation';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { inviteMemberAction, reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -30,27 +31,31 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const limit = objectValue(result.seat_limit);
   const used = Number(result.seat_usage ?? 0);
 
+  const success = successMessage(query.state);
+  const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
+    ? stateMessage(query.state) : null;
   return (
     <main className="app-shell">
-      <header className="topbar">
-        <Link className="brand" href={`/tenant/${tenantId}`}>{String(snapshotValue.tenant_name ?? 'الشركة')}</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/tenant/select">تبديل الشركة</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav>
-      </header>
+      {success && <FeedbackToast key={crypto.randomUUID()} message={success} />}
+      <TenantNavigation tenantId={tenantId} tenantName={String(snapshotValue.tenant_name ?? 'الشركة')} current="users" />
       <section className="work-card" aria-labelledby="members-title">
         <p className="eyebrow">إدارة الوصول</p>
         <h1 id="members-title">مستخدمو الشركة</h1>
         <p className="intro">المقاعد المستخدمة: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</p>
+        {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
         {canManageRoles && <p className="field-hint">ترقية العضو تمنحه صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل، وتغيير الدور لا يضيف مقعدًا.</p>}
-        {query.state && <p className="form-message" role="status">{stateMessage(query.state)}</p>}
+        {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
+        <details className="task-disclosure member-invite-disclosure">
+        <summary className="primary-button">دعوة عضو</summary>
         <form className="auth-form member-invite-form" action={inviteMemberAction}>
           <input type="hidden" name="tenantId" value={tenantId} />
           <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
           <label htmlFor="member-email">البريد الإلكتروني</label>
           <input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} />
           <p className="field-hint">سيُضاف الحساب بدور «عضو». تعيين مسؤول جديد يحتاج إجراءً منفصلًا.</p>
-          <button className="primary-button" type="submit">دعوة عضو</button>
+          <button className="primary-button" type="submit">إرسال الدعوة</button>
         </form>
+        </details>
       </section>
       <section className="work-card invitation-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
@@ -94,6 +99,10 @@ export default async function TenantUsersPage({ params, searchParams }: { params
               <div>
                 <h3><bdi>{invitation.target_email}</bdi></h3>
                 <p>{invitationText(invitation.lifecycle_state)} · {deliveryText(invitation.delivery_state)}</p>
+                {invitation.lifecycle_state === 'pending' && invitation.delivery_state !== 'sent' &&
+                  <p className="form-message capacity-message" role="status">{invitation.delivery_state === 'failed'
+                    ? 'تعذر إرسال البريد. استخدم «إعادة إرسال» بعد التحقق من العنوان.'
+                    : 'لم يتأكد إرسال البريد بعد. راجع الحالة قبل إعادة الإرسال.'}</p>}
                 {invitation.lifecycle_state === 'pending' && <p className="field-hint">لا تُحتسب الدعوة ضمن المقاعد حتى يقبلها المستخدم.</p>}
               </div>
               {invitation.lifecycle_state === 'pending' && <div className="invitation-actions">
@@ -153,6 +162,17 @@ function stateMessage(state: string) {
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
   };
   return labels[state] ?? 'تعذر تنفيذ الإجراء.';
+}
+function successMessage(state?: string) {
+  const messages: Record<string, string> = {
+    'created-sent': 'أُرسلت الدعوة. لن يحصل المستخدم على وصول أو مقعد قبل قبولها.',
+    'reissued-sent': 'أُرسل رابط جديد وأصبح الرابط السابق غير صالح.',
+    revoked: 'أُلغيت الدعوة.', expired: 'انتهت الدعوة ويمكن إصدار واحدة جديدة.',
+    reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
+    promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
+    demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
+  };
+  return state ? messages[state] ?? null : null;
 }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><Link className="primary-button" href="/auth/login">العودة إلى الدخول</Link></section></main>;
