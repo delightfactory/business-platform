@@ -6,12 +6,18 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 export async function signInAction(formData: FormData) {
   const email = String(formData.get('email') ?? '').trim();
   const password = String(formData.get('password') ?? '');
-  if (!email || !password) redirect('/auth/login?state=invalid');
+  const next = safeTenantNext(String(formData.get('next') ?? ''));
+  const returnTo = next ? `&next=${encodeURIComponent(next)}` : '';
+  if (!email || !password) redirect(`/auth/login?state=invalid${returnTo}`);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect('/auth/login?state=setup');
+  if (!supabase) redirect(`/auth/login?state=setup${returnTo}`);
   const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) redirect('/auth/login?state=invalid');
-  redirect('/operator');
+  if (error) redirect(`/auth/login?state=invalid${returnTo}`);
+  redirect(next ?? '/operator');
+}
+
+function safeTenantNext(value: string) {
+  return /^\/tenant\/[0-9a-f-]{36}$/i.test(value) ? value : null;
 }
 
 export async function requestPasswordResetAction(formData: FormData) {
