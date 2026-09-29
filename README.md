@@ -34,6 +34,8 @@ npm run build
 
 Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs these gates on pull requests.
 
+Platform Operator maintenance bootstrap/recovery instructions and the focused local pgTAP command are in [supabase/maintenance/README.md](supabase/maintenance/README.md).
+
 ## Governing documentation
 
 The approved product, architecture, security, and execution baseline is indexed in [docs/README.md](docs/README.md). New business behavior must follow those specifications and reach `main` through a reviewed PR.
