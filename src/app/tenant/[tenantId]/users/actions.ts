@@ -58,6 +58,28 @@ export async function setMemberAccessAction(formData: FormData) {
   go(tenantId, error ? mapError(error.message) : state === 'active' ? 'reactivated' : 'deactivated');
 }
 
+export async function changeTenantAdminRoleAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const userId = field(formData, 'userId');
+  const action = field(formData, 'roleAction');
+  if (!isUuid(tenantId) || !isUuid(userId) || (action !== 'promote' && action !== 'demote')) go(tenantId, 'invalid');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) go(tenantId, 'setup');
+  const { data: { user } } = await supabase.auth.getUser();
+  const { data, error } = await supabase.rpc('change_tenant_admin_role', {
+    p_tenant_id: tenantId, p_user_id: userId, p_action: action,
+  });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) {
+    go(tenantId, mapError(error?.message));
+  }
+  const state = (data as Record<string, unknown>).state;
+  const allowedStates = ['promoted', 'demoted', 'already_admin', 'already_member'];
+  if (action === 'demote' && user?.id === userId && state === 'demoted') {
+    redirect(`/tenant/${tenantId}?state=admin-demoted`);
+  }
+  go(tenantId, typeof state === 'string' && allowedStates.includes(state) ? state : 'failed');
+}
+
 async function deliverMemberInvitation(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
   invitation: Record<string, unknown>): Promise<'sent' | 'failed' | 'unknown'> {
   const admin = createSupabaseAdminClient();
@@ -113,6 +135,11 @@ function mapError(message?: string) {
   if (message?.includes('tenant_member_invite_issuer_authority_lost')) return 'issuer-lost';
   if (message?.includes('tenant_member_target_unavailable')) return 'target-unavailable';
   if (message?.includes('tenant_member_invite_idempotency_conflict')) return 'key-conflict';
+  if (message?.includes('tenant_admin_role_forbidden')) return 'role-forbidden';
+  if (message?.includes('tenant_admin_last_recoverable')) return 'last-admin';
+  if (message?.includes('tenant_admin_role_target_unavailable')) return 'target-unavailable';
+  if (message?.includes('tenant_admin_role_tenant_unavailable')) return 'tenant-unavailable';
+  if (message?.includes('tenant_admin_role_template_unavailable') || message?.includes('tenant_member_role_template_unavailable')) return 'role-setup';
   if (message?.includes('tenant_members_manage_forbidden')) return 'forbidden';
   return 'failed';
 }

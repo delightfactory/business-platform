@@ -5,8 +5,12 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 
-export default async function TenantPage({ params }: { params: Promise<{ tenantId: string }> }) {
+export default async function TenantPage({ params, searchParams }: {
+  params: Promise<{ tenantId: string }>;
+  searchParams: Promise<{ state?: string }>;
+}) {
   const { tenantId } = await params;
+  const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <TenantStatus title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد المحاولة." />;
 
@@ -29,6 +33,7 @@ export default async function TenantPage({ params }: { params: Promise<{ tenantI
         <section className="work-card" aria-labelledby="tenant-title">
           <p className="eyebrow">مساحة الشركة</p><h1 id="tenant-title">{String(member.tenant_name ?? 'الشركة')}</h1>
           <p className="intro">أنت عضو في هذه الشركة.</p>
+          {query.state === 'admin-demoted' && <p className="form-message" role="status">تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة.</p>}
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
         </section>

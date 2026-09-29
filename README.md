@@ -24,7 +24,9 @@ Authentication is invite-only email/password; public signup is disabled. Passwor
 
 The `/operator` flow verifies the current Auth user and reads current Operator authority from the database. A pending first-Admin invitation creates no Tenant or seat; acceptance atomically creates the Tenant, default Legal Entity/Site, protected Admin membership, capability limits, and audit records. An invitation remains recoverable through explicit reissue or revocation; each newer issuance invalidates older links.
 
-A Tenant administrator can invite a Member from `/tenant/<tenant-id>/users`. Pending invitations grant no access and consume no seat. Acceptance, disablement, and reactivation enforce the current Tenant state, permission, and effective user limit in the database. A Member invitation assigns the fixed Member role; administrator replacement requires a separate governed flow. Users with multiple active Tenant memberships choose a company at `/tenant/select`.
+A Tenant administrator can invite a Member from `/tenant/<tenant-id>/users`. Pending invitations grant no access and consume no seat. Acceptance, disablement, and reactivation enforce the current Tenant state, permission, and effective user limit in the database. A Member invitation assigns the fixed Member role; an authorized Tenant Admin can then promote an active Member or demote an Admin from the same page. Each role change is audited atomically, preserves Domain role assignments, and leaves seat usage unchanged. The final recoverable Admin cannot be demoted.
+
+When the user limit is `1`, replacing its only Admin requires a later Operator limit-control workflow: raise the limit from `1` to `2`, invite and accept the replacement as a Member, promote the replacement, demote the former Admin, deactivate the former Admin's membership to free the second seat, then lower the limit from `2` to `1`. Demotion alone does not free a seat because the membership remains active. The Operator limit-control workflow is not implemented yet, so Cube 0 is not operationally complete for this replacement case until that control exists.
 
 ## Local quality gates
 
@@ -35,11 +37,12 @@ npm run build
 npm run test:db:operator
 npm run test:db:invitations
 npm run test:db:members
+npm run test:db:admin-roles
 ```
 
 Package versions are exact and `package-lock.json` is committed for reproducible installation. GitHub Actions runs lint, typecheck, and build on pull requests. Database tests require the local Supabase stack with current migrations applied (`supabase migration up --local`, or `supabase db reset --local` for a disposable clean database).
 
-Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`.
+Platform Operator maintenance bootstrap/recovery instructions are in [supabase/maintenance/README.md](supabase/maintenance/README.md). Invitation database checks are in `supabase/tests/tenant_admin_invitations.test.sql` and `supabase/tests/tenant_member_invitations.test.sql`; Admin role governance checks are in `supabase/tests/tenant_admin_role_governance.test.sql`.
 
 ## Governing documentation
 
