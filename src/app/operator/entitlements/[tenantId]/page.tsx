@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantEntitlementAction } from '../actions';
 
@@ -27,18 +28,19 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
   const tenant = data as Snapshot;
   if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== 2) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
 
   return <main className="app-shell">
+    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث إتاحة الوحدة وتسجيل السبب." />}
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-    <section className="work-card" aria-labelledby="entitlements-title">
-      <p className="eyebrow">إتاحة الوحدات الاختيارية</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
-      <p className="intro">حالة الشركة: {stateLabel(tenant.lifecycle_state)}</p>
-      {query.state === 'updated' && <p className="form-message" role="status">تم تحديث الإتاحة وتسجيل السبب.</p>}
+    <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
+      <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
+      <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
-      <p className="field-hint">هذه القرارات تجهز إتاحة الموارد البشرية والرواتب عند إطلاقهما. لا توقف أي عملية حالية في المنصة.</p>
-      <div className="member-list">{tenant.entitlements.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} />)}</div>
+      <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
+      <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} />)}</div>
     </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
   </main>;
 }
@@ -46,19 +48,23 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
 function DecisionCard({ tenantId, decision }: { tenantId: string; decision: Decision }) {
   const people = decision.capability_key === 'hr.people';
   const label = people ? 'إدارة الموارد البشرية' : 'الرواتب';
-  return <article className="work-card" aria-labelledby={`${decision.capability_key}-title`}>
+  const enabled = decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled;
+  const state = decision.status === 'conflict' || decision.status === 'future_conflict' ? 'تحتاج مراجعة'
+    : enabled ? 'متاحة' : decision.is_granted && !decision.evaluator_enabled ? 'غير فعّالة' : 'غير متاحة';
+  return <article className="operator-setting-card" aria-labelledby={`${decision.capability_key}-title`}>
     <h2 id={`${decision.capability_key}-title`}>{label}</h2>
-    {decision.status === 'missing' ? <div className="form-message" role="status">
-      <p>{decision.last_decision_valid_until ? `انتهى آخر قرار (${decision.last_decision ? 'إتاحة' : 'منع'}) في ${dateTime(decision.last_decision_valid_until)}؛ الإتاحة الآن مرفوضة افتراضيًا.` : 'لم يُسجّل قرار سارٍ؛ الإتاحة مرفوضة افتراضيًا.'}</p>
-      <p>انتهاء قرار المنع لا يتيح الوحدة تلقائيًا؛ يلزم وجود قرار إتاحة ساري.</p>
-    </div>
-      : decision.status === 'conflict' ? <p className="form-message" role="alert">تعارض في القرارات الفعّالة؛ الإتاحة مغلقة حتى إصلاح البيانات.</p>
-        : decision.status === 'future_conflict' ? <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار صيانة.</p>
-          : <p>{decision.is_granted ? 'مسموحة' : 'مرفوضة'}{decision.capability_key === 'hr.payroll' && !decision.evaluator_enabled ? ' · غير فعّالة لغياب إتاحة الموارد البشرية' : ''}</p>}
-    {decision.valid_from && <p className="field-hint">بدأ القرار: {dateTime(decision.valid_from)} بتوقيت القاهرة</p>}
-    {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo' })}</p>}
+    <p className={`entity-status ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</p>
+    {decision.status === 'missing' && <p className="field-hint">{decision.last_decision_valid_until
+      ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار إتاحة جديد.`
+      : 'لم تُتح هذه الوحدة للشركة بعد.'}</p>}
+    {decision.status === 'conflict' && <p className="form-message" role="alert">تعارض في القرارات السارية؛ الإتاحة مغلقة حتى إصلاح البيانات.</p>}
+    {decision.status === 'future_conflict' && <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</p>}
+    {decision.capability_key === 'hr.payroll' && !decision.evaluator_enabled &&
+      <p className="field-hint">تحتاج الرواتب إلى إتاحة الموارد البشرية أولًا.</p>}
+    {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
+    {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
-      <summary className="secondary-button">تغيير القرار</summary>
+      <summary className="secondary-button">{decision.status === 'missing' ? 'تحديد الإتاحة' : 'تغيير القرار'}</summary>
       <form action={changeTenantEntitlementAction} className="auth-form">
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
@@ -77,7 +83,7 @@ function DecisionCard({ tenantId, decision }: { tenantId: string; decision: Deci
 }
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
-function dateTime(value: string) { return new Date(value).toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' }); }
+function dateLabel(value: string) { return new Date(value).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
   const messages: Record<string, string> = {
