@@ -4,7 +4,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
-import { createInvitationAction, reissueInvitationAction, revokeInvitationAction } from './actions';
+import { reissueInvitationAction, revokeInvitationAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,30 +40,13 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
         <Link className="brand" href="/operator">منصة الأعمال</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
       </header>
-      <section className="work-card operator-invitations-overview" aria-labelledby="invite-title">
-        <p className="eyebrow">إعداد الشركات</p>
+      <header className="workspace-page-heading"><div><p className="eyebrow">إعداد الشركات</p>
         <h1 id="invite-title">دعوات مسؤولي الشركات</h1>
-        <p className="intro">أنشئ شركة بدعوة مسؤولها الأول، وتابع حالة الدعوات هنا. لن تُنشأ الشركة قبل قبول الدعوة.</p>
+        <p>تابع حالة الدعوات. تُنشأ الشركة عند قبول المسؤول الأول للدعوة.</p></div>
+        <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</Link>
+      </header>
+      <section className="workspace-notices" aria-labelledby="invite-title">
         {params.state && !success && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
-        <details className="operator-grant-form operator-invite-disclosure" open={params.state === 'invalid'}>
-          <summary className="primary-button">دعوة مسؤول لشركة جديدة</summary>
-          <p className="field-hint">أدخل بيانات الشركة وحدود الاشتراك، ثم أرسل الدعوة للمسؤول الأول.</p>
-          <form className="auth-form onboarding-form" action={createInvitationAction}>
-            <input type="hidden" name="idempotencyKey" value={crypto.randomUUID()} />
-            <label htmlFor="tenantName">اسم الشركة</label>
-            <input id="tenantName" name="tenantName" required maxLength={160} />
-            <label htmlFor="entityName">اسم الجهة القانونية (اختياري)</label>
-            <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
-            <label htmlFor="siteName">اسم الفرع أو الموقع الرئيسي</label>
-            <input id="siteName" name="siteName" defaultValue="المقر الرئيسي" required maxLength={160} />
-            <label htmlFor="targetEmail">بريد المسؤول الأول</label>
-            <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" required maxLength={254} />
-            <LimitFields kind="seats" label="عدد المستخدمين" />
-            <LimitFields kind="sites" label="عدد الفروع والمواقع" />
-            <SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…" />
-          </form>
-        </details>
-        <Link className="back-link" href="/operator/onboarding">إعداد شركة لمسؤول لديه حساب بالفعل</Link>
       </section>
       <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
@@ -101,20 +84,6 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   );
 }
 
-function LimitFields({ kind, label }: { kind: 'seats' | 'sites'; label: string }) {
-  return (
-    <fieldset className="limit-fields">
-      <legend>{label}</legend>
-      <label htmlFor={`${kind}Mode`}>نوع الحد</label>
-      <select id={`${kind}Mode`} name={`${kind}Mode`} defaultValue="limited">
-        <option value="limited">عدد محدد</option>
-        <option value="unlimited">غير محدود</option>
-      </select>
-      <label htmlFor={`${kind}Limit`}>العدد عند اختيار حد محدد</label>
-      <input id={`${kind}Limit`} name={`${kind}Limit`} type="number" min="1" step="1" defaultValue="10" />
-    </fieldset>
-  );
-}
 
 function lifecycleText(state: string) {
   const labels: Record<string, string> = { pending: 'بانتظار قبول المسؤول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' };

@@ -223,6 +223,17 @@
   background: #fff;
 }
 .workspace-form-panel .auth-form { margin: 0; }
+.operator-invitation-form-page { width: min(100%, 54rem); }
+.operator-invitation-form-page .auth-form h2 {
+  margin: 1.5rem 0 .25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e9ea;
+  font-size: 1.08rem;
+}
+.operator-invitation-form-page .auth-form h2:first-of-type { margin-top: 0; padding-top: 0; border: 0; }
+.operator-invitation-form-page .limit-fields { margin: .5rem 0; background: #f9fbfb; }
+.workspace-alternate-path { margin: 1rem 0; color: #52666d; font-size: .9rem; }
+.workspace-alternate-path a { color: #135b51; font-weight: 700; }
 .workspace-form-actions { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; margin-top: .6rem; }
 .button-spinner {
   display: inline-block;

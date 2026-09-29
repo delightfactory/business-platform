@@ -16,11 +16,11 @@ export async function createInvitationAction(formData: FormData) {
   const siteLimit = parseLimit(formData, 'sites', siteMode);
 
   if (!/^[0-9a-f-]{36}$/i.test(key) || !tenantName || !siteName || !email || seatLimit === INVALID || siteLimit === INVALID) {
-    redirect('/operator/invitations?state=invalid');
+    redirect('/operator/invitations/new?state=invalid');
   }
 
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect('/operator/invitations?state=setup');
+  if (!supabase) redirect('/operator/invitations/new?state=setup');
   const { data, error } = await supabase.rpc('create_tenant_admin_invitation', {
     p_idempotency_key: key,
     p_tenant_name: tenantName,
@@ -32,7 +32,7 @@ export async function createInvitationAction(formData: FormData) {
     p_site_limit_mode: siteMode,
     p_site_limit: siteLimit,
   });
-  if (error || !isInvitation(data)) redirect('/operator/invitations?state=forbidden');
+  if (error || !isInvitation(data)) redirect('/operator/invitations/new?state=forbidden');
   if (data.created !== true) {
     const state = data.lifecycle_state === 'accepted' ? 'already-accepted'
       : data.lifecycle_state === 'revoked' ? 'already-revoked'

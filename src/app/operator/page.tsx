@@ -43,7 +43,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <h2 id="new-company-title">شركة جديدة</h2>
             <p>أرسل دعوة للمسؤول الأول لتُنشأ الشركة بفرعها وحدود استخدامها عند قبولها.</p>
           </div>
-          <Link className="primary-button" href="/operator/invitations">دعوة مسؤول الشركة <span aria-hidden="true">←</span></Link>
+          <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></Link>
         </section>}
 
         <div className="operator-home-grid">

@@ -89,9 +89,10 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
       </section>
 
       <section className="work-card task-page tenant-detail-sites" aria-labelledby="sites-title">
-        <div className="record-title-row"><h2 id="sites-title">الفروع والمواقع</h2>
+        <div className="record-title-row"><div><h2 id="sites-title">الفروع والمواقع</h2>
           <span className="record-meta">{snapshot.site_limit?.mode === 'unlimited'
             ? `${activeSites} نشط · بلا حد أقصى` : `${activeSites} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`}</span></div>
+          {canSites && entity.is_active && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</Link>}</div>
         <p className="field-hint">يُسجَّل كل فرع أو موقع عمل تحت الجهة القانونية التي يتبعها.</p>
         {!canSites && <p className="form-message" role="status">عرض التفاصيل يتطلب صلاحية إدارة المواقع.</p>}
         {canSites && entity.sites.length === 0 && <div className="empty-state"><p>لا توجد فروع أو مواقع مسجلة لهذه الجهة.</p></div>}
@@ -130,18 +131,6 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
             </details>
           </li>)}
         </ul>}
-        {canSites && entity.is_active && <details className="task-disclosure">
-          <summary className="secondary-button">إضافة فرع أو موقع</summary>
-          {full ? <p className="form-message capacity-message" role="status">اكتمل حد المواقع. عطّل موقعًا غير مستخدم، أو اطلب من مسؤول الاشتراك أو دعم المنصة رفع الحد.</p> : (
-            <form action={manageSiteAction} className="auth-form compact-form">
-              <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="legalEntityId" value={entity.id} />
-              <input type="hidden" name="returnEntityId" value={entity.id} /><input type="hidden" name="action" value="create" />
-              <label htmlFor="site-name">اسم الفرع أو الموقع</label><input id="site-name" name="displayName" required maxLength={160} />
-              <label htmlFor="site-create-reason">سبب الإضافة</label><input id="site-create-reason" name="reason" required minLength={3} maxLength={500} />
-              <SubmitButton label="إضافة الفرع أو الموقع" pendingLabel="جارٍ الإضافة…" />
-            </form>
-          )}
-        </details>}
       </section>
     </PageFrame>
   );
