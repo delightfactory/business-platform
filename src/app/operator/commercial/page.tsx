@@ -24,12 +24,12 @@ export default async function CommercialTenantsPage() {
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-    <section className="work-card" aria-labelledby="commercial-title">
+    <section className="work-card operator-collection" aria-labelledby="commercial-title">
       <p className="eyebrow">الوصول التجاري</p><h1 id="commercial-title">حدود استخدام الشركات</h1>
       <p className="intro">غيّر الحد الفعّال للمستخدمين أو المواقع. خفض الحد لا يعطّل الموجود، لكنه يمنع إضافة موارد حتى يصبح الاستخدام أقل من الحد أو يُرفع الحد.</p>
       {tenants.length === 0 ? <p className="intro">لا توجد شركات بعد.</p> : <ul className="member-list">
         {tenants.map((tenant) => <li className="member-card" key={tenant.tenant_id}>
-          <div><h2>{tenant.display_name}</h2><p>الحالة: {stateLabel(tenant.lifecycle_state)}</p></div>
+          <div><h2>{tenant.display_name}</h2><p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p></div>
           <Link className="secondary-button" href={`/operator/commercial/${tenant.tenant_id}`}>عرض الحدود والاستخدام</Link>
         </li>)}
       </ul>}

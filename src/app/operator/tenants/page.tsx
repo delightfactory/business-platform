@@ -32,7 +32,7 @@ export default async function OperatorTenantsPage() {
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
         </nav>
       </header>
-      <section className="work-card" aria-labelledby="tenants-title">
+      <section className="work-card operator-collection" aria-labelledby="tenants-title">
         <p className="eyebrow">إدارة حالة الشركات</p>
         <h1 id="tenants-title">الشركات</h1>
         <p className="intro">تُسجل كل عملية تعليق أو استعادة أو أرشفة مع سببها.</p>
@@ -42,7 +42,7 @@ export default async function OperatorTenantsPage() {
               <li className="member-card" key={tenant.tenant_id}>
                 <div>
                   <h2>{tenant.tenant_name}</h2>
-                  <p>الحالة: {stateLabel(tenant.lifecycle_state)}</p>
+                  <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
                 </div>
                 <Link className="secondary-button" href={`/operator/tenants/${tenant.tenant_id}`}>عرض الحالة والإجراءات</Link>
               </li>

@@ -14,6 +14,12 @@ Business Platform is delivered as a web application, but the experience must ada
 
 Responsive behavior is a product requirement, not a cosmetic enhancement applied after desktop implementation.
 
+## Pattern references and product judgment
+
+Use established pattern guidance when making a shared UX decision: [Carbon's global header](https://carbondesignsystem.com/patterns/global-header/) for orientation, [Atlassian's navigation layout](https://atlassian.design/components/navigation-system/layout) for separating navigation from work content, [Carbon's forms](https://carbondesignsystem.com/patterns/forms-pattern/) and [notifications](https://carbondesignsystem.com/patterns/notification-pattern/) for task input and feedback, [GOV.UK's validation recovery](https://design-system.service.gov.uk/patterns/validation/) for actionable form errors, and [WCAG 2.2](https://www.w3.org/TR/wcag/) for accessibility criteria. These are evidence for interaction decisions, not a visual template to copy.
+
+For a material flow change, the review must connect the actor's task to the chosen page type, primary action, result, and recovery path. Inspect the rendered flow with real data at phone, tablet, and desktop sizes before accepting it. A tidy component library or passing build is not evidence that the user can complete the task comfortably.
+
 ## Adaptive layout principle
 
 The same capability may use different composition patterns by viewport and interaction mode while preserving the same product semantics.
