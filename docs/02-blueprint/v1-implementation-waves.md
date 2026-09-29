@@ -372,7 +372,7 @@ V1 supports both requested attendance-channel families through optional entitlem
 - operational exports/imports and recovery procedures;
 - core reports/reconciliation views;
 - audit of all primary V1 Workflow Completion Maps for dead ends, ownerless states, and undocumented manual handoffs;
-- Arabic-first UX copy/polish if confirmed by the Product Spec for this product;
+- Arabic-first UX copy/RTL qualification for the initial Egypt V1 release, using the shared frontend baseline;
 - desktop/laptop and mobile acceptance across all primary workflows;
 - accessibility/keyboard/touch review appropriate to each surface;
 - production/staging environment runbook;

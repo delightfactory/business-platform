@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D freeze candidate, 2026-09-28.**
+**Frozen — final documentation alignment approved 2026-09-29.**
 
 This specification governs Wave 2 — People & Work Context. It converts the accepted HR People scope into implementation-ready behavior without making Employee identity a Platform identity and without requiring Contracts/Documents/ESS.
 
@@ -157,7 +157,7 @@ A Work Assignment binds an Employment to operational context over an effective p
 - Department;
 - Job;
 - optional manager;
-- Work Policy / Shift assignment.
+- Work Policy / Shift assignment when Attendance is enabled.
 
 Assignments are effective-dated so a transfer does not rewrite prior attendance/payroll context.
 
@@ -185,7 +185,7 @@ Backdating a compensation change into a period already consumed by locked Payrol
 
 ## 6. Work Policy / shift context
 
-Wave 2 establishes assignment to a Work Policy and Shift template; detailed attendance interpretation is governed by the Attendance & Leave Spec.
+Wave 2 establishes the bounded named Work Policy and Shift templates needed for assignment when Attendance is enabled; detailed attendance interpretation is governed by the Attendance & Leave Spec. An Employee and Employment can be created, and Payroll can operate, without an Attendance entitlement or Work Policy assignment.
 
 V1 Work Policy may reference:
 

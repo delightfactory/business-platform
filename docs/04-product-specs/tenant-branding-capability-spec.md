@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D freeze amendment, 2026-09-28.**
+**Frozen — final documentation alignment approved 2026-09-29.**
 
 ## Purpose
 
@@ -77,6 +77,8 @@ Examples:
 - HR employee views display the employer identity.
 - Payroll payslips display the employer identity.
 - Reports and exports use the organization's configured identity.
+
+An official document that requires a legal Employer must resolve the applicable Legal Entity's required identity before generation. Missing required Employer identity is a visible setup blocker; Tenant or Platform display names cannot silently replace it. Tenant branding may supply safe visual defaults such as logo/color where appropriate. A generated official document preserves the legal and visual identity context used at generation so later branding changes do not rewrite its meaning.
 
 ## Security and isolation
 

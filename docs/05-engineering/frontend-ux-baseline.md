@@ -134,6 +134,14 @@ Do not hard-code layout logic around left/right when start/end semantics are app
 
 This principle does not require building unused localization infrastructure before the active release needs it.
 
+### Initial Egypt V1 acceptance
+
+- Arabic is the primary user-facing language and RTL is the default direction for the initial Egypt release. A language switcher or generalized translation framework is not a Cube 0 requirement.
+- Shared components use logical start/end layout, correct focus/reading order, and safe bidirectional rendering of employee codes, dates, amounts, and identifiers within Arabic text.
+- User-facing dates, numbers, and EGP amounts are formatted consistently from authoritative values; ambiguous numeric date formats are avoided in sensitive decisions.
+- Cube 0 acceptance exercises Tenant setup, invitation, Tenant switching, and an access-denied/recovery state with real Arabic copy on representative mobile, tablet, and desktop sizes. Critical actions remain reachable with touch and keyboard.
+- Domain-specific Arabic wording and deeper localization are verified in the owning Cube rather than expanded into an unused framework now.
+
 ## Performance and perceived quality
 
 Professional UX includes perceived responsiveness:

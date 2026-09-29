@@ -94,6 +94,8 @@ A biometric vendor-specific adapter remains blocked until the actual hardware/pr
 2. Create implementation tickets/tasks from each frozen specification.
 3. Start development only from frozen specifications.
 
+This section records the action outstanding on 2026-09-28. The final documentation-alignment revision approved on 2026-09-29 freezes the four specifications and updates their index. The biometric vendor adapter sub-gate and production statutory qualification remain separate later gates.
+
 ## Decision
 
 The planning baseline is sufficient for controlled implementation. Codex should not invent business behavior; any missing material behavior must return through specification amendment/change control.

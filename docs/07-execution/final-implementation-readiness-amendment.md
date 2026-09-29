@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted amendment before Cube 0 execution.
+Accepted amendment before Cube 0 execution. Final documentation alignment approved 2026-09-29.
 
 ## Purpose
 
@@ -10,28 +10,28 @@ This amendment converts architecture review findings into implementation-governi
 
 ## Amended documents
 
-This amendment governs clarification updates to:
+This amendment governs the following scoped clarifications. The referenced specifications are aligned in the same final documentation revision; their other rules remain in force:
 
 - `docs/07-execution/v1-cube-execution-plan.md`
   - Cube scope and completion contract.
 - `docs/04-product-specs/tenant-branding-capability-spec.md`
-  - Tenant branding versus legal identity boundary.
+  - Domain usage and official-document identity boundary.
 - `docs/04-product-specs/authorization-access-control-v1-spec.md`
-  - Authorization V1 boundaries.
+  - V1 scope, Platform Operator separation, and custom-role boundary.
 - `docs/04-product-specs/employee-finance-payroll-spec.md`
-  - Payroll calendar behavior.
-- HR domain specifications where lifecycle status requires alignment.
+  - Payroll period identity and post-lock correction after a recorded payment.
+- `docs/04-product-specs/payroll-calendar-and-cutoff-amendment.md`
+  - Employer scope and non-overlapping calendar transitions. The earlier illustrative change from `01 Jan–31 Jan` straight to `26 Jan–25 Feb` overlapped six dates; it is replaced by an explicit `01 Feb–25 Feb` transition before `26 Feb–25 Mar`.
+- `docs/03-architecture/adr/ADR-008-authoritative-data-access-and-transaction-boundaries.md`
+  - Authoritative Access Matrix, tenant-scoped normal read: the prior shorthand included Operator authority in the ordinary direct-read row; Operator reads/actions are clarified as server-only Operator commands under their dedicated row. This closes an alternate-path ambiguity without widening access.
+- `docs/05-engineering/frontend-ux-baseline.md` and `docs/02-blueprint/v1-implementation-waves.md`
+  - V1 Arabic-first/RTL acceptance, replacing conditional language-readiness wording for the initial Egypt release.
+- `docs/04-product-specs/hr-people-work-context-spec.md`, `attendance-leave-spec.md`, `employee-finance-payroll-spec.md`, and `attendance-channel-spec.md`
+  - Lifecycle status only, after the final freeze review; business behavior changes only where separately named above.
 
 ## Source of truth rule
 
-The implementation authority order is:
-
-1. Accepted ADRs.
-2. Frozen Product Specifications.
-3. Accepted execution plans.
-4. Implementation tasks generated from those artifacts.
-
-An explanatory document does not modify behavior unless it explicitly declares the documents and sections it amends and is accepted through the normal review process.
+Use the scoped authority order and conflict-resolution process in `docs/06-governance/source-of-truth.md`. This amendment does not create a second hierarchy. An explanatory document does not modify behavior unless it explicitly names the governing baseline and affected section, and is accepted through the normal review process.
 
 ## Cube 0 — Platform Foundation & Experience Layer (complete scope)
 
@@ -73,6 +73,8 @@ Cube 0 is complete only when the following capabilities are implemented together
 - Mobile/tablet/desktop layouts.
 - Shared states and feedback patterns.
 
+For the initial Egypt V1 release, primary user-facing workflows use Arabic and RTL. Cube 0 proves the shell and representative administration, invitation, Tenant-switch, and denial/recovery states across mobile, tablet, and desktop. Date, number, and EGP formatting are checked in those flows. This does not require a generic localization engine or a language switcher in Cube 0.
+
 ## Authorization V1 boundary
 
 V1 authorization is based on:
@@ -80,7 +82,7 @@ V1 authorization is based on:
 - Tenant membership.
 - Roles.
 - Permissions.
-- Custom Tenant roles where required.
+- Tenant custom-role capability where a confirmed V1 workflow needs it; an advanced self-service role editor is not a default Cube 0 deliverable.
 - Audited role/permission changes.
 
 Deferred:
@@ -98,13 +100,7 @@ Tenant branding controls experience identity.
 
 Legal Entity identity controls official business documents where a legal employer identity is required.
 
-Document identity precedence:
-
-1. Employer Legal Entity identity.
-2. Tenant branding fallback.
-3. Platform identity fallback.
-
-Historical documents preserve the identity context used when generated.
+An official document that requires an Employer Legal Entity must resolve that entity's required legal identity before generation; missing legal identity blocks the document with an actionable setup error. Tenant branding may provide visual defaults, but neither Tenant display name nor Platform identity substitutes for the legal Employer. Platform identity remains a fallback for application chrome and non-official surfaces. Historical documents preserve the resolved legal and visual identity context used when generated.
 
 ## People and Attendance boundary
 
@@ -124,11 +120,13 @@ Attendance owns:
 
 People assigns context; Attendance interprets time.
 
+Cube 1 establishes the bounded named Work Policy and Shift templates needed for an effective assignment when Attendance is enabled. Time owns their definitions; People owns the Employee assignment. An Employee and Payroll can operate without Attendance entitlement. Cube 2 adds attendance interpretation and correction behavior.
+
 ## Payroll Calendar rule
 
 Payroll periods are not assumed to be calendar months.
 
-Each Tenant Payroll Calendar defines:
+Each Employer Legal Entity within a Tenant has one active effective Payroll Calendar defining:
 
 - Frequency.
 - Cutoff rule.
@@ -141,7 +139,8 @@ Rules:
 - periods cannot contain gaps in an active calendar.
 - locked periods cannot be rewritten.
 - cutoff changes are effective-dated.
-- partial payment corrections follow amendment/adjustment paths.
+- a cutoff change starts after the last generated period and creates an explicit reviewed transition period when needed;
+- any recorded payment prevents replacement of the locked payable run; corrections use a linked adjustment or approved external settlement that reconciles paid and remaining amounts.
 
 ## Cube completion contract
 

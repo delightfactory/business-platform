@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposed — Phase 0D freeze candidate, 2026-09-28.**
+**Frozen — final documentation alignment approved 2026-09-29.**
 
 This specification governs Wave 5 attendance capture channels. It freezes the channel contracts, privacy/security behavior and user experience while keeping vendor-specific device transport outside Attendance business logic.
 
