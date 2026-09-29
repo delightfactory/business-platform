@@ -19,7 +19,8 @@
     "test:db:admin-roles": "supabase test db --local supabase/tests/tenant_admin_role_governance.test.sql",
     "test:db:operator-management": "supabase test db --local supabase/tests/platform_operator_management.test.sql",
     "test:db:entities-sites": "supabase test db --local supabase/tests/tenant_legal_entities_sites.test.sql",
-    "test:db:commercial": "supabase test db --local supabase/tests/operator_commercial_access.test.sql"
+    "test:db:commercial": "supabase test db --local supabase/tests/operator_commercial_access.test.sql",
+    "test:db:entitlements": "supabase test db --local supabase/tests/tenant_capability_entitlements.test.sql"
   },
   "dependencies": {
     "@fontsource/cairo": "5.3.0",
