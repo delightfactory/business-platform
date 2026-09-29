@@ -94,6 +94,7 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .primary-button, .secondary-button { min-height: 2.9rem; display: inline-flex; align-items: center; justify-content: center; padding: .6rem 1rem; border: 0; border-radius: .65rem; color: white; background: var(--color-brand); font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; }
 .auth-form .primary-button { margin-top: .6rem; }
 .secondary-button { color: var(--color-brand); border: 1px solid var(--color-brand); background: white; }
+.topbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 .link-button { margin-top: .5rem; }
 .auth-links { margin: 1.2rem 0 0; text-align: center; }
 .auth-links a { color: var(--color-brand); font-weight: 700; }
@@ -134,6 +135,9 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .invitation-list { margin-top: 0; }
 .invitation-list h2 { margin: 0 0 1rem; font-size: 1.25rem; }
 .invitation-list ul { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.tenant-choice-list { display: grid; gap: .75rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.tenant-choice-list a { width: 100%; }
+.member-invite-form { padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; }
 .invitation-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: .8rem; }
 .invitation-row h3, .invitation-row p { margin: 0; }
 .invitation-row p { margin-top: .35rem; color: var(--color-muted); line-height: 1.7; }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { acceptInvitationAction, setInvitationPasswordAction } from './actions';
@@ -16,7 +17,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!validReference) return <Status title="رابط الدعوة غير صالح" detail={stateMessage(params.state)} link="/auth/login" linkText="العودة إلى الدخول" />;
-  if (!user) return <Status title="افتح رابط الدعوة من بريدك" detail="يلزم استخدام الرابط المرسل إلى البريد المقصود، ثم إكمال إعداد الحساب." />;
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/auth/invitations/accept?id=${invitationId}&issuance=${issuance}`)}`);
 
   const { data: validation, error } = await supabase.rpc('validate_tenant_admin_invitation', {
     p_invitation_id: invitationId,
