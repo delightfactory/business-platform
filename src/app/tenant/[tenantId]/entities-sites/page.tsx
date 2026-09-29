@@ -26,7 +26,7 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}`)}`);
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/entities-sites`)}`);
   const { data, error } = await supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) {
     return <Status tenantId={tenantId} title="لا يمكن عرض هذه الصفحة" detail="تحتاج إلى صلاحية إدارة الجهات أو المواقع في الشركة." />;
