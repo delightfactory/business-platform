@@ -42,7 +42,8 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
       <section className="work-card" aria-labelledby="onboard-title">
         <p className="eyebrow">إعداد الشركات</p>
         <h1 id="onboard-title">إعداد شركة جديدة</h1>
-        <p className="intro">أدخل بيانات الشركة ومسؤولًا لديه حساب موجود وبريد مؤكد. إرسال الدعوات سيضاف لاحقًا.</p>
+        <p className="intro">أدخل بيانات الشركة ومسؤولًا لديه حساب موجود وبريد مؤكد.</p>
+        <p><Link className="secondary-button" href="/operator/invitations">دعوة مسؤول جديد عبر البريد</Link></p>
         {params.state && <p className="form-message" role="alert">{stateMessage(params.state)}</p>}
         {result ? <OnboardingResult result={result} /> : (
           <form className="auth-form onboarding-form" action={onboardTenantAction}>
