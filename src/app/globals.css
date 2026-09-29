@@ -168,6 +168,20 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
 .operator-invitations-history .invitation-row > div:first-child { min-width: 0; }
 .operator-invitations-history .invitation-row p { overflow-wrap: anywhere; }
 .operator-invitations-history .invitation-row .entity-status { margin-top: .55rem; }
+.operator-area .operator-grants-overview, .operator-area .operator-grants-list { width: min(100%, var(--work-content-max)); padding: 0; border: 0; box-shadow: none; background: transparent; }
+.operator-grants-overview > .intro { max-width: 42rem; margin: .6rem 0 1.25rem; }
+.operator-area .operator-grants-overview > .operator-grant-form { width: min(100%, 36rem); margin: 0; padding: 0; border: 0; }
+.operator-area .operator-grants-overview > .operator-grant-form[open] { padding: 1rem; border: 1px solid var(--color-border); background: white; }
+.operator-grants-list h2 { margin: 0 0 1rem; font-size: 1.25rem; }
+.operator-grants-list .member-list { gap: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: .8rem; background: white; }
+.operator-grants-list .member-card { align-items: center; border: 0; border-radius: 0; padding: 1.15rem 1.35rem; }
+.operator-grants-list .member-card + .member-card { border-top: 1px solid var(--color-border); }
+.operator-grants-list .member-card > div:first-child { min-width: 0; }
+.operator-grants-list .member-card h3 { overflow-wrap: anywhere; }
+.operator-grants-list .member-card .entity-status { margin-top: .5rem; }
+.operator-capability-list { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0 0; padding: 0; list-style: none; }
+.operator-capability-list li { padding: .3rem .55rem; border-radius: .4rem; background: #f1f5f6; color: #34515a; font-size: .78rem; }
+.operator-grant-actions .danger-action { color: var(--color-danger); border-color: var(--color-danger); }
 .app-shell > .tenant-collection { width: min(100%, var(--work-content-max)); border: 0; box-shadow: none; background: transparent; padding: 0; }
 .tenant-collection > .intro { max-width: none; margin: .25rem 0 .5rem; }
 .tenant-collection .usage-line { width: fit-content; max-width: 100%; padding: .45rem .75rem; font-size: .88rem; }

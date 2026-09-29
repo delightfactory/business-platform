@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeOperatorGrantAction } from './actions';
+import { FeedbackToast } from '@/components/feedback-toast';
 
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
@@ -23,18 +24,20 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   const { data, error } = await supabase.rpc('platform_operator_grant_list');
   if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="أعد المحاولة لاحقًا. لم يتغير أي منح." />;
   const grants = data as Grant[];
+  const success = query.state === 'granted' || query.state === 'updated' || query.state === 'revoked';
 
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-      <section className="work-card" aria-labelledby="operators-title">
+      {success && <FeedbackToast key={crypto.randomUUID()} message={stateText(query.state ?? '')} />}
+      <section className="work-card operator-grants-overview" aria-labelledby="operators-title">
         <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
-        <p className="intro">تُدار هنا مهام المشغّلين وإعداد الشركات وإدارة حالة الشركات وحدود الاستخدام. السبب مطلوب لكل تغيير.</p>
-        {query.state && <p className="form-message" role="status">{stateText(query.state)}</p>}
+        <p className="intro">حدد من يمكنه تشغيل المنصة والمهام المسموح له بها. يُسجل سبب كل تغيير.</p>
+        {query.state && !success && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
         <details className="operator-grant-form">
-          <summary className="secondary-button">إضافة مهمة لمستخدم موجود</summary>
+          <summary className="primary-button">إضافة مشغّل</summary>
           <form action={changeOperatorGrantAction} className="auth-form">
             <h2>منح صلاحية مشغّل</h2>
             <label htmlFor="newEmail">بريد الحساب المؤكد</label>
@@ -47,12 +50,15 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             <button className="primary-button" type="submit">تأكيد منح الصلاحية المحددة</button>
           </form>
         </details>
-        <h2>المنح الحالية والسابقـة</h2>
+      </section>
+      <section className="work-card operator-grants-list" aria-labelledby="grants-list-title">
+        <h2 id="grants-list-title">المشغّلون</h2>
         {grants.length === 0 ? <p>لا توجد منح مشغّل محفوظة.</p> : <ul className="member-list">
           {grants.map((grant) => <li className="member-card" key={grant.user_id}>
             <div><h3><bdi>{grant.email}</bdi></h3>
-              <p>{grant.is_active ? 'منح نشط' : 'مسحوب'} · {grant.recoverable ? 'الحساب قابل للدخول' : 'الحساب غير جاهز للدخول'}</p>
-              <p>{capabilityNames(grant)}</p>
+              <p className={`entity-status ${grant.is_active ? 'is-active' : 'is-inactive'}`}>{grant.is_active ? 'نشط' : 'مسحوب'}</p>
+              {!grant.recoverable && <p className="field-hint">الحساب غير جاهز لتسجيل الدخول</p>}
+              <ul className="operator-capability-list" aria-label="المهام الممنوحة">{capabilityNames(grant).length ? capabilityNames(grant).map((name) => <li key={name}>{name}</li>) : <li>لا توجد مهام حاليًا</li>}</ul>
             </div>
             <div className="operator-grant-actions">
               {grant.recoverable && <>
@@ -66,7 +72,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <button className="secondary-button" type="submit">{grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}</button>
                 </form>
               </details></>}
-              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button">سحب صلاحية المشغّل</summary>
+              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action">سحب الصلاحية</summary>
                 <p className="field-hint">سيُوقف هذا المنح وتُسحب كل المهام المرتبطة به. يُحفظ السبب وسجل ما قبل/بعد التغيير.</p>
                 <form action={changeOperatorGrantAction} className="auth-form compact-form">
                   <input type="hidden" name="email" value={grant.email} /><input type="hidden" name="action" value="revoke" />
@@ -96,7 +102,7 @@ function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pic
 
 function capabilityNames(grant: Grant) {
   return [grant.can_manage_operators && 'إدارة المشغّلين', grant.can_onboard_tenants && 'إعداد الشركات',
-    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام'].filter(Boolean).join(' · ') || 'لا توجد مهمة';
+    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام'].filter((name): name is string => Boolean(name));
 }
 
 function stateText(state: string) {
