@@ -343,6 +343,10 @@ V1 may use a simpler internal commercial representation if these semantics remai
 
 Capabilities may expose typed commercial Limits such as employee count, Site count, device count, or other demonstrated resource limits.
 
+Cube 0 supports two explicit per-Tenant commercial Limits when contracted: active User seats and active Sites. A User seat is one active Tenant Membership, regardless of role; pending invitations and inactive Memberships do not consume a seat. The same User with active Memberships in two Tenants consumes one seat in each. Platform Operator authority alone is not a Tenant seat. The Site count includes active Sites across the Tenant's Legal Entities, including a default Site; inactive Sites do not consume capacity and retain their history. Employee count is a separate Domain Limit, not a synonym for User seats.
+
+The Operator control plane shows each effective Limit alongside current usage. Membership activation/invitation acceptance and Site creation/reactivation check the prospective count authoritatively and atomically. An invitation may remain pending at capacity, but acceptance returns a visible capacity outcome and recovery path. Onboarding rejects a Limit combination that would prevent its protected initial administrator or required default Site. Lowering a Limit below current usage preserves existing access and Sites; new growth is blocked until capacity is available or the authorized Operator changes the Limit.
+
 Rules:
 
 - Limits are values, not package-name conditionals;
@@ -642,6 +646,8 @@ Wave 1 is not Done unless all are true:
 - Capability dependency violations are rejected;
 - Limit blocks new growth at threshold;
 - lowering Limit below current usage preserves existing data;
+- active User-seat and Site Limits are independently enforced per Tenant, including concurrent activation/creation attempts; pending invitations, inactive Memberships/Sites, and Operator authority alone are counted according to the V1 count semantics in section 5.3;
+- the control plane exposes effective Limit and current usage, and a full-capacity invitation or Site operation has a visible recovery path;
 - disabling Capability preserves data/history while blocking prohibited operations;
 - Capability disable/Limit change leaves in-flight records in defined visible/recoverable states rather than stranded hidden state.
 
