@@ -43,6 +43,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           {canOnboard && <Link className="secondary-button" href="/operator/invitations">دعوة مسؤول شركة</Link>}
           {canManageLifecycle && <Link className="secondary-button" href="/operator/tenants">إدارة حالة الشركات</Link>}
           {canManageCommercial && <Link className="secondary-button" href="/operator/commercial">إدارة حدود الاستخدام</Link>}
+          {canManageCommercial && <Link className="secondary-button" href="/operator/entitlements">إدارة إتاحة الوحدات</Link>}
           {!canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && <p className="intro">لا توجد مهام تشغيل ممنوحة لهذا الحساب حاليًا.</p>}
         </div>
       </section>
