@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { linkEmployeeUserAction, unlinkEmployeeUserAction } from '../employee-user-link-actions';
-import { createEmployeeAccountAction, retryEmployeeAccountActivationAction } from '../employee-account-actions';
+import { createEmployeeAccountAction, retryEmployeeAccountActivationAction, sendEmployeeAccountReadinessRecoveryAction } from '../employee-account-actions';
 import { SubmitButton } from '@/components/submit-button';
 
 export type LinkSnapshot = { linked: boolean; identity_visible: boolean; link_id: string | null; user_id: string | null; email: string | null; display_name: string | null; linked_at: string | null };
 export type Options = { items: Array<{ user_id: string; email: string; display_name: string }>; page: number; page_size: number; has_more: boolean };
-export type AccountProvision = { intent_id?: string; state: string; target_email?: string; delivery_state?: string; last_error_code?: string };
+export type AccountProvision = { intent_id?: string; state: string; target_email?: string; delivery_state?: string; last_error_code?: string; password_ready?: boolean; currently_linked?: boolean };
 
 export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvite, canProvisionAccount, snapshot, snapshotError, options, optionsError,
   accountProvision, accountProvisionError, requestKey, accountState, query, page, state }: { tenantId: string; employeeId: string; canManage: boolean; canInvite: boolean;
@@ -33,8 +33,13 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
     'already-linked': 'لدى الموظف حساب مرتبط بالفعل.',
     'setup': 'إعداد خدمة الحسابات أو عنوان التطبيق غير مكتمل. لم نربط أي حساب.',
     'operation-error': 'تعذر إكمال العملية. تحقق من حالة الطلب قبل بدء عملية أخرى.',
+    'readiness-link-sent': 'أُرسل رابط آمن للموظف لتحديث كلمة المرور وتأكيد جاهزيتها. الحساب وعضويته وصلاحياته لم تتغير.',
+    'readiness-link-failed': 'تعذر تأكيد إرسال رابط تحديث كلمة المرور. تحقق من إعداد البريد قبل إعادة المحاولة.',
   };
   const provision = accountProvision;
+  const currentlyLinkedProvision = snapshot?.linked === true && provision?.currently_linked === true;
+  const canStartNewAccount = !accountProvisionError && !snapshotError && snapshot?.linked === false && Boolean(provision)
+    && (provision?.state === 'none' || (provision?.state === 'activated' && provision.currently_linked === false));
   return <section className="workspace-records-panel" aria-labelledby="employee-user-link-heading">
     <h2 id="employee-user-link-heading">حساب المستخدم</h2>
     {state && messages[state] && <p className={state === 'error' || state === 'forbidden' || state === 'invite-failed' ? 'form-message error-message' : 'form-message'} role="status">{messages[state]}</p>}
@@ -48,7 +53,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </form>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
-    {accountState && accountMessages[accountState] && <p className={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error'].includes(accountState)
+    {accountState && accountMessages[accountState] && <p className={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState)
       ? 'form-message error-message' : 'form-message'} role="status">{accountMessages[accountState]}</p>}
     {!snapshotError && !snapshot?.linked && canManage && <>
       <h3>ربط عضو موجود</h3>
@@ -92,7 +97,8 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
             <SubmitButton label={provision.state === 'pending' ? 'متابعة إنشاء الحساب' : 'إعادة إرسال رابط التفعيل'} pendingLabel="جارٍ الإرسال…" />
           </form>}
         </div>}
-        {!accountProvisionError && (!provision || provision.state === 'none' || provision.state === 'activated') && <form action={createEmployeeAccountAction} className="compact-form">
+        {provision?.state === 'activated' && provision.currently_linked === false && <p className="form-message">الحساب السابق لم يعد مرتبطًا بهذا الموظف. يمكنك إنشاء حساب بديل.</p>}
+        {canStartNewAccount && <form action={createEmployeeAccountAction} className="compact-form">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="requestKey" value={requestKey} />
           <label htmlFor="employee-account-email">بريد الموظف</label>
@@ -101,5 +107,14 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </form>}
       </div>}
     </>}
+    {!snapshotError && !accountProvisionError && currentlyLinkedProvision && canProvisionAccount && provision?.state === 'activated' && provision.password_ready !== true && provision.intent_id && <div className="workspace-page-summary">
+      <h3>تأكيد جاهزية كلمة المرور</h3>
+      <p>الحساب نشط بالفعل. يمكن إرسال رابط للموظف لتحديث كلمة المرور وتأكيد جاهزيتها دون تغيير العضوية أو الصلاحيات.</p>
+      <form action={sendEmployeeAccountReadinessRecoveryAction}>
+        <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
+        <input type="hidden" name="intentId" value={provision.intent_id} />
+        <SubmitButton label="إرسال رابط تأكيد كلمة المرور" pendingLabel="جارٍ الإرسال…" />
+      </form>
+    </div>}
   </section>;
 }

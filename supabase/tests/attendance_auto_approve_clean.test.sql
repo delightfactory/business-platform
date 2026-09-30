@@ -21,7 +21,8 @@ VALUES ('ed120000-0000-4000-8000-000000000001','ed150000-0000-4000-8000-00000000
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','ed110000-0000-4000-8000-000000000001',true);
-SELECT set_config('test.today',(timezone('Africa/Cairo',now())::date)::text,true);
+-- Keep punches in the past even just after midnight; this overnight fixture's attribution window still remains open.
+SELECT set_config('test.today',(timezone('Africa/Cairo',now())::date-1)::text,true);
 SELECT set_config('test.employee_auto',public.create_people_employee('ed120000-0000-4000-8000-000000000001','AUTO-1','موظف اعتماد تلقائي','ed140000-0000-4000-8000-000000000001','ed150000-0000-4000-8000-000000000001',timezone('Africa/Cairo',now())::date-10,'monthly',1000,true)::text,true);
 SELECT set_config('test.employment_auto',(current_setting('test.employee_auto')::jsonb->>'employment_id'),true);
 SELECT set_config('test.policy_auto',(public.save_time_work_policy('ed120000-0000-4000-8000-000000000001',NULL,'AUTO','دوام اعتماد تلقائي','fixed','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],'00:00','23:59',true,0,NULL,NULL,NULL,0,720,false,30,15,true)->>'id'),true);

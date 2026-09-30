@@ -8,7 +8,7 @@ type Search = Promise<{ token_hash?: string; type?: string; intent_id?: string; 
 export default async function EmployeeAccountActivationCallbackPage({ searchParams }: { searchParams: Search }) {
   const query = await searchParams;
   const valid = /^[a-zA-Z0-9_-]{16,512}$/.test(query.token_hash ?? '')
-    && (query.type === 'invite' || query.type === 'email') && isUuid(query.intent_id ?? '');
+    && (query.type === 'invite' || query.type === 'email' || query.type === 'magiclink') && isUuid(query.intent_id ?? '');
   const message = query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب من الموارد البشرية إعادة إرساله.'
     : query.state === 'identity' ? 'هذا الرابط لا يطابق عملية التفعيل. استخدم الرابط المرسل لهذا الحساب.'
       : query.state ? 'تعذر التحقق من الرابط. افتح أحدث رسالة وصلتك.' : 'تحقق من البريد للمتابعة وإعداد كلمة المرور.';

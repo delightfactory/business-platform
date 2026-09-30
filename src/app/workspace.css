@@ -294,6 +294,10 @@
 .attendance-import-note { display: block; max-width: 24rem; margin-top: .2rem; color: #7a4343; line-height: 1.55; }
 .attendance-import-confirm-form { display: grid; gap: .65rem; }
 .attendance-import-confirm-form .checkbox-row { align-items: flex-start; }
+.attendance-import-ambiguous { display: grid; gap: .5rem; padding: .75rem; border: 1px solid #d6a45e; border-radius: .6rem; background: #fff9ed; }
+.attendance-import-work-date { display: grid; gap: .35rem; max-width: 22rem; }
+.attendance-import-work-date select { min-height: 2.6rem; }
+.attendance-import-ambiguous .form-message { margin: 0; }
 @media (max-width: 40rem) {
   .attendance-import-mapping { grid-template-columns: minmax(0,1fr); padding: .8rem; }
   .attendance-import-page { padding-inline: .9rem; }

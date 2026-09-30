@@ -6,7 +6,7 @@ VALUES ('e9100000-0000-4000-8000-000000000101','csv-admin@example.test','hash',n
 INSERT INTO platform_private.platform_operator_grants(user_id,is_active,can_manage_commercial_access) VALUES ('e9100000-0000-4000-8000-000000000101',true,true);
 INSERT INTO platform_core.tenants(id,display_name,created_by_operator_id) VALUES ('e9110000-0000-4000-8000-000000000101','Attendance import test','e9100000-0000-4000-8000-000000000101');
 INSERT INTO platform_core.tenant_roles(tenant_id,role_id,role_key,role_version,permission_snapshot,protects_tenant_admin) VALUES
- ('e9110000-0000-4000-8000-000000000101','e9120000-0000-4000-8000-000000000101','attendance.import.operator',1,ARRAY['people.view','people.manage','employment.manage','org_context.manage','compensation.view','compensation.manage','attendance.view','attendance.manage'],'false'),
+ ('e9110000-0000-4000-8000-000000000101','e9120000-0000-4000-8000-000000000101','attendance.import.operator',1,ARRAY['people.view','people.manage','employment.manage','org_context.manage','compensation.view','compensation.manage','attendance.view','attendance.manage','attendance_policy.manage'],'false'),
  ('e9110000-0000-4000-8000-000000000101','e9120000-0000-4000-8000-000000000102','attendance.import.reader',1,ARRAY['attendance.view'],'false');
 INSERT INTO platform_core.tenant_memberships(tenant_id,user_id,access_state,created_by_operator_id) VALUES
  ('e9110000-0000-4000-8000-000000000101','e9100000-0000-4000-8000-000000000101','active','e9100000-0000-4000-8000-000000000101'),
@@ -116,6 +116,64 @@ SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101'
 SELECT is(public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.evidence_id')::uuid,'تمت مراجعة التكليف والسياسة')->>'status','already_attached','repeating attachment returns the original resolution');
 RESET ROLE;
 SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND event_key='attendance.import.unassigned.attached' AND actor_user_id='e9100000-0000-4000-8000-000000000101'),1,'attachment audit records the acting reviewer');
+-- A supported, fixed-shift policy can be assigned with overlapping attribution windows.
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT set_config('test.overnight_policy',public.save_time_work_policy('e9110000-0000-4000-8000-000000000101',NULL,'NIGHT','وردية ليلية متداخلة','fixed','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],'22:00','06:00',true,0,NULL,NULL,NULL,720,360,false,30,15)::text,true);
+SELECT set_config('test.overnight_employee',public.create_people_employee('e9110000-0000-4000-8000-000000000101','CSV-NIGHT','موظف الوردية الليلية','e9130000-0000-4000-8000-000000000101','e9140000-0000-4000-8000-000000000101',(now() AT TIME ZONE 'Africa/Cairo')::date-5,'monthly',1000,true)::text,true);
+SELECT set_config('test.overnight_employment',(current_setting('test.overnight_employee')::jsonb->>'employment_id'),true);
+SELECT set_config('test.night_unassigned_employee',public.create_people_employee('e9110000-0000-4000-8000-000000000101','CSV-NIGHT-UNASSIGNED','موظف بلا تكليف ليلي','e9130000-0000-4000-8000-000000000101','e9140000-0000-4000-8000-000000000101',(now() AT TIME ZONE 'Africa/Cairo')::date-5,'monthly',1000,true)::text,true);
+SELECT set_config('test.night_unassigned_employment',(current_setting('test.night_unassigned_employee')::jsonb->>'employment_id'),true);
+SELECT is(public.assign_people_work_policy('e9110000-0000-4000-8000-000000000101',current_setting('test.overnight_employment')::uuid,(current_setting('test.overnight_policy')::jsonb->>'id')::uuid,(now() AT TIME ZONE 'Africa/Cairo')::date)->>'state','assigned','supported assignment RPC accepts fixed overnight 720/360 configuration');
+RESET ROLE;
+-- Move the policy onto the already-existing past interval to model a valid historic binding.
+UPDATE people.work_assignments SET work_policy_template_id=(current_setting('test.overnight_policy')::jsonb->>'id')::uuid,work_policy_version=1
+ WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND employment_id=current_setting('test.overnight_employment')::uuid AND valid_from<(now() AT TIME ZONE 'Africa/Cairo')::date;
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.night_checkout',(to_char((((((now() AT TIME ZONE 'Africa/Cairo')::date-1)::timestamp+'11:00'::time) AT TIME ZONE 'Africa/Cairo') AT TIME ZONE 'UTC'),'YYYY-MM-DD"T"HH24:MI:SS')||'+00:00'),true);
+SELECT set_config('test.night_checkin',(to_char((((((now() AT TIME ZONE 'Africa/Cairo')::date-2)::timestamp+'22:00'::time) AT TIME ZONE 'Africa/Cairo') AT TIME ZONE 'UTC'),'YYYY-MM-DD"T"HH24:MI:SS')||'+00:00'),true);
+SELECT set_config('test.night_preview',public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(
+ jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkin'),'direction','in','source_event_key','night-checkin'),
+ jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkout'),'direction','out','source_event_key','night-checkout')))::text,true);
+SELECT is(current_setting('test.night_preview')::jsonb->0->>'status','ready','nightly check-in stays uniquely attributable');
+SELECT is(current_setting('test.night_preview')::jsonb->0->>'work_date',((now() AT TIME ZONE 'Africa/Cairo')::date-2)::text,'nightly check-in retains prior operational date');
+SELECT is(current_setting('test.night_preview')::jsonb->1->>'status','ambiguous','11:00 checkout in overlapping windows requires review');
+SELECT is(current_setting('test.night_preview')::jsonb->1->'candidate_work_dates',to_jsonb(ARRAY[(now() AT TIME ZONE 'Africa/Cairo')::date-2,(now() AT TIME ZONE 'Africa/Cairo')::date-1]),'checkout exposes both matching operational dates');
+SELECT set_config('test.night_unselected',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkout'),'direction','out','source_event_key','night-unselected')))::text,true);
+SELECT is((current_setting('test.night_unselected')::jsonb->>'ambiguous_count')::int,1,'unselected overlap is reported for review');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.manual_punches WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='night-unselected'),0,'unselected overlap creates no punch');
+SELECT is((SELECT count(*)::int FROM time.work_instances wi JOIN people.work_assignments a ON a.tenant_id=wi.tenant_id AND a.id=wi.assignment_id WHERE wi.tenant_id='e9110000-0000-4000-8000-000000000101' AND a.employment_id=current_setting('test.overnight_employment')::uuid),0,'unselected overlap creates no arbitrary instance');
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.night_wrong_date',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(
+ jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkin'),'direction','in','source_event_key','night-wrong-date','work_date',(now() AT TIME ZONE 'Africa/Cairo')::date-1)))::text,true);
+SELECT is((current_setting('test.night_wrong_date')::jsonb->>'rejected_count')::int,1,'explicit date outside the single candidate is rejected');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.manual_punches WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='night-wrong-date'),0,'invalid explicit date cannot attach a punch');
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.night_confirm',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(
+ jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkin'),'direction','in','source_event_key','night-confirmed','work_date',(now() AT TIME ZONE 'Africa/Cairo')::date-2),
+ jsonb_build_object('employee_code','CSV-NIGHT','site_name','Main renamed','happened_at',current_setting('test.night_checkout'),'direction','out','source_event_key','night-confirmed-checkout','work_date',(now() AT TIME ZONE 'Africa/Cairo')::date-2)))::text,true);
+SELECT is((current_setting('test.night_confirm')::jsonb->>'accepted_count')::int,2,'explicit prior date confirms both paired events');
+RESET ROLE;
+SELECT is((SELECT count(DISTINCT wi.id)::int FROM time.manual_punches p JOIN time.work_instances wi ON wi.tenant_id=p.tenant_id AND wi.id=p.work_instance_id WHERE p.tenant_id='e9110000-0000-4000-8000-000000000101' AND p.source_event_key IN('night-confirmed','night-confirmed-checkout')),1,'paired nightly events share the selected instance');
+SELECT is((SELECT wi.operational_date FROM time.manual_punches p JOIN time.work_instances wi ON wi.tenant_id=p.tenant_id AND wi.id=p.work_instance_id WHERE p.tenant_id='e9110000-0000-4000-8000-000000000101' AND p.source_event_key='night-confirmed-checkout'),((now() AT TIME ZONE 'Africa/Cairo')::date-2),'checkout persists against selected operational date');
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.night_unassigned',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-NIGHT-UNASSIGNED','site_name','Main renamed','happened_at',current_setting('test.night_checkout'),'direction','out','source_event_key','night-unassigned')))::text,true);
+SELECT is((current_setting('test.night_unassigned')::jsonb->>'unassigned_count')::int,1,'unassigned evidence fixture is created before policy assignment');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+RESET ROLE;
+UPDATE people.work_assignments SET work_policy_template_id=(current_setting('test.overnight_policy')::jsonb->>'id')::uuid,work_policy_version=1 WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND employment_id=current_setting('test.night_unassigned_employment')::uuid AND valid_from<(now() AT TIME ZONE 'Africa/Cairo')::date;
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.night_evidence',(SELECT item->>'id' FROM jsonb_array_elements(public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000101',NULL,50)->'items') AS q(item) WHERE item->>'source_event_key'='night-unassigned'),true);
+SELECT is((SELECT item->>'date_resolution_status' FROM jsonb_array_elements(public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000101',NULL,50)->'items') AS q(item) WHERE item->>'source_event_key'='night-unassigned'),'ambiguous','existing unassigned queue surfaces overlap after assignment is fixed');
+SELECT is((SELECT item->'candidate_work_dates' FROM jsonb_array_elements(public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000101',NULL,50)->'items') AS q(item) WHERE item->>'source_event_key'='night-unassigned'),to_jsonb(ARRAY[(now() AT TIME ZONE 'Africa/Cairo')::date-2,(now() AT TIME ZONE 'Africa/Cairo')::date-1]),'unassigned queue exposes both bounded date choices');
+SELECT throws_ok($$SELECT public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.night_evidence')::uuid,'مراجعة التكليف')$$,'22023','attendance_unassigned_work_date_required','legacy attach refuses to guess between dates');
+SELECT is(public.attach_unassigned_attendance_evidence_for_date('e9110000-0000-4000-8000-000000000101',current_setting('test.night_evidence')::uuid,'مراجعة التكليف',(now() AT TIME ZONE 'Africa/Cairo')::date-2)->>'status','attached','date-selected attachment resolves saved evidence');
+RESET ROLE;
+SELECT is((SELECT wi.operational_date FROM time.unassigned_attendance_resolutions r JOIN time.work_instances wi ON wi.tenant_id=r.tenant_id AND wi.id=r.work_instance_id WHERE r.tenant_id='e9110000-0000-4000-8000-000000000101' AND r.unassigned_evidence_id=current_setting('test.night_evidence')::uuid),((now() AT TIME ZONE 'Africa/Cairo')::date-2),'attachment resolution persists chosen work date');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000102',true);
 SELECT throws_ok($$SELECT public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.evidence_id')::uuid,'محاولة بلا صلاحية')$$,'42501','attendance_unassigned_forbidden','view-only member cannot attach unassigned evidence');

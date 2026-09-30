@@ -112,7 +112,7 @@ BEGIN
 END $f$;
 REVOKE ALL ON FUNCTION public.record_manual_attendance_punch(uuid,uuid,text,timestamptz,uuid) FROM PUBLIC,anon,service_role; GRANT EXECUTE ON FUNCTION public.record_manual_attendance_punch(uuid,uuid,text,timestamptz,uuid) TO authenticated;
 
-CREATE FUNCTION public.record_manual_attendance_punch_local(p_tenant_id uuid,p_instance_id uuid,p_direction text,p_local_time timestamp,p_request_key uuid,p_reason text)
+CREATE OR REPLACE FUNCTION public.record_manual_attendance_punch_local(p_tenant_id uuid,p_instance_id uuid,p_direction text,p_local_time timestamp,p_request_key uuid,p_reason text)
 RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $f$
 DECLARE actor uuid:=auth.uid(); wi time.work_instances%ROWTYPE; resolved timestamptz; old time.manual_punches%ROWTYPE; fingerprint text; punch_id uuid; interpretation_id uuid; manager boolean;
 BEGIN
