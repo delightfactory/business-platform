@@ -8,6 +8,7 @@ export type InviteMemberState = { email: string; idempotencyKey: string; error: 
 
 export async function inviteMemberFormAction(previous: InviteMemberState, formData: FormData): Promise<InviteMemberState> {
   const tenantId = field(formData, 'tenantId');
+  const employeeId = field(formData, 'employeeId');
   const email = field(formData, 'email').toLowerCase();
   const key = previous.idempotencyKey;
   const failure = (code: string): InviteMemberState => ({ email, idempotencyKey: key, error: inviteErrorText(code), attempt: previous.attempt + 1 });
@@ -22,7 +23,8 @@ export async function inviteMemberFormAction(previous: InviteMemberState, formDa
   if (invitation.state === 'already_member') return failure('already-member');
   if (invitation.created !== true) return failure(invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
   const sent = await deliverMemberInvitation(supabase, invitation);
-  redirect(`/tenant/${tenantId}/users?state=created-${sent}`);
+  redirect(isUuid(employeeId) ? `/tenant/${tenantId}/people/${employeeId}?userLink=${sent === 'sent' ? 'invite-sent' : sent === 'failed' ? 'invite-failed' : 'invite-unknown'}`
+    : `/tenant/${tenantId}/users?state=created-${sent}`);
 }
 
 export async function inviteMemberAction(formData: FormData) {

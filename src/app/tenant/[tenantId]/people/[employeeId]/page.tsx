@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
+import { EmployeeUserLinkPanel, type LinkSnapshot, type Options as EmployeeUserLinkOptions } from './EmployeeUserLinkPanel';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
@@ -14,7 +15,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -38,7 +39,9 @@ export default async function EmployeePage({ params, searchParams }: {
   const canManageWorkContext = access.can_manage_org === true;
   const canManageLifecycle = access.can_manage === true && access.can_manage_employment === true
     && canManageWorkContext && canManageCompensation;
-  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult] = await Promise.all([
+  const linkQuery = typeof query.linkQuery === 'string' ? query.linkQuery.slice(0, 100) : '';
+  const linkPage = Math.min(1000, Math.max(1, Number.parseInt(query.linkPage ?? '1', 10) || 1));
+  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult, linkSnapshotResult, linkOptionsResult, membershipSnapshotResult] = await Promise.all([
     employmentId ? supabase.rpc('people_work_assignment_history', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
@@ -55,7 +58,19 @@ export default async function EmployeePage({ params, searchParams }: {
     canManageLifecycle && employee.status === 'ended'
       ? supabase.rpc('people_onboarding_options', { p_tenant_id: tenantId })
       : Promise.resolve({ data: null, error: null }),
+    supabase.rpc('people_employee_user_link_snapshot', { p_tenant_id: tenantId, p_employee_id: employeeId }),
+    access.can_manage === true ? supabase.rpc('people_employee_user_link_options', {
+      p_tenant_id: tenantId, p_employee_id: employeeId, p_query: linkQuery, p_page: linkPage,
+    }) : Promise.resolve({ data: null, error: null }),
+    access.can_manage === true ? supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId })
+      : Promise.resolve({ data: null, error: null }),
   ]);
+  const linkSnapshot = linkSnapshotResult.data && typeof linkSnapshotResult.data === 'object'
+    ? linkSnapshotResult.data as unknown as LinkSnapshot : null;
+  const linkOptions = linkOptionsResult.data && typeof linkOptionsResult.data === 'object'
+    ? linkOptionsResult.data as unknown as EmployeeUserLinkOptions : null;
+  const membershipSnapshot = membershipSnapshotResult.data && typeof membershipSnapshotResult.data === 'object'
+    ? membershipSnapshotResult.data as Record<string, unknown> : null;
   const assignmentHistory = historyResult.data && typeof historyResult.data === 'object'
     ? historyResult.data as unknown as AssignmentHistory : null;
   const transferOptions = optionsResult.data && typeof optionsResult.data === 'object'
@@ -128,6 +143,11 @@ export default async function EmployeePage({ params, searchParams }: {
       previousEndDate={employee.employment?.end_date ?? null} canManage={canManageLifecycle} today={today}
       history={employmentHistory} historyError={employmentHistoryError}
       rehireOptions={rehireOptions} optionsError={rehireOptionsError} />
+    <EmployeeUserLinkPanel tenantId={tenantId} employeeId={employee.id} canManage={access.can_manage === true}
+      canInvite={membershipSnapshot?.can_manage_members === true}
+      snapshot={linkSnapshot} snapshotError={Boolean(linkSnapshotResult.error || !linkSnapshot)}
+      options={linkOptions} optionsError={Boolean(access.can_manage === true && (linkOptionsResult.error || !linkOptions))}
+      query={linkQuery} page={linkPage} state={query.userLink} />
     <section className="workspace-records-panel" aria-label="الخطوة التالية">
       <h2>الخطوة التالية</h2><p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
       <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</Link>

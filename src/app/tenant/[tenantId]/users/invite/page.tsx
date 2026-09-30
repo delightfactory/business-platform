@@ -6,8 +6,12 @@ import { InviteMemberForm } from './InviteMemberForm';
 
 export const dynamic = 'force-dynamic';
 
-export default async function InviteMemberPage({ params }: { params: Promise<{ tenantId: string }> }) {
+export default async function InviteMemberPage({ params, searchParams }: { params: Promise<{ tenantId: string }>;
+  searchParams: Promise<{ employeeId?: string }> }) {
   const { tenantId } = await params;
+  const { employeeId: employeeIdParam } = await searchParams;
+  const employeeId = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(employeeIdParam ?? '')
+    ? employeeIdParam! : '';
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(tenantId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} />;
@@ -22,13 +26,14 @@ export default async function InviteMemberPage({ params }: { params: Promise<{ t
 
   return <PageFrame footer="إدارة الشركة">
     <div className="workspace-form-page">
-      <Link className="back-link" href={`/tenant/${tenantId}/users`}>العودة إلى المستخدمين</Link>
+      <Link className="back-link" href={employeeId ? `/tenant/${tenantId}/people/${employeeId}` : `/tenant/${tenantId}/users`}>
+        {employeeId ? 'العودة إلى ملف الموظف' : 'العودة إلى المستخدمين'}</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">المستخدمون والدعوات</p>
         <h1>دعوة عضو</h1><p>أرسل دعوة إلى بريد الشخص الذي سينضم لفريق الشركة.</p></div></header>
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>لا يُحجز مقعد قبل قبول الدعوة.</span></div>
       <section className="workspace-form-panel" aria-label="بيانات الدعوة">
-        <InviteMemberForm tenantId={tenantId} idempotencyKey={crypto.randomUUID()} />
+        <InviteMemberForm tenantId={tenantId} employeeId={employeeId} idempotencyKey={crypto.randomUUID()} />
       </section>
     </div>
   </PageFrame>;
