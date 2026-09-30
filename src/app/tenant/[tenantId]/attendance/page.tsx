@@ -44,6 +44,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
         {!entitlementEnabled && <p className="form-message">وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</p>}
         <form method="get" className="attendance-date-form"><label htmlFor="attendance-date">تاريخ العمل</label><input id="attendance-date" type="date" name="date" defaultValue={day} /><button className="primary-button" type="submit">عرض اليوم</button></form>
         {canManage && <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</Link></div>}
+        {access.can_view === true && <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</Link></div>}
         {canOpen && <p className="field-hint">استخدم التالي لعرض بقية الموظفين عند وجود سجلات إضافية.</p>}
         {rows.length === 0 ? <div className="empty-state"><h2>لا توجد سجلات لهذا اليوم</h2><p>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد تكليفات دوام بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</p></div> : <ul className="record-list attendance-day-list">
           {rows.map((row) => <li className="record-card" key={row.id}>

@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export async function recordPunchAction(formData: FormData) {
@@ -81,6 +82,45 @@ export async function reviewAttendanceOvertimeAction(formData: FormData) {
     p_tenant_id: tenantId, p_candidate_id: candidateId, p_decision: decision, p_reason: reason,
   });
   move(tenantId, instanceId, error ? mapOvertimeError(error.message) : decision === 'approved' ? 'overtime-approved' : 'overtime-rejected');
+}
+
+export type BulkApprovalState = {
+  message: string;
+  items: Array<{ instance_id: string; state: 'approved' | 'skipped'; reason_code?: string }>;
+};
+
+export async function bulkApproveReadyAttendanceAction(previousState: BulkApprovalState, formData: FormData): Promise<BulkApprovalState> {
+  void previousState;
+  const tenantId = field(formData, 'tenantId');
+  const date = field(formData, 'operationalDate');
+  const ids = formData.getAll('instanceIds').map((value) => String(value).trim());
+  if (!isUuid(tenantId) || !/^\d{4}-\d{2}-\d{2}$/.test(date) || ids.length < 1 || ids.length > 50 || ids.some((id) => !isUuid(id)) || new Set(ids).size !== ids.length) {
+    return { message: 'اختر سجلات جاهزة صالحة، بحد أقصى 50 سجلًا.', items: [] };
+  }
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) return { message: 'تعذر الاتصال بخدمة الحضور. لم تتغير السجلات.', items: [] };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { message: 'انتهت الجلسة. سجّل الدخول ثم أعد المحاولة.', items: [] };
+  const { data, error } = await supabase.rpc('approve_attendance_facts_bulk', {
+    p_tenant_id: tenantId, p_operational_date: date, p_instance_ids: ids,
+  });
+  if (error || !data || typeof data !== 'object') {
+    const message = error?.message.includes('forbidden') ? 'لا تملك صلاحية الاعتماد الجماعي.'
+      : error?.message.includes('input_invalid') ? 'تعذر اعتماد الاختيار. حدّث الصفحة ثم أعد المحاولة.'
+        : 'تعذر تنفيذ الاعتماد. لم تكتمل المعاملة.';
+    return { message, items: [] };
+  }
+  const result = data as { approved_count?: number; skipped_count?: number; items?: Array<{ instance_id?: string; state?: string; reason_code?: string }> };
+  const items: BulkApprovalState['items'] = Array.isArray(result.items) ? result.items.flatMap((item) => {
+    if (typeof item.instance_id !== 'string' || (item.state !== 'approved' && item.state !== 'skipped')) return [];
+    return [{ instance_id: item.instance_id, state: item.state as 'approved' | 'skipped', reason_code: item.reason_code }];
+  }) : [];
+  revalidatePath(`/tenant/${tenantId}/attendance`);
+  revalidatePath(`/tenant/${tenantId}/attendance/review`);
+  return {
+    message: `اكتمل الإجراء: اعتُمد ${Number(result.approved_count ?? 0)}، وتعذّر اعتماد ${Number(result.skipped_count ?? 0)} بعد إعادة التحقق.`,
+    items,
+  };
 }
 
 function field(data: FormData, name: string) { return String(data.get(name) ?? '').trim(); }

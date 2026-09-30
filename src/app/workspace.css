@@ -462,6 +462,25 @@
 .attendance-date-form input, .attendance-form :is(input, select) { width: 100%; min-width: 0; min-height: 2.8rem; padding: .55rem .7rem; border: 1px solid #cbd8dc; border-radius: .5rem; background: #fff; color: var(--color-text); font: inherit; }
 .attendance-full-field { grid-column: 1 / -1; }
 .attendance-pagination { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+.attendance-review-filters { display: flex; flex-wrap: wrap; gap: .55rem; margin-block: 1rem; }
+.attendance-review-filter { display: inline-flex; align-items: center; min-height: 2.65rem; padding: .45rem .75rem; border: 1px solid #cbd8dc; border-radius: .55rem; color: var(--color-text); text-decoration: none; font-weight: 650; }
+.attendance-review-filter:hover, .attendance-review-filter.is-active { border-color: var(--color-brand); background: var(--color-brand-soft); color: var(--color-brand); }
+.attendance-review-list .record-meta { margin-block: .25rem; }
+.attendance-bulk-panel { margin-top: 1.1rem; padding: clamp(1rem, 2.5vw, 1.5rem); border: 1px solid #dce5e7; border-radius: .7rem; background: #fff; }
+.attendance-bulk-panel .work-policy-panel-heading { margin-bottom: 1rem; }
+.attendance-bulk-panel .work-policy-panel-heading h2 { margin: 0; font-size: 1.15rem; }
+.attendance-bulk-panel .work-policy-panel-heading p { max-width: 48rem; margin: .35rem 0 0; color: var(--color-muted); line-height: 1.65; }
+.attendance-bulk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem .8rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+.attendance-bulk-list li { min-width: 0; }
+.attendance-bulk-choice { display: flex; align-items: center; justify-content: space-between; gap: .6rem; min-width: 0; min-height: 3.15rem; padding: .55rem .65rem; border: 1px solid #dce5e7; border-radius: .55rem; }
+.attendance-bulk-list label { display: flex; align-items: flex-start; gap: .65rem; min-width: 0; cursor: pointer; }
+.attendance-bulk-list input { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin-block-start: .2rem; accent-color: var(--color-brand); }
+.attendance-bulk-list label span { display: grid; min-width: 0; gap: .2rem; }
+.attendance-bulk-list small { color: var(--color-muted); }
+.attendance-bulk-result { margin-top: 1rem; padding: .85rem; border: 1px solid var(--color-brand-border); border-radius: .6rem; background: var(--color-brand-soft); }
+.attendance-bulk-result p { margin: 0 0 .5rem; font-weight: 650; }
+.attendance-bulk-result ul { display: grid; gap: .35rem; margin: 0; padding-inline-start: 1.3rem; }
+.attendance-bulk-result li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem .8rem; }
 .attendance-add-punch { margin-top: 1rem; }
 .attendance-add-punch > summary { display: inline-flex; cursor: pointer; }
 .attendance-exclude-form, .attendance-approve-form { border-top: 1px solid #dbe4e5; padding-top: .8rem; }
@@ -478,6 +497,11 @@
   .attendance-overtime-actions { grid-template-columns: 1fr; }
   .attendance-form .attendance-full-field { grid-column: 1; }
   .attendance-pagination { align-items: stretch; flex-direction: column; }
+  .attendance-bulk-list { grid-template-columns: 1fr; }
+  .attendance-bulk-choice > .secondary-button { flex: 0 0 auto; }
+  .attendance-review-list .record-card { align-items: stretch; }
+  .attendance-review-list .record-card > .secondary-button { align-self: flex-start; }
+  .attendance-bulk-result li { align-items: flex-start; flex-direction: column; }
   .workspace-frame { display: block; }
   .workspace-navigation { position: sticky; inset-block-start: 0; z-index: 20; }
   .workspace-sidebar { display: none; }
