@@ -1,6 +1,6 @@
 # Cube 1 — People Foundation execution record
 
-Status: in progress. Base: `main` at `a4676218d6a3537fd45a45d54e494079d580f323` after Cube 0 closure.
+Status: local engineering closure approved on 2026-09-30 at `6e4f6bf7924148772a5e9b4cdb299c93e566e677` after an independent final gate; Cube 2 may start. Base: `main` at `a4676218d6a3537fd45a45d54e494079d580f323` after Cube 0 closure. Physical-device and actual assistive-technology acceptance remain integrated-release gates, as recorded below.
 
 ## Outcome and slices
 
