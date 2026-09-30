@@ -54,7 +54,10 @@ SELECT set_config('request.jwt.claim.sub','c1000000-0000-4000-8000-000000000001'
 SELECT ok(public.current_operator_can_manage_commercial_access(),'explicit commercial grant grants only its named task');
 SELECT ok(NOT public.current_operator_can_manage_operators(),'commercial authority does not imply Operator management');
 SELECT ok(NOT public.current_operator_can_manage_tenant_lifecycle(),'commercial authority does not imply lifecycle authority');
-SELECT is(pg_catalog.jsonb_array_length(public.platform_tenant_commercial_list()),4,'commercial list returns Tenant identity and lifecycle only');
+SELECT is((SELECT pg_catalog.count(*)::integer FROM pg_catalog.jsonb_array_elements(public.platform_tenant_commercial_list()) item
+  WHERE item->>'tenant_id' IN ('c2000000-0000-4000-8000-000000000001','c2000000-0000-4000-8000-000000000002',
+    'c2000000-0000-4000-8000-000000000003','c2000000-0000-4000-8000-000000000004')),
+  4,'commercial list includes all fixture Tenant identities');
 SELECT is((SELECT (limit_row->>'usage')::integer FROM pg_catalog.jsonb_array_elements(public.platform_tenant_commercial_snapshot('c2000000-0000-4000-8000-000000000001')->'limits') limit_row WHERE limit_row->>'capability_key'='tenant.users'),2,'snapshot reports active seat usage');
 SELECT is((SELECT (limit_row->>'usage')::integer FROM pg_catalog.jsonb_array_elements(public.platform_tenant_commercial_snapshot('c2000000-0000-4000-8000-000000000001')->'limits') limit_row WHERE limit_row->>'capability_key'='tenant.sites'),2,'snapshot reports active Site usage across Entities');
 SELECT is((SELECT limit_row->>'status' FROM pg_catalog.jsonb_array_elements(public.platform_tenant_commercial_snapshot('c2000000-0000-4000-8000-000000000002')->'limits') limit_row WHERE limit_row->>'capability_key'='tenant.users'),'missing','missing effective limit is surfaced explicitly');

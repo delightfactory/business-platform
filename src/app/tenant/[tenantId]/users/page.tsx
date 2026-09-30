@@ -3,36 +3,58 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
-import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
+import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
-type SearchParams = Promise<{ state?: string; view?: string }>;
-type Row = { user_id: string; email: string; access_state: string; role_key: string | null; protected_admin: boolean };
+type SearchParams = Promise<{ state?: string; view?: string; page?: string; q?: string }>;
+type RoleAssignment = { role_key: string; role_version: number };
+type Row = { user_id: string; email: string; access_state: string; role_key: string | null; roles: RoleAssignment[]; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
+
+const PEOPLE_ROLE_BUNDLES = [
+  { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
+  { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
+  { key: 'people.compensation_reader.v1', label: 'قارئ الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
+  { key: 'people.compensation_manager.v1', label: 'مدير الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
+  { key: 'people.import_operator.v1', label: 'مشغّل استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
+  { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الحزمة إدارة الموظفين أو الاطلاع على الأجور.' },
+  { key: 'attendance.reader.v1', label: 'قارئ الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
+  { key: 'attendance.operator.v1', label: 'مشغّل الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
+  { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
+] as const;
 
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
   const { tenantId } = await params;
   const query = await searchParams;
+  const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
+    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
+  const view = showInvitations ? 'invitations' : 'members';
+  const page = /^[1-9]\d{0,5}$/.test(query.page ?? '') ? Math.min(Number(query.page), 100000) : 1;
+  const search = (query.q ?? '').trim().slice(0, 120);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users`)}`);
-  const { data, error } = await supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId });
+  const { data, error } = await supabase.rpc('tenant_member_access_page', {
+    p_tenant_id: tenantId, p_view: view, p_page: page, p_query: search,
+  });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
   const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
   if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
   const { data: canManageRoles } = await supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId });
   const result = data as Record<string, unknown>;
-  const memberships = Array.isArray(result.memberships) ? result.memberships as Row[] : [];
-  const invitations = Array.isArray(result.invitations) ? result.invitations as Invitation[] : [];
+  const memberships = view === 'members' && Array.isArray(result.rows) ? result.rows as Row[] : [];
+  const invitations = view === 'invitations' && Array.isArray(result.rows) ? result.rows as Invitation[] : [];
+  const memberCount = Number(result.member_count ?? 0);
+  const invitationCount = Number(result.invitation_count ?? 0);
+  const matchingCount = Number(result.matching_count ?? 0);
+  const pageCount = Math.max(1, Math.ceil(matchingCount / 25));
   const limit = objectValue(result.seat_limit);
   const used = Number(result.seat_usage ?? 0);
 
   const success = successMessage(query.state);
-  const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
-    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
   const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
     ? stateMessage(query.state) : null;
   return (
@@ -50,21 +72,45 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
       </section>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
-        <Link href={`/tenant/${tenantId}/users`} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberships.length}</span></Link>
-        <Link href={`/tenant/${tenantId}/users?view=invitations`} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitations.length}</span></Link>
+        <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
+        <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
       </nav>
+      <form action={`/tenant/${tenantId}/users`} method="get" role="search" className="workspace-form-panel">
+        <input type="hidden" name="view" value={view} />
+        <label htmlFor="member-search">البحث بالبريد الإلكتروني</label>
+        <input id="member-search" type="search" name="q" defaultValue={search} maxLength={120} placeholder="ابحث عن بريد مستخدم أو دعوة" />
+        <button className="secondary-button" type="submit">بحث</button>
+      </form>
+      <p className="field-hint">{search ? `نتائج البحث: ${matchingCount}` : `الإجمالي: ${matchingCount}`} · {page > pageCount ? 'هذه الصفحة لم تعد متاحة' : `صفحة ${page} من ${pageCount}`}</p>
       {!showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
-        {memberships.length === 0 ? <p className="intro">لا يوجد مستخدمون بعد.</p> : (
+        {memberships.length === 0 ? <p className="intro">{search ? 'لا توجد عضويات تطابق البحث.' : 'لا يوجد مستخدمون في هذه الصفحة.'}</p> : (
           <ul>{memberships.map((row) => (
             <li className="invitation-row" key={row.user_id}>
               <div>
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
+                {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
               </div>
               <div className="invitation-actions">
+                {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
+                  <summary className="secondary-button">إدارة حزم People</summary>
+                  <p className="field-hint">يمكن جمع عدة حزم. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
+                  <form action={setTenantMemberPeopleBundlesAction}>
+                    <input type="hidden" name="tenantId" value={tenantId} />
+                    <input type="hidden" name="userId" value={row.user_id} />
+                    <fieldset>
+                      <legend>اختر صلاحيات العضو</legend>
+                      {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>
+                        <input type="checkbox" name="bundleKey" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />
+                        <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
+                      </label>)}
+                    </fieldset>
+                    <SubmitButton className="secondary-button" label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
+                  </form>
+                </details>}
                 {canManageRoles && row.access_state === 'active' && <details className="role-change-confirmation">
                   <summary className="secondary-button">{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</summary>
                   <p className="field-hint">{row.protected_admin
@@ -90,7 +136,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
       </section>}
       {showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
         <h2 id="pending-title">الدعوات</h2>
-        {invitations.length === 0 ? <p className="intro">لا توجد دعوات.</p> : (
+        {invitations.length === 0 ? <p className="intro">{search ? 'لا توجد دعوات تطابق البحث.' : 'لا توجد دعوات في هذه الصفحة.'}</p> : (
           <ul>{invitations.map((invitation) => (
             <li className="invitation-row" key={invitation.id}>
               <div>
@@ -119,6 +165,11 @@ export default async function TenantUsersPage({ params, searchParams }: { params
           ))}</ul>
         )}
       </section>}
+      <nav aria-label="صفحات المستخدمين والدعوات" className="workspace-view-tabs">
+        {page > 1 && page <= pageCount && <Link href={usersUrl(tenantId, view, page - 1, search)}>الصفحة السابقة</Link>}
+        {page < pageCount && <Link href={usersUrl(tenantId, view, page + 1, search)}>الصفحة التالية</Link>}
+        {page > pageCount && <Link href={usersUrl(tenantId, view, pageCount, search)}>عرض آخر صفحة</Link>}
+      </nav>
       <footer className="footer">منصة الأعمال · مستخدمو الشركة</footer>
     </main>
   );
@@ -126,6 +177,19 @@ export default async function TenantUsersPage({ params, searchParams }: { params
 
 function objectValue(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
+}
+
+function usersUrl(tenantId: string, view: 'members' | 'invitations', page: number, search: string) {
+  const params = new URLSearchParams();
+  if (view === 'invitations') params.set('view', view);
+  if (page > 1) params.set('page', String(page));
+  if (search) params.set('q', search);
+  const suffix = params.toString();
+  return `/tenant/${tenantId}/users${suffix ? `?${suffix}` : ''}`;
+}
+function hasBundle(roles: RoleAssignment[] | undefined, key: string) { return roles?.some((role) => role.role_key === key) ?? false; }
+function assignedBundleLabels(roles: RoleAssignment[] | undefined) {
+  return PEOPLE_ROLE_BUNDLES.filter((bundle) => hasBundle(roles, bundle.key)).map((bundle) => bundle.label);
 }
 function invitationText(state: string) {
   return ({ pending: 'بانتظار القبول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' } as Record<string, string>)[state] ?? 'غير معروفة';
@@ -158,6 +222,10 @@ function stateMessage(state: string) {
     'last-admin': 'لا يمكن خفض آخر مسؤول مؤهل. رقِّ مسؤولًا بديلًا أولًا.',
     'role-setup': 'قالب الدور الأساسي غير متاح؛ لم يتغير أي تعيين.',
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
+    'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
+    'bundle-invalid': 'تعذر التحقق من الحزم المختارة. حدّث الصفحة وأعد المحاولة.',
+    'bundle-admin-protected': 'حساب مسؤول الشركة محمي ويُدار من إجراء إدارة المسؤولين.',
+    'bundle-target-unavailable': 'يمكن إدارة الحزم لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
   };
   return labels[state] ?? 'تعذر تنفيذ الإجراء.';
 }
@@ -169,6 +237,8 @@ function successMessage(state?: string) {
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
     demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
+    'bundles-updated': 'حُفظت حزم الوصول وسُجل التغيير.',
+    'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
   };
   return state ? messages[state] ?? null : null;
 }

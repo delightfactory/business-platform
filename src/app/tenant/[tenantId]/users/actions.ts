@@ -8,6 +8,7 @@ export type InviteMemberState = { email: string; idempotencyKey: string; error: 
 
 export async function inviteMemberFormAction(previous: InviteMemberState, formData: FormData): Promise<InviteMemberState> {
   const tenantId = field(formData, 'tenantId');
+  const employeeId = field(formData, 'employeeId');
   const email = field(formData, 'email').toLowerCase();
   const key = previous.idempotencyKey;
   const failure = (code: string): InviteMemberState => ({ email, idempotencyKey: key, error: inviteErrorText(code), attempt: previous.attempt + 1 });
@@ -22,7 +23,8 @@ export async function inviteMemberFormAction(previous: InviteMemberState, formDa
   if (invitation.state === 'already_member') return failure('already-member');
   if (invitation.created !== true) return failure(invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
   const sent = await deliverMemberInvitation(supabase, invitation);
-  redirect(`/tenant/${tenantId}/users?state=created-${sent}`);
+  redirect(isUuid(employeeId) ? `/tenant/${tenantId}/people/${employeeId}?userLink=${sent === 'sent' ? 'invite-sent' : sent === 'failed' ? 'invite-failed' : 'invite-unknown'}`
+    : `/tenant/${tenantId}/users?state=created-${sent}`);
 }
 
 export async function inviteMemberAction(formData: FormData) {
@@ -77,6 +79,21 @@ export async function setMemberAccessAction(formData: FormData) {
     p_tenant_id: tenantId, p_user_id: userId, p_access_state: state,
   });
   go(tenantId, error ? mapError(error.message) : state === 'active' ? 'reactivated' : 'deactivated');
+}
+
+export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const userId = field(formData, 'userId');
+  const bundleKeys = formData.getAll('bundleKey').map((value) => String(value));
+  if (!isUuid(tenantId) || !isUuid(userId) || bundleKeys.length > 5) go(tenantId, 'bundle-invalid');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) go(tenantId, 'setup');
+  const { data, error } = await supabase.rpc('set_tenant_member_people_bundles', {
+    p_tenant_id: tenantId, p_user_id: userId, p_bundle_keys: bundleKeys,
+  });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
+  const state = (data as Record<string, unknown>).state;
+  go(tenantId, state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
 }
 
 export async function changeTenantAdminRoleAction(formData: FormData) {
@@ -161,6 +178,11 @@ function mapError(message?: string) {
   if (message?.includes('tenant_admin_role_target_unavailable')) return 'target-unavailable';
   if (message?.includes('tenant_admin_role_tenant_unavailable')) return 'tenant-unavailable';
   if (message?.includes('tenant_admin_role_template_unavailable') || message?.includes('tenant_member_role_template_unavailable')) return 'role-setup';
+  if (message?.includes('tenant_people_role_bundle_admin_protected')) return 'bundle-admin-protected';
+  if (message?.includes('tenant_people_role_bundle_target_unavailable')) return 'bundle-target-unavailable';
+  if (message?.includes('tenant_people_role_bundle_unknown') || message?.includes('tenant_people_role_bundle_input_invalid')) return 'bundle-invalid';
+  if (message?.includes('tenant_people_role_bundle_catalog_unavailable')) return 'role-setup';
+  if (message?.includes('tenant_people_role_bundle_tenant_unavailable')) return 'tenant-unavailable';
   if (message?.includes('tenant_members_manage_forbidden')) return 'forbidden';
   return 'failed';
 }

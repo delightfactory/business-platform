@@ -9,7 +9,7 @@ export async function changeTenantEntitlementAction(formData: FormData) {
   const decision = text(formData, 'decision');
   const expiresOn = text(formData, 'expiresOn');
   const reason = text(formData, 'reason');
-  if (!isUuid(tenantId) || !['hr.people', 'hr.payroll'].includes(capability)
+  if (!isUuid(tenantId) || !['hr.people', 'hr.payroll', 'hr.attendance'].includes(capability)
     || !['grant', 'deny'].includes(decision) || (expiresOn && !/^\d{4}-\d{2}-\d{2}$/.test(expiresOn))) return 'invalid';
   if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();

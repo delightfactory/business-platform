@@ -203,6 +203,140 @@
 .workspace-records-panel .record-card .secondary-button { flex: 0 0 auto; }
 .workspace-records-panel > .form-message,
 .workspace-records-panel > .empty-state { margin: 1rem; }
+.work-policy-create-panel { overflow: visible; padding: clamp(1rem, 2.4vw, 1.6rem); }
+.work-policy-panel-heading { margin-bottom: 1rem; }
+.work-policy-panel-heading h2 { margin: 0; font-size: 1.2rem; }
+.work-policy-panel-heading p { margin: .3rem 0 0; color: var(--color-muted); line-height: 1.65; }
+.work-policy-editor { display: grid; gap: 1rem; min-width: 0; }
+.work-policy-section { min-width: 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: .7rem; background: #fff; }
+.work-policy-section-heading { margin-bottom: .85rem; }
+.work-policy-section-heading h3 { margin: 0; font-size: 1rem; }
+.work-policy-section-heading p { margin: .25rem 0 0; color: var(--color-muted); font-size: .86rem; line-height: 1.65; }
+.work-policy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem 1rem; }
+.work-policy-grid-narrow { max-width: 48rem; }
+.work-policy-field { display: grid; align-content: start; gap: .35rem; min-width: 0; }
+.work-policy-field > label { color: #405660; font-size: .9rem; font-weight: 650; line-height: 1.5; }
+.work-policy-field > label span, .work-policy-field > small { color: var(--color-muted); font-size: .8rem; font-weight: 400; }
+.work-policy-field input { min-width: 0; width: 100%; min-height: var(--field-height); padding: .55rem .7rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); background: white; color: var(--color-text); font: inherit; }
+.work-policy-field input:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; border-color: var(--color-brand); }
+.work-policy-kind-options, .work-policy-days { min-width: 0; margin: 0; padding: .7rem; border: 1px solid var(--color-border); border-radius: .6rem; }
+.work-policy-kind-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.work-policy-kind-options legend, .work-policy-days legend { padding-inline: .35rem; font-weight: 700; font-size: .88rem; }
+.work-policy-kind-options label { display: flex; align-items: flex-start; gap: .6rem; min-width: 0; min-height: 3.4rem; padding: .65rem; border: 1px solid var(--color-border); border-radius: .5rem; cursor: pointer; }
+.work-policy-kind-options label.is-selected { border-color: var(--color-brand-border); background: var(--color-brand-soft); }
+.work-policy-kind-options input, .work-policy-day-grid input, .work-policy-check-option input { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin: .15rem 0 0; accent-color: var(--color-brand); }
+.work-policy-kind-options label span { display: grid; gap: .12rem; min-width: 0; }
+.work-policy-kind-options strong { font-size: .9rem; }
+.work-policy-kind-options small { color: var(--color-muted); line-height: 1.5; }
+.work-policy-days { margin-top: .8rem; }
+.work-policy-day-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; }
+.work-policy-day-grid label { display: flex; align-items: center; gap: .5rem; min-height: var(--touch-target-size); padding: .4rem .55rem; border: 1px solid var(--color-border); border-radius: .45rem; cursor: pointer; }
+.work-policy-day-grid label:has(input:checked) { border-color: var(--color-brand-border); background: var(--color-brand-soft); }
+.work-policy-day-grid input { margin-top: 0; }
+.work-policy-check-option { display: flex; align-items: center; gap: .6rem; min-height: var(--field-height); align-self: end; padding: .45rem .25rem; color: #405660; font-size: .9rem; }
+.work-policy-check-option input { margin-top: 0; }
+.work-policy-editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; padding-top: .2rem; }
+.work-policy-editor-actions > span { color: var(--color-muted); font-size: .84rem; }
+.work-policy-revision { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid #e7edee; }
+.work-policy-revision > summary { width: fit-content; cursor: pointer; }
+.work-policy-revision > .field-hint { margin: .65rem 0; }
+.work-policy-revision .work-policy-section { padding: .85rem; }
+.workforce-import { display: grid; gap: 1rem; }
+.workforce-file-control { position: relative; display: grid; gap: .4rem; min-width: 0; }
+.workforce-file-label { color: #405660; font-size: .9rem; font-weight: 650; }
+.auth-form .workforce-file-control .workforce-file-native { position: absolute; inset-inline-start: 0; inset-block-start: 0; width: 1px; max-width: 1px; min-width: 1px; height: 1px; min-height: 1px; margin: 0; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+.workforce-file-trigger { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem .85rem; min-height: 3rem; cursor: pointer; }
+.workforce-file-name { min-width: 0; color: var(--color-muted); font-size: .88rem; overflow-wrap: anywhere; }
+.workforce-file-native:focus-visible + .workforce-file-trigger .secondary-button { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; border-color: var(--color-brand); }
+.work-policy-assignment-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem 1rem; margin-top: 1rem; }
+.work-policy-assignment-field { display: grid; align-content: start; gap: .35rem; min-width: 0; }
+.work-policy-assignment-field label { color: #405660; font-size: .9rem; font-weight: 650; }
+.work-policy-assignment-field :is(select, input) { min-width: 0; width: 100%; min-height: var(--field-height); padding: .5rem .7rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); background: #fff; color: var(--color-text); font: inherit; }
+.work-policy-assignment-field :is(select, input):focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; border-color: var(--color-brand); }
+.work-policy-assignment-form .field-hint, .work-policy-assignment-form .form-message, .work-policy-assignment-form .workspace-form-actions { grid-column: 1 / -1; }
+.employment-end-notes { grid-column: 1 / -1; padding: .8rem 1rem; border-inline-start: 3px solid var(--color-brand-border); border-radius: .45rem; background: #f7f9fa; }
+.employment-end-notes h3 { margin: 0 0 .3rem; font-size: .92rem; }
+.employment-end-notes h3:not(:first-child) { margin-top: .75rem; }
+.employment-end-notes ul { margin: 0; padding-inline-start: 1.25rem; color: #405660; }
+.employment-end-notes li { margin-block: .15rem; line-height: 1.6; }
+.employment-end-notes p { margin: 0; color: #405660; line-height: 1.65; }
+.workforce-import-preview { display: grid; gap: .75rem; padding: 1rem; border: 1px solid #dce5e7; border-radius: .7rem; background: #fff; }
+.workforce-import-preview h2, .workforce-import-preview p { margin: 0; }
+.workforce-import-table-wrap { width: 100%; overflow-x: auto; border: 1px solid #e3e9ea; border-radius: .55rem; }
+.workforce-import-table { width: 100%; min-width: 42rem; border-collapse: collapse; text-align: start; }
+.workforce-import-table :is(th, td) { padding: .65rem .75rem; border-bottom: 1px solid #e7edee; vertical-align: top; }
+.workforce-import-table th { background: #f5f8f8; color: #52666d; font-size: .88rem; }
+.workforce-import-table td { line-height: 1.55; }
+.workforce-import-table tbody tr:last-child td { border-bottom: 0; }
+.workforce-import .checkbox-row { align-items: flex-start; }
+.attendance-import-page { display: grid; gap: .9rem; }
+.attendance-import-page > :is(h1, p, ul) { margin-block: 0; }
+.attendance-import-template { width: fit-content; }
+.attendance-import-rules { display: grid; gap: .25rem; padding-inline-start: 1.3rem; color: #405660; line-height: 1.65; }
+.attendance-import { display: grid; gap: 1.1rem; min-width: 0; }
+.attendance-import-form { display: grid; gap: .85rem; min-width: 0; }
+.attendance-import-mapping { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem 1rem; margin: .4rem 0 0; padding: 1rem; border: 1px solid #dce5e7; border-radius: .65rem; }
+.attendance-import-mapping legend { padding-inline: .35rem; color: #263d45; font-weight: 700; }
+.attendance-import-map-field { display: grid; align-content: start; gap: .4rem; min-width: 0; color: #405660; font-weight: 650; }
+.attendance-import-map-field > span { display: grid; gap: .18rem; }
+.attendance-import-map-field small { color: var(--color-muted); font-size: .8rem; font-weight: 400; line-height: 1.45; }
+.attendance-import-map-field select { min-width: 0; width: 100%; min-height: var(--field-height); padding: .5rem .65rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); background: #fff; color: var(--color-text); font: inherit; }
+.attendance-import-map-field select:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; border-color: var(--color-brand); }
+.attendance-import-confirm-map { align-items: flex-start; }
+.attendance-import-preview { display: grid; gap: .8rem; min-width: 0; padding: 1rem; border: 1px solid #dce5e7; border-radius: .7rem; background: #fff; }
+.attendance-import-preview > :is(h2,p) { margin: 0; }
+.attendance-import-table-wrap { width: 100%; min-width: 0; overflow-x: auto; border: 1px solid #e3e9ea; border-radius: .55rem; }
+.attendance-import-table { width: 100%; min-width: 52rem; border-collapse: collapse; text-align: start; }
+.attendance-import-table :is(th,td) { padding: .6rem .7rem; border-bottom: 1px solid #e7edee; vertical-align: top; }
+.attendance-import-table th { background: #f5f8f8; color: #52666d; font-size: .86rem; }
+.attendance-import-table td { line-height: 1.5; }
+.attendance-import-table tbody tr:last-child td { border-bottom: 0; }
+.attendance-import-note { display: block; max-width: 24rem; margin-top: .2rem; color: #7a4343; line-height: 1.55; }
+.attendance-import-confirm-form { display: grid; gap: .65rem; }
+.attendance-import-confirm-form .checkbox-row { align-items: flex-start; }
+@media (max-width: 40rem) {
+  .attendance-import-mapping { grid-template-columns: minmax(0,1fr); padding: .8rem; }
+  .attendance-import-page { padding-inline: .9rem; }
+}
+.assignment-history-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.assignment-history-item { padding: 1.1rem 1.4rem; border-top: 1px solid #e7edee; }
+.assignment-history-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem; margin-bottom: .5rem; }
+.assignment-history-item .snapshot-grid { margin-block: .4rem; }
+.assignment-cancel-form { display: flex; justify-content: flex-start; margin-top: .7rem; }
+.assignment-transfer-details { margin: .35rem 1.4rem 1.2rem; border-top: 1px solid #e7edee; padding-top: .9rem; }
+.assignment-transfer-details > summary { width: fit-content; color: var(--color-brand); font-weight: 700; cursor: pointer; }
+.assignment-transfer-form { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.2fr); align-items: center; gap: .65rem 1rem; margin-top: 1rem; }
+.assignment-transfer-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.assignment-transfer-form select,
+.assignment-transfer-form input { min-width: 0; min-height: 2.75rem; width: 100%; padding: .5rem .7rem; border: 1px solid #cbd7da; border-radius: .55rem; background: #fff; color: var(--color-text); font: inherit; }
+.assignment-transfer-form :is(select, input):focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.assignment-transfer-form .field-hint,
+.assignment-transfer-form .form-message,
+.assignment-transfer-form .workspace-form-actions { grid-column: 1 / -1; }
+.assignment-transfer-form .field-hint { margin: 0; color: #607780; font-size: .85rem; }
+.assignment-transfer-form .form-message { margin: .2rem 0; }
+.assignment-transfer-form .workspace-form-actions { margin-top: .2rem; }
+.compensation-change-details { margin: .35rem 1.4rem 1.2rem; border-top: 1px solid #e7edee; padding-top: .9rem; }
+.compensation-change-details > summary { width: fit-content; color: var(--color-brand); font-weight: 700; cursor: pointer; }
+.compensation-change-form { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.2fr); align-items: center; gap: .65rem 1rem; margin-top: 1rem; }
+.compensation-change-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.compensation-change-form input { min-width: 0; min-height: 2.75rem; width: 100%; padding: .5rem .7rem; border: 1px solid #cbd7da; border-radius: .55rem; background: #fff; color: var(--color-text); font: inherit; }
+.compensation-change-form input:focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.compensation-change-form :is(.field-hint, .form-message, .workspace-form-actions) { grid-column: 1 / -1; }
+.compensation-change-form .field-hint { margin: 0; color: #607780; font-size: .85rem; }
+.compensation-change-form .form-message { margin: .2rem 0; }
+.compensation-change-form .workspace-form-actions { margin-top: .2rem; }
+.people-search-form { display: grid; gap: .45rem; padding: 1rem 1.4rem; border-bottom: 1px solid #e7edee; }
+.people-search-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.people-search-form > div { display: flex; gap: .6rem; }
+.people-search-form input { min-width: 0; flex: 1; min-height: 2.75rem; padding: .55rem .75rem; border: 1px solid #cbd7da; border-radius: .55rem; font: inherit; }
+.people-search-form input:focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.people-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .7rem; padding: 1rem; border-top: 1px solid #e7edee; }
+.people-pagination > span { color: #52666d; }
+.org-catalog-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; }
+.org-catalog-actions > :is(button, a) { flex: 0 0 auto; }
+.org-catalog-back { width: min(100%, 70rem); margin: -1rem auto 1.5rem; }
+.org-catalog-panel .empty-state > .secondary-button { margin-top: .4rem; }
 .workspace-notices { width: min(100%, 70rem); margin: 0 auto; }
 .workspace-notices:empty { display: none; }
 .workspace-view-tabs {
@@ -323,8 +457,56 @@
 }
 .workspace-frame .feedback-toast button:hover { background: var(--color-brand-soft); color: var(--color-brand); }
 
+.attendance-date-form, .attendance-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; align-items: end; margin-block: 1rem; }
+.attendance-date-form label, .attendance-form label { display: grid; gap: .35rem; font-weight: 650; }
+.attendance-date-form input, .attendance-form :is(input, select) { width: 100%; min-width: 0; min-height: 2.8rem; padding: .55rem .7rem; border: 1px solid #cbd8dc; border-radius: .5rem; background: #fff; color: var(--color-text); font: inherit; }
+.attendance-full-field { grid-column: 1 / -1; }
+.attendance-pagination { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+.attendance-review-filters { display: flex; flex-wrap: wrap; gap: .55rem; margin-block: 1rem; }
+.attendance-review-filter { display: inline-flex; align-items: center; min-height: 2.65rem; padding: .45rem .75rem; border: 1px solid #cbd8dc; border-radius: .55rem; color: var(--color-text); text-decoration: none; font-weight: 650; }
+.attendance-review-filter:hover, .attendance-review-filter.is-active { border-color: var(--color-brand); background: var(--color-brand-soft); color: var(--color-brand); }
+.attendance-review-list .record-meta { margin-block: .25rem; }
+.attendance-bulk-panel { margin-top: 1.1rem; padding: clamp(1rem, 2.5vw, 1.5rem); border: 1px solid #dce5e7; border-radius: .7rem; background: #fff; }
+.attendance-bulk-panel .work-policy-panel-heading { margin-bottom: 1rem; }
+.attendance-bulk-panel .work-policy-panel-heading h2 { margin: 0; font-size: 1.15rem; }
+.attendance-bulk-panel .work-policy-panel-heading p { max-width: 48rem; margin: .35rem 0 0; color: var(--color-muted); line-height: 1.65; }
+.attendance-bulk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem .8rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+.attendance-bulk-list li { min-width: 0; }
+.attendance-bulk-choice { display: flex; align-items: center; justify-content: space-between; gap: .6rem; min-width: 0; min-height: 3.15rem; padding: .55rem .65rem; border: 1px solid #dce5e7; border-radius: .55rem; }
+.attendance-bulk-list label { display: flex; align-items: flex-start; gap: .65rem; min-width: 0; cursor: pointer; }
+.attendance-bulk-list input { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin-block-start: .2rem; accent-color: var(--color-brand); }
+.attendance-bulk-list label span { display: grid; min-width: 0; gap: .2rem; }
+.attendance-bulk-list small { color: var(--color-muted); }
+.attendance-bulk-result { margin-top: 1rem; padding: .85rem; border: 1px solid var(--color-brand-border); border-radius: .6rem; background: var(--color-brand-soft); }
+.attendance-bulk-result p { margin: 0 0 .5rem; font-weight: 650; }
+.attendance-bulk-result ul { display: grid; gap: .35rem; margin: 0; padding-inline-start: 1.3rem; }
+.attendance-bulk-result li { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem .8rem; }
+.attendance-add-punch { margin-top: 1rem; }
+.attendance-add-punch > summary { display: inline-flex; cursor: pointer; }
+.attendance-exclude-form, .attendance-approve-form { border-top: 1px solid #dbe4e5; padding-top: .8rem; }
+.attendance-overtime-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: .8rem; }
+.attendance-overtime-form { align-content: start; margin: 0; padding: .8rem; border: 1px solid #dbe4e5; border-radius: .6rem; }
+.attendance-overtime-form fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; min-width: 0; margin: 0; padding: .8rem; border: 1px solid #dbe4e5; border-radius: .5rem; }
+.attendance-overtime-form fieldset legend { padding-inline: .35rem; font-weight: 650; }
+.attendance-overtime-form fieldset label { display: grid; gap: .35rem; min-width: 0; font-size: .9rem; }
+.attendance-overtime-form fieldset input { width: 100%; min-width: 0; }
+.attendance-fact-history { margin-top: 1rem; border-top: 1px solid #dbe4e5; padding-top: .8rem; }
+.attendance-detail > .record-title-row { margin-block: .6rem; }
+.attendance-expected { padding: .65rem .8rem; border-radius: .5rem; background: var(--color-brand-soft); }
+.attendance-punch-list .record-card { align-items: start; }
+
 @media (max-width: 900px) {
   :root { --control-height: 2.75rem; }
+  .attendance-date-form, .attendance-form { grid-template-columns: 1fr; }
+  .attendance-overtime-actions { grid-template-columns: 1fr; }
+  .attendance-form .attendance-full-field { grid-column: 1; }
+  .attendance-overtime-form fieldset { grid-template-columns: 1fr; }
+  .attendance-pagination { align-items: stretch; flex-direction: column; }
+  .attendance-bulk-list { grid-template-columns: 1fr; }
+  .attendance-bulk-choice > .secondary-button { flex: 0 0 auto; }
+  .attendance-review-list .record-card { align-items: stretch; }
+  .attendance-review-list .record-card > .secondary-button { align-self: flex-start; }
+  .attendance-bulk-result li { align-items: flex-start; flex-direction: column; }
   .workspace-frame { display: block; }
   .workspace-navigation { position: sticky; inset-block-start: 0; z-index: 20; }
   .workspace-sidebar { display: none; }
@@ -439,7 +621,7 @@
   .workspace-mobile-dialog nav { display: grid; gap: .2rem; padding-top: .8rem; }
   .workspace-mobile-dialog nav a,
   .workspace-mobile-dialog nav button { position: relative; display: flex; align-items: center; min-height: 3rem; width: 100%; padding: .55rem .75rem; border: 0; border-radius: .45rem; background: transparent; color: var(--color-text); font: inherit; text-align: start; text-decoration: none; cursor: pointer; }
-  .workspace-mobile-dialog nav a[aria-current="page"] { background: var(--color-brand-soft); color: var(--color-brand); font-weight: 700; }
+.workspace-mobile-dialog nav a[aria-current="page"] { background: var(--color-brand-soft); color: var(--color-brand); font-weight: 700; }
   .workspace-dialog-group { display: grid; gap: .15rem; margin-block: .7rem; }
   .workspace-dialog-group p { color: #607780; padding-inline: .75rem; }
   .workspace-mobile-dialog form { margin-top: .8rem; border-top: 1px solid #dbe4e5; padding-top: .6rem; }
@@ -453,7 +635,25 @@
   .workspace-page-heading { flex-direction: column; gap: .9rem; }
   .workspace-page-heading > .primary-button { width: fit-content; }
   .workspace-records-panel { border-radius: .65rem; }
+  .work-policy-create-panel { padding: 1rem; }
+  .work-policy-section { padding: .8rem; }
+  .work-policy-grid, .work-policy-kind-options { grid-template-columns: 1fr; }
+  .work-policy-day-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-policy-editor-actions > .primary-button { width: 100%; }
   .workspace-records-panel .record-card { padding: 1rem; }
+  .assignment-history-item { padding: 1rem; }
+  .assignment-transfer-details { margin-inline: 1rem; }
+  .assignment-transfer-form { grid-template-columns: 1fr; gap: .35rem; }
+  .assignment-transfer-form :is(label, .field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
+  .compensation-change-details { margin-inline: 1rem; }
+  .compensation-change-form { grid-template-columns: 1fr; gap: .35rem; }
+  .compensation-change-form :is(label, .field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
+  .work-policy-assignment-form { grid-template-columns: 1fr; gap: .7rem; }
+  .work-policy-assignment-form :is(.field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
+  .work-policy-assignment-form .workspace-form-actions > .primary-button { width: 100%; }
+  .people-search-form { padding: 1rem; }
+  .people-search-form > div { align-items: stretch; }
+  .people-search-form .secondary-button { flex: 0 0 auto; }
   .workspace-form-page { margin-block-start: 1rem; }
   .workspace-form-panel { padding: 1.15rem; }
   .branding-file-trigger, .branding-file-clear { width: fit-content; }

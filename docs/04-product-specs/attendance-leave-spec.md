@@ -227,7 +227,9 @@ Attendance owns the determination of **time quantity and approval**, not the fin
 
 V1 overtime flow:
 
-`worked beyond policy threshold -> overtime candidate -> classify -> auto-approve if explicitly permitted by policy OR reviewer approve/reject -> approved overtime quantity -> Payroll input`
+`worked beyond policy threshold -> overtime candidate -> reviewer classification and approval/rejection -> approved overtime quantity -> Payroll input`
+
+Cube 2 V1 decision (2026-09-30): no Work Policy permits automatic overtime approval. Classification and approval require an authorized reviewer because the platform has no approved rules for nighttime, weekly-rest, or official-holiday classification. Policy-authorized automation may be introduced only with explicit, validated classification rules and its own acceptance evidence; it is not part of Cube 2 closure. This does not change the separate opt-in clean ordinary attendance auto-approval path.
 
 Approved overtime carries the applicable category needed by Payroll, including ordinary daytime/nighttime overtime and, where applicable, weekly-rest or official-holiday work.
 

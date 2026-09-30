@@ -5,10 +5,11 @@ import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
 import { reissueInvitationAction, revokeInvitationAction } from './actions';
+import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
 export const dynamic = 'force-dynamic';
 
-type SearchParams = Promise<{ id?: string; state?: string }>;
+type SearchParams = Promise<{ id?: string; state?: string; page?: string; q?: string }>;
 type InvitationRow = {
   id: string;
   target_email: string;
@@ -23,16 +24,23 @@ type InvitationRow = {
 
 export default async function OperatorInvitationsPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
+  const { page, search } = operatorListQuery(params);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
   const { data: capable } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (!capable) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
-  const { data, error } = await supabase.rpc('tenant_admin_invitation_list');
-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
-  const rows = data as InvitationRow[];
-  const selected = rows.find((row) => row.id === params.id);
+  const { data, error } = await supabase.rpc('tenant_admin_invitation_page', { p_page: page, p_query: search });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
+  const result = data as Record<string, unknown>;
+  const rows = Array.isArray(result.rows) ? result.rows as InvitationRow[] : [];
+  const matchingCount = Number(result.matching_count ?? 0);
+  let selected = rows.find((row) => row.id === params.id);
+  if (!selected && params.id && isUuid(params.id)) {
+    const { data: selectedData, error: selectedError } = await supabase.rpc('tenant_admin_invitation_get', { p_invitation_id: params.id });
+    if (!selectedError && selectedData && typeof selectedData === 'object' && !Array.isArray(selectedData)) selected = selectedData as InvitationRow;
+  }
   const visibleRows = selected ? [selected, ...rows.filter((row) => row.id !== selected.id)] : rows;
   const success = params.state === 'created-sent' || params.state === 'reissued-sent' || params.state === 'revoked';
 
@@ -53,7 +61,8 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
       </section>
       <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
-        {rows.length === 0 ? <p className="intro">لا توجد دعوات بعد.</p> : (
+        <OperatorListControls basePath="/operator/invitations" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة أو البريد" inputId="invitation-search" />
+        {visibleRows.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد دعوات مطابقة.'}</p> : (
           <ul>
             {visibleRows.map((row) => (
               <li key={row.id} id={`invitation-${row.id}`} className="invitation-row">
@@ -118,6 +127,8 @@ function stateMessage(state: string) {
   };
   return labels[state] ?? 'تعذر إتمام الإجراء.';
 }
+
+function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 
 function Status({ title, detail }: { title: string; detail: string }) {
   return (

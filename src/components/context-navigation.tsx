@@ -66,15 +66,18 @@ export async function TenantNavigation({
 }) {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
+  const businessLinks: ContextLink[] = [];
   let canSwitchTenant = false;
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding, spaces] = await Promise.all([
-        supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId }),
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess] = await Promise.all([
+        supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('current_tenant_spaces'),
+        supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),
+        supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
       ]);
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
@@ -86,10 +89,16 @@ export async function TenantNavigation({
       const brand = branding.data && typeof branding.data === 'object' && !Array.isArray(branding.data)
         ? branding.data as Record<string, unknown> : null;
       if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة' });
+      if (!peopleAccess.error && peopleAccess.data && typeof peopleAccess.data === 'object') {
+        businessLinks.push({ href: `/tenant/${tenantId}/people`, label: 'الموظفون' });
+      }
+      if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
+        businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور' });
+      }
     }
   }
   return <ContextNavigation homeHref={`/tenant/${tenantId}`} homeLabel="مساحة الشركة" contextLabel={tenantName}
-    links={links} mode="tenant" logoUrl={logoUrl}
+    links={links} businessLinks={businessLinks} mode="tenant" logoUrl={logoUrl}
     switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} />;
 }
 

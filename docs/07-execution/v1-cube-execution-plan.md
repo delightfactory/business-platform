@@ -90,7 +90,9 @@ Includes:
 
 People owns employee context and effective assignments; Time owns the named policy/shift definitions. Cube 1 does not interpret attendance.
 
-Completion: A company can create or import employees, update employment and assignments, transfer them, change compensation, end employment and rehire while preserving history and a visible correction path for locked-payroll effects.
+Completion: A company can create or import employees, update employment and assignments, transfer them, change compensation, end employment and rehire while preserving history and a visible manual-review handoff for possible locked-payroll effects.
+
+Payroll boundary: Cube 1 has no Payroll runs or locks. People preserves dated versions and audit context and warns HR when a manual Payroll review may be needed; it does not detect locked periods or create correction requests. A same-transaction guard against affected locked runs and explicit correction routing is a hard gate before Payroll consumes People changes. This is a downstream prerequisite, not a capability implemented in Cube 1.
 
 ## Cube 2 — Attendance Engine
 
