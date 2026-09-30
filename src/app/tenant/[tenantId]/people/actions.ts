@@ -61,6 +61,9 @@ function errorText(message: string) {
   if (message.includes('people_site_unavailable')) return 'الفرع غير نشط أو لا يتبع جهة التوظيف المختارة. اختر فرعًا مناسبًا.';
   if (message.includes('people_department_unavailable')) return 'القسم غير نشط أو لم يعد متاحًا. اختر قسمًا آخر.';
   if (message.includes('people_job_unavailable')) return 'الوظيفة غير متاحة أو لا تتبع القسم المختار. اختر وظيفة مناسبة.';
+  if (message.includes('people_assignment_department_unavailable')) return 'القسم أو أحد أقسامه الأعلى غير نشط. اختر قسمًا نشطًا.';
+  if (message.includes('people_assignment_job_unavailable')) return 'الوظيفة أو قسمها غير نشط. اختر وظيفة متاحة.';
+  if (message.includes('people_assignment_job_department_mismatch')) return 'الوظيفة لا تتبع القسم المختار. اختر وظيفة مناسبة.';
   if (message.includes('people_onboard_invalid')) return 'بعض البيانات غير صحيحة. راجع الحقول ثم أعد المحاولة.';
   return 'تعذر إضافة الموظف الآن. لم يُحفظ سجل جزئي؛ راجع البيانات وأعد المحاولة.';
 }

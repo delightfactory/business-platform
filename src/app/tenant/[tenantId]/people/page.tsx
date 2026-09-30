@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
 type Employee = { id: string; code: string; name: string; status: string; employer: string | null; site: string | null; start_date: string | null };
 type DirectoryPage = { items: Employee[]; has_more: boolean; page: number };
-type Access = { can_manage: boolean; can_manage_employment: boolean; can_manage_compensation: boolean };
+type Access = { can_manage: boolean; can_manage_employment: boolean; can_manage_compensation: boolean; can_manage_org: boolean };
 type SearchParams = Promise<{ q?: string | string[]; page?: string | string[] }>;
 
 export default async function PeoplePage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: SearchParams }) {
@@ -35,6 +35,7 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   return <PageFrame footer="الموارد البشرية">
     <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
       <h1>الموظفون</h1><p>ملفات الموظفين وتفاصيل عملهم في الشركة.</p></div>
+      {access.can_manage_org && <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</Link>}
       {canAdd && <Link className="primary-button" href={`/tenant/${tenantId}/people/new`}>إضافة موظف</Link>}
     </header>
     <section className="workspace-records-panel" aria-label="دليل الموظفين">
