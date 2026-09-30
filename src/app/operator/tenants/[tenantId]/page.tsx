@@ -27,10 +27,8 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
   if (operatorStatus !== 'active' || !canManageLifecycle) {
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
   }
-  const { data, error } = await supabase.rpc('platform_tenant_lifecycle_list');
-  const tenant = !error && Array.isArray(data)
-    ? (data as Tenant[]).find((item) => item.tenant_id === tenantId)
-    : undefined;
+  const { data, error } = await supabase.rpc('platform_tenant_lifecycle_get', { p_tenant_id: tenantId });
+  const tenant = !error && data && typeof data === 'object' && !Array.isArray(data) ? data as Tenant : undefined;
   if (!tenant) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
 
   const transitions = transitionsFor(tenant.lifecycle_state);

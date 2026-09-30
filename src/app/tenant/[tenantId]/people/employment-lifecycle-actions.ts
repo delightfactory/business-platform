@@ -76,6 +76,7 @@ function value(data: FormData, key: string) { return String(data.get(key) ?? '')
 
 function endError(message: string) {
   if (message.includes('people_employment_manage_forbidden')) return 'لا تملك الصلاحيات اللازمة لإنهاء علاقة العمل وإغلاق بياناتها.';
+  if (message.includes('people_employment_end_before_materialized_day') || message.includes('people_assignment_materialized_day')) return 'يوجد يوم حضور مفتوح بعد تاريخ الإنهاء المختار. اختر آخر يوم عمل يشمل أيام الحضور المفتوحة، ثم أعد المحاولة.';
   if (message.includes('people_employment_future_end_unsupported')) return 'لا يمكن تحديد إنهاء مستقبلي في هذه النسخة؛ اختر اليوم أو تاريخًا سابقًا.';
   if (message.includes('people_employment_end_before_start')) return 'لا يمكن أن يسبق آخر يوم عمل تاريخ بداية العلاقة.';
   if (message.includes('people_employment_end_after_effective_change')) return 'يوجد تكليف أو تغيير أجر بدأ بعد التاريخ المختار. اختر تاريخًا أحدث أو راجع السجل قبل الإنهاء.';

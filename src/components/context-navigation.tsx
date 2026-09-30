@@ -72,7 +72,7 @@ export async function TenantNavigation({
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
       const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess] = await Promise.all([
-        supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId }),
+        supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('current_tenant_spaces'),

@@ -8,7 +8,7 @@ import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberA
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
-type SearchParams = Promise<{ state?: string; view?: string }>;
+type SearchParams = Promise<{ state?: string; view?: string; page?: string; q?: string }>;
 type RoleAssignment = { role_key: string; role_version: number };
 type Row = { user_id: string; email: string; access_state: string; role_key: string | null; roles: RoleAssignment[]; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
@@ -28,24 +28,33 @@ const PEOPLE_ROLE_BUNDLES = [
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
   const { tenantId } = await params;
   const query = await searchParams;
+  const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
+    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
+  const view = showInvitations ? 'invitations' : 'members';
+  const page = /^[1-9]\d{0,5}$/.test(query.page ?? '') ? Math.min(Number(query.page), 100000) : 1;
+  const search = (query.q ?? '').trim().slice(0, 120);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users`)}`);
-  const { data, error } = await supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId });
+  const { data, error } = await supabase.rpc('tenant_member_access_page', {
+    p_tenant_id: tenantId, p_view: view, p_page: page, p_query: search,
+  });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
   const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
   if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
   const { data: canManageRoles } = await supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId });
   const result = data as Record<string, unknown>;
-  const memberships = Array.isArray(result.memberships) ? result.memberships as Row[] : [];
-  const invitations = Array.isArray(result.invitations) ? result.invitations as Invitation[] : [];
+  const memberships = view === 'members' && Array.isArray(result.rows) ? result.rows as Row[] : [];
+  const invitations = view === 'invitations' && Array.isArray(result.rows) ? result.rows as Invitation[] : [];
+  const memberCount = Number(result.member_count ?? 0);
+  const invitationCount = Number(result.invitation_count ?? 0);
+  const matchingCount = Number(result.matching_count ?? 0);
+  const pageCount = Math.max(1, Math.ceil(matchingCount / 25));
   const limit = objectValue(result.seat_limit);
   const used = Number(result.seat_usage ?? 0);
 
   const success = successMessage(query.state);
-  const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
-    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
   const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
     ? stateMessage(query.state) : null;
   return (
@@ -63,12 +72,19 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
       </section>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
-        <Link href={`/tenant/${tenantId}/users`} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberships.length}</span></Link>
-        <Link href={`/tenant/${tenantId}/users?view=invitations`} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitations.length}</span></Link>
+        <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
+        <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
       </nav>
+      <form action={`/tenant/${tenantId}/users`} method="get" role="search" className="workspace-form-panel">
+        <input type="hidden" name="view" value={view} />
+        <label htmlFor="member-search">البحث بالبريد الإلكتروني</label>
+        <input id="member-search" type="search" name="q" defaultValue={search} maxLength={120} placeholder="ابحث عن بريد مستخدم أو دعوة" />
+        <button className="secondary-button" type="submit">بحث</button>
+      </form>
+      <p className="field-hint">{search ? `نتائج البحث: ${matchingCount}` : `الإجمالي: ${matchingCount}`} · {page > pageCount ? 'هذه الصفحة لم تعد متاحة' : `صفحة ${page} من ${pageCount}`}</p>
       {!showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
-        {memberships.length === 0 ? <p className="intro">لا يوجد مستخدمون بعد.</p> : (
+        {memberships.length === 0 ? <p className="intro">{search ? 'لا توجد عضويات تطابق البحث.' : 'لا يوجد مستخدمون في هذه الصفحة.'}</p> : (
           <ul>{memberships.map((row) => (
             <li className="invitation-row" key={row.user_id}>
               <div>
@@ -120,7 +136,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
       </section>}
       {showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
         <h2 id="pending-title">الدعوات</h2>
-        {invitations.length === 0 ? <p className="intro">لا توجد دعوات.</p> : (
+        {invitations.length === 0 ? <p className="intro">{search ? 'لا توجد دعوات تطابق البحث.' : 'لا توجد دعوات في هذه الصفحة.'}</p> : (
           <ul>{invitations.map((invitation) => (
             <li className="invitation-row" key={invitation.id}>
               <div>
@@ -149,6 +165,11 @@ export default async function TenantUsersPage({ params, searchParams }: { params
           ))}</ul>
         )}
       </section>}
+      <nav aria-label="صفحات المستخدمين والدعوات" className="workspace-view-tabs">
+        {page > 1 && page <= pageCount && <Link href={usersUrl(tenantId, view, page - 1, search)}>الصفحة السابقة</Link>}
+        {page < pageCount && <Link href={usersUrl(tenantId, view, page + 1, search)}>الصفحة التالية</Link>}
+        {page > pageCount && <Link href={usersUrl(tenantId, view, pageCount, search)}>عرض آخر صفحة</Link>}
+      </nav>
       <footer className="footer">منصة الأعمال · مستخدمو الشركة</footer>
     </main>
   );
@@ -156,6 +177,15 @@ export default async function TenantUsersPage({ params, searchParams }: { params
 
 function objectValue(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
+}
+
+function usersUrl(tenantId: string, view: 'members' | 'invitations', page: number, search: string) {
+  const params = new URLSearchParams();
+  if (view === 'invitations') params.set('view', view);
+  if (page > 1) params.set('page', String(page));
+  if (search) params.set('q', search);
+  const suffix = params.toString();
+  return `/tenant/${tenantId}/users${suffix ? `?${suffix}` : ''}`;
 }
 function hasBundle(roles: RoleAssignment[] | undefined, key: string) { return roles?.some((role) => role.role_key === key) ?? false; }
 function assignedBundleLabels(roles: RoleAssignment[] | undefined) {

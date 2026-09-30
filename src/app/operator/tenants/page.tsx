@@ -2,12 +2,14 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
 export const dynamic = 'force-dynamic';
 
-type Tenant = { tenant_id: string; tenant_name: string; lifecycle_state: 'active' | 'suspended' | 'archived' };
+type Tenant = { tenant_id: string; display_name: string; lifecycle_state: 'active' | 'suspended' | 'archived' };
 
-export default async function OperatorTenantsPage() {
+export default async function OperatorTenantsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
+  const { page, search } = operatorListQuery(await searchParams);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
@@ -19,9 +21,11 @@ export default async function OperatorTenantsPage() {
   if (operatorStatus !== 'active' || !canManageLifecycle) {
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
   }
-  const { data, error } = await supabase.rpc('platform_tenant_lifecycle_list');
-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل الشركات" detail="أعد المحاولة لاحقًا." />;
-  const tenants = data as Tenant[];
+  const { data, error } = await supabase.rpc('platform_tenant_list_page', { p_scope: 'lifecycle', p_page: page, p_query: search });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الشركات" detail="أعد المحاولة لاحقًا." />;
+  const result = data as Record<string, unknown>;
+  const tenants = Array.isArray(result.rows) ? result.rows as Tenant[] : [];
+  const matchingCount = Number(result.matching_count ?? 0);
 
   return (
     <main className="app-shell">
@@ -36,12 +40,13 @@ export default async function OperatorTenantsPage() {
         <p className="eyebrow">إدارة حالة الشركات</p>
         <h1 id="tenants-title">الشركات</h1>
         <p className="intro">تُسجل كل عملية تعليق أو استعادة أو أرشفة مع سببها.</p>
-        {tenants.length === 0 ? <p className="intro">لا توجد شركات بعد.</p> : (
+        <OperatorListControls basePath="/operator/tenants" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة" inputId="tenant-search" />
+        {tenants.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد شركات مطابقة.'}</p> : (
           <ul className="member-list">
             {tenants.map((tenant) => (
               <li className="member-card" key={tenant.tenant_id}>
                 <div>
-                  <h2>{tenant.tenant_name}</h2>
+                  <h2>{tenant.display_name}</h2>
                   <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
                 </div>
                 <Link className="secondary-button" href={`/operator/tenants/${tenant.tenant_id}`}>عرض الحالة والإجراءات</Link>

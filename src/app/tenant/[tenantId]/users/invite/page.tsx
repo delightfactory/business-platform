@@ -17,7 +17,7 @@ export default async function InviteMemberPage({ params, searchParams }: { param
   if (!supabase) return <Status tenantId={tenantId} />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users/invite`)}`);
-  const { data, error } = await supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId });
+  const { data, error } = await supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status tenantId={tenantId} />;
   const result = data as Record<string, unknown>;
   const limit = result.seat_limit && typeof result.seat_limit === 'object' && !Array.isArray(result.seat_limit)

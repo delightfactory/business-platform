@@ -27,19 +27,40 @@ SELECT 'f2000000-0000-4000-8000-000000000001',
  CASE WHEN n=1 THEN 'Sample Worker' ELSE 'Worker ' || pg_catalog.lpad(n::text,2,'0') END,
  'f1000000-0000-4000-8000-000000000001'
 FROM pg_catalog.generate_series(1,26) AS n;
+UPDATE people.employees SET employee_code='EMP%24',full_name='Percent Query Worker'
+WHERE tenant_id='f2000000-0000-4000-8000-000000000001' AND employee_code='EMP-24';
+UPDATE people.employees SET employee_code='EMP_25',full_name='Underscore Query Worker'
+WHERE tenant_id='f2000000-0000-4000-8000-000000000001' AND employee_code='EMP-25';
+UPDATE people.employees SET employee_code=E'EMP\\26',full_name='Backslash Query Worker'
+WHERE tenant_id='f2000000-0000-4000-8000-000000000001' AND employee_code='EMP-26';
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f1000000-0000-4000-8000-000000000002',true);
 SELECT is((public.people_directory_page('f2000000-0000-4000-8000-000000000001','Sample',1)->>'items')::jsonb->0->>'code',
  'EMP-01','search matches employee name');
+SELECT is((public.people_directory_page('f2000000-0000-4000-8000-000000000001','sample',1)->'items'->0->>'code'),
+ 'EMP-01','search remains case insensitive');
 SELECT is((public.people_directory_page('f2000000-0000-4000-8000-000000000001','EMP-01',1)->>'items')::jsonb->0->>'code',
  'EMP-01','search matches employee code');
+SELECT is(pg_catalog.jsonb_array_length(public.people_directory_page('f2000000-0000-4000-8000-000000000001','%',1)->'items'),
+ 1,'percent is treated as a literal search character');
+SELECT is((public.people_directory_page('f2000000-0000-4000-8000-000000000001','%',1)->'items'->0->>'code'),
+ 'EMP%24','literal percent search returns the matching employee');
+SELECT is(pg_catalog.jsonb_array_length(public.people_directory_page('f2000000-0000-4000-8000-000000000001','_',1)->'items'),
+ 1,'underscore is treated as a literal search character');
+SELECT is((public.people_directory_page('f2000000-0000-4000-8000-000000000001',E'\\',1)->'items'->0->>'code'),
+ E'EMP\\26','backslash is treated as a literal search character');
 SELECT is(pg_catalog.jsonb_array_length(public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,1)->'items'),
  25,'page is capped at 25 employees');
 SELECT is(public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,1)->>'has_more','true',
  'first page reports more results');
 SELECT is(pg_catalog.jsonb_array_length(public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,2)->'items'),
  1,'second page returns remaining employee');
+SELECT is((SELECT pg_catalog.count(DISTINCT item->>'id') FROM (
+ SELECT pg_catalog.jsonb_array_elements(public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,1)->'items') item
+ UNION ALL
+ SELECT pg_catalog.jsonb_array_elements(public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,2)->'items') item
+) pages),26::bigint,'adjacent pages preserve every employee exactly once');
 SELECT ok(NOT ((public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,1)->'items'->0) ? 'compensation'),
  'directory response contains no compensation field');
 SELECT throws_ok($$SELECT public.people_directory_page('f2000000-0000-4000-8000-000000000001',NULL,1001)$$,

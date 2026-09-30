@@ -163,6 +163,7 @@ export default async function EmployeePage({ params, searchParams }: {
         <p className="field-hint">إذا كان هذا أول تكليف ويبدأ اليوم، تُصحح السياسة في سجله. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
         {query.policy === 'failed' && <p className="form-message error-message" role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}
         {query.policy === 'pending' && <p className="form-message error-message" role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}
+        {query.policy === 'materialized' && <p className="form-message error-message" role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</p>}
         <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ سياسة الدوام</button></div>
       </form>}
       {workPolicyPanel.can_manage_catalog && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</Link>}

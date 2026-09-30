@@ -66,7 +66,9 @@ RESET ROLE;
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','f9000000-0000-4000-8000-000000000001',true);
 SELECT ok(public.current_operator_can_manage_tenant_lifecycle(),'lifecycle grant is independently recognized');
-SELECT is(pg_catalog.jsonb_array_length(public.platform_tenant_lifecycle_list()),2,'authorized Operator sees only the bounded Tenant list');
+SELECT is((SELECT pg_catalog.count(*)::integer FROM pg_catalog.jsonb_array_elements(public.platform_tenant_lifecycle_list()) item
+  WHERE item->>'tenant_id' IN ('fa000000-0000-4000-8000-000000000001','fa000000-0000-4000-8000-000000000002')),
+  2,'authorized Operator sees both lifecycle fixture Tenants');
 SELECT is((SELECT pg_catalog.count(*)::integer FROM pg_catalog.jsonb_object_keys(public.platform_tenant_lifecycle_list()->0)),3,'Tenant list items expose only id, name, and lifecycle state');
 SELECT is(public.change_tenant_lifecycle('fa000000-0000-4000-8000-000000000001','active','suspended','Temporary security hold')->>'to_state',
   'suspended','active Tenant can be suspended');

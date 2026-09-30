@@ -115,6 +115,7 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 
 function assignmentError(message: string) {
   if (message.includes('people_org_manage_forbidden')) return 'تحتاج إلى صلاحية إدارة سياق العمل في هذه الشركة.';
+  if (message.includes('people_assignment_materialized_day')) return 'بدأ تسجيل حضور لهذا اليوم وفق التكليف الحالي؛ لا يمكن تغيير بياناته بعد فتح اليوم. اختر تاريخ سريان لاحقًا لم يُفتح للحضور.';
   if (message.includes('people_assignment_future_exists')) return 'يوجد نقل مقرر بالفعل. ألغِ النقل المقرر قبل إضافة تغيير آخر.';
   if (message.includes('people_assignment_current_missing')) return 'لا يوجد تعيين حالي مفتوح يمكن نقله. راجع سجل العمل أو مسؤول الموارد البشرية.';
   if (message.includes('people_assignment_before_current_start')) return 'يجب أن يبدأ التغيير بعد تاريخ بداية التعيين الحالي.';

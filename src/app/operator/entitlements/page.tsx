@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
 export const dynamic = 'force-dynamic';
 type Tenant = { tenant_id: string; display_name: string; lifecycle_state: string };
 
-export default async function EntitlementsPage() {
+export default async function EntitlementsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
+  const { page, search } = operatorListQuery(await searchParams);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
   const { data: { user } } = await supabase.auth.getUser();
@@ -16,9 +18,11 @@ export default async function EntitlementsPage() {
     supabase.rpc('current_operator_can_manage_commercial_access'),
   ]);
   if (status !== 'active' || !authorized) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
-  const { data, error } = await supabase.rpc('platform_tenant_commercial_list');
-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل الشركات" />;
-  const tenants = data as Tenant[];
+  const { data, error } = await supabase.rpc('platform_tenant_list_page', { p_scope: 'commercial', p_page: page, p_query: search });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الشركات" />;
+  const result = data as Record<string, unknown>;
+  const tenants = Array.isArray(result.rows) ? result.rows as Tenant[] : [];
+  const matchingCount = Number(result.matching_count ?? 0);
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
@@ -27,7 +31,8 @@ export default async function EntitlementsPage() {
     <section className="work-card operator-collection" aria-labelledby="entitlements-title">
       <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title">الوحدات المتاحة للشركات</h1>
       <p className="intro">الإتاحة والإنهاء لا يحذفان بيانات الشركة. تُسجل كل مراجعة مع سببها.</p>
-      {tenants.length === 0 ? <p className="intro">لا توجد شركات بعد.</p> : <ul className="member-list">
+      <OperatorListControls basePath="/operator/entitlements" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة" inputId="entitlements-search" />
+      {tenants.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد شركات مطابقة.'}</p> : <ul className="member-list">
         {tenants.map((tenant) => <li className="member-card" key={tenant.tenant_id}>
           <div><h2><bdi>{tenant.display_name}</bdi></h2><p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p></div>
           <Link className="secondary-button" href={`/operator/entitlements/${tenant.tenant_id}`}>عرض الإتاحة</Link>

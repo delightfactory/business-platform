@@ -20,7 +20,10 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   const [mappingError, setMappingError] = useState('');
   const [preview, previewAction] = useActionState(previewAttendanceCsv, emptyPreview(tenantId));
   const [commit, commitAction] = useActionState(confirmAttendanceCsv, emptyCommit());
-  const rows = commit.state === 'processed' ? commit.rows : preview.rows;
+  const [committedPreviewAttempt, setCommittedPreviewAttempt] = useState<number | null>(null);
+  const showingCommitResult = commit.state === 'processed'
+    && (preview.rows.length === 0 || committedPreviewAttempt === preview.attempt);
+  const rows = showingCommitResult ? commit.rows : preview.rows;
   const readyRows = rows.filter((row) => row.status === 'ready');
   const unassignedRows = rows.filter((row) => row.status === 'unassigned');
   const rejectedRows = rows.filter((row) => row.status === 'rejected');
@@ -68,11 +71,11 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
       <div className="workspace-form-actions"><SubmitButton label="فحص ومعاينة الأحداث" pendingLabel="جارٍ فحص الصفوف…"/></div>
     </form>
 
-    {preview.rows.length > 0 && <section className="attendance-import-preview" aria-live="polite">
-      <h2>{commit.state === 'processed' ? 'نتيجة الحفظ' : 'معاينة الملف'}</h2>
-      <p>{commit.state === 'processed' ? 'مقبول:' : 'جاهز للحفظ:'} {commit.state === 'processed' ? commit.accepted : preview.ready} · بانتظار التكليف: {commit.state === 'processed' ? commit.unassigned : preview.unassigned} · مكرر: {commit.state === 'processed' ? commit.duplicate : preview.duplicate} · مرفوض: {commit.state === 'processed' ? commit.rejected : preview.rejected}</p>
+    {(preview.rows.length > 0 || showingCommitResult) && <section className="attendance-import-preview" aria-live="polite">
+      <h2>{showingCommitResult ? 'نتيجة الحفظ' : 'معاينة الملف'}</h2>
+      <p>{showingCommitResult ? 'مقبول:' : 'جاهز للحفظ:'} {showingCommitResult ? commit.accepted : preview.ready} · بانتظار التكليف: {showingCommitResult ? commit.unassigned : preview.unassigned} · مكرر: {showingCommitResult ? commit.duplicate : preview.duplicate} · مرفوض: {showingCommitResult ? commit.rejected : preview.rejected}</p>
       {commit.error && <p className="form-message error-message" role="alert">{commit.error}</p>}
-      {commit.state === 'processed' && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث المرفوضة لم تُحفظ.</p>}
+      {showingCommitResult && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث المرفوضة لم تُحفظ.</p>}
       {rejectedRows.length > 0 && <button className="secondary-button" type="button" onClick={() => downloadRejectReport(rejectedRows)}>تنزيل تقرير الأحداث المرفوضة</button>}
       <div className="attendance-import-table-wrap"><table className="attendance-import-table"><thead><tr>
         <th>سطر الملف</th><th>رمز الموظف</th><th>الفرع</th><th>وقت الحدث</th><th>الاتجاه</th><th>الحالة والملاحظات</th>
@@ -80,7 +83,8 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
         <td>{row.source_line_hint}</td><td><bdi>{row.employee_code}</bdi></td><td>{row.site_name}</td><td><bdi>{row.happened_at}</bdi></td><td>{row.direction === 'in' ? 'دخول' : row.direction === 'out' ? 'خروج' : row.direction}</td>
         <td>{statusLabel(row.status)}{[...row.errors, ...row.warnings].length > 0 && <small className="attendance-import-note">{[...row.errors, ...row.warnings].join(' · ')}</small>}</td>
       </tr>)}</tbody></table></div>
-      {commit.state !== 'processed' && (readyRows.length > 0 || unassignedRows.length > 0) && <form action={commitAction} className="attendance-import-confirm-form">
+      {!showingCommitResult && (readyRows.length > 0 || unassignedRows.length > 0) && <form action={commitAction} className="attendance-import-confirm-form"
+        onSubmit={() => setCommittedPreviewAttempt(preview.attempt)}>
         <input type="hidden" name="tenantId" value={tenantId}/>
         {readyRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
