@@ -27,9 +27,10 @@ export default async function AttendanceImportPage({ params }: { params: Promise
       <h1 id="attendance-import-title">استيراد الحضور من ملف</h1>
       <p className="field-hint">ارفع الملف، واربط أعمدته، ثم راجع كل صف قبل الحفظ. تسجل الأحداث كأدلة حضور وتخضع لتفسير اليوم ومراجعته المعتاد.</p>
       <a className="secondary-button attendance-import-template" href="/templates/attendance-import.csv" download="attendance-import.csv">تنزيل قالب CSV</a>
+      <p><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</Link></p>
       <ul className="attendance-import-rules">
         <li>الأعمدة المطلوبة: رمز الموظف، اسم الفرع، وقت الحدث بفرق توقيت، الاتجاه، ومعرّف الحدث في المصدر.</li>
-        <li>اسم الفرع يجب أن يطابق فرعًا نشطًا وفريدًا، والتكليف الفعال للموظف في ذلك الوقت.</li>
+        <li>اسم الفرع يجب أن يطابق فرعًا نشطًا وفريدًا. إذا لم يوجد تكليف مطابق لموظف معروف، يُحفظ الحدث للمراجعة ولا يُربط بيوم تلقائيًا.</li>
         <li>الحد الأقصى 100 حدث و256 كيلوبايت. الصفوف المكررة لا تتكرر، والمرفوضة لا تُحفظ.</li>
       </ul>
       <AttendanceImportForm tenantId={tenantId}/>

@@ -46,7 +46,7 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
 SELECT is(public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('source_line_hint',3,'employee_code','CSV-1','site_name','Main','happened_at','not-a-timestamp','direction','in','source_event_key','bad-time')))->0->>'status','rejected','malformed timestamp is rejected with a row result');
 SELECT is(public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Ambiguous','happened_at',current_setting('test.event_in'),'direction','in','source_event_key','amb-site')))->0->>'status','rejected','ambiguous duplicate site names are rejected rather than choosing one');
-SELECT is(public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Other','happened_at',current_setting('test.event_in'),'direction','in','source_event_key','wrong-site')))->0->>'status','rejected','same-Tenant Site must also match the effective Assignment');
+SELECT is(public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Other','happened_at',current_setting('test.event_in'),'direction','in','source_event_key','wrong-site')))->0->>'status','unassigned','known same-Tenant employee and Site without a matching Assignment are retained for review');
 SELECT throws_ok($$SELECT public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000199','[]'::jsonb)$$,'42501','attendance_import_forbidden','cross-tenant preview is denied');
 SELECT set_config('test.confirm',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(
  jsonb_build_object('source_line_hint',2,'employee_code','CSV-1','site_name','Main','happened_at',current_setting('test.event_in'),'direction','in','source_event_key','device-001'),
@@ -71,6 +71,55 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000102',true);
 SELECT throws_ok($$SELECT public.preview_attendance_csv_import('e9110000-0000-4000-8000-000000000101','[{"employee_code":"CSV-1"}]'::jsonb)$$,'42501','attendance_import_forbidden','view-only attendance member cannot preview import');
 SELECT throws_ok($$SELECT public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101','[{"employee_code":"CSV-1"}]'::jsonb)$$,'42501','attendance_import_forbidden','view-only attendance member cannot confirm import');
+RESET ROLE;
+UPDATE people.work_assignments SET work_policy_template_id=NULL,work_policy_version=NULL
+ WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND employment_id=current_setting('test.employment')::uuid;
+SELECT set_config('test.instances_before_unassigned',(SELECT count(*)::text FROM time.work_instances WHERE tenant_id='e9110000-0000-4000-8000-000000000101'),true);
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT set_config('test.unassigned',public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(
+ jsonb_build_object('employee_code','CSV-1','site_name','Main','happened_at',current_setting('test.event_in'),'direction','out','source_event_key','device-unassigned')))::text,true);
+SELECT is((current_setting('test.unassigned')::jsonb->>'unassigned_count')::int,1,'known employee and site event without a matching policy is retained as unassigned');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.unassigned_attendance_evidence WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='device-unassigned'),1,'unassigned source event is durably stored');
+SELECT is((SELECT source_event_key FROM time.unassigned_attendance_evidence WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='device-unassigned'),'device-unassigned','source key remains attached to the retained evidence');
+SELECT is((SELECT direction FROM time.unassigned_attendance_evidence WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='device-unassigned'),'out','direction remains attached to the retained evidence');
+SELECT is((SELECT count(*)::int FROM time.unassigned_attendance_evidence WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='device-bad'),0,'unknown employee row is rejected without creating orphan evidence');
+SELECT is((SELECT count(*)::int FROM time.work_instances WHERE tenant_id='e9110000-0000-4000-8000-000000000101'),current_setting('test.instances_before_unassigned')::int,'unassigned event does not create or guess a Work Instance');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT is(public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Main','happened_at',current_setting('test.event_in'),'direction','out','source_event_key','device-unassigned')))->>'duplicate_count','1','reimporting identical unassigned evidence is idempotent');
+SELECT is(public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Main','happened_at',current_setting('test.event_out'),'direction','out','source_event_key','device-unassigned')))->>'rejected_count','1','conflicting payload cannot reuse an unassigned source key');
+SELECT is(jsonb_array_length(public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000101',NULL,50)->'items'),1,'authorized member can see the owned unassigned evidence queue');
+SELECT throws_ok($$SELECT public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000199',gen_random_uuid(),'محاولة ربط خارج الشركة')$$,'42501','attendance_unassigned_forbidden','cross-tenant attachment is denied');
+RESET ROLE;
+UPDATE people.work_assignments SET work_policy_template_id='e9150000-0000-4000-8000-000000000101',work_policy_version=1
+ WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND employment_id=current_setting('test.employment')::uuid;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT set_config('test.evidence_id',(public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000101',NULL,50)->'items'->0->>'id'),true);
+SELECT is(public.confirm_attendance_csv_import('e9110000-0000-4000-8000-000000000101',jsonb_build_array(jsonb_build_object('employee_code','CSV-1','site_name','Main','happened_at',current_setting('test.event_in'),'direction','out','source_event_key','device-unassigned')))->>'duplicate_count','1','fixed policy does not let an ordinary reimport bypass explicit attachment review');
+RESET ROLE;
+UPDATE platform_core.tenant_sites SET display_name='Main renamed'
+ WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND id='e9140000-0000-4000-8000-000000000101';
+UPDATE people.employees SET employee_code='CSV-1-RENAMED'
+ WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND id=(current_setting('test.employee')::jsonb->>'employee_id')::uuid;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT set_config('test.attach',public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.evidence_id')::uuid,'تمت مراجعة التكليف والسياسة')::text,true);
+SELECT is(current_setting('test.attach')::jsonb->>'status','attached','reviewer can explicitly attach evidence after effective policy is fixed');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.manual_punches WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND source_event_key='device-unassigned' AND source_type='import'),1,'resolution creates one canonical imported punch with original source key');
+SELECT is((SELECT count(*)::int FROM time.unassigned_attendance_resolutions WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND unassigned_evidence_id=current_setting('test.evidence_id')::uuid),1,'explicit attachment retains append-only resolution history');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000101',true);
+SELECT is(public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.evidence_id')::uuid,'تمت مراجعة التكليف والسياسة')->>'status','already_attached','repeating attachment returns the original resolution');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9110000-0000-4000-8000-000000000101' AND event_key='attendance.import.unassigned.attached' AND actor_user_id='e9100000-0000-4000-8000-000000000101'),1,'attachment audit records the acting reviewer');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9100000-0000-4000-8000-000000000102',true);
+SELECT throws_ok($$SELECT public.attach_unassigned_attendance_evidence('e9110000-0000-4000-8000-000000000101',current_setting('test.evidence_id')::uuid,'محاولة بلا صلاحية')$$,'42501','attendance_unassigned_forbidden','view-only member cannot attach unassigned evidence');
+SELECT throws_ok($$SELECT public.attendance_unassigned_evidence_queue('e9110000-0000-4000-8000-000000000199',NULL,50)$$,'42501','attendance_unassigned_forbidden','cross-tenant unassigned queue is denied');
 RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;

@@ -22,6 +22,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   const [commit, commitAction] = useActionState(confirmAttendanceCsv, emptyCommit());
   const rows = commit.state === 'processed' ? commit.rows : preview.rows;
   const readyRows = rows.filter((row) => row.status === 'ready');
+  const unassignedRows = rows.filter((row) => row.status === 'unassigned');
   const rejectedRows = rows.filter((row) => row.status === 'rejected');
 
   function readHeaders(file: File | undefined) {
@@ -69,9 +70,9 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
 
     {preview.rows.length > 0 && <section className="attendance-import-preview" aria-live="polite">
       <h2>{commit.state === 'processed' ? 'نتيجة الحفظ' : 'معاينة الملف'}</h2>
-      <p>{commit.state === 'processed' ? 'مقبول:' : 'جاهز للحفظ:'} {commit.state === 'processed' ? commit.accepted : preview.ready} · تحذير/مكرر: {commit.state === 'processed' ? commit.duplicate : preview.duplicate} · مرفوض: {commit.state === 'processed' ? commit.rejected : preview.rejected}</p>
+      <p>{commit.state === 'processed' ? 'مقبول:' : 'جاهز للحفظ:'} {commit.state === 'processed' ? commit.accepted : preview.ready} · بانتظار التكليف: {commit.state === 'processed' ? commit.unassigned : preview.unassigned} · مكرر: {commit.state === 'processed' ? commit.duplicate : preview.duplicate} · مرفوض: {commit.state === 'processed' ? commit.rejected : preview.rejected}</p>
       {commit.error && <p className="form-message error-message" role="alert">{commit.error}</p>}
-      {commit.state === 'processed' && <p className="form-message" role="status">تم حفظ الصفوف المقبولة فقط. الأحداث المرفوضة لم تُحفظ.</p>}
+      {commit.state === 'processed' && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث المرفوضة لم تُحفظ.</p>}
       {rejectedRows.length > 0 && <button className="secondary-button" type="button" onClick={() => downloadRejectReport(rejectedRows)}>تنزيل تقرير الأحداث المرفوضة</button>}
       <div className="attendance-import-table-wrap"><table className="attendance-import-table"><thead><tr>
         <th>سطر الملف</th><th>رمز الموظف</th><th>الفرع</th><th>وقت الحدث</th><th>الاتجاه</th><th>الحالة والملاحظات</th>
@@ -79,11 +80,15 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
         <td>{row.source_line_hint}</td><td><bdi>{row.employee_code}</bdi></td><td>{row.site_name}</td><td><bdi>{row.happened_at}</bdi></td><td>{row.direction === 'in' ? 'دخول' : row.direction === 'out' ? 'خروج' : row.direction}</td>
         <td>{statusLabel(row.status)}{[...row.errors, ...row.warnings].length > 0 && <small className="attendance-import-note">{[...row.errors, ...row.warnings].join(' · ')}</small>}</td>
       </tr>)}</tbody></table></div>
-      {commit.state !== 'processed' && readyRows.length > 0 && <form action={commitAction} className="attendance-import-confirm-form">
+      {commit.state !== 'processed' && (readyRows.length > 0 || unassignedRows.length > 0) && <form action={commitAction} className="attendance-import-confirm-form">
         <input type="hidden" name="tenantId" value={tenantId}/>
         {readyRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
           <span>حفظ تسجيل {row.direction === 'in' ? 'الدخول' : 'الخروج'} للموظف <bdi>{row.employee_code}</bdi> في <bdi>{row.work_date ?? row.happened_at}</bdi></span>
+        </label>)}
+        {unassignedRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
+          <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
+          <span>حفظ الحدث في قائمة «بلا تكليف» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
         </label>)}
         <p className="field-hint">تُفسر الأحداث داخل نافذة Work Instance المطابقة. وقد يتحول اليوم إلى حالة تحتاج مراجعة إذا اكتملت به بصمة ناقصة.</p>
         <div className="workspace-form-actions"><SubmitButton label="تأكيد حفظ الأحداث المحددة" pendingLabel="جارٍ حفظ الأحداث…"/></div>
@@ -92,9 +97,9 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   </div>;
 }
 
-function emptyPreview(tenantId: string): PreviewState { return { tenantId, rows: [], ready: 0, duplicate: 0, rejected: 0, error: '', attempt: 0 }; }
-function emptyCommit(): ConfirmState { return { state: 'idle', accepted: 0, duplicate: 0, rejected: 0, rows: [], error: '', attempt: 0 }; }
-function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
+function emptyPreview(tenantId: string): PreviewState { return { tenantId, rows: [], ready: 0, unassigned: 0, duplicate: 0, rejected: 0, error: '', attempt: 0 }; }
+function emptyCommit(): ConfirmState { return { state: 'idle', accepted: 0, unassigned: 0, duplicate: 0, rejected: 0, rows: [], error: '', attempt: 0 }; }
+function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', unassigned: 'بلا تكليف', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
 function downloadRejectReport(rows: ImportRow[]) {
   const quote = (value: unknown) => {
     let text = String(value ?? '');
