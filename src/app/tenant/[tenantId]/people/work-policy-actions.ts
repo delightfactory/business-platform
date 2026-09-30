@@ -1,0 +1,56 @@
+'use server';
+
+import { redirect } from 'next/navigation';
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+
+export async function saveWorkPolicyAction(formData: FormData) {
+  const tenantId = text(formData, 'tenantId');
+  const templateId = text(formData, 'templateId') || null;
+  const code = text(formData, 'code');
+  const name = text(formData, 'name');
+  const kind = text(formData, 'kind');
+  const days = formData.getAll('workDays').map(Number).filter((day) => Number.isInteger(day) && day >= 1 && day <= 7);
+  if (!isUuid(tenantId) || (templateId && !isUuid(templateId)) || !code || !name || !['fixed', 'flexible'].includes(kind) || !days.length) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`/tenant/${tenantId}/people/work-policies?state=setup`);
+  const { error } = await supabase.rpc('save_time_work_policy', {
+    p_tenant_id: tenantId, p_template_id: templateId, p_code: code, p_name: name, p_kind: kind,
+    p_timezone: text(formData, 'timezone') || 'Africa/Cairo', p_work_days: days,
+    p_start: kind === 'fixed' ? text(formData, 'shiftStart') || null : null,
+    p_end: kind === 'fixed' ? text(formData, 'shiftEnd') || null : null,
+    p_next_day: kind === 'fixed' && formData.get('nextDay') === 'on',
+    p_break: Number(text(formData, 'breakMinutes') || '0'),
+    p_required: kind === 'flexible' ? Number(text(formData, 'requiredMinutes')) : null,
+    p_earliest: kind === 'flexible' ? text(formData, 'earliestPunch') || null : null,
+    p_latest: kind === 'flexible' ? text(formData, 'latestPunch') || null : null,
+    p_before: Number(text(formData, 'attributionBefore') || '120'),
+    p_after: Number(text(formData, 'attributionAfter') || '360'),
+  });
+  if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=${error.message.includes('attendance_policy_manage_forbidden') ? 'forbidden' : 'failed'}`);
+  redirect(`/tenant/${tenantId}/people/work-policies?state=saved`);
+}
+
+export async function setWorkPolicyActiveAction(formData: FormData) {
+  const tenantId = text(formData, 'tenantId'); const policyId = text(formData, 'policyId');
+  const active = text(formData, 'active') === 'true';
+  if (!isUuid(tenantId) || !isUuid(policyId)) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`/tenant/${tenantId}/people/work-policies?state=setup`);
+  const { error } = await supabase.rpc('set_time_work_policy_active', { p_tenant_id: tenantId, p_template_id: policyId, p_active: active });
+  if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=failed`);
+  redirect(`/tenant/${tenantId}/people/work-policies?state=${active ? 'activated' : 'deactivated'}`);
+}
+
+export async function assignWorkPolicyAction(formData: FormData) {
+  const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const employmentId = text(formData, 'employmentId'); const policyId = text(formData, 'policyId'); const effectiveDate = text(formData, 'effectiveDate');
+  if (!isUuid(tenantId) || !isUuid(employeeId) || !isUuid(employmentId) || !isUuid(policyId) || !/^\d{4}-\d{2}-\d{2}$/.test(effectiveDate)) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=failed`);
+  const { error } = await supabase.rpc('assign_people_work_policy', { p_tenant_id: tenantId, p_employment_id: employmentId, p_policy_id: policyId, p_effective_date: effectiveDate });
+  if (error) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=${error.message.includes('people_assignment_future_exists') ? 'pending' : 'failed'}`);
+  redirect(`/tenant/${tenantId}/people/${employeeId}?policy=assigned`);
+}
+
+function text(data: FormData, key: string) { return String(data.get(key) ?? '').trim(); }
+function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }

@@ -9,7 +9,7 @@ import { changeTenantEntitlementAction } from '../actions';
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string }>;
-type Decision = { capability_key: 'hr.people' | 'hr.payroll'; status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null; evaluator_enabled: boolean; last_decision: boolean | null; last_decision_valid_from: string | null; last_decision_valid_until: string | null };
+type Decision = { capability_key: 'hr.people' | 'hr.payroll' | 'hr.attendance'; status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null; evaluator_enabled: boolean; last_decision: boolean | null; last_decision_valid_from: string | null; last_decision_valid_until: string | null };
 type Snapshot = { tenant_id: string; display_name: string; lifecycle_state: string; entitlements: Decision[] };
 
 export default async function TenantEntitlementsPage({ params, searchParams }: { params: Params; searchParams: Query }) {
@@ -28,7 +28,7 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
   const tenant = data as Snapshot;
-  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== 2) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== 3) return <Status title="بيانات الإتاحة غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
   const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
@@ -50,7 +50,7 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
 
 function DecisionCard({ tenantId, decision, peopleAvailable }: { tenantId: string; decision: Decision; peopleAvailable: boolean }) {
   const people = decision.capability_key === 'hr.people';
-  const label = people ? 'إدارة الموارد البشرية' : 'الرواتب';
+  const label = people ? 'إدارة الموارد البشرية' : decision.capability_key === 'hr.payroll' ? 'الرواتب' : 'الحضور والسياسات';
   const enabled = decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled;
   const state = decision.status === 'conflict' || decision.status === 'future_conflict' ? 'تحتاج مراجعة'
     : enabled ? 'متاحة' : decision.is_granted && !decision.evaluator_enabled ? 'غير فعّالة' : 'غير متاحة';
@@ -72,8 +72,8 @@ function DecisionCard({ tenantId, decision, peopleAvailable }: { tenantId: strin
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
         <label htmlFor={`${decision.capability_key}-decision`}>القرار</label>
-        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || peopleAvailable) ? 'grant' : 'deny'}>
-          <option value="grant" disabled={!people && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
+        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
+          <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
         </select>
         <label htmlFor={`${decision.capability_key}-expiry`}>آخر يوم سريان (اختياري، بتوقيت القاهرة)</label>
         <input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />

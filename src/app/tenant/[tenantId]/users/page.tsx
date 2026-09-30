@@ -19,6 +19,7 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'people.compensation_reader.v1', label: 'قارئ الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
   { key: 'people.compensation_manager.v1', label: 'مدير الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
   { key: 'people.import_operator.v1', label: 'مشغّل استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
+  { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الحزمة إدارة الموظفين أو الاطلاع على الأجور.' },
 ] as const;
 
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {

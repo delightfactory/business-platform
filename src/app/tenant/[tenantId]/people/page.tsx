@@ -26,6 +26,9 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   const accessResult = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
   if (accessResult.error || !accessResult.data) return <Unavailable tenantId={tenantId} />;
   const access = accessResult.data as unknown as Access;
+  const policyResult = await supabase.rpc('time_work_policy_catalog', { p_tenant_id: tenantId });
+  const canManagePolicies = !policyResult.error && policyResult.data && typeof policyResult.data === 'object'
+    && !Array.isArray(policyResult.data) && (policyResult.data as { can_manage?: boolean }).can_manage === true;
   const canAdd = access.can_manage && access.can_manage_employment && access.can_manage_compensation;
   const canImport = canAdd && access.can_view_compensation && access.can_import;
   const directoryResult = invalidQuery || invalidPage ? null : await supabase.rpc('people_directory_page', {
@@ -38,6 +41,7 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
     <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
       <h1>الموظفون</h1><p>ملفات الموظفين وتفاصيل عملهم في الشركة.</p></div>
       {access.can_manage_org && <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</Link>}
+      {canManagePolicies && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>سياسات الدوام</Link>}
       {canImport && <Link className="secondary-button" href={`/tenant/${tenantId}/people/import`}>استيراد الموظفين</Link>}
       {canAdd && <Link className="primary-button" href={`/tenant/${tenantId}/people/new`}>إضافة موظف</Link>}
     </header>

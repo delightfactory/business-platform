@@ -7,6 +7,7 @@ import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } fro
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
 import { EmployeeUserLinkPanel, type AccountProvision, type LinkSnapshot, type Options as EmployeeUserLinkOptions } from './EmployeeUserLinkPanel';
+import { assignWorkPolicyAction } from '../work-policy-actions';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
@@ -15,7 +16,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -41,7 +42,7 @@ export default async function EmployeePage({ params, searchParams }: {
     && canManageWorkContext && canManageCompensation;
   const linkQuery = typeof query.linkQuery === 'string' ? query.linkQuery.slice(0, 100) : '';
   const linkPage = Math.min(1000, Math.max(1, Number.parseInt(query.linkPage ?? '1', 10) || 1));
-  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult, linkSnapshotResult, linkOptionsResult, membershipSnapshotResult] = await Promise.all([
+  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult, linkSnapshotResult, linkOptionsResult, membershipSnapshotResult, workPolicyResult] = await Promise.all([
     employmentId ? supabase.rpc('people_work_assignment_history', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
@@ -64,6 +65,7 @@ export default async function EmployeePage({ params, searchParams }: {
     }) : Promise.resolve({ data: null, error: null }),
     access.can_manage === true ? supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId })
       : Promise.resolve({ data: null, error: null }),
+    employmentId ? supabase.rpc('people_work_policy_panel', { p_tenant_id: tenantId, p_employment_id: employmentId }) : Promise.resolve({ data: null, error: null }),
   ]);
   const linkSnapshot = linkSnapshotResult.data && typeof linkSnapshotResult.data === 'object'
     ? linkSnapshotResult.data as unknown as LinkSnapshot : null;
@@ -99,6 +101,8 @@ export default async function EmployeePage({ params, searchParams }: {
   const rehireOptionsError = Boolean(canManageLifecycle && employee.status === 'ended'
     && (rehireOptionsResult.error || !rehireOptions));
   const today = cairoToday();
+  const workPolicyPanel = workPolicyResult.data && typeof workPolicyResult.data === 'object'
+    ? workPolicyResult.data as { history: { assignment_id: string; policy_id: string | null; version: number | null; name: string | null; code: string | null; valid_from: string; valid_until: string | null }[]; options: { id: string; code: string; name: string; version: number }[]; can_assign: boolean; can_manage_catalog: boolean } : null;
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
     {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
@@ -139,6 +143,26 @@ export default async function EmployeePage({ params, searchParams }: {
       employmentActive={employee.employment?.status === 'active'}
       history={assignmentHistory} historyError={historyError} options={transferOptions} optionsError={optionsError}
       canManage={canManageWorkContext} initialDate={today} />
+    {workPolicyPanel && <section className="workspace-records-panel" aria-labelledby="work-policy-heading">
+      <h2 id="work-policy-heading">سياسة الدوام</h2>
+      <p className="record-meta">تسجيل مرجع السياسة فقط؛ تحتفظ وحدة الحضور بإعداداتها واحتساب نتائجها.</p>
+      {workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <li className="assignment-history-item" key={row.assignment_id}>
+        <strong>{row.name ? `${row.name} · ${row.code} · الإصدار ${row.version}` : 'دون سياسة دوام محددة'}</strong>
+        <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
+      </li>)}</ol> : <p className="empty-state">لا يوجد سجل سياسة دوام.</p>}
+      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && <form action={assignWorkPolicyAction} className="work-policy-assignment-form">
+        <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
+        <div className="work-policy-assignment-field"><label htmlFor="work-policy-id">قالب الدوام</label><select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>
+        <div className="work-policy-assignment-field"><label htmlFor="work-policy-date">تاريخ بدء السريان</label><input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></div>
+        <p className="field-hint">إذا كان هذا أول تكليف ويبدأ اليوم، تُصحح السياسة في سجله. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
+        {query.policy === 'failed' && <p className="form-message error-message" role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}
+        {query.policy === 'pending' && <p className="form-message error-message" role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}
+        <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ سياسة الدوام</button></div>
+      </form>}
+      {workPolicyPanel.can_manage_catalog && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</Link>}
+    </section>}
+    {query.policy === 'assigned' && <FeedbackToast key="policy-assigned" message="تم حفظ سياسة الدوام وسجل تاريخ سريانها."/>}
+    {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
     {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id}
       employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
       history={compensationHistory} historyError={compensationHistoryError}

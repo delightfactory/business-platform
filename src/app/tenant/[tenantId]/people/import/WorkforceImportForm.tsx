@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { confirmWorkforceImport, validateWorkforceCsv, type CommitImportState, type PreviewImportState } from '../import-actions';
 
 type PreviewRow = PreviewImportState['rows'][number];
 
 export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
+  const [fileName, setFileName] = useState('');
   const [preview, previewAction] = useActionState(validateWorkforceCsv, emptyPreview(tenantId));
   const [commit, commitAction] = useActionState(confirmWorkforceImport, emptyCommit());
   const importableRows = preview.rows.filter((row) => row.importable);
@@ -19,9 +20,16 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
   return <div className="workforce-import">
     <form action={previewAction} className="auth-form compact-form">
       <input type="hidden" name="tenantId" value={tenantId} />
-      <label htmlFor="workforce-csv">ملف CSV</label>
-      <input id="workforce-csv" name="file" type="file" accept=".csv,text/csv" required />
-      <p className="field-hint">الحد الأقصى 256 كيلوبايت و100 صف. سيُفحص الملف قبل أي حفظ.</p>
+      <div className="workforce-file-control">
+        <span className="workforce-file-label">ملف CSV</span>
+        <input id="workforce-csv" className="workforce-file-native" name="file" type="file" accept=".csv,text/csv" required
+          aria-describedby="workforce-csv-hint" onChange={(event) => setFileName(event.currentTarget.files?.[0]?.name ?? '')} />
+        <label className="workforce-file-trigger" htmlFor="workforce-csv">
+          <span className="secondary-button">اختيار ملف</span>
+          <span className="workforce-file-name" aria-live="polite">{fileName || 'لم يتم اختيار ملف'}</span>
+        </label>
+      </div>
+      <p id="workforce-csv-hint" className="field-hint">الحد الأقصى 256 كيلوبايت و100 صف. سيُفحص الملف قبل أي حفظ.</p>
       {preview.error && <p className="form-message error-message" role="alert">{preview.error}</p>}
       <SubmitButton label="فحص الملف" pendingLabel="جارٍ فحص الصفوف…" />
     </form>

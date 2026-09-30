@@ -64,10 +64,18 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
         <label htmlFor="employment-end-date">آخر يوم عمل</label><input id="employment-end-date" name="endDate" type="date" required
           min={employmentStartDate ?? today} max={today} defaultValue={endState.endDate} />
-        <p className="field-hint">يمكن اختيار اليوم أو تاريخ سابق. لا يدعم هذا المسار إنهاءً مقررًا للمستقبل. في التاريخ السابق، لا بد ألا تكون قد بدأت تكليفات أو تغييرات أجر لاحقة؛ ويرفض النظام الحالات التي تتطلب إعادة تشكيل هذا السجل. تُحفظ العلاقة والتكليفات والأجور حتى آخر يوم، وتُلغى التغييرات المستقبلية غير النافذة.</p>
-        <div className="form-message"><strong>قبل الإنهاء:</strong> لا يتصل هذا المسار حاليًا بتسويات Payroll أو أرصدة الإجازات أو تمويل الموظف، ولا يرسل تصحيحًا تلقائيًا إلى فترة مقفلة. راجع Payroll للتسوية النهائية أو طلب التصحيح عند اختيار تاريخ سابق، ونسّق مراجعة الإجازات والتمويل مع مسؤولي تلك المجالات.</div>
+        <section className="employment-end-notes" aria-label="تنبيهات قبل إنهاء علاقة العمل">
+          <h3>حدود هذا الإجراء</h3>
+          <ul>
+            <li>يمكن اختيار اليوم أو تاريخ سابق؛ لا يدعم الإنهاء بتاريخ مستقبلي.</li>
+            <li>قد يرفض النظام التاريخ السابق إذا وُجد تكليف أو تغيير أجر لاحق يحتاج إلى إعادة ترتيب.</li>
+            <li>تظل سجلات العمل والأجر محفوظة حتى آخر يوم، وتُلغى التغييرات المستقبلية غير النافذة.</li>
+          </ul>
+          <h3>مراجعات مطلوبة</h3>
+          <p>لا يحسب النظام تسوية Payroll أو رصيد الإجازات أو التمويل، ولا يصحح فترة Payroll مقفلة تلقائيًا. راجع Payroll للتسوية النهائية أو تصحيح الفترة عند تسجيل تاريخ سابق، ونسّق الإجازات والتمويل مع مسؤوليها.</p>
+        </section>
         <label className="checkbox-field"><input name="acknowledgeHandoff" type="checkbox" required />
-          <span>أفهم أن النظام لا يحسب أو يسوّي مستحقات Payroll أو الإجازات أو التمويل، وأن التاريخ السابق قد يتطلب مراجعة Payroll وتصحيحًا يدويًا.</span></label>
+          <span>أؤكد أنني راجعت هذه الآثار ونسّقت مع المسؤولين، وأفهم أن التاريخ السابق قد يتطلب تصحيحًا يدويًا لدى Payroll.</span></label>
         {endState.error && <p className="form-message error-message" role="alert">{endState.error}</p>}
         <div className="workspace-form-actions"><SubmitButton label="إنهاء علاقة العمل" pendingLabel="جارٍ إنهاء العلاقة…" /></div>
       </form>
