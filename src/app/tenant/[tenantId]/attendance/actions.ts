@@ -78,10 +78,19 @@ export async function reviewAttendanceOvertimeAction(formData: FormData) {
   }
   const supabase = await createSupabaseServerClient();
   if (!supabase) move(tenantId, instanceId, 'setup');
+  if (decision === 'approved') {
+    const buckets = ['ordinary_day', 'ordinary_night', 'weekly_rest', 'official_holiday'].map((name) => Number(field(formData, name)));
+    if (buckets.some((value) => !Number.isInteger(value) || value < 0)) move(tenantId, instanceId, 'overtime-classification-input');
+    const { error } = await supabase.rpc('classify_attendance_overtime', {
+      p_tenant_id: tenantId, p_candidate_id: candidateId, p_ordinary_day: buckets[0], p_ordinary_night: buckets[1],
+      p_weekly_rest: buckets[2], p_official_holiday: buckets[3], p_reason: reason,
+    });
+    move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-classified');
+  }
   const { error } = await supabase.rpc('review_attendance_overtime', {
     p_tenant_id: tenantId, p_candidate_id: candidateId, p_decision: decision, p_reason: reason,
   });
-  move(tenantId, instanceId, error ? mapOvertimeError(error.message) : decision === 'approved' ? 'overtime-approved' : 'overtime-rejected');
+  move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-rejected');
 }
 
 export type BulkApprovalState = {
@@ -141,6 +150,9 @@ function mapOvertimeError(message: string) {
   if (message.includes('candidate_stale')) return 'overtime-stale';
   if (message.includes('already_reviewed')) return 'overtime-reviewed';
   if (message.includes('review_input_invalid')) return 'overtime-input';
+  if (message.includes('classification_sum_invalid')) return 'overtime-classification-sum';
+  if (message.includes('classification_required')) return 'overtime-classification-required';
+  if (message.includes('classification_invalid')) return 'overtime-classification-input';
   return 'failed';
 }
 function move(tenantId: string, instanceId: string, state: string): never {

@@ -72,7 +72,7 @@ SELECT set_config('test.approved_one',public.approve_attendance_fact('e9110000-0
 SELECT set_config('test.candidate_one',(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'id'),true);
 SELECT is((public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'raw_minutes')::int,41,'candidate uses actual overnight minutes beyond the frozen scheduled end');
 SELECT is((public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'candidate_minutes')::int,30,'41 eligible minutes round down to 30 by the frozen 15-minute increment');
-SELECT is(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'category','ordinary','unsupported night/rest/holiday rules do not fabricate a category');
+SELECT is(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'decision','pending','candidate remains unclassified until a reviewer allocates its minutes');
 SELECT is(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'decision','pending','eligible overtime requires an explicit reviewer decision');
 SELECT throws_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'id')::uuid,'approved','')$$,'22023','attendance_overtime_review_input_invalid','approval reason is mandatory');
 SELECT throws_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000099',(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'id')::uuid,'approved','محاولة عابرة')$$,'42501','attendance_overtime_review_forbidden','cross-tenant overtime review is denied');
@@ -85,11 +85,25 @@ SELECT set_config('test.candidate_two',(public.attendance_overtime_instance_pane
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9010000-0000-4000-8000-000000000003',true);
 SELECT throws_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,'approved','ليس مراجعًا')$$,'42501','attendance_overtime_review_forbidden','attendance reader cannot review overtime');
+SELECT throws_ok($$SELECT public.classify_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,10,5,5,10,'ليس مراجعًا')$$,'42501','attendance_overtime_review_forbidden','attendance reader cannot classify overtime');
 RESET ROLE;
+INSERT INTO time.attendance_overtime_review_events(tenant_id,candidate_id,decision,reason,actor_user_id)
+VALUES('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,'approved','اعتماد تاريخي قبل فرض التصنيف','e9010000-0000-4000-8000-000000000002');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9010000-0000-4000-8000-000000000002',true);
-SELECT lives_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,'approved','تمت مراجعة الكمية وموافقتها')$$,'authorized reviewer can approve a candidate with a reason');
-SELECT throws_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,'rejected','تكرار القرار')$$,'23514','attendance_overtime_already_reviewed','a reviewed candidate cannot be decided twice');
+SELECT is(public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->>'decision','classification_pending','historical approved candidate without category is surfaced for classification');
+SELECT set_config('test.legacy_pending_summary',public.attendance_overtime_day_summary('e9110000-0000-4000-8000-000000000001',current_setting('test.operational_date')::date,ARRAY[current_setting('test.instance_one')::uuid])::text,true);
+SELECT is(coalesce((current_setting('test.legacy_pending_summary')::jsonb->'pending_by_instance'->>current_setting('test.instance_one'))::int,0),1,'unclassified historical approval remains in overtime review count');
+SELECT lives_ok($$SELECT public.classify_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,10,5,5,10,'تمت مراجعة الفئات الأربع')$$,'historical approval can receive an explicit complete classification without rewriting its decision event');
+SELECT is((public.attendance_overtime_instance_panel('e9110000-0000-4000-8000-000000000001',current_setting('test.instance_one')::uuid)->'items'->0->'classification'->>'ordinary_day_minutes')::int,10,'classified history exposes its daytime allocation');
+RESET ROLE;
+SELECT is((SELECT count(*)::int FROM time.attendance_overtime_review_events WHERE tenant_id='e9110000-0000-4000-8000-000000000001' AND candidate_id=current_setting('test.candidate_one')::uuid),1,'classification preserves rather than rewrites the historical approval');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9010000-0000-4000-8000-000000000002',true);
+SELECT is((public.classify_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_one')::uuid,10,5,5,10,'تمت مراجعة الفئات الأربع')->>'unchanged')::boolean,true,'identical classification retry is idempotent');
+SELECT throws_ok($$SELECT public.classify_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_two')::uuid,10,10,10,10,'توزيع ناقص')$$,'23514','attendance_overtime_classification_sum_invalid','classification must sum exactly to candidate minutes');
+SELECT throws_ok($$SELECT public.classify_attendance_overtime('e9110000-0000-4000-8000-000000000099',current_setting('test.candidate_two')::uuid,10,10,10,15,'محاولة عابرة')$$,'42501','attendance_overtime_review_forbidden','cross-tenant overtime classification is denied');
+SELECT throws_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_two')::uuid,'approved','اعتماد بلا فئات')$$,'23514','attendance_overtime_classification_required','legacy approval RPC cannot bypass explicit classification');
 SELECT lives_ok($$SELECT public.review_attendance_overtime('e9110000-0000-4000-8000-000000000001',current_setting('test.candidate_two')::uuid,'rejected','لا أوافق على سبب الزيادة المسجل')$$,'reviewer can reject with a reason');
 RESET ROLE;
 SELECT is((SELECT decision FROM time.attendance_overtime_review_events WHERE tenant_id='e9110000-0000-4000-8000-000000000001' AND candidate_id=current_setting('test.candidate_two')::uuid),'rejected','rejection is stored as an immutable decision');
@@ -99,7 +113,7 @@ SELECT set_config('test.pending_summary',public.attendance_overtime_day_summary(
 SELECT is(coalesce((current_setting('test.pending_summary')::jsonb->'pending_by_instance'->>current_setting('test.instance_one'))::int,0),0,'approved overtime is removed from the day review count');
 SELECT is(coalesce((current_setting('test.pending_summary')::jsonb->'pending_by_instance'->>current_setting('test.instance_two'))::int,0),0,'rejected overtime is removed from the day review count');
 SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9110000-0000-4000-8000-000000000001' AND actor_user_id='e9010000-0000-4000-8000-000000000002' AND event_key LIKE 'overtime.candidate.%'),2,'review decisions record reviewer identity in the audit stream');
-SELECT is((SELECT details->>'reason' FROM time.attendance_audit_events WHERE tenant_id='e9110000-0000-4000-8000-000000000001' AND actor_user_id='e9010000-0000-4000-8000-000000000002' AND event_key='overtime.candidate.approved'),'تمت مراجعة الكمية وموافقتها','approval reason is retained in audit');
+SELECT is((SELECT details->>'reason' FROM time.attendance_audit_events WHERE tenant_id='e9110000-0000-4000-8000-000000000001' AND actor_user_id='e9010000-0000-4000-8000-000000000002' AND event_key='overtime.candidate.classified'),'تمت مراجعة الفئات الأربع','classification reason is retained in audit');
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9010000-0000-4000-8000-000000000001',true);
