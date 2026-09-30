@@ -7,7 +7,7 @@ import { saveWorkPolicyAction, setWorkPolicyActiveAction } from '../work-policy-
 import { WorkPolicyEditor } from './WorkPolicyEditor';
 
 export const dynamic = 'force-dynamic';
-type Policy = { id: string; code: string; is_active: boolean; head_version: number; name: string; schedule_kind: 'fixed' | 'flexible'; timezone_name: string; work_days: number[]; shift_start: string | null; shift_end: string | null; ends_next_day: boolean; break_minutes: number; required_minutes: number | null; earliest_punch: string | null; latest_punch: string | null; attribution_before_minutes: number; attribution_after_minutes: number };
+type Policy = { id: string; code: string; is_active: boolean; head_version: number; name: string; schedule_kind: 'fixed' | 'flexible'; timezone_name: string; work_days: number[]; shift_start: string | null; shift_end: string | null; ends_next_day: boolean; break_minutes: number; required_minutes: number | null; earliest_punch: string | null; latest_punch: string | null; attribution_before_minutes: number; attribution_after_minutes: number; overtime_enabled: boolean; overtime_minimum_minutes: number; overtime_rounding_minutes: number };
 export default async function WorkPoliciesPage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: Promise<{ state?: string }> }) {
  const { tenantId } = await params; const query = await searchParams; const supabase = await createSupabaseServerClient();
  if (!supabase) return <PageFrame><section className="auth-card"><h1>تعذر فتح سياسات العمل</h1></section></PageFrame>;
@@ -26,6 +26,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
    <div className="workspace-record-heading"><h3>{policy.name}</h3><span className={`entity-status ${policy.is_active?'is-active':'is-inactive'}`}>{policy.is_active?'متاح للتعيين':'موقوف'}</span></div>
    <p>الرمز: <bdi>{policy.code}</bdi> · الإصدار {policy.head_version} · {policy.schedule_kind==='fixed'?'وردية ثابتة':'ساعات مرنة'}</p>
    <p>{policy.schedule_kind==='fixed'?`${policy.shift_start} – ${policy.shift_end}${policy.ends_next_day?' (اليوم التالي)':''}`:`${policy.required_minutes} دقيقة متوقعة`} · {policy.timezone_name}</p>
+   <p>{policy.overtime_enabled ? `مرشح الإضافي مفعّل · حد ${policy.overtime_minimum_minutes} د · تقريب ${policy.overtime_rounding_minutes} د` : 'مرشح العمل الإضافي غير مفعّل'}</p>
  {result.can_manage && <><details className="work-policy-revision">
       <summary className="secondary-button">إنشاء إصدار جديد</summary>
       <p className="field-hint">التغييرات تحفظ إصدارًا جديدًا؛ الإصدارات السابقة تبقى محفوظة.</p>

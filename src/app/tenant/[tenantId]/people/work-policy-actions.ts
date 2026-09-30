@@ -9,8 +9,13 @@ export async function saveWorkPolicyAction(formData: FormData) {
   const code = text(formData, 'code');
   const name = text(formData, 'name');
   const kind = text(formData, 'kind');
+  const overtimeEnabled = formData.get('overtimeEnabled') === 'on';
+  const overtimeMinimum = Number(text(formData, 'overtimeMinimum') || '30');
+  const overtimeRounding = Number(text(formData, 'overtimeRounding') || '15');
   const days = formData.getAll('workDays').map(Number).filter((day) => Number.isInteger(day) && day >= 1 && day <= 7);
-  if (!isUuid(tenantId) || (templateId && !isUuid(templateId)) || !code || !name || !['fixed', 'flexible'].includes(kind) || !days.length) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
+  if (!isUuid(tenantId) || (templateId && !isUuid(templateId)) || !code || !name || !['fixed', 'flexible'].includes(kind) || !days.length
+    || !Number.isInteger(overtimeMinimum) || overtimeMinimum < 15 || overtimeMinimum > 480
+    || !Number.isInteger(overtimeRounding) || overtimeRounding < 5 || overtimeRounding > 60 || overtimeRounding > overtimeMinimum) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect(`/tenant/${tenantId}/people/work-policies?state=setup`);
   const { error } = await supabase.rpc('save_time_work_policy', {
@@ -25,6 +30,7 @@ export async function saveWorkPolicyAction(formData: FormData) {
     p_latest: kind === 'flexible' ? text(formData, 'latestPunch') || null : null,
     p_before: Number(text(formData, 'attributionBefore') || '120'),
     p_after: Number(text(formData, 'attributionAfter') || '360'),
+    p_overtime_enabled: overtimeEnabled, p_overtime_minimum: overtimeMinimum, p_overtime_rounding: overtimeRounding,
   });
   if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=${error.message.includes('attendance_policy_manage_forbidden') ? 'forbidden' : 'failed'}`);
   redirect(`/tenant/${tenantId}/people/work-policies?state=saved`);

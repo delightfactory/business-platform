@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ date?: string; cursor?: string }>;
-type DayRow = { id: string; employee_code: string; full_name: string; status: string; timezone_name: string; expected_start: string | null; expected_end: string | null; schedule_kind: string; required_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; worked_minutes: number | null; gross_worked_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null };
+type DayRow = { id: string; employee_code: string; full_name: string; status: string; timezone_name: string; expected_start: string | null; expected_end: string | null; schedule_kind: string; required_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; worked_minutes: number | null; gross_worked_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null; overtime_pending_count?: number };
 
 export default async function AttendanceDayPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
@@ -27,6 +27,12 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
     : await supabase.rpc('attendance_day_list', { p_tenant_id: tenantId, p_date: day, p_after: cursor, p_limit: 50 });
   if (result.error || !isObject(result.data)) return <PageFrame><Status title="تعذر تحميل اليوم" text="لم تتغير أي سجلات. حدّث الصفحة أو أعد المحاولة." /></PageFrame>;
   const rows = Array.isArray(result.data.items) ? result.data.items as DayRow[] : [];
+  if (rows.length) {
+    const summary = await supabase.rpc('attendance_overtime_day_summary', { p_tenant_id: tenantId, p_operational_date: day, p_instance_ids: rows.map((row) => row.id) });
+    if (!summary.error && isObject(summary.data) && isObject(summary.data.pending_by_instance)) {
+      for (const row of rows) row.overtime_pending_count = Number(summary.data.pending_by_instance[row.id] ?? 0);
+    }
+  }
   const nextCursor = typeof result.data.next_cursor === 'string' ? result.data.next_cursor : null;
   const hasMore = result.data.has_more === true;
   const moreHref = nextCursor ? `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}&cursor=${encodeURIComponent(nextCursor)}` : null;
@@ -47,6 +53,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
               {row.worked_minutes !== null && (row.status === 'ready' || row.status === 'approved') && (row.schedule_kind === 'flexible' ? <p className="record-meta">صافي العمل: {row.worked_minutes} من {row.required_minutes ?? '—'} دقيقة مطلوبة</p> : <p className="record-meta">التأخر: {row.late_minutes ?? 0} د · المغادرة المبكرة: {row.early_leave_minutes ?? 0} د · صافي العمل: {row.worked_minutes} د · الاستراحة المقررة: {row.scheduled_break_minutes ?? '—'} د</p>)}
               {row.exception_code === 'short_workday' && row.status !== 'approved' && <p className="form-message form-error">صافي المدة أقل من المطلوب؛ راجع اليوم قبل الاعتماد.</p>}
               {row.exception_code === 'absence_candidate' && row.status !== 'approved' && <p className="form-message form-error">انتهت الفترة بلا تسجيلات؛ راجع الحالة قبل إثبات الغياب.</p>}
+              {(row.overtime_pending_count ?? 0) > 0 && <p className="form-message form-error">يوجد مرشح عمل إضافي بانتظار المراجعة: {row.overtime_pending_count}</p>}
             </div><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</Link>
           </li>)}
         </ul>}

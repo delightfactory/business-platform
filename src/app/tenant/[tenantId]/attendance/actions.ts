@@ -66,6 +66,23 @@ export async function approveAttendanceAbsenceAction(formData: FormData) {
   move(tenantId, instanceId, error ? mapError(error.message) : 'absence-approved');
 }
 
+export async function reviewAttendanceOvertimeAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const instanceId = field(formData, 'instanceId');
+  const candidateId = field(formData, 'candidateId');
+  const decision = field(formData, 'decision');
+  const reason = field(formData, 'reason');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || !isUuid(candidateId) || !['approved', 'rejected'].includes(decision) || reason.length < 3 || reason.length > 500) {
+    move(tenantId, instanceId, 'overtime-input');
+  }
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) move(tenantId, instanceId, 'setup');
+  const { error } = await supabase.rpc('review_attendance_overtime', {
+    p_tenant_id: tenantId, p_candidate_id: candidateId, p_decision: decision, p_reason: reason,
+  });
+  move(tenantId, instanceId, error ? mapOvertimeError(error.message) : decision === 'approved' ? 'overtime-approved' : 'overtime-rejected');
+}
+
 function field(data: FormData, name: string) { return String(data.get(name) ?? '').trim(); }
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function mapError(message: string) {
@@ -77,6 +94,13 @@ function mapError(message: string) {
   if (message.includes('absence_not_eligible')) return 'stale';
   if (message.includes('stale')) return 'stale';
   if (message.includes('idempotency_conflict')) return 'conflict';
+  return 'failed';
+}
+function mapOvertimeError(message: string) {
+  if (message.includes('review_forbidden')) return 'overtime-forbidden';
+  if (message.includes('candidate_stale')) return 'overtime-stale';
+  if (message.includes('already_reviewed')) return 'overtime-reviewed';
+  if (message.includes('review_input_invalid')) return 'overtime-input';
   return 'failed';
 }
 function move(tenantId: string, instanceId: string, state: string): never {

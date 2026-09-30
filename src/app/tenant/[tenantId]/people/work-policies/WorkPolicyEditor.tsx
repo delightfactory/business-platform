@@ -20,6 +20,9 @@ type PolicySeed = {
   latest_punch: string | null;
   attribution_before_minutes: number;
   attribution_after_minutes: number;
+  overtime_enabled: boolean;
+  overtime_minimum_minutes: number;
+  overtime_rounding_minutes: number;
 };
 
 const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
@@ -115,6 +118,22 @@ export function WorkPolicyEditor({
         <div className="work-policy-field"><label htmlFor={`${idPrefix}-before`}>قبل بداية الجدول (دقيقة)</label><input id={`${idPrefix}-before`} name="attributionBefore" type="number" min="0" max="720" defaultValue={policy?.attribution_before_minutes ?? 120} /></div>
         <div className="work-policy-field"><label htmlFor={`${idPrefix}-after`}>بعد نهاية الجدول (دقيقة)</label><input id={`${idPrefix}-after`} name="attributionAfter" type="number" min="0" max="720" defaultValue={policy?.attribution_after_minutes ?? 360} /></div>
       </div>
+    </section>
+
+    <section className="work-policy-section" aria-labelledby={`${idPrefix}-overtime-heading`}>
+      <div className="work-policy-section-heading">
+        <h3 id={`${idPrefix}-overtime-heading`}>العمل الإضافي</h3>
+        <p>عند التفعيل، تُراجع الدقائق الزائدة عن نهاية الوردية أو مدة العمل المطلوبة يدويًا. يُقرّب المرشح لأسفل حسب الخطوة المحددة، ولا يُعتمد تلقائيًا.</p>
+      </div>
+      <label className="work-policy-check-option">
+        <input type="checkbox" name="overtimeEnabled" defaultChecked={policy?.overtime_enabled ?? false} />
+        <span>احتساب مرشح للعمل الإضافي وفق هذا القالب</span>
+      </label>
+      <div className="work-policy-grid work-policy-grid-narrow">
+        <div className="work-policy-field"><label htmlFor={`${idPrefix}-overtime-minimum`}>أقل مدة زائدة لإنشاء مرشح (دقيقة)</label><input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" defaultValue={policy?.overtime_minimum_minutes ?? 30} required /></div>
+        <div className="work-policy-field"><label htmlFor={`${idPrefix}-overtime-rounding`}>خطوة التقريب لأسفل (دقيقة)</label><input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" defaultValue={policy?.overtime_rounding_minutes ?? 15} required /></div>
+      </div>
+      <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. تصنيف الليل والراحة الأسبوعية والعطلات غير مفعل حتى تتوفر قواعدها المعتمدة.</p>
     </section>
 
     <div className="work-policy-editor-actions">

@@ -4,13 +4,14 @@ import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAction, recordPunchAction } from '../actions';
+import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAction, recordPunchAction, reviewAttendanceOvertimeAction } from '../actions';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string; instanceId: string }>;
 type Punch = { id: string; direction: string; happened_at: string; original_direction: string; original_at: string; corrected: boolean; excluded: boolean; source_type?: string; source_event_key?: string | null };
 type Interpretation = { id: string; state: string; first_in: string | null; last_out: string | null; worked_minutes: number | null; gross_worked_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null };
 type Fact = { id: string; interpretation_id: string; version: number; corrects_fact_id: string | null; reason: string | null; fact: Record<string, unknown> };
+type OvertimeCandidate = { id: string; attendance_fact_id: string; candidate_minutes: number; raw_minutes: number; category: string; created_at: string; decision: 'pending' | 'approved' | 'rejected' | 'superseded'; reason: string | null; reviewed_at: string | null };
 
 export default async function AttendanceInstancePage({ params, searchParams }: { params: Params; searchParams: Promise<{ state?: string }> }) {
   const { tenantId, instanceId } = await params;
@@ -22,6 +23,9 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/${instanceId}`)}`);
   const { data, error } = await supabase.rpc('attendance_instance_detail', { p_tenant_id: tenantId, p_instance_id: instanceId });
   if (error || !isObject(data) || !isObject(data.instance) || !isObject(data.permissions)) return <PageFrame><Status title="السجل غير متاح" text="لا تملك صلاحية عرض هذا السجل أو أنه غير موجود." /></PageFrame>;
+  const overtimeResult = await supabase.rpc('attendance_overtime_instance_panel', { p_tenant_id: tenantId, p_instance_id: instanceId });
+  const overtimePanel = !overtimeResult.error && isObject(overtimeResult.data) ? overtimeResult.data : null;
+  const overtimeCandidates = overtimePanel && Array.isArray(overtimePanel.items) ? overtimePanel.items as OvertimeCandidate[] : [];
   const instance = data.instance;
   const permissions = data.permissions;
   const entitlementEnabled = permissions.entitlement_enabled === true;
@@ -110,13 +114,40 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       </form>}
       {facts.length > 0 && <div className="attendance-fact-history"><h3>سجل الاعتماد</h3><ol>{facts.map((fact) => <li key={fact.id}><strong>النسخة {fact.version}</strong> · {fact.fact.outcome === 'absence' ? 'اعتماد يوم غياب' : fact.corrects_fact_id ? 'تصحيح لنسخة سابقة' : 'اعتماد'}{fact.reason ? ` · السبب: ${fact.reason}` : ''}</li>)}</ol></div>}
     </section>
+
+    <section className="work-card task-page" aria-labelledby="overtime-title">
+      <h2 id="overtime-title">العمل الإضافي</h2>
+      {!overtimePanel ? <p className="form-message form-error">تعذر تحميل مراجعة العمل الإضافي. لم يُعتمد أي مرشح.</p>
+        : overtimeCandidates.length === 0 ? <p className="empty-state">لا يوجد مرشح إضافي لهذا اليوم.</p>
+          : <ol className="record-list attendance-overtime-list">{overtimeCandidates.map((candidate) => <li className="record-card" key={candidate.id}>
+            <div className="record-main">
+              <div className="record-title-row"><h3>{candidate.category === 'ordinary' ? 'إضافي عادي' : 'مرشح إضافي'}</h3><span className={`entity-status ${candidate.decision === 'approved' ? 'is-active' : 'is-inactive'}`}>{candidate.decision === 'pending' && (instance.status !== 'approved' || currentFact?.id !== candidate.attendance_fact_id) ? 'معلّق حتى تحديث اعتماد الحضور' : overtimeDecisionLabel(candidate.decision)}</span></div>
+              <p className="record-meta">الكمية بعد التقريب: {candidate.candidate_minutes} دقيقة · الزمن الزائد قبل التقريب: {candidate.raw_minutes} دقيقة</p>
+              <p className="field-hint">التصنيف الليلي والراحة الأسبوعية والعطلات غير محسوبة في هذا الإصدار.</p>
+              {candidate.reason && <p className="record-meta">السبب: {candidate.reason}</p>}
+              {candidate.decision === 'pending' && overtimePanel.can_review === true && entitlementEnabled && instance.status === 'approved' && currentFact?.id === candidate.attendance_fact_id && <div className="attendance-overtime-actions">
+                <form action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
+                  <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="approved" />
+                  <label className="attendance-full-field">سبب اعتماد الكمية <input name="reason" minLength={3} maxLength={500} required /></label>
+                  <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label="اعتماد العمل الإضافي" />
+                </form>
+                <form action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
+                  <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="rejected" />
+                  <label className="attendance-full-field">سبب الرفض <input name="reason" minLength={3} maxLength={500} required /></label>
+                  <SubmitButton className="secondary-button" pendingLabel="جارٍ الحفظ..." label="رفض المرشح" />
+                </form>
+              </div>}
+            </div>
+          </li>)}</ol>}
+    </section>
   </PageFrame>;
 }
 
 function statusLabel(status: string) { return ({ open: 'قيد المتابعة', ready: 'جاهز للاعتماد', needs_review: 'يحتاج مراجعة', approved: 'معتمد' } as Record<string, string>)[status] ?? status; }
 function directionLabel(direction: string) { return direction === 'in' ? 'دخول' : 'خروج'; }
 function interpretationLabel(value: Interpretation) { if (value.state === 'ready') return value.exception_code === 'short_workday' ? 'صافي المدة أقل من المطلوب. راجع التسجيلات أو اعتمدها بسبب.' : 'تسجيلات الدخول والخروج متوافقة، والنتيجة جاهزة للاعتماد.'; if (value.state === 'needs_review') return value.exception_code === 'absence_candidate' ? 'يوم بلا تسجيلات؛ يحتاج إلى مراجعة واعتماد الغياب بسبب.' : value.exception_code === 'missing_punch' ? 'ينقص تسجيل دخول أو خروج. أضف التسجيل الصحيح أو راجع السجل.' : value.exception_code === 'ambiguous_local_time' ? 'التوقيت المحلي غير واضح. راجع توقيت سياسة الدوام.' : 'تحتاج التسجيلات إلى مراجعة. صحّح التعارض مع حفظ الدليل الأصلي.'; return 'السجل مفتوح لاستقبال تسجيلات الحضور والانصراف.'; }
-function feedback(state?: string) { const map: Record<string, { text: string; error?: boolean }> = { 'punch-recorded': { text: 'تم تسجيل الحضور أو الانصراف.' }, 'punch-corrected': { text: 'تم حفظ التصحيح والدليل الأصلي.' }, 'fact-approved': { text: 'تم اعتماد النتيجة وحفظ نسختها.' }, 'absence-approved': { text: 'تم اعتماد يوم الغياب وحفظ السبب.' }, forbidden: { text: 'هذه العملية غير متاحة لصلاحيتك.', error: true }, time: { text: 'الوقت المحلي ملتبس أو غير صالح. اختر وقتًا واضحًا.', error: true }, 'time-future': { text: 'لا يمكن تسجيل وقت لم يقع بعد.', error: true }, 'not-ready': { text: 'لا يمكن اعتماد السجل قبل اكتمال المراجعة.', error: true }, stale: { text: 'تغيرت النتيجة منذ فتح الصفحة. حدّثها قبل الاعتماد.', error: true }, conflict: { text: 'استُخدم مفتاح الإرسال نفسه لبيانات مختلفة. حدّث الصفحة وحاول مجددًا.', error: true }, input: { text: 'تحقق من الحقول المطلوبة.', error: true }, setup: { text: 'الاتصال غير متاح.', error: true }, failed: { text: 'تعذر حفظ التغيير. لم يُعتمد السجل.', error: true } }; return state ? map[state] ?? { text: 'لم تكتمل العملية.', error: true } : null; }
+function feedback(state?: string) { const map: Record<string, { text: string; error?: boolean }> = { 'punch-recorded': { text: 'تم تسجيل الحضور أو الانصراف.' }, 'punch-corrected': { text: 'تم حفظ التصحيح والدليل الأصلي.' }, 'fact-approved': { text: 'تم اعتماد النتيجة وحفظ نسختها.' }, 'absence-approved': { text: 'تم اعتماد يوم الغياب وحفظ السبب.' }, 'overtime-approved': { text: 'تم اعتماد كمية العمل الإضافي وحفظ القرار.' }, 'overtime-rejected': { text: 'تم رفض مرشح العمل الإضافي وحفظ السبب.' }, 'overtime-forbidden': { text: 'لا تملك صلاحية مراجعة العمل الإضافي.', error: true }, 'overtime-stale': { text: 'تغير اعتماد الحضور. لم يُراجع المرشح القديم؛ افتح السجل مجددًا.', error: true }, 'overtime-reviewed': { text: 'سبق اتخاذ قرار بشأن هذا المرشح.', error: true }, 'overtime-input': { text: 'أدخل سببًا واضحًا بطول لا يتجاوز 500 حرف.', error: true }, forbidden: { text: 'هذه العملية غير متاحة لصلاحيتك.', error: true }, time: { text: 'الوقت المحلي ملتبس أو غير صالح. اختر وقتًا واضحًا.', error: true }, 'time-future': { text: 'لا يمكن تسجيل وقت لم يقع بعد.', error: true }, 'not-ready': { text: 'لا يمكن اعتماد السجل قبل اكتمال المراجعة.', error: true }, stale: { text: 'تغيرت النتيجة منذ فتح الصفحة. حدّثها قبل الاعتماد.', error: true }, conflict: { text: 'استُخدم مفتاح الإرسال نفسه لبيانات مختلفة. حدّث الصفحة وحاول مجددًا.', error: true }, input: { text: 'تحقق من الحقول المطلوبة.', error: true }, setup: { text: 'الاتصال غير متاح.', error: true }, failed: { text: 'تعذر حفظ التغيير. لم يُعتمد السجل.', error: true } }; return state ? map[state] ?? { text: 'لم تكتمل العملية.', error: true } : null; }
+function overtimeDecisionLabel(decision: string) { return ({ pending: 'بانتظار المراجعة', approved: 'معتمد', rejected: 'مرفوض', superseded: 'استُبدل باعتماد أحدث' } as Record<string, string>)[decision] ?? 'غير معروف'; }
 function toLocalInput(value: string, zone: string) { const d = new Date(value); const parts = new Intl.DateTimeFormat('en-CA', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(d); const p = Object.fromEntries(parts.map((x) => [x.type, x.value])); return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`; }
 function defaultLocalInput(value: string | null, zone: string) { return value ? toLocalInput(value, zone) : ''; }
 function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'توقيت القاهرة'; try { return new Intl.DateTimeFormat('ar-EG', { timeZone: zone, timeZoneName: 'long' }).formatToParts(new Date()).find((part) => part.type === 'timeZoneName')?.value ?? 'توقيت سياسة الدوام'; } catch { return 'توقيت سياسة الدوام'; } }

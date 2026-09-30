@@ -465,6 +465,8 @@
 .attendance-add-punch { margin-top: 1rem; }
 .attendance-add-punch > summary { display: inline-flex; cursor: pointer; }
 .attendance-exclude-form, .attendance-approve-form { border-top: 1px solid #dbe4e5; padding-top: .8rem; }
+.attendance-overtime-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: .8rem; }
+.attendance-overtime-form { align-content: start; margin: 0; padding: .8rem; border: 1px solid #dbe4e5; border-radius: .6rem; }
 .attendance-fact-history { margin-top: 1rem; border-top: 1px solid #dbe4e5; padding-top: .8rem; }
 .attendance-detail > .record-title-row { margin-block: .6rem; }
 .attendance-expected { padding: .65rem .8rem; border-radius: .5rem; background: var(--color-brand-soft); }
@@ -473,6 +475,7 @@
 @media (max-width: 900px) {
   :root { --control-height: 2.75rem; }
   .attendance-date-form, .attendance-form { grid-template-columns: 1fr; }
+  .attendance-overtime-actions { grid-template-columns: 1fr; }
   .attendance-form .attendance-full-field { grid-column: 1; }
   .attendance-pagination { align-items: stretch; flex-direction: column; }
   .workspace-frame { display: block; }
