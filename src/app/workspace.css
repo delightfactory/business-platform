@@ -428,8 +428,24 @@
 }
 .workspace-frame .feedback-toast button:hover { background: var(--color-brand-soft); color: var(--color-brand); }
 
+.attendance-date-form, .attendance-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; align-items: end; margin-block: 1rem; }
+.attendance-date-form label, .attendance-form label { display: grid; gap: .35rem; font-weight: 650; }
+.attendance-date-form input, .attendance-form :is(input, select) { width: 100%; min-width: 0; min-height: 2.8rem; padding: .55rem .7rem; border: 1px solid #cbd8dc; border-radius: .5rem; background: #fff; color: var(--color-text); font: inherit; }
+.attendance-full-field { grid-column: 1 / -1; }
+.attendance-pagination { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+.attendance-add-punch { margin-top: 1rem; }
+.attendance-add-punch > summary { display: inline-flex; cursor: pointer; }
+.attendance-exclude-form, .attendance-approve-form { border-top: 1px solid #dbe4e5; padding-top: .8rem; }
+.attendance-fact-history { margin-top: 1rem; border-top: 1px solid #dbe4e5; padding-top: .8rem; }
+.attendance-detail > .record-title-row { margin-block: .6rem; }
+.attendance-expected { padding: .65rem .8rem; border-radius: .5rem; background: var(--color-brand-soft); }
+.attendance-punch-list .record-card { align-items: start; }
+
 @media (max-width: 900px) {
   :root { --control-height: 2.75rem; }
+  .attendance-date-form, .attendance-form { grid-template-columns: 1fr; }
+  .attendance-form .attendance-full-field { grid-column: 1; }
+  .attendance-pagination { align-items: stretch; flex-direction: column; }
   .workspace-frame { display: block; }
   .workspace-navigation { position: sticky; inset-block-start: 0; z-index: 20; }
   .workspace-sidebar { display: none; }
@@ -544,7 +560,7 @@
   .workspace-mobile-dialog nav { display: grid; gap: .2rem; padding-top: .8rem; }
   .workspace-mobile-dialog nav a,
   .workspace-mobile-dialog nav button { position: relative; display: flex; align-items: center; min-height: 3rem; width: 100%; padding: .55rem .75rem; border: 0; border-radius: .45rem; background: transparent; color: var(--color-text); font: inherit; text-align: start; text-decoration: none; cursor: pointer; }
-  .workspace-mobile-dialog nav a[aria-current="page"] { background: var(--color-brand-soft); color: var(--color-brand); font-weight: 700; }
+.workspace-mobile-dialog nav a[aria-current="page"] { background: var(--color-brand-soft); color: var(--color-brand); font-weight: 700; }
   .workspace-dialog-group { display: grid; gap: .15rem; margin-block: .7rem; }
   .workspace-dialog-group p { color: #607780; padding-inline: .75rem; }
   .workspace-mobile-dialog form { margin-top: .8rem; border-top: 1px solid #dbe4e5; padding-top: .6rem; }

@@ -71,12 +71,13 @@ export async function TenantNavigation({
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding, spaces, peopleAccess] = await Promise.all([
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess] = await Promise.all([
         supabase.rpc('tenant_member_access_list', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('current_tenant_spaces'),
         supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),
+        supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
       ]);
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
@@ -90,6 +91,9 @@ export async function TenantNavigation({
       if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة' });
       if (!peopleAccess.error && peopleAccess.data && typeof peopleAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/people`, label: 'الموظفون' });
+      }
+      if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
+        businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور' });
       }
     }
   }
