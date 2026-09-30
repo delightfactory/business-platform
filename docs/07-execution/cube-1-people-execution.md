@@ -6,6 +6,10 @@ Status: in progress. Base: `main` at `a4676218d6a3537fd45a45d54e494079d580f323` 
 
 Deliver complete, usable People journeys in bounded slices: (1) employee onboarding and directory with authoritative access; (2) organization context and assignment changes; (3) effective compensation and employment lifecycle; (4) optional employee/user linking and direct account creation; (5) named Time work-policy context where Attendance is enabled; (6) workforce import with preview, confirmation and reject report. Each slice closes its UI, database, permission, failure, audit and focused test path before the next one.
 
+## Directory search and pagination — implementation slice, 2026-09-30
+
+The directory uses the authenticated `people_directory_page` RPC. Search matches employee name or code; each request returns at most 25 rows, and page numbers are bounded to 1–1000. The response includes directory fields and organization context, with no compensation data. The Arabic page uses GET search and pagination controls, validates query/page bounds, and shows separate empty and load-error states. Focused pgTAP coverage checks search, page size/continuation, page cap, Tenant denial and compensation-field exclusion. Evidence: the migration was applied to local Supabase; `supabase test db --local supabase/tests/people_directory_search.test.sql` passed (8 assertions); `npm run typecheck` and targeted ESLint passed. No production or remote database was changed. Search currently uses lowercase substring matching without a dedicated search index, so database work can still grow with the Tenant's employee count even though returned pages and offsets are capped.
+
 ## Employee and user choices — owner addition, 2026-09-30
 
 The employee record and authenticated user remain separate identities. The People experience supports four ordinary paths:

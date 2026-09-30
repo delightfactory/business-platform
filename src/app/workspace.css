@@ -203,6 +203,13 @@
 .workspace-records-panel .record-card .secondary-button { flex: 0 0 auto; }
 .workspace-records-panel > .form-message,
 .workspace-records-panel > .empty-state { margin: 1rem; }
+.people-search-form { display: grid; gap: .45rem; padding: 1rem 1.4rem; border-bottom: 1px solid #e7edee; }
+.people-search-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.people-search-form > div { display: flex; gap: .6rem; }
+.people-search-form input { min-width: 0; flex: 1; min-height: 2.75rem; padding: .55rem .75rem; border: 1px solid #cbd7da; border-radius: .55rem; font: inherit; }
+.people-search-form input:focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.people-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .7rem; padding: 1rem; border-top: 1px solid #e7edee; }
+.people-pagination > span { color: #52666d; }
 .workspace-notices { width: min(100%, 70rem); margin: 0 auto; }
 .workspace-notices:empty { display: none; }
 .workspace-view-tabs {
@@ -454,6 +461,9 @@
   .workspace-page-heading > .primary-button { width: fit-content; }
   .workspace-records-panel { border-radius: .65rem; }
   .workspace-records-panel .record-card { padding: 1rem; }
+  .people-search-form { padding: 1rem; }
+  .people-search-form > div { align-items: stretch; }
+  .people-search-form .secondary-button { flex: 0 0 auto; }
   .workspace-form-page { margin-block-start: 1rem; }
   .workspace-form-panel { padding: 1.15rem; }
   .branding-file-trigger, .branding-file-clear { width: fit-content; }
