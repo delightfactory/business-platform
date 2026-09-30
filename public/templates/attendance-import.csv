@@ -1,0 +1,3 @@
+employee_code,site_name,happened_at,direction,source_event_key
+EMP-001,المقر الرئيسي,2026-09-30T08:30:00+02:00,in,device-a-00001
+EMP-001,المقر الرئيسي,2026-09-30T17:00:00+02:00,out,device-a-00002

@@ -8,7 +8,7 @@ import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAc
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string; instanceId: string }>;
-type Punch = { id: string; direction: string; happened_at: string; original_direction: string; original_at: string; corrected: boolean; excluded: boolean };
+type Punch = { id: string; direction: string; happened_at: string; original_direction: string; original_at: string; corrected: boolean; excluded: boolean; source_type?: string; source_event_key?: string | null };
 type Interpretation = { id: string; state: string; first_in: string | null; last_out: string | null; worked_minutes: number | null; gross_worked_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null };
 type Fact = { id: string; interpretation_id: string; version: number; corrects_fact_id: string | null; reason: string | null; fact: Record<string, unknown> };
 
@@ -53,6 +53,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       <div className="record-title-row"><h2 id="punches-title">تسجيلات الحضور</h2><span className="record-meta">{punches.length} تسجيل</span></div>
       {punches.length === 0 ? <div className="empty-state"><p>لم يُسجّل حضور أو انصراف لهذا اليوم بعد.</p></div> : <ul className="record-list attendance-punch-list">{punches.map((punch) => <li className="record-card" key={punch.id}>
         <div className="record-main"><h3>{directionLabel(punch.direction)} · {formatInstant(punch.happened_at, zone)}</h3>
+          <p className="record-meta">{punch.source_type === 'import' ? <>مستورد من ملف · معرّف المصدر: <bdi>{punch.source_event_key}</bdi></> : 'تسجيل يدوي'}</p>
           {(punch.corrected || punch.excluded) && <p className="record-meta">الدليل الأصلي محفوظ: {directionLabel(punch.original_direction)} · {formatInstant(punch.original_at, zone)}{punch.excluded ? ' · مستبعد بسبب تصحيح مسجل' : ''}</p>}
         </div>
         {permissions.can_correct === true && <details className="task-disclosure"><summary className="secondary-button">تصحيح هذا التسجيل</summary>
