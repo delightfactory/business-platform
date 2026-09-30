@@ -4,7 +4,9 @@ SELECT no_plan();
 INSERT INTO auth.users(id,email,encrypted_password,email_confirmed_at,raw_app_meta_data,raw_user_meta_data,aud,role,created_at,updated_at)
 VALUES ('e9000000-0000-4000-8000-000000000001','attend-admin@example.test','hash',now(),'{}','{}','authenticated','authenticated',now(),now()),
        ('e9000000-0000-4000-8000-000000000002','attend-reader@example.test','hash',now(),'{}','{}','authenticated','authenticated',now(),now()),
-       ('e9000000-0000-4000-8000-000000000003','attend-reviewer@example.test','hash',now(),'{}','{}','authenticated','authenticated',now(),now());
+       ('e9000000-0000-4000-8000-000000000003','attend-reviewer@example.test','hash',now(),'{}','{}','authenticated','authenticated',now(),now()),
+       ('e9000000-0000-4000-8000-000000000004','attendance-operator@example.test','hash',now(),'{}','{}','authenticated','authenticated',now(),now());
+INSERT INTO platform_private.platform_operator_grants(user_id,is_active,can_manage_commercial_access) VALUES ('e9000000-0000-4000-8000-000000000004',true,true);
 INSERT INTO platform_core.tenants(id,display_name,created_by_operator_id) VALUES ('e9100000-0000-4000-8000-000000000001','Attendance test tenant','e9000000-0000-4000-8000-000000000001');
 INSERT INTO platform_core.tenant_roles(tenant_id,role_id,role_key,role_version,permission_snapshot,protects_tenant_admin) VALUES
 ('e9100000-0000-4000-8000-000000000001','e9200000-0000-4000-8000-000000000001','attendance.test.operator',1,ARRAY['tenant.members.manage','people.view','people.manage','employment.manage','org_context.manage','compensation.view','compensation.manage','attendance.view','attendance.manage','attendance.correct','attendance.approve','attendance_policy.manage'],'false'),
@@ -54,6 +56,7 @@ SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000003'
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000001',true);
 SELECT set_config('test.in_time',(current_setting('test.operational_date')||' 23:15')::text,true);
 SELECT set_config('test.out_time',((current_setting('test.operational_date')::date+1)::text||' 06:30')::text,true);
+SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'out',(timezone('Africa/Cairo',now())::timestamp+interval '10 minutes'),gen_random_uuid(),'تسجيل مستقبلي')$$,'22023','attendance_punch_in_future','future manual events are rejected at the authoritative table boundary');
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000003',true);
 SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'out',current_setting('test.out_time')::timestamp,gen_random_uuid(),NULL)$$,'22023','attendance_punch_input_invalid','reviewer must explain an added missing event');
 SELECT lives_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'out',current_setting('test.out_time')::timestamp,'e9600000-0000-4000-8000-000000000003','إضافة خروج مفقود بعد مراجعة السجل')$$,'reviewer can append a missing event with a reason');
@@ -75,7 +78,9 @@ SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-0000000000
 SELECT set_config('test.out_punch',(public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid)->'punches'->1->>'id'),true);
 SELECT lives_ok($$SELECT public.correct_manual_attendance_punch('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.out_punch')::uuid,'replace','out',((current_setting('test.operational_date')::date+1)::text||' 06:45')::timestamp,'تصحيح وقت الخروج')$$,'reasoned correction appends a new interpretation');
 SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid)->'instance'->>'status'),'needs_review','new evidence after approval is pending reapproval');
-SELECT lives_ok($$SELECT public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.first_fact')::uuid,'تصحيح بعد المراجعة')$$,'correction produces a new fact version after reapproval');
+SELECT set_config('test.second_fact',(public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.first_fact')::uuid,'تصحيح بعد المراجعة')->>'fact_id'),true);
+SELECT ok(current_setting('test.second_fact')<>'','correction produces a new fact version after reapproval');
+SELECT throws_ok($$SELECT public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.second_fact')::uuid,'محاولة بلا تفسير جديد')$$,'23514','attendance_fact_no_new_interpretation','same interpretation cannot be approved twice');
 RESET ROLE;
 SET LOCAL ROLE postgres;
 SELECT ok(time.resolve_local('2026-11-01 01:30','America/New_York') IS NULL,'ambiguous daylight-saving local time is not guessed');
@@ -86,5 +91,23 @@ SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_i
 SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000003' AND event_key='manual_punch.review_entry'),1,'reviewer action and reason have a distinct audit event');
 SELECT is((SELECT details->>'reason' FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000003' AND event_key='manual_punch.review_entry' LIMIT 1),'إضافة خروج مفقود بعد مراجعة السجل','reviewer reason is captured in the append-only audit detail');
 SELECT throws_ok($$UPDATE time.manual_punches SET direction='out' WHERE tenant_id='e9100000-0000-4000-8000-000000000001'$$,'55000','attendance_evidence_append_only','manual source evidence cannot be rewritten');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000004',true);
+SELECT lives_ok($$SELECT public.change_tenant_capability_entitlement('e9100000-0000-4000-8000-000000000001','hr.attendance',false,NULL,'إيقاف الحضور لاختبار حفظ السجل')$$,'operator can disable the Attendance entitlement for the fixture');
+RESET ROLE;
+UPDATE platform_core.tenant_capability_entitlements SET valid_until=transaction_timestamp() WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND capability_key='hr.attendance' AND is_granted AND valid_until>transaction_timestamp();
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000001',true);
+SELECT is((public.time_attendance_access_snapshot('e9100000-0000-4000-8000-000000000001')->>'entitlement_enabled'),'false','Attendance entitlement is visibly disabled');
+SELECT is((public.time_attendance_access_snapshot('e9100000-0000-4000-8000-000000000001')->>'can_view'),'true','membership reader permission preserves historical read access');
+SELECT is((public.time_attendance_access_snapshot('e9100000-0000-4000-8000-000000000001')->>'can_manage'),'false','disabled entitlement removes write capabilities');
+SELECT is(jsonb_array_length(public.attendance_day_list('e9100000-0000-4000-8000-000000000001',current_setting('test.operational_date')::date,NULL,50)->'items'),1,'existing Work Instance remains visible after entitlement loss');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid)->'permissions'->>'entitlement_enabled'),'false','instance history remains readable while mutation permission is disabled');
+SELECT is(jsonb_array_length(public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid)->'facts'),2,'approved historical facts remain readable');
+SELECT throws_ok($$SELECT public.attendance_open_day('e9100000-0000-4000-8000-000000000001',current_setting('test.operational_date')::date,NULL,50)$$,'42501','attendance_manage_forbidden','disabled entitlement cannot open a work day');
+SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'in',current_setting('test.in_time')::timestamp,gen_random_uuid(),'تسجيل جديد')$$,'42501','attendance_manage_forbidden','disabled entitlement blocks new manual events');
+SELECT throws_ok($$SELECT public.correct_manual_attendance_punch('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.out_punch')::uuid,'replace','out',((current_setting('test.operational_date')::date+1)::text||' 06:50')::timestamp,'تصحيح بعد الإيقاف')$$,'42501','attendance_correct_forbidden','disabled entitlement blocks correction');
+SELECT throws_ok($$SELECT public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,current_setting('test.second_fact')::uuid,'اعتماد بعد الإيقاف')$$,'42501','attendance_approve_forbidden','disabled entitlement blocks approval');
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;

@@ -59,6 +59,7 @@ function mapError(message: string) {
   if (message.includes('forbidden')) return 'forbidden';
   if (message.includes('attendance_punch_input_invalid')) return 'input';
   if (message.includes('ambiguous_or_invalid')) return 'time';
+  if (message.includes('attendance_punch_in_future')) return 'time-future';
   if (message.includes('not_ready')) return 'not-ready';
   if (message.includes('stale')) return 'stale';
   if (message.includes('idempotency_conflict')) return 'conflict';

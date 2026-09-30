@@ -20,6 +20,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   const { data: access, error: accessError } = await supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId });
   if (accessError || !isObject(access)) return <PageFrame><Status title="الحضور غير متاح" text="لا تملك صلاحية عرض الحضور أو أن وحدة الحضور غير مفعلة لهذه الشركة." /></PageFrame>;
   const canManage = access.can_manage === true;
+  const entitlementEnabled = access.entitlement_enabled === true;
   const canOpen = canManage || access.can_correct === true || access.can_approve === true;
   const result = canOpen
     ? await supabase.rpc('attendance_open_day', { p_tenant_id: tenantId, p_date: day, p_after: cursor, p_limit: 50 })
@@ -34,9 +35,10 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
       <section className="work-card task-page" aria-labelledby="attendance-title">
         <p className="eyebrow">متابعة يوم العمل</p>
         <div className="workspace-page-heading"><div><h1 id="attendance-title">الحضور اليومي</h1><p className="field-hint">اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام.</p></div></div>
+        {!entitlementEnabled && <p className="form-message">وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</p>}
         <form method="get" className="attendance-date-form"><label htmlFor="attendance-date">تاريخ العمل</label><input id="attendance-date" type="date" name="date" defaultValue={day} /><button className="primary-button" type="submit">عرض اليوم</button></form>
         {canOpen && <p className="field-hint">استخدم التالي لعرض بقية الموظفين عند وجود سجلات إضافية.</p>}
-        {rows.length === 0 ? <div className="empty-state"><h2>لا توجد سجلات لهذا اليوم</h2><p>{canOpen ? 'لا توجد تكليفات ثابتة بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</p></div> : <ul className="record-list attendance-day-list">
+        {rows.length === 0 ? <div className="empty-state"><h2>لا توجد سجلات لهذا اليوم</h2><p>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد تكليفات ثابتة بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</p></div> : <ul className="record-list attendance-day-list">
           {rows.map((row) => <li className="record-card" key={row.id}>
             <div className="record-main"><div className="record-title-row"><h2>{row.full_name}</h2><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></div>
               <p className="record-meta">رقم الموظف: <bdi>{row.employee_code}</bdi></p>
