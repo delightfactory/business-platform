@@ -23,6 +23,7 @@ type PolicySeed = {
   overtime_enabled: boolean;
   overtime_minimum_minutes: number;
   overtime_rounding_minutes: number;
+  auto_approve_clean: boolean;
 };
 
 const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
@@ -134,6 +135,18 @@ export function WorkPolicyEditor({
         <div className="work-policy-field"><label htmlFor={`${idPrefix}-overtime-rounding`}>خطوة التقريب لأسفل (دقيقة)</label><input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" defaultValue={policy?.overtime_rounding_minutes ?? 15} required /></div>
       </div>
       <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. تصنيف الليل والراحة الأسبوعية والعطلات غير مفعل حتى تتوفر قواعدها المعتمدة.</p>
+    </section>
+
+    <section className="work-policy-section" aria-labelledby={`${idPrefix}-approval-heading`}>
+      <div className="work-policy-section-heading">
+        <h3 id={`${idPrefix}-approval-heading`}>اعتماد الأيام المكتملة</h3>
+        <p>لا يعتمد النظام اليوم إلا بعد انتهاء نافذة التسجيل وثبات جميع الأحداث.</p>
+      </div>
+      <label className="work-policy-check-option">
+        <input type="checkbox" name="autoApproveClean" defaultChecked={policy?.auto_approve_clean ?? false} />
+        <span>اعتماد اليوم تلقائيًا إذا كان مكتملًا بلا استثناء</span>
+      </label>
+      <p className="field-hint">لا يشمل الغياب أو التسجيل الناقص أو المدة الأقل من المطلوبة أو أي تعارض. يسري الإعداد على Work Instances الجديدة فقط.</p>
     </section>
 
     <div className="work-policy-editor-actions">

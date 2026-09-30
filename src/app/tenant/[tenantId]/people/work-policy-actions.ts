@@ -10,6 +10,7 @@ export async function saveWorkPolicyAction(formData: FormData) {
   const name = text(formData, 'name');
   const kind = text(formData, 'kind');
   const overtimeEnabled = formData.get('overtimeEnabled') === 'on';
+  const autoApproveClean = formData.get('autoApproveClean') === 'on';
   const overtimeMinimum = Number(text(formData, 'overtimeMinimum') || '30');
   const overtimeRounding = Number(text(formData, 'overtimeRounding') || '15');
   const days = formData.getAll('workDays').map(Number).filter((day) => Number.isInteger(day) && day >= 1 && day <= 7);
@@ -31,6 +32,7 @@ export async function saveWorkPolicyAction(formData: FormData) {
     p_before: Number(text(formData, 'attributionBefore') || '120'),
     p_after: Number(text(formData, 'attributionAfter') || '360'),
     p_overtime_enabled: overtimeEnabled, p_overtime_minimum: overtimeMinimum, p_overtime_rounding: overtimeRounding,
+    p_auto_approve_clean: autoApproveClean,
   });
   if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=${error.message.includes('attendance_policy_manage_forbidden') ? 'forbidden' : 'failed'}`);
   redirect(`/tenant/${tenantId}/people/work-policies?state=saved`);
