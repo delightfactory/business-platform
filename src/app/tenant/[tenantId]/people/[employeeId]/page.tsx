@@ -7,7 +7,7 @@ import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } fro
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
 import { EmployeeUserLinkPanel, type AccountProvision, type LinkSnapshot, type Options as EmployeeUserLinkOptions } from './EmployeeUserLinkPanel';
-import { assignWorkPolicyAction } from '../work-policy-actions';
+import { assignAttendancePolicyOverrideAction, assignWorkPolicyAction, cancelAttendancePolicyOverrideAction } from '../work-policy-actions';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
@@ -16,7 +16,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -101,8 +101,14 @@ export default async function EmployeePage({ params, searchParams }: {
   const rehireOptionsError = Boolean(canManageLifecycle && employee.status === 'ended'
     && (rehireOptionsResult.error || !rehireOptions));
   const today = cairoToday();
+  const policyOverrideMinDate = employee.employment?.start_date && employee.employment.start_date > today ? employee.employment.start_date : today;
   const workPolicyPanel = workPolicyResult.data && typeof workPolicyResult.data === 'object'
-    ? workPolicyResult.data as { history: { assignment_id: string; policy_id: string | null; version: number | null; name: string | null; code: string | null; valid_from: string; valid_until: string | null }[]; options: { id: string; code: string; name: string; version: number }[]; can_assign: boolean; can_manage_catalog: boolean } : null;
+    ? workPolicyResult.data as {
+      history: { assignment_id: string; policy_id: string | null; version: number | null; name: string | null; code: string | null; valid_from: string; valid_until: string | null }[];
+      options: { id: string; code: string; name: string; version: number }[];
+      overrides: { id: string; policy_id: string; version: number; name: string; code: string; valid_from: string; valid_through: string; reason: string; cancelled_at: string | null; can_cancel: boolean }[];
+      can_assign: boolean; can_manage_catalog: boolean;
+    } : null;
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
     {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
@@ -145,7 +151,7 @@ export default async function EmployeePage({ params, searchParams }: {
       canManage={canManageWorkContext} initialDate={today} />
     {workPolicyPanel && <section className="workspace-records-panel" aria-labelledby="work-policy-heading">
       <h2 id="work-policy-heading">سياسة الدوام</h2>
-      <p className="record-meta">تسجيل مرجع السياسة فقط؛ تحتفظ وحدة الحضور بإعداداتها واحتساب نتائجها.</p>
+      <p className="record-meta">تعرض القائمة سياسة التكليف الأساسية. أما التغيير لفترة محددة فيُسجل للحضور من دون تعديل تكليف People.</p>
       {workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <li className="assignment-history-item" key={row.assignment_id}>
         <strong>{row.name ? `${row.name} · ${row.code} · الإصدار ${row.version}` : 'دون سياسة دوام محددة'}</strong>
         <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
@@ -160,9 +166,36 @@ export default async function EmployeePage({ params, searchParams }: {
         <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ سياسة الدوام</button></div>
       </form>}
       {workPolicyPanel.can_manage_catalog && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</Link>}
+      <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
+      <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل تكليف الموظف الأساسي. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
+      {workPolicyPanel.overrides.length ? <ol className="assignment-history-list">{workPolicyPanel.overrides.map((override) => <li className="assignment-history-item" key={override.id}>
+        <strong>{override.name} · {override.code} · الإصدار {override.version}</strong>
+        <p>من <bdi>{override.valid_from}</bdi> إلى <bdi>{override.valid_through}</bdi>{override.cancelled_at ? ' · ملغى' : ''}</p>
+        <p>{override.reason}</p>
+        {override.can_cancel && workPolicyPanel.can_manage_catalog && <form action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
+          <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="overrideId" value={override.id}/>
+          <div className="work-policy-assignment-field"><label htmlFor={`override-cancel-reason-${override.id}`}>سبب الإلغاء</label><input id={`override-cancel-reason-${override.id}`} name="cancelReason" minLength={3} maxLength={500} required/></div>
+          <div className="workspace-form-actions"><button className="secondary-button" type="submit">إلغاء التغيير المقرر</button></div>
+        </form>}
+      </li>)}</ol> : <p className="empty-state">لا توجد تغييرات دوام لفترات محددة.</p>}
+      {workPolicyPanel.can_manage_catalog && employmentId && employee.employment?.status === 'active' && <form action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
+        <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
+        <div className="work-policy-assignment-field"><label htmlFor="policy-override-id">قالب الدوام للفترة</label><select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>
+        <div className="work-policy-assignment-field"><label htmlFor="policy-override-from">من تاريخ</label><input id="policy-override-from" type="date" name="validFrom" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></div>
+        <div className="work-policy-assignment-field"><label htmlFor="policy-override-through">إلى تاريخ</label><input id="policy-override-through" type="date" name="validThrough" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></div>
+        <div className="work-policy-assignment-field"><label htmlFor="policy-override-reason">سبب التغيير</label><input id="policy-override-reason" name="reason" minLength={3} maxLength={500} required/></div>
+        {query.policyOverride === 'invalid' && <p className="form-message error-message" role="alert">راجع القالب والتاريخين، واجعل الفترة 90 يومًا أو أقل، واكتب سببًا واضحًا.</p>}
+        {query.policyOverride === 'overlap' && <p className="form-message error-message" role="alert">تتداخل الفترة مع تغيير دوام محفوظ. اختر فترة أخرى.</p>}
+        {query.policyOverride === 'materialized' && <p className="form-message error-message" role="alert">بدأ فتح الحضور لأحد أيام الفترة؛ لم يُغيّر أي سجل. اختر تواريخ لم تُفتح بعد.</p>}
+        {query.policyOverride === 'historical' && <p className="form-message error-message" role="alert">لا يمكن إضافة تغيير يبدأ بتاريخ سابق. اختر اليوم أو تاريخًا لاحقًا.</p>}
+        {(query.policyOverride === 'failed' || query.policyOverride === 'forbidden' || query.policyOverride === 'cancel-failed') && <p className="form-message error-message" role="alert">تعذر حفظ التغيير. تحقق من صلاحيتك وحالة العمل والقالب، ثم حدّث الصفحة.</p>}
+        <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ تغيير الدوام للفترة</button></div>
+      </form>}
     </section>}
     {query.policy === 'assigned' && <FeedbackToast key="policy-assigned" message="تم حفظ سياسة الدوام وسجل تاريخ سريانها."/>}
     {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
+    {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
+    {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
     {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id}
       employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
       history={compensationHistory} historyError={compensationHistoryError}

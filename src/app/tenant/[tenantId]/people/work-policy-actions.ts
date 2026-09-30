@@ -52,5 +52,45 @@ export async function assignWorkPolicyAction(formData: FormData) {
   redirect(`/tenant/${tenantId}/people/${employeeId}?policy=assigned`);
 }
 
+export async function assignAttendancePolicyOverrideAction(formData: FormData) {
+  const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const employmentId = text(formData, 'employmentId'); const policyId = text(formData, 'policyId');
+  const validFrom = text(formData, 'validFrom'); const validThrough = text(formData, 'validThrough');
+  const reason = text(formData, 'reason');
+  const path = `/tenant/${tenantId}/people/${employeeId}`;
+  if (!isUuid(tenantId) || !isUuid(employeeId) || !isUuid(employmentId) || !isUuid(policyId)
+    || !/^\d{4}-\d{2}-\d{2}$/.test(validFrom) || !/^\d{4}-\d{2}-\d{2}$/.test(validThrough)
+    || reason.length < 3 || reason.length > 500) redirect(`${path}?policyOverride=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`${path}?policyOverride=failed`);
+  const { error } = await supabase.rpc('assign_attendance_work_policy_override', {
+    p_tenant_id: tenantId, p_employment_id: employmentId, p_policy_id: policyId,
+    p_valid_from: validFrom, p_valid_through: validThrough, p_reason: reason,
+  });
+  if (error) {
+    const state = error.message.includes('attendance_policy_manage_forbidden') ? 'forbidden'
+      : error.message.includes('attendance_policy_override_overlap') ? 'overlap'
+        : error.message.includes('attendance_policy_override_materialized_date') ? 'materialized'
+          : error.message.includes('attendance_policy_override_historical') ? 'historical'
+            : 'failed';
+    redirect(`${path}?policyOverride=${state}`);
+  }
+  redirect(`${path}?policyOverride=assigned`);
+}
+
+export async function cancelAttendancePolicyOverrideAction(formData: FormData) {
+  const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const overrideId = text(formData, 'overrideId'); const reason = text(formData, 'cancelReason');
+  const path = `/tenant/${tenantId}/people/${employeeId}`;
+  if (!isUuid(tenantId) || !isUuid(employeeId) || !isUuid(overrideId) || reason.length < 3 || reason.length > 500) redirect(`${path}?policyOverride=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`${path}?policyOverride=failed`);
+  const { error } = await supabase.rpc('cancel_attendance_work_policy_override', {
+    p_tenant_id: tenantId, p_override_id: overrideId, p_reason: reason,
+  });
+  if (error) redirect(`${path}?policyOverride=cancel-failed`);
+  redirect(`${path}?policyOverride=cancelled`);
+}
+
 function text(data: FormData, key: string) { return String(data.get(key) ?? '').trim(); }
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
