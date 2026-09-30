@@ -28,6 +28,9 @@ INSERT INTO platform_core.tenant_sites(tenant_id,id,legal_entity_id,display_name
 INSERT INTO time.work_policy_templates(tenant_id,id,code,is_active,head_version) VALUES('e9100000-0000-4000-8000-000000000001','e9500000-0000-4000-8000-000000000001','NIGHT',true,1);
 INSERT INTO time.work_policy_versions(tenant_id,template_id,version,name,schedule_kind,timezone_name,work_days,shift_start,shift_end,ends_next_day,break_minutes,created_by)
 SELECT 'e9100000-0000-4000-8000-000000000001','e9500000-0000-4000-8000-000000000001',1,'وردية ليلية','fixed','Africa/Cairo',ARRAY[extract(dow FROM timezone('Africa/Cairo',now())::date)::smallint+1]::smallint[],'22:00','06:00',true,30,'e9000000-0000-4000-8000-000000000001';
+INSERT INTO time.work_policy_templates(tenant_id,id,code,is_active,head_version) VALUES('e9100000-0000-4000-8000-000000000001','e9500000-0000-4000-8000-000000000002','FLEX',true,1);
+INSERT INTO time.work_policy_versions(tenant_id,template_id,version,name,schedule_kind,timezone_name,work_days,required_minutes,earliest_punch,latest_punch,created_by)
+VALUES('e9100000-0000-4000-8000-000000000001','e9500000-0000-4000-8000-000000000002',1,'دوام مرن','flexible','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],60,'00:00','23:59','e9000000-0000-4000-8000-000000000001');
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000001',true);
@@ -35,6 +38,10 @@ SELECT set_config('test.employee',public.create_people_employee('e9100000-0000-4
 SELECT set_config('test.employment',(current_setting('test.employee')::jsonb->>'employment_id'),true);
 SELECT set_config('test.absence_employee',public.create_people_employee('e9100000-0000-4000-8000-000000000001','ATT-2','موظف غياب','e9300000-0000-4000-8000-000000000001','e9400000-0000-4000-8000-000000000001',timezone('Africa/Cairo',now())::date-14,'monthly',1000,true)::text,true);
 SELECT set_config('test.absence_employment',(current_setting('test.absence_employee')::jsonb->>'employment_id'),true);
+SELECT set_config('test.flex_employee',public.create_people_employee('e9100000-0000-4000-8000-000000000001','ATT-3','موظف مرن','e9300000-0000-4000-8000-000000000001','e9400000-0000-4000-8000-000000000001',timezone('Africa/Cairo',now())::date-1,'monthly',1000,true)::text,true);
+SELECT set_config('test.flex_employment',(current_setting('test.flex_employee')::jsonb->>'employment_id'),true);
+SELECT set_config('test.short_flex_employee',public.create_people_employee('e9100000-0000-4000-8000-000000000001','ATT-4','موظف مدة قصيرة','e9300000-0000-4000-8000-000000000001','e9400000-0000-4000-8000-000000000001',timezone('Africa/Cairo',now())::date-1,'monthly',1000,true)::text,true);
+SELECT set_config('test.short_flex_employment',(current_setting('test.short_flex_employee')::jsonb->>'employment_id'),true);
 SELECT set_config('test.operational_date',(timezone('Africa/Cairo',now())::date-7)::text,true);
 RESET ROLE;
 UPDATE people.work_assignments SET work_policy_template_id='e9500000-0000-4000-8000-000000000001',work_policy_version=1
@@ -43,6 +50,8 @@ UPDATE people.work_assignments SET work_policy_template_id='e9500000-0000-4000-8
 WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND employment_id=current_setting('test.absence_employment')::uuid;
 UPDATE people.work_assignments SET valid_until=current_setting('test.operational_date')::date
 WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND employment_id=current_setting('test.absence_employment')::uuid;
+UPDATE people.work_assignments SET work_policy_template_id='e9500000-0000-4000-8000-000000000002',work_policy_version=1
+WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND employment_id IN(current_setting('test.flex_employment')::uuid,current_setting('test.short_flex_employment')::uuid);
 SELECT is((SELECT count(*)::int FROM people.work_assignments WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND employment_id=current_setting('test.employment')::uuid AND work_policy_template_id='e9500000-0000-4000-8000-000000000001'),1,'test assignment references the policy version');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000001',true);
@@ -56,6 +65,23 @@ SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-0000000000
 SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid)->'interpretation'->>'owner_permission'),'attendance.approve','absence candidate has a clear approval owner');
 SELECT throws_ok($$SELECT public.attendance_open_day('e9100000-0000-4000-8000-000000000099',current_setting('test.operational_date')::date,NULL,50)$$,'42501','attendance_manage_forbidden','cross-tenant day creation is denied');
 SELECT is(jsonb_array_length(public.attendance_open_day('e9100000-0000-4000-8000-000000000001',timezone('Africa/Cairo',now())::date+1,NULL,50)->'items'),0,'future Cairo date is not materialized for Cairo policy');
+SELECT set_config('test.flex_date',(timezone('Africa/Cairo',now())::date-1)::text,true);
+SELECT set_config('test.flex_result',public.attendance_open_day('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_date')::date,NULL,50)::text,true);
+SELECT is(jsonb_array_length(current_setting('test.flex_result')::jsonb->'items'),2,'past operational date opens both flexible-workday employees');
+SELECT set_config('test.flex_instance',(SELECT item->>'id' FROM jsonb_array_elements(current_setting('test.flex_result')::jsonb->'items') item WHERE item->>'employee_code'='ATT-3'),true);
+SELECT set_config('test.short_flex_instance',(SELECT item->>'id' FROM jsonb_array_elements(current_setting('test.flex_result')::jsonb->'items') item WHERE item->>'employee_code'='ATT-4'),true);
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid)->'instance'->>'schedule_kind'),'flexible','Work Instance freezes the flexible schedule kind');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid)->'instance'->>'required_minutes')::int,60,'Work Instance freezes required flexible duration');
+SELECT lives_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid,'in',(current_setting('test.flex_date')||' 10:00')::timestamp,'e9600000-0000-4000-8000-000000000010','تسجيل دخول مرن')$$,'flexible workday accepts an in event inside its daily window');
+SELECT lives_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid,'out',(current_setting('test.flex_date')||' 12:30')::timestamp,'e9600000-0000-4000-8000-000000000011','تسجيل خروج مرن')$$,'flexible workday accepts an out event without a fixed start/end');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid)->'interpretation'->>'state'),'ready','flexible duration meeting the required minutes is ready');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid)->'interpretation'->>'worked_minutes')::int,150,'flexible day reports actual elapsed minutes');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.flex_instance')::uuid)->'interpretation'->>'late_minutes')::int,NULL,'flexible schedule does not invent a lateness metric');
+SELECT lives_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.short_flex_instance')::uuid,'in',(current_setting('test.flex_date')||' 10:00')::timestamp,'e9600000-0000-4000-8000-000000000012','تسجيل دخول مرن قصير')$$,'short flexible day accepts its first source event');
+SELECT lives_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.short_flex_instance')::uuid,'out',(current_setting('test.flex_date')||' 10:30')::timestamp,'e9600000-0000-4000-8000-000000000013','تسجيل خروج مرن قصير')$$,'short flexible day accepts its second source event');
+SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-000000000001',current_setting('test.short_flex_instance')::uuid)->'interpretation'->>'exception_code'),'short_workday','duration below requirement is clearly reviewable');
+SELECT throws_ok($$SELECT public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.short_flex_instance')::uuid,NULL,NULL)$$,'22023','attendance_short_workday_reason_required','approving a short flexible workday requires a reason');
+SELECT lives_ok($$SELECT public.approve_attendance_fact('e9100000-0000-4000-8000-000000000001',current_setting('test.short_flex_instance')::uuid,NULL,'تم اعتماد المدة المختصرة بعد المراجعة')$$,'authorized reviewer can explicitly approve a short flexible day with a reason');
 SELECT throws_ok($$SELECT public.attendance_instance_detail('e9100000-0000-4000-8000-000000000099',current_setting('test.instance')::uuid)$$,'42501','attendance_view_forbidden','instance details are tenant-scoped');
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000002',true);
 SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'in',timezone('Africa/Cairo',now())::timestamp,gen_random_uuid(),NULL)$$,'42501','attendance_manage_forbidden','reader cannot enter manual punches');
@@ -111,7 +137,7 @@ SELECT ok(time.resolve_local('2026-11-01 01:30','America/New_York') IS NULL,'amb
 RESET ROLE;
 SELECT is((SELECT count(*)::int FROM time.attendance_facts WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND work_instance_id=current_setting('test.instance')::uuid),2,'prior approved fact is preserved alongside corrected version');
 SELECT is((SELECT count(*)::int FROM time.manual_punches WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND work_instance_id=current_setting('test.instance')::uuid),2,'original punch evidence remains append-only after correction');
-SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000001'),10,'Work Instance, absence, exception, capture, correction, and approvals audit the actor');
+SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000001'),19,'Work Instance, absence, exception, capture, correction, and approvals audit the actor');
 SELECT is((SELECT count(*)::int FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000003' AND event_key='manual_punch.review_entry'),1,'reviewer action and reason have a distinct audit event');
 SELECT is((SELECT details->>'reason' FROM time.attendance_audit_events WHERE tenant_id='e9100000-0000-4000-8000-000000000001' AND actor_user_id='e9000000-0000-4000-8000-000000000003' AND event_key='manual_punch.review_entry' LIMIT 1),'إضافة خروج مفقود بعد مراجعة السجل','reviewer reason is captured in the append-only audit detail');
 SELECT throws_ok($$UPDATE time.manual_punches SET direction='out' WHERE tenant_id='e9100000-0000-4000-8000-000000000001'$$,'55000','attendance_evidence_append_only','manual source evidence cannot be rewritten');
