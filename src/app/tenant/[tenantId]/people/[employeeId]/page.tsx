@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
-import { EmployeeUserLinkPanel, type LinkSnapshot, type Options as EmployeeUserLinkOptions } from './EmployeeUserLinkPanel';
+import { EmployeeUserLinkPanel, type AccountProvision, type LinkSnapshot, type Options as EmployeeUserLinkOptions } from './EmployeeUserLinkPanel';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
@@ -15,7 +15,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -71,6 +71,12 @@ export default async function EmployeePage({ params, searchParams }: {
     ? linkOptionsResult.data as unknown as EmployeeUserLinkOptions : null;
   const membershipSnapshot = membershipSnapshotResult.data && typeof membershipSnapshotResult.data === 'object'
     ? membershipSnapshotResult.data as Record<string, unknown> : null;
+  const canProvisionEmployeeAccount = access.can_manage === true && membershipSnapshot?.can_manage_members === true;
+  const accountProvisionResult = canProvisionEmployeeAccount ? await supabase.rpc('people_employee_account_provision_snapshot', {
+    p_tenant_id: tenantId, p_employee_id: employeeId,
+  }) : { data: null, error: null };
+  const accountProvision = accountProvisionResult.data && typeof accountProvisionResult.data === 'object'
+    ? accountProvisionResult.data as unknown as AccountProvision : null;
   const assignmentHistory = historyResult.data && typeof historyResult.data === 'object'
     ? historyResult.data as unknown as AssignmentHistory : null;
   const transferOptions = optionsResult.data && typeof optionsResult.data === 'object'
@@ -145,6 +151,9 @@ export default async function EmployeePage({ params, searchParams }: {
       rehireOptions={rehireOptions} optionsError={rehireOptionsError} />
     <EmployeeUserLinkPanel tenantId={tenantId} employeeId={employee.id} canManage={access.can_manage === true}
       canInvite={membershipSnapshot?.can_manage_members === true}
+      canProvisionAccount={canProvisionEmployeeAccount}
+      accountProvision={accountProvision} accountProvisionError={Boolean(canProvisionEmployeeAccount && (accountProvisionResult.error || !accountProvision))}
+      requestKey={crypto.randomUUID()} accountState={query.account}
       snapshot={linkSnapshot} snapshotError={Boolean(linkSnapshotResult.error || !linkSnapshot)}
       options={linkOptions} optionsError={Boolean(access.can_manage === true && (linkOptionsResult.error || !linkOptions))}
       query={linkQuery} page={linkPage} state={query.userLink} />
