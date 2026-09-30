@@ -4,16 +4,16 @@ import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
+import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
 type Assignment = { id: string; site: string; department: string | null; job: string | null; manager: string | null; valid_from: string };
 type Employee = { id: string; code: string; name: string; status: string; employment: Employment | null; assignment: Assignment | null };
-type Compensation = { amount: number | string; currency: string; valid_from: string; pay_basis: string };
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -31,20 +31,21 @@ export default async function EmployeePage({ params, searchParams }: {
   }
   const employee = employeeResult.data as unknown as Employee;
   const access = accessResult.data as Record<string, unknown>;
-  let compensation: Compensation | null = null;
-  if (access.can_view_compensation === true) {
-    const { data } = await supabase.rpc('people_compensation_snapshot', {
-      p_tenant_id: tenantId, p_employee_id: employeeId,
-    });
-    if (data && typeof data === 'object' && !Array.isArray(data)) compensation = data as Compensation;
-  }
   const employmentId = employee.employment?.id ?? null;
+  const canViewCompensation = access.can_view_compensation === true;
+  const canManageCompensation = access.can_manage_compensation === true;
   const canManageWorkContext = access.can_manage_org === true;
-  const [historyResult, optionsResult] = await Promise.all([
+  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult] = await Promise.all([
     employmentId ? supabase.rpc('people_work_assignment_history', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
     canManageWorkContext && employmentId ? supabase.rpc('people_work_assignment_options', {
+      p_tenant_id: tenantId, p_employment_id: employmentId,
+    }) : Promise.resolve({ data: null, error: null }),
+    canViewCompensation && employmentId ? supabase.rpc('people_compensation_history', {
+      p_tenant_id: tenantId, p_employment_id: employmentId,
+    }) : Promise.resolve({ data: null, error: null }),
+    canManageCompensation && employmentId ? supabase.rpc('people_compensation_options', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
   ]);
@@ -54,6 +55,14 @@ export default async function EmployeePage({ params, searchParams }: {
     ? optionsResult.data as unknown as TransferOptions : null;
   const historyError = Boolean(employmentId && (historyResult.error || !assignmentHistory));
   const optionsError = Boolean(canManageWorkContext && employmentId && (optionsResult.error || !transferOptions));
+  const compensationHistory = compensationHistoryResult.data && typeof compensationHistoryResult.data === 'object'
+    ? compensationHistoryResult.data as unknown as CompensationHistory : null;
+  const compensationOptions = compensationOptionsResult.data && typeof compensationOptionsResult.data === 'object'
+    ? compensationOptionsResult.data as unknown as CompensationOptions : null;
+  const compensationHistoryError = Boolean(canViewCompensation && employmentId
+    && (compensationHistoryResult.error || !compensationHistory));
+  const compensationOptionsError = Boolean(canManageCompensation && employmentId
+    && (compensationOptionsResult.error || !compensationOptions));
   const today = cairoToday();
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
@@ -62,6 +71,12 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.assignment === 'corrected' && <FeedbackToast key="assignment-corrected" message="تم تصحيح بيانات العمل لهذا اليوم وحفظ تفاصيل التعديل." />}
     {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة سياق العمل السابق." />}
     {query.assignment === 'cancel-error' && <FeedbackToast key="assignment-cancel-error" message="تعذر إلغاء النقل. حدّث الصفحة للتحقق من حالته." />}
+    {query.compensation === 'changed' && <FeedbackToast key="compensation-changed" message="تم تحديث الأجر الأساسي اعتبارًا من اليوم." />}
+    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ الربط الآلي بطلب التصحيح لم يُفعّل بعد." />}
+    {query.compensation === 'initial_corrected' && <FeedbackToast key="compensation-initial-corrected" message="تم تصحيح الأجر الأول لهذا اليوم وحُفظ سجل التعديل." />}
+    {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
+    {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
+    {query.compensation === 'cancel-error' && <FeedbackToast key="compensation-cancel-error" message="تعذر إلغاء تغيير الأجر. حدّث الصفحة للتحقق من حالته." />}
     <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
     <header className="workspace-page-heading"><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
       <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div>
@@ -84,12 +99,10 @@ export default async function EmployeePage({ params, searchParams }: {
       currentAssignmentId={employee.assignment?.id ?? null} employmentActive={employee.employment?.status === 'active'}
       history={assignmentHistory} historyError={historyError} options={transferOptions} optionsError={optionsError}
       canManage={canManageWorkContext} initialDate={today} />
-    {compensation && <section className="workspace-records-panel" aria-labelledby="compensation-heading">
-      <h2 id="compensation-heading">الأجر الأساسي</h2>
-      <p className="intro"><bdi>{Number(compensation.amount).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</bdi> جنيه مصري
-        {' · '}{compensation.pay_basis === 'daily' ? 'يومي' : 'شهري'}</p>
-      <p className="record-meta">سارٍ من <bdi>{compensation.valid_from}</bdi></p>
-    </section>}
+    {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id}
+      employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
+      history={compensationHistory} historyError={compensationHistoryError}
+      options={compensationOptions} optionsError={compensationOptionsError} today={today} />}
     <section className="workspace-records-panel" aria-label="الخطوة التالية">
       <h2>الخطوة التالية</h2><p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
       <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</Link>

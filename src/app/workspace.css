@@ -221,6 +221,16 @@
 .assignment-transfer-form .field-hint { margin: 0; color: #607780; font-size: .85rem; }
 .assignment-transfer-form .form-message { margin: .2rem 0; }
 .assignment-transfer-form .workspace-form-actions { margin-top: .2rem; }
+.compensation-change-details { margin: .35rem 1.4rem 1.2rem; border-top: 1px solid #e7edee; padding-top: .9rem; }
+.compensation-change-details > summary { width: fit-content; color: var(--color-brand); font-weight: 700; cursor: pointer; }
+.compensation-change-form { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.2fr); align-items: center; gap: .65rem 1rem; margin-top: 1rem; }
+.compensation-change-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.compensation-change-form input { min-width: 0; min-height: 2.75rem; width: 100%; padding: .5rem .7rem; border: 1px solid #cbd7da; border-radius: .55rem; background: #fff; color: var(--color-text); font: inherit; }
+.compensation-change-form input:focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.compensation-change-form :is(.field-hint, .form-message, .workspace-form-actions) { grid-column: 1 / -1; }
+.compensation-change-form .field-hint { margin: 0; color: #607780; font-size: .85rem; }
+.compensation-change-form .form-message { margin: .2rem 0; }
+.compensation-change-form .workspace-form-actions { margin-top: .2rem; }
 .people-search-form { display: grid; gap: .45rem; padding: 1rem 1.4rem; border-bottom: 1px solid #e7edee; }
 .people-search-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
 .people-search-form > div { display: flex; gap: .6rem; }
@@ -487,6 +497,9 @@
   .assignment-transfer-details { margin-inline: 1rem; }
   .assignment-transfer-form { grid-template-columns: 1fr; gap: .35rem; }
   .assignment-transfer-form :is(label, .field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
+  .compensation-change-details { margin-inline: 1rem; }
+  .compensation-change-form { grid-template-columns: 1fr; gap: .35rem; }
+  .compensation-change-form :is(label, .field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
   .people-search-form { padding: 1rem; }
   .people-search-form > div { align-items: stretch; }
   .people-search-form .secondary-button { flex: 0 0 auto; }
