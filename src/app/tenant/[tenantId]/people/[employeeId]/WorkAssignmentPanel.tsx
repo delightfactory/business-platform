@@ -12,7 +12,7 @@ type Job = Named & { department_id: string | null };
 export type AssignmentRow = {
   id: string; site: string | null; site_id: string; department: string | null; department_id: string | null;
   job: string | null; job_id: string | null; manager: string | null; manager_employee_id: string | null;
-  valid_from: string; valid_until: string | null; status: 'current' | 'past' | 'scheduled';
+  valid_from: string; valid_until: string | null; status: 'current' | 'past' | 'scheduled' | 'initial_scheduled';
 };
 export type AssignmentHistory = { items: AssignmentRow[]; truncated: boolean };
 export type TransferOptions = {
@@ -20,9 +20,9 @@ export type TransferOptions = {
   sites_truncated: boolean; departments_truncated: boolean; jobs_truncated: boolean; managers_truncated: boolean;
 };
 
-export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employmentStartDate, currentAssignmentId, employmentActive,
+export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employmentStartDate, employmentActive,
   history, historyError, options, optionsError, canManage, initialDate }: {
-  tenantId: string; employeeId: string; employmentId: string | null; employmentStartDate: string | null; currentAssignmentId: string | null;
+  tenantId: string; employeeId: string; employmentId: string | null; employmentStartDate: string | null;
   employmentActive: boolean; history: AssignmentHistory | null; historyError: boolean;
   options: TransferOptions | null; optionsError: boolean; canManage: boolean; initialDate: string;
 }) {
@@ -46,7 +46,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
   const departmentId = departmentChoice ?? formState.departmentId;
   const visibleJobs = (options?.jobs ?? []).filter((job) => !job.department_id || job.department_id === departmentId);
   const hasPending = history?.items.some((assignment) => assignment.status === 'scheduled') === true;
-  const mayTransfer = canManage && employmentActive && Boolean(currentAssignmentId) && !hasPending && !historyError;
+  const mayTransfer = canManage && employmentActive && Boolean(currentAssignment) && !hasPending && !historyError;
   const mayCorrectInitial = canManage && employmentActive && Boolean(employmentId)
     && employmentStartDate === initialDate && currentAssignment?.valid_from === initialDate && !hasPending && !historyError;
   const currentChoiceMissing = Boolean(options && currentAssignment && (
@@ -63,9 +63,11 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
       : history?.items.length ? <ol className="assignment-history-list">
         {history.items.map((assignment) => <li key={assignment.id} className="assignment-history-item">
           <div className="assignment-history-heading">
-            <strong>{assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'السياق الحالي' : 'سياق سابق'}</strong>
+            <strong>{assignment.status === 'initial_scheduled' ? 'سياق العمل عند بدء العلاقة'
+              : assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'السياق الحالي' : 'سياق سابق'}</strong>
             <span className={`entity-status ${assignment.status === 'past' ? 'is-inactive' : 'is-active'}`}>
-              {assignment.status === 'scheduled' ? 'يبدأ لاحقًا' : assignment.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</span>
+              {assignment.status === 'initial_scheduled' ? 'يبدأ مع العمل'
+                : assignment.status === 'scheduled' ? 'يبدأ لاحقًا' : assignment.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</span>
           </div>
           <dl className="snapshot-grid">
             <div><dt>الفرع</dt><dd>{assignment.site ?? 'غير محدد'}</dd></div>
@@ -87,7 +89,11 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
     {history?.truncated && <p className="record-meta">يعرض هذا الملف أحدث 100 تغيير.</p>}
     {canManage && !employmentId && <p className="form-message">لا توجد علاقة توظيف يمكن تغيير سياق عملها.</p>}
     {canManage && employmentId && !employmentActive && <p className="form-message">لا يمكن تغيير سياق العمل بعد انتهاء علاقة التوظيف.</p>}
-    {canManage && employmentId && employmentActive && !currentAssignmentId && <p className="form-message">لا يوجد سياق عمل سارٍ يمكن نقل الموظف منه.</p>}
+    {canManage && employmentId && employmentActive && !currentAssignment && history?.items.some((assignment) => assignment.status === 'initial_scheduled')
+      && <p className="form-message">سياق العمل أعلاه مقرر عند بداية العلاقة؛ لا يمكن نقل الموظف قبل بدء العمل.</p>}
+    {canManage && employmentId && employmentActive && !currentAssignment
+      && !history?.items.some((assignment) => assignment.status === 'initial_scheduled')
+      && <p className="form-message">لا يوجد سياق عمل سارٍ يمكن نقل الموظف منه.</p>}
     {canManage && hasPending && <p className="form-message">يوجد نقل مقرر بالفعل. ألغِه من سجل العمل قبل إضافة تغيير آخر.</p>}
     {mayTransfer && <details className="assignment-transfer-details">
       <summary>تغيير الفرع أو القسم أو الوظيفة</summary>

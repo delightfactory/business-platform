@@ -6,7 +6,7 @@ import { cancelCompensationChangeAction, changeCompensationAction, type Compensa
 
 type CompensationVersion = {
   id: string; amount: number | string; currency: string; valid_from: string; valid_until: string | null;
-  status: 'current' | 'past' | 'scheduled';
+  status: 'current' | 'past' | 'scheduled' | 'initial_scheduled';
 };
 export type CompensationHistory = { items: CompensationVersion[]; truncated: boolean; pay_basis: 'monthly' | 'daily' };
 export type CompensationOptions = {
@@ -39,9 +39,11 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
     {canView && !historyError && history?.items.length ? <ol className="assignment-history-list">
       {history.items.map((version) => <li key={version.id} className="assignment-history-item">
         <div className="assignment-history-heading">
-          <strong>{version.status === 'scheduled' ? 'تغيير مقرر' : version.status === 'current' ? 'الأجر الحالي' : 'أجر سابق'}</strong>
+          <strong>{version.status === 'initial_scheduled' ? 'الأجر عند بدء العمل'
+            : version.status === 'scheduled' ? 'تغيير مقرر' : version.status === 'current' ? 'الأجر الحالي' : 'أجر سابق'}</strong>
           <span className={`entity-status ${version.status === 'past' ? 'is-inactive' : 'is-active'}`}>
-            {version.status === 'scheduled' ? 'يبدأ لاحقًا' : version.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</span>
+            {version.status === 'initial_scheduled' ? 'يبدأ مع العمل'
+              : version.status === 'scheduled' ? 'يبدأ لاحقًا' : version.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</span>
         </div>
         <dl className="snapshot-grid">
           <div><dt>القيمة</dt><dd><bdi>{formatAmount(version.amount)}</bdi> جنيه مصري</dd></div>

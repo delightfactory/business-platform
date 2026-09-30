@@ -1,0 +1,117 @@
+'use client';
+
+import { useActionState } from 'react';
+import { SubmitButton } from '@/components/submit-button';
+import { endEmploymentAction, rehireEmployeeAction, type LifecycleState, type RehireState } from '../employment-lifecycle-actions';
+
+type EmploymentItem = {
+  id: string; employer: string; start_date: string; end_date: string | null;
+  status: 'active' | 'ended'; pay_basis: 'monthly' | 'daily';
+};
+type LifecycleEvent = { event: 'employment.ended' | 'employment.rehired'; created_at: string;
+  details: { after?: { end_date?: string } } };
+export type EmploymentHistory = { items: EmploymentItem[]; events: LifecycleEvent[]; events_truncated: boolean };
+type Employer = { id: string; name: string };
+type Site = { id: string; name: string; employer_id: string };
+type Department = { id: string; name: string };
+type Job = { id: string; name: string; department_id: string | null };
+export type RehireOptions = { employers: Employer[]; sites: Site[]; departments: Department[]; jobs: Job[] };
+
+export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, employmentStatus,
+  employmentStartDate, workforceStatus, previousEndDate, canManage, today, history, historyError, rehireOptions, optionsError }: {
+  tenantId: string; employeeId: string; employmentId: string | null; employmentStatus: string | null;
+  employmentStartDate: string | null; workforceStatus: string; previousEndDate: string | null; canManage: boolean; today: string;
+  history: EmploymentHistory | null; historyError: boolean; rehireOptions: RehireOptions | null; optionsError: boolean;
+}) {
+  const endInitial: LifecycleState = { tenantId, employeeId, employmentId: employmentId ?? '', endDate: today, error: '', attempt: 0 };
+  const rehireInitial: RehireState = { tenantId, employeeId,
+    employerId: rehireOptions?.employers[0]?.id ?? '',
+    siteId: rehireOptions?.sites.find((site) => site.employer_id === rehireOptions.employers[0]?.id)?.id ?? '',
+    departmentId: '', jobId: '', startDate: maxDate(today, nextDate(previousEndDate)),
+    payBasis: 'monthly', amount: '', payrollEligible: true, error: '', attempt: 0 };
+  const [endState, endAction] = useActionState(endEmploymentAction, endInitial);
+  const [rehireState, rehireAction] = useActionState(rehireEmployeeAction, rehireInitial);
+  const canEnd = canManage && Boolean(employmentId) && employmentStatus === 'active' && workforceStatus !== 'ended'
+    && Boolean(employmentStartDate && employmentStartDate <= today);
+  const canRehire = canManage && workforceStatus === 'ended';
+
+  return <section className="workspace-records-panel assignment-history-panel" aria-labelledby="employment-history-heading">
+    <h2 id="employment-history-heading">سجل علاقات العمل</h2>
+    {historyError && <p className="form-message error-message" role="alert">تعذر تحميل سجل علاقات العمل. حدّث الصفحة أو تحقق من صلاحية عرض ملف الموظف.</p>}
+    {!historyError && history?.items && history.items.length > 1 && <ol className="assignment-history-list">
+      {history.items.slice(1).map((item) => <li key={item.id} className="assignment-history-item">
+        <div className="assignment-history-heading"><strong>{item.status === 'ended' ? 'علاقة عمل سابقة' : 'علاقة عمل جديدة'}</strong>
+          <span className={`entity-status ${item.status === 'ended' ? 'is-inactive' : 'is-active'}`}>{item.status === 'ended' ? 'منتهية' : 'نشطة'}</span></div>
+        <dl className="snapshot-grid"><div><dt>جهة التوظيف</dt><dd>{item.employer}</dd></div>
+          <div><dt>من</dt><dd><bdi>{item.start_date}</bdi></dd></div>
+          {item.end_date && <div><dt>آخر يوم</dt><dd><bdi>{item.end_date}</bdi></dd></div>}
+          <div><dt>أساس الأجر</dt><dd>{item.pay_basis === 'daily' ? 'يومي' : 'شهري'}</dd></div></dl>
+      </li>)}
+    </ol>}
+    {history?.items.length === 1 && <p className="record-meta">هذه أول علاقة عمل مسجلة للموظف.</p>}
+    {!historyError && history?.events.map((event, index) => <p className="record-meta" key={`${event.event}-${event.created_at}-${index}`}>
+      {event.event === 'employment.ended' ? 'انتهت علاقة عمل بتاريخ ' : 'سُجلت إعادة توظيف في '}
+      <bdi>{event.event === 'employment.ended' && event.details.after?.end_date
+        ? event.details.after.end_date
+        : new Date(event.created_at).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo' })}</bdi>
+    </p>)}
+    {history?.events_truncated && <p className="record-meta">يعرض السجل أحدث 100 إجراء.</p>}
+    {canEnd && <details className="compensation-change-details">
+      <summary>إنهاء علاقة العمل</summary>
+      <form key={endState.attempt} action={endAction} className="compensation-change-form">
+        <input type="hidden" name="tenantId" value={tenantId} />
+        <input type="hidden" name="employeeId" value={employeeId} />
+        <input type="hidden" name="employmentId" value={employmentId ?? ''} />
+        <label htmlFor="employment-end-date">آخر يوم عمل</label><input id="employment-end-date" name="endDate" type="date" required
+          min={employmentStartDate ?? today} max={today} defaultValue={endState.endDate} />
+        <p className="field-hint">يمكن اختيار اليوم أو تاريخ سابق. لا يدعم هذا المسار إنهاءً مقررًا للمستقبل. في التاريخ السابق، لا بد ألا تكون قد بدأت تكليفات أو تغييرات أجر لاحقة؛ ويرفض النظام الحالات التي تتطلب إعادة تشكيل هذا السجل. تُحفظ العلاقة والتكليفات والأجور حتى آخر يوم، وتُلغى التغييرات المستقبلية غير النافذة.</p>
+        <div className="form-message"><strong>قبل الإنهاء:</strong> لا يتصل هذا المسار حاليًا بتسويات Payroll أو أرصدة الإجازات أو تمويل الموظف، ولا يرسل تصحيحًا تلقائيًا إلى فترة مقفلة. راجع Payroll للتسوية النهائية أو طلب التصحيح عند اختيار تاريخ سابق، ونسّق مراجعة الإجازات والتمويل مع مسؤولي تلك المجالات.</div>
+        <label className="checkbox-field"><input name="acknowledgeHandoff" type="checkbox" required />
+          <span>أفهم أن النظام لا يحسب أو يسوّي مستحقات Payroll أو الإجازات أو التمويل، وأن التاريخ السابق قد يتطلب مراجعة Payroll وتصحيحًا يدويًا.</span></label>
+        {endState.error && <p className="form-message error-message" role="alert">{endState.error}</p>}
+        <div className="workspace-form-actions"><SubmitButton label="إنهاء علاقة العمل" pendingLabel="جارٍ إنهاء العلاقة…" /></div>
+      </form>
+    </details>}
+    {canManage && employmentStatus === 'active' && employmentStartDate && employmentStartDate > today
+      && <p className="form-message">لا يمكن إنهاء علاقة العمل قبل تاريخ بدايتها <bdi>{employmentStartDate}</bdi>.</p>}
+    {canRehire && <details className="compensation-change-details">
+      <summary>إعادة توظيف هذا الموظف</summary>
+      {optionsError && <p className="form-message error-message" role="alert">تعذر تحميل جهات التوظيف والاختيارات النشطة. حدّث الصفحة قبل المتابعة.</p>}
+      {!optionsError && !rehireOptions && <p className="form-message error-message" role="alert">خيارات إعادة التوظيف غير متاحة حاليًا.</p>}
+      {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form">
+        <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع تكليف وأجر ابتدائيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
+        <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
+        <label htmlFor="rehire-employer">جهة التوظيف</label><select id="rehire-employer" name="employerId" required defaultValue={rehireState.employerId}>
+          <option value="">اختر جهة التوظيف</option>{rehireOptions.employers.map((employer) => <option key={employer.id} value={employer.id}>{employer.name}</option>)}
+        </select>
+        <label htmlFor="rehire-site">الفرع</label><select id="rehire-site" name="siteId" required defaultValue={rehireState.siteId}>
+          <option value="">اختر الفرع</option>{rehireOptions.sites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
+        </select>
+        <label htmlFor="rehire-department">القسم (اختياري)</label><select id="rehire-department" name="departmentId" defaultValue={rehireState.departmentId}>
+          <option value="">دون تحديد قسم</option>{rehireOptions.departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}
+        </select>
+        <label htmlFor="rehire-job">الوظيفة (اختياري)</label><select id="rehire-job" name="jobId" defaultValue={rehireState.jobId}>
+          <option value="">دون تحديد وظيفة</option>{rehireOptions.jobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}
+        </select>
+        <label htmlFor="rehire-start-date">تاريخ بداية العلاقة الجديدة</label><input id="rehire-start-date" name="startDate" type="date" required
+          min={maxDate(today, nextDate(previousEndDate))} defaultValue={rehireState.startDate} />
+        <label htmlFor="rehire-pay-basis">أساس الأجر</label><select id="rehire-pay-basis" name="payBasis" defaultValue={rehireState.payBasis}>
+          <option value="monthly">راتب شهري</option><option value="daily">أجر يومي</option></select>
+        <label htmlFor="rehire-amount">الأجر الأساسي الابتدائي (جنيه مصري)</label><input id="rehire-amount" name="amount" type="number" min="0" max="999999999999.99" step="0.01" required defaultValue={rehireState.amount} />
+        <label className="checkbox-field"><input name="payrollEligible" type="checkbox" defaultChecked={rehireState.payrollEligible} /><span>مشمول في Payroll</span></label>
+        <div className="form-message">تتطلب مستحقات الفترة السابقة تسوية مستقلة. راجع Payroll للتسوية النهائية أو التسوية اليدوية المعتمدة، ونسّق الإجازات والتمويل مع مسؤوليها.</div>
+        {rehireState.error && <p className="form-message error-message" role="alert">{rehireState.error}</p>}
+        <div className="workspace-form-actions"><SubmitButton label="إنشاء علاقة العمل الجديدة" pendingLabel="جارٍ تسجيل إعادة التوظيف…" /></div>
+      </form>}
+    </details>}
+  </section>;
+}
+
+function nextDate(date: string | null) {
+  if (!date) return '';
+  const parsed = new Date(`${date}T00:00:00Z`);
+  parsed.setUTCDate(parsed.getUTCDate() + 1);
+  return parsed.toISOString().slice(0, 10);
+}
+
+function maxDate(first: string, second: string) { return first > second ? first : second; }

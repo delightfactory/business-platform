@@ -5,6 +5,7 @@ import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
+import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
 
 export const dynamic = 'force-dynamic';
 type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
@@ -13,7 +14,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -35,7 +36,9 @@ export default async function EmployeePage({ params, searchParams }: {
   const canViewCompensation = access.can_view_compensation === true;
   const canManageCompensation = access.can_manage_compensation === true;
   const canManageWorkContext = access.can_manage_org === true;
-  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult] = await Promise.all([
+  const canManageLifecycle = access.can_manage === true && access.can_manage_employment === true
+    && canManageWorkContext && canManageCompensation;
+  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult] = await Promise.all([
     employmentId ? supabase.rpc('people_work_assignment_history', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
@@ -48,6 +51,10 @@ export default async function EmployeePage({ params, searchParams }: {
     canManageCompensation && employmentId ? supabase.rpc('people_compensation_options', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
+    supabase.rpc('people_employment_history', { p_tenant_id: tenantId, p_employee_id: employeeId }),
+    canManageLifecycle && employee.status === 'ended'
+      ? supabase.rpc('people_onboarding_options', { p_tenant_id: tenantId })
+      : Promise.resolve({ data: null, error: null }),
   ]);
   const assignmentHistory = historyResult.data && typeof historyResult.data === 'object'
     ? historyResult.data as unknown as AssignmentHistory : null;
@@ -63,6 +70,13 @@ export default async function EmployeePage({ params, searchParams }: {
     && (compensationHistoryResult.error || !compensationHistory));
   const compensationOptionsError = Boolean(canManageCompensation && employmentId
     && (compensationOptionsResult.error || !compensationOptions));
+  const employmentHistory = employmentHistoryResult.data && typeof employmentHistoryResult.data === 'object'
+    ? employmentHistoryResult.data as unknown as EmploymentHistory : null;
+  const employmentHistoryError = Boolean(employmentHistoryResult.error || !employmentHistory);
+  const rehireOptions = rehireOptionsResult.data && typeof rehireOptionsResult.data === 'object'
+    ? rehireOptionsResult.data as unknown as RehireOptions : null;
+  const rehireOptionsError = Boolean(canManageLifecycle && employee.status === 'ended'
+    && (rehireOptionsResult.error || !rehireOptions));
   const today = cairoToday();
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
@@ -77,6 +91,8 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
     {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
     {query.compensation === 'cancel-error' && <FeedbackToast key="compensation-cancel-error" message="تعذر إلغاء تغيير الأجر. حدّث الصفحة للتحقق من حالته." />}
+    {query.employment === 'ended' && <FeedbackToast key="employment-ended" message="تم إنهاء علاقة العمل. راجع Payroll والإجازات وتمويل الموظف للتسوية والمتابعة اللازمة." />}
+    {query.employment === 'rehired' && <FeedbackToast key="employment-rehired" message="تم إنشاء علاقة عمل جديدة للموظف. راجع Payroll والإجازات وتمويل الموظف بشأن الفترة السابقة." />}
     <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
     <header className="workspace-page-heading"><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
       <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div>
@@ -93,16 +109,25 @@ export default async function EmployeePage({ params, searchParams }: {
         {employee.assignment?.job && <div><dt>الوظيفة</dt><dd>{employee.assignment.job}</dd></div>}
         {employee.assignment?.manager && <div><dt>المدير المباشر</dt><dd>{employee.assignment.manager}</dd></div>}
       </dl> : <p>لا توجد علاقة توظيف نشطة لهذا الموظف.</p>}
+      {employee.status === 'scheduled' && employee.employment && <p className="record-meta">
+        بيانات الفرع والقسم والوظيفة المعروضة مقررة لتبدأ مع العمل في <bdi>{employee.employment.start_date}</bdi>؛ لم تبدأ بعد.
+      </p>}
     </section>
     <WorkAssignmentPanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId}
       employmentStartDate={employee.employment?.start_date ?? null}
-      currentAssignmentId={employee.assignment?.id ?? null} employmentActive={employee.employment?.status === 'active'}
+      employmentActive={employee.employment?.status === 'active'}
       history={assignmentHistory} historyError={historyError} options={transferOptions} optionsError={optionsError}
       canManage={canManageWorkContext} initialDate={today} />
     {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id}
       employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
       history={compensationHistory} historyError={compensationHistoryError}
       options={compensationOptions} optionsError={compensationOptionsError} today={today} />}
+    <EmploymentLifecyclePanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId}
+      employmentStatus={employee.employment?.status ?? null} workforceStatus={employee.status}
+      employmentStartDate={employee.employment?.start_date ?? null}
+      previousEndDate={employee.employment?.end_date ?? null} canManage={canManageLifecycle} today={today}
+      history={employmentHistory} historyError={employmentHistoryError}
+      rehireOptions={rehireOptions} optionsError={rehireOptionsError} />
     <section className="workspace-records-panel" aria-label="الخطوة التالية">
       <h2>الخطوة التالية</h2><p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
       <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</Link>
