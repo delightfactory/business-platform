@@ -167,5 +167,3 @@ BEGIN
 END $f$;
 REVOKE ALL ON FUNCTION public.approve_attendance_absence(uuid,uuid,text) FROM PUBLIC,anon,service_role;
 GRANT EXECUTE ON FUNCTION public.approve_attendance_absence(uuid,uuid,text) TO authenticated;
-
-
