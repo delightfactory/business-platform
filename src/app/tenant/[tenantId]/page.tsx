@@ -59,6 +59,8 @@ export default async function TenantPage({ params, searchParams }: {
   }
 
   const snapshot = data as Record<string, unknown>;
+  const { data: peopleAccess, error: peopleAccessError } = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
+  const peopleAvailable = !peopleAccessError && peopleAccess && typeof peopleAccess === 'object' && !Array.isArray(peopleAccess);
   const { data: brandingData } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
   const branding = brandingData && typeof brandingData === 'object' && !Array.isArray(brandingData)
     ? brandingData as Record<string, unknown> : null;
@@ -89,6 +91,7 @@ export default async function TenantPage({ params, searchParams }: {
             <TenantTaskLink href={`/tenant/${tenantId}/users`} title="المستخدمون والدعوات" detail="ادعُ الفريق وراجع صلاحياته وحالة الدعوات." />
             <TenantTaskLink href={`/tenant/${tenantId}/entities-sites`} title="الجهات والفروع" detail="أضف الفروع أو حدّث بيانات الجهات المرتبطة بالشركة." />
             <TenantTaskLink href={`/tenant/${tenantId}/branding`} title="هوية الشركة" detail="اضبط الاسم الظاهر والشعار واللون المستخدم داخل المساحة." />
+            {peopleAvailable && <TenantTaskLink href={`/tenant/${tenantId}/people`} title="الموظفون" detail="أضف ملفات الموظفين وتابع بيانات عملهم." />}
           </ul>
         </section>
       </div>
