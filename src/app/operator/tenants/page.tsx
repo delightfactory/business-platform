@@ -60,7 +60,7 @@ export default async function OperatorTenantsPage({ searchParams }: { searchPara
   );
 }
 
-export function stateLabel(state: string) {
+function stateLabel(state: string) {
   if (state === 'active') return 'نشطة';
   if (state === 'suspended') return 'معلّقة';
   if (state === 'archived') return 'مؤرشفة';

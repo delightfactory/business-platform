@@ -40,6 +40,10 @@ SELECT ok(NOT has_table_privilege('authenticated','people.employee_account_provi
   'account provisioning audit is private');
 SELECT ok(NOT has_function_privilege('anon','public.activate_people_employee_account(uuid)','EXECUTE'),
   'anonymous callers cannot activate accounts');
+SELECT ok(NOT has_function_privilege('authenticated','public.record_people_employee_account_password_readiness(uuid,uuid)','EXECUTE'),
+  'recipients cannot directly record trusted employee password readiness');
+SELECT ok(NOT has_table_privilege('authenticated','people.employee_account_password_readiness','INSERT'),
+  'recipients cannot write intent-bound employee readiness rows');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000002',true);
 SELECT throws_ok($$SELECT public.start_people_employee_account_provision('a2200000-0000-4000-8000-000000000001',
@@ -84,8 +88,8 @@ SELECT throws_ok($$INSERT INTO auth.users(id,email,encrypted_password,raw_app_me
     pg_catalog.jsonb_build_object('people_employee_provision_intent_id',current_setting('test.intent_id'),
       'people_employee_provision_marker','a6600000-0000-4000-8000-000000000001'),'{}','authenticated','authenticated',now(),now())$$,
   '23514','people_account_provision_marker_unmatched','a forged marker cannot bind an unrelated Auth insert');
-INSERT INTO auth.users(id,email,encrypted_password,raw_app_meta_data,raw_user_meta_data,aud,role,created_at,updated_at)
-VALUES('a1100000-0000-4000-8000-000000000003','new-user@example.test',NULL,'{}','{}','authenticated','authenticated',now(),now());
+INSERT INTO auth.users(id,email,encrypted_password,invited_at,raw_app_meta_data,raw_user_meta_data,aud,role,created_at,updated_at)
+VALUES('a1100000-0000-4000-8000-000000000003','new-user@example.test',NULL,now(),'{}','{}','authenticated','authenticated',now(),now());
 UPDATE auth.users SET raw_app_meta_data=pg_catalog.jsonb_build_object(
     'people_employee_provision_intent_id',current_setting('test.intent_id'),
     'people_employee_provision_marker',current_setting('test.marker'))
@@ -117,6 +121,28 @@ SELECT throws_ok($$SELECT public.activate_people_employee_account(current_settin
   '42501','people_employee_account_password_required','verified recipient still needs to set their own password');
 RESET ROLE;
 UPDATE auth.users SET encrypted_password='recipient-chosen-hash' WHERE id='a1100000-0000-4000-8000-000000000003';
+INSERT INTO platform_private.platform_auth_password_readiness(user_id,source_workflow,source_invitation_id,source_issuance)
+VALUES('a1100000-0000-4000-8000-000000000003','tenant_member_invitation','a7700000-0000-4000-8000-000000000001',1);
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000003',true);
+SELECT throws_ok($$SELECT public.activate_people_employee_account(current_setting('test.intent_id')::uuid)$$,
+  '42501','people_employee_account_password_required',
+  'a nonempty Auth password and another workflow readiness row cannot activate without this intent readiness marker');
+RESET ROLE;
+SET LOCAL ROLE service_role;
+SELECT throws_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.intent_id')::uuid,
+  'a1100000-0000-4000-8000-000000000004')$$,
+  '42501','people_employee_account_readiness_identity_mismatch','readiness cannot be bound to another Auth user');
+SELECT lives_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.intent_id')::uuid,
+  'a1100000-0000-4000-8000-000000000003')$$,
+  'trusted server records readiness for the verified recipient and current intent');
+RESET ROLE;
+SELECT is((SELECT source_workflow FROM platform_private.platform_auth_password_readiness WHERE user_id='a1100000-0000-4000-8000-000000000003'),
+  'tenant_member_invitation','an existing global readiness record from another invitation workflow is preserved');
+SELECT is((SELECT count(*)::integer FROM people.employee_account_password_readiness
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND intent_id=current_setting('test.intent_id')::uuid
+    AND employee_id='a4400000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000003'),1,
+  'employee readiness is bound to the exact Tenant, Employee, intent, and Auth user');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000003',true);
 SELECT throws_ok($$SELECT public.activate_people_employee_account(current_setting('test.intent_id')::uuid)$$,
@@ -154,6 +180,68 @@ SELECT ok((SELECT count(*)=1 FROM platform_core.tenant_membership_audit_events W
 SELECT is((SELECT state FROM people.employee_account_provision_intents WHERE id=current_setting('test.intent_id')::uuid),
   'activated','activation is durable and idempotent');
 
+-- Simulate an already-active account upgraded from before readiness was recorded.
+DELETE FROM people.employee_account_password_readiness WHERE intent_id=current_setting('test.intent_id')::uuid;
+DELETE FROM platform_private.platform_auth_password_readiness WHERE user_id='a1100000-0000-4000-8000-000000000003';
+UPDATE auth.users SET raw_app_meta_data=raw_app_meta_data-'people_employee_provision_intent_id'-'people_employee_provision_marker'
+  WHERE id='a1100000-0000-4000-8000-000000000003';
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000002',true);
+SELECT throws_ok($$SELECT public.prepare_people_employee_account_password_readiness_recovery('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001',current_setting('test.intent_id')::uuid)$$,
+  '42501','people_employee_account_manage_forbidden','HR access without tenant.members.manage cannot resend legacy readiness link');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is(public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'password_ready','false','authorized HR sees that the activated legacy account lacks exact readiness');
+SELECT is((public.prepare_people_employee_account_password_readiness_recovery('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001',current_setting('test.intent_id')::uuid)->>'target_email'),'new-user@example.test',
+  'authorized HR can prepare a recovery link only for this activated employee identity');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000003',true);
+SELECT is((public.people_employee_account_activation_snapshot(current_setting('test.intent_id')::uuid)->>'password_ready'),'false',
+  'recipient snapshot exposes missing readiness only for the exact current Auth identity');
+RESET ROLE;
+SET LOCAL ROLE service_role;
+SELECT throws_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.intent_id')::uuid,
+  'a1100000-0000-4000-8000-000000000004')$$,
+  '42501','people_employee_account_readiness_identity_mismatch','activated readiness recovery remains bound to the exact Auth user');
+SELECT lives_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.intent_id')::uuid,
+  'a1100000-0000-4000-8000-000000000003')$$,
+  'recipient password update can record readiness for a legacy activated intent after provisioning metadata was cleared');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000003',true);
+SELECT is((public.people_employee_account_activation_snapshot(current_setting('test.intent_id')::uuid)->>'password_ready'),'true',
+  'recipient sees exact intent-bound readiness after the server records it');
+SELECT is((public.activate_people_employee_account(current_setting('test.intent_id')::uuid)->>'state'),'activated',
+  'activation RPC remains idempotent for the already-active legacy recipient');
+RESET ROLE;
+SELECT is((SELECT count(*)::integer FROM platform_core.tenant_memberships WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+  AND user_id='a1100000-0000-4000-8000-000000000003'),1,'readiness repair creates no duplicate membership');
+SELECT is((SELECT count(*)::integer FROM people.employee_user_links WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+  AND employee_id='a4400000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000003' AND unlinked_at IS NULL),1,
+  'readiness repair creates no duplicate Employee link');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT lives_ok($$SELECT public.record_people_employee_account_readiness_delivery('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001',current_setting('test.intent_id')::uuid,'sent',NULL)$$,
+  'authorized HR can audit readiness-link delivery without changing activated state');
+RESET ROLE;
+SELECT is((SELECT state FROM people.employee_account_provision_intents WHERE id=current_setting('test.intent_id')::uuid),'activated',
+  'readiness-link delivery does not alter the activated intent state');
+
+INSERT INTO platform_core.tenant_roles(tenant_id,role_id,role_key,role_version,permission_snapshot,protects_tenant_admin)
+VALUES ('a2200000-0000-4000-8000-000000000001','a3300000-0000-4000-8000-000000000003','tenant.owner_admin.v1',1,
+  ARRAY['tenant.administer','tenant.members.manage','tenant.sites.manage','tenant.legal_entities.manage'],true);
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is(public.change_tenant_admin_role('a2200000-0000-4000-8000-000000000001','a1100000-0000-4000-8000-000000000003','promote')->>'state','promoted',
+  'recipient who completed the intent-bound password step is eligible for Admin promotion');
+RESET ROLE;
+
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
 SELECT set_config('test.revoked_intent_id',(public.start_people_employee_account_provision('a2200000-0000-4000-8000-000000000001',
@@ -166,6 +254,10 @@ VALUES('a1100000-0000-4000-8000-000000000005','revoked@example.test','',
   pg_catalog.jsonb_build_object('people_employee_provision_intent_id',current_setting('test.revoked_intent_id'),
     'people_employee_provision_marker',current_setting('test.revoked_marker')),'{}','authenticated','authenticated',now(),now());
 UPDATE auth.users SET email_confirmed_at=now(),encrypted_password='recipient-chosen-hash' WHERE id='a1100000-0000-4000-8000-000000000005';
+SET LOCAL ROLE service_role;
+SELECT lives_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.revoked_intent_id')::uuid,
+  'a1100000-0000-4000-8000-000000000005')$$,'issuer revocation is still checked during activation, after readiness capture');
+RESET ROLE;
 UPDATE platform_core.tenant_memberships SET access_state='inactive'
   WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000001';
 SET LOCAL ROLE authenticated;
