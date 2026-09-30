@@ -1,6 +1,6 @@
 # Cross-cube integrity and scale qualification — 2026-09-30
 
-This record closes the concrete People/Attendance consistency and unbounded-list findings identified after local Cube 2 closure. It describes local engineering qualification only. No remote database, production deployment, or GitHub Actions run is claimed.
+This record closes the concrete People/Attendance consistency and unbounded-list findings identified after local Cube 2 closure. No remote database migration or production deployment is claimed.
 
 ## Changes
 
@@ -18,6 +18,7 @@ The new list RPCs enforce their own authorization. Returned People directory row
 - Local Supabase migrations through `20260930162029_operator_listing_pagination.sql` applied without a reset. The live demo database remained at two Tenants and five Employees; synthetic scale rows were never inserted there.
 - Six focused People/Attendance database suites passed 258 assertions after the CSV lock-order correction and removal of four source-text assertions. A two-session QA regression verified that CSV confirmation waits on the Employment lock and revalidates a transferred Assignment. Directory search passed 14; Tenant member pagination passed 22; Attendance review scale passed 21; operator list pagination passed 29. Relevant existing invitation, admin-role, lifecycle, and commercial suites passed after their fixture counts were scoped to their own test Tenants.
 - `npm run build`, `npm run lint`, and `git diff --check` passed. The tenant Users and Invitations pages rendered with the new counts, search, and bounded list in a local mobile-width browser view on port 3300. Browser-controlled clicks were inconclusive, so this record does not claim click-through acceptance.
+- Before merge, the complete local pgTAP suite passed: 33 files and 1,144 assertions. It ran against an isolated clone of the local demo database with only the clone's existing Platform Operator grants cleared, because the one-time bootstrap tests require that starting state. The demo database was unchanged. The compensation-history test now expects the `initial_scheduled` state introduced by the future-hire migration; the UI already distinguishes it from a later scheduled pay change.
 
 ## Representative-size read measurement
 

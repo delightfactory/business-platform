@@ -81,8 +81,8 @@ SELECT set_config('test.future_hire_id',(public.create_people_employee('c2200000
 SELECT set_config('test.future_hire_employment_id',public.people_employee_snapshot('c2200000-0000-4000-8000-000000000001',
   current_setting('test.future_hire_id')::uuid)->'employment'->>'id',true);
 SELECT is(public.people_compensation_history('c2200000-0000-4000-8000-000000000001',
-  current_setting('test.future_hire_employment_id')::uuid)->'items'->0->>'status','scheduled',
-  'initial pay for a future hire remains scheduled');
+  current_setting('test.future_hire_employment_id')::uuid)->'items'->0->>'status','initial_scheduled',
+  'initial pay for a future hire is distinct from a later scheduled change');
 SELECT is(public.people_compensation_options('c2200000-0000-4000-8000-000000000001',
   current_setting('test.future_hire_employment_id')::uuid)->'pending','null'::jsonb,
   'initial future-hire pay is not offered as a cancellable change');
