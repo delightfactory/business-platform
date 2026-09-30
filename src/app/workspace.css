@@ -203,6 +203,16 @@
 .workspace-records-panel .record-card .secondary-button { flex: 0 0 auto; }
 .workspace-records-panel > .form-message,
 .workspace-records-panel > .empty-state { margin: 1rem; }
+.workforce-import { display: grid; gap: 1rem; }
+.workforce-import-preview { display: grid; gap: .75rem; padding: 1rem; border: 1px solid #dce5e7; border-radius: .7rem; background: #fff; }
+.workforce-import-preview h2, .workforce-import-preview p { margin: 0; }
+.workforce-import-table-wrap { width: 100%; overflow-x: auto; border: 1px solid #e3e9ea; border-radius: .55rem; }
+.workforce-import-table { width: 100%; min-width: 42rem; border-collapse: collapse; text-align: start; }
+.workforce-import-table :is(th, td) { padding: .65rem .75rem; border-bottom: 1px solid #e7edee; vertical-align: top; }
+.workforce-import-table th { background: #f5f8f8; color: #52666d; font-size: .88rem; }
+.workforce-import-table td { line-height: 1.55; }
+.workforce-import-table tbody tr:last-child td { border-bottom: 0; }
+.workforce-import .checkbox-row { align-items: flex-start; }
 .assignment-history-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .assignment-history-item { padding: 1.1rem 1.4rem; border-top: 1px solid #e7edee; }
 .assignment-history-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem; margin-bottom: .5rem; }

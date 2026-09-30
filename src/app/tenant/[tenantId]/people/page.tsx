@@ -7,7 +7,8 @@ export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
 type Employee = { id: string; code: string; name: string; status: string; employer: string | null; site: string | null; start_date: string | null };
 type DirectoryPage = { items: Employee[]; has_more: boolean; page: number };
-type Access = { can_manage: boolean; can_manage_employment: boolean; can_manage_compensation: boolean; can_manage_org: boolean };
+type Access = { can_manage: boolean; can_manage_employment: boolean; can_manage_compensation: boolean;
+  can_view_compensation: boolean; can_import: boolean; can_manage_org: boolean };
 type SearchParams = Promise<{ q?: string | string[]; page?: string | string[] }>;
 
 export default async function PeoplePage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: SearchParams }) {
@@ -26,6 +27,7 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   if (accessResult.error || !accessResult.data) return <Unavailable tenantId={tenantId} />;
   const access = accessResult.data as unknown as Access;
   const canAdd = access.can_manage && access.can_manage_employment && access.can_manage_compensation;
+  const canImport = canAdd && access.can_view_compensation && access.can_import;
   const directoryResult = invalidQuery || invalidPage ? null : await supabase.rpc('people_directory_page', {
     p_tenant_id: tenantId, p_query: query || null, p_page: page,
   });
@@ -36,6 +38,7 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
     <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
       <h1>الموظفون</h1><p>ملفات الموظفين وتفاصيل عملهم في الشركة.</p></div>
       {access.can_manage_org && <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</Link>}
+      {canImport && <Link className="secondary-button" href={`/tenant/${tenantId}/people/import`}>استيراد الموظفين</Link>}
       {canAdd && <Link className="primary-button" href={`/tenant/${tenantId}/people/new`}>إضافة موظف</Link>}
     </header>
     <section className="workspace-records-panel" aria-label="دليل الموظفين">
