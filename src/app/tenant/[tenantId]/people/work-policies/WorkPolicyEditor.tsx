@@ -134,7 +134,7 @@ export function WorkPolicyEditor({
         <div className="work-policy-field"><label htmlFor={`${idPrefix}-overtime-minimum`}>أقل مدة زائدة لإنشاء مرشح (دقيقة)</label><input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" defaultValue={policy?.overtime_minimum_minutes ?? 30} required /></div>
         <div className="work-policy-field"><label htmlFor={`${idPrefix}-overtime-rounding`}>خطوة التقريب لأسفل (دقيقة)</label><input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" defaultValue={policy?.overtime_rounding_minutes ?? 15} required /></div>
       </div>
-      <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. تصنيف الليل والراحة الأسبوعية والعطلات غير مفعل حتى تتوفر قواعدها المعتمدة.</p>
+      <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. يصنف المراجع الدقائق الإضافية ويعتمدها يدويًا؛ لا يصنف النظام الليل أو الراحة الأسبوعية أو العطلات تلقائيًا.</p>
     </section>
 
     <section className="work-policy-section" aria-labelledby={`${idPrefix}-approval-heading`}>
