@@ -81,6 +81,21 @@ export async function setMemberAccessAction(formData: FormData) {
   go(tenantId, error ? mapError(error.message) : state === 'active' ? 'reactivated' : 'deactivated');
 }
 
+export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const userId = field(formData, 'userId');
+  const bundleKeys = formData.getAll('bundleKey').map((value) => String(value));
+  if (!isUuid(tenantId) || !isUuid(userId) || bundleKeys.length > 5) go(tenantId, 'bundle-invalid');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) go(tenantId, 'setup');
+  const { data, error } = await supabase.rpc('set_tenant_member_people_bundles', {
+    p_tenant_id: tenantId, p_user_id: userId, p_bundle_keys: bundleKeys,
+  });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
+  const state = (data as Record<string, unknown>).state;
+  go(tenantId, state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
+}
+
 export async function changeTenantAdminRoleAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const userId = field(formData, 'userId');
@@ -163,6 +178,11 @@ function mapError(message?: string) {
   if (message?.includes('tenant_admin_role_target_unavailable')) return 'target-unavailable';
   if (message?.includes('tenant_admin_role_tenant_unavailable')) return 'tenant-unavailable';
   if (message?.includes('tenant_admin_role_template_unavailable') || message?.includes('tenant_member_role_template_unavailable')) return 'role-setup';
+  if (message?.includes('tenant_people_role_bundle_admin_protected')) return 'bundle-admin-protected';
+  if (message?.includes('tenant_people_role_bundle_target_unavailable')) return 'bundle-target-unavailable';
+  if (message?.includes('tenant_people_role_bundle_unknown') || message?.includes('tenant_people_role_bundle_input_invalid')) return 'bundle-invalid';
+  if (message?.includes('tenant_people_role_bundle_catalog_unavailable')) return 'role-setup';
+  if (message?.includes('tenant_people_role_bundle_tenant_unavailable')) return 'tenant-unavailable';
   if (message?.includes('tenant_members_manage_forbidden')) return 'forbidden';
   return 'failed';
 }

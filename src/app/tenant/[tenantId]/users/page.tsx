@@ -3,14 +3,23 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
-import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, changeTenantAdminRoleAction } from './actions';
+import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
 type SearchParams = Promise<{ state?: string; view?: string }>;
-type Row = { user_id: string; email: string; access_state: string; role_key: string | null; protected_admin: boolean };
+type RoleAssignment = { role_key: string; role_version: number };
+type Row = { user_id: string; email: string; access_state: string; role_key: string | null; roles: RoleAssignment[]; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
+
+const PEOPLE_ROLE_BUNDLES = [
+  { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
+  { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
+  { key: 'people.compensation_reader.v1', label: 'قارئ الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
+  { key: 'people.compensation_manager.v1', label: 'مدير الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
+  { key: 'people.import_operator.v1', label: 'مشغّل استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
+] as const;
 
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
   const { tenantId } = await params;
@@ -62,9 +71,26 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
+                {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
               </div>
               <div className="invitation-actions">
+                {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
+                  <summary className="secondary-button">إدارة حزم People</summary>
+                  <p className="field-hint">يمكن جمع عدة حزم. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
+                  <form action={setTenantMemberPeopleBundlesAction}>
+                    <input type="hidden" name="tenantId" value={tenantId} />
+                    <input type="hidden" name="userId" value={row.user_id} />
+                    <fieldset>
+                      <legend>اختر صلاحيات العضو</legend>
+                      {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>
+                        <input type="checkbox" name="bundleKey" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />
+                        <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
+                      </label>)}
+                    </fieldset>
+                    <SubmitButton className="secondary-button" label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
+                  </form>
+                </details>}
                 {canManageRoles && row.access_state === 'active' && <details className="role-change-confirmation">
                   <summary className="secondary-button">{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</summary>
                   <p className="field-hint">{row.protected_admin
@@ -127,6 +153,10 @@ export default async function TenantUsersPage({ params, searchParams }: { params
 function objectValue(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
 }
+function hasBundle(roles: RoleAssignment[] | undefined, key: string) { return roles?.some((role) => role.role_key === key) ?? false; }
+function assignedBundleLabels(roles: RoleAssignment[] | undefined) {
+  return PEOPLE_ROLE_BUNDLES.filter((bundle) => hasBundle(roles, bundle.key)).map((bundle) => bundle.label);
+}
 function invitationText(state: string) {
   return ({ pending: 'بانتظار القبول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' } as Record<string, string>)[state] ?? 'غير معروفة';
 }
@@ -158,6 +188,10 @@ function stateMessage(state: string) {
     'last-admin': 'لا يمكن خفض آخر مسؤول مؤهل. رقِّ مسؤولًا بديلًا أولًا.',
     'role-setup': 'قالب الدور الأساسي غير متاح؛ لم يتغير أي تعيين.',
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
+    'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
+    'bundle-invalid': 'تعذر التحقق من الحزم المختارة. حدّث الصفحة وأعد المحاولة.',
+    'bundle-admin-protected': 'حساب مسؤول الشركة محمي ويُدار من إجراء إدارة المسؤولين.',
+    'bundle-target-unavailable': 'يمكن إدارة الحزم لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
   };
   return labels[state] ?? 'تعذر تنفيذ الإجراء.';
 }
@@ -169,6 +203,8 @@ function successMessage(state?: string) {
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
     demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
+    'bundles-updated': 'حُفظت حزم الوصول وسُجل التغيير.',
+    'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
   };
   return state ? messages[state] ?? null : null;
 }

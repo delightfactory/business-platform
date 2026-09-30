@@ -368,6 +368,19 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .invitation-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
 .invitation-actions form { margin: 0; }
 .invitation-actions button { min-height: var(--control-height); }
+.people-role-bundle-editor { flex: 1 1 100%; min-width: min(100%, 22rem); max-width: 34rem; }
+.people-role-bundle-editor > summary { cursor: pointer; display: inline-flex; align-items: center; list-style: none; }
+.people-role-bundle-editor > summary::-webkit-details-marker { display: none; }
+.people-role-bundle-editor > p { margin: .65rem 0; color: var(--color-muted); line-height: 1.65; }
+.people-role-bundle-editor form { display: grid; gap: .7rem; }
+.people-role-bundle-editor fieldset { display: grid; gap: .45rem; min-width: 0; margin: 0; padding: .7rem; border: 1px solid var(--color-border); border-radius: .65rem; }
+.people-role-bundle-editor legend { padding-inline: .35rem; font-weight: 700; }
+.people-role-bundle-editor label { display: grid; grid-template-columns: 1.15rem minmax(0, 1fr); align-items: start; gap: .55rem; padding: .45rem; border-radius: .45rem; cursor: pointer; }
+.people-role-bundle-editor label:has(input:checked) { background: var(--color-brand-soft); }
+.people-role-bundle-editor input[type="checkbox"] { width: 1rem; height: 1rem; margin: .2rem 0 0; accent-color: var(--color-brand); }
+.people-role-bundle-editor label span { display: grid; gap: .15rem; min-width: 0; }
+.people-role-bundle-editor label small { color: var(--color-muted); line-height: 1.55; }
+.people-role-bundle-editor form > button { justify-self: start; }
 .snapshot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
 .snapshot-grid > div { min-width: 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: .75rem; background: #fbfcfd; }
 .snapshot-grid dt { color: var(--color-muted); font-size: .85rem; }
