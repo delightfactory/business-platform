@@ -102,6 +102,11 @@ SELECT is((public.prepare_people_employee_account_provision('a2200000-0000-4000-
 RESET ROLE;
 SELECT is((SELECT state FROM people.employee_account_provision_intents WHERE id=current_setting('test.intent_id')::uuid),
   'user_created','the Auth insert trigger durably captures the exact marked user');
+SELECT is((SELECT details->>'capture_source' FROM people.employee_account_provision_audit_events
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+    AND intent_id=current_setting('test.intent_id')::uuid
+    AND event_key='employee.account_auth_user_captured'),
+  'server_marker_recovery','capture audit records that server metadata recovery was used');
 SELECT is((SELECT auth_user_id::text FROM people.employee_account_provision_intents WHERE id=current_setting('test.intent_id')::uuid),
   'a1100000-0000-4000-8000-000000000003','intent stores the exact Auth ID rather than matching by email');
 SELECT is((SELECT count(*)::integer FROM platform_core.tenant_memberships WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
@@ -269,5 +274,88 @@ SELECT is((SELECT count(*)::integer FROM platform_core.tenant_memberships WHERE 
   AND user_id='a1100000-0000-4000-8000-000000000005'),0,'revoked issuer cannot cause an automatic membership grant');
 SELECT is((SELECT count(*)::integer FROM people.employee_user_links WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
   AND employee_id='a4400000-0000-4000-8000-000000000004' AND unlinked_at IS NULL),0,'revoked issuer cannot cause an Employee link');
+
+-- Replace an activated account only after unlink, and prove the older active
+-- intent cannot recover or relink over the new recipient.
+DELETE FROM people.employee_account_password_readiness WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+  AND intent_id=current_setting('test.intent_id')::uuid;
+DELETE FROM platform_private.platform_auth_password_readiness WHERE user_id='a1100000-0000-4000-8000-000000000003';
+UPDATE platform_core.tenant_memberships SET access_state='active'
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000001';
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'currently_linked'),'true','activated intent is current before replacement begins');
+SELECT is((public.unlink_people_employee_user('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'state'),'unlinked','HR can unlink account A before replacement');
+RESET ROLE;
+UPDATE platform_core.tenant_memberships SET access_state='active'
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000002';
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is((public.link_people_employee_user('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001','a1100000-0000-4000-8000-000000000002')->>'state'),'linked',
+  'another active account B can be linked to the Employee');
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'currently_linked'),'false',
+  'the old activated intent A is not considered current while B is linked');
+SELECT throws_ok($$SELECT public.prepare_people_employee_account_password_readiness_recovery('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001',current_setting('test.intent_id')::uuid)$$,
+  '42501','people_employee_account_readiness_recovery_unavailable','HR cannot issue A readiness recovery after B is linked');
+SELECT is((public.unlink_people_employee_user('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'state'),'unlinked','replacement provisioning begins only after B is unlinked');
+RESET ROLE;
+UPDATE platform_core.tenant_memberships SET access_state='inactive'
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND user_id='a1100000-0000-4000-8000-000000000002';
+UPDATE platform_core.tenant_capability_limits SET limit_value=3
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND capability_key='tenant.users' AND limit_key='max_users'
+    AND valid_until IS NULL;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.replacement_intent',(public.start_people_employee_account_provision('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001','replacement-user@example.test','a5500000-0000-4000-8000-000000000010')->>'intent_id'),true);
+RESET ROLE;
+UPDATE people.employee_account_provision_intents SET created_at=pg_catalog.clock_timestamp(),updated_at=pg_catalog.clock_timestamp()
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001' AND id=current_setting('test.replacement_intent')::uuid;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'state'),'pending','replacement intent is the latest recoverable operation');
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'currently_linked'),'false','pending replacement is not misrepresented as linked');
+SELECT set_config('test.replacement_marker',(public.prepare_people_employee_account_provision('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001',current_setting('test.replacement_intent')::uuid)->>'auth_marker'),true);
+RESET ROLE;
+INSERT INTO auth.users(id,email,encrypted_password,invited_at,raw_app_meta_data,raw_user_meta_data,aud,role,created_at,updated_at)
+VALUES('a1100000-0000-4000-8000-000000000006','replacement-user@example.test','',now(),
+  pg_catalog.jsonb_build_object('people_employee_provision_intent_id',current_setting('test.replacement_intent'),
+    'people_employee_provision_marker',current_setting('test.replacement_marker')),'{}','authenticated','authenticated',now(),now());
+UPDATE auth.users SET email_confirmed_at=now(),encrypted_password='recipient-b-chosen-hash'
+  WHERE id='a1100000-0000-4000-8000-000000000006';
+SET LOCAL ROLE service_role;
+SELECT lives_ok($$SELECT public.record_people_employee_account_password_readiness(current_setting('test.replacement_intent')::uuid,
+  'a1100000-0000-4000-8000-000000000006')$$,'replacement recipient B records readiness against B intent and identity');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000006',true);
+SELECT is((public.activate_people_employee_account(current_setting('test.replacement_intent')::uuid)->>'state'),'activated',
+  'replacement recipient B completes activation');
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000003',true);
+SELECT is((public.activate_people_employee_account(current_setting('test.intent_id')::uuid)->>'state'),'activated',
+  'retrying old activated intent A remains idempotent');
+RESET ROLE;
+SELECT is((SELECT user_id::text FROM people.employee_user_links WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+  AND employee_id='a4400000-0000-4000-8000-000000000001' AND unlinked_at IS NULL),'a1100000-0000-4000-8000-000000000006',
+  'old intent retry cannot relink A over replacement B');
+SELECT is((SELECT count(*)::integer FROM people.employee_user_links WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+  AND employee_id='a4400000-0000-4000-8000-000000000001'),3,'link history retains A, manual B, and replacement B link rows');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','a1100000-0000-4000-8000-000000000001',true);
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'intent_id'),current_setting('test.replacement_intent'),
+  'snapshot selects the new replacement intent rather than historical A');
+SELECT is((public.people_employee_account_provision_snapshot('a2200000-0000-4000-8000-000000000001',
+  'a4400000-0000-4000-8000-000000000001')->>'currently_linked'),'true','latest replacement intent matches the current Employee link');
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;
