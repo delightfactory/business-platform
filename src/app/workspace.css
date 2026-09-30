@@ -203,6 +203,24 @@
 .workspace-records-panel .record-card .secondary-button { flex: 0 0 auto; }
 .workspace-records-panel > .form-message,
 .workspace-records-panel > .empty-state { margin: 1rem; }
+.assignment-history-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.assignment-history-item { padding: 1.1rem 1.4rem; border-top: 1px solid #e7edee; }
+.assignment-history-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem; margin-bottom: .5rem; }
+.assignment-history-item .snapshot-grid { margin-block: .4rem; }
+.assignment-cancel-form { display: flex; justify-content: flex-start; margin-top: .7rem; }
+.assignment-transfer-details { margin: .35rem 1.4rem 1.2rem; border-top: 1px solid #e7edee; padding-top: .9rem; }
+.assignment-transfer-details > summary { width: fit-content; color: var(--color-brand); font-weight: 700; cursor: pointer; }
+.assignment-transfer-form { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 1.2fr); align-items: center; gap: .65rem 1rem; margin-top: 1rem; }
+.assignment-transfer-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
+.assignment-transfer-form select,
+.assignment-transfer-form input { min-width: 0; min-height: 2.75rem; width: 100%; padding: .5rem .7rem; border: 1px solid #cbd7da; border-radius: .55rem; background: #fff; color: var(--color-text); font: inherit; }
+.assignment-transfer-form :is(select, input):focus-visible { outline: 3px solid var(--color-brand-soft); border-color: var(--color-brand); }
+.assignment-transfer-form .field-hint,
+.assignment-transfer-form .form-message,
+.assignment-transfer-form .workspace-form-actions { grid-column: 1 / -1; }
+.assignment-transfer-form .field-hint { margin: 0; color: #607780; font-size: .85rem; }
+.assignment-transfer-form .form-message { margin: .2rem 0; }
+.assignment-transfer-form .workspace-form-actions { margin-top: .2rem; }
 .people-search-form { display: grid; gap: .45rem; padding: 1rem 1.4rem; border-bottom: 1px solid #e7edee; }
 .people-search-form label { color: #52666d; font-size: .9rem; font-weight: 650; }
 .people-search-form > div { display: flex; gap: .6rem; }
@@ -465,6 +483,10 @@
   .workspace-page-heading > .primary-button { width: fit-content; }
   .workspace-records-panel { border-radius: .65rem; }
   .workspace-records-panel .record-card { padding: 1rem; }
+  .assignment-history-item { padding: 1rem; }
+  .assignment-transfer-details { margin-inline: 1rem; }
+  .assignment-transfer-form { grid-template-columns: 1fr; gap: .35rem; }
+  .assignment-transfer-form :is(label, .field-hint, .form-message, .workspace-form-actions) { grid-column: 1; }
   .people-search-form { padding: 1rem; }
   .people-search-form > div { align-items: stretch; }
   .people-search-form .secondary-button { flex: 0 0 auto; }
