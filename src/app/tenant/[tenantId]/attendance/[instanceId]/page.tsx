@@ -4,12 +4,12 @@ import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { approveAttendanceAction, correctPunchAction, recordPunchAction } from '../actions';
+import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAction, recordPunchAction } from '../actions';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string; instanceId: string }>;
 type Punch = { id: string; direction: string; happened_at: string; original_direction: string; original_at: string; corrected: boolean; excluded: boolean };
-type Interpretation = { id: string; state: string; first_in: string | null; last_out: string | null; worked_minutes: number | null; exception_code: string | null };
+type Interpretation = { id: string; state: string; first_in: string | null; last_out: string | null; worked_minutes: number | null; gross_worked_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null };
 type Fact = { id: string; interpretation_id: string; version: number; corrects_fact_id: string | null; reason: string | null; fact: Record<string, unknown> };
 
 export default async function AttendanceInstancePage({ params, searchParams }: { params: Params; searchParams: Promise<{ state?: string }> }) {
@@ -84,23 +84,35 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
     <section className="work-card task-page" aria-labelledby="interpretation-title">
       <h2 id="interpretation-title">نتيجة المراجعة</h2>
       {!interpretations ? <p className="field-hint">ستظهر النتيجة بعد تسجيل دخول أو خروج أو إجراء تصحيح.</p> : <>
-        <p className={`form-message ${interpretations.state === 'needs_review' ? 'form-error' : ''}`} role="status">{interpretationLabel(interpretations)}</p>
-        {interpretations.state === 'ready' && <p className="record-meta">الدخول: {interpretations.first_in ? formatInstant(interpretations.first_in, zone) : '—'} · الخروج: {interpretations.last_out ? formatInstant(interpretations.last_out, zone) : '—'} · المدة: {interpretations.worked_minutes ?? '—'} دقيقة</p>}
+        <p className={`form-message ${((interpretations.state === 'needs_review' && instance.status !== 'approved') || (currentFact?.fact.outcome === 'absence' && instance.status === 'needs_review')) ? 'form-error' : ''}`} role="status">{currentFact?.fact.outcome === 'absence' && instance.status === 'approved' ? 'اعتمد المراجع هذا اليوم كيوم غياب مع حفظ السبب.' : currentFact?.fact.outcome === 'absence' && instance.status === 'needs_review' ? 'أضيف تسجيل بعد اعتماد الغياب؛ راجع اليوم واعتمد نتيجة جديدة بسبب.' : interpretationLabel(interpretations)}</p>
+        {interpretations.state === 'ready' && <div className="attendance-metrics" aria-label="ملخص اليوم">
+          <p>الدخول: {interpretations.first_in ? formatInstant(interpretations.first_in, zone) : '—'} · الخروج: {interpretations.last_out ? formatInstant(interpretations.last_out, zone) : '—'}</p>
+          <p>التأخر بعد السماح: {interpretations.late_minutes ?? 0} دقيقة · المغادرة المبكرة بعد السماح: {interpretations.early_leave_minutes ?? 0} دقيقة</p>
+          <p>المدة بين التسجيلين: {interpretations.gross_worked_minutes ?? '—'} دقيقة · الاستراحة المقررة: {interpretations.scheduled_break_minutes ?? '—'} دقيقة · صافي المدة المحتسبة: {interpretations.worked_minutes ?? '—'} دقيقة</p>
+        </div>}
+        {interpretations?.exception_code === 'absence_candidate' && instance.status !== 'approved' && currentFact?.fact.outcome !== 'absence' && <div className="attendance-absence-review">
+          <p className="form-message form-error">انتهت نافذة الحضور بلا تسجيلات. راجع السجل قبل إثبات الغياب.</p>
+          {permissions.can_approve === true && entitlementEnabled && <form action={approveAttendanceAbsenceAction} className="attendance-form attendance-approve-form">
+            <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} />
+            <label className="attendance-full-field">سبب إثبات الغياب <input name="reason" minLength={3} maxLength={500} required /></label>
+            <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label="اعتماد يوم غياب" />
+          </form>}
+        </div>}
       </>}
       {permissions.can_approve === true && interpretations?.state === 'ready' && (!currentFact || currentFact.interpretation_id !== interpretations.id) && <form action={approveAttendanceAction} className="attendance-form attendance-approve-form">
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="correctsFactId" value={currentFact?.id ?? ''} />
         {currentFact && <label className="attendance-full-field">سبب إعادة الاعتماد <input name="reason" minLength={3} maxLength={500} required /></label>}
         <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={currentFact ? 'اعتماد التصحيح كنسخة جديدة' : 'اعتماد نتيجة اليوم'} />
       </form>}
-      {facts.length > 0 && <div className="attendance-fact-history"><h3>سجل الاعتماد</h3><ol>{facts.map((fact) => <li key={fact.id}><strong>النسخة {fact.version}</strong> · {fact.corrects_fact_id ? 'تصحيح لنسخة سابقة' : 'اعتماد'}{fact.reason ? ` · السبب: ${fact.reason}` : ''}</li>)}</ol></div>}
+      {facts.length > 0 && <div className="attendance-fact-history"><h3>سجل الاعتماد</h3><ol>{facts.map((fact) => <li key={fact.id}><strong>النسخة {fact.version}</strong> · {fact.fact.outcome === 'absence' ? 'اعتماد يوم غياب' : fact.corrects_fact_id ? 'تصحيح لنسخة سابقة' : 'اعتماد'}{fact.reason ? ` · السبب: ${fact.reason}` : ''}</li>)}</ol></div>}
     </section>
   </PageFrame>;
 }
 
 function statusLabel(status: string) { return ({ open: 'قيد المتابعة', ready: 'جاهز للاعتماد', needs_review: 'يحتاج مراجعة', approved: 'معتمد' } as Record<string, string>)[status] ?? status; }
 function directionLabel(direction: string) { return direction === 'in' ? 'دخول' : 'خروج'; }
-function interpretationLabel(value: Interpretation) { if (value.state === 'ready') return 'تسجيلات الدخول والخروج متوافقة، والنتيجة جاهزة للاعتماد.'; if (value.state === 'needs_review') return value.exception_code === 'missing_punch' ? 'ينقص تسجيل دخول أو خروج. أضف التسجيل الصحيح أو راجع السجل.' : value.exception_code === 'ambiguous_local_time' ? 'التوقيت المحلي غير واضح. راجع توقيت سياسة الدوام.' : 'تحتاج التسجيلات إلى مراجعة. صحّح التعارض مع حفظ الدليل الأصلي.'; return 'السجل مفتوح لاستقبال تسجيلات الحضور والانصراف.'; }
-function feedback(state?: string) { const map: Record<string, { text: string; error?: boolean }> = { 'punch-recorded': { text: 'تم تسجيل الحضور أو الانصراف.' }, 'punch-corrected': { text: 'تم حفظ التصحيح والدليل الأصلي.' }, 'fact-approved': { text: 'تم اعتماد النتيجة وحفظ نسختها.' }, forbidden: { text: 'هذه العملية غير متاحة لصلاحيتك.', error: true }, time: { text: 'الوقت المحلي ملتبس أو غير صالح. اختر وقتًا واضحًا.', error: true }, 'time-future': { text: 'لا يمكن تسجيل وقت لم يقع بعد.', error: true }, 'not-ready': { text: 'لا يمكن اعتماد السجل قبل اكتمال المراجعة.', error: true }, stale: { text: 'تغيرت النتيجة منذ فتح الصفحة. حدّثها قبل الاعتماد.', error: true }, conflict: { text: 'استُخدم مفتاح الإرسال نفسه لبيانات مختلفة. حدّث الصفحة وحاول مجددًا.', error: true }, input: { text: 'تحقق من الحقول المطلوبة.', error: true }, setup: { text: 'الاتصال غير متاح.', error: true }, failed: { text: 'تعذر حفظ التغيير. لم يُعتمد السجل.', error: true } }; return state ? map[state] ?? { text: 'لم تكتمل العملية.', error: true } : null; }
+function interpretationLabel(value: Interpretation) { if (value.state === 'ready') return 'تسجيلات الدخول والخروج متوافقة، والنتيجة جاهزة للاعتماد.'; if (value.state === 'needs_review') return value.exception_code === 'absence_candidate' ? 'يوم بلا تسجيلات؛ يحتاج إلى مراجعة واعتماد الغياب بسبب.' : value.exception_code === 'missing_punch' ? 'ينقص تسجيل دخول أو خروج. أضف التسجيل الصحيح أو راجع السجل.' : value.exception_code === 'ambiguous_local_time' ? 'التوقيت المحلي غير واضح. راجع توقيت سياسة الدوام.' : 'تحتاج التسجيلات إلى مراجعة. صحّح التعارض مع حفظ الدليل الأصلي.'; return 'السجل مفتوح لاستقبال تسجيلات الحضور والانصراف.'; }
+function feedback(state?: string) { const map: Record<string, { text: string; error?: boolean }> = { 'punch-recorded': { text: 'تم تسجيل الحضور أو الانصراف.' }, 'punch-corrected': { text: 'تم حفظ التصحيح والدليل الأصلي.' }, 'fact-approved': { text: 'تم اعتماد النتيجة وحفظ نسختها.' }, 'absence-approved': { text: 'تم اعتماد يوم الغياب وحفظ السبب.' }, forbidden: { text: 'هذه العملية غير متاحة لصلاحيتك.', error: true }, time: { text: 'الوقت المحلي ملتبس أو غير صالح. اختر وقتًا واضحًا.', error: true }, 'time-future': { text: 'لا يمكن تسجيل وقت لم يقع بعد.', error: true }, 'not-ready': { text: 'لا يمكن اعتماد السجل قبل اكتمال المراجعة.', error: true }, stale: { text: 'تغيرت النتيجة منذ فتح الصفحة. حدّثها قبل الاعتماد.', error: true }, conflict: { text: 'استُخدم مفتاح الإرسال نفسه لبيانات مختلفة. حدّث الصفحة وحاول مجددًا.', error: true }, input: { text: 'تحقق من الحقول المطلوبة.', error: true }, setup: { text: 'الاتصال غير متاح.', error: true }, failed: { text: 'تعذر حفظ التغيير. لم يُعتمد السجل.', error: true } }; return state ? map[state] ?? { text: 'لم تكتمل العملية.', error: true } : null; }
 function toLocalInput(value: string, zone: string) { const d = new Date(value); const parts = new Intl.DateTimeFormat('en-CA', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(d); const p = Object.fromEntries(parts.map((x) => [x.type, x.value])); return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`; }
 function defaultLocalInput(value: string | null, zone: string) { return value ? toLocalInput(value, zone) : ''; }
 function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'توقيت القاهرة'; try { return new Intl.DateTimeFormat('ar-EG', { timeZone: zone, timeZoneName: 'long' }).formatToParts(new Date()).find((part) => part.type === 'timeZoneName')?.value ?? 'توقيت سياسة الدوام'; } catch { return 'توقيت سياسة الدوام'; } }

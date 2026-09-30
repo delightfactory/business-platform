@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ date?: string; cursor?: string }>;
-type DayRow = { id: string; employee_code: string; full_name: string; status: string; timezone_name: string; expected_start: string | null; expected_end: string | null };
+type DayRow = { id: string; employee_code: string; full_name: string; status: string; timezone_name: string; expected_start: string | null; expected_end: string | null; late_minutes: number | null; early_leave_minutes: number | null; worked_minutes: number | null; gross_worked_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null };
 
 export default async function AttendanceDayPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
@@ -43,6 +43,8 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
             <div className="record-main"><div className="record-title-row"><h2>{row.full_name}</h2><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></div>
               <p className="record-meta">رقم الموظف: <bdi>{row.employee_code}</bdi></p>
               {row.expected_start && row.expected_end && <p className="record-meta">المتوقع: {formatInstant(row.expected_start, row.timezone_name)} – {formatInstant(row.expected_end, row.timezone_name)} · {timezoneLabel(row.timezone_name)}</p>}
+              {row.worked_minutes !== null && (row.status === 'ready' || row.status === 'approved') && <p className="record-meta">التأخر: {row.late_minutes ?? 0} د · المغادرة المبكرة: {row.early_leave_minutes ?? 0} د · صافي العمل: {row.worked_minutes} د · الاستراحة المقررة: {row.scheduled_break_minutes ?? '—'} د</p>}
+              {row.exception_code === 'absence_candidate' && row.status !== 'approved' && <p className="form-message form-error">انتهت الفترة بلا تسجيلات؛ راجع الحالة قبل إثبات الغياب.</p>}
             </div><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</Link>
           </li>)}
         </ul>}

@@ -53,6 +53,19 @@ export async function approveAttendanceAction(formData: FormData) {
   move(tenantId, instanceId, error ? mapError(error.message) : 'fact-approved');
 }
 
+export async function approveAttendanceAbsenceAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const instanceId = field(formData, 'instanceId');
+  const reason = field(formData, 'reason');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || reason.length < 3) move(tenantId, instanceId, 'input');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) move(tenantId, instanceId, 'setup');
+  const { error } = await supabase.rpc('approve_attendance_absence', {
+    p_tenant_id: tenantId, p_instance_id: instanceId, p_reason: reason,
+  });
+  move(tenantId, instanceId, error ? mapError(error.message) : 'absence-approved');
+}
+
 function field(data: FormData, name: string) { return String(data.get(name) ?? '').trim(); }
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function mapError(message: string) {
@@ -61,6 +74,7 @@ function mapError(message: string) {
   if (message.includes('ambiguous_or_invalid')) return 'time';
   if (message.includes('attendance_punch_in_future')) return 'time-future';
   if (message.includes('not_ready')) return 'not-ready';
+  if (message.includes('absence_not_eligible')) return 'stale';
   if (message.includes('stale')) return 'stale';
   if (message.includes('idempotency_conflict')) return 'conflict';
   return 'failed';
