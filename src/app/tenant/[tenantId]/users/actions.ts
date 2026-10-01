@@ -96,6 +96,22 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   go(tenantId, state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
 }
 
+export async function setProtectedAdminLeaveSelfAccessAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const userId = field(formData, 'userId');
+  const enabled = field(formData, 'enabled');
+  if (!isUuid(tenantId) || !isUuid(userId) || !['true', 'false'].includes(enabled)) go(tenantId, 'invalid');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) go(tenantId, 'setup');
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect('/auth/login?state=no-session');
+  const { error } = await supabase.rpc('set_tenant_member_leave_self_access', {
+    p_tenant_id: tenantId, p_user_id: userId, p_enabled: enabled === 'true',
+  });
+  if (error) go(tenantId, error.message.includes('tenant_members_manage_forbidden') ? 'forbidden' : 'failed');
+  go(tenantId, 'leave-self-updated');
+}
+
 export async function changeTenantAdminRoleAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const userId = field(formData, 'userId');

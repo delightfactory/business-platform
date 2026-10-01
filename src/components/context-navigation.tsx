@@ -71,13 +71,14 @@ export async function TenantNavigation({
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess] = await Promise.all([
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee] = await Promise.all([
         supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('current_tenant_spaces'),
         supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
+        supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId }),
       ]);
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
@@ -94,6 +95,9 @@ export async function TenantNavigation({
       }
       if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور' });
+      }
+      if (!ownEmployee.error && ownEmployee.data && typeof ownEmployee.data === 'object') {
+        businessLinks.push({ href: `/tenant/${tenantId}/me`, label: 'ملفي' });
       }
     }
   }

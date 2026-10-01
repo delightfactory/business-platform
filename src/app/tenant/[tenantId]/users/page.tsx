@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
-import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, changeTenantAdminRoleAction } from './actions';
+import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +23,11 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'attendance.reader.v1', label: 'قارئ الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
   { key: 'attendance.operator.v1', label: 'مشغّل الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
   { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
+  { key: 'employee.leave.self.v1', label: 'الخدمة الذاتية للإجازات', description: 'عرض الملف الشخصي وطلب الإجازة مستقبلًا. لا تمنح عرض دليل الموظفين أو الأجور.' },
+  { key: 'leave.reader.v1', label: 'قارئ الإجازات', description: 'عرض سجلات الإجازات ضمن الصلاحيات الممنوحة.' },
+  { key: 'leave.manager.v1', label: 'مدير الإجازات', description: 'عرض وإدارة سجلات الإجازات دون اعتماد الطلبات.' },
+  { key: 'leave.approver.v1', label: 'معتمد الإجازات', description: 'عرض واعتماد طلبات الإجازة دون إدارة السجلات أو تعديل الأرصدة.' },
+  { key: 'leave.balance.manager.v1', label: 'مدير أرصدة الإجازات', description: 'عرض الإجازات وتعديل الأرصدة ضمن سجل تدقيق.' },
 ] as const;
 
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
@@ -93,6 +98,13 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
                 {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
+                {canManageRoles && row.protected_admin && row.access_state === 'active' && <form action={setProtectedAdminLeaveSelfAccessAction}>
+                  <input type="hidden" name="tenantId" value={tenantId} />
+                  <input type="hidden" name="userId" value={row.user_id} />
+                  <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
+                  <SubmitButton className="secondary-button" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
+                  <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات الإجازة الذاتية فقط، مع الحفاظ على دور مسؤول الشركة.</p>
+                </form>}
               </div>
               <div className="invitation-actions">
                 {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
@@ -239,6 +251,7 @@ function successMessage(state?: string) {
     demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
     'bundles-updated': 'حُفظت حزم الوصول وسُجل التغيير.',
     'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
+    'leave-self-updated': 'تم تحديث صلاحية الخدمة الذاتية للإجازات مع الحفاظ على دور مسؤول الشركة.',
   };
   return state ? messages[state] ?? null : null;
 }

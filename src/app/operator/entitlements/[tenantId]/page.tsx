@@ -9,7 +9,7 @@ import { changeTenantEntitlementAction } from '../actions';
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string }>;
-type Decision = { capability_key: 'hr.people' | 'hr.payroll' | 'hr.attendance'; status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null; evaluator_enabled: boolean; last_decision: boolean | null; last_decision_valid_from: string | null; last_decision_valid_until: string | null };
+type Decision = { capability_key: 'hr.people' | 'hr.payroll' | 'hr.attendance' | 'hr.leave'; status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null; evaluator_enabled: boolean; last_decision: boolean | null; last_decision_valid_from: string | null; last_decision_valid_until: string | null };
 type Snapshot = { tenant_id: string; display_name: string; lifecycle_state: string; entitlements: Decision[] };
 
 export default async function TenantEntitlementsPage({ params, searchParams }: { params: Params; searchParams: Query }) {
@@ -28,9 +28,14 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
   const tenant = data as Snapshot;
-  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== 3) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  const expectedCapabilities = ['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave'];
+  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
+    || new Set(tenant.entitlements.map((item) => item.capability_key)).size !== expectedCapabilities.length
+    || expectedCapabilities.some((key) => !tenant.entitlements.some((item) => item.capability_key === key))) return <Status title="بيانات الإتاحة غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
   const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
+    && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
+  const leaveAvailable = decisions.some((decision) => decision.capability_key === 'hr.leave'
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
 
   return <main className="app-shell">
@@ -43,14 +48,14 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
-      <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} />)}</div>
+      <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
     </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
   </main>;
 }
 
-function DecisionCard({ tenantId, decision, peopleAvailable }: { tenantId: string; decision: Decision; peopleAvailable: boolean }) {
+function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: { tenantId: string; decision: Decision; peopleAvailable: boolean; leaveAvailable: boolean }) {
   const people = decision.capability_key === 'hr.people';
-  const label = people ? 'إدارة الموارد البشرية' : decision.capability_key === 'hr.payroll' ? 'الرواتب' : 'الحضور والسياسات';
+  const label = people ? 'إدارة الموارد البشرية' : decision.capability_key === 'hr.payroll' ? 'الرواتب' : decision.capability_key === 'hr.attendance' ? 'الحضور والسياسات' : 'إدارة الإجازات';
   const enabled = decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled;
   const state = decision.status === 'conflict' || decision.status === 'future_conflict' ? 'تحتاج مراجعة'
     : enabled ? 'متاحة' : decision.is_granted && !decision.evaluator_enabled ? 'غير فعّالة' : 'غير متاحة';
@@ -64,6 +69,8 @@ function DecisionCard({ tenantId, decision, peopleAvailable }: { tenantId: strin
     {decision.status === 'future_conflict' && <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</p>}
     {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
       <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
+    {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لإتاحة الإجازات، أتح إدارة الموارد البشرية أولًا.</p>}
+    {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
     {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
@@ -92,9 +99,12 @@ function stateText(state: string) {
 }
 const entitlementErrors: Record<string, string> = {
     invalid: 'تحقق من بيانات القرار.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
+    'leave-people-required': 'أتح إدارة الموارد البشرية أولًا، وتأكد أن نهاية إتاحة الإجازات لا تتجاوز نهايتها.',
     forbidden: 'لم تعد لديك صلاحية إدارة الإتاحة.', 'not-found': 'الشركة غير متاحة.',
-    'people-required': 'أتح الموارد البشرية أولًا، واجعل نهاية إتاحة الرواتب لا تتجاوز نهاية إتاحة الموارد البشرية.',
+    'people-required': 'أتح إدارة الموارد البشرية أولًا، واجعل نهاية إتاحة الرواتب والإجازات ضمن فترة إتاحتها.',
     'payroll-first': 'أوقف إتاحة الرواتب أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
+    'leave-first': 'أوقف إتاحة الإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
+    'people-children-first': 'أوقف إتاحة الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
     'future-conflict': 'يوجد قرار مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد قرارات فعّالة متعارضة؛ لم يتغير شيء.',
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'تعذر تحديث القرار. لم يُعتمد التغيير دون سجل تدقيق.',
