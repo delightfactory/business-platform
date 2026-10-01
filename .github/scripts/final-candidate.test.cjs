@@ -1,6 +1,11 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { verifyCandidate } = require('./final-candidate.cjs');
+const { verifyCandidate, readCheckout } = require('./final-candidate.cjs');
+const { mkdtempSync, writeFileSync, rmSync } = require('node:fs');
+const { execFileSync } = require('node:child_process');
+const { tmpdir } = require('node:os');
+const { join, resolve, basename } = require('node:path');
+const { pathToFileURL } = require('node:url');
 
 function fixture() {
   const candidate = {
@@ -43,3 +48,47 @@ for (const [name, mutate] of Object.entries(rejectedCases)) {
     assert.throws(() => verifyCandidate(input));
   });
 }
+
+test('validates real merge parents in a depth-one checkout and rejects stale heads', t => {
+  const directory = mkdtempSync(join(tmpdir(), 'final-candidate-shallow-'));
+  t.after(() => {
+    if (resolve(directory).startsWith(resolve(tmpdir()) + require('node:path').sep) &&
+        basename(directory).startsWith('final-candidate-shallow-')) {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+  const source = join(directory, 'source');
+  const shallow = join(directory, 'shallow');
+  const git = (cwd, ...args) => execFileSync('git', args, {
+    cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+  }).trim();
+  git(directory, 'init', '-b', 'integration', source);
+  git(source, 'config', 'user.name', 'Candidate guard test');
+  git(source, 'config', 'user.email', 'candidate-test@example.invalid');
+  const commit = (file, message) => {
+    writeFileSync(join(source, file), message);
+    git(source, 'add', file);
+    git(source, 'commit', '-m', message);
+    return git(source, 'rev-parse', 'HEAD');
+  };
+  const base = commit('base.txt', 'base');
+  git(source, 'switch', '-c', 'candidate');
+  const head = commit('candidate.txt', 'candidate');
+  git(source, 'switch', 'integration');
+  git(source, 'merge', '--no-ff', 'candidate', '-m', 'candidate merge');
+  const merge = git(source, 'rev-parse', 'HEAD');
+  git(directory, 'clone', '--depth=1', '--no-local', pathToFileURL(source).href, shallow);
+  assert.equal(git(shallow, 'rev-parse', '--is-shallow-repository'), 'true');
+  assert.equal(git(shallow, 'show', '-s', '--format=%P', 'HEAD'), '');
+  const checkout = readCheckout(shallow);
+  assert.deepEqual(checkout, { checkout: merge, parents: [base, head] });
+  const input = fixture();
+  for (const candidate of [input.event.pull_request, input.current]) {
+    candidate.head.sha = head;
+    candidate.base.sha = base;
+  }
+  Object.assign(input, checkout, { sha: merge });
+  assert.deepEqual(verifyCandidate(input), { head, base, merge });
+  input.current.head.sha = base;
+  assert.throws(() => verifyCandidate(input), /head or base changed/);
+});

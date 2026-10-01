@@ -31,7 +31,8 @@ and the check name `Lint, typecheck, and build` are retained.
 
 `pull_request` runs are eligible for native PR status evaluation. Checkout is
 pinned to the event's `github.sha`, the synthetic PR merge snapshot. The guard
-verifies its two parents are the recorded target base and candidate head, and
+reads raw commit parent headers (valid even at a depth-one shallow boundary),
+verifies the two parents are the recorded target base and candidate head, and
 queries GitHub before and after validation to reject a moved head/base,
 retargeted PR, closed PR or draft PR. Native job check identity is managed by
 GitHub; we do not publish success to another SHA or manufacture a status.
@@ -60,7 +61,7 @@ availability on the default branch. No skip-ci or path-filter workaround is used
 ## Local verification and cost
 
 Run `node --test .github/scripts/final-candidate.test.cjs` and validate the YAML
-with `actionlint` before publishing. These tests verify the candidate guard;
+with `actionlint` before publishing. These tests include a real depth-one Git merge checkout and verify the candidate guard;
 they do not execute application lint/typecheck/build. Hosted validation is one
 deliberate candidate run, repeated only after candidate changes or a justified
 retry. Ordinary development events request zero runs under this workflow.

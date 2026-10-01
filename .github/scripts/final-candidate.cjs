@@ -1,6 +1,15 @@
 const { readFileSync, appendFileSync } = require('node:fs');
 const { execFileSync } = require('node:child_process');
 
+function readCheckout(repositoryPath = process.cwd()) {
+  const git = (...args) => execFileSync('git', args, { cwd: repositoryPath, encoding: 'utf8' }).trim();
+  // Pretty formats obey shallow boundaries; raw commit headers retain real parents.
+  const headers = git('cat-file', '-p', 'HEAD').split('\n\n', 1)[0];
+  const parents = headers.split('\n').filter(line => line.startsWith('parent '))
+    .map(line => line.slice('parent '.length));
+  return { checkout: git('rev-parse', 'HEAD'), parents };
+}
+
 function verifyCandidate({ event, current, expectedBase, repository, sha, checkout, parents }) {
   const candidate = event.pull_request;
   if (event.action !== 'ready_for_review' || !candidate || current.state !== 'open' || current.draft) {
@@ -34,11 +43,9 @@ async function main() {
     signal: AbortSignal.timeout(30000),
   });
   if (!response.ok) throw new Error(`Cannot verify current PR: HTTP ${response.status}`);
-  const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
   const result = verifyCandidate({
     event, current: await response.json(), expectedBase: process.argv[2], repository,
-    sha: process.env.GITHUB_SHA, checkout: git('rev-parse', 'HEAD'),
-    parents: git('show', '-s', '--format=%P', 'HEAD').split(' '),
+    sha: process.env.GITHUB_SHA, ...readCheckout(),
   });
   const evidence = `Final candidate head: ${result.head}\nBase: ${result.base}\nTested merge snapshot: ${result.merge}\n`;
   console.log(evidence);
@@ -50,4 +57,4 @@ if (require.main === module) main().catch(error => {
   process.exitCode = 1;
 });
 
-module.exports = { verifyCandidate };
+module.exports = { verifyCandidate, readCheckout };
