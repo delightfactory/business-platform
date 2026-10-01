@@ -1,0 +1,25 @@
+export function stateLabel(state: string): string {
+  if (state === 'submitted') return 'مُقدَّم وبانتظار القرار';
+  if (state === 'withdrawn') return 'مسحوب';
+  if (state === 'rejected') return 'مرفوض';
+  if (state === 'draft') return 'مسودة';
+  if (state === 'approved') return 'معتمد';
+  if (state === 'cancelled') return 'ملغى';
+  return 'غير محدّد';
+}
+
+export function stateClass(state: string): string {
+  if (state === 'submitted') return 'is-pending';
+  if (state === 'approved') return 'is-active';
+  return 'is-inactive';
+}
+
+export function formatDays(value: number): string {
+  return String(value);
+}
+
+export function formatInstant(value: string): string {
+  const instant = new Date(value);
+  if (Number.isNaN(instant.getTime())) return value;
+  return instant.toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', dateStyle: 'short', timeStyle: 'short' });
+}

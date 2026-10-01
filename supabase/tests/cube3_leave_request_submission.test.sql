@@ -345,5 +345,50 @@ SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(public.leave_hr_queue(
  'cfa20000-0000-4000-8000-000000000001')->'items') item WHERE item ? 'days'),
  'HR review queue carries summaries without daily evidence hydration');
 RESET ROLE;
+SELECT ok(has_function_privilege('authenticated','public.leave_my_request_detail(uuid,uuid)','EXECUTE'),
+ 'own-only detail is available to authenticated callers');
+SELECT ok(NOT has_function_privilege('anon','public.leave_my_request_detail(uuid,uuid)','EXECUTE'),
+ 'anonymous callers cannot read own-only detail');
+SELECT ok(NOT has_function_privilege('service_role','public.leave_my_request_detail(uuid,uuid)','EXECUTE'),
+ 'service role cannot bypass own-only detail authority');
+INSERT INTO platform_core.membership_roles(tenant_id,user_id,role_id)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa10000-0000-4000-8000-000000000001','cfa30000-0000-4000-8000-000000000002');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT is(public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.own_request')::uuid)->>'state','withdrawn','own-only detail retains historical access with Leave disabled');
+SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.hr_request')::uuid)$$,'P0002','leave_request_unavailable',
+ 'own-only detail rejects another employee even when the same actor also has HR visibility');
+SELECT is(public.leave_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.hr_request')::uuid)->>'request_source','hr','separate HR detail retains its authorized broader scope');
+SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000002',
+ current_setting('test.own_request')::uuid)$$,'P0002','leave_request_unavailable','own detail rejects tenant identifier tampering');
+RESET ROLE;
+UPDATE people.employee_user_links SET unlinked_at=now(),unlinked_by_user_id='cfa10000-0000-4000-8000-000000000002'
+ WHERE tenant_id='cfa20000-0000-4000-8000-000000000001' AND user_id='cfa10000-0000-4000-8000-000000000001' AND unlinked_at IS NULL;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.own_request')::uuid)$$,'P0002','leave_request_unavailable','unlink revokes own detail despite retained HR permission');
+RESET ROLE;
+INSERT INTO people.employee_user_links(tenant_id,employee_id,user_id,linked_by_user_id)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa40000-0000-4000-8000-000000000002',
+ 'cfa10000-0000-4000-8000-000000000001','cfa10000-0000-4000-8000-000000000002');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.own_request')::uuid)$$,'P0002','leave_request_unavailable','relink to another employee does not restore old own identity');
+SELECT is(public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.hr_request')::uuid)->>'employee_id','cfa40000-0000-4000-8000-000000000002',
+ 'relinked account reads only the currently linked employee request');
+RESET ROLE;
+UPDATE platform_core.tenant_memberships SET access_state='inactive'
+ WHERE tenant_id='cfa20000-0000-4000-8000-000000000001' AND user_id='cfa10000-0000-4000-8000-000000000001';
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.hr_request')::uuid)$$,'P0002','leave_request_unavailable','inactive membership removes current own detail access');
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;

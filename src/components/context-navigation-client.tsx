@@ -28,13 +28,14 @@ function LinkProgress() {
   </>;
 }
 
-function WorkspaceLink({ item, pathname, onClick, exact = false }: {
+function WorkspaceLink({ item, pathname, currentHref, onClick, exact = false }: {
   item: ContextLink;
   pathname: string;
+  currentHref?: string;
   onClick?: () => void;
   exact?: boolean;
 }) {
-  const current = pathname === item.href || (!exact && pathname.startsWith(`${item.href}/`));
+  const current = currentHref ? currentHref === item.href : pathname === item.href || (!exact && pathname.startsWith(`${item.href}/`));
   return <Link href={item.href} aria-current={current ? 'page' : undefined} onClick={onClick}>
     <span>{item.label}</span><LinkProgress />
   </Link>;
@@ -50,7 +51,9 @@ export function ContextNavigationClient({
   const menuOwnsScrollLock = useRef(false);
   const homeLink = { href: homeHref, label: 'الرئيسية' };
   const allLinks = [...businessLinks, ...links];
-  const activeLink = allLinks.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+  const activeLink = allLinks.filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))
+    .sort((left, right) => right.href.length - left.href.length)[0];
+  const currentHref = pathname === homeHref ? homeHref : activeLink?.href;
   const pageTitle = pathname === homeHref ? 'الرئيسية' : activeLink?.label ?? contextLabel;
   const primaryLinks = (mode === 'tenant' && businessLinks.length > 0 ? businessLinks : links).slice(0, 2);
 
@@ -92,18 +95,18 @@ export function ContextNavigationClient({
       <Link className="workspace-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
       {mode === 'operator' && <span className="workspace-mode">وضع المشغّل</span>}
       <nav className="workspace-sidebar-links" aria-label="أقسام مساحة العمل">
-        <WorkspaceLink item={homeLink} pathname={pathname} exact />
+        <WorkspaceLink item={homeLink} pathname={pathname} currentHref={currentHref} exact />
         {businessLinks.length > 0 && <div className="workspace-nav-group">
           <p>مجالات العمل</p>
-          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} />)}
         </div>}
         {links.length > 0 && <div className="workspace-nav-group">
           <p>{mode === 'operator' ? 'تشغيل المنصة' : 'إدارة الشركة'}</p>
-          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} />)}
         </div>}
       </nav>
       <div className="workspace-sidebar-footer">
-        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} />}
+        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} currentHref={currentHref} />}
         <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
       </div>
     </aside>
@@ -118,8 +121,8 @@ export function ContextNavigationClient({
     </header>
 
     <nav className="workspace-mobile-tabs" aria-label="التنقل السريع">
-      <WorkspaceLink item={homeLink} pathname={pathname} exact />
-      {primaryLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} />)}
+      <WorkspaceLink item={homeLink} pathname={pathname} currentHref={currentHref} exact />
+      {primaryLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} />)}
       <button type="button" onClick={openMobileMenu} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={menuOpen}>
         <span aria-hidden="true">☰</span><span>المزيد</span>
       </button>
@@ -135,14 +138,14 @@ export function ContextNavigationClient({
         <button type="button" onClick={closeMobileMenu} aria-label="إغلاق القائمة">×</button>
       </div>
       <nav aria-label="كل الأقسام">
-        <WorkspaceLink item={homeLink} pathname={pathname} onClick={closeMobileMenu} exact />
+        <WorkspaceLink item={homeLink} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} exact />
         {businessLinks.length > 0 && <div className="workspace-dialog-group"><p>مجالات العمل</p>
-          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} onClick={closeMobileMenu} />)}
+          {businessLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} />)}
         </div>}
         {links.length > 0 && <div className="workspace-dialog-group"><p>{mode === 'operator' ? 'تشغيل المنصة' : 'إدارة الشركة'}</p>
-          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} onClick={closeMobileMenu} />)}
+          {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} />)}
         </div>}
-        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} onClick={closeMobileMenu} />}
+        {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} />}
         <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
       </nav>
     </dialog>

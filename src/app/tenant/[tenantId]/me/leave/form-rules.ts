@@ -1,0 +1,112 @@
+export const MAX_DATE_SPAN = 731;
+
+export const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export type DayCountBasis = 'working_days' | 'calendar_days';
+
+export type RequestDay = {
+  date: string;
+  units: number;
+  eligible: boolean;
+  is_weekly_rest: boolean;
+  holiday_name: string | null;
+  day_count_basis: DayCountBasis;
+};
+
+export type LeaveFields = {
+  startDate: string;
+  endDate: string;
+  leaveTypeId: string;
+  halfDay: boolean;
+  reason: string;
+};
+
+export const EMPTY_LEAVE_FIELDS: LeaveFields = {
+  startDate: '',
+  endDate: '',
+  leaveTypeId: '',
+  halfDay: false,
+  reason: '',
+};
+
+export function leaveFieldsSignature(fields: LeaveFields): string {
+  return JSON.stringify([
+    fields.startDate,
+    fields.endDate,
+    fields.leaveTypeId,
+    fields.halfDay,
+    fields.reason,
+  ]);
+}
+
+export type LeaveOptionVersion = {
+  id: string;
+  version: number;
+  effective_from: string;
+  effective_until: string | null;
+  half_day_allowed: boolean;
+};
+
+export type LeaveOptionType = {
+  id: string;
+  code: string;
+  name: string;
+  versions: LeaveOptionVersion[];
+};
+
+export type LeaveOptionsState = {
+  startDate: string;
+  endDate: string;
+  types: LeaveOptionType[];
+  error: string;
+};
+
+export type SubmitLeaveState = { error: string; attempt: number };
+
+export type WithdrawLeaveState = { error: string; attempt: number };
+
+export function isUuid(value: unknown): value is string {
+  return typeof value === 'string' && UUID_PATTERN.test(value);
+}
+
+export function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+export function isDate(value: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = Date.parse(`${value}T00:00:00Z`);
+  return !Number.isNaN(parsed) && new Date(parsed).toISOString().slice(0, 10) === value;
+}
+
+export function isDayCountBasis(value: unknown): value is DayCountBasis {
+  return value === 'working_days' || value === 'calendar_days';
+}
+
+export function dayCountBasisLabel(basis: DayCountBasis): string {
+  return basis === 'calendar_days' ? 'مدة تقويمية' : 'أيام عمل';
+}
+
+export function daySpan(start: string, end: string): number {
+  if (!isDate(start) || !isDate(end)) return Number.NaN;
+  return Math.round((Date.parse(`${end}T00:00:00Z`) - Date.parse(`${start}T00:00:00Z`)) / 86400000);
+}
+
+export function dayCount(start: string, end: string): number {
+  const span = daySpan(start, end);
+  return Number.isNaN(span) ? 0 : span + 1;
+}
+
+export function rangeErrorText(start: string, end: string): string {
+  if (!start || !end) return '';
+  if (!isDate(start) || !isDate(end)) return 'اختر تاريخ بداية ونهاية صحيحين.';
+  if (end < start) return 'تاريخ النهاية يجب أن يكون يوم تاريخ البداية أو بعده.';
+  if (daySpan(start, end) > MAX_DATE_SPAN) return `لا يمكن أن يتجاوز الطلب الواحد ${MAX_DATE_SPAN + 1} يومًا متتاليًا (مدة تقويمية بين التاريخين). قسّمه إلى أكثر من طلب.`;
+  return '';
+}
+
+export function halfDayAllowedOn(type: LeaveOptionType, date: string): boolean {
+  if (!isDate(date)) return false;
+  return type.versions.some((version) => version.effective_from <= date
+    && (!version.effective_until || version.effective_until > date) && version.half_day_allowed === true);
+}

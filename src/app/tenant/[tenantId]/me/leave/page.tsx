@@ -1,0 +1,238 @@
+import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
+import { FeedbackToast } from '@/components/feedback-toast';
+import { PageFrame } from '@/components/context-navigation';
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { isObject, isUuid } from './form-rules';
+import { PendingLink } from './pending-link';
+import { formatDays, formatInstant, stateClass, stateLabel } from './states';
+import styles from './leave.module.css';
+
+export const dynamic = 'force-dynamic';
+
+const PAGE_SIZE = 10;
+// p_offset is a PostgreSQL integer: (page - 1) * PAGE_SIZE must stay within its signed 32-bit bound.
+const RPC_P_OFFSET_MAX = 2147483647;
+const MAX_PAGE = Math.floor(RPC_P_OFFSET_MAX / PAGE_SIZE) + 1;
+
+type Params = Promise<{ tenantId: string }>;
+type Query = Promise<{ page?: string | string[]; bal?: string | string[]; state?: string | string[] }>;
+
+type Balance = {
+  leave_type_id: string;
+  type_name: string;
+  period_id: string;
+  period_label: string;
+  starts_on: string;
+  balance_days: number;
+};
+
+type RequestSummary = {
+  id: string;
+  leave_type_name: string;
+  start_date: string;
+  end_date: string;
+  total_units: number;
+  is_half_day: boolean;
+  state: string;
+  submitted_at: string | null;
+};
+
+type PagedResult<T> = { items: T[]; hasMore: boolean };
+
+export default async function MyLeavePage({ params, searchParams }: { params: Params; searchParams: Query }) {
+  const { tenantId } = await params;
+  const query = await searchParams;
+  if (!isUuid(tenantId)) notFound();
+  const requestPage = parsePage(typeof query.page === 'string' ? query.page : '1');
+  const balancePage = parsePage(typeof query.bal === 'string' ? query.bal : '1');
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." retry />;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave`)}`);
+
+  const accessResult = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
+  if (accessResult.error || !isObject(accessResult.data)) {
+    const forbidden = accessResult.error?.code === '42501';
+    return <Status tenantId={tenantId} retry={!forbidden}
+      title={forbidden ? 'الخدمة الذاتية غير متاحة لهذا الحساب' : 'تعذر تحميل إجازاتي الآن'}
+      detail={forbidden ? 'لا يملك حسابك أي صلاحية لعرض بيانات الإجازات في الشركة. راجع إدارة الموارد البشرية.'
+        : 'حدث خطأ أثناء تحميل بيانات إجازاتك. أعد المحاولة.'} />;
+  }
+  const access = accessResult.data;
+  if (access.self_access !== true) {
+    return <Status tenantId={tenantId} retry={false} title="عرض الإجازات غير متاح لهذا الحساب"
+      detail="يجب أن يكون حسابك مرتبطًا بملف موظف بصلاحية عرض الإجازات الذاتية. راجع إدارة الموارد البشرية." />;
+  }
+  const canRequest = access.self_can_request === true && access.new_work_enabled === true;
+
+  const [balancesResponse, requestsResponse] = await Promise.all([
+    !balancePage.invalid ? supabase.rpc('leave_my_balances', {
+      p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (balancePage.value - 1) * PAGE_SIZE,
+    }) : null,
+    !requestPage.invalid ? supabase.rpc('leave_my_requests', {
+      p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (requestPage.value - 1) * PAGE_SIZE,
+    }) : null,
+  ]);
+  const balancesPayload = readPaged(balancesResponse);
+  const requestsPayload = readPaged(requestsResponse);
+  const balances = balancesPayload ? readBalances(balancesPayload.items) : null;
+  const requests = requestsPayload ? readRequests(requestsPayload.items) : null;
+  const balancesFailed = !balancePage.invalid && (!balancesPayload || !balances);
+  const requestsFailed = !requestPage.invalid && (!requestsPayload || !requests);
+  const feedback = query.state === 'submitted'
+    ? 'تم إرسال طلب إجازتك وسينتظر قرار الموارد البشرية.'
+    : query.state === 'withdrawn' ? 'تم سحب طلب الإجازة وحُفظ السبب في سجل العملية.' : null;
+
+  return <PageFrame footer="الخدمة الذاتية">
+    {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
+    <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
+      <h1>إجازاتي</h1>
+      <p>أرصدة إجازاتك وسجل طلباتك لدى الشركة. الطلب المعلق لا يحجز أي رصيد قبل اعتماده.</p></div>
+      {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}
+    </header>
+    {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
+
+    <section className="workspace-records-panel" aria-labelledby="leave-balances-title">
+      <div className={styles.panelHeading}>
+        <h2 id="leave-balances-title">أرصدة الإجازات</h2>
+        <p>الرصيد المسجّل لكل نوع إجازة وفترة إجازات. لا يشمل الرصيد أي طلب معلق قبل اعتماده.</p>
+      </div>
+      {balancePage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة الأرصدة غير صالح.{' '}
+        <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
+        : balancesFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل أرصدة إجازاتك</h2>
+          <p>لم يتغيّر أي رصيد. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+          <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink></div>
+            : balances && balances.length === 0 ? <div className="empty-state"><h2>لا توجد أرصدة مسجّلة لك بعد</h2>
+              <p>لا يوجد رصيد مسجّل لأي نوع إجازة حتى الآن. تظهر الأرصدة المسجّلة هنا فور حفظها لدى الشركة.</p></div>
+            : balances ? <>
+              <ul className="record-list">{balances.map((balance) => <li className="record-card" key={`${balance.leave_type_id}-${balance.period_id}`}>
+                <div className="record-main">
+                  <div className="record-title-row"><h3>{balance.type_name}</h3>
+                    <span className="entity-status is-active">{formatDays(balance.balance_days)} يوم</span></div>
+                  <p className="record-meta">فترة الإجازات: <bdi>{balance.period_label}</bdi></p>
+                  <p className="record-meta">تبدأ في <bdi>{balance.starts_on}</bdi></p>
+                </div>
+              </li>)}</ul>
+              <nav className={styles.pagination} aria-label="صفحات أرصدة الإجازات">
+                <span>الصفحة {balancePage.value} · {balances.length} صنف</span>
+                <span className={styles.paginationNav}>
+                  {balancePage.value > 1 && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, balancePage.value - 1)}>السابق</PendingLink>}
+                  {balancesPayload?.hasMore && balancePage.value < MAX_PAGE
+                    && <PendingLink className="primary-button" href={pageHref(tenantId, requestPage.value, balancePage.value + 1)}>التالي</PendingLink>}
+                </span>
+              </nav>
+            </> : null}
+    </section>
+
+    <section className="workspace-records-panel" aria-labelledby="leave-history-title">
+      <div className={styles.panelHeading}>
+        <h2 id="leave-history-title">سجل طلبات الإجازة</h2>
+        <p>كل الطلبات المسجّلة باسمك مع حالتها. الحالة «مُقدَّم» تعني بانتظار قرار الموارد البشرية.</p>
+      </div>
+      {requestPage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
+        <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></p>
+        : requestsFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل سجل طلباتك</h2>
+          <p>لم يتغيّر أي طلب. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+          <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
+          : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
+            <p>{canRequest ? 'أرسل أول طلب إجازة ليظهر هنا مع حالته.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p>
+            {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}</div>
+            : requests ? <>
+              <ul className="record-list">{requests.map((request) => <li className="record-card" key={request.id}>
+                <div className="record-main">
+                  <div className="record-title-row"><h3>{request.leave_type_name}</h3>
+                    <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span></div>
+                  <p className="record-meta">من <bdi>{request.start_date}</bdi> إلى <bdi>{request.end_date}</bdi>
+                    · {formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</p>
+                  <p className="record-meta">{request.submitted_at
+                    ? <>أُرسل في <bdi>{formatInstant(request.submitted_at)}</bdi></>
+                    : 'لم يُرسل بعد'}</p>
+                </div>
+                <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${request.id}`}>فتح الطلب</PendingLink>
+              </li>)}</ul>
+              <nav className={styles.pagination} aria-label="صفحات سجل طلبات الإجازة">
+                <span>الصفحة {requestPage.value} · {requests.length} طلب</span>
+                <span className={styles.paginationNav}>
+                  {requestPage.value > 1 && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value - 1, balancePage.value)}>السابق</PendingLink>}
+                  {requestsPayload?.hasMore && requestPage.value < MAX_PAGE
+                    && <PendingLink className="primary-button" href={pageHref(tenantId, requestPage.value + 1, balancePage.value)}>التالي</PendingLink>}
+                </span>
+              </nav>
+            </> : null}
+    </section>
+    <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+  </PageFrame>;
+}
+
+function parsePage(raw: string): { value: number; invalid: boolean } {
+  if (!/^\d+$/.test(raw)) return { value: 1, invalid: true };
+  const value = Number(raw);
+  if (!Number.isInteger(value) || value < 1 || value > MAX_PAGE) return { value: 1, invalid: true };
+  return { value, invalid: false };
+}
+
+function pageHref(tenantId: string, requestPage: number, balancePage: number): string {
+  const params = new URLSearchParams();
+  if (requestPage > 1) params.set('page', String(requestPage));
+  if (balancePage > 1) params.set('bal', String(balancePage));
+  const suffix = params.toString();
+  return `/tenant/${tenantId}/me/leave${suffix ? `?${suffix}` : ''}`;
+}
+
+function readPaged(response: { data: unknown; error: unknown } | null): PagedResult<unknown> | null {
+  if (!response || response.error || !isObject(response.data)) return null;
+  const payload = response.data;
+  if (!Array.isArray(payload.items) || typeof payload.has_more !== 'boolean') return null;
+  return { items: payload.items, hasMore: payload.has_more };
+}
+
+function readBalances(items: unknown[]): Balance[] | null {
+  const balances: Balance[] = [];
+  for (const item of items) {
+    if (!isObject(item) || !isUuid(item.leave_type_id) || !isUuid(item.period_id)
+      || typeof item.type_name !== 'string' || typeof item.period_label !== 'string'
+      || typeof item.starts_on !== 'string' || typeof item.balance_days !== 'number') return null;
+    balances.push({
+      leave_type_id: item.leave_type_id,
+      type_name: item.type_name,
+      period_id: item.period_id,
+      period_label: item.period_label,
+      starts_on: item.starts_on,
+      balance_days: item.balance_days,
+    });
+  }
+  return balances;
+}
+
+function readRequests(items: unknown[]): RequestSummary[] | null {
+  const requests: RequestSummary[] = [];
+  for (const item of items) {
+    if (!isObject(item) || !isUuid(item.id) || typeof item.leave_type_name !== 'string'
+      || typeof item.start_date !== 'string' || typeof item.end_date !== 'string'
+      || typeof item.total_units !== 'number' || typeof item.is_half_day !== 'boolean'
+      || typeof item.state !== 'string'
+      || !(item.submitted_at === null || typeof item.submitted_at === 'string')) return null;
+    requests.push({
+      id: item.id,
+      leave_type_name: item.leave_type_name,
+      start_date: item.start_date,
+      end_date: item.end_date,
+      total_units: item.total_units,
+      is_half_day: item.is_half_day,
+      state: item.state,
+      submitted_at: item.submitted_at,
+    });
+  }
+  return requests;
+}
+
+function Status({ tenantId, title, detail, retry = false }: { tenantId: string; title: string; detail: string; retry?: boolean }) {
+  return <PageFrame footer="الخدمة الذاتية">
+    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
+      {retry && <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إعادة المحاولة</Link>}
+      <Link className="secondary-button" href={`/tenant/${tenantId}/me`}>العودة إلى ملفي</Link>
+      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+    </section>
+  </PageFrame>;
+}

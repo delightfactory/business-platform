@@ -71,7 +71,7 @@ export async function TenantNavigation({
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee] = await Promise.all([
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess] = await Promise.all([
         supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
@@ -79,6 +79,7 @@ export async function TenantNavigation({
         supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId }),
+        supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
       ]);
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
@@ -98,6 +99,11 @@ export async function TenantNavigation({
       }
       if (!ownEmployee.error && ownEmployee.data && typeof ownEmployee.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/me`, label: 'ملفي' });
+      }
+      const leave = !leaveAccess.error && leaveAccess.data && typeof leaveAccess.data === 'object' && !Array.isArray(leaveAccess.data)
+        ? leaveAccess.data as Record<string, unknown> : null;
+      if (leave?.self_access === true) {
+        businessLinks.push({ href: `/tenant/${tenantId}/me/leave`, label: 'إجازاتي' });
       }
     }
   }
