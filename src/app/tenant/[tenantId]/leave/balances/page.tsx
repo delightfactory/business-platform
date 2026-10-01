@@ -441,7 +441,9 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                         href={pairHref(selectedTypeQuery)}>إعادة المحاولة</PendingLink>
                     </div>
                     : query.type !== ''
-                      ? postingForm
+                      ? <>{query.kind === 'annual_grant' && pair?.canAdjust && <PendingLink className="primary-button"
+                        href={`/tenant/${tenantId}/leave/balances/annual?employee=${query.employee}&employer=${query.employer}&type=${query.type}&period=${query.period}`}>
+                        حساب الاستحقاق السنوي تلقائيًا</PendingLink>}{postingForm}</>
                       : types.items.length === 0
                         ? <div className="empty-state">
                           <h2>لا توجد أنواع إجازات في هذه الفترة</h2>

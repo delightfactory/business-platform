@@ -17,4 +17,4 @@ HR and the Employee's own request details expose reciprocal original/replacement
 
 This closes the missing approved replacement interface without adding a joint Leave/Attendance correction engine. Existing classified Attendance conflict protection is preserved.
 
-Cube 3 remains open while the annual entitlement calculation policy in `cube-3-legal-calculation-evidence.md` is unaccepted/unimplemented. Manual HR-entered balances do not qualify that mandatory automatic calculation. No deployment or remote SQL is part of this delivery.
+At this checkpoint the annual entitlement policy/calculator remained open. It is now accepted and locally qualified in [final V1 qualification](cube-3-v1-final-qualification.md). Manual HR-entered balances alone did not close that gate. No deployment or remote SQL is part of this delivery.
