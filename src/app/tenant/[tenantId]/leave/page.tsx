@@ -88,7 +88,11 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
         <h1>مراجعة طلبات الإجازة</h1>
         <p>الطلبات المقدمة مرتبة من الأقدم إلى الأحدث، بحد أقصى 50 طلبًا في الصفحة. افتح الطلب لعرض أيامه واتخاذ قراره.</p>
       </div>
-      <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
+      <div className="workspace-form-actions">
+        {access.canManage && access.newWorkEnabled && <PendingLink className="primary-button"
+          href={`/tenant/${tenantId}/leave/new`}>تسجيل إجازة موظف</PendingLink>}
+        <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
+      </div>
     </header>
     {!access.newWorkEnabled && <p className="form-message" role="status">
       خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن اعتماد طلبات جديدة أو تحديث معايناتها.
