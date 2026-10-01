@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { PageFrame } from '@/components/context-navigation';
+import styles from './profile.module.css';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -30,9 +31,9 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
   return <PageFrame>
     <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p><h1>ملفي</h1>
       <p className="field-hint">بيانات ملفك الوظيفي المرتبطة بهذا الحساب.</p></div></header>
-    <section className="workspace-records-panel" aria-labelledby="my-employee-heading">
+    <section className={`workspace-records-panel ${styles.panel}`} aria-labelledby="my-employee-heading">
       <h2 id="my-employee-heading">بيانات الموظف</h2>
-      <dl className="snapshot-grid">
+      <dl className={styles.details}>
         <div><dt>الاسم</dt><dd>{profile.display_name}</dd></div>
         <div><dt>كود الموظف</dt><dd><bdi>{profile.employee_code}</bdi></dd></div>
         <div><dt>حالة الملف</dt><dd>{profile.employee_status === 'active' ? 'نشط' : profile.employee_status === 'ended' ? 'منتهٍ' : 'غير نشط'}</dd></div>

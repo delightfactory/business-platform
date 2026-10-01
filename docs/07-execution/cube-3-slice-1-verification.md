@@ -27,6 +27,10 @@ Local PostgreSQL 17.6, Supabase CLI 2.106.0, Node 24.16.0.
 | `npm run typecheck` and targeted ESLint of affected TS/TSX files | Passed |
 | `npm run build -- --webpack` | Passed |
 | `git diff --check` | Passed |
+| Auth password login → narrow-only own-profile navigation | Passed on isolated QA HTTP runtime |
+| Own account directly visits People directory / another Tenant profile | Denied; no employee data returned |
+| Desktop 1280px and mobile 390px, Cairo / RTL / no horizontal overflow | Passed; screenshots saved in the run directory |
+| Mobile navigation open/close | Passed through actual browser clicks |
 
 The clean installation uses Supabase-managed Auth/Storage/extensions as its framework foundation, with no existing application schemas or migration history. Both databases are isolated local QA targets. Original demo and remote databases were untouched.
 
@@ -36,4 +40,6 @@ Reproducible test selection: `cube3_leave_access_foundation.test.sql`, `tenant_p
 
 ## Remaining scope
 
-This is a tested access slice, **not Cube 3 closure**. Calendar, balance, request/approval/cancellation/correction, Attendance integration, Payroll projection and their UX are subsequent slices. Browser qualification of the own-profile and complete Leave journeys remains outstanding; physical phone/tablet acceptance is deferred by the owner. The broad final regression suite will run on the complete Cube 3 candidate.
+The browser runtime binds to loopback app port 3300 and an isolated Auth/REST gateway on 3303, backed only by the upgrade QA database. A separately recorded synthetic own-profile fixture was added **after** the data-preservation comparison; original source/demo data was not altered. Credentials and baseline/post-fixture manifests are outside Git. Profile rows use scoped compact responsive styling; the shared design system and other pages are unaffected.
+
+This is a tested access slice, **not Cube 3 closure**. Calendar, balance, request/approval/cancellation/correction, Attendance integration, Payroll projection and their UX are subsequent slices. Complete Leave-journey browser qualification remains outstanding; physical phone/tablet acceptance is deferred by the owner. The broad final regression suite will run on the complete Cube 3 candidate.
