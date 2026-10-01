@@ -20,7 +20,6 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
   const [fields, setFields] = useState<LeaveFields>(EMPTY_LEAVE_FIELDS);
   const fieldsRef = useRef<LeaveFields>(EMPTY_LEAVE_FIELDS);
   const [options, setOptions] = useState<LeaveOptionsState | null>(null);
-  const optionsRef = useRef<LeaveOptionsState | null>(null);
   const [optionsError, setOptionsError] = useState('');
   const [operationKey, setOperationKey] = useState(idempotencyKey);
   const keyRef = useRef({ key: idempotencyKey, signature: leaveFieldsSignature(EMPTY_LEAVE_FIELDS) });
@@ -45,22 +44,21 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
   }
 
   function clearOptions() {
-    optionsRef.current = null;
-    setOptions(null);
     setOptionsError('');
+    loadSequenceRef.current += 1;
   }
 
   function handleStartDateChange(event: ChangeEvent<HTMLInputElement>) {
     const startDate = event.target.value;
     const current = fieldsRef.current;
     const endDate = !current.endDate || (startDate && startDate > current.endDate) ? startDate : current.endDate;
-    applyFields({ ...current, startDate, endDate, leaveTypeId: '', halfDay: false });
+    applyFields({ ...current, startDate, endDate });
     clearOptions();
   }
 
   function handleEndDateChange(event: ChangeEvent<HTMLInputElement>) {
     const current = fieldsRef.current;
-    applyFields({ ...current, endDate: event.target.value, leaveTypeId: '', halfDay: false });
+    applyFields({ ...current, endDate: event.target.value });
     clearOptions();
   }
 
@@ -76,12 +74,15 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
     applyFields({ ...fieldsRef.current, reason: event.target.value });
   }
 
-  function loadOptions(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function loadOptions(event?: FormEvent<HTMLFormElement>) {
+    event?.preventDefault();
     if (rangeError || frozen) return;
     const requested = fieldsRef.current;
     const sequence = ++loadSequenceRef.current;
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData();
+    formData.set('tenantId', tenantId);
+    formData.set('startDate', requested.startDate);
+    formData.set('endDate', requested.endDate);
     startOptionsLoad(async () => {
       const result = await loadLeaveRequestOptionsAction(formData);
       if (sequence !== loadSequenceRef.current) return;
@@ -91,10 +92,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         setOptionsError(result.error);
         return;
       }
-      const previous = optionsRef.current;
-      const unchangedRange = previous !== null
-        && previous.startDate === result.startDate && previous.endDate === result.endDate;
-      const keepTypeId = unchangedRange && current.leaveTypeId !== ''
+      const keepTypeId = current.leaveTypeId !== ''
         && result.types.some((type) => type.id === current.leaveTypeId);
       const nextTypeId = keepTypeId ? current.leaveTypeId
         : result.types.length === 1 ? result.types[0].id : '';
@@ -102,9 +100,8 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
       const nextHalfDay = keepTypeId && current.halfDay && nextType !== null
         && result.startDate === result.endDate && halfDayAllowedOn(nextType, result.startDate);
       applyFields({ ...current, leaveTypeId: nextTypeId, halfDay: nextHalfDay });
-      optionsRef.current = result;
       setOptions(result);
-      setOptionsError('');
+      setOptionsError(current.leaveTypeId && !keepTypeId ? 'نوع الإجازة السابق غير متاح للتواريخ الجديدة. اختر نوعًا آخر.' : '');
     });
   }
 
@@ -115,27 +112,29 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         <input type="hidden" name="tenantId" value={tenantId} />
         <label htmlFor="leave-start-date">تاريخ البداية</label>
         <input id="leave-start-date" name="startDate" type="date" required value={fields.startDate}
-          onChange={handleStartDateChange} disabled={frozen} aria-invalid={Boolean(rangeError)} />
+          onChange={handleStartDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         <label htmlFor="leave-end-date">تاريخ النهاية</label>
         <input id="leave-end-date" name="endDate" type="date" required value={fields.endDate}
-          onChange={handleEndDateChange} disabled={frozen} aria-invalid={Boolean(rangeError)} />
+          onChange={handleEndDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         <p className="field-hint">اختر التواريخ أولًا؛ تُحمَّل بعدها أنواع الإجازة المتاحة في هذه الفترة.</p>
         {rangeError && <p className="form-message form-error" role="alert">{rangeError}</p>}
         {optionsError && <p className="form-message form-error" role="alert">{optionsError}</p>}
         {loadingOptions && <p className="field-hint" role="status">جارٍ تحميل أنواع الإجازة المتاحة…</p>}
-        <div className="workspace-form-actions">
+        {optionsError && <div className="workspace-form-actions">
           <button className="secondary-button" type="submit" disabled={frozen || Boolean(rangeError)}
             aria-busy={loadingOptions}>
             {loadingOptions && <span className="button-spinner" aria-hidden="true" />}
-            {loadingOptions ? 'جارٍ تحميل الأنواع…' : 'تحميل أنواع الإجازة المتاحة'}
+            {loadingOptions ? 'جارٍ تحميل الأنواع…' : 'إعادة تحميل الأنواع'}
           </button>
-        </div>
+        </div>}
       </form>
     </div>
 
     {options && <div className={styles.formBlock}>
       <h2 className={styles.formTitle}>2 · بيانات الطلب</h2>
       <form className="auth-form" action={submitAction} aria-busy={submitting}>
+        <fieldset disabled={frozen || Boolean(rangeError) || options.startDate !== fields.startDate || options.endDate !== fields.endDate}
+          style={{ display: 'grid', gap: '.65rem', border: 0, padding: 0, margin: 0, minWidth: 0 }}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="startDate" value={options.startDate} />
         <input type="hidden" name="endDate" value={options.endDate} />
@@ -165,10 +164,12 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
               <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" />
-              <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>
+              {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
+                : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}
             </div>
             <p className="field-hint">يُرسَل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد قبل الاعتماد.</p>
           </>}
+        </fieldset>
       </form>
     </div>}
   </>;

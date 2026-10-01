@@ -89,6 +89,8 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
   const accounts = accountsResult && !accountsResult.error ? readAccountsPage(accountsResult.data) : null;
   const pair = accounts?.pair ?? null;
   const canPost = pair !== null && pair.canAdjust;
+  const accountContext = query.kind === 'adjustment' ? accounts?.items.find((account) =>
+    account.periodId === query.period && account.leaveTypeId === query.type) ?? null : null;
 
   const periodsResult = !canPost || query.kind === '' ? null
     : await supabase.rpc('leave_balance_posting_periods', {
@@ -100,10 +102,11 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
       p_after_period: query.pcp === '' ? null : query.pcp,
     });
   const periods = periodsResult && !periodsResult.error ? readPeriodsPage(periodsResult.data) : null;
-  const selectedPeriod = query.period === '' || !periods ? null
-    : periods.items.find((item) => item.periodId === query.period) ?? null;
+  const selectedPeriod = query.period === '' ? null
+    : periods?.items.find((item) => item.periodId === query.period)
+      ?? (accountContext ? { label: accountContext.periodLabel, startsOn: accountContext.startsOn, endsOn: accountContext.endsOn } : null);
 
-  const typesResult = !canPost || query.kind === '' || query.period === '' ? null
+  let typesResult = !canPost || query.kind === '' || query.period === '' ? null
     : await supabase.rpc('leave_balance_posting_types', {
       p_tenant: tenantId,
       p_employee: query.employee,
@@ -114,9 +117,22 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
       p_after_code: query.tcs === '' ? null : query.tcs,
       p_after_type: query.tct === '' ? null : query.tct,
     });
-  const types = typesResult && !typesResult.error ? readTypesPage(typesResult.data) : null;
-  const selectedType = query.type === '' || !types ? null
+  let types = typesResult && !typesResult.error ? readTypesPage(typesResult.data) : null;
+  let selectedType = query.type === '' || !types ? null
     : types.items.find((item) => item.leaveTypeId === query.type) ?? null;
+  if (canPost && accountContext && types && !selectedType) {
+    // Seek immediately before the known account type, retaining the authoritative
+    // eligibility/version read even when the type is beyond the first page.
+    const hex = (BigInt(`0x${accountContext.leaveTypeId.replaceAll('-', '')}`) - BigInt(1)).toString(16).padStart(32, '0');
+    const beforeType = `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+    typesResult = await supabase.rpc('leave_balance_posting_types', {
+      p_tenant: tenantId, p_employee: query.employee, p_employer: query.employer,
+      p_kind: query.kind, p_period: query.period, p_limit: PAGE_SIZE,
+      p_after_code: accountContext.typeCode, p_after_type: beforeType,
+    });
+    types = !typesResult.error ? readTypesPage(typesResult.data) : null;
+    selectedType = types?.items.find((item) => item.leaveTypeId === query.type) ?? null;
+  }
 
   const searchHref = (next: Partial<Parameters<typeof balancesHref>[1]> = {}) =>
     balancesHref(tenantId, { employee: '', employer: '', kind: '', period: '', type: '', ...next });
@@ -289,6 +305,9 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                         {' · '}منحة سنوية: {account.hasAnnualGrant ? 'مسجلة' : 'غير مسجلة'}</p>
                       <p className="record-meta">الرصيد يشمل جميع حركات الحساب، بما فيها الحركات الموجودة في الصفحات الأخرى.</p>
                     </div>
+                    {pair?.canAdjust && <PendingLink className="secondary-button"
+                      href={`${pairHref({ kind: 'adjustment', period: account.periodId, type: account.leaveTypeId, acs: query.acs, aca: query.aca })}#balances-type-title`}>
+                      تعديل هذا الرصيد</PendingLink>}
                     <PendingLink className="secondary-button"
                       href={ledgerHref(tenantId, account.accountId, {
                         employee: query.employee, employer: query.employer,

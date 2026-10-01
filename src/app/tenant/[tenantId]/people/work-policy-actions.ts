@@ -3,7 +3,9 @@
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
-export async function saveWorkPolicyAction(formData: FormData) {
+export type WorkPolicySaveState = { error: string };
+
+export async function saveWorkPolicyAction(_previous: WorkPolicySaveState, formData: FormData): Promise<WorkPolicySaveState> {
   const tenantId = text(formData, 'tenantId');
   const templateId = text(formData, 'templateId') || null;
   const code = text(formData, 'code');
@@ -13,19 +15,28 @@ export async function saveWorkPolicyAction(formData: FormData) {
   const autoApproveClean = formData.get('autoApproveClean') === 'on';
   const overtimeMinimum = Number(text(formData, 'overtimeMinimum') || '30');
   const overtimeRounding = Number(text(formData, 'overtimeRounding') || '15');
+  const mappingEnabled = formData.get('leaveMappingEnabled') === 'on';
+  const breakMinutes = Number(text(formData, 'breakMinutes') || '0');
+  const fixedBreakStart = kind === 'fixed' && breakMinutes > 0 && mappingEnabled ? text(formData, 'fixedBreakStart') || null : null;
+  const fixedBreakEnd = kind === 'fixed' && breakMinutes > 0 && mappingEnabled ? text(formData, 'fixedBreakEnd') || null : null;
+  const halfdayBreakText = text(formData, 'flexibleHalfdayBreak');
+  const halfdayBreak = kind === 'flexible' && mappingEnabled && halfdayBreakText !== '' ? Number(halfdayBreakText) : null;
+  if (!Number.isInteger(breakMinutes) || breakMinutes < 0 || breakMinutes > 360
+    || (mappingEnabled && kind === 'fixed' && breakMinutes > 0 && (!fixedBreakStart || !fixedBreakEnd || !/^\d{2}:\d{2}$/.test(fixedBreakStart) || !/^\d{2}:\d{2}$/.test(fixedBreakEnd)))
+    || (mappingEnabled && kind === 'flexible' && (halfdayBreak === null || !Number.isInteger(halfdayBreak) || halfdayBreak < 0 || halfdayBreak > 360))) return { error: 'راجع إعداد نصف اليوم: حدد أوقات الاستراحة، أو أدخل مدة استراحة الدوام المرن بين صفر و360 دقيقة.' };
   const days = formData.getAll('workDays').map(Number).filter((day) => Number.isInteger(day) && day >= 1 && day <= 7);
   if (!isUuid(tenantId) || (templateId && !isUuid(templateId)) || !code || !name || !['fixed', 'flexible'].includes(kind) || !days.length
     || !Number.isInteger(overtimeMinimum) || overtimeMinimum < 15 || overtimeMinimum > 480
-    || !Number.isInteger(overtimeRounding) || overtimeRounding < 5 || overtimeRounding > 60 || overtimeRounding > overtimeMinimum) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
+    || !Number.isInteger(overtimeRounding) || overtimeRounding < 5 || overtimeRounding > 60 || overtimeRounding > overtimeMinimum) return { error: 'تحقق من بيانات القالب وأيام العمل ومدد العمل الإضافي.' };
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect(`/tenant/${tenantId}/people/work-policies?state=setup`);
-  const { error } = await supabase.rpc('save_time_work_policy', {
+  if (!supabase) return { error: 'الاتصال غير متاح. بياناتك محفوظة في النموذج؛ أعد المحاولة.' };
+  const { error } = await supabase.rpc(mappingEnabled ? 'save_time_work_policy_with_leave_mapping' : 'save_time_work_policy', {
     p_tenant_id: tenantId, p_template_id: templateId, p_code: code, p_name: name, p_kind: kind,
     p_timezone: text(formData, 'timezone') || 'Africa/Cairo', p_work_days: days,
     p_start: kind === 'fixed' ? text(formData, 'shiftStart') || null : null,
     p_end: kind === 'fixed' ? text(formData, 'shiftEnd') || null : null,
     p_next_day: kind === 'fixed' && formData.get('nextDay') === 'on',
-    p_break: Number(text(formData, 'breakMinutes') || '0'),
+    p_break: kind === 'fixed' ? breakMinutes : 0,
     p_required: kind === 'flexible' ? Number(text(formData, 'requiredMinutes')) : null,
     p_earliest: kind === 'flexible' ? text(formData, 'earliestPunch') || null : null,
     p_latest: kind === 'flexible' ? text(formData, 'latestPunch') || null : null,
@@ -33,9 +44,11 @@ export async function saveWorkPolicyAction(formData: FormData) {
     p_after: Number(text(formData, 'attributionAfter') || '360'),
     p_overtime_enabled: overtimeEnabled, p_overtime_minimum: overtimeMinimum, p_overtime_rounding: overtimeRounding,
     p_auto_approve_clean: autoApproveClean,
+    ...(mappingEnabled ? { p_fixed_break_start: fixedBreakStart, p_fixed_break_end: fixedBreakEnd, p_flexible_halfday_break_minutes: halfdayBreak } : {}),
   });
-  if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=${error.message.includes('attendance_policy_manage_forbidden') ? 'forbidden' : 'failed'}`);
-  redirect(`/tenant/${tenantId}/people/work-policies?state=saved`);
+  if (error) return { error: error.message.includes('attendance_policy_manage_forbidden') ? 'لا تملك صلاحية إدارة سياسات الحضور.' : error.message.includes('time_policy_halfday_mapping') ? 'راجع أوقات الاستراحة: يجب أن تقع داخل الوردية وتساوي مدتها المحددة. بياناتك محفوظة في النموذج.' : 'تعذر حفظ القالب. بياناتك محفوظة في النموذج؛ أعد المحاولة.' };
+  const returnToRequest = text(formData, 'returnToRequest');
+  redirect(`/tenant/${tenantId}/people/work-policies?state=saved${isUuid(returnToRequest) ? `&returnToRequest=${returnToRequest}` : ''}`);
 }
 
 export async function setWorkPolicyActiveAction(formData: FormData) {

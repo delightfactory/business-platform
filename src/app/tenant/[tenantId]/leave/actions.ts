@@ -18,6 +18,13 @@ import {
 
 type ServerClient = NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>;
 
+export async function decideRequestAction(previous: ReviewActionState, formData: FormData): Promise<ReviewActionState> {
+  const decision = field(formData, 'decision');
+  if (decision === 'approve') return approveRequestAction(previous, formData);
+  if (decision === 'reject') return rejectRequestAction(previous, formData);
+  return { error: 'اختر اعتماد الطلب أو رفضه.', attempt: previous.attempt + 1 };
+}
+
 type Gate =
   | { ok: false; code: string }
   | { ok: true; supabase: ServerClient; access: LeaveAccess };

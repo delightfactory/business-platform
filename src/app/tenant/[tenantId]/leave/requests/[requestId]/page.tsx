@@ -148,22 +148,19 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
     </section>
 
     <section className="work-card task-page" aria-labelledby="leave-preview-title">
-      <h2 id="leave-preview-title">المعاينة المحفوظة</h2>
-      <p className="field-hint">
-        هذا هو الإصدار <bdi>{request.previewVersion}</bdi> من حسابات الأيام. إن تغيّر قبل قرارك فلا يُنفذ إجراؤك،
-        ويُطلب تحديث المعاينة أولًا. الطلب المعلق لا يحجز رصيدًا قبل الاعتماد.
-      </p>
+      <h2 id="leave-preview-title">أثر الإجازة</h2>
+      <p className="field-hint">إذا تغيّرت حسابات الأيام قبل القرار، ستُطلب مراجعتها مجددًا. الطلب المعلق لا يحجز رصيدًا قبل الاعتماد.</p>
       <dl className="snapshot-grid">
-        <div><dt>إصدار المعاينة</dt><dd>{request.previewVersion}</dd></div>
-        <div><dt>عدد أيام المعاينة</dt><dd>{request.days.length}</dd></div>
+        <div><dt>أيام الإجازة المحتسبة</dt><dd>{formatDays(request.totalUnits)} يوم</dd></div>
+        <div><dt>أثر الأجر</dt><dd>{unpaidDays.length > 0 ? `${unpaidDays.length} يوم بدون أجر` : 'لا توجد أيام بدون أجر في هذا الطلب'}</dd></div>
         <div><dt>استهلاك الرصيد عند الاعتماد</dt><dd>{request.consumptionCount > 0
-          ? `${formatDays(request.consumedUnits)} يوم في ${request.consumptionCount} قيد`
-          : 'لم يُستهلك رصيد لهذا الطلب'}</dd></div>
+          ? `${formatDays(request.consumedUnits)} يوم`
+          : request.state === 'submitted' ? `${formatDays(request.days.filter((day) => day.eligible && day.balanceMode === 'tracked').reduce((sum, day) => sum + day.units, 0))} يوم عند الاعتماد؛ لم يُخصم بعد` : 'لم يُستهلك رصيد لهذا الطلب'}</dd></div>
         {request.state === 'cancelled' && <div><dt>أثر الإلغاء</dt><dd>أُعيد أي رصيد استُهلك عند الاعتماد</dd></div>}
         {request.state === 'superseded' && <div><dt>أثر التصحيح</dt><dd>عُكس الاستهلاك السابق وحُسب الطلب البديل</dd></div>}
-        {request.approvedPreviewVersion !== null
-          && <div><dt>المعاينة المعتمدة</dt><dd>{request.approvedPreviewVersion}</dd></div>}
+
       </dl>
+      <details className="task-disclosure"><summary>تفاصيل حساب الأيام</summary><p className="record-meta">إصدار الحساب: {request.previewVersion} · عدد الأيام المعروضة: {request.days.length} · قيود الاستهلاك: {request.consumptionCount}{request.approvedPreviewVersion !== null ? ` · الإصدار المعتمد: ${request.approvedPreviewVersion}` : ''}</p></details>
       {request.isHalfDay && <p className={unmappedHalfDays.length > 0 ? 'form-message form-error' : 'form-message'}
         role={unmappedHalfDays.length > 0 ? 'alert' : 'status'}>
         {unmappedHalfDays.length > 0
@@ -172,6 +169,8 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
             ? 'احتساب نصف يوم للإجازة فقط؛ لا توجد مطابقة مع دوام الحضور في هذه المعاينة.'
             : 'مطابقة نصف يوم مكتملة لكل أيام نصف يوم في المعاينة.'}
       </p>}
+      {unmappedHalfDays.length > 0 && <PendingLink className="secondary-button"
+        href={`/tenant/${tenantId}/people/work-policies?returnToRequest=${requestId}`}>مراجعة إعداد نصف اليوم في سياسة العمل</PendingLink>}
       {unpaidDays.length > 0 && <p className="record-meta">
         منها {unpaidDays.length} يوم بدون أجر.
       </p>}
@@ -181,63 +180,19 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
     </section>
 
     {canReview && <section className="work-card task-page" aria-labelledby="leave-review-title">
-      <h2 id="leave-review-title">قرار المراجعة</h2>
-      <p className="field-hint">
-        التحديث وإجراء الاعتماد منفصلان: حدّث المعاينة أولًا إن تغيّرت حسابات الأيام، ثم اعتمد الطلب بعد مراجعة أيامه.
-        السبب إلزامي في كل إجراء ويُحفظ في سجل العملية مع هويتك ووقتها.
-      </p>
-      {!access.newWorkEnabled && <p className="form-message" role="status">
-        خدمة الموظفين أو الإجازات موقوفة حاليًا، لذا الاعتماد وتحديث المعاينة غير متاحين. يبقى رفض الطلب متاحًا.
-      </p>}
-
-      <div className={styles.formBlock}>
-        <h3 className={styles.formTitle}>تحديث المعاينة</h3>
-        {access.newWorkEnabled
-          ? <ReviewIntentForm
-            intent="refresh"
-            tenantId={tenantId}
-            requestId={requestId}
-            expectedVersion={request.version}
-            submitLabel="تحديث المعاينة"
-            pendingLabel="جارٍ التحديث…"
-            backHref={path}
-            hint="يعيد حساب أيام الطلب بنفس جزء نصف يوم المحفوظ، ويغيّر إصدار المعاينة فقط دون تغيير حالة الطلب." />
-          : <p className="form-message">تحديث المعاينة غير متاح ما دامت الخدمة موقوفة.</p>}
-      </div>
-
-      <div className={styles.divider} />
-      <div className={styles.formBlock}>
-        <h3 className={styles.formTitle}>اعتماد الطلب</h3>
-        {access.newWorkEnabled
-          ? <ReviewIntentForm
-            intent="approve"
-            tenantId={tenantId}
-            requestId={requestId}
-            expectedVersion={request.version}
-            reviewedPreviewVersion={request.previewVersion}
-            submitLabel="اعتماد الطلب"
-            pendingLabel="جارٍ الاعتماد…"
-            backHref={path}
-            hint="يعتمد على المعاينة المعروضة ويستهلك الرصيد للأنواع التي تتطلب رصيدًا فقط." />
-          : <p className="form-message">اعتماد الطلب غير متاح ما دامت الخدمة موقوفة.</p>}
-      </div>
-
-      <div className={styles.divider} />
-      <div className={styles.formBlock}>
-        <h3 className={styles.formTitle}>رفض الطلب</h3>
-        <ReviewIntentForm
-          intent="reject"
-          tenantId={tenantId}
-          requestId={requestId}
-          expectedVersion={request.version}
-          submitLabel="رفض الطلب"
-          pendingLabel="جارٍ الرفض…"
-          buttonClass="danger-button"
-          backHref={path}
-          hint="يصبح الطلب مرفوضًا نهائيًا دون حجز أي رصيد، ويبقى محفوظًا في السجل بسببه." />
-      </div>
+      <h2 id="leave-review-title">قرار الطلب</h2>
+      <p className="field-hint">راجع أثر الإجازة ثم اختر القرار واكتب سببه. تحديث الحساب مطلوب فقط إذا تغيّرت بياناته.</p>
+      {!access.newWorkEnabled && <p className="form-message" role="status">الاعتماد والتحديث غير متاحين حاليًا؛ يمكنك رفض الطلب.</p>}
+      <ReviewIntentForm decision canApprove={access.newWorkEnabled} intent={access.newWorkEnabled ? "approve" : "reject"}
+        tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
+        reviewedPreviewVersion={request.previewVersion} submitLabel="اعتماد الطلب" pendingLabel="جارٍ حفظ القرار…"
+        backHref={path} hint="يُحفظ القرار وسببه. الاعتماد يستهلك الرصيد للأنواع التي تتطلب رصيدًا فقط؛ الرفض لا يستهلك رصيدًا." />
+      {access.newWorkEnabled && <details className="task-disclosure"><summary className="secondary-button">تحديث حساب أيام الإجازة</summary>
+        <ReviewIntentForm intent="refresh" tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
+          submitLabel="تحديث الحساب" pendingLabel="جارٍ التحديث…" backHref={path}
+          hint="يعيد حساب أيام الطلب دون اتخاذ قرار بالموافقة أو الرفض." />
+      </details>}
     </section>}
-
     {(access.canApprove || access.canManage) && <section className="work-card task-page" aria-labelledby="leave-cancellation-title">
       <h2 id="leave-cancellation-title">إلغاء الاعتماد</h2>
       {historyFailed

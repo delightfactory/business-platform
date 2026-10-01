@@ -4,6 +4,7 @@ import { useActionState, useRef, useState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import {
   acceptCancellationAction,
+  decideRequestAction,
   approveRequestAction,
   refreshRequestAction,
   rejectCancellationAction,
@@ -48,7 +49,9 @@ export function ReviewIntentForm(props: Parameters<typeof IntentForm>[0]) {
 }
 
 function IntentForm({
-  intent,
+  intent: initialIntent,
+  decision = false,
+  canApprove = true,
   tenantId,
   requestId,
   expectedVersion,
@@ -62,6 +65,8 @@ function IntentForm({
   hint,
 }: {
   intent: ReviewIntent;
+  decision?: boolean;
+  canApprove?: boolean;
   tenantId: string;
   requestId: string;
   expectedVersion: number;
@@ -74,16 +79,17 @@ function IntentForm({
   backHref?: string;
   hint: string;
 }) {
-  const [state, action, pending] = useActionState(ACTION_BY_INTENT[intent], EMPTY_REVIEW_STATE);
+  const [intent, setIntent] = useState(initialIntent);
+  const [state, action, pending] = useActionState(decision ? decideRequestAction : ACTION_BY_INTENT[intent], EMPTY_REVIEW_STATE);
   const [reason, setReason] = useState('');
   const [operationKey, setOperationKey] = useState(() => newKey());
   const keysRef = useRef<Map<string, string> | null>(null);
   if (keysRef.current === null) keysRef.current = new Map([[signature(''), operationKey]]);
   const reasonId = `review-reason-${intent}`;
 
-  function signature(value: string): string {
+  function signature(value: string, selectedIntent = intent): string {
     return [
-      intent,
+      selectedIntent,
       requestId,
       expectedVersion,
       reviewedPreviewVersion ?? '',
@@ -93,9 +99,9 @@ function IntentForm({
     ].join('|');
   }
 
-  function handleReasonChange(value: string) {
+  function handleReasonChange(value: string, selectedIntent = intent) {
     setReason(value);
-    const key = signature(value);
+    const key = signature(value, selectedIntent);
     const keys = keysRef.current ?? new Map<string, string>();
     keysRef.current = keys;
     const existing = keys.get(key);
@@ -119,7 +125,16 @@ function IntentForm({
       && <input type="hidden" name="cancellationVersion" value={cancellationVersion} />}
     <input type="hidden" name="operationKey" value={operationKey} />
 
-    <label htmlFor={reasonId}>{REASON_LABEL[intent]}</label>
+    {decision && <><label htmlFor="leave-request-decision">قرار الطلب</label>
+      <select id="leave-request-decision" name="decision" value={intent} disabled={pending} onChange={(event) => {
+        const selectedIntent = event.target.value === 'approve' ? 'approve' : 'reject';
+        setIntent(selectedIntent);
+        handleReasonChange(reason, selectedIntent);
+      }}>
+        {canApprove && <option value="approve">اعتماد الطلب</option>}
+        <option value="reject">رفض الطلب</option>
+      </select></>}
+    <label htmlFor={reasonId}>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</label>
     <textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
       value={reason} onChange={(event) => handleReasonChange(event.target.value)} disabled={pending}
       aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`} />
@@ -129,8 +144,11 @@ function IntentForm({
     {pending && <p className="field-hint" role="status">جارٍ التنفيذ… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton className={buttonClass} label={submitLabel} pendingLabel={pendingLabel} />
-      {backHref && <PendingLink className="secondary-button" href={backHref}>إلغاء</PendingLink>}
+      <SubmitButton className={decision && intent === 'reject' ? 'danger-button' : buttonClass}
+        label={decision ? intent === 'approve' ? 'اعتماد الطلب' : 'رفض الطلب' : submitLabel}
+        pendingLabel={decision ? 'جارٍ حفظ القرار…' : pendingLabel} />
+      {backHref && (pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
+        : <PendingLink className="secondary-button" href={backHref}>إلغاء</PendingLink>)}
     </div>
   </form>;
 }

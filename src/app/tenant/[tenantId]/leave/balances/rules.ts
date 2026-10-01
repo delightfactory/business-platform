@@ -869,6 +869,7 @@ export type PostErrorCode =
   | 'unknown';
 
 export type PostBalanceState = {
+  uncertain: boolean;
   error: string;
   attempt: number;
   accountId: string | null;
@@ -877,6 +878,7 @@ export type PostBalanceState = {
 };
 
 export const EMPTY_POST_STATE: PostBalanceState = {
+  uncertain: false,
   error: '',
   attempt: 0,
   accountId: null,

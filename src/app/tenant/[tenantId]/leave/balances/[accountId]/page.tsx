@@ -161,7 +161,7 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                         {formatSignedDays(entry.deltaDays)} يوم</span>
                     </div>
                     <p className="record-meta"><bdi>{formatInstant(entry.createdAt)}</bdi>
-                      {entry.sourceReference === '' ? '' : ` · المرجع: ${entry.sourceReference}`}</p>
+                      {entry.requestConsumption ? ' · طلب إجازة' : entry.reversalOfEntryId ? ' · إعادة رصيد' : entry.sourceReference === '' ? '' : ` · المرجع: ${entry.sourceReference}`}</p>
                     <p className="record-meta">{entry.reason}</p>
                     {entry.typeVersion && <p className="record-meta">
                       نسخة السياسة {entry.typeVersion.version} سارية من <bdi>{entry.typeVersion.effectiveFrom}</bdi>
@@ -211,7 +211,8 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                       </div>)}
                     </details>}
                     <details className="task-disclosure">
-                      <summary>معرّفات تدقيق هذا القيد</summary>
+                      <summary>تفاصيل تدقيق هذا القيد</summary>
+                      {entry.sourceReference && <p className="record-meta">مرجع المصدر: <bdi>{entry.sourceReference}</bdi></p>}
                       <p className="record-meta">معرّف القيد: <bdi>{entry.entryId}</bdi></p>
                       {entry.reversalOfEntryId && <p className="record-meta">معرّف القيد الأصلي: <bdi>{entry.reversalOfEntryId}</bdi></p>}
                       <p className="record-meta">معرّف الحساب: <bdi>{entry.accountId}</bdi></p>

@@ -34,7 +34,8 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
     <div className="workspace-form-actions">
       <SubmitButton className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
-      <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>
+      {pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
+        : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>}
     </div>
   </form>;
 }

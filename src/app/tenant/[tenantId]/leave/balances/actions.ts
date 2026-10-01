@@ -33,8 +33,10 @@ export async function postBalanceAction(previous: PostBalanceState, formData: Fo
   const reason = field(formData, 'reason');
   const source = field(formData, 'source');
   const operationKey = field(formData, 'operationKey');
+  const recovering = field(formData, 'recovering') === 'true';
 
   const failed = (code: PostErrorCode, detail?: string): PostBalanceState => ({
+    uncertain: recovering || code === 'unknown' || code === 'failed',
     error: detail ?? postErrorText(code),
     attempt: previous.attempt + 1,
     accountId: null,
@@ -87,6 +89,7 @@ export async function postBalanceAction(previous: PostBalanceState, formData: Fo
   if (!accountId || !entryId) return failed('unknown');
 
   return {
+    uncertain: false,
     error: '',
     attempt: previous.attempt + 1,
     accountId,

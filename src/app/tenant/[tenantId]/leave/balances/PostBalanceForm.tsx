@@ -86,6 +86,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
   const [submitState, submitAction, submitting] = useActionState(postBalanceAction, EMPTY_POST_STATE);
 
   const staleVersion = typeVersionOverride !== null && typeVersionOverride !== type?.typeVersionId;
+  const unresolved = attempted && (submitState.attempt === 0 || submitState.uncertain);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -123,13 +124,13 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         attemptedKeys.current.clear();
       } else {
         sessionStorage.setItem(storageKey, JSON.stringify({
-          version: 1, savedAt: Date.now(), operationKey, typeVersion, typeVersionNumber, delta, reason, source, attempted,
+          version: 1, savedAt: Date.now(), operationKey, typeVersion, typeVersionNumber, delta, reason, source, attempted: unresolved,
         }));
       }
     } catch { errorFrame = requestAnimationFrame(() => setStorageUnavailable(true)); }
     return () => { if (errorFrame !== undefined) cancelAnimationFrame(errorFrame); };
   }, [draftReady, storageKey, operationKey, typeVersion, typeVersionNumber, delta, reason, source,
-    submitState.accountId, attempted, unrecognizedDraft]);
+    submitState.accountId, attempted, unresolved, unrecognizedDraft]);
 
   // The intent key is random per distinct payload and never derived from content, so an
   // unresolved attempt keeps its key while any edit produces a genuinely new one.
@@ -162,9 +163,9 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
 
   if (submitState.accountId) {
     return <div className="success-panel" role="status">
-      <h2>{submitState.replay ? 'القيد مسجّل مسبقًا بنفس المفتاح' : 'تم تسجيل قيد الرصيد'}</h2>
+      <h2>{submitState.replay ? 'تم التحقق: القيد مسجّل بالفعل' : 'تم تسجيل قيد الرصيد'}</h2>
       <p>{submitState.replay
-        ? 'نُفّذ هذا القيد سابقًا بالمفتاح والبيانات نفسها، فعُرضت النتيجة المؤكدة دون تسجيل قيد ثانٍ.'
+        ? 'هذه نتيجة العملية السابقة المؤكدة؛ لم يُسجّل القيد مرة أخرى.'
         : 'أُضيف القيد إلى دفتر الحساب وحُدِّث رصيد الحساب كاملًا.'}</p>
       <details className="task-disclosure">
         <summary className="secondary-button">معرّفات القيد</summary>
@@ -205,22 +206,23 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         <input type="hidden" name="type" value={leaveTypeId} />
         <input type="hidden" name="typeVersion" value={typeVersion} />
         <input type="hidden" name="operationKey" value={operationKey} />
+        <input type="hidden" name="recovering" value={unresolved ? 'true' : 'false'} />
 
         <label htmlFor="balance-delta">عدد الأيام</label>
         <input id="balance-delta" name="delta" type="text" inputMode="decimal" maxLength={40}
-          value={delta} onChange={handleDeltaChange} disabled={submitting} readOnly={!canStartNew} required
+          value={delta} onChange={handleDeltaChange} disabled={submitting} readOnly={!canStartNew || unresolved} required
           aria-describedby="balance-delta-hint" aria-invalid={submitState.error !== ''} />
         <p className="field-hint" id="balance-delta-hint">{postingKindSummary(kind)}</p>
 
         <label htmlFor="balance-reason">سبب القيد</label>
         <textarea id="balance-reason" name="reason" value={reason} onChange={handleReasonChange}
-          disabled={submitting} readOnly={!canStartNew} required minLength={MIN_REASON} maxLength={MAX_REASON}
+          disabled={submitting} readOnly={!canStartNew || unresolved} required minLength={MIN_REASON} maxLength={MAX_REASON}
           aria-invalid={submitState.error !== ''} />
         <p className="field-hint">يُحفظ السبب في سجل القيد ولا يمكن تعديله لاحقًا.</p>
 
         <label htmlFor="balance-source">مرجع التدقيق اليدوي</label>
         <input id="balance-source" name="source" type="text" value={source} onChange={handleSourceChange}
-          disabled={submitting} readOnly={!canStartNew} required minLength={MIN_SOURCE_LENGTH} maxLength={MAX_SOURCE_LENGTH}
+          disabled={submitting} readOnly={!canStartNew || unresolved} required minLength={MIN_SOURCE_LENGTH} maxLength={MAX_SOURCE_LENGTH}
           aria-invalid={submitState.error !== ''} />
         <p className="field-hint">مرجع داخلي تكتبه مثل رقم خطاب أو محضر. لا يُستخدم لاستخراج أي معرّف من النص.</p>
 
@@ -235,7 +237,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         {staleVersion && <p className="form-message" role="status">
           مسودتك المحفوظة مرتبطة بنسخة سياسة مختلفة عن المعروضة الآن
           {typeVersionNumber !== null ? ` (إصدار ${typeVersionNumber})` : ''}.
-          سيُرسَل معرّف النسخة المحفوظة كما هو، والأمر هو المرجع في التحقق من التكرار قبل التحقق من النسخة الحالية.
+          سنحتفظ ببيانات المحاولة السابقة للتحقق من نتيجتها دون تكرار القيد.
         </p>}
 
         {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">
@@ -244,7 +246,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         {submitting && <p className="field-hint" role="status">جارٍ تسجيل القيد… لا تغلق الصفحة.</p>}
 
         <div className="workspace-form-actions">
-          <SubmitButton label={canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'} pendingLabel="جارٍ التسجيل…" />
+          <SubmitButton label={hasRecoveredDraft || attempted ? 'التحقق من نتيجة العملية السابقة' : canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'} pendingLabel="جارٍ التحقق والحفظ…" />
           {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
             : <PendingLink className="secondary-button" href={cancelHref}>إلغاء</PendingLink>}
         </div>
@@ -254,9 +256,10 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         </p>}
       </fieldset>
     </form>
-    {draftReady && !submitting && <details className="task-disclosure">
+    {unresolved && <p className="form-message" role="status">نتيجة العملية السابقة غير مؤكدة. احتفظنا ببياناتها؛ تحقق من نتيجتها قبل تسجيل قيد آخر.</p>}
+    {draftReady && !submitting && !unresolved && !unrecognizedDraft && <details className="task-disclosure">
       <summary>بدء محاولة جديدة</summary>
-      <p>راجع سجل الحساب أولًا إذا كانت نتيجة المحاولة السابقة غير مؤكدة. هذا الإجراء يمسح المسودة ويستخدم مفتاحًا جديدًا.</p>
+      <p>راجع سجل الحساب أولًا إذا كانت نتيجة المحاولة السابقة غير مؤكدة. هذا الإجراء يمسح بيانات المسودة لتسجيل قيد آخر.</p>
       <button type="button" className="secondary-button" onClick={() => {
         try { sessionStorage.removeItem(storageKey); } catch { setStorageUnavailable(true); }
         setUnrecognizedDraft(false); setHasRecoveredDraft(false); setAttempted(false); setTypeVersionOverride(null); setTypeVersionNumber(type?.typeVersion ?? null);
