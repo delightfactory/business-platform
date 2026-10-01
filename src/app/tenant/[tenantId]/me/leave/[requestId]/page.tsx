@@ -6,13 +6,16 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { isDayCountBasis, isObject, isUuid, type RequestDay } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { formatDays, formatInstant, stateClass, stateLabel } from '../states';
+import { CancellationHistorySection, loadCancellationHistory } from './CancellationHistory';
+import { cancellationEventActor, parseHistoryOffset } from './cancellation-rules';
 import { DayBreakdown } from './DayBreakdown';
+import { RequestCancellationForm } from './RequestCancellationForm';
 import { WithdrawRequestForm } from './WithdrawRequestForm';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string; requestId: string }>;
-type Query = Promise<{ state?: string | string[] }>;
+type Query = Promise<{ state?: string | string[]; h?: string | string[] }>;
 
 type RequestDetail = {
   id: string;
@@ -38,7 +41,14 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/${requestId}`)}`);
 
-  const { data, error } = await supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId });
+  const historyOffset = parseHistoryOffset(query.h);
+  const [detailResponse, history, accessResponse] = await Promise.all([
+    supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId }),
+    loadCancellationHistory(supabase, tenantId, requestId, historyOffset.invalid ? 0 : historyOffset.value),
+    supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
+  ]);
+  const data = detailResponse.data;
+  const error = detailResponse.error;
   const request = error || !isObject(data) ? null : readRequest(data);
   if (!request) {
     const unavailable = Boolean(error && error.code === 'P0002') || (!error && !isObject(data));
@@ -51,8 +61,18 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
       requestId={requestId} />;
   }
 
-  const feedback = query.state === 'submitted' ? 'تم إرسال طلبك وسينتظر قرار الموارد البشرية.'
-    : query.state === 'withdrawn' ? 'تم سحب الطلب وحُفظ السبب في سجل العملية.' : null;
+  const latest = history.ok ? history.page.latest : null;
+  const feedback = query.state === 'submitted' && request.state === 'submitted' ? 'تم إرسال طلبك وسينتظر قرار الموارد البشرية.'
+    : query.state === 'withdrawn' && request.state === 'withdrawn' ? 'تم سحب الطلب وحُفظ السبب في سجل العملية.'
+      : query.state === 'cancellation-requested' && request.state === 'approved' && latest?.to_state === 'pending'
+        ? 'تم إرسال طلب الإلغاء إلى الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
+        : null;
+
+  const pendingEvent = latest?.to_state === 'pending' ? latest : null;
+  const historyFailed = !history.ok;
+  const accessUnavailable = Boolean(accessResponse.error) || !isObject(accessResponse.data);
+  const canRequestCancellation = !accessUnavailable && accessResponse.data.self_can_request === true;
+  const stateNote = requestStateNote(request.state, canRequestCancellation);
 
   return <PageFrame footer="الخدمة الذاتية">
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
@@ -74,14 +94,58 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
         <div><dt>طريقة التسجيل</dt><dd>{request.request_source === 'hr' ? 'إدارة الموارد البشرية' : 'خدمة الموظف'}</dd></div>
       </dl>
 
-      {request.state !== 'submitted' && <p className="form-message" role="status">
-        هذا الطلب {stateLabel(request.state)}؛ لا يمكن سحبه من هذا الحساب.</p>}
+      {stateNote && <p className="form-message" role="status">{stateNote}</p>}
 
       {request.days.length > 0 && <details className="task-disclosure">
         <summary className="secondary-button">تفاصيل أيام الطلب</summary>
         <DayBreakdown days={request.days} />
       </details>}
     </section>
+
+    {request.state === 'approved' && <section className="work-card task-page" aria-labelledby="cancellation-action-title">
+      {pendingEvent
+        ? <>
+          <div className="record-title-row"><h2 id="cancellation-action-title">طلب إلغاء معلّق</h2>
+            <span className="entity-status is-pending">بانتظار قرار الموارد البشرية</span></div>
+          <dl className="snapshot-grid">
+            <div><dt>حالة طلب الإجازة</dt><dd>معتمد</dd></div>
+            <div><dt>الخطوة التالية</dt><dd>إدارة الموارد البشرية</dd></div>
+            <div><dt>وقت إرسال طلب الإلغاء</dt><dd><bdi>{formatInstant(pendingEvent.created_at)}</bdi></dd></div>
+            <div><dt>أُرسل من طرف</dt><dd>{cancellationEventActor(pendingEvent, user.id)}</dd></div>
+            <div><dt>سبب طلب الإلغاء</dt><dd>{pendingEvent.reason}</dd></div>
+          </dl>
+          <p className="form-message" role="status">الموارد البشرية ستراجع طلب الإلغاء. عند قبوله تُلغى الإجازة ويُعاد أي
+            رصيد خُصم لها. لا تحتاج إلى إرسال طلب آخر أثناء الانتظار.</p>
+        </>
+        : historyFailed
+          ? <>
+            <h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
+            <p className="form-message" role="status">تعذّر تحميل سجل طلبات الإلغاء لهذه الصفحة، لذلك لن يُعرض إرسال طلب
+              إلغاء جديد حتى نتحقق من الحالة الحالية. تفاصيل طلبك أعلاه لم تتغيّر؛ أعد المحاولة من قسم «سجل طلبات
+              الإلغاء» أدناه.</p>
+          </>
+          : !canRequestCancellation
+            ? <>
+                <h2 id="cancellation-action-title">إلغاء الإجازة</h2>
+                <p className="form-message" role="status">{accessUnavailable
+                  ? 'تعذّر التحقق من صلاحية طلب الإلغاء الآن. أعد تحميل الصفحة للمحاولة من جديد.'
+                  : 'حسابك يسمح بعرض الإجازة دون طلب إلغائها. راجع إدارة الموارد البشرية إذا أردت إلغاءها.'}</p>
+                {accessUnavailable && <PendingLink className="secondary-button"
+                  href={`/tenant/${tenantId}/me/leave/${requestId}`}>إعادة المحاولة</PendingLink>}
+              </>
+            : <>
+              <div className="record-title-row"><h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
+                <span className="entity-status is-active">معتمد — قابل للإلغاء</span></div>
+              <p className="field-hint">اكتب سبب الإلغاء ليُراجعَه فريق الموارد البشرية. يظل الطلب معتمدًا حتى القرار.</p>
+              {latest?.to_state === 'rejected' && <p className="form-message" role="status">رُفض طلب إلغاء سابق لهذا
+                الطلب. يمكنك إرسال طلب إلغاء جديد بسبب واضح.</p>}
+              <details className="task-disclosure">
+                <summary className="secondary-button">كتابة سبب الإلغاء وإرسال الطلب</summary>
+                <RequestCancellationForm tenantId={tenantId} requestId={requestId}
+                  expectedVersion={request.version} idempotencyKey={crypto.randomUUID()} />
+              </details>
+            </>}
+    </section>}
 
     {request.state === 'submitted' && <section className="work-card task-page" aria-labelledby="withdraw-title">
       <h2 id="withdraw-title">سحب الطلب</h2>
@@ -90,7 +154,22 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
       <WithdrawRequestForm tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
         idempotencyKey={crypto.randomUUID()} />
     </section>}
+
+    <CancellationHistorySection tenantId={tenantId} requestId={requestId} view={history}
+      requestedOffset={historyOffset.invalid ? 0 : historyOffset.value}
+      offsetInvalid={historyOffset.invalid} currentUserId={user.id} />
   </PageFrame>;
+}
+
+function requestStateNote(state: string, canRequestCancellation: boolean): string {
+  if (state === 'approved') return canRequestCancellation
+    ? 'تم اعتماد الإجازة. يمكنك متابعة طلب إلغائها من القسم التالي.'
+    : 'تم اعتماد الإجازة.';
+  if (state === 'cancelled') return 'أُلغيت الإجازة وأُعيد أي رصيد خُصم لها. يمكنك مراجعة قرار الإلغاء أدناه.';
+  if (state === 'rejected') return 'رفضت الموارد البشرية هذا الطلب، ولم يُخصم له رصيد.';
+  if (state === 'withdrawn') return 'سحبت هذا الطلب بنفسك، ولم يُخصم به رصيد.';
+  if (state === 'draft') return 'هذا الطلب مسودة ولم يُرسل بعد.';
+  return '';
 }
 
 function readRequest(data: Record<string, unknown>): RequestDetail | null {
