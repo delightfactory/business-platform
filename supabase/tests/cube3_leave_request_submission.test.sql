@@ -282,7 +282,7 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
 SELECT throws_ok($$SELECT public.leave_withdraw_own_request('cfa20000-0000-4000-8000-000000000001',
   current_setting('test.own_request')::uuid,2,'wrong version','withdraw-stale')$$,
-  '40001','leave_request_version_conflict','withdrawal checks expected version');
+  'PT409','leave_request_version_conflict','withdrawal checks expected version');
 SELECT is((public.leave_withdraw_own_request('cfa20000-0000-4000-8000-000000000001',
   current_setting('test.own_request')::uuid,1,'employee withdrew','withdraw-001')->>'state'),
   'withdrawn','employee can withdraw a submitted request');
