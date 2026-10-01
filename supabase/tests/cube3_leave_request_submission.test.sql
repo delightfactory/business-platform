@@ -327,5 +327,23 @@ SELECT is((public.leave_request_detail('cfa20000-0000-4000-8000-000000000001',cu
   'withdrawn','scoped detail remains available after disable');
 RESET ROLE;
 
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(public.leave_my_requests(
+ 'cfa20000-0000-4000-8000-000000000001')->'items') item WHERE item ? 'days'),
+ 'own history carries summaries without hydrating daily policy evidence');
+SELECT ok(jsonb_array_length(public.leave_request_detail('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.two_year_request')::uuid)->'days')=732,
+ 'scoped detail retains the complete 732-date breakdown independently of list summaries');
+SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(public.leave_my_requests(
+ 'cfa20000-0000-4000-8000-000000000001')->'items') item WHERE octet_length(item::text)>4096),
+ 'history item payload stays bounded even for long leave requests');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000003',true);
+SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(public.leave_hr_queue(
+ 'cfa20000-0000-4000-8000-000000000001')->'items') item WHERE item ? 'days'),
+ 'HR review queue carries summaries without daily evidence hydration');
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;
