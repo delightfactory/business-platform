@@ -140,6 +140,7 @@ export async function bulkApproveReadyAttendanceAction(previousState: BulkApprov
 function field(data: FormData, name: string) { return String(data.get(name) ?? '').trim(); }
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function mapError(message: string) {
+  if (message.includes('leave_conflict_review_required')) return 'leave-conflict';
   if (message.includes('forbidden')) return 'forbidden';
   if (message.includes('attendance_punch_input_invalid')) return 'input';
   if (message.includes('ambiguous_or_invalid')) return 'time';

@@ -38,7 +38,8 @@ export function AttendanceBulkApprovalForm({ tenantId, date, rows }: { tenantId:
 }
 
 function reasonLabel(code?: string) {
-  return code === 'record_unavailable' ? 'السجل غير متاح في هذا اليوم'
+  return code === 'leave_conflict_review_required' ? 'توجد إجازة معتمدة؛ راجع تعارض اليوم قبل اعتماد الحضور'
+    : code === 'record_unavailable' ? 'السجل غير متاح في هذا اليوم'
     : code === 'access_changed' ? 'تغيّرت الصلاحية؛ لم يُعتمد السجل'
       : 'تغيّرت الحالة أو لم تعد مستوفية؛ راجع السجل';
 }
