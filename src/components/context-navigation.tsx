@@ -105,6 +105,9 @@ export async function TenantNavigation({
       if (leave?.self_access === true) {
         businessLinks.push({ href: `/tenant/${tenantId}/me/leave`, label: 'إجازاتي' });
       }
+      if (leave?.can_view === true) {
+        businessLinks.push({ href: `/tenant/${tenantId}/leave/settings`, label: 'إعدادات الإجازات' });
+      }
     }
   }
   return <ContextNavigation homeHref={`/tenant/${tenantId}`} homeLabel="مساحة الشركة" contextLabel={tenantName}
