@@ -1,0 +1,99 @@
+.panelHeading {
+  padding: 1.1rem 1.4rem 0.4rem;
+}
+
+.panelHeading h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.panelHeading p {
+  margin: 0.3rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.pagination span {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.paginationNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.formBlock {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.formTitle {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.divider {
+  margin: 1.4rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.dayList {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dayList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+  background: #fbfcfd;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.dayList li span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.dayNotes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+@media (max-width: 640px) {
+  .panelHeading,
+  .pagination {
+    padding-inline: 1rem;
+  }
+
+  .dayList li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}

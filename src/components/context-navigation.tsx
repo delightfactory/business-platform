@@ -106,6 +106,7 @@ export async function TenantNavigation({
         businessLinks.push({ href: `/tenant/${tenantId}/me/leave`, label: 'إجازاتي' });
       }
       if (leave?.can_view === true) {
+        businessLinks.push({ href: `/tenant/${tenantId}/leave`, label: 'مراجعة الإجازات' });
         businessLinks.push({ href: `/tenant/${tenantId}/leave/settings`, label: 'إعدادات الإجازات' });
       }
     }
