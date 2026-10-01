@@ -2,9 +2,17 @@ name: CI
 
 on:
   pull_request:
+    # Mark a frozen draft candidate ready once; pushes/synchronizations do not run CI.
+    types: [ready_for_review]
+    branches: [main]
+
+concurrency:
+  group: final-candidate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   foundation:
@@ -12,6 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Verify final candidate before validation
+        run: node .github/scripts/final-candidate.mjs main
+        env:
+          GH_TOKEN: ${{ github.token }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -20,3 +34,7 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
+      - name: Verify final candidate after validation
+        run: node .github/scripts/final-candidate.mjs main
+        env:
+          GH_TOKEN: ${{ github.token }}
