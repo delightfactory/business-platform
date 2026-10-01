@@ -1,0 +1,64 @@
+'use client';
+
+import { useActionState, useRef, useState } from 'react';
+import { SubmitButton } from '@/components/submit-button';
+import { commitClassificationAction, renewClassificationReview } from './classification-actions';
+import type { ClassificationReview } from './classification';
+
+export function ClassificationReviewForm({ tenantId, instanceId, review: initialReview }: {
+  tenantId: string; instanceId: string; review: ClassificationReview;
+}) {
+  const [review, setReview] = useState(initialReview);
+  const [reason, setReason] = useState('');
+  const [state, action, pending] = useActionState(commitClassificationAction, { message: '', needsReview: false });
+  const [reviewRenewed, setReviewRenewed] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [reviewMessage, setReviewMessage] = useState('');
+  const [intent, setIntent] = useState(() => ({ signature: `${initialReview.plan_hash}:`, key: crypto.randomUUID() }));
+  const keys = useRef(new Map([[intent.signature, intent.key]]));
+  const stale = state.needsReview && !reviewRenewed;
+
+  function changeReason(value: string) {
+    setReason(value);
+    const signature = `${review.plan_hash}:${value.trim()}`;
+    const key = keys.current.get(signature) ?? crypto.randomUUID();
+    keys.current.set(signature, key);
+    setIntent({ signature, key });
+  }
+
+  async function renewReview() {
+    setRefreshing(true);
+    try {
+      const result = await renewClassificationReview(tenantId, instanceId);
+      setReviewMessage(result.message);
+      if (result.review) {
+        const signature = `${result.review.plan_hash}:${reason.trim()}`;
+        const key = keys.current.get(signature) ?? crypto.randomUUID();
+        keys.current.set(signature, key);
+        setIntent({ signature, key });
+        setReview(result.review); setReviewRenewed(true);
+      }
+    } catch { setReviewMessage('تعذر الاتصال. السبب محفوظ؛ أعد محاولة المراجعة.'); }
+    finally { setRefreshing(false); }
+  }
+
+  const result = review.classification;
+  const correction = review.expected_fact_id !== null;
+  return <form action={action} onSubmit={() => setReviewRenewed(false)} className="attendance-form attendance-approve-form">
+    <input type="hidden" name="tenantId" value={tenantId} />
+    <input type="hidden" name="instanceId" value={instanceId} />
+    <input type="hidden" name="review" value={JSON.stringify(review)} />
+    <input type="hidden" name="operationKey" value={intent.key} />
+    <p className="attendance-full-field">{result.kind === 'leave_covered' ? 'اليوم مغطى بإجازة معتمدة، ولا يُحسب غيابًا.'
+      : result.absence_units === 0.5 ? 'نصف يوم إجازة معتمد، والنصف المتبقي غياب بلا تسجيلات حضور.' : 'يوم غياب بلا تسجيلات حضور فعالة.'}</p>
+    <p className="record-meta attendance-full-field">إجازة معتمدة: {result.leave_units} يوم · غياب: {result.absence_units} يوم</p>
+    {result.diagnostics.includes('observed_work_during_excused') && <p className="form-message attendance-full-field">توجد تسجيلات عمل خلال الإجازة. ستبقى محفوظة: {result.observations.worked_minutes ?? '—'} دقيقة عمل.</p>}
+    <label className="attendance-full-field" htmlFor="classification-reason">{correction ? 'سبب تصحيح نتيجة اليوم' : 'سبب اعتماد نتيجة اليوم'}
+      <textarea id="classification-reason" name="reason" value={reason} onChange={(event) => changeReason(event.target.value)}
+        minLength={3} maxLength={500} required disabled={pending || refreshing} />
+    </label>
+    {(reviewMessage || (state.message && !reviewRenewed)) && <p className="form-message form-error attendance-full-field" role="alert">{reviewMessage || state.message}</p>}
+    {stale ? <button type="button" className="primary-button" disabled={pending || refreshing} onClick={renewReview}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</button>
+      : <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'} />}
+  </form>;
+}
