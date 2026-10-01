@@ -227,8 +227,11 @@ An HR operator can onboard and structure a workforce with sufficient employment 
 - HRT-007 Exception review/correction.
 - HRL-001 Leave types/policies.
 - HRL-002 Leave balances/entries.
-- HRL-003 Bounded leave request/approval.
+- HRL-003 Bounded leave request/approval, including own-Leave view/request/withdrawal for linked Employees and HR recording for Employees without accounts; this does not activate full ESS/MSS.
+- Independent configured Leave Calendar/Leave Year, unique annual grants by Employer + Employee + Leave Type + account period, and reversible ledger.
 - Core attendance/leave reports required to operate/reconcile the workflow.
+
+Cube 3 Leave also follows the [Leave Execution Contract](../07-execution/cube-3-leave-execution-contract.md) and the [accepted self-service amendment](../04-product-specs/cube-3-leave-self-service-amendment-2026-10-01.md).
 
 ### Critical invariants
 
@@ -238,7 +241,12 @@ An HR operator can onboard and structure a workforce with sufficient employment 
 - unresolved attendance remains visible/actionable rather than disappearing into an undefined state;
 - correction preserves provenance/auditability;
 - leave and attendance can operate independently where logically valid;
-- leave requests have defined terminal/actionable states rather than remaining indefinitely submitted;
+- leave requests have defined transitions, an identified owner/queue, and an HR-decided cancellation request after approval rather than remaining indefinitely submitted;
+- own-Leave access is restricted to the active same-Tenant Employee↔User link and cannot expose tenant-wide People or Leave data;
+- pending Leave does not reserve balance, and approval plus balance consumption is atomic and audited;
+- an annual grant cannot repeat for the same Leave account period when a policy version changes; unused balance does not expire automatically;
+- Leave works without Attendance; a Leave effect cannot silently rewrite approved Attendance or count one absence twice;
+- Leave projection is reviewable and unconsumed; no Cube 3 money calculation or Payroll locking;
 - simple approval behavior remains domain-bounded, not a hidden generic workflow engine.
 
 ### Qualification evidence
@@ -249,12 +257,17 @@ An HR operator can onboard and structure a workforce with sufficient employment 
 - missing-punch and correction regression tests;
 - unresolved-exception visibility/ownership tests;
 - leave balance/approval/cancel-reject lifecycle tests as defined by Specs;
+- own-link, missing/inactive-link, cross-Tenant, permission, and disabled-entitlement isolation tests;
+- simultaneous approvals against the same balance and repeated annual-grant attempts across policy versions;
+- Leave operations with Attendance disabled, no pending-balance reservation, and no duplicate absence/Leave downstream quantity;
+- responsive Arabic/RTL own-request and HR forms on mobile, tablet, and desktop; existing HR recording path for Employees without User accounts;
+- leave-day counting and half-day timing checks only against accepted legal evidence; no half-day clock interval may be inferred from `0.5` balance units alone;
 - explicit proof that raw attendance cannot directly finalize money impact;
 - representative mobile/desktop operator workflows.
 
 ### Wave 3 exit
 
-The platform can produce trusted, reviewable attendance/leave/overtime facts from manual/imported data, resolve or visibly own exceptions, and expose approved payroll inputs through the defined boundary.
+The platform can produce trusted, reviewable attendance/leave/overtime facts from manual/imported data, resolve or visibly own exceptions, and expose approved inputs through the unconsumed boundary. The own-Leave journey, atomic/reversible balance effects, entitlement closure rules, and Cube 3 acceptance evidence are complete. Full Cube 3 closure cannot be claimed while an enabled mandatory V1 annual-entitlement or half-day capability lacks its implemented calculation. Working-day counting/holiday exclusion and permitted `0.5` balance use are fixed; proration/rounding, category changes, and half-day timing remain legal/compliance gates. Independent request/review/ledger slices may proceed while dependent cases are held; full ESS/MSS remains deferred.
 
 ---
 

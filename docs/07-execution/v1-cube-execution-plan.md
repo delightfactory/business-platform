@@ -128,8 +128,10 @@ Includes:
 - Leave records.
 - Approval path.
 - Payroll input effects.
+- Bounded own-Leave view, request, and pre-approval withdrawal for a linked Employee; full ESS/MSS remains deferred.
+- Separate Leave Calendar and configured Leave-Year account periods.
 
-Completion: Leave moves from entry/request to approval, rejection or cancellation with reversible balance entries and explicit Attendance/Payroll effects where applicable.
+Completion: HR can record Leave for Employees with or without User accounts; a linked Employee can view only their own profile, Leave, and balance and submit/withdraw their own pending request. Registration/submission and approval are separate audited actions; approved cancellation is requested by the Employee and decided by HR. Leave transitions are bounded and owned, annual grants are unique per Employer + Employee + Leave Type + configured account period independent of policy version, pending requests do not reserve balance, and approval plus consumption is atomic. Historical Leave remains available for authorized closure when `hr.people` or `hr.leave` is disabled, without new records or balance growth. Approved Leave facts are exposed only at the unconsumed Payroll projection boundary; Cube 3 does not calculate money, lock Payroll, or silently alter approved Attendance facts. Full Cube 3 closure requires implemented calculations for any enabled mandatory V1 annual-entitlement and half-day behavior. Working-day counting/holiday exclusion and the permitted `0.5` balance unit are fixed; proration/rounding, category changes, and half-day timing remain gated on legal/compliance verification. Independent request/review/ledger slices may proceed while dependent cases are held. See the [Cube 3 Leave execution contract](cube-3-leave-execution-contract.md).
 
 ## Cube 4 — Payroll Core
 

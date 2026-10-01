@@ -2,7 +2,7 @@
 
 ## Status
 
-**Frozen — final documentation alignment approved 2026-09-29.**
+**Frozen — final documentation alignment approved 2026-09-29; Cube 3 Leave is amended by Accepted DEC-025 and `cube-3-leave-self-service-amendment-2026-10-01.md`.**
 
 This specification governs Wave 3 — Attendance, Exceptions & Leave. It freezes the authoritative Time-domain behavior that turns source events and leave records into reviewable facts without allowing raw attendance to silently become irreversible payroll money.
 
@@ -331,24 +331,30 @@ The system does not overwrite “current balance” without preserving the event
 
 ## 12. Leave workflow
 
-Employee self-service is not required for V1.
+Full Employee Self-Service is not required for V1. Under Accepted DEC-025, V1 includes a bounded own-Leave view, request, and withdrawal surface for a User linked to their own Employee. This is a Leave workflow surface, not the full `hr.ess` capability; broad People self-service and full ESS/MSS remain deferred.
 
 Supported entry modes:
 
-- authorized HR records a leave directly;
-- where a focused employee/manager surface exists, a request follows one bounded approval stage.
+- an authorized HR operator records Leave on behalf of an Employee;
+- a linked Employee submits their own Leave request through the bounded own-Leave surface;
+- both paths keep recording/submission separate from the approval decision and use one bounded approval stage.
 
-Request states are equivalent to:
+The Leave-record transitions are:
 
-`draft -> submitted -> approved | rejected | cancelled`
+`draft -> submitted`; `submitted -> approved | rejected | withdrawn`; `approved -> cancelled | superseded`.
+
+An Employee may withdraw their own pending request. A held `leave.approve` Permission may approve a request even when the approver is its requester; V1 does not impose a separate maker-checker rule. Approval and cancellation decisions preserve actor identity, time, and reason. Every submitted request has an identified authorized owner/queue. After approval, the Employee may request cancellation; an authorized HR approver decides that request through `pending -> accepted | rejected`: acceptance cancels the Leave and appends a balance reversal/restore entry; rejection leaves the approved Leave in effect. A governed correction marks the prior approved record `superseded` and links its replacement.
 
 Rules:
 
 - submitted requests cannot remain ownerless; a role/queue owns the next action;
 - approval checks overlap, Employment state and balance policy;
+- pending Leave does not reserve or consume balance; balance eligibility is rechecked at approval, and the approval decision plus balance-consumption entry commit atomically;
 - cancellation of approved leave creates a reversal/restore entry rather than deleting history;
 - unpaid leave produces an approved Payroll input through the domain boundary;
 - paid leave can affect Attendance interpretation without necessarily reducing pay.
+
+Leave uses an independently configured Leave Calendar and Leave Year with explicit account-period boundaries; they do not derive from the Payroll Calendar or Attendance Work Policy, and no calendar-year, fiscal-year, or hire-anniversary default is imposed. Annual Leave is counted in eligible working days under the configured Leave Calendar; weekly-rest days and official holidays are excluded according to Article 124 of the cited law. Where the Leave Type permits half-day use, it consumes `0.5` balance day; this does not define an intraday time interval or remaining Attendance obligation. Leave remains usable without Attendance entitlement or configuration. Annual grants are unique to Employer Legal Entity + Employee + Leave Type + configured Leave-Year account period; changing a policy version does not create another grant for the same account period. Proration, rounding, category transitions, and half-day timing remain subject to the verification boundary in §13 and the Cube 3 amendment. Unused balance does not expire automatically; complex carry-forward matrices and expiry rules remain deferred.
 
 ## 13. Egypt statutory work-time/leave baseline
 
@@ -372,6 +378,10 @@ These are **effective-dated statutory policy data/constraints**, not scattered h
 Tenant policy may be more favorable where legally allowed. A configuration that appears less favorable than an applicable mandatory floor must be blocked or surfaced as a compliance-blocking validation according to the active verified statutory pack.
 
 The statutory pack must retain source/version/effective-date metadata so future legal amendments do not reinterpret historical approved attendance or leave.
+
+**Cube 3 legal verification boundary:** eligible Leave days use the configured Leave Calendar's working days, excluding weekly-rest days and official holidays, as stated in Article 124 of the cited law. A permitted half-day uses `0.5` balance day. These rules do not define half-day clock timing or remaining Attendance obligation. Statutory proration/rounding, Employee eligibility and category transitions, and half-day timing require further legal/compliance verification before code depends on them. Do not infer these details from examples above. DEC-023's production statutory qualification gate remains in force.
+
+No Attendance interpreter may infer a clock interval or remaining Attendance obligation from `0.5` balance-day units alone. Verify half-day timing and applicable protected categories before code depends on those details. The request, review, and ledger lifecycle may proceed independently of pending calculations.
 
 ## 14. Attendance/Leave operational simplicity contract
 
@@ -407,7 +417,10 @@ Permission families include at least:
 - leave.view;
 - leave.manage;
 - leave.approve;
-- leave_balance.adjust.
+- leave_balance.adjust;
+- people.self.view, leave.self.view, and leave.self.request for the bounded own-Leave surface only. These do not grant tenant-wide People/Leave access and do not include `people.view`.
+
+These permissions are limited to the authenticated User's own currently linked Employee and do not grant tenant-wide People or Leave access. HR permissions remain required for HR operations; role templates compose these keys under the shared authorization model.
 
 Exact key spelling may be normalized during implementation.
 
@@ -429,7 +442,7 @@ There is no hidden dropped-event state.
 
 ### Leave
 
-`record/request -> submitted (if approval used) -> approved/rejected/cancelled -> balance/payroll effects`
+`draft -> submitted -> approved/rejected/withdrawn`; after approval, `cancellation request -> accepted/rejected`; accepted cancellation appends a balance reversal. Governed correction may supersede and link the approved record. Pending requests do not consume balance; approval and consumption are atomic.
 
 ### Entitlement loss
 
@@ -439,6 +452,8 @@ If Attendance/Leave entitlement is removed:
 - new prohibited operations are blocked;
 - in-flight requests/exceptions remain available to authorized closure/export/correction rules defined for the capability;
 - data is never deleted automatically.
+
+For `hr.leave` specifically, authorized users may read historical records and perform bounded closure of existing work. New requests/records, annual grants, and positive balance growth are blocked while the entitlement is disabled. Only reversal/audit entries required to close an existing cancellation or correction may be appended.
 
 ## 17. Acceptance criteria
 

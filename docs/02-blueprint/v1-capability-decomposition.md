@@ -82,8 +82,8 @@ Every V1 capability must also comply with `DEC-016`: a supported workflow cannot
 | ID | Capability | Scope | Entitlement | Depends on | Authoritative owner | V1 boundary |
 |---|---|---|---|---|---|---|
 | HRL-001 | Leave types and bounded leave policy | Mandatory V1 | `hr.leave` | HRP-001 | HR / Leave | Configurable policy without generic scripting. |
-| HRL-002 | Leave balances / entries | Mandatory V1 | `hr.leave` | HRL-001 | HR / Leave | Opening balances and auditable adjustments supported; detailed accrual policy frozen in Leave Specs. |
-| HRL-003 | Leave request/record + simple approval | Mandatory V1 | `hr.leave` | HRL-001, HRL-002 | HR / Leave | Bounded one-stage/role-based review sufficient for V1. No general approval engine. |
+| HRL-002 | Leave balances / entries | Mandatory V1 | `hr.leave` | HRL-001 | HR / Leave | Opening balances and auditable adjustments; at most one annual grant per Employer + Employee + Leave Type + configured Leave-Year account period regardless of policy version. Unused balance does not expire automatically; complex carry-forward matrices remain deferred, and statutory proration/category details require accepted legal verification. |
+| HRL-003 | Leave request/record + simple approval | Mandatory V1 | `hr.leave` | HRL-001, HRL-002; optional HRP-004 link for own-Leave surface | HR / Leave | Bounded one-stage approval, own-Leave view/request/withdrawal for a linked Employee, HR record for Employees without accounts, and HR-decided cancellation requests. Does not include full ESS/MSS or a general approval engine. |
 | HRL-004 | Advanced multi-level approvals | Deferred | `hr.advanced_approvals` | HRL-003 | HR / Leave or later shared approval capability | Added only when concrete multi-step cases justify it. |
 
 ### HR — Employee Finance
@@ -118,7 +118,7 @@ Every V1 capability must also comply with `DEC-016`: a supported workflow cannot
 | HRR-001 | Core operational reports | Mandatory V1 | Included with owning HR capabilities | Relevant domain | Owning HR domains | Attendance/leave/payroll summaries and exports needed to operate/reconcile V1. |
 | HRC-001 | Contract management | Deferred | `hr.contracts` | HRP-001, PLT-011 | HR / Contracts | Contract documents, dates, renewals and expiry alerts remain optional post-V1 capability. |
 | HRD-001 | Employee document management | Deferred | `hr.documents` | HRP-001, PLT-011 | HR / Documents | General employee DMS is not required for payroll/attendance V1. |
-| HRS-001 | Full Employee Self-Service | Deferred | `hr.ess` | HRP-004 + target HR capabilities | HR UX boundary | Mobile attendance may have a focused employee punch surface without building full ESS. |
+| HRS-001 | Full Employee Self-Service | Deferred | `hr.ess` | HRP-004 + target HR capabilities | HR UX boundary | Full ESS remains deferred. HRL-003's bounded own-Leave view/request/withdrawal is a Leave-owned V1 workflow and does not activate `hr.ess`. |
 | HRS-002 | Full Manager Self-Service | Deferred | `hr.mss` | PLT-006 + target HR capabilities | HR UX boundary | Managers may receive the minimal V1 review surfaces needed for attendance/leave without a broad MSS product. |
 | HRA-001 | Advanced approval engine | Deferred | `hr.advanced_approvals` | Concrete domain cases | Not assigned yet | No generic workflow engine in V1. |
 | HRTAL-001 | Recruitment / performance / training | Deferred | Future HR entitlements | HRP-001 | Future HR/Talent domains | Explicitly outside first commercial release. |
@@ -161,6 +161,7 @@ Payroll
 - Payroll must not require digital Contract Management.
 - Payroll must not require Attendance to be commercially enabled.
 - Leave must not require Attendance.
+- New Leave work requires active `hr.people` and `hr.leave`; Leave historical reads and authorized closure follow DEC-025 when either entitlement is disabled.
 - Employee Finance must not require Attendance.
 - Biometric attendance must not require Mobile Attendance.
 - Mobile Attendance must not require Biometric attendance.

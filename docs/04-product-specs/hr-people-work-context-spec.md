@@ -2,7 +2,7 @@
 
 ## Status
 
-**Frozen — final documentation alignment approved 2026-09-29.**
+**Frozen — final documentation alignment approved 2026-09-29; §7's bounded own-Employee link use is clarified by Accepted DEC-025.**
 
 This specification governs Wave 2 — People & Work Context. It converts the accepted HR People scope into implementation-ready behavior without making Employee identity a Platform identity and without requiring Contracts/Documents/ESS.
 
@@ -207,6 +207,8 @@ Rules:
 - unlinking does not delete either Employee or User;
 - Employee status does not itself grant/revoke Tenant Membership or permissions;
 - mobile attendance may require the link, while ordinary payroll/attendance records do not.
+- the bounded Cube 3 own-Leave surface may use the link to show only that user's own Employee profile, Leave, and balance; it requires `people.self.view` and Leave-specific self permissions, plus current same-Tenant membership/entitlement checks;
+- the link grants no `people.view`, People-management authority, access to another Employee, Tenant Membership, or permission by itself. A missing or inactive link denies the own-Employee surface.
 
 ## 8. Workforce import
 
@@ -252,6 +254,7 @@ Complexity shielding must not hide material financial/security consequences. The
 Domain permission families must include at least:
 
 - people.view;
+- people.self.view (only the bounded, own linked-Employee view defined by the Cube 3 Leave amendment);
 - people.manage;
 - employment.manage;
 - compensation.view;

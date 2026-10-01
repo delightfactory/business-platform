@@ -11,6 +11,7 @@ This directory contains implementation-governing Product Specs.
 | Authorization & Access Control V1 | Cube 0 / Wave 1 | Frozen | Supplemental contract; ADR-004/008 and Platform Foundation remain authoritative |
 | HR People & Work Context | Cube 1 / Wave 2 | Frozen | People work may implement |
 | Attendance & Leave | Cubes 2–3 / Wave 3 | Frozen | Attendance and Leave may implement |
+| [Cube 3 Leave Self-Service Amendment](cube-3-leave-self-service-amendment-2026-10-01.md) | Cube 3 / Wave 3 | Accepted amendment | Governs the bounded own-Leave path; DEC-014 full ESS/MSS deferrals remain unchanged |
 | Employee Finance & Payroll | Cube 4 / Wave 4 | Frozen | Payroll may implement; statutory production qualification remains required |
 | Attendance Channel | Cube 5 / Wave 5 | Frozen | Channel Core/mobile may implement; vendor-specific biometric adapter still requires bounded adapter sub-spec |
 
