@@ -30,11 +30,12 @@ import {
 import styles from '../../review.module.css';
 import { DayBreakdown } from './DayBreakdown';
 import { ReviewIntentForm } from './ReviewIntentForm';
+import { ReplacementPanel } from './ReplacementPanel';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string; requestId: string }>;
-type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string }>;
+type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string; replacement?: string; rpage?: string }>;
 
 export default async function LeaveRequestReviewPage({ params, searchParams }: {
   params: Params;
@@ -153,7 +154,9 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
       <dl className="snapshot-grid">
         <div><dt>أيام الإجازة المحتسبة</dt><dd>{formatDays(request.totalUnits)} يوم</dd></div>
         <div><dt>أثر الأجر</dt><dd>{unpaidDays.length > 0 ? `${unpaidDays.length} يوم بدون أجر` : 'لا توجد أيام بدون أجر في هذا الطلب'}</dd></div>
-        <div><dt>استهلاك الرصيد عند الاعتماد</dt><dd>{request.consumptionCount > 0
+        <div><dt>استهلاك الرصيد عند الاعتماد</dt><dd>{request.state === 'cancelled' || request.state === 'superseded'
+          ? 'لا يوجد استهلاك ساري؛ عُكس الاستهلاك السابق'
+          : request.consumptionCount > 0
           ? `${formatDays(request.consumedUnits)} يوم`
           : request.state === 'submitted' ? `${formatDays(request.days.filter((day) => day.eligible && day.balanceMode === 'tracked').reduce((sum, day) => sum + day.units, 0))} يوم عند الاعتماد؛ لم يُخصم بعد` : 'لم يُستهلك رصيد لهذا الطلب'}</dd></div>
         {request.state === 'cancelled' && <div><dt>أثر الإلغاء</dt><dd>أُعيد أي رصيد استُهلك عند الاعتماد</dd></div>}
@@ -271,6 +274,10 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
               : 'إلغاء الاعتماد متاح فقط للطلبات المعتمدة.'}
           </p>}
     </section>}
+
+    <ReplacementPanel tenantId={tenantId} request={request} source={detailResult.data}
+      canReplace={access.canApprove && access.newWorkEnabled && !historyFailed && pending === null}
+      replacementId={query.replacement} page={query.rpage} />
 
     <section className="workspace-records-panel" aria-labelledby="leave-history-title">
       <div className={styles.panelHeading}>

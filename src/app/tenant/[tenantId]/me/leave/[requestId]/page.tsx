@@ -94,6 +94,22 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
         <div><dt>طريقة التسجيل</dt><dd>{request.request_source === 'hr' ? 'إدارة الموارد البشرية' : 'خدمة الموظف'}</dd></div>
       </dl>
 
+      {isObject(data) && Array.isArray(data.correction_links) && data.correction_links.length > 0 && <>
+        <h2>سجل استبدال الإجازة</h2>
+        <ul className="record-list">{data.correction_links.map((link, index) => {
+          if (!isObject(link) || !isUuid(link.original_request_id) || !isUuid(link.replacement_request_id)
+            || typeof link.reason !== 'string' || typeof link.created_at !== 'string') return null;
+          const original = link.original_request_id === request.id;
+          return <li className="record-card" key={index}>
+            <p>{link.reason}</p>
+            <p className="record-meta">وقت التصحيح: <bdi>{formatInstant(link.created_at)}</bdi></p>
+            <PendingLink href={`/tenant/${tenantId}/me/leave/${original ? link.replacement_request_id : link.original_request_id}`}>
+              {original ? 'عرض الطلب البديل' : 'عرض الطلب الأصلي'}
+            </PendingLink>
+          </li>;
+        })}</ul>
+      </>}
+
       {stateNote && <p className="form-message" role="status">{stateNote}</p>}
 
       {request.days.length > 0 && <details className="task-disclosure">

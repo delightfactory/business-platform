@@ -13,6 +13,7 @@ export type ReviewIntent =
   | 'refresh'
   | 'approve'
   | 'reject'
+  | 'replacement'
   | 'cancellation-request'
   | 'cancellation-accept'
   | 'cancellation-reject';
@@ -553,6 +554,7 @@ export function reviewErrorText(code: ReviewErrorCode): string {
 
 const FEEDBACK_TEXT: Record<string, string> = {
   approved: 'تم اعتماد الطلب وسُجّل استهلاك أي رصيد مطلوب.',
+  replaced: 'تم استبدال الإجازة واعتماد الطلب البديل، مع حفظ الأصل وسجل التصحيح.',
   rejected: 'تم رفض الطلب بسبب المذكور وسُجّل القرار في سجل العملية.',
   refreshed: 'تم تحديث معاينة الطلب. راجع أيامها الجديدة ثم اتخذ قرارك.',
   'cancellation-requested': 'تم إرسال طلب إلغاء الاعتماد، وسيبقى الطلب معتمدًا حتى يُقبل طلب الإلغاء.',
@@ -565,6 +567,7 @@ export function feedbackText(state: string | undefined, requestState: string, ca
   if (typeof state !== 'string') return null;
   if (state === 'refreshed') return null;
   if (state === 'approved' && requestState !== 'approved') return null;
+  if (state === 'replaced' && requestState !== 'superseded') return null;
   if (state === 'rejected' && requestState !== 'rejected') return null;
   if (state === 'cancellation-requested' && (requestState !== 'approved' || cancellationState !== 'pending')) return null;
   if (state.startsWith('cancellation-accepted') && (requestState !== 'cancelled' || cancellationState !== 'accepted')) return null;

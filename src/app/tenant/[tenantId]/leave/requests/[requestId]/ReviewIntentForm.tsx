@@ -10,6 +10,7 @@ import {
   rejectCancellationAction,
   rejectRequestAction,
   requestCancellationAction,
+  replaceApprovedRequestAction,
 } from '../../actions';
 import { PendingLink } from '../../pending-link';
 import {
@@ -26,6 +27,7 @@ const ACTION_BY_INTENT: Record<ReviewIntent, ReviewAction> = {
   refresh: refreshRequestAction,
   approve: approveRequestAction,
   reject: rejectRequestAction,
+  replacement: replaceApprovedRequestAction,
   'cancellation-request': requestCancellationAction,
   'cancellation-accept': acceptCancellationAction,
   'cancellation-reject': rejectCancellationAction,
@@ -35,6 +37,7 @@ const REASON_LABEL: Record<ReviewIntent, string> = {
   refresh: 'سبب تحديث المعاينة',
   approve: 'سبب الاعتماد',
   reject: 'سبب الرفض',
+  replacement: 'سبب استبدال الإجازة',
   'cancellation-request': 'سبب طلب إلغاء الاعتماد',
   'cancellation-accept': 'سبب قبول طلب الإلغاء',
   'cancellation-reject': 'سبب رفض طلب الإلغاء',
@@ -44,7 +47,8 @@ const KEY_NOTE = 'إذا تعذر تأكيد النتيجة، أعد المحا�
 
 export function ReviewIntentForm(props: Parameters<typeof IntentForm>[0]) {
   const identity = [props.intent, props.requestId, props.expectedVersion,
-    props.reviewedPreviewVersion, props.cancellationId, props.cancellationVersion].join(':');
+    props.reviewedPreviewVersion, props.cancellationId, props.cancellationVersion,
+    props.replacementId, props.replacementVersion, props.replacementPreviewVersion].join(':');
   return <IntentForm key={identity} {...props} />;
 }
 
@@ -58,6 +62,9 @@ function IntentForm({
   reviewedPreviewVersion,
   cancellationId,
   cancellationVersion,
+  replacementId,
+  replacementVersion,
+  replacementPreviewVersion,
   submitLabel,
   pendingLabel,
   buttonClass = 'primary-button',
@@ -73,6 +80,9 @@ function IntentForm({
   reviewedPreviewVersion?: number;
   cancellationId?: string;
   cancellationVersion?: number;
+  replacementId?: string;
+  replacementVersion?: number;
+  replacementPreviewVersion?: number;
   submitLabel: string;
   pendingLabel: string;
   buttonClass?: string;
@@ -95,6 +105,7 @@ function IntentForm({
       reviewedPreviewVersion ?? '',
       cancellationId ?? '',
       cancellationVersion ?? '',
+      replacementId ?? '', replacementVersion ?? '', replacementPreviewVersion ?? '',
       value.trim(),
     ].join('|');
   }
@@ -124,6 +135,11 @@ function IntentForm({
     {cancellationVersion !== undefined
       && <input type="hidden" name="cancellationVersion" value={cancellationVersion} />}
     <input type="hidden" name="operationKey" value={operationKey} />
+    {replacementId && <>
+      <input type="hidden" name="replacementId" value={replacementId} />
+      <input type="hidden" name="replacementVersion" value={replacementVersion} />
+      <input type="hidden" name="replacementPreviewVersion" value={replacementPreviewVersion} />
+    </>}
 
     {decision && <><label htmlFor="leave-request-decision">قرار الطلب</label>
       <select id="leave-request-decision" name="decision" value={intent} disabled={pending} onChange={(event) => {

@@ -31,6 +31,36 @@ type Gate =
 
 type Need = 'approve' | 'manage';
 
+export async function replaceApprovedRequestAction(previous: ReviewActionState, formData: FormData): Promise<ReviewActionState> {
+  const tenantId = field(formData, 'tenantId');
+  const requestId = field(formData, 'requestId');
+  const replacementId = field(formData, 'replacementId');
+  const operationKey = field(formData, 'operationKey');
+  const expectedVersion = parseVersion(field(formData, 'expectedVersion'));
+  const reviewedPreviewVersion = parseVersion(field(formData, 'reviewedPreviewVersion'));
+  const replacementVersion = parseVersion(field(formData, 'replacementVersion'));
+  const replacementPreviewVersion = parseVersion(field(formData, 'replacementPreviewVersion'));
+  const reason = reasonOf(formData);
+  if (!isUuid(tenantId) || !isUuid(requestId) || !isUuid(replacementId) || requestId === replacementId
+    || !isUuid(operationKey) || expectedVersion === null || reviewedPreviewVersion === null
+    || replacementVersion === null || replacementPreviewVersion === null) return failed('input', previous.attempt);
+  if (reason === null) return failed('reason', previous.attempt);
+  const gate = await openGate(tenantId, 'approve');
+  if (!gate.ok) return failed(gate.code, previous.attempt);
+  if (!gate.access.newWorkEnabled) return failed('new-work-disabled', previous.attempt);
+  const { data, error } = await gate.supabase.rpc('leave_correct_approved_request', {
+    p_tenant: tenantId, p_original_request: requestId,
+    p_original_expected_version: expectedVersion, p_original_preview_version: reviewedPreviewVersion,
+    p_replacement_request: replacementId, p_replacement_expected_version: replacementVersion,
+    p_replacement_preview_version: replacementPreviewVersion, p_reason: reason, p_idempotency_key: operationKey,
+  });
+  if (error) return failed(mapReviewError(error.message, error.code), previous.attempt);
+  if (!isObject(data)) return failed('unknown', previous.attempt);
+  if (data.state === 'refresh_required') return failed('refresh-required', previous.attempt);
+  if (data.state !== 'corrected') return failed('unknown', previous.attempt);
+  redirect(detailStateHref(tenantId, requestId, 'replaced'));
+}
+
 async function openGate(tenantId: string, need: Need): Promise<Gate> {
   if (!isUuid(tenantId)) return { ok: false, code: 'input' };
   const supabase = await createSupabaseServerClient();
