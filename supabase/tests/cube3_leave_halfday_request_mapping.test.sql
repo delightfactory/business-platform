@@ -49,12 +49,24 @@ SELECT has_table('leave','requests','request header table exists');
 SELECT has_table('leave','request_previews','versioned immutable date-preview parent exists');
 SELECT has_table('leave','request_days','immutable date preview lines exist');
 SELECT has_table('leave','request_events','append-only operation events exist');
+SELECT has_column('leave','requests','half_day_part','request header records immutable submitted part');
+SELECT has_column('leave','request_days','half_day_part','preview day stores effective reviewed part');
+SELECT has_column('leave','request_days','halfday_mapping_state','preview day stores mapping state');
+SELECT has_column('leave','request_days','halfday_mapping_snapshot','preview day stores complete calculator evidence');
+SELECT has_column('leave','request_days','halfday_policy_template_id','preview day stores Time policy identity');
+SELECT has_column('leave','request_days','halfday_policy_version','preview day stores Time policy version');
+SELECT has_column('leave','request_days','halfday_algorithm_version','preview day stores calculator version');
 SELECT ok(NOT has_table_privilege('authenticated','leave.requests','SELECT'),'request tables are not directly readable');
 SELECT ok(NOT has_table_privilege('authenticated','leave.request_days','SELECT'),'preview lines are not directly readable');
 SELECT ok(has_function_privilege('authenticated','public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text)','EXECUTE'),'own submit RPC is exposed to authenticated users');
 SELECT ok(NOT has_function_privilege('anon','public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text)','EXECUTE'),'anonymous users cannot submit');
 SELECT ok(NOT has_function_privilege('service_role','public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text)','EXECUTE'),'service role cannot bypass the submit boundary');
 SELECT ok(to_regprocedure('public.leave_my_balances(uuid,integer,integer)') IS NOT NULL,'existing balance signature remains intact');
+SELECT ok(has_function_privilege('authenticated','public.leave_my_halfday_mapping_options(uuid,date)','EXECUTE'),'own mapping options are granted');
+SELECT ok(has_function_privilege('authenticated','public.leave_hr_halfday_mapping_options(uuid,uuid,date)','EXECUTE'),'HR mapping options are granted');
+SELECT ok(has_function_privilege('authenticated','public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text)','EXECUTE'),'own part refresh is granted');
+SELECT ok(has_function_privilege('authenticated','public.leave_hr_refresh_halfday_preview(uuid,uuid,integer,text,text,text)','EXECUTE'),'HR part refresh is granted');
+SELECT ok(NOT has_function_privilege('service_role','public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text)','EXECUTE'),'service role cannot bypass own identity checks');
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000002',true);
@@ -94,7 +106,7 @@ SELECT throws_ok($$SELECT public.leave_my_request_options('cfa20000-0000-4000-80
 SELECT throws_ok($$SELECT public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001',
   current_setting('test.type')::uuid,(current_setting('test.today')::date)+2,(current_setting('test.today')::date)+8,
   false,'first','invalid part test','bad-part-key')$$,
-  '22023','leave_half_day_part_invalid','a whole-day request cannot carry a half-day clock part');
+  '22023','leave_half_day_part_invalid','part is rejected on a full-day request');
 SELECT set_config('test.own_request',(public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001',
   current_setting('test.type')::uuid,(current_setting('test.today')::date)+2,(current_setting('test.today')::date)+8,
   false,NULL,'personal leave request','own-submit-001')->>'id'),true);
@@ -106,6 +118,106 @@ SELECT is((public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001
   current_setting('test.type')::uuid,(current_setting('test.today')::date)+2,(current_setting('test.today')::date)+8,
   false,NULL,'personal leave request','own-submit-001')->>'id'),current_setting('test.own_request'),
   'same actor and canonical payload replays the original request');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.halfday_submit',public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001',
+  current_setting('test.type')::uuid,(current_setting('test.today')::date)+3,(current_setting('test.today')::date)+3,
+  true,'first','one half day with no Attendance entitlement','halfday-submit-001')::text,true);
+SELECT is(current_setting('test.halfday_submit')::jsonb->>'half_day_part','first','leave-only submission preserves the employee original part without inferring a clock');
+SELECT is((current_setting('test.halfday_submit')::jsonb->'days'->0->>'units')::numeric,0.5::numeric,'leave-only half-day remains one-half leave unit');
+SELECT is(current_setting('test.halfday_submit')::jsonb->'days'->0->>'halfday_mapping_state','leave_only','Attendance-off submission creates no inferred clock mapping');
+SELECT is((SELECT item->>'half_day_part' FROM jsonb_array_elements(public.leave_my_requests('cfa20000-0000-4000-8000-000000000001')->'items') AS q(item)
+ WHERE item->>'id'=current_setting('test.halfday_submit')::jsonb->>'id'),'first','bounded own history summary exposes the original selected part');
+SELECT is(public.leave_my_halfday_mapping_options('cfa20000-0000-4000-8000-000000000001',(current_setting('test.today')::date)+3)->>'state','leave_only','own mapping options disclose Leave-only mode without People permission');
+SELECT set_config('test.halfday_refreshed',public.leave_my_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,1,'second','confirm second portion','halfday-refresh-001')::text,true);
+SELECT is(current_setting('test.halfday_refreshed')::jsonb->>'state','refreshed','explicit own refresh produces a new immutable preview');
+SELECT is(current_setting('test.halfday_refreshed')::jsonb->'request'->>'half_day_part','first','refresh does not mutate the submitted header intent');
+SELECT is(current_setting('test.halfday_refreshed')::jsonb->'request'->'days'->0->>'half_day_part','second','refined part is stored on the new preview day');
+SELECT is(current_setting('test.halfday_refreshed')::jsonb->'request'->'days'->0->>'halfday_mapping_state','leave_only','refresh still creates no clock when Attendance is disabled');
+SELECT is(public.leave_my_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,1,'second','confirm second portion','halfday-refresh-001')::jsonb->>'state','refreshed','same key and same part replays the identical refresh');
+SELECT throws_ok($$SELECT public.leave_my_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,1,'first','change reviewed part','halfday-refresh-001')$$,
+  '23505','leave_idempotency_conflict','same refresh key cannot replay with a changed reviewed part');
+RESET ROLE;
+SELECT is((SELECT half_day_part FROM leave.request_days WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+  AND request_id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid AND preview_version=1),'first','original preview part remains immutable');
+SELECT is((SELECT halfday_mapping_state FROM leave.request_days WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+  AND request_id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid AND preview_version=1),'leave_only','old preview evidence is not rewritten');
+INSERT INTO platform_core.tenant_capability_entitlements(tenant_id,capability_key,is_granted,valid_from,actor_user_id,reason)
+VALUES ('cfa20000-0000-4000-8000-000000000001','hr.attendance',true,now()-interval '1 minute','cfa10000-0000-4000-8000-000000000002','halfday mapping integration test');
+INSERT INTO platform_core.tenant_sites(tenant_id,id,legal_entity_id,display_name,is_default,is_active)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa80000-0000-4000-8000-000000000001',
+ 'cfa50000-0000-4000-8000-000000000001','Halfday test site',true,true);
+INSERT INTO time.work_policy_templates(tenant_id,id,code,is_active,head_version)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000001','HALFDAY-FIXED',true,1),
+       ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000002','HALFDAY-FLEX',true,1),
+       ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000003','HALFDAY-LEGACY',true,1);
+INSERT INTO time.work_policy_versions(tenant_id,template_id,version,name,schedule_kind,timezone_name,work_days,
+ shift_start,shift_end,ends_next_day,break_minutes,required_minutes,earliest_punch,latest_punch,
+ attribution_before_minutes,attribution_after_minutes,created_by,overtime_enabled,overtime_minimum_minutes,
+ overtime_rounding_minutes,auto_approve_clean,fixed_break_start,fixed_break_end,flexible_halfday_break_minutes)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000001',1,'Fixed halfday mapping','fixed','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],
+ '09:00','17:00',false,60,NULL,NULL,NULL,120,360,'cfa10000-0000-4000-8000-000000000002',false,15,15,false,'13:00','14:00',NULL),
+ ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000002',1,'Flexible halfday mapping','flexible','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],
+ NULL,NULL,false,0,481,NULL,NULL,120,360,'cfa10000-0000-4000-8000-000000000002',false,15,15,false,NULL,NULL,30),
+ ('cfa20000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000003',1,'Legacy fixed break','fixed','Africa/Cairo',ARRAY[1,2,3,4,5,6,7]::smallint[],
+ '09:00','17:00',false,60,NULL,NULL,NULL,120,360,'cfa10000-0000-4000-8000-000000000002',false,15,15,false,NULL,NULL,NULL);
+INSERT INTO people.work_assignments(tenant_id,employment_id,site_id,work_policy_template_id,work_policy_version,valid_from,valid_until)
+VALUES ('cfa20000-0000-4000-8000-000000000001','cfa60000-0000-4000-8000-000000000001','cfa80000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000001',1,
+ (current_setting('test.today')::date)+3,(current_setting('test.today')::date)+4),
+ ('cfa20000-0000-4000-8000-000000000001','cfa60000-0000-4000-8000-000000000002','cfa80000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000002',1,
+ (current_setting('test.today')::date)+12,(current_setting('test.today')::date)+13),
+ ('cfa20000-0000-4000-8000-000000000001','cfa60000-0000-4000-8000-000000000002','cfa80000-0000-4000-8000-000000000001','cfa70000-0000-4000-8000-000000000003',1,
+ (current_setting('test.today')::date)+13,(current_setting('test.today')::date)+14);
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000003',true);
+SELECT is(public.leave_approve_request('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,2,2,'check mapping after Attendance enablement','halfday-attendance-on-approval')->>'state',
+  'refresh_required','Attendance enablement changes semantic preview and blocks stale approval');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT is(public.leave_my_halfday_mapping_options('cfa20000-0000-4000-8000-000000000001',(current_setting('test.today')::date)+3)->>'state',
+ 'mapped_options','fixed policy returns explicit first and second choices from its dated assignment');
+SELECT set_config('test.halfday_mapped',public.leave_my_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,2,'second','map fixed second portion','halfday-fixed-map-001')::text,true);
+SELECT is(current_setting('test.halfday_mapped')::jsonb->'request'->'days'->0->>'halfday_mapping_state','mapped',
+ 'Attendance-on fixed refresh saves resolved mapping evidence');
+SELECT is((current_setting('test.halfday_mapped')::jsonb->'request'->'days'->0->'halfday_mapping_snapshot'->'mapping'->>'split_local')::timestamp,
+ ((current_setting('test.today')::date)+3)::timestamp+interval '12 hours 30 minutes','fixed Leave preview uses the net-work midpoint around the configured break');
+SELECT is(current_setting('test.halfday_mapped')::jsonb->'request'->'days'->0->>'half_day_part','second',
+ 'effective preview records the reviewed second part');
+SELECT is(public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.halfday_submit')::jsonb->>'id')::uuid)->'days'->0->>'halfday_mapping_state',
+  'mapped','request detail selects the new current preview after explicit refresh');
+RESET ROLE;
+SELECT is((SELECT halfday_mapping_state FROM leave.request_days WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+ AND request_id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid AND preview_version=1),'leave_only',
+ 'original submission preview remains unchanged after Attendance mapping');
+SELECT is((SELECT half_day_part FROM leave.request_days WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+ AND request_id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid AND preview_version=2),'second',
+ 'prior leave-only refined part remains immutable after a later mapping refresh');
+SELECT is((SELECT halfday_mapping_state FROM leave.request_days WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+ AND request_id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid AND preview_version=2),'leave_only',
+ 'prior leave-only mapping evidence is not rewritten by the mapped refresh');
+SELECT is((SELECT half_day_part FROM leave.requests WHERE tenant_id='cfa20000-0000-4000-8000-000000000001'
+ AND id=(current_setting('test.halfday_submit')::jsonb->>'id')::uuid),'first',
+ 'original submitted part remains immutable after several preview versions');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.halfday_approval_target',public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001',
+ current_setting('test.working_type')::uuid,(current_setting('test.today')::date)+3,(current_setting('test.today')::date)+3,
+ true,'first','mapped half day approval test','halfday-approved-submit-001')::text,true);
+SELECT is(current_setting('test.halfday_approval_target')::jsonb->'days'->0->>'halfday_mapping_state','mapped',
+ 'Attendance-on own submission snapshots fixed mapping before review');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000003',true);
+SELECT is(public.leave_approve_request('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.halfday_approval_target')::jsonb->>'id')::uuid,1,1,'approve reviewed mapped half day','halfday-approved-001')->>'state',
+ 'approved','approval accepts current mapped half-day evidence when no Time fact conflicts');
 RESET ROLE;
 UPDATE people.employee_user_links SET employee_id='cfa40000-0000-4000-8000-000000000002'
 WHERE tenant_id='cfa20000-0000-4000-8000-000000000001' AND user_id='cfa10000-0000-4000-8000-000000000001'
@@ -146,8 +258,10 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
 SELECT is((public.leave_request_detail('cfa20000-0000-4000-8000-000000000001',current_setting('test.own_request')::uuid)->>'state'),
   'submitted','submission never fakes approval');
-SELECT is((public.leave_my_requests('cfa20000-0000-4000-8000-000000000001')->'items'->0->>'id'),
-  current_setting('test.own_request'),'own request list uses current link and leave.self.view');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(
+  public.leave_my_requests('cfa20000-0000-4000-8000-000000000001')->'items') item
+  WHERE item->>'id'=current_setting('test.own_request')),
+  'own request list includes the current employee request without assuming UUID order on tied timestamps');
 SELECT set_config('test.year_request',(public.leave_submit_own_request('cfa20000-0000-4000-8000-000000000001',
   current_setting('test.type')::uuid,(current_setting('test.today')::date)+12,(current_setting('test.today')::date)+377,
   false,NULL,'one calendar year request','one-year-range')->>'id'),true);
@@ -228,6 +342,44 @@ SELECT set_config('test.hr_request',(public.leave_record_hr_request('cfa20000-00
   false,NULL,'HR records for accountless employee','hr-submit-001')->>'id'),true);
 SELECT is((public.leave_request_detail('cfa20000-0000-4000-8000-000000000001',current_setting('test.hr_request')::uuid)->>'request_source'),
   'hr','HR record and submission happen as one audited action');
+SELECT set_config('test.hr_halfday',public.leave_record_hr_request('cfa20000-0000-4000-8000-000000000001',
+  'cfa40000-0000-4000-8000-000000000002','cfa60000-0000-4000-8000-000000000002',current_setting('test.type')::uuid,
+  (current_setting('test.today')::date)+12,(current_setting('test.today')::date)+12,true,NULL,
+  'HR records an accountless employee half day','hr-halfday-submit-001')::text,true);
+SELECT ok(current_setting('test.hr_halfday')::jsonb->>'half_day_part' IS NULL,'flexible schedule has no original AM/PM part');
+SELECT is(current_setting('test.hr_halfday')::jsonb->'days'->0->>'halfday_mapping_state','mapped','HR half-day submission attaches flexible policy evidence');
+SELECT is(public.leave_hr_halfday_mapping_options('cfa20000-0000-4000-8000-000000000001','cfa60000-0000-4000-8000-000000000002',(current_setting('test.today')::date)+12)->>'state',
+  'mapped_options','HR options expose flexible mode without AM/PM choices');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000003',true);
+SELECT set_config('test.hr_halfday_refined',public.leave_hr_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+  (current_setting('test.hr_halfday')::jsonb->>'id')::uuid,1,NULL,'review flexible mapping','hr-halfday-refresh-001')::text,true);
+SELECT is(current_setting('test.hr_halfday_refined')::jsonb->>'state','refreshed','HR approver explicitly refines the reviewed per-preview part');
+SELECT ok(current_setting('test.hr_halfday_refined')::jsonb->'request'->>'half_day_part' IS NULL,'flexible HR request has no selected clock part');
+SELECT is(current_setting('test.hr_halfday_refined')::jsonb->'request'->'days'->0->>'halfday_mapping_state','mapped','flexible HR refresh remains mapped with explicit net threshold');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000002',true);
+SELECT set_config('test.hr_legacy_halfday',public.leave_record_hr_request('cfa20000-0000-4000-8000-000000000001',
+ 'cfa40000-0000-4000-8000-000000000002','cfa60000-0000-4000-8000-000000000002',current_setting('test.type')::uuid,
+ (current_setting('test.today')::date)+13,(current_setting('test.today')::date)+13,true,'first',
+ 'legacy aggregate break needs review','hr-halfday-legacy-001')::text,true);
+SELECT is(current_setting('test.hr_legacy_halfday')::jsonb->'days'->0->>'halfday_mapping_state','review_required',
+ 'legacy positive aggregate break does not receive an inferred fixed clock');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000003',true);
+SELECT set_config('test.hr_legacy_refined',public.leave_hr_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.hr_legacy_halfday')::jsonb->>'id')::uuid,1,'first','review legacy fixed policy','hr-halfday-legacy-refresh-001')::text,true);
+SELECT is(current_setting('test.hr_legacy_refined')::jsonb->'request'->'days'->0->>'halfday_mapping_state','review_required',
+ 'explicit refresh retains review-required for legacy fixed break provenance');
+SELECT throws_ok($$SELECT public.leave_approve_request('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.hr_legacy_halfday')::jsonb->>'id')::uuid,2,2,'cannot approve unmapped legacy break','hr-halfday-legacy-approve')$$,
+ '23514','leave_half_day_mapping_required','approval refuses an unmapped Attendance-on half day');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000002',true);
 SELECT ok((public.leave_hr_queue('cfa20000-0000-4000-8000-000000000001',1,0)->>'has_more')::boolean,
   'HR queue first page detects additional submitted requests');
 SELECT is(jsonb_array_length(public.leave_hr_queue('cfa20000-0000-4000-8000-000000000001',1,1)->'items'),1,
@@ -355,6 +507,9 @@ INSERT INTO platform_core.membership_roles(tenant_id,user_id,role_id)
 VALUES ('cfa20000-0000-4000-8000-000000000001','cfa10000-0000-4000-8000-000000000001','cfa30000-0000-4000-8000-000000000002');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
+SELECT throws_ok($$SELECT public.leave_my_halfday_mapping_options('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.today')::date)+3)$$,'55000','leave_new_work_disabled',
+ 'own mapping options remain disabled for a linked actor who also has an HR role');
 SELECT is(public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
  current_setting('test.own_request')::uuid)->>'state','withdrawn','own-only detail retains historical access with Leave disabled');
 SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
@@ -379,6 +534,9 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001',true);
 SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
  current_setting('test.own_request')::uuid)$$,'P0002','leave_request_unavailable','relink to another employee does not restore old own identity');
+SELECT throws_ok($$SELECT public.leave_my_refresh_halfday_preview('cfa20000-0000-4000-8000-000000000001',
+ (current_setting('test.halfday_submit')::jsonb->>'id')::uuid,1,'second','try old linked employee','halfday-relink-denied')$$,
+ 'P0002','leave_request_unavailable','own refined refresh follows the current link after relinking');
 SELECT is(public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
  current_setting('test.hr_request')::uuid)->>'employee_id','cfa40000-0000-4000-8000-000000000002',
  'relinked account reads only the currently linked employee request');
@@ -390,5 +548,39 @@ SELECT set_config('request.jwt.claim.sub','cfa10000-0000-4000-8000-000000000001'
 SELECT throws_ok($$SELECT public.leave_my_request_detail('cfa20000-0000-4000-8000-000000000001',
  current_setting('test.hr_request')::uuid)$$,'P0002','leave_request_unavailable','inactive membership removes current own detail access');
 RESET ROLE;
+SELECT is(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000001','policy_version',1,'schedule_kind','fixed',
+  'timezone_name','Africa/Cairo','shift_start','09:00','shift_end','17:00','ends_next_day',false,
+  'break_minutes',60,'fixed_break_start','13:00','fixed_break_end','14:00','required_minutes',420),
+  (current_setting('test.today')::date)+4,'first')->>'state','mapped','fixed explicit first part maps');
+SELECT is((time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000001','policy_version',1,'schedule_kind','fixed',
+  'timezone_name','Africa/Cairo','shift_start','09:00','shift_end','17:00','ends_next_day',false,
+  'break_minutes',60,'fixed_break_start','13:00','fixed_break_end','14:00','required_minutes',420),
+  (current_setting('test.today')::date)+4,'first')->>'split_local')::timestamp,
+  ((current_setting('test.today')::date)+4)::timestamp+interval '12 hours 30 minutes','fixed net 420-minute shift splits at 12:30 around the break');
+SELECT is(jsonb_array_length(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000001','policy_version',1,'schedule_kind','fixed',
+  'timezone_name','Africa/Cairo','shift_start','09:00','shift_end','17:00','ends_next_day',false,
+  'break_minutes',60,'fixed_break_start','13:00','fixed_break_end','14:00','required_minutes',420),
+  (current_setting('test.today')::date)+4,'second')->'excused_intervals'),2,'second part retains the pre-break remainder and post-break work as mapped intervals');
+SELECT is(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000002','policy_version',3,'schedule_kind','flexible',
+  'timezone_name','Africa/Cairo','required_minutes',481,'flexible_halfday_break_minutes',30),
+  (current_setting('test.today')::date)+4,NULL)->>'remaining_net_threshold_minutes','241','flexible threshold is ceil(required/2) with explicit configured halfday break');
+SELECT is(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000002','policy_version',3,'schedule_kind','flexible',
+  'timezone_name','Africa/Cairo','required_minutes',481,'flexible_halfday_break_minutes',30),
+  (current_setting('test.today')::date)+4,'first')->>'state','review_required','flexible policy has no AM/PM part');
+SELECT is(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id',NULL,'policy_version',NULL,'schedule_kind','flexible','timezone_name','Africa/Cairo',
+  'required_minutes',481,'flexible_halfday_break_minutes',30),
+  (current_setting('test.today')::date)+4,NULL)->>'reason','policy_identity_missing',
+ 'JSON-null policy identity cannot produce approval-ready half-day evidence');
+SELECT is(time.leave_halfday_mapping(jsonb_build_object(
+  'policy_template_id','cfa70000-0000-4000-8000-000000000003','policy_version',1,'schedule_kind','fixed',
+  'timezone_name','Africa/Cairo','shift_start','09:00','shift_end','17:00','ends_next_day',false,
+  'break_minutes',60,'required_minutes',420),
+  (current_setting('test.today')::date)+4,'first')->>'reason','fixed_break_placement_unknown','legacy aggregate break is not mapped to a guessed clock');
 SELECT * FROM finish();
 ROLLBACK;
