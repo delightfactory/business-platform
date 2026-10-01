@@ -60,7 +60,7 @@ availability on the default branch. No skip-ci or path-filter workaround is used
 
 ## Local verification and cost
 
-Run `node --test .github/scripts/final-candidate.test.cjs` and validate the YAML
+Run `node --test .github/scripts/final-candidate.test.mjs` and validate the YAML
 with `actionlint` before publishing. These tests include a real depth-one Git merge checkout and verify the candidate guard;
 they do not execute application lint/typecheck/build. Hosted validation is one
 deliberate candidate run, repeated only after candidate changes or a justified

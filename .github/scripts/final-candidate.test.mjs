@@ -1,11 +1,11 @@
-const { test } = require('node:test');
-const assert = require('node:assert/strict');
-const { verifyCandidate, readCheckout } = require('./final-candidate.cjs');
-const { mkdtempSync, writeFileSync, rmSync } = require('node:fs');
-const { execFileSync } = require('node:child_process');
-const { tmpdir } = require('node:os');
-const { join, resolve, basename } = require('node:path');
-const { pathToFileURL } = require('node:url');
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { verifyCandidate, readCheckout } from './final-candidate.mjs';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join, resolve, basename, sep } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 function fixture() {
   const candidate = {
@@ -52,7 +52,7 @@ for (const [name, mutate] of Object.entries(rejectedCases)) {
 test('validates real merge parents in a depth-one checkout and rejects stale heads', t => {
   const directory = mkdtempSync(join(tmpdir(), 'final-candidate-shallow-'));
   t.after(() => {
-    if (resolve(directory).startsWith(resolve(tmpdir()) + require('node:path').sep) &&
+    if (resolve(directory).startsWith(resolve(tmpdir()) + sep) &&
         basename(directory).startsWith('final-candidate-shallow-')) {
       rmSync(directory, { recursive: true, force: true });
     }

@@ -1,5 +1,6 @@
-const { readFileSync, appendFileSync } = require('node:fs');
-const { execFileSync } = require('node:child_process');
+import { readFileSync, appendFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 
 function readCheckout(repositoryPath = process.cwd()) {
   const git = (...args) => execFileSync('git', args, { cwd: repositoryPath, encoding: 'utf8' }).trim();
@@ -52,9 +53,9 @@ async function main() {
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `\n${evidence}\n`);
 }
 
-if (require.main === module) main().catch(error => {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(error => {
   console.error(error.message);
   process.exitCode = 1;
 });
 
-module.exports = { verifyCandidate, readCheckout };
+export { verifyCandidate, readCheckout };
