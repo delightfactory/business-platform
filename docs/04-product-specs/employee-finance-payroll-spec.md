@@ -573,3 +573,11 @@ Later specifications may add:
 - richer termination/final-settlement automation;
 - delegated/multi-level payroll approvals;
 - multi-country rule packs.
+
+## Accepted operational clarification — 2026-10-02
+
+The [Cube 4 operational policy amendment](cube-4-operational-policy-amendment-2026-10-02.md) governs the named ordinary rounding, payment allocation/error/excess, insufficient-capacity and calendar details. Statutory qualification and all other Frozen requirements remain binding.
+
+The owner accepted [ordinary Payroll Period salary and proration semantics](payroll-ordinary-period-proration-amendment-2026-10-02.md) on 2026-10-02 as an additive amendment to §4. The Frozen body above is retained; unresolved `fixed_30_day` ordinary calculation semantics remain an explicit calculation gate.
+
+The owner accepted [fixed-30 ordinary proration](payroll-fixed30-proration-amendment-2026-10-02.md) and [recurring component proration](payroll-recurring-proration-amendment-2026-10-02.md) on 2026-10-02. These additive amendments resolve the stated operational formula gates and preserve the Frozen body and statutory verification boundary.
