@@ -1,0 +1,60 @@
+BEGIN;
+DO $$ BEGIN IF current_database()<>'business_platform_cube4_adam_closure_qa' THEN RAISE EXCEPTION 'own QA only';END IF;END $$;
+SELECT no_plan();
+CREATE TEMP TABLE numeric_pack_stamp AS SELECT md5(coalesce(string_agg(md5(to_jsonb(p)::text),'' ORDER BY id),'')) digest FROM payroll.statutory_packs p;
+CREATE TEMP TABLE numeric_fixture AS SELECT '{"tax":{"treatment":"01","exemption":"10.25","column_basis":"annual_raw","columns":[{"through":"1000","bands":[{"upper":"100","rate":"0"},{"upper":"","rate":"10.123456"}]},{"through":"","bands":[{"upper":"","rate":"20"}]}]},"insurance":{"category":"NONLEGAL fixture","minimum":"10","maximum":"1000","branches":[{"branch":"pension","employee":"1.25","employer":"2.75","deductible":true}]},"base_taxable":true}'::jsonb rules;
+INSERT INTO auth.users(id,aud,role,email,encrypted_password,email_confirmed_at,raw_app_meta_data,raw_user_meta_data,created_at,updated_at)VALUES
+ ('f1420000-0000-4000-8000-000000000001','authenticated','authenticated','numeric-compliance@example.test','hash',now(),'{}','{}',now(),now()),
+ ('f1420000-0000-4000-8000-000000000002','authenticated','authenticated','numeric-operator@example.test','hash',now(),'{}','{}',now(),now());
+INSERT INTO platform_private.platform_operator_grants(user_id,is_active,can_manage_operators,can_manage_statutory_rules)VALUES
+ ('f1420000-0000-4000-8000-000000000001',true,false,true),('f1420000-0000-4000-8000-000000000002',true,true,false);
+SELECT ok(NOT has_function_privilege('anon','public.statutory_draft_save(uuid,integer,uuid,text,date,date,jsonb,text,jsonb)','EXECUTE'),'new numerical endpoint denies anon');
+SELECT ok(NOT has_function_privilege('service_role','public.statutory_draft_save(uuid,integer,uuid,text,date,date,jsonb,text,jsonb)','EXECUTE'),'service role cannot bypass authority via numerical endpoint');
+SELECT ok(NOT has_function_privilege('authenticated','payroll.validate_statutory_draft_rules(jsonb)','EXECUTE'),'validator stays private');
+SELECT lives_ok('SELECT payroll.validate_statutory_draft_rules((SELECT rules FROM numeric_fixture))','complete numeric draft validates without qualifying a pack');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT rules||' {"unknown":true}' FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','unknown root keys refused');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{tax,exemption}','"NaN"') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','nonfinite amount refused');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{tax,columns,0,through}','"0"') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','column bounds must increase');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{tax,columns,1,through}','"2000"') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','final column is open ended');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{tax,columns,0,bands,0,rate}','"100.1"') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','rates over100 refused');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{tax,columns,0,bands,0,rate}','10') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','exact decimal strings required');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{insurance,maximum}','"10"') FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','insurance maximum exceeds minimum');
+SELECT throws_ok($$SELECT payroll.validate_statutory_draft_rules((SELECT jsonb_set(rules,'{insurance,branches}',(rules#>'{insurance,branches}')||(rules#>'{insurance,branches}')) FROM numeric_fixture))$$,'22023','statutory_numeric_invalid','insurance branches cannot repeat');
+CREATE TEMP TABLE numeric_saved(value jsonb);GRANT ALL ON numeric_saved TO authenticated;GRANT SELECT ON numeric_fixture TO authenticated;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claims','{"sub":"f1420000-0000-4000-8000-000000000002","role":"authenticated"}',true);
+SELECT throws_ok($$SELECT public.statutory_draft_save(NULL,0,'f1421000-0000-4000-8000-000000000001','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Numeric fixture',(SELECT rules FROM numeric_fixture))$$,'42501','statutory_draft_forbidden','operator management does not inherit numeric authoring');
+SELECT set_config('request.jwt.claims','{"sub":"f1420000-0000-4000-8000-000000000001","role":"authenticated"}',true);
+INSERT INTO numeric_saved SELECT public.statutory_draft_save(NULL,0,'f1421000-0000-4000-8000-000000000001','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Numeric fixture',(SELECT rules FROM numeric_fixture));
+SELECT is((SELECT value->>'state' FROM numeric_saved),'unqualified','saving numbers never qualifies draft');
+SELECT is(public.statutory_draft_save(NULL,0,'f1421000-0000-4000-8000-000000000001','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Numeric fixture',(SELECT rules FROM numeric_fixture)),(SELECT value FROM numeric_saved),'same exact numeric intent replays receipt');
+SELECT throws_ok($$SELECT public.statutory_draft_save(NULL,0,'f1421000-0000-4000-8000-000000000001','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Numeric fixture',NULL)$$,'PT409','statutory_draft_attempt_conflict','changing numbers cannot reuse a saved attempt');
+SELECT is(public.statutory_draft_workspace((SELECT(value->>'head')::uuid FROM numeric_saved))#>'{current,numeric_rules}',(SELECT rules FROM numeric_fixture),'workspace returns exact recorded decimal strings');
+SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM numeric_saved),1,'f1421000-0000-4000-8000-000000000002','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Legacy metadata edit');
+SELECT is(public.statutory_draft_workspace((SELECT(value->>'head')::uuid FROM numeric_saved))#>'{current,numeric_rules}',(SELECT rules FROM numeric_fixture),'legacy metadata edit preserves numbers');
+SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM numeric_saved),2,'f1421000-0000-4000-8000-000000000003','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Explicit numeric removal',NULL);
+SELECT is(public.statutory_draft_workspace((SELECT(value->>'head')::uuid FROM numeric_saved))#>'{current,numeric_rules}','null'::jsonb,'explicit removal records null in a new version');
+SELECT is(public.statutory_draft_workspace((SELECT(value->>'head')::uuid FROM numeric_saved))#>'{history,2,numeric_rules}',(SELECT rules FROM numeric_fixture),'earlier numeric revision remains in history');
+SELECT throws_ok($$SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM numeric_saved),1,'f1421000-0000-4000-8000-000000000004','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Stale numbers',(SELECT rules FROM numeric_fixture))$$,'PT409','statutory_draft_stale','stale numerical writer cannot overwrite');
+RESET ROLE;
+SELECT is((SELECT count(*)::integer FROM payroll.statutory_draft_versions WHERE head_id=(SELECT(value->>'head')::uuid FROM numeric_saved)),3,'replay and refused update add no versions');
+
+SELECT is((payroll.statutory_draft_pack(version,'NONLEGAL earning projection')).earning_rules->>'schema','eg-earning-treatment-v1','actual draft formatter carries earning adapter contract') FROM payroll.statutory_draft_versions version WHERE head_id=(SELECT(value->>'head')::uuid FROM numeric_saved) AND revision=1;
+SELECT is((payroll.statutory_draft_pack(version,'NONLEGAL earning projection')).earning_rules->'base_taxable','true'::jsonb,'explicit taxable base choice is preserved exactly') FROM payroll.statutory_draft_versions version WHERE head_id=(SELECT(value->>'head')::uuid FROM numeric_saved) AND revision=1;
+SET LOCAL ROLE authenticated;
+SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM numeric_saved),3,'f1421000-0000-4000-8000-000000000005','NONLEGAL-numeric','2026-01-01','2027-01-01','[{"title":"NONLEGAL fixture source","url":"https://example.test/numeric"}]','Explicit NONLEGAL nontaxable base',jsonb_set((SELECT rules FROM numeric_fixture),'{base_taxable}','false'));
+SELECT set_config('test.earning_issuance',public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM numeric_saved),4)::text,true);
+SELECT is(current_setting('test.earning_issuance')::jsonb->>'ready','false','recorded base choice does not substitute for official qualification');
+SELECT is(current_setting('test.earning_issuance')::jsonb->>'financially_qualified','false','numeric earning binding remains tax insurance only');
+SELECT throws_ok($q$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM numeric_saved),4,'f1421000-0000-4000-8000-000000000006',current_setting('test.earning_issuance')::jsonb->>'evidence_stamp',true,'NONLEGAL missing official coverage must refuse')$q$,'23514','statutory_issuance_not_ready','actual issuance still refuses NONLEGAL source without official coverage');
+RESET ROLE;
+SELECT is((payroll.statutory_draft_pack(version,'NONLEGAL earning projection')).earning_rules->'base_taxable','false'::jsonb,'nontaxable base is carried without a true default') FROM payroll.statutory_draft_versions version WHERE head_id=(SELECT(value->>'head')::uuid FROM numeric_saved) AND revision=4;
+SELECT is((payroll.statutory_draft_pack(version,'NONLEGAL earning projection')).earning_rules->'base_taxable','true'::jsonb,'new rule revision preserves original taxable history') FROM payroll.statutory_draft_versions version WHERE head_id=(SELECT(value->>'head')::uuid FROM numeric_saved) AND revision=1;
+UPDATE platform_private.platform_operator_grants SET can_manage_statutory_rules=false,can_manage_operators=true WHERE user_id='f1420000-0000-4000-8000-000000000001';
+SET LOCAL ROLE authenticated;
+SELECT throws_ok($$SELECT public.statutory_draft_save(NULL,0,'f1421000-0000-4000-8000-000000000001','NONLEGAL-numeric','2026-01-01',NULL,'[{"title":"Fixture source","url":"https://example.test/numeric"}]','Numeric fixture',(SELECT rules FROM numeric_fixture))$$,'42501','statutory_draft_forbidden','saved numerical receipt cannot bypass revocation');
+RESET ROLE;
+SELECT is((SELECT md5(coalesce(string_agg(md5(to_jsonb(p)::text),'' ORDER BY id),'')) FROM payroll.statutory_packs p),(SELECT digest FROM numeric_pack_stamp),'all numeric draft operations leave calculation packs unchanged');
+SELECT * FROM finish();
+
+ROLLBACK;

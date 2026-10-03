@@ -1,0 +1,202 @@
+{
+  "atUTC": "2026-10-03T23:10:10.310Z",
+  "status": "SOURCE_BOUND_NUMERIC_REVIEW_CHECKPOINT_NOT_G6_OR_FULL_CUBE4",
+  "parentCommit": "a8dedf65d7d6ec484f2ea063976861e7f53cc636",
+  "database": "business_platform_cube4_adam_closure_qa",
+  "baseline": 165,
+  "applications": [
+    {
+      "migration": "20261003036000_cube4_source_bound_statutory_review.sql",
+      "canonicalLF_SHA256": "d11f6a483a994ac820cb3ce351f47163110a013e72a5bfd040084132e17b4208",
+      "parent": "a8dedf65d7d6ec484f2ea063976861e7f53cc636",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "exitCode": 0,
+      "status": "DELTA_APPLIED"
+    },
+    {
+      "migration": "20261003037000_cube4_issued_earning_treatment_binding.sql",
+      "canonicalLF_SHA256": "753a3ffd27d9c26a4742a2df21b8a0b4759b17c0949fdae427f0f0d97d3c1364",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "parent": "a8dedf65d7d6ec484f2ea063976861e7f53cc636",
+      "exitCode": 0,
+      "status": "DELTA_APPLIED"
+    }
+  ],
+  "checks": [
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseline": 164,
+      "test": "implementation/supabase/tests/cube4_source_bound_statutory_review.test.sql",
+      "canonicalLF_SHA256": "116325103333412fcb59e5ad0230466b2188bd373f10f164a0850da4b2fde3d1",
+      "exitCode": 0,
+      "assertions": 19,
+      "status": "BOUNDED_SQL_PASS"
+    },
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseline": 164,
+      "test": "cube4_payroll_independent_statutory_packs.test.sql",
+      "transportSHA256": "6ce19f6a8156c95af40448c64489d446d2fb76dd9f03eb61c33feccd41c5d7f4",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 15
+    },
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseline": 164,
+      "test": "cube4_statutory_payslip_contract.test.sql",
+      "transportSHA256": "c204b2a1112b660b0f9d36bf6c85f4cf12b1ce6ee84af87e10fb18afa02cda0d",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 15
+    },
+    {
+      "atUTC": "2026-10-03T22:58:52.224Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_issued_earning_binding.test.sql",
+      "sqlCanonicalLF_SHA256": "ff6c3da098a50884924d1569e7783fe32736c7aef9753d460caa03fbe25343d0",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 31,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    }
+  ],
+  "versionScope": "Calculation19 and independent worker15/payslip15 executed at164. Producer/draft31 at165. Public G6 was not run positively. Historic runner baseCommit fields remain historical; applied canonical hashes and phase artifacts bind this delta.",
+  "runtime": {
+    "node": "24.16.0",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "typescript": "5.9.3",
+    "postgres": "17.6",
+    "databaseContainer": "supabase_db_business-platform"
+  },
+  "engineering": {
+    "inputActionComponents": 5,
+    "typecheckExit": 0,
+    "targetedLintExit": 0,
+    "productionBuildExit": 0,
+    "authenticatedBrowser": "NOT_RUN_PENDING_CREDENTIAL_CONSTRAINT_CLARIFICATION"
+  },
+  "logs": [
+    {
+      "file": "qa-statutory-review-apply.log",
+      "sha256": "582150a964e93a1314759ca580948f634d6ab690b42d55201593d69555066733"
+    },
+    {
+      "file": "qa-issued-earning-apply.log",
+      "sha256": "c14aee5b62ffd744902b84a24398e930998597dda300e71334862f0ef148e50a"
+    },
+    {
+      "file": "qa-statutory-review-test-context-boundary-correction.log",
+      "sha256": "820beb22e1e3098c7888773d5ff1b5708e5749118698e465bbd4df5d6c030ec0"
+    },
+    {
+      "file": "qa-statutory-review-regression-cube4_payroll_independent_statutory_packs.test.sql.log",
+      "sha256": "aff9f23e104ad68c67b266c00bb2fbf712165ce691950ef5be00891f40c0ed4c"
+    },
+    {
+      "file": "qa-statutory-review-regression-cube4_statutory_payslip_contract.test.sql.log",
+      "sha256": "e15c510a3f5e93294ded42c7d30543e1836121717c33382ead6ffccfd6f1bea4"
+    },
+    {
+      "file": "qa-test-cube4_issued_earning_binding.test.sql.log",
+      "sha256": "1b27fde296c64a4eb83626e85d988413f6bdb1c21fb1981b545441dd387642ac"
+    },
+    {
+      "file": "qa-after-statutory-review-snapshot.log",
+      "sha256": "67e477db6e427e23eb82c44e6c43bb73805c9bf877c1509111ef83950fde18bb"
+    },
+    {
+      "file": "statutory-review-ui-tests.log",
+      "sha256": "c1f894ef367756738f8e676a6035e9b6fe9ded7953fb929cb8acdf236c87187a"
+    },
+    {
+      "file": "statutory-review-typecheck-release.log",
+      "sha256": "e276b62a5a346378a13809002e6f495ffffe0c194eacc4c034fe3586eb509bdb"
+    },
+    {
+      "file": "statutory-review-lint-release.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "statutory-review-build.log",
+      "sha256": "737369f35581edb77a3b9b249de24a45e49305ec0b846fb1f334448bdbf037f8"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "supabase/migrations/20261003036000_cube4_source_bound_statutory_review.sql",
+      "canonicalLF_SHA256": "d11f6a483a994ac820cb3ce351f47163110a013e72a5bfd040084132e17b4208"
+    },
+    {
+      "file": "supabase/migrations/20261003037000_cube4_issued_earning_treatment_binding.sql",
+      "canonicalLF_SHA256": "753a3ffd27d9c26a4742a2df21b8a0b4759b17c0949fdae427f0f0d97d3c1364"
+    },
+    {
+      "file": "supabase/tests/cube4_source_bound_statutory_review.test.sql",
+      "canonicalLF_SHA256": "116325103333412fcb59e5ad0230466b2188bd373f10f164a0850da4b2fde3d1"
+    },
+    {
+      "file": "supabase/tests/cube4_issued_earning_binding.test.sql",
+      "canonicalLF_SHA256": "ff6c3da098a50884924d1569e7783fe32736c7aef9753d460caa03fbe25343d0"
+    },
+    {
+      "file": "scripts/cube4-build-statutory-review-test.mjs",
+      "canonicalLF_SHA256": "49c3efc43efc2248dbcce856b527683ff6b6cfeb1412813efbf1112b750e1a73"
+    },
+    {
+      "file": "scripts/cube4-build-issued-earning-test.mjs",
+      "canonicalLF_SHA256": "2f79c1c50f9dd8fc1fca1475d15d4df62ce36ba40648c37e3996226b94205b0b"
+    },
+    {
+      "file": "scripts/cube4-statutory-review-ui.test.mjs",
+      "canonicalLF_SHA256": "097eb7f6f76101e5527cd78f104eb344e8e7d36da1957215e82236ea5e7bd9b6"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "canonicalLF_SHA256": "18c3b8ec0cefcb7f61fc1d9cdb5b411ffd5b6065d7c3a1ebf27edb973850502e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "canonicalLF_SHA256": "eda639ae5ae067aeb8abf9d0ade6d2807034d5b052f523fc287d0de00a47b05c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "canonicalLF_SHA256": "e0fa7cb03324532528f33d0ca8eedc6419aa330660e185073283478046ef49ab"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "canonicalLF_SHA256": "f73a6f8a07b48b49d93c817111d6e114ba603e111fc1936e39c98b3d307625aa"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "canonicalLF_SHA256": "8e11d1d622bab1f0409b9aed7c14b1c856cad44876406c82ccdbe7337dafe4a9"
+    }
+  ],
+  "numericScope": {
+    "actualPublicCommands": [
+      "payroll_save_input",
+      "payroll_run_command",
+      "payroll_candidate_approval refused",
+      "statutory_draft_save",
+      "statutory_draft_issuance_status",
+      "statutory_draft_issue refused"
+    ],
+    "gross": "125",
+    "statutoryDeductions": "12.50",
+    "net": "112.50",
+    "moneyOrigin": "NONLEGAL prescribed arithmetic; no official result",
+    "privateInitialFinalSeed": false,
+    "contextMismatchMethod": "Actual general compiler on deliberately mismatched manifest; not public source write"
+  },
+  "remaining": [
+    "General financial qualification producer/contract and provenance binding",
+    "Insured month ownership, multiple/year-crossing context attribution, legal deduction capacity/priority and consumption qualification",
+    "Public G6/atomic finalization and qualified unpaid batch succession",
+    "Task-owned authenticated responsive browser and real lost-response/Reload proof",
+    "Same-SHA complete fresh/upgrade/runtime/whole-Cube qualification"
+  ]
+}

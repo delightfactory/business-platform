@@ -2,7 +2,7 @@
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {revalidatePath} from 'next/cache';
 import {uuid} from '../rules';
-import {inputFields,inputError,openingCoverageFields,type InputKind,type InputState} from './rules';
+import {inputFields,inputError,openingCoverageFields,statutoryCalculationFields,type InputKind,type InputState} from './rules';
 import {manualSubmission} from './manual-source';
 export async function inputAction(previous:InputState,form:FormData):Promise<InputState> {
  const field=(key:string)=>String(form.get(key)??'').trim();
@@ -11,7 +11,7 @@ export async function inputAction(previous:InputState,form:FormData):Promise<Inp
  if(!uuid(tenant)||!uuid(employer)||!Object.hasOwn(inputFields,kind)||!['save','approve','cancel'].includes(operation)) return fail('22023');
  const values:Record<string,string>={...Object.fromEntries(inputFields[kind].map(key=>[key,field(key)])),...(kind==='manual_units'?{source:field('source')}:{})};
  if(kind==='opening_ytd')for(const key of ['tax_due','tax_net_income',...openingCoverageFields])if(values[key]==='')delete values[key];
- if(kind==='statutory_context')for(const key of ['insurance_category','insured_wage','insurance_from','insurance_until'])if(values[key]==='')delete values[key];
+ if(kind==='statutory_context')for(const key of ['insurance_category','insured_wage','insurance_from','insurance_until',...statutoryCalculationFields])if(values[key]==='')delete values[key];
  const manual=kind==='manual_units'?manualSubmission(values,previous.manual_data,operation):null;
  if(manual?.error)return {...previous,error:manual.error,saved:false};
  const data=manual?.data??values;
