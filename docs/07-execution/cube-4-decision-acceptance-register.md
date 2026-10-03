@@ -1,5 +1,23 @@
 # Cube 4 decision and acceptance register
 
+## ADAM isolated implementation delta — 2026-10-03
+
+Current local execution starts at `bc351e19f1d52129f81a9b2a9f1de97b03516a13`, tree `c222aced467788c75009d976960bd191960c6b4b`, on isolated branch `codex/cube4-adam-closure`. The [local execution checkpoint](cube-4-adam-local-closure-checkpoint.md) records the exact changes, executed logs and blockers. Final local SHA/tree are recorded in the task-directory checkpoint manifest after commit. Existing rows and prior scoped evidence below remain historical and are not promoted to final acceptance.
+
+| Requirement / journey | Current implementation and version | New evidence | Status and remaining acceptance |
+|---|---|---|---|
+| I09/I10, L04/L05, X01-X05: Leave source identity and corrections | Additive `20261003030000_cube4_review_contract_repairs.sql`, exact request/preview or recorded same-date replacement; immutable originals and sibling responsibilities retained | Prepared `cube4_leave_request_identity.test.sql`; existing replacement/lineage suites require delta execution | IMPLEMENTED, SQL NOT RUN. New historical addition path and cancelled → financially closed → different request journey remain open |
+| O01/O02, M04/M05/M07: statutory payslip | Same migration, versioned saved presentation and independent pack provenance, zero tax, employer contributions excluded from employee deductions | Prepared `cube4_statutory_payslip_contract.test.sql` against actual private worker | IMPLEMENTED, SQL NOT RUN. Report/export/browser and official qualification remain open |
+| X01-X05, U07: saved correction and pending recovery | `corrections/page.tsx`, `CorrectionForms.tsx`, `actions.ts`; saved fields/hash, split/mode, nested inputs, references, target, responsibilities and sibling changes | 12/12 page → form → preview component/transport checks; actual recovery hook with emulated browser/library boundary | BOUNDED COMPONENT PASS. Authenticated browser/persistence, permissions and response-loss acceptance remain required |
+| L01-L10, M04/M05/M07, F03: general financial release | Public gate remains `payroll_release_gate`; existing private independent workers retained | Code inventory only; no gate change or legal acceptance | OPEN IMPLEMENTATION plus external statutory qualification. Synthetic packs cannot authorize release |
+| Setup → inputs → calculation/review | Existing calendar/manual/source evidence at baseline157/current159 is retained | No unaffected suite rerun | Historical PARTIAL; final current-candidate fresh/upgrade and connected journey open |
+| Approval → atomic lock → output → external payment | Existing atomic29/reports24/payslip17/payment protocol proofs retained at their original versions | No connected new runtime; isolated production build/typecheck passed | Public financial journey blocked; no final-candidate acceptance |
+| Correction → replacement/settlement | Existing paid/unpaid protocols retained; editor repaired as above | New bounded restoration evidence only | Connected financial/source closure, succession and settlement acceptance open |
+| Advances → termination | Existing advances103 evidence retained at its original version | No unaffected suite rerun | Verified ceilings/consumption, termination settlement and complete UI journey open |
+| A01/A02, Q01-Q04, U01-U10: final qualification | One isolated checkout, Node24.16.0, Next16.3.6, no server/DB started | Typecheck and production build exit0; targeted lint/diff logs in task checkpoint | PostgreSQL Docker access denied. Own QA database and browser journey NOT RUN; original QA untouched |
+
+No existing acceptance row is closed by source-text inspection, build success or these component tests. The original evidence methods remain mandatory. The one external handoff is a reviewed 2026 statutory package with applicability/duration/month ownership/ceilings and official expected cases; Ahmad's prior lack of results/access is preserved, without repeating that request.
+
 Status: **operational recommendations accepted; full implementation qualification open**, current checkpoint2026-10-03; review base `1f531a38f4726508d8fac8fd3c17bddc4139342d` plus preserved uncommitted changes. Original entry base `555c34a568f44eb4b99d99712a699094488f3026` remains historical evidence. Read with the [execution contract](cube-4-execution-contract.md) and [original extension](cube4UXextension.md). Owners are accountable capability holders, not required separate staff. The original proposal rows below preserve review history; the accepted operational amendment now governs the eight approved choices. Scoped implementation/test evidence is recorded below; no full-cube or production qualification is established.
 
 ## Material decisions

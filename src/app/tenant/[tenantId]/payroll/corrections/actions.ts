@@ -22,7 +22,9 @@ export async function correctionAction(previous:CorrectionState,form:FormData):P
   if(['employment','new_employment'].includes(get('kind')))fields.payroll_eligible=get('field:payroll_eligible')==='true';
   const selected:unknown=get('kind')==='source_change'?JSON.parse(get('source_changes')):null;
   if(get('kind')==='source_change'&&(!Array.isArray(selected)||selected.length<1||selected.length>32||selected.some(x=>!x||typeof x!=='object'||!uuid(x.id)||typeof x.expected_hash!=='string'||!/^[0-9a-f]{64}$/.test(x.expected_hash))))return {...previous,saved:false,error:'اختر التغييرات المسجلة ثم أعد المعاينة. الحقول محفوظة.'};
-  const changes=Array.isArray(selected)?selected.map(x=>({type:'source_change',source_id:x.id,expected_hash:x.expected_hash,fields:{}})):[{type:get('kind'),source_id:get('source')||null,expected_hash:get('source_hash')||null,fields}];
+  const unchanged:unknown=JSON.parse(get('unchanged_changes')||'[]');
+  if(!Array.isArray(unchanged)||unchanged.length>31)return {...previous,saved:false,error:correctionError('22023')};
+  const changes=Array.isArray(selected)?selected.map(x=>({type:'source_change',source_id:x.id,expected_hash:x.expected_hash,fields:{}})):[{type:get('kind'),source_id:get('source')||null,expected_hash:get('source_hash')||null,fields},...unchanged];
   const rows=form.getAll('row_employment').map((employment,index)=>{
    const value=(key:string)=>String(form.getAll(key)[index]??'').trim();
    return {output_id:value('row_output'),...(String(employment).startsWith('new:')?{employment_ref:String(employment)}:{employment_id:String(employment)}),amount:value('row_amount'),basis:value('row_basis'),component_id:value('row_component')||null,target_period:value('row_target')||null,reference:value('row_reference'),source:value('row_source')};
