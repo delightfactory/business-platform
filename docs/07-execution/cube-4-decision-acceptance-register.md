@@ -1,5 +1,7 @@
 # Cube 4 decision and acceptance register
 
+Latest ADAM SQL checkpoint: [owned QA delta evidence](cube-4-adam-qa-delta-evidence.json), base `edece0d2` plus the documented parser/fixture repair. I09/I10/L04/L05/X01-X05 exact new-request refusal after actual public financial closure and sibling preservation passes12 checks; Leave bindings19, repeated lineage12, successor8 and observation edit8 pass separately. O01/O02/M04/M05/M07 synthetic worker-to-payslip passes15 checks with positive employer contribution and zero tax. These are bounded NONLEGAL SQL PASS methods on the new task QA, not full row acceptance. Earlier SQL NOT RUN/Docker status below is historical. New historical addition, general financial integration, authenticated browser and official qualification remain open. The checkpoint preserves failures and ties actual definition/authority fingerprints to these deltas.
+
 ## ADAM isolated implementation delta — 2026-10-03
 
 Current local execution starts at `bc351e19f1d52129f81a9b2a9f1de97b03516a13`, tree `c222aced467788c75009d976960bd191960c6b4b`, on isolated branch `codex/cube4-adam-closure`. The [local execution checkpoint](cube-4-adam-local-closure-checkpoint.md) records the exact changes, executed logs and blockers. Final local SHA/tree are recorded in the task-directory checkpoint manifest after commit. Existing rows and prior scoped evidence below remain historical and are not promoted to final acceptance.

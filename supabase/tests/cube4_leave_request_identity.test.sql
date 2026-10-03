@@ -119,8 +119,10 @@ SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.run_manifest('d2
 SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.run_manifest('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d260e000-0000-4000-8000-000000000001')->'corrections') requirement WHERE requirement->>'id'='d260ff00-0000-4000-8000-000000000001'),'unselected sibling remains open after actual financial closure');
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','d2600000-0000-4000-8000-000000000002',true);
+SET CONSTRAINTS ALL DEFERRED;
 SELECT set_config('test.new_request',public.leave_submit_own_request('d2601000-0000-4000-8000-000000000001',current_setting('test.leave_type')::uuid,'2025-01-05','2025-01-05',false,NULL,'Different historical Leave request','closure-new-request')->>'id',true);
 RESET ROLE;
+SET CONSTRAINTS ALL IMMEDIATE;
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','d2600000-0000-4000-8000-000000000001',true);
 SELECT throws_ok($q$SELECT public.leave_approve_request('d2601000-0000-4000-8000-000000000001',current_setting('test.new_request')::uuid,1,1,'New request cannot borrow old binding','closure-new-approve')$q$,

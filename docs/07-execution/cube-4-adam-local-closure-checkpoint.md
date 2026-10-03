@@ -2,6 +2,8 @@
 
 This is an implementation checkpoint, not full Cube 4 acceptance. No publication, production changes, GitHub Actions, or financial gate opening occurred.
 
+Latest scope: [owned QA SQL delta evidence](cube-4-adam-qa-delta-evidence.json) supersedes the earlier Docker/SQL-not-run status below. It qualifies only the listed NONLEGAL methods. Public financial integration, historical additions, connected browser and official qualification remain open.
+
 The single acceptance reference remains [the existing register](cube-4-decision-acceptance-register.md). This file records the execution handoff and limitations of its latest delta.
 
 ## Identity and isolation
@@ -68,3 +70,24 @@ The limited repair uses a replacement callback, preserves literal replacement to
 SQL tests were strengthened as described above and remain NOT RUN. Integration expansion is paused for ADAM's review of this limited delta. A formal read-only Docker diagnostic through `exec_command` / `require_escalated` / `auto_review` was presented for authorization; it has not been attempted. The prior denial was an OS/sandbox denial, not an auto-review rejection.
 
 Read-only Git checks found reachable ancestor `7e851608873e0ad29417e60b926e61eb846bc98f` missing in both the original source and this local clone. Current source/delta commit and tree are readable; complete inherited history is not verified. No cleanup, fetch or history repair was performed. The new task-directory repair manifest binds its exact SHA/tree and records prior evidence as reused, leaving the original checkpoint/logs intact.
+
+## Owned QA SQL qualification after review
+
+The exact read-only Docker diagnostic succeeded through `require_escalated`, exit0. No daemon ACL/network/context or credentials were changed. New database `business_platform_cube4_adam_closure_qa` was confirmed absent and created from template0. Only auth/storage/extensions definitions were restored, with zero user data and three application-owned trigger/policy definitions excluded for recreation by the application migrations. This is a fresh application replay over existing engine definitions, not a fresh Supabase installation.
+
+All159 predecessors succeeded. PostgreSQL then rejected32000 with `mismatched parentheses` at Leave guard line35; the entire migration transaction rolled back. The generated guard had one extraneous closing parenthesis. Both generator and generated migration were corrected before successful installation; only32000 was resumed, retaining the successful prefix and original failure log. The four generation checks passed again, but their scope is explicitly weaker than PostgreSQL parsing.
+
+Bounded rollback SQL results on the resulting160-migration task database:
+
+| Actual method | Assertions | Result |
+|---|---:|---|
+| Statutory worker to payslip, positive employer cost/employee deductions/zero tax |15|PASS NONLEGAL|
+| Leave cancelled, actual public payment/correction/settlement closure, different same-day request refused, sibling and originals retained |12|PASS NONLEGAL|
+| Existing final Leave source binding/cancellation fixture |19|PASS NONLEGAL|
+| Repeated source lineage |12|PASS NONLEGAL|
+| Bound source successor |8|PASS NONLEGAL|
+| Saved observation proposal editing |8|PASS NONLEGAL|
+
+The first Leave delta reached actual public financial closure and sibling preservation, then failed because the test kept initially deferred request-preview FK constraints immediate during submission. The fixture now defers submission, then restores immediate constraints before testing approval refusal. The failed transaction/log is retained and only this affected test was retried. The lineage harness's first guard substitution missed `NOT IN(` without a space and stopped before fixture changes; that transport was corrected without modifying the original test or production definition. Completed successful tests were reused.
+
+Final read-only evidence records PostgreSQL17.6, the exact task database, zero `auth.users` after rollback, and actual definition fingerprints for the guard/report/five-argument worker. All three deny direct EXECUTE to anon/authenticated/service_role. The general financial gate was not opened. Original QA databases were not targeted by any mutation. This qualifies these SQL methods, not authenticated browser, official law, full public lock/payment journey or whole-Cube acceptance. The inherited Git history gap remains independent of current readable tree validation.

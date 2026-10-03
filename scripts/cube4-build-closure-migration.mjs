@@ -27,7 +27,7 @@ guard = replaceOnce(guard, "AND binding.source_date=day_row.leave_date AND bindi
        WHERE event.tenant_id=NEW.tenant_id AND event.replacement_request_id=NEW.id
         AND event.original_request_id::text=binding.source_identity->>'request_id'
         AND event.event_key='hr.corrected' AND event.to_state='superseded'
-        AND original.state='superseded'))))`);
+        AND original.state='superseded')))`);
 let report = read('20261002074500_cube4_payroll_reports.sql');
 report = report.slice(report.indexOf('CREATE FUNCTION payroll.report_payslip_lines('), report.indexOf('CREATE FUNCTION payroll.report_rows('));
 report = report.replace('CREATE FUNCTION', 'CREATE OR REPLACE FUNCTION');

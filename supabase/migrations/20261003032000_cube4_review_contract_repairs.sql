@@ -34,7 +34,7 @@ BEGIN
        WHERE event.tenant_id=NEW.tenant_id AND event.replacement_request_id=NEW.id
         AND event.original_request_id::text=binding.source_identity->>'request_id'
         AND event.event_key='hr.corrected' AND event.to_state='superseded'
-        AND original.state='superseded'))))
+        AND original.state='superseded')))
  ) THEN RAISE EXCEPTION 'payroll_locked_leave_addition_requires_correction' USING ERRCODE='23514';END IF;
  RETURN NEW;
 END $f$;

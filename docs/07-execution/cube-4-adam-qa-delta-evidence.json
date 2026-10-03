@@ -1,0 +1,109 @@
+{
+  "atUTC": "2026-10-03T21:23:19.789Z",
+  "status": "BOUNDED_QA_SQL_PASS_NOT_FULL_CUBE4",
+  "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+  "delta": "generator and migration one extraneous parenthesis removed; Leave test defers submission FK then restores immediate approval guard",
+  "database": "business_platform_cube4_adam_closure_qa",
+  "engine": "PostgreSQL17.6 existing engine schema only; no auth users restored;160application migrations",
+  "migrationCanonicalLF_SHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+  "checks": [
+    {
+      "atUTC": "2026-10-03T21:18:56.039Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_statutory_payslip_contract.test.sql",
+      "sqlCanonicalLF_SHA256": "c204b2a1112b660b0f9d36bf6c85f4cf12b1ce6ee84af87e10fb18afa02cda0d",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 15,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:19:50.218Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_leave_request_identity.test.sql",
+      "sqlCanonicalLF_SHA256": "87734cd6c15cb720761484ec0f620c51b795fc408465a86a9b72c147050b85e7",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 12,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:20:18.961Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_payroll_final_source_bindings_leave.test.sql",
+      "sqlCanonicalLF_SHA256": "23f715b3224b7f1e5d37a9691876212e2bd04c768ca4558822dcf52581416db1",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 19,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:20:50.038Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_repeated_source_lineage.test.sql",
+      "sqlCanonicalLF_SHA256": "9679579dba37fe1fcd67103a96a3b44d29caad9f89038bcc60e87584f726e01a",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 12,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:20:50.619Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_bound_source_correction_successor.test.sql",
+      "sqlCanonicalLF_SHA256": "4af34c46fcd2e0441c31d1eb0b8b6ce4746ce7aa0c557aa583b5d4b0399c58ba",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 8,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:20:52.042Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_source_observation_correction_edit.test.sql",
+      "sqlCanonicalLF_SHA256": "d727b207b5ede3b015385b7272e238f7db94900efb11dce0a9b9c0586b77d437",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 8,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    }
+  ],
+  "authority": "business_platform_cube4_adam_closure_qa|17.6|0\n{\"function\": \"payroll.report_payslip_lines(jsonb,jsonb,uuid,jsonb)\", \"anonymous\": false, \"service_role\": false, \"authenticated\": false, \"definition_md5\": \"82a2016d13eac9ca5cd958d456aa95ba\"}\n{\"function\": \"payroll.calculate_statutory_employee(jsonb,uuid,jsonb,uuid,jsonb)\", \"anonymous\": false, \"service_role\": false, \"authenticated\": false, \"definition_md5\": \"4e2e36924823152ac7eb7c88cce79307\"}\n{\"function\": \"payroll.guard_unbound_leave_approval()\", \"anonymous\": false, \"service_role\": false, \"authenticated\": false, \"definition_md5\": \"575130126d567ad5ebce76ef5dbb37cd\"}\n",
+  "files": {
+    "qa-replay-evidence.json": "26b034f9e6ffe205ed6f9276bd2bd392699d84269cdbaa5aadee487d85e85e2f",
+    "qa-repair-application.json": "85eed2454d545e44ff20dce7c4498e30c82355f3d76ff1e94f9630870f24f1b6",
+    "qa-function-authority.log": "3a5670d1bb9a816a488b27de650eecdc57eb204dc15b9442e0aec87e00f231f4",
+    "qa-test-cube4_statutory_payslip_contract.test.sql.json": "29fb760eb5db9e7006f49e3d3852c75785d46b6caedbe913084865b26918f5dd",
+    "qa-test-cube4_leave_request_identity.test.sql-fixture-retry.json": "d67e1dd3c937d68356ad9d3c8a46ff45be73671bb70fd31c5d44fd09e9fccd95",
+    "qa-test-cube4_payroll_final_source_bindings_leave.test.sql.json": "716039a6d41cf860821307c8a8db8eddf31b9af6d15ce8ea3419b4f7e32b1e71",
+    "qa-test-cube4_repeated_source_lineage.test.sql-fixture-retry.json": "597bcabe32498aec9eee567d8b3880580a947b10c8008b2e21ade7aa74654140",
+    "qa-test-cube4_bound_source_correction_successor.test.sql.json": "4a60597acae5e6a2284c029cf5de03dca77f2a02fe1d873005709079f8060219",
+    "qa-test-cube4_source_observation_correction_edit.test.sql.json": "49e67a2f81df2781b460f22a8805778d1d6aef3a9aa24a0a7ca3e028df63985c"
+  },
+  "retainedFailures": [
+    "first engine runner stopped before Docker at Git ownership guard, corrected only command scoped safe.directory",
+    "migration32000 parenthesis parser refusal rolled back; previous159 reused",
+    "first Leave test FK timing failure rolled back, actual public closure already reached; only affected fixture retried",
+    "lineage harness did not replace no-space NOT IN guard; stopped before fixture, transport corrected"
+  ],
+  "notAccepted": [
+    "new historical Leave addition",
+    "public statutory/YTD/consumption/approval/finalization",
+    "official2026numerical results",
+    "connected authenticated browser and full sameSHA final qualification"
+  ],
+  "noOtherQAChanged": true,
+  "noPublication": true
+}
