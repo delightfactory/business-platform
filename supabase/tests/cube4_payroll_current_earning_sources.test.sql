@@ -1,0 +1,26 @@
+-- Actual candidate monetary source contract, not statutory qualification.
+CREATE FUNCTION pg_temp.earnings() RETURNS jsonb LANGUAGE sql AS $f$ SELECT pg_temp.employee()->'statutory_sources'->'current_earnings' $f$;
+SELECT is((pg_temp.earnings()->>'base_amount')::numeric,500::numeric,'actual manual daily base remains500');
+SELECT is((pg_temp.earnings()->>'declared_taxable_components')::numeric,40::numeric,'actual approved bonus declaration retains40');
+SELECT is((pg_temp.earnings()->>'declared_nontaxable_components')::numeric,300::numeric,'actual recurring declaration retains300');
+SELECT is((pg_temp.earnings()->>'unresolved_component_amount')::numeric,0::numeric,'uniform component declarations have no unknown monetary share');
+SELECT is((pg_temp.employee()->>'gross')::numeric,840::numeric,'source classification preserves exact operational gross840');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(pg_temp.earnings()->'lines')l WHERE l->>'component'='base' AND l->>'declaration_state'='base_treatment_requires_verified_pack' AND l->'declared_taxable_amount'='null'::jsonb),'base pay is not silently assigned a legal treatment');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(pg_temp.earnings()->'lines')l WHERE l->>'component' LIKE 'adjustment:%' AND l->>'attribution'='approved_period_amount' AND l->>'earning_from'='2030-01-25' AND l->>'earning_until'='2030-02-24'),'one-time amount keeps actual period earning scope');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(pg_temp.earnings()->'lines')l WHERE l->>'component'='base' AND l->>'attribution'='preserved_daily_source_basis'),'distributed manual daily total is not claimed as day-level attendance');
+SELECT is(pg_temp.employee()->>'net',NULL::text,'current source declarations do not activate financial net');
+SELECT set_config('test.original.employee',pg_temp.employee()::text,true);
+SET LOCAL ROLE authenticated;
+SELECT pg_temp.save('component',current_setting('test.component.data')::jsonb||'{"taxable":"true"}',(current_setting('test.component')::jsonb->>'id')::uuid,1,'save','2030-02-01');
+SELECT set_config('test.run',public.payroll_run_command('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001',current_setting('test.period')::uuid,(current_setting('test.run')::jsonb->>'id')::uuid,(current_setting('test.run')::jsonb->>'revision')::integer,'calculate','',gen_random_uuid())::text,true);
+RESET ROLE;
+SELECT is((pg_temp.earnings()->>'unresolved_component_amount')::numeric,300::numeric,'inside-period declaration change keeps all300 pending governed allocation');
+SELECT is((pg_temp.earnings()->>'declared_taxable_components')::numeric,40::numeric,'mixed recurring share is not counted as fully taxable');
+SELECT is((pg_temp.earnings()->>'declared_nontaxable_components')::numeric,0::numeric,'mixed recurring share is not counted as fully exempt');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(pg_temp.earnings()->'lines')l WHERE l->>'component'=current_setting('test.component')::jsonb->>'id' AND l->>'declaration_state'='mixed_declarations_require_allocation' AND l->'declared_taxable_amount'='null'::jsonb AND jsonb_array_length(l->'source_parts')=31),'mixed source keeps31 original dated parts and unknown share');
+SELECT is((current_setting('test.original.employee')::jsonb->'statutory_sources'->'current_earnings'->>'declared_nontaxable_components')::numeric,300::numeric,'old candidate source remains immutable');
+SELECT is((pg_temp.employee()->>'gross')::numeric,840::numeric,'declaration change never changes underlying gross');
+SELECT ok(NOT has_function_privilege('authenticated','payroll.current_earning_sources(jsonb)','EXECUTE'),'source constructor remains private');
+SELECT is((payroll.current_earning_sources('{"lines":[{"classification":"earning","component":"legacy","amount":"12.000000","details":[{}]}],"gross_complete":true}'::jsonb)->>'unresolved_component_amount')::numeric,12::numeric,'legacy missing declaration stays unresolved, including zero scale padding');
+SELECT throws_ok($$SELECT payroll.current_earning_sources('{"lines":[{"classification":"earning","component":"bad","amount":"12.001","details":[]}]}'::jsonb)$$,'22023','payroll_earning_sources_invalid','real fractional cent is rejected without rerounding a saved line');
+SELECT * FROM finish();

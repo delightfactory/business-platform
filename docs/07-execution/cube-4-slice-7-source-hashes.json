@@ -1,0 +1,49 @@
+{
+  "slice": 7,
+  "status": "SOURCE_CYCLE2_PASS_AND_ADAM_COMPATIBILITY_PASS_RUNTIME_BLOCKED_BY_SLICE6",
+  "authoredAssertions": 100,
+  "databaseTestsExecuted": false,
+  "sqlApplied": false,
+  "buildExecuted": false,
+  "browserExecuted": false,
+  "requiredDependency": "Qualified Adam fix ledger115; reviewed/qualified Slice6 ledger116 before Slice7 ledger117. Current QA115; Slice6 recovery pending owner decision.",
+  "files": [
+    {
+      "path": "supabase/migrations/20261002063000_cube4_payroll_advances.sql",
+      "sha256": "07cda75ce89dcfeb199f391aab394219c33b8b443a8d5b51ef073fa7d6bb7b74"
+    },
+    {
+      "path": "supabase/tests/cube4_payroll_advances.test.sql",
+      "sha256": "cdb244b22aaabd64cf72bfca10946cb047f8c7dd5f58a668f8e509400f5c30c9"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/advances/rules.ts",
+      "sha256": "9b1f82e6715cd555f8b0e5c8000e238e01a62867ce885858b5897581a3090d9c"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/advances/actions.ts",
+      "sha256": "f1bb586f3a2414bf201a5adf347705017205f3b6f270e7477b26ac03b371bfc0"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "sha256": "d304f41a6ba45735b6db04927cd0ca5b0fd3baec3a06c74f1e99284b723995f4"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "sha256": "b7f2b96028f823b90beef2d8231d93c503f91f9d8d9d607dccc9932a42d113bb"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "sha256": "83eba8b8f31257395dec11983cb94de271fea4e245269ef2de0eb133c9ff0351"
+    },
+    {
+      "path": "src/app/operator/entitlements/actions.ts",
+      "sha256": "01a6f180d7338da72803ef8537247b357d98b19d4457ad3e7c6d863bd8286ab4"
+    },
+    {
+      "path": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "sha256": "2a2118e50f52a5af8aafc3fc4c5cae29b485116bf8e86094f7da4b3caf4277b6"
+    }
+  ],
+  "compatibilityReview": "C:\\Users\\DELL\\AppData\\Local\\ai-dev-workflow\\reviews\\cube4-post-adam-compatibility-delta-review.json"
+}

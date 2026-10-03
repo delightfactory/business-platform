@@ -1,0 +1,15 @@
+# Cube 4 prior statutory output capture
+
+Partial local implementation, 2026-10-02. This supplies historical sources to actual candidate calculation; it does not calculate cumulative balances, qualify legal rules or complete approval/lock.
+
+The run manifest captures prior immutable employee outputs for the current tax-year window, same Tenant/Employer/person, ending before the current earning period. It preserves output/run/employment identity, period boundaries, exact calculation context and source engine. Replaced originals are excluded through the authoritative output succession. Earlier-year and future outputs do not enter the current set. Historical Employment identity remains distinct while matching the same person within the Employer.
+
+The employee source snapshot retains these outputs. A changed authoritative prior-output set invalidates reviewed candidates. Unknown prior calculation remains a named blocker; no missing amount becomes zero, no cumulative assessed tax is summed, and no unqualified net is enabled.
+
+Historical result lookup requires exactly one matching employee. Missing, scalar or duplicate results retain an unknown source; duplicates do not multiply the final employee row. Structural checks reject missing facts/tax/insurance, contradictory year/earning interval/duration/due-tax arithmetic, and non-insured facts with positive insurance totals. Structural admission is not legal qualification or full insurance/YTD reconciliation.
+
+Focused final evidence: `cube4-prior-statutory-outputs-qualification-v3.json`, 22 assertions on each dedicated fresh/upgrade baseline132, transactional rollback. The initial15 and intermediate21 assertion outputs remain recorded. The independent review identified incomplete admission and duplicate result matching; these were corrected with explicit regression coverage. Private synthetic historical final rows are NONLEGAL fixtures. The current candidate was created/recalculated through actual authenticated commands. No public finalization was opened.
+
+Independent review completed PASS against three exact current hashes in `reviews/cube4-prior-statutory-outputs-review-v2.json`; the original FAIL review remains retained. Exact-hash installation advanced both dedicated QA ledgers132→133 with input history unchanged (`cube4-prior-statutory-outputs-local-install.json`). Focused issue-copy ESLint and `git diff --check` exited0. Non-array historical result handling and historical rehire were reviewed statically, without a dedicated runtime assertion. No new browser or complete-release claim is made for this data-layer delta.
+
+Remaining integration: derive year-specific accumulated balances and earning attribution from these retained contexts and reviewed openings; reconcile insurance obligation ownership; connect the numeric adapters; satisfy governed pack issuance and official numeric comparison; close approval/lock/distribution and full financial journeys. The captured source contract is not a substitute for those steps.

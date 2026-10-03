@@ -1,0 +1,54 @@
+-- The bounded runner supplies the existing isolated input fixture and rollback.
+SELECT set_config('test.context','{"tax_treatment_code":"01","insurance_status":"insured","insurance_category":"فئة مثبتة بالمستند التجريبي","insured_wage":"5000","insurance_from":"2030-01-01","reference":"Synthetic Form2 reference","reason":"Reviewed employee insurance facts"}',true);
+SELECT lives_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb)$$,'reviewed insured employee context accepted');
+SELECT lives_ok($$SELECT payroll.validate_input('statutory_context','{"tax_treatment_code":"01","insurance_status":"not_insured","reference":"Reviewed status reference","reason":"Explicit reviewed non-insured status"}')$$,'explicit non-insured fact accepted without fictitious wage');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insurance_status":"unknown"}')$$,'22023','payroll_invalid','unknown is not an asserted status');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insurance_status":"not_insured"}')$$,'22023','payroll_invalid','non-insured cannot carry contradictory insured facts');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb-'insured_wage')$$,'22023','payroll_invalid','insured wage required');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insured_wage":"0"}')$$,'22023','payroll_invalid','insured wage cannot become an implicit zero');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insured_wage":"NaN"}')$$,'22023','payroll_invalid','nonfinite wage rejected');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insured_wage":"1.001"}')$$,'22023','payroll_invalid','sub-cent wage rejected');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insured_wage":"1000000000000"}')$$,'22023','payroll_invalid','monetary ceiling enforced');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb-'insurance_from')$$,'22023','payroll_invalid','insurance start required');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insurance_from":"infinity"}')$$,'22023','payroll_invalid','special dates rejected');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insurance_from":"2030-02-30"}')$$,'22023','payroll_invalid','nonexistent date rejected');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"insurance_until":"2029-12-31"}')$$,'22023','payroll_invalid','insurance end cannot precede start');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"tax_treatment_code":"00"}')$$,'22023','payroll_invalid','blank treatment sentinel rejected');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"tax_treatment_code":12}')$$,'22023','payroll_invalid','treatment code must preserve its string identity');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"reference":true}')$$,'22023','payroll_invalid','evidence reference must be text');
+SELECT throws_ok($$SELECT payroll.validate_input('statutory_context',current_setting('test.context')::jsonb||'{"tax_rate":"0"}')$$,'22023','payroll_invalid','employee input cannot configure legal rates');
+SELECT ok(NOT has_function_privilege('authenticated','payroll.validate_employee_statutory_context(jsonb)','EXECUTE'),'helper remains private');
+CREATE FUNCTION pg_temp.save_context(head uuid DEFAULT NULL,expected integer DEFAULT 0,from_date date DEFAULT '2030-01-25',wage text DEFAULT '5000',attempt uuid DEFAULT NULL,until_date date DEFAULT NULL) RETURNS jsonb LANGUAGE sql AS $$
+ SELECT public.payroll_save_input('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001','statutory_context','c4425000-0000-4000-8000-000000000001',NULL,head,expected,from_date,until_date,current_setting('test.context')::jsonb||jsonb_build_object('insured_wage',wage),'save',COALESCE(attempt,gen_random_uuid()))
+$$;
+GRANT EXECUTE ON FUNCTION pg_temp.save_context(uuid,integer,date,text,uuid,date) TO authenticated;
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','c4420000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.context.saved',pg_temp.save_context(attempt=>'c4429000-0000-4000-8000-000000000081')::text,true);
+SELECT is(pg_temp.save_context(attempt=>'c4429000-0000-4000-8000-000000000081'),current_setting('test.context.saved')::jsonb,'authenticated same-intent replay');
+SELECT throws_ok($$SELECT pg_temp.save_context(from_date=>'2030-01-26')$$,'23505',NULL,'one context head per employee and employer');
+SELECT throws_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>1)$$,'PT409','payroll_effective_conflict','same-date ordinary edit requires correction');
+SELECT throws_ok($$SELECT pg_temp.save_context(from_date=>'infinity')$$,'22023','payroll_invalid','effective date must be finite');
+SELECT set_config('test.context.period',(public.payroll_save_calendar('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001','2030-01-25',24,25,'ending','Africa/Cairo',0,gen_random_uuid(),public.payroll_calendar_preview('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001','2030-01-25',24,25,'ending','Africa/Cairo'),'Reviewed synthetic calendar')->>'period_id'),true);
+RESET ROLE;
+SELECT set_config('test.context.manifest.before',payroll.run_manifest('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001',current_setting('test.context.period')::uuid)::text,true);
+SELECT ok(jsonb_path_exists(current_setting('test.context.manifest.before')::jsonb,'$.inputs[*] ? (@.head.kind == "statutory_context" && @.version.data.insured_wage == "5000")'),'source manifest captures effective context and explicit insured wage');
+SET LOCAL ROLE authenticated;
+SELECT lives_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>1,from_date=>'2030-01-26',wage=>'5500')$$,'prospective version saved through existing authority and lock path');
+SELECT set_config('request.jwt.claim.sub','c4420000-0000-4000-8000-000000000002',true);
+SELECT throws_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>2,from_date=>'2030-01-27')$$,'42501','payroll_forbidden','reader cannot alter employee statutory facts');
+RESET ROLE;
+SELECT ok(payroll.stale_reasons(current_setting('test.context.manifest.before')::jsonb,payroll.run_manifest('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001',current_setting('test.context.period')::uuid)) ? 'statutory_context_changed','public review stale chain notices context change');
+SELECT is((SELECT data->>'insured_wage' FROM payroll.input_versions WHERE tenant_id='c4421000-0000-4000-8000-000000000001' AND head_id=(current_setting('test.context.saved')::jsonb->>'id')::uuid AND revision=1),'5000','historical insured wage remains immutable');
+SELECT is((SELECT count(*)::int FROM payroll.input_versions WHERE tenant_id='c4421000-0000-4000-8000-000000000001' AND head_id=(current_setting('test.context.saved')::jsonb->>'id')::uuid),2,'only two deliberate versions, no replay duplicate');
+SELECT is((SELECT jsonb_array_length(payroll.compile_source_changes(v.tenant_id,v.employer_id,jsonb_build_array(jsonb_build_object('type','input_revision','source_id',v.head_id,'expected_hash',payroll.source_hash(to_jsonb(v)),'fields',jsonb_build_object('effective_from',v.effective_from,'effective_until',v.effective_until,'data',v.data||'{"insured_wage":"5600"}'::jsonb,'cancelled',false))),'c4420000-0000-4000-8000-000000000001')) FROM payroll.input_versions v WHERE v.tenant_id='c4421000-0000-4000-8000-000000000001' AND v.head_id=(current_setting('test.context.saved')::jsonb->>'id')::uuid AND v.revision=2),2,'governed compiler builds immutable head and version changes for employee context');
+INSERT INTO payroll.people_frozen_contexts(tenant_id,employer_id,employment_id,period_id,run_id,source_snapshot)
+VALUES('c4421000-0000-4000-8000-000000000001','c4423000-0000-4000-8000-000000000001','c4425000-0000-4000-8000-000000000001',current_setting('test.context.period')::uuid,gen_random_uuid(),'{}');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','c4420000-0000-4000-8000-000000000001',true);
+SELECT throws_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>2,from_date=>'2030-01-27')$$,'23514','payroll_correction_required','ordinary context edit cannot change a frozen period');
+SELECT lives_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>2,from_date=>'2030-02-25',wage=>'5700')$$,'future context remains editable beyond frozen period');
+SELECT lives_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>3,from_date=>'2030-03-25',until_date=>'2030-04-01')$$,'bounded context validity can expire');
+SELECT lives_ok($$SELECT pg_temp.save_context(head=>(current_setting('test.context.saved')::jsonb->>'id')::uuid,expected=>4,from_date=>'2030-04-02')$$,'context can resume prospectively after an intentional gap');
+RESET ROLE;
+SELECT * FROM finish();

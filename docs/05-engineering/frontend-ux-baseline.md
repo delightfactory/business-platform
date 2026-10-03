@@ -231,3 +231,8 @@ Required design rules:
 A technically correct workflow that forces users to understand implementation mechanics, repeatedly enters derivable data, or navigates unnecessary intermediate screens fails UX acceptance.
 
 Complexity shielding is not permission to conceal important consequences. Financial impact, authorization limitations, compliance implications, unresolved exceptions and irreversible actions must remain visible in plain business language.
+# Owner reaffirmation: task simplicity across HR (2026-10-03)
+
+Each additional HR capability increases the obligation to simplify its interface. Navigation and screens follow the user's task and next action, rather than backend modules/tables/commands. Everyday work has one clear entry and stage-appropriate primary action; specialist settings, optional detail and history appear only when relevant. Use consistent plain Arabic business terminology; keep IDs, hashes, internal states and raw database errors out of user-facing explanations. Users complete and recover a task with current permissions without unrelated setup or opening every unaffected employee. Retain entered values on failure and invalidate old confirmation after edits.
+
+Acceptance of materially changed HR journeys requires a checked role-specific entry, normal path, important failure/recovery path and next action, using real content at phone/tablet/desktop widths and with keyboard access. This applies to subsequent work; it does not certify that every existing HR screen has been audited.

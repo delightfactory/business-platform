@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export async function changeOperatorGrantAction(formData: FormData) {
@@ -10,22 +11,24 @@ export async function changeOperatorGrantAction(formData: FormData) {
   const canOnboard = formData.get('canOnboardTenants') === 'on';
   const canManageLifecycle = formData.get('canManageTenantLifecycle') === 'on';
   const canManageCommercial = formData.get('canManageCommercialAccess') === 'on';
+  const canManageStatutory = formData.get('canManageStatutoryRules') === 'on';
   const reason = text(formData, 'reason');
   if (!validEmail(email) || !['grant', 'update', 'revoke'].includes(action)) return 'invalid';
-  if (action !== 'revoke' && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial) return 'capability';
+  if (action !== 'revoke' && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory) return 'capability';
   if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();
   if (!supabase) return 'setup';
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const { data, error } = await supabase.rpc('change_platform_operator_grant', {
+  const { data, error } = await supabase.rpc('change_platform_operator_authority', {
     p_target_email: email, p_action: action, p_can_manage_operators: canManage,
     p_can_onboard_tenants: canOnboard, p_can_manage_tenant_lifecycle: canManageLifecycle,
-    p_can_manage_commercial_access: canManageCommercial, p_reason: reason,
+    p_can_manage_commercial_access: canManageCommercial, p_can_manage_statutory_rules: canManageStatutory, p_reason: reason,
   });
   if (error) return mapError(error.message);
   if (!data || typeof data !== 'object' || Array.isArray(data)) return 'failed';
   const result = data as Record<string, unknown>;
+  if (['grant', 'update', 'revoke'].includes(String(result.state))) revalidatePath('/operator', 'layout');
   if (result.state === 'revoke' && typeof result.email === 'string'
     && result.email.toLowerCase() === user.email?.toLowerCase()) {
     const { error: signOutError } = await supabase.auth.signOut({ scope: 'local' });
@@ -33,7 +36,7 @@ export async function changeOperatorGrantAction(formData: FormData) {
   }
   if (result.state === 'update' && typeof result.email === 'string'
     && result.email.toLowerCase() === user.email?.toLowerCase() && result.can_manage_operators === false) {
-    redirect(result.can_onboard_tenants === true || result.can_manage_tenant_lifecycle === true || result.can_manage_commercial_access === true
+    redirect(result.can_onboard_tenants === true || result.can_manage_tenant_lifecycle === true || result.can_manage_commercial_access === true || result.can_manage_statutory_rules === true
       ? '/operator?state=updated-self'
       : '/auth/login?state=operator-revoked');
   }

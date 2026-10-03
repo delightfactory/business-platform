@@ -75,6 +75,8 @@ export async function rehireEmployeeAction(previous: RehireState, formData: Form
 function value(data: FormData, key: string) { return String(data.get(key) ?? '').trim(); }
 
 function endError(message: string) {
+  if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
   if (message.includes('people_employment_manage_forbidden')) return 'لا تملك الصلاحيات اللازمة لإنهاء علاقة العمل وإغلاق بياناتها.';
   if (message.includes('people_employment_end_before_materialized_day') || message.includes('people_assignment_materialized_day')) return 'يوجد يوم حضور مفتوح بعد تاريخ الإنهاء المختار. اختر آخر يوم عمل يشمل أيام الحضور المفتوحة، ثم أعد المحاولة.';
   if (message.includes('people_employment_future_end_unsupported')) return 'لا يمكن تحديد إنهاء مستقبلي في هذه النسخة؛ اختر اليوم أو تاريخًا سابقًا.';
@@ -87,6 +89,8 @@ function endError(message: string) {
 }
 
 function rehireError(message: string) {
+  if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
   if (message.includes('people_rehire_forbidden')) return 'لا تملك الصلاحيات اللازمة لإعادة التوظيف وإدارة بيانات العمل والأجر.';
   if (message.includes('people_rehire_requires_ended_employee')) return 'إعادة التوظيف متاحة بعد انتهاء علاقة العمل السابقة فقط.';
   if (message.includes('people_rehire_active_employment_exists')) return 'لدى الموظف علاقة عمل نشطة بالفعل. حدّث الصفحة للتحقق.';

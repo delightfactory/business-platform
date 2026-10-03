@@ -8,9 +8,14 @@ export async function runAction(previous:RunState,form:FormData):Promise<RunStat
  const fail=(code?:string)=>({...previous,error:runError(code),saved:false});
  if(![tenant,employer,period].every(uuid)||!['calculate','cancel'].includes(operation)||(operation==='cancel'&&(reason.length<3||reason.length>500)))return fail('22023');
  const args={p_tenant:tenant,p_employer:employer,p_period:period,p_run:previous.status==='cancelled'?null:previous.run||null,p_expected:previous.status==='cancelled'?0:previous.revision,p_operation:operation,p_reason:operation==='cancel'?reason:''};
- const signature=JSON.stringify(args),attempt=previous.signature===signature&&uuid(previous.attempt)?previous.attempt:crypto.randomUUID(),state={...previous,error:'',saved:false,signature,attempt};
- const client=await createSupabaseServerClient();if(!client)return {...state,error:runError()};const {data:{user}}=await client.auth.getUser();if(!user)return {...state,error:runError('42501'),signature:'',attempt:''};
- const result=await client.rpc('payroll_run_command',{...args,p_attempt:attempt});if(result.error)return {...state,error:runError(result.error.code,result.error.message)};
+ const submittedAttempt=field('__attempt');if(submittedAttempt&&!uuid(submittedAttempt))return fail('22023');
+ const signature=JSON.stringify(args),attempt=submittedAttempt||(previous.signature===signature&&uuid(previous.attempt)?previous.attempt:crypto.randomUUID()),state={...previous,error:'',saved:false,signature,attempt};
+ const client=await createSupabaseServerClient();if(!client)return {...state,error:runError()};const {data:{user}}=await client.auth.getUser();if(!user||field('__actor')&&field('__actor')!==user.id)return {...state,error:runError('42501'),signature:'',attempt:''};
+ const recovering=field('__reconcile')==='true';
+ const result=await client.rpc(recovering?'payroll_run_reconcile':'payroll_run_command',{...args,p_attempt:attempt});if(result.error)return {...state,error:runError(result.error.code,result.error.message)};
+ if(recovering&&result.data.outcome==='closed_uncommitted')return {...state,closedUncommitted:true,error:'',signature:'',attempt:''};
+ if(recovering&&result.data.outcome!=='committed')return {...state,error:runError()};
+ const receipt=recovering?result.data.result:result.data;
  revalidatePath(`/tenant/${tenant}/payroll/runs`);revalidatePath(`/tenant/${tenant}/payroll`);
- return {error:'',saved:true,run:result.data.id,revision:result.data.revision,status:result.data.status,signature:'',attempt:''};
+ return {error:'',saved:true,recovered:recovering,run:receipt.id,revision:receipt.revision,status:receipt.status,signature:'',attempt:''};
 }

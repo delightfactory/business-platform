@@ -30,7 +30,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   if (!client) return failure('تعذر الاتصال ببيانات الرواتب.');
   const { data: { user } } = await client.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
-  const access = await client.rpc('payroll_access_snapshot', { p_tenant: tenantId });
+  const [access, navigation] = await Promise.all([client.rpc('payroll_access_snapshot', { p_tenant: tenantId }), client.rpc('payroll_navigation_access', { p_tenant: tenantId })]);
   if (access.error || !access.data) return failure(access.error?.code === '42501' ? 'هذا الحساب غير مخوّل للوصول إلى مساحة الرواتب. راجع مسؤول الشركة.' : 'تعذر تحميل صلاحيات الرواتب.');
   const found = await client.rpc('payroll_employers', { p_tenant: tenantId, p_query: query.q ?? '', p_after_name: query.after_name ?? null, p_after_id: query.after_id ?? null, p_limit: 30 });
   if (found.error || !Array.isArray(found.data?.items)) return failure('تعذر تحميل جهات العمل.');
@@ -100,6 +100,8 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
     <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>
       {calendar.access.can_view && work && <p><Link href={inputsLink}>مدخلات الفترة ومراجعتها</Link></p>}
       <p><Link href={setupLink}>دورة الجهة والفترات المحفوظة</Link></p>
+      {!navigation.error && navigation.data?.can_view_advances === true && <p><Link href={`${path}/advances?${new URLSearchParams({ employer })}`}>سلف موظفي الجهة وأقساطها</Link></p>}
+      {!navigation.error && navigation.data?.can_view_reports === true && <p><Link href={`${path}/reports?${new URLSearchParams({ employer, report: navigation.data.report_kind === 'advances' ? 'advances' : 'sheet', ...(navigation.data.report_kind !== 'advances' && work?.final_output_id ? { output: work.final_output_id } : {}) })}`}>التقارير المحفوظة للجهة</Link></p>}
       {periods.length === 24 && <p><Link href={scope('/runs', { before: periods[23].starts_on, period: '' })}>فترات أقدم</Link></p>}
     </details>
   </div></PageFrame>;

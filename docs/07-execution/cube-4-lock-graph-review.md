@@ -1,6 +1,24 @@
 # Cube 4 current source lock graph review
 
-Status: **source review, not concurrency qualification**, 2026-10-02. Selected migration tree at `555c34a568f44eb4b99d99712a699094488f3026`; no Payroll locks added. Read with [G3/G4 and D05](cube-4-execution-contract.md#financialconcurrency-contract). Paths below are relative to `supabase/migrations/`; line numbers identify declaration/patch entry, not evidence of live deployment.
+Status: **historical base source review, with current QA115 addendum below**, 2026-10-02. Original inventory selected migration tree at `555c34a568f44eb4b99d99712a699094488f3026`, before Cube4 additions. Read with [G3/G4 and D05](cube-4-execution-contract.md#financialconcurrency-contract). Paths below are relative to `supabase/migrations/`; line numbers identify declaration/patch entry, not evidence of live deployment.
+
+## Current applied protection boundary
+
+The historical statements below about absent Payroll protection and unrun races describe the selected base, not current QA. Qualified local QA115 includes Slice2 same-transaction frozen People history guards and Slice4 final Employer-period Employment scope protection. The supported onboarding/rehire/import, compensation, assignment and end-Employment public writers participate in `payroll.lock_source_scope`, acquiring existing Tenant advisory serialization before Employee/Employment row locks. This protects insertion gaps on those paths; absence of Payroll serialization there is no longer a current finding. The installed function names and patch scope are in `20261002002040_cube4_payroll_inputs.sql` and `20261002020629_cube4_payroll_finalization_foundation.sql`.
+
+Root directly rechecked upgrade QA115 compiled MD5s: `payroll.guard_people_frozen_history()` = `d06c25a37e8044ec5b4428090491ed72`; `payroll.guard_final_employment_scope()` = `7d69fb2a798538fa1c38e2eef8277261`; `payroll.lock_run_scope(uuid,uuid,uuid)` = `1709660c0a0c00ed6efcab4ebe68b9e0`. A bounded current source/catalog audit is recorded outside the worktree at `cube4-g3-current-gap-review.json`. This check establishes installed definitions, not complete race qualification.
+
+G3 remains open: historical correction must be operable and separately qualified; Slice6 is frozen after two failed source reviews and is not applied on QA115. Existing focused Slice2/4 evidence does not prove the entire source insertion/change matrix in both acquisition orders. The bounded qualification below covers current People-versus-private-finalization races in a dedicated QA115 clone; no public finalization, qualified legal pack or complete G3/G4 acceptance follows from its synthetic financial fixtures. Only paths changing consumed data or current financial authority require the remaining participant inventory; no broad organization-label freeze is inferred.
+
+### Executed bounded People races
+
+The subsequent actual run passed all six new scenarios: public onboarding, backdated compensation change and end-Employment, each in source-first and final-first order. It used two independent writer sessions plus an observer on the dedicated derived database `business_platform_cube4_g3_race_qa`, cloned from exact fresh QA115. Every case recorded a real ungranted advisory lock, matching granted winner key, actual `pg_stat_activity` Lock wait and winner PID from `pg_blocking_pids`. No repeated successful scenario or prior suite was run.
+
+Source-first committed exact expected Employee/Employment scope, compensation amounts/dates or end/assignment closure and refused stale private append with `23514 payroll_approval_blocked`, leaving no final/context/append receipt. Final-first committed one immutable private result/context/receipt and refused the conflicting authenticated source API with `23514 payroll_people_correction_required`; source arrays and audit counts were preserved. Exact private append replay added no effects. Original fresh QA115 before/after source/schema/ledger fingerprints were identical.
+
+Outside evidence: `cube4-g3-race-evidence.json` reports `PASS_BOUNDED_PRIVATE_G3_EVIDENCE_ONLY`, six cases. Input source review cycle1 found two test-evidence defects; bounded cycle2 passed after correcting the actual Slice6 signature check and asserting exact dated values. Runner SHA256 `f7759d04563998435f7fcf2426caebe796b4087afcf9f802c24f97e9024cf479`; fixture SHA256 `faa89a33aa2cc031350734c37fd958135af1e7426e2ef03196ccb593bf0568c5`. The scratch database is retained; no baseline data was mutated and no database was dropped or connection terminated.
+
+Manually authored candidate financial flags/net/statutory fields were explicitly NONLEGAL fixtures, with existing authority/source/registration guards unmodified. This qualifies only the six structural races. Rehire/import, assignment/cancellation/prospective closure, remaining data/authority writers, lawful historical correction, Time/Leave consumer races and actual legal/public G6 finalization remain open.
 
 ## Method and scope
 
