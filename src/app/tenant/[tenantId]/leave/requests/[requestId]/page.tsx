@@ -31,6 +31,7 @@ import styles from '../../review.module.css';
 import { DayBreakdown } from './DayBreakdown';
 import { ReviewIntentForm } from './ReviewIntentForm';
 import { ReplacementPanel } from './ReplacementPanel';
+import { leaveCorrectionHref, type LeaveCorrectionContext } from '@/lib/payroll/leave-correction-context';
 
 export const dynamic = 'force-dynamic';
 
@@ -107,12 +108,26 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
   const untrackedDays = request.days.filter((day) => day.eligible && day.balanceMode === 'untracked');
   const canReview = request.state === 'submitted' && access.canApprove;
   const canManageCancellation = request.state === 'approved' && access.canManage;
+  const correctionResult = await supabase.rpc('payroll_leave_correction_context', {
+    p_tenant: tenantId, p_request: requestId,
+  });
+  const correctionContext = correctionResult.error ? null : correctionResult.data as LeaveCorrectionContext;
 
   return <PageFrame footer="الموارد البشرية">
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
-    {query.payrollCorrection === 'required' && request.state === 'approved' && <section className="work-card">
-      <p>راجع مسؤوليات الإضافة التاريخية مع فريق الرواتب. المسير المقفل يحتفظ بمبالغه حتى اكتمال التصحيح المناسب لحالة الدفع.</p>
-      <PendingLink className="primary-button" href={`/tenant/${tenantId}/payroll/corrections?kind=source_change`}>فتح تصحيحات الرواتب</PendingLink>
+    {correctionContext && correctionContext.outputs.length > 0 && <section className="work-card">
+      <h2>تصحيح الرواتب المرتبط بهذا الطلب</h2>
+      <p>اختر المخرج المتأثر لمراجعة مسؤولية التصحيح. تُستعاد مصادر الطلب واستبدالاته تلقائيًا، وتُراجع المبالغ قبل الاعتماد.</p>
+      {correctionContext.outputs.map(output => <p key={output.id}>
+        <PendingLink className="primary-button" href={leaveCorrectionHref(tenantId, correctionContext, output.id)}>
+          مراجعة التصحيح — <bdi>{output.starts_on}</bdi> إلى <bdi>{output.ends_on}</bdi>
+        </PendingLink>
+      </p>)}
+    </section>}
+    {query.payrollCorrection === 'required' && correctionResult.error && <section className="work-card">
+      <p>{correctionResult.error.code === '42501'
+        ? 'أرسل الطلب إلى مسؤول تصحيح الرواتب لمراجعة أثره المالي. لا تتيح صلاحية الإجازات وحدها فتح التصحيح.'
+        : 'تعذر استعادة مسؤولية تصحيح الرواتب. أعد تحميل الطلب قبل متابعة التصحيح.'}</p>
     </section>}
 
     <section className="work-card task-page" aria-labelledby="leave-request-title">

@@ -9,6 +9,7 @@ import {type InputKind} from '../inputs/rules';
 import {SourcePicker} from './SourcePicker';
 import {money,issueNames,type Issue} from '../runs/rules';
 import styles from '../payroll.module.css';
+import {leaveCorrectionHref,type LeaveCorrectionContext} from '@/lib/payroll/leave-correction-context';
 export const dynamic='force-dynamic';
 type Source={id:string;expected_hash:string;kind?:InputKind;name?:string;fresh?:boolean;affects_paid_output?:boolean;fields?:Record<string,unknown>};
 type Workspace={employer:{display_name:string};period:{id:string;starts_on:string;ends_on:string};today:string;ever_paid:boolean;superseded:boolean;employees:{id:string;name:string;code:string}[];sources:Source[];sites:{id:string;name:string}[];references:Record<string,{id:string;name:string;version?:number}[]>;period_choices:{id:string;starts_on:string;ends_on:string}[];replacement_outputs:{original_output:string;replacement_output:string;employer_id:string}[];output_choices:{id:string;employer:string;starts_on:string;ends_on:string}[];component_choices:{id:string;name:string;classification:string}[];access:{can_view_final:boolean;can_view_payments:boolean;can_prepare:boolean;can_approve:boolean;can_record:boolean};case:null|{affected_count:number;affected_outputs:{id:string;ever_paid:boolean;starts_on:string;ends_on:string}[];id:string;revision:number;status:string;proposal_id:string;reason:string;reference:string;changes:{type:string;source_id?:string;expected_hash?:string;fields?:Record<string,unknown>}[];target_period?:string;responsibilities:{employment_id:string;output_id?:string;basis:string;amount:string;source:string;reference:string;component_id?:string;target_period?:string}[]};amendments:{id:string;period_id:string;revision:number;status:string;candidate_id:string;approval:{ready:boolean;blocking_count:number;stale_reasons:string[]}|null;issues:Issue[]|null}[];history:{id:string;status:string;revision:number;created_at:string}[];settlements:{employment_id:string;direction:string;amount:string;occurred_on:string;reference:string;reason:string}[]};
@@ -17,9 +18,22 @@ export default async function CorrectionsPage({params,searchParams}:{params:Prom
  const keep=Object.fromEntries(Object.entries(q).filter((x):x is [string,string]=>typeof x[1]==='string'));
  const href=(extra:Record<string,string>)=>`${path}?${new URLSearchParams({...keep,...extra})}`;
  const failure=(text:string)=><PageFrame><section dir="rtl" className={styles.card}><h1>تصحيح راتب مقفل</h1><p role="alert">{text}</p><Link href={href({})}>إعادة المحاولة بنفس السياق</Link> · <Link href={`/tenant/${tenantId}/payroll?${new URLSearchParams({employer:q.employer??'',period:q.period??''})}`}>العودة إلى الرواتب</Link></section></PageFrame>;
- if((q.employer&&!uuid(q.employer))||(q.output&&!uuid(q.output))||['case','employee','person','after','source'].some(key=>q[key]&&!uuid(q[key]!)))return failure('راجع سياق الجهة والموظف والفترة.');
- const kind=(q.kind??'compensation') as CorrectionKind;if(!Object.hasOwn(correctionKinds,kind))return failure('راجع نوع المصدر المطلوب تصحيحه.');
+ if((q.employer&&!uuid(q.employer))||(q.output&&!uuid(q.output))||['case','employee','person','after','source','request'].some(key=>q[key]&&!uuid(q[key]!)))return failure('راجع سياق الجهة والموظف والفترة.');
+ const kind=(q.request?'source_change':q.kind??'compensation') as CorrectionKind;if(!Object.hasOwn(correctionKinds,kind))return failure('راجع نوع المصدر المطلوب تصحيحه.');
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال ببيانات التصحيح.');const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
+ let requestContext:LeaveCorrectionContext|undefined;
+ if(q.request){
+  const contextResult=await client.rpc('payroll_leave_correction_context',{p_tenant:tenantId,p_request:q.request});
+  if(contextResult.error||!contextResult.data)return failure('تعذر استعادة سياق الطلب أو لا تملك صلاحية تصحيح الرواتب.');
+  requestContext=contextResult.data as LeaveCorrectionContext;
+  if((q.employer&&q.employer!==requestContext.employer_id)||(q.employee&&q.employee!==requestContext.employment_id))return failure('لا يطابق الرابط جهة العمل أو الموظف المرتبط بالطلب.');
+  if(!q.output)return <PageFrame><section className={styles.card} dir="rtl"><h1>مخرجات الرواتب المتأثرة بالطلب</h1>
+   {requestContext.outputs.map(output=><p key={output.id}><Link href={leaveCorrectionHref(tenantId,requestContext!,output.id)}>مراجعة التصحيح — {displayDate(output.starts_on)} إلى {displayDate(output.ends_on)}</Link></p>)}
+   {requestContext.outputs.length===0&&<p>لا توجد مسؤولية تصحيح مفتوحة لهذا الطلب أو استبدالاته.</p>}</section></PageFrame>;
+  if(!requestContext.outputs.some(output=>output.id===q.output))return failure('لا توجد مسؤولية تصحيح مفتوحة لهذا الطلب على المخرج المحدد.');
+  q.employer=requestContext.employer_id;q.employee=requestContext.employment_id;q.kind='source_change';
+  Object.assign(keep,{employer:q.employer,employee:q.employee,kind:q.kind});
+ }
  if(!q.output){
   const discovery=await client.rpc('payroll_correction_outputs',{p_tenant:tenantId,p_employer:q.employer||null,p_person:q.person||null,p_after:q.after||null});
   if(discovery.error)return failure(discovery.error.code==='42501'?'يلزم مسؤول مخول بتصحيح الرواتب. أرسل له الجهة والموظف والتاريخ المطلوب تصحيحه.':'تعذر تحميل المخرجات؛ أعد المحاولة بنفس السياق.');
@@ -30,6 +44,13 @@ export default async function CorrectionsPage({params,searchParams}:{params:Prom
  const result=await client.rpc('payroll_correction_workspace',{p_tenant:tenantId,p_employer:q.employer,p_output:q.output,p_case:q.case||null,p_kind:kind,p_employee:q.employee||null,p_after:q.after||null});
  if(result.error||!result.data)return failure(result.error?.code==='42501'?'يلزم مسؤول مخول بتصحيح الرواتب وإدارة هذا المصدر. لم تتغير البيانات.':'تعذر تحميل المراجعة. أعد المحاولة بنفس الجهة والفترة والمصدر.');
  const w=result.data as Workspace,c=w.case;
+ const navigationSources=requestContext?.outputs.find(output=>output.id===q.output)?.source_ids;
+ const navigationObservations=navigationSources&&!c?await Promise.all(navigationSources.map(async id=>{
+  const choice=await client.rpc('payroll_correction_choices',{p_tenant:tenantId,p_employer:q.employer,p_output:q.output,p_kind:'source_change',p_choice:'sources',p_selected:id,p_employee:q.employee});
+  return choice.error?undefined:choice.data?.selected as Source|undefined;
+ })):undefined;
+ if(navigationObservations?.some(source=>!source||!source.fresh))return failure('تغير مصدر الطلب أثناء فتح التصحيح. أعد تحميل الطلب لاستعادة المصادر الحالية.');
+ const navigationObservationProposal=navigationObservations?{observations:navigationObservations.map(source=>({id:source!.id,name:source!.name??'مصدر الإجازة',expected_hash:source!.expected_hash,fresh:source!.fresh,affects_paid_output:source!.affects_paid_output})),reason:'',reference:'',target:'',rows:[]}:undefined;
  const selected=q.source?await client.rpc('payroll_correction_choices',{p_tenant:tenantId,p_employer:q.employer,p_output:q.output,p_kind:kind,p_choice:'sources',p_selected:q.source,p_employee:q.employee||null}):null;
  const savedChange=q.edit==='1'?c?.changes[0]:undefined;
  const savedKind=savedChange?.type.replace(/_split$/,'');
@@ -43,7 +64,7 @@ export default async function CorrectionsPage({params,searchParams}:{params:Prom
   const current=choice.data?.selected as Source|undefined;
   return {id:change.source_id!,name:current?.name??'تغيير محفوظ يحتاج تحديث المصدر',expected_hash:change.expected_hash??'',fresh:!choice.error&&current?.fresh===true&&current.expected_hash===change.expected_hash,affects_paid_output:current?.affects_paid_output};
  })):undefined;
- const savedObservationProposal=editingObservations&&c?{observations:editingObservations,reason:c.reason,reference:c.reference,target:c.target_period??'',rows:c.responsibilities.map(row=>({employment:row.employment_id,output:row.output_id??q.output!,basis:row.basis,amount:String(row.amount),component:row.component_id??'',reference:row.reference,source:row.source,target:row.target_period??c.target_period??''}))}:undefined;
+ const savedObservationProposal=editingObservations&&c?{observations:editingObservations,reason:c.reason,reference:c.reference,target:c.target_period??'',rows:c.responsibilities.map(row=>({employment:row.employment_id,output:row.output_id??q.output!,basis:row.basis,amount:String(row.amount),component:row.component_id??'',reference:row.reference,source:row.source,target:row.target_period??c.target_period??''}))}:navigationObservationProposal;
  const shared={actor:user.id,tenant:tenantId,employer:q.employer,output:q.output};
  const savedProposal=q.edit==='1'&&c&&savedChange&&kind!=='source_change'?{fields:savedChange.fields??{},unchangedChanges:c.changes.slice(1),split:savedChange.type.endsWith('_split'),reason:c.reason,reference:c.reference,target:c.target_period??'',rows:c.responsibilities.map(row=>({employment:row.employment_id,output:row.output_id??q.output!,basis:row.basis,amount:String(row.amount),component:row.component_id??'',reference:row.reference,source:row.source,target:row.target_period??c.target_period??''}))}:undefined;
  return <PageFrame><main dir="rtl" className={styles.workspace}>

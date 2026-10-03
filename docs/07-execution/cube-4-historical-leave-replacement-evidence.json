@@ -1,0 +1,184 @@
+{
+  "atUTC": "2026-10-03T22:31:27.021Z",
+  "status": "HISTORICAL_REPLACEMENT_NAVIGATION_BOUNDED_CHECKPOINT_NOT_FULL_CUBE4",
+  "parentCommit": "4685712bded0ae88986102f0772f3c1ab1d1aa01",
+  "database": "business_platform_cube4_adam_closure_qa",
+  "baseline": 163,
+  "applications": [
+    {
+      "atUTC": "2026-10-03T22:05:26.378Z",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseCommit": "4685712bded0ae88986102f0772f3c1ab1d1aa01",
+      "beforeSnapshot": "qa-after-historical-addition-snapshot.log",
+      "migration": "20261003034000_cube4_historical_leave_replacement.sql",
+      "canonicalLF_SHA256": "c9e017f29ee055bcf9b1b228223a690aee895000ac5ab941db3706208a45f19a",
+      "exitCode": 0,
+      "status": "DELTA_APPLIED"
+    },
+    {
+      "atUTC": "2026-10-03T22:21:41.194Z",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "migration": "20261003035000_cube4_leave_correction_navigation.sql",
+      "canonicalLF_SHA256": "7aed3a9195b8d473b496a49135eff991b444e5db4482ad67697fe88da5b55395",
+      "exitCode": 0,
+      "status": "DELTA_APPLIED"
+    }
+  ],
+  "checks": [
+    {
+      "atUTC": "2026-10-03T22:07:44.709Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_historical_leave_replacement.test.sql",
+      "sqlCanonicalLF_SHA256": "c0656b100e78275e0fdf437ec2c3c433fb0f8b67d8d52693f8acf56930b849e7",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 39,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T22:23:00.929Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_leave_correction_navigation.test.sql",
+      "sqlCanonicalLF_SHA256": "d00bed5804d2a8bb2cd7258ae1cd7b4ef7fbb31e1b2ff74bf8e41694dd12950c",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 49,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseline": 163,
+      "test": "cube3_leave_approved_replacement.test.sql",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 61,
+      "transportSHA256": "6d9f3455af93573245a8fb8da6ef93ac6b5fbdcb58227e5188a00e017339d5cf"
+    },
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "baseline": 163,
+      "test": "cube4_bound_source_correction_successor.test.sql",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 8,
+      "transportSHA256": "e8058d9a4be3879733fce42b8b72aa6539c34f936f6c05a95e7d61a6aff741a5"
+    }
+  ],
+  "receiptScopeNote": "Replay baseCommit in old delta runner receipts is historical. Replacement test executed after applied34000 at162; navigation and regressions after35000 at163. Applied hashes above bind this phase.",
+  "runtime": {
+    "node": "24.16.0",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "typescript": "5.9.3",
+    "postgres": "17.6",
+    "databaseContainer": "supabase_db_business-platform"
+  },
+  "engineering": {
+    "serverPageComponents": 7,
+    "typecheckExit": 0,
+    "targetedLintExit": 0,
+    "productionBuildExit": 0,
+    "authenticatedBrowser": "NOT_RUN"
+  },
+  "logs": [
+    {
+      "file": "qa-replacement-apply.log",
+      "sha256": "2074e6cdb03e49a6ef64da57be5f25efba18542e177f4ae222f8319670c73ee4"
+    },
+    {
+      "file": "qa-navigation-apply.log",
+      "sha256": "d2b9e95f9fcfd96b1a8e04bffb8c4154c416a704a6a22d00005dd712e0a304c6"
+    },
+    {
+      "file": "qa-test-cube4_historical_leave_replacement.test.sql.log",
+      "sha256": "9b5deef17921a6529b7834237c646d4cda3bce021b157d938df5e6bd31858cf7"
+    },
+    {
+      "file": "qa-test-cube4_leave_correction_navigation.test.sql.log",
+      "sha256": "e77b8c096c9f8eece64a9b973f814b897fcc61d50f977b57fcae873481f6efa1"
+    },
+    {
+      "file": "qa-replacement-regression-cube3_leave_approved_replacement.test.sql.log",
+      "sha256": "8800a2021cae9239ae5edd71ee3fe2d0dc58c7f2184696622853800deaf436c7"
+    },
+    {
+      "file": "qa-replacement-regression-cube4_bound_source_correction_successor.test.sql.log",
+      "sha256": "204637d4c86ded123a60d2821e6ade3fa01c6afe1ca2685dc3f920c498f16ff6"
+    },
+    {
+      "file": "qa-after-navigation-snapshot-repaired.log",
+      "sha256": "02b31ffdeb988377c6252181bea68794fa1eddc9ab63b555b271aaf3a896955f"
+    },
+    {
+      "file": "navigation-ui-tests-final.log",
+      "sha256": "13abec6d653b41fcbfab3bb83d73d8ee1b128b36912d2b0b05ec51f3ad3bdbc9"
+    },
+    {
+      "file": "navigation-typecheck-final.log",
+      "sha256": "e276b62a5a346378a13809002e6f495ffffe0c194eacc4c034fe3586eb509bdb"
+    },
+    {
+      "file": "navigation-lint-repaired.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "navigation-build.log",
+      "sha256": "2c25ad99b236678d2636431605bbda125d802df4c07145b8b8c540db66f4365d"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "supabase/migrations/20261003034000_cube4_historical_leave_replacement.sql",
+      "canonicalLF_SHA256": "c9e017f29ee055bcf9b1b228223a690aee895000ac5ab941db3706208a45f19a"
+    },
+    {
+      "file": "supabase/migrations/20261003035000_cube4_leave_correction_navigation.sql",
+      "canonicalLF_SHA256": "7aed3a9195b8d473b496a49135eff991b444e5db4482ad67697fe88da5b55395"
+    },
+    {
+      "file": "supabase/tests/cube4_historical_leave_replacement.test.sql",
+      "canonicalLF_SHA256": "c0656b100e78275e0fdf437ec2c3c433fb0f8b67d8d52693f8acf56930b849e7"
+    },
+    {
+      "file": "supabase/tests/cube4_leave_correction_navigation.test.sql",
+      "canonicalLF_SHA256": "d00bed5804d2a8bb2cd7258ae1cd7b4ef7fbb31e1b2ff74bf8e41694dd12950c"
+    },
+    {
+      "file": "scripts/cube4-build-historical-replacement-test.mjs",
+      "canonicalLF_SHA256": "505e389455c8697cc68dd35948a5a11d154f09129154f31a4552f9858cda223e"
+    },
+    {
+      "file": "scripts/cube4-build-leave-navigation-test.mjs",
+      "canonicalLF_SHA256": "27e385b49331df448560faf1fb414abd7bba6cae7a9fef1f2be5434e3c94739d"
+    },
+    {
+      "file": "scripts/cube4-leave-navigation-ui.test.mjs",
+      "canonicalLF_SHA256": "102f9e151d6dfe4b6edc4c8172f518b706601386197f9bb295f27866fe33e390"
+    },
+    {
+      "file": "src/lib/payroll/leave-correction-context.ts",
+      "canonicalLF_SHA256": "d864a4d756384009d22baf17e46fb532ba26f43f61fdfb4d6157e86d69fff9d3"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "canonicalLF_SHA256": "69339d5902b1548904820c12ff287cbe228c39273d9846698afc681000faa6d7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "canonicalLF_SHA256": "3d173db017b018fc0ccd218b4b3a3dc6d8b2b4e8b824bd74bffa21a59233fb36"
+    }
+  ],
+  "limits": [
+    "NONLEGAL rollback fixture with privately seeded initial final output; not official legal qualification",
+    "SQL navigation fixture has one output; multiple output rendering has component proof",
+    "General statutory/YTD/consumption/public finalization and qualified unpaid succession remain programming work",
+    "Owned connected authenticated browser runtime and responsive/lost-response acceptance remain open",
+    "No comprehensive same-SHA whole-Cube qualification claimed"
+  ]
+}
