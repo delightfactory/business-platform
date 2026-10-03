@@ -1,0 +1,155 @@
+{
+  "atUTC": "2026-10-03T22:00:33.397Z",
+  "status": "HISTORICAL_ADDITION_BOUNDED_METHOD_CHECKPOINT_NOT_FULL_CUBE4",
+  "baseCommit": "e26aabbb5c81a65b3de770a3a7fcad3016a1adb9",
+  "database": "business_platform_cube4_adam_closure_qa",
+  "baseline": 161,
+  "migration": {
+    "atUTC": "2026-10-03T21:32:50.678Z",
+    "database": "business_platform_cube4_adam_closure_qa",
+    "migration": "20261003033000_cube4_historical_leave_addition.sql",
+    "sqlCanonicalLF_SHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+    "exitCode": 0,
+    "status": "DELTA_APPLIED"
+  },
+  "checks": [
+    {
+      "atUTC": "2026-10-03T21:37:50.205Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_historical_leave_addition.test.sql",
+      "sqlCanonicalLF_SHA256": "77b83bc38feab463bda192fbedfe02806844ce0d4552193809a440ca9d7c891f",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 28,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:51:55.897Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_historical_leave_unpaid.test.sql",
+      "sqlCanonicalLF_SHA256": "84abc9a3e9c8e42203bd8cc7471a2d6c96d4ccdf1e7867a31e60488bdea84ab9",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 15,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:53:23.996Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_leave_request_identity.test.sql",
+      "sqlCanonicalLF_SHA256": "87734cd6c15cb720761484ec0f620c51b795fc408465a86a9b72c147050b85e7",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 12,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:53:24.748Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_payroll_final_source_bindings_leave.test.sql",
+      "sqlCanonicalLF_SHA256": "23f715b3224b7f1e5d37a9691876212e2bd04c768ca4558822dcf52581416db1",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 19,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:53:26.601Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_repeated_source_lineage.test.sql",
+      "sqlCanonicalLF_SHA256": "9679579dba37fe1fcd67103a96a3b44d29caad9f89038bcc60e87584f726e01a",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 12,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:53:27.440Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_bound_source_correction_successor.test.sql",
+      "sqlCanonicalLF_SHA256": "4af34c46fcd2e0441c31d1eb0b8b6ce4746ce7aa0c557aa583b5d4b0399c58ba",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 8,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    },
+    {
+      "atUTC": "2026-10-03T21:53:29.704Z",
+      "baseCommit": "edece0d2ff3459aee5b104edec309eaadc79af41",
+      "repairMigrationSHA256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d",
+      "historicalMigrationSHA256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f",
+      "database": "business_platform_cube4_adam_closure_qa",
+      "test": "cube4_source_observation_correction_edit.test.sql",
+      "sqlCanonicalLF_SHA256": "d727b207b5ede3b015385b7272e238f7db94900efb11dce0a9b9c0586b77d437",
+      "exitCode": 0,
+      "status": "BOUNDED_SQL_PASS",
+      "assertions": 8,
+      "scope": "rollback NONLEGAL fixture; no official qualification"
+    }
+  ],
+  "snapshotBefore": "{\"at\": \"2026-10-03T21:27:25.269458+00:00\", \"database\": \"business_platform_cube4_adam_closure_qa\", \"functions\": 189, \"schema_fingerprint\": \"2ff2520faaffe14246cd92a86593cd2f\"}\n{\"cases\": 0, \"payments\": 0, \"auth_users\": 0, \"requirements\": 0, \"final_outputs\": 0}\n",
+  "snapshotAfter": "{\"at\": \"2026-10-03T21:55:53.79224+00:00\", \"database\": \"business_platform_cube4_adam_closure_qa\", \"functions\": 191, \"schema_fingerprint\": \"29fc6c6c522d912884cfe07a67ec706b\"}\n{\"cases\": 0, \"payments\": 0, \"admissions\": 0, \"auth_users\": 0, \"requirements\": 0, \"final_outputs\": 0, \"addition_observations\": 0}\n{\"anonymous_rpc\": false, \"service_role_rpc\": false, \"authenticated_rpc\": true, \"authenticated_view_select\": false, \"authenticated_internal_helper\": false}\n",
+  "executedUI": {
+    "checks": 5,
+    "scope": "actual Leave action/rules/form with React/Next/RPC transport boundary emulation; no authenticated browser claim"
+  },
+  "productionBuild": {
+    "exitCode": 0,
+    "scope": "one current production webpack build; TypeScript checked; cache snapshot warnings did not fail compilation; no server started"
+  },
+  "files": {
+    "qa-test-cube4_historical_leave_addition.test.sql-lineage-extension-fixture-retry.json": "94b02bbc5a5312465da90dd9e5eed496ecb1b01c079520ed66583e2a593d903d",
+    "qa-test-cube4_historical_leave_unpaid.test.sql-lineage-extension-fixture-retry.json": "ecc2a4f79c94c8ba0901d8b474cba3618504e91518062ecb223b3cac79cf8453",
+    "qa-test-cube4_leave_request_identity.test.sql-lineage-extension.json": "bdcf8e0e2a3a8ff8934dcfb57b01d153b8d1d4b1a2d2556638886a945e7552e0",
+    "qa-test-cube4_payroll_final_source_bindings_leave.test.sql-lineage-extension.json": "3685e1eba32a4338c83fe9df71944f9030ca91b3533d82b5adc40c212073c160",
+    "qa-test-cube4_repeated_source_lineage.test.sql-lineage-extension.json": "4e64e46e7f98ca39a2c6cb9aa1edbed22a5353136b266f0a899e5b46429ac454",
+    "qa-test-cube4_bound_source_correction_successor.test.sql-lineage-extension.json": "df5582344cf882b701e4dfa992695998366ddc82543e48c17841dc6910fde590",
+    "qa-test-cube4_source_observation_correction_edit.test.sql-lineage-extension.json": "e7cc18e09059e9cc89ff95a5b68fd169a9326c064ce4407e89fc3dab87654a13",
+    "qa-historical-apply.json": "85a4b6df520e06f6d70c8338af69861b816c8a5db984284228afd608e1262de7",
+    "qa-before-historical-addition-snapshot.log": "c97d54b07bd3067034cfc6548cf42151b3473611d536982cdb63678ae7fed10f",
+    "qa-after-historical-addition-snapshot.log": "8107f71d4ffc653f73c322231bae932998ff5e1710830dc13795a0791dcb2745",
+    "historical-ui-tests.log": "ef4a16ea9bec913ced8c36e16b96569afec980845774ec7965e95358c282c5b4",
+    "historical-typecheck-final.log": "e276b62a5a346378a13809002e6f495ffffe0c194eacc4c034fe3586eb509bdb",
+    "historical-lint-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "generation-after-historical.log": "c42b95dd68eb0470f29f47de61dff2995182721006eddfddec4043d6d6b643f5",
+    "historical-build.log": "774d74631cc4cb6b1aac2b472bcd459de6cdd224eccdd3d3bb8284adc20ce1e8"
+  },
+  "retainedFailures": [
+    "lineage cancellation test originally kept all constraints immediate through cancellation event creation; corrected to production deferred tail, final28pass",
+    "wholly unpaid test expected mixed-route refusal; corrected to actual pure-unpaid refusal, final9pass then extended",
+    "extended authority test expected historical40001; installed later Leave migration usesPT409, final15pass"
+  ],
+  "reused": "statutory payslip15 and unchanged Payroll correction restoration12 keep prior version/scope; no unrelated SQL suite or full161 replay",
+  "journeyResults": {
+    "paidAddition": "CLOSED bounded NONLEGAL public admission -> UI workspace RPC -> proposal -> approval -> paid route -> external settlement completed; later cancellation reopens exact lineage and preserves sibling/originals",
+    "unboundDayUnpaid": "PARTIAL actual public admission -> amendment calculation with added source; qualified approval/finalization/succession blocked by real financial gates",
+    "frontend": "IMPLEMENTED explicit checkbox, distinct stable request identity, refusal guidance and source_change continuation link; component method PASS, authenticated responsive/reload acceptance OPEN"
+  },
+  "blockers": [
+    "explicit replacement chain for an admitted historical request remains implementation work; ordinary replacement guard still refuses its unadmitted replacement",
+    "general statutory/YTD/month ownership/consumption/approval/finalization wiring and qualification OPEN",
+    "official2026 qualification package unavailable; not requested again or invented",
+    "authenticated browser/runtime and complete final sameSHA/tree qualification OPEN",
+    "inherited missing Git ancestor persists, current trees readable"
+  ],
+  "noOtherQAChanged": true,
+  "noPublication": true,
+  "noCredentialRead": true,
+  "noGateOpening": true
+}

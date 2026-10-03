@@ -35,7 +35,7 @@ import { ReplacementPanel } from './ReplacementPanel';
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string; requestId: string }>;
-type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string; replacement?: string; rpage?: string }>;
+type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string; replacement?: string; rpage?: string; payrollCorrection?: string }>;
 
 export default async function LeaveRequestReviewPage({ params, searchParams }: {
   params: Params;
@@ -110,6 +110,10 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
 
   return <PageFrame footer="الموارد البشرية">
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
+    {query.payrollCorrection === 'required' && request.state === 'approved' && <section className="work-card">
+      <p>راجع مسؤوليات الإضافة التاريخية مع فريق الرواتب. المسير المقفل يحتفظ بمبالغه حتى اكتمال التصحيح المناسب لحالة الدفع.</p>
+      <PendingLink className="primary-button" href={`/tenant/${tenantId}/payroll/corrections?kind=source_change`}>فتح تصحيحات الرواتب</PendingLink>
+    </section>}
 
     <section className="work-card task-page" aria-labelledby="leave-request-title">
       <PendingLink className="back-link" href={`/tenant/${tenantId}/leave`}>العودة إلى قائمة المراجعة</PendingLink>

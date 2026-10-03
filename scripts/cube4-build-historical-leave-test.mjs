@@ -1,0 +1,47 @@
+import fs from 'node:fs';
+let sql=fs.readFileSync('supabase/tests/cube4_leave_request_identity.test.sql','utf8').replaceAll('\r\n','\n');
+const tail='SELECT * FROM finish();\nROLLBACK;';
+if(sql.split(tail).length!==2)throw new Error('Unexpected rollback fixture tail');
+sql=sql.replace(tail,()=>`
+-- Explicit public admission must connect to the actual existing correction UI
+-- RPC/proposal/financial closure, not merely write an orphan requirement.
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','d2600000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.historical_result',public.leave_approve_historical_request('d2601000-0000-4000-8000-000000000001',current_setting('test.new_request')::uuid,1,1,'Explicit historical payroll correction','historical-addition-approved')::text,true);
+SELECT is(current_setting('test.historical_result')::jsonb->>'state','approved','explicit historical approval succeeds with Leave authority');
+SELECT is(public.leave_approve_historical_request('d2601000-0000-4000-8000-000000000001',current_setting('test.new_request')::uuid,1,1,'Explicit historical payroll correction','historical-addition-approved'),current_setting('test.historical_result')::jsonb,'same explicit approval intent replays its original receipt');
+RESET ROLE;
+SELECT is((SELECT count(*) FROM payroll.historical_leave_admissions),1::bigint,'one immutable admission');
+SELECT is((SELECT count(*) FROM payroll.historical_leave_observations),1::bigint,'one factual observation, no duplicate on receipt replay');
+SELECT set_config('test.addition_requirement',(SELECT requirement_id::text FROM payroll.historical_leave_observations),true);
+SELECT set_config('test.addition_change',(SELECT jsonb_build_array(jsonb_build_object('type','source_change','source_id',id,'expected_hash',current_lineage_fingerprint,'fields','{}'::jsonb))::text FROM payroll.historical_leave_observations),true);
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.run_manifest('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d260e000-0000-4000-8000-000000000001')->'corrections') requirement WHERE requirement->>'id'=current_setting('test.addition_requirement')),'new addition creates a blocking correction obligation');
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.workspace',public.payroll_correction_workspace('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d2610000-0000-4000-8000-000000000001',NULL,'source_change',NULL,NULL)::text,true);
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(current_setting('test.workspace')::jsonb->'sources') source WHERE source->>'id'=(current_setting('test.addition_change')::jsonb->0->>'source_id')),'existing correction UI RPC lists the historical addition');
+SELECT set_config('test.addition_preview',public.payroll_correction_proposal('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d2610000-0000-4000-8000-000000000001',NULL,0,current_setting('test.addition_change')::jsonb,current_setting('test.rows')::jsonb,NULL,'Review exact historical addition','NONLEGAL addition liability',NULL,'preview',gen_random_uuid())::text,true);
+SELECT set_config('test.addition_case',public.payroll_correction_proposal('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d2610000-0000-4000-8000-000000000001',NULL,0,current_setting('test.addition_change')::jsonb,current_setting('test.rows')::jsonb,NULL,'Review exact historical addition','NONLEGAL addition liability',current_setting('test.addition_preview')::jsonb->>'preview_hash','save',gen_random_uuid())->>'case_id',true);
+SELECT public.payroll_correction_command('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001',current_setting('test.addition_case')::uuid,1,'approve','Approve reviewed historical addition',gen_random_uuid());
+SELECT public.payroll_correction_command('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001',current_setting('test.addition_case')::uuid,2,'route_paid','Route externally reviewed addition',gen_random_uuid());
+SELECT public.payroll_correction_settlement('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001',current_setting('test.addition_case')::uuid,3,'d2606000-0000-4000-8000-000000000001','employee_extra_payment',10,CURRENT_DATE,'NONLEGAL addition closure','Record actual reviewed settlement',gen_random_uuid());
+RESET ROLE;
+SELECT is((SELECT status FROM payroll.correction_cases WHERE id=current_setting('test.addition_case')::uuid),'completed','paid historical addition closes through actual public financial route');
+SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.run_manifest('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d260e000-0000-4000-8000-000000000001')->'corrections') requirement WHERE requirement->>'id'=current_setting('test.addition_requirement')),'completed exact addition no longer blocks manifest');
+SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.run_manifest('d2601000-0000-4000-8000-000000000001','d2603000-0000-4000-8000-000000000001','d260e000-0000-4000-8000-000000000001')->'corrections') requirement WHERE requirement->>'id'='d260ff00-0000-4000-8000-000000000001'),'independent sibling remains open after addition closure');
+SELECT is((SELECT md5(jsonb_agg(to_jsonb(binding) ORDER BY source_key)::text) FROM payroll.final_source_bindings binding WHERE tenant_id='d2601000-0000-4000-8000-000000000001'),current_setting('test.original_binding_digest'),'addition creates no fake binding and preserves every original binding');
+SELECT is((SELECT md5(jsonb_agg(to_jsonb(employee) ORDER BY employment_id)::text) FROM payroll.final_employees employee WHERE tenant_id='d2601000-0000-4000-8000-000000000001'),current_setting('test.original_output_digest'),'addition preserves original money');
+SET LOCAL ROLE authenticated;
+SET CONSTRAINTS ALL DEFERRED;
+SELECT set_config('test.addition_cancelled',public.leave_cancel_approved_request('d2601000-0000-4000-8000-000000000001',current_setting('test.new_request')::uuid,2,'Cancel the admitted historical source','historical-addition-cancelled')::text,true);
+RESET ROLE;
+SET CONSTRAINTS ALL IMMEDIATE;
+SELECT is((SELECT count(*) FROM payroll.historical_leave_observations),2::bigint,'later cancellation appends a new immutable addition-lineage observation');
+SELECT ok(NOT payroll.correction_requirement_is_current('d2601000-0000-4000-8000-000000000001',current_setting('test.addition_case')::uuid,current_setting('test.addition_requirement')::uuid),'completed prior addition cannot resolve newly changed lineage');
+SELECT set_config('test.latest_addition',(SELECT id::text FROM payroll.historical_leave_observations WHERE current_source_lineage->>'state'='cancelled'),true);
+SELECT ok(payroll.correction_observation_covers_requirement('d2601000-0000-4000-8000-000000000001',current_setting('test.latest_addition')::uuid,current_setting('test.addition_requirement')::uuid),'latest exact addition lineage can cover its own earlier responsibility');
+SELECT ok(NOT payroll.correction_observation_covers_requirement('d2601000-0000-4000-8000-000000000001',current_setting('test.latest_addition')::uuid,'d260ff00-0000-4000-8000-000000000001'),'addition lineage never covers independent sibling');
+SELECT is((SELECT md5(jsonb_agg(to_jsonb(binding) ORDER BY source_key)::text) FROM payroll.final_source_bindings binding WHERE tenant_id='d2601000-0000-4000-8000-000000000001'),current_setting('test.original_binding_digest'),'later cancellation still preserves original bindings');
+SELECT * FROM finish();
+ROLLBACK;
+`);
+fs.writeFileSync('supabase/tests/cube4_historical_leave_addition.test.sql',sql);

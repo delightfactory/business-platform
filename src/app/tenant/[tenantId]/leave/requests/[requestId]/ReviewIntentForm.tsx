@@ -92,12 +92,13 @@ function IntentForm({
   const [intent, setIntent] = useState(initialIntent);
   const [state, action, pending] = useActionState(decision ? decideRequestAction : ACTION_BY_INTENT[intent], EMPTY_REVIEW_STATE);
   const [reason, setReason] = useState('');
+  const [historicalAddition, setHistoricalAddition] = useState(false);
   const [operationKey, setOperationKey] = useState(() => newKey());
   const keysRef = useRef<Map<string, string> | null>(null);
   if (keysRef.current === null) keysRef.current = new Map([[signature(''), operationKey]]);
   const reasonId = `review-reason-${intent}`;
 
-  function signature(value: string, selectedIntent = intent): string {
+  function signature(value: string, selectedIntent = intent, historical = historicalAddition): string {
     return [
       selectedIntent,
       requestId,
@@ -107,12 +108,13 @@ function IntentForm({
       cancellationVersion ?? '',
       replacementId ?? '', replacementVersion ?? '', replacementPreviewVersion ?? '',
       value.trim(),
+      selectedIntent === 'approve' && historical ? 'historical-payroll-correction' : '',
     ].join('|');
   }
 
-  function handleReasonChange(value: string, selectedIntent = intent) {
+  function handleReasonChange(value: string, selectedIntent = intent, historical = historicalAddition) {
     setReason(value);
-    const key = signature(value, selectedIntent);
+    const key = signature(value, selectedIntent, historical);
     const keys = keysRef.current ?? new Map<string, string>();
     keysRef.current = keys;
     const existing = keys.get(key);
@@ -155,6 +157,16 @@ function IntentForm({
       value={reason} onChange={(event) => handleReasonChange(event.target.value)} disabled={pending}
       aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`} />
     <p id={`${reasonId}-hint`} className="field-hint">{hint} {KEY_NOTE}</p>
+    {intent === 'approve' && <label>
+      <input type="checkbox" name="historicalPayrollCorrection" checked={historicalAddition} disabled={pending}
+        onChange={(event) => {
+          const selected = event.target.checked;
+          setHistoricalAddition(selected);
+          handleReasonChange(reason, intent, selected);
+        }} />
+      إضافة تاريخية بعد إقفال الرواتب
+      <span className="field-hint">ينشئ الاعتماد مسؤولية تصحيح لكل مسير متأثر. أكملها من تصحيحات الرواتب؛ لا تتغير مبالغ المسير المقفل تلقائيًا.</span>
+    </label>}
 
     {state.error && <p key={state.attempt} className="form-message form-error" role="alert">{state.error}</p>}
     {pending && <p className="field-hint" role="status">جارٍ التنفيذ… لا تغلق الصفحة.</p>}

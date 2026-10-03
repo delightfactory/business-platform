@@ -113,7 +113,8 @@ export async function approveRequestAction(
   if (!gate.ok) return failed(gate.code, previous.attempt);
   if (!gate.access.newWorkEnabled) return failed('new-work-disabled', previous.attempt);
 
-  const { data, error } = await gate.supabase.rpc('leave_approve_request', {
+  const historicalAddition = field(formData, 'historicalPayrollCorrection') === 'on';
+  const { data, error } = await gate.supabase.rpc(historicalAddition ? 'leave_approve_historical_request' : 'leave_approve_request', {
     p_tenant: tenantId,
     p_request: requestId,
     p_expected_version: expectedVersion,
@@ -121,11 +122,14 @@ export async function approveRequestAction(
     p_reason: reason,
     p_idempotency_key: operationKey,
   });
+  if (error?.message.includes('payroll_locked_leave_addition_requires_correction')) {
+    return { error: 'هذه الإجازة تؤثر في مسير مقفل. اختر الإضافة التاريخية لإنشاء مسؤولية تصحيح، ثم أكملها من تصحيحات الرواتب.', attempt: previous.attempt + 1 };
+  }
   if (error) return failed(mapReviewError(error.message, error.code), previous.attempt);
   if (!isObject(data)) return failed('unknown', previous.attempt);
   if (data.state === 'refresh_required') return failed('refresh-required', previous.attempt);
   if (data.state !== 'approved') return failed('unknown', previous.attempt);
-  redirect(detailStateHref(tenantId, requestId, 'approved'));
+  redirect(detailStateHref(tenantId, requestId, 'approved') + (historicalAddition ? '&payrollCorrection=required' : ''));
 }
 
 export async function rejectRequestAction(

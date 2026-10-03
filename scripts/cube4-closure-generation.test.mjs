@@ -6,7 +6,10 @@ import test from 'node:test';
 // Filesystem is the boundary: execute the real generator against checked-in
 // predecessor SQL and capture its output, without writing files or applying SQL.
 const generator=fs.readFileSync('scripts/cube4-build-closure-migration.mjs','utf8');
-function generate(migrationNames=fs.readdirSync('supabase/migrations')){
+const frozenPredecessors=fs.readdirSync('supabase/migrations').filter(name=>name.slice(0,14)<='20261003032000');
+// Recreate the already installed artifact from its frozen prefix. The generator
+// still refuses a later baseline; directory uniqueness checks inspect all files.
+function generate(migrationNames=frozenPredecessors){
  const writes=[];
  const context=vm.createContext({fs:{
   readFileSync:(...args)=>fs.readFileSync(...args),
@@ -40,7 +43,7 @@ test('real migration directory has unique fourteen-digit versions',()=>{
  assert.ok(versions.every(Boolean));assert.equal(new Set(versions).size,names.length);
 });
 test('generator refuses duplicate identities and versions after its selected target',()=>{
- const names=fs.readdirSync('supabase/migrations');
+ const names=frozenPredecessors;
  assert.throws(()=>generate([...names,'20261003030000_collision.sql']),/duplicate migration version/);
  assert.throws(()=>generate([...names,'20261003033000_future.sql']),/Repair must follow existing migration/);
 });
