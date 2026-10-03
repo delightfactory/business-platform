@@ -5,8 +5,17 @@ import fs from 'node:fs';
 const read = name => fs.readFileSync(`supabase/migrations/${name}`, 'utf8');
 const replaceOnce = (text, before, after) => {
   if (text.split(before).length !== 2) throw new Error(`Unexpected anchor: ${before}`);
-  return text.replace(before, after);
+  return text.replace(before, () => after);
 };
+const targetMigration='20261003032000_cube4_review_contract_repairs.sql';
+const migrationNames=fs.readdirSync('supabase/migrations').filter(name=>name.endsWith('.sql'));
+const versions=new Set();
+for(const name of migrationNames){
+  const version=/^(\d{14})_/.exec(name)?.[1];
+  if(!version||versions.has(version))throw new Error(`Invalid or duplicate migration version: ${name}`);
+  versions.add(version);
+  if(name!==targetMigration&&version>=targetMigration.slice(0,14))throw new Error(`Repair must follow existing migration: ${name}`);
+}
 let guard = read('20261003027000_cube4_source_correction_closure.sql');
 guard = guard.slice(guard.indexOf('CREATE FUNCTION payroll.guard_unbound_leave_approval()'), guard.indexOf('CREATE CONSTRAINT TRIGGER payroll_guard_unbound_leave_approval_update'));
 guard = guard.replace('CREATE FUNCTION', 'CREATE OR REPLACE FUNCTION');
@@ -69,7 +78,7 @@ ${patches.map(([before, after]) => ` before:=${literal(before)};after:=${literal
  EXECUTE definition;
 END $patch$;
 `;
-fs.writeFileSync('supabase/migrations/20261003030000_cube4_review_contract_repairs.sql', `-- Additive review repairs; public financial release remains closed.
+fs.writeFileSync(`supabase/migrations/${targetMigration}`, `-- Additive review repairs; public financial release remains closed.
 -- Exact request/preview or the existing authorized Leave replacement event only.
 -- A cancelled unrelated request never licenses a new historical approval.
 ${guard}\n-- Versioned immutable statutory presentation, including a zero tax delta.

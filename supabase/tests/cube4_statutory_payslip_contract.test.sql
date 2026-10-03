@@ -11,7 +11,7 @@ BEGIN
  INSERT INTO payroll.statutory_packs(jurisdiction,family,version,effective_from,effective_until,source_references,review_evidence,state,verified_by,engine_adapter,rules,insurance_rules,earning_rules)
  VALUES('EG','egypt_payroll',p_version,p_from,p_until,'["NONLEGAL source"]','{"numeric_comparisons":["NONLEGAL math only"]}',p_state,'c4420000-0000-4000-8000-000000000001','eg-cumulative-tax-v1',
  '{"schema":"eg-cumulative-tax-v1","tax_treatment_code":"01","day_basis":360,"personal_exemption":0,"base_rounding":"floor10","column_basis":"annual_raw","tax_rounding":"cumulative_half_up_cent","columns":[{"through":null,"bands":[{"upper":null,"rate":0.1}]}]}'::jsonb,
- jsonb_build_object('schema','eg-insurance-month-v1','category',p_version,'wage_minimum',1,'wage_maximum',200,'rounding','each_branch_month_half_up_cent','branches',jsonb_build_array(jsonb_build_object('branch','pension','employee_rate',CASE WHEN p_version='INS-2029' THEN 0.2 ELSE 0.01 END,'employer_rate',0,'tax_deductible',false))),
+ jsonb_build_object('schema','eg-insurance-month-v1','category',p_version,'wage_minimum',1,'wage_maximum',200,'rounding','each_branch_month_half_up_cent','branches',jsonb_build_array(jsonb_build_object('branch','pension','employee_rate',CASE WHEN p_version='INS-2029' THEN 0.2 ELSE 0.01 END,'employer_rate',0.15,'tax_deductible',false))),
  CASE WHEN p_earning THEN '{"schema":"eg-earning-treatment-v1","base_taxable":true,"component_treatment":"reviewed_dated_declarations","mixed_rounding":"taxable_half_up_cent_remainder_nontaxable"}'::jsonb ELSE '{}'::jsonb END) RETURNING id INTO result;
  RETURN result;
 END $$;
@@ -32,6 +32,9 @@ SELECT is(pg_temp.present(employee)->>'complete','true','generated statutory lin
 SELECT is(jsonb_array_length(pg_temp.present(employee)->'lines'),3,'base plus employee insurance plus tax only') FROM calculated;
 SELECT ok(NOT EXISTS(SELECT 1 FROM jsonb_array_elements(pg_temp.present(employee)->'lines') line WHERE line->>'classification'='employer_cost'),'employer contributions are excluded from employee deductions') FROM calculated;
 SELECT is((employee->>'net')::numeric,70::numeric,'presentation contract leaves synthetic net unchanged') FROM calculated;
+SELECT is((employee->>'statutory_contributions')::numeric,15::numeric,'positive employer contribution remains a distinct own cost') FROM calculated;
+SELECT is((employee->>'total_employer_cost')::numeric,115::numeric,'gross and positive employer cost reconcile without reducing net') FROM calculated;
+SELECT is((SELECT sum((line->>'amount')::numeric) FROM jsonb_array_elements(pg_temp.present(employee)->'lines') line WHERE line->>'classification'='deduction'),30::numeric,'employee deductions exclude positive employer contribution15') FROM calculated;
 SELECT is(employee->>'financially_qualified','false','presentation does not qualify legal calculation') FROM calculated;
 SELECT is(pg_temp.present(employee #- '{lines,1,presentation}')->>'complete','false','historical statutory output without metadata remains blocked') FROM calculated;
 SELECT is(pg_temp.present(jsonb_set(employee,'{lines,3,presentation,schema}','"unknown"'))->>'complete','false','unknown presentation schema is blocked') FROM calculated;

@@ -88,11 +88,7 @@ CREATE OR REPLACE FUNCTION payroll.report_payslip_lines(p_manifest jsonb,p_resul
     raw_line->>'statutory'='true'
     AND raw_line->'presentation'->>'schema'='payroll-statutory-v1'
     AND raw_line->'presentation'->>'visible'='true'
-    AND raw_line->'presentation'->>'order' ~ '^[0-9]{1,4}
- SELECT jsonb_build_object('complete',COALESCE(bool_and(known),true),'lines',COALESCE(jsonb_agg(jsonb_build_object('name',line->>'name','classification',line->>'classification','amount',line->>'amount') ORDER BY display_order,ordinal) FILTER(WHERE known AND visible),'[]')) FROM resolved
-$f$;
-REVOKE ALL ON FUNCTION payroll.report_payslip_lines(jsonb,jsonb,uuid,jsonb) FROM PUBLIC,anon,authenticated,service_role;
-
+    AND raw_line->'presentation'->>'order' ~ '^[0-9]{1,4}$'
     AND raw_line->>'amount'=l.line->>'amount'
     AND raw_line->>'name'=l.line->>'name'
     AND employee.e->'statutory_calculation'->>'adapter'='eg-employee-statutory-v1'
@@ -101,11 +97,7 @@ REVOKE ALL ON FUNCTION payroll.report_payslip_lines(jsonb,jsonb,uuid,jsonb) FROM
       ELSE employee.e->'statutory_calculation'->>'insurance_pack_id' END
   ) known,
   bool_and(raw_line->>'classification'='deduction') visible,
-  min(CASE WHEN raw_line->'presentation'->>'order' ~ '^[0-9]{1,4}
- SELECT jsonb_build_object('complete',COALESCE(bool_and(known),true),'lines',COALESCE(jsonb_agg(jsonb_build_object('name',line->>'name','classification',line->>'classification','amount',line->>'amount') ORDER BY display_order,ordinal) FILTER(WHERE known AND visible),'[]')) FROM resolved
-$f$;
-REVOKE ALL ON FUNCTION payroll.report_payslip_lines(jsonb,jsonb,uuid,jsonb) FROM PUBLIC,anon,authenticated,service_role;
-
+  min(CASE WHEN raw_line->'presentation'->>'order' ~ '^[0-9]{1,4}$'
     THEN (raw_line->'presentation'->>'order')::integer END) display_order
   FROM employee CROSS JOIN LATERAL jsonb_array_elements(employee.e->'lines') raw_line
   WHERE raw_line->>'component'=l.line->>'component'
