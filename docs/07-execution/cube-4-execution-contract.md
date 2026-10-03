@@ -92,7 +92,7 @@ Review [current lock graph](cube-4-lock-graph-review.md) before adding Payroll l
 
 ## Decision and acceptance register
 
-The [decision register and complete acceptance matrix](cube-4-decision-acceptance-register.md) assigns owners, affected slices, recommended options and safe independent work. Every Cube 4 case is NOT RUN. Test paths and evidence names there are **planned**, not existing artifacts or pass claims.
+The [decision register and complete acceptance matrix](cube-4-decision-acceptance-register.md) assigns owners, affected slices, recommended options and safe independent work. At this contract’s original planning checkpoint every Cube 4 case was NOT RUN and the proposed paths were not existing artifacts. The same acceptance register now records versioned scoped evidence and remaining NOT RUN/PARTIAL conditions; follow its current rows without inferring full qualification from historical summaries.
 
 Technical closure requires the entire applicable original acceptance matrix plus exact candidate SHA/migration/runtime identity, fresh/retained-upgrade parity, actual auth/HTTP/browser and two-session races, typecheck/lint/build, privacy/security and independent review. Synthetic rule packs qualify only isolated test determinism. Production statutory qualification independently verifies official dated jurisdiction/category/year sources and golden models; no repository rate anchors are current legal proof. Operational recovery/onboarding/security/pilot and publication authorization remain separately named release gates. No commit/push/merge/deploy/remote migration/publication is authorized by this document.
 

@@ -1,0 +1,37 @@
+{
+  "status": "PASS_BOUNDED_UI_ACCEPTANCE",
+  "reviewSnapshot": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "scope": "Post-snapshot local correction UI fix; same synthetic NONLEGAL QA154 fixture; no public financial finalization",
+  "checks": [
+    {
+      "evidenceFile": "cube4-source-observation-actual-ui-v2.json",
+      "name": "Actual selection of two observations, explicit paid responsibility, preview of two deduplicated outputs without source/payment mutations",
+      "status": "PASS"
+    },
+    {
+      "evidenceFile": "cube4-source-observation-ui-saved-stale-v2.json",
+      "name": "Saved proposal visible with two sources and exact two requirement links; Arabic responsive review390/820/1280",
+      "status": "PASS"
+    },
+    {
+      "evidenceFile": "cube4-source-observation-ui-edit-restoration-v2.json",
+      "name": "Stale selection blocks preview, removal remains usable; fresh source restores preview, preserves fields and keyboard focus",
+      "status": "PASS"
+    },
+    {
+      "evidenceFile": "cube4-source-observation-ui-edit-response-loss.json",
+      "name": "Two-source edit, complete Next Action response loss, reload retains sources/responsibility/reference/original attempt; receipt recovery adds no duplicate proposal/payment/source effect",
+      "status": "PASS"
+    }
+  ],
+  "sources": {
+    "src/app/tenant/[tenantId]/payroll/corrections/page.tsx": "5fef9a8a77f4ad57a35da13d95fe2766c264ad9bf0402e66d94d7faf2900f14e",
+    "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx": "cf9054ae8662ec9cd3e2ae81eb3dd9b1530c8063ae3d3b0f770281a32ff59348"
+  },
+  "limits": [
+    "Not full financial lifecycle or statutory qualification",
+    "Not complete source-writer/append race coverage",
+    "No full fresh replay or final repository build",
+    "Changes after the review snapshot are uncommitted"
+  ]
+}

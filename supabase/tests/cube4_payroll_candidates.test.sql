@@ -78,6 +78,10 @@ SELECT ok(NOT(payroll.review_employee_detail(payroll.build_review(pg_temp.review
 SELECT is(jsonb_array_length(payroll.review_employee_detail(payroll.build_review(pg_temp.review_fixture()||jsonb_build_object('compensation',current_setting('test.changed_rates')::jsonb))->'employees'->0)->'lines'->0->'segments'),2,'effective salary change has two dated human segments');
 SELECT set_config('test.mixed_component',pg_temp.with_component(pg_temp.review_fixture())::text,true);
 SELECT set_config('test.mixed_component',jsonb_set(current_setting('test.mixed_component')::jsonb,'{inputs}',current_setting('test.mixed_component')::jsonb->'inputs'||jsonb_set(jsonb_set(current_setting('test.mixed_component')::jsonb->'inputs'->1,'{version,effective_from}','"2030-02-10"'::jsonb),'{version,data,classification}','"deduction"'::jsonb))::text,true);
+-- Both dated classifications must have an explicitly renewed recurring assignment.
+-- Otherwise the earlier interpretation guard correctly stops the changed portion first.
+SELECT set_config('test.mixed_component',jsonb_set(current_setting('test.mixed_component')::jsonb,'{inputs,2,version,effective_until}','"2030-02-10"'::jsonb)::text,true);
+SELECT set_config('test.mixed_component',jsonb_set(current_setting('test.mixed_component')::jsonb,'{inputs}',current_setting('test.mixed_component')::jsonb->'inputs'||jsonb_set(jsonb_set(jsonb_set(current_setting('test.mixed_component')::jsonb->'inputs'->2,'{version,effective_from}','"2030-02-10"'::jsonb),'{version,effective_until}','null'::jsonb),'{version,revision}','2'::jsonb))::text,true);
 SELECT ok(EXISTS(SELECT 1 FROM jsonb_array_elements(payroll.build_review(current_setting('test.mixed_component')::jsonb)->'issues')i WHERE i->>'code'='component_behavior_changed'),'mixed in-period component classification is an owned blocker');
 SELECT is((payroll.build_review(current_setting('test.mixed_component')::jsonb)->'employees'->0->>'known_gross')::numeric,3000::numeric,'ambiguous component is excluded without discarding defined base');
 -- Authoritative run lifecycle with scoped actors, replay/CAS, stale source and cancellation.

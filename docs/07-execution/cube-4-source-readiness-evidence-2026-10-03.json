@@ -1,0 +1,72 @@
+{
+  "atUTC": "2026-10-03T15:02:13.685791+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "baseline": 159,
+  "runtimeURL": "http://127.0.0.1:3545",
+  "status": "SOURCE_READINESS_SCOPED_PASS_FULL_JOURNEY_OPEN",
+  "files": [
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sha256": "06a89ecc441e73ddb56a390135f4d19f8349f476b41c7e236a2168b75bec5810"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
+      "sha256": "3af253c56210a6dc14d8ea1a7756c824c806473a6cf691b07bb8fedcefa01927"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx",
+      "sha256": "3fca44e62dea8084d8646cfbd44398af7e29cbe28c91aefbe06f1e28c51f355d"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "sha256": "bdda562500d51c42b9ad836a53131c07f33ab3ff936c2f6d3a8d7a0e825fc1b8"
+    },
+    {
+      "path": "supabase/tests/cube4_payroll_time_expected_coverage.test.sql",
+      "sha256": "d3512d91d65ee01fd05b25ae9447ecf7fd59e9fc86e8fa091a497be9e1decf63"
+    },
+    {
+      "path": "supabase/tests/cube4_payroll_complete_daily_time_sources.test.sql",
+      "sha256": "6aaf73563717bba1447797e915d19917585d770eb53db65a413bd610045bed08"
+    }
+  ],
+  "proofs": [
+    {
+      "artifact": "cube4-current-source-readiness-159-final.json",
+      "sha256": "437d7fff7cd80c4cb4f2868ce435ff1e3722b845f48a17d884be7abc763101d3",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-complete-daily-time-browser-159.json",
+      "sha256": "3714f28ba301246db7e3182b97b879dd1f7bce7b5b4282799156b140fac01918",
+      "status": "PASS"
+    }
+  ],
+  "retainedFailures": [
+    {
+      "artifact": "cube4-current-source-readiness-159.json",
+      "sha256": "b1bd94723cf0dbb62b9c06f1658152e48b4b3b726fe59f0dd59aea85ac87f517",
+      "status": "FAIL_STOPPED"
+    },
+    {
+      "artifact": "cube4-current-source-readiness-159-isolated.json",
+      "sha256": "654bb9f1b1530ccc363329dbe72f47a8ca88237d2d414aef5b6d52a27dc84d0d",
+      "status": "FAIL_STOPPED"
+    }
+  ],
+  "scope": {
+    "SQL": "50 expected-coverage checks and28 daily-source checks separately on installed159 upgrade and retained fresh-origin159, not one full acceptance count. Coverage tests current facts, missing/pending/future/schedule context, scope/ACL/capacity. Daily source tests include pure manifest arithmetic and distinct actual private capture/public unqualified calculation, not supported Time/Leave producer journey.",
+    "UI": "Existing retained two-employee one-day NONLEGAL source candidate read through actual Auth/current Next UI. Complete gross125 and missing-day detail, financial refusal, keyboard detail link, Arabic RTL390/820/1280,85 Payroll/Time/Leave sets unchanged. No calculation or seed repeated by browser."
+  },
+  "recovery": "Persisted d231 QA tenant caused old test fixture collision before actual-capture part; entire failed transaction rolled back. Isolated only actual test fixture namespace d231→d3b1 within rollback. First successful resumed SQL run saved PASS before local log-path TypeError; continuation reused completed coverage/daily runs and executed only pending fresh-origin suites. All failed artifacts retained; no application/migration/functions patch or reseed.",
+  "limits": [
+    "No missing-day absence or zero wage inference",
+    "No actual source producer approval/financial consumption/public G6 proof",
+    "Optional-domain/manual complete route, monthly combined sources, multi-page projections and unknown YTD/unavailable API matrix still open",
+    "Not fresh159 chain or final build/full journey"
+  ],
+  "runtimeIdentity": {
+    "artifact": "cube4-authoritative-runtime-identity-calendar-pending-eof.json",
+    "sha256": "17e9c09cc56d303efa5db6c72432bba708f16446a58fa143d7474145c419e8aa"
+  }
+}

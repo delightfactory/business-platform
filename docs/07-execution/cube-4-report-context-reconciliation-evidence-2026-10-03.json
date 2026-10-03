@@ -1,0 +1,98 @@
+{
+  "atUTC": "2026-10-03T15:42:58.758871+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "baseline": 159,
+  "runtimeURL": "http://127.0.0.1:3545",
+  "runtimeTreeSHA256": "b076137dd532a8f64c02116a07ddb9bf4f33ecf39a8ea4925a9a33f9f584347e",
+  "runtimeIdentity": {
+    "artifact": "cube4-authoritative-runtime-identity-report-accessible-context.json",
+    "sha256": "e08e87046ae31a7598cc6ae016e7d35d544e7c63131b1a3d6240d9dd4ed2fb38"
+  },
+  "status": "REPORT_CONTEXT_REPLACEMENT_RECONCILIATION_SCOPED_PASS_FULL_CUBE_OPEN",
+  "changedFile": {
+    "path": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
+    "sha256": "4e2b0c6f01831924a2a438947d50e3f686a17551de10b6e40baa261377b0a7f5"
+  },
+  "changes": [
+    "Employer search GET form retains selected report kind",
+    "Advance balances hide irrelevant final-output selector and version-change instructions",
+    "Report purpose/current/previous output selectors have concise accessible Arabic labels independent of options"
+  ],
+  "proofs": [
+    {
+      "artifact": "cube4-report-replacement-readonly-159.json",
+      "sha256": "5fc2eb12309ef24487ed72a2e50e308ae8f380aff95d915ea3666e6926fc7aa8",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-report-context-amendment-159-accessible.json",
+      "sha256": "27e440d4f6a9d79c6b67f274f29d608648b15a96f53f7c934ce212f6e272bb2a",
+      "status": "FAIL_STOPPED"
+    },
+    {
+      "artifact": "cube4-report-contracts-159.json",
+      "sha256": "63309c0ebbe949643c842bbe378e2d9598ac4bfd1e786e83c95a3fdf5886235e",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-report-static-159.json",
+      "sha256": "6b3afffae68ba0b23a9c76b4d587d483c147c570ca70648bc194d9d494ab4a7c",
+      "status": "PASS"
+    }
+  ],
+  "results": [
+    "Advance purpose survives Employer search and keyboard selection; balances available without final-period choice or unrelated version instructions",
+    "Payment purpose survives Employer search; required final-output selection remains",
+    "Actual authenticated original-payment CSV reconciles authoritative5000/2/4998 and private/no-store",
+    "Superseded original refuses full export and keyboard routes to exact replacement4300/0/4300; no financial command created"
+  ],
+  "retainedPayrollSets": 46,
+  "originalBalances": {
+    "payable": "5000.00",
+    "paid": "2.00",
+    "remaining": "4998.00"
+  },
+  "replacementBalances": {
+    "payable": "4300.00",
+    "paid": "0",
+    "remaining": "4300.00"
+  },
+  "originalCSV": {
+    "sha256": "3bc3c62aa3a44e539e346537d058e63a1d9afcf0429aaac33d2ad518bb55b229",
+    "rows": 2,
+    "totals": [
+      5000,
+      2,
+      4998
+    ],
+    "privateNoStore": true
+  },
+  "failureDependencies": [
+    {
+      "artifact": "cube4-report-context-amendment-159.json",
+      "sha256": "f42103002e8c0f16c43da1849e2ebf166ce76e230a92871308fe22971c44258f"
+    },
+    {
+      "artifact": "cube4-report-context-amendment-159-resume.json",
+      "sha256": "db35e2b9b7a99745b3b7f41a98d111fc0966a6635991efde915b19265fa9ecbd"
+    },
+    {
+      "artifact": "cube4-report-label-diagnosis-159.json",
+      "sha256": "8b8db276fd3bc3aa8b78bddae5f1904e695c1766f01ab29ed52bb73dfa67ef25"
+    },
+    {
+      "artifact": "cube4-report-grant-prerequisite-159.json",
+      "sha256": "5b5df46075e8be745c1ace4f9bf8b937d70ff2711a826a5ed6d6ac7326dced40"
+    }
+  ],
+  "failureRecovery": "Exact label queries failed because native wrapping label included option text; DOM confirmed actual required control. Add concise aria-label, retain failed proofs. Current report/CSV checks then completed before a temporary QA role UUID collided with existing record-correction role5; transaction rolled back. Inspect role prerequisite, use new UUID, run only missing read-only replacement route, reuse already completed report/CSV proof with unchanged source; no financial command/reseed/re-export needed. Temporary membership-role revoked and membership made inactive; unassigned QA role/history retained.",
+  "scope": "Current source initial Employer search and keyboard selection, advance balances independent of final output, payment required output choice, Arabic RTL390/820/1280, original protected payments CSV5000/2/4998; superseded original refuses full export and keyboard reaches exact replacement4300/0/4300. Global46 Payroll sets except intentional read/export audit rows stay identical. Separate installed159 report24 and saved-payslip17 SQL methods on each retained QA DB qualify scope/pages/totals/current-source revision/filter/privacy/presentation; not an aggregate full candidate run.",
+  "static": "Changed report page lint0 errors/0 warnings and current tsc --noEmit passed with unchanged source. Earlier tenant lint ran before final three label attributes; final scoped lint/typecheck is authoritative.",
+  "limits": [
+    "Trusted-adapter fixtures prescribe NONLEGAL frozen money; no official pack, public G6 or legal/pilot/production readiness",
+    "No successful qualified payslip print/distribution; statutory reporting remains blocked where unqualified",
+    "Full report-kind/variance/filter/export-revocation/concurrency matrix and final candidate fresh-chain/build/full journey remain",
+    "Actual screen reader not tested; DOM accessible label assertions and keyboard interaction only",
+    "Permission setup is temporary labelled QA read/export grant; no correction/payment authority supplied"
+  ]
+}

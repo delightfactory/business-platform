@@ -1,0 +1,1327 @@
+{
+  "atUTC": "2026-10-03T11:50:15.401112+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative writer; current source hashes verified",
+  "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+  "baseline": 157,
+  "freshDatabase": "business_platform_cube4_candidate_lf_fresh_qa",
+  "runtimeDatabase": "business_platform_cube4_upgrade_qa",
+  "runs": [
+    {
+      "rawEvidence": "cube4-candidate-fresh-157-canonical.json",
+      "sha256": "6ca2a7ad09f7fe07edf90cf9dfe0c702a5e0c87132dbfaf659e30ec165b9e466",
+      "result": {
+        "status": "MIGRATION_CHAIN_PASS",
+        "database": "business_platform_cube4_candidate_lf_fresh_qa",
+        "scope": "New isolated engine-schema-only database; replay all current candidate migrations; retain connected QA database and receipts",
+        "atUTC": "2026-10-03T11:43:42.158490+00:00",
+        "applied": 157,
+        "steps": [],
+        "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+        "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+        "migrations": [
+          {
+            "name": "20260929005743_operator_bootstrap_authority.sql",
+            "sha256": "c6fe7966d5de8d73c93243754c259d828fdd62d352e4d660eceb78cbafc7a9ad",
+            "canonicalLF_SHA256": "c6fe7966d5de8d73c93243754c259d828fdd62d352e4d660eceb78cbafc7a9ad"
+          },
+          {
+            "name": "20260929013413_current_platform_operator_status.sql",
+            "sha256": "b9ee1ec04fb1022bd494449502cb9aa759940855123c6f0ad80b69f49a569be2",
+            "canonicalLF_SHA256": "b9ee1ec04fb1022bd494449502cb9aa759940855123c6f0ad80b69f49a569be2"
+          },
+          {
+            "name": "20260929021044_tenant_onboarding_atomic.sql",
+            "sha256": "561723f822c6494b2bd160a65b9de35146f5e133e33655175879148299c6bd19",
+            "canonicalLF_SHA256": "561723f822c6494b2bd160a65b9de35146f5e133e33655175879148299c6bd19"
+          },
+          {
+            "name": "20260929025717_first_admin_invitation_intent.sql",
+            "sha256": "676e1e4b883409c4bc112a9ed3a969ba8684d4d49adc9bf3566cf92402b090f1",
+            "canonicalLF_SHA256": "676e1e4b883409c4bc112a9ed3a969ba8684d4d49adc9bf3566cf92402b090f1"
+          },
+          {
+            "name": "20260929042529_tenant_member_invitations.sql",
+            "sha256": "6365a9b7c791e3ec4194069a0125daa2525b116d981e8dc6d29ba147b98a10b5",
+            "canonicalLF_SHA256": "6365a9b7c791e3ec4194069a0125daa2525b116d981e8dc6d29ba147b98a10b5"
+          },
+          {
+            "name": "20260929050000_tenant_admin_role_governance.sql",
+            "sha256": "13245ca6e8fafa952916325b11ef0448d9f2b00663bc557313cbf01b7388e33f",
+            "canonicalLF_SHA256": "13245ca6e8fafa952916325b11ef0448d9f2b00663bc557313cbf01b7388e33f"
+          },
+          {
+            "name": "20260929050100_tenant_member_access_list_roles.sql",
+            "sha256": "a8787387cf9f261868a7da3a1b89434aa33c1a2f147e9e91d0b16c5bbb69bc6d",
+            "canonicalLF_SHA256": "a8787387cf9f261868a7da3a1b89434aa33c1a2f147e9e91d0b16c5bbb69bc6d"
+          },
+          {
+            "name": "20260929055355_operator_authority_management.sql",
+            "sha256": "a1aa0593fbb12089873eee87883e9331566a60ec52b27fc446ffb9a6e9568159",
+            "canonicalLF_SHA256": "a1aa0593fbb12089873eee87883e9331566a60ec52b27fc446ffb9a6e9568159"
+          },
+          {
+            "name": "20260929064009_operator_tenant_lifecycle_management.sql",
+            "sha256": "8ec182779fec317294d18f4630d1f885abca0f667011b3198d0cfab3eb4b9041",
+            "canonicalLF_SHA256": "8ec182779fec317294d18f4630d1f885abca0f667011b3198d0cfab3eb4b9041"
+          },
+          {
+            "name": "20260929071151_tenant_legal_entities_sites_management.sql",
+            "sha256": "c300f10c79ede720d5e056a67b72304503da1ccd604562a040fa06d8e9d10e66",
+            "canonicalLF_SHA256": "c300f10c79ede720d5e056a67b72304503da1ccd604562a040fa06d8e9d10e66"
+          },
+          {
+            "name": "20260929074403_operator_commercial_access_controls.sql",
+            "sha256": "6e1c9b37a1c8bf0b994ad39c1015ffeac9e624936680b5d22561ec03dfb69e04",
+            "canonicalLF_SHA256": "6e1c9b37a1c8bf0b994ad39c1015ffeac9e624936680b5d22561ec03dfb69e04"
+          },
+          {
+            "name": "20260929082023_tenant_capability_entitlements.sql",
+            "sha256": "99bdacf56aae5b7ff305bd468f52277dfe9b8c09f7903f1c245e73b5e021c940",
+            "canonicalLF_SHA256": "99bdacf56aae5b7ff305bd468f52277dfe9b8c09f7903f1c245e73b5e021c940"
+          },
+          {
+            "name": "20260929085259_tenant_branding.sql",
+            "sha256": "670098772ba8bd9f68fbb1346acabd709ab2b7489ee0ab11373de5f993eee822",
+            "canonicalLF_SHA256": "670098772ba8bd9f68fbb1346acabd709ab2b7489ee0ab11373de5f993eee822"
+          },
+          {
+            "name": "20260929233759_people_employee_onboarding.sql",
+            "sha256": "e3b15f0c89ad09fc19116525c6a8872569895afce5a2827da8d02878d655357f",
+            "canonicalLF_SHA256": "e3b15f0c89ad09fc19116525c6a8872569895afce5a2827da8d02878d655357f"
+          },
+          {
+            "name": "20260930001739_people_directory_search.sql",
+            "sha256": "aede983df562d27160cafabcce570220d5cae0799102ccfd4b4461c4795e6493",
+            "canonicalLF_SHA256": "aede983df562d27160cafabcce570220d5cae0799102ccfd4b4461c4795e6493"
+          },
+          {
+            "name": "20260930003348_people_departments_jobs_catalog.sql",
+            "sha256": "28324e2fe2f84404e2800453ff3ccb2b773712fdaf42bbfb891130a879c55475",
+            "canonicalLF_SHA256": "28324e2fe2f84404e2800453ff3ccb2b773712fdaf42bbfb891130a879c55475"
+          },
+          {
+            "name": "20260930005546_people_work_assignment_catalog_history_guard.sql",
+            "sha256": "fca6e5468cbd613dada9380fd130722d012efbaa338687f88bf8dd86b47119d8",
+            "canonicalLF_SHA256": "fca6e5468cbd613dada9380fd130722d012efbaa338687f88bf8dd86b47119d8"
+          },
+          {
+            "name": "20260930010156_people_job_history_guard_and_onboarding_audit.sql",
+            "sha256": "a0833f263ad03462b95c81b43f908c16e15ae78ce02539a6e5422b74f8da7802",
+            "canonicalLF_SHA256": "a0833f263ad03462b95c81b43f908c16e15ae78ce02539a6e5422b74f8da7802"
+          },
+          {
+            "name": "20260930011017_people_work_assignment_transfers.sql",
+            "sha256": "6425a985d1d3f213a3fa41b31176b6c5dcf6e2131d133cc5678a4617af07a32e",
+            "canonicalLF_SHA256": "6425a985d1d3f213a3fa41b31176b6c5dcf6e2131d133cc5678a4617af07a32e"
+          },
+          {
+            "name": "20260930013832_people_initial_assignment_correction_and_dated_managers.sql",
+            "sha256": "e7eaebca2c2bf5607961456afd7fa5c8906fd6c609b9900ea6efb19984e149c2",
+            "canonicalLF_SHA256": "e7eaebca2c2bf5607961456afd7fa5c8906fd6c609b9900ea6efb19984e149c2"
+          },
+          {
+            "name": "20260930015152_people_effective_compensation_history.sql",
+            "sha256": "b0225f40b85d71c13c54279bfb66f3a3f9c12c6be01f7b768b197d93f84ebf4d",
+            "canonicalLF_SHA256": "b0225f40b85d71c13c54279bfb66f3a3f9c12c6be01f7b768b197d93f84ebf4d"
+          },
+          {
+            "name": "20260930020540_people_compensation_initial_correction_and_bounded_backdate.sql",
+            "sha256": "0f28e96edd0baa507b78835574a30bd08803a1cd477f4bdb5761270825eb68b5",
+            "canonicalLF_SHA256": "0f28e96edd0baa507b78835574a30bd08803a1cd477f4bdb5761270825eb68b5"
+          },
+          {
+            "name": "20260930020825_people_compensation_pending_change_options.sql",
+            "sha256": "717c19c3a670a27de8777720fa2a829dd1228b403509354c6e024f1d8121b61a",
+            "canonicalLF_SHA256": "717c19c3a670a27de8777720fa2a829dd1228b403509354c6e024f1d8121b61a"
+          },
+          {
+            "name": "20260930021630_people_employment_termination_rehire.sql",
+            "sha256": "23dd7bd8bc182c091ef83e85323aef6d0b1caf720edb9ebe118d55fb72fa606e",
+            "canonicalLF_SHA256": "23dd7bd8bc182c091ef83e85323aef6d0b1caf720edb9ebe118d55fb72fa606e"
+          },
+          {
+            "name": "20260930022648_people_employment_bounded_backdate.sql",
+            "sha256": "c13f86dbce6935fd5f311c033f7ec75e8110584d57cab8e6f6107f10a5e0e9ce",
+            "canonicalLF_SHA256": "c13f86dbce6935fd5f311c033f7ec75e8110584d57cab8e6f6107f10a5e0e9ce"
+          },
+          {
+            "name": "20260930023342_people_employment_audit_end_date.sql",
+            "sha256": "668644af94d62cfd075055349a5bddf9c33e95ce5432725b1da96f70815513b4",
+            "canonicalLF_SHA256": "668644af94d62cfd075055349a5bddf9c33e95ce5432725b1da96f70815513b4"
+          },
+          {
+            "name": "20260930023500_people_lifecycle_history_redaction.sql",
+            "sha256": "0cd412d92adcd5da0fe8a4c33339ce0d078ec82716e4e243ad18f277ea280c58",
+            "canonicalLF_SHA256": "0cd412d92adcd5da0fe8a4c33339ce0d078ec82716e4e243ad18f277ea280c58"
+          },
+          {
+            "name": "20260930024042_people_future_rehire_context.sql",
+            "sha256": "e1aff53575a2fc3148c8022d927b0aae2541881bd09c377519e2dc03bae28d2d",
+            "canonicalLF_SHA256": "e1aff53575a2fc3148c8022d927b0aae2541881bd09c377519e2dc03bae28d2d"
+          },
+          {
+            "name": "20260930025500_people_employee_user_links.sql",
+            "sha256": "0994d0dadb28aa9138fbde50f08bb1e23fc8d607880e2df8b68c3ee682ceb158",
+            "canonicalLF_SHA256": "0994d0dadb28aa9138fbde50f08bb1e23fc8d607880e2df8b68c3ee682ceb158"
+          },
+          {
+            "name": "20260930025600_people_employee_user_link_options_fix.sql",
+            "sha256": "d616f80503a6c9e3f1f7dd640397208e3dd1b1a5fa4471fdd7c4afca5542e40b",
+            "canonicalLF_SHA256": "d616f80503a6c9e3f1f7dd640397208e3dd1b1a5fa4471fdd7c4afca5542e40b"
+          },
+          {
+            "name": "20260930025700_people_employee_user_link_identity_redaction.sql",
+            "sha256": "fae6910e3ccf6cff727cd639199215c58d6a10f5a91775051a08f2d8a612af99",
+            "canonicalLF_SHA256": "fae6910e3ccf6cff727cd639199215c58d6a10f5a91775051a08f2d8a612af99"
+          },
+          {
+            "name": "20260930030000_people_employee_account_provisioning.sql",
+            "sha256": "cd80675afb3668619cc0a8dc8630ad2b24b3d217142c7e0f60592dd29977df90",
+            "canonicalLF_SHA256": "cd80675afb3668619cc0a8dc8630ad2b24b3d217142c7e0f60592dd29977df90"
+          },
+          {
+            "name": "20260930030100_people_employee_account_intent_recovery.sql",
+            "sha256": "998f3f7564fa9d0f289e938988948ed65d80dc498161f6f6203ac2949184784e",
+            "canonicalLF_SHA256": "998f3f7564fa9d0f289e938988948ed65d80dc498161f6f6203ac2949184784e"
+          },
+          {
+            "name": "20260930033051_people_employee_account_issuer_recheck.sql",
+            "sha256": "3f778f7dda694d59d14319d517daabf5df3abb5f29537264562d88542b36272d",
+            "canonicalLF_SHA256": "3f778f7dda694d59d14319d517daabf5df3abb5f29537264562d88542b36272d"
+          },
+          {
+            "name": "20260930034040_people_employee_account_auth_capture_recovery.sql",
+            "sha256": "08d3dc589d602e872fe27b9eb0ed37780b7dfbe3e5640169746b2e5101b68def",
+            "canonicalLF_SHA256": "08d3dc589d602e872fe27b9eb0ed37780b7dfbe3e5640169746b2e5101b68def"
+          },
+          {
+            "name": "20260930034347_people_employee_account_capture_audit_event.sql",
+            "sha256": "1b97bc772d6708bfcfadba123337f182c585d07e067d4b31dfd33ff6d7fbe765",
+            "canonicalLF_SHA256": "1b97bc772d6708bfcfadba123337f182c585d07e067d4b31dfd33ff6d7fbe765"
+          },
+          {
+            "name": "20260930035000_people_employee_account_issuer_lock_order.sql",
+            "sha256": "7916530ba375aeb23972a32d9353e48c73c38ec56336e3ca2d2192478443ee98",
+            "canonicalLF_SHA256": "7916530ba375aeb23972a32d9353e48c73c38ec56336e3ca2d2192478443ee98"
+          },
+          {
+            "name": "20260930040000_people_workforce_csv_import.sql",
+            "sha256": "93a61840d88b5b453f5007672bb0004f55c771924f8900c08e225d5ad5d13092",
+            "canonicalLF_SHA256": "93a61840d88b5b453f5007672bb0004f55c771924f8900c08e225d5ad5d13092"
+          },
+          {
+            "name": "20260930041000_people_workforce_csv_import_audit_hint.sql",
+            "sha256": "5b81a814a1ef7808ac9bbf841134ff5183dd3512c83a3152b7b46268897dde51",
+            "canonicalLF_SHA256": "5b81a814a1ef7808ac9bbf841134ff5183dd3512c83a3152b7b46268897dde51"
+          },
+          {
+            "name": "20260930083111_tenant_people_role_bundles.sql",
+            "sha256": "bae7b380d8ce28e04f41a2f37c726d8fd046ea639146f57ab168a4afe64234e3",
+            "canonicalLF_SHA256": "bae7b380d8ce28e04f41a2f37c726d8fd046ea639146f57ab168a4afe64234e3"
+          },
+          {
+            "name": "20260930085616_attendance_named_work_policies.sql",
+            "sha256": "34ec58087c21b6902f3d3624cc1ba23daa8c1bf244e1052638f75e911c69bc76",
+            "canonicalLF_SHA256": "34ec58087c21b6902f3d3624cc1ba23daa8c1bf244e1052638f75e911c69bc76"
+          },
+          {
+            "name": "20260930090259_attendance_work_policy_integrity.sql",
+            "sha256": "e430d88d34b26963b82d654e36450522ceb14eee35d2f404612668ae77740b01",
+            "canonicalLF_SHA256": "e430d88d34b26963b82d654e36450522ceb14eee35d2f404612668ae77740b01"
+          },
+          {
+            "name": "20260930090534_attendance_work_policy_cancel_audit.sql",
+            "sha256": "d364a9740327a1c89dfee050b66d6dbc41003dc1b35861d283f264b60f7f0a7b",
+            "canonicalLF_SHA256": "d364a9740327a1c89dfee050b66d6dbc41003dc1b35861d283f264b60f7f0a7b"
+          },
+          {
+            "name": "20260930091317_attendance_policy_assignment_dates.sql",
+            "sha256": "553c536dba3d6fa60d047c71103d7af40fc5fbfc096b9c4f0a92fb842562187a",
+            "canonicalLF_SHA256": "553c536dba3d6fa60d047c71103d7af40fc5fbfc096b9c4f0a92fb842562187a"
+          },
+          {
+            "name": "20260930091806_attendance_work_policy_revision_fix.sql",
+            "sha256": "0740acc9a225ebfc39985c10f3e9ab8364503db286c1a4b93dfce04624cd32b7",
+            "canonicalLF_SHA256": "0740acc9a225ebfc39985c10f3e9ab8364503db286c1a4b93dfce04624cd32b7"
+          },
+          {
+            "name": "20260930092532_attendance_policy_initial_assignment.sql",
+            "sha256": "c1a53868420caaaf69e726eba16fc1da1b76c4b17eb6b68c62ac77780d75a6d9",
+            "canonicalLF_SHA256": "c1a53868420caaaf69e726eba16fc1da1b76c4b17eb6b68c62ac77780d75a6d9"
+          },
+          {
+            "name": "20260930102608_cube2_manual_attendance_v1.sql",
+            "sha256": "e0528058bf258fef6b4aaf957cb9bb7eb3f950ac46109eed00ac5373e889ae66",
+            "canonicalLF_SHA256": "e0528058bf258fef6b4aaf957cb9bb7eb3f950ac46109eed00ac5373e889ae66"
+          },
+          {
+            "name": "20260930104100_cube2_manual_attendance_integrity.sql",
+            "sha256": "392d013a4ea80c4b32555724807ed0b32ce942607fb4198b9a8960e58a9bf013",
+            "canonicalLF_SHA256": "392d013a4ea80c4b32555724807ed0b32ce942607fb4198b9a8960e58a9bf013"
+          },
+          {
+            "name": "20260930105500_cube2_manual_attendance_review_entries.sql",
+            "sha256": "bfa6a4f717f15619cc24eca400009ed43f8ff40894149b339aa27a5be68b32e5",
+            "canonicalLF_SHA256": "bfa6a4f717f15619cc24eca400009ed43f8ff40894149b339aa27a5be68b32e5"
+          },
+          {
+            "name": "20260930111500_attendance_history_after_entitlement.sql",
+            "sha256": "242696e1eabf84b132d0bb6e1d6b3ce3836765c807c94eb75f0f0c2854446b55",
+            "canonicalLF_SHA256": "242696e1eabf84b132d0bb6e1d6b3ce3836765c807c94eb75f0f0c2854446b55"
+          },
+          {
+            "name": "20260930114857_attendance_fixed_shift_metrics.sql",
+            "sha256": "1d5410382f3a7ebee42eba2168a3113d317d6a702cc9ebf1bf6749b3cb53a1b1",
+            "canonicalLF_SHA256": "1d5410382f3a7ebee42eba2168a3113d317d6a702cc9ebf1bf6749b3cb53a1b1"
+          },
+          {
+            "name": "20260930120653_attendance_flexible_workday.sql",
+            "sha256": "c14845d5886b1562f8ac608e2b784c3983760d4d7a7da6cd004f02fdba3ba5e1",
+            "canonicalLF_SHA256": "c14845d5886b1562f8ac608e2b784c3983760d4d7a7da6cd004f02fdba3ba5e1"
+          },
+          {
+            "name": "20260930122008_attendance_dated_policy_overrides.sql",
+            "sha256": "8bc89f83e8de290e721105dc8de6adfa65faeb9e4fa7714504a41a4570b0e56b",
+            "canonicalLF_SHA256": "8bc89f83e8de290e721105dc8de6adfa65faeb9e4fa7714504a41a4570b0e56b"
+          },
+          {
+            "name": "20260930123725_attendance_csv_import.sql",
+            "sha256": "3195198263159cf7a5ce07eaf231bbc47bcd8894649d6fa0991636d3295d9e6c",
+            "canonicalLF_SHA256": "3195198263159cf7a5ce07eaf231bbc47bcd8894649d6fa0991636d3295d9e6c"
+          },
+          {
+            "name": "20260930124928_attendance_import_source_display.sql",
+            "sha256": "bbfed36fe630a77084a308e62bedf29ce7bb6bbe9845547a2a9f2b09f982d027",
+            "canonicalLF_SHA256": "bbfed36fe630a77084a308e62bedf29ce7bb6bbe9845547a2a9f2b09f982d027"
+          },
+          {
+            "name": "20260930130030_attendance_overtime_review_v1.sql",
+            "sha256": "e8fdb49e40551f2c4080077ff3b710a7d34c4ed8b79a7e6f6bf702528097ae84",
+            "canonicalLF_SHA256": "e8fdb49e40551f2c4080077ff3b710a7d34c4ed8b79a7e6f6bf702528097ae84"
+          },
+          {
+            "name": "20260930131357_attendance_overtime_policy_compat.sql",
+            "sha256": "b4402e18d4f777f0395e64eedb693d90549caf230f905069a7bd63512ce5dcaa",
+            "canonicalLF_SHA256": "b4402e18d4f777f0395e64eedb693d90549caf230f905069a7bd63512ce5dcaa"
+          },
+          {
+            "name": "20260930132537_attendance_review_queue_bulk_v1.sql",
+            "sha256": "c11f7cc37661394174129bdc9f6dd11880480584d8e48f3f5a2562db2c1848ad",
+            "canonicalLF_SHA256": "c11f7cc37661394174129bdc9f6dd11880480584d8e48f3f5a2562db2c1848ad"
+          },
+          {
+            "name": "20260930133541_attendance_review_queue_exception_counts.sql",
+            "sha256": "a1b697c0b826ddd56ab4a4a1d6d3b0f2c7afb83545e9f5afb9793f7ba6834532",
+            "canonicalLF_SHA256": "a1b697c0b826ddd56ab4a4a1d6d3b0f2c7afb83545e9f5afb9793f7ba6834532"
+          },
+          {
+            "name": "20260930134418_attendance_payroll_input_projection_v1.sql",
+            "sha256": "7507e6935454ea6c57daae3fc489e4a214707338e82c0a98a1c706b5abc49157",
+            "canonicalLF_SHA256": "7507e6935454ea6c57daae3fc489e4a214707338e82c0a98a1c706b5abc49157"
+          },
+          {
+            "name": "20260930140506_attendance_clean_auto_approval.sql",
+            "sha256": "2e1c8bcd047b83cd6938d3d2d888167badd7d6356107b7e7b2d42b1dba35be46",
+            "canonicalLF_SHA256": "2e1c8bcd047b83cd6938d3d2d888167badd7d6356107b7e7b2d42b1dba35be46"
+          },
+          {
+            "name": "20260930142536_attendance_unassigned_import_evidence.sql",
+            "sha256": "35503a024eec2bb787dde9c29c5ad00164afd8305bf40e233b9c541c983c555e",
+            "canonicalLF_SHA256": "35503a024eec2bb787dde9c29c5ad00164afd8305bf40e233b9c541c983c555e"
+          },
+          {
+            "name": "20260930143501_attendance_unassigned_idempotency_guard.sql",
+            "sha256": "7357a6479395f7fad7921fbbc105f6945fd0af43e85fd73e1f18780b3aac4e95",
+            "canonicalLF_SHA256": "7357a6479395f7fad7921fbbc105f6945fd0af43e85fd73e1f18780b3aac4e95"
+          },
+          {
+            "name": "20260930143744_attendance_unassigned_queue_pagination.sql",
+            "sha256": "4b534c0d670a1f368635249791cdcefbb549fe77815821a4dbae6110e311c46e",
+            "canonicalLF_SHA256": "4b534c0d670a1f368635249791cdcefbb549fe77815821a4dbae6110e311c46e"
+          },
+          {
+            "name": "20260930144026_attendance_unassigned_identity_binding.sql",
+            "sha256": "ddabd09345a9e5bf6427d0e9fd2320c4ee3d9529b957f728b2d8c252eec4fc23",
+            "canonicalLF_SHA256": "ddabd09345a9e5bf6427d0e9fd2320c4ee3d9529b957f728b2d8c252eec4fc23"
+          },
+          {
+            "name": "20260930144815_overtime_explicit_classification.sql",
+            "sha256": "137de359b2a01606951d450d70ce551d2d100ff9b27aa54ecc6a9180c7e1a0da",
+            "canonicalLF_SHA256": "137de359b2a01606951d450d70ce551d2d100ff9b27aa54ecc6a9180c7e1a0da"
+          },
+          {
+            "name": "20260930145846_overtime_classification_lock_order.sql",
+            "sha256": "94068735aca5ca19ff8be318f2d5c5313b4e75197412c6d4f0e56c720e863218",
+            "canonicalLF_SHA256": "94068735aca5ca19ff8be318f2d5c5313b4e75197412c6d4f0e56c720e863218"
+          },
+          {
+            "name": "20260930155003_people_attendance_temporal_integrity.sql",
+            "sha256": "e64a056e6e3bdb70a53eb7e442741936b57d5a0594957cffbaad47ce84b9bb41",
+            "canonicalLF_SHA256": "e64a056e6e3bdb70a53eb7e442741936b57d5a0594957cffbaad47ce84b9bb41"
+          },
+          {
+            "name": "20260930160002_people_directory_scale_search.sql",
+            "sha256": "0ca3c5e2a30dbf92ac9116424dd13059a3433d78ff9068f766cbf548d5adfb4e",
+            "canonicalLF_SHA256": "0ca3c5e2a30dbf92ac9116424dd13059a3433d78ff9068f766cbf548d5adfb4e"
+          },
+          {
+            "name": "20260930160953_attendance_import_employment_lock_order.sql",
+            "sha256": "fdeeccb3395d50fcd8480b4efb1bbd0e062085da0da8689ee52d63c0a209c2c6",
+            "canonicalLF_SHA256": "fdeeccb3395d50fcd8480b4efb1bbd0e062085da0da8689ee52d63c0a209c2c6"
+          },
+          {
+            "name": "20260930161157_tenant_member_access_pagination.sql",
+            "sha256": "998d967a47500ca7a33d800ba9d47ff29a1ddd9fcee0810fd2ee5d9adbf573c1",
+            "canonicalLF_SHA256": "998d967a47500ca7a33d800ba9d47ff29a1ddd9fcee0810fd2ee5d9adbf573c1"
+          },
+          {
+            "name": "20260930161330_attendance_review_queue_scale.sql",
+            "sha256": "8480a558085b3bdcf13edf7b1c7d6b75e9dbacf2017830cb56ed7caa1a89f3ff",
+            "canonicalLF_SHA256": "8480a558085b3bdcf13edf7b1c7d6b75e9dbacf2017830cb56ed7caa1a89f3ff"
+          },
+          {
+            "name": "20260930162029_operator_listing_pagination.sql",
+            "sha256": "aa711e1efcd9978ec5332c04cf7bf1eaa0643c03a496d91de25eb6b6e12c4248",
+            "canonicalLF_SHA256": "aa711e1efcd9978ec5332c04cf7bf1eaa0643c03a496d91de25eb6b6e12c4248"
+          },
+          {
+            "name": "20260930190000_people_transfer_preserves_attendance_policy.sql",
+            "sha256": "e6a8d6298eea0e0676c6462077223edb2c38493cb6ade9c3e9ac98dc6f29c540",
+            "canonicalLF_SHA256": "e6a8d6298eea0e0676c6462077223edb2c38493cb6ade9c3e9ac98dc6f29c540"
+          },
+          {
+            "name": "20260930191000_people_employee_account_password_readiness.sql",
+            "sha256": "9f931e536b648fc565827316af3e52c18601002657954351f32bb390a0eac864",
+            "canonicalLF_SHA256": "9f931e536b648fc565827316af3e52c18601002657954351f32bb390a0eac864"
+          },
+          {
+            "name": "20260930191500_people_activated_employee_password_readiness_recovery.sql",
+            "sha256": "c9c056c9c85bed3c24b9c4600f5ab1d6830391f3f7c69bcc54340975b7b5ab41",
+            "canonicalLF_SHA256": "c9c056c9c85bed3c24b9c4600f5ab1d6830391f3f7c69bcc54340975b7b5ab41"
+          },
+          {
+            "name": "20260930191624_people_employee_account_readiness_delivery_audit_event.sql",
+            "sha256": "de8202fe9d76b64e637f6cc7af94866cd519e8add6553624394d81d7343affdb",
+            "canonicalLF_SHA256": "de8202fe9d76b64e637f6cc7af94866cd519e8add6553624394d81d7343affdb"
+          },
+          {
+            "name": "20260930192000_attendance_ambiguous_work_date_resolution.sql",
+            "sha256": "e3d8de4d0f97c3ab59ef08f7f7d53779a04df060fe0388168f48c03269c044bc",
+            "canonicalLF_SHA256": "e3d8de4d0f97c3ab59ef08f7f7d53779a04df060fe0388168f48c03269c044bc"
+          },
+          {
+            "name": "20260930193000_attendance_absence_corrections.sql",
+            "sha256": "af01355d3ef7a2cf94d71af3ee8cba87b2c464123479bf7101687315c05e6a05",
+            "canonicalLF_SHA256": "af01355d3ef7a2cf94d71af3ee8cba87b2c464123479bf7101687315c05e6a05"
+          },
+          {
+            "name": "20260930194000_governed_unrecoverable_admin_demotion.sql",
+            "sha256": "2f0df11a8cd235761b47c557cb0b68dd206bba2c17538dd032f7d216d20101b4",
+            "canonicalLF_SHA256": "2f0df11a8cd235761b47c557cb0b68dd206bba2c17538dd032f7d216d20101b4"
+          },
+          {
+            "name": "20260930202731_employee_replacement_account_snapshot.sql",
+            "sha256": "b1e7e748362bcc590011cab053146fd12d4566514084f5814ef47e88031e839d",
+            "canonicalLF_SHA256": "b1e7e748362bcc590011cab053146fd12d4566514084f5814ef47e88031e839d"
+          },
+          {
+            "name": "20260930221654_reconcile_live_function_definitions.sql",
+            "sha256": "414543b842a5eecf06a9ec7952c3c94c931f8e99f3f36266bf52007e6f08e47b",
+            "canonicalLF_SHA256": "414543b842a5eecf06a9ec7952c3c94c931f8e99f3f36266bf52007e6f08e47b"
+          },
+          {
+            "name": "20261001004629_cube3_leave_access_foundation.sql",
+            "sha256": "19dcb73abdacff007c381980e1f64be8ceb9c534d987b3f0b22266cc53164858",
+            "canonicalLF_SHA256": "19dcb73abdacff007c381980e1f64be8ceb9c534d987b3f0b22266cc53164858"
+          },
+          {
+            "name": "20261001011428_cube3_leave_calendar_balance_foundation.sql",
+            "sha256": "b5bd722c1437250f47ad09528ab5536ee65b2a04f18a423c9918efbcb4a8e0a4",
+            "canonicalLF_SHA256": "b5bd722c1437250f47ad09528ab5536ee65b2a04f18a423c9918efbcb4a8e0a4"
+          },
+          {
+            "name": "20261001015100_cube3_leave_configuration_integrity.sql",
+            "sha256": "a8c45764149ae416b08a078cd1508a68bf582f68a65e79920730b4bd945c9a37",
+            "canonicalLF_SHA256": "a8c45764149ae416b08a078cd1508a68bf582f68a65e79920730b4bd945c9a37"
+          },
+          {
+            "name": "20261001020124_cube3_leave_balance_finite_values.sql",
+            "sha256": "316cad362d300af03c0f66f5ea0e738cb8a92846ec9edc17f54bf6977151299b",
+            "canonicalLF_SHA256": "316cad362d300af03c0f66f5ea0e738cb8a92846ec9edc17f54bf6977151299b"
+          },
+          {
+            "name": "20261001020818_cube3_leave_request_submission.sql",
+            "sha256": "9ddf12eb0626a12cc497670b207400c20d0a962d1c04d49076f348a0ef786a14",
+            "canonicalLF_SHA256": "9ddf12eb0626a12cc497670b207400c20d0a962d1c04d49076f348a0ef786a14"
+          },
+          {
+            "name": "20261001023454_cube3_leave_attendance_lock_integrity.sql",
+            "sha256": "94406d3f5091f44f46dde5127dd042bfba7eed0486ec904bbbc83a836a417baa",
+            "canonicalLF_SHA256": "94406d3f5091f44f46dde5127dd042bfba7eed0486ec904bbbc83a836a417baa"
+          },
+          {
+            "name": "20261001025105_cube3_leave_configuration_recovery.sql",
+            "sha256": "f840266281aad1142e203e34e4321d912c823e6cf4f847f9a0dbfac8881e5460",
+            "canonicalLF_SHA256": "f840266281aad1142e203e34e4321d912c823e6cf4f847f9a0dbfac8881e5460"
+          },
+          {
+            "name": "20261001030140_cube3_leave_request_list_summaries.sql",
+            "sha256": "c1c9c974026956433f836d6f10df24ed24f29b8b05564b3cacc238030a169060",
+            "canonicalLF_SHA256": "c1c9c974026956433f836d6f10df24ed24f29b8b05564b3cacc238030a169060"
+          },
+          {
+            "name": "20261001030600_cube3_leave_approval_consumption.sql",
+            "sha256": "3105894195eb6bb7f45f0224882700ae606eb9ed980b4541dd0d255747fa00c7",
+            "canonicalLF_SHA256": "3105894195eb6bb7f45f0224882700ae606eb9ed980b4541dd0d255747fa00c7"
+          },
+          {
+            "name": "20261001030700_cube3_leave_self_request_snapshot.sql",
+            "sha256": "f771c98ee6e19cefdc9f761d2d42dbeefa8ccd55859fd36dc30e6ae09865276c",
+            "canonicalLF_SHA256": "f771c98ee6e19cefdc9f761d2d42dbeefa8ccd55859fd36dc30e6ae09865276c"
+          },
+          {
+            "name": "20261001030710_cube3_leave_own_detail_scope.sql",
+            "sha256": "48bd279bfe508f027a8fe1d5a39cf4a9b04783dd5dd91b2a995a5fa99d51a81b",
+            "canonicalLF_SHA256": "48bd279bfe508f027a8fe1d5a39cf4a9b04783dd5dd91b2a995a5fa99d51a81b"
+          },
+          {
+            "name": "20261001030800_cube3_leave_cancellation.sql",
+            "sha256": "da5d99dc0e599cb69614a18939fd09880aa97ce2d62953d30484e0c5f1f4ab41",
+            "canonicalLF_SHA256": "da5d99dc0e599cb69614a18939fd09880aa97ce2d62953d30484e0c5f1f4ab41"
+          },
+          {
+            "name": "20261001030900_cube3_leave_time_fact_guard.sql",
+            "sha256": "88cca84f307f2a27cdd1edf007c2c06c18dba625a648bac113bf302e4e30221e",
+            "canonicalLF_SHA256": "88cca84f307f2a27cdd1edf007c2c06c18dba625a648bac113bf302e4e30221e"
+          },
+          {
+            "name": "20261001030910_cube3_leave_configuration_read_closure.sql",
+            "sha256": "27ce41abe68c1a2d08b418a23ecdeab35eafee971eef5d3e7771c713e6cec870",
+            "canonicalLF_SHA256": "27ce41abe68c1a2d08b418a23ecdeab35eafee971eef5d3e7771c713e6cec870"
+          },
+          {
+            "name": "20261001031000_cube3_half_day_policy_mapping.sql",
+            "sha256": "19cc26e03f65cab2c71bb454eefb4cbfd6ff36439896ebaedc216c65988dad61",
+            "canonicalLF_SHA256": "19cc26e03f65cab2c71bb454eefb4cbfd6ff36439896ebaedc216c65988dad61"
+          },
+          {
+            "name": "20261001031100_cube3_leave_payroll_facts_projection.sql",
+            "sha256": "cb420adf26a014e26bef7a25ed0a91c72ee3b4ccb90a8e2ccc42920935a86f18",
+            "canonicalLF_SHA256": "cb420adf26a014e26bef7a25ed0a91c72ee3b4ccb90a8e2ccc42920935a86f18"
+          },
+          {
+            "name": "20261001031110_cube3_time_observed_break_overlap.sql",
+            "sha256": "3cabf3ea2a9b32a11b90cc2c2e881bbae3511f94ff382c011054a2d66741b8af",
+            "canonicalLF_SHA256": "3cabf3ea2a9b32a11b90cc2c2e881bbae3511f94ff382c011054a2d66741b8af"
+          },
+          {
+            "name": "20261001031200_cube3_leave_halfday_request_mapping.sql",
+            "sha256": "b22acdf6e297b0c7449a9ccec510ca886bff44fd565066682110224e4c6d8533",
+            "canonicalLF_SHA256": "b22acdf6e297b0c7449a9ccec510ca886bff44fd565066682110224e4c6d8533"
+          },
+          {
+            "name": "20261001031300_cube3_leave_cancellation_history_latest_event.sql",
+            "sha256": "a91a6ff4c944be0eebbf57c189979100a30a61a3bae051ce2ebfcd4f9378c55b",
+            "canonicalLF_SHA256": "a91a6ff4c944be0eebbf57c189979100a30a61a3bae051ce2ebfcd4f9378c55b"
+          },
+          {
+            "name": "20261001090221_cube3_deterministic_conflict_http_status.sql",
+            "sha256": "bb3fb8fa1ba7e50e5165b1a7bfa17d5bf6175bd07d0220ff9f040bcf22032aa6",
+            "canonicalLF_SHA256": "bb3fb8fa1ba7e50e5165b1a7bfa17d5bf6175bd07d0220ff9f040bcf22032aa6"
+          },
+          {
+            "name": "20261001093604_cube3_leave_approved_replacement.sql",
+            "sha256": "fece93dd68349a55ff7d00b578c6c88684797008ce5c2ce8a8759f0c9f1761f8",
+            "canonicalLF_SHA256": "fece93dd68349a55ff7d00b578c6c88684797008ce5c2ce8a8759f0c9f1761f8"
+          },
+          {
+            "name": "20261001103609_cube3_leave_hr_balance_read_closure.sql",
+            "sha256": "a4c4a6c974e84e50caff09d62a52d60837cca40d9a293aa767ea6ef8e80a1f35",
+            "canonicalLF_SHA256": "a4c4a6c974e84e50caff09d62a52d60837cca40d9a293aa767ea6ef8e80a1f35"
+          },
+          {
+            "name": "20261001112549_cube3_halfday_attendance_remaining_work.sql",
+            "sha256": "39581d5d298ce705e426e46c4ff7ebed80406dafc337d7f9fd2366786c53225a",
+            "canonicalLF_SHA256": "39581d5d298ce705e426e46c4ff7ebed80406dafc337d7f9fd2366786c53225a"
+          },
+          {
+            "name": "20261001160000_cube3_time_shared_calculator.sql",
+            "sha256": "acd046b88d357dda59df53016c2523afcb15807660d151e8547adeb81194a9c7",
+            "canonicalLF_SHA256": "acd046b88d357dda59df53016c2523afcb15807660d151e8547adeb81194a9c7"
+          },
+          {
+            "name": "20261001170000_cube3_attendance_coverage_classifier.sql",
+            "sha256": "6a0f99936f3d3040cf543c38582e346a4208991330a189f99cb66e18d1df7461",
+            "canonicalLF_SHA256": "6a0f99936f3d3040cf543c38582e346a4208991330a189f99cb66e18d1df7461"
+          },
+          {
+            "name": "20261001180000_cube3_classified_attendance_facts.sql",
+            "sha256": "af9f1349f4d7793f02f51b18fc99e2b52aa799f14f41a2f367766b2182ea7be0",
+            "canonicalLF_SHA256": "af9f1349f4d7793f02f51b18fc99e2b52aa799f14f41a2f367766b2182ea7be0"
+          },
+          {
+            "name": "20261001220000_cube3_annual_entitlement_calculation.sql",
+            "sha256": "551d766af663f5b53b141380ab55bb5ce180f43a9d9dbeddd448ee7b6f7930cf",
+            "canonicalLF_SHA256": "551d766af663f5b53b141380ab55bb5ce180f43a9d9dbeddd448ee7b6f7930cf"
+          },
+          {
+            "name": "20261001233819_cube4_payroll_calendars.sql",
+            "sha256": "d1e3efb010ae5f3123335dca7af87c4a815f6e3cb8dc081ebf187c83cca82a82",
+            "canonicalLF_SHA256": "8febb880736387ae999e181a59f20900fe3ca4cf155af172a9c8153a15c5012f"
+          },
+          {
+            "name": "20261002002040_cube4_payroll_inputs.sql",
+            "sha256": "2809c39b24cdfc825d517043baec610a7b004f6dc09adcb52ef26541bba1d020",
+            "canonicalLF_SHA256": "84dbad0fec6bea142491d5477d737273c4f72caa3df8e1d1d51d995bdfdf3975"
+          },
+          {
+            "name": "20261002010419_cube4_payroll_candidates.sql",
+            "sha256": "349b137134123ab8dff204fe2d42994491f458e735e614a7100bba27c039c357",
+            "canonicalLF_SHA256": "349b137134123ab8dff204fe2d42994491f458e735e614a7100bba27c039c357"
+          },
+          {
+            "name": "20261002020629_cube4_payroll_finalization_foundation.sql",
+            "sha256": "0f6c33d8b503358a6738255aba134dd4d68bdb85976a7ec44191544c743d788e",
+            "canonicalLF_SHA256": "5f67a471c8ea8b47e4d6b2856554fd60785a6cbfbfe586597507203c8cbabc70"
+          },
+          {
+            "name": "20261002025507_cube4_payroll_external_payments.sql",
+            "sha256": "ad93cee3b8e724fd446ae7b4bf0c9dcb5a7268db09ce7026ef467317ffdc4498",
+            "canonicalLF_SHA256": "958f747bfa0452ba819e81fec9fef43fab25040d5ccc72020ee5e2bf542cdcde"
+          },
+          {
+            "name": "20261002030000_cube4_payroll_review_fixes.sql",
+            "sha256": "e14797b3584ea489c6d069cb6bb238b51426a5a2ca67b18034111676e514dc77",
+            "canonicalLF_SHA256": "44349e55850836e72603859e6bbb00b2c6b0f0c4c16fcca7784a32e03581e02d"
+          },
+          {
+            "name": "20261002040200_cube4_payroll_governed_corrections.sql",
+            "sha256": "73d0ea2e1522c3d1606237748e0d8dc4bccf1636968f5b762b8ef2ee78d34c45",
+            "canonicalLF_SHA256": "7be2313058e1d82f142be57d274c3ae52d7969fb7bc4dea6283c7f9c473bb14c"
+          },
+          {
+            "name": "20261002063000_cube4_payroll_advances.sql",
+            "sha256": "07cda75ce89dcfeb199f391aab394219c33b8b443a8d5b51ef073fa7d6bb7b74",
+            "canonicalLF_SHA256": "c716f486b41d5bfe99d7185689af30567b2a44d1370b42e0bed14e49a145b63c"
+          },
+          {
+            "name": "20261002064500_cube4_payroll_advance_namespace_fixes.sql",
+            "sha256": "e9888c5c625aff55af039ffbfe5dc5bcddaea86dfe4929f6304847708a240350",
+            "canonicalLF_SHA256": "e9888c5c625aff55af039ffbfe5dc5bcddaea86dfe4929f6304847708a240350"
+          },
+          {
+            "name": "20261002074500_cube4_payroll_reports.sql",
+            "sha256": "31983daa08564f3583af1d2f71d2a3a6d834b8098e261b5c344c406eab672f48",
+            "canonicalLF_SHA256": "42dcd52ebd5cfd20e10c8686652d43919e5d43f9c620bb90354ebd229b731801"
+          },
+          {
+            "name": "20261002080000_cube4_payroll_navigation_access.sql",
+            "sha256": "1939619e539556c97f378a82308a6e3c470da218b01076a1078181b843829129",
+            "canonicalLF_SHA256": "2123989481e315014abcc7bf8cb124ff0e5640b02279f32d8a127a587ac2cc44"
+          },
+          {
+            "name": "20261002103813_cube4_payroll_optional_source_capture.sql",
+            "sha256": "12f6ce5aadb9e27bf3b27ac51ffafdd8c2f29eb5073e098fa98abcf9c082cbc5",
+            "canonicalLF_SHA256": "f1a8e7b6232c2f45ba97fe69dd24a11a930f7a8b52eb024545c1d1da4eedfeff"
+          },
+          {
+            "name": "20261002120126_cube4_payroll_source_reconciliation.sql",
+            "sha256": "f8a0f0dabda0b4a59ca97e344d58ec5aaa64c3f15e5ac49b6e528fac99c43c63",
+            "canonicalLF_SHA256": "6aaeab2c87b4c51ab89c339793942da9ecd154b6135119b97a0c0bf28ffb85e2"
+          },
+          {
+            "name": "20261002132650_cube4_payroll_time_expected_coverage.sql",
+            "sha256": "816ecb1ecafed52de9eca265fd28aaf2b765b9e9b733d1fbb2cbb9c07701152a",
+            "canonicalLF_SHA256": "87526b5c581a29407ce376abf47268962875df35adfb5a2a4db90c8c26b71a6a"
+          },
+          {
+            "name": "20261002145027_cube4_payroll_statutory_arithmetic.sql",
+            "sha256": "4e7eb0e91415e319da994ecf9e78eda53a0689e9dbb7b97ccb0686664585c013",
+            "canonicalLF_SHA256": "4e7eb0e91415e319da994ecf9e78eda53a0689e9dbb7b97ccb0686664585c013"
+          },
+          {
+            "name": "20261002160500_cube4_payroll_opening_tax_due.sql",
+            "sha256": "30cea62e0e653651eb57f085b5130779feb5f84d4539bf24428c6cee324c2dd4",
+            "canonicalLF_SHA256": "30cea62e0e653651eb57f085b5130779feb5f84d4539bf24428c6cee324c2dd4"
+          },
+          {
+            "name": "20261002163500_cube4_payroll_employee_statutory_context.sql",
+            "sha256": "535d686253b27f4ad838bd907e73deef757defde0bea1a31d69b87d307ef6599",
+            "canonicalLF_SHA256": "535d686253b27f4ad838bd907e73deef757defde0bea1a31d69b87d307ef6599"
+          },
+          {
+            "name": "20261002170500_cube4_payroll_opening_coverage.sql",
+            "sha256": "cd24d3ec35b6165902bf58946f29cbe37022b33d8e97de9e5fc20da9f2379c09",
+            "canonicalLF_SHA256": "cd24d3ec35b6165902bf58946f29cbe37022b33d8e97de9e5fc20da9f2379c09"
+          },
+          {
+            "name": "20261002174500_cube4_payroll_cumulative_tax_adapter.sql",
+            "sha256": "8efd8fe5c0ef79f575796ff84b0c2a502cfd4b3d7e6a0d1a174bd9626f2fa19d",
+            "canonicalLF_SHA256": "8efd8fe5c0ef79f575796ff84b0c2a502cfd4b3d7e6a0d1a174bd9626f2fa19d"
+          },
+          {
+            "name": "20261002181500_cube4_payroll_insurance_adapter.sql",
+            "sha256": "2c071b0976ca86470d6436474ddbbd7755a444a2978cf35f0e2e06db0df00b0d",
+            "canonicalLF_SHA256": "2c071b0976ca86470d6436474ddbbd7755a444a2978cf35f0e2e06db0df00b0d"
+          },
+          {
+            "name": "20261002185000_cube4_payroll_statutory_employee_calculation.sql",
+            "sha256": "7b9d42a03a0456a9863cc49b3bac57d114512ab25c8f0a29e4432cf2e43d9882",
+            "canonicalLF_SHA256": "7b9d42a03a0456a9863cc49b3bac57d114512ab25c8f0a29e4432cf2e43d9882"
+          },
+          {
+            "name": "20261002192500_cube4_payroll_component_statutory_sources.sql",
+            "sha256": "7950301e2a3bb231b2103111a167c2bb6452b0ce04b89da5b1a8ff1999d89a08",
+            "canonicalLF_SHA256": "7950301e2a3bb231b2103111a167c2bb6452b0ce04b89da5b1a8ff1999d89a08"
+          },
+          {
+            "name": "20261002195000_cube4_payroll_employee_statutory_sources.sql",
+            "sha256": "e8c8df47aa0ccccccc32fa91f36ff48569acc19a2f5bda9c544364652b09490a",
+            "canonicalLF_SHA256": "e8c8df47aa0ccccccc32fa91f36ff48569acc19a2f5bda9c544364652b09490a"
+          },
+          {
+            "name": "20261002203500_cube4_payroll_prior_statutory_outputs.sql",
+            "sha256": "052beb9c10138d1b832e96d3a96b7f49b35d423841afb59f65666dbfbeffc5c9",
+            "canonicalLF_SHA256": "052beb9c10138d1b832e96d3a96b7f49b35d423841afb59f65666dbfbeffc5c9"
+          },
+          {
+            "name": "20261002210500_cube4_payroll_cumulative_balances.sql",
+            "sha256": "6df763211eb71bcf65e933acdf0fc566f7ba1e305f5f964701ac0cf02d953744",
+            "canonicalLF_SHA256": "6df763211eb71bcf65e933acdf0fc566f7ba1e305f5f964701ac0cf02d953744"
+          },
+          {
+            "name": "20261002214000_cube4_payroll_current_earning_sources.sql",
+            "sha256": "a4669671269f0a02187bab7d1728677bcaead957b125519aebc279923d5a3d5e",
+            "canonicalLF_SHA256": "2f60be09d743f8864d89bded0ee4036a9f52006b5420f64ca13a936b310caa53"
+          },
+          {
+            "name": "20261002220504_cube4_statutory_authority.sql",
+            "sha256": "c39bcb5c6b7a8e505d406302ece5bf26c1856da62b5e871b762740fdc5c7cffb",
+            "canonicalLF_SHA256": "da127b4782139ae48604327f011fec6786129532db737f056dc3bc9c37db9ec7"
+          },
+          {
+            "name": "20261002222602_cube4_statutory_drafts.sql",
+            "sha256": "2951ff1e767214f0dad3115e4df0d9f63bd9f0765353604258daf4b239b62f1a",
+            "canonicalLF_SHA256": "15ae1886e571bf87a851c45edce35cf46c2f547e220aafdf9c68aa5b2aad2b3d"
+          },
+          {
+            "name": "20261002225319_cube4_statutory_numeric_drafts.sql",
+            "sha256": "120a7e501fd263d1a3684a62389a3f3f104b0fda104d6793f0c6c8baf5c2507e",
+            "canonicalLF_SHA256": "120a7e501fd263d1a3684a62389a3f3f104b0fda104d6793f0c6c8baf5c2507e"
+          },
+          {
+            "name": "20261002230816_cube4_statutory_comparisons.sql",
+            "sha256": "77639dde1b9e90b82e522bcc222e17d660b62f82180113913da1bdf7888616ea",
+            "canonicalLF_SHA256": "77639dde1b9e90b82e522bcc222e17d660b62f82180113913da1bdf7888616ea"
+          },
+          {
+            "name": "20261002233957_cube4_statutory_issuance.sql",
+            "sha256": "287d5948b7d608fbe25a4a3adf7b3d8b06ffe0d66a7c5dd0ce4931df5a44ad67",
+            "canonicalLF_SHA256": "287d5948b7d608fbe25a4a3adf7b3d8b06ffe0d66a7c5dd0ce4931df5a44ad67"
+          },
+          {
+            "name": "20261003000616_cube4_statutory_calendar_sources.sql",
+            "sha256": "ed990a910057d95cb7bbf076d4092eeac97c3f0eff1352fdf303d76d00bbfc39",
+            "canonicalLF_SHA256": "ed990a910057d95cb7bbf076d4092eeac97c3f0eff1352fdf303d76d00bbfc39"
+          },
+          {
+            "name": "20261003001000_cube4_payroll_statutory_source_precision.sql",
+            "sha256": "6dd5faf5bf6260b7417e84f8e294c7bcccdaf84e86e0831d56d9e98915cd1149",
+            "canonicalLF_SHA256": "6dd5faf5bf6260b7417e84f8e294c7bcccdaf84e86e0831d56d9e98915cd1149"
+          },
+          {
+            "name": "20261003002259_cube4_earning_date_partitions.sql",
+            "sha256": "9d212b5582247ef3a50c85c818c45b961821cb9b61714ff0ba898611cf096157",
+            "canonicalLF_SHA256": "9d212b5582247ef3a50c85c818c45b961821cb9b61714ff0ba898611cf096157"
+          },
+          {
+            "name": "20261003003000_cube4_payroll_run_recovery.sql",
+            "sha256": "f7e70a9291cb3c738a9a7f20da3be5fc9803f7e89689564f63fbd47b48ad0f08",
+            "canonicalLF_SHA256": "f7e70a9291cb3c738a9a7f20da3be5fc9803f7e89689564f63fbd47b48ad0f08"
+          },
+          {
+            "name": "20261003005000_cube4_payroll_distribution_readiness.sql",
+            "sha256": "ef4e700e193ead6256afa3618aaecd3550343593a79685d77d228e39db6db057",
+            "canonicalLF_SHA256": "ef4e700e193ead6256afa3618aaecd3550343593a79685d77d228e39db6db057"
+          },
+          {
+            "name": "20261003010817_cube4_financial_civil_dates.sql",
+            "sha256": "f3a6fc711af371d908cf1bc794bde0ec1676fa6fc2e9b87c12ec1f56dc7a9b6f",
+            "canonicalLF_SHA256": "f0166b523acef104ab105cdb4f66da3c0be7fa7f5809e7f104f77b1d2de451d5"
+          },
+          {
+            "name": "20261003011000_cube4_payroll_governed_earning_attribution.sql",
+            "sha256": "93430d3ec3c96c07bc886e4746c7290db257e9af55eeafa0d58dfaed76a89676",
+            "canonicalLF_SHA256": "de5cff56b91005d48109337eb0e758c7bc7ee7a48b810732858a3480575e120f"
+          },
+          {
+            "name": "20261003020000_cube4_payment_recovery_requests.sql",
+            "sha256": "42154f899ba828a902ba3ea0e154eac879fd4de2c760c9ff2417899c54664a95",
+            "canonicalLF_SHA256": "2cb223c833f811072c42c0691282743bf4c32d7fde51641abdc14ff55a33b507"
+          },
+          {
+            "name": "20261003021000_cube4_review_attention_workspace.sql",
+            "sha256": "ce0505f96d76ddddef5a563c0f95f8425e0e011c1f6470a1888e7ced643d0665",
+            "canonicalLF_SHA256": "ce0505f96d76ddddef5a563c0f95f8425e0e011c1f6470a1888e7ced643d0665"
+          },
+          {
+            "name": "20261003022000_cube4_independent_statutory_pack_binding.sql",
+            "sha256": "e47fd0f00ac1f3705db8451564e4e727b981f76a3222b18c315ee3c65079af31",
+            "canonicalLF_SHA256": "e47fd0f00ac1f3705db8451564e4e727b981f76a3222b18c315ee3c65079af31"
+          },
+          {
+            "name": "20261003023000_cube4_complete_daily_time_sources.sql",
+            "sha256": "5057ee1c60070c7a73f85f30a8e6fda8647dfc45c125f2db933aba0efa0b2654",
+            "canonicalLF_SHA256": "5057ee1c60070c7a73f85f30a8e6fda8647dfc45c125f2db933aba0efa0b2654"
+          },
+          {
+            "name": "20261003024000_cube4_final_source_bindings.sql",
+            "sha256": "a800109f7f070ff14147156babd2259e1943d8cc6a8b4feb2d3675757e81527b",
+            "canonicalLF_SHA256": "a800109f7f070ff14147156babd2259e1943d8cc6a8b4feb2d3675757e81527b"
+          },
+          {
+            "name": "20261003025000_cube4_bound_source_correction_requirements.sql",
+            "sha256": "a718406fd6b2892996abdc1a36b126a8636bb4828688d5c22d19705aca8ae693",
+            "canonicalLF_SHA256": "a7ec705fe9d13fe9b81039e8c9576be1a972cfe9fe071f6cb3a474c07e9d4eb4"
+          },
+          {
+            "name": "20261003026000_cube4_source_observation_corrections.sql",
+            "sha256": "95f86ba7e6ceef8d382a2d1e0d8411055b11523303f2d1ac0c56322a7b79b875",
+            "canonicalLF_SHA256": "43a57ed138ec2696131943e8f05c72cc39defa3700dd1e0abbd1450a1983316a"
+          },
+          {
+            "name": "20261003027000_cube4_source_correction_closure.sql",
+            "sha256": "4ad62980e867146b88404c0ce12c602228f729a0b9e2d794cc6683eb61c7707d",
+            "canonicalLF_SHA256": "4ad62980e867146b88404c0ce12c602228f729a0b9e2d794cc6683eb61c7707d"
+          },
+          {
+            "name": "20261003028000_cube4_external_settlement_completion.sql",
+            "sha256": "66b0bb12dc32c37389ce3ae91ad55fadf2acc2aec2c38ed9e1e54dbfb987e93d",
+            "canonicalLF_SHA256": "ab0c8338ce2497ac0a06923e23f8b4a112fe6c8aa26cb867b5f1eda22d66758d"
+          },
+          {
+            "name": "20261003029000_cube4_pending_replacement_authority.sql",
+            "sha256": "ba28e3bd5921a6a537505ae0716d3f6ef3831a7d5f2730f7cd64ac4559763621",
+            "canonicalLF_SHA256": "126c98dd9f48acf4aaeebf13dd03d6038aad0a9e55b902e0dd3dc96cd9a7af93"
+          }
+        ],
+        "retainedQA": "{\"migrations\" : 157, \"payments\" : 16, \"receipts\" : 147}",
+        "stage": "completed",
+        "sqlTransport": "UTF8 bytes; canonical LF source; no Windows text newline conversion",
+        "excludedApplicationEngineEntries": [
+          "6221; 2620 328685 TRIGGER auth users people_capture_employee_account_provision supabase_auth_admin",
+          "6405; 3256 329585 POLICY storage objects tenant_branding_object_insert supabase_storage_admin",
+          "6404; 3256 329586 POLICY storage objects tenant_branding_object_read supabase_storage_admin"
+        ],
+        "nextMigration": "20261003029000_cube4_pending_replacement_authority.sql",
+        "lastApplied": "20261003029000_cube4_pending_replacement_authority.sql",
+        "limits": [
+          "Fresh application migration chain only; tests/parity/authorization and full final candidate acceptance still required",
+          "Engine schema reused from named Supabase dump, zero restored auth users; not a new Supabase engine install",
+          "Existing upgrade QA retained; no runtime/production mutation"
+        ]
+      }
+    },
+    {
+      "rawEvidence": "cube4-candidate-157-parity-evidence.json",
+      "sha256": "66d082d355137dfac8845ff6e9cfdf3bd6e1a62e8812d4a5054bd18de860eac2",
+      "result": {
+        "status": "SCOPED_APPLICATION_PARITY_PASS",
+        "databases": [
+          "business_platform_cube4_upgrade_qa",
+          "business_platform_cube4_candidate_lf_fresh_qa"
+        ],
+        "objects": [
+          1920,
+          1920
+        ],
+        "hashes": [
+          "f5677883d9915c1d4439601c5799b2e4020f3ec79e0bbe37b1659a88b29247c6",
+          "f5677883d9915c1d4439601c5799b2e4020f3ec79e0bbe37b1659a88b29247c6"
+        ],
+        "differences": [],
+        "changedFields": [],
+        "scope": "Application namespaces structural/authority manifest plus non-extension public RPC definitions/ACLs; ACL entry order, function CRLF/right-edge whitespace and physical column order normalized; no row data, Supabase engine parity, public storage policies or full acceptance claim"
+      }
+    },
+    {
+      "rawEvidence": "cube4-fresh-157-affected.json",
+      "sha256": "365de1692de94ded7dbc689f332c4c4484aad00177dc107b2357ef4b0d755be6",
+      "result": {
+        "status": "SCOPED_PASS",
+        "database": "business_platform_cube4_candidate_lf_fresh_qa",
+        "baseline": 157,
+        "atUTC": "2026-10-03T11:46:57.627985+00:00",
+        "scope": "Nine affected source/correction/finance/report suites sequentially on exact clean fresh candidate; not all Cube4 tests",
+        "checks": [
+          {
+            "file": "cube4_repeated_source_lineage.test.sql",
+            "sourceSHA256": "54c06d0a8e088d46fc75dd5b5f52f72e3dceb358df86a196b87435d6618149dd",
+            "executedCanonicalLF_SHA256": "e7477f0e60bab11bad9281df173be52fd0bca4a25ab357d5d0ef3fdc6646cff5",
+            "status": "PASS",
+            "planned": [
+              8
+            ],
+            "passed": 8,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - stale selected observation cannot resolve its old responsibility",
+              "ok 2 - latest public mutation observes both exact original bindings",
+              "ok 3 - new proposal links all four responsibilities without deleting history",
+              "ok 4 - fresh exact two binding selections cover both previous and latest responsibilities",
+              "ok 5 - deselected sibling sharing physical source leaves both its responsibilities unresolved",
+              "ok 6 - removal preserves all immutable links",
+              "ok 7 - latest exact selected origin now covers stale predecessor",
+              "ok 8 - lineage helper remains private",
+              "1..8"
+            ]
+          },
+          {
+            "file": "cube4_unbound_leave_approval.test.sql",
+            "sourceSHA256": "ab805c7d692a104caeb3371db28ce4dae4d68d892338fe59c04cd21c071d74b0",
+            "executedCanonicalLF_SHA256": "674b85d7ae4b59ec54bf2a18f00b1e7c944aace75c56bb68bcb98881a132199c",
+            "status": "PASS",
+            "planned": [
+              8
+            ],
+            "passed": 8,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - actual public approval refuses unbound Leave addition inside closed original scope",
+              "ok 2 - failed deferred approval keeps original submitted request",
+              "ok 3 - captured Leave-enabled output has no pre-existing Leave binding",
+              "ok 4 - refusal does not fabricate an untyped responsibility",
+              "ok 5 - failed Leave approval introduces no payment",
+              "ok 6 - original NONLEGAL output remains unchanged",
+              "ok 7 - ordinary public Leave approval outside the closed period is permitted",
+              "ok 8 - outside-period Leave approval completes successfully",
+              "1..8"
+            ]
+          },
+          {
+            "file": "cube4_atomic_batch_lifecycle.test.sql",
+            "sourceSHA256": "e072b577a0bf627208ac65c3359160be55783da03906576a9cb6a630aa343ee2",
+            "executedCanonicalLF_SHA256": "65a72270c41fdfe7d3be549ffcca4116850a89734ef7f788d5cbf23b565f7f21",
+            "status": "PASS",
+            "planned": [
+              15
+            ],
+            "passed": 15,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - same source change discovers three current period outputs",
+              "ok 2 - two unpaid originals receive amendment review runs",
+              "ok 3 - actual private batch appends both replacements under source-currentness checks",
+              "ok 4 - both successions publish after replacement batch",
+              "ok 5 - paid original remains authoritative",
+              "ok 6 - all original employee outputs remain byte-equivalent",
+              "ok 7 - original batch receipt recovers without replaying source or append",
+              "ok 8 - one exact source effect recorded across receipt replay",
+              "ok 9 - published earlier replacement appears in later prior statutory sources",
+              "ok 10 - superseded earlier original is not counted beside published replacement",
+              "ok 11 - valid civil-date settlement succeeds on routed case and recovers same receipt",
+              "ok 12 - mixed case completes after valid external settlement evidence",
+              "ok 13 - same Employee capacity sums both output responsibilities; 20 of 30 does not close",
+              "ok 14 - unsettled independent negative responsibility keeps case open",
+              "ok 15 - all positive and negative external responsibilities close exact case",
+              "1..15"
+            ]
+          },
+          {
+            "file": "cube4_payroll_corrections.test.sql",
+            "sourceSHA256": "658463be5fe41e97a8bfc89455dcf5ada0fda88890f2bb2bef6fb1fe213cf8c8",
+            "executedCanonicalLF_SHA256": "e021f6a2962c0f67fef349c4d00df3ac793af0527f5b578ea4b141a59778e5d4",
+            "status": "PASS",
+            "planned": [
+              71
+            ],
+            "passed": 71,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - ordinary callers cannot manufacture correction source proof",
+              "ok 2 - atomic financial replacement is private; G6 is not exposed",
+              "ok 3 - saving proposal leaves source unchanged",
+              "ok 4 - original remains authoritative before replacement",
+              "ok 5 - unpaid amendment calculates attributable overlay",
+              "ok 6 - approved proposal requires explicit release before cancel",
+              "ok 7 - proposal approval does not fabricate qualified net",
+              "ok 8 - atomic replacement applies exact approved compensation",
+              "ok 9 - original immutable financial output survives source correction",
+              "ok 10 - one exact same-period replacement link",
+              "ok 11 - batch receipt recovers original result without duplicate append",
+              "ok 12 - source effect applies once across batch replay",
+              "ok 13 - paid correction executes approved source without replacing paid original",
+              "ok 14 - paid original obligation is unchanged",
+              "ok 15 - external evidence cannot exceed approved responsibility",
+              "ok 16 - all approved manual external responsibilities complete the case without statutory qualification",
+              "ok 17 - separate attributable settlement evidence ledger",
+              "ok 18 - paid fact remains permanent after correction",
+              "ok 19 - new Employment proposal needs no preinserted Employee or Employment",
+              "ok 20 - approved route inserts omitted Employee atomically",
+              "ok 21 - generated Employment identity reaches approved later-period target",
+              "ok 22 - carry-forward creation is approved input, not applied money or settled responsibility",
+              "ok 23 - later-period input leaves accountable responsibility open",
+              "ok 24 - new eligibility never rewrites original paid obligation",
+              "ok 25 - original locked output consumed the approved carry-forward fixture",
+              "ok 26 - mixed source change discovers both active outputs",
+              "ok 27 - only never-paid output gets a replacement candidate",
+              "ok 28 - amendment preserves original consumed adjustment exactly once",
+              "ok 29 - public paid-only route cannot hide required unpaid replacement",
+              "ok 30 - refused mixed public execution leaves source unchanged",
+              "ok 31 - mixed atomic execution replaces only never-paid output",
+              "ok 32 - mixed execution preserves ever-paid original identity",
+              "ok 33 - mixed execution preserves paid original money",
+              "ok 34 - unpaid member has one attributable successor",
+              "ok 35 - mixed responsibility remains open after atomic replacement",
+              "ok 36 - mixed replay recovers same receipt without extra source effect or succession",
+              "ok 37 - ordinary calculation cannot recreate a financially finalized period",
+              "ok 38 - amendment cannot cross original legal Employer identity",
+              "ok 39 - correction privilege alone never grants private compensation source projection",
+              "ok 40 - receipt replay requires current financial authority",
+              "ok 41 - restored current authority recovers original mixed receipt",
+              "ok 42 - fixed correction preserves empty canonical base",
+              "ok 43 - percentage correction preserves canonical base_pay",
+              "ok 44 - displayed 30-day policy saves canonical enum",
+              "ok 45 - site projection keeps 30-item bound",
+              "ok 46 - site 31 is reachable with independent cursor",
+              "ok 47 - selected reference outside page one retains actual label",
+              "ok 48 - Employee beyond page one is searchable without raw identity entry",
+              "ok 49 - source projection has own 30-item bound",
+              "ok 50 - source 31 is reachable independently of Employee cursor",
+              "ok 51 - selected later source includes canonical fields for preview",
+              "ok 52 - existing assignment reference beyond page one preserves its scoped human label",
+              "ok 53 - response loss retrieves authoritative committed outcome",
+              "ok 54 - receipt recovery returns exact original result rather than replay",
+              "ok 55 - altered committed intent is not disclosed as a matching result",
+              "ok 56 - absent receipt closes original identity without executing its correction",
+              "ok 57 - closure proof is idempotent under the same intent",
+              "ok 58 - closed attempt cannot be reused with altered intent",
+              "ok 59 - delayed original writer is refused after closure even if its original input could execute",
+              "ok 60 - recovery cannot cross Tenant identity",
+              "ok 61 - recovery cannot cross Employer identity",
+              "ok 62 - committed and uncommitted recovery do not change correction cases or revisions",
+              "ok 63 - recovery does not apply source changes",
+              "ok 64 - immutable closure has exactly one actor-scoped attempt record",
+              "ok 65 - replayed closure never duplicates the mandatory audit event",
+              "ok 66 - a closed attempt cannot be reopened or rewritten",
+              "ok 67 - private closure and reconciliation retain scoped authenticated boundary",
+              "ok 68 - committed recovery still requires current compensation domain authority",
+              "ok 69 - closure proof is not disclosed after current domain authority is removed",
+              "ok 70 - changed actor cannot recover the original actor receipt",
+              "ok 71 - restored current authority resolves the same original attempt",
+              "1..71"
+            ]
+          },
+          {
+            "file": "cube4_payroll_advances.test.sql",
+            "sourceSHA256": "dab714b3bc3cd4ae4560c1713619ebcc3dab73ce9df99039e44abc8f5993ff63",
+            "executedCanonicalLF_SHA256": "78307c58f599ec2b4c42e2c1649cb1e95a7f3e54efa57fdbde5658e9df0329c8",
+            "status": "PASS",
+            "planned": [
+              103
+            ],
+            "passed": 103,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - principal starts as a draft without obligation",
+              "ok 2 - draft has no disbursement debt",
+              "ok 3 - integer cents put exact remainder in final installment",
+              "ok 4 - schedule exactly reconciles principal",
+              "ok 5 - external activation requires approval",
+              "ok 6 - approved schedule still waits external disbursement",
+              "ok 7 - approval receipt replay does not duplicate revision",
+              "ok 8 - external evidence activates exact principal",
+              "ok 9 - cannot cancel responsibility after disbursement",
+              "ok 10 - active principal and schedule are immutable",
+              "ok 11 - no negative loan balance",
+              "ok 12 - partial external settlement reduces only evidenced amount",
+              "ok 13 - early settlement allocation is deterministic oldest installment first",
+              "ok 14 - settlement evidence cannot be rewritten",
+              "ok 15 - compensating correction restores original balance without deleting evidence",
+              "ok 16 - same mistaken settlement cannot be compensated twice",
+              "ok 17 - settled is derived from explained zero ledger balance",
+              "ok 18 - compensation reopens derived nonzero status",
+              "ok 19 - reviewed deferral preserves entire debt",
+              "ok 20 - termination review records responsibility without forgiveness",
+              "ok 21 - authorized existing obligation closes after entitlement loss",
+              "ok 22 - disabled Finance cannot create new obligation",
+              "ok 23 - existing active obligation remains visible when optional Finance disabled",
+              "ok 24 - reader cannot resolve original mutation authority",
+              "ok 25 - restored authority recovers committed original receipt",
+              "ok 26 - receipt recovery cannot change original principal",
+              "ok 27 - committed recovery has exactly one source version",
+              "ok 28 - committed recovery has one receipt",
+              "ok 29 - invalid mutation rolls back before receipt",
+              "ok 30 - lost validation response has durable definitive absence proof",
+              "ok 31 - delayed original cannot commit after journal release",
+              "ok 32 - absence resolution itself is idempotent",
+              "ok 33 - tombstone is bound to original invalid intent",
+              "ok 34 - resolver-first creates terminal uncommitted fence",
+              "ok 35 - valid delayed writer cannot escape terminal fence",
+              "ok 36 - new explicit attempt works after definitive closure",
+              "ok 37 - cancel is available before approval or disbursement",
+              "ok 38 - pre-obligation cancellation creates no money movement",
+              "ok 39 - mistaken principal fixture begins separately",
+              "ok 40 - principal evidence requires ordinary approval",
+              "ok 41 - mistaken evidence is retained as original disbursement",
+              "ok 42 - any previous repayment precludes mistaken-disbursement shortcut",
+              "ok 43 - reversed erroneous disbursement is never labelled settled",
+              "ok 44 - lost wrong-evidence response recovers original receipt",
+              "ok 45 - principal evidence reversal occurs once",
+              "ok 46 - correct principal starts linked replacement with independent approval",
+              "ok 47 - corrected record has exact signed zero balance",
+              "ok 48 - original disbursement evidence remains immutable",
+              "ok 49 - wrong evidence reversal invents no repayment allocations",
+              "ok 50 - replacement attribution is immutable and explicit",
+              "ok 51 - corrected erroneous principal never appears as due debt",
+              "ok 52 - private source projection is inaccessible",
+              "ok 53 - ordinary caller cannot fabricate legal allowance",
+              "ok 54 - ordinary caller cannot issue absence proof directly",
+              "ok 55 - due installment without verified allowance is owned blocker",
+              "ok 56 - due projection never fabricates legal net",
+              "ok 57 - unqualified due never silently becomes applied deduction",
+              "ok 58 - ledger/schedule context participates in freshness",
+              "ok 59 - review calculation never consumes principal",
+              "ok 60 - limited NONLEGAL capacity exposes approved carry-forward review instead of silently consuming the remainder",
+              "ok 61 - public reviewed deferral keeps exact debt and unapplied installment without creating a repayment",
+              "ok 62 - reviewed unapplied installment leaves current period and remains due in the chosen future period",
+              "ok 63 - qualified interface allowance contributes exact remaining cents only",
+              "ok 64 - actual candidate explanation names consumed installment amount",
+              "ok 65 - synthetic allowance does not qualify legal net engine",
+              "ok 66 - ledger audit failure rolls back final append and advance together",
+              "ok 67 - failed loan posting leaves no final output",
+              "ok 68 - failed loan audit leaves original debt untouched",
+              "ok 69 - failed posting preserves approved review for safe retry",
+              "ok 70 - locked output atomically consumes only exact allowed installment",
+              "ok 71 - private append receipt recovers without second deduction",
+              "ok 72 - exactly one locked deduction movement",
+              "ok 73 - ledger allocations reconcile actual final output deduction",
+              "ok 74 - consumed original cannot be deducted again by ordinary run",
+              "ok 75 - locked consumption allocation is immutable",
+              "ok 76 - ordinary caller cannot inspect private ledger to fabricate correction",
+              "ok 77 - Finance reader cannot cross Tenant scope",
+              "ok 78 - workspace is only narrow Finance read projection",
+              "ok 79 - unpaid amendment restores only original scoped deduction in private projection",
+              "ok 80 - replacement does not charge Employee principal twice",
+              "ok 81 - original locked deduction remains immutable after replacement",
+              "ok 82 - replacement compensates old and records new exact attribution",
+              "ok 83 - negative employee recovery omitted from compensation choices",
+              "ok 84 - negative responsibility cannot be selected through reference projection",
+              "ok 85 - negative recovery refuses direct compensation command",
+              "ok 86 - opposite signed denial has no ledger revision success audit or receipt effects",
+              "ok 87 - reviewed paid correction appends exact compensating loan entry",
+              "ok 88 - paid historical fact survives loan compensation",
+              "ok 89 - loan compensation never changes original Payroll payment ledger",
+              "ok 90 - loan compensation never rewrites paid final net",
+              "ok 91 - reload after committed correction keeps protected journal recovery reachable",
+              "ok 92 - single installment original consumes entire principal",
+              "ok 93 - fully consumed fixture remains externally never-paid",
+              "ok 94 - ordinary projection excludes fully consumed loan",
+              "ok 95 - zero-current-balance amendment virtually restores exact unpaid allocation",
+              "ok 96 - pre-consumption allowance revision cannot authorize restored installment",
+              "ok 97 - missing current allowance blocks fully consumed amendment rather than dropping debt",
+              "ok 98 - qualified private fixture restores exact alternative consumption",
+              "ok 99 - unchanged fully consumed replacement retains zero principal debt",
+              "ok 100 - successor compensation and exact deduction reconcile atomically",
+              "ok 101 - original fully consumed deduction remains immutable",
+              "ok 102 - alternative final payable preserves exact loan deduction",
+              "ok 103 - original never-paid payable remains immutable",
+              "1..103"
+            ]
+          },
+          {
+            "file": "cube4_bound_source_public_time_corrections.test.sql",
+            "sourceSHA256": "d9641312f6a56296774c18cccdf0226b48ede594db24d771f6d92a2fb88404f4",
+            "executedCanonicalLF_SHA256": "37928e1618d3683a109be98e00cc526a9cc1ae5b4c89d0948a663537d2eddd3f",
+            "status": "PASS",
+            "planned": [
+              12
+            ],
+            "passed": 12,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - Payroll correction authority cannot mutate a bound Time source",
+              "ok 2 - Time correction cannot cross Tenant authority",
+              "ok 3 - Actual public Time correction succeeds without Payroll authority",
+              "ok 4 - Old correction replay cannot append another approved fact",
+              "ok 5 - Deferred interpretation and public fact tails coalesce into one current observation",
+              "ok 6 - Public Time correction creates one explicit Payroll responsibility",
+              "ok 7 - Observation records the exact public successor and Time actor",
+              "ok 8 - Original final source binding remains immutable",
+              "ok 9 - Denied and stale attempts produce no additional Time facts",
+              "ok 10 - Source correction does not silently open a financial correction case",
+              "ok 11 - Source correction never fabricates a payment",
+              "ok 12 - Original synthetic amount is preserved without guessing adjustment",
+              "1..12"
+            ]
+          },
+          {
+            "file": "cube4_bound_source_public_classification.test.sql",
+            "sourceSHA256": "5f60e424f4ee0d8b33527523f639fff00b8682150d8582085cabf22961aee632",
+            "executedCanonicalLF_SHA256": "8d0505ff7261610da3ca30483b00601d1f8491aae95e5bb537376251dd89ef1b",
+            "status": "PASS",
+            "planned": [
+              8
+            ],
+            "passed": 8,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - Public Time classification review remains eligible with Payroll-bound original",
+              "ok 2 - Exact public classification retry returns the original receipt",
+              "ok 3 - Changed classification payload cannot reuse a successful receipt",
+              "ok 4 - Classification retry keeps one command receipt",
+              "ok 5 - Classification and replay append only one new successor",
+              "ok 6 - Second real Time transition records exactly one additional observation",
+              "ok 7 - Classified successor responsibility records exact version and Time actor",
+              "ok 8 - Two public corrections preserve the immutable original binding",
+              "1..8"
+            ]
+          },
+          {
+            "file": "cube4_payroll_reports.test.sql",
+            "sourceSHA256": "40cae488bc37a5dafc8fd0fa38b40005c6ba374921a0f57a1a3ad93af34da9f2",
+            "executedCanonicalLF_SHA256": "72070198ff65d35529503cb55a9eeb7cb02495f867629d9c631efe48b15532ef",
+            "status": "PASS",
+            "planned": [
+              24
+            ],
+            "passed": 24,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "ok 1 - private row projection is not directly executable",
+              "ok 2 - saved presentation does not expose a service-role bypass",
+              "ok 3 - review-only role cannot retrieve finalized financial reports",
+              "ok 4 - same Tenant other Employer cannot retrieve this output",
+              "ok 5 - foreign Tenant denied before financial disclosure",
+              "ok 6 - unknown Employee cannot select another financial context",
+              "ok 7 - page bound cannot be expanded by the caller",
+              "ok 8 - matched total is independent of one-row page",
+              "ok 9 - bounded display returns one row",
+              "ok 10 - summary includes both finalized Employees",
+              "ok 11 - payment summary reconciles whole output",
+              "ok 12 - cursor is last row only when more rows exist",
+              "ok 13 - next page reaches the distinct remaining Employee",
+              "ok 14 - summary stays exact across pages",
+              "ok 15 - last page has no continuation",
+              "ok 16 - obsolete revision refuses a fresh page or export",
+              "ok 17 - selected Employee totals cannot include the hidden first Employee",
+              "ok 18 - saved site filter and totals select the same cohort",
+              "ok 19 - foreign site reference refused instead of falling back to all Employees",
+              "ok 20 - dimension choices come from saved output references",
+              "ok 21 - synthetic context does not qualify a legal pack",
+              "ok 22 - unqualified statutory report cannot be exported as complete",
+              "ok 23 - current view-only authority can retrieve scoped historical report",
+              "ok 24 - view-only authority cannot become export authority",
+              "1..24"
+            ]
+          },
+          {
+            "file": "cube4_payroll_report_payslip.test.sql",
+            "sourceSHA256": "cef28aff0457b525acd27b962ea7ddb9772fabf292ac9305b3e98811d3d1aefa",
+            "executedCanonicalLF_SHA256": "10c06a84b06d8581e93bc37febc887de9e3b26433e4f795c8b1a39419f4affae",
+            "status": "PASS",
+            "planned": [
+              17
+            ],
+            "passed": 17,
+            "rollbackStateAndFunctionsPreserved": true,
+            "error": "",
+            "tap": [
+              "1..17",
+              "ok 1 - complete saved visibility is qualified for presentation",
+              "ok 2 - hidden component omitted while base and installment remain",
+              "ok 3 - base precedes configured components",
+              "ok 4 - frozen component name retained",
+              "ok 5 - finalized rounded amount retained exactly",
+              "ok 6 - saved installment stays explicit",
+              "ok 7 - saved hidden flag overrides presentation without deleting installment",
+              "ok 8 - missing saved flag blocks distribution instead of guessing visible",
+              "ok 9 - unknown visibility does not leak the component",
+              "ok 10 - unmatched contribution identity is incomplete",
+              "ok 11 - different employment cannot supply visibility metadata",
+              "ok 12 - empty finalized detail remains an empty presentation",
+              "ok 13 - mid-period hire retains known period-start adjustment metadata",
+              "ok 14 - period-start hidden adjustment is not exposed by later visible successor",
+              "ok 15 - period-start visible adjustment is not hidden by later hidden successor",
+              "ok 16 - old display order retained instead of newer order before hire",
+              "ok 17 - saved adjustment amount unchanged by metadata resolution"
+            ]
+          }
+        ],
+        "limits": [
+          "Only nine selected affected suites; other statutory/dependent fixture families not executed in this run",
+          "NONLEGAL internal append fixtures; no official comparisons or public G6 acceptance",
+          "Fresh SQL acceptance separate from original direct UI runtime and earlier upgrade executions"
+        ]
+      }
+    },
+    {
+      "rawEvidence": "cube4-fresh157-engine-application-authority.json",
+      "sha256": "89c7568828734aeebc00d0f9da416b84a310bb3c06f8ee33a2af4ebca92ecf6f",
+      "result": {
+        "status": "PASS",
+        "databases": [
+          "business_platform_cube4_upgrade_qa",
+          "business_platform_cube4_candidate_lf_fresh_qa"
+        ],
+        "applicationOwnedEngineObjectsRecreatedByMigrations": 3,
+        "engineOwnedObjectsEqual": true,
+        "guardPrivateACLs": [
+          {
+            "anon": false,
+            "name": "correction_observation_covers_requirement",
+            "authenticated": false
+          },
+          {
+            "anon": false,
+            "name": "correction_requirement_is_current",
+            "authenticated": false
+          },
+          {
+            "anon": false,
+            "name": "guard_unbound_leave_approval",
+            "authenticated": false
+          }
+        ],
+        "manifestSHA256": "4b198cbf6c63d9495519cc4b219db5b4752dd60e2742f5b5476b14026157e784",
+        "scope": "Auth People trigger and two tenant-branding storage policies recreated exactly by app migrations; latest source-correction guards denied to anon/authenticated. This is scoped authority, not full engine parity or complete permission matrix."
+      }
+    }
+  ],
+  "retainedDiagnostics": [
+    {
+      "raw": "cube4-candidate-fresh-157.json",
+      "stage": "engine restore rolled back",
+      "cause": "Dump contained application-owned auth trigger; excluded from engine initialization, recreated by migration."
+    },
+    {
+      "raw": "cube4-candidate-fresh-157-resume.json",
+      "stage": "engine restore rolled back",
+      "cause": "Dump also contained two application-owned tenant-branding storage policies; excluded from engine initialization and later proved recreated exactly."
+    },
+    {
+      "raw": "cube4-candidate-fresh-157-resume-v2.json",
+      "stage": "application prefix99 retained",
+      "cause": "Windows subprocess text stdin translated LF to CRLF; actual refresh definition contained CRLF while migration expected LF anchor. Harness transport error, not Cube3 product regression. Failed database retained unchanged."
+    }
+  ],
+  "correction": "UTF8 byte stdin with canonical LF text; both raw file SHA256 and canonical applied SQL SHA256 recorded. New separate fresh DB; no reset/delete of failed prefix or current QA.",
+  "limits": [
+    "Full157 application migration replay over existing named Supabase engine schema dump; not a fresh Supabase infrastructure install.",
+    "Nine selected affected SQL suites, not all61 Cube4 files or complete final financial/permission/browser acceptance.",
+    "Structural parity1920 objects normalizes function CRLF/trailing whitespace, ACL order and physical column order; row data excluded.",
+    "Three application-owned engine objects compared separately; full engine parity not claimed.",
+    "Fresh SQL evidence and existing upgrade/runtime UI remain distinct, tied by candidate hashes/parity.",
+    "G4/G6 closed; official qualification unavailable.",
+    "No source/installed migration modified to bypass replay failure; no push/merge/deploy/new commit."
+  ]
+}

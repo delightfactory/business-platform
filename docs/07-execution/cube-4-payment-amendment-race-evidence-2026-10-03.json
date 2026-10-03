@@ -1,0 +1,250 @@
+{
+  "atUTC": "2026-10-03T14:48:56.873973+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "migrationBaseline": 159,
+  "status": "X03_SQL_PROTOCOL_METHOD_PASS_FULL_CUBE_OPEN",
+  "runner": {
+    "path": "scripts/payroll-payment-amendment-races.mjs",
+    "sha256": "49ce811e221b1794b8ff6a2cb5e7aa123e1a5cc783131a7a048143dc9361d728"
+  },
+  "proof": {
+    "artifact": "cube4-payment-amendment-races-159-resume.json",
+    "sha256": "96a6bafebc62e6ea4e4a8e998a34ee6915afca91395f0e709b103ba084e230cb",
+    "status": "PASS"
+  },
+  "retainedFailure": {
+    "artifact": "cube4-payment-amendment-races-159.json",
+    "sha256": "faddc01df44de10a54aef7c3b90aa6628bb1957efbc6c5e827a248d88accf090",
+    "cause": "Fixture payment date was in 2030; current civil-date guard refused before winner completed. Rollback/no receipt/no paid output confirmed before same-attempt continuation; no reseed."
+  },
+  "scenarios": [
+    {
+      "database": "business_platform_cube4_upgrade_qa",
+      "order": "payment-first",
+      "originalOutput": "cbc95261-55cd-4a6d-a02b-12d956ee8a7b",
+      "caseId": "ff736db2-6726-4820-9622-37d16a523513",
+      "paymentActor": "d3a10000-0000-4000-8000-000000000002",
+      "amendmentActor": "d3a10000-0000-4000-8000-000000000001",
+      "paymentAttempt": "78194dc8-6c1b-4108-92c5-f5cb8e51f216",
+      "amendmentAttempt": "e68198ae-acbb-4f3e-8ef6-f859edf47316",
+      "originalContextSHA256": "8e5c7ac7cf2ce9291c572d48215d6a709c3d0104e82983a9bc7f495797ab0264",
+      "originalEmployeesSHA256": "83256ead6f563a17f59ae0a12cced6a8fd09125eb517129b4ba9477beb6662a7",
+      "backendPids": {
+        "winner": 344392,
+        "loser": 344393
+      },
+      "winnerResult": {
+        "kind": "payment",
+        "paid": "10.00",
+        "amount": "10.00",
+        "status": "partially_paid",
+        "event_id": "da051681-715f-4cf4-b88a-554c2ff0ea08",
+        "revision": 1,
+        "ever_paid": true,
+        "remaining": "3990.00"
+      },
+      "observedBlocking": {
+        "winnerPid": 344392,
+        "loserPid": 344393,
+        "blockers": [
+          344392
+        ]
+      },
+      "loserResult": {
+        "code": "PT409",
+        "message": "payroll_source_stale"
+      },
+      "exactOriginalReceiptReplay": true,
+      "retainedOriginal": true,
+      "finalState": {
+        "original_status": "locked",
+        "compensation": "3000.00",
+        "successions": "0",
+        "payment_events": "1",
+        "source_effects": "0",
+        "outputs": "1"
+      },
+      "originalBalances": {
+        "payable": "4000.00",
+        "paid": "10.00",
+        "remaining": "3990.00"
+      },
+      "status": "PASS",
+      "functionsUnchanged": true,
+      "unrelatedSetsRetained": 123
+    },
+    {
+      "database": "business_platform_cube4_upgrade_qa",
+      "order": "amendment-first",
+      "originalOutput": "91a10a1d-0d38-423f-ab6b-734d52014483",
+      "caseId": "7124f4d9-caaa-4389-b9dc-3b0c5e7a6e41",
+      "paymentActor": "d3a20000-0000-4000-8000-000000000002",
+      "amendmentActor": "d3a20000-0000-4000-8000-000000000001",
+      "paymentAttempt": "00055797-16aa-4739-b369-f994fde7449d",
+      "amendmentAttempt": "1db732d5-c6dc-49bf-8c16-512989374b36",
+      "originalContextSHA256": "34ff534b423091a705fe4392ac2851ad1c289677cc2a0177ebd37d2b155d5131",
+      "originalEmployeesSHA256": "9d576ab80f56698b620a33030c27b4d783e657f7c8dcb90117d9c82ff385ce73",
+      "backendPids": {
+        "winner": 344393,
+        "loser": 344392
+      },
+      "winnerResult": {
+        "status": "completed",
+        "case_id": "7124f4d9-caaa-4389-b9dc-3b0c5e7a6e41",
+        "revision": 4,
+        "replacements": [
+          {
+            "original_output": "91a10a1d-0d38-423f-ab6b-734d52014483",
+            "replacement_output": "dce35d5a-14c0-4a5f-ad63-e50972267591"
+          }
+        ]
+      },
+      "observedBlocking": {
+        "winnerPid": 344393,
+        "loserPid": 344392,
+        "blockers": [
+          344393
+        ]
+      },
+      "loserResult": {
+        "code": "23514",
+        "message": "payroll_output_superseded"
+      },
+      "exactOriginalReceiptReplay": true,
+      "retainedOriginal": true,
+      "finalState": {
+        "original_status": "superseded",
+        "compensation": "3300.00",
+        "successions": "1",
+        "payment_events": "0",
+        "source_effects": "1",
+        "outputs": "2"
+      },
+      "originalBalances": {
+        "payable": "4000.00",
+        "paid": "0",
+        "remaining": "4000.00"
+      },
+      "status": "PASS",
+      "functionsUnchanged": true,
+      "unrelatedSetsRetained": 123
+    },
+    {
+      "database": "business_platform_cube4_candidate_lf_fresh_qa",
+      "order": "payment-first",
+      "originalOutput": "627b4aaa-ae97-4dcc-8f79-a11984cfb196",
+      "caseId": "dc99984b-d621-4cd2-bdc3-93da20dd8f66",
+      "paymentActor": "d3a10000-0000-4000-8000-000000000002",
+      "amendmentActor": "d3a10000-0000-4000-8000-000000000001",
+      "paymentAttempt": "f41abbf1-11da-4a56-9206-9ed6bf2ad1ec",
+      "amendmentAttempt": "46decf47-b6e1-4a05-955a-dc2d86d4e67e",
+      "originalContextSHA256": "600098751dec663c98a641f027bb1d371cb9a35e2e67a2babb8900b57e219c50",
+      "originalEmployeesSHA256": "92f1eec024d6d9e974cb87e581eb29ec15e7a88d4ab3a13c321ebcfc2454b630",
+      "backendPids": {
+        "winner": 344402,
+        "loser": 344403
+      },
+      "winnerResult": {
+        "kind": "payment",
+        "paid": "10.00",
+        "amount": "10.00",
+        "status": "partially_paid",
+        "event_id": "dd9fc78b-aacb-4b5f-8797-dba0be28c6b3",
+        "revision": 1,
+        "ever_paid": true,
+        "remaining": "3990.00"
+      },
+      "observedBlocking": {
+        "winnerPid": 344402,
+        "loserPid": 344403,
+        "blockers": [
+          344402
+        ]
+      },
+      "loserResult": {
+        "code": "PT409",
+        "message": "payroll_source_stale"
+      },
+      "exactOriginalReceiptReplay": true,
+      "retainedOriginal": true,
+      "finalState": {
+        "original_status": "locked",
+        "compensation": "3000.00",
+        "successions": "0",
+        "payment_events": "1",
+        "source_effects": "0",
+        "outputs": "1"
+      },
+      "originalBalances": {
+        "payable": "4000.00",
+        "paid": "10.00",
+        "remaining": "3990.00"
+      },
+      "status": "PASS",
+      "functionsUnchanged": true,
+      "unrelatedSetsRetained": 123
+    },
+    {
+      "database": "business_platform_cube4_candidate_lf_fresh_qa",
+      "order": "amendment-first",
+      "originalOutput": "364bd590-b456-471e-a325-f950cf786ade",
+      "caseId": "9ed1f836-ee83-4560-b81d-d96318bb5650",
+      "paymentActor": "d3a20000-0000-4000-8000-000000000002",
+      "amendmentActor": "d3a20000-0000-4000-8000-000000000001",
+      "paymentAttempt": "cf79a2fb-025a-4507-b950-828b4a07fc5b",
+      "amendmentAttempt": "fe185730-06c2-4c9b-882f-c768af6c1e4c",
+      "originalContextSHA256": "6b566c00fd97806a406517321aa8d7c133a26464154e3992bb5eb489a62366e5",
+      "originalEmployeesSHA256": "6ec8e7583beb8c5a2039e63f7d6b91ffe5bde4fe0468350ed0f60e5d226b79f1",
+      "backendPids": {
+        "winner": 344403,
+        "loser": 344402
+      },
+      "winnerResult": {
+        "status": "completed",
+        "case_id": "9ed1f836-ee83-4560-b81d-d96318bb5650",
+        "revision": 4,
+        "replacements": [
+          {
+            "original_output": "364bd590-b456-471e-a325-f950cf786ade",
+            "replacement_output": "ba6a6077-0f73-4052-8f3e-4c9fb3b68c6b"
+          }
+        ]
+      },
+      "observedBlocking": {
+        "winnerPid": 344403,
+        "loserPid": 344402,
+        "blockers": [
+          344403
+        ]
+      },
+      "loserResult": {
+        "code": "23514",
+        "message": "payroll_output_superseded"
+      },
+      "exactOriginalReceiptReplay": true,
+      "retainedOriginal": true,
+      "finalState": {
+        "original_status": "superseded",
+        "compensation": "3300.00",
+        "successions": "1",
+        "payment_events": "0",
+        "source_effects": "1",
+        "outputs": "2"
+      },
+      "originalBalances": {
+        "payable": "4000.00",
+        "paid": "0",
+        "remaining": "4000.00"
+      },
+      "status": "PASS",
+      "functionsUnchanged": true,
+      "unrelatedSetsRetained": 123
+    }
+  ],
+  "limits": [
+    "Prescribed SYNTHETIC_NONLEGAL candidate money supplies the trusted-adapter prerequisite; no legal pack verified",
+    "Private atomic append versus supported payment RPC in real SQL sessions; public G6, Next Action loss and browser acceptance not claimed",
+    "Fresh-origin database upgraded to this baseline; no full fresh-chain replay in this runner"
+  ],
+  "appChange": "None required. Real public payment versus existing private trusted-adapter atomic replacement locks passed. Synthetic candidate money explicitly NONLEGAL; public approval/freeze gates remain closed."
+}

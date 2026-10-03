@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "database": "business_platform_cube4_upgrade_qa",
+  "baseline": 154,
+  "scope": "Actual authenticated classification writer vs current private finalization lock/currentness/binding protocol, both orders, owned persisted NONLEGAL fixture",
+  "limits": [
+    "Private protocol and explicitly inserted NONLEGAL final context, not public financial append/finalization",
+    "Not all Time/Leave writers or whole financial/legal lifecycle"
+  ],
+  "fixtureTenant": "d2661000-0000-4000-8000-000000000001",
+  "writerFirst": {
+    "wait": {
+      "waitType": "Lock",
+      "blockers": [
+        318465
+      ]
+    },
+    "staleCandidateRejectedPT409": true,
+    "noBindingCreated": true
+  },
+  "bindingFirst": {
+    "wait": {
+      "waitType": "Lock",
+      "blockers": [
+        318515
+      ]
+    },
+    "exactPostBindingResponsibility": {
+      "bindingVersion": "3",
+      "observations": 1,
+      "requirements": 1,
+      "currentVersion": 4,
+      "sourceActor": "d2660000-0000-4000-8000-000000000003",
+      "cases": 0,
+      "payments": 0
+    },
+    "output": "add29df2-0192-4e6a-97ca-943462709bcc"
+  },
+  "harnessSHA256": "397b63e48be33be9387797b67fa8af31d6a8d21f4356fa38dec02a2d523c0b1e",
+  "schemaChanged": false,
+  "fixtureWrites": "Owned synthetic D266 prerequisite and actual Time commands committed locally; private NONLEGAL final context inserted explicitly. No production writes, automatic case, payment, or lawfully qualified output.",
+  "composedFunctionHashes": {
+    "attendance_commit_classification(uuid,uuid,uuid,integer,uuid,integer,text,text,text,text,text)": "c6a7d9e5c5a61a64a182b640c2721d68663853c751668ed1d560eeaaf2f2c0c5",
+    "payroll.insert_final_source_bindings(uuid,uuid,uuid,uuid)": "fdc2636d69dbe08092144b63ce54b0c80f64fc3c45a9c7818026371770b0e2e9",
+    "payroll.lock_finalization_sources(uuid,uuid,uuid)": "c0e3c722e9c0e97c6b41442381eb10ffc078b59bbc9fb122a2ed81d6e800d9d6",
+    "payroll.validate_final_source_currentness(uuid,uuid,uuid,uuid,uuid)": "aace6add9b2423b56dbd4aafd3fd4dff5ec8893979caca35487e96bc407fb37a"
+  }
+}

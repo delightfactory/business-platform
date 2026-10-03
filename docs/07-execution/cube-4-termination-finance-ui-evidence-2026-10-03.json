@@ -1,0 +1,66 @@
+{
+  "atUTC": "2026-10-03T12:02:18.609862+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative writer; one additional UI file changed since earlier financial/fresh evidence",
+  "runtimeTreeSHA256": "58762aeff620af582d38c4f64da8e83ed4c70cb03ee8092cc307089a800f5d8f",
+  "treeHashAlgorithm": "SHA256 canonical sorted-key JSON file manifest; each path retained in original file order",
+  "runtime": "http://127.0.0.1:3545",
+  "baseline": 157,
+  "source": {
+    "path": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+    "sha256": "f5d66b7c6b248c5d9fefbd028974841388f81799f8d3d0b9ac02774f60323a0f",
+    "change": "Existing authorized termination-review form moves from collapsed Other options into visible balance section; same action and permissions, no ledger/calculation change."
+  },
+  "rawEvidence": "cube4-termination-finance-ui-157-continuation.json",
+  "rawSHA256": "b87f9a4f3b7621eaf00d9136019194a5c590b27c06747a998e75c3a6e3eebd4f",
+  "runnerSHA256": "ee124368125d26fec0d674f86f66d6a2a3e9205f313469d8b23495d0f623701f",
+  "result": {
+    "status": "PASS",
+    "baseline": 157,
+    "runtimeTreeSHA256": "58762aeff620af582d38c4f64da8e83ed4c70cb03ee8092cc307089a800f5d8f",
+    "checks": [
+      "Actual UI draft/approval/external activation creates 100 balance; scheduled installment is explained as unconsumed, with zero payroll deduction",
+      "Ended Employee has visible keyboard-reachable review outside collapsed options; reviewed responsibility retains100 debt and active status",
+      "Keyboard partial external settlement retains 60 active balance after reload; debt not forgiven",
+      "Final external settlement yields zero/settled from five retained ledger events including zero-value termination review; original salary payment untouched; no overflow390/820/1280"
+    ],
+    "limits": [
+      "External operational finance evidence only; no statutory deduction limit guessed",
+      "Ended Employee debt review/settlement UI only; final-pay/legal-capacity calculation remains gated"
+    ],
+    "advanceId": "df5c574b-54de-4b52-bfa4-ae0d27c0af89",
+    "originalPaymentDigest": "627895d5634b28af2b870fe8d5820ac5",
+    "stage": "completed",
+    "after": {
+      "revision": 6,
+      "status": "settled",
+      "balance": 0,
+      "events": 5,
+      "deductions": 0
+    }
+  },
+  "checks": {
+    "typescript": {
+      "exit": 0,
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental"
+    },
+    "tenantESLint": {
+      "exit": 0,
+      "command": "node node_modules/eslint/bin/eslint.js src/app/tenant"
+    },
+    "manualCodeCopyReview": "One visible form; removed hidden duplicate; existing authority conditional retained; debt and external settlement explained in Arabic."
+  },
+  "fixture": "Same known tenant/actor; explicit September NONLEGAL ended Employee before all October/November frozen coverage. Historical external obligation scheduled in existing next unclosed period; no claim of eligible post-termination wage deduction.",
+  "preservedFailure": {
+    "raw": "cube4-termination-finance-ui-157.json",
+    "cause": "Known obsolete broad main selector reused; failure after successful active revision3. Corrected selector and resumed same loan without recreating/approving/disbursing again.",
+    "avoidableDriverMistake": true
+  },
+  "limits": [
+    "Termination review action was exercised at820 with keyboard and outside collapsed details; settled state reflow checked390/820/1280. Active review form at390/1280 not separately qualified.",
+    "Final pay, statutory caps, successful qualified distribution and full narrow-role UI matrix remain open.",
+    "Earlier fresh157 SQL/schema proof reused only for unchanged migrations/functions; older full UI hash not silently transferred.",
+    "Original salary payment digest unchanged; ended loan settles with five retained events including zero-value review.",
+    "No push, merge, deploy, new commit or official G4/G6 opening."
+  ]
+}

@@ -2,6 +2,12 @@
 
 Owner reaffirmed on 2026-10-03: complete the original cube with simple task-oriented interfaces and human Arabic terminology. This route prioritizes integrated workflows; it does not redefine the Frozen contract or mark isolated foundations complete. Goal remains active and full scope incomplete.
 
+## Current execution checkpoint — baseline157
+
+The [acceptance register](cube-4-decision-acceptance-register.md) is the current source of status. Connected NONLEGAL payment/correction and loan/debt-closure UI paths now complete on one direct runtime. Complete Next Action response loss and both cancel/submit lock orders are qualified within recorded scope. Fresh application replay157 and scoped upgrade parity pass; nine affected suites pass on that fresh candidate. Ended-Employee review is now visible and preserves debt until actual external settlement. Each proof remains attached to its own exact source/version.
+
+Mixed-source return-to-review and preserved same-case Reload are now UI-qualified; repeated-source refusal preserves all obligations in12 focused checks. Generated-period mixed source atomic replacement/obligation closure is now protocol-qualified with prescribed NONLEGAL adapter money: the same29-check test passes separately on fresh and upgrade157. Full operational/legal acceptance remains open. Exact login-context recovery and three narrow-role correction/report/payment journeys are now browser-qualified on source62f8; complete role/revocation/UI acceptance and successful qualified distribution remain open. Continue with the requirement audit to identify substantive remaining work and affected final checks. Do not restart legal authoring or repeat unchanged suites without new evidence. Official results and reviewed legal ownership rules remain unavailable/unresolved; G4/G6 stay closed. No qualified final-pay/public financial lock or successful legal distribution is claimed.
+
 ## Execution order and exit conditions
 
 1. **Statutory review boundary.** Close dated draft, numerical definition, recorded comparison and fixed-adapter issuance gates. End: exact revision/provenance/expected-versus-computed results and synthetic/official status reviewable. Authoring qualified at QA142; recorded comparisons and shared adapters installed at QA143 after SQL24/39/38 each142 PASS rollback, independent review and actual browser mismatch/match/reload PASS. Tax/insurance-scope issuance guards are locally installed at QA144 after36 focused assertions each, independent review and actual blocked UI/API evidence; zero real packs issued. Real qualification needs representative official results, currently unavailable. Synthetic matches never qualify live rules. Full statutory scope, positive live release/recovery and reviewed replacement/retirement remain open; see [issuance checkpoint](cube-4-statutory-issuance-checkpoint.md).
@@ -28,11 +34,11 @@ Targeted change completed and browser-checked for the broad Company role: normal
 | 4. الدفع والتصحيح والسلف | مسارات منفصلة وأدلة دورة حياة موجودة | ربطها بالمخرجات المثبتة؛ تسوية الدفع الجزئي والكامل، وتصحيح المسير غير المدفوع والمدفوع، وربط أقساط السلف والفترة النهائية | تطابق المدفوع والمتبقي والتسويات، ومنع استبدال مسير عليه دفع، وإثبات السباق المؤثر والاسترجاع للربط الجديد |
 | 5. التوزيع والتقارير والإقفال | واجهات تقارير وضوابط توزيع جزئية | قسيمة وطبعة وتصدير فعلي من نفس السجل المثبت، وتقارير تطابق الدفع والتصحيحات والسلف، ثم مطابقة كل متطلب بدليله | اجتياز الرحلات الطبيعية والاستثنائية والصلاحيات وتجربة العربية والجوال ولوحة المفاتيح، والتحقق النهائي على النسخة نفسها؛ إعلان الفجوات القانونية والتشغيلية منفصلًا |
 
-### المهمة التالية وحدودها
+### نقطة الخطة السابقة وحدودها — سجل تاريخي
 
 أُنجز **ضابط الإصدار المحدد للضريبة والتأمين** محليًا دون إصدار قواعد فعلية. تُعرض حالة التأهيل ونواقصها في مسار المقارنات الحالي، بلغة تفهمها جهة المراجعة. نجاح المقارنة الاصطناعية لا يسمح بالصرف أو بإصدار قواعد مؤهلة فعليًا. النطاق القانوني الكامل واستبدال تعريف مؤهل سابقًا ورحلات الإصدار الفعلية ما زالت مفتوحة؛ لا تُعتبر المرحلة 1 مكتملة.
 
-المهمة التالية الآن هي **ربط حساب المسير في المرحلة 2**، بدءًا بتحديد مدة الضريبة وشهور الاشتراك وحدود السنة من المصادر المراجعة وربطها بالموظف والفترة. عدم توفر نتائج رسمية لا يبرر تكرار البحث أو الاختبارات أو توسيع إدارة القواعد؛ يُسجّل العائق مرة ويستمر الربط المستقل مع منع الحساب القانوني والاعتماد المعتمدين على التأهيل. أي حالة تحتاج تعريفًا قانونيًا غير مثبت تُسجّل كقرار مفتوح دون تخمين، ويُستكمل العمل غير المعتمد عليها. لا يضاف محرك قواعد عام أو شاشة إعداد مستقلة لكل حالة.
+عند هذه النقطة السابقة، كانت المهمة التالية **ربط حساب المسير في المرحلة 2**، بدءًا بتحديد مدة الضريبة وشهور الاشتراك وحدود السنة من المصادر المراجعة وربطها بالموظف والفترة. عدم توفر نتائج رسمية لا يبرر تكرار البحث أو الاختبارات أو توسيع إدارة القواعد؛ يُسجّل العائق مرة ويستمر الربط المستقل مع منع الحساب القانوني والاعتماد المعتمدين على التأهيل. أي حالة تحتاج تعريفًا قانونيًا غير مثبت تُسجّل كقرار مفتوح دون تخمين، ويُستكمل العمل غير المعتمد عليها. لا يضاف محرك قواعد عام أو شاشة إعداد مستقلة لكل حالة.
 
 ### تدفق المستخدم ومعيار بساطة الواجهة
 
@@ -53,11 +59,15 @@ Targeted change completed and browser-checked for the broad Company role: normal
 
 One writer, existing isolated worktree, no publication/production mutation. Each new task names the exit condition it closes. Reuse successful unchanged checks; retain failures, diagnose and resume persisted state instead of recreating records or repeating successful financial commands. No general workflow/rules engine, Cube3 annual reopening or unrelated convenience screens. The unavailable official comparison blocks its own qualification; continue independent implementation without inventing legal constants, results or percentages.
 
-## Current verified boundary — QA146
+## Historical checkpoints — keep original versions and limits
+
+The following dated checkpoints preserve earlier evidence. Their next-task statements are historical; use the current checkpoint above and acceptance register to choose work.
+
+### Verified boundary at QA146
 
 Stage2 now includes source-bound calendar facts and exact operational earning month/year partitions; see [earning partition checkpoint](cube-4-earning-date-partitions-checkpoint.md). Legal duration/year attribution, insurance ownership and integrated financial review remain open. This advances the source composition boundary, not full financial acceptance. Reuse the exact successful evidence rather than repeating unchanged checks.
 
-## QA148 follow-up and return to integrated review
+### QA148 follow-up and return to integrated review
 
 The bounded second Adam review fixes now include server-owned opaque payment recovery and finite settlement dates. Actual partial and fresh full-payment response-loss/Reload journeys, cross-tab prevention, keyboard recovery and cancellation of an already committed request were qualified locally. Two real request-wrapper interleavings passed: competing preparation and cancellation-wins submit, with no financial changes in either race. See [financial recovery checkpoint](cube-4-adam-financial-recovery-fixes-checkpoint.md) for exact evidence and limits. The inverse submit-wins order and full-cube acceptance are not claimed. No public finalization gate was opened.
 
@@ -73,7 +83,7 @@ Stage2 independent pack binding is now source-qualified within its explicit-fact
 
 QA150 supersedes that pending review/install boundary: independent exact-source review PASS and both dedicated local QA databases installed149→150, with45 history checks asserted inside each transaction before commit and all four numeric signatures private. The next action remains source-bound integrated review; no repeat of unchanged arithmetic/payment/attention suites. Legal facts and official qualification still block public financial readiness, not independent bridge work.
 
-## Stage2 next independent integration — complete daily operational sources
+### Stage2 earlier integration — complete daily operational sources
 
 A bounded current-source gap audit (`opencode-full-acceptance-next-task/result.json`, terminal exit0) identified an actual daily-pay integration gap: Source10 computes reconciled dated units, but its candidate builder still unconditionally marks selected Attendance coverage unqualified. Source11 supplies exhaustive expected-day evidence. Root confirmed both anchors and the owner-approved daily-source definition before dispatching implementation.
 
@@ -102,3 +112,37 @@ QA152 supersedes that pending boundary: four additional excluded-output/actor/wh
 The bound-source responsibility implementation passed30 focused root component checks on QA152 rollback, including actual public Leave cancellation/replay by a Leave-only actor, actual approved replacement/replay with exact successor/correction lineage, immutable binding preservation and no automatic financial/case writes. Independent exact-source delta review PASS; no installation is claimed. See [bound source correction checkpoint](cube-4-bound-source-correction-checkpoint.md) for exact hashes, corrected initial trigger/selector defects, reused22 unchanged checks, actual-versus-privileged fixture boundary, binding-row lock edge and missing writer/race coverage. The next implementation is running to integrate selected observation/version evidence with the existing governed correction proposal and Arabic workflow; dispatch is not completion and no broader lifecycle/legal gate is closed by these component tests.
 
 QA154 supersedes the previous pending bound-source integration notes: paired observer/correction migrations installed locally on both dedicated databases152→154,84 histories preserved per database, no new financial data. Root43 distinct bounded correction checks plus13 affected public Leave producer regressions passed with rollback before installation. Independent inspection identified and confirmed fixes for current-proposal requirement filtering, multi-source selection and atomic batch succession scheduling; full batch financial execution remains untested. Existing Arabic correction UI now supports selected recorded changes and scoped paid-sibling responsibility; root corrected the remaining stale-removal trap, with actual browser acceptance next. See the current bound-source checkpoint for exact evidence/limits. Full writer/append races, public approval/lock/legal acceptance, paid/unpaid correction lifecycle, advance termination closure and distribution authorization/paging remain required; no full-cube completion percentage is inferred.
+
+
+Post-snapshot1f531a3: multi-source preview/saved review, stale-source editor restoration/removal, and complete Next Action save-response-loss Reload/receipt recovery now have actual same-fixture browser acceptance. See [UI acceptance manifest](cube-4-correction-ui-acceptance-2026-10-03.json) and updated bound-source checkpoint. Two-source proposal recovery produced no duplicate case/proposal/payment/source-effect/succession. A real editor empty-state bug was repaired locally after the snapshot. Next work is actual public Time correction writer qualification, remaining source-writer/append races and financial lifecycle; all broader legal/public finalization gates remain open.
+
+
+Actual public Time boundary now has12 absence-correction and8 classification/retry assertions PASS on QA154 rollback, with87 history/receipt/auth sets and relevant functions unchanged. Time-only source authority, stale denial, exact classification receipt replay and immutable original binding are qualified within explicit NONLEGAL prerequisites. See [public Time evidence](cube-4-public-time-corrections-acceptance-2026-10-03.json). No implementation guard was weakened. Next work is remaining interpretation/overtime writer coverage and actual writer/append races, new approved Leave on an unbound date and full financial correction lifecycle; legal/finalization/fresh replay gates remain open.
+
+
+The actual public classification writer/private finalization binding protocol race passed both orders on an owned NONLEGAL fixture: writer-first waited then rejected stale candidate PT409 with no binding; binding-first made the writer wait then recorded exactly one version4 responsibility against immutable version3 binding. [Exact scope and composed hashes](cube-4-public-classification-binding-race-2026-10-03.json). This is not public financial append acceptance. Next implementation is newly approved Leave affecting an original date with no prior Leave binding, followed by remaining writer races and integrated financial lifecycle. Do not repeat the accepted classification/component suites unchanged.
+
+
+### Current calendar checkpoint158
+
+C05 now has scoped SQL/HTTP/UI evidence for existing unapproved Attendance records, draft cancellation before prospective change, locked-history warning and exact-period keyboard recovery. See the existing acceptance register and calendar-change-review evidence. This updates the connected setup/review journey without a new subsystem. Complete remaining approved-source reconciliation/overtime and approved-run release/completion coverage before claiming C05 fully accepted. Preserve current QA inputs/receipts and source identity; final fresh158 replay/build/full journey remain, with public financial/legal gates closed.
+
+
+### Current checkpoint159 — calendar recovery connected to original report
+
+C05 warning/recovery method closes with current pending-source review, draft cancellation, dependency-scoped historical-approved release/cancel UI, and actual prospective change preserving locked history and original payment report. See the same acceptance register and linked exact-version evidence. Continue the remaining connected input/readiness/correction/payment/source-authority race and report/distribution requirements; do not repeat unaffected calendar suites. Final candidate fresh/upgrade/build/full journey and statutory/public release gates remain open.
+
+
+### Current checkpoint159 — payment/amendment concurrency
+
+X03 SQL protocol method now has actual blocking and exact-receipt retention in both actor orders on both retained QA databases. No production-code change or legal gate bypass is required. Continue connected cancellation recovery, producer/readiness and reports/distribution acceptance; retain separate versions and final fresh/build requirements. See the existing register and payment-amendment-race evidence.
+
+
+### Current159 manual preparation checkpoint
+
+I01 has its connected operational preparation method with optional Time/Leave disabled, approved manual units and ordinary full monthly pay. Preserve current retained candidates/receipts and same runtime. Continue actual source producer/reconciliation, report/filter/distribution and remaining authority/recovery matrix; final current-candidate fresh/upgrade/build still required. See existing register/manual-route evidence.
+
+
+### Current159 report context and original/replacement proof
+
+Existing report page now retains purpose through Employer search, removes irrelevant final-period choice from advances and uses concise accessible selector names. Actual current report/CSV and superseded→replacement keyboard journey retain financial rows. Keep O02/Q02 partial for remaining variance/full report/export authority and final fresh/build/journey. Preserve one direct runtime and current identity; do not repeat unchanged payment/calculation/source suites for this page-only change.

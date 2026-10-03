@@ -1,0 +1,61 @@
+{
+  "atUTC": "2026-10-03T12:59:37.934849+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "runtimeTreeSHA256": "62f8c3f452b1bb49ef8a357152626dc639648beb993a0212e7e37066a1d2e531",
+  "baseline": 157,
+  "candidate": "unchanged authoritative source62f8; two actual sequential browser journeys on database157",
+  "groups": [
+    {
+      "rawEvidence": "cube4-active-permission-loss-ui-157.json",
+      "rawSHA256": "b570a9295b207e5c52fddf98931328d13708532cb63f67aaee0b4b22a09e9a5c",
+      "status": "PASS",
+      "atUTC": "2026-10-03T12:54:30.675Z",
+      "baseline": 157,
+      "runtimeTreeSHA256": "62f8c3f452b1bb49ef8a357152626dc639648beb993a0212e7e37066a1d2e531",
+      "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+      "checks": [
+        "Same active browser session loses its role after opening report: export403/no-store, Reload contains explained denial and no report rows",
+        "Inactive membership cannot retrieve the previously permitted file or render report, despite still-valid Auth cookies",
+        "Exact original QA role/membership restored; same report context recovers without finance operation; original money/output/case/receipt state unchanged"
+      ],
+      "limits": [
+        "Read-only payment report/export authority loss; not financial commit/revocation races",
+        "No claim of immediate removal from already-rendered permitted page before another request",
+        "Other cached drafts/scope switch and full UI matrix remain"
+      ],
+      "before": "d28cb74276ec4c215f8c519ae6bbfbaedc1b7d15350cf0c157a92dc80a1661e0",
+      "stage": "completed-active-authority-loss"
+    },
+    {
+      "rawEvidence": "cube4-correction-authority-loss-recovery-157.json",
+      "rawSHA256": "35c8efbe42b55206278aa5c325e1fb3018d480b87e5082857fd0c60f0ff44333",
+      "status": "PASS",
+      "atUTC": "2026-10-03T12:57:59.145Z",
+      "baseline": 157,
+      "runtimeTreeSHA256": "62f8c3f452b1bb49ef8a357152626dc639648beb993a0212e7e37066a1d2e531",
+      "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+      "caseId": "7e7b3829-41b2-41e4-bf5d-05c79a361f93",
+      "checks": [
+        "Open approved-case release after role loss denied42501, original reason and attempt retained, no case/revision/financial receipt change",
+        "Same browser storage with different logged-in actor: original unresolved request remains scoped to owner; no old recovery control or reason in the other actor UI",
+        "Returning owner sees same request and disabled fresh command; actual reconciliation closes exactly one uncommitted attempt, retains case5 and money, late original command rejectedPT409/closed under rollback"
+      ],
+      "limits": [
+        "Actual permission-loss refusal and uncommitted closure, not lost-response committed settlement",
+        "UI actor separation does not prove encrypted localStorage or shared-device privacy outside application UI",
+        "No financial finalization/revocation race or broad scope matrix"
+      ],
+      "before": "836ed766802f0f1364dcbea0139c28b602fb0af604cce67077322f855d4c18c8",
+      "stage": "completed-safe-role-loss-recovery",
+      "attempt": "51acd402-916d-4050-871d-38e6c29c8e74"
+    }
+  ],
+  "authorityRestoration": "Exact original QA membership-role links including created_at restored; inactive QA membership reactivated. No new actor, permission grant, source change or financial operation.",
+  "persistentEffect": "One original uncommitted correction attempt closure and required audit record; no command receipt, case revision, salary output or payment mutation.",
+  "remaining": [
+    "Concurrent protected financial commit versus revocation requires its own two-session proof",
+    "Cross-Employer/Tenant sensitive drafts, Back/Forward/cache and full responsive state matrix",
+    "LocalStorage correction payload is actor-scoped in UI, not proven encrypted for shared-device/off-UI privacy",
+    "Full payroll entitlement-loss closure matrix and qualified distribution remain open"
+  ]
+}

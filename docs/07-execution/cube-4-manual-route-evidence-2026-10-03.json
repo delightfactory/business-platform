@@ -1,0 +1,79 @@
+{
+  "atUTC": "2026-10-03T15:18:38.703055+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "baseline": 159,
+  "status": "I01_SCOPED_OPERATIONAL_PREPARATION_METHOD_PASS_FULL_CUBE_OPEN",
+  "runtimeURL": "http://127.0.0.1:3545",
+  "runtimeIdentity": {
+    "artifact": "cube4-authoritative-runtime-identity-calendar-pending-eof.json",
+    "sha256": "17e9c09cc56d303efa5db6c72432bba708f16446a58fa143d7474145c419e8aa"
+  },
+  "proofs": [
+    {
+      "artifact": "cube4-manual-route-ui-159-current.json",
+      "sha256": "8ed96b50adc8aaf3fdfb6e4980d0fb1b49b7c1cac83a26194e74999fa60a6a6c",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-manual-input-calculation-159-isolated.json",
+      "sha256": "4fc78aebf75ceff86c2e626d4f0eb1ab7dc765b0753ced568dc545cb6e04448e",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-manual-people-prerequisite-159.json",
+      "sha256": "bfe245d64c4be426e3a904de51bca9345f7ad4be4bd5da16e1993d25a2440a34",
+      "status": "PASS"
+    }
+  ],
+  "retainedFailedDependencies": [
+    {
+      "artifact": "cube4-manual-route-ui-159.json",
+      "sha256": "7bc43389025cbd4f277ed5b3d0ad216d377bca2640754c5e5f4283d5d8186a46"
+    },
+    {
+      "artifact": "cube4-manual-route-ui-159-resume.json",
+      "sha256": "d4f7d23b720ed39b03b8b356a93feb12b795f55eb4b9f8f31dffedd033751919"
+    },
+    {
+      "artifact": "cube4-manual-route-ui-159-resume-v2.json",
+      "sha256": "6f7d34d8b0955b3189b6fed509d7d030540e9fbf365b11d7ec03ff52db638b74"
+    },
+    {
+      "artifact": "cube4-manual-route-ui-159-approved-review.json",
+      "sha256": "5c4c0c84561f69b6f31c776b30118c083df72eb05e1021c4ea7be25e1bb4cce0"
+    },
+    {
+      "artifact": "cube4-manual-input-calculation-159.json",
+      "sha256": "868f9f77f0510439063ea1433cbd03e417319d23919be20850713b02dad233fa"
+    }
+  ],
+  "testChange": {
+    "path": "supabase/tests/cube4_payroll_candidates.test.sql",
+    "sha256": "9fd5156dc8636a197236272eb61c243ce052921764ebd23afe5c9bf3bcf74b39",
+    "reason": "Intended in-period mixed-classification blocker now has dated renewed recurring assignment, as accepted recurring interpretation guard requires. Expected behavior unchanged, no engine/migration altered."
+  },
+  "completed": "Actual input save draft1→approve2→Reload persists5 units/reference; ordinary25→24 public calculation after dated People prerequisite yields monthly3000 and daily500, netnull. Historical incomplete candidate preserved. Existing input50/candidate57 suites independently pass installed159 upgrade and fresh-origin159; upgrade input50 reused unchanged from prior run, not counted as a combined final run.",
+  "failureRecovery": "Initial option observation stopped before submit; read-only DOM confirmed disabled Time option. First save committed then verifier used nonexistent head_revision; read existing revision1, no repeated save. Resume attempted select on locked employee field and stopped before approval; preserve state, inspect value instead. Approval2 and first calculation committed; missing People assignment correctly left both base amounts unknown. Add dated QA site assignments without any Time policy; one explicit recalculation preserves original unknown candidate and approved input. Historical recurring fixture failure corrected separately; no suppression of failed artifacts.",
+  "limits": [
+    "People/employment/pay prerequisites are privately seeded QA; public onboarding journey not covered here",
+    "No legal pack/YTD qualification, no final net/approval/freeze/payment/distribution",
+    "Initial option observation timing not proven as product defect; explicit DOM predicate used",
+    "No full final-candidate159 fresh replay/build/whole-cube claim",
+    "Foreign tenants preservation not globally snapshotted for this persisted browser fixture; all writes intentionally restricted to owned QA IDs"
+  ],
+  "dataRetention": "Approved input/reference unchanged across calculation/Reload; two immutable candidates retained including original assignment-gap result; zero final output/payment.",
+  "screenshots": [
+    {
+      "artifact": "cube4-manual-route-159-390.png",
+      "sha256": "ad7ad277e506b1e3970362aff23937fbf86cf1c4564bb15f19a4aff6be0526eb"
+    },
+    {
+      "artifact": "cube4-manual-route-159-820.png",
+      "sha256": "d3bbf0757f69d5a96f4fc64889dcd75e33ec15a8d29db86a7240d12b5f6310f1"
+    },
+    {
+      "artifact": "cube4-manual-route-159-1280.png",
+      "sha256": "3d0610cb7a4b4952d29bea0ce7160cc2fab121f1ae09a7d32bde67391f71fa3a"
+    }
+  ]
+}

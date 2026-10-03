@@ -1,0 +1,140 @@
+{
+  "atUTC": "2026-10-03T12:33:44.749875+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative source; no installed migration edits",
+  "testPath": "supabase/tests/cube4_atomic_batch_lifecycle.test.sql",
+  "sourceSHA256": "0fc8f95fabd84fc5971cb20363e5404e639f154b952add30c1648632d6b30977",
+  "baseline": 157,
+  "groups": [
+    {
+      "rawEvidence": "cube4-generated-source-batch-157-v4.json",
+      "rawSHA256": "421426402cdf47767ee7ea4aadec2b1486fdcc8d8702f706c9dcb2d7e901155b",
+      "status": "PASS",
+      "database": "business_platform_cube4_upgrade_qa",
+      "migrationBaseline": 157,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "0fc8f95fabd84fc5971cb20363e5404e639f154b952add30c1648632d6b30977",
+      "fixtureNamespace": "d284 rollback",
+      "executedSQLSHA256": "5c7f3ef64ef9ebd65a60f7c59e2e6ea267a80c47fbfb9dad0ae7b4ce594bc26d",
+      "planned": [
+        29
+      ],
+      "passed": 29,
+      "checks": [
+        "ok 1 - same source change discovers three current period outputs",
+        "ok 2 - two unpaid originals receive amendment review runs",
+        "ok 3 - actual private batch appends both replacements under source-currentness checks",
+        "ok 4 - both successions publish after replacement batch",
+        "ok 5 - paid original remains authoritative",
+        "ok 6 - all original employee outputs remain byte-equivalent",
+        "ok 7 - original batch receipt recovers without replaying source or append",
+        "ok 8 - one exact source effect recorded across receipt replay",
+        "ok 9 - published earlier replacement appears in later prior statutory sources",
+        "ok 10 - superseded earlier original is not counted beside published replacement",
+        "ok 11 - valid civil-date settlement succeeds on routed case and recovers same receipt",
+        "ok 12 - mixed case completes after valid external settlement evidence",
+        "ok 13 - same Employee capacity sums both output responsibilities; 20 of 30 does not close",
+        "ok 14 - unsettled independent negative responsibility keeps case open",
+        "ok 15 - all positive and negative external responsibilities close exact case",
+        "ok 16 - first public source requests record responsibilities before a later request",
+        "ok 17 - three generated current outputs observe Time changes, including repeated January source",
+        "ok 18 - latest paid January and unpaid March selected; February omitted",
+        "ok 19 - selected latest January links its predecessor plus March, without February",
+        "ok 20 - mixed source proposal reviews one unpaid replacement and retains paid original",
+        "ok 21 - actual mixed source batch appends only unpaid current March replacement",
+        "ok 22 - same source batch receipt replays without a second append",
+        "ok 23 - source correction preserves every original employee output byte-equivalently",
+        "ok 24 - receipt replay retains exactly the two selected source effects",
+        "ok 25 - replacement binds the current approved March Time source rather than the original fact",
+        "ok 26 - routed fresh January selection resolves both old and latest exact source responsibilities",
+        "ok 27 - unselected February obligation remains blocking after mixed source batch",
+        "ok 28 - source batch never modifies original salary payments",
+        "ok 29 - generated mixed source case completes with valid external evidence; omitted source remains separate",
+        "1..29"
+      ],
+      "error": "",
+      "limits": [
+        "Actual public correction prepare/approve and private atomic batch execution; explicitly injected NONLEGAL candidates, not statutory qualification",
+        "Synthetic private append protocol only; no official legal calculations, UI lifecycle or concurrency qualification"
+      ]
+    },
+    {
+      "rawEvidence": "cube4-generated-source-batch-fresh157.json",
+      "rawSHA256": "c1decc693da41a2c08c3d7437a1f384e9bbaf6ecca1421dcb3f0d4b6f7f1281a",
+      "status": "PASS",
+      "database": "business_platform_cube4_candidate_lf_fresh_qa",
+      "migrationBaseline": 157,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "0fc8f95fabd84fc5971cb20363e5404e639f154b952add30c1648632d6b30977",
+      "fixtureNamespace": "d284 rollback",
+      "executedSQLSHA256": "1d257a0f181ef4259162a3203c2c04609b28f7c7c18f47139d195a6147e7c3c0",
+      "planned": [
+        29
+      ],
+      "passed": 29,
+      "checks": [
+        "ok 1 - same source change discovers three current period outputs",
+        "ok 2 - two unpaid originals receive amendment review runs",
+        "ok 3 - actual private batch appends both replacements under source-currentness checks",
+        "ok 4 - both successions publish after replacement batch",
+        "ok 5 - paid original remains authoritative",
+        "ok 6 - all original employee outputs remain byte-equivalent",
+        "ok 7 - original batch receipt recovers without replaying source or append",
+        "ok 8 - one exact source effect recorded across receipt replay",
+        "ok 9 - published earlier replacement appears in later prior statutory sources",
+        "ok 10 - superseded earlier original is not counted beside published replacement",
+        "ok 11 - valid civil-date settlement succeeds on routed case and recovers same receipt",
+        "ok 12 - mixed case completes after valid external settlement evidence",
+        "ok 13 - same Employee capacity sums both output responsibilities; 20 of 30 does not close",
+        "ok 14 - unsettled independent negative responsibility keeps case open",
+        "ok 15 - all positive and negative external responsibilities close exact case",
+        "ok 16 - first public source requests record responsibilities before a later request",
+        "ok 17 - three generated current outputs observe Time changes, including repeated January source",
+        "ok 18 - latest paid January and unpaid March selected; February omitted",
+        "ok 19 - selected latest January links its predecessor plus March, without February",
+        "ok 20 - mixed source proposal reviews one unpaid replacement and retains paid original",
+        "ok 21 - actual mixed source batch appends only unpaid current March replacement",
+        "ok 22 - same source batch receipt replays without a second append",
+        "ok 23 - source correction preserves every original employee output byte-equivalently",
+        "ok 24 - receipt replay retains exactly the two selected source effects",
+        "ok 25 - replacement binds the current approved March Time source rather than the original fact",
+        "ok 26 - routed fresh January selection resolves both old and latest exact source responsibilities",
+        "ok 27 - unselected February obligation remains blocking after mixed source batch",
+        "ok 28 - source batch never modifies original salary payments",
+        "ok 29 - generated mixed source case completes with valid external evidence; omitted source remains separate",
+        "1..29"
+      ],
+      "error": "",
+      "limits": [
+        "Actual public correction prepare/approve and private atomic batch execution; explicitly injected NONLEGAL candidates, not statutory qualification",
+        "Synthetic private append protocol only; no official legal calculations, UI lifecycle or concurrency qualification"
+      ]
+    }
+  ],
+  "scope": "Generated 25-to-24 periods, real People monthly sources, existing mixed compensation batch, public Time absence correction and repeated request boundaries, selected paid January plus unpaid current March, separate omitted February source obligation, actual private correction append/receipt and valid public settlement. Each29-check run is separate, not a combined58-check final-suite claim.",
+  "adapterBoundary": "Explicit privileged SYNTHETIC_NONLEGAL_ROLLBACK adapter overwrites money/readiness fields for append protocol testing. Time coverage is incomplete; missing days are never asserted absent. This proves source/correction lifecycle with prescribed test money, not operational Time readiness, statutory calculation, qualified legal net or public G6.",
+  "retainedFailures": [
+    {
+      "rawEvidence": "cube4-generated-source-batch-157.json",
+      "reason": "Initial incomplete Time coverage left gross_complete false; candidate approval correctly blocked before any assertions. Test-only adapter boundary was explicitly recorded, no production guard disabled."
+    },
+    {
+      "rawEvidence": "cube4-generated-source-batch-157-v2.json",
+      "reason": "23 of25 passed; deferred source tails ran only after both same-transaction requests, yielding3 observations not expected4 and2 links not3. Actual request boundary now flushed before newer change."
+    },
+    {
+      "rawEvidence": "cube4-generated-source-batch-157-v3.json",
+      "reason": "26 PASS prior test revision; retained historical result, superseded by exact final29-check test evidence."
+    }
+  ],
+  "remaining": [
+    "Public legally qualified source-enabled approval/final lock and complete operational coverage",
+    "Full role-specific UI/authorization and responsive recovery matrix",
+    "Qualified final pay and payslip distribution; official statutory results unavailable"
+  ],
+  "testGuardReview": "New assertions exercise real commands and consequential states: exact selected source obligations, excluded source remains, original rows/payment immutability, current binding and receipt replay. Existing15 batch/settlement regressions retained. NONLEGAL adapter is the explicit trusted-output test boundary, not a production mock or legal qualification."
+}

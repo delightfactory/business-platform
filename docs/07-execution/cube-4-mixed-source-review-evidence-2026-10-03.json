@@ -1,0 +1,66 @@
+{
+  "atUTC": "2026-10-03T12:23:10.131509+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative working tree; direct runtime3545; database157",
+  "runtimeTreeSHA256": "99dd108e1097cb2e8abe15df7e3718ba7052d3b94d062371130c7fb1677a817d",
+  "code": {
+    "src/app/tenant/[tenantId]/payroll/corrections/page.tsx": "95a07e2fab4aa6e61d755e0add0cd7e5a876eb040092e35fa19e99f388f13e97",
+    "supabase/tests/cube4_repeated_source_lineage.test.sql": "280f10da1dd87eeb8032b9431f26b2a80645236addd1fbcb166c490918492dd3"
+  },
+  "groups": [
+    {
+      "rawEvidence": "cube4-source-lineage-mixed-157.json",
+      "status": "PASS",
+      "passed": 12,
+      "sourceSHA256": "280f10da1dd87eeb8032b9431f26b2a80645236addd1fbcb166c490918492dd3",
+      "executedSQLSHA256": "2153d985972bacfbcc1d3609a0bee9fe4851a453b0e78bba455d4387751235bd",
+      "checks": [
+        "ok 1 - stale selected observation cannot resolve its old responsibility",
+        "ok 2 - latest public mutation observes both exact original bindings",
+        "ok 3 - new proposal links all four responsibilities without deleting history",
+        "ok 4 - fresh exact two binding selections cover both previous and latest responsibilities",
+        "ok 5 - deselected sibling sharing physical source leaves both its responsibilities unresolved",
+        "ok 6 - removal preserves all immutable links",
+        "ok 7 - latest exact selected origin now covers stale predecessor",
+        "ok 8 - lineage helper remains private",
+        "ok 9 - latest selected source proposal can be reviewed after repeated changes",
+        "ok 10 - selected paid observation does not authorize partial closure of a mixed physical source scope",
+        "ok 11 - refused partial source route retains all old and new responsibilities until atomic closure",
+        "ok 12 - refused mixed source route preserves original employee outputs, payments and unapplied source",
+        "1..12"
+      ],
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "scope": "Actual repeated public Time changes, selected lineage, approval and mixed route refusal; no batch execution in this group. Raw runner inherited generic atomic-batch limits are overbroad and do not qualify batch execution."
+    },
+    {
+      "rawEvidence": "cube4-mixed-source-review-ui-157-v3.json",
+      "status": "PASS",
+      "caseId": "7e7b3829-41b2-41e4-bf5d-05c79a361f93",
+      "checks": [
+        "Approved mixed source: one visible review-return action outside details; no paid-only route; Arabic RTL no overflow 390/820/1280",
+        "Actual Next action via keyboard returns same case to review; Reload preserves proposal, all source selections, responsibilities, history links and original money; recalculate visible outside details"
+      ],
+      "scope": "Existing saved synthetic source proposal approved once with public RPC, then real Next Action release via keyboard, same-case Reload; no financial command."
+    }
+  ],
+  "verification": {
+    "typescript": "PASS",
+    "tenantESLint": "PASS",
+    "approvedMixedWidths": [
+      390,
+      820,
+      1280
+    ]
+  },
+  "retainedFailures": [
+    "cube4-source-lineage-closure-157.json: selected source still includes unpaid sibling; attempted paid route refused and test rolled back",
+    "cube4-mixed-source-review-ui-157.json: incorrect harness link column; before mutation",
+    "cube4-mixed-source-review-ui-157-v2.json: incorrect harness final table; before mutation"
+  ],
+  "remaining": [
+    "Generated-period source-observation replacement and requirement resolution through full atomic financial lifecycle",
+    "Full narrow-role handoff UI and review-state responsive matrix",
+    "G4/G6 and qualified final pay/distribution remain blocked by official statutory qualification"
+  ]
+}

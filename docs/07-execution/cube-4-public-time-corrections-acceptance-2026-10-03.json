@@ -1,0 +1,73 @@
+{
+  "status": "PASS_BOUNDED_PUBLIC_WRITERS",
+  "runs": [
+    {
+      "status": "PASS",
+      "database": "business_platform_cube4_upgrade_qa",
+      "migrationBaseline": 154,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "d9641312f6a56296774c18cccdf0226b48ede594db24d771f6d92a2fb88404f4",
+      "planned": [
+        12
+      ],
+      "passed": 12,
+      "checks": [
+        "ok 1 - Payroll correction authority cannot mutate a bound Time source",
+        "ok 2 - Time correction cannot cross Tenant authority",
+        "ok 3 - Actual public Time correction succeeds without Payroll authority",
+        "ok 4 - Old correction replay cannot append another approved fact",
+        "ok 5 - Deferred interpretation and public fact tails coalesce into one current observation",
+        "ok 6 - Public Time correction creates one explicit Payroll responsibility",
+        "ok 7 - Observation records the exact public successor and Time actor",
+        "ok 8 - Original final source binding remains immutable",
+        "ok 9 - Denied and stale attempts produce no additional Time facts",
+        "ok 10 - Source correction does not silently open a financial correction case",
+        "ok 11 - Source correction never fabricates a payment",
+        "ok 12 - Original synthetic amount is preserved without guessing adjustment",
+        "1..12"
+      ],
+      "error": "",
+      "limits": [
+        "Actual correct_attendance_absence under Time-only authenticated role; interpretation/output/binding fixtures privileged and NONLEGAL",
+        "No full financial lifecycle, classification writer or append-race acceptance"
+      ]
+    },
+    {
+      "status": "PASS",
+      "database": "business_platform_cube4_upgrade_qa",
+      "migrationBaseline": 154,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "5f60e424f4ee0d8b33527523f639fff00b8682150d8582085cabf22961aee632",
+      "planned": [
+        8
+      ],
+      "passed": 8,
+      "checks": [
+        "ok 1 - Public Time classification review remains eligible with Payroll-bound original",
+        "ok 2 - Exact public classification retry returns the original receipt",
+        "ok 3 - Changed classification payload cannot reuse a successful receipt",
+        "ok 4 - Classification retry keeps one command receipt",
+        "ok 5 - Classification and replay append only one new successor",
+        "ok 6 - Second real Time transition records exactly one additional observation",
+        "ok 7 - Classified successor responsibility records exact version and Time actor",
+        "ok 8 - Two public corrections preserve the immutable original binding",
+        "1..8"
+      ],
+      "error": "",
+      "limits": [
+        "Actual public attendance classification review/commit/retry under Time-only actor; NONLEGAL output/binding fixture",
+        "No full financial lifecycle, all Time writers or append-race acceptance"
+      ]
+    }
+  ],
+  "distinctFocusedAssertions": 20,
+  "limits": [
+    "Only actual public absence correction and classification review/commit/retry on upgrade QA154",
+    "Output/source binding and interpretation prerequisites are explicit privileged NONLEGAL fixtures",
+    "Not public financial finalization, complete financial correction lifecycle, all source writers, all append races, or fresh replay"
+  ]
+}

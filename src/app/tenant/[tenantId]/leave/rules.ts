@@ -477,6 +477,7 @@ export type ReviewErrorCode =
   | 'cancellation-unavailable'
   | 'half-day-mapping'
   | 'attendance-conflict'
+  | 'payroll-locked-period'
   | 'overlap'
   | 'balance'
   | 'employment'
@@ -487,6 +488,7 @@ export type ReviewErrorCode =
   | 'new-work-disabled';
 
 export function mapReviewError(message: string, code?: string): ReviewErrorCode {
+  if (message.includes('payroll_locked_leave_addition_requires_correction')) return 'payroll-locked-period';
   if (message.includes('leave_idempotency_conflict')) return 'key-conflict';
   if (message.includes('leave_request_version_conflict') || message.includes('leave_cancellation_version_conflict')
     || message.includes('leave_request_transition_invalid')) return 'conflict';
@@ -538,6 +540,7 @@ const REVIEW_ERROR_TEXT: Record<ReviewErrorCode, string> = {
   'cancellation-unavailable': 'طلب الإلغاء لم يعد متاحًا. حدّث الصفحة للتحقق من حالته.',
   'half-day-mapping': 'مطابقة نصف يوم غير مكتملة لهذا الطلب، فلا يمكن اعتماده. حدّث المعاينة أولًا؛ وإن استمرت المطابقة غير مكتملة فراجع إعدادات دوام الموظف وسياسة الحضور لتاريخ النصف يوم. لا يُصحَّح سجل الوقت من هذه الصفحة.',
   'attendance-conflict': 'يوجد سجل حضور مسجّل لأحد أيام الطلب، لذا لا يمكن اعتماده. راجع سجل الحضور لهذا اليوم قبل أي قرار، ثم أعد المحاولة.',
+  'payroll-locked-period': 'هذه الإجازة تضيف أيامًا إلى فترة راتب مقفلة. الطلب محفوظ ولم يُعتمد. اطلب من مسؤول الرواتب مراجعة تصحيح المسير؛ اعتماد الإضافة التاريخية من هذه الشاشة غير متاح حاليًا.',
   overlap: 'يتداخل هذا الطلب مع إجازة معتمدة أخرى لنفس الموظف في نفس الأيام. راجع سجل طلبات الموظف ثم أعد المحاولة.',
   balance: 'لا يكفي رصيد الموظف لاعتماد كل أيام الطلب. راجع أرصدة الإجازات لهذا النوع قبل إعادة المحاولة.',
   employment: 'بيانات عمل الموظف لم تعد تغطي تواريخ الطلب. راجع ملف الموظف ثم أعد المحاولة.',

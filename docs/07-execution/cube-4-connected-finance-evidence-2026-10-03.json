@@ -1,0 +1,211 @@
+{
+  "atUTC": "2026-10-03T11:34:24.952870+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative tree",
+  "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+  "baseline": 157,
+  "database": "business_platform_cube4_upgrade_qa",
+  "runtime": "http://127.0.0.1:3545",
+  "runs": [
+    {
+      "rawEvidence": "cube4-linked-advance-ui-157-continuation.json",
+      "rawSHA256": "273449983dc85cd30222f4d152db2b1c4aa5e50c1e5c32ac92b8d3cb9a51c737",
+      "runner": "qa-linked-advance-ui-157-continuation.mjs",
+      "runnerSHA256": "ad8a4a311525389cdfc5a0663c32c64049d11d3d523fac1e268c85503dc167e3",
+      "result": {
+        "status": "PASS",
+        "baseline": 157,
+        "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+        "checks": [
+          "Actual UI draft/approval/external activation creates 100 balance; scheduled installment is explained as unconsumed, with zero payroll deduction",
+          "Keyboard partial external settlement retains 60 active balance after reload; debt not forgiven",
+          "Final external settlement yields zero/settled from four retained ledger events; original salary payment untouched; no overflow390/820/1280"
+        ],
+        "limits": [
+          "External operational finance evidence only; no statutory deduction limit guessed",
+          "Termination and actual insufficient-capacity consumption not proved by this UI path"
+        ],
+        "advanceId": "4b83823c-8706-41e2-988c-ddd5ba37bce3",
+        "originalPaymentDigest": "627895d5634b28af2b870fe8d5820ac5",
+        "stage": "completed",
+        "after": {
+          "revision": 5,
+          "status": "settled",
+          "balance": 0,
+          "events": 4,
+          "deductions": 0
+        }
+      }
+    },
+    {
+      "rawEvidence": "cube4-advances-disposition-157.json",
+      "rawSHA256": "e7f86bbfb01f2f93a7b6e4f309d2943662ab414f01137ff3c18510dd51f77602",
+      "runner": "qa-advances-disposition-157.py",
+      "runnerSHA256": "cc6d524b49fbf7a0c4edb8e7269977a603b62513676c602f9b290df329d79566",
+      "result": {
+        "status": "PASS",
+        "database": "business_platform_cube4_upgrade_qa",
+        "migrationBaseline": 157,
+        "transaction": "ROLLBACK",
+        "historyAndReceiptSets": 87,
+        "retainedHistoriesAndFunctionsUnchanged": true,
+        "sourceSHA256": "dab714b3bc3cd4ae4560c1713619ebcc3dab73ce9df99039e44abc8f5993ff63",
+        "fixtureNamespace": "d287",
+        "executedSQLSHA256": "f08d659b5a33fa9ae31abcc6aa4af5d67e605a6daa87ad9d861623803a001ebc",
+        "planned": [
+          103
+        ],
+        "passed": 103,
+        "checks": [
+          "ok 1 - principal starts as a draft without obligation",
+          "ok 2 - draft has no disbursement debt",
+          "ok 3 - integer cents put exact remainder in final installment",
+          "ok 4 - schedule exactly reconciles principal",
+          "ok 5 - external activation requires approval",
+          "ok 6 - approved schedule still waits external disbursement",
+          "ok 7 - approval receipt replay does not duplicate revision",
+          "ok 8 - external evidence activates exact principal",
+          "ok 9 - cannot cancel responsibility after disbursement",
+          "ok 10 - active principal and schedule are immutable",
+          "ok 11 - no negative loan balance",
+          "ok 12 - partial external settlement reduces only evidenced amount",
+          "ok 13 - early settlement allocation is deterministic oldest installment first",
+          "ok 14 - settlement evidence cannot be rewritten",
+          "ok 15 - compensating correction restores original balance without deleting evidence",
+          "ok 16 - same mistaken settlement cannot be compensated twice",
+          "ok 17 - settled is derived from explained zero ledger balance",
+          "ok 18 - compensation reopens derived nonzero status",
+          "ok 19 - reviewed deferral preserves entire debt",
+          "ok 20 - termination review records responsibility without forgiveness",
+          "ok 21 - authorized existing obligation closes after entitlement loss",
+          "ok 22 - disabled Finance cannot create new obligation",
+          "ok 23 - existing active obligation remains visible when optional Finance disabled",
+          "ok 24 - reader cannot resolve original mutation authority",
+          "ok 25 - restored authority recovers committed original receipt",
+          "ok 26 - receipt recovery cannot change original principal",
+          "ok 27 - committed recovery has exactly one source version",
+          "ok 28 - committed recovery has one receipt",
+          "ok 29 - invalid mutation rolls back before receipt",
+          "ok 30 - lost validation response has durable definitive absence proof",
+          "ok 31 - delayed original cannot commit after journal release",
+          "ok 32 - absence resolution itself is idempotent",
+          "ok 33 - tombstone is bound to original invalid intent",
+          "ok 34 - resolver-first creates terminal uncommitted fence",
+          "ok 35 - valid delayed writer cannot escape terminal fence",
+          "ok 36 - new explicit attempt works after definitive closure",
+          "ok 37 - cancel is available before approval or disbursement",
+          "ok 38 - pre-obligation cancellation creates no money movement",
+          "ok 39 - mistaken principal fixture begins separately",
+          "ok 40 - principal evidence requires ordinary approval",
+          "ok 41 - mistaken evidence is retained as original disbursement",
+          "ok 42 - any previous repayment precludes mistaken-disbursement shortcut",
+          "ok 43 - reversed erroneous disbursement is never labelled settled",
+          "ok 44 - lost wrong-evidence response recovers original receipt",
+          "ok 45 - principal evidence reversal occurs once",
+          "ok 46 - correct principal starts linked replacement with independent approval",
+          "ok 47 - corrected record has exact signed zero balance",
+          "ok 48 - original disbursement evidence remains immutable",
+          "ok 49 - wrong evidence reversal invents no repayment allocations",
+          "ok 50 - replacement attribution is immutable and explicit",
+          "ok 51 - corrected erroneous principal never appears as due debt",
+          "ok 52 - private source projection is inaccessible",
+          "ok 53 - ordinary caller cannot fabricate legal allowance",
+          "ok 54 - ordinary caller cannot issue absence proof directly",
+          "ok 55 - due installment without verified allowance is owned blocker",
+          "ok 56 - due projection never fabricates legal net",
+          "ok 57 - unqualified due never silently becomes applied deduction",
+          "ok 58 - ledger/schedule context participates in freshness",
+          "ok 59 - review calculation never consumes principal",
+          "ok 60 - limited NONLEGAL capacity exposes approved carry-forward review instead of silently consuming the remainder",
+          "ok 61 - public reviewed deferral keeps exact debt and unapplied installment without creating a repayment",
+          "ok 62 - reviewed unapplied installment leaves current period and remains due in the chosen future period",
+          "ok 63 - qualified interface allowance contributes exact remaining cents only",
+          "ok 64 - actual candidate explanation names consumed installment amount",
+          "ok 65 - synthetic allowance does not qualify legal net engine",
+          "ok 66 - ledger audit failure rolls back final append and advance together",
+          "ok 67 - failed loan posting leaves no final output",
+          "ok 68 - failed loan audit leaves original debt untouched",
+          "ok 69 - failed posting preserves approved review for safe retry",
+          "ok 70 - locked output atomically consumes only exact allowed installment",
+          "ok 71 - private append receipt recovers without second deduction",
+          "ok 72 - exactly one locked deduction movement",
+          "ok 73 - ledger allocations reconcile actual final output deduction",
+          "ok 74 - consumed original cannot be deducted again by ordinary run",
+          "ok 75 - locked consumption allocation is immutable",
+          "ok 76 - ordinary caller cannot inspect private ledger to fabricate correction",
+          "ok 77 - Finance reader cannot cross Tenant scope",
+          "ok 78 - workspace is only narrow Finance read projection",
+          "ok 79 - unpaid amendment restores only original scoped deduction in private projection",
+          "ok 80 - replacement does not charge Employee principal twice",
+          "ok 81 - original locked deduction remains immutable after replacement",
+          "ok 82 - replacement compensates old and records new exact attribution",
+          "ok 83 - negative employee recovery omitted from compensation choices",
+          "ok 84 - negative responsibility cannot be selected through reference projection",
+          "ok 85 - negative recovery refuses direct compensation command",
+          "ok 86 - opposite signed denial has no ledger revision success audit or receipt effects",
+          "ok 87 - reviewed paid correction appends exact compensating loan entry",
+          "ok 88 - paid historical fact survives loan compensation",
+          "ok 89 - loan compensation never changes original Payroll payment ledger",
+          "ok 90 - loan compensation never rewrites paid final net",
+          "ok 91 - reload after committed correction keeps protected journal recovery reachable",
+          "ok 92 - single installment original consumes entire principal",
+          "ok 93 - fully consumed fixture remains externally never-paid",
+          "ok 94 - ordinary projection excludes fully consumed loan",
+          "ok 95 - zero-current-balance amendment virtually restores exact unpaid allocation",
+          "ok 96 - pre-consumption allowance revision cannot authorize restored installment",
+          "ok 97 - missing current allowance blocks fully consumed amendment rather than dropping debt",
+          "ok 98 - qualified private fixture restores exact alternative consumption",
+          "ok 99 - unchanged fully consumed replacement retains zero principal debt",
+          "ok 100 - successor compensation and exact deduction reconcile atomically",
+          "ok 101 - original fully consumed deduction remains immutable",
+          "ok 102 - alternative final payable preserves exact loan deduction",
+          "ok 103 - original never-paid payable remains immutable",
+          "1..103"
+        ],
+        "error": "",
+        "limits": [
+          "Actual public correction prepare/approve and private atomic batch execution; explicitly injected NONLEGAL candidates, not statutory qualification",
+          "Synthetic private append protocol only; no official legal calculations, UI lifecycle or concurrency qualification"
+        ]
+      }
+    }
+  ],
+  "test": {
+    "path": "supabase/tests/cube4_payroll_advances.test.sql",
+    "sha256": "dab714b3bc3cd4ae4560c1713619ebcc3dab73ce9df99039e44abc8f5993ff63",
+    "review": "test-guard: three new assertions cover one actual capped-source/approved-deferral scenario; real public command and immutable ledger outcomes; rollback branch restores original full-consumption regression, no internal mocks",
+    "preciseScope": "103 rollback checks: public draft/approval/disbursement/settlement/corrections, remaining debt after termination and entitlement loss, exactly-once private consumption/replacement, limited NONLEGAL allowance exposing carry-forward review and approved future deferral",
+    "rawMetadataClarification": "Generic limit wording inherited by runner mentions correction/private batch. It does not expand scope; the linked advance test and its actual check list define this run."
+  },
+  "linkedFixture": {
+    "sameTenantActorEmployees": true,
+    "newFinanceRoleAndCapability": "QA only, explicit employee_finance view/manage/approve",
+    "oneNextUnclosedPeriod": true,
+    "advanceCreatedOnce": "4b83823c-8706-41e2-988c-ddd5ba37bce3",
+    "originalSalaryPaymentsUnchanged": true
+  },
+  "retainedFailures": [
+    {
+      "files": [
+        "cube4-linked-advance-setup-157.json",
+        "cube4-linked-advance-setup-157-v2.json",
+        "cube4-linked-advance-setup-157-v3.json"
+      ],
+      "cause": "First SQL placeholder also replaced ROLE keyword; second used private schema under authenticated role; third preview joined calendar version to generation head revision and returned null. All setup transactions rolled back. Read-only diagnosis proved roleCount0 and null preview. Corrected dated-version preview then public generation succeeded. No loan or money before successful setup."
+    },
+    {
+      "files": [
+        "cube4-linked-advance-ui-157.json"
+      ],
+      "cause": "Nested main matched two elements after successful activation. Inspected same advance at active/revision3/balance100 before continuation; did not recreate, reapprove or reactivate."
+    }
+  ],
+  "limits": [
+    "Operational UI and SQL are separate scoped runs, not a whole-candidate aggregate PASS.",
+    "NONLEGAL capped allowance tests disposition, not official priority/ceiling or legal net.",
+    "Termination responsibility is SQL-qualified here; final-pay and terminated-Employee UI journey remain open.",
+    "Full qualified payroll deduction/finalization UI and distribution still gated; G4/G6 closed.",
+    "Only affected advance SQL suite was rerun after three added checks; no broad repeated tests.",
+    "QA receipts/history retained; no installed migration edits, push, merge, deploy, or new commit."
+  ]
+}

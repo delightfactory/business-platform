@@ -1,0 +1,214 @@
+{
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative working tree",
+  "atUTC": "2026-10-03T10:47:35.300878+00:00",
+  "installedBaseline": 157,
+  "localInstall": {
+    "status": "PASS",
+    "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+    "migrations": {
+      "20261003028000_cube4_external_settlement_completion.sql": "66b0bb12dc32c37389ce3ae91ad55fadf2acc2aec2c38ed9e1e54dbfb987e93d",
+      "20261003029000_cube4_pending_replacement_authority.sql": "ba28e3bd5921a6a537505ae0716d3f6ef3831a7d5f2730f7cd64ac4559763621"
+    },
+    "review": "/root/cube4_adam_minimal_route_review: 280 grouping approved; 290 exact-pair strengthening applied; bounded static only",
+    "checks": [
+      {
+        "database": "business_platform_cube4_upgrade_qa",
+        "before": 155,
+        "after": 157,
+        "historyAuthReceiptSetsPreserved": 87,
+        "privateACLVerified": true
+      },
+      {
+        "database": "business_platform_cube4_fresh_qa",
+        "before": 155,
+        "after": 157,
+        "historyAuthReceiptSetsPreserved": 87,
+        "privateACLVerified": true
+      }
+    ],
+    "limits": [
+      "Two existing dedicated local DB upgrades only, not complete fresh replay",
+      "No full lifecycle or G6 qualification",
+      "No public financial output added",
+      "No push/merge/deploy"
+    ]
+  },
+  "runs": [
+    {
+      "rawEvidence": "cube4-atomic-batch-lifecycle-v6.json",
+      "status": "PASS",
+      "database": "business_platform_cube4_upgrade_qa",
+      "migrationBaseline": 155,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "e072b577a0bf627208ac65c3359160be55783da03906576a9cb6a630aa343ee2",
+      "planned": [
+        15
+      ],
+      "passed": 15,
+      "checks": [
+        "ok 1 - same source change discovers three current period outputs",
+        "ok 2 - two unpaid originals receive amendment review runs",
+        "ok 3 - actual private batch appends both replacements under source-currentness checks",
+        "ok 4 - both successions publish after replacement batch",
+        "ok 5 - paid original remains authoritative",
+        "ok 6 - all original employee outputs remain byte-equivalent",
+        "ok 7 - original batch receipt recovers without replaying source or append",
+        "ok 8 - one exact source effect recorded across receipt replay",
+        "ok 9 - published earlier replacement appears in later prior statutory sources",
+        "ok 10 - superseded earlier original is not counted beside published replacement",
+        "ok 11 - valid civil-date settlement succeeds on routed case and recovers same receipt",
+        "ok 12 - mixed case completes after valid external settlement evidence",
+        "ok 13 - same Employee capacity sums both output responsibilities; 20 of 30 does not close",
+        "ok 14 - unsettled independent negative responsibility keeps case open",
+        "ok 15 - all positive and negative external responsibilities close exact case",
+        "1..15"
+      ],
+      "error": "",
+      "limits": [
+        "Actual public correction prepare/approve and private atomic batch execution; explicitly injected NONLEGAL candidates, not statutory qualification",
+        "Synthetic private append protocol only; no official legal calculations, UI lifecycle or concurrency qualification"
+      ]
+    },
+    {
+      "rawEvidence": "cube4-corrections-completion-regression-v1.json",
+      "status": "PASS",
+      "database": "business_platform_cube4_upgrade_qa",
+      "migrationBaseline": 155,
+      "transaction": "ROLLBACK",
+      "historyAndReceiptSets": 87,
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "sourceSHA256": "658463be5fe41e97a8bfc89455dcf5ada0fda88890f2bb2bef6fb1fe213cf8c8",
+      "fixtureNamespace": "d286",
+      "executedSQLSHA256": "29793411463ce54003f54bf732a3b2cd5185a68c3e0b9a207bf823832fe144b9",
+      "planned": [
+        71
+      ],
+      "passed": 71,
+      "checks": [
+        "ok 1 - ordinary callers cannot manufacture correction source proof",
+        "ok 2 - atomic financial replacement is private; G6 is not exposed",
+        "ok 3 - saving proposal leaves source unchanged",
+        "ok 4 - original remains authoritative before replacement",
+        "ok 5 - unpaid amendment calculates attributable overlay",
+        "ok 6 - approved proposal requires explicit release before cancel",
+        "ok 7 - proposal approval does not fabricate qualified net",
+        "ok 8 - atomic replacement applies exact approved compensation",
+        "ok 9 - original immutable financial output survives source correction",
+        "ok 10 - one exact same-period replacement link",
+        "ok 11 - batch receipt recovers original result without duplicate append",
+        "ok 12 - source effect applies once across batch replay",
+        "ok 13 - paid correction executes approved source without replacing paid original",
+        "ok 14 - paid original obligation is unchanged",
+        "ok 15 - external evidence cannot exceed approved responsibility",
+        "ok 16 - all approved manual external responsibilities complete the case without statutory qualification",
+        "ok 17 - separate attributable settlement evidence ledger",
+        "ok 18 - paid fact remains permanent after correction",
+        "ok 19 - new Employment proposal needs no preinserted Employee or Employment",
+        "ok 20 - approved route inserts omitted Employee atomically",
+        "ok 21 - generated Employment identity reaches approved later-period target",
+        "ok 22 - carry-forward creation is approved input, not applied money or settled responsibility",
+        "ok 23 - later-period input leaves accountable responsibility open",
+        "ok 24 - new eligibility never rewrites original paid obligation",
+        "ok 25 - original locked output consumed the approved carry-forward fixture",
+        "ok 26 - mixed source change discovers both active outputs",
+        "ok 27 - only never-paid output gets a replacement candidate",
+        "ok 28 - amendment preserves original consumed adjustment exactly once",
+        "ok 29 - public paid-only route cannot hide required unpaid replacement",
+        "ok 30 - refused mixed public execution leaves source unchanged",
+        "ok 31 - mixed atomic execution replaces only never-paid output",
+        "ok 32 - mixed execution preserves ever-paid original identity",
+        "ok 33 - mixed execution preserves paid original money",
+        "ok 34 - unpaid member has one attributable successor",
+        "ok 35 - mixed responsibility remains open after atomic replacement",
+        "ok 36 - mixed replay recovers same receipt without extra source effect or succession",
+        "ok 37 - ordinary calculation cannot recreate a financially finalized period",
+        "ok 38 - amendment cannot cross original legal Employer identity",
+        "ok 39 - correction privilege alone never grants private compensation source projection",
+        "ok 40 - receipt replay requires current financial authority",
+        "ok 41 - restored current authority recovers original mixed receipt",
+        "ok 42 - fixed correction preserves empty canonical base",
+        "ok 43 - percentage correction preserves canonical base_pay",
+        "ok 44 - displayed 30-day policy saves canonical enum",
+        "ok 45 - site projection keeps 30-item bound",
+        "ok 46 - site 31 is reachable with independent cursor",
+        "ok 47 - selected reference outside page one retains actual label",
+        "ok 48 - Employee beyond page one is searchable without raw identity entry",
+        "ok 49 - source projection has own 30-item bound",
+        "ok 50 - source 31 is reachable independently of Employee cursor",
+        "ok 51 - selected later source includes canonical fields for preview",
+        "ok 52 - existing assignment reference beyond page one preserves its scoped human label",
+        "ok 53 - response loss retrieves authoritative committed outcome",
+        "ok 54 - receipt recovery returns exact original result rather than replay",
+        "ok 55 - altered committed intent is not disclosed as a matching result",
+        "ok 56 - absent receipt closes original identity without executing its correction",
+        "ok 57 - closure proof is idempotent under the same intent",
+        "ok 58 - closed attempt cannot be reused with altered intent",
+        "ok 59 - delayed original writer is refused after closure even if its original input could execute",
+        "ok 60 - recovery cannot cross Tenant identity",
+        "ok 61 - recovery cannot cross Employer identity",
+        "ok 62 - committed and uncommitted recovery do not change correction cases or revisions",
+        "ok 63 - recovery does not apply source changes",
+        "ok 64 - immutable closure has exactly one actor-scoped attempt record",
+        "ok 65 - replayed closure never duplicates the mandatory audit event",
+        "ok 66 - a closed attempt cannot be reopened or rewritten",
+        "ok 67 - private closure and reconciliation retain scoped authenticated boundary",
+        "ok 68 - committed recovery still requires current compensation domain authority",
+        "ok 69 - closure proof is not disclosed after current domain authority is removed",
+        "ok 70 - changed actor cannot recover the original actor receipt",
+        "ok 71 - restored current authority resolves the same original attempt",
+        "1..71"
+      ],
+      "error": "",
+      "limits": [
+        "Actual public correction prepare/approve and private atomic batch execution; explicitly injected NONLEGAL candidates, not statutory qualification",
+        "Synthetic private append protocol only; no official legal calculations, UI lifecycle or concurrency qualification"
+      ]
+    }
+  ],
+  "runtimeReadOnlyAcceptance": {
+    "status": "PASS",
+    "runtimeTreeSHA256": "735393570250dbb590883fc7ff685eefabbd1d1aafc511928f82c8cabced67d0",
+    "migrationBaseline": 155,
+    "checks": [
+      "All saved selected sources, reason, reference and responsibility restored",
+      "Keyboard can focus source removal",
+      "No horizontal overflow at 390/820/1280",
+      "Case, proposal and payment rows unchanged"
+    ],
+    "scope": "Read-only saved multi-source editor on direct authoritative runtime; no save/payment/reseed"
+  },
+  "limits": [
+    "No full fresh replay or whole current-candidate qualification",
+    "Explicit NONLEGAL injected adapter candidates and deterministic fixture-only UUID allocation; no real legal net inferred",
+    "Authority repair is not cross-period statutory recalculation qualification",
+    "Payment Next Action loss and complete UI lifecycle remain open",
+    "G4/G6 remain closed"
+  ],
+  "preservedFailures": {
+    "rejectedFixture": "cube4-source-atomic-batch-rejected-scope-fixture.sql",
+    "reports": [
+      "cube4-source-atomic-batch-v1.json",
+      "cube4-source-atomic-batch-v2.json",
+      "cube4-source-atomic-batch-v3.json",
+      "cube4-source-atomic-batch-v4.json"
+    ],
+    "causes": [
+      "Reused daily source fixture has unknown base; synthetic output construction null",
+      "Synthetic gross completion flag missing",
+      "Scope-only cancelled original cannot transition to superseded",
+      "Artificial sibling locked amendments violate active amendment uniqueness"
+    ],
+    "scope": "All attempts transactional rollback; production history unchanged. Rejected fixture retained outside repository, not shipped as a passing test."
+  },
+  "actualDefects": {
+    "caseNeverCompletes": "cube4-atomic-batch-lifecycle-v1.json: valid full settlement left case routed",
+    "batchPriorChanges": "cube4-atomic-batch-lifecycle-diagnosis-v1.json/log: second actual append readiness stale_reasons prior_statutory_outputs_changed",
+    "fixedBy": [
+      "20261003028000",
+      "20261003029000"
+    ]
+  }
+}

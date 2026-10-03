@@ -1,7 +1,7 @@
 export type CorrectionKind='compensation'|'assignment'|'employment'|'new_employment'|'input_revision'|'source_change';
 export type CorrectionState={error:string;saved:boolean;signature:string;attempt:string;recoverPending?:boolean;closedUncommitted?:boolean;previewHash?:string;caseId?:string;revision?:number;status?:string;route?:string;affected?:{id:string;starts_on:string;ends_on:string}[]};
 export const correctionKinds:Record<CorrectionKind,string>={source_change:'تغيير مسجل في الحضور أو الإجازات',compensation:'تصحيح الأجر المؤرخ',assignment:'تصحيح التكليف المؤرخ',employment:'تصحيح التوظيف أو أهلية الراتب',new_employment:'توظيف مستحق لم يُسجّل',input_revision:'تصحيح مدخل راتب'};
-export const correctionStatuses:Record<string,string>={draft:'مقترح محفوظ',review:'قيد مراجعة الأثر',approved:'المقترح معتمد',routed:'مسؤولية تسوية مفتوحة',completed:'استُبدلت المخرجات غير المدفوعة',cancelled:'ملغى مع حفظ التاريخ'};
+export const correctionStatuses:Record<string,string>={draft:'مقترح محفوظ',review:'قيد مراجعة الأثر',approved:'المقترح معتمد',routed:'مسؤولية تسوية مفتوحة',completed:'اكتمل التصحيح',cancelled:'ملغى مع حفظ التاريخ'};
 export function correctionError(code?:string,message?:string){
  if(message?.includes('mixed_dispositions'))return 'يشمل الأثر مخرجات مدفوعة وأخرى غير مدفوعة. استكمل مراجعة البدائل والتأهيل القانوني قبل تطبيقها مع مسؤوليات التصحيح معًا.';
  if(message?.includes('proposal_approval_required'))return 'اعتمد المقترح ونطاق الأثر أولًا، ثم راجع اعتماد المرشح المؤهل.';

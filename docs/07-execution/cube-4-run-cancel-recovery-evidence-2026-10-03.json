@@ -1,0 +1,53 @@
+{
+  "atUTC": "2026-10-03T14:53:37.004514+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "baseline": 159,
+  "runtimeURL": "http://127.0.0.1:3545",
+  "database": "business_platform_cube4_upgrade_qa",
+  "status": "L03_NEXT_ACTION_RECOVERY_PASS_FULL_MATRIX_OPEN",
+  "runtimeIdentity": {
+    "artifact": "cube4-authoritative-runtime-identity-calendar-pending-eof.json",
+    "sha256": "17e9c09cc56d303efa5db6c72432bba708f16446a58fa143d7474145c419e8aa"
+  },
+  "proof": {
+    "artifact": "cube4-run-cancel-recovery-ui-159.json",
+    "sha256": "fbb5267e6dfb1bda7b51c492d5bba5dc3e8adabd03a32d39cf4961b75e3f5a4f",
+    "result": {
+      "status": "PASS",
+      "baseline": 159,
+      "scope": "Actual Next Action cancel response loss and authenticated original receipt recovery, local synthetic fixture only",
+      "checks": [
+        "One cancellation committed with original reason and one revision increment; candidates, manifests, input versions, payments and finals unchanged",
+        "Dropped cancel response and full reload preserve operation, reason, original run revision and attempt; new calculation blocked",
+        "Authenticated recovery retrieves original cancellation receipt without replay, clears pending state and offers preparation of a new run",
+        "Phone/tablet/desktop recovery feedback visible without overflow; subsequent reload neither cancels again nor calculates a replacement"
+      ],
+      "limitations": [
+        "No permission revocation/disabled-service/final-state journey or legal approval qualification"
+      ],
+      "sourceHash": "3bd95d5e2e13c4a1093f9773596e8b2f380c28e34642e32d5118c0d50300bbbc",
+      "fixtureState": "Synthetic review run intentionally retained cancelled; no replacement calculation"
+    }
+  },
+  "driver": {
+    "artifact": "qa-run-cancel-recovery-ui-159.mjs",
+    "sha256": "35aa3fe65ba4961e9a211d3e2a0645f97767df568d7757ad5cb2f4b6411b9e41"
+  },
+  "screenshots": [
+    {
+      "artifact": "cube4-run-cancel-recovery-159-390.png",
+      "sha256": "14db1321b9a40e09b54ac7103a5bf2db88953c0669adc4657265a4f8b40f03a8"
+    },
+    {
+      "artifact": "cube4-run-cancel-recovery-159-820.png",
+      "sha256": "9ac65fb2bf558177b1df5fdef9f9b00592e4f3f81d2fbcca5dc9591aaef34de7"
+    },
+    {
+      "artifact": "cube4-run-cancel-recovery-159-1280.png",
+      "sha256": "ad92240bbef44637b59cb23b9a455ce5029047aafe905fa4235c145f9804b0c4"
+    }
+  ],
+  "preparation": "Existing generated January2027 QA period: one supported public unqualified calculation. Preparation first stopped in prerequisite assertion due to start_on versus actual starts_on column, before calculation; corrected guard verified no existing run/receipt, reused same attempt. No seed reset. Candidate remains unqualified; no legal approval or new money.",
+  "retention": "All tenant Payroll tables except explicit run/audit/receipt remain identical after cancel, recovery and subsequent reload; candidate retained.",
+  "remaining": "Draft/review full input-consumption variants, permission/entitlement-loss and final-state cancellation matrix; full final-candidate journey/fresh/build; public G4/G6 closed."
+}

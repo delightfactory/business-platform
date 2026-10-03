@@ -1,0 +1,123 @@
+{
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted working tree; locally installed additive migration 030270",
+  "migrationSHA256": "4ad62980e867146b88404c0ce12c602228f729a0b9e2d794cc6683eb61c7707d",
+  "atUTC": "2026-10-03T10:22:57.307134+00:00",
+  "database": "business_platform_cube4_upgrade_qa",
+  "installedBaseline": 155,
+  "groups": [
+    {
+      "description": "Repeated source responsibilities: public Time mutation and exact binding lineage",
+      "rawEvidence": "cube4-repeated-lineage-qualification-v2.json",
+      "status": "PASS",
+      "passed": 8,
+      "sourceSHA256": "54c06d0a8e088d46fc75dd5b5f52f72e3dceb358df86a196b87435d6618149dd",
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "checks": [
+        "ok 1 - stale selected observation cannot resolve its old responsibility",
+        "ok 2 - latest public mutation observes both exact original bindings",
+        "ok 3 - new proposal links all four responsibilities without deleting history",
+        "ok 4 - fresh exact two binding selections cover both previous and latest responsibilities",
+        "ok 5 - deselected sibling sharing physical source leaves both its responsibilities unresolved",
+        "ok 6 - removal preserves all immutable links",
+        "ok 7 - latest exact selected origin now covers stale predecessor",
+        "ok 8 - lineage helper remains private",
+        "1..8"
+      ],
+      "fixtureNamespace": null
+    },
+    {
+      "description": "Public Leave approval: closed unbound date denied; outside date approved",
+      "rawEvidence": "cube4-unbound-leave-qualification-v2.json",
+      "status": "PASS",
+      "passed": 8,
+      "sourceSHA256": "ab805c7d692a104caeb3371db28ce4dae4d68d892338fe59c04cd21c071d74b0",
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "checks": [
+        "ok 1 - actual public approval refuses unbound Leave addition inside closed original scope",
+        "ok 2 - failed deferred approval keeps original submitted request",
+        "ok 3 - captured Leave-enabled output has no pre-existing Leave binding",
+        "ok 4 - refusal does not fabricate an untyped responsibility",
+        "ok 5 - failed Leave approval introduces no payment",
+        "ok 6 - original NONLEGAL output remains unchanged",
+        "ok 7 - ordinary public Leave approval outside the closed period is permitted",
+        "ok 8 - outside-period Leave approval completes successfully",
+        "1..8"
+      ],
+      "fixtureNamespace": null
+    },
+    {
+      "description": "Existing edit/deselection/amendment review regression; isolated rollback namespace",
+      "rawEvidence": "cube4-closure-regression-source-edit-v2.json",
+      "status": "PASS",
+      "passed": 8,
+      "sourceSHA256": "5e9b94e92f7a790f5784697708c2a85bee3f5c320c7c29eb984d56b4fb936862",
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "checks": [
+        "ok 1 - editing retains immutable historical links without treating all as current",
+        "ok 2 - removed observation requirement is not resolved by revised proposal",
+        "ok 3 - edited amendment keeps deselected historical requirement blocking",
+        "ok 4 - combined selected observations deduplicate their two affected outputs",
+        "ok 5 - one governed proposal can select both exact recorded changes",
+        "ok 6 - only both currently selected requirements become eligible for resolution",
+        "ok 7 - joint amendment review removes only its two selected requirements",
+        "ok 8 - current-selection resolution helper remains private",
+        "1..8"
+      ],
+      "fixtureNamespace": "d276/d277/d278"
+    },
+    {
+      "description": "Existing public bound Leave cancellation and private observer authority regression",
+      "rawEvidence": "cube4-closure-regression-bound-leave-v1.json",
+      "status": "PASS",
+      "passed": 5,
+      "sourceSHA256": "dc5eb3db2bf137f8637cb4071ce53155e48ed8d0cb8d489c241c323748406c43",
+      "retainedHistoriesAndFunctionsUnchanged": true,
+      "checks": [
+        "ok 1 - actual cancellation actor has no Payroll read permission",
+        "ok 2 - source-only actor creates exact responsibility without gaining Payroll access",
+        "ok 3 - actual public cancellation retry does not duplicate responsibility",
+        "ok 4 - private evidence enforces FORCE RLS",
+        "ok 5 - all API roles denied every trusted observer",
+        "1..5"
+      ],
+      "fixtureNamespace": null
+    }
+  ],
+  "limits": [
+    "No whole-candidate fresh/upgrade acceptance",
+    "No public financial finalization or G6 qualification",
+    "No integrated batch append execution yet",
+    "Leave addition blocked with explanation, historical acceptance route remains incomplete",
+    "UI Leave message not yet browser qualified"
+  ],
+  "localInstall": {
+    "status": "PASS",
+    "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+    "migrationSHA256": "4ad62980e867146b88404c0ce12c602228f729a0b9e2d794cc6683eb61c7707d",
+    "review": "/root/cube4_adam_minimal_route_review: no blocking bounded draft defect; static only",
+    "checks": [
+      {
+        "database": "business_platform_cube4_upgrade_qa",
+        "before": 154,
+        "after": 155,
+        "historyAuthReceiptSetsPreserved": 87,
+        "privateACLVerified": true
+      },
+      {
+        "database": "business_platform_cube4_fresh_qa",
+        "before": 154,
+        "after": 155,
+        "historyAuthReceiptSetsPreserved": 87,
+        "privateACLVerified": true
+      }
+    ],
+    "limits": [
+      "Two existing dedicated local DB upgrades only, not complete fresh replay",
+      "No full lifecycle or G6 qualification",
+      "No public financial output added",
+      "No push/merge/deploy"
+    ]
+  },
+  "review": "/root/cube4_adam_minimal_route_review: bounded independent static review; no blocking defect"
+}

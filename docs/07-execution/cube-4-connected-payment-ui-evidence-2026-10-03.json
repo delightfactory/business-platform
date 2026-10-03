@@ -1,0 +1,222 @@
+{
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted authoritative writer tree",
+  "atUTC": "2026-10-03T11:20:07.536704+00:00",
+  "runtime": {
+    "url": "http://127.0.0.1:3545",
+    "database": "business_platform_cube4_upgrade_qa",
+    "sourceMode": "direct authoritative working tree; no source copies",
+    "treeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+    "migrationBaseline": 157
+  },
+  "sourceFilesVerified": 244,
+  "runs": [
+    {
+      "rawEvidence": "cube4-payment-next-action-loss-v2.json",
+      "rawSHA256": "ed6feefaea2efddc29392db52db00cc9f8a47a7e98cb8bffd31d7a8c1d47ed5f",
+      "runner": "qa-payment-next-action-loss-v2.mjs",
+      "runnerSHA256": "d0e174b8c8367fbe0bcf5066ee63ceb6cbc1dbdbda4dab67a44dd9efcd37b163",
+      "result": {
+        "status": "PASS",
+        "scope": "One deliberate NONLEGAL QA 1.00 payment; successful complete Next Action response lost after RPC commit, reload/cross-tab/cancel-denied/original receipt recovery; no reseed",
+        "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+        "migrationBaseline": 157,
+        "checks": [
+          "Complete Next Action 200 response lost after one payment commit; Reload retains exact metadata-only attempt; other tab exposes no new payment command",
+          "Cancellation of committed request denied with explained original-receipt recovery; no monetary mutation or lost attempt",
+          "Keyboard receipt recovery returns original request and removes only resolved journal; payment/correction rows unchanged; no overflow 390/820/1280"
+        ],
+        "limits": [
+          "No official calculations, public financial finalization or whole Cube4 acceptance",
+          "Submission-first cancellation concurrency still requires actual DB interleaving"
+        ],
+        "before": {
+          "events": 0,
+          "allocations": 0,
+          "receipts": 0,
+          "revision": null,
+          "remaining": 5000,
+          "cases": 0,
+          "proposals": 0
+        },
+        "stage": "completed",
+        "withheldNextActionStatus": 200,
+        "attempt": "666430b8-0534-4a68-b3e1-dd11f4910cfe",
+        "committed": {
+          "events": 1,
+          "allocations": 1,
+          "receipts": 1,
+          "revision": 1,
+          "remaining": 4999,
+          "cases": 0,
+          "proposals": 0
+        }
+      }
+    },
+    {
+      "rawEvidence": "cube4-payment-submit-cancel-races-157-v2.json",
+      "rawSHA256": "4b2e10f1a4eb0b5e3edd401b25ca010328d11d8a8113589a6e971a89b6273f3d",
+      "runner": "qa-payment-submit-cancel-races-157-v2.mjs",
+      "runnerSHA256": "4128d8b8b5f28ea65814130a1b0e9255f8e01213f7743679b0b890197c02437b",
+      "result": {
+        "status": "PASS",
+        "baseline": 157,
+        "fixture": {
+          "tenant": "cb1cf623-9908-4be4-ba40-61739b190c56",
+          "employer": "49626d17-780a-495a-be80-a365ff6f754d",
+          "output": "1560e44d-7bd2-456b-b844-411ab8783344",
+          "syntheticNonlegal": true
+        },
+        "attemptCancel": "7a53b035-3484-4796-b12e-55f5695894fd",
+        "attemptSubmit": "914f068f-64b5-41cd-b75f-4be7f786bfb5",
+        "checks": [
+          {
+            "order": "cancel-first",
+            "status": "PASS",
+            "blocking": [
+              323458
+            ],
+            "cancelled": "cancelled",
+            "submission": {
+              "code": "23514",
+              "message": "payroll_payment_request_cancelled"
+            },
+            "financialStateUnchanged": true
+          },
+          {
+            "order": "submit-first",
+            "status": "PASS",
+            "blocking": [
+              323458
+            ],
+            "cancellation": {
+              "code": "23514",
+              "message": "payroll_payment_request_committed"
+            },
+            "receiptRecoveryExact": true,
+            "oneFinancialMutation": true
+          }
+        ],
+        "sourceHashes": {
+          "runner": "4128d8b8b5f28ea65814130a1b0e9255f8e01213f7743679b0b890197c02437b",
+          "migration200": "42154f899ba828a902ba3ea0e154eac879fd4de2c760c9ff2417899c54664a95"
+        },
+        "limits": [
+          "One deliberate NONLEGAL QA 1.00 accepted payment; cancellation-first request nonfinancial",
+          "No legal/finalization or full-cycle concurrency qualification"
+        ],
+        "pids": {
+          "a": 323458,
+          "b": 323459
+        },
+        "functionDigest": "c459d51abdca0b7a45aa595e30a2d8e1",
+        "before": {
+          "events": 1,
+          "allocations": 1,
+          "receipts": 1,
+          "audits": 1,
+          "revision": 1,
+          "remaining": 4999
+        },
+        "stage": "completed",
+        "after": {
+          "events": 2,
+          "allocations": 2,
+          "receipts": 2,
+          "audits": 2,
+          "revision": 2,
+          "remaining": 4998
+        }
+      }
+    },
+    {
+      "rawEvidence": "cube4-paid-correction-connected-ui-continuation-v3.json",
+      "rawSHA256": "b09a2cbf7ba61e8606b5a9b9b1b04cd63b34d51c47a301ff1df4db7a6b251c39",
+      "runner": "qa-paid-correction-connected-ui-continuation-v3.mjs",
+      "runnerSHA256": "047c5e450a33fe919b95a642ee240c43f2aab91691da910db00f172798591e47",
+      "result": {
+        "status": "PASS",
+        "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+        "baseline": 157,
+        "scope": "Actual Arabic UI on existing linked two-Employee NONLEGAL fixture: source proposal, approval, route paid, partial external settlement, completion; immutable salaries/payments retained",
+        "checks": [
+          "Actual UI preview/save/approval/paid-source routing changes only approved source; original employee outputs and payment rows unchanged",
+          "Partial valid-date external settlement keeps same case open after Reload",
+          "Final external evidence completes case, removes settlement form and retains original money; no overflow at 390/820/1280"
+        ],
+        "limits": [
+          "Adapter output NONLEGAL; no official net or statutory reconciliation qualification",
+          "No unpaid replacement UI/public G6 acceptance"
+        ],
+        "caseId": "da1b46d9-7e2b-4462-85f7-65187a968fe2",
+        "originalEmployeeDigest": "97b8d6c2cd277dbcd4669057369c296f",
+        "originalPaymentDigest": "627895d5634b28af2b870fe8d5820ac5",
+        "stage": "completed"
+      }
+    },
+    {
+      "rawEvidence": "cube4-connected-report-review-157-v3.json",
+      "rawSHA256": "f99302e0b181d5f0258c79d4c752148c29f4b50e322b7075675e823dac598e77",
+      "runner": "qa-connected-report-review-157-v3.mjs",
+      "runnerSHA256": "ee6b1cf5b43802b1582649a8ae907ec9af4d4545a5b745f07585a39d3738676e",
+      "result": {
+        "status": "PASS",
+        "runtimeTreeSHA256": "84da33de45ad03f78327062733724350a43277b53eb4b99e9f88cbed9cd930c9",
+        "baseline": 157,
+        "scope": "Same linked NONLEGAL payment/correction fixture: review-only reports, original frozen payslip, distribution refusal and unauthenticated export",
+        "checks": [
+          "Payment review and permissioned complete CSV reconcile 5000 net, 2 paid and 4998 remaining; private no-store snapshot retained",
+          "Single original frozen payslip remains review-only after correction; no print/export at 390/820/1280; anonymous export 401; original money and salaries unchanged"
+        ],
+        "limits": [
+          "NONLEGAL: successful distribution intentionally not claimed",
+          "Authenticated read-only review; permission matrix, fresh replay and official golden qualification remain"
+        ],
+        "before": {
+          "money": "627895d5634b28af2b870fe8d5820ac5",
+          "frozen": "97b8d6c2cd277dbcd4669057369c296f"
+        },
+        "stage": "completed"
+      }
+    }
+  ],
+  "retainedFailures": [
+    {
+      "files": [
+        "cube4-payment-next-action-loss-v1.json"
+      ],
+      "cause": "Scope-only original employee snapshot lacked display metadata; stopped before financial submit."
+    },
+    {
+      "files": [
+        "cube4-payment-submit-cancel-races-157.json"
+      ],
+      "cause": "Read-only text/UUID parameter ambiguity; same original attempts reused after explicit text cast."
+    },
+    {
+      "files": [
+        "cube4-paid-correction-connected-ui-v1.json",
+        "cube4-paid-correction-connected-ui-continuation-v1.json",
+        "cube4-paid-correction-connected-ui-continuation-v2.json"
+      ],
+      "cause": "Saved proposal uses explicit review link; successful action revalidation unmounts old toast; exact status matched two elements. Same case and receipt inspected before continuing; no duplicate save or approval."
+    },
+    {
+      "files": [
+        "cube4-connected-report-review-157.json",
+        "cube4-connected-report-review-157-v2.json",
+        "cube4-connected-report-review-diagnosis-157.json"
+      ],
+      "cause": "Incorrect harness assumed payment report export is legally blocked, then looked for aggregate remaining inside one CSV row. SQL contract inspected; final assertion sums decimal employee rows exactly. No financial command."
+    }
+  ],
+  "limits": [
+    "Separate scoped executions on same candidate, not whole-candidate PASS or summed assertion total.",
+    "NONLEGAL output adapter; G4/G6 and official qualification remain closed.",
+    "Payslip refusal proves incomplete synthetic presentation guard, not legally qualified successful distribution.",
+    "Mixed/unpaid replacement SQL qualified separately; complete unpaid/source-observation UI journey remains.",
+    "Advances/insufficient deduction/termination, full permission matrix and final fresh/upgrade remain.",
+    "Raw scripts, screenshots and private fixtures remain outside repository; no credentials copied.",
+    "No push, merge, deploy, production writes or new commit."
+  ]
+}

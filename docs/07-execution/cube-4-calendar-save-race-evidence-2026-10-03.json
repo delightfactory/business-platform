@@ -1,0 +1,323 @@
+{
+  "atUTC": "2026-10-03T13:18:14.719639+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "baseline": 157,
+  "candidate": "unchanged authoritative application source62f8 and installed migration chain157",
+  "groups": [
+    {
+      "rawEvidence": "cube4-calendar-save-race-157.json",
+      "rawSHA256": "2e1f923dc549e65576b20c134494959ec05f5acd02d05f951e471abf5d7da9d7",
+      "status": "PASS",
+      "atUTC": "2026-10-03T13:16:40.042Z",
+      "baseline": 157,
+      "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+      "scope": "Existing reusable calendar browser tenant; two actual authorized actors/connections, both calendar-save lock acquisition orders; two additional nonfinancial future QA periods",
+      "orders": [
+        {
+          "name": "actor-A-first",
+          "winnerActor": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+          "loserActor": "c4933e5f-8015-4a30-a9e9-c280bf435018",
+          "attempt": "94c8be62-7c68-47e6-b452-af08a1a8e3b1",
+          "losingAttempt": "6eabdb10-712c-4f06-8ae3-b0200bd4b129",
+          "expectedRevision": 5,
+          "observedBlocking": {
+            "winnerPid": 337315,
+            "loserPid": 337316
+          },
+          "result": {
+            "winner": {
+              "dates": {
+                "label": "2027-06",
+                "ends_on": "2027-06-30",
+                "revision": 5,
+                "timezone": "Africa/Cairo",
+                "starts_on": "2027-06-01",
+                "payment_on": "2027-07-02",
+                "is_transition": false,
+                "last_generated_end": "2027-05-31"
+              },
+              "revision": 6,
+              "period_id": "9b7b46de-6d60-4274-84ff-44d77539b601"
+            },
+            "loser": {
+              "code": "PT409",
+              "message": "payroll_stale"
+            },
+            "replaySameReceipt": true
+          }
+        },
+        {
+          "name": "actor-B-first",
+          "winnerActor": "c4933e5f-8015-4a30-a9e9-c280bf435018",
+          "loserActor": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+          "attempt": "c009e087-4244-4b49-a9d6-dd16cdc98c59",
+          "losingAttempt": "1367b94d-fad7-43a8-a663-e8fc3c21c50b",
+          "expectedRevision": 6,
+          "observedBlocking": {
+            "winnerPid": 337316,
+            "loserPid": 337315
+          },
+          "result": {
+            "winner": {
+              "dates": {
+                "label": "2027-07",
+                "ends_on": "2027-07-31",
+                "revision": 6,
+                "timezone": "Africa/Cairo",
+                "starts_on": "2027-07-01",
+                "payment_on": "2027-08-01",
+                "is_transition": false,
+                "last_generated_end": "2027-06-30"
+              },
+              "revision": 7,
+              "period_id": "b4513f21-5d74-48a8-81ea-ce2a39f81960"
+            },
+            "loser": {
+              "code": "PT409",
+              "message": "payroll_stale"
+            },
+            "replaySameReceipt": true
+          }
+        }
+      ],
+      "limits": [
+        "Calendar-save concurrency; DST/browser warning acceptance remain",
+        "No salary calculation/output/payment/legal qualification"
+      ],
+      "originalPeriods": [
+        {
+          "data": {
+            "id": "cc944d1b-d111-4ccb-9125-b799ffe13fc6",
+            "label": "2027-02",
+            "ends_on": "2027-02-24",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2027-01-25",
+            "tenant_id": "6063f36d-f567-4962-8f15-08cf2e308aff",
+            "created_at": "2026-10-02T00:17:12.63731+00:00",
+            "created_by": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+            "payment_on": "2027-02-25",
+            "employer_id": "05511f2b-d290-4e2d-81c9-f2f1d0d93921",
+            "is_transition": false,
+            "calendar_version_id": "26c91ad9-df60-469c-bf9c-e7eebf28db4a"
+          }
+        },
+        {
+          "data": {
+            "id": "05e686db-8b2c-4138-a68c-a3978058259f",
+            "label": "2027-03",
+            "ends_on": "2027-03-24",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2027-02-25",
+            "tenant_id": "6063f36d-f567-4962-8f15-08cf2e308aff",
+            "created_at": "2026-10-02T00:17:13.254176+00:00",
+            "created_by": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+            "payment_on": "2027-03-25",
+            "employer_id": "05511f2b-d290-4e2d-81c9-f2f1d0d93921",
+            "is_transition": false,
+            "calendar_version_id": "26c91ad9-df60-469c-bf9c-e7eebf28db4a"
+          }
+        },
+        {
+          "data": {
+            "id": "020c1aea-cbe8-465c-8607-3c32a3b070b7",
+            "label": "2027-03",
+            "ends_on": "2027-03-31",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2027-03-25",
+            "tenant_id": "6063f36d-f567-4962-8f15-08cf2e308aff",
+            "created_at": "2026-10-02T00:17:14.672718+00:00",
+            "created_by": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+            "payment_on": "2027-04-01",
+            "employer_id": "05511f2b-d290-4e2d-81c9-f2f1d0d93921",
+            "is_transition": true,
+            "calendar_version_id": "3bfd554c-5079-458c-bc25-fa6e5af8c0dc"
+          }
+        },
+        {
+          "data": {
+            "id": "8fb07edf-cd12-4610-9c36-af2c3ab1d6b1",
+            "label": "2027-04",
+            "ends_on": "2027-04-30",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2027-04-01",
+            "tenant_id": "6063f36d-f567-4962-8f15-08cf2e308aff",
+            "created_at": "2026-10-03T13:07:53.1797+00:00",
+            "created_by": "34fc7733-b3b5-4b49-8f9d-78d63e00e7c8",
+            "payment_on": "2027-05-01",
+            "employer_id": "05511f2b-d290-4e2d-81c9-f2f1d0d93921",
+            "is_transition": false,
+            "calendar_version_id": "3bfd554c-5079-458c-bc25-fa6e5af8c0dc"
+          }
+        },
+        {
+          "data": {
+            "id": "8efcb820-3031-41a7-8320-91f93f42dd76",
+            "label": "2027-05",
+            "ends_on": "2027-05-31",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2027-05-01",
+            "tenant_id": "6063f36d-f567-4962-8f15-08cf2e308aff",
+            "created_at": "2026-10-03T13:07:53.403723+00:00",
+            "created_by": "c4933e5f-8015-4a30-a9e9-c280bf435018",
+            "payment_on": "2027-06-01",
+            "employer_id": "05511f2b-d290-4e2d-81c9-f2f1d0d93921",
+            "is_transition": false,
+            "calendar_version_id": "3bfd554c-5079-458c-bc25-fa6e5af8c0dc"
+          }
+        }
+      ],
+      "originalFinancialDigest": "a3b128ea681282c626ffb392696c9fbb9e6a7d69149c90597d003dfc1503d61f",
+      "functionDigest": "be5735f595541a4b8841481a958497f2",
+      "backendPids": [
+        337315,
+        337316
+      ],
+      "stage": "completed-two-actor-calendar-save-races"
+    },
+    {
+      "rawEvidence": "cube4-calendar-save-race-fresh157.json",
+      "rawSHA256": "7cb8c813fd589e9289de2c05cea95cdc97bd757f6eafcba05120b7db392fb67a",
+      "status": "PASS",
+      "atUTC": "2026-10-03T13:16:50.031Z",
+      "baseline": 157,
+      "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+      "scope": "Fresh dedicated calendar fixture; two actual authorized actors/connections, both calendar-save lock acquisition orders; two additional nonfinancial future QA periods",
+      "orders": [
+        {
+          "name": "actor-A-first",
+          "winnerActor": "f5203ee9-73e5-4766-a99c-84a29fc249fc",
+          "loserActor": "568d2fa0-d88b-42d5-b567-2eecbb26f675",
+          "attempt": "a8b357ee-601d-425e-88a6-7c1542d5f1d2",
+          "losingAttempt": "bd904689-d3a2-455b-a905-1a18eee287db",
+          "expectedRevision": 3,
+          "observedBlocking": {
+            "winnerPid": 337329,
+            "loserPid": 337330
+          },
+          "result": {
+            "winner": {
+              "dates": {
+                "label": "2030-05",
+                "ends_on": "2030-05-24",
+                "revision": 3,
+                "timezone": "Africa/Cairo",
+                "starts_on": "2030-04-25",
+                "payment_on": "2030-06-02",
+                "is_transition": false,
+                "last_generated_end": "2030-04-24"
+              },
+              "revision": 4,
+              "period_id": "aad4b42d-00f7-4a64-aa79-1c27bc7d5496"
+            },
+            "loser": {
+              "code": "PT409",
+              "message": "payroll_stale"
+            },
+            "replaySameReceipt": true
+          }
+        },
+        {
+          "name": "actor-B-first",
+          "winnerActor": "568d2fa0-d88b-42d5-b567-2eecbb26f675",
+          "loserActor": "f5203ee9-73e5-4766-a99c-84a29fc249fc",
+          "attempt": "9cfd3368-16be-4458-9a2b-57c3c971bc95",
+          "losingAttempt": "9e2e9fb1-14d7-45cf-ad54-3b172a6469e4",
+          "expectedRevision": 4,
+          "observedBlocking": {
+            "winnerPid": 337330,
+            "loserPid": 337329
+          },
+          "result": {
+            "winner": {
+              "dates": {
+                "label": "2030-06",
+                "ends_on": "2030-06-24",
+                "revision": 4,
+                "timezone": "Africa/Cairo",
+                "starts_on": "2030-05-25",
+                "payment_on": "2030-07-01",
+                "is_transition": false,
+                "last_generated_end": "2030-05-24"
+              },
+              "revision": 5,
+              "period_id": "2606b83f-a621-4f39-9df4-20156257068d"
+            },
+            "loser": {
+              "code": "PT409",
+              "message": "payroll_stale"
+            },
+            "replaySameReceipt": true
+          }
+        }
+      ],
+      "limits": [
+        "Calendar-save concurrency; DST/browser warning acceptance remain",
+        "No salary calculation/output/payment/legal qualification"
+      ],
+      "originalPeriods": [
+        {
+          "data": {
+            "id": "d2f7c4eb-fcf3-46a5-ba15-2c64defed8a5",
+            "label": "2030-02",
+            "ends_on": "2030-02-24",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2030-01-25",
+            "tenant_id": "fb755cab-3771-4fa4-9e3c-288219b9b11a",
+            "created_at": "2026-10-03T13:12:59.618755+00:00",
+            "created_by": "f5203ee9-73e5-4766-a99c-84a29fc249fc",
+            "payment_on": "2030-03-01",
+            "employer_id": "3149722c-ab03-479a-8b1b-872f187c74ec",
+            "is_transition": false,
+            "calendar_version_id": "31fd944e-8dd0-4f2a-a823-bf08659337e0"
+          }
+        },
+        {
+          "data": {
+            "id": "bba7cee9-e905-4335-a04d-a0c4b6b14fd7",
+            "label": "2030-03",
+            "ends_on": "2030-03-24",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2030-02-25",
+            "tenant_id": "fb755cab-3771-4fa4-9e3c-288219b9b11a",
+            "created_at": "2026-10-03T13:13:08.913935+00:00",
+            "created_by": "f5203ee9-73e5-4766-a99c-84a29fc249fc",
+            "payment_on": "2030-04-01",
+            "employer_id": "3149722c-ab03-479a-8b1b-872f187c74ec",
+            "is_transition": false,
+            "calendar_version_id": "31fd944e-8dd0-4f2a-a823-bf08659337e0"
+          }
+        },
+        {
+          "data": {
+            "id": "57e1c387-f68f-422a-abb0-b2a446c3555c",
+            "label": "2030-04",
+            "ends_on": "2030-04-24",
+            "timezone": "Africa/Cairo",
+            "starts_on": "2030-03-25",
+            "tenant_id": "fb755cab-3771-4fa4-9e3c-288219b9b11a",
+            "created_at": "2026-10-03T13:13:09.135042+00:00",
+            "created_by": "568d2fa0-d88b-42d5-b567-2eecbb26f675",
+            "payment_on": "2030-05-01",
+            "employer_id": "3149722c-ab03-479a-8b1b-872f187c74ec",
+            "is_transition": false,
+            "calendar_version_id": "31fd944e-8dd0-4f2a-a823-bf08659337e0"
+          }
+        }
+      ],
+      "originalFinancialDigest": "a3b128ea681282c626ffb392696c9fbb9e6a7d69149c90597d003dfc1503d61f",
+      "functionDigest": "be5735f595541a4b8841481a958497f2",
+      "backendPids": [
+        337329,
+        337330
+      ],
+      "stage": "completed-two-actor-calendar-save-races"
+    }
+  ],
+  "relatedEvidence": "cube-4-calendar-generation-race-evidence-2026-10-03.json",
+  "scope": "Actual reviewed future calendar save changes payment rule, two distinct authorized actors/connections, both actor lock acquisition orders, separately fresh and upgrade. Each run proves blocking, stale loser/no receipt, original winner receipt replay, exactly two additional periods, no gaps/overlaps, original period rows retained and no financial outputs/payments in calendar-only fixture.",
+  "limits": [
+    "Raw authenticated RPC/database sessions, not a browser calendar transition acceptance",
+    "Does not close C05 warnings or C07 DST, final financial/legal qualification or all-cube acceptance",
+    "Shared synthetic original calendar fixtures now retain four additional future periods from generation plus save races; not reset or copied to production"
+  ]
+}

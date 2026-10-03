@@ -1,0 +1,131 @@
+{
+  "atUTC": "2026-10-03T14:21:39.979682+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "migrationBaseline": 159,
+  "runtimeTreeSHA256": "7c7d116a3663e5bb88b4a545ef31ac4a9de31ab8e19b10b1f90608dd3aa8ef14",
+  "runtimeURL": "http://127.0.0.1:3545",
+  "database": "business_platform_cube4_upgrade_qa",
+  "status": "SCOPED_C05_METHOD_PASS_FULL_CUBE_OPEN",
+  "files": [
+    {
+      "path": "supabase/migrations/20261003031000_cube4_calendar_pending_source_review.sql",
+      "sha256": "cb40e9e781ba1ea7121e1d76667a422b12eb88e508f3d243826cf169782fff48"
+    },
+    {
+      "path": "supabase/tests/cube4_calendar_change_review.test.sql",
+      "sha256": "edd2b228f46bdc20957cd0e17b36a7a9417b1152ac9fb55ea6366329a06738c7"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sha256": "bfce1db91247f5b786b566fcfd8e1be26d6aa637512d5ec1922b78392bdf17c2"
+    }
+  ],
+  "proofs": [
+    {
+      "artifact": "cube4-approved-calendar-sql-158.json",
+      "sha256": "4341a46a8bc0cfabf73bc1f26806710df3d263013423ac6c90c4b92122a86c48",
+      "atUTC": "2026-10-03T13:49:32.416971+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-approved-calendar-ui-158-resume-v2.json",
+      "sha256": "444239ec5d8de5560b0a648b326dd6d124b0460fe02ed040b90c836f35ce4593",
+      "atUTC": "2026-10-03T13:57:59.652Z",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-pending-preinstall-159.json",
+      "sha256": "c8cf55d19a7e4cdced9e35277dd09137c8dac9b97bb03c7ea2f93cebe3726e98",
+      "atUTC": "2026-10-03T14:05:07.538287+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-pending-local-install-159.json",
+      "sha256": "c7b254b2a3ef924f50d1097fd9d7b1b3fbd35ad4a4fb85c5b7176b6fe74b21c8",
+      "atUTC": "2026-10-03T14:06:09.708103+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-pending-installed-159.json",
+      "sha256": "dd2ecc6d5471b8e91b1af0f7ae0142a4adacc5730cd0c6e98ca09b956540fe8c",
+      "atUTC": "2026-10-03T14:07:15.602171+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-pending-ui-159.json",
+      "sha256": "b0b2afb5b150e24da252e0c47ac043359087504d23d6ec2dfacae809b9d06e62",
+      "atUTC": "2026-10-03T14:07:36.789Z",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-locked-calendar-report-resume-159.json",
+      "sha256": "2bbaebe8e82be50d60110bb7f03ee89e37bf26c248721940f9cc5fda0c47bb8e",
+      "atUTC": "2026-10-03T14:16:36.459Z",
+      "status": "PASS"
+    }
+  ],
+  "implemented": [
+    "Existing warning covers open/ready/needs-review Time records and approved records whose current classification context requires reconciliation or is unknown",
+    "Current-fact overtime is pending when unreviewed or approved without explicit classification; rejected/classified/superseded historical fact candidates do not resurrect a warning",
+    "Attendance review link recognizes the same view/manage/correct/approve/admin permissions accepted by the existing Time review queue",
+    "Arabic wording says data need review, accommodating already-approved records; no false readiness or missing-day absence",
+    "Migration310 replaces only the private observational helper; installed300 and all prior migrations preserved"
+  ],
+  "qualified": {
+    "approvedRecovery158": {
+      "sqlChecksPerDatabase": 25,
+      "actualUI": "Same historical-approved-state fixture, exact-period keyboard link, original public release2→3 then public cancel3→4 then setup form restored; candidate/periods/Time retained, exactly one release, no final output/payment, net null",
+      "prerequisite": "Private QA historical approval event/state, not successful public statutory approval; actual unqualified candidate retained",
+      "recovery": "Receipt selector failure after release and nested-details selector failure preserved same revision3. Neither release nor calculation was resent. One cancel completed and the temporary QA permission grant was removed."
+    },
+    "pendingReview159": {
+      "sqlChecksPerDatabase": 34,
+      "databases": [
+        "business_platform_cube4_upgrade_qa",
+        "business_platform_cube4_candidate_lf_fresh_qa"
+      ],
+      "retainedSetsPerDatabase": 123,
+      "scope": "Full focused calendar warning/recovery suite, separately at installed159 in each retained DB. Stored Time/OT fixtures qualify warning predicates only, not source producer/legal acceptance. No full fresh159 replay."
+    },
+    "ui159": {
+      "scope": "Three same-runtime warning/history scopes, Arabic RTL widths390/820/1280, keyboard exact-period recovery; stable business/auth identities retained excluding Auth login timestamps",
+      "runtimeTree": "7c7d116a3663e5bb88b4a545ef31ac4a9de31ab8e19b10b1f90608dd3aa8ef14"
+    },
+    "lockedHistory159": {
+      "scope": "One actual Next Action prospective calendar save on existing NONLEGAL locked/payments fixture, ordinary earning boundaries preserved, one new period/receipt; all original periods and Payroll financial/source/correction/finance table digests retained. Same original payment report remains usable at three widths with authoritative5000/2/4998",
+      "recovery": "A report verifier incorrectly read amount on payment_events after the save. Resume used actual payroll.payment_balances and only read the original receipt/report; no second save or financial command."
+    },
+    "static": "Current159 source passed TypeScript noEmit, changed setup page ESLint and git diff --check"
+  },
+  "versionReuse": {
+    "approvedUI": {
+      "baseline": 158,
+      "treeSHA256": "48d785f0a9d185fcfcef3785e19126871e37f063b92ff25cf94f4849cf6c4333",
+      "changedProductionFilesAt159": [
+        "src/app/tenant/[tenantId]/payroll/setup/page.tsx"
+      ],
+      "dependencyBoundary": "Only setup pending-warning copy differs between app trees. ApprovalActions, RunActions, server actions and their public SQL commands unchanged; migration310 changes the observational warning helper only. Approved route is reused on these explicit dependencies, not called a one-shot159 whole journey."
+    },
+    "earlierCalendarEvidence": "17/25/34 totals remain separate test versions; original calendar commands30 and C06 races keep their158/157 dependencies. Counts are never aggregated as final-candidate acceptance."
+  },
+  "retainedFailures": [
+    "Local driver syntax error occurred before any browser/DB work; corrected selector options syntax",
+    "Release receipt query used release rather than actual candidate_release; authoritative state showed committedreview3; same receipt recovered",
+    "Cancellation selector was inside collapsed optional actions; corrected expansion order before submitting; no cancellation had occurred",
+    "Report SQL used payment_events.amount instead of authoritative payment_balances; calendar save was already committed and preserved, resume read only"
+  ],
+  "remaining": [
+    "Whole final-candidate fresh/upgrade/build, financial source/writer/authority races and full responsive/accessibility/integration acceptance remain",
+    "Public legal approval/freeze and positive qualified output distribution stay blocked behind unavailable official statutory qualification; G4/G6 remain closed",
+    "C05 warning/recovery method PASS does not qualify Time producers, overtime legal pay rules, whole Payroll readiness, or every Cube requirement",
+    "No commit/push/merge/deploy or production mutation"
+  ],
+  "postEvidenceFormatting": {
+    "observedUITreeSHA256": "7c7d116a3663e5bb88b4a545ef31ac4a9de31ab8e19b10b1f90608dd3aa8ef14",
+    "changedPath": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+    "difference": "Only redundant final blank line removed; all bytes before trailing CR/LF identical; no behavior/semantic change",
+    "fullFinalCandidateQualification": "Still pending",
+    "currentTreeSHA256": "b291d46dbcf8ff98a6bee276f1279118c41a813ecacd3c71c922a77630447004",
+    "currentFileSHA256": "8e03cfdfe229e7c7ca4a2f4cc8911280e6ea37aa38ef1fd3c8f86252e3db4244"
+  }
+}

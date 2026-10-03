@@ -1,0 +1,125 @@
+{
+  "atUTC": "2026-10-03T13:43:05.821892+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "migrationBaseline": 158,
+  "runtime": {
+    "url": "http://127.0.0.1:3545",
+    "database": "business_platform_cube4_upgrade_qa",
+    "sourceMode": "direct authoritative working tree; no source copies",
+    "treeSHA256": "48d785f0a9d185fcfcef3785e19126871e37f063b92ff25cf94f4849cf6c4333"
+  },
+  "status": "SCOPED_PASS_C05_PARTIAL",
+  "files": [
+    {
+      "path": "supabase/migrations/20261003030000_cube4_calendar_change_review.sql",
+      "sha256": "5fb28dba0d6fee1a4bd03687b328a03e4b7fcdada986b3161187bd555797db8c"
+    },
+    {
+      "path": "supabase/tests/cube4_calendar_change_review.test.sql",
+      "sha256": "74000f69e70c099606e5ee9fd7d2869bb0b175536ccc58260e06e132d13ddda2"
+    },
+    {
+      "path": "supabase/tests/cube4_atomic_batch_lifecycle.test.sql",
+      "sha256": "44983401b87bfae126afbeea1808adfeb2f4647bd264d03a9d403d98375b961b"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sha256": "ae04ea047ad6bcd13aa7637d3996c8ea6fc2f50015a0ad019357d628da922b97"
+    }
+  ],
+  "proofs": [
+    {
+      "artifact": "cube4-calendar-review-preinstall-v2.json",
+      "sha256": "ec91913608b2e0850500ec0efbd03549b5e4fbfac4b974fbb177f4baf95f6d55",
+      "atUTC": "2026-10-03T13:30:33.011035+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-review-connected-preinstall.json",
+      "sha256": "a9c8b414355bf517230947aacd7f5df3089b41f73c5251ae5d239f97bb118f2e",
+      "atUTC": "2026-10-03T13:31:44.593334+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-review-local-install.json",
+      "sha256": "99d1c65a991bfc025db742fa1531cf27f0886cd9c288cefc7868b8049c06ba19",
+      "atUTC": "2026-10-03T13:33:40.847147+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-review-installed-158.json",
+      "sha256": "3c955ea3ea17d36b3008055de1243e94d8295e409279cd49f241a37988ea808a",
+      "atUTC": "2026-10-03T13:40:42.368594+00:00",
+      "status": "PASS"
+    },
+    {
+      "artifact": "cube4-calendar-review-ui-158-v2.json",
+      "sha256": "cfefb45eac43f807ad40addaa43b36cc05392f4a59106c02eeb988cbe5b40031",
+      "atUTC": "2026-10-03T13:39:45.996Z",
+      "status": "PASS"
+    }
+  ],
+  "implemented": [
+    "Existing setup screen warns before a calendar change about exact open-run period, existing unapproved Attendance records inside generated Employer periods, and retained locked history",
+    "Open-run recovery link carries exact Employer/period; approved-run release responsibility is explained; form returns after supported cancellation",
+    "Time-disabled and sibling-Employer scopes do not inherit a pending warning; no missing-day absence inference or input readiness claim",
+    "Read-only private helper added through a new migration; original installed migrations, open-run server guard and saved periods retained"
+  ],
+  "qualified": {
+    "preinstall": {
+      "calendarReviewChecksPerDatabase": 17,
+      "connectedGeneratedSourceChecksPerDatabase": 30,
+      "databases": [
+        "business_platform_cube4_upgrade_qa",
+        "business_platform_cube4_candidate_lf_fresh_qa"
+      ],
+      "scope": "Separate rollback transactions with migration composed over157; connected30 includes actual retained NONLEGAL final contexts and original29 generated-source checks. Not one comprehensive run."
+    },
+    "installed": {
+      "calendarReviewChecksPerDatabase": 17,
+      "calendarCommandChecksPerDatabase": 30,
+      "retainedDataAndFunctionsUnchanged": true,
+      "retainedSetsPerDatabase": 123,
+      "scope": "Two affected suites separately on installed158 in both retained QA databases; fresh-origin database is not a fresh158 chain replay."
+    },
+    "ui": {
+      "sourceTree": "48d785f0a9d185fcfcef3785e19126871e37f063b92ff25cf94f4849cf6c4333",
+      "checks": [
+        "pending: Arabic RTL / no overflow at390",
+        "pending: Arabic RTL / no overflow at820",
+        "pending: Arabic RTL / no overflow at1280",
+        "open-and-locked: Arabic RTL / no overflow at390",
+        "open-and-locked: Arabic RTL / no overflow at820",
+        "open-and-locked: Arabic RTL / no overflow at1280",
+        "Exact open-run recovery via keyboard into review page; no financial command",
+        "locked: Arabic RTL / no overflow at390",
+        "locked: Arabic RTL / no overflow at820",
+        "locked: Arabic RTL / no overflow at1280",
+        "123 business/auth-identity sets retained; expected Auth login timestamps excluded"
+      ],
+      "retainedSets": 123,
+      "scope": "Actual Auth/Next rendering at3545 over upgrade158; three reusable QA scopes, Arabic RTL widths390/820/1280, exact open-run keyboard link. Auth login timestamps excluded from stable identity comparison; business rows unchanged."
+    },
+    "static": "TypeScript noEmit and tenant ESLint finished without diagnostics; git diff --check passed"
+  },
+  "retainedFailures": [
+    {
+      "artifact": "cube4-calendar-review-preinstall.json",
+      "reason": "Private schema privilege lookup was attempted under authenticated; corrected the test assertion role, no production grant changed; rollback preserved123sets."
+    },
+    {
+      "artifact": "cube4-calendar-review-ui-158.json",
+      "reason": "All three UI journeys completed, final full-row digest included expected Auth login timestamps. Corrected comparison excludes last_sign_in_at/updated_at only for Auth users/identities; same retained fixtures, no financial resubmission."
+    },
+    {
+      "reason": "A second driver was initially pointed at the already-existing first artifact; fail-closed guard stopped before browser/DB work. New proof filename corrected without overwriting evidence."
+    }
+  ],
+  "limits": [
+    "C05 remains PARTIAL: unapproved materialized Attendance records are covered; approved-source reconciliation/overtime pending warnings and approved-run completion-versus-release UI still need matched acceptance",
+    "No production build, whole final-candidate fresh158 replay, whole journey/race/authorization matrix or statutory qualification is implied",
+    "G4/G6/public financial freeze remain closed; official statutory results unavailable as previously established",
+    "Earlier concurrency proofs stay tied to157 and their original dependencies; no historical totals aggregated into final PASS",
+    "No commit/push/merge/deploy or production changes"
+  ]
+}

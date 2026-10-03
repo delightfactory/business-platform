@@ -1,0 +1,85 @@
+{
+  "atUTC": "2026-10-03T12:47:35.804749+00:00",
+  "baseCommit": "1f531a38f4726508d8fac8fd3c17bddc4139342d",
+  "candidate": "uncommitted direct authoritative runtime3545, upgrade database157",
+  "runtimeTreeSHA256": "62f8c3f452b1bb49ef8a357152626dc639648beb993a0212e7e37066a1d2e531",
+  "code": {
+    "src/app/auth/safe-next.ts": "672fc3dee4ae3c75cfbffa5ef4c85d58abffd1f4bbad04676ee54c388b8af6dd",
+    "scripts/payroll-auth-return.test.mjs": "0946c1c895a4758c9b060321b9750c98458bd7411728e984f4c8d48e44bd6179"
+  },
+  "rawEvidence": "cube4-limited-role-ui-157-v3.json",
+  "rawSHA256": "7fa5ffbc07a530132ed7594dc13ceda1fbdcca0358fc836b66aa1c03c759fe31",
+  "checks": [
+    "source-review: expired/absent session redirects to login and returns to exact employer/output/case or report context",
+    "Source-review role: visible approver handoff at390/820/1280, no approval/release or paid-only route, actual public release denied42501 without state/receipt change",
+    "Source-review role cannot open other QA tenant correction context",
+    "view-only: expired/absent session redirects to login and returns to exact employer/output/case or report context",
+    "View-only: financial report readable, export403 and no download control; source correction denied with exact retry context; payment recording handed to authorized role",
+    "export-review: expired/absent session redirects to login and returns to exact employer/output/case or report context",
+    "Export-review: explicit export permission permits operational payment CSV but cannot bypass NONLEGAL payslip distribution refusal",
+    "All read-only role/session journeys preserve original payments, employee outputs, cases, observations and command receipt count"
+  ],
+  "roles": [
+    {
+      "key": "source-review",
+      "permissions": [
+        "payroll.view",
+        "payroll.correct"
+      ]
+    },
+    {
+      "key": "view-only",
+      "permissions": [
+        "payroll.view"
+      ]
+    },
+    {
+      "key": "export-review",
+      "permissions": [
+        "payroll.view",
+        "payroll.export"
+      ]
+    }
+  ],
+  "verification": {
+    "nodeTests": {
+      "command": "node --test scripts/payroll-auth-return.test.mjs",
+      "groups": 3,
+      "status": "PASS",
+      "covers": [
+        "Exact context across nine payroll page paths",
+        "External/protocol-relative/unknown route/path traversal/backslash/raw and encoded header controls/oversized query rejection",
+        "Existing Tenant/Operator/invitation returns remain accepted"
+      ]
+    },
+    "typescript": "PASS",
+    "authAndTestESLint": "PASS",
+    "sourceReviewerResponsiveWidths": [
+      390,
+      820,
+      1280
+    ]
+  },
+  "retainedFailures": [
+    {
+      "rawEvidence": "cube4-limited-role-setup-157.json",
+      "reason": "Generated Auth confirmed_at column cannot accept copied value; entire setup transaction rolled back. Same retained actor IDs used with actual writable columns."
+    },
+    {
+      "rawEvidence": "cube4-limited-role-ui-157.json",
+      "reason": "Synthetic email identities missing created_at/updated_at; GoTrue returned500. Read-only schema/log diagnosis proved NULL timestamps; repaired exact three owned identities, no new actors."
+    },
+    {
+      "rawEvidence": "cube4-limited-role-ui-157-v2.json",
+      "reason": "Real product defect: safeAuthNext rejected all payroll paths/query context; successful login could not return to target. Narrow known-page allowlist added and browser regression now passes."
+    }
+  ],
+  "limits": [
+    "Synthetic NONLEGAL saved-source and read-only report fixture; no successful legal payslip distribution",
+    "Three narrow roles; not full authorization/concurrency matrix",
+    "No financial command; actual denied release uses rollback",
+    "No schema/migration changes; fresh157 structural parity remains previous evidence, not a new browser fresh run",
+    "Missing broad role/session revocation races and full responsive screen matrix remain tracked",
+    "Qualified successful print/export/distribution still requires official statutory qualification; no G6 opening"
+  ]
+}
