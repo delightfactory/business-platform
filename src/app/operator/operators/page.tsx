@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
 type Grant = {
   user_id: string; email: string; is_active: boolean; can_manage_operators: boolean;
-  can_onboard_tenants: boolean; can_manage_tenant_lifecycle: boolean; can_manage_commercial_access: boolean; recoverable: boolean; updated_at: string;
+  can_onboard_tenants: boolean; can_manage_tenant_lifecycle: boolean; can_manage_commercial_access: boolean; can_manage_statutory_rules: boolean; recoverable: boolean; updated_at: string;
 };
 
 export default async function OperatorGrantsPage({ searchParams }: { searchParams: Query }) {
@@ -90,19 +90,21 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   );
 }
 
-function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle' | 'can_manage_commercial_access'> }) {
+function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle' | 'can_manage_commercial_access' | 'can_manage_statutory_rules'> }) {
   return <fieldset className="limit-fields"><legend>المهام الممنوحة</legend>
     <label className="check-option"><input type="checkbox" name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
     <label className="check-option"><input type="checkbox" name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
     <label className="check-option"><input type="checkbox" name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
     <label className="check-option"><input type="checkbox" name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
+    <label className="check-option"><input type="checkbox" name="canManageStatutoryRules" defaultChecked={defaults?.can_manage_statutory_rules ?? false} /> إدارة القواعد القانونية للرواتب</label>
+    <p className="field-hint">تُمنح مهمة القواعد القانونية لمسؤول الامتثال صراحةً. لا يمنحها إعداد الشركات أو إدارة الرواتب، ولا يعني منحها اعتماد أي حزمة قانونية.</p>
     <span className="field-hint" id={`${prefix}-capability-hint`}>اختر مهمة واحدة على الأقل. سحب الصلاحيات يتم بإجراء مستقل.</span>
   </fieldset>;
 }
 
 function capabilityNames(grant: Grant) {
   return [grant.can_manage_operators && 'إدارة المشغّلين', grant.can_onboard_tenants && 'إعداد الشركات',
-    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام'].filter((name): name is string => Boolean(name));
+    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام', grant.can_manage_statutory_rules && 'إدارة القواعد القانونية للرواتب'].filter((name): name is string => Boolean(name));
 }
 
 function stateText(state: string) {

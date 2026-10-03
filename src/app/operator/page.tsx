@@ -19,13 +19,14 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
 
-  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }, { data: canManageCommercial, error: commercialError }] = await Promise.all([
+  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }, { data: canManageCommercial, error: commercialError }, { data: canManageStatutory, error: statutoryError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators'),
     supabase.rpc('current_operator_can_onboard_tenants'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
     supabase.rpc('current_operator_can_manage_commercial_access'),
+    supabase.rpc('current_operator_can_manage_statutory_rules'),
   ]);
-  if (manageError || onboardError || lifecycleError || commercialError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
+  if (manageError || onboardError || lifecycleError || commercialError || statutoryError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
 
   return (
     <main className="app-shell">
@@ -61,7 +62,8 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <ul className="operator-work-list"><TaskLink href="/operator/operators" title="مشغّلو المنصة" detail="امنح مهام التشغيل أو عدّلها أو ألغها." /></ul>
           </section>}
         </div>
-        {!canManage && !canOnboard && !canManageLifecycle && !canManageCommercial &&
+        {canManageStatutory && <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد القانونية للرواتب</h2><ul className="operator-work-list"><TaskLink href="/operator/statutory" title="مسودات القواعد ومراجعها" detail="احفظ النسخ المؤرخة وراجع سجل تعديلاتها؛ الحفظ لا يعتمدها لحساب الرواتب." /></ul></section>}
+        {!canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}
       </div>
       <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>

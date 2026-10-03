@@ -1,0 +1,26 @@
+.workspace { display: grid; gap: var(--space-4, 1.5rem); min-width: 0; }
+.fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.fields label { display: grid; gap: .5rem; min-width: 0; }
+.fields input,.fields select { width: 100%; min-width: 0; }
+.form,.preview,.card { padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-card); min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.dates { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; }
+.dates dd { margin-inline-start: 0; overflow-wrap: anywhere; }
+.periods { display: grid; gap: 1rem; padding: 0; list-style: none; }
+.filters { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; }
+.filters label { display: grid; gap: .5rem; }
+@media(max-width: 600px) { .fields,.dates { grid-template-columns: 1fr; } .primary { min-height: 44px; width: 100%; } .form,.card,.preview { padding: 1rem; } }
+.fields input,.fields select,.filters input { min-height: var(--field-height); border: 1px solid var(--color-control-border); border-radius: var(--radius-field); padding: .65rem .8rem; background: var(--color-surface); color: var(--color-text); font: inherit; }
+.fields input:focus-visible,.fields select:focus-visible,.filters input:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+.form textarea { width: 100%; min-width: 0; }
+.filters select { max-width: 100%; min-height: var(--field-height); font: inherit; }
+.card { overflow-wrap: anywhere; }
+fieldset.fields { border: 0; padding: 0; margin: 0; }
+
+.paymentFields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; border: 0; padding: 0; margin: 0; min-width: 0; }
+.paymentFields label { display: grid; gap: .5rem; min-width: 0; }
+.paymentFields input:not([type=checkbox]),.paymentFields select { width: 100%; min-width: 0; min-height: var(--field-height); font: inherit; padding: .65rem .8rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); background: var(--color-surface); color: var(--color-text); }
+.paymentFields > p,.paymentFields > div { grid-column: 1 / -1; }
+.paymentFields input[type=checkbox] { width: 1.25rem; height: 1.25rem; }
+.paymentFields input:focus-visible,.paymentFields select:focus-visible,.paymentFields textarea:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+@media(max-width:600px) { .paymentFields { grid-template-columns: 1fr; } }

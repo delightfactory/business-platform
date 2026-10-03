@@ -1,0 +1,11 @@
+BEGIN;
+SELECT no_plan();
+SELECT ok(NOT has_table_privilege('authenticated','payroll.payment_requests','SELECT'),'pending payment payload is not directly readable');
+SELECT ok(NOT has_table_privilege('service_role','payroll.payment_requests','SELECT'),'service role has no direct request-table bypass');
+SELECT ok(has_function_privilege('authenticated','public.payroll_payment_request_prepare(uuid,uuid,uuid,uuid,jsonb)','EXECUTE'),'prepare is the bounded entry point');
+SELECT ok(has_function_privilege('authenticated','public.payroll_payment_request_submit(uuid,uuid,uuid,uuid)','EXECUTE'),'submit is the bounded writer wrapper');
+SELECT ok(has_function_privilege('authenticated','public.payroll_payment_request_cancel(uuid,uuid,uuid,uuid)','EXECUTE'),'cancel requires explicit scope');
+SELECT ok(EXISTS(SELECT 1 FROM pg_constraint WHERE conname='payroll_payment_request_terminal'), 'terminal request result invariant exists');
+SELECT ok(pg_get_triggerdef(oid) LIKE '%payment_request_immutable%', 'original request identity is immutable') FROM pg_trigger WHERE tgname='payment_request_immutable';
+SELECT * FROM finish();
+ROLLBACK;

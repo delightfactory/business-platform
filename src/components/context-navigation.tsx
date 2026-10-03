@@ -34,11 +34,12 @@ export async function OperatorNavigation() {
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [operator, onboarding, lifecycle, commercial] = await Promise.all([
+      const [operator, onboarding, lifecycle, commercial, statutory] = await Promise.all([
         supabase.rpc('current_operator_can_manage_operators'),
         supabase.rpc('current_operator_can_onboard_tenants'),
         supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
         supabase.rpc('current_operator_can_manage_commercial_access'),
+        supabase.rpc('current_operator_can_manage_statutory_rules'),
       ]);
       if (lifecycle.data) links.push({ href: '/operator/tenants', label: 'الشركات' });
       if (onboarding.data) {
@@ -50,6 +51,7 @@ export async function OperatorNavigation() {
         links.push({ href: '/operator/entitlements', label: 'الوحدات المتاحة' });
       }
       if (operator.data) links.push({ href: '/operator/operators', label: 'المشغّلون' });
+      if (statutory.data) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
     }
   }
   return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;
@@ -71,7 +73,7 @@ export async function TenantNavigation({
   if (supabase) {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess] = await Promise.all([
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess, payrollAccess, payrollInputs, payrollRuns, payrollNavigation] = await Promise.all([
         supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
         supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
@@ -80,7 +82,16 @@ export async function TenantNavigation({
         supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId }),
         supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
+        supabase.rpc('payroll_access_snapshot', { p_tenant: tenantId }),
+        supabase.rpc('payroll_input_access', { p_tenant: tenantId }),
+        supabase.rpc('payroll_run_access', { p_tenant: tenantId }),
+        supabase.rpc('payroll_navigation_access', { p_tenant: tenantId }),
       ]);
+      if (!payrollAccess.error && payrollAccess.data?.can_manage === true && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll`, label: 'دورة الرواتب' });
+      if (!payrollInputs.error && payrollInputs.data && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: 'مدخلات الرواتب' });
+      if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: !payrollAccess.error && payrollAccess.data ? `/tenant/${tenantId}/payroll` : `/tenant/${tenantId}/payroll/runs`, label: 'الرواتب' });
+      if (!payrollNavigation.error && payrollNavigation.data?.can_view_advances === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/advances`, label: 'سلف الموظفين' });
+      if (!payrollNavigation.error && payrollNavigation.data?.can_view_reports === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/reports?report=${payrollNavigation.data.report_kind === 'advances' ? 'advances' : 'sheet'}`, label: payrollNavigation.data.report_kind === 'advances' ? 'أرصدة السلف' : 'تقارير الرواتب' });
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
       if (members.data && typeof members.data === 'object') links.push({ href: `/tenant/${tenantId}/users`, label: 'المستخدمون' });
       const identity = entitiesSites.data && typeof entitiesSites.data === 'object' && !Array.isArray(entitiesSites.data)

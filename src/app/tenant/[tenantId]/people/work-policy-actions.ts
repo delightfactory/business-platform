@@ -69,7 +69,7 @@ export async function assignWorkPolicyAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=failed`);
   const { error } = await supabase.rpc('assign_people_work_policy', { p_tenant_id: tenantId, p_employment_id: employmentId, p_policy_id: policyId, p_effective_date: effectiveDate });
-  if (error) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=${error.message.includes('people_assignment_materialized_day') ? 'materialized' : error.message.includes('people_assignment_future_exists') ? 'pending' : 'failed'}`);
+  if (error) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=${error.message.includes('payroll_people_correction_required') ? 'payroll-correction' : error.message.includes('people_assignment_materialized_day') ? 'materialized' : error.message.includes('people_assignment_future_exists') ? 'pending' : 'failed'}`);
   redirect(`/tenant/${tenantId}/people/${employeeId}?policy=assigned`);
 }
 

@@ -55,6 +55,8 @@ export async function createEmployeeAction(previous: NewEmployeeState, formData:
 function value(data: FormData, key: string) { return String(data.get(key) ?? '').trim(); }
 
 function errorText(message: string) {
+  if (message.includes('payroll_people_correction_required')) return 'يمس التوظيف فترة راتب نهائية. البيانات التي أدخلتها محفوظة؛ اطلب من مسؤول تصحيح الرواتب مراجعة إضافة التوظيف قبل المتابعة.';
+  if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
   if (message.includes('employees_code_per_tenant_idx')) return 'رمز الموظف مستخدم بالفعل في هذه الشركة. اختر رمزًا آخر؛ بقيت بقية البيانات محفوظة.';
   if (message.includes('people_onboard_forbidden')) return 'ليس لديك صلاحية إضافة موظف أو إدارة بيانات توظيفه وأجره، أو أن خدمة الموارد البشرية غير مفعّلة.';
   if (message.includes('people_employer_unavailable')) return 'جهة التوظيف غير نشطة أو لم تعد متاحة. اختر جهة أخرى.';

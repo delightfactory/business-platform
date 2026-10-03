@@ -1,0 +1,21 @@
+# Cube 4 recorded statutory comparisons
+
+Comparison workflow is bounded to nonfinancial Compliance review. It does not issue/activate a live pack or complete legal qualification. The owner has no official numerical results or portal access available. Synthetic cases are explicitly labeled and matching never sets qualified=true.
+
+The existing tax/insurance arithmetic is shared between verified-pack wrappers and draft comparisons. Verified-pack wrappers retain their original state/adapter/numeric-evidence gate. Raw data helpers are private/revoked. Draft decimal strings convert using PostgreSQL numeric, including percent/100; no financial floating-point arithmetic or temporary live-pack insertion occurs. Comparison validates dated scope, source reference belonging to the exact draft revision, tax context and ordered insured months; expected figures compare exactly. Mismatches are recorded without tolerance or weakened expectation.
+
+Immutable comparison records capture case/provenance, expected and actual results/traces, exact draft revision, actor/time. Current authority and account/grant rows recheck under the existing authority lock. Current-revision CAS and actor/attempt receipts prevent duplicate or stale writes. Bounded keyset history preserves older comparisons after draft changes. Official-origin data is entered by the reviewer, not independently proven official merely by that label; future issuance must inspect provenance and representative scenario coverage.
+
+Arabic discovery starts from a numerical dossier, then a focused comparison page. Records precede optional authoring; details explain figures and inputs. Controlled fields and original intent persist for in-session retry; unknown/pending/stale states freeze editing. An edit invalidates prior success. Stale rules offer a fresh comparison window without overwriting the old fields.
+
+## Evidence
+
+- `cube4-statutory-comparisons-qualification-v2.json`: 24 comparison plus affected tax39/insurance38 assertions each on local baseline142, rollback PASS. Original harness omitted the synthetic adapter verified_by auth fixture; failed transaction rolled back. Successful upgrade comparison24 reused without rerun; source unchanged. This rerun scope was justified by the shared arithmetic refactor.
+- `reviews/cube4-statutory-comparisons-review.json`: initial terminology finding retained; v2 independently PASS with 11 current hashes. Installer mechanically validates those hashes. Independent reviewer is a read-only Codex agent, not a different provider.
+- TypeScript and ESLint session65843 PASS; final affected copy/navigation ESLint session29083 PASS.
+- `cube4-statutory-comparisons-local-install.json`: exact reviewed migration142→143 in both named local QA databases only; prior inputs, packs, dossier versions/heads/receipts unchanged, no comparison seeds.
+- `cube4-statutory-comparisons-ui.json`: first actual browser run PASS. One synthetic mismatch saved, then a separate corrected matching record. Expected3.97/-6.03/1.13/2.38 displayed with exact result and unqualified status after reload; unchanged dossier revision6 and pack/input history. Responsive390/820/1280, real phone view inspected.
+
+Owner's UX direction is recorded in the shared baseline and [completion route](cube-4-completion-route.md). Normal Company payroll navigation now uses the overview and hides the redundant inputs entry for run viewers. Narrow run-only authority retains the authorized runs route when overview admission fails; input-only entry retained. Actual Company overview navigation PASS with one visible primary next action, no financial command; screenshot inspected. Narrow-role fallback is statically reviewed against live RPC predicates, not separately browser-qualified. This is not a full audit of all HR pages.
+
+Still open: official numerical comparison and issuance, source-bound duration/month/year composition into public financial review, lock/G6 integration, post-lock obligations and distribution/full-cube acceptance. Actual dropped-response comparison and every least-privilege browser path are not proven here. Do not repeat successful unchanged comparison/adapter tests. Next implementation must close completion-route step1 issuance gates, then step2 integrated calculation.

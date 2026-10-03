@@ -1,0 +1,471 @@
+{
+  "scope": "Existing external relay result.json records only; root agent and in-app subagent time are not individually timed",
+  "goalSnapshot": {
+    "capturedUTC": "2026-10-03T09:02:57Z",
+    "createdAtUnix": 1790895798,
+    "tokensUsed": 17708302,
+    "timeUsedSeconds": 120019,
+    "status": "active"
+  },
+  "runs": [
+    {
+      "name": "docs-dispatch",
+      "startedAt": "2026-10-01T23:03:50.329Z",
+      "finishedAt": "2026-10-01T23:03:54.519Z",
+      "seconds": 4.19,
+      "status": "failed",
+      "exitCode": 1,
+      "group": "initial_docs_routing",
+      "role": "implementation_or_qualification",
+      "model": "opencode/mimo-v2.5-free",
+      "reportedCost": null
+    },
+    {
+      "name": "docs-agy",
+      "startedAt": "2026-10-01T23:04:06.870Z",
+      "finishedAt": "2026-10-01T23:04:22.335Z",
+      "seconds": 15.465,
+      "status": "failed",
+      "exitCode": 1,
+      "group": "initial_docs_routing",
+      "role": "implementation_or_qualification",
+      "model": "gemini-3.7-flash-high",
+      "reportedCost": null
+    },
+    {
+      "name": "opencode-payment-qualification",
+      "startedAt": "2026-10-03T01:21:03.878Z",
+      "finishedAt": "2026-10-03T01:36:27.909Z",
+      "seconds": 924.031,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-payment-qualification-cycle2",
+      "startedAt": "2026-10-03T01:38:42.066Z",
+      "finishedAt": "2026-10-03T01:44:33.792Z",
+      "seconds": 351.726,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "implementation_or_qualification",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "gemini-payment-qualification",
+      "startedAt": "2026-10-03T01:47:05.740Z",
+      "finishedAt": "2026-10-03T01:48:04.777Z",
+      "seconds": 59.037,
+      "status": "failed",
+      "exitCode": 1,
+      "group": "payment_recovery",
+      "role": "implementation_or_qualification",
+      "model": "gemini-3.7-flash-high",
+      "reportedCost": null
+    },
+    {
+      "name": "opencode-payment-server-recovery",
+      "startedAt": "2026-10-03T01:56:27.661Z",
+      "finishedAt": "2026-10-03T02:06:48.375Z",
+      "seconds": 620.714,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-payment-server-recovery-review",
+      "startedAt": "2026-10-03T02:21:08.685Z",
+      "finishedAt": "2026-10-03T02:24:05.279Z",
+      "seconds": 176.594,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-payment-server-recovery-review-v2",
+      "startedAt": "2026-10-03T02:28:33.940Z",
+      "finishedAt": "2026-10-03T02:30:40.750Z",
+      "seconds": 126.81,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "review",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-payment-request-races",
+      "startedAt": "2026-10-03T02:47:05.275Z",
+      "finishedAt": "2026-10-03T02:49:14.621Z",
+      "seconds": 129.346,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "payment_recovery",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-review-attention",
+      "startedAt": "2026-10-03T03:05:10.403Z",
+      "finishedAt": "2026-10-03T03:16:58.330Z",
+      "seconds": 707.927,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-review-attention-candidates",
+      "startedAt": "2026-10-03T03:25:01.795Z",
+      "finishedAt": "2026-10-03T03:29:32.095Z",
+      "seconds": 270.3,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-review-attention-readonly",
+      "startedAt": "2026-10-03T03:39:02.808Z",
+      "finishedAt": "2026-10-03T03:40:03.375Z",
+      "seconds": 60.567,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-review-attention-readonly-v2",
+      "startedAt": "2026-10-03T03:45:52.404Z",
+      "finishedAt": "2026-10-03T03:46:21.659Z",
+      "seconds": 29.255,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-integrated-review-next-bridge",
+      "startedAt": "2026-10-03T04:07:45.701Z",
+      "finishedAt": "2026-10-03T04:09:28.427Z",
+      "seconds": 102.726,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "other_delegation",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-independent-packs",
+      "startedAt": "2026-10-03T04:56:33.880Z",
+      "finishedAt": "2026-10-03T05:00:49.272Z",
+      "seconds": 255.392,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "statutory_calculation",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-independent-packs-readonly",
+      "startedAt": "2026-10-03T05:03:12.825Z",
+      "finishedAt": "2026-10-03T05:04:28.502Z",
+      "seconds": 75.677,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "statutory_calculation",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-full-acceptance-next-task",
+      "startedAt": "2026-10-03T05:08:52.914Z",
+      "finishedAt": "2026-10-03T05:11:17.192Z",
+      "seconds": 144.278,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "other_delegation",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-complete-daily-time",
+      "startedAt": "2026-10-03T05:14:17.995Z",
+      "finishedAt": "2026-10-03T05:23:42.147Z",
+      "seconds": 564.152,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-complete-daily-time-fk-delta",
+      "startedAt": "2026-10-03T05:26:17.270Z",
+      "finishedAt": "2026-10-03T05:29:03.184Z",
+      "seconds": 165.914,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-complete-daily-time-readonly",
+      "startedAt": "2026-10-03T05:56:47.984Z",
+      "finishedAt": "2026-10-03T05:58:53.882Z",
+      "seconds": 125.898,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-source-consumption-next",
+      "startedAt": "2026-10-03T06:18:06.987Z",
+      "finishedAt": "2026-10-03T06:20:54.377Z",
+      "seconds": 167.39,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-final-source-bindings",
+      "startedAt": "2026-10-03T06:25:35.011Z",
+      "finishedAt": "2026-10-03T06:29:32.086Z",
+      "seconds": 237.075,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-final-source-bindings-correction",
+      "startedAt": "2026-10-03T06:31:53.672Z",
+      "finishedAt": "2026-10-03T06:39:44.400Z",
+      "seconds": 470.728,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-final-source-bindings-readonly",
+      "startedAt": "2026-10-03T06:46:04.448Z",
+      "finishedAt": "2026-10-03T06:47:40.520Z",
+      "seconds": 96.072,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-final-source-bindings-leave",
+      "startedAt": "2026-10-03T06:53:30.368Z",
+      "finishedAt": "2026-10-03T06:57:39.140Z",
+      "seconds": 248.772,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-final-source-bindings-delta-readonly",
+      "startedAt": "2026-10-03T07:11:17.773Z",
+      "finishedAt": "2026-10-03T07:12:10.603Z",
+      "seconds": 52.83,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-source-correction-bridge-review",
+      "startedAt": "2026-10-03T07:28:57.897Z",
+      "finishedAt": "2026-10-03T07:30:53.383Z",
+      "seconds": 115.486,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-bound-source-requirements-implementation",
+      "startedAt": "2026-10-03T07:33:01.741Z",
+      "finishedAt": "2026-10-03T07:40:04.391Z",
+      "seconds": 422.65,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-bound-source-requirements-readonly",
+      "startedAt": "2026-10-03T07:46:05.915Z",
+      "finishedAt": "2026-10-03T07:47:38.006Z",
+      "seconds": 92.091,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-bound-source-requirements-readonly-delta",
+      "startedAt": "2026-10-03T07:48:16.222Z",
+      "finishedAt": "2026-10-03T07:49:43.369Z",
+      "seconds": 87.147,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-bound-source-successor-readonly",
+      "startedAt": "2026-10-03T07:52:08.202Z",
+      "finishedAt": "2026-10-03T07:52:31.483Z",
+      "seconds": 23.281,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "review",
+      "model": null,
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-source-observation-corrections",
+      "startedAt": "2026-10-03T07:56:35.396Z",
+      "finishedAt": "2026-10-03T08:01:37.485Z",
+      "seconds": 302.089,
+      "status": "completed",
+      "exitCode": 0,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-luna",
+      "reportedCost": 0
+    },
+    {
+      "name": "opencode-source-observation-backend-sol",
+      "startedAt": "2026-10-03T08:05:55.104Z",
+      "finishedAt": "2026-10-03T08:21:34.580Z",
+      "seconds": 939.476,
+      "status": "failed",
+      "exitCode": 1,
+      "group": "source_integration_and_review",
+      "role": "implementation_or_qualification",
+      "model": "openai/gpt-5.6-sol",
+      "reportedCost": 0
+    }
+  ],
+  "groups": [
+    {
+      "group": "initial_docs_routing",
+      "runs": 2,
+      "statuses": {
+        "failed": 2
+      },
+      "sumRunSeconds": 19.655,
+      "unionWallSeconds": 19.655
+    },
+    {
+      "group": "other_delegation",
+      "runs": 2,
+      "statuses": {
+        "completed": 2
+      },
+      "sumRunSeconds": 247.004,
+      "unionWallSeconds": 247.004
+    },
+    {
+      "group": "payment_recovery",
+      "runs": 7,
+      "statuses": {
+        "completed": 6,
+        "failed": 1
+      },
+      "sumRunSeconds": 2388.258,
+      "unionWallSeconds": 2388.258
+    },
+    {
+      "group": "source_integration_and_review",
+      "runs": 20,
+      "statuses": {
+        "completed": 19,
+        "failed": 1
+      },
+      "sumRunSeconds": 5179.1,
+      "unionWallSeconds": 5179.1
+    },
+    {
+      "group": "statutory_calculation",
+      "runs": 2,
+      "statuses": {
+        "completed": 2
+      },
+      "sumRunSeconds": 331.069,
+      "unionWallSeconds": 331.069
+    }
+  ],
+  "allRunSecondsSum": 8165.086,
+  "allRunsUnionWallSeconds": 8165.086,
+  "failedRunSecondsSum": 1018.168,
+  "statuses": {
+    "failed": 4,
+    "completed": 29
+  },
+  "warnings": [
+    "Summed process times may overlap and are not total human/agent effort",
+    "Completed relay does not prove feature acceptance; failed run may retain useful code",
+    "File counts/timestamps do not measure implementation hours",
+    "reportedCost zero/null is not subscription token usage or quota proof",
+    "No exact historical root development/test/debugging breakdown exists in these records"
+  ]
+}

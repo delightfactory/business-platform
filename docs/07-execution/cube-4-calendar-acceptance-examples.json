@@ -1,0 +1,74 @@
+{
+  "status": "DESIGN_FIXTURES_NOT_RUN",
+  "base": "555c34a568f44eb4b99d99712a699094488f3026",
+  "governingSource": "../04-product-specs/payroll-calendar-and-cutoff-amendment.md",
+  "dateMeaning": "Inclusive Employer-local civil dates; these fixtures do not define UTC conversion or payment dates.",
+  "limits": "Expected boundaries below cover unambiguous accepted examples only. No calendar generator or Payroll command has been implemented or qualified.",
+  "cases": [
+    {
+      "id": "calendar-month",
+      "acceptanceIds": ["C01", "C02"],
+      "tenant": "synthetic-A",
+      "employer": "employer-A",
+      "cutoff": {"kind": "last_day"},
+      "periods": [
+        {"label": "2026-01", "startsOn": "2026-01-01", "endsOn": "2026-01-31"},
+        {"label": "2026-02", "startsOn": "2026-02-01", "endsOn": "2026-02-28"}
+      ]
+    },
+    {
+      "id": "accepted-cutoff-25",
+      "acceptanceIds": ["C01", "C02"],
+      "tenant": "synthetic-A",
+      "employer": "employer-A",
+      "cutoff": {"kind": "numbered_day", "day": 25},
+      "periods": [
+        {"label": "2026-09", "startsOn": "2026-08-26", "endsOn": "2026-09-25"},
+        {"label": "2026-10", "startsOn": "2026-09-26", "endsOn": "2026-10-25"}
+      ]
+    },
+    {
+      "id": "user-cycle-25-to-24",
+      "acceptanceIds": ["C01", "C02"],
+      "tenant": "synthetic-A",
+      "employer": "employer-B",
+      "requestedStartDay": 25,
+      "cutoff": {"kind": "numbered_day", "day": 24},
+      "periods": [
+        {"label": "2026-09", "startsOn": "2026-08-25", "endsOn": "2026-09-24"},
+        {"label": "2026-10", "startsOn": "2026-09-25", "endsOn": "2026-10-24"}
+      ],
+      "scopeAssertion": "Employer A's cutoff-25 fixture and Employer B's cutoff-24 fixture must coexist without shared calendar or period state."
+    },
+    {
+      "id": "leap-year-cycle-25-to-24",
+      "acceptanceIds": ["C03"],
+      "tenant": "synthetic-B",
+      "employer": "employer-A",
+      "cutoff": {"kind": "numbered_day", "day": 24},
+      "periods": [
+        {"label": "2028-02", "startsOn": "2028-01-25", "endsOn": "2028-02-24"},
+        {"label": "2028-03", "startsOn": "2028-02-25", "endsOn": "2028-03-24"}
+      ]
+    },
+    {
+      "id": "accepted-month-end-to-25-transition",
+      "acceptanceIds": ["C04", "C05"],
+      "tenant": "synthetic-C",
+      "employer": "employer-A",
+      "previousCutoff": {"kind": "last_day"},
+      "newCutoff": {"kind": "numbered_day", "day": 25},
+      "preservedPreviousPeriod": {"startsOn": "2026-01-01", "endsOn": "2026-01-31"},
+      "periods": [
+        {"kind": "transition", "startsOn": "2026-02-01", "endsOn": "2026-02-25"},
+        {"kind": "ordinary", "startsOn": "2026-02-26", "endsOn": "2026-03-25"}
+      ],
+      "precondition": "Affected open run must be completed or explicitly cancelled; historical generated boundaries are never regenerated."
+    }
+  ],
+  "pendingCases": [
+    {"decision": "D01", "acceptanceIds": ["C03"], "scenario": "Numbered cutoff 29, 30 or 31 in a shorter month", "expected": null},
+    {"decision": "D02", "acceptanceIds": ["C07"], "scenario": "Payment date and shorter-month payment treatment", "expected": null},
+    {"decision": "D03", "acceptanceIds": ["C07"], "scenario": "Explicit timezone, DST and effective timezone change", "expected": null}
+  ]
+}

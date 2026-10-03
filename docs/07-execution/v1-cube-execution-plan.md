@@ -225,3 +225,7 @@ Completing Cubes 0-5 does not automatically mean production release readiness. F
 ## Completion principle
 
 Build each cube completely, validate it, then move forward. Never weaken current quality to create future functionality.
+
+## Proposed Cube 4 execution detail (2026-10-02)
+
+The [proposed additive UX extension](cube4UXextension.md), [proposed execution contract](cube-4-execution-contract.md), [decision and acceptance register](cube-4-decision-acceptance-register.md), and [current source lock review](cube-4-lock-graph-review.md) provide reviewable planning detail. They do not declare policy acceptance, Cube 3 gate closure, Cube 4 completion, or production readiness. Their affected decisions and implementation gates must close under the existing source-of-truth process.

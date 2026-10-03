@@ -183,3 +183,7 @@ Do not create:
 `if organization == Obal`
 
 The capability must be part of the general SaaS Payroll configuration model.
+
+## Accepted operational clarification — 2026-10-02
+
+The [Cube 4 operational policy amendment](cube-4-operational-policy-amendment-2026-10-02.md) governs shorter-month cutoff, payment scheduling and prospective timezone behavior. Existing Employer scope, immutable history and contiguous transitions remain binding.

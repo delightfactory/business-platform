@@ -1,0 +1,29 @@
+import Link from 'next/link';
+import {redirect} from 'next/navigation';
+import {createSupabaseServerClient} from '@/lib/supabase/server';
+import {DraftForm,type Source} from './DraftForm';
+import {NumericRulesSummary,type NumericRules} from './NumericRules';
+import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
+export const dynamic='force-dynamic';
+type Query={head?:string;after_created?:string;after_id?:string;before?:string};
+type Head={id:string;version:string;revision:number;created_at:string;effective_from:string;effective_until:string|null};
+type Version={numeric_rules?:NumericRules|null;revision:number;effective_from:string;effective_until:string|null;source_references:Source[];reason:string;created_at:string};
+type Workspace={items?:Head[];next?:{created:string;id:string}|null;head?:Head;current?:Version;history?:Version[];next_before_revision?:number|null};
+const date=(v:string)=>new Intl.DateTimeFormat('ar-EG',{timeZone:'Africa/Cairo',day:'numeric',month:'long',year:'numeric'}).format(new Date(v));
+export default async function StatutoryDraftPage({searchParams}:{searchParams:Promise<Query>}){
+ const q=await searchParams;const retry='/operator/statutory?'+new URLSearchParams(q).toString();
+ const failure=(title:string,detail:string)=><main className="app-shell"><section className="work-card"><h1>{title}</h1><p role="alert">{detail}</p><Link href={retry} className="secondary-button">إعادة المحاولة</Link> · <Link href="/operator">العودة إلى تشغيل المنصة</Link></section></main>;
+ if((q.head&&!uuid(q.head))||(q.after_id&&!uuid(q.after_id))||(q.after_created&&(!Number.isFinite(Date.parse(q.after_created))||q.after_created.length>64))||Boolean(q.after_created)!==Boolean(q.after_id)||(q.before&&!/^[1-9]\d{0,8}$/.test(q.before)))return failure('راجع رابط المسودة','تعذر التحقق من اختيار المسودة أو صفحة السجل.');
+ const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال','أعد المحاولة لاستعادة المسودات؛ لا تُعرض البيانات المفقودة كقائمة فارغة.');
+ const {data:{user}}=await client.auth.getUser();if(!user)redirect('/auth/login?next='+encodeURIComponent(retry));
+ const {data:allowed,error:accessError}=await client.rpc('current_operator_can_manage_statutory_rules');if(accessError)return failure('تعذر التحقق من الصلاحية','أعد المحاولة قبل مراجعة القواعد القانونية.');if(!allowed)return failure('إدارة القواعد القانونية غير متاحة','تحتاج مهمة الامتثال الممنوحة صراحةً؛ راجع مسؤول تشغيل المنصة.');
+ const {data,error}=await client.rpc('statutory_draft_workspace',{p_head:q.head??null,p_after_created:q.after_created??null,p_after_id:q.after_id??null,p_before_revision:q.before?Number(q.before):null,p_limit:20});if(error||!data)return failure('تعذر تحميل المسودات','أعد المحاولة بنفس الاختيار؛ لم تتغير أي مسودة.');const w=data as Workspace;
+ return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">تشغيل المنصة</Link><Link href="/operator" className="secondary-button">العودة إلى المهام</Link></header>
+ <section className="work-card"><p className="eyebrow">الامتثال · الرواتب</p><h1>القواعد القانونية للرواتب</h1><p className="intro">احفظ نسخة مؤرخة ومراجعها، وراجع سجل تعديلاتها. المسودات غير مؤهلة لحساب الرواتب أو اعتماد الصرف.</p></section>
+ {w.head&&w.current?<><section className="work-card"><h2>{w.head.version}</h2><p className="entity-status is-inactive">مسودة غير مؤهلة</p><p>بداية السريان: {date(w.current.effective_from)}{w.current.effective_until&&<> · تتوقف من: {date(w.current.effective_until)}</>}</p><h3>المراجع المحفوظة</h3><ul>{w.current.source_references.map((s,i)=><li key={i}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a></li>)}</ul><NumericRulesSummary rules={w.current.numeric_rules}/>{w.current.numeric_rules&&<p><Link className="primary-button" href={'/operator/statutory/comparisons?head='+w.head.id}>مراجعة الحساب مع نتائج المقارنة</Link></p>}<Link href="/operator/statutory">العودة إلى المسودات</Link></section>
+ <section className="work-card"><DraftForm key={w.head.id} actor={user.id} head={w.head.id} revision={w.head.revision} version={w.head.version} from={w.current.effective_from} until={w.current.effective_until} sources={w.current.source_references} numericRules={w.current.numeric_rules}/></section>
+ <section className="work-card"><details><summary>سجل التعديلات</summary><ul className="member-list">{w.history?.map(v=><li className="member-card" key={v.revision}><h3>النسخة المحفوظة {v.revision}</h3><p>{date(v.created_at)} · بداية السريان: {date(v.effective_from)} · {v.effective_until?<>تتوقف من: {date(v.effective_until)}</>:<>لا يوجد تاريخ توقف</>}</p><p>سبب الحفظ: {v.reason}</p><NumericRulesSummary rules={v.numeric_rules}/><ul>{v.source_references.map((s,i)=><li key={i}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a></li>)}</ul></li>)}</ul>{w.next_before_revision&&<Link href={'/operator/statutory?'+new URLSearchParams({head:w.head.id,before:String(w.next_before_revision)})}>تعديلات أقدم</Link>}</details></section></>:<>
+ <section className="work-card"><h2>المسودات المحفوظة</h2>{w.items?.length?<ul className="member-list">{w.items.map(h=><li className="member-card" key={h.id}><h3>{h.version}</h3><p>مسودة غير مؤهلة · بداية السريان: {date(h.effective_from)}</p><Link href={'/operator/statutory?head='+encodeURIComponent(h.id)} className="secondary-button">مراجعة المسودة وسجلها</Link></li>)}</ul>:<p>لا توجد مسودات محفوظة في هذه الصفحة. احفظ نسخة ومراجعها لبدء المراجعة.</p>}{w.next&&<Link href={'/operator/statutory?'+new URLSearchParams({after_created:w.next.created,after_id:w.next.id})}>مسودات أقدم</Link>}</section>
+ <section className="work-card"><details><summary className="primary-button">مسودة جديدة</summary><DraftForm actor={user.id}/></details></section></>}
+ <footer className="footer">منصة الأعمال · قواعد الرواتب</footer></main>;
+}
