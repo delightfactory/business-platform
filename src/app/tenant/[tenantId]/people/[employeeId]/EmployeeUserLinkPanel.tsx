@@ -53,6 +53,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </form>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
+    <div className="workspace-page-summary"><h3>إكمال إتاحة الحضور الشخصي</h3><p>{snapshot?.linked ? 'رابط الحساب موجود. هذا لا يثبت وجود صلاحية الحضور؛ أكمل حزمة وصول العضو ثم راجع إعداد موقع العمل.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم أتح له الحضور الشخصي من حزم الوصول.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <Link className="secondary-button" href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة حزمة الحضور لحساب الموظف</Link> : <p>اطلب من مدير الأعضاء إضافة حزمة «الحضور الشخصي من الهاتف» للحساب المرتبط. لا تمنح صلاحية ربط الموظف صلاحية إدارة الأعضاء.</p>}</div>
     {accountState && accountMessages[accountState] && <p className={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState)
       ? 'form-message error-message' : 'form-message'} role="status">{accountMessages[accountState]}</p>}
     {!snapshotError && !snapshot?.linked && canManage && <>

@@ -14,6 +14,7 @@ type Row = { user_id: string; email: string; access_state: string; role_key: str
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
 
 const PEOPLE_ROLE_BUNDLES = [
+  { key: 'employee.attendance.self.v1', label: 'الحضور الشخصي من الهاتف', description: 'يسجل العضو حضوره وانصرافه فقط. يحتاج ربطًا بموظف نشط وموقع وسياسة حضور مهيأة؛ لا يمنح إدارة حضور الآخرين.' },
   { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
   { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
   { key: 'people.compensation_reader.v1', label: 'قارئ الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
@@ -58,6 +59,8 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
   const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
   if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
+  const { data: peopleSetupAccess, error: peopleSetupError } = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
+  const canOpenPeopleSetup = !peopleSetupError && Boolean(peopleSetupAccess);
   const { data: canManageRoles } = await supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId });
   const result = data as Record<string, unknown>;
   const memberships = view === 'members' && Array.isArray(result.rows) ? result.rows as Row[] : [];
@@ -86,6 +89,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
         {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
       </section>
+      <section className="workspace-records-panel" aria-labelledby="attendance-access-setup"><h2 id="attendance-access-setup">إتاحة الحضور الشخصي للموظف</h2><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<Link className="secondary-button" href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</Link>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</section>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
         <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
         <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
@@ -107,7 +111,9 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
                 {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
+                <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الحزمة محفوظة؛ يتطلب التسجيل ربط الموظف وسياسة الموقع' : 'الحزمة غير مضافة'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
+                {row.protected_admin && <p className="field-hint">تغيير حزم الحضور للأعضاء لا يغيّر دور مسؤول الشركة المحمي. لا تُمنح حزمة الحضور تلقائيًا لهذا الدور؛ راجع مدير الوصول لإتاحة المسار المسموح.</p>}
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <form action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
@@ -118,8 +124,8 @@ export default async function TenantUsersPage({ params, searchParams }: { params
               </div>
               <div className="invitation-actions">
                 {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
-                  <summary className="secondary-button">إدارة حزم People</summary>
-                  <p className="field-hint">يمكن جمع عدة حزم. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
+                  <summary className="secondary-button">إدارة حزم الوصول</summary>
+                  <p className="field-hint">يمكن اختيار حتى ٩ حزم. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
                   <form action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />

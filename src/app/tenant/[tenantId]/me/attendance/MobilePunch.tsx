@@ -8,6 +8,7 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
   const router=useRouter();
   const [pending,setPending]=useState<Pending|null>(null), [busy,setBusy]=useState(false), [hydratedKey,setHydratedKey]=useState<string|null>(null), [message,setMessage]=useState(''), [terminal,setTerminal]=useState(false), [canResend,setCanResend]=useState(false);
   const completeAttempt=useRef<MobileAttempt|null>(null), flight=useRef(false), status=useRef<HTMLDivElement>(null);
+  const nativeLocationFeedback=useRef('');
   const storageKey=`attendance-pending:${tenantId}`;
   const ready=hydratedKey===storageKey;
   const next=snapshot.next_direction;
@@ -16,7 +17,7 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
   useEffect(()=>{
     // Read tab storage in a cancellable post-hydration browser callback.
     const hydration=requestAnimationFrame(()=>{
-      completeAttempt.current=null;setCanResend(false);
+      completeAttempt.current=null;nativeLocationFeedback.current='';setCanResend(false);
       try {
         const raw=sessionStorage.getItem(storageKey);
         if(raw) {
@@ -31,11 +32,11 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
   },[storageKey]);
   function announce(text:string) { setMessage(text); requestAnimationFrame(()=>status.current?.focus()); }
   function release() { try { sessionStorage.removeItem(storageKey); } catch { /* Authoritative outcome remains visible. */ } completeAttempt.current=null;setCanResend(false);setPending(null); }
-  function finish(result:PunchResult) {
-    if(['accepted','duplicate'].includes(result.state)) { release();setTerminal(false);announce(result.review?'تم التسجيل ويحتاج مراجعة المسؤول.':result.state==='duplicate'?'المحاولة مسجلة بالفعل. لم تُضف حركة أخرى.':'تم تسجيل الحركة.');refreshSnapshot(); }
+  function finish(result:PunchResult,nativeFeedback='') {
+    if(['accepted','duplicate'].includes(result.state)) { release();setTerminal(false);announce(nativeFeedback+(result.review?'سُجلت الحركة وتحتاج مراجعة المسؤول وفق سياسة الموقع.':result.state==='duplicate'?'المحاولة مسجلة بالفعل. لم تُضف حركة أخرى.':'تم تسجيل الحركة.'));refreshSnapshot(); }
     else if(result.state==='blocked' && result.reason==='scope_changed') { release();setTerminal(true);announce('المحاولة السابقة لا تخص رابط الموظف الحالي، ولا يمكن الوصول إليها بهذا الرابط. يمكنك تجهيز محاولة جديدة لحسابك الحالي.');refreshSnapshot(); }
-    else if(result.state==='rejected') { release();setTerminal(true);announce(channelReasonLabel(result.reason));refreshSnapshot(); }
-    else announce(channelReasonLabel(result.reason));
+    else if(result.state==='rejected') { release();setTerminal(true);announce(nativeFeedback+channelReasonLabel(result.reason));refreshSnapshot(); }
+    else announce(nativeFeedback+channelReasonLabel(result.reason));
   }
   async function reconcile() { if(!ready || refreshing || !pending?.id || flight.current) return;flight.current=true;setBusy(true);announce('جارٍ التحقق من المحاولة السابقة.');try {finish(await reconcileMobilePunch(tenantId,pending.id,pending.scope));} catch {announce('تعذر الاتصال. نتيجة المحاولة لم تتأكد بعد. أعد التحقق عندما يعود الاتصال.');} finally {flight.current=false;setBusy(false);} }
   async function punch() {
@@ -44,17 +45,32 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
     try {
       let current=completeAttempt.current;
       if(!current) {
+        nativeLocationFeedback.current='';
         current={id:crypto.randomUUID(),direction:next,happened_at:new Date().toISOString(),scope:snapshot.scope,policy_version:snapshot.policy_version,location:null};
         if(snapshot.geofence_required) {
           announce('جارٍ تحديد موقعك لهذه المحاولة فقط.');
-          current.location=await new Promise((resolve,reject)=>{ if(!navigator.geolocation) {reject(new Error('location_unavailable'));return;} navigator.geolocation.getCurrentPosition(p=>resolve({latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy,captured_at:new Date(p.timestamp).toISOString()}),e=>reject(new Error(e.code===1?'location_denied':e.code===3?'location_timeout':'location_unavailable')),{enableHighAccuracy:true,timeout:15000,maximumAge:0}); });
+          try {
+            current.location=await new Promise((resolve,reject)=>{
+              if(!navigator.geolocation) {reject(new Error('location_unavailable'));return;}
+              navigator.geolocation.getCurrentPosition(p=>{
+                try {resolve({latitude:p.coords.latitude,longitude:p.coords.longitude,accuracy:p.coords.accuracy,captured_at:new Date(p.timestamp).toISOString()});}
+                catch {reject(new Error('location_serialization'));}
+              },e=>reject(new Error(e.code===1?'location_denied':e.code===2?'location_unavailable':e.code===3?'location_timeout':'location_unknown')),{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+            });
+          } catch(error) {
+            const reason=error instanceof Error?error.message:'';
+            const nativeMessages:Record<string,string>={location_denied:'رفض المتصفح إذن الموقع. ',location_timeout:'انتهت مهلة تحديد الموقع. ',location_unavailable:'تعذر على الجهاز توفير الموقع. '};
+            if(!nativeMessages[reason]) throw error;
+            current.location=null;nativeLocationFeedback.current=nativeMessages[reason];
+            announce(nativeMessages[reason]+'ستُرسل المحاولة دون دليل موقع؛ سياسة موقع العمل تحدد قبولها للمراجعة أو رفضها.');
+          }
           current.happened_at=new Date().toISOString();
         }
         sessionStorage.setItem(storageKey,JSON.stringify({id:current.id,scope:current.scope}));
         completeAttempt.current=current;setCanResend(true);setPending({id:current.id,scope:current.scope});
       }
-      announce('جارٍ إرسال الحركة. انتظر تأكيد التسجيل.');finish(await Promise.race([submitMobilePunch(tenantId,current),new Promise<never>((_,reject)=>setTimeout(()=>reject(new Error('response_timeout')),20000))]));
-    } catch(error) { const reason=error instanceof Error?error.message:'';announce(reason==='location_denied'?'إذن الموقع مرفوض. فعّله من إعدادات المتصفح ثم أعد المحاولة، أو تواصل مع المسؤول.':reason==='location_timeout'?'انتهت مهلة تحديد الموقع. أعد المحاولة من مكان مفتوح.':reason==='location_unavailable'?'الموقع غير متاح. راجع إعدادات الهاتف أو تواصل مع المسؤول.':completeAttempt.current?'لم يتأكد التسجيل. تحقق من المحاولة أو أعد إرسال المحاولة نفسها عند عودة الاتصال.':'تعذر تجهيز المحاولة. تحقق من إعدادات المتصفح ثم أعد المحاولة.'); } finally {flight.current=false;setBusy(false);}
+      announce('جارٍ إرسال الحركة. انتظر تأكيد التسجيل.');finish(await Promise.race([submitMobilePunch(tenantId,current),new Promise<never>((_,reject)=>setTimeout(()=>reject(new Error('response_timeout')),20000))]),nativeLocationFeedback.current);
+    } catch {announce(completeAttempt.current?nativeLocationFeedback.current+'لم يتأكد التسجيل. تحقق من المحاولة أو أعد إرسال المحاولة نفسها عند عودة الاتصال.':'تعذر تجهيز المحاولة. لم تُرسل حركة؛ راجع إعدادات المتصفح أو تواصل مع المسؤول.'); } finally {flight.current=false;setBusy(false);}
   }
   return <section className="workspace-records-panel channel-punch" aria-busy={busy || refreshing || !ready}>
     <h2>{next==='in'?'جاهز لتسجيل الحضور':'الإجراء التالي: تسجيل الانصراف'}</h2>
