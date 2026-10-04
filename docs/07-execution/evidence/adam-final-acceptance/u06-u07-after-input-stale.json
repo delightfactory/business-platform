@@ -1,0 +1,638 @@
+{
+  "status": "BOUNDED_ATOMIC_REVIEW_PASS",
+  "assertions": 7,
+  "atUTC": "2026-10-04T13:48:14.910Z",
+  "phase": "after-input-stale",
+  "workspace": {
+    "run": {
+      "id": "984e70d1-7d3c-40ea-9bba-c3d303808ae5",
+      "status": "review",
+      "revision": 1,
+      "created_at": "2026-10-04T13:41:48.788623+00:00",
+      "candidate_id": "26e26555-4bd2-45a8-80dd-1b24c84fc03f",
+      "cancel_reason": null
+    },
+    "access": {
+      "enabled": true,
+      "can_lock": true,
+      "can_view": true,
+      "can_review": false,
+      "can_approve": true,
+      "can_prepare": true,
+      "can_configure": true,
+      "can_view_final": true,
+      "can_assignment_fix": false,
+      "can_payment_record": true,
+      "can_compensation_fix": false
+    },
+    "detail": null,
+    "period": {
+      "id": "d740e000-0000-4000-8000-000000000001",
+      "ends_on": "2026-01-05",
+      "starts_on": "2026-01-05",
+      "is_transition": false
+    },
+    "history": [
+      {
+        "status": "review",
+        "revision": 1,
+        "created_at": "2026-10-04T13:41:48.788623+00:00",
+        "calculated_at": "2026-10-04T13:41:48.788623+00:00",
+        "cancel_reason": null
+      }
+    ],
+    "summary": {
+      "net": null,
+      "gross": "250.0000000000000000",
+      "engine": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-insured-single-month-owner-v1-reviewed-partial-insurance-v1-reviewed-earnings-v1-reviewed-context-year-v1-wage-deductions113114-v1-daily-approved-units-v1-daily-reconciled-sources-v1-approved-dated-time-segments-v1-monthly-approved-source-fractions-v1-approved-fixed30-unpaid-v1-approved-debt-dispositions-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+      "policy": "calendar_days",
+      "deductions": "0",
+      "known_gross": "250.0000000000000000",
+      "employer_cost": "0",
+      "is_transition": false,
+      "employee_count": 2,
+      "gross_complete": true,
+      "statutory_complete": false,
+      "statutory_deductions": null,
+      "financially_qualified": false,
+      "statutory_contributions": null
+    },
+    "approval": {
+      "ready": false,
+      "stale_reasons": [
+        "opening_ytd_changed"
+      ],
+      "blocking_count": 5,
+      "qualification_reasons": [
+        "financial_qualification_producer_required"
+      ]
+    },
+    "employer": {
+      "legal_name": "D740 NONLEGAL Employer",
+      "display_name": "D740 NONLEGAL Employer"
+    },
+    "variance": null,
+    "employees": [
+      {
+        "net": null,
+        "base": "125.0000000000000000",
+        "code": "D740",
+        "name": "D740 Leave Employee",
+        "gross": "125.0000000000000000",
+        "issues": [
+          {
+            "code": "opening_tax_net_income_unknown",
+            "owner": "payroll_ytd",
+            "blocking": true,
+            "employment_id": "d7406000-0000-4000-8000-000000000001"
+          },
+          {
+            "code": "opening_ytd_unknown",
+            "owner": "payroll_ytd",
+            "blocking": true,
+            "employment_id": "d7406000-0000-4000-8000-000000000001"
+          },
+          {
+            "code": "statutory_prior_balance_required",
+            "owner": "payroll_compliance",
+            "blocking": true,
+            "employment_id": "d7406000-0000-4000-8000-000000000001"
+          }
+        ],
+        "ends_on": "2026-01-05",
+        "pay_basis": "daily",
+        "starts_on": "2026-01-05",
+        "deductions": "0",
+        "employee_id": "d7405000-0000-4000-8000-000000000001",
+        "known_gross": "125.0000000000000000",
+        "eligible_days": 1,
+        "employer_cost": "0",
+        "employment_id": "d7406000-0000-4000-8000-000000000001",
+        "approved_units": "1",
+        "gross_complete": true,
+        "source_summary": {
+          "status": "disabled",
+          "coverage": "approved_manual_total",
+          "day_count": 0,
+          "time_enabled": false,
+          "leave_enabled": false,
+          "payroll_ready": false,
+          "time_coverage": {
+            "status": "disabled",
+            "enabled": false,
+            "day_count": 0,
+            "future_days": 0,
+            "missing_days": 0,
+            "pending_days": 0,
+            "approved_days": 0,
+            "expected_days": 0,
+            "payroll_ready": false,
+            "other_review_days": 0
+          },
+          "approved_units": 1,
+          "selected_source": "manual"
+        },
+        "statutory_sources": {
+          "issues": [
+            {
+              "code": "opening_ytd_unknown",
+              "owner": "payroll_ytd",
+              "blocking": true,
+              "employment_id": "d7406000-0000-4000-8000-000000000001"
+            },
+            {
+              "code": "opening_tax_net_income_unknown",
+              "owner": "payroll_ytd",
+              "blocking": true,
+              "employment_id": "d7406000-0000-4000-8000-000000000001"
+            }
+          ],
+          "calendar": {
+            "known": true,
+            "years": [
+              {
+                "from": "2026-01-05",
+                "year": 2026,
+                "through": "2026-01-05",
+                "calendar_days": 1,
+                "legal_duration_days": null
+              }
+            ],
+            "months": [
+              {
+                "from": "2026-01-05",
+                "month": "2026-01-01",
+                "through": "2026-01-05",
+                "contexts": [
+                  {
+                    "data": {
+                      "reason": "reviewed fixture duration and exclusion",
+                      "reference": "NONLEGAL context",
+                      "calculation_from": "2026-01-05",
+                      "insurance_status": "not_insured",
+                      "calculation_until": "2026-01-05",
+                      "tax_duration_days": 1,
+                      "tax_treatment_code": "05"
+                    },
+                    "from": "2026-01-05",
+                    "head_id": "82780e64-02c5-420e-bae8-1abfe2beacbe",
+                    "through": "2026-01-05",
+                    "version_id": "96f2314e-a285-498e-8cde-3c63df34c07b"
+                  }
+                ],
+                "calendar_days": 1,
+                "calendar_through": "2026-01-31",
+                "full_service_month": false,
+                "service_end_in_month": null,
+                "service_start_in_month": true
+              }
+            ],
+            "contract": "cube4-statutory-calendar-facts-v1",
+            "employment": {
+              "id": "d7406000-0000-4000-8000-000000000001",
+              "end_date": null,
+              "pay_basis": "daily",
+              "tenant_id": "d7401000-0000-4000-8000-000000000001",
+              "created_at": "2026-10-04T13:41:48.788623+00:00",
+              "start_date": "2026-01-05",
+              "employee_id": "d7405000-0000-4000-8000-000000000001",
+              "payroll_eligible": true,
+              "employment_status": "active",
+              "employer_entity_id": "d7403000-0000-4000-8000-000000000001"
+            },
+            "employee_id": "d7405000-0000-4000-8000-000000000001",
+            "employment_id": "d7406000-0000-4000-8000-000000000001",
+            "obligation_months": null,
+            "legal_duration_days": null,
+            "financially_qualified": false
+          },
+          "contexts": [
+            {
+              "from": "2026-01-05",
+              "source": {
+                "head": {
+                  "id": "82780e64-02c5-420e-bae8-1abfe2beacbe",
+                  "kind": "statutory_context",
+                  "period_id": null,
+                  "employee_id": "d7405000-0000-4000-8000-000000000001",
+                  "employment_id": "d7406000-0000-4000-8000-000000000001"
+                },
+                "version": {
+                  "id": "96f2314e-a285-498e-8cde-3c63df34c07b",
+                  "data": {
+                    "reason": "reviewed fixture duration and exclusion",
+                    "reference": "NONLEGAL context",
+                    "calculation_from": "2026-01-05",
+                    "insurance_status": "not_insured",
+                    "calculation_until": "2026-01-05",
+                    "tax_duration_days": 1,
+                    "tax_treatment_code": "05"
+                  },
+                  "status": "draft",
+                  "head_id": "82780e64-02c5-420e-bae8-1abfe2beacbe",
+                  "revision": 1,
+                  "tenant_id": "d7401000-0000-4000-8000-000000000001",
+                  "created_at": "2026-10-04T13:41:48.788623+00:00",
+                  "created_by": "d6800000-0000-4000-8000-000000000001",
+                  "approved_at": null,
+                  "approved_by": null,
+                  "employer_id": "d7403000-0000-4000-8000-000000000001",
+                  "effective_from": "2026-01-05",
+                  "effective_until": null
+                }
+              },
+              "head_id": "82780e64-02c5-420e-bae8-1abfe2beacbe",
+              "through": "2026-01-05",
+              "version_id": "96f2314e-a285-498e-8cde-3c63df34c07b"
+            }
+          ],
+          "contract": "cube4-employee-statutory-sources-v1",
+          "openings": [],
+          "employee_id": "d7405000-0000-4000-8000-000000000001",
+          "employment_id": "d7406000-0000-4000-8000-000000000001",
+          "prior_outputs": [],
+          "current_earnings": {
+            "lines": [
+              {
+                "name": "الأجر الأساسي",
+                "amount": "125.0000000000000000",
+                "component": "base",
+                "attribution": "preserved_daily_source_basis",
+                "earning_from": "2026-01-05",
+                "source_parts": [
+                  {
+                    "raw": "125.0000000000000000",
+                    "name": "الأجر الأساسي",
+                    "detail": [
+                      {
+                        "raw": "125.0000000000000000",
+                        "date": "2026-01-05",
+                        "rate": "125.00",
+                        "_numerator": "1250000.00",
+                        "denominator": 1,
+                        "_denominator": "10000",
+                        "compensation_id": "d7407000-0000-4000-8000-000000000001"
+                      }
+                    ],
+                    "component": "base",
+                    "classification": "earning"
+                  }
+                ],
+                "earning_until": "2026-01-05",
+                "declaration_state": "base_treatment_requires_verified_pack",
+                "declared_taxable_amount": null,
+                "declared_nontaxable_amount": null
+              }
+            ],
+            "contract": "cube4-current-earning-sources-v1",
+            "base_amount": 125,
+            "operational_complete": true,
+            "financially_qualified": false,
+            "declared_taxable_components": 0,
+            "unresolved_component_amount": 0,
+            "declared_nontaxable_components": 0
+          },
+          "earning_partitions": {
+            "lines": [
+              {
+                "amount": "125.0000000000000000",
+                "months": null,
+                "reason": "daily_payable_quantity_is_not_dated_work",
+                "fraction": null,
+                "component": "base",
+                "source_line_index": 0,
+                "legal_earning_attribution_known": false,
+                "operational_date_distribution_known": false
+              }
+            ],
+            "contract": "cube4-operational-earning-partitions-v1",
+            "financially_qualified": false
+          },
+          "cumulative_balances": {
+            "years": [
+              {
+                "year": 2026,
+                "basis": "reviewed_opening",
+                "known": false,
+                "through": null,
+                "source_ids": [],
+                "prior_tax_due": null,
+                "prior_net_income": null,
+                "prior_duration_days": null
+              }
+            ],
+            "issues": [
+              {
+                "code": "opening_tax_net_income_unknown",
+                "owner": "payroll_ytd",
+                "blocking": true,
+                "employment_id": "d7406000-0000-4000-8000-000000000001"
+              }
+            ],
+            "contract": "cube4-cumulative-balances-v1",
+            "financially_qualified": false
+          },
+          "financially_qualified": false
+        },
+        "advance_deductions": []
+      },
+      {
+        "net": null,
+        "base": "125.0000000000000000",
+        "code": "U07KNOWN",
+        "name": "موظف بأرصدة موثقة تجريبيًا",
+        "gross": "125.0000000000000000",
+        "issues": [
+          {
+            "code": "statutory_composition_pack_missing_or_ambiguous",
+            "owner": "payroll_compliance",
+            "blocking": true,
+            "employment_id": "d7406000-0000-4000-8000-000000000002"
+          }
+        ],
+        "ends_on": "2026-01-05",
+        "pay_basis": "daily",
+        "starts_on": "2026-01-05",
+        "deductions": "0",
+        "employee_id": "d7405000-0000-4000-8000-000000000002",
+        "known_gross": "125.0000000000000000",
+        "eligible_days": 1,
+        "employer_cost": "0",
+        "employment_id": "d7406000-0000-4000-8000-000000000002",
+        "approved_units": "1",
+        "gross_complete": true,
+        "source_summary": {
+          "status": "disabled",
+          "coverage": "approved_manual_total",
+          "day_count": 0,
+          "time_enabled": false,
+          "leave_enabled": false,
+          "payroll_ready": false,
+          "time_coverage": {
+            "status": "disabled",
+            "enabled": false,
+            "day_count": 0,
+            "future_days": 0,
+            "missing_days": 0,
+            "pending_days": 0,
+            "approved_days": 0,
+            "expected_days": 0,
+            "payroll_ready": false,
+            "other_review_days": 0
+          },
+          "approved_units": 1,
+          "selected_source": "manual"
+        },
+        "statutory_sources": {
+          "issues": [],
+          "calendar": {
+            "known": true,
+            "years": [
+              {
+                "from": "2026-01-05",
+                "year": 2026,
+                "through": "2026-01-05",
+                "calendar_days": 1,
+                "legal_duration_days": null
+              }
+            ],
+            "months": [
+              {
+                "from": "2026-01-05",
+                "month": "2026-01-01",
+                "through": "2026-01-05",
+                "contexts": [
+                  {
+                    "data": {
+                      "reason": "reviewed fixture duration and exclusion",
+                      "reference": "NONLEGAL context",
+                      "calculation_from": "2026-01-05",
+                      "insurance_status": "not_insured",
+                      "calculation_until": "2026-01-05",
+                      "tax_duration_days": 1,
+                      "tax_treatment_code": "05"
+                    },
+                    "from": "2026-01-05",
+                    "head_id": "9eecdf9c-fab9-4db2-89c3-98856ba29e1a",
+                    "through": "2026-01-05",
+                    "version_id": "deda5869-ae15-4ad8-b72b-8cbfe57aab08"
+                  }
+                ],
+                "calendar_days": 1,
+                "calendar_through": "2026-01-31",
+                "full_service_month": false,
+                "service_end_in_month": null,
+                "service_start_in_month": true
+              }
+            ],
+            "contract": "cube4-statutory-calendar-facts-v1",
+            "employment": {
+              "id": "d7406000-0000-4000-8000-000000000002",
+              "end_date": null,
+              "pay_basis": "daily",
+              "tenant_id": "d7401000-0000-4000-8000-000000000001",
+              "created_at": "2026-10-04T13:41:48.788623+00:00",
+              "start_date": "2026-01-05",
+              "employee_id": "d7405000-0000-4000-8000-000000000002",
+              "payroll_eligible": true,
+              "employment_status": "active",
+              "employer_entity_id": "d7403000-0000-4000-8000-000000000001"
+            },
+            "employee_id": "d7405000-0000-4000-8000-000000000002",
+            "employment_id": "d7406000-0000-4000-8000-000000000002",
+            "obligation_months": null,
+            "legal_duration_days": null,
+            "financially_qualified": false
+          },
+          "contexts": [
+            {
+              "from": "2026-01-05",
+              "source": {
+                "head": {
+                  "id": "9eecdf9c-fab9-4db2-89c3-98856ba29e1a",
+                  "kind": "statutory_context",
+                  "period_id": null,
+                  "employee_id": "d7405000-0000-4000-8000-000000000002",
+                  "employment_id": "d7406000-0000-4000-8000-000000000002"
+                },
+                "version": {
+                  "id": "deda5869-ae15-4ad8-b72b-8cbfe57aab08",
+                  "data": {
+                    "reason": "reviewed fixture duration and exclusion",
+                    "reference": "NONLEGAL context",
+                    "calculation_from": "2026-01-05",
+                    "insurance_status": "not_insured",
+                    "calculation_until": "2026-01-05",
+                    "tax_duration_days": 1,
+                    "tax_treatment_code": "05"
+                  },
+                  "status": "draft",
+                  "head_id": "9eecdf9c-fab9-4db2-89c3-98856ba29e1a",
+                  "revision": 1,
+                  "tenant_id": "d7401000-0000-4000-8000-000000000001",
+                  "created_at": "2026-10-04T13:41:48.788623+00:00",
+                  "created_by": "d6800000-0000-4000-8000-000000000001",
+                  "approved_at": null,
+                  "approved_by": null,
+                  "employer_id": "d7403000-0000-4000-8000-000000000001",
+                  "effective_from": "2026-01-05",
+                  "effective_until": null
+                }
+              },
+              "head_id": "9eecdf9c-fab9-4db2-89c3-98856ba29e1a",
+              "through": "2026-01-05",
+              "version_id": "deda5869-ae15-4ad8-b72b-8cbfe57aab08"
+            }
+          ],
+          "contract": "cube4-employee-statutory-sources-v1",
+          "openings": [
+            {
+              "year": 2026,
+              "as_of": "2026-01-05",
+              "source": {
+                "head": {
+                  "id": "a27d35a1-1cc3-45f3-991e-a3edb5561ccc",
+                  "kind": "opening_ytd",
+                  "period_id": null,
+                  "employee_id": "d7405000-0000-4000-8000-000000000002",
+                  "employment_id": "d7406000-0000-4000-8000-000000000002"
+                },
+                "version": {
+                  "id": "88ffe373-a4c2-45d6-9281-71cc31869ceb",
+                  "data": {
+                    "year": 2026,
+                    "reason": "independently reviewed fixture zero",
+                    "tax_due": 0,
+                    "reference": "NONLEGAL explicit zero source",
+                    "social_base": 0,
+                    "coverage_end": "2026-01-04",
+                    "tax_withheld": 0,
+                    "coverage_start": "2026-01-01",
+                    "tax_net_income": 0,
+                    "employee_social": 0,
+                    "employer_social": 0,
+                    "taxable_earnings": 0,
+                    "tax_duration_days": 4
+                  },
+                  "status": "draft",
+                  "head_id": "a27d35a1-1cc3-45f3-991e-a3edb5561ccc",
+                  "revision": 1,
+                  "tenant_id": "d7401000-0000-4000-8000-000000000001",
+                  "created_at": "2026-10-04T13:41:48.788623+00:00",
+                  "created_by": "d6800000-0000-4000-8000-000000000001",
+                  "approved_at": null,
+                  "approved_by": null,
+                  "employer_id": "d7403000-0000-4000-8000-000000000001",
+                  "effective_from": "2026-01-05",
+                  "effective_until": null
+                }
+              }
+            }
+          ],
+          "employee_id": "d7405000-0000-4000-8000-000000000002",
+          "employment_id": "d7406000-0000-4000-8000-000000000002",
+          "prior_outputs": [],
+          "current_earnings": {
+            "lines": [
+              {
+                "name": "الأجر الأساسي",
+                "amount": "125.0000000000000000",
+                "component": "base",
+                "attribution": "preserved_daily_source_basis",
+                "earning_from": "2026-01-05",
+                "source_parts": [
+                  {
+                    "raw": "125.0000000000000000",
+                    "name": "الأجر الأساسي",
+                    "detail": [
+                      {
+                        "raw": "125.0000000000000000",
+                        "date": "2026-01-05",
+                        "rate": "125.00",
+                        "_numerator": "1250000.00",
+                        "denominator": 1,
+                        "_denominator": "10000",
+                        "compensation_id": "d7407000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "component": "base",
+                    "classification": "earning"
+                  }
+                ],
+                "earning_until": "2026-01-05",
+                "declaration_state": "base_treatment_requires_verified_pack",
+                "declared_taxable_amount": null,
+                "declared_nontaxable_amount": null
+              }
+            ],
+            "contract": "cube4-current-earning-sources-v1",
+            "base_amount": 125,
+            "operational_complete": true,
+            "financially_qualified": false,
+            "declared_taxable_components": 0,
+            "unresolved_component_amount": 0,
+            "declared_nontaxable_components": 0
+          },
+          "earning_partitions": {
+            "lines": [
+              {
+                "amount": "125.0000000000000000",
+                "months": null,
+                "reason": "daily_payable_quantity_is_not_dated_work",
+                "fraction": null,
+                "component": "base",
+                "source_line_index": 0,
+                "legal_earning_attribution_known": false,
+                "operational_date_distribution_known": false
+              }
+            ],
+            "contract": "cube4-operational-earning-partitions-v1",
+            "financially_qualified": false
+          },
+          "cumulative_balances": {
+            "years": [
+              {
+                "year": 2026,
+                "basis": "reviewed_opening",
+                "known": true,
+                "through": "2026-01-04",
+                "source_ids": [
+                  "88ffe373-a4c2-45d6-9281-71cc31869ceb"
+                ],
+                "prior_tax_due": 0,
+                "prior_net_income": 0,
+                "prior_duration_days": 4
+              }
+            ],
+            "issues": [],
+            "contract": "cube4-cumulative-balances-v1",
+            "financially_qualified": false
+          },
+          "financially_qualified": false
+        },
+        "advance_deductions": []
+      }
+    ],
+    "issue_count": 5,
+    "global_issues": [
+      {
+        "code": "statutory_adapter_unqualified",
+        "owner": "compliance",
+        "blocking": true,
+        "employment_id": null
+      }
+    ],
+    "review_filter": {
+      "view": "all",
+      "has_more": false,
+      "next_after": null,
+      "matching_count": 2,
+      "attention_count": 2
+    },
+    "stale_reasons": [
+      "opening_ytd_changed"
+    ],
+    "final_output_id": null,
+    "approval_history": []
+  }
+}

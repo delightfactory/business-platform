@@ -1,0 +1,139 @@
+{
+  "status": "FINITE_ACCEPTANCE_SUPPORTS_CONDITIONAL_ENGINEERING_CLOSURE",
+  "atUTC": "2026-10-04T14:08:57.234Z",
+  "baseSHA": "1e7f579964c8e5c8150e0e5cb77485889e083a70",
+  "productionCodeAndMigrationsUnchanged": true,
+  "officialLegalAcceptance": false,
+  "parentApprovalRequiredForClosureDecision": true,
+  "assertions": {
+    "U06U07": 14,
+    "authority": 9,
+    "totalNewSQL": 23,
+    "savedSourcePriorFixedCommitDelta": 16,
+    "savedSourcePerDB": 8,
+    "prior186Qualification": 580,
+    "countsAreDistinctScopedEvidenceNotWholeCubeTotal": true
+  },
+  "calendar": {
+    "actualLeapPreview": true,
+    "actualShortMonthPreview": true,
+    "invalidCivilDateRequiredValidation": true,
+    "secondEmployerSavedOnce": true,
+    "DSTScope": "Actual IANA New_York25-hour civil day; saved civil period unchanged; no new Attendance clock ambiguity/device interpretation"
+  },
+  "U06Contract": "Whole-run atomic approval regardless filtered list. Per-item partial success/failed-only retry does not apply to this command; hidden/stale/remaining legal blocker refusal and explicit recalculate/retry proved. Existing correction-batch atomic/receipt evidence retains its own version and scope.",
+  "U07Contract": "Actual read503/not-checked states do not render ready or fabricated zero. UnknownYTD repaired from explicitly reviewed synthetic zero source via actual UI; return context preserved; explicit recalculation reduces blockers5to3, qualified net withheld; read-only reviewer receives compliance handoff.",
+  "authorityContract": "Inactive membership denies public payment/correction/advance commands. Lost Payroll blocks new run; historic closure authority remains per frozen542. Finance loss blocks new loan. All67 business-table hashes preserved in rollback checks.",
+  "independentReview": "Same authorized read-only reviewer accepts bounded U06/U07/authority evidence; three calendar tails then completed with actual artifacts. No new reviewer fleet.",
+  "assets": [
+    {
+      "path": "evidence/adam-final-acceptance/u06-u07-after-input-stale.json",
+      "sha256NormalizedLF": "650f1b70b3fa75e11fedef585468996ebba7a245652f92360a5f7f5f964a98c6"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u06-u07-after-fix.json",
+      "sha256NormalizedLF": "dc1b7e02474066bc2301d180a2cf71fa339ad12f61a6073a6c62b092482e3563"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/essential-authority-loss.json",
+      "sha256NormalizedLF": "7e02c24effa04f74088dff134f7ab1cc4abbd9e4472729b41b99c1f3ce50ec3b"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-essential-acceptance.json",
+      "sha256NormalizedLF": "346288b822c002b07341c057979aaeb590922cf148ac597f164fca89e1b657d1"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-invalid-date-browser.txt",
+      "sha256NormalizedLF": "1019a3650c9c12a26eae54a4950d7f2aca7d7c2ddda1daca558abb570373152c"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/final-auth-retirement.json",
+      "sha256NormalizedLF": "1d7185d2cf86e936095332c8c30d13e93c0ab48ca092c602bb686e11adf56797"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/final-services-stopped.json",
+      "sha256NormalizedLF": "01a8a3f784de9b75ab88cfad27e9e5522ce752f9d286ec360216e6f77e257575"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u06-u07-initial.snapshot.txt",
+      "sha256NormalizedLF": "1af58445c26d2a87d8bc30492d34b9225ff1401e2acf4b8b4024f9f13cc92ca4"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u06-filtered-hidden-blocker.snapshot.txt",
+      "sha256NormalizedLF": "6e8f60010a0a1ed44eebc541e59031289a86dc5051f701ea8b4aa7ff368627a4"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u07-read-unavailable.snapshot.txt",
+      "sha256NormalizedLF": "e1eb6c68ec47b10ac69f384063d1a8195f99914cba338b9f966905710c9ad8de"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u07-read-retried.snapshot.txt",
+      "sha256NormalizedLF": "9d072dbbb00331aaec435eff6cdc1981b1299c9b26ffbed7cfee72efc1f525d8"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u07-opening-saved.snapshot.txt",
+      "sha256NormalizedLF": "1df6cc641788d29ed5b8ee8db9df09a1efceeabf9cadc8d1e652327ec0362f68"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u07-recovery-legal-handoff.snapshot.txt",
+      "sha256NormalizedLF": "fbfaa133e2e3c08ab5e44a2db4b69b0d1c492f6c4cd338c62e674cbb196e53d3"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u07-responsible-role-handoff.snapshot.txt",
+      "sha256NormalizedLF": "00e0ab384b9dd873533f0aa5f9e2321ea915047ffee0405047f5cfb8b9ef2b4a"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-leap-preview.snapshot.txt",
+      "sha256NormalizedLF": "90893e47156211568b82c461a4e64fa3600c293722444231389fb24852c7e260"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-short-preview.snapshot.txt",
+      "sha256NormalizedLF": "43c3fe4a5612a025f7b7a0b76b2f09b3318643f77bfc356fe66db8100ca8aaac"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-second-reviewed-preview.snapshot.txt",
+      "sha256NormalizedLF": "eb5671ec907bfc867ce9dd7d1a8024b09c664befa6af7eb0a14c7aa4e7f2800a"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/calendar-second-saved.snapshot.txt",
+      "sha256NormalizedLF": "0851df7237363b770250f3c30e51474bf662583ea271d7612079780596dc7270"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u06-u07-after-input-stale.sql",
+      "sha256NormalizedLF": "1eabb7dc85bd467f90cb215f3455effa37b4ec01fd63fe7b49db5bbe533213a0"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/u06-u07-after-fix.sql",
+      "sha256NormalizedLF": "319e916527deed0657278c829932e871b84f525a3c60c72403371e885b997131"
+    },
+    {
+      "path": "evidence/adam-final-acceptance/essential-authority-loss.sql",
+      "sha256NormalizedLF": "875b3be21e177b2d78d9ffafc19227b85d73c5a11c4a746e8a3f25c224637ca1"
+    }
+  ],
+  "browserLog": {
+    "localPath": "browser-runtime-debt/browser-command-paid-closure-ui.log",
+    "sha256": "9dbc0bc8e38be745536a918e964fd3389ae7310afbbff10953f26f64e1e75c39",
+    "privateSecretsRedacted": true
+  },
+  "namedRemaining": {
+    "externalOfficialLegal": "Official dated tax/insurance/effective-coverage qualification with independent expected results; earlier unavailable answer retained, no new question.",
+    "ownerDeferredPilot": [
+      "U02 touch/zoom on target devices",
+      "U10 actual handset keyboard-overlay/extreme-input acceptance; exact cents unit tests/long Arabic and viewport evidence remain",
+      "Q03 representative customer volume/concurrency latency budget; bounded746ms case is not capacity qualification"
+    ],
+    "unresolvedEngineeringBlockersInReviewedFiniteScope": []
+  },
+  "runtime": {
+    "originalExpiryUTC": "2026-10-04T15:01:03.872Z",
+    "retiredAtUTC": "2026-10-04T14:07:40.731Z",
+    "retiredBeforeExpiry": true,
+    "privateConfigRemoved": true,
+    "ownedContainersRemoved": true,
+    "sharedPostgreSQLPreserved": true,
+    "businessTablesPreserved": 67,
+    "finalsPreserved": 9
+  },
+  "qualification": "Read final-cube4-qualification/conditional-engineering-result.json written after local documentation commit; exact source/tree and code-identity reuse, not full187 replay."
+}

@@ -1,0 +1,163 @@
+- generic
+  - alert
+  - complementary "التنقل الرئيسي"
+    - link "مساحة الشركة، الرئيسية" [ref=e1]
+      - StaticText "مساحة الشركة"
+      - StaticText "NONLEGAL D700 Leave binding QA"
+    - navigation "أقسام مساحة العمل" [ref=e2]
+      - link "الرئيسية" [ref=e5]
+        - StaticText "الرئيسية"
+      - paragraph
+        - StaticText "مجالات العمل"
+      - link "الرواتب" [ref=e6]
+        - StaticText "الرواتب"
+      - link "سلف الموظفين" [ref=e7]
+        - StaticText "سلف الموظفين"
+      - link "تقارير الرواتب" [ref=e8]
+        - StaticText "تقارير الرواتب"
+      - link "الموظفون" [ref=e9]
+        - StaticText "الموظفون"
+      - link "مراجعة الإجازات" [ref=e10]
+        - StaticText "مراجعة الإجازات"
+      - link "إعدادات الإجازات" [ref=e11]
+        - StaticText "إعدادات الإجازات"
+      - link "أرصدة الإجازات" [ref=e12]
+        - StaticText "أرصدة الإجازات"
+    - link "تبديل الشركة" [ref=e3]
+      - StaticText "تبديل الشركة"
+    - form
+      - button "تسجيل الخروج" [ref=e13]
+  - main
+    - sectionheader
+      - paragraph
+        - StaticText "مساحة الشركة · إعداد الرواتب"
+      - heading "دورة الرواتب والفترات" [level=1, ref=e14]
+      - paragraph
+        - StaticText "اضبط الدورة لكل جهة، وراجع تواريخ الفترات وجاهزيتها."
+      - link "العودة إلى مساحة الرواتب" [ref=e15]
+    - form
+      - LabelText
+        - StaticText "البحث عن جهة"
+        - textbox "البحث عن جهة" [ref=e28]
+      - button "بحث" [ref=e16]
+    - generic
+      - heading "NONLEGAL D700 second Employer" [level=2, ref=e17]
+      - link "اختيار جهة أخرى" [ref=e18]
+    - paragraph
+      - link "تحضير مدخلات الجهة ومراجعتها" [ref=e19]
+      - StaticText " · "
+      - link "العودة إلى حساب ومراجعة الرواتب" [ref=e20]
+    - generic
+      - heading "الفترات المحفوظة" [level=2, ref=e21]
+      - paragraph
+        - StaticText "لا توجد فترات محفوظة لهذه الجهة."
+    - generic
+      - heading "جاهزية الفترة" [level=2, ref=e22]
+      - list
+        - listitem [level=1]
+          - StaticText "الدورة: يلزم إعدادها أولًا."
+        - listitem [level=1]
+          - StaticText "بيانات الموظفين والتعويضات: لم تُفحص في هذه المرحلة."
+        - listitem [level=1]
+          - StaticText "الحضور والإجازات وتمويل الموظفين: لم تُفحص بعد. غياب خدمة اختيارية ليس خطأ."
+        - listitem [level=1]
+          - StaticText "حساب مرشح تشغيلي ومراجعته متاحان؛ التأهيل القانوني والمالي لم يكتمل بعد، ولا يوجد مبلغ صالح للصرف أو إقفال مالي."
+    - region "قبل تغيير الدورة" [ref=e4]
+      - heading "قبل تغيير الدورة" [level=2, ref=e23]
+      - paragraph
+        - StaticText "هذه التنبيهات لا تثبت اكتمال مدخلات الرواتب. تُراجع الجاهزية عند حساب الفترة، ولا يُعتبر اليوم بلا سجل غيابًا."
+    - form
+      - heading "إعداد دورة الرواتب" [level=2, ref=e24]
+      - LabelText
+        - StaticText "بداية أول فترة"
+        - Date "بداية أول فترة": 2028-02-01
+          - generic
+            - spinbutton "Day Day" [ref=e70]: 1
+              - StaticText "01"
+            - StaticText "/"
+            - spinbutton "Month Month" [ref=e71]: 2
+              - StaticText "02"
+            - StaticText "/"
+            - spinbutton "Year Year" [ref=e72]: 2028
+              - StaticText "2028"
+          - button "Show date picker Show date picker" [ref=e35]
+      - LabelText
+        - StaticText "يوم نهاية الفترة"
+        - combobox "يوم نهاية الفترة" [expanded=false, ref=e29]: 31
+          - MenuListPopup
+            - option "آخر يوم من الشهر" [ref=e36]
+            - option "1" [ref=e37]
+            - option "2" [ref=e38]
+            - option "3" [ref=e39]
+            - option "4" [ref=e40]
+            - option "5" [ref=e41]
+            - option "6" [ref=e42]
+            - option "7" [ref=e43]
+            - option "8" [ref=e44]
+            - option "9" [ref=e45]
+            - option "10" [ref=e46]
+            - option "11" [ref=e47]
+            - option "12" [ref=e48]
+            - option "13" [ref=e49]
+            - option "14" [ref=e50]
+            - option "15" [ref=e51]
+            - option "16" [ref=e52]
+            - option "17" [ref=e53]
+            - option "18" [ref=e54]
+            - option "19" [ref=e55]
+            - option "20" [ref=e56]
+            - option "21" [ref=e57]
+            - option "22" [ref=e58]
+            - option "23" [ref=e59]
+            - option "24" [ref=e60]
+            - option "25" [ref=e61]
+            - option "26" [ref=e62]
+            - option "27" [ref=e63]
+            - option "28" [ref=e64]
+            - option "29" [ref=e65]
+            - option "30" [ref=e66]
+            - option "31" [selected, ref=e67]
+      - LabelText
+        - StaticText "يوم الصرف المقرر"
+        - spinbutton "يوم الصرف المقرر" [required, ref=e30]: 31
+          - StaticText "31"
+      - LabelText
+        - StaticText "شهر الصرف"
+        - combobox "شهر الصرف" [expanded=false, ref=e31]: شهر نهاية الفترة
+          - MenuListPopup
+            - option "شهر نهاية الفترة" [selected, ref=e68]
+            - option "الشهر التالي" [ref=e69]
+      - LabelText
+        - StaticText "المنطقة الزمنية"
+        - textbox "المنطقة الزمنية" [required, ref=e32]: UTC
+          - StaticText "UTC"
+      - LabelText
+        - StaticText "سبب الإعداد أو التغيير"
+        - textbox "سبب الإعداد أو التغيير" [required, ref=e33]: NONLEGAL leap bounded reviewed calendar preview only
+          - StaticText "NONLEGAL leap bounded reviewed calendar preview only"
+      - paragraph
+        - StaticText "في الشهر الأقصر يُستخدم آخر يوم متاح. الدورة من 25 إلى 24 تستخدم نهاية يوم 24؛ ومن 26 إلى 25 تستخدم نهاية يوم 25. موعد الصرف موعد مقرر فقط ولا ينتقل تلقائيًا بسبب عطلة."
+      - region "معاينة الفترة" [ref=e25]
+        - heading "معاينة أول فترة" [level=3, ref=e34]
+        - DescriptionList
+          - term "بداية الفترة"
+          - definition
+            - StaticText "١ فبراير ٢٠٢٨"
+          - term "نهاية الفترة"
+          - definition
+            - StaticText "٢٩ فبراير ٢٠٢٨"
+          - term "الصرف المقرر"
+          - definition
+            - StaticText "٢٩ فبراير ٢٠٢٨"
+          - term "المنطقة الزمنية"
+          - definition
+            - StaticText "UTC"
+        - paragraph
+          - StaticText "راجع هذه التواريخ قبل الحفظ. لن تتغير حدود الفترات المحفوظة."
+      - button "حفظ الدورة والفترة" [ref=e26]
+      - button "إلغاء المعاينة" [ref=e27]
+    - group
+      - DisclosureTriangle "تاريخ إعداد الدورة" [expanded=false]
+        - StaticText "تاريخ إعداد الدورة"
+    - sectionfooter
+      - StaticText "منصة الأعمال"

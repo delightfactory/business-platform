@@ -1,0 +1,110 @@
+- complementary "التنقل الرئيسي"
+  - link "مساحة الشركة، الرئيسية" [ref=e800]
+    - StaticText "مساحة الشركة"
+    - StaticText "D740 Leave binding QA"
+  - navigation "أقسام مساحة العمل" [ref=e801]
+    - link "الرئيسية" [ref=e804]
+      - StaticText "الرئيسية"
+    - paragraph
+      - StaticText "مجالات العمل"
+    - link "الرواتب" [ref=e805]
+      - StaticText "الرواتب"
+    - link "تقارير الرواتب" [ref=e806]
+      - StaticText "تقارير الرواتب"
+  - link "تبديل الشركة" [ref=e802]
+    - StaticText "تبديل الشركة"
+  - form
+    - button "تسجيل الخروج" [ref=e807]
+- main
+  - sectionheader
+    - heading "حساب ومراجعة الرواتب" [level=1, ref=e808]
+    - paragraph
+      - StaticText "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦"
+    - link "مدخلات الفترة" [ref=e809]
+    - StaticText " · "
+    - link "دورة الجهة" [ref=e810]
+    - StaticText " · "
+    - link "اختيار جهة أخرى" [ref=e811]
+  - form
+    - LabelText
+      - StaticText "الفترة"
+      - combobox "الفترة" [expanded=false, ref=e819]: ٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦
+        - MenuListPopup
+          - option "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦" [selected, ref=e824]
+    - LabelText
+      - StaticText "البحث عن موظف"
+      - textbox "البحث عن موظف" [ref=e820]: D740
+        - StaticText "D740"
+    - button "عرض المراجعة" [ref=e812]
+  - navigation "نطاق قائمة الموظفين" [ref=e803]
+    - strong
+      - StaticText "كل الموظفين"
+    - StaticText " · "
+    - link "عرض الموظفين الذين يحتاجون انتباهًا" [ref=e813]
+  - generic
+    - heading "حساب قيد المراجعة" [level=2, ref=e814]
+    - paragraph
+      - StaticText "هذه مراجعة تشغيلية؛ الصافي والضريبة والتأمينات غير مؤهلة. لا اعتماد مالي أو إقفال أو صرف في هذه المرحلة."
+    - DescriptionList
+      - term "علاقات التوظيف المشمولة"
+      - definition
+        - StaticText "2"
+      - term "إجمالي الاستحقاقات التشغيلية"
+      - definition
+        - StaticText "٢٥٠٫٠٠ ج.م."
+      - term "الخصومات التشغيلية المعروفة دون الضريبة والتأمينات"
+      - definition
+        - StaticText "٠٫٠٠ ج.م."
+      - term "تكلفة جهة العمل المحسوبة"
+      - definition
+        - StaticText "٠٫٠٠ ج.م."
+      - term "صافي الحساب المراجع"
+      - definition
+        - StaticText "غير متاح قبل اكتمال مصادر الحساب"
+      - term "العوائق المطلوب حلها"
+      - definition
+        - StaticText "3"
+  - generic
+    - heading "عوائق الفترة والمسؤول عنها" [level=2, ref=e815]
+    - paragraph
+      - StaticText "قواعد الفترة لها مرجع مراجعة، لكن محركها القانوني غير مؤهل؛ المسؤول: الامتثال والهندسة."
+  - generic
+    - heading "مقارنة الحسابات" [level=2, ref=e816]
+    - paragraph
+      - StaticText "المقارنة غير متاحة: لا يوجد حساب سابق حالي بنفس طول الفترة ونوعها أو أن بياناته غير مكتملة. لا يُعرض فرق صفري مفترض."
+  - generic
+    - heading "مراجعة الموظفين والعوائق" [level=2, ref=e817]
+    - list
+      - listitem [level=1]
+        - heading "D740 Leave Employee · D740" [level=3, ref=e821]
+          - StaticText "D740 Leave Employee · D740"
+        - paragraph
+          - StaticText "أجر يومي · الأيام المؤهلة 1 ·"
+        - paragraph
+          - StaticText "الأجر الأساسي: ١٢٥٫٠٠ ج.م. · الاستحقاقات المعروفة: ١٢٥٫٠٠ ج.م. · الخصومات التشغيلية المعروفة: ٠٫٠٠ ج.م."
+        - region "مصادر الأيام" [ref=e822]
+          - heading "مصدر الأيام" [level=4, ref=e825]
+          - paragraph
+            - StaticText "إجمالي يدوي معتمد · مصادر محفوظة للمراجعة"
+          - paragraph
+            - StaticText "الأيام المستحقة من المصدر المختار: ١"
+          - paragraph
+            - StaticText "الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى."
+        - paragraph
+          - StaticText "لا توجد حزمة ضريبية واحدة صالحة للنطاق وكود المعاملة المحددين."
+        - link "تفاصيل المكوّنات وشرح الأيام" [ref=e823]
+    - paragraph
+      - StaticText "انتهت الصفحات المطابقة لهذه القائمة."
+  - generic
+    - heading "جاهزية الاعتماد" [level=2, ref=e818]
+    - paragraph
+      - StaticText "الاعتماد غير متاح: 3 عائق في المصادر أو التأهيل المالي والقانوني. راجع المسؤول والإجراء في قائمة العوائق، ثم أعد الحساب. لا يُعتبر هذا الحساب راتبًا صالحًا للصرف."
+    - group
+      - DisclosureTriangle "تاريخ الاعتماد والعودة للمراجعة" [expanded=false]
+        - StaticText "تاريخ الاعتماد والعودة للمراجعة"
+  - group
+    - DisclosureTriangle "تاريخ الحساب والإلغاء المحفوظ" [expanded=false]
+      - StaticText "تاريخ الحساب والإلغاء المحفوظ"
+  - sectionfooter
+    - StaticText "منصة الأعمال"
+- alert

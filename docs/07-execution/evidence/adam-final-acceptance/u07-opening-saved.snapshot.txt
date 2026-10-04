@@ -1,0 +1,184 @@
+- complementary "التنقل الرئيسي"
+  - link "مساحة الشركة، الرئيسية" [ref=e653]
+    - StaticText "مساحة الشركة"
+    - StaticText "D740 Leave binding QA"
+  - navigation "أقسام مساحة العمل" [ref=e654]
+    - link "الرئيسية" [ref=e657]
+      - StaticText "الرئيسية"
+    - paragraph
+      - StaticText "مجالات العمل"
+    - link "الرواتب" [ref=e658]
+      - StaticText "الرواتب"
+    - link "تقارير الرواتب" [ref=e659]
+      - StaticText "تقارير الرواتب"
+    - link "مراجعة الإجازات" [ref=e660]
+      - StaticText "مراجعة الإجازات"
+    - link "إعدادات الإجازات" [ref=e661]
+      - StaticText "إعدادات الإجازات"
+    - link "أرصدة الإجازات" [ref=e662]
+      - StaticText "أرصدة الإجازات"
+  - link "تبديل الشركة" [ref=e655]
+    - StaticText "تبديل الشركة"
+  - form
+    - button "تسجيل الخروج" [ref=e663]
+- main
+  - sectionheader
+    - heading "تحضير مدخلات الرواتب" [level=1, ref=e685]
+    - paragraph
+      - StaticText "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦"
+    - link "العودة إلى مراجعة الرواتب للفترة" [ref=e686]
+    - StaticText " · "
+    - link "دورة الجهة والفترات" [ref=e687]
+    - StaticText " · "
+    - link "اختيار جهة أخرى" [ref=e688]
+  - form
+    - LabelText
+      - StaticText "الفترة"
+      - combobox "الفترة" [expanded=false, ref=e696]: ٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦
+        - MenuListPopup
+          - option "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦" [selected, ref=e698]
+    - LabelText
+      - StaticText "البحث عن موظف"
+      - textbox "البحث عن موظف" [ref=e697]: D740
+        - StaticText "D740"
+    - button "عرض المدخلات" [ref=e689]
+  - generic
+    - heading "ما يلزم قبل الحساب" [level=2, ref=e690]
+    - paragraph
+      - StaticText "سياسة الشركة محفوظة."
+    - paragraph
+      - StaticText "المراجعة القانونية غير مؤهلة؛ المسؤول: مسؤول الامتثال. الحساب التشغيلي متاح للمراجعة؛ الصافي والإقفال المالي يتطلبان تأهيل القواعد القانونية."
+    - paragraph
+      - StaticText "اختر مصدر أيام واحدًا للأجر اليومي. راجع أثر الحضور والإجازات في صفحة مراجعة الرواتب؛ غياب الخدمة الاختيارية لا يمنع إدخال إجمالي يدوي موثق."
+  - group
+    - DisclosureTriangle "الموظفون المؤهلون لهذه الفترة" [expanded=false]
+      - StaticText "الموظفون المؤهلون لهذه الفترة"
+  - group
+    - DisclosureTriangle "المدخلات المحفوظة" [expanded=false]
+      - StaticText "المدخلات المحفوظة"
+  - navigation "إضافة مدخل" [ref=e684]
+    - link "مكوّنات الراتب" [ref=e691]
+    - link "المكوّنات المتكررة للموظف" [ref=e692]
+    - link "وحدات الأجر اليومي" [ref=e693]
+    - link "الأرصدة الافتتاحية للسنة" [ref=e694]
+    - link "بيانات الضريبة والتأمينات" [ref=e695]
+  - form
+    - heading "الأرصدة الافتتاحية للسنة" [level=2, ref=e713]
+    - paragraph
+      - StaticText "الحالة: مسودة"
+    - group
+      - LabelText
+        - StaticText "الموظف"
+        - combobox "الموظف" [expanded=false, disabled, ref=e716]: D740 Leave Employee
+          - MenuListPopup
+            - option "D740 Leave Employee" [selected, ref=e728]
+      - LabelText
+        - StaticText "تاريخ السريان"
+        - Date "تاريخ السريان": 2026-01-05
+          - generic
+            - spinbutton "Day Day" [ref=e729]: 5
+              - StaticText "05"
+            - StaticText "/"
+            - spinbutton "Month Month" [ref=e730]: 1
+              - StaticText "01"
+            - StaticText "/"
+            - spinbutton "Year Year" [ref=e731]: 2026
+              - StaticText "2026"
+          - button "Show date picker Show date picker" [ref=e726]
+      - LabelText
+        - StaticText "ينتهي قبل تاريخ (اختياري)"
+        - Date "ينتهي قبل تاريخ (اختياري)"
+          - generic
+            - spinbutton "Day Day" [ref=e732]: 0
+              - StaticText "dd"
+            - StaticText "/"
+            - spinbutton "Month Month" [ref=e733]: 0
+              - StaticText "mm"
+            - StaticText "/"
+            - spinbutton "Year Year" [ref=e734]: 0
+              - StaticText "yyyy"
+          - button "Show date picker Show date picker" [ref=e727]
+      - LabelText
+        - StaticText "السنة"
+        - textbox "السنة" [required, ref=e717]: 2026
+          - StaticText "2026"
+      - LabelText
+        - StaticText "الأجر الخاضع السابق"
+        - textbox "الأجر الخاضع السابق" [required, ref=e718]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "الضريبة المخصومة سابقًا"
+        - textbox "الضريبة المخصومة سابقًا" [required, ref=e719]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "الضريبة المستحقة سابقًا (إن كانت معلومة)"
+        - textbox "الضريبة المستحقة سابقًا (إن كانت معلومة)" [ref=e720]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "أساس التأمينات السابق"
+        - textbox "أساس التأمينات السابق" [required, ref=e721]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "اشتراكات الموظف السابقة"
+        - textbox "اشتراكات الموظف السابقة" [required, ref=e722]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "اشتراكات جهة العمل السابقة"
+        - textbox "اشتراكات جهة العمل السابقة" [required, ref=e723]: 0
+          - StaticText "0"
+      - LabelText
+        - StaticText "مرجع الإثبات"
+        - textbox "مرجع الإثبات" [required, ref=e724]: NONLEGAL U07 independently reviewed zero opening source
+          - StaticText "NONLEGAL U07 independently reviewed zero opening source"
+      - LabelText
+        - StaticText "سبب الإدخال أو التغيير"
+        - textbox "سبب الإدخال أو التغيير" [required, ref=e725]: Reviewed synthetic zero source; never an inferred missing balance
+          - StaticText "Reviewed synthetic zero source; never an inferred missing balance"
+      - group
+        - DisclosureTriangle "تفاصيل احتساب الأرصدة السابقة (إن كانت معلومة)" [expanded=true]
+          - StaticText "تفاصيل احتساب الأرصدة السابقة (إن كانت معلومة)"
+        - LabelText
+          - StaticText "الدخل الخاضع بعد الخصومات القانونية (إن كان معلومًا)"
+          - textbox "الدخل الخاضع بعد الخصومات القانونية (إن كان معلومًا)" [ref=e735]: 0
+            - StaticText "0"
+        - LabelText
+          - StaticText "بداية الفترة السابقة"
+          - Date "بداية الفترة السابقة": 2026-01-01
+            - generic
+              - spinbutton "Day Day" [ref=e739]: 1
+                - StaticText "01"
+              - StaticText "/"
+              - spinbutton "Month Month" [ref=e740]: 1
+                - StaticText "01"
+              - StaticText "/"
+              - spinbutton "Year Year" [ref=e741]: 2026
+                - StaticText "2026"
+            - button "Show date picker Show date picker" [ref=e737]
+        - LabelText
+          - StaticText "نهاية الفترة السابقة"
+          - Date "نهاية الفترة السابقة": 2026-01-04
+            - generic
+              - spinbutton "Day Day" [ref=e742]: 4
+                - StaticText "04"
+              - StaticText "/"
+              - spinbutton "Month Month" [ref=e743]: 1
+                - StaticText "01"
+              - StaticText "/"
+              - spinbutton "Year Year" [ref=e744]: 2026
+                - StaticText "2026"
+            - button "Show date picker Show date picker" [ref=e738]
+        - LabelText
+          - StaticText "مدة الاحتساب الضريبي السابقة بالأيام وفق المرجع"
+          - textbox "مدة الاحتساب الضريبي السابقة بالأيام وفق المرجع" [required, ref=e736]: 4
+            - StaticText "4"
+        - paragraph
+          - StaticText "انقل الدخل بعد الخصومات القانونية وقبل الإعفاء الشخصي السنوي من المرجع السابق؛ قد يختلف عن الأجر الخاضع السابق. وانقل الفترة ومدتها من المرجع المراجَع. لا تُحسب المدة تلقائيًا من تاريخ الصرف أو عدد أيام دورة الراتب. اترك الحقول الثلاثة فارغة إن لم تكن معلومة."
+    - paragraph
+      - StaticText "أدخل القيم من مرجع مراجَع. الضريبة المستحقة هي نتيجة الحساب السابق، وقد تختلف عن المبلغ المخصوم. اتركها فارغة إن لم تكن معلومة؛ الصفر يعني أن المستحق صفر فعلًا. يلزم استكمال البيانات المطلوبة قبل الاعتماد النهائي."
+    - status
+      - StaticText "تم حفظ السجل في حالته الظاهرة. لم يُطبّق في راتب أو صرف."
+    - button "حفظ المدخل" [ref=e714]
+    - link "العودة إلى المدخلات" [ref=e715]
+  - sectionfooter
+    - StaticText "منصة الأعمال"
+- alert

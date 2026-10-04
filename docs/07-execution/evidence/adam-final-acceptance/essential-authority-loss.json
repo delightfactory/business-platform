@@ -1,0 +1,8 @@
+{
+  "status": "CURRENT_INACTIVE_AND_ENTITLEMENT_COMMAND_DENIAL_PASS",
+  "assertions": 9,
+  "atUTC": "2026-10-04T13:55:45.972Z",
+  "allBusinessAndReceiptHashesPreserved": true,
+  "fixtureRolledBack": true,
+  "scope": "Inactive membership denies public payment prepare/correction command/advance command; payroll entitlement loss blocks new run but retains governed historical payment/correction authority per frozen spec542; finance entitlement loss blocks new advance save. Not new commit-revocation interleavings"
+}

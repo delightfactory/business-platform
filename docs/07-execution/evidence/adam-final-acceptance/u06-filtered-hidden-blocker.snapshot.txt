@@ -1,0 +1,119 @@
+- complementary "التنقل الرئيسي"
+  - link "مساحة الشركة، الرئيسية" [ref=e612]
+    - StaticText "مساحة الشركة"
+    - StaticText "D740 Leave binding QA"
+  - navigation "أقسام مساحة العمل" [ref=e613]
+    - link "الرئيسية" [ref=e616]
+      - StaticText "الرئيسية"
+    - paragraph
+      - StaticText "مجالات العمل"
+    - link "الرواتب" [ref=e617]
+      - StaticText "الرواتب"
+    - link "تقارير الرواتب" [ref=e618]
+      - StaticText "تقارير الرواتب"
+    - link "مراجعة الإجازات" [ref=e619]
+      - StaticText "مراجعة الإجازات"
+    - link "إعدادات الإجازات" [ref=e620]
+      - StaticText "إعدادات الإجازات"
+    - link "أرصدة الإجازات" [ref=e621]
+      - StaticText "أرصدة الإجازات"
+  - link "تبديل الشركة" [ref=e614]
+    - StaticText "تبديل الشركة"
+  - form
+    - button "تسجيل الخروج" [ref=e622]
+- main
+  - sectionheader
+    - heading "حساب ومراجعة الرواتب" [level=1, ref=e623]
+    - paragraph
+      - StaticText "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦"
+    - link "مدخلات الفترة" [ref=e624]
+    - StaticText " · "
+    - link "دورة الجهة" [ref=e625]
+    - StaticText " · "
+    - link "اختيار جهة أخرى" [ref=e626]
+  - form
+    - LabelText
+      - StaticText "الفترة"
+      - combobox "الفترة" [expanded=false, ref=e634]: ٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦
+        - MenuListPopup
+          - option "٥ يناير ٢٠٢٦ — ٥ يناير ٢٠٢٦" [selected, ref=e639]
+    - LabelText
+      - StaticText "البحث عن موظف"
+      - textbox "البحث عن موظف" [ref=e635]: U07KNOWN
+        - StaticText "U07KNOWN"
+    - button "عرض المراجعة" [ref=e627]
+  - navigation "نطاق قائمة الموظفين" [ref=e615]
+    - strong
+      - StaticText "كل الموظفين"
+    - StaticText " · "
+    - link "عرض الموظفين الذين يحتاجون انتباهًا" [ref=e628]
+  - generic
+    - heading "حساب قيد المراجعة" [level=2, ref=e629]
+    - paragraph
+      - StaticText "هذه مراجعة تشغيلية؛ الصافي والضريبة والتأمينات غير مؤهلة. لا اعتماد مالي أو إقفال أو صرف في هذه المرحلة."
+    - DescriptionList
+      - term "علاقات التوظيف المشمولة"
+      - definition
+        - StaticText "2"
+      - term "إجمالي الاستحقاقات التشغيلية"
+      - definition
+        - StaticText "٢٥٠٫٠٠ ج.م."
+      - term "الخصومات التشغيلية المعروفة دون الضريبة والتأمينات"
+      - definition
+        - StaticText "٠٫٠٠ ج.م."
+      - term "تكلفة جهة العمل المحسوبة"
+      - definition
+        - StaticText "٠٫٠٠ ج.م."
+      - term "صافي الحساب المراجع"
+      - definition
+        - StaticText "غير متاح قبل اكتمال مصادر الحساب"
+      - term "العوائق المطلوب حلها"
+      - definition
+        - StaticText "5"
+  - generic
+    - heading "عوائق الفترة والمسؤول عنها" [level=2, ref=e630]
+    - paragraph
+      - StaticText "قواعد الفترة لها مرجع مراجعة، لكن محركها القانوني غير مؤهل؛ المسؤول: الامتثال والهندسة."
+  - group
+    - DisclosureTriangle "إجراءات اختيارية للمسير بعد مراجعة العوائق" [expanded=false]
+      - StaticText "إجراءات اختيارية للمسير بعد مراجعة العوائق"
+  - generic
+    - heading "مقارنة الحسابات" [level=2, ref=e631]
+    - paragraph
+      - StaticText "المقارنة غير متاحة: لا يوجد حساب سابق حالي بنفس طول الفترة ونوعها أو أن بياناته غير مكتملة. لا يُعرض فرق صفري مفترض."
+  - generic
+    - heading "مراجعة الموظفين والعوائق" [level=2, ref=e632]
+    - list
+      - listitem [level=1]
+        - heading "موظف بأرصدة موثقة تجريبيًا · U07KNOWN" [level=3, ref=e636]
+          - StaticText "موظف بأرصدة موثقة تجريبيًا · U07KNOWN"
+        - paragraph
+          - StaticText "أجر يومي · الأيام المؤهلة 1 ·"
+        - paragraph
+          - StaticText "الأجر الأساسي: ١٢٥٫٠٠ ج.م. · الاستحقاقات المعروفة: ١٢٥٫٠٠ ج.م. · الخصومات التشغيلية المعروفة: ٠٫٠٠ ج.م."
+        - region "مصادر الأيام" [ref=e637]
+          - heading "مصدر الأيام" [level=4, ref=e640]
+          - paragraph
+            - StaticText "إجمالي يدوي معتمد · مصادر محفوظة للمراجعة"
+          - paragraph
+            - StaticText "الأيام المستحقة من المصدر المختار: ١"
+          - paragraph
+            - StaticText "الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى."
+        - paragraph
+          - StaticText "لا توجد حزمة ضريبية واحدة صالحة للنطاق وكود المعاملة المحددين."
+        - link "تفاصيل المكوّنات وشرح الأيام" [ref=e638]
+    - paragraph
+      - StaticText "انتهت الصفحات المطابقة لهذه القائمة."
+  - generic
+    - heading "جاهزية الاعتماد" [level=2, ref=e633]
+    - paragraph
+      - StaticText "الاعتماد غير متاح: 5 عائق في المصادر أو التأهيل المالي والقانوني. راجع المسؤول والإجراء في قائمة العوائق، ثم أعد الحساب. لا يُعتبر هذا الحساب راتبًا صالحًا للصرف."
+    - group
+      - DisclosureTriangle "تاريخ الاعتماد والعودة للمراجعة" [expanded=false]
+        - StaticText "تاريخ الاعتماد والعودة للمراجعة"
+  - group
+    - DisclosureTriangle "تاريخ الحساب والإلغاء المحفوظ" [expanded=false]
+      - StaticText "تاريخ الحساب والإلغاء المحفوظ"
+  - sectionfooter
+    - StaticText "منصة الأعمال"
+- alert

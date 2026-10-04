@@ -1,0 +1,105 @@
+- generic
+  - alert
+  - complementary "التنقل الرئيسي"
+    - link "مساحة الشركة، الرئيسية" [ref=e1]
+      - StaticText "مساحة الشركة"
+      - StaticText "NONLEGAL D700 Leave binding QA"
+    - navigation "أقسام مساحة العمل" [ref=e2]
+      - link "الرئيسية" [ref=e5]
+        - StaticText "الرئيسية"
+      - paragraph
+        - StaticText "مجالات العمل"
+      - link "الرواتب" [ref=e6]
+        - StaticText "الرواتب"
+      - link "سلف الموظفين" [ref=e7]
+        - StaticText "سلف الموظفين"
+      - link "تقارير الرواتب" [ref=e8]
+        - StaticText "تقارير الرواتب"
+      - link "الموظفون" [ref=e9]
+        - StaticText "الموظفون"
+      - link "مراجعة الإجازات" [ref=e10]
+        - StaticText "مراجعة الإجازات"
+      - link "إعدادات الإجازات" [ref=e11]
+        - StaticText "إعدادات الإجازات"
+      - link "أرصدة الإجازات" [ref=e12]
+        - StaticText "أرصدة الإجازات"
+    - link "تبديل الشركة" [ref=e3]
+      - StaticText "تبديل الشركة"
+    - form
+      - button "تسجيل الخروج" [ref=e13]
+  - main
+    - sectionheader
+      - paragraph
+        - StaticText "مساحة الشركة · إعداد الرواتب"
+      - heading "دورة الرواتب والفترات" [level=1, ref=e14]
+      - paragraph
+        - StaticText "اضبط الدورة لكل جهة، وراجع تواريخ الفترات وجاهزيتها."
+      - link "العودة إلى مساحة الرواتب" [ref=e15]
+    - form
+      - LabelText
+        - StaticText "البحث عن جهة"
+        - textbox "البحث عن جهة" [ref=e28]
+      - button "بحث" [ref=e16]
+    - generic
+      - heading "NONLEGAL D700 second Employer" [level=2, ref=e17]
+      - link "اختيار جهة أخرى" [ref=e18]
+    - paragraph
+      - link "تحضير مدخلات الجهة ومراجعتها" [ref=e19]
+      - StaticText " · "
+      - link "العودة إلى حساب ومراجعة الرواتب" [ref=e20]
+    - generic
+      - heading "الفترات المحفوظة" [level=2, ref=e21]
+      - list
+        - listitem [level=1]
+          - heading "رواتب ديسمبر ٢٠٢٦" [level=3, ref=e87]
+            - StaticText "رواتب ديسمبر ٢٠٢٦"
+          - DescriptionList
+            - term "بداية الفترة"
+            - definition
+              - StaticText "٢٦ نوفمبر ٢٠٢٦"
+            - term "نهاية الفترة"
+            - definition
+              - StaticText "٢٥ ديسمبر ٢٠٢٦"
+            - term "الصرف المقرر"
+            - definition
+              - StaticText "١ يناير ٢٠٢٧"
+            - term "المنطقة الزمنية"
+            - definition
+              - StaticText "UTC"
+          - paragraph
+            - StaticText "التواريخ محفوظة؛ حساب مرشح تشغيلي متاح من مراجعة الرواتب. التأهيل المالي والقانوني ما زال مطلوبًا."
+    - generic
+      - heading "جاهزية الفترة" [level=2, ref=e22]
+      - list
+        - listitem [level=1]
+          - StaticText "الدورة: التواريخ محددة ومحفوظة."
+        - listitem [level=1]
+          - StaticText "بيانات الموظفين والتعويضات: لم تُفحص في هذه المرحلة."
+        - listitem [level=1]
+          - StaticText "الحضور والإجازات وتمويل الموظفين: لم تُفحص بعد. غياب خدمة اختيارية ليس خطأ."
+        - listitem [level=1]
+          - StaticText "حساب مرشح تشغيلي ومراجعته متاحان؛ التأهيل القانوني والمالي لم يكتمل بعد، ولا يوجد مبلغ صالح للصرف أو إقفال مالي."
+    - generic
+      - form
+        - heading "الفترة التالية للمراجعة" [level=2, ref=e84]
+        - DescriptionList
+          - term "بداية الفترة"
+          - definition
+            - StaticText "٢٦ ديسمبر ٢٠٢٦"
+          - term "نهاية الفترة"
+          - definition
+            - StaticText "٢٥ يناير ٢٠٢٧"
+          - term "الصرف المقرر"
+          - definition
+            - StaticText "١ فبراير ٢٠٢٧"
+          - term "المنطقة الزمنية"
+          - definition
+            - StaticText "UTC"
+        - button "توليد الفترة بهذه التواريخ" [ref=e85]
+      - paragraph
+        - link "تغيير الدورة للفترات القادمة" [ref=e86]
+    - group
+      - DisclosureTriangle "تاريخ إعداد الدورة" [expanded=false]
+        - StaticText "تاريخ إعداد الدورة"
+    - sectionfooter
+      - StaticText "منصة الأعمال"

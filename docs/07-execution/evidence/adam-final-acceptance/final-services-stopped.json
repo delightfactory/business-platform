@@ -1,0 +1,12 @@
+{
+  "atUTC": "2026-10-04T14:07:38.259Z",
+  "ownLauncherStopped": 4652,
+  "ownContainersExited": [
+    "cube4-adam-task5-debt-auth",
+    "cube4-adam-task5-debt-rest"
+  ],
+  "sharedDatabaseContainerUntouched": true,
+  "originalAuthExpiryUTC": "2026-10-04T15:01:03.872Z",
+  "expiryNotExtended": true,
+  "samePrivateConfigPreservedForAuthorizedResume": true
+}

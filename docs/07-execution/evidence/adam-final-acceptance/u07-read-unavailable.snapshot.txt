@@ -1,0 +1,32 @@
+- complementary "التنقل الرئيسي"
+  - link "مساحة الشركة، الرئيسية" [ref=e641]
+    - StaticText "مساحة الشركة"
+    - StaticText "D740 Leave binding QA"
+  - navigation "أقسام مساحة العمل" [ref=e642]
+    - link "الرئيسية" [ref=e644]
+      - StaticText "الرئيسية"
+    - paragraph
+      - StaticText "مجالات العمل"
+    - link "الرواتب" [ref=e645]
+      - StaticText "الرواتب"
+    - link "تقارير الرواتب" [ref=e646]
+      - StaticText "تقارير الرواتب"
+    - link "مراجعة الإجازات" [ref=e647]
+      - StaticText "مراجعة الإجازات"
+    - link "إعدادات الإجازات" [ref=e648]
+      - StaticText "إعدادات الإجازات"
+    - link "أرصدة الإجازات" [ref=e649]
+      - StaticText "أرصدة الإجازات"
+  - link "تبديل الشركة" [ref=e643]
+    - StaticText "تبديل الشركة"
+  - form
+    - button "تسجيل الخروج" [ref=e650]
+- main
+  - generic
+    - heading "مراجعة الرواتب" [level=1, ref=e651]
+    - alert
+      - StaticText "تعذر تحميل مراجعة هذه الفترة؛ الاختيارات محفوظة في الرابط."
+    - link "إعادة المحاولة بنفس الجهة والفترة" [ref=e652]
+  - sectionfooter
+    - StaticText "منصة الأعمال"
+- alert

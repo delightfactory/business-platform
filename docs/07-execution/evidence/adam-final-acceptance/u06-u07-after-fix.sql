@@ -1,0 +1,15 @@
+BEGIN;SELECT no_plan();SET LOCAL ROLE authenticated;SELECT set_config('request.jwt.claim.sub','d6800000-0000-4000-8000-000000000001',true);
+SELECT set_config('test.all',public.payroll_run_review_workspace('d7401000-0000-4000-8000-000000000001','d7403000-0000-4000-8000-000000000001','d740e000-0000-4000-8000-000000000001',NULL,30,NULL,'','all')::text,true);
+SELECT set_config('test.filtered',public.payroll_run_review_workspace('d7401000-0000-4000-8000-000000000001','d7403000-0000-4000-8000-000000000001','d740e000-0000-4000-8000-000000000001',NULL,30,NULL,'U07KNOWN','all')::text,true);
+SELECT is(current_setting('test.filtered')::jsonb->'summary',current_setting('test.all')::jsonb->'summary','filtered view retains whole Employer monetary totals and employee count');
+SELECT is(current_setting('test.filtered')::jsonb->'approval',current_setting('test.all')::jsonb->'approval','filtered-out blocker remains in whole-run approval readiness');
+SELECT is(jsonb_array_length(current_setting('test.filtered')::jsonb->'employees'),1,'filtered view contains exactly one of two employees');
+SELECT is(current_setting('test.all')::jsonb->'summary'->>'employee_count','2','approval scope is two employees regardless displayed one');
+SELECT ok(current_setting('test.all')::jsonb->'summary'->>'net' IS NULL AND current_setting('test.all')::jsonb->'approval'->>'ready'='false','unavailable legal/YTD context never becomes zero qualified net');
+RESET ROLE;
+SELECT set_config('test.before',(SELECT jsonb_build_object('run',to_jsonb(r),'candidate',(SELECT to_jsonb(c) FROM payroll.candidates c WHERE c.id=r.candidate_id),'finals',(SELECT count(*) FROM payroll.final_contexts WHERE tenant_id=r.tenant_id),'approvals',(SELECT count(*) FROM payroll.approval_events WHERE tenant_id=r.tenant_id))::text FROM payroll.runs r WHERE tenant_id='d7401000-0000-4000-8000-000000000001'),true);
+SET LOCAL ROLE authenticated;
+SELECT throws_ok(format('SELECT public.payroll_candidate_approval(%L,%L,%L,%L,%L,%s,%L,%L,%L)','d7401000-0000-4000-8000-000000000001','d7403000-0000-4000-8000-000000000001','d740e000-0000-4000-8000-000000000001',current_setting('test.all')::jsonb->'run'->>'id',current_setting('test.all')::jsonb->'run'->>'candidate_id',current_setting('test.all')::jsonb->'run'->>'revision','approve','NONLEGAL explicit bounded approval refusal',gen_random_uuid()),'23514','payroll_approval_blocked','whole-run approval refuses stale or remaining legal blocker');
+RESET ROLE;
+SELECT is((SELECT jsonb_build_object('run',to_jsonb(r),'candidate',(SELECT to_jsonb(c) FROM payroll.candidates c WHERE c.id=r.candidate_id),'finals',(SELECT count(*) FROM payroll.final_contexts WHERE tenant_id=r.tenant_id),'approvals',(SELECT count(*) FROM payroll.approval_events WHERE tenant_id=r.tenant_id))::text FROM payroll.runs r WHERE tenant_id='d7401000-0000-4000-8000-000000000001'),current_setting('test.before'),'refusal is atomic: no partial employee approval, final or changed candidate/run');
+SELECT jsonb_build_object('workspace',current_setting('test.all')::jsonb,'phase','after-fix');SELECT * FROM finish();ROLLBACK;
