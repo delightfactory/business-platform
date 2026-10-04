@@ -1,5 +1,19 @@
 # Cube 4 decision and acceptance register
 
+## ADAM reviewed partial insurance and manual ending earnings checkpoint, 2026-10-04
+
+Code fa04bf6f3084ae10cb4a9b1e1ec3a47ab32d4b83, tree d4caa79632cde7d36dd49618597739f4fa389a90, installed additive schema174 in three owned local QA databases. [Integrated evidence](cube-4-adam-reviewed-month-ending-integrated-evidence.json) binds ten code/test blobs and 94 current artifacts, including failed attempts; prior63 loan and53 insurance artifact hashes reverified unchanged. Resume from8f84b96; local economical delta only.
+
+| Journey | Acceptance | Boundary |
+| --- | --- | --- |
+| Joining/ending/cutoff reviewed insurance month | Explicit documented reviewed_due/reviewed_not_due; partial eligible wage never prorates insured wage; full month insurance pack/issuer coverage; absent disposition preserves original complete-month behavior; no-liability stores source without financial month claim | CLOSED bounded one context/year/owned calendar month. Multi-context/year/month allocation OPEN |
+| Manual reviewed termination earnings | Existing component declaration and actual finance save/approve feed qualified general calculation; one approved nontaxable1000 appears once; atomic rollback/replay and applied revision3 verified | CLOSED bounded V1 manual route, not automatic specialist entitlement formulas or complete ending workflow |
+| Actual ended employee October UI | Ordinary People ending/handoff acknowledgement; one October period; source/contextrev4; component and adjustment save/approve; calculation/explanation/approval; mobile successful finalize/lost200/Reload/original receipt recovery/protected payslip.4258.06 base+1000,employee100,employer200,tax415.79,net4742.27. Four prior rows and all loan heads/events unchanged | CLOSED bounded actual fa04bf6 UI. Explicit final-period marker/report and obligation handoff acceptance remain OPEN |
+| Delta verification | Final combined DDL74 SQL checks (35 manual+39 prior insured), source transport6/typecheck/lint/build pass. Earlier joining27/end30/cutoff30 reused with explicit hash boundary, not recounted as final174 qualification | Full174 same-SHA/tree qualification OPEN |
+
+Remaining essential code: multi-context/year/multiple-month composition, general25percent/50percent/priority, optional Time/Leave/daily qualified integration, ending final-period marker/report, paid correction/payment/report/races. Frozen spec sections2/18 exclude automatic specialist termination formulas; approved manual reviewed amount/external handoff is the V1 route and must still complete its report/obligations. Real official2026 issuance/comparison remains a separate known external dependency, not a substitute for these code gaps. Own services stopped; authorized temporary synthetic Auth/task QA retained only for immediate same-task resume and require cleanup at completion. No wholeCube or official/legal release claim; no Actions/fetch/push/merge/deploy/production changes.
+
+
 ## ADAM loan UI and reviewed full-month insurance checkpoint, 2026-10-04
 
 Code 2a91aa39b8697dc514245b872d814f295f2c228f, tree 7fd1196bfc8720b3260be661141895438efc989e, schema172. [Integrated loan and insurance evidence](cube-4-adam-loan-insurance-integrated-evidence.json) binds 9 changed code/test blobs, 63 frozen loan artifacts and 53 new checkpoint artifacts. Resume was from accepted045f581; no new large unit started after ADAM requested this checkpoint.

@@ -1,0 +1,2497 @@
+{
+  "status": "BOUNDED_REVIEWED_PARTIAL_INSURANCE_AND_MANUAL_ENDING_EARNING_CHECKPOINT",
+  "codeSHA": "fa04bf6f3084ae10cb4a9b1e1ec3a47ab32d4b83",
+  "codeTree": "d4caa79632cde7d36dd49618597739f4fa389a90",
+  "parentAccepted": "8f84b96dc3fe3df8fb8ef5bc824c24da1639ba5e",
+  "schema": 174,
+  "code": [
+    {
+      "file": "scripts/cube4-statutory-review-ui.test.mjs",
+      "gitBlob": "30260cce7a718b32964a1b3f07ff95f78e7e275b",
+      "canonicalLF_SHA256": "fc2885fa0b5e99c46e21ff836d4b56d6c013d432f2ae4371d7e26c84b0a1dc5b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "gitBlob": "bbae3b58cd8553d990a7960fb9a80cd30d96e990",
+      "canonicalLF_SHA256": "62fb2af5c50dfa13b75e558cc501f05426ee2595011f553cd1e6850459af3f41"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "gitBlob": "5daf9897c6ca08166f776019f4ebbb081b15ec71",
+      "canonicalLF_SHA256": "38ce1e19605b69bc80287cada3b344fafc91e1516872bcef595b34acebc4a93a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "gitBlob": "8d6ab59cf79909f980c90c790682e86851fe2ee8",
+      "canonicalLF_SHA256": "623a7fa3c3abc2a3f2d32b656353ff5706f950c4fe1f7fbd9e728a9957b1cb69"
+    },
+    {
+      "file": "supabase/migrations/20261003045000_cube4_reviewed_partial_month_insurance_disposition.sql",
+      "gitBlob": "4b554c1f5e8649ebd5c00e584c1439a757e466a2",
+      "canonicalLF_SHA256": "e057d828e50472e130357828ff2638fd66406ec01a2e7a9c6fb54ee5e83dce74"
+    },
+    {
+      "file": "supabase/migrations/20261003046000_cube4_reviewed_monthly_earnings_financial_composition.sql",
+      "gitBlob": "ba81cbcb03d49ef547cb47cb3f854c74dfe49e28",
+      "canonicalLF_SHA256": "e62cb0da2ed743007a38e87726617d0e5bd03c22c11e2f7c236dbe7976e97460"
+    },
+    {
+      "file": "supabase/tests/cube4_cutoff_insurance_public_journey.test.sql",
+      "gitBlob": "131448db7c8f45754305e87d93c3058dae9ed35a",
+      "canonicalLF_SHA256": "7c3550e766883b839eafe8dffe8519f139adc082904756eccc62f2ae751b6504"
+    },
+    {
+      "file": "supabase/tests/cube4_ending_insurance_public_journey.test.sql",
+      "gitBlob": "a7dbba4e56c2605e3ad8c3bc759a571ec47f8f08",
+      "canonicalLF_SHA256": "a6ff20f3c4063d2f4d71f1a3ebaaa30d835605a442e8d0d965e2164f05499626"
+    },
+    {
+      "file": "supabase/tests/cube4_partial_insurance_public_journey.test.sql",
+      "gitBlob": "02808d2fa7bfc78edf34e2cf96927993896a38ed",
+      "canonicalLF_SHA256": "34ff4ef20125433ec71d1da315fb040d232ca2084a15c7524aa6dc6472c209ec"
+    },
+    {
+      "file": "supabase/tests/cube4_reviewed_ending_amount_public_journey.test.sql",
+      "gitBlob": "b6e8714faca2cf3031a97005bb34885af2bb7479",
+      "canonicalLF_SHA256": "ea028fbdea53421206946a0a2d1f3fffdba3f2cdb4ab2c5dae67bf74dc230d07"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "browser-runtime-positive/browser-command-reviewed-month.log",
+      "bytes": 53985,
+      "SHA256": "e5bb5a06464eeb8abbe048ce474b54741fc4d2aa00d7ead13021c9284b49743a"
+    },
+    {
+      "file": "browser-runtime-positive/build-reviewed-month-evidence.json",
+      "bytes": 394,
+      "SHA256": "47b24a40422f960ab53169d52e1f01dcd98087bacb8d7c7d44aaa688e9208389"
+    },
+    {
+      "file": "browser-runtime-positive/build-reviewed-month.log",
+      "bytes": 3723,
+      "SHA256": "357b5980d94867da804404bc1cb0001b4db23b108dfddc6bfe4b976efaebcf3c"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-actual-lost-finalization.database.json",
+      "bytes": 252896,
+      "SHA256": "9aa8de5956d2dc33349b37f77b85bf29aae78d6259a9606e6d46be3f8f436d63"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-after-recovery.database.json",
+      "bytes": 345317,
+      "SHA256": "e1ee70fa0d102ae6b3e7a40a1fea0a2af312eef45428fc0b495191b1f98435b4"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-before.database.json",
+      "bytes": 252346,
+      "SHA256": "b9236bd8463e82de6710f4895db1c64ae5412a08e12ad6d03e1ea6d5df963c7a"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-lost-finalization.database.json",
+      "bytes": 252896,
+      "SHA256": "9aa8de5956d2dc33349b37f77b85bf29aae78d6259a9606e6d46be3f8f436d63"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-period.database.json",
+      "bytes": 252443,
+      "SHA256": "1ef1eef3bcaf43a8eb64efab256760a9cbc94219605ac303348271be11d52c92"
+    },
+    {
+      "file": "browser-runtime-positive/loan-reviewed-month-successful-response-lost.database.json",
+      "bytes": 345317,
+      "SHA256": "e1ee70fa0d102ae6b3e7a40a1fea0a2af312eef45428fc0b495191b1f98435b4"
+    },
+    {
+      "file": "browser-runtime-positive/lost-response-reviewed-month-payroll_run_finalize.json",
+      "bytes": 193,
+      "SHA256": "761ee27960abe07d7ce50a93e36b8c3a02ad26c7bd63a14fbdce0c88747d7f5a"
+    },
+    {
+      "file": "browser-runtime-positive/process-reviewed-month-evidence.json",
+      "bytes": 285,
+      "SHA256": "1885dbfd2f102152a0b3ea01aa112c1d1e011cda72fb6971151d779c84d0dc60"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-actual-lost-finalization.facts.txt",
+      "bytes": 329,
+      "SHA256": "3fd187e7d3b1b9d23b208bd320cead6769b51cd93920676ba6ada2c65ec521e9"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-actual-lost-finalization.png",
+      "bytes": 148234,
+      "SHA256": "9cd40fc5306f3e3750b30cf4a2427e13b36f2890bcba563506ec09fef55b6a98"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-actual-lost-finalization.snapshot.txt",
+      "bytes": 7845,
+      "SHA256": "222cfbb2fc7541f9ccec776b00ef5d71b057d92c9fd9b68d4a9aec2e965aed00"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-approved.facts.txt",
+      "bytes": 440,
+      "SHA256": "fadd2dfc998486a33629a4954a7b3f52fd3dc129da3ec9e50f55b3d6a2ebc809"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-approved.png",
+      "bytes": 133239,
+      "SHA256": "3b8e1761d0dc18661cc033c611ccc16eed6ca6a51b7471243301c9583af7febf"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-approved.snapshot.txt",
+      "bytes": 5568,
+      "SHA256": "648b3717b6ea7d7d519a9fa238d2267fda7fef672402884e38cf6807be90a348"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-draft.facts.txt",
+      "bytes": 440,
+      "SHA256": "fadd2dfc998486a33629a4954a7b3f52fd3dc129da3ec9e50f55b3d6a2ebc809"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-draft.png",
+      "bytes": 136166,
+      "SHA256": "0e0d6a1ca52cc754cff40ba1012f63af6c76dee5b7d85e5196386b02daeaf043"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-adjustment-draft.snapshot.txt",
+      "bytes": 5626,
+      "SHA256": "d632411bfd4df951cd53064d40bda4f0c152828423aa11977038485d88b0606d"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-approved-mobile.facts.txt",
+      "bytes": 329,
+      "SHA256": "3fd187e7d3b1b9d23b208bd320cead6769b51cd93920676ba6ada2c65ec521e9"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-approved-mobile.png",
+      "bytes": 167518,
+      "SHA256": "35df3b417a113f9e7c77afe4441eff8f417f5433a0a9262e40f8e375bfa8560d"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-approved-mobile.snapshot.txt",
+      "bytes": 8588,
+      "SHA256": "a5ee32ccbc5cf3b3a65f2f385391e8c2932e93d2060d8169256de0bf0e26aac1"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-calculated.facts.txt",
+      "bytes": 391,
+      "SHA256": "3fccb603103a39f65259b26723fef745232ece3cacc230b31175a80d9c3cb044"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-calculated.png",
+      "bytes": 147750,
+      "SHA256": "8a90cd93a76d61d3c93e7b3170f1f6be173045fad8b784228cf31b758d2b6cc4"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-calculated.snapshot.txt",
+      "bytes": 6010,
+      "SHA256": "d1743f19ee17af55d9712fcecef051dcc1840bf0048995f90cd152780ba2a0bd"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-component-saved.facts.txt",
+      "bytes": 468,
+      "SHA256": "b36e640bfb551957c21030860560d7b959828308baa7c87150fbb13aaa315e41"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-component-saved.png",
+      "bytes": 167614,
+      "SHA256": "faec80e76a223506a83cc399b60e67e5b9a031605f86a7fdbcf29e259373955d"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-component-saved.snapshot.txt",
+      "bytes": 9670,
+      "SHA256": "549f9df38f02a5b3b5de2ba4f73045cc9403185ef5f12f220160c05c7d96ca41"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-employment-ended.facts.txt",
+      "bytes": 397,
+      "SHA256": "c00ecf263233a51138860fccc28f07c4bf694407cc2660eb8beb16f899d0964a"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-employment-ended.png",
+      "bytes": 174594,
+      "SHA256": "53efdb81e0e6bc74509c55e08e1a129ee25be544ea52045b20f86b823e86e5ea"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-employment-ended.snapshot.txt",
+      "bytes": 4913,
+      "SHA256": "9fbb601702cc0fe98f94353fea869979a29ea1362fc267437d046a03b3cc5be7"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-ending-handoff.facts.txt",
+      "bytes": 380,
+      "SHA256": "3fadc3bd9cb2726574ace215dc347335a1001d37c7945fe03be4d33a1e5c7a7a"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-ending-handoff.png",
+      "bytes": 209706,
+      "SHA256": "19650a6962d69388a09a77dda3e11f56f01cda8a2a7944cf40f4206b8f487c88"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-ending-handoff.snapshot.txt",
+      "bytes": 6948,
+      "SHA256": "88455216451c2ec2f05bb9107dc8a58c6c5d784632bb138ebef91ff9963388a4"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-explanation.facts.txt",
+      "bytes": 421,
+      "SHA256": "44c63f2b2d0973ce368f412ffc8cd078476effaf14ef2971db6d03337fa86275"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-explanation.png",
+      "bytes": 197791,
+      "SHA256": "3723997c45e8c04cc106b0a250006edff4c28ea5201e5b25ca65b7bf5efa8046"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-explanation.snapshot.txt",
+      "bytes": 8389,
+      "SHA256": "eb8d3b7920068befc213f2ef97cbf1a93221c9693ef6b4007c97fd2ec1660596"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-lost-finalization.facts.txt",
+      "bytes": 329,
+      "SHA256": "3fd187e7d3b1b9d23b208bd320cead6769b51cd93920676ba6ada2c65ec521e9"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-lost-finalization.png",
+      "bytes": 173125,
+      "SHA256": "96ff8a2d5a7012aad18c55bf4cd2ffa8a9c68caa2df737f3e27637dc5296cce8"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-lost-finalization.snapshot.txt",
+      "bytes": 8645,
+      "SHA256": "d4f8fb0863148335a0081adac64105b51e87190906509b5dbbe751a04a2093d4"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-october-generated.facts.txt",
+      "bytes": 207,
+      "SHA256": "cdde0dd5785b6fa851361c3a9e711cdf478e584eed8343077d07a81329727c0b"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-october-generated.png",
+      "bytes": 171563,
+      "SHA256": "40c338d9948450d4ead862f74e9d16377e16616085bbdfc516797965e0051aec"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-october-generated.snapshot.txt",
+      "bytes": 7273,
+      "SHA256": "347a9a58d24477e6f4aeb6347934249e8a18e8f4054115e1fc4b02628734e32d"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-protected-output.facts.txt",
+      "bytes": 486,
+      "SHA256": "03fbf0470b6786d310830958fbb1971760db1e7a152514b62a7569bf56536b83"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-protected-output.png",
+      "bytes": 60090,
+      "SHA256": "9ab0a1b897973c1ee5188d867b0f250e55bced10744b9b1b6574d1e8c098705b"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-protected-output.snapshot.txt",
+      "bytes": 2641,
+      "SHA256": "b288c983ca7af33a6d1be2bf55187bf545a8e8558c1d06b215a282d515463ebc"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-recovered.facts.txt",
+      "bytes": 389,
+      "SHA256": "d594f8b790126c327f6b1cded54365efa9a345f69cbe155d83e6c9ccfc1f616e"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-recovered.png",
+      "bytes": 48113,
+      "SHA256": "6c84eb686ea4236aa9c8f82c63c35ac9b75e5e2743d9032933b030f7953584ef"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-recovered.snapshot.txt",
+      "bytes": 2875,
+      "SHA256": "41c9970b324fd62e1f8c7e641e56b744350d0a0db5892cef8277720baa1aa188"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-reviewed.facts.txt",
+      "bytes": 395,
+      "SHA256": "f50e0d1c1f1de9ba0fe0d366dc665ba8f62066229316311ea1138f2eb33e98ae"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-reviewed.png",
+      "bytes": 235147,
+      "SHA256": "ceb73d22346d3ba9451fac5f879bc29b1297743c4d5cdb4967013dd97bdd3c34"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-reviewed.snapshot.txt",
+      "bytes": 13612,
+      "SHA256": "3b1915b353e77b75593852d01716a3b1f0be42dd6279c724728bedbf11d3e71b"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-saved.facts.txt",
+      "bytes": 498,
+      "SHA256": "85134042948086fbba557cb2d4fc872b4d72f909d09ed35f1dab663904e3bd19"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-saved.png",
+      "bytes": 235120,
+      "SHA256": "da82c8d42930697aabb366f30cbee8f9a45cc4273c1ea20c1085f314cb8df63e"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-source-saved.snapshot.txt",
+      "bytes": 13746,
+      "SHA256": "8105aa0985741a50fbb5a4488379c4a70acb3a0db09df7c39a70903f26998fa0"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-successful-response-lost.facts.txt",
+      "bytes": 474,
+      "SHA256": "556de2a743d2a7bf392c711ae3d3c99db639c374ca3b1005af0a9879acef7414"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-successful-response-lost.png",
+      "bytes": 182759,
+      "SHA256": "d7dbbcd163247dd7d19540a7b649c5c1f641d40ade29812f186c9d1b0981218a"
+    },
+    {
+      "file": "browser-runtime-positive/reviewed-month-successful-response-lost.snapshot.txt",
+      "bytes": 9125,
+      "SHA256": "54fd9d08caddd0ed18eccefd16f7b360ff6bedbfd23f94ebb38faa68ba954c22"
+    },
+    {
+      "file": "browser-runtime-positive/server-reviewed-month.log",
+      "bytes": 153,
+      "SHA256": "eb29d48254e937e5b51a7c2d57b815c2ce6877254370dfefa06caaa26cdedd6c"
+    },
+    {
+      "file": "qa-grouped-month-cutoff-first.json",
+      "bytes": 379,
+      "SHA256": "c8076f2f49328dc1658bdcc5d998fde930eb3e50515a97d0afc17789871d73c2"
+    },
+    {
+      "file": "qa-grouped-month-cutoff-first.log",
+      "bytes": 96161,
+      "SHA256": "4805a224ab184d438183a7b3e784f65a9c543976ff40f2ccf4444367ff2e2ec0"
+    },
+    {
+      "file": "qa-grouped-month-ending-first.json",
+      "bytes": 358,
+      "SHA256": "41ab2153aa37ed2dcc38ff63c7f017c5e6dfe3ef109b2442ec5c6b80a9315bdd"
+    },
+    {
+      "file": "qa-grouped-month-ending-first.log",
+      "bytes": 74368,
+      "SHA256": "ac588b7d005ca89877eb7be814f1f95fc59ff8ed531442500df4c24dade88d53"
+    },
+    {
+      "file": "qa-grouped-month-ending-source-query-fixed.json",
+      "bytes": 379,
+      "SHA256": "924dcc9461db0cca77bab1b2b574c8f0c0519e52759bab71b18d95002872bfef"
+    },
+    {
+      "file": "qa-grouped-month-ending-source-query-fixed.log",
+      "bytes": 73538,
+      "SHA256": "8209ec597b125648f2bfefa1570dbb324610413188eb0313bcfbfebebdbd3f18"
+    },
+    {
+      "file": "qa-grouped-month-joining-blocker-diagnostic.json",
+      "bytes": 359,
+      "SHA256": "f09daa3111f46a204c10a3111d840bfa436d73d5d066c5ee37ae877cc20c2db1"
+    },
+    {
+      "file": "qa-grouped-month-joining-blocker-diagnostic.log",
+      "bytes": 8165,
+      "SHA256": "ee57f456e7b5f030598aa7558f1f18228e2ca4f6264366937ad0c39d78b03fd3"
+    },
+    {
+      "file": "qa-grouped-month-joining-first.json",
+      "bytes": 359,
+      "SHA256": "24f1b76fdbf9189bb4daa38af9dc8f9ee9cddb8e79ac5d3919097a76e4d3a965"
+    },
+    {
+      "file": "qa-grouped-month-joining-first.log",
+      "bytes": 7377,
+      "SHA256": "d8b1b13a11768f02b3403f5ddcf5e0d939e825f374f9a83872b98148f5918e57"
+    },
+    {
+      "file": "qa-grouped-month-joining-source-fixed.json",
+      "bytes": 380,
+      "SHA256": "0f72fbc1be427790903d168578ae837b70ebda506ef7ff1d2c00cae725a280c2"
+    },
+    {
+      "file": "qa-grouped-month-joining-source-fixed.log",
+      "bytes": 71285,
+      "SHA256": "20510a49194eda8d715f0d81b8d6ed3de78b649c74a8f44e7aec2e606ba36343"
+    },
+    {
+      "file": "qa-grouped-month-legacy-full-month-regression.json",
+      "bytes": 376,
+      "SHA256": "053c5ec1bf477a09a1bcd7ece0656b5e8809de6578ab7f584e9c70d200d49973"
+    },
+    {
+      "file": "qa-grouped-month-legacy-full-month-regression.log",
+      "bytes": 192862,
+      "SHA256": "bf240769304a40328796b0009c0b5c68fd5ec973fe099a544c2cb707fe33fcd7"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-authorized.json",
+      "bytes": 364,
+      "SHA256": "3e9921e45d3985fb4e53fc7290d246531479aa9aebd55bdaad9a302322f3ae88"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-authorized.log",
+      "bytes": 84306,
+      "SHA256": "5f2f63d60e5c529b43e24098fd9a149c9be889912a8803833da8f4c7cd00c8ae"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-derived-state.json",
+      "bytes": 364,
+      "SHA256": "e8f75702896b9de9f5d36329c413ee32ec6c1850a9bd90e82ec66cdf0613b333"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-derived-state.log",
+      "bytes": 84437,
+      "SHA256": "d2dc016016ab58ec16e70ea6267b967ec16e25cd6e0f9433db49d51a1a6472b2"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-final-claim.json",
+      "bytes": 364,
+      "SHA256": "cbf71cbeee3cf559dde3397a0789a659c12882d8fb3f3c56472b51191583482d"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-final-claim.log",
+      "bytes": 84989,
+      "SHA256": "a37fe14d405079fe22eecec607359031b7452be7d44170c87b2a699aa17cc9f5"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-first.json",
+      "bytes": 363,
+      "SHA256": "948866c86d4bc517ba04476916a428f5484d200b1607bea66e0c277b89815769"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-first.log",
+      "bytes": 3093,
+      "SHA256": "d654e744e85a8f97db57eedc0932e2e86cbfa6f62eabed4281173e5135d50a4a"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-lifecycle-snapshots.json",
+      "bytes": 364,
+      "SHA256": "d3a316d21803c018dad208e33ac58ca78ac0c9f021580c5dc1d6cab57f96a599"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-lifecycle-snapshots.log",
+      "bytes": 85097,
+      "SHA256": "27d7315845562cdd9c52b6f17bf8253cb204d8ae617f4accbdc0d7119ef03529"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-one-source.json",
+      "bytes": 385,
+      "SHA256": "011c925e1e499cdd152ee27d4dc12506a81a73693f015e3012deb06abcc94471"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-one-source.log",
+      "bytes": 84764,
+      "SHA256": "5a42d56a405be6d2dc99f9163732dc74f75d752b1f5a2f0f95c0615bf9accecf"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-version-state.json",
+      "bytes": 364,
+      "SHA256": "877197eadeb7d5646d918c4436287f30728c910185435b40df2bb7260254785b"
+    },
+    {
+      "file": "qa-grouped-month-manual-ending-version-state.log",
+      "bytes": 84569,
+      "SHA256": "9be85f6e8b8d49f03e69ab8e7ed4f404263d6a9372fd93808882f2dc91a9baa6"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 383,
+      "SHA256": "c34c65d48baaaf6c0199405b1f7cb435f7196fb935d0eaa86fc15fa7f205889f"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 9,
+      "SHA256": "77d0fc1729fb3741624897bfb56344fabc98a3c7bfb0ec75c6d707cc097c035b"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 392,
+      "SHA256": "ddd86e2beeeea3a4f669b4213332eb38431585315bede1ab3338a501564afb48"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 9,
+      "SHA256": "77d0fc1729fb3741624897bfb56344fabc98a3c7bfb0ec75c6d707cc097c035b"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 384,
+      "SHA256": "fa1a7346aa5faac65171a3b8cfeae68021d7b019b7e62651186653e1d4e21829"
+    },
+    {
+      "file": "qa-reviewed-month-apply-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 9,
+      "SHA256": "77d0fc1729fb3741624897bfb56344fabc98a3c7bfb0ec75c6d707cc097c035b"
+    }
+  ],
+  "actualUI": {
+    "ordinaryAuthNextPostgREST": true,
+    "employmentEndedOn": "2026-10-04",
+    "singleNewOctoberPeriod": "a9b09a91-453e-4b2e-9ff6-0b47b77dbd4e",
+    "run": "17e48c4a-eead-4ce2-8648-7228b46265a2",
+    "candidate": "1311a019-2ed3-4250-b2b7-36a065dc4692",
+    "output": "d9b097b2-b21f-471a-b3f3-4b1dc055c7af",
+    "base": 4258.06,
+    "approvedNontaxableEndingAmount": 1000,
+    "gross": 5258.06,
+    "employeeInsurance": 100,
+    "employerInsurance": 200,
+    "tax": 415.79,
+    "net": 4742.27,
+    "explanation": {
+      "net": "4742.2700000000000000",
+      "base": "4258.0600000000000000",
+      "code": "NONLEGAL D440",
+      "name": "NONLEGAL D440 Leave Employee",
+      "gross": "5258.0600000000000000",
+      "lines": [
+        {
+          "name": "NONLEGAL reviewed external ending amount",
+          "amount": "1000.0000000000000000",
+          "segments": [
+            {
+              "reason": "NONLEGAL approved amount outside automated V1 formula",
+              "component_head": "db83709e-7d3f-4e3e-a03d-1ef971512670",
+              "approved_amount": "1000.0000000000000000",
+              "declared_social": false,
+              "declared_taxable": false,
+              "declared_visible": true,
+              "component_version": "19951ddc-568f-4e65-8e36-a5528addc90c"
+            }
+          ],
+          "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+          "classification": "earning"
+        },
+        {
+          "name": "الأجر الأساسي",
+          "amount": "4258.0600000000000000",
+          "segments": [
+            {
+              "days": 4,
+              "from": "2026-10-01",
+              "rate": "33000.00",
+              "until": "2026-10-04",
+              "denominator": 31
+            }
+          ],
+          "component": "base",
+          "classification": "earning"
+        },
+        {
+          "name": "اشتراك الموظف في التأمينات",
+          "amount": "100.00",
+          "segments": [],
+          "component": "statutory:insurance:pension:2026-10-01",
+          "statutory": true,
+          "presentation": {
+            "order": 1100,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d440f000-0000-4000-8000-000000000002",
+            "visible": true
+          },
+          "classification": "deduction"
+        },
+        {
+          "name": "اشتراك جهة العمل في التأمينات",
+          "amount": "200.00",
+          "segments": [],
+          "component": "statutory:employer:pension:2026-10-01",
+          "statutory": true,
+          "presentation": {
+            "order": 1100,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d440f000-0000-4000-8000-000000000002",
+            "visible": true
+          },
+          "classification": "employer_cost"
+        },
+        {
+          "name": "ضريبة الأجور المستحقة",
+          "amount": "415.79",
+          "segments": [],
+          "component": "statutory:tax",
+          "statutory": true,
+          "presentation": {
+            "order": 1200,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d440f000-0000-4000-8000-000000000001",
+            "visible": true
+          },
+          "classification": "deduction"
+        }
+      ],
+      "issues": [],
+      "ends_on": "2026-10-04",
+      "pay_basis": "monthly",
+      "starts_on": "2026-10-01",
+      "deductions": "0",
+      "dated_rates": [
+        {
+          "from": "2026-07-01",
+          "rate": "33000.00",
+          "until": "2026-10-05"
+        }
+      ],
+      "employee_id": "d4405000-0000-4000-8000-000000000001",
+      "known_gross": "5258.0600000000000000",
+      "source_days": [],
+      "eligible_days": 4,
+      "employer_cost": "200.00",
+      "employment_id": "d4406000-0000-4000-8000-000000000001",
+      "approved_units": null,
+      "calculated_net": "4742.2700000000000000",
+      "gross_complete": true,
+      "source_summary": {
+        "status": "disabled",
+        "day_count": 0,
+        "time_enabled": false,
+        "leave_enabled": false,
+        "payroll_ready": false,
+        "time_coverage": {
+          "status": "disabled",
+          "enabled": false,
+          "day_count": 0,
+          "future_days": 0,
+          "missing_days": 0,
+          "pending_days": 0,
+          "approved_days": 0,
+          "expected_days": 0,
+          "payroll_ready": false,
+          "other_review_days": 0
+        }
+      },
+      "statutory_context": {
+        "category": "NONLEGAL pension fixture",
+        "insured_wage": 10000,
+        "owner_period": "a9b09a91-453e-4b2e-9ff6-0b47b77dbd4e",
+        "calendar_year": 2026,
+        "reviewed_month": "2026-10-01",
+        "insurance_pack_id": "d440f000-0000-4000-8000-000000000002",
+        "obligation_months": [
+          {
+            "month": "2026-10-01",
+            "insured_wage": 10000,
+            "insured_wage_source": "NONLEGAL October ending insured wage source"
+          }
+        ],
+        "insured_wage_source": "NONLEGAL October ending insured wage source",
+        "ownership_reference": "NONLEGAL reviewed full October ending-month liability",
+        "insurance_month_disposition": "reviewed_due"
+      },
+      "statutory_sources": {
+        "issues": [],
+        "calendar": {
+          "known": true,
+          "years": [
+            {
+              "from": "2026-10-01",
+              "year": 2026,
+              "through": "2026-10-04",
+              "calendar_days": 4,
+              "legal_duration_days": null
+            }
+          ],
+          "months": [
+            {
+              "from": "2026-10-01",
+              "month": "2026-10-01",
+              "through": "2026-10-04",
+              "contexts": [
+                {
+                  "data": {
+                    "reason": "NONLEGAL reviewed monthly liability distinct from partial wage",
+                    "reference": "NONLEGAL October ending insured wage source",
+                    "insured_wage": "10000",
+                    "insurance_from": "2026-07-01",
+                    "insurance_until": "2026-10-04",
+                    "calculation_from": "2026-10-01",
+                    "insurance_status": "insured",
+                    "calculation_until": "2026-10-04",
+                    "tax_duration_days": "4",
+                    "insurance_category": "NONLEGAL pension fixture",
+                    "tax_treatment_code": "01",
+                    "insurance_owner_period": "a9b09a91-453e-4b2e-9ff6-0b47b77dbd4e",
+                    "insurance_obligation_month": "2026-10-01",
+                    "insurance_month_disposition": "reviewed_due",
+                    "insurance_obligation_reference": "NONLEGAL reviewed full October ending-month liability"
+                  },
+                  "from": "2026-10-01",
+                  "head_id": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+                  "through": "2026-10-04",
+                  "version_id": "89cb5b66-3787-4044-9e22-034087a3dd9d"
+                }
+              ],
+              "calendar_days": 4,
+              "calendar_through": "2026-10-31",
+              "full_service_month": false,
+              "service_end_in_month": true,
+              "service_start_in_month": false
+            }
+          ],
+          "contract": "cube4-statutory-calendar-facts-v1",
+          "employment": {
+            "id": "d4406000-0000-4000-8000-000000000001",
+            "end_date": "2026-10-04",
+            "pay_basis": "monthly",
+            "tenant_id": "d4401000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T01:42:25.189101+00:00",
+            "start_date": "2026-07-01",
+            "employee_id": "d4405000-0000-4000-8000-000000000001",
+            "payroll_eligible": true,
+            "employment_status": "ended",
+            "employer_entity_id": "d4403000-0000-4000-8000-000000000001"
+          },
+          "employee_id": "d4405000-0000-4000-8000-000000000001",
+          "employment_id": "d4406000-0000-4000-8000-000000000001",
+          "obligation_months": null,
+          "legal_duration_days": null,
+          "financially_qualified": false
+        },
+        "contexts": [
+          {
+            "from": "2026-10-01",
+            "source": {
+              "head": {
+                "id": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+                "kind": "statutory_context",
+                "period_id": null,
+                "employee_id": "d4405000-0000-4000-8000-000000000001",
+                "employment_id": "d4406000-0000-4000-8000-000000000001"
+              },
+              "version": {
+                "id": "89cb5b66-3787-4044-9e22-034087a3dd9d",
+                "data": {
+                  "reason": "NONLEGAL reviewed monthly liability distinct from partial wage",
+                  "reference": "NONLEGAL October ending insured wage source",
+                  "insured_wage": "10000",
+                  "insurance_from": "2026-07-01",
+                  "insurance_until": "2026-10-04",
+                  "calculation_from": "2026-10-01",
+                  "insurance_status": "insured",
+                  "calculation_until": "2026-10-04",
+                  "tax_duration_days": "4",
+                  "insurance_category": "NONLEGAL pension fixture",
+                  "tax_treatment_code": "01",
+                  "insurance_owner_period": "a9b09a91-453e-4b2e-9ff6-0b47b77dbd4e",
+                  "insurance_obligation_month": "2026-10-01",
+                  "insurance_month_disposition": "reviewed_due",
+                  "insurance_obligation_reference": "NONLEGAL reviewed full October ending-month liability"
+                },
+                "status": "draft",
+                "head_id": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+                "revision": 4,
+                "tenant_id": "d4401000-0000-4000-8000-000000000001",
+                "created_at": "2026-10-04T04:54:31.867381+00:00",
+                "created_by": "d4400000-0000-4000-8000-000000000001",
+                "approved_at": null,
+                "approved_by": null,
+                "employer_id": "d4403000-0000-4000-8000-000000000001",
+                "effective_from": "2026-10-01",
+                "effective_until": null
+              }
+            },
+            "head_id": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+            "through": "2026-10-04",
+            "version_id": "89cb5b66-3787-4044-9e22-034087a3dd9d"
+          }
+        ],
+        "contract": "cube4-employee-statutory-sources-v1",
+        "openings": [
+          {
+            "year": 2026,
+            "as_of": "2026-10-01",
+            "source": {
+              "head": {
+                "id": "f247aaa4-9ca6-4433-bd72-9ed8a61c46a3",
+                "kind": "opening_ytd",
+                "period_id": null,
+                "employee_id": "d4405000-0000-4000-8000-000000000001",
+                "employment_id": "d4406000-0000-4000-8000-000000000001"
+              },
+              "version": {
+                "id": "7e2abdd2-03e0-44c2-8b2f-6bb99e2b985d",
+                "data": {
+                  "year": 2026,
+                  "reason": "Synthetic reviewed zero opening",
+                  "tax_due": 0,
+                  "reference": "NONLEGAL no prior employment facts",
+                  "social_base": 0,
+                  "coverage_end": "2026-06-30",
+                  "tax_withheld": 0,
+                  "coverage_start": "2026-01-01",
+                  "tax_net_income": 0,
+                  "employee_social": 0,
+                  "employer_social": 0,
+                  "taxable_earnings": 0,
+                  "tax_duration_days": 0
+                },
+                "status": "draft",
+                "head_id": "f247aaa4-9ca6-4433-bd72-9ed8a61c46a3",
+                "revision": 1,
+                "tenant_id": "d4401000-0000-4000-8000-000000000001",
+                "created_at": "2026-10-04T01:42:25.189101+00:00",
+                "created_by": "d4400000-0000-4000-8000-000000000001",
+                "approved_at": null,
+                "approved_by": null,
+                "employer_id": "d4403000-0000-4000-8000-000000000001",
+                "effective_from": "2026-07-01",
+                "effective_until": null
+              }
+            }
+          }
+        ],
+        "employee_id": "d4405000-0000-4000-8000-000000000001",
+        "employment_id": "d4406000-0000-4000-8000-000000000001",
+        "prior_outputs": [
+          {
+            "run_id": "d16de6e5-a458-4f82-a9e2-a80bee5c1d23",
+            "ends_on": "2026-07-31",
+            "output_id": "6391b782-3fe1-4008-aa9d-57366282633e",
+            "starts_on": "2026-07-01",
+            "run_status": "locked",
+            "employee_id": "d4405000-0000-4000-8000-000000000001",
+            "employment_id": "d4406000-0000-4000-8000-000000000001",
+            "engine_version": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+            "calculation_count": 1,
+            "statutory_context": {
+              "category": "not_insured",
+              "insured_wage": 0,
+              "calendar_year": 2026,
+              "obligation_months": [],
+              "insured_wage_source": "NONLEGAL reviewed uninsured exclusion"
+            },
+            "financially_qualified": true,
+            "statutory_calculation": {
+              "tax": {
+                "trace": {
+                  "base": 396000,
+                  "segments": [
+                    {
+                      "band": 1,
+                      "rate": 0.1,
+                      "lower": 0,
+                      "upper": null,
+                      "taxable_width": 396000,
+                      "unrounded_tax": 39600
+                    }
+                  ],
+                  "unrounded_annual_tax": 39600
+                },
+                "column": 1,
+                "adapter": "eg-cumulative-tax-v1",
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "annual_base": 396000,
+                "earning_from": "2026-07-01",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "duration_days": 30,
+                "earning_until": "2026-07-31",
+                "prior_tax_due": 0,
+                "source_reference": "NONLEGAL reviewed uninsured exclusion",
+                "current_tax_delta": 3300,
+                "cumulative_tax_due": 3300,
+                "annual_tax_unrounded": 39600,
+                "annual_raw_after_exemption": 396000
+              },
+              "facts": {
+                "earning_from": "2026-07-01",
+                "earning_until": "2026-07-31",
+                "prior_tax_due": 0,
+                "insurance_status": "not_insured",
+                "prior_net_income": 0,
+                "source_reference": "NONLEGAL reviewed uninsured exclusion",
+                "tax_treatment_code": "01",
+                "cumulative_duration_days": 30,
+                "current_taxable_earnings": 33000,
+                "insurance_exclusion_reference": "NONLEGAL reviewed uninsured exclusion"
+              },
+              "adapter": "eg-employee-statutory-v1",
+              "pack_id": "d440f000-0000-4000-8000-000000000001",
+              "insurance": {
+                "lines": [],
+                "status": "not_insured",
+                "employee_total": 0,
+                "employer_total": 0,
+                "source_reference": "NONLEGAL reviewed uninsured exclusion",
+                "tax_deductible_employee_total": 0
+              },
+              "insurance_pack_id": null,
+              "earning_attribution": {
+                "lines": [
+                  {
+                    "name": "الأجر الأساسي",
+                    "amount": "33000.000000000000",
+                    "rounding": "taxable_half_up_cent_remainder_nontaxable",
+                    "component": "base",
+                    "attribution": "saved_salary_distribution",
+                    "earning_from": "2026-07-01",
+                    "source_parts": [
+                      {
+                        "raw": "33000.00000000000000000003",
+                        "name": "الأجر الأساسي",
+                        "detail": [
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-01",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-02",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-03",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-04",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-05",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-06",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-07",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-08",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-09",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-10",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-11",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-12",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-13",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-14",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-15",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-16",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-17",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-18",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-19",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-20",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-21",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-22",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-23",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-24",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-25",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-26",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-27",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-28",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-29",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-30",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-07-31",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          }
+                        ],
+                        "component": "base",
+                        "classification": "earning"
+                      }
+                    ],
+                    "earning_until": "2026-07-31",
+                    "taxable_amount": 33000,
+                    "declaration_state": "base_treatment_requires_verified_pack",
+                    "nontaxable_amount": 0,
+                    "declared_taxable_amount": null,
+                    "declared_nontaxable_amount": null
+                  }
+                ],
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "contract": "eg-earning-attribution-v1",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "earning_rules": {
+                  "schema": "eg-earning-treatment-v1",
+                  "base_taxable": true,
+                  "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+                  "component_treatment": "reviewed_dated_declarations"
+                },
+                "taxable_earnings": 33000,
+                "nontaxable_earnings": 0,
+                "financially_qualified": false
+              }
+            }
+          },
+          {
+            "run_id": "bc47bb20-31b0-4e34-978b-62eba3ef75ff",
+            "ends_on": "2026-08-31",
+            "output_id": "85731645-27a3-4684-a731-c03a7c0fba0c",
+            "starts_on": "2026-08-01",
+            "run_status": "locked",
+            "employee_id": "d4405000-0000-4000-8000-000000000001",
+            "employment_id": "d4406000-0000-4000-8000-000000000001",
+            "engine_version": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+            "calculation_count": 1,
+            "statutory_context": {
+              "category": "not_insured",
+              "insured_wage": 0,
+              "calendar_year": 2026,
+              "obligation_months": [],
+              "insured_wage_source": "NONLEGAL August dated context"
+            },
+            "financially_qualified": true,
+            "statutory_calculation": {
+              "tax": {
+                "trace": {
+                  "base": 396000,
+                  "segments": [
+                    {
+                      "band": 1,
+                      "rate": 0.1,
+                      "lower": 0,
+                      "upper": null,
+                      "taxable_width": 396000,
+                      "unrounded_tax": 39600
+                    }
+                  ],
+                  "unrounded_annual_tax": 39600
+                },
+                "column": 1,
+                "adapter": "eg-cumulative-tax-v1",
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "annual_base": 396000,
+                "earning_from": "2026-08-01",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "duration_days": 60,
+                "earning_until": "2026-08-31",
+                "prior_tax_due": 3300,
+                "source_reference": "NONLEGAL August dated context",
+                "current_tax_delta": 3300,
+                "cumulative_tax_due": 6600,
+                "annual_tax_unrounded": 39600,
+                "annual_raw_after_exemption": 396000
+              },
+              "facts": {
+                "earning_from": "2026-08-01",
+                "earning_until": "2026-08-31",
+                "prior_tax_due": 3300,
+                "insurance_status": "not_insured",
+                "prior_net_income": 33000,
+                "source_reference": "NONLEGAL August dated context",
+                "tax_treatment_code": "01",
+                "cumulative_duration_days": 60,
+                "current_taxable_earnings": 33000,
+                "insurance_exclusion_reference": "NONLEGAL August dated context"
+              },
+              "adapter": "eg-employee-statutory-v1",
+              "pack_id": "d440f000-0000-4000-8000-000000000001",
+              "insurance": {
+                "lines": [],
+                "status": "not_insured",
+                "employee_total": 0,
+                "employer_total": 0,
+                "source_reference": "NONLEGAL August dated context",
+                "tax_deductible_employee_total": 0
+              },
+              "insurance_pack_id": null,
+              "earning_attribution": {
+                "lines": [
+                  {
+                    "name": "الأجر الأساسي",
+                    "amount": "33000.000000000000",
+                    "rounding": "taxable_half_up_cent_remainder_nontaxable",
+                    "component": "base",
+                    "attribution": "saved_salary_distribution",
+                    "earning_from": "2026-08-01",
+                    "source_parts": [
+                      {
+                        "raw": "33000.00000000000000000003",
+                        "name": "الأجر الأساسي",
+                        "detail": [
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-01",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-02",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-03",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-04",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-05",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-06",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-07",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-08",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-09",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-10",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-11",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-12",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-13",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-14",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-15",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-16",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-17",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-18",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-19",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-20",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-21",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-22",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-23",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-24",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-25",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-26",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-27",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-28",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-29",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-30",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1064.51612903225806451613",
+                            "date": "2026-08-31",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 31,
+                            "_denominator": "3100",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          }
+                        ],
+                        "component": "base",
+                        "classification": "earning"
+                      }
+                    ],
+                    "earning_until": "2026-08-31",
+                    "taxable_amount": 33000,
+                    "declaration_state": "base_treatment_requires_verified_pack",
+                    "nontaxable_amount": 0,
+                    "declared_taxable_amount": null,
+                    "declared_nontaxable_amount": null
+                  }
+                ],
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "contract": "eg-earning-attribution-v1",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "earning_rules": {
+                  "schema": "eg-earning-treatment-v1",
+                  "base_taxable": true,
+                  "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+                  "component_treatment": "reviewed_dated_declarations"
+                },
+                "taxable_earnings": 33000,
+                "nontaxable_earnings": 0,
+                "financially_qualified": false
+              }
+            }
+          },
+          {
+            "run_id": "e7c3b17f-35ed-4ce3-a67b-59b0f2ca3d8d",
+            "ends_on": "2026-09-30",
+            "output_id": "159154fd-ad30-4635-a28f-3d63a516e5f9",
+            "starts_on": "2026-09-01",
+            "run_status": "locked",
+            "employee_id": "d4405000-0000-4000-8000-000000000001",
+            "employment_id": "d4406000-0000-4000-8000-000000000001",
+            "engine_version": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-insured-single-month-owner-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+            "calculation_count": 1,
+            "statutory_context": {
+              "category": "NONLEGAL pension fixture",
+              "insured_wage": 10000,
+              "owner_period": "8385665f-db03-4195-a5d4-36b5e715016e",
+              "calendar_year": 2026,
+              "insurance_pack_id": "d440f000-0000-4000-8000-000000000002",
+              "obligation_months": [
+                {
+                  "month": "2026-09-01",
+                  "insured_wage": 10000,
+                  "insured_wage_source": "NONLEGAL September insured wage source"
+                }
+              ],
+              "insured_wage_source": "NONLEGAL September insured wage source",
+              "ownership_reference": "NONLEGAL reviewed September month owner"
+            },
+            "financially_qualified": true,
+            "statutory_calculation": {
+              "tax": {
+                "trace": {
+                  "base": 395600,
+                  "segments": [
+                    {
+                      "band": 1,
+                      "rate": 0.1,
+                      "lower": 0,
+                      "upper": null,
+                      "taxable_width": 395600,
+                      "unrounded_tax": 39560
+                    }
+                  ],
+                  "unrounded_annual_tax": 39560
+                },
+                "column": 1,
+                "adapter": "eg-cumulative-tax-v1",
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "annual_base": 395600,
+                "earning_from": "2026-09-01",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "duration_days": 90,
+                "earning_until": "2026-09-30",
+                "prior_tax_due": 6600,
+                "source_reference": "NONLEGAL September insured wage source",
+                "current_tax_delta": 3290,
+                "cumulative_tax_due": 9890,
+                "annual_tax_unrounded": 39560,
+                "annual_raw_after_exemption": 395600
+              },
+              "facts": {
+                "earning_from": "2026-09-01",
+                "earning_until": "2026-09-30",
+                "prior_tax_due": 6600,
+                "insurance_status": "insured",
+                "prior_net_income": 66000,
+                "source_reference": "NONLEGAL September insured wage source",
+                "tax_treatment_code": "01",
+                "cumulative_duration_days": 90,
+                "current_taxable_earnings": 33000
+              },
+              "adapter": "eg-employee-statutory-v1",
+              "pack_id": "d440f000-0000-4000-8000-000000000001",
+              "insurance": {
+                "lines": [
+                  {
+                    "month": "2026-09-01",
+                    "branch": "pension",
+                    "insured_wage": 10000,
+                    "employee_rate": 0.01,
+                    "employer_rate": 0.02,
+                    "tax_deductible": true,
+                    "employee_amount": 100,
+                    "employer_amount": 200,
+                    "insured_wage_source": "NONLEGAL September insured wage source"
+                  }
+                ],
+                "adapter": "eg-insurance-month-v1",
+                "pack_id": "d440f000-0000-4000-8000-000000000002",
+                "category": "NONLEGAL pension fixture",
+                "pack_version": "NONLEGAL independent insurance arithmetic",
+                "calendar_year": 2026,
+                "employee_total": 100,
+                "employer_total": 200,
+                "source_reference": "NONLEGAL reviewed September month owner",
+                "obligation_months": [
+                  {
+                    "month": "2026-09-01",
+                    "insured_wage": 10000,
+                    "insured_wage_source": "NONLEGAL September insured wage source"
+                  }
+                ],
+                "tax_deductible_employee_total": 100
+              },
+              "insurance_pack_id": "d440f000-0000-4000-8000-000000000002",
+              "earning_attribution": {
+                "lines": [
+                  {
+                    "name": "الأجر الأساسي",
+                    "amount": "33000.000000000000",
+                    "rounding": "taxable_half_up_cent_remainder_nontaxable",
+                    "component": "base",
+                    "attribution": "saved_salary_distribution",
+                    "earning_from": "2026-09-01",
+                    "source_parts": [
+                      {
+                        "raw": "33000.00000000000000000000",
+                        "name": "الأجر الأساسي",
+                        "detail": [
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-01",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-02",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-03",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-04",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-05",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-06",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-07",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-08",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-09",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-10",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-11",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-12",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-13",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-14",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-15",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-16",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-17",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-18",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-19",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-20",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-21",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-22",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-23",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-24",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-25",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-26",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-27",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-28",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-29",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          },
+                          {
+                            "raw": "1100.00000000000000000000",
+                            "date": "2026-09-30",
+                            "rate": "33000.00",
+                            "_numerator": "3300000.00",
+                            "denominator": 30,
+                            "_denominator": "3000",
+                            "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                          }
+                        ],
+                        "component": "base",
+                        "classification": "earning"
+                      }
+                    ],
+                    "earning_until": "2026-09-30",
+                    "taxable_amount": 33000,
+                    "declaration_state": "base_treatment_requires_verified_pack",
+                    "nontaxable_amount": 0,
+                    "declared_taxable_amount": null,
+                    "declared_nontaxable_amount": null
+                  }
+                ],
+                "pack_id": "d440f000-0000-4000-8000-000000000001",
+                "contract": "eg-earning-attribution-v1",
+                "pack_version": "NONLEGAL single-band arithmetic fixture",
+                "earning_rules": {
+                  "schema": "eg-earning-treatment-v1",
+                  "base_taxable": true,
+                  "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+                  "component_treatment": "reviewed_dated_declarations"
+                },
+                "taxable_earnings": 33000,
+                "nontaxable_earnings": 0,
+                "financially_qualified": false
+              }
+            }
+          }
+        ],
+        "current_earnings": {
+          "lines": [
+            {
+              "name": "NONLEGAL reviewed external ending amount",
+              "amount": "1000.0000000000000000",
+              "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+              "attribution": "approved_period_amount",
+              "earning_from": "2026-10-01",
+              "source_parts": [
+                {
+                  "raw": "1000",
+                  "name": "NONLEGAL reviewed external ending amount",
+                  "reason": "NONLEGAL approved amount outside automated V1 formula",
+                  "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+                  "input_version": "0963e715-256d-4640-8181-4722db042ab4",
+                  "classification": "earning",
+                  "component_head": "db83709e-7d3f-4e3e-a03d-1ef971512670",
+                  "declared_social": false,
+                  "declared_taxable": false,
+                  "declared_visible": true,
+                  "component_version": "19951ddc-568f-4e65-8e36-a5528addc90c"
+                }
+              ],
+              "earning_until": "2026-10-04",
+              "declaration_state": "uniform_declared_nontaxable",
+              "declared_taxable_amount": 0,
+              "declared_nontaxable_amount": 1000
+            },
+            {
+              "name": "الأجر الأساسي",
+              "amount": "4258.0600000000000000",
+              "component": "base",
+              "attribution": "saved_salary_distribution",
+              "earning_from": "2026-10-01",
+              "source_parts": [
+                {
+                  "raw": "4258.06451612903225806452",
+                  "name": "الأجر الأساسي",
+                  "detail": [
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-01",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-02",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-03",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-04",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    }
+                  ],
+                  "component": "base",
+                  "classification": "earning"
+                }
+              ],
+              "earning_until": "2026-10-04",
+              "declaration_state": "base_treatment_requires_verified_pack",
+              "declared_taxable_amount": null,
+              "declared_nontaxable_amount": null
+            }
+          ],
+          "contract": "cube4-current-earning-sources-v1",
+          "base_amount": 4258.06,
+          "operational_complete": true,
+          "financially_qualified": false,
+          "declared_taxable_components": 0,
+          "unresolved_component_amount": 0,
+          "declared_nontaxable_components": 1000
+        },
+        "earning_partitions": {
+          "lines": [
+            {
+              "amount": "1000.0000000000000000",
+              "months": null,
+              "reason": "period_amount_needs_earning_scope",
+              "fraction": null,
+              "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+              "source_line_index": 0,
+              "legal_earning_attribution_known": false,
+              "operational_date_distribution_known": false
+            },
+            {
+              "amount": "4258.0600000000000000",
+              "months": null,
+              "reason": "dated_parts_missing",
+              "fraction": null,
+              "component": "base",
+              "source_line_index": 1,
+              "legal_earning_attribution_known": false,
+              "operational_date_distribution_known": false
+            }
+          ],
+          "contract": "cube4-operational-earning-partitions-v1",
+          "financially_qualified": false
+        },
+        "cumulative_balances": {
+          "years": [
+            {
+              "year": 2026,
+              "basis": "locked_cumulative_result",
+              "known": true,
+              "through": "2026-09-30",
+              "source_ids": [
+                "6391b782-3fe1-4008-aa9d-57366282633e",
+                "85731645-27a3-4684-a731-c03a7c0fba0c",
+                "159154fd-ad30-4635-a28f-3d63a516e5f9"
+              ],
+              "prior_tax_due": 9890,
+              "prior_net_income": 98900,
+              "prior_duration_days": 90
+            }
+          ],
+          "issues": [],
+          "contract": "cube4-cumulative-balances-v1",
+          "financially_qualified": false
+        },
+        "financially_qualified": false
+      },
+      "advance_deductions": [],
+      "total_employer_cost": "5458.0600000000000000",
+      "unresolved_segments": [],
+      "source_coverage_days": [],
+      "statutory_deductions": "515.79",
+      "financially_qualified": true,
+      "statutory_calculation": {
+        "tax": {
+          "trace": {
+            "base": 394690,
+            "segments": [
+              {
+                "band": 1,
+                "rate": 0.1,
+                "lower": 0,
+                "upper": null,
+                "taxable_width": 394690,
+                "unrounded_tax": 39469
+              }
+            ],
+            "unrounded_annual_tax": 39469
+          },
+          "column": 1,
+          "adapter": "eg-cumulative-tax-v1",
+          "pack_id": "d440f000-0000-4000-8000-000000000001",
+          "annual_base": 394690,
+          "earning_from": "2026-10-01",
+          "pack_version": "NONLEGAL single-band arithmetic fixture",
+          "duration_days": 94,
+          "earning_until": "2026-10-04",
+          "prior_tax_due": 9890,
+          "source_reference": "NONLEGAL October ending insured wage source",
+          "current_tax_delta": 415.79,
+          "cumulative_tax_due": 10305.79,
+          "annual_tax_unrounded": 39469,
+          "annual_raw_after_exemption": 394690.4425531915
+        },
+        "facts": {
+          "earning_from": "2026-10-01",
+          "earning_until": "2026-10-04",
+          "prior_tax_due": 9890,
+          "insurance_status": "insured",
+          "prior_net_income": 98900,
+          "source_reference": "NONLEGAL October ending insured wage source",
+          "tax_treatment_code": "01",
+          "cumulative_duration_days": 94,
+          "current_taxable_earnings": 4258.06
+        },
+        "adapter": "eg-employee-statutory-v1",
+        "pack_id": "d440f000-0000-4000-8000-000000000001",
+        "insurance": {
+          "lines": [
+            {
+              "month": "2026-10-01",
+              "branch": "pension",
+              "insured_wage": 10000,
+              "employee_rate": 0.01,
+              "employer_rate": 0.02,
+              "tax_deductible": true,
+              "employee_amount": 100,
+              "employer_amount": 200,
+              "insured_wage_source": "NONLEGAL October ending insured wage source"
+            }
+          ],
+          "adapter": "eg-insurance-month-v1",
+          "pack_id": "d440f000-0000-4000-8000-000000000002",
+          "category": "NONLEGAL pension fixture",
+          "pack_version": "NONLEGAL independent insurance arithmetic",
+          "calendar_year": 2026,
+          "employee_total": 100,
+          "employer_total": 200,
+          "source_reference": "NONLEGAL reviewed full October ending-month liability",
+          "obligation_months": [
+            {
+              "month": "2026-10-01",
+              "insured_wage": 10000,
+              "insured_wage_source": "NONLEGAL October ending insured wage source"
+            }
+          ],
+          "tax_deductible_employee_total": 100
+        },
+        "insurance_pack_id": "d440f000-0000-4000-8000-000000000002",
+        "earning_attribution": {
+          "lines": [
+            {
+              "name": "NONLEGAL reviewed external ending amount",
+              "amount": "1000.0000000000000000",
+              "rounding": "taxable_half_up_cent_remainder_nontaxable",
+              "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+              "attribution": "approved_period_amount",
+              "earning_from": "2026-10-01",
+              "source_parts": [
+                {
+                  "raw": "1000",
+                  "name": "NONLEGAL reviewed external ending amount",
+                  "reason": "NONLEGAL approved amount outside automated V1 formula",
+                  "component": "adjustment:a92b9d3a-2c2a-4410-96c6-00ea09292630",
+                  "input_version": "0963e715-256d-4640-8181-4722db042ab4",
+                  "classification": "earning",
+                  "component_head": "db83709e-7d3f-4e3e-a03d-1ef971512670",
+                  "declared_social": false,
+                  "declared_taxable": false,
+                  "declared_visible": true,
+                  "component_version": "19951ddc-568f-4e65-8e36-a5528addc90c"
+                }
+              ],
+              "earning_until": "2026-10-04",
+              "taxable_amount": 0,
+              "declaration_state": "uniform_declared_nontaxable",
+              "nontaxable_amount": 1000,
+              "declared_taxable_amount": 0,
+              "declared_nontaxable_amount": 1000
+            },
+            {
+              "name": "الأجر الأساسي",
+              "amount": "4258.0600000000000000",
+              "rounding": "taxable_half_up_cent_remainder_nontaxable",
+              "component": "base",
+              "attribution": "saved_salary_distribution",
+              "earning_from": "2026-10-01",
+              "source_parts": [
+                {
+                  "raw": "4258.06451612903225806452",
+                  "name": "الأجر الأساسي",
+                  "detail": [
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-01",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-02",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-03",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "1064.51612903225806451613",
+                      "date": "2026-10-04",
+                      "rate": "33000.00",
+                      "_numerator": "3300000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d4407000-0000-4000-8000-000000000001"
+                    }
+                  ],
+                  "component": "base",
+                  "classification": "earning"
+                }
+              ],
+              "earning_until": "2026-10-04",
+              "taxable_amount": 4258.06,
+              "declaration_state": "base_treatment_requires_verified_pack",
+              "nontaxable_amount": 0,
+              "declared_taxable_amount": null,
+              "declared_nontaxable_amount": null
+            }
+          ],
+          "pack_id": "d440f000-0000-4000-8000-000000000001",
+          "contract": "eg-earning-attribution-v1",
+          "pack_version": "NONLEGAL single-band arithmetic fixture",
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "taxable_earnings": 4258.06,
+          "nontaxable_earnings": 1000,
+          "financially_qualified": false
+        }
+      },
+      "financial_qualification": {
+        "profile": "eg-monthly-reviewed-earnings-single-context-v1",
+        "insurance": "reviewed_calendar_month_disposition",
+        "context_head": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+        "tax_evidence": {
+          "ready": true,
+          "scope": "synthetic_external_evidence_contract",
+          "origin": "synthetic_nonlegal",
+          "pack_id": "d440f000-0000-4000-8000-000000000001",
+          "reference": "NONLEGAL external supplier test double; not official acceptance"
+        },
+        "prior_balance": {
+          "year": 2026,
+          "basis": "locked_cumulative_result",
+          "known": true,
+          "through": "2026-09-30",
+          "source_ids": [
+            "6391b782-3fe1-4008-aa9d-57366282633e",
+            "85731645-27a3-4684-a731-c03a7c0fba0c",
+            "159154fd-ad30-4635-a28f-3d63a516e5f9"
+          ],
+          "prior_tax_due": 9890,
+          "prior_net_income": 98900,
+          "prior_duration_days": 90
+        },
+        "context_version": "89cb5b66-3787-4044-9e22-034087a3dd9d",
+        "insurance_evidence": {
+          "ready": true,
+          "scope": "synthetic_external_evidence_contract",
+          "origin": "synthetic_nonlegal",
+          "pack_id": "d440f000-0000-4000-8000-000000000002",
+          "reference": "NONLEGAL external supplier test double; not official acceptance"
+        },
+        "earning_composition": "issued_reviewed_dated_declarations",
+        "time_leave_valuation": "none",
+        "labour_debt_deductions": "none"
+      },
+      "statutory_contributions": "200.00",
+      "statutory_source_binding": {
+        "pack_id": "d440f000-0000-4000-8000-000000000001",
+        "earning_from": "2026-10-01",
+        "earning_until": "2026-10-04",
+        "prior_balance": {
+          "year": 2026,
+          "basis": "locked_cumulative_result",
+          "known": true,
+          "through": "2026-09-30",
+          "source_ids": [
+            "6391b782-3fe1-4008-aa9d-57366282633e",
+            "85731645-27a3-4684-a731-c03a7c0fba0c",
+            "159154fd-ad30-4635-a28f-3d63a516e5f9"
+          ],
+          "prior_tax_due": 9890,
+          "prior_net_income": 98900,
+          "prior_duration_days": 90
+        },
+        "reviewed_month": "2026-10-01",
+        "context_head_id": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+        "insurance_pack_id": "d440f000-0000-4000-8000-000000000002",
+        "context_version_id": "89cb5b66-3787-4044-9e22-034087a3dd9d",
+        "ownership_reference": "NONLEGAL reviewed full October ending-month liability",
+        "current_duration_days": "4",
+        "insurance_month_disposition": "reviewed_due"
+      }
+    },
+    "sourceContextRevision": 4,
+    "approvedAdjustmentAppliedRevision": 3,
+    "priorFourFrozenRowsUnchanged": true,
+    "loanHeadsAndEventsUnchanged": true,
+    "successful200LostAndOriginalReceiptRecovered": true,
+    "recoveryBusinessFactsIdentical": true,
+    "receiptsBeforeAndAfterRecovery": 38,
+    "desktop": 1262,
+    "mobile": 390,
+    "noHorizontalOverflow": true
+  },
+  "checks": {
+    "currentCombinedDDLSQL": 74,
+    "manualEndingSQL": 35,
+    "legacyInsuredSQL": 39,
+    "earlierPartialProducerChecksReused": {
+      "joining": 27,
+      "ending": 30,
+      "cutoff": 30,
+      "boundary": "Earlier45000 hashes before final evidence-label and46000 earning-admission delta; not a same174 full replay"
+    },
+    "sourceTransport": 6,
+    "typecheck": true,
+    "changedFileLint": true,
+    "productionBuild": {
+      "SHA": "fa04bf6f3084ae10cb4a9b1e1ec3a47ab32d4b83",
+      "Tree": "d4caa79632cde7d36dd49618597739f4fa389a90",
+      "exitCode": 0,
+      "tool": "Next16.3.6 webpack production build",
+      "normalBrowserFinancialJourneySHA": "fa04bf6f3084ae10cb4a9b1e1ec3a47ab32d4b83",
+      "postJourneyDelta": "Current reviewed month/ending-amount group build before actual UI acceptance.",
+      "noSecretValuesRecorded": true
+    },
+    "full174Replay": false
+  },
+  "failureEvidence": "All failed QA logs retained: missing actual disposition fixture; invalid version/head status column and helper assumptions; missing test finance permission; mistaken frozen lifecycle counts. Corrected tests preserve draft+approved frozen lifecycle, one applied revision. Mobile first checkbox click covered by sticky header; HTML validation blocked send. Second attempt collapsed disclosure and found hidden covered controls; no server mutation. Opened only when closed and scrolled ordinary checkbox to viewport center, then normal check/click sent one successful finalization. Earlier lost-finalization-named snapshots contain these blocked attempts; only successful-response-lost plus dropped200 is actual committed loss.",
+  "externalBoundary": "Reviewed individual due/not-due source fact is documented input, not legal qualification or automatic monthly liability policy. Independent full-calendar-month insurance issuer remains required; no salary proration of insured wage. Exact NONLEGAL two-pack QA issuer only; no official2026 issuance fabricated, no production gate flag changed.",
+  "scope": "Frozen spec section18 admits approved manual component/adjustment and external documented termination handoff; full specialist statutory termination formulas are excluded from V1. Current group delivers manual earnings composition, not all termination/report acceptance.",
+  "remaining": [
+    "P1 essential multi-context/year financial composition and multiple-month ownership/allocation/cent conservation",
+    "P1 essential general25percent/50percent deduction capacity and mandatory priority; existing aggregate employer-loan10percent only",
+    "P1 essential optional Time/Leave and daily qualified composition",
+    "P1 essential final-period ending marker/report and outstanding-obligation handoff acceptance",
+    "P1 essential paid correction/payment/report/risk-race journeys and final same-SHA/tree174 full qualification",
+    "External real immutable2026 issuer/official numeric and applicability package; already known unavailable"
+  ],
+  "servicesStopped": true,
+  "QAAndTemporaryAuthRetainedForImmediateSameTask": true,
+  "atUTC": "2026-10-04T05:11:47.439Z"
+}
