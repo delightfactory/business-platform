@@ -1,0 +1,80 @@
+{
+  "status": "PROGRAMMATIC_FINITE_JOURNEYS_ACCEPTED_OFFICIAL_LEGAL_CLOSURE_CONDITIONAL",
+  "baseSHA": "99250d891623c8e9acb8a407beab71d81ec31fe0",
+  "finalQualification": "../../../final-cube4-qualification/result.json",
+  "migration": "20261003058000_cube4_linked_correction_consumption_completion.sql",
+  "migrationSHA256": "67c9d4bae5b193fe87100659ed6037bd88d9dd3c5dfde8b3eccecda4cd521d60",
+  "baseline": 186,
+  "tests": [
+    {
+      "file": "cube4_qualified_carry_after_unpaid_replacement.test.sql",
+      "SHA256": "4b419e566bd6d4af0ac1fa36087c2796c1154a5da25cd7e62c7a228eb057dff7"
+    },
+    {
+      "file": "cube4_qualified_ending_report_handoff.test.sql",
+      "SHA256": "fc2d5affa75beff6881668424860399202c6b54508439a8b38400d9e57031e3d"
+    },
+    {
+      "file": "cube4_qualified_leave_correction_closure.test.sql",
+      "SHA256": "5d9ac1405fd36247bff3847ad202f964a49096eb61b58ffc41083ce637edf21e"
+    },
+    {
+      "file": "cube4_qualified_linked_correction_consumption.test.sql",
+      "SHA256": "649a70e1178076b462486abbb703e2d3c143e915aa1afedc67a134935a7f1cd3"
+    },
+    {
+      "file": "cube4_qualified_mixed_correction_consumption.test.sql",
+      "SHA256": "203d56bdfad15ec501af27a6bbe7f080e712d0912cf0f851fdd748d43dc1001b"
+    },
+    {
+      "file": "cube4_qualified_time_correction_closure.test.sql",
+      "SHA256": "729d2136b7bd21fd7623327fcf00e7b80524a6eb47c63bf61cf91d81cec54f19"
+    }
+  ],
+  "accepted": {
+    "linkedTargetConsumption": 35,
+    "duplicateResponsibilityRouteRefusal": 20,
+    "qualifiedLeaveCorrection": 30,
+    "qualifiedClassifiedTimeCorrection": 29,
+    "carryAfterUnpaidReplacement": 73,
+    "endingReportAndExport": 42,
+    "historicalLeaveExternalRegression": 39
+  },
+  "actualUI": {
+    "net": 21910.03,
+    "atUTC": "2026-10-04T12:22:34.873885+00:00",
+    "output": "112acfdc-478b-4bcd-addf-e0b42a7a2c0b",
+    "finalCount": 2,
+    "loanEvents": 1,
+    "targetAmount": 5000,
+    "targetStatus": "applied",
+    "originalContextHash": "32514fcbc08c89f55def72b3c816975d",
+    "salaryPaymentEvents": 0,
+    "originalEmployeeHash": "fcf4842ad958fdf8d679c8ea62afb433",
+    "originalContextPreserved": true,
+    "originalEmployeePreserved": true,
+    "exportHTTP": 200,
+    "exportFile": "next-period-export.csv",
+    "codeSHA": "99250d891623c8e9acb8a407beab71d81ec31fe0",
+    "officialLegalAcceptance": false
+  },
+  "qualificationMeaning": "Fresh replay and affected upgrade matrix on the exact commit/tree containing this record. Read the linked external result for outcome; no self-referential commit or inferred full legal PASS.",
+  "reuse": "Earlier application build/typecheck/lint remain applicable: no application sources changed from99250d; previous guarded grouped payslip214, fixed30/source139 and role/recovery/race artifacts retain their exact recorded scope.",
+  "remaining": [
+    {
+      "priority": "P0_EXTERNAL",
+      "requirement": "Reviewed official dated tax/insurance packages, effective coverage and representative independent expected results including duration and obligation ownership. Ahmad already lacks this input; no repeated request or synthetic issuance."
+    },
+    {
+      "priority": "P1_QUALIFICATION_BOUNDARY",
+      "requirement": "The final result is an affected fresh/upgrade acceptance matrix, not all historical tests or every responsive/role/pilot scenario. Prior matrix PARTIAL/NOT RUN boundaries persist unless the exact evidence referenced closes them."
+    }
+  ],
+  "restrictions": {
+    "noCI": true,
+    "noPushMergeDeploy": true,
+    "noProductionOrOtherWriterQA": true,
+    "temporaryAuthExpiryUTC": "2026-10-04T15:01:03.872Z",
+    "expiryNeverExtended": true
+  }
+}
