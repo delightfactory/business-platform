@@ -105,7 +105,7 @@ Forward read-contract migration `20261004190058_cube5_own_history_review_state.s
 
 ## Scoped setup and review-history continuation from dc06b2c
 
-The continuation candidate exposes the existing `employee.attendance.self.v1` bundle in the member access editor. Existing selected bundles remain checked; the authoritative writer replaces only catalog roles and preserves unrelated noncatalog roles. Its existing maximum is9 bundles, now matched by the server action and UI guidance. Protected administrators remain excluded from this writer, with an explicit handoff rather than an automatic grant or role change.
+The continuation candidate exposes the existing `employee.attendance.self.v1` bundle in the member access editor. Existing selected bundles remain checked; the authoritative writer replaces only catalog roles and preserves unrelated noncatalog roles. Its authoritative maximum is24 bundles, established by the later Cube4 migration `20261002025507_cube4_payroll_external_payments.sql`, and matched by the server action and UI guidance. Protected administrators remain excluded from this writer, with an explicit handoff rather than an automatic grant or role change.
 
 The Employee account-link panel points authorized member managers to the linked account's bundle editor; other managers receive a specific handoff. The member page points authorized People viewers to Employee records and describes the independent prerequisites: active membership, active Employee link, effective work context, configured Site/mobile policy and enabled service. Neither linking nor adding a bundle claims the other prerequisites are satisfied. The existing unlink and bundle-removal actions provide the reverse path; persisted status and employee capture eligibility remain server-owned.
 
@@ -113,7 +113,7 @@ Forward read migration `20261004200852_cube5_channel_review_history.sql` preserv
 
 | Closure row | Candidate classification | Required root evidence |
 | --- | --- | --- |
-| Existing Employee link plus self-attendance bundle setup | UI source implemented through existing guarded actions | Browser setup, persisted bundle/link, eligible employee capture, role removal/unlink denial, unrelated-role preservation and nine-bundle/protected-admin boundaries |
+| Existing Employee link plus self-attendance bundle setup | UI source implemented through existing guarded actions | Browser setup, persisted bundle/link, eligible employee capture, role removal/unlink denial, unrelated-role preservation and 24-bundle/protected-admin boundaries |
 | Persisted channel location-review decision visibility | UI/read contract implemented | Save actual decision, reload, verify label/reason/time and resolved pending state; current-safe historical actor fallback |
 | Generic external ingestion contract | Intentionally authenticated server consumer | Existing finite gateway evidence; this continuation adds no transport |
 | Vendor-specific biometric adapter | Blocked vendor sub-gate | Reviewed protocol/topology/authentication/timestamps/identity/replay/test/privacy record and actual device qualification |
@@ -124,3 +124,5 @@ The new exact source manifest is `cube5-qa/ui-next-source-handoff-manifest.json`
 The independent pinned-dc review follow-up routes only known browser location denial/unavailability/timeout through the existing authoritative geofence policy, submitting the same fresh attempt with `location: null`. Arabic feedback separates the browser cause from the actual server rejection or recorded-review outcome. Unknown/programming/serialization errors abort preparation; no inside verdict is invented. Exact in-tab resend reuses the completed null-evidence attempt without another location request, and network uncertainty preserves the original ID/scope.
 
 Forward read migration `20261004201539_cube5_own_history_review_decision.sql` adds the latest persisted decision to the employee's existing guarded own history. Later review acceptance or exclusion is shown separately from immutable capture acceptance, with decision reason, safe reviewer label and frozen timezone/time. This closes source implementation of both operator and employee review visibility; root must qualify actual persisted decisions/reload and both location reject/review policies before any PASS claim. Earlier dc review/runtime evidence remains source-bound to dc and is not evidence for this continuation candidate.
+
+The focused continuation review corrected an executor mistake: the initial source-only cap9 change overlooked later Cube4 migrations. The candidate action and guidance now retain the authoritative24 limit; no installed migration was changed. This correction does not alter existing selections, protected-admin rules or unrelated-role preservation.

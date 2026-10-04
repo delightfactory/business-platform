@@ -125,7 +125,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
               <div className="invitation-actions">
                 {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
                   <summary className="secondary-button">إدارة حزم الوصول</summary>
-                  <p className="field-hint">يمكن اختيار حتى ٩ حزم. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
+                  <p className="field-hint">يمكن اختيار حتى ٢٤ حزمة. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
                   <form action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />

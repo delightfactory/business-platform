@@ -85,7 +85,7 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const userId = field(formData, 'userId');
   const bundleKeys = formData.getAll('bundleKey').map((value) => String(value));
-  if (!isUuid(tenantId) || !isUuid(userId) || bundleKeys.length > 9) go(tenantId, 'bundle-invalid');
+  if (!isUuid(tenantId) || !isUuid(userId) || bundleKeys.length > 24) go(tenantId, 'bundle-invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) go(tenantId, 'setup');
   const { data, error } = await supabase.rpc('set_tenant_member_people_bundles', {
