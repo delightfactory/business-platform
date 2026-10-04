@@ -1,0 +1,10 @@
+{
+  "test": "cube4_debt_carry_public_journey.test.sql",
+  "status": "FAIL_ROLLED_BACK",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c",
+  "testSHA256": "dc90e7216ca4a4aab94669f1e7097e8271d457499324d1925fc49283e1c31959",
+  "exitCode": 0,
+  "assertions": 64
+}

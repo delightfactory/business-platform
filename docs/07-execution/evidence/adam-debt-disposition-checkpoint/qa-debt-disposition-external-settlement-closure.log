@@ -1,0 +1,406 @@
+BEGIN
+CREATE TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+CREATE TRIGGER
+DO
+ALTER FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+CREATE FUNCTION
+REVOKE
+DO
+DO
+ALTER FUNCTION
+CREATE FUNCTION
+REVOKE
+CREATE FUNCTION
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+CREATE FUNCTION
+REVOKE
+DO
+CREATE FUNCTION
+REVOKE
+GRANT
+DO
+ no_plan 
+---------
+(0 rows)
+
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 2
+                                 is                                  
+---------------------------------------------------------------------
+ ok 1 - real insurance issuer rejects the independent synthetic pack
+(1 row)
+
+                        throws_ok                        
+---------------------------------------------------------
+ ok 2 - ownership month must be an exact civil-month key
+(1 row)
+
+                          throws_ok                          
+-------------------------------------------------------------
+ ok 3 - ownership requires an opaque valid period identifier
+(1 row)
+
+                                            is                                            
+------------------------------------------------------------------------------------------
+ ok 4 - real production issuer rejects synthetic pack; no official evidence is fabricated
+(1 row)
+
+SET
+              set_config              
+--------------------------------------
+ d6630000-0000-4000-8000-000000000001
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "e5e4c42d-2fd8-4324-88bf-1de91b3e9817", "status": "draft", "revision": 1}
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "5a364f5a-baef-414d-a918-eabf1d83530e", "status": "draft", "revision": 1}
+(1 row)
+
+              set_config              
+--------------------------------------
+ 55d4a89d-e6f6-4b22-a112-b48b8cec2fa8
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "55d4a89d-e6f6-4b22-a112-b48b8cec2fa8", "status": "draft", "revision": 2}
+(1 row)
+
+RESET
+SET
+SET
+              set_config              
+--------------------------------------
+ f405a7d6-123f-4879-a71d-08c98c911505
+(1 row)
+
+                                                                                                                          set_config                                                                                                                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"amount": 8000, "reason": "Reviewed contractual amount outside automated V1 coverage", "reference": "NONLEGAL external termination calculation document", "component_id": "f405a7d6-123f-4879-a71d-08c98c911505", "deduction_category": "employer_penalty"}
+(1 row)
+
+              set_config              
+--------------------------------------
+ 33f22a50-02f4-42bc-8747-e294104520d6
+(1 row)
+
+                                 payroll_save_input                                  
+-------------------------------------------------------------------------------------
+ {"id": "33f22a50-02f4-42bc-8747-e294104520d6", "status": "approved", "revision": 2}
+(1 row)
+
+RESET
+SET
+              set_config              
+--------------------------------------
+ d6638000-0000-4000-8000-000000000001
+(1 row)
+
+                                       payroll_advance_command                                        
+------------------------------------------------------------------------------------------------------
+ {"id": "d6638000-0000-4000-8000-000000000001", "status": "draft", "revision": 1, "outstanding": "0"}
+(1 row)
+
+                                          payroll_advance_command                                           
+------------------------------------------------------------------------------------------------------------
+ {"id": "d6638000-0000-4000-8000-000000000001", "status": "approved", "revision": 2, "outstanding": "0.00"}
+(1 row)
+
+                                           payroll_advance_command                                           
+-------------------------------------------------------------------------------------------------------------
+ {"id": "d6638000-0000-4000-8000-000000000001", "status": "active", "revision": 3, "outstanding": "2000.00"}
+(1 row)
+
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "11fbbb46-3baf-4f46-90c0-e78f911c660e", "status": "review", "revision": 1, "issue_count": 3, "candidate_id": "abd18c44-e86e-4c51-9577-b6f8d3b19b48"}
+(1 row)
+
+RESET
+                               is                               
+----------------------------------------------------------------
+ ok 5 - real issuer still blocks multi-context synthetic inputs
+(1 row)
+
+CREATE FUNCTION
+SET
+                                 payroll_run_command                                  
+--------------------------------------------------------------------------------------
+ {"id": "11fbbb46-3baf-4f46-90c0-e78f911c660e", "status": "cancelled", "revision": 2}
+(1 row)
+
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "1a73ecaf-4bed-4f4e-87f3-b3f4432d1f96", "status": "review", "revision": 1, "issue_count": 4, "candidate_id": "5b17e916-870b-4bf6-8a39-4faea2441ca4"}
+(1 row)
+
+RESET
+                                   is                                   
+------------------------------------------------------------------------
+ ok 6 - tax evidence alone cannot qualify an approved general deduction
+(1 row)
+
+                              ok                               
+---------------------------------------------------------------
+ ok 7 - owned blocker identifies the independent labour issuer
+(1 row)
+
+SET
+                                 payroll_run_command                                  
+--------------------------------------------------------------------------------------
+ {"id": "1a73ecaf-4bed-4f4e-87f3-b3f4432d1f96", "status": "cancelled", "revision": 2}
+(1 row)
+
+RESET
+CREATE FUNCTION
+SET
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "e02ef953-17ee-4852-af5d-92466a33cbae", "status": "review", "revision": 1, "issue_count": 4, "candidate_id": "0c533ed3-d227-414a-89c5-e4060447f86e"}
+(1 row)
+
+RESET
+                                         is                                          
+-------------------------------------------------------------------------------------
+ ok 8 - approved8000 overcapacity is not a financially qualified partial consumption
+(1 row)
+
+                                      is                                      
+------------------------------------------------------------------------------
+ ok 9 - unapplied approved obligation remains visible with its exact residual
+(1 row)
+
+                                 is                                  
+---------------------------------------------------------------------
+ ok 10 - overcapacity public calculation commits no financial output
+(1 row)
+
+                          is                           
+-------------------------------------------------------
+ ok 11 - blocked claim leaves approved loan unconsumed
+(1 row)
+
+                               is                                
+-----------------------------------------------------------------
+ ok 12 - overcapacity claim cannot lower actual outstanding loan
+(1 row)
+
+                                        is                                         
+-----------------------------------------------------------------------------------
+ ok 13 - blocked debt retains completed independent statutory segment explanations
+(1 row)
+
+                                   ok                                    
+-------------------------------------------------------------------------
+ ok 14 - capacity explanation exposes no qualified or provisional payout
+(1 row)
+
+                           is                           
+--------------------------------------------------------
+ ok 15 - overcapacity leaves approved source unconsumed
+(1 row)
+
+SET
+                      throws_ok                       
+------------------------------------------------------
+ ok 16 - public approval refuses unapplied obligation
+(1 row)
+
+RESET
+INSERT 0 1
+SET
+              set_config              
+--------------------------------------
+ e06f5c65-5601-4c40-bb3e-11700ed8fade
+(1 row)
+
+                                                                                                          set_config                                                                                                          
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "12027dad-2e5c-4246-8d41-57a6ad7edd7a", "disposition": "external_settlement", "target_head": null, "payroll_amount": 3000.00, "original_amount": 8000.00, "residual_amount": 5000.00, "requires_recalculation": true}
+(1 row)
+
+                                 is                                  
+---------------------------------------------------------------------
+ ok 17 - same disposition receipt creates one attributable remainder
+(1 row)
+
+                                 payroll_run_command                                  
+--------------------------------------------------------------------------------------
+ {"id": "e02ef953-17ee-4852-af5d-92466a33cbae", "status": "cancelled", "revision": 2}
+(1 row)
+
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "6af96415-8135-4c70-8f2b-c69833804478", "status": "review", "revision": 1, "issue_count": 0, "candidate_id": "c4b1bb9d-1525-46db-abfe-bcb2a85e6abb"}
+(1 row)
+
+RESET
+ actual_issues 
+---------------
+ []
+(1 row)
+
+                                        is                                        
+----------------------------------------------------------------------------------
+ ok 18 - actual multi-context producer requires separately qualified scoped packs
+(1 row)
+
+                              is                               
+---------------------------------------------------------------
+ ok 19 - segment cents conserve original rounded monthly gross
+(1 row)
+
+                                            is                                             
+-------------------------------------------------------------------------------------------
+ ok 20 - Dec7/Jan24 tax and two insurance months reconcile with one approved1000 deduction
+(1 row)
+
+                                     is                                      
+-----------------------------------------------------------------------------
+ ok 21 - both immutable legal context versions have independent explanations
+(1 row)
+
+                                         is                                          
+-------------------------------------------------------------------------------------
+ ok 22 - December and January liabilities are independent once-owned calendar months
+(1 row)
+
+                         is                         
+----------------------------------------------------
+ ok 23 - first salary segment preserves cent prefix
+(1 row)
+
+                             is                              
+-------------------------------------------------------------
+ ok 24 - second salary segment is exact complementary amount
+(1 row)
+
+                                           is                                           
+----------------------------------------------------------------------------------------
+ ok 25 - January resets prior taxable at year start instead of carrying December income
+(1 row)
+
+                                            is                                            
+------------------------------------------------------------------------------------------
+ ok 26 - January resets prior tax at year start instead of carrying December assessed tax
+(1 row)
+
+SET
+                                                                                     payroll_candidate_approval                                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "6af96415-8135-4c70-8f2b-c69833804478", "status": "approved", "revision": 2, "approval_id": "50ca5071-08c2-4134-b08a-08e0341e7bcb", "candidate_id": "c4b1bb9d-1525-46db-abfe-bcb2a85e6abb"}
+(1 row)
+
+              set_config              
+--------------------------------------
+ 1f72b2fb-252c-453b-9958-f9980713c731
+(1 row)
+
+                                                                                         set_config                                                                                          
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "6af96415-8135-4c70-8f2b-c69833804478", "output": "995524fd-8279-4466-899e-304edd946b94", "status": "locked", "revision": 3, "candidate_id": "c4b1bb9d-1525-46db-abfe-bcb2a85e6abb"}
+(1 row)
+
+                          is                           
+-------------------------------------------------------
+ ok 27 - same attempt returns the one committed output
+(1 row)
+
+                              is                               
+---------------------------------------------------------------
+ ok 28 - recovery reads the original grouped financial receipt
+(1 row)
+
+RESET
+                                  is                                   
+-----------------------------------------------------------------------
+ ok 29 - one immutable employee output contains both reviewed segments
+(1 row)
+
+                                             is                                              
+---------------------------------------------------------------------------------------------
+ ok 30 - next period projects both cross-year authoritative segments into cumulative history
+(1 row)
+
+                                        ok                                        
+----------------------------------------------------------------------------------
+ ok 31 - each frozen segment satisfies historical structural and numeric contract
+(1 row)
+
+                            is                             
+-----------------------------------------------------------
+ ok 32 - external evidence accounts for exact residual5000
+(1 row)
+
+                              ok                              
+--------------------------------------------------------------
+ ok 33 - external residual creates no future deduction source
+(1 row)
+
+                         is                          
+-----------------------------------------------------
+ ok 34 - actual external settlement date is retained
+(1 row)
+
+                                     is                                     
+----------------------------------------------------------------------------
+ ok 35 - settling debt outside payroll creates no fabricated salary payment
+(1 row)
+
+                                        is                                        
+----------------------------------------------------------------------------------
+ ok 36 - original debt consumes with preserved8000 and external residual evidence
+(1 row)
+
+SET
+                                 throws_ok                                 
+---------------------------------------------------------------------------
+ ok 37 - consumed split requires governed correction instead of retraction
+(1 row)
+
+RESET
+ finish 
+--------
+ 1..37
+(1 row)
+
+ROLLBACK

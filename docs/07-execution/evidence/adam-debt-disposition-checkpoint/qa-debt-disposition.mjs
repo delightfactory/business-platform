@@ -1,0 +1,8 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import {spawnSync} from 'node:child_process';
+const phase=process.argv[2],test=process.argv[3];if(!/^[a-z-]+$/.test(phase??'')||!/^cube4_[a-z0-9_]+\.test\.sql$/.test(test??''))throw Error('Explicit phase/test required');
+const name='qa-debt-disposition-'+phase;if(fs.existsSync(name+'.json'))throw Error('Frozen evidence exists');
+const migration=fs.readFileSync('implementation/supabase/migrations/20261003056000_cube4_approved_deduction_dispositions.sql','utf8').replaceAll('\r\n','\n');
+const body=fs.readFileSync('implementation/supabase/tests/'+test,'utf8').replaceAll('\r\n','\n');const sql=body.replace('BEGIN;',()=> 'BEGIN;\n'+migration);
+const r=spawnSync('docker',['exec','-i','supabase_db_business-platform','psql','-X','-U','postgres','-d','business_platform_cube4_adam_positive_qa','-v','ON_ERROR_STOP=1'],{input:sql,encoding:'utf8',maxBuffer:16e6});
+const log=(r.stdout??'')+(r.stderr??'');fs.writeFileSync(name+'.log',log);const pass=r.status===0&&!/not ok \d+|Looks like you failed/i.test(log)&&/1\.\.\d+/.test(log);
+const plan=log.match(/1\.\.(\d+)/);const e={test,status:pass?'BOUNDED_DEBT_DISPOSITION_PASS':'FAIL_ROLLED_BACK',baseline:183,DDLAndFixtureRolledBack:true,migrationSHA256:crypto.createHash('sha256').update(migration).digest('hex'),testSHA256:crypto.createHash('sha256').update(body).digest('hex'),exitCode:r.status,assertions:plan?Number(plan[1]):null};fs.writeFileSync(name+'.json',JSON.stringify(e,null,2));process.stdout.write(JSON.stringify(e)+'\n');if(!pass)process.stdout.write(log.slice(-6500));process.exit(pass?0:1);

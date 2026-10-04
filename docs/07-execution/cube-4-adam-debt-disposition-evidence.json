@@ -1,0 +1,219 @@
+{
+  "status": "WIP_SAFE_PARENT_HANDOFF_NOT_CUBE_CLOSURE",
+  "baseSHA": "c226a06f28d303a35a0d0d39da2413b25c0bd9d4",
+  "baseTree": "2d77182d385ad9a48cf396d1e6eaa18719f5d956",
+  "branch": "codex/cube4-adam-closure",
+  "checkpointCommit": "The local commit containing this manifest; report its SHA separately to avoid a self-referential hash.",
+  "lastSuccessfulLocalOperation": {
+    "atUTC": "2026-10-04T10:39:03.1337556Z",
+    "operation": "Read-only psql inspection of owned business_platform_cube4_adam_positive_qa",
+    "users": 0,
+    "finals": 0,
+    "deduction560Installed": false
+  },
+  "connectivity": {
+    "recoveredAtUTC": "2026-10-04T09:55:00Z",
+    "noFinancialCommandRepeatedOnRecovery": true,
+    "noNewDisconnectObserved": true,
+    "noOSChanges": true
+  },
+  "runtime": {
+    "container": "supabase_db_business-platform",
+    "database": "business_platform_cube4_adam_positive_qa",
+    "baseline": 183,
+    "allNewTestsAndDDLRunInsideRollback": true,
+    "new560InstalledNow": false,
+    "newBrowserAuthRuntimeCreated": false,
+    "previousOwnedBrowserQAAndItsNineFinalsUntouched": true
+  },
+  "sources": [
+    {
+      "path": "supabase/migrations/20261003056000_cube4_approved_deduction_dispositions.sql",
+      "SHA256NormalizedLF": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+    },
+    {
+      "path": "supabase/tests/cube4_debt_carry_public_journey.test.sql",
+      "SHA256NormalizedLF": "dc90e7216ca4a4aab94669f1e7097e8271d457499324d1925fc49283e1c31959"
+    },
+    {
+      "path": "supabase/tests/cube4_debt_disposition_authority.test.sql",
+      "SHA256NormalizedLF": "0b26c41dc26f0716e66f46fd485b7c658b9fb48f19a49eafa64e086a3b8432cd"
+    },
+    {
+      "path": "supabase/tests/cube4_debt_disposition_install.test.sql",
+      "SHA256NormalizedLF": "e7b7c5206fe9513e87213b2ccfae0f0b5a853d0212194f3f10f74e6a2fac4d59"
+    },
+    {
+      "path": "supabase/tests/cube4_debt_disposition_retraction.test.sql",
+      "SHA256NormalizedLF": "2d8f2f911a27e6b9f7279defeca116cbe8b34a2f93e4db7844a0ceee09ac03f7"
+    },
+    {
+      "path": "supabase/tests/cube4_debt_external_settlement_public_journey.test.sql",
+      "SHA256NormalizedLF": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f"
+    },
+    {
+      "path": "supabase/tests/cube4_recurring_debt_authority_catalog.test.sql",
+      "SHA256NormalizedLF": "66ef660a2da7f28c87632331cb3777e32a96eb5d66da6594ae840302c46739f4"
+    },
+    {
+      "path": "supabase/tests/cube4_recurring_debt_carry_public_journey.test.sql",
+      "SHA256NormalizedLF": "8af6d476abbfb7631c0a72abe9af057a94e1e8172df303bcada7c8558d8c1a61"
+    },
+    {
+      "path": "supabase/tests/cube4_recurring_debt_monthly_residual.test.sql",
+      "SHA256NormalizedLF": "2be385f64b1054563f023c1dd6675ebd177dfc0c5442dc358371b940499ca14a"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "SHA256NormalizedLF": "07d33e92eb14f3ad230fb1afa9db17866b9c05fdd6febf34e49e0e7aff874611"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "SHA256NormalizedLF": "8b90974161ad10ea467e91278481e15ec25f11d0a778a9ff8de39d4735e33cc8"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "SHA256NormalizedLF": "7888a4506d6bafc451aa6b7a341550435dd95f12a2bbdc93b45fbbb3f3d74ee1"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "SHA256NormalizedLF": "aab9e0367ec9931342793a7491379f9f3fa13269a5e73bbce7ff00dbd246a1ba"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+      "SHA256NormalizedLF": "e4a4414698c19713694d58e03af8980774e95b9407949ae1ee48529c4c2db049"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/deduction-disposition-actions.ts",
+      "SHA256NormalizedLF": "ea1eeb66b1097101ca424ab7f5b05eb284d785f00226716f2a3a4bd81f307b81"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "SHA256NormalizedLF": "d8b3c52f2f3c327fce5ccb2f212e28b4e3528dec3a8b14aaf52e4098f3d93711"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "SHA256NormalizedLF": "3cc2f969b21c87f3d84408d052b8c12e90470aed320d2d7e9fac0a17a990b218"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/output/page.tsx",
+      "SHA256NormalizedLF": "d49f3d6aa07ee7ecaffdeb0c6b12e7d45e1ade90c2f121d6cb598110ece21f48"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "qa-debt-disposition-final-authority.json",
+      "test": "cube4_debt_disposition_authority.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c",
+      "testSHA256": "0b26c41dc26f0716e66f46fd485b7c658b9fb48f19a49eafa64e086a3b8432cd",
+      "exitCode": 0,
+      "assertions": 39
+    },
+    {
+      "file": "qa-debt-disposition-final-recurring-catalog-authority.json",
+      "test": "cube4_recurring_debt_authority_catalog.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c",
+      "testSHA256": "66ef660a2da7f28c87632331cb3777e32a96eb5d66da6594ae840302c46739f4",
+      "exitCode": 0,
+      "assertions": 22
+    },
+    {
+      "file": "qa-debt-disposition-final-carry-payslip.json",
+      "test": "cube4_debt_carry_public_journey.test.sql",
+      "status": "FAIL_ROLLED_BACK",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c",
+      "testSHA256": "dc90e7216ca4a4aab94669f1e7097e8271d457499324d1925fc49283e1c31959",
+      "exitCode": 0,
+      "assertions": 64
+    },
+    {
+      "file": "qa-debt-disposition-carry-recovery-origin-qualified.json",
+      "test": "cube4_debt_carry_public_journey.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+      "testSHA256": "d7a0c068704e30ddd40e28980d70b8cdb3e5bc59fd8ba29f664a261de4022be5",
+      "exitCode": 0,
+      "assertions": 61
+    },
+    {
+      "file": "qa-debt-disposition-recurring-monthly-residual.json",
+      "test": "cube4_recurring_debt_monthly_residual.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+      "testSHA256": "2be6549036ecc0f5f218d572de7beae13f825fde3043ce09d2012f9021102649",
+      "exitCode": 0,
+      "assertions": 58
+    },
+    {
+      "file": "qa-debt-disposition-retraction-closure.json",
+      "test": "cube4_debt_disposition_retraction.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+      "testSHA256": "2d8f2f911a27e6b9f7279defeca116cbe8b34a2f93e4db7844a0ceee09ac03f7",
+      "exitCode": 0,
+      "assertions": 25
+    },
+    {
+      "file": "qa-debt-disposition-external-settlement-closure.json",
+      "test": "cube4_debt_external_settlement_public_journey.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+      "testSHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+      "exitCode": 0,
+      "assertions": 37
+    },
+    {
+      "file": "qa-debt-disposition-recurring-carry-bound-data.json",
+      "test": "cube4_recurring_debt_carry_public_journey.test.sql",
+      "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+      "baseline": 183,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "55061a21c37b7fcc83494bb17f39e913ccf1bf5dd8e1ec1cbd7b9684fbef4ab1",
+      "testSHA256": "8af6d476abbfb7631c0a72abe9af057a94e1e8172df303bcada7c8558d8c1a61",
+      "exitCode": 0,
+      "assertions": 56
+    }
+  ],
+  "verification": {
+    "currentDDLPassAssertions": 61,
+    "currentDDLCases": [
+      "final-authority39",
+      "final-recurring-catalog-authority22"
+    ],
+    "currentDDLIntegratedTest": "64 assertions; 62 PASS, 2 FAIL in actual frozen payslip statutory presentation",
+    "earlierMathAndConsumption": "PASS61 carry/recovery/origin; PASS58 recurring next-month residual; PASS25 retraction; PASS37 external settlement; PASS56 initial recurring carry. Each evidence records its own DDL hash; not a final-version aggregate PASS.",
+    "routineChecks": "typecheck and lint passed during development; small UI refinements after their latest run remain unqualified. No final production build or new ordinary Auth/browser evidence."
+  },
+  "blocker": {
+    "priority": "P0",
+    "error": "actual report_payslip_lines complete=false; visible deduction sum5000.00 instead of8179.94 in cross-year multi-context frozen output",
+    "missing": "Statutory employee insurance200 and tax2979.94 are omitted; monetary deduction/consumption assertions still pass. Exact validation cause not yet isolated; inspect multi-context statutory presentation/resolution in32000 and grouped context/profile contracts.",
+    "failedAssertions": [
+      35,
+      36
+    ]
+  },
+  "remaining": [
+    "Fix actual multi-context frozen statutory payslip/report contract without editing installed migrations.",
+    "Review/qualify current560 retraction and carry freshness interactions with governed corrections and concurrent authority changes.",
+    "Run affected deltas on one final source/hash, then current lint/typecheck/build and actual ordinary Auth UI with a fresh scoped ephemeral QA identity; final suite not yet executed.",
+    "Finish qualified paid/source-linked next-period correction consumption, actual Time/Leave responsibilities, ending period/obligation and per-segment export handoff.",
+    "Final integrated qualification at the same SHA/tree; official2026/effective-coverage legal pack and golden outputs remain the already-known external prerequisite."
+  ]
+}

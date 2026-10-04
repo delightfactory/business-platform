@@ -1,0 +1,315 @@
+BEGIN
+CREATE TABLE
+ALTER TABLE
+REVOKE
+CREATE FUNCTION
+CREATE TRIGGER
+REVOKE
+CREATE TABLE
+ALTER TABLE
+REVOKE
+CREATE TRIGGER
+DO
+ALTER FUNCTION
+CREATE FUNCTION
+REVOKE
+REVOKE
+GRANT
+CREATE FUNCTION
+REVOKE
+DO
+DO
+ALTER FUNCTION
+CREATE FUNCTION
+REVOKE
+CREATE FUNCTION
+REVOKE
+GRANT
+CREATE FUNCTION
+CREATE FUNCTION
+REVOKE
+GRANT
+CREATE FUNCTION
+REVOKE
+DO
+CREATE FUNCTION
+REVOKE
+GRANT
+ALTER FUNCTION
+CREATE FUNCTION
+REVOKE
+DO
+ no_plan 
+---------
+(0 rows)
+
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 2
+                                 is                                  
+---------------------------------------------------------------------
+ ok 1 - real insurance issuer rejects the independent synthetic pack
+(1 row)
+
+                        throws_ok                        
+---------------------------------------------------------
+ ok 2 - ownership month must be an exact civil-month key
+(1 row)
+
+                          throws_ok                          
+-------------------------------------------------------------
+ ok 3 - ownership requires an opaque valid period identifier
+(1 row)
+
+                                            is                                            
+------------------------------------------------------------------------------------------
+ ok 4 - real production issuer rejects synthetic pack; no official evidence is fabricated
+(1 row)
+
+SET
+              set_config              
+--------------------------------------
+ d6660000-0000-4000-8000-000000000001
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "ad72cce1-0a2f-4594-a11f-c386a82cc255", "status": "draft", "revision": 1}
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "6d4d8aa6-134a-4746-b73c-475121d8f1e2", "status": "draft", "revision": 1}
+(1 row)
+
+              set_config              
+--------------------------------------
+ f7d3c911-9f30-4bad-9e9e-1c5cabdabdfd
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "f7d3c911-9f30-4bad-9e9e-1c5cabdabdfd", "status": "draft", "revision": 2}
+(1 row)
+
+RESET
+SET
+SET
+              set_config              
+--------------------------------------
+ 1879f451-8528-48ce-b9c7-0b10ca98a771
+(1 row)
+
+              set_config              
+--------------------------------------
+ 5b5110b7-64b8-4cf7-842a-a50ff8eb1ae3
+(1 row)
+
+                                                                                                                                         set_config                                                                                                                                         
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"value": "8000", "reason": "NONLEGAL fixed period recurring source", "reference": "NONLEGAL reviewed monthly obligation", "component_id": "5b5110b7-64b8-4cf7-842a-a50ff8eb1ae3", "carry_component_id": "1879f451-8528-48ce-b9c7-0b10ca98a771", "deduction_category": "employer_penalty"}
+(1 row)
+
+              set_config              
+--------------------------------------
+ 7829ca7c-1c05-4d28-958c-6d20fcf43bfb
+(1 row)
+
+                                 payroll_save_input                                  
+-------------------------------------------------------------------------------------
+ {"id": "7829ca7c-1c05-4d28-958c-6d20fcf43bfb", "status": "approved", "revision": 2}
+(1 row)
+
+RESET
+SET
+              set_config              
+--------------------------------------
+ d6668000-0000-4000-8000-000000000001
+(1 row)
+
+                                       payroll_advance_command                                        
+------------------------------------------------------------------------------------------------------
+ {"id": "d6668000-0000-4000-8000-000000000001", "status": "draft", "revision": 1, "outstanding": "0"}
+(1 row)
+
+                                          payroll_advance_command                                           
+------------------------------------------------------------------------------------------------------------
+ {"id": "d6668000-0000-4000-8000-000000000001", "status": "approved", "revision": 2, "outstanding": "0.00"}
+(1 row)
+
+                                           payroll_advance_command                                           
+-------------------------------------------------------------------------------------------------------------
+ {"id": "d6668000-0000-4000-8000-000000000001", "status": "active", "revision": 3, "outstanding": "2000.00"}
+(1 row)
+
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "1ef7a97f-df23-4b2c-a784-dbc0b9e84104", "status": "review", "revision": 1, "issue_count": 3, "candidate_id": "bf6d87b9-8d8f-4a68-bc34-6e251326dc21"}
+(1 row)
+
+RESET
+                               is                               
+----------------------------------------------------------------
+ ok 5 - real issuer still blocks multi-context synthetic inputs
+(1 row)
+
+CREATE FUNCTION
+SET
+                                 payroll_run_command                                  
+--------------------------------------------------------------------------------------
+ {"id": "1ef7a97f-df23-4b2c-a784-dbc0b9e84104", "status": "cancelled", "revision": 2}
+(1 row)
+
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "7dbf101e-3a10-4aab-8ab8-89614dfe34e1", "status": "review", "revision": 1, "issue_count": 4, "candidate_id": "62e7b785-16f7-40bd-8665-fc3cb63fb761"}
+(1 row)
+
+RESET
+                                   is                                   
+------------------------------------------------------------------------
+ ok 6 - tax evidence alone cannot qualify an approved general deduction
+(1 row)
+
+                              ok                               
+---------------------------------------------------------------
+ ok 7 - owned blocker identifies the independent labour issuer
+(1 row)
+
+SET
+                                 payroll_run_command                                  
+--------------------------------------------------------------------------------------
+ {"id": "7dbf101e-3a10-4aab-8ab8-89614dfe34e1", "status": "cancelled", "revision": 2}
+(1 row)
+
+RESET
+CREATE FUNCTION
+SET
+                                                                         set_config                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"id": "56cf1ba9-57ab-4da3-a989-9a50177b4482", "status": "review", "revision": 1, "issue_count": 4, "candidate_id": "08fa7b62-f993-4480-9572-798f6c71e32c"}
+(1 row)
+
+RESET
+                                         is                                          
+-------------------------------------------------------------------------------------
+ ok 8 - approved8000 overcapacity is not a financially qualified partial consumption
+(1 row)
+
+                                      is                                      
+------------------------------------------------------------------------------
+ ok 9 - unapplied approved obligation remains visible with its exact residual
+(1 row)
+
+                                 is                                  
+---------------------------------------------------------------------
+ ok 10 - overcapacity public calculation commits no financial output
+(1 row)
+
+                          is                           
+-------------------------------------------------------
+ ok 11 - blocked claim leaves approved loan unconsumed
+(1 row)
+
+                               is                                
+-----------------------------------------------------------------
+ ok 12 - overcapacity claim cannot lower actual outstanding loan
+(1 row)
+
+                                        is                                         
+-----------------------------------------------------------------------------------
+ ok 13 - blocked debt retains completed independent statutory segment explanations
+(1 row)
+
+                                   ok                                    
+-------------------------------------------------------------------------
+ ok 14 - capacity explanation exposes no qualified or provisional payout
+(1 row)
+
+                           is                           
+--------------------------------------------------------
+ ok 15 - overcapacity leaves approved source unconsumed
+(1 row)
+
+SET
+                      throws_ok                       
+------------------------------------------------------
+ ok 16 - public approval refuses unapplied obligation
+(1 row)
+
+RESET
+INSERT 0 1
+SET
+              set_config              
+--------------------------------------
+ 0f71c5e5-d584-4e70-86f7-cda860393b9b
+(1 row)
+
+                                payroll_save_input                                
+----------------------------------------------------------------------------------
+ {"id": "1879f451-8528-48ce-b9c7-0b10ca98a771", "status": "draft", "revision": 2}
+(1 row)
+
+                                     throws_ok                                     
+-----------------------------------------------------------------------------------
+ ok 17 - a residual cannot turn into an earning through a future catalog successor
+(1 row)
+
+RESET
+                       is                       
+------------------------------------------------
+ ok 18 - invalid carry catalog creates no split
+(1 row)
+
+                      is                       
+-----------------------------------------------
+ ok 19 - invalid carry creates no target input
+(1 row)
+
+                              is                               
+---------------------------------------------------------------
+ ok 20 - catalog refusal preserves approved monthly obligation
+(1 row)
+
+INSERT 0 1
+DELETE 1
+INSERT 0 1
+SET
+              set_config              
+--------------------------------------
+ 0ab83da4-6c87-46e9-b715-b83610272cb2
+(1 row)
+
+                                    throws_ok                                     
+----------------------------------------------------------------------------------
+ ok 21 - ordinary preparation and debt management cannot approve a recurring debt
+(1 row)
+
+RESET
+                              is                               
+---------------------------------------------------------------
+ ok 22 - financial authority refusal keeps new debt unapproved
+(1 row)
+
+ finish 
+--------
+ 1..22
+(1 row)
+
+ROLLBACK

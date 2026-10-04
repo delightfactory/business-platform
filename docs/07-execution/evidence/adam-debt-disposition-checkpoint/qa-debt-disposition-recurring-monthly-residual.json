@@ -1,0 +1,10 @@
+{
+  "test": "cube4_recurring_debt_monthly_residual.test.sql",
+  "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+  "testSHA256": "2be6549036ecc0f5f218d572de7beae13f825fde3043ce09d2012f9021102649",
+  "exitCode": 0,
+  "assertions": 58
+}

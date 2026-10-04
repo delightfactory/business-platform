@@ -11,6 +11,7 @@ export async function inputAction(previous:InputState,form:FormData):Promise<Inp
  const fail=(code?:string,message?:string)=>({...previous,error:inputError(code,message),saved:false});
  if(!uuid(tenant)||!uuid(employer)||!Object.hasOwn(inputFields,kind)||!['save','approve','cancel'].includes(operation)) return fail('22023');
  const values:Record<string,string>={...Object.fromEntries(inputFields[kind].map(key=>[key,field(key)])),...(kind==='manual_units'?{source:field('source')}:{})};
+ if(kind==='recurring')for(const key of ['deduction_category','consent_reference','reference','carry_component_id'])if(values[key]==='')delete values[key];
  if(kind==='adjustment')for(const key of ['deduction_category','consent_reference'])if(values[key]==='')delete values[key];
  if(kind==='opening_ytd')for(const key of ['tax_due','tax_net_income',...openingCoverageFields])if(values[key]==='')delete values[key];
  if(kind==='statutory_context')for(const key of ['insurance_category','insured_wage','insurance_from','insurance_until','insurance_obligation_month','insurance_owner_period','insurance_obligation_reference','insurance_month_disposition',...statutoryCalculationFields])if(values[key]==='')delete values[key];

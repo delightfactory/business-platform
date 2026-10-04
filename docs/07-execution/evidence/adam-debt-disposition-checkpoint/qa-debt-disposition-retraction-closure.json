@@ -1,0 +1,10 @@
+{
+  "test": "cube4_debt_disposition_retraction.test.sql",
+  "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+  "testSHA256": "2d8f2f911a27e6b9f7279defeca116cbe8b34a2f93e4db7844a0ceee09ac03f7",
+  "exitCode": 0,
+  "assertions": 25
+}

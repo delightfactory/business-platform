@@ -1,0 +1,10 @@
+{
+  "test": "cube4_debt_external_settlement_public_journey.test.sql",
+  "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "c1f21214febb4e941005e35452b8331609bbe1e8552748c6c9e509cdb1225555",
+  "testSHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+  "exitCode": 0,
+  "assertions": 37
+}

@@ -1,0 +1,10 @@
+{
+  "test": "cube4_recurring_debt_carry_public_journey.test.sql",
+  "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "55061a21c37b7fcc83494bb17f39e913ccf1bf5dd8e1ec1cbd7b9684fbef4ab1",
+  "testSHA256": "8af6d476abbfb7631c0a72abe9af057a94e1e8172df303bcada7c8558d8c1a61",
+  "exitCode": 0,
+  "assertions": 56
+}

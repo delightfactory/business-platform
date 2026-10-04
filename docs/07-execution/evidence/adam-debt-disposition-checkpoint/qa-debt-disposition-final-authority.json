@@ -1,0 +1,10 @@
+{
+  "test": "cube4_debt_disposition_authority.test.sql",
+  "status": "BOUNDED_DEBT_DISPOSITION_PASS",
+  "baseline": 183,
+  "DDLAndFixtureRolledBack": true,
+  "migrationSHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c",
+  "testSHA256": "0b26c41dc26f0716e66f46fd485b7c658b9fb48f19a49eafa64e086a3b8432cd",
+  "exitCode": 0,
+  "assertions": 39
+}
