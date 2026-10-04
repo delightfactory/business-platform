@@ -1,0 +1,429 @@
+{
+  "codeSHA": "c7118aae902681504941e75fb879627d926f859c",
+  "codeTree": "c546b46ccac5f0ec3e28620514c9184fd7f228ec",
+  "baselineSHA": "df9da1e7f942692904a37091b40dd1d85a04c3c3",
+  "installedSchema": 179,
+  "databases": [
+    "business_platform_cube4_adam_closure_qa",
+    "business_platform_cube4_adam_positive_qa",
+    "business_platform_cube4_adam_positive_browser_qa"
+  ],
+  "applicationBuildSHA": "0ab87b07c5b3d2c7327e8a065f4eecc53c135737",
+  "applicationSourceTreeUnchanged": true,
+  "reusedApplicationLintTypecheckBuild": true,
+  "sourceMigrationCanonicalSHA256": "6a01d1370652e7872495b86b23191589a0283b77e2332f7e03b1c78380d01c40",
+  "finalAffectedSQL": {
+    "actualTimePublicJourney": 30,
+    "actualPaidLeavePublicJourney": 31,
+    "actualUnpaidLeavePublicJourney": 31,
+    "capturedSourceNegatives": 18,
+    "totalAtSameDDLHash": 110,
+    "installedManualCompatibility": 28,
+    "aggregateFinalQualification": false
+  },
+  "ui": {
+    "manual": {
+      "schema": 178,
+      "codeSHA": "df9da1e7f942692904a37091b40dd1d85a04c3c3",
+      "gross": 30000,
+      "tax": 3000,
+      "net": 27000,
+      "approvedUnits": 10,
+      "journey": "normal Auth save, approve, calculate, review, approve candidate, atomic finalize, protected payslip",
+      "frozenInputVersions": 5
+    },
+    "timeLeave": {
+      "schema": 179,
+      "codeSHA": "c7118aae902681504941e75fb879627d926f859c",
+      "gross": 125,
+      "tax": 12.5,
+      "net": 112.5,
+      "approvedPaidUnits": 1,
+      "journey": "public Leave approval and actual Time interpreter/public classified fact setup, then normal Auth browser calculate, source explanation, approve, atomic finalize, protected payslip",
+      "sourceBindings": [
+        "exact Leave request/preview",
+        "exact Time fact/interpretation"
+      ],
+      "oneFinal": true,
+      "oneBindingPerDomain": true,
+      "frozenInputVersions": 3,
+      "receipts": 6,
+      "priorFinals": {
+        "hash": "fb6bb07073459430856520da6d2ffd16",
+        "count": 7
+      },
+      "priorLoans": {
+        "hash": "67d28c2da31ef7c7291914e2ec55d787",
+        "count": 2
+      },
+      "protectedReadFinancialFactsExactlyUnchanged": true
+    },
+    "viewport": {
+      "width": 390,
+      "scrollWidth": 390,
+      "protectedSourceScreenshotVisuallyInspected": true
+    }
+  },
+  "failuresPreserved": [
+    "First paid Leave fixture lacked canonical classified source and was correctly rejected by existing coverage guard",
+    "Generic worked-fact approval correctly refused full Leave; fixture corrected to public classified fact review/commit without weakening guard",
+    "Unvalued overtime correctly blocked release but exposed employee net;51000 now hides net/calculated_net whenever qualification is false; final affected negatives pass"
+  ],
+  "boundaries": [
+    "Exact scoped NONLEGAL external issuer prerequisites only; actual tax, source, authority and consumption workers run; no official legal qualification",
+    "Optional daily financial profile limited to reconciled complete Time or explicitly approved manual payable totals; no positive unvalued overtime/lateness/early departure",
+    "New unpaid corrections prove compensation change preserving Time/Leave bindings; qualified actual Time/Leave mutation observation-to-correction acceptance remains OPEN",
+    "Time/daily multiple-context allocation and monthly unpaid/attendance valuation, mixed declarations and period-only multi-context attribution remain OPEN",
+    "General wage-debt carryforward/disposition and recurring debt remain missing integration; existing employer-loan defer/settle consumers are retained",
+    "Source-loan coexistence producer exists in48000 but grouped actual acceptance remains OPEN",
+    "Paid correction/payment, final-period/obligation and per-segment report/export qualification remain OPEN",
+    "Final same-SHA/tree fresh+retained aggregate qualification deferred until finite checklist complete",
+    "Owned browser/Next/gateway/Auth/REST stopped; shared PostgreSQL preserved; previously authorized synthetic Auth retained only for immediate same-task continuation and cleanup required at completion"
+  ],
+  "code": [
+    {
+      "path": "supabase/migrations/20261003051000_cube4_reconciled_daily_source_financial_profile.sql",
+      "blob": "447b04d3a40aa400e2aa98d20353dfc9b93422c1",
+      "canonicalSHA256": "6a01d1370652e7872495b86b23191589a0283b77e2332f7e03b1c78380d01c40"
+    },
+    {
+      "path": "supabase/tests/cube4_daily_optional_financial_negatives.test.sql",
+      "blob": "327517e5c9ff7d2961f119ab94172802ffcfdd94",
+      "canonicalSHA256": "4a300a308587b5325bf061578e3cd9b59daa43e577e4e43d4a3be2c88909b548"
+    },
+    {
+      "path": "supabase/tests/cube4_daily_paid_leave_public_financial_journey.test.sql",
+      "blob": "5909d1ef24c9310eaf5085fed7d917d0ac0b060c",
+      "canonicalSHA256": "8279a5d7ec1e4bb7d57b5560f8c1b1fa98f3c6e9c8117d43b09a26a39817b781"
+    },
+    {
+      "path": "supabase/tests/cube4_daily_time_public_financial_journey.test.sql",
+      "blob": "d351fec43aa7befd3a4032f7db81ff9e73d5f107",
+      "canonicalSHA256": "d7add0adf03cf0ddf390a4e2dc29f103e419feb87771e6ff38ae62e488be26c8"
+    },
+    {
+      "path": "supabase/tests/cube4_daily_unpaid_leave_public_financial_journey.test.sql",
+      "blob": "a3fd7df1e6459b1d0316cf78f93324d968ff1d7a",
+      "canonicalSHA256": "82c57b6778bf4040e4b4fc033cf5b7e710c11803ef779c1fd52be83435a69116"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 17163,
+      "sha256": "011e2cdab1e58b9cdef5e2ff72725fb15bce7604937f9302790c9f5efe8a43a1"
+    },
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 17186,
+      "sha256": "3195b81b5a5391e2b4e8a7ee225065dbee5d574e8d0c0029ad9043a98a407ead"
+    },
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 17164,
+      "sha256": "a23d64d4ec7bec6b528177678aa7fccf8d1b6c8e1f5afbe7ddeb095180f8cfc6"
+    },
+    {
+      "path": "qa-daily-source-install-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "qa-daily-source-installed-manual-regression.json",
+      "bytes": 284,
+      "sha256": "3a59cb283dd478713093f9fc96d7b9e4018ce9a942aa6b5ef110c38a55b3d2a5"
+    },
+    {
+      "path": "qa-daily-source-installed-manual-regression.log",
+      "bytes": 177253,
+      "sha256": "3e5d84408cc612b9ccd044402a198031c1038ddefe48f22c8503e446aa07e326"
+    },
+    {
+      "path": "qa-daily-time-paid-leave-diagnostic.log",
+      "bytes": 16825,
+      "sha256": "9dd0a6328225dbb636413292633559013a2d7700b26b79569215041698bd109e"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave-classification.json",
+      "bytes": 391,
+      "sha256": "4972c1887757fd60c4f8e8ea2755f36a1324137b618322216e27d23b4655b84c"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave-classification.log",
+      "bytes": 119180,
+      "sha256": "990a55746432baeb13e09b7a8f5e7b9607246957a384697d08f5f5f001c2c7aa"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave-interpreter.json",
+      "bytes": 367,
+      "sha256": "4c073a8e5b604c499d2a7f81ca34fb77b95563536da238e72797c5f07af0992c"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave-interpreter.log",
+      "bytes": 6497,
+      "sha256": "43c80573bf63afa307ae1770537046ae6fd2dcf37de719290e836af1bb86350e"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave.json",
+      "bytes": 367,
+      "sha256": "4fad094f11d9ff8d321b36df90430e63c5aa37e0879efd85c09d8c27b3d934e4"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-paid-leave.log",
+      "bytes": 10617,
+      "sha256": "edbcbea9175c57676b29dad86eb6cc1f009d4a4850f9f4ec5b396d493d85c0dc"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-public-source.json",
+      "bytes": 385,
+      "sha256": "899adb6b2de375ce098c02bd9f4ac4cd026a9d0b328ff009b93e9537853660ba"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-public-source.log",
+      "bytes": 105416,
+      "sha256": "1cd0761f93b3f98ae121c204a195e61e44b423a3bb307fcfdd275937d65f5914"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-unpaid-leave-classification.json",
+      "bytes": 393,
+      "sha256": "1847900147c55191c2f4302fdc19efffa15dc9590e071186adae64e28efbb479"
+    },
+    {
+      "path": "qa-daily-time-qualification-actual-unpaid-leave-classification.log",
+      "bytes": 119066,
+      "sha256": "d6dffd151b9ab191d2c2bc4fe0c17b66c08a6acd4b2b089f822b7d0f1a240dd1"
+    },
+    {
+      "path": "qa-daily-time-qualification-captured-source-negatives.json",
+      "bytes": 361,
+      "sha256": "7eb4b03d9a235eede5e78f42bdd4663e1af8c2ac0076e94e59aa38cfe24afdd7"
+    },
+    {
+      "path": "qa-daily-time-qualification-captured-source-negatives.log",
+      "bytes": 105092,
+      "sha256": "63b4c4e64766224fdc4a048d5f43d0895a6058a55c54a8a52b52d1c3dff77780"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-paid-leave.json",
+      "bytes": 391,
+      "sha256": "043a8499584da93d13dfa1870c46bdf75571608dce320edc1d5f142c5b9e2bd6"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-paid-leave.log",
+      "bytes": 119213,
+      "sha256": "2e73ba255f9524e989a506031223e255da8b30850df15ba8efde5c4386d6ae07"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-public-source.json",
+      "bytes": 385,
+      "sha256": "a1d8796157887affc43b487520d85aab2c6d87148bdc5bea1a457eabaec1e77a"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-public-source.log",
+      "bytes": 105392,
+      "sha256": "a4a3f99810c9dc4e11a81019c689f672dc06f6089b60be8691a7cb169f4d3f42"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-source-negatives.json",
+      "bytes": 384,
+      "sha256": "0bb66da4cc62cdf341dec6bb46dd77e5fd7e9c59e05208dfb8ac01b61539a837"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-source-negatives.log",
+      "bytes": 104969,
+      "sha256": "97e164e358ace1c6d4fc64dfe9079aa0421427b2284e7139091fbf448150759d"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-unpaid-leave.json",
+      "bytes": 393,
+      "sha256": "612ff99b1deae98fc1720b5ed25c8a87dc678eb78a30f5198bf223d56bf277e8"
+    },
+    {
+      "path": "qa-daily-time-qualification-final-unpaid-leave.log",
+      "bytes": 119066,
+      "sha256": "9f18cca9a9b5a3a43af11b497242b8f57b0214309b5ab3d5030d347e713eccc7"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 17165,
+      "sha256": "ca1ddeb6557738b2cfd86cc74bff9629127cb787a081654b44f0b77db365d26c"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 17188,
+      "sha256": "b0aa61af7c1b304725b42e66d02ce7c774fb6f56c980911215208638415c7c75"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 17166,
+      "sha256": "95729cb5e9d0e37eba76d43d76c61b6f03498fa9a785a95f1302de97765844e3"
+    },
+    {
+      "path": "qa-daily-ui-install-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "browser-runtime-positive/browser-command-daily-source-ui.log",
+      "bytes": 13706,
+      "sha256": "85b9f2dc61369439e76dddad8581ecbd5348f9b2c02603e46393305234d5c34f"
+    },
+    {
+      "path": "browser-runtime-positive/browser-command-daily-ui.log",
+      "bytes": 25368,
+      "sha256": "973a7757e4bb9912f61a5666ed4de499cee8e8405b14942ab60427b948d126a7"
+    },
+    {
+      "path": "browser-runtime-positive/daily-manual-facts-after-protected-output.json",
+      "bytes": 1346,
+      "sha256": "06e373dceccb03c3b4d8f394ded5289a5943ee5a060a0de53b83b39d5d0c2907"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-facts-after-financial-finalization.json",
+      "bytes": 2522,
+      "sha256": "fdb06d8e6b54e66cdf04b2ca59a87b684279ce67041fd6cefa1c3490bbafa38d"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-facts-after-protected-output.json",
+      "bytes": 2522,
+      "sha256": "fdb06d8e6b54e66cdf04b2ca59a87b684279ce67041fd6cefa1c3490bbafa38d"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-facts-before-financial-calculation.json",
+      "bytes": 315,
+      "sha256": "2b3690ed0c15807b19a2261faf1388e9539a0b3228ff132e76c42a7dc7659ef2"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-protected-payslip-complete.facts.txt",
+      "bytes": 486,
+      "sha256": "1dfa99c7e2d5d5fa28c2717ae189b7ea0e614cce551c1ab9c49b08d359a3ad48"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-protected-payslip-complete.png",
+      "bytes": 47926,
+      "sha256": "75a10794e6a675d6dd951e61a153e90969112a0afa6b455b6c399b4c70135dd1"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-protected-payslip-complete.snapshot.txt",
+      "bytes": 2269,
+      "sha256": "d795387d6d9f0ddc49cdb5a4598f34fd8387bcff6cd49d26d55f49a417cbb2a7"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-reviewed-paid-once.facts.txt",
+      "bytes": 363,
+      "sha256": "f58864086a04d8f84fb8c3c248fe06bf4be2f7c50f49ed12d1267f29330de20b"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-reviewed-paid-once.png",
+      "bytes": 149576,
+      "sha256": "686fc3a4c3f515ef235d22790f5fe8a049e35815b3b48ccf57af8e8b5d2a6fcc"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-reviewed-paid-once.snapshot.txt",
+      "bytes": 7339,
+      "sha256": "66fa55f51ebbb218bad54daf4e0a1b09e4ede5cb2b5cfc6a2b6d1dd98111d722"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-tenant-seed.json",
+      "bytes": 349,
+      "sha256": "8ab1f695dcb0f5f564252750ae3024f310305091657167591c2d13f58d14434c"
+    },
+    {
+      "path": "browser-runtime-positive/daily-source-ui-tenant-seed.log",
+      "bytes": 5008,
+      "sha256": "eafc630abb90c2802d9ce31c18f647801791ff17ef8809c068ace01b8d6ecb64"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-manual-approved-complete.facts.txt",
+      "bytes": 482,
+      "sha256": "7b21768c19321f4f64427b7eba3fe43b587f3e51355c2f942756e7ec9c6e3816"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-manual-approved-complete.png",
+      "bytes": 150399,
+      "sha256": "26a620e127fcaa68a2fde56cb82ed59a88cc8c8e1725a7223ca125f7fd287d87"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-manual-approved-complete.snapshot.txt",
+      "bytes": 6429,
+      "sha256": "8d701007d772f770d1bb1d5eddf15d43391f5daef18cc9a52146eca015b5986f"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-protected-payslip-complete.facts.txt",
+      "bytes": 486,
+      "sha256": "8f31986773bb404a401e2c826349a87b50a45afd16346e379932412cbc3f3735"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-protected-payslip-complete.png",
+      "bytes": 48144,
+      "sha256": "492ff8b41fafa86eefc88a3463194140c1f9323b9662e39623d4976efd10dad5"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-protected-payslip-complete.snapshot.txt",
+      "bytes": 2461,
+      "sha256": "9735e60c5d1f10019a0eeddc625676a744f576d966a805b8cfb065a79279e58a"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-tenant-seed.json",
+      "bytes": 349,
+      "sha256": "e2e18de5659e08d0791d8879280e54b48eec3f3720e53cf03b514338c362add1"
+    },
+    {
+      "path": "browser-runtime-positive/daily-ui-tenant-seed.log",
+      "bytes": 570,
+      "sha256": "ce3bd679f0b7d7ae89b14dd952ca14db689dd962823263b339a209f41337ffc3"
+    },
+    {
+      "path": "browser-runtime-positive/process-daily-source-ui-evidence.json",
+      "bytes": 390,
+      "sha256": "24b60d8d01ecf5c71810ce6310deb9e6c913341284d1bab4490bbc4a0d9878ca"
+    },
+    {
+      "path": "browser-runtime-positive/process-daily-ui-evidence.json",
+      "bytes": 284,
+      "sha256": "4d378f968d026f675a7eb53b795e5763cc7943120c303543f73967c5cac0c43f"
+    },
+    {
+      "path": "browser-runtime-positive/server-daily-source-ui.log",
+      "bytes": 153,
+      "sha256": "1b55a33c3dab4a4fbbe392ec3a9e646caaf8dd2670b893e29d69ad85fffe1713"
+    },
+    {
+      "path": "browser-runtime-positive/server-daily-ui.log",
+      "bytes": 153,
+      "sha256": "af3da2c22e17b9bccbe6daf93cfeefbffd51bdb8c60d41ae242456c57d756444"
+    },
+    {
+      "path": "browser-runtime-positive/build-typed-source-evidence.json",
+      "bytes": 247,
+      "sha256": "828fb0e535fcbde180dd346e35b12eef8ead0b85a3550ef0729d45ee3d9cc00f",
+      "reusedApplicationEvidence": true
+    },
+    {
+      "path": "browser-runtime-positive/build-typed-source.log",
+      "bytes": 3723,
+      "sha256": "d1ba24f3c49623539e9748816cd7030ec17e93fdfa035947950820dc2685243a",
+      "reusedApplicationEvidence": true
+    }
+  ]
+}
