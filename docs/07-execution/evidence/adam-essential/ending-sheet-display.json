@@ -1,0 +1,44 @@
+{
+  "atUTC": "2026-10-04T13:15:38.692Z",
+  "rows": [
+    {
+      "alerts": [],
+      "clientWidth": 390,
+      "focused": {
+        "name": "مساحة الشركة، الرئيسية",
+        "tag": "A"
+      },
+      "forms": 3,
+      "heading": "كشف الرواتب",
+      "scrollWidth": 390,
+      "url": "http://127.0.0.1:3543/tenant/d7301000-0000-4000-8000-000000000001/payroll/reports?employer=d7303000-0000-4000-8000-000000000001&output=38e36740-adeb-4769-8268-2ed9fe109aca&kind=sheet",
+      "width": 390
+    },
+    {
+      "alerts": [],
+      "clientWidth": 820,
+      "focused": {
+        "name": "فتح قائمة التنقل",
+        "tag": "BUTTON"
+      },
+      "forms": 3,
+      "heading": "كشف الرواتب",
+      "scrollWidth": 820,
+      "url": "http://127.0.0.1:3543/tenant/d7301000-0000-4000-8000-000000000001/payroll/reports?employer=d7303000-0000-4000-8000-000000000001&output=38e36740-adeb-4769-8268-2ed9fe109aca&kind=sheet",
+      "width": 820
+    },
+    {
+      "alerts": [],
+      "clientWidth": 1280,
+      "focused": {
+        "name": "غرض التقرير",
+        "tag": "SELECT"
+      },
+      "forms": 3,
+      "heading": "كشف الرواتب",
+      "scrollWidth": 1280,
+      "url": "http://127.0.0.1:3543/tenant/d7301000-0000-4000-8000-000000000001/payroll/reports?employer=d7303000-0000-4000-8000-000000000001&output=38e36740-adeb-4769-8268-2ed9fe109aca&kind=sheet",
+      "width": 1280
+    }
+  ]
+}

@@ -21,3 +21,8 @@ test('export neutralizes formulas preceded by whitespace and Unicode BOM',()=>{
 test('Arabic CSV keeps text, quoted embedded newlines, BOM and CRLF records',()=>{
  assert.equal(csvDocument([['الموظف','الصافي'],['أحمد\nمحمد','100.25']]),'\uFEFF"الموظف","الصافي"\r\n"أحمد\nمحمد","100.25"');
 });
+
+test('frozen producer decimal scale preserves exact report cents and refuses fractional cents',()=>{
+ for(const amount of ['14516.130000000000','15516.1300000000000000','9999999999999999.990000','-1234.5000','0.000000'])assert.equal(reportMoney(amount),reportMoney(amount.replace(/(\.\d{2})0+$/,'$1')));
+ for(const invalid of ['14516.131','0.0001','1e3','Infinity'])assert.equal(reportMoney(invalid),reportMoney('NaN'));
+});

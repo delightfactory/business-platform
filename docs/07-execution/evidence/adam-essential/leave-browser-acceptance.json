@@ -1,0 +1,45 @@
+{
+  "case": {
+    "id": "ea760e8c-b3d6-450a-95e0-fcf116714b12",
+    "status": "completed",
+    "revision": 4,
+    "tenant_id": "d7101000-0000-4000-8000-000000000001",
+    "created_at": "2026-10-04T13:04:39.29055+00:00",
+    "created_by": "d6800000-0000-4000-8000-000000000001",
+    "employer_id": "d7103000-0000-4000-8000-000000000001",
+    "proposal_id": "fef1167b-0c1e-422e-b4e2-32d785823c3b",
+    "original_output": "7e234b7f-e3d4-44a0-aa4e-1d1aac5977ed"
+  },
+  "links": 1,
+  "finals": [
+    {
+      "id": "7e234b7f-e3d4-44a0-aa4e-1d1aac5977ed",
+      "net": "0.00000000000000000000",
+      "gross": "0.00000000000000000000",
+      "period": "d710e000-0000-4000-8000-000000000001"
+    },
+    {
+      "id": "bd2be6e6-e53d-410d-8095-6d53cf592b84",
+      "net": "112.5000000000000000",
+      "gross": "125.0000000000000000",
+      "period": "d710e000-0000-4000-8000-000000000001"
+    }
+  ],
+  "payments": 0,
+  "successions": [
+    {
+      "reason": "Reviewed actual leave source change linked to exact original",
+      "actor_id": "d6800000-0000-4000-8000-000000000001",
+      "tenant_id": "d7101000-0000-4000-8000-000000000001",
+      "created_at": "2026-10-04T13:05:41.902692+00:00",
+      "original_output": "7e234b7f-e3d4-44a0-aa4e-1d1aac5977ed",
+      "replacement_output": "bd2be6e6-e53d-410d-8095-6d53cf592b84"
+    }
+  ],
+  "originalEmployeePreserved": true,
+  "originalBindingsPreserved": true,
+  "kind": "leave",
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "atUTC": "2026-10-04T13:06:45.688Z",
+  "status": "ACTUAL_BROWSER_SOURCE_CLOSURE_PASS"
+}

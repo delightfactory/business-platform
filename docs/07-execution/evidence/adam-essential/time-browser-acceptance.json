@@ -1,0 +1,45 @@
+{
+  "case": {
+    "id": "ae2358d2-289e-48b3-9e90-d8a95e5cb9bf",
+    "status": "completed",
+    "revision": 4,
+    "tenant_id": "d7201000-0000-4000-8000-000000000001",
+    "created_at": "2026-10-04T13:06:48.217446+00:00",
+    "created_by": "d6800000-0000-4000-8000-000000000001",
+    "employer_id": "d7203000-0000-4000-8000-000000000001",
+    "proposal_id": "5c37a6a6-bae0-43b9-b306-cdffc5484410",
+    "original_output": "38a6b396-5543-46de-b589-a5b50347d5c7"
+  },
+  "links": 1,
+  "finals": [
+    {
+      "id": "38a6b396-5543-46de-b589-a5b50347d5c7",
+      "net": "112.5000000000000000",
+      "gross": "125.0000000000000000",
+      "period": "d720e000-0000-4000-8000-000000000001"
+    },
+    {
+      "id": "d61916a4-536b-446e-a9b1-610c5fae4a38",
+      "net": "0.00000000000000000000",
+      "gross": "0.00000000000000000000",
+      "period": "d720e000-0000-4000-8000-000000000001"
+    }
+  ],
+  "payments": 0,
+  "successions": [
+    {
+      "reason": "Reviewed actual time source change linked to exact original",
+      "actor_id": "d6800000-0000-4000-8000-000000000001",
+      "tenant_id": "d7201000-0000-4000-8000-000000000001",
+      "created_at": "2026-10-04T13:06:57.362002+00:00",
+      "original_output": "38a6b396-5543-46de-b589-a5b50347d5c7",
+      "replacement_output": "d61916a4-536b-446e-a9b1-610c5fae4a38"
+    }
+  ],
+  "originalEmployeePreserved": true,
+  "originalBindingsPreserved": true,
+  "kind": "time",
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "atUTC": "2026-10-04T13:08:10.627Z",
+  "status": "ACTUAL_BROWSER_SOURCE_CLOSURE_PASS"
+}

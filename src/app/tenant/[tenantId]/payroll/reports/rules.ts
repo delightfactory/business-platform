@@ -11,7 +11,7 @@ export function isReportKind(value:string):value is ReportKind {
 // change cents before rendering or exporting a large authoritative amount.
 export function reportMoney(value:string|null|undefined):string {
  if(value==null)return 'غير متاح';
- const match=/^(-?)(\d+)(?:\.(\d{1,2}))?$/.exec(value);
+ const match=/^(-?)(\d+)(?:\.(\d{1,2})0*)?$/.exec(value);
  if(!match)return 'غير مكتمل';
  return `${match[1]}${match[2].replace(/\B(?=(\d{3})+(?!\d))/g,'٬')}٫${(match[3]??'').padEnd(2,'0')} ج.م.`;
 }

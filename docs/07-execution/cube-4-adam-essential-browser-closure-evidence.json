@@ -1,0 +1,127 @@
+{
+  "atUTC": "2026-10-04T13:34:35.823Z",
+  "baseSHA": "ad87dbab6884bdea12ac3cd9991a8d574b0dbf48",
+  "status": "BOUNDED_ESSENTIAL_BROWSER_CHECKPOINT",
+  "officialLegalAcceptance": false,
+  "sourceHashes": [
+    {
+      "path": "supabase/migrations/20261003059000_cube4_saved_source_selection_restoration.sql",
+      "sha256NormalizedLF": "65f528ba6cc7947080be555e79da0d38518e52d72ab8a060358c8724ae299200"
+    },
+    {
+      "path": "supabase/tests/cube4_saved_source_selection_restoration.test.sql",
+      "sha256NormalizedLF": "64bf87e139e973f7d833eb255754e2aa4f56dcc5d3a0789a091c784539d2a792"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/reports/rules.ts",
+      "sha256NormalizedLF": "fbbead1e541f0e6950bc6f09cada01d381bd75a15f140a3b8f4bd626dc8f8d41"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/reports/rules.test.mjs",
+      "sha256NormalizedLF": "1473e720c148ccaa3ae35df0a0c41cf29239fad524b22bec4aced726f7f44cc6"
+    }
+  ],
+  "assets": [
+    {
+      "path": "evidence/adam-essential/linked-browser-acceptance.json",
+      "sha256": "8cd60c2c55a268fd30478697a2fd2b662c2e9cab6cee5b82e2a912a2040d86a9"
+    },
+    {
+      "path": "evidence/adam-essential/leave-browser-acceptance.json",
+      "sha256": "6aee9229eed6d0f6e586087963c178a8cbde434fabc0456e1140b639390a6de3"
+    },
+    {
+      "path": "evidence/adam-essential/time-browser-acceptance.json",
+      "sha256": "460fadec569fb8627eb50a63290ee3dc83225c797290f3c671ef43209d3c3fe6"
+    },
+    {
+      "path": "evidence/adam-essential/ending-browser-readback.json",
+      "sha256": "36a358628c8ced19c2ad20a1ad055b1cce53998f0dfb187478cde169d60f1e6b"
+    },
+    {
+      "path": "evidence/adam-essential/essential-report-build.json",
+      "sha256": "3376f073c1435a31b63094a61ddf4a61592a52c23dffbdc1f402a775cd51e7bc"
+    },
+    {
+      "path": "evidence/adam-essential/ending-payslip-export.json",
+      "sha256": "929d27d2bd78c057fed436918b189883ccc070ad75fc35ed6f07b5450c8f2345"
+    },
+    {
+      "path": "evidence/adam-essential/ending-sheet-export.json",
+      "sha256": "c016e1f774b1b832787bb3dafdb6c5137f2966ab490de84778e70cf1deff5797"
+    },
+    {
+      "path": "evidence/adam-essential/ending-sheet.csv",
+      "sha256": "bce2dccead5308a0e5447fcb2c4519cfca943d175a40aebbe31d7f57abb1d609"
+    },
+    {
+      "path": "evidence/adam-essential/ending-payslip.csv",
+      "sha256": "bce2dccead5308a0e5447fcb2c4519cfca943d175a40aebbe31d7f57abb1d609"
+    },
+    {
+      "path": "evidence/adam-essential/linked-restored-display.json",
+      "sha256": "645b36b0887ce6c651018a3bee9105762967a91940bf835e23d3438167977911"
+    },
+    {
+      "path": "evidence/adam-essential/ending-sheet-display.json",
+      "sha256": "b6145aa3ca25f3b44104bb50be8c671b2ddbf5f97209fcd648c3b56bb41ce0db"
+    },
+    {
+      "path": "evidence/adam-essential/qa-installed-saved-source-restoration-r4.json",
+      "sha256": "908de6e90b007003504a8363c8b32c86ef148eda40dfec1f3023b65c6947ba34"
+    },
+    {
+      "path": "evidence/adam-essential/qa-saved-source-install-business_platform_cube4_adam_debt_browser_qa.json",
+      "sha256": "ed4611006c4feb00e3899816ecdd41ea1434c1b533fc975adee5bca3d8d571f4"
+    }
+  ],
+  "checks": {
+    "savedSourceSQL": 8,
+    "formatterUnitTests": 4,
+    "formatterTargetedLint": "PASS",
+    "productionBuildAndTypecheck": "PASS",
+    "independentReadOnlyDeltaReview": "No concrete blocker in four changed code/test files"
+  },
+  "browserLog": {
+    "localPath": "browser-runtime-debt/browser-command-paid-closure-ui.log",
+    "sha256": "08ddb892690c73df762376ac7ebc57d4c4f756881c5fa9f5fc4b1ca430183b0b",
+    "containsSecrets": false
+  },
+  "actualBrowser": [
+    "Paid original -> restored ordinary compensation proposal -> reviewed manual responsibility100 -> next-period final -> completed case; original unchanged",
+    "Actual Leave cancellation -> source correction -> replacement -> completed case; original bindings unchanged",
+    "Actual classified Time mutation -> source correction -> replacement -> completed case; original bindings unchanged",
+    "Ending amount1000 -> final net13974.55 -> complete sheet/payslip -> protected CSV200/private,no-store; employer200 separate",
+    "Live export permission removal -> hidden links/direct403; payroll permission removal -> denied sheet and browser-back payslip; switch to D680 -> no D730 money; original role restored",
+    "Superseded Leave output -> historical warning/replacement link/no export; direct CSV403",
+    "390/820/1280 report and restored-form widths; visible keyboard focus",
+    "Single Employer selected; second Employer requires explicit selection. Primary monthly periods preserved and future Nov1-24 America/New_York transition saved; second Employer preview only, unsaved"
+  ],
+  "remaining": {
+    "essentialAcceptance": [
+      "U06 multi-employee bulk partial-failure/selection matrix not proven on current browser",
+      "U07 unavailable/not-checked statutory/YTD recovery matrix not proven on current browser",
+      "New590 fixed-commit delta qualification pending result artifact"
+    ],
+    "pilotOrOptional": [
+      "Q03 representative scale budget/customer pilot not agreed",
+      "U10 actual phone keyboard-overlay/extreme-input matrix",
+      "Complete all narrow calendar/role matrix tails only where exact inherited evidence does not cover them"
+    ],
+    "external": [
+      "One reviewed official dated tax/insurance/effective-coverage package and independent expected results; unavailable inputs already known; no repeat question"
+    ]
+  },
+  "runtime": {
+    "database": "business_platform_cube4_adam_debt_browser_qa",
+    "schemaCount": 187,
+    "originalAuthExpiryUTC": "2026-10-04T15:01:03.872Z",
+    "expiryNotExtended": true
+  },
+  "inheritedQualification": {
+    "path": "../../../final-cube4-qualification/result.json",
+    "SHA": "ad87dbab6884bdea12ac3cd9991a8d574b0dbf48",
+    "assertions": 580,
+    "scope": "186 migration fresh replay + upgraded empty QA; 290 affected assertions each. Reuse unchanged prefix, not whole Cube PASS."
+  }
+}

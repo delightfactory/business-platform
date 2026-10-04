@@ -1,0 +1,7 @@
+{
+  "cache": "private, no-store",
+  "href": "http://127.0.0.1:3543/tenant/d7301000-0000-4000-8000-000000000001/payroll/reports/export?employer=d7303000-0000-4000-8000-000000000001&output=38e36740-adeb-4769-8268-2ed9fe109aca&report=sheet&revision=6e63964afc8d7734904aa85aa735c232",
+  "status": 200,
+  "type": "text/csv; charset=utf-8",
+  "atUTC": "2026-10-04T13:16:36.293Z"
+}

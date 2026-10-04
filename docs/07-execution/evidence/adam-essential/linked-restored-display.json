@@ -1,0 +1,44 @@
+{
+  "atUTC": "2026-10-04T12:55:57.635Z",
+  "rows": [
+    {
+      "alerts": [],
+      "clientWidth": 390,
+      "focused": {
+        "name": "مساحة الشركة، الرئيسية",
+        "tag": "A"
+      },
+      "forms": 3,
+      "heading": "تصحيح راتب مقفل",
+      "scrollWidth": 390,
+      "url": "http://127.0.0.1:3543/tenant/d7001000-0000-4000-8000-000000000001/payroll/corrections?employer=d7003000-0000-4000-8000-000000000001&output=25932316-f29c-4f9b-8b1e-565b97d2156f&case=0cc3217c-3355-4bde-ae7f-0552431cac5f&kind=compensation&edit=1",
+      "width": 390
+    },
+    {
+      "alerts": [],
+      "clientWidth": 820,
+      "focused": {
+        "name": "فتح قائمة التنقل",
+        "tag": "BUTTON"
+      },
+      "forms": 3,
+      "heading": "تصحيح راتب مقفل",
+      "scrollWidth": 820,
+      "url": "http://127.0.0.1:3543/tenant/d7001000-0000-4000-8000-000000000001/payroll/corrections?employer=d7003000-0000-4000-8000-000000000001&output=25932316-f29c-4f9b-8b1e-565b97d2156f&case=0cc3217c-3355-4bde-ae7f-0552431cac5f&kind=compensation&edit=1",
+      "width": 820
+    },
+    {
+      "alerts": [],
+      "clientWidth": 1280,
+      "focused": {
+        "name": "المخرج الأصلي",
+        "tag": "A"
+      },
+      "forms": 3,
+      "heading": "تصحيح راتب مقفل",
+      "scrollWidth": 1280,
+      "url": "http://127.0.0.1:3543/tenant/d7001000-0000-4000-8000-000000000001/payroll/corrections?employer=d7003000-0000-4000-8000-000000000001&output=25932316-f29c-4f9b-8b1e-565b97d2156f&case=0cc3217c-3355-4bde-ae7f-0552431cac5f&kind=compensation&edit=1",
+      "width": 1280
+    }
+  ]
+}

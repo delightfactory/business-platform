@@ -1,0 +1,2814 @@
+{
+  "atUTC": "2026-10-04T13:34:35.800Z",
+  "readOnly": true,
+  "final": {
+    "id": "38e36740-adeb-4769-8268-2ed9fe109aca",
+    "result": {
+      "net": "13974.5500000000000000",
+      "gross": "15516.1300000000000000",
+      "engine": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-insured-single-month-owner-v1-reviewed-partial-insurance-v1-reviewed-earnings-v1-reviewed-context-year-v1-wage-deductions113114-v1-daily-approved-units-v1-daily-reconciled-sources-v1-approved-dated-time-segments-v1-monthly-approved-source-fractions-v1-approved-fixed30-unpaid-v1-approved-debt-dispositions-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+      "issues": [],
+      "policy": "calendar_days",
+      "employees": [
+        {
+          "net": "13974.5500000000000000",
+          "base": "14516.130000000000",
+          "code": "NONLEGAL D730",
+          "name": "NONLEGAL D730 Leave Employee",
+          "gross": "15516.1300000000000000",
+          "lines": [
+            {
+              "name": "NONLEGAL reviewed external termination amount",
+              "amount": "1000.0000000000000000",
+              "details": [
+                {
+                  "raw": "1000",
+                  "name": "NONLEGAL reviewed external termination amount",
+                  "reason": "Reviewed contractual amount outside automated V1 coverage",
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "input_version": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+                  "classification": "earning",
+                  "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+                  "declared_social": false,
+                  "declared_taxable": false,
+                  "declared_visible": true,
+                  "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+                }
+              ],
+              "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+              "classification": "earning"
+            },
+            {
+              "name": "الأجر الأساسي",
+              "amount": "14516.130000000000",
+              "details": [
+                {
+                  "raw": "14516.12903225806451612910",
+                  "name": "الأجر الأساسي",
+                  "detail": [
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-01",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-02",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-03",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-04",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-05",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-06",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-07",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-08",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-09",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-10",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-11",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-12",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-13",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-14",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-15",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    }
+                  ],
+                  "component": "base",
+                  "classification": "earning"
+                }
+              ],
+              "component": "base",
+              "classification": "earning"
+            },
+            {
+              "name": "اشتراك الموظف في التأمينات",
+              "amount": "100.00",
+              "details": [
+                {
+                  "month": "2026-07-01",
+                  "branch": "pension",
+                  "insured_wage": 10000,
+                  "employee_rate": 0.01,
+                  "employer_rate": 0.02,
+                  "tax_deductible": true,
+                  "employee_amount": 100,
+                  "employer_amount": 200,
+                  "insured_wage_source": "NONLEGAL reviewed insured wage source"
+                }
+              ],
+              "component": "statutory:insurance:pension:2026-07-01",
+              "statutory": true,
+              "presentation": {
+                "order": 1100,
+                "schema": "payroll-statutory-v1",
+                "pack_id": "d730f000-0000-4000-8000-000000000002",
+                "visible": true
+              },
+              "classification": "deduction"
+            },
+            {
+              "name": "اشتراك جهة العمل في التأمينات",
+              "amount": "200.00",
+              "details": [
+                {
+                  "month": "2026-07-01",
+                  "branch": "pension",
+                  "insured_wage": 10000,
+                  "employee_rate": 0.01,
+                  "employer_rate": 0.02,
+                  "tax_deductible": true,
+                  "employee_amount": 100,
+                  "employer_amount": 200,
+                  "insured_wage_source": "NONLEGAL reviewed insured wage source"
+                }
+              ],
+              "component": "statutory:employer:pension:2026-07-01",
+              "statutory": true,
+              "presentation": {
+                "order": 1100,
+                "schema": "payroll-statutory-v1",
+                "pack_id": "d730f000-0000-4000-8000-000000000002",
+                "visible": true
+              },
+              "classification": "employer_cost"
+            },
+            {
+              "name": "ضريبة الأجور المستحقة",
+              "amount": "1441.58",
+              "details": [
+                {
+                  "trace": {
+                    "base": 345980,
+                    "segments": [
+                      {
+                        "band": 1,
+                        "rate": 0.1,
+                        "lower": 0,
+                        "upper": null,
+                        "taxable_width": 345980,
+                        "unrounded_tax": 34598
+                      }
+                    ],
+                    "unrounded_annual_tax": 34598
+                  },
+                  "column": 1,
+                  "adapter": "eg-cumulative-tax-v1",
+                  "pack_id": "d730f000-0000-4000-8000-000000000001",
+                  "annual_base": 345980,
+                  "earning_from": "2026-07-01",
+                  "pack_version": "NONLEGAL single-band arithmetic fixture",
+                  "duration_days": 15,
+                  "earning_until": "2026-07-15",
+                  "prior_tax_due": 0,
+                  "source_reference": "NONLEGAL reviewed insured wage source",
+                  "current_tax_delta": 1441.58,
+                  "cumulative_tax_due": 1441.58,
+                  "annual_tax_unrounded": 34598,
+                  "annual_raw_after_exemption": 345987.12
+                }
+              ],
+              "component": "statutory:tax",
+              "statutory": true,
+              "presentation": {
+                "order": 1200,
+                "schema": "payroll-statutory-v1",
+                "pack_id": "d730f000-0000-4000-8000-000000000001",
+                "visible": true
+              },
+              "classification": "deduction"
+            }
+          ],
+          "issues": [],
+          "ends_on": "2026-07-15",
+          "pay_basis": "monthly",
+          "starts_on": "2026-07-01",
+          "deductions": "0",
+          "dated_rates": [
+            {
+              "from": "2026-07-01",
+              "rate": "30000.00",
+              "until": null
+            }
+          ],
+          "employee_id": "d7305000-0000-4000-8000-000000000001",
+          "known_gross": "15516.1300000000000000",
+          "source_days": [],
+          "eligible_days": 15,
+          "employer_cost": "200.00",
+          "employment_id": "d7306000-0000-4000-8000-000000000001",
+          "approved_units": null,
+          "calculated_net": "13974.5500000000000000",
+          "gross_complete": true,
+          "source_summary": {
+            "status": "disabled",
+            "day_count": 0,
+            "time_enabled": false,
+            "leave_enabled": false,
+            "payroll_ready": false,
+            "time_coverage": {
+              "status": "disabled",
+              "enabled": false,
+              "day_count": 0,
+              "future_days": 0,
+              "missing_days": 0,
+              "pending_days": 0,
+              "approved_days": 0,
+              "expected_days": 0,
+              "payroll_ready": false,
+              "other_review_days": 0
+            }
+          },
+          "unresolved_parts": [],
+          "statutory_context": {
+            "category": "NONLEGAL D730 pension fixture",
+            "insured_wage": 10000,
+            "owner_period": "d730e000-0000-4000-8000-000000000001",
+            "calendar_year": 2026,
+            "reviewed_month": "2026-07-01",
+            "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+            "obligation_months": [
+              {
+                "month": "2026-07-01",
+                "insured_wage": 10000,
+                "insured_wage_source": "NONLEGAL reviewed insured wage source"
+              }
+            ],
+            "insured_wage_source": "NONLEGAL reviewed insured wage source",
+            "ownership_reference": "NONLEGAL independently reviewed full ending-month liability",
+            "insurance_month_disposition": "reviewed_due"
+          },
+          "statutory_sources": {
+            "issues": [],
+            "calendar": {
+              "known": true,
+              "years": [
+                {
+                  "from": "2026-07-01",
+                  "year": 2026,
+                  "through": "2026-07-15",
+                  "calendar_days": 15,
+                  "legal_duration_days": null
+                }
+              ],
+              "months": [
+                {
+                  "from": "2026-07-01",
+                  "month": "2026-07-01",
+                  "through": "2026-07-15",
+                  "contexts": [
+                    {
+                      "data": {
+                        "reason": "Synthetic source facts only",
+                        "reference": "NONLEGAL reviewed insured wage source",
+                        "insured_wage": 10000,
+                        "insurance_from": "2026-07-01",
+                        "insurance_until": "2026-07-15",
+                        "calculation_from": "2026-07-01",
+                        "insurance_status": "insured",
+                        "calculation_until": "2026-07-15",
+                        "tax_duration_days": 15,
+                        "insurance_category": "NONLEGAL D730 pension fixture",
+                        "tax_treatment_code": "06",
+                        "insurance_owner_period": "d730e000-0000-4000-8000-000000000001",
+                        "insurance_obligation_month": "2026-07-01",
+                        "insurance_month_disposition": "reviewed_due",
+                        "insurance_obligation_reference": "NONLEGAL independently reviewed full ending-month liability"
+                      },
+                      "from": "2026-07-01",
+                      "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                      "through": "2026-07-15",
+                      "version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262"
+                    }
+                  ],
+                  "calendar_days": 15,
+                  "calendar_through": "2026-07-31",
+                  "full_service_month": false,
+                  "service_end_in_month": true,
+                  "service_start_in_month": true
+                }
+              ],
+              "contract": "cube4-statutory-calendar-facts-v1",
+              "employment": {
+                "id": "d7306000-0000-4000-8000-000000000001",
+                "end_date": "2026-07-15",
+                "pay_basis": "monthly",
+                "tenant_id": "d7301000-0000-4000-8000-000000000001",
+                "created_at": "2026-10-04T13:08:11.031958+00:00",
+                "start_date": "2026-07-01",
+                "employee_id": "d7305000-0000-4000-8000-000000000001",
+                "payroll_eligible": true,
+                "employment_status": "ended",
+                "employer_entity_id": "d7303000-0000-4000-8000-000000000001"
+              },
+              "employee_id": "d7305000-0000-4000-8000-000000000001",
+              "employment_id": "d7306000-0000-4000-8000-000000000001",
+              "obligation_months": null,
+              "legal_duration_days": null,
+              "financially_qualified": false
+            },
+            "contexts": [
+              {
+                "from": "2026-07-01",
+                "source": {
+                  "head": {
+                    "id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                    "kind": "statutory_context",
+                    "period_id": null,
+                    "employee_id": "d7305000-0000-4000-8000-000000000001",
+                    "employment_id": "d7306000-0000-4000-8000-000000000001"
+                  },
+                  "version": {
+                    "id": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+                    "data": {
+                      "reason": "Synthetic source facts only",
+                      "reference": "NONLEGAL reviewed insured wage source",
+                      "insured_wage": 10000,
+                      "insurance_from": "2026-07-01",
+                      "insurance_until": "2026-07-15",
+                      "calculation_from": "2026-07-01",
+                      "insurance_status": "insured",
+                      "calculation_until": "2026-07-15",
+                      "tax_duration_days": 15,
+                      "insurance_category": "NONLEGAL D730 pension fixture",
+                      "tax_treatment_code": "06",
+                      "insurance_owner_period": "d730e000-0000-4000-8000-000000000001",
+                      "insurance_obligation_month": "2026-07-01",
+                      "insurance_month_disposition": "reviewed_due",
+                      "insurance_obligation_reference": "NONLEGAL independently reviewed full ending-month liability"
+                    },
+                    "status": "draft",
+                    "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                    "revision": 1,
+                    "tenant_id": "d7301000-0000-4000-8000-000000000001",
+                    "created_at": "2026-10-04T13:08:11.031958+00:00",
+                    "created_by": "d6800000-0000-4000-8000-000000000001",
+                    "approved_at": null,
+                    "approved_by": null,
+                    "employer_id": "d7303000-0000-4000-8000-000000000001",
+                    "effective_from": "2026-07-01",
+                    "effective_until": null
+                  }
+                },
+                "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                "through": "2026-07-15",
+                "version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262"
+              }
+            ],
+            "contract": "cube4-employee-statutory-sources-v1",
+            "openings": [
+              {
+                "year": 2026,
+                "as_of": "2026-07-01",
+                "source": {
+                  "head": {
+                    "id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+                    "kind": "opening_ytd",
+                    "period_id": null,
+                    "employee_id": "d7305000-0000-4000-8000-000000000001",
+                    "employment_id": "d7306000-0000-4000-8000-000000000001"
+                  },
+                  "version": {
+                    "id": "4aa35027-461c-4854-b04a-473dead3e01b",
+                    "data": {
+                      "year": 2026,
+                      "reason": "Synthetic reviewed zero opening",
+                      "tax_due": 0,
+                      "reference": "NONLEGAL no prior employment facts",
+                      "social_base": 0,
+                      "coverage_end": "2026-06-30",
+                      "tax_withheld": 0,
+                      "coverage_start": "2026-01-01",
+                      "tax_net_income": 0,
+                      "employee_social": 0,
+                      "employer_social": 0,
+                      "taxable_earnings": 0,
+                      "tax_duration_days": 0
+                    },
+                    "status": "draft",
+                    "head_id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+                    "revision": 1,
+                    "tenant_id": "d7301000-0000-4000-8000-000000000001",
+                    "created_at": "2026-10-04T13:08:11.031958+00:00",
+                    "created_by": "d6800000-0000-4000-8000-000000000001",
+                    "approved_at": null,
+                    "approved_by": null,
+                    "employer_id": "d7303000-0000-4000-8000-000000000001",
+                    "effective_from": "2026-07-01",
+                    "effective_until": null
+                  }
+                }
+              }
+            ],
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "employment_id": "d7306000-0000-4000-8000-000000000001",
+            "prior_outputs": [],
+            "current_earnings": {
+              "lines": [
+                {
+                  "name": "NONLEGAL reviewed external termination amount",
+                  "amount": "1000.0000000000000000",
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "attribution": "approved_period_amount",
+                  "earning_from": "2026-07-01",
+                  "source_parts": [
+                    {
+                      "raw": "1000",
+                      "name": "NONLEGAL reviewed external termination amount",
+                      "reason": "Reviewed contractual amount outside automated V1 coverage",
+                      "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                      "input_version": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+                      "classification": "earning",
+                      "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+                      "declared_social": false,
+                      "declared_taxable": false,
+                      "declared_visible": true,
+                      "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+                    }
+                  ],
+                  "earning_until": "2026-07-15",
+                  "declaration_state": "uniform_declared_nontaxable",
+                  "declared_taxable_amount": 0,
+                  "declared_nontaxable_amount": 1000
+                },
+                {
+                  "name": "الأجر الأساسي",
+                  "amount": "14516.130000000000",
+                  "component": "base",
+                  "attribution": "saved_salary_distribution",
+                  "earning_from": "2026-07-01",
+                  "source_parts": [
+                    {
+                      "raw": "14516.12903225806451612910",
+                      "name": "الأجر الأساسي",
+                      "detail": [
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-01",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-02",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-03",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-04",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-05",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-06",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-07",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-08",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-09",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-10",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-11",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-12",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-13",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-14",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-15",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        }
+                      ],
+                      "component": "base",
+                      "classification": "earning"
+                    }
+                  ],
+                  "earning_until": "2026-07-15",
+                  "declaration_state": "base_treatment_requires_verified_pack",
+                  "declared_taxable_amount": null,
+                  "declared_nontaxable_amount": null
+                }
+              ],
+              "contract": "cube4-current-earning-sources-v1",
+              "base_amount": 14516.13,
+              "operational_complete": true,
+              "financially_qualified": false,
+              "declared_taxable_components": 0,
+              "unresolved_component_amount": 0,
+              "declared_nontaxable_components": 1000
+            },
+            "earning_partitions": {
+              "lines": [
+                {
+                  "amount": "1000.0000000000000000",
+                  "months": null,
+                  "reason": "period_amount_needs_earning_scope",
+                  "fraction": null,
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "source_line_index": 0,
+                  "legal_earning_attribution_known": false,
+                  "operational_date_distribution_known": false
+                },
+                {
+                  "amount": "14516.130000000000",
+                  "months": [
+                    {
+                      "year": 2026,
+                      "month": "2026-07-01",
+                      "fraction": {
+                        "d": "31.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                        "n": "450000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+                      },
+                      "rounded_amount": null,
+                      "source_part_indexes": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                      ]
+                    }
+                  ],
+                  "reason": null,
+                  "fraction": {
+                    "d": "31.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "n": "450000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "component": "base",
+                  "source_line_index": 1,
+                  "legal_earning_attribution_known": false,
+                  "operational_date_distribution_known": true
+                }
+              ],
+              "contract": "cube4-operational-earning-partitions-v1",
+              "financially_qualified": false
+            },
+            "cumulative_balances": {
+              "years": [
+                {
+                  "year": 2026,
+                  "basis": "reviewed_opening",
+                  "known": true,
+                  "through": "2026-06-30",
+                  "source_ids": [
+                    "4aa35027-461c-4854-b04a-473dead3e01b"
+                  ],
+                  "prior_tax_due": 0,
+                  "prior_net_income": 0,
+                  "prior_duration_days": 0
+                }
+              ],
+              "issues": [],
+              "contract": "cube4-cumulative-balances-v1",
+              "financially_qualified": false
+            },
+            "financially_qualified": false
+          },
+          "advance_deductions": [],
+          "total_employer_cost": "15716.1300000000000000",
+          "source_coverage_days": [],
+          "statutory_deductions": "1541.58",
+          "financially_qualified": true,
+          "statutory_calculation": {
+            "tax": {
+              "trace": {
+                "base": 345980,
+                "segments": [
+                  {
+                    "band": 1,
+                    "rate": 0.1,
+                    "lower": 0,
+                    "upper": null,
+                    "taxable_width": 345980,
+                    "unrounded_tax": 34598
+                  }
+                ],
+                "unrounded_annual_tax": 34598
+              },
+              "column": 1,
+              "adapter": "eg-cumulative-tax-v1",
+              "pack_id": "d730f000-0000-4000-8000-000000000001",
+              "annual_base": 345980,
+              "earning_from": "2026-07-01",
+              "pack_version": "NONLEGAL single-band arithmetic fixture",
+              "duration_days": 15,
+              "earning_until": "2026-07-15",
+              "prior_tax_due": 0,
+              "source_reference": "NONLEGAL reviewed insured wage source",
+              "current_tax_delta": 1441.58,
+              "cumulative_tax_due": 1441.58,
+              "annual_tax_unrounded": 34598,
+              "annual_raw_after_exemption": 345987.12
+            },
+            "facts": {
+              "earning_from": "2026-07-01",
+              "earning_until": "2026-07-15",
+              "prior_tax_due": 0,
+              "insurance_status": "insured",
+              "prior_net_income": 0,
+              "source_reference": "NONLEGAL reviewed insured wage source",
+              "tax_treatment_code": "06",
+              "cumulative_duration_days": 15,
+              "current_taxable_earnings": 14516.13
+            },
+            "adapter": "eg-employee-statutory-v1",
+            "pack_id": "d730f000-0000-4000-8000-000000000001",
+            "insurance": {
+              "lines": [
+                {
+                  "month": "2026-07-01",
+                  "branch": "pension",
+                  "insured_wage": 10000,
+                  "employee_rate": 0.01,
+                  "employer_rate": 0.02,
+                  "tax_deductible": true,
+                  "employee_amount": 100,
+                  "employer_amount": 200,
+                  "insured_wage_source": "NONLEGAL reviewed insured wage source"
+                }
+              ],
+              "adapter": "eg-insurance-month-v1",
+              "pack_id": "d730f000-0000-4000-8000-000000000002",
+              "category": "NONLEGAL D730 pension fixture",
+              "pack_version": "NONLEGAL independent insurance arithmetic",
+              "calendar_year": 2026,
+              "employee_total": 100,
+              "employer_total": 200,
+              "source_reference": "NONLEGAL independently reviewed full ending-month liability",
+              "obligation_months": [
+                {
+                  "month": "2026-07-01",
+                  "insured_wage": 10000,
+                  "insured_wage_source": "NONLEGAL reviewed insured wage source"
+                }
+              ],
+              "tax_deductible_employee_total": 100
+            },
+            "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+            "earning_attribution": {
+              "lines": [
+                {
+                  "name": "NONLEGAL reviewed external termination amount",
+                  "amount": "1000.0000000000000000",
+                  "rounding": "taxable_half_up_cent_remainder_nontaxable",
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "attribution": "approved_period_amount",
+                  "earning_from": "2026-07-01",
+                  "source_parts": [
+                    {
+                      "raw": "1000",
+                      "name": "NONLEGAL reviewed external termination amount",
+                      "reason": "Reviewed contractual amount outside automated V1 coverage",
+                      "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                      "input_version": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+                      "classification": "earning",
+                      "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+                      "declared_social": false,
+                      "declared_taxable": false,
+                      "declared_visible": true,
+                      "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+                    }
+                  ],
+                  "earning_until": "2026-07-15",
+                  "taxable_amount": 0,
+                  "declaration_state": "uniform_declared_nontaxable",
+                  "nontaxable_amount": 1000,
+                  "declared_taxable_amount": 0,
+                  "declared_nontaxable_amount": 1000
+                },
+                {
+                  "name": "الأجر الأساسي",
+                  "amount": "14516.130000000000",
+                  "rounding": "taxable_half_up_cent_remainder_nontaxable",
+                  "component": "base",
+                  "attribution": "saved_salary_distribution",
+                  "earning_from": "2026-07-01",
+                  "source_parts": [
+                    {
+                      "raw": "14516.12903225806451612910",
+                      "name": "الأجر الأساسي",
+                      "detail": [
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-01",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-02",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-03",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-04",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-05",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-06",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-07",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-08",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-09",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-10",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-11",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-12",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-13",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-14",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        },
+                        {
+                          "raw": "967.74193548387096774194",
+                          "date": "2026-07-15",
+                          "rate": "30000.00",
+                          "_numerator": "3000000.00",
+                          "denominator": 31,
+                          "_denominator": "3100",
+                          "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                        }
+                      ],
+                      "component": "base",
+                      "classification": "earning"
+                    }
+                  ],
+                  "earning_until": "2026-07-15",
+                  "taxable_amount": 14516.13,
+                  "declaration_state": "base_treatment_requires_verified_pack",
+                  "nontaxable_amount": 0,
+                  "declared_taxable_amount": null,
+                  "declared_nontaxable_amount": null
+                }
+              ],
+              "pack_id": "d730f000-0000-4000-8000-000000000001",
+              "contract": "eg-earning-attribution-v1",
+              "pack_version": "NONLEGAL single-band arithmetic fixture",
+              "earning_rules": {
+                "schema": "eg-earning-treatment-v1",
+                "base_taxable": true,
+                "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+                "component_treatment": "reviewed_dated_declarations"
+              },
+              "taxable_earnings": 14516.13,
+              "nontaxable_earnings": 1000,
+              "financially_qualified": false
+            }
+          },
+          "financial_qualification": {
+            "profile": "eg-monthly-reviewed-earnings-single-context-v1",
+            "insurance": "reviewed_calendar_month_disposition",
+            "context_head": "a1002b27-e15d-459a-828c-ce798e810ab9",
+            "tax_evidence": {
+              "ready": true,
+              "scope": "synthetic_external_evidence_contract",
+              "origin": "synthetic_nonlegal",
+              "pack_id": "d730f000-0000-4000-8000-000000000001",
+              "through": "2026-07-15",
+              "reference": "NONLEGAL d730 Auth browser fixture; NOT official issuer acceptance"
+            },
+            "prior_balance": {
+              "year": 2026,
+              "basis": "reviewed_opening",
+              "known": true,
+              "through": "2026-06-30",
+              "source_ids": [
+                "4aa35027-461c-4854-b04a-473dead3e01b"
+              ],
+              "prior_tax_due": 0,
+              "prior_net_income": 0,
+              "prior_duration_days": 0
+            },
+            "context_version": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+            "insurance_evidence": {
+              "ready": true,
+              "scope": "synthetic_external_evidence_contract",
+              "origin": "synthetic_nonlegal",
+              "pack_id": "d730f000-0000-4000-8000-000000000002",
+              "through": "2026-07-31",
+              "reference": "NONLEGAL d730 Auth browser fixture; NOT official issuer acceptance"
+            },
+            "earning_composition": "issued_reviewed_dated_declarations",
+            "time_leave_valuation": "none",
+            "labour_debt_deductions": "none"
+          },
+          "statutory_contributions": "200.00",
+          "statutory_source_binding": {
+            "pack_id": "d730f000-0000-4000-8000-000000000001",
+            "earning_from": "2026-07-01",
+            "earning_until": "2026-07-15",
+            "prior_balance": {
+              "year": 2026,
+              "basis": "reviewed_opening",
+              "known": true,
+              "through": "2026-06-30",
+              "source_ids": [
+                "4aa35027-461c-4854-b04a-473dead3e01b"
+              ],
+              "prior_tax_due": 0,
+              "prior_net_income": 0,
+              "prior_duration_days": 0
+            },
+            "reviewed_month": "2026-07-01",
+            "context_head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+            "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+            "context_version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+            "ownership_reference": "NONLEGAL independently reviewed full ending-month liability",
+            "current_duration_days": 15,
+            "insurance_month_disposition": "reviewed_due"
+          }
+        }
+      ],
+      "deductions": "0",
+      "known_gross": "15516.1300000000000000",
+      "employer_cost": "200.00",
+      "is_transition": false,
+      "employee_count": 1,
+      "gross_complete": true,
+      "statutory_complete": true,
+      "statutory_deductions": "1541.58",
+      "financially_qualified": true,
+      "statutory_contributions": "200.00"
+    },
+    "run_id": "f82a2915-ef65-4e97-9de6-e89b3c599b43",
+    "manifest": {
+      "packs": [
+        {
+          "id": "d680f000-0000-4000-8000-000000000003",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "01"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL single-band arithmetic fixture NONLEGAL2026",
+          "created_at": "2026-10-04T11:02:18.321802+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations",
+            "date_partition_rounding": "chronological_prefix_half_up_cent"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {},
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d680f000-0000-4000-8000-000000000004",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "02"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL independent insurance arithmetic NONLEGAL2026",
+          "created_at": "2026-10-04T11:02:18.321802+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations",
+            "date_partition_rounding": "chronological_prefix_half_up_cent"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {
+            "schema": "eg-insurance-month-v1",
+            "branches": [
+              {
+                "branch": "pension",
+                "employee_rate": 0.01,
+                "employer_rate": 0.02,
+                "tax_deductible": true
+              }
+            ],
+            "category": "NONLEGAL pension fixture",
+            "rounding": "each_branch_month_half_up_cent",
+            "wage_maximum": 20000,
+            "wage_minimum": 100
+          },
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d700f000-0000-4000-8000-000000000001",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "09"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL single-band arithmetic fixture",
+          "created_at": "2026-10-04T12:44:17.372159+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {},
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d710f000-0000-4000-8000-000000000001",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "08"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL single-band arithmetic fixture",
+          "created_at": "2026-10-04T13:03:21.275805+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {},
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d720f000-0000-4000-8000-000000000001",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "07"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL single-band arithmetic fixture",
+          "created_at": "2026-10-04T13:06:46.142096+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {},
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d730f000-0000-4000-8000-000000000001",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "06"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL single-band arithmetic fixture",
+          "created_at": "2026-10-04T13:08:11.031958+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {},
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        },
+        {
+          "id": "d730f000-0000-4000-8000-000000000002",
+          "rules": {
+            "schema": "eg-cumulative-tax-v1",
+            "columns": [
+              {
+                "bands": [
+                  {
+                    "rate": 0.1,
+                    "upper": null
+                  }
+                ],
+                "through": null
+              }
+            ],
+            "day_basis": 360,
+            "column_basis": "annual_raw",
+            "tax_rounding": "cumulative_half_up_cent",
+            "base_rounding": "floor10",
+            "personal_exemption": 0,
+            "tax_treatment_code": "02"
+          },
+          "state": "verified",
+          "family": "egypt_payroll",
+          "version": "NONLEGAL independent insurance arithmetic",
+          "created_at": "2026-10-04T13:08:11.031958+00:00",
+          "verified_by": "d6800000-0000-4000-8000-000000000001",
+          "jurisdiction": "EG",
+          "labour_rules": {},
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "effective_from": "2026-01-01",
+          "engine_adapter": "eg-cumulative-tax-v1",
+          "effective_until": "2027-01-01",
+          "insurance_rules": {
+            "schema": "eg-insurance-month-v1",
+            "branches": [
+              {
+                "branch": "pension",
+                "employee_rate": 0.01,
+                "employer_rate": 0.02,
+                "tax_deductible": true
+              }
+            ],
+            "category": "NONLEGAL D730 pension fixture",
+            "rounding": "each_branch_month_half_up_cent",
+            "wage_maximum": 20000,
+            "wage_minimum": 100
+          },
+          "review_evidence": {
+            "numeric_comparisons": [
+              "NONLEGAL isolated math only"
+            ]
+          },
+          "source_references": [
+            "NONLEGAL synthetic arithmetic"
+          ]
+        }
+      ],
+      "engine": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-insured-single-month-owner-v1-reviewed-partial-insurance-v1-reviewed-earnings-v1-reviewed-context-year-v1-wage-deductions113114-v1-daily-approved-units-v1-daily-reconciled-sources-v1-approved-dated-time-segments-v1-monthly-approved-source-fractions-v1-approved-fixed30-unpaid-v1-approved-debt-dispositions-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+      "inputs": [
+        {
+          "head": {
+            "id": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+            "kind": "component",
+            "period_id": null,
+            "employee_id": null,
+            "employment_id": null
+          },
+          "version": {
+            "id": "1dc0ec3d-b74a-477d-ae15-01ee1628779d",
+            "data": {
+              "key": "termination_external",
+              "base": "",
+              "name": "NONLEGAL reviewed external termination amount",
+              "order": "50",
+              "value": "0",
+              "active": true,
+              "reason": "Explicit reviewed manual V1 handoff; no entitlement formula",
+              "social": false,
+              "taxable": false,
+              "visible": true,
+              "behavior": "period_input",
+              "proration": "salary_proration",
+              "calculation": "fixed",
+              "classification": "earning"
+            },
+            "status": "draft",
+            "head_id": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+            "revision": 1,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": null,
+            "approved_by": null,
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": null
+          }
+        },
+        {
+          "head": {
+            "id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+            "kind": "statutory_context",
+            "period_id": null,
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "employment_id": "d7306000-0000-4000-8000-000000000001"
+          },
+          "version": {
+            "id": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+            "data": {
+              "reason": "Synthetic source facts only",
+              "reference": "NONLEGAL reviewed insured wage source",
+              "insured_wage": 10000,
+              "insurance_from": "2026-07-01",
+              "insurance_until": "2026-07-15",
+              "calculation_from": "2026-07-01",
+              "insurance_status": "insured",
+              "calculation_until": "2026-07-15",
+              "tax_duration_days": 15,
+              "insurance_category": "NONLEGAL D730 pension fixture",
+              "tax_treatment_code": "06",
+              "insurance_owner_period": "d730e000-0000-4000-8000-000000000001",
+              "insurance_obligation_month": "2026-07-01",
+              "insurance_month_disposition": "reviewed_due",
+              "insurance_obligation_reference": "NONLEGAL independently reviewed full ending-month liability"
+            },
+            "status": "draft",
+            "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+            "revision": 1,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": null,
+            "approved_by": null,
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": null
+          }
+        },
+        {
+          "head": {
+            "id": "d3f2054d-cad1-4c4a-9af8-b90d53707692",
+            "kind": "policy",
+            "period_id": null,
+            "employee_id": null,
+            "employment_id": null
+          },
+          "version": {
+            "id": "b0234148-8d52-48aa-a24e-d520acdff0be",
+            "data": {
+              "mode": "calendar_days",
+              "reason": "NONLEGAL accepted monthly policy"
+            },
+            "status": "draft",
+            "head_id": "d3f2054d-cad1-4c4a-9af8-b90d53707692",
+            "revision": 1,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": null,
+            "approved_by": null,
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": null
+          }
+        },
+        {
+          "head": {
+            "id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+            "kind": "opening_ytd",
+            "period_id": null,
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "employment_id": "d7306000-0000-4000-8000-000000000001"
+          },
+          "version": {
+            "id": "4aa35027-461c-4854-b04a-473dead3e01b",
+            "data": {
+              "year": 2026,
+              "reason": "Synthetic reviewed zero opening",
+              "tax_due": 0,
+              "reference": "NONLEGAL no prior employment facts",
+              "social_base": 0,
+              "coverage_end": "2026-06-30",
+              "tax_withheld": 0,
+              "coverage_start": "2026-01-01",
+              "tax_net_income": 0,
+              "employee_social": 0,
+              "employer_social": 0,
+              "taxable_earnings": 0,
+              "tax_duration_days": 0
+            },
+            "status": "draft",
+            "head_id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+            "revision": 1,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": null,
+            "approved_by": null,
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": null
+          }
+        },
+        {
+          "head": {
+            "id": "fc6beb63-92b0-4f02-9080-1384531661b4",
+            "kind": "adjustment",
+            "period_id": "d730e000-0000-4000-8000-000000000001",
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "employment_id": "d7306000-0000-4000-8000-000000000001"
+          },
+          "version": {
+            "id": "bccedea7-4a53-4812-8e5d-3364a7e9eec8",
+            "data": {
+              "amount": 1000,
+              "reason": "Reviewed contractual amount outside automated V1 coverage",
+              "reference": "NONLEGAL external termination calculation document",
+              "component_id": "64fa9fad-9142-42dd-914a-309e1dfdb3be"
+            },
+            "status": "draft",
+            "head_id": "fc6beb63-92b0-4f02-9080-1384531661b4",
+            "revision": 1,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": null,
+            "approved_by": null,
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": "2026-08-01"
+          }
+        },
+        {
+          "head": {
+            "id": "fc6beb63-92b0-4f02-9080-1384531661b4",
+            "kind": "adjustment",
+            "period_id": "d730e000-0000-4000-8000-000000000001",
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "employment_id": "d7306000-0000-4000-8000-000000000001"
+          },
+          "version": {
+            "id": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+            "data": {
+              "amount": 1000,
+              "reason": "Reviewed contractual amount outside automated V1 coverage",
+              "reference": "NONLEGAL external termination calculation document",
+              "component_id": "64fa9fad-9142-42dd-914a-309e1dfdb3be"
+            },
+            "status": "approved",
+            "head_id": "fc6beb63-92b0-4f02-9080-1384531661b4",
+            "revision": 2,
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "created_by": "d6800000-0000-4000-8000-000000000001",
+            "approved_at": "2026-10-04T13:08:11.082222+00:00",
+            "approved_by": "d6800000-0000-4000-8000-000000000001",
+            "employer_id": "d7303000-0000-4000-8000-000000000001",
+            "effective_from": "2026-07-01",
+            "effective_until": "2026-08-01"
+          }
+        }
+      ],
+      "period": {
+        "id": "d730e000-0000-4000-8000-000000000001",
+        "label": "NONLEGAL D730 one-day NONLEGAL Leave QA",
+        "ends_on": "2026-07-31",
+        "timezone": "UTC",
+        "starts_on": "2026-07-01",
+        "tenant_id": "d7301000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-04T13:08:11.031958+00:00",
+        "created_by": "d6800000-0000-4000-8000-000000000001",
+        "payment_on": "2026-07-31",
+        "employer_id": "d7303000-0000-4000-8000-000000000001",
+        "is_transition": false,
+        "calendar_version_id": "d730d000-0000-4000-8000-000000000001"
+      },
+      "advances": [],
+      "optional": {
+        "time": false,
+        "leave": false,
+        "finance": {
+          "enabled": false,
+          "projection": "advances-v1",
+          "adjustments": "unchanged"
+        }
+      },
+      "employees": [
+        {
+          "code": "NONLEGAL D730",
+          "name": "NONLEGAL D730 Leave Employee",
+          "employment": {
+            "id": "d7306000-0000-4000-8000-000000000001",
+            "end_date": "2026-07-15",
+            "pay_basis": "monthly",
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "start_date": "2026-07-01",
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "payroll_eligible": true,
+            "employment_status": "ended",
+            "employer_entity_id": "d7303000-0000-4000-8000-000000000001"
+          }
+        }
+      ],
+      "assignments": [
+        {
+          "id": "d7309000-0000-4000-8000-000000000001",
+          "job_id": null,
+          "site_id": "d7304000-0000-4000-8000-000000000001",
+          "tenant_id": "d7301000-0000-4000-8000-000000000001",
+          "created_at": "2026-10-04T13:08:11.031958+00:00",
+          "valid_from": "2026-07-01",
+          "valid_until": null,
+          "department_id": null,
+          "employment_id": "d7306000-0000-4000-8000-000000000001",
+          "manager_employee_id": null,
+          "work_policy_version": null,
+          "work_policy_template_id": null
+        }
+      ],
+      "corrections": [],
+      "compensation": [
+        {
+          "id": "d7307000-0000-4000-8000-000000000001",
+          "amount": 30000,
+          "tenant_id": "d7301000-0000-4000-8000-000000000001",
+          "created_at": "2026-10-04T13:08:11.031958+00:00",
+          "valid_from": "2026-07-01",
+          "valid_until": null,
+          "currency_code": "EGP",
+          "employment_id": "d7306000-0000-4000-8000-000000000001"
+        }
+      ],
+      "legal_employer": {
+        "is_active": true,
+        "legal_name": "NONLEGAL D730 NONLEGAL Employer",
+        "display_name": "NONLEGAL D730 NONLEGAL Employer"
+      },
+      "optional_sources": {
+        "time": {
+          "items": [],
+          "enabled": false,
+          "coverage": {
+            "items": [],
+            "enabled": false,
+            "contract": "cube4-time-coverage-v1"
+          }
+        },
+        "leave": {
+          "items": [],
+          "enabled": false
+        },
+        "windows": [
+          {
+            "to": "2026-07-31",
+            "from": "2026-07-01"
+          }
+        ],
+        "boundary": "capture_only",
+        "consumed": false,
+        "contract": "cube4-optional-capture-v1"
+      },
+      "calendar_semantics": {
+        "state": "recorded_ordinary",
+        "current_cutoff": null,
+        "previous_cutoff": null,
+        "previous_period": null,
+        "current_calendar": "d730d000-0000-4000-8000-000000000001",
+        "previous_calendar": null,
+        "stored_is_transition": false
+      },
+      "deduction_dispositions": [],
+      "deduction_carry_origins": [],
+      "prior_statutory_outputs": []
+    },
+    "period_id": "d730e000-0000-4000-8000-000000000001",
+    "tenant_id": "d7301000-0000-4000-8000-000000000001",
+    "approval_id": "2aa72dc2-2f70-4de8-b489-35f03a4c2f0f",
+    "employer_id": "d7303000-0000-4000-8000-000000000001",
+    "candidate_id": "cc57342d-cb06-41bd-8c52-5a2a9e78a623",
+    "finalized_at": "2026-10-04T13:08:41.477393+00:00",
+    "finalized_by": "d6800000-0000-4000-8000-000000000001",
+    "engine_version": "cube4-review-v5-complete-daily-time-advances-v1-statutory-sources-v1-employee-facts-v1-nondebt-qualified-v1-employer-loan113-v1-insured-single-month-owner-v1-reviewed-partial-insurance-v1-reviewed-earnings-v1-reviewed-context-year-v1-wage-deductions113114-v1-daily-approved-units-v1-daily-reconciled-sources-v1-approved-dated-time-segments-v1-monthly-approved-source-fractions-v1-approved-fixed30-unpaid-v1-approved-debt-dispositions-v1-prior-finals-v1-cumulative-balances-v1-current-earnings-v1-calendar-facts-v1-earning-partitions-v1",
+    "legal_employer": {
+      "legal_name": "NONLEGAL D730 NONLEGAL Employer",
+      "display_name": "NONLEGAL D730 NONLEGAL Employer"
+    },
+    "period_snapshot": {
+      "id": "d730e000-0000-4000-8000-000000000001",
+      "label": "NONLEGAL D730 one-day NONLEGAL Leave QA",
+      "ends_on": "2026-07-31",
+      "timezone": "UTC",
+      "starts_on": "2026-07-01",
+      "tenant_id": "d7301000-0000-4000-8000-000000000001",
+      "created_at": "2026-10-04T13:08:11.031958+00:00",
+      "created_by": "d6800000-0000-4000-8000-000000000001",
+      "payment_on": "2026-07-31",
+      "employer_id": "d7303000-0000-4000-8000-000000000001",
+      "is_transition": false,
+      "calendar_version_id": "d730d000-0000-4000-8000-000000000001"
+    }
+  },
+  "employee": {
+    "net": 13974.55,
+    "output_id": "38e36740-adeb-4769-8268-2ed9fe109aca",
+    "tenant_id": "d7301000-0000-4000-8000-000000000001",
+    "employer_id": "d7303000-0000-4000-8000-000000000001",
+    "explanation": {
+      "net": "13974.5500000000000000",
+      "base": "14516.130000000000",
+      "code": "NONLEGAL D730",
+      "name": "NONLEGAL D730 Leave Employee",
+      "gross": "15516.1300000000000000",
+      "lines": [
+        {
+          "name": "NONLEGAL reviewed external termination amount",
+          "amount": "1000.0000000000000000",
+          "segments": [
+            {
+              "reason": "Reviewed contractual amount outside automated V1 coverage",
+              "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+              "approved_amount": "1000.0000000000000000",
+              "declared_social": false,
+              "declared_taxable": false,
+              "declared_visible": true,
+              "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+            }
+          ],
+          "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+          "classification": "earning"
+        },
+        {
+          "name": "الأجر الأساسي",
+          "amount": "14516.130000000000",
+          "segments": [
+            {
+              "days": 15,
+              "from": "2026-07-01",
+              "rate": "30000.00",
+              "until": "2026-07-15",
+              "denominator": 31
+            }
+          ],
+          "component": "base",
+          "classification": "earning"
+        },
+        {
+          "name": "اشتراك الموظف في التأمينات",
+          "amount": "100.00",
+          "segments": [],
+          "component": "statutory:insurance:pension:2026-07-01",
+          "statutory": true,
+          "presentation": {
+            "order": 1100,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d730f000-0000-4000-8000-000000000002",
+            "visible": true
+          },
+          "classification": "deduction"
+        },
+        {
+          "name": "اشتراك جهة العمل في التأمينات",
+          "amount": "200.00",
+          "segments": [],
+          "component": "statutory:employer:pension:2026-07-01",
+          "statutory": true,
+          "presentation": {
+            "order": 1100,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d730f000-0000-4000-8000-000000000002",
+            "visible": true
+          },
+          "classification": "employer_cost"
+        },
+        {
+          "name": "ضريبة الأجور المستحقة",
+          "amount": "1441.58",
+          "segments": [],
+          "component": "statutory:tax",
+          "statutory": true,
+          "presentation": {
+            "order": 1200,
+            "schema": "payroll-statutory-v1",
+            "pack_id": "d730f000-0000-4000-8000-000000000001",
+            "visible": true
+          },
+          "classification": "deduction"
+        }
+      ],
+      "issues": [],
+      "ends_on": "2026-07-15",
+      "pay_basis": "monthly",
+      "starts_on": "2026-07-01",
+      "deductions": "0",
+      "dated_rates": [
+        {
+          "from": "2026-07-01",
+          "rate": "30000.00",
+          "until": null
+        }
+      ],
+      "employee_id": "d7305000-0000-4000-8000-000000000001",
+      "known_gross": "15516.1300000000000000",
+      "source_days": [],
+      "eligible_days": 15,
+      "employer_cost": "200.00",
+      "employment_id": "d7306000-0000-4000-8000-000000000001",
+      "approved_units": null,
+      "calculated_net": "13974.5500000000000000",
+      "gross_complete": true,
+      "source_summary": {
+        "status": "disabled",
+        "day_count": 0,
+        "time_enabled": false,
+        "leave_enabled": false,
+        "payroll_ready": false,
+        "time_coverage": {
+          "status": "disabled",
+          "enabled": false,
+          "day_count": 0,
+          "future_days": 0,
+          "missing_days": 0,
+          "pending_days": 0,
+          "approved_days": 0,
+          "expected_days": 0,
+          "payroll_ready": false,
+          "other_review_days": 0
+        }
+      },
+      "statutory_context": {
+        "category": "NONLEGAL D730 pension fixture",
+        "insured_wage": 10000,
+        "owner_period": "d730e000-0000-4000-8000-000000000001",
+        "calendar_year": 2026,
+        "reviewed_month": "2026-07-01",
+        "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+        "obligation_months": [
+          {
+            "month": "2026-07-01",
+            "insured_wage": 10000,
+            "insured_wage_source": "NONLEGAL reviewed insured wage source"
+          }
+        ],
+        "insured_wage_source": "NONLEGAL reviewed insured wage source",
+        "ownership_reference": "NONLEGAL independently reviewed full ending-month liability",
+        "insurance_month_disposition": "reviewed_due"
+      },
+      "statutory_sources": {
+        "issues": [],
+        "calendar": {
+          "known": true,
+          "years": [
+            {
+              "from": "2026-07-01",
+              "year": 2026,
+              "through": "2026-07-15",
+              "calendar_days": 15,
+              "legal_duration_days": null
+            }
+          ],
+          "months": [
+            {
+              "from": "2026-07-01",
+              "month": "2026-07-01",
+              "through": "2026-07-15",
+              "contexts": [
+                {
+                  "data": {
+                    "reason": "Synthetic source facts only",
+                    "reference": "NONLEGAL reviewed insured wage source",
+                    "insured_wage": 10000,
+                    "insurance_from": "2026-07-01",
+                    "insurance_until": "2026-07-15",
+                    "calculation_from": "2026-07-01",
+                    "insurance_status": "insured",
+                    "calculation_until": "2026-07-15",
+                    "tax_duration_days": 15,
+                    "insurance_category": "NONLEGAL D730 pension fixture",
+                    "tax_treatment_code": "06",
+                    "insurance_owner_period": "d730e000-0000-4000-8000-000000000001",
+                    "insurance_obligation_month": "2026-07-01",
+                    "insurance_month_disposition": "reviewed_due",
+                    "insurance_obligation_reference": "NONLEGAL independently reviewed full ending-month liability"
+                  },
+                  "from": "2026-07-01",
+                  "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                  "through": "2026-07-15",
+                  "version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262"
+                }
+              ],
+              "calendar_days": 15,
+              "calendar_through": "2026-07-31",
+              "full_service_month": false,
+              "service_end_in_month": true,
+              "service_start_in_month": true
+            }
+          ],
+          "contract": "cube4-statutory-calendar-facts-v1",
+          "employment": {
+            "id": "d7306000-0000-4000-8000-000000000001",
+            "end_date": "2026-07-15",
+            "pay_basis": "monthly",
+            "tenant_id": "d7301000-0000-4000-8000-000000000001",
+            "created_at": "2026-10-04T13:08:11.031958+00:00",
+            "start_date": "2026-07-01",
+            "employee_id": "d7305000-0000-4000-8000-000000000001",
+            "payroll_eligible": true,
+            "employment_status": "ended",
+            "employer_entity_id": "d7303000-0000-4000-8000-000000000001"
+          },
+          "employee_id": "d7305000-0000-4000-8000-000000000001",
+          "employment_id": "d7306000-0000-4000-8000-000000000001",
+          "obligation_months": null,
+          "legal_duration_days": null,
+          "financially_qualified": false
+        },
+        "contexts": [
+          {
+            "from": "2026-07-01",
+            "source": {
+              "head": {
+                "id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                "kind": "statutory_context",
+                "period_id": null,
+                "employee_id": "d7305000-0000-4000-8000-000000000001",
+                "employment_id": "d7306000-0000-4000-8000-000000000001"
+              },
+              "version": {
+                "id": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+                "data": {
+                  "reason": "Synthetic source facts only",
+                  "reference": "NONLEGAL reviewed insured wage source",
+                  "insured_wage": 10000,
+                  "insurance_from": "2026-07-01",
+                  "insurance_until": "2026-07-15",
+                  "calculation_from": "2026-07-01",
+                  "insurance_status": "insured",
+                  "calculation_until": "2026-07-15",
+                  "tax_duration_days": 15,
+                  "insurance_category": "NONLEGAL D730 pension fixture",
+                  "tax_treatment_code": "06",
+                  "insurance_owner_period": "d730e000-0000-4000-8000-000000000001",
+                  "insurance_obligation_month": "2026-07-01",
+                  "insurance_month_disposition": "reviewed_due",
+                  "insurance_obligation_reference": "NONLEGAL independently reviewed full ending-month liability"
+                },
+                "status": "draft",
+                "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+                "revision": 1,
+                "tenant_id": "d7301000-0000-4000-8000-000000000001",
+                "created_at": "2026-10-04T13:08:11.031958+00:00",
+                "created_by": "d6800000-0000-4000-8000-000000000001",
+                "approved_at": null,
+                "approved_by": null,
+                "employer_id": "d7303000-0000-4000-8000-000000000001",
+                "effective_from": "2026-07-01",
+                "effective_until": null
+              }
+            },
+            "head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+            "through": "2026-07-15",
+            "version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262"
+          }
+        ],
+        "contract": "cube4-employee-statutory-sources-v1",
+        "openings": [
+          {
+            "year": 2026,
+            "as_of": "2026-07-01",
+            "source": {
+              "head": {
+                "id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+                "kind": "opening_ytd",
+                "period_id": null,
+                "employee_id": "d7305000-0000-4000-8000-000000000001",
+                "employment_id": "d7306000-0000-4000-8000-000000000001"
+              },
+              "version": {
+                "id": "4aa35027-461c-4854-b04a-473dead3e01b",
+                "data": {
+                  "year": 2026,
+                  "reason": "Synthetic reviewed zero opening",
+                  "tax_due": 0,
+                  "reference": "NONLEGAL no prior employment facts",
+                  "social_base": 0,
+                  "coverage_end": "2026-06-30",
+                  "tax_withheld": 0,
+                  "coverage_start": "2026-01-01",
+                  "tax_net_income": 0,
+                  "employee_social": 0,
+                  "employer_social": 0,
+                  "taxable_earnings": 0,
+                  "tax_duration_days": 0
+                },
+                "status": "draft",
+                "head_id": "dc9832e6-cf08-4516-b279-1b698101b03b",
+                "revision": 1,
+                "tenant_id": "d7301000-0000-4000-8000-000000000001",
+                "created_at": "2026-10-04T13:08:11.031958+00:00",
+                "created_by": "d6800000-0000-4000-8000-000000000001",
+                "approved_at": null,
+                "approved_by": null,
+                "employer_id": "d7303000-0000-4000-8000-000000000001",
+                "effective_from": "2026-07-01",
+                "effective_until": null
+              }
+            }
+          }
+        ],
+        "employee_id": "d7305000-0000-4000-8000-000000000001",
+        "employment_id": "d7306000-0000-4000-8000-000000000001",
+        "prior_outputs": [],
+        "current_earnings": {
+          "lines": [
+            {
+              "name": "NONLEGAL reviewed external termination amount",
+              "amount": "1000.0000000000000000",
+              "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+              "attribution": "approved_period_amount",
+              "earning_from": "2026-07-01",
+              "source_parts": [
+                {
+                  "raw": "1000",
+                  "name": "NONLEGAL reviewed external termination amount",
+                  "reason": "Reviewed contractual amount outside automated V1 coverage",
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "input_version": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+                  "classification": "earning",
+                  "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+                  "declared_social": false,
+                  "declared_taxable": false,
+                  "declared_visible": true,
+                  "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+                }
+              ],
+              "earning_until": "2026-07-15",
+              "declaration_state": "uniform_declared_nontaxable",
+              "declared_taxable_amount": 0,
+              "declared_nontaxable_amount": 1000
+            },
+            {
+              "name": "الأجر الأساسي",
+              "amount": "14516.130000000000",
+              "component": "base",
+              "attribution": "saved_salary_distribution",
+              "earning_from": "2026-07-01",
+              "source_parts": [
+                {
+                  "raw": "14516.12903225806451612910",
+                  "name": "الأجر الأساسي",
+                  "detail": [
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-01",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-02",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-03",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-04",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-05",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-06",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-07",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-08",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-09",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-10",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-11",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-12",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-13",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-14",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-15",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    }
+                  ],
+                  "component": "base",
+                  "classification": "earning"
+                }
+              ],
+              "earning_until": "2026-07-15",
+              "declaration_state": "base_treatment_requires_verified_pack",
+              "declared_taxable_amount": null,
+              "declared_nontaxable_amount": null
+            }
+          ],
+          "contract": "cube4-current-earning-sources-v1",
+          "base_amount": 14516.13,
+          "operational_complete": true,
+          "financially_qualified": false,
+          "declared_taxable_components": 0,
+          "unresolved_component_amount": 0,
+          "declared_nontaxable_components": 1000
+        },
+        "earning_partitions": {
+          "lines": [
+            {
+              "amount": "1000.0000000000000000",
+              "months": null,
+              "reason": "period_amount_needs_earning_scope",
+              "fraction": null,
+              "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+              "source_line_index": 0,
+              "legal_earning_attribution_known": false,
+              "operational_date_distribution_known": false
+            },
+            {
+              "amount": "14516.130000000000",
+              "months": [
+                {
+                  "year": 2026,
+                  "month": "2026-07-01",
+                  "fraction": {
+                    "d": "31.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "n": "450000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+                  },
+                  "rounded_amount": null,
+                  "source_part_indexes": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                  ]
+                }
+              ],
+              "reason": null,
+              "fraction": {
+                "d": "31.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "n": "450000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+              },
+              "component": "base",
+              "source_line_index": 1,
+              "legal_earning_attribution_known": false,
+              "operational_date_distribution_known": true
+            }
+          ],
+          "contract": "cube4-operational-earning-partitions-v1",
+          "financially_qualified": false
+        },
+        "cumulative_balances": {
+          "years": [
+            {
+              "year": 2026,
+              "basis": "reviewed_opening",
+              "known": true,
+              "through": "2026-06-30",
+              "source_ids": [
+                "4aa35027-461c-4854-b04a-473dead3e01b"
+              ],
+              "prior_tax_due": 0,
+              "prior_net_income": 0,
+              "prior_duration_days": 0
+            }
+          ],
+          "issues": [],
+          "contract": "cube4-cumulative-balances-v1",
+          "financially_qualified": false
+        },
+        "financially_qualified": false
+      },
+      "advance_deductions": [],
+      "total_employer_cost": "15716.1300000000000000",
+      "unresolved_segments": [],
+      "source_coverage_days": [],
+      "statutory_deductions": "1541.58",
+      "financially_qualified": true,
+      "statutory_calculation": {
+        "tax": {
+          "trace": {
+            "base": 345980,
+            "segments": [
+              {
+                "band": 1,
+                "rate": 0.1,
+                "lower": 0,
+                "upper": null,
+                "taxable_width": 345980,
+                "unrounded_tax": 34598
+              }
+            ],
+            "unrounded_annual_tax": 34598
+          },
+          "column": 1,
+          "adapter": "eg-cumulative-tax-v1",
+          "pack_id": "d730f000-0000-4000-8000-000000000001",
+          "annual_base": 345980,
+          "earning_from": "2026-07-01",
+          "pack_version": "NONLEGAL single-band arithmetic fixture",
+          "duration_days": 15,
+          "earning_until": "2026-07-15",
+          "prior_tax_due": 0,
+          "source_reference": "NONLEGAL reviewed insured wage source",
+          "current_tax_delta": 1441.58,
+          "cumulative_tax_due": 1441.58,
+          "annual_tax_unrounded": 34598,
+          "annual_raw_after_exemption": 345987.12
+        },
+        "facts": {
+          "earning_from": "2026-07-01",
+          "earning_until": "2026-07-15",
+          "prior_tax_due": 0,
+          "insurance_status": "insured",
+          "prior_net_income": 0,
+          "source_reference": "NONLEGAL reviewed insured wage source",
+          "tax_treatment_code": "06",
+          "cumulative_duration_days": 15,
+          "current_taxable_earnings": 14516.13
+        },
+        "adapter": "eg-employee-statutory-v1",
+        "pack_id": "d730f000-0000-4000-8000-000000000001",
+        "insurance": {
+          "lines": [
+            {
+              "month": "2026-07-01",
+              "branch": "pension",
+              "insured_wage": 10000,
+              "employee_rate": 0.01,
+              "employer_rate": 0.02,
+              "tax_deductible": true,
+              "employee_amount": 100,
+              "employer_amount": 200,
+              "insured_wage_source": "NONLEGAL reviewed insured wage source"
+            }
+          ],
+          "adapter": "eg-insurance-month-v1",
+          "pack_id": "d730f000-0000-4000-8000-000000000002",
+          "category": "NONLEGAL D730 pension fixture",
+          "pack_version": "NONLEGAL independent insurance arithmetic",
+          "calendar_year": 2026,
+          "employee_total": 100,
+          "employer_total": 200,
+          "source_reference": "NONLEGAL independently reviewed full ending-month liability",
+          "obligation_months": [
+            {
+              "month": "2026-07-01",
+              "insured_wage": 10000,
+              "insured_wage_source": "NONLEGAL reviewed insured wage source"
+            }
+          ],
+          "tax_deductible_employee_total": 100
+        },
+        "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+        "earning_attribution": {
+          "lines": [
+            {
+              "name": "NONLEGAL reviewed external termination amount",
+              "amount": "1000.0000000000000000",
+              "rounding": "taxable_half_up_cent_remainder_nontaxable",
+              "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+              "attribution": "approved_period_amount",
+              "earning_from": "2026-07-01",
+              "source_parts": [
+                {
+                  "raw": "1000",
+                  "name": "NONLEGAL reviewed external termination amount",
+                  "reason": "Reviewed contractual amount outside automated V1 coverage",
+                  "component": "adjustment:fc6beb63-92b0-4f02-9080-1384531661b4",
+                  "input_version": "e2921b28-a0e3-42c8-8f7d-64c6903edf33",
+                  "classification": "earning",
+                  "component_head": "64fa9fad-9142-42dd-914a-309e1dfdb3be",
+                  "declared_social": false,
+                  "declared_taxable": false,
+                  "declared_visible": true,
+                  "component_version": "1dc0ec3d-b74a-477d-ae15-01ee1628779d"
+                }
+              ],
+              "earning_until": "2026-07-15",
+              "taxable_amount": 0,
+              "declaration_state": "uniform_declared_nontaxable",
+              "nontaxable_amount": 1000,
+              "declared_taxable_amount": 0,
+              "declared_nontaxable_amount": 1000
+            },
+            {
+              "name": "الأجر الأساسي",
+              "amount": "14516.130000000000",
+              "rounding": "taxable_half_up_cent_remainder_nontaxable",
+              "component": "base",
+              "attribution": "saved_salary_distribution",
+              "earning_from": "2026-07-01",
+              "source_parts": [
+                {
+                  "raw": "14516.12903225806451612910",
+                  "name": "الأجر الأساسي",
+                  "detail": [
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-01",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-02",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-03",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-04",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-05",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-06",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-07",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-08",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-09",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-10",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-11",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-12",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-13",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-14",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    },
+                    {
+                      "raw": "967.74193548387096774194",
+                      "date": "2026-07-15",
+                      "rate": "30000.00",
+                      "_numerator": "3000000.00",
+                      "denominator": 31,
+                      "_denominator": "3100",
+                      "compensation_id": "d7307000-0000-4000-8000-000000000001"
+                    }
+                  ],
+                  "component": "base",
+                  "classification": "earning"
+                }
+              ],
+              "earning_until": "2026-07-15",
+              "taxable_amount": 14516.13,
+              "declaration_state": "base_treatment_requires_verified_pack",
+              "nontaxable_amount": 0,
+              "declared_taxable_amount": null,
+              "declared_nontaxable_amount": null
+            }
+          ],
+          "pack_id": "d730f000-0000-4000-8000-000000000001",
+          "contract": "eg-earning-attribution-v1",
+          "pack_version": "NONLEGAL single-band arithmetic fixture",
+          "earning_rules": {
+            "schema": "eg-earning-treatment-v1",
+            "base_taxable": true,
+            "mixed_rounding": "taxable_half_up_cent_remainder_nontaxable",
+            "component_treatment": "reviewed_dated_declarations"
+          },
+          "taxable_earnings": 14516.13,
+          "nontaxable_earnings": 1000,
+          "financially_qualified": false
+        }
+      },
+      "financial_qualification": {
+        "profile": "eg-monthly-reviewed-earnings-single-context-v1",
+        "insurance": "reviewed_calendar_month_disposition",
+        "context_head": "a1002b27-e15d-459a-828c-ce798e810ab9",
+        "tax_evidence": {
+          "ready": true,
+          "scope": "synthetic_external_evidence_contract",
+          "origin": "synthetic_nonlegal",
+          "pack_id": "d730f000-0000-4000-8000-000000000001",
+          "through": "2026-07-15",
+          "reference": "NONLEGAL d730 Auth browser fixture; NOT official issuer acceptance"
+        },
+        "prior_balance": {
+          "year": 2026,
+          "basis": "reviewed_opening",
+          "known": true,
+          "through": "2026-06-30",
+          "source_ids": [
+            "4aa35027-461c-4854-b04a-473dead3e01b"
+          ],
+          "prior_tax_due": 0,
+          "prior_net_income": 0,
+          "prior_duration_days": 0
+        },
+        "context_version": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+        "insurance_evidence": {
+          "ready": true,
+          "scope": "synthetic_external_evidence_contract",
+          "origin": "synthetic_nonlegal",
+          "pack_id": "d730f000-0000-4000-8000-000000000002",
+          "through": "2026-07-31",
+          "reference": "NONLEGAL d730 Auth browser fixture; NOT official issuer acceptance"
+        },
+        "earning_composition": "issued_reviewed_dated_declarations",
+        "time_leave_valuation": "none",
+        "labour_debt_deductions": "none"
+      },
+      "statutory_contributions": "200.00",
+      "statutory_source_binding": {
+        "pack_id": "d730f000-0000-4000-8000-000000000001",
+        "earning_from": "2026-07-01",
+        "earning_until": "2026-07-15",
+        "prior_balance": {
+          "year": 2026,
+          "basis": "reviewed_opening",
+          "known": true,
+          "through": "2026-06-30",
+          "source_ids": [
+            "4aa35027-461c-4854-b04a-473dead3e01b"
+          ],
+          "prior_tax_due": 0,
+          "prior_net_income": 0,
+          "prior_duration_days": 0
+        },
+        "reviewed_month": "2026-07-01",
+        "context_head_id": "a1002b27-e15d-459a-828c-ce798e810ab9",
+        "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+        "context_version_id": "9d7ce31a-c720-4f75-85ed-228dfea03262",
+        "ownership_reference": "NONLEGAL independently reviewed full ending-month liability",
+        "current_duration_days": 15,
+        "insurance_month_disposition": "reviewed_due"
+      }
+    },
+    "employment_id": "d7306000-0000-4000-8000-000000000001",
+    "employee_snapshot": {
+      "code": "NONLEGAL D730",
+      "name": "NONLEGAL D730 Leave Employee"
+    },
+    "statutory_context": {
+      "category": "NONLEGAL D730 pension fixture",
+      "insured_wage": 10000,
+      "owner_period": "d730e000-0000-4000-8000-000000000001",
+      "calendar_year": 2026,
+      "reviewed_month": "2026-07-01",
+      "insurance_pack_id": "d730f000-0000-4000-8000-000000000002",
+      "obligation_months": [
+        {
+          "month": "2026-07-01",
+          "insured_wage": 10000,
+          "insured_wage_source": "NONLEGAL reviewed insured wage source"
+        }
+      ],
+      "insured_wage_source": "NONLEGAL reviewed insured wage source",
+      "ownership_reference": "NONLEGAL independently reviewed full ending-month liability",
+      "insurance_month_disposition": "reviewed_due"
+    }
+  }
+}

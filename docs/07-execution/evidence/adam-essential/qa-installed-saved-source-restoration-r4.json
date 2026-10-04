@@ -1,0 +1,16 @@
+{
+  "test": "cube4_saved_source_selection_restoration.test.sql",
+  "migration": "20261003059000_cube4_saved_source_selection_restoration.sql",
+  "database": "business_platform_cube4_adam_positive_qa",
+  "baseline": 186,
+  "sourceSHA": "ad87dbab6884bdea12ac3cd9991a8d574b0dbf48",
+  "uncommittedForwardDelta": true,
+  "status": "BOUNDED_INSTALLED_DELTA_PASS",
+  "testSHA256": "64bf87e139e973f7d833eb255754e2aa4f56dcc5d3a0789a091c784539d2a792",
+  "executedSHA256": "e3fb65f9ea8c4aa0f6362b0fe2b5bb8ff6b93d568f4c7e3fa98bd8416822ae80",
+  "fixtureRolledBack": true,
+  "assertions": 8,
+  "exitCode": 0,
+  "atUTC": "2026-10-04T12:54:59.270Z",
+  "officialLegalAcceptance": false
+}
