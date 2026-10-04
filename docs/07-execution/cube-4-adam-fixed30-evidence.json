@@ -1,0 +1,131 @@
+{
+  "status": "BOUNDED_FIXED30_UNPAID_ACCEPTED",
+  "codeSHA": "23e80e8ee901a1cec8cd30e1272620c10fe515ea",
+  "tree": "dd5c25e5a9ea40c37d68fb194e95bae4633b53a9",
+  "priorFinalizationEvidence": "cube-4-adam-finalization-performance-evidence.json",
+  "DDLHash": "709331f84671c5445637684020be084b6af2b75c0cbfa1b02928e545b8360d41",
+  "schemaBaseline": 183,
+  "assertions": 139,
+  "tests": [
+    {
+      "test": "cube4_fixed30_unpaid_public_financial_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_FIXED30_PASS",
+      "baseline": 182,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "709331f84671c5445637684020be084b6af2b75c0cbfa1b02928e545b8360d41",
+      "testSHA256": "54e1159c64a03730a4cde86cb1f7b6622a52942394313a879055523a97a1ebb4",
+      "exitCode": 0,
+      "assertions": 60
+    },
+    {
+      "test": "cube4_monthly_time_source_composition_public_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_FIXED30_PASS",
+      "baseline": 182,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "709331f84671c5445637684020be084b6af2b75c0cbfa1b02928e545b8360d41",
+      "testSHA256": "021e3a69017ea5659f6393394afff397166c5bcf6d303ff05c058d34152615d0",
+      "exitCode": 0,
+      "assertions": 37
+    },
+    {
+      "test": "cube4_fixed30_recurring_public_financial_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_FIXED30_PASS",
+      "baseline": 182,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "709331f84671c5445637684020be084b6af2b75c0cbfa1b02928e545b8360d41",
+      "testSHA256": "adbb23ccbde18a3c85edee8e0d80e69f0f9a8a9c498cd9d163b595c9e342b41d",
+      "exitCode": 0,
+      "assertions": 42
+    }
+  ],
+  "contract": "Frozen spec132–137: full monthly salary less effective salary/30 times approved unpaid fraction, separate from join/end cap;30000 minus one unpaid day1000 equals29000",
+  "acceptance": "Actual public Time-source calculate/review/approve/atomic finalize/replay/original recovery across two months/years; salary changes; actual fixed100 and earned10percent2900;28/29/30/31-day, half-day, partial join/end, signed-counterportion tampering rejection and no negative payout. Calendar-days fixture and its public finalization preserved.",
+  "boundaries": "No official legal qualification, no wholeCube PASS. Missing/unvalued operational sources remain closed. Approved unpaid portions exceeding period base remain explicitly blocked; no floor or negative earning invented. Fixed30 UI-specific new journey not claimed; preceding same monthly UI finalize/protected-output acceptance is frozen separately.",
+  "failedExpectations": "Retained failures were independently corrected annual floor10/cent tax expectations: constant net25920.06 and salary-change net27920.37; base29000 unchanged. First CLI helper quoting failure did not execute SQL.",
+  "applicationSourceUnchangedFromBuildE231": true,
+  "installedBusinessFactsPreserved": "All67 payroll/employee_finance/People/Auth table hashes and counts identical for each of3owned QA182→183 installs; includes newly finalised monthly UI output and all prior results.",
+  "servicesStopped": true,
+  "remaining": [
+    "Approved recurring-debt carry/external settlement and consumption",
+    "Qualified external payment then paid source correction/linked adjustment/settlement",
+    "Final period/ending obligation handoff and per-segment reports/export",
+    "Remaining approved calculation/source profiles plus permission/context/source mutation/concurrency acceptance",
+    "One consolidated same-SHA/tree qualification after closure-critical integration",
+    "External official2026/effective-coverage issuer package and golden cases remain unavailable per Ahmad; no repeat question"
+  ],
+  "artifacts": [
+    {
+      "path": "qa-fixed30-unpaid-qualification-constant-public.json",
+      "sha256": "8bd8b3438d3e51cdfcb8148c5007560e1b65e6ab61487a691afced8b1ae1392f"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-constant-public.log",
+      "sha256": "8806f35834c1bf6ced3a50ea3b7ce24d4fbec4d719733e414f960f67f3d26fda"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-constant-public-final.json",
+      "sha256": "07671dfb0359298da3e4cec1723b1314964618b16b426b154428311b278a8ebe"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-constant-public-final.log",
+      "sha256": "8a820a86cbba1252b90eb281b035c77134026d616713cb7225a0577ff1664b3e"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-dated-public.json",
+      "sha256": "104a22bf995a4d9d7d0e0ccb4a79fd25e74fe3a74913637f00c3f1e7523fd34f"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-dated-public.log",
+      "sha256": "8bd656c7d0121713be8f76a281118119304e4d6196f62d13988db352bdd36bd2"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-fixed-guards.json",
+      "sha256": "ed34102d647201af24102e6afab49c2be384a129b8d349a86bbddafa813732f1"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-fixed-guards.log",
+      "sha256": "a9b9e438be95eed65f5323b991f897fd6df4432ca32859d107b828d55d981b33"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-dated-public-final.json",
+      "sha256": "b079e6cac6b75d0391a821b6800e0db1ca5830909b7e278dc514c25cd3e82608"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-dated-public-final.log",
+      "sha256": "ce5d8dd09ed97ce9bd45bae429b09df95255378b4bf2468695561c021eb8bd72"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-earned-recurring.json",
+      "sha256": "9cfe73b12cca9fb5844a6aebbe27dbdb423f600d46d8a3c7a70c9e5bb06899c6"
+    },
+    {
+      "path": "qa-fixed30-unpaid-qualification-earned-recurring.log",
+      "sha256": "bd655affad6b2c960d1190b3364232446ead12656a4120e4b3cc0f59b55280d0"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_closure_qa.json",
+      "sha256": "e42fcc94a72ccca8b446f00adc8ed9b2b2b3d7e8f1c5140b070f235efe43b2f3"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_closure_qa.log",
+      "sha256": "2d8423ca9d0ffa428f260dde54604983e177a20e9765c38093c6b4123e9d4608"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_positive_qa.json",
+      "sha256": "251b55738e6e790e55b3c6490997d5c84e24062155d34341e2038177f11e1ca2"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_positive_qa.log",
+      "sha256": "2d8423ca9d0ffa428f260dde54604983e177a20e9765c38093c6b4123e9d4608"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "sha256": "ee45046b6d4bc3ea5a7fc4b9d6c14fa38355370ca868f199e7518f60f2f04b0a"
+    },
+    {
+      "path": "qa-fixed30-source-install-business_platform_cube4_adam_positive_browser_qa.log",
+      "sha256": "2d8423ca9d0ffa428f260dde54604983e177a20e9765c38093c6b4123e9d4608"
+    }
+  ],
+  "delta": "...5000_cube4_fixed30_approved_unpaid_portions.sql |  97 +++++++++++\n ...d30_recurring_public_financial_journey.test.sql | 156 ++++++++++++++++++\n ...ixed30_unpaid_public_financial_journey.test.sql | 183 +++++++++++++++++++++\n ...time_source_composition_public_journey.test.sql |   6 +-\n 4 files changed, 439 insertions(+), 3 deletions(-)"
+}
