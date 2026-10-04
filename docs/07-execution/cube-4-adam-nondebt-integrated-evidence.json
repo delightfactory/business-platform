@@ -1,0 +1,331 @@
+{
+  "status": "BOUNDED_INTEGRATED_ENGINEERING_CHECKPOINT",
+  "codeSHA": "5cdb0729986a009575e5ae691af013dca76df264",
+  "codeTree": "abbc7edd22313caa4c4996d9c25b4fe537659438",
+  "parent": "f292ce035e97cc48aa5708d282970c6df05d64ca",
+  "schemaBaseline": 168,
+  "code": [
+    {
+      "file": "docs/07-execution/cube-4-adam-repaired-link-evidence.json",
+      "blobOID": "10e36c71acdc7b17c642ce49ef38fc80af306e3f",
+      "canonicalLF_SHA256": "d32d1044262d3025cf021574c4be1bca8847d909ad752ebca2faf9c3bce478d9"
+    },
+    {
+      "file": "scripts/cube4-correction-restoration.test.mjs",
+      "blobOID": "06e804d73734126874783fb3ffbe06fb318319f1",
+      "canonicalLF_SHA256": "48b88801fb6f05888c16cb720c34249b13b966158196578e5b41fddd79e6ae8e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+      "blobOID": "ca566f31d610fdcf0b73c6ee93e0ea6d631cc2c5",
+      "canonicalLF_SHA256": "2d821cfa6ec930c1a147fe368a250cc40bd3a789b93ad89c75c8b5dd0dbde797"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/actions.ts",
+      "blobOID": "bed8193b73bd6b341b9b96c8db6e43232dc0d386",
+      "canonicalLF_SHA256": "86bab7196d562dabbcec2963205171c7c166f71c03cc030716718a89654cb718"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "blobOID": "0267763f678894fad3a9a0dc9e586bae6e02d758",
+      "canonicalLF_SHA256": "7fb3be176dc2a9550ddee23efdb24a407a8d8d9597da1000e42b129e96db585c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/rules.ts",
+      "blobOID": "e27245a6f3fee02a697472288bdcf32da80e8520",
+      "canonicalLF_SHA256": "28210df7049b652dfaf2bf583ca78818971e365236cf5d3d622a78d067922872"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "blobOID": "d75816f58a173b5d15fd46d301564fd601818427",
+      "canonicalLF_SHA256": "00508e4a4ed863d62484b804d5e88fd7a3a57f1ca9a2f12d609948c08a915152"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/actions.ts",
+      "blobOID": "32709a96b798aadcb799dcba0fc51ec567828dd8",
+      "canonicalLF_SHA256": "d6589338ed3b820f21049f694b1f7c4d5fa1de3897f19dff1970e2324eed38eb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "blobOID": "15c50e489c60184780b636c0a2b630b694453868",
+      "canonicalLF_SHA256": "81f15accbef87222a71efb0ce08033fe790a9f504a51b611f115ed2eb7c5e80a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "blobOID": "92041143d8886dbc50498312e981e5dca26c54a9",
+      "canonicalLF_SHA256": "6611f32a019b917f96ac48badadfd3691bedaa6d7789c132d6c3b76c23277208"
+    },
+    {
+      "file": "supabase/migrations/20261003040000_cube4_nondebt_financial_qualification.sql",
+      "blobOID": "bb44142619d6793bbbadee81266cdb1267ead44b",
+      "canonicalLF_SHA256": "9afffb2ff4c923a2a0705a2aceddb7fb0b1a95753e228699221456c34f347b15"
+    },
+    {
+      "file": "supabase/tests/cube4_nondebt_public_journey.test.sql",
+      "blobOID": "0c92bac7cfc1aeaf699cfc3b1789c616f243d40f",
+      "canonicalLF_SHA256": "064ae1dc4ec48db1d424b0cfbb927bd74644922a91d49908f1b56aadb7690dee"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "browser-runtime-positive/prepare-evidence.json",
+      "bytes": 1264,
+      "SHA256": "484bd13ddb6a6107f5352a4e05831d9efdbd2c87e3844305417505919d77dfb3"
+    },
+    {
+      "file": "browser-runtime-positive/fixture-evidence.json",
+      "bytes": 433,
+      "SHA256": "daa5dc80f6b1b69710a22eeb6d80cd103b0ecb3860c1a71d6769393981bfc2c4"
+    },
+    {
+      "file": "browser-runtime-positive/pause-evidence.json",
+      "bytes": 1007,
+      "SHA256": "8ef7a7deb52d735a83d4b66132821b14ef7db9831b62e6e2b4edb1374a2d934c"
+    },
+    {
+      "file": "browser-runtime-positive/build.log",
+      "bytes": 4066,
+      "SHA256": "4e88a11397475ed23661bf9e1b36e30bfa4a19b24a62341e18945f83f0b81be8"
+    },
+    {
+      "file": "browser-runtime-positive/build-evidence.json",
+      "bytes": 247,
+      "SHA256": "bc5cc36ddd0921626b50b5d7855cc37910e6dd050d650317e21af6d064498504"
+    },
+    {
+      "file": "browser-runtime-positive/82a531a-build.log",
+      "bytes": 4066,
+      "SHA256": "d0aa4995b69094fd1f84abb36aaddf906817be33d23ce89e58c52c94c8ce892f"
+    },
+    {
+      "file": "browser-runtime-positive/82a531a-build-evidence.json",
+      "bytes": 247,
+      "SHA256": "eae20d6e8db161366f8457802b4ae3a56ba29ebc6c8dbaa6ae330dfc7bef32d9"
+    },
+    {
+      "file": "browser-runtime-positive/browser-command.log",
+      "bytes": 1823,
+      "SHA256": "2066dd8c4d00897947a9f78390c830fc76db05e5e92d6a3497741a9bf18d7693"
+    },
+    {
+      "file": "browser-runtime-positive/server.log",
+      "bytes": 309,
+      "SHA256": "5baefb5bd1fad95dba677ea4e98f40db083dcde67bdf768d1fec17d0cc6bcc41"
+    },
+    {
+      "file": "browser-runtime-positive/lost-response-payroll_run_finalize.json",
+      "bytes": 193,
+      "SHA256": "c44ccda08dfac04231f856b45f935275e78d0f89edd52eeb5c9eb9540d1dd951"
+    },
+    {
+      "file": "browser-runtime-positive/before-finalization.database.json",
+      "bytes": 346,
+      "SHA256": "deb9ae70387df11aa64d5c14b6d399ea6805fa53b32f840d4dc5313df6d7dc35"
+    },
+    {
+      "file": "browser-runtime-positive/after-lost-finalization.database.json",
+      "bytes": 44649,
+      "SHA256": "d1d1f0a39c68816ddde5cd2d5eb62f9ba67155efeb471e5f519aee998586b5c1"
+    },
+    {
+      "file": "browser-runtime-positive/after-finalization-recovery.database.json",
+      "bytes": 44649,
+      "SHA256": "d1d1f0a39c68816ddde5cd2d5eb62f9ba67155efeb471e5f519aee998586b5c1"
+    },
+    {
+      "file": "browser-runtime-positive/calculated.snapshot.txt",
+      "bytes": 5604,
+      "SHA256": "f087eef04d8066eda4addb18c12ab9c8f255d0c065a905f489063aca68699e71"
+    },
+    {
+      "file": "browser-runtime-positive/approved.snapshot.txt",
+      "bytes": 5643,
+      "SHA256": "55dbd8e2c1fa376a94412d9a457a3fad79e33323919252ca367cbd0c6bc12356"
+    },
+    {
+      "file": "browser-runtime-positive/approved-confirmed.snapshot.txt",
+      "bytes": 6246,
+      "SHA256": "cbc399c8bffd00623db30a57116cc88b3fd6a7753ac20568bb4de8ea9b369e53"
+    },
+    {
+      "file": "browser-runtime-positive/approved-copy-repaired.snapshot.txt",
+      "bytes": 6303,
+      "SHA256": "8639e0dda9b001812f5cb54cf21fe7671cd3b17638a1dc8df6131adda7f58eed"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-mobile.snapshot.txt",
+      "bytes": 5976,
+      "SHA256": "f912aa9982c2a6b41b924364ab56fd170024cdb3ce2be672d680f1796e461e9e"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-mobile.facts.txt",
+      "bytes": 264,
+      "SHA256": "f7aaa90f53169e67f60ffcc5c7ef18ed955f01240a8b678b63dfc47b3c640166"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-mobile.png",
+      "bytes": 123641,
+      "SHA256": "c5c2d735380d779da44fcdc3caea735432b3cdae6b94c03f4bd491e762429f21"
+    },
+    {
+      "file": "browser-runtime-positive/pending-finalization.snapshot.txt",
+      "bytes": 2749,
+      "SHA256": "0d7b54ff4e533f10d6a41ce42171e8077e504b9192947cce449d306f7440fcc3"
+    },
+    {
+      "file": "browser-runtime-positive/pending-finalization.facts.txt",
+      "bytes": 248,
+      "SHA256": "c03b145dbc37f1198db4ea7efd359aa4e23f650feb7b1be6dd2b80df918dfaa0"
+    },
+    {
+      "file": "browser-runtime-positive/pending-finalization.png",
+      "bytes": 50338,
+      "SHA256": "111a296c4d01d29ce9a1f4c5b2971e7c153e73fade964f399908103595c10fd3"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-recovered.snapshot.txt",
+      "bytes": 2639,
+      "SHA256": "26ded6579baece88e67807c94b239b1b6e312504de94337311e0f37d0856dd92"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-recovered.facts.txt",
+      "bytes": 324,
+      "SHA256": "a6468af5dbd383b4ad9784a0066a0c4359b6a62265749714a267c4c1cd095ddd"
+    },
+    {
+      "file": "browser-runtime-positive/finalization-recovered.png",
+      "bytes": 43475,
+      "SHA256": "340c9132c3107a7e08f49d21982dc7d682c2784bb8f2e9a22ec3e3eb0aa9e011"
+    },
+    {
+      "file": "browser-runtime-positive/recovered-output.snapshot.txt",
+      "bytes": 2260,
+      "SHA256": "36d2f796766010c289fe8cb8ae6c9e24dd0eb8b246c3007dfc5be8bcb852e77a"
+    },
+    {
+      "file": "browser-runtime-positive/recovered-output.facts.txt",
+      "bytes": 486,
+      "SHA256": "6b8e95039159070ba6c456c5819f1a2d0f7a00c67cc1b95f593ce3ecb0b4b21f"
+    },
+    {
+      "file": "browser-runtime-positive/recovered-output.png",
+      "bytes": 48833,
+      "SHA256": "c0d250696829138ed71e19cc7f25a510cadab6dacfae73b8ec9899796b85709c"
+    },
+    {
+      "file": "qa-nondebt-journey-audit-and-money-contract.json",
+      "bytes": 725,
+      "SHA256": "b4358a2252447796e336e077700bee8c2d77093f4c477cd1647a87d61e60277a"
+    },
+    {
+      "file": "qa-nondebt-journey-audit-and-money-contract.log",
+      "bytes": 88727,
+      "SHA256": "8c74cf1d37419bb2e9b2c58bd824a0232491b7eac841c5304b27f20046c67fdd"
+    },
+    {
+      "file": "qa-nondebt-journey-first.json",
+      "bytes": 707,
+      "SHA256": "3037cf50de36d0874e57cc249d391ab33e1ed82488402e94621890c7f49a8681"
+    },
+    {
+      "file": "qa-nondebt-journey-first.log",
+      "bytes": 88013,
+      "SHA256": "53181f0fdcea8169d0f44129f9d8d38804eaf3af3415c883811a5f2f9d8fde66"
+    },
+    {
+      "file": "qa-public-finalization-race.json",
+      "bytes": 2435,
+      "SHA256": "51f8b2a099086bd41637bb100478d0959c37f5fe3934359df0513edebefd155a"
+    },
+    {
+      "file": "qa-public-finalization-race-failure.json",
+      "bytes": 1325,
+      "SHA256": "1d69c0219e7f08c773b1b1bd8e9ee36c13698202c7a64af2460af7329421cf36"
+    },
+    {
+      "file": "qa-public-finalization-race.mjs",
+      "bytes": 5373,
+      "SHA256": "805ce3584b09aefcb00be420ee5b77146f03e6eaf7bad74431d268389fe006eb"
+    },
+    {
+      "file": "resources-before.json",
+      "bytes": 114,
+      "SHA256": "85c31770be338f16044e12801751d1e90be9b2707bd01d514bdc391cf888993b"
+    },
+    {
+      "file": "resources-after.json",
+      "bytes": 463,
+      "SHA256": "0625497d3847163c204320f6d48a951b4b60140e4c5d0d07d1be5b84cde2e900"
+    }
+  ],
+  "tests": {
+    "publicSQL": {
+      "assertions": 24,
+      "result": "PASS",
+      "scope": "actual producer/calculation/approval/atomic consumption/replay/reconcile/unpaid correction/audit rollback; only external trust supplier simulated in rollback"
+    },
+    "restorationTransport": {
+      "passed": 15,
+      "total": 15,
+      "scope": "all saved kinds and pending recovery plus four public finalization transports; current actor and confirmation guards"
+    },
+    "typecheck": "PASS",
+    "changedPageLint": "PASS",
+    "productionBuild": "PASS at 82a531a and copy-only 5cdb072",
+    "liveRace": "both public finalize/release orders PASS; actual advisory blocking observed, one winner receipt, no loser receipt"
+  },
+  "browser": {
+    "normalAuth": true,
+    "actualPostgREST": true,
+    "actualNextActions": true,
+    "calculationAndApprovalSource": "82a531a",
+    "finalizationRecoveryAndOutputSource": "5cdb0729986a009575e5ae691af013dca76df264",
+    "onlyInterveningChange": "two conditional run-page text paragraphs; backend/transport/qualification unchanged",
+    "sourceProfile": "monthly/base only/single year and context/explicit not insured/no debt/Time and Leave disabled",
+    "gross": 30000,
+    "net": 27000,
+    "successfulActualPublicRPCResponseLost": true,
+    "reloadRetainsOriginalPendingRequest": true,
+    "dedicatedPublicReconcile": true,
+    "businessFactsBeforeAfterRecoveryIdentical": true,
+    "finalOutputs": 1,
+    "consumedVersions": 3,
+    "mobileWidth": 390,
+    "mobileScrollWidth": 390,
+    "desktopWidth": 1262,
+    "desktopScrollWidth": 1262,
+    "protectedSavedOutputRendered": true,
+    "unpaidCorrectionBrowser": "NEXT UNIT, not yet executed"
+  },
+  "externalTrustBoundary": "Actual production issuer helper rejects the synthetic pack. Only the external evidence supplier is an explicitly scoped NONLEGAL test double in rollback SQL/disposable browser/race QA. No official cases, issuer records, production flag or public auth bypass were fabricated.",
+  "failuresPreserved": [
+    "SQL money text-scale assertion fixed to numeric comparison; only changed test rerun",
+    "Transport fixture omitted period; corrected and 15/15 passed",
+    "Race first order passed; second fixture selected prior synthetic pack. Reused first result and ran only second order in a separate empty QA",
+    "First browser navigation started before runtime ready and was refused; no financial command executed",
+    "Generic reason selector filled hidden cancel reason; native approval validation refused empty actual reason. Scoped selector corrected; no duplicate approval",
+    "Actual browser found two contradictory historical qualification/finalization paragraphs; copy fixed, rebuilt and reopened same candidate"
+  ],
+  "residuals": {
+    "essentialProgramming": [
+      "qualified composition for insured statutory-month ownership and multiple contexts/years",
+      "source-dependent earning/deduction profiles, advances and legal ceiling/priority consumption integration",
+      "remaining complete end-of-service route and affected report/distribution/payment/correction acceptance"
+    ],
+    "nextBoundedAcceptance": "normal unpaid correction UI calculation/approval/batch-finalize/lost-response/Reload/reconcile on retained original output",
+    "external": "independent official 2026 expected-result/effective-category evidence and reviewed insurance attribution binding",
+    "optional": "No new abstractions or exhaustive unaffected replays required by this checkpoint"
+  },
+  "closure": "Bounded profile engineering closure may be reviewed conditionally; whole Cube4 essential journey closure is not asserted. Production financial release is not authorized. Cube5 requires parent review of approved dependencies; no implementation started.",
+  "runtime": {
+    "paused": true,
+    "NextAndBrowserStopped": true,
+    "ownAuthRestStoppedPreserved": true,
+    "retainedDatabase": "business_platform_cube4_adam_positive_browser_qa",
+    "temporaryRolesExpire": "2026-10-04T09:41:21.904Z",
+    "privateConfigRetainedOnlyForSameTaskResume": true,
+    "cleanupRequiredOnTaskCompletion": true,
+    "noOtherContainersTouched": true
+  },
+  "atUTC": "2026-10-04T02:03:35.279Z"
+}
