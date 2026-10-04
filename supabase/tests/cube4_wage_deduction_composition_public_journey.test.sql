@@ -109,6 +109,9 @@ RESET ROLE;
 SELECT is((SELECT output->>'financially_qualified' FROM payroll.candidates WHERE id=(current_setting('test.run')::jsonb->>'candidate_id')::uuid),'false','approved8000 overcapacity is not a financially qualified partial consumption');
 SELECT is((SELECT (output->'employees'->0->'deduction_plan'->>'unapplied_amount')::numeric FROM payroll.candidates WHERE id=(current_setting('test.run')::jsonb->>'candidate_id')::uuid),1294.99::numeric,'unapplied approved obligation remains visible with its exact residual');
 SELECT is((SELECT count(*) FROM payroll.final_employees),0::bigint,'overcapacity public calculation commits no financial output');
+SELECT is((SELECT jsonb_array_length(output->'employees'->0->'statutory_segments') FROM payroll.candidates WHERE id=(current_setting('test.run')::jsonb->>'candidate_id')::uuid),2,'blocked debt retains completed independent statutory segment explanations');
+SELECT ok((SELECT output->'employees'->0->>'net' IS NULL AND output->'employees'->0->>'calculated_net' IS NULL FROM payroll.candidates WHERE id=(current_setting('test.run')::jsonb->>'candidate_id')::uuid),'capacity explanation exposes no qualified or provisional payout');
+
 SELECT is((SELECT v.status FROM payroll.input_heads h JOIN payroll.input_versions v ON v.tenant_id=h.tenant_id AND v.head_id=h.id AND v.revision=h.revision WHERE h.id=current_setting('test.termination_adjustment')::uuid),'approved','overcapacity leaves approved source unconsumed');
 SET LOCAL ROLE authenticated;
 SELECT throws_ok(format($q$SELECT public.payroll_candidate_approval('d4801000-0000-4000-8000-000000000001','d4803000-0000-4000-8000-000000000001','d480e000-0000-4000-8000-000000000001',%L::uuid,%L::uuid,1,'approve','NONLEGAL overcapacity refusal',gen_random_uuid())$q$,current_setting('test.run')::jsonb->>'id',current_setting('test.run')::jsonb->>'candidate_id'),'23514',NULL,'public approval refuses unapplied obligation');
