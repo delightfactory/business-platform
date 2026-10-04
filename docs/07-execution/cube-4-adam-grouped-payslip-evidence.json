@@ -1,0 +1,176 @@
+{
+  "status": "BOUNDED_GROUPED_PAYSLIP_AND_DEBT_SQL_ACCEPTED_NOT_CUBE_CLOSURE",
+  "baseSHA": "473b6e711a0fa872e4a5505339a6f15f4ae1c554",
+  "baseTree": "1d8c8924b36e22f01dfb98a7f36ce770a611b804",
+  "checkpoint": "Local commit containing this manifest; SHA reported separately",
+  "migration": {
+    "path": "supabase/migrations/20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+    "SHA256NormalizedLF": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42",
+    "installed": false
+  },
+  "test": {
+    "path": "supabase/tests/cube4_grouped_statutory_payslip_contract.test.sql",
+    "SHA256NormalizedLF": "964f9e68d4b5449e6a71354642464503bb5b38488269bc6ea71f270ae4892293"
+  },
+  "rootCause": "47000 freezes statutory_segments while 32000 presentation binding requires a single statutory_calculation. Financial source amounts were correct; frozen multi-segment lines failed presentation metadata binding.",
+  "repair": "Strict frozen ordered tax details and exact summed deltas (including zero), contiguous civil segments, non-null UUID tax packs, exact uniquely matching month/branch insurance details and pack. No live catalog or recomputation; original single-context path retained.",
+  "facts": {
+    "actualOriginalCaseIncluded": 64,
+    "extendedCase": 76,
+    "expectedDisplayedDeductions": "8179.94",
+    "previousIncompleteDisplay": "5000",
+    "employeeInsurance": "200",
+    "tax": "2979.94",
+    "employerContributionsExcluded": true,
+    "originalMoneyAndConsumptionPreserved": true
+  },
+  "evidence": [
+    {
+      "phase": "guarded-grouped-frozen-negative",
+      "test": "cube4_grouped_statutory_payslip_contract.test.sql",
+      "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+      "baseline": 183,
+      "database": "business_platform_cube4_adam_positive_qa",
+      "DDLAndFixtureRolledBack": true,
+      "migrations": [
+        {
+          "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+          "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+        },
+        {
+          "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+          "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+        }
+      ],
+      "testSHA256": "964f9e68d4b5449e6a71354642464503bb5b38488269bc6ea71f270ae4892293",
+      "executedBodySHA256": "964f9e68d4b5449e6a71354642464503bb5b38488269bc6ea71f270ae4892293",
+      "QAIdentityGuardAdapted": false,
+      "exitCode": 0,
+      "assertions": 76,
+      "log": "cube-4-adam-qa-grouped-payslip-guarded-grouped-frozen-negative.log",
+      "logSHA256": "56098bf808deff08b5daa4cd274ec9025315a3fd93dbb7720697a518d86b45d0"
+    },
+    {
+      "phase": "guarded-single-statutory-zero",
+      "test": "cube4_statutory_payslip_contract.test.sql",
+      "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+      "baseline": 183,
+      "database": "business_platform_cube4_adam_positive_qa",
+      "DDLAndFixtureRolledBack": true,
+      "migrations": [
+        {
+          "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+          "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+        },
+        {
+          "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+          "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+        }
+      ],
+      "testSHA256": "c204b2a1112b660b0f9d36bf6c85f4cf12b1ce6ee84af87e10fb18afa02cda0d",
+      "executedBodySHA256": "5713d03a11d4892122923b73eb8088f48eeb70f775c2c7ac17bb6c5ef63a0ab5",
+      "QAIdentityGuardAdapted": true,
+      "exitCode": 0,
+      "assertions": 15,
+      "log": "cube-4-adam-qa-grouped-payslip-guarded-single-statutory-zero.log",
+      "logSHA256": "31ed4fc3dd1ab2ba70f27c877ab8ca6f4f7c25a473cd9ffe45ba9aebcd6cb1a0"
+    },
+    {
+      "phase": "guarded-recurring-monthly",
+      "test": "cube4_recurring_debt_monthly_residual.test.sql",
+      "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+      "baseline": 183,
+      "database": "business_platform_cube4_adam_positive_qa",
+      "DDLAndFixtureRolledBack": true,
+      "migrations": [
+        {
+          "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+          "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+        },
+        {
+          "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+          "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+        }
+      ],
+      "testSHA256": "2be385f64b1054563f023c1dd6675ebd177dfc0c5442dc358371b940499ca14a",
+      "executedBodySHA256": "2be385f64b1054563f023c1dd6675ebd177dfc0c5442dc358371b940499ca14a",
+      "QAIdentityGuardAdapted": false,
+      "exitCode": 0,
+      "assertions": 61,
+      "log": "cube-4-adam-qa-grouped-payslip-guarded-recurring-monthly.log",
+      "logSHA256": "4371f723ffab487766b1f693403ec23d0dd25ffaa7214ae1a1b65924551ac71f"
+    },
+    {
+      "phase": "guarded-external-settlement",
+      "test": "cube4_debt_external_settlement_public_journey.test.sql",
+      "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+      "baseline": 183,
+      "database": "business_platform_cube4_adam_positive_qa",
+      "DDLAndFixtureRolledBack": true,
+      "migrations": [
+        {
+          "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+          "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+        },
+        {
+          "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+          "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+        }
+      ],
+      "testSHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+      "executedBodySHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+      "QAIdentityGuardAdapted": false,
+      "exitCode": 0,
+      "assertions": 37,
+      "log": "cube-4-adam-qa-grouped-payslip-guarded-external-settlement.log",
+      "logSHA256": "7ca4df1c895d5d6a17e15891f73659c0fe4ae232069561cb1e65dbbca780686b"
+    },
+    {
+      "phase": "guarded-retraction",
+      "test": "cube4_debt_disposition_retraction.test.sql",
+      "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+      "baseline": 183,
+      "database": "business_platform_cube4_adam_positive_qa",
+      "DDLAndFixtureRolledBack": true,
+      "migrations": [
+        {
+          "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+          "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+        },
+        {
+          "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+          "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+        }
+      ],
+      "testSHA256": "2d8f2f911a27e6b9f7279defeca116cbe8b34a2f93e4db7844a0ceee09ac03f7",
+      "executedBodySHA256": "2d8f2f911a27e6b9f7279defeca116cbe8b34a2f93e4db7844a0ceee09ac03f7",
+      "QAIdentityGuardAdapted": false,
+      "exitCode": 0,
+      "assertions": 25,
+      "log": "cube-4-adam-qa-grouped-payslip-guarded-retraction.log",
+      "logSHA256": "78031433c0f658decf8e14c77b943c0825201de3609fa50582fe7fd56c479422"
+    }
+  ],
+  "independentReview": {
+    "model": "GPT-6.1 Medium",
+    "scope": "Read-only two forward migrations/debt SQL/public UI delta",
+    "finding": "A missing later tax pack pair could compare as not distinct; explicit non-null UUID guard added and strong case strips both segment packs and matching raw detail pack.",
+    "remainingReservation": "Carry-origin lookup after a superseding governed correction needs a focused final interaction proof; no second review fleet."
+  },
+  "runtime": {
+    "database": "business_platform_cube4_adam_positive_qa",
+    "baseline": 183,
+    "allMigrationsAndFixturesRolledBack": true,
+    "ownAuthRuntimeCreated": false,
+    "noExternalWrites": true
+  },
+  "limits": [
+    "NONLEGAL trust supplier only; not official qualification",
+    "56000/57000 still uninstalled; ordinary Auth UI pending",
+    "Linked qualified next-period correction, Time/Leave responsibilities, ending/report handoff and consolidated same-version qualification remain open"
+  ],
+  "failedEvidenceRetained": [
+    "qa-debt-disposition-final-carry-payslip.json/log at prior incomplete 560",
+    "qa-grouped-payslip-grouped-frozen-negative.json/log contains SQL editing error before fixtures; repaired without installed migration changes"
+  ]
+}

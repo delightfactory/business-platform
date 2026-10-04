@@ -1,5 +1,16 @@
 # Cube 4 decision and acceptance register
 
+## ADAM frozen grouped payslip repair, 2026-10-04 - bounded SQL acceptance
+
+Resume473b6e7/tree1d8c8924. [Exact delta evidence](cube-4-adam-grouped-payslip-evidence.json) binds unchanged56000ef8bd3 and new57000814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42. Both remain UNINSTALLED; all checks use owned positiveQA183 inside ROLLBACK. The local commit containing this entry is the checkpoint.
+
+Prior P0 incomplete payslip is resolved in the frozen SQL contract: actual cross-year case now presents complete=true and employee deductions8179.94 (manual3000, loan2000, insurance200, tax2979.94), preserving original claim8000, residual carry5000, exact application and loan consumption. Employer400 is excluded.47000 already freezes ordered statutory_segments;32000 required a single root statutory_calculation.57000 adds strict saved-segment binding only, with exact details/amount/pack and finite chronological coverage; no fresh packs, calculation or financial guard change.
+
+Current unchanged56000 + final57000 passes76 grouped checks (original64 plus12 negative/preservation),15 single-context/zero-tax,61 recurring next-month/residual/payslip,37 external settlement and25 retraction:214 sequential assertions. Missing paired pack bindings are rejected even when raw details omit the same pack. One explicitly authorized GPT-6.1 Medium read-only independent reviewer found that guard; it is repaired. Earlier failed logs remain preserved. These bounded tests are not final Cube qualification.
+
+Next: install only owned QA after this accepted delta, fresh scoped ephemeral ordinary Auth UI for debt carry/external settlement/retraction/recovery, qualified next-period correction and source responsibility closure, ending/report/export handoff and one final same-version qualification. A superseded-original/carry interaction remains to be proven. Known unavailable official2026/effective-coverage legal packages and expected cases remain external, without another request or invented result. No CI/push/deploy/Production or other-writer QA changes.
+
+
 ## ADAM debt execution safe handoff, 2026-10-04 10:39UTC — WIP
 
 Base c226a06 / tree2d77182d385ad9a48cf396d1e6eaa18719f5d956; the local commit containing this entry saves the new implementation. [Versioned evidence and exact remaining gaps](cube-4-adam-debt-disposition-evidence.json). New56000 is UNINSTALLED: all DDL and financial tests ran inside ROLLBACK against owned QA183. Existing nine browser outputs and retired Auth remain untouched; no fresh browser runtime created. Parent explicitly requested a safe checkpoint before another unit. Last successful local read10:39:03.1337556UTC proves connection and zero QA users/finals,560 absent. Prior09:55 reconnect recovered facts before further commands; no financial request replayed for recovery, no further disconnect observed, no OS/CI/push/deploy changes.

@@ -1,0 +1,22 @@
+{
+  "test": "cube4_debt_external_settlement_public_journey.test.sql",
+  "status": "AFFECTED_GROUPED_PAYSLIP_PASS",
+  "baseline": 183,
+  "database": "business_platform_cube4_adam_positive_qa",
+  "DDLAndFixtureRolledBack": true,
+  "migrations": [
+    {
+      "path": "20261003056000_cube4_approved_deduction_dispositions.sql",
+      "SHA256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+    },
+    {
+      "path": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+      "SHA256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+    }
+  ],
+  "testSHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+  "executedBodySHA256": "90c35262f188b7c4808e8eaad001bdab7638cf74e0c416e3096401e44c0e449f",
+  "QAIdentityGuardAdapted": false,
+  "exitCode": 0,
+  "assertions": 37
+}
