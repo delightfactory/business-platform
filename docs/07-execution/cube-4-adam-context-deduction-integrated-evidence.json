@@ -1,0 +1,409 @@
+{
+  "codeSHA": "865cfff599ee865869cae6357a9d5928c3aaa8e2",
+  "codeTree": "2af53b924566cf942a0f0a2645ca200828a9464d",
+  "baselineSHA": "2679bfb8201eadd121e66a5e5c26333d63404623",
+  "code": [
+    {
+      "path": "scripts/cube4-statutory-review-ui.test.mjs",
+      "blob": "073b599a5501eee096500feddf403be258f20457",
+      "canonicalSHA256": "f967923e1bb1d51fe7b2d91e8df52577ba2e5751872f6b1c1d45bc0da14e527e"
+    },
+    {
+      "path": "src/app/operator/statutory/NumericRules.tsx",
+      "blob": "c7eaa535a131c35ab5a14617d8afa01a58139f69",
+      "canonicalSHA256": "419a9ca9e4aaac23a01fc0a0fc72af5773c7ed3cf24257fcf7690828bcedf160"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "blob": "c04e6677c477afc81a0cb73bbaeebc77dbb4c8a5",
+      "canonicalSHA256": "938666004d43e74b7ae4a093d0a2f177abb6979c2efd1ffe4c327f57fbe142b5"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "blob": "6856b6e2d9f544a32a81d0ad3f38c6da6ec4ef8d",
+      "canonicalSHA256": "55a528d097e7e0ce75f173315ab76c216f0ae043df442774ac60527d6e985ebe"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "blob": "0e93fea6ac835b55af264f5b02c513c7687d32c3",
+      "canonicalSHA256": "7cf40ff3d445a2abe322ad94b6c2c037a561258d9896ac4687910f52034704f1"
+    },
+    {
+      "path": "supabase/migrations/20261003047000_cube4_reviewed_context_year_composition.sql",
+      "blob": "96ebe5a4a97b5b8bb6ef8a2a43e7fd2d68c69c81",
+      "canonicalSHA256": "27194d31e3b370a9872b85ce4d6e5f17e3e837c20d4926584b3706b9f671c750"
+    },
+    {
+      "path": "supabase/migrations/20261003048000_cube4_reviewed_wage_deduction_composition.sql",
+      "blob": "0b65dc53485e35b1ba909ad1f6de19e0ed6f5c57",
+      "canonicalSHA256": "92245537007ec49d51666fb3d4b4e90f348321b5c09ec2f247f043ffecd5c941"
+    },
+    {
+      "path": "supabase/tests/cube4_context_composition_public_journey.test.sql",
+      "blob": "4dcf0c00e3dfcd5ce06dac48fa97c1795f6760ab",
+      "canonicalSHA256": "5cfdc7296018316503723b0b3af584fb29539d41572603e50da8527ea0317d95"
+    },
+    {
+      "path": "supabase/tests/cube4_wage_deduction_composition_public_journey.test.sql",
+      "blob": "93a48a95328edf7800ff198dbfe524ec10edaa0f",
+      "canonicalSHA256": "1d4bf39d5e8f2c33ff4d7439e4b4c76fb8ebff7bef531c7f0e3c753c9258a106"
+    },
+    {
+      "path": "supabase/tests/cube4_year_composition_public_journey.test.sql",
+      "blob": "9904d5aea6d197a9d40562ed046944da774984f4",
+      "canonicalSHA256": "50301075abcc908993a36e7650e484e7c132072541ec4193dd1031cb4fef7d0d"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa-context-composition-context-actual-wage.json",
+      "bytes": 384,
+      "SHA256": "4d7e1de0ba4aa2552e364ad2d5f04cf4f2fdde62cf0be377c3bdd3fd706d7f30"
+    },
+    {
+      "path": "qa-context-composition-context-actual-wage.log",
+      "bytes": 8352,
+      "SHA256": "5be83da17a231f5c7fea15593e6e23b0b7ca6451ba7cdd02a90efffd653ad53a"
+    },
+    {
+      "path": "qa-context-composition-context-final-candidate.json",
+      "bytes": 384,
+      "SHA256": "5a837c64731f532562ac8a31ec5db611c147f5effdab8e7a5fff79f617b9118d"
+    },
+    {
+      "path": "qa-context-composition-context-final-candidate.log",
+      "bytes": 8352,
+      "SHA256": "5a6c6bfcd15bfc7178f6309cc0221c3dfbaf9645b7ca90e717b0799d55236637"
+    },
+    {
+      "path": "qa-context-composition-context-first.json",
+      "bytes": 360,
+      "SHA256": "d573597715cdbc5572cfc8d85abbde59853f1b0028f67717e79eb5f14ea43675"
+    },
+    {
+      "path": "qa-context-composition-context-first.log",
+      "bytes": 2285,
+      "SHA256": "2025a8776f951b7a7f1a14a563ffb7da3d25422e57386acc8c20b2774bd2e473"
+    },
+    {
+      "path": "qa-context-composition-context-immutable-fixture.json",
+      "bytes": 361,
+      "SHA256": "ab12dcbbc3821018332bc630d285cfd39efdeb76719b2c5dff6ace36d0bf2733"
+    },
+    {
+      "path": "qa-context-composition-context-immutable-fixture.log",
+      "bytes": 8515,
+      "SHA256": "daf2306282d3dc2d9e37bec603647d6666386f3f95dc65d1cdc6e0023dab0c84"
+    },
+    {
+      "path": "qa-context-composition-context-source-envelopes.json",
+      "bytes": 384,
+      "SHA256": "3fc3ffbd4b8c9e1a76fd641861fd1ae5196d4566825c5b3ae582846233b8eba9"
+    },
+    {
+      "path": "qa-context-composition-context-source-envelopes.log",
+      "bytes": 8239,
+      "SHA256": "0dabb98053c0640b17a3f7be57f6602f2a630755decf4f927599ce889a705317"
+    },
+    {
+      "path": "qa-context-composition-labour-compile-legacy.json",
+      "bytes": 387,
+      "SHA256": "258edd049318a35149a624402b26f650038865907bc02e7d455c5d181beb3906"
+    },
+    {
+      "path": "qa-context-composition-labour-compile-legacy.log",
+      "bytes": 84923,
+      "SHA256": "7eae82ed58ce677016c28d4c61a23477b27ea5ddb4cfa79f61ae16b0bb394c61"
+    },
+    {
+      "path": "qa-context-composition-labour-source-ui-schema.json",
+      "bytes": 381,
+      "SHA256": "bea40a1f1a512d84fcafc19b250e2b78e869fbd8f87bed10b266e6c39b2dc3de"
+    },
+    {
+      "path": "qa-context-composition-labour-source-ui-schema.log",
+      "bytes": 10205,
+      "SHA256": "cb5e80916e6d6800eca577e89cfff03eced8d98b6b3334c9d18239d1a17e9b8b"
+    },
+    {
+      "path": "qa-context-composition-legacy-first.json",
+      "bytes": 363,
+      "SHA256": "652a643ff58af014248fa1ba075d75b682b6be9ae3e22067be2049fd699f2e79"
+    },
+    {
+      "path": "qa-context-composition-legacy-first.log",
+      "bytes": 195,
+      "SHA256": "7a3a017ac623e34748617b0779962507a029d38b823d8621a08e527f46e69b6b"
+    },
+    {
+      "path": "qa-context-composition-legacy-literal-ddl.json",
+      "bytes": 387,
+      "SHA256": "4ba2656cbb1f34961fb628278b200ea75d5b8dea14a299e8dc729665ab54baee"
+    },
+    {
+      "path": "qa-context-composition-legacy-literal-ddl.log",
+      "bytes": 84810,
+      "SHA256": "29608e1962faed953a373b909bc8fdf930b27343387ca5e05ba690a85f9258ae"
+    },
+    {
+      "path": "qa-context-composition-part-diagnostic.log",
+      "bytes": 23898,
+      "SHA256": "c081cb9331850a06f5b5b3d969a9517483d09a27f7454d59e20b953404b07158"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-actual-wage.json",
+      "bytes": 391,
+      "SHA256": "1d4cca1ca8f3ed2ee7e19677811e9d3fc8307175e2f32e425d11f18ff839ad39"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-actual-wage.log",
+      "bytes": 14845,
+      "SHA256": "697de08ed2b3478d77209707ca00ffc34bd32ae4eb1b1d24b416fcd2b7c06873"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-public.json",
+      "bytes": 367,
+      "SHA256": "dcac1f3856e2837b8aaa708dd74297252d70841cb24f8e5daffac487256eaaf7"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-public.log",
+      "bytes": 7229,
+      "SHA256": "ddefae92671598c4f7691c11cdaedf16ff5499dab4034a3fc453970c71b6a450"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-types.json",
+      "bytes": 368,
+      "SHA256": "d415e79b7febc518d41254e1641779efd294265953d17cce8c93784257fe036b"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-types.log",
+      "bytes": 7172,
+      "SHA256": "dd9ab47a02f086ce01887920124e7df0e972be6f5879591ffa3b19349c60b059"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-version.json",
+      "bytes": 391,
+      "SHA256": "f7db27579d8e4bae370e98bd9bf3a230b6d680e9a665330e4620f651dd0eaf46"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-capacity-version.log",
+      "bytes": 18126,
+      "SHA256": "2fed03312305396edb4b5e269165204a15ca1954b914ba818d3df364b118b817"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-first.json",
+      "bytes": 367,
+      "SHA256": "f5ae416cf4e17f2f6c7f5c4f44c6a9c4080b70b2d9940fa4d54709b8022e16b8"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-first.log",
+      "bytes": 4104,
+      "SHA256": "e1cf7ce2868e11343aa7e6fd11956e26cfaa7210f4360472f9c0dcbf77a5138f"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-issue-merge-fixed.json",
+      "bytes": 367,
+      "SHA256": "76433dca9e299a295b63570a6fff6a5f61c2cfdbfac8cf9c36ad4d1983ee66e2"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-issue-merge-fixed.log",
+      "bytes": 6675,
+      "SHA256": "211c046cc6505c90a5991cec8afaff62e25949b4cce6286b86aaf72397cf1f56"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-issue-merge.json",
+      "bytes": 367,
+      "SHA256": "f5ae416cf4e17f2f6c7f5c4f44c6a9c4080b70b2d9940fa4d54709b8022e16b8"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-issue-merge.log",
+      "bytes": 4104,
+      "SHA256": "615be177bb5ca66f09e50d7ac447152fd86f3dafa1feaec2483c17b6ca436ce5"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-representative-expression.json",
+      "bytes": 391,
+      "SHA256": "1610816317b829a99db46cf543ddf1e591bde5fa68119d7fcf90794e0385da7e"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-representative-expression.log",
+      "bytes": 18126,
+      "SHA256": "737561f5eaa2a6d09580199d788ea06c184c4324d2c5544c596bacea4968dbe6"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-representative-shapes.json",
+      "bytes": 367,
+      "SHA256": "a369463e0f884830683ef69afd7ccc1bbefd02f637aac57e4116ef2c3073c072"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-representative-shapes.log",
+      "bytes": 237,
+      "SHA256": "7c6b9cf3a416a87aae93c6c80c9efcf29de4a726e2c36e255b0e23481c26cd59"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-variable-fixed.json",
+      "bytes": 391,
+      "SHA256": "5f28825942e66c91aa88e6dff81fe15bda153b3ac7f53f38f7111826679f5f25"
+    },
+    {
+      "path": "qa-context-composition-wage-deduction-variable-fixed.log",
+      "bytes": 14845,
+      "SHA256": "1d8d8f1f4bc239d6f853c16ebb7a9b2595af0a4c4e2da48ca8c01e1b5980b807"
+    },
+    {
+      "path": "qa-context-composition-year-actual-wage.json",
+      "bytes": 381,
+      "SHA256": "60c5c69a8db8adeb252a0d813e060d6f11ea77062262b2eb463c96e9484695b4"
+    },
+    {
+      "path": "qa-context-composition-year-actual-wage.log",
+      "bytes": 10205,
+      "SHA256": "ea2be6ae0c1eaa23876be27bf197a045d6f19c08e336939c790a43cc033bae07"
+    },
+    {
+      "path": "qa-context-composition-year-final-candidate.json",
+      "bytes": 381,
+      "SHA256": "d94e6ede668da284f2fda984bb1f6f754f71ceccbaa96b6ebca1244d075fb149"
+    },
+    {
+      "path": "qa-context-composition-year-final-candidate.log",
+      "bytes": 10205,
+      "SHA256": "9dfd4bc9fa75730dc225a9403457ef649a6a6c43a71bf8021c5f43ff8864264a"
+    },
+    {
+      "path": "qa-context-composition-year-first.json",
+      "bytes": 358,
+      "SHA256": "27cf979bef2f7d871ddd00844eedca76b5639b4b96877adf7430c44762fe9b4a"
+    },
+    {
+      "path": "qa-context-composition-year-first.log",
+      "bytes": 8524,
+      "SHA256": "c74767c2b0fc9aeea57f3da068e7f9f1131aa130424a28b25d693ae87832025b"
+    },
+    {
+      "path": "qa-context-composition-year-follow-cycle.json",
+      "bytes": 381,
+      "SHA256": "c5d7ea32d4941c6d0b37e9c11e2e00d6a1d3efdc7055593bd14ca26d4c9bb818"
+    },
+    {
+      "path": "qa-context-composition-year-follow-cycle.log",
+      "bytes": 10092,
+      "SHA256": "c06d7a76c6fd238083f8038a12186e660b4d732fca5f6b389f1ef2b8e41c5490"
+    },
+    {
+      "path": "qa-context-composition-year-independent-fixtures.json",
+      "bytes": 358,
+      "SHA256": "90f73f42cbec6c9e957c7e54f486f2b97f2684ff8f51350ee8e357dd675ab913"
+    },
+    {
+      "path": "qa-context-composition-year-independent-fixtures.log",
+      "bytes": 8649,
+      "SHA256": "c4b6900c9af285fc8676032ac6d07996d2064a891f91db5c7f4dcaddcebe4f32"
+    },
+    {
+      "path": "context-deduction-ui-tests.log",
+      "bytes": 920,
+      "SHA256": "ea76b1c1e5dad414ac18eb42487f7d0bbae77ef103ad1cd58d1024908f1687dd"
+    },
+    {
+      "path": "browser-runtime-positive/build-context-deduction.log",
+      "bytes": 3724,
+      "SHA256": "efaee883f9f197b4077e55f0e775f6112d0522678c8ecac0404ca052e6582502"
+    },
+    {
+      "path": "browser-runtime-positive/build-context-deduction-evidence.json",
+      "bytes": 247,
+      "SHA256": "7a22d06024538c501cffbddcb53a69befdd79205e6bef1ac31a2a27c1cd6d10d"
+    },
+    {
+      "path": "qa-composition-delta.mjs",
+      "bytes": 1677,
+      "SHA256": "788bf95e622dc0f4b4770cc1900a6aec374af65a5b11b3f57feee3083b76d4c9"
+    }
+  ],
+  "tests": [
+    {
+      "test": "cube4_wage_deduction_composition_public_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_CONTEXT_COMPOSITION_PASS",
+      "baseline": 174,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "24d26c90488518abe2f8ce4bee38559bed28650094ab9ea802f5ee3905ef0992",
+      "testSHA256": "1d4bf39d5e8f2c33ff4d7439e4b4c76fb8ebff7bef531c7f0e3c753c9258a106",
+      "exitCode": 0,
+      "assertions": 39
+    },
+    {
+      "test": "cube4_context_composition_public_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_CONTEXT_COMPOSITION_PASS",
+      "baseline": 174,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "24d26c90488518abe2f8ce4bee38559bed28650094ab9ea802f5ee3905ef0992",
+      "testSHA256": "5cfdc7296018316503723b0b3af584fb29539d41572603e50da8527ea0317d95",
+      "exitCode": 0,
+      "assertions": 19
+    },
+    {
+      "test": "cube4_year_composition_public_journey.test.sql",
+      "status": "BOUNDED_PUBLIC_CONTEXT_COMPOSITION_PASS",
+      "baseline": 174,
+      "DDLAndFixtureRolledBack": true,
+      "migrationSHA256": "24d26c90488518abe2f8ce4bee38559bed28650094ab9ea802f5ee3905ef0992",
+      "testSHA256": "50301075abcc908993a36e7650e484e7c132072541ec4193dd1031cb4fef7d0d",
+      "exitCode": 0,
+      "assertions": 23
+    }
+  ],
+  "SQLAssertions": 81,
+  "schema": {
+    "installed": 174,
+    "newDDL": [
+      47000,
+      48000
+    ],
+    "testedInsideTransactionAndRolledBack": true,
+    "installedNewDDL": false
+  },
+  "engineering": {
+    "typecheck": {
+      "exitCode": 0,
+      "evidence": "tools.exec_command npm run typecheck in implementation, session87078 completed0"
+    },
+    "changedPageLint": {
+      "exitCode": 0,
+      "evidence": "tools.exec_command changed4file eslint, session67680 completed0"
+    },
+    "sourceTransport": {
+      "pass": 8,
+      "artifact": "context-deduction-ui-tests.log"
+    },
+    "productionBuild": {
+      "SHA": "865cfff599ee865869cae6357a9d5928c3aaa8e2",
+      "Tree": "2af53b924566cf942a0f0a2645ca200828a9464d",
+      "exitCode": 0,
+      "tool": "Next16.3.6 webpack production build",
+      "ownSyntheticPublicQAConfig": true,
+      "noSecretValuesRecorded": true
+    },
+    "newAuthenticatedBrowserJourney": "NOT_RUN"
+  },
+  "financialEvidence": {
+    "officialIssuance": false,
+    "QAExternalSupplier": "Exact synthetic NONLEGAL four tax/insurance packs2026-2027 and two labour packs inside rollback only; actual producer, public approval, finalization, receipts and source consumption retained.",
+    "realIssuerNegative": "Original supplier refusal and independent labour prerequisite refusal tested before any synthetic replacement.",
+    "notWholeCubeQualification": true
+  },
+  "retainedProofs": [
+    {
+      "path": "implementation/docs/07-execution/cube-4-adam-reviewed-month-ending-integrated-evidence.json",
+      "SHA256": "da5dd89682f2defd8ab1d22b4e44257eeb4c857f1cb87b3f197a5d8c9a360f71",
+      "scope": "Frozen prior checkpoint; not rerun or recounted."
+    },
+    {
+      "path": "implementation/docs/07-execution/cube-4-adam-loan-insurance-integrated-evidence.json",
+      "SHA256": "97fa8833215b6ea210d9c7f786854b9378a7b836a287e07157d33b053894bd00",
+      "scope": "Frozen prior checkpoint; not rerun or recounted."
+    }
+  ],
+  "failures": "All49 QA artifacts including parser, immutable-fixture, source-envelope, variable ambiguity, overcapacity fixture typing/table/version and representative predicate failures retained. Incorrect Python availability and two engineering wrong-working-directory attempts are recorded in tool outputs, caused no source or database mutation, corrected with the proper Node/PowerShell/workdir. Production defects corrected: wrapped dated parts, JSON issue-concat precedence, PL/pgSQL alias collision. No failed log overwritten.",
+  "services": "Previously stopped owned Auth/REST/browser/Next/gateway remain stopped; shared PG retained; authorized synthetic task Auth and owned QA retained for immediate continuation, cleanup required at completion."
+}
