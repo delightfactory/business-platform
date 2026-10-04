@@ -32,6 +32,7 @@ function form(extra={}){
 test('ordinary context retains no empty calculation facts or invented duration',async()=>{
  const h=harness();const result=await h.action(state(),form());assert.equal(result.saved,true);
  assert.ok(!('calculation_from' in h.calls[0].args.p_data));assert.ok(!('tax_duration_days' in h.calls[0].args.p_data));
+ assert.ok(!('insurance_month_disposition' in h.calls[0].args.p_data));
 });
 test('explicit dated facts travel with existing immutable input intent',async()=>{
  const h=harness();await h.action(state(),form({calculation_from:'2025-01-05',calculation_until:'2025-01-05',tax_duration_days:'1'}));const data=h.calls[0].args.p_data;
@@ -45,4 +46,12 @@ test('unchanged failed intent retains the same operation UUID on retry',async()=
 });
 test('no authenticated actor cannot send reviewed source facts',async()=>{
  const h=harness({signedIn:false});const result=await h.action(state(),form({tax_duration_days:'1'}));assert.equal(result.saved,false);assert.equal(h.calls.length,0);
+});
+test('reviewed partial-month disposition retains its source binding and request identity after rejection',async()=>{
+ const h=harness({error:{code:'22023',message:'payroll_insurance_disposition_invalid'}});
+ const fields=form({insurance_status:'insured',insurance_category:'NONLEGAL category',insured_wage:'10000',insurance_from:'2026-07-15',insurance_obligation_month:'2026-07-01',insurance_owner_period:id(4),insurance_obligation_reference:'NONLEGAL reviewed joining-month source',insurance_month_disposition:'reviewed_not_due'});
+ const failed=await h.action(state(),fields);assert.equal(failed.saved,false);assert.ok(failed.error.includes('استحقاق'));
+ await h.action(failed,fields);assert.equal(h.calls[0].args.p_attempt,h.calls[1].args.p_attempt);
+ assert.equal(h.calls[1].args.p_data.insurance_month_disposition,'reviewed_not_due');assert.equal(h.calls[1].args.p_data.insurance_owner_period,id(4));assert.equal(h.calls[1].args.p_data.insurance_obligation_reference,'NONLEGAL reviewed joining-month source');
+ assert.ok(!('financially_qualified' in h.calls[1].args.p_data));
 });
