@@ -1,0 +1,13 @@
+{
+  "net": "21820.06000000000000000000",
+  "atUTC": "2026-10-04T11:36:52.438501+00:00",
+  "gross": "30000.000000000000",
+  "output": "97702175-2e4e-4fb8-a4c9-9a925bf39f8e",
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "nextPeriodRuns": 0,
+  "payslipComplete": "true",
+  "carryTargetStatus": "approved",
+  "loanDeductionEvents": 1,
+  "sourceFrozenVersions": 8,
+  "visibleEmployeeDeductions": 8179.94
+}

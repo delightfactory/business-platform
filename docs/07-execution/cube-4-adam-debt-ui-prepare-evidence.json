@@ -1,0 +1,44 @@
+{
+  "status": "OWNED_RUNTIME_CREATED",
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "template": "business_platform_cube4_adam_positive_qa",
+  "roles": {
+    "auth": "cube4_adam_debt_auth",
+    "rest": "cube4_adam_debt_rest"
+  },
+  "log": [
+    {
+      "step": "clone_zero_data_task_QA_schema",
+      "status": "PASS",
+      "database": "business_platform_cube4_adam_debt_browser_qa",
+      "template": "business_platform_cube4_adam_positive_qa"
+    },
+    {
+      "step": "task_only_temporary_roles_auth_schema",
+      "status": "PASS",
+      "roles": {
+        "auth": "cube4_adam_debt_auth",
+        "rest": "cube4_adam_debt_rest"
+      },
+      "expires": "2026-10-04T15:01:03.872Z",
+      "authMigrationLabels": 76
+    },
+    {
+      "step": "start_task_auth",
+      "status": "PASS",
+      "container": "cube4-adam-task5-debt-auth",
+      "image": "public.ecr.aws/supabase/gotrue:v2.189.0",
+      "loopbackPort": 3541
+    },
+    {
+      "step": "start_task_rest",
+      "status": "PASS",
+      "container": "cube4-adam-task5-debt-rest",
+      "image": "public.ecr.aws/supabase/postgrest:v14.13",
+      "loopbackPort": 3540
+    }
+  ],
+  "noOriginalCredentialsRead": true,
+  "noUserDataCopied": true,
+  "secretValuesExcluded": true
+}

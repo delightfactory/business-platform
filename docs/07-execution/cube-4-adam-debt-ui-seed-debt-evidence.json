@@ -1,0 +1,11 @@
+{
+  "status": "NONLEGAL_ACTUAL_BLOCKED_RECURRING_DEBT_FIXTURE_READY",
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "source": "supabase/tests/cube4_recurring_debt_monthly_residual.test.sql",
+  "sourceSHA256": "2be385f64b1054563f023c1dd6675ebd177dfc0c5442dc358371b940499ca14a",
+  "schemaBaseline": 185,
+  "syntheticExternalTrustSupplierOnly": true,
+  "actualPublicMathAndCommandsUnchanged": true,
+  "noSeededDispositionsOrFinals": true,
+  "seedOutputSecretRedacted": true
+}

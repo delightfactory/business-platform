@@ -1,0 +1,61 @@
+- generic
+  - banner
+    - link "مساحة الشركة، الرئيسية" [ref=e159]
+      - StaticText "مساحة الشركة"
+      - StaticText "NONLEGAL D680 Leave binding QA"
+    - StaticText "الرواتب"
+    - button "فتح قائمة التنقل" [expanded=false, ref=e160]
+  - navigation "التنقل السريع" [ref=e158]
+    - link "الرئيسية" [ref=e161]
+      - StaticText "الرئيسية"
+    - link "الرواتب" [ref=e162]
+      - StaticText "الرواتب"
+    - link "سلف الموظفين" [ref=e163]
+      - StaticText "سلف الموظفين"
+    - button "عرض كل الأقسام" [expanded=false, ref=e164]
+      - StaticText "المزيد"
+- main
+  - generic
+    - sectionheader
+      - heading "مخرجات الرواتب النهائية" [level=1, ref=e154]
+      - heading "NONLEGAL D680 NONLEGAL Employer" [level=2, ref=e155]
+      - paragraph
+        - StaticText "الجهة القانونية: NONLEGAL D680 NONLEGAL Employer"
+      - paragraph
+        - StaticText "٢٥ ديسمبر ٢٠٢٥ — ٢٤ يناير ٢٠٢٦"
+    - paragraph
+      - StaticText "هذه النسخة محفوظة من المسير النهائي. تُسجّل عمليات عرضها وتصديرها حسب الصلاحيات."
+    - link "إعداد تصحيح مؤرخ مع حفظ الأصل" [ref=e151]
+    - article
+      - heading "NONLEGAL D680 Leave Employee · NONLEGAL D680" [level=2, ref=e156]
+        - StaticText "NONLEGAL D680 Leave Employee · NONLEGAL D680"
+      - paragraph
+        - StaticText "الأجر الأساسي ٣٠٬٠٠٠٫٠٠ ج.م."
+      - list
+        - listitem [level=1]
+          - StaticText "الأجر الأساسي · ٣٠٬٠٠٠٫٠٠ ج.م."
+        - listitem [level=1]
+          - StaticText "اشتراك الموظف في التأمينات · ١٠٠٫٠٠ ج.م."
+        - listitem [level=1]
+          - StaticText "اشتراك جهة العمل في التأمينات · ٢٠٠٫٠٠ ج.م."
+        - listitem [level=1]
+          - StaticText "اشتراك الموظف في التأمينات · ١٠٠٫٠٠ ج.م."
+        - listitem [level=1]
+          - StaticText "اشتراك جهة العمل في التأمينات · ٢٠٠٫٠٠ ج.م."
+        - listitem [level=1]
+          - StaticText "ضريبة الأجور المستحقة · ٢٬٩٧٩٫٩٤ ج.م."
+        - listitem [level=1]
+          - StaticText "NONLEGAL approved monthly debt · ٣٬٠٠٠٫٠٠ ج.م."
+          - paragraph
+            - StaticText "أصل الالتزام ٨٬٠٠٠٫٠٠ ج.م.؛ خصم هذه الفترة ٣٬٠٠٠٫٠٠ ج.م.؛ المتبقي ٥٬٠٠٠٫٠٠ ج.م. — مرحّل إلى فترة لاحقة، المرجع: NONLEGAL D680 actual carry."
+        - listitem [level=1]
+          - StaticText "قسط سلفة مستحق · ٢٬٠٠٠٫٠٠ ج.م."
+      - paragraph
+        - StaticText "صافي الراتب ٢١٬٨٢٠٫٠٦ ج.م."
+    - paragraph
+      - link "تنزيل كشف هذه الصفحة حسب صلاحية التصدير" [ref=e157]
+    - link "مطابقة الدفعات الخارجية" [ref=e152]
+    - link "العودة إلى مراجعة الرواتب" [ref=e153]
+  - sectionfooter
+    - StaticText "منصة الأعمال"
+- alert

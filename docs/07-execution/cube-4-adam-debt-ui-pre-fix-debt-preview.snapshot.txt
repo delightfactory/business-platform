@@ -1,0 +1,167 @@
+- generic
+  - alert
+  - complementary "التنقل الرئيسي"
+    - link "مساحة الشركة، الرئيسية" [ref=e8]
+      - StaticText "مساحة الشركة"
+      - StaticText "NONLEGAL D680 Leave binding QA"
+    - navigation "أقسام مساحة العمل" [ref=e9]
+      - link "الرئيسية" [ref=e11]
+        - StaticText "الرئيسية"
+      - paragraph
+        - StaticText "مجالات العمل"
+      - link "الرواتب" [ref=e12]
+        - StaticText "الرواتب"
+      - link "سلف الموظفين" [ref=e13]
+        - StaticText "سلف الموظفين"
+      - link "تقارير الرواتب" [ref=e14]
+        - StaticText "تقارير الرواتب"
+      - link "الموظفون" [ref=e15]
+        - StaticText "الموظفون"
+      - link "مراجعة الإجازات" [ref=e16]
+        - StaticText "مراجعة الإجازات"
+      - link "إعدادات الإجازات" [ref=e17]
+        - StaticText "إعدادات الإجازات"
+      - link "أرصدة الإجازات" [ref=e18]
+        - StaticText "أرصدة الإجازات"
+    - form
+      - button "تسجيل الخروج" [ref=e19]
+  - main
+    - sectionheader
+      - heading "حساب ومراجعة الرواتب" [level=1, ref=e20]
+      - paragraph
+        - StaticText "٢٥ ديسمبر ٢٠٢٥ — ٢٤ يناير ٢٠٢٦"
+      - link "مدخلات الفترة" [ref=e21]
+      - StaticText " · "
+      - link "دورة الجهة" [ref=e22]
+      - StaticText " · "
+      - link "اختيار جهة أخرى" [ref=e23]
+    - form
+      - LabelText
+        - StaticText "الفترة"
+        - combobox "الفترة" [expanded=false, ref=e31]: ٢٥ ديسمبر ٢٠٢٥ — ٢٤ يناير ٢٠٢٦
+          - MenuListPopup
+            - option "٢٥ يناير ٢٠٢٦ — ٢٤ فبراير ٢٠٢٦" [ref=e37]
+            - option "٢٥ ديسمبر ٢٠٢٥ — ٢٤ يناير ٢٠٢٦" [selected, ref=e38]
+      - LabelText
+        - StaticText "البحث عن موظف"
+        - textbox "البحث عن موظف" [ref=e32]
+      - button "عرض المراجعة" [ref=e24]
+    - navigation "نطاق قائمة الموظفين" [ref=e10]
+      - strong
+        - StaticText "الموظفون الذين يحتاجون انتباهًا"
+      - StaticText " · "
+      - link "عرض كل الموظفين" [ref=e25]
+      - StaticText " · 1 ضمن النطاق"
+    - generic
+      - heading "حساب قيد المراجعة" [level=2, ref=e26]
+      - paragraph
+        - StaticText "هذه مراجعة تشغيلية؛ الصافي والضريبة والتأمينات غير مؤهلة. لا اعتماد مالي أو إقفال أو صرف في هذه المرحلة."
+      - DescriptionList
+        - term "علاقات التوظيف المشمولة"
+        - definition
+          - StaticText "1"
+        - term "إجمالي الاستحقاقات التشغيلية"
+        - definition
+          - StaticText "٣٠٬٠٠٠٫٠٠ ج.م."
+        - term "الخصومات التشغيلية المعروفة دون الضريبة والتأمينات"
+        - definition
+          - StaticText "٨٬٠٠٠٫٠٠ ج.م."
+        - term "تكلفة جهة العمل المحسوبة"
+        - definition
+          - StaticText "٤٠٠٫٠٠ ج.م."
+        - term "صافي الحساب المراجع"
+        - definition
+          - StaticText "غير متاح قبل اكتمال مصادر الحساب"
+        - term "الخصومات الضريبية والتأمينية المحسوبة للمراجعة"
+        - definition
+          - StaticText "٣٬١٧٩٫٩٤ ج.م."
+        - term "العوائق المطلوب حلها"
+        - definition
+          - StaticText "4"
+    - generic
+      - heading "عوائق الفترة والمسؤول عنها" [level=2, ref=e27]
+      - paragraph
+        - StaticText "الحساب المالي غير مؤهل لهذه الفترة. حل العوائق الموضحة مع المسؤول عنها قبل الاعتماد؛ لا يوجد مبلغ صالح للصرف."
+    - group
+      - DisclosureTriangle "إجراءات اختيارية للمسير بعد مراجعة العوائق" [expanded=false]
+        - StaticText "إجراءات اختيارية للمسير بعد مراجعة العوائق"
+    - generic
+      - heading "مقارنة الحسابات" [level=2, ref=e28]
+      - paragraph
+        - StaticText "المقارنة غير متاحة: لا يوجد حساب سابق حالي بنفس طول الفترة ونوعها أو أن بياناته غير مكتملة. لا يُعرض فرق صفري مفترض."
+    - generic
+      - heading "مراجعة الموظفين والعوائق" [level=2, ref=e29]
+      - list
+        - listitem [level=1]
+          - heading "NONLEGAL D680 Leave Employee · NONLEGAL D680" [level=3, ref=e33]
+            - StaticText "NONLEGAL D680 Leave Employee · NONLEGAL D680"
+          - paragraph
+            - StaticText "أجر شهري · الأيام المؤهلة 31 ·"
+          - paragraph
+            - StaticText "الأجر الأساسي: ٣٠٬٠٠٠٫٠٠ ج.م. · الاستحقاقات المعروفة: ٣٠٬٠٠٠٫٠٠ ج.م. · الخصومات التشغيلية المعروفة: ٨٬٠٠٠٫٠٠ ج.م."
+          - region "سعة الخصم والالتزامات" [ref=e34]
+            - heading "حد الخصم والباقي" [level=4, ref=e39]
+            - DescriptionList
+              - term "أساس سعة الخصم بعد الاستقطاعات السابقة"
+              - definition
+                - StaticText "٢٤٬٨٢٠٫٠٦ ج.م."
+              - term "سعة الخصم لهذه الفترة"
+              - definition
+                - StaticText "٦٬٢٠٥٫٠١ ج.م."
+              - term "الباقي غير المطبق"
+              - definition
+                - StaticText "١٬٧٩٤٫٩٩ ج.م."
+            - list
+              - listitem [level=2]
+                - StaticText "NONLEGAL reviewed monthly obligation · ضمن السعة: ٦٬٢٠٥٫٠١ ج.م. · غير مطبق: ١٬٧٩٤٫٩٩ ج.م."
+                - form
+                  - heading "معالجة متبقي الالتزام" [level=5, ref=e40]
+                  - paragraph
+                    - StaticText "أصل الالتزام: ٨٬٠٠٠٫٠٠ ج.م.. أقصى خصم متاح لهذا المصدر: ٦٬٢٠٥٫٠١ ج.م.. لا يؤدي الاعتماد إلى تخفيض أصل الالتزام."
+                  - group
+                    - LabelText
+                      - StaticText "الجزء الذي سيخصم في هذه الفترة"
+                      - textbox "الجزء الذي سيخصم في هذه الفترة" [required, ref=e43]: 6205.01
+                        - StaticText "6205.01"
+                    - paragraph
+                      - StaticText "المتبقي: ١٬٧٩٤٫٩٨ ج.م."
+                    - LabelText
+                      - StaticText "معالجة المتبقي"
+                      - combobox "معالجة المتبقي" [expanded=false, ref=e44]: ترحيل إلى فترة لاحقة
+                        - MenuListPopup
+                          - option "ترحيل إلى فترة لاحقة" [selected, ref=e48]
+                          - option "تسوية تمت خارج الرواتب" [ref=e49]
+                    - LabelText
+                      - StaticText "فترة استقطاع المتبقي"
+                      - combobox "فترة استقطاع المتبقي" [expanded=false, ref=e45]: 2026-01-25 — 2026-02-24
+                        - MenuListPopup
+                          - option "اختر فترة لاحقة مفتوحة" [ref=e50]
+                          - option "2026-01-25 — 2026-02-24" [selected, ref=e51]
+                    - LabelText
+                      - StaticText "مرجع المستند"
+                      - textbox "مرجع المستند" [required, ref=e46]
+                    - LabelText
+                      - StaticText "سبب المعالجة"
+                      - textbox "سبب المعالجة" [required, ref=e47]
+                    - checkbox "أعتمد الجزء المستقطع وترحيل المتبقي. سيعاد فحص الحد القانوني في الفترة التالية." [checked=false, ref=e41]
+                    - button "اعتماد معالجة المتبقي" [ref=e42]
+            - paragraph
+              - StaticText "الالتزام محفوظ ولم يُستهلك. يلزم اعتماد ترحيل الباقي أو تسويته قبل تثبيت المسير."
+          - paragraph
+            - StaticText "الخصومات المعتمدة تتجاوز سعة الخصم لهذه الفترة. راجع الباقي غير المطبق مع مسؤول الشؤون المالية، واعتمد ترحيله أو تسويته قبل إعادة الحساب. لم يُستهلك الالتزام."
+          - link "مراجعة الخصومات المعتمدة" [ref=e35]
+          - link "تفاصيل المكوّنات وشرح الأيام" [ref=e36]
+      - paragraph
+        - StaticText "انتهت الصفحات المطابقة لهذه القائمة."
+    - generic
+      - heading "جاهزية الاعتماد" [level=2, ref=e30]
+      - paragraph
+        - StaticText "الاعتماد غير متاح: 4 عائق في المصادر أو التأهيل المالي والقانوني. راجع المسؤول والإجراء في قائمة العوائق، ثم أعد الحساب. لا يُعتبر هذا الحساب راتبًا صالحًا للصرف."
+      - group
+        - DisclosureTriangle "تاريخ الاعتماد والعودة للمراجعة" [expanded=false]
+          - StaticText "تاريخ الاعتماد والعودة للمراجعة"
+    - group
+      - DisclosureTriangle "تاريخ الحساب والإلغاء المحفوظ" [expanded=false]
+        - StaticText "تاريخ الحساب والإلغاء المحفوظ"
+    - sectionfooter
+      - StaticText "منصة الأعمال"

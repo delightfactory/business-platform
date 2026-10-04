@@ -1,0 +1,99 @@
+▲ Next.js 16.3.6 (webpack)
+✓ Running next.config.ts took 94ms
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 11.6s
+  Running TypeScript ...
+  Finished TypeScript in 5.9s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/4) ...
+  Generating static pages using 11 workers (1/4) 
+  Generating static pages using 11 workers (2/4) 
+  Generating static pages using 11 workers (3/4) 
+✓ Generating static pages using 11 workers (4/4) in 6.3s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /auth/callback
+├ ƒ /auth/employee-account-activation
+├ ƒ /auth/employee-account-activation/callback
+├ ƒ /auth/forgot-password
+├ ƒ /auth/invitations/accept
+├ ƒ /auth/invitations/callback
+├ ƒ /auth/login
+├ ƒ /auth/membership-invitations/accept
+├ ƒ /auth/membership-invitations/callback
+├ ƒ /auth/password/update
+├ ƒ /operator
+├ ƒ /operator/commercial
+├ ƒ /operator/commercial/[tenantId]
+├ ƒ /operator/entitlements
+├ ƒ /operator/entitlements/[tenantId]
+├ ƒ /operator/invitations
+├ ƒ /operator/invitations/new
+├ ƒ /operator/onboarding
+├ ƒ /operator/operators
+├ ƒ /operator/statutory
+├ ƒ /operator/statutory/comparisons
+├ ƒ /operator/tenants
+├ ƒ /operator/tenants/[tenantId]
+├ ƒ /tenant/[tenantId]
+├ ƒ /tenant/[tenantId]/attendance
+├ ƒ /tenant/[tenantId]/attendance/[instanceId]
+├ ƒ /tenant/[tenantId]/attendance/import
+├ ƒ /tenant/[tenantId]/attendance/review
+├ ƒ /tenant/[tenantId]/attendance/unassigned
+├ ƒ /tenant/[tenantId]/branding
+├ ƒ /tenant/[tenantId]/entities-sites
+├ ƒ /tenant/[tenantId]/entities-sites/[entityId]
+├ ƒ /tenant/[tenantId]/entities-sites/[entityId]/sites/new
+├ ƒ /tenant/[tenantId]/entities-sites/new
+├ ƒ /tenant/[tenantId]/leave
+├ ƒ /tenant/[tenantId]/leave/balances
+├ ƒ /tenant/[tenantId]/leave/balances/[accountId]
+├ ƒ /tenant/[tenantId]/leave/balances/annual
+├ ƒ /tenant/[tenantId]/leave/new
+├ ƒ /tenant/[tenantId]/leave/requests/[requestId]
+├ ƒ /tenant/[tenantId]/leave/settings
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]/calendars/new
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]/types/new
+├ ƒ /tenant/[tenantId]/leave/settings/[employerId]/year-periods/new
+├ ƒ /tenant/[tenantId]/me
+├ ƒ /tenant/[tenantId]/me/leave
+├ ƒ /tenant/[tenantId]/me/leave/[requestId]
+├ ƒ /tenant/[tenantId]/me/leave/new
+├ ƒ /tenant/[tenantId]/payroll
+├ ƒ /tenant/[tenantId]/payroll/advances
+├ ƒ /tenant/[tenantId]/payroll/corrections
+├ ƒ /tenant/[tenantId]/payroll/inputs
+├ ƒ /tenant/[tenantId]/payroll/output
+├ ƒ /tenant/[tenantId]/payroll/output/export
+├ ƒ /tenant/[tenantId]/payroll/payments
+├ ƒ /tenant/[tenantId]/payroll/reports
+├ ƒ /tenant/[tenantId]/payroll/reports/export
+├ ƒ /tenant/[tenantId]/payroll/runs
+├ ƒ /tenant/[tenantId]/payroll/setup
+├ ƒ /tenant/[tenantId]/people
+├ ƒ /tenant/[tenantId]/people/[employeeId]
+├ ƒ /tenant/[tenantId]/people/import
+├ ƒ /tenant/[tenantId]/people/new
+├ ƒ /tenant/[tenantId]/people/organization
+├ ƒ /tenant/[tenantId]/people/organization/[kind]/[recordId]
+├ ƒ /tenant/[tenantId]/people/work-policies
+├ ƒ /tenant/[tenantId]/users
+├ ƒ /tenant/[tenantId]/users/invite
+└ ƒ /tenant/select
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+

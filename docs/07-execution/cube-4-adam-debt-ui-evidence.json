@@ -1,0 +1,309 @@
+{
+  "status": "SAFE_PARENT_CHECKPOINT_BOUNDED_DEBT_UI_ACCEPTED_NOT_CUBE_CLOSURE",
+  "baseSHA": "f6a1a71ebee69342fc086ff4a6da57496c198dad",
+  "baseTree": "b940ee6f5a2a96d1cbd15bfda8fef11b894f1f74",
+  "checkpointCommit": "Local commit containing this manifest; SHA reported separately",
+  "branch": "codex/cube4-adam-closure",
+  "parentRequest": "Save current concrete checkpoint at next safe operation boundary before another large unit; no interrupted transaction or duplicated tests",
+  "lastSuccessfulLocalFinancialRead": "2026-10-04T11:36:52.438501+00:00",
+  "sqlAcceptance": {
+    "reference": "cube-4-adam-grouped-payslip-evidence.json",
+    "assertions": 214,
+    "migrations": [
+      {
+        "version": "56000",
+        "SHA256NormalizedLF": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+      },
+      {
+        "version": "57000",
+        "SHA256NormalizedLF": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+      }
+    ],
+    "installedOnThreeOwnedQA": true,
+    "baseline": 185,
+    "all67ExistingTablesPreservedPerInstall": true,
+    "noUnchangedSQLRerunAfterUIOnlyChanges": true
+  },
+  "application": {
+    "sourceHashes": [
+      {
+        "path": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+        "SHA256NormalizedLF": "a64c437bd092a1aabfe369f0c44dc1789ca037cbbf5d52049a8ad6edaeb73f39"
+      },
+      {
+        "path": "src/app/tenant/[tenantId]/payroll/runs/DeductionRecovery.tsx",
+        "SHA256NormalizedLF": "3404dfd9cb45224a7fc3318d11db2fea50310e2441ed92020bf4c8a956b25892"
+      },
+      {
+        "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+        "SHA256NormalizedLF": "3604b1f841b52e178b66179531a373d7fbd37a372a7474d235423cb989d0f3d8"
+      },
+      {
+        "path": "src/app/tenant/[tenantId]/payroll/runs/deduction-disposition-actions.ts",
+        "SHA256NormalizedLF": "ea1eeb66b1097101ca424ab7f5b05eb284d785f00226716f2a3a4bd81f307b81"
+      }
+    ],
+    "baseAndUncommittedDeltaExplicit": true,
+    "productionBuildExitCode": 0,
+    "productionBuildTypecheckPassed": true,
+    "lintExitCode": 0,
+    "runnerBuildEvidenceLimitation": "Older build-evidence.json hardcodes base f6a1a71; the actual build log and exact current source delta hashes above are the authoritative binding. No final whole-tree qualification claimed."
+  },
+  "uiFindingsRepaired": [
+    "Integer-cent residual preview replaces binary floating subtraction that truncated1794.99 to1794.98",
+    "Independent scoped opaque receipt recovery survives source/status changes and page reload",
+    "Successful result clears opaque key before component unmount; browser storage unavailable blocks submission"
+  ],
+  "acceptance": {
+    "ordinaryAuth": true,
+    "database": "business_platform_cube4_adam_debt_browser_qa",
+    "actor": "d6800000-0000-4000-8000-000000000001",
+    "taxAndLabourTrustSuppliers": "Explicit scoped NONLEGAL fixture dependencies only, actual producer/math/auth/locks/receipts/append remain real",
+    "carry": {
+      "original": "8000",
+      "current": "3000",
+      "residual": "5000",
+      "targetPeriod": "d680e000-0000-4000-8000-000000000002",
+      "activeDisposition": "34997e0f-38da-4593-9ab7-698e5c563d76",
+      "targetHead": "72968346-6fd9-4fe6-88f4-a099f51669c9"
+    },
+    "lostSuccessResponse": {
+      "carryUpstreamStatus": 200,
+      "retractionUpstreamStatus": 200,
+      "inPageAndReloadRecoveryProved": true,
+      "all67BusinessTableHashesSameAcrossEachConfirmedRecovery": true,
+      "noExtraReceiptOnRecovery": true,
+      "opaquePendingKeysCleared": true
+    },
+    "externalSettlement": {
+      "original": "8000",
+      "current": "3000",
+      "residual": "5000",
+      "actualRecordedDate": "2026-10-04",
+      "laterPreconsumptionRetraction": true,
+      "historyRetained": true,
+      "noSalaryPaymentCreated": true,
+      "dateCaveat": "Native date fill requested2026-01-24 but controlled UI retained its default2026-10-04; only the actual recorded date is accepted. No January browser-date acceptance claimed."
+    },
+    "final": {
+      "output": "97702175-2e4e-4fb8-a4c9-9a925bf39f8e",
+      "gross": "30000",
+      "net": "21820.06",
+      "employeeInsurance": "200",
+      "tax": "2979.94",
+      "generalRecovery": "3000",
+      "loan": "2000",
+      "completeEmployeeDeductions": "8179.94",
+      "employerCost": "400",
+      "immutableFinalCount": 1,
+      "loanBalance": "0",
+      "loanDeductionEventCount": 1,
+      "recurringOriginal": "8000",
+      "recurringApprovedRevision": 2,
+      "frozenInputVersions": 8,
+      "protectedMobileWidth": 390,
+      "protectedMobileScrollWidth": 390,
+      "visuallyInspected": true
+    },
+    "nextPeriod": {
+      "sourcePublicSetupCommitted": true,
+      "sourceHead": "14c745be-b015-45e6-8a59-dbfbb65d5d80",
+      "sourceRevision": 3,
+      "sourceFrom": "2026-01-25",
+      "actualUIRunStarted": false,
+      "originalFinalAndBindingFrozenTablesAndLoanHistoryHashesPreserved": true
+    },
+    "receiptsAtCheckpoint": 30
+  },
+  "runtime": {
+    "schemaBaseline": 185,
+    "database": "business_platform_cube4_adam_debt_browser_qa",
+    "ports": {
+      "rest": 3540,
+      "auth": 3541,
+      "gateway": 3542,
+      "app": 3543
+    },
+    "containers": {
+      "auth": "cube4-adam-task5-debt-auth",
+      "rest": "cube4-adam-task5-debt-rest"
+    },
+    "roles": {
+      "auth": "cube4_adam_debt_auth",
+      "rest": "cube4_adam_debt_rest"
+    },
+    "createdAtUTC": "2026-10-04T11:01:04.762Z",
+    "expires": "2026-10-04T15:01:03.872Z",
+    "browserClosed": true,
+    "nextGatewayStopped": true,
+    "authRESTContainers": "exited; retained for prompt same-task resume",
+    "temporarySyntheticIdentityAndPrivateConfigRetainedForImmediateAuthorizedResume": true,
+    "expiryNotExtended": true,
+    "noRealCredentialsReadOrChanged": true,
+    "cleanupObligation": "Retire synthetic sign-in/sessions/LOGIN/private config when task completes or before expiry. Resume the same runtime before15:01:03.872UTC; inspect first if expired."
+  },
+  "installs": [
+    {
+      "database": "business_platform_cube4_adam_closure_qa",
+      "evidence": "cube-4-adam-qa-approved-debt-group-install-business_platform_cube4_adam_closure_qa.json",
+      "SHA256": "e933b0105a110a9c586c848404558bc38f6f8b325a21f1eb0d47de759708a776"
+    },
+    {
+      "database": "business_platform_cube4_adam_positive_qa",
+      "evidence": "cube-4-adam-qa-approved-debt-group-install-business_platform_cube4_adam_positive_qa.json",
+      "SHA256": "e73939f25f0ade1636313e1867f7793b6a611ae3c86fda026abbbcf0537e8332"
+    },
+    {
+      "database": "business_platform_cube4_adam_positive_browser_qa",
+      "evidence": "cube-4-adam-qa-approved-debt-group-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "SHA256": "6861dab53a9f4317a9a32258f6628a5b3a8754b33333f887673f1567332e4154"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "cube-4-adam-debt-ui-prepare-evidence.json",
+      "SHA256": "aacfce8df79529e796e953f2beba50c55e5e5b405d76c115b437fff85e25a0f2"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-seed-debt-evidence.json",
+      "SHA256": "4d347fe70c5c64808626512b2f7bf309bd55e17b2a5a4b7249f19bd69def340a"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-build.log",
+      "SHA256": "602814a5946f181cbf294cce964c7d954b7bbb74135ab3d6d7d67520a5a73049"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-build-before-preview-fix.log",
+      "SHA256": "1caf22aa6d8f02564923d576419f6c2e63a49c9e27e24b417a3cde2ba316a3fe"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-build-preview-fixed.log",
+      "SHA256": "09548998be640b4b1b48c937293365dd7881d4b743bcaf6344a15e0677ece6ce"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-recovery-build-source-delta.json",
+      "SHA256": "49d19e4a6680b2eb8145828dfb53b076145c73d7b7f11be622859b4c4994bddf"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-browser-command-paid-closure-ui.log",
+      "SHA256": "0886f7bac193b4e8ec13489f3b7763adbbd3277f44fa53667f73aae85483f8d4"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-lost-response-payroll_deduction_disposition.json",
+      "SHA256": "88319856155db398acd004d6122d77275fef0c5f6cc63d774c32ca43c6c90d90"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-lost-response-payroll_deduction_disposition_retract.json",
+      "SHA256": "f1d9745660ecb8f2fc86ca336ae1ab8689e90a95a5e62a81adb0589d346d0b2a"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-carry-before-recovery.json",
+      "SHA256": "520b431c55e6f9ec882a778d07b1cc1238b49c453084f90363c4d5b850e16942"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-carry-after-recovery.json",
+      "SHA256": "fc3d415f1c23eb00e8d92e5d85f1c05880fffc6b87efb45807675be54fd02240"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-retraction-before-reload-recovery.json",
+      "SHA256": "496e4ee75634feb96c33e574dc6b0aabbcdbf49354e92c14eb3567a34b66ebdb"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-retraction-confirmed-reload-recovery.json",
+      "SHA256": "07d7a4d6f26e249ea23a90544603c7515a705933e16ae53b82e2372000153c99"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-external-and-preconsumption-retractions.json",
+      "SHA256": "2a403d283af639d61ad770b38fd44900dcaa9cf8b86d21fa90720a2c5178afaf"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-carry-actual-ui-finalized.json",
+      "SHA256": "4780cb9550afb5579a8c6eb617bd02605035e295ef5f4d8e4820ffc2a5fbafb8"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-safe-parent-checkpoint.json",
+      "SHA256": "7304abf6106d18a5c47875105389614db77304f829c23c0f9c9d657a5a0a459c"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-facts-checkpoint-services-stopped.json",
+      "SHA256": "abf3224f6aa69ac4e6254bbf90f418dff0d0f4bbb16a3ef4e8ab40dc82273f38"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-next-context-public-setup.log",
+      "SHA256": "9161d1d40043edb4af0bfcd5e011e51ab63d08fb47be6e87d992c75b2fc83cb0"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-pre-fix-debt-preview.snapshot.txt",
+      "SHA256": "34aa9c5231b3d785d6a9b9b348ab5b5e4b81ee839a30328e57c4f2494ff3f414"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-grouped-debt-protected-output.snapshot.txt",
+      "SHA256": "1e21c4ab73ff75e97c32ead0c1fce3db02f6b0876bb5bbd5a696b4ecaeaa41cf"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-grouped-debt-protected-mobile.snapshot.txt",
+      "SHA256": "967cdaf6ac27fc5ed63c02e25c6398e760fb92a3e2b9265cfc1d28ad847e4c49"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-grouped-debt-protected-mobile.facts.txt",
+      "SHA256": "6afc52e64cc5515349f5d34ea9399814136db3046c4be43e2c21ac9c6cca5006"
+    },
+    {
+      "path": "cube-4-adam-debt-ui-final-acceptance-read.json",
+      "SHA256": "e85d92959986ab8e6e87e7ce323bc2e22b1df947a72d3369d9ef78277a1eecb8"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "../browser-runtime-debt/grouped-debt-protected-output.png",
+      "SHA256": "ebf652dbf85511b0ca63c428d5ea06a36853840f9a5cfeefd2d6bdc13049b8e8"
+    },
+    {
+      "path": "../browser-runtime-debt/grouped-debt-protected-mobile.png",
+      "SHA256": "2e3e3b276725700ed973e7c7563ca0fc2a8a2c90e16e8c27a956a3406ff7df3a"
+    }
+  ],
+  "remaining": [
+    {
+      "priority": "P1 programming/acceptance",
+      "gap": "Next-period UI consumption of retained5000 with new normal recurring8000 and explicit current-month disposition; SQL61 acceptance already passed at exact installed DDL."
+    },
+    {
+      "priority": "P1 programming/acceptance",
+      "gap": "Qualified linked next-period paid correction consumption and actual Time/Leave mutation -> exact responsibilities -> closure; typed restoration and paid manual external100 prior evidence retained."
+    },
+    {
+      "priority": "P1 interaction proof",
+      "gap": "Carry-origin lookup after governed supersession requires focused validation; reviewer reservation, not a proven exploit."
+    },
+    {
+      "priority": "P1 integration/acceptance",
+      "gap": "Final employment-period/obligation handoff, current per-segment report/export access and settlement journey."
+    },
+    {
+      "priority": "P1 final qualification",
+      "gap": "Final applicable permission/context changes, actual races/retries and consolidated same-SHA/tree fresh/retained/ordinary-Auth qualification after finite items complete."
+    },
+    {
+      "priority": "External known legal prerequisite",
+      "gap": "Official2026/effective-coverage issuer packages and expected cases remain unavailable. Do not ask Ahmad again or accept synthetic official results."
+    }
+  ],
+  "noActionsPushMergeDeployProduction": true,
+  "noNewLargeUnitAfterParentRequest": true,
+  "failedEvidenceRetained": true,
+  "selectorAttemptCaveat": "The first after-reload-recovery facts file was recorded after unsupported native text selectors, before recovery. Only confirmed-reload-recovery evidence above is acceptance.",
+  "actualFrozenAcceptanceRead": {
+    "net": "21820.06000000000000000000",
+    "atUTC": "2026-10-04T11:36:52.438501+00:00",
+    "gross": "30000.000000000000",
+    "output": "97702175-2e4e-4fb8-a4c9-9a925bf39f8e",
+    "database": "business_platform_cube4_adam_debt_browser_qa",
+    "nextPeriodRuns": 0,
+    "payslipComplete": "true",
+    "carryTargetStatus": "approved",
+    "loanDeductionEvents": 1,
+    "sourceFrozenVersions": 8,
+    "visibleEmployeeDeductions": 8179.94
+  }
+}

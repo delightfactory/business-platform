@@ -1,0 +1,24 @@
+{
+  "baseSHA": "f6a1a71ebee69342fc086ff4a6da57496c198dad",
+  "pendingLocalCommit": true,
+  "sources": [
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+      "SHA256NormalizedLF": "a64c437bd092a1aabfe369f0c44dc1789ca037cbbf5d52049a8ad6edaeb73f39"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/DeductionRecovery.tsx",
+      "SHA256NormalizedLF": "3404dfd9cb45224a7fc3318d11db2fea50310e2441ed92020bf4c8a956b25892"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "SHA256NormalizedLF": "3604b1f841b52e178b66179531a373d7fbd37a372a7474d235423cb989d0f3d8"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/deduction-disposition-actions.ts",
+      "SHA256NormalizedLF": "ea1eeb66b1097101ca424ab7f5b05eb284d785f00226716f2a3a4bd81f307b81"
+    }
+  ],
+  "lintExitCode": 0,
+  "buildSourceBoundByTheseHashes": true
+}

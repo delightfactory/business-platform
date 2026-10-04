@@ -1,0 +1,7 @@
+{
+  "fault": "close_owned_gateway_after_successful_actual_RPC",
+  "rpc": "payroll_deduction_disposition_retract",
+  "upstreamStatus": 200,
+  "atUTC": "2026-10-04T11:11:35.750Z",
+  "noResponseBodyStored": true
+}

@@ -1,0 +1,366 @@
+{
+  "atUTC": "2026-10-04T11:19:08.000848+00:00",
+  "finals": 0,
+  "database": "business_platform_cube4_adam_debt_browser_qa",
+  "receipts": 21,
+  "recurring": [
+    {
+      "head": "0ae06ef0-12c9-4185-bd4a-e33d354d735f",
+      "value": "8000",
+      "status": "approved",
+      "revision": 2
+    }
+  ],
+  "loanBalance": 2000,
+  "dispositions": [
+    {
+      "id": "5699c019-c218-449f-a186-433ce63a8544",
+      "date": null,
+      "mode": "carry",
+      "period": "d680e000-0000-4000-8000-000000000001",
+      "target": "6b244a91-650d-43b5-b7b6-0006a0484c17",
+      "current": 3000,
+      "original": 8000,
+      "residual": 5000,
+      "retracted": true,
+      "target_period": "d680e000-0000-4000-8000-000000000002"
+    }
+  ],
+  "businessTables": [
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.advance_allocations",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.advance_allowances",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.advance_attempt_closures",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.advance_deferrals",
+      "count": 0
+    },
+    {
+      "hash": "40498db098640cae57d06fd69a577d00",
+      "name": "payroll.advance_events",
+      "count": 2
+    },
+    {
+      "hash": "4e533715a0f930d0eee76b1cbc3d56e3",
+      "name": "payroll.advance_heads",
+      "count": 1
+    },
+    {
+      "hash": "4d3acf41ddcbc82749d355eba6644c99",
+      "name": "payroll.advance_installments",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.advance_replacements",
+      "count": 0
+    },
+    {
+      "hash": "da4f9eb1fe2c83ae387c3b57c70eb986",
+      "name": "payroll.advance_versions",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.amendment_runs",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.approval_events",
+      "count": 0
+    },
+    {
+      "hash": "c99a2426ff45b9f58d7e6c0f202da7f3",
+      "name": "payroll.audit_events",
+      "count": 21
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.bound_source_correction_observations",
+      "count": 0
+    },
+    {
+      "hash": "939e89666cae0a6a25e60fb4dc0ff89e",
+      "name": "payroll.calendar_heads",
+      "count": 1
+    },
+    {
+      "hash": "4904b4d0bc3fbfec7433e3a2d5834d98",
+      "name": "payroll.calendar_versions",
+      "count": 1
+    },
+    {
+      "hash": "19e4ca8bcb5045e8e762c58df9d69691",
+      "name": "payroll.candidates",
+      "count": 3
+    },
+    {
+      "hash": "358041858849ddaf60a76127f8603082",
+      "name": "payroll.command_receipts",
+      "count": 21
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_attempt_closures",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_cases",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_events",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_proposals",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_request_links",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_requirements",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_settlements",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_source_effects",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.correction_targets",
+      "count": 0
+    },
+    {
+      "hash": "d2214ea63f2d3d4f58d3832a8ae60b47",
+      "name": "payroll.deduction_disposition_retractions",
+      "count": 1
+    },
+    {
+      "hash": "161c25af9a8be03da7e1308e5f6957c9",
+      "name": "payroll.deduction_dispositions",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.final_contexts",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.final_employees",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.final_source_bindings",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.historical_leave_admissions",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.historical_leave_observations",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.input_frozen_versions",
+      "count": 0
+    },
+    {
+      "hash": "411398226307b8aedd9ed523e7c90475",
+      "name": "payroll.input_heads",
+      "count": 7
+    },
+    {
+      "hash": "803158ea5ab77dd2a809279f23990838",
+      "name": "payroll.input_versions",
+      "count": 11
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.output_successions",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.payment_allocations",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.payment_events",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.payment_heads",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.payment_requests",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.people_frozen_contexts",
+      "count": 0
+    },
+    {
+      "hash": "6f33b83a2963589aa027438b467d731a",
+      "name": "payroll.periods",
+      "count": 2
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.run_attempt_closures",
+      "count": 0
+    },
+    {
+      "hash": "252ce294406ab9e2379fbef17236a77a",
+      "name": "payroll.runs",
+      "count": 3
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.statutory_draft_comparisons",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.statutory_draft_heads",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.statutory_draft_issuances",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.statutory_draft_receipts",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "payroll.statutory_draft_versions",
+      "count": 0
+    },
+    {
+      "hash": "61c3bf83c71d1320cf5c98c8e62898ff",
+      "name": "payroll.statutory_packs",
+      "count": 4
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.audit_events",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.compensation_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "e0cae972d92744fe5b817ab0f7e01a0c",
+      "name": "people.compensation_versions",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.departments",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.employee_account_password_readiness",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.employee_account_provision_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.employee_account_provision_intents",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.employee_user_link_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "1bcd8b54312409bf119b41500d28a0b2",
+      "name": "people.employee_user_links",
+      "count": 1
+    },
+    {
+      "hash": "80093bbaaf05ff3f1700e5b9d6716d14",
+      "name": "people.employees",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.employment_lifecycle_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "2ce086a8ea2a38a10f8f1fee96372b0c",
+      "name": "people.employments",
+      "count": 1
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.jobs",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.organization_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "d751713988987e9331980363e24189ce",
+      "name": "people.work_assignment_audit_events",
+      "count": 0
+    },
+    {
+      "hash": "9c71988003dd3a9b80d1f85f0c2fafa7",
+      "name": "people.work_assignments",
+      "count": 1
+    }
+  ]
+}

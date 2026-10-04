@@ -1,5 +1,27 @@
 # Cube 4 decision and acceptance register
 
+## ADAM recurring debt ordinary Auth checkpoint, 2026-10-04 11:33UTC
+
+Parent requested a safe save before another large unit; all submitted transactions finished. [Exact UI/install/remaining evidence](cube-4-adam-debt-ui-evidence.json). SQL checkpointf6a1a71/treeb940ee6f, unchanged56000ef8bd3 +57000814f2b now installed at185 on all3ownedQA; every existing67 business/Auth table fact preserved.214 bounded SQL assertions remain valid and were not repeated after UI-only changes. The local commit containing this entry saves the final UI delta; exact source hashes bind the successful production build/typecheck and lint. Older runner build metadata hardcodes the base and is explicitly superseded by that hash binding, without claiming final whole-tree qualification.
+
+Actual ordinary Auth on new zero-data debt-browserQA: approved original recurring8000, partial3000/carry5000, actual external residual5000 dated2026-10-04 and preconsumption retraction, historical records retained. Original recurring stays approved revision2/value8000. Deliberately lost successful carry/retraction HTTP200 responses recover exact original receipts; all67 business-table hashes match and no new receipt is created. Actual reload found missing recovery control and unmount-retained keys; the independent scoped opaque recovery component and clearing-before-unmount fix passed with those same pending receipts. Storage failure blocks financial submission. Binary decimal preview1794.98 vs1794.99 fixed using integer cents and proved on real UI. Native text-selector/date-fill limitations are recorded; no false January browser-date acceptance.
+
+Actual recalculate/review/approve/atomic finalize succeeded: one final97702175-2e4e-4fb8-a4c9-9a925bf39f8e, gross30000/net21820.06, loan2000 consumed once/balance0, recovery3000, employee insurance200/tax2979.94, complete employee deductions8179.94; employer400 separately displayed. Eight frozen inputs preserve original source8000 and actual5000 carry. Protected desktop/mobile390/390 output visually inspected. NONLEGAL issuer suppliers remain scoped fixture dependencies; no official acceptance or financial flag bypass.
+
+Next-period future context revision3 saved through fixed-receipt public command from2026-01-25, strictly after frozen original ending2026-01-24. Original final/employees/frozen/binding/loan-history hashes unchanged; next-period UI calculation has NOT started. Latest successful exact acceptance read2026-10-04T11:36:52.438501+00:00: payslipcomplete=true,visible employee deductions8179.94,one loan2000 consumption,next-period runs0,carry target approved. Safe service-stop snapshot has one final,30 receipts,loan0. Task browser/Next/gateway stopped and only two own Auth/REST containers exited; all67 business-table hashes unchanged. Same synthetic identity/private config retained for prompt authorized resume under original expiry2026-10-04T15:01:03.872UTC; expiry not extended. No other writer QA, CI or external environment changes.
+
+| Finite journey | Current checkpoint | Remaining boundary |
+| --- | --- | --- |
+| Calculation/sources/legal amounts | Existing monthly/fixed30/daily/source proofs preserved; actual grouped tax+insurance+approved recurring debt now finishes UI with explained net | Applicable remaining join/end/transition/mixed cases and final aggregate acceptance retain earlier boundaries |
+| Debts/advances/consumption | General and recurring approved dispositions, historical retraction, fixed receipts and recovery accepted; actual loan+partial recovery finalized once | Next-period UI5000 carry with new8000 recurring and explicit current-month disposition; exact same-DDL SQL61 already accepted; superseded-origin interaction proof |
+| Correction/restoration | Previous typed multi-source restoration and paid manual external100 closure retained | Qualified linked next-period consumption; actual Time/Leave mutations and all exact sibling responsibilities to closure |
+| External payments | Current loan consumed; actual dated residual settlement and retraction/history accepted, without a salary payment | Earlier actual salary-payment evidence remains its own boundary; final combined security/races acceptance |
+| Payslip/reports/ending | P0 grouped payslip fixed; actual protected output includes all statutory/debt amounts and separate employer cost | Final-period/obligation handoff and current per-segment report/export journey |
+| Final qualification |214 same-DDL SQL plus final UI build/typecheck/lint and bounded real Auth journey | One final same-SHA/tree fresh/retained/Auth/permissions/races qualification after remaining finite items; this is not wholeCube closure |
+
+Known official2026/effective-coverage legal package and expected cases remain the sole known external legal prerequisite, with no repeated question or invented official result. Programming/interaction/acceptance gaps above remain explicit. Prior entries remain historical.
+
+
 ## ADAM frozen grouped payslip repair, 2026-10-04 - bounded SQL acceptance
 
 Resume473b6e7/tree1d8c8924. [Exact delta evidence](cube-4-adam-grouped-payslip-evidence.json) binds unchanged56000ef8bd3 and new57000814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42. Both remain UNINSTALLED; all checks use owned positiveQA183 inside ROLLBACK. The local commit containing this entry is the checkpoint.
