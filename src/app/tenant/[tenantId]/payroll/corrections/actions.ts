@@ -30,6 +30,9 @@ export async function correctionAction(previous:CorrectionState,form:FormData):P
    return {output_id:value('row_output'),...(String(employment).startsWith('new:')?{employment_ref:String(employment)}:{employment_id:String(employment)}),amount:value('row_amount'),basis:value('row_basis'),component_id:value('row_component')||null,target_period:value('row_target')||null,reference:value('row_reference'),source:value('row_source')};
   });
   rpc='payroll_correction_proposal';args={p_tenant:tenant,p_employer:employer,p_output:output,p_case:caseId||null,p_expected:revision,p_changes:changes,p_rows:rows,p_target:get('target')||null,p_reason:get('reason'),p_reference:get('reference'),p_preview_hash:operation==='save'?previous.previewHash??'':null,p_operation:operation};
+ }else if(operation==='finalize'){
+  if(!uuid(caseId)||get('confirm')!=='on')return {...previous,saved:false,error:correctionError('22023')};
+  rpc='payroll_correction_finalize';args={p_tenant:tenant,p_employer:employer,p_case:caseId,p_expected:revision};
  }else if(operation==='settlement'){
   rpc='payroll_correction_settlement';args={p_tenant:tenant,p_employer:employer,p_case:caseId,p_expected:revision,p_employment:get('employment'),p_direction:get('direction'),p_amount:get('amount'),p_date:get('date'),p_reference:get('reference'),p_reason:get('reason')};
  }else if(operation==='approve_candidate'||operation==='release_candidate'){
@@ -48,7 +51,9 @@ export async function correctionAction(previous:CorrectionState,form:FormData):P
  const {data:{user}}=await client.auth.getUser();if(!user||get('__actor')&&get('__actor')!==user.id)return {...state,error:correctionError('42501')};
  submitted=true;
  if(get('__reconcile')==='true'){
-  const reconciled=await client.rpc('payroll_correction_reconcile',{p_tenant:tenant,p_employer:employer,p_output:output,p_rpc:rpc,p_args:args,p_attempt:attempt});
+  const reconciled=rpc==='payroll_correction_finalize'
+   ?await client.rpc('payroll_correction_finalization_reconcile',{...args,p_attempt:attempt})
+   :await client.rpc('payroll_correction_reconcile',{p_tenant:tenant,p_employer:employer,p_output:output,p_rpc:rpc,p_args:args,p_attempt:attempt});
   if(reconciled.error)return {...state,recoverPending:true,error:correctionError(reconciled.error.code,reconciled.error.message)};
   if(reconciled.data.outcome==='closed_uncommitted')return {...state,saved:false,recoverPending:false,closedUncommitted:true,signature:'',attempt:'',previewHash:undefined,error:''};
   if(reconciled.data.outcome!=='committed')return {...state,recoverPending:true,error:correctionError()};

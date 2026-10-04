@@ -25,7 +25,7 @@ const cases=[
  ['new_employment',{employee_id:id(9),start_date:'2026-02-01',end_date:null,pay_basis:'daily',payroll_eligible:true,amount:'82.15',site_id:id(8)}],
  ['input_revision',{effective_from:'2026-02-01',effective_until:null,cancelled:false,data:{name:'Saved component',classification:'earning',calculation:'fixed',value:'38.27',base:'base_pay',behavior:'period_input',taxable:true,social:false,visible:true,active:true,proration:'paid_full_period',order:'4',key:'saved',reason:'Saved component reason'}}],
 ];
-function harness(change) {
+function harness(change,rpcResult) {
  const calls=[],state=[],storage=new Map();let index=0;
  const browserStorage={getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)};
  const browserWindow={location:{pathname:'/tenant/'+tenant+'/payroll/corrections',search:''},dispatchEvent(){},addEventListener(){},removeEventListener(){}};
@@ -35,6 +35,7 @@ function harness(change) {
  const workspace={case:savedCase,employer:{display_name:'Synthetic Employer'},period:{id:id(14),starts_on:'2026-02-01',ends_on:'2026-02-28'},sources:[],employees:[],sites:[],references:{},period_choices:[],output_choices:[],component_choices:[],replacement_outputs:[],history:[],settlements:[],access:{can_prepare:true},ever_paid:true};
  const rpc=async (name,args)=>{
   calls.push({name,args});
+  if(rpcResult)return rpcResult(name,args);
   if(name==='payroll_correction_workspace')return {data:workspace};
   if(name==='payroll_correction_choices')return {data:{selected:{id:source,expected_hash:currentHash,kind:'component',fields:kind==='compensation'?defaults:change.fields}}};
   if(name==='payroll_correction_reconcile')return {data:{outcome:'committed',result:{case_id:savedCase.id,revision:1,status:'draft'}}};
@@ -116,6 +117,32 @@ test('pending request restoration overrides saved proposal fields and retains ex
  const action=h.load(path.join(root,'actions.ts')).correctionAction;
  const result=await action({saved:false,error:'',signature:JSON.stringify({rpc:'payroll_correction_proposal',args:{p_expected:3}}),attempt:id(15),recoverPending:true},restored);
  assert.equal(result.recoverPending,true);assert.equal(h.calls.length,0,'different replay cannot execute a new RPC');
+});
+
+test('public finalization actions preserve original attempts and use their dedicated recovery boundaries',async()=>{
+ for(const correction of [false,true])for(const reconcile of [false,true]){
+  const receipt=correction?{case_id:id(6),revision:4,status:'completed'}:{id:id(6),revision:4,status:'locked',output:id(18)};
+  const h=harness({type:'compensation',fields:{}},()=>({data:reconcile?{outcome:'committed',result:receipt}:receipt}));
+  const form=new FormData();for(const [key,value] of Object.entries({tenant,employer,period:id(14),output,case:id(6),revision:'3',candidate:id(7),operation:'finalize',confirm:'on',kind:'compensation',__attempt:id(15),__actor:actor,__reconcile:String(reconcile)}))form.set(key,value);
+  const previous=correction?{saved:false,error:'',signature:'',attempt:''}:{saved:false,error:'',signature:'',attempt:'',run:id(6),revision:3,status:'approved'};
+  const action=h.load(path.join(root,correction?'actions.ts':'../runs/actions.ts'))[correction?'correctionAction':'runAction'];
+  const result=await action(previous,form);
+  assert.equal(result.saved,true);
+  assert.equal(h.calls[0].name,correction?(reconcile?'payroll_correction_finalization_reconcile':'payroll_correction_finalize'):(reconcile?'payroll_run_finalization_reconcile':'payroll_run_finalize'));
+  assert.equal(h.calls[0].args.p_attempt,id(15));assert.equal(h.calls[0].args.p_expected,3);
+  assert.equal(h.calls[0].args.p_amount,undefined,'no browser money enters finalization');
+  if(correction)assert.equal(result.kind,'compensation');else assert.equal(result.output,id(18));
+ }
+});
+
+test('public finalization transport requires confirmation and the same authenticated actor',async()=>{
+ for(const correction of [false,true])for(const failure of ['confirmation','actor']){
+  const h=harness({type:'compensation',fields:{}},()=>{throw Error('Must not call RPC');});
+  const form=new FormData();for(const [key,value] of Object.entries({tenant,employer,period:id(14),output,case:id(6),revision:'3',candidate:id(7),operation:'finalize',confirm:failure==='confirmation'?'':'on',__actor:failure==='actor'?id(17):actor}))form.set(key,value);
+  const previous=correction?{saved:false,error:'',signature:'',attempt:''}:{saved:false,error:'',signature:'',attempt:'',run:id(6),revision:3,status:'approved'};
+  const result=await h.load(path.join(root,correction?'actions.ts':'../runs/actions.ts'))[correction?'correctionAction':'runAction'](previous,form);
+  assert.equal(result.saved,false);assert.equal(h.calls.length,0);assert.ok(result.error);
+ }
 });
 test('editing a saved kind redirects to its own editor before loading a different source',async()=>{
  const h=harness({type:'assignment_split',source_id:source,expected_hash:hash,fields:cases[3][1]});

@@ -80,15 +80,21 @@
       "sha256": "302f47de42fb3f3d894bba66ad7dd91fb23eed6a82f18300aa57a67d5bbd3f7b"
     },
     {
-      "name": "browser-command.log",
-      "sha256": "2a882dfafd49a1f18bd74434de104c26a026cd7b09f3a2200e9f7c76eec5f151"
+      "name": "browser-command-frozen.log",
+      "sha256": "37808786e08bb2b81e6f1dbc500b232f7e8985f1147b68d6b4095b2a5ade6ad4"
     }
   ],
   "observationCaveats": [
     "Initial immediate-after-click screenshot was provisional and is not completed-navigation proof.",
-    "A subsequent capture failed after daemon version mismatch; escalation restarted only the task browser to about:blank. Normal synthetic login reopened the same saved case without repeating any write. Completed post-login URL, DOM and screenshot supply the final proof."
+    "A subsequent capture failed after daemon version mismatch; escalation restarted only the task browser to about:blank. Normal synthetic login reopened the same saved case without repeating any write. Completed post-login URL, DOM and screenshot supply the final proof.",
+    "Driver log was copied after all runtime/browser cleanup. The frozen copy replaces the growing driver artifact; no browser action or successful test was repeated."
   ],
   "previousBrowserEvidence": "be842 evidence remains scoped to be842, not promoted to 078",
   "canonicalHashNote": "Git blob hashes are the committed bytes. Prior repair.code workspace hashes are not canonical commit hashes.",
-  "officialQualification": false
+  "officialQualification": false,
+  "growingDriverLog": {
+    "name": "browser-command.log",
+    "sha256": "2a882dfafd49a1f18bd74434de104c26a026cd7b09f3a2200e9f7c76eec5f151",
+    "status": "historical capture hash; log continued through task cleanup, not immutable proof"
+  }
 }
