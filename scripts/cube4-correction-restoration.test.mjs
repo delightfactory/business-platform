@@ -37,6 +37,7 @@ function harness(change) {
   calls.push({name,args});
   if(name==='payroll_correction_workspace')return {data:workspace};
   if(name==='payroll_correction_choices')return {data:{selected:{id:source,expected_hash:currentHash,kind:'component',fields:kind==='compensation'?defaults:change.fields}}};
+  if(name==='payroll_correction_reconcile')return {data:{outcome:'committed',result:{case_id:savedCase.id,revision:1,status:'draft'}}};
   return {data:{preview_hash:'preview',case_id:savedCase.id}};
  };
  const client={auth:{getUser:async()=>({data:{user:{id:actor}}})},rpc};
@@ -61,8 +62,8 @@ function harness(change) {
   const localRequire=name=>{
    if(name in stubs)return stubs[name];
    if(name.endsWith('.css'))return {};
-   if(name.startsWith('.')){
-    const base=path.resolve(path.dirname(filename),name);
+   if(name.startsWith('.')||name.startsWith('@/')){
+    const base=name.startsWith('@/')?path.resolve('src',name.slice(2)):path.resolve(path.dirname(filename),name);
     const file=['.ts','.tsx'].map(ext=>base+ext).find(fs.existsSync);
     if(file)return load(file);
    }
@@ -87,7 +88,7 @@ function harness(change) {
   for(const child of React.Children.toArray(p.children))values(child,form);
   return form;
  }
- return {calls,workspace,savedCase,load,find,values,forms,render:p=>{index=0;return forms.ProposalForm(p);},recover:f=>browserStorage.setItem('payroll-correction:v1:'+JSON.stringify([actor,tenant,employer,output]),JSON.stringify({version:1,form:'proposal',attempt:id(15),href:browserWindow.location.pathname,entries:Array.from(f.entries()),previous:{error:'',saved:false,signature:'',attempt:''}})),kind};
+ return {calls,workspace,savedCase,load,find,values,forms,render:p=>{index=0;return forms.ProposalForm(p);},renderRecovery:result=>{index=0;state[2]=result;return forms.CorrectionRecoveryPanel({actor,tenant,employer,output});},recover:f=>browserStorage.setItem('payroll-correction:v1:'+JSON.stringify([actor,tenant,employer,output]),JSON.stringify({version:1,form:'proposal',attempt:id(15),href:browserWindow.location.pathname,entries:Array.from(f.entries()),previous:{error:'',saved:false,signature:'',attempt:''}})),kind};
 }
 for(const [type,fields] of cases) {
  test(`saved ${type}${fields.employee_id?' existing employee':''} survives page → form → preview`,async()=>{
@@ -145,4 +146,19 @@ test('saved multi-source observations still restore exact hashes and responsibil
  await h.load(path.join(root,'actions.ts')).correctionAction({saved:false,error:'',signature:'',attempt:''},submitted);
  const command=h.calls.find(x=>x.name==='payroll_correction_proposal');
  assert.deepEqual(command.args.p_changes.map(x=>x.expected_hash),[hash,currentHash]);assert.equal(command.args.p_rows[0].output_id,id(11));
+});
+
+test('saved and reconciled proposals link to their own source authority, including split editors',async()=>{
+ for(const type of ['source_change','compensation','compensation_split','assignment','assignment_split','employment','new_employment','input_revision']){
+  for(const reconcile of [false,true]){
+   const h=harness({type,source_id:source,expected_hash:hash,fields:{}});
+   const form=new FormData();for(const [key,value] of Object.entries({tenant,employer,output,case:'',revision:'0',kind:type,source,source_hash:hash,field_keys:'[]',data_keys:'[]',unchanged_changes:'[]',reason:'Saved reason',reference:'Saved reference',operation:'save',__reconcile:String(reconcile),source_changes:JSON.stringify([{id:source,expected_hash:hash}])}))form.set(key,value);
+   const result=await h.load(path.join(root,'actions.ts')).correctionAction({saved:false,error:'',signature:'',attempt:''},form);
+   assert.equal(result.saved,true);assert.equal(result.kind,type.replace(/_split$/,''));
+   const panel=h.renderRecovery(result),link=h.find(panel,x=>typeof x.props?.href==='string');assert.ok(link);
+   const query=new URL(link.props.href,'http://localhost').searchParams;
+   assert.equal(query.get('kind'),result.kind);assert.equal(query.get('case'),h.savedCase.id);
+   assert.equal(h.calls[0].name,reconcile?'payroll_correction_reconcile':'payroll_correction_proposal');
+  }
+ }
 });

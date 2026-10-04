@@ -3,7 +3,7 @@ import {revalidatePath} from 'next/cache';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {uuid} from '../rules';
 import {openingCoverageFields} from '../inputs/rules';
-import {correctionError,type CorrectionState} from './rules';
+import {correctionError,correctionKinds,type CorrectionKind,type CorrectionState} from './rules';
 export async function correctionAction(previous:CorrectionState,form:FormData):Promise<CorrectionState>{
  if(String(form.get('operation')??'')==='preview')previous={...previous,previewHash:undefined,affected:undefined};
  const get=(key:string)=>String(form.get(key)??'').trim();
@@ -42,6 +42,8 @@ export async function correctionAction(previous:CorrectionState,form:FormData):P
  if(previous.recoverPending&&previous.signature&&signature!==previous.signature)return {...previous,saved:false,error:'لم تتأكد نتيجة الطلب السابق. أعد قيمه الأصلية للتحقق من نتيجته قبل تغيير المقترح أو مبلغ التسوية.'};
  const clientAttempt=get('__attempt');if(clientAttempt&&!uuid(clientAttempt))return {...previous,saved:false,error:correctionError('22023')};
  const attempt=clientAttempt||(signature===previous.signature&&uuid(previous.attempt)?previous.attempt:crypto.randomUUID());state={...previous,saved:false,closedUncommitted:false,error:'',signature,attempt};
+ const submittedKind=get('kind').replace(/_split$/,'');
+ const kind=Object.hasOwn(correctionKinds,submittedKind)?submittedKind as CorrectionKind:undefined;
  const client=await createSupabaseServerClient();if(!client)return {...state,recoverPending:operation!=='preview',error:correctionError()};
  const {data:{user}}=await client.auth.getUser();if(!user||get('__actor')&&get('__actor')!==user.id)return {...state,error:correctionError('42501')};
  submitted=true;
@@ -52,12 +54,12 @@ export async function correctionAction(previous:CorrectionState,form:FormData):P
   if(reconciled.data.outcome!=='committed')return {...state,recoverPending:true,error:correctionError()};
   const receipt=reconciled.data.result;
   revalidatePath(`/tenant/${tenant}/payroll/corrections`);revalidatePath(`/tenant/${tenant}/payroll/runs`);revalidatePath(`/tenant/${tenant}/payroll/payments`);revalidatePath(`/tenant/${tenant}/people`);
-  return {saved:true,recoverPending:false,error:'',signature:'',attempt:'',caseId:receipt.case_id??caseId,revision:receipt.revision,status:receipt.status,route:receipt.route,affected:receipt.affected_outputs};
+  return {saved:true,recoverPending:false,error:'',signature:'',attempt:'',kind,caseId:receipt.case_id??caseId,revision:receipt.revision,status:receipt.status,route:receipt.route,affected:receipt.affected_outputs};
  }
  const result=await client.rpc(rpc,{...args,p_attempt:attempt});
  if(result.error)return {...state,previewHash:undefined,recoverPending:operation!=='preview',error:correctionError(result.error.code,result.error.message)};
  if(operation!=='preview'){revalidatePath(`/tenant/${tenant}/payroll/corrections`);revalidatePath(`/tenant/${tenant}/payroll/runs`);revalidatePath(`/tenant/${tenant}/payroll/payments`);revalidatePath(`/tenant/${tenant}/people`);}
- return {saved:operation!=='preview',error:'',signature:'',attempt:'',previewHash:result.data.preview_hash,caseId:result.data.case_id??caseId,revision:result.data.revision,status:result.data.status,route:result.data.route,affected:result.data.affected_outputs};
+ return {saved:operation!=='preview',error:'',signature:'',attempt:'',kind,previewHash:result.data.preview_hash,caseId:result.data.case_id??caseId,revision:result.data.revision,status:result.data.status,route:result.data.route,affected:result.data.affected_outputs};
  }catch{return {...state,saved:false,recoverPending:previous.recoverPending||submitted&&operation!=='preview',error:correctionError(submitted?undefined:'22023')};}
 }
 

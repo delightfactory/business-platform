@@ -1,0 +1,263 @@
+{
+  "status": "BOUNDED_BROWSER_CHECKPOINT",
+  "sourceSHA": "be842a17272605a0ba1dc758e81eec839b157f59",
+  "sourceTree": "14d3a63b85c46cfd1935b0504a6513404f1408bc",
+  "schemaBaseline": 165,
+  "database": "business_platform_cube4_adam_browser_qa",
+  "boundary": "Actual normal GoTrue email/password login and Next server actions over real PostgREST; task-only NONLEGAL final seed, no app authentication bypass",
+  "accepted": [
+    "ordinary same-day historical approval refused with reason retained",
+    "explicit historical admission through browser",
+    "reload of request without redirect hints restores actual correction link",
+    "request link selects actual source automatically",
+    "390px request/form and 820px restored proposal show no horizontal overflow",
+    "actual public preview/save; gateway drops response only after successful200 save",
+    "Reload retains pending original request and disables fresh submission",
+    "reconcile returns original case; identical DB facts and exactly one proposal before/after",
+    "saved source-change proposal restores reason/reference/source/employee/amount10 without reentry"
+  ],
+  "repair": {
+    "problem": "Recovery result link omitted correction kind and opened the default compensation authority",
+    "change": "Preserve validated proposal kind, normalizing split editor names, in saved/reconciled action state and result link",
+    "code": [
+      {
+        "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\implementation\\src\\app\\tenant\\[tenantId]\\payroll\\corrections\\actions.ts",
+        "sha256": "36a95fc12b004559938da80d49268dd0fd47c0fe17c1da2bfbb53504cead38b1"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\implementation\\src\\app\\tenant\\[tenantId]\\payroll\\corrections\\CorrectionForms.tsx",
+        "sha256": "ea54287a39c3f3f478abf0e8df6abadc1fd8de91b81d280a97cf18918ee5eeec"
+      },
+      {
+        "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\implementation\\src\\app\\tenant\\[tenantId]\\payroll\\corrections\\rules.ts",
+        "sha256": "a2ff3f25425af1e9aab1c8ea977574331eb45da7cdd419e1f6145e676672f75a"
+      }
+    ],
+    "component": "13/13 actual module/component transport tests; normal saves and committed reconcile for8 typed variants",
+    "typecheck": "PASS",
+    "lint": "PASS targeted ESLint, exit0; retained log contains no errors",
+    "browserAfterRepair": "NOT COMPLETED: stopped by ADAM coordination request before second-save proof",
+    "productionBuildAfterRepair": "NOT RUN at requested checkpoint"
+  },
+  "excluded": [
+    "public statutory approval/finalization",
+    "official2026 financial qualification",
+    "paid routing/settlement through browser",
+    "unpaid replacement through qualified public lock",
+    "all ordinary kinds through browser",
+    "multiple affected outputs or replacement chain through browser",
+    "actual permissions-change/concurrency race qualification",
+    "whole Cube4 same-SHA qualification"
+  ],
+  "fixturesCleaned": {
+    "status": "TASK_BROWSER_FIXTURE_CLEANED",
+    "atUTC": "2026-10-04T00:05:36.546Z",
+    "steps": [
+      {
+        "step": "remove_owned_auth",
+        "status": "PASS"
+      },
+      {
+        "step": "remove_owned_rest",
+        "status": "PASS"
+      },
+      {
+        "step": "drop_only_disposable_browser_database_and_temporary_roles",
+        "status": "PASS",
+        "database": "business_platform_cube4_adam_browser_qa",
+        "roles": {
+          "auth": "cube4_adam_browser_auth",
+          "rest": "cube4_adam_browser_rest"
+        }
+      },
+      {
+        "step": "remove_temporary_secrets_and_own_browser_profile",
+        "status": "PASS"
+      }
+    ],
+    "retainedSQLQA": "business_platform_cube4_adam_closure_qa",
+    "evidenceRetained": true
+  },
+  "artifacts": [
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\after-recovery.db.json",
+      "sha256": "ece9fc7b539d7f05f5c249a65cd90cf8259aa71c337eabfd0ec25a6c7e3151d5"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\auth-diagnostic.json",
+      "sha256": "814c98a581bbbff03a4345e6b50b4f589580cae2f19f7a9002abc344a3dda629"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\before-recovery.db.json",
+      "sha256": "9c0853954b642ffa45563e5e0e7b96d6d663c355230316fcde3720b98353d1ea"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\browser-command.log",
+      "sha256": "98a57d3d5614a9ac39ea67091a3b379437c6ba1e1b631bed551f6f4ff27017d3"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\cleanup-evidence.json",
+      "sha256": "bf8ee4ae19f22f77ae4282711991bf567a072b9b518807000b5793001abeeb92"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\correction-from-request-phone.facts.txt",
+      "sha256": "e7bbedcf9091aeb36d45643f77b40afa5c8cf90a1cf1be1db30342f7779edfc3"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\correction-from-request-phone.png",
+      "sha256": "47a62bccac2b4b7d2a5fdfbc3f139c114b41fed0df5442af3742802b5b8def67"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\correction-from-request-phone.snapshot.txt",
+      "sha256": "c2e9466ea9f63c6e52d6fef620c390fe979f7297f26dc9f3dbcb60e60087d993"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\fixture-evidence.json",
+      "sha256": "133ee0ef3de3849269fbafa5420b52242d3a17d2ab1ac31b73d8c89f4c410e92"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\fixture-seed.log",
+      "sha256": "23de69dcea570af871b1b10a97b311cfbb255231e531c1f5b5b21aa2b061aec4"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-phone.facts.txt",
+      "sha256": "e88c0517cf9fe84324721ec7c6d85a272278bc29a7b4f2a59782e84bc1f04033"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-phone.png",
+      "sha256": "675a4030eae4234e28f0e78a926a50dc3c184c4bed03fb3b3a2d276d4afd1904"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-phone.snapshot.txt",
+      "sha256": "defefe1701fde4d354feef66aa7cedaa0d0f805edff40ca7ab2ea299402f9c49"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-reload.facts.txt",
+      "sha256": "3d13a2a019207921d796cbeb7dd282de13778ee129d95bcb9a320702916c7226"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-reload.png",
+      "sha256": "c3d0f722b2970eaa7aea3b2df5da574c9ddef5c52bac75efb379e8fff4e874d6"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\historical-reload.snapshot.txt",
+      "sha256": "9c31f650e6d77184fea9a755b76ca697f18820e6be01e0d9f43bb1eafa008db1"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\lost-response-network-evidence.json",
+      "sha256": "236d935d5016c324faa746a9427cafb155ba3368e4ea518368191f5f1300cabb"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\ordinary-rejection.facts.txt",
+      "sha256": "43c5e60f10229296bf51c7644b4c624642cdf38757858b1d455aa9f1ca052b8b"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\ordinary-rejection.png",
+      "sha256": "2c71ee997c77d549c63f43029d3783ab8a867c3785e876b2f5b3fbd8c3bf93d4"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\ordinary-rejection.snapshot.txt",
+      "sha256": "c4dd2e231702fdb2128cee417267225e1ab16311465e5a428e58bacf6bd2927f"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\prepare-evidence.json",
+      "sha256": "0e49070d6bbd5bccab2c578b6ead86522b28026ee712c9558f4d77477a95bc13"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\prepare-first-attempt-evidence.json",
+      "sha256": "9e6497f969d037697c0b548f78c12933c39ec2b74804e0aa66658e35a453521c"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\process-evidence.json",
+      "sha256": "76a7959c5ffd0adbb44daf6051347631528880773bcfd0604fea77fc2720a162"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\proposal-form-facts.txt",
+      "sha256": "751085f1f048ed703e80c52159d429d2610e9dd99d7051d9dcba51ec3723e562"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\proposal-preview-failed.facts.txt",
+      "sha256": "f5cd3df7268d060c1ec8f815595b1e3f47c786b6d5282743fcceb225ebd5baf9"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\proposal-preview-failed.png",
+      "sha256": "36c5b5fefbb60ea5c78b9f33d41278b689b942bb2687f4e3d5ab21b9cad5f1bf"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\proposal-preview-failed.snapshot.txt",
+      "sha256": "d7f9b26e7a7476a295509d61617b9ae9f523c31a6717ee8f03e7be87f49ad6fa"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\proposal-rpc-diagnostic.json",
+      "sha256": "771f223180bcc332978f793da110abf54460d4d5ad5d0683057b7f86894d2139"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovered-case-open-failed.facts.txt",
+      "sha256": "86c4fc3438c8c7ddf133453f67099e153c1539eebf5ff8586d35ab71d88c58f6"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovered-case-open-failed.png",
+      "sha256": "2fb5b78f3f868b3fb56dd012205ff82d4119c66aaf56748399beb10e4f05ce5f"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovered-case-open-failed.snapshot.txt",
+      "sha256": "e2d150cb06343020d21fb02c3d696bbc298952fbb35a7f3be233ba3eb309de69"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovery-kind-component-tests.log",
+      "sha256": "86ee8d396fc8c391877ffebad126c22eb1af9a81d2f266dcbbe4ef8669cf9bc9"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovery-kind-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\recovery-kind-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\save-covered-phone.png",
+      "sha256": "47566a052df2c35311472737b5417c78fc594e6265e7f40ba96ef0f3321b84d4"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\save-lost-response.facts.txt",
+      "sha256": "f1d1c8c367cc4e60614e6f97b8860b02acb5de5e5cac61f18417d114458b1e90"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\save-lost-response.png",
+      "sha256": "ffe7ad2506423dba6ec27cf312fe53765283e52f8720551152f160e1a1b65889"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\save-lost-response.snapshot.txt",
+      "sha256": "0e3aa114e265310e9136c35ff5bcd2028f8c4ed76337281edb9e99d49618d03c"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-restored-phone.facts.txt",
+      "sha256": "b35d8aa9b8faa7983afbbc9da02a53da583683fe566ad93886e27d0319d6cf0c"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-restored-phone.png",
+      "sha256": "23f61dbe1b03bafe80eaa2a5051c98503ead171add83d1907975adb4c433ca81"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-restored-phone.snapshot.txt",
+      "sha256": "255aab05912f8108623960c0c86b7813571630e0d6b089d5a01ad0d8f588bafb"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-tablet.facts.txt",
+      "sha256": "160ad354d8ec76e9a05faf262c775ea171e4c0b75e7e43befa1c968635f7ee0b"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-tablet.png",
+      "sha256": "6b9b0b141bd0d8c23f2f41397cfae8ece9657ef06c784620ccd60cbe9070fe45"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\saved-proposal-tablet.snapshot.txt",
+      "sha256": "44f8547658e53e33e93173e9a60dd464c7e61cf821e45ac63b1a92ebc1cefb18"
+    },
+    {
+      "path": "C:\\Users\\DELL\\Documents\\Codex\\2026-10-03\\task-5\\browser-runtime\\server.log",
+      "sha256": "887d169dcd0a6fb4e21453c6616447b8437b8ce72caa8c64a5832f74530d2636"
+    }
+  ]
+}
