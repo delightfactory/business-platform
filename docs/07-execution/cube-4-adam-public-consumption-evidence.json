@@ -1,0 +1,143 @@
+{
+  "status": "PARTIAL_PUBLIC_CONSUMPTION_CHECKPOINT",
+  "sourceParent": "07807021f692e7a77ebe90e04ef33e2da4053b18",
+  "atUTC": "2026-10-04T00:57:21.609Z",
+  "schemaBaseline": 167,
+  "runtime": {
+    "runs": 0,
+    "packs": 0,
+    "users": 0,
+    "finals": 0,
+    "database": "business_platform_cube4_adam_closure_qa",
+    "postgres": "17.6",
+    "approvals": 0,
+    "candidates": 0,
+    "run_closures": 0,
+    "correction_closures": 0,
+    "public_run_function": true,
+    "public_batch_function": true
+  },
+  "code": [
+    {
+      "path": "supabase/migrations/20261003038000_cube4_public_finalization_consumption.sql",
+      "canonicalLF_SHA256": "c00e6c37a2e0e60f80de2fe0450d40ba691533a500a3a47575cb9001be92f987",
+      "expectedGitBlobOID": "1276b72c59824a3687af6d7bf665d7826d8be91a"
+    },
+    {
+      "path": "supabase/migrations/20261003039000_cube4_public_unpaid_replacement_consumption.sql",
+      "canonicalLF_SHA256": "d2fcaf7ac8ba912d5108b6ae676914634a25cc922acd58b8e5162357f15fbaa4",
+      "expectedGitBlobOID": "ce5348d9a4a2baf6a5889d368e4a9d0a61c2510f"
+    },
+    {
+      "path": "supabase/tests/cube4_public_finalization_consumption.test.sql",
+      "canonicalLF_SHA256": "9dee416e9bb76f71be62e5f22bb8f65518c548c8f24cdd9fa76d1a369a492dca",
+      "expectedGitBlobOID": "3928d6290a1f517a7fb2bc29b24235a7fac22cf9"
+    },
+    {
+      "path": "supabase/tests/cube4_public_unpaid_replacement_consumption.test.sql",
+      "canonicalLF_SHA256": "909231582dc088bbbd130621b5fe9862a6fd040185b65b38d3b19417adbe681d",
+      "expectedGitBlobOID": "fac2f199eda968501825264b684d7b6e4f7627a3"
+    }
+  ],
+  "tests": [
+    {
+      "name": "cube4_public_finalization_consumption.test.sql",
+      "baseline": 166,
+      "assertions": 18,
+      "status": "BOUNDED_SQL_PASS",
+      "scope": "Public ordinary unqualified refusal, flag spoof refusal, exact context/CAS, durable recovery fencing, no output."
+    },
+    {
+      "name": "cube4_public_unpaid_replacement_consumption.test.sql",
+      "baseline": 167,
+      "assertions": 18,
+      "status": "BOUNDED_SQL_PASS",
+      "scope": "Public mixed paid/unpaid batch unqualified refusal, exact context/CAS/current authority, durable fencing, unchanged originals/source/history, no replacements."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa-public-finalization-apply.json",
+      "sha256": "ae16bae8d72c1cf87313afae111fc332cb1f1cb26815bf95013ae123497891f5"
+    },
+    {
+      "path": "qa-public-finalization-apply.log",
+      "sha256": "78b179a074fd4b6381ffa04adec70cf221efb29b540f66f5857899f97a8efc74"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply.json",
+      "sha256": "2759459907939b1060c20c0db5f74cd5da4b2f14c809c497ca98080a90168e58"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply.log",
+      "sha256": "b2cebda5f658850020bf943feae7c225da224ebd99d5cb76903d927233c06035"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply-anchor-repair.json",
+      "sha256": "69c9e8f175e8d2897f7612e14e5f31e8803c6341f48017a02f1820cd4c16d377"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply-anchor-repair.log",
+      "sha256": "30592aca9b93c70b901829c05542d73181adc2fa40b387383865eebdbb696c5a"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply-compiled-anchor-repair.json",
+      "sha256": "375cb5828a4fe8aee294d206714d2bff3ce50159ab629413631b00176e4058a8"
+    },
+    {
+      "path": "qa-public-unpaid-finalization-apply-compiled-anchor-repair.log",
+      "sha256": "b75ca4a9f65e21e26df8cfcbd93297f7033320bbd9b3157cfd194edce3817788"
+    },
+    {
+      "path": "qa-test-cube4_public_finalization_consumption.test.sql.json",
+      "sha256": "6e2b10a421d0e1a857901d6d6f3f788e2279615342bbdb22898471a10832bd9c"
+    },
+    {
+      "path": "qa-test-cube4_public_finalization_consumption.test.sql.log",
+      "sha256": "5dbc136a23f082a55de672592eb65d055831bc803d20b8a1ab586fa41ea42ce5"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql.json",
+      "sha256": "77ede84621cd38d5d695f47983c4432b6616c63fc2a26a9fb2af8255a58bfe1a"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql.log",
+      "sha256": "010dd708d95b146afffcbf6024a5bfc90df8107639f6f7d6bcfbebaaeb8b9996"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql-fixture-retry.json",
+      "sha256": "9764b6c1cf02aeabc14806d429f4b2186ace1770f0ac29a402f3eae9441d75fe"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql-fixture-retry.log",
+      "sha256": "ee60601de9db4af496c22d6d1ceaaa96c7897df74b955b9aa110cfaef405f36e"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql-lineage-extension.json",
+      "sha256": "028687005706734d60bbf64ea9b5f04d035991d702fe255c9eafb16522890e33"
+    },
+    {
+      "path": "qa-test-cube4_public_unpaid_replacement_consumption.test.sql-lineage-extension.log",
+      "sha256": "0ef7b6c00ddb1b6daf3e3fee324fdbec720737c0737c7106ed57d5c409b2bb91"
+    },
+    {
+      "path": "browser-runtime-link-r2/cleanup-evidence.json",
+      "sha256": "0ab989133dc1ecd310305e5e3414dcd6f018edeff99823ffb9ac5cba5c292fb8"
+    }
+  ],
+  "notAccepted": [
+    "genuine financial qualification producer",
+    "qualified positive public finalization or unpaid replacement",
+    "public consumption UI journey",
+    "new command live concurrency/response-loss browser qualification",
+    "whole167 fresh/upgrade qualification"
+  ],
+  "remainingIndependentProgramming": [
+    "insured/month/multiple dated context and year composition",
+    "reviewed legal deduction-base/class/priority/cap producer",
+    "genuine full candidate qualification producer",
+    "UI and integrated public positive/recovery/concurrency acceptance"
+  ],
+  "externalBinding": "One referenced legal applicability/base/class/order/exception/insurance-month attribution and official expected-result package; frozen percentages/duration/YTD are not choices.",
+  "noOfficialOrCompleteCubePass": true
+}

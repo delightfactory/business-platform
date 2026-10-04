@@ -1,0 +1,94 @@
+{
+  "status": "PASS_AFFECTED_LINK_AND_BUILD",
+  "sourceSHA": "07807021f692e7a77ebe90e04ef33e2da4053b18",
+  "sourceTree": "ecbbb00214e99c8d5f458d0fa777fd1c9f2f2335",
+  "schemaBaseline": 165,
+  "atUTC": "2026-10-04T00:38:23.832Z",
+  "scope": "Actual production runtime; public save response loss, Reload, original receipt reconciliation and kind-correct saved case link. NONLEGAL prerequisite; no financial finalization qualification.",
+  "build": {
+    "SHA": "07807021f692e7a77ebe90e04ef33e2da4053b18",
+    "Tree": "ecbbb00214e99c8d5f458d0fa777fd1c9f2f2335",
+    "exitCode": 0,
+    "tool": "Next16.3.6 webpack production build",
+    "ownSyntheticPublicQAConfig": true,
+    "noSecretValuesRecorded": true
+  },
+  "db": {
+    "saved_case": "cdfc207d-0644-4c63-bd64-52116a34ad4e",
+    "case_status": "draft",
+    "final_outputs": 1,
+    "proposal_count": 1,
+    "original_binding_request": "24c2c851-ba3f-4de2-a337-c593895b5607"
+  },
+  "code": [
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/corrections/actions.ts",
+      "gitBlobOID": "a92e6621060198cbd7c47031638024b317751148",
+      "gitBlobSHA256": "91a244e19e8981b8ea094560ef300228f32418a31ef48ba25cd3886d170c8325"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+      "gitBlobOID": "730d29eb59378422be5a75249a3f1378adb21fd3",
+      "gitBlobSHA256": "a7d3def6c1f8229da8a5e54f8d3a11cbc543e7a17935594cfac329e07da8ea6b"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/corrections/rules.ts",
+      "gitBlobOID": "c597372af9d730df413b618f82ed7bc0b1ace973",
+      "gitBlobSHA256": "3e7b133a0f0d7401c09ae1a09e92cdafd775979c94846ae15371f0be80e9dd5c"
+    },
+    {
+      "path": "scripts/cube4-correction-restoration.test.mjs",
+      "gitBlobOID": "4180487627cf2706c639ac63da997e42ae2734f3",
+      "gitBlobSHA256": "ea4dc5e9bbf3d021ed2cf701bd070723cf0a876fbff21dd2490a3019d91fc0c3"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "repaired-recovery-link.facts.txt",
+      "sha256": "267be7ba57cbb9305497d779c7db1b1c15e5facc1a35db9c46089410ee15d23b"
+    },
+    {
+      "name": "repaired-case-after-daemon-relogin.snapshot.txt",
+      "sha256": "5842d853b3e12ca095a502b765c4cbb6bec1d84977f1b39627f0bf5b83ef62a7"
+    },
+    {
+      "name": "repaired-case-after-daemon-relogin.facts.txt",
+      "sha256": "5d4677f0c27182e19df6f59ead68b9991bd98703f0dcad92b7b5c80ff289d8f8"
+    },
+    {
+      "name": "repaired-case-after-daemon-relogin.png",
+      "sha256": "988621a5595f5d389091deee0cd5ce69d78554dd21198131995d27e7a835a814"
+    },
+    {
+      "name": "repaired-link-confirmed.db.json",
+      "sha256": "982376580b22344687449957a40f3d356904c87c57a6a59d6f625d8334856ce7"
+    },
+    {
+      "name": "build-evidence.json",
+      "sha256": "f684b85248b188c3b3d2531d3d40f4b35cf086bc46c40f34540760dcd72f1030"
+    },
+    {
+      "name": "build.log",
+      "sha256": "a6d4dd10985d7a5801c1644e23354b1b0c6aad9154dcfff83934d41c1dc1ef91"
+    },
+    {
+      "name": "lost-response-network-evidence.json",
+      "sha256": "7e0db7166eeebcbd62507887fa311b2b8740313c59a2027863220f7081dd5dfa"
+    },
+    {
+      "name": "affected-link-browser.log",
+      "sha256": "302f47de42fb3f3d894bba66ad7dd91fb23eed6a82f18300aa57a67d5bbd3f7b"
+    },
+    {
+      "name": "browser-command.log",
+      "sha256": "2a882dfafd49a1f18bd74434de104c26a026cd7b09f3a2200e9f7c76eec5f151"
+    }
+  ],
+  "observationCaveats": [
+    "Initial immediate-after-click screenshot was provisional and is not completed-navigation proof.",
+    "A subsequent capture failed after daemon version mismatch; escalation restarted only the task browser to about:blank. Normal synthetic login reopened the same saved case without repeating any write. Completed post-login URL, DOM and screenshot supply the final proof."
+  ],
+  "previousBrowserEvidence": "be842 evidence remains scoped to be842, not promoted to 078",
+  "canonicalHashNote": "Git blob hashes are the committed bytes. Prior repair.code workspace hashes are not canonical commit hashes.",
+  "officialQualification": false
+}
