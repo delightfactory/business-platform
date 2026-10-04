@@ -1,5 +1,20 @@
 # Cube 4 decision and acceptance register
 
+## ADAM loan UI and reviewed full-month insurance checkpoint, 2026-10-04
+
+Code 2a91aa39b8697dc514245b872d814f295f2c228f, tree 7fd1196bfc8720b3260be661141895438efc989e, schema172. [Integrated loan and insurance evidence](cube-4-adam-loan-insurance-integrated-evidence.json) binds 9 changed code/test blobs, 63 frozen loan artifacts and 53 new checkpoint artifacts. Resume was from accepted045f581; no new large unit started after ADAM requested this checkpoint.
+
+| Journey | Evidence and bounded acceptance | Remaining boundary |
+| --- | --- | --- |
+| Loan source activation/recovery, aggregate capacity, approved full deferral, August calculation/approval/finalization/recovery/payslip | Actual ordinary-auth UI:33000 gross,3300 tax,3300 loan,26400 net; sibling1000 deferred once to one September target; lost successful activation and finalization recovered exact original receipts, no business changes or repeated deductions | CLOSED bounded monthly/base/single-context/year uninsured UI. General25percent/priority remains OPEN |
+| Reviewed insurance month source and public producer |43000 adds explicit month, owning period and reviewed reference in existing dated source/form; requires full covered civil month and independent qualified insurance pack; immutable authoritative employee-month claim prevents repeated consumption; exact unpaid original can be replaced without deleting history | CLOSED bounded full-month/single-context/year insured producer with optional source loan; cutoff/join/end/multiple-context/year remain OPEN approved scope |
+| Insured September UI with August/YTD and deferred loan | Actual source save, calculation/explanation, approval, mobile atomic finalize/lost200/Reload/original reconcile/protected payslip:33000 gross,employee100,employer200,tax3290,loan1000,net28610;30 receipts stable; both loans settled, three prior frozen rows unchanged, no new period | CLOSED bounded actual UI on e183908; external issuer is exact scoped NONLEGAL QA dependency only |
+| Unpaid insured replacement, rollback/replay, ownership negatives and old profiles | Same schema172 affected SQL39 insured+28 nondebt+39 loan pass; source transport5, typecheck/lint/build pass. Installed43000 regression retained and repaired by44000 | Full172 replay and final same-SHA/tree integrated qualification OPEN; no broad PASS claim |
+| Review copy and pending recovery | Unknown-result copy no longer claims no consumption; real insured lost-response screen proves original recovery instruction. Two misleading employer-cost/blocker display strings repaired in2a91aa3 after UI journey; typecheck/lint/build pass | Post-copy browser rendering not rerun; no financial behavior changed or successful mutation repeated |
+
+All earlier entries remain historical. Full terminal entitlement, broad wage/deduction limits, cross-context/year/month composition, paid/report/race integrated qualification and official2026 validation remain essential gaps. External termination loan settlement is not full entitlement calculation. Only aggregate10percent employer-loan ceiling is integrated. No official issuance/production release/wholeCube claim. Own browser/Next/gateway/Auth/REST stopped; task QA and temporary authorized Auth retained for immediate same-task resume, cleanup required at task completion. No Actions/fetch/push/merge/deploy/production changes.
+
+
 ## Current ADAM requested safe checkpoint, 2026-10-04
 
 Code 7c5c69bdcca8764d3f84b1f733b5d8d806a4def8, tree 68410f83e03dfeb6c3171b1807878aa3e75ac462, schema170. Direct parent0007c1b; that parent repairs missing amendment review money and follows2190ed1. [Integrated unpaid UI and employer-loan evidence](cube-4-adam-loan-unpaid-integrated-evidence.json) binds seven code blobs and 80 frozen artifacts. ADAM requested pause before another unit; task remains active. Delta since2190: two local code commits, with the register/evidence commit following them; previous entries and failed evidence are preserved.
