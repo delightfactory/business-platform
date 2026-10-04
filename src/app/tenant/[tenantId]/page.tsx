@@ -33,6 +33,14 @@ export default async function TenantPage({ params, searchParams }: {
     return <TenantStatus title="المساحة غير متاحة" detail="تعذر التحقق من حالة الشركة." showSwitch />;
   }
 
+  const [mobileAttendance, channelAccess] = await Promise.all([
+    supabase.rpc('attendance_mobile_snapshot', { p_tenant: tenantId }),
+    supabase.rpc('attendance_channel_access', { p_tenant: tenantId }),
+  ]);
+  const attendanceLinks = <div className="workspace-form-actions">
+    {!mobileAttendance.error && mobileAttendance.data && <Link className="primary-button" href={`/tenant/${tenantId}/me/attendance`}>حضوري</Link>}
+    {!channelAccess.error && channelAccess.data?.can_view === true && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</Link>}
+  </div>;
   const { data: adminData, error: adminError } = await supabase.rpc('tenant_admin_snapshot', { p_tenant_id: tenantId });
   if (adminError) {
     const { data: memberData, error: memberError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
@@ -46,6 +54,7 @@ export default async function TenantPage({ params, searchParams }: {
         <section className="work-card" aria-labelledby="tenant-title">
           <p className="eyebrow">مساحة الشركة</p><h1 id="tenant-title">{String(member.tenant_name ?? 'الشركة')}</h1>
           <p className="intro">أنت عضو في هذه الشركة.</p>
+          {attendanceLinks}
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
         </section>
@@ -76,6 +85,7 @@ export default async function TenantPage({ params, searchParams }: {
             <span className="entity-status is-active">{lifecycleText(snapshot.lifecycle_state)}</span></div>
           <p>تابع إعداد الشركة واستخدامها من مكان واحد.</p>
         </header>
+        {attendanceLinks}
         <section className="tenant-home-summary" aria-labelledby="tenant-summary-title">
           <h2 id="tenant-summary-title">لمحة سريعة</h2>
           <dl className="snapshot-grid">

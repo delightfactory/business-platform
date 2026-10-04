@@ -20,6 +20,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   const { data: access, error: accessError } = await supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId });
   if (accessError || !isObject(access)) return <PageFrame><Status title="الحضور غير متاح" text="لا تملك صلاحية عرض الحضور أو أن وحدة الحضور غير مفعلة لهذه الشركة." /></PageFrame>;
   const canManage = access.can_manage === true;
+  const { data: channelAccess, error: channelAccessError } = await supabase.rpc('attendance_channel_access', { p_tenant: tenantId });
   const entitlementEnabled = access.entitlement_enabled === true;
   const canOpen = canManage || access.can_correct === true || access.can_approve === true;
   const result = canOpen
@@ -42,6 +43,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
         <p className="eyebrow">متابعة يوم العمل</p>
         <div className="workspace-page-heading"><div><h1 id="attendance-title">الحضور اليومي</h1><p className="field-hint">اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام.</p></div></div>
         {!entitlementEnabled && <p className="form-message">وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</p>}
+        {!channelAccessError && channelAccess?.can_view === true && <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</Link></div>}
         <form method="get" className="attendance-date-form"><label htmlFor="attendance-date">تاريخ العمل</label><input id="attendance-date" type="date" name="date" defaultValue={day} /><button className="primary-button" type="submit">عرض اليوم</button></form>
         {canManage && <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</Link></div>}
         {access.can_view === true && <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</Link></div>}

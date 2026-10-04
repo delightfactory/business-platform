@@ -670,3 +670,24 @@
   .workspace-link-progress { transition: none; }
   .button-spinner, .workspace-link-loading { animation: none; }
 }
+
+/* Cube5 attendance journeys: bounded readable cards and touch/keyboard targets. */
+.channel-page { --control-height: var(--touch-target-size); width: min(100%, var(--work-content-max, 72rem)); margin-inline: auto; display: grid; gap: 1.25rem; min-width: 0; }
+.channel-page :is(button, .primary-button, .secondary-button, summary) { min-height: var(--touch-target-size); }
+.channel-page summary { display: flex; align-items: center; cursor: pointer; padding-block: .5rem; }
+.channel-page :is(input, select, textarea) { width: 100%; min-width: 0; min-height: var(--touch-target-size); }
+.channel-page :is(fieldset, .record-main, .workspace-records-panel, .workspace-form-panel) { min-width: 0; }
+.channel-page .record-card { align-items: start; flex-wrap: wrap; }
+.channel-page :is(p, dd, h1, h2, h3, bdi) { overflow-wrap: anywhere; }
+.channel-mobile-layout { display: grid; gap: 1.25rem; align-items: start; min-width: 0; }
+.channel-punch .primary-button { width: 100%; }
+.channel-outcome { min-height: 2.75rem; padding-block: .5rem; outline-offset: .3rem; }
+.channel-form { max-width: 42rem; }
+.channel-form fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: .6rem; }
+.channel-form fieldset > div { display: grid; gap: .4rem; }
+.channel-form fieldset:disabled { opacity: .75; }
+.channel-search { display: grid; gap: .5rem; margin-block: 1rem; max-width: 42rem; }
+.channel-page details .channel-form { margin-block: 1rem; }
+.channel-page .workspace-form-actions { align-items: stretch; }
+@media (min-width: 1100px) { .channel-mobile-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); } }
+@media (max-width: 900px) { .channel-page .workspace-form-actions > :is(button,a) { flex: 1 1 100%; } .channel-page .record-card > .secondary-button { width: 100%; } }
