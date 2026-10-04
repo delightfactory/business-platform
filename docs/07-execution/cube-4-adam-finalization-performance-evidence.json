@@ -1,0 +1,736 @@
+{
+  "status": "BOUNDED_FINALIZATION_TIMEOUT_AND_RECOVERY_ACCEPTED",
+  "codeSHA": "cd0726a128b202e12a071ea0c0fbcc0db5a5f6cb",
+  "tree": "a069de2ed10cc5f343f7258677711a37f2040b2f",
+  "applicationBuildSHA": "e23173a4a27dcee6dfc39cd91a1658e9c1b423dd",
+  "applicationSourceUnchanged": true,
+  "schemaBaseline": 182,
+  "DDLHash": "0c3757e69ec45beee8cc72850558537ba01f1fec27979cdc4738d3c068afb612",
+  "assertions": 17,
+  "assertionMetadataNote": "Frozen runner regex counted16 because the NULL case ok8 has no description dash; pgtap plan is17, all17 pass. No rerun or artifact rewrite.",
+  "runtime": "Existing task-owned PostgreSQL17/GoTrue/PostgREST/Next on QA only; authenticated/authenticator8s retained; no timeout setting change",
+  "candidate": "0d67eeca-998f-4b42-b8ac-8cad5f94ae2f",
+  "run": "574b5cf3-3c80-44dc-9f29-24fd3c496228",
+  "approvedRevision": 2,
+  "rootCause": "Four currentness/readiness validations recaptured31-day coverage; time.resolve_local paid full timezone-catalog and ambiguity checks twice per day even for fixedUTC",
+  "before": {
+    "actualHTTPStatus": 500,
+    "actualHTTPCode": "57014",
+    "statementTimeoutMS": 8000,
+    "readinessMS": 2411.265,
+    "sourceCurrentnessMS": 2487.687
+  },
+  "after": {
+    "actualHTTPStatus": 200,
+    "actualHTTPMS": 746,
+    "readinessMS": 225.71,
+    "sourceCurrentnessMS": 148.673
+  },
+  "financialFacts": {
+    "runs": [
+      {
+        "id": "574b5cf3-3c80-44dc-9f29-24fd3c496228",
+        "status": "locked",
+        "revision": 3,
+        "candidate": "0d67eeca-998f-4b42-b8ac-8cad5f94ae2f"
+      }
+    ],
+    "finals": [
+      {
+        "net": 27952.32,
+        "gross": "31258.060000000000",
+        "output": "b3fb428e-e1bc-46e1-a703-c8a5da494411",
+        "source_summary": {
+          "status": "reconciliation_ready",
+          "coverage": "operational_complete",
+          "day_count": 31,
+          "issue_count": 0,
+          "source_count": 31,
+          "time_enabled": true,
+          "absence_units": 1,
+          "leave_enabled": false,
+          "payroll_ready": false,
+          "time_coverage": {
+            "status": "observationally_complete",
+            "enabled": true,
+            "day_count": 31,
+            "future_days": 0,
+            "missing_days": 0,
+            "pending_days": 0,
+            "approved_days": 31,
+            "expected_days": 31,
+            "payroll_ready": false,
+            "other_review_days": 0
+          },
+          "worked_minutes": 14400,
+          "selected_source": "monthly_approved_sources",
+          "paid_leave_units": 0,
+          "time_leave_units": 0,
+          "unpaid_leave_units": 0,
+          "operational_complete": true
+        },
+        "explanationHash": "469fb3b446b862533d6e726ae46a1b0e",
+        "statutory_deductions": "3305.74"
+      }
+    ],
+    "tenant": "d6201000-0000-4000-8000-000000000001",
+    "bindings": [
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "e64dde96-5edb-4dba-9d62-54b220f47a76",
+          "work_instance_id": "094e3be6-653d-4cd4-9eb4-ff72e0fe28a6",
+          "interpretation_id": "c6473916-f091-4fe4-b5c5-6ebbee0324bc"
+        },
+        "source_key": "time:094e3be6-653d-4cd4-9eb4-ff72e0fe28a6:e64dde96-5edb-4dba-9d62-54b220f47a76:1:c6473916-f091-4fe4-b5c5-6ebbee0324bc:1",
+        "source_date": "2026-01-11",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "61aeea45-c334-444e-b2e7-ae70b4504e33",
+          "work_instance_id": "0ba15ad1-3dd1-40ea-b08d-0475f1b34cfe",
+          "interpretation_id": "f7d84243-1b9a-4886-a3e4-c18e11baf55b"
+        },
+        "source_key": "time:0ba15ad1-3dd1-40ea-b08d-0475f1b34cfe:61aeea45-c334-444e-b2e7-ae70b4504e33:1:f7d84243-1b9a-4886-a3e4-c18e11baf55b:1",
+        "source_date": "2026-01-04",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "6ea7c2fb-1a65-4195-b468-d33c7823d084",
+          "work_instance_id": "0e413610-d3ce-444b-b8af-3e61e7eeea85",
+          "interpretation_id": "56bb76b1-2d59-4706-bdf7-d28f84ddcf35"
+        },
+        "source_key": "time:0e413610-d3ce-444b-b8af-3e61e7eeea85:6ea7c2fb-1a65-4195-b468-d33c7823d084:1:56bb76b1-2d59-4706-bdf7-d28f84ddcf35:1",
+        "source_date": "2026-01-12",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "4528ff86-eb44-4b67-806a-4976c8ba3715",
+          "work_instance_id": "14cbe40c-bf1f-4f2d-93cf-9e01f38cd221",
+          "interpretation_id": "9ab8a1e8-d92a-41d6-a85a-9e1122b62cc5"
+        },
+        "source_key": "time:14cbe40c-bf1f-4f2d-93cf-9e01f38cd221:4528ff86-eb44-4b67-806a-4976c8ba3715:1:9ab8a1e8-d92a-41d6-a85a-9e1122b62cc5:1",
+        "source_date": "2026-01-03",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "849c0d03-775f-4ad0-a32a-9ab14df6fa86",
+          "work_instance_id": "1f393144-4000-4a62-b525-9a664688e427",
+          "interpretation_id": "f58d06d5-2b62-4705-bcce-03bd24f24c9a"
+        },
+        "source_key": "time:1f393144-4000-4a62-b525-9a664688e427:849c0d03-775f-4ad0-a32a-9ab14df6fa86:1:f58d06d5-2b62-4705-bcce-03bd24f24c9a:1",
+        "source_date": "2026-01-19",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "98af76e8-405d-4369-b2cf-0bea5044b059",
+          "work_instance_id": "2ffb0c02-999a-4eee-8390-c181c142ef70",
+          "interpretation_id": "bd7e7e10-8662-4517-84f8-7c04f6ed448e"
+        },
+        "source_key": "time:2ffb0c02-999a-4eee-8390-c181c142ef70:98af76e8-405d-4369-b2cf-0bea5044b059:1:bd7e7e10-8662-4517-84f8-7c04f6ed448e:1",
+        "source_date": "2026-01-15",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "592a644f-f973-4301-a116-7785a712272b",
+          "work_instance_id": "41650b82-52d7-426f-8079-f6ce999e3f96",
+          "interpretation_id": "d652174d-cf3f-49bb-bc6e-d4692fa3ae2a"
+        },
+        "source_key": "time:41650b82-52d7-426f-8079-f6ce999e3f96:592a644f-f973-4301-a116-7785a712272b:1:d652174d-cf3f-49bb-bc6e-d4692fa3ae2a:1",
+        "source_date": "2026-01-23",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "34ccabb2-b3b0-498b-b759-c5fbc515bb5d",
+          "work_instance_id": "4a7ab8da-ab1c-4cab-8d11-203d2f9ac3e0",
+          "interpretation_id": "9ae8a4e9-f49b-47b8-a004-13587d152830"
+        },
+        "source_key": "time:4a7ab8da-ab1c-4cab-8d11-203d2f9ac3e0:34ccabb2-b3b0-498b-b759-c5fbc515bb5d:1:9ae8a4e9-f49b-47b8-a004-13587d152830:1",
+        "source_date": "2025-12-31",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "1c3e40cc-b080-4955-9c0d-9fd39c8c1660",
+          "work_instance_id": "5174b56e-1035-4607-95e2-4b60d234f37e",
+          "interpretation_id": "5f9efb0c-6279-4a97-80d4-80504488a98b"
+        },
+        "source_key": "time:5174b56e-1035-4607-95e2-4b60d234f37e:1c3e40cc-b080-4955-9c0d-9fd39c8c1660:1:5f9efb0c-6279-4a97-80d4-80504488a98b:1",
+        "source_date": "2025-12-27",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "42d04543-4d73-4823-9c45-7b85130a57d7",
+          "work_instance_id": "5558e3bb-bb6b-47ed-a628-ae5d6e4abc98",
+          "interpretation_id": "c75c0f36-48e4-4503-8994-f2cdcb9aae1d"
+        },
+        "source_key": "time:5558e3bb-bb6b-47ed-a628-ae5d6e4abc98:42d04543-4d73-4823-9c45-7b85130a57d7:1:c75c0f36-48e4-4503-8994-f2cdcb9aae1d:1",
+        "source_date": "2026-01-01",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "65256cd9-b8c2-4596-af4b-745c0b0e6988",
+          "work_instance_id": "5dfe561a-829c-441f-98f9-0e51d20c00a3",
+          "interpretation_id": "76c6f744-fd42-427a-a2c1-9c919cb73699"
+        },
+        "source_key": "time:5dfe561a-829c-441f-98f9-0e51d20c00a3:65256cd9-b8c2-4596-af4b-745c0b0e6988:1:76c6f744-fd42-427a-a2c1-9c919cb73699:1",
+        "source_date": "2026-01-17",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "b0306703-fe25-4dfb-af36-b90ca433dc15",
+          "work_instance_id": "60b52785-6f8d-41d6-9cab-a74db3feead2",
+          "interpretation_id": "042a6f06-aba5-457f-bfc5-ae63438a7cf3"
+        },
+        "source_key": "time:60b52785-6f8d-41d6-9cab-a74db3feead2:b0306703-fe25-4dfb-af36-b90ca433dc15:1:042a6f06-aba5-457f-bfc5-ae63438a7cf3:1",
+        "source_date": "2026-01-08",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "0b33215b-1049-429f-86c1-6b7a00032dc7",
+          "work_instance_id": "6abf2a17-a6cb-41f8-ba1a-78d60be69637",
+          "interpretation_id": "c76f1716-425d-4bbe-ba5a-bbb050e871db"
+        },
+        "source_key": "time:6abf2a17-a6cb-41f8-ba1a-78d60be69637:0b33215b-1049-429f-86c1-6b7a00032dc7:1:c76f1716-425d-4bbe-ba5a-bbb050e871db:1",
+        "source_date": "2026-01-13",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "b503ca6a-3f92-4861-9bd2-62b23ecc8633",
+          "work_instance_id": "7985ad50-cf80-4487-ae57-37dc54b371ce",
+          "interpretation_id": "9742b843-0159-46a1-99d4-4938da6dca0d"
+        },
+        "source_key": "time:7985ad50-cf80-4487-ae57-37dc54b371ce:b503ca6a-3f92-4861-9bd2-62b23ecc8633:1:9742b843-0159-46a1-99d4-4938da6dca0d:1",
+        "source_date": "2026-01-18",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "ccbe5ed1-7049-4e3f-beae-ce8aa997915b",
+          "work_instance_id": "89e7f883-a07f-4bb9-8501-69b4130b0a6c",
+          "interpretation_id": "5bb13cb1-fcf2-4cb9-b70b-7c0852a0ce99"
+        },
+        "source_key": "time:89e7f883-a07f-4bb9-8501-69b4130b0a6c:ccbe5ed1-7049-4e3f-beae-ce8aa997915b:1:5bb13cb1-fcf2-4cb9-b70b-7c0852a0ce99:1",
+        "source_date": "2025-12-26",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "b6492275-fa0b-465a-8747-7219de314bd4",
+          "work_instance_id": "8a35abb4-b973-4c56-9d5d-4124a2c69f2b",
+          "interpretation_id": "d9fa215f-43a0-401e-8c0b-f6b97cdfd420"
+        },
+        "source_key": "time:8a35abb4-b973-4c56-9d5d-4124a2c69f2b:b6492275-fa0b-465a-8747-7219de314bd4:1:d9fa215f-43a0-401e-8c0b-f6b97cdfd420:1",
+        "source_date": "2026-01-20",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "e331e7b6-f878-4c0d-a701-d9649380c2bf",
+          "work_instance_id": "a0738170-09ce-4780-b4cf-992de17aa892",
+          "interpretation_id": "8e878b18-d5ff-4282-a35a-46520d669dba"
+        },
+        "source_key": "time:a0738170-09ce-4780-b4cf-992de17aa892:e331e7b6-f878-4c0d-a701-d9649380c2bf:1:8e878b18-d5ff-4282-a35a-46520d669dba:1",
+        "source_date": "2025-12-28",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "f56b55ca-c76c-41a7-be3c-d65074521221",
+          "work_instance_id": "a51688e8-713f-4c28-a19b-6d2580d8ef43",
+          "interpretation_id": "985201b0-5a8a-4411-a624-0c19be0d0f86"
+        },
+        "source_key": "time:a51688e8-713f-4c28-a19b-6d2580d8ef43:f56b55ca-c76c-41a7-be3c-d65074521221:1:985201b0-5a8a-4411-a624-0c19be0d0f86:1",
+        "source_date": "2026-01-24",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "26af8ce7-71a8-4ba8-98c9-75cd300e6433",
+          "work_instance_id": "b3cec317-6a85-4e3e-9708-09e021f3cdab",
+          "interpretation_id": "0b0b39bb-0cb8-476e-a8dd-4f5352d0ad6d"
+        },
+        "source_key": "time:b3cec317-6a85-4e3e-9708-09e021f3cdab:26af8ce7-71a8-4ba8-98c9-75cd300e6433:1:0b0b39bb-0cb8-476e-a8dd-4f5352d0ad6d:1",
+        "source_date": "2026-01-05",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "0cdfc339-72a7-4dc8-849c-019c0fa0704b",
+          "work_instance_id": "c8fd7a33-d3ce-4da1-8d67-0767fc4b2901",
+          "interpretation_id": "310a682e-cb8d-4dda-91ff-0da64a8db937"
+        },
+        "source_key": "time:c8fd7a33-d3ce-4da1-8d67-0767fc4b2901:0cdfc339-72a7-4dc8-849c-019c0fa0704b:1:310a682e-cb8d-4dda-91ff-0da64a8db937:1",
+        "source_date": "2025-12-30",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "b2166c15-ace0-486d-ba35-b7d478a67b26",
+          "work_instance_id": "d384b19f-bb5e-4c38-b6c5-bb2208f57138",
+          "interpretation_id": "1d25675d-b4cf-49df-b047-aea9dbf94e07"
+        },
+        "source_key": "time:d384b19f-bb5e-4c38-b6c5-bb2208f57138:b2166c15-ace0-486d-ba35-b7d478a67b26:1:1d25675d-b4cf-49df-b047-aea9dbf94e07:1",
+        "source_date": "2026-01-07",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "5b44b273-275a-4549-80f9-f5bea6ca543c",
+          "work_instance_id": "d8608edf-2f7e-47fe-8fa4-c1491e686b78",
+          "interpretation_id": "60b612ee-968a-4d84-9db8-944f9aff1a7d"
+        },
+        "source_key": "time:d8608edf-2f7e-47fe-8fa4-c1491e686b78:5b44b273-275a-4549-80f9-f5bea6ca543c:1:60b612ee-968a-4d84-9db8-944f9aff1a7d:1",
+        "source_date": "2026-01-21",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "50b64b18-35cc-476f-9b74-e57998eeda81",
+          "work_instance_id": "d949f18d-88b8-41a3-a227-aab9bcccd439",
+          "interpretation_id": "6fa88ca8-f81c-47e6-87fc-ebc6e4dee30b"
+        },
+        "source_key": "time:d949f18d-88b8-41a3-a227-aab9bcccd439:50b64b18-35cc-476f-9b74-e57998eeda81:1:6fa88ca8-f81c-47e6-87fc-ebc6e4dee30b:1",
+        "source_date": "2025-12-25",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "4e50477b-56b5-4169-8e89-bda40877274b",
+          "work_instance_id": "df338a13-d023-4738-b798-1da5bfd867e9",
+          "interpretation_id": "cddadf1f-6b18-4e58-a05e-0f99341ace23"
+        },
+        "source_key": "time:df338a13-d023-4738-b798-1da5bfd867e9:4e50477b-56b5-4169-8e89-bda40877274b:1:cddadf1f-6b18-4e58-a05e-0f99341ace23:1",
+        "source_date": "2025-12-29",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "deff18bd-7c9a-4246-8d42-c1a88c50acb5",
+          "work_instance_id": "df97b316-4e38-47f0-91ef-3c90319f73ff",
+          "interpretation_id": "976890ce-2148-4e71-8db2-06a771a4730d"
+        },
+        "source_key": "time:df97b316-4e38-47f0-91ef-3c90319f73ff:deff18bd-7c9a-4246-8d42-c1a88c50acb5:1:976890ce-2148-4e71-8db2-06a771a4730d:1",
+        "source_date": "2026-01-16",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "e905eab3-3f7d-45c0-9661-821ec0df5bab",
+          "work_instance_id": "e821d7cd-b01b-4a67-8e29-0c285876668e",
+          "interpretation_id": "25d0300c-39d6-4962-8ae3-f9a98062d04f"
+        },
+        "source_key": "time:e821d7cd-b01b-4a67-8e29-0c285876668e:e905eab3-3f7d-45c0-9661-821ec0df5bab:1:25d0300c-39d6-4962-8ae3-f9a98062d04f:1",
+        "source_date": "2026-01-06",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "dcffc483-86d4-4f05-8453-983171b5d6af",
+          "work_instance_id": "eae0abfd-4eb4-4385-80a9-50c4e7c50b95",
+          "interpretation_id": "64d36d8e-98fd-4f3e-9280-a1c25bf99684"
+        },
+        "source_key": "time:eae0abfd-4eb4-4385-80a9-50c4e7c50b95:dcffc483-86d4-4f05-8453-983171b5d6af:1:64d36d8e-98fd-4f3e-9280-a1c25bf99684:1",
+        "source_date": "2026-01-10",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "26cc85b4-ca8a-4deb-897b-edc49397b9ea",
+          "work_instance_id": "eae4dfe7-7b02-4aea-a250-00067a5d292f",
+          "interpretation_id": "0a5b13a5-afee-4aa4-b995-08cfd1c9a678"
+        },
+        "source_key": "time:eae4dfe7-7b02-4aea-a250-00067a5d292f:26cc85b4-ca8a-4deb-897b-edc49397b9ea:1:0a5b13a5-afee-4aa4-b995-08cfd1c9a678:1",
+        "source_date": "2026-01-22",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "a3baa76e-ce75-4e1b-82d3-7ec7f6fe5043",
+          "work_instance_id": "ec41e4d6-bf5e-4feb-b207-58abc25677af",
+          "interpretation_id": "d628cd65-9fc5-49d0-b23e-9f9295bb4dad"
+        },
+        "source_key": "time:ec41e4d6-bf5e-4feb-b207-58abc25677af:a3baa76e-ce75-4e1b-82d3-7ec7f6fe5043:1:d628cd65-9fc5-49d0-b23e-9f9295bb4dad:1",
+        "source_date": "2026-01-09",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "9f631a7e-0d2e-47a6-8ba2-908b434166f8",
+          "work_instance_id": "f1f2b76c-6802-4f7e-ade1-de8175b8ee33",
+          "interpretation_id": "8ae6e4ba-b414-4406-9c7d-502f11a30a7d"
+        },
+        "source_key": "time:f1f2b76c-6802-4f7e-ade1-de8175b8ee33:9f631a7e-0d2e-47a6-8ba2-908b434166f8:1:8ae6e4ba-b414-4406-9c7d-502f11a30a7d:1",
+        "source_date": "2026-01-14",
+        "source_domain": "time"
+      },
+      {
+        "version": {
+          "fact_version": 1,
+          "interpretation_version": 1
+        },
+        "identity": {
+          "fact_id": "6bc752d7-0a56-448c-b851-ad793f165aa9",
+          "work_instance_id": "fabc9067-ea18-4b5c-9621-456129afdf6e",
+          "interpretation_id": "ae2001ef-2706-40e2-9617-dbde590028cd"
+        },
+        "source_key": "time:fabc9067-ea18-4b5c-9621-456129afdf6e:6bc752d7-0a56-448c-b851-ad793f165aa9:1:ae2001ef-2706-40e2-9617-dbde590028cd:1",
+        "source_date": "2026-01-02",
+        "source_domain": "time"
+      }
+    ],
+    "receipts": 7,
+    "priorLoans": {
+      "hash": "67d28c2da31ef7c7291914e2ec55d787",
+      "count": 2
+    },
+    "priorFinals": {
+      "hash": "993c45f20568a68c4571557444dfb9ec",
+      "count": 8
+    },
+    "frozenInputs": 4
+  },
+  "recoveryFinancialFactsExact": true,
+  "viewport": {
+    "width": 390,
+    "scrollWidth": 390,
+    "visuallyInspected": true
+  },
+  "guards": "Locks, current authorization, all freshness passes, transaction, input freeze, source bindings, durable receipts and original fences retained; UTC equivalent resolution only, nonUTC fallback unchanged",
+  "legalBoundary": "Scoped NONLEGAL QA issuer data, no official legal acceptance and no wholeCube closure",
+  "servicesStopped": true,
+  "artifacts": [
+    {
+      "path": "performance-finalization/baseline-read-stages.json",
+      "bytes": 680,
+      "sha256": "8a76850f70bc59bb4c5f58620ac120455ff589e0da619ef73809470d18b76871"
+    },
+    {
+      "path": "performance-finalization/baseline-read-stages.log",
+      "bytes": 465,
+      "sha256": "f99fd436425ec0f7bc288063f04f81144da59828c2358ea86d52bbe23b3c3af6"
+    },
+    {
+      "path": "performance-finalization/baseline-capture-stages.json",
+      "bytes": 569,
+      "sha256": "ed8d2848da61687b1f796ec5387e092b7fd25f4f982d1b9021d02ff10c55ddd6"
+    },
+    {
+      "path": "performance-finalization/baseline-capture-stages.log",
+      "bytes": 371,
+      "sha256": "ceb12727feaf42aabb1855ee0fa0a3ecadcd6698dec0e7b3a942c3be17912f8f"
+    },
+    {
+      "path": "performance-finalization/baseline-function-identities.json",
+      "bytes": 34939,
+      "sha256": "2c3a53fe4cf34d9cf5da7b13a77fbd8ba728110e7b8de044e2918696820d6679"
+    },
+    {
+      "path": "performance-finalization/baseline-capture-functions.json",
+      "bytes": 18739,
+      "sha256": "655d59cedbcc9f8b6bb9d089c9201e5d18b676e80586c558a5e798b72164da05"
+    },
+    {
+      "path": "performance-finalization/optimized-read-stages.json",
+      "bytes": 678,
+      "sha256": "3ccec3e0a6ab4bc17304482c93485a8ffb456b10326109071cea4b6169499ade"
+    },
+    {
+      "path": "performance-finalization/optimized-read-stages.log",
+      "bytes": 490,
+      "sha256": "faddd47675e10a900eaeaf7614c42bb5c743ac4ab2347968d4ca8bf142f965d8"
+    },
+    {
+      "path": "performance-finalization/utc-resolution-regression.json",
+      "bytes": 282,
+      "sha256": "6b528922dc134e36cc0affeb53b7b6b2ad38f33e35a1f67881716927280f04a9"
+    },
+    {
+      "path": "performance-finalization/utc-resolution-regression.log",
+      "bytes": 1186,
+      "sha256": "baf6e994f32ce0b44aff3a8ecbe258023a73c61bc0467520e9d1804ece0ea23e"
+    },
+    {
+      "path": "performance-finalization/utc-resolution-regression-final.json",
+      "bytes": 298,
+      "sha256": "818602d5b7c4e1cb621c97991def05e36f238bd4286084040227126461a38fee"
+    },
+    {
+      "path": "performance-finalization/utc-resolution-regression-final.log",
+      "bytes": 2170,
+      "sha256": "e40bcb34a51b7dc602e94620ed0bd2e9866e92bac9c373c7ec56cd5109f8dddd"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 17151,
+      "sha256": "e38ac99746f8f9b93755d8dcb56f24670342ed1fd41017b57874f0093c120b79"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 17152,
+      "sha256": "4faf2878ffad620d182fb03599007c4f0fdf9435756d74ee574172d5cc6639a9"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 17178,
+      "sha256": "5f7de572b47d42ad900a4fbf8eb61000509f45b5e52518974e068ca864028db5"
+    },
+    {
+      "path": "qa-utc-coverage-install-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 41,
+      "sha256": "4fc1d29e76069e6c99f9eb390be2c6fcea8ed5121dbbaf6dcb0208e3b0c17f05"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-before.snapshot.txt",
+      "bytes": 8414,
+      "sha256": "1b6f1df18ccca66e846f22f4c6d856705fd2b3ea56e47938b08a7b72e31f20d6"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-before.facts.txt",
+      "bytes": 275,
+      "sha256": "b3c2f97dc8d9e90fbee5b3c4769ac1c789eefadb04829a780045c350dac15ade"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-before.png",
+      "bytes": 220340,
+      "sha256": "178f5a8417bd8200bc60948ee8994577f5559ecce4985ef8b18c8c37b895d3d1"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-lost-success.snapshot.txt",
+      "bytes": 8949,
+      "sha256": "444cc56bebac2e85b19869818da79fff5f32db23947f7349c5b3708219176efc"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-lost-success.facts.txt",
+      "bytes": 420,
+      "sha256": "fe5941777b41aef0c322039f401f8804eef1adf24ebf41692e28d1badeac72e8"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-lost-success.png",
+      "bytes": 232954,
+      "sha256": "e88b43d6d758ae2dcd7c6a796b5588f23f91b83afd7b4d713b20fffbde8c4ad1"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-recovered.snapshot.txt",
+      "bytes": 3012,
+      "sha256": "e1d9d4d7dc97b6c17050bebcda8005b2c87850f306901008f2df4a0055cc4844"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-recovered.facts.txt",
+      "bytes": 335,
+      "sha256": "2e12edd351483d6d361bbc5edaa1e6c34489117c4544b8e77ded6da1d067cbea"
+    },
+    {
+      "path": "browser-runtime-positive/utc-finalize-recovered.png",
+      "bytes": 83245,
+      "sha256": "0180f4ec7d8fcefdcd4b0ba242698e676c2858c69b795ab8eb4c84d62d8d1f47"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output.snapshot.txt",
+      "bytes": 3189,
+      "sha256": "beb33b8da1ee9f028b3e96c502fce4fbc72aac0c3937d7cd1b7562f473f9dc7b"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output.facts.txt",
+      "bytes": 488,
+      "sha256": "4838328545b8790afc2bc4bb2b447d67959f6bfc1bfc093b406dccf34e1fbb70"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output.png",
+      "bytes": 98163,
+      "sha256": "73664dbc92a7078be61dc0dc69fd57dab47c07a91b102c6bfc19b518445804ea"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output-mobile.snapshot.txt",
+      "bytes": 2782,
+      "sha256": "5d6b02e14ce322e837d78586a5ec65510226cbbe816ee150a77e00e5eae14edb"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output-mobile.facts.txt",
+      "bytes": 486,
+      "sha256": "72cc3dda4814eecfa73d0d68b5ca24543f78cdd79abf7cdbdb9c179f4c066c9a"
+    },
+    {
+      "path": "browser-runtime-positive/utc-final-output-mobile.png",
+      "bytes": 58388,
+      "sha256": "173c545f68f8ae51a3d192c2e341585aed52de71cd4263f624c9abff59cf5320"
+    },
+    {
+      "path": "browser-runtime-positive/finalization-performance-http.jsonl",
+      "bytes": 96,
+      "sha256": "c140d88522102ee47707e6908e55703d83cee26252c1efd48f2a58b109ef83f6"
+    },
+    {
+      "path": "browser-runtime-positive/lost-response-finalization-performance-ui-payroll_run_finalize.json",
+      "bytes": 193,
+      "sha256": "f836bbca888d7b64655d30426209cb0ffa615ba55b89bb3cb87cb5e3154f1003"
+    },
+    {
+      "path": "browser-runtime-positive/monthly-source-facts-after-utc-finalize-lost-success.json",
+      "bytes": 18232,
+      "sha256": "ad0cb6e2a4715bd9a1a6014e6cc4823bee197c48e54687c70f5817efeec02a1f"
+    },
+    {
+      "path": "browser-runtime-positive/monthly-source-facts-after-utc-finalize-recovery.json",
+      "bytes": 18232,
+      "sha256": "ad0cb6e2a4715bd9a1a6014e6cc4823bee197c48e54687c70f5817efeec02a1f"
+    },
+    {
+      "path": "browser-runtime-positive/process-finalization-performance-ui-evidence.json",
+      "bytes": 390,
+      "sha256": "6cee755f56c842bb60e3dd3cf2205cf299abbff32c554685c4f5a460f1fa0fd5"
+    },
+    {
+      "path": "browser-runtime-positive/server-finalization-performance-ui.log",
+      "bytes": 154,
+      "sha256": "6f9316d75d4c0762942393c71c37a4f2aae996f7c8ad32668c52ed6c536317d5"
+    },
+    {
+      "path": "browser-runtime-positive/browser-command-finalization-performance-ui.log",
+      "bytes": 1089,
+      "sha256": "5cc5079ff272029c765422b76526418c64fbbae025d9505359318c71896f74dc"
+    }
+  ],
+  "delta": "...03054000_cube4_fixed_utc_coverage_resolution.sql | 16 ++++++++++++++++\n .../cube4_fixed_utc_coverage_resolution.test.sql    | 21 +++++++++++++++++++++\n 2 files changed, 37 insertions(+)"
+}
