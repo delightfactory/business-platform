@@ -31,13 +31,13 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
   },[storageKey]);
   function announce(text:string) { setMessage(text); requestAnimationFrame(()=>status.current?.focus()); }
   function release() { try { sessionStorage.removeItem(storageKey); } catch { /* Authoritative outcome remains visible. */ } completeAttempt.current=null;setCanResend(false);setPending(null); }
-  function finish(result:PunchResult,reconciled=false) {
+  function finish(result:PunchResult) {
     if(['accepted','duplicate'].includes(result.state)) { release();setTerminal(false);announce(result.review?'تم التسجيل ويحتاج مراجعة المسؤول.':result.state==='duplicate'?'المحاولة مسجلة بالفعل. لم تُضف حركة أخرى.':'تم تسجيل الحركة.');refreshSnapshot(); }
     else if(result.state==='blocked' && result.reason==='scope_changed') { release();setTerminal(true);announce('المحاولة السابقة لا تخص رابط الموظف الحالي، ولا يمكن الوصول إليها بهذا الرابط. يمكنك تجهيز محاولة جديدة لحسابك الحالي.');refreshSnapshot(); }
-    else if(result.state==='rejected' && (result.reason==='cancelled' || !reconciled || ['scope_changed','policy_changed'].includes(result.reason??''))) { release();setTerminal(true);announce(channelReasonLabel(result.reason));refreshSnapshot(); }
+    else if(result.state==='rejected') { release();setTerminal(true);announce(channelReasonLabel(result.reason));refreshSnapshot(); }
     else announce(channelReasonLabel(result.reason));
   }
-  async function reconcile() { if(!ready || refreshing || !pending?.id || flight.current) return;flight.current=true;setBusy(true);announce('جارٍ التحقق من المحاولة السابقة.');try {finish(await reconcileMobilePunch(tenantId,pending.id,pending.scope),true);} catch {announce('تعذر الاتصال. نتيجة المحاولة لم تتأكد بعد. أعد التحقق عندما يعود الاتصال.');} finally {flight.current=false;setBusy(false);} }
+  async function reconcile() { if(!ready || refreshing || !pending?.id || flight.current) return;flight.current=true;setBusy(true);announce('جارٍ التحقق من المحاولة السابقة.');try {finish(await reconcileMobilePunch(tenantId,pending.id,pending.scope));} catch {announce('تعذر الاتصال. نتيجة المحاولة لم تتأكد بعد. أعد التحقق عندما يعود الاتصال.');} finally {flight.current=false;setBusy(false);} }
   async function punch() {
     if(!ready || refreshing || flight.current || !snapshot.available || (pending && !completeAttempt.current)) return;
     flight.current=true;setBusy(true);
