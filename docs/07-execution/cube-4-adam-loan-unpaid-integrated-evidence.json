@@ -1,0 +1,769 @@
+{
+  "status": "BOUNDED_LOAN_SQL_AND_UNPAID_UI_CHECKPOINT",
+  "codeSHA": "7c5c69bdcca8764d3f84b1f733b5d8d806a4def8",
+  "codeTree": "68410f83e03dfeb6c3171b1807878aa3e75ac462",
+  "directParent": "0007c1b30818ac3b8e4deccaa6f5a53f031b5da1",
+  "baseline": 170,
+  "requestedPause": true,
+  "code": [
+    {
+      "file": "supabase/migrations/20261003041000_cube4_unpaid_amendment_review_amounts.sql",
+      "gitBlob": "6a6cbfee4b857dd3b1ab5ff0005771655a8e78c5",
+      "canonicalLF_SHA256": "1eeaac95d4bd35293a4b47621e1697d09146d54419e437e3b50d3c23df9dac3b"
+    },
+    {
+      "file": "supabase/migrations/20261003042000_cube4_reviewed_employer_loan_consumption.sql",
+      "gitBlob": "8cc9577328a16fd5e037908a68b47d5f3394d8f2",
+      "canonicalLF_SHA256": "8a1415b56df2cd0555ecbdf3d1129bfc1a436805a74ad44a4c063610b767658e"
+    },
+    {
+      "file": "supabase/tests/cube4_employer_loan_public_journey.test.sql",
+      "gitBlob": "8af61ce272ead97db9144393b1f2e9a6f0234984",
+      "canonicalLF_SHA256": "b0fdb5901e210db748c0a9a98e4d5a7d37a1799635696cdc638c87597caecf00"
+    },
+    {
+      "file": "supabase/tests/cube4_employer_loan_capacity_termination.test.sql",
+      "gitBlob": "7e30bf14a8ff4d20cd5064dca7d00c6b405fd44d",
+      "canonicalLF_SHA256": "29687c0624eb131ced5de294193a445d230b24e6afa3b43c0cb83004028f0a84"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "gitBlob": "2bf7e35caa5a2f38f861d70d964aeca3ef7dbb4a",
+      "canonicalLF_SHA256": "e1679e691c1a67a7c3f8c1cebe98f805c61923f0f3037c03f36a54fb0d8c704d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "gitBlob": "080674d525ea208ba8ba0886c3a3dcb6ed29a6cd",
+      "canonicalLF_SHA256": "ba128cb04cffc29fd7aca5ad8f0e1dbe476a600828cc1e82b7011f3fb2416f8d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "gitBlob": "aec98d0974e72779597706afcf02883807979796",
+      "canonicalLF_SHA256": "abfb3fbff7160dfd46f0c0463feb53fa63af0ac61de1b197b537eba8cdcde83c"
+    }
+  ],
+  "unpaidUI": {
+    "status": "BOUNDED_UNPAID_PUBLIC_UI_RECOVERY_PASS",
+    "sourceSHA": "0007c1b30818ac3b8e4deccaa6f5a53f031b5da1",
+    "sourceTree": "f5c0f8f58b76351ad77da9d02ac1ae6c51631ffe",
+    "baseline": 169,
+    "normalAuth": true,
+    "actualNextAndPostgRESTCommands": true,
+    "scope": "actual UI preview/save/calculate/review/proposal approval/candidate approval/batch finalize/lost successful response/Reload/original receipt reconcile/protected replacement output",
+    "reviewGross": 33000,
+    "reviewTax": 3300,
+    "reviewNet": 29700,
+    "originalNet": 27000,
+    "originalFrozenEmployeeUnchanged": true,
+    "businessFactsLostVsRecoveredIdentical": true,
+    "sourceEffects": 1,
+    "successions": 1,
+    "finals": 2,
+    "consumedVersions": 6,
+    "desktop": 1262,
+    "tablet": 820,
+    "mobile": 390,
+    "noHorizontalOverflow": true,
+    "externalTrust": "Only issued_tax_qualification is scoped synthetic_nonlegal in this isolated disposable QA; no actual issuer record or official comparison exists. This is engineering acceptance, not legal release.",
+    "ownBrowserNextAuthRestStopped": true,
+    "retainedQAForSameTask": true,
+    "artifacts": [
+      {
+        "file": "browser-runtime-positive/browser-command-unpaid.log",
+        "bytes": 2160,
+        "SHA256": "2233d232e3ecc3fc6825a6f57e2d76655568dfcde03b614dc966c16734df18a9"
+      },
+      {
+        "file": "browser-runtime-positive/build-unpaid-evidence.json",
+        "bytes": 247,
+        "SHA256": "088d2181d8b25b3888354c71a031d721dadf02e0af438e5510d51cd9cdd63a19"
+      },
+      {
+        "file": "browser-runtime-positive/build-unpaid.log",
+        "bytes": 4067,
+        "SHA256": "b4c20e0bf0e93a39ebe7a1bb75f3b00283d51fb77b5d1d8831eb7ba301340cd0"
+      },
+      {
+        "file": "browser-runtime-positive/log-rotation-evidence.json",
+        "bytes": 319,
+        "SHA256": "a81c63eca95706ef49453ee7257db6e00a5fb3ace3a38635dbe46305dadb0e27"
+      },
+      {
+        "file": "browser-runtime-positive/lost-response-payroll_correction_finalize.json",
+        "bytes": 200,
+        "SHA256": "7c2ad7ee2208ff92191e74880f702670098be365b35ce857e69037027fb47eae"
+      },
+      {
+        "file": "browser-runtime-positive/server-unpaid.log",
+        "bytes": 308,
+        "SHA256": "69337dc2bf8b729a18ca104bd501431a6ea026a05f721828f9ba8889a7b64d38"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-after-lost-finalization.database.json",
+        "bytes": 89305,
+        "SHA256": "fcc22a090d4676fcce46e2c5062381ce2d861d084f22c304db402e2d036da3f4"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-after-recovery.database.json",
+        "bytes": 89305,
+        "SHA256": "fcc22a090d4676fcce46e2c5062381ce2d861d084f22c304db402e2d036da3f4"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-after-save.database.json",
+        "bytes": 44759,
+        "SHA256": "742197fe3729cf035247b17dbf1c4e2fc879ccd4a3afbdeec774e85d36abe832"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-approved.facts.txt",
+        "bytes": 601,
+        "SHA256": "6df8503396e382c43633f057bd0724bead9219c00d912eb0dcf0fe015a8d8cda"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-approved.png",
+        "bytes": 165413,
+        "SHA256": "09c4fe0bbf076df6a60b334e927e11d84b1544a5d52655db9eee194d04f8d3fd"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-approved.snapshot.txt",
+        "bytes": 6345,
+        "SHA256": "53dab3fa3708e08be458797b74e1680db32d7fc772f2ecef9ad8dcb698a1e47f"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-before-finalization.database.json",
+        "bytes": 44935,
+        "SHA256": "dc7e7a9541380702972706e563f007ede0f1c94702ff430981a5fdee7a7d5908"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-calculated.facts.txt",
+        "bytes": 929,
+        "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-calculated.png",
+        "bytes": 97977,
+        "SHA256": "af8cf4a0ade3b8018fc937108dc9d8c1e9d7eba91bb0583a7277c7ea7b6b18b3"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-calculated.snapshot.txt",
+        "bytes": 3636,
+        "SHA256": "374dd3aacd5621b08bc41e071798e2b082534b5a1947c22f87e5bde207b71a72"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-employee-explanation.facts.txt",
+        "bytes": 929,
+        "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-employee-explanation.png",
+        "bytes": 132151,
+        "SHA256": "50557138670f57a0de6bf275eacfdd2db88060591cfbd31094ecb7df8aa6645e"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-employee-explanation.snapshot.txt",
+        "bytes": 5227,
+        "SHA256": "97b0a397a1b9006802c6c26252c9864193ce92e94f29e61d4e22def14c5609fc"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-pending-recovery.facts.txt",
+        "bytes": 583,
+        "SHA256": "8193c4e8a87eb67dc7d5c6bf6805ef1f0841501096a5069b33a8ee2390059c8b"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-pending-recovery.png",
+        "bytes": 51034,
+        "SHA256": "9080dac062ec2bf194db54f5f31b4fe36f89c98acea15fa16b2dd2bdc263c6a9"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-pending-recovery.snapshot.txt",
+        "bytes": 2188,
+        "SHA256": "f860b6aab95c40f53f2b4d5d46aadf99083b948310d355301d50b8638492e47d"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-preview.facts.txt",
+        "bytes": 393,
+        "SHA256": "6f3954a3028f5e2145dc446bf1cfeebaa0171107996d11cc9a391dc4efa59037"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-preview.png",
+        "bytes": 111767,
+        "SHA256": "f3abdd9d4b5123bafa79d7dc3bd883d50cd6728ac7957c495ded1a745896594e"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-preview.snapshot.txt",
+        "bytes": 6459,
+        "SHA256": "d51afca4b0b3badee21c530e84576bf7dc51eef59434dd085aff9e9c46550898"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-recovered.facts.txt",
+        "bytes": 986,
+        "SHA256": "aace7e7fd92f3d8351befe168c8e653113969cd2ead3ceea9f768b050992f3ed"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-recovered.png",
+        "bytes": 46003,
+        "SHA256": "0182a4fb296e863076f31e87e948665eb4a195141acb4ef4cff3165a6fadfdc2"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-recovered.snapshot.txt",
+        "bytes": 1987,
+        "SHA256": "66131fd56496e4cd0da99a577388a6d59f8c16bbb5dd09a6d3f55a26c7ec39f1"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-replacement-output.facts.txt",
+        "bytes": 486,
+        "SHA256": "20a461b596621c909fcfdd7d664b1850399258a86c53d9aab5bbe6f8a0047df0"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-replacement-output.png",
+        "bytes": 49712,
+        "SHA256": "e9e5ece365424bb888a9a92883c4cfd8de74e8785e33c550fa82afcff47ff387"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-replacement-output.snapshot.txt",
+        "bytes": 2267,
+        "SHA256": "6bdf539546fe9488036eb90271c3a33d4a5e4bac9146e55883387ed9b234d3eb"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-reviewed-money.facts.txt",
+        "bytes": 929,
+        "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-reviewed-money.png",
+        "bytes": 117311,
+        "SHA256": "de1c7e5c6020d42c9a79e9eb39a253692103650901dfe333bdc0702cdbf3d51d"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-reviewed-money.snapshot.txt",
+        "bytes": 4535,
+        "SHA256": "886f5bb4681cce4472c808df461e86f2fd43baab1a616e2cfb1a2a401a68f538"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-saved.facts.txt",
+        "bytes": 1065,
+        "SHA256": "56285b1612dc547a9340af88453bce961214f387239b0684ca5387ddb725d77b"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-saved.png",
+        "bytes": 34145,
+        "SHA256": "6070084479f7e5781068508e60a4d7fd866e3bfa81bbb183a25439b6f7327fe6"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-saved.snapshot.txt",
+        "bytes": 3994,
+        "SHA256": "9280192c3e6814fd08b3d7f916fd37ef7f0e0c873749818a6925e2fc38380069"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-source-options.facts.txt",
+        "bytes": 345,
+        "SHA256": "221c70df44c2632a3d97d9c635dea6f5b1f8100b057e04e91b806d1b36eeab5f"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-source-options.png",
+        "bytes": 96129,
+        "SHA256": "51d2c48dc8515d768b37fa55d341f9a290b13ac1c55d7898ec2131918ca501d3"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-source-options.snapshot.txt",
+        "bytes": 5964,
+        "SHA256": "aa2da6e0491808fb909285cb8c8883188eb6230626e52333f9cb24ae69defbdb"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-start.facts.txt",
+        "bytes": 257,
+        "SHA256": "487566630df6b7073f99fd80b6f918cfc9543a967a525987f09c5e636cdf7df6"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-start.png",
+        "bytes": 32458,
+        "SHA256": "64910fedc101ce461e7b39223769450619d869f0e94b75f5f34c8ab277eb6b89"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-start.snapshot.txt",
+        "bytes": 3851,
+        "SHA256": "474d6fbf8dc42c1cbb8c20f8cfdb03641bf8c4b3cfadb588b21d625711be58cb"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-tablet-confirmation.facts.txt",
+        "bytes": 599,
+        "SHA256": "72431d2ec647f6df67e83f67876727578f19e460ce58727f87077901c91fe5e3"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-tablet-confirmation.png",
+        "bytes": 133186,
+        "SHA256": "fbba49c0ce677e4906517b60271baa999a8b5cebb4995b99aeeda94357888c99"
+      },
+      {
+        "file": "browser-runtime-positive/unpaid-tablet-confirmation.snapshot.txt",
+        "bytes": 6018,
+        "SHA256": "92b63da44852465abd48b11cc005b0f340cf8a185d310e98a282483b4255c4aa"
+      }
+    ],
+    "atUTC": "2026-10-04T02:30:35.138Z"
+  },
+  "loanPublicSQL": {
+    "assertions": 39,
+    "journey": "actual source save/approve/external activation; real calculation and canonical approval/finalization; deep audit failure after ledger append rolls all effects back; exact receipt replay/reconcile; unpaid replacement compensates original and consumes replacement once",
+    "gross": 30000,
+    "tax": 3000,
+    "loan": 3000,
+    "net": 24000,
+    "replacementGross": 33000,
+    "replacementNet": 26700
+  },
+  "capacityTerminationSQL": {
+    "assertions": 32,
+    "journey": "aggregate 4000 cannot take separate 10% caps; cent rounding cannot exceed cap; all obligations stay visible; public deferral preserves sibling debt; recalculation consumes eligible 3000; reviewed termination zero delta; evidenced external settlement closes 1000 exactly once"
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "changedRunPageAndRulesLint": "PASS",
+    "productionBuild": "PASS at codeSHA",
+    "full170Replay": false,
+    "newLoanBrowserJourney": "OPEN; ordinary auth/calendar only"
+  },
+  "browserSafeBoundary": {
+    "periodGeneratedOnce": "1e9ca031-e132-46ef-a4ea-029e96d85f68",
+    "periodStarts": "2026-08-01",
+    "contextOpenedReadOnly": "83208639-8ff7-49f5-a372-a1b0f80f58e2",
+    "noNewContextVersion": true,
+    "noAdvanceCreated": true,
+    "noNewCalculation": true,
+    "noFinancialTransactionPending": true,
+    "services": "Own browser/Next/gateway/Auth/REST stopped; DB and temporary Auth roles retained for immediate same-task resume; expire09:41UTC, cleanup at task completion"
+  },
+  "failuresPreserved": [
+    "SQL + concatenation: transaction rollback",
+    "sandbox Docker access denial before DB connection",
+    "PL/pgSQL CASE parentheses: transaction rollback",
+    "immutable QA role snapshot update refused; added a separate immutable finance role after rollback",
+    "PowerShell unquoted @ browser selector omitted argument; ensuing read-only wait timed out; corrected quoting, no mutation replay"
+  ],
+  "scope": "monthly/base/single context/single year/not insured/no Time or Leave; employer loans Article113 only. Over-cap requires actual approved full deferral or evidenced external settlement; no automatic partial allocation or forgiveness.",
+  "external": "Production real issuer rejects synthetic packs. Only issued_tax_qualification is simulated in isolated explicitly NONLEGAL QA; no official issuance or production release. Official2026 legal package remains unavailable and is not requested again.",
+  "remainingPriority": [
+    {
+      "priority": "P1",
+      "work": "Complete retained August loan UI journey and next-period explicit context/YTD binding without modifying July history"
+    },
+    {
+      "priority": "P1",
+      "work": "Insurance month ownership/once-consumption and insured source-bound producer, then multiple contexts/years and exact earning/YTD segment composition"
+    },
+    {
+      "priority": "P1",
+      "work": "Qualified broader earning and deduction profiles, Articles114 priorities/ceilings and applicable valuation integration; existing individual worker evidence does not close public composition"
+    },
+    {
+      "priority": "P1",
+      "work": "Whole approved current-version journeys including paid correction/payment/settlement, permission/context races, reports and final integrated qualification on one SHA/tree"
+    },
+    {
+      "priority": "EXTERNAL",
+      "work": "One formally reviewed applicability/insurance attribution/official2026 numeric package; engineering progress continues independently, production financial release remains closed"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "browser-runtime-positive/browser-command-unpaid.log",
+      "bytes": 2160,
+      "SHA256": "2233d232e3ecc3fc6825a6f57e2d76655568dfcde03b614dc966c16734df18a9"
+    },
+    {
+      "file": "browser-runtime-positive/build-unpaid-evidence.json",
+      "bytes": 247,
+      "SHA256": "088d2181d8b25b3888354c71a031d721dadf02e0af438e5510d51cd9cdd63a19"
+    },
+    {
+      "file": "browser-runtime-positive/build-unpaid.log",
+      "bytes": 4067,
+      "SHA256": "b4c20e0bf0e93a39ebe7a1bb75f3b00283d51fb77b5d1d8831eb7ba301340cd0"
+    },
+    {
+      "file": "browser-runtime-positive/log-rotation-evidence.json",
+      "bytes": 319,
+      "SHA256": "a81c63eca95706ef49453ee7257db6e00a5fb3ace3a38635dbe46305dadb0e27"
+    },
+    {
+      "file": "browser-runtime-positive/lost-response-payroll_correction_finalize.json",
+      "bytes": 200,
+      "SHA256": "7c2ad7ee2208ff92191e74880f702670098be365b35ce857e69037027fb47eae"
+    },
+    {
+      "file": "browser-runtime-positive/server-unpaid.log",
+      "bytes": 308,
+      "SHA256": "69337dc2bf8b729a18ca104bd501431a6ea026a05f721828f9ba8889a7b64d38"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-after-lost-finalization.database.json",
+      "bytes": 89305,
+      "SHA256": "fcc22a090d4676fcce46e2c5062381ce2d861d084f22c304db402e2d036da3f4"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-after-recovery.database.json",
+      "bytes": 89305,
+      "SHA256": "fcc22a090d4676fcce46e2c5062381ce2d861d084f22c304db402e2d036da3f4"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-after-save.database.json",
+      "bytes": 44759,
+      "SHA256": "742197fe3729cf035247b17dbf1c4e2fc879ccd4a3afbdeec774e85d36abe832"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-approved.facts.txt",
+      "bytes": 601,
+      "SHA256": "6df8503396e382c43633f057bd0724bead9219c00d912eb0dcf0fe015a8d8cda"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-approved.png",
+      "bytes": 165413,
+      "SHA256": "09c4fe0bbf076df6a60b334e927e11d84b1544a5d52655db9eee194d04f8d3fd"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-approved.snapshot.txt",
+      "bytes": 6345,
+      "SHA256": "53dab3fa3708e08be458797b74e1680db32d7fc772f2ecef9ad8dcb698a1e47f"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-before-finalization.database.json",
+      "bytes": 44935,
+      "SHA256": "dc7e7a9541380702972706e563f007ede0f1c94702ff430981a5fdee7a7d5908"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-calculated.facts.txt",
+      "bytes": 929,
+      "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-calculated.png",
+      "bytes": 97977,
+      "SHA256": "af8cf4a0ade3b8018fc937108dc9d8c1e9d7eba91bb0583a7277c7ea7b6b18b3"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-calculated.snapshot.txt",
+      "bytes": 3636,
+      "SHA256": "374dd3aacd5621b08bc41e071798e2b082534b5a1947c22f87e5bde207b71a72"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-employee-explanation.facts.txt",
+      "bytes": 929,
+      "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-employee-explanation.png",
+      "bytes": 132151,
+      "SHA256": "50557138670f57a0de6bf275eacfdd2db88060591cfbd31094ecb7df8aa6645e"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-employee-explanation.snapshot.txt",
+      "bytes": 5227,
+      "SHA256": "97b0a397a1b9006802c6c26252c9864193ce92e94f29e61d4e22def14c5609fc"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-pending-recovery.facts.txt",
+      "bytes": 583,
+      "SHA256": "8193c4e8a87eb67dc7d5c6bf6805ef1f0841501096a5069b33a8ee2390059c8b"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-pending-recovery.png",
+      "bytes": 51034,
+      "SHA256": "9080dac062ec2bf194db54f5f31b4fe36f89c98acea15fa16b2dd2bdc263c6a9"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-pending-recovery.snapshot.txt",
+      "bytes": 2188,
+      "SHA256": "f860b6aab95c40f53f2b4d5d46aadf99083b948310d355301d50b8638492e47d"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-preview.facts.txt",
+      "bytes": 393,
+      "SHA256": "6f3954a3028f5e2145dc446bf1cfeebaa0171107996d11cc9a391dc4efa59037"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-preview.png",
+      "bytes": 111767,
+      "SHA256": "f3abdd9d4b5123bafa79d7dc3bd883d50cd6728ac7957c495ded1a745896594e"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-preview.snapshot.txt",
+      "bytes": 6459,
+      "SHA256": "d51afca4b0b3badee21c530e84576bf7dc51eef59434dd085aff9e9c46550898"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-recovered.facts.txt",
+      "bytes": 986,
+      "SHA256": "aace7e7fd92f3d8351befe168c8e653113969cd2ead3ceea9f768b050992f3ed"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-recovered.png",
+      "bytes": 46003,
+      "SHA256": "0182a4fb296e863076f31e87e948665eb4a195141acb4ef4cff3165a6fadfdc2"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-recovered.snapshot.txt",
+      "bytes": 1987,
+      "SHA256": "66131fd56496e4cd0da99a577388a6d59f8c16bbb5dd09a6d3f55a26c7ec39f1"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-replacement-output.facts.txt",
+      "bytes": 486,
+      "SHA256": "20a461b596621c909fcfdd7d664b1850399258a86c53d9aab5bbe6f8a0047df0"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-replacement-output.png",
+      "bytes": 49712,
+      "SHA256": "e9e5ece365424bb888a9a92883c4cfd8de74e8785e33c550fa82afcff47ff387"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-replacement-output.snapshot.txt",
+      "bytes": 2267,
+      "SHA256": "6bdf539546fe9488036eb90271c3a33d4a5e4bac9146e55883387ed9b234d3eb"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-reviewed-money.facts.txt",
+      "bytes": 929,
+      "SHA256": "16c4f5cd294887b8105e5894adb1d97ae86ea547dad7ddbd087fdf94fcaa25af"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-reviewed-money.png",
+      "bytes": 117311,
+      "SHA256": "de1c7e5c6020d42c9a79e9eb39a253692103650901dfe333bdc0702cdbf3d51d"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-reviewed-money.snapshot.txt",
+      "bytes": 4535,
+      "SHA256": "886f5bb4681cce4472c808df461e86f2fd43baab1a616e2cfb1a2a401a68f538"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-saved.facts.txt",
+      "bytes": 1065,
+      "SHA256": "56285b1612dc547a9340af88453bce961214f387239b0684ca5387ddb725d77b"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-saved.png",
+      "bytes": 34145,
+      "SHA256": "6070084479f7e5781068508e60a4d7fd866e3bfa81bbb183a25439b6f7327fe6"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-saved.snapshot.txt",
+      "bytes": 3994,
+      "SHA256": "9280192c3e6814fd08b3d7f916fd37ef7f0e0c873749818a6925e2fc38380069"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-source-options.facts.txt",
+      "bytes": 345,
+      "SHA256": "221c70df44c2632a3d97d9c635dea6f5b1f8100b057e04e91b806d1b36eeab5f"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-source-options.png",
+      "bytes": 96129,
+      "SHA256": "51d2c48dc8515d768b37fa55d341f9a290b13ac1c55d7898ec2131918ca501d3"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-source-options.snapshot.txt",
+      "bytes": 5964,
+      "SHA256": "aa2da6e0491808fb909285cb8c8883188eb6230626e52333f9cb24ae69defbdb"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-start.facts.txt",
+      "bytes": 257,
+      "SHA256": "487566630df6b7073f99fd80b6f918cfc9543a967a525987f09c5e636cdf7df6"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-start.png",
+      "bytes": 32458,
+      "SHA256": "64910fedc101ce461e7b39223769450619d869f0e94b75f5f34c8ab277eb6b89"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-start.snapshot.txt",
+      "bytes": 3851,
+      "SHA256": "474d6fbf8dc42c1cbb8c20f8cfdb03641bf8c4b3cfadb588b21d625711be58cb"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-tablet-confirmation.facts.txt",
+      "bytes": 599,
+      "SHA256": "72431d2ec647f6df67e83f67876727578f19e460ce58727f87077901c91fe5e3"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-tablet-confirmation.png",
+      "bytes": 133186,
+      "SHA256": "fbba49c0ce677e4906517b60271baa999a8b5cebb4995b99aeeda94357888c99"
+    },
+    {
+      "file": "browser-runtime-positive/unpaid-tablet-confirmation.snapshot.txt",
+      "bytes": 6018,
+      "SHA256": "92b63da44852465abd48b11cc005b0f340cf8a185d310e98a282483b4255c4aa"
+    },
+    {
+      "file": "unpaid-browser-proof.json",
+      "bytes": 9839,
+      "SHA256": "597bbec9c48ef6407f6979b05bfac77b21dfa535ae2bfa4f4d5bc67c4897bd77"
+    },
+    {
+      "file": "qa-nondebt-journey-amendment-review.json",
+      "bytes": 725,
+      "SHA256": "19023d52a5b7ee7e88f435a8ef90757d5e84f3fef3a0577c017c998da760668c"
+    },
+    {
+      "file": "qa-nondebt-journey-amendment-review.log",
+      "bytes": 172636,
+      "SHA256": "a2a546ded8f56cc6e9823492c0dae0f2e1660ba3d9dad1f327d11511934d4369"
+    },
+    {
+      "file": "qa-loan-journey-final-public.json",
+      "bytes": 521,
+      "SHA256": "32cc7e2db4d93817970b5c595030e9aefdfb1169808a3ab944dbe17e80ab54c3"
+    },
+    {
+      "file": "qa-loan-journey-final-public.log",
+      "bytes": 181461,
+      "SHA256": "9775bfb9347d6514dfc79e06734d41b1aaa672701e422a23254f657db7282f2c"
+    },
+    {
+      "file": "qa-loan-journey-final-capacity.json",
+      "bytes": 527,
+      "SHA256": "8ecaa45764c517e0a6d569a322e81706760ba52e031565a58580aed7b9e7ab06"
+    },
+    {
+      "file": "qa-loan-journey-final-capacity.log",
+      "bytes": 14722,
+      "SHA256": "b1a43950db5b2be874cb6f4b5f85aae0d0115299d4aaf4970909d600d8c797a7"
+    },
+    {
+      "file": "qa-loan-producer-apply-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 280,
+      "SHA256": "6d132bc3cb2020e3f06808260e1d4dec7fced7a43cafc9e373d47e1e09168ea4"
+    },
+    {
+      "file": "qa-loan-producer-apply-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 390,
+      "SHA256": "ec3c1504e299ff8ac8419d1cec0f460a92f4de8d986271dc6643db66762099ac"
+    },
+    {
+      "file": "qa-loan-producer-apply-corrected-concat-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 280,
+      "SHA256": "584d72cb0246f0035a33b7eee9853e3e53bbd0c5fa270eb404dd0c37e321d906"
+    },
+    {
+      "file": "qa-loan-producer-apply-corrected-concat-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 188,
+      "SHA256": "83e86a97d4f8f4600586f47b16f83de32a13468316552b975065dae7bb2a8e64"
+    },
+    {
+      "file": "qa-loan-producer-apply-parenthesized-case-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 277,
+      "SHA256": "71ae0b941c92e9f611a5c96ceedd2d03a8eff0dccbccf3f9dfc997e03e518ae7"
+    },
+    {
+      "file": "qa-loan-producer-apply-parenthesized-case-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 6,
+      "SHA256": "cbed6bc4229a3aa1b8cb390605acb2cea7a9442f2df60885c06d65e5fd0a314f"
+    },
+    {
+      "file": "qa-loan-producer-apply-parenthesized-case-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 278,
+      "SHA256": "78e633a2c191ce0f3cd57c0daafb0ba82777a3744b8450c8b3c50c91203a504f"
+    },
+    {
+      "file": "qa-loan-producer-apply-parenthesized-case-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 6,
+      "SHA256": "cbed6bc4229a3aa1b8cb390605acb2cea7a9442f2df60885c06d65e5fd0a314f"
+    },
+    {
+      "file": "qa-loan-producer-apply-permitted-concat-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 280,
+      "SHA256": "584d72cb0246f0035a33b7eee9853e3e53bbd0c5fa270eb404dd0c37e321d906"
+    },
+    {
+      "file": "qa-loan-producer-apply-permitted-concat-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 13304,
+      "SHA256": "f0412b41a47db3e06d8293b167abcb7ead55fc4341c34c38215a86f5ee18e659"
+    },
+    {
+      "file": "browser-runtime-positive/browser-command-loan.log",
+      "bytes": 25819,
+      "SHA256": "425aee441a6a389663c4a42714c415acfc4adf9e853c5f72d923ccf735d381c6"
+    },
+    {
+      "file": "browser-runtime-positive/build-loan-evidence.json",
+      "bytes": 247,
+      "SHA256": "9b29639142dc921837ff49662eb696cf29ab3c77a5227ffde00e369c1cebe437"
+    },
+    {
+      "file": "browser-runtime-positive/build-loan.log",
+      "bytes": 3725,
+      "SHA256": "2abd0b88a77ea0e83c79ee3cb9a926f4cf1c89e0ec5aff2d598683e699d1cd9a"
+    },
+    {
+      "file": "browser-runtime-positive/loan-before-source.database.json",
+      "bytes": 89887,
+      "SHA256": "f4288010c2dbde91d706c15ebfcf845fa3f9a40dfa47f0661cbad824082bd2b2"
+    },
+    {
+      "file": "browser-runtime-positive/loan-browser-apply-immutable-role.json",
+      "bytes": 286,
+      "SHA256": "77305df1f08277f0fc731f8a935e434d6f48a4e96c7c597780e212c2505d4dbf"
+    },
+    {
+      "file": "browser-runtime-positive/loan-browser-apply-immutable-role.log",
+      "bytes": 39,
+      "SHA256": "cd0a66e69b9d8d05149b587545d99eafa16d03d8ad586f9e35272ce5670aed6b"
+    },
+    {
+      "file": "browser-runtime-positive/loan-browser-apply.json",
+      "bytes": 233,
+      "SHA256": "93ca6993547b378bab2cc3885b4257fdb576c5b78933e53eea3254a49e6b7256"
+    },
+    {
+      "file": "browser-runtime-positive/loan-browser-apply.log",
+      "bytes": 177,
+      "SHA256": "0b6c597362a6e7d39309b6dff2a12f4a741dc2ca2aedeea7d9f26b2807c0230c"
+    },
+    {
+      "file": "browser-runtime-positive/loan-generated-period.facts.txt",
+      "bytes": 210,
+      "SHA256": "574f229d15dec866d0519117153cbeea3bad7e066b58629d1504276011a26116"
+    },
+    {
+      "file": "browser-runtime-positive/loan-generated-period.png",
+      "bytes": 140232,
+      "SHA256": "037dec96f51895fbf8d2f3333352e725b3f31246ab8844f7805c82b9b02c4e75"
+    },
+    {
+      "file": "browser-runtime-positive/loan-generated-period.snapshot.txt",
+      "bytes": 5850,
+      "SHA256": "b1dd960c9a8911fb380836c0f6943661c8a1978a0fb01983867fda738380ab99"
+    },
+    {
+      "file": "browser-runtime-positive/loan-paused-state.database.json",
+      "bytes": 89887,
+      "SHA256": "f4288010c2dbde91d706c15ebfcf845fa3f9a40dfa47f0661cbad824082bd2b2"
+    },
+    {
+      "file": "browser-runtime-positive/loan-payroll-before.facts.txt",
+      "bytes": 201,
+      "SHA256": "445db30bd2abf394f3a712311301c9c8d0b8b2e8f01a85fa9150c17e53de8d9a"
+    },
+    {
+      "file": "browser-runtime-positive/loan-payroll-before.png",
+      "bytes": 35833,
+      "SHA256": "055faf1b93f2ac5e02e77ec02694d6737007ffa6d40aa0f83e53dc170eb650e2"
+    },
+    {
+      "file": "browser-runtime-positive/loan-payroll-before.snapshot.txt",
+      "bytes": 2645,
+      "SHA256": "3d1cbe69ebc139dac8e8486b7edb29ded5134999a6f93e0b516f4e9914f5c98e"
+    },
+    {
+      "file": "browser-runtime-positive/process-loan-evidence.json",
+      "bytes": 285,
+      "SHA256": "9dcf6bc0fe8214bc3c910777fb8cb2aed1d30a5179b99c6f0ee783bf35769168"
+    },
+    {
+      "file": "browser-runtime-positive/server-loan.log",
+      "bytes": 154,
+      "SHA256": "895136eda77cb43ac47a98a462efabd9ae12f93bc778e9815b65f7845d2d2e13"
+    }
+  ],
+  "atUTC": "2026-10-04T03:22:45.317Z"
+}

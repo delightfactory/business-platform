@@ -1,5 +1,24 @@
 # Cube 4 decision and acceptance register
 
+## Current ADAM requested safe checkpoint, 2026-10-04
+
+Code 7c5c69bdcca8764d3f84b1f733b5d8d806a4def8, tree 68410f83e03dfeb6c3171b1807878aa3e75ac462, schema170. Direct parent0007c1b; that parent repairs missing amendment review money and follows2190ed1. [Integrated unpaid UI and employer-loan evidence](cube-4-adam-loan-unpaid-integrated-evidence.json) binds seven code blobs and 80 frozen artifacts. ADAM requested pause before another unit; task remains active. Delta since2190: two local code commits, with the register/evidence commit following them; previous entries and failed evidence are preserved.
+
+| Requirement/journey | Current acceptance | Remaining boundary |
+| --- | --- | --- |
+| Unpaid proposal save, review, approvals, replacement, lost response, Reload/reconcile, protected output | Actual normal-auth Next/PostgREST browser on0007c1b; money missing from review repaired; 33000/3300/29700 displayed before approval; one source effect/succession, six frozen versions, original27000 row unchanged; recovery adds no business writes; desktop/tablet/mobile no overflow; affected SQL28 | CLOSED bounded uninsured/no-debt UI method; not entire Cube4 |
+| Actual employer-loan source to public calculation/approval/atomic consumption |42000 derives all due installments from source debt and wage, fixed Article113 ten-percent cap, no interest/allowance flag. Public SQL39 at7c5c69b:30000-3000 tax-3000 loan=24000; failure after actual loan append rolls back ledger/output/frozen inputs/receipt; replay and recovery consume once | CLOSED bounded monthly/base/uninsured single-context/year method; real external issuer prerequisite remains |
+| Aggregate capacity, source ownership, full deferral and termination external settlement | SQL32: combined4000 blocked, cent boundary blocked, sibling sources preserved, ordinary approval cannot waive cap; full approved deferral preserves1000; eligible3000 consumed; termination review zero delta; documented external settlement closes1000 once | CLOSED bounded method. No automatic terminal entitlement formula or silent partial repayment introduced |
+| Unpaid correction with consumed loan | Same SQL39: original loan deduction retained, one compensation and one replacement deduction; ledger reconciles zero; original employee explanation/money unchanged | CLOSED bounded public SQL method; loan browser replacement not newly accepted |
+| Loan recovery UI | Owned capacity blocker now explains remedies and links to the protected advance workspace; typecheck, changed-file lint, production build pass | Browser journey OPEN. Actual normal login and one August period generation only; context opened without saving; no loan/calculation created before requested pause |
+| Insurance/month ownership, contexts/years, broader earnings/deduction limits and optional valuation | Existing numeric/source evidence remains valid within original boundaries | P1 essential implementation and connected acceptance remain OPEN; next grouped dependency work |
+| Whole current version qualification and paid/payment/report/race journeys | Historical evidence retained, no unaffected rerun | P1 final integrated same-SHA/tree qualification remains OPEN;71 new SQL checks are not full170 replay |
+
+Production qualification is still real immutable issuer evidence; synthetic data cannot qualify ordinary production commands. The QA supplier simulation is expressly NONLEGAL and isolated, with no official record manufactured. Official2026 results/access remain known unavailable; no repeat question. Whole Cube4 and financial production release are not claimed. No Cube5, Actions, push, merge, deployment or production change.
+
+Services stopped safely: only own browser, Next/gateway and two owned Auth/REST containers. Main PostgreSQL stays running, QA/data/evidence preserved for immediate resume. Temporary synthetic Auth expires09:41UTC and must be cleaned at task completion. Failed SQL compilation/application, immutable QA role refusal and read-only browser selector/wait failures remain in frozen evidence; no failed transaction was presented as success.
+
+
 ## Current ADAM bounded engineering checkpoint, 2026-10-04 02:02 UTC
 
 Code 5cdb0729986a009575e5ae691af013dca76df264, tree abbc7edd22313caa4c4996d9c25b4fe537659438, schema168. [Integrated nondebt evidence](cube-4-adam-nondebt-integrated-evidence.json) binds exact code blobs and frozen artifact hashes. Earlier entries below remain historical and keep their original methods. Delta from f292:12 files +311/-25. This checkpoint follows ADAM's request to stop after the current bounded command; the Cube4 execution task remains active.
