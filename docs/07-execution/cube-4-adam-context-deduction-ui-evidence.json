@@ -1,0 +1,516 @@
+{
+  "codeSHA": "92861759d29f953a09891f1584ce6097df428ced",
+  "codeTree": "6d42c8cf249c5be5d4231496599c63e8fec7d13b",
+  "baselineSHA": "8cb77cf8a4f80c32091c1e3aea8b2152e4abffd5",
+  "uiCodeSHA": "0ab87b07c5b3d2c7327e8a065f4eecc53c135737",
+  "installedSchema": 177,
+  "uninstalledMigration": "20261003050000_cube4_approved_manual_daily_financial_composition.sql",
+  "financialResponseRecovery": {
+    "originalSuccessfulRPC": "payroll_run_finalize",
+    "responseDroppedAfterStatus": 200,
+    "factsExactlyUnchanged": true,
+    "finalRows": 1,
+    "receipts": 15,
+    "priorFinals": {
+      "hash": "f1cf8d9df584315049452c3ee24a0094",
+      "count": 5
+    },
+    "priorLoans": {
+      "hash": "67d28c2da31ef7c7291914e2ec55d787",
+      "count": 2
+    },
+    "sourceAppliedOnce": true
+  },
+  "uiAcceptance": [
+    "Actual approved8000 capacity refusal retains statutory explanation and capacity basis",
+    "Actual numeric saved adjustment cancellation preserves immutable source JSON; separately saved approved1000",
+    "Changed approved source requires recalculation before review",
+    "Actual two-year calculation, explanation, approval, atomic finalization",
+    "Lost successful response, Reload, original receipt recovery without repeated mutation",
+    "Protected statutory payslip; mobile390 width with390 scrollWidth"
+  ],
+  "independentDeltaTests": {
+    "capacitySQL": 41,
+    "typedSourceActionTransport": 10,
+    "manualDailyPublicSQL": 28,
+    "manualDailyDDLAndFixturesRolledBack": true,
+    "productionBuildSHA": "0ab87b07c5b3d2c7327e8a065f4eecc53c135737",
+    "lintAndTypecheck": "PASS on corresponding changed application code"
+  },
+  "failedAttemptsPreserved": [
+    "Browser install canonical predecessor mismatch and missing extracted semicolon rolled back",
+    "First seed before installer completion rolled back",
+    "Existing synthetic pack category ambiguity blocked calculation, no output",
+    "Historical context effective-date conflict refused",
+    "Numeric saved adjustment immutable comparison refusal fixed in0ab87b0",
+    "Wrong approval selector and unsupported viewport command produced no financial request",
+    "Manual daily missing existing payable basis and incorrect expected history counts fixed; failed artifacts retained"
+  ],
+  "boundaries": [
+    "Synthetic NONLEGAL issuer prerequisites only; real statutory adapters run; no official legal qualification",
+    "Whole Cube4 and final same-SHA/tree qualification OPEN",
+    "Daily SQL only; manual daily UI and optional Time/Leave integration OPEN",
+    "Recurring debts, capacity carryforward/external disposition and source-loan coexistence OPEN",
+    "Paid correction/payment and final-period/obligation reports OPEN",
+    "Per-segment statutory report/export presentation OPEN; protected aggregate payslip verified"
+  ],
+  "code": [
+    {
+      "path": "scripts/cube4-statutory-review-ui.test.mjs",
+      "blob": "a89294fc106d4b561decb5fc62d2fe2d13c4a3a1",
+      "canonicalSHA256": "445ec051a784cf2a982d1b0cf44831b4a8bc64e8a89815d1d574bbc097448b12"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "blob": "a3fd6d56e99e557809d2897e924c1255a651251f",
+      "canonicalSHA256": "2304d1401213375b87d2f35db5ea07b6e14645f8c61bb70ba1c0bf7210653542"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "blob": "420ed3d8defa22bd8516e9681479978287c8ad72",
+      "canonicalSHA256": "63a805d43194ab9958d58a876cf06b72c3644ac84cc7fcf94ea85f6938453af9"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "blob": "6f4d13a0644b48163ef90c2066a6754a88e986cd",
+      "canonicalSHA256": "fa7c009cb03fa6f135aa4d2cb1520a80c5b5cbee8fe66ab2c6786ced18db77fb"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/saved-adjustment.ts",
+      "blob": "553155b1312cd2f2ff4b1a0c3ce1bd9911779a04",
+      "canonicalSHA256": "63e921265d8478334247073628882e573eab212c2c5860b9c4b147707a4cd270"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "blob": "d68fa666ac2228b6ac489161fcadae0f1f0c1307",
+      "canonicalSHA256": "00bab47318ef33366011c96accf88c100dbf1ca1a18a4c57730157b8f45f360f"
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "blob": "6f10cb3c671f3a2b3930353fdda9e75144a9b1c2",
+      "canonicalSHA256": "973dc4213b8117a654f51c915e3f5eb0f33f797a09a487ccc06d5380a9aff673"
+    },
+    {
+      "path": "supabase/migrations/20261003049000_cube4_deduction_capacity_review_closure.sql",
+      "blob": "30532e14e9848789fdbe0cf14070345bd299dd10",
+      "canonicalSHA256": "153bb981cc46a4fa90cefd8f17325ba621581b85ff6fff34cf5afe5a61669d09"
+    },
+    {
+      "path": "supabase/migrations/20261003050000_cube4_approved_manual_daily_financial_composition.sql",
+      "blob": "50738e04de2ce28edd6be845ac3646e9ea9a12f5",
+      "canonicalSHA256": "516deefb7fc322a1f60005632f0ad3f266c381a59ba7429d1c32d0055c8b72fd"
+    },
+    {
+      "path": "supabase/tests/cube4_manual_daily_public_journey.test.sql",
+      "blob": "56c31897a4215cbf236f9dc2dd82897a2c4956f3",
+      "canonicalSHA256": "7d0780004045d34bebcbae1aef41329bbe79228a64891a5594df101ff384dfbc"
+    },
+    {
+      "path": "supabase/tests/cube4_wage_deduction_composition_public_journey.test.sql",
+      "blob": "3f74452f192affc9734ce372f0637c72c71464f3",
+      "canonicalSHA256": "bd1c262fc96176d1f7c1a072f7adc5148a047aecebde968cf1e5fbf28191a2f2"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 17155,
+      "sha256": "f864ccd45fce94f22ae76325fa1f32db54026d3f65879c6d73eae91a24cf025c"
+    },
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 17176,
+      "sha256": "a1296cbb488d3149c8586b11c8a2cedabf3e4db53df95b4d6de6b3b1dec5583d"
+    },
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 17156,
+      "sha256": "dad79be8994fff1ff2dee6c9342b95e483efe3edbef87345deb7c7910168ffc9"
+    },
+    {
+      "path": "qa-capacity-review-install-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 18,
+      "sha256": "be47024b6a448494f39cca6282242e5d1635b96bad73e91e370d6b7cb3ed23bb"
+    },
+    {
+      "path": "qa-capacity-review-public-context.json",
+      "bytes": 391,
+      "sha256": "db9b2adde983459e148e5c1900ce83816b432cd3539281278d325f0860b8262b"
+    },
+    {
+      "path": "qa-capacity-review-public-context.log",
+      "bytes": 18454,
+      "sha256": "45189577f141134c0b0bf5f9d67ba42136665d18e43c12170a49a1f4fb46131b"
+    },
+    {
+      "path": "qa-context-deduction-install-business_platform_cube4_adam_closure_qa.json",
+      "bytes": 17223,
+      "sha256": "3ecb00729b112ac75585eb2f1ba1eec97b42946b0a8c614416f62045b775fab0"
+    },
+    {
+      "path": "qa-context-deduction-install-business_platform_cube4_adam_closure_qa.log",
+      "bytes": 180,
+      "sha256": "109a115ebe73681f77448dae419b6b201ec52cd7c85610d15f40a3d13631d41f"
+    },
+    {
+      "path": "qa-context-deduction-install-business_platform_cube4_adam_positive_qa.json",
+      "bytes": 17224,
+      "sha256": "bf4e30f896e6ba33f4db5eaec3dc471e35e36ed138f1c4306ddd767f61c5d26a"
+    },
+    {
+      "path": "qa-context-deduction-install-business_platform_cube4_adam_positive_qa.log",
+      "bytes": 180,
+      "sha256": "109a115ebe73681f77448dae419b6b201ec52cd7c85610d15f40a3d13631d41f"
+    },
+    {
+      "path": "qa-context-deduction-install-repaired-business_platform_cube4_adam_positive_browser_qa.json",
+      "bytes": 17240,
+      "sha256": "5d4ac5579bb2c532ffb6955275e6f2305dd92fa587070b0a57940bd6ad7f136a"
+    },
+    {
+      "path": "qa-context-deduction-install-repaired-business_platform_cube4_adam_positive_browser_qa.log",
+      "bytes": 196,
+      "sha256": "f0fc31448d83d6bcfd71a4112df131ed10e59d9aaa6e4c28b18c96c8a2bd1526"
+    },
+    {
+      "path": "qa-daily-qualification-approved-basis.json",
+      "bytes": 354,
+      "sha256": "2f1d13303aa4ef117e5a09a7de4fe84302f4d1e7ef4dde012f2243b9a8deb081"
+    },
+    {
+      "path": "qa-daily-qualification-approved-basis.log",
+      "bytes": 177425,
+      "sha256": "52b04d0ab60d83b5aae661edb0f61fe5026ee077708a2b83e57f82a04c63f0ee"
+    },
+    {
+      "path": "qa-daily-qualification-approved-quantity.json",
+      "bytes": 353,
+      "sha256": "33165a66da1d36d463ac1e46314786b5a577d193f8292fb2d1e2efd72f07865f"
+    },
+    {
+      "path": "qa-daily-qualification-approved-quantity.log",
+      "bytes": 2128,
+      "sha256": "b3ff03c2a00f1fff5a7c3104808439cf1ccd1504047625eb6d99d8132fccee70"
+    },
+    {
+      "path": "qa-daily-qualification-preserved-history.json",
+      "bytes": 377,
+      "sha256": "14811c7cc8a270f76b9d4e1dc89f561ab56311abdc2c2b49115e4e7b33759dd0"
+    },
+    {
+      "path": "qa-daily-qualification-preserved-history.log",
+      "bytes": 176974,
+      "sha256": "30fb9c94ac483a3c0ef19e3e623e620ff23b153e400caab0eff6b27b1b0e1a31"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-blocked-complete.facts.txt",
+      "bytes": 356,
+      "sha256": "16d9f31772329d64025969ff5b8864ed9cbfa142d46ab9e207d45bda3d2a468e"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-blocked-complete.png",
+      "bytes": 209453,
+      "sha256": "ee065f2865b566c43cfa2a4e1621c74ea14b91d7f0d36c1b3f89eda8579806c3"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-blocked-complete.snapshot.txt",
+      "bytes": 8205,
+      "sha256": "0e146366bac7bbe4cd4e0f6aa37b851140579c4e01ae37cfc01dc64a107e9636"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-source-cancelled.facts.txt",
+      "bytes": 514,
+      "sha256": "7c71f27dbfed667d28b15c60e0938fda6d880300c075e550506534c040af4c4a"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-source-cancelled.png",
+      "bytes": 143342,
+      "sha256": "64f55c1642d12ce9f393b250e94cc363800157595043518d8a94b12a76de2b9e"
+    },
+    {
+      "path": "browser-runtime-positive/capacity-review-source-cancelled.snapshot.txt",
+      "bytes": 6578,
+      "sha256": "a4f2b817d48b5ae97bd1ce3d75a19d9cab391e7357df416a972e771e2b8a0177"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-complete.facts.txt",
+      "bytes": 356,
+      "sha256": "9f81ccef9ae78241eebb684bdc6bf97a2676401ade421f271042be037cc6a931"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-complete.png",
+      "bytes": 179589,
+      "sha256": "535839c61a3608caccc0930a00cec70d6310df8444537903951e9dee54783250"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-complete.snapshot.txt",
+      "bytes": 7196,
+      "sha256": "9c713c9e0765a62908c364b3892277c2c08ff8506da1ab8e5dd7600af9fb0c55"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-review.facts.txt",
+      "bytes": 302,
+      "sha256": "b4aa99065f1b014bb549557042a36ffba21100a63ea64aae78870b3e338a354c"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-review.png",
+      "bytes": 127536,
+      "sha256": "9289e479bba4f135346459db93f5b8f283e42bc2c42d1127998dbbe926223d58"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-capacity-review.snapshot.txt",
+      "bytes": 4356,
+      "sha256": "dc13ff01205577485f7126ac2765215ae52eb0024e0b41ab95b520d2ff869ce8"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-evidence.json",
+      "bytes": 458,
+      "sha256": "5427e5691436dab4ae3f4656473d7edcb9d5e2fb2de2812d78111b2463b87f91"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-installed-evidence.json",
+      "bytes": 487,
+      "sha256": "15bf7b2313bfb7c19273f3b03fdd357d5fd09e997e4b15c713b6d2ea6c447a2b"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-seed-installed.log",
+      "bytes": 1117,
+      "sha256": "d14697920a297cf995c204d2102979f6d0792457c958efad255aa4fd196c94f8"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-seed.log",
+      "bytes": 1107,
+      "sha256": "9be35c8319cc496977fd84e4b82878e97a545785f5cbe1b4db998c59570fb00c"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-unique-tenant-evidence.json",
+      "bytes": 487,
+      "sha256": "2273b66f6d313ec2e88c0b3b10589069e296ebc7709f13b3312ac65ba575f1b9"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-fixture-unique-tenant.log",
+      "bytes": 1052,
+      "sha256": "126a24f02a028074b6972fd367b15682058e2be53cbca9c37ed7d1b78301d326"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-unique-capacity-complete.facts.txt",
+      "bytes": 356,
+      "sha256": "16d9f31772329d64025969ff5b8864ed9cbfa142d46ab9e207d45bda3d2a468e"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-unique-capacity-complete.png",
+      "bytes": 170986,
+      "sha256": "d06b233d70a21a14f42e05fef453ac52b2c9d6bb4bde653491aba55678da4cc9"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-unique-capacity-complete.snapshot.txt",
+      "bytes": 6584,
+      "sha256": "4d655f88183d3b80acc1f4c9063d37465014b6627e3ca1d6f267f72badb662be"
+    },
+    {
+      "path": "browser-runtime-positive/context-deduction-unique-fixture.log",
+      "bytes": 59,
+      "sha256": "f36179a1cb4e6a58a6aaba691ea46795ee453d360b84d716834f1a92a9310335"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-after-original-reconcile.json",
+      "bytes": 40501,
+      "sha256": "3e2ce1b09177dfcc203c3d3e0e3ed04245d8f57177634d2cb7b4ee3c5aee0161"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-after-successful-response-loss.json",
+      "bytes": 40501,
+      "sha256": "3e2ce1b09177dfcc203c3d3e0e3ed04245d8f57177634d2cb7b4ee3c5aee0161"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile-complete.facts.txt",
+      "bytes": 319,
+      "sha256": "2b3665cc8e8971392ea83012164cc6913c01dbb2768e0a6c9ef15430ac6f9959"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile-complete.png",
+      "bytes": 193692,
+      "sha256": "817ecca7d832d80beaaedb4c521df897a7b0e72ee9ceae415bcffb66c20b7633"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile-complete.snapshot.txt",
+      "bytes": 9850,
+      "sha256": "45b854dfceaa6b9f39629955e743246956d30d663b5347da01ae85f9d2459c7c"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile.facts.txt",
+      "bytes": 321,
+      "sha256": "9ac6fafdd5e4416fd496bfaa38a7fb80548656d40742ef2222aa69791bfb6844"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile.png",
+      "bytes": 226287,
+      "sha256": "4d76b11f9d041be4adc974717cc6bb24fce29b877bbcffaf173328941942238c"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-approved-mobile.snapshot.txt",
+      "bytes": 9636,
+      "sha256": "1a3b02330ebd81f88b5a978648314f21bd70299427918e0bea15360f9cffb5b0"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-before-financial-commit.json",
+      "bytes": 3712,
+      "sha256": "50587e88cc3182cef8146fabc19ea74b0f2655296d1996a04110f37ae787b35d"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-cancelled-complete.facts.txt",
+      "bytes": 474,
+      "sha256": "62968fdf8c8f7b9fdb7380b3cb4150abff43b4d0fb02de520e4d265e2e541154"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-cancelled-complete.png",
+      "bytes": 141300,
+      "sha256": "ed3cc630424cc318503fccb9a2acc927455ac5247d00907f786224e046e37e04"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-cancelled-complete.snapshot.txt",
+      "bytes": 6487,
+      "sha256": "c616d9365f4ef708e6f19260e2871efc32b45c66613fbbf49aa67ce5a0219657"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-corrected-approved.facts.txt",
+      "bytes": 530,
+      "sha256": "e4bd4f6654475d8f149119a16e584affd000cf90b2791012e58141c7026c511c"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-corrected-approved.png",
+      "bytes": 142549,
+      "sha256": "1bc55703a66893479836374c19ba29ebb14ac44fe1b7a31a1d2fd61b7440cf57"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-corrected-approved.snapshot.txt",
+      "bytes": 6713,
+      "sha256": "0e675513878c4d92e1bb76aea01a1d37d82397463eda8054fba277913b06b9a1"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-original-reconcile-complete.facts.txt",
+      "bytes": 379,
+      "sha256": "a01dce2f6c263ca6fc79cdd9e24ed9d175f4f485fb42a87f8a6deab322713d7e"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-original-reconcile-complete.png",
+      "bytes": 43267,
+      "sha256": "451ff9a03b6c8fa89afd35ad4c8cc472cdd1a1259505b7499ccde2cfe4456deb"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-original-reconcile-complete.snapshot.txt",
+      "bytes": 2621,
+      "sha256": "9d8e28766370c3142229f1b3ee4ced941053228c9a387f45b4fba18761abaf20"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-protected-payslip-complete.facts.txt",
+      "bytes": 486,
+      "sha256": "c13893b92b6978460018ff04dd4f9d4ed3b8abc9b2e080089421c837b1a778b5"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-protected-payslip-complete.png",
+      "bytes": 55214,
+      "sha256": "ae53876978adb788d6ee765328210d92105a6d8f01edacc416e7d73a874ff5b1"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-protected-payslip-complete.snapshot.txt",
+      "bytes": 2918,
+      "sha256": "fbd6e6107b1f46d98bef6ce49c3c4acd1c41b344324b2b7bdbb81ebf07758e9f"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-calculation.facts.txt",
+      "bytes": 356,
+      "sha256": "16d9f31772329d64025969ff5b8864ed9cbfa142d46ab9e207d45bda3d2a468e"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-calculation.png",
+      "bytes": 148603,
+      "sha256": "1a0ba248edb5d9935ecbc410e47d8c7496f892c79631fe491f9d7c29d323b2ad"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-calculation.snapshot.txt",
+      "bytes": 5861,
+      "sha256": "72ae13d215c5bedf929ddf6d59ebfadb0d2453cfe3223663d508ea31ab6ac604"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-explanation.facts.txt",
+      "bytes": 321,
+      "sha256": "9ac6fafdd5e4416fd496bfaa38a7fb80548656d40742ef2222aa69791bfb6844"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-explanation.png",
+      "bytes": 223542,
+      "sha256": "03d865a453d2edd607e9753d1c48510c187b8a0251890d369501e795f00724a2"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-qualified-explanation.snapshot.txt",
+      "bytes": 9597,
+      "sha256": "a1d98debd58d4639ac2c5ad93e042d8cdc279a73def27983e78609ec89ce16a8"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-stale-after-approved-change.facts.txt",
+      "bytes": 494,
+      "sha256": "c3d705cfe27a1b657d0fe722be0fb7142c42dbcce8d2d41ed98a7e70876ce412"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-stale-after-approved-change.png",
+      "bytes": 214792,
+      "sha256": "07568f76082c4c1775baeff8e4cc24105791165a8eaf516e50d1648ee3ea78b0"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-stale-after-approved-change.snapshot.txt",
+      "bytes": 8322,
+      "sha256": "618df318e24e57cb025c691888dcac75afb28eed278468019a492b453d5f1319"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-unknown-successful-result.facts.txt",
+      "bytes": 464,
+      "sha256": "4ad85a78144d71acba813987df0d15daf63eb95afa5e39708cff34fe3fadbe33"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-unknown-successful-result.png",
+      "bytes": 205943,
+      "sha256": "ee387f2ac643125e4088f3cf62dfec018877a6a007cf72ed7fd70b399f894283"
+    },
+    {
+      "path": "browser-runtime-positive/typed-source-unknown-successful-result.snapshot.txt",
+      "bytes": 10387,
+      "sha256": "82335f289efc0791d7208a024461a173b45447f3d7429cabe056eeab7abb8fb3"
+    },
+    {
+      "path": "browser-runtime-positive/build-typed-source.log",
+      "bytes": 3723,
+      "sha256": "d1ba24f3c49623539e9748816cd7030ec17e93fdfa035947950820dc2685243a"
+    },
+    {
+      "path": "browser-runtime-positive/build-typed-source-evidence.json",
+      "bytes": 247,
+      "sha256": "828fb0e535fcbde180dd346e35b12eef8ead0b85a3550ef0729d45ee3d9cc00f"
+    },
+    {
+      "path": "browser-runtime-positive/process-typed-source-evidence.json",
+      "bytes": 285,
+      "sha256": "d12ff1fc323f9203f2c64a4fd66f1602ca53e39866c9be5e3b340505ee1eb2dc"
+    },
+    {
+      "path": "browser-runtime-positive/browser-command-typed-source.log",
+      "bytes": 18389,
+      "sha256": "9a2ab1cb14e9e1bcca0f95adb600cb805eb1d2f53f955462949e276a438e9be2"
+    },
+    {
+      "path": "browser-runtime-positive/lost-response-typed-source-payroll_run_finalize.json",
+      "bytes": 193,
+      "sha256": "612103409e7ab3e3f069eb75133f7d309fd425ab998d6ea58d3c59790b647d6b"
+    }
+  ]
+}

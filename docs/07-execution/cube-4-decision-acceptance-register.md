@@ -1,5 +1,21 @@
 # Cube 4 decision and acceptance register
 
+## ADAM installed context/deduction UI and approved daily SQL checkpoint, 2026-10-04
+
+Code 92861759d29f953a09891f1584ce6097df428ced, tree 6d42c8cf249c5be5d4231496599c63e8fec7d13b; actual browser application0ab87b07c5b3d2c7327e8a065f4eecc53c135737. [Bounded evidence](cube-4-adam-context-deduction-ui-evidence.json) binds canonical delta blobs and success/failure artifacts.47000/48000/49000 are now installed at schema177 in all three owned QA; all67 pre-existing finance/people/auth table facts preserved during installation.50000 is tested rollback-only and **not installed**. Prior8cb77cf evidence remains frozen at its original boundary.
+
+| Requirement/journey | Current acceptance | Remaining boundary |
+| --- | --- | --- |
+| Capacity review and actual immutable source correction | Approved8000 blocks finalization while retaining actual tax/insurance, basis26820.06/cap6705.01/residual1294.99. Correct finance-input link; numeric source JSON roundtrip repaired; actual cancellation then separately saved/approved1000; changed source requires recalculation | CLOSED bounded UI, SQL41 and action/transport10. No carryforward or debt waiver claim |
+| Two-year statutory producer to protected output | Dec7/Jan24 separate packs/years/two owned insurance months;30000 gross,2979.94 tax,200 employee insurance,400 employer cost,1000 approved penalty,25820.06 net. Actual ordinary Auth review/approval/finalize, dropped successful200 response, Reload/original receipt recovery and protected payslip; mobile390/390 | CLOSED bounded actual application0ab87b0/schema177. Original5 final rows and2 loans unchanged; one new final/source consumption/receipt. Per-segment report/export presentation remains OPEN |
+| Approved manual daily financial composition and unpaid replacement | Additive50000 reuses existing approved payable-total inputs, normal statutory producer and existing atomic consumers.10 approved days at3000 yields30000/3000/27000; approved unpaid3300 correction yields33000/3300/29700; original frozen history, replay/recovery/once-only effects preserved.28 rollback SQL checks | CLOSED bounded SQL on177 plus50000; not installed, no daily UI claim. Optional Time/Leave, mixed attribution and remaining finite item1 scope OPEN |
+| Engineering and evidence | Changed application lint/typecheck, production build at exact0ab87b0 pass. All failed setup/selector/validation/TAP attempts retained and classified; no duplicate successful financial operation. Owned services stopped after evidence freeze | No final aggregate same-SHA/tree qualification; no official legal release or wholeCube closure |
+
+The finite essential list1-6 below remains authoritative. Remaining independent programming: optional Time/Leave and broader dated composition; general carryforward/recurring debt/loan coexistence; qualified paid corrections/payments; final-period/obligation reports and handoff; per-segment report/export; integrated permissions/concurrency and one final qualification after stabilization. The sole known external deferral remains the official2026/effective-coverage package; Ahmad is not asked again. No extra specialist termination engine or general rules engine added.
+
+Owned Next/gateway/browser/Auth/REST stopped; shared PostgreSQL and other writers untouched. Task QA and previously authorized synthetic Auth retained only for immediate same-task continuation; cleanup required at completion. No Actions/fetch/push/merge/deploy/Production changes.
+
+
 ## ADAM grouped context/year and wage-deduction checkpoint, 2026-10-04
 
 Code 865cfff599ee865869cae6357a9d5928c3aaa8e2, tree 2af53b924566cf942a0f0a2645ca200828a9464d; resume2679bfb. [Grouped evidence](cube-4-adam-context-deduction-integrated-evidence.json) binds10 canonical code/test blobs, all current success/failure artifacts, and exact combined DDL hash. Additive47000/48000 were tested together inside rollback transactions on owned schema174; they are **not installed**. Earlier94/63/53 proof remains frozen at its original versions. No new browser journey is claimed.
