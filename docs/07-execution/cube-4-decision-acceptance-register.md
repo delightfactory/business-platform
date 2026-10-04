@@ -1,5 +1,10 @@
 # Cube 4 decision and acceptance register
 
+## ADAM approved dated Time/context composition delta, 2026-10-04
+
+Resume84eee17/schema179. New52000 connects existing approved dated Time payable parts to the existing reviewed chronological-prefix context/year producer; it does not assign dates to manual aggregate quantities. Actual wrapped source parts now expose civil month partitions while preserving raw source parts and the legal-attribution boundary. Single owned positive QA rollback tests: actual31dated facts with125→150 rate change and Dec2025→Jan2026 context/year change27; previous monthly contexts19/year23; earning partition reader26. Total95 at canonical52000 SHA256989cacb249a89cf5f8dfc383479b081715aab01eb4729d4de91fe720e0d91635. Scoped NONLEGAL issuer supplier remains explicit; real issuer refusal is tested. First run variable-name ambiguity failed and rolled back; alias correction passed. No retained-QA DDL install or UI acceptance is claimed yet. Item1 remaining code removes only the actual-dated Time multi-context connection from the prior six-row map; monthly source effects, debt governance, paid journeys, handoff and final qualification remain open.
+
+
 ## ADAM manual daily and reconciled Time/Leave financial checkpoint, 2026-10-04
 
 Code c7118aae902681504941e75fb879627d926f859c, tree c546b46ccac5f0ec3e28620514c9184fd7f228ec; resume df9da1e. [Bounded daily evidence](cube-4-adam-daily-source-ui-evidence.json) binds canonical code/test blobs and all success/failure artifacts.50000 and51000 are now installed in the three owned QA at schema179;67 existing finance/People/Auth table facts preserved at each DDL install. Actual manual browser used178; actual Time/Leave browser used179 at this code. Application source tree is unchanged from production build0ab87b0, so its successful lint/typecheck/build were reused with explicit identity rather than repeated.
