@@ -1,0 +1,176 @@
+{
+  "status": "BOUNDED_ORDINARY_AUTH_PAID_SOURCE_AND_EXTERNAL_RESPONSIBILITY_CLOSURE_PASS",
+  "codeSHA": "23142f9878d4058eaf484a8c66f225726de02d81",
+  "tree": "3f4de2d68e7bca895d1b8a4e201da3055dd8eb39",
+  "schemaBaseline": 183,
+  "applicationBuildSHA": "e23173a4a27dcee6dfc39cd91a1658e9c1b423dd",
+  "applicationSourceUnchanged": true,
+  "output": "b3fb428e-e1bc-46e1-a703-c8a5da494411",
+  "case": "b1e14496-a74a-491c-9c98-ffc5a8737f7e",
+  "journey": "Normal existing synthetic Auth → actual fixed server payment request1000 → paid compensation proposal33000to36000 → preview/save → approve → route_paid → externally reviewed manual100 responsibility → actual external evidence100 → casecompleted revision4 → original payment workspace unchanged",
+  "money": {
+    "originalPayable": 27952.32,
+    "paid": 1000,
+    "remaining": 26952.32,
+    "independentResponsibility": 100,
+    "externalSettlement": 100,
+    "originalReceipts": 7,
+    "currentReceipts": 12,
+    "paymentEvents": 1,
+    "successions": 0,
+    "sourceEffects": 1,
+    "bindings": 31,
+    "frozenInputs": 4
+  },
+  "immutableFinancialSubsetExact": true,
+  "priorFinals": {
+    "hash": "993c45f20568a68c4571557444dfb9ec",
+    "count": 8
+  },
+  "priorLoans": {
+    "hash": "67d28c2da31ef7c7291914e2ec55d787",
+    "count": 2
+  },
+  "manualBoundary": "The100 responsibility is explicitly independently reviewed manual QA evidence, not an inferred statutory net delta or official result. Existing contract allows manual attribution; no automatic legal-correction qualification or next-period consumption is claimed.",
+  "evidenceBoundary": "Prior receipt/replay/fence mechanisms unchanged and reused; this new UI journey sends each monetary command once without new fault injection or repeated monetary replay. No new production code or broad tests/build.",
+  "authRetirement": {
+    "atUTC": "2026-10-04T09:38:04.337Z",
+    "originalExpiryUTC": "2026-10-04T09:41:21.904Z",
+    "financialPeopleTablesPreserved": 65,
+    "activeSessions": 0,
+    "ownedRolesNoLogin": true,
+    "syntheticPasswordDisabled": true,
+    "privateSecretsRemoved": true,
+    "noDatabaseDropped": true,
+    "noActorIdentityDeleted": true
+  },
+  "remaining": [
+    "General/recurring deduction source composition and approved residual carry/external disposition integration",
+    "Qualified linked next-period correction consumption; actual Time/Leave source mutation/responsibility closure and relevant auth/concurrency acceptance",
+    "Final-period/ending-obligation and per-segment report/export handoff",
+    "One consolidated same-SHA/tree qualification",
+    "Known external official2026/effective-coverage issuer package/golden cases unavailable, not requested again"
+  ],
+  "artifacts": [
+    {
+      "path": "browser-runtime-positive/paid-closure-before-payment.snapshot.txt",
+      "sha256": "540278a82518a0edca50e476a58e922be0481914d8a635a5ea89a108f1209087"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-before-payment.facts.txt",
+      "sha256": "c4779c2637dbf611f939f28738bc882df11a6dfabe7be68a5a975f544674741f"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-before-payment.png",
+      "sha256": "497b94f3e9890dd2094903c8a16a47e4e29e7b5266c9aecb99ba3db363dc7f0f"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-payment-recorded.snapshot.txt",
+      "sha256": "c75463c632bddd973862cc6fd6fc35e621a82f7433bc7558045bab3e0217ec82"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-payment-recorded.facts.txt",
+      "sha256": "a7f4765ac1009d87f38cfe75e9b3bb208d83a78d0d9e86920a3479da52244094"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-payment-recorded.png",
+      "sha256": "abdb69464e5247268016fbd21b369c99c2f3158b15a12c89339ad6c873d50f87"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-source-proposal.snapshot.txt",
+      "sha256": "6c43af939e409a7314ff467e8fde655af038aedfd009889918aea6a221337f73"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-source-proposal.facts.txt",
+      "sha256": "fba53e8522d960e5e35fb990f58c9b4171fd4b4e21a3bbfb81a5c0366d5bad34"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-source-proposal.png",
+      "sha256": "1582ea98d66ce60487e24a4a1ff64536c9d0540f5b16d210bd9e8614c228f692"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-preview.snapshot.txt",
+      "sha256": "45a70742fe9c1ecbceb2750e759c35657dc39cef397948bec71ef36cc42a96e4"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-preview.facts.txt",
+      "sha256": "ea9e36870bd33600f310e8f8a7378dd9c1aeb850e479cbce14c9e150362049da"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-preview.png",
+      "sha256": "a73e12749491c2d3b6ec94e9307f56378aff93e1278ac68d8b91452d799ccf21"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-saved-review.snapshot.txt",
+      "sha256": "9f44a822182c7f63a4becf501f3d6aae03c09964daeee08d4bdfd30bb655e8f7"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-saved-review.facts.txt",
+      "sha256": "274b80b52212297bbf050e94584ca865a774a7d228f368b1faf20c57d6054b38"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-saved-review.png",
+      "sha256": "14b0126bb3a3e6cb38a15d3eda6d6e4cdfe20142e98b8e5389b7512b4c82840d"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-routed.snapshot.txt",
+      "sha256": "3a1bf6e53d4172a3c900972c649436a48c70d7209f26cdebb77f22966faaa8b2"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-routed.facts.txt",
+      "sha256": "918f1d4034c03a9bef4acde057fc4b65dcc4676dc6803e076291e494f8d0e1ab"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-routed.png",
+      "sha256": "b09f06c1b2d059cb2afe0da5b835991d63424c14c1327fdd87a589c70db67bdb"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-completed.snapshot.txt",
+      "sha256": "367a1f35a9d86889c88d6bc5a569ea2a646bb0259dfd57a717382269b397a704"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-completed.facts.txt",
+      "sha256": "b621a1f400f3d71845c0df7c2514c194b7002c09965e494e407f03bf0bee0e15"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-completed.png",
+      "sha256": "2e1365c1b5d5d7ce32404a6168c1da676f79d068f9ff001c30c4508c18d1c255"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-original-payment-preserved.snapshot.txt",
+      "sha256": "f4ae166c4eb74a7bfe215b78f665d3ff0054d0937a70331dc0526edf1b2d9c23"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-original-payment-preserved.facts.txt",
+      "sha256": "c4779c2637dbf611f939f28738bc882df11a6dfabe7be68a5a975f544674741f"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-original-payment-preserved.png",
+      "sha256": "8900ba2b04541595fc246e8e1c809161f8892dfcf0e0243a8dd1db5708931a1f"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-facts-completed.json",
+      "sha256": "348d4e19174732e85f20a8a723e891306a4f505399dc2abad4633a8c30f170ec"
+    },
+    {
+      "path": "browser-runtime-positive/monthly-source-facts-after-paid-correction-completed.json",
+      "sha256": "8157465fae245fe935c02226ff972fdacfedc27dfbd7bc7ceff263536d6dfa61"
+    },
+    {
+      "path": "browser-runtime-positive/paid-closure-auth-retirement.json",
+      "sha256": "433140f464c86645ebd59427d2bcc7b43113f6e44075eaa08606833868e8a0c1"
+    },
+    {
+      "path": "browser-runtime-positive/process-paid-closure-ui-evidence.json",
+      "sha256": "265cfe01215c356fa415178cd14752b4d27d1c1f383699a4e0242446cd5cfa72"
+    },
+    {
+      "path": "browser-runtime-positive/server-paid-closure-ui.log",
+      "sha256": "6fb16251e86a7be2d931d586f9c48f3b727ab69a36af677dec2bd8f467be145c"
+    },
+    {
+      "path": "browser-runtime-positive/browser-command-paid-closure-ui.log",
+      "sha256": "f4b02252768df38b468cda6967cf24fac75fd81ba84c77ea402a2c60eadb81e5"
+    }
+  ]
+}
