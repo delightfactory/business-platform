@@ -55,3 +55,16 @@ test('reviewed partial-month disposition retains its source binding and request 
  assert.equal(h.calls[1].args.p_data.insurance_month_disposition,'reviewed_not_due');assert.equal(h.calls[1].args.p_data.insurance_owner_period,id(4));assert.equal(h.calls[1].args.p_data.insurance_obligation_reference,'NONLEGAL reviewed joining-month source');
  assert.ok(!('financially_qualified' in h.calls[1].args.p_data));
 });
+
+test('reviewed deduction case and assignment consent survive the unchanged rejected intent',async()=>{
+ const h=harness({error:{code:'22023',message:'payroll_deduction_source_invalid'}});
+ const fields=form({kind:'adjustment',period:id(4),component_id:id(5),amount:'1000',deduction_category:'assignment',consent_reference:'NONLEGAL written assignment consent'});
+ const failed=await h.action(state(),fields);await h.action(failed,fields);
+ assert.equal(failed.saved,false);assert.equal(h.calls[0].args.p_attempt,h.calls[1].args.p_attempt);
+ assert.equal(h.calls[1].args.p_data.deduction_category,'assignment');assert.equal(h.calls[1].args.p_data.consent_reference,'NONLEGAL written assignment consent');
+ assert.ok(!('financially_qualified' in h.calls[1].args.p_data));
+});
+test('blank deduction fields do not alter ordinary approved earning source contracts',async()=>{
+ const h=harness();await h.action(state(),form({kind:'adjustment',period:id(4),component_id:id(5),amount:'1000',deduction_category:'',consent_reference:''}));
+ assert.ok(!('deduction_category' in h.calls[0].args.p_data));assert.ok(!('consent_reference' in h.calls[0].args.p_data));
+});
