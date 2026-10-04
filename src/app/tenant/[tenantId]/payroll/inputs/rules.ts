@@ -1,6 +1,6 @@
 export type InputKind = 'component'|'recurring'|'manual_units'|'adjustment'|'opening_ytd'|'policy'|'statutory_context';
 export type InputRecord = {id:string;kind:InputKind;employment_id:string|null;period_id:string|null;revision:number;data:Record<string,string|boolean|number>;effective_from:string;effective_until:string|null;status:string};
-export type InputState = {error:string;saved:boolean;head:string;revision:number;attempt:string;signature:string;status:string;manual_data?:Record<string,string|boolean|number>};
+export type InputState = {error:string;saved:boolean;head:string;revision:number;attempt:string;signature:string;status:string;adjustment_data?:Record<string,string|boolean|number>;manual_data?:Record<string,string|boolean|number>};
 export const kindNames:Record<InputKind,string> = {component:'مكوّنات الراتب',recurring:'المكوّنات المتكررة للموظف',manual_units:'وحدات الأجر اليومي',adjustment:'المكافآت والخصومات',opening_ytd:'الأرصدة الافتتاحية للسنة',statutory_context:'بيانات الضريبة والتأمينات',policy:'سياسة احتساب الجزء من الفترة'};
 export const statusNames:Record<string,string> = {draft:'مسودة',approved:'معتمد',cancelled:'ملغى',applied:'طُبق في راتب مقفل'};
 export const statutoryCalculationFields=['calculation_from','calculation_until','tax_duration_days'];

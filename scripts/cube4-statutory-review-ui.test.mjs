@@ -68,3 +68,14 @@ test('blank deduction fields do not alter ordinary approved earning source contr
  const h=harness();await h.action(state(),form({kind:'adjustment',period:id(4),component_id:id(5),amount:'1000',deduction_category:'',consent_reference:''}));
  assert.ok(!('deduction_category' in h.calls[0].args.p_data));assert.ok(!('consent_reference' in h.calls[0].args.p_data));
 });
+
+test('approved numeric source cancellation preserves immutable JSON types and omitted empty facts',async()=>{
+ const h=harness();const prior={...state(),head:id(7),revision:2,status:'approved',adjustment_data:{component_id:id(5),amount:8000,deduction_category:'employer_penalty',consent_reference:'',reference:'NONLEGAL reviewed source',reason:'Explicit reviewed period facts'}};
+ await h.action(prior,form({kind:'adjustment',operation:'cancel',period:id(4),component_id:id(5),amount:'8000',deduction_category:'employer_penalty',consent_reference:''}));
+ assert.deepEqual(h.calls[0].args.p_data,prior.adjustment_data);assert.equal(h.calls[0].args.p_expected,2);
+});
+test('an unsaved edited amount is sent for backend rejection instead of approving the saved value',async()=>{
+ const h=harness({error:{code:'PT409',message:'payroll_stale'}});const prior={...state(),head:id(7),revision:1,adjustment_data:{component_id:id(5),amount:8000,reference:'NONLEGAL reviewed source',reason:'Explicit reviewed period facts'}};
+ const result=await h.action(prior,form({kind:'adjustment',operation:'approve',period:id(4),component_id:id(5),amount:'1000'}));
+ assert.equal(result.saved,false);assert.equal(h.calls[0].args.p_data.amount,'1000');assert.equal(h.calls[0].args.p_expected,1);
+});
