@@ -94,6 +94,18 @@ SELECT is((public.attendance_instance_detail('e9100000-0000-4000-8000-0000000000
 SELECT throws_ok($$SELECT public.attendance_instance_detail('e9100000-0000-4000-8000-000000000099',current_setting('test.instance')::uuid)$$,'42501','attendance_view_forbidden','instance details are tenant-scoped');
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000002',true);
 SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',current_setting('test.instance')::uuid,'in',timezone('Africa/Cairo',now())::timestamp,gen_random_uuid(),NULL)$$,'42501','attendance_manage_forbidden','reader cannot enter manual punches');
+RESET ROLE;
+SELECT is(has_function_privilege('authenticated',
+  'public.record_manual_attendance_punch_local(uuid,uuid,text,timestamp without time zone,uuid)','EXECUTE'),false,
+  'unreasoned five-argument local RPC remains unavailable to authenticated callers');
+SET LOCAL ROLE postgres;
+SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000002',true);
+SELECT throws_ok($$SELECT public.record_manual_attendance_punch_local('e9100000-0000-4000-8000-000000000001',
+  'e96fffff-0000-4000-8000-000000000099','in',timezone('Africa/Cairo',now())::timestamp,
+  gen_random_uuid())$$,'42501','attendance_manage_forbidden',
+  'unauthorized five-argument call is rejected before the missing Work Instance lookup');
+RESET ROLE;
+SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000003',true);
 SELECT set_config('request.jwt.claim.sub','e9000000-0000-4000-8000-000000000001',true);
 SELECT set_config('test.in_time',(current_setting('test.operational_date')||' 22:03')::text,true);

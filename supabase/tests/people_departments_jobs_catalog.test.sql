@@ -100,18 +100,13 @@ SELECT throws_ok($$SELECT public.create_people_employee('a2200000-0000-4000-8000
   current_setting('test.child_department_id')::uuid,current_setting('test.job_id')::uuid)$$,
   '23503','people_job_unavailable','disabled job is rejected for a new employee assignment');
 RESET ROLE;
-SELECT lives_ok($$UPDATE people.work_assignments
-  SET valid_until=valid_from+1
+WITH updated AS (
+  UPDATE people.work_assignments SET valid_until=valid_from+1
   WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
-    AND id=current_setting('test.assignment_id')::uuid$$,
-  'historical assignment can be closed after its Job is disabled');
-SELECT is((SELECT valid_until FROM people.work_assignments
-  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
-    AND id=current_setting('test.assignment_id')::uuid),
-  (SELECT valid_from+1 FROM people.work_assignments
-  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
-    AND id=current_setting('test.assignment_id')::uuid),
-  'validity-only update persists while disabled Job reference is retained');
+    AND id=current_setting('test.assignment_id')::uuid
+  RETURNING id
+) SELECT is((SELECT count(*)::integer FROM updated),1,
+  'validity-only update changes the existing assignment while its Job is disabled');
 SET LOCAL ROLE authenticated;
 SELECT lives_ok($$SELECT public.save_people_department('a2200000-0000-4000-8000-000000000001',
   current_setting('test.root_department_id')::uuid,'ROOT','الإدارة الرئيسية',NULL,false)$$,
@@ -133,6 +128,25 @@ SELECT throws_ok($$SELECT public.create_people_employee('a2200000-0000-4000-8000
   current_setting('test.child_department_id')::uuid,NULL)$$,
   '23503','people_assignment_department_unavailable','child under disabled parent is rejected for a new assignment');
 RESET ROLE;
+WITH updated AS (
+  UPDATE people.work_assignments SET valid_until=valid_from+2
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+    AND id=current_setting('test.assignment_id')::uuid
+  RETURNING id
+) SELECT is((SELECT count(*)::integer FROM updated),1,
+  'unchanged catalog context remains editable after the referenced Department is archived');
+SELECT throws_ok($$UPDATE people.work_assignments
+  SET department_id=current_setting('test.root_department_id')::uuid
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+    AND id=current_setting('test.assignment_id')::uuid$$,
+  '23503','people_assignment_department_unavailable',
+  'changing the catalog context to an archived Department is rejected');
+SELECT is((SELECT count(*)::integer FROM people.work_assignments
+  WHERE tenant_id='a2200000-0000-4000-8000-000000000001'
+    AND id=current_setting('test.assignment_id')::uuid
+    AND department_id=current_setting('test.child_department_id')::uuid
+    AND valid_until=valid_from+2),1,
+  'rejected catalog-context update leaves the assignment unchanged');
 SELECT is((SELECT prosecdef FROM pg_catalog.pg_proc
   WHERE oid='people.prevent_job_department_change_with_assignments()'::regprocedure),false,
   'Job history guard uses invoker rights');
