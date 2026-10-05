@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { sendEmployeeAccountActivation } from '@/lib/employee-account-delivery';
 
 export async function createEmployeeAccountAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
@@ -29,6 +30,33 @@ export async function retryEmployeeAccountActivationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect(`${path}?account=setup`);
   await sendActivation(supabase, tenantId, employeeId, intentId, path);
+}
+
+export async function sendEmployeeAccountReadinessRecoveryAction(formData: FormData) {
+  const tenantId = field(formData, 'tenantId');
+  const employeeId = field(formData, 'employeeId');
+  const intentId = field(formData, 'intentId');
+  const path = `/tenant/${tenantId}/people/${employeeId}`;
+  if (![tenantId, employeeId, intentId].every(isUuid)) redirect(`${path}?account=invalid`);
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) redirect(`${path}?account=setup`);
+  const { data, error } = await supabase.rpc('prepare_people_employee_account_password_readiness_recovery', {
+    p_tenant_id: tenantId, p_employee_id: employeeId, p_intent_id: intentId,
+  });
+  if (error || !isRecord(data) || data.intent_id !== intentId || typeof data.target_email !== 'string'
+    || data.target_email.length > 254 || !isUuid(data.auth_user_id)) {
+    redirect(`${path}?account=${mapError(error?.message)}`);
+  }
+  const callback = activationCallbackUrl(intentId);
+  const admin = createSupabaseAdminClient();
+  if (!callback || !admin) redirect(`${path}?account=setup`);
+  const delivery = await sendEmployeeAccountActivation(admin, data.target_email, callback);
+  const { error: recordError } = await supabase.rpc('record_people_employee_account_readiness_delivery', {
+    p_tenant_id: tenantId, p_employee_id: employeeId, p_intent_id: intentId,
+    p_delivery_state: delivery.sent ? 'sent' : 'failed', p_error_code: delivery.errorCode,
+  });
+  if (recordError) redirect(`${path}?account=operation-error`);
+  redirect(`${path}?account=${delivery.sent ? 'readiness-link-sent' : 'readiness-link-failed'}`);
 }
 
 async function sendActivation(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
@@ -82,14 +110,13 @@ async function sendActivation(supabase: NonNullable<Awaited<ReturnType<typeof cr
 
   const redirectTo = activationCallbackUrl(data.intent_id);
   if (!redirectTo || typeof data.target_email !== 'string') redirect(`${profilePath}?account=setup`);
-  const { error: deliveryError } = await admin.auth.admin.inviteUserByEmail(data.target_email, { redirectTo });
-  const deliveryState = deliveryError ? 'failed' : 'sent';
-  const safeDeliveryError = safeCode(deliveryError?.code ?? deliveryError?.name);
+  const delivery = await sendEmployeeAccountActivation(admin, data.target_email, redirectTo);
+  const deliveryState = delivery.sent ? 'sent' : 'failed';
   await supabase.rpc('record_people_employee_account_delivery', {
     p_tenant_id: tenantId, p_employee_id: employeeId, p_intent_id: intentId,
-    p_delivery_state: deliveryState, p_error_code: deliveryError ? safeDeliveryError : null,
+    p_delivery_state: deliveryState, p_error_code: delivery.errorCode,
   });
-  redirect(`${profilePath}?account=${deliveryError ? 'delivery-failed' : 'delivery-sent'}`);
+  redirect(`${profilePath}?account=${delivery.sent ? 'delivery-sent' : 'delivery-failed'}`);
 }
 
 function activationCallbackUrl(intentId: string) {
@@ -107,7 +134,6 @@ function activationCallbackUrl(intentId: string) {
 function field(formData: FormData, name: string) { return String(formData.get(name) ?? '').trim(); }
 function isUuid(value: unknown): value is string { return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function isRecord(value: unknown): value is Record<string, unknown> { return Boolean(value) && typeof value === 'object' && !Array.isArray(value); }
-function safeCode(value: unknown) { return typeof value === 'string' && /^[a-z0-9_-]{1,80}$/i.test(value) ? value : 'activation_delivery_failed'; }
 function mapError(message?: string) {
   if (message?.includes('people_employee_account_manage_forbidden')) return 'forbidden';
   if (message?.includes('people_employee_account_email_conflict')) return 'manual-review';
