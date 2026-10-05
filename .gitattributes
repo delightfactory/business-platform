@@ -1,0 +1,2 @@
+# Migration function-source anchors require canonical LF on Windows checkouts.
+supabase/migrations/*.sql text eol=lf

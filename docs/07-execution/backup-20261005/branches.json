@@ -1,0 +1,1074 @@
+[
+  {
+    "branch": "codex/backup-20261005/cube0-branding",
+    "parent": "d3f2dcfbf27a555d822776aaee6337145efaffe2",
+    "parentTree": "2d19007785e7f112d761fd783fb40c76079104f8",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-branding",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-commercial-controls",
+    "parent": "40ceb5d023bd218f9da080cd6a776c1d54cc85a3",
+    "parentTree": "19a4ee60a6804b7f71fb095baaec4d831f838f7d",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-commercial-controls",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-commercial-detail",
+    "parent": "0c3dd49687324ed7650474e5491c29b1d6279cbe",
+    "parentTree": "e6f2dd82bb5562a0d2f8f4cc8e7068463371e539",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-commercial-detail",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-entitlements",
+    "parent": "a588dea574fcd89c4cadc76810defa34fd07720e",
+    "parentTree": "8a30e1e4c48ec89c89b76c0978d7e83a57942775",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-entitlements",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-entitlements-detail",
+    "parent": "d50065f2b5f0ec65bf63242fd083b2055915b926",
+    "parentTree": "ae988e4abbd4bfac22bfd488bf53253a79ba9980",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-entitlements-detail",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-mobile-navigation",
+    "parent": "b10da3d59d84b0404c5f3430f475a4b5aaacdda0",
+    "parentTree": "883a0d4f0f7626db276a79bfcae9963088a8d5bc",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-mobile-navigation",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-operator-invitations-ux",
+    "parent": "5ef8f22e7f0be30b65d409293f1572dd98822ec7",
+    "parentTree": "2b9efdcca12ebd1b8ded3876821a71abd8fda7ff",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-operator-invitations-ux",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-tenant-collections",
+    "parent": "4a872a764b2500418cebe7929afeccd21cb66cd2",
+    "parentTree": "32b479784429d7c178318727287c022614591e9f",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-tenant-collections",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-tenant-detail",
+    "parent": "963ff03b6b99cd6e0ad044ad439b70df4cd91d00",
+    "parentTree": "b480199fed4285845791cdd83198544e49d7934a",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-tenant-detail",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-tenant-workspace",
+    "parent": "e40ac864a79af0849f5508f6bb8c3258f18813cb",
+    "parentTree": "e1b2d5c8a1dcc195666eed032c3f5e46c8f0a486",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-tenant-workspace",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube0-ux-foundation",
+    "parent": "d6a0f83f840b7dba6969ab4f0a3dec9c3f18459d",
+    "parentTree": "e605709a63eeeba7be43d1605964cc8c91113b24",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube0-ux-foundation",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube4-review-ready",
+    "parent": "cdcf366ddc3a926c3ac6ffd6facf3f9226aba844",
+    "parentTree": "834f0a97be0ce25b626f87da2dca0d6a053a3c0a",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube4-review-ready",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube5-adam-ui-closure-next",
+    "parent": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+    "parentTree": "1c06640dbbc0b3975c2cc8eff2cfe12345da66ea",
+    "kind": "committed-history",
+    "sourceBranch": "codex/cube5-adam-ui-closure-next",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube4-adam-closure",
+    "parent": "ed26e49a9b1b577952a484bc55083bb6c41fb25e",
+    "parentTree": "f6825f35b9f938e26b831edda42178e475047b1d",
+    "kind": "committed-history",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube5-adam-channels-mobile",
+    "parent": "dc06b2cecfc0a704dcd7fcefe92c6b46627c0bfe",
+    "parentTree": "b6c06656242da8ebfc5ff975b289e07207699c63",
+    "kind": "committed-history",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/cube4-payroll-core",
+    "parent": "bc351e19f1d52129f81a9b2a9f1de97b03516a13",
+    "parentTree": "c222aced467788c75009d976960bd191960c6b4b",
+    "kind": "committed-history",
+    "files": []
+  },
+  {
+    "branch": "codex/backup-20261005/wip-recovery-worktree-sep29",
+    "parent": "33de62172afc25fe1434daf2e6d5acf41c2c8e99",
+    "parentTree": "bba9bf9c4c59c60c41cd1357f70be5bc2b7d79d7",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube0-public-demo",
+    "files": [
+      {
+        "file": "supabase/config.toml",
+        "sha256": "bbfc4722242dd5a56ecc2cc8f351b47cad5035dc5a2c632abb617095c5ffbffd",
+        "status": " M"
+      },
+      {
+        "file": "AGENTS.md",
+        "sha256": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+        "status": "??"
+      },
+      {
+        "file": "CLAUDE.md",
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-report-absence-worktree-sep29",
+    "parent": "2cce7a754a4444d276f55a6c1c4abf684223b240",
+    "parentTree": "f183609fbc769efd6e68a0d93056669f960a9a55",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/report-absence-fixes",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+        "sha256": "b665d37c3f747ea1deba467f1fb092ff86036501a4477a70af5e23c1ea242b76",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/attendance/actions.ts",
+        "sha256": "ddef489250ff177266bac0ae821a881bd36fa91505de77406d7413353783c394",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/attendance_manual_workflow.test.sql",
+        "sha256": "dbe12db5aa24aa6267cafe2ce2f3cef3e7fcde1106ccc315d1fc751e2f9a55bf",
+        "status": " M"
+      },
+      {
+        "file": "supabase/migrations/20260930193000_attendance_absence_corrections.sql",
+        "sha256": "af01355d3ef7a2cf94d71af3ee8cba87b2c464123479bf7101687315c05e6a05",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-report-auth-worktree-sep29",
+    "parent": "2cce7a754a4444d276f55a6c1c4abf684223b240",
+    "parentTree": "f183609fbc769efd6e68a0d93056669f960a9a55",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/report-auth-fixes",
+    "files": [
+      {
+        "file": "src/app/auth/employee-account-activation/actions.ts",
+        "sha256": "4bf7aa71d96cbbbedc226c0dc96c4b6e58de3084fd801ac2f777c34e0bd28618",
+        "status": " M"
+      },
+      {
+        "file": "src/app/auth/employee-account-activation/callback/page.tsx",
+        "sha256": "6d1ee2844841ab3becd4de309a75e68db9f8dbc82adc381ac352cb4db7127877",
+        "status": " M"
+      },
+      {
+        "file": "src/app/auth/employee-account-activation/page.tsx",
+        "sha256": "ea7fec19531d323a6f4e438b2c2913b66db6d14ff7ce023fdfbc39a9694a2d0f",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+        "sha256": "3c5b111bf382043d390385ec5e61b9349997de9d487e94967b6b59f4dbcc4e80",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/employee-account-actions.ts",
+        "sha256": "06a918314216d26e99449e5fa49ed75aaecd21365143326de9234c2e1c71715d",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/people_employee_account_provisioning.test.sql",
+        "sha256": "07f3ad2424bf9568135b668ed131cebf2eecfe06941b798685d7dfe065408e33",
+        "status": " M"
+      },
+      {
+        "file": "src/lib/employee-account-delivery.test.mjs",
+        "sha256": "d8f0d1a76490b94768225a8ca3696f913e7da62337280291e81dcb6e419317b3",
+        "status": "??"
+      },
+      {
+        "file": "src/lib/employee-account-delivery.ts",
+        "sha256": "28be7851b1afb17d639a4aeb2f491b20aeaa85c5001d5fe11ab251b101a5a78f",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20260930191000_people_employee_account_password_readiness.sql",
+        "sha256": "9f931e536b648fc565827316af3e52c18601002657954351f32bb390a0eac864",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20260930191500_people_activated_employee_password_readiness_recovery.sql",
+        "sha256": "c9c056c9c85bed3c24b9c4600f5ab1d6830391f3f7c69bcc54340975b7b5ab41",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20260930191624_people_employee_account_readiness_delivery_audit_event.sql",
+        "sha256": "de8202fe9d76b64e637f6cc7af94866cd519e8add6553624394d81d7343affdb",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-report-csv-worktree-sep29",
+    "parent": "2cce7a754a4444d276f55a6c1c4abf684223b240",
+    "parentTree": "f183609fbc769efd6e68a0d93056669f960a9a55",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/report-csv-fixes",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+        "sha256": "c12261e6927b7a9375d5ee0a2d3d40a0a65c03d3c0a9d2d0265ea9dd67590349",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
+        "sha256": "54985d1a6a7140bf24e0171d53e35749bb774e5a3139fa2d28da6dbba4cb2183",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+        "sha256": "d23ad15a860065f58df1516f612fd857139fbc8989992f6ae1855c2074c89a8b",
+        "status": " M"
+      },
+      {
+        "file": "src/app/workspace.css",
+        "sha256": "77136d5bce91e9cbbfcf61d0a4b40dbe6dabd1de57b42ca66c2c67cc4939986b",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/attendance_csv_import.test.sql",
+        "sha256": "a35f19fe0999fa56c7f182896034746b0724da68ec6f6fa4df0211ad53b8a8c4",
+        "status": " M"
+      },
+      {
+        "file": "supabase/migrations/20260930192000_attendance_ambiguous_work_date_resolution.sql",
+        "sha256": "5bb52bb5b993127c9b5b3475f934eed7b09b77498dee3affe4e69b7c7129c36c",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-report-fixes-worktree-sep29",
+    "parent": "6ce31e1d200efe68087ebb0f182b2a0366719239",
+    "parentTree": "ed41ae8053a98191ab68d305b7d4f7ec98826133",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/report-confirmed-fixes",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+        "sha256": "4195f8a0ef743f13f50d6aa3e394b15e74050e27c25046164fe012cc3f3e53d3",
+        "status": " M"
+      },
+      {
+        "file": "supabase/migrations/20260930104100_cube2_manual_attendance_integrity.sql",
+        "sha256": "76085998170e41bd01cd80b325dc5873172b6b5afbf4646165035d6c7b59bec3",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/attendance_auto_approve_clean.test.sql",
+        "sha256": "9ab6b3678317e2881a7ef843335aa57f934833a7b157fe38b7e18cac1a2132f4",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/attendance_manual_workflow.test.sql",
+        "sha256": "a32805655458f44e5202a769720e9ba0c7c73eb8d386ea7e4cbb4f34577d048f",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/people_departments_jobs_catalog.test.sql",
+        "sha256": "b42a61e06559d3f65c9f308dd2f89ec44ee2fea59c98c2454f107b5b4618e26d",
+        "status": " M"
+      },
+      {
+        "file": "supabase/tests/people_employee_account_provisioning.test.sql",
+        "sha256": "b0789b51842a63b8a556560da9b687ad633091e0b54bb693e586fdfb929ee908",
+        "status": " M"
+      },
+      {
+        "file": "supabase/migrations/20260930202731_employee_replacement_account_snapshot.sql",
+        "sha256": "b1e7e748362bcc590011cab053146fd12d4566514084f5814ef47e88031e839d",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20260930221654_reconcile_live_function_definitions.sql",
+        "sha256": "414543b842a5eecf06a9ec7952c3c94c931f8e99f3f36266bf52007e6f08e47b",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-scale-worktree-sep29",
+    "parent": "50fd5bd2b3426ed6e84df3eca519291440de9b57",
+    "parentTree": "5d986f70e4652f6126cc71abe32bc6898a4437a7",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube2-scale-hardening",
+    "files": [
+      {
+        "file": "supabase/tests/people_directory_search.test.sql",
+        "sha256": "6a8c022ca6cdcf31f632c96d0203e866aac44ee55c2cb18e5567a22ebfde8a59",
+        "status": " M"
+      },
+      {
+        "file": "supabase/migrations/20260930160002_people_directory_scale_search.sql",
+        "sha256": "0ca3c5e2a30dbf92ac9116424dd13059a3433d78ff9068f766cbf548d5adfb4e",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-classified-fact-writer-oct01",
+    "parent": "1b9ac406cc209e4d006d8dd07076e4b7bb038fbf",
+    "parentTree": "7218b06ff958ae9687e582b3fc9399f8bdd75d19",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-joint-leave-time",
+    "files": [
+      {
+        "file": "supabase/migrations/20261001190000_cube3_joint_leave_time_preview.sql",
+        "sha256": "64970b51d6bd2cb362ba29af9d52667d7bc2b9dabbfc47cdb93ba7e248d5fe13",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube3_joint_leave_time_preview.test.sql",
+        "sha256": "e7cdb076287dfb236dfc132c06d15b7621f067f0f9a1e8a296d89378b1b2cf05",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-fractional-facts-oct01",
+    "parent": "1a6d61226e21e370b00cac643e0b38241c094483",
+    "parentTree": "1df0b906cb967a2824a62d05653d3e23ab18970c",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-fractional-facts",
+    "files": [
+      {
+        "file": ".gitattributes",
+        "sha256": "afccc668642805d6a79a40e8cbc243ce68e76d033d1e9dfd2b8ef51e2541dfd5",
+        "status": "A "
+      },
+      {
+        "file": "supabase/migrations/20261001170000_cube3_attendance_coverage_classifier.sql",
+        "sha256": "6a0f99936f3d3040cf543c38582e346a4208991330a189f99cb66e18d1df7461",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/attendance_coverage_classifier.test.sql",
+        "sha256": "74cd499c47e09172bac457b9cff9daed5e61962a0cd3c1c3721f4a631f11994c",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-hr-balance-ui-oct01",
+    "parent": "e45adef5e273e530c580b218fb70f0e4e7bf079b",
+    "parentTree": "0e513de5237de314b6604b32bb6ff0b23b23d6f4",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-hr-balance-ui",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+        "sha256": "2fc7e78b75205cda4237cc1abf75063cb95a9ed8d2b7823e78c4fc709d45df8e",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/loading.tsx",
+        "sha256": "6ef07b41a786e058b6dae76264ff23532bf86a860b360ccf0a6366b1e31bd2fe",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+        "sha256": "464112f4fb3d11a77326888ad5ab5fce91738116be27746ea91f5595608ec8a6",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/actions.ts",
+        "sha256": "cadb28ab08ff9bab5534b0760b4c869d30d3897e0cbb24c6417d88cff059e4ff",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/loading.tsx",
+        "sha256": "548ccdf3f338a104bccf0d6152d38438f6d955f67fbfc3f67806277c8cf5c606",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/page.tsx",
+        "sha256": "a4fed95c3bb9e137eb74b288b3ff11971f6ff24b31e771dab99a51b26a32b8a0",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/rules.ts",
+        "sha256": "0ecbcf83f80e79e7d32053cf1115f5b5ac8590c0f47e009718fe3d71a56c4728",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-hr-record-oct01",
+    "parent": "6abdecb44583ee7fcf2f78c5c2d8d8b5e834ff27",
+    "parentTree": "35f309ba71e704b5f7c7549d84f4aa8e5e841773",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-hr-record",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
+        "sha256": "780c5950dc5e7246b5fe3da15c03c29cff435ad58492cacb7f1363fca2576b96",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/new/actions.ts",
+        "sha256": "99997eac93a3bd338dcb5a27b445ceb9e6414e8a4fbdc2e8bcc8ebb081ddb30b",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/new/loading.tsx",
+        "sha256": "31e7d9ed46b15a1cc75c44ed8d3e6e6499619bb40d150f036141b413367c7dd1",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
+        "sha256": "ff693986f26e7bf34320a1e659da104761ce7be6b4ba4a61305ab28af148c19a",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/new/rules.ts",
+        "sha256": "10642cbbe79ea3558fc63621d01f5a939350be45184e613453600e7ec6ec58cc",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-hr-ui-resume-oct01",
+    "parent": "6caf219977de35fa435f550d10a799151d0132c9",
+    "parentTree": "b1b30fa07bbc8b72873a49bcbed9aafb9cf6e97d",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-hr-ui-resume",
+    "files": [
+      {
+        "file": "src/app/tenant/[tenantId]/leave/actions.ts",
+        "sha256": "ed25974282734471fec95389cb8a245fa86869eb3f9e141dfafc8a3864f03389",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/loading.tsx",
+        "sha256": "d73d71228ed40f9262da25991234f0fd8829f4cf8380c46ea04a859b094ef3ef",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/page.tsx",
+        "sha256": "e7a70a6abf7e60435bbb198304784ccbc70ba76ddbf1d5d99d418e4e358dbc47",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/pending-link.tsx",
+        "sha256": "5c835d638d74f154e6736ae557245ab67abb4bb582a032ef35aab94ca86d9a5a",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/DayBreakdown.tsx",
+        "sha256": "c2e33206d767f55b2cedb5f02c042ec8694560e6677dcb830d291dbf88b4dc6f",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
+        "sha256": "2fa37c58fad5988e69c4362cf22b41bd7d85ba250d4a9a3cb3272ce2b6602d48",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/loading.tsx",
+        "sha256": "4401393103437c5cdaad38bd4d0d005c6652dd5fa5077f0d38c9267c5b85a265",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+        "sha256": "eb9ea3ffc14b4179939b7b0f543c092e6f2f3e7f87929b39a7f035030746b0ad",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/review.module.css",
+        "sha256": "fdb8f43fc574ca7687f2efa5edcacda7c8081e4b6eecb3fcfd0e6fcdb5b83c86",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/rules.ts",
+        "sha256": "8126fc39903b61418072a8118f4efc4ce6b5b879af8b3f3be014cb0ed314f1ef",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-time-calculator-oct01",
+    "parent": "411313f5d92db38b9e334d99bbaad0153c47728a",
+    "parentTree": "31ba8ace816d1f35c68c6cfa272aa4d02472b622",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube3-time-calculator",
+    "files": [
+      {
+        "file": "supabase/migrations/20261001160000_cube3_time_shared_calculator.sql",
+        "sha256": "acd046b88d357dda59df53016c2523afcb15807660d151e8547adeb81194a9c7",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/attendance_shared_calculator.test.sql",
+        "sha256": "3bebaf7779a45ec0631d97aea5a6a9dc67b64b83de942f534cc221ef8b402935",
+        "status": "??"
+      }
+    ]
+  },
+  {
+    "branch": "codex/backup-20261005/wip-reports-worktree-oct02",
+    "parent": "555c34a568f44eb4b99d99712a699094488f3026",
+    "parentTree": "b8075264e9bad11424681cf2626ecaaace414f03",
+    "kind": "unqualified-wip",
+    "sourceBranch": "codex/cube4-payroll-reports",
+    "files": [
+      {
+        "file": "docs/04-product-specs/employee-finance-payroll-spec.md",
+        "sha256": "ec941509b321223ffc0db4fcbd19959659e08d77416f2c5251e6cbf8c1a1700f",
+        "status": " M"
+      },
+      {
+        "file": "docs/04-product-specs/payroll-calendar-and-cutoff-amendment.md",
+        "sha256": "bc04a7572e0ac6273e547e70f0f21a320d2afbbe38731b5e31ac07ab02018e62",
+        "status": " M"
+      },
+      {
+        "file": "docs/06-governance/decision-log.md",
+        "sha256": "3cb57ca82c4094a4316de5b1e7f2c5a5195c34fa34edebada3ab4271796cd716",
+        "status": " M"
+      },
+      {
+        "file": "docs/07-execution/v1-cube-execution-plan.md",
+        "sha256": "53a4c2ecfd4803095d14dfa2902b5ba368a26060d05f274c97ab779798632ee3",
+        "status": " M"
+      },
+      {
+        "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+        "sha256": "2a2118e50f52a5af8aafc3fc4c5cae29b485116bf8e86094f7da4b3caf4277b6",
+        "status": " M"
+      },
+      {
+        "file": "src/app/operator/entitlements/actions.ts",
+        "sha256": "01a6f180d7338da72803ef8537247b357d98b19d4457ad3e7c6d863bd8286ab4",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+        "sha256": "4eb1fe1236568e33d2bbae22107734486e459f5735e1d5d6e15c05d819b9163a",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+        "sha256": "1483bad06e11a0e4d8d820ff2d53c55288dc4ad3591ff980b1203fca7bf2d7ad",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/actions.ts",
+        "sha256": "d4259db358a76683d0e8063142f61926f43c871f62ffe1f8f84808706e8ab027",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/compensation-actions.ts",
+        "sha256": "1e9e8242b5b4f1348942893178e79856108b73f80eac76c7b8c9d5b61cdfeb3a",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/employment-lifecycle-actions.ts",
+        "sha256": "8df31525e963b171498e6cb8890044bb48bb20908e6cab9a3c46f308d19f9e41",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/work-assignment-actions.ts",
+        "sha256": "5ea733217e83f8035a203427bfea319ac90ca5cf35467f9745c33ce1b2e9880c",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/people/work-policy-actions.ts",
+        "sha256": "1b0ee39da94c787ce77175d864ba7c88cde5ade063a906b8271534121d9b40bd",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/users/actions.ts",
+        "sha256": "c48ffdcd9c56dc5ba99bb5014d467b8df41820a836cd5a672640f55fa4a0fbf0",
+        "status": " M"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/users/page.tsx",
+        "sha256": "b68a31cc331ca0a0c9ba3ac5485a06ea5954dc693f6c1de54223d403c88a615d",
+        "status": " M"
+      },
+      {
+        "file": "src/components/context-navigation.tsx",
+        "sha256": "fb375c7f9ac4c8888e4f75752bc264edd00ce42479891a2a873c73e7e447d994",
+        "status": " M"
+      },
+      {
+        "file": "docs/04-product-specs/cube-4-operational-policy-amendment-2026-10-02.md",
+        "sha256": "f432874c1d69b20c9f915845102cd5b56fbbf0944a5e5c9fd9b7755ded136c9b",
+        "status": "??"
+      },
+      {
+        "file": "docs/04-product-specs/payroll-fixed30-proration-amendment-2026-10-02.md",
+        "sha256": "6f7f041d86f217d2d8bb756e63df617f4629965671230cfcfb213b0f2fea3b19",
+        "status": "??"
+      },
+      {
+        "file": "docs/04-product-specs/payroll-ordinary-period-proration-amendment-2026-10-02.md",
+        "sha256": "445ee2e893ced0e3737fcca857cb0c0e74cca8f2121a2a60973dfafb18499188",
+        "status": "??"
+      },
+      {
+        "file": "docs/04-product-specs/payroll-recurring-proration-amendment-2026-10-02.md",
+        "sha256": "a28fe490abc859656725e34aff6888d7f0bf442b462392083005f8026267ea31",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-calendar-acceptance-examples.json",
+        "sha256": "f9beaa4e471fae3efd0a8a721ee3702bf4c6892faa029de84963699cc6f17858",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-decision-acceptance-register.md",
+        "sha256": "43f8c00e852d24734cff15b934700ff3524e15a5564563ea9793f93fc26f24b4",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-entry-checkpoint.md",
+        "sha256": "175a52536ad308d678aaa26e2a07cfa12261dc68b2469db66cec87bd1c097e81",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-execution-contract.md",
+        "sha256": "b010eb8752f8e178aed5b69dc19082b8dd7db9aa76afe1ccd8a9fc365991043d",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-lock-graph-review.md",
+        "sha256": "76d323f7437db97f2ca2b6140117e848d235db7232aba62e11a0f279e7fa97d2",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-1-qualification.md",
+        "sha256": "7bde5805b955c94eef2582e29d5be1d5666ff9b364169e553ad4c0fb42de4f0e",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-2-checkpoint.md",
+        "sha256": "1fb911001f098b9e6f48b12f58e619c0696a4c7ad80f4311e536c7fa4c0d4342",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-2-qualification.md",
+        "sha256": "91af8a8997aeff30eee7fd5d36dba915ec0e327596ef2e73482dec6682d29e8b",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-3-checkpoint.md",
+        "sha256": "0a9e862aa40778d51eeb7285cadca86fd337e818d141c7776eea5c43522aaa1e",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-3-qualification.md",
+        "sha256": "23ec5d498f175049b1b20563594e7ba74bdee3b64c885aca86efbd0f48b261a8",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-4-checkpoint.md",
+        "sha256": "a365faecb80604cfa60e30fe77233f456e556733820e18b718ca4615b3c78084",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-4-qualification.md",
+        "sha256": "92ea66a33265f80a129efc68d7a47ba07c52bac038f049e03d2259536bd2a07a",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-5-checkpoint.md",
+        "sha256": "36e392edd943d333ebc92b4b0e2bb9d3b45da26818cc290488f1bd8a39ab82a3",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-5-qualification.md",
+        "sha256": "92f728b7965f8d1958631916676190535de9f1ab8c2277890a29eb7720d2dea6",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube-4-slice-6-checkpoint.md",
+        "sha256": "eddaadb23a09d835c17c75c8b0f6e47eff07e8c94ee0a1b51acc29eefab6b487",
+        "status": "??"
+      },
+      {
+        "file": "docs/07-execution/cube4UXextension.md",
+        "sha256": "971e29ef38861b57dd0822518762c53c59f954b6c4ee23d652929db85412fb11",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
+        "sha256": "249ae744baa63c20797ef8740e836573da8488dbce1c72889aeffa9fff6f38d7",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/actions.ts",
+        "sha256": "56688ed697d538df56829a3c4f618747087471b2258273ceb972a2adde2917f3",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+        "sha256": "d304f41a6ba45735b6db04927cd0ca5b0fd3baec3a06c74f1e99284b723995f4",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/advances/actions.ts",
+        "sha256": "f1bb586f3a2414bf201a5adf347705017205f3b6f270e7477b26ac03b371bfc0",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+        "sha256": "b7f2b96028f823b90beef2d8231d93c503f91f9d8d9d607dccc9932a42d113bb",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/advances/rules.ts",
+        "sha256": "9b1f82e6715cd555f8b0e5c8000e238e01a62867ce885858b5897581a3090d9c",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+        "sha256": "012bd2bfca2cc758972eafa20f110cf86c6b91c871a8db2de7a89d2c6a4eda4a",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/PagedChoice.tsx",
+        "sha256": "2654955e2513540b1207374260eddf6ff2b3bf2835557d372f86347bb4a3c5dd",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/SourcePicker.tsx",
+        "sha256": "fe0469bdbb10b64dce0588dfd766b880610fe4203798ac7adc830bf5012b939a",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/actions.ts",
+        "sha256": "ee04f7d687e9cf8a579a0075c726490039fa68abaf02de74729fd0164148c7f6",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+        "sha256": "1aed9929d8ddeed1ef375d499f4674e16dfe68c9635f026af041432f86b0675f",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/rules.ts",
+        "sha256": "badb1f80367162f44d94a5e1c13cea31cb5b986b6424cb9ec05dbb84f4febc77",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/corrections/useCorrectionRecovery.ts",
+        "sha256": "3979e0f4bf3c657b427f3e1847a3a7d02de7b490da0401ef2dbeddc030a31426",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
+        "sha256": "942abe541920f0440bcd290258852ca2c2ec3d384ad34015e3d22f6054ff356e",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+        "sha256": "6cd65cd5ca1386ffa8f0d599c9ee546d625db3f61bdcdd2236f3294a4526731c",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+        "sha256": "39ea7209744b4b949a758f1f85947d60c2ea0cdc3ec996e414e32f0dfdab0fe8",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+        "sha256": "19cd58e7906d9460910163802fd7f8218db304411b83efb8b431e1c6f9374697",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+        "sha256": "d1707b33c7da6b438203b686f528055a7d96023624b87d1b1854ef82d3ee84b9",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/output/export/route.ts",
+        "sha256": "5b5a64540f47f2038e96b356bd8faebc5a045051ef287572a8094bdf309f650b",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/output/page.tsx",
+        "sha256": "6e0a7e48053ffc3f1ce08f23671aa5c49c86b0afb22dfb87ab333556a43ded09",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+        "sha256": "aee4911bae62232f5020ce3d705cad6afbd5f620973378a011a5d4a5a4412d61",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+        "sha256": "a30bab02117d0ab176442f645cf4e1edfb537d7c19aa11f0c5252dfab3c5ec2d",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/actions.ts",
+        "sha256": "72de1e5c833d28380fc865eee24ca72274506d2a5cfb7be1fd8e5114b08ec043",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+        "sha256": "d5a9c58430804256d75d30b752d0a0cf726a43f1ce6d7835f8aaec4dee45ff26",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/recovery.test.mjs",
+        "sha256": "56f899201466136444e092336267985c84587461c5988406a5df345583f1bf77",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/rules.ts",
+        "sha256": "fd438b88b7eedbb09f3ce274126ac2445c60aba43c0efee375aa804d0ab1298e",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+        "sha256": "2a201b092aea603c51ad426fc30b9182e5bf1b783fc847f5f7ac24179056cea8",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/PrintPayslipButton.tsx",
+        "sha256": "f542ef94c6fa54a7e534a12e93996e6e89a68bd29514e1f12d8d95100562f249",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/export/route.test.mjs",
+        "sha256": "e4ea4c00cf1818b6a5ca2bdef25f56163bda8e3be79407749375aa4ec92190cc",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/export/route.ts",
+        "sha256": "8563a03e68ed418c50df8963cab2bfc3e5c7b684c12682611838d1dad70add77",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/page.test.mjs",
+        "sha256": "c1effeed4da50f9d0c4fd6ce61ec8b891ad123f2b775e91a63cd5dfed31a5269",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
+        "sha256": "418f95efe6da49558b2805008c11880ca07311ac75ca5027e76a11f1928acd2a",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/print-actions.test.mjs",
+        "sha256": "2e2a06ee879902cf606853edfe4d2c8db476a4db1bc79195b1f941de8014433b",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/print-actions.ts",
+        "sha256": "19a37ac3a170c5e009c5e21a2d90c27535e98f79e5985cf08bad8e7a9014f8fb",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/print-session.test.mjs",
+        "sha256": "33d08871dae03c05b3dd72afe0aab3f55ef51db571a5f8734594075e247e3b37",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/print-session.ts",
+        "sha256": "27eab60341524e01112a45b0a022c4e76ac75111f8bdd95e2c3fb1ab87100b9f",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/reports.module.css",
+        "sha256": "93bf368233281dbbd983ab0433d77ea75418eaadf819bbfac2dfc375de001857",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/rules.test.mjs",
+        "sha256": "cb5e520eb0ca032d2904821b7c2b5f2c178970fe6967b473abbc85fa51b44607",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/reports/rules.ts",
+        "sha256": "e84ae3d20764ea34a7c84d764f8561cbf493f7bc3978152cc9e11792f46aa7e8",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/rules.ts",
+        "sha256": "bde364327a512af777910561f58beeaafb4bbe4f2fcb569ed423bf4c3b52d905",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+        "sha256": "7f64a4a88efbe4d8bc0eed6a368d0a6d0b930325156a7d79bc69f3a97993cccd",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+        "sha256": "24fd80fcec4cac8ba947dc412cfe50386a43086b144262ecbcb8c78e5933e821",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/actions.ts",
+        "sha256": "8065d44e4b3694a7ba761052981112f28c1809ec292657f721ae510986a94809",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/approval-actions.ts",
+        "sha256": "bceab588def01ab937ff90bac33f4b949b548bb7a228aae2af17abb9618e03e3",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+        "sha256": "5412499732e0a2aaefdb9610f77b425436948b6a41a380cc50194e7f1f6ee252",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+        "sha256": "719eec345dc67b9265dad5d37bf9b0474a3cf7c4279a57724c8d3d068f1708fb",
+        "status": "??"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+        "sha256": "66e3e2ed4ce3ea17e4789fd397559c8787871b8cc65ea02246df79ac0547b535",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261001233819_cube4_payroll_calendars.sql",
+        "sha256": "d1e3efb010ae5f3123335dca7af87c4a815f6e3cb8dc081ebf187c83cca82a82",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002002040_cube4_payroll_inputs.sql",
+        "sha256": "2809c39b24cdfc825d517043baec610a7b004f6dc09adcb52ef26541bba1d020",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002010419_cube4_payroll_candidates.sql",
+        "sha256": "349b137134123ab8dff204fe2d42994491f458e735e614a7100bba27c039c357",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002020629_cube4_payroll_finalization_foundation.sql",
+        "sha256": "0f6c33d8b503358a6738255aba134dd4d68bdb85976a7ec44191544c743d788e",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002025507_cube4_payroll_external_payments.sql",
+        "sha256": "ad93cee3b8e724fd446ae7b4bf0c9dcb5a7268db09ce7026ef467317ffdc4498",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002040200_cube4_payroll_governed_corrections.sql",
+        "sha256": "8b1455c25b8e875eca25c39c7b4f818c293b175bf0045d6b61361fd6d5d6270b",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002063000_cube4_payroll_advances.sql",
+        "sha256": "1e21c85e612bec9525223cb3615566ebfbc7a958c0425fed82410b494a0da3ee",
+        "status": "??"
+      },
+      {
+        "file": "supabase/migrations/20261002074500_cube4_payroll_reports.sql",
+        "sha256": "31983daa08564f3583af1d2f71d2a3a6d834b8098e261b5c344c406eab672f48",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_advances.test.sql",
+        "sha256": "cdb244b22aaabd64cf72bfca10946cb047f8c7dd5f58a668f8e509400f5c30c9",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_calendar_commands.test.sql",
+        "sha256": "7a9bca6d4cb4a7992b8fc595c9d714b88d5aa5153cd11e9d2db0af7a15a3cb3b",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_calendar_dates.test.sql",
+        "sha256": "16520dd610b60afd80d0e545fa166d47c35128a2004e50634f5b8051795ef823",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_candidates.test.sql",
+        "sha256": "932db4a2970d2f6b53b74844da863a74b60bb0882dc95d89a42dcd4a5655d8d2",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_corrections.test.sql",
+        "sha256": "e51aeda26cb3f96809211e7c6cded74bb6f5dbf8f00fc27c59e86e8ec2b7e94e",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_corrections_cross_employer.test.sql",
+        "sha256": "67180baecb9ceffe4aa5126a7d98e2dcbae68f7ab79454584cadfe860d83a374",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_corrections_source_ranges.test.sql",
+        "sha256": "c7b1b7f0129c35d7e04ad42ffc61ee2521a0b46c17b4382beb95f37ac1ea5ed6",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_finalization.test.sql",
+        "sha256": "c6558b449b9f982f58b2758161fd3050d311161adf671064ec9e9af68570ac10",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_inputs.test.sql",
+        "sha256": "78819f1ed47885bce1d3d215ce506bdc13cc760eebe754f09ae98873fce7b40f",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_payments.test.sql",
+        "sha256": "2f8778c6f6ec1697eb662cf7fc3938165badbe43c4053466a03cbdcc54e5afb9",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_report_payslip.test.sql",
+        "sha256": "cef28aff0457b525acd27b962ea7ddb9772fabf292ac9305b3e98811d3d1aefa",
+        "status": "??"
+      },
+      {
+        "file": "supabase/tests/cube4_payroll_reports.test.sql",
+        "sha256": "40cae488bc37a5dafc8fd0fa38b40005c6ba374921a0f57a1a3ad93af34da9f2",
+        "status": "??"
+      }
+    ]
+  }
+]
