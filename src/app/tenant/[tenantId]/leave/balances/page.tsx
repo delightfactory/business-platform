@@ -1,0 +1,503 @@
+import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
+import { PageFrame } from '@/components/context-navigation';
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { PendingLink } from '../pending-link';
+import { isUuid } from '../rules';
+import {
+  PAGE_SIZE,
+  balancesHref,
+  blockedReasonLabel,
+  employmentStatusLabel,
+  employerStatusLabel,
+  formatDays,
+  ledgerHref,
+  parseBalanceQuery,
+  postingKindLabel,
+  readAccountsPage,
+  readBalanceAccess,
+  readFailure,
+  readOptionsPage,
+  readPeriodsPage,
+  readTypesPage,
+  type PostingKind,
+} from './rules';
+import { PostBalanceForm } from './PostBalanceForm';
+import styles from '../review.module.css';
+
+export const dynamic = 'force-dynamic';
+
+type Params = Promise<{ tenantId: string }>;
+
+export default async function LeaveBalancesPage({ params, searchParams }: {
+  params: Params;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const { tenantId } = await params;
+  const raw = await searchParams;
+  if (!isUuid(tenantId)) notFound();
+  const { params: query, errors } = parseBalanceQuery(raw);
+  const path = `/tenant/${tenantId}/leave/balances`;
+
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) {
+    return <Status tenantId={tenantId} title="الاتصال غير متاح"
+      detail="تعذّر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." retryPath={path} />;
+  }
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
+
+  const accessResult = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
+  const access = accessResult.error ? null : readBalanceAccess(accessResult.data);
+  if (!access) {
+    const forbidden = accessResult.error?.code === '42501';
+    return <Status tenantId={tenantId}
+      title={forbidden ? 'أرصدة الإجازات غير متاحة لهذا الحساب' : 'تعذّر تحميل أرصدة الإجازات الآن'}
+      detail={forbidden
+        ? 'لا يملك حسابك أي صلاحية لعرض أرصدة الإجازات في الشركة. راجع إدارة الموارد البشرية.'
+        : 'حدث خطأ أثناء التحقق من صلاحيتك أو تحميل الصفحة. أعد المحاولة.'}
+      retryPath={forbidden ? undefined : path} />;
+  }
+  if (!access.canView) {
+    return <Status tenantId={tenantId} title="عرض أرصدة الإجازات غير متاح لهذا الحساب"
+      detail="تحتاج إلى صلاحية عرض أرصدة الإجازات أو تعديلها لدى الشركة. راجع إدارة الموارد البشرية." />;
+  }
+
+  // parseBalanceQuery has already discarded any incomplete cursor tuple, so a bad cursor
+  // simply restarts at the first page while the matching alert explains what happened.
+  const optionsResult = query.q === '' ? null
+    : await supabase.rpc('leave_balance_employee_options', {
+      p_tenant: tenantId,
+      p_query: query.q,
+      p_limit: PAGE_SIZE,
+      p_after_code: query.sc === '' ? null : query.sc,
+      p_after_employee: query.se === '' ? null : query.se,
+      p_after_employer: query.so === '' ? null : query.so,
+    });
+  const options = optionsResult && !optionsResult.error ? readOptionsPage(optionsResult.data) : null;
+
+  const hasPair = query.employee !== '' && errors.pair === '';
+  const accountsResult = !hasPair ? null
+    : await supabase.rpc('leave_balance_accounts', {
+      p_tenant: tenantId,
+      p_employee: query.employee,
+      p_employer: query.employer,
+      p_limit: PAGE_SIZE,
+      p_after_period_start: query.acs === '' ? null : query.acs,
+      p_after_account: query.aca === '' ? null : query.aca,
+    });
+  const accounts = accountsResult && !accountsResult.error ? readAccountsPage(accountsResult.data) : null;
+  const pair = accounts?.pair ?? null;
+  const canPost = pair !== null && pair.canAdjust;
+
+  const periodsResult = !canPost || query.kind === '' ? null
+    : await supabase.rpc('leave_balance_posting_periods', {
+      p_tenant: tenantId,
+      p_employee: query.employee,
+      p_employer: query.employer,
+      p_limit: PAGE_SIZE,
+      p_after_start: query.pcs === '' ? null : query.pcs,
+      p_after_period: query.pcp === '' ? null : query.pcp,
+    });
+  const periods = periodsResult && !periodsResult.error ? readPeriodsPage(periodsResult.data) : null;
+  const selectedPeriod = query.period === '' || !periods ? null
+    : periods.items.find((item) => item.periodId === query.period) ?? null;
+
+  const typesResult = !canPost || query.kind === '' || query.period === '' ? null
+    : await supabase.rpc('leave_balance_posting_types', {
+      p_tenant: tenantId,
+      p_employee: query.employee,
+      p_employer: query.employer,
+      p_kind: query.kind,
+      p_period: query.period,
+      p_limit: PAGE_SIZE,
+      p_after_code: query.tcs === '' ? null : query.tcs,
+      p_after_type: query.tct === '' ? null : query.tct,
+    });
+  const types = typesResult && !typesResult.error ? readTypesPage(typesResult.data) : null;
+  const selectedType = query.type === '' || !types ? null
+    : types.items.find((item) => item.leaveTypeId === query.type) ?? null;
+
+  const searchHref = (next: Partial<Parameters<typeof balancesHref>[1]> = {}) =>
+    balancesHref(tenantId, { employee: '', employer: '', kind: '', period: '', type: '', ...next });
+  const pairHref = (next: Partial<Parameters<typeof balancesHref>[1]> = {}) =>
+    balancesHref(tenantId, { employee: query.employee, employer: query.employer, ...next });
+
+  const queryAlerts = [
+    { message: errors.searchCursor, href: searchHref({ q: query.q }), label: 'العودة إلى أول صفحة للبحث' },
+    { message: errors.pair, href: searchHref({ q: query.q }), label: 'اختيار الموظف من جديد' },
+    { message: errors.accountsCursor, href: pairHref(), label: 'العودة إلى أول صفحة للأرصدة' },
+    { message: errors.kind, href: pairHref(), label: 'مسح نوع القيد' },
+    { message: errors.period, href: pairHref({ kind: query.kind }), label: 'اختيار الفترة من جديد' },
+    { message: errors.periodsCursor, href: pairHref({ kind: query.kind }), label: 'العودة إلى أول صفحة للفترات' },
+    { message: errors.type, href: pairHref({ kind: query.kind, period: query.period }), label: 'اختيار النوع من جديد' },
+    { message: errors.typesCursor, href: pairHref({ kind: query.kind, period: query.period }),
+      label: 'العودة إلى أول صفحة للأنواع' },
+  ].filter((entry) => entry.message !== '');
+
+  return <PageFrame footer="الموارد البشرية">
+    <header className="workspace-page-heading">
+      <div>
+        <p className="eyebrow">الموارد البشرية</p>
+        <h1>أرصدة الإجازات</h1>
+        <p>ابحث عن الموظف بالاسم أو رمزه، ثم اختر زوج الموظف وجهة العمل لعرض أرصدة حساباته كاملة
+          وسجل حساب كل رصيد.</p>
+      </div>
+      <div className="workspace-form-actions">
+        <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</PendingLink>
+        <PendingLink className="secondary-button" href={`/tenant/${tenantId}`}>مساحة الشركة</PendingLink>
+      </div>
+    </header>
+    {!access.newWorkEnabled && <p className="form-message" role="status">
+      خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا تُقبل قيود رصيد جديدة.
+      تبقى عرض الأرصدة وسجل الحساب متاحًا.
+    </p>}
+
+    {queryAlerts.length > 0 && <section className="workspace-records-panel" aria-label="تنبيهات روابط الصفحة">
+      {queryAlerts.map((entry) => <p key={entry.label}
+        className="form-message form-error" role="alert">{entry.message}{' '}
+        <PendingLink href={entry.href}>{entry.label}</PendingLink></p>)}
+    </section>}
+
+    <section className="workspace-records-panel" aria-labelledby="balances-search-title">
+      <div className={styles.panelHeading}>
+        <h2 id="balances-search-title">البحث عن موظف</h2>
+        <p>اكتب من 2 إلى 80 حرفًا لعرض حتى {PAGE_SIZE} موظفًا مطابقًا، ثم حدّد الزوج لعرض أرصدته.</p>
+      </div>
+      <form className="auth-form" method="get" action={path}>
+        <label htmlFor="balance-search">اسم الموظف أو رمزه</label>
+        <input id="balance-search" key={query.q} name="q" type="search" defaultValue={query.q} minLength={2}
+          maxLength={80} autoComplete="off" placeholder="مثال: أحمد أو E-1042" />
+        <div className="workspace-form-actions">
+          <button className="primary-button" type="submit">بحث</button>
+          {query.q !== '' && <PendingLink className="secondary-button" href={searchHref()}>مسح البحث</PendingLink>}
+        </div>
+      </form>
+      {errors.q !== '' && <p className="form-message form-error" role="alert">{errors.q}</p>}
+
+      {query.q !== '' && (errors.q === '' ? <>
+        {optionsResult && optionsResult.error
+          ? <div className="empty-state" role="alert">
+            <h2>تعذّر تنفيذ البحث عن الموظفين</h2>
+            <p>لم يتغير أي شيء. أعد المحاولة أو امسح البحث.</p>
+            <PendingLink className="secondary-button"
+              href={searchHref({ q: query.q })}>إعادة المحاولة</PendingLink>
+          </div>
+          : options === null
+            ? <div className="empty-state" role="alert">
+              <h2>تعذّر قراءة نتائج البحث</h2>
+              <p>لم يتغير أي شيء. أعد المحاولة أو عُد إلى أول صفحة.</p>
+              <PendingLink className="secondary-button" href={searchHref({ q: query.q })}>إعادة المحاولة</PendingLink>
+            </div>
+            : options.items.length === 0
+              ? <div className="empty-state">
+                <h2>لا يوجد موظف مطابق</h2>
+                <p>لم يعثر النظام على موظف يطابق «{query.q}». تحقق من الرمز أو جزء من الاسم.</p>
+                <PendingLink className="secondary-button" href={searchHref()}>مسح البحث</PendingLink>
+              </div>
+              : <>
+                <ul className="record-list">{options.items.map((item) => <li className="record-card"
+                  key={`${item.employeeId}:${item.employerId}`}>
+                  <div className="record-main">
+                    <div className="record-title-row">
+                      <h3>{item.employeeName}</h3>
+                      <span className={`entity-status ${item.employerIsActive ? 'is-active' : 'is-inactive'}`}>
+                        {employerStatusLabel(item)}</span>
+                    </div>
+                    <p className="record-meta">رقم الموظف: <bdi>{item.employeeCode}</bdi> · جهة العمل: {item.employerName}</p>
+                    <p className="record-meta">{employmentStatusLabel(item)}</p>
+                  </div>
+                  <PendingLink className="secondary-button"
+                    href={searchHref({ q: query.q, employee: item.employeeId, employer: item.employerId })}>
+                    تحديد الزوج</PendingLink>
+                </li>)}</ul>
+                <nav className={styles.pagination} aria-label="صفحات نتائج البحث">
+                  <span>حتى {PAGE_SIZE} موظفًا في الصفحة</span>
+                  <span className={styles.paginationNav}>
+                    {query.sc !== '' && <PendingLink className="secondary-button"
+                      href={searchHref({ q: query.q, sc: query.sc, se: query.se, so: query.so })}>السابق</PendingLink>}
+                    {options.hasMore && options.next && <PendingLink className="primary-button"
+                      href={searchHref({ q: query.q, sc: options.next.code, se: options.next.employee, so: options.next.employer })}>
+                      التالي</PendingLink>}
+                  </span>
+                </nav>
+              </>}
+      </> : null)}
+    </section>
+
+    {hasPair && (accountsResult && accountsResult.error && readFailure(accountsResult.error.code) === 'denied'
+      ? <section className="workspace-records-panel" aria-label="غير مصرح بعرض الأرصدة">
+        <div className="empty-state" role="alert">
+          <h2>عرض أرصدة هذا الزوج غير مصرح به</h2>
+          <p>لا تملك صلاحية عرض أرصدة الإجازات لهذا الزوج. راجع إدارة الموارد البشرية.</p>
+          <PendingLink className="secondary-button" href={searchHref({ q: query.q })}>اختيار موظف آخر</PendingLink>
+        </div>
+      </section>
+      : accountsResult && accountsResult.error
+        ? <section className="workspace-records-panel" aria-label="خطأ في تحميل الأرصدة">
+          <div className="empty-state" role="alert">
+            <h2>تعذّر تحميل أرصدة هذا الموظف</h2>
+            <p>لم يتغير أي رصيد. {readFailure(accountsResult.error.code) === 'scope'
+              ? 'هذا الزوج غير متاح لحسابك.'
+              : 'أعد المحاولة أو اختر الموظف من جديد.'}</p>
+            <PendingLink className="secondary-button" href={pairHref()}>إعادة المحاولة</PendingLink>
+          </div>
+        </section>
+        : accounts === null
+          ? <section className="workspace-records-panel" aria-label="خطأ في قراءة الأرصدة">
+            <div className="empty-state" role="alert">
+              <h2>تعذّر قراءة بيانات الأرصدة</h2>
+              <p>لم يتغير أي رصيد. أعد المحاولة.</p>
+              <PendingLink className="secondary-button" href={pairHref()}>إعادة المحاولة</PendingLink>
+            </div>
+          </section>
+          : <>
+            <section className="workspace-records-panel" aria-labelledby="balances-pair-title">
+              <div className={styles.panelHeading}>
+                <h2 id="balances-pair-title">{pair?.employeeName}</h2>
+                <p>رقم الموظف: <bdi>{pair?.employeeCode}</bdi> · جهة العمل: {pair?.employerName}
+                  {' · '}{pair ? employmentStatusLabel(pair) : ''}{pair ? ` · ${employerStatusLabel(pair)}` : ''}</p>
+              </div>
+              {accounts.items.length === 0
+                ? <div className="empty-state">
+                  <h2>لا توجد حسابات رصيد لهذا الزوج</h2>
+                  <p>الزوج صالح لكن لم يُفتح له أي حساب رصيد حتى الآن. سيفتح الحساب تلقائيًا عند أول قيد
+                    أو أول طلب اعتبار، ولا ينشئ النظام أي حساب فارغ.</p>
+                  <PendingLink className="secondary-button" href={searchHref({ q: query.q })}>اختيار موظف آخر</PendingLink>
+                </div>
+                : <>
+                  <ul className="record-list">{accounts.items.map((account) => <li className="record-card"
+                    key={account.accountId}>
+                    <div className="record-main">
+                      <div className="record-title-row">
+                        <h3>{account.typeName}</h3>
+                        <span className={`entity-status ${account.typeIsActive ? 'is-active' : 'is-inactive'}`}>
+                          {account.typeIsActive ? 'النوع مفعّل' : 'النوع غير مفعّل'}</span>
+                      </div>
+                      <p className="record-meta">الرصيد الحالي: <bdi>{formatDays(account.balanceDays)}</bdi> يوم
+                        · الفترة: {account.periodLabel} · من <bdi>{account.startsOn}</bdi> إلى <bdi>{account.endsOn}</bdi></p>
+                      <p className="record-meta">رقم النوع: <bdi>{account.typeCode}</bdi>
+                        {' · '}رصيد افتتاحي: {account.hasOpening ? 'مُسجّل' : 'غير مسجل'}
+                        {' · '}منحة سنوية: {account.hasAnnualGrant ? 'مسجلة' : 'غير مسجلة'}</p>
+                      <p className="record-meta">هذا الرصيد هو كائن الحساب كاملًا، وكل سجل حساب يعرض دفتره
+                        كاملًا بالأقدار الموقعة لا مجموع صفحاته.</p>
+                    </div>
+                    <PendingLink className="secondary-button"
+                      href={ledgerHref(tenantId, account.accountId, {
+                        employee: query.employee, employer: query.employer,
+                      })}>سجل الحساب</PendingLink>
+                  </li>)}</ul>
+                  <nav className={styles.pagination} aria-label="صفحات حسابات الرصيد">
+                    <span>حتى {PAGE_SIZE} حسابًا في الصفحة</span>
+                    <span className={styles.paginationNav}>
+                      {query.acs !== '' && <PendingLink className="secondary-button"
+                        href={pairHref({ acs: query.acs, aca: query.aca })}>السابق</PendingLink>}
+                      {accounts.hasMore && accounts.next && <PendingLink className="primary-button"
+                        href={pairHref({ acs: accounts.next.start, aca: accounts.next.id })}>التالي</PendingLink>}
+                    </span>
+                  </nav>
+                </>}
+            </section>
+
+            {pair && !pair.canAdjust
+              ? <p className="form-message" role="status">
+                عرض الأرصدة متاح لحسابك، لكن تسجيل قيود الرصيد يتطلب صلاحية تعديل أرصدة الإجازات.
+                راجع إدارة الموارد البشرية.
+              </p>
+              : pair && !pair.canPost
+                ? <p className="form-message" role="status">{blockedReasonLabel(pair.postingBlockedReason, false)}</p>
+                : null}
+
+            {canPost && pair && query.kind === ''
+              ? <section className="workspace-records-panel" aria-labelledby="balances-kind-title">
+                <div className={styles.panelHeading}>
+                  <h2 id="balances-kind-title">تسجيل قيد رصيد</h2>
+                  <p>اختر نوع القيد المطلوب. لا تحتسب الواجهة أي منحة ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
+                    ولا تفترض قيمًا؛ تُدخل الأقدار يدويًا وتتحقق من صلاحيتك عند الإرسال.</p>
+                </div>
+                <ul className="record-list">{(['opening', 'annual_grant', 'adjustment'] as PostingKind[])
+                  .map((kind) => <li className="record-card" key={kind}>
+                    <div className="record-main">
+                      <div className="record-title-row"><h3>{postingKindLabel(kind)}</h3></div>
+                      <p className="record-meta">{kind === 'opening' ? 'قيد واحد فقط لكل حساب حتى لو تغيّرت النسخة السياسية.'
+                        : kind === 'annual_grant' ? 'منحة واحدة فقط لكل حساب، والمقدار يُدخل يدويًا.'
+                          : 'قدر موجب أو سالب لتصحيح رصيد موجود.'}</p>
+                    </div>
+                    <PendingLink className="secondary-button" href={pairHref({ kind })}>اختيار</PendingLink>
+                  </li>)}</ul>
+              </section>
+              : null}
+
+            {canPost && pair && query.kind !== '' && <>
+              <section className="workspace-records-panel" aria-labelledby="balances-period-title">
+                <div className={styles.panelHeading}>
+                  <h2 id="balances-period-title">فترة القيد · {postingKindLabel(query.kind as PostingKind)}</h2>
+                  <p>اختر الفترة من قائمة الفترات المخزّنة، كل فترة مرتّبة بتاريخ بدايتها.</p>
+                </div>
+                {periodsResult && periodsResult.error
+                  ? <div className="empty-state" role="alert">
+                    <h2>تعذّر تحميل فترات الإجازات</h2>
+                    <p>لم يتغير أي شيء. أعد المحاولة.</p>
+                    <PendingLink className="secondary-button"
+                      href={pairHref({ kind: query.kind })}>إعادة المحاولة</PendingLink>
+                  </div>
+                  : periods === null
+                    ? <div className="empty-state" role="alert">
+                      <h2>تعذّر قراءة قائمة الفترات</h2>
+                      <p>لم يتغير أي شيء. أعد المحاولة.</p>
+                      <PendingLink className="secondary-button"
+                        href={pairHref({ kind: query.kind })}>إعادة المحاولة</PendingLink>
+                    </div>
+                    : query.period !== ''
+                      ? <div className="record-card"><div className="record-main">
+                        <div className="record-title-row">
+                          <h3>{selectedPeriod ? selectedPeriod.label : 'الفترة المحددة'}</h3>
+                          <span className="entity-status is-active">محددة</span>
+                        </div>
+                        <p className="record-meta">{selectedPeriod
+                          ? <>من <bdi>{selectedPeriod.startsOn}</bdi> إلى <bdi>{selectedPeriod.endsOn}</bdi></>
+                          : <>معرّف الفترة: <bdi>{query.period}</bdi></>}</p>
+                        <p className="record-meta">اختر فترة أخرى لعرض الأنواع المتاحة فيها.</p>
+                      </div><PendingLink className="secondary-button"
+                        href={pairHref({ kind: query.kind })}>تغيير الفترة</PendingLink></div>
+                      : periods.items.length === 0
+                        ? <div className="empty-state">
+                          <h2>لا توجد فترات إجازات متاحة</h2>
+                          <p>لم تُعرَّف أي فترة إجازات يمكن ربط قيد الرصيد بها.</p>
+                          <PendingLink className="secondary-button"
+                            href={pairHref()}>مسح نوع القيد</PendingLink>
+                        </div>
+                        : <>
+                          <ul className="record-list">{periods.items.map((period) => <li className="record-card"
+                            key={period.periodId}>
+                            <div className="record-main">
+                              <div className="record-title-row"><h3>{period.label}</h3></div>
+                              <p className="record-meta">من <bdi>{period.startsOn}</bdi> إلى <bdi>{period.endsOn}</bdi></p>
+                            </div>
+                            <PendingLink className="secondary-button"
+                              href={pairHref({ kind: query.kind, period: period.periodId })}>اختيار الفترة</PendingLink>
+                          </li>)}</ul>
+                          <nav className={styles.pagination} aria-label="صفحات فترات القيد">
+                            <span>حتى {PAGE_SIZE} فترة في الصفحة</span>
+                            <span className={styles.paginationNav}>
+                              {query.pcs !== '' && <PendingLink className="secondary-button"
+                                href={pairHref({ kind: query.kind, pcs: query.pcs, pcp: query.pcp })}>السابق</PendingLink>}
+                              {periods.hasMore && periods.next && <PendingLink className="primary-button"
+                                href={pairHref({ kind: query.kind, pcs: periods.next.start, pcp: periods.next.id })}>
+                                التالي</PendingLink>}
+                            </span>
+                          </nav>
+                        </>}
+              </section>
+
+              {query.period !== '' && <section className="workspace-records-panel" aria-labelledby="balances-type-title">
+                <div className={styles.panelHeading}>
+                  <h2 id="balances-type-title">نوع الإجازة</h2>
+                  <p>اختر نوع الإجازة داخل الفترة المحددة. الأنواع التي لا يقبل قيدها تُعرض بحالتها دون رابط.</p>
+                </div>
+                {typesResult && typesResult.error
+                  ? <div className="empty-state" role="alert">
+                    <h2>تعذّر تحميل أنواع الإجازات</h2>
+                    <p>لم يتغير أي شيء. {readFailure(typesResult.error.code) === 'scope'
+                      ? 'الفترة المختارة لا تنتمي إلى هذا الزوج.'
+                      : 'أعد المحاولة.'}</p>
+                    <PendingLink className="secondary-button"
+                      href={pairHref({ kind: query.kind })}>إعادة المحاولة</PendingLink>
+                  </div>
+                  : types === null
+                    ? <div className="empty-state" role="alert">
+                      <h2>تعذّر قراءة قائمة الأنواع</h2>
+                      <p>لم يتغير أي شيء. أعد المحاولة.</p>
+                      <PendingLink className="secondary-button"
+                        href={pairHref({ kind: query.kind, period: query.period })}>إعادة المحاولة</PendingLink>
+                    </div>
+                    : query.type !== ''
+                      ? selectedType === null
+                        ? <div className="empty-state" role="alert">
+                          <h2>نوع الإجازة المحدد غير موجود في هذه الفترة</h2>
+                          <p>الرابط المستخدم يشير إلى نوع غير مطابق للفترة المختارة. اختر النوع من جديد.</p>
+                          <PendingLink className="secondary-button"
+                            href={pairHref({ kind: query.kind, period: query.period })}>اختيار النوع من جديد</PendingLink>
+                        </div>
+                        : selectedType.canPost
+                          ? <PostBalanceForm tenantId={tenantId} actorId={user.id}
+                            employeeId={query.employee} employerId={query.employer}
+                            kind={query.kind as PostingKind} periodId={query.period}
+                            periodLabel={selectedPeriod ? selectedPeriod.label : ''}
+                            type={selectedType}
+                            initialIntentKey={crypto.randomUUID()}
+                            cancelHref={pairHref({ kind: query.kind, period: query.period })}
+                            backHref={pairHref()} />
+                          : <div className="empty-state" role="status">
+                            <h2>لا يقبل هذا النوع قيدًا حاليًا</h2>
+                            <p>{blockedReasonLabel(selectedType.postingBlockedReason, false)}</p>
+                            <PendingLink className="secondary-button"
+                              href={pairHref({ kind: query.kind, period: query.period })}>اختيار نوع آخر</PendingLink>
+                          </div>
+                      : types.items.length === 0
+                        ? <div className="empty-state">
+                          <h2>لا توجد أنواع إجازات في هذه الفترة</h2>
+                          <p>لم يُعرَّف أي نوع إجازة يمكن تسجيل قيده في الفترة المحددة.</p>
+                          <PendingLink className="secondary-button"
+                            href={pairHref({ kind: query.kind })}>تغيير الفترة</PendingLink>
+                        </div>
+                        : <>
+                          <ul className="record-list">{types.items.map((item) => <li className="record-card"
+                            key={item.leaveTypeId}>
+                            <div className="record-main">
+                              <div className="record-title-row">
+                                <h3>{item.name}</h3>
+                                <span className={`entity-status ${item.canPost ? 'is-active' : 'is-pending'}`}>
+                                  {item.canPost ? 'يقبل قيدًا' : blockedReasonLabel(item.postingBlockedReason, false)}
+                                </span>
+                              </div>
+                              <p className="record-meta">رقم النوع: <bdi>{item.code}</bdi>
+                                {' · '}{item.isActive ? 'النوع مفعّل' : 'النوع غير مفعّل'}
+                                {' · '}النسخة {item.typeVersion} سارية من <bdi>{item.effectiveFrom}</bdi></p>
+                              <p className="record-meta">الرصيد الحالي لهذا النوع:
+                                {' '}<bdi>{formatDays(item.balanceDays)}</bdi> يوم
+                                {' · '}تاريخ الاستحقاق <bdi>{item.policyDate}</bdi></p>
+                            </div>
+                            {item.canPost
+                              ? <PendingLink className="secondary-button"
+                                href={pairHref({
+                                  kind: query.kind, period: query.period, type: item.leaveTypeId,
+                                })}>اختيار النوع</PendingLink>
+                              : <span className="secondary-button" aria-disabled="true">غير متاح</span>}
+                          </li>)}</ul>
+                          <nav className={styles.pagination} aria-label="صفحات أنواع القيد">
+                            <span>حتى {PAGE_SIZE} نوعًا في الصفحة</span>
+                            <span className={styles.paginationNav}>
+                              {query.tcs !== '' && <PendingLink className="secondary-button"
+                                href={pairHref({ kind: query.kind, period: query.period, tcs: query.tcs, tct: query.tct })}>
+                                السابق</PendingLink>}
+                              {types.hasMore && types.next && <PendingLink className="primary-button"
+                                href={pairHref({
+                                  kind: query.kind, period: query.period,
+                                  tcs: types.next.code, tct: types.next.id,
+                                })}>التالي</PendingLink>}
+                            </span>
+                          </nav>
+                        </>}
+              </section>}
+            </>}
+          </>)}
+
+    <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave`}>العودة إلى طلبات الإجازة</PendingLink>
+  </PageFrame>;
+}
+
+function Status({ tenantId, title, detail, retryPath }: {
+  tenantId: string;
+  title: string;
+  detail: string;
+  retryPath?: string;
+}) {
+  return <PageFrame footer="الموارد البشرية">
+    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
+      {retryPath && <Link className="secondary-button" href={retryPath}>إعادة المحاولة</Link>}
+      <Link className="secondary-button" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</Link>
+      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+    </section>
+  </PageFrame>;
+}
