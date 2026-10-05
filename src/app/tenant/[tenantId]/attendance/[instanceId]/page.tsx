@@ -98,12 +98,13 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
           <p>التأخر بعد السماح: {interpretations.late_minutes ?? 0} دقيقة · المغادرة المبكرة بعد السماح: {interpretations.early_leave_minutes ?? 0} دقيقة</p>
           <p>المدة بين التسجيلين: {interpretations.gross_worked_minutes ?? '—'} دقيقة · الاستراحة المقررة: {interpretations.scheduled_break_minutes ?? '—'} دقيقة · صافي المدة المحتسبة: {interpretations.worked_minutes ?? '—'} دقيقة</p>
         </div>}
-        {interpretations?.exception_code === 'absence_candidate' && instance.status !== 'approved' && currentFact?.fact.outcome !== 'absence' && <div className="attendance-absence-review">
-          <p className="form-message form-error">انتهت نافذة الحضور بلا تسجيلات. راجع السجل قبل إثبات الغياب.</p>
-          {permissions.can_approve === true && entitlementEnabled && <form action={approveAttendanceAbsenceAction} className="attendance-form attendance-approve-form">
+        {interpretations?.exception_code === 'absence_candidate' && instance.status !== 'approved' && <div className="attendance-absence-review">
+          <p className="form-message form-error">انتهت نافذة الحضور بلا تسجيلات فعالة. راجع السجل قبل إثبات الغياب أو تصحيح اعتماده.</p>
+          {permissions.can_approve === true && (!currentFact || permissions.can_correct === true) && entitlementEnabled && <form action={approveAttendanceAbsenceAction} className="attendance-form attendance-approve-form">
             <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} />
-            <label className="attendance-full-field">سبب إثبات الغياب <input name="reason" minLength={3} maxLength={500} required /></label>
-            <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label="اعتماد يوم غياب" />
+            {currentFact && <input type="hidden" name="correctsFactId" value={currentFact.id} />}
+            <label className="attendance-full-field">{currentFact ? 'سبب تصحيح الاعتماد إلى غياب' : 'سبب إثبات الغياب'} <input name="reason" minLength={3} maxLength={500} required /></label>
+            <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={currentFact ? 'اعتماد تصحيح الغياب' : 'اعتماد يوم غياب'} />
           </form>}
         </div>}
       </>}

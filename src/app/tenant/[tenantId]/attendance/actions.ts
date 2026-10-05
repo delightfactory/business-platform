@@ -57,13 +57,18 @@ export async function approveAttendanceAction(formData: FormData) {
 export async function approveAttendanceAbsenceAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const instanceId = field(formData, 'instanceId');
+  const correctsFactId = field(formData, 'correctsFactId');
   const reason = field(formData, 'reason');
-  if (!isUuid(tenantId) || !isUuid(instanceId) || reason.length < 3) move(tenantId, instanceId, 'input');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || (correctsFactId && !isUuid(correctsFactId)) || reason.trim().length < 3 || reason.length > 500) move(tenantId, instanceId, 'input');
   const supabase = await createSupabaseServerClient();
   if (!supabase) move(tenantId, instanceId, 'setup');
-  const { error } = await supabase.rpc('approve_attendance_absence', {
-    p_tenant_id: tenantId, p_instance_id: instanceId, p_reason: reason,
-  });
+  const { error } = correctsFactId
+    ? await supabase.rpc('correct_attendance_absence', {
+      p_tenant_id: tenantId, p_instance_id: instanceId, p_corrects_fact_id: correctsFactId, p_reason: reason,
+    })
+    : await supabase.rpc('approve_attendance_absence', {
+      p_tenant_id: tenantId, p_instance_id: instanceId, p_reason: reason,
+    });
   move(tenantId, instanceId, error ? mapError(error.message) : 'absence-approved');
 }
 
@@ -141,6 +146,8 @@ function mapError(message: string) {
   if (message.includes('attendance_punch_in_future')) return 'time-future';
   if (message.includes('not_ready')) return 'not-ready';
   if (message.includes('absence_not_eligible')) return 'stale';
+  if (message.includes('attendance_absence_correction_input_invalid') || message.includes('attendance_absence_reason_required')) return 'input';
+  if (message.includes('no_new_interpretation')) return 'stale';
   if (message.includes('stale')) return 'stale';
   if (message.includes('idempotency_conflict')) return 'conflict';
   return 'failed';
