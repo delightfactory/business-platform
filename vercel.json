@@ -1,0 +1,36 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "git": {
+    "deploymentEnabled": {
+      "codex/backup-20261005/cube0-branding": false,
+      "codex/backup-20261005/cube0-commercial-controls": false,
+      "codex/backup-20261005/cube0-commercial-detail": false,
+      "codex/backup-20261005/cube0-entitlements": false,
+      "codex/backup-20261005/cube0-entitlements-detail": false,
+      "codex/backup-20261005/cube0-mobile-navigation": false,
+      "codex/backup-20261005/cube0-operator-invitations-ux": false,
+      "codex/backup-20261005/cube0-tenant-collections": false,
+      "codex/backup-20261005/cube0-tenant-detail": false,
+      "codex/backup-20261005/cube0-tenant-workspace": false,
+      "codex/backup-20261005/cube0-ux-foundation": false,
+      "codex/backup-20261005/cube4-review-ready": false,
+      "codex/backup-20261005/cube5-adam-ui-closure-next": false,
+      "codex/backup-20261005/cube4-adam-closure": false,
+      "codex/backup-20261005/cube5-adam-channels-mobile": false,
+      "codex/backup-20261005/cube4-payroll-core": false,
+      "codex/backup-20261005/wip-recovery-worktree-sep29": false,
+      "codex/backup-20261005/wip-report-absence-worktree-sep29": false,
+      "codex/backup-20261005/wip-report-auth-worktree-sep29": false,
+      "codex/backup-20261005/wip-report-csv-worktree-sep29": false,
+      "codex/backup-20261005/wip-report-fixes-worktree-sep29": false,
+      "codex/backup-20261005/wip-scale-worktree-sep29": false,
+      "codex/backup-20261005/wip-classified-fact-writer-oct01": false,
+      "codex/backup-20261005/wip-fractional-facts-oct01": false,
+      "codex/backup-20261005/wip-hr-balance-ui-oct01": false,
+      "codex/backup-20261005/wip-hr-record-oct01": false,
+      "codex/backup-20261005/wip-hr-ui-resume-oct01": false,
+      "codex/backup-20261005/wip-time-calculator-oct01": false,
+      "codex/backup-20261005/wip-reports-worktree-oct02": false
+    }
+  }
+}
