@@ -1,0 +1,19 @@
+{
+  "sourceFileSHA256": "380aee27d737177a8aedab03ec1bb914e897251f77b3d1b20e57728b16c2c3f1",
+  "sourceKeys": [
+    "reason",
+    "createdAtUTC",
+    "expires",
+    "retiredAtUTC",
+    "database",
+    "businessTables",
+    "before",
+    "after",
+    "check",
+    "removed",
+    "browserCloseExit",
+    "sharedPostgresPreserved"
+  ],
+  "note": "Source report records revocation at 2026-10-04T21:50:18.415Z, 138 unchanged business table digests, disabled QA accounts, NOLOGIN roles, and service cleanup. Raw digest arrays and database snapshots remain local.",
+  "originalEvidenceSHA": "3a310d25c91a84eda52a47cf0491c5a235933a31"
+}

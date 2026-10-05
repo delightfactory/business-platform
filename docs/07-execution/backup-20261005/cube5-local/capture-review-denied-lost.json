@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "kind": "denied",
+  "policy": "review",
+  "fault": "lost",
+  "metrics": {
+    "calls": 1,
+    "errors": [
+      1
+    ],
+    "pending": "{\"id\":\"870b184c-9653-49a7-8699-9baab5764bff\",\"scope\":\"fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b\"}"
+  },
+  "requests": [
+    {
+      "atUTC": "2026-10-04T21:43:01.574Z",
+      "id": "870b184c-9653-49a7-8699-9baab5764bff",
+      "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+      "happened_at": "2026-10-04T21:43:01.418Z",
+      "locationNull": true,
+      "payloadHash": "6e60afe095e73d85e088b342febb68bb12b7fd7f6863dc5bc03280d965571d47"
+    },
+    {
+      "atUTC": "2026-10-04T21:43:02.859Z",
+      "id": "870b184c-9653-49a7-8699-9baab5764bff",
+      "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+      "happened_at": "2026-10-04T21:43:01.418Z",
+      "locationNull": true,
+      "payloadHash": "6e60afe095e73d85e088b342febb68bb12b7fd7f6863dc5bc03280d965571d47"
+    }
+  ],
+  "noRecapture": true,
+  "noDuplicate": true
+}

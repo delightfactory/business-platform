@@ -1,0 +1,26 @@
+{
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "mode": "10",
+  "selected": 10,
+  "result": "PASS",
+  "noncatalogRolePreserved": true,
+  "before": [
+    "cube5.synthetic.unrelated.self",
+    "employee.attendance.self.v1",
+    "people.reader.v1"
+  ],
+  "after": [
+    "attendance.operator.v1",
+    "attendance.policy.manager.v1",
+    "attendance.reader.v1",
+    "attendance.reviewer.v1",
+    "cube5.synthetic.unrelated.self",
+    "employee.attendance.self.v1",
+    "people.compensation_manager.v1",
+    "people.compensation_reader.v1",
+    "people.import_operator.v1",
+    "people.operations.v1",
+    "people.reader.v1"
+  ],
+  "selfPermission": true
+}

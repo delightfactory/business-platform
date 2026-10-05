@@ -1,0 +1,17 @@
+{
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "mode": "preserve",
+  "selected": 2,
+  "result": "PASS",
+  "noncatalogRolePreserved": true,
+  "before": [
+    "cube5.synthetic.unrelated.self",
+    "employee.attendance.self.v1"
+  ],
+  "after": [
+    "cube5.synthetic.unrelated.self",
+    "employee.attendance.self.v1",
+    "people.reader.v1"
+  ],
+  "selfPermission": true
+}

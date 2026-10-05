@@ -1,0 +1,108 @@
+BEGIN
+ plan  
+-------
+ 1..15
+(1 row)
+
+                             ok                              
+-------------------------------------------------------------
+ ok 1 - authenticated retains guarded event detail execution
+(1 row)
+
+                          ok                           
+-------------------------------------------------------
+ ok 2 - anonymous has no review history endpoint grant
+(1 row)
+
+                            ok                            
+----------------------------------------------------------
+ ok 3 - service_role has no review history endpoint grant
+(1 row)
+
+SET
+SET
+                                 is                                 
+--------------------------------------------------------------------
+ ok 4 - Actual retained event exposes one persisted review decision
+(1 row)
+
+                                is                                 
+-------------------------------------------------------------------
+ ok 5 - Stored accepted review is separate from capture acceptance
+(1 row)
+
+                       is                        
+-------------------------------------------------
+ ok 6 - Current reviewer receives safe own label
+(1 row)
+
+                       is                        
+-------------------------------------------------
+ ok 7 - Exact persisted decision reason retained
+(1 row)
+
+                           is                           
+--------------------------------------------------------
+ ok 8 - Decision time derives frozen work-instance zone
+(1 row)
+
+                             is                             
+------------------------------------------------------------
+ ok 9 - Stored review no longer requires a pending decision
+(1 row)
+
+                                ok                                 
+-------------------------------------------------------------------
+ ok 10 - Reviewer summary omits identities/emails/precise evidence
+(1 row)
+
+                         throws_ok                          
+------------------------------------------------------------
+ ok 11 - Review history cannot be read under another tenant
+(1 row)
+
+RESET
+                               set_tenant_member_people_bundles                               
+----------------------------------------------------------------------------------------------
+ {"state": "updated", "bundle_keys": ["attendance.reader.v1", "employee.attendance.self.v1"]}
+(1 row)
+
+SET
+SET
+                                  is                                  
+----------------------------------------------------------------------
+ ok 12 - Linked employee sees later acceptance in own bounded history
+(1 row)
+
+RESET
+UPDATE 1
+SET
+                                     is                                      
+-----------------------------------------------------------------------------
+ ok 13 - Removed reviewer identity is redacted for another authorized reader
+(1 row)
+
+RESET
+ purge_expired_channel_location 
+--------------------------------
+                              3
+(1 row)
+
+SET
+                            is                             
+-----------------------------------------------------------
+ ok 14 - New own decision summary survives precision purge
+(1 row)
+
+                                      is                                      
+------------------------------------------------------------------------------
+ ok 15 - New own decision summary preserves safe historical actor after purge
+(1 row)
+
+RESET
+ finish 
+--------
+(0 rows)
+
+ROLLBACK
+

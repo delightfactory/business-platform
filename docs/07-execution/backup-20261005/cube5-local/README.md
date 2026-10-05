@@ -1,0 +1,1 @@
+Sanitized public evidence subset. All identities in journey JSON are synthetic QA fixtures. No actual employee records, raw DB row snapshots, auth material, request/browser logs or screenshots are included. Report filenames not present here refer to retained local evidence. manifest.json hashes only this uploaded subset; the original full local manifest remains on the laptop.

@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "kind": "timeout",
+  "policy": "review",
+  "fault": "offline",
+  "metrics": {
+    "calls": 1,
+    "errors": [
+      3
+    ],
+    "pending": "{\"id\":\"c02cfd47-d9d8-4928-a1b8-9e91572d4cae\",\"scope\":\"fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b\"}"
+  },
+  "requests": [
+    {
+      "atUTC": "2026-10-04T21:43:09.215Z",
+      "id": "c02cfd47-d9d8-4928-a1b8-9e91572d4cae",
+      "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+      "happened_at": "2026-10-04T21:43:07.737Z",
+      "locationNull": true,
+      "payloadHash": "79f977a340458c71a4019fce12cc1429ad10b3312f44bbfa503216ac876c8e0c"
+    }
+  ],
+  "noRecapture": true,
+  "noDuplicate": true
+}

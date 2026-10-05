@@ -1,0 +1,37 @@
+{
+  "atUTC": "2026-10-04T21:51:04.7567877Z",
+  "listeners": [],
+  "privateFiles": [
+    {
+      "name": "private-runtime.json",
+      "exists": false
+    },
+    {
+      "name": "auth.private.env",
+      "exists": false
+    },
+    {
+      "name": "rest.private.env",
+      "exists": false
+    }
+  ],
+  "ownedProcesses": [
+    {
+      "pid": 15040,
+      "running": false
+    },
+    {
+      "pid": 30476,
+      "running": false
+    }
+  ],
+  "ownedContainers": [],
+  "sharedPostgresRunning": "true",
+  "safeDirectories": [
+    "D:/projects/new-edara-sys",
+    "D:/projects/home-care",
+    "D:/projects/italian-center",
+    "C:/Users/DELL/Documents/Codex/2026-10-03/task-5/cube5-implementation",
+    "C:/Users/DELL/Documents/Codex/2026-10-03/task-5/cube5-ui-closure-next"
+  ]
+}

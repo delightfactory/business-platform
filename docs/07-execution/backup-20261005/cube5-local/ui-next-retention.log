@@ -1,0 +1,93 @@
+BEGIN
+ plan  
+-------
+ 1..12
+(1 row)
+
+SELECT 1
+                                         is                                          
+-------------------------------------------------------------------------------------
+ ok 1 - QA has three actual retained location evidences before scoped retention test
+(1 row)
+
+                    ok                    
+------------------------------------------
+ ok 2 - anon cannot execute trusted purge
+(1 row)
+
+                        ok                         
+---------------------------------------------------
+ ok 3 - authenticated cannot execute trusted purge
+(1 row)
+
+                        ok                        
+--------------------------------------------------
+ ok 4 - service_role cannot execute trusted purge
+(1 row)
+
+SELECT 6
+ purge_expired_channel_location 
+--------------------------------
+                              0
+(1 row)
+
+                            is                            
+----------------------------------------------------------
+ ok 5 - Own location remains until explicit stored expiry
+(1 row)
+
+ purge_expired_channel_location 
+--------------------------------
+                              1
+(1 row)
+
+                              is                              
+--------------------------------------------------------------
+ ok 6 - Exact expiry removes only first own location evidence
+(1 row)
+
+ purge_expired_channel_location 
+--------------------------------
+                              2
+(1 row)
+
+                                is                                 
+-------------------------------------------------------------------
+ ok 7 - Trusted purge physically removes all expired own precision
+(1 row)
+
+                         is                         
+----------------------------------------------------
+ ok 8 - Repeated purge is idempotent at same cutoff
+(1 row)
+
+SELECT 6
+                                         results_eq                                          
+---------------------------------------------------------------------------------------------
+ ok 9 - Precision purge preserves event/results/review/canonical/version/mapping byte hashes
+(1 row)
+
+                               is                                
+-----------------------------------------------------------------
+ ok 10 - Retention does not alter accepted canonical cardinality
+(1 row)
+
+SET
+SET
+                                   is                                   
+------------------------------------------------------------------------
+ ok 11 - Employee own history remains readable without precise evidence
+(1 row)
+
+                                 is                                 
+--------------------------------------------------------------------
+ ok 12 - Completed review remains completed after precision removal
+(1 row)
+
+RESET
+ finish 
+--------
+(0 rows)
+
+ROLLBACK
+

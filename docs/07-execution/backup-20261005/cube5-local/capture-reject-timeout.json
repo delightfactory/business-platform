@@ -1,0 +1,68 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "kind": "timeout",
+  "policy": "reject",
+  "nativeDenial": false,
+  "syntheticBrowserError": true,
+  "metrics": {
+    "calls": 1,
+    "errors": [
+      3
+    ],
+    "pending": null
+  },
+  "request": {
+    "atUTC": "2026-10-04T21:41:23.345Z",
+    "id": "444ba895-bace-435f-86de-9a3866eaeb42",
+    "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+    "happened_at": "2026-10-04T21:41:23.247Z",
+    "locationNull": true,
+    "payloadHash": "2a6b5ccd37cf36ab5ed3ac879596268f4b77d7b6a252fc47366f282fdec07437"
+  },
+  "db": {
+    "event": {
+      "id": "fb8f483b-3508-44c0-8c9e-3452553b17e8",
+      "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+      "link_id": "e03d820e-ffe0-4beb-9703-196691bc5803",
+      "site_id": "fa140000-0000-4000-8000-000000000001",
+      "direction": "out",
+      "event_key": "444ba895-bace-435f-86de-9a3866eaeb42",
+      "source_id": "80102c61-8e90-4400-ba25-4f413a7aa9b7",
+      "tenant_id": "fa100000-0000-4000-8000-000000000001",
+      "device_key": null,
+      "validation": "unavailable",
+      "employee_id": "bdb28fff-5748-4309-9703-13cae2d9be23",
+      "happened_at": "2026-10-04T21:41:23.247+00:00",
+      "received_at": "2026-10-04T21:41:23.347598+00:00",
+      "external_key": "bdb28fff-5748-4309-9703-13cae2d9be23",
+      "actor_user_id": "fa000000-0000-4000-8000-000000000002",
+      "source_version": 5,
+      "capture_context": {
+        "site_id": "fa140000-0000-4000-8000-000000000001",
+        "source_id": "80102c61-8e90-4400-ba25-4f413a7aa9b7",
+        "employee_id": "bdb28fff-5748-4309-9703-13cae2d9be23",
+        "assignment_id": "621d2b27-e494-449f-bb2a-48038cdc2bed",
+        "employment_id": "124add13-0dbe-4e9c-b1e3-3088d0f2c5dd",
+        "work_policy_id": "fa150000-0000-4000-8000-000000000001",
+        "work_policy_version": 1
+      },
+      "review_required": false,
+      "payload_fingerprint": "4d1951052baa491977d50590f883ad08"
+    },
+    "result": {
+      "id": 162,
+      "state": "rejected",
+      "reason": "unavailable",
+      "site_id": null,
+      "event_id": "fb8f483b-3508-44c0-8c9e-3452553b17e8",
+      "tenant_id": "fa100000-0000-4000-8000-000000000001",
+      "created_at": "2026-10-04T21:41:23.347598+00:00",
+      "employee_id": null,
+      "actor_user_id": "fa000000-0000-4000-8000-000000000002",
+      "work_instance_id": null,
+      "canonical_punch_id": null
+    },
+    "preciseEvidence": 0
+  }
+}

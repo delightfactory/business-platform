@@ -1,0 +1,14 @@
+BEGIN
+1..5
+SET
+SELECT 2
+ok 1 - Installed catalog has 25 individually valid bundles
+SET
+ok 2 - Actual guarded writer accepts 24 valid bundles
+RESET
+ok 3 - 24 requested bundles persisted inside transaction
+SET
+ok 4 - 25 valid bundle keys rejected at server contract
+RESET
+ok 5 - Rejected 25 leaves previous role selection intact
+ROLLBACK

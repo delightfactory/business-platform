@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "unlinkBlocksNewCapture": true,
+  "pendingIdentityPreservedWhileUnlinked": true,
+  "oldReceiptReleasedAtNewLinkBoundary": true,
+  "relinkRestoresEligibility": true,
+  "historyPreserved": true,
+  "canonical": 11,
+  "oldLink": "e03d820e-ffe0-4beb-9703-196691bc5803",
+  "newLink": "f8d31fcb-383c-4969-acbc-b47ae766a896"
+}

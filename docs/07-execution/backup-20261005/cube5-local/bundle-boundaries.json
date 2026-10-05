@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "assertions": 5,
+  "authenticatedRole": true,
+  "rollback": true
+}

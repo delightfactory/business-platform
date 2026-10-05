@@ -1,0 +1,19 @@
+{
+  "launcherPID": 30476,
+  "nextPID": 29248,
+  "ports": {
+    "rest": 3550,
+    "auth": 3551,
+    "gateway": 3552,
+    "app": 3553
+  },
+  "database": "business_platform_cube5_adam_channels_qa",
+  "sourceSHA": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "sourceTree": "1c06640dbbc0b3975c2cc8eff2cfe12345da66ea",
+  "buildID": "LYf9D9f2v04KyB8zG_Sjp",
+  "sourceBaseSHA": "dc06b2cecfc0a704dcd7fcefe92c6b46627c0bfe",
+  "schemaBaseline": 187,
+  "sourceDelta": "Accepted8backend +P1 context +2own-history +new bounded review history read migrations",
+  "expires": "2026-10-04T23:28:22.455Z",
+  "production": false
+}

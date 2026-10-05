@@ -1,0 +1,5 @@
+{
+  "origin": "http://127.0.0.1:3553",
+  "setting": "denied",
+  "scope": "Owned headless QA browser context only; no user device or personal-browser change"
+}

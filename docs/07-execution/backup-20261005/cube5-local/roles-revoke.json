@@ -1,0 +1,14 @@
+{
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "mode": "revoke",
+  "selected": 0,
+  "result": "PASS",
+  "noncatalogRolePreserved": true,
+  "before": [
+    "cube5.synthetic.unrelated.self"
+  ],
+  "after": [
+    "cube5.synthetic.unrelated.self"
+  ],
+  "selfPermission": false
+}

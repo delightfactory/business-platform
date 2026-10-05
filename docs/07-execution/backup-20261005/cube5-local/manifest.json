@@ -1,0 +1,196 @@
+{
+  "sourceSHA": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "sourceTree": "1c06640dbbc0b3975c2cc8eff2cfe12345da66ea",
+  "files": [
+    {
+      "file": "build.json",
+      "bytes": 149,
+      "sha256": "f2a6e1f7d5260a097ab4303224eb6a3cada8ce52d22046368704992163bb3ef9"
+    },
+    {
+      "file": "build.log",
+      "bytes": 3987,
+      "sha256": "e7086bafc7a4fbf18618ee9c5243ab0524aee0e6a24866a3be835b396a1d8d4f"
+    },
+    {
+      "file": "bundle-boundaries.json",
+      "bytes": 143,
+      "sha256": "cd896c38a1fcc5161b51a1a5b4bf120b7d1d1a0cd2e15a39517992df06bec1f9"
+    },
+    {
+      "file": "bundle-boundaries.log",
+      "bytes": 335,
+      "sha256": "d5e915d93f21a43651ce75bf2a1cd224b645576b01fd5a60c42853af516460a3"
+    },
+    {
+      "file": "bundle-boundaries.test.sql",
+      "bytes": 3039,
+      "sha256": "41ae4488599ee17ca2f2c17e8f9c80d371721c7bf08ccfb91fddea4a79fcb1fe"
+    },
+    {
+      "file": "capture-reject-denied-lost.fault.json",
+      "bytes": 196,
+      "sha256": "0ae34b865cb877dfe0118a545b0a736455acd76e40700f77c1c063d4e7f121c6"
+    },
+    {
+      "file": "capture-reject-denied-lost.json",
+      "bytes": 1364,
+      "sha256": "02ef81e1c9f6e866f107dbb4a80d13cb9ca7b009691fe0f04b92372fb184e7c1"
+    },
+    {
+      "file": "capture-reject-denied.json",
+      "bytes": 2663,
+      "sha256": "4de32674f5eb69c089eca1b22b68835cab4e3860207b68e11e0a248c9da735b6"
+    },
+    {
+      "file": "capture-reject-timeout.json",
+      "bytes": 2664,
+      "sha256": "db1584e0bfbb49a509c74143ae40f1e85da482b097987fa3fd4d583a9c4c055b"
+    },
+    {
+      "file": "capture-reject-unavailable.json",
+      "bytes": 2668,
+      "sha256": "5e4f91cf29f5c77cfd97f41b960c8bbd2055bb1d0b0945620f936e224fcd4ae8"
+    },
+    {
+      "file": "capture-review-denied-lost.fault.json",
+      "bytes": 196,
+      "sha256": "5d247b7cb1e96e8c1fd9a5d10edf25b8b115bad21fa1572b2c845eec5b902a53"
+    },
+    {
+      "file": "capture-review-denied-lost.json",
+      "bytes": 1364,
+      "sha256": "cf45c14868e987217923198d419e8f6ef5b923432fde3d0105d8937141d5db8c"
+    },
+    {
+      "file": "capture-review-denied.json",
+      "bytes": 2798,
+      "sha256": "9fdb78e89f155919bf774e88ed68bcae59e383399c94ea55109d4a89a1cbba1e"
+    },
+    {
+      "file": "capture-review-timeout-offline.json",
+      "bytes": 933,
+      "sha256": "ee00ee78dd3c21419b29d2e5cf663ce39a50de5119ef17e5e8944bac8807be3d"
+    },
+    {
+      "file": "capture-review-timeout.json",
+      "bytes": 2799,
+      "sha256": "9a6fd4f6ea7d43fdf725e50998c5ca5da3ecf3a55a95371a6c0d6ba8ec4b9b55"
+    },
+    {
+      "file": "capture-review-unavailable.json",
+      "bytes": 2802,
+      "sha256": "76447ad9f57e8bb324b27222b45d1e37e31b088562728ce0fd32daf202445c58"
+    },
+    {
+      "file": "cleanup-independent-check.json",
+      "bytes": 811,
+      "sha256": "4aba13272f42738487668aa02961268ed1d4e94736d6e784db6a919f236d9bbf"
+    },
+    {
+      "file": "harness-diagnostics.md",
+      "bytes": 1454,
+      "sha256": "7e36fffd60ba15d93c3a61dbc2902caeadd5f4e3d8a1fcc11b5768eb592fa01f"
+    },
+    {
+      "file": "link-pending.json",
+      "bytes": 390,
+      "sha256": "a6dc7f94f4f1ddc33f9321eec074c92c570d5e27bbca1896e783d7c72f2266fa"
+    },
+    {
+      "file": "link.json",
+      "bytes": 395,
+      "sha256": "4125a36f9dc73dcc9e08260c8089d9c4250a65141718a4eaaaf36b473b134ff9"
+    },
+    {
+      "file": "lost-reload.json",
+      "bytes": 385,
+      "sha256": "68ff0034bc518e7e02a38aa893ad77df9cd7ae4fe3ad3dcd756104de41268144"
+    },
+    {
+      "file": "native-permission-denied.json",
+      "bytes": 158,
+      "sha256": "be1fa8ab0fb3c2b878136230b07819f03d73b5490081bf14adafd789f7f5b757"
+    },
+    {
+      "file": "report-to-adam.md",
+      "bytes": 12586,
+      "sha256": "44cef8217699ae271f6de19fce2a3d7bdbf09e03a50fa2cbdbaf851fdb790692"
+    },
+    {
+      "file": "review-decisions.json",
+      "bytes": 1168,
+      "sha256": "000759e69eee1d72e507e9cc51121597083c327bc2a51f36aa5c3002cbf7692a"
+    },
+    {
+      "file": "roles-10.json",
+      "bytes": 659,
+      "sha256": "0b3162a829c8cb081921679aa8adfb475ad37f855be620d8388c4f1415cf5a81"
+    },
+    {
+      "file": "roles-24.json",
+      "bytes": 1346,
+      "sha256": "357fa04e3d282ccf612900eefdd44560fae1202172023905654a26b4d9903988"
+    },
+    {
+      "file": "roles-25.json",
+      "bytes": 1773,
+      "sha256": "9f1c4127eb7e9b580ad62b60f80f81b90c8efc7c2a4f45b5b01439acb58b8f61"
+    },
+    {
+      "file": "roles-preserve.json",
+      "bytes": 380,
+      "sha256": "9e3642ac66200eb23a5e4bf6355fadb37d806c73f7f10cab294cc65ee2cebc2e"
+    },
+    {
+      "file": "roles-restore.json",
+      "bytes": 320,
+      "sha256": "f0cf19d7c5c3d68101e51fc286ab2644b031add15f94015e49dac743d249d770"
+    },
+    {
+      "file": "roles-revoke.json",
+      "bytes": 285,
+      "sha256": "c59c66aa1d25cfb9d1e36e1e1f0a0bd39df5552c9b273706ca9b9664fa9cd8b7"
+    },
+    {
+      "file": "runtime-source.json",
+      "bytes": 611,
+      "sha256": "80d294d04dc84209d9c8a559cdcc4c3dccac1ddaea5daa3314a51c53a53f1480"
+    },
+    {
+      "file": "sampled-layout.json",
+      "bytes": 208,
+      "sha256": "eee9988b8cb57f869126b46e9962aab8486fb65e237040bfdc4f55f25e83d6cc"
+    },
+    {
+      "file": "ui-next-read-contract.json",
+      "bytes": 199,
+      "sha256": "6205e5e85e8a3a88b17d8d406550b4c510bc43811d93080f74f77bf713f02bdb"
+    },
+    {
+      "file": "ui-next-read-contract.log",
+      "bytes": 3500,
+      "sha256": "150d30b4f9d1f53335d18a813d94def6ad7a7cba3286d27e0b995334a4d61684"
+    },
+    {
+      "file": "ui-next-retention.json",
+      "bytes": 199,
+      "sha256": "6b613b896b32757e2ccd07e4bc93397a5e23a41bf8ad787466e420e463051dec"
+    },
+    {
+      "file": "ui-next-retention.log",
+      "bytes": 2865,
+      "sha256": "4d932a0561c2548fc488a6c1a2fb0ffdc6111ced2df1deaa5eaad6ca31b15f26"
+    },
+    {
+      "file": "retirement-summary.json",
+      "bytes": 627,
+      "sha256": "502fc60c6a2deb9d0140bba56e85b7d3876455e4a45f878a5e3d2913eea30e82"
+    },
+    {
+      "file": "README.md",
+      "bytes": 379,
+      "sha256": "af96ccb26ab47138472a12ffbae485db0b8e50a23475179ffd2e9eabd71f0931"
+    }
+  ]
+}

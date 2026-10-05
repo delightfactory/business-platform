@@ -1,0 +1,68 @@
+{
+  "result": "PASS",
+  "sha": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "kind": "denied",
+  "policy": "reject",
+  "nativeDenial": true,
+  "syntheticBrowserError": false,
+  "metrics": {
+    "calls": 1,
+    "errors": [
+      1
+    ],
+    "pending": null
+  },
+  "request": {
+    "atUTC": "2026-10-04T21:41:16.733Z",
+    "id": "af291b3f-c194-45ab-bc97-35a77e664d8d",
+    "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+    "happened_at": "2026-10-04T21:41:16.627Z",
+    "locationNull": true,
+    "payloadHash": "e206dd5a156076784030ae4d64fa8e10dcf2c8c2e016d942a5ff3d5ee4544c4a"
+  },
+  "db": {
+    "event": {
+      "id": "aef44411-f18b-4456-91b4-dfad8e75c12e",
+      "scope": "fa100000-0000-4000-8000-000000000001:fa000000-0000-4000-8000-000000000002:e03d820e-ffe0-4beb-9703-196691bc5803:4ae43459d87c8ecfcfdea3251b0ba68b",
+      "link_id": "e03d820e-ffe0-4beb-9703-196691bc5803",
+      "site_id": "fa140000-0000-4000-8000-000000000001",
+      "direction": "out",
+      "event_key": "af291b3f-c194-45ab-bc97-35a77e664d8d",
+      "source_id": "80102c61-8e90-4400-ba25-4f413a7aa9b7",
+      "tenant_id": "fa100000-0000-4000-8000-000000000001",
+      "device_key": null,
+      "validation": "unavailable",
+      "employee_id": "bdb28fff-5748-4309-9703-13cae2d9be23",
+      "happened_at": "2026-10-04T21:41:16.627+00:00",
+      "received_at": "2026-10-04T21:41:16.736702+00:00",
+      "external_key": "bdb28fff-5748-4309-9703-13cae2d9be23",
+      "actor_user_id": "fa000000-0000-4000-8000-000000000002",
+      "source_version": 5,
+      "capture_context": {
+        "site_id": "fa140000-0000-4000-8000-000000000001",
+        "source_id": "80102c61-8e90-4400-ba25-4f413a7aa9b7",
+        "employee_id": "bdb28fff-5748-4309-9703-13cae2d9be23",
+        "assignment_id": "621d2b27-e494-449f-bb2a-48038cdc2bed",
+        "employment_id": "124add13-0dbe-4e9c-b1e3-3088d0f2c5dd",
+        "work_policy_id": "fa150000-0000-4000-8000-000000000001",
+        "work_policy_version": 1
+      },
+      "review_required": false,
+      "payload_fingerprint": "f8766dd222af5fa6b1ee9e3d76169c7d"
+    },
+    "result": {
+      "id": 158,
+      "state": "rejected",
+      "reason": "unavailable",
+      "site_id": null,
+      "event_id": "aef44411-f18b-4456-91b4-dfad8e75c12e",
+      "tenant_id": "fa100000-0000-4000-8000-000000000001",
+      "created_at": "2026-10-04T21:41:16.736702+00:00",
+      "employee_id": null,
+      "actor_user_id": "fa000000-0000-4000-8000-000000000002",
+      "work_instance_id": null,
+      "canonical_punch_id": null
+    },
+    "preciseEvidence": 0
+  }
+}

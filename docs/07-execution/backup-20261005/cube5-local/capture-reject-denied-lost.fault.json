@@ -1,0 +1,7 @@
+{
+  "fault": "close_owned_gateway_after_successful_actual_RPC",
+  "rpc": "attendance_mobile_punch",
+  "upstreamStatus": 200,
+  "atUTC": "2026-10-04T21:48:55.282Z",
+  "noResponseBodyStored": true
+}
