@@ -1,0 +1,96 @@
+{
+  "note": "All originals remain local. No deletion or cleanup was performed.",
+  "files": [
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_bench_directory_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_bench_operator_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_bench_queue_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_bench_users_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_directory_log0.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_directory_log1.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_operator_log0.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_operator_log1.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_queue_log0.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_queue_log1.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_seed_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_users_log0.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_users_log1.tmp",
+      "reason": "temporary benchmark/helper output; kept local"
+    },
+    {
+      "worktree": "C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20260929-platform-docs-readiness/scale-worktree",
+      "status": "??",
+      "file": "scale_users_temp.sql",
+      "reason": "temporary benchmark/helper output; kept local"
+    }
+  ],
+  "categories": [
+    "Ignored .env files, authentication material and service runtime credentials",
+    "Raw external QA database row snapshots, CSV/DB exports, screenshots, browser request logs and temporary runtime folders",
+    "Task-5 root experimental/recreation scripts and helper outputs; accepted project source is in Git",
+    "node_modules, .next, Supabase .temp and local Docker databases"
+  ],
+  "agentFiles": "Reviewed generated Next instructions are identical across worktrees and included as AGENTS.md; CLAUDE.md only references that file. Original untracked files remain unchanged."
+}
