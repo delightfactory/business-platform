@@ -109,6 +109,7 @@ export default async function EmployeePage({ params, searchParams }: {
       overrides: { id: string; policy_id: string; version: number; name: string; code: string; valid_from: string; valid_through: string; reason: string; cancelled_at: string | null; can_cancel: boolean }[];
       can_assign: boolean; can_manage_catalog: boolean;
     } : null;
+  const correctionAccess=await supabase.rpc('payroll_correction_access',{p_tenant:tenantId});
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
     {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
@@ -117,7 +118,7 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة سياق العمل السابق." />}
     {query.assignment === 'cancel-error' && <FeedbackToast key="assignment-cancel-error" message="تعذر إلغاء النقل. حدّث الصفحة للتحقق من حالته." />}
     {query.compensation === 'changed' && <FeedbackToast key="compensation-changed" message="تم تحديث الأجر الأساسي اعتبارًا من اليوم." />}
-    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ الربط الآلي بطلب التصحيح لم يُفعّل بعد." />}
+    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ التواريخ المقفلة تخضع لمقترح تصحيح مستقل ومراجعة المخرجات المتأثرة." />}
     {query.compensation === 'initial_corrected' && <FeedbackToast key="compensation-initial-corrected" message="تم تصحيح الأجر الأول لهذا اليوم وحُفظ سجل التعديل." />}
     {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
     {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
@@ -161,6 +162,7 @@ export default async function EmployeePage({ params, searchParams }: {
         <div className="work-policy-assignment-field"><label htmlFor="work-policy-id">قالب الدوام</label><select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>
         <div className="work-policy-assignment-field"><label htmlFor="work-policy-date">تاريخ بدء السريان</label><input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></div>
         <p className="field-hint">إذا كان هذا أول تكليف ويبدأ اليوم، تُصحح السياسة في سجله. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
+        {query.policy === 'payroll-correction' && <p className="form-message error-message" role="alert">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ للفترة نفسها.</p>}
         {query.policy === 'failed' && <p className="form-message error-message" role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}
         {query.policy === 'pending' && <p className="form-message error-message" role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}
         {query.policy === 'materialized' && <p className="form-message error-message" role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</p>}
@@ -216,7 +218,7 @@ export default async function EmployeePage({ params, searchParams }: {
       options={linkOptions} optionsError={Boolean(access.can_manage === true && (linkOptionsResult.error || !linkOptions))}
       query={linkQuery} page={linkPage} state={query.userLink} />
     <section className="workspace-records-panel" aria-label="الخطوة التالية">
-      <h2>الخطوة التالية</h2><p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
+      <h2>الخطوة التالية</h2>{correctionAccess.data?.can_correct&&<Link className="secondary-button" href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</Link>}<p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
       <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</Link>
         {access.can_manage === true && access.can_manage_employment === true && access.can_manage_compensation === true &&
           <Link className="secondary-button" href={`/tenant/${tenantId}/people/new`}>إضافة موظف آخر</Link>}</div>

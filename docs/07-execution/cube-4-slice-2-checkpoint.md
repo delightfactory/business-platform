@@ -1,0 +1,13 @@
+# Cube 4 Slice 2 implementation checkpoint
+
+Status: **Focused local candidate applied and qualified**; see [Slice2 qualification](cube-4-slice-2-qualification.md). Full Cube4 remains unqualified. No Cube 3 repair, statutory pack, monetary calculation, consumed source, public lock, payment or irreversible money API is added.
+
+Entry: Payroll → مدخلات الرواتب → Employer/period → scoped Employee readiness → catalog/policy/recurring/manual daily units/adjustment/opening YTD. Inputs remain controlled across validation, service failure and React form reset. Saving returns durable identity/revision/status; draft input may be approved or cancelled under its separate permission. Employer, period, Employee search and pagination live in the return URL. Applied status is reserved for the future private lock consumer.
+
+Storage is private. Input versions, receipts, success audit and correction requests are immutable; supported commands recheck permission and entitlement under protected authority/Employee/Employment/Employer locks. Tenant policy has a unique once-per-Tenant key and is visible across its Employers. Component behavior is limited to fixed/percentage-of-base-pay, classification, tax/social review flags, active dates and display flags. Opening YTD requires complete attributable values, year and supporting reference; consumed versions have a private freeze foundation.
+
+People guard: private registration acquires E → H → Employer and compares a full dated source snapshot. Supported source writers already hold Employment before changing compensation/assignments. Same-transaction triggers reject changes to meaning on protected dates while permitting prospective closure after protected periods. Existing source errors give an Arabic Payroll-owner handoff. Authorized Payroll correction requester can record the owned request; source data and frozen context remain unchanged. Actual correction execution is Slice 6, and G3/source-consumption concurrency qualification is still NOT RUN.
+
+Optional Time/Leave/Finance projections remain not checked and absence is not an error. Readiness is preparatory only; legal pack remains unqualified. Default policy is calendar_days per accepted owner amendment; no formulas or legal rates were guessed.
+
+Completed evidence: one independent-review rework then PASS, atomic local application, 50 new rollback assertions PASS, private guard races in both orders PASS, authenticated UI closure/capacity recovery and 390/820/1280 checks PASS, final build PASS. Previous Slice 1 passing checks were not repeated unchanged. Full fresh/upgrade ACL parity, legal goldens, actual source-consumption integration and later financial slices remain open.

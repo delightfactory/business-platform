@@ -1,0 +1,8 @@
+'use client';
+import {useActionState,useState} from 'react';
+import {runAction} from './actions';
+import styles from '../payroll.module.css';
+export function RunActions({tenant,employer,period,run,revision,status,stale}:{tenant:string;employer:string;period:string;run:string;revision:number;status:string;stale:boolean}){
+ const [reason,setReason]=useState('');const [state,action,pending]=useActionState(runAction,{error:'',saved:false,run,revision,status,signature:'',attempt:''});
+ return <form action={action} onReset={e=>e.preventDefault()} className={styles.form}><h2>الخطوة التالية</h2><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="period" value={period}/><fieldset disabled={pending} className={styles.fields}><button className={!state.run||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate">{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'إعادة حساب مرشح المراجعة':'حساب مرشح للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء المسير دون تطبيق المدخلات</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel">إلغاء المسير</button></details>}</fieldset>{pending&&<p role="status">جارٍ التحقق وحفظ نتيجة الطلب…</p>}{state.error&&<p role="alert">{state.error}</p>}{state.saved&&<p role="status">{state.status==='cancelled'?'أُلغي المسير مع الاحتفاظ بتاريخه دون تطبيق أي مدخل.':'حُفظ مرشح المراجعة. راجع العوائق والقيم الظاهرة؛ لم يُعتمد مبلغ للصرف.'}</p>}</form>;
+}

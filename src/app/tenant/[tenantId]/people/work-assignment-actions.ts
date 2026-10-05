@@ -114,6 +114,8 @@ function readAssignmentForm(formData: FormData) {
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 
 function assignmentError(message: string) {
+  if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
   if (message.includes('people_org_manage_forbidden')) return 'تحتاج إلى صلاحية إدارة سياق العمل في هذه الشركة.';
   if (message.includes('people_assignment_materialized_day')) return 'بدأ تسجيل حضور لهذا اليوم وفق التكليف الحالي؛ لا يمكن تغيير بياناته بعد فتح اليوم. اختر تاريخ سريان لاحقًا لم يُفتح للحضور.';
   if (message.includes('people_assignment_future_exists')) return 'يوجد نقل مقرر بالفعل. ألغِ النقل المقرر قبل إضافة تغيير آخر.';

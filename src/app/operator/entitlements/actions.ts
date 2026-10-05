@@ -9,7 +9,7 @@ export async function changeTenantEntitlementAction(formData: FormData) {
   const decision = text(formData, 'decision');
   const expiresOn = text(formData, 'expiresOn');
   const reason = text(formData, 'reason');
-  if (!isUuid(tenantId) || !['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave'].includes(capability)
+  if (!isUuid(tenantId) || !['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave', 'hr.employee_finance'].includes(capability)
     || !['grant', 'deny'].includes(decision) || (expiresOn && !/^\d{4}-\d{2}-\d{2}$/.test(expiresOn))) return 'invalid';
   if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();
@@ -25,6 +25,7 @@ export async function changeTenantEntitlementAction(formData: FormData) {
   });
   if (error) {
     const state = mapError(error.message);
+    if (capability === 'hr.employee_finance' && state === 'people-required') return 'finance-people-required';
     return capability === 'hr.leave' && state === 'people-required' ? 'leave-people-required' : state;
   }
   redirect(`/operator/entitlements/${tenantId}?state=updated`);
@@ -37,6 +38,7 @@ function mapError(message: string) {
   if (message.includes('commercial_tenant_unavailable')) return 'not-found';
   if (message.includes('tenant_entitlement_people_required')) return 'people-required';
   if (message.includes('tenant_entitlement_payroll_must_end_first')) return 'payroll-first';
+  if (message.includes('tenant_entitlement_finance_must_end_first')) return 'finance-first';
   if (message.includes('tenant_entitlement_leave_must_end_first')) return 'leave-first';
   if (message.includes('tenant_entitlement_people_children_must_end_first')) return 'people-children-first';
   if (message.includes('tenant_entitlement_future_conflict')) return 'future-conflict';
@@ -46,3 +48,4 @@ function mapError(message: string) {
   if (message.includes('tenant_entitlement_input_invalid')) return 'invalid';
   return 'failed';
 }
+

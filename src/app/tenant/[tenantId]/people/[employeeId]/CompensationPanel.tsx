@@ -79,7 +79,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
         <input id="compensation-effective-date" name="effectiveDate" type="date" required
           min={options.effective_date_min ?? today} value={effectiveDateChoice}
           onChange={(event) => setEffectiveDateChoice(event.target.value)} />
-        {effectiveDateChoice < today && <p className="field-hint">التاريخ السابق متاح داخل فترة الأجر الحالية فقط. فحص الفترات المقفلة وربط طلب التصحيح سيُضافان مع تكامل Payroll.</p>}
+        {effectiveDateChoice < today && <p className="field-hint">التاريخ السابق متاح داخل فترة الأجر الحالية فقط. إذا مسّ التغيير راتبًا مقفلًا، يحتفظ النظام بالمصدر ويوجه مسؤول تصحيح الرواتب إلى مقترح مؤرخ ومراجعة المخرجات.</p>}
         {formState.error && <p className="form-message error-message" role="alert">{formState.error}</p>}
         <p className="field-hint">يوجد تغيير مقرر واحد فقط؛ ألغِه أولًا لتحديد تاريخ أو قيمة أخرى.</p>
         <div className="workspace-form-actions"><SubmitButton label="حفظ تغيير الأجر" pendingLabel="جارٍ حفظ التغيير…" /></div>
