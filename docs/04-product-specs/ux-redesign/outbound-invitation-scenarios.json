@@ -1,0 +1,2261 @@
+{
+  "schema": "business-platform.ux-outbound-invitations.v1",
+  "status": "Proposed-not-Frozen",
+  "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+  "publicActions": 7,
+  "privateHelpers": 2,
+  "caseCount": 90,
+  "coverageClaim": "Draft source outcome partitions, not full semantic reviewed/executed coverage",
+  "cases": [
+    {
+      "id": "OUTBOUND-createInvitationAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-input",
+      "sourceObservedOutcome": "return-invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "return-setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "return-forbidden",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "unusable-record",
+      "sourceObservedOutcome": "return-forbidden",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-accepted",
+      "sourceObservedOutcome": "already-accepted",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-revoked",
+      "sourceObservedOutcome": "already-revoked",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-expired",
+      "sourceObservedOutcome": "expired",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-other",
+      "sourceObservedOutcome": "existing",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-and-record-success",
+      "sourceObservedOutcome": "created-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-rejected-recorded",
+      "sourceObservedOutcome": "created-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-11",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-record-error",
+      "sourceObservedOutcome": "created-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-createInvitationAction-12",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
+      ],
+      "operation": "createInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Bounded safe form values, previous attempt+1 and idempotency key on returned errors",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-id",
+      "sourceObservedOutcome": "invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "forbidden",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "unusable-record",
+      "sourceObservedOutcome": "forbidden",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "expired-record",
+      "sourceObservedOutcome": "expired",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "provider-and-record-success",
+      "sourceObservedOutcome": "reissued-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "provider-rejected-recorded",
+      "sourceObservedOutcome": "reissued-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "record-error",
+      "sourceObservedOutcome": "reissued-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-id",
+      "sourceObservedOutcome": "invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "forbidden",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-no-error",
+      "sourceObservedOutcome": "revoked",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-scope-key-email",
+      "sourceObservedOutcome": "return-invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "return-setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "return-mapped-error",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "unusable-record",
+      "sourceObservedOutcome": "return-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "already-member",
+      "sourceObservedOutcome": "return-already-member",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "pending-existing",
+      "sourceObservedOutcome": "return-pending-exists",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-other",
+      "sourceObservedOutcome": "return-existing",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-record-success-users",
+      "sourceObservedOutcome": "created-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-rejected-users",
+      "sourceObservedOutcome": "created-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-record-error-users",
+      "sourceObservedOutcome": "created-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-11",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-record-success-employee",
+      "sourceObservedOutcome": "invite-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-12",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-rejected-employee",
+      "sourceObservedOutcome": "invite-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-13",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-record-error-employee",
+      "sourceObservedOutcome": "invite-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberFormAction-14",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
+      ],
+      "operation": "inviteMemberFormAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Email, prior state idempotency key and attempt+1 on returned errors; employee destination only valid UUID",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-scope-key-email",
+      "sourceObservedOutcome": "invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "mapped-error",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "unusable-record",
+      "sourceObservedOutcome": "failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "already-member",
+      "sourceObservedOutcome": "already-member",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "pending-existing",
+      "sourceObservedOutcome": "pending-exists",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "existing-other",
+      "sourceObservedOutcome": "existing",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-record-success",
+      "sourceObservedOutcome": "created-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-provider-rejected",
+      "sourceObservedOutcome": "created-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "new-record-error",
+      "sourceObservedOutcome": "created-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-inviteMemberAction-11",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
+      ],
+      "operation": "inviteMemberAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-scope-id",
+      "sourceObservedOutcome": "invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "mapped-error",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "unusable-record",
+      "sourceObservedOutcome": "failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "not-created-expired",
+      "sourceObservedOutcome": "expired",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "not-created-other",
+      "sourceObservedOutcome": "terminal",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "provider-record-success",
+      "sourceObservedOutcome": "reissued-sent",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "provider-rejected",
+      "sourceObservedOutcome": "reissued-failed",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "record-error",
+      "sourceObservedOutcome": "reissued-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-reissueMemberInvitationAction-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
+      ],
+      "operation": "reissueMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "invalid-scope-id",
+      "sourceObservedOutcome": "invalid",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "missing-client",
+      "sourceObservedOutcome": "setup",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "rpc-error",
+      "sourceObservedOutcome": "mapped-error",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-no-error",
+      "sourceObservedOutcome": "revoked",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "SDK-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-admin",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-invalid-origin",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "provider-accepted",
+      "sourceObservedOutcome": "record-true-then-sent-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "existing-user-OTP-success",
+      "sourceObservedOutcome": "record-true-then-sent-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "existing-user-OTP-error",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "other-provider-error",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "record-returned-error",
+      "sourceObservedOutcome": "unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "invite-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "OTP-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverInvitation-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceIds": [
+        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+      ],
+      "operation": "deliverInvitation",
+      "actor": "Private helper, invoking operator session",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "record-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-01",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-admin",
+      "sourceObservedOutcome": "unknown-no-record",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-02",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-user",
+      "sourceObservedOutcome": "unknown-no-record",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-03",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-invalid-origin",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-04",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "malformed-callback-input",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-05",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "missing-target-email",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-06",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "provider-accepted",
+      "sourceObservedOutcome": "record-true-then-sent-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-07",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "existing-user-OTP-success",
+      "sourceObservedOutcome": "record-true-then-sent-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-08",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "existing-user-OTP-error",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-09",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "other-provider-error",
+      "sourceObservedOutcome": "record-false-then-failed-or-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-10",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "record-returned-error",
+      "sourceObservedOutcome": "unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-11",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "getUser-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-12",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "invite-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-13",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "OTP-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-deliverMemberInvitation-14",
+      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceIds": [
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+      ],
+      "operation": "deliverMemberInvitation",
+      "actor": "Private helper, current actor and service role",
+      "scope": "Current invitation id/issuance; member record additionally current actor",
+      "partition": "record-thrown",
+      "sourceObservedOutcome": "exception",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    }
+  ]
+}
