@@ -25,27 +25,15 @@ export async function requestLeaveCancellationAction(
   if (!supabase) return failed('setup');
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return failed('session');
-  let response;
-  try {
-    response = await supabase.rpc('leave_my_request_cancellation', {
-      p_tenant: tenantId,
-      p_request: requestId,
-      p_expected_version: expectedVersion,
-      p_reason: trimmedReason,
-      p_idempotency_key: idempotencyKey,
-    });
-  } catch {
-    return failed('unknown');
-  }
-  const { data, error } = response;
+  const { data, error } = await supabase.rpc('leave_my_request_cancellation', {
+    p_tenant: tenantId,
+    p_request: requestId,
+    p_expected_version: expectedVersion,
+    p_reason: trimmedReason,
+    p_idempotency_key: idempotencyKey,
+  });
   if (error) return failed(mapCancellationError(error.message, error.code));
   if (!isObject(data) || data.state !== 'pending') return failed('unknown');
-  const cancellation = data.cancellation;
-  const request = data.request;
-  if (!isObject(cancellation) || !isUuid(cancellation.id) || !isUuid(cancellation.request_id)
-    || cancellation.request_id.toLowerCase() !== requestId.toLowerCase() || cancellation.state !== 'pending'
-    || !isObject(request) || !isUuid(request.id) || request.id.toLowerCase() !== requestId.toLowerCase()
-    || request.state !== 'approved') return failed('unknown');
   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=cancellation-requested`);
 }
 

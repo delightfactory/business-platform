@@ -62,6 +62,8 @@ Order: F1/F2 truthful state+read feedback with grouped source/page characterizat
 
 ## Evidence and acceptance
 
+Additional source finding from the latest replacement migration20261001093604: the actual request state set also includes `superseded`. It is a read-only historical original with correction links, not an unknown or cancelled request. Existing states.ts falls back to «غير محدّد» for this known state. F5/F6 must explicitly cover its label/note, original/replacement authority and HR/financial historical invariants; earlier draft state labels were not an exhaustive semantic enumeration. No new-state behavior is implemented by this note.
+
 Reuse source-qualified R6-INPUT-RECOVERY-01 15 controlled cases and unchanged historical Cube evidence only within their actual scope. Existing build/TypeScript pertains to that exact source snapshot; this documentation batch needs structural integrity checks, not another build or SQL/Auth suite. No new services, sensitive access or production changes.
 
 Concept C pinned HTML hash `AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508`; original plan and compatibility guide govern. Simulated optional note, balance arithmetic and modal are not business authority. Existing accepted Cairo/40desktop/44mobile/radius8 and stronger control border are recorded compatibility differences; replacements require amendment. Current same-state visual match is NOT VISUALLY VERIFIED. Light samples do not qualify dark mode.

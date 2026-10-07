@@ -1,0 +1,282 @@
+{
+  "passed": 69,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "submit valid fresh-or-stored-replay response shape",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 0",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 1",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 2",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 3",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 4",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 5",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 6",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 7",
+      "result": "PASS"
+    },
+    {
+      "name": "submit malformed outcome 8",
+      "result": "PASS"
+    },
+    {
+      "name": "submit RPC thrown unknown is recoverable without retry",
+      "result": "PASS"
+    },
+    {
+      "name": "submit unchanged setup/session/RPC-error {\"setup\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit unchanged setup/session/RPC-error {\"session\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit unchanged setup/session/RPC-error {\"error\":{\"code\":\"42501\",\"message\":\"leave_forbidden\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit unchanged setup/session/RPC-error {\"error\":{\"code\":\"23505\",\"message\":\"leave_idempotency_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit unchanged setup/session/RPC-error {\"error\":{\"code\":\"40001\",\"message\":\"leave_request_version_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit local-invalid no SDK {\"tenantId\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit local-invalid no SDK {\"idempotencyKey\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit local-invalid no SDK {\"reason\":\"ab\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit local-invalid no SDK {\"halfDay\":\"true\",\"endDate\":\"2026-10-11\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "submit local-invalid no SDK {\"startDate\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw valid fresh-or-stored-replay response shape",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 0",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 1",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 2",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 3",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 4",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 5",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 6",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 7",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 8",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw malformed outcome 9",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw RPC thrown unknown is recoverable without retry",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw unchanged setup/session/RPC-error {\"setup\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw unchanged setup/session/RPC-error {\"session\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw unchanged setup/session/RPC-error {\"error\":{\"code\":\"42501\",\"message\":\"leave_forbidden\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw unchanged setup/session/RPC-error {\"error\":{\"code\":\"23505\",\"message\":\"leave_idempotency_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw unchanged setup/session/RPC-error {\"error\":{\"code\":\"40001\",\"message\":\"leave_request_version_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw local-invalid no SDK {\"tenantId\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw local-invalid no SDK {\"idempotencyKey\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw local-invalid no SDK {\"reason\":\"ab\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw local-invalid no SDK {\"expectedVersion\":\"0\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw local-invalid no SDK {\"requestId\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "withdraw UUID input/output case compatibility",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel valid fresh-or-stored-replay response shape",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 0",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 1",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 2",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 3",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 4",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 5",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 6",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 7",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 8",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 9",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 10",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel malformed outcome 11",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel RPC thrown unknown is recoverable without retry",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel unchanged setup/session/RPC-error {\"setup\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel unchanged setup/session/RPC-error {\"session\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel unchanged setup/session/RPC-error {\"error\":{\"code\":\"42501\",\"message\":\"leave_forbidden\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel unchanged setup/session/RPC-error {\"error\":{\"code\":\"23505\",\"message\":\"leave_idempotency_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel unchanged setup/session/RPC-error {\"error\":{\"code\":\"40001\",\"message\":\"leave_request_version_conflict\"}}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel local-invalid no SDK {\"tenantId\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel local-invalid no SDK {\"idempotencyKey\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel local-invalid no SDK {\"reason\":\"ab\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel local-invalid no SDK {\"expectedVersion\":\"0\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel local-invalid no SDK {\"requestId\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "cancel UUID input/output case compatibility",
+      "result": "PASS"
+    }
+  ]
+}

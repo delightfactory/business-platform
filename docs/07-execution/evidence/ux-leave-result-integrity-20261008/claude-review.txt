@@ -1,0 +1,19 @@
+**Bounded source verdict:** I'd accept this with conditions. This is a source review of the diff and the SQL facts you gave. Nothing was run against the DB, and it doesn't verify roles, hydration, whole journeys or visuals.
+
+**Where the shapes match your SQL notes**
+- **Submit:** `request_json` returns `id=r.id` and `state=r.state`. A fresh call returns `submitted`, and a replay returns the stored `submitted` snapshot, so both pass. A replay after a later withdraw still redirects with `?state=submitted`. That was already true before this change, and the banner must not be read as current state.
+- **Cancel:** the check matches `jsonb_build_object('state','pending', cancellation{id,request_id,state}, request)`. Comparing `request_id` and `request.id` to the requested ID is correct. Requiring `request.state='approved'` holds only if inserting the pending cancellation leaves the request row `approved`. Your notes imply that but don't state it.
+- **Ordering:** the returned-RPC-error check still runs before the shape check, so error priority is preserved.
+
+**Blockers to confirm before the build**
+1. **Withdraw: where the result is built.** If `request_json` is built from a row variable read before the UPDATE (not `RETURNING` or a re-select), the stored state is `submitted`. Every committed withdraw, fresh or replayed, would then show `failed`, and that would look like a false failure. Confirm this exact line.
+2. **Thrown-error state on submit and withdraw.** A transport throw can happen after the server committed, so the true outcome is unknown. These actions map the throw to `failed`, not `unknown`. That's acceptable only if:
+   - the current `failed` copy doesn't say "not submitted" or "not withdrawn" outright, and
+   - the form keeps the same idempotency key, so a retry replays instead of duplicating.
+   
+   If either is false, it's a false-negative claim. Fixing it would mean a copy or state change, which is outside this batch.
+3. **Type checks.** `data.id.toLowerCase()` needs `isUuid` to be declared as `(v: unknown) => v is string`. The old code checked `typeof … === 'string'` before calling `isUuid`, which suggests it may take a `string` instead. Also, the untyped `let response;` may trip `noImplicitAny` or lint. Typing it with `Awaited<ReturnType<…>>` or similar avoids that.
+
+**Catch boundary:** it's correct. Only the RPC `await` is wrapped, `redirect` stays outside so the framework's redirect signal isn't swallowed, there's no retry, and setup/auth throws are untouched. That last point is consistent with your scope, but it stays open.
+
+**Not claimed:** whether the deployed DB matches these definitions, replay under concurrency, a user changing inputs or refreshing after an unknown result, F3 in full, F4–F7, R6, or any visual or phase closure.

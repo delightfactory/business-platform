@@ -1,0 +1,118 @@
+Read-only EXACTcandidate R6a result-integrity batch, officialOpus5.5Medium. No tools/tests/edits; <=300words. Owner:complete actual supported roles/state/capability coverage + simpler whole journeys; preserve financial/privacy/permission/ArabicRTL authority and safe fields/key; no false success or unknown-write/newkey speculation. Mandatory theme/component reference gate pinnedConceptC inissue47: no UI/CSS/font/controlchange, reuse unchangedvisual evidence only; no newvisualmatch or phaseclosureclaim. Base09e2e390(appcurrent), D8 pending/unapplied. This F3boundedClassC protects all3 existing employee mutation actions, not fullF3/F4-F7/R6.
+SQLsource inspected exactfresh/results/latestdefinitions: create_submitted_request emits submitted request_json; withdraw state submitted/version check, updatewithdrawn, stores result request_json. Latest leave.request_json at20261001093604 line433 still id=r.id/state=r.state. Own submit at20261001031200 dynamically rewritten via pg_get_functiondef/replace_once to halfdayhelper; reviewed relevant DOtransforms, state/resultshape unchanged. Latest request_replay/cancellation_replay same20261001093604 lines138/152 reject mismatched action/hash/crosscorrectioncancel keys then RETURNold.result (historical snapshot, NOT currentstate). cancelinternal20261001030800:approved/version/pending guard, INSERTpending; result jsonb_build_object('state','pending','cancellation',leave.cancellation_json(...),'request',leave.request_json(...)); storedreplayexactresult. cancellation_json has cancellation id,request_id,state. AppliedDB/fullSQLdependency/concurrency NOTverified.
+Changes:submit requires valid id+state submitted; withdraw requires validid matches requestedUUID case-insensitively+state withdrawn; cancel validates top pending and nestedvalid cancellationid/request_id=currentrequest+pending, request.id=currentrequest+approved. No version+1 requirement or later-currentstate requirement to avoid rejecting storedreplay. ONLY RPC await wrapped try/catch: SDK transportthrow yields existing unknown/failed actionstate, preserves mounted form/key, noautomaticretry. Redirect remainsoutsidecatch. No SDKsetup/authcatch/newRPC/grant/key/storage. Ordinary returnedRPCerror priority preserved.
+69focused actualactionsource SDKstub comparisons pass:validfresh-or-stored shape,cases malformed/missing/wrongidentity/state,thrownRPCbaselineexception->unknown reply once, unchangedsetup/session/RPCerrors/localinvalid(no SDK), UUIDcasecompat. One new targetedlint/buildTS planned; no unchangedAuth/SQL heavyrerun. These are controlledactionchecks, NOT actualDBreplay/roles/hydration/wholejourney. Remaining userchangesinputs/newkeys/refreshtab afterunknown, SDK/auth throws, fullvisual/session recovery open. Evaluate actualSQLshape compatibility, catchboundary, correctness; boundedsourceverdict only.
+src/app/tenant/[tenantId]/me/leave/actions.ts
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/before-0.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/candidate-0.txt
+index 22b53c7..ae84389 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/before-0.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/candidate-0.txt
+@@ -51,19 +51,25 @@ export async function submitLeaveRequestAction(previous: SubmitLeaveState, formD
+   if (!supabase) return failed('setup');
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) return failed('session');
+-  const { data, error } = await supabase.rpc('leave_submit_own_request', {
+-    p_tenant: tenantId,
+-    p_type: leaveTypeId,
+-    p_start: startDate,
+-    p_end: endDate,
+-    p_half_day: halfDayFlag === 'true',
+-    p_half_day_part: null,
+-    p_reason: trimmedReason,
+-    p_idempotency_key: idempotencyKey,
+-  });
++  let response;
++  try {
++    response = await supabase.rpc('leave_submit_own_request', {
++      p_tenant: tenantId,
++      p_type: leaveTypeId,
++      p_start: startDate,
++      p_end: endDate,
++      p_half_day: halfDayFlag === 'true',
++      p_half_day_part: null,
++      p_reason: trimmedReason,
++      p_idempotency_key: idempotencyKey,
++    });
++  } catch {
++    return failed('failed');
++  }
++  const { data, error } = response;
+   if (error) return failed(mapSubmitError(error.message, error.code));
+-  const requestId = isObject(data) ? data.id : null;
+-  if (typeof requestId !== 'string' || !isUuid(requestId)) return failed('failed');
++  if (!isObject(data) || !isUuid(data.id) || data.state !== 'submitted') return failed('failed');
++  const requestId = data.id;
+   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=submitted`);
+ }
+ 
+@@ -84,15 +90,22 @@ export async function withdrawLeaveRequestAction(previous: WithdrawLeaveState, f
+   if (!supabase) return failed('setup');
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) return failed('session');
+-  const { data, error } = await supabase.rpc('leave_withdraw_own_request', {
+-    p_tenant: tenantId,
+-    p_request: requestId,
+-    p_expected_version: expectedVersion,
+-    p_reason: trimmedReason,
+-    p_idempotency_key: idempotencyKey,
+-  });
++  let response;
++  try {
++    response = await supabase.rpc('leave_withdraw_own_request', {
++      p_tenant: tenantId,
++      p_request: requestId,
++      p_expected_version: expectedVersion,
++      p_reason: trimmedReason,
++      p_idempotency_key: idempotencyKey,
++    });
++  } catch {
++    return failed('failed');
++  }
++  const { data, error } = response;
+   if (error) return failed(mapWithdrawError(error.message, error.code));
+-  if (!isObject(data)) return failed('failed');
++  if (!isObject(data) || !isUuid(data.id) || data.id.toLowerCase() !== requestId.toLowerCase()
++    || data.state !== 'withdrawn') return failed('failed');
+   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=withdrawn`);
+ }
+ 
+src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-actions.ts
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/before-1.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/candidate-1.txt
+index 8cb65da..541adfa 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/before-1.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-result-integrity-20261008/candidate-1.txt
+@@ -25,15 +25,27 @@ export async function requestLeaveCancellationAction(
+   if (!supabase) return failed('setup');
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) return failed('session');
+-  const { data, error } = await supabase.rpc('leave_my_request_cancellation', {
+-    p_tenant: tenantId,
+-    p_request: requestId,
+-    p_expected_version: expectedVersion,
+-    p_reason: trimmedReason,
+-    p_idempotency_key: idempotencyKey,
+-  });
++  let response;
++  try {
++    response = await supabase.rpc('leave_my_request_cancellation', {
++      p_tenant: tenantId,
++      p_request: requestId,
++      p_expected_version: expectedVersion,
++      p_reason: trimmedReason,
++      p_idempotency_key: idempotencyKey,
++    });
++  } catch {
++    return failed('unknown');
++  }
++  const { data, error } = response;
+   if (error) return failed(mapCancellationError(error.message, error.code));
+   if (!isObject(data) || data.state !== 'pending') return failed('unknown');
++  const cancellation = data.cancellation;
++  const request = data.request;
++  if (!isObject(cancellation) || !isUuid(cancellation.id) || !isUuid(cancellation.request_id)
++    || cancellation.request_id.toLowerCase() !== requestId.toLowerCase() || cancellation.state !== 'pending'
++    || !isObject(request) || !isUuid(request.id) || request.id.toLowerCase() !== requestId.toLowerCase()
++    || request.state !== 'approved') return failed('unknown');
+   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=cancellation-requested`);
+ }
+ 

@@ -51,25 +51,19 @@ export async function submitLeaveRequestAction(previous: SubmitLeaveState, formD
   if (!supabase) return failed('setup');
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return failed('session');
-  let response;
-  try {
-    response = await supabase.rpc('leave_submit_own_request', {
-      p_tenant: tenantId,
-      p_type: leaveTypeId,
-      p_start: startDate,
-      p_end: endDate,
-      p_half_day: halfDayFlag === 'true',
-      p_half_day_part: null,
-      p_reason: trimmedReason,
-      p_idempotency_key: idempotencyKey,
-    });
-  } catch {
-    return failed('failed');
-  }
-  const { data, error } = response;
+  const { data, error } = await supabase.rpc('leave_submit_own_request', {
+    p_tenant: tenantId,
+    p_type: leaveTypeId,
+    p_start: startDate,
+    p_end: endDate,
+    p_half_day: halfDayFlag === 'true',
+    p_half_day_part: null,
+    p_reason: trimmedReason,
+    p_idempotency_key: idempotencyKey,
+  });
   if (error) return failed(mapSubmitError(error.message, error.code));
-  if (!isObject(data) || !isUuid(data.id) || data.state !== 'submitted') return failed('failed');
-  const requestId = data.id;
+  const requestId = isObject(data) ? data.id : null;
+  if (typeof requestId !== 'string' || !isUuid(requestId)) return failed('failed');
   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=submitted`);
 }
 
@@ -90,22 +84,15 @@ export async function withdrawLeaveRequestAction(previous: WithdrawLeaveState, f
   if (!supabase) return failed('setup');
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return failed('session');
-  let response;
-  try {
-    response = await supabase.rpc('leave_withdraw_own_request', {
-      p_tenant: tenantId,
-      p_request: requestId,
-      p_expected_version: expectedVersion,
-      p_reason: trimmedReason,
-      p_idempotency_key: idempotencyKey,
-    });
-  } catch {
-    return failed('failed');
-  }
-  const { data, error } = response;
+  const { data, error } = await supabase.rpc('leave_withdraw_own_request', {
+    p_tenant: tenantId,
+    p_request: requestId,
+    p_expected_version: expectedVersion,
+    p_reason: trimmedReason,
+    p_idempotency_key: idempotencyKey,
+  });
   if (error) return failed(mapWithdrawError(error.message, error.code));
-  if (!isObject(data) || !isUuid(data.id) || data.id.toLowerCase() !== requestId.toLowerCase()
-    || data.state !== 'withdrawn') return failed('failed');
+  if (!isObject(data)) return failed('failed');
   redirect(`/tenant/${tenantId}/me/leave/${requestId}?state=withdrawn`);
 }
 
