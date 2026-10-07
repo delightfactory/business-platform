@@ -1,0 +1,15 @@
+{
+  "candidateByteMatch": true,
+  "changedExistingSources": [
+    "src/app/operator/invitations/page.tsx",
+    "src/app/tenant/[tenantId]/users/page.tsx"
+  ],
+  "newSource": "src/lib/invitation-feedback.ts",
+  "unchangedExistingSources": 253,
+  "sourceFiles": 256,
+  "registryStatesPreserved": 1523,
+  "reviewSession": "bb4cd771-8d3d-42e3-9ce1-675067a14ee5",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "readOnlyViolation": false
+}

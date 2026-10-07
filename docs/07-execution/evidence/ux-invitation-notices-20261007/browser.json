@@ -1,0 +1,19 @@
+{
+  "operator": {
+    "anchorExists": true,
+    "clientWidth": 375,
+    "notice": "راجع الحالة الحالية للدعوة أدناه للتأكد من الإلغاء. راجع حالة الدعوات",
+    "scrollWidth": 375,
+    "toastCount": 0
+  },
+  "operatorAnchorHash": "#history-title",
+  "member": {
+    "anchorExists": true,
+    "anchorTop": 1003.1749877929688,
+    "clientWidth": 375,
+    "hash": "",
+    "scrollWidth": 375,
+    "toastCount": 0
+  },
+  "scope": "two phone static SSR pages; actual DOM/hash navigation, fake SDK, no hydration or announcement proof"
+}

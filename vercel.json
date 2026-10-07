@@ -46,7 +46,8 @@
       "codex/ux-invitation-revoke-feedback": false,
       "codex/ux-invitation-expiry-states": false,
       "codex/ux-invitation-page-evidence": false,
-      "codex/ux-shared-search-controls": false
+      "codex/ux-shared-search-controls": false,
+      "codex/ux-invitation-review-notices": false
     }
   }
 }

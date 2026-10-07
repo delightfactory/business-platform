@@ -1,0 +1,389 @@
+{
+  "scope": "actual static React pages/shared components, fake SDK/action stubs; no provider/authenticated role/SQL/hydration acceptance",
+  "cases": [
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-sent",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-sent",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-sent",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "variant": {
+        "rowState": "pending",
+        "deliveryState": "failed"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "variant": {
+        "rowState": "accepted",
+        "deliveryState": "sent"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "variant": {
+        "rowState": "expired",
+        "deliveryState": "sending"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "variant": {
+        "fixture": "missing-selected"
+      },
+      "beforeFalsePositiveToast": 1,
+      "afterFalsePositiveToast": 0,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-sent",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-sent",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "created-failed",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-unknown",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "revoke-unknown",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "expired",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "__proto__",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "constructor",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "state": "__unexpected__",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "created-failed",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-unknown",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "revoke-unknown",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "expired",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "__proto__",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "constructor",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "__unexpected__",
+      "unchangedRecovery": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "state": "reactivated",
+      "existingMembershipToastPreserved": true,
+      "status": "pass"
+    }
+  ]
+}

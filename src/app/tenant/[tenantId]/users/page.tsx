@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { FeedbackToast } from '@/components/feedback-toast';
+import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { SubmitButton } from '@/components/submit-button';
 import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
 
@@ -73,6 +74,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const used = Number(result.seat_usage ?? 0);
 
   const success = successMessage(query.state);
+  const reviewMessage = invitationReviewMessage(query.state);
   const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
     ? stateMessage(query.state) : null;
   return (
@@ -87,7 +89,8 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         <span>الدعوات المعلّقة لا تُحتسب قبل قبولها.</span></div>
       <section className="workspace-notices" aria-labelledby="members-title">
         {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
-        {query.state && !success && !deliveryIssue && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
+        {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#pending-title">راجع حالة الدعوات</a></p>}
+        {query.state && !success && !deliveryIssue && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
       </section>
       <section className="workspace-records-panel" aria-labelledby="attendance-access-setup"><h2 id="attendance-access-setup">إتاحة الحضور الشخصي للموظف</h2><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<Link className="secondary-button" href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</Link>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</section>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
@@ -263,9 +266,6 @@ function stateMessage(state: string) {
 }
 function successMessage(state?: string) {
   const messages: Record<string, string> = {
-    'created-sent': 'أُرسلت الدعوة. لن يحصل المستخدم على وصول أو مقعد قبل قبولها.',
-    'reissued-sent': 'أُرسل رابط جديد وأصبح الرابط السابق غير صالح.',
-    revoked: 'أُلغيت الدعوة.',
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
     demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',

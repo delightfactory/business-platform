@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
-import { FeedbackToast } from '@/components/feedback-toast';
+import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { SubmitButton } from '@/components/submit-button';
 import { reissueInvitationAction, revokeInvitationAction } from './actions';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
@@ -42,11 +42,10 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
     if (!selectedError && selectedData && typeof selectedData === 'object' && !Array.isArray(selectedData)) selected = selectedData as InvitationRow;
   }
   const visibleRows = selected ? [selected, ...rows.filter((row) => row.id !== selected.id)] : rows;
-  const success = params.state === 'created-sent' || params.state === 'reissued-sent' || params.state === 'revoked';
+  const reviewMessage = invitationReviewMessage(params.state);
 
   return (
     <main className="app-shell">
-      {success && <FeedbackToast key={crypto.randomUUID()} message={stateMessage(params.state ?? '')} />}
       <header className="topbar">
         <Link className="brand" href="/operator">منصة الأعمال</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
@@ -57,7 +56,8 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
         <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</Link>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
-        {params.state && !success && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
+        {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></p>}
+        {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
       </section>
       <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
