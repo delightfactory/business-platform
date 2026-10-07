@@ -1,0 +1,24 @@
+**R6a contract review: wrong inferences and missing journeys**
+
+I did not approve this as a stage contract or test set. I'm treating the 147 drafts as labels only. Everything below comes from your stated source facts; I didn't inspect anything.
+
+**Wrong or unsupported inferences**
+1. **The ACCESS row overstates what the snapshot gates.** The withdraw UI depends only on `state=submitted`. Cancellation depends only on `self_can_request` plus a readable latest history, with no `new_work_enabled`. Creating from the list needs request + new-work; the new page needs all three. Write out this gate matrix per surface. Otherwise "access determines availability" will be read as one shared gate.
+2. **The operation table asserts SQL meaning while SQL dependencies are still open.** "Immutable status", "terminally", "version-aware idempotent", "expected-version/key-bound" and "submitted unapproved" all describe RPC internals. Mark them unverified until the SQL review. In particular, "submitted" may not mean "unapproved" if queue stages exist.
+3. **Calling it "10 user/service operations" pairs one RPC with one task.** That contradicts the "file-level association, no semantic freeze" rule.
+4. **The 3–500 reason bound is only stated for submit.** Don't carry it over to withdrawal or cancellation without evidence.
+5. **"Pending cancellation blocks another request" doesn't say who enforces it.** Name whether the UI, the RPC, or both does.
+
+**Missing critical journeys or states**
+- **Rejected, withdrawn and cancelled requests:** only submitted and approved are journeyed. Also missing is the employee's read-only view after HR approves a cancellation (approved becomes cancelled).
+- **Original/replacement correction links:** what happens when the linked request is unauthorized, missing, or belongs to another tenant.
+- **No-access cases:** no linked employee, ended employment, `self_access=false`, and the paths where `new_work_enabled` is false but cancellation stays allowed.
+- **Withdraw when `self_can_request=false`:** the button shows but the RPC may reject. That rejection needs a truthful feedback path.
+- **History read failure hides the cancellation form.** That blocks a journey, so F2/F4 must cover it, not just the copy.
+- **Arabic/RTL is missing.** Only Cairo is mentioned. Add an explicit RTL/bidi gate for dates, ranges, units, mixed Latin/Arabic reasons, pager direction and numerals in every state.
+- **Multi-role actors:** a user who is also HR or owner viewing their own leave must still get only the self-service RPCs and copy.
+- **Keyboard and focus:** no focus path for the revealed cancellation form, withdraw confirmation or post-redirect notices. F7 names announcements but not focus.
+
+**Additional points**
+- D8 is correctly kept pending. "Safe fields remain in the mounted component" must not imply recovery is available.
+- F3: also check what withdraw does on a replay or no-op return before guarding results.

@@ -58,6 +58,8 @@ Outbound journey contract: [source-authoritative specification](outbound-invitat
 
 ## Employee attendance preparation
 
+R6a preparation: read [own profile/leave contract](employee-leave-spec.md), [source-bound draft partitions](employee-leave-scenarios.json), and [Claude/Codex resolution](../../07-execution/evidence/ux-employee-leave-contract-20261008/resolution.md).18 source files/48 inventory items associate with10 coarse RPC seeds and160 draft labels; these are not full operation counts, reviewed semantic cases or executed coverage. Group current-state feedback, result integrity, partial availability and complete journey/visual qualification before R6a acceptance; R6b remains required.
+
 Read [R5a attendance journey](employee-attendance-spec.md), [46 draft partitions](employee-attendance-scenarios.json), [preserved Claude review](employee-attendance-claude-review.md) and [Codex corrections/amendments](employee-attendance-review-resolution.md) together. This source-bound preparation preserves exact capture/reconcile/privacy authority and identifies recovery gaps before a coherent implementation batch. Proposed, not Frozen; no application change or executed stage acceptance. R5b/R6a and the whole-plan coverage gates remain open.
 
 Bounded [R5a result-integrity maintenance](attendance-result-integrity-slice.md) implements guarded action results and honest current-state presentation. It preserves unknown pending attempts, does not approve corrupt-record discard or close A1/A2/broader A3/full stage. See its exact candidate/evidence and execution ledger.

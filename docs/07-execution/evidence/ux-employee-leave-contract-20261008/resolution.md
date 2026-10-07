@@ -1,0 +1,11 @@
+# R6a co-design checkpoint resolution
+
+Sourcef2a50a8692d7dd97ec758c7bce34cbc8f17e8370;18 file fingerprints/48 inventory records/10 literal RPC seeds. Initial147 draft labels expanded to160 following one official Opus5.5 Medium review, sessionb069845f-5075-4b4f-a3fe-485ead09bec3, single turn, read-only,touched0/violationfalse. Review used embedded source facts/contract only; Claude did not inspect source/images/run tests. Report preserved verbatim, no full stage acceptance.
+
+Adopted: per-surface access matrix; terminal/read-only/post-HR-cancellation journeys; missing/forbidden historical links; missing/ended link and multi-role self-service; visible withdraw with request=false must handle RPC denial; history-unavailable action blockage; RTL/bidi and native focus; draft RPC seeds distinguished from exhaustive user operations. Source helper mappings still file-level;160 labels require exact scenario expansion before freeze.
+
+Codex independently checked reason3–500 in submit/withdraw/cancellation action code, contrary to treating it as submit-only. Read selected withdraw SQL complete state/version/replay/event/result branches; cancellation internal approved/version/pending-to-pending-event branch and public self wrapper; latest snapshot replacement and own-history wrapper. These support bounded SOURCE descriptions, not all SQL dependency/runtime guarantees. Clarified immutable display versus mutable row. Full helper/finance/concurrency/appliedDB qualification stays open. A new withdrawn confirmation dialog is not an existing source capability and is not invented here.
+
+The plan's source findings F1–F7 drive a coherent follow-up batch: URL-only list success, false unchanged assertion after failed read, weak withdraw response, thrown read/partial state, malformed profile/detail, coherent primary/context/layout, session/unknown-result recovery. Mandatory visual gate is NOT VISUALLY VERIFIED for matching states and full parents; previous small CSS samples are reused only for their source-qualified scope.
+
+No application/source-registry change in this preparation, no new services/access, no repeated build/SQL/Auth tests. Source/fingerprint and draft structural checks only. D8 owner acceptance remains pending/unapplied. Whole R6a/R6b and R0–R8 remain open.

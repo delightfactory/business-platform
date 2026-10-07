@@ -1,0 +1,20 @@
+{
+  "sourceHead": "f2a50a8692d7dd97ec758c7bce34cbc8f17e8370",
+  "files": 18,
+  "operations": 10,
+  "draftPartitions": 160,
+  "inventoryItems": 48,
+  "unassociated": [],
+  "rpcs": [
+    "leave_my_cancellation_history",
+    "leave_my_request_cancellation",
+    "leave_my_request_detail",
+    "leave_access_snapshot",
+    "leave_my_request_options",
+    "leave_submit_own_request",
+    "leave_withdraw_own_request",
+    "leave_my_balances",
+    "leave_my_requests",
+    "tenant_my_employee_snapshot"
+  ]
+}
