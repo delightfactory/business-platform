@@ -47,3 +47,7 @@ Run `node scripts/build-ux-inventory.cjs` after installing the repository depend
 ## Implementation progress
 
 [R1-LIGHT-01 shared visual foundation](r1-light-foundation.md) now implements the bounded reviewed W1.a palette on the Auth recovery branch lineage. Source inventory255 includes the new CSS token file; routes/operations/control IDs remain unchanged. Full phase qualification remains open. See the [execution ledger](../../07-execution/ux-redesign-progress.md) for completed slices and next gates.
+
+## Recipient action preparation
+
+Read recipient-actions-spec.md with recipient-action-scenarios.json and claude-recipient-actions-contribution.md. Nine public actions and94 draft source partitions are mapped; interpretation corrections take precedence. This is Proposed preparation, not Frozen/accepted or executed coverage. Existing manual review-register states are preserved.

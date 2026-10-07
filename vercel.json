@@ -38,7 +38,8 @@
       "codex/ux-r1-light-foundation": false,
       "codex/ux-r1-navigation-recovery": false,
       "codex/ux-r1-shared-controls": false,
-      "codex/ux-r2-entry-recovery": false
+      "codex/ux-r2-entry-recovery": false,
+      "codex/ux-r2-action-specs": false
     }
   }
 }
