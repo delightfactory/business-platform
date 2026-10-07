@@ -43,12 +43,12 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
 
   const historyOffset = parseHistoryOffset(query.h);
   const [detailResponse, history, accessResponse] = await Promise.all([
-    readResponse(() => supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId })),
+    supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId }),
     loadCancellationHistory(supabase, tenantId, requestId, historyOffset.invalid ? 0 : historyOffset.value),
-    readResponse(() => supabase.rpc('leave_access_snapshot', { p_tenant: tenantId })),
+    supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
   ]);
-  const data = detailResponse?.data;
-  const error = detailResponse?.error ?? (detailResponse === null ? { code: 'READ_UNAVAILABLE' } : null);
+  const data = detailResponse.data;
+  const error = detailResponse.error;
   const request = error || !isObject(data) ? null : readRequest(data);
   if (!request) {
     const unavailable = Boolean(error && error.code === 'P0002') || (!error && !isObject(data));
@@ -70,8 +70,8 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
 
   const pendingEvent = latest?.to_state === 'pending' ? latest : null;
   const historyFailed = !history.ok;
-  const accessUnavailable = !accessResponse || Boolean(accessResponse.error) || !isObject(accessResponse.data);
-  const canRequestCancellation = !accessUnavailable && accessResponse?.data.self_can_request === true;
+  const accessUnavailable = Boolean(accessResponse.error) || !isObject(accessResponse.data);
+  const canRequestCancellation = !accessUnavailable && accessResponse.data.self_can_request === true;
   const stateNote = requestStateNote(request.state, canRequestCancellation);
 
   return <PageFrame footer="الخدمة الذاتية">
@@ -184,7 +184,6 @@ function requestStateNote(state: string, canRequestCancellation: boolean): strin
   if (state === 'cancelled') return 'أُلغيت الإجازة وأُعيد أي رصيد خُصم لها. يمكنك مراجعة قرار الإلغاء أدناه.';
   if (state === 'rejected') return 'رفضت الموارد البشرية هذا الطلب، ولم يُخصم له رصيد.';
   if (state === 'withdrawn') return 'سحبت هذا الطلب بنفسك، ولم يُخصم به رصيد.';
-  if (state === 'superseded') return 'استُبدل هذا الطلب ضمن تصحيح الإجازة. راجع الطلب البديل من سجل الاستبدال إذا كان متاحًا لحسابك.';
   if (state === 'draft') return 'هذا الطلب مسودة ولم يُرسل بعد.';
   return '';
 }
@@ -238,12 +237,4 @@ function Status({ tenantId, requestId, title, detail, retry = false }: {
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
     </section>
   </PageFrame>;
-}
-
-async function readResponse<T>(read: () => PromiseLike<T>): Promise<T | null> {
-  try {
-    return await read();
-  } catch {
-    return null;
-  }
 }

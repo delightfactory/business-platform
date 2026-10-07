@@ -66,12 +66,12 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   const canRequest = access.self_can_request === true && access.new_work_enabled === true;
 
   const [balancesResponse, requestsResponse] = await Promise.all([
-    !balancePage.invalid ? readResponse(() => supabase.rpc('leave_my_balances', {
+    !balancePage.invalid ? supabase.rpc('leave_my_balances', {
       p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (balancePage.value - 1) * PAGE_SIZE,
-    })) : null,
-    !requestPage.invalid ? readResponse(() => supabase.rpc('leave_my_requests', {
+    }) : null,
+    !requestPage.invalid ? supabase.rpc('leave_my_requests', {
       p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (requestPage.value - 1) * PAGE_SIZE,
-    })) : null,
+    }) : null,
   ]);
   const balancesPayload = readPaged(balancesResponse);
   const requestsPayload = readPaged(requestsResponse);
@@ -233,12 +233,4 @@ function Status({ tenantId, title, detail, retry = false }: { tenantId: string; 
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
     </section>
   </PageFrame>;
-}
-
-async function readResponse<T>(read: () => PromiseLike<T>): Promise<T | null> {
-  try {
-    return await read();
-  } catch {
-    return null;
-  }
 }

@@ -1,0 +1,6 @@
+[
+  "src/app/tenant/[tenantId]/me/leave/page.tsx",
+  "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+  "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
+  "src/app/tenant/[tenantId]/me/leave/states.ts"
+]

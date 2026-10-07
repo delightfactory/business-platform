@@ -58,7 +58,8 @@
       "codex/ux-leave-input-recovery": false,
       "codex/ux-employee-leave-contract": false,
       "codex/ux-leave-current-feedback": false,
-      "codex/ux-leave-result-integrity": false
+      "codex/ux-leave-result-integrity": false,
+      "codex/ux-leave-partial-reads": false
     }
   }
 }

@@ -1,0 +1,34 @@
+# R6-PARTIAL-READS-01: independent review
+
+I worked only from the embedded diff and context and did not use any tools. Plan mode's plan-file and ExitPlanMode steps don't fit a review-only request, so I skipped them.
+
+## Source verdict: ACCEPT (bounded Class C), no blocking defects
+
+**List page (`page.tsx`)**
+- `readResponse` wraps each RPC inside an async closure. A synchronous throw from `supabase.rpc(...)`, a rejected await and a returned error all end up in `readPaged(null)`, which already shows that panel's failure state.
+- An invalid page skips the closure, so no RPC runs.
+- The access snapshot and `getUser` stay outside the catch.
+- One panel failing can no longer reject `Promise.all`, so the other panel survives.
+
+**Detail page (`[requestId]/page.tsx`)**
+- A thrown detail read becomes the synthetic error `READ_UNAVAILABLE`. That code is neither `P0002` nor `42501`, so the page shows the technical retry. It never claims the request is missing or forbidden.
+- The existing classification of null success, `P0002` and `42501` is unchanged.
+- A thrown or null access snapshot sets `accessUnavailable`, which keeps cancellation disabled. It doesn't block the detail view.
+- `redirect` and `notFound` stay outside the catches.
+
+**`CancellationHistory.tsx`**: the catch covers only the RPC and returns the technical `'failed'` code. The error mapping and parsing paths are unchanged.
+
+**`states.ts`**: `مستبدَل` uses the existing default status class, as the spec requires. The superseded note doesn't mention cancellation or refunds and adds no controls. Withdrawal still depends only on the source `submitted` state, and cancellation still sits under `approved`.
+
+## Points to confirm (not defects)
+1. **Section name in the note.** The note tells the user to check «سجل الاستبدال». The heading of the existing correction-links section must say exactly that. If it says something else, the instruction points to a section that doesn't exist.
+2. **Superseded request with no visible links.** "إذا كان متاحًا لحسابك" covers this case, but the user is left with no next step. That's acceptable as long as the back-navigation links stay visible.
+3. **Duplicated `readResponse`.** The same helper is defined in two files. It works; it's just a tidiness issue.
+4. **Caught Next.js internal errors.** The catch could in principle swallow Next.js dynamic-usage errors raised during cookie access. Because `getUser` and `params` run first, the page is already dynamic, so this has no practical effect.
+
+## Arabic clarity
+- `مستبدَل` is clearly distinct from `ملغى`.
+- The note is concise, explains the replacement and doesn't suggest any financial effect.
+
+## Visual verdict: NOT VISUALLY VERIFIED
+No rendering of the same state was provided. I haven't checked theme, component or design conformance against the pinned Concept C (SHA256 AF2401…5508). Unchanged CSS or classes don't prove the result looks the same. Still open: superseded and partial-failure renderings, the full parent page, a11y, keyboard, RTL, mobile and complete R6 visual acceptance.

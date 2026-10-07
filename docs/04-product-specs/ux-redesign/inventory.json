@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "09e2e390bc1615eed4a784fd01249e456610190f",
+  "sourceHead": "1846cd2e5e5834356d3e97c090d5e46e4e812193",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -680,7 +680,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
       "phase": "R6",
-      "sha256": "8eb9216428ca6a74ebd2d2d5922f4245250cb04468d51108d0f4719c10cdfbeb"
+      "sha256": "4abc3a5c00f1155e5d98e9e206ee6ec9efa2126d3a55db8c14f69ad41441164a"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/DayBreakdown.tsx",
@@ -710,7 +710,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "phase": "R6",
-      "sha256": "fcbbea9076f9b222b6fcd049ff76db367f4a49c4eb310b3eaa3d694ed1f7271f"
+      "sha256": "1042f3ed896c53f245a5a93cfd5ee1f22c81a12a9c81d3d4817e9530a69579ea"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/actions.ts",
@@ -745,7 +745,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "phase": "R6",
-      "sha256": "63c8311297a5c7904eb9df2d57f80f4859542806e97910f97a55f16e5de503a2"
+      "sha256": "bacd88760b542083cba8612550430c8a3bd08d0b2047f9ebd214893a57363a91"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/pending-link.tsx",
@@ -755,7 +755,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/states.ts",
       "phase": "R6",
-      "sha256": "500abf7774f13983b751a0343f845a96f17ff773d6c8dd48e41788f16594ee2d"
+      "sha256": "ecdd7db84f9e1bac87d1b63925ff761fa776ce555feb5465abff0f5eff1ffe28"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
@@ -5070,9 +5070,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx:30:901",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx:32:914",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
-      "line": 30,
+      "line": 32,
       "phase": "R6",
       "name": "leave_my_cancellation_history",
       "expression": null,
@@ -5090,7 +5090,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:46:2061",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:46:2084",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "line": 46,
       "phase": "R6",
@@ -5100,7 +5100,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:48:2261",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:48:2304",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "line": 48,
       "phase": "R6",
@@ -5160,7 +5160,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:69:3026",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:69:3045",
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "line": 69,
       "phase": "R6",
@@ -5170,7 +5170,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3197",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3236",
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "line": 72,
       "phase": "R6",

@@ -1,0 +1,178 @@
+{
+  "passed": 43,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "unchanged known detail false:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail false:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail false:approved",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail false:rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail false:cancelled",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail false:draft",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:approved",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:cancelled",
+      "result": "PASS"
+    },
+    {
+      "name": "unchanged known detail true:draft",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved fail:leave_my_balances",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved throws:leave_my_balances",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved syncThrow:leave_my_balances",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved fail:leave_my_requests",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved throws:leave_my_requests",
+      "result": "PASS"
+    },
+    {
+      "name": "list sibling preserved syncThrow:leave_my_requests",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid pager suppresses target RPC throws:bal",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid pager suppresses target RPC throws:page",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid pager suppresses target RPC syncThrow:bal",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid pager suppresses target RPC syncThrow:page",
+      "result": "PASS"
+    },
+    {
+      "name": "both list reads throw recover independently",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked fail:leave_my_cancellation_history",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked throws:leave_my_cancellation_history",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked syncThrow:leave_my_cancellation_history",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked fail:leave_access_snapshot",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked throws:leave_access_snapshot",
+      "result": "PASS"
+    },
+    {
+      "name": "approved detail retained cancellation blocked syncThrow:leave_access_snapshot",
+      "result": "PASS"
+    },
+    {
+      "name": "history throw preserves distinct detail authority submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "history throw preserves distinct detail authority superseded",
+      "result": "PASS"
+    },
+    {
+      "name": "detail transport classified technical retry throws",
+      "result": "PASS"
+    },
+    {
+      "name": "detail transport classified technical retry syncThrow",
+      "result": "PASS"
+    },
+    {
+      "name": "detail authority error classification unchanged P0002",
+      "result": "PASS"
+    },
+    {
+      "name": "detail authority error classification unchanged 42501",
+      "result": "PASS"
+    },
+    {
+      "name": "null successful detail still source unavailable",
+      "result": "PASS"
+    },
+    {
+      "name": "history loader catches only RPC throws",
+      "result": "PASS"
+    },
+    {
+      "name": "history loader catches only RPC syncThrow",
+      "result": "PASS"
+    },
+    {
+      "name": "list authority/setup unchanged {\"denied\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "list authority/setup unchanged {\"noSdk\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "auth redirect escapes unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "superseded historical original readable no mutation",
+      "result": "PASS"
+    },
+    {
+      "name": "superseded list label preserves own record link",
+      "result": "PASS"
+    }
+  ]
+}

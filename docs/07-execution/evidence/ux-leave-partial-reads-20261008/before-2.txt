@@ -27,16 +27,10 @@ export async function loadCancellationHistory(
   requestId: string,
   offset: number,
 ): Promise<CancellationHistoryView> {
-  let response;
-  try {
-    response = await supabase.rpc('leave_my_cancellation_history', {
-      p_tenant: tenantId, p_request: requestId,
-      p_limit: CANCELLATION_HISTORY_LIMIT, p_offset: offset,
-    });
-  } catch {
-    return { ok: false, code: 'failed' };
-  }
-  const { data, error } = response;
+  const { data, error } = await supabase.rpc('leave_my_cancellation_history', {
+    p_tenant: tenantId, p_request: requestId,
+    p_limit: CANCELLATION_HISTORY_LIMIT, p_offset: offset,
+  });
   if (error) return { ok: false, code: mapHistoryError(error.message, error.code) };
   const page = readHistoryPage(data, offset);
   if (!page) return { ok: false, code: 'failed' };

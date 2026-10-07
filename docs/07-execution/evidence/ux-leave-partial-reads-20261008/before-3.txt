@@ -5,7 +5,6 @@ export function stateLabel(state: string): string {
   if (state === 'draft') return 'مسودة';
   if (state === 'approved') return 'معتمد';
   if (state === 'cancelled') return 'ملغى';
-  if (state === 'superseded') return 'مستبدَل';
   return 'غير محدّد';
 }
 

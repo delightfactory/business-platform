@@ -1,0 +1,180 @@
+Read-only independent review. No tools, no writes/commits/retests/rediscovery; source and complete candidate diff embedded. Official claude-opus-5-5 effort medium. Reply <=300 words. Review these four exact candidates for bounded Class C source correctness, complete local failure partitions/authority preservation, Arabic clarity and simpler recovery. Flag concrete defects only. Give separate explicit visual verdict NOT VISUALLY VERIFIED unless actual same-state rendered evidence was provided (none is provided). Owner specifically binds Codex AND Claude to verify theme/components/design against immutable Concept C, not just build/source. Existing Cairo40/44radius8 are accepted current contract; replacing requires amendment, retaining does not. Existing CSS/components unchanged. No fallback/provider/config/permission work.
+
+# R6-PARTIAL-READS-01 — independent employee leave reads and historical replacement
+
+Class C bounded repair; base1846cd2e5e5834356d3e97c090d5e46e4e812193. Actor: linked employee viewing own balances/request history/current detail. Job: understand current leave state and recover a failed read without losing successful information. Existing SQL/RPC payloads, authorization, links, paging, request version and financial effects remain authoritative. No mutation, schema, authentication, provider or storage change.
+
+List: catch only balances/requests RPC failure, including thrown invocation/await; use existing per-panel failure/retry. Invalid paging skips that panel RPC. Access snapshot remains before list reads; access/auth/setup exceptions are outside this slice. Detail: isolate detail and access RPC failures; history loader catches only its RPC. Technical detail failure gets technical retry, never invented missing/forbidden state. Existing P0002/42501 and null-success classification stay unchanged. Failed access/history keeps successful detail readable and cannot enable cancellation. Submitted withdrawal gate stays source-authoritative, independent of cancellation-history visibility, with mutation authority rechecked on server.
+
+Latest migration20261001093604 explicitly supports request state superseded. Label it مستبدَل on list/detail; persistent note points to existing correction links if available to this account. Do not equate replacement with cancellation/refund, create controls or change the inactive status style. Correction links remain independently authority-checked at their destination.
+
+Before: rejected parallel read can escape and suppress siblings. After: existing successful panels survive, existing safe GET retries remain. Before historical superseded label is غير محدّد; after known read-only state has explicit label/context. Controlled actual-page SDK-stub comparisons measure this bounded recovery/render difference; no claimed live N/C/P/I/B improvement or real role/DB/session/browser acceptance.
+
+Reference: pinned Concept C HTML SHA256AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508 and compatibility review. Employee إجازاتي view opened; demo has illustrative annual balance/list, no corresponding real superseded/partial-failure state. Existing Cairo,40/44px,radius8 and component classes preserved. This source-qualified maintenance is NOT VISUALLY VERIFIED by Codex/Claude; matched-state rendering/full parent/a11y/keyboard/RTL/mobile and complete R6 visual acceptance remain open. No inferred visual equivalence from unchanged CSS.
+
+Every plan, implementation slice and review must simplify and improve the complete user's task. Preserve meaningful recovery, successful information and one appropriate action per state without removing required permissions/financial safeguards. Full coverage and simplicity are independent gates. Historical160DRAFT labels require affected rebase/semantic review before freeze; no labels promoted by stub tests. D8 owner decision pending/unapplied; F5 malformed profile/full F4-F7/session/unknown-write recovery and HR R6b remain open.
+
+Validation: focused actual server-page/history loader tests for returned/thrown/synchronous failures, independent sibling preservation, invalid-page noRPC, all known existing states, existing denied/missing/technical distinction, server redirects, historical replacement links/read-only presentation; one targetlint/build+TS, exact candidate/preserved registry/source checks. No repeated SQL/Auth/heavy suites. Official Opus5.5Medium bounded independent source review, separate design verdict. Preserve evidence/branch without claiming phase closure.
+
+
+CONTEXT: readPaged(response:{data:unknown,error:unknown}|null) treats null/error/unusable payload as failed. CancellationHistoryView is {ok:true,page} or {ok:false,code}. Detail existing sequence after reads: request=error||!isObject(data)?null:readRequest(data); unavailable=(error?.code===P0002)||(!error&&!isObject(data)); forbidden=error?.code===42501; failure Status retry=!unavailable&&!forbidden. After good request: latest=history.ok?history.page.latest:null; pendingEvent=latest?.to_state===pending; historyFailed=!history.ok. approved cancellation section order pendingEvent, then historyFailed blocking, then !canRequestCancellation blocking, then form. submitted withdraw separate gate. requestStateNote used persistent role=status. Existing correction_links guardsUUIDs/reason/time, link to replacement iforiginal elseoriginal; destinationRPC governsownauthority. Auth getUser/redirect and params/notFound stay outside RPC catches. Supabase rpc builder PromiseLike resolves {data:Json,error:PostgrestError|null}; helpers accept sync invocation and rejection.
+43 focused actual React server-page/loader SDK-stub cases PASS; exact before comparison, successful sibling rendered, no extraRPC or mutations, technicaldetail notmissing, preserved P0002/42501, noSQL/runtime/browser acceptance.
+
+[{"file":"src/app/tenant/[tenantId]/me/leave/page.tsx","sha256":"bacd88760b542083cba8612550430c8a3bd08d0b2047f9ebd214893a57363a91"},{"file":"src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx","sha256":"1042f3ed896c53f245a5a93cfd5ee1f22c81a12a9c81d3d4817e9530a69579ea"},{"file":"src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx","sha256":"4abc3a5c00f1155e5d98e9e206ee6ec9efa2126d3a55db8c14f69ad41441164a"},{"file":"src/app/tenant/[tenantId]/me/leave/states.ts","sha256":"ecdd7db84f9e1bac87d1b63925ff761fa776ce555feb5465abff0f5eff1ffe28"}]
+FILE src/app/tenant/[tenantId]/me/leave/page.tsx
+diff --git "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-0.txt" "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-0.txt"
+index 7dc2816..f4efaae 100644
+--- "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-0.txt"
++++ "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-0.txt"
+@@ -64,16 +64,16 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
+       detail="يجب أن يكون حسابك مرتبطًا بملف موظف بصلاحية عرض الإجازات الذاتية. راجع إدارة الموارد البشرية." />;
+   }
+   const canRequest = access.self_can_request === true && access.new_work_enabled === true;
+
+   const [balancesResponse, requestsResponse] = await Promise.all([
+-    !balancePage.invalid ? supabase.rpc('leave_my_balances', {
++    !balancePage.invalid ? readResponse(() => supabase.rpc('leave_my_balances', {
+       p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (balancePage.value - 1) * PAGE_SIZE,
+-    }) : null,
+-    !requestPage.invalid ? supabase.rpc('leave_my_requests', {
++    })) : null,
++    !requestPage.invalid ? readResponse(() => supabase.rpc('leave_my_requests', {
+       p_tenant: tenantId, p_limit: PAGE_SIZE, p_offset: (requestPage.value - 1) * PAGE_SIZE,
+-    }) : null,
++    })) : null,
+   ]);
+   const balancesPayload = readPaged(balancesResponse);
+   const requestsPayload = readPaged(requestsResponse);
+   const balances = balancesPayload ? readBalances(balancesPayload.items) : null;
+   const requests = requestsPayload ? readRequests(requestsPayload.items) : null;
+@@ -232,5 +232,13 @@ function Status({ tenantId, title, detail, retry = false }: { tenantId: string;
+       <Link className="secondary-button" href={`/tenant/${tenantId}/me`}>العودة إلى ملفي</Link>
+       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+     </section>
+   </PageFrame>;
+ }
++
++async function readResponse<T>(read: () => PromiseLike<T>): Promise<T | null> {
++  try {
++    return await read();
++  } catch {
++    return null;
++  }
++}
+
+FILE src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx
+diff --git "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-1.txt" "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-1.txt"
+index 34345dc..b6b6e2f 100644
+--- "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-1.txt"
++++ "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-1.txt"
+@@ -41,16 +41,16 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/${requestId}`)}`);
+
+   const historyOffset = parseHistoryOffset(query.h);
+   const [detailResponse, history, accessResponse] = await Promise.all([
+-    supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId }),
++    readResponse(() => supabase.rpc('leave_my_request_detail', { p_tenant: tenantId, p_request: requestId })),
+     loadCancellationHistory(supabase, tenantId, requestId, historyOffset.invalid ? 0 : historyOffset.value),
+-    supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
++    readResponse(() => supabase.rpc('leave_access_snapshot', { p_tenant: tenantId })),
+   ]);
+-  const data = detailResponse.data;
+-  const error = detailResponse.error;
++  const data = detailResponse?.data;
++  const error = detailResponse?.error ?? (detailResponse === null ? { code: 'READ_UNAVAILABLE' } : null);
+   const request = error || !isObject(data) ? null : readRequest(data);
+   if (!request) {
+     const unavailable = Boolean(error && error.code === 'P0002') || (!error && !isObject(data));
+     const forbidden = Boolean(error && error.code === '42501');
+     return <Status tenantId={tenantId} retry={!unavailable && !forbidden}
+@@ -68,12 +68,12 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
+         ? 'طلب الإلغاء معلّق حاليًا بانتظار قرار الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
+         : null;
+
+   const pendingEvent = latest?.to_state === 'pending' ? latest : null;
+   const historyFailed = !history.ok;
+-  const accessUnavailable = Boolean(accessResponse.error) || !isObject(accessResponse.data);
+-  const canRequestCancellation = !accessUnavailable && accessResponse.data.self_can_request === true;
++  const accessUnavailable = !accessResponse || Boolean(accessResponse.error) || !isObject(accessResponse.data);
++  const canRequestCancellation = !accessUnavailable && accessResponse?.data.self_can_request === true;
+   const stateNote = requestStateNote(request.state, canRequestCancellation);
+
+   return <PageFrame footer="الخدمة الذاتية">
+     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
+     <section className="work-card task-page" aria-labelledby="leave-request-title">
+@@ -182,10 +182,11 @@ function requestStateNote(state: string, canRequestCancellation: boolean): strin
+     ? 'تم اعتماد الإجازة. يمكنك متابعة طلب إلغائها من القسم التالي.'
+     : 'تم اعتماد الإجازة.';
+   if (state === 'cancelled') return 'أُلغيت الإجازة وأُعيد أي رصيد خُصم لها. يمكنك مراجعة قرار الإلغاء أدناه.';
+   if (state === 'rejected') return 'رفضت الموارد البشرية هذا الطلب، ولم يُخصم له رصيد.';
+   if (state === 'withdrawn') return 'سحبت هذا الطلب بنفسك، ولم يُخصم به رصيد.';
++  if (state === 'superseded') return 'استُبدل هذا الطلب ضمن تصحيح الإجازة. راجع الطلب البديل من سجل الاستبدال إذا كان متاحًا لحسابك.';
+   if (state === 'draft') return 'هذا الطلب مسودة ولم يُرسل بعد.';
+   return '';
+ }
+
+ function readRequest(data: Record<string, unknown>): RequestDetail | null {
+@@ -236,5 +237,13 @@ function Status({ tenantId, requestId, title, detail, retry = false }: {
+       <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</Link>
+       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+     </section>
+   </PageFrame>;
+ }
++
++async function readResponse<T>(read: () => PromiseLike<T>): Promise<T | null> {
++  try {
++    return await read();
++  } catch {
++    return null;
++  }
++}
+
+FILE src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx
+diff --git "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-2.txt" "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-2.txt"
+index dc4eda5..d754f2f 100644
+--- "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-2.txt"
++++ "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-2.txt"
+@@ -25,14 +25,20 @@ export async function loadCancellationHistory(
+   supabase: SupabaseServer,
+   tenantId: string,
+   requestId: string,
+   offset: number,
+ ): Promise<CancellationHistoryView> {
+-  const { data, error } = await supabase.rpc('leave_my_cancellation_history', {
+-    p_tenant: tenantId, p_request: requestId,
+-    p_limit: CANCELLATION_HISTORY_LIMIT, p_offset: offset,
+-  });
++  let response;
++  try {
++    response = await supabase.rpc('leave_my_cancellation_history', {
++      p_tenant: tenantId, p_request: requestId,
++      p_limit: CANCELLATION_HISTORY_LIMIT, p_offset: offset,
++    });
++  } catch {
++    return { ok: false, code: 'failed' };
++  }
++  const { data, error } = response;
+   if (error) return { ok: false, code: mapHistoryError(error.message, error.code) };
+   const page = readHistoryPage(data, offset);
+   if (!page) return { ok: false, code: 'failed' };
+   return { ok: true, page };
+ }
+
+FILE src/app/tenant/[tenantId]/me/leave/states.ts
+diff --git "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-3.txt" "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-3.txt"
+index 0f8aae4..39a2f6f 100644
+--- "a/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\before-3.txt"
++++ "b/C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-leave-partial-reads-20261008\\candidate-3.txt"
+@@ -3,10 +3,11 @@ export function stateLabel(state: string): string {
+   if (state === 'withdrawn') return 'مسحوب';
+   if (state === 'rejected') return 'مرفوض';
+   if (state === 'draft') return 'مسودة';
+   if (state === 'approved') return 'معتمد';
+   if (state === 'cancelled') return 'ملغى';
++  if (state === 'superseded') return 'مستبدَل';
+   return 'غير محدّد';
+ }
+
+ export function stateClass(state: string): string {
+   if (state === 'submitted') return 'is-pending';
