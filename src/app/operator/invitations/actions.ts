@@ -92,8 +92,9 @@ export async function revokeInvitationAction(formData: FormData) {
   if (!isUuid(id)) redirect('/operator/invitations?state=invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect('/operator/invitations?state=setup');
-  const { error } = await supabase.rpc('revoke_tenant_admin_invitation', { p_invitation_id: id });
-  redirect(`/operator/invitations?id=${encodeURIComponent(id)}&state=${error ? 'forbidden' : 'revoked'}`);
+  const { data, error } = await supabase.rpc('revoke_tenant_admin_invitation', { p_invitation_id: id });
+  const state = error ? 'forbidden' : data === true ? 'revoked' : data === false ? 'revoke-unchanged' : 'revoke-unknown';
+  redirect(`/operator/invitations?id=${encodeURIComponent(id)}&state=${state}`);
 }
 
 async function deliverInvitation(

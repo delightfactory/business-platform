@@ -1,0 +1,24 @@
+# Invitation RPC contracts and revoke feedback evidence
+
+Repository source26b7d355aabb0ad83baa9c24da6f3cc8c3894e8f; eight latest textual public-function definitions extracted from ordered migration sources with history/line/body SHA. This is NOT applied-schema, dependency, live grants/RLS, transaction or concurrency qualification. No database/service/access started. Source public revoke signatures both RETURNS boolean; true only after pending->revoked update/audit, false/no-op partitions differ. Raw extraction lives in rpc-source-contracts.json.
+
+| RPC | Actual source distinction |
+|---|---|
+| Admin create | Current active verified onboarding grant; actor+key conflict/signature replay; row locking; existing lifecycle replay; expired replay may update expiry; created=true/false response |
+| Admin reissue | Same active onboarding authority plus creator ownership/pending; row lock; expiry returns only state:expired; otherwise issuance increments and sending resets |
+| Admin revoke | Active onboarding authority; creator ownership NOT required here; missing/nonpending returns false; pending update/audit returns true |
+| Admin delivery record | Current onboarding authority + creator ownership, current pending issuance; row lock; record/audit true; stale/denied exception |
+| Member create | tenant.members.manage before/after tenant advisory lock; actor+key/signature replay; active membership/protected-admin/pending-email distinctions; stored replay does not reclassify expiry |
+| Member reissue | Tenant advisory + row lock; current manager AND original issuer permission; pending expiry updates and returns created=false; nonpending terminal no issuance change; pending renewal created=true |
+| Member revoke | Tenant advisory + row lock/current manager; missing throws forbidden, nonpending false; pending update/audit true; does NOT repeat issuer check |
+| Member delivery record | Service-role declaration in migration; actual invitation tenant/current issuance/pending/current p_actor permission checked with advisory/row lock; no proof deployed grant state or creator equivalence |
+
+Follow-ups: admin expired reissue's minimal state-only response fails current isInvitation before the expired branch; do not describe that as accepted expiry UX. No provider arrival guarantee. Declared locking/replay is source evidence, not proven race safety. Exceptions, broad operator revoke authority, record actor and effect of permission-helper replacements need broader qualification. No SQL/RPC/grant changes in this slice.
+
+Implemented: both revoke actions prioritize error, require exact true for revoked, false->revoke-unchanged and unusable->revoke-unknown. Existing alert slots and member invitation tab give current-state review; new states are excluded from success notifications. No fabricated selected row or definite lifecycle from false; invisible/missing selected row behavior not browser-tested. Operator neutral copy explicitly allows unavailable/non-cancellable reference. Session/RPC/snapshot rendering rejection block unchanged after LF normalization, four source files changed only.
+
+26 focused checks:22 actual-source actions with SDK stubs (true/false/null/object/array/number/error+true/error+false/setup/invalid/thrown in both lanes),4 actual message/success-function checks plus static existing gate/tab/operator-success checks. Initial gate comparison failed only CRLF-vs-Git-LF; normalized correctly. Final review requested found-position assertions, added and cheap harness/lint rerun; application source unchanged after build/review. Targeted lint/typecheck and ONE webpack build passed. No previous Auth/SQL/heavy suite repeats. No full page render/browser/provider/SQL acceptance or measured navigation benefit claimed.
+
+Official Claude Code2.1.292 / claude-opus-5-5 / medium:31bb2f2a-9d3d-4c15-af4f-4aedeeeb0951 pre-spec conditional PASS;109c2e61-a943-45c4-9450-307e2032e4a3 final exact-diff/harness conditional PASS. Each1 turn/0 tools/readOnlyViolation=false. Conditions satisfied locally: source signatures/true-after-update proven by pinned definitions, alert slots/neutral copy/session gates inspected, harness bounds asserted. Applied schema, real grants/provider, mobile/full R2 remain open. No claim reviewer read entire repository.
+
+Inventory/manual review states preserved, no semantic gate closed. Outbound90 baseline drafts expand to94 through false/unknown partitions; recipient94 drafts unchanged. Pinned Concept C/shared visual structure preserved; no visual acceptance/screenshots from this source slice. Raw relay logs/temp extractor/briefs remain local. Cloud harness needs baseline history. Next: expired reissue record-shape mapping and shared unknown feedback, then batch actual page/role/mobile and appropriately scoped SQL/provider qualification; wider R0–R8 still open.

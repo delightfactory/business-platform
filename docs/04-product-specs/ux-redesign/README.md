@@ -54,4 +54,4 @@ Read recipient-actions-spec.md with recipient-action-scenarios.json and claude-r
 
 Bounded maintenance contracts: [admin invitation context](admin-invitation-context-slice.md) and [member validation](member-validation-slice.md). Source-only/runtime boundaries are recorded in the execution ledger; these do not freeze the broader recipient/R2 contracts.
 
-Outbound journey contract: [source-authoritative specification](outbound-invitations-spec.md), [90 draft source partitions](outbound-invitation-scenarios.json), and [immutable Claude contribution](claude-outbound-invitations-contribution.md). Seven actions/two helpers; full semantic/runtime acceptance stays open.
+Outbound journey contract: [source-authoritative specification](outbound-invitations-spec.md), [outbound draft source partitions](outbound-invitation-scenarios.json), and [immutable Claude contribution](claude-outbound-invitations-contribution.md). Seven actions/two helpers; full semantic/runtime acceptance stays open.

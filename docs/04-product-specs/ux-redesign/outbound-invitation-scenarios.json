@@ -1,17 +1,17 @@
 {
   "schema": "business-platform.ux-outbound-invitations.v1",
   "status": "Proposed-not-Frozen",
-  "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+  "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
   "publicActions": 7,
   "privateHelpers": 2,
-  "caseCount": 90,
+  "caseCount": 94,
   "coverageClaim": "Draft source outcome partitions, not full semantic reviewed/executed coverage",
   "cases": [
     {
       "id": "OUTBOUND-createInvitationAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -34,9 +34,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -59,9 +59,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -84,9 +84,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -109,9 +109,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -134,9 +134,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -159,9 +159,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -184,9 +184,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -209,9 +209,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -234,9 +234,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -259,9 +259,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-11",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -284,9 +284,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-12",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -309,9 +309,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -334,9 +334,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -359,9 +359,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -384,9 +384,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -409,9 +409,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -434,9 +434,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -459,9 +459,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -484,9 +484,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -509,9 +509,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -534,9 +534,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -559,9 +559,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -584,9 +584,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -609,16 +609,16 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
       "operation": "revokeInvitationAction",
       "actor": "Operator",
       "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
-      "partition": "returned-no-error",
+      "partition": "returned-true",
       "sourceObservedOutcome": "revoked",
       "status": "source-partition-draft",
       "executed": "not-run",
@@ -634,9 +634,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -659,9 +659,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -684,9 +684,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -709,9 +709,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -734,9 +734,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -759,9 +759,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -784,9 +784,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -809,9 +809,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -834,9 +834,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -859,9 +859,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -884,9 +884,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -909,9 +909,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-11",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -934,9 +934,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-12",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -959,9 +959,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-13",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -984,9 +984,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-14",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberFormAction"
       ],
@@ -1009,9 +1009,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1034,9 +1034,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1059,9 +1059,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1084,9 +1084,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1109,9 +1109,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1134,9 +1134,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1159,9 +1159,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1184,9 +1184,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1209,9 +1209,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1234,9 +1234,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1259,9 +1259,9 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-11",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#inviteMemberAction"
       ],
@@ -1284,9 +1284,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1309,9 +1309,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1334,9 +1334,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1359,9 +1359,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1384,9 +1384,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1409,9 +1409,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1434,9 +1434,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1459,9 +1459,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1484,9 +1484,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1509,9 +1509,9 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#reissueMemberInvitationAction"
       ],
@@ -1534,9 +1534,9 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
       ],
@@ -1559,9 +1559,9 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
       ],
@@ -1584,9 +1584,9 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
       ],
@@ -1609,16 +1609,16 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
       ],
       "operation": "revokeMemberInvitationAction",
       "actor": "Authorized member manager",
       "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
-      "partition": "returned-no-error",
+      "partition": "returned-true",
       "sourceObservedOutcome": "revoked",
       "status": "source-partition-draft",
       "executed": "not-run",
@@ -1634,9 +1634,9 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
         "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
       ],
@@ -1659,11 +1659,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1684,11 +1684,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1709,11 +1709,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1734,11 +1734,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1759,11 +1759,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1784,11 +1784,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1809,11 +1809,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1834,11 +1834,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1859,11 +1859,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1884,11 +1884,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "4221bbc4a7d9adf3d577a2d42d67b7eac5e815df65727e76f2a2d69e955ec24b",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:125:5819"
+        "RPC:src/app/operator/invitations/actions.ts:126:5919"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1909,11 +1909,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-01",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -1934,11 +1934,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-02",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -1959,11 +1959,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-03",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -1984,11 +1984,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-04",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2009,11 +2009,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-05",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2034,11 +2034,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-06",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2059,11 +2059,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-07",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2084,11 +2084,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-08",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2109,11 +2109,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-09",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2134,11 +2134,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-10",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2159,11 +2159,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-11",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2184,11 +2184,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-12",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2209,11 +2209,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-13",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2234,11 +2234,11 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-14",
-      "sourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
-      "sourceSha256": "b2ec7b389748815cec15ff6fc24726b1edfa5859152a738cfabe1359784a5c88",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
-        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9399"
+        "RPC:src/app/tenant/[tenantId]/users/actions.ts:160:9476"
       ],
       "operation": "deliverMemberInvitation",
       "actor": "Private helper, current actor and service role",
@@ -2256,6 +2256,108 @@
         "real provider/callback/delivery/SQL",
         "actual responsive complete journey"
       ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-04-NOOP",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-false",
+      "sourceObservedOutcome": "revoke-unchanged",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeInvitationAction-04-UNKNOWN",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
+      ],
+      "operation": "revokeInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-unusable-data",
+      "sourceObservedOutcome": "revoke-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-04-NOOP",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-false",
+      "sourceObservedOutcome": "revoke-unchanged",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
+    },
+    {
+      "id": "OUTBOUND-revokeMemberInvitationAction-04-UNKNOWN",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
+      "sourceIds": [
+        "ACTION:src/app/tenant/[tenantId]/users/actions.ts#revokeMemberInvitationAction"
+      ],
+      "operation": "revokeMemberInvitationAction",
+      "actor": "Authorized member manager",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "returned-unusable-data",
+      "sourceObservedOutcome": "revoke-unknown",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
     }
-  ]
+  ],
+  "maintenanceAmendment": "invitation-revoke-feedback-slice.md; per-case updated source fingerprints, all partitions remain draft",
+  "baselineSourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c"
 }

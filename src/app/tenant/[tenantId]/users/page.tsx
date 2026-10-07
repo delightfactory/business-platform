@@ -45,7 +45,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const { tenantId } = await params;
   const query = await searchParams;
   const showInvitations = query.view === 'invitations' || Boolean(query.state?.startsWith('created-') || query.state?.startsWith('reissued-') ||
-    ['pending-exists', 'revoked', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
+    ['pending-exists', 'revoked', 'revoke-unchanged', 'revoke-unknown', 'expired', 'terminal', 'issuer-lost'].includes(query.state ?? ''));
   const view = showInvitations ? 'invitations' : 'members';
   const page = /^[1-9]\d{0,5}$/.test(query.page ?? '') ? Math.min(Number(query.page), 100000) : 1;
   const search = (query.q ?? '').trim().slice(0, 120);
@@ -237,6 +237,8 @@ function stateMessage(state: string) {
     'reissued-unknown': 'تجددت الدعوة وحالة الإرسال غير مؤكدة. راجع الحالة قبل إعادة الإرسال.',
     'already-member': 'هذا المستخدم عضو بالفعل في الشركة.', 'pending-exists': 'توجد دعوة معلّقة لهذا البريد. أعد إرسالها من قائمة الدعوات.',
     existing: 'يوجد طلب سابق لهذا الإجراء.', revoked: 'أُلغيت الدعوة.', expired: 'انتهت الدعوة ويمكن إصدار واحدة جديدة.',
+    'revoke-unchanged': 'لم يحدث إلغاء في هذه المحاولة. قد لا تكون الدعوة متاحة أو قابلة للإلغاء. راجع حالتها الحالية.',
+    'revoke-unknown': 'تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر.',
     terminal: 'الدعوة لم تعد معلّقة، لذلك لم يُرسل بريد جديد.', 'limit-full': 'اكتمل عدد المستخدمين المسموح به. عطّل عضوية غير مستخدمة أو اطلب من مشغّل المنصة رفع الحد.',
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     'admin-governed': 'تغيير مسؤول الشركة يحتاج إجراءً منفصلًا.', 'key-conflict': 'تعذر إعادة استخدام الطلب نفسه ببيانات مختلفة.',

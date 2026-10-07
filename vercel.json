@@ -42,7 +42,8 @@
       "codex/ux-r2-action-specs": false,
       "codex/ux-r2-invitation-context": false,
       "codex/ux-r2-member-validation": false,
-      "codex/ux-outbound-contracts": false
+      "codex/ux-outbound-contracts": false,
+      "codex/ux-invitation-revoke-feedback": false
     }
   }
 }

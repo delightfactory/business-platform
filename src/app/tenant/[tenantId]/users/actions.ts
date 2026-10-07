@@ -64,8 +64,8 @@ export async function revokeMemberInvitationAction(formData: FormData) {
   if (!isUuid(tenantId) || !isUuid(invitationId)) go(tenantId, 'invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) go(tenantId, 'setup');
-  const { error } = await supabase.rpc('revoke_tenant_member_invitation', { p_invitation_id: invitationId });
-  go(tenantId, error ? mapError(error.message) : 'revoked');
+  const { data, error } = await supabase.rpc('revoke_tenant_member_invitation', { p_invitation_id: invitationId });
+  go(tenantId, error ? mapError(error.message) : data === true ? 'revoked' : data === false ? 'revoke-unchanged' : 'revoke-unknown');
 }
 
 export async function setMemberAccessAction(formData: FormData) {

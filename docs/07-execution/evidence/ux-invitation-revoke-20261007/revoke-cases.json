@@ -1,0 +1,476 @@
+{
+  "baseline": "26b7d355aabb0ad83baa9c24da6f3cc8c3894e8f",
+  "scope": "22 real-action SDK comparisons +4 actual source message/success function checks; static tab/gate checks; not browser/SQL/provider acceptance",
+  "cases": [
+    {
+      "action": "revokeInvitationAction",
+      "case": "true",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "false",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoke-unchanged",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "null",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "object",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "array",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "number",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "error-true",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "error-false",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "setup",
+      "before": {
+        "location": "/operator/invitations?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "invalid",
+      "before": {
+        "location": "/operator/invitations?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/operator/invitations?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeInvitationAction",
+      "case": "thrown",
+      "before": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "revoke_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "source-feedback",
+      "file": "src/app/operator/invitations/page.tsx",
+      "state": "revoke-unchanged",
+      "status": "pass"
+    },
+    {
+      "action": "source-feedback",
+      "file": "src/app/operator/invitations/page.tsx",
+      "state": "revoke-unknown",
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "true",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "false",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unchanged",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "null",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "object",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "array",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "number",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoked",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "error-true",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=failed",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=failed",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "error-false",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=failed",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=failed",
+        "error": null,
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "setup",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "invalid",
+      "before": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/tenant/11111111-1111-4111-8111-111111111111/users?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "action": "revokeMemberInvitationAction",
+      "case": "thrown",
+      "before": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "revoke_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "action": "source-feedback",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "state": "revoke-unchanged",
+      "status": "pass"
+    },
+    {
+      "action": "source-feedback",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "state": "revoke-unknown",
+      "status": "pass"
+    }
+  ]
+}
