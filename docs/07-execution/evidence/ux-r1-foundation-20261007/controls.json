@@ -1,0 +1,258 @@
+{
+  "scope": "Synthetic CSS-only fixture; not real list/detail/domain functionality",
+  "viewports": [
+    {
+      "buttons": [
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 44,
+          "label": "عرض التفاصيل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(14, 107, 92)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "حفظ التعديل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 44,
+          "label": "إلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(150, 32, 22)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "تأكيد الإلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": true,
+          "height": 44,
+          "label": "جارٍ الحفظ…",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(102, 51, 153)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "إجراء بلون المنشأة",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        }
+      ],
+      "scrollWidth": 390,
+      "states": [
+        {
+          "background": "rgb(230, 243, 235)",
+          "color": "rgb(23, 96, 60)",
+          "label": "نشط"
+        },
+        {
+          "background": "rgb(251, 238, 220)",
+          "color": "rgb(138, 72, 6)",
+          "label": "بانتظار المراجعة"
+        },
+        {
+          "background": "rgb(236, 238, 234)",
+          "color": "rgb(93, 104, 98)",
+          "label": "غير نشط"
+        }
+      ],
+      "tenantBrand": "rgb(102, 51, 153)",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 44,
+          "label": "عرض التفاصيل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(14, 107, 92)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "حفظ التعديل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 44,
+          "label": "إلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(150, 32, 22)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "تأكيد الإلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": true,
+          "height": 44,
+          "label": "جارٍ الحفظ…",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(102, 51, 153)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 44,
+          "label": "إجراء بلون المنشأة",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        }
+      ],
+      "scrollWidth": 768,
+      "states": [
+        {
+          "background": "rgb(230, 243, 235)",
+          "color": "rgb(23, 96, 60)",
+          "label": "نشط"
+        },
+        {
+          "background": "rgb(251, 238, 220)",
+          "color": "rgb(138, 72, 6)",
+          "label": "بانتظار المراجعة"
+        },
+        {
+          "background": "rgb(236, 238, 234)",
+          "color": "rgb(93, 104, 98)",
+          "label": "غير نشط"
+        }
+      ],
+      "tenantBrand": "rgb(102, 51, 153)",
+      "width": 768
+    },
+    {
+      "buttons": [
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 40,
+          "label": "عرض التفاصيل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(14, 107, 92)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 40,
+          "label": "حفظ التعديل",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": false,
+          "height": 40,
+          "label": "إلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(150, 32, 22)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 40,
+          "label": "تأكيد الإلغاء",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "rgb(59, 70, 65)",
+          "disabled": true,
+          "height": 40,
+          "label": "جارٍ الحفظ…",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        },
+        {
+          "background": "rgb(102, 51, 153)",
+          "color": "rgb(255, 255, 255)",
+          "disabled": false,
+          "height": 40,
+          "label": "إجراء بلون المنشأة",
+          "radius": "8px",
+          "size": "14px",
+          "weight": "600"
+        }
+      ],
+      "scrollWidth": 1366,
+      "states": [
+        {
+          "background": "rgb(230, 243, 235)",
+          "color": "rgb(23, 96, 60)",
+          "label": "نشط"
+        },
+        {
+          "background": "rgb(251, 238, 220)",
+          "color": "rgb(138, 72, 6)",
+          "label": "بانتظار المراجعة"
+        },
+        {
+          "background": "rgb(236, 238, 234)",
+          "color": "rgb(93, 104, 98)",
+          "label": "غير نشط"
+        }
+      ],
+      "tenantBrand": "rgb(102, 51, 153)",
+      "width": 1366
+    }
+  ],
+  "keyboardFocus": "حفظ التعديل; solid 2px"
+}

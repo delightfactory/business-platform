@@ -1,0 +1,18 @@
+{
+  "qualification": "Production build loopback browser; synthetic/no provider; no authenticated/delivery claim",
+  "geometry": {
+    "buttonHeight": 40,
+    "primaryActions": 1,
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  "keyboardRestartNavigations": 1,
+  "formVisible": true,
+  "uniformReplyVisible": true,
+  "phoneExpiry": {
+    "buttonHeight": 44,
+    "primaryActions": 1,
+    "scrollWidth": 390,
+    "width": 390
+  }
+}

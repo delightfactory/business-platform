@@ -1,0 +1,53 @@
+/* W1.a: concept C light palette; retain the accepted control and type contracts. */
+:root {
+  color-scheme: light;
+  --surface-canvas: #f2f3f1;
+  --surface-base: #ffffff;
+  --surface-subtle: #f6f7f5;
+  --surface-inset: #eceeea;
+  --text-primary: #17201c;
+  --text-secondary: #3b4641;
+  --text-muted: #5d6862;
+  --border-subtle: #e2e5e0;
+  /* Strong enough to identify a control against the white surface. */
+  --border-control: #7c8780;
+  --status-success-text: #17603c;
+  --status-success-surface: #e6f3eb;
+  --status-warning-text: #8a4806;
+  --status-warning-surface: #fbeedc;
+  --status-danger-text: #962016;
+  --status-danger-surface: #fbe8e6;
+  --status-info-text: #264d75;
+  --status-info-surface: #e8eff7;
+  --navigation-surface: #14211d;
+  --navigation-muted: #a9bcb4;
+
+  /* Existing feature CSS consumes these aliases; tenant branding still owns brand. */
+  --color-canvas: var(--surface-canvas);
+  --color-surface: var(--surface-base);
+  --color-text: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border-subtle);
+  --color-control-border: var(--border-control);
+  --color-brand: #0e6b5c;
+  --color-brand-soft: color-mix(in srgb, var(--color-brand) 9%, var(--surface-base));
+  --color-brand-border: color-mix(in srgb, var(--color-brand) 35%, var(--surface-base));
+  --color-focus: #0b72d9;
+  --color-danger: var(--status-danger-text);
+  --radius-card: 1.25rem;
+  --radius-control: .5rem;
+  --radius-field: .5rem;
+  --control-height: 2.5rem;
+  --field-height: 2.75rem;
+  --touch-target-size: 2.75rem;
+  --control-padding-inline: .875rem;
+  --focus-width: 2px;
+  --shadow-card: 0 1px 3px rgb(23 32 28 / 4%), 0 8px 24px rgb(23 32 28 / 4%);
+  --shadow-control: 0 1px 2px rgb(23 32 28 / 7%), inset 0 1px 0 rgb(255 255 255 / 70%);
+  --space-page: clamp(1rem, 4vw, 3rem);
+  --operator-rail-width: 15.5rem;
+  --work-content-max: 74rem;
+  font-family: "Cairo", sans-serif;
+  color: var(--color-text);
+  background: var(--color-canvas);
+}

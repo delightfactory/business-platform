@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "204f319add748b27b0ef65f0c31f14d4242b7a23",
+  "sourceHead": "a5aec470558a69908c52b70928f48037dfec3a83",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,7 +90,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "1f1c0812f94bdbe2245c725162940e36a98f877cd1339b4ee80341d3b26062ec"
+      "sha256": "cf69d6706fe2314703fd77dc90814e5b703c516a891a0bbfc579e054ca5571a1"
     },
     {
       "file": "src/app/layout.tsx",
@@ -1200,7 +1200,7 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "2b3baea38097d381537344516ec25e62c8c099e26ec2b3b2071595cac49f8fb1"
+      "sha256": "c33c95e4964f1c5a3355a8a345149891df93c3096060c1d31543a98d2e1b2e23"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
@@ -1271,6 +1271,11 @@
       "file": "src/lib/supabase/server.ts",
       "phase": "R1",
       "sha256": "29bcaa48a1ddfb8c7b9e85672d55f69d64b554b305c40dca405380ff4249e09e"
+    },
+    {
+      "file": "src/styles/tokens.css",
+      "phase": "R1",
+      "sha256": "594adf9f9af48748b190181ae1a335f3988669abdd0334dc9a02ee72b1fbab52"
     }
   ],
   "routes": [
@@ -16953,7 +16958,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 254,
+    "sourceFiles": 255,
     "pages": 75,
     "endpoints": 3,
     "boundaries": 8,

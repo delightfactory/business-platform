@@ -1,0 +1,41 @@
+{
+  "geometry": [
+    {
+      "alert": "انتهت صلاحية الرابط أو تعذر التحقق منه. اطلب رابطًا جديدًا.",
+      "forms": 0,
+      "height": 44,
+      "href": "/auth/forgot-password",
+      "left": 242.15000915527344,
+      "primaryActions": 1,
+      "right": 354.80001068115234,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "alert": "انتهت صلاحية الرابط أو تعذر التحقق منه. اطلب رابطًا جديدًا.",
+      "forms": 0,
+      "height": 44,
+      "href": "/auth/forgot-password",
+      "left": 504.1499938964844,
+      "primaryActions": 1,
+      "right": 616.7999954223633,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "alert": "انتهت صلاحية الرابط أو تعذر التحقق منه. اطلب رابطًا جديدًا.",
+      "forms": 0,
+      "height": 40,
+      "href": "/auth/forgot-password",
+      "left": 793.5499877929688,
+      "primaryActions": 1,
+      "right": 906.1999893188477,
+      "scrollWidth": 1366,
+      "width": 1366
+    }
+  ],
+  "navigations": 1,
+  "keyboardActivation": true,
+  "syntheticProviderAbsent": true,
+  "emailDeliveryVerified": false
+}

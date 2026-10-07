@@ -1,0 +1,30 @@
+{
+  "base": "a5aec470558a69908c52b70928f48037dfec3a83",
+  "scope": "R1-LIGHT-01 bounded shared CSS foundation",
+  "status": "qualified-bounded-presentation-not-full-R1",
+  "lint": "pass",
+  "typecheck": "pass",
+  "webpackBuild": "pass",
+  "sourceCharacterizations": 60,
+  "componentCharacterizations": 16,
+  "selectedContrastPairs": 13,
+  "viewportWidths": [
+    390,
+    768,
+    1366
+  ],
+  "unchangedSourceFiles": 252,
+  "sourceFiles": 255,
+  "registeredItems": 1521,
+  "fullSemanticAcceptance": false,
+  "providerUAT": "not-run",
+  "reviewModel": "claude-opus-5-5",
+  "reviewEffort": "medium",
+  "reviewReadOnlyViolation": false,
+  "reviewDispatches": 1,
+  "reviewToolCalls": 0,
+  "reviewVerdict": "PASS no MUST-FIX",
+  "ownedListenerCount": 0,
+  "temporaryBrowserTabsClosed": true,
+  "viewportReset": true
+}

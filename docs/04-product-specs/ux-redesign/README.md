@@ -43,3 +43,7 @@ Run `node scripts/build-ux-inventory.cjs` after installing the repository depend
 ## Bounded scenario expansion
 
 [R2-AUTH-CORE specification](auth-core-spec.md) expands login/reset/password update/logout and the recovery callback into [61 source-review records](auth-core-scenarios.json), including 12 allowlist classes and 8 explicit thrown-failure paths. The [preserved Claude contribution](claude-auth-core-contribution.md) is interpreted through the reviewed corrections. 19 inventory items now have targeted source review; runtime acceptance remains not-run. The bounded source characterization script has 60 passing checks with provider SDK stubs, not live Auth or browser evidence.
+
+## Implementation progress
+
+[R1-LIGHT-01 shared visual foundation](r1-light-foundation.md) now implements the bounded reviewed W1.a palette on the Auth recovery branch lineage. Source inventory255 includes the new CSS token file; routes/operations/control IDs remain unchanged. Full phase qualification remains open. See the [execution ledger](../../07-execution/ux-redesign-progress.md) for completed slices and next gates.

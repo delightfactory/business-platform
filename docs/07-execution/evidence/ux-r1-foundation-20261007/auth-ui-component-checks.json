@@ -1,0 +1,69 @@
+{
+  "kind": "component-render-characterization-provider-stub-not-live-UAT",
+  "cases": [
+    {
+      "id": "FORGOT-RENDER-default",
+      "status": "pass"
+    },
+    {
+      "id": "FORGOT-RENDER-sent",
+      "status": "pass"
+    },
+    {
+      "id": "FORGOT-RENDER-expired",
+      "status": "pass"
+    },
+    {
+      "id": "FORGOT-RENDER-unknown",
+      "status": "pass"
+    },
+    {
+      "id": "FORGOT-RENDER-__proto__",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-invalid",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-failed",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-unknown",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-__proto__",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-constructor",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-RENDER-toString",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-RENDER-setup",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-RENDER-unknown",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-RENDER-__proto__",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-RENDER-constructor",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-RENDER-toString",
+      "status": "pass"
+    }
+  ]
+}

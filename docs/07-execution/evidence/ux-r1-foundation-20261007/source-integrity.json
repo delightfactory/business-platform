@@ -1,0 +1,10 @@
+{
+  "base": "a5aec470558a69908c52b70928f48037dfec3a83",
+  "unchangedSourceFiles": 252,
+  "changedSourceFiles": [
+    "src/app/globals.css",
+    "src/app/workspace.css",
+    "src/styles/tokens.css"
+  ],
+  "status": "pass"
+}

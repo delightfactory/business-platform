@@ -34,7 +34,8 @@
       "codex/ux-redesign-reference": false,
       "codex/ux-redesign-w1-foundation": false,
       "codex/ux-redesign-specs": false,
-      "codex/ux-auth-recovery-ui": false
+      "codex/ux-auth-recovery-ui": false,
+      "codex/ux-r1-light-foundation": false
     }
   }
 }

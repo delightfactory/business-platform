@@ -1,0 +1,88 @@
+{
+  "scope": "Selected default palette pairs and brightest button gradient; not all tenant brands or whole-platform audit",
+  "results": [
+    {
+      "name": "body",
+      "ratio": 14.975228937736405,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "secondary",
+      "ratio": 9.820630034479008,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "muted",
+      "ratio": 5.7980211254593135,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "muted-inset",
+      "ratio": 4.965450221644183,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "success",
+      "ratio": 6.625441604405031,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "warning",
+      "ratio": 6.100902333090068,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "danger",
+      "ratio": 7.072426040599328,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "info",
+      "ratio": 7.547723055558145,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "navigation-muted",
+      "ratio": 8.331311474806451,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "control-border",
+      "ratio": 3.727165170468816,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "name": "focus",
+      "ratio": 4.747795096823708,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "name": "primary-gradient",
+      "ratio": 5.267339559072475,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "name": "danger-gradient",
+      "ratio": 7.2777930991255415,
+      "minimum": 4.5,
+      "passed": true
+    }
+  ],
+  "controlBorderBefore": {
+    "hex": "#c6d2d7",
+    "ratio": 1.5439984391041903,
+    "source": "Base globals.css; calculated against white input"
+  }
+}

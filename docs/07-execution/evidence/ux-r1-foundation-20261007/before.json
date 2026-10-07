@@ -1,0 +1,41 @@
+[
+  {
+    "brand": "#126b68",
+    "buttonHeight": 44,
+    "cardLeft": 16,
+    "cardRight": 374,
+    "font": "Cairo, sans-serif",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "primaryActions": 1,
+    "radius": "8px",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "brand": "#126b68",
+    "buttonHeight": 44,
+    "cardLeft": 112,
+    "cardRight": 656,
+    "font": "Cairo, sans-serif",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "primaryActions": 1,
+    "radius": "8px",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "brand": "#126b68",
+    "buttonHeight": 40,
+    "cardLeft": 411,
+    "cardRight": 955,
+    "font": "Cairo, sans-serif",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "primaryActions": 1,
+    "radius": "8px",
+    "scrollWidth": 1366,
+    "width": 1366
+  }
+]

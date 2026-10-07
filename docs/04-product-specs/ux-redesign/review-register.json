@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "204f319add748b27b0ef65f0c31f14d4242b7a23",
+  "sourceSnapshot": "a5aec470558a69908c52b70928f48037dfec3a83",
   "status": "Proposed",
   "items": [
     {
@@ -14035,6 +14035,6 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "Working tree source hashes after bounded presentation changes; HEAD is base, not final commit.",
+  "snapshotQualification": "Working-tree source hashes for R1 CSS-only candidate; HEAD denotes base, semantic reviews preserved.",
   "idMigrationCount": 7
 }
