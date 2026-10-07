@@ -1,0 +1,9 @@
+{
+  "scope": "Actual React component; Next routing/sign-out stubbed; native dialog and matchMedia",
+  "resize": {
+    "display": "none",
+    "open": true,
+    "overflow": "hidden",
+    "width": 1366
+  }
+}

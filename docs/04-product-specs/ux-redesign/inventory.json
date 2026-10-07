@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "a5aec470558a69908c52b70928f48037dfec3a83",
+  "sourceHead": "eb223680a77625dd00b6bfaaf6ad378507b3ac6b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1205,7 +1205,7 @@
     {
       "file": "src/components/context-navigation-client.tsx",
       "phase": "R1",
-      "sha256": "b216fb1e9fb6d0e93791c1ac87c510d5bb3fe3cd17e1ec6a04dc8078206250c6"
+      "sha256": "7249e3426997b83b649dc9b0012b88aa3b0d204f3e8cca6d2b452496c5f2aef1"
     },
     {
       "file": "src/components/context-navigation.tsx",
@@ -16839,9 +16839,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:110:4843",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5227",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 110,
+      "line": 119,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -16849,9 +16849,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:110:4872",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5256",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 110,
+      "line": 119,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -16859,9 +16859,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:117:5214",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5598",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 117,
+      "line": 126,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -16870,9 +16870,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5768",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:135:6182",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 126,
+      "line": 135,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -16881,9 +16881,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:138:6369",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:147:6832",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 138,
+      "line": 147,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -16892,9 +16892,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:149:7391",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7854",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 149,
+      "line": 158,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -16902,9 +16902,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:149:7420",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7883",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 149,
+      "line": 158,
       "tag": "button",
       "phase": "R1",
       "attributes": {

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link, { useLinkStatus } from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { signOutAction } from '@/app/auth/actions';
 
 export type ContextLink = { href: string; label: string };
@@ -46,6 +46,7 @@ export function ContextNavigationClient({
 }: Props) {
   const pathname = usePathname();
   const mobileDialog = useRef<HTMLDialogElement>(null);
+  const mobileDialogId = useId();
   const [menuOpen, setMenuOpen] = useState(false);
   const previousOverflow = useRef('');
   const menuOwnsScrollLock = useRef(false);
@@ -60,6 +61,14 @@ export function ContextNavigationClient({
   useEffect(() => {
     if (mobileDialog.current?.open) mobileDialog.current.close();
   }, [pathname]);
+  useEffect(() => {
+    const mobile = window.matchMedia('(max-width: 900px)');
+    const closeForDesktop = () => {
+      if (!mobile.matches && mobileDialog.current?.open) mobileDialog.current.close();
+    };
+    mobile.addEventListener('change', closeForDesktop);
+    return () => mobile.removeEventListener('change', closeForDesktop);
+  }, []);
   useEffect(() => () => {
     if (menuOwnsScrollLock.current) document.body.style.overflow = previousOverflow.current;
   }, []);
@@ -115,7 +124,7 @@ export function ContextNavigationClient({
       <Link className="workspace-mobile-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
       <span className="workspace-mobile-location"><bdi>{pageTitle}</bdi></span>
       <button type="button" className="workspace-mobile-menu-button" onClick={openMobileMenu}
-        aria-label="فتح قائمة التنقل" aria-haspopup="dialog" aria-expanded={menuOpen}>
+        aria-label="فتح قائمة التنقل" aria-haspopup="dialog" aria-expanded={menuOpen} aria-controls={mobileDialogId}>
         <span aria-hidden="true">☰</span>
       </button>
     </header>
@@ -123,12 +132,12 @@ export function ContextNavigationClient({
     <nav className="workspace-mobile-tabs" aria-label="التنقل السريع">
       <WorkspaceLink item={homeLink} pathname={pathname} currentHref={currentHref} exact />
       {primaryLinks.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} />)}
-      <button type="button" onClick={openMobileMenu} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={menuOpen}>
+      <button type="button" onClick={openMobileMenu} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={menuOpen} aria-controls={mobileDialogId}>
         <span aria-hidden="true">☰</span><span>المزيد</span>
       </button>
     </nav>
 
-    <dialog className="workspace-mobile-dialog" ref={mobileDialog} aria-label="قائمة أقسام المنصة"
+    <dialog className="workspace-mobile-dialog" id={mobileDialogId} ref={mobileDialog} aria-label="قائمة أقسام المنصة"
       onClose={handleMobileMenuClose}
       onClick={(event) => {
         if (event.target === event.currentTarget) closeMobileMenu();

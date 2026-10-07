@@ -1,0 +1,18 @@
+{
+  "at768": {
+    "controls": [
+      "_r_0_",
+      "_r_0_"
+    ],
+    "dialogId": "_r_0_",
+    "open": true,
+    "overflow": "hidden",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  "at901": {
+    "open": false,
+    "overflow": "",
+    "width": 901
+  }
+}

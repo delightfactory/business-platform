@@ -1,0 +1,30 @@
+{
+  "scope": "Real React/native browser; Next routing/provider/sign-out stubbed",
+  "escape": {
+    "controls": "_r_0_",
+    "dialogId": "_r_0_",
+    "focus": "فتح قائمة التنقل",
+    "open": false,
+    "overflow": ""
+  },
+  "at900": {
+    "open": true,
+    "overflow": "hidden",
+    "width": 900
+  },
+  "at901": {
+    "open": false,
+    "overflow": "",
+    "width": 901
+  },
+  "at1366": {
+    "focusedInDialog": false,
+    "open": false,
+    "overflow": "",
+    "scrollWidth": 1366,
+    "width": 1366
+  },
+  "manualResizeRecoveryStepsBefore": 1,
+  "manualResizeRecoveryStepsAfter": 0,
+  "closeButtonAndBottomLauncher": "pass"
+}

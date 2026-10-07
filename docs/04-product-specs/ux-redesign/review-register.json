@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "a5aec470558a69908c52b70928f48037dfec3a83",
+  "sourceSnapshot": "eb223680a77625dd00b6bfaaf6ad378507b3ac6b",
   "status": "Proposed",
   "items": [
     {
@@ -13931,7 +13931,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:110:4843",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5227",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13940,7 +13940,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:110:4872",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5256",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13949,7 +13949,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:117:5214",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5598",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13958,7 +13958,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5768",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:135:6182",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13967,7 +13967,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:138:6369",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:147:6832",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13976,7 +13976,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:149:7391",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7854",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -13985,7 +13985,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:149:7420",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7883",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -14035,6 +14035,7 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "Working-tree source hashes for R1 CSS-only candidate; HEAD denotes base, semantic reviews preserved.",
-  "idMigrationCount": 7
+  "snapshotQualification": "Working tree source hashes for navigation recovery candidate; HEAD denotes base",
+  "idMigrationCount": 7,
+  "navigationControlIdMigrations": 7
 }
