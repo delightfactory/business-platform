@@ -1,0 +1,329 @@
+{
+  "sourceBase": "308d6f6803215d6da5f81b1bfac9386e9ac5c940",
+  "sourceHash": "a23df23b7359a4fde34b0b89724cce6f554ef0cd39e2e354e61e39a92f1980fc",
+  "scope": "45 actual static React page/shared-component cases; fake SDK/actions; no provider/authenticated role/SQL/hydration acceptance",
+  "cases": [
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": null,
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "password",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "retry",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "readiness",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "limit-full",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "employee-unavailable",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "activated",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "garbage",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": false,
+      "hint": "__proto__",
+      "passwordInputs": 2,
+      "action": "setEmployeeAccountPasswordAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": null,
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "password",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "retry",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "readiness",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "limit-full",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "employee-unavailable",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "activated",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "garbage",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "user_created",
+      "ready": true,
+      "hint": "__proto__",
+      "passwordInputs": 0,
+      "action": "retryEmployeeAccountActivationAction",
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": true,
+      "hint": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": true,
+      "hint": "limit-full",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": true,
+      "hint": "retry",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": false,
+      "hint": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": false,
+      "hint": "limit-full",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": false,
+      "hint": "retry",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": null,
+      "hint": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": null,
+      "hint": "limit-full",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": null,
+      "hint": "retry",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": "true",
+      "hint": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": "true",
+      "hint": "limit-full",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "state": "activated",
+      "ready": "true",
+      "hint": "retry",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": null,
+      "ready": null,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": null,
+      "ready": null,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": null,
+      "ready": null,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "user_created",
+      "ready": false,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "manual_review",
+      "ready": false,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "object",
+      "ready": true,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "object",
+      "ready": true,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "user_created",
+      "ready": null,
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "user_created",
+      "ready": "true",
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": "user_created",
+      "ready": [],
+      "status": "pass"
+    },
+    {
+      "kind": "invalid-snapshot",
+      "state": null,
+      "ready": false,
+      "status": "pass"
+    },
+    {
+      "kind": "access-failure",
+      "options": {
+        "setup": true
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "access-failure",
+      "options": {
+        "noSession": true
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "access-failure",
+      "options": {
+        "error": true
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "access-failure",
+      "options": {
+        "invalidId": true
+      },
+      "status": "pass"
+    }
+  ]
+}

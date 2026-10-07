@@ -1,0 +1,31 @@
+{
+  "scope": "two phone static SSR actual page/shared components; synthetic SDK; no mutation/provider/hydration/real roles",
+  "samples": [
+    {
+      "ready": true,
+      "hint": "retry",
+      "buttons": [
+        {
+          "height": 44,
+          "text": "إكمال التفعيل"
+        }
+      ],
+      "clientWidth": 375,
+      "passwordFields": 0,
+      "scrollWidth": 375
+    },
+    {
+      "ready": false,
+      "hint": "limit-full",
+      "buttons": [
+        {
+          "height": 44,
+          "text": "حفظ وتفعيل الحساب"
+        }
+      ],
+      "clientWidth": 375,
+      "passwordFields": 2,
+      "scrollWidth": 375
+    }
+  ]
+}

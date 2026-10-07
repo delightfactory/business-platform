@@ -1,0 +1,14 @@
+{
+  "sourceBase": "308d6f6803215d6da5f81b1bfac9386e9ac5c940",
+  "changedSources": [
+    "src/app/auth/employee-account-activation/page.tsx"
+  ],
+  "unchangedSources": 255,
+  "registryStatesPreserved": 1523,
+  "sourceFiles": 256,
+  "candidateByteMatch": true,
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "review": "one exact candidate + short correction in same session d1e6f00b-cf7e-486a-8e36-85e2337963c5",
+  "readOnlyViolation": false
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "14df8105f6d378eb587ffa692114a3a9d300490e",
+  "sourceHead": "308d6f6803215d6da5f81b1bfac9386e9ac5c940",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -25,7 +25,7 @@
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
       "phase": "R2",
-      "sha256": "0be029a50ccdafa9a387cd83996ac3004d5eb77c03358d37ab8f2b6acbb24d3a"
+      "sha256": "2e9c024fe74cf34316e8ee2265b6cf568dedbbd45b931356cfb0ff59e0f00627"
     },
     {
       "file": "src/app/auth/forgot-password/page.tsx",
@@ -6781,9 +6781,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:30:2514",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2897",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 30,
+      "line": 34,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6791,9 +6791,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:31:2597",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2980",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 31,
+      "line": 35,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6802,9 +6802,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:32:2725",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3108",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 32,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6813,9 +6813,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:33:2932",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3315",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 33,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6824,9 +6824,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3540",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:45:4027",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 39,
+      "line": 45,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6834,9 +6834,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3614",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4116",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 39,
+      "line": 46,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6845,9 +6845,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4496",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4291",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 46,
+      "line": 50,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6855,9 +6855,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4580",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4386",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 47,
+      "line": 51,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6866,9 +6866,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4709",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4515",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 48,
+      "line": 52,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6877,9 +6877,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:49:4916",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4722",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 49,
+      "line": 53,
       "tag": "input",
       "phase": "R2",
       "attributes": {

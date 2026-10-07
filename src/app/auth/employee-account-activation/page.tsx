@@ -19,7 +19,11 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
     return <Status title="عملية التفعيل غير متاحة" detail="تحقق من أنك فتحت الرابط المرسل إلى هذا البريد، أو اطلب رابطًا جديدًا." />;
   }
   const intent = data as Record<string, unknown>;
-  const state = query.state ?? String(intent.state ?? 'user_created');
+  if (intent.intent_id !== intentId || (intent.state !== 'user_created' && intent.state !== 'activated')
+    || (intent.state === 'user_created' && typeof intent.password_ready !== 'boolean')) {
+    return <Status title="عملية التفعيل غير متاحة" detail="تعذر تأكيد حالة هذا الحساب. افتح أحدث رابط أو تواصل مع الموارد البشرية." />;
+  }
+  const hintMessage = query.state === 'password' && intent.password_ready === true ? null : recoveryHint(query.state);
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
     <section className="auth-card" aria-labelledby="employee-activation-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><h1 id="employee-activation-title">إعداد حسابك</h1>
@@ -34,15 +38,15 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <SubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
           </form>
-        </> : state === 'limit-full' ? <>
-        <p className="form-message capacity-message" role="status">اكتمل عدد المستخدمين المسموح به حاليًا. أُكد بريدك وحُفظت كلمة المرور، لكن العضوية لم تُفعّل بعد. اطلب من مسؤول الشركة معالجة المقاعد ثم أعد المحاولة.</p>
-        <form className="auth-form" action={retryEmployeeAccountActivationAction}><input type="hidden" name="intentId" value={intentId} />
-          <SubmitButton label="إكمال التفعيل" pendingLabel="جارٍ التحقق…" /></form>
-      </> : state === 'employee-unavailable' ? <p className="form-message error-message" role="alert">تعذر إكمال التفعيل لأن ملف الموظف لم يعد نشطًا. تواصل مع الموارد البشرية.</p>
-        : <>
-          {state === 'password' && <p className="form-message error-message" role="alert">تعذر حفظ كلمة المرور. استخدم 8 أحرف على الأقل وتأكد من تطابق الحقلين.</p>}
-          {state === 'readiness' && <p className="form-message capacity-message" role="alert">تم حفظ كلمة المرور، لكن تعذر تأكيد جاهزية الحساب. أعد حفظها لإكمال التفعيل.</p>}
-          {state === 'retry' && <p className="form-message capacity-message" role="alert">تم حفظ كلمة المرور، لكن تعذر إكمال عضوية الشركة الآن. أعد المحاولة أو تواصل مع الموارد البشرية.</p>}
+        </> : <>
+          {hintMessage && <p className="form-message capacity-message" role="status">{hintMessage}</p>}
+          {intent.password_ready === true ? <>
+            <p className="form-message" role="status">يمكنك متابعة التفعيل دون إعادة إدخال كلمة المرور. سيتحقق النظام من إمكانية إكمال عضوية الشركة. تواصل مع الموارد البشرية إذا استمرت المشكلة.</p>
+            <form className="auth-form" action={retryEmployeeAccountActivationAction}>
+              <input type="hidden" name="intentId" value={intentId} />
+              <SubmitButton label="إكمال التفعيل" pendingLabel="جارٍ التحقق…" />
+            </form>
+          </> : (
           <form className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
             <label htmlFor="employee-password">أنشئ كلمة المرور</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
@@ -50,8 +54,21 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <SubmitButton label="حفظ وتفعيل الحساب" pendingLabel="جارٍ التفعيل…" />
           </form>
+          )}
         </>}
     </section></main>;
+}
+
+function recoveryHint(state?: string) {
+  if (typeof state !== 'string') return null;
+  const hints: Record<string, string> = {
+    password: 'استخدم 8 أحرف على الأقل وتأكد من تطابق الحقلين.',
+    readiness: 'إذا لم يكتمل إعداد الحساب، نفّذ الخطوة الموضحة أدناه. تواصل مع الموارد البشرية إذا استمرت المشكلة.',
+    retry: 'إذا لم يكتمل التفعيل، نفّذ الخطوة الموضحة أدناه أو تواصل مع الموارد البشرية.',
+    'limit-full': 'إذا استمرت مشكلة المقاعد، اطلب من مسؤول الشركة مراجعة الحد قبل المحاولة التالية.',
+    'employee-unavailable': 'إذا استمرت مشكلة ملف الموظف، تواصل مع الموارد البشرية لمراجعته قبل المحاولة التالية.',
+  };
+  return Object.hasOwn(hints, state) ? hints[state] : null;
 }
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
