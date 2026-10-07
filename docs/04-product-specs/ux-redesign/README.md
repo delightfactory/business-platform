@@ -51,3 +51,5 @@ Run `node scripts/build-ux-inventory.cjs` after installing the repository depend
 ## Recipient action preparation
 
 Read recipient-actions-spec.md with recipient-action-scenarios.json and claude-recipient-actions-contribution.md. Nine public actions and94 draft source partitions are mapped; interpretation corrections take precedence. This is Proposed preparation, not Frozen/accepted or executed coverage. Existing manual review-register states are preserved.
+
+Bounded maintenance contracts: [admin invitation context](admin-invitation-context-slice.md) and [member validation](member-validation-slice.md). Source-only/runtime boundaries are recorded in the execution ledger; these do not freeze the broader recipient/R2 contracts.

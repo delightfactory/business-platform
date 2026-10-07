@@ -833,9 +833,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-01",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -848,7 +848,7 @@
       "inputClass": "invalid-reference-or-short-password",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -858,9 +858,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-02",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -873,7 +873,7 @@
       "inputClass": "missing-client",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -883,9 +883,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-03",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -898,7 +898,7 @@
       "inputClass": "no-session",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -908,9 +908,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-04",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -923,7 +923,7 @@
       "inputClass": "validation-not-password-required",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -933,9 +933,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-05",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -948,7 +948,7 @@
       "inputClass": "validation-error-with-contradictory-data",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -958,9 +958,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-06",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -973,7 +973,7 @@
       "inputClass": "password-update-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -983,9 +983,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-07",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -998,7 +998,7 @@
       "inputClass": "admin-client-missing",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1008,9 +1008,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-08",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -1023,7 +1023,7 @@
       "inputClass": "readiness-record-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1033,9 +1033,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-09",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -1048,7 +1048,7 @@
       "inputClass": "readiness-record-success",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1058,9 +1058,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-PASSWORD-10",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#setMemberInvitationPasswordAction"
       ],
@@ -1073,7 +1073,7 @@
       "inputClass": "SDK-throws",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1083,9 +1083,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-01",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1098,7 +1098,7 @@
       "inputClass": "invalid-reference",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1108,9 +1108,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-02",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1123,7 +1123,7 @@
       "inputClass": "missing-client",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1133,9 +1133,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-03",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1148,7 +1148,7 @@
       "inputClass": "no-session",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1158,9 +1158,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-04",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1173,7 +1173,7 @@
       "inputClass": "limit-full",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1183,9 +1183,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-05",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1198,7 +1198,7 @@
       "inputClass": "issuer-authority-lost",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1208,9 +1208,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-06",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1223,7 +1223,7 @@
       "inputClass": "identity-mismatch",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1233,9 +1233,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-07",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1248,7 +1248,7 @@
       "inputClass": "identity-unverified",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1258,9 +1258,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-08",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1273,7 +1273,7 @@
       "inputClass": "target-unavailable",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1283,9 +1283,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-09",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1298,7 +1298,7 @@
       "inputClass": "password-required",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1308,9 +1308,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-10",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1323,7 +1323,7 @@
       "inputClass": "stale-issuance",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1333,9 +1333,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-11",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1348,7 +1348,7 @@
       "inputClass": "tenant-unavailable",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1358,9 +1358,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-12",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1373,7 +1373,7 @@
       "inputClass": "other-RPC-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1383,9 +1383,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-13",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1398,7 +1398,7 @@
       "inputClass": "null-array-or-nonobject-result",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1408,9 +1408,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-14",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1423,7 +1423,7 @@
       "inputClass": "invalid-returned-tenant",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1433,9 +1433,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-15",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1448,7 +1448,7 @@
       "inputClass": "object-valid-tenant",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -1458,9 +1458,9 @@
     },
     {
       "id": "R2-ACTION-MEMBER-ACCEPT-16",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-member-validation",
       "sourceFile": "src/app/auth/membership-invitations/accept/actions.ts",
-      "sourceSha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756",
+      "sourceSha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4",
       "sourceIds": [
         "ACTION:src/app/auth/membership-invitations/accept/actions.ts#acceptMemberInvitationAction"
       ],
@@ -1473,7 +1473,7 @@
       "inputClass": "SDK-throws",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Existing reference redirects preserved; contradictory validation error/data rejects before password mutation. See member-validation-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -2357,5 +2357,5 @@
       "exclusions": "Outbound issuance/resend/email delivery and full provider/SQL/role/runtime qualification not included"
     }
   ],
-  "maintenanceAmendment": "admin-invitation-context-slice.md; mixed source snapshots explicitly versioned per case"
+  "maintenanceAmendment": "admin-invitation-context-slice.md and member-validation-slice.md; mixed source snapshots explicitly versioned per case"
 }

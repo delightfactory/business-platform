@@ -16,7 +16,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/auth/membership-invitations/accept?id=${id}&issuance=${issuance}`)}`);
   const { data: validation, error } = await supabase.rpc('validate_tenant_member_invitation', { p_invitation_id: id, p_issuance: Number(issuance) });
-  if (error || !['ready','password_required'].includes(String(validation))) return <Status title="تعذر قبول الدعوة" detail={validationMessage(validation, query.state)} />;
+  if (error || (validation !== 'ready' && validation !== 'password_required')) return <Status title="تعذر قبول الدعوة" detail={validationMessage(error ? null : validation, query.state)} />;
   const needsPassword = validation === 'password_required';
   return (
     <main className="app-shell">
@@ -50,8 +50,10 @@ function validationMessage(validation: unknown, state?: string) {
   if (state === 'unverified') return 'أكد بريدك الإلكتروني أولًا ثم افتح أحدث رابط.';
   if (state === 'superseded') return 'صدر رابط أحدث. استخدم آخر رسالة وصلتك.';
   if (state === 'tenant-unavailable') return 'هذه الشركة غير متاحة حاليًا.';
+  if (state === 'target-unavailable') return 'تعذر الانضمام بالحساب الحالي. اطلب من مسؤول الشركة مراجعة الحساب المرتبط بالدعوة.';
   if (validation === 'password_required') return 'يحتاج هذا الحساب إلى كلمة مرور قبل الانضمام.';
-  return 'الدعوة غير متاحة أو انتهت صلاحيتها. اطلب إعادة إرسالها من مسؤول الشركة.';
+  if (validation === 'unavailable') return 'الدعوة غير متاحة أو انتهت صلاحيتها. اطلب إعادة إرسالها من مسؤول الشركة.';
+  return 'تعذر التحقق من حالة الدعوة. اطلب من مسؤول الشركة مراجعتها قبل المتابعة.';
 }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><Link className="primary-button" href="/auth/login">العودة إلى الدخول</Link></section></main>;

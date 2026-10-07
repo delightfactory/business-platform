@@ -11,8 +11,8 @@ export async function setMemberInvitationPasswordAction(formData: FormData) {
   if (!supabase) go(id, issuance, 'setup');
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) go(id, issuance, 'no-session');
-  const { data: ready } = await supabase.rpc('validate_tenant_member_invitation', { p_invitation_id: id, p_issuance: Number(issuance) });
-  if (ready !== 'password_required') go(id, issuance, 'unavailable');
+  const { data: ready, error: validationError } = await supabase.rpc('validate_tenant_member_invitation', { p_invitation_id: id, p_issuance: Number(issuance) });
+  if (validationError || ready !== 'password_required') go(id, issuance, 'unavailable');
   const { error } = await supabase.auth.updateUser({ password });
   if (error) go(id, issuance, 'password');
   const admin = createSupabaseAdminClient();

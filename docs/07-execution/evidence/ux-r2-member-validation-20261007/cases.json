@@ -1,0 +1,952 @@
+{
+  "baseline": "29c249a39b328f21acfadadda6bd9a9f54d0605b",
+  "scope": "Actual source with SDK/submit-button stubs, no real provider/browser/SQL acceptance",
+  "cases": [
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "invalid-id",
+      "before": {
+        "location": "/auth/login?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/auth/login?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "invalid-issuance",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1%26token%3Dbad&state=password",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1%26token%3Dbad&state=password",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "setup",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "no-user",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=no-session",
+        "error": null,
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=no-session",
+        "error": null,
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "success",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password-set",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin",
+          "record_tenant_member_password_readiness"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password-set",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin",
+          "record_tenant_member_password_readiness"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "getUser-thrown",
+      "before": {
+        "location": null,
+        "error": "synthetic user",
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic user",
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "invalid-id",
+      "before": {
+        "location": "/auth/login?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/auth/login?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "invalid-issuance",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1%26token%3Dbad&state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1%26token%3Dbad&state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "setup",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "no-user",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=no-session",
+        "error": null,
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=no-session",
+        "error": null,
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "success",
+      "before": {
+        "location": "/tenant/22222222-2222-4222-8222-222222222222",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/tenant/22222222-2222-4222-8222-222222222222",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "getUser-thrown",
+      "before": {
+        "location": null,
+        "error": "synthetic user",
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic user",
+        "trace": [
+          "client",
+          "user"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "contradictory-data-error",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password-set",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin",
+          "record_tenant_member_password_readiness"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "short-password",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "ready-not-required",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "unavailable",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "null",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "validation-error",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "update-error",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "admin-missing",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=marker-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=marker-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "marker-error",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=marker-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin",
+          "record_tenant_member_password_readiness"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=marker-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update",
+          "admin",
+          "record_tenant_member_password_readiness"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "validation-throw",
+      "before": {
+        "location": null,
+        "error": "synthetic validate_tenant_member_invitation",
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic validate_tenant_member_invitation",
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "setMemberInvitationPasswordAction",
+      "case": "update-throw",
+      "before": {
+        "location": null,
+        "error": "synthetic update",
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic update",
+        "trace": [
+          "client",
+          "user",
+          "validate_tenant_member_invitation",
+          "update"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "limit_full",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=limit-full",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=limit-full",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "issuer_authority_lost",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=issuer-lost",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=issuer-lost",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "identity_mismatch",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=identity",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=identity",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "identity_unverified",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unverified",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unverified",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "target_unavailable",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=target-unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=target-unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "password_required",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=password",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "stale_issuance",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=superseded",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=superseded",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "tenant_unavailable",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=tenant-unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=tenant-unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "unknown",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "malformed-null",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "malformed-[]",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "malformed-{}",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "malformed-\"bad\"",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "malformed-{\"tenant_id\":\"bad\"}",
+      "before": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": "/auth/membership-invitations/accept?id=11111111-1111-4111-8111-111111111111&issuance=1&state=unavailable",
+        "error": null,
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "acceptMemberInvitationAction",
+      "case": "accept-throw",
+      "before": {
+        "location": null,
+        "error": "synthetic accept_tenant_member_invitation",
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic accept_tenant_member_invitation",
+        "trace": [
+          "client",
+          "user",
+          "accept_tenant_member_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "kind": "page",
+      "case": "ready",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": true
+    },
+    {
+      "kind": "page",
+      "case": "password",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": true
+    },
+    {
+      "kind": "page",
+      "case": "unknown",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "issuer-denied",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "identity-denied",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "target-denied",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "unavailable",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "error-ready",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "error-unavailable",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "coercible-ready",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "coercible-password",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "array-ready",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "setup",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "no-user",
+      "status": "pass",
+      "baselineHadMutationForm": false,
+      "afterHasMutationForm": false
+    },
+    {
+      "kind": "page",
+      "case": "target-unavailable",
+      "status": "pass",
+      "baselineHadMutationForm": true,
+      "afterHasMutationForm": true
+    }
+  ]
+}

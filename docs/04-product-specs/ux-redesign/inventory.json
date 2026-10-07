@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c19f054d1353de1b7f1bb885bf2d0206c9cb427a",
+  "sourceHead": "29c249a39b328f21acfadadda6bd9a9f54d0605b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -60,12 +60,12 @@
     {
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
       "phase": "R2",
-      "sha256": "dafd530194a0577419a9aea20b00d383b617157185777b473cc5e63e02b19756"
+      "sha256": "63e997d68417db458080e6458ecc13090ba95ab24646f84a1c7d7a52608e8ff4"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "b24ba278eac6ccd403e14e1a494582fce2682c4a337c3e78ece123bc8ea2b092"
+      "sha256": "2ef7bebce9b9faeda3b1deb4d5fb49910bea7d6d15537ea1d46b3ed8fbacaad1"
     },
     {
       "file": "src/app/auth/membership-invitations/callback/actions.ts",
@@ -3420,7 +3420,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:14:768",
+      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:14:792",
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
       "line": 14,
       "phase": "R2",
@@ -3430,7 +3430,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:20:1192",
+      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:20:1233",
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
       "line": 20,
       "phase": "R2",
@@ -3440,7 +3440,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:34:1911",
+      "id": "RPC:src/app/auth/membership-invitations/accept/actions.ts:34:1952",
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
       "line": 34,
       "phase": "R2",
@@ -7136,7 +7136,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1730",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1747",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 23,
       "tag": "form",
@@ -7146,7 +7146,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1759",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1776",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 23,
       "tag": "button",
@@ -7156,7 +7156,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:29:2434",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:29:2451",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 29,
       "tag": "form",
@@ -7166,7 +7166,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2518",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2535",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 30,
       "tag": "input",
@@ -7177,7 +7177,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2572",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2589",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 30,
       "tag": "input",
@@ -7188,7 +7188,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2702",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2719",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 31,
       "tag": "input",
@@ -7199,7 +7199,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3017",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3034",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 34,
       "tag": "form",
@@ -7209,7 +7209,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3096",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3113",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 35,
       "tag": "input",
@@ -7220,7 +7220,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3150",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3167",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "line": 35,
       "tag": "input",
