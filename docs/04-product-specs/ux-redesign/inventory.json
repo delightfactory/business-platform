@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "eb55a278c8ef8b62cf0f50ae48f97d9929f45e85",
+  "sourceHead": "c8b0d9801d723967532c962b35e654b0b38b453b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,7 +90,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "9414f25f4b3a83c6e5f2e13730bb240266a050e4f6fba6d12aec21040237944a"
+      "sha256": "e123c6d181953e23f4d10bf760f060b03121b9d20febb717294dc98bdb08467e"
     },
     {
       "file": "src/app/layout.tsx",

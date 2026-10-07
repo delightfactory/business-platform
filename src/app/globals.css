@@ -448,3 +448,9 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
   .tenant-home-summary .snapshot-grid > div { padding: .7rem 0; }
   .tenant-home-summary .snapshot-grid > div + div { border-top: 1px solid var(--color-border); }
 }
+
+/* Shared list search keeps the existing field contract and native GET journey. */
+.workspace-form-panel[role="search"] { display: grid; gap: .65rem; }
+.workspace-form-panel[role="search"] input[type="search"] { min-height: var(--field-height); min-width: 0; width: 100%; max-width: 100%; flex: 1 1 14rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); padding: .65rem .8rem; background: var(--color-surface); color: var(--color-text); font: inherit; }
+.workspace-form-panel[role="search"] input[type="search"]:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
+.workspace-form-panel[role="search"] > button { justify-self: start; }
