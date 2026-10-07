@@ -1,5 +1,7 @@
 # Business Platform
 
+UX redesign work starts from the [execution reference](docs/05-engineering/ux-redesign-reference.md): live interactive demo, pinned original HTML and plan, compatibility review, and issue #47.
+
 The platform is domain-oriented and multi-tenant, with HR & Payroll planned as its first commercial domain. Cube 0 provides the reusable Platform foundation: invite-only access, Tenant onboarding and lifecycle, Legal Entities and Sites, membership and role governance, Operator controls, commercial limits and entitlements, audit and recovery operations, Tenant branding, and an Arabic-first responsive shell. Business domains remain future cubes. See the [Cube 0 qualification record](docs/07-execution/cube-0-qualification.md) for the implemented scope and evidence.
 
 ## Local setup
