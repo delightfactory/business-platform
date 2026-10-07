@@ -1,0 +1,10 @@
+{
+  "sourceBase": "9f975dc5a9f52a053c85e114eae9a17d4c4f698d",
+  "syntaxParse": "PASS",
+  "onlyChangedASTStringLiterals": 2,
+  "exactTwoLiteralRestoration": "PASS",
+  "candidateHashVerified": true,
+  "applicationTypesHandlersKeysRPCsSQLUnchanged": true,
+  "newBehaviorTests": 0,
+  "heavyBuildAuthSQLRuns": 0
+}

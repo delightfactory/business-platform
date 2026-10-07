@@ -1,0 +1,8 @@
+Read-only continuation, no tools/writes/rediscovery; <=160words. Root incorporates source-confirmed review points. Final correction only two cancellationErrorText literals (no handlers/types/key/storage/identity changes):
+
+key-conflict: تعذّر تأكيد نتيجة هذه المحاولة؛ قد تكون محاولة سابقة بهذا المفتاح قد سُجّلت. لا تغيّر السبب أو تبدأ محاولة جديدة، ولا تحدّث الصفحة أو تغلقها. عند التواصل مع الموارد البشرية، أرسل رابط الطلب ووقت المحاولة للمراجعة؛ هذه المعلومات وحدها لا تحسم النتيجة.
+
+unknown: تعذّر تأكيد نتيجة طلب الإلغاء، وقد يكون قد سُجّل. لا تحدّث الصفحة أو تغلقها أو تسجّل الخروج، واحتفظ بالسبب دون تعديل. يمكنك إعادة المحاولة بنفس البيانات؛ رفضها لا ينفي تسجيل المحاولة الأولى. حالة الطلب وسجل الإلغاء يوضحان الوضع الحالي، ولا يؤكدان نتيجة هذه المحاولة.
+
+HR link/time handoff explicitly TRIAGE ONLY, not implemented authoritative lookup/resolution. Submit/withdraw generic/key-conflict current strings already require unchanged retry/current record, no refresh/newkey; later session/domain failures still need latch for all3. Root corrects your action-only claim: user.id available in page but own new form has no source-provided employee_id; expected employee binding needs identity source/interface review, not automatic no-amendment assertion. Both actor/employee binding remain proposal, no action change. D16 is owner scope proposal requiring separate identity/lock/legacy-path/retention detailed review, no SQL or client storage implemented. Mandatory whole-task and design-reference gates preserved; visual NOT VISUALLY VERIFIED absent renders. Return explicit final copy verdict and contract boundaries; do not claim full recovery/UI acceptance.
+Final candidate SHA256: eec8cd7ab34ad4ea81f90aef115b8e1bdfb8e07e6edc8d6f3f6c7b369c7eee4a

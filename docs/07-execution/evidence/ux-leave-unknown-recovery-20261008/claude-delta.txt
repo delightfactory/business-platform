@@ -1,0 +1,16 @@
+**Copy verdict: I accept both cancellation strings as a correction to the wording only.**
+
+- **Key conflict:** it no longer tells the user to create a new key, change the reason, or refresh. It says an earlier attempt may have been recorded. The handoff with the request link and attempt time is clearly triage only, and the text says it doesn't settle the result. One optional fix for consistency: add "لا تسجّل الخروج" ("don't sign out") as the unknown string does.
+- **Unknown:** it keeps the reason and key unchanged and allows a deliberate same-data retry. It says a rejected retry doesn't rule out the first attempt, and that current status and history don't confirm the result. I don't see any remaining unsafe instruction.
+
+**Correction to my earlier claim:** I accept it. Binding the expected employee needs a review of where identity comes from and of the action interface. Binding the actor and the employee both stay proposals.
+
+**Boundaries:**
+- No handler, type, key, storage, identity or SQL changes.
+- Failures after the first one in all three forms still need the unresolved flag.
+- There is still no authoritative HR lookup or resolution.
+- D16 stays an owner-scope proposal that needs a detailed review.
+- R6 complete recovery and full-coverage acceptance stay **OPEN**.
+- Visual: **NOT VISUALLY VERIFIED**.
+
+I didn't check the SHA-256 of the final candidate.

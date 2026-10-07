@@ -1,0 +1,27 @@
+I didn't open the source for this review, as you asked. Everything below relies on the facts you stated.
+
+**Literal 1 (key conflict)**
+- It correctly drops the "change the reason" instruction.
+- It tells the employee to "consult HR", but they have nothing to give HR. Own reads don't expose the operation key or any receipt. Unless HR has a lookup they can use, this is the "contact HR" message you said is not enough.
+- A conflict means this key already exists with a different stored payload. Retrying with the same data can't fix that. That is right, but the text should also say the earlier attempt may have been recorded.
+
+**Literal 2 (unknown)**
+- It should say "don't reload, close or sign out". Saying only "keep the page" leaves that implicit, and the key only exists in page memory.
+- Because the server rechecks authority and state before replaying, a retry can be refused even if the first attempt was saved. The text needs a clause like "a refusal on retry doesn't mean the first attempt failed." Without it, the copy invites the user to conclude something false.
+- Check that the submit and withdraw messages don't still say "refresh" or tell the user to change something. If they do, the correction doesn't cover all three operations.
+
+**Gaps a copy change can't fix**
+1. If someone signs in as a different user in the same tab and retries, the actor-scoped replay treats it as a brand-new operation for that user. The fix is to pass the expected actor and employee into the action and reject mismatches on the server. This is action-layer only, so no amendment is needed.
+2. A later refusal can still wipe out the "unknown" state, and editing still regenerates the key. Both need code changes.
+3. A meaningful HR handoff needs a reference both sides can see. That means a new own-receipt read or an HR lookup, and either one is a new RPC, so it **needs a scope amendment**.
+4. Recovery after refresh or in a new tab is only possible with the D16 extension (durable attempts, discovery, fencing). That **needs a scope amendment** plus a separate SQL, lock-order and retention spec.
+
+**Next implementation, without an amendment (mounted-only, partial)**
+- Actions return a structured error code and a disposition (editable or unknown), classified from the source error, never from the Arabic text.
+- An "unresolved" flag in all three forms freezes the fields and the key. It is cleared only by a valid historic receipt, and later refusals or failures before sending can't clear it.
+- Retry means sending the same attempt again on purpose. Add the actor-binding check from gap 1, plus a leave warning as a mitigation only.
+- Before writing the client wrapper, confirm how the Next.js version in use handles its built-in redirect and not-found behaviour.
+
+This doesn't make recovery complete. R6 recovery and full-coverage acceptance stay **OPEN** until D16 is decided and implemented.
+
+**Visual verdict: NOT VISUALLY VERIFIED.** I saw no rendered evidence in the same state, so I couldn't check anything against Concept C. Cairo 40/44, radius 8 and the existing tokens stay as they are.

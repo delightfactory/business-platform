@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c52dbddc86eeab809f67a0af536e1d0ba5e68fc2",
+  "sourceHead": "9f975dc5a9f52a053c85e114eae9a17d4c4f698d",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -705,7 +705,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-rules.ts",
       "phase": "R6",
-      "sha256": "84de214532a17a7d9c3e636173ec557673bc925bbad06d94ef0c24f9348798ba"
+      "sha256": "eec8cd7ab34ad4ea81f90aef115b8e1bdfb8e07e6edc8d6f3f6c7b369c7eee4a"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",

@@ -60,7 +60,8 @@
       "codex/ux-leave-current-feedback": false,
       "codex/ux-leave-result-integrity": false,
       "codex/ux-leave-partial-reads": false,
-      "codex/ux-employee-read-guards": false
+      "codex/ux-employee-read-guards": false,
+      "codex/ux-leave-unknown-recovery": false
     }
   }
 }
