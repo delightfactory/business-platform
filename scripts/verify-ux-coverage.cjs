@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- Standalone CommonJS audit CLI; no application bundler. */
 /* Source-level audit only; does not execute application code or read environment files. */
 const fs = require('node:fs');
 const path = require('node:path');
@@ -26,6 +27,6 @@ const phase = phaseIndex < 0 ? null : process.argv[phaseIndex + 1];
 if (phaseIndex >= 0 && !/^R[1-8]$/.test(phase ?? '')) throw Error('Use --phase R1 through R8');
 const relevant = new Set(items.filter(item => !phase || item.phase === phase || item.reviewPhases?.includes(phase)).map(item => item.id));
 const open = register.items.filter(item => relevant.has(item.id) && !['reviewed','not-applicable'].includes(item.status));
-const summary = {sourceFingerprintsMatch:true,denominatorItems:items.length,phase:phase??'all',phaseItems:relevant.size,pendingSemanticReview:open.length,executionCoverageComplete:false};
+const summary = {sourceFingerprintsMatch:true,denominatorItems:items.length,phase:phase??'all',phaseItems:relevant.size,sourceReviewedItems:register.items.filter(item=>relevant.has(item.id)&&item.status==='source-reviewed').length,pendingSemanticReview:open.length,executionCoverageComplete:false};
 console.log(JSON.stringify(summary));
 if (process.argv.includes('--require-reviewed') && open.length) throw Error(`Freeze blocked: ${open.length} source items still require semantic review`);

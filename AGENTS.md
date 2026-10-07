@@ -11,3 +11,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## UX redesign reference
 
 Before each UX redesign slice, read [the execution reference](docs/05-engineering/ux-redesign-reference.md), its pinned Claude plan, and the compatibility review. Open the corresponding demo view. Treat the demo as a visual reference with simulated data, not business logic or authorization. Record intentional deviations in issue #47 and amend affected specifications before expanding scope. Preserve the original reference files and their hashes.
+
+## Mandatory user journey improvement
+
+Every plan, implementation slice, and review must simplify and improve the complete user's task. This is an explicit owner requirement, applying to Codex and every delegated implementer/reviewer, including Claude. Read [the journey improvement contract](docs/04-product-specs/ux-redesign/journey-improvement-contract.md) and [coverage contract](docs/04-product-specs/ux-redesign/coverage-contract.md) before starting. Include this requirement verbatim or by linked self-contained excerpt in each delegation brief.
+
+State the actor, job, entry, successful outcome, required choices, failure/recovery and next step. Identify unnecessary decisions/navigation/context re-entry and reduce them within approved business/security constraints. Measure a defined before/after baseline; do not present assumptions as measurements. Keep one clear primary action per state, progressive disclosure, readable Arabic/RTL, accessible mobile/keyboard behavior and preserved safe inputs/context.
+
+Reject a slice with a dead end, hidden necessary capability, misleading success, unexplained disabled action, lost entered context, or cosmetic simplification that removes validation/authority/financial safeguards. An unchanged efficient path may be preserved with evidence and rationale. Coverage and simplicity are separate acceptance gates. Proposed maps are not Frozen specs or passed runtime evidence. Do not expand behavioral changes without the relevant accepted specification/amendment.

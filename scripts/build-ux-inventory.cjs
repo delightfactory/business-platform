@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- Standalone CommonJS audit CLI supports NODE_PATH for isolated dependency runtimes. */
 /* Source-only inventory. It does not execute application code or inspect runtime secrets. */
 const fs = require('node:fs');
 const path = require('node:path');

@@ -1,0 +1,960 @@
+{
+  "schema": "business-platform.ux-scenarios.v1",
+  "stage": "R2-AUTH-CORE",
+  "sourceSnapshot": "b180a4e1a9c8f2f142bd5ae9f1e142daffd06e9f",
+  "status": "Proposed",
+  "claudeJourneyRows": 41,
+  "safeNextClasses": 12,
+  "additionalExceptionalPaths": 8,
+  "governingInterpretation": "auth-core-spec.md",
+  "cases": [
+    {
+      "id": "R2-CORE-SN-01",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "فارغ أو غائب",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-02",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "جذر المستأجر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-03",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "إدارة المستأجر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-04",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "المشغّل",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-05",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "قبول الدعوة",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-06",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "الرواتب",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-07",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "مجالات غير مدرجة",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-08",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "عنوان مطلق أو `//host` أو `https:`",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-09",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "شرطة نهائية، أو استعلام على مسار غير رواتب، أو `#`",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-10",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "UUID بنسخة 0 أو nil أو variant خاطئ",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-SN-11",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "أحرف كبيرة",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run",
+      "classification": "source behavior with unverified runtime hypothesis"
+    },
+    {
+      "id": "R2-CORE-SN-12",
+      "sourceReference": "src/app/auth/safe-next.ts:1-12",
+      "inputClass": "رواتب بترميز آخر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Exact allowlist; no expansion. Draft hypotheses remain not-run"
+    },
+    {
+      "id": "R2-CORE-LI-01",
+      "sourceReference": "login:21,35",
+      "actorState": "زائر",
+      "entryInput": "`/auth/login?next=SN-02..06`",
+      "baselineOutcome": "`next` محفوظ في الحقل المخفي",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "D8",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-02",
+      "sourceReference": "login:21",
+      "actorState": "زائر",
+      "entryInput": "`next` من SN-07..10",
+      "baselineOutcome": "`next=''`",
+      "visibleFeedback": "لا شيء؛ الوجهة تضيع",
+      "recovery": "ينتقل المستخدم يدويًا",
+      "constraint": "D8",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-03",
+      "sourceReference": "login:37-39",
+      "actorState": "زائر",
+      "entryInput": "بريد فارغ أو كلمة مرور أقل من 8",
+      "baselineOutcome": "المتصفح يمنع الإرسال",
+      "visibleFeedback": "رسالة المتصفح",
+      "recovery": "تصحيح الحقل",
+      "constraint": "الحد 8 من جهة العميل فقط",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-04",
+      "sourceReference": "actions:12",
+      "actorState": "تجاوز تحقق المتصفح",
+      "entryInput": "حقل فارغ",
+      "baselineOutcome": "`state=invalid` مع `next`",
+      "visibleFeedback": "«تحقق من البريد وكلمة المرور»",
+      "recovery": "**البريد يُفقد**",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-05",
+      "sourceReference": "actions:14",
+      "actorState": "الإعداد ناقص",
+      "entryInput": "—",
+      "baselineOutcome": "`state=setup`",
+      "visibleFeedback": "رسالة مطوّر: «أضف إعدادات Supabase إلى ملف البيئة»",
+      "recovery": "لا مسار للمستخدم",
+      "constraint": "لا كشف للقيم",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-06",
+      "sourceReference": "actions:15-16",
+      "actorState": "بيانات خاطئة",
+      "entryInput": "—",
+      "baselineOutcome": "`state=invalid`",
+      "visibleFeedback": "رسالة عامة",
+      "recovery": "**البريد يُفقد**",
+      "constraint": "مقاومة كشف وجود الحساب (enumeration)",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-07",
+      "sourceReference": "actions:15-16",
+      "actorState": "انقطاع، أو حد معدل (429)، أو بريد غير مؤكد",
+      "entryInput": "—",
+      "baselineOutcome": "**كل ذلك يصير `invalid`**",
+      "visibleFeedback": "«تحقق من البريد وكلمة المرور»",
+      "recovery": "مضلل: المستخدم يغيّر بيانات صحيحة",
+      "constraint": "حالة مجهولة تُعرض كخطأ إدخال",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-08",
+      "sourceReference": "actions:17",
+      "actorState": "نجاح مع `next` صالح",
+      "entryInput": "—",
+      "baselineOutcome": "تحويل إلى `next` بلا فحص عضوية",
+      "visibleFeedback": "—",
+      "recovery": "الوجهة تتحقق من الوصول",
+      "constraint": "التحويل لا يمنح صلاحية",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-09",
+      "sourceReference": "actions:19-21",
+      "actorState": "نجاح مع عضوية واحدة ومعرّف صالح",
+      "entryInput": "—",
+      "baselineOutcome": "`/tenant/{id}`",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-10",
+      "sourceReference": "actions:19-24",
+      "actorState": "عضوية واحدة ومعرّف غير صالح",
+      "entryInput": "—",
+      "baselineOutcome": "**`/operator`**",
+      "visibleFeedback": "—",
+      "recovery": "تحقق التخطيط (layout)",
+      "constraint": "ليس صلاحية",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-11",
+      "sourceReference": "actions:23",
+      "actorState": "أكثر من عضوية",
+      "entryInput": "—",
+      "baselineOutcome": "`/tenant/select`",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-12",
+      "sourceReference": "actions:24",
+      "actorState": "صفر عضويات",
+      "entryInput": "—",
+      "baselineOutcome": "`/operator`",
+      "visibleFeedback": "تقرره الوجهة",
+      "recovery": "—",
+      "constraint": "D13؛ ليس صلاحية",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-13",
+      "sourceReference": "actions:18,24",
+      "actorState": "فشل RPC (`data=null`)",
+      "entryInput": "—",
+      "baselineOutcome": "`/operator`؛ الخطأ لا يُقرأ",
+      "visibleFeedback": "قد تظهر رسالة رفض المشغّل",
+      "recovery": "لا تمييز للسبب",
+      "constraint": "D13",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-14",
+      "sourceReference": "login:33",
+      "actorState": "`state` غير معروف",
+      "entryInput": "—",
+      "baselineOutcome": "تجاهل",
+      "visibleFeedback": "لا رسالة",
+      "recovery": "—",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-15",
+      "sourceReference": "login:33",
+      "actorState": "أي حالة خطأ",
+      "entryInput": "—",
+      "baselineOutcome": "—",
+      "visibleFeedback": "الرسالة كـ`role=status` لا `alert`",
+      "recovery": "—",
+      "constraint": "الوصولية",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-LI-16",
+      "sourceReference": "login:39",
+      "actorState": "حساب قديم بكلمة مرور أقل من 8",
+      "entryInput": "—",
+      "baselineOutcome": "المتصفح يمنع الإرسال",
+      "visibleFeedback": "لا مسار سوى الاستعادة",
+      "recovery": "**طريق مسدود محتمل**",
+      "constraint": "وجود هذه الحسابات يحتاج تحققًا وقت التشغيل",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics",
+      "classification": "source behavior with unverified runtime hypothesis"
+    },
+    {
+      "id": "R2-CORE-LI-17",
+      "sourceReference": "—",
+      "actorState": "استثناء غير ملتقط",
+      "entryInput": "—",
+      "baselineOutcome": "لا يوجد error boundary في `/auth`",
+      "visibleFeedback": "صفحة Next الافتراضية",
+      "recovery": "لا مسار عربي",
+      "constraint": "فجوة حدود الخطأ",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-SO-01",
+      "sourceReference": "actions:58-62",
+      "actorState": "مستخدم بجلسة",
+      "entryInput": "الخروج",
+      "baselineOutcome": "`signOut` محلي؛ الخطأ **لا يُقرأ**",
+      "visibleFeedback": "«تم تسجيل الخروج» دائمًا",
+      "recovery": "—",
+      "constraint": "نجاح زائف محتمل؛ يحتاج تحققًا وقت التشغيل",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-SO-02",
+      "sourceReference": "actions:59-61",
+      "actorState": "الإعداد ناقص",
+      "entryInput": "الخروج",
+      "baselineOutcome": "لا عميل؛ يُعرض `signed-out`",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "Missing client does not prove no session cookies; local logout outcome is unconfirmed",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-01",
+      "sourceReference": "forgot:8",
+      "actorState": "زائر",
+      "entryInput": "الصفحة بلا `state`",
+      "baselineOutcome": "النموذج",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-02",
+      "sourceReference": "actions:31-41",
+      "actorState": "بريد صالح والإعداد سليم",
+      "entryInput": "إرسال",
+      "baselineOutcome": "`resetPasswordForEmail`؛ النتيجة لا تُقرأ",
+      "visibleFeedback": "`sent`: «إذا كان البريد مرتبطًا…»",
+      "recovery": "—",
+      "constraint": "**الرد الموحد لا يثبت أن البريد أُرسل**",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-03",
+      "sourceReference": "actions:31",
+      "actorState": "عميل غائب، أو `APP_URL` غائب أو غير https",
+      "entryInput": "إرسال",
+      "baselineOutcome": "لا إرسال إطلاقًا",
+      "visibleFeedback": "الرسالة نفسها",
+      "recovery": "**عطل الإعداد مخفي**",
+      "constraint": "لا كشف للقيم",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-04",
+      "sourceReference": "actions:39",
+      "actorState": "استثناء أو حد معدل",
+      "entryInput": "إرسال",
+      "baselineOutcome": "يُبتلع",
+      "visibleFeedback": "الرسالة نفسها",
+      "recovery": "لا مسار",
+      "constraint": "مقاومة كشف الحساب",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-05",
+      "sourceReference": "forgot:8",
+      "actorState": "`state=sent`",
+      "entryInput": "—",
+      "baselineOutcome": "—",
+      "visibleFeedback": "الرسالة **بلا نموذج**",
+      "recovery": "Existing login/forgot detour can request again; no direct restart or correction action on sent screen",
+      "constraint": "طريق شبه مسدود",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-FP-06",
+      "sourceReference": "forgot:8",
+      "actorState": "`state=expired`",
+      "entryInput": "—",
+      "baselineOutcome": "—",
+      "visibleFeedback": "«اطلب رابطًا جديدًا» **بلا نموذج**",
+      "recovery": "No direct restart currently; existing detour is login then forgot-password. Proposed direct restart must avoid manual URL editing.",
+      "constraint": "تعارض بين الرسالة والمصدر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-01",
+      "sourceReference": "route:12",
+      "actorState": "URL أو المفتاح أو `APP_URL` غائب",
+      "entryInput": "فتح الرابط",
+      "baselineOutcome": "503 نص خام + `private, no-store`",
+      "visibleFeedback": "«إعداد الاستعادة غير مكتمل.»",
+      "recovery": "**طريق مسدود**: لا HTML ولا رابط",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-02",
+      "sourceReference": "route:14-15",
+      "actorState": "`APP_URL` غير صالح أو http على مضيف عام",
+      "entryInput": "فتح الرابط",
+      "baselineOutcome": "503",
+      "visibleFeedback": "كما في CB-01",
+      "recovery": "كما في CB-01",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-03",
+      "sourceReference": "route:18",
+      "actorState": "لا `code`",
+      "entryInput": "فتح الرابط",
+      "baselineOutcome": "تحويل إلى `forgot?state=expired`",
+      "visibleFeedback": "ينتهي في FP-06",
+      "recovery": "مسدود",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-04",
+      "sourceReference": "route:36-37",
+      "actorState": "Returned exchange error; expiry/used-code/cross-browser causes require provider verification",
+      "entryInput": "فتح الرابط",
+      "baselineOutcome": "تحويل إلى expired",
+      "visibleFeedback": "«انتهت الصلاحية»",
+      "recovery": "السبب الحقيقي قد يكون اختلاف الجهاز",
+      "constraint": "يحتاج تحققًا وقت التشغيل",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics",
+      "classification": "source behavior with unverified runtime hypothesis"
+    },
+    {
+      "id": "R2-CORE-CB-05",
+      "sourceReference": "route:22-35,38-41",
+      "actorState": "نجاح",
+      "entryInput": "فتح الرابط",
+      "baselineOutcome": "الكوكيز تُكتب على استجابة جديدة + `private, no-store, max-age=0`، و`Pragma`، و`Expires:0`، وترويسات المكتبة",
+      "visibleFeedback": "تحويل إلى `/auth/password/update`",
+      "recovery": "—",
+      "constraint": "لا تخزين مؤقت",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-06",
+      "sourceReference": "route:18,37",
+      "actorState": "تحويلات الفشل",
+      "entryInput": "—",
+      "baselineOutcome": "بلا no-store صريح؛ قد تُغطى بترويسات البروكسي",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "دمج الترويسات يحتاج تحققًا وقت التشغيل",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-CB-07",
+      "sourceReference": "route:19-21",
+      "actorState": "`APP_URL` يختلف عن مضيف الطلب",
+      "entryInput": "—",
+      "baselineOutcome": "التحويل إلى `APP_URL` بينما الكوكيز على مضيف الطلب",
+      "visibleFeedback": "قد تظهر صفحة «الرابط غير صالح»",
+      "recovery": "—",
+      "constraint": "يحتاج تحققًا في بيئة النشر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics",
+      "classification": "source behavior with unverified runtime hypothesis"
+    },
+    {
+      "id": "R2-CORE-CB-08",
+      "sourceReference": "route:36",
+      "actorState": "تبادل أي رمز ليس للاستعادة",
+      "entryInput": "—",
+      "baselineOutcome": "ينتهي في صفحة تعيين كلمة المرور",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "لا فحص لنوع الرمز؛ مراجعة أمنية",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-01",
+      "sourceReference": "update:8-10",
+      "actorState": "بلا جلسة أو بلا عميل",
+      "entryInput": "فتح الصفحة",
+      "baselineOutcome": "«الرابط غير صالح» + زر «طلب رابط جديد»",
+      "visibleFeedback": "—",
+      "recovery": "يعمل: ينتقل إلى FP-01",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-02",
+      "sourceReference": "update:11",
+      "actorState": "جلسة استعادة",
+      "entryInput": "فتح الصفحة",
+      "baselineOutcome": "النموذج",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-03",
+      "sourceReference": "update:11",
+      "actorState": "**أي جلسة عادية**",
+      "entryInput": "فتح `/auth/password/update` مباشرة",
+      "baselineOutcome": "تغيير كلمة المرور **دون الكلمة الحالية**",
+      "visibleFeedback": "—",
+      "recovery": "—",
+      "constraint": "سلوك قائم يحتاج قرارًا أمنيًا؛ لا يُغيَّر في إعادة التلبيس",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-04",
+      "sourceReference": "actions:47",
+      "actorState": "أقل من 8 أو عدم تطابق",
+      "entryInput": "إرسال",
+      "baselineOutcome": "`state=invalid`",
+      "visibleFeedback": "«تأكد من تطابق الحقلين…»",
+      "recovery": "الحقلان يُفرغان",
+      "constraint": "لا تُخزن كلمة المرور",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-05",
+      "sourceReference": "actions:49",
+      "actorState": "لا عميل",
+      "entryInput": "إرسال",
+      "baselineOutcome": "التحويل إلى `login?state=setup`",
+      "visibleFeedback": "رسالة مطوّر",
+      "recovery": "ينقطع السياق",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-06",
+      "sourceReference": "actions:50-51",
+      "actorState": "انتهت الجلسة أثناء النموذج",
+      "entryInput": "إرسال",
+      "baselineOutcome": "`forgot?state=expired`",
+      "visibleFeedback": "ينتهي في FP-06",
+      "recovery": "Expired landing has no direct restart; existing login-to-forgot detour remains. Proposed direct restart resolves this interruption.",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-07",
+      "sourceReference": "actions:52-53",
+      "actorState": "رفض المزود: كلمة ضعيفة، أو مكررة، أو انقطاع",
+      "entryInput": "إرسال",
+      "baselineOutcome": "`state=failed`",
+      "visibleFeedback": "**نفس نص التحقق**",
+      "recovery": "مضلل",
+      "constraint": "تعارض بين الرسالة والمصدر",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-UP-08",
+      "sourceReference": "actions:54-55",
+      "actorState": "نجاح",
+      "entryInput": "إرسال",
+      "baselineOutcome": "خروج محلي (الخطأ لا يُقرأ) ثم `login?state=updated`",
+      "visibleFeedback": "«تم تحديث كلمة المرور»",
+      "recovery": "دخول جديد",
+      "constraint": "—",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Claude Opus 5.5 medium",
+        "Codex"
+      ],
+      "interpretation": "Read auth-core-spec.md corrections before relying on draft semantics"
+    },
+    {
+      "id": "R2-CORE-EX-01",
+      "sourceReference": "src/lib/supabase/server.ts",
+      "initialState": "Client SDK construction/cookie context throws",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-02",
+      "sourceReference": "src/app/auth/actions.ts",
+      "initialState": "signInWithPassword throws",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-03",
+      "sourceReference": "src/app/auth/actions.ts",
+      "initialState": "membership RPC throws",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-04",
+      "sourceReference": "src/app/auth/password/update/page.tsx",
+      "initialState": "getUser throws during render",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-05",
+      "sourceReference": "src/app/auth/actions.ts",
+      "initialState": "getUser or updateUser throws during action",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-06",
+      "sourceReference": "src/app/auth/actions.ts",
+      "initialState": "signOut throws after confirmed password update or logout",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-07",
+      "sourceReference": "src/app/auth/callback/route.ts",
+      "initialState": "SDK construction or exchangeCodeForSession throws",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    },
+    {
+      "id": "R2-CORE-EX-08",
+      "sourceReference": "src/lib/supabase/proxy.ts",
+      "initialState": "getClaims throws",
+      "baselineOutcome": "Not handled locally; no defined friendly recovery in this source",
+      "proposedOutcome": "Separate scoped recovery/session specification; no catch around redirect sentinel",
+      "status": "source-reviewed",
+      "runtime": "not-run",
+      "reviewers": [
+        "Codex source review"
+      ]
+    }
+  ],
+  "sourceAliases": {
+    "actions": "src/app/auth/actions.ts",
+    "login": "src/app/auth/login/page.tsx",
+    "forgot": "src/app/auth/forgot-password/page.tsx",
+    "update": "src/app/auth/password/update/page.tsx",
+    "route": "src/app/auth/callback/route.ts"
+  }
+}

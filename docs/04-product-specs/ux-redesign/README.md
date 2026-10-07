@@ -8,7 +8,9 @@ Read these together, in order:
 2. [Claude Opus 5.5's preserved contribution](claude-opus-contribution.md): R0–R8 stage scopes, acceptance scenarios and initial maps. This is an immutable review input; the corrections take precedence.
 3. [Codex journey maps](journey-maps.md): tasks, roles, decisions, service effects, recovery and cross-domain paths.
 4. [Codex source review](codex-source-review.md), [machine inventory](inventory.json), and [review register](review-register.json).
-5. [Original reference guide](../../../05-engineering/ux-redesign-reference.md), [issue #47](https://github.com/delightfactory/business-platform/issues/47), and [live Concept C demo](https://business-platform-ux-concept-c.delight2025.chatgpt.site/).
+5. [Original reference guide](../../05-engineering/ux-redesign-reference.md), [issue #47](https://github.com/delightfactory/business-platform/issues/47), and [live Concept C demo](https://business-platform-ux-concept-c.delight2025.chatgpt.site/).
+
+The owner's [mandatory journey improvement contract](journey-improvement-contract.md) applies to every stage and delegated review; it is imported by both `AGENTS.md` and `CLAUDE.md`.
 
 ## Stage scope and ownership
 
@@ -36,4 +38,8 @@ Current completeness: source assignment complete; semantic scenario review incom
 
 [Financial recovery subjourneys](payroll-recovery-maps.md) extend R7. [Claude's second review](claude-joint-review.md) is preserved with its original blockers; [resolution record](joint-review-resolution.md) explains the applied corrections. These documents must be read together.
 
-Run `node scripts/build-ux-inventory.cjs` after installing the repository dependencies to regenerate source inventory. Do not overwrite manual reviews to hide drift. Run `node scripts/verify-ux-coverage.cjs` to audit fingerprints/assignment, and add `--require-reviewed` for the fail-closed semantic freeze gate; `--phase R2` limits that gate to a stage including its shared request boundaries. The current register deliberately marks every item pending: targeted review of a finding is not complete review of its entire source item. This source-level gate cannot independently prove valid operation/state expansion or executed scenarios; those require the contract's separate reviewed evidence.
+Run `node scripts/build-ux-inventory.cjs` after installing the repository dependencies to regenerate source inventory. Do not overwrite manual reviews to hide drift. Run `node scripts/verify-ux-coverage.cjs` to audit fingerprints/assignment, and add `--require-reviewed` for the fail-closed semantic freeze gate; `--phase R2` limits that gate to a stage including its shared request boundaries. Source-reviewed items are distinguished from fully reviewed cases and executed acceptance; source review alone does not release this gate. This source-level gate cannot independently prove valid operation/state expansion or executed scenarios; those require the contract's separate reviewed evidence.
+
+## Bounded scenario expansion
+
+[R2-AUTH-CORE specification](auth-core-spec.md) expands login/reset/password update/logout and the recovery callback into [61 source-review records](auth-core-scenarios.json), including 12 allowlist classes and 8 explicit thrown-failure paths. The [preserved Claude contribution](claude-auth-core-contribution.md) is interpreted through the reviewed corrections. 19 inventory items now have targeted source review; runtime acceptance remains not-run. The bounded source characterization script has 60 passing checks with provider SDK stubs, not live Auth or browser evidence.
