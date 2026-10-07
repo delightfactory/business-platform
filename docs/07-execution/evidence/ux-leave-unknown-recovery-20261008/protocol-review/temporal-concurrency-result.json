@@ -1,0 +1,10 @@
+{
+  "postgres": "17.6",
+  "network": "none",
+  "hostPorts": [],
+  "kind": "actual private floor concurrent update, not full attempt concurrency",
+  "observedSecondSessionWaitingOnLock": true,
+  "lowerUpdateResult": "1645557742000",
+  "finalFloor": "1645557742000",
+  "pass": true
+}

@@ -1,0 +1,1063 @@
+{
+  "sourceCommit": "1e00ebdc93c3a54d34e3921a8ba12244bb7d6779",
+  "kind": "source locator, NOT effective SQL or concurrency/grant qualification",
+  "publicEventEntryPoints": 13,
+  "inputs": [
+    {
+      "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+      "sha256": "9ddf12eb0626a12cc497670b207400c20d0a962d1c04d49076f348a0ef786a14"
+    },
+    {
+      "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+      "sha256": "3105894195eb6bb7f45f0224882700ae606eb9ed980b4541dd0d255747fa00c7"
+    },
+    {
+      "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+      "sha256": "da5d99dc0e599cb69614a18939fd09880aa97ce2d62953d30484e0c5f1f4ab41"
+    },
+    {
+      "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+      "sha256": "b22acdf6e297b0c7449a9ccec510ca886bff44fd565066682110224e4c6d8533"
+    },
+    {
+      "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+      "sha256": "bb3fb8fa1ba7e50e5165b1a7bfa17d5bf6175bd07d0220ff9f040bcf22032aa6"
+    },
+    {
+      "file": "supabase/migrations/20261001093604_cube3_leave_approved_replacement.sql",
+      "sha256": "fece93dd68349a55ff7d00b578c6c88684797008ce5c2ce8a8759f0c9f1761f8"
+    },
+    {
+      "file": "supabase/migrations/20261001112549_cube3_halfday_attendance_remaining_work.sql",
+      "sha256": "39581d5d298ce705e426e46c4ff7ebed80406dafc337d7f9fd2366786c53225a"
+    },
+    {
+      "file": "supabase/migrations/20261003033000_cube4_historical_leave_addition.sql",
+      "sha256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f"
+    },
+    {
+      "file": "supabase/migrations/20261003034000_cube4_historical_leave_replacement.sql",
+      "sha256": "c9e017f29ee055bcf9b1b228223a690aee895000ac5ab941db3706208a45f19a"
+    }
+  ],
+  "records": [
+    {
+      "name": "leave_submit_own_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 528,
+          "source": "CREATE FUNCTION public.leave_submit_own_request(",
+          "endLine": 576,
+          "markers": [
+            {
+              "line": 542,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 548,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=employee FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 550,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_self_forbidden' USING ERRCODE='42501'; END IF;"
+            },
+            {
+              "line": 552,
+              "source": "WHERE l.tenant_id=p_tenant AND l.id=link_id AND l.user_id=actor AND l.unlinked_at IS NULL FOR UPDATE;"
+            },
+            {
+              "line": 555,
+              "source": "AND e.start_date<=p_end AND (e.end_date IS NULL OR e.end_date>=p_start) ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 561,
+              "source": "WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 563,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_self_forbidden' USING ERRCODE='42501'; END IF;"
+            },
+            {
+              "line": 564,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 566,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_self_forbidden' USING ERRCODE='42501'; END IF;"
+            },
+            {
+              "line": 573,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_self_forbidden' USING ERRCODE='42501'; END IF;"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 528,
+          "source": "CREATE FUNCTION public.leave_submit_own_request("
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 577,
+          "source": "REVOKE ALL ON FUNCTION public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 578,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 131,
+          "source": "def:=pg_get_functiondef('public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text)'::regprocedure);"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 131,
+          "source": "def:=pg_get_functiondef('public.leave_submit_own_request(uuid,uuid,date,date,boolean,text,text,text)'::regprocedure);"
+        }
+      ]
+    },
+    {
+      "name": "leave_record_hr_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 580,
+          "source": "CREATE FUNCTION public.leave_record_hr_request(",
+          "endLine": 620,
+          "markers": [
+            {
+              "line": 594,
+              "source": "actor:=leave.authorized(p_tenant,'leave.manage',false);"
+            },
+            {
+              "line": 595,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=p_employee FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 597,
+              "source": "actor:=leave.authorized(p_tenant,'leave.manage',false);"
+            },
+            {
+              "line": 599,
+              "source": "AND e.start_date<=p_end AND (e.end_date IS NULL OR e.end_date>=p_start) ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 605,
+              "source": "WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 607,
+              "source": "actor:=leave.authorized(p_tenant,'leave.manage',false);"
+            },
+            {
+              "line": 608,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 610,
+              "source": "actor:=leave.authorized(p_tenant,'leave.manage',false);"
+            },
+            {
+              "line": 617,
+              "source": "actor:=leave.authorized(p_tenant,'leave.manage',true);"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 580,
+          "source": "CREATE FUNCTION public.leave_record_hr_request("
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 621,
+          "source": "REVOKE ALL ON FUNCTION public.leave_record_hr_request(uuid,uuid,uuid,uuid,date,date,boolean,text,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 622,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_record_hr_request(uuid,uuid,uuid,uuid,date,date,boolean,text,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 137,
+          "source": "def:=pg_get_functiondef('public.leave_record_hr_request(uuid,uuid,uuid,uuid,date,date,boolean,text,text,text)'::regprocedure);"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 137,
+          "source": "def:=pg_get_functiondef('public.leave_record_hr_request(uuid,uuid,uuid,uuid,date,date,boolean,text,text,text)'::regprocedure);"
+        }
+      ]
+    },
+    {
+      "name": "leave_withdraw_own_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 702,
+          "source": "CREATE FUNCTION public.leave_withdraw_own_request(",
+          "endLine": 753,
+          "markers": [
+            {
+              "line": 716,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=employee FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 718,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 722,
+              "source": "WHERE l.tenant_id=p_tenant AND l.user_id=actor AND l.unlinked_at IS NULL FOR UPDATE;"
+            },
+            {
+              "line": 725,
+              "source": "AND e.start_date<=r.end_date AND (e.end_date IS NULL OR e.end_date>=r.start_date) ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 728,
+              "source": "PERFORM 1 FROM platform_core.tenant_legal_entities e WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 730,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_request_unavailable' USING ERRCODE='P0002'; END IF;"
+            },
+            {
+              "line": 731,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 733,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_request_unavailable' USING ERRCODE='P0002'; END IF;"
+            },
+            {
+              "line": 739,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN RAISE EXCEPTION 'leave_request_unavailable' USING ERRCODE='P0002'; END IF;"
+            },
+            {
+              "line": 740,
+              "source": "PERFORM leave.lock_request_configuration(p_tenant,emp.employer_entity_id,r.leave_type_id,r.start_date,r.end_date);"
+            },
+            {
+              "line": 741,
+              "source": "PERFORM 1 FROM leave.requests x WHERE x.tenant_id=p_tenant AND x.id=p_request FOR UPDATE;"
+            },
+            {
+              "line": 748,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 702,
+          "source": "CREATE FUNCTION public.leave_withdraw_own_request("
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 754,
+          "source": "REVOKE ALL ON FUNCTION public.leave_withdraw_own_request(uuid,uuid,integer,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 755,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_withdraw_own_request(uuid,uuid,integer,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 21,
+          "source": "'public.leave_withdraw_own_request(uuid,uuid,integer,text,text)'"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_reject_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 757,
+          "source": "CREATE FUNCTION public.leave_reject_request(",
+          "endLine": 803,
+          "markers": [
+            {
+              "line": 768,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 771,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=r.employee_id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 773,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 775,
+              "source": "AND e.start_date<=r.end_date AND (e.end_date IS NULL OR e.end_date>=r.start_date) ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 778,
+              "source": "PERFORM 1 FROM platform_core.tenant_legal_entities e WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 780,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 781,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 783,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 789,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 790,
+              "source": "PERFORM leave.lock_request_configuration(p_tenant,emp.employer_entity_id,r.leave_type_id,r.start_date,r.end_date);"
+            },
+            {
+              "line": 791,
+              "source": "PERFORM 1 FROM leave.requests x WHERE x.tenant_id=p_tenant AND x.id=p_request FOR UPDATE;"
+            },
+            {
+              "line": 798,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 757,
+          "source": "CREATE FUNCTION public.leave_reject_request("
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 804,
+          "source": "REVOKE ALL ON FUNCTION public.leave_reject_request(uuid,uuid,integer,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001020818_cube3_leave_request_submission.sql",
+          "line": 805,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_reject_request(uuid,uuid,integer,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 20,
+          "source": "'public.leave_reject_request(uuid,uuid,integer,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_refresh_request_preview",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 182,
+          "source": "CREATE FUNCTION public.leave_refresh_request_preview(",
+          "endLine": 300,
+          "markers": [
+            {
+              "line": 196,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 200,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 209,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=r.employee_id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 213,
+              "source": "WHERE l.tenant_id=p_tenant AND l.user_id=actor AND l.unlinked_at IS NULL FOR UPDATE;"
+            },
+            {
+              "line": 215,
+              "source": "NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 225,
+              "source": "ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 230,
+              "source": "WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 236,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 240,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 242,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 247,
+              "source": "PERFORM leave.lock_request_configuration(p_tenant,emp.employer_entity_id,r.leave_type_id,r.start_date,r.end_date);"
+            },
+            {
+              "line": 248,
+              "source": "PERFORM 1 FROM leave.requests x WHERE x.tenant_id=p_tenant AND x.id=p_request FOR UPDATE;"
+            },
+            {
+              "line": 252,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request') THEN"
+            },
+            {
+              "line": 256,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 271,
+              "source": "IF NOT leave.request_actor_allowed(p_tenant,actor,'leave.self.request')"
+            },
+            {
+              "line": 277,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 295,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 182,
+          "source": "CREATE FUNCTION public.leave_refresh_request_preview("
+        },
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 301,
+          "source": "REVOKE ALL ON FUNCTION public.leave_refresh_request_preview(uuid,uuid,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 303,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_refresh_request_preview(uuid,uuid,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 212,
+          "source": "def:=pg_get_functiondef('public.leave_refresh_request_preview(uuid,uuid,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 222,
+          "source": "def:=pg_get_functiondef('public.leave_refresh_request_preview(uuid,uuid,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 223,
+          "source": "def:=leave.a1_replace_once(def,'CREATE OR REPLACE FUNCTION public.leave_refresh_request_preview(',"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 19,
+          "source": "'public.leave_refresh_request_preview(uuid,uuid,integer,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 212,
+          "source": "def:=pg_get_functiondef('public.leave_refresh_request_preview(uuid,uuid,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 222,
+          "source": "def:=pg_get_functiondef('public.leave_refresh_request_preview(uuid,uuid,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 223,
+          "source": "def:=leave.a1_replace_once(def,'CREATE OR REPLACE FUNCTION public.leave_refresh_request_preview(',"
+        }
+      ]
+    },
+    {
+      "name": "leave_my_refresh_halfday_preview",
+      "definitions": [],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 224,
+          "source": "'CREATE FUNCTION public.leave_my_refresh_halfday_preview(','own refresh name');"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 234,
+          "source": "def:=pg_get_functiondef('public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 235,
+          "source": "def:=leave.a1_replace_once(def,'CREATE OR REPLACE FUNCTION public.leave_my_refresh_halfday_preview(',"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 240,
+          "source": "REVOKE ALL ON FUNCTION public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 241,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 18,
+          "source": "'public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 224,
+          "source": "'CREATE FUNCTION public.leave_my_refresh_halfday_preview(','own refresh name');"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 234,
+          "source": "def:=pg_get_functiondef('public.leave_my_refresh_halfday_preview(uuid,uuid,integer,text,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 235,
+          "source": "def:=leave.a1_replace_once(def,'CREATE OR REPLACE FUNCTION public.leave_my_refresh_halfday_preview(',"
+        }
+      ]
+    },
+    {
+      "name": "leave_hr_refresh_halfday_preview",
+      "definitions": [],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 236,
+          "source": "'CREATE FUNCTION public.leave_hr_refresh_halfday_preview(','HR refresh name');"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 242,
+          "source": "REVOKE ALL ON FUNCTION public.leave_hr_refresh_halfday_preview(uuid,uuid,integer,text,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 243,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_hr_refresh_halfday_preview(uuid,uuid,integer,text,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 17,
+          "source": "'public.leave_hr_refresh_halfday_preview(uuid,uuid,integer,text,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 236,
+          "source": "'CREATE FUNCTION public.leave_hr_refresh_halfday_preview(','HR refresh name');"
+        }
+      ]
+    },
+    {
+      "name": "leave_approve_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 306,
+          "source": "CREATE FUNCTION public.leave_approve_request(",
+          "endLine": 479,
+          "markers": [
+            {
+              "line": 321,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 324,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=r.employee_id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 326,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 329,
+              "source": "ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 334,
+              "source": "WHERE e.tenant_id=p_tenant AND e.id=emp.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 339,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 340,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 346,
+              "source": "PERFORM leave.lock_request_configuration(p_tenant,emp.employer_entity_id,r.leave_type_id,r.start_date,r.end_date);"
+            },
+            {
+              "line": 347,
+              "source": "PERFORM 1 FROM leave.requests x WHERE x.tenant_id=p_tenant AND x.id=p_request FOR UPDATE;"
+            },
+            {
+              "line": 350,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 396,
+              "source": "ORDER BY i.operational_date,i.id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 420,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 427,
+              "source": "ORDER BY yp.starts_on,a.id FOR UPDATE OF a;"
+            },
+            {
+              "line": 468,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 474,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 306,
+          "source": "CREATE FUNCTION public.leave_approve_request("
+        },
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 480,
+          "source": "REVOKE ALL ON FUNCTION public.leave_approve_request(uuid,uuid,integer,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 482,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_approve_request(uuid,uuid,integer,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 249,
+          "source": "def:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 255,
+          "source": "def:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 14,
+          "source": "'public.leave_approve_request(uuid,uuid,integer,integer,text,text)',"
+        },
+        {
+          "file": "supabase/migrations/20261001112549_cube3_halfday_attendance_remaining_work.sql",
+          "line": 365,
+          "source": "def:=pg_catalog.pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261003033000_cube4_historical_leave_addition.sql",
+          "line": 88,
+          "source": "definition:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261003033000_cube4_historical_leave_addition.sql",
+          "line": 89,
+          "source": "definition:=replace(definition,'FUNCTION public.leave_approve_request(','FUNCTION public.leave_approve_historical_request(');"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 249,
+          "source": "def:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001031200_cube3_leave_halfday_request_mapping.sql",
+          "line": 255,
+          "source": "def:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261001112549_cube3_halfday_attendance_remaining_work.sql",
+          "line": 365,
+          "source": "def:=pg_catalog.pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261003033000_cube4_historical_leave_addition.sql",
+          "line": 88,
+          "source": "definition:=pg_get_functiondef('public.leave_approve_request(uuid,uuid,integer,integer,text,text)'::regprocedure);"
+        }
+      ]
+    },
+    {
+      "name": "leave_request_cancellation",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 335,
+          "source": "CREATE FUNCTION public.leave_request_cancellation(",
+          "endLine": 339,
+          "markers": []
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030600_cube3_leave_approval_consumption.sql",
+          "line": 21,
+          "source": "ALTER TABLE leave.requests ADD CONSTRAINT leave_request_cancellation_state_check CHECK ("
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 335,
+          "source": "CREATE FUNCTION public.leave_request_cancellation("
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 340,
+          "source": "REVOKE ALL ON FUNCTION public.leave_request_cancellation(uuid,uuid,integer,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 341,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_request_cancellation(uuid,uuid,integer,text,text) TO authenticated;"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_my_request_cancellation",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 343,
+          "source": "CREATE FUNCTION public.leave_my_request_cancellation(",
+          "endLine": 347,
+          "markers": []
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 343,
+          "source": "CREATE FUNCTION public.leave_my_request_cancellation("
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 348,
+          "source": "REVOKE ALL ON FUNCTION public.leave_my_request_cancellation(uuid,uuid,integer,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 349,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_my_request_cancellation(uuid,uuid,integer,text,text) TO authenticated;"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_decide_cancellation",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 422,
+          "source": "CREATE FUNCTION public.leave_decide_cancellation(",
+          "endLine": 480,
+          "markers": [
+            {
+              "line": 435,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 438,
+              "source": "r:=leave.lock_cancellation_parent(p_tenant,c.request_id);"
+            },
+            {
+              "line": 439,
+              "source": "SELECT * INTO c FROM leave.cancellation_requests x WHERE x.tenant_id=p_tenant AND x.id=p_cancellation FOR UPDATE;"
+            },
+            {
+              "line": 441,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 442,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 467,
+              "source": "INSERT INTO leave.cancellation_events(tenant_id,request_id,cancellation_id,actor_user_id,event_key,"
+            },
+            {
+              "line": 474,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 422,
+          "source": "CREATE FUNCTION public.leave_decide_cancellation("
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 481,
+          "source": "REVOKE ALL ON FUNCTION public.leave_decide_cancellation(uuid,uuid,integer,text,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 482,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_decide_cancellation(uuid,uuid,integer,text,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 16,
+          "source": "'public.leave_decide_cancellation(uuid,uuid,integer,text,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_cancel_approved_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 484,
+          "source": "CREATE FUNCTION public.leave_cancel_approved_request(",
+          "endLine": 529,
+          "markers": [
+            {
+              "line": 495,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 496,
+              "source": "r:=leave.lock_cancellation_parent(p_tenant,p_request);"
+            },
+            {
+              "line": 497,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',false);"
+            },
+            {
+              "line": 498,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 518,
+              "source": "INSERT INTO leave.cancellation_events(tenant_id,request_id,cancellation_id,actor_user_id,event_key,"
+            },
+            {
+              "line": 524,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 484,
+          "source": "CREATE FUNCTION public.leave_cancel_approved_request("
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 530,
+          "source": "REVOKE ALL ON FUNCTION public.leave_cancel_approved_request(uuid,uuid,integer,text,text) FROM PUBLIC,anon,service_role;"
+        },
+        {
+          "file": "supabase/migrations/20261001030800_cube3_leave_cancellation.sql",
+          "line": 531,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_cancel_approved_request(uuid,uuid,integer,text,text) TO authenticated;"
+        },
+        {
+          "file": "supabase/migrations/20261001090221_cube3_deterministic_conflict_http_status.sql",
+          "line": 15,
+          "source": "'public.leave_cancel_approved_request(uuid,uuid,integer,text,text)',"
+        }
+      ],
+      "dynamicDefinitions": []
+    },
+    {
+      "name": "leave_correct_approved_request",
+      "definitions": [
+        {
+          "file": "supabase/migrations/20261001093604_cube3_leave_approved_replacement.sql",
+          "line": 207,
+          "source": "CREATE FUNCTION public.leave_correct_approved_request(",
+          "endLine": 424,
+          "markers": [
+            {
+              "line": 226,
+              "source": "IF pg_catalog.btrim(p_idempotency_key) LIKE 'leave-internal:%' THEN"
+            },
+            {
+              "line": 228,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 234,
+              "source": "PERFORM 1 FROM people.employees e WHERE e.tenant_id=p_tenant AND e.id=oldr.employee_id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 236,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 239,
+              "source": "AND (e.end_date IS NULL OR e.end_date>=least(oldr.start_date,newr.start_date)) ORDER BY e.id FOR UPDATE;"
+            },
+            {
+              "line": 245,
+              "source": "WHERE e.tenant_id=p_tenant AND e.id=oldr.employer_entity_id FOR UPDATE;"
+            },
+            {
+              "line": 247,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 248,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended("
+            },
+            {
+              "line": 272,
+              "source": "PERFORM 1 FROM leave.calendars c WHERE c.tenant_id=p_tenant AND c.id=config_calendar FOR UPDATE;"
+            },
+            {
+              "line": 278,
+              "source": "PERFORM 1 FROM leave.types t WHERE t.tenant_id=p_tenant AND t.id=config_type FOR UPDATE;"
+            },
+            {
+              "line": 281,
+              "source": "PERFORM 1 FROM leave.requests r WHERE r.tenant_id=p_tenant AND r.id IN (oldr.id,newr.id) ORDER BY r.id FOR UPDATE;"
+            },
+            {
+              "line": 284,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 323,
+              "source": "ORDER BY i.operational_date,i.id FOR NO KEY UPDATE;"
+            },
+            {
+              "line": 349,
+              "source": "PERFORM pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(p_tenant::text||oldr.employee_id::text,90429));"
+            },
+            {
+              "line": 354,
+              "source": "OR (a.leave_type_id=newr.leave_type_id AND yp.starts_on<=newr.end_date)) ORDER BY yp.starts_on,a.id FOR UPDATE OF a;"
+            },
+            {
+              "line": 355,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 401,
+              "source": "actor:=leave.authorized(p_tenant,'leave.approve',true);"
+            },
+            {
+              "line": 412,
+              "source": "INSERT INTO leave.correction_events(tenant_id,correction_id,original_request_id,replacement_request_id,actor_user_id,"
+            },
+            {
+              "line": 418,
+              "source": "approval_key:='leave-internal:correction-approval:'||corr::text;"
+            },
+            {
+              "line": 419,
+              "source": "INSERT INTO leave.request_events(tenant_id,request_id,actor_user_id,event_key,from_state,to_state,"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "file": "supabase/migrations/20261001093604_cube3_leave_approved_replacement.sql",
+          "line": 207,
+          "source": "CREATE FUNCTION public.leave_correct_approved_request("
+        },
+        {
+          "file": "supabase/migrations/20261001093604_cube3_leave_approved_replacement.sql",
+          "line": 425,
+          "source": "REVOKE ALL ON FUNCTION public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001093604_cube3_leave_approved_replacement.sql",
+          "line": 427,
+          "source": "GRANT EXECUTE ON FUNCTION public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)"
+        },
+        {
+          "file": "supabase/migrations/20261001112549_cube3_halfday_attendance_remaining_work.sql",
+          "line": 378,
+          "source": "def:=pg_catalog.pg_get_functiondef('public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261003034000_cube4_historical_leave_replacement.sql",
+          "line": 9,
+          "source": "definition:=pg_get_functiondef('public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)'::regprocedure);"
+        }
+      ],
+      "dynamicDefinitions": [
+        {
+          "file": "supabase/migrations/20261001112549_cube3_halfday_attendance_remaining_work.sql",
+          "line": 378,
+          "source": "def:=pg_catalog.pg_get_functiondef('public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)'::regprocedure);"
+        },
+        {
+          "file": "supabase/migrations/20261003034000_cube4_historical_leave_replacement.sql",
+          "line": 9,
+          "source": "definition:=pg_get_functiondef('public.leave_correct_approved_request(uuid,uuid,integer,integer,uuid,integer,integer,text,text)'::regprocedure);"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Dynamic functions are source locators; generated effective bodies must be inspected in local SQL.",
+    "Caller/grant references locate sources; they do not prove runtime EXECUTE permissions.",
+    "Lock marker order is not a complete deadlock or transaction proof.",
+    "No source/runtime/semantic coverage gate promoted."
+  ]
+}

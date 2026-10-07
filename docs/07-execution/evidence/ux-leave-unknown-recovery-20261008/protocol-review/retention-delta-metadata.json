@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "claudeVersion": "2.1.292 (Claude Code)",
+  "sessionId": "7fa50adf-93cb-4769-8263-00b89d90dedd",
+  "resultSubtype": "success",
+  "readOnlyViolation": false,
+  "reportedTouchedFiles": [
+    "?? docs/04-product-specs/ux-redesign/leave-server-recovery-source-audit.md",
+    "?? docs/07-execution/evidence/ux-leave-unknown-recovery-20261008/protocol-review/audit-entrypoints.cjs",
+    "?? docs/07-execution/evidence/ux-leave-unknown-recovery-20261008/protocol-review/leave-entrypoint-source-audit.json"
+  ],
+  "dirtyBaselineNote": "Pre-existing paths, not edits by reviewer",
+  "briefSHA256": "DB83270B9D46CD9D69C0D6D5FE3ED73BE3FB88A101D5CA06ACEE04C0EB277D88",
+  "SQLFinalSHA256": "6D822A076A163D2A33AA489193A3969D09219A839CB68643A7CE9885F4CC7CD0",
+  "finalDifferenceNote": "Applied reviewer recommendations: pure INVOKER, predicate STABLE, absent-ID comment",
+  "visualVerdict": "NOT VISUALLY VERIFIED"
+}

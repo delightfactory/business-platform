@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "claudeVersion": "2.1.292 (Claude Code)",
+  "sessionId": "7fa50adf-93cb-4769-8263-00b89d90dedd",
+  "resultSubtype": "success",
+  "readOnlyViolation": false,
+  "reportedTouchedFiles": [
+    "?? docs/04-product-specs/ux-redesign/leave-server-recovery-source-audit.md",
+    "?? docs/07-execution/evidence/ux-leave-unknown-recovery-20261008/protocol-review/audit-entrypoints.cjs",
+    "?? docs/07-execution/evidence/ux-leave-unknown-recovery-20261008/protocol-review/leave-entrypoint-source-audit.json",
+    "?? docs/07-execution/evidence/ux-leave-unknown-recovery-20261008/protocol-review/temporal-helper-test.sql",
+    "?? supabase/migrations/20261007234428_leave_attempt_temporal_fence.sql"
+  ],
+  "dirtyBaselineNote": "Pre-existing paths, not edits by reviewer",
+  "briefSHA256": "0E68AF2EB61AA0C9298EC2DDDA065C3B99217EE9CA53888146FD0C7AD1FE968F",
+  "SQLFinalSHA256": "6D822A076A163D2A33AA489193A3969D09219A839CB68643A7CE9885F4CC7CD0",
+  "finalDifferenceNote": "Applied reviewer recommendations: pure INVOKER, predicate STABLE, absent-ID comment",
+  "visualVerdict": "NOT VISUALLY VERIFIED"
+}

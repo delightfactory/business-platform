@@ -1,0 +1,76 @@
+Read-only EXACT private helper candidate review, <=250 words, no tools required/edits/commits. Prior corrected temporal contract only; full D16 wiring remains OPEN. Review embedded SQL for must-fix parsing/security/time/entropy/floor bugs, no new scope. Actual isolated PostgreSQL17.6 migrated successfully; RFCvector/24h/future/null/variant/clockrollbackfloor/roleACL/RLS checks pass. Actual two SQL sessions: second waited on row lock; lower concurrent update couldn't reduce floor. No full lineage/prepare/execute/close/identity/cleanup/bypass/visual qualification claimed. DB scratch network none, no hostports/realHR/auth/provider; no deployment. Owner approved24h FROM FIRST PREPARE, not renewed by retry. Private helper IDs only admission nonce, not authorization/signatures. Pruning floors need eligible actual pruned timestamps in same transaction, no pruner implemented. Immutable predicate deliberately accepts private injected DBnow/floor for callers to supply after locks; no publicRPC/EXECUTE grant. Scope application is pure prerequisite, full journey/simplicity/coverage and ConceptC review remain mandatory/open.
+Exact migration:
+-- D16 prerequisite only: no public RPC, intent payload, leave mutation or cleanup job.
+-- Owner approved 24h unexecuted-intent recovery. Full protocol integration stays open.
+CREATE TABLE leave.attempt_prune_floor (
+  singleton boolean PRIMARY KEY DEFAULT true CHECK (singleton),
+  issued_through_ms bigint NOT NULL CHECK (issued_through_ms >= 0)
+);
+ALTER TABLE leave.attempt_prune_floor ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON TABLE leave.attempt_prune_floor FROM PUBLIC, anon, authenticated, service_role;
+INSERT INTO leave.attempt_prune_floor(singleton, issued_through_ms) VALUES (true, 0);
+
+-- PostgreSQL 17-compatible UUIDv7: 48 UTC millisecond bits, 74 random bits.
+-- This is an expiring operation nonce, not a signature or authorization credential.
+CREATE FUNCTION leave.new_attempt_form_id() RETURNS uuid
+LANGUAGE plpgsql VOLATILE SECURITY DEFINER SET search_path = '' AS $f$
+DECLARE issued_ms bigint; random_hex text;
+BEGIN
+  issued_ms := pg_catalog.floor(pg_catalog.extract('epoch', pg_catalog.clock_timestamp()) * 1000)::bigint;
+  IF issued_ms NOT BETWEEN 0 AND 281474976710655 THEN
+    RAISE EXCEPTION 'leave_attempt_clock_invalid' USING ERRCODE = '22023';
+  END IF;
+  random_hex := pg_catalog.replace(pg_catalog.gen_random_uuid()::text, '-', '');
+  RETURN (pg_catalog.lpad(pg_catalog.to_hex(issued_ms), 12, '0') || '7' ||
+    pg_catalog.substr(random_hex, 14))::uuid;
+END $f$;
+REVOKE ALL ON FUNCTION leave.new_attempt_form_id() FROM PUBLIC, anon, authenticated, service_role;
+
+CREATE FUNCTION leave.attempt_form_issued_ms(p_id uuid) RETURNS bigint
+LANGUAGE plpgsql IMMUTABLE STRICT SECURITY DEFINER SET search_path = '' AS $f$
+DECLARE value_hex text := pg_catalog.replace(p_id::text, '-', '');
+BEGIN
+  IF pg_catalog.substr(value_hex, 13, 1) <> '7'
+     OR pg_catalog.substr(value_hex, 17, 1) NOT IN ('8', '9', 'a', 'b') THEN
+    RETURN NULL;
+  END IF;
+  RETURN ('x' || pg_catalog.substr(value_hex, 1, 12))::bit(48)::bigint;
+END $f$;
+REVOKE ALL ON FUNCTION leave.attempt_form_issued_ms(uuid) FROM PUBLIC, anon, authenticated, service_role;
+
+-- Private pure predicate. Future callers supply DB clock_timestamp AFTER locks
+-- and the authoritative floor; client-supplied time/floor is never accepted.
+CREATE FUNCTION leave.attempt_form_is_admissible(p_id uuid, p_db_now timestamptz, p_floor_ms bigint)
+RETURNS boolean LANGUAGE plpgsql IMMUTABLE SECURITY DEFINER SET search_path = '' AS $f$
+DECLARE issued_ms bigint; now_ms bigint;
+BEGIN
+  IF p_id IS NULL OR p_db_now IS NULL OR p_floor_ms IS NULL OR p_floor_ms < 0 THEN RETURN false; END IF;
+  IF NOT pg_catalog.isfinite(p_db_now) THEN RETURN false; END IF;
+  issued_ms := leave.attempt_form_issued_ms(p_id);
+  IF issued_ms IS NULL THEN RETURN false; END IF;
+  now_ms := pg_catalog.floor(pg_catalog.extract('epoch', p_db_now) * 1000)::bigint;
+  RETURN issued_ms > p_floor_ms AND issued_ms <= now_ms AND issued_ms > now_ms - 86400000;
+END $f$;
+REVOKE ALL ON FUNCTION leave.attempt_form_is_admissible(uuid,timestamptz,bigint)
+  FROM PUBLIC, anon, authenticated, service_role;
+
+-- Pruner must already hold actor -> attempt locks, erase/fence eligible rows
+-- and publish their highest actual issue timestamp in the SAME transaction.
+-- No pruner exists yet. Floor is one non-personal global value, never decreases.
+CREATE FUNCTION leave.advance_attempt_prune_floor(p_issued_through_ms bigint) RETURNS bigint
+LANGUAGE plpgsql VOLATILE SECURITY DEFINER SET search_path = '' AS $f$
+DECLARE previous_ms bigint; now_ms bigint; next_ms bigint;
+BEGIN
+  SELECT f.issued_through_ms INTO previous_ms FROM leave.attempt_prune_floor f
+    WHERE f.singleton FOR UPDATE;
+  IF NOT FOUND THEN RAISE EXCEPTION 'leave_attempt_floor_unavailable' USING ERRCODE = '55000'; END IF;
+  now_ms := pg_catalog.floor(pg_catalog.extract('epoch', pg_catalog.clock_timestamp()) * 1000)::bigint;
+  IF p_issued_through_ms IS NULL OR p_issued_through_ms < 0
+     OR p_issued_through_ms > now_ms - 86400000 THEN
+    RAISE EXCEPTION 'leave_attempt_floor_invalid' USING ERRCODE = '22023';
+  END IF;
+  next_ms := greatest(previous_ms, p_issued_through_ms);
+  UPDATE leave.attempt_prune_floor SET issued_through_ms = next_ms WHERE singleton;
+  RETURN next_ms;
+END $f$;
+REVOKE ALL ON FUNCTION leave.advance_attempt_prune_floor(bigint) FROM PUBLIC, anon, authenticated, service_role;

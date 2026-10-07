@@ -1,0 +1,23 @@
+{
+  "migration": "20261007234428_leave_attempt_temporal_fence.sql",
+  "migrationSHA256": "6D822A076A163D2A33AA489193A3969D09219A839CB68643A7CE9885F4CC7CD0",
+  "postgresVersion": "17.6",
+  "DockerVersion": "29.7.2",
+  "network": "none",
+  "hostPorts": [],
+  "syntheticOnly": true,
+  "focusedSuite": "pass",
+  "concurrentFloor": "pass, second session observed waiting on row lock",
+  "completeProtocolConcurrency": "NOT RUN",
+  "fullMigrationLineage": "NOT RUN",
+  "productionMigrationApplied": false,
+  "appSourcesChanged": false,
+  "retiredContainerIds": [
+    "22a5bdf03689b8822e684513a1f3cf568f2a59ce5b91e48cc4b341b9b0862f88",
+    "3779a2059a27935bbc234e62f21acb560b4379d0840e2b957712ab54e2169504"
+  ],
+  "retirementVerified": true,
+  "heavyAppTestsRepeated": 0,
+  "followupSQLRerunReason": "Changed helper privilege and volatility recommendations",
+  "open": "prepare/execute/discover/close/cleanup, identity/final-key/caller/lock concurrency, browser journey, visual/complete coverage"
+}
