@@ -1,0 +1,46 @@
+Read-only exact final delta to your accepted F1/F2 review. No tools/tests/edits; <=180words, officialOpus5.5Medium. Root adopted safer guide, below heading and hidden on request-readfailure/invalidpage (no permissionschange). Removed another unchangedclaim inside approved-detail historyFailed section. Historycopy now no inaccurate fetchedtimeline. Final42focused cases pass (fournew unavailableguide/actualfailedhistory-control cases); samecalls/hrefs. Statusbadgewords already submitted=مُقدَّم وبانتظار القرار/withdrawn=مسحوب. historyErrorText all5end periods. Detail toast remains transient but persistent state badge/stateNote/latestpending section already exist; full announcement/focus stillopen. Your existingcancel-risk inference corrected: actualrender approved -> pendingEvent ?pending :historyFailed ? noform :!canRequestCancellation ? noform : form; failedhistory definitely hidesform, confirmedcontrolledrender. No fullvisualmatchclaimed; noCSS/font/layout expansion. ProposedClassCsourcebatch, ownergoal permits boundedsource-qualifiedpreservation; no newpermission needed. Review changes and separate source/NOTVISUALLYVERIFIED verdict; no fullstageacceptance.
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-0.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-0.txt
+index c979f7a..7dc2816 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-0.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-0.txt
+@@ -82,12 +82,13 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
+   const showResultGuide = query.state === 'submitted' || query.state === 'withdrawn';
+ 
+   return <PageFrame footer="الخدمة الذاتية">
+-    {showResultGuide && <p className="form-message" role="status">راجع حالة طلبك في سجل طلبات الإجازة، ثم افتحه لعرض التفاصيل.</p>}
+     <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
+       <h1>إجازاتي</h1>
+       <p>أرصدة إجازاتك وسجل طلباتك لدى الشركة. الطلب المعلق لا يحجز أي رصيد قبل اعتماده.</p></div>
+       {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}
+     </header>
++    {showResultGuide && !requestsFailed && !requestPage.invalid
++      && <p className="form-message" role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</p>}
+     {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
+ 
+     <section className="workspace-records-panel" aria-labelledby="leave-balances-title">
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-1.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-1.txt
+index 557b567..34345dc 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-1.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-1.txt
+@@ -137,7 +137,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
+           ? <>
+             <h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
+             <p className="form-message" role="status">تعذّر تحميل سجل طلبات الإلغاء لهذه الصفحة، لذلك لن يُعرض إرسال طلب
+-              إلغاء جديد حتى نتحقق من الحالة الحالية. تفاصيل طلبك أعلاه لم تتغيّر؛ أعد المحاولة من قسم «سجل طلبات
++              إلغاء جديد حتى نتحقق من الحالة الحالية. يمكنك مراجعة التفاصيل المتاحة أعلاه؛ أعد المحاولة من قسم «سجل طلبات
+               الإلغاء» أدناه.</p>
+           </>
+           : !canRequestCancellation
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-2.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-2.txt
+index dc6829e..dc4eda5 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/reviewed-initial-2.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-2.txt
+@@ -54,7 +54,7 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
+       <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></p>
+       : !view.ok ? <div className="empty-state" role="alert">
+         <h2>تعذر تحميل سجل طلبات الإلغاء</h2>
+-        <p>{historyErrorText(view.code)} تعذر التحقق من أحدث حالة لطلب الإلغاء. قد تكون الحالة تغيّرت منذ عرض تفاصيل الطلب؛ أعد تحميل
++        <p>{historyErrorText(view.code)} تعذر التحقق من أحدث حالة لطلب الإلغاء. قد تكون حالة طلب الإلغاء تغيّرت. أعد تحميل
+           السجل قبل أي إجراء جديد.</p>
+         <PendingLink className="secondary-button" href={retryHref}>إعادة المحاولة</PendingLink>
+       </div>

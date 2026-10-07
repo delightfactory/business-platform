@@ -62,10 +62,10 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
   }
 
   const latest = history.ok ? history.page.latest : null;
-  const feedback = query.state === 'submitted' && request.state === 'submitted' ? 'حالة طلبك الحالية: مُقدَّم وبانتظار قرار الموارد البشرية.'
-    : query.state === 'withdrawn' && request.state === 'withdrawn' ? 'حالة طلبك الحالية: مسحوب. يمكنك مراجعة تفاصيله أدناه.'
+  const feedback = query.state === 'submitted' && request.state === 'submitted' ? 'تم إرسال طلبك وسينتظر قرار الموارد البشرية.'
+    : query.state === 'withdrawn' && request.state === 'withdrawn' ? 'تم سحب الطلب وحُفظ السبب في سجل العملية.'
       : query.state === 'cancellation-requested' && request.state === 'approved' && latest?.to_state === 'pending'
-        ? 'طلب الإلغاء معلّق حاليًا بانتظار قرار الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
+        ? 'تم إرسال طلب الإلغاء إلى الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
         : null;
 
   const pendingEvent = latest?.to_state === 'pending' ? latest : null;
@@ -137,7 +137,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
           ? <>
             <h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
             <p className="form-message" role="status">تعذّر تحميل سجل طلبات الإلغاء لهذه الصفحة، لذلك لن يُعرض إرسال طلب
-              إلغاء جديد حتى نتحقق من الحالة الحالية. يمكنك مراجعة التفاصيل المتاحة أعلاه؛ أعد المحاولة من قسم «سجل طلبات
+              إلغاء جديد حتى نتحقق من الحالة الحالية. تفاصيل طلبك أعلاه لم تتغيّر؛ أعد المحاولة من قسم «سجل طلبات
               الإلغاء» أدناه.</p>
           </>
           : !canRequestCancellation

@@ -54,8 +54,8 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
       <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></p>
       : !view.ok ? <div className="empty-state" role="alert">
         <h2>تعذر تحميل سجل طلبات الإلغاء</h2>
-        <p>{historyErrorText(view.code)} تعذر التحقق من أحدث حالة لطلب الإلغاء. قد تكون حالة طلب الإلغاء تغيّرت. أعد تحميل
-          السجل قبل أي إجراء جديد.</p>
+        <p>{historyErrorText(view.code)} لم يتغيّر شيء في طلبك وتفاصيله كما هي؛ أعد تحميل السجل قبل أي إجراء جديد على
+          الطلب.</p>
         <PendingLink className="secondary-button" href={retryHref}>إعادة المحاولة</PendingLink>
       </div>
         : <HistoryPage tenantId={tenantId} requestId={requestId} page={view.page} currentUserId={currentUserId} />}

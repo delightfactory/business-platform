@@ -1,0 +1,13 @@
+**Source verdict: accepted as a bounded F1/F2 copy and current-state batch. This is not acceptance of the full stage.**
+
+**Changes**
+- **List guide:** The safer wording is in and now sits below the heading. Hiding it when the request read fails or the page is invalid removes the conflict I flagged. The show/hide condition is display-only and doesn't touch create, withdraw or cancel permissions.
+- **Remaining edge:** After an unknown submit, a successful but empty read shows both the guide and the existing "أرسل أول طلب إجازة" prompt. That prompt could lead to a duplicate submission. The cause already existed and the empty list is a true read result, so I'm recording it under F3/F6 rather than blocking this batch.
+- **Approved-detail history failure:** "يمكنك مراجعة التفاصيل المتاحة أعلاه" removes the last "unchanged" claim. It's accurate, and the existing message that cancellation is withheld until the status is checked stays in place.
+- **History copy:** It no longer refers to when the details were fetched. Stating the possible change twice is a little repetitive but acceptable.
+- **Cancel risk:** Correction accepted. My earlier inference was wrong: the render you confirmed hides the form when the history fails.
+- **Status words and error strings:** Accepted on your stated evidence.
+
+**Still open:** The detail toast is still transient (announcement and focus), and F3–F7 remain open. The lint and TypeScript build planned after applying the change haven't run yet.
+
+**Visual verdict: NOT VISUALLY VERIFIED.** The guide's new place below the heading and having two status paragraphs on screen at once haven't been rendered against pinned Concept C.

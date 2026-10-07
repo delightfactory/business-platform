@@ -1,0 +1,11 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "claudeVersion": "2.1.292 (Claude Code)",
+  "sessionId": "ffc9ca39-437d-40b5-9a66-c287f81924e8",
+  "resultSubtype": "success",
+  "numTurns": 1,
+  "readOnly": true,
+  "touchedFiles": [],
+  "readOnlyViolation": false
+}

@@ -56,7 +56,8 @@
       "codex/ux-self-service-auth-return-proposal": false,
       "codex/ux-design-reference-gate": false,
       "codex/ux-leave-input-recovery": false,
-      "codex/ux-employee-leave-contract": false
+      "codex/ux-employee-leave-contract": false,
+      "codex/ux-leave-current-feedback": false
     }
   }
 }

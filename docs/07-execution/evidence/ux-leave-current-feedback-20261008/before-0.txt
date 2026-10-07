@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
+import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { isObject, isUuid } from './form-rules';
@@ -79,16 +80,17 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   const requests = requestsPayload ? readRequests(requestsPayload.items) : null;
   const balancesFailed = !balancePage.invalid && (!balancesPayload || !balances);
   const requestsFailed = !requestPage.invalid && (!requestsPayload || !requests);
-  const showResultGuide = query.state === 'submitted' || query.state === 'withdrawn';
+  const feedback = query.state === 'submitted'
+    ? 'تم إرسال طلب إجازتك وسينتظر قرار الموارد البشرية.'
+    : query.state === 'withdrawn' ? 'تم سحب طلب الإجازة وحُفظ السبب في سجل العملية.' : null;
 
   return <PageFrame footer="الخدمة الذاتية">
+    {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
     <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
       <h1>إجازاتي</h1>
       <p>أرصدة إجازاتك وسجل طلباتك لدى الشركة. الطلب المعلق لا يحجز أي رصيد قبل اعتماده.</p></div>
       {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}
     </header>
-    {showResultGuide && !requestsFailed && !requestPage.invalid
-      && <p className="form-message" role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</p>}
     {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
 
     <section className="workspace-records-panel" aria-labelledby="leave-balances-title">
@@ -99,7 +101,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
       {balancePage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة الأرصدة غير صالح.{' '}
         <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
         : balancesFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل أرصدة إجازاتك</h2>
-          <p>تعذر التحقق من أحدث أرصدة إجازاتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+          <p>لم يتغيّر أي رصيد. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink></div>
             : balances && balances.length === 0 ? <div className="empty-state"><h2>لا توجد أرصدة مسجّلة لك بعد</h2>
               <p>لا يوجد رصيد مسجّل لأي نوع إجازة حتى الآن. تظهر الأرصدة المسجّلة هنا فور حفظها لدى الشركة.</p></div>
@@ -131,7 +133,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
       {requestPage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
         <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></p>
         : requestsFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل سجل طلباتك</h2>
-          <p>تعذر التحقق من أحدث حالات طلباتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+          <p>لم يتغيّر أي طلب. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
           : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
             <p>{canRequest ? 'أرسل أول طلب إجازة ليظهر هنا مع حالته.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p>

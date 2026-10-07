@@ -1,0 +1,83 @@
+Read-only exactcandidate review; official Opus5.5 Medium; no tools/tests/edits, <=300word answer. Owner requires complete capability/scope/role coverage AND simpler complete user tasks, preserve all actual permission/financial/privacy/ArabicRTL recovery; shared theme/components must match pinnedConceptC with separate visual verdict. This copy/current-state corrective batch only R6a F1/F2, not full R6/160draft closure. Base2c10d726(appf2a50a8), D8 pending unapplied. Source18files/48inventory/10coarseRPC seeds, actualSQL authority unchanged.
+Actor linked employee reading own leave list/detail/history after unknown action or read failure. List stateURL cannot establish action success: replace transient success toast with persistent neutral current-record guidance only for exactknown hints, no additional route/button/permission. Detail preserves currentstate/latestpending predicates but describes current observed status rather than successful action caused by hint. Failed balances/requests/history read cannot assert nothingchanged: truthful lateststate uncertainty, same safe GET retry/pagers/no mutations. Don't make globallyuntested false changes to who can create/withdraw/cancel. Every current link/SDK/RPCparam/control condition unchanged except removal listtoast/helperimport. No CSS/font/radius/control changes; R1approvedCairo40desktop44mobile/radius8/fieldborder retained; originalpinnedHTML AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508. Existing light/reference samples reused onlyunchangedCSS; new guide rendered-state visual qualification NOT VERIFIED, no imagesprovided toyou. Demo optionalnotes/balancecalc/modal notimported.
+38focused actualsource serverpage+history Reactstaticrender comparisons pass withSDKstubs:10list hint/create variants;2independent returnedreadfailures;5historyfailurecodes;18detailstate/hint combinations;1latestpendingcancel;2deny/setup. Assert calls/params/hrefs identical, unknownarray/mismatch unchanged, no newmutatingRPC, neutralinsteadURLsuccess, no falseunchangedstate, currentdetailconditions retained. PageFrame/Toast/PendingLink/form wrappersstubbed; no hydration/parent/provider/SQL/roles/mobilefullacceptance. CrossVMprototype/URLSearchParams harness corrected notapp. One relatedtargetlint+buildTS planned afterexactapplication. F3weakresult/F4throws/F5malformed/F6fulljourney/F7session/visual remain OPEN. Evaluate copytruthfulness, hierarchy/recovery/controlpreservation and materialnewrisks; sourceverdict separate NOT VISUALLY VERIFIED. Do not demand newpermission for existingClassC authorizedpreservation; no fullphaseacceptance. Diff:
+src/app/tenant/[tenantId]/me/leave/page.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-0.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-0.txt
+index 0b8da85..c979f7a 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-0.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-0.txt
+@@ -1,6 +1,5 @@
+ import Link from 'next/link';
+ import { notFound, redirect } from 'next/navigation';
+-import { FeedbackToast } from '@/components/feedback-toast';
+ import { PageFrame } from '@/components/context-navigation';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { isObject, isUuid } from './form-rules';
+@@ -80,12 +79,10 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
+   const requests = requestsPayload ? readRequests(requestsPayload.items) : null;
+   const balancesFailed = !balancePage.invalid && (!balancesPayload || !balances);
+   const requestsFailed = !requestPage.invalid && (!requestsPayload || !requests);
+-  const feedback = query.state === 'submitted'
+-    ? 'تم إرسال طلب إجازتك وسينتظر قرار الموارد البشرية.'
+-    : query.state === 'withdrawn' ? 'تم سحب طلب الإجازة وحُفظ السبب في سجل العملية.' : null;
++  const showResultGuide = query.state === 'submitted' || query.state === 'withdrawn';
+ 
+   return <PageFrame footer="الخدمة الذاتية">
+-    {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
++    {showResultGuide && <p className="form-message" role="status">راجع حالة طلبك في سجل طلبات الإجازة، ثم افتحه لعرض التفاصيل.</p>}
+     <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
+       <h1>إجازاتي</h1>
+       <p>أرصدة إجازاتك وسجل طلباتك لدى الشركة. الطلب المعلق لا يحجز أي رصيد قبل اعتماده.</p></div>
+@@ -101,7 +98,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
+       {balancePage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة الأرصدة غير صالح.{' '}
+         <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
+         : balancesFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل أرصدة إجازاتك</h2>
+-          <p>لم يتغيّر أي رصيد. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
++          <p>تعذر التحقق من أحدث أرصدة إجازاتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+           <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink></div>
+             : balances && balances.length === 0 ? <div className="empty-state"><h2>لا توجد أرصدة مسجّلة لك بعد</h2>
+               <p>لا يوجد رصيد مسجّل لأي نوع إجازة حتى الآن. تظهر الأرصدة المسجّلة هنا فور حفظها لدى الشركة.</p></div>
+@@ -133,7 +130,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
+       {requestPage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
+         <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></p>
+         : requestsFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل سجل طلباتك</h2>
+-          <p>لم يتغيّر أي طلب. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
++          <p>تعذر التحقق من أحدث حالات طلباتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
+           <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
+           : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
+             <p>{canRequest ? 'أرسل أول طلب إجازة ليظهر هنا مع حالته.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p>
+src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-1.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-1.txt
+index 4e494f1..557b567 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-1.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-1.txt
+@@ -62,10 +62,10 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
+   }
+ 
+   const latest = history.ok ? history.page.latest : null;
+-  const feedback = query.state === 'submitted' && request.state === 'submitted' ? 'تم إرسال طلبك وسينتظر قرار الموارد البشرية.'
+-    : query.state === 'withdrawn' && request.state === 'withdrawn' ? 'تم سحب الطلب وحُفظ السبب في سجل العملية.'
++  const feedback = query.state === 'submitted' && request.state === 'submitted' ? 'حالة طلبك الحالية: مُقدَّم وبانتظار قرار الموارد البشرية.'
++    : query.state === 'withdrawn' && request.state === 'withdrawn' ? 'حالة طلبك الحالية: مسحوب. يمكنك مراجعة تفاصيله أدناه.'
+       : query.state === 'cancellation-requested' && request.state === 'approved' && latest?.to_state === 'pending'
+-        ? 'تم إرسال طلب الإلغاء إلى الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
++        ? 'طلب الإلغاء معلّق حاليًا بانتظار قرار الموارد البشرية. يبقى طلب الإجازة معتمدًا حتى القرار.'
+         : null;
+ 
+   const pendingEvent = latest?.to_state === 'pending' ? latest : null;
+src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-2.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-2.txt
+index 6be68f9..dc6829e 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/before-2.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-feedback-20261008/candidate-2.txt
+@@ -54,8 +54,8 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
+       <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></p>
+       : !view.ok ? <div className="empty-state" role="alert">
+         <h2>تعذر تحميل سجل طلبات الإلغاء</h2>
+-        <p>{historyErrorText(view.code)} لم يتغيّر شيء في طلبك وتفاصيله كما هي؛ أعد تحميل السجل قبل أي إجراء جديد على
+-          الطلب.</p>
++        <p>{historyErrorText(view.code)} تعذر التحقق من أحدث حالة لطلب الإلغاء. قد تكون الحالة تغيّرت منذ عرض تفاصيل الطلب؛ أعد تحميل
++          السجل قبل أي إجراء جديد.</p>
+         <PendingLink className="secondary-button" href={retryHref}>إعادة المحاولة</PendingLink>
+       </div>
+         : <HistoryPage tenantId={tenantId} requestId={requestId} page={view.page} currentUserId={currentUserId} />}

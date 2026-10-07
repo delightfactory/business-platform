@@ -1,0 +1,174 @@
+{
+  "passed": 42,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "list hint false:\"submitted\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint false:\"withdrawn\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint false:undefined",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint false:\"approved\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint false:[\"submitted\"]",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint true:\"submitted\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint true:\"withdrawn\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint true:undefined",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint true:\"approved\"",
+      "result": "PASS"
+    },
+    {
+      "name": "list hint true:[\"submitted\"]",
+      "result": "PASS"
+    },
+    {
+      "name": "partial read no unchanged claim leave_my_requests",
+      "result": "PASS"
+    },
+    {
+      "name": "partial read no unchanged claim leave_my_balances",
+      "result": "PASS"
+    },
+    {
+      "name": "history read uncertainty failed",
+      "result": "PASS"
+    },
+    {
+      "name": "history read uncertainty forbidden",
+      "result": "PASS"
+    },
+    {
+      "name": "history read uncertainty session",
+      "result": "PASS"
+    },
+    {
+      "name": "history read uncertainty unavailable",
+      "result": "PASS"
+    },
+    {
+      "name": "history read uncertainty invalid-page",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state submitted:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state submitted:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state submitted:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state withdrawn:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state withdrawn:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state withdrawn:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state approved:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state approved:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state approved:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state rejected:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state rejected:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state rejected:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state cancelled:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state cancelled:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state cancelled:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state draft:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state draft:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "detail current state draft:cancellation-requested",
+      "result": "PASS"
+    },
+    {
+      "name": "authoritative pending cancellation current-state hint only",
+      "result": "PASS"
+    },
+    {
+      "name": "denied/setup hints suppressed {\"denied\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "denied/setup hints suppressed {\"noSdk\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "unavailable history guide suppressed {\"state\":\"submitted\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "unavailable history guide suppressed {\"state\":\"withdrawn\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "unavailable history guide suppressed {\"state\":\"submitted\",\"page\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "detail failed cancellation history remains blocked and no unchanged assertion",
+      "result": "PASS"
+    }
+  ]
+}

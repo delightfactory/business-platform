@@ -1,0 +1,20 @@
+**Source verdict: accept with minor nits. This is copy-only and does not open full R6 or the 160-draft scope. NOT VISUALLY VERIFIED.**
+
+**Copy truthfulness**
+- **List guide:** It no longer claims the action succeeded. One nit: "راجع حالة طلبك" assumes a request exists, which may be false after an unknown submit. A safer version: "راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك."
+- **List guide while the history is down:** The guide also shows when `requestsFailed` is true, the history is empty, or `requestPage.invalid` is true. In those cases it points to a history that isn't there. This is acceptable because the alert sits right below it. It can be fixed later without adding any condition that affects permissions.
+- **Balance and request read failures:** "تعذر التحقق من أحدث…" is truthful, and the false "nothing changed" claims are gone. The retry links are unchanged.
+- **Detail page:** All three messages describe the status as read, under the same predicates as before. One check needed: "مُقدَّم" and "مسحوب" must match the existing status badge words. If they don't, users see two names for one state.
+- **Cancellation history failure:** Uncertainty is now stated, with no "unchanged" claim. Check that all 5 `historyErrorText` strings end with punctuation before the appended sentence. Also, "منذ عرض تفاصيل الطلب" is slightly imprecise because the details and history are fetched in the same request. "قد تكون حالة طلب الإلغاء تغيّرت" would be more exact.
+
+**Hierarchy, recovery and controls**
+- The guide now sits above the `h1` as a normal paragraph, so it moves the heading down. The visual check is still open.
+- A `role="status"` element that is already present on load may not be read by screen readers. That's acceptable for persistent text.
+- Links, SDK/RPC parameters, pagers, and create/withdraw/cancel conditions are unchanged in the diff. No new mutation calls, routes, or permissions.
+- **Detail feedback rendering:** The diff doesn't show how this text is displayed. If it still goes through `FeedbackToast`, a disappearing toast is a weak way to show "current status". Please confirm it is persistent, or record it as open.
+
+**Material new risks:** None.
+
+**Existing risk, not caused by this diff:** When the history read fails, `latest` is null, so `pendingEvent` is null. If the cancel-request control depends only on `!pendingEvent`, it could appear while the pending state is unknown. That falls under F3/F4/F6, which stay open.
+
+**Still open:** F3 to F7 and visual acceptance, including Concept C, Cairo 40/44, radius 8, and mobile. The planned lint and TypeScript build after applying the change still need to run.
