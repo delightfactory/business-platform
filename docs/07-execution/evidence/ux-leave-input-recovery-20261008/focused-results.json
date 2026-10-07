@@ -1,0 +1,73 @@
+{
+  "passed": 15,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "thrown options baseline rejects, candidate retains safe fields and key",
+      "result": "PASS"
+    },
+    {
+      "name": "first options failure retains dates without inventing types",
+      "result": "PASS"
+    },
+    {
+      "name": "existing reload recovers once without mutation or new key",
+      "result": "PASS"
+    },
+    {
+      "name": "stale thrown options sequence ignored after programmatic input change",
+      "result": "PASS"
+    },
+    {
+      "name": "returned result unchanged :0",
+      "result": "PASS"
+    },
+    {
+      "name": "returned result unchanged :1",
+      "result": "PASS"
+    },
+    {
+      "name": "returned result unchanged خطأ خيارات تجريبي:0",
+      "result": "PASS"
+    },
+    {
+      "name": "returned result unchanged خطأ خيارات تجريبي:1",
+      "result": "PASS"
+    },
+    {
+      "name": "loading freezes editable fields and does not load twice",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid date range does not load options",
+      "result": "PASS"
+    },
+    {
+      "name": "cancellation context and close pending=false error=false",
+      "result": "PASS"
+    },
+    {
+      "name": "cancellation context and close pending=false error=true",
+      "result": "PASS"
+    },
+    {
+      "name": "cancellation context and close pending=true error=false",
+      "result": "PASS"
+    },
+    {
+      "name": "cancellation context and close pending=true error=true",
+      "result": "PASS"
+    },
+    {
+      "name": "cancellation idle preserves reason/key normal behaviour",
+      "result": "PASS"
+    }
+  ],
+  "boundary": "Actual component source, controlled hook/transition/action stubs; no React hydration/native browser/provider/DB/role qualification",
+  "claims": {
+    "fieldsAndKeyRetainedOnThrownRead": true,
+    "automaticMutationExecuted": false,
+    "fullR6Accepted": false,
+    "journeyMetrics": "N/C/P/I/B not measured"
+  }
+}

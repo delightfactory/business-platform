@@ -84,15 +84,3 @@
     gap: 0.2rem;
   }
 }
-
-/* Non-interactive pending leave actions: retain readable text and existing geometry. */
-.disabledAction:global(.secondary-button),
-.disabledAction:global(.secondary-button):hover,
-.disabledAction:global(.secondary-button):active {
-  color: var(--text-muted);
-  background: var(--surface-subtle);
-  border-color: var(--color-control-border);
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}

@@ -1,0 +1,48 @@
+{
+  "alignment": [
+    {
+      "phase": "before",
+      "actions": [
+        {
+          "height": 44,
+          "tag": "BUTTON",
+          "y": 433.5125122070313
+        },
+        {
+          "height": 44,
+          "tag": "A",
+          "y": 428.7124938964844
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "actions": [
+        {
+          "height": 44,
+          "tag": "BUTTON",
+          "y": 433.5125122070313
+        },
+        {
+          "height": 44,
+          "tag": "SPAN",
+          "y": 428.7124938964844
+        }
+      ]
+    }
+  ],
+  "hover": {
+    "observed": true,
+    "bg": "rgb(246,247,245)",
+    "color": "rgb(93,104,98)",
+    "transform": "none",
+    "cursor": "not-allowed"
+  },
+  "idleFocus": {
+    "observed": true,
+    "text": "إغلاق",
+    "outline": "rgb(11,114,217) solid 2px"
+  },
+  "heldActive": "not observed",
+  "browserVersion": "unavailable; Browser.getVersion unsupported, operation stopped"
+}

@@ -1,0 +1,22 @@
+**Source verdict: acceptable for this scope only.** I'm going by the diff and your reported checks; I didn't run anything.
+- **Options-load catch:** it only wraps the read-only options action, which you confirmed never redirects. It ignores stale sequences and changed dates, and it doesn't touch saved fields or the key. There's no retry or submit.
+- **Disabled spans:** one CSS class scoped to `leave.module.css`, used only on the three pending spans. No global CSS, no new tokens, and the idle `PendingLink` path is unchanged.
+- **Small style point:** the `styles` import sits above the React imports. Move it below the other imports if the codebase usually puts them there.
+
+**Visual verdict: NOT VISUALLY VERIFIED against Concept C. Only a bounded sample was seen.**
+- **The reference shows a different screen.** `pinned-request-390.png` is the idle new-request modal. Both "after" images are the pending cancellation form. There is no reference image for the pending cancellation state, so the images can't support a match/deviation verdict.
+- **The disabled Close span is visible at 390 and 1366.** It has muted text, a subtle background and a border. It reads as inactive, though less clearly than the faded submit button next to it.
+- **Close and submit are slightly misaligned.** Close sits about 4px higher than the submit button at both widths. Check whether this predates the change.
+- **The reason box is empty while pending.** A real submission needs at least 3 characters, so this synthetic image can't show the reason being kept. The textarea also doesn't look disabled.
+- **Not seen:** the new-request and Withdraw spans, the load-error image, hover/active states, dark mode, and a matching reference state.
+
+**Accepted compatibility deviations:** Cairo, 40px desktop / 44px mobile controls and radius 8, under the existing contract.
+
+**Open gates:**
+- Reference and candidate captures of the same state, for all three spans and the load error.
+- A real parent page with DB, auth and hydration.
+- Hover/active observed in a real browser.
+- Dark mode, full R6, the new modal and layout.
+- D8, still pending and not applied.
+
+This can land as a bounded source fix if the owner accepts the visual gate staying open. Don't claim a design match.

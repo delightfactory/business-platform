@@ -1,7 +1,5 @@
 'use client';
 
-import styles from '../leave.module.css';
-
 import { useActionState, useState, type ChangeEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { newOperationKey } from '../operation-key';
@@ -39,8 +37,7 @@ export function RequestCancellationForm({ tenantId, requestId, expectedVersion, 
     {pending && <p className="field-hint" role="status">جارٍ إرسال طلب الإلغاء… لا تغلق الصفحة ولا تغيّر السبب.</p>}
     <div className="workspace-form-actions">
       <SubmitButton label="إرسال طلب الإلغاء" pendingLabel="جارٍ الإرسال…" />
-      {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إغلاق</span>
-        : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إغلاق</PendingLink>}
+      <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إغلاق</PendingLink>
     </div>
   </form>;
 }

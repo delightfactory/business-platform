@@ -1,7 +1,5 @@
 'use client';
 
-import styles from '../leave.module.css';
-
 import { useActionState, useState, type ChangeEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { withdrawLeaveRequestAction } from '../actions';
@@ -36,7 +34,7 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
     <div className="workspace-form-actions">
       <SubmitButton className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
-      {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
+      {pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
         : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>}
     </div>
   </form>;

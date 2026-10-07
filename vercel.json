@@ -54,7 +54,8 @@
       "codex/ux-employee-attendance-contract": false,
       "codex/ux-attendance-result-integrity": false,
       "codex/ux-self-service-auth-return-proposal": false,
-      "codex/ux-design-reference-gate": false
+      "codex/ux-design-reference-gate": false,
+      "codex/ux-leave-input-recovery": false
     }
   }
 }

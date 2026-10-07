@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "ac64adc8da2e9f2706bf4ea3f1c8d24fa4aa2893",
+  "sourceHead": "926f97c3df98cbb191bc4baf1146e3bddc3b820c",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -690,12 +690,12 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
       "phase": "R6",
-      "sha256": "eb57dbb5ae38167a8c7816a2fb9e0ba66326e0638dca0a3986ff07bac993147d"
+      "sha256": "eed5d09edc1bd39a266555691d1ca63494c0303451bf44d8be3f0c17e8a72303"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "phase": "R6",
-      "sha256": "a4e473c89e4962c98d111126307fd276ab8eda5138e850a111b834fc28963fd1"
+      "sha256": "77dfdbac3d400c6b830f1c7fe8b14cf7e705f34776802c365d9ea78e838d8ef2"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-actions.ts",
@@ -725,12 +725,12 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
       "phase": "R6",
-      "sha256": "64ed065bcbb0763e3b84868812485ff812aec684a184930182299205de478650"
+      "sha256": "ac130ceb7c1d6a16fd31c783c4d318e34b48105e4c428305de7c802294d6c95a"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
       "phase": "R6",
-      "sha256": "9dcd1eef034775ab7e05ebf454f7d7a4b616b74bb43356001152da50e5e84b6b"
+      "sha256": "c10446b48b060213be7cd910196492d139b2a69a2d39902946ac0f731529c57b"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
@@ -11873,8 +11873,72 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:26:1040",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:28:1058",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 28,
+      "tag": "form",
+      "phase": "R6",
+      "attributes": {
+        "action": "{action}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:29:1141",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 29,
+      "tag": "input",
+      "phase": "R6",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"tenantId\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:30:1202",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 30,
+      "tag": "input",
+      "phase": "R6",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"requestId\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:31:1265",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 31,
+      "tag": "input",
+      "phase": "R6",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"expectedVersion\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:32:1340",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 32,
+      "tag": "input",
+      "phase": "R6",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"idempotencyKey\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:34:1476",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 34,
+      "tag": "textarea",
+      "phase": "R6",
+      "attributes": {
+        "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:26:946",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 26,
       "tag": "form",
       "phase": "R6",
@@ -11883,8 +11947,8 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:27:1124",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:27:1030",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 27,
       "tag": "input",
       "phase": "R6",
@@ -11894,8 +11958,8 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:28:1186",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:28:1092",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 28,
       "tag": "input",
       "phase": "R6",
@@ -11905,8 +11969,8 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:29:1250",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:29:1156",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 29,
       "tag": "input",
       "phase": "R6",
@@ -11916,8 +11980,8 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:30:1326",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:30:1232",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 30,
       "tag": "input",
       "phase": "R6",
@@ -11927,8 +11991,8 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:32:1464",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:32:1360",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "line": 32,
       "tag": "textarea",
       "phase": "R6",
@@ -11937,81 +12001,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:24:903",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 24,
-      "tag": "form",
-      "phase": "R6",
-      "attributes": {
-        "action": "{action}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:25:987",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 25,
-      "tag": "input",
-      "phase": "R6",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"tenantId\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:26:1049",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 26,
-      "tag": "input",
-      "phase": "R6",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"requestId\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:27:1113",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 27,
-      "tag": "input",
-      "phase": "R6",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"expectedVersion\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:28:1189",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 28,
-      "tag": "input",
-      "phase": "R6",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:30:1317",
-      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 30,
-      "tag": "textarea",
-      "phase": "R6",
-      "attributes": {
-        "name": "\"reason\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:111:4901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:120:5200",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 111,
+      "line": 120,
       "tag": "form",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:112:4989",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:121:5287",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 112,
+      "line": 121,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12020,9 +12020,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:114:5120",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:123:5416",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 114,
+      "line": 123,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12031,9 +12031,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:117:5413",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:126:5706",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 117,
+      "line": 126,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12042,9 +12042,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:124:6114",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:133:6400",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 124,
+      "line": 133,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -12052,9 +12052,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:135:6601",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:144:6876",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 135,
+      "line": 144,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12062,9 +12062,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:138:6926",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:147:7198",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 138,
+      "line": 147,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12073,9 +12073,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:139:6992",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:148:7263",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 139,
+      "line": 148,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12084,9 +12084,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:140:7068",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:149:7338",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 140,
+      "line": 149,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12095,9 +12095,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:141:7140",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:150:7409",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 141,
+      "line": 150,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12106,9 +12106,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:142:7230",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:151:7498",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 142,
+      "line": 151,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12117,9 +12117,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:147:7578",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:156:7841",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 147,
+      "line": 156,
       "tag": "select",
       "phase": "R6",
       "attributes": {
@@ -12127,9 +12127,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:156:8325",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:165:8579",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 156,
+      "line": 165,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12137,9 +12137,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:160:8608",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:169:8858",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 160,
+      "line": 169,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {

@@ -1,0 +1,105 @@
+Read-only final EXACT CANDIDATE delta, official Opus5.5 Medium. <=300 word report. Read ONLY these 3 image files in ONE batch of Read calls, then give final judgement. No tests/edit/search/tools beyond those images. Images:
+C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/pinned-request-390.png
+C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/after-pending-390.png
+C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/after-pending-1366.png
+Mandatory owner: simpler full journeys, all actual capability/role/business/privacy/financial safeguards, plus separate design-reference gate in issue47. Scope ONLY ClassC leave input recovery + pending secondary spans; fullR6/newmodal/layout/dark/auth/SQL/hydration are OPEN, no whole design-match claim. Theme palette/control/Cairo unchanged. Pin original HTML hash AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508; screenshot from pinned original loopback GET, employee request form. Contract keeps Cairo/40desktop/44mobile/radius8; proposed replacements need amendment (existing contract does NOT need owner reapproval). Reference optional-note/instantbalance/modal not copied: real reason3-500/RPC authority/staged readonly type load remain.
+Root fixed earlier finding WITHOUT global CSS/new tokens: leave.module scoped disabledAction compound class used ONLY spans in new/withdraw/cancellation. text-muted/subtle/control-border/notallowed/no shadow/no transform; explicit hover/active overrides prevent interactive visual. No pointer-events:none needed because nonfocusable noninteractive span, keeping notallowedcursor. Contrast calculated from final color/bg; no opacity55 text fade. Controlled15 cases pass, idleHTML invariant except same imports, safe fields/key retained, no mutation/retry. Actual CSS composition DOM phone390 anddesktop1366:44/40px controls, scroll=viewport,Cairo loaded; span noanchor/tabIndex-1, nativehover nochange, idlelinkkeyboardfocus2px. Active-held browser observation/version unavailable (rawCDP Browser.getVersion unsupported, stopped); sourceoverride only. Wrapper is synthetic static component render, NOT actualparent/DB/auth/hydration proof. New loaderror image captured separately; no false trustedsubmit/units. Known options action no redirects; stale-date fieldset disables stale options. D8 pending unapplied.
+Give explicit SOURCE verdict and VISUAL verdict with accepted compatibility deviations and actual images seen. If fullacceptance unsupported, say bounded source-only/visualsample and exactopengate; no invented proof. Don't repeat wholeproject review. Diff:
+src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-0.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-0.txt
+index 48742b7..bbadd6f 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-0.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-0.txt
+@@ -84,7 +84,16 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
+     formData.set('startDate', requested.startDate);
+     formData.set('endDate', requested.endDate);
+     startOptionsLoad(async () => {
+-      const result = await loadLeaveRequestOptionsAction(formData);
++      let result: LeaveOptionsState;
++      try {
++        result = await loadLeaveRequestOptionsAction(formData);
++      } catch {
++        if (sequence !== loadSequenceRef.current) return;
++        const current = fieldsRef.current;
++        if (current.startDate !== requested.startDate || current.endDate !== requested.endDate) return;
++        setOptionsError('تعذر تحميل أنواع الإجازة الآن. احتفظنا بالبيانات التي أدخلتها؛ أعد تحميل الأنواع للمتابعة.');
++        return;
++      }
+       if (sequence !== loadSequenceRef.current) return;
+       const current = fieldsRef.current;
+       if (current.startDate !== requested.startDate || current.endDate !== requested.endDate) return;
+@@ -164,7 +173,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
+             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
+             <div className="workspace-form-actions">
+               <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" />
+-              {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
++              {submitting ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
+                 : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}
+             </div>
+             <p className="field-hint">يُرسَل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد قبل الاعتماد.</p>
+src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-1.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-1.txt
+index e9c2d75..07cc0cd 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-1.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-1.txt
+@@ -1,5 +1,7 @@
+ 'use client';
+ 
++import styles from '../leave.module.css';
++
+ import { useActionState, useState, type ChangeEvent } from 'react';
+ import { SubmitButton } from '@/components/submit-button';
+ import { newOperationKey } from '../operation-key';
+@@ -37,7 +39,8 @@ export function RequestCancellationForm({ tenantId, requestId, expectedVersion,
+     {pending && <p className="field-hint" role="status">جارٍ إرسال طلب الإلغاء… لا تغلق الصفحة ولا تغيّر السبب.</p>}
+     <div className="workspace-form-actions">
+       <SubmitButton label="إرسال طلب الإلغاء" pendingLabel="جارٍ الإرسال…" />
+-      <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إغلاق</PendingLink>
++      {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إغلاق</span>
++        : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إغلاق</PendingLink>}
+     </div>
+   </form>;
+ }
+src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-2.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-2.txt
+index 6d35e89..709740f 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-2.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-2.txt
+@@ -1,5 +1,7 @@
+ 'use client';
+ 
++import styles from '../leave.module.css';
++
+ import { useActionState, useState, type ChangeEvent } from 'react';
+ import { SubmitButton } from '@/components/submit-button';
+ import { withdrawLeaveRequestAction } from '../actions';
+@@ -34,7 +36,7 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
+     {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
+     <div className="workspace-form-actions">
+       <SubmitButton className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
+-      {pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
++      {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
+         : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>}
+     </div>
+   </form>;
+src/app/tenant/[tenantId]/me/leave/leave.module.css
+diff --git a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-3.txt b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-3.txt
+index 38c7860..cd3076c 100644
+--- a/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/before-3.txt
++++ b/C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-leave-input-recovery-20261008/candidate-3.txt
+@@ -84,3 +84,15 @@
+     gap: 0.2rem;
+   }
+ }
++
++/* Non-interactive pending leave actions: retain readable text and existing geometry. */
++.disabledAction:global(.secondary-button),
++.disabledAction:global(.secondary-button):hover,
++.disabledAction:global(.secondary-button):active {
++  color: var(--text-muted);
++  background: var(--surface-subtle);
++  border-color: var(--color-control-border);
++  cursor: not-allowed;
++  box-shadow: none;
++  transform: none;
++}

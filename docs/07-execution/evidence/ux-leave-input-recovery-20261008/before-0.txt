@@ -84,16 +84,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
     formData.set('startDate', requested.startDate);
     formData.set('endDate', requested.endDate);
     startOptionsLoad(async () => {
-      let result: LeaveOptionsState;
-      try {
-        result = await loadLeaveRequestOptionsAction(formData);
-      } catch {
-        if (sequence !== loadSequenceRef.current) return;
-        const current = fieldsRef.current;
-        if (current.startDate !== requested.startDate || current.endDate !== requested.endDate) return;
-        setOptionsError('تعذر تحميل أنواع الإجازة الآن. احتفظنا بالبيانات التي أدخلتها؛ أعد تحميل الأنواع للمتابعة.');
-        return;
-      }
+      const result = await loadLeaveRequestOptionsAction(formData);
       if (sequence !== loadSequenceRef.current) return;
       const current = fieldsRef.current;
       if (current.startDate !== requested.startDate || current.endDate !== requested.endDate) return;
@@ -173,7 +164,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
               <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" />
-              {submitting ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
+              {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
                 : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}
             </div>
             <p className="field-hint">يُرسَل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد قبل الاعتماد.</p>

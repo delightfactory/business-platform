@@ -1,0 +1,114 @@
+[
+  {
+    "phase": "before",
+    "actions": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "cursor": "not-allowed",
+        "height": 44,
+        "opacity": "0.55",
+        "tag": "BUTTON",
+        "text": "إرسال طلب الإلغاء",
+        "transform": "none"
+      },
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "cursor": "pointer",
+        "height": 44,
+        "opacity": "1",
+        "tag": "A",
+        "text": "إغلاق",
+        "transform": "none"
+      }
+    ],
+    "font": true,
+    "scroll": 390,
+    "width": 390
+  },
+  {
+    "phase": "after",
+    "actions": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "cursor": "not-allowed",
+        "height": 44,
+        "opacity": "0.55",
+        "tag": "BUTTON",
+        "text": "إرسال طلب الإلغاء",
+        "transform": "none"
+      },
+      {
+        "bg": "rgb(246, 247, 245)",
+        "color": "rgb(93, 104, 98)",
+        "cursor": "not-allowed",
+        "height": 44,
+        "opacity": "1",
+        "tag": "SPAN",
+        "text": "إغلاق",
+        "transform": "none"
+      }
+    ],
+    "font": true,
+    "scroll": 390,
+    "width": 390
+  },
+  {
+    "phase": "before",
+    "actions": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "cursor": "not-allowed",
+        "height": 40,
+        "opacity": "0.55",
+        "tag": "BUTTON",
+        "text": "إرسال طلب الإلغاء",
+        "transform": "none"
+      },
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "cursor": "pointer",
+        "height": 40,
+        "opacity": "1",
+        "tag": "A",
+        "text": "إغلاق",
+        "transform": "none"
+      }
+    ],
+    "font": true,
+    "scroll": 1366,
+    "width": 1366
+  },
+  {
+    "phase": "after",
+    "actions": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "cursor": "not-allowed",
+        "height": 40,
+        "opacity": "0.55",
+        "tag": "BUTTON",
+        "text": "إرسال طلب الإلغاء",
+        "transform": "none"
+      },
+      {
+        "bg": "rgb(246, 247, 245)",
+        "color": "rgb(93, 104, 98)",
+        "cursor": "not-allowed",
+        "height": 40,
+        "opacity": "1",
+        "tag": "SPAN",
+        "text": "إغلاق",
+        "transform": "none"
+      }
+    ],
+    "font": true,
+    "scroll": 1366,
+    "width": 1366
+  }
+]

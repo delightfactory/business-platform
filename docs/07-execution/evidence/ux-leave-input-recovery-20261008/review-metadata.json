@@ -1,0 +1,10 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "sessionId": "686d3e22-3411-45d5-896a-ed641cecabdd",
+  "resultSubtype": "success",
+  "numTurns": 4,
+  "readOnly": true,
+  "touchedFiles": [],
+  "readOnlyViolation": false
+}
