@@ -1,0 +1,132 @@
+{
+  "sourceSha": "4f1aadf58b0f11cd9c6fc68ec03942cd0d3042c6",
+  "scope": "22 actual page renders/shared components with SDK/action stubs; no hydration/provider/SQL/real role acceptance",
+  "cases": [
+    {
+      "lane": "operator",
+      "state": "created-sent",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-failed",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "reissued-unknown",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "revoked",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "revoke-unchanged",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "revoke-unknown",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "expired",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "state": "__proto__",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "created-sent",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-failed",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "reissued-unknown",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "revoked",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "revoke-unchanged",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "revoke-unknown",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "expired",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "member",
+      "state": "__proto__",
+      "status": "pass",
+      "qualification": "actual pages/shared React components, SDK/action stubs, static SSR only"
+    },
+    {
+      "lane": "operator",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "fixture": "empty",
+      "status": "pass"
+    },
+    {
+      "lane": "operator",
+      "fixture": "missing-selected",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "fixture": "denied",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "fixture": "empty",
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "fixture": "missing-selected",
+      "status": "pass"
+    }
+  ]
+}

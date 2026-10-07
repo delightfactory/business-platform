@@ -1,0 +1,207 @@
+{
+  "sourceSha": "4f1aadf58b0f11cd9c6fc68ec03942cd0d3042c6",
+  "scope": "Actual static React pages/shared components, loopback SDK/action-stub fixture, compiled route CSS; no hydration/provider/SQL/root-layout acceptance",
+  "measurements": [
+    {
+      "alerts": [
+        "انتهت صلاحية الدعوة. يمكنك إنشاء دعوة جديدة. راجع حالة الدعوات"
+      ],
+      "controls": [
+        {
+          "height": 44,
+          "text": "تسجيل الخروج",
+          "width": 109.13750457763672
+        },
+        {
+          "height": 44,
+          "text": "دعوة مسؤول جديد",
+          "width": 141.3625030517578
+        },
+        {
+          "height": 24,
+          "text": "invitation-search",
+          "width": 158.8000030517578
+        },
+        {
+          "height": 44,
+          "text": "بحث",
+          "width": 53.72500228881836
+        }
+      ],
+      "dir": "rtl",
+      "fonts": "loaded",
+      "scrollWidth": 375,
+      "statuses": [],
+      "url": "http://127.0.0.1:3571/operator/invitations?state=expired",
+      "width": 390
+    },
+    {
+      "alerts": [
+        "تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر."
+      ],
+      "buttons": [
+        {
+          "height": 44,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "إعادة إرسال"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء الدعوة"
+        }
+      ],
+      "clientWidth": 375,
+      "dir": "rtl",
+      "inputs": [
+        {
+          "border": "rgb(23, 32, 28)",
+          "font": "Cairo, sans-serif",
+          "height": 24,
+          "name": "q",
+          "padding": "0px"
+        }
+      ],
+      "scrollWidth": 375,
+      "toasts": 0,
+      "url": "http://127.0.0.1:3571/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+      "width": 390
+    },
+    {
+      "alerts": [
+        "انتهت صلاحية الدعوة. يمكنك إنشاء دعوة جديدة. راجع حالة الدعوات"
+      ],
+      "buttons": [
+        {
+          "height": 44,
+          "text": "تسجيل الخروج"
+        },
+        {
+          "height": 44,
+          "text": "بحث"
+        }
+      ],
+      "clientWidth": 753,
+      "dir": "rtl",
+      "inputs": [
+        {
+          "border": "rgb(23, 32, 28)",
+          "font": "Cairo, sans-serif",
+          "height": 24,
+          "name": "q",
+          "padding": "0px"
+        }
+      ],
+      "scrollWidth": 753,
+      "toasts": 0,
+      "url": "http://127.0.0.1:3571/operator/invitations?state=expired",
+      "width": 768
+    },
+    {
+      "alerts": [
+        "تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر."
+      ],
+      "buttons": [
+        {
+          "height": 44,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "إعادة إرسال"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء الدعوة"
+        }
+      ],
+      "clientWidth": 753,
+      "dir": "rtl",
+      "inputs": [
+        {
+          "border": "rgb(23, 32, 28)",
+          "font": "Cairo, sans-serif",
+          "height": 24,
+          "name": "q",
+          "padding": "0px"
+        }
+      ],
+      "scrollWidth": 753,
+      "toasts": 0,
+      "url": "http://127.0.0.1:3571/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+      "width": 768
+    },
+    {
+      "alerts": [
+        "انتهت صلاحية الدعوة. يمكنك إنشاء دعوة جديدة. راجع حالة الدعوات"
+      ],
+      "buttons": [
+        {
+          "height": 40,
+          "text": "تسجيل الخروج"
+        },
+        {
+          "height": 40,
+          "text": "بحث"
+        }
+      ],
+      "clientWidth": 1351,
+      "dir": "rtl",
+      "inputs": [
+        {
+          "border": "rgb(23, 32, 28)",
+          "font": "Cairo, sans-serif",
+          "height": 24,
+          "name": "q",
+          "padding": "0px"
+        }
+      ],
+      "scrollWidth": 1351,
+      "toasts": 0,
+      "url": "http://127.0.0.1:3571/operator/invitations?state=expired",
+      "width": 1366
+    },
+    {
+      "alerts": [
+        "تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر."
+      ],
+      "buttons": [
+        {
+          "height": 40,
+          "text": "بحث"
+        },
+        {
+          "height": 40,
+          "text": "إعادة إرسال"
+        },
+        {
+          "height": 40,
+          "text": "إلغاء الدعوة"
+        }
+      ],
+      "clientWidth": 1351,
+      "dir": "rtl",
+      "inputs": [
+        {
+          "border": "rgb(23, 32, 28)",
+          "font": "Cairo, sans-serif",
+          "height": 24,
+          "name": "q",
+          "padding": "0px"
+        }
+      ],
+      "scrollWidth": 1351,
+      "toasts": 0,
+      "url": "http://127.0.0.1:3571/tenant/11111111-1111-4111-8111-111111111111/users?state=revoke-unknown",
+      "width": 1366
+    }
+  ],
+  "keyboardSearch": {
+    "url": "http://127.0.0.1:3571/operator/invitations?q=%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1",
+    "retainedValue": "اختبار",
+    "status": "pass"
+  },
+  "openFinding": "Both q fields 24px,0px padding; mobile target44px/desktop40px not met"
+}

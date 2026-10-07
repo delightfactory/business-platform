@@ -44,7 +44,8 @@
       "codex/ux-r2-member-validation": false,
       "codex/ux-outbound-contracts": false,
       "codex/ux-invitation-revoke-feedback": false,
-      "codex/ux-invitation-expiry-states": false
+      "codex/ux-invitation-expiry-states": false,
+      "codex/ux-invitation-page-evidence": false
     }
   }
 }
