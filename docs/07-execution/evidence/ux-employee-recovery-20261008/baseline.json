@@ -1,0 +1,224 @@
+{
+  "sourceSha": "af8cbe75cd3001113f7c0570fdbcc6de6f04b50f",
+  "sourceFile": "src/app/auth/employee-account-activation/page.tsx",
+  "sourceHash": "d9ffd21455331a34c898f2677643c4dea468e374a73ae69f3e6452e890072be9",
+  "scope": "24 actual static React/shared-component baseline observations, synthetic SDK/action stubs; findings, not improvement/provider/SQL acceptance",
+  "cases": [
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": null,
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": "limit-full",
+      "passwordInputs": 0,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": "retry",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": "readiness",
+      "passwordInputs": 2,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": "activated",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": false,
+      "queryState": "employee-unavailable",
+      "passwordInputs": 0,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": null,
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": "limit-full",
+      "passwordInputs": 0,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": "retry",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": "readiness",
+      "passwordInputs": 2,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": true
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": "activated",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "user_created",
+      "passwordReady": true,
+      "queryState": "employee-unavailable",
+      "passwordInputs": 0,
+      "retryControl": true,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": null,
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": "limit-full",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": "retry",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": "readiness",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": "activated",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": false,
+      "queryState": "employee-unavailable",
+      "passwordInputs": 2,
+      "retryControl": false,
+      "continuation": false,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": null,
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": "limit-full",
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": "retry",
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": "readiness",
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": "activated",
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    },
+    {
+      "snapshotState": "activated",
+      "passwordReady": true,
+      "queryState": "employee-unavailable",
+      "passwordInputs": 0,
+      "retryControl": false,
+      "continuation": true,
+      "claimsSavedPassword": false
+    }
+  ]
+}
