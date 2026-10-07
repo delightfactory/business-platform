@@ -52,7 +52,8 @@
       "codex/ux-employee-activation-recovery": false,
       "codex/ux-recipient-password-feedback": false,
       "codex/ux-employee-attendance-contract": false,
-      "codex/ux-attendance-result-integrity": false
+      "codex/ux-attendance-result-integrity": false,
+      "codex/ux-self-service-auth-return-proposal": false
     }
   }
 }

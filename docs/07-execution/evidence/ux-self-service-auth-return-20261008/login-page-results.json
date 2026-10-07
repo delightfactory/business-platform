@@ -1,0 +1,33 @@
+{
+  "applicationApplied": false,
+  "passed": 5,
+  "failed": 0,
+  "boundary": "Actual LoginPage static React render, Link/SubmitButton/action stubs; not hydration or real sign-in",
+  "cases": [
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    }
+  ]
+}

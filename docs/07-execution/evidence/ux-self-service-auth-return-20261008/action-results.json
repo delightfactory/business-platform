@@ -1,0 +1,148 @@
+{
+  "applicationApplied": false,
+  "passed": 20,
+  "failed": 0,
+  "boundary": "Actual signInAction and candidate classifier, entirely fake SDK/provider; no live login or permissions, LoginPage DOM not executed",
+  "cases": [
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    }
+  ]
+}

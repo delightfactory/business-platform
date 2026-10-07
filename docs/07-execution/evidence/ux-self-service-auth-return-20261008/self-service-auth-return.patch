@@ -1,0 +1,12 @@
+diff --git a/src/app/auth/safe-next.ts b/src/app/auth/safe-next.ts
+index 534825b..f948463 100644
+--- a/src/app/auth/safe-next.ts
++++ b/src/app/auth/safe-next.ts
+@@ -6,0 +7,3 @@ const payrollPath = new RegExp(`^/tenant/${uuid}/payroll(?:/(?:setup|inputs|runs
++const selfServiceUuid = uuid.replaceAll('a-f', 'a-fA-F');
++const selfServicePath = new RegExp(`^/tenant/${selfServiceUuid}/me(?:/(?:attendance|leave(?:/(?:new|${selfServiceUuid}))?))?$`);
++
+@@ -11 +14,2 @@ export function safeAuthNext(value: string): string {
+-  return tenantPath.test(value) || operatorPath.test(value) || invitationPath.test(value) || payroll ? value : '';
++  const selfService = value.length <= 256 && selfServicePath.test(value) && !/[\x00-\x20#\\%?]/.test(value);
++  return selfService || tenantPath.test(value) || operatorPath.test(value) || invitationPath.test(value) || payroll ? value : '';
