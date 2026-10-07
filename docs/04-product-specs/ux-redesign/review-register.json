@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "eb223680a77625dd00b6bfaaf6ad378507b3ac6b",
+  "sourceSnapshot": "0500508d69e87aa2b3075df5c471f01518b10dca",
   "status": "Proposed",
   "items": [
     {
@@ -4769,7 +4769,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/select/page.tsx:15:853",
+      "id": "RPC:src/app/tenant/select/page.tsx:15:999",
       "category": "rpcCalls",
       "phase": "R2",
       "status": "pending",
@@ -4985,7 +4985,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:33:2801",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:30:2514",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -4994,7 +4994,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2886",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:31:2597",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5003,7 +5003,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:3014",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:32:2725",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5012,7 +5012,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3221",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:33:2932",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5021,7 +5021,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:42:3831",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3540",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5030,7 +5030,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:42:3905",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3614",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5039,7 +5039,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:49:4787",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4496",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5048,7 +5048,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4871",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4580",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5057,7 +5057,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:5000",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4709",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5066,7 +5066,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:5207",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:49:4916",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5196,7 +5196,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5502",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5534",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5205,7 +5205,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5531",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5563",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -13913,7 +13913,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1107",
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1429",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -13922,7 +13922,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/select/page.tsx:27:1862",
+      "id": "CONTROL:src/app/tenant/select/page.tsx:27:2183",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -14033,9 +14033,29 @@
       "scenarioIds": [],
       "reviewer": null,
       "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1290",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1333",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
     }
   ],
-  "snapshotQualification": "Working tree source hashes for CSS-only shared-controls batch; HEAD denotes base; manual reviews unchanged",
+  "snapshotQualification": "Working tree source fingerprints for R2 entry recovery; HEAD denotes base; reviewed items preserved",
   "idMigrationCount": 7,
-  "navigationControlIdMigrations": 7
+  "navigationControlIdMigrations": 7,
+  "entryControlIdMigrations": 14,
+  "entryRpcIdMigrations": 1
 }

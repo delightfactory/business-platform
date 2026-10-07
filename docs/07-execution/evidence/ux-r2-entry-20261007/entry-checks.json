@@ -1,0 +1,318 @@
+{
+  "scope": "actual-server-components-sdk-and-action-stubs-no-network-no-live-UAT",
+  "cases": [
+    {
+      "id": "TENANT-READ-ERROR",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-UNUSABLE-null",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-UNUSABLE-{}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-UNUSABLE-\"unusable\"",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-SETUP",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-NO-USER",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-EMPTY",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-SINGLE-ACTIVE",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-SUSPENDED",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "TENANT-MULTIPLE",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-none",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-none",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-unknown",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-unknown",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-__proto__",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-__proto__",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-constructor",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-constructor",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-toString",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-toString",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "callback-UNKNOWN-hasOwnProperty",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "accept-UNKNOWN-hasOwnProperty",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "CALLBACK-invalid",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "CALLBACK-link-expired",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "CALLBACK-setup",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "CALLBACK-VALID",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-invalid",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-expired",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-superseded",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-unavailable",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-identity",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-unverified",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-issuer-lost",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-accept-failed",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-password",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-password-marker-failed",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-link-expired",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-no-session",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-setup",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-VALIDATION-ready",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-VALIDATION-password_required",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-VALIDATION-identity_mismatch",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "ACCEPT-VALIDATION-unavailable",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-READY",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-READY-FORGED-COPY",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-UNREADY-none",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-UNREADY-password-ready",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-UNREADY-unknown",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-UNREADY-limit-full",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-user_created",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-limit-full",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-employee-unavailable",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-password-ready",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-readiness",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-PENDING-retry",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-DENIED-{\"setup\":false}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-DENIED-{\"user\":false}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-DENIED-{\"data\":null}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-DENIED-{\"data\":[]}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-DENIED-{\"error\":{}}",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    },
+    {
+      "id": "EMPLOYEE-MALFORMED",
+      "status": "pass",
+      "qualification": "server-component-render-provider-and-actions-stubbed"
+    }
+  ],
+  "baselineUnknownPrototype": {
+    "accept": "render-error",
+    "callback": "render-error"
+  },
+  "primaryTenantRetryBefore": 0,
+  "primaryTenantRetryAfter": 1,
+  "verifiedActivationContinuationBefore": 0,
+  "verifiedActivationContinuationAfter": 1
+}

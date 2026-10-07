@@ -58,5 +58,5 @@ function stateMessage(state?: string) {
     'link-expired': 'تعذر استخدام رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مشغّل المنصة إصدار رابط جديد.',
     setup: 'إعداد خدمة الحسابات غير مكتمل. أعد المحاولة لاحقًا.',
   };
-  return labels[state ?? ''] ?? 'تعذر التحقق من رابط الدعوة.';
+  return state && Object.hasOwn(labels, state) ? labels[state] : 'تعذر التحقق من رابط الدعوة.';
 }

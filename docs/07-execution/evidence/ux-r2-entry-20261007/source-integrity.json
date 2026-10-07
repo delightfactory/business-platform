@@ -1,0 +1,10 @@
+{
+  "unchangedSourceFiles": 251,
+  "changedPages": [
+    "src/app/tenant/select/page.tsx",
+    "src/app/auth/invitations/accept/page.tsx",
+    "src/app/auth/invitations/callback/page.tsx",
+    "src/app/auth/employee-account-activation/page.tsx"
+  ],
+  "allOtherSourceIdentical": true
+}

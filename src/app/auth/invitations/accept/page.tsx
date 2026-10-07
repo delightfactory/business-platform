@@ -79,7 +79,7 @@ function stateMessage(state?: string) {
     'no-session': 'انتهت جلسة الدعوة. افتح أحدث رابط وصلك في البريد.',
     setup: 'إعداد خدمة الحسابات غير مكتمل.',
   };
-  return labels[state ?? ''] ?? 'تعذر التحقق من الدعوة. اطلب من مشغّل المنصة مراجعتها.';
+  return state && Object.hasOwn(labels, state) ? labels[state] : 'تعذر التحقق من الدعوة. اطلب من مشغّل المنصة مراجعتها.';
 }
 
 function Status({ title, detail, link, linkText }: { title: string; detail: string; link?: string; linkText?: string }) {

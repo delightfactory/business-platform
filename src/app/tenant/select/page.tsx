@@ -9,11 +9,11 @@ type TenantOption = { tenant_id: string; tenant_name: string; lifecycle_state: '
 
 export default async function SelectTenantPage() {
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <main className="app-shell"><section className="auth-card"><h1>إعداد الاتصال غير مكتمل</h1><p className="intro">تعذر الاتصال بخدمة الحسابات.</p></section></main>;
+  if (!supabase) return <main className="app-shell"><section className="auth-card"><h1>إعداد الاتصال غير مكتمل</h1><p className="intro" role="alert">تعذر الاتصال بخدمة الحسابات. تواصل مع دعم المنصة إذا استمرت المشكلة.</p><Link className="primary-button link-button" href="/auth/login">العودة إلى تسجيل الدخول</Link></section></main>;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('current_tenant_spaces');
-  if (error || !Array.isArray(data)) return <main className="app-shell"><section className="auth-card"><h1>تعذر تحميل الشركات</h1><p className="intro">لا يمكن عرض مساحاتك الآن. أعد تحميل الصفحة وحاول مرة أخرى.</p><form action={signOutAction}><SubmitButton className="secondary-button" label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form></section></main>;
+  if (error || !Array.isArray(data)) return <main className="app-shell"><section className="auth-card"><h1>تعذر تحميل الشركات</h1><p className="intro" role="alert">لا يمكن عرض مساحاتك الآن. أعد المحاولة، أو تواصل مع دعم المنصة إذا استمرت المشكلة.</p><form action="/tenant/select" method="get"><button className="primary-button link-button" type="submit">إعادة تحميل الشركات</button></form><form action={signOutAction}><SubmitButton className="secondary-button" label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form></section></main>;
   const options = data as TenantOption[];
   if (options.length === 1 && options[0].lifecycle_state === 'active' && /^[0-9a-f-]{36}$/i.test(options[0].tenant_id)) {
     redirect(`/tenant/${options[0].tenant_id}`);

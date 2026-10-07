@@ -24,19 +24,16 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
     <section className="auth-card" aria-labelledby="employee-activation-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><h1 id="employee-activation-title">إعداد حسابك</h1>
       <p className="intro">الحساب مرتبط ببريد <bdi>{String(intent.email ?? user.email ?? '')}</bdi> للموظف {String(intent.employee_name ?? '')} في {String(intent.tenant_name ?? '')}.</p>
-      {intent.state === 'activated' && intent.password_ready === true ? <p className="form-message" role="status">{state === 'password-ready'
-        ? 'تم تحديث كلمة المرور وتأكيد جاهزيتها. الحساب نشط بالفعل؛ لم تتغير العضوية أو الصلاحيات.'
-        : 'الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.'}</p>
+      {intent.state === 'activated' && intent.password_ready === true ? <><p className="form-message" role="status">الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.</p><Link className="primary-button link-button" href="/tenant/select">المتابعة إلى مساحة العمل</Link></>
         : intent.state === 'activated' ? <>
-          {state === 'password-ready' && intent.password_ready === true ? <p className="form-message" role="status">تم تحديث كلمة المرور وتأكيد جاهزيتها. الحساب نشط بالفعل؛ لم تتغير العضوية أو الصلاحيات.</p>
-            : <p className="form-message capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</p>}
-          {state !== 'password-ready' && <form className="auth-form" action={setEmployeeAccountPasswordAction}>
+          <p className="form-message capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</p>
+          <form className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
             <label htmlFor="employee-password">كلمة مرور جديدة</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <SubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
-          </form>}
+          </form>
         </> : state === 'limit-full' ? <>
         <p className="form-message capacity-message" role="status">اكتمل عدد المستخدمين المسموح به حاليًا. أُكد بريدك وحُفظت كلمة المرور، لكن العضوية لم تُفعّل بعد. اطلب من مسؤول الشركة معالجة المقاعد ثم أعد المحاولة.</p>
         <form className="auth-form" action={retryEmployeeAccountActivationAction}><input type="hidden" name="intentId" value={intentId} />

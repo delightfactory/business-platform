@@ -1,0 +1,66 @@
+{
+  "scope": "Actual server-component HTML with stubbed provider; no hydration/provider or membership UAT",
+  "tenantPhone": {
+    "controls": [
+      {
+        "height": 44,
+        "label": "إعادة تحميل الشركات",
+        "outline": "solid"
+      },
+      {
+        "height": 44,
+        "label": "تسجيل الخروج",
+        "outline": "none"
+      }
+    ],
+    "focus": "إعادة تحميل الشركات",
+    "passwords": 0,
+    "primaryActions": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "employeePhone": {
+    "controls": [
+      {
+        "height": 44,
+        "label": "المتابعة إلى مساحة العمل",
+        "outline": "none"
+      }
+    ],
+    "focus": "منصة الأعمالتفعيل حساب الموظفإعداد حسابكالحساب مرتبط ببريد synthetic@example.invalid للموظف  في .الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.المتابعة إلى مساحة العمل",
+    "passwords": 0,
+    "primaryActions": 1,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "employeeTablet": {
+    "controls": [
+      {
+        "height": 44,
+        "label": "المتابعة إلى مساحة العمل",
+        "outline": "none"
+      }
+    ],
+    "focus": "منصة الأعمالتفعيل حساب الموظفإعداد حسابكالحساب مرتبط ببريد synthetic@example.invalid للموظف  في .الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.المتابعة إلى مساحة العمل",
+    "passwords": 0,
+    "primaryActions": 1,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  "employeeDesktop": {
+    "controls": [
+      {
+        "height": 40,
+        "label": "المتابعة إلى مساحة العمل",
+        "outline": "none"
+      }
+    ],
+    "focus": "منصة الأعمالتفعيل حساب الموظفإعداد حسابكالحساب مرتبط ببريد synthetic@example.invalid للموظف  في .الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.المتابعة إلى مساحة العمل",
+    "passwords": 0,
+    "primaryActions": 1,
+    "scrollWidth": 1366,
+    "width": 1366
+  },
+  "retryKeyboard": "Tab then Enter navigated by native GET to /tenant/select?",
+  "autoRetry": false
+}

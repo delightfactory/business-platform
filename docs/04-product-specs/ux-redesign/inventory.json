@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "62cbc09f9fe55373f0311dced5e84399379141ac",
+  "sourceHead": "0500508d69e87aa2b3075df5c471f01518b10dca",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -25,7 +25,7 @@
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
       "phase": "R2",
-      "sha256": "526e6c9181ccce194147d7b0f150134aa97a049c773e72c42df2d179228251bb"
+      "sha256": "0be029a50ccdafa9a387cd83996ac3004d5eb77c03358d37ab8f2b6acbb24d3a"
     },
     {
       "file": "src/app/auth/forgot-password/page.tsx",
@@ -40,7 +40,7 @@
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "0f42a45a052ab724af9785693817bce278a2fca669cad8ba3bf7a74ec6b98265"
+      "sha256": "c763dc6ee639012d8f8e466797a5b692711de4618aeb9a276b22a238ad7352d6"
     },
     {
       "file": "src/app/auth/invitations/callback/actions.ts",
@@ -50,7 +50,7 @@
     {
       "file": "src/app/auth/invitations/callback/page.tsx",
       "phase": "R2",
-      "sha256": "3e928ef17f70f14563d22baf537845ce6417063cc736825f51c1a086b767ca17"
+      "sha256": "5a73a5f87b731fb3036b268c2ea33b76d85e4755ee1eaa986424f5c317f25331"
     },
     {
       "file": "src/app/auth/login/page.tsx",
@@ -1195,7 +1195,7 @@
     {
       "file": "src/app/tenant/select/page.tsx",
       "phase": "R2",
-      "sha256": "e8b15f1c1515da8ef0926b96b8c2125c65d58f98358a879b3464d11cb0fe460f"
+      "sha256": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940"
     },
     {
       "file": "src/app/workspace.css",
@@ -6531,7 +6531,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/select/page.tsx:15:853",
+      "id": "RPC:src/app/tenant/select/page.tsx:15:999",
       "file": "src/app/tenant/select/page.tsx",
       "line": 15,
       "phase": "R2",
@@ -6776,9 +6776,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:33:2801",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:30:2514",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 33,
+      "line": 30,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6786,9 +6786,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2886",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:31:2597",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 34,
+      "line": 31,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6797,9 +6797,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:3014",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:32:2725",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 35,
+      "line": 32,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6808,9 +6808,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3221",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:33:2932",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 36,
+      "line": 33,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6819,9 +6819,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:42:3831",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3540",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 42,
+      "line": 39,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6829,9 +6829,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:42:3905",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3614",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 42,
+      "line": 39,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6840,9 +6840,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:49:4787",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4496",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 49,
+      "line": 46,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6850,9 +6850,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4871",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4580",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 50,
+      "line": 47,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6861,9 +6861,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:5000",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4709",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 51,
+      "line": 48,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6872,9 +6872,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:5207",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:49:4916",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 52,
+      "line": 49,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6999,7 +6999,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5502",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5534",
       "file": "src/app/auth/invitations/accept/page.tsx",
       "line": 89,
       "tag": "form",
@@ -7009,7 +7009,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5531",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5563",
       "file": "src/app/auth/invitations/accept/page.tsx",
       "line": 89,
       "tag": "button",
@@ -16819,7 +16819,27 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1107",
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1290",
+      "file": "src/app/tenant/select/page.tsx",
+      "line": 16,
+      "tag": "form",
+      "phase": "R2",
+      "attributes": {
+        "action": "\"/tenant/select\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1333",
+      "file": "src/app/tenant/select/page.tsx",
+      "line": 16,
+      "tag": "button",
+      "phase": "R2",
+      "attributes": {
+        "type": "\"submit\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1429",
       "file": "src/app/tenant/select/page.tsx",
       "line": 16,
       "tag": "form",
@@ -16829,7 +16849,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/select/page.tsx:27:1862",
+      "id": "CONTROL:src/app/tenant/select/page.tsx:27:2183",
       "file": "src/app/tenant/select/page.tsx",
       "line": 27,
       "tag": "form",
@@ -16966,7 +16986,7 @@
     "rpcCallSites": 341,
     "uniqueLiteralRpcs": 215,
     "dynamicRpcSites": 6,
-    "formControls": 985,
+    "formControls": 987,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false
