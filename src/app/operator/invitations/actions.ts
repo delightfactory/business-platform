@@ -81,7 +81,9 @@ export async function reissueInvitationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect('/operator/invitations?state=setup');
   const { data, error } = await supabase.rpc('reissue_tenant_admin_invitation', { p_invitation_id: id });
-  if (error || !isInvitation(data)) redirect('/operator/invitations?state=forbidden');
+  if (error) redirect('/operator/invitations?state=forbidden');
+  if (data && typeof data === 'object' && !Array.isArray(data) && data.state === 'expired') redirect(`/operator/invitations?id=${encodeURIComponent(id)}&state=expired`);
+  if (!isInvitation(data)) redirect('/operator/invitations?state=forbidden');
   if (data.lifecycle_state === 'expired') redirect(`/operator/invitations?id=${encodeURIComponent(id)}&state=expired`);
   const recorded = await deliverInvitation(supabase, data);
   redirect(`/operator/invitations?id=${encodeURIComponent(id)}&state=reissued-${recorded}`);

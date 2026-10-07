@@ -100,12 +100,12 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
 
 function lifecycleText(state: string) {
   const labels: Record<string, string> = { pending: 'بانتظار قبول المسؤول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' };
-  return labels[state] ?? 'حالة غير معروفة';
+  return Object.hasOwn(labels, state) ? labels[state] : 'حالة غير معروفة';
 }
 
 function deliveryText(state: string) {
   const labels: Record<string, string> = { sending: 'حالة الإرسال قيد التحقق', sent: 'أُرسلت بالبريد', failed: 'تعذر إرسال البريد' };
-  return labels[state] ?? 'حالة الإرسال غير معروفة';
+  return Object.hasOwn(labels, state) ? labels[state] : 'حالة الإرسال غير معروفة';
 }
 
 function stateMessage(state: string) {
@@ -127,7 +127,7 @@ function stateMessage(state: string) {
     setup: 'إعداد Supabase أو مفتاح إرسال الدعوات غير مكتمل.',
     forbidden: 'تعذر تنفيذ الإجراء. تحقق من صلاحية مشغّل المنصة وحالة الدعوة.',
   };
-  return labels[state] ?? 'تعذر إتمام الإجراء.';
+  return Object.hasOwn(labels, state) ? labels[state] : 'تعذر إتمام الإجراء.';
 }
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }

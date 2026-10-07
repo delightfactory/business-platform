@@ -1,0 +1,17 @@
+[
+  {
+    "sha256": "5984E8F8E908D013E55E817CE2EA1690D843A499DAB8967AABFCBAA1D469EF69",
+    "file": "src/app/operator/invitations/actions.ts",
+    "matchesReviewedCandidate": true
+  },
+  {
+    "sha256": "E7DE68195EB0659574B0FAB26724B76BBC2C546001A648B99C2EEC4053F6F520",
+    "file": "src/app/operator/invitations/page.tsx",
+    "matchesReviewedCandidate": true
+  },
+  {
+    "sha256": "0B3B4B1534FD16C320A081FDA9AA97157AEAD839409BC1F193AFF47A0818FE36",
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "matchesReviewedCandidate": true
+  }
+]

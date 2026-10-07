@@ -1,0 +1,472 @@
+{
+  "baseline": "eb55a278c8ef8b62cf0f50ae48f97d9929f45e85",
+  "scope": "Actual action SDK traces and source helper functions/static alert checks; not full-page browser/provider/SQL acceptance",
+  "cases": [
+    {
+      "operation": "reissue",
+      "case": "success",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "invalid",
+      "before": {
+        "location": "/operator/invitations?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "after": {
+        "location": "/operator/invitations?state=invalid",
+        "error": null,
+        "trace": []
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "setup",
+      "before": {
+        "location": "/operator/invitations?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=setup",
+        "error": null,
+        "trace": [
+          "client"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "state-only-expired",
+      "before": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=expired",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "error-expired",
+      "before": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "array",
+      "before": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "scalar",
+      "before": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "malformed",
+      "before": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?state=forbidden",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "row-expired",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=expired",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=expired",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "thrown",
+      "before": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "after": {
+        "location": null,
+        "error": "synthetic throw",
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "send-rejected",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-failed",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "reissue",
+      "case": "record-error",
+      "before": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "after": {
+        "location": "/operator/invitations?id=11111111-1111-4111-8111-111111111111&state=reissued-unknown",
+        "error": null,
+        "trace": [
+          "client",
+          "reissue_tenant_admin_invitation",
+          "admin",
+          "record_tenant_admin_invitation_delivery"
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "lifecycleText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "lifecycleText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "lifecycleText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "lifecycleText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "lifecycleText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/operator/invitations/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "stateMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "invitationText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "invitationText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "invitationText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "invitationText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "invitationText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "deliveryText",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    },
+    {
+      "operation": "successMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "__proto__",
+      "status": "pass"
+    },
+    {
+      "operation": "successMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "constructor",
+      "status": "pass"
+    },
+    {
+      "operation": "successMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "toString",
+      "status": "pass"
+    },
+    {
+      "operation": "successMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "unknown",
+      "status": "pass"
+    },
+    {
+      "operation": "successMessage",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "key": "hasOwnProperty",
+      "status": "pass"
+    }
+  ]
+}

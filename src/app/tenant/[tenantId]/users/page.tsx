@@ -220,10 +220,12 @@ function assignedBundleLabels(roles: RoleAssignment[] | undefined) {
   return PEOPLE_ROLE_BUNDLES.filter((bundle) => hasBundle(roles, bundle.key)).map((bundle) => bundle.label);
 }
 function invitationText(state: string) {
-  return ({ pending: 'بانتظار القبول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' } as Record<string, string>)[state] ?? 'غير معروفة';
+  const labels: Record<string, string> = { pending: 'بانتظار القبول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' };
+  return Object.hasOwn(labels, state) ? labels[state] : 'غير معروفة';
 }
 function deliveryText(state: string) {
-  return ({ sending: 'جارٍ التحقق من الإرسال', sent: 'أُرسلت بالبريد', failed: 'تعذر إرسال البريد' } as Record<string, string>)[state] ?? 'حالة الإرسال غير معروفة';
+  const labels: Record<string, string> = { sending: 'جارٍ التحقق من الإرسال', sent: 'أُرسلت بالبريد', failed: 'تعذر إرسال البريد' };
+  return Object.hasOwn(labels, state) ? labels[state] : 'حالة الإرسال غير معروفة';
 }
 function stateMessage(state: string) {
   const labels: Record<string, string> = {
@@ -257,13 +259,13 @@ function stateMessage(state: string) {
     'bundle-admin-protected': 'حساب مسؤول الشركة محمي ويُدار من إجراء إدارة المسؤولين.',
     'bundle-target-unavailable': 'يمكن إدارة الحزم لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
   };
-  return labels[state] ?? 'تعذر تنفيذ الإجراء.';
+  return Object.hasOwn(labels, state) ? labels[state] : 'تعذر تنفيذ الإجراء.';
 }
 function successMessage(state?: string) {
   const messages: Record<string, string> = {
     'created-sent': 'أُرسلت الدعوة. لن يحصل المستخدم على وصول أو مقعد قبل قبولها.',
     'reissued-sent': 'أُرسل رابط جديد وأصبح الرابط السابق غير صالح.',
-    revoked: 'أُلغيت الدعوة.', expired: 'انتهت الدعوة ويمكن إصدار واحدة جديدة.',
+    revoked: 'أُلغيت الدعوة.',
     reactivated: 'أُعيد تفعيل العضوية بدور «عضو».', deactivated: 'عُطّلت العضوية وحُفظ سجلها.',
     promoted: 'تمت ترقية العضو إلى مسؤول الشركة. لم يتغير عدد المقاعد.',
     demoted: 'تم خفض مسؤول الشركة إلى عضو. لم يتغير عدد المقاعد.',
@@ -271,7 +273,7 @@ function successMessage(state?: string) {
     'bundles-unchanged': 'هذه الحزم مطبقة بالفعل؛ لم يتغير أي تعيين.',
     'leave-self-updated': 'تم تحديث صلاحية الخدمة الذاتية للإجازات مع الحفاظ على دور مسؤول الشركة.',
   };
-  return state ? messages[state] ?? null : null;
+  return state && Object.hasOwn(messages, state) ? messages[state] : null;
 }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><Link className="primary-button" href="/auth/login">العودة إلى الدخول</Link></section></main>;

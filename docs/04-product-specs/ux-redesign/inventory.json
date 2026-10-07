@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "26b7d355aabb0ad83baa9c24da6f3cc8c3894e8f",
+  "sourceHead": "eb55a278c8ef8b62cf0f50ae48f97d9929f45e85",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -140,7 +140,7 @@
     {
       "file": "src/app/operator/invitations/actions.ts",
       "phase": "R3",
-      "sha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8"
+      "sha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a"
     },
     {
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
@@ -155,7 +155,7 @@
     {
       "file": "src/app/operator/invitations/page.tsx",
       "phase": "R3",
-      "sha256": "45900a5caa0e5669823549350ffab055d993003f7b204bbaa8ab9e5d9d3908c7"
+      "sha256": "694980893c4376c95d06683f89a498699697f653a0eaad944f63354fbc4f3eca"
     },
     {
       "file": "src/app/operator/layout.tsx",
@@ -1190,7 +1190,7 @@
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
       "phase": "R2",
-      "sha256": "8ab307fe159ca2fd91898ca3efd80e1abd069373d44b7082a48fbedf4705e995"
+      "sha256": "a4880d4f724a2c1183c2c5a783ab136aa820777fd83dbed1df8bc918bc524561"
     },
     {
       "file": "src/app/tenant/select/page.tsx",
@@ -2075,7 +2075,7 @@
     {
       "id": "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction",
       "file": "src/app/operator/invitations/actions.ts",
-      "line": 90,
+      "line": 92,
       "name": "revokeInvitationAction",
       "phase": "R3",
       "inline": false,
@@ -3630,9 +3630,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/actions.ts:95:4328",
+      "id": "RPC:src/app/operator/invitations/actions.ts:97:4552",
       "file": "src/app/operator/invitations/actions.ts",
-      "line": 95,
+      "line": 97,
       "phase": "R3",
       "name": "revoke_tenant_admin_invitation",
       "expression": null,
@@ -3640,9 +3640,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/actions.ts:126:5919",
+      "id": "RPC:src/app/operator/invitations/actions.ts:128:6143",
       "file": "src/app/operator/invitations/actions.ts",
-      "line": 126,
+      "line": 128,
       "phase": "R3",
       "name": "record_tenant_admin_invitation_delivery",
       "expression": null,
@@ -7659,7 +7659,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8534",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8624",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 139,
       "tag": "form",
@@ -7669,7 +7669,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8563",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8653",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 139,
       "tag": "button",

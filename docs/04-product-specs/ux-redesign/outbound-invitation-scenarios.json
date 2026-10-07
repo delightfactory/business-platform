@@ -1,17 +1,17 @@
 {
   "schema": "business-platform.ux-outbound-invitations.v1",
   "status": "Proposed-not-Frozen",
-  "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+  "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
   "publicActions": 7,
   "privateHelpers": 2,
-  "caseCount": 94,
+  "caseCount": 95,
   "coverageClaim": "Draft source outcome partitions, not full semantic reviewed/executed coverage",
   "cases": [
     {
       "id": "OUTBOUND-createInvitationAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -34,9 +34,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -59,9 +59,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -84,9 +84,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -109,9 +109,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -134,9 +134,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -159,9 +159,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -184,9 +184,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -209,9 +209,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -234,9 +234,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -259,9 +259,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-11",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -284,9 +284,9 @@
     },
     {
       "id": "OUTBOUND-createInvitationAction-12",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction"
       ],
@@ -309,9 +309,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -334,9 +334,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -359,9 +359,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -384,9 +384,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -409,9 +409,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -434,9 +434,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -459,9 +459,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -484,9 +484,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -509,9 +509,9 @@
     },
     {
       "id": "OUTBOUND-reissueInvitationAction-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
       ],
@@ -534,9 +534,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -559,9 +559,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -584,9 +584,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -609,9 +609,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -634,9 +634,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -659,7 +659,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -684,7 +684,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -709,7 +709,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -734,7 +734,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -759,7 +759,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -784,7 +784,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -809,7 +809,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -834,7 +834,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -859,7 +859,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -884,7 +884,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -909,7 +909,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-11",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -934,7 +934,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-12",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -959,7 +959,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-13",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -984,7 +984,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberFormAction-14",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1009,7 +1009,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1034,7 +1034,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1059,7 +1059,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1084,7 +1084,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1109,7 +1109,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1134,7 +1134,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1159,7 +1159,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1184,7 +1184,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1209,7 +1209,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1234,7 +1234,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1259,7 +1259,7 @@
     },
     {
       "id": "OUTBOUND-inviteMemberAction-11",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1284,7 +1284,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1309,7 +1309,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1334,7 +1334,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1359,7 +1359,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1384,7 +1384,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1409,7 +1409,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1434,7 +1434,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1459,7 +1459,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1484,7 +1484,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1509,7 +1509,7 @@
     },
     {
       "id": "OUTBOUND-reissueMemberInvitationAction-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1534,7 +1534,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1559,7 +1559,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1584,7 +1584,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1609,7 +1609,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1634,7 +1634,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1659,11 +1659,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1684,11 +1684,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1709,11 +1709,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1734,11 +1734,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1759,11 +1759,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1784,11 +1784,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1809,11 +1809,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1834,11 +1834,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1859,11 +1859,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1884,11 +1884,11 @@
     },
     {
       "id": "OUTBOUND-deliverInvitation-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
-        "RPC:src/app/operator/invitations/actions.ts:126:5919"
+        "RPC:src/app/operator/invitations/actions.ts:128:6143"
       ],
       "operation": "deliverInvitation",
       "actor": "Private helper, invoking operator session",
@@ -1909,7 +1909,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-01",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1934,7 +1934,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-02",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1959,7 +1959,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-03",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -1984,7 +1984,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-04",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2009,7 +2009,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-05",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2034,7 +2034,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-06",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2059,7 +2059,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-07",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2084,7 +2084,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-08",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2109,7 +2109,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-09",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2134,7 +2134,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-10",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2159,7 +2159,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-11",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2184,7 +2184,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-12",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2209,7 +2209,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-13",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2234,7 +2234,7 @@
     },
     {
       "id": "OUTBOUND-deliverMemberInvitation-14",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2259,9 +2259,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-04-NOOP",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -2284,9 +2284,9 @@
     },
     {
       "id": "OUTBOUND-revokeInvitationAction-04-UNKNOWN",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/operator/invitations/actions.ts",
-      "sourceSha256": "a3412494139d2c996e4e68bfd9ddbaa934405b409b8b38551f0c0134aa149ea8",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
       "sourceIds": [
         "ACTION:src/app/operator/invitations/actions.ts#revokeInvitationAction"
       ],
@@ -2309,7 +2309,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-04-NOOP",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2334,7 +2334,7 @@
     },
     {
       "id": "OUTBOUND-revokeMemberInvitationAction-04-UNKNOWN",
-      "sourceSnapshot": "working-tree:codex/ux-invitation-revoke-feedback",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
       "sourceFile": "src/app/tenant/[tenantId]/users/actions.ts",
       "sourceSha256": "af50514623b33eea88d9d9e2a1acda97ebf360b4d93b3a8ff7036a04a7a0d7fa",
       "sourceIds": [
@@ -2356,8 +2356,33 @@
         "real provider/callback/delivery/SQL",
         "actual responsive complete journey"
       ]
+    },
+    {
+      "id": "OUTBOUND-reissueInvitationAction-05-MINIMAL",
+      "sourceSnapshot": "working-tree:codex/ux-invitation-expiry-states",
+      "sourceFile": "src/app/operator/invitations/actions.ts",
+      "sourceSha256": "f07cac9719c1565c0fb4de1d8b858adb17bd288839beee0e2e3acf0f30ad0d7a",
+      "sourceIds": [
+        "ACTION:src/app/operator/invitations/actions.ts#reissueInvitationAction"
+      ],
+      "operation": "reissueInvitationAction",
+      "actor": "Operator",
+      "scope": "Admin invitation/company setup or member tenant/invitation binding; actual RPC/SQL authority must be qualified",
+      "partition": "state-only-expired-record",
+      "sourceObservedOutcome": "expired-with-selected-id-no-delivery",
+      "status": "source-partition-draft",
+      "executed": "not-run",
+      "authority": "Existing RPC/provider contract; no authority inferred from query/route or demo",
+      "retainedContext": "Existing action-specific route/reference; no password/token persistence",
+      "recoveryContract": "See outbound-invitations-spec.md; sent != delivery/arrival/acceptance, unknown/thrown results require current-authoritative review before repeat mutation",
+      "missingQualification": [
+        "cross-scope/denied role and stale actor",
+        "duplicate/concurrency/idempotency",
+        "real provider/callback/delivery/SQL",
+        "actual responsive complete journey"
+      ]
     }
   ],
-  "maintenanceAmendment": "invitation-revoke-feedback-slice.md; per-case updated source fingerprints, all partitions remain draft",
+  "maintenanceAmendment": "invitation-revoke-feedback-slice.md; per-case updated source fingerprints, all partitions remain draft; invitation-expiry-state-slice.md",
   "baselineSourceSnapshot": "f6164b81bc8dc654344590919432db26ae54981c"
 }
