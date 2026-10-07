@@ -1,0 +1,19 @@
+**Gate verdict: approve with five corrections.**
+
+1. **The pinned HTML is the reference, not the live demo.** The reference is the HTML with hash `AF2401…5508`. The public demo URL can change, so capture reference screenshots from the pinned file. If the demo differs from it, the pinned file wins. Record that hash and the screen/state ID in every batch.
+2. **Make pending deviations explicit.** Cairo, the 40/44 control heights and radius 8 are pending amendment, so under the gate's own rule they aren't accepted. Keep them in one deviation register (reason, spec, owner status) and cite it from each batch instead of re-arguing them. While they're pending, no batch can be rated MATCH or MATCH WITH ACCEPTED DEVIATIONS. The owner must decide whether a batch can land when its only deviations are these registered pending ones.
+3. **Capture interaction states, not just static screens.** For every affected control, include pending, disabled, hover, focus-visible and error states. The current defect only shows up in a disabled state. Fix the capture conditions too: same widths, `dir="rtl"`, fonts loaded, same fixture data, and the browser/version recorded.
+4. **Dark mode must be shown or marked unverified.** Only the light palette is confirmed to match. If dark mode is in scope, capture it. If not, say "dark: not verified" and don't imply a match.
+5. **Get a separate verdict from each reviewer.** The owner requires both Codex and Claude, so record a Codex verdict alongside Claude's. If a reviewer only saw source and no rendered images, their verdict is NOT VISUALLY VERIFIED.
+
+The rest of the gate is sound: one focused review per related batch, keeping the full journey, permissions, privacy, financial and accessibility behaviour intact, and treating the demo's simulated logic as non-authoritative.
+
+**Current visual status: CHANGES REQUIRED, and nothing has been visually verified.** The span-styling defect follows from the CSS selector alone (`:disabled` only matches native buttons). No rendered proof exists in either direction.
+
+**Corrections needed in the next grouped fix:**
+- Add a `.secondary-button[aria-disabled="true"]` rule that reuses the existing `:disabled` look: same opacity or colors, `cursor: not-allowed`, no hover or active change, and `pointer-events: none`. No new tokens, and colors, sizes and radius stay as they are.
+- Apply the same rule to the Withdraw and new-request cancel spans, if they show the same problem.
+- Check that the disabled state still has enough text contrast in light mode, and in dark mode if it's in scope.
+- Show rendered before/after screenshots of the pending cancellation on mobile and desktop, and review them before landing.
+
+The options-load condition from my last review is closed by your verification. Full R6, the theme and D8 are still not approved.

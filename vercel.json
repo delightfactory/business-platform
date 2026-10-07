@@ -53,7 +53,8 @@
       "codex/ux-recipient-password-feedback": false,
       "codex/ux-employee-attendance-contract": false,
       "codex/ux-attendance-result-integrity": false,
-      "codex/ux-self-service-auth-return-proposal": false
+      "codex/ux-self-service-auth-return-proposal": false,
+      "codex/ux-design-reference-gate": false
     }
   }
 }
