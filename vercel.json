@@ -30,7 +30,9 @@
       "codex/backup-20261005/wip-hr-record-oct01": false,
       "codex/backup-20261005/wip-hr-ui-resume-oct01": false,
       "codex/backup-20261005/wip-time-calculator-oct01": false,
-      "codex/backup-20261005/wip-reports-worktree-oct02": false
+      "codex/backup-20261005/wip-reports-worktree-oct02": false,
+      "codex/ux-redesign-reference": false,
+      "codex/ux-redesign-w1-foundation": false
     }
   }
 }

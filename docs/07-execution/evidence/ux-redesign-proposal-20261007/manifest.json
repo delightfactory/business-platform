@@ -1,0 +1,27 @@
+[
+  {
+    "file": "00-INSTRUCTIONS.md",
+    "bytes": 1931,
+    "sha256": "EF4797B04875235CCA57E547606B17CD938B252A78E0F45B5BC8DB14E73F7DF1"
+  },
+  {
+    "file": "github-issue.md",
+    "bytes": 5284,
+    "sha256": "B57E163C81EBCEB0F2C68E0995BD2A07C0AE4A2936292F60490E55155AB76F22"
+  },
+  {
+    "file": "ux-concept-c.html",
+    "bytes": 107935,
+    "sha256": "AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508"
+  },
+  {
+    "file": "ux-redesign-package.zip",
+    "bytes": 63133,
+    "sha256": "EA11C8E91E7AF8D5C9E3169145F0E2AF691F0136D339CAFCF80297C6293684F0"
+  },
+  {
+    "file": "ux-redesign-plan.md",
+    "bytes": 88875,
+    "sha256": "84B03A37C1AB1D1AE7F0384EA49C4DFC60CFCA77493AE59D7B8F13388012CD5F"
+  }
+]

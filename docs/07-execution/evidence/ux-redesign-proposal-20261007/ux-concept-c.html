@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F3F1">
+<title>منصة الأعمال — نموذج حي للتصور ج</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  /* Light: "Daylight ledger" — neutral paper, deep Nile teal as the single brand color */
+  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#F6F7F5;--surface-3:#ECEEEA;
+  --line:#E2E5E0;--line-2:#CCD1CA;
+  --ink:#17201C;--ink-2:#3B4641;--muted:#5D6862;
+  --brand:#0E6B5C;--brand-strong:#0A5146;--brand-ink:#FFFFFF;--brand-soft:#E4F0EC;--brand-text:#0B5D50;
+  --money:#17201C;--toast-bg:#17201C;--toast-ink:#EEF4F1;--toast-ic:#7ED3C0;
+  --pass:#14211D;--pass-2:#1D2D28;--pass-accent:#5CBFAA;--pass-accent-ink:#08201B;--pass-ink:#EEF4F1;--pass-muted:#A9BCB4;--pass-line:rgb(255 255 255 / 12%);
+  --ok:#1E7A4C;--ok-bg:#E6F3EB;--ok-text:#17603C;
+  --warn:#B4600A;--warn-bg:#FBEEDC;--warn-text:#8A4806;
+  --bad:#B42318;--bad-bg:#FBE8E6;--bad-text:#962016;
+  --info:#2F5D8C;--info-bg:#E8EFF7;--info-text:#264D75;
+  --idle:#97A09B;
+  --scrim:rgb(15 22 19 / 45%);
+  --sh-1:0 1px 2px rgb(20 33 29 / 6%),0 1px 1px rgb(20 33 29 / 4%);
+  --sh-2:0 1px 2px rgb(20 33 29 / 6%),0 8px 24px rgb(20 33 29 / 8%);
+  --sh-3:0 24px 60px rgb(20 33 29 / 18%);
+  --r-card:16px;--r-tile:12px;--r-ctl:10px;--r-chip:6px;
+  --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --f-head:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+/* Dark: "Night ledger" — green-black graphite, teal light, brass reserved for money */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1211;--surface:#141B19;--surface-2:#19211F;--surface-3:#212A27;
+  --line:#26302D;--line-2:#34403C;
+  --ink:#E7ECE9;--ink-2:#C2CCC7;--muted:#8E9B95;
+  --brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-ink:#08201B;--brand-soft:#15302A;--brand-text:#7ED3C0;
+  --money:#D9B56E;--toast-bg:#E7ECE9;--toast-ink:#0D1211;--toast-ic:#0E6B5C;
+  --pass:#18221F;--pass-2:#202D29;--pass-ink:#E7ECE9;--pass-muted:#93A39C;--pass-line:rgb(255 255 255 / 9%);
+  --ok:#55C08A;--ok-bg:#132A1F;--ok-text:#7DD3A6;
+  --warn:#E3A048;--warn-bg:#2E2213;--warn-text:#EDB872;
+  --bad:#EF7D72;--bad-bg:#331A17;--bad-text:#F29C93;
+  --info:#7FA9D6;--info-bg:#16222F;--info-text:#9DBDE0;
+  --idle:#5B6762;--scrim:rgb(0 0 0 / 62%);
+  --sh-1:0 0 0 1px rgb(255 255 255 / 2%);--sh-2:0 0 0 1px rgb(255 255 255 / 3%),0 10px 30px rgb(0 0 0 / 35%);--sh-3:0 30px 70px rgb(0 0 0 / 60%);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1211;--surface:#141B19;--surface-2:#19211F;--surface-3:#212A27;
+  --line:#26302D;--line-2:#34403C;
+  --ink:#E7ECE9;--ink-2:#C2CCC7;--muted:#8E9B95;
+  --brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-ink:#08201B;--brand-soft:#15302A;--brand-text:#7ED3C0;
+  --money:#D9B56E;--toast-bg:#E7ECE9;--toast-ink:#0D1211;--toast-ic:#0E6B5C;
+  --pass:#18221F;--pass-2:#202D29;--pass-ink:#E7ECE9;--pass-muted:#93A39C;--pass-line:rgb(255 255 255 / 9%);
+  --ok:#55C08A;--ok-bg:#132A1F;--ok-text:#7DD3A6;
+  --warn:#E3A048;--warn-bg:#2E2213;--warn-text:#EDB872;
+  --bad:#EF7D72;--bad-bg:#331A17;--bad-text:#F29C93;
+  --info:#7FA9D6;--info-bg:#16222F;--info-text:#9DBDE0;
+  --idle:#5B6762;--scrim:rgb(0 0 0 / 62%);
+  --sh-1:0 0 0 1px rgb(255 255 255 / 2%);--sh-2:0 0 0 1px rgb(255 255 255 / 3%),0 10px 30px rgb(0 0 0 / 35%);--sh-3:0 30px 70px rgb(0 0 0 / 60%);
+  color-scheme:dark}
+
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;font-feature-settings:"tnum" 0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--brand-text)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.money{color:var(--money);font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.muted{color:var(--muted)}
+h1,h2,h3,p{margin:0}
+
+/* ============ Top bar ============ */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;display:flex;align-items:stretch;gap:24px;min-height:64px;padding:0 clamp(16px,3vw,32px);background:var(--surface);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font:600 13px var(--f-head);letter-spacing:.3px;flex:none}
+.brand-t{display:flex;flex-direction:column;line-height:1.25}
+.brand-t strong{font:600 14px var(--f-head)}
+.brand-t small{font-size:12px;color:var(--muted)}
+.navpills{display:flex;gap:2px;flex:1;align-items:stretch}
+.pill{position:relative;display:inline-flex;align-items:center;gap:8px;padding:0 14px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap}
+.pill:hover{color:var(--ink)}
+.pill[aria-current="page"]{color:var(--ink);font-weight:600}
+.pill[aria-current="page"]::after{content:"";position:absolute;inset-inline:10px;bottom:-1px;height:2px;border-radius:2px;background:var(--brand)}
+.cnt{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--surface-3);color:var(--ink-2);font-size:11px;font-weight:600;display:grid;place-items:center}
+.pill[aria-current="page"] .cnt{background:var(--brand);color:var(--brand-ink)}
+.top-end{display:flex;align-items:center;gap:6px}
+.iconbtn{position:relative;width:44px;height:44px;border-radius:var(--r-ctl);border:1px solid transparent;background:transparent;color:var(--ink-2);display:grid;place-items:center;flex:none}
+.iconbtn:hover{background:var(--surface-2);border-color:var(--line)}
+.dot{position:absolute;top:9px;left:10px;width:7px;height:7px;border-radius:50%;background:var(--bad);box-shadow:0 0 0 2px var(--surface)}
+.rolebtn{display:flex;align-items:center;gap:10px;height:44px;padding:0 4px 0 10px;border-radius:var(--r-ctl);border:1px solid var(--line);background:var(--surface);color:var(--ink);margin-right:6px}
+.rolebtn:hover{background:var(--surface-2)}
+.rolemeta{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3;text-align:right}
+.rolemeta b{font-size:13px;font-weight:600}
+.rolemeta small{font-size:11px;color:var(--muted)}
+
+/* ============ Page ============ */
+.page{max-width:1240px;margin:0 auto;padding:32px clamp(16px,3vw,32px) 64px;display:flex;flex-direction:column;gap:24px}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px}
+.hero{font:600 clamp(22px,2.4vw,30px)/1.45 var(--f-head);letter-spacing:-.2px;max-width:760px;text-wrap:pretty}
+.h1{font:600 clamp(22px,2.2vw,28px)/1.4 var(--f-head);letter-spacing:-.2px}
+.h2{font:600 16px/1.5 var(--f-head)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:20px;min-width:0;box-shadow:var(--sh-1)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+.split{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.split>.wide{flex:3 1 560px;min-width:0}
+.split>.narrow{flex:2 1 320px;min-width:0}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;align-items:center;gap:12px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ============ Semantic tones (quiet fills, strong text) ============ */
+.t-mint{background:var(--ok-bg);color:var(--ok-text)}
+.t-peach{background:var(--warn-bg);color:var(--warn-text)}
+.t-rose{background:var(--bad-bg);color:var(--bad-text)}
+.t-lilac{background:var(--brand-soft);color:var(--brand-text)}
+.t-sky{background:var(--info-bg);color:var(--info-text)}
+.t-neutral{background:var(--surface-3);color:var(--ink-2)}
+
+/* ============ Buttons & chips ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:var(--r-ctl);border:1px solid transparent;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;transition:background .15s,border-color .15s,box-shadow .15s}
+.btn-solid,.btn-primary{background:var(--brand);color:var(--brand-ink);box-shadow:inset 0 -1px 0 rgb(0 0 0 / 14%)}
+.btn-solid:hover,.btn-primary:hover{background:var(--brand-strong)}
+.btn-ghost{background:var(--surface);border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-danger{background:var(--surface);border-color:var(--line-2);color:var(--bad-text)}
+.btn-danger:hover{background:var(--bad-bg);border-color:transparent}
+.btn-lg{min-height:48px;font-size:15px}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
+.chip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:var(--r-chip);font-size:12px;font-weight:600;white-space:nowrap}
+.chips{display:inline-flex;gap:2px;flex-wrap:wrap;padding:3px;border-radius:12px;background:var(--surface-3)}
+.filter{height:36px;padding:0 14px;border-radius:9px;border:0;background:transparent;color:var(--muted);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.filter:hover{color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--sh-1)}
+.av{border-radius:50%;display:grid;place-items:center;font-weight:600;flex:none;background:var(--surface-3)!important;color:var(--ink-2)!important;font-family:var(--f-head)}
+.av32{width:30px;height:30px;font-size:12px}.av40{width:38px;height:38px;font-size:14px}.av48{width:44px;height:44px;font-size:15px}.av64{width:56px;height:56px;font-size:20px}
+.stackav{display:flex;padding-right:6px}
+.stackav .av{box-shadow:0 0 0 2px var(--surface);margin-right:-6px}
+.linkbtn{background:none;border:0;padding:0;color:var(--brand-text);font-weight:600;font-size:14px;min-height:40px}
+
+/* ============ Task cards: count-first, with real items ============ */
+.task{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--sh-1)}
+.task .tk{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.task .k{font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px}
+.task .k i{width:8px;height:8px;border-radius:2px;background:var(--c)}
+.task .big{font:600 44px/1 var(--f-head);color:var(--ink);font-variant-numeric:tabular-nums}
+.task h2{font:600 16px/1.5 var(--f-head);color:var(--ink)}
+.task p{font-size:13px;line-height:1.7;color:var(--muted)}
+.task ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.task li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+.task li span:last-child{color:var(--muted);white-space:nowrap}
+.task .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;gap:12px}
+.task.done .big{color:var(--idle)}
+
+/* ============ People ============ */
+.ppl{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:14px 6px}
+.pp{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;padding:8px 4px;border-radius:var(--r-tile);color:var(--ink-2);font-size:12px}
+.pp:hover{background:var(--surface-2)}
+.pp .av{position:relative;width:46px;height:46px;font-size:15px}
+.pp .av::after{content:"";position:absolute;bottom:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--ring);box-shadow:0 0 0 2.5px var(--surface)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+.lg{width:8px;height:8px;border-radius:50%;background:var(--c)}
+
+/* ============ Feed ============ */
+.feed{display:flex;gap:12px;align-items:flex-start}
+.feed .ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none}
+.feed p{font-size:14px;line-height:1.7;color:var(--ink-2)}
+.feed small{font-size:12px;color:var(--muted)}
+.feed.new{animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* ============ Inbox ============ */
+.inbox{display:grid;grid-template-columns:minmax(300px,390px) minmax(0,1fr);gap:16px;align-items:start}
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-1)}
+.qlist li+li{border-top:1px solid var(--line)}
+.qi{position:relative;width:100%;display:flex;align-items:flex-start;gap:12px;text-align:right;padding:14px 16px;border:0;background:transparent;color:var(--ink)}
+.qi:hover{background:var(--surface-2)}
+.qi.on{background:var(--brand-soft)}
+.qi.on::before{content:"";position:absolute;inset-block:10px;right:0;width:3px;border-radius:3px 0 0 3px;background:var(--brand)}
+.qi-b{flex:1;display:flex;flex-direction:column;min-width:0;line-height:1.55}
+.qi-b b{font-size:14px;font-weight:600}
+.qi-b span{font-size:13px;color:var(--ink-2)}
+.qi-b small{font-size:12px;color:var(--muted)}
+.qi-e{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.qi-e small{font-size:11px;color:var(--muted)}
+.detail{position:sticky;top:84px;display:flex;flex-direction:column;gap:20px;padding:24px 26px}
+.back-m{display:none}
+.dhead{display:flex;flex-direction:column;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.dhead h2{font:600 22px/1.5 var(--f-head);letter-spacing:-.2px}
+.facts{display:flex;flex-direction:column;gap:10px}
+.fact{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.7;color:var(--ink-2)}
+.fact .fi{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;margin-top:1px}
+.bubble{background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);border-radius:14px 14px 14px 4px;padding:12px 16px;font-size:14px;line-height:1.75}
+.daterng{display:flex;align-items:center;gap:16px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-tile);padding:14px 18px}
+.daterng .d{display:flex;flex-direction:column;align-items:center;min-width:52px}
+.daterng .d b{font:600 28px/1.1 var(--f-head);font-variant-numeric:tabular-nums}
+.daterng .d small{font-size:12px;color:var(--muted)}
+.dash{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--line-2) 0 5px,transparent 5px 9px)}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r-tile);overflow:hidden}
+.kv div{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:var(--surface-2)}
+.kv div+div{border-right:1px solid var(--line)}
+.kv small{font-size:12px;color:var(--muted)}
+.kv b{font-size:15px;font-weight:600}
+.actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:4px}
+.actions .btn{flex:1 1 140px}
+.actions .grow{flex:2 1 200px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.field label span{color:var(--muted);font-weight:400}
+.input,.textarea,.select{width:100%;min-height:44px;padding:9px 14px;border-radius:var(--r-ctl);border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font-size:14px;outline:none;transition:border-color .15s,box-shadow .15s}
+.textarea{min-height:84px;resize:vertical;line-height:1.7}
+.input:focus,.textarea:focus,.select:focus,.input:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 20%,transparent)}
+.hint{font-size:12px;color:var(--muted)}
+.steprow{display:flex;align-items:center;gap:10px;min-height:54px;border-top:1px solid var(--line)}
+.steprow:first-child{border-top:0}
+.steprow span{flex:1;font-size:14px}
+.stepbtn{width:40px;height:40px;border-radius:var(--r-ctl);border:1px solid var(--line-2);background:var(--surface);color:var(--ink);display:grid;place-items:center}
+.stepbtn:hover{background:var(--surface-2)}
+.stepbtn[disabled]{opacity:.35;cursor:not-allowed}
+.steprow output{width:52px;text-align:center;font:600 18px var(--f-head);font-variant-numeric:tabular-nums}
+.meter{height:6px;border-radius:3px;background:var(--surface-3);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:3px;background:var(--warn);transition:width .25s}
+.meter.full i{background:var(--ok)}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:56px 20px;color:var(--muted)}
+.empty .ei{width:56px;height:56px;border-radius:16px;display:grid;place-items:center}
+.empty b{color:var(--ink);font:600 17px var(--f-head)}
+.map{border-radius:var(--r-tile);overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+
+/* ============ Tables ============ */
+.tablewrap{overflow-x:auto;border-radius:var(--r-card);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh-1)}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th{font-size:12px;font-weight:600;color:var(--muted);text-align:right;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+td{padding:11px 18px;border-bottom:1px solid var(--line);font-size:14px}
+tbody tr:hover td{background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+.who{display:flex;align-items:center;gap:10px}
+.who small{display:block;font-size:12px;color:var(--muted)}
+
+/* ============ Week grid ============ */
+.week{display:grid;grid-template-columns:120px repeat(5,minmax(0,1fr));gap:8px 4px;align-items:center}
+.week .dh{font-size:12px;color:var(--muted);text-align:center;line-height:1.4}
+.week .dh.today{color:var(--brand-text);font-weight:700}
+.week .nm{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.week .bar{height:28px;border-radius:7px;display:flex;align-items:center;padding:0 10px;font-size:12px;font-weight:600}
+.week .bar.pending{background:transparent;border:1.5px dashed var(--brand);color:var(--brand-text)}
+
+/* ============ Payroll ============ */
+.stepper{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.step{display:flex;flex-direction:column;gap:6px}
+.step .bar{height:4px;border-radius:2px;background:var(--surface-3)}
+.step.done .bar{background:var(--brand)}
+.step.cur .bar{background:linear-gradient(90deg,var(--surface-3) 50%,var(--warn) 50%)}
+.step b{font-size:13px;font-weight:600}
+.step small{font-size:12px;color:var(--muted)}
+.step.done small{color:var(--brand-text)}
+.step.cur small{color:var(--warn-text);font-weight:600}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:0;border:1px solid var(--line);border-radius:var(--r-tile);overflow:hidden}
+.fig{background:var(--surface-2);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.fig+.fig{border-right:1px solid var(--line)}
+.fig small{font-size:12px;color:var(--muted)}
+.fig b{font:600 26px/1.3 var(--f-head);color:var(--money);font-variant-numeric:tabular-nums}
+.fig b span{font:400 13px var(--f-body);color:var(--muted)}
+.blk{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.blk:first-child{border-top:0}
+.blk .bi{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none}
+.blk .bt{flex:1;display:flex;flex-direction:column;line-height:1.55;min-width:0}
+.blk .bt b{font-size:14px;font-weight:600}
+.blk .bt span{font-size:13px;color:var(--muted)}
+.blk.ok .bt b{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2)}
+.banner{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r-tile);padding:14px 16px;font-size:14px;line-height:1.7}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;animation:spin .8s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ Employee: the attendance pass ============ */
+.shift{position:relative;overflow:hidden;background:var(--pass);color:var(--pass-ink);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--sh-2);border:1px solid var(--pass-line)}
+.shift::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--pass-line) 1px,transparent 1px);background-size:14px 14px;mask-image:linear-gradient(200deg,#000 0%,transparent 55%);-webkit-mask-image:linear-gradient(200deg,#000 0%,transparent 55%);pointer-events:none}
+.shift>*{position:relative}
+.shift small{color:var(--pass-muted);font-size:13px}
+.shift h2{font:600 28px/1.35 var(--f-head);letter-spacing:-.3px}
+.shift .num[style]{color:var(--pass-muted)}
+.shift .geo{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:8px;background:color-mix(in srgb,var(--pass-accent) 14%,transparent);color:color-mix(in srgb,var(--pass-accent) 70%,#fff);font-size:13px;border:1px solid color-mix(in srgb,var(--pass-accent) 28%,transparent)}
+.shift .geo.warn{background:rgb(227 160 72 / 14%);color:#F1C27F;border-color:rgb(227 160 72 / 30%)}
+.slide{position:relative;height:60px;border-radius:14px;background:var(--pass-2);border:1px solid var(--pass-line);color:var(--pass-ink);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:none}
+.slide .fill{position:absolute;inset:0;background:color-mix(in srgb,var(--pass-accent) 18%,transparent);transform-origin:right;transform:scaleX(var(--p,0))}
+.slide .lbl{position:relative;padding:0 72px;text-align:center;letter-spacing:.2px}
+.knob{position:absolute;right:5px;top:5px;width:48px;height:48px;border-radius:10px;border:0;background:var(--pass-accent);color:var(--pass-accent-ink);display:grid;place-items:center;z-index:2;touch-action:none;transition:transform .25s;box-shadow:0 4px 14px rgb(0 0 0 / 30%)}
+.slide.drag .knob{transition:none}
+.receipt{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.receipt:first-child{border-top:0}
+.receipt .rd{width:8px;height:8px;border-radius:50%;flex:none}
+.receipt .rt{flex:1;display:flex;flex-direction:column;line-height:1.5}
+.receipt .rt small{font-size:12px;color:var(--muted)}
+.segs{display:grid;grid-template-columns:repeat(21,minmax(0,1fr));gap:3px}
+.segs i{height:22px;border-radius:4px;background:var(--surface-3)}
+.segs i.u{background:var(--brand)}
+.segs i.h{background:color-mix(in srgb,var(--brand) 45%,var(--surface-3))}
+.segs i.p{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--brand) 35%,transparent) 0 3px,var(--surface-3) 3px 6px)}
+.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.qa{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:96px;padding:14px;border-radius:var(--r-tile);border:1px solid var(--line);background:var(--surface)!important;color:var(--ink)!important;text-align:right;font-size:14px;font-weight:600;box-shadow:var(--sh-1)}
+.qa:hover{border-color:var(--line-2);background:var(--surface-2)!important}
+.qa svg{color:var(--brand-text)}
+.slipline{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.slipline:first-child{border-top:0}
+.emp-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+
+/* ============ Drawer / sheet ============ */
+.scrim{position:fixed;inset:0;z-index:60;background:var(--scrim);display:flex;justify-content:flex-end;animation:fade .2s ease;backdrop-filter:blur(2px)}
+.drawer{width:min(460px,100%);height:100%;background:var(--bg);overflow:auto;padding:calc(20px + env(safe-area-inset-top,0px)) 22px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:18px;box-shadow:var(--sh-3);border-right:1px solid var(--line);animation:slidein .25s cubic-bezier(.2,.8,.2,1)}
+.drawer .dtop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+@keyframes fade{from{opacity:0}}
+@keyframes slidein{from{transform:translateX(-20px);opacity:.5}}
+.opt{width:100%;display:flex;align-items:center;gap:14px;padding:14px;border-radius:var(--r-tile);border:1px solid var(--line);background:var(--surface);text-align:right;color:var(--ink)}
+.opt:hover{border-color:var(--line-2)}
+.opt[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand);background:var(--brand-soft)}
+.opt[aria-pressed="true"] svg{color:var(--brand-text)}
+.opt .ot{flex:1;display:flex;flex-direction:column;line-height:1.5}
+.opt .ot small{font-size:12px;color:var(--muted)}
+.inforow{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.inforow:first-child{border-top:0}
+.inforow span{color:var(--muted)}
+
+/* ============ Final polish ============ */
+.skip{position:absolute;inset-inline-start:12px;top:-60px;z-index:100;background:var(--ink);color:var(--surface);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.offline{display:none;align-items:center;justify-content:center;gap:8px;padding:8px 16px;background:var(--warn-bg);color:var(--warn-text);font-size:13px;font-weight:600;border-bottom:1px solid var(--line)}
+body.is-offline .offline{display:flex}
+.gap{display:inline-flex;align-items:center;gap:6px;min-height:22px;padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;background:repeating-linear-gradient(135deg,var(--info-bg) 0 6px,var(--surface) 6px 12px);color:var(--info-text);border:1px dashed var(--info);vertical-align:middle;line-height:1.5}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:12px;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line-2);display:grid;place-items:center;color:#fff}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:14px;border-radius:var(--r-tile);border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:right}
+.switch .tr{width:44px;height:26px;border-radius:13px;background:var(--surface-3);position:relative;flex:none;transition:background .15s}
+.switch .tr::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:var(--surface);box-shadow:var(--sh-1);transition:transform .15s}
+.switch[aria-checked="true"] .tr{background:var(--brand)}
+.switch[aria-checked="true"] .tr::after{transform:translateX(-18px)}
+.emp-pick{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 12px;border-radius:var(--r-ctl);border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink)}
+.emp-pick select{color:var(--ink)}
+.notice{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:var(--r-tile);background:var(--info-bg);color:var(--info-text);font-size:13px;line-height:1.7;flex-wrap:wrap}
+.notice .bt{flex:1 1 220px}
+@media (pointer:coarse){.btn{min-height:44px}.iconbtn{width:44px;height:44px}.filter{height:40px}}
+
+/* ============ Toasts ============ */
+#toasts{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:calc(100% - 32px);pointer-events:none}
+.toast{display:flex;align-items:center;gap:10px;background:var(--toast-bg);color:var(--toast-ink);padding:11px 16px;border-radius:12px;font-size:14px;box-shadow:var(--sh-3);border:1px solid rgb(255 255 255 / 8%);animation:pop .3s ease}
+.toast svg{color:var(--toast-ic)}
+
+/* ============ Tab bar (phone) ============ */
+.tabbar{display:none}
+.tab{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;border:0;background:none;color:var(--muted);font-size:11px;font-weight:500}
+.tabic{position:relative;width:52px;height:28px;border-radius:9px;display:grid;place-items:center}
+.tab[aria-current="page"]{color:var(--ink);font-weight:600}
+.tab[aria-current="page"] .tabic{background:var(--brand-soft);color:var(--brand-text)}
+.tdot{position:absolute;top:-5px;left:4px;min-width:17px;height:17px;padding:0 5px;border-radius:9px;background:var(--bad);color:#FFFFFF;font-size:10px;font-weight:700;display:grid;place-items:center;box-shadow:0 0 0 2px var(--surface)}
+
+@media (max-width:980px){.pill{padding:0 10px}}
+@media (max-width:860px){
+  .navpills{display:none}
+  .rolemeta,.brand-t small{display:none}
+  .topbar{gap:8px;min-height:58px}
+  .brand{margin-left:auto}
+  .tabbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:4px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+  .page{padding-top:20px;padding-bottom:110px;gap:16px}
+  #toasts{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .inbox{grid-template-columns:1fr}
+  .inbox .detail{display:none}
+  .inbox.open .detail{display:flex;position:fixed;inset:0;z-index:50;border-radius:0;border:0;overflow:auto;background:var(--bg);padding:calc(12px + env(safe-area-inset-top,0px)) 18px calc(28px + env(safe-area-inset-bottom,0px))}
+  .back-m{display:inline-grid;border-color:var(--line)}
+  .stepper{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}
+  .emp-grid{grid-template-columns:1fr}
+  .scrim{align-items:flex-end}
+  .drawer{height:auto;max-height:92%;border-radius:20px 20px 0 0;border-right:0;border-top:1px solid var(--line);animation:sheetin .25s cubic-bezier(.2,.8,.2,1)}
+  .week{grid-template-columns:84px repeat(5,minmax(0,1fr))}
+  .kv div+div{border-right:0}
+  .fig+.fig{border-right:0;border-top:1px solid var(--line)}
+}
+@keyframes sheetin{from{transform:translateY(24px);opacity:.5}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toasts" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+
+/* ---------- Icons ---------- */
+const P={
+home:'<path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/>',
+inbox:'<path d="M4 13h4l1.5 3h5l1.5-3h4M5.5 5h13l1.5 8v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-5z"/>',
+users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.4 3.5 5.2"/>',
+clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+calplus:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v4M10 15h4"/>',
+wallet:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+slip:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/>',
+search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>',
+check:'<path d="M5 12l5 5 9-10"/>',
+x:'<path d="M6 6l12 12M18 6L6 18"/>',
+alert:'<path d="M12 7v6M12 17h.01"/>',
+back:'<path d="M9 6l6 6-6 6"/>',
+left:'<path d="M15 6l-6 6 6 6"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+minus:'<path d="M5 12h14"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+moon:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+swap:'<path d="M7 7h12l-3-3M17 17H5l3 3"/>',
+pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+download:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+shield:'<path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/>',
+bank:'<path d="M3 10l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/>',
+coins:'<ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7M10 16.5c.8.3 1.9.5 3 .5 2.8 0 5-1.1 5-2.5v-4M14 12c2.4.2 4-.8 4-2"/>',
+spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>'
+};
+const ic=(n,s,w)=>`<svg viewBox="0 0 24 24" width="${s||20}" height="${s||20}" fill="none" stroke="currentColor" stroke-width="${w||1.8}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=(n,d)=>Number(n).toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});
+const nowT=()=>new Date().toLocaleTimeString('ar-EG-u-nu-latn',{hour:'numeric',minute:'2-digit'});
+const t12=v=>{if(!v)return'';const[h,m]=v.split(':').map(Number);return `${((h+11)%12)+1}:${String(m).padStart(2,'0')} ${h<12?'ص':'م'}`};
+const MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const DAYS=['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const fd=s=>{const d=pd(s);return `${d.getDate()} ${MONTHS[d.getMonth()]}`};
+const isMobile=()=>matchMedia('(max-width:860px)').matches;
+const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches};
+const daysWord=n=>n===1?'يوم واحد':n===2?'يومان':(n%1?`${n} يوم`:n<=10?`${n} أيام`:`${n} يومًا`);
+const count=(n,one,two,few)=>n===1?one:n===2?two:`${n} ${few}`;
+
+/* ---------- Tenant brand (tenant_branding_snapshot.primary_color_key) ---------- */
+const BRANDS={
+  teal:{n:'أخضر نيلي',l:['#0E6B5C','#0A5146','#E4F0EC','#0B5D50','#FFFFFF'],d:['#5CBFAA','#7ED3C0','#15302A','#7ED3C0','#08201B']},
+  blue:{n:'أزرق',l:['#2456C7','#1B419A','#E6EDFA','#1E4BAE','#FFFFFF'],d:['#7EA6F2','#A3C0F7','#16233D','#A3C0F7','#0A1530']},
+  violet:{n:'بنفسجي',l:['#6A3FC2','#532F9A','#EFE9FA','#5B35A8','#FFFFFF'],d:['#B39AF0','#CBB9F6','#25193D','#CBB9F6','#170C2E']},
+  emerald:{n:'زمردي',l:['#0F7A47','#0B5E37','#E3F2EA','#0C6B3E','#FFFFFF'],d:['#5FCB92','#86DCAE','#12301F','#86DCAE','#06200F']}
+};
+function applyBrand(){
+  const b=BRANDS[S.brand],v=isDark()?b.d:b.l,r=document.documentElement.style;
+  ['--brand','--brand-strong','--brand-soft','--brand-text','--brand-ink'].forEach((k,i)=>r.setProperty(k,v[i]));
+  r.setProperty('--pass-accent',b.d[0]);r.setProperty('--pass-accent-ink',b.d[4]);
+}
+/* Implementation gaps shown in "notes" mode — codes match the plan (section 9) */
+const GAPS={
+  G1:'يتطلب خدمة قراءة موحّدة للقرارات المعلّقة عبر الأيام والوحدات',
+  G2:'يتطلب ملخص حالات الحضور لليوم',
+  G3:'يتطلب صلاحيات مقيّدة بفريق المدير المباشر',
+  G4:'يتطلب خدمة قسائم للموظف بعد التأهيل المالي',
+  G5:'يتطلب سجل نشاط بصلاحيات محددة',
+  G6:'يتطلب نظام إشعارات',
+  G7:'يتطلب قراءة تداخل غياب الفريق'
+};
+const gap=c=>S.notes?`<span class="gap" title="${esc(GAPS[c])}">${c}: ${GAPS[c]}</span>`:'';
+
+/* ---------- Data ---------- */
+const USERS={
+  hr:{name:'منى عبد الرحمن',short:'منى',title:'مديرة الموارد البشرية',i:'م',tone:'lilac'},
+  emp:{name:'كريم عادل',short:'كريم',title:'مندوب مبيعات، فرع مدينة نصر',i:'ك',tone:'mint'},
+  mgr:{name:'عمر الجمال',short:'عمر',title:'مدير المشتريات',i:'ع',tone:'peach'}
+};
+const ROLE_INFO={
+  hr:['مديرة الموارد البشرية','ترى الشركة كاملة: الناس، الحضور، الإجازات، الرواتب.'],
+  mgr:['مدير مباشر','يرى فريقه فقط ويتخذ قرارات الإجازة والإضافي.'],
+  emp:['موظف','يسجل حضوره من هاتفه ويطلب إجازاته ويطلع على قسائمه.']
+};
+const NAV={
+  hr:[['today','اليوم','home'],['inbox','القرارات','inbox'],['people','الناس','users'],['time','الوقت','clock'],['payroll','الرواتب','wallet']],
+  mgr:[['today','فريقي','home'],['inbox','القرارات','inbox'],['team','الإجازات','cal']],
+  emp:[['today','يومي','home'],['leave','إجازاتي','cal'],['pay','راتبي','slip'],['profile','ملفي','user']]
+};
+const ST={in:['حاضر','mint','--ok'],late:['متأخر','peach','--warn'],out:['لم يصل','neutral','--idle'],leave:['في إجازة','lilac','--info'],review:['قيد المراجعة','rose','--bad']};
+const PEOPLE=[
+ {id:'p1',n:'أحمد سمير',i:'أ',dept:'المبيعات',title:'مندوب مبيعات',site:'مدينة نصر',code:'1042',st:'late',in:'9:14 ص',hire:'3 مارس 2022'},
+ {id:'p2',n:'سارة حسن',i:'س',dept:'المالية',title:'محاسبة أولى',site:'مدينة نصر',code:'1003',st:'leave',in:'',hire:'12 يناير 2019'},
+ {id:'p3',n:'كريم عادل',i:'ك',dept:'المبيعات',title:'مندوب مبيعات',site:'مدينة نصر',code:'1156',st:'out',in:'',hire:'1 أغسطس 2023'},
+ {id:'p4',n:'نورهان علي',i:'ن',dept:'المالية',title:'محاسبة',site:'مدينة نصر',code:'1210',st:'in',in:'8:41 ص',hire:'15 فبراير 2024'},
+ {id:'p5',n:'خالد منصور',i:'خ',dept:'الصيانة',title:'فني صيانة',site:'العبور',code:'0877',st:'out',in:'',hire:'7 يونيو 2020'},
+ {id:'p6',n:'ياسمين فؤاد',i:'ي',dept:'المشتريات',title:'أخصائية مشتريات',site:'مدينة نصر',code:'1187',st:'in',in:'8:58 ص',hire:'20 سبتمبر 2023'},
+ {id:'p7',n:'عمر الجمال',i:'ع',dept:'المشتريات',title:'مدير المشتريات',site:'مدينة نصر',code:'0712',st:'in',in:'8:30 ص',hire:'4 أبريل 2018'},
+ {id:'p8',n:'هبة السيد',i:'ه',dept:'الموارد البشرية',title:'أخصائية شؤون عاملين',site:'مدينة نصر',code:'0954',st:'leave',in:'',hire:'9 نوفمبر 2020'},
+ {id:'p9',n:'محمود الشريف',i:'م',dept:'المخازن',title:'مشرف مخزن',site:'العبور',code:'0931',st:'review',in:'8:49 ص',hire:'22 يوليو 2020'},
+ {id:'p10',n:'ريم فاروق',i:'ر',dept:'خدمة العملاء',title:'ممثلة خدمة عملاء',site:'مدينة نصر',code:'1098',st:'in',in:'8:55 ص',hire:'5 مايو 2022'},
+ {id:'p11',n:'يوسف إبراهيم',i:'ي',dept:'المبيعات',title:'مندوب مبيعات',site:'مدينة نصر',code:'1302',st:'in',in:'8:47 ص',hire:'1 أكتوبر 2026'},
+ {id:'p12',n:'دينا كمال',i:'د',dept:'التسويق',title:'مصممة',site:'مدينة نصر',code:'1121',st:'out',in:'',hire:'14 أغسطس 2022'},
+ {id:'p13',n:'طارق حسني',i:'ط',dept:'المخازن',title:'أمين مخزن',site:'العبور',code:'0866',st:'in',in:'7:58 ص',hire:'2 مارس 2020'},
+ {id:'p14',n:'مريم سعيد',i:'م',dept:'المالية',title:'محاسبة',site:'مدينة نصر',code:'1244',st:'in',in:'8:50 ص',hire:'11 مارس 2025'},
+ {id:'p15',n:'إسلام رضا',i:'إ',dept:'المبيعات',title:'مشرف مبيعات',site:'مدينة نصر',code:'0990',st:'late',in:'9:21 ص',hire:'18 يونيو 2021'},
+ {id:'p16',n:'رنا مصطفى',i:'ر',dept:'المشتريات',title:'أخصائية مشتريات',site:'مدينة نصر',code:'1265',st:'in',in:'8:44 ص',hire:'6 يوليو 2025'},
+ {id:'p17',n:'حسام وجدي',i:'ح',dept:'المشتريات',title:'مسؤول موردين',site:'مدينة نصر',code:'1177',st:'late',in:'9:09 ص',hire:'13 مارس 2023'}
+];
+const KIND={
+  leave:['طلب إجازة','mint','cal'], ot:['إضافي','lilac','clock'], geo:['خارج النطاق','rose','pin'],
+  missing:['بصمة ناقصة','peach','alert'], absence:['غياب محتمل','peach','user'], unmapped:['بلا وردية','sky','link']
+};
+const S={
+  role:'hr',view:'today',sel:null,filter:'all',tfilter:'all',q:'',brand:'teal',notes:false,employer:'e1',
+  inbox:[
+    {id:'q1',reason:'',kind:'leave',who:'نورهان علي',fem:true,ini:'ن',pid:'p4',dept:'المالية',role:'محاسبة',title:'إجازة سنوية 3 أيام',sub:'من الإثنين 12 إلى الأربعاء 14 أكتوبر',age:'منذ يومين',scope:['hr'],from:12,to:14,days:3,balance:12,note:'سفر عائلي مخطط له منذ شهرين. سلّمت تسوية سبتمبر لعمر.',team:'قسم المالية'},
+    {id:'q2',kind:'ot',who:'ياسمين فؤاد',fem:true,ini:'ي',pid:'p6',dept:'المشتريات',role:'أخصائية مشتريات',title:'95 دقيقة إضافية',sub:'الثلاثاء 6 أكتوبر، الانصراف 6:35 م',age:'منذ 5 ساعات',scope:['hr','mgr'],minutes:95,rounded:90,end:'5:00 م',out:'6:35 م',alloc:{day:0,night:0,rest:0,holiday:0},reason:''},
+    {id:'q3',kind:'geo',who:'محمود الشريف',ini:'م',pid:'p9',dept:'المخازن',role:'مشرف مخزن',title:'تسجيل حضور من خارج الفرع',sub:'340 م من فرع العبور',age:'منذ 3 ساعات',scope:['hr'],time:'8:49 ص',acc:18,dist:340,site:'فرع العبور',reason:''},
+    {id:'q4',kind:'missing',who:'أحمد سمير',ini:'أ',pid:'p1',dept:'المبيعات',role:'مندوب مبيعات',title:'انصراف غير مسجل',sub:'الثلاثاء 6 أكتوبر، الحضور 8:57 ص',age:'منذ يوم',scope:['hr'],outT:'',reason:''},
+    {id:'q5',kind:'absence',who:'خالد منصور',ini:'خ',pid:'p5',dept:'الصيانة',role:'فني صيانة',title:'يوم بلا أي تسجيل',sub:'الإثنين 5 أكتوبر، وردية 8:00 ص إلى 4:00 م',age:'منذ يومين',scope:['hr'],reason:''},
+    {id:'q6',reason:'',kind:'leave',who:'رنا مصطفى',fem:true,ini:'ر',pid:'p16',dept:'المشتريات',role:'أخصائية مشتريات',title:'إجازة عارضة يوم واحد',sub:'الخميس 8 أكتوبر',age:'منذ ساعة',scope:['hr','mgr'],from:8,to:8,days:1,balance:4,note:'موعد في السفارة صباحًا، وسأتابع البريد من الهاتف.',team:'قسم المشتريات'},
+    {id:'q7',kind:'unmapped',who:'حسام وجدي',ini:'ح',pid:'p17',dept:'المشتريات',role:'مسؤول موردين',title:'تسجيل محفوظ بلا وردية سارية',sub:'ملف استيراد، حضور 8:31 ص يوم 6 أكتوبر',age:'منذ يوم',scope:['hr'],emp:'',reason:''}
+  ],
+  feed:[
+    {ic:'check',t:'mint',x:'اعتُمد 31 يوم حضور نظيفًا تلقائيًا حسب سياسة الوردية الثابتة.',w:'اليوم 7:00 ص'},
+    {ic:'user',t:'lilac',x:'فعّل يوسف إبراهيم حسابه وسجّل أول حضور من الموبايل.',w:'أمس 8:41 ص'},
+    {ic:'download',t:'peach',x:'استوردت هبة ملف حضور فرع العبور: 96 تسجيلًا، 2 بلا موظف مطابق.',w:'أمس 6:10 م'}
+  ],
+  blockers:[
+    {id:'b1',who:'يوسف إبراهيم',code:'employee_statutory_context_missing',ic:'shield',title:'بيانات الضريبة والتأمينات ناقصة',sub:'يوسف إبراهيم انضم في 1 أكتوبر، وبياناته لا تغطي الفترة',cta:'استكمال البيانات',ok:false},
+    {id:'b2',who:'ياسمين فؤاد',soft:true,ic:'clock',title:'إضافي غير مصنف لن يدخل الحساب',sub:'95 دقيقة لياسمين فؤاد يوم 6 أكتوبر. صنّفها ليُحتسب أجرها هذا الشهر.',cta:'افتح القرار',link:'q2'},
+    {id:'b3',who:'طارق حسني',code:'advance_capacity_disposition_required',ic:'coins',title:'قسط السلفة يتجاوز حد الخصم',sub:'طارق حسني، قسط 1,000 ج.م وحد الخصم المتاح 750 ج.م',cta:'اعتماد ترحيل الباقي',ok:false},
+    {id:'b4',who:'مريم سعيد',code:'compensation_gap',ic:'wallet',title:'الأجر لا يغطي كل أيام الفترة',sub:'مريم سعيد، تغيير أجر يبدأ 15 أكتوبر بلا قيمة للأيام السابقة',cta:'مراجعة الأجر',ok:false}
+  ],
+  pay:{step:3,busy:false},
+  punch:{state:'out',busy:false,inAt:null,outAt:null},
+  receipts:[
+    {dir:'انصراف',t:'5:06 م',d:'أمس',st:'ok',src:'موبايل، داخل النطاق'},
+    {dir:'حضور',t:'8:52 ص',d:'أمس',st:'ok',src:'موبايل، داخل النطاق'},
+    {dir:'حضور',t:'9:14 ص',d:'الإثنين',st:'review',src:'خارج النطاق، تمت مراجعته وقُبل'}
+  ],
+  bal:{total:21,used:6.5},
+  myLeaves:[
+    {id:'m3',type:'سنوية',from:'2026-09-24',to:'2026-09-24',days:0.5,st:'ok',half:true},
+    {id:'m2',type:'عارضة',from:'2026-09-03',to:'2026-09-03',days:1,st:'ok'},
+    {id:'m1',type:'سنوية',from:'2026-08-16',to:'2026-08-20',days:5,st:'ok'}
+  ]
+};
+const ME_PID='p3';
+
+/* ---------- Helpers ---------- */
+const inboxFor=r=>S.inbox.filter(x=>x.scope.includes(r));
+const pend=()=>S.role==='emp'?0:inboxFor(S.role).length;
+const openBlockers=()=>S.blockers.filter(b=>!b.soft&&!b.ok);
+const softOpen=()=>S.blockers.filter(b=>b.soft&&S.inbox.some(x=>x.id===b.link));
+const person=id=>PEOPLE.find(p=>p.id===id);
+const pendingDays=()=>S.myLeaves.filter(l=>l.st==='pending'&&l.type!=='مرضية').reduce((a,l)=>a+l.days,0);
+const avail=()=>S.bal.total-S.bal.used-pendingDays();
+function workDays(a,b){if(!a||!b)return 0;let d=pd(a),e=pd(b),n=0;if(e<d)return -1;while(d<=e){const w=d.getDay();if(w!==5&&w!==6)n++;d.setDate(d.getDate()+1)}return n}
+function toast(msg,icon){const t=document.createElement('div');t.className='toast';t.innerHTML=(icon?ic(icon,18,2.2):'')+`<span>${esc(msg)}</span>`;document.getElementById('toasts').appendChild(t);setTimeout(()=>t.remove(),3600)}
+function addFeed(icn,tone,x){S.feed.unshift({ic:icn,t:tone,x,w:'الآن',fresh:true})}
+
+/* ---------- Shell ---------- */
+function topbar(){
+  const u=USERS[S.role],p=pend();
+  const nav=NAV[S.role].map(([k,l])=>`<a href="#${k}" class="pill" data-act="go" data-v="${k}" ${S.view===k?'aria-current="page"':''}>${l}${k==='inbox'&&p?`<span class="cnt num">${p}</span>`:''}</a>`).join('');
+  return `<header class="topbar">
+    <a class="brand" href="#today" data-act="go" data-v="today" aria-label="منصة الأعمال، العودة للرئيسية"><span class="mark">TE</span><span class="brand-t"><strong>منصة الأعمال</strong><small>شركة النيل للصناعات</small></span></a>
+    <nav class="navpills" aria-label="التنقل الرئيسي">${nav}</nav>
+    <div class="top-end">
+      <button class="iconbtn" data-act="theme" aria-label="${isDark()?'التبديل إلى المظهر الفاتح':'التبديل إلى المظهر الداكن'}">${ic(isDark()?'sun':'moon')}</button>
+      <button class="iconbtn" data-act="notify" aria-label="الإشعارات">${ic('bell')}<span class="dot"></span></button>
+      <button class="rolebtn" data-act="roles" aria-label="تبديل الدور. الحالي: ${esc(ROLE_INFO[S.role][0])}"><span class="av av40 t-${u.tone}">${u.i}</span><span class="rolemeta"><b>${u.name}</b><small>${u.title}</small></span>${ic('swap',16)}</button>
+    </div>
+  </header>`;
+}
+function tabbar(){
+  const p=pend();
+  return `<nav class="tabbar" aria-label="التنقل السفلي">${NAV[S.role].map(([k,l,i])=>`<button class="tab" data-act="go" data-v="${k}" ${S.view===k?'aria-current="page"':''}><span class="tabic">${ic(i,22)}${k==='inbox'&&p?`<span class="tdot num">${p}</span>`:''}</span>${l}</button>`).join('')}</nav>`;
+}
+function render(keepScroll){
+  if(!NAV[S.role].some(n=>n[0]===S.view))S.view='today';
+  const y=window.scrollY;
+  applyBrand();
+  document.getElementById('app').innerHTML=`<a class="skip" href="#main">تخطَّ إلى المحتوى</a>`+topbar()+`<div class="offline" role="status">${ic('alert',16,2)}لا يوجد اتصال. ما تراه قد لا يكون محدّثًا، ولن تُرسل أي عملية حتى يعود الاتصال.</div><main class="page" id="main" tabindex="-1">${VIEWS[S.role][S.view]()}</main>`+tabbar();
+  const lbl=(NAV[S.role].find(n=>n[0]===S.view)||[])[1]||'';document.title=`${lbl} | منصة الأعمال`;
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',getComputedStyle(document.documentElement).getPropertyValue('--bg').trim()||'#F5F5FA');
+  window.scrollTo(0,keepScroll?y:0);
+  wireSlider();
+  S.feed.forEach(f=>f.fresh=false);
+}
+
+/* ---------- Shared bits ---------- */
+function avStack(list,tone){const show=list.slice(0,3),more=list.length-show.length;return `<div class="stackav">${show.map(x=>`<span class="av av32 t-${tone}">${x}</span>`).join('')}${more>0?`<span class="av av32" style="background:var(--surface);color:var(--ink)">+${more}</span>`:''}</div>`}
+function taskCard(o){
+  const dotc={peach:'--warn',lilac:'--brand',mint:'--ok'}[o.tone]||'--brand';
+  if(!o.n)return `<article class="task done"><div class="tk"><span class="k"><i style="--c:var(--idle)"></i>${o.k}</span><span class="chip t-mint">${ic('check',14,2.4)}محدّث</span></div><span class="big num">0</span><h2>لا شيء معلق</h2><p>${o.doneText}</p></article>`;
+  return `<article class="task"><div class="tk"><span class="k"><i style="--c:var(${dotc})"></i>${o.k}</span>${o.badge||''}</div><span class="big num">${o.n}</span><h2>${o.title}</h2><p>${o.desc}</p>${o.items&&o.items.length?`<ul>${o.items.slice(0,3).map(([a,b])=>`<li><span>${a}</span><span>${b}</span></li>`).join('')}</ul>`:''}<div class="foot"><span class="hint">${o.items&&o.items.length>3?`+${o.items.length-3} أخرى في القائمة`:''}</span><button class="btn btn-solid" data-act="${o.act}" ${o.data||''}>${o.cta}</button></div></article>`;
+}
+function feedHTML(){return S.feed.slice(0,5).map(f=>`<div class="feed ${f.fresh?'new':''}"><span class="ic t-${f.t}">${ic(f.ic,18,2)}</span><div class="stack" style="gap:2px"><p>${esc(f.x)}</p><small>${f.w}</small></div></div>`).join('')}
+function pplGrid(list){return `<div class="ppl">${list.map(p=>`<button class="pp" data-act="person" data-id="${p.id}" style="--ring:var(${ST[p.st][2]})"><span class="av t-${ST[p.st][1]}">${p.i}</span>${p.n.split(' ')[0]}</button>`).join('')}</div>`}
+function legend(){const c={in:211,late:14,out:19,leave:4};return `<div class="legend"><span><i class="lg" style="--c:var(--ok)"></i>حاضر ${c.in}</span><span><i class="lg" style="--c:var(--warn)"></i>متأخر ${c.late}</span><span><i class="lg" style="--c:var(--idle)"></i>لم يصل ${c.out}</span><span><i class="lg" style="--c:var(--info)"></i>في إجازة ${c.leave}</span></div>`}
+function weekGrid(rows){
+  const days=[['الأحد',4],['الإثنين',5],['الثلاثاء',6],['الأربعاء',7],['الخميس',8]];
+  return `<div class="week"><span></span>${days.map(([d,n])=>`<span class="dh ${n===7?'today':''}">${d}<br><span class="num">${n}</span></span>`).join('')}
+  ${rows.map(r=>`<span class="nm">${r.n}</span><span class="bar ${r.pending?'pending':'t-'+r.tone}" style="grid-column:${r.a+1} / ${r.b+2}">${r.label}</span>`).join('')}</div>`;
+}
+
+/* ---------- HR views ---------- */
+function hrToday(){
+  const items=inboxFor('hr'),att=items.filter(x=>x.kind!=='leave'),lv=items.filter(x=>x.kind==='leave'),bl=openBlockers();
+  const n=[att.length,lv.length,bl.length].filter(Boolean).length;
+  const hero=n?`أهلًا منى. ${['','أمر واحد يحتاجك','أمران يحتاجانك','ثلاثة أمور تحتاجك'][n]} اليوم، والباقي يسير كما يجب.`:'أهلًا منى. لا شيء ينتظرك الآن، وكل شيء يسير كما يجب.';
+  const phr={missing:'بصمات ناقصة',geo:'تسجيل من خارج الفرع',absence:'يوم بلا تسجيلات',ot:'إضافي يحتاج تصنيفًا',unmapped:'تسجيل بلا موظف مطابق'};
+  const kinds=[...new Set(att.map(x=>phr[x.kind]))];
+  const attDesc=kinds.length>1?kinds.slice(0,-1).join('، ')+'، و'+kinds[kinds.length-1]+'.':(kinds[0]||'')+'.';
+  return `<div class="head"><h1 class="hero">${hero}</h1><span class="muted">الأربعاء 7 أكتوبر 2026</span></div>
+  <div class="grid3">
+    ${taskCard({n:bl.length,tone:'peach',k:'الرواتب',title:'موانع تؤخر مسير أكتوبر',desc:'حلّها ليُصرف الراتب في موعده يوم 28 أكتوبر.',badge:'<span class="chip t-peach">موعد الحل 20 أكتوبر</span>',items:bl.map(b=>[b.title,b.who]),cta:'ابدأ الحل',act:'go',data:'data-v="payroll"',doneText:'المسير جاهز للانتقال إلى الحساب.'})}
+    ${taskCard({n:att.length,tone:'lilac',k:'الحضور',title:'قرارات حضور تنتظرك',desc:attDesc,items:att.map(x=>[x.who,KIND[x.kind][0]]),cta:'راجعها الآن',act:'inbox',data:'data-f="time"',doneText:'كل أيام العمل المعروضة محسومة.'})}
+    ${taskCard({n:lv.length,tone:'mint',k:'الإجازات',title:'طلبات إجازة جديدة',desc:'لا تعارض مع غياب آخر في نفس الفريق، والأرصدة تكفي.',items:lv.map(x=>[x.who,daysWord(x.days)]),cta:'قرّر الآن',act:'inbox',data:'data-f="leave"',doneText:'لا طلبات تنتظر قرارك.'})}
+  </div>
+  <div class="split">
+    <section class="card wide stack" style="gap:18px"><div class="between"><h2 class="h2">من في العمل اليوم</h2>${legend()}</div>${gap('G2')}${pplGrid(PEOPLE.slice(0,16))}<button class="linkbtn" data-act="go" data-v="people" style="align-self:flex-start">عرض كل الموظفين، 248 موظفًا</button></section>
+    <section class="card narrow stack"><h2 class="h2">ما حدث مؤخرًا</h2>${gap('G5')}${feedHTML()}</section>
+  </div>`;
+}
+function inboxView(){
+  const all=inboxFor(S.role);
+  const items=all.filter(x=>S.filter==='all'||(S.filter==='leave'?x.kind==='leave':x.kind!=='leave'));
+  let sel=S.sel&&items.find(x=>x.id===S.sel);
+  if(!sel&&items.length&&!isMobile()){sel=items[0];S.sel=sel.id}
+  const nL=all.filter(x=>x.kind==='leave').length,nT=all.length-nL;
+  const f=(k,l,n)=>`<button class="filter" data-act="filter" data-f="${k}" aria-pressed="${S.filter===k}">${l} <span class="num">${n}</span></button>`;
+  const list=items.length?items.map(x=>{const k=KIND[x.kind];return `<li><button class="qi ${sel&&sel.id===x.id?'on':''}" data-act="open" data-id="${x.id}"><span class="av av40 t-${k[1]}">${x.ini}</span><span class="qi-b"><b>${x.who}</b><span>${x.title}</span><small>${x.sub}</small></span><span class="qi-e"><span class="chip t-${k[1]}">${k[0]}</span><small>${x.age}</small></span></button></li>`}).join(''):'';
+  const empty=`<div class="empty card"><span class="ei t-mint">${ic('check',30,2)}</span><b>لا قرارات معلقة هنا</b><span>كل ما وصلك تم حسمه. ستظهر القرارات الجديدة في هذا المكان.</span></div>`;
+  return `<div class="head"><div class="stack" style="gap:6px"><h1 class="h1">القرارات</h1>${gap('G1')}</div><div class="chips">${f('all','الكل',all.length)}${f('time','الحضور والإضافي',nT)}${f('leave','الإجازات',nL)}</div></div>
+  ${items.length?`<div class="inbox ${sel&&S.sel?'open':''}"><ul class="qlist">${list}</ul><section class="detail card" aria-label="تفاصيل القرار">${sel?detail(sel):''}</section></div>`:empty}`;
+}
+function dHead(x,sentence){const k=KIND[x.kind];return `<button class="iconbtn back-m" data-act="close" aria-label="رجوع إلى القائمة">${ic('back')}</button>
+  <div class="dhead"><div class="row"><span class="av av64 t-${k[1]}">${x.ini}</span><span class="chip t-${k[1]}" style="margin-right:auto">${k[0]}</span></div><h2>${sentence}</h2><span class="muted" style="font-size:14px">${x.role?x.role+' في '+x.dept+'، ':''}${x.age}</span></div>`}
+function reasonField(x,label,need){return `<div class="field"><label for="r-${x.id}">${label} <span>${need?'(مطلوب)':'(اختياري)'}</span></label><textarea class="textarea" id="r-${x.id}" data-in="reason" data-id="${x.id}" placeholder="اكتب السبب كما سيظهر في سجل التدقيق">${esc(x.reason||'')}</textarea></div>`}
+function ready(x){
+  if(x.kind==='ot'){const s=Object.values(x.alloc).reduce((a,b)=>a+b,0);return s===x.rounded&&x.reason.trim().length>2}
+  if(x.kind==='missing')return !!x.outT&&x.reason.trim().length>2;
+  if(x.kind==='unmapped')return !!x.emp&&x.reason.trim().length>2;
+  if(x.kind==='geo'||x.kind==='absence')return x.reason.trim().length>2;
+  return true;
+}
+function detail(x){
+  const dis=ready(x)?'':'disabled';
+  if(x.kind==='leave'){
+    const after=x.balance-x.days;
+    return dHead(x,`${x.who} ${x.fem?'تطلب':'يطلب'} ${x.title.replace(/ \d.*$/,'').replace('يوم واحد','')}`)+
+    `<div class="daterng"><div class="d"><b class="num">${x.from}</b><small>أكتوبر</small></div>${x.to!==x.from?`<span class="dash"></span><div class="d"><b class="num">${x.to}</b><small>أكتوبر</small></div>`:''}<span class="chip t-lilac" style="height:36px;padding:0 14px;margin-right:auto">${daysWord(x.days)}</span></div>
+    <div class="stack"><h3 style="font-size:15px;font-weight:600">قبل أن تقرر</h3><div class="facts">
+      <div class="fact"><span class="fi t-mint">${ic('check',16,2.4)}</span><span>الرصيد يكفي. ${x.fem?'يبقى لها':'يبقى له'} ${daysWord(after)} بعد الموافقة.</span></div>
+      <div class="fact"><span class="fi t-mint">${ic('check',16,2.4)}</span><span>لا أحد غيرها من ${x.team} غائب في هذه الأيام. ${gap('G7')}</span></div>
+      <div class="fact"><span class="fi t-peach">${ic('alert',16,2.4)}</span><span>تُحتسب الأيام تلقائيًا في مسير أكتوبر بعد الموافقة.</span></div>
+    </div></div>
+    <div class="stack" style="gap:8px"><span class="hint">${x.fem?'ملاحظتها':'ملاحظته'}</span><p class="bubble">${esc(x.note)}</p></div>
+    <div class="field"><label for="r-${x.id}">سبب القرار <span>(مطلوب عند الرفض فقط)</span></label><textarea class="textarea" id="r-${x.id}" data-in="reason" data-id="${x.id}" placeholder="يصل السبب ${x.fem?'لها':'له'} مع إشعار القرار">${esc(x.reason||'')}</textarea></div>
+    <div class="actions"><button class="btn btn-danger btn-lg" id="reject-act" data-act="decide" data-id="${x.id}" data-o="no" ${(x.reason||'').trim().length>2?'':'disabled'}>ارفض</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes">وافق على الإجازة</button></div>`;
+  }
+  if(x.kind==='ot'){
+    const B=[['day','نهاري عادي'],['night','ليلي عادي'],['rest','يوم الراحة الأسبوعية'],['holiday','عطلة رسمية']];
+    const sum=Object.values(x.alloc).reduce((a,b)=>a+b,0),left=x.rounded-sum;
+    return dHead(x,`${x.who} عملت ${x.minutes} دقيقة بعد نهاية ورديتها`)+
+    `<div class="kv"><div><small>اليوم</small><b>الثلاثاء 6/10</b></div><div><small>نهاية الوردية</small><b class="num">${x.end}</b></div><div><small>الانصراف الفعلي</small><b class="num">${x.out}</b></div></div>
+    <div class="stack" style="gap:6px"><div class="between"><h3 style="font-size:15px;font-weight:600">وزّع ${x.rounded} دقيقة على فئات الإضافي</h3><span class="hint">بعد التقريب لأسفل لأقرب 15 دقيقة</span></div>
+    <div>${B.map(([k,l])=>`<div class="steprow"><span>${l}</span><button class="stepbtn" data-act="ot" data-id="${x.id}" data-b="${k}" data-d="-15" aria-label="إنقاص ${l} 15 دقيقة" ${x.alloc[k]<=0?'disabled':''}>${ic('minus')}</button><output class="num" aria-live="polite">${x.alloc[k]}</output><button class="stepbtn" data-act="ot" data-id="${x.id}" data-b="${k}" data-d="15" aria-label="زيادة ${l} 15 دقيقة" ${left<=0?'disabled':''}>${ic('plus')}</button></div>`).join('')}</div>
+    <div class="meter ${left===0?'full':''}"><i style="width:${Math.round(sum/x.rounded*100)}%"></i></div>
+    <span class="hint" style="color:${left===0?'var(--ok-text)':'var(--warn-text)'};font-weight:600">${left===0?'اكتمل التوزيع. لا تتبقى دقائق.':`تبقى ${left} دقيقة لم توزع بعد.`}</span></div>
+    ${reasonField(x,'سبب القرار',true)}
+    <div class="actions"><button class="btn btn-danger btn-lg" data-act="decide" data-id="${x.id}" data-o="no">رفض الإضافي</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes" ${dis}>اعتماد التصنيف</button></div>`;
+  }
+  if(x.kind==='geo'){
+    return dHead(x,`${x.who} سجّل حضوره على بعد ${x.dist} م من ${x.site}`)+
+    `<div class="map"><svg viewBox="0 0 400 190" width="100%" height="190" preserveAspectRatio="xMidYMid slice" aria-label="خريطة توضح موقع التسجيل خارج نطاق الفرع" role="img">
+      <path d="M0 46h400M0 112h400M0 168h400M90 0v190M210 0v190M320 0v190" style="stroke:var(--surface);stroke-width:9"/>
+      <circle cx="150" cy="100" r="58" style="fill:var(--ok-bg);stroke:var(--ok);stroke-width:1.5;stroke-dasharray:4 5"/>
+      <rect x="140" y="90" width="20" height="20" rx="5" style="fill:var(--surface);stroke:var(--brand);stroke-width:2"/>
+      <path d="M150 100L300 54" style="stroke:var(--bad);stroke-width:1.6;stroke-dasharray:3 4"/>
+      <circle cx="300" cy="54" r="20" style="fill:var(--bad-bg)"/><circle cx="300" cy="54" r="7" style="fill:var(--bad);stroke:var(--surface);stroke-width:3"/>
+      <text x="228" y="66" style="fill:var(--bad-text);font:600 13px Alexandria,sans-serif">${x.dist} م</text>
+      <text x="150" y="182" text-anchor="middle" style="fill:var(--ok-text);font:500 12px Alexandria,sans-serif">نطاق الفرع 150 م</text>
+    </svg></div>
+    <div class="kv"><div><small>الوقت</small><b class="num">${x.time}</b></div><div><small>دقة الموقع</small><b class="num">${x.acc} م</b></div><div><small>المصدر</small><b>تطبيق الموبايل</b></div></div>
+    <p style="font-size:14px;line-height:1.8;color:var(--ink-2)">إذا قبلت التسجيل، يُعاد تفسير يوم العمل ويُحتسب الحضور من ${x.time}. إذا رفضته، يبقى اليوم بلا تسجيل دخول ويظهر كبصمة ناقصة.</p>
+    ${reasonField(x,'سبب القرار',true)}
+    <div class="actions"><button class="btn btn-danger btn-lg" data-act="decide" data-id="${x.id}" data-o="no" ${dis}>رفض التسجيل</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes" ${dis}>قبول التسجيل</button></div>`;
+  }
+  if(x.kind==='missing'){
+    return dHead(x,`${x.who} لم يسجل انصرافه يوم الثلاثاء`)+
+    `<div class="kv"><div><small>الحضور</small><b class="num">8:57 ص</b></div><div><small>نهاية الوردية</small><b class="num">5:00 م</b></div><div><small>الانصراف</small><b style="color:var(--warn-text)">غير مسجل</b></div></div>
+    <div class="field"><label for="t-${x.id}">وقت الانصراف الفعلي <span>(مطلوب)</span></label><input type="time" class="input num" id="t-${x.id}" data-in="outT" data-id="${x.id}" value="${x.outT}"><span class="hint">يُضاف كتسجيل تصحيحي، ويبقى التسجيل الأصلي محفوظًا كما هو.</span></div>
+    ${reasonField(x,'سبب التصحيح',true)}
+    <div class="actions"><button class="btn btn-ghost btn-lg" data-act="soon" data-m="يفتح سجل يوم العمل الكامل بكل الحركات والتفسير، وهي صفحة موجودة حاليًا.">سجل اليوم كاملًا</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes" ${dis}>إضافة الانصراف</button></div>`;
+  }
+  if(x.kind==='absence'){
+    return dHead(x,`لم يسجل ${x.who} أي حضور يوم الإثنين`)+
+    `<div class="facts"><div class="fact"><span class="fi t-neutral">${ic('cal',16,2)}</span><span>لا يوجد طلب إجازة أو مهمة خارجية مسجلة لهذا اليوم.</span></div><div class="fact"><span class="fi t-neutral">${ic('clock',16,2)}</span><span>آخر تسجيل له كان انصراف الأحد 4 أكتوبر الساعة 4:03 م.</span></div></div>
+    ${reasonField(x,'سبب القرار',true)}
+    <div class="actions"><button class="btn btn-ghost btn-lg" data-act="soon" data-m="يفتح سجل يوم العمل الكامل بكل الحركات والتفسير، وهي صفحة موجودة حاليًا.">سجل اليوم كاملًا</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes" ${dis}>اعتماد يوم غياب</button></div>`;
+  }
+  if(x.kind==='unmapped'){
+    return dHead(x,`تسجيل حضور لـ${x.who} محفوظ دون وردية سارية في يومه`)+
+    `<div class="kv"><div><small>المصدر</small><b>ملف استيراد</b></div><div><small>الفرع</small><b>مدينة نصر</b></div><div><small>الحركة</small><b class="num">حضور 8:31 ص</b></div></div>
+    <div class="facts"><div class="fact"><span class="fi t-sky">${ic('alert',16,2.4)}</span><span>لم يكن لحسام تعيين عمل أو سياسة دوام سارية يوم 6 أكتوبر، فحُفظ التسجيل كما هو دون تخمين يوم العمل.</span></div>
+    <div class="fact"><span class="fi t-mint">${ic('check',16,2.4)}</span><span>بعد ضبط التعيين المؤرخ، يُربط التسجيل بيومه بهويته الأصلية ويُعاد تفسير اليوم.</span></div></div>
+    <div class="field"><label for="e-${x.id}">حالة التعيين <span>(مطلوب)</span></label><select class="select" id="e-${x.id}" data-in="emp" data-id="${x.id}"><option value="">اختر</option><option value="fixed" ${x.emp==='fixed'?'selected':''}>تم ضبط التعيين المؤرخ وسياسة الدوام</option></select><span class="hint">إذا لم يُضبط بعد، افتح ملف الموظف أولًا لإضافة التعيين.</span></div>
+    ${reasonField(x,'سبب الربط',true)}
+    <div class="actions"><button class="btn btn-ghost btn-lg" data-act="person" data-id="${x.pid}">ملف الموظف</button><button class="btn btn-solid btn-lg grow" id="primary-act" data-act="decide" data-id="${x.id}" data-o="yes" ${dis}>ربط التسجيل بيومه</button></div>`;
+  }
+  return '';
+}
+function peopleView(){
+  const q=S.q.trim();
+  const list=PEOPLE.filter(p=>!q||p.n.includes(q)||p.code.includes(q)||p.dept.includes(q));
+  return `<div class="head"><div class="stack" style="gap:4px"><h1 class="h1">الناس</h1><span class="muted">248 موظفًا في 3 فروع. تعرض هذه النسخة عينة منهم.</span></div><button class="btn btn-solid" data-act="soon" data-m="نموذج إضافة موظف يأتي في المرحلة التالية من النموذج.">${ic('plus',18,2)}إضافة موظف</button></div>
+  <label class="input" style="display:flex;align-items:center;gap:10px;max-width:520px;border-radius:24px;min-height:52px">${ic('search',18)}<span class="sr">بحث في الموظفين</span><input type="search" data-in="q" value="${esc(S.q)}" placeholder="ابحث بالاسم أو الكود أو القسم" style="flex:1;border:0;outline:0;background:transparent;font-size:14px"></label>
+  <div id="plist" class="grid3" style="grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:14px">${peopleCards(list)}</div>`;
+}
+function peopleCards(list){
+  if(!list.length)return `<div class="empty card" style="grid-column:1/-1"><b>لا نتائج لهذا البحث</b><span>جرّب جزءًا من الاسم أو كود الموظف.</span></div>`;
+  return list.map(p=>`<button class="card" data-act="person" data-id="${p.id}" style="display:flex;gap:14px;align-items:center;text-align:right;border:1px solid transparent;color:var(--ink);padding:18px"><span class="av av48 t-${ST[p.st][1]}">${p.i}</span><span style="flex:1;display:flex;flex-direction:column;line-height:1.5;min-width:0"><b style="font-weight:600;font-size:15px">${p.n}</b><span style="font-size:13px;color:var(--ink-2)">${p.title}</span><small class="muted" style="font-size:12px">${p.dept}، فرع ${p.site}</small></span><span class="chip t-${ST[p.st][1]}">${ST[p.st][0]}</span></button>`).join('');
+}
+function timeView(){
+  const f=S.tfilter;const list=PEOPLE.filter(p=>f==='all'||p.st===f);
+  const fb=(k,l)=>`<button class="filter" data-act="tfilter" data-f="${k}" aria-pressed="${f===k}">${l}</button>`;
+  return `<div class="head"><div class="stack" style="gap:4px"><h1 class="h1">الوقت والحضور</h1><span class="muted">اليوم الأربعاء 7 أكتوبر، آخر تحديث قبل دقيقة.</span></div><div class="row" style="flex-wrap:wrap"><button class="btn btn-ghost" data-act="soon" data-m="استيراد ملفات الحضور متاح في المنصة الحالية، وسيُنقل لهذا التصميم.">${ic('download',18)}استيراد ملف</button></div></div>
+  <div class="chips">${fb('all','الكل')}${fb('in','حاضر')}${fb('late','متأخر')}${fb('out','لم يصل')}${fb('leave','في إجازة')}${fb('review','قيد المراجعة')}</div>
+  <div class="tablewrap"><table><thead><tr><th>الموظف</th><th>الفرع</th><th>الحضور</th><th>الحالة</th><th><span class="sr">إجراء</span></th></tr></thead><tbody>
+  ${list.map(p=>`<tr><td><div class="who"><span class="av av40 t-${ST[p.st][1]}">${p.i}</span><span>${p.n}<small>${p.dept}</small></span></div></td><td>${p.site}</td><td class="num">${p.in||'<span class="muted">لا يوجد</span>'}</td><td><span class="chip t-${ST[p.st][1]}">${ST[p.st][0]}</span></td><td style="text-align:left"><button class="btn btn-ghost" style="min-height:40px" data-act="person" data-id="${p.id}">الملف</button></td></tr>`).join('')||`<tr><td colspan="5" class="muted" style="text-align:center;padding:32px">لا أحد في هذه الحالة الآن.</td></tr>`}
+  </tbody></table></div>
+  <section class="card stack"><div class="between"><h2 class="h2">غياب هذا الأسبوع</h2><span class="hint">الخطوط المتقطعة طلبات لم تُحسم</span></div>${weekGrid([
+    {n:'سارة حسن',a:3,b:4,tone:'lilac',label:'سنوية'},{n:'هبة السيد',a:3,b:4,tone:'lilac',label:'سنوية حتى 11'},{n:'عمر الجمال',a:4,b:4,tone:'peach',label:'نصف يوم'},
+    ...(S.inbox.some(x=>x.id==='q6')?[{n:'رنا مصطفى',a:4,b:4,pending:true,label:'بانتظار القرار'}]:[{n:'رنا مصطفى',a:4,b:4,tone:'mint',label:'عارضة'}])])}</section>`;
+}
+function payrollView(){
+  const st=S.pay.step,bl=openBlockers();
+  const steps=['الدورة والفترة','الحضور والإجازات','المدخلات والموانع','الحساب والمراجعة','الاعتماد والتثبيت','الصرف والقسائم'];
+  const sub=i=>i<st-1?'مكتمل':i===st-1?(st===3?(bl.length?count(bl.length,'مانع واحد','مانعان','موانع'):'جاهزة'):st===4?(S.pay.busy?'جارٍ الحساب':'جاهز للمراجعة'):'بانتظار الاعتماد'):'لم يبدأ';
+  let body='';
+  if(st===3){
+    body=`<section class="card stack"><div class="between"><h2 class="h2">ما يوقف المسير الآن</h2><span class="hint">${bl.length?'حل كل الموانع لتنتقل إلى الحساب':'لا موانع متبقية'}</span></div><div>
+    ${S.blockers.filter(b=>!b.soft).map(b=>{const ok=b.ok;return `<div class="blk ${ok?'ok':''}"><span class="bi ${ok?'t-mint':'t-peach'}">${ic(ok?'check':b.ic,20,2)}</span><span class="bt"><b>${b.title}</b><span>${b.sub}</span></span>${ok?'<span class="chip t-mint">تم</span>':`<button class="btn btn-ghost" data-act="block" data-id="${b.id}">${b.cta}</button>`}</div>`}).join('')}
+    </div>${softOpen().map(b=>`<div class="notice">${ic('alert',20,2)}<span class="bt"><b>${b.title}</b><br>${b.sub}</span><button class="btn btn-ghost" data-act="block" data-id="${b.id}">${b.cta}</button></div>`).join('')}<button class="btn btn-solid btn-lg" data-act="paynext" ${bl.length||S.pay.busy?'disabled':''} style="align-self:flex-start">${S.pay.busy?'<span class="spin"></span>جارٍ الحساب':'انتقل إلى الحساب'}</button></section>`;
+  }else if(st===4){
+    body=`<section class="card stack"><div class="banner t-mint">${ic('check',22,2)}<span>اكتمل الحساب المبدئي لكل موظفي الجهة. راجع الفروقات عن شهر سبتمبر قبل الإرسال للاعتماد.</span></div>
+    <div><div class="blk"><span class="bi t-lilac">${ic('users',20)}</span><span class="bt"><b>3 موظفين جدد هذا الشهر</b><span>أُضيف 27,400 ج.م إلى إجمالي المستحقات</span></span><button class="btn btn-ghost" data-act="soon" data-m="تفاصيل الفروقات تأتي في المرحلة التالية من النموذج.">التفاصيل</button></div>
+    <div class="blk"><span class="bi t-lilac">${ic('clock',20)}</span><span class="bt"><b>إضافي معتمد ومصنف لـ18 موظفًا</b><span>أُضيف 14,260 ج.م</span></span><button class="btn btn-ghost" data-act="soon" data-m="تفاصيل الفروقات تأتي في المرحلة التالية من النموذج.">التفاصيل</button></div>
+    <div class="blk"><span class="bi t-peach">${ic('cal',20)}</span><span class="bt"><b>إجازة بدون أجر لموظفين اثنين</b><span>خُصم 3,150 ج.م</span></span><button class="btn btn-ghost" data-act="soon" data-m="تفاصيل الفروقات تأتي في المرحلة التالية من النموذج.">التفاصيل</button></div></div>
+    <button class="btn btn-solid btn-lg" data-act="paynext" style="align-self:flex-start">إرسال للاعتماد</button></section>`;
+  }else{
+    body=`<section class="card stack"><div class="banner t-lilac">${ic('shield',22,2)}<span>أُرسل المسير إلى المدير المالي للاعتماد. بعد الاعتماد يُثبت المسير ولا يُعدل إلا بتصحيح موثق، وتُتاح القسائم للموظفين.</span></div><button class="btn btn-ghost" data-act="payreset" style="align-self:flex-start">إعادة العرض من البداية</button></section>`;
+  }
+  const EMP={e1:['شركة النيل للصناعات',182,['942,800','144,210'],['970,640','146,560']],e2:['النيل للتوزيع',49,['254,300','38,770'],['262,410','39,560']],e3:['النيل للخدمات اللوجستية',17,['87,500','13,440'],['89,460','13,450']]};const F=EMP[S.employer][st>=4?3:2];
+  return `<div class="head"><div class="stack" style="gap:4px"><h1 class="h1">مسير رواتب أكتوبر 2026</h1><span class="muted">من 1 إلى 31 أكتوبر، ${EMP[S.employer][1]} موظفًا. الصرف المخطط 28 أكتوبر.</span></div>
+  <label class="emp-pick">${ic('bank',18)}<span class="sr">جهة العمل</span><select data-in="employer" style="border:0;background:transparent;font-weight:600;outline:none">${Object.entries(EMP).map(([k,[n]])=>`<option value="${k}" ${S.employer===k?'selected':''}>${n}</option>`).join('')}</select></label></div>
+  <section class="card stack" style="gap:22px"><ol class="stepper">${steps.map((s,i)=>`<li class="step ${i<st-1?'done':i===st-1?'cur':''}"><span class="bar"></span><b>${s}</b><small>${sub(i)}</small></li>`).join('')}</ol>
+  <div class="figs"><div class="fig"><small>إجمالي المستحقات ${st>=4?'المحسوب':'المبدئي'}</small><b class="num">${F[0]} <span>ج.م</span></b></div><div class="fig"><small>الاستقطاعات ${st>=4?'المحسوبة':'المبدئية'}</small><b class="num">${F[1]} <span>ج.م</span></b></div><div class="fig"><small>صافي الرواتب</small><span style="font-size:14px;line-height:1.7;color:var(--ink-2)">يظهر بعد اكتمال التأهيل المالي لحزمة الضرائب والتأمينات.</span></div></div></section>
+  ${body}`;
+}
+
+/* ---------- Manager views ---------- */
+const TEAM=['p6','p16','p17'].map(person);
+function mgrToday(){
+  const items=inboxFor('mgr'),present=TEAM.filter(p=>p.st==='in'||p.st==='late').length;
+  return `${S.notes?`<div>${gap('G3')}</div>`:''}<div class="head"><h1 class="hero">أهلًا عمر. ${present} من ${TEAM.length} في فريقك يعملون الآن${items.length?`، و${count(items.length,'قرار واحد','قراران','قرارات')} ${items.length===1?'ينتظرك':items.length===2?'ينتظرانك':'تنتظرك'}.`:'، ولا قرارات معلقة.'}</h1><span class="muted">الأربعاء 7 أكتوبر 2026</span></div>
+  <div class="grid3">
+    ${taskCard({n:items.length,tone:'lilac',k:'قرارات فريقك',title:'قرارات تخص فريقك',desc:'تصلك هنا قرارات فريقك فقط.',items:items.map(x=>[x.who,KIND[x.kind][0]]),cta:'افتح القرارات',act:'go',data:'data-v="inbox"',doneText:'فريقك بلا قرارات معلقة.'})}
+    <article class="task"><div class="tk"><span class="k"><i style="--c:var(--ok)"></i>هذا الأسبوع</span></div><span class="big num">1</span><h2>غياب مخطط في فريقك</h2><p>${S.inbox.some(x=>x.id==='q6')?'رنا مصطفى طلبت إجازة يوم الخميس 8 أكتوبر ولم يُحسم الطلب بعد.':'رنا مصطفى في إجازة عارضة يوم الخميس 8 أكتوبر.'}</p><div class="foot"><span></span><button class="btn btn-ghost" data-act="go" data-v="team">عرض التقويم</button></div></article>
+  </div>
+  <section class="card stack"><h2 class="h2">فريقك اليوم</h2><div>${TEAM.map(p=>`<div class="blk"><span class="av av48 t-${ST[p.st][1]}">${p.i}</span><span class="bt"><b>${p.n}</b><span>${p.title}${p.in?`، حضر ${p.in}`:''}</span></span><span class="chip t-${ST[p.st][1]}">${ST[p.st][0]}</span></div>`).join('')}</div></section>`;
+}
+function mgrTeam(){
+  return `<div class="head"><h1 class="h1">إجازات الفريق</h1>${gap('G3')}</div>
+  <section class="card stack"><h2 class="h2">هذا الأسبوع</h2>${weekGrid([{n:'عمر الجمال',a:4,b:4,tone:'peach',label:'نصف يوم'},S.inbox.some(x=>x.id==='q6')?{n:'رنا مصطفى',a:4,b:4,pending:true,label:'بانتظارك'}:{n:'رنا مصطفى',a:4,b:4,tone:'mint',label:'عارضة'}])}</section>
+  <section class="card stack"><h2 class="h2">أرصدة الإجازة السنوية</h2><div>${[['ياسمين فؤاد','ي',11],['رنا مصطفى','ر',4],['حسام وجدي','ح',16.5]].map(([n,i,b])=>`<div class="blk"><span class="av av40 t-lilac">${i}</span><span class="bt"><b>${n}</b><span>متبقٍ من رصيد 2026</span></span><b class="num" style="font-size:18px">${daysWord(b)}</b></div>`).join('')}</div></section>`;
+}
+
+/* ---------- Employee views ---------- */
+function empToday(){
+  const pu=S.punch;let state='';
+  if(pu.busy)state=`<div class="slide" aria-live="polite"><span class="lbl row" style="gap:10px;padding:0"><span class="spin"></span>نتحقق من موقعك ونرسل التسجيل</span></div>`;
+  else if(pu.unconfirmed)state=`<div class="stack" style="gap:10px"><span class="geo warn">${ic('alert',16,2)}محاولة ${pu.unconfirmed==='in'?'الحضور':'الانصراف'} لم تتأكد بعد</span><button class="btn btn-lg" style="background:var(--pass-accent);color:var(--pass-accent-ink)" data-act="punchverify">التحقق من المحاولة</button><span style="font-size:12px;color:var(--pass-muted)">لا تسجّل محاولة جديدة قبل التحقق، حتى لا تتكرر الحركة.</span></div>`;
+  else if(pu.state==='out')state=`<div class="slide" id="slide"><span class="fill"></span><span class="lbl">اسحب لتسجيل الحضور</span><button class="knob" id="knob" aria-label="تسجيل الحضور. اسحب المقبض لليسار أو اضغط Enter">${ic('left',22,2.2)}</button></div>`;
+  else if(pu.state==='in')state=`<div class="slide" id="slide"><span class="fill"></span><span class="lbl">اسحب لتسجيل الانصراف</span><button class="knob" id="knob" aria-label="تسجيل الانصراف. اسحب المقبض لليسار أو اضغط Enter">${ic('left',22,2.2)}</button></div>`;
+  const head=pu.state==='out'?['ورديتك اليوم','تبدأ الساعة 9:00 ص','حتى 5:00 م في فرع مدينة نصر']:pu.state==='in'?['أنت في العمل الآن',`منذ ${pu.inAt}`,`<span id="elapsed">${elapsed()}</span>، والوردية حتى 5:00 م`]:['انتهى يومك',`من ${pu.inAt} إلى ${pu.outAt}`,'شكرًا يا كريم. وصلك إيصالا اليوم.'];
+  return `<div class="head"><div class="stack" style="gap:2px"><span class="muted">الأربعاء 7 أكتوبر</span><h1 class="hero" style="font-size:clamp(26px,3vw,36px)">صباح الخير يا كريم</h1></div></div>
+  <div class="emp-grid"><div class="stack" style="gap:18px">
+    <section class="shift"><div class="stack" style="gap:4px"><small>${head[0]}</small><h2 class="num">${head[1]}</h2><span class="num" style="font-size:14px;opacity:.9">${head[2]}</span></div>
+    ${pu.state!=='done'&&!pu.unconfirmed?`<span class="geo">${ic('pin',16,2)}أنت داخل نطاق الفرع، دقة الموقع 12 م</span>`:''}
+    ${state}${pu.state==='done'?`<button class="btn btn-ghost" data-act="punchreset" style="align-self:flex-start">إعادة العرض</button>`:''}</section>
+    <div class="quick">
+      <button class="qa t-mint" data-act="leavesheet">${ic('calplus',24)}اطلب إجازة</button>
+      <button class="qa t-peach" data-act="go" data-v="pay">${ic('slip',24)}قسيمة سبتمبر</button>
+      <button class="qa t-lilac" data-act="go" data-v="leave">${ic('cal',24)}طلباتي</button>
+    </div></div>
+    <div class="stack" style="gap:18px">
+    <section class="card stack" style="gap:6px"><div class="between"><h2 class="h2">آخر التسجيلات</h2><span class="hint">إيصالات من الخادم</span></div><div>
+      ${S.receipts.slice(0,4).map(r=>`<div class="receipt"><span class="rd" style="background:var(${r.st==='ok'?'--ok':'--warn'})"></span><span class="rt"><span>${r.dir} ${r.d}</span><small>${r.src}</small></span><b class="num">${r.t}</b></div>`).join('')}
+    </div></section>
+    ${balCard()}
+    </div></div>`;
+}
+function elapsed(){if(!S.punch.inDate)return 'منذ لحظات';const m=Math.max(0,Math.floor((Date.now()-S.punch.inDate)/60000));if(m<1)return 'بدأت للتو';const h=Math.floor(m/60),mm=m%60,hw=h===1?'ساعة':h===2?'ساعتان':`${h} ساعات`,mw=mm===1?'دقيقة':mm===2?'دقيقتان':mm<=10?`${mm} دقائق`:`${mm} دقيقة`;return h?`مضت ${hw}${mm?' و'+mw:''}`:`مضت ${mw}`}
+function balCard(){
+  const used=S.bal.used,pdg=pendingDays(),segs=[];
+  for(let i=0;i<21;i++){const v=i+1;segs.push(v<=Math.floor(used)?'u':(v-used<1&&v>used)?'h':(v<=Math.ceil(used+pdg)&&v>used)?'p':'')}
+  return `<section class="card stack" style="gap:12px"><div class="between"><h2 class="h2">إجازتك السنوية</h2><span class="num muted" style="font-size:13px">متاح ${daysWord(avail())} من 21</span></div>
+  <div class="segs" aria-hidden="true">${segs.map(c=>`<i class="${c}"></i>`).join('')}</div>
+  <span style="font-size:13px;color:var(--ink-2);line-height:1.7">استخدمت ${daysWord(used)} هذا العام${pdg?`، و${daysWord(pdg)} في طلبات قيد المراجعة`:''}.</span></section>`;
+}
+function empLeave(){
+  const stl={ok:['معتمدة','mint'],pending:['قيد المراجعة','peach'],withdrawn:['مسحوبة','neutral']};
+  return `<div class="head"><h1 class="h1">إجازاتي</h1><button class="btn btn-solid" data-act="leavesheet">${ic('plus',18,2)}طلب إجازة</button></div>
+  <div class="emp-grid"><div class="stack" style="gap:18px">${balCard()}</div>
+  <section class="card stack" style="gap:4px"><h2 class="h2">طلباتي هذا العام</h2><div>
+  ${S.myLeaves.map(l=>`<div class="blk"><span class="bi t-${stl[l.st][1]}">${ic('cal',20)}</span><span class="bt"><b>${l.type}${l.half?'، نصف يوم':''}</b><span class="num">${l.from===l.to?fd(l.from):`من ${fd(l.from)} إلى ${fd(l.to)}`}، ${daysWord(l.days)}</span></span>${l.st==='pending'?`<button class="btn btn-ghost" data-act="withdraw" data-id="${l.id}">سحب الطلب</button>`:`<span class="chip t-${stl[l.st][1]}">${stl[l.st][0]}</span>`}</div>`).join('')}
+  </div></section></div>`;
+}
+function empPay(){
+  const E=[['الأجر الأساسي',9500],['بدل انتقال',800],['عمولة مبيعات سبتمبر',2150]],D=[['التأمينات الاجتماعية',1104.5],['ضريبة كسب العمل',612.3],['قسط سلفة (3 من 6)',500]];
+  return `<div class="head"><div class="stack" style="gap:4px"><h1 class="h1">قسيمة سبتمبر 2026</h1><span class="muted">صُرفت في 28 سبتمبر</span>${gap('G4')}</div><button class="btn btn-ghost" data-act="soon" data-m="تحميل القسيمة كملف PDF متاح في المنصة الفعلية.">${ic('download',18)}تحميل القسيمة</button></div>
+  <div class="emp-grid"><section class="shift" style="gap:8px"><small>صافي راتبك</small><h2 class="num" style="font-size:40px;font-weight:600;color:#D9B56E">10,233.20 <span style="font-size:16px;font-weight:400">ج.م</span></h2><span style="font-size:14px;opacity:.9">أعلى من أغسطس بمقدار 640 ج.م بسبب العمولة.</span></section>
+  <section class="card stack" style="gap:16px"><div><h3 style="font-size:15px;font-weight:600;margin-bottom:4px">المستحقات</h3>${E.map(([a,b])=>`<div class="slipline"><span>${a}</span><b class="num">${money(b,2)}</b></div>`).join('')}<div class="slipline"><b>الإجمالي</b><b class="num">12,450.00</b></div></div>
+  <div><h3 style="font-size:15px;font-weight:600;margin-bottom:4px">الاستقطاعات</h3>${D.map(([a,b])=>`<div class="slipline"><span>${a}</span><b class="num">${money(b,2)}</b></div>`).join('')}<div class="slipline"><b>الإجمالي</b><b class="num">2,216.80</b></div></div></section></div>
+  <section class="card stack" style="gap:4px"><h2 class="h2">القسائم السابقة</h2>${[['أغسطس 2026','9,593.20'],['يوليو 2026','9,610.40'],['يونيو 2026','9,402.70']].map(([m,v])=>`<div class="blk"><span class="bi t-neutral">${ic('slip',20)}</span><span class="bt"><b>${m}</b><span>صُرفت</span></span><b class="num">${v} ج.م</b></div>`).join('')}</section>`;
+}
+function empProfile(){
+  const p=person(ME_PID);
+  return `<div class="head"><div class="row" style="gap:16px"><span class="av av64 t-mint">ك</span><div class="stack" style="gap:2px"><h1 class="h1">${p.n}</h1><span class="muted">${p.title}، ${p.dept}</span></div></div></div>
+  <div class="emp-grid"><section class="card"><div class="inforow"><span>كود الموظف</span><b class="num">${p.code}</b></div><div class="inforow"><span>الفرع</span><b>${p.site}</b></div><div class="inforow"><span>سياسة العمل</span><b>وردية ثابتة 9 إلى 5</b></div><div class="inforow"><span>بداية التوظيف</span><b>${p.hire}</b></div><div class="inforow"><span>المدير المباشر</span><b>إسلام رضا</b></div></section>
+  <section class="card stack"><h2 class="h2">إعدادات التطبيق</h2><button class="opt" data-act="theme"><span class="fi t-lilac" style="width:40px;height:40px;border-radius:14px;display:grid;place-items:center">${ic(isDark()?'sun':'moon')}</span><span class="ot"><b>المظهر ${isDark()?'الداكن':'الفاتح'}</b><small>اضغط للتبديل</small></span></button><p class="hint">لتصحيح بياناتك تواصل مع الموارد البشرية. التعديل الذاتي غير متاح في هذه المرحلة.</p></section></div>`;
+}
+
+const VIEWS={
+  hr:{today:hrToday,inbox:inboxView,people:peopleView,time:timeView,payroll:payrollView},
+  mgr:{today:mgrToday,inbox:inboxView,team:mgrTeam},
+  emp:{today:empToday,leave:empLeave,pay:empPay,profile:empProfile}
+};
+
+/* ---------- Drawer ---------- */
+let lastFocus=null;
+function openDrawer(label,html){
+  closeDrawer(true);lastFocus=document.activeElement;
+  const s=document.createElement('div');s.className='scrim';s.id='scrim';
+  s.innerHTML=`<div class="drawer" role="dialog" aria-modal="true" aria-label="${esc(label)}"><div class="dtop"><h2 class="h2">${esc(label)}</h2><button class="iconbtn" data-act="dclose" aria-label="إغلاق">${ic('x')}</button></div>${html}</div>`;
+  s.addEventListener('click',e=>{if(e.target===s)closeDrawer()});
+  document.body.appendChild(s);document.body.style.overflow='hidden';
+  const f=s.querySelector('.drawer [data-autofocus]')||s.querySelector('.drawer button');f&&f.focus();
+}
+function closeDrawer(silent){const s=document.getElementById('scrim');if(s){s.remove();document.body.style.overflow='';if(!silent&&lastFocus&&document.body.contains(lastFocus))lastFocus.focus()}}
+
+function personDrawer(id){
+  const p=person(id);const s=ST[p.st];
+  openDrawer('ملف الموظف',`<div class="row" style="gap:14px"><span class="av av64 t-${s[1]}">${p.i}</span><div class="stack" style="gap:4px"><b style="font-size:20px;font-weight:600">${p.n}</b><span class="muted">${p.title}، ${p.dept}</span><span class="chip t-${s[1]}" style="align-self:flex-start">${s[0]}${p.in?' منذ '+p.in:''}</span></div></div>
+  <section class="card" style="padding:6px 18px"><div class="inforow"><span>كود الموظف</span><b class="num">${p.code}</b></div><div class="inforow"><span>الفرع</span><b>${p.site}</b></div><div class="inforow"><span>بداية التوظيف</span><b>${p.hire}</b></div><div class="inforow"><span>سياسة العمل</span><b>وردية ثابتة</b></div></section>
+  <div class="kv"><div><small>أيام حضور أكتوبر</small><b class="num">4 من 4</b></div><div><small>تأخير الشهر</small><b class="num">${p.st==='late'?'14 دقيقة':'0'}</b></div><div><small>رصيد الإجازة</small><b class="num">${p.st==='leave'?'7 أيام':'12 يومًا'}</b></div></div>
+  <div class="actions"><button class="btn btn-ghost" data-act="soon" data-m="سجل الحضور الكامل متاح في المنصة الحالية، وسيُنقل لهذا التصميم.">سجل الحضور</button><button class="btn btn-solid" data-act="soon" data-m="تعديل بيانات التوظيف يتم بإصدار مؤرخ جديد، ويأتي في المرحلة التالية من النموذج.">تعديل البيانات</button></div>`);
+}
+function rolesDrawer(){
+  openDrawer('شاهد المنصة بعين',`<p class="muted" style="font-size:14px">هذا نموذج للعرض. بدّل الدور لترى كيف تتغير المساحة والتنقل والقرارات لكل مستخدم.</p>
+  ${['hr','mgr','emp'].map(r=>`<button class="opt" data-act="setrole" data-r="${r}" aria-pressed="${S.role===r}"><span class="av av48 t-${USERS[r].tone}">${USERS[r].i}</span><span class="ot"><b>${USERS[r].name}</b><small>${ROLE_INFO[r][0]}. ${ROLE_INFO[r][1]}</small>${r==='mgr'?`<span style="margin-top:4px">${S.notes?gap('G3'):''}</span>`:''}</span>${S.role===r?ic('check',20,2.4):''}</button>`).join('')}
+  <div class="stack" style="gap:10px"><h3 class="h2">لون هوية الشركة</h3><p class="hint">نفس الألوان المتاحة في إعداد هوية الشركة. تتكيف تلقائيًا مع المظهر الداكن.</p><div class="swatches">${Object.entries(BRANDS).map(([k,b])=>`<button class="sw" style="background:${b.l[0]}" data-act="brand" data-k="${k}" aria-pressed="${S.brand===k}" aria-label="${b.n}">${S.brand===k?ic('check',18,2.6):''}</button>`).join('')}</div></div>
+  <button class="switch" role="switch" aria-checked="${S.notes}" data-act="notes"><span class="ot" style="display:flex;flex-direction:column;line-height:1.5"><b>ملاحظات التنفيذ للفريق</b><small class="hint">تُظهر الأجزاء التي تحتاج خدمات خلفية جديدة (G1 إلى G7)</small></span><span class="tr"></span></button>`);
+}
+function notifyDrawer(){
+  const N={hr:[['inbox','lilac','وصل طلب إجازة جديد من رنا مصطفى','منذ ساعة'],['alert','peach','4 موانع تؤخر مسير أكتوبر','اليوم 8:00 ص'],['check','mint','اكتمل استيراد ملف فرع العبور','أمس 6:10 م']],
+    mgr:[['inbox','lilac','رنا مصطفى طلبت إجازة عارضة يوم الخميس','منذ ساعة'],['clock','peach','ياسمين فؤاد عملت 95 دقيقة إضافية','منذ 5 ساعات']],
+    emp:[['check','mint','اعتُمد حضورك يوم أمس','اليوم 7:00 ص'],['slip','peach','قسيمة سبتمبر متاحة','28 سبتمبر']]}[S.role];
+  openDrawer('الإشعارات',`${gap('G6')}<div class="card stack">${N.map(([i,t,x,w])=>`<div class="feed"><span class="ic t-${t}">${ic(i,18,2)}</span><div class="stack" style="gap:2px"><p>${x}</p><small>${w}</small></div></div>`).join('')}</div>`);
+}
+function leaveSheet(){
+  openDrawer('طلب إجازة',`<div class="field"><label for="lt">نوع الإجازة</label><select class="select" id="lt" data-in="lcalc"><option value="سنوية">سنوية</option><option value="عارضة">عارضة، تُخصم من السنوية</option><option value="مرضية">مرضية، تحتاج تقريرًا طبيًا</option></select></div>
+  <div class="row" style="gap:12px;flex-wrap:wrap"><div class="field" style="flex:1 1 140px"><label for="lf">من</label><input type="date" class="input num" id="lf" value="2026-10-18" min="2026-10-08" data-in="lcalc" data-autofocus></div><div class="field" style="flex:1 1 140px"><label for="lto">إلى</label><input type="date" class="input num" id="lto" value="2026-10-19" min="2026-10-08" data-in="lcalc"></div></div>
+  <div class="banner t-lilac" id="lsum" aria-live="polite"></div>
+  <div class="field"><label for="ln">ملاحظة لمديرك <span>(اختياري)</span></label><textarea class="textarea" id="ln" placeholder="مثال: من يتابع عملك أثناء غيابك"></textarea></div>
+  <button class="btn btn-solid btn-lg" id="lsubmit" data-act="submitleave">إرسال الطلب</button>`);
+  calcLeave();
+}
+function calcLeave(){
+  const t=document.getElementById('lt').value,a=document.getElementById('lf').value,b=document.getElementById('lto').value,n=workDays(a,b),box=document.getElementById('lsum'),btn=document.getElementById('lsubmit');
+  let ok=true,msg='';
+  if(n<0){ok=false;msg='تاريخ النهاية قبل تاريخ البداية. عدّل أحد التاريخين.'}
+  else if(n===0){ok=false;msg='الأيام المختارة كلها عطلة أسبوعية. اختر يوم عمل واحدًا على الأقل.'}
+  else if(t!=='مرضية'&&n>avail()){ok=false;msg=`تطلب ${daysWord(n)} ورصيدك المتاح ${daysWord(avail())}. قلّل المدة أو اختر نوعًا آخر.`}
+  else msg=t==='مرضية'?`مدة الطلب ${daysWord(n)}. لا تُخصم من رصيدك، وسيُطلب منك رفع التقرير.`:`مدة الطلب ${daysWord(n)} بعد استبعاد الجمعة والسبت. يبقى لك ${daysWord(avail()-n)} بعد الموافقة.`;
+  box.className='banner '+(ok?'t-lilac':'t-rose');box.innerHTML=ic(ok?'cal':'alert',20,2)+`<span>${msg}</span>`;btn.disabled=!ok;
+}
+
+/* ---------- Punch ---------- */
+function punch(){
+  if(S.punch.busy)return;
+  if(!navigator.onLine){S.punch.unconfirmed=S.punch.state==='out'?'in':'out';render(true);toast('لم يتأكد التسجيل. سنتحقق من المحاولة نفسها عند عودة الاتصال.','alert');return}
+  const goingIn=S.punch.state==='out';
+  S.punch.busy=true;render(true);
+  setTimeout(()=>{
+    const t=nowT();S.punch.busy=false;
+    if(goingIn){S.punch.state='in';S.punch.inAt=t;S.punch.inDate=Date.now();S.receipts.unshift({dir:'حضور',t,d:'اليوم',st:'ok',src:'موبايل، داخل النطاق، إيصال معتمد'});toast(`سُجّل حضورك الساعة ${t}. وصلك إيصال معتمد.`,'check')}
+    else{S.punch.state='done';S.punch.outAt=t;S.receipts.unshift({dir:'انصراف',t,d:'اليوم',st:'ok',src:'موبايل، داخل النطاق، إيصال معتمد'});toast(`سُجّل انصرافك الساعة ${t}. يومًا موفقًا.`,'check')}
+    render(true);
+  },1100);
+}
+function wireSlider(){
+  const knob=document.getElementById('knob');if(!knob)return;
+  const track=document.getElementById('slide');let start=null,dx=0,max=0;
+  knob.addEventListener('pointerdown',e=>{start=e.clientX;dx=0;max=track.clientWidth-knob.offsetWidth-12;knob.setPointerCapture(e.pointerId);track.classList.add('drag')});
+  knob.addEventListener('pointermove',e=>{if(start==null)return;dx=Math.min(max,Math.max(0,start-e.clientX));knob.style.transform=`translateX(${-dx}px)`;track.style.setProperty('--p',(dx/max).toFixed(3))});
+  const end=()=>{if(start==null)return;const done=dx>max*0.8;start=null;track.classList.remove('drag');if(done){knob.style.transform=`translateX(${-max}px)`;punch()}else{knob.style.transform='';track.style.setProperty('--p',0);if(dx<6)toast('اسحب المقبض حتى نهاية الشريط لتأكيد التسجيل.','left')}};
+  knob.addEventListener('pointerup',end);knob.addEventListener('pointercancel',end);
+  knob.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();punch()}});
+}
+setInterval(()=>{const el=document.getElementById('elapsed');if(el)el.textContent=elapsed()},30000);
+
+/* ---------- Decisions ---------- */
+function decide(id,o){
+  const x=S.inbox.find(i=>i.id===id);if(!x)return;
+  const yes=o==='yes',first=x.who.split(' ')[0];let msg='',fx='';
+  switch(x.kind){
+    case 'leave':msg=yes?`تمت الموافقة على إجازة ${first}. وصلها إشعار بالقرار.`:`رُفض طلب ${first}. وصلها الإشعار مع ملاحظتك.`;fx=yes?`وافق ${USERS[S.role].short} على إجازة ${x.who}، ${daysWord(x.days)}.`:`رفض ${USERS[S.role].short} طلب إجازة ${x.who}.`;break;
+    case 'ot':msg=yes?`اعتُمد تصنيف ${x.rounded} دقيقة إضافية لـ${first}، وأصبحت جاهزة للمسير.`:`رُفض الإضافي لـ${first}.`;fx=yes?`صُنفت ${x.rounded} دقيقة إضافية لياسمين فؤاد واعتُمدت.`:`رُفض إضافي ياسمين فؤاد ليوم 6 أكتوبر.`;break;
+    case 'geo':msg=yes?`قُبل تسجيل ${first}. أُعيد تفسير يومه وحُسب حضوره.`:`رُفض التسجيل. يظهر يوم ${first} كبصمة ناقصة.`;fx=yes?'قُبل تسجيل محمود الشريف من خارج النطاق بعد المراجعة.':'رُفض تسجيل محمود الشريف من خارج النطاق.';{const p=person('p9');p.st=yes?'in':'out'}break;
+    case 'missing':msg=`أُضيف انصراف ${first} الساعة ${t12(x.outT)} كتسجيل تصحيحي.`;fx=`صُحح يوم أحمد سمير بانصراف ${t12(x.outT)}.`;break;
+    case 'absence':msg=`اعتُمد يوم غياب لـ${first} بتاريخ 5 أكتوبر.`;fx='اعتُمد غياب خالد منصور يوم 5 أكتوبر.';break;
+    case 'unmapped':msg=`رُبط تسجيل ${first} بيوم 6 أكتوبر وأُعيد تفسير اليوم.`;fx='رُبط تسجيل حسام وجدي المحفوظ بيوم عمله بعد ضبط التعيين.';break;
+  }
+  const list=inboxFor(S.role).filter(i=>S.filter==='all'||(S.filter==='leave'?i.kind==='leave':i.kind!=='leave'));
+  const idx=list.findIndex(i=>i.id===id);
+  S.inbox=S.inbox.filter(i=>i.id!==id);
+  const rest=list.filter(i=>i.id!==id);
+  S.sel=isMobile()?null:(rest[idx]||rest[idx-1]||null)?.id||null;
+  addFeed(yes?'check':'x',yes?'mint':'rose',fx);
+  render(true);toast(msg,yes?'check':'x');
+}
+
+/* ---------- Events ---------- */
+const ACT={
+  go:d=>{S.view=d.v;if(d.v!=='inbox')S.sel=null;closeDrawer(true);render()},
+  inbox:d=>{S.view='inbox';S.filter=d.f||'all';S.sel=null;render()},
+  filter:d=>{S.filter=d.f;S.sel=null;render(true)},
+  tfilter:d=>{S.tfilter=d.f;render(true)},
+  open:d=>{S.sel=d.id;render(true);if(isMobile()){const dt=document.querySelector('.detail');dt&&dt.scrollTo(0,0);const b=document.querySelector('.detail .back-m');b&&b.focus()}else{const h=document.querySelector('.detail h2');h&&h.setAttribute('tabindex','-1');h&&h.focus({preventScroll:true})}},
+  close:()=>{const id=S.sel;S.sel=null;render(true);const b=document.querySelector(`[data-act="open"][data-id="${id}"]`);b&&b.focus()},
+  decide:d=>decide(d.id,d.o),
+  ask:d=>{const x=S.inbox.find(i=>i.id===d.id);toast(`أُرسل سؤال إلى ${x.who.split(' ')[0]}. يبقى القرار مفتوحًا حتى يرد.`,'inbox')},
+  ot:d=>{const x=S.inbox.find(i=>i.id===d.id);const sum=Object.values(x.alloc).reduce((a,b)=>a+b,0);const dd=Number(d.d);if(dd>0&&sum>=x.rounded)return;x.alloc[d.b]=Math.max(0,x.alloc[d.b]+dd);render(true);const btn=document.querySelector(`[data-act="ot"][data-b="${d.b}"][data-d="${d.d}"]`);if(btn&&!btn.disabled)btn.focus()},
+  theme:()=>{document.documentElement.dataset.theme=isDark()?'light':'dark';try{localStorage.setItem('te-theme',document.documentElement.dataset.theme)}catch(e){}render(true)},
+  roles:()=>rolesDrawer(),
+  setrole:d=>{S.role=d.r;S.view='today';S.sel=null;S.filter='all';closeDrawer(true);render();toast(`تشاهد الآن المنصة بصفة ${ROLE_INFO[d.r][0]}.`,'swap')},
+  notify:()=>notifyDrawer(),
+  brand:d=>{S.brand=d.k;render(true);rolesDrawer()},
+  notes:()=>{S.notes=!S.notes;render(true);rolesDrawer()},
+  dclose:()=>closeDrawer(),
+  person:d=>personDrawer(d.id),
+  soon:d=>toast(d.m,'spark'),
+  block:d=>{const b=S.blockers.find(x=>x.id===d.id);if(b.link){if(S.inbox.some(x=>x.id===b.link)){S.view='inbox';S.filter='all';S.sel=b.link;render()}return}b.ok=true;addFeed('check','mint',`حُل مانع في مسير أكتوبر: ${b.title}.`);render(true);toast(`تم: ${b.title}. ${openBlockers().length?count(openBlockers().length,'يتبقى مانع واحد.','يتبقى مانعان.','موانع متبقية.'):'لا موانع متبقية، يمكنك الانتقال إلى الحساب.'}`,'check')},
+  paynext:()=>{if(S.pay.step===3){S.pay.busy=true;render(true);setTimeout(()=>{S.pay.busy=false;S.pay.step=4;addFeed('wallet','lilac','اكتمل الحساب المبدئي لمسير أكتوبر.');render(true);toast('اكتمل الحساب. راجع الفروقات ثم أرسل للاعتماد.','check')},1600)}else if(S.pay.step===4){S.pay.step=5;addFeed('shield','lilac','أُرسل مسير أكتوبر للاعتماد المالي.');render(true);toast('أُرسل المسير للاعتماد. سيصلك إشعار عند الاعتماد.','check')}},
+  payreset:()=>{S.pay.step=3;S.blockers.forEach(b=>{if(!b.link)b.ok=false});render(true)},
+  leavesheet:()=>leaveSheet(),
+  submitleave:()=>{const t=document.getElementById('lt').value,a=document.getElementById('lf').value,b=document.getElementById('lto').value,n=workDays(a,b);S.myLeaves.unshift({id:'m'+Date.now(),type:t,from:a,to:b,days:n,st:'pending'});closeDrawer(true);S.view='leave';render();toast(`أُرسل طلب إجازة ${daysWord(n)} إلى مديرك. ستصلك رسالة عند القرار.`,'check')},
+  withdraw:d=>{const l=S.myLeaves.find(x=>x.id===d.id);l.st='withdrawn';render(true);toast('سُحب الطلب وعاد الرصيد كما كان.','check')},
+  punchverify:()=>{if(!navigator.onLine){toast('ما زال الاتصال مقطوعًا. أعد التحقق عند عودته.','alert');return}S.punch.unconfirmed=null;S.punch.state=S.punch.state;punch()},
+  punchreset:()=>{S.punch={state:'out',busy:false,inAt:null,outAt:null};S.receipts=S.receipts.filter(r=>r.d!=='اليوم');render(true)}
+};
+document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(!t||t.disabled)return;if(t.tagName==='A')e.preventDefault();const f=ACT[t.dataset.act];f&&f(t.dataset,e,t)});
+document.addEventListener('input',e=>{
+  const t=e.target;const k=t.dataset&&t.dataset.in;if(!k)return;
+  if(k==='q'){S.q=t.value;document.getElementById('plist').innerHTML=peopleCards(PEOPLE.filter(p=>!S.q.trim()||p.n.includes(S.q.trim())||p.code.includes(S.q.trim())||p.dept.includes(S.q.trim())));return}
+  if(k==='lcalc'){calcLeave();return}
+  if(k==='employer'){S.employer=t.value;S.pay={step:3,busy:false};S.blockers.forEach(b=>{if(!b.soft)b.ok=false});render(true);toast('تعرض الآن مسير الجهة المختارة. لكل جهة دورة ومسير مستقلان.','bank');return}
+  const x=S.inbox.find(i=>i.id===t.dataset.id);if(!x)return;
+  x[k]=t.value;
+  const b=document.getElementById('primary-act');if(b&&x.kind!=='leave')b.disabled=!ready(x);
+  const rj=document.getElementById('reject-act');if(rj&&x.kind==='leave')rj.disabled=(x.reason||'').trim().length<3;
+  if(x.kind==='geo')document.querySelectorAll('[data-act="decide"]').forEach(btn=>btn.disabled=!ready(x));
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.getElementById('scrim'))closeDrawer();else if(S.sel&&isMobile())ACT.close()}});
+let wasMobile=isMobile();
+window.addEventListener('resize',()=>{const m=isMobile();if(m!==wasMobile){wasMobile=m;render(true)}});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(!document.documentElement.dataset.theme)render(true)});
+
+try{const th=localStorage.getItem('te-theme');if(th)document.documentElement.dataset.theme=th}catch(e){}
+const syncOnline=()=>document.body.classList.toggle('is-offline',!navigator.onLine);
+window.addEventListener('online',()=>{syncOnline();toast('عاد الاتصال.','check')});window.addEventListener('offline',syncOnline);syncOnline();
+const h=(location.hash||'').slice(1);if(['emp','mgr','hr'].includes(h))S.role=h;
+render();
+})();
+</script>
+</body>
+</html>
