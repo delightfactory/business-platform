@@ -28,9 +28,9 @@ UI state proposal: structured error code + disposition editable/unknown, with un
 
 Mounted form protection is necessary but insufficient: external reload/tab loss and middleware/login can discard memory even with disabled close links or beforeunload. Fresh-tab full recovery remains an explicit acceptance gate, not an accepted exclusion. Do not store reasons/dates/payload/digest locally as an expedient workaround; no new browser persistence is implemented.
 
-## D16 proposed backend extension — for owner scope decision
+## D16 backend extension — owner scope approved, technical specification Proposed
 
-Recommend a leave-only server durable-attempt protocol before actual dispatch, then discover/reconcile after refresh using the same authenticated actor. This adds capability outside original frontend-only/demo scope, so remains Proposed until owner scope acceptance and independently reviewed detailed security/retention/SQL specification. No new functions or migration applied now.
+Owner approved adding server recovery to the plan on 2026-10-08: «اعتماد استعادة الخادم ضمن الخطة (الموصى به)». This authorizes the leave-only server durable-attempt capability and its local implementation after detailed privacy/security/locking review. Scope approval is settled; the technical specification remains Proposed until that review and affected contracts are ready. It does not authorize production changes or deployment. No new functions or migration applied yet.
 
 1. Prepare an immutable canonical intent under tenant+actor+employee+operation ID, with exact fields/reason/type/dates/halfday or target/version. User deliberately prepares/sends; no GET mutation. Return opaque attempt reference; backend permissions/capabilities/link are rechecked independently of UI.
 2. Submit only prepared immutable intent under one per-attempt lock/fence and existing domain locks/rules/replay. Session retry never builds a changed payload/new key from a refreshed UI. No new auto-send while recovering. Financial transitions/audit remain existing operation semantics.
@@ -38,7 +38,7 @@ Recommend a leave-only server durable-attempt protocol before actual dispatch, t
 4. Reconcile known committed receipt; otherwise remain pending/unknown. `not_found` and deadline alone cannot release an in-flight write. A close/cancel procedure obtains the same attempt lock and atomically fences future execution before returning closed_without_commit, or returns the existing committed result. No timeout-based discard or race-prone absent-event inference. Exact lock order/legacy direct-RPC paths require independent design before code: they must not evade the fence.
 5. No new localStorage/sessionStorage/indexedDB/cache/service-worker storage of HR fields, reason, hashes or payload; server discovery works after tab loss. Secret/key/account values absent from docs. Prepared temporary payload is HR data: retention duration, unresolved-attempt closure, minimal terminal receipts and cleanup/access audit need explicit privacy governance before implementation. Existing leave records/audit retention are not silently changed. No speculative automatic deletion or arbitrary TTL chosen here.
 
-Owner choice: add this server-recovery capability to the redesign scope (recommended for full fresh-page recovery), or defer this extension while completing independent phases. Deferral leaves R6 complete recovery and overall full-coverage acceptance OPEN; mounted fixes are not a substitute. D8 auth-return allowlist is a separate pending decision; accepting D16 does not implicitly accept D8/D2/D3 or provider/production/access changes.
+Full fresh-page recovery is now in scope; mounted fixes are not a substitute. R6 recovery acceptance remains OPEN until implemented and qualified. D8 auth-return allowlist is a separate pending decision; accepting D16 does not implicitly accept D8/D2/D3 or provider/production/access changes.
 
 ## Acceptance matrix and economy
 
