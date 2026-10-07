@@ -55,3 +55,7 @@ Read recipient-actions-spec.md with recipient-action-scenarios.json and claude-r
 Bounded maintenance contracts: [admin invitation context](admin-invitation-context-slice.md) and [member validation](member-validation-slice.md). Source-only/runtime boundaries are recorded in the execution ledger; these do not freeze the broader recipient/R2 contracts.
 
 Outbound journey contract: [source-authoritative specification](outbound-invitations-spec.md), [outbound draft source partitions](outbound-invitation-scenarios.json), and [immutable Claude contribution](claude-outbound-invitations-contribution.md). Seven actions/two helpers; full semantic/runtime acceptance stays open.
+
+## Employee attendance preparation
+
+Read [R5a attendance journey](employee-attendance-spec.md), [46 draft partitions](employee-attendance-scenarios.json), [preserved Claude review](employee-attendance-claude-review.md) and [Codex corrections/amendments](employee-attendance-review-resolution.md) together. This source-bound preparation preserves exact capture/reconcile/privacy authority and identifies recovery gaps before a coherent implementation batch. Proposed, not Frozen; no application change or executed stage acceptance. R5b/R6a and the whole-plan coverage gates remain open.

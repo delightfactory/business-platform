@@ -50,7 +50,8 @@
       "codex/ux-invitation-review-notices": false,
       "codex/ux-employee-activation-contracts": false,
       "codex/ux-employee-activation-recovery": false,
-      "codex/ux-recipient-password-feedback": false
+      "codex/ux-recipient-password-feedback": false,
+      "codex/ux-employee-attendance-contract": false
     }
   }
 }
