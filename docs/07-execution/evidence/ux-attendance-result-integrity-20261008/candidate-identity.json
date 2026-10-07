@@ -1,0 +1,20 @@
+{
+  "base": "ac64adc8da2e9f2706bf4ea3f1c8d24fa4aa2893",
+  "files": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
+      "sha256": "952e8f64ad4c2407c4b670bd59f87796f12a2206d7c60cdcb08c3c10dc23a618",
+      "candidateEqualsApplied": true
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
+      "sha256": "cac763c9fa918da0384f3462029f66542686bb0819395841c8f21faefb98e515",
+      "candidateEqualsApplied": true
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "f3e36244362b885dcc04a773c15888905395446b8f67055c7d9aaf3d1e93697e",
+      "candidateEqualsApplied": true
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "2761afe7d2550203e6ffc8e60ec38c428c5271d6",
+  "sourceHead": "ac64adc8da2e9f2706bf4ea3f1c8d24fa4aa2893",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -665,17 +665,17 @@
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
       "phase": "R5",
-      "sha256": "85f6b02265cafee633cb154390d33955254249075a5d42ef0675e778a2281d59"
+      "sha256": "cac763c9fa918da0384f3462029f66542686bb0819395841c8f21faefb98e515"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
       "phase": "R5",
-      "sha256": "0a48d6d9d1cc82ee157dc65388c2586c3ce819a38ec1bbfdf17a5b63576cb11a"
+      "sha256": "952e8f64ad4c2407c4b670bd59f87796f12a2206d7c60cdcb08c3c10dc23a618"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
       "phase": "R5",
-      "sha256": "097fe91bdf421ed4077ea17e504b4ea7d4bf7fdd5549ebdedf3f1a56be7ca099"
+      "sha256": "f3e36244362b885dcc04a773c15888905395446b8f67055c7d9aaf3d1e93697e"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
@@ -5040,7 +5040,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/actions.ts:12:722",
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/actions.ts:12:723",
       "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
       "line": 12,
       "phase": "R5",
@@ -5050,7 +5050,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/actions.ts:28:1650",
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/actions.ts:28:1641",
       "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
       "line": 28,
       "phase": "R5",
@@ -5060,7 +5060,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:13:991",
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:13:1072",
       "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
       "line": 13,
       "phase": "R5",
@@ -11813,9 +11813,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:80:7112",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:81:7621",
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
-      "line": 80,
+      "line": 81,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -11823,9 +11823,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:80:7276",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:81:7785",
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
-      "line": 80,
+      "line": 81,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -11833,9 +11833,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:80:7454",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:81:7963",
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
-      "line": 80,
+      "line": 81,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -11843,9 +11843,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:80:7699",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx:81:8208",
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
-      "line": 80,
+      "line": 81,
       "tag": "button",
       "phase": "R5",
       "attributes": {

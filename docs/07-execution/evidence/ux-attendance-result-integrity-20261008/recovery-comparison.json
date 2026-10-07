@@ -1,0 +1,13 @@
+{
+  "case": "same valid pending id with overlength scope; actual action result fed into actual controlled component handler",
+  "sdkCallsBefore": 0,
+  "sdkCallsAfter": 0,
+  "pendingReceiptRetainedBefore": false,
+  "pendingReceiptRetainedAfter": true,
+  "falseTrustedDifferentLinkClaimBefore": true,
+  "falseTrustedDifferentLinkClaimAfter": false,
+  "newCaptureOfferedAfter": false,
+  "fullRecoveryComplete": false,
+  "journeyMetrics": "N/C/P/I/B not measured; no navigation/speed claim",
+  "boundary": "Controlled component harness, not real React hydration/browser/server"
+}

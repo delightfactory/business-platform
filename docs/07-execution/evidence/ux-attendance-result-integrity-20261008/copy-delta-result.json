@@ -1,0 +1,12 @@
+{
+  "passed": 1,
+  "failed": 0,
+  "mode": "exact-candidate",
+  "boundaries": "SDK/action stubs, controlled hook/effect/RAF/timer environment; not browser hydration, GPS permission, live server or role acceptance",
+  "cases": [
+    {
+      "name": "pending retained invalid_input",
+      "result": "PASS"
+    }
+  ]
+}

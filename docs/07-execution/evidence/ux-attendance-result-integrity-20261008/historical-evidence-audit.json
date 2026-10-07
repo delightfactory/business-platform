@@ -1,0 +1,8 @@
+{
+  "historicalSHA": "3a310d25c91a84eda52a47cf0491c5a235933a31",
+  "historicalTree": "1c06640dbbc0b3975c2cc8eff2cfe12345da66ea",
+  "manifestFilesVerified": 38,
+  "attendanceSourceIdenticalBeforeChange": true,
+  "sqlMigrationsUnchanged": true,
+  "proofBoundary": "Historical synthetic QA, not current UI acceptance or live DB/device/permission qualification"
+}
