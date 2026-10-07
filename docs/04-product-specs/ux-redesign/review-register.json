@@ -5115,7 +5115,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:35:1948",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2056",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5124,7 +5124,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:35:1977",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2085",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5133,7 +5133,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:44:2682",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2878",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5142,7 +5142,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2773",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2969",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5151,7 +5151,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2851",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3047",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5160,7 +5160,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:48:2990",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:49:3186",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5169,7 +5169,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:53:3313",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3509",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5178,7 +5178,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3399",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3595",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5187,7 +5187,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3477",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3673",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5196,7 +5196,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5639",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5802",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5205,7 +5205,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5668",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5831",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5453,7 +5453,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1747",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1845",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5462,7 +5462,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1776",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1874",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5471,7 +5471,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:29:2451",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2646",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5480,7 +5480,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2535",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2730",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5489,7 +5489,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2589",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2784",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5498,7 +5498,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2719",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2914",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5507,7 +5507,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3034",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3229",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5516,7 +5516,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3113",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3308",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5525,7 +5525,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3167",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3362",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",

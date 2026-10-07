@@ -18,14 +18,15 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const { data: validation, error } = await supabase.rpc('validate_tenant_member_invitation', { p_invitation_id: id, p_issuance: Number(issuance) });
   if (error || (validation !== 'ready' && validation !== 'password_required')) return <Status title="تعذر قبول الدعوة" detail={validationMessage(error ? null : validation, query.state)} />;
   const needsPassword = validation === 'password_required';
+  const passwordHint = ['password-set', 'password', 'marker-failed'].includes(query.state ?? '');
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
       <section className="auth-card" aria-labelledby="accept-title">
         <p className="eyebrow">دعوة عضو</p><h1 id="accept-title">الانضمام إلى الشركة</h1>
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. سيُمنح حسابك دور «عضو» بعد تأكيد القبول.</p>
-        {query.state === 'password-set' && <p className="form-message" role="status">حُفظت كلمة المرور. أكمل قبول الدعوة.</p>}
-        {query.state && query.state !== 'password-set' && <p className="form-message" role="alert">{validationMessage(validation, query.state)}</p>}
+        {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة قبول الدعوة.'}</p>}
+        {query.state && !passwordHint && <p className="form-message" role="alert">{validationMessage(validation, query.state)}</p>}
         {needsPassword ? <form className="auth-form" action={setMemberInvitationPasswordAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
           <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
@@ -42,8 +43,8 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function validationMessage(validation: unknown, state?: string) {
-  if (state === 'password') return 'تعذر حفظ كلمة المرور. استخدم ثمانية أحرف على الأقل وحاول مجددًا.';
-  if (state === 'marker-failed') return 'حُفظت كلمة المرور لكن تعذر توثيق جاهزية الحساب. أعد المحاولة قبل القبول.';
+  if (state === 'password') return 'تعذر تأكيد حالة الحساب أو الدعوة الآن. اطلب من مسؤول الشركة مراجعتها.';
+  if (state === 'marker-failed') return 'تعذر تأكيد حالة الحساب أو الدعوة الآن. اطلب من مسؤول الشركة مراجعتها.';
   if (state === 'limit-full') return 'اكتمل عدد المستخدمين المسموح به. اطلب من مسؤول الشركة معالجة المقاعد ثم أعد المحاولة؛ الدعوة ما زالت محفوظة.';
   if (state === 'issuer-lost') return 'لم تعد صلاحية مُصدر الدعوة سارية. يمكن لمسؤول مخوّل مراجعة الطلب وإصدار دعوة جديدة.';
   if (state === 'identity') return 'استخدم الحساب المؤكد بالبريد الذي وصلت إليه الدعوة.';

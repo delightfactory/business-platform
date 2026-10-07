@@ -1,0 +1,15 @@
+{
+  "sourceBase": "2761afe7d2550203e6ffc8e60ec38c428c5271d6",
+  "changedSources": [
+    "src/app/auth/invitations/accept/page.tsx",
+    "src/app/auth/membership-invitations/accept/page.tsx"
+  ],
+  "unchangedSources": 254,
+  "candidateByteMatch": true,
+  "registryStatesPreserved": 1523,
+  "sourceFiles": 256,
+  "reviewSession": "59802681-6bb9-4db3-aafd-bd30a8772869",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "readOnlyViolation": false
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "308d6f6803215d6da5f81b1bfac9386e9ac5c940",
+  "sourceHead": "2761afe7d2550203e6ffc8e60ec38c428c5271d6",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -40,7 +40,7 @@
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "79f6a84ae0fcbaebc324092b384ed99124cf62b458252f3ae15cfc570559adaf"
+      "sha256": "8163ebf8b2e3aaea85bb97f14253f2bf8f5baf69d3ecabae59b07c87854e990b"
     },
     {
       "file": "src/app/auth/invitations/callback/actions.ts",
@@ -65,7 +65,7 @@
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "2ef7bebce9b9faeda3b1deb4d5fb49910bea7d6d15537ea1d46b3ed8fbacaad1"
+      "sha256": "d024d2daa6d27d7b1fc7a6eb0a8c8b29b020a8feab01925ca293ebdbed6c3c72"
     },
     {
       "file": "src/app/auth/membership-invitations/callback/actions.ts",
@@ -6909,9 +6909,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:35:1948",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2056",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6919,9 +6919,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:35:1977",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2085",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -6929,9 +6929,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:44:2682",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2878",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 44,
+      "line": 45,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6939,9 +6939,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2773",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2969",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 45,
+      "line": 46,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6950,9 +6950,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2851",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3047",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 46,
+      "line": 47,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6961,9 +6961,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:48:2990",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:49:3186",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 48,
+      "line": 49,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6972,9 +6972,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:53:3313",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3509",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 53,
+      "line": 54,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -6982,9 +6982,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3399",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3595",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 54,
+      "line": 55,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -6993,9 +6993,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3477",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3673",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 55,
+      "line": 56,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7004,9 +7004,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5639",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5802",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 89,
+      "line": 90,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7014,9 +7014,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5668",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5831",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 89,
+      "line": 90,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7141,9 +7141,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1747",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1845",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 23,
+      "line": 24,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7151,9 +7151,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1776",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1874",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 23,
+      "line": 24,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7161,9 +7161,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:29:2451",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2646",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 29,
+      "line": 30,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7171,9 +7171,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2535",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2730",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 30,
+      "line": 31,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7182,9 +7182,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2589",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2784",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 30,
+      "line": 31,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7193,9 +7193,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2719",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2914",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 31,
+      "line": 32,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7204,9 +7204,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3034",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3229",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 34,
+      "line": 35,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7214,9 +7214,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3113",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3308",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7225,9 +7225,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3167",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3362",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {

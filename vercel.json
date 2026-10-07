@@ -49,7 +49,8 @@
       "codex/ux-shared-search-controls": false,
       "codex/ux-invitation-review-notices": false,
       "codex/ux-employee-activation-contracts": false,
-      "codex/ux-employee-activation-recovery": false
+      "codex/ux-employee-activation-recovery": false,
+      "codex/ux-recipient-password-feedback": false
     }
   }
 }

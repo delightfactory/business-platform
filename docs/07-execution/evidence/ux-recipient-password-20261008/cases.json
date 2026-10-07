@@ -1,0 +1,390 @@
+{
+  "sourceBase": "2761afe7d2550203e6ffc8e60ec38c428c5271d6",
+  "scope": "50 actual static React page/shared-component comparisons with SDK/action stubs; no provider/SQL/real role/hydration acceptance",
+  "cases": [
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password-set",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password-marker-failed",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "password-set",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "password",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "password-marker-failed",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": null,
+      "state": "password-set",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": null,
+      "state": "password",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": null,
+      "state": "password-marker-failed",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "unavailable",
+      "state": "password-set",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "unavailable",
+      "state": "password",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "unavailable",
+      "state": "password-marker-failed",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password-set",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "password-marker-failed",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "identity",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "__proto__",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "ready",
+      "state": "garbage",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "identity",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "__proto__",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "validation": "password_required",
+      "state": "garbage",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "options": {
+        "noSession": true
+      },
+      "unchangedAccess": true,
+      "status": "pass"
+    },
+    {
+      "lane": "admin",
+      "options": {
+        "invalidId": true
+      },
+      "unchangedAccess": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "password-set",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "password",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "marker-failed",
+      "passwords": 0,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "password-set",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "password",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "marker-failed",
+      "passwords": 1,
+      "contextRetained": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": null,
+      "state": "password-set",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": null,
+      "state": "password",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": null,
+      "state": "marker-failed",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "unavailable",
+      "state": "password-set",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "unavailable",
+      "state": "password",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "unavailable",
+      "state": "marker-failed",
+      "error": false,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "password-set",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "password",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "marker-failed",
+      "error": true,
+      "fallbackNoForm": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "identity",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "__proto__",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "ready",
+      "state": "garbage",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": null,
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "identity",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "__proto__",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "validation": "password_required",
+      "state": "garbage",
+      "unchangedHtml": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "options": {
+        "noSession": true
+      },
+      "unchangedAccess": true,
+      "status": "pass"
+    },
+    {
+      "lane": "member",
+      "options": {
+        "invalidId": true
+      },
+      "unchangedAccess": true,
+      "status": "pass"
+    }
+  ]
+}

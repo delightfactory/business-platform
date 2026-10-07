@@ -28,6 +28,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
     return <Status title="تعذر قبول هذه الدعوة" detail={stateMessage(validation === 'identity_mismatch' ? 'identity' : params.state ?? 'unavailable')} />;
   }
   const needsPassword = validation === 'password_required';
+  const passwordHint = ['password-set', 'password', 'password-marker-failed'].includes(params.state ?? '');
 
   return (
     <main className="app-shell">
@@ -38,8 +39,8 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
         <p className="eyebrow">إعداد حساب المسؤول</p>
         <h1 id="accept-title">أكمل إعداد حسابك</h1>
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. أنشئ مساحة الشركة بعد إكمال بيانات الحساب.</p>
-        {params.state === 'password-set' && <p className="form-message" role="status">تم حفظ كلمة المرور. يمكنك الآن إنشاء مساحة الشركة.</p>}
-        {params.state && params.state !== 'password-set' && <p className="form-message" role="alert">{stateMessage(params.state)}</p>}
+        {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة إنشاء مساحة الشركة.'}</p>}
+        {params.state && !passwordHint && <p className="form-message" role="alert">{stateMessage(params.state)}</p>}
         {needsPassword ? (
           <form className="auth-form" action={setInvitationPasswordAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
@@ -73,8 +74,8 @@ function stateMessage(state?: string) {
     unverified: 'يجب تأكيد البريد قبل إنشاء الشركة. افتح رابط الدعوة المرسل إلى بريدك.',
     'issuer-lost': 'تعذر إكمال الطلب لأن صلاحية مُصدر الدعوة لم تعد نشطة. على مشغّل مخوّل إلغاء الطلب أو إنشاء دعوة جديدة.',
     'accept-failed': 'تعذر التأكد من إنشاء الشركة. اطلب من مشغّل المنصة التحقق من حالة الدعوة قبل التأكيد مرة أخرى.',
-    password: 'تعذر حفظ كلمة المرور. اختر كلمة مرور من ثمانية أحرف على الأقل وحاول مجددًا.',
-    'password-marker-failed': 'حُفظت كلمة المرور لكن لم يكتمل توثيق جاهزية الحساب. أعد المحاولة لتثبيت الحالة قبل إنشاء الشركة.',
+    password: 'تعذر تأكيد حالة الحساب أو الدعوة الآن. اطلب من مشغّل المنصة مراجعتها.',
+    'password-marker-failed': 'تعذر تأكيد حالة الحساب أو الدعوة الآن. اطلب من مشغّل المنصة مراجعتها.',
     'link-expired': 'انتهت صلاحية رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مشغّل المنصة إصدار رابط جديد.',
     'no-session': 'انتهت جلسة الدعوة السابقة. تحقق من الحساب الحالي قبل المتابعة.',
     setup: 'تعذر إكمال الخطوة السابقة بسبب إعداد خدمة الحسابات. تحقق من الاتصال الحالي قبل المتابعة.',
