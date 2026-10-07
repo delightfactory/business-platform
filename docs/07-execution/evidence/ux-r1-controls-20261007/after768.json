@@ -1,0 +1,107 @@
+{
+  "buttons": [
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "بحث"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "عرض التفاصيل"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "حفظ التعيين"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "إلغاء"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "عرض"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "جارٍ الحفظ…"
+    },
+    {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": 44,
+      "label": "تأكيد الإلغاء"
+    }
+  ],
+  "fields": [
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "border": "rgb(14, 107, 92)",
+      "borderContrast": 6.409685501710646,
+      "height": 44,
+      "id": "search",
+      "value": "اسم اصطناعي",
+      "effectiveBackground": "rgb(255,255,255)"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(124, 135, 128)",
+      "borderContrast": 3.727165170468816,
+      "height": 49.20000076293945,
+      "id": "assignment",
+      "value": "قسم اصطناعي",
+      "effectiveBackground": "rgb(255, 255, 255)"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(124, 135, 128)",
+      "borderContrast": 3.727165170468816,
+      "height": 44,
+      "id": "date",
+      "value": "2026-10-07",
+      "effectiveBackground": "rgb(255, 255, 255)"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(124, 135, 128)",
+      "borderContrast": 3.727165170468816,
+      "height": 44,
+      "id": "amount",
+      "value": "1000",
+      "effectiveBackground": "rgb(255, 255, 255)"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "border": "rgb(124, 135, 128)",
+      "borderContrast": 3.727165170468816,
+      "height": 44.79999923706055,
+      "id": "day",
+      "value": "2026-10-07",
+      "effectiveBackground": "rgb(255, 255, 255)"
+    }
+  ],
+  "focus": {
+    "color": "rgb(11, 114, 217)",
+    "contrastAgainstWhite": 4.747795096823708,
+    "style": "solid",
+    "width": "2px"
+  },
+  "focused": "search",
+  "scrollWidth": 753,
+  "warning": {
+    "background": "rgb(251, 238, 220)",
+    "text": "rgb(23, 32, 28)"
+  },
+  "width": 768,
+  "measurementCorrection": "Computed color(srgb) parsed as normalized channels; transparent search field evaluated against its white panel, not black."
+}

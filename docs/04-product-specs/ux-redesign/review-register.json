@@ -14035,7 +14035,7 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "Working tree source hashes for navigation recovery candidate; HEAD denotes base",
+  "snapshotQualification": "Working tree source hashes for CSS-only shared-controls batch; HEAD denotes base; manual reviews unchanged",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7
 }

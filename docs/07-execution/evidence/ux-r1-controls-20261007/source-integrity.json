@@ -1,0 +1,18 @@
+{
+  "styles": [
+    {
+      "file": "globals",
+      "declarations": 1184,
+      "colorValueChanges": 11,
+      "focusOffsetAdditions": 0
+    },
+    {
+      "file": "workspace",
+      "declarations": 1124,
+      "colorValueChanges": 74,
+      "focusOffsetAdditions": 3
+    }
+  ],
+  "unchangedSourceFiles": 253,
+  "manualRegisterUnchanged": true
+}

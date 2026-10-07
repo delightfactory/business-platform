@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "eb223680a77625dd00b6bfaaf6ad378507b3ac6b",
+  "sourceHead": "62cbc09f9fe55373f0311dced5e84399379141ac",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,7 +90,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "cf69d6706fe2314703fd77dc90814e5b703c516a891a0bbfc579e054ca5571a1"
+      "sha256": "9414f25f4b3a83c6e5f2e13730bb240266a050e4f6fba6d12aec21040237944a"
     },
     {
       "file": "src/app/layout.tsx",
@@ -1200,7 +1200,7 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "c33c95e4964f1c5a3355a8a345149891df93c3096060c1d31543a98d2e1b2e23"
+      "sha256": "1068138bc5c712df18645cc090c51ffba14e7d9ca0601e7ef7c71868eaf940c2"
     },
     {
       "file": "src/components/context-navigation-client.tsx",

@@ -1,0 +1,14 @@
+# R1-CONTROLS-02 — shared surface and control migration
+
+Base62cbc09f9fe55373f0311dced5e84399379141ac. Owner requests economical completion with impact-driven, aggregated checks. Class C implementation of original plan section6.4 and existing R1 palette, preserving frontend baseline. Read the coverage/journey contracts and pinned compatibility corrections.
+
+Actors: existing authorized users reading lists, entering or correcting values and completing existing tasks. Entry, outcome, actions, reasons, role scope and recovery stay source-authoritative. Shared people/assignment/compensation and attendance controls must be identifiable on paper surfaces; keyboard focus must be visible. Required values/context and all disabled/pending/error text remain unchanged. N/C/P/I/B remain unchanged; no invented click reduction. Accessibility clarity is the improvement measured here.
+
+Scope: migrate remaining neutral shared surfaces, text and separators to existing tokens in globals/workspace CSS; strengthen legacy field/filter control borders and three legacy keyboard focus rules. Preserve sizes, breakpoints, typography, order, selector specificity and every TS/TSX/business rule. Preserve warning/danger meaning using existing semantic tokens; do not infer business states or success from role attributes. Retain dark sidebar-specific palette and feature-local CSS for subsequent reviewed scopes. No theme, dependency, component abstraction, new error boundary, inbox or authority change.
+
+Acceptance: compare parsed before/after stylesheets for identical selectors/at-rules and declaration order, color-bearing value changes and three explicit focus outline-offset additions; prove all253 other source files unchanged. Verify semantic text/background and control/focus contrast; synthetic representative People/Attendance/feedback controls at390/768/1366, keyboard focus, no outer overflow, preserved44/44/40px default buttons and existing44px desktop search and safe entered fixture text. Actual CSS fixture qualifies composition only, not business submission/provider/authorized-role runtime. One build for the whole CSS batch, no repeated unchanged Auth/SQL/full lint/type checks. Regenerate source inventory without resetting manual review history; targeted verifier and diff checks. One bounded Opus5.5 Medium independent review at batch acceptance.
+
+Preservation: independent codex/ux-r1-shared-controls branch, exact Vercel disable mapping, PR-only workflow/no PR/skip-ci. Record results and deviations in evidence and issue47. Full R1, feature-local color migration and whole-platform scenario execution remain open.
+
+
+Bounded batch acceptance: actual compiled CSS fixture, source invariants and independent PASS preserved in docs/07-execution/evidence/ux-r1-controls-20261007. Open gates above are not closed by presentation evidence.

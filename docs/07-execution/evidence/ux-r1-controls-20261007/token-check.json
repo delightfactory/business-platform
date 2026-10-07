@@ -1,0 +1,13 @@
+{
+  "allIntroducedTokensDefined": true,
+  "introducedTokens": [
+    "--text-muted",
+    "--text-secondary",
+    "--surface-subtle",
+    "--text-primary",
+    "--status-danger-text",
+    "--status-warning-text",
+    "--status-warning-surface",
+    "--surface-inset"
+  ]
+}

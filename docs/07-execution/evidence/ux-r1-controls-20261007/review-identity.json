@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "readOnlyViolation": false,
+  "resultSubtype": "success",
+  "numTurns": 1
+}
