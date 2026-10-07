@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const messages: Record<string, string> = {
   invalid: 'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور.',
-  setup: 'إعداد الاتصال غير مكتمل. أضف إعدادات Supabase إلى ملف البيئة.',
+  setup: 'الدخول غير متاح مؤقتًا. أعد المحاولة لاحقًا أو تواصل مع مسؤول المنصة.',
   'no-session': 'انتهت الجلسة. سجّل الدخول للمتابعة.',
   updated: 'تم تحديث كلمة المرور. سجّل الدخول بكلمتك الجديدة.',
   'signed-out': 'تم تسجيل الخروج.',
@@ -19,6 +19,7 @@ type SearchParams = Promise<{ state?: string; next?: string }>;
 export default async function LoginPage({ searchParams }: { searchParams: SearchParams }) {
   const { state, next: requestedNext } = await searchParams;
   const next = safeAuthNext(requestedNext ?? '');
+  const message = state && Object.hasOwn(messages, state) ? messages[state] : undefined;
 
   return (
     <main className="app-shell">
@@ -30,7 +31,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <p className="eyebrow">الدخول إلى المنصة</p>
         <h1 id="login-title">تسجيل الدخول</h1>
         <p className="intro">استخدم البريد الإلكتروني وكلمة المرور المرتبطين بحسابك.</p>
-        {state && messages[state] && <p className="form-message" role="status">{messages[state]}</p>}
+        {message && <p className="form-message" role="status">{message}</p>}
         <form action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>

@@ -1,0 +1,61 @@
+{
+  "base": "204f319add748b27b0ef65f0c31f14d4242b7a23",
+  "qualification": "bounded-maintenance-candidate-open-mobile-browser-provider-gates",
+  "reviewModel": "claude-opus-5-5",
+  "reviewEffort": "medium",
+  "readOnlyViolation": false,
+  "sourceCharacterizations": 60,
+  "componentCharacterizations": 16,
+  "lint": "pass",
+  "typecheck": "pass",
+  "productionBuild": "pass",
+  "productionHttpStatus": 200,
+  "recoveryNavigationsBefore": 2,
+  "recoveryNavigationsAfter": 1,
+  "responsiveVisualAcceptance": "open-clipped-screenshots",
+  "productionBrowser": "blocked-internal-data-URL-policy",
+  "ownedPort3562ListenersAfterCleanup": 0,
+  "viewportAndTabCleanup": "blocked-by-same-URL-policy-no-bypass",
+  "unchanged": [
+    {
+      "path": "src/app/auth/actions.ts",
+      "gitBlob": "ef7c08510ea8bfebaea55dd7b4fdc276f028953d",
+      "unchanged": true
+    },
+    {
+      "path": "src/app/auth/safe-next.ts",
+      "gitBlob": "534825bd65bcc2ba2e205bf8421f2ea62e4a82d7",
+      "unchanged": true
+    },
+    {
+      "path": "src/app/auth/callback/route.ts",
+      "gitBlob": "51f5e56c850aaeafdd8fa9176cc10cfafbc7796e",
+      "unchanged": true
+    },
+    {
+      "path": "src/lib/supabase/server.ts",
+      "gitBlob": "5e5e33026752665675f3a6c06820f29c14b3de7b",
+      "unchanged": true
+    },
+    {
+      "path": "proxy.ts",
+      "gitBlob": "2b3a42d21c44f740e686a3a59d2844e800ed1076",
+      "unchanged": true
+    },
+    {
+      "path": "next.config.ts",
+      "gitBlob": "78e173869041cc874c50cb7016fd1f68ed807c2e",
+      "unchanged": true
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "699ec146036866a05ad173b307968d45ee02f327",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "d8a32773fd0a90de101d3598fb3fcf4c7d66b11a",
+      "unchanged": true
+    }
+  ]
+}

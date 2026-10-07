@@ -1,0 +1,248 @@
+{
+  "kind": "source-characterization-not-runtime-UAT",
+  "sourceHead": "204f319add748b27b0ef65f0c31f14d4242b7a23",
+  "cases": [
+    {
+      "id": "NEXT-ALLOW-1",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-2",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-3",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-4",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-5",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-6",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-7",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-ALLOW-8",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-1",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-2",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-3",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-4",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-5",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-6",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-7",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-8",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-9",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-10",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-11",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-12",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-13",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-14",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-15",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-16",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-17",
+      "status": "pass"
+    },
+    {
+      "id": "NEXT-REJECT-18",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-MISSING",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-SETUP-SAFE-NEXT",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-PROVIDER-INVALID",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-SAFE-NEXT",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-ONE-MEMBERSHIP",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-MANY",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-FALLBACK-EMPTY",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-FALLBACK-BAD-ID",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-FALLBACK-NULL",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-FALLBACK-NONARRAY",
+      "status": "pass"
+    },
+    {
+      "id": "LOGIN-THROW-UNHANDLED",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-NO-CLIENT",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-NO-ORIGIN",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-INVALID-ORIGIN",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-NONHTTPS",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-RETURNED-ERROR",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-UNIFORM-THROWN-ERROR",
+      "status": "pass"
+    },
+    {
+      "id": "RESET-SAFE-TARGET",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-SHORT",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-MISMATCH",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-NO-CLIENT",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-NO-USER",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-PROVIDER-FAILED",
+      "status": "pass"
+    },
+    {
+      "id": "UPDATE-SUCCESS-LOCAL-LOGOUT",
+      "status": "pass"
+    },
+    {
+      "id": "BASELINE-UPDATE-LOGOUT-ERROR-IGNORED",
+      "status": "pass"
+    },
+    {
+      "id": "LOGOUT-NO-CLIENT",
+      "status": "pass"
+    },
+    {
+      "id": "BASELINE-LOGOUT-ERROR-IGNORED",
+      "status": "pass"
+    },
+    {
+      "id": "CALLBACK-503-MISSING",
+      "status": "pass"
+    },
+    {
+      "id": "CALLBACK-503-INVALID",
+      "status": "pass"
+    },
+    {
+      "id": "CALLBACK-503-INSECURE",
+      "status": "pass"
+    },
+    {
+      "id": "BASELINE-CALLBACK-NO-CODE",
+      "status": "pass"
+    },
+    {
+      "id": "BASELINE-CALLBACK-EXCHANGE-ERROR",
+      "status": "pass"
+    },
+    {
+      "id": "CALLBACK-SUCCESS-HEADERS-COOKIES",
+      "status": "pass"
+    },
+    {
+      "id": "CALLBACK-THROW-UNHANDLED",
+      "status": "pass"
+    }
+  ],
+  "passed": 60,
+  "failed": 0
+}

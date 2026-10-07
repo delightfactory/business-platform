@@ -1,0 +1,23 @@
+# R2-AUTH-UI-01 — bounded recovery presentation correction
+
+Base:204f319add748b27b0ef65f0c31f14d4242b7a23. Owner requested continuation and mandatory journey improvement. This is a normal-review Class C correction within the accepted frontend UX baseline (actionable recovery and truthful feedback); it does not adopt the wider Proposed R2 redesign or amend authorization/session behavior. `spec-lifecycle.md` permits local technical decisions preserving frozen intent; `change-control.md` permits Class C under normal review.
+
+Scope: direct existing-route restart for forgot-password sent/expired; invalid/failed/unknown update-page copy distinction plus failed-state recovery link; user-facing setup text. Actions, signatures, provider calls, password requirements, safeAuthNext, cookies/headers, membership fallback and dependencies remain unchanged. No new error boundary, auto-send/retry, email persistence or new authentication policy.
+
+Before code, the real local browser observed expired→login→forgot:2 navigations/2 recovery clicks, no direct primary action, and visible reset form at the end. A direct restart should require1 navigation/1 explicit click and no query editing. Other metrics have no claimed measured improvement. Evidence and acceptance remain bounded to the observed states; authenticated/provider UAT is separate.
+
+Gates: exact unchanged action/helper/callback/allowlist source hashes; lint/typecheck/build;60 selected source characterization checks; visible existing-route restart; state messages/roles and direct failed recovery entry; independent code/UX review. Responsive visual acceptance remains OPEN. Broader R2 scenarios and security/session decisions stay Proposed/not-run.
+
+Implemented outcome: expired recovery takes 1 navigation / 1 explicit click to the existing form instead of 2 / 2. Sent state also offers an explicit restart. Login and update messages use own-key lookup so unknown query values including prototype names do not render inherited values. Failed update feedback does not claim success or confuse provider failure with invalid input.
+
+Evidence: `../../07-execution/evidence/ux-auth-recovery-20261007/`. Saved development-browser screenshots at 390/768/1366px show the recovery presentation, but contain clipping: the card/button are cut at small widths and the brand is cut at desktop width. Before also has clipping. Whether this is layout or capture behavior remains unresolved; no no-overflow or mobile visual acceptance claim is made. The reset submission used synthetic@example.invalid with provider environment absent: no delivery or authenticated acceptance is claimed. Component checks use a stubbed provider; 60 source characterization checks reproduce current behavior including known defects. Full lint, TypeScript and production build passed. Production HTTP returned 200 and contained the restart link.
+
+Final production-browser verification remains OPEN: the browser could not connect and refused navigation to its generated data: error page under URL policy. The rejected operation was stopped without bypass. Earlier development-browser evidence remains valid for the unchanged forgot-password presentation, not a replacement for authenticated/provider UAT.
+
+Source inventory fingerprints were regenerated; seven positional control IDs were migrated preserving review history. All 1,521 items still require complete semantic qualification. Source-reviewed is not runtime-qualified. The broader R2 freeze gate remains closed.
+
+Preservation configuration: vercel.json adds deploymentEnabled=false only for codex/ux-auth-recovery-ui. Existing branch settings are retained. The only GitHub workflow is pull_request-triggered; no PR is opened and the preservation commit uses [skip ci]. This branch is a bounded maintenance candidate with open browser/mobile/provider gates, not deployment approval.
+
+Independent official Claude Opus 5.5 medium review accepted preservation conditionally on correcting the clipping claim and documenting the branch deployment guard. Both documentation corrections are applied; the unchanged source fingerprints and seven control-ID migrations were checked by Codex through Git/source diffs. Claude did not execute tests. Full report is preserved in the evidence directory. The browser policy also rejected temporary viewport reset/tab cleanup against its internal data: page; no further browser action was attempted. The owned loopback server was stopped and port3562 has zero listeners.
+
+Following review, five forgot-page component states (default/sent/expired/unknown/__proto__) were added, bringing selected component checks to16/16. These are structural render checks, not focus/mobile/provider UAT. Existing no-user/real-provider paths remain open.

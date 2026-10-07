@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "6bfd604e4015de13db922b1d17466222fda8672e",
+  "sourceHead": "204f319add748b27b0ef65f0c31f14d4242b7a23",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -30,7 +30,7 @@
     {
       "file": "src/app/auth/forgot-password/page.tsx",
       "phase": "R2",
-      "sha256": "c930e8eeeeadb4c916c7d7a25d9e5c7eb922a3d4c9df6a6d8e35a2397b391f79"
+      "sha256": "f626b6a83b9e7ecd16b97deb41fe0e51a30ec42f9d24629ec8ba0bc7f4a28e59"
     },
     {
       "file": "src/app/auth/invitations/accept/actions.ts",
@@ -55,7 +55,7 @@
     {
       "file": "src/app/auth/login/page.tsx",
       "phase": "R2",
-      "sha256": "36a0058f41c48602014c145ab1f49b6b801f1654de3c7243aa303170e0808a0e"
+      "sha256": "a4c0ee222fa17bcedfaae57225ba0137614879b3da09abf27b5a83aba38ae404"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
@@ -80,7 +80,7 @@
     {
       "file": "src/app/auth/password/update/page.tsx",
       "phase": "R2",
-      "sha256": "d569b001613dd91cd47deecd21dca08adf5de3aea9f9cba901e2ae58815fc338"
+      "sha256": "c528108468aaff51574298d0107e7eb870672f594929c280aa4335a6725316a6"
     },
     {
       "file": "src/app/auth/safe-next.ts",
@@ -7088,9 +7088,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:34:1596",
+      "id": "CONTROL:src/app/auth/login/page.tsx:35:1664",
       "file": "src/app/auth/login/page.tsx",
-      "line": 34,
+      "line": 35,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7098,9 +7098,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:35:1658",
+      "id": "CONTROL:src/app/auth/login/page.tsx:36:1726",
       "file": "src/app/auth/login/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7109,9 +7109,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:37:1778",
+      "id": "CONTROL:src/app/auth/login/page.tsx:38:1846",
       "file": "src/app/auth/login/page.tsx",
-      "line": 37,
+      "line": 38,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7120,9 +7120,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:39:1952",
+      "id": "CONTROL:src/app/auth/login/page.tsx:40:2020",
       "file": "src/app/auth/login/page.tsx",
-      "line": 39,
+      "line": 40,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7280,9 +7280,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1412",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1641",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7290,9 +7290,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1523",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1752",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7301,9 +7301,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1694",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1923",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "input",
       "phase": "R2",
       "attributes": {

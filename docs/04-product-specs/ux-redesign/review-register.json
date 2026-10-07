@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "6bfd604e4015de13db922b1d17466222fda8672e",
+  "sourceSnapshot": "204f319add748b27b0ef65f0c31f14d4242b7a23",
   "status": "Proposed",
   "items": [
     {
@@ -57,8 +57,9 @@
         "R2-CORE-UP-06"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "ROUTE:src/app/auth/invitations/accept/page.tsx",
@@ -118,8 +119,9 @@
         "R2-CORE-EX-03"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "ROUTE:src/app/auth/membership-invitations/accept/page.tsx",
@@ -156,8 +158,9 @@
         "R2-CORE-EX-04"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "ROUTE:src/app/operator/commercial/[tenantId]/page.tsx",
@@ -5087,8 +5090,9 @@
         "R2-CORE-UP-06"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1123",
@@ -5106,8 +5110,9 @@
         "R2-CORE-UP-06"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:35:1948",
@@ -5272,7 +5277,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:34:1596",
+      "id": "CONTROL:src/app/auth/login/page.tsx:35:1664",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5311,11 +5316,12 @@
         "R2-CORE-EX-03"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:35:1658",
+      "id": "CONTROL:src/app/auth/login/page.tsx:36:1726",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5354,11 +5360,12 @@
         "R2-CORE-EX-03"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:37:1778",
+      "id": "CONTROL:src/app/auth/login/page.tsx:38:1846",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5397,11 +5404,12 @@
         "R2-CORE-EX-03"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:39:1952",
+      "id": "CONTROL:src/app/auth/login/page.tsx:40:2020",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5440,8 +5448,9 @@
         "R2-CORE-EX-03"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:23:1730",
@@ -5570,7 +5579,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1412",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1641",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5586,11 +5595,12 @@
         "R2-CORE-EX-04"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1523",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1752",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5606,11 +5616,12 @@
         "R2-CORE-EX-04"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:11:1694",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1923",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5626,8 +5637,9 @@
         "R2-CORE-EX-04"
       ],
       "reviewer": "Claude Opus 5.5 medium + Codex",
-      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization",
-      "runtimeStatus": "not-run"
+      "evidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization; auth-ui-maintenance-slice.md",
+      "runtimeStatus": "partial-local-presentation; provider/authenticated UAT not-run",
+      "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
       "id": "CONTROL:src/app/operator/commercial/[tenantId]/LimitModeFields.tsx:11:354",
@@ -14022,5 +14034,7 @@
       "reviewer": null,
       "evidence": null
     }
-  ]
+  ],
+  "snapshotQualification": "Working tree source hashes after bounded presentation changes; HEAD is base, not final commit.",
+  "idMigrationCount": 7
 }

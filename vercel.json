@@ -33,7 +33,8 @@
       "codex/backup-20261005/wip-reports-worktree-oct02": false,
       "codex/ux-redesign-reference": false,
       "codex/ux-redesign-w1-foundation": false,
-      "codex/ux-redesign-specs": false
+      "codex/ux-redesign-specs": false,
+      "codex/ux-auth-recovery-ui": false
     }
   }
 }
