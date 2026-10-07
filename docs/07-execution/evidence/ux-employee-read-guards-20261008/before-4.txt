@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { PageFrame } from '@/components/context-navigation';
 import styles from './profile.module.css';
-import { isDate, isObject } from './leave/form-rules';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -24,17 +23,11 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
   if (!supabase) return <State tenantId={tenantId} />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me`)}`);
-  let response;
-  try {
-    response = await supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId });
-  } catch {
-    return <State tenantId={tenantId} />;
-  }
-  const { data, error } = response;
-  const profile = error ? null : readEmployeeSnapshot(data);
-  if (!profile) {
+  const { data, error } = await supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId });
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) {
     return <State tenantId={tenantId} forbidden={error?.code === '42501'} />;
   }
+  const profile = data as EmployeeSnapshot;
   return <PageFrame>
     <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p><h1>ملفي</h1>
       <p className="field-hint">بيانات ملفك الوظيفي المرتبطة بهذا الحساب.</p></div></header>
@@ -65,21 +58,4 @@ function State({ tenantId, forbidden }: { tenantId: string; forbidden?: boolean 
       <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
     </section>
   </PageFrame>;
-}
-
-function readEmployeeSnapshot(data: unknown): EmployeeSnapshot | null {
-  if (!isObject(data) || typeof data.employee_code !== 'string' || !data.employee_code.trim()
-    || typeof data.display_name !== 'string' || !data.display_name.trim()
-    || (data.employee_status !== 'active' && data.employee_status !== 'inactive' && data.employee_status !== 'ended')
-    || (data.employment_status !== null && data.employment_status !== 'active' && data.employment_status !== 'ended')
-    || !(data.employment_start_date === null
-      || (typeof data.employment_start_date === 'string' && isDate(data.employment_start_date)))
-    || !(data.site_name === null || typeof data.site_name === 'string')
-    || !(data.job_title === null || typeof data.job_title === 'string')
-    || typeof data.new_work_enabled !== 'boolean') return null;
-  return {
-    employee_code: data.employee_code, display_name: data.display_name, employee_status: data.employee_status,
-    employment_status: data.employment_status, employment_start_date: data.employment_start_date,
-    site_name: data.site_name, job_title: data.job_title, new_work_enabled: data.new_work_enabled,
-  };
 }

@@ -1,0 +1,21 @@
+# Review: R6-READ-GUARDS-01 (source `c52dbdd`)
+
+I reviewed only the diff you embedded. I didn't open any repo files, which is what you asked for. That's also why I didn't write the plan file that plan mode normally requires.
+
+**Source verdict: I found no blocking defects.** The changes stay within Class C presentation scope, and the read failures fall cleanly into three groups:
+
+- **Profile:** the existing 42501 priority and the `getUser`/redirect stay outside the catch. Only the profile `rpc` is caught. Malformed data or a thrown read now goes to the existing technical retry. Unknown states are no longer shown as inactive.
+- **List and new-request access:** a failed read or bad flags now give the existing technical retry, not a "no permission" message. The access matrix is unchanged: the list depends on `self_access`, the new form needs all three flags true, and cancellation still uses only `self_can_request` behind `historyFailed`.
+- **Detail:** malformed version, id, state, units, source or a mismatched route id now go to the retry page. The withdraw and cancel forms are never shown in that case.
+- **Cancellation events:** the event-key, `to_state` and null-cancellation rules match the table CHECK you described for 20261001030800, including the `hr.direct_cancelled` ⇔ null case.
+- **Timestamps:** `isInstant` accepts PostgreSQL JSON output, which always has seconds and an `±HH:MM` offset, including microseconds. `Date.parse` handles more than 3 fractional digits.
+
+**Non-blocking points (fix only if confirmed against the SQL):**
+
+1. **Possible new restriction in `me/page.tsx`:** `readEmployeeSnapshot` rejects blank `employee_code`/`display_name` because of the `.trim()` checks. Your scope only requires strings. If people 20260929233759 doesn't forbid blank values, this blocks profiles that would otherwise display and should become a plain `typeof` check.
+2. **Wrong-request response, detail page:** if the server returns a valid request with a different id, the page offers a retry that can't fix it. That's safe and matches your "technical retry" rule. I'm noting it only for the open F5 robustness item.
+3. **Correction links, detail page:** a link with a bad `created_at` is still silently left out. That's how the old code already worked, so this diff doesn't make it worse. It could hide replacement history and belongs with the open items.
+
+The Arabic messages are unchanged and still clear. The diff adds no new user choices, automatic retries or writes.
+
+**Visual verdict: NOT VISUALLY VERIFIED.** You provided no rendered screenshots of the same pages in the same states, so I can't check the theme, components or design against the original Concept C HTML. Source and build results can't establish that. No CSS or component changes appear in the diff, and Cairo40/44radius8 are kept, which needs no amendment.

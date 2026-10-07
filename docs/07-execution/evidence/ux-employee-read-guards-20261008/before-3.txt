@@ -1,4 +1,4 @@
-import { isInstant, isObject, isUuid } from '../form-rules';
+import { isObject, isUuid } from '../form-rules';
 
 export const CANCELLATION_HISTORY_LIMIT = 50;
 
@@ -47,11 +47,8 @@ function readCancellationEvent(value: unknown): CancellationEvent | null {
   if (!(value.cancellation_id === null || isUuid(value.cancellation_id))) return null;
   if (!isUuid(value.actor_user_id)) return null;
   if (typeof value.event_key !== 'string' || typeof value.to_state !== 'string') return null;
-  const expectedState = cancellationEventState(value.event_key);
-  if (!expectedState || value.to_state !== expectedState
-    || (value.event_key === 'hr.direct_cancelled') !== (value.cancellation_id === null)) return null;
   if (!(value.from_state === null || typeof value.from_state === 'string')) return null;
-  if (typeof value.reason !== 'string' || !isInstant(value.created_at)) return null;
+  if (typeof value.reason !== 'string' || typeof value.created_at !== 'string') return null;
   if (typeof value.time_reconciliation_required !== 'boolean') return null;
   return {
     id,
@@ -159,12 +156,4 @@ export function historyErrorText(code: string): string {
     failed: 'تعذر تحميل سجل طلبات الإلغاء الآن.',
   };
   return messages[code] ?? messages.failed;
-}
-
-function cancellationEventState(eventKey: string): string | null {
-  if (eventKey === 'employee.requested' || eventKey === 'hr.requested') return 'pending';
-  if (eventKey === 'hr.accepted') return 'accepted';
-  if (eventKey === 'hr.rejected') return 'rejected';
-  if (eventKey === 'hr.direct_cancelled') return 'cancelled';
-  return null;
 }

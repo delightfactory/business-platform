@@ -110,16 +110,3 @@ export function halfDayAllowedOn(type: LeaveOptionType, date: string): boolean {
   return type.versions.some((version) => version.effective_from <= date
     && (!version.effective_until || version.effective_until > date) && version.half_day_allowed === true);
 }
-
-export function isInstant(value: unknown): value is string {
-  return typeof value === 'string'
-    && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value)
-    && isDate(value.slice(0, 10)) && Number.isFinite(Date.parse(value));
-}
-
-export function isLeaveAccessSnapshot(value: unknown): value is {
-  self_access: boolean; self_can_request: boolean; new_work_enabled: boolean;
-} {
-  return isObject(value) && typeof value.self_access === 'boolean'
-    && typeof value.self_can_request === 'boolean' && typeof value.new_work_enabled === 'boolean';
-}

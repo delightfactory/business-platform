@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "1846cd2e5e5834356d3e97c090d5e46e4e812193",
+  "sourceHead": "c52dbddc86eeab809f67a0af536e1d0ba5e68fc2",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -705,12 +705,12 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-rules.ts",
       "phase": "R6",
-      "sha256": "8a47cdae8aae9ca0b0ae1ece3abedbb6da2962a5d7499bd8b0e26632f70ef3d3"
+      "sha256": "84de214532a17a7d9c3e636173ec557673bc925bbad06d94ef0c24f9348798ba"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "phase": "R6",
-      "sha256": "1042f3ed896c53f245a5a93cfd5ee1f22c81a12a9c81d3d4817e9530a69579ea"
+      "sha256": "5b936c54dfcd8f7cfdaf2d0cc4ff9d1a8b15f88893b3f43dda6a4bf371af6467"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/actions.ts",
@@ -720,7 +720,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/form-rules.ts",
       "phase": "R6",
-      "sha256": "080d1d224dd7ec6496abc3f3c64c2d3fa22afd0408d3e2e5844573db710753d4"
+      "sha256": "ec01272e6d9d8674cdf2f0f70b5f61ad3910a2880ae10237daca8b26d2a5093e"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
@@ -735,7 +735,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
       "phase": "R6",
-      "sha256": "ce7b8a621f7d25f3dfcf842642734d27e062732afa60e1278937a4e7dbfc5179"
+      "sha256": "bebd997d02a68c9ed1d7b56278061350ada6f819b6953b253682554216cd48cb"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/operation-key.ts",
@@ -745,7 +745,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "phase": "R6",
-      "sha256": "bacd88760b542083cba8612550430c8a3bd08d0b2047f9ebd214893a57363a91"
+      "sha256": "4a728c1959d233fb58964fbbee04a2489b8aba9d86a94522e1a52c84fd848f10"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/pending-link.tsx",
@@ -755,12 +755,12 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/states.ts",
       "phase": "R6",
-      "sha256": "ecdd7db84f9e1bac87d1b63925ff761fa776ce555feb5465abff0f5eff1ffe28"
+      "sha256": "41a4763973052ce43872d1abc7554ef3c7d18186182c28e9755cfd2fceafce9a"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
       "phase": "R6",
-      "sha256": "89c5eebc97992db94c6fb006bfc8173d8bf39ca53bc1195754008836bcb7a6fc"
+      "sha256": "79405579b93abd9afdc16237d63c98d58c9e4e01ba517c6f0990de1b6aaef54e"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/profile.module.css",
@@ -5090,7 +5090,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:46:2084",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:46:2142",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "line": 46,
       "phase": "R6",
@@ -5100,7 +5100,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:48:2304",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:48:2362",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
       "line": 48,
       "phase": "R6",
@@ -5140,9 +5140,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/new/page.tsx:20:1023",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/new/page.tsx:22:1030",
       "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
-      "line": 20,
+      "line": 22,
       "phase": "R6",
       "name": "leave_access_snapshot",
       "expression": null,
@@ -5150,7 +5150,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:53:2038",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:53:2115",
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "line": 53,
       "phase": "R6",
@@ -5160,7 +5160,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:69:3045",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:69:3154",
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "line": 69,
       "phase": "R6",
@@ -5170,7 +5170,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3236",
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3345",
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "line": 72,
       "phase": "R6",
@@ -5180,9 +5180,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:26:1069",
+      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:29:1112",
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
-      "line": 26,
+      "line": 29,
       "phase": "R6",
       "name": "tenant_my_employee_snapshot",
       "expression": null,

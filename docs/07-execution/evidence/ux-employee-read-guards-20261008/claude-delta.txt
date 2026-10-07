@@ -1,0 +1,7 @@
+**Source verdict for this delta: accepted. I found no concrete defects.**
+
+- **Your corrections:** I accept both. People 20260929233759 enforces non-blank code and name, so rejecting a blank profile follows the source and isn't a new restriction. My earlier statement about correction links was wrong. The old code accepted any `created_at` string, and my candidate would have hidden a valid link just because its time was bad.
+- **The fix:** a link with a valid id pair and reason now stays usable even if the time is missing or malformed. The time falls back to "غير متاح الآن", so it no longer shows bad text or drops the link. Matching the original id now ignores case, the same rule the route identity check uses. The destination RPC still checks that the record is the user's own. Payloads, keys, versions, permissions, financial values and CSS are unchanged.
+- **Timestamps:** the helper's support is limited to the current SQL-generated ISO formats you listed. Unusual or legacy formats and full database/runtime behaviour remain open.
+
+**Visual verdict: NOT VISUALLY VERIFIED.** No matching rendered evidence was provided.

@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid } from './form-rules';
+import { isObject, isUuid } from './form-rules';
 import { PendingLink } from './pending-link';
-import { formatDays, formatInstant, isRequestState, stateClass, stateLabel } from './states';
+import { formatDays, formatInstant, stateClass, stateLabel } from './states';
 import styles from './leave.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -50,9 +50,9 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave`)}`);
 
-  const accessResult = await readResponse(() => supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }));
-  if (!accessResult || accessResult.error || !isLeaveAccessSnapshot(accessResult.data)) {
-    const forbidden = accessResult?.error?.code === '42501';
+  const accessResult = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
+  if (accessResult.error || !isObject(accessResult.data)) {
+    const forbidden = accessResult.error?.code === '42501';
     return <Status tenantId={tenantId} retry={!forbidden}
       title={forbidden ? 'الخدمة الذاتية غير متاحة لهذا الحساب' : 'تعذر تحميل إجازاتي الآن'}
       detail={forbidden ? 'لا يملك حسابك أي صلاحية لعرض بيانات الإجازات في الشركة. راجع إدارة الموارد البشرية.'
@@ -190,8 +190,7 @@ function readBalances(items: unknown[]): Balance[] | null {
   for (const item of items) {
     if (!isObject(item) || !isUuid(item.leave_type_id) || !isUuid(item.period_id)
       || typeof item.type_name !== 'string' || typeof item.period_label !== 'string'
-      || typeof item.starts_on !== 'string' || !isDate(item.starts_on)
-      || typeof item.balance_days !== 'number' || !Number.isFinite(item.balance_days)) return null;
+      || typeof item.starts_on !== 'string' || typeof item.balance_days !== 'number') return null;
     balances.push({
       leave_type_id: item.leave_type_id,
       type_name: item.type_name,
@@ -209,10 +208,9 @@ function readRequests(items: unknown[]): RequestSummary[] | null {
   for (const item of items) {
     if (!isObject(item) || !isUuid(item.id) || typeof item.leave_type_name !== 'string'
       || typeof item.start_date !== 'string' || typeof item.end_date !== 'string'
-      || !isDate(item.start_date) || !isDate(item.end_date) || item.start_date > item.end_date
-      || typeof item.total_units !== 'number' || !Number.isFinite(item.total_units) || item.total_units <= 0
-      || typeof item.is_half_day !== 'boolean' || !isRequestState(item.state)
-      || !(item.submitted_at === null || isInstant(item.submitted_at))) return null;
+      || typeof item.total_units !== 'number' || typeof item.is_half_day !== 'boolean'
+      || typeof item.state !== 'string'
+      || !(item.submitted_at === null || typeof item.submitted_at === 'string')) return null;
     requests.push({
       id: item.id,
       leave_type_name: item.leave_type_name,

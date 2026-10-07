@@ -1,0 +1,16 @@
+{
+  "registryStatesPreserved": 1523,
+  "sourceFiles": 256,
+  "changed": [
+    "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-rules.ts",
+    "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+    "src/app/tenant/[tenantId]/me/leave/form-rules.ts",
+    "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
+    "src/app/tenant/[tenantId]/me/leave/page.tsx",
+    "src/app/tenant/[tenantId]/me/leave/states.ts",
+    "src/app/tenant/[tenantId]/me/page.tsx"
+  ],
+  "unchangedSources": 249,
+  "candidateIdentity": "PASS",
+  "priorVercelSettingsPreserved": true
+}

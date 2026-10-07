@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { isLeaveAccessSnapshot, isUuid } from '../form-rules';
+import { isObject, isUuid } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { NewLeaveRequestForm } from './NewLeaveRequestForm';
 
@@ -17,14 +17,8 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/new`)}`);
-  let response;
-  try {
-    response = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
-  } catch {
-    response = { data: null, error: { code: 'READ_UNAVAILABLE' } };
-  }
-  const { data, error } = response;
-  if (error || !isLeaveAccessSnapshot(data)) {
+  const { data, error } = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
+  if (error || !isObject(data)) {
     const forbidden = error?.code === '42501';
     return <Status tenantId={tenantId} retry={!forbidden}
       title={forbidden ? 'الخدمة الذاتية غير متاحة لهذا الحساب' : 'تعذر فتح طلب الإجازة'}

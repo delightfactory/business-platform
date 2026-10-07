@@ -1,10 +1,3 @@
-export type RequestState = 'draft' | 'submitted' | 'approved' | 'rejected' | 'withdrawn' | 'cancelled' | 'superseded';
-
-export function isRequestState(value: unknown): value is RequestState {
-  return value === 'draft' || value === 'submitted' || value === 'approved' || value === 'rejected'
-    || value === 'withdrawn' || value === 'cancelled' || value === 'superseded';
-}
-
 export function stateLabel(state: string): string {
   if (state === 'submitted') return 'مُقدَّم وبانتظار القرار';
   if (state === 'withdrawn') return 'مسحوب';

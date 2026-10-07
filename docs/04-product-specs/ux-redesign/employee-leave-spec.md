@@ -72,3 +72,6 @@ Before phase acceptance: expand item-specific source/SQL dependencies and actor/
 
 
 R6-PARTIAL-READS-01 bounded source implementation at base1846: superseded label/note and independent RPC technical failure handling implemented under leave-partial-reads-slice.md. Existing note above records the earlier source finding, not the current states.ts implementation.43focusedstubcases/build are bounded evidence; full F4/F5/F6/F7/visual/runtime/160draft rebase and semantic qualification remain open.
+
+
+R6-READ-GUARDS-01 at sourcec52dbdd repairs consumed profile/leave/access/domain data and valid correction-link fallback under employee-read-guards-slice.md,105focusedstubcases/build only. Prior F5 finding describes historical baseline. Exact-version semantic rebase/optional malformed entries/cross-field/full unknown/session/journey/reference/runtime/R6b gates remain required; no scenario promotion from these tests.

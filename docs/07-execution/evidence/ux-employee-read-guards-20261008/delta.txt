@@ -1,0 +1,13 @@
+Read-only continuation of the same bounded source review; no tools/no writes/no repeated rediscovery. <=150 words. All seven candidates unchanged except the correction-links display in detail; exact applied hashes regenerated. Resolve this delta explicitly. Root verified people20260929233759 employee_code=trim length1..40 and full_name=trim length2..160, so blank profile rejection is source-authoritative. Your prior timestamp statement about old code was incorrect: it accepted ANY string, displaying invalid text; new isInstant check would silently hide a valid reference for bad time. Corrected candidate now:
+
+if (!isObject(link) || !isUuid(link.original_request_id) || !isUuid(link.replacement_request_id)
+  || typeof link.reason !== 'string') return null;
+const original = link.original_request_id.toLowerCase() === request.id.toLowerCase();
+...
+<p className="record-meta">وقت التصحيح: {isInstant(link.created_at)
+  ? <bdi>{formatInstant(link.created_at)}</bdi> : 'غير متاح الآن'}</p>
+<PendingLink href={`/tenant/${tenantId}/me/leave/${original ? link.replacement_request_id : link.original_request_id}`}>
+  {original ? 'عرض الطلب البديل' : 'عرض الطلب الأصلي'}
+</PendingLink>
+
+Valid ID/reason links remain usable if timestamp is missing/malformed. Destination RPC still authorizes own record. No mutation or key/version/permission/financial/CSS change. Added2actual-page cases for missing/bad time preserve link, fallback, no mutation; final105focusedcasesPASS. Do not infer all PostgreSQL timestamps always match this helper: bounded current SQL-generated ISO timestamptz, seconds+microseconds+Z/HH:MM offsets are source/test-supported; exceptional/legacy formats and full DB/runtime remain open. Full visual verdict remains NOT VISUALLY VERIFIED without matching renders. Mandatory complete-task simplification and design-reference gates unchanged. Return final source verdict for this delta and separate visual verdict.

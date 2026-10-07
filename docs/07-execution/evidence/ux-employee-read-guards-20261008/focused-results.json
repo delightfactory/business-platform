@@ -1,0 +1,426 @@
+{
+  "passed": 105,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "valid profile domain active:active",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain active:ended",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain active:null",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain inactive:active",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain inactive:ended",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain inactive:null",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain ended:active",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain ended:ended",
+      "result": "PASS"
+    },
+    {
+      "name": "valid profile domain ended:null",
+      "result": "PASS"
+    },
+    {
+      "name": "valid nullable profile fields preserved",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery employee_status",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery employment_status",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery employee_code",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery display_name",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery employment_start_date",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery site_name",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery job_title",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed profile technical recovery new_work_enabled",
+      "result": "PASS"
+    },
+    {
+      "name": "profile thrown read safe retry throws",
+      "result": "PASS"
+    },
+    {
+      "name": "profile thrown read safe retry syncThrow",
+      "result": "PASS"
+    },
+    {
+      "name": "profile unknown state no invented inactive label",
+      "result": "PASS"
+    },
+    {
+      "name": "profile returned error priority preserved 42501",
+      "result": "PASS"
+    },
+    {
+      "name": "profile returned error priority preserved XX000",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:submitted",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:withdrawn",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:draft",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:draft",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:approved",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:approved",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:cancelled",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:cancelled",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained list:superseded",
+      "result": "PASS"
+    },
+    {
+      "name": "all actual request states retained detail:superseded",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form id",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form state",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form version",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form total_units",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form start_date",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form end_date",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form request_source",
+      "result": "PASS"
+    },
+    {
+      "name": "detail malformed field no form submitted_at",
+      "result": "PASS"
+    },
+    {
+      "name": "version bounds block unsafe form 1.5",
+      "result": "PASS"
+    },
+    {
+      "name": "version bounds block unsafe form 2147483648",
+      "result": "PASS"
+    },
+    {
+      "name": "version bounds block unsafe form Infinity",
+      "result": "PASS"
+    },
+    {
+      "name": "total units invalid 0",
+      "result": "PASS"
+    },
+    {
+      "name": "total units invalid -1",
+      "result": "PASS"
+    },
+    {
+      "name": "total units invalid Infinity",
+      "result": "PASS"
+    },
+    {
+      "name": "valid day units retained 0",
+      "result": "PASS"
+    },
+    {
+      "name": "valid day units retained 0.5",
+      "result": "PASS"
+    },
+    {
+      "name": "valid day units retained 1",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed day units no action -0.5",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed day units no action 1.5",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed day units no action NaN",
+      "result": "PASS"
+    },
+    {
+      "name": "valid finite balance including negative -2.5",
+      "result": "PASS"
+    },
+    {
+      "name": "valid finite balance including negative 0",
+      "result": "PASS"
+    },
+    {
+      "name": "valid finite balance including negative 4",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed balances keep requests {\"balance_days\":null}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed balances keep requests {\"starts_on\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed request list keep balances state",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed request list keep balances total_units",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed request list keep balances start_date",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed request list keep balances submitted_at",
+      "result": "PASS"
+    },
+    {
+      "name": "valid event SQL relationship employee.requested",
+      "result": "PASS"
+    },
+    {
+      "name": "valid event SQL relationship hr.requested",
+      "result": "PASS"
+    },
+    {
+      "name": "valid event SQL relationship hr.accepted",
+      "result": "PASS"
+    },
+    {
+      "name": "valid event SQL relationship hr.rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "valid event SQL relationship hr.direct_cancelled",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"event_key\":\"mystery\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"to_state\":\"mystery\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"event_key\":\"hr.accepted\",\"to_state\":\"pending\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"cancellation_id\":null}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"event_key\":\"hr.direct_cancelled\",\"to_state\":\"cancelled\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed latest history blocks cancellation {\"created_at\":\"bad\"}",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable list:self_access",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable list:self_can_request",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable list:new_work_enabled",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable new:self_access",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable new:self_can_request",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable new:new_work_enabled",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable detail:self_access",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable detail:self_can_request",
+      "result": "PASS"
+    },
+    {
+      "name": "malformed access classified unavailable detail:new_work_enabled",
+      "result": "PASS"
+    },
+    {
+      "name": "access transport technical retry list:throws",
+      "result": "PASS"
+    },
+    {
+      "name": "access transport technical retry list:syncThrow",
+      "result": "PASS"
+    },
+    {
+      "name": "access transport technical retry new:throws",
+      "result": "PASS"
+    },
+    {
+      "name": "access transport technical retry new:syncThrow",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged list:{\"self_access\":false,\"self_can_request\":false,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged new:{\"self_access\":false,\"self_can_request\":false,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged detail:{\"self_access\":false,\"self_can_request\":false,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged list:{\"self_access\":true,\"self_can_request\":false,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged new:{\"self_access\":true,\"self_can_request\":false,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged detail:{\"self_access\":true,\"self_can_request\":false,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged list:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged new:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged detail:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":false}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged list:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged new:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "existing access matrix unchanged detail:{\"self_access\":true,\"self_can_request\":true,\"new_work_enabled\":true}",
+      "result": "PASS"
+    },
+    {
+      "name": "profile auth redirect outside catch",
+      "result": "PASS"
+    },
+    {
+      "name": "correction timestamp failure preserves valid reference bad",
+      "result": "PASS"
+    },
+    {
+      "name": "correction timestamp failure preserves valid reference undefined",
+      "result": "PASS"
+    }
+  ]
+}

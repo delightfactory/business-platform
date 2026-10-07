@@ -3,9 +3,9 @@ import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { isDayCountBasis, isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid, type RequestDay } from '../form-rules';
+import { isDayCountBasis, isObject, isUuid, type RequestDay } from '../form-rules';
 import { PendingLink } from '../pending-link';
-import { formatDays, formatInstant, isRequestState, stateClass, stateLabel } from '../states';
+import { formatDays, formatInstant, stateClass, stateLabel } from '../states';
 import { CancellationHistorySection, loadCancellationHistory } from './CancellationHistory';
 import { cancellationEventActor, parseHistoryOffset } from './cancellation-rules';
 import { DayBreakdown } from './DayBreakdown';
@@ -50,7 +50,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
   const data = detailResponse?.data;
   const error = detailResponse?.error ?? (detailResponse === null ? { code: 'READ_UNAVAILABLE' } : null);
   const request = error || !isObject(data) ? null : readRequest(data);
-  if (!request || request.id.toLowerCase() !== requestId.toLowerCase()) {
+  if (!request) {
     const unavailable = Boolean(error && error.code === 'P0002') || (!error && !isObject(data));
     const forbidden = Boolean(error && error.code === '42501');
     return <Status tenantId={tenantId} retry={!unavailable && !forbidden}
@@ -70,7 +70,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
 
   const pendingEvent = latest?.to_state === 'pending' ? latest : null;
   const historyFailed = !history.ok;
-  const accessUnavailable = !accessResponse || Boolean(accessResponse.error) || !isLeaveAccessSnapshot(accessResponse.data);
+  const accessUnavailable = !accessResponse || Boolean(accessResponse.error) || !isObject(accessResponse.data);
   const canRequestCancellation = !accessUnavailable && accessResponse?.data.self_can_request === true;
   const stateNote = requestStateNote(request.state, canRequestCancellation);
 
@@ -98,11 +98,11 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
         <h2>سجل استبدال الإجازة</h2>
         <ul className="record-list">{data.correction_links.map((link, index) => {
           if (!isObject(link) || !isUuid(link.original_request_id) || !isUuid(link.replacement_request_id)
-            || typeof link.reason !== 'string') return null;
-          const original = link.original_request_id.toLowerCase() === request.id.toLowerCase();
+            || typeof link.reason !== 'string' || typeof link.created_at !== 'string') return null;
+          const original = link.original_request_id === request.id;
           return <li className="record-card" key={index}>
             <p>{link.reason}</p>
-            <p className="record-meta">وقت التصحيح: {isInstant(link.created_at) ? <bdi>{formatInstant(link.created_at)}</bdi> : 'غير متاح الآن'}</p>
+            <p className="record-meta">وقت التصحيح: <bdi>{formatInstant(link.created_at)}</bdi></p>
             <PendingLink href={`/tenant/${tenantId}/me/leave/${original ? link.replacement_request_id : link.original_request_id}`}>
               {original ? 'عرض الطلب البديل' : 'عرض الطلب الأصلي'}
             </PendingLink>
@@ -191,20 +191,15 @@ function requestStateNote(state: string, canRequestCancellation: boolean): strin
 
 function readRequest(data: Record<string, unknown>): RequestDetail | null {
   if (!isUuid(data.id) || typeof data.leave_type_name !== 'string' || typeof data.start_date !== 'string'
-    || typeof data.end_date !== 'string' || !isDate(data.start_date) || !isDate(data.end_date)
-    || data.start_date > data.end_date || typeof data.total_units !== 'number'
-    || !Number.isFinite(data.total_units) || data.total_units <= 0
-    || typeof data.is_half_day !== 'boolean' || !isRequestState(data.state)
-    || typeof data.version !== 'number' || !Number.isInteger(data.version)
-    || data.version < 1 || data.version > 2147483647
-    || (data.request_source !== 'employee' && data.request_source !== 'hr')
-    || !(data.submitted_at === null || isInstant(data.submitted_at))
+    || typeof data.end_date !== 'string' || typeof data.total_units !== 'number'
+    || typeof data.is_half_day !== 'boolean' || typeof data.state !== 'string'
+    || typeof data.version !== 'number' || typeof data.request_source !== 'string'
+    || !(data.submitted_at === null || typeof data.submitted_at === 'string')
     || !(data.reason === null || typeof data.reason === 'string')
     || !Array.isArray(data.days)) return null;
   const days: RequestDay[] = [];
   for (const day of data.days) {
     if (!isObject(day) || typeof day.date !== 'string' || typeof day.units !== 'number'
-      || !isDate(day.date) || !Number.isFinite(day.units) || day.units < 0 || day.units > 1
       || typeof day.eligible !== 'boolean' || typeof day.is_weekly_rest !== 'boolean'
       || !isDayCountBasis(day.day_count_basis)
       || !(day.holiday_name === null || typeof day.holiday_name === 'string')) return null;
