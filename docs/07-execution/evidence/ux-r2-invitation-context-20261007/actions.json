@@ -1,0 +1,351 @@
+{
+  "scope": "Actual source actions with SDK stubs; not provider/SQL/runtime acceptance",
+  "redirectStatementsChanged": 5,
+  "cases": [
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "setup",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "no-session",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "invalid-reference",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": []
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "invalid-issuance",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": []
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "success",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation",
+        "update",
+        "admin",
+        "record_tenant_admin_password_readiness"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "sdk-thrown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "setup",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "no-session",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "invalid-reference",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": []
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "invalid-issuance",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": []
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "success",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "sdk-thrown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "validation-error",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "validation-not-required",
+      "contextChanged": true,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "short-password",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": []
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "update-error",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation",
+        "update"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "missing-admin",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation",
+        "update",
+        "admin"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "marker-error",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation",
+        "update",
+        "admin",
+        "record_tenant_admin_password_readiness"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "validation-thrown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "setInvitationPasswordAction",
+      "scenario": "update-thrown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "validate_tenant_admin_invitation",
+        "update"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "issuer_authority_lost",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "identity_mismatch",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "expired",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "stale_issuance",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "password_required",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "identity_unverified",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unknown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unconfirmed-null",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unconfirmed-[]",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unconfirmed-\"bad\"",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unconfirmed-{}",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "unconfirmed-{\"tenant_id\":\"invalid\"}",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    },
+    {
+      "action": "acceptInvitationAction",
+      "scenario": "accept-thrown",
+      "contextChanged": false,
+      "status": "pass",
+      "calls": [
+        "client",
+        "user",
+        "accept_tenant_admin_invitation"
+      ]
+    }
+  ]
+}

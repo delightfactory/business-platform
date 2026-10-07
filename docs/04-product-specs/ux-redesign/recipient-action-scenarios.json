@@ -133,9 +133,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-01",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -148,7 +148,7 @@
       "inputClass": "invalid-reference-or-short-password",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -158,9 +158,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-02",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -173,7 +173,7 @@
       "inputClass": "missing-client",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -183,9 +183,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-03",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -198,7 +198,7 @@
       "inputClass": "no-session",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -208,9 +208,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-04",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -223,7 +223,7 @@
       "inputClass": "validation-error-or-not-password-required",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -233,9 +233,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-05",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -248,7 +248,7 @@
       "inputClass": "password-update-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -258,9 +258,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-06",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -273,7 +273,7 @@
       "inputClass": "admin-client-missing",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -283,9 +283,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-07",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -298,7 +298,7 @@
       "inputClass": "readiness-record-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -308,9 +308,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-08",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -323,7 +323,7 @@
       "inputClass": "readiness-record-success",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -333,9 +333,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-PASSWORD-09",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#setInvitationPasswordAction"
       ],
@@ -348,7 +348,7 @@
       "inputClass": "SDK-throws",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -358,9 +358,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-01",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -373,7 +373,7 @@
       "inputClass": "invalid-reference",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -383,9 +383,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-02",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -398,7 +398,7 @@
       "inputClass": "missing-client",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -408,9 +408,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-03",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -423,7 +423,7 @@
       "inputClass": "no-session",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -433,9 +433,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-04",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -448,7 +448,7 @@
       "inputClass": "issuer-authority-lost",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -458,9 +458,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-05",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -473,7 +473,7 @@
       "inputClass": "identity-mismatch",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -483,9 +483,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-06",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -498,7 +498,7 @@
       "inputClass": "expired",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -508,9 +508,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-07",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -523,7 +523,7 @@
       "inputClass": "stale-issuance",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -533,9 +533,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-08",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -548,7 +548,7 @@
       "inputClass": "password-required",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -558,9 +558,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-09",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -573,7 +573,7 @@
       "inputClass": "identity-unverified",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -583,9 +583,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-10",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -598,7 +598,7 @@
       "inputClass": "other-RPC-error",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -608,9 +608,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-11",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -623,7 +623,7 @@
       "inputClass": "null-array-or-nonobject-result",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -633,9 +633,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-12",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -648,7 +648,7 @@
       "inputClass": "invalid-returned-tenant",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -658,9 +658,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-13",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -673,7 +673,7 @@
       "inputClass": "object-valid-tenant",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -683,9 +683,9 @@
     },
     {
       "id": "R2-ACTION-ADMIN-ACCEPT-14",
-      "sourceSnapshot": "3934521f0116a0204d811760f72dd743e3a53be6",
+      "sourceSnapshot": "working-tree:codex/ux-r2-invitation-context",
       "sourceFile": "src/app/auth/invitations/accept/actions.ts",
-      "sourceSha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7",
+      "sourceSha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944",
       "sourceIds": [
         "ACTION:src/app/auth/invitations/accept/actions.ts#acceptInvitationAction"
       ],
@@ -698,7 +698,7 @@
       "inputClass": "SDK-throws",
       "expectedAuthoritativeOutcome": "Use source-specific outcome table in recipient-actions-spec.md; a redirect alone is not acceptance proof",
       "visibleFeedback": "Truthful source-specific outcome; no success from query or unreadable mutation result",
-      "retainedContext": "Safe reference/issuance/intent only when current source retains it; never persist password/token; proposed context fixes need review",
+      "retainedContext": "Validated id+issuance retained on setup/no-session/unavailable redirects; unknown-result redirects deliberately unchanged. No password/token persistence. See admin-invitation-context-slice.md; partitions remain draft.",
       "recovery": "Use source-specific recovery contract; no automatic or blind mutation retry after unknown outcome",
       "status": "source-partition-draft",
       "runtimeStatus": "not-run",
@@ -2356,5 +2356,6 @@
       "reviewer": "Codex source mapping; Claude contribution interpreted separately",
       "exclusions": "Outbound issuance/resend/email delivery and full provider/SQL/role/runtime qualification not included"
     }
-  ]
+  ],
+  "maintenanceAmendment": "admin-invitation-context-slice.md; mixed source snapshots explicitly versioned per case"
 }

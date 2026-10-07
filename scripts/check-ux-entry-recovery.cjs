@@ -51,12 +51,22 @@ async function render(kind, options = {}, query = {}, baseline = false) {
   for (const state of unknowns) for (const kind of ['callback', 'accept']) await check(`${kind}-UNKNOWN-${state ?? 'none'}`, kind, {}, { state }, html => assert.match(html, kind === 'callback' ? /تعذر التحقق من رابط الدعوة/ : /تعذر التحقق من الدعوة/));
   for (const [state, expected] of [['invalid', 'غير مكتمل'], ['link-expired', 'الأيام السبعة'], ['setup', 'أعد المحاولة لاحقًا']]) await check(`CALLBACK-${state}`, 'callback', {}, { state }, html => { assert.match(html, new RegExp(expected)); assert.match(html, /role="alert"/); assert.doesNotMatch(html, /name="tokenHash"/); });
   await check('CALLBACK-VALID', 'callback', {}, { token_hash: 'synthetic_link_hash', type: 'invite', invitation_id: id, issuance: '1' }, html => { assert.match(html, /التحقق والمتابعة/); assert.match(html, /name="tokenHash"/); });
-  for (const [state, expected] of [['invalid', 'الرابط الأخير'], ['expired', 'انتهت صلاحية الدعوة'], ['superseded', 'رابط أحدث'], ['unavailable', 'الدعوة أُلغيت'], ['identity', 'بريد آخر'], ['unverified', 'تأكيد البريد'], ['issuer-lost', 'صلاحية مُصدر الدعوة'], ['accept-failed', 'لم تُنشأ الشركة'], ['password', 'ثمانية أحرف'], ['password-marker-failed', 'حُفظت كلمة المرور'], ['link-expired', 'الأيام السبعة'], ['no-session', 'انتهت جلسة الدعوة'], ['setup', 'إعداد خدمة الحسابات']]) await check(`ACCEPT-${state}`, 'accept', {}, { state }, html => { assert.match(html, /رابط الدعوة غير صالح/); assert.match(html, new RegExp(expected)); });
+  for (const [state, expected] of [['invalid', 'الرابط الأخير'], ['expired', 'انتهت صلاحية الدعوة'], ['superseded', 'رابط أحدث'], ['unavailable', 'تعذر التحقق من الدعوة في الخطوة السابقة'], ['identity', 'بريد آخر'], ['unverified', 'تأكيد البريد'], ['issuer-lost', 'صلاحية مُصدر الدعوة'], ['accept-failed', 'تعذر التأكد من إنشاء الشركة'], ['password', 'ثمانية أحرف'], ['password-marker-failed', 'حُفظت كلمة المرور'], ['link-expired', 'الأيام السبعة'], ['no-session', 'انتهت جلسة الدعوة'], ['setup', 'إعداد خدمة الحسابات']]) await check(`ACCEPT-${state}`, 'accept', {}, { state }, html => { assert.match(html, /رابط الدعوة غير صالح/); assert.match(html, new RegExp(expected)); });
   for (const validation of ['ready', 'password_required', 'identity_mismatch', 'unavailable']) await check(`ACCEPT-VALIDATION-${validation}`, 'accept', { data: validation }, { id, issuance: '1' }, html => {
     if (validation === 'ready') { assert.match(html, /تأكيد الدعوة وإنشاء الشركة/); assert.doesNotMatch(html, /name="password"/); }
     else if (validation === 'password_required') assert.match(html, /name="password"/);
     else assert.doesNotMatch(html, /تأكيد الدعوة وإنشاء الشركة/);
   });
+  for (const state of ['setup', 'no-session', 'unavailable']) {
+    for (const validation of ['ready', 'password_required', 'identity_mismatch', 'unavailable']) await check(`ACCEPT-RETAINED-${state}-${validation}`, 'accept', { data: validation }, { id, issuance: '1', state }, html => {
+      assert.doesNotMatch(html, /الدعوة أُلغيت/);
+      if (validation === 'ready') { assert.match(html, /تأكيد الدعوة وإنشاء الشركة/); assert.match(html, /name="invitationId"/); }
+      else if (validation === 'password_required') { assert.match(html, /name="password"/); assert.doesNotMatch(html, /تأكيد الدعوة وإنشاء الشركة/); }
+      else assert.doesNotMatch(html, /name="password"|تأكيد الدعوة وإنشاء الشركة/);
+    });
+    await check(`ACCEPT-RETAINED-${state}-NO-USER`, 'accept', { user: false }, { id, issuance: '1', state }, html => { assert.match(html, /^REDIRECT:\/auth\/login\?next=/); assert.match(decodeURIComponent(html), new RegExp(id)); });
+    await check(`ACCEPT-RETAINED-${state}-NO-CLIENT`, 'accept', { setup: false }, { id, issuance: '1', state }, html => { assert.match(html, /إعداد الاتصال غير مكتمل/); assert.doesNotMatch(html, /name="password"|تأكيد الدعوة وإنشاء الشركة/); });
+  }
   const employeeReady = await check('EMPLOYEE-READY', 'employee', { data: { state: 'activated', password_ready: true } }, { intent_id: id }, html => { assert.match(html, /المتابعة إلى مساحة العمل/); assert.doesNotMatch(html, /name="password"/); });
   await check('EMPLOYEE-READY-FORGED-COPY', 'employee', { data: { state: 'activated', password_ready: true } }, { intent_id: id, state: 'password-ready' }, html => { assert.doesNotMatch(html, /تم تحديث كلمة المرور/); assert.match(html, /تم تأكيد جاهزية كلمة المرور/); });
   for (const state of [undefined, 'password-ready', 'unknown', 'limit-full']) await check(`EMPLOYEE-UNREADY-${state ?? 'none'}`, 'employee', { data: { state: 'activated', password_ready: false } }, { intent_id: id, state }, html => { assert.match(html, /name="password"/); assert.doesNotMatch(html, /المتابعة إلى مساحة العمل/); });

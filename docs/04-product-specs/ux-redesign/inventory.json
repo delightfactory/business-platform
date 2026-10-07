@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "0500508d69e87aa2b3075df5c471f01518b10dca",
+  "sourceHead": "c19f054d1353de1b7f1bb885bf2d0206c9cb427a",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -35,12 +35,12 @@
     {
       "file": "src/app/auth/invitations/accept/actions.ts",
       "phase": "R2",
-      "sha256": "23691c76b427490bbc0a544cfd92009f6882bf3579977d2d98154930a023bef7"
+      "sha256": "e8963946f2b842681a680c2f8706d1392675979eaacb03d6a91d3c86449e4944"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "c763dc6ee639012d8f8e466797a5b692711de4618aeb9a276b22a238ad7352d6"
+      "sha256": "79f6a84ae0fcbaebc324092b384ed99124cf62b458252f3ae15cfc570559adaf"
     },
     {
       "file": "src/app/auth/invitations/callback/actions.ts",
@@ -3380,7 +3380,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/invitations/accept/actions.ts:18:978",
+      "id": "RPC:src/app/auth/invitations/accept/actions.ts:18:1138",
       "file": "src/app/auth/invitations/accept/actions.ts",
       "line": 18,
       "phase": "R2",
@@ -3390,7 +3390,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/invitations/accept/actions.ts:27:1647",
+      "id": "RPC:src/app/auth/invitations/accept/actions.ts:27:1887",
       "file": "src/app/auth/invitations/accept/actions.ts",
       "line": 27,
       "phase": "R2",
@@ -3400,7 +3400,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/invitations/accept/actions.ts:44:2654",
+      "id": "RPC:src/app/auth/invitations/accept/actions.ts:44:3054",
       "file": "src/app/auth/invitations/accept/actions.ts",
       "line": 44,
       "phase": "R2",
@@ -6999,7 +6999,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5534",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5639",
       "file": "src/app/auth/invitations/accept/page.tsx",
       "line": 89,
       "tag": "form",
@@ -7009,7 +7009,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5563",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:89:5668",
       "file": "src/app/auth/invitations/accept/page.tsx",
       "line": 89,
       "tag": "button",

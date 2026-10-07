@@ -12,14 +12,14 @@ export async function setInvitationPasswordAction(formData: FormData) {
     redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=password`);
   }
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect('/auth/invitations/accept?state=setup');
+  if (!supabase) redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=setup`);
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/auth/invitations/accept?state=no-session');
+  if (!user) redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=no-session`);
   const { data: validation, error: validationError } = await supabase.rpc('validate_tenant_admin_invitation', {
     p_invitation_id: invitationId,
     p_issuance: Number(issuance),
   });
-  if (validationError || validation !== 'password_required') redirect('/auth/invitations/accept?state=unavailable');
+  if (validationError || validation !== 'password_required') redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=unavailable`);
   const { error } = await supabase.auth.updateUser({ password });
   if (error) redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${issuance}&state=password`);
   const admin = createSupabaseAdminClient();
@@ -38,9 +38,9 @@ export async function acceptInvitationAction(formData: FormData) {
   const issuance = field(formData, 'issuance');
   if (!isUuid(invitationId) || !/^\d+$/.test(issuance)) redirect('/auth/invitations/accept?state=invalid');
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect('/auth/invitations/accept?state=setup');
+  if (!supabase) redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=setup`);
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/auth/invitations/accept?state=no-session');
+  if (!user) redirect(`/auth/invitations/accept?id=${encodeURIComponent(invitationId)}&issuance=${encodeURIComponent(issuance)}&state=no-session`);
   const { data: result, error } = await supabase.rpc('accept_tenant_admin_invitation', {
     p_invitation_id: invitationId,
     p_issuance: Number(issuance),
