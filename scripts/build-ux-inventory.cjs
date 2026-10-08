@@ -7,7 +7,7 @@ const { execFileSync } = require('node:child_process');
 const ts = require('typescript');
 const root = process.cwd();
 const output = path.join(root, 'docs/04-product-specs/ux-redesign');
-const digest = full => crypto.createHash('sha256').update(fs.readFileSync(full,'utf8').replace(/\r\n/g,'\n')).digest('hex');
+const digest = full => crypto.createHash('sha256').update(/\.png$/i.test(full) ? fs.readFileSync(full) : fs.readFileSync(full,'utf8').replace(/\r\n/g,'\n')).digest('hex');
 function walk(dir) { return fs.readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(dir,e.name)) : [path.join(dir,e.name)]); }
 function phase(file) {
   if (file.includes('/operator/')) return 'R3';
@@ -66,7 +66,7 @@ for (const {full,file} of files) {
 }
 const known=['R1','R2','R3','R4','R5','R6','R7','R8'];
 result.requestBoundaries=['proxy.ts','next.config.ts'].map(file=>({id:`REQUEST:${file}`,file,phase:'R1',reviewPhases:['R1','R2'],sha256:digest(path.join(root,file))}));
-result.fingerprintPolicy='sha256-utf8-normalized-LF';
+result.fingerprintPolicy='sha256-utf8-normalized-LF; PNG raw bytes';
 for(const list of [result.files,result.routes,result.boundaries,result.serverActions,result.rpcCalls,result.formControls]) for(const item of list) if(!known.includes(item.phase)) throw Error(`Unassigned source ${item.file}`);
 result.summary={sourceFiles:result.files.length,pages:result.routes.filter(r=>r.kind==='page').length,endpoints:result.routes.filter(r=>r.kind==='endpoint').length,boundaries:result.boundaries.length,serverActions:result.serverActions.length,rpcCallSites:result.rpcCalls.length,uniqueLiteralRpcs:new Set(result.rpcCalls.map(r=>r.name).filter(Boolean)).size,dynamicRpcSites:result.rpcCalls.filter(r=>!r.name).length,formControls:result.formControls.length,sourceAssignmentComplete:true,semanticScenarioReviewComplete:false,executionCoverageComplete:false};
 fs.mkdirSync(output,{recursive:true});fs.writeFileSync(path.join(output,'inventory.json'),JSON.stringify(result,null,2)+'\n');

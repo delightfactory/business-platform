@@ -11,7 +11,8 @@ const items = ['routes','boundaries','serverActions','rpcCalls','formControls','
 const unique = new Set(items.map(item => item.id));
 if (unique.size !== items.length) throw Error('Duplicate inventory IDs');
 for (const file of [...inventory.files, ...inventory.requestBoundaries]) {
-  const digest = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, file.file),'utf8').replace(/\r\n/g,'\n')).digest('hex');
+  const full = path.join(root, file.file);
+  const digest = crypto.createHash('sha256').update(/\.png$/i.test(full) ? fs.readFileSync(full) : fs.readFileSync(full,'utf8').replace(/\r\n/g,'\n')).digest('hex');
   if (digest !== file.sha256) throw Error(`Source drift: ${file.file}`);
 }
 const reviews = new Map(register.items.map(item => [item.id,item]));

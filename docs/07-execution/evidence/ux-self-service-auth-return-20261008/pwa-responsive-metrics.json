@@ -1,0 +1,101 @@
+{
+  "light": [
+    {
+      "canvas": "rgb(242, 243, 241)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 390,
+      "theme": "light",
+      "width": 390
+    },
+    {
+      "canvas": "rgb(242, 243, 241)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 768,
+      "theme": "light",
+      "width": 768
+    },
+    {
+      "canvas": "rgb(242, 243, 241)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 1366,
+      "theme": "light",
+      "width": 1366
+    }
+  ],
+  "dark": [
+    {
+      "canvas": "rgb(13, 18, 17)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "canvas": "rgb(13, 18, 17)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "canvas": "rgb(13, 18, 17)",
+      "controls": [
+        {
+          "height": 44,
+          "text": "إعادة تحميل الصفحة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى المنصة"
+        }
+      ],
+      "scroll": 1366,
+      "width": 1366
+    }
+  ],
+  "nativeFallback": "server stopped, original /auth/login retained",
+  "preferenceRestored": "dark"
+}

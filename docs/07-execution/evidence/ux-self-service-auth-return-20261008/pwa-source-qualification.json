@@ -1,0 +1,132 @@
+{
+  "cases": [
+    {
+      "label": "POST",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "RPC",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "RSC",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "private-data",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "signed-url",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "external",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "authorization",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "range",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "api-navigation",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "export-navigation",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "pdf-navigation",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "callback-navigation",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "app-chunk",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "encoded-public",
+      "result": "PASS",
+      "respondWith": false
+    },
+    {
+      "label": "native-navigation-status-200",
+      "result": "PASS"
+    },
+    {
+      "label": "native-navigation-status-500",
+      "result": "PASS"
+    },
+    {
+      "label": "native-navigation-status-302",
+      "result": "PASS"
+    },
+    {
+      "label": "network-failure-public-fallback",
+      "result": "PASS"
+    },
+    {
+      "label": "cache-unavailable-truthful503",
+      "result": "PASS"
+    },
+    {
+      "label": "cache-unavailable-truthful503",
+      "result": "PASS"
+    },
+    {
+      "label": "fixed-public-hit",
+      "result": "PASS"
+    },
+    {
+      "label": "fixed-public-miss-one-native-fetch",
+      "result": "PASS"
+    },
+    {
+      "label": "nine-public-byte-integrity-reload-omit",
+      "result": "PASS"
+    },
+    {
+      "label": "only-owned-stale-entry-pruned",
+      "result": "PASS"
+    },
+    {
+      "label": "install-rejection-not-swallowed",
+      "result": "PASS",
+      "nativeAtomicity": "not proven by harness"
+    },
+    {
+      "label": "retirement-no-fetch-only-own-cache-unregister",
+      "result": "PASS"
+    },
+    {
+      "label": "manifest-icon-dimensions",
+      "result": "PASS"
+    }
+  ],
+  "passed": 27,
+  "sourceHash": "e5556e3a6027e9deb26613d31ede3085b8e5d605cb364a3f4b528d4be2fd4a44",
+  "scope": "Actual worker source with controlled native Request/Response plus mock Cache/fetch events; no native SW/Cache/SRI/device/provider acceptance",
+  "native": "OPEN",
+  "fullPwa": "OPEN"
+}

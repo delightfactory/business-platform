@@ -1,0 +1,95 @@
+{
+  "helper": "installed unstable_doesMiddlewareMatch; Node AsyncLocalStorage bootstrap",
+  "cases": [
+    {
+      "url": "/sw.js",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/offline.html",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/manifest.webmanifest",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/offline.css",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/offline.js",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/tokens.css",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/cairo-400.woff2",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/cairo-600.woff2",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/pwa/Cairo-OFL.txt",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "url": "/tenant/x",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/auth/login",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/auth/callback",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/tenant/x/people/y/preview",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/tenant/x/payroll/reports/export",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/tenant/x/payroll/output/export",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/pwa/private",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/sw.js/private",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "url": "/offline.html/private",
+      "expected": true,
+      "actual": true
+    }
+  ]
+}

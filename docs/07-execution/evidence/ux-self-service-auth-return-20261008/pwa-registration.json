@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"scope\":\"http://127.0.0.1:3617/\",\"active\":\"activated\",\"controlled\":true,\"publicPaths\":[\"/offline.html\",\"/pwa/offline.css\",\"/pwa/offline.js\",\"/pwa/tokens.css\",\"/pwa/cairo-400.woff2\",\"/pwa/cairo-600.woff2\",\"/pwa/icon-192.png\",\"/pwa/icon-512.png\",\"/pwa/maskable-512.png\"],\"title\":\"منصة الأعمال | أساس التطوير\",\"loginVisible\":true}"
+  }
+}

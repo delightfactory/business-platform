@@ -1,7 +1,12 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c8d454ae58387d6462521858a58ba4dbbba5ba2a",
+  "sourceHead": "c5c388bb56d6a304eaee7da1318945a10a79c572",
   "files": [
+    {
+      "file": "src/app/apple-icon.png",
+      "phase": "R1",
+      "sha256": "6eff45802265a21dc724b31f6ced596e968b9b27832b84797b3601687bed9d4b"
+    },
     {
       "file": "src/app/auth/actions.ts",
       "phase": "R2",
@@ -90,12 +95,17 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "2117263c5c931b52049186d9be095bedc74a3358a0c1c1a4b2ed9d8b2c40a131"
+      "sha256": "fae5c74b7a474135f3b6c7921a6fefda720bb61da4140551bf0e9bc48b182d06"
     },
     {
       "file": "src/app/layout.tsx",
       "phase": "R1",
-      "sha256": "8cc71260a70c4ec0da745954d5089d47b0d55f913ffd307e928a087d16473178"
+      "sha256": "546bcc67a7e04502044bee5b2300a61cded04351dd3d3d4441e516851332c03d"
+    },
+    {
+      "file": "src/app/manifest.ts",
+      "phase": "R1",
+      "sha256": "ec5e83d5ebb4e5993fabb18211631f90c9da45160785910b3644df4b82d91d6f"
     },
     {
       "file": "src/app/operator/actions.ts",
@@ -1366,6 +1376,11 @@
       "file": "src/components/feedback-toast.tsx",
       "phase": "R1",
       "sha256": "f37ef70a08c1f78ef8f027b202e0c3f18a92c16de9d7ec175eb15dc8c9652d66"
+    },
+    {
+      "file": "src/components/pwa-foundation.tsx",
+      "phase": "R1",
+      "sha256": "e00c5f6fd633463b6264bbbdf5f53b20bb186fbd75f286de7702075560f4b79e"
     },
     {
       "file": "src/components/submit-button.tsx",
@@ -19737,7 +19752,7 @@
         "R1",
         "R2"
       ],
-      "sha256": "7e7a7a30e7e3f2c2d91ef89dd6a56245f31aa63ac45171dd4c84443baebdc609"
+      "sha256": "a085a8a61039a17ec1978956c633684341129c86be0a41a0e767a5d34ec4cf09"
     },
     {
       "id": "REQUEST:next.config.ts",
@@ -19747,12 +19762,12 @@
         "R1",
         "R2"
       ],
-      "sha256": "efb21c4d06b216e7fafd6716d2ce1a7ec65497f86b2d96068581c7eef4a63157"
+      "sha256": "9b429f6df19b88df8c9ba033b880e0e662c9ddb7aa2a41168381179a7c433c69"
     }
   ],
-  "fingerprintPolicy": "sha256-utf8-normalized-LF",
+  "fingerprintPolicy": "sha256-utf8-normalized-LF; PNG raw bytes",
   "summary": {
-    "sourceFiles": 290,
+    "sourceFiles": 293,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,

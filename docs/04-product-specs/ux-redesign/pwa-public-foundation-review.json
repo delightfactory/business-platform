@@ -1,0 +1,182 @@
+{
+  "baseline": "c5c388bb56d6a304eaee7da1318945a10a79c572",
+  "scope": "Original plan public PWA foundation, not full PWA/R0-R8 closure",
+  "hashes": [
+    {
+      "file": ".gitattributes",
+      "sha256": "eaacde668bb246c76d44e81f3fbd9a51b9ad7b9980d099a950c99d90e3c6184c"
+    },
+    {
+      "file": "proxy.ts",
+      "sha256": "ab70156be3d1760af17d7d7b66afb5a810d58d0b49225a880b3343dc99f0f843"
+    },
+    {
+      "file": "next.config.ts",
+      "sha256": "fba54b56431b6cb538b5fe8cd32c1316a792789bc8a1f58aeb84fee84d4df1fc"
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "sha256": "c1b6619cdcdbb50c18471914e53bcf337846750556b1d5efd86f11b31beb3136"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "e1993c395fef862adc02732c516e7b1eb50cd5a9fe0af8969c982662d0784776"
+    },
+    {
+      "file": "src/app/manifest.ts",
+      "sha256": "ec5e83d5ebb4e5993fabb18211631f90c9da45160785910b3644df4b82d91d6f"
+    },
+    {
+      "file": "src/app/apple-icon.png",
+      "sha256": "6eff45802265a21dc724b31f6ced596e968b9b27832b84797b3601687bed9d4b"
+    },
+    {
+      "file": "src/components/pwa-foundation.tsx",
+      "sha256": "e00c5f6fd633463b6264bbbdf5f53b20bb186fbd75f286de7702075560f4b79e"
+    },
+    {
+      "file": "public/sw.js",
+      "sha256": "e5556e3a6027e9deb26613d31ede3085b8e5d605cb364a3f4b528d4be2fd4a44"
+    },
+    {
+      "file": "public/offline.html",
+      "sha256": "ba80c5bb132665da1497dc3efe2247e7fd36a7ae9b812fa7b2eaecf1af24aa5b"
+    },
+    {
+      "file": "public/pwa/cairo-400.woff2",
+      "sha256": "1b36945f5f6a3d1fed3783999b887d0c56cfd66a41a04212a28aa79abbdff0e1"
+    },
+    {
+      "file": "public/pwa/cairo-600.woff2",
+      "sha256": "621909d2e4c8720d3af3a74028556956d343baaa5be48c47a0ad406607fc6515"
+    },
+    {
+      "file": "public/pwa/Cairo-OFL.txt",
+      "sha256": "aa2b13bf0770c59a7fb7a3b793a7df5162c9cb5ad540ec81b0c0c1385946845d"
+    },
+    {
+      "file": "public/pwa/icon-192.png",
+      "sha256": "5dbe6e8cba903ce4093f83f631886553a3ba598fa75676a45c6edeaac3ff0660"
+    },
+    {
+      "file": "public/pwa/icon-512.png",
+      "sha256": "1654a6bde840f10ea574b23db285012d0692d53bbedd495755ebe61b6bf550a9"
+    },
+    {
+      "file": "public/pwa/maskable-512.png",
+      "sha256": "964f7317eaddec24d53e4a0577ca0676a33c87a8e2d4bd05bf080dcb2ca48167"
+    },
+    {
+      "file": "public/pwa/offline.css",
+      "sha256": "08380a032e01fb2fc5c79473fb344c9c274509455ea72c7c37cb2bf736c69e54"
+    },
+    {
+      "file": "public/pwa/offline.js",
+      "sha256": "2ee3c8930a05463414f0006e7b6b481a4b85facfe930a03e1a7c0cc27c769df6"
+    },
+    {
+      "file": "public/pwa/tokens.css",
+      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
+    },
+    {
+      "file": "scripts/build-ux-inventory.cjs",
+      "sha256": "9e49fa59c970f801147e688b0cd9622fcf44ecc7cdb8b6975ada7bfe3738ea67"
+    },
+    {
+      "file": "scripts/verify-ux-coverage.cjs",
+      "sha256": "2bfd93048b6188bb330241d3a1c5c189356cca7a01bc547d251d90111d210c52"
+    }
+  ],
+  "controlledWorkerCases": 27,
+  "nextProxyCases": 18,
+  "publicHttpCases": 13,
+  "build": {
+    "session": 54478,
+    "exitCode": 0,
+    "reason": "Exact public Proxy exclusions invalidated preceding production build"
+  },
+  "lint": "affected PASS",
+  "codex": {
+    "source": "ACCEPT scoped public foundation",
+    "visual": "MATCH WITH ACCEPTED DEVIATIONS for depicted public recovery samples only; no exact offline reference screen",
+    "simplicity": "one primary explicit retry, existing URL retained; no measured before/after baseline"
+  },
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# Public PWA candidate: second source review and scoped visual review\n\nFollowing your instruction, I only read the five images. I made no edits and ran no commands. The source review covers only the code you pasted, and the visual review covers only the five images.\n\n## Source verdict: bounded SOURCE ACCEPT, no must-fix\n\n**F1 (Apple icon) is resolved.**\n- The precache now has exactly nine public entries.\n- The `activate` prune removes the old `/apple-icon.png` entry from `bp-public-v1`, because that URL is no longer in `urls`.\n- `/apple-icon.png` still skips the auth session refresh through the existing `.png` exclusion, so the Apple metadata link behaves as before.\n\n**V1 (proxy matcher) is resolved.**\n- The negative lookahead sits right after the leading `/`. Each `$`-anchored exclusion therefore matches only the exact root path.\n- Effects of that:\n  - `/sw.js`, `/offline.html` and `/manifest.webmanifest` skip session refresh. Nested look-alikes such as `/x/offline.html` do not.\n  - Under `/pwa/`, only the four named files, the two Cairo fonts and `Cairo-OFL.txt` are excluded. The icons are covered by the existing image rule.\n  - Callbacks and every private path still go through `updateSession`.\n- Anonymous install requests (`credentials: 'omit'`) can no longer be redirected or rewritten, so the SRI check and atomic `addAll` only ever see the real public bytes.\n- Your 18 installed-matcher cases are the evidence for how Next compiles this pattern. I'm relying on them rather than re-deriving it.\n\n**V2 (export routes) is resolved for the current routes.**\n- The two real payroll export endpoints are excluded from interception.\n- The employee preview is a non-navigation JSON request, so the worker never calls `respondWith` and nothing is cached.\n- One residual note, not blocking: any new download route has to match the bypass regex or it will be streamed through the worker. Responses still pass through unchanged and uncached, so this is about the claim, not about safety.\n\n**SRI portability:** pinning LF line endings in `.gitattributes` is the right fix. It stops Windows checkouts from changing the hashed bytes.\n\n**Recovery behaviour matches the source.**\n- The fallback appears only when the fetch is rejected.\n- The URL stays the same.\n- Nothing reloads automatically and nothing is submitted.\n- The only retry is the explicit button, which calls `location.reload()`.\n- You were right not to treat tab-offline emulation as evidence of the fallback, since that reload never reached a fetch failure. The stopped-server test is the valid sample.\n\n## Visual verdict (scoped to these three samples): ACCEPT, no must-fix\n\n**Palette and themes match Concept C.**\n- Light theme matches the reference: off-white background, white card with a hairline border, teal primary button with light text, teal accent link.\n- Dark theme also matches: near-black background, slightly raised card with a subtle border. The mint button with dark text is the same treatment as the dark reference's `قرّر الآن` / `ابدأ الحل` buttons.\n\n**Control hierarchy is correct.**\n- There is one filled primary action (`إعادة تحميل الصفحة`) and one secondary underlined link (`العودة إلى المنصة`), matching the reference's single primary button per card.\n- The button is at least 44 px and RTL-aligned to the start edge.\n\n**Typography and layout are consistent.**\n- Cairo renders in all three samples, from the self-hosted fonts.\n- The heading is larger than the body text, body line-height is comfortable, and spacing inside the card is consistent at 390 and 1366.\n- 390 width has no overflow and the gutters are about 16 px.\n- 1366 uses a centred, bounded column that reads well.\n- The `تعذّر الوصول إلى المنصة` title appears in both the page title and the heading, as intended.\n\n**Observed deviations, within accepted scope and not must-fix:**\n- The heading is lighter than the reference's bold headings because only the 400 and 600 Cairo weights are shipped. This falls under the accepted Cairo deviation.\n- The brand line is plain teal text, without the reference's TE badge and company line.\n- `أخرى.` wraps onto its own line at 390.\n\n## Still OPEN\n\n- Physical install on iOS and Android, and the Apple touch icon in practice\n- Native atomic install failure, and WebKit's handling of SRI\n- Real private-role journeys\n- Per-task offline gating\n- Profile hint\n- Original `_next/static` cache\n- Other dark-theme widths (only dark at 390 was captured)\n- Full PWA and R0–R8 closure\n\nThe controlled and native public samples cover only what's described above and shouldn't be counted as wider source coverage. Recovery is one observed explicit retry, and there is no measured before/after baseline.",
+    "sessionId": "55689496-22a4-450a-9a46-9cc7e1cd9c8c"
+  },
+  "native": {
+    "firstLoadControlled": false,
+    "activatedPublicAssets": 9,
+    "subsequentNavigationControlled": true,
+    "tabOfflineBanner": "observed",
+    "emulatedOfflineReloadFallback": "NOT PROVEN; native worker fetch not interrupted by tab emulation",
+    "actualStoppedServerFallback": "PASS, original /auth/login URL retained, public fonts/style loaded",
+    "reconnect": "server restored; fallback stayed until explicit retry then actual login, no form submission",
+    "lightWidths": [
+      390,
+      768,
+      1366
+    ],
+    "darkDepictedWidth": 390,
+    "controlsMinHeight": 44,
+    "keyboardOutline": 2.8
+  },
+  "cleanup": {
+    "ownedSessions": [
+      43473,
+      71663,
+      17865
+    ],
+    "terminal": true,
+    "port3617Listener": false,
+    "ownedTab113": "closed",
+    "ownRegistration": "unregistered",
+    "ownCache": "bp-public-v1 deleted only",
+    "viewportAndMedia": "reset",
+    "testThemePreference": "original dark value restored"
+  },
+  "coverage": {
+    "sourceFiles": 293,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 108,
+    "rpcCallSites": 349,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 7,
+    "formControls": 1184,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false,
+    "registerItems": 1730,
+    "sourceReviewedPreserved": 25,
+    "promotions": 0,
+    "publicAssetFingerprints": "above; outside src AST denominator",
+    "pngFingerprint": "raw bytes (text still normalized LF)"
+  },
+  "open": [
+    "original /_next/static cache design/acceptance",
+    "precise per-task offline submit gating and Attendance exception",
+    "employee profile install hint",
+    "real installation/mobile devices/WebKit SRI/native failed-install atomicity",
+    "actual private roles/financial/full journeys",
+    "full semantic coverage/R0-R8"
+  ],
+  "deviations": [
+    "Existing Cairo/control/radius contract preserved",
+    "No exact offline demo screen: shared visual language only",
+    "Generic public brand icon/text instead of tenant identity",
+    "Truthful unreachable wording includes provider/service failure; no fabricated offline diagnosis"
+  ],
+  "retirement": "Evidence payload only, not deployed; separately authorised release required"
+}

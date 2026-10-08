@@ -224,6 +224,7 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .today-sections .tenant-home-tasks { margin-top: 0; border-radius: 8px; }
 .today-sections .tenant-task-link span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .today-section-title { margin: 0 0 1rem; font-size: 1.15rem; }
+.pwa-offline-notice { padding: .75rem max(1rem, env(safe-area-inset-right)) .75rem max(1rem, env(safe-area-inset-left)); background: var(--surface-subtle); color: var(--text-primary); border-bottom: 1px solid var(--color-border); }
 .today-work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
 .today-work-grid .tenant-home-tasks { padding: 1.25rem; }
 .today-work-grid h3 { margin: 0; font-size: 1.15rem; color: var(--color-brand-text); }

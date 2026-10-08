@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "url": "/offline.html",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/offline.css",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/offline.js",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/tokens.css",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/cairo-400.woff2",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/cairo-600.woff2",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/icon-192.png",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/icon-512.png",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/pwa/maskable-512.png",
+      "status": 200,
+      "integrity": "PASS",
+      "setsCookie": false
+    },
+    {
+      "url": "/sw.js",
+      "status": 200,
+      "setsCookie": false,
+      "headersOrMetadata": "PASS"
+    },
+    {
+      "url": "/offline.html",
+      "status": 200,
+      "setsCookie": false,
+      "headersOrMetadata": "PASS"
+    },
+    {
+      "url": "/manifest.webmanifest",
+      "status": 200,
+      "setsCookie": false,
+      "headersOrMetadata": "PASS"
+    },
+    {
+      "url": "/apple-icon.png",
+      "status": 200,
+      "setsCookie": false,
+      "headersOrMetadata": "PASS"
+    }
+  ],
+  "privateRequestsExecuted": 0,
+  "scope": "Actual public production HTTP bodies/headers on loopback; no provider credentials/account requests"
+}

@@ -1,2 +1,8 @@
 # Migration function-source anchors require canonical LF on Windows checkouts.
 supabase/migrations/*.sql text eol=lf
+# Public PWA integrity hashes must match Windows and cloud checkouts byte-for-byte.
+public/offline.html text eol=lf
+public/sw.js text eol=lf
+public/pwa/*.css text eol=lf
+public/pwa/*.js text eol=lf
+public/pwa/*.txt text eol=lf
