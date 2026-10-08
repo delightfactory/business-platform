@@ -1,0 +1,21 @@
+{
+  "baseline": "ecccc2c422bf0ff484728e28f13a1187f29ed08e",
+  "hashes": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sha256": "96eefb4f6d445c68fe7ca31c460d38ca2e66ed1603087163ac4e94c0d1c5b326"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "sha256": "cb53c2a5a5d5579e89f618e303613286ea0e11bc229486fe4be6d5644b4817f0"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+      "sha256": "7138dac4144a69095ad364c4c851c4ed5b95862b013ab5de6127ecb2da2a7164"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+      "sha256": "0714f3717a3910b37bcf35d8c36a71a41ea84318769c91eb7c12354608dea020"
+    }
+  ]
+}

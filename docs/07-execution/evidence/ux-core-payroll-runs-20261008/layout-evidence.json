@@ -1,0 +1,207 @@
+{
+  "layouts": [
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1784.4749755859375
+        },
+        {
+          "text": "العودة إلى المراجعة قبل إعادة الحساب",
+          "top": 3572.375
+        }
+      ],
+      "scene": "before-approved-full",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1954.4749755859375
+        }
+      ],
+      "scene": "approved-full",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 3000.137451171875
+        }
+      ],
+      "scene": "before-reviewReady",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 3170.137451171875
+        }
+      ],
+      "scene": "reviewReady",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1144.875
+        },
+        {
+          "text": "العودة إلى المراجعة قبل إعادة الحساب",
+          "top": 2722.375
+        }
+      ],
+      "scene": "before-approved-full",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1258.875
+        }
+      ],
+      "scene": "approved-full",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 2340.137451171875
+        }
+      ],
+      "scene": "before-reviewReady",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 2454.137451171875
+        }
+      ],
+      "scene": "reviewReady",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1054.875
+        },
+        {
+          "text": "العودة إلى المراجعة قبل إعادة الحساب",
+          "top": 2542.375
+        }
+      ],
+      "scene": "before-approved-full",
+      "scrollWidth": 1351,
+      "width": 1366
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "تثبيت النتيجة واستهلاك المدخلات",
+          "top": 1168.875
+        }
+      ],
+      "scene": "approved-full",
+      "scrollWidth": 1351,
+      "width": 1366
+    },
+    {
+      "anchors": [],
+      "name": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 2250.137451171875
+        }
+      ],
+      "scene": "before-reviewReady",
+      "scrollWidth": 1351,
+      "width": 1366
+    },
+    {
+      "anchors": [
+        "#payroll-review-summary",
+        "#payroll-review-actions",
+        "#payroll-review-employees",
+        "#payroll-review-approval"
+      ],
+      "name": "الجهة القانونية التجريبية",
+      "primary": [
+        {
+          "text": "اعتماد المرشح المعروض",
+          "top": 2364.137451171875
+        }
+      ],
+      "scene": "reviewReady",
+      "scrollWidth": 1351,
+      "width": 1366
+    }
+  ],
+  "anchor": {
+    "scope": "الخطوة التاليةتثبيت النتيجة المعتمدةالجهة القانونية التجريبية · ١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦عدد الموظفين: 1 · الاستحقاقات: ١٠٠٫٠٠ ج.م. · الصافي: ١٠٠٫٠٠ ج.م.راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.تثبيت النتيجة واستهلاك المدخلات",
+    "targetTop": -0.16250000894069672,
+    "url": "http://127.0.0.1:3595/?scene=approved-full#payroll-review-actions"
+  }
+}

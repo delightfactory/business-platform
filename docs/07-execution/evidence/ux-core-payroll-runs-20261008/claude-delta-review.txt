@@ -1,0 +1,63 @@
+{
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 runs: approved + stale + ready delta and next-step anchor
+
+## Must-fix: none. The delta is accepted at source level
+
+I checked that `approvalPrimary` (`page.tsx:42`) matches the class `ApprovalActions` actually renders on first load (`ApprovalActions.tsx:8`, props at `page.tsx:59`):
+
+| State | Finalize / calculate | Approval button | Next-step link goes to |
+|---|---|---|---|
+| Approved, not stale, ready, `can_lock` | Finalize primary, details open | Release secondary | `#payroll-review-actions` |
+| **Approved + stale + ready + `can_lock`** | Finalize **secondary**, details closed as optional (`RunActions.tsx:35,70`) | Release **primary** (`releaseSecondary` false when stale) | `#payroll-review-approval` |
+| Approved, not ready or no `can_lock` | `RunActions` hidden | Release primary | approval (this link didn't exist before) |
+| Review, ready, not stale, `canExecute` | Calculate secondary | Approve primary | approval |
+| Review + stale + ready, `canExecute` | Recalculate primary | Approve secondary | actions |
+| Reader, disabled, or no available action | — | — | no link |
+
+- **Link and target always match.** `approvalPrimary` implies a review/approved status with `can_approve` and `enabled`, which is exactly when the approval section and `ApprovalActions` render. The link only renders when `canExecute || approvalPrimary`, so it never points at a missing section.
+- **Unchanged:**
+  - `RunActions`' key, mount condition, fields, `confirm` checkbox, `operation` values and pending recovery;
+  - the `ApprovalActions` fields, operation and labels;
+  - `canExecute`.
+- **Evidence:**
+  - `approvedStaleReady` has one default primary, release (`stale-ready-evidence.json`: `finalizeOpen: false`, a single release primary, `scrollWidth` 375).
+  - `approvalTop` is 148 rather than about 0 because the section sits at the end of the document. The page can't scroll further, but the primary is in view.
+
+**Should-fix (copy only; doesn't block):**
+- **What happens:** when the run is approved, ready and stale, the approval card still shows "النسخة المعروضة معتمدة وجاهزة للتثبيت…" (approved and ready to finalize; `page.tsx:58`). That sits beside the stale card and the heading "اعتماد يحتاج العودة للمراجعة". The backend reports `ready`, so the text is source-faithful, but it reads as permission to finalize stale data.
+- **Fix:** when stale reasons exist, reuse the existing second message ("تغيرت جاهزية الحساب… أعد النسخة إلى المراجعة"). No new copy, and the logic is unchanged.
+
+## Visual verdict
+Images inspected: `approved-stale-ready-390.png` and `reference-payroll-1280.png`.
+
+- **`approved-stale-ready-390.png`:** shows one green primary, "العودة إلى المراجعة قبل إعادة الحساب", with the required reason field above it. Approval history and run history stay in closed native `<details>`, and there is no overflow. The ready-to-finalize line flagged above is visible. The finalize section and the stale card are outside this frame, so I can't confirm their rendering from this image.
+- **`reference-payroll-1280.png`:** a valid 1280 Concept C **root** screen. It shows the employer selector, a stepper with completion states, a figure strip with gross, deductions and net placeholder, and a blockers list with employee names and owner action buttons. There is no equivalent runs screen, so runs can only match its "one dominant action" direction. The stepper's completion states remain a governed difference. The per-employee owner rows, the deductions figure and the root/source facts remain open work.
+- **Verdict:** delta presentation acceptable at 390; **NOT VISUALLY VERIFIED** for a full reference match on runs or desktop.
+
+## Core gates still open (not promoted)
+- **Runs:**
+  - submitting release while a run attempt is unresolved;
+  - where the recovery card sits and whether it takes precedence (the nav can't target client-only recovery);
+  - a disabled finalize button showing as primary while an attempt is pending;
+  - hydrated recovery;
+  - real roles and providers;
+  - financial transitions;
+  - the grouped build/TS after this delta.
+- **R7:**
+  - employer controls on the sub-pages;
+  - root deductions/net/overtime, payment and time/leave facts, and stage completion;
+  - per-employee owner routes on the root page;
+  - the same-employer reset scenario;
+  - inputs → output → payments/corrections (presentation only), then advances, reports and setup;
+  - the full parent shell.
+- **Whole R7 and phase:** NOT accepted. Source, register and semantic statuses are not promoted.
+
+I only used Read, Grep and Glob, and wrote no files, so the repository fingerprint should be unchanged before and after this review.

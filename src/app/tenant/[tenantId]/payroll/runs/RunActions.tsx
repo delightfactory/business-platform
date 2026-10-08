@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {money,type RunState} from './rules';
 import styles from '../payroll.module.css';
 type FinalScope={employer:string;starts:string;ends:string;employees:number;gross:string|null;net:string|null};
-type Props={candidate:string;finalScope?:FinalScope;actor:string;tenant:string;employer:string;period:string;run:string;revision:number;status:string;stale:boolean;canExecute:boolean};
+type Props={candidate:string;finalScope?:FinalScope;actor:string;tenant:string;employer:string;period:string;run:string;revision:number;status:string;stale:boolean;canExecute:boolean;anchorId?:string};
 type PendingRun={version:1;attempt:string;entries:[string,string][];previous:RunState};
 const recoveryEvent='payroll-run-recovery';
 function readPending(key:string){try{return localStorage.getItem(key)??'';}catch{return '';}}
@@ -32,7 +32,7 @@ export function RunActions(props:Props){
  }
  const [feedback,setFeedback]=useState<RunState|null>(null);
  const [saving,setSaving]=useState(false);
- const primary=props.status==='approved'||!props.run||props.status==='cancelled'||props.stale;
+ const primary=props.status==='approved'?!props.stale:props.status==='draft'||!props.run||props.status==='cancelled'||props.stale;
  async function submit(previous:RunState,form:FormData){
   if(!navigator.locks)return {...previous,saved:false,error:'تعذر حماية الطلب بين نوافذ المتصفح. استخدم متصفحًا يدعم حماية الطلبات قبل المتابعة.'};
   return navigator.locks.request(storageKey,{ifAvailable:true},async lock=>lock?submitLocked(previous,form):{...previous,saved:false,error:'طلب جارٍ في نافذة أخرى. انتظر نتيجته ثم تحقّق هنا.'});
@@ -52,7 +52,7 @@ export function RunActions(props:Props){
  }
  const currentFeedback=feedback?.run===props.run&&feedback.revision===props.revision&&feedback.status===props.status;
  if(!props.canExecute&&!unresolved&&!feedback&&!closed)return null;
- return <section className={styles.card}>
+ return <section id={props.anchorId} className={styles.card}>
   {unresolved&&<div><h2>استعادة نتيجة الطلب السابق</h2><p>لم تتأكد نتيجة الطلب. تحقّق منه أولًا قبل متابعة العمل.</p><button type="button" onClick={recover} disabled={saving}>{saving?'جارٍ التحقق…':'استعادة نتيجة الطلب الأصلي'}</button>{recoveryError&&<p role="alert">{recoveryError}</p>}</div>}
   {closed&&<p role="status">تأكدنا أن الطلب السابق لم يُحفظ. يمكنك متابعة العمل بأمان.</p>}
   {feedback?.recovered&&!currentFeedback&&<p role="status">عُثر على نتيجة الطلب السابق. راجع حالة المسير الحالية الظاهرة.</p>}
@@ -67,6 +67,6 @@ function RunActionForm({tenant,employer,period,run,candidate,revision,status,sta
  const [reason,setReason]=useState('');const [state,action,pending]=useActionState(submit,{error:'',saved:false,run,revision,status,signature:'',attempt:''});
  const finalizing=state.status==='approved';
  return <form action={action} onReset={e=>e.preventDefault()} className={styles.form}><h2>{finalizing?'تثبيت النتيجة المعتمدة':'تجهيز الرواتب'}</h2><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="period" value={period}/><input type="hidden" name="candidate" value={candidate}/><fieldset disabled={pending||saving} className={styles.fields}>
- {finalizing?<><p>{finalScope?.employer} · {finalScope?.starts} — {finalScope?.ends}</p><p>عدد الموظفين: {finalScope?.employees} · الاستحقاقات: {money(finalScope?.gross)} · الصافي: {money(finalScope?.net)}</p><label><input type="checkbox" name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><button className="primary-button" name="operation" value="finalize">تثبيت النتيجة واستهلاك المدخلات</button></>:<><button className={!state.run||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate">{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء النسخة مع حفظ تاريخ المراجعة</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel">إلغاء النسخة</button></details>}</>}
+ {finalizing?<><p>{finalScope?.employer} · {finalScope?.starts} — {finalScope?.ends}</p><p>عدد الموظفين: {finalScope?.employees} · الاستحقاقات: {money(finalScope?.gross)} · الصافي: {money(finalScope?.net)}</p><label><input type="checkbox" name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><button className={stale?'secondary-button':'primary-button'} name="operation" value="finalize">تثبيت النتيجة واستهلاك المدخلات</button></>:<><button className={!state.run||state.status==='draft'||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate">{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء النسخة مع حفظ تاريخ المراجعة</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel">إلغاء النسخة</button></details>}</>}
  </fieldset>{pending&&<p role="status">جارٍ التنفيذ وحفظ النتيجة.</p>}{state.error&&<p role="alert">{state.error}</p>}</form>;
 }

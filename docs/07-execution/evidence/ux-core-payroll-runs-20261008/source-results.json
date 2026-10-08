@@ -1,0 +1,638 @@
+{
+  "baseline": "ecccc2c422bf0ff484728e28f13a1187f29ed08e",
+  "cases": [
+    {
+      "case": "none-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "none-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "none-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "none-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "none-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "none-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "none-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "draft-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "draft-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "draft-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "draft-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "draft-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "draft-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "draft-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "review-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "review-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "approved-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "approved-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "approved-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "approved-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "approved-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "approved-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "approved-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "cancelled-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "cancelled-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "cancelled-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "cancelled-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "cancelled-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "cancelled-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "cancelled-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "locked-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "locked-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "locked-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "locked-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "locked-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "locked-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "locked-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "superseded-reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-approve",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-lock",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-final",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "superseded-full",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "reviewReady",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "staleReviewReady",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "approvedStaleReady",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "staleApproved",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "disabled",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "notReady",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 1
+    },
+    {
+      "case": "noSdk",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "noUser",
+      "boundary": "PASS"
+    },
+    {
+      "case": "noEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "noPeriod",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "workspaceFailed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "noEmployees",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "detail",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "longEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "allIssues",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    },
+    {
+      "case": "paged",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "boundaryProps": "PASS",
+      "anchors": "PASS",
+      "defaultPrimaries": 0
+    }
+  ],
+  "approvalCases": [
+    {
+      "status": "review",
+      "pending": false,
+      "secondary": false,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "review",
+      "pending": false,
+      "secondary": true,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "review",
+      "pending": true,
+      "secondary": false,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "review",
+      "pending": true,
+      "secondary": true,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "approved",
+      "pending": false,
+      "secondary": false,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "approved",
+      "pending": false,
+      "secondary": true,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "approved",
+      "pending": true,
+      "secondary": false,
+      "fieldsPendingLabels": "PASS"
+    },
+    {
+      "status": "approved",
+      "pending": true,
+      "secondary": true,
+      "fieldsPendingLabels": "PASS"
+    }
+  ],
+  "runActionsContract": "exact except presentation anchorId and draft/stale primary predicates/classes and disclosure priority",
+  "actionsRules": "unchanged",
+  "scope": "actual source/SSR, controlled SDK/hooks and financial-widget boundaries; no financial mutation or real roles/hydrated recovery acceptance; staleReviewReady deliberately probes contradictory ready+stale payload presentation"
+}

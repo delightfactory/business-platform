@@ -1,0 +1,13 @@
+{
+  "approvalTop": 148.1374969482422,
+  "finalizeOpen": false,
+  "primary": [
+    {
+      "text": "العودة إلى المراجعة قبل إعادة الحساب",
+      "value": "release"
+    }
+  ],
+  "scrollWidth": 375,
+  "url": "http://127.0.0.1:3595/?scene=approvedStaleReady#payroll-review-approval",
+  "width": 390
+}

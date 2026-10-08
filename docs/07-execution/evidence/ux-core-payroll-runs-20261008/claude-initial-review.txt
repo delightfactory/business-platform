@@ -1,0 +1,63 @@
+{
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 runs candidate checkpoint (baseline ecccc2c)
+
+## Must-fix: one item, approved + stale + ready
+
+**What happens.** Take a run that is approved and stale, where `approval.ready` is true and the user has `can_lock`.
+- `canExecute` is true, so `RunActions` opens with finalize as `primary-button` (`RunActions.tsx:70`).
+- `releaseSecondary = canExecute && approved` demotes release (`page.tsx:58`).
+- The page's own heading at the same time says "اعتماد يحتاج العودة للمراجعة" (the approval needs to go back to review; `:43`).
+
+So the dominant action points away from what the page itself says to do. This is the approved-state version of the stale + ready contradiction you already handled for review. `staleApproved` reports one default primary, but the fixture doesn't show whether it was ready.
+
+**Fix, choose one:**
+- **(a)** Record backend evidence that `approved` + stale reasons + `ready` cannot occur.
+- **(b)** Make two presentation-only changes:
+  - finalize uses `stale ? 'secondary-button' : 'primary-button'` (`RunActionForm` already receives `stale`);
+  - `releaseSecondary={canExecute && work.run.status === 'approved' && work.stale_reasons.length === 0}`.
+
+  Then add an `approvedStaleReady` case with exactly one primary, release. The confirmation checkbox, operation and recovery logic stay untouched. Update the normalization guard so it allows exactly this class predicate.
+
+**Everything else is accepted at source level:**
+- **Action anchor:** `anchorId` sits on `RunActions`' own section, and the mount condition and key are exact (`page.tsx:54`, `RunActions.tsx:55`).
+- **`canExecute`:** factored once with an identical value (`:41`), and it is the only gate on the action link. A target always exists because `canExecute` implies `can_prepare || can_lock`.
+- **Anchors:** the conditions for summary, dispositions, stale, issues, employees, detail and approval match their sections exactly.
+- **`ApprovalActions`:** the class follows the client `state.status` (`ApprovalActions.tsx:8`), and fields, operation, labels and pending state are unchanged.
+- **Locked/superseded links:** the classes follow the root's precedence (payments if `can_payment_record`, else output; superseded is secondary), and the visibility predicates are unchanged (`:49`).
+- **Header identity:** it is the same expression as `finalScope.employer`.
+- **Issues:** the runs fallback text is kept, routing sits outside `<details>`, cards with a deduction plan are `open`, and index keys keep duplicates.
+- **Draft promotion:** presentation only. `ApprovalActions` isn't mounted for draft, so there is no second primary.
+
+## Visual verdict
+Images inspected: `approved-full-390.png`, `before-approved-full-390.png`, `reviewReady-1366.png`, `finalization-anchor-1366.png`.
+
+- **390 before/after (approved):** the identity line and the anchor nav (four links that wrap, with touch-size targets) are added above the period form. There is no overflow (`scrollWidth` 375). The "DeductionRecovery" and "SourceExplanation" text visible in the captures are fixture placeholders, not real rendering.
+- **1366 reviewReady:** the header identity, nav, filters and summary render cleanly in RTL.
+- **1366 finalization anchor:** the target lands at the top of the viewport (`targetTop` ≈ 0). The finalize scope shows the same identity as the header, the required checkbox is visible and unchecked, and finalize is the only primary.
+- **Pre-existing layout issue, outside this slice:** the finalize button stretches to the height of the checkbox label's grid row (about 116px). Record it; don't fix it here.
+- **Concept C:** only the common direction (identity, a single primary) could be compared. There is no runs-equivalent reference and the desktop reference is invalid, so this is **NOT VISUALLY VERIFIED** for a full match.
+
+## Simplicity tradeoff (measured, not a speed claim)
+- **The action is reachable in one step.** The approved finalize primary used to sit at 1784/1144/1054px (390/768/1366) with a *second* primary (release) further down. It is now one primary, one anchor activation away.
+- **Cost:** every primary moved down by about 114–170px (finalize 1784→1954px at 390; approve 3000→3170px), because of the identity line and the nav.
+- Net: fewer competing primaries and a direct jump, in exchange for more scan height. No claim that the financial task is faster.
+
+## Remaining gates (none promoted)
+- **Before grouped build/TS:** resolve the must-fix above.
+- **Runs, explicit required gates:**
+  - submitting release while a run attempt is unresolved;
+  - where the recovery card sits and whether it takes precedence (the nav can't link to it);
+  - a disabled finalize button showing as primary while a pending attempt exists;
+  - hydrated recovery;
+  - real roles and providers;
+  - financial transitions.
+- **Next core R7 work:** `inputs` (it is the routing target for most issues), then `output` → `payments`/`corrections` (presentation only), plus the remaining root source gaps (deductions/net/overtime, payment and time/leave facts, stage completion) and the same-employer reset scenario.
+- **Statuses:** do not promote source, R7 or global semantic statuses. **Whole R7 is NOT accepted.**

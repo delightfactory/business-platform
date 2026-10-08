@@ -1,0 +1,79 @@
+{
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 runs batch: co-design verdict (spec at baseline ecccc2c, candidate not yet applied)
+
+The spec mostly preserves the current contract. It needs **five concrete corrections before implementation**. All five are about presentation and mounting; none needs a backend change.
+
+## Required spec changes
+
+1. **Where the action anchor lives must not remount `RunActions`.**
+   - **The problem:** `RunActions` mounts when `can_prepare || can_lock`, keyed by actor, tenant, employer and period only (`page.tsx:51`). It keeps client state (`feedback`, `closed`, `recovered`, and the "عرض النتيجة المثبتة" link) across status changes. After finalizing, `canExecute` turns false, and the confirmation stays visible only because the same instance is still mounted (`RunActions.tsx:54–60`).
+   - **Not allowed:** wrapping it in a container that only renders when `canExecute`. That remount would lose the finalize confirmation and the output link.
+   - **Required:** add an optional presentation prop (for example `anchorId`) and put it on `RunActions`' own `<section>` (`:55`). Keep the mount condition and the key exactly as they are.
+   - **Nav link:** render it only when the factored `canExecute` is true. The server can't see pending recovery stored in `localStorage`, so the link can't target the recovery card. Record that recovery visibility (the card's position mid-page) is an open scenario. Don't claim it is covered.
+
+2. **Demote only the release button, and let the client state decide.**
+   - **The problem:** in `ApprovalActions`, both the label and `operation` depend on the **client** `state.status` (`ApprovalActions.tsx:8`). A static class prop could demote the *approve* button while a server refresh is still pending.
+   - **Required:** add a prop such as `releaseSecondary`. Inside the component, use `secondary-button` only when `releaseSecondary && state.status === 'approved'`. Approve always stays primary.
+   - **Compute it on the page** from the factored predicate: `releaseSecondary = canExecute && work.run.status === 'approved'`. That is exactly `enabled && can_lock && approval.ready && approved`. Release-only states (not ready, no `can_lock`) stay primary.
+
+3. **Possible double primary when the run is in review, stale and ready.**
+   - With status `review`, stale, `approval.ready` and `can_approve`, both buttons are primary: `RunActions` shows "إعادة الحساب بعد التغييرات" (because of `stale`) and `ApprovalActions` shows approve.
+   - The source doesn't prove that `ready` is false whenever stale reasons exist. `approval-actions.ts` has no stale guard, and the SQL `payroll_approval_blocked` check is backend-only.
+   - **Required:** either record evidence that the backend never returns `ready` with stale reasons, or state in the spec that recalculation is primary when stale and approve is secondary there. Use the same in-component prop pattern, and leave the approve action, fields and validation unchanged.
+
+4. **Final-output and payment link classes must follow the root's precedence.**
+   - Only a `locked` run gets a primary: payments when `can_payment_record`, otherwise output when `can_view_final`.
+   - Superseded runs get **no** primary; both links stay secondary because the run is historical.
+   - Keep the current visibility predicates exactly. Note that the payments link is visible here to `can_view_final` **or** `can_payment_record`, unlike the root. Only the classes change.
+
+5. **Keep guidance visible next to the inline financial forms.** In employee cards, `DeductionDisposition` forms sit beside the deduction claims (`page.tsx:53`). For `payroll_deduction_*` issues on a card that can render that form, render the details `open`. The full guidance, including "لم يُستهلك الالتزام" and the owner, must be readable without an extra click, right before the financial decision. Other issues collapse as specified.
+
+## Details the implementation must keep exactly
+- **Header identity:** use the same expression as the finalize confirmation, `work.employer.legal_name || work.employer.display_name` (`:51`). The header and the irreversible confirmation must show the same name. Text must wrap.
+- **Issue fallback text:** keep the runs-page fallback ("يلزم مراجعة هذا المصدر مع مسؤول الرواتب قبل المتابعة."), not the root's. Reuse `issueTitles` with its generic title.
+- **Issue routing:** the whole owner-routing ternary stays unchanged, outside the `<details>`.
+- **`blocking` label:** "مانع"/"تنبيه" is a label only. It doesn't change approval wording or the counts.
+- **Keys:** the existing key `${code}:${employment_id}` can collide when issues repeat. That is pre-existing. Don't change the key unless you add the index; the spec requires keeping multiplicity.
+- **Unchanged:**
+  - `DeductionRecovery` stays first, before any new nav.
+  - `#run-cancel-reason` stays unique.
+  - New anchor IDs are static and unique, linking only sections that actually render: summary, dispositions, stale, issues, employees (`!isFinal`), detail, approval (review/approved), and actions (`canExecute`).
+- **Factoring `canExecute`:** factor it once and use the identical expression for both the prop and the anchor.
+- **Recovery and action contracts untouched:** storage key, `navigator.locks`, attempt/actor reuse, `closedUncommitted`, the `recovered` message, unknown-result blocking, cancel reason, final confirmation checkbox, all `runError` paths.
+
+## Saying "primary" truthfully
+The server-rendered primary is a **presentation default, not proof of state**. Client-only states can override what is actually usable:
+- an unresolved pending request in `localStorage` disables the forms (`saving || unresolved`) and shows the recovery button;
+- `closed`, `recovered` and `feedback` are client-side only.
+
+So in the approved + finalize case, the primary can be a *disabled* finalize button while a pending attempt is unresolved. Recovery effectively comes first, but its button isn't styled primary. That is pre-existing; record it.
+
+Release can still be submitted while a run-action attempt is unresolved. That is also pre-existing and outside this slice. Record it as an open recovery scenario; don't fix it here.
+
+## Measurement and reference gate
+- **Before/after, same actor and data, at 390/1366:**
+  - number of primaries per state: review, review + stale (+ ready), approved + ready + `can_lock`, approved release-only, locked with payment, locked output-only, superseded, cancelled, disabled;
+  - top position of the primary and of the action anchor;
+  - how many navigations and scrolls it takes to reach the action;
+  - how many clicks to read the full guidance;
+  - the scan-height cost added by the nav.
+- **Report that cost as a tradeoff,** not as a speed gain.
+- **Reference gate:** compare only the parts of Concept C that apply to runs. A full match stays **NOT VISUALLY VERIFIED** while the desktop reference remains invalid.
+- **Do not claim** financial transitions, real-role behaviour, hydrated recovery or whole-R7/runs acceptance from mocked rendering.
+
+## Still open after this batch (not dropped)
+- **Runs:** an employer selector on the runs page, which this batch deliberately leaves out; recovery-card precedence and placement; the release-during-unresolved-run-attempt scenario; full runs qualification with real roles, hydration and financial outcomes.
+- **Other R7 work:**
+  - root deductions/net/overtime figures and payment or time/leave facts from a source;
+  - stage completion;
+  - the same-employer reset scenario;
+  - the inputs, output, payments, corrections, advances, reports and setup pages;
+  - the full parent shell.
