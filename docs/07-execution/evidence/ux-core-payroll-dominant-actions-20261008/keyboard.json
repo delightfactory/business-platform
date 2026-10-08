@@ -1,0 +1,9 @@
+{
+  "initialLocatorPress": "did not move focus; AX checked before native Tab",
+  "native": {
+    "class": "primary-button payroll-primary",
+    "focused": "إعادة حساب أثر التعديل",
+    "reason": "سبب اختبار اصطناعي",
+    "tag": "BUTTON"
+  }
+}

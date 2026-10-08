@@ -1,0 +1,49 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**No real must-fix.** I accept the dominant-action group within its scope, on condition that the grouped lint/build exits 0. You said it's still running, so I'm not treating it as passed.
+
+## Source
+- **`CorrectionCommand` (`CorrectionForms.tsx:66,68`):**
+  - The new `appearance` prop is optional. When it's undefined, the button keeps `className={undefined}`, the exact original bare button.
+  - When it's set, the button gets `${appearance}-button ${styles.primary}`.
+  - Labels, `FormData`, reason, pending state, `RecoveryNotice` and saved state are untouched.
+- **Corrections page (`page.tsx:70–72,88,90`):**
+  - `canRecalculate` repeats the recalculate visibility condition exactly.
+  - `reviewImpactCurrent` requires at least one amendment, and every amendment must have `approval` with an empty `stale_reasons` array.
+  - `approveDominant = !canRecalculate || (can_approve && reviewImpactCurrent)`.
+- **What each state shows:**
+
+  | State | Primary | Secondary |
+  |---|---|---|
+  | Approve only | approve | — |
+  | Recalculate only | recalculate | — |
+  | Both, impact current | approve | recalculate |
+  | Both, impact stale or missing | recalculate | approve |
+
+  Visibility conditions, sibling order and keys are unchanged, and the commands still share their journal key.
+- **Recorded, not a defect:**
+  - `reviewImpactCurrent` ignores `approval.ready` and `blocking_count`. Recalculating doesn't clear blockers and the server still governs approval, so this is acceptable.
+  - In the approve-only state, approve changes from a bare button to an explicit primary. That's intended, since it's the only action.
+- **Payments (`PaymentForm.tsx:28`):** correction mode (`original` set) uses `secondary-button` and keeps `styles.primary` sizing. Normal recording stays primary, and the recovery-only "recover" button stays primary and first (`:17`).
+
+## Visual (images opened this turn)
+`review-both-stale-390.png`, `review-both-fresh-1366.png`, `payment-correction-idle-1366.png`, `concept-c-payroll-light-1366.png`.
+
+- **Stale impact at 390:** approve (bare, light) above recalculate, which is primary green and full width. Both reason fields are visible.
+- **Fresh impact at 1366:** approve is primary green and recalculate is bordered secondary.
+- **Payment correction:** the reversal warning with amount, date, reference, reason, the required confirmation checkbox, and "حفظ تصحيح القيد" as a secondary button.
+- **Scope limits:** these are isolated component renders with no parent frame; cards touch the viewport edge, so they show no page inset or layout context. Cairo font is used and there's no overflow.
+- **Reference:** Concept C has no correction-review or payment-history screen. Only the shared direction (one filled primary, outlined secondaries, the same tokens) is consistent. Full match **NOT VISUALLY VERIFIED**.
+
+## UX
+- **Corrections:** goes from 0 explicit primaries to 1. When both actions show, the dominant one now follows the actual impact state. No operation is hidden or newly enabled.
+- **Payments:** the compensation primary goes from 1 to 0, and the normal recording primary is unchanged.
+- No claim that tasks are faster.
+
+## Remaining core gates (open)
+- the grouped lint/build exit;
+- release while a run attempt is unresolved (a separate recovery-contract item);
+- multi-employer rendered evidence for the first five pages;
+- stage facts and per-source owner routes;
+- real roles and providers, native financial submission, finance, hydration, the full parent, and unsaved input lost on navigation;
+- R0–R8, phase and semantic closure.

@@ -1,0 +1,292 @@
+[
+  {
+    "page": "corrections",
+    "role": "both",
+    "stage": "fresh",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "both",
+    "stage": "stale",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "both",
+    "stage": "missing",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "both",
+    "stage": "paid",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "both",
+    "stage": "unknownApproval",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "prepare",
+    "stage": "fresh",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "prepare",
+    "stage": "stale",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "prepare",
+    "stage": "missing",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "prepare",
+    "stage": "paid",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "prepare",
+    "stage": "unknownApproval",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "approve",
+    "stage": "fresh",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "approve",
+    "stage": "stale",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "approve",
+    "stage": "missing",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "approve",
+    "stage": "paid",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "approve",
+    "stage": "unknownApproval",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "reader",
+    "stage": "fresh",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "reader",
+    "stage": "stale",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "reader",
+    "stage": "missing",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "reader",
+    "stage": "paid",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "corrections",
+    "role": "reader",
+    "stage": "unknownApproval",
+    "RPCAndWidgetContracts": "PASS",
+    "dominant": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "normal",
+    "state": "idle",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "normal",
+    "state": "pending",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "normal",
+    "state": "saved",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "normal",
+    "state": "unknown",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "normal",
+    "state": "error",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "correction",
+    "state": "idle",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "correction",
+    "state": "pending",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "correction",
+    "state": "saved",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "correction",
+    "state": "unknown",
+    "contract": "PASS"
+  },
+  {
+    "page": "PaymentForm",
+    "kind": "correction",
+    "state": "error",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "original",
+    "state": "idle",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "original",
+    "state": "pending",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "original",
+    "state": "saved",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "original",
+    "state": "unknown",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "original",
+    "state": "error",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "primary",
+    "state": "idle",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "primary",
+    "state": "pending",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "primary",
+    "state": "saved",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "primary",
+    "state": "unknown",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "primary",
+    "state": "error",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "secondary",
+    "state": "idle",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "secondary",
+    "state": "pending",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "secondary",
+    "state": "saved",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "secondary",
+    "state": "unknown",
+    "contract": "PASS"
+  },
+  {
+    "page": "CorrectionCommand",
+    "appearance": "secondary",
+    "state": "error",
+    "contract": "PASS"
+  }
+]

@@ -1,0 +1,55 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+# R7 dominant actions: co-design verdict (spec on 0cb5199)
+
+**Payments is sufficient and safe. Corrections needs two must-fixes before coding.**
+
+## Must-fix
+
+1. **Corrections: there are no primary buttons in the source, so the spec's premise is unproven.**
+   - **What I found:** `CorrectionCommand`'s submit is a bare `<button>` with no class (`CorrectionForms.tsx:68`). The settlement and recovery submits are also bare (`:72,:77`). Approve and recalculate therefore don't currently carry `primary-button` at all.
+   - **What I couldn't confirm:** in the `globals.css` matches I checked, I found no base style for a bare `button`, so I can't say how they actually look.
+   - **Risks:**
+     - The "two competing primaries" in review may not exist visually.
+     - Adding `secondary-button` to recalculate only would make it look *more* styled than a bare approve, which inverts the hierarchy.
+   - **Before coding:** capture the current review state and measure the computed styles of both buttons.
+   - **If both are bare:** use an explicit presentation prop, for example `appearance?: 'primary' | 'secondary'`.
+     - Undefined renders exactly the current bare button.
+     - The page sets `primary` on the chosen action and `secondary` on the other.
+     - Everything else stays exactly the same.
+
+2. **Don't make approve dominant over a stale impact or one that hasn't been calculated.**
+   - **When this happens:** in review, recalculate shows when `can_prepare` is true and some affected output is unpaid (`page.tsx:87`). The page already has the source facts: `w.amendments[].approval.stale_reasons` and `approval.ready`, plus whether any amendments exist.
+   - **Approve primary, recalculate secondary**, only when **all** of these hold:
+     - `can_approve` is true;
+     - `w.amendments.length > 0`;
+     - every amendment has `approval`;
+     - every amendment has empty `stale_reasons`.
+   - **Otherwise** (stale or not yet calculated): **recalculate primary, approve secondary.**
+   - This is presentation derived from existing source fields, with no new readiness flag. The server still rejects invalid approvals.
+   - If you don't want to touch approve's appearance, then **don't demote recalculate** in the stale or uncalculated case. Never steer users toward approving an impact that is out of date.
+
+## Corrections guards
+- **Visibility unchanged:** approve still shows under `review && can_approve` (`:85`) and recalculate under its existing condition. Nothing is hidden or newly enabled.
+- **Positions unchanged:** the `CorrectionCommand`s are keyless siblings, and `SettlementForm` is conditional between them. Add only a prop, with no wrapper or reordering.
+- **Shared journal key:** both commands use `useCorrectionRecovery` with the key `command:${caseId}:${run??''}`, so approve and recalculate share one journal. That's pre-existing. Don't change keys, labels, `FormData`, the reason field, or the pending/saved/unresolved handling.
+- **Other commands** (draft, approved, finalize, candidate and release) keep their current appearance.
+
+## Payments (accepted with guards)
+- **Main form:** the normal recording form stays `primary-button ${styles.primary}` (`PaymentForm.tsx:28`). The recovery-only recover button stays primary and first (`:17`).
+- **Correction form in history** (`p.original`, inside "القيد مسجل بالخطأ؟"): use `secondary-button` while **keeping `styles.primary`**, which provides the 44px mobile and full-width sizing.
+  - Unchanged: the amount warning, confirmation, date, reason and reference fields, the validators, the disabled logic, `original`/`revision`, and the recovery identity.
+  - The default stays primary for every non-correction use.
+- **Fully paid state:** with no main form, history correction becomes the only action and it's secondary. That's acceptable, because it's an exception path inside a disclosure, and it stays visible to every actor who has the predicate.
+- **Unchanged:** visibility predicates (`canRecord && can_correct_record && kind==='payment' && !compensated`) and the role message for users without correction rights.
+
+## Checks
+- **Corrections, before and after:** computed button styles plus the visible-primary count for
+  - review with fresh, stale and missing impact;
+  - approve-only, prepare-only and both roles;
+  - fully paid outputs.
+- **Payments:** normal, correction, pending, saved and unresolved states, actual `PaymentForm` renders, identical props and `FormData`.
+- **Also:** one grouped lint/build/TS run, and renders at 390/768/1366 with keyboard testing.
+- **No visual claim:** there's no matching Concept C reference.
+
+**Still open:** release while a run attempt is unresolved (a separate core item), real roles and providers, finance, hydration, the full parent, and R0–R8 and phase closure.

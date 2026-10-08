@@ -1,0 +1,413 @@
+[
+  {
+    "scene": "before-review",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 21.200000762939453,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 21.200000762939453,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "review-both-fresh",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "review-both-stale",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "review-both-missing",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "before-payment-correction-idle",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "payment-correction-idle",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "payment-normal-idle",
+    "width": 390,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "تسجيل الدفعة الخارجية"
+      }
+    ],
+    "scroll": 390
+  },
+  {
+    "scene": "before-review",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "review-both-fresh",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "review-both-stale",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "review-both-missing",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "before-payment-correction-idle",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "payment-correction-idle",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "payment-normal-idle",
+    "width": 768,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 44,
+        "label": "تسجيل الدفعة الخارجية"
+      }
+    ],
+    "scroll": 768
+  },
+  {
+    "scene": "before-review",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(240, 240, 240)",
+        "class": "",
+        "color": "rgb(0, 0, 0)",
+        "font": "Arial",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "review-both-fresh",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "review-both-stale",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "review-both-missing",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "اعتماد المقترح بعد مراجعة الأثر"
+      },
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 74,
+        "label": "إعادة حساب أثر التعديل"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "before-payment-correction-idle",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 40,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "payment-correction-idle",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgba(0, 0, 0, 0)",
+        "class": "secondary-button payroll-primary",
+        "color": "rgb(59, 70, 65)",
+        "font": "Cairo, sans-serif",
+        "height": 40,
+        "label": "حفظ تصحيح القيد"
+      }
+    ],
+    "scroll": 1366
+  },
+  {
+    "scene": "payment-normal-idle",
+    "width": 1366,
+    "buttons": [
+      {
+        "bg": "rgb(14, 107, 92)",
+        "class": "primary-button payroll-primary",
+        "color": "rgb(255, 255, 255)",
+        "font": "Cairo, sans-serif",
+        "height": 40,
+        "label": "تسجيل الدفعة الخارجية"
+      }
+    ],
+    "scroll": 1366
+  }
+]
