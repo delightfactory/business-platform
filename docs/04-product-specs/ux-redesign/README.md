@@ -67,3 +67,5 @@ Bounded [R5a result-integrity maintenance](attendance-result-integrity-slice.md)
 [D8 self-service return proposal](self-service-auth-return-proposal.md) supplies an exact one-file patch and reviewed85-case preparation for the five existing routes. Owner approval pending; application unchanged. This does not freeze broader D8/storage/session/privacy or establish real provider/role acceptance.
 
 R3 bounded [company context and client-form privacy](operator-company-core-spec.md) now preserves independent authority and actual company scope across lifecycle/limits/units, replaces URL-only save claims and guards prehydration/pending forms. Source-qualified evidence and limitations in [execution evidence](../../07-execution/evidence/ux-core-operator-company-20261008/README.md); fullR3, matchedvisual/realroles/semanticruntime coverage remain open.
+
+Remaining R3 [complete operator journey preparation](operator-core-journeys-spec.md) preserves B1 implementation/B2 complete runtime milestones. Source-chain corrections and13controlled JSX baseline observations change the next implementation contract; no application/semantic/runtime/visual acceptance.

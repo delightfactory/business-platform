@@ -1,0 +1,333 @@
+{
+  "base": "14049fe62ea9c56866443bca4fd9f9dbbd316117",
+  "scope": "Actual async page JSX branches with controlled SDK; child useActionState/render/hydration/SQL/auth/visual not executed; baseline observations, not acceptance cases",
+  "observations": [
+    {
+      "id": "onboarding-error-falls-to-create",
+      "source": "src/app/operator/onboarding/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "OperatorActionForm"
+      ],
+      "readCalls": [
+        {
+          "name": "current_platform_operator_status"
+        },
+        {
+          "name": "current_operator_can_onboard_tenants"
+        },
+        {
+          "name": "tenant_onboarding_result",
+          "args": {
+            "p_idempotency_key": "a1111111-1111-4111-8111-111111111111"
+          }
+        }
+      ]
+    },
+    {
+      "id": "onboarding-object-as-success",
+      "source": "src/app/operator/onboarding/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "OnboardingResult"
+      ],
+      "readCalls": [
+        {
+          "name": "current_platform_operator_status"
+        },
+        {
+          "name": "current_operator_can_onboard_tenants"
+        },
+        {
+          "name": "tenant_onboarding_result",
+          "args": {
+            "p_idempotency_key": "a1111111-1111-4111-8111-111111111111"
+          }
+        }
+      ]
+    },
+    {
+      "id": "onboarding-contradictory-error-data",
+      "source": "src/app/operator/onboarding/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "OnboardingResult"
+      ],
+      "readCalls": [
+        {
+          "name": "current_platform_operator_status"
+        },
+        {
+          "name": "current_operator_can_onboard_tenants"
+        },
+        {
+          "name": "tenant_onboarding_result",
+          "args": {
+            "p_idempotency_key": "a1111111-1111-4111-8111-111111111111"
+          }
+        }
+      ]
+    },
+    {
+      "id": "onboarding-nonboolean-flag",
+      "source": "src/app/operator/onboarding/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "OperatorActionForm"
+      ],
+      "readCalls": [
+        {
+          "name": "current_platform_operator_status"
+        },
+        {
+          "name": "current_operator_can_onboard_tenants"
+        }
+      ]
+    },
+    {
+      "id": "statutory-missing-items-as-empty",
+      "source": "src/app/operator/statutory/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "DraftForm"
+      ],
+      "readCalls": [
+        {
+          "name": "current_operator_can_manage_statutory_rules"
+        },
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": null,
+            "p_after_created": null,
+            "p_after_id": null,
+            "p_before_revision": null,
+            "p_limit": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "statutory-selected-missing-falls-to-list",
+      "source": "src/app/operator/statutory/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "DraftForm"
+      ],
+      "requestedHead": "a1111111-1111-4111-8111-111111111111",
+      "readCalls": [
+        {
+          "name": "current_operator_can_manage_statutory_rules"
+        },
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_after_created": null,
+            "p_after_id": null,
+            "p_before_revision": null,
+            "p_limit": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "statutory-selected-mismatched-head",
+      "source": "src/app/operator/statutory/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "DraftForm"
+      ],
+      "draftHead": "b2222222-2222-4222-8222-222222222222",
+      "requestedHead": "a1111111-1111-4111-8111-111111111111",
+      "readCalls": [
+        {
+          "name": "current_operator_can_manage_statutory_rules"
+        },
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_after_created": null,
+            "p_after_id": null,
+            "p_before_revision": null,
+            "p_limit": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "statutory-nonboolean-flag",
+      "source": "src/app/operator/statutory/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "DraftForm"
+      ],
+      "readCalls": [
+        {
+          "name": "current_operator_can_manage_statutory_rules"
+        },
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": null,
+            "p_after_created": null,
+            "p_after_id": null,
+            "p_before_revision": null,
+            "p_limit": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "comparison-mismatched-workspace-head",
+      "source": "src/app/operator/statutory/comparisons/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "IssuanceStatus"
+      ],
+      "requestedHead": "a1111111-1111-4111-8111-111111111111",
+      "releaseRevision": 1,
+      "releaseReady": false,
+      "readCalls": [
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_comparison_history",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_before": null,
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_issuance_status",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_expected": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "comparison-string-readiness",
+      "source": "src/app/operator/statutory/comparisons/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "IssuanceStatus"
+      ],
+      "requestedHead": "a1111111-1111-4111-8111-111111111111",
+      "releaseRevision": 1,
+      "releaseReady": "true",
+      "readCalls": [
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_comparison_history",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_before": null,
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_issuance_status",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_expected": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "comparison-revision-disagreement",
+      "source": "src/app/operator/statutory/comparisons/page.tsx",
+      "outcome": "rendered",
+      "clientComponents": [
+        "IssuanceStatus"
+      ],
+      "requestedHead": "a1111111-1111-4111-8111-111111111111",
+      "releaseRevision": 2,
+      "releaseReady": false,
+      "readCalls": [
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_comparison_history",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_before": null,
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_issuance_status",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_expected": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "comparison-malformed-history",
+      "source": "src/app/operator/statutory/comparisons/page.tsx",
+      "outcome": "threw",
+      "errorClass": "TypeError",
+      "message": "Cannot read properties of null (reading 'length')",
+      "readCalls": [
+        {
+          "name": "statutory_draft_workspace",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_comparison_history",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_before": null,
+            "p_limit": 20
+          }
+        },
+        {
+          "name": "statutory_draft_issuance_status",
+          "args": {
+            "p_head": "a1111111-1111-4111-8111-111111111111",
+            "p_expected": 1
+          }
+        }
+      ]
+    }
+  ],
+  "sourceFingerprints": [
+    {
+      "file": "src/app/operator/onboarding/page.tsx",
+      "sha256LF": "df571be7157184ef3e1ce8a9e5cc9b0d78b340ed71584f84228964ee92e2abe7"
+    },
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256LF": "fff95a2a9a42a8353fdf67bcc4309400d5dd9d7702b544bd03ee548101fe603e"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "sha256LF": "f20aad5eecab57e668fd986c54e9815e9b227b000ac26288287cccd8f158939b"
+    }
+  ]
+}

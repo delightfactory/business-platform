@@ -1,0 +1,104 @@
+{
+  "base": "14049fe62ea9c56866443bca4fd9f9dbbd316117",
+  "contributions": [
+    {
+      "file": "claude-proposed-contract.md",
+      "requestedModel": "claude-opus-5-5",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "effort": "medium",
+      "sessionId": "6feb6b72-eeb5-4a8d-a33a-5e94614dd352",
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "scope": "Source-informed co-design, no application changes/tests/visual acceptance"
+    },
+    {
+      "file": "claude-correction-checkpoint.md",
+      "requestedModel": "claude-opus-5-5",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "effort": "medium",
+      "sessionId": "6feb6b72-eeb5-4a8d-a33a-5e94614dd352",
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "scope": "Supplied source excerpts/context only; no new source reads or visual inspection"
+    }
+  ],
+  "sourceFingerprints": [
+    {
+      "file": "src/app/operator/onboarding/page.tsx",
+      "sha256LF": "df571be7157184ef3e1ce8a9e5cc9b0d78b340ed71584f84228964ee92e2abe7"
+    },
+    {
+      "file": "src/app/operator/actions.ts",
+      "sha256LF": "034b47edb2aa972ccb2f6febeb7decc8cf0ed30b59d51fd6ee45fee3a216e5d9"
+    },
+    {
+      "file": "src/app/operator/operator-action-form.tsx",
+      "sha256LF": "bc97c06103211d8bfcea43ec05e3f9c15d35a0942a054db7598e43a7f7d5fbad"
+    },
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256LF": "fff95a2a9a42a8353fdf67bcc4309400d5dd9d7702b544bd03ee548101fe603e"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "sha256LF": "17979514337fdff51b09aeb87d7afaf23e01897b6123cb3fa13cfe8c0f0b72ef"
+    },
+    {
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "sha256LF": "419a9ca9e4aaac23a01fc0a0fc72af5773c7ed3cf24257fcf7690828bcedf160"
+    },
+    {
+      "file": "src/app/operator/statutory/actions.ts",
+      "sha256LF": "640d7492c6ff04d955f7073f3eb2bc973e719714640b6c88cfcb826906afc1b5"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "sha256LF": "f20aad5eecab57e668fd986c54e9815e9b227b000ac26288287cccd8f158939b"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceStatus.tsx",
+      "sha256LF": "07daba7592144c56d3adcbf3a3e74f5183bc00bc6f5095e208452542e12ac368"
+    },
+    {
+      "file": "supabase/migrations/20260929021044_tenant_onboarding_atomic.sql",
+      "sha256LF": "561723f822c6494b2bd160a65b9de35146f5e133e33655175879148299c6bd19"
+    },
+    {
+      "file": "supabase/migrations/20260929025717_first_admin_invitation_intent.sql",
+      "sha256LF": "676e1e4b883409c4bc112a9ed3a969ba8684d4d49adc9bf3566cf92402b090f1"
+    },
+    {
+      "file": "supabase/migrations/20261002222602_cube4_statutory_drafts.sql",
+      "sha256LF": "15ae1886e571bf87a851c45edce35cf46c2f547e220aafdf9c68aa5b2aad2b3d"
+    },
+    {
+      "file": "supabase/migrations/20261002225319_cube4_statutory_numeric_drafts.sql",
+      "sha256LF": "120a7e501fd263d1a3684a62389a3f3f104b0fda104d6793f0c6c8baf5c2507e"
+    },
+    {
+      "file": "supabase/migrations/20261002233957_cube4_statutory_issuance.sql",
+      "sha256LF": "287d5948b7d608fbe25a4a3adf7b3d8b06ffe0d66a7c5dd0ce4931df5a44ad67"
+    },
+    {
+      "file": "supabase/migrations/20261003048000_cube4_reviewed_wage_deduction_composition.sql",
+      "sha256LF": "92245537007ec49d51666fb3d4b4e90f348321b5c09ec2f247f043ffecd5c941"
+    }
+  ],
+  "observations": 13,
+  "acceptance": false,
+  "applicationChanges": false,
+  "heavyTestsRerun": false,
+  "remaining": [
+    "B1 implementation",
+    "onboarding scoped intent/recovery specification",
+    "complete persisted comparison variants",
+    "B2 actual role/state journeys",
+    "measured simplicity",
+    "joint rendered reference acceptance",
+    "full R0-R8 gates"
+  ]
+}

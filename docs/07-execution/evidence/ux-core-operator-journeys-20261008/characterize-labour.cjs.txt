@@ -1,0 +1,10 @@
+const fs=require('fs');
+const original=fs.readFileSync(__dirname+'/characterize-baseline.cjs','utf8');
+const start=original.slice(0,original.indexOf('const cases=['));
+const end=original.slice(original.indexOf('(async()=>'));
+const middle=`const cases=[{id:'comparison-existing-labour-variant',kind:2,q:{head},responses:{
+ statutory_draft_workspace:{data:selected,error:null},
+ statutory_draft_comparison_history:{data:{rows:[{id:1,head_id:head,revision:1,created_at:'2026-10-08T00:00:00Z',case_data:{name:'Synthetic reviewed case',domain:'labour_deductions',scenario:'ordinary_limit',origin:'synthetic',source_url:'https://portal.eta.gov.eg/sites/default/files/2026-03/law.no_.14.of_.2025.pdf',reference:'Synthetic reference',year:'2026',context:{gross:100,tax:0,employee_insurance:0,employer_loan:0,claims:[]},expected:{wage_basis:'100',ceiling:'25',capacity_amount:'0',unapplied_amount:'0'}},result:{matched:true,qualified:false,actual:{wage_basis:100,ceiling:25,capacity_amount:0,unapplied_amount:0},expected:{wage_basis:'100',ceiling:'25',capacity_amount:'0',unapplied_amount:'0'}}}],next:null,current_revision:1,qualified:false},error:null}
+}}];\n`;
+fs.writeFileSync(__dirname+'/labour-probe.cjs',start+middle+end.replace("'/baseline-observations.json'","'/labour-baseline-observation.json'"));
+require('./labour-probe.cjs');
