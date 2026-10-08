@@ -31,6 +31,8 @@
 .form textarea { width: 100%; min-width: 0; }
 .filters select { min-width: 0; max-width: 100%; min-height: var(--field-height); font: inherit; }
 .card { overflow-wrap: anywhere; }
+.overtimeNotice { background: var(--status-info-surface); color: var(--status-info-text); }
+.overtimeNotice summary { cursor: pointer; min-height: var(--touch-target-size); font-weight: 600; }
 fieldset.fields { border: 0; padding: 0; margin: 0; }
 
 .paymentFields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; border: 0; padding: 0; margin: 0; min-width: 0; }

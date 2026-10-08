@@ -1,0 +1,15 @@
+{
+  "hostPorts": [],
+  "network": "none",
+  "state": "exited",
+  "ownedTabsClosed": [
+    "75",
+    "76",
+    "77"
+  ],
+  "viewportReset": true,
+  "httpPort": 3606,
+  "httpStopped": true,
+  "id": "04b7c00e511f2e5d0f5a913af5b5bd1ea3b14dc0eae7df05295ac419e3c49ce7",
+  "container": "codex-ux-payroll-overtime-20261008"
+}

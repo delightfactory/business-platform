@@ -1,0 +1,130 @@
+{
+  "scope": "Actual helper and async Server Component, controlled SDK; not provider/hydration/full-parent/visual acceptance",
+  "cases": 31,
+  "results": [
+    {
+      "label": "valid exact period accepted",
+      "result": "PASS"
+    },
+    {
+      "label": "reject wrong period",
+      "result": "PASS"
+    },
+    {
+      "label": "reject wrong boundaries",
+      "result": "PASS"
+    },
+    {
+      "label": "reject unknown contract",
+      "result": "PASS"
+    },
+    {
+      "label": "reject invalid real date",
+      "result": "PASS"
+    },
+    {
+      "label": "reject cross period date",
+      "result": "PASS"
+    },
+    {
+      "label": "reject negative minutes",
+      "result": "PASS"
+    },
+    {
+      "label": "reject unsafe total",
+      "result": "PASS"
+    },
+    {
+      "label": "reject impossible reconciliation",
+      "result": "PASS"
+    },
+    {
+      "label": "reject zero candidate count",
+      "result": "PASS"
+    },
+    {
+      "label": "reject missing currentness",
+      "result": "PASS"
+    },
+    {
+      "label": "reject invalid record identity",
+      "result": "PASS"
+    },
+    {
+      "label": "reject long employee code",
+      "result": "PASS"
+    },
+    {
+      "label": "reject duplicate records",
+      "result": "PASS"
+    },
+    {
+      "label": "reject unexpected final cursor",
+      "result": "PASS"
+    },
+    {
+      "label": "reject more without cursor",
+      "result": "PASS"
+    },
+    {
+      "label": "reject false empty",
+      "result": "PASS"
+    },
+    {
+      "label": "empty query cursor absent",
+      "result": "PASS"
+    },
+    {
+      "label": "partial query cursor invalid",
+      "result": "PASS"
+    },
+    {
+      "label": "triple query cursor valid",
+      "result": "PASS"
+    },
+    {
+      "label": "source record direct actionable entry",
+      "result": "PASS"
+    },
+    {
+      "label": "nonblocking instance wording not days",
+      "result": "PASS"
+    },
+    {
+      "label": "empty is approved-source only",
+      "result": "PASS"
+    },
+    {
+      "label": "denied no protected records or retry loop",
+      "result": "PASS"
+    },
+    {
+      "label": "changed code offers generic restart not authorization",
+      "result": "PASS"
+    },
+    {
+      "label": "malformed read never zero",
+      "result": "PASS"
+    },
+    {
+      "label": "thrown client contained",
+      "result": "PASS"
+    },
+    {
+      "label": "missing client contained",
+      "result": "PASS"
+    },
+    {
+      "label": "full total plus bounded next triple preserves context",
+      "result": "PASS"
+    },
+    {
+      "label": "invalid cursor contains no RPC",
+      "result": "PASS"
+    },
+    {
+      "label": "resolved last page offers first-page recovery",
+      "result": "PASS"
+    }
+  ]
+}

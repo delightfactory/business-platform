@@ -1,0 +1,12 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success",
+  "isError": false,
+  "result": "**Both items are resolved. No must-fix.**\n\n- **Empty-state noise: resolved.**\n  - **Source:** when `totals.instances === 0`, the component returns a neutral `styles.card` (`OvertimeNotice.tsx:37`) before the blue warning block is built.\n  - **`final-empty-390.png`:**\n    - a plain neutral card titled \"مراجعة مصدر الإضافي\";\n    - \"لا يوجد إضافي غير مصنف في سجلات الحضور المعتمدة لهذه الجهة والفترة.\";\n    - a hint that unapproved attendance isn't included and that the notice doesn't prove readiness.\n\n    There's no blue tint, no \"تنبيه غير مانع\" and no actions. That's truthful and lighter.\n- **20-item evidence: resolved.** `final-more20-390.png` shows the blue notice with:\n  - the full totals (3,105 minutes, 304 records);\n  - the reconciliation line;\n  - the disclosure \"عرض ٢٠ سجل\" (closed in this frame, consistent with your DOM count of 20);\n  - the \"سجلات إضافية\" pagination link;\n  - the return hint.\n\n  There's no overflow. Your report of a triple cursor on the last item matches the parser's rule that `next_cursor` equals the last item.\n- **Minor (recorded, not blocking):** at 390 the return hint sits tight under the \"سجلات إضافية\" button.\n\n**Your attendance-route check closes my earlier verification item.** `attendance_instance_detail` uses the same five attendance permissions, it's reused by the existing `/attendance/[instanceId]` page, and writes stay gated. The `employee_code` exposure in the URL and history is recorded as you described.\n\n**Bounded visual verdict:** the tokens and semantics are consistent with Concept C's blue non-blocking notice:\n- soft blue for a real warning;\n- a neutral surface for empty;\n- outlined secondary actions;\n- the message that unclassified minutes don't enter payroll.\n\nThe candidate is still a heavier separate card, not the reference's single row inside the blockers card, and there's no equivalent full-parent state. Full match **NOT VISUALLY VERIFIED**.\n\n**Still open:**\n- the affected lint/TS run finishing;\n- real roles and providers, classification write-back, hydration and the full parent;\n- stage completion and payment facts on root;\n- the owner's A/B recovery choice (untouched);\n- no 100%, phase or semantic closure."
+}

@@ -10,6 +10,8 @@ import styles from './payroll.module.css';
 import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
 import { issueTitles } from './issue-titles';
 import { issueResponsibility } from './issue-responsibility';
+import { Suspense } from 'react';
+import { OvertimeNotice } from './OvertimeNotice';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
@@ -134,6 +136,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       </details><p className="field-hint">الجهة المسؤولة: {issueResponsibility(item.owner)}</p><Link className="secondary-button" href={action.href}>{action.label}</Link></li>; })}</ul>}
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
     </section>}
+    {work && !final && <Suspense fallback={<p role="status">جارٍ التحقق من تنبيه الإضافي؛ يمكنك متابعة مراجعة الرواتب.</p>}><OvertimeNotice tenantId={tenantId} employer={employer} period={work.period} query={query}/></Suspense>}
     <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>
       {calendar.access.can_view && work && <p><Link href={inputsLink}>مدخلات الفترة ومراجعتها</Link></p>}
       <p><Link href={setupLink}>دورة الجهة والفترات المحفوظة</Link></p>

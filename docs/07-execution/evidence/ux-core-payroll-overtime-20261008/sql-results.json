@@ -1,0 +1,162 @@
+{
+  "postgres": "17.10",
+  "results": [
+    {
+      "label": "authenticated execute granted",
+      "result": "PASS"
+    },
+    {
+      "label": "anon execute denied",
+      "result": "PASS"
+    },
+    {
+      "label": "service_role execute denied",
+      "result": "PASS"
+    },
+    {
+      "label": "empty search_path",
+      "result": "PASS"
+    },
+    {
+      "label": "no direct source-table grant",
+      "result": "PASS"
+    },
+    {
+      "label": "all eligible instances only",
+      "result": "PASS"
+    },
+    {
+      "label": "current unclassified minutes only",
+      "result": "PASS"
+    },
+    {
+      "label": "actual reconciliation currentness",
+      "result": "PASS"
+    },
+    {
+      "label": "more-than31-day period supported",
+      "result": "PASS"
+    },
+    {
+      "label": "only minimal fields",
+      "result": "PASS"
+    },
+    {
+      "label": "latest fact excludes older candidate",
+      "result": "PASS"
+    },
+    {
+      "label": "leave-covered approved fact included",
+      "result": "PASS"
+    },
+    {
+      "label": "classified rejected pending unknown excluded",
+      "result": "PASS"
+    },
+    {
+      "label": "other employer and tenant excluded",
+      "result": "PASS"
+    },
+    {
+      "label": "final page cursor absent",
+      "result": "PASS"
+    },
+    {
+      "label": "empty approved source exact",
+      "result": "PASS"
+    },
+    {
+      "label": "totals not paginated sample",
+      "result": "PASS"
+    },
+    {
+      "label": "triple cursor from last visible item",
+      "result": "PASS"
+    },
+    {
+      "label": "cursor advances without duplicate",
+      "result": "PASS"
+    },
+    {
+      "label": "other employer period",
+      "result": "PASS"
+    },
+    {
+      "label": "other tenant period",
+      "result": "PASS"
+    },
+    {
+      "label": "cross employer cursor",
+      "result": "PASS"
+    },
+    {
+      "label": "cross tenant cursor",
+      "result": "PASS"
+    },
+    {
+      "label": "cursor tuple tampering",
+      "result": "PASS"
+    },
+    {
+      "label": "cursor missing code",
+      "result": "PASS"
+    },
+    {
+      "label": "cursor outside period",
+      "result": "PASS"
+    },
+    {
+      "label": "cursor long code",
+      "result": "PASS"
+    },
+    {
+      "label": "zero limit",
+      "result": "PASS"
+    },
+    {
+      "label": "over max limit",
+      "result": "PASS"
+    },
+    {
+      "label": "null limit",
+      "result": "PASS"
+    },
+    {
+      "label": "payroll only no source disclosure",
+      "result": "PASS"
+    },
+    {
+      "label": "attendance only no payroll scope",
+      "result": "PASS"
+    },
+    {
+      "label": "missing actor",
+      "result": "PASS"
+    },
+    {
+      "label": "preparer plus attendance accepted",
+      "result": "PASS"
+    },
+    {
+      "label": "reviewer plus attendance approver accepted",
+      "result": "PASS"
+    },
+    {
+      "label": "current approval read amendment preserved",
+      "result": "PASS"
+    },
+    {
+      "label": "resolved cursor still continues",
+      "result": "PASS"
+    },
+    {
+      "label": "unconfirmed identity stays denied",
+      "result": "PASS"
+    }
+  ],
+  "boundary": "Actual 202 domain migrations and real permission functions; synthetic Auth/Storage and source-write-bypassed fixture rows, not provider or write-workflow acceptance",
+  "executedTestSha256": "53B1E08FCB1F4D2CB51872CDF2BF6FD8A8516B4BA2CC5A19B09F29B79F388ADE",
+  "result": "PASS",
+  "cases": 38,
+  "provenance": "Successful psql tool output; labels extracted from that executed script without rerunning"
+}

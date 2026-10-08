@@ -1,0 +1,27 @@
+{
+  "baseline": "440ff43b1a72301dfbf12459d1506bdb65b728d0",
+  "rootExistingContractsExact": true,
+  "policy": "sha256 UTF8 LF",
+  "files": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "bdb0c8962058fb5278e0a17b35e541ea8e46d9e1199c502edf3fdf87e1412c0f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+      "sha256": "05284b375e37eeec1328840e4db21ecb1ce436363e98255800eedfaf5a3056a8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/OvertimeNotice.tsx",
+      "sha256": "2abdcdbc96153d26c001c1ca6dc65fbe80dc9e2618fd45108605ca54f506b3a2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/overtime-notice.ts",
+      "sha256": "01270931a25cb00992f4f2e4b88bb08d39a9ac5e09f00ebd5a231ff336a6a5d7"
+    },
+    {
+      "file": "supabase/migrations/20261008091439_payroll_unclassified_overtime_notice.sql",
+      "sha256": "f9172148db8fd2aefdd763e8e86a69ea8f4a44bc1724e14493fe6b00c18319d9"
+    }
+  ]
+}

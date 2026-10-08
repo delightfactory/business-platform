@@ -1,0 +1,32 @@
+{
+  "cases": 5,
+  "results": [
+    {
+      "label": "304 eligible rows full totals and bounded20",
+      "result": "PASS"
+    },
+    {
+      "label": "changed employee code cursor is resettable scope failure",
+      "result": "PASS"
+    },
+    {
+      "label": "fresh page after code change succeeds",
+      "result": "PASS"
+    },
+    {
+      "label": "review event unique tenant/candidate",
+      "result": "PASS"
+    },
+    {
+      "label": "same date continuation no skipped record",
+      "result": "PASS"
+    }
+  ],
+  "timings": {
+    "first_page_ms": 532.016,
+    "eligible_instances": 304,
+    "next_page_ms": 519.129,
+    "environment": "isolated PostgreSQL17.10 synthetic rows",
+    "page_limit": 20
+  }
+}
