@@ -1,0 +1,98 @@
+# Core R5 spec: attendance detail and import (baseline `7ee5816`)
+
+This comes only from reading `[instanceId]/page.tsx`, `import/AttendanceImportForm.tsx`, `import/actions.ts` and `import/page.tsx`. I made no edits and ran nothing. I couldn't write the plan file because no write tool was available. Visuals are **not visually verified**.
+
+## A. Import: what has to be fixed before adding the stepper
+
+The first three are safety problems in the normal flow. The rest are labelling or cosmetic.
+
+| # | Finding | Location | Class |
+|---|---|---|---|
+| I1 | Choosing a new file resets headers and the error, but not `preview`. The old preview table and confirm form stay on screen while the label shows the new file's name. Clicking confirm saves the **old file's** rows. | `AttendanceImportForm.tsx:32-41, 75-114` | **Safety, must fix** |
+| I2 | `showingCommitResult` includes `preview.rows.length === 0 \|\|`. If a later preview of a new file fails, the old save result shows under the new file. | `:24-25` | **Safety, must fix** |
+| I3 | The confirm form stays usable while a new preview is running, and the preview form stays usable while a save is running. Either result can arrive after the other has moved the attempt counter, so a save outcome can be hidden. | `:44, 87, 115` | **Safety, must fix** |
+| I4 | Late header read: `file.text()` for file A can finish after file B was chosen. A's headers then show over B, and the column numbers are sent with B. The server only checks that numbers are in range and distinct. | `:36-40` | Must fix |
+| I5 | Probable, not verified: React 19 resets a `<form action={fn}>` after the action returns, and both actions always return normally. After a preview, the file input would be empty while the name label stays, and the mapping would fall back to the auto-detected defaults, so it no longer matches the preview shown. After a failed save, rows the user unticked would be ticked again, so a retry could save them. | `:44, 87, 115` | Must fix, once the React version is confirmed |
+| I6 | Changing a column mapping after a preview leaves the old preview labelled as current. The rows saved would still be the ones shown, so this is not a data risk, only a wrong label. | mapping `<select>` elements | Must fix once the stepper exists |
+| I7 | After the "ambiguous day" retry, the counts show only the retry. Rows saved by the first confirm drop out of the summary. | `:77, 115-129` | Wording fix |
+| I8 | If every row is rejected or a duplicate, no confirm form appears and nothing says why. | `:87` | Wording fix |
+
+## B. Linking each preview and save result to the current file
+
+**I don't recommend sending a selection ID through the server actions.** A client-only approach is enough because `useActionState` runs one action at a time per hook, and the spec locks the inputs while an action is pending:
+
+- **`selectionRev`**: a state value plus a ref. It goes up by one on every file `onChange` (including a cancelled pick that leaves no file) and on every mapping change.
+- **`previewRev`**: set to `selectionRev` when a preview is submitted.
+- **`commitBinding = { previewAttempt, rev }`**: set when a save is submitted, from either confirm form.
+- **When to show results:**
+  - Show the preview, including `preview.error`, only if it isn't pending, `preview.attempt > 0` and `previewRev === selectionRev`.
+  - Show the save result or `commit.error` only if `commitBinding.previewAttempt === preview.attempt` and `commitBinding.rev === selectionRev`.
+  - Remove the `rows.length === 0 ||` part from the condition.
+- **Late header reads:** `readHeaders` keeps a local `rev`. When the read finishes, it does nothing unless `rev === selectionRevRef.current`. Key the mapping fieldset and its confirmation checkbox on `selectionRev`, so a new file gets fresh defaults and an unticked box.
+- **Locking while pending:** use the third value from `useActionState` (`isPending`) for both actions. While either is pending, disable the file input, the mapping and both submit paths, using `<fieldset disabled>` on the inputs. The file input stays mounted.
+- **No form reset (fixes I5):** submit from `onSubmit` instead: `preventDefault()`, build `new FormData(form)` first, record the rev or binding, then call the action inside `startTransition`. Do this for the preview, confirm and ambiguous-retry forms. The pending label then comes from `isPending`; check that `SubmitButton` can be driven that way or use a plain button.
+- **Unchanged:** `actions.ts`, the validation, the 256 KB and 100-row limits, `mappingConfirmed`, the `selectedRow` JSON, `workDate_*`, the RPC payloads, and duplicate protection through `source_event_key`. These are the server-action edits needed: **none**.
+- **Limitations:**
+  - The binding only decides what is displayed. The server still treats the submitted row JSON as untrusted, as it does today.
+  - Choosing the same file again may not fire `onChange`. That's harmless, because the preview is still bound to that file.
+  - If a server action throws (network or unknown outcome), the error boundary handles it as today. No new recovery path is added; resubmitting relies on the existing duplicate check.
+
+## C. Import: three stages
+
+- An `<ol>` list of steps is visible before any file is chosen: 1. choose file, 2. map 5 columns, 3. preview and explicit confirm. The 256 KB / 100-event limits stay in stage 1.
+- The current step is marked with `aria-current="step"`:
+  - step 1 while there are no headers;
+  - step 2 once headers exist but no preview is bound;
+  - step 3 once a preview is bound.
+- The step list **never shows a done or success state**. Only the existing save-result text reports what happened.
+- Stages are sections of one page, not tabs. Nothing that is shown today gets hidden.
+- **Step 3 keeps:**
+  - the count line;
+  - the rejected-rows export;
+  - the full table with row notes;
+  - the confirm form: ready rows (ticked), ambiguous rows (date required), unassigned rows;
+  - the ambiguous-day retry;
+  - the "new file clears the preview" note, which is now actually enforced.
+- **Wording fixes:**
+  - I7: label the result "نتيجة آخر تأكيد" and say that rows saved earlier stay saved.
+  - I8: add a line saying there are no rows that can be saved.
+
+## D. Detail page
+
+- **In-page navigation:** a native `<nav aria-label="أقسام سجل اليوم">` with plain `<a href="#…">` links, placed inside the overview section after the meta lines.
+  - Targets are the **existing** heading ids, so no new ids: `attendance-record-title`, `classification-review-title` (only when `classificationReview` exists), `punches-title`, `interpretation-title`, `overtime-title`.
+  - Add `scroll-margin-top` in CSS.
+  - The order of the sections in the page doesn't change.
+- **Punch timeline:**
+  - Keep the RPC order and the `ul`. Don't sort, merge or drop anything.
+  - Add classes `is-corrected`, `is-excluded`, `is-import`, plus text chips: "مصحَّح · الدليل الأصلي محفوظ" and "مستبعد من الاحتساب". State is never shown by colour alone.
+  - Chips come only from the `corrected` and `excluded` booleans.
+  - Wrap both the current and original times in `<time dateTime>`.
+  - The original-evidence line and the source key stay exactly as they are.
+- **Correction controls:** keep the `<details>` blocks, both forms, their hidden inputs, the reason length limits (3 to 500) and the add-punch rules unchanged.
+- **Metrics:** the three `<p>` lines become a responsive `<dl>` grid with the same labels and values, keeping `aria-label`.
+- **Long text:** wrap `fact.reason` and `candidate.reason` in `<bdi>` and add `overflow-wrap:anywhere`.
+- **Left as is:** the overtime form, `ClassificationReviewForm`, every permission check, the version history, and the leave/absence/overtime amounts.
+- **Limitation (not introduced by this work):** action errors still appear at the top of the page, not next to the form that failed.
+- **Risks this introduces:** a link to a section that isn't rendered (prevented by the condition above), and overflow from chips or the grid on narrow screens. Neither is visually verified.
+
+## E. Focused test batch
+
+- `npm run typecheck`, `npm run lint`, `npm run build`.
+- **Detail page:** a source-assertion script modelled on `ux-core-attendance-lists-20261008/controlled-pages.cjs`. It checks that the counts of forms, actions, hidden inputs and `name`s are unchanged, every nav link points at a heading that renders, the chips are driven only by the two booleans, and the section order is unchanged.
+- **Import cases to script** (I didn't confirm a browser test harness exists, so these may need writing or manual runs):
+  1. New file after a preview: preview and confirm form gone, step 2.
+  2. Late read: slow file A then B, B's headers win.
+  3. Preview fails after an earlier save: no old result shown.
+  4. Mixed save result (accepted, unassigned, ambiguous), then the ambiguous retry, with the wording from I7.
+  5. Rejected-only file: export works and the I8 line shows.
+  6. Duplicate-only file.
+  7. Mapping change after a preview: preview hidden.
+  8. Inputs locked during each pending action.
+  9. Confirm fails: unticked rows stay unticked and the dates are kept.
+  10. File input and mapping survive a preview (I5).
+  11. Cancelled file pick.
+
+Not in scope: backend, RPC, schema, storage, auth and login, the outcome-recovery protocol, extra D16 features, and any claim of full R5 completion.
+
+The next step is to implement A, B, C, D in that order, starting with I1–I3. Before I5, check the React version in `package.json`.

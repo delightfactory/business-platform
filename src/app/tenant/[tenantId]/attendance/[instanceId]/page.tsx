@@ -4,6 +4,7 @@ import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { SubmitButton } from '@/components/submit-button';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import styles from '../attendance-task.module.css';
 import { ClassificationReviewForm } from '../ClassificationReviewForm';
 import { readClassificationReview } from '../classification';
 import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAction, recordPunchAction, reviewAttendanceOvertimeAction } from '../actions';
@@ -60,6 +61,13 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       {instance.schedule_kind === 'flexible'
         ? <p className="attendance-expected">يوم عمل مرن · المطلوب {String(instance.required_minutes ?? '—')} دقيقة · نافذة التسجيل {formatOptionalInstant(instance.attribution_start, zone)} – {formatOptionalInstant(instance.attribution_end, zone)}</p>
         : expectedStart && expectedEnd ? <p className="attendance-expected">الوقت المتوقع: {formatInstant(expectedStart, zone)} – {formatInstant(expectedEnd, zone)}</p> : <p className="form-message form-error">وقت العمل المحلي غير واضح بسبب تغيير التوقيت. لا يمكن اعتماد اليوم قبل المراجعة.</p>}
+      <nav className={styles.sectionNav} aria-label="أقسام سجل اليوم">
+        <a href="#attendance-record-title">ملخص اليوم</a>
+        {classificationReview && <a href="#classification-review-title">مراجعة النتيجة</a>}
+        <a href="#punches-title">التسجيلات والتصحيح</a>
+        <a href="#interpretation-title">النتيجة وسجل الاعتماد</a>
+        <a href="#overtime-title">العمل الإضافي</a>
+      </nav>
     </section>
 
     {classificationReview && <section className="work-card task-page" aria-labelledby="classification-review-title">
@@ -67,12 +75,13 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       <ClassificationReviewForm tenantId={tenantId} instanceId={instanceId} review={classificationReview} />
     </section>}
 
-    <section className="work-card task-page" aria-labelledby="punches-title">
+    <section className={`work-card task-page ${styles.timeline}`} aria-labelledby="punches-title">
       <div className="record-title-row"><h2 id="punches-title">تسجيلات الحضور</h2><span className="record-meta">{punches.length} تسجيل</span></div>
       {punches.length === 0 ? <div className="empty-state"><p>لم يُسجّل حضور أو انصراف لهذا اليوم بعد.</p></div> : <ul className="record-list attendance-punch-list">{punches.map((punch) => <li className="record-card" key={punch.id}>
-        <div className="record-main"><h3>{directionLabel(punch.direction)} · {formatInstant(punch.happened_at, zone)}</h3>
+        <div className="record-main"><h3>{directionLabel(punch.direction)} · <time dateTime={punch.happened_at}>{formatInstant(punch.happened_at, zone)}</time></h3>
+          {(punch.corrected || punch.excluded) && <p className={styles.evidenceState}>{punch.excluded ? 'مستبعد من الاحتساب · الدليل الأصلي محفوظ' : 'مصحّح · الدليل الأصلي محفوظ'}</p>}
           <p className="record-meta">{punch.source_type === 'import' ? <>مستورد من ملف · معرّف المصدر: <bdi>{punch.source_event_key}</bdi></> : 'تسجيل يدوي'}</p>
-          {(punch.corrected || punch.excluded) && <p className="record-meta">الدليل الأصلي محفوظ: {directionLabel(punch.original_direction)} · {formatInstant(punch.original_at, zone)}{punch.excluded ? ' · مستبعد بسبب تصحيح مسجل' : ''}</p>}
+          {(punch.corrected || punch.excluded) && <p className="record-meta">الدليل الأصلي محفوظ: {directionLabel(punch.original_direction)} · <time dateTime={punch.original_at}>{formatInstant(punch.original_at, zone)}</time>{punch.excluded ? ' · مستبعد بسبب تصحيح مسجل' : ''}</p>}
         </div>
         {permissions.can_correct === true && <details className="task-disclosure"><summary className="secondary-button">تصحيح هذا التسجيل</summary>
           <form action={correctPunchAction} className="attendance-form">
@@ -102,7 +111,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       </details>}
     </section>
 
-    <section className="work-card task-page" aria-labelledby="interpretation-title">
+    <section className={`work-card task-page ${styles.interpretation}`} aria-labelledby="interpretation-title">
       <h2 id="interpretation-title">نتيجة المراجعة</h2>
       {!interpretations ? <p className="field-hint">ستظهر النتيجة بعد تسجيل دخول أو خروج أو إجراء تصحيح.</p> : <>
         <p className={`form-message ${((interpretations.state === 'needs_review' && instance.status !== 'approved') || (currentFact?.fact.outcome === 'absence' && instance.status === 'needs_review') || (interpretations.exception_code === 'short_workday' && instance.status !== 'approved')) ? 'form-error' : ''}`} role="status">{currentFact?.fact.outcome === 'absence' && instance.status === 'approved' ? `اعتمد المراجع غياب ${String(currentFact.fact.absence_units ?? 1)} يوم مع حفظ السبب.` : currentFact?.fact.outcome === 'leave_covered' && instance.status === 'approved' ? 'اعتمد المراجع تغطية اليوم بالإجازة دون احتساب غياب.' : currentFact?.fact.outcome === 'absence' && instance.status === 'needs_review' ? 'أضيف تسجيل بعد اعتماد الغياب؛ راجع اليوم واعتمد نتيجة جديدة بسبب.' : currentFact?.fact.interpretation_exception === 'short_workday' && instance.status === 'approved' ? 'صافي المدة أقل من المطلوب، وقد اعتمدها المراجع مع حفظ السبب.' : interpretationLabel(interpretations)}</p>

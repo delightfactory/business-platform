@@ -1,0 +1,98 @@
+{
+  "baseline": "7ee581689afc236e7dd7f77543f3a17e39fbec82",
+  "acceptance": "SOURCE WIP; mandatory Claude candidate gate blocked403",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "sha256": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "sha256": "4d8e8519a724eb2f008828daf69157f2f432990413f879d88821888c3c616174",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-task.module.css",
+      "sha256": "b66cbe3003df1aa6bbde6dcd42abe004009cc489d83ce4564a9386fe5fb57ca2",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
+      "sha256": "246285651a73ff7397af4d872b57847fc7a7538becadad847d31641786fdfbe3",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/actions.ts",
+      "sha256": "83375a7a16f22b08494a76cb7d5064e2bdf3c695093235f4ff094f71432e5bec",
+      "normalization": "LF"
+    },
+    {
+      "file": "vercel.json",
+      "sha256": "99fa4a48afb5b558172f7adbc762781a9a7d19e058ec93d1360b2f53f5ee7537",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "claude-candidate-blocker.txt",
+      "sha256": "7458c7277d525ef57d98c76353eb5badd4368cbb5308bd5638d6e04f15688531",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-spec-review.txt",
+      "sha256": "723575dff70ab53f2ab2930eb29e531f3ec3065001eb2b233338faf626fa13b6",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "import-duplicate-390.jpg",
+      "sha256": "33a69c6de1b09584873bb56d4bbe31ca2ef2d5d1718005518f0aab4a3816b4cd",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "import-mapping-1366.jpg",
+      "sha256": "23b7027524b71e41e2ec5740b63ed9d2d1fd3a7bef51376aa3cfe684dbdc42b4",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "import-mapping-390.jpg",
+      "sha256": "01230c490af3342e721359c59709d4e5bd1de441b65c1d622fdac6b6adabf9fa",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "7f6bba3ddc10c4bd12f5737acb6420bd2fe974f2f2ba7c0071d8656ec86f3a96",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "next-fixture/app/import/AttendanceImportForm.tsx",
+      "sha256": "4d8e8519a724eb2f008828daf69157f2f432990413f879d88821888c3c616174",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "2ad6b8677a8b656297a83d3b0fce1cfc18eb4ce4aabbf9a551955ae70d81af6d",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "source-results.json",
+      "sha256": "594eed01f6653a360c7984e5637e7d180fe585666399c276fbddbf4056b7da67",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "synthetic-actions.txt",
+      "sha256": "a3e52298ddff715def99792e83a68d63b251a6dc2133d216f8e78457f122b86e",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "synthetic-file-seam.txt",
+      "sha256": "66faa30f916e151e118119ab2259baacb66ec17946c92140e2aa785bd6a6a92b",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "verify-source.cjs",
+      "sha256": "f24aac48d4b33fa3dd48befda1f5b162bf64b03d4ff83b95fbac745477147e2b",
+      "normalization": "LF trimEnd+newline"
+    }
+  ]
+}

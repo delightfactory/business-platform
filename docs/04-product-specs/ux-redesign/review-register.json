@@ -2474,7 +2474,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:26:2577",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:27:2628",
       "category": "rpcCalls",
       "phase": "R5",
       "status": "pending",
@@ -2483,7 +2483,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:28:2918",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:29:2969",
       "category": "rpcCalls",
       "phase": "R5",
       "status": "pending",
@@ -2492,7 +2492,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:40:3979",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:41:4030",
       "category": "rpcCalls",
       "phase": "R5",
       "status": "pending",
@@ -6929,7 +6929,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:78:8768",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9513",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6938,7 +6938,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8844",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9589",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6947,7 +6947,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8900",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9645",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6956,7 +6956,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8960",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9705",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6965,7 +6965,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:80:9029",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:89:9774",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6974,7 +6974,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:81:9114",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:90:9859",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6983,7 +6983,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:82:9286",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:91:10031",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -6992,7 +6992,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:83:9471",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:92:10216",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7001,7 +7001,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:86:9697",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:95:10442",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7010,7 +7010,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9798",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10543",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7019,7 +7019,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9854",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10599",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7028,7 +7028,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9914",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10659",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7037,7 +7037,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9969",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10714",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7046,7 +7046,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:10091",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:97:10836",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7055,7 +7055,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:95:10557",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:104:11302",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7064,7 +7064,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10630",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11375",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7073,7 +7073,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10686",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11431",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7082,7 +7082,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10746",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11491",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7091,7 +7091,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:97:10845",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11590",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7100,7 +7100,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:98:11002",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11747",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7109,7 +7109,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:99:11269",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:12014",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7118,7 +7118,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:117:14323",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15094",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7127,7 +7127,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:118:14436",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15207",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7136,7 +7136,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:118:14492",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15263",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7145,7 +7145,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:119:14581",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15352",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7154,7 +7154,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:120:14773",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15544",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7163,7 +7163,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:125:15226",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:134:15997",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7172,7 +7172,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15328",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16099",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7181,7 +7181,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15384",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16155",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7190,7 +7190,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15444",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16215",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7199,7 +7199,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15752",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16523",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7208,7 +7208,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:145:18656",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:154:19427",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7217,7 +7217,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18775",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19546",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7226,7 +7226,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18831",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19602",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7235,7 +7235,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18891",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19662",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7244,7 +7244,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18954",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19725",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7253,7 +7253,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:148:19217",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19988",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7262,7 +7262,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:149:19341",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20112",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7271,7 +7271,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:150:19470",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20241",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7280,7 +7280,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:151:19594",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20365",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7289,7 +7289,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:154:19968",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:163:20739",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7298,7 +7298,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:20298",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21069",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7307,7 +7307,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20418",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21189",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7316,7 +7316,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20474",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21245",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7325,7 +7325,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20534",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21305",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7334,7 +7334,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20597",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21368",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7343,7 +7343,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20724",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21495",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7352,7 +7352,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:44:2634",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:86:5308",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7361,7 +7361,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:45:2716",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:87:5441",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7370,7 +7370,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:48:2892",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5617",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7379,7 +7379,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:60:3972",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:102:6697",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7388,7 +7388,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:70:4814",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:112:7577",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7397,7 +7397,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:80:6071",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:124:9284",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7406,7 +7406,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:87:7123",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:131:10336",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7415,7 +7415,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:7275",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:133:10476",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7424,7 +7424,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:91:7464",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10665",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7433,7 +7433,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:96:7935",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:140:11136",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7442,7 +7442,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:101:8489",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:145:11690",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7451,7 +7451,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:109:9105",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:153:12306",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7460,7 +7460,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:9698",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:159:12954",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7469,7 +7469,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:9884",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13128",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7478,7 +7478,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:120:10267",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:164:13511",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7487,7 +7487,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:122:10508",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:166:13752",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14206,7 +14206,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:84:9555",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:93:10300",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14215,7 +14215,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:89:10175",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:98:10920",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14224,7 +14224,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:100:11508",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:12253",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14233,7 +14233,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:121:14857",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15628",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14242,7 +14242,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15833",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16604",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14251,7 +14251,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:20058",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:164:20829",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14260,7 +14260,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20814",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21585",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14269,7 +14269,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:72:4996",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:114:7773",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14278,7 +14278,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:113:9535",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12736",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14287,7 +14287,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:10861",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:14105",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14845,7 +14845,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:77:8691",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:86:9436",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -14854,7 +14854,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:94:10483",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:103:11228",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -15574,7 +15574,7 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "Core attendance list candidate structural reconciliation. Existing review states retained; controlled source/page/visual evidence is not actual SDK/role/mutation/wholeR5 acceptance.",
+  "snapshotQualification": "Attendance detail/import SOURCE WIP. Mandatory Claude candidate review rejected403; neither visual nor full R5 accepted. Existing states retained.",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7,
   "entryControlIdMigrations": 14,
@@ -15801,6 +15801,503 @@
       "to": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:4024",
       "category": "formControls",
       "reason": "same source contract shifted position"
+    }
+  ],
+  "attendanceTaskMigrations": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:26:2577",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:27:2628",
+      "category": "rpcCalls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:28:2918",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:29:2969",
+      "category": "rpcCalls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:40:3979",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:41:4030",
+      "category": "rpcCalls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:77:8691",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:86:9436",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:78:8768",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9513",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8844",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9589",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8900",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9645",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:79:8960",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:9705",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:80:9029",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:89:9774",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:81:9114",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:90:9859",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:82:9286",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:91:10031",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:83:9471",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:92:10216",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:84:9555",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:93:10300",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:86:9697",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:95:10442",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9798",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10543",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9854",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10599",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9914",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10659",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:87:9969",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10714",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:88:10091",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:97:10836",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:89:10175",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:98:10920",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:94:10483",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:103:11228",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:95:10557",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:104:11302",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10630",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11375",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10686",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11431",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:96:10746",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:105:11491",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:97:10845",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11590",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:98:11002",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11747",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:99:11269",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:12014",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:100:11508",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:12253",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:117:14323",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15094",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:118:14436",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15207",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:118:14492",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15263",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:119:14581",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15352",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:120:14773",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15544",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:121:14857",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15628",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:125:15226",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:134:15997",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15328",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16099",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15384",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16155",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:126:15444",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:135:16215",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:127:15752",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16523",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15833",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16604",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:145:18656",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:154:19427",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18775",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19546",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18831",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19602",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18891",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19662",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:146:18954",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:19725",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:148:19217",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19988",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:149:19341",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20112",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:150:19470",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20241",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:151:19594",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20365",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:154:19968",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:163:20739",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:20058",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:164:20829",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:20298",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21069",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20418",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21189",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20474",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21245",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20534",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21305",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:158:20597",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:167:21368",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20724",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21495",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20814",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21585",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:44:2634",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:86:5308",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:45:2716",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:87:5441",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:48:2892",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5617",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:60:3972",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:102:6697",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:70:4814",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:112:7577",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:72:4996",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:114:7773",
+      "category": "formControls",
+      "reason": "Existing import SubmitButton now explicit hook pending label/disabled; no semantic acceptance",
+      "before": {
+        "label": "\"فحص ومعاينة الأحداث\"",
+        "pendingLabel": "\"جارٍ فحص الصفوف…\""
+      },
+      "after": {
+        "disabled": "{busy}",
+        "label": "{previewPending ? 'جارٍ فحص الصفوف…' : 'فحص ومعاينة الأحداث'}",
+        "pendingLabel": "\"جارٍ فحص الصفوف…\""
+      }
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:80:6071",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:124:9284",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:87:7123",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:131:10336",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:7275",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:133:10476",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:91:7464",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10665",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:96:7935",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:140:11136",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:101:8489",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:145:11690",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:109:9105",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:153:12306",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:113:9535",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12736",
+      "category": "formControls",
+      "reason": "Existing import SubmitButton now explicit hook pending label/disabled; no semantic acceptance",
+      "before": {
+        "label": "\"تأكيد حفظ الأحداث المحددة\"",
+        "pendingLabel": "\"جارٍ حفظ الأحداث…\""
+      },
+      "after": {
+        "disabled": "{busy}",
+        "label": "{commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'}",
+        "pendingLabel": "\"جارٍ حفظ الأحداث…\""
+      }
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:9698",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:159:12954",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:9884",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13128",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:120:10267",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:164:13511",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:122:10508",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:166:13752",
+      "category": "formControls",
+      "reason": "Same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:10861",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:14105",
+      "category": "formControls",
+      "reason": "Existing import SubmitButton now explicit hook pending label/disabled; no semantic acceptance",
+      "before": {
+        "label": "\"تأكيد الأيام المختارة\"",
+        "pendingLabel": "\"جارٍ إعادة الفحص والحفظ…\""
+      },
+      "after": {
+        "disabled": "{busy}",
+        "label": "{commitPending ? 'جارٍ إعادة الفحص والحفظ…' : 'تأكيد الأيام المختارة'}",
+        "pendingLabel": "\"جارٍ إعادة الفحص والحفظ…\""
+      }
     }
   ]
 }
