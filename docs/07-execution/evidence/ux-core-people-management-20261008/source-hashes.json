@@ -1,0 +1,26 @@
+{
+  "baseline": "07f19079f9e69a9b15603e3feb3fc2e1ae981365",
+  "normalization": "LF",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
+      "sha256": "affac9afd1960daee2b6d4a332058ff982b1206f651c4230735ecd48b8b726e7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
+      "sha256": "7084e11e995f2bfc5072228377bf5e2d1db91f0823eaaad9dd2a00e243e143e2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "sha256": "b55318c0b5d02b0cf11c330c9da4fcfe765dcacc147d9fd77cb3021779d92197"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx",
+      "sha256": "0e320d17dde63e7357a6eba0d4fc4bec43e722a1192db2787056458584ba3687"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people-management.module.css",
+      "sha256": "3c0ca9b9d9e6dc706ab0901e5c9a2ed33a766e8b813936f65a1152144b23bced"
+    }
+  ]
+}

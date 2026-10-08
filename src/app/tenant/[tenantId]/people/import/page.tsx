@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { WorkforceImportForm } from './WorkforceImportForm';
+import styles from '../people-management.module.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,9 +26,12 @@ export default async function WorkforceImportPage({ params }: { params: Promise<
     <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
       <h1>استيراد الموظفين</h1><p>افحص الملف كاملًا، راجع الصفوف، ثم أضف الصفوف التي وافقت عليها دفعة واحدة.</p></div></header>
     <section className="workspace-form-panel" aria-label="استيراد ملف الموظفين">
-      <div className="empty-state"><h2>ابدأ بالقالب المعتمد</h2>
-        <p>استخدم UTF-8، واحتفظ بأسماء الأعمدة كما هي. التاريخ بصيغة YYYY-MM-DD، وطريقة الأجر monthly أو daily، والرواتب true أو false. المبلغ بالجنيه المصري. أدخل القسم والوظيفة برمزهما؛ لا ينشئ الاستيراد عناصر تنظيمية جديدة.</p>
+      <div className={styles.importGuide}><h2>ابدأ بالقالب المعتمد</h2>
+        <p>نزّل القالب واملأ بيانات الموظفين، ثم اختر الملف أدناه لفحصه قبل الإضافة.</p>
         <a className="secondary-button" href="/templates/workforce-import.csv" download="workforce-import.csv">تنزيل قالب CSV</a>
+        <details><summary className={styles.taskSummary}>صيغة الملف والقيم المقبولة</summary>
+          <p className={styles.formatHelp}>استخدم UTF-8، واحتفظ بأسماء الأعمدة كما هي. التاريخ بصيغة <bdi>YYYY-MM-DD</bdi>، وطريقة الأجر <bdi>monthly</bdi> أو <bdi>daily</bdi>، والرواتب <bdi>true</bdi> أو <bdi>false</bdi>. المبلغ بالجنيه المصري. أدخل القسم والوظيفة برمزهما؛ لا ينشئ الاستيراد عناصر تنظيمية جديدة.</p>
+        </details>
       </div>
       <WorkforceImportForm tenantId={tenantId} />
     </section>

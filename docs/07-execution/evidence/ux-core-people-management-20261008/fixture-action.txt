@@ -1,0 +1,1 @@
+'use server'; export async function save(){await new Promise(r=>setTimeout(r,2500));return{error:'خطأ صناعي للتحقق من بقاء المدخلات.'};}

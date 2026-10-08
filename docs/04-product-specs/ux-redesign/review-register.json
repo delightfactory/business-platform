@@ -14710,7 +14710,7 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "R4 preview candidate: existing statuses retained, new GET/RPC/Dialog.Close/retry source slots pending; actual component synthetic evidence not real role/provider or semantic acceptance.",
+  "snapshotQualification": "R4 preview candidate: existing statuses retained, new GET/RPC/Dialog.Close/retry source slots pending; actual component synthetic evidence not real role/provider or semantic acceptance. Management WIP source differs; this register remains historical preview checkpoint until explicit migration. No WIP semantic acceptance.",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7,
   "entryControlIdMigrations": 14,

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import styles from '../people-management.module.css';
 
 export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
@@ -64,13 +65,13 @@ export default async function PeopleOrganizationPage({ params, searchParams }: {
         : invalidPage ? <p className="form-message form-error" role="alert">رقم الصفحة غير صالح.</p>
           : failed ? <div className="empty-state" role="alert"><h2>تعذر تحميل القائمة</h2>
             <p>تحقق من الاتصال والصلاحية، ثم أعد المحاولة.</p>
-            <Link className="secondary-button" href={base+`?kind=${kind}`}>إعادة المحاولة</Link></div>
+            <Link className="secondary-button" href={listingHref(tenantId,kind,rawQuery,page)}>إعادة المحاولة</Link></div>
             : items.length === 0 ? <div className="empty-state"><h2>{rawQuery ? 'لا توجد نتائج مطابقة' : kind==='departments'?'لا توجد أقسام مسجلة':'لا توجد وظائف مسجلة'}</h2>
               <p>{rawQuery ? 'جرّب اسمًا أو رمزًا مختلفًا.' : canManage ? `أضف ${kind==='departments'?'قسمًا':'وظيفة'} لتظهر في ملفات الموظفين.` : 'اطلب من مسؤول الموارد البشرية إضافة السجلات المطلوبة.'}</p>
               {canManage && !rawQuery && <Link className="secondary-button" href={`${base}/${kind}/new`}>إضافة {noun}</Link>}
             </div>
               : <>
-                <ul className="record-list">{items.map((item) => <li className="record-card" key={item.id}>
+                <ul className={styles.catalogGrid}>{items.map((item) => <li className="record-card" key={item.id}>
                   <div className="record-main"><div className="record-title-row"><h2>{item.name}</h2>
                     <span className={`entity-status ${item.effectively_active?'is-active':'is-inactive'}`}>
                       {item.effectively_active?'نشط':item.is_active?'غير متاح للتعيين':'غير نشط'}</span></div>

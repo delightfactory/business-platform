@@ -1,0 +1,18 @@
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  list-style: none;
+  background: var(--surface-subtle);
+}
+.catalogGrid > li { min-width: 0; border: 1px solid var(--color-border); border-radius: 0.5rem; background: var(--surface-base); overflow-wrap: anywhere; }
+.catalogGrid h2 { font-size: 1.05rem; }
+.taskSummary { padding: 0.8rem 1rem; min-height: 44px; border: 1px solid var(--color-border); border-radius: 0.5rem; background: var(--surface-base); font-weight: 600; cursor: pointer; }
+.taskSummary:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
+.importGuide { display: grid; gap: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; border: 1px solid var(--color-border); border-radius: 0.5rem; background: var(--surface-subtle); }
+.importGuide h2, .importGuide p { margin: 0; }
+.importGuide > a { justify-self: start; }
+.formatHelp { line-height: 1.9; padding: 0.75rem 0.25rem; }
+@media (max-width: 1100px) { .catalogGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .catalogGrid { grid-template-columns: minmax(0, 1fr); } }

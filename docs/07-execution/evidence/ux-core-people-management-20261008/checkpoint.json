@@ -1,0 +1,20 @@
+{
+  "status": "WIP SOURCE CHECKPOINT; NOT VISUALLY VERIFIED",
+  "baseline": "07f19079f9e69a9b15603e3feb3fc2e1ae981365",
+  "build": "grouped scoped lint/build/TS pass",
+  "preservation": "exact page RPC and input/editor props match baseline; import/editor/org forms and action sources unchanged",
+  "runtime": "actual Next + actual PolicyTask/WorkPolicyEditor + synthetic delayed action: close/reopen retains name; pending summary click keeps open; error appears with same name/code",
+  "open": [
+    "real parent renders390/768/1366",
+    "visual reference verdict",
+    "native noJS/keyboard/per-browser",
+    "org long names/layout",
+    "shared activeflag action runtime",
+    "import flow/provider/attempt provenance",
+    "real roles/mutations/privacy/financial",
+    "inventory source-ID migration/reconciliation",
+    "full R4"
+  ],
+  "reviewNote": "initial Claude max-turns reached; same-session report-only continuation completed, no reread. No visual acceptance.",
+  "serviceRetired": true
+}

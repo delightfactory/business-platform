@@ -1,0 +1,61 @@
+# Core R4 management: source/spec checkpoint verdict
+
+**Verdict: no must-fix items in the source I read.** It matches the spec's source-level claims. This is a source checkpoint only, not a passed qualification. Both visual verdicts are **NOT VISUALLY VERIFIED**, and full R4 stays open.
+
+## What the source supports
+
+**Import (`import/page.tsx:29-34`)**
+- The template download and the next-step sentence are always visible.
+- The exact file format is inside a native `<details>` element. The literal values (`YYYY-MM-DD`, `monthly`/`daily`, `true`/`false`) are wrapped in `<bdi>`, which keeps left-to-right text correct inside Arabic.
+- There's no step indicator and no claim about past import attempts.
+- `WorkforceImportForm` is only mounted here. The permission gate (all five access flags) and `Unavailable` look intact.
+
+**Organization (`organization/page.tsx`)**
+- An invalid query or page still skips the catalog RPC and shows the existing error (`:33`, `:64-65`).
+- Retry uses `listingHref(kind, rawQuery, page)`, so it keeps the current valid kind, query and page (`:68`).
+- The cards are a flat list of 3/2/1 columns (`people-management.module.css:1-18`). They show the same fields: name, status, code, parent or department, and the "effectively inactive" note.
+- Edit and Add links are still gated on `can_manage_org`. Paging is unchanged, and editing still happens on a separate page.
+
+**Policies (`work-policies/page.tsx`, `PolicyTask.tsx`)**
+- The create editor is wrapped in a native `<details>`. It renders before the catalog, which stays visible without the long form. The editor stays mounted, so typed values survive collapsing.
+- The pending guard works:
+  - `WorkPolicyEditor.tsx:70` sets `aria-busy={pending}` on the `<form>`, which is exactly what `PolicyTask.tsx` looks for.
+  - Summary clicks are blocked while that form is busy. Keyboard activation also fires a click, so it is covered too.
+  - `onToggle` reopens the disclosure if it closes while busy.
+- A save failure comes back through `useActionState` and shows inside the still-open form (`:192`). Only success redirects with `state=saved`.
+- The per-policy revision editor uses the same `PolicyTask` wrapper.
+- The activate/deactivate form sends the same three hidden fields (`tenantId`, `policyId`, `active`) and now uses `SubmitButton`, which disables the button while pending.
+- The "service not configured" state has a back link (`:17`).
+- The feedback toast messages are unchanged, and nothing turns a list load or an error into a success message.
+
+## Missing evidence
+
+1. **No baseline diff reviewed.** I didn't read the diff against `07f1907`. So the claims that nothing changed in `WorkforceImportForm`, `work-policy-actions.ts`, the CSV template, RPC arguments, fields, defaults and permissions rest on the current source only, not a comparison.
+2. **Lint/build/TS result not seen.** The grouped run's output isn't available to me, so I make no claim about it.
+3. **No runtime or role check.** Real SDK, roles, provider, mutations, financial and privacy behaviour, and the history of existing import attempts all still need grouped qualification on the actual journey.
+
+## Risks (not must-fix; they belong to the visual and journey gates)
+
+- **Layout coverage:**
+  - The catalog `<ul>` keeps the browser's default vertical margin.
+  - Global `.record-card` styles may conflict with the new grid cell.
+  - Long hierarchy names and codes need checking at 390, 768 and 1366 px.
+- **Simplicity:** the "you can close this and keep your inputs" hint repeats inside every revision disclosure. That's fine for now, but watch for noise on long catalogs. With an empty catalog, a creator sees the collapsed create disclosure above "no templates yet". It is discoverable, but not yet confirmed visually.
+- **Recovery:**
+  - If activate/deactivate fails, the redirect shows only a toast and the scroll position isn't verified.
+  - The "policies unavailable" state at `:20` uses an unstyled back link. It may predate this change; I didn't confirm because there's no diff (see missing evidence 1).
+
+## Open gates
+
+- Renders of the real parent pages at 390, 768 and 1366 px.
+- Checks for:
+  - long card contents and hierarchy
+  - policy reveal and value retention after collapsing
+  - the pending guard and the error state
+  - the shared action button states
+  - whether the import format help is easy to find
+- Confirmation that controls, RPCs and options are preserved, plus an independent grouped reference verdict from Claude.
+- Lint/build/TS output.
+- Real roles and mutations.
+
+I make no metric claims, and full R4 remains open.
