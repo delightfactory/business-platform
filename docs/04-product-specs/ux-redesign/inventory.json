@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "e51c50dcedba6a88d17af832df12b894f96ea811",
+  "sourceHead": "520006bd1d1287313ca8b4efd01420418a2074c1",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1150,7 +1150,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
       "phase": "R4",
-      "sha256": "763d4ef5a0e494385ad921a6da3174f2c0acd3a105ded53dc1f019c22f214e4c"
+      "sha256": "affac9afd1960daee2b6d4a332058ff982b1206f651c4230735ecd48b8b726e7"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
@@ -1180,12 +1180,17 @@
     {
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
       "phase": "R4",
-      "sha256": "21ea85263af73cf4e4ae3a71d4d9d9f1f9f50f9b2fc1b458d22d63e584785e52"
+      "sha256": "7084e11e995f2bfc5072228377bf5e2d1db91f0823eaaad9dd2a00e243e143e2"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
       "phase": "R4",
       "sha256": "af4df6c05f60a8d6c96595dc614d59d18f6a52d76cf6823fac07a8914f2fe256"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people-management.module.css",
+      "phase": "R4",
+      "sha256": "e3281c96dcc967b4d0dace8ded46e1ad117d0fbbf760ca3fdcec6f0780cc8c3c"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/people.module.css",
@@ -1198,6 +1203,11 @@
       "sha256": "6bd0436b91fcb72f582dd5f13653d12a9baee742f2ee8e3bf705ac527b6ba9f3"
     },
     {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx",
+      "phase": "R4",
+      "sha256": "0e320d17dde63e7357a6eba0d4fc4bec43e722a1192db2787056458584ba3687"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
       "phase": "R4",
       "sha256": "04a0203a41286b83f1bf8dc055b8747798cf90b9401d0ce60c9221e8e7484c25"
@@ -1205,7 +1215,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
       "phase": "R4",
-      "sha256": "1bce02d6a25bf47d3d80cbab50ca74048bb4e3268bdc1f7cb4ea8e5a3366021d"
+      "sha256": "9c2bffb0b5df55a68634f52f7ef996506649c966f264787409049a6cfe61ad0c"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policy-actions.ts",
@@ -6243,9 +6253,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:18:937",
+      "id": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:19:990",
       "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
-      "line": 18,
+      "line": 19,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6313,9 +6323,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:31:1940",
+      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:32:1993",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 31,
+      "line": 32,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6323,9 +6333,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:33:2094",
+      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:34:2147",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 33,
+      "line": 34,
       "phase": "R4",
       "name": "people_org_catalog",
       "expression": null,
@@ -6393,9 +6403,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:17:1911",
+      "id": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:20:2212",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 17,
+      "line": 20,
       "phase": "R4",
       "name": "time_work_policy_catalog",
       "expression": null,
@@ -7587,6 +7597,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:66:5602",
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "line": 66,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:68:5929",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 68,
@@ -7671,6 +7689,14 @@
       "attributes": {
         "type": "\"submit\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7610",
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "line": 79,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7879",
@@ -8134,6 +8160,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2891",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 41,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/operator/operators/page.tsx:45:3200",
       "file": "src/app/operator/operators/page.tsx",
       "line": 45,
@@ -8164,6 +8198,16 @@
         "type": "\"hidden\"",
         "name": "\"action\"",
         "value": "\"grant\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4801",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 65,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {
+        "aria-label": "{`${grant.is_active ? 'تعديل مهام' : 'إعادة منح مهام'} ${grant.email}`}"
       }
     },
     {
@@ -8198,6 +8242,16 @@
       "phase": "R3",
       "attributes": {
         "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:75:5963",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 75,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {
+        "aria-label": "{`سحب صلاحية ${grant.email}`}"
       }
     },
     {
@@ -8402,6 +8456,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:4099",
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "line": 30,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:4396",
       "file": "src/app/operator/statutory/DraftForm.tsx",
       "line": 32,
@@ -8444,6 +8506,14 @@
         "name": "\"numericRules\"",
         "value": "{JSON.stringify(enabled?rules:null)}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:15:2761",
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "line": 15,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:15:2839",
@@ -8594,6 +8664,14 @@
       "attributes": {
         "type": "\"button\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9683",
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "line": 30,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:13:2122",
@@ -8888,6 +8966,54 @@
       }
     },
     {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceStatus.tsx:8:1546",
+      "file": "src/app/operator/statutory/comparisons/IssuanceStatus.tsx",
+      "line": 8,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceStatus.tsx:8:1945",
+      "file": "src/app/operator/statutory/comparisons/IssuanceStatus.tsx",
+      "line": 8,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:23:4009",
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "line": 23,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:24:5166",
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "line": 24,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:25:4349",
+      "file": "src/app/operator/statutory/page.tsx",
+      "line": 25,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:27:5712",
+      "file": "src/app/operator/statutory/page.tsx",
+      "line": 27,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2396",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "line": 41,
@@ -8906,6 +9032,14 @@
       "attributes": {
         "type": "\"submit\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:62:4161",
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "line": 62,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:65:4691",
@@ -9123,6 +9257,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:77:8691",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 77,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:78:8768",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 78,
@@ -9300,6 +9442,14 @@
         "pendingLabel": "\"جارٍ الحفظ...\"",
         "label": "\"استبعاد مع حفظ الدليل\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:94:10483",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 94,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:95:10557",
@@ -10379,6 +10529,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx:15:2672",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
+      "line": 15,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx:15:2711",
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
       "line": 15,
@@ -10415,6 +10573,30 @@
       "attributes": {}
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx:19:4869",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
+      "line": 19,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:16:4405",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "line": 16,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:16:5034",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "line": 16,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:16:5067",
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
       "line": 16,
@@ -10447,6 +10629,22 @@
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
       "line": 16,
       "tag": "button",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6018",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "line": 17,
+      "tag": "summary",
+      "phase": "R5",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6190",
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "line": 17,
+      "tag": "summary",
       "phase": "R5",
       "attributes": {}
     },
@@ -10739,6 +10937,80 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:55:3804",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 55,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:60:4199",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 60,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:66:4689",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 66,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:69:4951",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 69,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:91:6797",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 91,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {
+        "aria-label": "{`إجراءات فرع ${site.display_name}`}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:93:7007",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 93,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:96:7355",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 96,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:100:7744",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 100,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:106:8333",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "line": 106,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:11:494",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
       "line": 11,
@@ -10865,6 +11137,14 @@
         "label": "\"إضافة الجهة\"",
         "pendingLabel": "\"جارٍ الإضافة…\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:171:7363",
+      "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+      "line": 171,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:180:7996",
@@ -11044,6 +11324,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:261:13412",
+      "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+      "line": 261,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:263:13582",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
       "line": 263,
@@ -11052,6 +11340,30 @@
       "attributes": {
         "type": "\"button\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:189:10268",
+      "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+      "line": 189,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:197:10878",
+      "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+      "line": 197,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:214:12000",
+      "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+      "line": 214,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:14:1516",
@@ -11147,6 +11459,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:22:2977",
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "line": 22,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:24:3338",
       "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
       "line": 24,
@@ -11234,6 +11554,14 @@
         "value": "\"post\"",
         "disabled": "{!ready||!quote.eligible||reason.trim().length<3}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:41:6083",
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "line": 41,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:42:6611",
@@ -11758,6 +12086,38 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:165:8880",
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "line": 165,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:185:10482",
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "line": 185,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:212:12936",
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "line": 212,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:278:16422",
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "line": 278,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/CalendarRuleFields.tsx:40:1300",
       "file": "src/app/tenant/[tenantId]/leave/settings/CalendarRuleFields.tsx",
       "line": 40,
@@ -11918,6 +12278,30 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:89:3738",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "line": 89,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:129:6082",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "line": 129,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6582",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "line": 141,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:27:889",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
       "line": 27,
@@ -11985,6 +12369,14 @@
         "type": "\"date\"",
         "disabled": "{pending}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:53:2279",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+      "line": 53,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:56:2455",
@@ -12299,6 +12691,30 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:99:4240",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "line": 99,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6679",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "line": 144,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:152:7160",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "line": 152,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:26:816",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
       "line": 26,
@@ -12354,6 +12770,14 @@
         "type": "\"date\"",
         "disabled": "{pending}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:46:1842",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
+      "line": 46,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:49:2012",
@@ -12846,6 +13270,38 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:98:5691",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "line": 98,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:122:7126",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "line": 122,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:165:9931",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "line": 165,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:177:10676",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "line": 177,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:120:5200",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
       "line": 120,
@@ -13239,6 +13695,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4136",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "line": 29,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4532",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
       "line": 29,
@@ -13447,6 +13911,22 @@
       "attributes": {}
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:54:8260",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 54,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:54:8645",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 54,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:55:9305",
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
       "line": 55,
@@ -13483,6 +13963,46 @@
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
       "line": 55,
       "tag": "button",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:10387",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 56,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:10944",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 56,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:11151",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 56,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:11376",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 56,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:57:11883",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 57,
+      "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
@@ -13599,6 +14119,14 @@
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
       "line": 61,
       "tag": "button",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:63:14808",
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "line": 63,
+      "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
@@ -14260,6 +14788,30 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:83:16159",
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "line": 83,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:87:18783",
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "line": 87,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:91:20936",
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "line": 91,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:493",
       "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
       "line": 8,
@@ -14504,6 +15056,22 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8565",
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "line": 28,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:9077",
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "line": 28,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11638",
       "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
       "line": 31,
@@ -14664,6 +15232,22 @@
       "attributes": {}
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:50:8530",
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "line": 50,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:53:10175",
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "line": 53,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:41:3796",
       "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
       "line": 41,
@@ -14736,6 +15320,14 @@
       "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
       "line": 86,
       "tag": "button",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:100:11112",
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "line": 100,
+      "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
@@ -14967,6 +15559,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4677",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+      "line": 34,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5286",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 35,
@@ -15013,6 +15613,22 @@
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 35,
       "tag": "button",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:6610",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+      "line": 39,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:7201",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+      "line": 39,
+      "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
@@ -15149,6 +15765,14 @@
         "aria-label": "\"الفترة السابقة\"",
         "name": "\"previous\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9412",
+      "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
+      "line": 48,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9608",
@@ -15452,6 +16076,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:61:5924",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "line": 61,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6587",
       "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
       "line": 69,
@@ -15543,6 +16175,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7822",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "line": 70,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7921",
       "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
       "line": 70,
@@ -15563,6 +16203,22 @@
         "name": "\"operation\"",
         "value": "\"cancel\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx:29:2931",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
+      "line": 29,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx:42:2951",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx",
+      "line": 42,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:31:4941",
@@ -15651,6 +16307,38 @@
       "attributes": {}
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:54:20610",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "line": 54,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:54:21072",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "line": 54,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:55:23068",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "line": 55,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:56:23512",
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "line": 56,
+      "tag": "summary",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/setup/page.tsx:29:4333",
       "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
       "line": 29,
@@ -15709,6 +16397,14 @@
       "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
       "line": 29,
       "tag": "button",
+      "phase": "R7",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/setup/page.tsx:45:9159",
+      "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "line": 45,
+      "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
@@ -15831,6 +16527,14 @@
         "label": "\"إلغاء تغيير الأجر المقرر\"",
         "pendingLabel": "\"جارٍ الإلغاء…\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:69:5245",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "line": 69,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:70:5291",
@@ -16317,6 +17021,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:60:4569",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 60,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:61:4613",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
       "line": 61,
@@ -16394,6 +17106,14 @@
         "label": "\"إنهاء علاقة العمل\"",
         "pendingLabel": "\"جارٍ إنهاء العلاقة…\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:86:6696",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 86,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:89:7075",
@@ -16593,6 +17313,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:99:7895",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 99,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:102:8242",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
       "line": 102,
@@ -16701,6 +17429,14 @@
         "label": "\"حفظ تغيير العمل\"",
         "pendingLabel": "\"جارٍ حفظ التغيير…\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:141:11603",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 141,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:144:11943",
@@ -17145,6 +17881,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/page.tsx:32:2214",
+      "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
+      "line": 32,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:36:2237",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
       "line": 36,
@@ -17404,17 +18148,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:57:3907",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3960",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 57,
+      "line": 58,
       "tag": "form",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3981",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:59:4034",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 58,
+      "line": 59,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17424,9 +18168,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:60:4117",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4170",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 60,
+      "line": 61,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17435,14 +18179,22 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4224",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:62:4277",
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
-      "line": 61,
+      "line": 62,
       "tag": "button",
       "phase": "R4",
       "attributes": {
         "type": "\"submit\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx:12:485",
+      "file": "src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx",
+      "line": 12,
+      "tag": "summary",
+      "phase": "R4",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:70:3523",
@@ -17807,9 +18559,29 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:28:3234",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 40,
+      "line": 28,
+      "tag": "PolicyTask",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إنشاء قالب دوام\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:38:5184",
+      "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "line": 38,
+      "tag": "PolicyTask",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إنشاء إصدار جديد\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5505",
+      "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "line": 42,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17817,9 +18589,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5277",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5546",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 40,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17829,9 +18601,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5601",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 40,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17841,9 +18613,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5388",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5657",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 40,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17853,13 +18625,14 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5458",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5727",
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 40,
-      "tag": "button",
+      "line": 42,
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "{policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'}",
+        "pendingLabel": "\"جارٍ تحديث إتاحة القالب…\""
       }
     },
     {
@@ -18019,6 +18792,14 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:130:13199",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 130,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:132:13550",
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
       "line": 132,
@@ -18074,6 +18855,14 @@
         "label": "\"حفظ الحزم\"",
         "pendingLabel": "\"جارٍ الحفظ…\""
       }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:146:14546",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 146,
+      "tag": "summary",
+      "phase": "R2",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:150:15071",
@@ -18459,7 +19248,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 264,
+    "sourceFiles": 266,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
@@ -18467,7 +19256,7 @@
     "rpcCallSites": 342,
     "uniqueLiteralRpcs": 215,
     "dynamicRpcSites": 6,
-    "formControls": 1058,
+    "formControls": 1154,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

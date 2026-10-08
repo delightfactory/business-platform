@@ -1,0 +1,28 @@
+# Core R4 management: final visual check
+
+**Verdict: MATCH WITH ACCEPTED DEVIATIONS.** This covers the corrected shared visual language and page body only: card surfaces, controls, type and hierarchy. It is not an acceptance of any full management screen, and full R4 stays open.
+
+**Neither original must-fix remains:**
+1. **Policy catalog padding — fixed.** In `policy-final-1366` and `policy-final-390`, the "القوالب المسجلة" heading is now inset from the panel edge. Each policy is its own bordered card: two columns at 1366, one at 390. Inside each card, the status chip, details, revision disclosure and deactivate button are padded and nothing is clipped.
+2. **Date format wrapping — fixed.** In `import-final-open-390`, `YYYY-MM-DD` stays on one line. The other format values (`UTF-8`, `monthly`/`daily`, `true`/`false`) also show as whole words.
+
+**Deviations:** 8px radius, bordered cards without avatars, native search with a separate button, and times shown with seconds. These follow the existing frontend contract (Cairo font, 8px radius, 40–44px controls). They are not new owner approvals.
+
+**Organization:** the earlier verdict carries over (MATCH WITH ACCEPTED DEVIATIONS).
+
+## Limits and open gates
+
+- **Evidence base:** source-rendered pages with synthetic data, a synthetic parent frame and simulated roles. It is not Next hydration or the full layout, and it is not a pixel match to Concept C, which has no management screens.
+- **States not seen:**
+  - the policy create and revision editors when open
+  - error and toast states
+  - the activate/deactivate pending state
+  - where focus goes after the pending guard reopens a form
+  - org empty, failed and retry
+  - the org 768 capture (only Codex inspected it)
+- **Not visually confirmed:** the native pending guard and input retention passed their earlier test, but I haven't seen them on screen. Behaviour with JavaScript off hasn't been observed.
+- **Runtime:** real roles, provider, mutations, financial and privacy checks, and the history of existing import attempts are still open.
+- **Scroll measurement:** the catalog heading moved from y 2243.42 to 399.20. That shows less scrolling only, not task completion or speed.
+- **Plan order:** core R0–R8 comes first. D16 is deferred and D2/D3/D8 are pending.
+
+No further polish is needed for this checkpoint.

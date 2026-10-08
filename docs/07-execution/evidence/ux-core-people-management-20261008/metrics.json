@@ -1,0 +1,24 @@
+{
+  "scope": "Controlled source-rendered same role/data/task/1366 viewport. Scroll position only, not N/C/I/task completion.",
+  "policyCatalogHeading": {
+    "beforeY": 2243.418701171875,
+    "afterY": 399.2000122070313
+  },
+  "creatorRevealTradeoff": "one additional activation; inputs always mounted",
+  "organizationColumns": {
+    "390": 1,
+    "768": 2,
+    "1366": 3
+  },
+  "policyCard390": {
+    "clientWidth": 308,
+    "scrollWidth": 308
+  },
+  "dateFormat390": {
+    "whiteSpace": "nowrap",
+    "rectWidth": 95.28,
+    "rectHeight": 30
+  },
+  "documentOverflowObserved": false,
+  "overallJourneyAcceptance": "not-run"
+}

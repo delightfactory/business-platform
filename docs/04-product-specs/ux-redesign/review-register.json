@@ -4454,7 +4454,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:18:937",
+      "id": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:19:990",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4517,7 +4517,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:31:1940",
+      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:32:1993",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4526,7 +4526,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:33:2094",
+      "id": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:34:2147",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4589,7 +4589,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:17:1911",
+      "id": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:20:2212",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -13265,7 +13265,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:57:3907",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3960",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13274,7 +13274,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3981",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:59:4034",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13283,7 +13283,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:60:4117",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4170",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13292,7 +13292,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4224",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:62:4277",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13598,7 +13598,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5505",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13607,7 +13607,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5277",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5546",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13616,7 +13616,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5601",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13625,7 +13625,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5388",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5657",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13634,7 +13634,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5458",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5727",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14708,9 +14708,873 @@
       "scenarioIds": [],
       "reviewer": null,
       "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:66:5602",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7610",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2891",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4801",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:75:5963",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:4099",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:15:2761",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9683",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceStatus.tsx:8:1546",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceStatus.tsx:8:1945",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:23:4009",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:24:5166",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:25:4349",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:27:5712",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:62:4161",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:77:8691",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:94:10483",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx:15:2672",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx:19:4869",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:16:4405",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:16:5034",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6018",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6190",
+      "category": "formControls",
+      "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:55:3804",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:60:4199",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:66:4689",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:69:4951",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:91:6797",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:93:7007",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:96:7355",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:100:7744",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx:106:8333",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:171:7363",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:261:13412",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:189:10268",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:197:10878",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx:214:12000",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:22:2977",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:41:6083",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:165:8880",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:185:10482",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:212:12936",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx:278:16422",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:89:3738",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:129:6082",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6582",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:53:2279",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:99:4240",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6679",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:152:7160",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:46:1842",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:98:5691",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:122:7126",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:165:9931",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:177:10676",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4136",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:54:8260",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:54:8645",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:10387",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:10944",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:11151",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:56:11376",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:57:11883",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/page.tsx:63:14808",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:83:16159",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:87:18783",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/page.tsx:91:20936",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8565",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:9077",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:50:8530",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:53:10175",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:100:11112",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4677",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:6610",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:7201",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9412",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:61:5924",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7822",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx:29:2931",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx:42:2951",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:54:20610",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:54:21072",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:55:23068",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:56:23512",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/setup/page.tsx:45:9159",
+      "category": "formControls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:69:5245",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:60:4569",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:86:6696",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:99:7895",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:141:11603",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/page.tsx:32:2214",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx:12:485",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:28:3234",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:38:5184",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:130:13199",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:146:14546",
+      "category": "formControls",
+      "phase": "R2",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
     }
   ],
-  "snapshotQualification": "R4 preview candidate: existing statuses retained, new GET/RPC/Dialog.Close/retry source slots pending; actual component synthetic evidence not real role/provider or semantic acceptance. Management WIP source differs; this register remains historical preview checkpoint until explicit migration. No WIP semantic acceptance.",
+  "snapshotQualification": "Current management candidate structural reconciliation; existing review states preserved. Newly inventoried native summary and PolicyTask usages pending. Scoped synthetic presentation evidence never promotes semantic/runtime acceptance.",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7,
   "entryControlIdMigrations": 14,
@@ -14771,6 +15635,86 @@
       "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:37:2573",
       "category": "rpcCalls",
       "reason": "unchanged contract source position shifted"
+    }
+  ],
+  "managementMigrations": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:18:937",
+      "to": "RPC:src/app/tenant/[tenantId]/people/import/page.tsx:19:990",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:31:1940",
+      "to": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:32:1993",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:33:2094",
+      "to": "RPC:src/app/tenant/[tenantId]/people/organization/page.tsx:34:2147",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:17:1911",
+      "to": "RPC:src/app/tenant/[tenantId]/people/work-policies/page.tsx:20:2212",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:57:3907",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3960",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:58:3981",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:59:4034",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:60:4117",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4170",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:61:4224",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/organization/page.tsx:62:4277",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5236",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5505",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5277",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5546",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5332",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5601",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5388",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5657",
+      "category": "formControls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:40:5458",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/page.tsx:42:5727",
+      "category": "formControls",
+      "reason": "existing activate/deactivate submit replaced by shared pending SubmitButton; same form payload"
     }
   ]
 }

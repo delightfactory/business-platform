@@ -1,0 +1,42 @@
+# Core R4 management: visual review against pinned Concept C
+
+**Overall: CHANGES REQUIRED.** Two fixes are needed, both presentation-only. Approval state: **not approved**. Full R4 stays open.
+
+**What this covers:** only the shared visual language and the page body: card surfaces, controls, type and hierarchy. It does not cover the parent frame or sidebar, which are synthetic here. Concept C has no organization, policy or import screen, so this is not a pixel match and not an acceptance of any full form. I read the six final candidate images and the two people-directory reference renders.
+
+| Screen | Verdict |
+|---|---|
+| Organization, 1366 and 390 | **MATCH WITH ACCEPTED DEVIATIONS** |
+| Import, 390 closed and open | **CHANGES REQUIRED** (must-fix 2) |
+| Policies, 1366 and 390 | **CHANGES REQUIRED** (must-fix 1) |
+
+## Must-fix
+
+1. **Policy catalog content touches the panel edge.** In `policy-after-1366` and `policy-after-390`, the "القوالب المسجلة" heading, the policy name, status and detail lines all sit flush against the panel's right border. Nothing separates one policy as its own card. The create panel directly above it is padded, so the catalog breaks the Concept C card style on the same page.
+   - **Fix:** add inner padding and a per-policy card surface to the catalog, using existing classes. No change to fields, wording or actions.
+   - I can't tell from screenshots whether this was already there at baseline. It's in the candidate either way.
+2. **The date format splits across lines at 390.** In `import-open-390`, the format help wraps `YYYY-MM-DD` as "-YYYY" on one line and "MM-DD" on the next. That makes the exact required format ambiguous, which is what this help text exists to prevent.
+   - **Fix:** in `people-management.module.css`, stop the `<bdi>` values inside `.formatHelp` from wrapping (`white-space: nowrap`). No text change.
+
+## Accepted deviations (within the existing contract; owner acceptance not recorded)
+
+- The cards use 8px radius, a border and no avatars. The reference cards are softer and use a larger radius.
+- These pages have no global search pill, because native search with a separate button is the existing contract.
+- Each page shows one status chip per record.
+- Times show seconds (`09:00:00`). That comes from existing data formatting and isn't part of this delta.
+
+## What looks consistent
+
+- **Organization:** white cards with a border on a subtle background. Long names wrap without overflow. Status chips match the reference's tone. Add, Edit and pagination controls look about 40–44px tall, judged by eye (not measured). The tab and search layout is clear, and the cards drop from 3 to 1 columns at 390.
+- **Import:** the template download and next step stay visible. The format details are closed by default and open natively.
+- **Policies:** the create task is collapsed above the catalog, so the catalog is visible without the long form.
+
+## Open gates
+
+- **States not seen:** org empty, failed and retry; policy create opened; the revision editor; error and toast states; the activate/deactivate pending state; the org-final-768 tablet capture, which only Codex inspected.
+- **Policy full form:** visuals of the open editor at all three widths, how long the form gets, and where focus goes after the guard reopens it.
+- **No-JS:** native disclosure and form posting without JavaScript haven't been observed.
+- **Real environment:** Next hydration, real roles, provider and mutations, financial and privacy checks, and the history of existing import attempts.
+- **Re-capture:** after the two fixes, re-capture policy at 390/1366 and import-open at 390. If source changes, the scoped lint/TS check needs re-running.
+
+The y-position change you measured (catalog heading at 2243.4 before, 399.1 after) only shows less scrolling. It is not evidence of task completion. D2/D3/D8 are pending and D16 is deferred.

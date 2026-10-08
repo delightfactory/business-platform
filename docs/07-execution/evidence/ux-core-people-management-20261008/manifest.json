@@ -1,0 +1,153 @@
+{
+  "baseline": "07f19079f9e69a9b15603e3feb3fc2e1ae981365",
+  "sourceCheckpoint": "520006bd1d1287313ca8b4efd01420418a2074c1",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/people-management.module.css",
+      "sha256": "e3281c96dcc967b4d0dace8ded46e1ad117d0fbbf760ca3fdcec6f0780cc8c3c",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx",
+      "sha256": "0e320d17dde63e7357a6eba0d4fc4bec43e722a1192db2787056458584ba3687",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "sha256": "9c2bffb0b5df55a68634f52f7ef996506649c966f264787409049a6cfe61ad0c",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
+      "sha256": "7084e11e995f2bfc5072228377bf5e2d1db91f0823eaaad9dd2a00e243e143e2",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
+      "sha256": "affac9afd1960daee2b6d4a332058ff982b1206f651c4230735ecd48b8b726e7",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "sha256": "04a0203a41286b83f1bf8dc055b8747798cf90b9401d0ce60c9221e8e7484c25",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
+      "sha256": "3dad3147eeb4ede6d2d5f8b3ca5275124532958bdb30c24c61a1b9c07ffaca96",
+      "normalization": "LF"
+    },
+    {
+      "file": "scripts/build-ux-inventory.cjs",
+      "sha256": "093334dee8be0d8abc00b22c7de8ba5362d7f6feb3ca52b48c7b16fc9d7bcfdf",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "checkpoint.json",
+      "sha256": "55da7d949577046c24bd7affb29b6fea6e1e1d77c167cf1292a8a2d70693b72d",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-final-visual-review.txt",
+      "sha256": "05a4ab331361af65d909683b0a640e132e7e0d3f683eba817b405e5d25436263",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-source-review.txt",
+      "sha256": "a63036b2cae06ecd5842fe064cdf4f7e0221e0a565eb0a45f2eb5b1c5f90e080",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-visual-review.txt",
+      "sha256": "1cb439c7d90f6baee5ba995e2ae921c39a24b064941fd39513bc6b92566c30f6",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-action.txt",
+      "sha256": "5988958c41a9974220e6a8dadbff8ede3965b0f3b6f6602a9a706f928077db0a",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-page.txt",
+      "sha256": "2b60838bd9da0356e980958903b896fc03544e16d491ed4405d9667f7ca32e25",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "import-closed-390.jpg",
+      "sha256": "74aa07ee7dfc74c8ec3dc8bcb50c5f84bd65bd41cef6f168aba6fbb92ef18cdb",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "import-final-open-390.jpg",
+      "sha256": "c8b5521d9eeff4eaea980628b277f276163aa2495d6e14d7e6943cfaf5b7919f",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "49103d3a0b76e33ae1c803b2419b5e43f8398e35d9dc4db035325a0dfdcd9a64",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "management-pages.cjs",
+      "sha256": "695caa6b04f5f7635490c0fff1d7cc824d1fb22422210cd4709f29a0cb9f308e",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "metrics.json",
+      "sha256": "4fcd4e309b42c1e9a4162466a2ec65c1824ffdd88a4053b25f0729ef741d6ddd",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "org-final-1366.jpg",
+      "sha256": "e41ee4f83fb77487944a9285e92ddaa24c2326e2ce46ab3907c9eb736d125f30",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "org-final-390.jpg",
+      "sha256": "c4d5b7a82800828ad081324bb8f4c35d35cccb7eae44be3cd5d6cfc074f0bc34",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "org-final-768.jpg",
+      "sha256": "edd74aa55b72b2ed30c6c0445bf9857e0178d1ce5b525e474dbf2d40cda327ea",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "page-results.json",
+      "sha256": "0d5224c8c6efa683039cd9983913d74c7ceaf4e3897d58c8796d63150689050c",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "policy-before-1366.jpg",
+      "sha256": "fd98358197110bba9a73934e4fcd4280f745f5e0e93b66ab6b7462f69c9f7802",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "policy-final-1366.jpg",
+      "sha256": "09136edc994513cfa79036b79fcfa8aa094c72fb52e0e7bf05b04ba4867ef799",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "policy-final-390.jpg",
+      "sha256": "f76121e0e736ce9f2e65ab23c120e095dd59e769590c8fcded560a5efa52672e",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "policy-retained-error.jpg",
+      "sha256": "30bb5e961f1bbba470ddd30737a003086ec7bfa6c4fc7b0fcb4b0475e5fa1a11",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "e02a20019dad0c8f3dc6855e5aaa511f048f00e9e49f12a6eef60e12541997d3",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "source-hashes.json",
+      "sha256": "dea45996746553772ff33639c7468f0285d4fa81f138caf9937d3e7e9686f7dc",
+      "normalization": "LF trimEnd+newline"
+    }
+  ]
+}

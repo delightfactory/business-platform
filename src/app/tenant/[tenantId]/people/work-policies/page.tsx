@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { saveWorkPolicyAction, setWorkPolicyActiveAction } from '../work-policy-actions';
 import { WorkPolicyEditor } from './WorkPolicyEditor';
 import { PolicyTask } from './PolicyTask';
+import styles from '../people-management.module.css';
 import { SubmitButton } from '@/components/submit-button';
 import { isUuid } from '../../leave/rules';
 
@@ -27,7 +28,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
   {result.can_manage && <PolicyTask className="workspace-records-panel work-policy-create-panel" label="إنشاء قالب دوام"><div className="work-policy-panel-heading"><p>حدد نوع الجدول وأيامه ومواعيده قبل إتاحته للتعيين.</p></div>
    <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} returnToRequest={returnToRequest} />
   </PolicyTask>}
-  <section className="workspace-records-panel"><h2>القوالب المسجلة</h2>{result.items.length ? <div className="workspace-record-grid">{result.items.map((policy)=><article className="workspace-record-card" key={policy.id}>
+  <section className={`workspace-records-panel ${styles.policyCatalog}`}><h2>القوالب المسجلة</h2>{result.items.length ? <div className={styles.policyGrid}>{result.items.map((policy)=><article className={styles.policyCard} key={policy.id}>
    <div className="workspace-record-heading"><h3>{policy.name}</h3><span className={`entity-status ${policy.is_active?'is-active':'is-inactive'}`}>{policy.is_active?'متاح للتعيين':'موقوف'}</span></div>
    <p>الرمز: <bdi>{policy.code}</bdi> · الإصدار {policy.head_version} · {policy.schedule_kind==='fixed'?'وردية ثابتة':'ساعات مرنة'}</p>
    <p>{policy.schedule_kind==='fixed'?`${policy.shift_start} – ${policy.shift_end}${policy.ends_next_day?' (اليوم التالي)':''}`:`${policy.required_minutes} دقيقة متوقعة`} · {policy.timezone_name}</p>

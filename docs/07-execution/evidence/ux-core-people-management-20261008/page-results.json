@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "state": "ready",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "ready",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "ready",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "readonly",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "readonly",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "readonly",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "empty",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "empty",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "empty",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "failed",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "failed",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "failed",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "unconfigured",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "unconfigured",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "unconfigured",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "pending",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "pending",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "pending",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "jobs",
+      "kind": "import",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "jobs",
+      "kind": "organization",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    },
+    {
+      "state": "jobs",
+      "kind": "policies",
+      "result": "pass",
+      "rpcAndFieldsPreserved": true
+    }
+  ],
+  "boundary": "Actual page/client source, controlled SDK/hooks/static render; not actual project SDK/auth, hydration or mutation"
+}
