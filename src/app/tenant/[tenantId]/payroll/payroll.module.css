@@ -1,4 +1,12 @@
 .workspace { display: grid; gap: var(--space-4, 1.5rem); min-width: 0; }
+.progress { margin-block-start: 1rem; padding-block-start: 1rem; border-block-start: 1px solid var(--color-border); }
+.progressCurrent { font-weight: 700; }
+.progressDetails summary { cursor: pointer; min-height: var(--touch-target-size); }
+.progressList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; padding: 0; list-style-position: inside; }
+.progressList li { padding: .75rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--surface-subtle); }
+.progressList li[aria-current="step"] { border-color: var(--color-control-border); font-weight: 700; }
+@media (min-width: 901px) { .progressDetails { display: none; } }
+@media (max-width: 900px) { .progressDesktop { display: none; } .progressList { grid-template-columns: 1fr; } }
 .fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
 .fields label { display: grid; gap: .5rem; min-width: 0; }
 .fields input,.fields select { width: 100%; min-width: 0; }

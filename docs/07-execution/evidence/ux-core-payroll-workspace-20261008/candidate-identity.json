@@ -1,0 +1,17 @@
+{
+  "baseline": "4e0bb0a61fe8b68093278cd653dff1a094f00f36",
+  "hashes": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "30cfa087e75e12e1c170b2a92d1c809d16eabc98c476d71a2ab665abaa88b7e0"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/PayrollStepper.tsx",
+      "sha256": "35ed0afa5d558db13904027cfaa09e3d670c005c2cfd24fb1cbd489cfcbb6cad"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+      "sha256": "d02f665f387e6c288e56d9a8dc1bf5d4363c6dda2e874dcbfbd548b3b5dc3eb4"
+    }
+  ]
+}

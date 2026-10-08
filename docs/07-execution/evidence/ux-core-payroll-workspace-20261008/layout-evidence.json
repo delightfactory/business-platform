@@ -1,0 +1,96 @@
+[
+  {
+    "scene": "review-prepare",
+    "current": [],
+    "currentNote": "المرحلة الحالية: الحساب والمراجعة",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 677.4375,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "locked-payment",
+    "current": [],
+    "currentNote": "المرحلة الحالية: الصرف والقسائم",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 529.4375,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "unexpected-output",
+    "current": [],
+    "currentNote": "لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 677.4375,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "review-prepare",
+    "current": [],
+    "currentNote": "المرحلة الحالية: الحساب والمراجعة",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 595.8375244140625,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "locked-payment",
+    "current": [],
+    "currentNote": "المرحلة الحالية: الصرف والقسائم",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 519.8375244140625,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "unexpected-output",
+    "current": [],
+    "currentNote": "لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.",
+    "desktopListVisible": false,
+    "mobileDetailsVisible": true,
+    "primaryTop": 595.8375244140625,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "review-prepare",
+    "current": [
+      "الحساب والمراجعة · الحالية"
+    ],
+    "currentNote": "المرحلة الحالية: الحساب والمراجعة",
+    "desktopListVisible": true,
+    "mobileDetailsVisible": false,
+    "primaryTop": 595.8375244140625,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "locked-payment",
+    "current": [
+      "الصرف والقسائم · الحالية"
+    ],
+    "currentNote": "المرحلة الحالية: الصرف والقسائم",
+    "desktopListVisible": true,
+    "mobileDetailsVisible": false,
+    "primaryTop": 519.8375244140625,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "unexpected-output",
+    "current": [],
+    "currentNote": "لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.",
+    "desktopListVisible": true,
+    "mobileDetailsVisible": false,
+    "primaryTop": 595.8375244140625,
+    "scrollWidth": 1351,
+    "width": 1366
+  }
+]

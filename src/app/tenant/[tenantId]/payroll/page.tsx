@@ -5,6 +5,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { displayDate, uuid } from './rules';
 import { issueNames, money, type Issue } from './runs/rules';
 import styles from './payroll.module.css';
+import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
@@ -67,7 +68,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const periodId = work?.period.id ?? query.period ?? '', runLink = scope('/runs', { period: periodId }), inputsLink = scope('/inputs', { period: periodId });
   const final = work?.run?.status === 'locked' || work?.run?.status === 'superseded', stale = Boolean(work?.stale_reasons.length);
   const candidate = Boolean(work?.run && work.run.status !== 'cancelled' && !final);
-  const status = !work ? periods.length ? 'اختر الفترة التي تريد مراجعتها' : 'يلزم مراجعة الفترة المحفوظة' : !work.run || work.run.status === 'cancelled' ? 'لم يبدأ تحضير مسير لهذه الفترة' : work.run.status === 'superseded' ? 'مسير مستبدل محفوظ في التاريخ' : work.run.status === 'locked' ? 'مسير نهائي محفوظ' : stale ? 'تغيّرت بيانات تؤثر على المسير' : work.run.status === 'approved' ? 'مرشح معتمد' : work.run.status === 'review' ? 'مرشح قيد المراجعة' : 'التحضير جارٍ';
+  const status = !work ? periods.length ? 'اختر الفترة التي تريد مراجعتها' : 'يلزم مراجعة الفترة المحفوظة' : !work.run || work.run.status === 'cancelled' ? 'لم يبدأ تحضير مسير لهذه الفترة' : work.run.status === 'superseded' ? 'مسير مستبدل محفوظ في التاريخ' : work.run.status === 'locked' ? 'مسير نهائي محفوظ' : stale ? 'تغيّرت بيانات تؤثر على المسير' : work.run.status === 'approved' ? 'مرشح معتمد' : work.run.status === 'review' ? 'مرشح قيد المراجعة' : work.run.status === 'draft' ? 'التحضير جارٍ' : 'حالة المسير تحتاج مراجعة';
   let primary = { href: setupLink, label: calendar.versions.length ? 'مراجعة الدورة والفترات' : 'إعداد دورة الرواتب' };
   if (work) {
     primary = { href: runLink, label: stale && work.access.can_prepare && work.access.enabled ? 'مراجعة وإعادة حساب الرواتب' : !work.run || work.run.status === 'cancelled' ? (work.access.can_prepare && work.access.enabled ? 'إعداد مسير الرواتب' : 'مراجعة الفترة') : 'متابعة مراجعة الرواتب' };
@@ -92,6 +93,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {candidate && work?.summary && <p>القيم مرشح للمراجعة، ولا تمثل راتبًا صالحًا للصرف قبل اكتمال التأهيل والاعتماد والتثبيت.</p>}
       {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول مخوّل بعرض الرواتب أو تسجيل الدفعات.'}</p>}
       {(work || periods.length === 0) && <Link className="primary-button" href={primary.href}>{primary.label}</Link>}
+      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'}/>
     </section>
     {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>راجع عوائق الفترة والموظفين قبل الاعتماد، مع المسؤول المحدد لكل مصدر.</p>
       {work.global_issues.length > 0 && <ul>{work.global_issues.map((item, index) => <li key={`${item.code}:${index}`}>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</li>)}</ul>}

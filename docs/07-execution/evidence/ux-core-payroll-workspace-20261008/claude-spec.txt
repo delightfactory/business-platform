@@ -1,0 +1,79 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+I read only the files you listed. The plan wasn't at `docs/04-product-specs/ux-redesign/ux-redesign-plan.md`, so I used a Glob search to find it at `docs/07-execution/evidence/ux-redesign-proposal-20261007/ux-redesign-plan.md` and read §7.5 (lines 444–463). You said no edits, so I haven't written a plan file.
+
+# R7 root payroll workspace: proposed bounded spec (HEAD 4e0bb0a)
+
+## Facts from the source that limit the design
+- **What the root page knows.** It only has `work.run.status`, `stale_reasons`, `final_output_id`, the four `access` flags, `summary.{employee_count, known_gross}`, `global_issues` and `issue_count` (from a single `p_limit: 1` call). It has no payment status. Paid/partially-paid status only exists in `payroll_payment_workspace.summary.status` (`payments/page.tsx:12,34`).
+- **Which condition wins.** The status heading (`page.tsx:70`) checks in this order: no work → no run/cancelled → superseded → locked → stale → approved → review → anything else. So stale beats approved, and locked/superseded beat stale.
+- **Unknown statuses look like drafts today.** Any status that isn't one of the named ones gets the heading "التحضير جارٍ" (preparing) and `candidate = true`, so its summary and issues are shown. The stepper must not repeat that assumption.
+- **Primary edge case to keep exactly.** If a run is locked and stale, the user can prepare, and the page has no output/payment route, the primary stays "مراجعة وإعادة حساب الرواتب" (review and recalculate), linking to `/runs` (`page.tsx:73–77`).
+- **No primary when no period is chosen.** If periods exist but none is selected (`!work && periods.length`), no primary link renders. The period-form submit is the `primary-button` in that state (`page.tsx:86,94`).
+- **`draft` is not confirmed.** That status name comes from §7.5, not from the files I read. Check the real status values in `runs/` before relying on it.
+
+## Stage mapping
+I'd keep the stage and its note separate. Compute the existing `primary` first and leave it unchanged. Then work out `stage` from status, in the same order as the heading:
+
+| Condition (in order) | Current stage | Note (no completion wording) |
+|---|---|---|
+| `!work` (no cycle, not authorized, or no period chosen) | 1 Cycle & period | Use the existing explanation |
+| `!run` or `cancelled` | 3 Inputs & blockers | Preparing is done from payroll review |
+| `superseded` | **No current stage** | "Replaced run kept in history; review the replacement run." I prefer this over "final review": marking stage 5 would suggest an approval task the user can't do. |
+| `locked` with `final_output_id` | 6 Follow-up | Wording depends on the **existing** primary route. Payments route: "Review payments and the remaining balance in the payments screen." Output route: "View the final run; recording payments needs an authorized administrator." Neither: reuse the existing role-limit text. Never say "paid". |
+| `locked` without `final_output_id` | No current stage | Data anomaly. Leave the primary as it is. |
+| stale (status is not locked/superseded) | 4 Calculation & review | Use the existing stale text |
+| `approved` | 5 Approval & lock | — |
+| `draft` / `review` (whitelist) | 4 | — |
+| anything else | **No current stage** | "Stage can't be determined; continue from payroll review." |
+
+Stage 2 (attendance & leave) is **never** marked current. One issue code missing from the list doesn't prove the time/leave data was included.
+
+## Batch contents
+1. **Context header.** Show the employer name and `work.period` (not a lookup in `periods`; see `page.tsx:84`), plus the transition flag. Keep the "choose another employer" link and the native GET period form exactly as they are, including hidden fields and the `primary-button` swap.
+2. **PayrollStepper.** Static and informational:
+   - Markup: an `<ol>` with six items and `aria-current="step"` on at most one. The items are not links.
+   - States: no checkmarks, no "completed" state, and no meaning carried by colour alone.
+   - Copy: one fixed sentence: "This guide shows where the run is; it doesn't prove earlier stages are complete."
+   - Narrow screens: at 390px show only "Current stage: X" with the full list in a native `<details>`. This keeps the primary from being pushed down.
+   - Placement: inside or after the status card, **below** the primary link.
+3. **Issues.** Add a `issueTitles` map with one short title per code, plus a generic fallback title for unknown codes. Each item becomes `<details><summary>{title}</summary>{issueNames[code] ?? existing fallback}</details>`. Keep these exactly:
+   - the section only appears when `candidate` is true;
+   - the existing `runLink` link;
+   - no numeric `issue_count` total, no invented employee name (`employment_id` can be null), and no per-issue links.
+4. **Summary.** Keep the gross and employee counts and the existing caution text (`page.tsx:91–92`) as they are. Show no net, deductions or other totals.
+
+## Correctness constraints (acceptance)
+- **Unchanged.** Primary `href` and label, every access/stale/locked/output/superseded branch, and the RPCs, parameters and queries.
+- **Nothing added.** No storage, no default periods (including the `current` period logic), no new actions or permissions, and no changes to the secondary links in `<details>`.
+- **One dominant action per state.** The stepper adds no buttons and no `primary-button` class.
+- **Never shown.** The words "paid" or "completed", any green or completed styling, or anything inferred from `locked`, `issue_count === 0` or the absence of issues.
+- **Disabled service.** When `!calendar.access.enabled` or `!work.access.enabled`, the existing notice and the stepper both stay; neither is hidden.
+- **Untouched.** Payment, finalize, correction and advance pages and their recovery logic.
+- **Check per state** at 390/768/1366px, Cairo RTL and keyboard:
+  - No employer; no periods; periods with none chosen.
+  - Not authorized to view (`!can_view`); access denied (42501); load failure and retry.
+  - Each status: no run, cancelled, draft, review, approved, stale+approved, locked × {payment, output-only, no permission, no output id}, superseded, unknown.
+  - Service disabled.
+- **Before and after (baseline 4e0bb0a).** Same actor, data and viewport, measuring navigations (N), repeated context selections (C), required inputs (I), and how many elements sit before the primary (scan depth). The batch must not increase C or I, and must not push the primary further down.
+
+## Stays open for full R7 (record it, don't quietly narrow the goal)
+- **Stage 6 completion:** needs a payment-status source on the root page (backend).
+- **Stage 2 completion:** needs proof that time/leave data was included.
+- **Unclassified-overtime notice:** source not available on the root page.
+- **Deductions figure:** not in the summary.
+- **Per-issue employee and owner action routes:** not available.
+- **Stage-specific action buttons:** submit, approve, record payment.
+- **Showing the `blocking` flag:** its meaning hasn't been confirmed.
+- **Restyling the sub-pages.**
+- **Unknown-status heading:** it still says "التحضير جارٍ". I'd change it to neutral wording only if you approve, since it's a separate text change.
+- **Gates:** the whole-financial and full-phase gates stay OPEN.

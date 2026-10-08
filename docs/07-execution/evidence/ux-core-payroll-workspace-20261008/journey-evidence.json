@@ -1,0 +1,58 @@
+[
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 677.4375,
+    "scene": "before-review-prepare",
+    "width": 390
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 677.4375,
+    "scene": "review-prepare",
+    "width": 390
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 529.4375,
+    "scene": "before-locked-payment",
+    "width": 390
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 529.4375,
+    "scene": "locked-payment",
+    "width": 390
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 595.8375244140625,
+    "scene": "before-review-prepare",
+    "width": 1366
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 595.8375244140625,
+    "scene": "review-prepare",
+    "width": 1366
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 519.8375244140625,
+    "scene": "before-locked-payment",
+    "width": 1366
+  },
+  {
+    "choices": 2,
+    "primaryCount": 1,
+    "primaryTop": 519.8375244140625,
+    "scene": "locked-payment",
+    "width": 1366
+  }
+]
