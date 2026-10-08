@@ -1,0 +1,132 @@
+{
+  "passed": 16,
+  "boundary": "Actual full page/panel source with controlled SDK/hooks/static output. Not actual RPC authority/provider/mutation acceptance.",
+  "checks": [
+    {
+      "area": "overview",
+      "query": {},
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "assignment": "scheduled"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "policy": "failed"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "policyOverride": "overlap"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "compensation",
+      "query": {
+        "compensation": "cancel-error"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "employment",
+      "query": {
+        "employment": "ended"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "account",
+      "query": {
+        "userLink": "forbidden"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "account",
+      "query": {
+        "account": "delivery-failed"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "account",
+      "query": {
+        "linkQuery": "تجريبي",
+        "linkPage": "2"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "account",
+      "query": {
+        "account": "",
+        "compensation": "changed",
+        "linkQuery": ""
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "compensation": "changed",
+        "policy": "failed"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "overview",
+      "query": {
+        "compensation": "changed"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "overview",
+      "query": {},
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "unavailable",
+      "query": {},
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "policy": "failed"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    },
+    {
+      "area": "work",
+      "query": {
+        "policy": "invalid"
+      },
+      "result": "PASS",
+      "rpcArgumentsAndLinksPreserved": true
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "baseline": "9b50408a7516555842c12e0bd6c07cf23cce236b",
+  "candidateSource": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
+      "sha256NormalizedLF": "9249bec4c05260f82a64ef6a9734af75783bd4a948489aa4391f650f214b2def"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "sha256NormalizedLF": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "sha256NormalizedLF": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
+      "sha256NormalizedLF": "6cdce79e85a1ead330c46cc8acfef3933494908af63aba4ec758cdc203e45a5a"
+    },
+    {
+      "file": "src/components/submit-button.tsx",
+      "sha256NormalizedLF": "da4fb501b20218360a5e91dd9b1adac4d76c369d02f5533e029d2196d5311d87"
+    },
+    {
+      "file": "scripts/build-ux-inventory.cjs",
+      "sha256NormalizedLF": "c0574767bdbd723d72e38bbbcc2e398430934858e59cd5a0031d2f857ca5fb42"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "full-account-390.jpg",
+      "sha256": "a45705694e97d256129c7daf7383002672e343d4a6a2f0fcc40d36dde8c8fada"
+    },
+    {
+      "file": "full-compensation-390.jpg",
+      "sha256": "5d268bca1b6d2c8403701085a54a318de5a6a65a6df4bb0ffd1a1b3e0a12c3fe"
+    },
+    {
+      "file": "full-employment-390.jpg",
+      "sha256": "87e25f9e45e00e0bc6bf9e22fd333be0802730c534aebf28518aaf4fbc64863d"
+    },
+    {
+      "file": "full-overview-1366.jpg",
+      "sha256": "b85cc4da198d2e077902fe090680d401078aac4427c9f4b71976d3a850c87098"
+    },
+    {
+      "file": "full-overview-390.jpg",
+      "sha256": "fa0c761c04e76ba1b17f637d44bc3a56e4b157af462bfb54514587300eb89804"
+    },
+    {
+      "file": "full-overview-768.jpg",
+      "sha256": "42f7c8c185ca22febb5eee81f038102b1cd8a3c023f4fb88e7c0905ec01ffaff"
+    },
+    {
+      "file": "full-profile-measures.json",
+      "sha256": "43a87ae01becce8c23da404be21822e2dcd908dcde119d54b73bbe412c907ac9"
+    },
+    {
+      "file": "full-work-1366.jpg",
+      "sha256": "5ac6f63758c03262ff4e10c6425ee5252f388de3746345975918c7fe7728adcb"
+    },
+    {
+      "file": "full-work-390.jpg",
+      "sha256": "a3ced7559a8eb3d80ef5741b021be07aa1374fd932ef78ddc6772a02ddc61785"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "5a136600a6882314c26a5f6be436d9c66f3d924c89a9da9d006538f3a6427c6b"
+    },
+    {
+      "file": "profile-page-cases.json",
+      "sha256": "bc6767943f28afb37dc5a2fa3b7abdd6ca5af1274edcfabd49fe1e2e9d81e763"
+    },
+    {
+      "file": "profile-page-cases.cjs.txt",
+      "sha256": "2f68cedb050a345a9cb69c27bceef32b44299cff1aa3574eab4f5bde1c415c35"
+    },
+    {
+      "file": "claude-candidate-review.txt",
+      "sha256": "41391dadf6d6d6d4d2633fabb7dc5c17e3262e7778ae3d870a40577e367b0d57"
+    }
+  ],
+  "visual": {
+    "codex": "MATCH WITH ACCEPTED DEVIATIONS",
+    "claude": "MATCH WITH ACCEPTED DEVIATIONS",
+    "scope": "Visible top of source-controlled static pages only; not full-page hydration/role/provider/security",
+    "employmentImage": "Tab selection and toast display only; mixed synthetic lifecycle not outcome proof"
+  },
+  "checks": {
+    "controlledActualPageCases": 16,
+    "currentInventory": 1592,
+    "existingSourceReviewedPreserved": 19,
+    "additionalUsagesPending": 69,
+    "existingNativeControlsMigrated": 5,
+    "sourceFingerprints": "PASS",
+    "lint": "PASS for affected copy/inventory builder",
+    "build": "Previous candidate successful build/TS reused; only notice copy and metadata changed",
+    "loopback": "Owned3582retired"
+  },
+  "fullR4": "OPEN"
+}

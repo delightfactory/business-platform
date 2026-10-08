@@ -18,7 +18,7 @@ export function EmployeeProfileTabs({ initialTab, areas }: { initialTab: Profile
     if (!areas.some((area) => area.value === value)) return;
     const active = root.current?.querySelector('[role="tabpanel"][data-state="active"]');
     if (active?.querySelector('[aria-busy="true"]')) {
-      setNotice('جارٍ تنفيذ عملية في هذا القسم. انتظر ظهور النتيجة قبل الانتقال.');
+      setNotice('انتظر ظهور نتيجة العملية قبل الانتقال إلى قسم آخر.');
       return;
     }
     setNotice('');

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "eb2fc20119ccb553343ed6bed1cd236dab1fff86",
+  "sourceHead": "9b50408a7516555842c12e0bd6c07cf23cce236b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1058,9 +1058,14 @@
       "sha256": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d"
     },
     {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
+      "phase": "R4",
+      "sha256": "9249bec4c05260f82a64ef6a9734af75783bd4a948489aa4391f650f214b2def"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "phase": "R4",
-      "sha256": "a7d380b2bcd52fd69cbb863c96ca9f836fe3658a50152942a120cbeb901f68d4"
+      "sha256": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
@@ -1075,7 +1080,12 @@
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
       "phase": "R4",
-      "sha256": "c24e5a1d09c439d943a10866523491da2dc09f574924e83a29cf87c6437ff732"
+      "sha256": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
+      "phase": "R4",
+      "sha256": "6cdce79e85a1ead330c46cc8acfef3933494908af63aba4ec758cdc203e45a5a"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/actions.ts",
@@ -1225,7 +1235,7 @@
     {
       "file": "src/components/submit-button.tsx",
       "phase": "R1",
-      "sha256": "36037595741896fa84ecca94f0d3430d53865bf1d2464374a0d570d4e042db20"
+      "sha256": "da4fb501b20218360a5e91dd9b1adac4d76c369d02f5533e029d2196d5311d87"
     },
     {
       "file": "src/lib/attendance-channel.ts",
@@ -5891,9 +5901,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:28:2137",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:30:2249",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 28,
+      "line": 30,
       "phase": "R4",
       "name": "people_employee_snapshot",
       "expression": null,
@@ -5901,9 +5911,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:29:2238",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:31:2349",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 29,
+      "line": 31,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -5911,9 +5921,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:46:3560",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:48:3653",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 46,
+      "line": 48,
       "phase": "R4",
       "name": "people_work_assignment_history",
       "expression": null,
@@ -5921,9 +5931,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:49:3770",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:51:3860",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 49,
+      "line": 51,
       "phase": "R4",
       "name": "people_work_assignment_options",
       "expression": null,
@@ -5931,9 +5941,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:52:3979",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:54:4066",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 52,
+      "line": 54,
       "phase": "R4",
       "name": "people_compensation_history",
       "expression": null,
@@ -5941,9 +5951,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:55:4187",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:57:4271",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 55,
+      "line": 57,
       "phase": "R4",
       "name": "people_compensation_options",
       "expression": null,
@@ -5951,9 +5961,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:58:4350",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:60:4432",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 58,
+      "line": 60,
       "phase": "R4",
       "name": "people_employment_history",
       "expression": null,
@@ -5961,9 +5971,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:60:4516",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:62:4595",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 60,
+      "line": 62,
       "phase": "R4",
       "name": "people_onboarding_options",
       "expression": null,
@@ -5971,9 +5981,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:62:4640",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:64:4718",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 62,
+      "line": 64,
       "phase": "R4",
       "name": "people_employee_user_link_snapshot",
       "expression": null,
@@ -5981,9 +5991,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:63:4785",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:65:4861",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 63,
+      "line": 65,
       "phase": "R4",
       "name": "people_employee_user_link_options",
       "expression": null,
@@ -5991,9 +6001,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:66:5022",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:68:5095",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 66,
+      "line": 68,
       "phase": "R4",
       "name": "tenant_membership_snapshot",
       "expression": null,
@@ -6001,9 +6011,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:68:5167",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:70:5238",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 68,
+      "line": 70,
       "phase": "R4",
       "name": "people_work_policy_panel",
       "expression": null,
@@ -6011,9 +6021,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:77:6023",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:79:6085",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 77,
+      "line": 79,
       "phase": "R4",
       "name": "people_employee_account_provision_snapshot",
       "expression": null,
@@ -6021,9 +6031,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:112:9042",
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:114:9069",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 112,
+      "line": 114,
       "phase": "R4",
       "name": "payroll_correction_access",
       "expression": null,
@@ -6760,7 +6770,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tokenHash\""
+        "name": "\"tokenHash\"",
+        "value": "{query.token_hash}"
       }
     },
     {
@@ -6771,7 +6782,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"type\""
+        "name": "\"type\"",
+        "value": "{query.type}"
       }
     },
     {
@@ -6782,7 +6794,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{query.intent_id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1696",
+      "file": "src/app/auth/employee-account-activation/callback/page.tsx",
+      "line": 22,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"تأكيد البريد\"",
+        "pendingLabel": "\"جارٍ التحقق…\""
       }
     },
     {
@@ -6803,7 +6827,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{intentId}"
       }
     },
     {
@@ -6829,6 +6854,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3558",
+      "file": "src/app/auth/employee-account-activation/page.tsx",
+      "line": 39,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"تحديث كلمة المرور\"",
+        "pendingLabel": "\"جارٍ التحديث…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:45:4027",
       "file": "src/app/auth/employee-account-activation/page.tsx",
       "line": 45,
@@ -6846,7 +6882,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{intentId}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4187",
+      "file": "src/app/auth/employee-account-activation/page.tsx",
+      "line": 47,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إكمال التفعيل\"",
+        "pendingLabel": "\"جارٍ التحقق…\""
       }
     },
     {
@@ -6867,7 +6915,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{intentId}"
       }
     },
     {
@@ -6893,6 +6942,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:55:4965",
+      "file": "src/app/auth/employee-account-activation/page.tsx",
+      "line": 55,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"حفظ وتفعيل الحساب\"",
+        "pendingLabel": "\"جارٍ التفعيل…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1010",
       "file": "src/app/auth/forgot-password/page.tsx",
       "line": 8,
@@ -6911,6 +6971,17 @@
       "attributes": {
         "name": "\"email\"",
         "type": "\"email\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1225",
+      "file": "src/app/auth/forgot-password/page.tsx",
+      "line": 8,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إرسال رابط الاستعادة\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -6951,7 +7022,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{invitationId}"
       }
     },
     {
@@ -6962,7 +7034,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{issuance}"
       }
     },
     {
@@ -6974,6 +7047,17 @@
       "attributes": {
         "name": "\"password\"",
         "type": "\"password\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:51:3408",
+      "file": "src/app/auth/invitations/accept/page.tsx",
+      "line": 51,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"حفظ كلمة المرور\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -6994,7 +7078,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{invitationId}"
       }
     },
     {
@@ -7005,7 +7090,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{issuance}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:58:3811",
+      "file": "src/app/auth/invitations/accept/page.tsx",
+      "line": 58,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"تأكيد الدعوة وإنشاء الشركة\"",
+        "pendingLabel": "\"جارٍ إنشاء الشركة…\""
       }
     },
     {
@@ -7066,7 +7163,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tokenHash\""
+        "name": "\"tokenHash\"",
+        "value": "{params.token_hash}"
       }
     },
     {
@@ -7077,7 +7175,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"type\""
+        "name": "\"type\"",
+        "value": "{params.type}"
       }
     },
     {
@@ -7088,7 +7187,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{params.invitation_id}"
       }
     },
     {
@@ -7099,7 +7199,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{params.issuance}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1784",
+      "file": "src/app/auth/invitations/callback/page.tsx",
+      "line": 39,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"التحقق والمتابعة\"",
+        "pendingLabel": "\"جارٍ التحقق…\""
       }
     },
     {
@@ -7120,7 +7232,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"next\""
+        "name": "\"next\"",
+        "value": "{next}"
       }
     },
     {
@@ -7143,6 +7256,17 @@
       "attributes": {
         "name": "\"password\"",
         "type": "\"password\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/login/page.tsx:41:2152",
+      "file": "src/app/auth/login/page.tsx",
+      "line": 41,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"دخول\"",
+        "pendingLabel": "\"جارٍ الدخول…\""
       }
     },
     {
@@ -7183,7 +7307,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{id}"
       }
     },
     {
@@ -7194,7 +7319,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{issuance}"
       }
     },
     {
@@ -7206,6 +7332,17 @@
       "attributes": {
         "name": "\"password\"",
         "type": "\"password\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3143",
+      "file": "src/app/auth/membership-invitations/accept/page.tsx",
+      "line": 34,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"حفظ كلمة المرور\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -7226,7 +7363,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{id}"
       }
     },
     {
@@ -7237,7 +7375,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{issuance}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3430",
+      "file": "src/app/auth/membership-invitations/accept/page.tsx",
+      "line": 37,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"قبول الدعوة\"",
+        "pendingLabel": "\"جارٍ القبول…\""
       }
     },
     {
@@ -7258,7 +7408,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tokenHash\""
+        "name": "\"tokenHash\"",
+        "value": "{query.token_hash}"
       }
     },
     {
@@ -7269,7 +7420,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"type\""
+        "name": "\"type\"",
+        "value": "{query.type}"
       }
     },
     {
@@ -7280,7 +7432,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{query.invitation_id}"
       }
     },
     {
@@ -7291,7 +7444,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"issuance\""
+        "name": "\"issuance\"",
+        "value": "{query.issuance}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1524",
+      "file": "src/app/auth/membership-invitations/callback/page.tsx",
+      "line": 26,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"التحقق والمتابعة\"",
+        "pendingLabel": "\"جارٍ التحقق…\""
       }
     },
     {
@@ -7327,13 +7492,25 @@
       }
     },
     {
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:2047",
+      "file": "src/app/auth/password/update/page.tsx",
+      "line": 16,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"حفظ كلمة المرور\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/operator/commercial/[tenantId]/LimitModeFields.tsx:11:354",
       "file": "src/app/operator/commercial/[tenantId]/LimitModeFields.tsx",
       "line": 11,
       "tag": "select",
       "phase": "R3",
       "attributes": {
-        "name": "\"mode\""
+        "name": "\"mode\"",
+        "value": "{selectedMode}"
       }
     },
     {
@@ -7375,7 +7552,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -7386,7 +7564,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"capabilityKey\""
+        "name": "\"capabilityKey\"",
+        "value": "{limit.capability_key}"
       }
     },
     {
@@ -7397,7 +7576,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"limitKey\""
+        "name": "\"limitKey\"",
+        "value": "{limit.limit_key}"
       }
     },
     {
@@ -7458,7 +7638,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -7469,7 +7650,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"capability\""
+        "name": "\"capability\"",
+        "value": "{decision.capability_key}"
       }
     },
     {
@@ -7541,7 +7723,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
+        "name": "\"idempotencyKey\"",
+        "value": "{values.idempotencyKey}"
       }
     },
     {
@@ -7586,13 +7769,25 @@
       }
     },
     {
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:50:2556",
+      "file": "src/app/operator/invitations/new/InvitationForm.tsx",
+      "line": 50,
+      "tag": "SubmitButton",
+      "phase": "R3",
+      "attributes": {
+        "label": "\"إرسال الدعوة\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:63:3090",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
       "line": 63,
       "tag": "select",
       "phase": "R3",
       "attributes": {
-        "name": "{`${kind}Mode`}"
+        "name": "{`${kind}Mode`}",
+        "value": "{selectedMode}"
       }
     },
     {
@@ -7644,7 +7839,19 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{row.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:82:5553",
+      "file": "src/app/operator/invitations/page.tsx",
+      "line": 82,
+      "tag": "SubmitButton",
+      "phase": "R3",
+      "attributes": {
+        "label": "\"إعادة إرسال دعوة جديدة\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -7665,7 +7872,18 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{row.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:86:5853",
+      "file": "src/app/operator/invitations/page.tsx",
+      "line": 86,
+      "tag": "SubmitButton",
+      "phase": "R3",
+      "attributes": {
+        "label": "\"إلغاء الدعوة\""
       }
     },
     {
@@ -7695,7 +7913,8 @@
       "tag": "select",
       "phase": "R3",
       "attributes": {
-        "name": "{`${kind}Mode`}"
+        "name": "{`${kind}Mode`}",
+        "value": "{mode}"
       }
     },
     {
@@ -7737,7 +7956,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
+        "name": "\"idempotencyKey\"",
+        "value": "{key ?? crypto.randomUUID()}"
       }
     },
     {
@@ -7816,7 +8036,8 @@
       "tag": "button",
       "phase": "R3",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -7899,7 +8120,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "\"grant\""
       }
     },
     {
@@ -7910,7 +8132,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"email\""
+        "name": "\"email\"",
+        "value": "{grant.email}"
       }
     },
     {
@@ -7921,7 +8144,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "{grant.is_active ? 'update' : 'grant'}"
       }
     },
     {
@@ -7942,7 +8166,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"email\""
+        "name": "\"email\"",
+        "value": "{grant.email}"
       }
     },
     {
@@ -7953,7 +8178,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "\"revoke\""
       }
     },
     {
@@ -7964,7 +8190,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"canManageOperators\""
+        "name": "\"canManageOperators\"",
+        "value": "\"off\""
       }
     },
     {
@@ -7975,7 +8202,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"canOnboardTenants\""
+        "name": "\"canOnboardTenants\"",
+        "value": "\"off\""
       }
     },
     {
@@ -8070,7 +8298,8 @@
       "tag": "input",
       "phase": "R3",
       "attributes": {
-        "name": "\"sourceTitle\""
+        "name": "\"sourceTitle\"",
+        "value": "{fields[i].title}"
       }
     },
     {
@@ -8081,7 +8310,8 @@
       "phase": "R3",
       "attributes": {
         "name": "\"sourceUrl\"",
-        "type": "\"url\""
+        "type": "\"url\"",
+        "value": "{fields[i].url}"
       }
     },
     {
@@ -8101,7 +8331,8 @@
       "tag": "input",
       "phase": "R3",
       "attributes": {
-        "name": "\"version\""
+        "name": "\"version\"",
+        "value": "{values.version}"
       }
     },
     {
@@ -8112,7 +8343,8 @@
       "phase": "R3",
       "attributes": {
         "name": "\"from\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{values.from}"
       }
     },
     {
@@ -8123,7 +8355,8 @@
       "phase": "R3",
       "attributes": {
         "name": "\"until\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{values.until}"
       }
     },
     {
@@ -8133,7 +8366,8 @@
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{values.reason}"
       }
     },
     {
@@ -8142,7 +8376,9 @@
       "line": 35,
       "tag": "button",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:9:1602",
@@ -8151,7 +8387,8 @@
       "tag": "input",
       "phase": "R3",
       "attributes": {
-        "type": "\"text\""
+        "type": "\"text\"",
+        "value": "{value}"
       }
     },
     {
@@ -8162,7 +8399,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"numericRules\""
+        "name": "\"numericRules\"",
+        "value": "{JSON.stringify(enabled?rules:null)}"
       }
     },
     {
@@ -8181,7 +8419,9 @@
       "line": 16,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{rules.tax.treatment}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3597",
@@ -8189,7 +8429,9 @@
       "line": 16,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{basisChoice}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:18:4775",
@@ -8237,7 +8479,9 @@
       "line": 21,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{baseChoice}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:22:6273",
@@ -8245,7 +8489,9 @@
       "line": 22,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{rules.earning_partition_rounding??''}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:23:7004",
@@ -8253,7 +8499,9 @@
       "line": 23,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{rules.labour_deduction_adapter??''}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:24:7664",
@@ -8261,7 +8509,9 @@
       "line": 24,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{rules.insurance.category}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8373",
@@ -8269,7 +8519,9 @@
       "line": 25,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{item.branch}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8865",
@@ -8307,7 +8559,9 @@
       "line": 13,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{value}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2368",
@@ -8327,7 +8581,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"head\""
+        "name": "\"head\"",
+        "value": "{head}"
       }
     },
     {
@@ -8338,7 +8593,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"revision\""
+        "name": "\"revision\"",
+        "value": "{revision}"
       }
     },
     {
@@ -8349,7 +8605,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"actor\""
+        "name": "\"actor\"",
+        "value": "{actor}"
       }
     },
     {
@@ -8360,7 +8617,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"case\""
+        "name": "\"case\"",
+        "value": "{JSON.stringify(fields)}"
       }
     },
     {
@@ -8369,7 +8627,9 @@
       "line": 14,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{fields.name}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2958",
@@ -8377,7 +8637,9 @@
       "line": 14,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{fields.scenario}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3312",
@@ -8385,7 +8647,9 @@
       "line": 14,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{fields.origin}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3667",
@@ -8393,7 +8657,9 @@
       "line": 14,
       "tag": "select",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{fields.source_url}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3958",
@@ -8401,7 +8667,9 @@
       "line": 14,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{fields.reference}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:5077",
@@ -8410,7 +8678,8 @@
       "tag": "input",
       "phase": "R3",
       "attributes": {
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{fields.tax[key]}"
       }
     },
     {
@@ -8420,7 +8689,8 @@
       "tag": "input",
       "phase": "R3",
       "attributes": {
-        "type": "\"month\""
+        "type": "\"month\"",
+        "value": "{month.month.slice(0,7)}"
       }
     },
     {
@@ -8429,7 +8699,9 @@
       "line": 16,
       "tag": "input",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{month.reference}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6264",
@@ -8457,7 +8729,9 @@
       "line": 17,
       "tag": "button",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:19:1357",
@@ -8477,7 +8751,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"head\""
+        "name": "\"head\"",
+        "value": "{head}"
       }
     },
     {
@@ -8488,7 +8763,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"revision\""
+        "name": "\"revision\"",
+        "value": "{revision}"
       }
     },
     {
@@ -8499,7 +8775,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"actor\""
+        "name": "\"actor\"",
+        "value": "{actor}"
       }
     },
     {
@@ -8510,7 +8787,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"stamp\""
+        "name": "\"stamp\"",
+        "value": "{stamp}"
       }
     },
     {
@@ -8521,7 +8799,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -8532,7 +8811,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"reviewed\""
+        "name": "\"reviewed\"",
+        "value": "{String(reviewed)}"
       }
     },
     {
@@ -8541,7 +8821,9 @@
       "line": 23,
       "tag": "textarea",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "value": "{reason}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:24:2071",
@@ -8559,7 +8841,9 @@
       "line": 28,
       "tag": "button",
       "phase": "R3",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending}"
+      }
     },
     {
       "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2396",
@@ -8589,7 +8873,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenant.tenant_id}"
       }
     },
     {
@@ -8600,7 +8885,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"expectedState\""
+        "name": "\"expectedState\"",
+        "value": "{tenant.lifecycle_state}"
       }
     },
     {
@@ -8611,7 +8897,8 @@
       "phase": "R3",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"targetState\""
+        "name": "\"targetState\"",
+        "value": "{transition.target}"
       }
     },
     {
@@ -8662,7 +8949,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -8673,7 +8961,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationalDate\""
+        "name": "\"operationalDate\"",
+        "value": "{date}"
       }
     },
     {
@@ -8684,7 +8973,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"instanceIds\""
+        "name": "\"instanceIds\"",
+        "value": "{row.id}"
       }
     },
     {
@@ -8694,7 +8984,8 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -8715,7 +9006,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -8726,7 +9018,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -8737,7 +9030,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"review\""
+        "name": "\"review\"",
+        "value": "{JSON.stringify(review)}"
       }
     },
     {
@@ -8748,7 +9042,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{intent.key}"
       }
     },
     {
@@ -8758,7 +9053,9 @@
       "tag": "textarea",
       "phase": "R5",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{pending || refreshing}"
       }
     },
     {
@@ -8768,7 +9065,19 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{pending || refreshing}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:62:3905",
+      "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
+      "line": 62,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الاعتماد...\"",
+        "label": "{correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}"
       }
     },
     {
@@ -8789,7 +9098,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -8800,7 +9110,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -8811,7 +9122,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"punchId\""
+        "name": "\"punchId\"",
+        "value": "{punch.id}"
       }
     },
     {
@@ -8822,7 +9134,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "\"replace\""
       }
     },
     {
@@ -8857,6 +9170,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:84:9555",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 84,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الحفظ...\"",
+        "label": "\"حفظ التصحيح\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:86:9697",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 86,
@@ -8874,7 +9198,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -8885,7 +9210,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -8896,7 +9222,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"punchId\""
+        "name": "\"punchId\"",
+        "value": "{punch.id}"
       }
     },
     {
@@ -8907,7 +9234,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "\"exclude\""
       }
     },
     {
@@ -8918,6 +9246,17 @@
       "phase": "R5",
       "attributes": {
         "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:89:10175",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 89,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الحفظ...\"",
+        "label": "\"استبعاد مع حفظ الدليل\""
       }
     },
     {
@@ -8938,7 +9277,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -8949,7 +9289,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -8960,7 +9301,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"requestKey\""
+        "name": "\"requestKey\"",
+        "value": "{crypto.randomUUID()}"
       }
     },
     {
@@ -8995,6 +9337,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:100:11508",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 100,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الحفظ...\"",
+        "label": "\"حفظ التسجيل\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:117:14323",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 117,
@@ -9012,7 +9365,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9023,7 +9377,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -9034,7 +9389,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"correctsFactId\""
+        "name": "\"correctsFactId\"",
+        "value": "{currentFact.id}"
       }
     },
     {
@@ -9045,6 +9401,17 @@
       "phase": "R5",
       "attributes": {
         "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:121:14857",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 121,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الاعتماد...\"",
+        "label": "{currentFact ? 'اعتماد تصحيح الغياب' : 'اعتماد يوم غياب'}"
       }
     },
     {
@@ -9065,7 +9432,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9076,7 +9444,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -9087,7 +9456,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"correctsFactId\""
+        "name": "\"correctsFactId\"",
+        "value": "{currentFact?.id ?? ''}"
       }
     },
     {
@@ -9098,6 +9468,17 @@
       "phase": "R5",
       "attributes": {
         "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15833",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 128,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الاعتماد...\"",
+        "label": "{currentFact ? 'اعتماد التصحيح كنسخة جديدة' : 'اعتماد نتيجة اليوم'}"
       }
     },
     {
@@ -9118,7 +9499,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9129,7 +9511,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -9140,7 +9523,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"candidateId\""
+        "name": "\"candidateId\"",
+        "value": "{candidate.id}"
       }
     },
     {
@@ -9151,7 +9535,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"decision\""
+        "name": "\"decision\"",
+        "value": "\"approved\""
       }
     },
     {
@@ -9209,6 +9594,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:155:20058",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 155,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ حفظ التصنيف...\"",
+        "label": "{candidate.classification ? 'حفظ التصنيف الجديد' : 'اعتماد الكمية وتصنيفها'}"
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:20298",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 157,
@@ -9226,7 +9622,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9237,7 +9634,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"instanceId\""
+        "name": "\"instanceId\"",
+        "value": "{instanceId}"
       }
     },
     {
@@ -9248,7 +9646,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"candidateId\""
+        "name": "\"candidateId\"",
+        "value": "{candidate.id}"
       }
     },
     {
@@ -9259,7 +9658,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"decision\""
+        "name": "\"decision\"",
+        "value": "\"rejected\""
       }
     },
     {
@@ -9270,6 +9670,17 @@
       "phase": "R5",
       "attributes": {
         "name": "\"reason\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20814",
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 160,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "pendingLabel": "\"جارٍ الحفظ...\"",
+        "label": "\"رفض المرشح\""
       }
     },
     {
@@ -9290,7 +9701,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9326,6 +9738,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:72:4996",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 72,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "label": "\"فحص ومعاينة الأحداث\"",
+        "pendingLabel": "\"جارٍ فحص الصفوف…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:80:6071",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
       "line": 80,
@@ -9353,7 +9776,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9364,7 +9788,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"selectedRow\""
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(row)}"
       }
     },
     {
@@ -9375,7 +9800,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"selectedRow\""
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(row)}"
       }
     },
     {
@@ -9396,7 +9822,19 @@
       "phase": "R5",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"selectedRow\""
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(row)}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:113:9535",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 113,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "label": "\"تأكيد حفظ الأحداث المحددة\"",
+        "pendingLabel": "\"جارٍ حفظ الأحداث…\""
       }
     },
     {
@@ -9417,7 +9855,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9428,7 +9867,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"selectedRow\""
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(row)}"
       }
     },
     {
@@ -9439,6 +9879,17 @@
       "phase": "R5",
       "attributes": {
         "name": "{`workDate_${row.source_line_hint}`}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:10861",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 128,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "label": "\"تأكيد الأيام المختارة\"",
+        "pendingLabel": "\"جارٍ إعادة الفحص والحفظ…\""
       }
     },
     {
@@ -9497,7 +9948,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"filter\""
+        "name": "\"filter\"",
+        "value": "{filter}"
       }
     },
     {
@@ -9536,7 +9988,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source\""
+        "name": "\"source\"",
+        "value": "{source.id}"
       }
     },
     {
@@ -9547,7 +10000,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"name\""
+        "name": "\"name\"",
+        "value": "{source.name}"
       }
     },
     {
@@ -9558,7 +10012,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{source.kind}"
       }
     },
     {
@@ -9569,7 +10024,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"site\""
+        "name": "\"site\"",
+        "value": "{source.site_id??''}"
       }
     },
     {
@@ -9580,7 +10036,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"enabled\""
+        "name": "\"enabled\"",
+        "value": "\"false\""
       }
     },
     {
@@ -9591,7 +10048,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{String(value)}"
       }
     },
     {
@@ -9612,7 +10070,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source\""
+        "name": "\"source\"",
+        "value": "{source?.id??''}"
       }
     },
     {
@@ -9632,7 +10091,9 @@
       "tag": "select",
       "phase": "R5",
       "attributes": {
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{kind}",
+        "disabled": "{Boolean(source)}"
       }
     },
     {
@@ -9643,7 +10104,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{source.kind}"
       }
     },
     {
@@ -9653,7 +10115,8 @@
       "tag": "select",
       "phase": "R5",
       "attributes": {
-        "name": "\"site\""
+        "name": "\"site\"",
+        "disabled": "{Boolean(source)}"
       }
     },
     {
@@ -9664,7 +10127,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"site\""
+        "name": "\"site\"",
+        "value": "{source.site_id??''}"
       }
     },
     {
@@ -9684,7 +10148,8 @@
       "tag": "select",
       "phase": "R5",
       "attributes": {
-        "name": "\"geofence\""
+        "name": "\"geofence\"",
+        "value": "{geofence}"
       }
     },
     {
@@ -9737,7 +10202,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source\""
+        "name": "\"source\"",
+        "value": "{sourceId}"
       }
     },
     {
@@ -9800,7 +10266,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"valid_from\""
+        "name": "\"valid_from\"",
+        "value": "{mapping.valid_from}"
       }
     },
     {
@@ -9811,7 +10278,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"valid_until\""
+        "name": "\"valid_until\"",
+        "value": "{mapping.valid_until??''}"
       }
     },
     {
@@ -9832,7 +10300,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"event\""
+        "name": "\"event\"",
+        "value": "{eventId}"
       }
     },
     {
@@ -9843,7 +10312,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"event\""
+        "name": "\"event\"",
+        "value": "{eventId}"
       }
     },
     {
@@ -9982,7 +10452,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -9993,7 +10464,8 @@
       "phase": "R5",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"evidenceId\""
+        "name": "\"evidenceId\"",
+        "value": "{row.id}"
       }
     },
     {
@@ -10017,6 +10489,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/unassigned/page.tsx:32:6548",
+      "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+      "line": 32,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "label": "\"إعادة الفحص وربط التسجيل\"",
+        "pendingLabel": "\"جارٍ التحقق والربط…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2764",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
       "line": 76,
@@ -10032,7 +10515,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10042,7 +10526,8 @@
       "tag": "input",
       "phase": "R2",
       "attributes": {
-        "name": "\"displayName\""
+        "name": "\"displayName\"",
+        "value": "{name}"
       }
     },
     {
@@ -10052,7 +10537,8 @@
       "tag": "select",
       "phase": "R2",
       "attributes": {
-        "name": "\"color\""
+        "name": "\"color\"",
+        "value": "{color}"
       }
     },
     {
@@ -10085,7 +10571,8 @@
       "phase": "R2",
       "attributes": {
         "name": "\"removeLogo\"",
-        "type": "\"checkbox\""
+        "type": "\"checkbox\"",
+        "disabled": "{Boolean(file)}"
       }
     },
     {
@@ -10095,7 +10582,8 @@
       "tag": "textarea",
       "phase": "R2",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -10105,7 +10593,8 @@
       "tag": "button",
       "phase": "R2",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -10126,7 +10615,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10137,7 +10627,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{isSite ? 'siteId' : 'entityId'}"
+        "name": "{isSite ? 'siteId' : 'entityId'}",
+        "value": "{siteId ?? entityId}"
       }
     },
     {
@@ -10148,7 +10639,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"returnEntityId\""
+        "name": "\"returnEntityId\"",
+        "value": "{entityId}"
       }
     },
     {
@@ -10159,7 +10651,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"action\""
+        "name": "\"action\"",
+        "value": "{recordAction}"
       }
     },
     {
@@ -10193,6 +10686,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:37:2372",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
+      "line": 37,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "{label}",
+        "pendingLabel": "\"جارٍ الحفظ…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:11:494",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
       "line": 11,
@@ -10210,7 +10714,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10221,7 +10726,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"legalEntityId\""
+        "name": "\"legalEntityId\"",
+        "value": "{entityId}"
       }
     },
     {
@@ -10245,6 +10751,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:19:1200",
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
+      "line": 19,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إضافة الفرع\"",
+        "pendingLabel": "\"جارٍ الإضافة…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:11:495",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
       "line": 11,
@@ -10262,7 +10779,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10296,6 +10814,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:21:1407",
+      "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
+      "line": 21,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إضافة الجهة\"",
+        "pendingLabel": "\"جارٍ الإضافة…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:180:7996",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
       "line": 180,
@@ -10323,7 +10852,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10334,7 +10864,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employee\""
+        "name": "\"employee\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -10345,7 +10876,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -10356,7 +10888,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{kind}"
       }
     },
     {
@@ -10367,7 +10900,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{periodId}"
       }
     },
     {
@@ -10378,7 +10912,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"type\""
+        "name": "\"type\"",
+        "value": "{leaveTypeId}"
       }
     },
     {
@@ -10389,7 +10924,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"typeVersion\""
+        "name": "\"typeVersion\"",
+        "value": "{typeVersion}"
       }
     },
     {
@@ -10400,7 +10936,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -10411,7 +10948,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"recovering\""
+        "name": "\"recovering\"",
+        "value": "{unresolved ? 'true' : 'false'}"
       }
     },
     {
@@ -10422,7 +10960,9 @@
       "phase": "R6",
       "attributes": {
         "name": "\"delta\"",
-        "type": "\"text\""
+        "type": "\"text\"",
+        "value": "{delta}",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -10432,7 +10972,9 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -10443,7 +10985,20 @@
       "phase": "R6",
       "attributes": {
         "name": "\"source\"",
-        "type": "\"text\""
+        "type": "\"text\"",
+        "value": "{source}",
+        "disabled": "{submitting}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:249:12449",
+      "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+      "line": 249,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "{hasRecoveredDraft || attempted ? 'التحقق من نتيجة العملية السابقة' : canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'}",
+        "pendingLabel": "\"جارٍ التحقق والحفظ…\""
       }
     },
     {
@@ -10474,7 +11029,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{name}"
+        "name": "{name}",
+        "value": "{value}"
       }
     },
     {
@@ -10485,7 +11041,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"rates\""
+        "name": "\"rates\"",
+        "value": "{JSON.stringify(rates)}"
       }
     },
     {
@@ -10496,7 +11053,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"reviewHash\""
+        "name": "\"reviewHash\"",
+        "value": "{quote?.review_hash??''}"
       }
     },
     {
@@ -10507,7 +11065,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{key}"
       }
     },
     {
@@ -10518,7 +11077,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"policyVersion\""
+        "name": "\"policyVersion\"",
+        "value": "{current.version}"
       }
     },
     {
@@ -10529,7 +11089,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"asOf\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{date}"
       }
     },
     {
@@ -10539,7 +11100,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"source\""
+        "name": "\"source\"",
+        "value": "{source}"
       }
     },
     {
@@ -10549,7 +11111,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{rate.from}"
       }
     },
     {
@@ -10559,7 +11122,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{rate.annual_days}"
       }
     },
     {
@@ -10568,7 +11132,9 @@
       "line": 26,
       "tag": "input",
       "phase": "R6",
-      "attributes": {}
+      "attributes": {
+        "value": "{rate.source}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:27:4009",
@@ -10587,7 +11153,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{rates.length>=32}"
       }
     },
     {
@@ -10598,7 +11165,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"submit\"",
-        "name": "\"intent\""
+        "name": "\"intent\"",
+        "value": "\"preview\""
       }
     },
     {
@@ -10608,7 +11176,8 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -10619,7 +11188,9 @@
       "phase": "R6",
       "attributes": {
         "type": "\"submit\"",
-        "name": "\"intent\""
+        "name": "\"intent\"",
+        "value": "\"post\"",
+        "disabled": "{!ready||!quote.eligible||reason.trim().length<3}"
       }
     },
     {
@@ -10630,7 +11201,8 @@
       "phase": "R6",
       "attributes": {
         "name": "{name}",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{value}"
       }
     },
     {
@@ -10640,7 +11212,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"policySource\""
+        "name": "\"policySource\"",
+        "value": "{policySource}"
       }
     },
     {
@@ -10650,7 +11223,8 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"policyReason\""
+        "name": "\"policyReason\"",
+        "value": "{policyReason}"
       }
     },
     {
@@ -10661,7 +11235,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"submit\"",
-        "name": "\"intent\""
+        "name": "\"intent\"",
+        "value": "\"policy\""
       }
     },
     {
@@ -10723,7 +11298,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10734,7 +11310,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"q\""
+        "name": "\"q\"",
+        "value": "{q}"
       }
     },
     {
@@ -10745,7 +11322,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employee\""
+        "name": "\"employee\"",
+        "value": "{employee.employeeId}"
       }
     },
     {
@@ -10756,7 +11334,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employment\""
+        "name": "\"employment\"",
+        "value": "{employee.employmentId}"
       }
     },
     {
@@ -10767,7 +11346,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"startDate\""
+        "name": "\"startDate\"",
+        "value": "{startDate}"
       }
     },
     {
@@ -10778,7 +11358,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"endDate\""
+        "name": "\"endDate\"",
+        "value": "{endDate}"
       }
     },
     {
@@ -10789,7 +11370,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"halfDay\""
+        "name": "\"halfDay\"",
+        "value": "{halfDay ? 'true' : 'false'}"
       }
     },
     {
@@ -10800,7 +11382,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"halfDayPart\""
+        "name": "\"halfDayPart\"",
+        "value": "{halfDayPart}"
       }
     },
     {
@@ -10811,7 +11394,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -10821,7 +11405,9 @@
       "tag": "select",
       "phase": "R6",
       "attributes": {
-        "name": "\"leaveTypeId\""
+        "name": "\"leaveTypeId\"",
+        "value": "{leaveTypeId}",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -10841,7 +11427,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "type": "\"checkbox\""
+        "type": "\"checkbox\"",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -10850,7 +11437,10 @@
       "line": 173,
       "tag": "select",
       "phase": "R6",
-      "attributes": {}
+      "attributes": {
+        "value": "{halfDayPart}",
+        "disabled": "{submitting}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:182:9605",
@@ -10859,7 +11449,20 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{submitting}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:194:10277",
+      "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
+      "line": 194,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"تسجيل الطلب\"",
+        "pendingLabel": "\"جارٍ التسجيل…\""
       }
     },
     {
@@ -10920,7 +11523,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{current <= 1}"
       }
     },
     {
@@ -10930,7 +11534,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{current >= totalPages}"
       }
     },
     {
@@ -10951,7 +11556,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -10962,7 +11568,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"requestId\""
+        "name": "\"requestId\"",
+        "value": "{requestId}"
       }
     },
     {
@@ -10973,7 +11580,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"expectedVersion\""
+        "name": "\"expectedVersion\"",
+        "value": "{expectedVersion}"
       }
     },
     {
@@ -10984,7 +11592,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"reviewedPreviewVersion\""
+        "name": "\"reviewedPreviewVersion\"",
+        "value": "{reviewedPreviewVersion}"
       }
     },
     {
@@ -10995,7 +11604,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"cancellationId\""
+        "name": "\"cancellationId\"",
+        "value": "{cancellationId}"
       }
     },
     {
@@ -11006,7 +11616,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"cancellationVersion\""
+        "name": "\"cancellationVersion\"",
+        "value": "{cancellationVersion}"
       }
     },
     {
@@ -11017,7 +11628,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -11028,7 +11640,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"replacementId\""
+        "name": "\"replacementId\"",
+        "value": "{replacementId}"
       }
     },
     {
@@ -11039,7 +11652,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"replacementVersion\""
+        "name": "\"replacementVersion\"",
+        "value": "{replacementVersion}"
       }
     },
     {
@@ -11050,7 +11664,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"replacementPreviewVersion\""
+        "name": "\"replacementPreviewVersion\"",
+        "value": "{replacementPreviewVersion}"
       }
     },
     {
@@ -11060,7 +11675,9 @@
       "tag": "select",
       "phase": "R6",
       "attributes": {
-        "name": "\"decision\""
+        "name": "\"decision\"",
+        "value": "{intent}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11070,7 +11687,9 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11081,7 +11700,19 @@
       "phase": "R6",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"historicalPayrollCorrection\""
+        "name": "\"historicalPayrollCorrection\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:175:7168",
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
+      "line": 175,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "{decision ? intent === 'approve' ? 'اعتماد الطلب' : 'رفض الطلب' : submitLabel}",
+        "pendingLabel": "{decision ? 'جارٍ حفظ القرار…' : pendingLabel}"
       }
     },
     {
@@ -11092,7 +11723,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"restDay\""
+        "name": "\"restDay\"",
+        "value": "{day}"
       }
     },
     {
@@ -11103,7 +11735,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"holidayDate\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{row.date}"
       }
     },
     {
@@ -11114,7 +11747,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"holidayName\"",
-        "type": "\"text\""
+        "type": "\"text\"",
+        "value": "{row.name}"
       }
     },
     {
@@ -11134,7 +11768,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{rows.length >= MAX_HOLIDAY_ROWS}"
       }
     },
     {
@@ -11155,7 +11790,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11166,7 +11802,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11177,7 +11814,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"calendarId\""
+        "name": "\"calendarId\"",
+        "value": "{calendarId}"
       }
     },
     {
@@ -11188,7 +11826,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveFrom\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11199,7 +11838,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveUntil\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11209,7 +11849,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"source\""
+        "name": "\"source\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11219,7 +11860,19 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:67:3206",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+      "line": 67,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"حفظ الإصدار الجديد\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -11240,7 +11893,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11251,7 +11905,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11261,7 +11916,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"name\""
+        "name": "\"name\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11272,7 +11928,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveFrom\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11283,7 +11940,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveUntil\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11293,7 +11951,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"code\""
+        "name": "\"code\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11303,7 +11962,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"source\""
+        "name": "\"source\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11313,7 +11973,19 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:86:3989",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+      "line": 86,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"إنشاء التقويم\"",
+        "pendingLabel": "\"جارٍ الإنشاء…\""
       }
     },
     {
@@ -11334,7 +12006,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11345,7 +12018,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11356,7 +12030,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"typeId\""
+        "name": "\"typeId\"",
+        "value": "{typeId}"
       }
     },
     {
@@ -11367,7 +12042,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveFrom\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11378,7 +12054,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"payEffect\""
+        "name": "\"payEffect\"",
+        "value": "\"paid\""
       }
     },
     {
@@ -11389,7 +12066,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"payEffect\""
+        "name": "\"payEffect\"",
+        "value": "\"unpaid\""
       }
     },
     {
@@ -11400,7 +12078,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"balanceMode\""
+        "name": "\"balanceMode\"",
+        "value": "\"tracked\""
       }
     },
     {
@@ -11411,7 +12090,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"balanceMode\""
+        "name": "\"balanceMode\"",
+        "value": "\"untracked\""
       }
     },
     {
@@ -11422,7 +12102,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"dayCountBasis\""
+        "name": "\"dayCountBasis\"",
+        "value": "\"working_days\""
       }
     },
     {
@@ -11433,7 +12114,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"dayCountBasis\""
+        "name": "\"dayCountBasis\"",
+        "value": "\"calendar_days\""
       }
     },
     {
@@ -11444,7 +12126,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"halfDay\""
+        "name": "\"halfDay\"",
+        "value": "\"true\""
       }
     },
     {
@@ -11454,7 +12137,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"source\""
+        "name": "\"source\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11464,7 +12148,19 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:108:4877",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
+      "line": 108,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"حفظ الإصدار الجديد\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -11485,7 +12181,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11496,7 +12193,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11507,7 +12205,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"typeId\""
+        "name": "\"typeId\"",
+        "value": "{typeId}"
       }
     },
     {
@@ -11518,7 +12217,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"isActive\""
+        "name": "\"isActive\"",
+        "value": "{String(targetActive)}"
       }
     },
     {
@@ -11529,7 +12229,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operationKey\""
+        "name": "\"operationKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -11539,7 +12240,20 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:62:2705",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
+      "line": 62,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "{targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -11560,7 +12274,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11571,7 +12286,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11581,7 +12297,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"name\""
+        "name": "\"name\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11592,7 +12309,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"effectiveFrom\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11602,7 +12320,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"code\""
+        "name": "\"code\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11613,7 +12332,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"payEffect\""
+        "name": "\"payEffect\"",
+        "value": "\"paid\""
       }
     },
     {
@@ -11624,7 +12344,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"payEffect\""
+        "name": "\"payEffect\"",
+        "value": "\"unpaid\""
       }
     },
     {
@@ -11635,7 +12356,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"balanceMode\""
+        "name": "\"balanceMode\"",
+        "value": "\"tracked\""
       }
     },
     {
@@ -11646,7 +12368,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"balanceMode\""
+        "name": "\"balanceMode\"",
+        "value": "\"untracked\""
       }
     },
     {
@@ -11657,7 +12380,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"dayCountBasis\""
+        "name": "\"dayCountBasis\"",
+        "value": "\"working_days\""
       }
     },
     {
@@ -11668,7 +12392,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"dayCountBasis\""
+        "name": "\"dayCountBasis\"",
+        "value": "\"calendar_days\""
       }
     },
     {
@@ -11679,7 +12404,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"halfDay\""
+        "name": "\"halfDay\"",
+        "value": "\"true\""
       }
     },
     {
@@ -11689,7 +12415,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"source\""
+        "name": "\"source\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11699,7 +12426,19 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:129:5787",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
+      "line": 129,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"إنشاء النوع\"",
+        "pendingLabel": "\"جارٍ الإنشاء…\""
       }
     },
     {
@@ -11720,7 +12459,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11731,7 +12471,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -11741,7 +12482,9 @@
       "tag": "select",
       "phase": "R6",
       "attributes": {
-        "name": "\"calendarId\""
+        "name": "\"calendarId\"",
+        "value": "{selected}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11752,7 +12495,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"startsOn\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11763,7 +12507,8 @@
       "phase": "R6",
       "attributes": {
         "name": "\"endsOn\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11773,7 +12518,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"label\""
+        "name": "\"label\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -11783,7 +12529,19 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:74:3394",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+      "line": 74,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"إنشاء الفترة\"",
+        "pendingLabel": "\"جارٍ الإنشاء…\""
       }
     },
     {
@@ -11824,7 +12582,8 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy || refreshing || !ready || !pending.id}"
       }
     },
     {
@@ -11834,7 +12593,8 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy || refreshing || !ready || !snapshot.available}"
       }
     },
     {
@@ -11844,7 +12604,8 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy || refreshing || !ready}"
       }
     },
     {
@@ -11854,7 +12615,8 @@
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy || refreshing || !ready || !snapshot.available}"
       }
     },
     {
@@ -11864,7 +12626,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{current <= 1}"
       }
     },
     {
@@ -11874,7 +12637,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{current >= totalPages}"
       }
     },
     {
@@ -11895,7 +12659,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11906,7 +12671,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"requestId\""
+        "name": "\"requestId\"",
+        "value": "{requestId}"
       }
     },
     {
@@ -11917,7 +12683,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"expectedVersion\""
+        "name": "\"expectedVersion\"",
+        "value": "{expectedVersion}"
       }
     },
     {
@@ -11928,7 +12695,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
+        "name": "\"idempotencyKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -11938,7 +12706,20 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:41:2169",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "line": 41,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"إرسال طلب الإلغاء\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -11959,7 +12740,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -11970,7 +12752,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"requestId\""
+        "name": "\"requestId\"",
+        "value": "{requestId}"
       }
     },
     {
@@ -11981,7 +12764,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"expectedVersion\""
+        "name": "\"expectedVersion\"",
+        "value": "{expectedVersion}"
       }
     },
     {
@@ -11992,7 +12776,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
+        "name": "\"idempotencyKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -12002,7 +12787,20 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:38:1913",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
+      "line": 38,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"سحب الطلب\"",
+        "pendingLabel": "\"جارٍ السحب…\""
       }
     },
     {
@@ -12021,7 +12819,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -12032,7 +12831,9 @@
       "phase": "R6",
       "attributes": {
         "name": "\"startDate\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{fields.startDate}",
+        "disabled": "{frozen}"
       }
     },
     {
@@ -12043,7 +12844,9 @@
       "phase": "R6",
       "attributes": {
         "name": "\"endDate\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{fields.endDate}",
+        "disabled": "{frozen}"
       }
     },
     {
@@ -12053,7 +12856,8 @@
       "tag": "button",
       "phase": "R6",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{frozen || Boolean(rangeError)}"
       }
     },
     {
@@ -12074,7 +12878,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -12085,7 +12890,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"startDate\""
+        "name": "\"startDate\"",
+        "value": "{options.startDate}"
       }
     },
     {
@@ -12096,7 +12902,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"endDate\""
+        "name": "\"endDate\"",
+        "value": "{options.endDate}"
       }
     },
     {
@@ -12107,7 +12914,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"halfDay\""
+        "name": "\"halfDay\"",
+        "value": "{fields.halfDay ? 'true' : 'false'}"
       }
     },
     {
@@ -12118,7 +12926,8 @@
       "phase": "R6",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"idempotencyKey\""
+        "name": "\"idempotencyKey\"",
+        "value": "{operationKey}"
       }
     },
     {
@@ -12128,7 +12937,9 @@
       "tag": "select",
       "phase": "R6",
       "attributes": {
-        "name": "\"leaveTypeId\""
+        "name": "\"leaveTypeId\"",
+        "value": "{fields.leaveTypeId}",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -12138,7 +12949,8 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
-        "type": "\"checkbox\""
+        "type": "\"checkbox\"",
+        "disabled": "{submitting}"
       }
     },
     {
@@ -12148,7 +12960,20 @@
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{fields.reason}",
+        "disabled": "{submitting}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:182:9675",
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "line": 182,
+      "tag": "SubmitButton",
+      "phase": "R6",
+      "attributes": {
+        "label": "\"إرسال الطلب\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -12189,7 +13014,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -12200,7 +13026,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -12211,7 +13038,9 @@
       "phase": "R7",
       "attributes": {
         "name": "\"start\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{fields.start}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12221,7 +13050,9 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"cutoff\""
+        "name": "\"cutoff\"",
+        "value": "{fields.cutoff}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12232,7 +13063,9 @@
       "phase": "R7",
       "attributes": {
         "name": "\"payment\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{fields.payment}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12242,7 +13075,9 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"month\""
+        "name": "\"month\"",
+        "value": "{fields.month}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12252,7 +13087,9 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"timezone\""
+        "name": "\"timezone\"",
+        "value": "{fields.timezone}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12262,7 +13099,9 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{fields.reason}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12272,7 +13111,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "{preview ? 'save' : 'preview'}",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12282,7 +13123,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"cancel\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12303,7 +13146,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -12314,7 +13158,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -12325,7 +13170,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"revision\""
+        "name": "\"revision\"",
+        "value": "{revision}"
       }
     },
     {
@@ -12336,7 +13182,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"reviewed\""
+        "name": "\"reviewed\"",
+        "value": "{JSON.stringify(preview)}"
       }
     },
     {
@@ -12345,7 +13192,9 @@
       "line": 38,
       "tag": "button",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4532",
@@ -12354,7 +13203,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -12373,7 +13223,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"corrected_advance\""
+        "name": "\"corrected_advance\"",
+        "value": "{props.correctedAdvance}"
       }
     },
     {
@@ -12426,7 +13277,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"confirmed\""
+        "name": "\"confirmed\"",
+        "value": "\"yes\""
       }
     },
     {
@@ -12478,7 +13330,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"original\""
+        "name": "\"original\"",
+        "value": "{props.original}"
       }
     },
     {
@@ -12489,7 +13342,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"installment\""
+        "name": "\"installment\"",
+        "value": "{props.installment}"
       }
     },
     {
@@ -12568,7 +13422,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{k}"
+        "name": "{k}",
+        "value": "{v}"
       }
     },
     {
@@ -12607,7 +13462,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{q.employer}"
       }
     },
     {
@@ -12646,7 +13502,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{q.employer}"
       }
     },
     {
@@ -12657,7 +13514,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"new\""
+        "name": "\"new\"",
+        "value": "\"1\""
       }
     },
     {
@@ -12668,7 +13526,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"corrected_advance\""
+        "name": "\"corrected_advance\"",
+        "value": "{q.corrected_advance}"
       }
     },
     {
@@ -12679,7 +13538,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{q.period}"
       }
     },
     {
@@ -12718,7 +13578,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{k}"
+        "name": "{k}",
+        "value": "{v}"
       }
     },
     {
@@ -12747,7 +13608,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{name}"
+        "name": "{name}",
+        "value": "{current}"
       }
     },
     {
@@ -12757,7 +13619,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "{name}"
+        "name": "{name}",
+        "value": "{current}"
       }
     },
     {
@@ -12767,7 +13630,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "{name}"
+        "name": "{name}",
+        "value": "{current}"
       }
     },
     {
@@ -12778,6 +13642,7 @@
       "phase": "R7",
       "attributes": {
         "name": "{name}",
+        "value": "{current}",
         "type": "{/date|_from|_until|coverage_start|coverage_end/.test(key)?'date':'text'}"
       }
     },
@@ -12799,7 +13664,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{p.tenant}"
       }
     },
     {
@@ -12810,7 +13676,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{p.employer}"
       }
     },
     {
@@ -12821,7 +13688,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"output\""
+        "name": "\"output\"",
+        "value": "{p.output}"
       }
     },
     {
@@ -12832,7 +13700,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"case\""
+        "name": "\"case\"",
+        "value": "{p.caseId??''}"
       }
     },
     {
@@ -12843,7 +13712,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"revision\""
+        "name": "\"revision\"",
+        "value": "{p.revision}"
       }
     },
     {
@@ -12854,7 +13724,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{split?`${p.kind}_split`:p.kind}"
       }
     },
     {
@@ -12865,7 +13736,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source\""
+        "name": "\"source\"",
+        "value": "{p.source?.id??''}"
       }
     },
     {
@@ -12876,7 +13748,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source_hash\""
+        "name": "\"source_hash\"",
+        "value": "{p.source?.expected_hash??''}"
       }
     },
     {
@@ -12887,7 +13760,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"source_changes\""
+        "name": "\"source_changes\"",
+        "value": "{JSON.stringify(selectedObservations)}"
       }
     },
     {
@@ -12898,7 +13772,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"unchanged_changes\""
+        "name": "\"unchanged_changes\"",
+        "value": "{JSON.stringify(unchangedChanges)}"
       }
     },
     {
@@ -12909,7 +13784,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"field_keys\""
+        "name": "\"field_keys\"",
+        "value": "{JSON.stringify(keys)}"
       }
     },
     {
@@ -12920,7 +13796,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"data_keys\""
+        "name": "\"data_keys\"",
+        "value": "{JSON.stringify(dataKeys)}"
       }
     },
     {
@@ -12939,7 +13816,9 @@
       "line": 51,
       "tag": "select",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "value": "{split?'dated':'whole'}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:51:12632",
@@ -12947,7 +13826,9 @@
       "line": 51,
       "tag": "select",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "value": "{existing?'existing':'new'}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:54:13155",
@@ -12956,7 +13837,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reference\""
+        "name": "\"reference\"",
+        "value": "{reference}"
       }
     },
     {
@@ -12966,7 +13848,8 @@
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -12976,7 +13859,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"row_basis\""
+        "name": "\"row_basis\"",
+        "value": "{r.basis}"
       }
     },
     {
@@ -12986,7 +13870,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "{`row_${key}`}"
+        "name": "{`row_${key}`}",
+        "value": "{r[key as 'amount'|'reference'|'source']}"
       }
     },
     {
@@ -12997,7 +13882,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"row_target\""
+        "name": "\"row_target\"",
+        "value": "\"\""
       }
     },
     {
@@ -13008,7 +13894,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"row_component\""
+        "name": "\"row_component\"",
+        "value": "\"\""
       }
     },
     {
@@ -13028,7 +13915,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{rows.length>=100}"
       }
     },
     {
@@ -13038,7 +13926,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"preview\"",
+        "disabled": "{staleObservation||(p.kind==='source_change'&&observations.length===0)}"
       }
     },
     {
@@ -13048,7 +13938,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"save\"",
+        "disabled": "{staleObservation}"
       }
     },
     {
@@ -13068,7 +13960,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{pending||state.recoverPending}"
       }
     },
     {
@@ -13089,7 +13982,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -13110,7 +14004,8 @@
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -13149,7 +14044,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -13159,7 +14055,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"direction\""
+        "name": "\"direction\"",
+        "value": "{fields.direction}"
       }
     },
     {
@@ -13170,7 +14067,8 @@
       "phase": "R7",
       "attributes": {
         "name": "{key}",
-        "type": "{key==='date'?'date':'text'}"
+        "type": "{key==='date'?'date':'text'}",
+        "value": "{fields[key]}"
       }
     },
     {
@@ -13227,7 +14125,9 @@
       "line": 77,
       "tag": "button",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{r.pending}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/PagedChoice.tsx:19:2710",
@@ -13236,7 +14136,9 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "aria-label": "{'بحث '+placeholder}"
+        "aria-label": "{'بحث '+placeholder}",
+        "value": "{query}",
+        "disabled": "{busy}"
       }
     },
     {
@@ -13246,7 +14148,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy}"
       }
     },
     {
@@ -13255,7 +14158,10 @@
       "line": 19,
       "tag": "select",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "value": "{current}",
+        "disabled": "{busy}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/PagedChoice.tsx:19:3408",
@@ -13265,7 +14171,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{name}"
+        "name": "{name}",
+        "value": "{value}"
       }
     },
     {
@@ -13275,7 +14182,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy}"
       }
     },
     {
@@ -13285,7 +14193,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{busy}"
       }
     },
     {
@@ -13294,7 +14203,9 @@
       "line": 9,
       "tag": "select",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "value": "{kind}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/SourcePicker.tsx:9:1097",
@@ -13324,7 +14235,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -13335,7 +14247,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -13346,7 +14259,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{period}"
       }
     },
     {
@@ -13357,7 +14271,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employment\""
+        "name": "\"employment\"",
+        "value": "{employment}"
       }
     },
     {
@@ -13367,7 +14282,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -13376,7 +14292,9 @@
       "line": 8,
       "tag": "button",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending||state.saved}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:23:4788",
@@ -13385,7 +14303,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{values[key]??''}"
       }
     },
     {
@@ -13396,6 +14315,7 @@
       "phase": "R7",
       "attributes": {
         "name": "{key}",
+        "value": "{values[key]??''}",
         "type": "{['from','until','insurance_from','insurance_until','coverage_start','coverage_end','calculation_from','calculation_until','insurance_obligation_month'].includes(key)?'date':'text'}"
       }
     },
@@ -13417,7 +14337,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -13428,7 +14349,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -13439,7 +14361,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{kind}"
       }
     },
     {
@@ -13450,7 +14373,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{periodInput?period.id:''}"
       }
     },
     {
@@ -13461,7 +14385,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -13471,7 +14396,9 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"employment\""
+        "name": "\"employment\"",
+        "value": "{values.employment}",
+        "disabled": "{Boolean(state.head)}"
       }
     },
     {
@@ -13482,7 +14409,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employment\""
+        "name": "\"employment\"",
+        "value": "{values.employment}"
       }
     },
     {
@@ -13493,7 +14421,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employment\""
+        "name": "\"employment\"",
+        "value": "\"\""
       }
     },
     {
@@ -13504,7 +14433,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"from\""
+        "name": "\"from\"",
+        "value": "{values.from}"
       }
     },
     {
@@ -13515,7 +14445,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"until\""
+        "name": "\"until\"",
+        "value": "{values.until}"
       }
     },
     {
@@ -13526,7 +14457,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"units\""
+        "name": "\"units\"",
+        "value": "\"0\""
       }
     },
     {
@@ -13536,7 +14468,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"save\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13546,7 +14480,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"approve\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13556,7 +14492,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"cancel\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13601,7 +14539,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -13638,7 +14577,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -13649,7 +14589,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -13722,7 +14663,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -13733,7 +14675,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"review_q\""
+        "name": "\"review_q\"",
+        "value": "{query.review_q}"
       }
     },
     {
@@ -13771,7 +14714,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"__recover\""
+        "name": "\"__recover\"",
+        "value": "\"yes\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13781,7 +14726,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"__cancel\""
+        "name": "\"__cancel\"",
+        "value": "\"yes\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13812,7 +14759,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{p.tenant}"
       }
     },
     {
@@ -13823,7 +14771,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{p.employer}"
       }
     },
     {
@@ -13834,7 +14783,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"output\""
+        "name": "\"output\"",
+        "value": "{p.output}"
       }
     },
     {
@@ -13845,7 +14795,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"original\""
+        "name": "\"original\"",
+        "value": "{p.original??''}"
       }
     },
     {
@@ -13856,7 +14807,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"revision\""
+        "name": "\"revision\"",
+        "value": "{Math.max(p.revision,state.revision)}"
       }
     },
     {
@@ -13867,7 +14819,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"compensate\""
       }
     },
     {
@@ -13877,7 +14830,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "{mode}"
       }
     },
     {
@@ -13888,7 +14842,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"employee\""
+        "name": "\"employee\"",
+        "value": "{e.employment_id}"
       }
     },
     {
@@ -13898,7 +14853,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "{`amount:${e.employment_id}`}"
+        "name": "{`amount:${e.employment_id}`}",
+        "value": "{amounts[e.employment_id]??''}"
       }
     },
     {
@@ -13909,7 +14865,8 @@
       "phase": "R7",
       "attributes": {
         "name": "\"date\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{date}"
       }
     },
     {
@@ -13919,7 +14876,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reference\""
+        "name": "\"reference\"",
+        "value": "{reference}"
       }
     },
     {
@@ -13929,7 +14887,8 @@
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -13940,7 +14899,8 @@
       "phase": "R7",
       "attributes": {
         "name": "\"confirmed\"",
-        "type": "\"checkbox\""
+        "type": "\"checkbox\"",
+        "value": "\"yes\""
       }
     },
     {
@@ -13949,7 +14909,9 @@
       "line": 28,
       "tag": "button",
       "phase": "R7",
-      "attributes": {}
+      "attributes": {
+        "disabled": "{pending||(!correction&&mode==='allocations'&&!selected.length)}"
+      }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5899",
@@ -13958,7 +14920,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -13977,7 +14940,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{query.employer}"
       }
     },
     {
@@ -13988,7 +14952,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"output\""
+        "name": "\"output\"",
+        "value": "{query.output}"
       }
     },
     {
@@ -14016,7 +14981,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{pending}"
       }
     },
     {
@@ -14035,7 +15001,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"report\""
+        "name": "\"report\"",
+        "value": "{report}"
       }
     },
     {
@@ -14092,7 +15059,8 @@
       "phase": "R7",
       "attributes": {
         "name": "\"employer\"",
-        "type": "\"hidden\""
+        "type": "\"hidden\"",
+        "value": "{query.employer}"
       }
     },
     {
@@ -14103,7 +15071,8 @@
       "phase": "R7",
       "attributes": {
         "name": "\"scope_output\"",
-        "type": "\"hidden\""
+        "type": "\"hidden\"",
+        "value": "{query.output}"
       }
     },
     {
@@ -14175,7 +15144,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -14186,7 +15156,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -14197,7 +15168,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{period}"
       }
     },
     {
@@ -14207,7 +15179,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -14217,7 +15190,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "{state.status==='approved'?'release':'approve'}"
       }
     },
     {
@@ -14228,7 +15202,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -14249,7 +15224,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"disposition\""
+        "name": "\"disposition\"",
+        "value": "{p.retraction}"
       }
     },
     {
@@ -14259,7 +15235,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reference\""
+        "name": "\"reference\"",
+        "value": "{reference}"
       }
     },
     {
@@ -14269,7 +15246,8 @@
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -14280,7 +15258,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"confirmed\""
+        "name": "\"confirmed\"",
+        "value": "\"yes\""
       }
     },
     {
@@ -14290,7 +15269,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"retract\"",
+        "disabled": "{pending||!attempt}"
       }
     },
     {
@@ -14311,7 +15292,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "{key}"
+        "name": "{key}",
+        "value": "{value}"
       }
     },
     {
@@ -14321,7 +15303,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"amount\""
+        "name": "\"amount\"",
+        "value": "{amount}"
       }
     },
     {
@@ -14331,7 +15314,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"mode\""
+        "name": "\"mode\"",
+        "value": "{mode}"
       }
     },
     {
@@ -14341,7 +15325,8 @@
       "tag": "select",
       "phase": "R7",
       "attributes": {
-        "name": "\"target\""
+        "name": "\"target\"",
+        "value": "{target}"
       }
     },
     {
@@ -14352,7 +15337,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"date\"",
-        "name": "\"date\""
+        "name": "\"date\"",
+        "value": "{date}"
       }
     },
     {
@@ -14362,7 +15348,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reference\""
+        "name": "\"reference\"",
+        "value": "{reference}"
       }
     },
     {
@@ -14372,7 +15359,8 @@
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -14383,7 +15371,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"confirmed\""
+        "name": "\"confirmed\"",
+        "value": "\"yes\""
       }
     },
     {
@@ -14393,7 +15382,9 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"approve\"",
+        "disabled": "{pending||!attempt||(mode==='carry'&&!target)}"
       }
     },
     {
@@ -14403,7 +15394,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{Boolean(pending)}"
       }
     },
     {
@@ -14413,7 +15405,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"button\""
+        "type": "\"button\"",
+        "disabled": "{saving}"
       }
     },
     {
@@ -14434,7 +15427,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenant\""
+        "name": "\"tenant\"",
+        "value": "{tenant}"
       }
     },
     {
@@ -14445,7 +15439,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -14456,7 +15451,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{period}"
       }
     },
     {
@@ -14467,7 +15463,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"candidate\""
+        "name": "\"candidate\"",
+        "value": "{candidate}"
       }
     },
     {
@@ -14488,7 +15485,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"finalize\""
       }
     },
     {
@@ -14498,7 +15496,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"calculate\""
       }
     },
     {
@@ -14508,7 +15507,8 @@
       "tag": "input",
       "phase": "R7",
       "attributes": {
-        "name": "\"reason\""
+        "name": "\"reason\"",
+        "value": "{reason}"
       }
     },
     {
@@ -14518,7 +15518,8 @@
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "name": "\"operation\""
+        "name": "\"operation\"",
+        "value": "\"cancel\""
       }
     },
     {
@@ -14563,7 +15564,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -14574,7 +15576,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"view\""
+        "name": "\"view\"",
+        "value": "{view}"
       }
     },
     {
@@ -14621,7 +15624,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employer\""
+        "name": "\"employer\"",
+        "value": "{employer}"
       }
     },
     {
@@ -14632,7 +15636,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"period\""
+        "name": "\"period\"",
+        "value": "{query.period}"
       }
     },
     {
@@ -14643,7 +15648,8 @@
       "phase": "R7",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"review_q\""
+        "name": "\"review_q\"",
+        "value": "{query.review_q}"
       }
     },
     {
@@ -14682,7 +15688,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -14693,7 +15700,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -14704,7 +15712,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId}"
       }
     },
     {
@@ -14715,7 +15724,19 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"versionId\""
+        "name": "\"versionId\"",
+        "value": "{version.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4096",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "line": 58,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إلغاء تغيير الأجر المقرر\"",
+        "pendingLabel": "\"جارٍ الإلغاء…\""
       }
     },
     {
@@ -14736,7 +15757,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -14747,7 +15769,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId ?? ''}"
       }
     },
     {
@@ -14758,7 +15781,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -14780,7 +15804,19 @@
       "phase": "R4",
       "attributes": {
         "name": "\"effectiveDate\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{effectiveDateChoice}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:85:6854",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "line": 85,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"حفظ تغيير الأجر\"",
+        "pendingLabel": "\"جارٍ حفظ التغيير…\""
       }
     },
     {
@@ -14801,7 +15837,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -14812,7 +15849,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -14823,7 +15861,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId}"
       }
     },
     {
@@ -14834,7 +15873,29 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"versionId\""
+        "name": "\"versionId\"",
+        "value": "{options.pending.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7401",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "line": 93,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إلغاء تغيير الأجر المقرر\"",
+        "pendingLabel": "\"جارٍ الإلغاء…\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx:30:1336",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
+      "line": 30,
+      "tag": "Tabs.Trigger",
+      "phase": "R4",
+      "attributes": {
+        "value": "{area.value}"
       }
     },
     {
@@ -14855,7 +15916,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -14866,21 +15928,23 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:52:4914",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 52,
-      "tag": "button",
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "\"فك الربط\"",
+        "pendingLabel": "\"جارٍ فك الربط…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:62:6461",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:62:6485",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 62,
       "tag": "form",
@@ -14890,7 +15954,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:64:6606",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:64:6630",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 64,
       "tag": "input",
@@ -14901,18 +15965,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:65:6716",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:65:6740",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 65,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"linkPage\""
+        "name": "\"linkPage\"",
+        "value": "\"1\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:66:6777",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:66:6801",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 66,
       "tag": "button",
@@ -14922,7 +15987,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:68:6890",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:68:6914",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 68,
       "tag": "form",
@@ -14932,29 +15997,31 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:6966",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:6990",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 69,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:7022",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:7046",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 69,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:71:7166",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:71:7190",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 71,
       "tag": "select",
@@ -14964,17 +16031,18 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:75:7463",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:75:7487",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 75,
-      "tag": "button",
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "\"ربط الحساب\"",
+        "pendingLabel": "\"جارٍ ربط الحساب…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:95:9432",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:95:9455",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 95,
       "tag": "form",
@@ -14984,40 +16052,54 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9499",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9522",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 96,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9555",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9578",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 96,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:97:9629",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:97:9652",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 97,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{provision.intent_id}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:102:10099",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:98:9733",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "line": 98,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "{provision.state === 'pending' ? 'متابعة إنشاء الحساب' : 'إعادة إرسال رابط التفعيل'}",
+        "pendingLabel": "\"جارٍ الإرسال…\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:102:10122",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 102,
       "tag": "form",
@@ -15027,40 +16109,43 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10180",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10203",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 103,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10259",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 103,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:104:10308",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:104:10331",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 104,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"requestKey\""
+        "name": "\"requestKey\"",
+        "value": "{requestKey}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:106:10451",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:106:10474",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 106,
       "tag": "input",
@@ -15071,7 +16156,18 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:114:11116",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:107:10595",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "line": 107,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إنشاء الحساب وإرسال رابط التفعيل\"",
+        "pendingLabel": "\"جارٍ إنشاء الحساب…\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:114:11139",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 114,
       "tag": "form",
@@ -15081,36 +16177,50 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11184",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11207",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 115,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11240",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11263",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 115,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:116:11310",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:116:11333",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
       "line": 116,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"intentId\""
+        "name": "\"intentId\"",
+        "value": "{provision.intent_id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:117:11410",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "line": 117,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إرسال رابط تأكيد كلمة المرور\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -15131,7 +16241,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15142,7 +16253,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -15153,7 +16265,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId ?? ''}"
       }
     },
     {
@@ -15179,6 +16292,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:80:6280",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 80,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إنهاء علاقة العمل\"",
+        "pendingLabel": "\"جارٍ إنهاء العلاقة…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:89:7075",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
       "line": 89,
@@ -15196,7 +16320,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15207,7 +16332,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -15294,6 +16420,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:112:9955",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 112,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إنشاء علاقة العمل الجديدة\"",
+        "pendingLabel": "\"جارٍ تسجيل إعادة التوظيف…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:80:6245",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
       "line": 80,
@@ -15311,7 +16448,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15322,7 +16460,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -15333,7 +16472,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId}"
       }
     },
     {
@@ -15344,7 +16484,19 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"assignmentId\""
+        "name": "\"assignmentId\"",
+        "value": "{assignment.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6638",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 85,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إلغاء النقل المقرر\"",
+        "pendingLabel": "\"جارٍ الإلغاء…\""
       }
     },
     {
@@ -15365,7 +16517,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15376,7 +16529,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId ?? ''}"
       }
     },
     {
@@ -15387,7 +16541,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -15407,7 +16562,8 @@
       "tag": "select",
       "phase": "R4",
       "attributes": {
-        "name": "\"departmentId\""
+        "name": "\"departmentId\"",
+        "value": "{departmentId}"
       }
     },
     {
@@ -15438,7 +16594,19 @@
       "phase": "R4",
       "attributes": {
         "name": "\"effectiveDate\"",
-        "type": "\"date\""
+        "type": "\"date\"",
+        "value": "{effectiveDateChoice}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:137:11402",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 137,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"حفظ تغيير العمل\"",
+        "pendingLabel": "\"جارٍ حفظ التغيير…\""
       }
     },
     {
@@ -15459,7 +16627,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15470,7 +16639,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId ?? ''}"
       }
     },
     {
@@ -15481,7 +16651,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -15525,9 +16696,20 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:160:14426",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:170:14047",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 170,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"حفظ تصحيح بيانات العمل\"",
+        "pendingLabel": "\"جارٍ حفظ التصحيح…\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:148:12032",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 160,
+      "line": 148,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -15535,42 +16717,45 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14515",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12120",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 161,
+      "line": 149,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14570",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12175",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 161,
+      "line": 149,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employee.id}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14630",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12235",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 161,
+      "line": 149,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:162:14800",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:150:12404",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 162,
+      "line": 150,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15578,9 +16763,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:163:15186",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:151:12789",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 163,
+      "line": 151,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15589,19 +16774,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:169:16254",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:157:13851",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 169,
-      "tag": "button",
+      "line": 157,
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "\"حفظ سياسة الدوام\"",
+        "pendingLabel": "\"جارٍ حفظ السياسة…\"",
+        "disabled": "{!workPolicyPanel.options.length}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:178:17319",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:166:14907",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 178,
+      "line": 166,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -15609,42 +16796,45 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17424",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15011",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 179,
+      "line": 167,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17479",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15066",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 179,
+      "line": 167,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employee.id}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17539",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15126",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 179,
+      "line": 167,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"overrideId\""
+        "name": "\"overrideId\"",
+        "value": "{override.id}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:180:17733",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:168:15319",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 180,
+      "line": 168,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15652,19 +16842,20 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:181:17903",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:169:15488",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 181,
-      "tag": "button",
+      "line": 169,
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "\"إلغاء التغيير المقرر\"",
+        "pendingLabel": "\"جارٍ الإلغاء…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:184:18202",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:172:15807",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 184,
+      "line": 172,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -15672,42 +16863,45 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18305",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:15909",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 185,
+      "line": 173,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18360",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:15964",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 185,
+      "line": 173,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employee.id}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18420",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:16024",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 185,
+      "line": 173,
       "tag": "input",
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employmentId\""
+        "name": "\"employmentId\"",
+        "value": "{employmentId}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:186:18601",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:174:16204",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 186,
+      "line": 174,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15715,9 +16909,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:187:18986",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:175:16588",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 187,
+      "line": 175,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15726,9 +16920,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:188:19243",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:176:16844",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 188,
+      "line": 176,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15737,9 +16931,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:189:19507",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:177:17107",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 189,
+      "line": 177,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15747,13 +16941,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:195:20626",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:183:18220",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 195,
-      "tag": "button",
+      "line": 183,
+      "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
-        "type": "\"submit\""
+        "label": "\"حفظ تغيير الدوام للفترة\"",
+        "pendingLabel": "\"جارٍ حفظ التغيير…\"",
+        "disabled": "{!workPolicyPanel.options.length}"
       }
     },
     {
@@ -15774,7 +16970,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15786,6 +16983,17 @@
       "attributes": {
         "name": "\"file\"",
         "type": "\"file\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:34:2121",
+      "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
+      "line": 34,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"فحص الملف\"",
+        "pendingLabel": "\"جارٍ فحص الصفوف…\""
       }
     },
     {
@@ -15816,7 +17024,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15827,7 +17036,19 @@
       "phase": "R4",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"selectedRow\""
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(data)}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:63:4578",
+      "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
+      "line": 63,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إضافة الصفوف المحددة\"",
+        "pendingLabel": "\"جارٍ حفظ الدفعة…\""
       }
     },
     {
@@ -15848,7 +17069,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15878,7 +17100,8 @@
       "tag": "select",
       "phase": "R4",
       "attributes": {
-        "name": "\"employerId\""
+        "name": "\"employerId\"",
+        "value": "{employerId}"
       }
     },
     {
@@ -15909,7 +17132,8 @@
       "tag": "select",
       "phase": "R4",
       "attributes": {
-        "name": "\"departmentId\""
+        "name": "\"departmentId\"",
+        "value": "{departmentId}"
       }
     },
     {
@@ -15955,6 +17179,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:85:5793",
+      "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
+      "line": 85,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "\"إضافة الموظف\"",
+        "pendingLabel": "\"جارٍ إضافة الموظف…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:30:1604",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
       "line": 30,
@@ -15972,7 +17207,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -15983,7 +17219,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{kind}"
       }
     },
     {
@@ -15994,7 +17231,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"recordId\""
+        "name": "\"recordId\"",
+        "value": "{record?.id ?? 'new'}"
       }
     },
     {
@@ -16038,6 +17276,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:59:3808",
+      "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
+      "line": 59,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "{isNew ? 'إضافة السجل' : 'حفظ التغييرات'}",
+        "pendingLabel": "\"جارٍ الحفظ…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:60:3935",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
       "line": 60,
@@ -16045,7 +17294,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"submit\"",
-        "name": "\"intent\""
+        "name": "\"intent\"",
+        "value": "\"disable\""
       }
     },
     {
@@ -16056,7 +17306,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"submit\"",
-        "name": "\"intent\""
+        "name": "\"intent\"",
+        "value": "\"reactivate\""
       }
     },
     {
@@ -16075,7 +17326,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "{kind}"
       }
     },
     {
@@ -16146,7 +17398,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16157,7 +17410,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"returnToRequest\""
+        "name": "\"returnToRequest\"",
+        "value": "{returnToRequest}"
       }
     },
     {
@@ -16168,7 +17422,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"templateId\""
+        "name": "\"templateId\"",
+        "value": "{policy.id}"
       }
     },
     {
@@ -16179,7 +17434,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"code\""
+        "name": "\"code\"",
+        "value": "{policy.code}"
       }
     },
     {
@@ -16189,7 +17445,8 @@
       "tag": "input",
       "phase": "R4",
       "attributes": {
-        "name": "\"code\""
+        "name": "\"code\"",
+        "value": "{values.code}"
       }
     },
     {
@@ -16199,7 +17456,8 @@
       "tag": "input",
       "phase": "R4",
       "attributes": {
-        "name": "\"name\""
+        "name": "\"name\"",
+        "value": "{values.name}"
       }
     },
     {
@@ -16209,7 +17467,8 @@
       "tag": "input",
       "phase": "R4",
       "attributes": {
-        "name": "\"timezone\""
+        "name": "\"timezone\"",
+        "value": "{values.timezone}"
       }
     },
     {
@@ -16220,7 +17479,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "\"fixed\""
       }
     },
     {
@@ -16231,7 +17491,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"radio\"",
-        "name": "\"kind\""
+        "name": "\"kind\"",
+        "value": "\"flexible\""
       }
     },
     {
@@ -16242,7 +17503,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"workDays\""
+        "name": "\"workDays\"",
+        "value": "{index + 1}"
       }
     },
     {
@@ -16253,7 +17515,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"shiftStart\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{values.shiftStart}"
       }
     },
     {
@@ -16264,7 +17527,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"shiftEnd\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{values.shiftEnd}"
       }
     },
     {
@@ -16286,7 +17550,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"breakMinutes\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{breakMinutes}"
       }
     },
     {
@@ -16297,7 +17562,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"requiredMinutes\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{values.requiredMinutes}"
       }
     },
     {
@@ -16308,7 +17574,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"earliestPunch\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{values.earliestPunch}"
       }
     },
     {
@@ -16319,7 +17586,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"latestPunch\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{values.latestPunch}"
       }
     },
     {
@@ -16341,7 +17609,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"fixedBreakStart\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{fixedBreakStart}"
       }
     },
     {
@@ -16352,7 +17621,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"fixedBreakEnd\"",
-        "type": "\"time\""
+        "type": "\"time\"",
+        "value": "{fixedBreakEnd}"
       }
     },
     {
@@ -16363,7 +17633,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"flexibleHalfdayBreak\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{halfdayBreak}"
       }
     },
     {
@@ -16374,7 +17645,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"attributionBefore\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{values.attributionBefore}"
       }
     },
     {
@@ -16385,7 +17657,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"attributionAfter\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{values.attributionAfter}"
       }
     },
     {
@@ -16407,7 +17680,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"overtimeMinimum\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{overtimeMinimum}"
       }
     },
     {
@@ -16418,7 +17692,8 @@
       "phase": "R4",
       "attributes": {
         "name": "\"overtimeRounding\"",
-        "type": "\"number\""
+        "type": "\"number\"",
+        "value": "{overtimeRounding}"
       }
     },
     {
@@ -16429,7 +17704,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"overtimeMinimum\""
+        "name": "\"overtimeMinimum\"",
+        "value": "{overtimeMinimum}"
       }
     },
     {
@@ -16440,7 +17716,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"overtimeRounding\""
+        "name": "\"overtimeRounding\"",
+        "value": "{overtimeRounding}"
       }
     },
     {
@@ -16452,6 +17729,17 @@
       "attributes": {
         "type": "\"checkbox\"",
         "name": "\"autoApproveClean\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:194:14758",
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 194,
+      "tag": "SubmitButton",
+      "phase": "R4",
+      "attributes": {
+        "label": "{policy ? 'حفظ إصدار جديد' : 'إنشاء قالب الدوام'}",
+        "pendingLabel": "{policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'}"
       }
     },
     {
@@ -16472,7 +17760,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16483,7 +17772,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"policyId\""
+        "name": "\"policyId\"",
+        "value": "{policy.id}"
       }
     },
     {
@@ -16494,7 +17784,8 @@
       "phase": "R4",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"active\""
+        "name": "\"active\"",
+        "value": "{String(!policy.is_active)}"
       }
     },
     {
@@ -16525,7 +17816,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16536,7 +17828,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"employeeId\""
+        "name": "\"employeeId\"",
+        "value": "{employeeId}"
       }
     },
     {
@@ -16548,6 +17841,17 @@
       "attributes": {
         "name": "\"email\"",
         "type": "\"email\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:18:1332",
+      "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
+      "line": 18,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إرسال الدعوة\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -16568,7 +17872,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"view\""
+        "name": "\"view\"",
+        "value": "{view}"
       }
     },
     {
@@ -16610,7 +17915,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16621,7 +17927,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"userId\""
+        "name": "\"userId\"",
+        "value": "{row.user_id}"
       }
     },
     {
@@ -16632,7 +17939,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"enabled\""
+        "name": "\"enabled\"",
+        "value": "{hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:124:12614",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 124,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "{hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'}",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -16653,7 +17972,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16664,7 +17984,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"userId\""
+        "name": "\"userId\"",
+        "value": "{row.user_id}"
       }
     },
     {
@@ -16675,7 +17996,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"checkbox\"",
-        "name": "\"bundleKey\""
+        "name": "\"bundleKey\"",
+        "value": "{bundle.key}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:142:14264",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 142,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"حفظ الحزم\"",
+        "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
@@ -16696,7 +18029,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16707,7 +18041,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"userId\""
+        "name": "\"userId\"",
+        "value": "{row.user_id}"
       }
     },
     {
@@ -16718,7 +18053,18 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"roleAction\""
+        "name": "\"roleAction\"",
+        "value": "{row.protected_admin ? 'demote' : 'promote'}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:154:15407",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 154,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "{row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'}"
       }
     },
     {
@@ -16739,7 +18085,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16750,7 +18097,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"userId\""
+        "name": "\"userId\"",
+        "value": "{row.user_id}"
       }
     },
     {
@@ -16761,7 +18109,18 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"accessState\""
+        "name": "\"accessState\"",
+        "value": "{row.access_state === 'active' ? 'inactive' : 'active'}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:161:15965",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 161,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "{row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'}"
       }
     },
     {
@@ -16782,7 +18141,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16793,7 +18153,19 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{invitation.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:187:17912",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 187,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إعادة إرسال\"",
+        "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
@@ -16814,7 +18186,8 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"tenantId\""
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
       }
     },
     {
@@ -16825,7 +18198,18 @@
       "phase": "R2",
       "attributes": {
         "type": "\"hidden\"",
-        "name": "\"invitationId\""
+        "name": "\"invitationId\"",
+        "value": "{invitation.id}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/page.tsx:192:18274",
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "line": 192,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"إلغاء الدعوة\""
       }
     },
     {
@@ -16859,6 +18243,17 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:16:1458",
+      "file": "src/app/tenant/select/page.tsx",
+      "line": 16,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"تسجيل الخروج\"",
+        "pendingLabel": "\"جارٍ الخروج…\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/select/page.tsx:27:2183",
       "file": "src/app/tenant/select/page.tsx",
       "line": 27,
@@ -16866,6 +18261,17 @@
       "phase": "R2",
       "attributes": {
         "action": "{signOutAction}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/select/page.tsx:27:2212",
+      "file": "src/app/tenant/select/page.tsx",
+      "line": 27,
+      "tag": "SubmitButton",
+      "phase": "R2",
+      "attributes": {
+        "label": "\"تسجيل الخروج\"",
+        "pendingLabel": "\"جارٍ الخروج…\""
       }
     },
     {
@@ -16953,13 +18359,14 @@
       }
     },
     {
-      "id": "CONTROL:src/components/submit-button.tsx:12:305",
+      "id": "CONTROL:src/components/submit-button.tsx:13:343",
       "file": "src/components/submit-button.tsx",
-      "line": 12,
+      "line": 13,
       "tag": "button",
       "phase": "R1",
       "attributes": {
         "type": "\"submit\"",
+        "disabled": "{pending || disabled}",
         "aria-label": "{ariaLabel}"
       }
     }
@@ -16988,7 +18395,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 257,
+    "sourceFiles": 259,
     "pages": 75,
     "endpoints": 3,
     "boundaries": 8,
@@ -16996,7 +18403,7 @@
     "rpcCallSites": 341,
     "uniqueLiteralRpcs": 215,
     "dynamicRpcSites": 6,
-    "formControls": 987,
+    "formControls": 1056,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

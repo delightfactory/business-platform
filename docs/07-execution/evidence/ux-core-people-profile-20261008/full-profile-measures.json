@@ -1,0 +1,89 @@
+[
+  {
+    "active": "نظرة عامة",
+    "fonts": "loaded",
+    "overflow": false,
+    "tabs": [
+      {
+        "height": 52,
+        "text": "نظرة عامة"
+      },
+      {
+        "height": 52,
+        "text": "العمل والتعيينات"
+      },
+      {
+        "height": 52,
+        "text": "الأجر الأساسي"
+      },
+      {
+        "height": 52,
+        "text": "الحساب والدخول"
+      },
+      {
+        "height": 52,
+        "text": "علاقة العمل والسجل"
+      }
+    ],
+    "visiblePanels": 1,
+    "width": 1366
+  },
+  {
+    "active": "نظرة عامة",
+    "fonts": "loaded",
+    "overflow": false,
+    "tabs": [
+      {
+        "height": 52,
+        "text": "نظرة عامة"
+      },
+      {
+        "height": 52,
+        "text": "العمل والتعيينات"
+      },
+      {
+        "height": 52,
+        "text": "الأجر الأساسي"
+      },
+      {
+        "height": 52,
+        "text": "الحساب والدخول"
+      },
+      {
+        "height": 52,
+        "text": "علاقة العمل والسجل"
+      }
+    ],
+    "visiblePanels": 1,
+    "width": 768
+  },
+  {
+    "active": "نظرة عامة",
+    "fonts": "loaded",
+    "overflow": false,
+    "tabs": [
+      {
+        "height": 52,
+        "text": "نظرة عامة"
+      },
+      {
+        "height": 52,
+        "text": "العمل والتعيينات"
+      },
+      {
+        "height": 52,
+        "text": "الأجر الأساسي"
+      },
+      {
+        "height": 52,
+        "text": "الحساب والدخول"
+      },
+      {
+        "height": 52,
+        "text": "علاقة العمل والسجل"
+      }
+    ],
+    "visiblePanels": 1,
+    "width": 390
+  }
+]

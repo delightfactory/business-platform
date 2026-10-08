@@ -1,0 +1,303 @@
+{
+  "priorCount": 1523,
+  "currentCount": 1592,
+  "addedPending": 69,
+  "convertedExisting": 5,
+  "migration": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:28:2137",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:30:2249",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:29:2238",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:31:2349",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:46:3560",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:48:3653",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:49:3770",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:51:3860",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:52:3979",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:54:4066",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:55:4187",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:57:4271",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:58:4350",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:60:4432",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:60:4516",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:62:4595",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:62:4640",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:64:4718",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:63:4785",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:65:4861",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:66:5022",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:68:5095",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:68:5167",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:70:5238",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:77:6023",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:79:6085",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:112:9042",
+      "to": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:114:9069",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:62:6461",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:62:6485",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:64:6606",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:64:6630",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:65:6716",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:65:6740",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:66:6777",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:66:6801",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:68:6890",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:68:6914",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:6966",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:6990",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:7022",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:69:7046",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:71:7166",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:71:7190",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:75:7463",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:75:7487",
+      "reason": "Existing native mutation control replaced by pending SubmitButton usage"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:95:9432",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:95:9455",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9499",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9522",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9555",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:96:9578",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:97:9629",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:97:9652",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:102:10099",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:102:10122",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10180",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10203",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10236",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:103:10259",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:104:10308",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:104:10331",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:106:10451",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:106:10474",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:114:11116",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:114:11139",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11184",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11207",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11240",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:115:11263",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:116:11310",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx:116:11333",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:160:14426",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:148:12032",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14515",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12120",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14570",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12175",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:161:14630",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:149:12235",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:162:14800",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:150:12404",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:163:15186",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:151:12789",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:169:16254",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:157:13851",
+      "reason": "Existing native mutation control replaced by pending SubmitButton usage"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:178:17319",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:166:14907",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17424",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15011",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17479",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15066",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:179:17539",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:167:15126",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:180:17733",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:168:15319",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:181:17903",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:169:15488",
+      "reason": "Existing native mutation control replaced by pending SubmitButton usage"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:184:18202",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:172:15807",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18305",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:15909",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18360",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:15964",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:185:18420",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:173:16024",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:186:18601",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:174:16204",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:187:18986",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:175:16588",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:188:19243",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:176:16844",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:189:19507",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:177:17107",
+      "reason": "Source-position migration, operation metadata unchanged"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:195:20626",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/page.tsx:183:18220",
+      "reason": "Existing native mutation control replaced by pending SubmitButton usage"
+    },
+    {
+      "from": "CONTROL:src/components/submit-button.tsx:12:305",
+      "to": "CONTROL:src/components/submit-button.tsx:13:343",
+      "reason": "Source-position migration, operation metadata unchanged"
+    }
+  ]
+}

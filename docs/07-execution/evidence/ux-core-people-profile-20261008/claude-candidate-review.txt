@@ -1,0 +1,40 @@
+**Verdict: MATCH WITH ACCEPTED DEVIATIONS.** This covers only the top of the page in the eight static captures, rendered with controlled hooks and simulated hydration. It is not real-page hydration and not role, provider or security qualification. The source change introduces no must-fix; two evidence/doc corrections are needed before this checkpoint can be cited.
+
+**Images inspected (9):**
+- `ux-core-people-entry-20261008/reference-1366.jpg` (Concept C reference)
+- `ux-core-people-profile-20261008/`: `full-overview-1366.jpg`, `full-overview-768.jpg`, `full-overview-390.jpg`, `full-work-1366.jpg`, `full-work-390.jpg`, `full-compensation-390.jpg`, `full-account-390.jpg`, `full-employment-390.jpg`
+
+**Source check: consistent with the spec checkpoint**
+- **Tab precedence** (`page.tsx:115-118`): Account > Employment > Compensation, but Compensation only when `canViewCompensation || canManageCompensation`, then Work > Overview. A denied compensation result falls through to the next tab, and the pay tab and its content are not rendered (`page.tsx:239-240`).
+- **Global notices:** all 17 toasts sit above the back link, including the four policy/override toasts that moved up. Inline policy alerts stay inside their forms.
+- **Five mutation buttons:** all five now use `SubmitButton`. The two disable gates for "no options" are kept, and `disabled` combines with pending (`submit-button.tsx:13`).
+- **No-JS fallback** (`EmployeeProfileTabs.tsx`): before hydration the tablist is hidden and every panel is shown (`hidden={ready && …}`). Panels are always mounted, activation is manual, direction is RTL.
+- **Pending lock:** it checks only the active panel for `aria-busy`. The new notice text, «انتظر ظهور نتيجة العملية قبل الانتقال إلى قسم آخر.», is a timeless instruction, so it no longer wrongly says saving is still running once the result is in.
+- **Controls:** tabs are 40px tall, 44px at ≤900px. They use the inherited Cairo font and the existing brand/border tokens.
+
+**Visual comparison with Concept C**
+- **Matches:** light grey page, white cards with light borders, brand-green active underline (same treatment as the reference's active «الناس» nav item), heading and eyebrow hierarchy, and RTL alignment.
+- **Overview 768:** the tabs fit on one row.
+- **Labels:** «الأجر الأساسي» appears only in the pay capture. «علاقة العمل والسجل» names the employment relationship, and its disclosure «إنهاء علاقة العمل» is visible, so the destructive action isn't hidden behind a generic "history" label.
+- **Accepted / pending deviations:**
+  - The dark right sidebar shell versus the reference's top navigation is part of D2/D3, which are still pending. It is not accepted here as a navigation change.
+  - At 390px the tabs wrap onto three rows, using about 150–170px above the content. I accept this for now because every area stays visible rather than being scrolled out of view. Tidying it is polish and deferred.
+  - No full-profile reference exists, so pixel-level fidelity isn't claimed.
+
+**Must-fix before citing this evidence (none of these are source defects)**
+1. **`full-employment-390.jpg` is internally inconsistent.** It shows the `employment=ended` toast, but the status badge says «نشط», the panel still offers «إنهاء علاقة العمل», and the history reads «هذه أول علاقة عمل». Either recapture it with a coherent ended fixture (status «انتهت خدمته», rehire path) or label it as showing tab selection and toast only. As it stands it can't support any claim about the lifecycle result.
+2. **Spec lines 29 and 39 are out of date.** Line 29 quotes the old notice text and line 39 still flags the present-tense wording as open. Update both to the actual source string, which already resolves the wording issue.
+
+**Problems that already existed (not introduced, still open for full R4)**
+- `FeedbackToast` uses the same neutral style for errors as for successes; see `compensation=cancel-error` in `full-compensation-390.jpg`.
+- In `full-overview-1366.jpg` the shell label is clipped («ريبية»), but it renders fully in `full-work-1366.jpg`. This is a capture/viewport difference in the shell.
+- There is no visual capture of the denied-pay state; it is covered only by the source cases.
+
+**Not inspected**
+- The inventory metadata correction (1592 total, 69 usages pending): I didn't read the inventory, so I make no claim on it.
+
+**Open gates for full R4**
+- Controls below the fold in every tab.
+- Real-page hydration, plus pending-state checks for all five mutations against the real actions.
+- Real roles, provider authority and security, and date/financial/lifecycle behaviour.
+- The 7 high-severity dependency advisories.
