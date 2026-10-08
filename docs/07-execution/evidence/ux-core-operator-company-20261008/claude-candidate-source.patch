@@ -1,0 +1,334 @@
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 4f244de..75e376a 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -69,6 +69,9 @@ h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.2rem); letter-spacing: -.035em;
+ .auth-card h1 { text-align: start; }
+ .auth-card .intro { margin-inline: 0; }
+ .auth-form { display: grid; gap: .65rem; margin-top: 1.5rem; }
++.auth-form > .operator-action-fields { display: grid; gap: inherit; min-width: 0; margin: 0; padding: 0; border: 0; }
++.operator-company-context { margin-block: 1rem; }
++.operator-company-context nav { display: flex; flex-wrap: wrap; gap: .65rem; }
+ .auth-form label { font-weight: 600; font-size: .875rem; }
+ .auth-form input { min-height: var(--field-height); width: 100%; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); padding: .65rem .8rem; background: white; color: var(--color-text); font: inherit; }
+ .auth-form input:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
+diff --git a/src/app/operator/commercial/[tenantId]/page.tsx b/src/app/operator/commercial/[tenantId]/page.tsx
+index 956a4ff..53062df 100644
+--- a/src/app/operator/commercial/[tenantId]/page.tsx
++++ b/src/app/operator/commercial/[tenantId]/page.tsx
+@@ -1,7 +1,7 @@
+ import Link from 'next/link';
+ import { redirect } from 'next/navigation';
+ import { signOutAction } from '@/app/auth/actions';
+-import { FeedbackToast } from '@/components/feedback-toast';
++import { CompanyTaskLinks, operatorPermission, sameCompanyScope } from '@/app/operator/company-task-links';
+ import { OperatorActionForm } from '@/app/operator/operator-action-form';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { changeCommercialLimitAction } from '../actions';
+@@ -21,23 +21,25 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
+   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) redirect('/auth/login?state=no-session');
+-  const [{ data: operatorStatus }, { data: authorized }] = await Promise.all([
++  const [operatorStatus, commercial, lifecycle] = await Promise.all([
+     supabase.rpc('current_platform_operator_status'), supabase.rpc('current_operator_can_manage_commercial_access'),
++    supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
+   ]);
+-  if (operatorStatus !== 'active' || !authorized) return <Status title="إدارة الحدود غير متاحة" />;
++  if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة الحدود غير متاحة" />;
+   const { data, error } = await supabase.rpc('platform_tenant_commercial_snapshot', { p_tenant_id: tenantId });
+   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل حدود الشركة" />;
+   const tenant = data as Snapshot;
+-  if (!Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
++  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
+ 
+   return <main className="app-shell">
+-    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث الحد وتسجيل السبب." />}
+     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
+       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link>
+         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+     <section className="work-card operator-setting-detail" aria-labelledby="commercial-title">
+       <p className="eyebrow">حدود الاستخدام</p><h1 id="commercial-title"><bdi>{tenant.display_name}</bdi></h1>
+       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
++      <CompanyTaskLinks tenantId={tenantId} current="commercial" lifecycle={operatorPermission(lifecycle)} commercial={true} />
++      {query.state === 'updated' && <p className="form-message" role="status">حدود الاستخدام الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
+       <div className="operator-setting-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
+     </section><footer className="footer">منصة الأعمال · حدود الاستخدام</footer>
+diff --git a/src/app/operator/entitlements/[tenantId]/page.tsx b/src/app/operator/entitlements/[tenantId]/page.tsx
+index 587a954..a8abca0 100644
+--- a/src/app/operator/entitlements/[tenantId]/page.tsx
++++ b/src/app/operator/entitlements/[tenantId]/page.tsx
+@@ -1,7 +1,7 @@
+ import Link from 'next/link';
+ import { redirect } from 'next/navigation';
+ import { signOutAction } from '@/app/auth/actions';
+-import { FeedbackToast } from '@/components/feedback-toast';
++import { CompanyTaskLinks, operatorPermission, sameCompanyScope } from '@/app/operator/company-task-links';
+ import { OperatorActionForm } from '@/app/operator/operator-action-form';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { changeTenantEntitlementAction } from '../actions';
+@@ -20,16 +20,17 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
+   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) redirect('/auth/login?state=no-session');
+-  const [{ data: status }, { data: authorized }] = await Promise.all([
++  const [status, commercial, lifecycle] = await Promise.all([
+     supabase.rpc('current_platform_operator_status'),
+     supabase.rpc('current_operator_can_manage_commercial_access'),
++    supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
+   ]);
+-  if (status !== 'active' || !authorized) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
++  if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
+   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
+   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
+   const tenant = data as Snapshot;
+   const expectedCapabilities = ['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave', 'hr.employee_finance'];
+-  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
++  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
+     || new Set(tenant.entitlements.map((item) => item.capability_key)).size !== expectedCapabilities.length
+     || expectedCapabilities.some((key) => !tenant.entitlements.some((item) => item.capability_key === key))) return <Status title="بيانات الإتاحة غير مكتملة" />;
+   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
+@@ -39,15 +40,16 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
+     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
+ 
+   return <main className="app-shell">
+-    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث إتاحة الوحدة وتسجيل السبب." />}
+     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
+       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link>
+         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+     <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
+       <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
+       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
++      <CompanyTaskLinks tenantId={tenantId} current="entitlements" lifecycle={operatorPermission(lifecycle)} commercial={true} />
++      {query.state === 'updated' && <p className="form-message" role="status">إتاحة الوحدات الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
+-      <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
++      <p className="field-hint">تحدد هذه القرارات الوحدات المتاحة للشركة وفق الصلاحيات والتبعيات.</p>
+       <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
+     </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
+   </main>;
+diff --git a/src/app/operator/operator-action-form.tsx b/src/app/operator/operator-action-form.tsx
+index fecf2b5..b3452d4 100644
+--- a/src/app/operator/operator-action-form.tsx
++++ b/src/app/operator/operator-action-form.tsx
+@@ -1,6 +1,10 @@
+ 'use client';
+ 
+-import { useState, useTransition, type FormEvent, type ReactNode } from 'react';
++import { useRef, useState, useSyncExternalStore, useTransition, type FormEvent, type ReactNode } from 'react';
++
++const subscribe = () => () => {};
++const clientReady = () => true;
++const serverReady = () => false;
+ 
+ type Props = {
+   action: (formData: FormData) => Promise<string | void>;
+@@ -15,23 +19,33 @@ type Props = {
+ export function OperatorActionForm({ action, children, errorMessages, label, pendingLabel = 'جارٍ الحفظ…', className = 'auth-form', buttonClassName = 'primary-button' }: Props) {
+   const [error, setError] = useState<string | null>(null);
+   const [pending, startTransition] = useTransition();
++  const ready = useSyncExternalStore(subscribe, clientReady, serverReady);
++  const inFlight = useRef(false);
+ 
+   function submit(event: FormEvent<HTMLFormElement>) {
+     event.preventDefault();
++    if (!ready || pending || inFlight.current) return;
++    inFlight.current = true;
+     const formData = new FormData(event.currentTarget);
+     setError(null);
+     startTransition(async () => {
+-      const result = await action(formData);
+-      if (result) setError(errorMessages[result] ?? 'تعذر إتمام الإجراء. راجع البيانات وحاول مجددًا.');
++      try {
++        const result = await action(formData);
++        if (result) setError(Object.hasOwn(errorMessages, result) ? errorMessages[result] : 'تعذر إتمام الإجراء. راجع البيانات وحاول مجددًا.');
++      } finally { inFlight.current = false; }
+     });
+   }
+ 
+-  return <form onSubmit={submit} className={className} aria-busy={pending}>
++  return <form method="post" onSubmit={submit} className={className} aria-busy={pending}>
++    {!ready && <p className="field-hint" role="status">الحفظ غير جاهز بعد. إذا استمر ذلك، فعّل JavaScript وأعد تحميل الصفحة.</p>}
++    <noscript><p className="field-hint">الحفظ يتطلب تفعيل JavaScript؛ يمكنك مراجعة الحالة الحالية دون حفظ.</p></noscript>
++    <fieldset className="operator-action-fields" disabled={!ready || pending} aria-label={label}>
+     {children}
+     {error && <p className="form-message form-error" role="alert">{error}</p>}
+-    <button className={buttonClassName} type="submit" disabled={pending} aria-busy={pending}>
++    <button className={buttonClassName} type="submit" disabled={!ready || pending} aria-busy={pending}>
+       {pending && <span className="button-spinner" aria-hidden="true" />}
+       {pending ? pendingLabel : label}
+     </button>
++    </fieldset>
+   </form>;
+ }
+diff --git a/src/app/operator/operators/page.tsx b/src/app/operator/operators/page.tsx
+index dbb7b1f..fae0507 100644
+--- a/src/app/operator/operators/page.tsx
++++ b/src/app/operator/operators/page.tsx
+@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
+ import { signOutAction } from '@/app/auth/actions';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { changeOperatorGrantAction } from './actions';
+-import { FeedbackToast } from '@/components/feedback-toast';
++import { operatorPermission } from '@/app/operator/company-task-links';
+ import { OperatorActionForm } from '@/app/operator/operator-action-form';
+ 
+ export const dynamic = 'force-dynamic';
+@@ -19,11 +19,11 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
+   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) redirect('/auth/login?state=no-session');
+-  const { data: status } = await supabase.rpc('current_platform_operator_status');
+-  const { data: canManage } = await supabase.rpc('current_operator_can_manage_operators');
+-  if (status !== 'active' || !canManage) return <Status title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
++  const status = await supabase.rpc('current_platform_operator_status');
++  const canManage = await supabase.rpc('current_operator_can_manage_operators');
++  if (status.error || status.data !== 'active' || !operatorPermission(canManage)) return <Status title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
+   const { data, error } = await supabase.rpc('platform_operator_grant_list');
+-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="أعد المحاولة لاحقًا. لم يتغير أي منح." />;
++  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="تعذر قراءة الحالة الحالية للمنح. أعد المحاولة لاحقًا." />;
+   const grants = data as Grant[];
+   const success = query.state === 'granted' || query.state === 'updated' || query.state === 'revoked';
+ 
+@@ -32,9 +32,9 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
+       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
+         <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
+           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+-      {success && <FeedbackToast key={crypto.randomUUID()} message={stateText(query.state ?? '')} />}
+       <section className="work-card operator-grants-overview" aria-labelledby="operators-title">
+         <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
++        {success && <p className="form-message" role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+         <p className="intro">حدد من يمكنه تشغيل المنصة والمهام المسموح له بها. يُسجل سبب كل تغيير.</p>
+         {query.state && !success && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
+         <details className="operator-grant-form">
+diff --git a/src/app/operator/page.tsx b/src/app/operator/page.tsx
+index 576b86f..4a7a537 100644
+--- a/src/app/operator/page.tsx
++++ b/src/app/operator/page.tsx
+@@ -1,7 +1,6 @@
+ import Link from 'next/link';
+ import { redirect } from 'next/navigation';
+ import { signOutAction } from '@/app/auth/actions';
+-import { FeedbackToast } from '@/components/feedback-toast';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ 
+ export const dynamic = 'force-dynamic';
+@@ -19,7 +18,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
+   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
+   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
+ 
+-  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }, { data: canManageCommercial, error: commercialError }, { data: canManageStatutory, error: statutoryError }] = await Promise.all([
++  const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
+     supabase.rpc('current_operator_can_manage_operators'),
+     supabase.rpc('current_operator_can_onboard_tenants'),
+     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
+@@ -27,10 +26,15 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
+     supabase.rpc('current_operator_can_manage_statutory_rules'),
+   ]);
+   if (manageError || onboardError || lifecycleError || commercialError || statutoryError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
++  const canManage = manage === true;
++  const canOnboard = onboard === true;
++  const canManageLifecycle = lifecycle === true;
++  const canManageCommercial = commercial === true;
++  const canManageStatutory = statutory === true;
+ 
+   return (
+     <main className="app-shell">
+-      {(query.state === 'updated-self' || query.state === 'revoked-self') && <FeedbackToast key={crypto.randomUUID()} message={query.state === 'updated-self' ? 'تم تحديث صلاحياتك. انتقلت إلى المهام المتاحة لحسابك.' : 'سُحبت صلاحية تشغيل المنصة من حسابك.'} />}
++      {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
+       <div className="operator-home" aria-labelledby="operator-title">
+         <header className="operator-home-heading">
+           <p className="eyebrow">مساحة التشغيل</p>
+diff --git a/src/app/operator/tenants/[tenantId]/page.tsx b/src/app/operator/tenants/[tenantId]/page.tsx
+index 78e6c57..8c13662 100644
+--- a/src/app/operator/tenants/[tenantId]/page.tsx
++++ b/src/app/operator/tenants/[tenantId]/page.tsx
+@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
+ import { signOutAction } from '@/app/auth/actions';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { changeTenantLifecycleAction } from '../actions';
+-import { FeedbackToast } from '@/components/feedback-toast';
++import { CompanyTaskLinks, operatorPermission, sameCompanyScope } from '@/app/operator/company-task-links';
+ import { OperatorActionForm } from '@/app/operator/operator-action-form';
+ 
+ export const dynamic = 'force-dynamic';
+@@ -20,16 +20,17 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
+   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+   const { data: { user } } = await supabase.auth.getUser();
+   if (!user) redirect('/auth/login?state=no-session');
+-  const [{ data: operatorStatus }, { data: canManageLifecycle }] = await Promise.all([
++  const [operatorStatus, lifecycle, commercial] = await Promise.all([
+     supabase.rpc('current_platform_operator_status'),
+     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
++    supabase.rpc('current_operator_can_manage_commercial_access'),
+   ]);
+-  if (operatorStatus !== 'active' || !canManageLifecycle) {
++  if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(lifecycle)) {
+     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
+   }
+   const { data, error } = await supabase.rpc('platform_tenant_lifecycle_get', { p_tenant_id: tenantId });
+   const tenant = !error && data && typeof data === 'object' && !Array.isArray(data) ? data as Tenant : undefined;
+-  if (!tenant) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
++  if (!tenant || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
+ 
+   const transitions = transitionsFor(tenant.lifecycle_state);
+   return (
+@@ -41,18 +42,18 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
+           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+         </nav>
+       </header>
+-      {query.state === 'updated' && query.to === tenant.lifecycle_state &&
+-        <FeedbackToast key={crypto.randomUUID()} message="تم حفظ حالة الشركة وتسجيل السبب." />}
+       <section className="work-card operator-lifecycle-detail" aria-labelledby="tenant-title">
+         <p className="eyebrow">إدارة حالة الشركة</p>
+-        <h1 id="tenant-title">{tenant.tenant_name}</h1>
++        <h1 id="tenant-title"><bdi>{tenant.tenant_name}</bdi></h1>
+         <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : tenant.lifecycle_state === 'suspended' ? 'is-pending' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
++        <CompanyTaskLinks tenantId={tenantId} current="lifecycle" lifecycle={true} commercial={operatorPermission(commercial)} />
++        {(query.state === 'updated' || query.state === 'active' || query.state === 'suspended' || query.state === 'archived') && <p className="form-message" role="status">راجع حالة الشركة الحالية والإجراءات المتاحة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+         <p className="intro">اختر الإجراء المناسب. سيتطلب تأكيده سببًا ويُسجل التغيير للمراجعة.</p>
+         {query.state === 'stale' && <p className="form-message capacity-message" role="alert">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</p>}
+-        {query.state && query.state !== 'stale' && query.state !== 'updated'
++        {query.state && !['stale', 'updated', 'active', 'suspended', 'archived'].includes(query.state)
+           && <p className="form-message form-error" role="alert">{messageFor(query.state)}</p>}
+         {query.state === 'updated' && query.to !== tenant.lifecycle_state
+-          && <p className="form-message capacity-message" role="status">تغيّرت حالة الشركة بعد الإجراء. الحالة الحالية معروضة أدناه.</p>}
++          && <p className="form-message capacity-message" role="status">الحالة الحالية لا تطابق الحالة المطلوبة في الرابط. راجعها قبل اختيار إجراء جديد.</p>}
+         <h2>الإجراءات المتاحة</h2>
+         <div className="lifecycle-choice-list">
+           {transitions.map((transition) => (
+diff --git a/src/components/context-navigation.tsx b/src/components/context-navigation.tsx
+index 10e06f3..2983e0c 100644
+--- a/src/components/context-navigation.tsx
++++ b/src/components/context-navigation.tsx
+@@ -1,4 +1,5 @@
+ import type { ReactNode } from 'react';
++import { operatorPermission } from '@/app/operator/company-task-links';
+ import { createSupabaseServerClient } from '@/lib/supabase/server';
+ import { ContextNavigationClient, type ContextLink } from './context-navigation-client';
+ 
+@@ -41,17 +42,17 @@ export async function OperatorNavigation() {
+         supabase.rpc('current_operator_can_manage_commercial_access'),
+         supabase.rpc('current_operator_can_manage_statutory_rules'),
+       ]);
+-      if (lifecycle.data) links.push({ href: '/operator/tenants', label: 'الشركات' });
+-      if (onboarding.data) {
++      if (operatorPermission(lifecycle)) links.push({ href: '/operator/tenants', label: 'الشركات' });
++      if (operatorPermission(onboarding)) {
+         links.push({ href: '/operator/invitations', label: 'دعوات الشركات' });
+         links.push({ href: '/operator/onboarding', label: 'إعداد شركة' });
+       }
+-      if (commercial.data) {
++      if (operatorPermission(commercial)) {
+         links.push({ href: '/operator/commercial', label: 'حدود الاشتراك' });
+         links.push({ href: '/operator/entitlements', label: 'الوحدات المتاحة' });
+       }
+-      if (operator.data) links.push({ href: '/operator/operators', label: 'المشغّلون' });
+-      if (statutory.data) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
++      if (operatorPermission(operator)) links.push({ href: '/operator/operators', label: 'المشغّلون' });
++      if (operatorPermission(statutory)) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
+     }
+   }
+   return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;
+

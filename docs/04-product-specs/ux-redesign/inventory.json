@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "364148599263184ec36adea4036456acfc7f7983",
+  "sourceHead": "859e217e11322cf6655ea53441620542b63be32f",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,7 +90,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "e123c6d181953e23f4d10bf760f060b03121b9d20febb717294dc98bdb08467e"
+      "sha256": "a729b00abc479b3051258225e254b23ce79058a7559c9d1e45deee1c6633245f"
     },
     {
       "file": "src/app/layout.tsx",
@@ -110,7 +110,7 @@
     {
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "8b5149ca7ed78609469fc2e6cb977e9b9c3f7d7af50a93cc7b16189046428eac"
+      "sha256": "8550795f0b78752063e0fe3430c5f3a2f8427d003e8de50206c362f3a6b9b2fb"
     },
     {
       "file": "src/app/operator/commercial/actions.ts",
@@ -123,9 +123,14 @@
       "sha256": "245b9bd05d09b6ccd1ff4372e7d0c71e58e2c3d4458b4f88674bf42690b99e92"
     },
     {
+      "file": "src/app/operator/company-task-links.tsx",
+      "phase": "R3",
+      "sha256": "a849bf79ddc28d37347140091095637d2847ae73e56b33cb2843d71ad6ac56b4"
+    },
+    {
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "61bcf0a43b492e3edc4e3509cfcd6e219dbb9c1257c0e8f9465e71e015b82c25"
+      "sha256": "1422fa83a1eb4c96515f497b0c3645d46ba0157425dc8719f432afe14914b2c1"
     },
     {
       "file": "src/app/operator/entitlements/actions.ts",
@@ -175,7 +180,7 @@
     {
       "file": "src/app/operator/operator-action-form.tsx",
       "phase": "R3",
-      "sha256": "f42f116af5f4a44710252e51393e680b519c7295092fcc7d5f549596068bf7e2"
+      "sha256": "bc97c06103211d8bfcea43ec05e3f9c15d35a0942a054db7598e43a7f7d5fbad"
     },
     {
       "file": "src/app/operator/operator-list-controls.tsx",
@@ -190,12 +195,12 @@
     {
       "file": "src/app/operator/operators/page.tsx",
       "phase": "R3",
-      "sha256": "e0ae7d9715b48c5639b7fae2d952decf7959c95c5988e044aa536ab2cd2ad84e"
+      "sha256": "c6fe600c873a7a1b9d0997dbd377ecaf4755a0be98aa999a16f4344e310ffdfc"
     },
     {
       "file": "src/app/operator/page.tsx",
       "phase": "R3",
-      "sha256": "98394ebec8a38634e6375e595dee950cc5d8cca86250ea1b2691c91d3965362f"
+      "sha256": "b1bcdbb9bf7b2e8fae64a78752e90962b60a36a52297dac3a4410d4ce688ae21"
     },
     {
       "file": "src/app/operator/statutory/DraftForm.tsx",
@@ -255,7 +260,7 @@
     {
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "5db8e972b443f8790463386faaf182718bcc5c1588540296cb584070c5c53ed6"
+      "sha256": "d1d6ed773387e1eeb9b110db807a38f5eeb40f2021e9aee0b2721b2652902870"
     },
     {
       "file": "src/app/operator/tenants/actions.ts",
@@ -1325,7 +1330,7 @@
     {
       "file": "src/components/context-navigation.tsx",
       "phase": "R1",
-      "sha256": "9d74ac5ec866dd6db3d3374decd8b02213b1d48d47039d5e3c4d6dc9693ad0a1"
+      "sha256": "106b3489273decfd4dba293550b89e3e0ffb71ca8b317220c9bcdf6977a68782"
     },
     {
       "file": "src/components/feedback-toast.tsx",
@@ -1356,6 +1361,11 @@
       "file": "src/lib/invitation-feedback.ts",
       "phase": "R1",
       "sha256": "a2c3ab633591343ca3379e08a295046ec8c00bf3f8049930379884c785ea68be"
+    },
+    {
+      "file": "src/lib/operator-access.ts",
+      "phase": "R1",
+      "sha256": "7b20e2bf5f357a8a4cc3d0798287d245bf235ed05eb96f85785b4ff1f58a10a9"
     },
     {
       "file": "src/lib/payroll/leave-correction-context.ts",
@@ -3597,9 +3607,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:25:1521",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1598",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 25,
+      "line": 26,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3607,9 +3617,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:25:1576",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1652",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 25,
+      "line": 26,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3617,9 +3627,19 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:28:1780",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1715",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 28,
+      "line": 27,
+      "phase": "R3",
+      "name": "current_operator_can_manage_tenant_lifecycle",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:2037",
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "line": 30,
       "phase": "R3",
       "name": "platform_tenant_commercial_snapshot",
       "expression": null,
@@ -3667,9 +3687,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:24:1590",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1667",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 24,
+      "line": 25,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3677,9 +3697,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1645",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1721",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 25,
+      "line": 26,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3687,9 +3707,19 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:28:1853",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1789",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 28,
+      "line": 27,
+      "phase": "R3",
+      "name": "current_operator_can_manage_tenant_lifecycle",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:2102",
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "line": 30,
       "phase": "R3",
       "name": "platform_tenant_entitlement_snapshot",
       "expression": null,
@@ -3857,7 +3887,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:22:1239",
+      "id": "RPC:src/app/operator/operators/page.tsx:22:1227",
       "file": "src/app/operator/operators/page.tsx",
       "line": 22,
       "phase": "R3",
@@ -3867,7 +3897,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:23:1326",
+      "id": "RPC:src/app/operator/operators/page.tsx:23:1303",
       "file": "src/app/operator/operators/page.tsx",
       "line": 23,
       "phase": "R3",
@@ -3877,7 +3907,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:25:1571",
+      "id": "RPC:src/app/operator/operators/page.tsx:25:1587",
       "file": "src/app/operator/operators/page.tsx",
       "line": 25,
       "phase": "R3",
@@ -3887,9 +3917,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:18:988",
+      "id": "RPC:src/app/operator/page.tsx:17:926",
       "file": "src/app/operator/page.tsx",
-      "line": 18,
+      "line": 17,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3897,9 +3927,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:23:1586",
+      "id": "RPC:src/app/operator/page.tsx:22:1491",
       "file": "src/app/operator/page.tsx",
-      "line": 23,
+      "line": 22,
       "phase": "R3",
       "name": "current_operator_can_manage_operators",
       "expression": null,
@@ -3907,9 +3937,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:24:1646",
+      "id": "RPC:src/app/operator/page.tsx:23:1550",
       "file": "src/app/operator/page.tsx",
-      "line": 24,
+      "line": 23,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3917,9 +3947,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:25:1705",
+      "id": "RPC:src/app/operator/page.tsx:24:1609",
       "file": "src/app/operator/page.tsx",
-      "line": 25,
+      "line": 24,
       "phase": "R3",
       "name": "current_operator_can_manage_tenant_lifecycle",
       "expression": null,
@@ -3927,9 +3957,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:26:1772",
+      "id": "RPC:src/app/operator/page.tsx:25:1676",
       "file": "src/app/operator/page.tsx",
-      "line": 26,
+      "line": 25,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3937,9 +3967,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:27:1840",
+      "id": "RPC:src/app/operator/page.tsx:26:1744",
       "file": "src/app/operator/page.tsx",
-      "line": 27,
+      "line": 26,
       "phase": "R3",
       "name": "current_operator_can_manage_statutory_rules",
       "expression": null,
@@ -4027,9 +4057,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:24:1357",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1426",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 24,
+      "line": 25,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -4037,9 +4067,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1412",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1480",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 25,
+      "line": 26,
       "phase": "R3",
       "name": "current_operator_can_manage_tenant_lifecycle",
       "expression": null,
@@ -4047,9 +4077,19 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:30:1711",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1547",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 30,
+      "line": 27,
+      "phase": "R3",
+      "name": "current_operator_can_manage_commercial_access",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1952",
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "line": 32,
       "phase": "R3",
       "name": "platform_tenant_lifecycle_get",
       "expression": null,
@@ -6718,9 +6758,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:38:1191",
+      "id": "RPC:src/components/context-navigation.tsx:39:1250",
       "file": "src/components/context-navigation.tsx",
-      "line": 38,
+      "line": 39,
       "phase": "R1",
       "name": "current_operator_can_manage_operators",
       "expression": null,
@@ -6728,9 +6768,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:39:1255",
+      "id": "RPC:src/components/context-navigation.tsx:40:1314",
       "file": "src/components/context-navigation.tsx",
-      "line": 39,
+      "line": 40,
       "phase": "R1",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -6738,9 +6778,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:40:1318",
+      "id": "RPC:src/components/context-navigation.tsx:41:1377",
       "file": "src/components/context-navigation.tsx",
-      "line": 40,
+      "line": 41,
       "phase": "R1",
       "name": "current_operator_can_manage_tenant_lifecycle",
       "expression": null,
@@ -6748,9 +6788,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:41:1389",
+      "id": "RPC:src/components/context-navigation.tsx:42:1448",
       "file": "src/components/context-navigation.tsx",
-      "line": 41,
+      "line": 42,
       "phase": "R1",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -6758,9 +6798,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:42:1461",
+      "id": "RPC:src/components/context-navigation.tsx:43:1520",
       "file": "src/components/context-navigation.tsx",
-      "line": 42,
+      "line": 43,
       "phase": "R1",
       "name": "current_operator_can_manage_statutory_rules",
       "expression": null,
@@ -6768,9 +6808,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:77:3031",
+      "id": "RPC:src/components/context-navigation.tsx:78:3160",
       "file": "src/components/context-navigation.tsx",
-      "line": 77,
+      "line": 78,
       "phase": "R1",
       "name": "tenant_member_access_page",
       "expression": null,
@@ -6778,9 +6818,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:78:3129",
+      "id": "RPC:src/components/context-navigation.tsx:79:3258",
       "file": "src/components/context-navigation.tsx",
-      "line": 78,
+      "line": 79,
       "phase": "R1",
       "name": "tenant_entities_sites_snapshot",
       "expression": null,
@@ -6788,9 +6828,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:79:3213",
+      "id": "RPC:src/components/context-navigation.tsx:80:3342",
       "file": "src/components/context-navigation.tsx",
-      "line": 79,
+      "line": 80,
       "phase": "R1",
       "name": "tenant_branding_snapshot",
       "expression": null,
@@ -6798,9 +6838,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:80:3291",
+      "id": "RPC:src/components/context-navigation.tsx:81:3420",
       "file": "src/components/context-navigation.tsx",
-      "line": 80,
+      "line": 81,
       "phase": "R1",
       "name": "current_tenant_spaces",
       "expression": null,
@@ -6808,9 +6848,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:81:3339",
+      "id": "RPC:src/components/context-navigation.tsx:82:3468",
       "file": "src/components/context-navigation.tsx",
-      "line": 81,
+      "line": 82,
       "phase": "R1",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6818,9 +6858,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:82:3415",
+      "id": "RPC:src/components/context-navigation.tsx:83:3544",
       "file": "src/components/context-navigation.tsx",
-      "line": 82,
+      "line": 83,
       "phase": "R1",
       "name": "time_attendance_access_snapshot",
       "expression": null,
@@ -6828,9 +6868,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:83:3500",
+      "id": "RPC:src/components/context-navigation.tsx:84:3629",
       "file": "src/components/context-navigation.tsx",
-      "line": 83,
+      "line": 84,
       "phase": "R1",
       "name": "tenant_my_employee_snapshot",
       "expression": null,
@@ -6838,9 +6878,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:84:3581",
+      "id": "RPC:src/components/context-navigation.tsx:85:3710",
       "file": "src/components/context-navigation.tsx",
-      "line": 84,
+      "line": 85,
       "phase": "R1",
       "name": "leave_access_snapshot",
       "expression": null,
@@ -6848,9 +6888,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:85:3653",
+      "id": "RPC:src/components/context-navigation.tsx:86:3782",
       "file": "src/components/context-navigation.tsx",
-      "line": 85,
+      "line": 86,
       "phase": "R1",
       "name": "payroll_access_snapshot",
       "expression": null,
@@ -6858,9 +6898,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:86:3727",
+      "id": "RPC:src/components/context-navigation.tsx:87:3856",
       "file": "src/components/context-navigation.tsx",
-      "line": 86,
+      "line": 87,
       "phase": "R1",
       "name": "payroll_input_access",
       "expression": null,
@@ -6868,9 +6908,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:87:3798",
+      "id": "RPC:src/components/context-navigation.tsx:88:3927",
       "file": "src/components/context-navigation.tsx",
-      "line": 87,
+      "line": 88,
       "phase": "R1",
       "name": "payroll_run_access",
       "expression": null,
@@ -6878,9 +6918,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:88:3867",
+      "id": "RPC:src/components/context-navigation.tsx:89:3996",
       "file": "src/components/context-navigation.tsx",
-      "line": 88,
+      "line": 89,
       "phase": "R1",
       "name": "payroll_navigation_access",
       "expression": null,
@@ -6888,9 +6928,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:89:3943",
+      "id": "RPC:src/components/context-navigation.tsx:90:4072",
       "file": "src/components/context-navigation.tsx",
-      "line": 89,
+      "line": 90,
       "phase": "R1",
       "name": "attendance_mobile_snapshot",
       "expression": null,
@@ -6898,9 +6938,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:90:4020",
+      "id": "RPC:src/components/context-navigation.tsx:91:4149",
       "file": "src/components/context-navigation.tsx",
-      "line": 90,
+      "line": 91,
       "phase": "R1",
       "name": "attendance_channel_access",
       "expression": null,
@@ -7682,9 +7722,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:37:2558",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2745",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 37,
+      "line": 38,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -7692,9 +7732,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:37:2587",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2774",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 37,
+      "line": 38,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -7702,17 +7742,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:66:5602",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:6067",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 66,
+      "line": 69,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:68:5929",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6394",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 68,
+      "line": 71,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7722,9 +7762,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5995",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6460",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 69,
+      "line": 72,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7734,9 +7774,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:70:6078",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6543",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 70,
+      "line": 73,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7746,9 +7786,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:74:6398",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6863",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
-      "line": 74,
+      "line": 77,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -7776,9 +7816,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:45:3560",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3731",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 45,
+      "line": 46,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -7786,9 +7826,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:45:3589",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3760",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 45,
+      "line": 46,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -7796,17 +7836,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7610",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:8059",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 79,
+      "line": 82,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7879",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8328",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 81,
+      "line": 84,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7816,9 +7856,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7945",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:85:8394",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 82,
+      "line": 85,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7828,9 +7868,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8107",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:87:8556",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 84,
+      "line": 87,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -7838,9 +7878,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8612",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:91:9061",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 88,
+      "line": 91,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7849,9 +7889,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8783",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:93:9232",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 90,
+      "line": 93,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -8195,22 +8235,22 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:29:1014",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:39:1431",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 29,
+      "line": 39,
       "tag": "form",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:32:1183",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:45:1963",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 32,
+      "line": 45,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "type": "\"submit\"",
-        "disabled": "{pending}"
+        "disabled": "{!ready || pending}"
       }
     },
     {
@@ -8245,7 +8285,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2187",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2218",
       "file": "src/app/operator/operators/page.tsx",
       "line": 34,
       "tag": "form",
@@ -8255,7 +8295,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2216",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2247",
       "file": "src/app/operator/operators/page.tsx",
       "line": 34,
       "tag": "button",
@@ -8265,7 +8305,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2891",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2942",
       "file": "src/app/operator/operators/page.tsx",
       "line": 41,
       "tag": "summary",
@@ -8273,7 +8313,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3200",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3251",
       "file": "src/app/operator/operators/page.tsx",
       "line": 45,
       "tag": "input",
@@ -8284,7 +8324,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3424",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3475",
       "file": "src/app/operator/operators/page.tsx",
       "line": 48,
       "tag": "textarea",
@@ -8294,7 +8334,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3527",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3578",
       "file": "src/app/operator/operators/page.tsx",
       "line": 49,
       "tag": "input",
@@ -8306,7 +8346,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4801",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4852",
       "file": "src/app/operator/operators/page.tsx",
       "line": 65,
       "tag": "summary",
@@ -8316,7 +8356,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:68:5325",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:68:5376",
       "file": "src/app/operator/operators/page.tsx",
       "line": 68,
       "tag": "input",
@@ -8328,7 +8368,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:69:5401",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:69:5452",
       "file": "src/app/operator/operators/page.tsx",
       "line": 69,
       "tag": "input",
@@ -8340,7 +8380,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:72:5707",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:72:5758",
       "file": "src/app/operator/operators/page.tsx",
       "line": 72,
       "tag": "textarea",
@@ -8350,7 +8390,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:75:5963",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:75:6014",
       "file": "src/app/operator/operators/page.tsx",
       "line": 75,
       "tag": "summary",
@@ -8360,7 +8400,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6510",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6561",
       "file": "src/app/operator/operators/page.tsx",
       "line": 79,
       "tag": "input",
@@ -8372,7 +8412,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6566",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6617",
       "file": "src/app/operator/operators/page.tsx",
       "line": 79,
       "tag": "input",
@@ -8384,7 +8424,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6638",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6689",
       "file": "src/app/operator/operators/page.tsx",
       "line": 80,
       "tag": "input",
@@ -8396,7 +8436,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6699",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6750",
       "file": "src/app/operator/operators/page.tsx",
       "line": 80,
       "tag": "input",
@@ -8408,7 +8448,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:82:6866",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:6917",
       "file": "src/app/operator/operators/page.tsx",
       "line": 82,
       "tag": "textarea",
@@ -8418,7 +8458,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:95:7562",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:95:7613",
       "file": "src/app/operator/operators/page.tsx",
       "line": 95,
       "tag": "input",
@@ -8429,7 +8469,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:96:7732",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:96:7783",
       "file": "src/app/operator/operators/page.tsx",
       "line": 96,
       "tag": "input",
@@ -8440,7 +8480,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:97:7898",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:97:7949",
       "file": "src/app/operator/operators/page.tsx",
       "line": 97,
       "tag": "input",
@@ -8451,7 +8491,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8099",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8150",
       "file": "src/app/operator/operators/page.tsx",
       "line": 98,
       "tag": "input",
@@ -8462,7 +8502,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8289",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8340",
       "file": "src/app/operator/operators/page.tsx",
       "line": 99,
       "tag": "input",
@@ -8473,9 +8513,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:84:5996",
+      "id": "CONTROL:src/app/operator/page.tsx:88:6071",
       "file": "src/app/operator/page.tsx",
-      "line": 84,
+      "line": 88,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8483,9 +8523,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:84:6025",
+      "id": "CONTROL:src/app/operator/page.tsx:88:6100",
       "file": "src/app/operator/page.tsx",
-      "line": 84,
+      "line": 88,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -9119,9 +9159,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2396",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2685",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 41,
+      "line": 43,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -9129,9 +9169,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2425",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2714",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 41,
+      "line": 43,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -9139,17 +9179,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:62:4161",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:64:4785",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 62,
+      "line": 64,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:65:4691",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:5315",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 65,
+      "line": 67,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9159,9 +9199,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:66:4773",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5397",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 66,
+      "line": 68,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9171,9 +9211,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:4866",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5490",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 67,
+      "line": 69,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9183,9 +9223,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5036",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:71:5660",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 69,
+      "line": 71,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -19537,12 +19577,12 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 279,
+    "sourceFiles": 281,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
     "serverActions": 107,
-    "rpcCallSites": 346,
+    "rpcCallSites": 349,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 6,
     "formControls": 1172,

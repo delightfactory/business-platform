@@ -1,0 +1,567 @@
+{
+  "base": "859e217e11322cf6655ea53441620542b63be32f",
+  "scope": "Actual TS/React pages/client SSR; controlled SDK and action boundary, not real SQL/Auth/roles/hydration/visual acceptance",
+  "passed": 140,
+  "records": [
+    {
+      "name": "lifecycle supported forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial supported forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements supported forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "grants supported forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle own false denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle own string denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle own number denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle own null denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle own contradictory error denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial own false denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial own string denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial own number denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial own null denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial own contradictory error denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements own false denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements own string denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements own number denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements own null denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements own contradictory error denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "grants own false denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "grants own string denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "grants own number denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "grants own null denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "grants own contradictory error denies controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle extra false preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle extra string preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle extra error preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle mismatch 22222222-2222-4222-8222-222222222222 blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle mismatch null blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle mismatch undefined blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle mismatch invalid blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle same identity supported",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle URL is not receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial extra false preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial extra string preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial extra error preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial mismatch 22222222-2222-4222-8222-222222222222 blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial mismatch null blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial mismatch undefined blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial mismatch invalid blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial same identity supported",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial URL is not receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements extra false preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements extra string preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements extra error preserves own forms",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements mismatch 22222222-2222-4222-8222-222222222222 blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements mismatch null blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements mismatch undefined blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements mismatch invalid blocks company controls",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements same identity supported",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements URL is not receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy lifecycle active neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy lifecycle suspended neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy lifecycle archived neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "grants granted neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "grants updated neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "grants revoked neutral",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 0",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 0",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 1",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 1",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 2",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 2",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 3",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 3",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 4",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 4",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 5",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 5",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 6",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 6",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 7",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 7",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 8",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 8",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 9",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 9",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 10",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 10",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 11",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 11",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 12",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 12",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 13",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 13",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 14",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 14",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 15",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 15",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 16",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 16",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 17",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 17",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 18",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 18",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 19",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 19",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 20",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 20",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 21",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 21",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 22",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 22",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 23",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 23",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 24",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 24",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 25",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 25",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 26",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 26",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 27",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 27",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 28",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 28",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 29",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 29",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 30",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 30",
+      "status": "PASS"
+    },
+    {
+      "name": "root independent flags 31",
+      "status": "PASS"
+    },
+    {
+      "name": "operator navigation flags 31",
+      "status": "PASS"
+    },
+    {
+      "name": "root rejects nonboolean current_operator_can_manage_operators",
+      "status": "PASS"
+    },
+    {
+      "name": "navigation rejects contradictory current_operator_can_manage_operators",
+      "status": "PASS"
+    },
+    {
+      "name": "root rejects nonboolean current_operator_can_onboard_tenants",
+      "status": "PASS"
+    },
+    {
+      "name": "navigation rejects contradictory current_operator_can_onboard_tenants",
+      "status": "PASS"
+    },
+    {
+      "name": "root rejects nonboolean current_operator_can_manage_tenant_lifecycle",
+      "status": "PASS"
+    },
+    {
+      "name": "navigation rejects contradictory current_operator_can_manage_tenant_lifecycle",
+      "status": "PASS"
+    },
+    {
+      "name": "root rejects nonboolean current_operator_can_manage_commercial_access",
+      "status": "PASS"
+    },
+    {
+      "name": "navigation rejects contradictory current_operator_can_manage_commercial_access",
+      "status": "PASS"
+    },
+    {
+      "name": "root rejects nonboolean current_operator_can_manage_statutory_rules",
+      "status": "PASS"
+    },
+    {
+      "name": "navigation rejects contradictory current_operator_can_manage_statutory_rules",
+      "status": "PASS"
+    },
+    {
+      "name": "SSR client form cannot submit private values",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/operator/tenants/actions.ts authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/operator/commercial/actions.ts authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/operator/entitlements/actions.ts authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/operator/operators/actions.ts authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/operator/layout.tsx authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/layout.tsx authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "src/app/workspace.css authority/layout unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "tenant navigation unchanged",
+      "status": "PASS"
+    }
+  ]
+}

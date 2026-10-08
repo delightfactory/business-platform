@@ -1,0 +1,13 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success",
+  "isError": false,
+  "result": "# Final delta review: optional flag read\n\n**Verdict:** The change matches the contract and introduces no blocker. Acceptance is conditional on the targeted lint and TypeScript run, which is still in progress, exiting 0. This review covers only the snippet and context you supplied.\n\n## Why it is correct\n\n- **Scope is right.** Only the optional flag on each page is wrapped:\n  - Lifecycle page: the commercial flag.\n  - Commercial and entitlements pages: the lifecycle flag.\n  \n  The page's own status, own flag, snapshot reads and actions keep their existing reject behaviour.\n- **A failed read fails closed.** A rejected read becomes `{ data: null, error }`. Since `operatorPermission` requires `error === null && data === true`, the result is always false and the links are omitted. This holds even for `Promise.reject(null)` or `undefined`, because `data` is `null`.\n- **The independently permitted task survives.** `Promise.all` no longer rejects because of the optional flag, so the page still renders.\n- **Nothing broader is swallowed.** These are read-only `STABLE` helpers, not mutations. There is no catch-all around the page, no retry or replay, no redirect suppression, and no new authority, provider or settings.\n- **The call is valid.** The Supabase RPC builder is a thenable whose `then` accepts an `onrejected` callback. The union result fits the predicate's `{ data: unknown; error: unknown }` input type.\n\n## Non-blocking note\n\nThe error from a rejected optional read is dropped silently, with no logging. That is acceptable for an optional link, but it leaves no record of the failure for diagnosis.\n\n## Still open\n\n- A rejected read of a page's own flag or its snapshot still goes to the existing error path. Recovery after thrown or unknown results remains core OPEN.\n- Full visual verdict stays **NOT VISUALLY VERIFIED**.\n- Remaining gates are still OPEN:\n  - real-account and role acceptance\n  - native JS-off behaviour\n  - grants, onboarding, invitations and statutory flows\n  - recovery\n  - a measured before/after baseline\n  - R0–R8\n- D16 is not implemented, and the payroll A/B decision stays with the independent owner.",
+  "sessionId": "5509498e-fabb-4343-85c8-c54c6336fe3f"
+}

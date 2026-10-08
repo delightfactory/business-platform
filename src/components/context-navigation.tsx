@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { operatorPermission } from '@/lib/operator-access';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { ContextNavigationClient, type ContextLink } from './context-navigation-client';
 
@@ -41,17 +42,17 @@ export async function OperatorNavigation() {
         supabase.rpc('current_operator_can_manage_commercial_access'),
         supabase.rpc('current_operator_can_manage_statutory_rules'),
       ]);
-      if (lifecycle.data) links.push({ href: '/operator/tenants', label: 'الشركات' });
-      if (onboarding.data) {
+      if (operatorPermission(lifecycle)) links.push({ href: '/operator/tenants', label: 'الشركات' });
+      if (operatorPermission(onboarding)) {
         links.push({ href: '/operator/invitations', label: 'دعوات الشركات' });
         links.push({ href: '/operator/onboarding', label: 'إعداد شركة' });
       }
-      if (commercial.data) {
+      if (operatorPermission(commercial)) {
         links.push({ href: '/operator/commercial', label: 'حدود الاشتراك' });
         links.push({ href: '/operator/entitlements', label: 'الوحدات المتاحة' });
       }
-      if (operator.data) links.push({ href: '/operator/operators', label: 'المشغّلون' });
-      if (statutory.data) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
+      if (operatorPermission(operator)) links.push({ href: '/operator/operators', label: 'المشغّلون' });
+      if (operatorPermission(statutory)) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
     }
   }
   return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;

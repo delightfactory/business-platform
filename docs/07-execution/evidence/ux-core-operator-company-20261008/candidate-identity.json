@@ -1,0 +1,49 @@
+{
+  "base": "859e217e11322cf6655ea53441620542b63be32f",
+  "files": [
+    {
+      "file": "src/app/globals.css",
+      "sha256LF": "a729b00abc479b3051258225e254b23ce79058a7559c9d1e45deee1c6633245f"
+    },
+    {
+      "file": "src/app/operator/page.tsx",
+      "sha256LF": "b1bcdbb9bf7b2e8fae64a78752e90962b60a36a52297dac3a4410d4ce688ae21"
+    },
+    {
+      "file": "src/app/operator/operators/page.tsx",
+      "sha256LF": "c6fe600c873a7a1b9d0997dbd377ecaf4755a0be98aa999a16f4344e310ffdfc"
+    },
+    {
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "sha256LF": "d1d6ed773387e1eeb9b110db807a38f5eeb40f2021e9aee0b2721b2652902870"
+    },
+    {
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "sha256LF": "8550795f0b78752063e0fe3430c5f3a2f8427d003e8de50206c362f3a6b9b2fb"
+    },
+    {
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "sha256LF": "1422fa83a1eb4c96515f497b0c3645d46ba0157425dc8719f432afe14914b2c1"
+    },
+    {
+      "file": "src/app/operator/operator-action-form.tsx",
+      "sha256LF": "bc97c06103211d8bfcea43ec05e3f9c15d35a0942a054db7598e43a7f7d5fbad"
+    },
+    {
+      "file": "src/app/operator/company-task-links.tsx",
+      "sha256LF": "a849bf79ddc28d37347140091095637d2847ae73e56b33cb2843d71ad6ac56b4"
+    },
+    {
+      "file": "src/components/context-navigation.tsx",
+      "sha256LF": "106b3489273decfd4dba293550b89e3e0ffb71ca8b317220c9bcdf6977a68782"
+    },
+    {
+      "file": "src/lib/operator-access.ts",
+      "sha256LF": "7b20e2bf5f357a8a4cc3d0798287d245bf235ed05eb96f85785b4ff1f58a10a9"
+    }
+  ],
+  "readOnlyFullReview": "pre-delta source diff and 3 named images",
+  "finalReview": "one final390 image and correction description; final source not re-read by Claude; Codex independently inspected/tested delta",
+  "rawHarnessSha256": "d20fd6c568646ed154b63f94c18abf578b2efdf57229164fdd0700cb7093ab90",
+  "optionalReadFinalReview": "exact snippet/context only, no file/image re-read; Codex validated3 source paths with lint/TS"
+}

@@ -1,0 +1,18 @@
+{
+  "ownedNextSession": 78198,
+  "ownedProxySession": 13132,
+  "retiredByCtrlC": true,
+  "loopbackPorts": [
+    3608,
+    3609
+  ],
+  "listenersAfterRetirement": 0,
+  "temporaryTabsClosed": [
+    "82",
+    "83",
+    "84"
+  ],
+  "viewportReset": true,
+  "otherTasksStopped": false,
+  "newDatabaseOrProductionAccess": false
+}

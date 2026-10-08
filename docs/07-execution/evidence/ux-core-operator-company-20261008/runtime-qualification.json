@@ -1,0 +1,36 @@
+{
+  "environment": "Next16.3.6 dev, copied actual root/operator layouts and shared navigation + globals/workspace/tokens/Cairo, synthetic SDK/actions only, loopback",
+  "duplicateClickCalls": 1,
+  "originalFieldNames": [
+    "tenantId",
+    "expectedState",
+    "targetState",
+    "reason"
+  ],
+  "mappedErrorRetainsReason": true,
+  "pendingDisablesFields": true,
+  "afterErrorReenabled": true,
+  "deliberateSecondSubmissionRedirected": true,
+  "callsAfterDeliberateSecondSubmission": 2,
+  "nativeKeyboardJourney": [
+    "lifecycle",
+    "commercial",
+    "entitlements"
+  ],
+  "sameCompanyPreserved": true,
+  "beforeAfterNavigationOrSelectionBaseline": "not-run; no numerical improvement claim",
+  "scriptBlockedProxy": {
+    "scripts": 0,
+    "fieldsDisabled": true,
+    "method": "post",
+    "observedPosts": 0,
+    "privateQuerySeen": false,
+    "forcedClick": "tool dispatch timed out on disabled element; not an executed submission proof",
+    "actualJsOffNoscript": "not-run; CSP script blocking is not browser JS-off"
+  },
+  "final390SpacingPx": 8,
+  "final390ScrollWidth": 375,
+  "final390InnerWidth": 390,
+  "preDeltaOtherWidths": "browser-metrics.json; not post-CSS-delta full visual acceptance",
+  "authSqlRealRolesAndBusinessMutationUat": "not-run; unchanged suites reused"
+}

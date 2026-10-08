@@ -1,0 +1,18 @@
+{
+  "scope": "Only new optional flag rejected-read boundary, no mutations/unknown-action swallowing",
+  "passed": 3,
+  "records": [
+    {
+      "name": "lifecycle rejected optional read preserves own task",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial rejected optional read preserves own task",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements rejected optional read preserves own task",
+      "status": "PASS"
+    }
+  ]
+}

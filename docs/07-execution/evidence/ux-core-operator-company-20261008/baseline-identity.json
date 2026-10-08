@@ -1,0 +1,37 @@
+{
+  "base": "859e217e11322cf6655ea53441620542b63be32f",
+  "files": [
+    {
+      "file": "src/app/operator/page.tsx",
+      "sha256": "58f79c32e2cf1b44b516340dbf014e1389008618a6da34b48e5d8454bdb5edfb"
+    },
+    {
+      "file": "src/app/operator/operators/page.tsx",
+      "sha256": "d24bd21d4682ba0aef99394c1055c6ff04fbe12f59816023b5179bd0efb31bcd"
+    },
+    {
+      "file": "src/app/operator/operator-action-form.tsx",
+      "sha256": "7bb1717edf017fea9bfc5acac56d2e8bfd4bce2dcf2f04c60d78aeda6a4f2f79"
+    },
+    {
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "sha256": "f42ecfa6cb951087bfec352574b488e12dd1696747e8135025042698c52ee0b1"
+    },
+    {
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "sha256": "493bebca6847c666636f307d9b84cc05febe1586c1da4c9c7c28d304c1cb700e"
+    },
+    {
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "sha256": "26f6e22e72906af8e9d0a4762e5bb9727c92240ddae937eda8f2f070ba9559ed"
+    },
+    {
+      "file": "src/components/context-navigation.tsx",
+      "sha256": "2b7663cd51c9b2a9b42e9e86dfa6dcbdae13f9d0ce9954e8a9704fac72686f67"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "1ad47410879e554c3d907bbd40ba5a7df307084397c729ded0b759e1b56203fb"
+    }
+  ]
+}

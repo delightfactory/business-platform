@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantLifecycleAction } from '../actions';
-import { FeedbackToast } from '@/components/feedback-toast';
+import { CompanyTaskLinks } from '@/app/operator/company-task-links';
+import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
 
 export const dynamic = 'force-dynamic';
@@ -20,16 +21,17 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const [{ data: operatorStatus }, { data: canManageLifecycle }] = await Promise.all([
+  const [operatorStatus, lifecycle, commercial] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
+    supabase.rpc('current_operator_can_manage_commercial_access').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
-  if (operatorStatus !== 'active' || !canManageLifecycle) {
+  if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(lifecycle)) {
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
   }
   const { data, error } = await supabase.rpc('platform_tenant_lifecycle_get', { p_tenant_id: tenantId });
   const tenant = !error && data && typeof data === 'object' && !Array.isArray(data) ? data as Tenant : undefined;
-  if (!tenant) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
+  if (!tenant || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
 
   const transitions = transitionsFor(tenant.lifecycle_state);
   return (
@@ -41,18 +43,18 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
         </nav>
       </header>
-      {query.state === 'updated' && query.to === tenant.lifecycle_state &&
-        <FeedbackToast key={crypto.randomUUID()} message="تم حفظ حالة الشركة وتسجيل السبب." />}
       <section className="work-card operator-lifecycle-detail" aria-labelledby="tenant-title">
         <p className="eyebrow">إدارة حالة الشركة</p>
-        <h1 id="tenant-title">{tenant.tenant_name}</h1>
+        <h1 id="tenant-title"><bdi>{tenant.tenant_name}</bdi></h1>
         <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : tenant.lifecycle_state === 'suspended' ? 'is-pending' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+        <CompanyTaskLinks tenantId={tenantId} current="lifecycle" lifecycle={true} commercial={operatorPermission(commercial)} />
+        {((query.state === 'updated' && (!query.to || query.to === tenant.lifecycle_state)) || query.state === 'active' || query.state === 'suspended' || query.state === 'archived') && <p className="form-message" role="status">راجع حالة الشركة الحالية والإجراءات المتاحة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
         <p className="intro">اختر الإجراء المناسب. سيتطلب تأكيده سببًا ويُسجل التغيير للمراجعة.</p>
         {query.state === 'stale' && <p className="form-message capacity-message" role="alert">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</p>}
-        {query.state && query.state !== 'stale' && query.state !== 'updated'
+        {query.state && !['stale', 'updated', 'active', 'suspended', 'archived'].includes(query.state)
           && <p className="form-message form-error" role="alert">{messageFor(query.state)}</p>}
-        {query.state === 'updated' && query.to !== tenant.lifecycle_state
-          && <p className="form-message capacity-message" role="status">تغيّرت حالة الشركة بعد الإجراء. الحالة الحالية معروضة أدناه.</p>}
+        {query.state === 'updated' && query.to && query.to !== tenant.lifecycle_state
+          && <p className="form-message capacity-message" role="status">الحالة الحالية لا تطابق الحالة المطلوبة في الرابط. راجعها قبل اختيار إجراء جديد.</p>}
         <h2>الإجراءات المتاحة</h2>
         <div className="lifecycle-choice-list">
           {transitions.map((transition) => (

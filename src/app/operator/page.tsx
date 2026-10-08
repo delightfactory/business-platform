@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -19,7 +18,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
 
-  const [{ data: canManage, error: manageError }, { data: canOnboard, error: onboardError }, { data: canManageLifecycle, error: lifecycleError }, { data: canManageCommercial, error: commercialError }, { data: canManageStatutory, error: statutoryError }] = await Promise.all([
+  const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators'),
     supabase.rpc('current_operator_can_onboard_tenants'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
@@ -27,10 +26,15 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
     supabase.rpc('current_operator_can_manage_statutory_rules'),
   ]);
   if (manageError || onboardError || lifecycleError || commercialError || statutoryError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
+  const canManage = manage === true;
+  const canOnboard = onboard === true;
+  const canManageLifecycle = lifecycle === true;
+  const canManageCommercial = commercial === true;
+  const canManageStatutory = statutory === true;
 
   return (
     <main className="app-shell">
-      {(query.state === 'updated-self' || query.state === 'revoked-self') && <FeedbackToast key={crypto.randomUUID()} message={query.state === 'updated-self' ? 'تم تحديث صلاحياتك. انتقلت إلى المهام المتاحة لحسابك.' : 'سُحبت صلاحية تشغيل المنصة من حسابك.'} />}
+      {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
       <div className="operator-home" aria-labelledby="operator-title">
         <header className="operator-home-heading">
           <p className="eyebrow">مساحة التشغيل</p>

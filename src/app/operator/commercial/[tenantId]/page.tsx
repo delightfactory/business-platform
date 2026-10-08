@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { FeedbackToast } from '@/components/feedback-toast';
+import { CompanyTaskLinks } from '@/app/operator/company-task-links';
+import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeCommercialLimitAction } from '../actions';
@@ -21,23 +22,25 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const [{ data: operatorStatus }, { data: authorized }] = await Promise.all([
+  const [operatorStatus, commercial, lifecycle] = await Promise.all([
     supabase.rpc('current_platform_operator_status'), supabase.rpc('current_operator_can_manage_commercial_access'),
+    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
-  if (operatorStatus !== 'active' || !authorized) return <Status title="إدارة الحدود غير متاحة" />;
+  if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة الحدود غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_commercial_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل حدود الشركة" />;
   const tenant = data as Snapshot;
-  if (!Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
+  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
 
   return <main className="app-shell">
-    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث الحد وتسجيل السبب." />}
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
     <section className="work-card operator-setting-detail" aria-labelledby="commercial-title">
       <p className="eyebrow">حدود الاستخدام</p><h1 id="commercial-title"><bdi>{tenant.display_name}</bdi></h1>
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+      <CompanyTaskLinks tenantId={tenantId} current="commercial" lifecycle={operatorPermission(lifecycle)} commercial={true} />
+      {query.state === 'updated' && <p className="form-message" role="status">حدود الاستخدام الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <div className="operator-setting-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
     </section><footer className="footer">منصة الأعمال · حدود الاستخدام</footer>

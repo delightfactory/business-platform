@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "364148599263184ec36adea4036456acfc7f7983",
+  "sourceSnapshot": "859e217e11322cf6655ea53441620542b63be32f",
   "status": "Proposed",
   "items": [
     {
@@ -2033,7 +2033,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:25:1521",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1598",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2042,7 +2042,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:25:1576",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1652",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2051,7 +2051,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:28:1780",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:2037",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2096,7 +2096,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:24:1590",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1667",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2105,7 +2105,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1645",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1721",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2114,7 +2114,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:28:1853",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:2102",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2267,7 +2267,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:22:1239",
+      "id": "RPC:src/app/operator/operators/page.tsx:22:1227",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2276,7 +2276,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:23:1326",
+      "id": "RPC:src/app/operator/operators/page.tsx:23:1303",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2285,7 +2285,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:25:1571",
+      "id": "RPC:src/app/operator/operators/page.tsx:25:1587",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2294,7 +2294,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:18:988",
+      "id": "RPC:src/app/operator/page.tsx:17:926",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2303,7 +2303,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:23:1586",
+      "id": "RPC:src/app/operator/page.tsx:22:1491",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2312,7 +2312,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:24:1646",
+      "id": "RPC:src/app/operator/page.tsx:23:1550",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2321,7 +2321,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:25:1705",
+      "id": "RPC:src/app/operator/page.tsx:24:1609",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2330,7 +2330,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:26:1772",
+      "id": "RPC:src/app/operator/page.tsx:25:1676",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2339,7 +2339,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:27:1840",
+      "id": "RPC:src/app/operator/page.tsx:26:1744",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2420,7 +2420,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:24:1357",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1426",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2429,7 +2429,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1412",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1480",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2438,7 +2438,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:30:1711",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1952",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -4796,7 +4796,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:38:1191",
+      "id": "RPC:src/components/context-navigation.tsx:39:1250",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4805,7 +4805,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:39:1255",
+      "id": "RPC:src/components/context-navigation.tsx:40:1314",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4814,7 +4814,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:40:1318",
+      "id": "RPC:src/components/context-navigation.tsx:41:1377",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4823,7 +4823,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:41:1389",
+      "id": "RPC:src/components/context-navigation.tsx:42:1448",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4832,7 +4832,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:42:1461",
+      "id": "RPC:src/components/context-navigation.tsx:43:1520",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4841,7 +4841,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:77:3031",
+      "id": "RPC:src/components/context-navigation.tsx:78:3160",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4850,7 +4850,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:78:3129",
+      "id": "RPC:src/components/context-navigation.tsx:79:3258",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4859,7 +4859,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:79:3213",
+      "id": "RPC:src/components/context-navigation.tsx:80:3342",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4868,7 +4868,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:80:3291",
+      "id": "RPC:src/components/context-navigation.tsx:81:3420",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4877,7 +4877,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:81:3339",
+      "id": "RPC:src/components/context-navigation.tsx:82:3468",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4886,7 +4886,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:82:3415",
+      "id": "RPC:src/components/context-navigation.tsx:83:3544",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4895,7 +4895,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:83:3500",
+      "id": "RPC:src/components/context-navigation.tsx:84:3629",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4904,7 +4904,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:84:3581",
+      "id": "RPC:src/components/context-navigation.tsx:85:3710",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4913,7 +4913,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:85:3653",
+      "id": "RPC:src/components/context-navigation.tsx:86:3782",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4922,7 +4922,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:86:3727",
+      "id": "RPC:src/components/context-navigation.tsx:87:3856",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4931,7 +4931,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:87:3798",
+      "id": "RPC:src/components/context-navigation.tsx:88:3927",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4940,7 +4940,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:88:3867",
+      "id": "RPC:src/components/context-navigation.tsx:89:3996",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4949,7 +4949,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:89:3943",
+      "id": "RPC:src/components/context-navigation.tsx:90:4072",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -4958,7 +4958,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/components/context-navigation.tsx:90:4020",
+      "id": "RPC:src/components/context-navigation.tsx:91:4149",
       "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
@@ -5795,7 +5795,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:37:2558",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2745",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5804,7 +5804,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:37:2587",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2774",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5813,7 +5813,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:66:5602",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:6067",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5822,7 +5822,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:68:5929",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6394",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5831,7 +5831,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5995",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6460",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5840,7 +5840,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:70:6078",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6543",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5849,7 +5849,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:74:6398",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6863",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5876,7 +5876,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:45:3560",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3731",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5885,7 +5885,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:45:3589",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3760",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5894,7 +5894,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7610",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:8059",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5903,7 +5903,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7879",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8328",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5912,7 +5912,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7945",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:85:8394",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5921,7 +5921,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8107",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:87:8556",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5930,7 +5930,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8612",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:91:9061",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5939,7 +5939,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8783",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:93:9232",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6236,7 +6236,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:29:1014",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:39:1431",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6245,7 +6245,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:32:1183",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:45:1963",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6281,7 +6281,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2187",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2218",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6290,7 +6290,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2216",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2247",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6299,7 +6299,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2891",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2942",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6308,7 +6308,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3200",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3251",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6317,7 +6317,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3424",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3475",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6326,7 +6326,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3527",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3578",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6335,7 +6335,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4801",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4852",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6344,7 +6344,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:68:5325",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:68:5376",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6353,7 +6353,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:69:5401",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:69:5452",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6362,7 +6362,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:72:5707",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:72:5758",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6371,7 +6371,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:75:5963",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:75:6014",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6380,7 +6380,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6510",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6561",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6389,7 +6389,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6566",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6617",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6398,7 +6398,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6638",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6689",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6407,7 +6407,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6699",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6750",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6416,7 +6416,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:82:6866",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:6917",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6425,7 +6425,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:95:7562",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:95:7613",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6434,7 +6434,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:96:7732",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:96:7783",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6443,7 +6443,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:97:7898",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:97:7949",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6452,7 +6452,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8099",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8150",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6461,7 +6461,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8289",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8340",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6470,7 +6470,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:84:5996",
+      "id": "CONTROL:src/app/operator/page.tsx:88:6071",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6479,7 +6479,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:84:6025",
+      "id": "CONTROL:src/app/operator/page.tsx:88:6100",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7037,7 +7037,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2396",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2685",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7046,7 +7046,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:41:2425",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2714",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7055,7 +7055,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:62:4161",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:64:4785",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7064,7 +7064,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:65:4691",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:5315",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7073,7 +7073,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:66:4773",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5397",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7082,7 +7082,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:4866",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5490",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7091,7 +7091,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5036",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:71:5660",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15766,6 +15766,33 @@
       "id": "RPC:src/app/tenant/[tenantId]/payroll/RecordedPaymentNotice.tsx:27:1627",
       "category": "rpcCalls",
       "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1715",
+      "category": "rpcCalls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1789",
+      "category": "rpcCalls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1547",
+      "category": "rpcCalls",
+      "phase": "R3",
       "status": "pending",
       "scenarioIds": [],
       "reviewer": null,

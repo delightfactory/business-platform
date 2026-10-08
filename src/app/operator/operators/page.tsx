@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeOperatorGrantAction } from './actions';
-import { FeedbackToast } from '@/components/feedback-toast';
+import { operatorPermission } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
 
 export const dynamic = 'force-dynamic';
@@ -19,11 +19,11 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const { data: status } = await supabase.rpc('current_platform_operator_status');
-  const { data: canManage } = await supabase.rpc('current_operator_can_manage_operators');
-  if (status !== 'active' || !canManage) return <Status title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
+  const status = await supabase.rpc('current_platform_operator_status');
+  const canManage = await supabase.rpc('current_operator_can_manage_operators');
+  if (status.error || status.data !== 'active' || !operatorPermission(canManage)) return <Status title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
   const { data, error } = await supabase.rpc('platform_operator_grant_list');
-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="أعد المحاولة لاحقًا. لم يتغير أي منح." />;
+  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="تعذر قراءة الحالة الحالية للمنح. أعد المحاولة لاحقًا." />;
   const grants = data as Grant[];
   const success = query.state === 'granted' || query.state === 'updated' || query.state === 'revoked';
 
@@ -32,9 +32,9 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
           <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-      {success && <FeedbackToast key={crypto.randomUUID()} message={stateText(query.state ?? '')} />}
       <section className="work-card operator-grants-overview" aria-labelledby="operators-title">
         <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
+        {success && <p className="form-message" role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
         <p className="intro">حدد من يمكنه تشغيل المنصة والمهام المسموح له بها. يُسجل سبب كل تغيير.</p>
         {query.state && !success && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
         <details className="operator-grant-form">

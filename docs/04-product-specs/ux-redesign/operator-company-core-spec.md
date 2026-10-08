@@ -1,0 +1,33 @@
+# R3 core company context and submission privacy
+
+Baseline859e217e11322cf6655ea53441620542b63be32f. Bounded core implementation contract, jointly reviewed at source; wholeR3/semantic/runtime/visual freeze remains OPEN. Governing original plan7.9/W6, R3 journey map and owner full-task simplicity/coverage contracts. CoreR0–R8 first, no D16/extras.
+
+Actor: currently active operator with lifecycle and/or commercial authority independently granted. Job: inspect one company's state, limits and units, choose one authorized operation with its existing effects, reason/dependencies/version checks, then verify current state. Current backend actions, inputs/defaults/disabled flags, errors, RPC/grants/redirects remain. No combined mutation dashboard/new authority/API/migrations/audit/storage.
+
+## Context and independent authority
+
+Three current company pages each add only the other existing STABLE read-only permission helper within the current Promise.all. Own status must be active with no returned error, own flag stricttrue/noerror. Extra flag false/error/missing/string/number omits optional links without denying the existing permitted task. Lifecycle and commercial are never inferred from one another or from lifecycle_state. Root task links and existing OperatorNavigation use the same strict boolean predicate; tenant navigation remains byte-equivalent.
+
+Only the new optional flag read converts a rejected promise to an unavailable result, omitting its links while preserving the independently authorized task. Own status/permission, snapshot and mutations retain their original exception paths; no unknown action is swallowed or retried.
+
+Only after authorized snapshot loading, compare snapshot tenant_id to URL UUID case-insensitively. Mismatch/missing/nonUUID fails closed through current Status, avoiding one company's name with another company's action target. D1 routine identity-guard choice resolved by Codex within existing scope. D2 operator-only shared-nav strict guard and D3 neutral legacy lifecycle query states likewise resolved; no owner newcapability or behavioral-policy decision inferred.
+
+Secondary same-company links: lifecycle→limits/units only with commercialflag; limits↔units with current own commercialflag; limits/units→lifecycle only with lifecycleflag. Current page is not a link. Omit nav when no other permitted destination; show save-before-leaving advice where links exist. Keep existing lists/search/routes and selected company; do not carry forgedsuccess/reasons/emails between pages or put private values inURL. Proposed reduction in repeated company selection must be measured in matched synthetic journey before claiming numbers.
+
+## Current state is not a receipt
+
+Lifecycle/commercial/entitlements/grants/root must not celebrate URL success flags alone. Neutral current-state status text replaces success toasts, preserving current-state data and original action redirects. Lifecycle updated target mismatch/stale/transition remain clear; legacyactive/suspended/archived query labels are neutral, not events. Original rejection/dependency/conflict/lastmanager guidance stays intact. No read-only snapshot or URL becomes an audit receipt.
+
+## Shared client-form privacy and pending
+
+Existing OperatorActionForm is client-only onSubmit with no native action: unsupported prehydration submission defaultsGET and can leak reason/email. Preserve supported hydrated action path; do not invent native mutation. Stable useSyncExternalStore SSRfalse/hydratedtrue readiness, explicitPOST and outer disabledfieldset before ready/duringpending, visible preparation and noscript explanation; current read-only content remains. Exact child form names/defaults/required/disabled fields and functions remain. In-flight ref acquired before FormData capture, capture before pending/disabled change, preserve mapped validation errors/values. Ref closes only same-instance concurrent-event gap; no crossform/tab/serverfinanciallock claim. finally releasesref while exceptions/frameworkredirects propagate; no catch-all, replay/retry, newjournal or audit exemption. Thrown/unknown-action recovery remains requiredOPEN for broaderR3, not fixed by this guard.
+
+## Reference and tests
+
+Pinned ConceptC has no actual operator page. Common cards/colors/secondary controls/RTL are direction; operator-specific exact screenmatch cannot be invented. Existing shared shell contract/Cairo/control targets govern. Correct full globals+workspace CSS and actual operator parent are required for meaningful rendered evidence; no bareframe theme claim. Both Codex and official Opus5.5Medium give separate reference verdicts with limitations.
+
+Focused actual-source before/after page/flag/identity/query/child-field matrices, scoped caller/native/hydration/pending/duplicate/validation/rejection/redirect privacy cases; include blocked script with no URL/privatefield submission. Runtime source flags under controlledSDK are not appliedSQL/realrole/provider acceptance. One coherent app lint/build/TS, reuse unchanged SQL/Auth/financial suites. Native company cross-links/keyboard/Cairo390/768/1366, exact source and measured selection/navigation/primary/requiredinput baseline where possible. No heavy repeated tests for tiny text deltas. Onboarding/invitations/grants fulloperation/statutory draft→compare→issue and full R0–R8 remain required after this related firstbatch. No merge/PR/deploy/Actions/production/other-task shutdown.
+
+## Bounded checkpoint and unresolved acceptance
+
+See [source-qualified evidence](../../07-execution/evidence/ux-core-operator-company-20261008/README.md). Original evaluator/live-launch hint retained; shared predicates reside in src/lib/operator-access.ts, byte-equivalent; lifecycle updated produces one neutral or mismatch status, not two. WholeR3 stays Proposed/open. Source gates140+10passed, ONEgroupedbuild reused with finalscopedlint/TS. Native synthetic finalpath observed; no before/after company-selection metric. Codex+officialOpus5.5Mediumfullvisual NOTVISUALLYVERIFIED; final390usable and new8pxgapverified, desktop/tablet clippedcaptures excluded. Fullrealaccount/role/actions/unknownresult/JSoff/session/onboarding/grants/statutory and R0–R8 acceptance remainOPEN. No accepted operatorexactscreen redesign inferred from missing ConceptC view.

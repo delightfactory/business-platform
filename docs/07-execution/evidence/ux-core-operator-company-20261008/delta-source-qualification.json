@@ -1,0 +1,46 @@
+{
+  "scope": "review delta only; original140 cases reused for unchanged predicates/business contract",
+  "passed": 10,
+  "records": [
+    {
+      "name": "lifecycle final forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "commercial final forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "entitlements final forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "grants final forms unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle final single status active",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle final single status suspended",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle final single status undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "original evaluator hint preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "shared lib resolves all five independent nav flags",
+      "status": "PASS"
+    },
+    {
+      "name": "moved predicates byte-equivalent",
+      "status": "PASS"
+    }
+  ]
+}

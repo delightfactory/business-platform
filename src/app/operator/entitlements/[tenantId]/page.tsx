@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { FeedbackToast } from '@/components/feedback-toast';
+import { CompanyTaskLinks } from '@/app/operator/company-task-links';
+import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeTenantEntitlementAction } from '../actions';
@@ -20,16 +21,17 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const [{ data: status }, { data: authorized }] = await Promise.all([
+  const [status, commercial, lifecycle] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),
     supabase.rpc('current_operator_can_manage_commercial_access'),
+    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
-  if (status !== 'active' || !authorized) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
+  if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
   const tenant = data as Snapshot;
   const expectedCapabilities = ['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave', 'hr.employee_finance'];
-  if (!Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
+  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
     || new Set(tenant.entitlements.map((item) => item.capability_key)).size !== expectedCapabilities.length
     || expectedCapabilities.some((key) => !tenant.entitlements.some((item) => item.capability_key === key))) return <Status title="بيانات الإتاحة غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
@@ -39,13 +41,14 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
 
   return <main className="app-shell">
-    {query.state === 'updated' && <FeedbackToast key={crypto.randomUUID()} message="تم تحديث إتاحة الوحدة وتسجيل السبب." />}
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link>
         <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
     <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
       <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+      <CompanyTaskLinks tenantId={tenantId} current="entitlements" lifecycle={operatorPermission(lifecycle)} commercial={true} />
+      {query.state === 'updated' && <p className="form-message" role="status">إتاحة الوحدات الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
       <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
