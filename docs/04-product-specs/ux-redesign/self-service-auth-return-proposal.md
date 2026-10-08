@@ -1,6 +1,6 @@
 # D8 self-service return proposal
 
-Status: Proposed, NOT owner-approved/Frozen/applied. Base97449deb302ad47075a2b549293146f7077df8db. Exact one-file patch self-service-auth-return.patch and classifier-results.json accompany this proposal. Owner acceptance requested only for this bounded D8 addition, not whole-platform deep-link policy or storage/session changes.
+Status: Owner-approved bounded D8 addition on 2026-10-08: «اعتماد الرجوع لنفس الصفحة بعد تسجيل الدخول (الموصى به)». Execution base af3046dcacf7a7415fb37f48d7430db8c23b862e; original proposal base97449deb302ad47075a2b549293146f7077df8db and patch remain preserved. Approval covers exactly the five existing self-service destinations below, not whole-platform deep-link policy or storage/session changes. Implementation qualification does not freeze or close full R2/R5/R6.
 
 Current defect: all five existing self-service pages send their current route as login next; safeAuthNext rejects every one. A successful sign-in then chooses tenant home/tenant selector/operator fallback instead of the requested task. Login page filters next and signInAction filters it again; no link alone fixes this. These are source observations and classifier tests, not measured user journey N/C/P/I/B.
 

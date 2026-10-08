@@ -4,9 +4,13 @@ const operatorPath = new RegExp(`^/operator(?:/(?:onboarding|invitations(?:/new)
 const invitationPath = new RegExp(`^/auth/(?:membership-)?invitations/accept\\?id=${uuid}&issuance=[1-9]\\d{0,8}$`, 'i');
 const payrollPath = new RegExp(`^/tenant/${uuid}/payroll(?:/(?:setup|inputs|runs|output|payments|advances|corrections|reports))?(?:\\?[^\\x00-\\x20#\\\\]*)?$`, 'i');
 
+const selfServiceUuid = uuid.replaceAll('a-f', 'a-fA-F');
+const selfServicePath = new RegExp(`^/tenant/${selfServiceUuid}/me(?:/(?:attendance|leave(?:/(?:new|${selfServiceUuid}))?))?$`);
+
 export function safeAuthNext(value: string): string {
   // Keep the original payroll selection through login, while allowing only
   // known internal pages and rejecting controls that cannot be a safe Location.
   const payroll = value.length <= 8192 && payrollPath.test(value) && !/%(?:00|0a|0d)/i.test(value);
-  return tenantPath.test(value) || operatorPath.test(value) || invitationPath.test(value) || payroll ? value : '';
+  const selfService = value.length <= 256 && selfServicePath.test(value) && !/[\x00-\x20#\\%?]/.test(value);
+  return selfService || tenantPath.test(value) || operatorPath.test(value) || invitationPath.test(value) || payroll ? value : '';
 }

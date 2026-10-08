@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "d168c0bbf282e3595939e834d4dcb1c7c36c3034",
+  "sourceHead": "af3046dcacf7a7415fb37f48d7430db8c23b862e",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -85,7 +85,7 @@
     {
       "file": "src/app/auth/safe-next.ts",
       "phase": "R2",
-      "sha256": "a71033ff122801819e53cc5e397f2f9e72c28f1e12090772d0cf4b5626881c70"
+      "sha256": "ff6cd2769192e5d2d3a4e65db1e1fb157ebdcb1c80890708fc206a39f02e8afa"
     },
     {
       "file": "src/app/globals.css",

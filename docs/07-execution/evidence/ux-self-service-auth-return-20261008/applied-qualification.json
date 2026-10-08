@@ -1,0 +1,198 @@
+{
+  "applicationBase": "af3046dcacf7a7415fb37f48d7430db8c23b862e",
+  "ownerApproved": true,
+  "applicationApplied": true,
+  "sourceFile": "src/app/auth/safe-next.ts",
+  "sourceSha256NormalizedLF": "ff6cd2769192e5d2d3a4e65db1e1fb157ebdcb1c80890708fc206a39f02e8afa",
+  "exactReviewedCandidate": true,
+  "baselineUnchangedSinceProposal": true,
+  "reusedClassifierChecks": 60,
+  "newlyExecutedActionChecks": 20,
+  "newlyExecutedLoginPageChecks": 5,
+  "actions": [
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fattendance"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2Fnew"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "success",
+      "result": "PASS",
+      "beforeRedirect": "/operator",
+      "afterRedirect": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "invalid-form",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "setup",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=setup",
+      "afterRedirect": "/auth/login?state=setup&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "partition": "provider-failure",
+      "result": "PASS",
+      "beforeRedirect": "/auth/login?state=invalid",
+      "afterRedirect": "/auth/login?state=invalid&next=%2Ftenant%2F11111111-1111-4111-8111-111111111111%2Fme%2Fleave%2F11111111-1111-4111-8111-111111111111"
+    }
+  ],
+  "pages": [
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/new",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    },
+    {
+      "route": "/tenant/11111111-1111-4111-8111-111111111111/me/leave/11111111-1111-4111-8111-111111111111",
+      "hiddenNextRetained": true,
+      "result": "PASS"
+    }
+  ],
+  "priorOfficialReviewSession": "7e37974a-f34b-4d14-a1db-102de730c80c",
+  "reviewReuseReason": "Exact same candidate and baseline; actual current two callers requalified, no visual or backend change",
+  "limits": [
+    "Controlled actual actions/page with synthetic SDK/provider, not real Auth/browser/roles",
+    "Five existing destinations only, no queries/fragments/arbitrary descendants",
+    "No broader D8/session/storage/privacy or full phase closure"
+  ],
+  "groupedBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "typescriptIncluded": true,
+    "applicationSourceUnchangedAfterBuild": true
+  },
+  "affectedLint": {
+    "command": "npx eslint src/app/auth/safe-next.ts",
+    "exitCode": 0
+  }
+}

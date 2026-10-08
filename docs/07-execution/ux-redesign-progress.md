@@ -2,13 +2,25 @@
 
 Owner continues implementation in economical development mode, preserving complete capability coverage and always simplifying user journeys. Use official Claude Opus5.5 Medium only at scoped direction/architecture/review checkpoints. Codex implements and checks routine work locally; prefer existing reviewed specs and targeted evidence over rediscovery. Never send secrets or silently change model/provider. No main merge/deployment/Actions authorized.
 
-| Slice | Implementation/qualification | Remaining gate |
+## Current full-plan checkpoint — 2026-10-08
+
+The original plan remains the scope. No R0–R8 stage is fully closed. The entries below supersede the old initial-slice overview; chronological evidence remains below. Do not return to nonblocking card/link polish after scoped acceptance.
+
+| Stage | Implementation already present | Work still required to close original scope |
 |---|---|---|
-| Original Concept C reference | Permanent public demo + pinned original HTML/ZIP/plan; issue47 | Demo is simulation, not business authority |
-| R0 coverage/journeys | R0–R8 maps, inventory/review denominator, mandatory journey contract | Full semantic cases and live scenario execution remain incomplete |
-| R2-AUTH-CORE |61 reviewed source scenarios;60 selected source characterizations | Provider/authenticated/session/callback qualification; D8 allowlist decision |
-| R2-AUTH-UI-01 | a5aec47 preserved direct recovery, truthful copy and own-key handling;16 component checks | Live provider/Auth UAT; source policy failures remain separate |
-| R1-LIGHT-01 / W1.a | Semantic light palette, stronger fields, preserved existing contracts; independent PASS; measured390/768/1366 + no-provider production smoke | Not full R1, not all75 pages/roles; arbitrary tenant-brand contrast and remaining legacy colors not qualified |
+| R0 | Versioned current source inventory:287 files/75 pages/1731 slots;25 source-reviewed; exact migrations preserve reviews | Reviewed operation/state/actor cases and executed acceptance across the full denominator; structural counts are not percentages of completion |
+| R1 | Light tokens, shared controls, shell/accessibility improvements and bounded rendered reviews | Dark/system theme, remaining component/reference states, tenant-brand contrast and complete responsive/accessibility qualification; preserve Cairo/control contract until amendment |
+| R2 | Auth/invitation/recipient/tenant-entry fixes; owner-approved five-route self-service return applied; grouped lint/buildTS PASS | Remote preservation, then real provider/session/role round trips and remaining management surfaces; no full Auth claim from fake SDK |
+| R3 | Lifecycle/grants/commercial/units/statutory journeys; actual local SQL reads and19 positive mutation commands/audits with rollback; selected native/reference checks | Actual Auth/roles/account changes and denied/stale/conflict/concurrency/state acceptance; full surface/reference qualification |
+| R4 | Directory cards/instant search/quick preview/profile tabs/organization/import/policy task treatment | Actual roles/mutations/import/provider and complete profile/management outcome and reference acceptance |
+| R5 | Employee attendance integrity and HR daily/review/detail/import/channels/unassigned treatment | Actual role/device/interruption/privacy/financial and full state acceptance; original Today/inbox/count and backend gaps remain governed, no invented totals |
+| R6 | Employee leave/profile read guards, partial states, result integrity, overview/task/follow-up treatment | Actual complete employee/HR/cancellation/history/authority and unknown-result journeys; deferred D16 integration follows core, not a prerequisite added by polish |
+| R7 | Payroll workspace/selection/runs/input/preparation/final pages and recovery orientation; chosen advisory A implemented/native qualified with synthetic SDK | Actual financial/role/Auth/JS-off and remaining operation/state/full reference qualification; A does not become a hard precedence gate |
+| R8 | Journey maps and shared ownership/recovery contracts | Original Today/decisions composition, safe constrained PWA, cross-domain complete jobs and final acceptance; current company home is still setup-oriented, not a completed Today |
+
+Verified code gaps: current source has light-only color-scheme, no actual theme controller/manifest/service-worker registration, and company home lacks unified Today/decision work. These are original-plan work, not optional enhancements. Their governed route/count/storage/navigation decisions must be resolved before implementation; do not describe the remaining plan as tests only.
+
+Next execution order: finish and preserve the approved D8 candidate; progress original shared-theme/Today/PWA governed scope and grouped real-actor journey qualification. Use existing records and reusable evidence. D16/backend extras and unrelated polish remain deferred. No deploy/main/Actions.
 
 Current implementation lineage: accepted Cube5 3a310d25/tree1c06640 → backup afdc9a2 → reviewed references/specs → a5aec47 → R1-LIGHT-01. The old codex/ux-redesign-w1-foundation staged worktree remains preserved and is not reset/committed by this slice.
 
@@ -191,3 +203,5 @@ R3 company actual SQL mutation checkpoint on 7c5f48a: ONE local rollback transac
 R7 owner-selected A implemented from6517971: existing scoped journal read-only advisory/role-aware recovery anchor or responsible-person guidance; unreadable storage distinct/noJS general guidance, direct approval callable/no newlock/write/backend/permission.12actualcomponent controlledhooksSSR PASS/affectedlintTS PASS, unchangedbuildSQL reused. OfficialdirectOpus5.5Medium sourceACCEPT with mount/anchor/key conditions locallyconfirmed; BOTHfullvisualNOTVISUALLYVERIFIED.1731items/25source-reviewed preserved/no semanticpromotion. Actualhydrated/Auth/role/financial/noJS invocation/fullR7/coreOPEN. Existingrunprecedenceevidence reused; D16/extrasdeferred.
 
 R7A hydrated advisory continuation fromd168c0b: nine actualNext/copiedcomponent/action syntheticSDK cases demonstrate pendingnotice/retainedreason/enabledapproval/nativeEnteranchor/originalreconcileclearing/otherkeyisolation/approveronlyguidance/mobile390/nooverflow/originalapprovalPOSTwhilepending. One introduced link-visibility mustfix repaired underlineonly/affectedlint/nativecomputedstyle PASS; Codex+sameofficialOpus5.5Medium ACCEPT picturedcomponent, fullreference/R7NOTVISUALLYVERIFIED. Existing12source/buildTS/SQL reused/noheavyrepeat.1731items/25source-reviewed retained/no semanticpromotion. Own3616 services/tabs106-107 retired/syntheticjournalcleared/viewportreset. RealAuthrole/databasefinancial/noJSinvoke/fullR7/coreOPEN; D16extrasdeferred.
+
+D8 owner-approved application fromaf3046d: exact original reviewed zero-context patch applied to actualsafeAuthNext (normalized candidate/baseline equality asserted).20currentactual signInAction syntheticprovider +5currentLoginPageSSR PASS;60exactcandidate classifier cases reused/sourcepolicy unchanged; affectedlint and ONEgroupedproductionbuildincludingTSexit0. OriginalofficialOpus5.5Medium exactcandidate review reused/no visual or backend change/repeatedreview.1731items/25source-reviewed retained/no semanticpromotion. FullAuth/browser/role/session/financial/D8/R2/R5/R6/coreOPEN. Existing records now distinguish missing originaldark/Today/PWA implementation from qualification gaps; no further advisorypolish.
