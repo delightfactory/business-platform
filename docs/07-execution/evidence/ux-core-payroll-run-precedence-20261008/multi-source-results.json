@@ -1,0 +1,32 @@
+[
+  {
+    "page": "workspace",
+    "selector": "PASS",
+    "choices": 2,
+    "scope": "actual page SSR synthetic authorized lists/unique metadata; no role authority qualification"
+  },
+  {
+    "page": "setup",
+    "selector": "PASS",
+    "choices": 2,
+    "scope": "actual page SSR synthetic authorized lists/unique metadata; no role authority qualification"
+  },
+  {
+    "page": "inputs",
+    "selector": "PASS",
+    "choices": 2,
+    "scope": "actual page SSR synthetic authorized lists/unique metadata; no role authority qualification"
+  },
+  {
+    "page": "runs",
+    "selector": "PASS",
+    "choices": 2,
+    "scope": "actual page SSR synthetic authorized lists/unique metadata; no role authority qualification"
+  },
+  {
+    "page": "advances",
+    "selector": "PASS",
+    "choices": 2,
+    "scope": "actual page SSR synthetic authorized lists/unique metadata; no role authority qualification"
+  }
+]

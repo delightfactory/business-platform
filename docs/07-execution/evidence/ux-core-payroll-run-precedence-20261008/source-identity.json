@@ -1,0 +1,52 @@
+{
+  "sourceHead": "2411d45ec3de3da5906fe97a7dc007fde10cc9c3",
+  "sourceUnchanged": true,
+  "hashes": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "bb9a681cb7cc087ee3bf179ced6f5bcd1d42b9805256a42f68dd03836fae0179"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sha256": "9808aa2d4c6dff7cbb4d293cf514282259acd972678611e5e94527d398b74336"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "sha256": "2937ee770368ac6a24bb461096d48469d14be9deb35acf50ab1204c49d04da11"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sha256": "8b8463fe7761931b8f5cbfb17d5453425aac9f067571e05f219d7097983ed0a6"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "sha256": "0528afde3f563ad27c641ed841d4eff81504af52a209e9de69dc8cbdb98e0a4d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/EmployerSelector.tsx",
+      "sha256": "f081206218dcb903f43c7131072257013212178975e09f9e4ea15e76419372d8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/employer-context.ts",
+      "sha256": "8082b2edbe7f5e5dba828416dda63ede3d76a8b885c80209697f859dd0de8722"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "sha256": "cb53c2a5a5d5579e89f618e303613286ea0e11bc229486fe4be6d5644b4817f0"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+      "sha256": "7138dac4144a69095ad364c4c851c4ed5b95862b013ab5de6127ecb2da2a7164"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/actions.ts",
+      "sha256": "d6589338ed3b820f21049f694b1f7c4d5fa1de3897f19dff1970e2324eed38eb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/approval-actions.ts",
+      "sha256": "bceab588def01ab937ff90bac33f4b949b548bb7a228aae2af17abb9618e03e3"
+    }
+  ],
+  "build": "unchanged source; previous grouped lint/build retained, no repeat",
+  "semanticPromotion": false
+}

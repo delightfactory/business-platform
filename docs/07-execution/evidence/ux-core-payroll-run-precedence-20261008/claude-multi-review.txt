@@ -1,0 +1,39 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true}
+
+**Yes. The first-five multi-employer gate for rendered visibility and no overflow can be qualified within the synthetic scope, with the limits below.** No semantic, R7 or full-reference promotion.
+
+## What the images show
+Images opened this turn: workspace, setup and runs at 390, inputs at 1366, advances at 390, and the reference `concept-c-payroll-light-1366.png`.
+
+- **Workspace (root) at 390:**
+  - The full long legal identity wraps on two lines.
+  - Below it, the "جهة العمل" select shows the list's short display name ("جهة صناعية"), with the secondary submit on the same row.
+  - Then the selector hint, the "اختيار جهة أخرى" link with its own hint, and the period form.
+  - The primary "متابعة مراجعة الرواتب" is still the only filled button.
+- **Setup at 390:** a full-width select whose long option text is clipped, but the full identity is readable in the card's `h2` above it. Secondary submit, hint, and the chooser link.
+- **Inputs at 1366:** a wide select with the full long name, the secondary submit, a one-line hint, then the context links and the period/search form. No overflow.
+- **Runs at 390:**
+  - The full identity, then the select showing the short name with the submit on the same row, the hint and the context links.
+  - "DeductionRecovery" is a stub.
+- **Advances at 390:**
+  - A full-width select with clipped text and the full identity above it, the secondary submit, the hint, the existing "تغيير جهة العمل" link, then the `AdvanceRecovery` stub.
+- **Across all five:** exactly one selector, both options, Cairo font and no horizontal overflow. That matches your measurements: 44px select and submit on mobile, 44px select and 40px submit on desktop.
+- **Keyboard:** your observation of Tab moving from the select to the submit on setup is consistent with the markup; I didn't test it.
+
+## UX and accessibility notes (not blockers)
+- **Name mismatch.** Root and runs show the list's short name in the select but the workspace's legal name as plain text above. They share the same ID and both come from the source, so this is truthful. It's still a small mismatch between the select and the identity. Record it; don't paper over it by changing the copy.
+- **Root reading load.** Root stacks two hints, the selector hint and the chooser hint. That's a minor reading cost, recorded.
+- **Pre-existing, outside this gate.** The advances employee-search submit ("بحث") renders visibly smaller than 44px. That's a touch-target issue in the existing filters, not in the selector. Record it as a separate core accessibility item.
+- **Against the reference.** Concept C has a single compact header dropdown. These pages meet the intent with a native select plus an explicit secondary submit and a hint. That direction is consistent within scope; a full match is **NOT VISUALLY VERIFIED**.
+
+## Limits of this qualification
+- Controlled SDK fixtures with **two** options. The 30-item list and the outside-current fallback are covered by source cases, not renders.
+- Financial child widgets and the shell are stubbed.
+- Not tested: real Next hydration, real roles, the full parent, unsaved input lost on navigation, and keyboard testing beyond setup.
+
+## Still open
+- The owner's A/B decision on unresolved-run recovery, with no implementation or closure claimed. Your SQL reading that an approve-only actor's reconcile can return 42501 reinforces that option A must keep approval usable rather than disabled.
+- Stage facts and source-owner routes.
+- The advances search touch target.
+- Real roles and providers, finance, hydration, the full parent.
+- R0–R8, phase and semantic closure.

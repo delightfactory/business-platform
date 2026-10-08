@@ -1,0 +1,70 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true}
+
+# Run-recovery precedence: architecture checkpoint (HEAD 2411d45)
+
+**Recommendation:** keep native approval. Add only a post-hydration, advisory recovery-first presentation, and rely on the existing server checks for financial safety. With this option no owner amendment is needed. A *hard* local guard is only possible with JS-dependent approval, and that **does** require an explicit owner amendment.
+
+## Source facts
+- **`approvalAction`** (`approval-actions.ts:11–15`) sends `p_candidate: previous.candidate` and `p_expected: previous.revision` to `payroll_candidate_approval`, together with its own server-side attempt.
+  - If an unresolved run action (calculate, cancel or finalize) actually committed, the run's revision or candidate has changed. A later approve or release then gets PT409 or a rejection; it is not applied a second time.
+  - Two concurrent submits, in any tab or on any device, are serialized by the expected-revision check.
+  - This holds based on the expected revision and candidate the action sends. I didn't read the SQL function, so the exact enforcement is inferred, not confirmed.
+- **`runAction`** (`actions.ts:12–18`):
+  - reuses the submitted `__attempt` and checks `__actor`;
+  - when reconciling (`__reconcile`), it returns `closed_uncommitted` rather than re-executing.
+  - So a pending run attempt can always be resolved after an approval without causing a double effect.
+- **`RunActions` is already JS-only.** It uses a client `submit` closure with `navigator.locks` and `localStorage`. A journal entry can therefore exist only in a browser that ran JS. The only gap is a native, pre-hydration approval click in a browser that has a stored journal.
+- **No server action can read `localStorage`.** A native or pre-hydration submit can't be guarded locally under any design.
+
+## Options
+
+| Option | JS-off approval | Local guarantee | Amendment |
+|---|---|---|---|
+| **A (recommended).** Approval stays native and `useActionState(approvalAction)` is unchanged. After hydration, a read-only `useSyncExternalStore` on the same key shows the notice and changes button classes. No lock wrapping. | Kept | Advisory only (UX precedence). Financial safety comes from the existing server revision and candidate checks. | No |
+| **B.** Wrap approval in a client closure: check the journal inside the same `navigator.locks` lock, then call `approvalAction`. | **Lost** (progressive enhancement goes away) | Hard on this device only; still not across devices. | **Required** |
+
+Under both options, the client guard **never** closes cross-device or cross-browser risk. Only the server checks do.
+
+## Exact contract for option A
+
+1. **Shared helper, with RunActions behaviour unchanged.** Export the existing `payroll-run:v1:` key builder, `readPending`, the `payroll-run-recovery` event and `decodePending` from one module. RunActions must use them with identical semantics: the same `clearPending` identity check and the same lock name.
+2. **Notice inside `ApprovalActions`.**
+   - Add an `actor` prop.
+   - A post-hydration subscription reads the journal; the server snapshot is `''`, matching RunActions.
+   - While a journal exists:
+     - show "يوجد طلب سابق لم تتأكد نتيجته؛ استعد نتيجته أولًا" with a link to `#payroll-review-actions`;
+     - render the approve/release button as **secondary, not disabled**.
+
+   Recovery then comes first in the visual order, the user is never stuck, and the server stays the authority.
+
+   Don't disable approval. An approve-only actor's reconcile could fail with 42501, and disabling would then leave them with no way forward.
+3. **Mount `RunActions` for `can_approve` too:**
+   - mount condition becomes `can_prepare || can_lock || can_approve`;
+   - `canExecute` and the key stay unchanged.
+
+   RunActions already returns `null` unless there is an unresolved journal, feedback or a closed result. So an approve-only actor sees only the recovery panel, placed before the approval section (it already comes earlier in the DOM). If reconcile is denied, the existing `recoveryError` message shows and approval stays usable, as in item 2.
+4. **When storage is blocked or reading fails,** `readPending` returns `''`. Show nothing and never claim a pending state you can't read. The existing no-locks error on submit stays in RunActions.
+5. **Unchanged:**
+   - approval fields, reason validation, labels, `releaseSecondary` and `approveSecondary`, which now combine with the pending state (pending forces secondary);
+   - the server action, RPCs, storage writes and journal format;
+   - the run page predicates.
+6. **Record honestly:**
+   - a native or pre-hydration approval can bypass the advisory notice; the server revision and candidate checks still apply;
+   - the cross-device journal isn't visible anywhere;
+   - neither is a client guarantee.
+
+## Checks (for option A)
+- **Actual renders:**
+  - journal present or absent;
+  - approve-only, prepare/lock and both roles;
+  - reconcile denied;
+  - storage throws;
+  - pre-hydration server markup identical to today.
+- **Pass criteria:**
+  - RunActions decode, clear and lock behaviour is byte-equivalent;
+  - the approval `FormData` and action are unchanged;
+  - an approve-only actor with a journal sees the recovery panel first.
+- **Unchanged evidence to keep:** the server PT409 path for an approval after a committed run change. Reuse the existing financial and SQL evidence; don't re-run it.
+
+## Next action
+Get the owner's choice between A (no amendment; advisory plus server checks) and B (JS-dependent approval; amendment required). Then freeze the spec before coding. The unresolved-run release gate stays **open** until the chosen option is implemented and verified. Real roles, hydration, cross-device behaviour and the full parent remain open.
