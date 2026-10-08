@@ -164,7 +164,7 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .operator-invitations-history .invitation-row > div:first-child { min-width: 0; }
 .operator-invitations-history .invitation-row p { overflow-wrap: anywhere; }
 .operator-invitations-history .invitation-row .entity-status { margin-top: .55rem; }
-.operator-area .operator-grants-overview, .operator-area .operator-grants-list { width: min(100%, var(--work-content-max)); padding: 0; border: 0; box-shadow: none; background: transparent; }
+.operator-area .operator-grants-overview, .operator-area .operator-grants-list { width: min(100%, var(--work-content-max)); border: 0; box-shadow: none; background: transparent; }
 .operator-grants-overview > .intro { max-width: 42rem; margin: .6rem 0 1.25rem; }
 .operator-area .operator-grants-overview > .operator-grant-form { width: min(100%, 36rem); margin: 0; padding: 0; border: 0; }
 .operator-area .operator-grants-overview > .operator-grant-form[open] { padding: 1rem; border: 1px solid var(--color-border); background: white; }

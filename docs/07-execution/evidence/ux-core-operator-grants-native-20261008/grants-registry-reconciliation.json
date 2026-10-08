@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "sourceFiles": 287,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 108,
+    "rpcCallSites": 351,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1183,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1731,
+  "priorStatusesPreserved": true,
+  "sourceReviewed": 19,
+  "added": [],
+  "migrations": [],
+  "semanticPromotion": false
+}

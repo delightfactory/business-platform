@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "5349649db1fae7955ab8bc55f4fb13960f4ccd9d",
+  "sourceSnapshot": "fce05810c8ab1f1b6d2d3327f0a851244a02e322",
   "status": "Proposed",
   "items": [
     {
@@ -6344,7 +6344,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:70:5954",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:70:5996",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6353,7 +6353,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:71:6030",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:71:6072",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6362,7 +6362,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:74:6336",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:74:6378",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6371,7 +6371,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:77:6592",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:77:6634",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6380,7 +6380,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7141",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7183",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6389,7 +6389,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7197",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7239",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6398,7 +6398,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7269",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7311",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6407,7 +6407,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7330",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7372",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6416,7 +6416,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:84:7497",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:84:7539",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6425,7 +6425,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:97:8193",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:97:8235",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6434,7 +6434,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8363",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8405",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6443,7 +6443,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8529",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8571",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6452,7 +6452,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:100:8730",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:100:8772",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6461,7 +6461,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:101:8920",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:101:8962",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15907,7 +15907,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11398",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11440",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15916,7 +15916,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11446",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11488",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

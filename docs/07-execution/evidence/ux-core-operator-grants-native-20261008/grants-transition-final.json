@@ -1,0 +1,26 @@
+{
+  "reason": "",
+  "selected": [
+    {
+      "checked": false,
+      "name": "canManageOperators"
+    },
+    {
+      "checked": false,
+      "name": "canOnboardTenants"
+    },
+    {
+      "checked": false,
+      "name": "canManageTenantLifecycle"
+    },
+    {
+      "checked": false,
+      "name": "canManageCommercialAccess"
+    },
+    {
+      "checked": false,
+      "name": "canManageStatutoryRules"
+    }
+  ],
+  "visible": "إعادة منح المهام"
+}

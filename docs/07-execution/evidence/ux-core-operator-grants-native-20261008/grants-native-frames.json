@@ -1,0 +1,254 @@
+[
+  {
+    "version": "before",
+    "requested": {
+      "width": 390,
+      "height": 844
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 844,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل مهام manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب صلاحية manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل مهام target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب صلاحية target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": false,
+      "width": 390
+    },
+    "filename": "grants-before-390.jpg"
+  },
+  {
+    "version": "candidate",
+    "requested": {
+      "width": 390,
+      "height": 844
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 844,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": true,
+      "width": 390
+    },
+    "filename": "grants-candidate-390.jpg"
+  },
+  {
+    "version": "before",
+    "requested": {
+      "width": 768,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل مهام manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب صلاحية manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل مهام target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب صلاحية target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": false,
+      "width": 768
+    },
+    "filename": "grants-before-768.jpg"
+  },
+  {
+    "version": "candidate",
+    "requested": {
+      "width": 768,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": true,
+      "width": 768
+    },
+    "filename": "grants-candidate-768.jpg"
+  },
+  {
+    "version": "before",
+    "requested": {
+      "width": 1366,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 40,
+          "name": "تعديل مهام manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب صلاحية manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 40,
+          "name": "تعديل مهام target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب صلاحية target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": false,
+      "width": 1366
+    },
+    "filename": "grants-before-1366.jpg"
+  },
+  {
+    "version": "candidate",
+    "requested": {
+      "width": 1366,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 40,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 40,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "records": [
+        "manager@example.invalid",
+        "target@example.invalid",
+        "disabled@example.invalid"
+      ],
+      "reread": true,
+      "width": 1366
+    },
+    "filename": "grants-candidate-1366.jpg"
+  }
+]

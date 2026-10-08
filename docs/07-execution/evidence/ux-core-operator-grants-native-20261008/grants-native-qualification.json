@@ -1,0 +1,679 @@
+{
+  "scope": "Actual copied Next root/operator parent/shared forms/actions with controlled file-backed synthetic SDK; no real SQL/Auth/provider/accounts",
+  "candidateBase": "fce05810c8ab1f1b6d2d3327f0a851244a02e322",
+  "baseline": "5349649db1fae7955ab8bc55f4fb13960f4ccd9d",
+  "observations": [
+    {
+      "id": "doubleclick-unknown",
+      "rpcCount": 1,
+      "pendingDisabled": true,
+      "reasonAndChoicesRetained": true
+    },
+    {
+      "id": "native-emptyGET-reread",
+      "confirmed": true,
+      "url": "/operator/operators?",
+      "formCollapsed": true,
+      "unsentDataDiscardedDeliberately": true
+    },
+    {
+      "id": "known-update",
+      "confirmedNewCommercialFlag": true,
+      "url": "/operator/operators?state=updated"
+    },
+    {
+      "id": "revoke-before-fix",
+      "defect": "Native retained old update checkboxes/reason in regrant form even after server row allfalse; no full journey acceptance"
+    },
+    {
+      "id": "operation-key-fix",
+      "source": "row OperatorActionForm key update/grant; same-operation failures do not reset"
+    },
+    {
+      "id": "postfix-grant-and-unknown-update",
+      "grantOnlySelectedOnboard": true,
+      "unknownReason": "Synthetic uncertain after key",
+      "safeValuesRetained": true
+    },
+    {
+      "id": "postfix-confirmed-revoke",
+      "transition": {
+        "reason": "",
+        "selected": [
+          {
+            "checked": false,
+            "name": "canManageOperators"
+          },
+          {
+            "checked": false,
+            "name": "canOnboardTenants"
+          },
+          {
+            "checked": false,
+            "name": "canManageTenantLifecycle"
+          },
+          {
+            "checked": false,
+            "name": "canManageCommercialAccess"
+          },
+          {
+            "checked": false,
+            "name": "canManageStatutoryRules"
+          }
+        ],
+        "visible": "إعادة منح المهام"
+      }
+    },
+    {
+      "id": "keyboard-final-button",
+      "focusedText": "تأكيد إعادة المنح",
+      "outline": "rgb(11, 114, 217) solid 2px",
+      "overflow": false
+    },
+    {
+      "id": "DOM-locator-role-timeout",
+      "detail": "DOM summarygeneric vs nativeAXbutton; fresh AX proved revoked/regrant, no repeated action"
+    },
+    {
+      "id": "update-sameURL-update",
+      "result": "pass",
+      "detail": "Two known updates, second at unchanged ?state=updated; fresh list/collapsedtask/emptyreason, prior predicted stale reason not reproduced. No capability-derived key added."
+    }
+  ],
+  "sourceRpcRecords": [
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "update",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic uncertain reason"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "update",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": true,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic known update"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "revoke",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": false,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic revoke target"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "grant",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic regrant after reset"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "update",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic uncertain after key"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "revoke",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": false,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic confirmed transition"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "grant",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": false,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic grant for update transition"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "update",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": false,
+        "p_can_manage_commercial_access": true,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic first same operation update"
+      }
+    },
+    {
+      "name": "change_platform_operator_authority",
+      "args": {
+        "p_target_email": "target@example.invalid",
+        "p_action": "update",
+        "p_can_manage_operators": false,
+        "p_can_onboard_tenants": true,
+        "p_can_manage_tenant_lifecycle": true,
+        "p_can_manage_commercial_access": true,
+        "p_can_manage_statutory_rules": false,
+        "p_reason": "Synthetic same URL update reason"
+      }
+    }
+  ],
+  "matchedScope": "Same3syntheticrecords, pages/sourceversions and390/768/1366; baseline route alias does not measure actual router/role/auth behavior",
+  "measurements": [
+    {
+      "version": "before",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 844,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل مهام manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب صلاحية manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل مهام target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب صلاحية target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": false,
+        "width": 390
+      },
+      "filename": "grants-before-390.jpg"
+    },
+    {
+      "version": "candidate",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 844,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": true,
+        "width": 390
+      },
+      "filename": "grants-candidate-390.jpg"
+    },
+    {
+      "version": "before",
+      "requested": {
+        "width": 768,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل مهام manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب صلاحية manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل مهام target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب صلاحية target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": false,
+        "width": 768
+      },
+      "filename": "grants-before-768.jpg"
+    },
+    {
+      "version": "candidate",
+      "requested": {
+        "width": 768,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": true,
+        "width": 768
+      },
+      "filename": "grants-candidate-768.jpg"
+    },
+    {
+      "version": "before",
+      "requested": {
+        "width": 1366,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 40,
+            "name": "تعديل مهام manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب صلاحية manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 40,
+            "name": "تعديل مهام target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب صلاحية target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": false,
+        "width": 1366
+      },
+      "filename": "grants-before-1366.jpg"
+    },
+    {
+      "version": "candidate",
+      "requested": {
+        "width": 1366,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 40,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 40,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "records": [
+          "manager@example.invalid",
+          "target@example.invalid",
+          "disabled@example.invalid"
+        ],
+        "reread": true,
+        "width": 1366
+      },
+      "filename": "grants-candidate-1366.jpg"
+    }
+  ],
+  "images": [
+    {
+      "file": "grants-before-390.jpg",
+      "jpeg": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    {
+      "file": "grants-candidate-390.jpg",
+      "jpeg": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    {
+      "file": "grants-before-768.jpg",
+      "jpeg": {
+        "width": 753,
+        "height": 882
+      }
+    },
+    {
+      "file": "grants-candidate-768.jpg",
+      "jpeg": {
+        "width": 753,
+        "height": 882
+      }
+    },
+    {
+      "file": "grants-before-1366.jpg",
+      "jpeg": {
+        "width": 1366,
+        "height": 900
+      }
+    },
+    {
+      "file": "grants-candidate-1366.jpg",
+      "jpeg": {
+        "width": 1351,
+        "height": 890
+      }
+    },
+    {
+      "file": "grants-unknown-mobile.jpg",
+      "jpeg": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    {
+      "file": "grants-regrant-final-mobile.jpg",
+      "jpeg": {
+        "width": 375,
+        "height": 812
+      }
+    }
+  ],
+  "labelNameMismatchBefore": 4,
+  "labelNameMismatchAfter": 0,
+  "readControlBefore": 0,
+  "readControlAfter": 1,
+  "claimedNCPIBImprovement": false,
+  "open": [
+    "realSQL/Auth/roles/provider",
+    "actor restoration/authorityloss",
+    "actualnoJS/throw recovery/historicalintent",
+    "fullvisual/allstates/dark/brands",
+    "fullR3/R0-R8"
+  ],
+  "cleanup": {
+    "service": "Ownedexec57123 terminalexit1 after CtrlC; listening3612 absent",
+    "tabs": "Owned96closed; viewportreset; user3/prior86untouched",
+    "realAccessCreated": false
+  },
+  "finalFrames": [
+    {
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 844,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "scrollY": 0,
+        "sections": [
+          {
+            "paddingBlock": "20px",
+            "paddingInline": "16px"
+          },
+          {
+            "paddingBlock": "20px",
+            "paddingInline": "16px"
+          }
+        ],
+        "width": 390
+      },
+      "filename": "grants-final-390.jpg"
+    },
+    {
+      "requested": {
+        "width": 768,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 44,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 44,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 44,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "scrollY": 0,
+        "sections": [
+          {
+            "paddingBlock": "30.72px",
+            "paddingInline": "30.72px"
+          },
+          {
+            "paddingBlock": "30.72px",
+            "paddingInline": "30.72px"
+          }
+        ],
+        "width": 768
+      },
+      "filename": "grants-final-768.jpg"
+    },
+    {
+      "requested": {
+        "width": 1366,
+        "height": 900
+      },
+      "measurement": {
+        "cairo": true,
+        "height": 900,
+        "labels": [
+          {
+            "height": 40,
+            "name": "تعديل المهام: manager@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب الصلاحية: manager@example.invalid",
+            "visible": "سحب الصلاحية"
+          },
+          {
+            "height": 40,
+            "name": "تعديل المهام: target@example.invalid",
+            "visible": "تعديل المهام"
+          },
+          {
+            "height": 40,
+            "name": "سحب الصلاحية: target@example.invalid",
+            "visible": "سحب الصلاحية"
+          }
+        ],
+        "overflow": false,
+        "scrollY": 0,
+        "sections": [
+          {
+            "paddingBlock": "40px",
+            "paddingInline": "40px"
+          },
+          {
+            "paddingBlock": "40px",
+            "paddingInline": "40px"
+          }
+        ],
+        "width": 1366
+      },
+      "filename": "grants-final-1366.jpg"
+    }
+  ],
+  "scopedVisual": {
+    "codex": "MATCH WITH ACCEPTED DEVIATIONS for finalthree read states only",
+    "claude": "MATCH WITH ACCEPTED DEVIATIONS for finalthree read states only",
+    "full": "NOT VISUALLY VERIFIED",
+    "deviations": "Cairo/radius8/desktop40/mobile44 existing contract; devbadge capture limitation",
+    "correction": "Final Claude warning aria-describedby/state-primary already implemented in fce0581; 48source tests include both. Source evidence reused, actual error/status browser acceptance still open."
+  }
+}

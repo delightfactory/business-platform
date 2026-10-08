@@ -66,7 +66,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
               {grant.recoverable && <>
               <details className="role-change-confirmation"><summary className="secondary-button" aria-label={`${grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}: ${grant.email}`}>{grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}</summary>
                 <p className="field-hint">الحساب: <bdi>{grant.email}</bdi></p>
-                <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}>
+                <OperatorActionForm key={grant.is_active ? 'update' : 'grant'} action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}>
                   <input type="hidden" name="email" value={grant.email} />
                   <input type="hidden" name="action" value={grant.is_active ? 'update' : 'grant'} />
                   <CapabilityFields prefix={grant.user_id} defaults={grant} />

@@ -1,0 +1,23 @@
+{
+  "base": "fce05810c8ab1f1b6d2d3327f0a851244a02e322",
+  "sources": [
+    {
+      "file": "src/app/operator/operators/page.tsx",
+      "sha256": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "a1914e91f373da0378bb432047d52946c1fe1cc7e023762b13182cfb9e34d56b"
+    }
+  ],
+  "scope": "bounded native synthetic + three read-state shared-direction qualification, not full phase",
+  "remaining": "Full B1/B2/R3/R0–R8 OPEN: actual roles/SQL/Auth/provider, account/authority changes, historical intent, thrown shared-action recovery, status/error/open/pending/dark/brand fullvisual and fullsemantic/runtime coverage. No voice-control or N/C/P/I/B speed claim. Payroll A/B independently pending; D16 extras deferred.",
+  "semanticPromotion": false,
+  "scopedVisual": {
+    "codex": "MATCH WITH ACCEPTED DEVIATIONS for finalthree read states only",
+    "claude": "MATCH WITH ACCEPTED DEVIATIONS for finalthree read states only",
+    "full": "NOT VISUALLY VERIFIED",
+    "deviations": "Cairo/radius8/desktop40/mobile44 existing contract; devbadge capture limitation",
+    "correction": "Final Claude warning aria-describedby/state-primary already implemented in fce0581; 48source tests include both. Source evidence reused, actual error/status browser acceptance still open."
+  }
+}

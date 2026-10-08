@@ -1,0 +1,140 @@
+[
+  {
+    "requested": {
+      "width": 390,
+      "height": 844
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 844,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "scrollY": 0,
+      "sections": [
+        {
+          "paddingBlock": "20px",
+          "paddingInline": "16px"
+        },
+        {
+          "paddingBlock": "20px",
+          "paddingInline": "16px"
+        }
+      ],
+      "width": 390
+    },
+    "filename": "grants-final-390.jpg"
+  },
+  {
+    "requested": {
+      "width": 768,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 44,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 44,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 44,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "scrollY": 0,
+      "sections": [
+        {
+          "paddingBlock": "30.72px",
+          "paddingInline": "30.72px"
+        },
+        {
+          "paddingBlock": "30.72px",
+          "paddingInline": "30.72px"
+        }
+      ],
+      "width": 768
+    },
+    "filename": "grants-final-768.jpg"
+  },
+  {
+    "requested": {
+      "width": 1366,
+      "height": 900
+    },
+    "measurement": {
+      "cairo": true,
+      "height": 900,
+      "labels": [
+        {
+          "height": 40,
+          "name": "تعديل المهام: manager@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب الصلاحية: manager@example.invalid",
+          "visible": "سحب الصلاحية"
+        },
+        {
+          "height": 40,
+          "name": "تعديل المهام: target@example.invalid",
+          "visible": "تعديل المهام"
+        },
+        {
+          "height": 40,
+          "name": "سحب الصلاحية: target@example.invalid",
+          "visible": "سحب الصلاحية"
+        }
+      ],
+      "overflow": false,
+      "scrollY": 0,
+      "sections": [
+        {
+          "paddingBlock": "40px",
+          "paddingInline": "40px"
+        },
+        {
+          "paddingBlock": "40px",
+          "paddingInline": "40px"
+        }
+      ],
+      "width": 1366
+    },
+    "filename": "grants-final-1366.jpg"
+  }
+]
