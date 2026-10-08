@@ -1,0 +1,43 @@
+{
+  "candidate": "26807dca5e7fa06f1d4ca6654664fb3425d6652a",
+  "sourceComponent": {
+    "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+    "sha256": "4cfc1e3c0016383de288cd6fabc3d1a3d1a40fd29c85d632b111837a8e47afb9",
+    "normalization": "LF"
+  },
+  "acceptance": "Hydrated synthetic form checks PASS; observed native/pre-hydration GET payload MUST FIX; full channel acceptance OPEN",
+  "files": [
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/observations.json",
+      "sha256": "16346cdd31447b4cf656c5b22c4428327cf2c74a06d000ab1818290660323184"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/validation.json",
+      "sha256": "53eea145dd5c3d6d88ea5736883742683b24df6600eed2c9cafbf176a276e795"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/layout-observations.json",
+      "sha256": "dffb436a7a6e1957f2e048c25b3ee7e088b44300eadcee250c8a4a84c934893e"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/verify-form-runtime.cjs",
+      "sha256": "3ea352015470ae6738422366f0b78ceed443c1d0e2c700a644d4de69f178a0a2"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/source-form-390.png",
+      "sha256": "e5d4852661d4138f9a8f819fa025846ec1298469f307fd3d33eccecbf5fb1387"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/source-form-768.png",
+      "sha256": "6fc645fa53014a8d32fc536b06647101da89ede09c93699fcb91f9f54c8e8f36"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/source-form-1366.png",
+      "sha256": "f3da26561f9615e6fbb241bccd38317c1512b45c7a16233594f31ac615ae7af7"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/forms-runtime/qualification.md",
+      "sha256": "8e225e0f8a6fe9c2d4bc470ff13d8d5a985881aa168bdf047ad85a6c85353103"
+    }
+  ]
+}

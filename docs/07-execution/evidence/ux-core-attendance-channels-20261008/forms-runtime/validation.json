@@ -1,0 +1,64 @@
+{
+  "candidate": "26807dca5e7fa06f1d4ca6654664fb3425d6652a",
+  "component": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+  "componentSha256": "4cfc1e3c0016383de288cd6fabc3d1a3d1a40fd29c85d632b111837a8e47afb9",
+  "cases": [
+    {
+      "mode": "disable",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": false,
+      "focusRecorded": false
+    },
+    {
+      "mode": "noGeo",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    },
+    {
+      "mode": "createExternal",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    },
+    {
+      "mode": "editExternal",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    },
+    {
+      "mode": "createMobileNoGeo",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    },
+    {
+      "mode": "createMobileGeo",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    },
+    {
+      "mode": "editMobileGeo",
+      "exactFields": true,
+      "reasonRetained": true,
+      "syntheticFailureOnly": true,
+      "pendingRecorded": true,
+      "focusRecorded": true
+    }
+  ],
+  "scope": "Actual SourceForm and Next runtime; synthetic delayed failure action, no SDK/auth/database/location capture. Disable pending observed separately, focus not recorded. No real save or role acceptance; no visual acceptance claim."
+}
