@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "00317db46ec2064eea5c11efaaaa1084bb86dfe8",
+  "sourceHead": "6517971af4a17c08970ebebc9bdc7cda894115d9",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1085,7 +1085,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "phase": "R7",
-      "sha256": "7138dac4144a69095ad364c4c851c4ed5b95862b013ab5de6127ecb2da2a7164"
+      "sha256": "b18b58508030b34d0caf2ead291c128473f719d7626cb02f368c149cde2f46b8"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
@@ -1130,7 +1130,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
       "phase": "R7",
-      "sha256": "61283de4d5ff4556f775279940416569292f760b230d97bb983c1e9c7a903e2f"
+      "sha256": "bbce4fc67ab78a8f48d445e4e1d09d95f25f1dd4198aa7bab6ee680523d505b5"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
@@ -16264,9 +16264,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:716",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1305",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "form",
       "phase": "R7",
       "attributes": {
@@ -16274,9 +16274,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:795",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1941",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16286,9 +16286,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:846",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1992",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16298,9 +16298,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2047",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16310,9 +16310,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1087",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2233",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16321,9 +16321,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1291",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2437",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 9,
+      "line": 11,
       "tag": "button",
       "phase": "R7",
       "attributes": {
@@ -16812,7 +16812,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25707",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25782",
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
       "line": 62,
       "tag": "summary",
@@ -16820,7 +16820,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26151",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26226",
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
       "line": 63,
       "tag": "summary",

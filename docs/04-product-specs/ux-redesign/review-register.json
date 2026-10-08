@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "00317db46ec2064eea5c11efaaaa1084bb86dfe8",
+  "sourceSnapshot": "6517971af4a17c08970ebebc9bdc7cda894115d9",
   "status": "Proposed",
   "items": [
     {
@@ -12761,7 +12761,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:716",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1305",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12770,7 +12770,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:795",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1941",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12779,7 +12779,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:846",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1992",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12788,7 +12788,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2047",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12797,7 +12797,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1087",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2233",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12806,7 +12806,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1291",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2437",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -13211,7 +13211,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25707",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25782",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -13220,7 +13220,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26151",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26226",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -17479,6 +17479,56 @@
       "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:18:6951",
       "category": "formControls",
       "reason": "same structural contract; neutral status class source-position shift"
+    }
+  ],
+  "migrations": [
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:716",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1305",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:795",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1941",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:846",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1992",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:901",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2047",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1087",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2233",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:9:1291",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2437",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25707",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:62:25782",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26151",
+      "to": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:63:26226",
+      "category": "formControls",
+      "reason": "unchanged structural field/action contract; approved payroll advisory source-position shift"
     }
   ]
 }

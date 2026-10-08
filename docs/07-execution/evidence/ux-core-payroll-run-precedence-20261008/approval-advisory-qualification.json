@@ -1,0 +1,71 @@
+{
+  "baseSha": "6517971af4a17c08970ebebc9bdc7cda894115d9",
+  "sourceFile": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+  "sourceSha256": "a6cd9c970741843e2657adec5c7e0481460002738e0dd38a096ca80a45c8583a",
+  "passed": 12,
+  "records": [
+    {
+      "mode": "ssr",
+      "canRecover": false,
+      "result": "PASS"
+    },
+    {
+      "mode": "ssr",
+      "canRecover": true,
+      "result": "PASS"
+    },
+    {
+      "mode": "clear",
+      "canRecover": false,
+      "result": "PASS"
+    },
+    {
+      "mode": "clear",
+      "canRecover": true,
+      "result": "PASS"
+    },
+    {
+      "mode": "pending",
+      "canRecover": false,
+      "result": "PASS"
+    },
+    {
+      "mode": "pending",
+      "canRecover": true,
+      "result": "PASS"
+    },
+    {
+      "mode": "unavailable",
+      "canRecover": false,
+      "result": "PASS"
+    },
+    {
+      "mode": "unavailable",
+      "canRecover": true,
+      "result": "PASS"
+    },
+    {
+      "changedScope": "actor",
+      "result": "PASS"
+    },
+    {
+      "changedScope": "tenant",
+      "result": "PASS"
+    },
+    {
+      "changedScope": "employer",
+      "result": "PASS"
+    },
+    {
+      "changedScope": "period",
+      "result": "PASS"
+    }
+  ],
+  "noStorageWrites": true,
+  "unchangedDirectAction": true,
+  "limits": [
+    "Controlled actual component hooks/SSR; not hydrated browser/Auth/financial acceptance",
+    "Advisory only, no hard precedence or cross-device guard",
+    "Native no-JS action invocation remains unqualified"
+  ]
+}
