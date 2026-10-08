@@ -1,0 +1,11 @@
+{
+  "exitCode": 0,
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "505850f3-f90b-4707-87e5-560e44da938f",
+  "readOnlyUnchanged": true,
+  "isError": false,
+  "result": "**Scoped verdict: ACCEPT for the repaired advisory component.** This covers the desktop notice only. The full R7 visual and the full reference match are **NOT VISUALLY VERIFIED**.\n\n- **Must-fix closed.** The recovery link \"استعادة نتيجة الطلب السابق\" is now underlined and stands apart from the surrounding sentence. That matches your computed `textDecorationLine=underline`. The `href` is unchanged and nothing else was introduced.\n- **Layout unchanged otherwise.** The notice text, RTL alignment and wrapping are the same as before. Approve still shows as a secondary button and stays enabled, with the same label. The existing recovery block is still directly above the approval card.\n- **Empty reason field.** In this capture the reason input is blank, unlike the earlier capture. I read that as a fresh-load fixture state, not a regression, because the change is style-only. I'm relying on your earlier native evidence that the field is retained.\n- **Mobile not re-shown.** A style-only underline shouldn't affect the 390px overflow result. The approver-only state has no link, so it isn't affected.\n\n**Not claimed:** real Auth/roles, database or financial behaviour, JS-off invocation, or speed."
+}

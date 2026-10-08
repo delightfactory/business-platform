@@ -1,0 +1,25 @@
+{
+  "baseSha": "d168c0bbf282e3595939e834d4dcb1c7c36c3034",
+  "sourceFile": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+  "finalSourceSha256": "94171234637d24e6080b52eb75997fb05de55f77dc1da699c6a7924bd803f565",
+  "runtime": "Actual copied Next16.3.6 components/actions/rootCSS with synthetic SDK, no real Auth/database/provider",
+  "cases": [
+    "Same scoped journal shows pending notice and enabled secondary approval",
+    "Typed reason retained on journal event and original reconciliation",
+    "Keyboard Enter recovery anchor targets existing section",
+    "Actual runAction synthetic closed_uncommitted clears journal/notice",
+    "Different key does not warn on this run",
+    "Approver-only shows authorized responsible-person guidance without recovery control",
+    "Mobile390 scrollWidth390/input retained/approval enabled",
+    "Actual approvalAction synthetic POST updates approved state while unresolved notice remains",
+    "Final exact recovery link native computed textDecorationLine underline/href unchanged"
+  ],
+  "codexVisual": "ACCEPT depicted advisory only; full reference/R7 NOT VISUALLY VERIFIED",
+  "cleanup": "Owned synthetic keys cleared through fixture UI; tabs106/107 closed; viewport reset; owned3616 services stopped",
+  "limits": [
+    "No native JS-off invocation",
+    "No real login/role/database financial/concurrency acceptance",
+    "No measured matched task-speed improvement",
+    "Synthetic parent not full actual payroll workspace"
+  ]
+}

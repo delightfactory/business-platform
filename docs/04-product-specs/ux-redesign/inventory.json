@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "6517971af4a17c08970ebebc9bdc7cda894115d9",
+  "sourceHead": "d168c0bbf282e3595939e834d4dcb1c7c36c3034",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1085,7 +1085,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "phase": "R7",
-      "sha256": "b18b58508030b34d0caf2ead291c128473f719d7626cb02f368c149cde2f46b8"
+      "sha256": "d30d25ac6da15c799189cdf0b14c97f745fc026088a328fb456bcfb37b411aa4"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
@@ -16274,7 +16274,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1941",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1978",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "line": 11,
       "tag": "input",
@@ -16286,7 +16286,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1992",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2029",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "line": 11,
       "tag": "input",
@@ -16298,7 +16298,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2047",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2084",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "line": 11,
       "tag": "input",
@@ -16310,7 +16310,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2233",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2270",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "line": 11,
       "tag": "input",
@@ -16321,7 +16321,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2437",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2474",
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
       "line": 11,
       "tag": "button",
