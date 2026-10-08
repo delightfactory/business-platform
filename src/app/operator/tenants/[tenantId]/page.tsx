@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { operatorLifecycleSnapshot } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -9,7 +10,6 @@ import { OperatorActionForm } from '@/app/operator/operator-action-form';
 
 export const dynamic = 'force-dynamic';
 
-type Tenant = { tenant_id: string; tenant_name: string; lifecycle_state: 'active' | 'suspended' | 'archived' };
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string; to?: string }>;
 
@@ -30,8 +30,9 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
   }
   const { data, error } = await supabase.rpc('platform_tenant_lifecycle_get', { p_tenant_id: tenantId });
-  const tenant = !error && data && typeof data === 'object' && !Array.isArray(data) ? data as Tenant : undefined;
-  if (!tenant || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
+  const tenant = !error && operatorLifecycleSnapshot(data) ? data : undefined;
+  if (error) return <Status title="تعذر قراءة حالة الشركة" detail="لم تتأكد الحالة الحالية. ارجع لقائمة الشركات وأعد قراءة الشركة المطلوبة." />;
+  if (!tenant || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الشركة غير مكتملة" detail="لا يمكن عرض إجراءات بناءً على بيانات غير متحققة. راجع قائمة الشركات." />;
 
   const transitions = transitionsFor(tenant.lifecycle_state);
   return (
@@ -103,7 +104,7 @@ function stateLabel(state: string) {
 }
 
 function messageFor(state: string) {
-  return lifecycleErrors[state] ?? 'تعذر إتمام الإجراء.';
+  return Object.hasOwn(lifecycleErrors, state) ? lifecycleErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع حالة الشركة قبل إجراء آخر.';
 }
 const lifecycleErrors: Record<string, string> = {
     active: 'أُعيد تشغيل الشركة.', suspended: 'عُلّقت الشركة.', archived: 'أُرشفت الشركة.',
@@ -111,7 +112,7 @@ const lifecycleErrors: Record<string, string> = {
     transition: 'هذا الانتقال غير مسموح من الحالة الحالية.',
     forbidden: 'لا تسمح صلاحيتك الحالية بإدارة حالة الشركات.',
     'not-found': 'لم نعثر على الشركة المطلوبة.',
-    failed: 'تعذر حفظ التغيير. لم تُعتمد أي حالة بلا سجل تدقيق.',
+    failed: 'لم تتأكد نتيجة تغيير الحالة. راجع حالة الشركة الحالية قبل إجراء آخر.',
     setup: 'إعداد الاتصال غير مكتمل.',
 };
 

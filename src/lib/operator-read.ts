@@ -67,3 +67,62 @@ export function onboardingSnapshot(value: unknown): value is Record<string, unkn
       : mode === 'limited' && Number.isSafeInteger(limit) && (limit as number) > 0);
   });
 }
+
+type CompanyState = 'active' | 'suspended' | 'archived';
+function companyState(value: unknown): value is CompanyState {
+  return value === 'active' || value === 'suspended' || value === 'archived';
+}
+function timestamp(value: unknown): value is string {
+  return typeof value === 'string' && value.trim().length > 0 && Number.isFinite(Date.parse(value));
+}
+function nullableTimestamp(value: unknown): value is string | null { return value === null || timestamp(value); }
+function snapshotStatus(value: unknown): boolean {
+  return value === 'effective' || value === 'missing' || value === 'conflict' || value === 'future_conflict';
+}
+
+export type OperatorLifecycleSnapshot = { tenant_id: string; tenant_name: string; lifecycle_state: CompanyState };
+export function operatorLifecycleSnapshot(value: unknown): value is OperatorLifecycleSnapshot {
+  return operatorRecord(value) && operatorUuid(value.tenant_id) && text(value.tenant_name) && companyState(value.lifecycle_state);
+}
+
+export type OperatorLimit = {
+  capability_key: 'tenant.users' | 'tenant.sites'; limit_key: 'max_users' | 'max_sites';
+  status: string; mode: 'limited' | 'unlimited' | null; value: number | null; valid_from: string | null; usage: number;
+};
+export type OperatorCommercialSnapshot = { tenant_id: string; display_name: string; lifecycle_state: CompanyState; limits: OperatorLimit[] };
+export function operatorCommercialSnapshot(value: unknown): value is OperatorCommercialSnapshot {
+  if (!operatorRecord(value) || !operatorUuid(value.tenant_id) || !text(value.display_name) || !companyState(value.lifecycle_state)
+    || !Array.isArray(value.limits) || value.limits.length !== 2) return false;
+  const keys = new Set<string>();
+  return value.limits.every(row => {
+    if (!operatorRecord(row) || !((row.capability_key === 'tenant.users' && row.limit_key === 'max_users')
+      || (row.capability_key === 'tenant.sites' && row.limit_key === 'max_sites')) || keys.has(row.capability_key)
+      || !snapshotStatus(row.status) || !count(row.usage) || !nullableTimestamp(row.valid_from)
+      || !(row.mode === null || row.mode === 'limited' || row.mode === 'unlimited')
+      || !(row.value === null || (count(row.value) && row.value > 0))) return false;
+    keys.add(row.capability_key);
+    return row.status !== 'effective' || (row.valid_from !== null
+      && (row.mode === 'unlimited' ? row.value === null : row.mode === 'limited' && row.value !== null));
+  });
+}
+
+export type OperatorEntitlement = {
+  capability_key: 'hr.people' | 'hr.payroll' | 'hr.attendance' | 'hr.leave' | 'hr.employee_finance';
+  status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null;
+  evaluator_enabled: boolean; last_decision_valid_until: string | null;
+};
+export type OperatorEntitlementSnapshot = { tenant_id: string; display_name: string; lifecycle_state: CompanyState; entitlements: OperatorEntitlement[] };
+export function operatorEntitlementSnapshot(value: unknown): value is OperatorEntitlementSnapshot {
+  const expected = ['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave', 'hr.employee_finance'];
+  if (!operatorRecord(value) || !operatorUuid(value.tenant_id) || !text(value.display_name) || !companyState(value.lifecycle_state)
+    || !Array.isArray(value.entitlements) || value.entitlements.length !== expected.length) return false;
+  const keys = new Set<string>();
+  return value.entitlements.every(row => {
+    if (!operatorRecord(row) || typeof row.capability_key !== 'string' || !expected.includes(row.capability_key)
+      || keys.has(row.capability_key) || !snapshotStatus(row.status)
+      || !(row.is_granted === null || typeof row.is_granted === 'boolean') || typeof row.evaluator_enabled !== 'boolean'
+      || !nullableTimestamp(row.valid_from) || !nullableTimestamp(row.valid_until) || !nullableTimestamp(row.last_decision_valid_until)) return false;
+    keys.add(row.capability_key);
+    return row.status !== 'effective' || (typeof row.is_granted === 'boolean' && row.valid_from !== null);
+  });
+}

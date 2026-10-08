@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { operatorCommercialSnapshot, type OperatorLimit } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
@@ -11,8 +12,7 @@ import { LimitModeFields } from './LimitModeFields';
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
 type Params = Promise<{ tenantId: string }>;
-type Limit = { capability_key: 'tenant.users' | 'tenant.sites'; limit_key: 'max_users' | 'max_sites'; status: string; mode: 'limited' | 'unlimited' | null; value: number | null; valid_from: string | null; effective_at: string; usage: number };
-type Snapshot = { tenant_id: string; display_name: string; lifecycle_state: string; limits: Limit[] };
+type Limit = OperatorLimit;
 
 export default async function CommercialTenantPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
@@ -29,8 +29,8 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة الحدود غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_commercial_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل حدود الشركة" />;
-  const tenant = data as Snapshot;
-  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.limits) || tenant.limits.length !== 2) return <Status title="بيانات الحدود غير مكتملة" />;
+  const tenant = data;
+  if (!operatorCommercialSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الحدود غير مكتملة" />;
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
@@ -82,13 +82,13 @@ function LimitCard({ tenantId, limit }: { tenantId: string; limit: Limit }) {
 
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
-  return limitErrors[state] ?? 'تعذر إتمام الإجراء.';
+  return Object.hasOwn(limitErrors, state) ? limitErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع الحدود الحالية قبل إجراء آخر.';
 }
 const limitErrors: Record<string, string> = {
     invalid: 'تحقق من بيانات الحد.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
     forbidden: 'لم تعد لديك صلاحية إدارة الحدود.', 'not-found': 'الشركة غير متاحة.',
     'future-conflict': 'يوجد حد مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد حدود فعّالة متعارضة؛ لم يتغير شيء.',
-    failed: 'تعذر تحديث الحد. لم يُعتمد التغيير دون سجل تدقيق.',
+    failed: 'لم تتأكد نتيجة تحديث الحد. راجع الحدود الحالية قبل إجراء آخر.',
 };
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link></section></main>; }

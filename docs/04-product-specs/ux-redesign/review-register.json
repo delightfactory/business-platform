@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "7ed679f5f9319bbf929fd07c7244c6f4128be09b",
+  "sourceSnapshot": "f9a0e82e733871576a633491888320d393b1c84e",
   "status": "Proposed",
   "items": [
     {
@@ -2033,7 +2033,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1598",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1364",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2042,7 +2042,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1652",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1418",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2051,7 +2051,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:2037",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:1803",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2096,7 +2096,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1667",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1324",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2105,7 +2105,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1721",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1378",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2114,7 +2114,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:2102",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:1759",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2420,7 +2420,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1426",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1377",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2429,7 +2429,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1480",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1431",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2438,7 +2438,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1952",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1903",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -5795,7 +5795,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2745",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2475",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5804,7 +5804,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2774",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2504",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5813,7 +5813,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:6067",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5797",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5822,7 +5822,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6394",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6124",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5831,7 +5831,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6460",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6190",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5840,7 +5840,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6543",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6273",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5849,7 +5849,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6863",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6593",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5876,7 +5876,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3731",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:43:2984",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5885,7 +5885,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3760",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:43:3013",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5894,7 +5894,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:8059",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7312",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5903,7 +5903,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8328",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7581",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5912,7 +5912,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:85:8394",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7647",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5921,7 +5921,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:87:8556",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7809",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5930,7 +5930,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:91:9061",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8314",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5939,7 +5939,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:93:9232",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8485",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7037,7 +7037,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2685",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:44:2791",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7046,7 +7046,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2714",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:44:2820",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7055,7 +7055,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:64:4785",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:65:4891",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7064,7 +7064,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:5315",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5421",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7073,7 +7073,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5397",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5503",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7082,7 +7082,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5490",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:70:5596",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7091,7 +7091,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:71:5660",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:72:5766",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15772,7 +15772,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1715",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1481",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -15781,7 +15781,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1789",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1446",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -15790,7 +15790,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1547",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1498",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",

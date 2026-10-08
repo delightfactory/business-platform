@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { operatorEntitlementSnapshot, type OperatorEntitlement } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
@@ -10,8 +11,7 @@ import { changeTenantEntitlementAction } from '../actions';
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string }>;
-type Decision = { capability_key: 'hr.people' | 'hr.payroll' | 'hr.attendance' | 'hr.leave' | 'hr.employee_finance'; status: string; is_granted: boolean | null; valid_from: string | null; valid_until: string | null; evaluator_enabled: boolean; last_decision: boolean | null; last_decision_valid_from: string | null; last_decision_valid_until: string | null };
-type Snapshot = { tenant_id: string; display_name: string; lifecycle_state: string; entitlements: Decision[] };
+type Decision = OperatorEntitlement;
 
 export default async function TenantEntitlementsPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
@@ -29,11 +29,8 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
-  const tenant = data as Snapshot;
-  const expectedCapabilities = ['hr.people', 'hr.payroll', 'hr.attendance', 'hr.leave', 'hr.employee_finance'];
-  if (!sameCompanyScope(tenant.tenant_id, tenantId) || !Array.isArray(tenant.entitlements) || tenant.entitlements.length !== expectedCapabilities.length
-    || new Set(tenant.entitlements.map((item) => item.capability_key)).size !== expectedCapabilities.length
-    || expectedCapabilities.some((key) => !tenant.entitlements.some((item) => item.capability_key === key))) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  const tenant = data;
+  if (!operatorEntitlementSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الإتاحة غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
   const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
@@ -100,7 +97,7 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function dateLabel(value: string) { return new Date(value).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
-  return entitlementErrors[state] ?? 'تعذر إتمام الإجراء.';
+  return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع الإتاحة الحالية قبل إجراء آخر.';
 }
 const entitlementErrors: Record<string, string> = {
     invalid: 'تحقق من بيانات القرار.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
@@ -114,6 +111,6 @@ const entitlementErrors: Record<string, string> = {
     'people-children-first': 'أوقف إتاحة الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
     'future-conflict': 'يوجد قرار مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد قرارات فعّالة متعارضة؛ لم يتغير شيء.',
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
-    failed: 'تعذر تحديث القرار. لم يُعتمد التغيير دون سجل تدقيق.',
+    failed: 'لم تتأكد نتيجة تحديث القرار. راجع إتاحة الوحدات الحالية قبل إجراء آخر.',
 };
 function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link></section></main>; }

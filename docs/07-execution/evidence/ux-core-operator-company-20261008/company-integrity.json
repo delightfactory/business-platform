@@ -1,0 +1,316 @@
+{
+  "base": "f9a0e82e733871576a633491888320d393b1c84e",
+  "scope": "actual async pages/SSR controlled SDK; no Auth/SQL/provider/native visual acceptance",
+  "checks": [
+    {
+      "id": "tenants-valid-default-render-byte-identical",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-valid-preserves-task",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-feedback-toString",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-feedback-constructor",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-feedback-__proto__",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-feedback-future",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-feedback-failed",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-null",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-object-name",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-future-lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-wrong-scope",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-read-error-overrides-data",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-valid-default-render-byte-identical",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-valid-preserves-task",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-feedback-toString",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-feedback-constructor",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-feedback-__proto__",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-feedback-future",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-feedback-failed",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-null",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-object-name",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-future-lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-wrong-scope",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-read-error-overrides-data",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-null-row",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-duplicate-key",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-future-status",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-bad-date",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-bad-number-or-boolean",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-source-valid-missing",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-source-valid-conflict",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-source-valid-future_conflict",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-valid-default-render-byte-identical",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-valid-preserves-task",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-feedback-toString",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-feedback-constructor",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-feedback-__proto__",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-feedback-future",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-feedback-failed",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-null",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-object-name",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-future-lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-wrong-scope",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-read-error-overrides-data",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-null-row",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-duplicate-key",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-future-status",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-bad-date",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-bad-number-or-boolean",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-source-valid-missing",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-source-valid-conflict",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-source-valid-future_conflict",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-pre-migration-four",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-six-keys",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-unknown-capability",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-effective-null-start",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-invalid-historical-date",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-future-conflict-with-current-data",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-wrong-pair",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-limited-null",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-unlimited-number",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-negative-usage",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-fractional-usage",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-effective-null-start",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-future-conflict-with-current-data",
+      "result": "pass"
+    }
+  ],
+  "files": [
+    {
+      "file": "src/lib/operator-read.ts",
+      "sha256": "eb39ba4875655e2680c698cc9784dbaf44cec4f59d6856580a3d9f500347ffd0"
+    },
+    {
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "sha256": "7b2d2c0e8d1ffdfcf4ac969ae0b84279486112261cc1e9c1f6bd09da05899f8a"
+    },
+    {
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "sha256": "fe6a4bedc4fceaff4943e4204a852fb570fbcef8acda8526b25273dccac503d4"
+    },
+    {
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "sha256": "284ce8ae5f54d7799c99cacb2b17927bb48d0a02d3544fd2b5f52af04ea42840"
+    }
+  ],
+  "review": {
+    "provider": "Official direct Claude Code Pro",
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "session": "c7ce73cc-c713-4c34-8a0b-f6f1ff965351",
+    "source": "ACCEPT all three evidence conditions resolved",
+    "ClaudeVisual": "NOT VISUALLY VERIFIED",
+    "CodexVisual": "NOT VISUALLY VERIFIED",
+    "readOnlyUnchanged": true
+  },
+  "gates": {
+    "affectedEslint": 0,
+    "typecheck": 0,
+    "finalAppBuild": 0,
+    "finalBuildIncludesTypeScript": true,
+    "diffCheck": 0,
+    "groupedBuildCount": 1,
+    "unchangedAuthSQLProvider": "No rerun; no acceptance of real role/provider/SQL execution"
+  },
+  "inventory": {
+    "items": 1731,
+    "sourceReviewed": 19,
+    "priorStatusesPreserved": true,
+    "added": 0,
+    "semanticPromotion": false
+  },
+  "limits": [
+    "Actual async page/SSR with controlled SDK; no real role/Auth/SQL/provider/native visual acceptance",
+    "Three source-valid default SSR renders byte-identical to baseline under controlled SDK, not task-speed metrics",
+    "Infinity/unparseable displayed dates explicitly unavailable; no legal retention/availability policy claimed"
+  ],
+  "servicesCreated": 0
+}

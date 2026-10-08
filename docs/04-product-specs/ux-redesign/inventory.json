@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "7ed679f5f9319bbf929fd07c7244c6f4128be09b",
+  "sourceHead": "f9a0e82e733871576a633491888320d393b1c84e",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -110,7 +110,7 @@
     {
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "8550795f0b78752063e0fe3430c5f3a2f8427d003e8de50206c362f3a6b9b2fb"
+      "sha256": "fe6a4bedc4fceaff4943e4204a852fb570fbcef8acda8526b25273dccac503d4"
     },
     {
       "file": "src/app/operator/commercial/actions.ts",
@@ -130,7 +130,7 @@
     {
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "1422fa83a1eb4c96515f497b0c3645d46ba0157425dc8719f432afe14914b2c1"
+      "sha256": "284ce8ae5f54d7799c99cacb2b17927bb48d0a02d3544fd2b5f52af04ea42840"
     },
     {
       "file": "src/app/operator/entitlements/actions.ts",
@@ -285,7 +285,7 @@
     {
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "d1d6ed773387e1eeb9b110db807a38f5eeb40f2021e9aee0b2721b2652902870"
+      "sha256": "7b2d2c0e8d1ffdfcf4ac969ae0b84279486112261cc1e9c1f6bd09da05899f8a"
     },
     {
       "file": "src/app/operator/tenants/actions.ts",
@@ -1395,7 +1395,7 @@
     {
       "file": "src/lib/operator-read.ts",
       "phase": "R1",
-      "sha256": "b63d2f347f38ce16a8e889e2ec6f8a74b121f0aae9318f39a687f293525d1008"
+      "sha256": "eb39ba4875655e2680c698cc9784dbaf44cec4f59d6856580a3d9f500347ffd0"
     },
     {
       "file": "src/lib/payroll/leave-correction-context.ts",
@@ -3658,7 +3658,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1598",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1364",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 26,
       "phase": "R3",
@@ -3668,7 +3668,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1652",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:26:1418",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 26,
       "phase": "R3",
@@ -3678,7 +3678,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1715",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:27:1481",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 27,
       "phase": "R3",
@@ -3688,7 +3688,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:2037",
+      "id": "RPC:src/app/operator/commercial/[tenantId]/page.tsx:30:1803",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 30,
       "phase": "R3",
@@ -3738,7 +3738,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1667",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:25:1324",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 25,
       "phase": "R3",
@@ -3748,7 +3748,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1721",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:26:1378",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 26,
       "phase": "R3",
@@ -3758,7 +3758,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1789",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:27:1446",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 27,
       "phase": "R3",
@@ -3768,7 +3768,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:2102",
+      "id": "RPC:src/app/operator/entitlements/[tenantId]/page.tsx:30:1759",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 30,
       "phase": "R3",
@@ -4118,7 +4118,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1426",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:25:1377",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "line": 25,
       "phase": "R3",
@@ -4128,7 +4128,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1480",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:26:1431",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "line": 26,
       "phase": "R3",
@@ -4138,7 +4138,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1547",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:27:1498",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "line": 27,
       "phase": "R3",
@@ -4148,7 +4148,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1952",
+      "id": "RPC:src/app/operator/tenants/[tenantId]/page.tsx:32:1903",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
       "line": 32,
       "phase": "R3",
@@ -7783,7 +7783,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2745",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2475",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 38,
       "tag": "form",
@@ -7793,7 +7793,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2774",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:38:2504",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 38,
       "tag": "button",
@@ -7803,7 +7803,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:6067",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5797",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 69,
       "tag": "summary",
@@ -7811,7 +7811,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6394",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6124",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 71,
       "tag": "input",
@@ -7823,7 +7823,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6460",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6190",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 72,
       "tag": "input",
@@ -7835,7 +7835,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6543",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6273",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 73,
       "tag": "input",
@@ -7847,7 +7847,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6863",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6593",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 77,
       "tag": "textarea",
@@ -7877,9 +7877,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3731",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:43:2984",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 46,
+      "line": 43,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -7887,9 +7887,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:46:3760",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:43:3013",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 46,
+      "line": 43,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -7897,17 +7897,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:8059",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7312",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 82,
+      "line": 79,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:8328",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7581",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 84,
+      "line": 81,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7917,9 +7917,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:85:8394",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7647",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 85,
+      "line": 82,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7929,9 +7929,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:87:8556",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7809",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 87,
+      "line": 84,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -7939,9 +7939,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:91:9061",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8314",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 91,
+      "line": 88,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -7950,9 +7950,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:93:9232",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8485",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
-      "line": 93,
+      "line": 90,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -9329,9 +9329,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2685",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:44:2791",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 43,
+      "line": 44,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -9339,9 +9339,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:43:2714",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:44:2820",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 43,
+      "line": 44,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -9349,17 +9349,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:64:4785",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:65:4891",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 64,
+      "line": 65,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:67:5315",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5421",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 67,
+      "line": 68,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9369,9 +9369,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:68:5397",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5503",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 68,
+      "line": 69,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9381,9 +9381,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:69:5490",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:70:5596",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 69,
+      "line": 70,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9393,9 +9393,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:71:5660",
+      "id": "CONTROL:src/app/operator/tenants/[tenantId]/page.tsx:72:5766",
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
-      "line": 71,
+      "line": 72,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
