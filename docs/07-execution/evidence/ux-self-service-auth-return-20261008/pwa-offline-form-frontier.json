@@ -12,7 +12,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
@@ -26,7 +28,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
@@ -40,7 +44,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
@@ -54,7 +60,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/forgot-password/page.tsx",
@@ -68,7 +76,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
@@ -81,7 +91,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
@@ -95,7 +107,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
@@ -109,7 +123,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
@@ -122,7 +138,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/callback/page.tsx",
@@ -135,7 +153,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/invitations/callback/page.tsx",
@@ -149,7 +169,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/login/page.tsx",
@@ -163,7 +185,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
@@ -176,7 +200,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
@@ -190,7 +216,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
@@ -204,7 +232,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
@@ -218,7 +248,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/auth/password/update/page.tsx",
@@ -232,7 +264,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN"
+      "offlineReview": "C10 thirteen Auth owning sites source-qualified; real provider/session/role/full visual OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/commercial/page.tsx",
@@ -244,7 +278,9 @@
       "sourceHash": "220ab82f3dfb58a800d0764ede7c48e4f2409d3c33d37b78c848f147b5181bfb",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
@@ -256,7 +292,9 @@
       "sourceHash": "8a0e1f20838bf49b76354a830aee2e76f533463ecc840e22ab95cd3715a8dc83",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/entitlements/page.tsx",
@@ -268,7 +306,9 @@
       "sourceHash": "6be54022cf913a18b4fbb3acdd327445acd896571652158ae6c1ec7adf388890",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
@@ -280,7 +320,9 @@
       "sourceHash": "e605d37fcb3e833aa2a8b07e6ebb10cb7add29cd3961acb7a8928c79d65e539c",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
@@ -294,7 +336,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
@@ -307,7 +351,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
@@ -321,7 +367,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
@@ -335,7 +383,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
@@ -348,7 +398,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
@@ -362,7 +414,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/onboarding/OnboardingResult.tsx",
@@ -375,7 +429,9 @@
       "sourceHash": "7ec84f6874ff41798eadb0a5e4211d10f8dc6618ee4ece67512a409b4049821f",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/onboarding/page.tsx",
@@ -387,7 +443,9 @@
       "sourceHash": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/onboarding/page.tsx",
@@ -399,7 +457,9 @@
       "sourceHash": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/operator-action-form.tsx",
@@ -413,7 +473,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/operator-list-controls.tsx",
@@ -426,7 +488,9 @@
       "sourceHash": "c1a8c722b992eed5e8dd7d7f2e52ee9c155eb4ea465c9c977fe8792e522ac3db",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/operators/page.tsx",
@@ -438,7 +502,9 @@
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/operators/page.tsx",
@@ -451,7 +517,9 @@
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/operators/page.tsx",
@@ -464,7 +532,9 @@
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/page.tsx",
@@ -476,7 +546,9 @@
       "sourceHash": "799178eb11885886fd5e086ade546af28eddee28526f5d4f15332018559f978a",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
@@ -490,7 +562,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
@@ -504,7 +578,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/statutory/DraftForm.tsx",
@@ -518,7 +594,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/tenants/page.tsx",
@@ -530,7 +608,9 @@
       "sourceHash": "e173b3aab5ddf5aa7fea309255d4159391685cdb5db2af93c5d0cdbc40c76cf0",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
@@ -542,7 +622,9 @@
       "sourceHash": "7b2d2c0e8d1ffdfcf4ac969ae0b84279486112261cc1e9c1f6bd09da05899f8a",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/select/page.tsx",
@@ -555,7 +637,9 @@
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/select/page.tsx",
@@ -567,7 +651,9 @@
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/select/page.tsx",
@@ -579,7 +665,9 @@
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
@@ -593,7 +681,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
@@ -607,7 +697,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
@@ -621,7 +713,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
@@ -635,7 +729,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
@@ -649,7 +745,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
@@ -661,7 +759,9 @@
       "sourceHash": "6761b1488d1b21a7ef7a5daa76554739f191fcbbbdaf66ed7a93ff7ef1176982",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
@@ -673,7 +773,9 @@
       "sourceHash": "11f284d78acf105de571b90c8af217eab3111df8deb51704ff51a68eb57af166",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
@@ -687,7 +789,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/new/page.tsx",
@@ -699,7 +803,9 @@
       "sourceHash": "a895a909bf94fea0e8229e6827e7761646a0d9ac5a31eef2c0c4a0ab9a5349a3",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
@@ -711,7 +817,9 @@
       "sourceHash": "ac8d2fe8d21ee781e2abb342ae76501da1ba4da27e303425dd9205f686cac43b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
@@ -723,7 +831,9 @@
       "sourceHash": "72128d28bf618cc1ef056f8e6c31f24bc2086568597f31ba9c390901425f01e7",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
@@ -737,7 +847,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -751,7 +863,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -765,7 +879,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -779,7 +895,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -793,7 +911,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -807,7 +927,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -821,7 +943,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -835,7 +959,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
@@ -848,7 +974,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
@@ -862,7 +990,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
@@ -876,7 +1006,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
@@ -890,7 +1022,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
@@ -904,7 +1038,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/page.tsx",
@@ -917,7 +1053,9 @@
       "sourceHash": "3be5ac7811d2b82a4c3e6bea482c2904c16fa3c56da162e994ab84f11f0aa5dc",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
@@ -931,7 +1069,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C2 new/recovered opening/annual_grant/adjustment source-qualified33 controlledcases; actual actors/fullvisual OPEN"
+      "offlineReview": "C2 new/recovered opening/annual_grant/adjustment source-qualified33 controlledcases; actual actors/fullvisual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
@@ -943,7 +1083,9 @@
       "sourceHash": "b1d3c56bba9c1a5d20a6541b5edbbba68ea89e44845f92d6f92f353e1bea0c8b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
@@ -957,7 +1099,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
@@ -971,7 +1115,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/page.tsx",
@@ -984,7 +1130,9 @@
       "sourceHash": "4bbdcbb16492a9685429e2f3e1cb67a793dadf065764b427a87bbb18919b2398",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
@@ -998,7 +1146,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
@@ -1012,7 +1162,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
@@ -1026,7 +1178,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
@@ -1040,7 +1194,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
@@ -1054,7 +1210,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
@@ -1068,7 +1226,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
@@ -1081,7 +1241,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "Read-only leave option load preserved; full native actor acceptance OPEN"
+      "offlineReview": "Read-only leave option load preserved; full native actor acceptance OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
@@ -1095,7 +1257,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C1 new leave submit: source-qualified35case batch; native actor/visual OPEN"
+      "offlineReview": "C1 new leave submit: source-qualified35case batch; native actor/visual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
@@ -1109,7 +1273,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
@@ -1123,7 +1289,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN"
+      "offlineReview": "C3 ten leave decision/settings/record/own cancellation-withdraw forms;63 controlledcases source-qualified; native/visual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/page.tsx",
@@ -1135,7 +1303,9 @@
       "sourceHash": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
@@ -1148,7 +1318,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C1 all10 AdvanceOperation new submissions: source-qualified35case batch; native idle sample only; recovery separate and unchanged"
+      "offlineReview": "C1 all10 AdvanceOperation new submissions: source-qualified35case batch; native idle sample only; recovery separate and unchanged",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1160,7 +1332,9 @@
       "sourceHash": "039b6ebafdcb2a391d141958f25f142935e895aac4d8c804857913196822ccc4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "native-default-GET",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1172,7 +1346,9 @@
       "sourceHash": "039b6ebafdcb2a391d141958f25f142935e895aac4d8c804857913196822ccc4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "native-default-GET",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1184,7 +1360,9 @@
       "sourceHash": "039b6ebafdcb2a391d141958f25f142935e895aac4d8c804857913196822ccc4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "native-default-GET",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1196,7 +1374,9 @@
       "sourceHash": "039b6ebafdcb2a391d141958f25f142935e895aac4d8c804857913196822ccc4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "native-default-GET",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1208,7 +1388,9 @@
       "sourceHash": "039b6ebafdcb2a391d141958f25f142935e895aac4d8c804857913196822ccc4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "native-default-GET",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
@@ -1222,7 +1404,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
@@ -1236,7 +1420,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
@@ -1250,7 +1436,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
@@ -1264,7 +1452,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
@@ -1278,7 +1468,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
@@ -1292,7 +1484,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/EmployerSelector.tsx",
@@ -1305,7 +1499,9 @@
       "sourceHash": "f081206218dcb903f43c7131072257013212178975e09f9e4ea15e76419372d8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
@@ -1319,7 +1515,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
@@ -1333,7 +1531,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
@@ -1345,7 +1545,9 @@
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
@@ -1357,7 +1559,9 @@
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
@@ -1369,7 +1573,9 @@
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
@@ -1381,7 +1587,9 @@
       "sourceHash": "aab51534566a2b0f6d508c91c46d3fccc7f703040f084fdea6eeab685eae720b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
@@ -1393,7 +1601,9 @@
       "sourceHash": "aab51534566a2b0f6d508c91c46d3fccc7f703040f084fdea6eeab685eae720b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
@@ -1405,7 +1615,9 @@
       "sourceHash": "bcf58123ca5384a628e435efc5a4be3dbae8bcddc93614c378cbf50cc6c222c2",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
@@ -1419,7 +1631,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN"
+      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
@@ -1433,7 +1647,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN"
+      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
@@ -1445,7 +1661,9 @@
       "sourceHash": "a87127e99c61ba22ab66522ce0dfd6ead8b01a4b3ed173bd9d64484ac9850351",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
@@ -1457,7 +1675,9 @@
       "sourceHash": "a87127e99c61ba22ab66522ce0dfd6ead8b01a4b3ed173bd9d64484ac9850351",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
@@ -1471,7 +1691,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
@@ -1485,7 +1707,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN"
+      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
@@ -1499,7 +1723,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN"
+      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
@@ -1511,7 +1737,9 @@
       "sourceHash": "bbce4fc67ab78a8f48d445e4e1d09d95f25f1dd4198aa7bab6ee680523d505b5",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
@@ -1523,7 +1751,9 @@
       "sourceHash": "bbce4fc67ab78a8f48d445e4e1d09d95f25f1dd4198aa7bab6ee680523d505b5",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
@@ -1537,7 +1767,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
@@ -1549,7 +1781,9 @@
       "sourceHash": "9808aa2d4c6dff7cbb4d293cf514282259acd972678611e5e94527d398b74336",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
@@ -1562,7 +1796,9 @@
       "sourceHash": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "Next-Form-GET-search",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
@@ -1576,7 +1812,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
@@ -1590,7 +1828,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
@@ -1604,7 +1844,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
@@ -1618,7 +1860,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
@@ -1630,7 +1874,9 @@
       "sourceHash": "7084e11e995f2bfc5072228377bf5e2d1db91f0823eaaad9dd2a00e243e143e2",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
@@ -1644,7 +1890,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
@@ -1658,7 +1906,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C6 nine custom Attendance/policy/branding/operator forms and direct review/recovery;39 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
@@ -1672,7 +1922,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
@@ -1686,7 +1938,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
@@ -1700,7 +1954,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1714,7 +1970,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1728,7 +1986,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1742,7 +2002,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1756,7 +2018,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1770,7 +2034,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1784,7 +2050,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
@@ -1798,7 +2066,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
@@ -1812,7 +2082,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
@@ -1826,7 +2098,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
@@ -1840,7 +2114,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
@@ -1854,7 +2130,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
@@ -1868,7 +2146,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
@@ -1882,7 +2162,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
@@ -1896,7 +2178,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
@@ -1910,7 +2194,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C5 twelve owning People/invitation/unit/bulk-attendance forms;82 actual-source controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "existing-custom-handler",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1924,7 +2210,9 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "GET-read-selection",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1938,7 +2226,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1952,7 +2242,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1966,7 +2258,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1980,7 +2274,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -1994,7 +2290,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
@@ -2008,7 +2306,9 @@
       "semanticReview": "pending",
       "runtime": "not-run",
       "owningGuard": "OfflineForm",
-      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN",
+      "sourceClassification": "guarded-owning-composite",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
@@ -2020,7 +2320,9 @@
       "sourceHash": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
@@ -2032,7 +2334,9 @@
       "sourceHash": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "sourceClassification": "sign-out-preserved",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     },
     {
       "file": "src/components/offline-form.tsx",
@@ -2041,7 +2345,9 @@
         "onSubmit": "{(event) => {\n    if (blockOfflineSubmission(event)) return;\n    onSubmit?.(event);\n  }}"
       },
       "sharedImplementation": true,
-      "offlineReview": "C9 shared opt-in guard implementation, not a new operation"
+      "offlineReview": "C9 shared opt-in guard implementation, not a new operation",
+      "sourceClassification": "shared-implementation",
+      "classificationBaseline": "7546df8763d052c093f28a1234a03cba67d55da1"
     }
   ],
   "total": 153,

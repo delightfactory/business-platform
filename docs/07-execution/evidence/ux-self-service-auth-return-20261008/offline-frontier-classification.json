@@ -1,0 +1,47 @@
+{
+  "schema": "business-platform.offline-frontier-classification.v1",
+  "baseline": "7546df8763d052c093f28a1234a03cba67d55da1",
+  "sourceHashes": {
+    "count": 93,
+    "normalizedFingerprintSetSha256": "c829a9f5636a01465d4b461508f9dd309edcb815d86b2de1a4b30e834359ab24",
+    "reconstruct": "Versioned inventory and saved census script reconstruct full hashes"
+  },
+  "totalSourceFormSites": 153,
+  "originalOwningFormSites": 152,
+  "counts": {
+    "guarded-owning-composite": 38,
+    "sign-out-preserved": 21,
+    "existing-custom-handler": 59,
+    "GET-read-selection": 28,
+    "native-default-GET": 5,
+    "Next-Form-GET-search": 1,
+    "shared-implementation": 1
+  },
+  "sites": {
+    "count": 153,
+    "reference": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/pwa-offline-form-frontier.json",
+    "checked": "Every fresh AST site matched current file/line; classification saved in existing frontier rows"
+  },
+  "nonFormException": {
+    "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
+    "sha256": "cac763c9fa918da0384f3462029f66542686bb0819395841c8f21faefb98e515",
+    "contract": "Attendance exception preserved; original same-id reconcile/resend and location-memory behavior; no generic guard applied",
+    "unchangedSince": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
+    "runtime": "Not requalified by this source census"
+  },
+  "conclusions": {
+    "unclassifiedFormSites": 0,
+    "remainingUninterceptedServerActionFormSites": 0,
+    "interpretation": "All remaining plain owning forms are GET or existing sign-out. Custom handlers are classified, not declared semantically/native accepted.",
+    "implementationCensus": "Complete for versioned153source forms only",
+    "fullOfflineAcceptance": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "reuse": {
+    "sourceChecks": "C1-C10 version-bound evidence retained; source inventory fingerprints match",
+    "build": "72445 single grouped build/TypeScript exit0 at unchanged C10 app source",
+    "lint": "77701 full lint exit0/four historical warnings",
+    "native": "server-offline-native.json bounded shared two-form mechanics; no full-domain claim"
+  },
+  "next": "Consolidated reference/component states and real actor/domain journeys; original capability/Today/source gaps remain; no new architecture or D16."
+}
