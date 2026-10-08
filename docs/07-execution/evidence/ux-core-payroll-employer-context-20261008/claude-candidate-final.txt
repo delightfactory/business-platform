@@ -1,0 +1,9 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**The must-fix is resolved.** I read only `employer-context.ts` and found no new defect.
+
+- `corrected_advance` is now in the advances whitelist (`employer-context.ts:10`). The default branch of `validContext` checks it is a UUID, and the line-25 filter keeps it only when `query.new === '1'`.
+- It isn't accidentally caught by the `correction_*` rule, which requires `advance`: `'corrected_advance'.startsWith('correction_')` is false.
+- On the same employer, the redirect keeps `new`, `employment` and `corrected_advance` together. Without `new=1` the link is dropped, and a different or invalid marker leaves only `employer`. Both match what you reported.
+
+Still open: the multi-employer visual check, unsaved input lost on navigation at runtime, real roles, providers, finance, hydration and the full parent. Employer context for reports, output, corrections and payments is still pending source discovery. The full reference match is **NOT VISUALLY VERIFIED**, and R0–R8 and the phase are not closed.

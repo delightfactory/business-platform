@@ -1,0 +1,350 @@
+{
+  "baseline": "b549335303c935c325ee54e8f2724ae4aafcfeb1",
+  "pageCases": [
+    {
+      "page": "workspace",
+      "name": "normal",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "reader",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "disabled",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "paged",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "long",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "noSdk",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "workspace",
+      "name": "noUser",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "normal",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "reader",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "disabled",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "paged",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "long",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "noSdk",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "setup",
+      "name": "noUser",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "normal",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "reader",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "disabled",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "paged",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "long",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "noSdk",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "inputs",
+      "name": "noUser",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "normal",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "reader",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "disabled",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "paged",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "long",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "noSdk",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "runs",
+      "name": "noUser",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "normal",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "reader",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "disabled",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "paged",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "long",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "noSdk",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    },
+    {
+      "page": "advances",
+      "name": "noUser",
+      "result": "PASS",
+      "scope": "actual source SSR controlled SDK boundary"
+    }
+  ],
+  "contextCases": [
+    {
+      "page": "workspace",
+      "variant": "same",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&review_q=review",
+      "result": "PASS"
+    },
+    {
+      "page": "workspace",
+      "variant": "changed",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll?employer=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "page": "workspace",
+      "variant": "invalid",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll?employer=11111111-1111-4111-8111-111111111111",
+      "result": "PASS"
+    },
+    {
+      "page": "workspace",
+      "variant": "uppercase",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&review_q=review",
+      "result": "PASS"
+    },
+    {
+      "page": "setup",
+      "variant": "same",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/setup?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&review_q=review&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "setup",
+      "variant": "changed",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/setup?employer=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "page": "setup",
+      "variant": "invalid",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/setup?employer=11111111-1111-4111-8111-111111111111",
+      "result": "PASS"
+    },
+    {
+      "page": "setup",
+      "variant": "uppercase",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/setup?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&review_q=review&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "inputs",
+      "variant": "same",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/inputs?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&q=employee&employee=44444444-4444-4444-8444-444444444444&kind=manual_units&head=44444444-4444-4444-8444-444444444444&review_view=attention&review_q=review&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "inputs",
+      "variant": "changed",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/inputs?employer=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "page": "inputs",
+      "variant": "invalid",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/inputs?employer=11111111-1111-4111-8111-111111111111",
+      "result": "PASS"
+    },
+    {
+      "page": "inputs",
+      "variant": "uppercase",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/inputs?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&q=employee&employee=44444444-4444-4444-8444-444444444444&kind=manual_units&head=44444444-4444-4444-8444-444444444444&review_view=attention&review_q=review&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "runs",
+      "variant": "same",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/runs?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&q=employee&view=all&employee=44444444-4444-4444-8444-444444444444&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "runs",
+      "variant": "changed",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/runs?employer=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "page": "runs",
+      "variant": "invalid",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/runs?employer=11111111-1111-4111-8111-111111111111",
+      "result": "PASS"
+    },
+    {
+      "page": "runs",
+      "variant": "uppercase",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/runs?employer=11111111-1111-4111-8111-111111111111&period=22222222-2222-4222-8222-222222222222&q=employee&view=all&employee=44444444-4444-4444-8444-444444444444&before=2026-09-01",
+      "result": "PASS"
+    },
+    {
+      "page": "advances",
+      "variant": "same",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances?employer=11111111-1111-4111-8111-111111111111&advance=44444444-4444-4444-8444-444444444444&q=employee&installment_after=2&period=22222222-2222-4222-8222-222222222222&new=1&employment=44444444-4444-4444-8444-444444444444&correction_event=44444444-4444-4444-8444-444444444444&correction_case=44444444-4444-4444-8444-444444444444",
+      "result": "PASS"
+    },
+    {
+      "page": "advances",
+      "variant": "changed",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances?employer=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "page": "advances",
+      "variant": "invalid",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances?employer=11111111-1111-4111-8111-111111111111",
+      "result": "PASS"
+    },
+    {
+      "page": "advances",
+      "variant": "uppercase",
+      "destination": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances?employer=11111111-1111-4111-8111-111111111111&advance=44444444-4444-4444-8444-444444444444&q=employee&installment_after=2&period=22222222-2222-4222-8222-222222222222&new=1&employment=44444444-4444-4444-8444-444444444444&correction_event=44444444-4444-4444-8444-444444444444&correction_case=44444444-4444-4444-8444-444444444444",
+      "result": "PASS"
+    },
+    {
+      "selectorCount": 0,
+      "result": "PASS"
+    },
+    {
+      "selectorCount": 1,
+      "result": "PASS"
+    },
+    {
+      "selectorCount": 30,
+      "result": "PASS"
+    }
+  ],
+  "scope": "actual source SSR/controlled SDK + real pure redirect helper; not actual authority/financial/hydrated/JS-off journey proof"
+}

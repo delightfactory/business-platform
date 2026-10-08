@@ -1,0 +1,33 @@
+{
+  "baseline": "b549335303c935c325ee54e8f2724ae4aafcfeb1",
+  "hashes": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/EmployerSelector.tsx",
+      "sha256": "0652106a5e94985a8108f041a2a4af48a968e31a1e6432dfb0fa06ef7314b946"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/employer-context.ts",
+      "sha256": "15bf6f29b960321d47a67db0ee56d047a74ce373fbefa38bd0812457f1ec8a32"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "521a50eb9a5ebe0bdf36f995497676c2d42a496c1888cd05bbf709f2a2b30e02"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sha256": "7710aca8bbdbe6ec8cd9145f8ac4be07f46f8668f77119879bed8a09b7f1c71e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "sha256": "b3ab10b24c647ffa4a020a4d1162b608aa43facceec10b319cfda53ab1e6d6d7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sha256": "a6a6098cd0321857dadf97ddd39f8454508dd9c968e299a52c46ef8ee0913d13"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "sha256": "0528afde3f563ad27c641ed841d4eff81504af52a209e9de69dc8cbdb98e0a4d"
+    }
+  ]
+}

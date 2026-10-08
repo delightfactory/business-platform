@@ -1,0 +1,91 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+# R7 employer context (spec on b549335): co-design verdict
+
+**I approve the spec, with the guards below.** I reused my earlier reads of these pages' query handling (root, setup, inputs, runs, advances) and didn't rescan the repository.
+
+## Required guards
+
+1. **Normalize the marker first and keep it pure.**
+   - Write one shared function, `normalizeEmployerScope(path, query, whitelist)`.
+   - Run it right after each page's existing parameter checks, and **before** the auth redirect and every RPC call.
+   - Root must run it before its existing redirect for `stage==='setup'` or `before`.
+   - Its output is a constant own path plus whitelisted keys, never a submitted URL.
+   - A redirect only happens when `employer_scope` is present, and the redirect strips it, so it can't loop.
+   - With no marker, the page must behave byte-for-byte as today.
+
+2. **Carry context through hidden fields.** A native GET form only submits its own fields, so the form carries `employer_scope` plus hidden inputs for the page's whitelist.
+   - **Echo only validated values:** UUIDs checked, search text ≤120 characters, enums such as `view` and `kind` checked. Drop anything invalid rather than echoing it.
+   - **Never put these in the form:** attempt IDs, signatures, form payloads or tokens.
+
+3. **Carry the period that actually resolved.** The hidden `period` must be the period the page actually used: root `periodId`, runs and inputs `period`, which already includes the `periods[0]` or date-based default. Don't pass the raw `query.period`. This closes the same-employer reset scenario.
+
+4. **Write a whitelist per page, because the same key means different things.**
+   - `q` is the **employer** search on root and setup, but the **employee** search on runs and inputs.
+   - `after_id`/`after_name`/`employer_q`/`employer_after` page the employer list, while `after`, `records_after` and `installment_after` page records.
+   - Whitelists for the same-employer case:
+
+     | Page | Keys kept |
+     |---|---|
+     | root | `period`, `review_q` |
+     | setup | `period`, `review_q`, `before` (never `stage`) |
+     | runs | `period`, `q`, `view`, `after`, `employee`, `before` |
+     | inputs | `period`, `q`, `after`, `records_after`, `employee`, `kind`, `head`, the `review_*` keys, `before` |
+     | advances | `advance`, `q`, `after`, `installment_after`, `history_before`, `period`, plus `correction_*` only when `advance` is present |
+
+   - **Changing employer** keeps only `employer`. It must never carry anything that opens a form or starts work: `new=1`, `kind`, `head`, `stage=setup`, `employment`, `corrected_advance`, `correction_event`.
+   - Employer-list search and paging keys may stay on both paths. They only affect the chooser, and the current-option fallback already covers them.
+
+5. **Use each page's own list and name.**
+
+   | Page | Employer list | Current-employer name |
+   |---|---|---|
+   | root | `payroll_employers` | `calendar.employer_name` |
+   | setup | `payroll_employers` | `workspace.employer_name` |
+   | runs | `payroll_run_employers` | `legal_name \|\| display_name` (as in `finalScope`) |
+   | inputs | `payroll_input_employers` | list entry or "الجهة المحددة" (no name in the payload) |
+   | advances | `payroll_advance_choices` (`employers`) | `employers.selected` / `w.employer.name` |
+
+   Never borrow another page's RPC, because their permission scopes differ. Keep the existing full chooser link, search and pager on every page.
+
+6. **Placement must not remount anything.**
+   - Put the form **inside** the existing `<header>` on runs, inputs, advances and root. On setup, put it inside the existing identity card. Never add it as a new sibling, and render it unconditionally whenever its container renders.
+   - Unchanged: the positions of `DeductionRecovery`, `AdvanceRecovery`, `RunActions`, `AdvanceForm` and `CorrectionCommand`.
+   - The submit button is `secondary-button`, with no `onChange` submit.
+
+7. **Recovery and unsaved edits.**
+   - Changing employer must not clear any recovery storage. That covers the `RunActions`, `AdvanceForm` and payment journals, which are keyed by actor, tenant, employer and period.
+   - Submitting is a full navigation, so unsaved values typed into an open `InputForm` or `AdvanceForm` are lost. The existing "اختيار جهة أخرى" link already has this risk. Record it as a known gap and don't add JS to fix it.
+
+8. **The marker is bookkeeping, never authority.**
+   - A forged marker equal to the target employer only restores fields the user could have typed into the URL anyway. A different or invalid marker leaves only the employer.
+   - The existing UUID checks, RPC authorization and the 42501 failure path stay unchanged.
+
+9. **Single employer.** When the list has exactly one entry, it is the current employer and there are no more pages, show the identity as plain text and no form. Don't render a disabled select.
+
+## Remaining pages (still required core, not part of this group)
+
+| Page | Status |
+|---|---|
+| Reports | `payroll_report_employers` exists but is only called when no employer is selected (`reports/page.tsx:31`). Calling it with an employer selected is allowed: it is an existing RPC scoped by report purpose. That needs its own case: keep the purpose and clear `output`/`previous`/filters. |
+| Output | Has no employer list of its own. Report-purpose authorization is not the same as `can_view_final`, so don't reuse it without a source check. |
+| Corrections | `payroll_correction_outputs` discovery is audited. Don't turn it into a dropdown. |
+| Payments | A payment-recording-only role must not inherit payroll view or discovery. |
+
+All four stay open until the exact permitted data path for each is confirmed.
+
+## Acceptance checks
+**Normalizer cases:**
+- same employer, different employer, and invalid or missing marker;
+- current employer absent from the page, and 0, 1 and 30 employers;
+- long names, a lost session (login `next` uses the canonical URL), and JS off;
+- a whitelist case per page.
+
+**Page cases:**
+- With no marker, every page matches its existing behavior byte-for-byte.
+- With a marker present, the SDK sees no RPCs because the redirect comes first.
+- On the target page after the redirect, RPCs, fields and props are unchanged.
+
+**Also:** renders at 390/768/1366 with keyboard testing, and one grouped lint/build/TS run.
+
+Still open: full reference match (**NOT VISUALLY VERIFIED**), real roles, finance, hydration, the full parent, R0–R8 and phase closure.

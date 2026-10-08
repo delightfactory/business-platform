@@ -1,3 +1,5 @@
+import {EmployerSelector} from './EmployerSelector';
+import {normalizeEmployerScope} from './employer-context';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -23,6 +25,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const { tenantId } = await params;
   if (!uuid(tenantId)) notFound();
   const query = await searchParams, path = `/tenant/${tenantId}/payroll`;
+  const employerDestination=normalizeEmployerScope(path,'workspace',query);if(employerDestination)redirect(employerDestination);
   const kept = Object.fromEntries(Object.entries(query).filter((entry): entry is [string, string] => typeof entry[1] === 'string'));
   const retry = `${path}?${new URLSearchParams(kept)}`;
   const failure = (text: string) => <PageFrame><section dir="rtl" className={styles.card}><h1>الرواتب</h1><p role="alert">{text}</p><p>اختيارات الجهة والفترة محفوظة في الرابط.</p><Link className="secondary-button" href={retry}>إعادة المحاولة</Link></section></PageFrame>;
@@ -81,13 +84,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   return <PageFrame><div dir="rtl" className={styles.workspace}>
     <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>الرواتب</h1>
       <p>{calendar.employer_name}</p>
-      <form method="get" action={path} className={styles.filters}>
-        <label htmlFor="payroll-employer">جهة العمل<select id="payroll-employer" name="employer" defaultValue={employer} aria-describedby="payroll-employer-hint" required>
-          {!employers.some(item => item.id === employer) && <option value={employer}>{calendar.employer_name}</option>}
-          {employers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-        </select></label><button className="secondary-button">عرض جهة العمل</button>
-      </form>
-      <p id="payroll-employer-hint" className="field-hint">لكل جهة دورة ومسير مستقلان. عرض جهة أخرى ينقلك إلى فتراتها.</p>
+      <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={{...query,period:periodId}} singleEmployer={found.data.unique_employer===employer}/>
       <Link href={path}>اختيار جهة أخرى</Link>
       <p className="field-hint">للبحث أو عرض بقية الجهات، افتح اختيار جهة أخرى.</p>
     </header>

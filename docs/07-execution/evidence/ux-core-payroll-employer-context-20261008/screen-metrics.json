@@ -1,0 +1,92 @@
+[
+  {
+    "scene": "workspace-paged",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "setup-paged",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "inputs-paged",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "runs-paged",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "advances-paged",
+    "scrollWidth": 375,
+    "selectorCount": 1,
+    "width": 390
+  },
+  {
+    "scene": "workspace-paged",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "setup-paged",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "inputs-paged",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "runs-paged",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "advances-paged",
+    "scrollWidth": 753,
+    "selectorCount": 1,
+    "width": 768
+  },
+  {
+    "scene": "workspace-paged",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "setup-paged",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "inputs-paged",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "runs-paged",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "advances-paged",
+    "scrollWidth": 1351,
+    "selectorCount": 1,
+    "width": 1366
+  }
+]

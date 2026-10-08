@@ -1,0 +1,45 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**There is one must-fix, in advances. Everything else is accepted within the stated scope.**
+
+## Must-fix: the same-employer submit drops the corrected-advance link on advances
+
+- **Where:** in `employer-context.ts:10`, the advances whitelist keeps `new` and `employment` but not `corrected_advance`.
+- **Why it matters:** the "إعداد مبلغ صحيح مرتبط بالسجل الأصلي" flow opens creation with `new=1`, `employment` and `corrected_advance`. The creation `AdvanceForm` receives `correctedAdvance={q.corrected_advance}`, and the employee-search form deliberately keeps it as a hidden field (`advances/page.tsx`, creation section).
+- **What happens:** if the user re-submits the same employer during that flow, the redirect keeps `new=1` and `employment` but drops `corrected_advance`. The page then shows a normal creation form for the same employee. Saving would create an advance that is **not linked** to the corrected record, which changes the financial meaning.
+- **Fix:** add `corrected_advance` (UUID) to the advances whitelist, kept only when `new==='1'`. The alternative, dropping `new` and `employment` whenever `corrected_advance` is present, loses context and is the weaker option.
+- **Test:** add one normalizer case and one actual-source case: same employer with `new=1&employment=X&corrected_advance=Y` must keep all three.
+
+## Accepted
+- **Normalizer:** the marker is handled before the client, auth and every RPC on all five pages:
+  - root `:28`, before its existing setup/`before` redirect;
+  - runs `:27`, inputs `:20`, advances `:17`, setup `:16`.
+
+  It redirects only when `employer_scope` is present, to a constant path. A same employer keeps the validated whitelist values. A different or invalid marker keeps only `employer`. An invalid or empty target employer is caught by the existing page checks or the chooser, with no RPC.
+- **Whitelists:**
+  - `q` on root and setup (the employer search) isn't carried; `q` on runs and inputs (the employee search) is.
+  - `stage` isn't carried on setup.
+  - `correction_*` is carried only when `advance` is a UUID.
+  - Root and runs pass the resolved period (`periodId` or `period`) as context.
+- **Selector:**
+  - The selector component is shared and server-rendered: a GET form with a secondary submit and no JS.
+  - The current-employer option appears when that employer is missing from the loaded list, using each page's authoritative name. Inputs falls back honestly to "الجهة المحددة".
+  - It is hidden only through `unique_employer`, never through the list length.
+  - The hint about unsaved edits is accurate.
+- **Placement:**
+  - It sits inside the existing header on root, runs, inputs and advances, and inside setup's identity card.
+  - `DeductionRecovery`, `AdvanceRecovery` and the positions of the keyless forms don't change.
+  - The original chooser links are kept.
+  - The IDs `payroll-employer` and `payroll-employer-hint` occur once per page.
+- **Authority:** the marker only restores URL fields the user could have typed. The page validations and RPC authorization still decide everything.
+
+**Minor, recorded:** advances doesn't pass `singleEmployer`, because `payroll_advance_choices` has no `unique_employer`. So a tenant with one employer still sees the selector there. It's harmless and needs no fix now.
+
+## Still open
+- **Qualification:**
+  - a visual check with multiple employers (the root/setup/inputs/runs fixtures have a single employer, so the selector is hidden);
+  - unsaved input lost on navigation at runtime;
+  - real roles and providers, finance, hydration and the full parent.
+- **Other pages:** employer context for reports, output, corrections and payments is still pending discovery of the permitted data path.
+- **Reference:** full reference match is **NOT VISUALLY VERIFIED**.
+- **Closure:** no R0–R8, phase or semantic promotion.

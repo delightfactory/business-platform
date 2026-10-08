@@ -1,3 +1,5 @@
+import {EmployerSelector} from '../EmployerSelector';
+import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
@@ -12,6 +14,7 @@ type Query=Record<string,string|undefined>;
 export default async function AdvancesPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<Query>}){
  const {tenantId}=await params,q=await searchParams;if(!uuid(tenantId))notFound();
  const path=`/tenant/${tenantId}/payroll/advances`,keep=Object.fromEntries(Object.entries(q).filter((x):x is [string,string]=>typeof x[1]==='string'));
+ const employerDestination=normalizeEmployerScope(path,'advances',q);if(employerDestination)redirect(employerDestination);
  const href=(delta:Record<string,string>)=>`${path}?${new URLSearchParams({...keep,...delta})}`;
  let actorId:string|null=null;
  const failure=(text:string)=><PageFrame><section dir="rtl" className={styles.card}><h1>سلف الموظفين</h1><p role="alert">{text}</p>{actorId&&q.employer&&uuid(q.employer)&&<AdvanceRecovery actor={actorId} tenant={tenantId} employer={q.employer}/>}<Link href={href({})}>إعادة المحاولة بنفس السياق</Link></section></PageFrame>;
@@ -41,7 +44,7 @@ export default async function AdvancesPage({params,searchParams}:{params:Promise
  const corrections=[...(correctionData?.selected&&!correctionData.items.some(c=>c.id===correctionData.selected!.id)?[correctionData.selected]:[]),...(correctionData?.items??[])];
  const common=d?{...scope,advance:d.id,employment:d.employment_id,revision:d.revision,today:w.today,periods}:null;
  return <PageFrame><div dir="rtl" className={styles.workspace}>
- <header><h1>سلف الموظفين</h1><p>{w.employer.name}{d?` · ${d.name}`:''}</p><Link href={href({employer:'',advance:'',new:'',employment:'',period:''})}>تغيير جهة العمل</Link></header>
+ <header><h1>سلف الموظفين</h1><p>{w.employer.name}{d?` · ${d.name}`:''}</p><EmployerSelector path={path} page="advances" employer={q.employer!} name={w.employer.name} choices={employers.items} context={q}/><Link href={href({employer:'',advance:'',new:'',employment:'',period:''})}>تغيير جهة العمل</Link></header>
  <AdvanceRecovery {...scope}/>
  <nav className={styles.reviewNavigation} aria-label="أقسام السلف">{d&&common?<><a href="#payroll-advance-summary">الرصيد والخطوة التالية</a><a href="#payroll-advance-schedule">الأقساط</a><a href="#payroll-advance-history">الحركات والتصحيح</a></>:<><a href="#payroll-advance-list">السلف المحفوظة</a>{creation&&w.access.can_manage&&w.access.enabled&&<a href="#payroll-advance-create">السلفة الجديدة</a>}</>}</nav>
  {!w.access.enabled&&<section className={styles.card}><p>إنشاء السلف وتفعيل صرف جديد غير متاحين. يمكن للمسؤول المخول متابعة الأرصدة وتسوية الالتزامات القائمة.</p></section>}

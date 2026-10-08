@@ -1,0 +1,8 @@
+{
+  "focusedChecks": 58,
+  "scopedLint": "PASS",
+  "buildExit": 0,
+  "typeScript": "PASS",
+  "groupedBuilds": 1,
+  "unaffectedContracts": "financial/SQL/Auth/recovery unchanged evidence reused"
+}
