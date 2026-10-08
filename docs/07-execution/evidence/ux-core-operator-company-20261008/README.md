@@ -27,3 +27,30 @@ Application2cd7e45 unchanged. [Bounded integration evidence](sql-snapshot-integr
 Official direct Opus5.5 Medium evidence review ACCEPT with reporting flaw: initial report omitted explicit positive own flags/snapshot actor labels. Captured results were added and independently checked; no rerun. Source guard is import-free and normalized hash pinned. Source and existing grouped build evidence reused; no app edits/lint/build/heavy SQL suite/provider repeats or services/new login access.
 
 Preflight proved old two QA accounts are not platform operators; expired dedicated Auth/REST roles remain NOLOGIN and QA sign-in passwords remain unset. Do not reactivate the historical runtime for this evidence. Full Auth login/token/session, native browser/noJS, all actors/states/mutations and full Concept C/R3/B2/R0-R8 acceptance remain OPEN. Historical recreation script and full eval source were read; the old preparation code outside eval changes ownership/grants and old retirement deletes files/has a hardcoded expiry, so neither full historical preparation nor retirement script was executed/reused. Only bounded local SQL fixture transaction above ran.
+
+## Grouped full-parent default-frame checkpoint
+
+Application base7dbc2cf41ca7347975a4b88c1156b2783ab05772, followed ONLY by the three presentation deltas fingerprinted below. Actual copied root/operator parent/Cairo/globals/workspace/shared form/pages, synthetic SDK and actions. Native keyboard lifecycle→limits→units→lifecycle preserved the same company, N3/C0 in this observed path; no matched before baseline, speed claim or complete business-task proof. Preliminary nine DOM samples390/768/1366 had no horizontal overflow, loaded Cairo and shared40desktop/44mobile controls; their fullPage images were horizontally cropped and EXCLUDED. Ordinary viewport captures replace them, with ACTUAL1280×720 limits desktop,1366×900 final lifecycle/units desktop and390×900 mobile. Browser viewport capability initially affected a different existing tab; a fresh capability on the new tab applied correctly. These are capture limitations, not app failures.
+
+Official direct Opus5.5Medium first review read eight usable images and found two concrete must-fixes: zero-padding transparent heading wrapper inherited a workspace shadow, and date digits differed from counts. Scoped later selector removes ONLY the three wrapper shadows, leaving child surfaces untouched; numberingSystem latn in three existing date displays retains Arabic month/Cairo timezone/exclusive-end minus1ms. Codex independently checked the actual CSS cascade and date options. No actions, RPCs, fields, authority, storage, reference originals or domain behavior changed.
+
+Final independent verdicts: Codex **SCOPED MATCH WITH ACCEPTED DEVIATIONS**, Claude **SCOPED MATCH WITH ACCEPTED DEVIATIONS**, official session223235b6-52b4-47c9-93d3-5de966878ae9, actual modelclaude-opus-5-5/effortmedium/readOnlyUnchangedtrue. Claude actually read all seven final/reference images listed here except the before image; both earlier findings resolved, no must-fix remains. Claude described the removed shadow as lifecycle card shadow; precise source change is outer detail WRAPPER only, not child cards. Existing Cairo/radius8/40-44/operator-sidebar/accessibility-border contracts remain. Pinned normalized original referenceSHA256af24015383285eaf543e9c95839f55225c2fe9817dd8b1e16d2084f857725508, Today HR view has no corresponding operator screen. Common surfaces/colors/secondary-control direction only.
+
+Affected ESLint and TypeScript exit0, native shadownone/Latin-date/nooverflow checked. Mobile end-of-scroll proves final payroll control/footer above fixed nav. Existing grouped build/source65cases/localSQL integration reused; no repeated build/SQL/Auth tests. Full R3/B2/R0–R8, full reference/all states, actual login/account authority/business mutations, matched N/C/P/I/B, comprehensive a11y/hover/dark/branding and mobile fourth nav label remain OPEN. Development overlay obscures fourth mobile nav label; mobile limits end not separately captured. No false fullphase closure or semantic-register promotion. Own tabs99–102 closed, temporary viewport reset, only own loopback3614 stopped and listener absent. No real credentials/services/access created.
+
+Source SHA256 normalizedLF:
+- `src/app/workspace.css`: `06ef90d0d65d47987396a4e05a5b4d1f65d0830f4a9a32cbdf93d8d05e5e6aed`
+- `src/app/operator/commercial/[tenantId]/page.tsx`: `8a0e1f20838bf49b76354a830aee2e76f533463ecc840e22ab95cd3715a8dc83`
+- `src/app/operator/entitlements/[tenantId]/page.tsx`: `e605d37fcb3e833aa2a8b07e6ebb10cb7add29cd3961acb7a8928c79d65e539c`
+
+Representative preserved native frames (synthetic company only):
+- [reference-valid-viewport.jpg](reference-valid-viewport.jpg)
+- [company-limits-desktop-valid.jpg](company-limits-desktop-valid.jpg)
+- [company-limits-final-desktop.jpg](company-limits-final-desktop.jpg)
+- [company-limits-final-mobile.jpg](company-limits-final-mobile.jpg)
+- [company-units-final-mobile.jpg](company-units-final-mobile.jpg)
+- [company-units-final-mobile-end.jpg](company-units-final-mobile-end.jpg)
+- [company-lifecycle-final-desktop.jpg](company-lifecycle-final-desktop.jpg)
+- [company-units-final-desktop.jpg](company-units-final-desktop.jpg)
+
+Raw review/harness/initial cropped and intermediate images remain local, excluded from GitHub. This checkpoint uses the existing spec/evidence/progress records, no new tracking document.

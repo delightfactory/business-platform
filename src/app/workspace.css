@@ -157,6 +157,9 @@
   box-shadow: var(--shadow-card);
 }
 .workspace-frame .work-card:first-of-type { margin-block-start: 2rem; }
+.workspace-frame .work-card:is(.operator-lifecycle-detail, .operator-setting-detail) {
+  box-shadow: none;
+}
 .workspace-page-heading {
   display: flex;
   align-items: end;
