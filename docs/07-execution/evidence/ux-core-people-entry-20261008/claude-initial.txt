@@ -1,0 +1,33 @@
+**Verdict: CHANGES REQUIRED.** It's one small CSS fix. Apart from that, the slice is a **MATCH WITH ACCEPTED DEVIATIONS**. This covers only the directory and add-employee screens. It does not close full R4, R0–R8, or acceptance of the whole journey.
+
+**What I inspected:** all 10 JPEGs: `reference-1366`, `reference-390`, `after-directory-1366/768/390`, `after-new-1366/390`, `after-pay-390`, `after-new-pending-390` and `after-new-error-390`. I also read `people-entry-presentation-slice.md`, `people/page.tsx`, `people/new/NewEmployeeForm.tsx` and `people.module.css`.
+
+### Must fix (introduced by this slice)
+1. **The start date breaks across lines in the narrower cards.** The text "يبدأ في 2026-11-01" wraps as "-2026" / "11-01" at 1366 and 390, and as "-2026-11" / "01" at 768. In right-to-left text the split reads in the wrong order, so the date is misleading. The cause is the new 3- and 2-column cards plus `overflow-wrap: anywhere` (`people.module.css:40`). Fix: keep the date on one line (`white-space: nowrap`) on the start-date `<bdi>` in `page.tsx:74`. Nothing else changes.
+
+### Should fix (polish, not blocking)
+- **Uneven gap under section headings in the form.** The gap under "العمل والفرع" and "الأجر الأساسي" is clearly bigger than under "بيانات الموظف" (`after-new-1366`, `after-pay-390`). The new heading margin (`.formGroup legend`, 0.75rem) likely adds to the form's existing label spacing.
+- **Cards have a larger gap between the employee code and the work line than between the name and the code.** The grid gap and the paragraph's top margin both apply.
+
+### Existing or open items (not caused by this slice)
+- **The error message doesn't look like an error.** "تعذر حفظ البيانات؛ راجع الحقول." appears in a pale teal box and isn't linked to any field (`after-new-error-390`). This uses the existing `.form-message.error-message` styling.
+- **The payroll checkbox crowds its label.** At 390 the focused checkbox touches or overlaps the first letter of "يُدرج" (`after-pay-390`). This comes from the shared `.checkbox-row` style. I have no "before" image, so check it against the baseline before calling it introduced.
+- **While saving, Cancel stays active.** The save button disables and shows a spinner, but Cancel can still be clicked (`after-new-pending-390`). This behaviour is unchanged, as the brief says.
+- **Core gates still pending:** instant search, the quick sheet, full profile tabs, the navigation-shell amendments, and D2/D3/D8. Search still uses the GET form with a button.
+- **The 23 controlled checks** cover access, RPC, link and control preservation only. They don't show hydration or real provider authority, and no click reduction is measured.
+
+### Differences from the reference (accepted)
+- **Data the real directory doesn't have:** the reference shows avatars, job and department lines, attendance badges (حاضر/متأخر/في إجازة) and the "248 موظفًا في 3 فروع" headcount. The real directory has no source for these, so leaving them out is correct. Our badges show employment status (نشط/سيبدأ قريبًا/انتهت خدمته/غير نشط) instead.
+- **Layout and shell:** at 1366 there are 3 columns instead of 4, because the temporary sidebar shell takes width. It reflows to 2 columns at 768 and 1 at 390, so cards are used at every size as plan 7.3 asks. The reference's top bar and mobile bottom navigation aren't there, because that shell is kept until the navigation amendments are decided.
+- **Header actions:** Import shows as a secondary button next to the one primary "إضافة موظف". It sits before it in reading order at every width, so it's seen first. Organisation and work-policy links are in an explicit settings row rather than a hidden menu. "عرض الملف" is a visible button on each card, and there's a page indicator ("الصفحة 1").
+- **Card alignment:** cards align to the top, so the long-name card doesn't stretch the others (visible at 1366 and 768).
+
+### What looks right
+- **Form groups:** the three named groups (identity, work and site, base pay) show every field, including the optional department and job and the payroll checkbox. Pay review is not collapsed.
+- **Focus and Arabic layout:** the code field is focused with a visible ring. Right-to-left layout and the Arabic labels look correct at 1366 and 390.
+- **Code matches the contract:** field names, constraints, options, defaults and the employer→site and department→job filtering are as the contract describes.
+
+### Limitations
+- All screens use controlled fixtures with synthetic data. There are no real-tenant or real-role renders.
+- There are no "before" screenshots, so I can't measure same-data geometry against the old screen.
+- I saw only static frames, so keyboard order, screen-reader output and the post-save result were not verified visually.

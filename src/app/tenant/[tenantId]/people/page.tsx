@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import styles from './people.module.css';
 
 export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
@@ -40,12 +41,16 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   return <PageFrame footer="الموارد البشرية">
     <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
       <h1>الموظفون</h1><p>ملفات الموظفين وتفاصيل عملهم في الشركة.</p></div>
-      {access.can_manage_org && <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</Link>}
-      {canManagePolicies && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>سياسات الدوام</Link>}
+      <div className={styles.entryActions}>
       {canImport && <Link className="secondary-button" href={`/tenant/${tenantId}/people/import`}>استيراد الموظفين</Link>}
       {canAdd && <Link className="primary-button" href={`/tenant/${tenantId}/people/new`}>إضافة موظف</Link>}
+      </div>
     </header>
-    <section className="workspace-records-panel" aria-label="دليل الموظفين">
+    {(access.can_manage_org || canManagePolicies) && <nav className={styles.settingsLinks} aria-label="إعدادات الموارد البشرية">
+      {access.can_manage_org && <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</Link>}
+      {canManagePolicies && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>سياسات الدوام</Link>}
+    </nav>}
+    <section className={`workspace-records-panel ${styles.directoryPanel}`} aria-label="دليل الموظفين">
       <form method="get" role="search" className="people-search-form">
         <label htmlFor="people-query">ابحث بالاسم أو رمز الموظف</label>
         <div><input id="people-query" name="q" type="search" maxLength={100} defaultValue={query} placeholder="مثال: أحمد أو EMP-12" />
@@ -61,14 +66,15 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
           {page > 1 && <Link className="secondary-button" href={pageHref(tenantId, query, page - 1)}>العودة إلى الصفحة السابقة</Link>}
         </div>
         : <>
-          <ul className="record-list">{employees.map((employee) => <li className="record-card" key={employee.id}>
-            <div className="record-main"><div className="record-title-row"><h2>{employee.name}</h2>
-              <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
-                {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span></div>
+          <ul className={styles.directoryList}>{employees.map((employee) => <li className={styles.employeeRow} key={employee.id}>
+            <div className={styles.employeeIdentity}><h2>{employee.name}</h2>
               <p className="record-meta">رمز الموظف: <bdi>{employee.code}</bdi></p>
-              <p className="record-meta">{[employee.employer, employee.site].filter(Boolean).join(' · ') || 'لم يبدأ العمل بعد'}
-                {employee.status === 'scheduled' && employee.start_date && <> · يبدأ في <bdi>{employee.start_date}</bdi></>}</p>
-            </div><Link className="secondary-button" href={`/tenant/${tenantId}/people/${employee.id}`}>عرض الملف</Link>
+            </div>
+            <p className={`record-meta ${styles.employmentContext}`}>{[employee.employer, employee.site].filter(Boolean).join(' · ') || 'لم يبدأ العمل بعد'}
+              {employee.status === 'scheduled' && employee.start_date && <> · يبدأ في <bdi>{employee.start_date}</bdi></>}</p>
+              <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
+                {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
+            <Link className="secondary-button" aria-label={`عرض ملف ${employee.name}`} href={`/tenant/${tenantId}/people/${employee.id}`}>عرض الملف</Link>
           </li>)}</ul>
           <nav className="people-pagination" aria-label="صفحات دليل الموظفين">
             <span>الصفحة {page}</span>

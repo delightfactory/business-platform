@@ -1,0 +1,114 @@
+.entryActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.settingsLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: min(100%, 70rem);
+  margin: 0 auto 1rem;
+}
+
+.directoryPanel:global(.workspace-records-panel) {
+  border-radius: 0.5rem;
+}
+
+.directoryList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem 1.4rem;
+  list-style: none;
+  background: var(--surface-subtle);
+}
+
+.employeeRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: white;
+  overflow-wrap: anywhere;
+}
+
+.employeeRow > :global(.entity-status) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.employmentContext {
+  grid-column: 1 / -1;
+}
+
+.employmentContext bdi {
+  white-space: nowrap;
+}
+
+.employeeRow > :global(.secondary-button) {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.employeeIdentity,
+.employmentContext {
+  min-width: 0;
+}
+
+.employeeIdentity h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.employeeIdentity p,
+.employmentContext {
+  margin-block: 0.25rem 0;
+}
+
+.formGroup {
+  display: grid;
+  min-width: 0;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.formGroup legend {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.formGroup + .formGroup {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 1100px) {
+  .directoryList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .directoryList {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 1rem;
+  }
+  .employeeRow {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+}

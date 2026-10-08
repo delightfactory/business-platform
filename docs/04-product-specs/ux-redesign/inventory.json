@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "8436d3ce4815a32c22684facd993f40852aee06d",
+  "sourceHead": "eb2fc20119ccb553343ed6bed1cd236dab1fff86",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1120,7 +1120,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
       "phase": "R4",
-      "sha256": "0117c8b9331e269973928ba52464fe00161060f3ea882774a2003a226d324fb8"
+      "sha256": "31fb3fdc44bef1aca4f41f98cb4a486472e0b12019fae693dd0ffd41b9e5ab86"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/new/page.tsx",
@@ -1150,7 +1150,12 @@
     {
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
       "phase": "R4",
-      "sha256": "9012932de117323313e42ea66d95d0e4363a79c5b83f34e5236dd4c02e82bf99"
+      "sha256": "7994dd9a01a9271952daacc81ddb0eb72d029bb4e24761cb05be7eadfa66d1d3"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people.module.css",
+      "phase": "R4",
+      "sha256": "4e8e3d730ef23f814574468afbc92d337e7be4a625004a8ad8b016822afa1c90"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-assignment-actions.ts",
@@ -6276,9 +6281,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:26:1629",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:27:1670",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 26,
+      "line": 27,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6286,9 +6291,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:29:1877",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:30:1918",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 29,
+      "line": 30,
       "phase": "R4",
       "name": "time_work_policy_catalog",
       "expression": null,
@@ -6296,9 +6301,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:34:2426",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:35:2467",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 34,
+      "line": 35,
       "phase": "R4",
       "name": "people_directory_page",
       "expression": null,
@@ -15826,9 +15831,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:35:2195",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:36:2237",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -15836,9 +15841,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:36:2279",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:37:2321",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15847,9 +15852,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:39:2424",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:40:2512",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 39,
+      "line": 40,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15857,9 +15862,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:41:2585",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:42:2673",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 41,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15867,9 +15872,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:46:2896",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:48:3045",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 46,
+      "line": 48,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15877,9 +15882,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:51:3220",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:53:3369",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 51,
+      "line": 53,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15887,9 +15892,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:57:3699",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:59:3848",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 57,
+      "line": 59,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15898,9 +15903,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:59:3900",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:61:4049",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 59,
+      "line": 61,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15908,9 +15913,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:63:4310",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:65:4459",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 63,
+      "line": 65,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15918,9 +15923,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:70:4736",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:73:4946",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 70,
+      "line": 73,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -15928,9 +15933,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:74:4990",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:77:5200",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 74,
+      "line": 77,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -15939,9 +15944,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:77:5236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:80:5446",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 77,
+      "line": 80,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -16095,17 +16100,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:49:3602",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:54:3862",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 49,
+      "line": 54,
       "tag": "form",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:51:3754",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:56:4014",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 51,
+      "line": 56,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -16114,9 +16119,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:52:3888",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:57:4148",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 52,
+      "line": 57,
       "tag": "button",
       "phase": "R4",
       "attributes": {
@@ -16983,7 +16988,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 256,
+    "sourceFiles": 257,
     "pages": 75,
     "endpoints": 3,
     "boundaries": 8,

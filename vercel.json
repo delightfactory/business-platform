@@ -64,7 +64,8 @@
       "codex/ux-leave-unknown-recovery": false,
       "codex/ux-core-leave-overview": false,
       "codex/ux-core-leave-task": false,
-      "codex/ux-core-leave-followup": false
+      "codex/ux-core-leave-followup": false,
+      "codex/ux-core-people-entry": false
     }
   }
 }

@@ -1,0 +1,138 @@
+{
+  "passed": 23,
+  "checks": [
+    {
+      "state": "normal",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "normal",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "readonly",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "readonly",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noCompensation",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noCompensation",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noImport",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noImport",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noOrg",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "noOrg",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "empty",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "empty",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "directoryFailure",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "directoryFailure",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "setup",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "setup",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "pending",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "pending",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "error",
+      "kind": "directory",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "state": "error",
+      "kind": "new",
+      "result": "PASS",
+      "callsLinksControlsPreserved": true
+    },
+    {
+      "query": "2",
+      "result": "PASS"
+    },
+    {
+      "query": "long-query",
+      "result": "PASS"
+    },
+    {
+      "query": "1001",
+      "result": "PASS"
+    }
+  ],
+  "boundary": "Actual page/client source with controlled SDK/hook context; not hydration/business/provider mutation qualification"
+}

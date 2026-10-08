@@ -1,0 +1,210 @@
+{
+  "baseline": "eb2fc20119ccb553343ed6bed1cd236dab1fff86",
+  "candidateSource": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/page.tsx",
+      "sha256NormalizedLF": "7994dd9a01a9271952daacc81ddb0eb72d029bb4e24761cb05be7eadfa66d1d3"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/new/page.tsx",
+      "sha256NormalizedLF": "d69cf28cb9fd84ee17feffca088e2dfeace31358c3464a08a8bbe0e0f16b7497"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
+      "sha256NormalizedLF": "31fb3fdc44bef1aca4f41f98cb4a486472e0b12019fae693dd0ffd41b9e5ab86"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people.module.css",
+      "sha256NormalizedLF": "4e8e3d730ef23f814574468afbc92d337e7be4a625004a8ad8b016822afa1c90"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "after-directory-1366.jpg",
+      "encoding": "binary",
+      "sha256": "0ed47a460ce133c0a3d083121f5756e30a35fe3c6b9a69e285945b24edb85e80"
+    },
+    {
+      "file": "after-directory-390.jpg",
+      "encoding": "binary",
+      "sha256": "c27978c4442910a2fd642e6e125af9a9f6de65d8fc36395361e8872eb367a8aa"
+    },
+    {
+      "file": "after-directory-768.jpg",
+      "encoding": "binary",
+      "sha256": "6cd654121760e468cae87b90e616db1057a3706c0526f37578fd956295359ef6"
+    },
+    {
+      "file": "after-directoryFailure-390.jpg",
+      "encoding": "binary",
+      "sha256": "c64d0aec7d65b01217be3185c9add695e64d68b6777818ebe14b208fa7592243"
+    },
+    {
+      "file": "after-empty-390.jpg",
+      "encoding": "binary",
+      "sha256": "160215038875d1dd9c1a56686b28189b35583606426b4f385eef59abd08d778f"
+    },
+    {
+      "file": "after-new-1366.jpg",
+      "encoding": "binary",
+      "sha256": "d39d1845cdf17e1347d785fba9968585346bc2f57d2811856e7e7a04f88b5097"
+    },
+    {
+      "file": "after-new-390.jpg",
+      "encoding": "binary",
+      "sha256": "0b59511a242e1c48a1542a3f8f6acda108742d72e5dabfc4c64c045936258484"
+    },
+    {
+      "file": "after-new-768.jpg",
+      "encoding": "binary",
+      "sha256": "6d070d0cacdb531e0c111ff17075e88b6fd231b0246b04c57b0b2315ffb33cbf"
+    },
+    {
+      "file": "after-new-error-390.jpg",
+      "encoding": "binary",
+      "sha256": "83760cda9c5393a20715b5e6af04e9a1f9b8f40c9684c2af08c23e88e1602da0"
+    },
+    {
+      "file": "after-new-pending-390.jpg",
+      "encoding": "binary",
+      "sha256": "13a7ffa8f2e5a48da37a9419aac4eb0d4dda24e3f01d73f8d6452752f1d298f0"
+    },
+    {
+      "file": "after-new-setup-390.jpg",
+      "encoding": "binary",
+      "sha256": "fadb6bd43a7edb8471322f6e4b9dc3da676b34909011864e60363e79910eab22"
+    },
+    {
+      "file": "after-pay-390.jpg",
+      "encoding": "binary",
+      "sha256": "08a9efd72d5b3afe3d7888513189e5340b7b40e9034eee8b77fc443c8c015162"
+    },
+    {
+      "file": "after-readonly-390.jpg",
+      "encoding": "binary",
+      "sha256": "f42b4f1eff8fae09c913573ec75b3ca03754f4bce7e3a2cc52b42dff1d957502"
+    },
+    {
+      "file": "before-directory-1366.jpg",
+      "encoding": "binary",
+      "sha256": "449d894909856ef9954117bd2fc9d4eb620e86d495f43f299cb178d00ee13979"
+    },
+    {
+      "file": "before-directory-390.jpg",
+      "encoding": "binary",
+      "sha256": "1e5781a971272c366e3e26964c0a488f13cb5f40e27f416ba100f5d648bad9be"
+    },
+    {
+      "file": "before-directory-768.jpg",
+      "encoding": "binary",
+      "sha256": "fbfe24ee8d29f61dfa05deb9317e8543b0a065ba311e79fa5e625584881d295a"
+    },
+    {
+      "file": "before-new-1366.jpg",
+      "encoding": "binary",
+      "sha256": "a7ffd6f8411463ffcc5d59c83bbd35839e15a5f7c2df851ae6023248abb875c9"
+    },
+    {
+      "file": "before-new-390.jpg",
+      "encoding": "binary",
+      "sha256": "10fb87515c23d1caeead7a2f4857164b2aeccd2d849b6e5e5b11c13ec6e60f7a"
+    },
+    {
+      "file": "before-new-768.jpg",
+      "encoding": "binary",
+      "sha256": "4b5dbd7011ff317b8fb34f52d1d0bf479e4e9d36ceedfbf12f794b128684afeb"
+    },
+    {
+      "file": "before-pay-390.jpg",
+      "encoding": "binary",
+      "sha256": "67737c5bda648c7c0ddb8a2bc4b86baa4e205895f1a2fcfd60eea42379a24287"
+    },
+    {
+      "file": "browser-measures.json",
+      "encoding": "normalizedLF",
+      "sha256": "3fafb38df1124659faf67c4956e45c0ddbfafb2f001105b837dc66f60dd4668a"
+    },
+    {
+      "file": "claude-brief.txt",
+      "encoding": "normalizedLF",
+      "sha256": "f1b9b3ef63b3d419dc2beed7f23f5782120d13d2a9e448293a8e8f353f68a5c7"
+    },
+    {
+      "file": "claude-delta-brief.txt",
+      "encoding": "normalizedLF",
+      "sha256": "15f518df5142b4c853a14502cb0471b5dde6e41001a72c104977bf964a952ba1"
+    },
+    {
+      "file": "files.json",
+      "encoding": "normalizedLF",
+      "sha256": "8b726137205a5fa7492ec8fa4984ffef227ba3ae218ddb62655c20335f1c557c"
+    },
+    {
+      "file": "final-directory-1366.jpg",
+      "encoding": "binary",
+      "sha256": "ae67fc59f59bce09e4f2fb9d3a6e2f672885e4009b3d76b4eb354ada157f7dc5"
+    },
+    {
+      "file": "final-directory-390.jpg",
+      "encoding": "binary",
+      "sha256": "b0501a834feaef41082a1385c4c99f8d3f9246dd7236ca16d3859dc5dfb5d656"
+    },
+    {
+      "file": "final-directory-768.jpg",
+      "encoding": "binary",
+      "sha256": "40812846b21081ac03ff28d136c017a46ffff85a18e85ad1c05261ffb3a4697b"
+    },
+    {
+      "file": "final-directory-measures.json",
+      "encoding": "normalizedLF",
+      "sha256": "af875cadea0cf4d451874d21156beaa476ddb0314473fbefabd9c3dbab7c237b"
+    },
+    {
+      "file": "focused-results.json",
+      "encoding": "normalizedLF",
+      "sha256": "a906075c9ec44e58c90ff391aa585de0ade28371edad71ab2d454059edb1cd55"
+    },
+    {
+      "file": "reference-1366.jpg",
+      "encoding": "binary",
+      "sha256": "75e9e599449e9836ecddb358901643c6c0e1b9cbba36ccefb2a2e5bb27595bfa"
+    },
+    {
+      "file": "reference-390.jpg",
+      "encoding": "binary",
+      "sha256": "1660de7c6178fa5ab854086e812e08282a7de6205ff2c7c1a09628c9ddeb739d"
+    },
+    {
+      "file": "reference-768.jpg",
+      "encoding": "binary",
+      "sha256": "b51a96cfe3fc93f48135f623dd172396f6ecea2e3177db429699241c6cbabb26"
+    },
+    {
+      "file": "search-focus-390.jpg",
+      "encoding": "binary",
+      "sha256": "932a179861a7f5b8f14df6dfe673fa153632ebe70ecf9758e13d90c27eb7df85"
+    },
+    {
+      "file": "claude-initial.txt",
+      "encoding": "normalizedLF",
+      "sha256": "f42e5e3638500eab8ed31c59f1283e087352769c42c71ce5f8be8ca34c0ce768"
+    },
+    {
+      "file": "claude-final.txt",
+      "encoding": "normalizedLF",
+      "sha256": "5c3d27f76665090fa9350464fae91c2c317e6f8f8fea6e9ad48240825f13858e"
+    },
+    {
+      "file": "fixture.cjs.txt",
+      "encoding": "normalizedLF",
+      "sha256": "a81eb40ff03fa162ec85f682719087fa58997d5a30b629ab55646f77b65cc4ba"
+    }
+  ],
+  "boundary": "Synthetic static GET-only fixtures and rendered review; not hydrated/provider/business acceptance; directory final-* supersede after-directory images",
+  "checks": {
+    "controlledPreservationCases": 23,
+    "scopedLint": "PASS",
+    "buildAndTypecheck": "PASS before the only final delta: nowrap date CSS; final delta browser checked at three widths, no repeated heavy gates"
+  },
+  "corePriority": "R0-R8 approved plan first; D16 integration and nonblocking polish deferred"
+}

@@ -1,0 +1,32 @@
+**Updated verdict: MATCH WITH ACCEPTED DEVIATIONS.** This covers only the directory and add-employee screens, and only as static visual and preservation checks. Full R4 and R0–R8 are not closed.
+
+**Images inspected:**
+- **This round:** `final-directory-1366.jpg`, `final-directory-768.jpg` and `final-directory-390.jpg`.
+- **Reused from the first round:** the 10 earlier images (reference 1366/390, directory 1366/768/390, new-employee form 1366/390, pay section 390, saving 390, error 390).
+- **Source:** I confirmed the rule `.employmentContext bdi { white-space: nowrap; }` at `people.module.css:52`.
+
+**Date fix resolved.** In the scheduled employee's card, "2026-11-01" now stays whole and moves to its own line after "يبدأ في" at all three widths. It reads correctly right-to-left and doesn't overflow the card. Your DOM check matches what I see: one box per date and no overflow. Nothing else on the directory screen changed visibly from the earlier images.
+
+**Should fix (polish, not blocking, unchanged):**
+- The gap under each section heading in the form is uneven.
+- In each card, the gap between the employee code and the work line is larger than the gap between the name and the code.
+
+**Existing or open items (not caused by this slice, unchanged):**
+- The error message has a pale teal box that doesn't look like an error, and it isn't linked to any field.
+- At 390 the focused payroll checkbox crowds the first letter of its label. It comes from the shared `.checkbox-row` style; check it against the baseline.
+- While saving, Cancel stays active. This behaviour is unchanged, and the saving frame doesn't show the whole journey works.
+- Core items still pending: instant search, the quick sheet, full profile tabs, and the navigation-shell amendments. Search still uses the GET form with a button.
+- D2/D3/D8 are pending and D16 is deferred.
+- The 23 controlled checks don't show hydration or real provider authority. No click reduction is claimed.
+
+**Accepted differences from the reference (unchanged):**
+- The real directory has no data for avatars, job/department lines, attendance badges or the headcount, so they stay out.
+- At 1366 there are 3 columns instead of 4, because the temporary sidebar shell takes width.
+- Import appears as a secondary button next to the one primary "إضافة موظف".
+- Organisation and work-policy links sit in an explicit settings row.
+- Search uses a button rather than searching as you type.
+
+**Limitations:**
+- All screens use controlled fixtures with synthetic data. There are no real-tenant or real-role renders.
+- "Before" images exist in the archive but weren't part of this review, so I've made no same-data geometry comparison.
+- I saw only static frames, so keyboard order, screen-reader output and the result after saving were not verified.

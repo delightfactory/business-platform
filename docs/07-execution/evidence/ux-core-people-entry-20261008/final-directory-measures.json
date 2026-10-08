@@ -1,0 +1,35 @@
+[
+  {
+    "date": [
+      {
+        "lines": 1,
+        "text": "2026-11-01",
+        "whiteSpace": "nowrap"
+      }
+    ],
+    "overflow": false,
+    "width": 1366
+  },
+  {
+    "date": [
+      {
+        "lines": 1,
+        "text": "2026-11-01",
+        "whiteSpace": "nowrap"
+      }
+    ],
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "date": [
+      {
+        "lines": 1,
+        "text": "2026-11-01",
+        "whiteSpace": "nowrap"
+      }
+    ],
+    "overflow": false,
+    "width": 390
+  }
+]

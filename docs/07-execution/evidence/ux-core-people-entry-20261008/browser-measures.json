@@ -1,0 +1,676 @@
+{
+  "browser": "Codex In-app Browser",
+  "version": "unavailable",
+  "samples": [
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 40,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 40,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 40,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 40,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — before",
+      "width": 1366
+    },
+    {
+      "columns": "314.15px 314.15px 314.15px",
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 40,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 40,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 40,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 40,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 40,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — after",
+      "width": 1366
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 40,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 40,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — before",
+      "width": 1366
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [
+        "بيانات الموظف",
+        "العمل والفرع",
+        "الأجر الأساسي"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 40,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 40,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — after",
+      "width": 1366
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 55.60000228881836,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 55.60000228881836,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 55.60000228881836,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 44,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — before",
+      "width": 768
+    },
+    {
+      "columns": "322.163px 322.163px",
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 44,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 44,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 44,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — after",
+      "width": 768
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 44,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — before",
+      "width": 768
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [
+        "بيانات الموظف",
+        "العمل والفرع",
+        "الأجر الأساسي"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 44,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — after",
+      "width": 768
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 44,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 44,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 44,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — before",
+      "width": 390
+    },
+    {
+      "columns": "309.2px",
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "استيراد الموظفين"
+        },
+        {
+          "height": 44,
+          "text": "إضافة موظف"
+        },
+        {
+          "height": 44,
+          "text": "الأقسام والوظائف"
+        },
+        {
+          "height": 44,
+          "text": "سياسات الدوام"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "q"
+        },
+        {
+          "height": 49.20000076293945,
+          "text": "بحث"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        },
+        {
+          "height": 44,
+          "text": "عرض الملف"
+        }
+      ],
+      "title": "directory — normal — after",
+      "width": 390
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 44,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — before",
+      "width": 390
+    },
+    {
+      "columns": null,
+      "fonts": "loaded",
+      "groups": [
+        "بيانات الموظف",
+        "العمل والفرع",
+        "الأجر الأساسي"
+      ],
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 52.400001525878906,
+          "text": "code"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "name"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "جهة تجريبية أجهة تجريبية ب"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "فرع أ"
+        },
+        {
+          "height": 54.400001525878906,
+          "text": "startDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنقسم تجريبي"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "دون تحديد الآنوظيفة عامة"
+        },
+        {
+          "height": 50.79999923706055,
+          "text": "شهرييومي"
+        },
+        {
+          "height": 52.400001525878906,
+          "text": "amount"
+        },
+        {
+          "height": 44,
+          "text": "إضافة الموظف"
+        },
+        {
+          "height": 44,
+          "text": "إلغاء"
+        }
+      ],
+      "title": "new — normal — after",
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "primary": 0,
+      "title": "directory — readonly — after",
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "primary": 1,
+      "title": "directory — empty — after",
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "primary": 1,
+      "title": "directory — directoryFailure — after",
+      "width": 390
+    },
+    {
+      "focus": "بحث",
+      "outline": "rgb(11, 114, 217) solid 2px"
+    }
+  ]
+}
