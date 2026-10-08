@@ -1,0 +1,82 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 corrections/advances/reports/setup: co-design verdict (spec on c905a4a, nothing applied yet)
+
+**Verdict:** I accept the bounded plan once the two reports must-fixes and the guards below are written into the spec. The main risk is in reports: the print stylesheet depends on DOM structure, so keeping the `@media print` rules byte-exact doesn't on its own keep printed output unchanged.
+
+## Must-fix (reports)
+
+1. **The new anchor nav would print.**
+   - **Why:** the print rules hide `.selector`, `.actions`, `.workspace>p`, `.workspace>a`, `.workspace>.card`, `.workspace>.totals` and header links (`reports.module.css:9,28–29`). A new `<nav>` matches none of these, so it would appear on paper, including payslips.
+   - **What's ruled out:** a new print rule, since the spec requires print rules to stay byte-exact.
+   - **Fix:** give the nav the existing print-hidden class `styles.actions`, or put it inside the `.selector` form. Then the existing rules hide it unchanged.
+
+2. **No new wrappers around the direct children of `.workspace`.**
+   - **Why:** print rules use the child combinator: `.workspace>.totals`, `.workspace>.printWarning`, `.workspace>header`, `.workspace>p`, `.workspace>.card`. Wrapping `dl.totals` in a `<section>` for an anchor would stop `.workspace>.totals{display:none}` from applying, so the totals would start printing.
+   - **Fix:** put IDs on the existing elements (`form.selector`, `dl.totals`, `div.tableRegion`, `footer.actions`).
+   - **Payslip mode:** either no records anchor, or an ID on the first `<article>` only.
+   - **Unchanged:** the order and nesting of the `.workspace` children, `data-print-scope`, `data-print-authorized`, `data-distributable`, `#payroll-report`, and the `PrintPayslipButton` props and render condition.
+
+**Required evidence:** before/after print-media captures (authorized and not-authorized payslip, plus a sheet report) that show identical printed output. Matching CSS bytes isn't enough proof.
+
+## Guards for all four pages
+
+- **One stable nav element per page.**
+  - **Why:** these forms have **no keys** — `AdvanceForm` (`advances:50,53,54,56,57`) and `CorrectionCommand` (`corrections:77–87`) — so React identifies them by position.
+  - **Rule:** render the nav unconditionally, and vary only the links inside it. Don't insert conditional siblings ahead of these keyless forms. Put IDs on existing sections; don't add wrappers around the forms.
+- **Recovery comes first.** The nav goes after `CorrectionRecoveryPanel` (`corrections:73`) and after `AdvanceRecovery` (`advances:45`). `failure()` in advances still renders `AdvanceRecovery`; keep it. No anchors to actions or recovery.
+- **Separate list class.** Use `.cardGrid` only. Setup's saved periods currently use the shared `.periods` (`setup:34`); switch only that list. The advances list is a set of `<article>`s inside the list section; a plain wrapper `<div className={cardGrid}>` around them is fine because there are no forms or keys there. The search form, pager and "new advance" link stay outside the grid.
+- **Corrections figures.** The amendment summary can move from `styles.dates` to `figureStrip`, provided:
+  - all six `dt` labels and `money` values stay exactly the same;
+  - the strip gives uniform emphasis, with no hero treatment for "صافي البديل المقترح". The page itself says approval is separate from any legally qualified amount.
+  - the per-employee `<details>` lines, segments, issues and settlement lists stay unchanged.
+- **Advances figures.** Principal and outstanding become `<dl>` figures in the same position as the old `<p>`, keeping `<bdi>`. The next installment, `record_corrected`, termination and "scheduled ≠ deducted" texts stay exactly the same.
+- **Reports, screen only.** Tokens, Cairo font, radius 8, and controls 40px on desktop / 44px on mobile (including the `.selector summary`, currently 2.4rem). Keep:
+  - the table's `white-space:nowrap` comparison columns;
+  - `role=region` and `tabIndex` on the table region;
+  - no duplicated mobile rows.
+- **Setup.** `CalendarForm`/`GenerateForm` keys, predicates and order stay unchanged. The hard-coded readiness list (`setup:35`) isn't promoted or restyled into a status.
+
+## Should-fix (cheap, presentation only)
+
+- **Two `<main>` landmarks.** `corrections` (`:42,71`) and `advances` (`:27,43`) render `<main>` inside `PageFrame`, which already renders `main.app-shell`. Change the inner element to `<div>`. No print or behaviour impact; neither page has print rules.
+
+## Recorded as open, not fixed in this batch
+
+- **Corrections, two primaries:** a review case can show approve (`:84`) and recalculate (`:86`) at the same time, both from unchanged `CorrectionCommand`s.
+- **Reports, two primaries:** the selector submit is styled as primary (`.selector button`) alongside the primary export button. Only token alignment is allowed here, so the dominant-action question stays open.
+- **Hard-coded claims:** the legal/readiness sentences in setup (and in corrections' `responsibilities`) are a source-fact gate.
+
+## Remaining required core gates
+
+- **Navigation:** permanent employer controls on all sub-pages, and the same-employer reset scenario.
+- **Root:**
+  - deductions, net and overtime figures;
+  - payment and time/leave facts;
+  - stage completion;
+  - per-employee owner routes.
+- **Inputs:** the two `InputForm` primaries, the hard-coded legal-qualification sentence, and a corrected-frame anchor capture.
+- **Output:** the historical label on superseded net, and the meaning of `explanation.deductions`.
+- **Payments:**
+  - the heading for unknown statuses;
+  - the second primary inside history;
+  - visibility of a pending request;
+  - a normal-state capture under the corrected frame.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **This batch:** printer and provider output, the double primaries above, and setup/corrections source facts.
+- **Not accepted:**
+  - real roles;
+  - financial transitions;
+  - hydrated recovery;
+  - JS-off;
+  - the full parent;
+  - full Concept C match (**NOT VISUALLY VERIFIED**);
+  - phase, register and semantic closure;
+  - whole R7.

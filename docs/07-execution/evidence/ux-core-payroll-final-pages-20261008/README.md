@@ -1,0 +1,17 @@
+# R7 core final payroll pages: bounded source checkpoint
+
+Baseline c905a4aa99df09e75828bbd61f81179372edc2e9; candidate hashes in candidate-identity.json. Scope: corrections, advances, reports and setup presentation under approved core7.5. D16 integration/additional enhancements deferred. No financial action, recovery, storage, permission, RPC, export or print-authorization behavior changed.
+
+112 actual-source SSR controlled-SDK caller-contract cases PASS; unchanged financial/recovery/export child hashes, form fields/props/order/keys, original source money instances/nonanchor links/RPC arguments preserved. ONE grouped scoped lint/build/TypeScript PASS. Child fixtures are not actual financial widgets, hydrated recovery, ledger, role or provider acceptance. clean-code-guard: clean within the presentation delta; no API or schema introduced.
+
+Codex inspected representative Cairo/CSS frames 390/768/1366; document scrollWidth equals clientWidth throughout12 cases, one main and rendered-target navigation. Native Enter to advances installments changed fragment and placed the closed summary in view; this single anchor does not qualify whole-parent keyboard/a11y. Before/after screen images retained. Setup fixture reading height at1366:3918→2568px;390:4761→4829px (+68), due section navigation. No task-speed/financial-completion claim. Advanced recovery/form widgets deliberately shown as labeled stubs; actual shell/parent not accepted.
+
+Reports original stylesheet is an exact prefix, added styles screen-only. Synthetic authorized/unauthorized payslip and sheet print-media before/after PNG SHA256 pairs identical; text, source scope and article geometry unchanged, new nav hidden. Artificial authorized attribute is CSS comparison only: no real authorization or printer output acceptance. Full financial comparison table/region/scrolling/white-space retained.
+
+Official direct Claude Code actual claude-opus-5-5 Medium independently inspected candidate and five screenshots; read-only fingerprint unchanged. Initial sole blocker was disproved by exact existing source and payslip-target DOM; reviewer withdrew it, no source edit or repeated build. Both initial and corrected verdict retained. Bounded candidate accepted without blockers, no phase/semantic promotion.
+
+Separate design verdicts: Codex NOT VISUALLY VERIFIED and Claude NOT VISUALLY VERIFIED for full matching Concept C subpage/full parent. Scoped palette/Cairo/RTL/cards/figures follow accepted R1 foundation; no equivalent subpage reference exists. Original reference immutable. Light screen evidence does not accept dark mode. Remaining disabled/pending/focus/hover/error/full-parent and actual task-completion gates open. Coverage:1700 register entries,19 source-reviewed retained,1700 semantic pending; no new slots.
+
+Required core next: permanent employer controls/context reset; competing primary actions; reports mobile navigation cost; actual source-derived payroll facts/readiness; output tool grouping/historical net, payment normal/unknown/pending/recovery, run unresolved/release precedence; real role/provider/financial/JS-off/hydrated/full-parent/reference and final R0–R8 coverage acceptance. These are core plan work, not extras. Whole R7/core goal remains OPEN.
+
+Temporary GET-only synthetic server127.0.0.1:3597 and agent-created browser retired; no project DB/provider/production mutation or shared process stopped. See cleanup-result.txt.

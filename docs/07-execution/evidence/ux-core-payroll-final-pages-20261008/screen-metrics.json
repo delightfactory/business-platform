@@ -1,0 +1,350 @@
+[
+  {
+    "scene": "advances-active-full",
+    "width": 390,
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الرصيد والخطوة التالية"
+          },
+          {
+            "target": true,
+            "text": "الأقساط"
+          },
+          {
+            "target": true,
+            "text": "الحركات والتصحيح"
+          }
+        ],
+        "name": "أقسام السلف"
+      }
+    ],
+    "scroll": 375
+  },
+  {
+    "scene": "corrections-review-paid",
+    "width": 390,
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "المخرج الأصلي"
+          },
+          {
+            "target": true,
+            "text": "المقترح الحالي"
+          },
+          {
+            "target": true,
+            "text": "المخرجات المتأثرة"
+          },
+          {
+            "target": true,
+            "text": "التاريخ والتسوية"
+          }
+        ],
+        "name": "أقسام تصحيح الرواتب"
+      }
+    ],
+    "scroll": 375
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 390,
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 375
+  },
+  {
+    "scene": "setup-paged",
+    "width": 390,
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الفترات المحفوظة"
+          },
+          {
+            "target": true,
+            "text": "جاهزية الفترة"
+          },
+          {
+            "target": true,
+            "text": "تاريخ إعداد الدورة"
+          }
+        ],
+        "name": "أقسام إعداد الرواتب"
+      }
+    ],
+    "scroll": 375
+  },
+  {
+    "scene": "advances-active-full",
+    "width": 768,
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الرصيد والخطوة التالية"
+          },
+          {
+            "target": true,
+            "text": "الأقساط"
+          },
+          {
+            "target": true,
+            "text": "الحركات والتصحيح"
+          }
+        ],
+        "name": "أقسام السلف"
+      }
+    ],
+    "scroll": 753
+  },
+  {
+    "scene": "corrections-review-paid",
+    "width": 768,
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "المخرج الأصلي"
+          },
+          {
+            "target": true,
+            "text": "المقترح الحالي"
+          },
+          {
+            "target": true,
+            "text": "المخرجات المتأثرة"
+          },
+          {
+            "target": true,
+            "text": "التاريخ والتسوية"
+          }
+        ],
+        "name": "أقسام تصحيح الرواتب"
+      }
+    ],
+    "scroll": 753
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 768,
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 753
+  },
+  {
+    "scene": "setup-paged",
+    "width": 768,
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الفترات المحفوظة"
+          },
+          {
+            "target": true,
+            "text": "جاهزية الفترة"
+          },
+          {
+            "target": true,
+            "text": "تاريخ إعداد الدورة"
+          }
+        ],
+        "name": "أقسام إعداد الرواتب"
+      }
+    ],
+    "scroll": 753
+  },
+  {
+    "scene": "advances-active-full",
+    "width": 1366,
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الرصيد والخطوة التالية"
+          },
+          {
+            "target": true,
+            "text": "الأقساط"
+          },
+          {
+            "target": true,
+            "text": "الحركات والتصحيح"
+          }
+        ],
+        "name": "أقسام السلف"
+      }
+    ],
+    "scroll": 1351
+  },
+  {
+    "scene": "corrections-review-paid",
+    "width": 1366,
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "المخرج الأصلي"
+          },
+          {
+            "target": true,
+            "text": "المقترح الحالي"
+          },
+          {
+            "target": true,
+            "text": "المخرجات المتأثرة"
+          },
+          {
+            "target": true,
+            "text": "التاريخ والتسوية"
+          }
+        ],
+        "name": "أقسام تصحيح الرواتب"
+      }
+    ],
+    "scroll": 1351
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 1366,
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 1351
+  },
+  {
+    "scene": "setup-paged",
+    "width": 1366,
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "mains": 1,
+    "navs": [
+      {
+        "links": [
+          {
+            "target": true,
+            "text": "الفترات المحفوظة"
+          },
+          {
+            "target": true,
+            "text": "جاهزية الفترة"
+          },
+          {
+            "target": true,
+            "text": "تاريخ إعداد الدورة"
+          }
+        ],
+        "name": "أقسام إعداد الرواتب"
+      }
+    ],
+    "scroll": 1351
+  }
+]

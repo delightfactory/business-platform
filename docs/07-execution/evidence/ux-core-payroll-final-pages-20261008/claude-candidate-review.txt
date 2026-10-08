@@ -1,0 +1,41 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# Correction: the records-anchor blocker was my mistake, and the candidate is accepted
+
+**I withdraw the blocker.** `reports/page.tsx:63` already contains `<article id={index===0?'payroll-report-records':undefined} key={row.id} className={styles.payslip}>`, so payslip mode does have the target. My search only matched IDs written as plain string attributes (`id="…"`), so it missed this JSX expression and I reported a defect that doesn't exist. `payslip-target.json` confirms all four reports nav links resolve in payslip mode, with the first article carrying `payroll-report-records`. No source change or new build is needed.
+
+## Verdict
+**The four-page bounded candidate (corrections, advances, reports, setup) is accepted with no blockers**, within the scope it was tested:
+- actual source rendered on the server with a controlled SDK;
+- 112 caller-contract cases;
+- print output identical before and after;
+- 12 screen scenes with no horizontal overflow, Cairo font, one `main` and valid anchors;
+- a build that exited 0.
+
+This acceptance doesn't cover real roles, real finance or authorization, or runtime behaviour.
+
+## Still open (not accepted)
+- **Dominant action:**
+  - reports shows two primaries (selector submit and export);
+  - a corrections case under review can show approve and recalculate together;
+  - the reports nav stacks into a column at 390px.
+- **Source facts and qualification:**
+  - hard-coded readiness and legal sentences in setup, inputs and corrections;
+  - root deductions, net, overtime, payment and time/leave facts;
+  - stage completion and per-employee owner routes.
+- **Navigation:** permanent employer controls on the sub-pages, and the same-employer reset scenario.
+- **Earlier slices:**
+  - payments: normal-state capture, heading for unknown statuses, second primary in history, visibility of a pending request;
+  - output: historical label on superseded net;
+  - inputs: anchor capture under the real page frame;
+  - runs: release while a run attempt is unresolved, and recovery precedence.
+- **Runtime:** real roles and providers, real print authorization and printer output, financial transitions, hydrated recovery, keyboard testing on the full parent, and JS-off.
+- **Reference:** full Concept C match is **NOT VISUALLY VERIFIED**.
+- **Closure:** no source, register or semantic status is promoted. **Whole R7 and the phase are NOT accepted.**

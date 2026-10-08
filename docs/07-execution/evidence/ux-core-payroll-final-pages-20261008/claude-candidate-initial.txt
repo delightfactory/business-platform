@@ -1,0 +1,79 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 four-page candidate checkpoint (corrections, advances, reports, setup; baseline c905a4a)
+
+There is **one blocker**: a dead "السجلات" (records) anchor on reports in payslip mode. It's a one-line fix. Everything else matches the agreed guards, and printing is unchanged.
+
+I couldn't run `git diff` because no shell was available. Instead I compared the current files against the baseline versions I read in the co-design turn, and read the evidence files.
+
+## Blocker
+
+**Dead records anchor (`reports/page.tsx:63`).**
+- **What happens:** the nav link `{work.rows.length>0&&<a href="#payroll-report-records">}` renders whenever the report has rows. But `id="payroll-report-records"` exists only on the table region. In payslip mode (`report==='payslip' && query.employee`), the rows render as `.payslip` articles with no such ID, so the link goes nowhere.
+- **Why the evidence missed it:** `screen-metrics.json` checks link targets only for the `reports-sheet-ready` scene, and the payslip scenes in `print-metrics.json` don't check nav targets.
+- **Fix (either):**
+  - add `!(report==='payslip'&&query.employee)` to the link's condition; or
+  - put the ID on the first `.payslip` article (`index===0`). This is safe for printing because the payslip print rules use classes, not structure.
+- Then re-run the payslip screen scene with the target check.
+
+## Accepted against the spec
+
+**Printing is unchanged.**
+- All the original report CSS, including every `@media print` and `@page` rule, is unchanged. The new styles sit only inside `@media screen` blocks (`reports.module.css:39–58`).
+- The reports nav uses `styles.actions`, which the existing print rules already hide. The print metrics confirm the nav doesn't render on paper.
+- No new wrappers were added. The IDs sit on the existing totals `dl`, table region and footer, so the print selectors that depend on page structure still apply.
+- For the synthetic authorized and unauthorized payslips and the sheet, the printed text, `data-print-scope` and article size are identical before and after. The authorized payslip fixture only proves the CSS, not real print authorization.
+
+**Navs and anchors.**
+- Each nav is a single element that always renders and comes after the existing recovery component: `CorrectionRecoveryPanel` (`corrections:73–74`) and `AdvanceRecovery` (`advances:45–46`). Only the links inside a nav vary.
+- No action or recovery anchors were added. The keyless `AdvanceForm` and `CorrectionCommand` positions keep their place.
+- Each corrections and advances link renders under exactly the condition of its target section. `screen-metrics.json` shows every link with a valid target across 12 scenes.
+
+**Layout fixes.**
+- The nested `<main>` became `<div>` in corrections and advances; there is now one `main` in every scene.
+- `.cardGrid` is applied to the advances list and setup's saved periods. The shared `.periods` class is untouched.
+
+**Figures and text.**
+- The corrections amendment summary uses a uniform `figureStrip` with all six labels and values; net gets no extra emphasis.
+- The advances principal and outstanding balance use the same strip, keeping `<bdi>`. The next-installment and warning texts are unchanged.
+
+**Other checks.** Cairo font, no horizontal overflow at 390/768/1366, and the build exited 0 (`build-exit.txt`).
+
+## Visual verdict
+Images inspected: `reports-sheet-ready-1366.png`, plus `reports-sheet-ready-390.png`, `corrections-review-paid-390.png`, `advances-active-full-390.png` and `setup-paged-390.png`.
+
+- **Reports:**
+  - The header shows a brand-coloured rule, then identity, legal name and period.
+  - The selector uses the new token styling with 44px fields.
+  - The totals appear as cards, and the nav follows the selector.
+  - At 390 the nav inherits the mobile column layout of `.actions`, so its four links stack and add about 200px before the totals. This is a scan-height cost, not a blocker.
+- **Corrections, advances and setup:** recovery placeholders (stubs in these fixtures) come before the nav, and the figure strips and card grid render cleanly.
+- **Pre-existing, not a regression:** setup's `DateSummary` shows ISO Latin dates, as before.
+- **Concept C:** there is no equivalent sub-page reference. The common direction (tokens, figure strips, cards, one nav) is consistent, but a full match is **NOT VISUALLY VERIFIED**. Don't claim FULL_REFERENCE_VISUALLY_VERIFIED.
+
+## Core gaps vs. extras
+
+These are the remaining **core** gaps (R0–R8), recorded and not promoted. Nothing raised in this review is an extra.
+
+- **Dominant action:**
+  - reports shows two primaries: the selector submit is still brand-filled alongside the export button;
+  - a corrections case under review can show approve and recalculate together.
+- **Source facts:**
+  - the hard-coded readiness and legal sentences in setup, inputs and corrections;
+  - root deductions, net, overtime, payment and time/leave facts, plus stage completion and owner routes.
+- **Navigation:** permanent employer controls across the sub-pages, and the same-employer reset scenario.
+- **Earlier pages:**
+  - payments: normal-state capture, heading for unknown statuses, second primary in history, visibility of a pending request;
+  - output: historical label on superseded net;
+  - inputs: anchor capture under the real page frame;
+  - runs: release while a run attempt is unresolved, and recovery precedence.
+- **Qualification:** real roles and providers, real print authorization and printer output, financial transitions, hydrated recovery, keyboard testing on the full parent, and JS-off.
+
+No source, register or semantic coverage status is promoted. **Whole R7 and the phase remain NOT accepted.**

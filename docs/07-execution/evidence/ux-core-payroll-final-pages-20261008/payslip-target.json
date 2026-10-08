@@ -1,0 +1,25 @@
+{
+  "firstArticleId": "payroll-report-records",
+  "links": [
+    {
+      "hash": "#payroll-report-selection",
+      "target": true,
+      "text": "اختيارات التقرير"
+    },
+    {
+      "hash": "#payroll-report-totals",
+      "target": true,
+      "text": "الإجماليات"
+    },
+    {
+      "hash": "#payroll-report-records",
+      "target": true,
+      "text": "السجلات"
+    },
+    {
+      "hash": "#payroll-report-tools",
+      "target": true,
+      "text": "أدوات التقرير"
+    }
+  ]
+}
