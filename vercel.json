@@ -69,7 +69,8 @@
       "codex/ux-core-people-profile": false,
       "codex/ux-core-people-search": false,
       "codex/ux-core-people-preview": false,
-      "codex/ux-core-people-management": false
+      "codex/ux-core-people-management": false,
+      "codex/ux-core-attendance-lists": false
     }
   }
 }

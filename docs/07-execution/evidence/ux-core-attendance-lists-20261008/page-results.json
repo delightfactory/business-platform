@@ -1,0 +1,307 @@
+{
+  "baseline": "885328a7501fe900d5f2c1db1d32084af32457c7",
+  "checks": [
+    {
+      "state": "none-false",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "none-false",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "none-true",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "none-true",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "view-false",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "view-false",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "view-true",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "view-true",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "manage-false",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "manage-false",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "manage-true",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "manage-true",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "correct-false",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "correct-false",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "correct-true",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "correct-true",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "approve-false",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "approve-false",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "approve-true",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "approve-true",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "ready",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "ready",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "empty",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "empty",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "noSdk",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "noSdk",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "noUser",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "noUser",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "denied",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "denied",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "failed",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "failed",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "summaryFailure",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "summaryFailure",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "channelDenied",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "channelDenied",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "page2",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "page2",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "invalid",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "invalid",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "future",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "future",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "readyFilter",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "readyFilter",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "readyReadonly",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "readyReadonly",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "exceptions",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "exceptions",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "overtime",
+      "kind": "daily",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    },
+    {
+      "state": "overtime",
+      "kind": "review",
+      "result": "pass",
+      "scope": "same RPCs, input payloads, authorized hrefs, authredirect and bulk eligibility"
+    }
+  ],
+  "scope": "Controlled real source; syntheticSDK roles/results, no real permission/mutations",
+  "unchangedBulkAndImport": true
+}

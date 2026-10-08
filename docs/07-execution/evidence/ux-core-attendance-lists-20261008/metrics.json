@@ -1,0 +1,71 @@
+{
+  "scope": "Controlled static real source; reading/scroll positions only, not whole-task completion",
+  "measurements": [
+    {
+      "view": "before390",
+      "firstRecordY": 868.75,
+      "fonts": "loaded",
+      "height": 844,
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "view": "after390",
+      "controlHeights": [
+        44,
+        44,
+        44,
+        44,
+        44
+      ],
+      "firstRecordY": 711.1500244140625,
+      "fonts": "loaded",
+      "height": 844,
+      "overflow": false,
+      "rows": 6,
+      "tableRole": "table",
+      "width": 390
+    },
+    {
+      "view": "before1366",
+      "firstRecordY": 809.7750244140625,
+      "fonts": "loaded",
+      "height": 900,
+      "overflow": false,
+      "width": 1366
+    },
+    {
+      "view": "after1366",
+      "controlHeights": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "firstRecordY": 574.9750366210938,
+      "fonts": "loaded",
+      "height": 900,
+      "overflow": false,
+      "width": 1366
+    },
+    {
+      "view": "review768",
+      "columns": "643.688px",
+      "fonts": "loaded",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "view": "review390",
+      "fonts": "loaded",
+      "overflow": false,
+      "width": 390
+    }
+  ],
+  "nativeDateGet": {
+    "chosenDate": "2026-10-08",
+    "result": "observed selecteddate plus review/next href changed; synthetic local GET, no appJS or real DB"
+  },
+  "failureRecovery": "normalized native href verified; destination real project runtime not executed"
+}

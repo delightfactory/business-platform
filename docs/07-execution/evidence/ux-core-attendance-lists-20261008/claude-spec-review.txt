@@ -1,0 +1,99 @@
+I read the two pages, `AttendanceBulkApprovalForm.tsx`, plan §7.4 and the related contract notes (`codex-source-review.md:11`, `claude-opus-contribution.md` F1/F5/D7). I made no edits and ran no commands. This session has no Write or ExitPlanMode tool, so the checkpoint is below instead of in a plan file.
+
+# R5 daily + review lists: source/spec checkpoint (baseline `885328a`)
+
+**Verdict:** I approve the batch with the conditions below. Visual layout is **NOT VISUALLY VERIFIED**.
+
+## 1. Source findings (what must not move)
+
+**Daily, `attendance/page.tsx`**
+- **Guard order:** no Supabase client → `Status` (line 17); no user → redirect with `next` set to the bare path, dropping date and cursor (line 19). Don't widen that redirect (D8). After that: access snapshot fails or isn't an object → denied (21); then `attendance_channel_access` (23).
+- **RPC split (25–28):** if `canOpen = can_manage || can_correct || can_approve`, the page calls `attendance_open_day`, which writes data during a GET (F1). Otherwise it calls `attendance_day_list`. Both get `p_after: cursor, p_limit: 50`, and cursor must be ≤40 characters. Keep this exactly; switching to POST is D7 and still pending.
+- **Overtime summary (32–35):** it runs only when there are rows. If it fails, the error is swallowed and no overtime line appears. That makes "unknown" look the same as "zero". This is an existing gap: keep it as is and record it as open, not fixed.
+- **Authorized links, conditions and hrefs exactly as they are:**
+  - Sources: `!channelAccessError && can_view`
+  - Import: `canManage`
+  - Unassigned: `can_view`
+  - Review: `can_view` with `?date=`
+- **Row payload to keep in full:**
+  - Name and status pill
+  - Employee code in `<bdi>`
+  - Flexible schedule (required minutes plus timezone label) or fixed schedule (expected start–end, formatted in the **row's** timezone, plus the label)
+  - Metrics, shown only for `ready`/`approved`
+  - Messages for `short_workday` and `absence_candidate` (not shown when approved)
+  - Overtime pending count
+  - The "فتح السجل" link
+- Also keep the hint at line 51, the three empty-state variants, and the pagination line (`aria-live`, page count, the "توجد سجلات أخرى" note, and Next only when both `hasMore` and `moreHref` exist).
+
+**Review, `review/page.tsx`**
+- The ≤64-character cursor limit, the filter allow-list, and the `attendance_review_queue` params (lines 26–28) stay as they are.
+- `canBulkApprove = entitlement_enabled && can_approve` (31).
+- **Bulk gate (50–51):** if `filter==='ready' && canBulkApprove && items.some(can_bulk_approve)`, the page shows only the form, with only the bulk-approvable rows. Ready rows where `can_bulk_approve=false` are hidden in that state. This is existing behavior and must be kept as is, not "fixed" here.
+- The "no permission" hint (63) keeps its condition.
+- The filter labels already show server counts (45–47). The `counts ?? {0,0,0}` fallback (33) can show a fake "· 0". Record that as an existing risk and add no new counters.
+- `AttendanceBulkApprovalForm.tsx`: **no changes at all**. Props stay `tenantId, date, rows`, and so do the action, hidden inputs, checkbox `name="instanceIds"`, pending copy and result labels. Any new review-card CSS must be scoped so it doesn't affect `.attendance-bulk-*`.
+
+**Failure copy**
+- **Daily line 29:** removing "لم تتغير أي سجلات" is necessary, because `open_day` may have written before the error. Use neutral copy that is true for both RPCs, e.g. «تعذر تحميل سجلات هذا اليوم. أعد المحاولة لعرض الحالة الحالية.» Add an explicit retry link to the same normalized `?date=` (plus `&cursor=` if one was valid). Retrying re-runs `open_day`, the same thing a manual refresh does today, so nothing new is introduced.
+- **Review line 29** has the same unproven sentence. The queue is read-only, so the risk is lower. It's out of scope for this batch; I'm only noting it.
+
+## 2. Short spec
+
+| Item | Daily | Review |
+|---|---|---|
+| Actor | `can_view` (read via `day_list`) or manage/correct/approve (via `open_day`) | Anyone with the access snapshot; approve requires entitlement + `can_approve` |
+| Job | See who has records for a work date and open a record | Work through exceptions / ready / overtime; bulk-approve clean days |
+| Start | `?date` (invalid → Cairo today), `?cursor` | `?date`, `?filter`, `?cursor` |
+| Success | Table/cards, page 50 | Filter links + cards, or the bulk form |
+| Failed | Neutral copy + retry with same date/cursor | Unchanged |
+| Denied | Existing "الحضور غير متاح" | Existing |
+| Empty | Existing three variants | Existing |
+| Read-only | `!entitlement_enabled` notice; records still listed | Notice; no bulk form |
+| Pagination | Next only; a new date resets the cursor | Next keeps date and filter |
+| Future date | No client `max` (Cairo ≠ policy timezone). The server returns an empty day and the existing empty copy covers it | Same |
+| Timezone | Default date is Cairo; times use each row's `timezone_name`, never the viewer's | n/a |
+
+**Invariants:**
+- RPC names, params, order and conditions are identical.
+- Guards and redirects are identical.
+- The set of links per role is identical.
+- The date form is a native GET. The date input sits inside its `<label>`, keeps `name="date"` and its existing ids, and the review form keeps the hidden `filter` input.
+- No changes to imports, record detail or channels pages.
+- Day-status segmentation (all / needs review / ready / approved) stays an **explicitly OPEN** item. Don't filter the current page client-side and don't add a backend.
+
+## 3. Table/card semantics and accessibility risks
+- **One markup:** use a native `<table>` with a `<caption>` (or `aria-labelledby` pointing at the title and date) and `<th scope="col">`. On mobile, CSS that changes `display` on `table/tr/td` makes Chromium and WebKit drop table semantics. You must either add explicit `role="table|rowgroup|row|columnheader|cell"` or confirm with an accessibility-tree check.
+- **Mobile labels:** put real per-cell label spans in the markup (`aria-hidden` while header association holds). Don't use CSS `::before` `data-label`, which isn't reliably announced.
+- **Messages:** exception and overtime messages go in a notes cell as text. Don't color-code them only, and don't make the whole row a link.
+- **Repeated link names:** "فتح السجل" appears on every row. A table gives row context; on cards it's ambiguous. Linking it to the name cell with `aria-describedby` is cheap, but only if you count it as necessary. Otherwise record it as open.
+- **DOM order must equal visual order in RTL**, with no `order:` reordering of the toolbar links.
+
+## 4. Measurable baseline (same controlled viewports)
+Capture at `885328a` and again after the change, at 1280×800 and 390×844, ar/RTL, with the same seeded tenant, date and roles. Measure:
+- Toolbar rows above the first record
+- Records fully visible above the fold
+- Pixel height per record
+- `scrollWidth ≤ clientWidth` at 390
+- Control heights between 40 and 44 px
+- Focus order
+- Accessibility-tree roles for table, row and cell
+
+Pass means fewer or equal toolbar rows, more or equal records above the fold, and no horizontal scroll.
+
+## 5. Gaps against plan §7.4 (stay OPEN)
+- Day-status SegmentedControl: the RPC has no status filter.
+- "Actual attendance" column: no punch fields in `DayRow`.
+- Explicit "ابدأ يوم العمل" empty-state action: D7. Note that the plan misdescribes today's flow as an explicit action (F1).
+- Day totals: G2.
+- Automatic opening: G8.
+- Review linked from the decisions inbox: R3/G1.
+- Status tone mapping (plan line 347): we keep the existing `is-active`/`is-inactive` styling.
+
+## 6. Checks before merge
+1. Diff every `supabase.rpc(...)` call: names, params and branch conditions identical.
+2. Role matrix (none / view / correct / manage / approve × entitlement on/off): rendered link set and bulk-form visibility identical to baseline.
+3. `AttendanceBulkApprovalForm.tsx` has a zero-line diff, and the props passed at line 51 are unchanged.
+4. Retry href equals the normalized current `date` (and `cursor` if valid), and the auth `next` is unchanged.
+5. The day failure copy no longer contains "لم تتغير أي سجلات".
+6. axe plus a manual check of the accessibility tree at both viewports, keyboard-only pass, and 200% zoom.
+7. The seven measurements in §4, labeled NOT VISUALLY VERIFIED until a person has looked at the screenshots.

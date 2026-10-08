@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { AttendanceBulkApprovalForm } from '../AttendanceBulkApprovalForm';
+import styles from '../attendance-lists.module.css';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -33,13 +34,13 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
   const count = queue.counts ?? { exception_count: 0, clean_ready: 0, overtime_pending: 0 };
 
   return <PageFrame footer="مراجعة الحضور وسجل العمل">
-    <section className="work-card task-page attendance-review-page" aria-labelledby="attendance-review-title">
+    <section className={`work-card task-page attendance-review-page ${styles.reviewPage}`} aria-labelledby="attendance-review-title">
       <p className="eyebrow">مهام مراجعة اليوم</p>
       <div className="workspace-page-heading"><div><h1 id="attendance-review-title">مراجعة الحضور</h1><p>ابدأ بالحالات التي تحتاج قرارًا، واعتمد الأيام المكتملة بعد مراجعة بياناتها. لا تُعتمد الحالات الاستثنائية جماعيًا.</p></div>
         <Link className="secondary-button" href={`/tenant/${tenantId}/attendance?date=${encodeURIComponent(date)}`}>العودة إلى اليوم</Link>
       </div>
       {access.entitlement_enabled !== true && <p className="form-message">وحدة الحضور غير مفعلة. هذه القائمة للقراءة فقط.</p>}
-      <form method="get" className="attendance-date-form"><label htmlFor="review-date">تاريخ العمل</label><input id="review-date" type="date" name="date" defaultValue={date} /><input type="hidden" name="filter" value={filter} /><button className="primary-button" type="submit">عرض التاريخ</button></form>
+      <div className={styles.toolbar}><form method="get" className={styles.dateForm}><label htmlFor="review-date">تاريخ العمل<input id="review-date" type="date" name="date" defaultValue={date} /></label><input type="hidden" name="filter" value={filter} /><button className="primary-button" type="submit">عرض التاريخ</button></form></div>
       <nav className="attendance-review-filters" aria-label="تصفية قائمة المراجعة">
         <FilterLink tenantId={tenantId} date={date} active={filter === 'all'} filter="all" label="الكل" />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'exceptions'} filter="exceptions" label={`استثناءات تحتاج قرارًا · ${count.exception_count}`} />

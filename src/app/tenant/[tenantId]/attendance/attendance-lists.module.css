@@ -1,0 +1,37 @@
+.toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; margin-block: 1rem; }
+.dateForm { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; margin: 0; }
+.dateForm label { display: grid; gap: .35rem; min-width: 0; font-weight: 650; }
+.dateForm input { min-width: 0; min-height: var(--control-height); padding: .55rem .7rem; border: 1px solid var(--color-control-border); border-radius: .5rem; background: var(--surface-base); color: var(--color-text); font: inherit; }
+.tools { display: flex; flex-wrap: wrap; gap: .65rem; }
+.table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: .94rem; }
+.table caption { text-align: start; padding-block: .6rem; color: var(--color-muted); }
+.table :is(th, td) { padding: .85rem .65rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.table thead th { background: var(--surface-subtle); color: var(--color-muted); font-weight: 600; }
+.table thead th:first-child { width: 22%; }
+.table thead th:nth-child(2) { width: 23%; }
+.table thead th:nth-child(3) { width: 29%; }
+.table thead th:nth-child(4) { width: 13%; }
+.table tbody th { font-weight: 400; }
+.table h2 { font-size: 1rem; line-height: 1.7; margin: 0; }
+.table p { margin: .3rem 0; line-height: 1.8; }
+.table tbody tr:hover { background: var(--surface-subtle); }
+.mobileLabel { display: none; }
+.reviewPage :global(.attendance-review-list) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.reviewPage :global(.attendance-review-list .record-card) { min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: .75rem; background: var(--surface-base); }
+.reviewPage :global(.attendance-review-list .record-title-row) { flex-wrap: wrap; }
+.reviewPage :global(.attendance-review-list .record-card > a) { align-self: start; }
+@media (max-width: 900px) {
+  .table, .table tbody { display: block; }
+  .table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .table tbody { display: grid; gap: 1rem; }
+  .table tbody tr { display: grid; gap: .5rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--surface-base); }
+  .table :is(th, td) { display: block; padding: 0; border: 0; }
+  .table caption { display: block; }
+  .mobileLabel { display: block; color: var(--color-muted); font-size: .85rem; font-weight: 600; }
+  .reviewPage :global(.attendance-review-list) { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .dateForm { width: 100%; }
+  .dateForm label { flex: 1 1 10rem; }
+  .dateForm input { width: 100%; }
+}

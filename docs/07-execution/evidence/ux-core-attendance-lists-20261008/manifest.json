@@ -1,0 +1,147 @@
+{
+  "baseline": "885328a7501fe900d5f2c1db1d32084af32457c7",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
+      "sha256": "6761b1488d1b21a7ef7a5daa76554739f191fcbbbdaf66ed7a93ff7ef1176982",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
+      "sha256": "11f284d78acf105de571b90c8af217eab3111df8deb51704ff51a68eb57af166",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-lists.module.css",
+      "sha256": "e243eb37ea26b05a3040963302b1d43fdc786ac8710edf590aa51b61efd201b4",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
+      "sha256": "19c63fd6e52d65a6e9d006d85972010c368a825e9fc5ddade5a4556af2a845ac",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/actions.ts",
+      "sha256": "83375a7a16f22b08494a76cb7d5064e2bdf3c695093235f4ff094f71432e5bec",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "sha256": "2f15231dd098885c061f4dc490ea507d595550dfe510f8c60cf66ea51e9a56ca",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
+      "sha256": "246285651a73ff7397af4d872b57847fc7a7538becadad847d31641786fdfbe3",
+      "normalization": "LF"
+    },
+    {
+      "file": "vercel.json",
+      "sha256": "bffec280dfc67528ffcc2283e70adba95a367efe5775fb8284411a988ae81b58",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "after-1366.jpg",
+      "sha256": "ef87f129d54b4eeb777f8facf7ee5a647677b3fd52b10aed544d16e6ed5edc8e",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "after-390.jpg",
+      "sha256": "8f5b7905c04a7c1641ad5c92b6277e2d1700ce65684c70a4fb71f24c04ec96ca",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "after-768.jpg",
+      "sha256": "ab3ae3b9eb02bc20a2591865a340135cc57756a00f437e9c4b49c44057c2c434",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "before-1366.jpg",
+      "sha256": "004d52d7db1dee452dba38995207d63682345a4dbb5ee02d4164818fb2932810",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "before-390.jpg",
+      "sha256": "bb0b8802c09a6eee83d0c4bac379a65f92d6eb3c968ee356ed07101b3a0c5406",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "claude-candidate-review.txt",
+      "sha256": "3128c852602516765e38db19a8800a24bc27427ef45c05f11a84095008e1db4b",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-spec-review.txt",
+      "sha256": "94f4fbb3b617d5f494f70e077dc50406340c3282cd9c00ac9be2ad6dc7f8dc54",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "controlled-pages.cjs",
+      "sha256": "0f318935319d5008fb113b538dba6b34b16ba52f8b46d78c9cc6aa0d0608bf8c",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "daily-ax-390.txt",
+      "sha256": "22c5fc8a404d8af2da2a6c7c1e5f3dbe2238f817e2a032a1e4fca0a1dd917daa",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "daily-card-390.jpg",
+      "sha256": "685d825a17a05fb3b97dc2d03f06fab4d65538b3916a16a664c0c59c583551bd",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "failed-390.jpg",
+      "sha256": "255aed9bc8ffaa6994376df3939ac7ec13ba16a65c9747a4ea7bd063dd39ac11",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "a25048aa0172e10628e8045d9a67a276d78180fa1971d086fb88cc9e1d4f0667",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "metrics.json",
+      "sha256": "b8b6b24dabd710def8d55dca3eefd9f493cabdc4d02c83e0d3272b7d640c23b6",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "page-results.json",
+      "sha256": "0e4019f0fb72d262175fc7f8d30bb1dfd0bfb93fdf457a73794c857d54d5a656",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "04148016c5ac7e9b24f180440265c680658130f65a42c3aab8997278816bcbc3",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "reference-1366.jpg",
+      "sha256": "9c10a7c861c28f865c9bf561dca07a9d9b725c622fb98de8a3bd84c337896ad7",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "reference-390.jpg",
+      "sha256": "b35b4f6e4e77c48ced8f598921200d291a5c856ce751c870d9398ad68c3ffb93",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "review-1366.jpg",
+      "sha256": "ead16e2af74ed56e8f82f7d447032862d90bcc7edadca7e6e25d0866f74af135",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "review-390.jpg",
+      "sha256": "5cec1bb8f9478a991a8e6c94f16ed030047c7e145d1d8a4084b044fa95196ca1",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "review-768.jpg",
+      "sha256": "c37a0f39dec23ab4995e5e5877a6032b7a9b3355c8df269e057615100cc2416b",
+      "normalization": "raw bytes"
+    }
+  ]
+}

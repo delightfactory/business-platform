@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "520006bd1d1287313ca8b4efd01420418a2074c1",
+  "sourceHead": "885328a7501fe900d5f2c1db1d32084af32457c7",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -293,6 +293,11 @@
       "sha256": "83375a7a16f22b08494a76cb7d5064e2bdf3c695093235f4ff094f71432e5bec"
     },
     {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-lists.module.css",
+      "phase": "R5",
+      "sha256": "e243eb37ea26b05a3040963302b1d43fdc786ac8710edf590aa51b61efd201b4"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/attendance/classification-actions.ts",
       "phase": "R5",
       "sha256": "c8862cc9b18b718697a8b96c878aa69ae27ddb0676f68013b58f84ba48c58523"
@@ -320,12 +325,12 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
       "phase": "R5",
-      "sha256": "cabdeddec690d8eb90299b4e7e18f281c7d12ce2ce2bb24aeba290d4b34e96ac"
+      "sha256": "6761b1488d1b21a7ef7a5daa76554739f191fcbbbdaf66ed7a93ff7ef1176982"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
       "phase": "R5",
-      "sha256": "4527d64062530fe24eeff3ffed291d325e779c45f97eb78b7f4d07607c44fbfb"
+      "sha256": "11f284d78acf105de571b90c8af217eab3111df8deb51704ff51a68eb57af166"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
@@ -4192,9 +4197,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:20:1599",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:22:1812",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 20,
+      "line": 22,
       "phase": "R5",
       "name": "time_attendance_access_snapshot",
       "expression": null,
@@ -4202,9 +4207,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:23:1973",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:25:2186",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 23,
+      "line": 25,
       "phase": "R5",
       "name": "attendance_channel_access",
       "expression": null,
@@ -4212,9 +4217,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:27:2238",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:29:2451",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 27,
+      "line": 29,
       "phase": "R5",
       "name": "attendance_open_day",
       "expression": null,
@@ -4222,9 +4227,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:28:2357",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:30:2570",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 28,
+      "line": 30,
       "phase": "R5",
       "name": "attendance_day_list",
       "expression": null,
@@ -4232,9 +4237,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:32:2769",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:34:3017",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 32,
+      "line": 34,
       "phase": "R5",
       "name": "attendance_overtime_day_summary",
       "expression": null,
@@ -4242,9 +4247,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:24:1906",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:25:1958",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 24,
+      "line": 25,
       "phase": "R5",
       "name": "time_attendance_access_snapshot",
       "expression": null,
@@ -4252,9 +4257,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:26:2173",
+      "id": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:27:2225",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 26,
+      "line": 27,
       "phase": "R5",
       "name": "attendance_review_queue",
       "expression": null,
@@ -10085,17 +10090,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4254",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4326",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 47,
+      "line": 49,
       "tag": "form",
       "phase": "R5",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4358",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4417",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 47,
+      "line": 49,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10104,9 +10109,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4431",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4498",
       "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
-      "line": 47,
+      "line": 49,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -10114,17 +10119,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3701",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3807",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 42,
+      "line": 43,
       "tag": "form",
       "phase": "R5",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3801",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3894",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 42,
+      "line": 43,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10133,9 +10138,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3871",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3972",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 42,
+      "line": 43,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10145,9 +10150,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3923",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:4024",
       "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
-      "line": 42,
+      "line": 43,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -19248,7 +19253,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 266,
+    "sourceFiles": 267,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,

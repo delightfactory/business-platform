@@ -1,0 +1,65 @@
+# R5 daily + review lists: final source and visual checkpoint
+
+I read the current `attendance/page.tsx`, `review/page.tsx`, `attendance-lists.module.css` and the seven screenshots. I didn't need the spec file. I ran no commands. The 50 SDK comparisons and the lint/build/TypeScript passes are as you reported; I didn't re-run them.
+
+## Source verdict: **APPROVE as a source-qualified candidate**
+
+**Daily (`page.tsx`)**
+- **Unchanged:** guard order, the `open_day`/`day_list` split (28–30), cursor ≤40, and the overtime summary (still failing silently, a known risk). The auth redirect at line 21 has the same bare `next`.
+- **Authorized links:** the four links (51–54) keep their exact conditions and hrefs. They moved into one `nav` next to the date form.
+- **Failure copy (31):** neutral and true for both RPCs. `retryHref` (17) is the normalized `date` plus `cursor` only when the cursor is valid. Adding it to the no-client status (19) is the same safe GET.
+- **Date form (49):** native GET, the label contains the input, and `id`/`name` are unchanged. A new date drops the cursor, as before.
+- **Table (58–77):**
+  - Native `<table>` with a caption that says "المعروضة في هذه الصفحة", so it claims no whole-day total.
+  - `th scope="col"`, plus explicit `table/rowgroup/row/columnheader/rowheader/cell` roles.
+  - Mobile labels are `aria-hidden`, and the record link is described by the row's `h2`.
+  - Every payload from the 7.4 audit is present: name, code, flexible/fixed schedule in the row's timezone, metrics gate, both exception messages, overtime count, link.
+- **Pagination (78–80):** unchanged.
+
+**Review (`review/page.tsx`)**
+- Only two additions: the `reviewPage` class and the toolbar wrapper with the label containing the input (37, 43).
+- Unchanged:
+  - The queue RPC and its params
+  - The filters and their existing counts
+  - The bulk gate and the props passed to `AttendanceBulkApprovalForm` (51–52)
+  - The read-only hint (64)
+  - The pagination
+- The CSS uses `:global(.attendance-review-list …)` under `.reviewPage`, so it doesn't reach `.attendance-bulk-*`.
+
+**CSS:** every token used is defined (`tokens.css:5-40`, `workspace.css:503`). Radius is `.5rem` (8px), and below 900px cards are built from the same markup.
+
+**Introduced must-fix items:** none.
+
+## Scoped visual verdict: **MATCH WITH ACCEPTED DEVIATIONS**
+This covers the table/list/card controls and body only, rendered with a synthetic parent, synthetic SDK and synthetic roles.
+
+- **Desktop RTL column order (after-1366):** right to left it's الموظف → الدوام المتوقع → مؤشرات اليوم والمراجعة → الحالة → الإجراء. Employee is first and the action is last, as in the reference. Headers are visible and the caption is above the table.
+- **Mobile (after-390, daily-card-390):** each card shows the name, code, labelled "الدوام المتوقع", "مؤشرات اليوم والمراجعة" with both error messages, "الحالة" with the pill, and a "فتح السجل" link with no label. Nothing is cut off, and the cards replace the reference's horizontal-overflow table, which was the defect.
+- **Review (review-1366/390):** two card columns on desktop and one on mobile. The filter links show the existing counts, the active filter is marked, and "مراجعة السجل" sits at the bottom of each card.
+
+**Accepted deviations, intentionally not invented:**
+- No status segmentation (no status filter in the RPC, so it stays OPEN).
+- No avatars, branch column or actual-punch column.
+- No "استيراد ملف"-only toolbar: all four authorized links are kept.
+- A synthetic sidebar stands in for the real parent.
+
+## Retained limits (OPEN, not introduced)
+- **7.4 is not complete:**
+  - RPC status filters
+  - Punch fields that don't exist
+  - D7 explicit POST "ابدأ يوم العمل"
+  - G2 totals
+  - G8 automatic opening
+  - Linking review from the decisions inbox (R3/G1)
+- **Review risks, unchanged:**
+  - The `counts ?? 0` fallback can show a fake zero.
+  - Ready rows that aren't bulk-eligible are hidden when the bulk form shows.
+  - The failure copy still says "لم تتغير أي سجلات".
+  - The daily overtime summary can fail silently.
+- **Things I saw but didn't measure:**
+  - Times use Arabic-Indic digits while the caption and date input use Latin digits. This comes from the existing `formatInstant`.
+  - On desktop, the status pill wraps to two lines and the date input is taller than its button.
+- **Empty `nav` landmark:** the toolbar `nav` would be empty if a role reached the page with no links. That's low risk; check whether it's reachable when you test the roles.
+- **Not visually verified:** the bulk form (ready filter), empty, read-only and failure states, and the 768 tablet view (Codex inspected that separately; I didn't).
+- **Measurements are yours, not mine:** I didn't re-measure the first-record y values (809.78→574.98 and 868.75→711.15), control heights or overflow. They show less scrolling only, not task completion.
+- **Still OPEN:** real parent, real SDK and roles, mutations, finance and privacy, the whole of R5, axe, 200% zoom.

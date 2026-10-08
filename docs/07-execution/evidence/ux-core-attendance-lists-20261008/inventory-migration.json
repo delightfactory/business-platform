@@ -1,0 +1,92 @@
+{
+  "oldItems": 1692,
+  "newItems": 1692,
+  "migrations": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:20:1599",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:22:1812",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:23:1973",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:25:2186",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:27:2238",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:29:2451",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:28:2357",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:30:2570",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:32:2769",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/page.tsx:34:3017",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:24:1906",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:25:1958",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:26:2173",
+      "to": "RPC:src/app/tenant/[tenantId]/attendance/review/page.tsx:27:2225",
+      "category": "rpcCalls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4254",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4326",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4358",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4417",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:47:4431",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/page.tsx:49:4498",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3701",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3807",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3801",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3894",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3871",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:3972",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:42:3923",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/review/page.tsx:43:4024",
+      "category": "formControls",
+      "reason": "same source contract shifted position"
+    }
+  ],
+  "added": [],
+  "existingReviewStatesPreserved": true
+}
