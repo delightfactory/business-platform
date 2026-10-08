@@ -49,7 +49,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         : <strong>حساب مرتبط</strong>}</p>
         {canManage && <form action={unlinkEmployeeUserAction} className="workspace-form-actions">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
-          <button className="secondary-button" type="submit">فك الربط</button>
+          <SubmitButton className="secondary-button" label="فك الربط" pendingLabel="جارٍ فك الربط…" />
         </form>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
@@ -72,7 +72,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
             <option value="" disabled>اختر عضوًا</option>
             {options.items.map((item) => <option key={item.user_id} value={item.user_id}>{item.display_name} — {item.email}</option>)}
           </select>
-          <button className="primary-button" type="submit">ربط الحساب</button>
+          <SubmitButton label="ربط الحساب" pendingLabel="جارٍ ربط الحساب…" />
         </form> : <p>لا توجد عضوية نشطة مؤهلة لهذا البحث.</p>}
         <nav className="workspace-form-actions" aria-label="صفحات الأعضاء">
           {page > 1 && <Link className="secondary-button" href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`}>السابق</Link>}

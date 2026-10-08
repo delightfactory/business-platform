@@ -1,0 +1,57 @@
+{
+  "baseline": "76b267fee27eeadc7588549a7209225386d8e5c8",
+  "status": "Source-qualified WIP; NOT VISUALLY VERIFIED; full actual-page acceptance and inventory reconciliation pending",
+  "candidate": [
+    {
+      "file": "package.json",
+      "sha256NormalizedLF": "f0bf7bf7fbaa84ee03bd78ca77b8cc36004d0d759928eef49b609dbed3f9b375"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256NormalizedLF": "8b5aa06bc86779670a84de43238b5433bdebd70e8ef7c3973cd97924349e669e"
+    },
+    {
+      "file": "src/components/submit-button.tsx",
+      "sha256NormalizedLF": "da4fb501b20218360a5e91dd9b1adac4d76c369d02f5533e029d2196d5311d87"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "sha256NormalizedLF": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "sha256NormalizedLF": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
+      "sha256NormalizedLF": "4d5d814fb1acc9b3052212f927153555733008a7d7513fe161bb3013fd810410"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
+      "sha256NormalizedLF": "6cdce79e85a1ead330c46cc8acfef3933494908af63aba4ec758cdc203e45a5a"
+    }
+  ],
+  "checks": {
+    "scopedLint": "PASS",
+    "buildIncludingTypeScript": "PASS",
+    "actualPageASTPreservation": "PASS RPC args/form fields/panel props/toast multiset",
+    "syntheticRealHydration": "PASS retained values/mounts/pending switch guard/inline result/manual Home-Enter/no-JS fallback",
+    "fullPageRoleProviderAndVisual": "OPEN",
+    "coverageInventory": "Historical baseline, not current candidate acceptance",
+    "fixture": "Retired owned port3581"
+  },
+  "artifacts": [
+    {
+      "file": "claude-source-review.txt",
+      "sha256": "6dde4f75f0bae689909a382b52a752556424c35d1e505f7879e0a9df89a6f25b"
+    },
+    {
+      "file": "hydrated-overview.jpg",
+      "sha256": "93a2843f907cc723db5b8ce339cdde06882384d436fb37fd7bc3934350bb79af"
+    },
+    {
+      "file": "hydrated-fixture.cjs.txt",
+      "sha256": "de38bec236c4e4f505bee8c606e824ddebf0355b31193af2dc4b259d23ae04c3"
+    }
+  ]
+}

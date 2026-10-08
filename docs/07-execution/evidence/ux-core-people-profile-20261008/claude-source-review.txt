@@ -1,0 +1,35 @@
+**Verdict: the spec is close to ready.** Its result-parameter mapping matches the source, but four things need fixing before implementation. The main one is the pending protection: a small local bridge is needed, and the five mutation forms that use plain buttons have to switch to `SubmitButton` first, otherwise the bridge has no pending state to detect. This is a source and spec review only. It is not R4, visual or runtime qualification.
+
+**Mapping check (no mismaps found).** Every redirect in the actions produces exactly one result family:
+- **Overview:** `state=created` (`actions.ts:52`).
+- **Work:** `assignment=*` (`work-assignment-actions.ts`), plus `policy=*` and `policyOverride=*` (`work-policy-actions.ts:68-113`).
+- **Base pay:** `compensation=*`.
+- **Employment:** `employment=ended|rehired`.
+- **Account:** `userLink=*`, `account=*`, and `linkQuery`+`linkPage` (the GET search form and page links in `EmployeeUserLinkPanel.tsx:62-80`).
+
+No action combines families, so the precedence rule only matters for hand-written URLs. That's fine.
+
+**Must-fix before source work**
+
+1. **Pending protection (the one real gap).** The forms that use `useActionState` (`WorkAssignmentPanel`, `CompensationPanel`, `EmploymentLifecyclePanel`) and the account-provisioning forms already use `SubmitButton`, which sets `aria-busy` while pending. Five server-action forms use plain buttons and show no pending state at all:
+   - `page.tsx:169` (save work policy), `:181` (cancel override), `:195` (save override)
+   - `EmployeeUserLinkPanel.tsx:52` (unlink), `:75` (link)
+
+   The fix:
+   - Switch those five to `SubmitButton` and add an optional `disabled` prop (`disabled={pending || disabled}`) so the two `disabled={!workPolicyPanel.options.length}` gates still work.
+   - In the local tabs client wrapper's `onValueChange`, refuse to switch if the active panel contains `[aria-busy="true"]`, and announce it in a polite live region on the tablist, e.g. «جارٍ تنفيذ عملية في هذا القسم».
+   - Leave the GET search button at `:66` as a plain button. It's navigation, not a mutation.
+
+   The pending state ends on its own when the redirect arrives or `useActionState` returns, so nothing can get stuck. No new framework is needed.
+   - **Why this is enough:** none of the people actions call `revalidatePath`. Every outcome either redirects to a new URL, which re-renders the page, or returns inline state while the user is still on the tab that submitted. With the lock in place, you don't need a client-side mechanism that pushes the tab back to the result.
+   - **Add to the spec:** "Tab value initialises from server-computed `initialTab` only; no per-render resync. Switching away from a panel with a pending submit is blocked and announced."
+
+2. **Denied compensation fallback.** "Selects Base pay only if authorized" doesn't say what happens otherwise. Correction: "If `compensation` is present but `!(canViewCompensation || canManageCompensation)`, skip it and continue down the precedence list. The Base pay trigger and panel are not rendered." The toast stays global, as today.
+
+3. **Toast relocation.** The `policy`/`policyOverride` toasts sit between sections at `page.tsx:198-201`. The spec should say explicitly that they move up with the other toasts at `:114-127`, outside the tabs. The inline `policy=*` and `policyOverride=*` alerts at `:165-168` and `:190-194` stay inside their forms in the Work panel. They only render when that form renders, which is unchanged and already true today.
+
+4. **Pre-hydration fallback.** With `forceMount`, Radix renders `hidden` on inactive panels in the server HTML, so without JS those panels are unreachable. Correction: "Root has `data-ready` set after mount; until then CSS shows every `[role=tabpanel]` and hides the tablist. Panels must sit in the same tree position in both states, so values aren't remounted or lost." Passing `hidden={false}` to `TabsContent` before hydration is an alternative, but only if the installed Radix version spreads `contentProps` after its own `hidden`. That needs checking against the version you install.
+
+**Also note:** `@radix-ui/react-tabs` is not in `package.json` (Next 16.3.6, React 19.3.0), so adding it means a dependency and lockfile change.
+
+**Fine as written:** keep the per-render `requestKey={crypto.randomUUID()}` and pass the panel props through unchanged. Leave the next-step and payroll-correction section outside the tabs. Keep the `workPolicyPanel &&` guard inside Work.

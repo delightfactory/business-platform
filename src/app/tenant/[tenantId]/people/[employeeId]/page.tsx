@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { SubmitButton } from '@/components/submit-button';
+import { EmployeeProfileTabs, type ProfileArea } from './EmployeeProfileTabs';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -110,27 +112,11 @@ export default async function EmployeePage({ params, searchParams }: {
       can_assign: boolean; can_manage_catalog: boolean;
     } : null;
   const correctionAccess=await supabase.rpc('payroll_correction_access',{p_tenant:tenantId});
-  return <PageFrame footer="الموارد البشرية">
-    {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
-    {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
-    {query.assignment === 'transferred' && <FeedbackToast key="assignment-transferred" message="تم تحديث سياق العمل اعتبارًا من اليوم." />}
-    {query.assignment === 'corrected' && <FeedbackToast key="assignment-corrected" message="تم تصحيح بيانات العمل لهذا اليوم وحفظ تفاصيل التعديل." />}
-    {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة سياق العمل السابق." />}
-    {query.assignment === 'cancel-error' && <FeedbackToast key="assignment-cancel-error" message="تعذر إلغاء النقل. حدّث الصفحة للتحقق من حالته." />}
-    {query.compensation === 'changed' && <FeedbackToast key="compensation-changed" message="تم تحديث الأجر الأساسي اعتبارًا من اليوم." />}
-    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ التواريخ المقفلة تخضع لمقترح تصحيح مستقل ومراجعة المخرجات المتأثرة." />}
-    {query.compensation === 'initial_corrected' && <FeedbackToast key="compensation-initial-corrected" message="تم تصحيح الأجر الأول لهذا اليوم وحُفظ سجل التعديل." />}
-    {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
-    {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
-    {query.compensation === 'cancel-error' && <FeedbackToast key="compensation-cancel-error" message="تعذر إلغاء تغيير الأجر. حدّث الصفحة للتحقق من حالته." />}
-    {query.employment === 'ended' && <FeedbackToast key="employment-ended" message="تم إنهاء علاقة العمل. راجع Payroll والإجازات وتمويل الموظف للتسوية والمتابعة اللازمة." />}
-    {query.employment === 'rehired' && <FeedbackToast key="employment-rehired" message="تم إنشاء علاقة عمل جديدة للموظف. راجع Payroll والإجازات وتمويل الموظف بشأن الفترة السابقة." />}
-    <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-    <header className="workspace-page-heading"><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
-      <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div>
-      <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
-        {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
-    </header>
+  const initialTab: ProfileArea = query.userLink || query.account || query.linkQuery !== undefined || query.linkPage !== undefined
+    ? 'account' : query.employment ? 'employment'
+      : query.compensation && (canViewCompensation || canManageCompensation) ? 'compensation'
+        : query.assignment || query.policy || query.policyOverride ? 'work' : 'overview';
+  const overview = <>
     <section className="workspace-records-panel" aria-labelledby="employment-heading">
       <h2 id="employment-heading">{employee.status === 'scheduled' ? 'العمل المقرر' : employee.status === 'ended' ? 'آخر علاقة عمل' : 'العمل الحالي'}</h2>
       {employee.employment ? <dl className="snapshot-grid">
@@ -145,6 +131,8 @@ export default async function EmployeePage({ params, searchParams }: {
         بيانات الفرع والقسم والوظيفة المعروضة مقررة لتبدأ مع العمل في <bdi>{employee.employment.start_date}</bdi>؛ لم تبدأ بعد.
       </p>}
     </section>
+  </>;
+  const work = <>
     <WorkAssignmentPanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId}
       employmentStartDate={employee.employment?.start_date ?? null}
       employmentActive={employee.employment?.status === 'active'}
@@ -166,7 +154,7 @@ export default async function EmployeePage({ params, searchParams }: {
         {query.policy === 'failed' && <p className="form-message error-message" role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}
         {query.policy === 'pending' && <p className="form-message error-message" role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}
         {query.policy === 'materialized' && <p className="form-message error-message" role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</p>}
-        <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ سياسة الدوام</button></div>
+        <div className="workspace-form-actions"><SubmitButton label="حفظ سياسة الدوام" pendingLabel="جارٍ حفظ السياسة…" disabled={!workPolicyPanel.options.length} /></div>
       </form>}
       {workPolicyPanel.can_manage_catalog && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</Link>}
       <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
@@ -178,7 +166,7 @@ export default async function EmployeePage({ params, searchParams }: {
         {override.can_cancel && workPolicyPanel.can_manage_catalog && <form action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
           <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="overrideId" value={override.id}/>
           <div className="work-policy-assignment-field"><label htmlFor={`override-cancel-reason-${override.id}`}>سبب الإلغاء</label><input id={`override-cancel-reason-${override.id}`} name="cancelReason" minLength={3} maxLength={500} required/></div>
-          <div className="workspace-form-actions"><button className="secondary-button" type="submit">إلغاء التغيير المقرر</button></div>
+          <div className="workspace-form-actions"><SubmitButton className="secondary-button" label="إلغاء التغيير المقرر" pendingLabel="جارٍ الإلغاء…" /></div>
         </form>}
       </li>)}</ol> : <p className="empty-state">لا توجد تغييرات دوام لفترات محددة.</p>}
       {workPolicyPanel.can_manage_catalog && employmentId && employee.employment?.status === 'active' && <form action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
@@ -192,23 +180,25 @@ export default async function EmployeePage({ params, searchParams }: {
         {query.policyOverride === 'materialized' && <p className="form-message error-message" role="alert">بدأ فتح الحضور لأحد أيام الفترة؛ لم يُغيّر أي سجل. اختر تواريخ لم تُفتح بعد.</p>}
         {query.policyOverride === 'historical' && <p className="form-message error-message" role="alert">لا يمكن إضافة تغيير يبدأ بتاريخ سابق. اختر اليوم أو تاريخًا لاحقًا.</p>}
         {(query.policyOverride === 'failed' || query.policyOverride === 'forbidden' || query.policyOverride === 'cancel-failed') && <p className="form-message error-message" role="alert">تعذر حفظ التغيير. تحقق من صلاحيتك وحالة العمل والقالب، ثم حدّث الصفحة.</p>}
-        <div className="workspace-form-actions"><button className="primary-button" type="submit" disabled={!workPolicyPanel.options.length}>حفظ تغيير الدوام للفترة</button></div>
+        <div className="workspace-form-actions"><SubmitButton label="حفظ تغيير الدوام للفترة" pendingLabel="جارٍ حفظ التغيير…" disabled={!workPolicyPanel.options.length} /></div>
       </form>}
     </section>}
-    {query.policy === 'assigned' && <FeedbackToast key="policy-assigned" message="تم حفظ سياسة الدوام وسجل تاريخ سريانها."/>}
-    {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
-    {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
-    {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
+  </>;
+  const compensation = <>
     {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id}
       employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
       history={compensationHistory} historyError={compensationHistoryError}
       options={compensationOptions} optionsError={compensationOptionsError} today={today} />}
+  </>;
+  const employment = <>
     <EmploymentLifecyclePanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId}
       employmentStatus={employee.employment?.status ?? null} workforceStatus={employee.status}
       employmentStartDate={employee.employment?.start_date ?? null}
       previousEndDate={employee.employment?.end_date ?? null} canManage={canManageLifecycle} today={today}
       history={employmentHistory} historyError={employmentHistoryError}
       rehireOptions={rehireOptions} optionsError={rehireOptionsError} />
+  </>;
+  const account = <>
     <EmployeeUserLinkPanel tenantId={tenantId} employeeId={employee.id} canManage={access.can_manage === true}
       canInvite={membershipSnapshot?.can_manage_members === true}
       canProvisionAccount={canProvisionEmployeeAccount}
@@ -217,6 +207,40 @@ export default async function EmployeePage({ params, searchParams }: {
       snapshot={linkSnapshot} snapshotError={Boolean(linkSnapshotResult.error || !linkSnapshot)}
       options={linkOptions} optionsError={Boolean(access.can_manage === true && (linkOptionsResult.error || !linkOptions))}
       query={linkQuery} page={linkPage} state={query.userLink} />
+  </>;
+  return <PageFrame footer="الموارد البشرية">
+    {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
+    {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
+    {query.assignment === 'transferred' && <FeedbackToast key="assignment-transferred" message="تم تحديث سياق العمل اعتبارًا من اليوم." />}
+    {query.assignment === 'corrected' && <FeedbackToast key="assignment-corrected" message="تم تصحيح بيانات العمل لهذا اليوم وحفظ تفاصيل التعديل." />}
+    {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة سياق العمل السابق." />}
+    {query.assignment === 'cancel-error' && <FeedbackToast key="assignment-cancel-error" message="تعذر إلغاء النقل. حدّث الصفحة للتحقق من حالته." />}
+    {query.compensation === 'changed' && <FeedbackToast key="compensation-changed" message="تم تحديث الأجر الأساسي اعتبارًا من اليوم." />}
+    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ التواريخ المقفلة تخضع لمقترح تصحيح مستقل ومراجعة المخرجات المتأثرة." />}
+    {query.compensation === 'initial_corrected' && <FeedbackToast key="compensation-initial-corrected" message="تم تصحيح الأجر الأول لهذا اليوم وحُفظ سجل التعديل." />}
+    {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
+    {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
+    {query.compensation === 'cancel-error' && <FeedbackToast key="compensation-cancel-error" message="تعذر إلغاء تغيير الأجر. حدّث الصفحة للتحقق من حالته." />}
+    {query.employment === 'ended' && <FeedbackToast key="employment-ended" message="تم إنهاء علاقة العمل. راجع Payroll والإجازات وتمويل الموظف للتسوية والمتابعة اللازمة." />}
+    {query.employment === 'rehired' && <FeedbackToast key="employment-rehired" message="تم إنشاء علاقة عمل جديدة للموظف. راجع Payroll والإجازات وتمويل الموظف بشأن الفترة السابقة." />}
+    {query.policy === 'assigned' && <FeedbackToast key="policy-assigned" message="تم حفظ سياسة الدوام وسجل تاريخ سريانها."/>}
+    {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
+    {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
+    {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
+    <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
+    <header className="workspace-page-heading"><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
+      <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div>
+      <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
+        {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
+    </header>
+    <EmployeeProfileTabs initialTab={initialTab} areas={[
+      { value: 'overview', label: 'نظرة عامة', content: overview },
+      { value: 'work', label: 'العمل والتعيينات', content: work },
+      ...(canViewCompensation || canManageCompensation
+        ? [{ value: 'compensation' as const, label: 'الأجر الأساسي', content: compensation }] : []),
+      { value: 'account', label: 'الحساب والدخول', content: account },
+      { value: 'employment', label: 'علاقة العمل والسجل', content: employment },
+    ]} />
     <section className="workspace-records-panel" aria-label="الخطوة التالية">
       <h2>الخطوة التالية</h2>{correctionAccess.data?.can_correct&&<Link className="secondary-button" href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</Link>}<p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
       <div className="workspace-form-actions"><Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</Link>
