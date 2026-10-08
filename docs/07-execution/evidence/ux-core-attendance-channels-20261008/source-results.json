@@ -1,0 +1,9 @@
+{
+  "baseline": "371ae4a7245d97475143d196f1be0ab4f708bf12",
+  "sourceFiles": 7,
+  "sourceAuthority": "PASS; exact RPCs/native and composite input contracts/unchanged actions and attach",
+  "intentionalGetChanges": "two hidden read offsets plus href context/retry/anchors; not post authority",
+  "hrefBoundaryCases": 6,
+  "pagerContext": "PASS; no duplicate offset",
+  "fullR5": "OPEN; source only, actual role/provider/visual pending"
+}

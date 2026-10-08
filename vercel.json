@@ -71,7 +71,8 @@
       "codex/ux-core-people-preview": false,
       "codex/ux-core-people-management": false,
       "codex/ux-core-attendance-lists": false,
-      "codex/ux-core-attendance-task": false
+      "codex/ux-core-attendance-task": false,
+      "codex/ux-core-attendance-channels": false
     }
   }
 }

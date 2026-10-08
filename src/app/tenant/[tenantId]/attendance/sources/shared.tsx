@@ -15,6 +15,12 @@ export async function channelSession(tenantId:string) {
   if(error || !data) return null;
   return {db,access:data as ChannelAccess};
 }
-export function ChannelUnavailable({tenantId}:{tenantId:string}) { return <PageFrame><section className="workspace-records-panel"><h1>قنوات الحضور غير متاحة</h1><p>تحقق من الاتصال وصلاحية عرض الحضور، أو تواصل مع المسؤول.</p><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</Link></section></PageFrame>; }
+export function ChannelUnavailable({tenantId,retryHref=`/tenant/${tenantId}/attendance/sources`}:{tenantId:string;retryHref?:string}) { return <PageFrame><section className="workspace-records-panel"><h1>قنوات الحضور غير متاحة</h1><p>تحقق من الاتصال وصلاحية عرض الحضور، أو تواصل مع المسؤول.</p><Link className="primary-button" href={retryHref}>إعادة تحميل الصفحة</Link><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</Link></section></PageFrame>; }
 export function ChannelPager({href,offset,more}:{href:string;offset:number;more:boolean}) { return <nav className="attendance-pagination" aria-label="صفحات السجل">{offset>0 && <Link className="secondary-button" href={`${href}${href.includes('?')?'&':'?'}offset=${Math.max(0,offset-20)}`}>السابق</Link>}{more && <Link className="secondary-button" href={`${href}${href.includes('?')?'&':'?'}offset=${offset+20}`}>التالي</Link>}</nav>; }
 export function channelOffset(value:string|undefined) { const n=Number(value??0);return Number.isInteger(n) && n>=0 && n<=1000000?n:0; }
+
+export function channelHref(href:string,context:{offset?:number;mappingOffset?:number;q?:unknown;siteQ?:unknown}) {
+ const query=new URLSearchParams();for(const key of ['offset','mappingOffset'] as const) {const value=channelOffset(String(context[key]??0));if(value>0)query.set(key,String(value));}
+ for(const key of ['q','siteQ'] as const){const value=typeof context[key]==='string'?context[key].slice(0,100):'';if(value)query.set(key,value);}
+ const suffix=query.toString();return suffix?href+'?'+suffix:href;
+}

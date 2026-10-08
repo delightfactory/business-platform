@@ -1,0 +1,88 @@
+{
+  "baseline": "371ae4a7245d97475143d196f1be0ab4f708bf12",
+  "acceptance": "SOURCE WIP; NOT VISUALLY VERIFIED",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/page.tsx",
+      "sha256": "ec5fba9a62bc5b96e03401861c402d014343a70a73b61f43f6231c8f36b9a4f3",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "sha256": "35c2b7ae7ee850ff886dadf51e06332945cb4aa9c61b83ab66434166b8beb864",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
+      "sha256": "ac8d2fe8d21ee781e2abb342ae76501da1ba4da27e303425dd9205f686cac43b",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/new/page.tsx",
+      "sha256": "a895a909bf94fea0e8229e6827e7761646a0d9ac5a31eef2c0c4a0ab9a5349a3",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "sha256": "4cfc1e3c0016383de288cd6fabc3d1a3d1a40fd29c85d632b111837a8e47afb9",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/shared.tsx",
+      "sha256": "0bdf215d1ef38610d3a1a7a11360e102e47f1788b73ee9a49b64e0b4424d3f99",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/actions.ts",
+      "sha256": "7cf7c62d408c80e829baa473c5d0c805dfec00b7b7cdd856f6b0eda7db2e20e6",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+      "sha256": "24be1ff25f5f99e40c1a9cfe9e361ee70a958801ca9feaf0741ff3d5d4c7bcfe",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-channels.module.css",
+      "sha256": "c3e1b69fa28990500d6417abb014d2ec7f49e93f32ef83883657c9a7fdb775e2",
+      "normalization": "LF"
+    },
+    {
+      "file": "vercel.json",
+      "sha256": "9c4624df7f8f479491403022c02783994288cc99cb40a038e5f5eda1edafd9bd",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "inventory-migration.json",
+      "sha256": "216dc809c6931e49f260fee03593ea7361208e0cd4e2a916ad030bb517ae4746",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-candidate-recheck.json",
+      "sha256": "4d7a56c6aa70a9935287de5e463083a51d249439ddfa390990788fc2a6cec7af",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-spec-review.json",
+      "sha256": "b3751055d37f95af676cfc4783ac2af7d47e983fc3a98af93e44630ff36aaec7",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "29dd7b6c25d91c9fbc9674d19f977dfd8df0d715c73848f7aa39ae7d7e7418e1",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "source-checks.cjs",
+      "sha256": "7a1811e303571d6ae5ea32b5c3743e4a3b89bb0f7bae93ac2d27f7c63a46b450",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "source-results.json",
+      "sha256": "b538005447c194dcb9c3624ddcd0260badc66140d3a41fbdfc9d1eb737d90f8e",
+      "normalization": "LF trimEnd+newline"
+    }
+  ]
+}

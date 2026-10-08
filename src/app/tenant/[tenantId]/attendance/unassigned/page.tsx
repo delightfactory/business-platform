@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import styles from '../attendance-channels.module.css';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { PageFrame } from '@/components/context-navigation';
@@ -11,17 +12,19 @@ type Search = Promise<{ cursor?:string; result?:string }>;
 
 export default async function UnassignedAttendancePage({ params, searchParams }: { params: Promise<{tenantId:string}>; searchParams:Search }) {
   const {tenantId}=await params; const query=await searchParams; const cursor=query.cursor&&/^[0-9a-f-]{36}$/i.test(query.cursor)?query.cursor:null; const supabase=await createSupabaseServerClient();
-  if(!supabase) return <PageFrame><section className="work-card task-page"><h1>تعذر الاتصال</h1></section></PageFrame>;
+  const retryHref=`/tenant/${tenantId}/attendance/unassigned${cursor?`?cursor=${encodeURIComponent(cursor)}`:''}`;
+  if(!supabase) return <PageFrame><section className="work-card task-page"><h1>تعذر الاتصال</h1><Link className="primary-button" href={retryHref}>إعادة تحميل القائمة</Link></section></PageFrame>;
   const {data:{user}}=await supabase.auth.getUser(); if(!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/unassigned`)}`);
   const {data:access}=await supabase.rpc('time_attendance_access_snapshot',{p_tenant_id:tenantId});
   const {data,error}=await supabase.rpc('attendance_unassigned_evidence_queue',{p_tenant_id:tenantId,p_after:cursor,p_limit:50});
-  if(error||!isObject(data)||!Array.isArray(data.items)) return <PageFrame><section className="work-card task-page"><h1>قائمة التسجيلات بلا تكليف غير متاحة</h1><p>تحقق من صلاحية الحضور ثم أعد المحاولة.</p></section></PageFrame>;
+  if(error||!isObject(data)||!Array.isArray(data.items)) return <PageFrame><section className="work-card task-page"><h1>قائمة التسجيلات بلا تكليف غير متاحة</h1><p>تحقق من صلاحية الحضور ثم أعد المحاولة.</p><Link className="primary-button" href={retryHref}>إعادة تحميل القائمة</Link></section></PageFrame>;
   const rows=data.items as Evidence[]; const hasMore=data.has_more===true; const nextCursor=typeof data.next_cursor==='string'?data.next_cursor:null; const canAttach=access?.entitlement_enabled===true&&(access?.can_manage===true||access?.can_correct===true);
   async function attach(formData:FormData){'use server';const tenant=String(formData.get('tenantId')??'');const evidence=String(formData.get('evidenceId')??'');const reason=String(formData.get('reason')??'').trim();const rawWorkDate=String(formData.get('workDate')??'').trim();const workDate=/^\d{4}-\d{2}-\d{2}$/.test(rawWorkDate)?rawWorkDate:null;const client=await createSupabaseServerClient();if(!client)redirect(`/tenant/${tenant}/attendance/unassigned?result=error`);const {error}=await client.rpc('attach_unassigned_attendance_evidence_for_date',{p_tenant_id:tenant,p_evidence_id:evidence,p_reason:reason,p_work_date:workDate});revalidatePath(`/tenant/${tenant}/attendance/unassigned`);const result=!error?'attached':error.message.includes('attendance_unassigned_work_date_required')?'ambiguous':error.message.includes('attendance_unassigned_assignment_unavailable')?'stale':'error';redirect(`/tenant/${tenant}/attendance/unassigned?result=${result}`);}
   return <PageFrame footer="مراجعة تسجيلات الحضور">
-    <section className="work-card task-page attendance-review-page" aria-labelledby="unassigned-title">
+    <section className={`work-card task-page attendance-review-page ${styles.queue}`} aria-labelledby="unassigned-title">
       <Link className="back-link" href={`/tenant/${tenantId}/attendance`}>العودة إلى الحضور اليومي</Link>
       <div className="workspace-page-heading"><div><p className="eyebrow">أدلة محفوظة دون ربط تخميني</p><h1 id="unassigned-title">تسجيلات بلا تكليف</h1><p>هذه التسجيلات تخص موظفًا وفرعًا معروفين، لكن لا يوجد تكليف وسياسة دوام نافذان لوقتها. أصلح الفترة في ملف الموظف ثم أعد ربط التسجيل صراحةً.</p></div><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات</Link></div>
+      <ol className={styles.steps} aria-label="خطوات معالجة التسجيل"><li>راجع تكليف الموظف وسياسة دوامه في تاريخ الحركة.</li><li>اكتب سبب الربط، واختر يوم العمل إذا طُلب منك.</li><li>أعد الفحص والربط، ثم راجع النتيجة المسجلة.</li></ol>
       {access?.entitlement_enabled!==true&&<p className="form-message">وحدة الحضور غير مفعلة؛ السجل للقراءة فقط.</p>}
       {query.result==='attached'&&<p className="form-message" role="status">تم ربط التسجيل بسجل يوم العمل بعد إعادة التحقق من التكليف.</p>}
       {query.result==='ambiguous'&&<p className="form-message form-error" role="alert">يطابق وقت الحدث أكثر من يوم عمل. اختر تاريخ العمل المقصود من القائمة قبل الربط.</p>}
