@@ -1,0 +1,113 @@
+{
+  "baseSha": "00317db46ec2064eea5c11efaaaa1084bb86dfe8",
+  "sourceFile": "src/app/operator/operator-action-form.tsx",
+  "sourceSha256": "85c51b10dbe46a62939483fdfa8ae7e3eff9226aec3a2e120b804716f2da2053",
+  "scope": "Actual component submit callback with controlled React hooks/FormData; real installed Next browser interrupt classifier. Not native network/Auth/SQL proof.",
+  "passed": 14,
+  "records": [
+    {
+      "name": "ordinary-rejection:TypeError: Failed to fetch",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary-rejection:Error: Private synthetic reason must not appear",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary-rejection:undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary-rejection:plain rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "framework-interrupt:NEXT_REDIRECT;replace;/auth/login;307;",
+      "status": "PASS"
+    },
+    {
+      "name": "framework-interrupt:NEXT_REDIRECT;push;/operator;303;",
+      "status": "PASS"
+    },
+    {
+      "name": "framework-interrupt:NEXT_HTTP_ERROR_FALLBACK;404",
+      "status": "PASS"
+    },
+    {
+      "name": "framework-interrupt:NEXT_HTTP_ERROR_FALLBACK;401",
+      "status": "PASS"
+    },
+    {
+      "name": "framework-interrupt:NEXT_HTTP_ERROR_FALLBACK;403",
+      "status": "PASS"
+    },
+    {
+      "name": "nested-framework-cause-preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "known-returned-error-unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "void-return-has-no-success-claim",
+      "status": "PASS"
+    },
+    {
+      "name": "prehydration-still-disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "concurrent-submit-single-dispatch-and-cleanup",
+      "status": "PASS"
+    }
+  ],
+  "native": {
+    "scope": "Actual copied root/operator/pages/shared form/three company actions with synthetic SDK; actual browser request drop BEFORE server dispatch",
+    "width": 1280,
+    "height": 720,
+    "postsDropped": 1,
+    "upstreamPosts": 0,
+    "sdkMutations": 0,
+    "privateQuerySeen": false,
+    "retainedReason": "سبب اختبار محفوظ رغم فقد طلب المتصفح",
+    "retainedLimit": "20",
+    "routeUnchanged": true,
+    "formReenabled": true,
+    "unconfirmedAlert": "نتيجة الإجراء غير مؤكدة. راجع الحالة الحالية قبل إجراء آخر.",
+    "overflow": false,
+    "realAuth": false,
+    "realSql": false,
+    "postCommitResponseLoss": "not-run",
+    "fixtureCorrection": "Initial proxy omitted HMR upgrade forwarding and never hydrated; added local WebSocket forwarding once, then reloaded and executed one POST. Disabled inherited fieldset prevented earlier input attempts.",
+    "cleanup": "Only owned3614/3615 stopped, listeners absent; own104/105 tabs closed"
+  },
+  "review": {
+    "Codex": {
+      "source": "ACCEPT",
+      "visual": "SCOPED MATCH WITH ACCEPTED DEVIATIONS; pictured error component only"
+    },
+    "Claude": {
+      "source": "ACCEPT",
+      "visual": "SCOPED MATCH WITH ACCEPTED DEVIATIONS; pictured error component only",
+      "fullReference": "NOT VISUALLY VERIFIED",
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "session": "ecdf10b6-e90d-4b6b-bebb-3d04ec7b8dd0",
+      "readOnlyUnchanged": true
+    }
+  },
+  "build": {
+    "result": "PASS exit0",
+    "runtime": "Next16.3.6 production app build including TypeScript",
+    "reason": "New public Next API import in client component; one grouped build after final source",
+    "affectedLint": "PASS exit0",
+    "unaffectedSqlAndActionEvidence": "reused"
+  },
+  "open": [
+    "Post-commit response loss and reconciliation of prior mutation",
+    "Actual Auth/account/authority and business SQL mutation",
+    "Reload/history/unmount durable restoration",
+    "All-state/mobile/real-device/full-reference/a11y/wholeR3 acceptance"
+  ]
+}

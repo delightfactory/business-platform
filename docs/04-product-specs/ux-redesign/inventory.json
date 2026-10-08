@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "8e8b22051cd28dcd52582b6fcfd7cfb84ded2a27",
+  "sourceHead": "00317db46ec2064eea5c11efaaaa1084bb86dfe8",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -195,7 +195,7 @@
     {
       "file": "src/app/operator/operator-action-form.tsx",
       "phase": "R3",
-      "sha256": "bc97c06103211d8bfcea43ec05e3f9c15d35a0942a054db7598e43a7f7d5fbad"
+      "sha256": "85c51b10dbe46a62939483fdfa8ae7e3eff9226aec3a2e120b804716f2da2053"
     },
     {
       "file": "src/app/operator/operator-list-controls.tsx",
@@ -8357,17 +8357,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:39:1431",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:43:1623",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 39,
+      "line": 43,
       "tag": "form",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:45:1963",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:2155",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 45,
+      "line": 49,
       "tag": "button",
       "phase": "R3",
       "attributes": {

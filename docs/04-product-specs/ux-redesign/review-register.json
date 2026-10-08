@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "8e8b22051cd28dcd52582b6fcfd7cfb84ded2a27",
+  "sourceSnapshot": "00317db46ec2064eea5c11efaaaa1084bb86dfe8",
   "status": "Proposed",
   "items": [
     {
@@ -6254,7 +6254,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:39:1431",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:43:1623",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6263,7 +6263,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:45:1963",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:2155",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

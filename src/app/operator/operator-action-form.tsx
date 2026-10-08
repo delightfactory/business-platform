@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useSyncExternalStore, useTransition, type FormEvent, type ReactNode } from 'react';
+import { unstable_rethrow } from 'next/navigation';
 
 const subscribe = () => () => {};
 const clientReady = () => true;
@@ -32,6 +33,9 @@ export function OperatorActionForm({ action, children, errorMessages, label, pen
       try {
         const result = await action(formData);
         if (result) setError(Object.hasOwn(errorMessages, result) ? errorMessages[result] : 'تعذر إتمام الإجراء. راجع البيانات وحاول مجددًا.');
+      } catch (caught) {
+        unstable_rethrow(caught);
+        setError('نتيجة الإجراء غير مؤكدة. راجع الحالة الحالية قبل إجراء آخر.');
       } finally { inFlight.current = false; }
     });
   }
