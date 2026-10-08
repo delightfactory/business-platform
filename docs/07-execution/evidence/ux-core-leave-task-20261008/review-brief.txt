@@ -1,0 +1,18 @@
+Read-only independent core R6a task presentation review. No edits, Bash, commits, backend work or provider calls. Use official Opus5.5 Medium. User's approved R0–R8 plan is priority; D16 backend recovery saved but deferred until after core plan. D2/D3/D8 pending, unapplied. One economical review for this related batch.
+
+Actual candidate: src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx, [requestId]/page.tsx, leave.module.css. Baseline982d3ee20fce82da1e23df81623b612b83ee5b43. Changes: dates side-by-side on larger form widths, stacked<=640; labelled required reason3–500 hint with aria-describedby; inline fieldset CSS moved to module; detail state note now before facts/long reason, reason full width, narrower coherent detail section column. No handlers/hooks/options/key/actions/gates/parsers/SQL changed. All existing correction/day disclosures, submitted withdrawal, approved cancellation/pending/history/failure are retained.
+
+Required for every slice: simplify full user's task and preserve every real operation, authority/security/privacy/financial safeguards, safe fields/context and truthful next step. Reject dead ends, hidden capability, false success/lost context, duplicated choices without reason. This presentation evidence does NOT prove full hydrated actions or end-to-end N/C/I/B. Root16focusedcases show identical keys/fields/read calls and all7states. Build/typecheck and scoped ESLint passed. Last global lint unchanged failures in prior evidence scripts; not weakened or rerun needlessly.
+
+Pinned Concept C original HTML LF SHA AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508. Cairo/8radius40desktop44mobile/current navigation controlling contracts. Reference simulated form type-first/optional note/remaining arithmetic/modal are NOT authority: actual dates-first server eligibility, mandatory3–500 reason, half-day conditional and full-page form stay. No simulated quota math. Demo has no actual own-detail/cancellation contract; compare detail visual language/hierarchy against Concept C and record this limit. Fixture has synthetic layout rail, actual page/client source with SDK/hook/SubmitButton/link/PageFrame adapters; detail mutation forms are placeholder adapters, not visual qualification of those forms. Pending shared SubmitButton adapter does not prove real hydrated spinner/pending labels. Dark/provider/production parent unqualified.
+
+Actually READ images before visual verdict; all under C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-core-leave-task-20261008/:
+reference-form-1366.jpg, reference-form-390.jpg
+before-new-ready-1366.jpg, after-new-ready-1366.jpg
+after-new-ready-390.jpg, after-new-ready-768.jpg
+before-detail-submitted-390.jpg, after-detail-submitted-390.jpg
+after-detail-approved-390.jpg, after-new-options-error-390.jpg
+after-new-pending-390.jpg, after-new-focus-390.jpg
+browser-measures.json optionally. Other renders same folder. Viewport screenshots, full width; content below viewport not inspected unless scrolled evidence exists.
+
+Return image names read, explicit MATCH / MATCH WITH ACCEPTED DEVIATIONS / CHANGES REQUIRED / NOT VISUALLY VERIFIED for scoped new-form/detail READ CONTENT; must-fix and source preservation/simplicity/a11y/open gates. Do not silently accept untested cancellation forms, full R6 or pending amendments. State next core plan priority without adding extra backend scope. Under250words.

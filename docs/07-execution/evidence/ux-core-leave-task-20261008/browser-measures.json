@@ -1,0 +1,234 @@
+{
+  "browser": "Codex In-app Browser",
+  "version": "unavailable",
+  "samples": [
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 232.1999969482422,
+          "top": 356.8000183105469
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 232.1999969482422,
+          "top": 458.3999938964844
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 1366
+    },
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 559.4000244140625,
+          "top": 356.8000183105469
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 232.1999969482422,
+          "top": 356.8000183105469
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 1366
+    },
+    {
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 1366
+    },
+    {
+      "contextTop": 522.7999877929688,
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 1366
+    },
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 48.23749923706055,
+          "top": 329.8374938964844
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 48.23749923706055,
+          "top": 431.4375
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 768
+    },
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 384.3999938964844,
+          "top": 329.8374938964844
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 48.23749923706055,
+          "top": 329.8374938964844
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 768
+    },
+    {
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 768
+    },
+    {
+      "contextTop": 513.5187377929688,
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 768
+    },
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 35.20000076293945,
+          "top": 344.3999938964844
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 35.20000076293945,
+          "top": 446
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 390
+    },
+    {
+      "dateFields": [
+        {
+          "height": 54.400001525878906,
+          "left": 35.20000076293945,
+          "top": 344.3999938964844
+        },
+        {
+          "height": 54.400001525878906,
+          "left": 35.20000076293945,
+          "top": 451.6000061035156
+        }
+      ],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "طلب إجازة جديد — ready",
+      "width": 390
+    },
+    {
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 390
+    },
+    {
+      "contextTop": 726.4000244140625,
+      "dateFields": [],
+      "fonts": "loaded",
+      "overflow": false,
+      "status": [],
+      "title": "تفاصيل طلب الإجازة — submitted",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "طلب إجازة جديد — pending",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "طلب إجازة جديد — options-error",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "طلب إجازة جديد — error",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "تفاصيل طلب الإجازة — approved",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "تفاصيل طلب الإجازة — superseded",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "title": "تفاصيل الطلب — تعذر التحقق",
+      "width": 390
+    },
+    {
+      "focus": "leave-start-date",
+      "outline": "rgb(11, 114, 217) solid 2px",
+      "reasonDescribedBy": "leave-reason-hint",
+      "targets": [
+        {
+          "height": 54.400001525878906,
+          "name": "startDate"
+        },
+        {
+          "height": 54.400001525878906,
+          "name": "endDate"
+        },
+        {
+          "height": 50.79999923706055,
+          "name": "leaveTypeId"
+        },
+        {
+          "height": 80,
+          "name": "reason"
+        },
+        {
+          "height": 44,
+          "name": null
+        }
+      ]
+    }
+  ]
+}

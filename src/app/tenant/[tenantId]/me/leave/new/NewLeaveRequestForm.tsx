@@ -119,12 +119,18 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
       <h2 className={styles.formTitle}>1 · تواريخ الإجازة</h2>
       <form className="auth-form" onSubmit={loadOptions} aria-busy={loadingOptions}>
         <input type="hidden" name="tenantId" value={tenantId} />
+        <div className={styles.dateFields}>
+        <div className={styles.formField}>
         <label htmlFor="leave-start-date">تاريخ البداية</label>
         <input id="leave-start-date" name="startDate" type="date" required value={fields.startDate}
           onChange={handleStartDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
+        </div>
+        <div className={styles.formField}>
         <label htmlFor="leave-end-date">تاريخ النهاية</label>
         <input id="leave-end-date" name="endDate" type="date" required value={fields.endDate}
           onChange={handleEndDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
+        </div>
+        </div>
         <p className="field-hint">اختر التواريخ أولًا؛ تُحمَّل بعدها أنواع الإجازة المتاحة في هذه الفترة.</p>
         {rangeError && <p className="form-message form-error" role="alert">{rangeError}</p>}
         {optionsError && <p className="form-message form-error" role="alert">{optionsError}</p>}
@@ -143,7 +149,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
       <h2 className={styles.formTitle}>2 · بيانات الطلب</h2>
       <form className="auth-form" action={submitAction} aria-busy={submitting}>
         <fieldset disabled={frozen || Boolean(rangeError) || options.startDate !== fields.startDate || options.endDate !== fields.endDate}
-          style={{ display: 'grid', gap: '.65rem', border: 0, padding: 0, margin: 0, minWidth: 0 }}>
+          className={styles.requestFields}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="startDate" value={options.startDate} />
         <input type="hidden" name="endDate" value={options.endDate} />
@@ -168,7 +174,8 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             <label htmlFor="leave-reason">سبب الإجازة</label>
             <textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
-              aria-invalid={Boolean(submitState.error)} />
+              aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint" />
+            <p id="leave-reason-hint" className="field-hint">اكتب السبب في 3 إلى 500 حرف ليُراجعه فريق الموارد البشرية.</p>
             {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">

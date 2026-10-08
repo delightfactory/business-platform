@@ -1,0 +1,11 @@
+# Core leave task presentation evidence
+
+Baseline982d3ee20fce82da1e23df81623b612b83ee5b43. `manifest.json` binds normalized source and UTF-8 artifact hashes; JPG hashes cover binary bytes. Screenshots use correct viewport capture, avoiding the previous narrow full-page RTL capture defect. Only their visible content was inspected. `before-*` and `after-*` cover new-ready/detail-submitted at1366/768/390; other after images cover approved/superseded/failure and create pending/error/options-error/focus. Reference form images come from pinned HTML using employee role and request demo.
+
+`focused-results.json`:16 checks on actual async page/client source with controlled SDK/hooks/link/PageFrame/SubmitButton adapters. Detail withdrawal/cancellation are placeholders, so their visual/hydrated behavior is not qualified. No mutation/provider/employee data. Fixture/runtime sources retained as text for inspection; local paths/external snapshots mean these are provenance artifacts, not portable project test commands.
+
+`browser-measures.json`: samples begin with before then after per state at each width, followed by named failure/focus cases. Titles are state names; screenshot names bind before/after. Dates align on desktop, remain stacked on mobile; no sampled overflow and loaded font. Date focus2px; sample control sizes>=44px excluding existing checkbox, not full accessibility certification. Browser version unavailable.
+
+`claude-final.txt`: independent official Opus5.5 Medium review of12 images/client source. Initial run reached max turns after reads; same session produced final verdict without new tools. No permission rejection or alternative provider; source unchanged during review. Raw events/settings/account metadata remain local. Codex independently reviewed diff, actual images and source safeguards. Scoped visible read-content verdict MATCH WITH ACCEPTED DEVIATIONS; mutation forms/below-viewport controls/hydration/provider/shell/dark/full R6 explicitly unqualified.
+
+Build with TypeScript and changed TSX lint passed once. Last unchanged global lint failure reused, not relabeled passed. GET-only synthetic fixture127.0.0.1:3578 retired; listener absence checked; shared tasks untouched. No merge/PR/Actions/deployment. See [slice contract](../../../04-product-specs/ux-redesign/employee-leave-task-presentation-slice.md).

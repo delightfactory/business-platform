@@ -1,0 +1,85 @@
+{
+  "passed": 16,
+  "checks": [
+    {
+      "case": "create-idle",
+      "result": "PASS",
+      "fieldsKeyAndReadCallsPreserved": true
+    },
+    {
+      "case": "create-ready",
+      "result": "PASS",
+      "fieldsKeyAndReadCallsPreserved": true
+    },
+    {
+      "case": "create-pending",
+      "result": "PASS",
+      "fieldsKeyAndReadCallsPreserved": true
+    },
+    {
+      "case": "create-error",
+      "result": "PASS",
+      "fieldsKeyAndReadCallsPreserved": true
+    },
+    {
+      "case": "create-options-error",
+      "result": "PASS",
+      "fieldsKeyAndReadCallsPreserved": true
+    },
+    {
+      "case": "detail-draft",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-submitted",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-approved",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-rejected",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-withdrawn",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-cancelled",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "detail-superseded",
+      "result": "PASS",
+      "operationsReadCallsAndReasonPreserved": true
+    },
+    {
+      "case": "leave_my_cancellation_history",
+      "result": "PASS",
+      "unsafeActionStillBlocked": true
+    },
+    {
+      "case": "leave_access_snapshot",
+      "result": "PASS",
+      "unsafeActionStillBlocked": true
+    },
+    {
+      "case": "leave_my_request_detail",
+      "result": "PASS",
+      "unsafeActionStillBlocked": true
+    },
+    {
+      "case": "client-callbacks-hooks-key-options-unchanged",
+      "result": "PASS"
+    }
+  ],
+  "boundary": "Actual source with controlled SDK/hook adapters; not hydrated action/provider/authorization qualification"
+}

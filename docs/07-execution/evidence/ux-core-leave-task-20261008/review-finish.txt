@@ -1,0 +1,1 @@
+Finish the existing review now using the 12 images and source you already read. Do not call tools or read anything else. No candidate changes since review. Return explicit scoped visual verdict and must-fix/open gates under200words. No full hydrated/provider/R6 claim, no backend expansion.

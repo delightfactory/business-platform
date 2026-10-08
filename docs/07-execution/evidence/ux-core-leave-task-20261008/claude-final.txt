@@ -1,0 +1,31 @@
+# Scoped R6a review: new leave form and own-request detail
+
+**Images read (12):** reference-form-1366, reference-form-390, before-new-ready-1366, after-new-ready-1366, after-new-ready-390, after-new-ready-768, before-detail-submitted-390, after-detail-submitted-390, after-detail-approved-390, after-new-options-error-390, after-new-pending-390, after-new-focus-390.
+
+**Verdict: MATCH WITH ACCEPTED DEVIATIONS** for the new form and detail read content in these viewports. Accepted deviations:
+- The form stays a full page, not a drawer.
+- Dates come first and the server decides eligibility.
+- The reason is required, 3–500 characters.
+- The half-day option only appears when allowed.
+- There is no simulated quota maths.
+
+**What the images and source show:**
+- Dates sit side by side at 1366 and 768 and stack at 390.
+- The reason hint is linked with `aria-describedby` (`NewLeaveRequestForm.tsx:177-178`).
+- The fieldset gate, hidden fields, idempotency key and handlers are unchanged.
+- The focus ring is visible. The options error shows an alert and a reload button.
+- On the approved detail, the state note now comes before the facts. The reason is full width.
+
+**Must-fix:** none.
+
+**NOT VISUALLY VERIFIED:**
+- The submit button, Cancel link and spinner in the pending state, which are below the fold.
+- The submitted withdrawal, approved cancellation, pending, history and failure forms (placeholder adapters only).
+- The "next section" the approved note points to.
+- Dark mode, the provider and the production parent.
+
+**Nit:** the indentation of the nested date `div`s (lines 122–133) is uneven.
+
+**Open gates:** full hydrated actions, end-to-end N/C/I/B and the rest of R6 are not proven. D2, D3 and D8 are still pending and unapplied.
+
+**Next priority:** the next slice of the approved R0–R8 plan, including evidence for hydrated actions and the cancellation forms. D16 backend recovery stays deferred until the core plan is done.

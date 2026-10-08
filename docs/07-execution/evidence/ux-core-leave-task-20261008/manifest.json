@@ -1,0 +1,172 @@
+{
+  "baseline": "982d3ee20fce82da1e23df81623b612b83ee5b43",
+  "candidateSource": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "sha256NormalizedLF": "2f254d3a6596ce6c55014db98309e9f6c09467c0e6bba98d2c4b09693502bfdd"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sha256NormalizedLF": "769bbd828b1bc738add63d288ed37766028f957a86fb8cef731190f1d3317642"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
+      "sha256NormalizedLF": "e184e9b990e0c33507bf1afc74c1e35c876c3a7f92f4bda98aea510ed4d65574"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "after-detail-approved-390.jpg",
+      "encoding": "binary",
+      "sha256": "1aa23a48262f99d62ade333a78bf280bfb5997060b1068fc72225d1803f7876f"
+    },
+    {
+      "file": "after-detail-submitted-1366.jpg",
+      "encoding": "binary",
+      "sha256": "36ba2d839603505bceb5003935cbafaa58d98d77c2aafcc47e99f284def96dd2"
+    },
+    {
+      "file": "after-detail-submitted-390.jpg",
+      "encoding": "binary",
+      "sha256": "006d9480e37c43d1c5835a4805a48242e3e983834159eb8766288fff4788a5c0"
+    },
+    {
+      "file": "after-detail-submitted-768.jpg",
+      "encoding": "binary",
+      "sha256": "74bdf79b3fba169ff4eb201f20750bfbe090b71d76fe718fe9cf8b22bf9409fa"
+    },
+    {
+      "file": "after-detail-superseded-390.jpg",
+      "encoding": "binary",
+      "sha256": "8ca412d8647f2da84f803ed7c148e0eea8ab13d7a1afe0bdba6acd021ca7c301"
+    },
+    {
+      "file": "after-failure-leave_my_cancellation_history-390.jpg",
+      "encoding": "binary",
+      "sha256": "bb83359d939f26952dc244fc32cff1e8d676d54abce8df051b589e375b826592"
+    },
+    {
+      "file": "after-new-error-390.jpg",
+      "encoding": "binary",
+      "sha256": "5d261f7915841cb4f5be1ecdcb7854e75b5758f55b7c13283a7c48e81454a415"
+    },
+    {
+      "file": "after-new-focus-390.jpg",
+      "encoding": "binary",
+      "sha256": "eba1720c76f11f4dd9dfe5db7c30aa77b46ecd7aa6dd72ba487255acfe955d01"
+    },
+    {
+      "file": "after-new-options-error-390.jpg",
+      "encoding": "binary",
+      "sha256": "66bf511e9aa261500defc3b0f2c8af51e731102abc13ca71a3381b2e3797c2ad"
+    },
+    {
+      "file": "after-new-pending-390.jpg",
+      "encoding": "binary",
+      "sha256": "221b468947ad07fb5804fbf702bbfaa3b751bb192a0ce9cc0e2d9dbb0d4e3041"
+    },
+    {
+      "file": "after-new-ready-1366.jpg",
+      "encoding": "binary",
+      "sha256": "124dec43b0dfd73b5ce3961b8c87b6cea23c05cb5be20b332015527262d18cbd"
+    },
+    {
+      "file": "after-new-ready-390.jpg",
+      "encoding": "binary",
+      "sha256": "3ccf68957fbab2efdd1120244cc948f27885c8c6c1bbd2da11fdd2a3e8f4cdb2"
+    },
+    {
+      "file": "after-new-ready-768.jpg",
+      "encoding": "binary",
+      "sha256": "b0a322b16480bc47bc656cf127486c5a061e7ad5aa55dcc2a47f0e9034ffa034"
+    },
+    {
+      "file": "before-detail-submitted-1366.jpg",
+      "encoding": "binary",
+      "sha256": "55ddff91b3c1d7c2fd2defa1b0357af7878e95e3d3b0cb91dba65f5855fd6ede"
+    },
+    {
+      "file": "before-detail-submitted-390.jpg",
+      "encoding": "binary",
+      "sha256": "46c9b84210e9e7aa43331f45e339cdad25c98d2ec9f5999bca3617de3cc616a5"
+    },
+    {
+      "file": "before-detail-submitted-768.jpg",
+      "encoding": "binary",
+      "sha256": "d3fc33d468be33aa5bba42680c11f2835897adc4deafa0a5fd2d7b3f7046647d"
+    },
+    {
+      "file": "before-new-ready-1366.jpg",
+      "encoding": "binary",
+      "sha256": "6e91fdf38b51e79f138cd7b534542c8120d72b55ed2f7089e64018a9f44aa866"
+    },
+    {
+      "file": "before-new-ready-390.jpg",
+      "encoding": "binary",
+      "sha256": "fd0d5c5987803b961cb206058921a297e1fe25d424b4d067da90e0a2baaffca8"
+    },
+    {
+      "file": "before-new-ready-768.jpg",
+      "encoding": "binary",
+      "sha256": "747b1bf661395a99e620d34051f70957fc48187fe354e0d50eaaadca0823f172"
+    },
+    {
+      "file": "browser-measures.json",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "5805be9166a2a2924a4c09f51da07c06e74366d34d06fd8485712fef56e43a3e"
+    },
+    {
+      "file": "claude-final.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "1f069b7be859eae71158d93dae924da9e65bd03f892bb9ecdbc37cb5fe669ebe"
+    },
+    {
+      "file": "client-engine-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "cb62e18ccfdeb20e61b40f099fa6d0e45808703b35f3dd1da2fa9b82f5a23f7c"
+    },
+    {
+      "file": "fixture-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "9b2c7c6432965a16fa53aed79b8a1d90435812a4c74000729d24050db8952cdd"
+    },
+    {
+      "file": "focused-results.json",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "f3302914b92dbceff96c77fd0705ae67f7b8bdef68ce845ecfa4a8e7c64dcfa9"
+    },
+    {
+      "file": "README.md",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "eeebb5ed220f69e93e9d254e0ce6a38daa79637d33e14356025f12ef68e86fb2"
+    },
+    {
+      "file": "reference-form-1366.jpg",
+      "encoding": "binary",
+      "sha256": "47c6df18923ff05615bb0a11aedc72eaa345cd0cffd7fde2d4ae8f432be1f658"
+    },
+    {
+      "file": "reference-form-390.jpg",
+      "encoding": "binary",
+      "sha256": "882eaa99669f4bb4118d3b5b9439eb70fbdb1249ec3e3b97edbd46316bd21f8c"
+    },
+    {
+      "file": "review-brief.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "b4356061f9ff8b666a350ccecbcd4cec4d213d38b43dbf69f30d02e940d04267"
+    },
+    {
+      "file": "review-finish.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "3757d7f23030b155344290eece073731c7390694cef921d7f9e277ad5800e35c"
+    },
+    {
+      "file": "runtime-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "a37cfc3ff8d5ef137b0d60b4c9a4bdeeac560a3a45f4eb07094a7f4c78c21e06"
+    }
+  ],
+  "codexVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "claudeVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "scope": "visible create/detail read content only; NOT full R6"
+}

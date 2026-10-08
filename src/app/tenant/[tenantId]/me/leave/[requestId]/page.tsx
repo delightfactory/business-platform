@@ -11,6 +11,7 @@ import { cancellationEventActor, parseHistoryOffset } from './cancellation-rules
 import { DayBreakdown } from './DayBreakdown';
 import { RequestCancellationForm } from './RequestCancellationForm';
 import { WithdrawRequestForm } from './WithdrawRequestForm';
+import styles from '../leave.module.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -76,6 +77,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
 
   return <PageFrame footer="الخدمة الذاتية">
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
+    <div className={styles.detailPage}>
     <section className="work-card task-page" aria-labelledby="leave-request-title">
       <PendingLink className="back-link" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</PendingLink>
       <p className="eyebrow">طلب إجازة</p>
@@ -85,12 +87,16 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
         ? <>أُرسل في <bdi>{formatInstant(request.submitted_at)}</bdi> · </>
         : 'لم يُرسل بعد · '}الطلب المعلّق لا يحجز رصيدًا قبل الاعتماد.</p>
 
-      <dl className="snapshot-grid">
+      {stateNote && <p className="form-message" role="status">{stateNote}</p>}
+
+      <dl className={`snapshot-grid ${styles.requestSummary}`}>
         <div><dt>الحالة</dt><dd>{stateLabel(request.state)}</dd></div>
         <div><dt>إجمالي أيام الإجازة المحتسبة</dt><dd>{formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</dd></div>
         <div><dt>تاريخ البداية</dt><dd><bdi>{request.start_date}</bdi></dd></div>
         <div><dt>تاريخ النهاية</dt><dd><bdi>{request.end_date}</bdi></dd></div>
-        <div><dt>السبب</dt><dd>{request.reason || 'غير مسجل'}</dd></div>
+      </dl>
+      <dl className={styles.requestContext}>
+        <div><dt>سبب الإجازة</dt><dd>{request.reason || 'غير مسجل'}</dd></div>
         <div><dt>طريقة التسجيل</dt><dd>{request.request_source === 'hr' ? 'إدارة الموارد البشرية' : 'خدمة الموظف'}</dd></div>
       </dl>
 
@@ -109,8 +115,6 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
           </li>;
         })}</ul>
       </>}
-
-      {stateNote && <p className="form-message" role="status">{stateNote}</p>}
 
       {request.days.length > 0 && <details className="task-disclosure">
         <summary className="secondary-button">تفاصيل أيام الطلب</summary>
@@ -174,6 +178,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
     <CancellationHistorySection tenantId={tenantId} requestId={requestId} view={history}
       requestedOffset={historyOffset.invalid ? 0 : historyOffset.value}
       offsetInvalid={historyOffset.invalid} currentUserId={user.id} />
+    </div>
   </PageFrame>;
 }
 

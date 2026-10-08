@@ -1,0 +1,31 @@
+const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert/strict');
+const {runtime,id,detail}=require('./runtime.cjs'),{engine,options}=require('./client-engine.cjs');
+const repo='C:/Users/DELL/Documents/Codex/2026-10-07/business-platform-ux-auth-recovery';
+const read=p=>fs.readFileSync(path.join(repo,p),'utf8');
+const shared=read('src/styles/tokens.css')+read('src/app/globals.css').replace(/^@import[^;]+;/gm,'')+read('src/app/workspace.css');
+const font=[400,600,700].map(w=>read(`node_modules/@fontsource/cairo/${w}.css`).replaceAll('./files/','/fonts/')).join('\n');
+const pages={},checks=[];
+const hrefs=h=>[...h.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
+async function newForm(before,state){const config={pending:false,error:state==='error'?'تعذر تأكيد نتيجة الإرسال؛ راجع حالة الطلب.':''};const e=engine('new',config,before);if(state!=='idle'){e.change('input','startDate','2026-10-10');e.load();await e.respond(options());e.change('textarea','reason','سبب تجريبي للإجازة');if(state==='options-error'){e.load();try{await e.respond(null,true)}catch{}}}config.pending=state==='pending';return e;}
+function doc(html,before,title){const css=fs.readFileSync(path.join(__dirname,before?'before.css':'candidate.css'),'utf8').replace(/:global\(([^)]+)\)/g,'$1');return `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><style>${font}${shared}${css}</style><body><div class="workspace-frame tenant-area"><aside class="workspace-navigation" aria-label="سياق تجريبي"><div class="workspace-sidebar">شركة تجريبية</div></aside><div class="workspace-content">${html}</div></div></body></html>`;}
+(async()=>{
+ for(const state of ['idle','ready','pending','error','options-error']){
+  const a=await newForm(true,state),b=await newForm(false,state);assert.deepEqual(a.state(),b.state());assert.deepEqual(a.calls,b.calls);
+  for(const name of ['startDate','endDate','reason'])for(const attr of ['value','disabled','required','minLength','maxLength'])assert.equal(a.field(name==='reason'?'textarea':'input',name)?.[attr],b.field(name==='reason'?'textarea':'input',name)?.[attr]);
+  for(const [before,e] of [[true,a],[false,b]]){const base=await runtime({canRequest:true},before).page('new');const html=base.replace('<div data-form="new"></div>',e.html());pages[`/${before?'before':'after'}/new-${state}`]=doc(html,before,`طلب إجازة جديد — ${state}`);}
+  checks.push({case:'create-'+state,result:'PASS',fieldsKeyAndReadCallsPreserved:true});
+ }
+ const longReason='سبب تجريبي طويل للإجازة يوضح سبب الطلب دون بيانات شخصية. '.repeat(7);
+ for(const state of ['draft','submitted','approved','rejected','withdrawn','cancelled','superseded']){
+  const cfg={state,canRequest:true,dataByRpc:{leave_my_request_detail:{...detail,state,reason:longReason}}},a=runtime(cfg,true),b=runtime(cfg);const old=await a.page('detail'),now=await b.page('detail');assert.deepEqual(a.calls,b.calls);assert.deepEqual(hrefs(old),hrefs(now));assert(now.includes(longReason));assert.equal(now.includes('data-form="withdraw"'),state==='submitted');assert.equal(now.includes('data-form="cancellation"'),state==='approved');
+  for(const [before,html] of [[true,old],[false,now]])pages[`/${before?'before':'after'}/detail-${state}`]=doc(html,before,`تفاصيل طلب الإجازة — ${state}`);
+  checks.push({case:'detail-'+state,result:'PASS',operationsReadCallsAndReasonPreserved:true});
+ }
+ for(const failure of ['leave_my_cancellation_history','leave_access_snapshot','leave_my_request_detail']){
+  const cfg={state:'approved',canRequest:true,fail:failure},a=runtime(cfg,true),b=runtime(cfg);const old=await a.page('detail'),now=await b.page('detail');assert.deepEqual(a.calls,b.calls);assert.deepEqual(hrefs(old),hrefs(now));assert(!now.includes('data-form="cancellation"'));pages['/after/failure-'+failure]=doc(now,false,'تفاصيل الطلب — تعذر التحقق');checks.push({case:failure,result:'PASS',unsafeActionStillBlocked:true});
+ }
+ const code=read('src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx'),before=fs.readFileSync(path.join(__dirname,'form-before-0.txt'),'utf8');assert.equal(code.split('  return <>')[0],before.split('  return <>')[0]);checks.push({case:'client-callbacks-hooks-key-options-unchanged',result:'PASS'});
+ fs.writeFileSync(path.join(__dirname,'focused-results.json'),JSON.stringify({passed:checks.length,checks,boundary:'Actual source with controlled SDK/hook adapters; not hydrated action/provider/authorization qualification'},null,2)+'\n');
+ const server=http.createServer((req,res)=>{if(req.method!=='GET'){res.writeHead(405);return res.end();}if(pages[req.url]){res.setHeader('Content-Type','text/html;charset=utf-8');return res.end(pages[req.url]);}if(req.url==='/reference'){res.setHeader('Content-Type','text/html;charset=utf-8');return res.end(read('docs/07-execution/evidence/ux-redesign-proposal-20261007/ux-concept-c.html'));}if(/^\/fonts\/[a-z0-9-]+\.woff2?$/.test(req.url)){const p=path.join(repo,'node_modules/@fontsource/cairo/files',path.basename(req.url));if(fs.existsSync(p))return fs.createReadStream(p).pipe(res);}res.writeHead(404);res.end();});server.listen(3578,'127.0.0.1',()=>console.log(JSON.stringify({passed:checks.length,fixture:'Synthetic GET-only 127.0.0.1:3578',pid:process.pid})));
+})().catch(e=>{console.error(e.stack);process.exitCode=1});
+

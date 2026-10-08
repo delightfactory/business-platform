@@ -1,3 +1,67 @@
+.dateFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.formField,
+.requestFields {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.requestFields {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.detailPage {
+  display: grid;
+  gap: 1.25rem;
+  width: min(100%, 56rem);
+  margin: 1.5rem auto 3rem;
+}
+
+:global(.workspace-frame) .detailPage > :global(.work-card),
+:global(.workspace-frame) .detailPage > :global(.work-card):first-of-type {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  border-radius: 0.5rem;
+}
+
+.requestSummary:global(.snapshot-grid) {
+  margin: 0;
+}
+
+.requestContext {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding-block: 1rem;
+  border-block: 1px solid var(--color-border);
+}
+
+.requestContext dt {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.requestContext dd {
+  margin: 0.35rem 0 0;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .dateFields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .overviewGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
