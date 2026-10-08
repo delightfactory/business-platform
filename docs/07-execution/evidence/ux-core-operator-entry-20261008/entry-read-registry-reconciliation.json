@@ -1,0 +1,268 @@
+{
+  "summary": {
+    "sourceFiles": 284,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 107,
+    "rpcCallSites": 350,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1173,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1719,
+  "priorStatusesPreserved": true,
+  "sourceReviewed": 19,
+  "added": [],
+  "migrations": [
+    {
+      "before": "RPC:src/app/operator/commercial/page.tsx:17:944",
+      "after": "RPC:src/app/operator/commercial/page.tsx:19:1018",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/commercial/page.tsx:18:999",
+      "after": "RPC:src/app/operator/commercial/page.tsx:20:1072",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/commercial/page.tsx:21:1208",
+      "after": "RPC:src/app/operator/commercial/page.tsx:24:1420",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/entitlements/page.tsx:17:931",
+      "after": "RPC:src/app/operator/entitlements/page.tsx:19:1005",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/entitlements/page.tsx:18:986",
+      "after": "RPC:src/app/operator/entitlements/page.tsx:20:1059",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/entitlements/page.tsx:21:1194",
+      "after": "RPC:src/app/operator/entitlements/page.tsx:24:1406",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/invitations/new/page.tsx:17:742",
+      "after": "RPC:src/app/operator/invitations/new/page.tsx:18:786",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/invitations/page.tsx:32:1461",
+      "after": "RPC:src/app/operator/invitations/page.tsx:24:1357",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/invitations/page.tsx:34:1665",
+      "after": "RPC:src/app/operator/invitations/page.tsx:27:1743",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/invitations/page.tsx:41:2315",
+      "after": "RPC:src/app/operator/invitations/page.tsx:37:2671",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:18:988",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:20:1103",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:20:1247",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:23:1471",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:23:1571",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:28:2156",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:17:926",
+      "after": "RPC:src/app/operator/page.tsx:18:970",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:22:1491",
+      "after": "RPC:src/app/operator/page.tsx:23:1531",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:23:1550",
+      "after": "RPC:src/app/operator/page.tsx:24:1658",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:24:1609",
+      "after": "RPC:src/app/operator/page.tsx:25:1784",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:25:1676",
+      "after": "RPC:src/app/operator/page.tsx:26:1918",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/page.tsx:26:1744",
+      "after": "RPC:src/app/operator/page.tsx:27:2053",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/tenants/page.tsx:18:1040",
+      "after": "RPC:src/app/operator/tenants/page.tsx:20:1084",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/tenants/page.tsx:19:1095",
+      "after": "RPC:src/app/operator/tenants/page.tsx:21:1138",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/tenants/page.tsx:24:1394",
+      "after": "RPC:src/app/operator/tenants/page.tsx:27:1628",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/commercial/page.tsx:30:1908",
+      "after": "CONTROL:src/app/operator/commercial/page.tsx:34:2138",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/commercial/page.tsx:30:1937",
+      "after": "CONTROL:src/app/operator/commercial/page.tsx:34:2167",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/entitlements/page.tsx:30:1894",
+      "after": "CONTROL:src/app/operator/entitlements/page.tsx:34:2124",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/entitlements/page.tsx:30:1923",
+      "after": "CONTROL:src/app/operator/entitlements/page.tsx:34:2153",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:51:2877",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:50:3588",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:51:2906",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:50:3617",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:80:5408",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:80:6348",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:81:5471",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:81:6410",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:82:5553",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:82:6491",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:84:5709",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:84:6645",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:85:5771",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:85:6706",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:86:5853",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:86:6787",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:139:8614",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:119:7943",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/invitations/page.tsx:139:8643",
+      "after": "CONTROL:src/app/operator/invitations/page.tsx:119:7972",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:29:1960",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:35:2654",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:29:1989",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:35:2683",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:37:2814",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:44:4004",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:38:2954",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:45:4143",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:40:3117",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:47:4304",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:41:3288",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:48:4474",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:43:3440",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:50:4624",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:79:5857",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:86:7040",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:79:5886",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:86:7069",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/page.tsx:88:6071",
+      "after": "CONTROL:src/app/operator/page.tsx:90:6781",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/page.tsx:88:6100",
+      "after": "CONTROL:src/app/operator/page.tsx:90:6810",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/tenants/page.tsx:36:2158",
+      "after": "CONTROL:src/app/operator/tenants/page.tsx:40:2483",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/tenants/page.tsx:36:2187",
+      "after": "CONTROL:src/app/operator/tenants/page.tsx:40:2512",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false
+}

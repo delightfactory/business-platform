@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { operatorPermission } from '@/lib/operator-access';
+import { operatorInvitation, operatorPage, operatorUuid } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
@@ -10,17 +12,7 @@ import { OperatorListControls, operatorListQuery } from '@/app/operator/operator
 export const dynamic = 'force-dynamic';
 
 type SearchParams = Promise<{ id?: string; state?: string; page?: string; q?: string }>;
-type InvitationRow = {
-  id: string;
-  target_email: string;
-  tenant_name: string;
-  lifecycle_state: string;
-  delivery_state: string;
-  issuance: number;
-  expires_at: string;
-  created_by_operator_id: string;
-  tenant_id: string | null;
-};
+
 
 export default async function OperatorInvitationsPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
@@ -29,17 +21,24 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
-  const { data: capable } = await supabase.rpc('current_operator_can_onboard_tenants');
-  if (!capable) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
+  const { data: capable, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
+  if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
+  if (!operatorPermission({ data: capable, error: capabilityError })) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
   const { data, error } = await supabase.rpc('tenant_admin_invitation_page', { p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
-  const result = data as Record<string, unknown>;
-  const rows = Array.isArray(result.rows) ? result.rows as InvitationRow[] : [];
-  const matchingCount = Number(result.matching_count ?? 0);
-  let selected = rows.find((row) => row.id === params.id);
-  if (!selected && params.id && isUuid(params.id)) {
+  const result = operatorPage(data, operatorInvitation, row => row.id);
+  if (!result) return <Status title="تعذر تحميل الدعوات" detail="بيانات القائمة غير مكتملة. أعد تحميل الصفحة؛ لم تتأكد قائمة فارغة." />;
+  const rows = result.rows;
+  const matchingCount = result.matching_count;
+  let selected = rows.find(row => row.id.toLowerCase() === params.id?.toLowerCase());
+  let selectedNotice: string | null = null;
+  if (params.id && !operatorUuid(params.id)) selectedNotice = 'مرجع الدعوة غير صالح. راجع الدعوات الحالية أدناه.';
+  if (!selected && params.id && operatorUuid(params.id)) {
     const { data: selectedData, error: selectedError } = await supabase.rpc('tenant_admin_invitation_get', { p_invitation_id: params.id });
-    if (!selectedError && selectedData && typeof selectedData === 'object' && !Array.isArray(selectedData)) selected = selectedData as InvitationRow;
+    if (selectedError) selectedNotice = 'تعذر قراءة الدعوة المرتبطة بالإجراء. لا يمكن تأكيد نتيجته من القائمة الحالية؛ أعد قراءة الصفحة.';
+    else if (selectedData === null) selectedNotice = 'لا تتوفر الدعوة المرتبطة بالإجراء لهذا الحساب حاليًا. هذا لا يؤكد نتيجة الإجراء.';
+    else if (!operatorInvitation(selectedData) || selectedData.id.toLowerCase() !== params.id.toLowerCase()) selectedNotice = 'بيانات الدعوة المرتبطة بالإجراء غير مكتملة. أعد قراءة الصفحة قبل إجراء آخر.';
+    else selected = selectedData;
   }
   const visibleRows = selected ? [selected, ...rows.filter((row) => row.id !== selected.id)] : rows;
   const reviewMessage = invitationReviewMessage(params.state);
@@ -56,8 +55,9 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
         <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</Link>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
+        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <Link className="secondary-button" href={`/operator/invitations?${new URLSearchParams({ id: params.id ?? '', page: String(page), q: search })}`}>إعادة قراءة الدعوة</Link></p>}
         {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></p>}
-        {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage(params.state)} <a href="#history-title">راجع حالة الدعوات</a></p>}
+        {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage()} <a href="#history-title">راجع حالة الدعوات</a></p>}
       </section>
       <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
@@ -67,7 +67,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
             {visibleRows.map((row) => (
               <li key={row.id} id={`invitation-${row.id}`} className="invitation-row">
                 <div>
-                  {row.id === selected?.id && <p className="field-hint">الدعوة المرتبطة بآخر إجراء</p>}
+                  {row.id === selected?.id && <p className="field-hint">الدعوة المحددة في الرابط</p>}
                   <h3>{row.tenant_name}</h3>
                   <p><bdi>{row.target_email}</bdi></p>
                   <p className={`entity-status ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</p>
@@ -108,29 +108,9 @@ function deliveryText(state: string) {
   return Object.hasOwn(labels, state) ? labels[state] : 'حالة الإرسال غير معروفة';
 }
 
-function stateMessage(state: string) {
-  const labels: Record<string, string> = {
-    'created-sent': 'أُرسلت الدعوة إلى البريد. لا تُعد الشركة جاهزة قبل قبولها وإكمال إعداد المسؤول.',
-    'created-failed': 'سُجل طلب الدعوة لكن تعذر إرسال البريد. راجع الحالة أدناه ثم أعد إصدار الدعوة.',
-    'created-unknown': 'سُجل طلب الدعوة لكن حالة إرسال البريد غير مؤكدة. راجع الحالة أدناه وأعد إصدار الدعوة عند الحاجة.',
-    'reissued-sent': 'أُرسل إصدار جديد وأصبح الرابط السابق غير صالح لإعداد الشركة.',
-    'reissued-failed': 'تحدّث إصدار الدعوة وأصبح الرابط السابق غير صالح، لكن تعذر إرسال البريد الجديد.',
-    'reissued-unknown': 'تحدّث إصدار الدعوة وأصبح الرابط السابق غير صالح، لكن حالة إرسال البريد الجديد غير مؤكدة.',
-    revoked: 'أُلغيت الدعوة. لن ينشئ رابطها صلاحية للشركة.',
-    'revoke-unchanged': 'لم يحدث إلغاء في هذه المحاولة. قد لا تكون الدعوة متاحة أو قابلة للإلغاء. راجع حالتها الحالية.',
-    'revoke-unknown': 'تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر.',
-    existing: 'هذه الدعوة مسجلة من قبل. راجع حالتها أدناه.',
-    'already-accepted': 'قُبلت الدعوة بالفعل وأُنشئت الشركة.',
-    'already-revoked': 'هذه الدعوة ملغاة بالفعل.',
-    expired: 'انتهت صلاحية الدعوة. يمكنك إنشاء دعوة جديدة.',
-    invalid: 'تحقق من البريد والبيانات، ويجب أن يكون كل حد رقمًا موجبًا أو غير محدود.',
-    setup: 'إعداد Supabase أو مفتاح إرسال الدعوات غير مكتمل.',
-    forbidden: 'تعذر تنفيذ الإجراء. تحقق من صلاحية مشغّل المنصة وحالة الدعوة.',
-  };
-  return Object.hasOwn(labels, state) ? labels[state] : 'تعذر إتمام الإجراء.';
+function stateMessage() {
+  return 'الرابط وحده لا يؤكد نتيجة الإجراء. راجع حالة الدعوة والإرسال أدناه قبل إجراء آخر.';
 }
-
-function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 
 function Status({ title, detail }: { title: string; detail: string }) {
   return (

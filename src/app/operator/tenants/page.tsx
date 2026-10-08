@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { operatorPermission } from '@/lib/operator-access';
+import { operatorPage, operatorTenant } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -6,7 +8,7 @@ import { OperatorListControls, operatorListQuery } from '@/app/operator/operator
 
 export const dynamic = 'force-dynamic';
 
-type Tenant = { tenant_id: string; display_name: string; lifecycle_state: 'active' | 'suspended' | 'archived' };
+
 
 export default async function OperatorTenantsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
   const { page, search } = operatorListQuery(await searchParams);
@@ -14,18 +16,20 @@ export default async function OperatorTenantsPage({ searchParams }: { searchPara
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const [{ data: operatorStatus }, { data: canManageLifecycle }] = await Promise.all([
+  const [{ data: operatorStatus, error: statusError }, { data: canManageLifecycle, error: capabilityError }] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
   ]);
-  if (operatorStatus !== 'active' || !canManageLifecycle) {
+  if (statusError || capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من مهامك الآن. أعد تحميل الصفحة." />;
+  if (operatorStatus !== 'active' || !operatorPermission({ data: canManageLifecycle, error: capabilityError })) {
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
   }
   const { data, error } = await supabase.rpc('platform_tenant_list_page', { p_scope: 'lifecycle', p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الشركات" detail="أعد المحاولة لاحقًا." />;
-  const result = data as Record<string, unknown>;
-  const tenants = Array.isArray(result.rows) ? result.rows as Tenant[] : [];
-  const matchingCount = Number(result.matching_count ?? 0);
+  const result = operatorPage(data, operatorTenant, row => row.tenant_id);
+  if (!result) return <Status title="تعذر تحميل الشركات" detail="بيانات القائمة غير مكتملة. أعد تحميل الصفحة؛ لم تتأكد قائمة فارغة." />;
+  const tenants = result.rows;
+  const matchingCount = result.matching_count;
 
   return (
     <main className="app-shell">

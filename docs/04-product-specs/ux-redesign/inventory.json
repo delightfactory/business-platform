@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c5abab6c8f5e06bc8a13da064b7e5e2c91005ed4",
+  "sourceHead": "bbe4696a054b6dfbc889b48373e071e422815222",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -120,7 +120,7 @@
     {
       "file": "src/app/operator/commercial/page.tsx",
       "phase": "R3",
-      "sha256": "245b9bd05d09b6ccd1ff4372e7d0c71e58e2c3d4458b4f88674bf42690b99e92"
+      "sha256": "220ab82f3dfb58a800d0764ede7c48e4f2409d3c33d37b78c848f147b5181bfb"
     },
     {
       "file": "src/app/operator/company-task-links.tsx",
@@ -140,7 +140,7 @@
     {
       "file": "src/app/operator/entitlements/page.tsx",
       "phase": "R3",
-      "sha256": "61400e1a7b4643bbad577aec13500fd03ed268e1aba495e02cf52640d26e5219"
+      "sha256": "6be54022cf913a18b4fbb3acdd327445acd896571652158ae6c1ec7adf388890"
     },
     {
       "file": "src/app/operator/invitations/actions.ts",
@@ -155,12 +155,12 @@
     {
       "file": "src/app/operator/invitations/new/page.tsx",
       "phase": "R3",
-      "sha256": "61de33c1382a09c04ac8243c3d65804be7fdd16db8a2f8d581d4bfd258088ba7"
+      "sha256": "899581380185992f0b2cddd1c3a7f868169b419c40739adfd58e29182f9ef753"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
       "phase": "R3",
-      "sha256": "76604dd3eb49b906e0b8e27459399a2ca4ec5e5a6567021eac1f3a5e15b56d8e"
+      "sha256": "7be6fbccb0d084bdb4a2f34edda1443e6f6e559e19308120906c48d1297d6e3c"
     },
     {
       "file": "src/app/operator/layout.tsx",
@@ -175,7 +175,7 @@
     {
       "file": "src/app/operator/onboarding/page.tsx",
       "phase": "R3",
-      "sha256": "df571be7157184ef3e1ce8a9e5cc9b0d78b340ed71584f84228964ee92e2abe7"
+      "sha256": "0e353b0f5eb9d59f927288273a7f845ad8e45d3e97951d616cb0fb008289b106"
     },
     {
       "file": "src/app/operator/operator-action-form.tsx",
@@ -200,7 +200,7 @@
     {
       "file": "src/app/operator/page.tsx",
       "phase": "R3",
-      "sha256": "b1bcdbb9bf7b2e8fae64a78752e90962b60a36a52297dac3a4410d4ce688ae21"
+      "sha256": "799178eb11885886fd5e086ade546af28eddee28526f5d4f15332018559f978a"
     },
     {
       "file": "src/app/operator/statutory/DraftForm.tsx",
@@ -280,7 +280,7 @@
     {
       "file": "src/app/operator/tenants/page.tsx",
       "phase": "R3",
-      "sha256": "e33b1df6f586a10940670829a210d8b37d282bbdbc043a4cbfa681b47159063f"
+      "sha256": "e173b3aab5ddf5aa7fea309255d4159391685cdb5db2af93c5d0cdbc40c76cf0"
     },
     {
       "file": "src/app/page.tsx",
@@ -1376,6 +1376,11 @@
       "file": "src/lib/operator-access.ts",
       "phase": "R1",
       "sha256": "7b20e2bf5f357a8a4cc3d0798287d245bf235ed05eb96f85785b4ff1f58a10a9"
+    },
+    {
+      "file": "src/lib/operator-read.ts",
+      "phase": "R1",
+      "sha256": "a62a83e4c90ee03ca410e9efbc531c7d08fe218b916a7c7e7092fa0350b53e27"
     },
     {
       "file": "src/lib/payroll/leave-correction-context.ts",
@@ -3667,9 +3672,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/page.tsx:17:944",
+      "id": "RPC:src/app/operator/commercial/page.tsx:19:1018",
       "file": "src/app/operator/commercial/page.tsx",
-      "line": 17,
+      "line": 19,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3677,9 +3682,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/page.tsx:18:999",
+      "id": "RPC:src/app/operator/commercial/page.tsx:20:1072",
       "file": "src/app/operator/commercial/page.tsx",
-      "line": 18,
+      "line": 20,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3687,9 +3692,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/commercial/page.tsx:21:1208",
+      "id": "RPC:src/app/operator/commercial/page.tsx:24:1420",
       "file": "src/app/operator/commercial/page.tsx",
-      "line": 21,
+      "line": 24,
       "phase": "R3",
       "name": "platform_tenant_list_page",
       "expression": null,
@@ -3747,9 +3752,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/page.tsx:17:931",
+      "id": "RPC:src/app/operator/entitlements/page.tsx:19:1005",
       "file": "src/app/operator/entitlements/page.tsx",
-      "line": 17,
+      "line": 19,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3757,9 +3762,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/page.tsx:18:986",
+      "id": "RPC:src/app/operator/entitlements/page.tsx:20:1059",
       "file": "src/app/operator/entitlements/page.tsx",
-      "line": 18,
+      "line": 20,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3767,9 +3772,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/entitlements/page.tsx:21:1194",
+      "id": "RPC:src/app/operator/entitlements/page.tsx:24:1406",
       "file": "src/app/operator/entitlements/page.tsx",
-      "line": 21,
+      "line": 24,
       "phase": "R3",
       "name": "platform_tenant_list_page",
       "expression": null,
@@ -3817,9 +3822,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/new/page.tsx:17:742",
+      "id": "RPC:src/app/operator/invitations/new/page.tsx:18:786",
       "file": "src/app/operator/invitations/new/page.tsx",
-      "line": 17,
+      "line": 18,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3827,9 +3832,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:32:1461",
+      "id": "RPC:src/app/operator/invitations/page.tsx:24:1357",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 32,
+      "line": 24,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3837,9 +3842,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:34:1665",
+      "id": "RPC:src/app/operator/invitations/page.tsx:27:1743",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 34,
+      "line": 27,
       "phase": "R3",
       "name": "tenant_admin_invitation_page",
       "expression": null,
@@ -3847,9 +3852,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:41:2315",
+      "id": "RPC:src/app/operator/invitations/page.tsx:37:2671",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 41,
+      "line": 37,
       "phase": "R3",
       "name": "tenant_admin_invitation_get",
       "expression": null,
@@ -3857,9 +3862,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:18:988",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1103",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 18,
+      "line": 20,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3867,9 +3872,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1247",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1471",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 20,
+      "line": 23,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3877,9 +3882,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1571",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:28:2156",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 23,
+      "line": 28,
       "phase": "R3",
       "name": "tenant_onboarding_result",
       "expression": null,
@@ -3927,9 +3932,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:17:926",
+      "id": "RPC:src/app/operator/page.tsx:18:970",
       "file": "src/app/operator/page.tsx",
-      "line": 17,
+      "line": 18,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3937,9 +3942,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:22:1491",
+      "id": "RPC:src/app/operator/page.tsx:23:1531",
       "file": "src/app/operator/page.tsx",
-      "line": 22,
+      "line": 23,
       "phase": "R3",
       "name": "current_operator_can_manage_operators",
       "expression": null,
@@ -3947,9 +3952,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:23:1550",
+      "id": "RPC:src/app/operator/page.tsx:24:1658",
       "file": "src/app/operator/page.tsx",
-      "line": 23,
+      "line": 24,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3957,9 +3962,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:24:1609",
+      "id": "RPC:src/app/operator/page.tsx:25:1784",
       "file": "src/app/operator/page.tsx",
-      "line": 24,
+      "line": 25,
       "phase": "R3",
       "name": "current_operator_can_manage_tenant_lifecycle",
       "expression": null,
@@ -3967,9 +3972,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:25:1676",
+      "id": "RPC:src/app/operator/page.tsx:26:1918",
       "file": "src/app/operator/page.tsx",
-      "line": 25,
+      "line": 26,
       "phase": "R3",
       "name": "current_operator_can_manage_commercial_access",
       "expression": null,
@@ -3977,9 +3982,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/page.tsx:26:1744",
+      "id": "RPC:src/app/operator/page.tsx:27:2053",
       "file": "src/app/operator/page.tsx",
-      "line": 26,
+      "line": 27,
       "phase": "R3",
       "name": "current_operator_can_manage_statutory_rules",
       "expression": null,
@@ -4127,9 +4132,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/page.tsx:18:1040",
+      "id": "RPC:src/app/operator/tenants/page.tsx:20:1084",
       "file": "src/app/operator/tenants/page.tsx",
-      "line": 18,
+      "line": 20,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -4137,9 +4142,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/page.tsx:19:1095",
+      "id": "RPC:src/app/operator/tenants/page.tsx:21:1138",
       "file": "src/app/operator/tenants/page.tsx",
-      "line": 19,
+      "line": 21,
       "phase": "R3",
       "name": "current_operator_can_manage_tenant_lifecycle",
       "expression": null,
@@ -4147,9 +4152,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/tenants/page.tsx:24:1394",
+      "id": "RPC:src/app/operator/tenants/page.tsx:27:1628",
       "file": "src/app/operator/tenants/page.tsx",
-      "line": 24,
+      "line": 27,
       "phase": "R3",
       "name": "platform_tenant_list_page",
       "expression": null,
@@ -7816,9 +7821,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/page.tsx:30:1908",
+      "id": "CONTROL:src/app/operator/commercial/page.tsx:34:2138",
       "file": "src/app/operator/commercial/page.tsx",
-      "line": 30,
+      "line": 34,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -7826,9 +7831,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/page.tsx:30:1937",
+      "id": "CONTROL:src/app/operator/commercial/page.tsx:34:2167",
       "file": "src/app/operator/commercial/page.tsx",
-      "line": 30,
+      "line": 34,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -7919,9 +7924,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/page.tsx:30:1894",
+      "id": "CONTROL:src/app/operator/entitlements/page.tsx:34:2124",
       "file": "src/app/operator/entitlements/page.tsx",
-      "line": 30,
+      "line": 34,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -7929,9 +7934,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/page.tsx:30:1923",
+      "id": "CONTROL:src/app/operator/entitlements/page.tsx:34:2153",
       "file": "src/app/operator/entitlements/page.tsx",
-      "line": 30,
+      "line": 34,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8035,9 +8040,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:51:2877",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3588",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 51,
+      "line": 50,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8045,9 +8050,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:51:2906",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3617",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 51,
+      "line": 50,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8055,7 +8060,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:80:5408",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:80:6348",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 80,
       "tag": "form",
@@ -8065,7 +8070,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:81:5471",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:81:6410",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 81,
       "tag": "input",
@@ -8077,7 +8082,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:82:5553",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:82:6491",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 82,
       "tag": "SubmitButton",
@@ -8088,7 +8093,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:84:5709",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:84:6645",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 84,
       "tag": "form",
@@ -8098,7 +8103,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:85:5771",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:85:6706",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 85,
       "tag": "input",
@@ -8110,7 +8115,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:86:5853",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:86:6787",
       "file": "src/app/operator/invitations/page.tsx",
       "line": 86,
       "tag": "SubmitButton",
@@ -8120,9 +8125,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8614",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7943",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 139,
+      "line": 119,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8130,9 +8135,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:139:8643",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7972",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 139,
+      "line": 119,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8162,9 +8167,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:29:1960",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2654",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8172,9 +8177,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:29:1989",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2683",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8182,9 +8187,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:37:2814",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:44:4004",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 37,
+      "line": 44,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8194,9 +8199,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:38:2954",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:45:4143",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 38,
+      "line": 45,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8204,9 +8209,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:40:3117",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:47:4304",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 40,
+      "line": 47,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8214,9 +8219,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:41:3288",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:48:4474",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 41,
+      "line": 48,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8224,9 +8229,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:43:3440",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:50:4624",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 43,
+      "line": 50,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8235,9 +8240,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:79:5857",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7040",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 79,
+      "line": 86,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8245,9 +8250,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:79:5886",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7069",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 79,
+      "line": 86,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8533,9 +8538,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:88:6071",
+      "id": "CONTROL:src/app/operator/page.tsx:90:6781",
       "file": "src/app/operator/page.tsx",
-      "line": 88,
+      "line": 90,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8543,9 +8548,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/page.tsx:88:6100",
+      "id": "CONTROL:src/app/operator/page.tsx:90:6810",
       "file": "src/app/operator/page.tsx",
-      "line": 88,
+      "line": 90,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -9261,9 +9266,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/page.tsx:36:2158",
+      "id": "CONTROL:src/app/operator/tenants/page.tsx:40:2483",
       "file": "src/app/operator/tenants/page.tsx",
-      "line": 36,
+      "line": 40,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -9271,9 +9276,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/tenants/page.tsx:36:2187",
+      "id": "CONTROL:src/app/operator/tenants/page.tsx:40:2512",
       "file": "src/app/operator/tenants/page.tsx",
-      "line": 36,
+      "line": 40,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -19605,7 +19610,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 283,
+    "sourceFiles": 284,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,

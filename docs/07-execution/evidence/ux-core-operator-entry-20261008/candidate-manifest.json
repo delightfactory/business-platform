@@ -1,0 +1,46 @@
+{
+  "base": "bbe4696a054b6dfbc889b48373e071e422815222",
+  "sources": [
+    {
+      "file": "src/lib/operator-read.ts",
+      "sha256": "a62a83e4c90ee03ca410e9efbc531c7d08fe218b916a7c7e7092fa0350b53e27"
+    },
+    {
+      "file": "src/app/operator/page.tsx",
+      "sha256": "799178eb11885886fd5e086ade546af28eddee28526f5d4f15332018559f978a"
+    },
+    {
+      "file": "src/app/operator/tenants/page.tsx",
+      "sha256": "e173b3aab5ddf5aa7fea309255d4159391685cdb5db2af93c5d0cdbc40c76cf0"
+    },
+    {
+      "file": "src/app/operator/commercial/page.tsx",
+      "sha256": "220ab82f3dfb58a800d0764ede7c48e4f2409d3c33d37b78c848f147b5181bfb"
+    },
+    {
+      "file": "src/app/operator/entitlements/page.tsx",
+      "sha256": "6be54022cf913a18b4fbb3acdd327445acd896571652158ae6c1ec7adf388890"
+    },
+    {
+      "file": "src/app/operator/onboarding/page.tsx",
+      "sha256": "0e353b0f5eb9d59f927288273a7f845ad8e45d3e97951d616cb0fb008289b106"
+    },
+    {
+      "file": "src/app/operator/invitations/page.tsx",
+      "sha256": "7be6fbccb0d084bdb4a2f34edda1443e6f6e559e19308120906c48d1297d6e3c"
+    },
+    {
+      "file": "src/app/operator/invitations/new/page.tsx",
+      "sha256": "899581380185992f0b2cddd1c3a7f868169b419c40739adfd58e29182f9ef753"
+    }
+  ],
+  "checks": 76,
+  "scope": "source-WIP",
+  "build": "one grouped build/TS passed; final2page lint/TS passed",
+  "visual": {
+    "codex": "NOT VISUALLY VERIFIED",
+    "claude": "NOT VISUALLY VERIFIED"
+  },
+  "remaining": "Captured intent/actor/unknown mutation recovery and conflict/failed action copy remain OPEN; no shared form/action/SQL/storage protocol change. Pending unknown-delivery resend advice and invalid-id same-link retry carried. Complete B2 real role/Auth/SQL/provider/native/hydration/matched simplicity/fullvisual gates OPEN; no full B1/R3/R0-R8 closure. Payroll A/B independent; D16 extras deferred.",
+  "semanticPromotion": false
+}

@@ -1,11 +1,13 @@
 import Link from 'next/link';
+import { operatorPermission } from '@/lib/operator-access';
+import { operatorPage, operatorTenant } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
 export const dynamic = 'force-dynamic';
-type Tenant = { tenant_id: string; display_name: string; lifecycle_state: string };
+
 
 export default async function EntitlementsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
   const { page, search } = operatorListQuery(await searchParams);
@@ -13,16 +15,18 @@ export default async function EntitlementsPage({ searchParams }: { searchParams:
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
-  const [{ data: status }, { data: authorized }] = await Promise.all([
+  const [{ data: status, error: statusError }, { data: authorized, error: capabilityError }] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),
     supabase.rpc('current_operator_can_manage_commercial_access'),
   ]);
-  if (status !== 'active' || !authorized) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
+  if (statusError || capabilityError) return <Status title="تعذر التحقق من الصلاحية" />;
+  if (status !== 'active' || !operatorPermission({ data: authorized, error: capabilityError })) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_list_page', { p_scope: 'commercial', p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الشركات" />;
-  const result = data as Record<string, unknown>;
-  const tenants = Array.isArray(result.rows) ? result.rows as Tenant[] : [];
-  const matchingCount = Number(result.matching_count ?? 0);
+  const result = operatorPage(data, operatorTenant, row => row.tenant_id);
+  if (!result) return <Status title="تعذر تحميل الشركات" />;
+  const tenants = result.rows;
+  const matchingCount = result.matching_count;
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>

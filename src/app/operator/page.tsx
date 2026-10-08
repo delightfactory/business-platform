@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -19,22 +20,23 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
 
   const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
-    supabase.rpc('current_operator_can_manage_operators'),
-    supabase.rpc('current_operator_can_onboard_tenants'),
-    supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
-    supabase.rpc('current_operator_can_manage_commercial_access'),
-    supabase.rpc('current_operator_can_manage_statutory_rules'),
+    supabase.rpc('current_operator_can_manage_operators').then(result => result, (error: unknown) => ({ data: null, error })),
+    supabase.rpc('current_operator_can_onboard_tenants').then(result => result, (error: unknown) => ({ data: null, error })),
+    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
+    supabase.rpc('current_operator_can_manage_commercial_access').then(result => result, (error: unknown) => ({ data: null, error })),
+    supabase.rpc('current_operator_can_manage_statutory_rules').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
-  if (manageError || onboardError || lifecycleError || commercialError || statutoryError) return <Status title="تعذر تحميل المهام" detail="حاول مجددًا بعد قليل." />;
-  const canManage = manage === true;
-  const canOnboard = onboard === true;
-  const canManageLifecycle = lifecycle === true;
-  const canManageCommercial = commercial === true;
-  const canManageStatutory = statutory === true;
+  const partialRead = Boolean(manageError || onboardError || lifecycleError || commercialError || statutoryError);
+  const canManage = operatorPermission({ data: manage, error: manageError });
+  const canOnboard = operatorPermission({ data: onboard, error: onboardError });
+  const canManageLifecycle = operatorPermission({ data: lifecycle, error: lifecycleError });
+  const canManageCommercial = operatorPermission({ data: commercial, error: commercialError });
+  const canManageStatutory = operatorPermission({ data: statutory, error: statutoryError });
 
   return (
     <main className="app-shell">
       {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
+      {partialRead && <p className="form-message" role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <Link href="/operator" className="secondary-button">إعادة قراءة المهام</Link></p>}
       <div className="operator-home" aria-labelledby="operator-title">
         <header className="operator-home-heading">
           <p className="eyebrow">مساحة التشغيل</p>
@@ -67,7 +69,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           </section>}
         </div>
         {canManageStatutory && <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد القانونية للرواتب</h2><ul className="operator-work-list"><TaskLink href="/operator/statutory" title="مسودات القواعد ومراجعها" detail="احفظ النسخ المؤرخة وراجع سجل تعديلاتها؛ الحفظ لا يعتمدها لحساب الرواتب." /></ul></section>}
-        {!canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
+        {!partialRead && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}
       </div>
       <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>

@@ -76,3 +76,7 @@ No application changes or tests are accepted by this document. Structural regist
 ## Statutory implementation checkpoint
 
 The statutory subpart of B1 is now implemented as source WIP, with69bounded source checks and focused synthetic browser observations. See [candidate evidence](../../07-execution/evidence/ux-core-statutory-20261008/README.md). Final C1 keeps existing forms mounted across no-rules/rules continuation changes and shows the saved acknowledgement outside disclosure. This does not freeze full B1/B2 or claim phase/runtime/visual acceptance; remaining onboarding, flags, invitations, wording and full journeys are unchanged gates.
+
+## Entry/read implementation checkpoint
+
+Source-preserving B1 subpart implemented in eight sources,76bounded source checks and one groupedbuild. See [candidate evidence](../../07-execution/evidence/ux-core-operator-entry-20261008/README.md). The confirmed snapshot controls success, selected identity is preserved, partial capability failure retains other granted tasks, unknown reads never imply empty/uncommitted/success. No new authority/storage/action protocol. Captured intent/actor/unknown mutation recovery and conflict/failed action copy remain OPEN; no shared form/action/SQL/storage protocol change. Pending unknown-delivery resend advice and invalid-id same-link retry carried. Complete B2 real role/Auth/SQL/provider/native/hydration/matched simplicity/fullvisual gates OPEN; no full B1/R3/R0-R8 closure. Payroll A/B independent; D16 extras deferred.

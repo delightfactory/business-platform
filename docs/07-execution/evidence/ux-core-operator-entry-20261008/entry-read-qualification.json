@@ -1,0 +1,310 @@
+{
+  "scope": "Actual async page/SSR and pure consumed-shape guards with controlled SDK. Not real Auth/roles/SQL/provider/client-runtime/visual/full-R3 acceptance.",
+  "checks": [
+    {
+      "id": "valid-snapshot",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-tenant_id",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-seat_limit_mode",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-seat_limit",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-site_limit",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-seat_usage",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-tenant_name",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-legal_entity_name",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-snapshot-site_name",
+      "result": "pass"
+    },
+    {
+      "id": "extra-fields-tolerated",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-lifecycle-readable",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-false",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-false",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-false",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "invitations-false",
+      "result": "pass"
+    },
+    {
+      "id": "invitations-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "invitations-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "invitations-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "invitations/new-false",
+      "result": "pass"
+    },
+    {
+      "id": "invitations/new-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "invitations/new-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "invitations/new-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "onboarding-false",
+      "result": "pass"
+    },
+    {
+      "id": "onboarding-truthy",
+      "result": "pass"
+    },
+    {
+      "id": "onboarding-error-with-true",
+      "result": "pass"
+    },
+    {
+      "id": "onboarding-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-status-error",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-missing-rows",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-invalid-count",
+      "result": "pass"
+    },
+    {
+      "id": "tenants-bad-row",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-status-error",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-missing-rows",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-invalid-count",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-bad-row",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-status-error",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-missing-rows",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-invalid-count",
+      "result": "pass"
+    },
+    {
+      "id": "entitlements-bad-row",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-current_operator_can_manage_operators",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-current_operator_can_onboard_tenants",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-current_operator_can_manage_tenant_lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-current_operator_can_manage_commercial_access",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-current_operator_can_manage_statutory_rules",
+      "result": "pass"
+    },
+    {
+      "id": "home-isolates-rejected-optional-read",
+      "result": "pass"
+    },
+    {
+      "id": "onboard-read-error",
+      "result": "pass"
+    },
+    {
+      "id": "onboard-malformed",
+      "result": "pass"
+    },
+    {
+      "id": "onboard-invalid-key-not-rekey",
+      "result": "pass"
+    },
+    {
+      "id": "onboard-null-same-key-and-account-wording",
+      "result": "pass"
+    },
+    {
+      "id": "onboard-valid-success",
+      "result": "pass"
+    },
+    {
+      "id": "confirmed-onboarding-overrides-url-failure",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-created-failed",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-created-unknown",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-reissued-failed",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-reissued-unknown",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-already-accepted",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-existing",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-expired",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-url-neutral-revoked",
+      "result": "pass"
+    },
+    {
+      "id": "selected-error",
+      "result": "pass"
+    },
+    {
+      "id": "selected-null",
+      "result": "pass"
+    },
+    {
+      "id": "selected-malformed",
+      "result": "pass"
+    },
+    {
+      "id": "selected-wrong-id",
+      "result": "pass"
+    },
+    {
+      "id": "selected-off-page-valid",
+      "result": "pass"
+    },
+    {
+      "id": "selected-case-insensitive",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-list-invalid-73",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-list-invalid-74",
+      "result": "pass"
+    },
+    {
+      "id": "invitation-list-invalid-75",
+      "result": "pass"
+    }
+  ],
+  "total": 76
+}
