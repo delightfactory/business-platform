@@ -1,4 +1,5 @@
 import styles from './payroll.module.css';
+import { payrollStageDescriptions, type StageWork } from './stage-facts';
 
 const stages = ['الدورة والفترة', 'الحضور والإجازات', 'المدخلات والموانع', 'الحساب والمراجعة', 'الاعتماد والتثبيت', 'الصرف والقسائم'];
 
@@ -13,17 +14,18 @@ export function payrollCurrentStage(work: { run: { status: string } | null; fina
   return null;
 }
 
-export function PayrollStepper({ currentStage, historical = false }: { currentStage: number | null; historical?: boolean }) {
+export function PayrollStepper({ currentStage, historical = false, work = null }: { currentStage: number | null; historical?: boolean; work?: StageWork | null }) {
   const current = currentStage === null ? null : stages[currentStage];
-  const list = <ol className={styles.progressList}>{stages.map((stage, index) => <li key={stage} aria-current={currentStage === index ? 'step' : undefined}>{stage}{currentStage === index && <span> · الحالية</span>}</li>)}</ol>;
+  const descriptions = payrollStageDescriptions(work);
+  const list = <ol className={styles.progressList}>{stages.map((stage, index) => <li key={stage} aria-current={currentStage === index ? 'step' : undefined}>{stage}{currentStage === index && <span> · الحالية</span>}<p className="field-hint">{descriptions[index]}</p></li>)}</ol>;
   return <section className={styles.progress} aria-label="مراحل الرواتب">
     <p className={styles.progressCurrent}>{current ? `المرحلة الحالية: ${current}` : historical ? 'المسير مستبدل ومحفوظ في التاريخ؛ راجع المسير البديل.' : 'لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.'}</p>
-    <p className="field-hint">هذا الدليل يوضح موضع المسير، ولا يثبت اكتمال المراحل السابقة أو التأهيل المالي.</p>
+    <p className="field-hint">حالة المصادر تخص الحساب المحفوظ. التغطية التشغيلية والتأهيل المالي والاعتماد والصرف حالات منفصلة.</p>
     <div className={styles.progressDesktop}>{list}</div>
     <details className={styles.progressDetails}>
       <summary>عرض مراحل الرواتب</summary>
       {list}
     </details>
-    {currentStage === 5 && <p className="field-hint">حالة الصرف تُراجع في شاشة الدفعات حسب صلاحياتك؛ وجود مسير نهائي لا يعني أنه صُرف.</p>}
+    {currentStage === 5 && <p className="field-hint">حالة الصرف المسجل معروضة أدناه حسب صلاحيتك؛ وجود مسير نهائي لا يعني أنه صُرف.</p>}
   </section>;
 }

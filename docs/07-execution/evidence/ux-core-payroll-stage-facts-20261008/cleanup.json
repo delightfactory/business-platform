@@ -1,0 +1,22 @@
+{
+  "ownedDatabase": {
+    "id": "04b7c00e511f2e5d0f5a913af5b5bd1ea3b14dc0eae7df05295ac419e3c49ce7",
+    "state": "exited",
+    "network": "none",
+    "hostPorts": 0
+  },
+  "ownedHttp": {
+    "port": 3607,
+    "state": "terminal exec session75427; no listener verified"
+  },
+  "browser": {
+    "closedTemporaryTabs": [
+      78,
+      79,
+      80,
+      81
+    ],
+    "viewport": "reset"
+  },
+  "otherTasks": "untouched"
+}

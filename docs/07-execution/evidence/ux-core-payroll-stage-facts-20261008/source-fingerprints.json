@@ -1,0 +1,33 @@
+{
+  "base": "364148599263184ec36adea4036456acfc7f7983",
+  "files": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/stage-facts.ts",
+      "sha256": "264068872cc0b17c4e7f70eb07d2c888fab87885065a5ec94dca2ac128659264"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payment-facts.ts",
+      "sha256": "879a05bea44825c2d284e778fee3c88cab5e3e9f049c6b49d46cf0c0b07a9d90"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/RecordedPaymentNotice.tsx",
+      "sha256": "76bdf4fc56cdf3111cb1b97e004124dbcd4d4bbc2fd9ef05f1b78d5736d2d442"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/PayrollStepper.tsx",
+      "sha256": "9744e0fa91b88257c499055521319001524f6336f6b8da6b272e8147b5fb3b26"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "ff9186b82553f757579a23c3bbd0b18f9e3c4125c149542dd4c3855b5dcfe41b"
+    },
+    {
+      "file": "supabase/migrations/20261008094817_payroll_candidate_stage_facts.sql",
+      "sha256": "fae9923560785230abbe8960db9ecdc67603dd41fac27b825a4b063cc5ee380c"
+    },
+    {
+      "file": "supabase/migrations/20261008095336_payroll_recorded_payment_facts.sql",
+      "sha256": "7ea179ad1886ea9193d4c524cb0992e29b56dee8695fa36260049ddb0cd06609"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+BEGIN;
+CREATE TEMP TABLE results(label text PRIMARY KEY,result text NOT NULL);
+CREATE FUNCTION pg_temp.check(label text,ok boolean) RETURNS void LANGUAGE plpgsql AS $$ BEGIN
+ IF ok IS DISTINCT FROM true THEN RAISE EXCEPTION 'FAILED: %',label; END IF;
+ INSERT INTO pg_temp.results VALUES(label,'PASS');
+END $$;
+DO $$ DECLARE r jsonb;v jsonb;employees jsonb;bad text; BEGIN
+ PERFORM pg_temp.check('null candidate remains unavailable',payroll.candidate_stage_facts(NULL) IS NULL);
+ PERFORM pg_temp.check('missing employees remains unavailable',payroll.candidate_stage_facts('{}') IS NULL);
+ PERFORM pg_temp.check('malformed employees remains unavailable',payroll.candidate_stage_facts('{"employees":{}}') IS NULL);
+ PERFORM pg_temp.check('malformed employee row remains unavailable',payroll.candidate_stage_facts('{"employees":[null]}') IS NULL);
+ r:=payroll.candidate_stage_facts('{"employees":[],"issues":[]}');
+ PERFORM pg_temp.check('empty is zero scope not complete',r->>'employee_count'='0' AND r->'source'->>'reconciliation_ready'='0' AND r->'coverage'->>'operational_complete'='0');
+ r:=payroll.candidate_stage_facts('{"employees":[{}]}');
+ PERFORM pg_temp.check('unknown source partition retained',r->'source'->>'unknown'='1' AND r->'time_enabled'->>'unknown'='1');
+ PERFORM pg_temp.check('missing issues unknown not zero',r->'issues'='null'::jsonb);
+ PERFORM pg_temp.check('missing financial flags unknown',r->'financially_qualified'='null'::jsonb AND r->'gross_complete'='null'::jsonb);
+ r:=payroll.candidate_stage_facts('{"employees":[{}],"issues":{},"financially_qualified":"true","gross_complete":"false"}');
+ PERFORM pg_temp.check('malformed issues unknown',r->'issues'='null'::jsonb);
+ PERFORM pg_temp.check('string flags never trusted',r->'financially_qualified'='null'::jsonb AND r->'gross_complete'='null'::jsonb);
+ v:='{"employees":[{"source_summary":{"status":"reconciliation_ready","coverage":"operational_complete","operational_complete":true,"time_enabled":true,"leave_enabled":false,"time_coverage":{"status":"observationally_complete"}},"issues":[{"blocking":true}]},{"source_summary":{"status":"needs_source_review","coverage":"approved_manual_total","time_enabled":false,"leave_enabled":true,"time_coverage":{"status":"needs_source_review"}}},{"source_summary":{"status":"disabled","coverage":"captured_parts_only","time_enabled":"true","leave_enabled":null,"time_coverage":{"status":"disabled"}}},{"source_summary":{"status":"unknown-source","coverage":"approved_leave_sources","time_coverage":{"status":"unavailable"}}},{"source_summary":{"status":null,"coverage":"operational_complete","operational_complete":"true","time_coverage":{"status":"new-status"}}}],"issues":[{"blocking":true},{"blocking":false},{"blocking":"true"},{}],"gross_complete":true,"financially_qualified":false}';
+ r:=payroll.candidate_stage_facts(v);
+ PERFORM pg_temp.check('all employee source partitions',r->>'employee_count'='5' AND r->'source'='{"reconciliation_ready":1,"needs_source_review":1,"disabled":1,"unknown":2}'::jsonb);
+ PERFORM pg_temp.check('all coverage partitions strict completion',r->'coverage'='{"operational_complete":1,"approved_manual_total":1,"captured_parts_only":1,"approved_leave_sources":1,"unknown":1}'::jsonb);
+ PERFORM pg_temp.check('all time coverage partitions',r->'time_coverage'='{"observationally_complete":1,"needs_source_review":1,"disabled":1,"unavailable":1,"unknown":1}'::jsonb);
+ PERFORM pg_temp.check('strict enabled partitions',r->'time_enabled'='{"true":1,"false":1,"unknown":3}'::jsonb AND r->'leave_enabled'='{"true":1,"false":1,"unknown":3}'::jsonb);
+ PERFORM pg_temp.check('canonical issues counted once',r->'issues'='{"blocking_true":1,"blocking_false":1,"blocking_unknown":2}'::jsonb);
+ PERFORM pg_temp.check('strict financial flags retained',r->'gross_complete'='true'::jsonb AND r->'financially_qualified'='false'::jsonb);
+ SELECT jsonb_agg(jsonb_build_object('source_summary',jsonb_build_object('status','reconciliation_ready','coverage','operational_complete','operational_complete',true))) INTO employees FROM generate_series(1,500);
+ r:=payroll.candidate_stage_facts(jsonb_build_object('employees',employees,'issues','[]'::jsonb));
+ PERFORM pg_temp.check('500 full scope not first page',r->>'employee_count'='500' AND r->'coverage'->>'operational_complete'='500');
+ PERFORM pg_temp.check('minimal counts no employee data',NOT(r ? 'employees') AND NOT(r ? 'amount') AND NOT(r ? 'source_days'));
+ PERFORM pg_temp.check('definition one anchor preserved',payroll.attach_candidate_stage_facts_definition('before ''summary'',summary after')='before ''stage_facts'',payroll.candidate_stage_facts(candidate.output),''summary'',summary after');
+ FOREACH bad IN ARRAY ARRAY[NULL,'no anchor','''summary'',summary ''summary'',summary','''stage_facts'' ''summary'',summary'] LOOP
+  BEGIN PERFORM payroll.attach_candidate_stage_facts_definition(bad); RAISE EXCEPTION 'drift unexpectedly accepted';
+  EXCEPTION WHEN OTHERS THEN IF SQLERRM<>'payroll_stage_facts_definition_drift' THEN RAISE; END IF; END;
+ END LOOP;
+ PERFORM pg_temp.check('missing duplicate null alreadypatched drift rejected',true);
+END $$;
+SELECT pg_temp.check('pure helper immutable not security definer',provolatile='i' AND NOT prosecdef AND proconfig @> ARRAY['search_path=""']) FROM pg_proc WHERE oid='payroll.candidate_stage_facts(jsonb)'::regprocedure;
+SELECT pg_temp.check('private helper not exposed',NOT has_function_privilege('authenticated','payroll.candidate_stage_facts(jsonb)','EXECUTE') AND NOT has_function_privilege('anon','payroll.candidate_stage_facts(jsonb)','EXECUTE') AND NOT has_function_privilege('service_role','payroll.candidate_stage_facts(jsonb)','EXECUTE'));
+SELECT pg_temp.check('wrapper root and review still delegate shared core',position('payroll.run_review_workspace' IN pg_get_functiondef('public.payroll_run_workspace(uuid,uuid,uuid,uuid,integer,uuid,text)'::regprocedure))>0 AND position('payroll.run_review_workspace' IN pg_get_functiondef('public.payroll_run_review_workspace(uuid,uuid,uuid,uuid,integer,uuid,text,text)'::regprocedure))>0);
+SELECT jsonb_build_object('cases',count(*),'results',jsonb_agg(to_jsonb(results) ORDER BY label)) FROM results;
+ROLLBACK;

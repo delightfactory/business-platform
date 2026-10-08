@@ -1,0 +1,24 @@
+[
+  {
+    "expanded": true,
+    "fonts": true,
+    "primaryCount": 1,
+    "primaryTop": 576.4750061035156,
+    "scroll": 390,
+    "width": 390
+  },
+  {
+    "fonts": true,
+    "primaryCount": 1,
+    "primaryTop": 566.875,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "fonts": true,
+    "primaryCount": 1,
+    "primaryTop": 566.875,
+    "scroll": 1351,
+    "width": 1366
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "calls": [
+    {
+      "name": "payroll_access_snapshot",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001"
+      }
+    },
+    {
+      "name": "payroll_navigation_access",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001"
+      }
+    },
+    {
+      "name": "payroll_employers",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001",
+        "p_query": "",
+        "p_after_name": null,
+        "p_after_id": null,
+        "p_limit": 30
+      }
+    },
+    {
+      "name": "payroll_workspace",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001",
+        "p_employer": "00000000-0000-4000-8000-000000000020",
+        "p_limit": 24
+      }
+    },
+    {
+      "name": "payroll_run_periods",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001",
+        "p_employer": "00000000-0000-4000-8000-000000000020"
+      }
+    },
+    {
+      "name": "payroll_run_workspace",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001",
+        "p_employer": "00000000-0000-4000-8000-000000000020",
+        "p_period": "00000000-0000-4000-8000-000000000030",
+        "p_limit": 1,
+        "p_query": "",
+        "p_after": null,
+        "p_employee": null
+      }
+    },
+    {
+      "name": "payroll_payment_facts",
+      "args": {
+        "p_tenant": "00000000-0000-4000-8000-000000000001",
+        "p_employer": "00000000-0000-4000-8000-000000000020",
+        "p_output": "00000000-0000-4000-8000-000000000040"
+      }
+    }
+  ]
+}

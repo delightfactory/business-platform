@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "sourceFiles": 279,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 107,
+    "rpcCallSites": 346,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1172,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1714,
+  "sourceReviewedPreserved": 19,
+  "added": [
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/payroll/RecordedPaymentNotice.tsx:27:1627",
+      "category": "rpcCalls",
+      "phase": "R7",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    }
+  ],
+  "migrations": [
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:41:3198",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:43:3326",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:41:3260",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:43:3388",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:43:3537",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:45:3665",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:53:5199",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:55:5327",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:59:5655",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:61:5783",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:70:6356",
+      "after": "RPC:src/app/tenant/[tenantId]/payroll/page.tsx:72:6484",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/PayrollStepper.tsx:24:1684",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/PayrollStepper.tsx:26:1920",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:49:4432",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:51:4560",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:49:4531",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:51:4659",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:49:4630",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:51:4758",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:111:11139",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:113:11267",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:115:11521",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:117:11649",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:115:11568",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:117:11696",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:115:11641",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:117:11769",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:116:11756",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:118:11884",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:120:12246",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:122:12374",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:134:15280",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:136:15420",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:140:16144",
+      "after": "CONTROL:src/app/tenant/[tenantId]/payroll/page.tsx:143:16576",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false
+}

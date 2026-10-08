@@ -12,6 +12,7 @@ import { issueTitles } from './issue-titles';
 import { issueResponsibility } from './issue-responsibility';
 import { Suspense } from 'react';
 import { OvertimeNotice } from './OvertimeNotice';
+import { RecordedPaymentNotice } from './RecordedPaymentNotice';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
@@ -23,6 +24,7 @@ type Workspace = {
   period: Period; run: { status: string } | null; final_output_id: string | null;
   summary: { employee_count: number; known_gross: string | null; deductions?: string | null; net?: string | null; gross_complete?: boolean; financially_qualified?: boolean } | null;
   global_issues: Issue[]; issue_count: number; stale_reasons: string[];
+  stage_facts?: unknown; approval?: { ready?: unknown } | null;
 };
 export default async function PayrollPage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: Promise<Query> }) {
   const { tenantId } = await params;
@@ -127,7 +129,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {candidate && work?.summary && <p>القيم مرشح للمراجعة، ولا تمثل راتبًا صالحًا للصرف قبل اكتمال التأهيل والاعتماد والتثبيت.</p>}
       {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول مخوّل بعرض الرواتب أو تسجيل الدفعات.'}</p>}
       {!candidate && primaryAction}
-      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'}/>
+      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work}/>
     </section>
     {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>هذه مراجعات على مستوى الفترة. راجع تفاصيل الموظفين في مراجعة الرواتب؛ لا تعرض هذه القائمة جميع موانعهم.</p>
       {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><details>
@@ -137,6 +139,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
     </section>}
     {work && !final && <Suspense fallback={<p role="status">جارٍ التحقق من تنبيه الإضافي؛ يمكنك متابعة مراجعة الرواتب.</p>}><OvertimeNotice tenantId={tenantId} employer={employer} period={work.period} query={query}/></Suspense>}
+    {work && final && work.final_output_id && <Suspense fallback={<p role="status">جارٍ التحقق من حالة الصرف المسجل؛ يمكنك متابعة مراجعة المسير.</p>}><RecordedPaymentNotice tenantId={tenantId} employer={employer} output={work.final_output_id} period={work.period} query={query}/></Suspense>}
     <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>
       {calendar.access.can_view && work && <p><Link href={inputsLink}>مدخلات الفترة ومراجعتها</Link></p>}
       <p><Link href={setupLink}>دورة الجهة والفترات المحفوظة</Link></p>

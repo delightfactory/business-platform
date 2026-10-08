@@ -1,0 +1,24 @@
+{
+  "sourceHead": "364148599263184ec36adea4036456acfc7f7983",
+  "actualRootAndTransitiveFiles": [
+    "page.tsx",
+    "PayrollStepper.tsx",
+    "stage-facts.ts",
+    "payroll.module.css",
+    "EmployerSelector.tsx",
+    "employer-context.ts",
+    "rules.ts",
+    "issue-titles.ts",
+    "issue-responsibility.ts",
+    "OvertimeNotice.tsx",
+    "overtime-notice.ts",
+    "RecordedPaymentNotice.tsx",
+    "payment-facts.ts",
+    "runs/rules.ts",
+    "inputs/rules.ts",
+    "reports/rules.ts"
+  ],
+  "syntheticBoundary": "SDK responses and bare PageFrame; actual Next routing/Link/dynamic root and all root components; no provider/account or production audit proof",
+  "href": "/tenant/00000000-0000-4000-8000-000000000001/payroll?employer=00000000-0000-4000-8000-000000000020&period=00000000-0000-4000-8000-000000000030",
+  "port": 3607
+}

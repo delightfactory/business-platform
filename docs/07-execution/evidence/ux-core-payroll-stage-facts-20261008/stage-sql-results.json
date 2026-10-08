@@ -1,0 +1,97 @@
+{
+  "cases": 23,
+  "results": [
+    {
+      "label": "500 full scope not first page",
+      "result": "PASS"
+    },
+    {
+      "label": "all coverage partitions strict completion",
+      "result": "PASS"
+    },
+    {
+      "label": "all employee source partitions",
+      "result": "PASS"
+    },
+    {
+      "label": "all time coverage partitions",
+      "result": "PASS"
+    },
+    {
+      "label": "canonical issues counted once",
+      "result": "PASS"
+    },
+    {
+      "label": "definition one anchor preserved",
+      "result": "PASS"
+    },
+    {
+      "label": "empty is zero scope not complete",
+      "result": "PASS"
+    },
+    {
+      "label": "malformed employee row remains unavailable",
+      "result": "PASS"
+    },
+    {
+      "label": "malformed employees remains unavailable",
+      "result": "PASS"
+    },
+    {
+      "label": "malformed issues unknown",
+      "result": "PASS"
+    },
+    {
+      "label": "minimal counts no employee data",
+      "result": "PASS"
+    },
+    {
+      "label": "missing duplicate null alreadypatched drift rejected",
+      "result": "PASS"
+    },
+    {
+      "label": "missing employees remains unavailable",
+      "result": "PASS"
+    },
+    {
+      "label": "missing financial flags unknown",
+      "result": "PASS"
+    },
+    {
+      "label": "missing issues unknown not zero",
+      "result": "PASS"
+    },
+    {
+      "label": "null candidate remains unavailable",
+      "result": "PASS"
+    },
+    {
+      "label": "private helper not exposed",
+      "result": "PASS"
+    },
+    {
+      "label": "pure helper immutable not security definer",
+      "result": "PASS"
+    },
+    {
+      "label": "strict enabled partitions",
+      "result": "PASS"
+    },
+    {
+      "label": "strict financial flags retained",
+      "result": "PASS"
+    },
+    {
+      "label": "string flags never trusted",
+      "result": "PASS"
+    },
+    {
+      "label": "unknown source partition retained",
+      "result": "PASS"
+    },
+    {
+      "label": "wrapper root and review still delegate shared core",
+      "result": "PASS"
+    }
+  ]
+}

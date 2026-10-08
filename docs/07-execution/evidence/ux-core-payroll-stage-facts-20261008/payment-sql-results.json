@@ -1,0 +1,97 @@
+{
+  "cases": 23,
+  "results": [
+    {
+      "label": "approval-only not payment read",
+      "result": "PASS"
+    },
+    {
+      "label": "attendance-only not payment read",
+      "result": "PASS"
+    },
+    {
+      "label": "authenticated execute only",
+      "result": "PASS"
+    },
+    {
+      "label": "compensation preserves ever paid",
+      "result": "PASS"
+    },
+    {
+      "label": "cross employer output",
+      "result": "PASS"
+    },
+    {
+      "label": "cross tenant output",
+      "result": "PASS"
+    },
+    {
+      "label": "empty final scope distinct",
+      "result": "PASS"
+    },
+    {
+      "label": "exact output period revision",
+      "result": "PASS"
+    },
+    {
+      "label": "exactly one preserved audit per successful call",
+      "result": "PASS"
+    },
+    {
+      "label": "full external payment recorded",
+      "result": "PASS"
+    },
+    {
+      "label": "missing output",
+      "result": "PASS"
+    },
+    {
+      "label": "missing payment actor",
+      "result": "PASS"
+    },
+    {
+      "label": "negative final net excluded by existing schema",
+      "result": "PASS"
+    },
+    {
+      "label": "no advisory locks acquired",
+      "result": "PASS"
+    },
+    {
+      "label": "no amounts or personal records",
+      "result": "PASS"
+    },
+    {
+      "label": "no payment ledger mutation",
+      "result": "PASS"
+    },
+    {
+      "label": "only minimal aggregate audit vocabulary",
+      "result": "PASS"
+    },
+    {
+      "label": "partial external payment recorded",
+      "result": "PASS"
+    },
+    {
+      "label": "record-only reader admitted",
+      "result": "PASS"
+    },
+    {
+      "label": "superseded immutable record disclosed",
+      "result": "PASS"
+    },
+    {
+      "label": "unpaid positive saved obligation",
+      "result": "PASS"
+    },
+    {
+      "label": "volatile audited security definer",
+      "result": "PASS"
+    },
+    {
+      "label": "zero payable distinct from unpaid",
+      "result": "PASS"
+    }
+  ]
+}

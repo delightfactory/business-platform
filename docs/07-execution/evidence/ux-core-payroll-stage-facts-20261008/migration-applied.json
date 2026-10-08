@@ -1,0 +1,6 @@
+{
+  "migration": "supabase/migrations/20261008094817_payroll_candidate_stage_facts.sql",
+  "sha256": "fae9923560785230abbe8960db9ecdc67603dd41fac27b825a4b063cc5ee380c",
+  "oldCoreDefinitionExactExceptStageFacts": true,
+  "containerId": "04b7c00e511f2e5d0f5a913af5b5bd1ea3b14dc0eae7df05295ac419e3c49ce7"
+}

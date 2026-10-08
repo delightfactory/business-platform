@@ -1,0 +1,10 @@
+[
+  {
+    "name": "lint",
+    "exitCode": 0
+  },
+  {
+    "name": "build",
+    "exitCode": 0
+  }
+]

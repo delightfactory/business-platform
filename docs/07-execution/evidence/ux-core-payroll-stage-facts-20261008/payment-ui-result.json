@@ -1,0 +1,4 @@
+{
+  "passed": 35,
+  "scope": "actual DTO and async component with controlled SDK; no account/hydration/audit runtime or visual acceptance"
+}

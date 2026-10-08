@@ -1,0 +1,34 @@
+const fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),Module=require('module');
+const repo='C:/Users/DELL/Documents/Codex/2026-10-07/business-platform-ux-auth-recovery';
+const ts=require(path.join(repo,'node_modules/typescript')); const React=require(path.join(repo,'node_modules/react')); const render=require(path.join(repo,'node_modules/react-dom/server')).renderToStaticMarkup;
+const dir=path.join(repo,'src/app/tenant/[tenantId]/payroll');
+function load(file, overrides={}){const m=new Module(file);m.filename=file;m.paths=Module._nodeModulePaths(repo); const original=m.require.bind(m);m.require=id=>Object.hasOwn(overrides,id)?overrides[id]:id.endsWith('.css')?new Proxy({},{get:(_,key)=>key}):original(id);m._compile(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2022}}).outputText,file);return m.exports;}
+const api=load(path.join(dir,'stage-facts.ts'));const stepper=load(path.join(dir,'PayrollStepper.tsx'),{'./stage-facts':api});let passed=0;const check=(name,fn)=>{fn();passed++;};
+const groups={source:['reconciliation_ready','needs_source_review','disabled','unknown'],coverage:['operational_complete','approved_manual_total','captured_parts_only','approved_leave_sources','unknown'],time_coverage:['observationally_complete','needs_source_review','disabled','unavailable','unknown'],time_enabled:['true','false','unknown'],leave_enabled:['true','false','unknown']};
+const facts={contract_version:1,employee_count:2,issues:{blocking_true:0,blocking_false:0,blocking_unknown:0},gross_complete:true,financially_qualified:false};for(const [group,keys] of Object.entries(groups))facts[group]=Object.fromEntries(keys.map((key,i)=>[key,i===0?2:0]));
+const copy=()=>structuredClone(facts);const work=f=>({run:{status:'review'},final_output_id:null,stale_reasons:[],stage_facts:f,approval:{ready:false}}); const desc=f=>api.payrollStageDescriptions(work(f));
+check('valid',()=>assert.ok(api.readStageFacts(facts)));
+for(const value of [null,undefined,[],{},'true'])check('invalid root',()=>assert.equal(api.readStageFacts(value),null));
+for(const group of Object.keys(groups))for(const bad of [-1,0.5,'2',Number.MAX_SAFE_INTEGER+1])check(group+' invalid counts',()=>{const f=copy();f[group][groups[group][0]]=bad;assert.equal(api.readStageFacts(f),null);});
+check('sum mismatch',()=>{const f=copy();f.coverage.operational_complete=1;assert.equal(api.readStageFacts(f),null)});
+for(const field of ['gross_complete','financially_qualified'])for(const bad of ['true',1,undefined])check(field+' strict boolean',()=>{const f=copy();f[field]=bad;assert.equal(api.readStageFacts(f),null)});
+check('null flags unknown',()=>{const f=copy();f.gross_complete=null;f.financially_qualified=null;assert.match(desc(f)[3],/غير معروفة/)});
+check('false qualification',()=>assert.match(desc(facts)[3],/غير مكتمل/));
+check('true qualification separate',()=>{const f=copy();f.financially_qualified=true;assert.match(desc(f)[3],/المراجعة والاعتماد مطلوبان/);assert.match(desc(f)[4],/متطلبات الاعتماد غير مكتملة/)});
+check('empty not complete',()=>{const f=copy();f.employee_count=0;for(const g of Object.keys(groups))for(const k of groups[g])f[g][k]=0;assert.match(desc(f)[1],/لا توجد علاقات/)});
+check('all disabled explicit',()=>{const f=copy();for(const g of ['time_enabled','leave_enabled']){f[g].true=0;f[g].false=2}assert.match(desc(f)[1],/غير مفعلين/)});
+for(const key of ['captured_parts_only','approved_leave_sources','approved_manual_total'])check(key+' truthful source',()=>{const f=copy();f.coverage.operational_complete=0;f.coverage[key]=2;assert.match(desc(f)[1],key==='captured_parts_only'?/أجزاء حضور فقط/:key==='approved_leave_sources'?/مصادر إجازة معتمدة/:/مدخل يدوي معتمد/)});
+for(const [key,text] of [['blocking_true',/مانع/],['blocking_false',/تنبيهات فقط/],['blocking_unknown',/لم يُحدد/]])check(key,()=>{const f=copy();f.issues[key]=2;assert.match(desc(f)[2],text)});
+check('missing issues unknown',()=>{const f=copy();f.issues=null;assert.match(desc(f)[2],/تعذر تحديد/)});
+check('unknown source',()=>{const f=copy();f.source.reconciliation_ready=0;f.source.unknown=2;assert.match(desc(f)[1],/غير معروفة/)});
+check('source review',()=>{const f=copy();f.source.reconciliation_ready=0;f.source.needs_source_review=2;assert.match(desc(f)[1],/تحتاج مراجعة/)});
+check('stale not current',()=>{const w=work(facts);w.stale_reasons=['changed'];assert.match(api.payrollStageDescriptions(w)[1],/أعد الحساب/)});
+check('stale approved',()=>{const w=work(facts);w.run.status='approved';w.stale_reasons=['changed'];assert.match(api.payrollStageDescriptions(w)[4],/السابق يحتاج مراجعة/)});
+check('ready strict',()=>{const w=work(facts);w.approval.ready='true';assert.match(api.payrollStageDescriptions(w)[4],/غير معروفة/);w.approval.ready=true;assert.match(api.payrollStageDescriptions(w)[4],/حسب الصلاحية/)});
+for(const status of ['draft','review','approved','cancelled','locked','superseded','unknown'])check('actual stepper '+status,()=>{const w=work(facts);w.run.status=status;w.final_output_id=status==='locked'?'synthetic-output':null;const currentStage=stepper.payrollCurrentStage(w);const html=render(React.createElement(stepper.PayrollStepper,{currentStage,work:w,historical:status==='superseded'}));assert.equal((html.match(/<li/g)||[]).length,12);assert.equal((html.match(/aria-current="step"/g)||[]).length,currentStage===null?0:2);assert.ok(html.includes('عرض مراحل الرواتب'));if(status==='locked')assert.ok(html.includes('لا يعني أنه صُرف'));if(status==='superseded')assert.ok(html.includes('راجع المخرج البديل'));});
+check('no work',()=>assert.match(api.payrollStageDescriptions(null)[0],/حدد الفترة/));
+for(const ready of [true,false,undefined,'true'])check('approved readiness '+ready,()=>{const w=work(facts);w.run.status='approved';w.approval.ready=ready;assert.match(api.payrollStageDescriptions(w)[4],ready===true?/التأكيد والصلاحية/:ready===false?/تغيّرت جاهزية/:/غير معروفة/)});
+for(const key of ['unknown','unavailable'])check('time coverage '+key,()=>{const f=copy();f.time_coverage.observationally_complete=0;f.time_coverage[key]=2;assert.match(desc(f)[1],/غير معروفة/)});
+check('approved financially qualified not awaiting approval',()=>{const f=copy();f.financially_qualified=true;const w=work(f);w.run.status='approved';assert.match(api.payrollStageDescriptions(w)[3],/منفصلة/);assert.ok(!api.payrollStageDescriptions(w)[3].includes('الاعتماد مطلوبان'))});
+const result={scope:'actual TypeScript helpers and actual React stepper static rendering; no provider, hydration, financial writer or visual acceptance',passed};fs.writeFileSync(path.join(__dirname,'stage-ui-result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+

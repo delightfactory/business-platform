@@ -1,0 +1,11 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success",
+  "result": "**Both fixes are confirmed. No new source blocker.**\n\n- **Partial-payment text (`payment-facts.ts:30`):** \"سُجل سداد جزئي؛ علاقات توظيف بها متبقٍ: ⁨١⁩.\" The count follows its own label and a colon, wrapped in FSI/PDI (`\\u2068…\\u2069`), so no letter joins the digit and it can't render as \"لا\".\n- **Stage 6 copy:**\n  - The locked caption (`stage-facts.ts:41`) and the `currentStage === 5` hint (`PayrollStepper.tsx:29`) now say \"معروضة أدناه حسب الصلاحية/صلاحيتك\". The hint keeps \"وجود مسير نهائي لا يعني أنه صُرف\".\n  - Stage 5 is the current stage only when the run is locked with `final_output_id`, which is exactly when the payment panel renders. So the \"below\" reference is accurate.\n  - Superseded keeps \"راجع المخرج البديل\", and a locked run without an output keeps its own text.\n- **Unchanged:** primary, context, authority, audit and financial paths. These are text-only edits.\n\n**Final source verdict:** the stage-facts and recorded-payment candidate is accepted at source level.\n\n**Remaining gates:**\n- **Pixels:** the existing screenshots predate this text change, so they don't prove it. Full theme, reference and parent match is **NOT VISUALLY VERIFIED**. The open differences are the 3-column described cards versus the six compact markers, and the separate payment panel.\n- **Runtime:**\n  - hover and touch prefetch;\n  - the authenticated full parent;\n  - real accounts and audit end to end;\n  - real roles and providers;\n  - financial acceptance.\n- **Recovery:** the owner's A/B choice is untouched.\n- **Scope:** D16 and extras deferred.\n- **Closure:** whole R7 and R0–R8 open, with no task-speed or phase claim."
+}
