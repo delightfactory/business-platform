@@ -1,0 +1,190 @@
+{
+  "total": 46,
+  "scope": "Pure consumed intent/receipt/error and actual server action controlledSDK. Not appliedSQL/Auth/realrole/provider/native/client runtime.",
+  "checks": [
+    {
+      "id": "normalization-and-legal-fallback",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-key",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-mode",
+      "result": "pass"
+    },
+    {
+      "id": "zero",
+      "result": "pass"
+    },
+    {
+      "id": "over-int4",
+      "result": "pass"
+    },
+    {
+      "id": "long-company",
+      "result": "pass"
+    },
+    {
+      "id": "missing-site",
+      "result": "pass"
+    },
+    {
+      "id": "long-email",
+      "result": "pass"
+    },
+    {
+      "id": "int4-limit-max",
+      "result": "pass"
+    },
+    {
+      "id": "unicode-codepoint-length",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-admin_email",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-tenant_name",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-legal_entity_name",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-site_name",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-seat_limit",
+      "result": "pass"
+    },
+    {
+      "id": "receipt-mismatch-site_limit",
+      "result": "pass"
+    },
+    {
+      "id": "error-platform_operator_onboarding_forbidden",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_idempotency_conflict",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_required_fields_invalid",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_invalid_limit",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_admin_not_found_or_disabled",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_admin_email_unverified",
+      "result": "pass"
+    },
+    {
+      "id": "error-onboarding_idempotency_incomplete",
+      "result": "pass"
+    },
+    {
+      "id": "error-other",
+      "result": "pass"
+    },
+    {
+      "id": "error-name-without-sqlstate-unknown",
+      "result": "pass"
+    },
+    {
+      "id": "substring-error-not-known",
+      "result": "pass"
+    },
+    {
+      "id": "write-valid-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "onboardTenantAction-changed",
+      "result": "pass"
+    },
+    {
+      "id": "onboardTenantAction-signed-out",
+      "result": "pass"
+    },
+    {
+      "id": "onboardTenantAction-auth-error",
+      "result": "pass"
+    },
+    {
+      "id": "onboardTenantAction-setup",
+      "result": "pass"
+    },
+    {
+      "id": "readOnboardingAttemptAction-changed",
+      "result": "pass"
+    },
+    {
+      "id": "readOnboardingAttemptAction-signed-out",
+      "result": "pass"
+    },
+    {
+      "id": "readOnboardingAttemptAction-auth-error",
+      "result": "pass"
+    },
+    {
+      "id": "readOnboardingAttemptAction-setup",
+      "result": "pass"
+    },
+    {
+      "id": "write-malformed-receipt-unknown",
+      "result": "pass"
+    },
+    {
+      "id": "write-transport-unknown",
+      "result": "pass"
+    },
+    {
+      "id": "read-null-only-read-rpc",
+      "result": "pass"
+    },
+    {
+      "id": "read-error-with-data-not-success",
+      "result": "pass"
+    },
+    {
+      "id": "read-other-intent-not-acknowledged",
+      "result": "pass"
+    },
+    {
+      "id": "read-malformed-not-absent",
+      "result": "pass"
+    },
+    {
+      "id": "read-missing-email-unavailable-not-conflict",
+      "result": "pass"
+    },
+    {
+      "id": "read-throw-not-absent",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-before-rpc",
+      "result": "pass"
+    },
+    {
+      "id": "known-admin-rejection-after-dispatch",
+      "result": "pass"
+    },
+    {
+      "id": "forbidden-never-editable",
+      "result": "pass"
+    }
+  ]
+}

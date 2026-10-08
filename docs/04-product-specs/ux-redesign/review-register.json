@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "bbe4696a054b6dfbc889b48373e071e422815222",
+  "sourceSnapshot": "92d48800dd0294c0e6b2367ccc239c00331efb17",
   "status": "Proposed",
   "items": [
     {
@@ -2024,7 +2024,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/actions.ts:25:1044",
+      "id": "RPC:src/app/operator/actions.ts:19:1122",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2231,7 +2231,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1103",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1073",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2240,7 +2240,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1471",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1441",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2249,7 +2249,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:28:2156",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:28:2126",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -6155,7 +6155,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2654",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2624",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6164,7 +6164,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2683",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2653",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6173,7 +6173,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:44:4004",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6182,7 +6182,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:45:4143",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:44:3919",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6191,7 +6191,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:47:4304",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:46:4080",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6200,7 +6200,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:48:4474",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:47:4250",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6209,7 +6209,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:50:4624",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:49:4400",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6218,7 +6218,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7040",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:64:5199",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6227,7 +6227,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7069",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:64:5228",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15809,6 +15809,78 @@
     },
     {
       "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:44:6198",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "ACTION:src/app/operator/actions.ts#readOnboardingAttemptAction",
+      "category": "serverActions",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/operator/actions.ts:42:2594",
+      "category": "rpcCalls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1016",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1065",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

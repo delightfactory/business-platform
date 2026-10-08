@@ -1,0 +1,99 @@
+'use client';
+
+import { useRef, useState, useSyncExternalStore, useTransition, type FormEvent, type ReactNode } from 'react';
+import { onboardTenantAction, readOnboardingAttemptAction } from '@/app/operator/actions';
+import { matchingOnboardingSnapshot, onboardingIntent, type OnboardingOutcome } from './intent';
+import { OnboardingResult } from './OnboardingResult';
+
+const subscribe = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
+type Phase = 'editing' | 'unknown' | 'retry' | 'saved';
+
+const messages: Record<OnboardingOutcome['state'], string> = {
+  saved: 'تم تأكيد إعداد الشركة.',
+  invalid: 'تحقق من الأسماء والبريد وحدود المستخدمين والفروع. استخدم عددًا موجبًا أو اختر غير محدود.',
+  admin: 'تحقق من وجود حساب المسؤول وتأكيد بريده وإتاحة الحساب، ثم صحح البيانات بنفس المرجع.',
+  unknown: 'نتيجة الإعداد غير مؤكدة. احتفظ بهذه الصفحة وراجع المحاولة الأصلية قبل أي إرسال آخر.',
+  unavailable: 'تعذر التحقق الآن. احتفظ بالبيانات وراجع المحاولة الأصلية إذا سبق إرسالها.',
+  'actor-changed': 'المحاولة مرتبطة بالحساب الذي بدأها. ارجع إلى الحساب الأصلي ثم راجع النتيجة؛ لا تُرسلها من حساب آخر.',
+  forbidden: 'لم تسمح صلاحيتك الحالية بإعداد الشركات. استعد الصلاحية للحساب الأصلي ثم راجع المحاولة.',
+  conflict: 'مرجع المحاولة مرتبط ببيانات مختلفة. راجع النتيجة الأصلية؛ لا تبدأ مرجعًا جديدًا لتجاوز التعارض.',
+  absent: 'لم تُرجع القراءة نتيجة محفوظة لهذا الحساب الآن. هذا لا يثبت أن الإعداد لم يحدث؛ يمكنك إعادة إرسال البيانات الأصلية نفسها فقط.',
+};
+
+export function OnboardingForm({ actorId, requestKey, children }: { actorId: string; requestKey: string; children: ReactNode }) {
+  const [scope] = useState(() => ({ actorId, requestKey }));
+  const captured = useRef<FormData | null>(null);
+  const inFlight = useRef(false);
+  const ready = useSyncExternalStore(subscribe, clientReady, serverReady);
+  const [pending, startTransition] = useTransition();
+  const [phase, setPhase] = useState<Phase>('editing');
+  const [outcome, setOutcome] = useState<OnboardingOutcome | null>(null);
+  const [hasAttempt, setHasAttempt] = useState(false);
+  const actorChanged = actorId.toLowerCase() !== scope.actorId.toLowerCase();
+  const frozen = phase !== 'editing' || actorChanged || outcome?.state === 'actor-changed' || outcome?.state === 'forbidden' || outcome?.state === 'conflict';
+
+  function dispatch(operation: 'save' | 'read' | 'retry', form?: HTMLFormElement) {
+    if (!ready || pending || inFlight.current || phase === 'saved') return;
+    if (operation === 'save') {
+      if (frozen || !form) return;
+      const payload = new FormData(form);
+      payload.set('idempotencyKey', scope.requestKey);
+      if (!onboardingIntent(payload)) { setOutcome({ state: 'invalid', mutationDispatched: false }); return; }
+      captured.current = payload; setHasAttempt(true);
+    } else if (!captured.current || (operation === 'retry' && (phase !== 'retry' || actorChanged))) return;
+    const original = captured.current;
+    if (!original) return;
+    // Never rebuild replay from disabled fields, changed props, or edited DOM.
+    const payload = new FormData();
+    original.forEach((value, key) => payload.append(key, value));
+    const priorFrozen = frozen;
+    inFlight.current = true;
+    startTransition(async () => {
+      try {
+        const result = operation === 'read'
+          ? await readOnboardingAttemptAction(scope.actorId, payload)
+          : await onboardTenantAction(scope.actorId, payload);
+        const intent = onboardingIntent(original);
+        if (result.state === 'saved') {
+          if (intent && matchingOnboardingSnapshot(result.snapshot, intent)) {
+            setOutcome(result); setPhase('saved'); captured.current = null; setHasAttempt(false);
+          } else { setOutcome({ state: 'unknown', mutationDispatched: true }); setPhase('unknown'); }
+        } else if (operation === 'read') {
+          setOutcome(result); setPhase(result.state === 'absent' ? 'retry' : 'unknown');
+        } else if ((result.state === 'invalid' || result.state === 'admin') && (result.mutationDispatched || !priorFrozen)) {
+          setOutcome(result); setPhase('editing'); captured.current = null; setHasAttempt(false);
+        } else if (!result.mutationDispatched && !priorFrozen) {
+          setOutcome(result); setPhase('editing');
+        } else { setOutcome(result); setPhase('unknown'); }
+      } catch {
+        // The client cannot infer whether an interrupted action reached the server.
+        setOutcome({ state: 'unknown', mutationDispatched: true }); setPhase('unknown');
+      } finally { inFlight.current = false; }
+    });
+  }
+
+  function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); dispatch('save', event.currentTarget); }
+
+  if (phase === 'saved' && outcome?.snapshot) return <OnboardingResult result={outcome.snapshot} />;
+  return <div>
+    <form method="post" className="auth-form onboarding-form" onSubmit={submit} aria-busy={pending}>
+      {!ready && <p className="field-hint" role="status">الحفظ غير جاهز بعد. يتطلب الإرسال تفعيل JavaScript.</p>}
+      <noscript><p className="field-hint">يمكنك مراجعة الحالة الحالية دون حفظ؛ الإرسال يتطلب تفعيل JavaScript.</p></noscript>
+      <fieldset className="operator-action-fields" disabled={!ready || pending || frozen} aria-label="إنشاء الشركة">
+        <input type="hidden" name="idempotencyKey" value={scope.requestKey} />
+        {children}
+        {!frozen && <button type="submit" className="primary-button" disabled={!ready || pending}>{pending ? 'جارٍ إنشاء الشركة…' : 'إنشاء الشركة'}</button>}
+      </fieldset>
+    </form>
+    {actorChanged && <p className="form-message form-error" role="alert">{messages['actor-changed']}</p>}
+    {outcome && <p className="form-message" role={outcome.state === 'absent' ? 'status' : 'alert'}>{messages[outcome.state]}</p>}
+    {pending && <p role="status" className="form-message">جارٍ التحقق من المحاولة…</p>}
+    {frozen && hasAttempt && <div className="topbar-actions">
+      {phase === 'retry' && !actorChanged && <button type="button" className="primary-button" disabled={!ready || pending} onClick={() => dispatch('retry')}>إعادة إرسال البيانات الأصلية</button>}
+      <button type="button" className={phase === 'retry' && !actorChanged ? 'secondary-button' : 'primary-button'} disabled={!ready || pending} onClick={() => dispatch('read')}>مراجعة نتيجة المحاولة</button>
+    </div>}
+    {frozen && <p className="field-hint">البيانات الأصلية محفوظة في هذه الصفحة فقط. لا تغلقها أو تعيد تحميلها قبل حسم النتيجة؛ لا تُحفظ بيانات المحاولة على الجهاز.</p>}
+  </div>;
+}

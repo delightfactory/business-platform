@@ -1,0 +1,107 @@
+{
+  "scope": "Actual Next/copied app parent+actions with syntheticSDK, no real DB/accounts/provider",
+  "observations": [
+    {
+      "id": "unknown-null-original-replay-saved",
+      "result": "pass",
+      "actor": "original synthetic actor",
+      "firstSaveArgs": {
+        "p_idempotency_key": "7154b271-e85f-47fe-934b-052ef688658f",
+        "p_tenant_name": "Synthetic unknown company",
+        "p_legal_entity_name": "",
+        "p_site_name": "Synthetic branch",
+        "p_admin_email": "admin@example.invalid",
+        "p_seat_limit_mode": "limited",
+        "p_seat_limit": 10,
+        "p_site_limit_mode": "limited",
+        "p_site_limit": 10
+      },
+      "readArgs": {
+        "p_idempotency_key": "7154b271-e85f-47fe-934b-052ef688658f"
+      },
+      "retryArgs": {
+        "p_idempotency_key": "7154b271-e85f-47fe-934b-052ef688658f",
+        "p_tenant_name": "Synthetic unknown company",
+        "p_legal_entity_name": "",
+        "p_site_name": "Synthetic branch",
+        "p_admin_email": "admin@example.invalid",
+        "p_seat_limit_mode": "limited",
+        "p_seat_limit": 10,
+        "p_site_limit_mode": "limited",
+        "p_site_limit": 10
+      },
+      "sameKeyAndPayload": true,
+      "fieldsRetainedAndFrozen": true,
+      "visibleSaved": true
+    },
+    {
+      "id": "native-doubleclick",
+      "result": "pass",
+      "writes": 1,
+      "savedVisible": true
+    },
+    {
+      "id": "account-change-native",
+      "result": "inconclusive",
+      "detail": "New fixture routes/cookieaction followed by fresh GETs, originalstate disappeared; reason unproven, read button no longer matched. No restoredactor/nativeacceptance claim."
+    },
+    {
+      "id": "fixture-logs-route",
+      "result": "not-evidence",
+      "detail": "Module-scope GET returned[], stdout actualSYNTHETIC_RPC records used instead."
+    },
+    {
+      "id": "confirmed-saved-to-another-company",
+      "result": "pass",
+      "steps": [
+        "confirmed Synthetic next company",
+        "clicked native emptyGET anothercompany",
+        "blank form received",
+        "confirmed Synthetic second company"
+      ],
+      "keyProof": "Actual SYNTHETIC_RPC records compared; DOMkey redaction falsecomparison excluded",
+      "keys": [
+        "b0306179-f4d3-4ebf-98d0-fbd55a6cd8ae",
+        "8e072c3d-7948-42a1-ab8d-8f9d39de3297"
+      ]
+    }
+  ],
+  "visual": {
+    "mobileCSS": {
+      "width": 390,
+      "height": 844
+    },
+    "mobileJPEG": {
+      "width": 375,
+      "height": 812
+    },
+    "desktopCSS": {
+      "width": 1366,
+      "height": 900
+    },
+    "desktopJPEG": {
+      "width": 1366,
+      "height": 900
+    },
+    "loadedCairo": true,
+    "DOMOverflow": false,
+    "tablet": "not-verified measurement remained1366",
+    "fullReference": "NOT VISUALLY VERIFIED",
+    "finalSaved": {
+      "css": {
+        "width": 1280,
+        "height": 720
+      },
+      "jpeg": {
+        "width": 1265,
+        "height": 712
+      }
+    }
+  },
+  "matchedMetrics": false,
+  "cleanup": {
+    "syntheticCookie": "Retired via fixture action; fresh GET confirmed No synthetic override",
+    "service": "Owned exec76699 terminal exit1 after CtrlC; no3611 listening socket",
+    "tabs": "Owned90-95 closed; viewport reset; user3 and prior86 retained"
+  }
+}

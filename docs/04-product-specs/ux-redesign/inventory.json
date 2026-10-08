@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "bbe4696a054b6dfbc889b48373e071e422815222",
+  "sourceHead": "92d48800dd0294c0e6b2367ccc239c00331efb17",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -100,7 +100,7 @@
     {
       "file": "src/app/operator/actions.ts",
       "phase": "R3",
-      "sha256": "034b47edb2aa972ccb2f6febeb7decc8cf0ed30b59d51fd6ee45fee3a216e5d9"
+      "sha256": "a9204765ca5c1285f1ee046d07a7db4119a5c43d8ad01b225687c088bd5f4995"
     },
     {
       "file": "src/app/operator/commercial/[tenantId]/LimitModeFields.tsx",
@@ -173,9 +173,24 @@
       "sha256": "aaf57a06ee046be063b9ee0233d7d1c5e79ce4409b6159499a7244037543808e"
     },
     {
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "phase": "R3",
+      "sha256": "0c2bd2e115ae8e78303ce74bdb9807bea37bbbcc00ba7dfefaba5d69e86159ff"
+    },
+    {
+      "file": "src/app/operator/onboarding/OnboardingResult.tsx",
+      "phase": "R3",
+      "sha256": "7ec84f6874ff41798eadb0a5e4211d10f8dc6618ee4ece67512a409b4049821f"
+    },
+    {
+      "file": "src/app/operator/onboarding/intent.ts",
+      "phase": "R3",
+      "sha256": "deff396725d6a07bba7bb247327fbca4e69f5120389bd527b50c0bf9b67923bb"
+    },
+    {
       "file": "src/app/operator/onboarding/page.tsx",
       "phase": "R3",
-      "sha256": "0e353b0f5eb9d59f927288273a7f845ad8e45d3e97951d616cb0fb008289b106"
+      "sha256": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827"
     },
     {
       "file": "src/app/operator/operator-action-form.tsx",
@@ -2167,8 +2182,19 @@
     {
       "id": "ACTION:src/app/operator/actions.ts#onboardTenantAction",
       "file": "src/app/operator/actions.ts",
-      "line": 6,
+      "line": 7,
       "name": "onboardTenantAction",
+      "phase": "R3",
+      "inline": false,
+      "rpcs": [],
+      "variants": [],
+      "branches": []
+    },
+    {
+      "id": "ACTION:src/app/operator/actions.ts#readOnboardingAttemptAction",
+      "file": "src/app/operator/actions.ts",
+      "line": 33,
+      "name": "readOnboardingAttemptAction",
       "phase": "R3",
       "inline": false,
       "rpcs": [],
@@ -3612,11 +3638,21 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/actions.ts:25:1044",
+      "id": "RPC:src/app/operator/actions.ts:19:1122",
       "file": "src/app/operator/actions.ts",
-      "line": 25,
+      "line": 19,
       "phase": "R3",
       "name": "onboard_tenant",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/operator/actions.ts:42:2594",
+      "file": "src/app/operator/actions.ts",
+      "line": 42,
+      "phase": "R3",
+      "name": "tenant_onboarding_result",
       "expression": null,
       "candidates": [],
       "resolution": "literal"
@@ -3862,7 +3898,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1103",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:20:1073",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 20,
       "phase": "R3",
@@ -3872,7 +3908,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1471",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:23:1441",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 23,
       "phase": "R3",
@@ -3882,7 +3918,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/onboarding/page.tsx:28:2156",
+      "id": "RPC:src/app/operator/onboarding/page.tsx:28:2126",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 28,
       "phase": "R3",
@@ -8167,7 +8203,80 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2654",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "line": 81,
+      "tag": "form",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "line": 85,
+      "tag": "input",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"idempotencyKey\"",
+        "value": "{scope.requestKey}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "line": 87,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"submit\"",
+        "disabled": "{!ready || pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "line": 94,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{!ready || pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "line": 95,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"button\"",
+        "disabled": "{!ready || pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1016",
+      "file": "src/app/operator/onboarding/OnboardingResult.tsx",
+      "line": 12,
+      "tag": "form",
+      "phase": "R3",
+      "attributes": {
+        "action": "\"/operator/onboarding\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1065",
+      "file": "src/app/operator/onboarding/OnboardingResult.tsx",
+      "line": 12,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"submit\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2624",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 35,
       "tag": "form",
@@ -8177,7 +8286,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2683",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:35:2653",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 35,
       "tag": "button",
@@ -8187,21 +8296,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:44:4004",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:44:3919",
       "file": "src/app/operator/onboarding/page.tsx",
       "line": 44,
-      "tag": "input",
-      "phase": "R3",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"idempotencyKey\"",
-        "value": "{key ?? crypto.randomUUID()}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:45:4143",
-      "file": "src/app/operator/onboarding/page.tsx",
-      "line": 45,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8209,9 +8306,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:47:4304",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:46:4080",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 47,
+      "line": 46,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8219,9 +8316,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:48:4474",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:47:4250",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 48,
+      "line": 47,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8229,9 +8326,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:50:4624",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:49:4400",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 50,
+      "line": 49,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8240,9 +8337,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7040",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:64:5199",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 86,
+      "line": 64,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8250,9 +8347,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/page.tsx:86:7069",
+      "id": "CONTROL:src/app/operator/onboarding/page.tsx:64:5228",
       "file": "src/app/operator/onboarding/page.tsx",
-      "line": 86,
+      "line": 64,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -19610,15 +19707,15 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 284,
+    "sourceFiles": 287,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
-    "serverActions": 107,
-    "rpcCallSites": 350,
+    "serverActions": 108,
+    "rpcCallSites": 351,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 6,
-    "formControls": 1173,
+    "formControls": 1179,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

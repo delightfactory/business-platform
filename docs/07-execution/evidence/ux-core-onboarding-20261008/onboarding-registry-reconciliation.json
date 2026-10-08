@@ -1,0 +1,161 @@
+{
+  "summary": {
+    "sourceFiles": 287,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 108,
+    "rpcCallSites": 351,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1179,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1727,
+  "priorStatusesPreserved": true,
+  "sourceReviewed": 19,
+  "added": [
+    {
+      "id": "ACTION:src/app/operator/actions.ts#readOnboardingAttemptAction",
+      "category": "serverActions",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/operator/actions.ts:42:2594",
+      "category": "rpcCalls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1016",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingResult.tsx:12:1065",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    }
+  ],
+  "migrations": [
+    {
+      "before": "RPC:src/app/operator/actions.ts:25:1044",
+      "after": "RPC:src/app/operator/actions.ts:19:1122",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:20:1103",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:20:1073",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:23:1471",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:23:1441",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/onboarding/page.tsx:28:2156",
+      "after": "RPC:src/app/operator/onboarding/page.tsx:28:2126",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:44:4004",
+      "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:35:2654",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:35:2624",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:35:2683",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:35:2653",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:45:4143",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:44:3919",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:47:4304",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:46:4080",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:48:4474",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:47:4250",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:50:4624",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:49:4400",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:86:7040",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:64:5199",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/onboarding/page.tsx:86:7069",
+      "after": "CONTROL:src/app/operator/onboarding/page.tsx:64:5228",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false
+}

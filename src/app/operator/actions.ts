@@ -1,65 +1,52 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { onboardingSnapshot, operatorUuid } from '@/lib/operator-read';
+import { matchingOnboardingSnapshot, onboardingIntent, onboardingRpcError, type OnboardingOutcome } from './onboarding/intent';
 
-export async function onboardTenantAction(formData: FormData) {
-  const idempotencyKey = textField(formData, 'idempotencyKey');
-  if (!/^[0-9a-f-]{36}$/i.test(idempotencyKey)) return 'failed';
-
-  const tenantName = textField(formData, 'tenantName');
-  const entityName = textField(formData, 'entityName');
-  const siteName = textField(formData, 'siteName');
-  const adminEmail = textField(formData, 'adminEmail').toLowerCase();
-  const seatMode = limitMode(formData, 'seats');
-  const siteMode = limitMode(formData, 'sites');
-  const seatLimit = parseLimit(formData, 'seats', seatMode);
-  const siteLimit = parseLimit(formData, 'sites', siteMode);
-
-  if (!tenantName || !siteName || !adminEmail || seatLimit === INVALID || siteLimit === INVALID) {
-    return 'limit';
+export async function onboardTenantAction(expectedActor: string, formData: FormData): Promise<OnboardingOutcome> {
+  const intent = onboardingIntent(formData);
+  if (!intent || !operatorUuid(expectedActor)) return { state: 'invalid', mutationDispatched: false };
+  let mutationDispatched = false;
+  try {
+    const supabase = await createSupabaseServerClient();
+    if (!supabase) return { state: 'unavailable', mutationDispatched };
+    const { data: { user }, error } = await supabase.auth.getUser();
+    if (error) return { state: 'unavailable', mutationDispatched };
+    if (!user || user.id.toLowerCase() !== expectedActor.toLowerCase()) return { state: 'actor-changed', mutationDispatched };
+    // expectedActor is a guard only. SQL authorizes exclusively with auth.uid().
+    mutationDispatched = true;
+    const result = await supabase.rpc('onboard_tenant', {
+      p_idempotency_key: intent.key, p_tenant_name: intent.tenantName, p_legal_entity_name: intent.entityName,
+      p_site_name: intent.siteName, p_admin_email: intent.adminEmail,
+      p_seat_limit_mode: intent.seatMode, p_seat_limit: intent.seatLimit,
+      p_site_limit_mode: intent.siteMode, p_site_limit: intent.siteLimit,
+    });
+    if (result.error) return { state: onboardingRpcError(result.error), mutationDispatched };
+    if (!matchingOnboardingSnapshot(result.data, intent)) return { state: 'unknown', mutationDispatched };
+    return { state: 'saved', snapshot: result.data, mutationDispatched };
+  } catch {
+    return { state: mutationDispatched ? 'unknown' : 'unavailable', mutationDispatched };
   }
+}
 
-  const supabase = await createSupabaseServerClient();
-  if (!supabase) return 'setup';
-  const { data, error } = await supabase.rpc('onboard_tenant', {
-    p_idempotency_key: idempotencyKey,
-    p_tenant_name: tenantName,
-    p_legal_entity_name: entityName,
-    p_site_name: siteName,
-    p_admin_email: adminEmail,
-    p_seat_limit_mode: seatMode,
-    p_seat_limit: seatLimit,
-    p_site_limit_mode: siteMode,
-    p_site_limit: siteLimit,
-  });
-
-  if (error) {
-    const state = error.message.includes('platform_operator_onboarding_forbidden') ? 'forbidden'
-      : error.message.includes('onboarding_admin_') ? 'admin'
-      : error.message.includes('onboarding_invalid_limit') ? 'limit'
-      : error.message.includes('onboarding_idempotency_conflict') ? 'conflict'
-      : 'failed';
-    return state;
+export async function readOnboardingAttemptAction(expectedActor: string, formData: FormData): Promise<OnboardingOutcome> {
+  const intent = onboardingIntent(formData);
+  if (!intent || !operatorUuid(expectedActor)) return { state: 'invalid', mutationDispatched: false };
+  try {
+    const supabase = await createSupabaseServerClient();
+    if (!supabase) return { state: 'unavailable', mutationDispatched: false };
+    const { data: { user }, error } = await supabase.auth.getUser();
+    if (error) return { state: 'unavailable', mutationDispatched: false };
+    if (!user || user.id.toLowerCase() !== expectedActor.toLowerCase()) return { state: 'actor-changed', mutationDispatched: false };
+    const result = await supabase.rpc('tenant_onboarding_result', { p_idempotency_key: intent.key });
+    if (result.error) return { state: 'unavailable', mutationDispatched: false };
+    // Null also covers grant loss. Only SQL-authorized identical replay follows it.
+    if (result.data === null) return { state: 'absent', mutationDispatched: false };
+    if (!onboardingSnapshot(result.data) || typeof result.data.admin_email !== 'string' || !result.data.admin_email.trim()) return { state: 'unavailable', mutationDispatched: false };
+    if (!matchingOnboardingSnapshot(result.data, intent)) return { state: 'conflict', mutationDispatched: false };
+    return { state: 'saved', snapshot: result.data, mutationDispatched: false };
+  } catch {
+    return { state: 'unavailable', mutationDispatched: false };
   }
-  if (!data || typeof data !== 'object' || Array.isArray(data)) return 'failed';
-  redirect(`/operator/onboarding?key=${encodeURIComponent(idempotencyKey)}`);
-}
-
-const INVALID = Symbol('invalid limit');
-
-function textField(formData: FormData, name: string) {
-  return String(formData.get(name) ?? '').trim();
-}
-
-function limitMode(formData: FormData, kind: 'seats' | 'sites'): 'limited' | 'unlimited' {
-  return formData.get(`${kind}Mode`) === 'unlimited' ? 'unlimited' : 'limited';
-}
-
-function parseLimit(formData: FormData, kind: 'seats' | 'sites', mode: 'limited' | 'unlimited'): number | null | typeof INVALID {
-  if (mode === 'unlimited') return null;
-  const value = textField(formData, `${kind}Limit`);
-  if (!/^\d+$/.test(value)) return INVALID;
-  const number = Number(value);
-  return Number.isSafeInteger(number) && number > 0 ? number : INVALID;
 }

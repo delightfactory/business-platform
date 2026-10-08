@@ -1,0 +1,34 @@
+{
+  "base": "92d48800dd0294c0e6b2367ccc239c00331efb17",
+  "sources": [
+    {
+      "file": "src/app/operator/actions.ts",
+      "sha256": "a9204765ca5c1285f1ee046d07a7db4119a5c43d8ad01b225687c088bd5f4995"
+    },
+    {
+      "file": "src/app/operator/onboarding/page.tsx",
+      "sha256": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827"
+    },
+    {
+      "file": "src/app/operator/onboarding/intent.ts",
+      "sha256": "deff396725d6a07bba7bb247327fbca4e69f5120389bd527b50c0bf9b67923bb"
+    },
+    {
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "sha256": "0c2bd2e115ae8e78303ce74bdb9807bea37bbbcc00ba7dfefaba5d69e86159ff"
+    },
+    {
+      "file": "src/app/operator/onboarding/OnboardingResult.tsx",
+      "sha256": "7ec84f6874ff41798eadb0a5e4211d10f8dc6618ee4ece67512a409b4049821f"
+    }
+  ],
+  "checks": 46,
+  "description": "Original actor/key/payload captured before dispatch; pending/unknown/read-error remain frozen. Explicit read of original attempt; null never proves no commit, only identical original replay available. Source-named SQL exceptions distinguish safe editing, generic errors stay unknown. Exact validated receipt controls success. Confirmed another-company native empty GET creates a fresh task without private query data. No new authority, SQL, storage, dependencies or global settings.",
+  "remaining": "Full B1/B2/R3/R0–R8 remain OPEN. In-memory intent survives only while mounted; reload/navigation/auth or authority parent unmount may lose it. Durable restoration requires a scoped amendment. Actual account restoration native test INCONCLUSIVE; real SQL/Auth/roles/provider/full no-JS/full-reference/matched before-after/tablet/other states not accepted. Payroll A/B independent; D16 extras deferred until core complete.",
+  "scope": "source-WIP with bounded synthetic native evidence",
+  "semanticPromotion": false,
+  "fullVisual": {
+    "codex": "NOT VISUALLY VERIFIED",
+    "claude": "NOT VISUALLY VERIFIED"
+  }
+}
