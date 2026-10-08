@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "0ac27943aa09075c46d79fde07c7a642c205ad36",
+  "sourceHead": "d03450932f5493b20fcc8630c185f35edae44cf8",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -1170,7 +1170,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
       "phase": "R4",
-      "sha256": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d"
+      "sha256": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
@@ -1190,7 +1190,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
       "phase": "R4",
-      "sha256": "c58e16bc87df05891076c75167b227b35214ec57c7508adf7d339255505b647e"
+      "sha256": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
@@ -1386,6 +1386,11 @@
       "file": "src/components/offline-submission.tsx",
       "phase": "R1",
       "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+    },
+    {
+      "file": "src/components/offline-submit-button.tsx",
+      "phase": "R1",
+      "sha256": "490edc52eafd7a11b63256c6ddbc56668f3d4e79f5bcd230e314618d40352e79"
     },
     {
       "file": "src/components/pwa-foundation.tsx",
@@ -17013,9 +17018,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:53:3715",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3811",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 53,
+      "line": 55,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17023,9 +17028,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:54:3809",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3961",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 54,
+      "line": 56,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17035,9 +17040,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3877",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4028",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 55,
+      "line": 57,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17047,9 +17052,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3949",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4099",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 56,
+      "line": 58,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17059,9 +17064,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4025",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:59:4174",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 57,
+      "line": 59,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17071,10 +17076,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4096",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:60:4244",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 58,
-      "tag": "SubmitButton",
+      "line": 60,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إلغاء تغيير الأجر المقرر\"",
@@ -17082,17 +17087,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:69:5245",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:71:5389",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 69,
+      "line": 71,
       "tag": "summary",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:70:5291",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5434",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 70,
+      "line": 72,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17100,9 +17105,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5500",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5698",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 72,
+      "line": 74,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17112,9 +17117,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:73:5566",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:75:5763",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 73,
+      "line": 75,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17124,9 +17129,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5646",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5842",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 74,
+      "line": 76,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17136,9 +17141,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5849",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:78:6043",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 76,
+      "line": 78,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17147,9 +17152,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:79:6120",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:81:6311",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 79,
+      "line": 81,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17159,10 +17164,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:85:6854",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:87:7039",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 85,
-      "tag": "SubmitButton",
+      "line": 87,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"حفظ تغيير الأجر\"",
@@ -17170,9 +17175,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:88:7032",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7221",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 88,
+      "line": 90,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17180,9 +17185,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:89:7122",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7367",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 89,
+      "line": 91,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17192,9 +17197,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7186",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7430",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 90,
+      "line": 92,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17204,9 +17209,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7254",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7497",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 91,
+      "line": 93,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17216,9 +17221,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7326",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:94:7568",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 92,
+      "line": 94,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17228,10 +17233,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7401",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:95:7642",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 93,
-      "tag": "SubmitButton",
+      "line": 95,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إلغاء تغيير الأجر المقرر\"",
@@ -17799,9 +17804,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:80:6245",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6314",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 80,
+      "line": 82,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17809,9 +17814,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:81:6337",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6462",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 81,
+      "line": 83,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17821,9 +17826,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6407",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6531",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 82,
+      "line": 84,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17833,9 +17838,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6481",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6604",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 83,
+      "line": 85,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17845,9 +17850,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6559",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:86:6681",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 84,
+      "line": 86,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17857,10 +17862,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6638",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:87:6759",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 85,
-      "tag": "SubmitButton",
+      "line": 87,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إلغاء النقل المقرر\"",
@@ -17868,17 +17873,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:99:7895",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:101:8009",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 99,
+      "line": 101,
       "tag": "summary",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:102:8242",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8353",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 102,
+      "line": 104,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17886,9 +17891,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8456",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8622",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 104,
+      "line": 106,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17898,9 +17903,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:105:8526",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:107:8691",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 105,
+      "line": 107,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17910,9 +17915,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8610",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8774",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 106,
+      "line": 108,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17922,9 +17927,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8744",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:110:8906",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 108,
+      "line": 110,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17932,9 +17937,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:112:9060",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:114:9218",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 112,
+      "line": 114,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17943,9 +17948,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:118:9497",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:120:9649",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 118,
+      "line": 120,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17953,9 +17958,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:124:9959",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:126:10105",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 124,
+      "line": 126,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17963,9 +17968,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:130:10488",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:132:10628",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 130,
+      "line": 132,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17975,10 +17980,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:137:11402",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:139:11535",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 137,
-      "tag": "SubmitButton",
+      "line": 139,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"حفظ تغيير العمل\"",
@@ -17986,17 +17991,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:141:11603",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:143:11739",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 141,
+      "line": 143,
       "tag": "summary",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:144:11943",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12076",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 144,
+      "line": 146,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18004,9 +18009,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12173",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12361",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 146,
+      "line": 148,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18016,9 +18021,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:147:12243",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:149:12430",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 147,
+      "line": 149,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18028,9 +18033,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12327",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12513",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 148,
+      "line": 150,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18040,9 +18045,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12461",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:152:12645",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 150,
+      "line": 152,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18050,9 +18055,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:154:12783",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:156:12963",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 154,
+      "line": 156,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18060,9 +18065,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:159:13166",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:161:13341",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 159,
+      "line": 161,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18070,9 +18075,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:164:13514",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:166:13684",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 164,
+      "line": 166,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18080,10 +18085,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:170:14047",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:172:14211",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 170,
-      "tag": "SubmitButton",
+      "line": 172,
+      "tag": "OfflineSubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"حفظ تصحيح بيانات العمل\"",
@@ -19785,6 +19790,16 @@
       }
     },
     {
+      "id": "CONTROL:src/components/offline-submit-button.tsx:16:708",
+      "file": "src/components/offline-submit-button.tsx",
+      "line": 16,
+      "tag": "SubmitButton",
+      "phase": "R1",
+      "attributes": {
+        "disabled": "{offline || props.disabled}"
+      }
+    },
+    {
       "id": "CONTROL:src/components/submit-button.tsx:14:388",
       "file": "src/components/submit-button.tsx",
       "line": 14,
@@ -19831,7 +19846,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF; PNG raw bytes",
   "summary": {
-    "sourceFiles": 296,
+    "sourceFiles": 297,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
@@ -19839,7 +19854,7 @@
     "rpcCallSites": 349,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 7,
-    "formControls": 1185,
+    "formControls": 1186,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

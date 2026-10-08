@@ -1,0 +1,304 @@
+{
+  "schema": "business-platform.offline-c8-review.v1",
+  "baseline": "d03450932f5493b20fcc8630c185f35edae44cf8",
+  "status": "SOURCE-QUALIFIED; NATIVE/FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "cases": 24,
+  "variants": 7,
+  "unchangedSourceCount": 676,
+  "exactAppliedCandidateHashesVerified": true,
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# PWA-C8 review: SOURCE ACCEPT\n\nNo MUST FIX findings. I ran no tools, so I reviewed only the pasted candidates against the stated contract and baseline intent. I did not byte-diff them against `d034509`. Byte-unchanged status of `SubmitButton` and `offline-submission` rests on the brief and the pasted dependency text.\n\n## Required checks\n\n**1. Guard before dispatch: pass**\n- All six owning forms (wage cancel in history, standalone wage cancel, wage change, transfer cancel, transfer schedule, initial correction) call `blockOfflineSubmission(event)` synchronously in `onSubmit`.\n- In React 19, the form-action plugin skips dispatch when the native event is `defaultPrevented` and no transition was scheduled.\n- `refreshSignal` is a plain reducer dispatch, not a transition, so a blocked submit never reaches the Server Action. It covers the case where the browser's offline event arrives after submit, because it re-reads `navigator.onLine` at submit time.\n- Enter-key submission with a disabled default button does not submit, and the guard covers any other path.\n\n**2. Direct cancel uses its own `useFormStatus`: pass**\n- `OfflineSubmitButton` is rendered inside each form. Its `useFormStatus` therefore reflects that form only, including the direct `cancelCompensationChangeAction` and `cancelWorkAssignmentAction` forms that have no `useActionState`.\n- The parent `useActionState` tuple is not used for pending state. A cancel in progress cannot show as pending on the change or transfer forms.\n\n**3. Unique IDs for mapped controls: pass**\n- `useId` runs once per rendered instance, so mapped transfer-cancel rows and the separate correction and transfer forms never share a notice ID.\n- The wage cancel in history (`canView`) and the standalone wage cancel (`!canView`) are mutually exclusive.\n- `aria-describedby` merges the caller's IDs with the hint ID and resolves to `undefined` when empty.\n\n**4. Pending priority: pass**\n- `SubmitButton` still renders `pendingLabel` and spinner whenever pending, regardless of `disabled`.\n- The notice is hidden while pending and when the control is already disabled for another reason.\n- `disabled` is `offline || props.disabled`, which keeps the existing disabled semantics.\n\n**5. Original permissions, setup, date, financial and field values: pass against the contract**\n- **Wage:** the `canChange` gates (manage, employment, options, active, current, no pending) are intact. Pending falls back from options to history. Wage cancel works with and without wage-view permission. The `min` date, the `< today` correction-handoff hint, amount bounds, step and `inputMode` are unchanged.\n- **Transfer:** `mayTransfer` and `mayCorrectInitial` (start day equals initial date, current `valid_from` matches, no pending, no history error) are intact. `minimumTransferDate`/`addOneDay`, the department-filtered jobs, manager start-date eligibility (effective date for transfer, initial date for correction), truncation hints and the missing-choice hint are all present.\n- **Fields after a block:** a blocked submit only calls `preventDefault`. No reset happens and the `attempt` key does not change, so controlled and uncontrolled values stay as entered.\n- **Online payload:** the submitter has no `name` and `onSubmit` does not touch FormData, so the online payload matches baseline.\n\n**6. Scope: pass**\n- There is no global opt-in, queue, storage, auto-send, fieldset or local-field disabling.\n- The inventory change only adds the `OfflineSubmitButton` tag to the recognised control tags. It does not promote any semantic status. The register's migrate-by-source-identity rule still needs checking against the generated register when gate6 runs.\n\n## Non-blocking observation (no action required)\n- **Multiple notices:** with several forms visible at once (for example, both `details` open plus a cancel row), each shows its own `role=\"status\"` continuation notice. This is acceptable and does not need a loop.\n\n## Status\n- **This review:** SOURCE ACCEPT for C8 candidates only, under source-preservation gate6.\n- **Fullvisual:** both remain NOT VISUALLY VERIFIED until matching renders are accepted.\n- **Still OPEN:** whole phase, native/reference, real AuthSQL/roles/actor, financial acceptance and full original R0–R8.",
+    "sessionId": "4769434e-1c8e-4979-8bb0-d8475394f920"
+  },
+  "codex": {
+    "source": "ACCEPT exact four candidate hashes, six owning guards. Opt-in child uses own formStatus for cancellation; old SubmitButton/guard/actions unchanged.",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Concept C People orientation inspected in owned tab125 and closed; no matched candidate renders this batch.",
+    "simplicity": "Known offline explains blocked send and preserves editable inputs/context. Online fields/payload match original. No numerical improvement claimed.",
+    "react": "Unconditional hydration-stable hooks; unique per-render useId; existing aria-describedby merged; own form pending hides notice; no global opt-in or fieldset disable.",
+    "testGuard": "24 actual-source cases/7variants plus controlled formStatus contexts; financial/date/role eligibility and online payload comparisons. Boundary fixtures do not prove native form context, real actor or financial qualification.",
+    "limits": [
+      "Actual owning panels/new control/shared hooks with controlled React/browser/FormData/action transport boundaries",
+      "Child useFormStatus boundary explicitly models own form versus unrelated action; native pending/context/unique-instance IDs require consolidated browser proof",
+      "Real People roles/AuthSQL/financial/reference and full R0–R8 acceptance NOT VERIFIED"
+    ]
+  },
+  "register": {
+    "denominator": 1732,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:53:3715",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3811",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:54:3809",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3961",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3877",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4028",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3949",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4099",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4025",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:59:4174",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4096",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:60:4244",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:69:5245",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:71:5389",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:70:5291",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5434",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5500",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5698",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:73:5566",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:75:5763",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5646",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5842",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5849",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:78:6043",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:79:6120",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:81:6311",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:85:6854",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:87:7039",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:88:7032",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7221",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:89:7122",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7367",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7186",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7430",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7254",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7497",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7326",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:94:7568",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7401",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:95:7642",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:80:6245",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6314",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:81:6337",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6462",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6407",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6531",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6481",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6604",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6559",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:86:6681",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6638",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:87:6759",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:99:7895",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:101:8009",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:102:8242",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8353",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8456",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8622",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:105:8526",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:107:8691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8610",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8774",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8744",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:110:8906",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:112:9060",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:114:9218",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:118:9497",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:120:9649",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:124:9959",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:126:10105",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:130:10488",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:132:10628",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:137:11402",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:139:11535",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:141:11603",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:143:11739",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:144:11943",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12076",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12173",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12361",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:147:12243",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:149:12430",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12327",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12513",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12461",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:152:12645",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:154:12783",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:156:12963",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:159:13166",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:161:13341",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:164:13514",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:166:13684",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:170:14047",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:172:14211",
+        "status": "pending"
+      }
+    ],
+    "newPending": [
+      {
+        "id": "CONTROL:src/components/offline-submit-button.tsx:16:708",
+        "category": "formControls",
+        "phase": "R1",
+        "status": "pending",
+        "scenarioIds": [],
+        "reviewer": null,
+        "evidence": null,
+        "runtimeStatus": "not-run"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS grouped14097 including TypeScript",
+    "lint": "PASS full59859/four existing warnings; targeted evidence lint PASS c4d1e2 exit0",
+    "native": "NOT RUN this batch; consolidated acceptance required",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 60,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Remaining original server-owned/Auth submission boundaries, then consolidated native/reference/real actor acceptance and original capability gaps. D16/extras deferred."
+}

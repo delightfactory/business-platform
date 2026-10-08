@@ -1608,39 +1608,45 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 53,
+      "line": 55,
       "attrs": {
-        "action": "{cancelCompensationChangeAction}"
+        "action": "{cancelCompensationChangeAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d",
+      "sourceHash": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 70,
+      "line": 72,
       "attrs": {
-        "action": "{formAction}"
+        "action": "{formAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d",
+      "sourceHash": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
-      "line": 88,
+      "line": 90,
       "attrs": {
-        "action": "{cancelCompensationChangeAction}"
+        "action": "{cancelCompensationChangeAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d",
+      "sourceHash": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
@@ -1781,39 +1787,45 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 80,
+      "line": 82,
       "attrs": {
-        "action": "{cancelWorkAssignmentAction}"
+        "action": "{cancelWorkAssignmentAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "c58e16bc87df05891076c75167b227b35214ec57c7508adf7d339255505b647e",
+      "sourceHash": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 102,
+      "line": 104,
       "attrs": {
-        "action": "{formAction}"
+        "action": "{formAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "c58e16bc87df05891076c75167b227b35214ec57c7508adf7d339255505b647e",
+      "sourceHash": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
-      "line": 144,
+      "line": 146,
       "attrs": {
-        "action": "{correctionAction}"
+        "action": "{correctionAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "c58e16bc87df05891076c75167b227b35214ec57c7508adf7d339255505b647e",
+      "sourceHash": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C8 six wage/assignment owning forms;24 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
@@ -1940,6 +1952,6 @@
     }
   ],
   "total": 152,
-  "hasSubmitHandler": 54,
-  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage. C7 three existing inline handlers guarded;152 forms/54 handlers structural only, not acceptance percentage."
+  "hasSubmitHandler": 60,
+  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage. C7 three existing inline handlers guarded;152 forms/54 handlers structural only, not acceptance percentage. C8 six new owning guards;152 forms/60 handlers structural only, not acceptance percentage."
 }

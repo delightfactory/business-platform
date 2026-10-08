@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "0ac27943aa09075c46d79fde07c7a642c205ad36",
+  "sourceSnapshot": "d03450932f5493b20fcc8630c185f35edae44cf8",
   "status": "Proposed",
   "items": [
     {
@@ -13310,7 +13310,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:53:3715",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3811",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13319,7 +13319,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:54:3809",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3961",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13328,7 +13328,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:55:3877",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4028",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13337,7 +13337,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:56:3949",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4099",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13346,7 +13346,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:57:4025",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:59:4174",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13355,7 +13355,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:58:4096",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:60:4244",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13364,7 +13364,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:69:5245",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:71:5389",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13373,7 +13373,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:70:5291",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5434",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13382,7 +13382,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:72:5500",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5698",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13391,7 +13391,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:73:5566",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:75:5763",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13400,7 +13400,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:74:5646",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5842",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13409,7 +13409,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:76:5849",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:78:6043",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13418,7 +13418,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:79:6120",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:81:6311",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13427,7 +13427,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:85:6854",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:87:7039",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13436,7 +13436,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:88:7032",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7221",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13445,7 +13445,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:89:7122",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7367",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13454,7 +13454,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:90:7186",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7430",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13463,7 +13463,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:91:7254",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7497",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13472,7 +13472,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:92:7326",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:94:7568",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13481,7 +13481,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:93:7401",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:95:7642",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13949,7 +13949,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:80:6245",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6314",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13958,7 +13958,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:81:6337",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6462",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13967,7 +13967,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:82:6407",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6531",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13976,7 +13976,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:83:6481",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6604",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13985,7 +13985,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:84:6559",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:86:6681",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13994,7 +13994,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:85:6638",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:87:6759",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14003,7 +14003,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:99:7895",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:101:8009",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14012,7 +14012,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:102:8242",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8353",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14021,7 +14021,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:104:8456",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8622",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14030,7 +14030,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:105:8526",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:107:8691",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14039,7 +14039,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:106:8610",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8774",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14048,7 +14048,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:108:8744",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:110:8906",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14057,7 +14057,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:112:9060",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:114:9218",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14066,7 +14066,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:118:9497",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:120:9649",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14075,7 +14075,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:124:9959",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:126:10105",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14084,7 +14084,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:130:10488",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:132:10628",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14093,7 +14093,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:137:11402",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:139:11535",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14102,7 +14102,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:141:11603",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:143:11739",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14111,7 +14111,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:144:11943",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12076",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14120,7 +14120,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:146:12173",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12361",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14129,7 +14129,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:147:12243",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:149:12430",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14138,7 +14138,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:148:12327",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12513",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14147,7 +14147,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:150:12461",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:152:12645",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14156,7 +14156,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:154:12783",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:156:12963",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14165,7 +14165,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:159:13166",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:161:13341",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14174,7 +14174,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:164:13514",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:166:13684",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14183,7 +14183,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:170:14047",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx:172:14211",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -15941,6 +15941,16 @@
       "scenarioIds": [],
       "reviewer": null,
       "evidence": null
+    },
+    {
+      "id": "CONTROL:src/components/offline-submit-button.tsx:16:708",
+      "category": "formControls",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null,
+      "runtimeStatus": "not-run"
     }
   ],
   "snapshotQualification": "Core channels controlled SDK and scoped common visual increment; original review states preserved, no full runtime/semantic promotion.",

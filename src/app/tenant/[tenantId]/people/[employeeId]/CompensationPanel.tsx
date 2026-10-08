@@ -1,7 +1,8 @@
 'use client';
 
 import { useActionState, useState } from 'react';
-import { SubmitButton } from '@/components/submit-button';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
+import { useOfflineSubmission } from '@/components/offline-submission';
 import { cancelCompensationChangeAction, changeCompensationAction, type CompensationFormState } from '../compensation-actions';
 
 type CompensationVersion = {
@@ -22,6 +23,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
   history: CompensationHistory | null; historyError: boolean; options: CompensationOptions | null;
   optionsError: boolean; today: string;
 }) {
+  const { blockOfflineSubmission } = useOfflineSubmission();
   const initial: CompensationFormState = {
     tenantId, employmentId: employmentId ?? '', employeeId, amount: '',
     effectiveDate: options?.effective_date_default ?? today, error: '', attempt: 0,
@@ -50,12 +52,12 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
           <div><dt>يبدأ في</dt><dd><bdi>{version.valid_from}</bdi></dd></div>
           {version.valid_until && <div><dt>ينتهي قبل</dt><dd><bdi>{version.valid_until}</bdi></dd></div>}
         </dl>
-        {canManage && version.status === 'scheduled' && pending?.id === version.id && employmentId && <form action={cancelCompensationChangeAction} className="assignment-cancel-form">
+        {canManage && version.status === 'scheduled' && pending?.id === version.id && employmentId && <form action={cancelCompensationChangeAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
           <input type="hidden" name="tenantId" value={tenantId} />
           <input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="employmentId" value={employmentId} />
           <input type="hidden" name="versionId" value={version.id} />
-          <SubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
+          <OfflineSubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
         </form>}
       </li>)}
     </ol> : canView && !historyError ? <p className="empty-state">لا توجد بيانات أجر مسجلة لهذه العلاقة.</p> : null}
@@ -67,7 +69,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
     {pending && canManage && <p className="form-message">يوجد تغيير مقرر بتاريخ <bdi>{pending.valid_from}</bdi>. ألغِه قبل حفظ تغيير آخر.</p>}
     {canChange && <details className="compensation-change-details">
       <summary>تغيير الأجر الأساسي</summary>
-      <form key={formState.attempt} action={formAction} className="compensation-change-form">
+      <form key={formState.attempt} action={formAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <p className="field-hint">يسري التغيير من التاريخ المحدد؛ وتبقى القيم السابقة محفوظة في سجل الأجر.</p>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
@@ -82,15 +84,15 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
         {effectiveDateChoice < today && <p className="field-hint">التاريخ السابق متاح داخل فترة الأجر الحالية فقط. إذا مسّ التغيير راتبًا مقفلًا، يحتفظ النظام بالمصدر ويوجه مسؤول تصحيح الرواتب إلى مقترح مؤرخ ومراجعة المخرجات.</p>}
         {formState.error && <p className="form-message error-message" role="alert">{formState.error}</p>}
         <p className="field-hint">يوجد تغيير مقرر واحد فقط؛ ألغِه أولًا لتحديد تاريخ أو قيمة أخرى.</p>
-        <div className="workspace-form-actions"><SubmitButton label="حفظ تغيير الأجر" pendingLabel="جارٍ حفظ التغيير…" /></div>
+        <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير الأجر" pendingLabel="جارٍ حفظ التغيير…" /></div>
       </form>
     </details>}
-    {canManage && !canView && employmentId && options?.pending && <form action={cancelCompensationChangeAction} className="assignment-cancel-form">
+    {canManage && !canView && employmentId && options?.pending && <form action={cancelCompensationChangeAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <input type="hidden" name="tenantId" value={tenantId} />
       <input type="hidden" name="employeeId" value={employeeId} />
       <input type="hidden" name="employmentId" value={employmentId} />
       <input type="hidden" name="versionId" value={options.pending.id} />
-      <SubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
+      <OfflineSubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
     </form>}
   </section>;
 }

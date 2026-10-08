@@ -1,0 +1,22 @@
+[
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+    "baselineHash": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d",
+    "candidateHash": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+    "baselineHash": "c58e16bc87df05891076c75167b227b35214ec57c7508adf7d339255505b647e",
+    "candidateHash": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec"
+  },
+  {
+    "file": "src/components/offline-submit-button.tsx",
+    "baselineHash": null,
+    "candidateHash": "490edc52eafd7a11b63256c6ddbc56668f3d4e79f5bcd230e314618d40352e79"
+  },
+  {
+    "file": "scripts/build-ux-inventory.cjs",
+    "baselineHash": "71dd6d6614d124608c1c87150e095ccb0aabb8daae15fb12e938539a03cd05cc",
+    "candidateHash": "85bd5dedbf94de50607d646859a844d84db0a79f4e789832a6026c7e40264e61"
+  }
+]

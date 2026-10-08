@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useActionState } from 'react';
-import { SubmitButton } from '@/components/submit-button';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
+import { useOfflineSubmission } from '@/components/offline-submission';
 import { cancelWorkAssignmentAction, correctInitialWorkAssignmentAction, scheduleWorkAssignmentAction, type AssignmentFormState } from '../work-assignment-actions';
 
 type Named = { id: string; name: string };
@@ -26,6 +27,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
   employmentActive: boolean; history: AssignmentHistory | null; historyError: boolean;
   options: TransferOptions | null; optionsError: boolean; canManage: boolean; initialDate: string;
 }) {
+  const { blockOfflineSubmission } = useOfflineSubmission();
   const currentAssignment = history?.items.find((assignment) => assignment.status === 'current') ?? null;
   const currentSiteId = options?.sites.some((site) => site.id === currentAssignment?.site_id)
     ? currentAssignment?.site_id ?? '' : options?.sites[0]?.id ?? '';
@@ -77,12 +79,12 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             <div><dt>يبدأ في</dt><dd><bdi>{assignment.valid_from}</bdi></dd></div>
             {assignment.valid_until && <div><dt>ينتهي السياق قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
           </dl>
-          {canManage && assignment.status === 'scheduled' && employmentId && <form action={cancelWorkAssignmentAction} className="assignment-cancel-form">
+          {canManage && assignment.status === 'scheduled' && employmentId && <form action={cancelWorkAssignmentAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employeeId" value={employeeId} />
             <input type="hidden" name="employmentId" value={employmentId} />
             <input type="hidden" name="assignmentId" value={assignment.id} />
-            <SubmitButton label="إلغاء النقل المقرر" pendingLabel="جارٍ الإلغاء…" />
+            <OfflineSubmitButton label="إلغاء النقل المقرر" pendingLabel="جارٍ الإلغاء…" />
           </form>}
         </li>)}
       </ol> : <p className="empty-state">لا توجد تعيينات عمل مسجلة.</p>}
@@ -99,7 +101,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
       <summary>تغيير الفرع أو القسم أو الوظيفة</summary>
       {optionsError || !options ? <p className="form-message error-message" role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</p>
         : options.sites.length === 0 ? <p className="empty-state">لا يوجد فرع نشط تابع لجهة توظيف الموظف.</p>
-          : <form key={formState.attempt} action={formAction} className="assignment-transfer-form">
+          : <form key={formState.attempt} action={formAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">ابدأ من بيانات التكليف الحالي؛ غيّر الحقول التي تحتاج إلى تحديث فقط.</p>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
@@ -134,14 +136,14 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             {currentChoiceMissing && <p className="field-hint">بعض بيانات التكليف الحالي لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
             {formState.error && <p className="form-message error-message" role="alert">{formState.error}</p>}
             <p className="field-hint">يبدأ السياق الجديد في التاريخ المحدد، وينتهي السياق الحالي عند بداية ذلك اليوم.</p>
-            <div className="workspace-form-actions"><SubmitButton label="حفظ تغيير العمل" pendingLabel="جارٍ حفظ التغيير…" /></div>
+            <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير العمل" pendingLabel="جارٍ حفظ التغيير…" /></div>
           </form>}
     </details>}
     {mayCorrectInitial && <details className="assignment-transfer-details">
       <summary>تصحيح بيانات العمل اليوم</summary>
       {optionsError || !options ? <p className="form-message error-message" role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</p>
         : options.sites.length === 0 ? <p className="empty-state">لا يوجد فرع نشط تابع لجهة توظيف الموظف.</p>
-          : <form key={correctionState.attempt} action={correctionAction} className="assignment-transfer-form">
+          : <form key={correctionState.attempt} action={correctionAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">يُتاح هذا التصحيح في يوم بداية العمل فقط، ويحفظ سجلًا قبل التعديل وبعده.</p>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
@@ -167,7 +169,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
                 <option key={manager.id} value={manager.id}>{manager.name}</option>)}
             </select>
             {correctionState.error && <p className="form-message error-message" role="alert">{correctionState.error}</p>}
-            <div className="workspace-form-actions"><SubmitButton label="حفظ تصحيح بيانات العمل" pendingLabel="جارٍ حفظ التصحيح…" /></div>
+            <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تصحيح بيانات العمل" pendingLabel="جارٍ حفظ التصحيح…" /></div>
           </form>}
     </details>}
   </section>;
