@@ -1,6 +1,7 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { SubmitButton } from '@/components/submit-button';
 import { retryEmployeeAccountActivationAction, setEmployeeAccountPasswordAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -31,29 +32,29 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
       {intent.state === 'activated' && intent.password_ready === true ? <><p className="form-message" role="status">الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.</p><Link className="primary-button link-button" href="/tenant/select">المتابعة إلى مساحة العمل</Link></>
         : intent.state === 'activated' ? <>
           <p className="form-message capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</p>
-          <form className="auth-form" action={setEmployeeAccountPasswordAction}>
+          <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
             <label htmlFor="employee-password">كلمة مرور جديدة</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
-            <SubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
-          </form>
+            <OfflineSubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
+          </OfflineForm>
         </> : <>
           {hintMessage && <p className="form-message capacity-message" role="status">{hintMessage}</p>}
           {intent.password_ready === true ? <>
             <p className="form-message" role="status">يمكنك متابعة التفعيل دون إعادة إدخال كلمة المرور. سيتحقق النظام من إمكانية إكمال عضوية الشركة. تواصل مع الموارد البشرية إذا استمرت المشكلة.</p>
-            <form className="auth-form" action={retryEmployeeAccountActivationAction}>
+            <OfflineForm className="auth-form" action={retryEmployeeAccountActivationAction}>
               <input type="hidden" name="intentId" value={intentId} />
-              <SubmitButton label="إكمال التفعيل" pendingLabel="جارٍ التحقق…" />
-            </form>
+              <OfflineSubmitButton label="إكمال التفعيل" pendingLabel="جارٍ التحقق…" />
+            </OfflineForm>
           </> : (
-          <form className="auth-form" action={setEmployeeAccountPasswordAction}>
+          <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
             <label htmlFor="employee-password">أنشئ كلمة المرور</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
-            <SubmitButton label="حفظ وتفعيل الحساب" pendingLabel="جارٍ التفعيل…" />
-          </form>
+            <OfflineSubmitButton label="حفظ وتفعيل الحساب" pendingLabel="جارٍ التفعيل…" />
+          </OfflineForm>
           )}
         </>}
     </section></main>;

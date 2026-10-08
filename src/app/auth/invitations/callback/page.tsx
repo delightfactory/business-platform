@@ -1,7 +1,8 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { signOutAction } from '@/app/auth/actions';
 import { verifyInvitationLinkAction } from './actions';
-import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,13 +32,13 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
         {valid ? (
           <>
             <p className="intro">اضغط للمتابعة والتحقق من الرابط. لن تُنشأ الشركة قبل تأكيدك في الخطوة التالية.</p>
-            <form className="auth-form" action={verifyInvitationLinkAction}>
+            <OfflineForm className="auth-form" action={verifyInvitationLinkAction}>
               <input type="hidden" name="tokenHash" value={params.token_hash} />
               <input type="hidden" name="type" value={params.type} />
               <input type="hidden" name="invitationId" value={params.invitation_id} />
               <input type="hidden" name="issuance" value={params.issuance} />
-              <SubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
-            </form>
+              <OfflineSubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
+            </OfflineForm>
           </>
         ) : (
           <p className="intro" role="alert">{stateMessage(params.state)}</p>

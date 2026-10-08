@@ -1,0 +1,412 @@
+{
+  "schema": "business-platform.offline-c10-review.v1",
+  "baseline": "ea615008cb7b8721717dc3ba64d77388df48480f",
+  "status": "SOURCE-QUALIFIED; BOUNDED SHARED NATIVE MECHANICS; FULL VISUAL/ACTOR OPEN",
+  "cases": 23,
+  "forms": 13,
+  "unchangedSourceCount": 671,
+  "exactAppliedCandidateHashesVerified": true,
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# PWA-C10 Auth submission boundaries: independent review\n\n**Verdict: SOURCE ACCEPT.** I found no MUST FIX.\n\nThis is based only on the source you pasted. Per your \"No tools/edits\" instruction I did not read the repo, write a plan file or call ExitPlanMode. The acceptance depends on Codex's mechanical inversion proving each of the 9 pages byte-identical to baseline `ea61500` except for the tag and import swaps.\n\n## Server Action serialization\n- **Imported actions:** `action={xAction}` passed from a Server Component page into the `'use client'` `OfflineForm` is a valid prop. Flight passes a server reference whose SSR form-action encoding is preserved, so the pre-hydration native POST keeps the original contract.\n- **Inline `'use server'` closures:** passing one as a prop to a client component is equally valid, and bound or captured arguments keep their encrypted encoding. \"Inline use-server preserved\" holds if the action expressions are untouched, which the inversion proves.\n- **Children:** the hidden inputs, labels, `<p>` hints and the child button are Server Component JSX passed as children. They serialize as RSC elements and `{...props}` forwards them unchanged.\n- **Hidden values:** `token_hash`, `intent_id`, `invitation_id` and `issuance` were already in both the HTML and the RSC payload of the original server-rendered `<form>`. Moving them under a client parent adds no new exposure. `value={undefined}` serializes as `$undefined` and renders the same way.\n- **Permissions and data:** no server data, permission check, gate or setup moves to the client. The pages stay Server Components and the wrapper receives only what the original form already emitted.\n\n## Form event ordering\n- **Order of handlers:** React 19 runs the `onSubmit` dispatch before its form-action submit listener. That listener returns early when `nativeEvent.defaultPrevented` is set.\n- **No pending state when blocked:** `refreshSignal` is a `useReducer` dispatch, not a transition. `didCurrentEventScheduleTransition()` is therefore false, so a blocked submit produces no host transition and no false pending state.\n- **Browser validation:** `required` and `minLength` checks run before the `submit` event fires. They behave as before.\n- **Disabled button while offline:** the disabled default button also stops implicit Enter submission. The `onSubmit` guard still covers the race where the device goes offline after the last render.\n- **Fields kept:** nothing is reset when a submit is blocked, so field values, including passwords, stay only in the current document's inputs. The wrapper never reads FormData or values, and stores, logs or queues nothing.\n\n## Pending status and props\n- `OfflineSubmitButton` renders inside the `<form>` that `OfflineForm` outputs. Its `useFormStatus` and the inner `SubmitButton`'s `useFormStatus` therefore read their own form's pending state, the same as the original child.\n- `label` and `pendingLabel` pass through unchanged. `disabled` and `ariaDescribedBy` are not set at any of the 13 sites, so the computed values are only the offline additions.\n- `className`, `action`, the attribute order differences between `className`/`action` sites and the bodies all pass through `{...props}`. The rendered DOM attributes are equivalent.\n\n## Overclaim and scope checks\n- **No JavaScript or not yet hydrated:** the server snapshot is `false`, so the SSR markup has no disabled button and no notice. The native POST path is the original one, so the \"no-JS behavior unchanged\" claim is accurate, not an overclaim.\n- **After dispatch:** a failure or unknown result after the request is sent behaves as before. The plan correctly makes no claim here, and the \"continuation\" notice text avoids implying anything about provider reachability.\n- **Sign-out and GET forms:** not in the 13 sites. They need to stay excluded, and the inversion check should assert they still use a plain `<form>`.\n\n## Non-blocking notes (no action needed)\n- `employee-account-activation/page.tsx` has two forms using the same `employee-password` IDs, but they render in separate branches. This is unchanged from baseline.\n- Each guarded form subscribes to its own online/offline listener, which is negligible.\n- **Unverified:** visual rendering is NOT VISUALLY VERIFIED, and real provider, session and role behavior plus R0–R8 remain OPEN. No phase closure follows from this review.",
+    "sessionId": "8c028e56-0bae-4873-9fe3-edb690adb300"
+  },
+  "codex": {
+    "source": "ACCEPT exact nine sources mechanically invert to baseline; all action/password/identity/expiry/next/fields/conditions unchanged; sign-out untouched",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Pinned Concept C has no Auth screens; preserve existing accepted Auth geometry/fonts/style. Reuse current reference/compatibility contract, no visual match inferred.",
+    "simplicity": "Known offline avoids uncertain send and explains how to continue; current input/next/reference context preserved, online path unchanged; no numerical simplification claimed.",
+    "native": "Two synthetic shared owning forms qualify server-reference encoding, editable fields,0POSTEnter/reconnect, explicit cancellation ownpending1POST; not fullAuth/management operations",
+    "testGuard": "23focused checks,9completeinverse identities/13owning pairs/unchanged shared contracts; reused C9/C8 guard evidence, no repeated tests",
+    "limits": [
+      "Mechanically inverted exact nine Auth baseline pages: authority/actions/fields/conditional rendering unchanged; not actual role UAT",
+      "Shared OfflineForm/child/guard unchanged; reuse C9/C8 source/controlled evidence without repeating checks. Native hydration/no-JS remains separate",
+      "Auth provider/session/token/role not exercised; actual native own-form pending/unique ids/full visual/real AuthSQL/financial R0-R8 gates OPEN"
+    ]
+  },
+  "register": {
+    "denominator": 1733,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "RPC:src/app/auth/employee-account-activation/page.tsx:17:1080",
+        "after": "RPC:src/app/auth/employee-account-activation/page.tsx:18:1136",
+        "status": "pending"
+      },
+      {
+        "before": "RPC:src/app/auth/invitations/accept/page.tsx:23:1370",
+        "after": "RPC:src/app/auth/invitations/accept/page.tsx:24:1420",
+        "status": "pending"
+      },
+      {
+        "before": "RPC:src/app/auth/membership-invitations/accept/page.tsx:18:1257",
+        "after": "RPC:src/app/auth/membership-invitations/accept/page.tsx:19:1312",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:19:1408",
+        "after": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1462",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1494",
+        "after": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1554",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1559",
+        "after": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1619",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1623",
+        "after": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1682",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1696",
+        "after": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:23:1754",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2897",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2943",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2980",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3033",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3108",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3160",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3315",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:38:3366",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3558",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:40:3607",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:45:4027",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4089",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4116",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4185",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4187",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4256",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4291",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4374",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4386",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4475",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4515",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4603",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4722",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:54:4809",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/employee-account-activation/page.tsx:55:4965",
+        "after": "CONTROL:src/app/auth/employee-account-activation/page.tsx:56:5050",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1010",
+        "after": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1075",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1123",
+        "after": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1195",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1225",
+        "after": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1297",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2056",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2094",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2085",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2123",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2878",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2908",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2969",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3004",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3047",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:48:3081",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:49:3186",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:50:3218",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:51:3408",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:52:3438",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3509",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3551",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3595",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3642",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3673",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:57:3719",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:58:3811",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:59:3855",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5802",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5829",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5831",
+        "after": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5858",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:913",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:960",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:942",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:989",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:34:1384",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1423",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1464",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1509",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1546",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1590",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1617",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1660",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1705",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1747",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1784",
+        "after": "CONTROL:src/app/auth/invitations/callback/page.tsx:40:1825",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/login/page.tsx:35:1664",
+        "after": "CONTROL:src/app/auth/login/page.tsx:36:1707",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/login/page.tsx:36:1726",
+        "after": "CONTROL:src/app/auth/login/page.tsx:37:1775",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/login/page.tsx:38:1846",
+        "after": "CONTROL:src/app/auth/login/page.tsx:39:1893",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/login/page.tsx:40:2020",
+        "after": "CONTROL:src/app/auth/login/page.tsx:41:2065",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/login/page.tsx:41:2152",
+        "after": "CONTROL:src/app/auth/login/page.tsx:42:2196",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1845",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1896",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1874",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1925",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2646",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2730",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2781",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2784",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2835",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2914",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:33:2964",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3143",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3191",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3229",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3290",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3308",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3375",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3362",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3429",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3430",
+        "after": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:38:3496",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:21:1136",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1188",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1216",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1274",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1295",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1352",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1363",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1419",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1448",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1503",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1524",
+        "after": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:27:1578",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/auth/password/update/page.tsx:16:1641",
+        "after": "CONTROL:src/app/auth/password/update/page.tsx:17:1705",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/password/update/page.tsx:16:1752",
+        "after": "CONTROL:src/app/auth/password/update/page.tsx:17:1823",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/password/update/page.tsx:16:1923",
+        "after": "CONTROL:src/app/auth/password/update/page.tsx:17:1994",
+        "status": "source-reviewed"
+      },
+      {
+        "before": "CONTROL:src/app/auth/password/update/page.tsx:16:2047",
+        "after": "CONTROL:src/app/auth/password/update/page.tsx:17:2118",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS single grouped72445 exit0 including TypeScript",
+    "lint": "PASS full77701 exit0/four prior warnings; targeted evidence lint PASS02378e exit0",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "sourceFormSites": 153,
+    "nativeHandlerSites": 61,
+    "guardedCompositeSites": 38,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Reconcile remaining GET/sign-out/client transport boundaries then consolidated native/reference/real-actor journeys and original capability gaps. No extra architectures/D16."
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "business-platform.server-offline-native.v1",
+  "baseline": "ea615008cb7b8721717dc3ba64d77388df48480f",
+  "components": [
+    {
+      "file": "src/components/offline-form.tsx",
+      "sha256": "526ab256a91e001304b894f68b6e889055d40b7ea1539f9273b539f6ed2887b4"
+    },
+    {
+      "file": "src/components/offline-submit-button.tsx",
+      "sha256": "490edc52eafd7a11b63256c6ddbc56668f3d4e79f5bcd230e314618d40352e79"
+    },
+    {
+      "file": "src/components/offline-submission.tsx",
+      "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+    },
+    {
+      "file": "src/components/submit-button.tsx",
+      "sha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383"
+    },
+    {
+      "file": "src/app/workspace.css",
+      "sha256": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1"
+    }
+  ],
+  "fixture": "isolated synthetic loopback127.0.0.1:3621; no env/provider/Auth/business mutations",
+  "browser": "Codex IAB Chromium",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "observations": {
+    "offlineEnterPosts": 0,
+    "reconnectPosts": 0,
+    "explicitSyntheticCancelPosts": 1,
+    "requestEventsComplete": true,
+    "editableReasonRetained": true,
+    "inputDisabled": false,
+    "uniqueVisibleNoticeIds": true,
+    "serverActionSsrFieldPresent": true,
+    "ownCancelPending": true,
+    "otherSaveIdle": true,
+    "pendingNoticeAbsent": true,
+    "finalIdle": true,
+    "documentWidth": 390
+  },
+  "limits": [
+    "Two synthetic owning forms prove unchanged shared component browser mechanics, not13Auth actor/provider states or25management business operations",
+    "Hidden key values redacted by browser tooling; exact native key-value retention NOT VERIFIED; source/controlled equality only",
+    "Screenshot composition showed clipped content despite DOM width390; exclude from visual acceptance; both fullvisual NOT VISUALLY VERIFIED",
+    "No JS disabled/prehydration, full reference/mobile/tablet/device/private install/actualAuthSQL/roles/financial R0-R8 OPEN"
+  ],
+  "cleanup": {
+    "ownedTab127Closed": true,
+    "viewportReset": true,
+    "networkOnlineRestoredBeforeClose": true,
+    "ownedSession68073Stopped": true,
+    "listenVerification": "PASS zero listeners3621 after owned shutdown"
+  }
+}

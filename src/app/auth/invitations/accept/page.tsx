@@ -1,9 +1,10 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { acceptInvitationAction, setInvitationPasswordAction } from './actions';
-import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,21 +43,21 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
         {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة إنشاء مساحة الشركة.'}</p>}
         {params.state && !passwordHint && <p className="form-message" role="alert">{stateMessage(params.state)}</p>}
         {needsPassword ? (
-          <form className="auth-form" action={setInvitationPasswordAction}>
+          <OfflineForm className="auth-form" action={setInvitationPasswordAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
             <input type="hidden" name="issuance" value={issuance} />
             <label htmlFor="password">أنشئ كلمة مرور لحسابك</label>
             <input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
             <p className="field-hint">ثمانية أحرف على الأقل. لا تتغير كلمات مرور أي حسابات أخرى.</p>
-            <SubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
-          </form>
+            <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
+          </OfflineForm>
         ) : (
-          <form className="auth-form" action={acceptInvitationAction}>
+          <OfflineForm className="auth-form" action={acceptInvitationAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
             <input type="hidden" name="issuance" value={issuance} />
             <p>سيبقى تسجيل الدخول الحالي وكلمة المرور كما هما.</p>
-            <SubmitButton label="تأكيد الدعوة وإنشاء الشركة" pendingLabel="جارٍ إنشاء الشركة…" />
-          </form>
+            <OfflineSubmitButton label="تأكيد الدعوة وإنشاء الشركة" pendingLabel="جارٍ إنشاء الشركة…" />
+          </OfflineForm>
         )}
       </section>
       <footer className="footer">منصة الأعمال · دعوة مسؤول الشركة</footer>

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "4c8882f88e6af8cad6b1358d63282dbfe4ffe033",
+  "sourceSnapshot": "ea615008cb7b8721717dc3ba64d77388df48480f",
   "status": "Proposed",
   "items": [
     {
@@ -1952,7 +1952,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/auth/employee-account-activation/page.tsx:17:1080",
+      "id": "RPC:src/app/auth/employee-account-activation/page.tsx:18:1136",
       "category": "rpcCalls",
       "phase": "R2",
       "status": "pending",
@@ -1988,7 +1988,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/auth/invitations/accept/page.tsx:23:1370",
+      "id": "RPC:src/app/auth/invitations/accept/page.tsx:24:1420",
       "category": "rpcCalls",
       "phase": "R2",
       "status": "pending",
@@ -2024,7 +2024,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/auth/membership-invitations/accept/page.tsx:18:1257",
+      "id": "RPC:src/app/auth/membership-invitations/accept/page.tsx:19:1312",
       "category": "rpcCalls",
       "phase": "R2",
       "status": "pending",
@@ -4958,7 +4958,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:19:1408",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1462",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -4967,7 +4967,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1494",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1554",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -4976,7 +4976,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1559",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1619",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -4985,7 +4985,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1623",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1682",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -4994,7 +4994,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1696",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:23:1754",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5003,7 +5003,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2897",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2943",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5012,7 +5012,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2980",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3033",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5021,7 +5021,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3108",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3160",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5030,7 +5030,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3315",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:38:3366",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5039,7 +5039,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3558",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:40:3607",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5048,7 +5048,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:45:4027",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4089",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5057,7 +5057,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4116",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4185",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5066,7 +5066,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4187",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4256",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5075,7 +5075,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4291",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4374",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5084,7 +5084,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4386",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4475",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5093,7 +5093,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4515",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4603",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5102,7 +5102,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4722",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:54:4809",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5111,7 +5111,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:55:4965",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:56:5050",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5120,7 +5120,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1010",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1075",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5140,7 +5140,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1123",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1195",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5160,7 +5160,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1225",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1297",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5169,7 +5169,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2056",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2094",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5178,7 +5178,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2085",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2123",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5187,7 +5187,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2878",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2908",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5196,7 +5196,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2969",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3004",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5205,7 +5205,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3047",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:48:3081",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5214,7 +5214,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:49:3186",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:50:3218",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5223,7 +5223,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:51:3408",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:52:3438",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5232,7 +5232,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3509",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3551",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5241,7 +5241,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3595",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3642",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5250,7 +5250,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3673",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:57:3719",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5259,7 +5259,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:58:3811",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:59:3855",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5268,7 +5268,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5802",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5829",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5277,7 +5277,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5831",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5858",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5286,7 +5286,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:913",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:960",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5295,7 +5295,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:942",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:989",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5304,7 +5304,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:34:1384",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1423",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5313,7 +5313,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1464",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1509",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5322,7 +5322,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1546",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1590",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5331,7 +5331,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1617",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1660",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5340,7 +5340,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1705",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1747",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5349,7 +5349,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1784",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:40:1825",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5358,7 +5358,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:35:1664",
+      "id": "CONTROL:src/app/auth/login/page.tsx:36:1707",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5402,7 +5402,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:36:1726",
+      "id": "CONTROL:src/app/auth/login/page.tsx:37:1775",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5446,7 +5446,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:38:1846",
+      "id": "CONTROL:src/app/auth/login/page.tsx:39:1893",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5490,7 +5490,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:40:2020",
+      "id": "CONTROL:src/app/auth/login/page.tsx:41:2065",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5534,7 +5534,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:41:2152",
+      "id": "CONTROL:src/app/auth/login/page.tsx:42:2196",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5543,7 +5543,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1845",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1896",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5552,7 +5552,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1874",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1925",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5561,7 +5561,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2646",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2691",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5570,7 +5570,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2730",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2781",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5579,7 +5579,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2784",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2835",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5588,7 +5588,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2914",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:33:2964",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5597,7 +5597,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3143",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3191",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5606,7 +5606,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3229",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3290",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5615,7 +5615,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3308",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3375",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5624,7 +5624,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3362",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3429",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5633,7 +5633,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3430",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:38:3496",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5642,7 +5642,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:21:1136",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1188",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5651,7 +5651,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1216",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1274",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5660,7 +5660,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1295",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1352",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5669,7 +5669,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1363",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1419",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5678,7 +5678,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1448",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1503",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5687,7 +5687,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1524",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:27:1578",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -5696,7 +5696,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1641",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1705",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5717,7 +5717,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1752",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1823",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5738,7 +5738,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1923",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1994",
       "category": "formControls",
       "phase": "R2",
       "status": "source-reviewed",
@@ -5759,7 +5759,7 @@
       "previousReviewEvidence": "auth-core-spec.md; auth-core-scenarios.json; source characterization"
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:2047",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:2118",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",

@@ -1,9 +1,10 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { acceptMemberInvitationAction, setMemberInvitationPasswordAction } from './actions';
-import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 type Search = Promise<{ id?: string; issuance?: string; state?: string }>;
@@ -27,15 +28,15 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. سيُمنح حسابك دور «عضو» بعد تأكيد القبول.</p>
         {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة قبول الدعوة.'}</p>}
         {query.state && !passwordHint && <p className="form-message" role="alert">{validationMessage(validation, query.state)}</p>}
-        {needsPassword ? <form className="auth-form" action={setMemberInvitationPasswordAction}>
+        {needsPassword ? <OfflineForm className="auth-form" action={setMemberInvitationPasswordAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
           <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
           <p className="field-hint">ثمانية أحرف على الأقل. ستُستخدم كلمة المرور نفسها لكل مساحاتك.</p>
-          <SubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
-        </form> : <form className="auth-form" action={acceptMemberInvitationAction}>
+          <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
+        </OfflineForm> : <OfflineForm className="auth-form" action={acceptMemberInvitationAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
-          <SubmitButton label="قبول الدعوة" pendingLabel="جارٍ القبول…" />
-        </form>}
+          <OfflineSubmitButton label="قبول الدعوة" pendingLabel="جارٍ القبول…" />
+        </OfflineForm>}
       </section>
     </main>
   );

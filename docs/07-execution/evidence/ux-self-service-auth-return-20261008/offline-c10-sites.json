@@ -1,0 +1,80 @@
+[
+  {
+    "file": "src/app/auth/login/page.tsx",
+    "line": 35,
+    "action": "{signInAction}",
+    "baselineForm": "<form action={signInAction} className=\"auth-form\">\n          <input type=\"hidden\" name=\"next\" value={next} />\n          <label htmlFor=\"email\">البريد الإلكتروني</label>\n          <input id=\"email\" name=\"email\" type=\"email\" autoComplete=\"username\" required maxLength={254} dir=\"ltr\" />\n          <label htmlFor=\"password\">كلمة المرور</label>\n          <input id=\"password\" name=\"password\" type=\"password\" autoComplete=\"current-password\" required minLength={8} dir=\"ltr\" />\n          <SubmitButton label=\"دخول\" pendingLabel=\"جارٍ الدخول…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/auth/forgot-password/page.tsx",
+    "line": 8,
+    "action": "{requestPasswordResetAction}",
+    "baselineForm": "<form action={requestPasswordResetAction} className=\"auth-form\"><label htmlFor=\"email\">البريد الإلكتروني</label><input id=\"email\" name=\"email\" type=\"email\" autoComplete=\"email\" required maxLength={254} dir=\"ltr\" /><SubmitButton label=\"إرسال رابط الاستعادة\" pendingLabel=\"جارٍ الإرسال…\" /></form>"
+  },
+  {
+    "file": "src/app/auth/password/update/page.tsx",
+    "line": 16,
+    "action": "{updatePasswordAction}",
+    "baselineForm": "<form action={updatePasswordAction} className=\"auth-form\"><label htmlFor=\"password\">كلمة المرور الجديدة</label><input id=\"password\" name=\"password\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" /><label htmlFor=\"confirmation\">تأكيد كلمة المرور</label><input id=\"confirmation\" name=\"confirmation\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" /><SubmitButton label=\"حفظ كلمة المرور\" pendingLabel=\"جارٍ الحفظ…\" /></form>"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/page.tsx",
+    "line": 34,
+    "action": "{setEmployeeAccountPasswordAction}",
+    "baselineForm": "<form className=\"auth-form\" action={setEmployeeAccountPasswordAction}>\n            <input type=\"hidden\" name=\"intentId\" value={intentId} />\n            <label htmlFor=\"employee-password\">كلمة مرور جديدة</label><input id=\"employee-password\" name=\"password\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" />\n            <label htmlFor=\"employee-password-confirm\">تأكيد كلمة المرور</label><input id=\"employee-password-confirm\" name=\"confirmation\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" />\n            <p className=\"field-hint\">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>\n            <SubmitButton label=\"تحديث كلمة المرور\" pendingLabel=\"جارٍ التحديث…\" />\n          </form>"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/page.tsx",
+    "line": 45,
+    "action": "{retryEmployeeAccountActivationAction}",
+    "baselineForm": "<form className=\"auth-form\" action={retryEmployeeAccountActivationAction}>\n              <input type=\"hidden\" name=\"intentId\" value={intentId} />\n              <SubmitButton label=\"إكمال التفعيل\" pendingLabel=\"جارٍ التحقق…\" />\n            </form>"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/page.tsx",
+    "line": 50,
+    "action": "{setEmployeeAccountPasswordAction}",
+    "baselineForm": "<form className=\"auth-form\" action={setEmployeeAccountPasswordAction}>\n            <input type=\"hidden\" name=\"intentId\" value={intentId} />\n            <label htmlFor=\"employee-password\">أنشئ كلمة المرور</label><input id=\"employee-password\" name=\"password\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" />\n            <label htmlFor=\"employee-password-confirm\">تأكيد كلمة المرور</label><input id=\"employee-password-confirm\" name=\"confirmation\" type=\"password\" autoComplete=\"new-password\" minLength={8} required dir=\"ltr\" />\n            <p className=\"field-hint\">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>\n            <SubmitButton label=\"حفظ وتفعيل الحساب\" pendingLabel=\"جارٍ التفعيل…\" />\n          </form>"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/callback/page.tsx",
+    "line": 19,
+    "action": "{verifyEmployeeAccountActivationAction}",
+    "baselineForm": "<form className=\"auth-form\" action={verifyEmployeeAccountActivationAction}>\n        <input type=\"hidden\" name=\"tokenHash\" value={query.token_hash} /><input type=\"hidden\" name=\"type\" value={query.type} />\n        <input type=\"hidden\" name=\"intentId\" value={query.intent_id} />\n        <SubmitButton label=\"تأكيد البريد\" pendingLabel=\"جارٍ التحقق…\" />\n      </form>"
+  },
+  {
+    "file": "src/app/auth/invitations/accept/page.tsx",
+    "line": 45,
+    "action": "{setInvitationPasswordAction}",
+    "baselineForm": "<form className=\"auth-form\" action={setInvitationPasswordAction}>\n            <input type=\"hidden\" name=\"invitationId\" value={invitationId} />\n            <input type=\"hidden\" name=\"issuance\" value={issuance} />\n            <label htmlFor=\"password\">أنشئ كلمة مرور لحسابك</label>\n            <input id=\"password\" name=\"password\" type=\"password\" autoComplete=\"new-password\" minLength={8} required />\n            <p className=\"field-hint\">ثمانية أحرف على الأقل. لا تتغير كلمات مرور أي حسابات أخرى.</p>\n            <SubmitButton label=\"حفظ كلمة المرور\" pendingLabel=\"جارٍ الحفظ…\" />\n          </form>"
+  },
+  {
+    "file": "src/app/auth/invitations/accept/page.tsx",
+    "line": 54,
+    "action": "{acceptInvitationAction}",
+    "baselineForm": "<form className=\"auth-form\" action={acceptInvitationAction}>\n            <input type=\"hidden\" name=\"invitationId\" value={invitationId} />\n            <input type=\"hidden\" name=\"issuance\" value={issuance} />\n            <p>سيبقى تسجيل الدخول الحالي وكلمة المرور كما هما.</p>\n            <SubmitButton label=\"تأكيد الدعوة وإنشاء الشركة\" pendingLabel=\"جارٍ إنشاء الشركة…\" />\n          </form>"
+  },
+  {
+    "file": "src/app/auth/invitations/callback/page.tsx",
+    "line": 34,
+    "action": "{verifyInvitationLinkAction}",
+    "baselineForm": "<form className=\"auth-form\" action={verifyInvitationLinkAction}>\n              <input type=\"hidden\" name=\"tokenHash\" value={params.token_hash} />\n              <input type=\"hidden\" name=\"type\" value={params.type} />\n              <input type=\"hidden\" name=\"invitationId\" value={params.invitation_id} />\n              <input type=\"hidden\" name=\"issuance\" value={params.issuance} />\n              <SubmitButton label=\"التحقق والمتابعة\" pendingLabel=\"جارٍ التحقق…\" />\n            </form>"
+  },
+  {
+    "file": "src/app/auth/membership-invitations/accept/page.tsx",
+    "line": 30,
+    "action": "{setMemberInvitationPasswordAction}",
+    "baselineForm": "<form className=\"auth-form\" action={setMemberInvitationPasswordAction}>\n          <input type=\"hidden\" name=\"invitationId\" value={id} /><input type=\"hidden\" name=\"issuance\" value={issuance} />\n          <label htmlFor=\"member-password\">أنشئ كلمة مرور لحسابك</label><input id=\"member-password\" name=\"password\" type=\"password\" autoComplete=\"new-password\" minLength={8} required />\n          <p className=\"field-hint\">ثمانية أحرف على الأقل. ستُستخدم كلمة المرور نفسها لكل مساحاتك.</p>\n          <SubmitButton label=\"حفظ كلمة المرور\" pendingLabel=\"جارٍ الحفظ…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/auth/membership-invitations/accept/page.tsx",
+    "line": 35,
+    "action": "{acceptMemberInvitationAction}",
+    "baselineForm": "<form className=\"auth-form\" action={acceptMemberInvitationAction}>\n          <input type=\"hidden\" name=\"invitationId\" value={id} /><input type=\"hidden\" name=\"issuance\" value={issuance} />\n          <SubmitButton label=\"قبول الدعوة\" pendingLabel=\"جارٍ القبول…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/auth/membership-invitations/callback/page.tsx",
+    "line": 21,
+    "action": "{verifyMemberInvitationAction}",
+    "baselineForm": "<form className=\"auth-form\" action={verifyMemberInvitationAction}>\n            <input type=\"hidden\" name=\"tokenHash\" value={query.token_hash} />\n            <input type=\"hidden\" name=\"type\" value={query.type} />\n            <input type=\"hidden\" name=\"invitationId\" value={query.invitation_id} />\n            <input type=\"hidden\" name=\"issuance\" value={query.issuance} />\n            <SubmitButton label=\"التحقق والمتابعة\" pendingLabel=\"جارٍ التحقق…\" />\n          </form>"
+  }
+]

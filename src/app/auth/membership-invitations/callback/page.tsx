@@ -1,6 +1,7 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { verifyMemberInvitationAction } from './actions';
-import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 type Search = Promise<{ token_hash?: string; type?: string; invitation_id?: string; issuance?: string; state?: string }>;
@@ -18,13 +19,13 @@ export default async function MemberInvitationCallbackPage({ searchParams }: { s
         <h1 id="callback-title">تابع الانضمام للشركة</h1>
         {valid ? <>
           <p className="intro">اضغط للمتابعة والتحقق من الرابط. لن تُحتسب عضوية أو مقعد قبل قبولك.</p>
-          <form className="auth-form" action={verifyMemberInvitationAction}>
+          <OfflineForm className="auth-form" action={verifyMemberInvitationAction}>
             <input type="hidden" name="tokenHash" value={query.token_hash} />
             <input type="hidden" name="type" value={query.type} />
             <input type="hidden" name="invitationId" value={query.invitation_id} />
             <input type="hidden" name="issuance" value={query.issuance} />
-            <SubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
-          </form>
+            <OfflineSubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
+          </OfflineForm>
         </> : <p className="intro" role="alert">{query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب إعادة إرسال الدعوة.' : 'رابط الدعوة غير مكتمل. افتح أحدث رسالة وصلتك.'}</p>}
       </section>
     </main>

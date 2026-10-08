@@ -1,0 +1,47 @@
+[
+  {
+    "file": "src/app/auth/login/page.tsx",
+    "baselineHash": "a4c0ee222fa17bcedfaae57225ba0137614879b3da09abf27b5a83aba38ae404",
+    "candidateHash": "e290c5dbd9806fb31077a2934a64c94feaa42922315776b657cbffe995a850bb"
+  },
+  {
+    "file": "src/app/auth/forgot-password/page.tsx",
+    "baselineHash": "f626b6a83b9e7ecd16b97deb41fe0e51a30ec42f9d24629ec8ba0bc7f4a28e59",
+    "candidateHash": "7dd4a370a7c3da236c782893aa0d510e246484e341d189d594610bf5abbbfcca"
+  },
+  {
+    "file": "src/app/auth/password/update/page.tsx",
+    "baselineHash": "c528108468aaff51574298d0107e7eb870672f594929c280aa4335a6725316a6",
+    "candidateHash": "8924269e5447882a5cc5d616048b4804536a63bec815a2c80561b878b3b51801"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/page.tsx",
+    "baselineHash": "2e9c024fe74cf34316e8ee2265b6cf568dedbbd45b931356cfb0ff59e0f00627",
+    "candidateHash": "6f0b9b96d67133b707bbfd6c2e21c22ad179d87762042d520b6d965779da3fd2"
+  },
+  {
+    "file": "src/app/auth/employee-account-activation/callback/page.tsx",
+    "baselineHash": "2b012fe482f336480a6f5ea95a7beebebebc9c29e150f01df6156d4464a6e949",
+    "candidateHash": "7911468104de9a747e76386c548827ea3e42ccce8fcbabac0fc3104a171ea0d7"
+  },
+  {
+    "file": "src/app/auth/invitations/accept/page.tsx",
+    "baselineHash": "8163ebf8b2e3aaea85bb97f14253f2bf8f5baf69d3ecabae59b07c87854e990b",
+    "candidateHash": "7b0cd66c867753c8f57ecbc7a1dfec7d246207abd3ba245b6993e5600b8d731e"
+  },
+  {
+    "file": "src/app/auth/invitations/callback/page.tsx",
+    "baselineHash": "5a73a5f87b731fb3036b268c2ea33b76d85e4755ee1eaa986424f5c317f25331",
+    "candidateHash": "425e0f918c89d4fa3476133e2f9b6c9f089b0492714c6897f4fe4e2970dfafda"
+  },
+  {
+    "file": "src/app/auth/membership-invitations/accept/page.tsx",
+    "baselineHash": "d024d2daa6d27d7b1fc7a6eb0a8c8b29b020a8feab01925ca293ebdbed6c3c72",
+    "candidateHash": "bcfcdcedbf5ecf49ed6ab96561f98dcf7eb0882f765066a655be8c380f2a1d05"
+  },
+  {
+    "file": "src/app/auth/membership-invitations/callback/page.tsx",
+    "baselineHash": "b8fcd0bb7a40963978e4922672145a8905397292cb284459fa509975891650d3",
+    "candidateHash": "8d6017b458ea9b335a668396a4db1074486416d87c7286a848a7e6d5e2fd6b6f"
+  }
+]

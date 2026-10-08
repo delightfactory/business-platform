@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "4c8882f88e6af8cad6b1358d63282dbfe4ffe033",
+  "sourceHead": "ea615008cb7b8721717dc3ba64d77388df48480f",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -25,17 +25,17 @@
     {
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
       "phase": "R2",
-      "sha256": "2b012fe482f336480a6f5ea95a7beebebebc9c29e150f01df6156d4464a6e949"
+      "sha256": "7911468104de9a747e76386c548827ea3e42ccce8fcbabac0fc3104a171ea0d7"
     },
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
       "phase": "R2",
-      "sha256": "2e9c024fe74cf34316e8ee2265b6cf568dedbbd45b931356cfb0ff59e0f00627"
+      "sha256": "6f0b9b96d67133b707bbfd6c2e21c22ad179d87762042d520b6d965779da3fd2"
     },
     {
       "file": "src/app/auth/forgot-password/page.tsx",
       "phase": "R2",
-      "sha256": "f626b6a83b9e7ecd16b97deb41fe0e51a30ec42f9d24629ec8ba0bc7f4a28e59"
+      "sha256": "7dd4a370a7c3da236c782893aa0d510e246484e341d189d594610bf5abbbfcca"
     },
     {
       "file": "src/app/auth/invitations/accept/actions.ts",
@@ -45,7 +45,7 @@
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "8163ebf8b2e3aaea85bb97f14253f2bf8f5baf69d3ecabae59b07c87854e990b"
+      "sha256": "7b0cd66c867753c8f57ecbc7a1dfec7d246207abd3ba245b6993e5600b8d731e"
     },
     {
       "file": "src/app/auth/invitations/callback/actions.ts",
@@ -55,12 +55,12 @@
     {
       "file": "src/app/auth/invitations/callback/page.tsx",
       "phase": "R2",
-      "sha256": "5a73a5f87b731fb3036b268c2ea33b76d85e4755ee1eaa986424f5c317f25331"
+      "sha256": "425e0f918c89d4fa3476133e2f9b6c9f089b0492714c6897f4fe4e2970dfafda"
     },
     {
       "file": "src/app/auth/login/page.tsx",
       "phase": "R2",
-      "sha256": "a4c0ee222fa17bcedfaae57225ba0137614879b3da09abf27b5a83aba38ae404"
+      "sha256": "e290c5dbd9806fb31077a2934a64c94feaa42922315776b657cbffe995a850bb"
     },
     {
       "file": "src/app/auth/membership-invitations/accept/actions.ts",
@@ -70,7 +70,7 @@
     {
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
       "phase": "R2",
-      "sha256": "d024d2daa6d27d7b1fc7a6eb0a8c8b29b020a8feab01925ca293ebdbed6c3c72"
+      "sha256": "bcfcdcedbf5ecf49ed6ab96561f98dcf7eb0882f765066a655be8c380f2a1d05"
     },
     {
       "file": "src/app/auth/membership-invitations/callback/actions.ts",
@@ -80,12 +80,12 @@
     {
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
       "phase": "R2",
-      "sha256": "b8fcd0bb7a40963978e4922672145a8905397292cb284459fa509975891650d3"
+      "sha256": "8d6017b458ea9b335a668396a4db1074486416d87c7286a848a7e6d5e2fd6b6f"
     },
     {
       "file": "src/app/auth/password/update/page.tsx",
       "phase": "R2",
-      "sha256": "c528108468aaff51574298d0107e7eb870672f594929c280aa4335a6725316a6"
+      "sha256": "8924269e5447882a5cc5d616048b4804536a63bec815a2c80561b878b3b51801"
     },
     {
       "file": "src/app/auth/safe-next.ts",
@@ -3603,9 +3603,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/employee-account-activation/page.tsx:17:1080",
+      "id": "RPC:src/app/auth/employee-account-activation/page.tsx:18:1136",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 17,
+      "line": 18,
       "phase": "R2",
       "name": "people_employee_account_activation_snapshot",
       "expression": null,
@@ -3643,9 +3643,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/invitations/accept/page.tsx:23:1370",
+      "id": "RPC:src/app/auth/invitations/accept/page.tsx:24:1420",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 23,
+      "line": 24,
       "phase": "R2",
       "name": "validate_tenant_admin_invitation",
       "expression": null,
@@ -3683,9 +3683,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/auth/membership-invitations/accept/page.tsx:18:1257",
+      "id": "RPC:src/app/auth/membership-invitations/accept/page.tsx:19:1312",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 18,
+      "line": 19,
       "phase": "R2",
       "name": "validate_tenant_member_invitation",
       "expression": null,
@@ -7046,19 +7046,19 @@
   ],
   "formControls": [
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:19:1408",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1462",
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
-      "line": 19,
-      "tag": "form",
+      "line": 20,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{verifyEmployeeAccountActivationAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1494",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1554",
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
-      "line": 20,
+      "line": 21,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7068,9 +7068,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:20:1559",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1619",
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
-      "line": 20,
+      "line": 21,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7080,9 +7080,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:21:1623",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1682",
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
-      "line": 21,
+      "line": 22,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7092,10 +7092,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:22:1696",
+      "id": "CONTROL:src/app/auth/employee-account-activation/callback/page.tsx:23:1754",
       "file": "src/app/auth/employee-account-activation/callback/page.tsx",
-      "line": 22,
-      "tag": "SubmitButton",
+      "line": 23,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"تأكيد البريد\"",
@@ -7103,19 +7103,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:34:2897",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2943",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 34,
-      "tag": "form",
+      "line": 35,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{setEmployeeAccountPasswordAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:35:2980",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3033",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7125,9 +7125,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:36:3108",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3160",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7136,9 +7136,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:37:3315",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:38:3366",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 37,
+      "line": 38,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7147,10 +7147,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:39:3558",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:40:3607",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 39,
-      "tag": "SubmitButton",
+      "line": 40,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"تحديث كلمة المرور\"",
@@ -7158,19 +7158,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:45:4027",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4089",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 45,
-      "tag": "form",
+      "line": 46,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{retryEmployeeAccountActivationAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:46:4116",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4185",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 46,
+      "line": 47,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7180,10 +7180,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:47:4187",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:48:4256",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 47,
-      "tag": "SubmitButton",
+      "line": 48,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"إكمال التفعيل\"",
@@ -7191,19 +7191,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:50:4291",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4374",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 50,
-      "tag": "form",
+      "line": 51,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{setEmployeeAccountPasswordAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:51:4386",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4475",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 51,
+      "line": 52,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7213,9 +7213,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:52:4515",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4603",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 52,
+      "line": 53,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7224,9 +7224,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:53:4722",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:54:4809",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 53,
+      "line": 54,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7235,10 +7235,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:55:4965",
+      "id": "CONTROL:src/app/auth/employee-account-activation/page.tsx:56:5050",
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 55,
-      "tag": "SubmitButton",
+      "line": 56,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"حفظ وتفعيل الحساب\"",
@@ -7246,19 +7246,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1010",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1075",
       "file": "src/app/auth/forgot-password/page.tsx",
-      "line": 8,
-      "tag": "form",
+      "line": 9,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{requestPasswordResetAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1123",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1195",
       "file": "src/app/auth/forgot-password/page.tsx",
-      "line": 8,
+      "line": 9,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7267,10 +7267,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:8:1225",
+      "id": "CONTROL:src/app/auth/forgot-password/page.tsx:9:1297",
       "file": "src/app/auth/forgot-password/page.tsx",
-      "line": 8,
-      "tag": "SubmitButton",
+      "line": 9,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"إرسال رابط الاستعادة\"",
@@ -7278,9 +7278,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2056",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2094",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7288,9 +7288,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:36:2085",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:37:2123",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7298,19 +7298,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:45:2878",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2908",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 45,
-      "tag": "form",
+      "line": 46,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{setInvitationPasswordAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:46:2969",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3004",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 46,
+      "line": 47,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7320,9 +7320,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:47:3047",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:48:3081",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 47,
+      "line": 48,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7332,9 +7332,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:49:3186",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:50:3218",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 49,
+      "line": 50,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7343,10 +7343,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:51:3408",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:52:3438",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 51,
-      "tag": "SubmitButton",
+      "line": 52,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"حفظ كلمة المرور\"",
@@ -7354,19 +7354,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:54:3509",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3551",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 54,
-      "tag": "form",
+      "line": 55,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{acceptInvitationAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:55:3595",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3642",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 55,
+      "line": 56,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7376,9 +7376,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:56:3673",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:57:3719",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 56,
+      "line": 57,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7388,10 +7388,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:58:3811",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:59:3855",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 58,
-      "tag": "SubmitButton",
+      "line": 59,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"تأكيد الدعوة وإنشاء الشركة\"",
@@ -7399,9 +7399,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5802",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5829",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 90,
+      "line": 91,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7409,9 +7409,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:90:5831",
+      "id": "CONTROL:src/app/auth/invitations/accept/page.tsx:91:5858",
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 90,
+      "line": 91,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7419,9 +7419,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:913",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:960",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 26,
+      "line": 27,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7429,9 +7429,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:26:942",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:27:989",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 26,
+      "line": 27,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7439,19 +7439,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:34:1384",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1423",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 34,
-      "tag": "form",
+      "line": 35,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{verifyInvitationLinkAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:35:1464",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1509",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 35,
+      "line": 36,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7461,9 +7461,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:36:1546",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1590",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7473,9 +7473,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:37:1617",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1660",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 37,
+      "line": 38,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7485,9 +7485,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:38:1705",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1747",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 38,
+      "line": 39,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7497,10 +7497,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:39:1784",
+      "id": "CONTROL:src/app/auth/invitations/callback/page.tsx:40:1825",
       "file": "src/app/auth/invitations/callback/page.tsx",
-      "line": 39,
-      "tag": "SubmitButton",
+      "line": 40,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"التحقق والمتابعة\"",
@@ -7508,19 +7508,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:35:1664",
+      "id": "CONTROL:src/app/auth/login/page.tsx:36:1707",
       "file": "src/app/auth/login/page.tsx",
-      "line": 35,
-      "tag": "form",
+      "line": 36,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{signInAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:36:1726",
+      "id": "CONTROL:src/app/auth/login/page.tsx:37:1775",
       "file": "src/app/auth/login/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7530,9 +7530,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:38:1846",
+      "id": "CONTROL:src/app/auth/login/page.tsx:39:1893",
       "file": "src/app/auth/login/page.tsx",
-      "line": 38,
+      "line": 39,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7541,9 +7541,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:40:2020",
+      "id": "CONTROL:src/app/auth/login/page.tsx:41:2065",
       "file": "src/app/auth/login/page.tsx",
-      "line": 40,
+      "line": 41,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7552,10 +7552,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/login/page.tsx:41:2152",
+      "id": "CONTROL:src/app/auth/login/page.tsx:42:2196",
       "file": "src/app/auth/login/page.tsx",
-      "line": 41,
-      "tag": "SubmitButton",
+      "line": 42,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"دخول\"",
@@ -7563,9 +7563,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1845",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1896",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 24,
+      "line": 25,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -7573,9 +7573,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:24:1874",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:25:1925",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 24,
+      "line": 25,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -7583,19 +7583,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:30:2646",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2691",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 30,
-      "tag": "form",
+      "line": 31,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{setMemberInvitationPasswordAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2730",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2781",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 31,
+      "line": 32,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7605,9 +7605,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:31:2784",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2835",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 31,
+      "line": 32,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7617,9 +7617,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:32:2914",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:33:2964",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 32,
+      "line": 33,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7628,10 +7628,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:34:3143",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3191",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 34,
-      "tag": "SubmitButton",
+      "line": 35,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"حفظ كلمة المرور\"",
@@ -7639,19 +7639,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:35:3229",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3290",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 35,
-      "tag": "form",
+      "line": 36,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{acceptMemberInvitationAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3308",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3375",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7661,9 +7661,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:36:3362",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3429",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 36,
+      "line": 37,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7673,10 +7673,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:37:3430",
+      "id": "CONTROL:src/app/auth/membership-invitations/accept/page.tsx:38:3496",
       "file": "src/app/auth/membership-invitations/accept/page.tsx",
-      "line": 37,
-      "tag": "SubmitButton",
+      "line": 38,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"قبول الدعوة\"",
@@ -7684,19 +7684,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:21:1136",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1188",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 21,
-      "tag": "form",
+      "line": 22,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{verifyMemberInvitationAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:22:1216",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1274",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 22,
+      "line": 23,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7706,9 +7706,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:23:1295",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1352",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 23,
+      "line": 24,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7718,9 +7718,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:24:1363",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1419",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 24,
+      "line": 25,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7730,9 +7730,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:25:1448",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1503",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 25,
+      "line": 26,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7742,10 +7742,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:26:1524",
+      "id": "CONTROL:src/app/auth/membership-invitations/callback/page.tsx:27:1578",
       "file": "src/app/auth/membership-invitations/callback/page.tsx",
-      "line": 26,
-      "tag": "SubmitButton",
+      "line": 27,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"التحقق والمتابعة\"",
@@ -7753,19 +7753,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1641",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1705",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 16,
-      "tag": "form",
+      "line": 17,
+      "tag": "OfflineForm",
       "phase": "R2",
       "attributes": {
         "action": "{updatePasswordAction}"
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1752",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1823",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 16,
+      "line": 17,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7774,9 +7774,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:1923",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:1994",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 16,
+      "line": 17,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -7785,10 +7785,10 @@
       }
     },
     {
-      "id": "CONTROL:src/app/auth/password/update/page.tsx:16:2047",
+      "id": "CONTROL:src/app/auth/password/update/page.tsx:17:2118",
       "file": "src/app/auth/password/update/page.tsx",
-      "line": 16,
-      "tag": "SubmitButton",
+      "line": 17,
+      "tag": "OfflineSubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"حفظ كلمة المرور\"",

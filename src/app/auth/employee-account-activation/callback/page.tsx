@@ -1,5 +1,6 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
-import { SubmitButton } from '@/components/submit-button';
 import { verifyEmployeeAccountActivationAction } from '../actions';
 
 export const dynamic = 'force-dynamic';
@@ -16,11 +17,11 @@ export default async function EmployeeAccountActivationCallbackPage({ searchPara
     <section className="auth-card" aria-labelledby="activation-callback-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><h1 id="activation-callback-title">تأكيد البريد والمتابعة</h1>
       <p className="intro" role={query.state ? 'alert' : undefined}>{message}</p>
-      {valid && <form className="auth-form" action={verifyEmployeeAccountActivationAction}>
+      {valid && <OfflineForm className="auth-form" action={verifyEmployeeAccountActivationAction}>
         <input type="hidden" name="tokenHash" value={query.token_hash} /><input type="hidden" name="type" value={query.type} />
         <input type="hidden" name="intentId" value={query.intent_id} />
-        <SubmitButton label="تأكيد البريد" pendingLabel="جارٍ التحقق…" />
-      </form>}
+        <OfflineSubmitButton label="تأكيد البريد" pendingLabel="جارٍ التحقق…" />
+      </OfflineForm>}
     </section></main>;
 }
 

@@ -1,7 +1,8 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { signInAction } from '@/app/auth/actions';
 import { safeAuthNext } from '../safe-next';
-import { SubmitButton } from '@/components/submit-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,14 +33,14 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <h1 id="login-title">تسجيل الدخول</h1>
         <p className="intro">استخدم البريد الإلكتروني وكلمة المرور المرتبطين بحسابك.</p>
         {message && <p className="form-message" role="status">{message}</p>}
-        <form action={signInAction} className="auth-form">
+        <OfflineForm action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>
           <input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr" />
           <label htmlFor="password">كلمة المرور</label>
           <input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} dir="ltr" />
-          <SubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />
-        </form>
+          <OfflineSubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />
+        </OfflineForm>
         <p className="auth-links"><Link href="/auth/forgot-password">نسيت كلمة المرور؟</Link></p>
         <p className="foundation-note">إنشاء الحسابات غير متاح من هذه الصفحة.</p>
       </section>
