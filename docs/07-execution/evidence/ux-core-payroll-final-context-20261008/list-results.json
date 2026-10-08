@@ -1,0 +1,5 @@
+{
+  "actualSelectorsPresent": "PASS",
+  "nonAuthorityListFailureKeepsDataAndChooser": "PASS",
+  "noDeniedSelector": "PASS"
+}

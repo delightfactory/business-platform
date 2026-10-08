@@ -1,0 +1,48 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**No must-fix. The group is accepted within its scope:** actual source rendered with a controlled SDK, synthetic CSS print pairs, and fixtures. That doesn't cover real roles, finance or runtime behaviour.
+
+## Source
+- **`employer-context.ts`:**
+  - `reports` and `output` entries were added. `revision` is kept only when `after` is a UUID, `report` is checked with `isReportKind`, and `scope_output`, `scope_changed` and `employer_after_*` are never carried.
+  - On a changed employer, output goes to the constant `…/payroll/reports?report=sheet&employer=` (via `path.replace(/\/output$/,'/reports')`) with no old `output`. Reports keeps only a valid `report`.
+- **Normalizer placement:**
+  - reports `:22` runs before the `scope_output` redirect (`:30`) and before auth and RPCs;
+  - output `:17` runs after its existing `notFound` checks and before auth and RPCs.
+- **Reports:**
+  - The list call (`:40`) runs only after `payroll_report_choices` succeeds and uses the purpose-specific `p_report:report`.
+  - The control sits inside `<header>` in a wrapper with `styles.actions`, which the existing print rules hide, plus `.employerControl`.
+  - `.employerControl form>button` (`css:68`) ties `.workspace form>button` on specificity (0,1,2) and wins because it comes later in the file. That is correct but depends on rule order, so keep the rule last.
+  - In the "choose output" state, the selector appears only when `choices.data.employer.name` exists, so no name is guessed.
+  - A list failure shows a hint and keeps the authorized report.
+- **Output:**
+  - The list call (`:26`) happens after `payroll_final_output` succeeds, and the selector renders only when the list succeeded.
+  - On 42501 there's a truthful hint and **no** reports link. Other outcomes keep "اختيار جهة ونسخة أخرى".
+  - Display and legal names are unchanged.
+- **Corrections:** the secondary link to the bare `path` sits inside the existing actions `div` (`:72`), so `CorrectionRecoveryPanel` and the keyless commands don't move and nothing is audited automatically.
+- **Payments:** in the header (`:33`), `can_review_entry` gets a secondary link to bare `/payroll/runs`. Recording-only users get a truthful text hint and no link. The order of the recovery and main forms is unchanged.
+
+## Visual (scoped)
+I opened `reports-normal-390.png` and `output-normal-1366.png`. I didn't re-open `concept-c-payroll-light-1366.png` this turn. My comparison relies on the copy I inspected earlier in this session, and I didn't check that it's the same file.
+
+- **Reports at 390:**
+  - The employer select and "عرض جهة العمل" sit inside the header as a **secondary** (white) button. The hint and the "اختيار جهة أخرى للتقرير" link follow, then the report selector.
+  - There's no overflow.
+  - Cost: the header is about 200px taller before the report selection.
+- **Output at 1366:**
+  - Identity is followed by the employer select with a secondary submit, two hints and the chooser link.
+  - Then come the current-output note and the unchanged tool row (no primary), then the cards.
+  - Both hints are true; stacked, they add some reading load.
+- **Against Concept C:** the reference puts a compact employer dropdown in the header. These pages meet that intent with a native select plus an explicit submit and hints. The rest of the layout differs.
+- **Verdict:** visual direction acceptable within scope. Full reference match **NOT VISUALLY VERIFIED**.
+
+## Still open (not promoted)
+- **Runtime:** real roles and providers, print authorization, finance, hydration, the full parent, unsaved input lost on navigation, and keyboard testing on the full parent.
+- **Earlier slices:**
+  - root source facts and stages;
+  - the hard-coded legal/readiness sentences;
+  - a corrections case under review showing approve and recalculate together;
+  - the second `PaymentForm` primary inside history;
+  - release while a run attempt is unresolved;
+  - the multi-employer visual check on the first five pages.
+- **Closure:** no semantic, register, phase or R0–R8 promotion.

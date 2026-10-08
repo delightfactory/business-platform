@@ -1,0 +1,53 @@
+{
+  "copyOnlySameCssComparison": {
+    "before": {
+      "headerHeight": 488.2437438964844,
+      "reportSelectionTop": 528.2437744140625
+    },
+    "after": {
+      "headerHeight": 463.6062622070313,
+      "reportSelectionTop": 503.6062622070313
+    }
+  },
+  "final": [
+    {
+      "scene": "reports-normal",
+      "headerHeight": 463.6062622070313,
+      "reportSelectionTop": 503.6062622070313,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "scene": "output-normal",
+      "headerHeight": 389.9125061035156,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "scene": "reports-normal",
+      "headerHeight": 386.96875,
+      "reportSelectionTop": 434.0062561035156,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "scene": "output-normal",
+      "headerHeight": 381.6750183105469,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "scene": "reports-normal",
+      "headerHeight": 408.1687622070313,
+      "reportSelectionTop": 472.1687622070313,
+      "scrollWidth": 1351,
+      "width": 1366
+    },
+    {
+      "scene": "output-normal",
+      "headerHeight": 381.6750183105469,
+      "scrollWidth": 1366,
+      "width": 1366
+    }
+  ]
+}

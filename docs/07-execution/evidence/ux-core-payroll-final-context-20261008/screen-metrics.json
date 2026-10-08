@@ -1,0 +1,194 @@
+[
+  {
+    "scene": "before-reports-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "reports-normal",
+    "employerButton": "rgb(255, 255, 255)",
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 1,
+    "width": 390
+  },
+  {
+    "scene": "before-output-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "output-normal",
+    "employerButton": "rgba(0, 0, 0, 0)",
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 1,
+    "width": 390
+  },
+  {
+    "scene": "before-corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 390,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 390,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "before-payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "selectorCount": 0,
+    "width": 390
+  },
+  {
+    "scene": "before-reports-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "reports-normal",
+    "employerButton": "rgb(255, 255, 255)",
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 1,
+    "width": 768
+  },
+  {
+    "scene": "before-output-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "output-normal",
+    "employerButton": "rgba(0, 0, 0, 0)",
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 1,
+    "width": 768
+  },
+  {
+    "scene": "before-corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 768,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 768,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "before-payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "selectorCount": 0,
+    "width": 768
+  },
+  {
+    "scene": "before-reports-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "reports-normal",
+    "employerButton": "rgb(255, 255, 255)",
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "selectorCount": 1,
+    "width": 1366
+  },
+  {
+    "scene": "before-output-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1366,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "output-normal",
+    "employerButton": "rgba(0, 0, 0, 0)",
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "selectorCount": 1,
+    "width": 1366
+  },
+  {
+    "scene": "before-corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1366,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "corrections-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1366,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "before-payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  },
+  {
+    "scene": "payments-normal",
+    "employerButton": null,
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "selectorCount": 0,
+    "width": 1366
+  }
+]

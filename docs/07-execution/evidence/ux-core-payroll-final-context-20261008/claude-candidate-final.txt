@@ -1,0 +1,19 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**The delta is confirmed: no must-fix.**
+
+**Source:**
+- **`EmployerSelector`:** the new `hint` prop defaults to the previous text byte-for-byte (`EmployerSelector.tsx:4`). The first five pages pass no hint, so their copy is unchanged.
+- **Reports hint** ("نفس الجهة تحفظ الاختيارات؛ تغييرها يبدأ من نسختها. احفظ تعديلاتك قبل الانتقال."): accurately describes the normalizer, which keeps context for the same employer and starts from the new employer's output when it changes.
+- **Reports CSS:** the new `.employerControl` gap, padding and margin rules (`css:71–74`) are screen-only. The employer wrapper still carries `styles.actions`, so it stays hidden in print, and the earlier print pairs remain valid as CSS evidence.
+- **Output hint:**
+  - There is now one hint, "تغيير الجهة يفتح تقاريرها لاختيار النسخة؛ احفظ تعديلاتك قبل الانتقال.", which is accurate for the output-to-reports route.
+  - Error handling is unchanged: on 42501 there's a truthful hint and no link, and in every other case the "اختيار جهة ونسخة أخرى" link stays (`output/page.tsx:29`).
+
+**Visual (I opened both images):**
+- **`reports-normal-390.png`:** the shorter hint wraps to two lines under the select and its secondary submit, then the chooser link and the report selector follow. There's no overflow.
+- **`output-normal-1366.png`:** one hint line and the chooser link, then the current-output note and the unchanged tool row, which has no primary. The duplicate paragraph is gone.
+
+The 24.64px header saving at 390 is a copy-only reading improvement, not a claim that the task is faster. The full Concept C match is still **NOT VISUALLY VERIFIED**.
+
+**Still open:** real roles and providers, print authorization, finance, hydration, the full parent, unsaved input lost on navigation, the multi-employer visual check on the first five pages, and the earlier core items (root source facts and stages, hard-coded legal/readiness copy, a corrections case under review showing approve and recalculate together, the second `PaymentForm` primary inside history, release while a run attempt is unresolved). No semantic, register, phase or R0–R8 promotion.

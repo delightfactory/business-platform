@@ -63,3 +63,13 @@
 @media screen and (max-width: 600px) {
  .actions.sectionNav { flex-direction: row; flex-wrap: wrap; align-items: center; }
 }
+
+@media screen {
+ .employerControl form>button { background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-control-border); }
+}
+
+@media screen {
+ .employerControl { gap: .5rem; }
+ .employerControl form { padding: 0; }
+ .employerControl p { margin-block: .35rem; }
+}

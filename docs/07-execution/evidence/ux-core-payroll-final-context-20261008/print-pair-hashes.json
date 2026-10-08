@@ -1,0 +1,30 @@
+[
+  {
+    "report": "sheet",
+    "syntheticAuthorizedAttribute": true,
+    "before": "8e9bf26e64178be733f9b44c402ff82e1fa0cffdb34af18f502eab62d3502dfb",
+    "after": "8e9bf26e64178be733f9b44c402ff82e1fa0cffdb34af18f502eab62d3502dfb",
+    "identical": true
+  },
+  {
+    "report": "sheet",
+    "syntheticAuthorizedAttribute": false,
+    "before": "218b7f525a2f230c3183e7c271fff464f154dc787f271111f339f8d933724536",
+    "after": "218b7f525a2f230c3183e7c271fff464f154dc787f271111f339f8d933724536",
+    "identical": true
+  },
+  {
+    "report": "payslip",
+    "syntheticAuthorizedAttribute": true,
+    "before": "ac22789e2ca1c6bddbc9d8e3591efca1718a4ae06d2280461bee389c7e99fc01",
+    "after": "ac22789e2ca1c6bddbc9d8e3591efca1718a4ae06d2280461bee389c7e99fc01",
+    "identical": true
+  },
+  {
+    "report": "payslip",
+    "syntheticAuthorizedAttribute": false,
+    "before": "f6c8899a458a48439501bada3ff070a8286188efc7bb2d47d6a81e8fb349bc04",
+    "after": "f6c8899a458a48439501bada3ff070a8286188efc7bb2d47d6a81e8fb349bc04",
+    "identical": true
+  }
+]

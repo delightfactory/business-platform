@@ -1,3 +1,5 @@
+import {EmployerSelector} from '../EmployerSelector';
+import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
@@ -8,19 +10,23 @@ import styles from '../payroll.module.css';
 export const dynamic='force-dynamic';
 type Row={employment_id:string;employee:{name:string;code:string};net:string;explanation:{base:string;deductions:string;lines:{name:string;classification:string;amount:string;deduction_disposition?:{original_amount:number;payroll_amount:number;residual_amount:number;disposition:string;reference:string}}[]}};
 type Output={output_id:string;legal_employer:{display_name:string;legal_name:string};period:{starts_on:string;ends_on:string};replacement_output_id?:string;superseded:boolean;employees:Row[]};
-export default async function OutputPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<{employer?:string;output?:string;after?:string}>}){
+export default async function OutputPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<{employer_scope?:string;employer?:string;output?:string;after?:string}>}){
  const {tenantId}=await params,query=await searchParams;
- if(!uuid(tenantId)||!uuid(query.employer??'')||!uuid(query.output??'')||(query.after&&!uuid(query.after)))notFound();
+ if(!uuid(tenantId))notFound();
+ const path=`/tenant/${tenantId}/payroll/output`;
+ const employerDestination=normalizeEmployerScope(path,'output',query);if(employerDestination)redirect(employerDestination);
+ if(!uuid(query.employer??'')||!uuid(query.output??'')||(query.after&&!uuid(query.after)))notFound();
  const context=new URLSearchParams({employer:query.employer!,output:query.output!,...(query.after?{after:query.after}:{})});
- const path=`/tenant/${tenantId}/payroll/output`,client=await createSupabaseServerClient();
+ const client=await createSupabaseServerClient();
  const failure=(text:string)=><PageFrame><section dir="rtl" className={styles.card}><h1>مخرجات الرواتب النهائية</h1><p role="alert">{text}</p><Link href={`${path}?${context}`}>إعادة المحاولة بنفس المخرج</Link></section></PageFrame>;
  if(!client)return failure('تعذر الاتصال بالمخرج المحفوظ.');
  const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(`${path}?${context}`)}`);
  const response=await client.rpc('payroll_final_output',{p_tenant:tenantId,p_employer:query.employer,p_output:query.output,p_after:query.after??null,p_limit:30});
  if(response.error||!response.data)return failure('المخرج غير متاح أو لم يعد الحساب مخولًا لعرضه. مرشح المراجعة لا يُعرض كقسيمة راتب.');
+ const employerList=await client.rpc('payroll_report_employers',{p_tenant:tenantId,p_report:'sheet',p_query:'',p_after_name:null,p_after_id:null});
  const result=response.data as Output;const correctionAccess=await client.rpc('payroll_correction_access',{p_tenant:tenantId});
  return <PageFrame><section dir="rtl" className={styles.workspace}>
- <header><h1>مخرجات الرواتب النهائية</h1><h2>{result.legal_employer.display_name}</h2><p>الجهة القانونية: {result.legal_employer.legal_name}</p><p>{displayDate(result.period.starts_on)} — {displayDate(result.period.ends_on)}</p></header>
+ <header><h1>مخرجات الرواتب النهائية</h1><h2>{result.legal_employer.display_name}</h2><p>الجهة القانونية: {result.legal_employer.legal_name}</p><p>{displayDate(result.period.starts_on)} — {displayDate(result.period.ends_on)}</p>{!employerList.error&&<EmployerSelector path={path} page="output" employer={query.employer!} name={result.legal_employer.display_name} hint="تغيير الجهة يفتح تقاريرها لاختيار النسخة؛ احفظ تعديلاتك قبل الانتقال." choices={employerList.data?.items??[]} context={query}/>}{employerList.error&&<p className="field-hint">{employerList.error?.code==='42501'?'اختيار جهة أخرى يحتاج إلى مسؤول مخول بعرض تقارير الرواتب.':employerList.error?'تعذر تحميل قائمة الجهات. أعد اختيار الجهة والنسخة من التقارير.':'عند تغيير الجهة تختار نسختها النهائية من التقارير.'}</p>}{employerList.error?.code!=='42501'&&<Link href={`/tenant/${tenantId}/payroll/reports?report=sheet`}>اختيار جهة ونسخة أخرى</Link>}</header>
  {result.superseded?<p role="alert">استُبدل هذا المخرج. يُعرض للتاريخ فقط؛ لا تستخدمه للتوزيع أو الصرف.</p>:<p>هذه النسخة محفوظة من المسير النهائي. تُسجّل عمليات عرضها وتصديرها حسب الصلاحيات.</p>}
  <nav className={styles.reviewNavigation} aria-label="أدوات المخرج">
  {result.replacement_output_id&&<Link className={result.superseded?'primary-button':'secondary-button'} href={`${path}?${new URLSearchParams({employer:query.employer!,output:result.replacement_output_id})}`}>فتح المخرج البديل</Link>}

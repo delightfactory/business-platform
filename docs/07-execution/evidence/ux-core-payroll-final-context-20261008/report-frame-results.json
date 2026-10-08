@@ -1,0 +1,78 @@
+[
+  {
+    "page": "reports",
+    "name": "normal",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "reader",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "paged",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "empty",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "superseded",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "noSdk",
+    "result": "PASS",
+    "addedListCalls": 0,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "noUser",
+    "result": "PASS",
+    "addedListCalls": 0,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "name": "listDenied",
+    "result": "PASS",
+    "addedListCalls": 1,
+    "scope": "actual source controlled SDK"
+  },
+  {
+    "page": "reports",
+    "sameEmployer": true,
+    "result": "PASS"
+  },
+  {
+    "page": "reports",
+    "sameEmployer": false,
+    "result": "PASS"
+  },
+  {
+    "page": "output",
+    "sameEmployer": true,
+    "result": "PASS"
+  },
+  {
+    "page": "output",
+    "sameEmployer": false,
+    "result": "PASS"
+  }
+]

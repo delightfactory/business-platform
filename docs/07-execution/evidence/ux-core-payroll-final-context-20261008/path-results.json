@@ -1,0 +1,23 @@
+[
+  {
+    "page": "reports",
+    "sourceDeniedNoDiscovery": "PASS"
+  },
+  {
+    "page": "reports",
+    "listDeniedPreservesSource": "PASS"
+  },
+  {
+    "page": "output",
+    "sourceDeniedNoDiscovery": "PASS"
+  },
+  {
+    "page": "output",
+    "listDeniedPreservesSource": "PASS"
+  },
+  {
+    "revisionBindingAndInvalidPurpose": "PASS",
+    "recordingOnlyNoDiscoveryLink": "PASS",
+    "correctionChooserNoBoundQuery": "PASS"
+  }
+]

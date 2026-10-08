@@ -1,0 +1,77 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+# R7 final-page employer context: co-design verdict (spec on e2c08d2)
+
+**I approve the bounded approach, with two must-fixes and the guards below.** For the pages themselves I relied on my earlier reads of reports, output, corrections and payments, and read only the new spec.
+
+## Must-fix
+
+1. **In reports, the selector button would look like a primary action.**
+   - **Why:** reports styles every direct `form>button` with the brand fill, both in the original rule (`reports.module.css:4`, `.workspace form>button{background:#176e64;color:white}`) and in the screen rule (`:47`, `background:var(--color-brand)`). The rule has specificity 0,1,2, which beats the global `.secondary-button` at 0,1,0. The `EmployerSelector` button is a direct child of its form, so it would render as a second dominant action next to the export primary.
+   - **Fix:** add a screen-only override with higher specificity. For example, put a wrapper class such as `.employerControl` on the selector inside the header, with `@media screen{.employerControl form>button{…secondary tokens…}}`. Leave the original bytes untouched.
+
+2. **On output, a failed list must not point users to a page they can't open.**
+   - **Why:** if `payroll_report_employers('sheet')` fails with 42501, the user lacks report authorization. A "chooser" link to `/payroll/reports?report=sheet` would land them on the denied failure page.
+   - **Fix:**
+     - **42501:** show a truthful hint that switching employer needs a payroll report reader, with no reports link. Keep the existing "العودة إلى مراجعة الرواتب" link.
+     - **Any other error:** show the explicit reports chooser link together with the "list unavailable" hint.
+     - **Render the selector only when the list call succeeded.** The changed-employer redirect goes to the same purpose-authorized destination, so it is reachable whenever the selector is shown.
+
+## Guards
+
+**Normalizer:**
+- Extend the pure function with `reports` and `output` entries.
+- Run it before the auth redirect and every RPC.
+- On reports it must also run before the existing `scope_output` redirect (`reports/page.tsx:27`).
+- With no marker, behavior must be byte-for-byte as today.
+
+**Reports whitelist:**
+- **Same employer** keeps `report`, `output`, `employee`, `previous`, `site`, `department`, `site_q`, `department_q`, `site_after`, `department_after`, `q`, `after` and `output_after`.
+- **`revision`** is kept **only when `after` is present**. It ties the cursor to a revision; on its own it only invites a PT409 failure.
+- **Never carried:** `scope_output`, `scope_changed`, `employer_after_*`.
+- **Changed employer:** keep `employer` plus `report` only if `isReportKind` passes.
+
+**Reports, list call and name:**
+- Call `payroll_report_employers` (`p_query:''`, `p_after:null`) only after `payroll_report_choices` succeeds.
+- Render the selector only after the workspace succeeds. If you also render it in the "choose output" state, take the current name from `choices.data.employer`, and leave the selector out when that field is absent. Never take the name from the list.
+- If the list fails, keep the authorized report and show the hint plus the existing purpose chooser link. Don't call any fallback RPC.
+
+**Reports, print:**
+- Put the whole selector, hint included, inside an element carrying an existing print-hidden class (`styles.actions` or `styles.selector`) inside `<header>`. The header itself prints; `.workspace>header` only hides `a` and `.kicker`.
+- Repeat the authorized and unauthorized payslip and sheet print pairs; they must be identical.
+
+**Output:**
+- **Same employer** keeps `output` and `after`.
+- **Changed employer** redirects to the constant `/tenant/${tenantId}/payroll/reports?report=sheet&employer=<validated uuid>`. Never carry the old `output`, and never guess a latest output.
+- The display name and legal name stay as they are.
+
+**Corrections:**
+- Add one plain link to `/payroll/corrections` with no parameters, placed **inside** the existing identity card's actions `div` (`corrections:72`) rather than as a new sibling. That way `CorrectionRecoveryPanel` and the keyless `CorrectionCommand`s don't move.
+- No automatic audited call.
+
+**Payments:**
+- Put the link inside the existing `<header>`.
+- `can_review_entry`: link to `/payroll/runs` with no bound IDs.
+- Recording-only: plain text saying to get a different final-output link from the payroll owner, with no link.
+- Header placement keeps the position of `recoveryOnly` and the main form.
+
+**Everywhere:**
+- Submit buttons are secondary, with no `onChange` submit.
+- Use the existing "save before leaving" hint.
+- No storage, actions, hooks or recovery changes.
+- Use unique IDs on reports, which has no `payroll-employer` today.
+- The marker is bookkeeping only; page validation and RPC authorization still decide access.
+
+## Checks
+- A marker redirect makes zero RPCs on all four pages.
+- The only added call is the list RPC, and only on success paths: reports after choices succeed, output after the final output loads. It is never called on a denied page.
+- Cases to cover:
+  - list failure (42501 and other errors);
+  - same and different employer, invalid marker;
+  - an invalid report kind on a changed employer;
+  - `revision` with and without `after`;
+  - the output-to-reports route;
+  - corrections and payments links per role.
+- Print pairs, renders at 390/768/1366, keyboard testing, and one grouped lint/build/TS run.
+
+**Still open:** the Concept C employer-control match needs rendered evidence (**NOT VISUALLY VERIFIED** from the spec). Also open: real roles and providers, print authorization, finance, hydration, the full parent, unsaved input lost at runtime, and R0–R8 and phase closure.

@@ -1,0 +1,50 @@
+[
+  {
+    "scene": "before-print-sheet-true",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "print-sheet-true",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "before-print-sheet-false",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "print-sheet-false",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "before-print-payslip-true",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "print-payslip-true",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "before-print-payslip-false",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  },
+  {
+    "scene": "print-payslip-false",
+    "scrollWidth": 1366,
+    "selectorHidden": true,
+    "width": 1366
+  }
+]
