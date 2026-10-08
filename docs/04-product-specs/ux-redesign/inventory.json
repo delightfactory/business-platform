@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "92d48800dd0294c0e6b2367ccc239c00331efb17",
+  "sourceHead": "5349649db1fae7955ab8bc55f4fb13960f4ccd9d",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -205,12 +205,12 @@
     {
       "file": "src/app/operator/operators/actions.ts",
       "phase": "R3",
-      "sha256": "2597cc57cfb2d5db9d65797d12f132e5c19a555c8a30e00d658d305e1b9e68f4"
+      "sha256": "366cd925ca90628e41b20d6b52e4d745a33aa93081770ff781fea1e08c2f7c61"
     },
     {
       "file": "src/app/operator/operators/page.tsx",
       "phase": "R3",
-      "sha256": "c6fe600c873a7a1b9d0997dbd377ecaf4755a0be98aa999a16f4344e310ffdfc"
+      "sha256": "d1101620d40cd5ef26159de46cf324b27530bf759e4f8e80b3952814401ff533"
     },
     {
       "file": "src/app/operator/page.tsx",
@@ -1395,7 +1395,7 @@
     {
       "file": "src/lib/operator-read.ts",
       "phase": "R1",
-      "sha256": "a62a83e4c90ee03ca410e9efbc531c7d08fe218b916a7c7e7092fa0350b53e27"
+      "sha256": "b63d2f347f38ce16a8e889e2ec6f8a74b121f0aae9318f39a687f293525d1008"
     },
     {
       "file": "src/lib/payroll/leave-correction-context.ts",
@@ -2264,7 +2264,7 @@
     {
       "id": "ACTION:src/app/operator/operators/actions.ts#changeOperatorGrantAction",
       "file": "src/app/operator/operators/actions.ts",
-      "line": 7,
+      "line": 8,
       "name": "changeOperatorGrantAction",
       "phase": "R3",
       "inline": false,
@@ -3928,9 +3928,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/actions.ts:23:1318",
+      "id": "RPC:src/app/operator/operators/actions.ts:25:1452",
       "file": "src/app/operator/operators/actions.ts",
-      "line": 23,
+      "line": 25,
       "phase": "R3",
       "name": "change_platform_operator_authority",
       "expression": null,
@@ -3938,9 +3938,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:22:1227",
+      "id": "RPC:src/app/operator/operators/page.tsx:21:1182",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 22,
+      "line": 21,
       "phase": "R3",
       "name": "current_platform_operator_status",
       "expression": null,
@@ -3948,9 +3948,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:23:1303",
+      "id": "RPC:src/app/operator/operators/page.tsx:22:1258",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 23,
+      "line": 22,
       "phase": "R3",
       "name": "current_operator_can_manage_operators",
       "expression": null,
@@ -3958,7 +3958,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/operators/page.tsx:25:1587",
+      "id": "RPC:src/app/operator/operators/page.tsx:25:1804",
       "file": "src/app/operator/operators/page.tsx",
       "line": 25,
       "phase": "R3",
@@ -8407,7 +8407,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2218",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2448",
       "file": "src/app/operator/operators/page.tsx",
       "line": 34,
       "tag": "form",
@@ -8417,7 +8417,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2247",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:34:2477",
       "file": "src/app/operator/operators/page.tsx",
       "line": 34,
       "tag": "button",
@@ -8427,7 +8427,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:41:2942",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:41:3172",
       "file": "src/app/operator/operators/page.tsx",
       "line": 41,
       "tag": "summary",
@@ -8435,7 +8435,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3251",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:45:3481",
       "file": "src/app/operator/operators/page.tsx",
       "line": 45,
       "tag": "input",
@@ -8446,7 +8446,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3475",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:48:3705",
       "file": "src/app/operator/operators/page.tsx",
       "line": 48,
       "tag": "textarea",
@@ -8456,7 +8456,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3578",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:49:3808",
       "file": "src/app/operator/operators/page.tsx",
       "line": 49,
       "tag": "input",
@@ -8468,19 +8468,39 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:65:4852",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:56:4230",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 65,
-      "tag": "summary",
+      "line": 56,
+      "tag": "form",
       "phase": "R3",
       "attributes": {
-        "aria-label": "{`${grant.is_active ? 'تعديل مهام' : 'إعادة منح مهام'} ${grant.email}`}"
+        "action": "\"/operator/operators\""
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:68:5376",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:56:4278",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 68,
+      "line": 56,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"submit\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:67:5426",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 67,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {
+        "aria-label": "{`${grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}: ${grant.email}`}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:70:5954",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 70,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8490,9 +8510,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:69:5452",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:71:6030",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 69,
+      "line": 71,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8502,9 +8522,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:72:5758",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:74:6336",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 72,
+      "line": 74,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -8512,19 +8532,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:75:6014",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:77:6592",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 75,
+      "line": 77,
       "tag": "summary",
       "phase": "R3",
       "attributes": {
-        "aria-label": "{`سحب صلاحية ${grant.email}`}"
+        "aria-label": "{`سحب الصلاحية: ${grant.email}`}"
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6561",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7141",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 79,
+      "line": 81,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8534,9 +8554,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:79:6617",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:81:7197",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 79,
+      "line": 81,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8546,9 +8566,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6689",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7269",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 80,
+      "line": 82,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8558,9 +8578,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:80:6750",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:82:7330",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 80,
+      "line": 82,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8570,9 +8590,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:82:6917",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:84:7497",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 82,
+      "line": 84,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -8580,9 +8600,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:95:7613",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:97:8193",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 95,
+      "line": 97,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8591,9 +8611,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:96:7783",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8363",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 96,
+      "line": 98,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8602,9 +8622,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:97:7949",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8529",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 97,
+      "line": 99,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8613,9 +8633,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:98:8150",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:100:8730",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 98,
+      "line": 100,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8624,14 +8644,34 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operators/page.tsx:99:8340",
+      "id": "CONTROL:src/app/operator/operators/page.tsx:101:8920",
       "file": "src/app/operator/operators/page.tsx",
-      "line": 99,
+      "line": 101,
       "tag": "input",
       "phase": "R3",
       "attributes": {
         "type": "\"checkbox\"",
         "name": "\"canManageStatutoryRules\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11398",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 130,
+      "tag": "form",
+      "phase": "R3",
+      "attributes": {
+        "action": "\"/operator/operators\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/operators/page.tsx:130:11446",
+      "file": "src/app/operator/operators/page.tsx",
+      "line": 130,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"submit\""
       }
     },
     {
@@ -19715,7 +19755,7 @@
     "rpcCallSites": 351,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 6,
-    "formControls": 1179,
+    "formControls": 1183,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

@@ -1,0 +1,198 @@
+{
+  "total": 48,
+  "scope": "Actual source DTO/action/asyncpage with controlled SDK and SSR; not real SQL/Auth/roles/provider/hydration/full visual",
+  "checks": [
+    {
+      "id": "valid-list-without-unused-timestamp",
+      "result": "pass"
+    },
+    {
+      "id": "empty-list-valid",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-user_id",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-email",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-is_active",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-recoverable",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-can_manage_operators",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-can_onboard_tenants",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-can_manage_tenant_lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-can_manage_commercial_access",
+      "result": "pass"
+    },
+    {
+      "id": "list-malformed-can_manage_statutory_rules",
+      "result": "pass"
+    },
+    {
+      "id": "duplicate-identity-case-insensitive",
+      "result": "pass"
+    },
+    {
+      "id": "source-noop-already-active",
+      "result": "pass"
+    },
+    {
+      "id": "source-noop-already-revoked",
+      "result": "pass"
+    },
+    {
+      "id": "source-noop-not-active",
+      "result": "pass"
+    },
+    {
+      "id": "source-noop-unchanged",
+      "result": "pass"
+    },
+    {
+      "id": "unreachable-grant-unchanged-rejected",
+      "result": "pass"
+    },
+    {
+      "id": "valid-acknowledgement-grant",
+      "result": "pass"
+    },
+    {
+      "id": "valid-acknowledgement-update",
+      "result": "pass"
+    },
+    {
+      "id": "valid-acknowledgement-revoke",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-user_id",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-email",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-state",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-is_active",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-can_manage_operators",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-can_onboard_tenants",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-can_manage_tenant_lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-can_manage_commercial_access",
+      "result": "pass"
+    },
+    {
+      "id": "unusable-receipt-can_manage_statutory_rules",
+      "result": "pass"
+    },
+    {
+      "id": "error-priority-over-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "auth-error-before-write",
+      "result": "pass"
+    },
+    {
+      "id": "signed-out-no-write",
+      "result": "pass"
+    },
+    {
+      "id": "self-revoke-local-signout-false",
+      "result": "pass"
+    },
+    {
+      "id": "self-revoke-local-signout-true",
+      "result": "pass"
+    },
+    {
+      "id": "self-downgrade-authorized-task",
+      "result": "pass"
+    },
+    {
+      "id": "self-downgrade-mismatch-does-not-route",
+      "result": "pass"
+    },
+    {
+      "id": "page-auth",
+      "result": "pass"
+    },
+    {
+      "id": "page-status-error",
+      "result": "pass"
+    },
+    {
+      "id": "page-cap-error",
+      "result": "pass"
+    },
+    {
+      "id": "page-denied",
+      "result": "pass"
+    },
+    {
+      "id": "page-truthy-not-allowed",
+      "result": "pass"
+    },
+    {
+      "id": "page-malformed-status",
+      "result": "pass"
+    },
+    {
+      "id": "page-not-operator",
+      "result": "pass"
+    },
+    {
+      "id": "page-bad-list",
+      "result": "pass"
+    },
+    {
+      "id": "page-list-error",
+      "result": "pass"
+    },
+    {
+      "id": "valid-page-full-capability-fields-neutral-urlhint",
+      "result": "pass"
+    },
+    {
+      "id": "reread-loss-warning-described",
+      "result": "pass"
+    },
+    {
+      "id": "failure-primary-vs-denial-primary",
+      "result": "pass"
+    }
+  ]
+}

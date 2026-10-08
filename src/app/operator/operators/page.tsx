@@ -5,26 +5,26 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { changeOperatorGrantAction } from './actions';
 import { operatorPermission } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
+import { operatorGrantList, type OperatorGrant } from '@/lib/operator-read';
 
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
-type Grant = {
-  user_id: string; email: string; is_active: boolean; can_manage_operators: boolean;
-  can_onboard_tenants: boolean; can_manage_tenant_lifecycle: boolean; can_manage_commercial_access: boolean; can_manage_statutory_rules: boolean; recoverable: boolean; updated_at: string;
-};
+type Grant = OperatorGrant;
 
 export default async function OperatorGrantsPage({ searchParams }: { searchParams: Query }) {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError) return <Status title="تعذر التحقق من الحساب" detail="أعد قراءة الصفحة للتحقق من حسابك قبل تغيير أي صلاحية." />;
   if (!user) redirect('/auth/login?state=no-session');
   const status = await supabase.rpc('current_platform_operator_status');
   const canManage = await supabase.rpc('current_operator_can_manage_operators');
-  if (status.error || status.data !== 'active' || !operatorPermission(canManage)) return <Status title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
+  if (status.error || canManage.error || !['active', 'revoked', 'not_operator'].includes(status.data) || typeof canManage.data !== 'boolean') return <Status title="تعذر التحقق من الصلاحية" detail="لم تتأكد صلاحية إدارة المشغّلين الآن. أعد قراءة الصفحة قبل أي تغيير." />;
+  if (status.data !== 'active' || !operatorPermission(canManage)) return <Status denied title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
   const { data, error } = await supabase.rpc('platform_operator_grant_list');
-  if (error || !Array.isArray(data)) return <Status title="تعذر تحميل المنح" detail="تعذر قراءة الحالة الحالية للمنح. أعد المحاولة لاحقًا." />;
-  const grants = data as Grant[];
+  const grants = error ? null : operatorGrantList(data);
+  if (!grants) return <Status title="تعذر تحميل المنح" detail="لم تتأكد قائمة المنح الحالية. أعد قراءة الصفحة قبل إجراء أي تغيير." />;
   const success = query.state === 'granted' || query.state === 'updated' || query.state === 'revoked';
 
   return (
@@ -53,6 +53,8 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
       </section>
       <section className="work-card operator-grants-list" aria-labelledby="grants-list-title">
         <h2 id="grants-list-title">المشغّلون</h2>
+        <form method="get" action="/operator/operators"><button className="secondary-button" type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</button></form>
+        <p className="field-hint" id="grants-reread-hint">إعادة القراءة تجلب الحالة الحالية وتُفقد أي إدخالات لم تُرسل. لا تؤكد وحدها نتيجة تغيير سابق غير مؤكدة.</p>
         {grants.length === 0 ? <p>لا توجد منح مشغّل محفوظة.</p> : <ul className="member-list">
           {grants.map((grant) => <li className="member-card" key={grant.user_id}>
             <div><h3><bdi>{grant.email}</bdi></h3>
@@ -62,7 +64,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             </div>
             <div className="operator-grant-actions">
               {grant.recoverable && <>
-              <details className="role-change-confirmation"><summary className="secondary-button" aria-label={`${grant.is_active ? 'تعديل مهام' : 'إعادة منح مهام'} ${grant.email}`}>{grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}</summary>
+              <details className="role-change-confirmation"><summary className="secondary-button" aria-label={`${grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}: ${grant.email}`}>{grant.is_active ? 'تعديل المهام' : 'إعادة منح المهام'}</summary>
                 <p className="field-hint">الحساب: <bdi>{grant.email}</bdi></p>
                 <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label={grant.is_active ? 'تأكيد التعديل' : 'تأكيد إعادة المنح'}>
                   <input type="hidden" name="email" value={grant.email} />
@@ -72,7 +74,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <textarea id={`reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
                 </OperatorActionForm>
               </details></>}
-              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action" aria-label={`سحب صلاحية ${grant.email}`}>سحب الصلاحية</summary>
+              {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action" aria-label={`سحب الصلاحية: ${grant.email}`}>سحب الصلاحية</summary>
                 <p className="field-hint">سيُوقف هذا المنح وتُسحب كل المهام المرتبطة به. يُحفظ السبب وسجل ما قبل/بعد التغيير.</p>
                 <p className="field-hint">الحساب: <bdi>{grant.email}</bdi></p>
                 <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} className="auth-form compact-form" buttonClassName="secondary-button" label="تأكيد سحب الصلاحية">
@@ -117,10 +119,14 @@ const operatorErrors: Record<string, string> = {
     invalid: 'تحقق من البريد والإجراء المحدد.', capability: 'اختر مهمة واحدة على الأقل؛ استخدم إجراء السحب المنفصل لإزالة الصلاحية.',
     reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.', forbidden: 'لا تسمح صلاحيتك الحالية بإدارة المشغّلين.',
     'target-unavailable': 'الحساب غير موجود أو لم يؤكد بريده أو لا يستطيع تسجيل الدخول بعد.',
-    'last-manager': 'لا يمكن سحب مهمة إدارة المشغّلين من آخر مدير مؤهل.', failed: 'تعذر حفظ التغيير. لم تُعتمد أي حالة بلا سجل تدقيق.',
+    'last-manager': 'لا يمكن سحب مهمة إدارة المشغّلين من آخر مدير مؤهل.',
+    unavailable: 'تعذر التحقق من الحساب قبل الإرسال. احتفظ بالبيانات وراجع حسابك وصلاحيتك.',
+    failed: 'نتيجة التغيير غير مؤكدة. راجع المنح الحالية قبل إجراء تغيير آخر؛ لا تُعد الإرسال اعتمادًا على هذه الرسالة وحدها.',
 };
-function Status({ title, detail }: { title: string; detail: string }) {
+function Status({ title, detail, denied = false }: { title: string; detail: string; denied?: boolean }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header>
     <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>
-      <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section><footer className="footer">منصة الأعمال</footer></main>;
+      <h1 id="status-title">{title}</h1><p className="intro">{detail}</p>
+      <form method="get" action="/operator/operators"><button className={denied ? 'secondary-button' : 'primary-button'} type="submit">إعادة قراءة الصفحة</button></form>
+      <Link className={denied ? 'primary-button' : 'secondary-button'} href="/operator">العودة لمهام المنصة</Link></section><footer className="footer">منصة الأعمال</footer></main>;
 }

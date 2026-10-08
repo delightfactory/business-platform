@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { operatorGrantReceipt, operatorGrantNoop } from '@/lib/operator-read';
 
 export async function changeOperatorGrantAction(formData: FormData) {
   const email = text(formData, 'email').toLowerCase();
@@ -18,7 +19,8 @@ export async function changeOperatorGrantAction(formData: FormData) {
   if (reason.length < 3 || reason.length > 500) return 'reason';
   const supabase = await createSupabaseServerClient();
   if (!supabase) return 'setup';
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError) return 'unavailable';
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('change_platform_operator_authority', {
     p_target_email: email, p_action: action, p_can_manage_operators: canManage,
@@ -26,9 +28,11 @@ export async function changeOperatorGrantAction(formData: FormData) {
     p_can_manage_commercial_access: canManageCommercial, p_can_manage_statutory_rules: canManageStatutory, p_reason: reason,
   });
   if (error) return mapError(error.message);
-  if (!data || typeof data !== 'object' || Array.isArray(data)) return 'failed';
-  const result = data as Record<string, unknown>;
-  if (['grant', 'update', 'revoke'].includes(String(result.state))) revalidatePath('/operator', 'layout');
+  const noop = operatorGrantNoop(data, action);
+  if (noop) return noop;
+  if (!operatorGrantReceipt(data, action, email, [canManage, canOnboard, canManageLifecycle, canManageCommercial, canManageStatutory])) return 'failed';
+  const result = data;
+  revalidatePath('/operator', 'layout');
   if (result.state === 'revoke' && typeof result.email === 'string'
     && result.email.toLowerCase() === user.email?.toLowerCase()) {
     const { error: signOutError } = await supabase.auth.signOut({ scope: 'local' });

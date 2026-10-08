@@ -10,6 +10,32 @@ export function operatorUuid(value: unknown): value is string {
 function text(value: unknown): value is string { return typeof value === 'string' && value.trim().length > 0; }
 function count(value: unknown): value is number { return Number.isSafeInteger(value) && (value as number) >= 0; }
 
+export const operatorCapabilities = ['can_manage_operators', 'can_onboard_tenants', 'can_manage_tenant_lifecycle', 'can_manage_commercial_access', 'can_manage_statutory_rules'] as const;
+export type OperatorGrant = { user_id: string; email: string; is_active: boolean; recoverable: boolean } & Record<typeof operatorCapabilities[number], boolean>;
+
+export function operatorGrantList(value: unknown): OperatorGrant[] | null {
+  if (!Array.isArray(value) || !value.every(row => operatorRecord(row) && operatorUuid(row.user_id)
+    && text(row.email) && typeof row.is_active === 'boolean' && typeof row.recoverable === 'boolean'
+    && operatorCapabilities.every(key => typeof row[key] === 'boolean'))) return null;
+  const rows = value as OperatorGrant[];
+  return new Set(rows.map(row => row.user_id.toLowerCase())).size === rows.length ? rows : null;
+}
+
+export function operatorGrantReceipt(value: unknown, action: string, email: string, capabilities: boolean[]): value is Omit<OperatorGrant, 'recoverable'> & { state: string } {
+  return operatorRecord(value) && operatorUuid(value.user_id) && value.state === action
+    && typeof value.email === 'string' && value.email.toLowerCase() === email
+    && value.is_active === (action !== 'revoke') && operatorCapabilities.every((key, index) =>
+      value[key] === (action === 'revoke' ? false : capabilities[index]));
+}
+
+export function operatorGrantNoop(value: unknown, action: string): string | null {
+  if (!operatorRecord(value) || !operatorUuid(value.user_id)) return null;
+  if ((action === 'grant' && value.state === 'already-active') || (action === 'update' && value.state === 'not-active')
+    || (action === 'revoke' && value.state === 'already-revoked')
+    || (action === 'update' && value.state === 'unchanged')) return String(value.state);
+  return null;
+}
+
 export type OperatorInvitationRow = {
   id: string; target_email: string; tenant_name: string; lifecycle_state: string; delivery_state: string;
 };
