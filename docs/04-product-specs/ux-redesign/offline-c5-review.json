@@ -1,0 +1,528 @@
+{
+  "schema": "business-platform.offline-c5-review.v1",
+  "baseline": "d9b2bfaf1b5dac80dfb0dfdcdaa49f9d4484d29d",
+  "status": "SOURCE-QUALIFIED; NATIVE/FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "sourceEvidence": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/offline-c5-controlled.json",
+  "cases": 82,
+  "variants": 25,
+  "unchangedSourceCount": 668,
+  "exactAppliedCandidateHashesVerified": true,
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# SOURCE ACCEPT\n\nI reviewed only the supplied diff and unchanged guard/submit source. I did not use tools, make edits or write a plan file. Both visual verdicts stay **NOT VISUALLY VERIFIED**. Full role, native, provider, SQL, device and reference acceptance stays **OPEN**.\n\n## Coverage\nTen files contain twelve owning forms, all guarded:\n\n1. Operator invitation\n2. New legal entity\n3. Legal entity and site record actions (one component; `siteId` picks the action)\n4. New site\n5. Employee onboarding\n6. Department/job create, update, disable and reactivate\n7. Member invite\n8. Bulk ready-attendance approval\n9. Import preview\n10. Import commit\n11. Employment end\n12. Rehire\n\n## Pending state belongs to the right action\n- Every form reads its own `useActionState` third tuple.\n- Import preview uses `previewActionPending` and commit uses `commitActionPending`. Employment end uses `endActionPending` and rehire uses `rehireActionPending`.\n- Bulk approval keeps its existing `pending` for both the button state and the notice.\n- Preview and commit pending stay independent: each `SubmitButton` uses `useFormStatus` scoped to its own form.\n\n## Hook order\n- `useOfflineSubmission` and `useId` run unconditionally at the top of every component.\n- In `NewEmployeeForm`, they run before the setup-gate early return, along with the existing `useActionState` and `useState`. `showOffline0` is computed after the gate, but it is a plain value, not a hook.\n- In `EmploymentLifecyclePanel`, the hooks run before the `canEnd`/`canRehire` render gates.\n\n## Event race\n- `blockOfflineSubmission` reads live `navigator.onLine` inside `onSubmit`, so a click that beats the `offline` event is still stopped.\n- `preventDefault` stops React 19's form-action dispatch, and `refreshSignal` re-syncs the stale snapshot.\n- When the snapshot already says offline, the disabled submit buttons also block implicit (Enter-key) submission.\n- Nothing is dispatched, so React does not reset the form and no `attempt` key changes. Typed fields, the chosen file, selected import rows, selected attendance rows, the acknowledgment checkbox, reasons and date bounds all stay as entered.\n\n## Accessibility IDs and notice\n- Each form instance gets its own `useId`. Components with two forms use separate `offlineHint0` and `offlineHint1`.\n- `RecordActionForm` appears several times per page, and `useId` keeps each instance unique.\n- `aria-describedby` points at the hint only while the notice is rendered, so there are no dangling references.\n- The notice is hidden while that form's own action is pending.\n- It uses `purpose=\"continuation\"`: it asks the user to reconnect to continue and makes no success claim.\n\n## Authority, fields, keys and constraints\n- Hidden inputs and `idempotencyKey` are unchanged in the invitation and member-invite forms.\n- `name=\"intent\"` values, the required acknowledgment, min/max lengths and `required` attributes are unchanged.\n- The existing `ariaLabel`, `danger-button` and `secondary-button` choices are unchanged.\n- Existing error and result rendering is unchanged.\n- Gates are preserved, so forms stay absent where they already were: the setup gate, `canEnd`, `canRehire`, `optionsError`/`!rehireOptions`, `commit.state !== 'imported'` and empty `selectableData`.\n- The org-catalog disable and reactivate buttons get the same `disabled` and `aria-describedby` as the main submit.\n- Search, local reject download, navigation and sign-out are untouched.\n\n## Journey simplicity\n- The online path is identical apart from props that are inert while online.\n- When known offline, the user keeps their inputs and sees one status message beside the blocked action.\n- There is no queue, persistence, automatic resend, global disabling or new abstraction.\n\n## Non-blocking\nThe second `import … from 'react'` line repeats the existing pattern from earlier batches. It only matters if the grouped lint flags duplicate imports.",
+    "sessionId": "0ef00e3b-85ce-4f78-9586-55eab76244df"
+  },
+  "codex": {
+    "source": "ACCEPT; exact ten hashes/twelve guards, own pending tuple and fourteen submission controls; no action/backend/role or fieldset/key change",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Concept C People view opened in owned reference tab122; closed, user tab3 untouched; no new matched renders",
+    "simplicity": "Known offline prevents uncertain send while keeping fields/selection and explicit reconnect; efficient online path source-equivalent. No measured numerical improvement claimed.",
+    "react": "Unconditional hooks before setup/permission gates, separate useId per form, submit-only disabling, original SSR-stable synchronous guard.",
+    "testGuard": "Data-driven actual TSX and shared hook/SubmitButton. Browser/React/action-transport boundaries controlled, no mocked domain rules; bounded form fields/payload comparisons, not whole-tree snapshots or full financial/auth tests.",
+    "limits": [
+      "Actual owning TSX/shared hooks with controlled React/browser and server-action transport boundaries; real Auth/SQL/roles/native/provider not verified",
+      "Nested unchanged LimitFields not expanded; form field comparison does not claim full browser DOM coverage",
+      "Both full reference verdicts NOT VISUALLY VERIFIED; original whole-stage acceptance OPEN"
+    ]
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:35:1278",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:40:1547",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:36:1370",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:41:1695",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:39:1530",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:44:1852",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:41:1722",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:46:2042",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:43:1930",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:48:2248",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:46:2125",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:51:2440",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:50:2556",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:55:2867",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:63:3090",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:68:3551",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:69:3517",
+        "after": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:74:3972",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:18:988",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:23:1245",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:19:1018",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:24:1331",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:20:1082",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:25:1394",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:23:1291",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:28:1600",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:28:1619",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:33:1923",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:20:1111",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:25:1387",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:21:1195",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:26:1527",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:22:1257",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:27:1588",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:23:1351",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:28:1681",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:24:1419",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:29:1748",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:27:1639",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:32:1965",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:30:1869",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:35:2192",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:35:2157",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:40:2475",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:37:2372",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:42:2688",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:11:494",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:16:779",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:12:578",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:17:919",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:13:640",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:18:980",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:15:767",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:20:1105",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:17:945",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:22:1281",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:19:1200",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:24:1534",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:11:495",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:16:780",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:12:579",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:17:920",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:14:701",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:19:1040",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:16:901",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:21:1238",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:19:1150",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:24:1484",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:21:1407",
+        "after": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:26:1739",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:60:4569",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:67:4920",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:61:4613",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:68:4963",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:62:4708",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:69:5114",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:63:4774",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:70:5179",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:64:4844",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:71:5248",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:65:4980",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:72:5383",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:77:5924",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:84:6315",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:80:6280",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:87:6668",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:86:6696",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:93:7241",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:89:7075",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:96:7617",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:91:7314",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:7911",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:91:7370",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:7967",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:92:7492",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:99:8088",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:95:7826",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:102:8419",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:8138",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:105:8728",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:101:8487",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:108:9074",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:104:8799",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:111:9383",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:106:9027",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:113:9609",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:108:9295",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:115:9875",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:109:9480",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:116:10059",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:112:9955",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:119:10531",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:21:1117",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:28:1515",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:22:1189",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:29:1643",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:25:1366",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:32:1817",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:34:2121",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:41:2563",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:43:2984",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:50:3580",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:52:3794",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:59:4381",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:53:3858",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:60:4501",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:59:4273",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:66:4910",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:63:4578",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:70:5211",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:36:2237",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:41:2499",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:37:2321",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:42:2639",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:40:2512",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:45:2828",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:42:2673",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:47:2987",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:48:3045",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:53:3356",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:53:3369",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:58:3675",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:59:3848",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:64:4148",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:61:4049",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:66:4347",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:65:4459",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:70:4753",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:73:4946",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:78:5235",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:77:5200",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:82:5485",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:80:5446",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:85:5728",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:85:5793",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:90:6073",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:30:1604",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:35:1870",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:31:1705",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:36:2027",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:32:1767",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:37:2088",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:33:1821",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:38:2141",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:35:1947",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:40:2265",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:37:2169",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:42:2485",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:39:2335",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:44:2649",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:53:3332",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:58:3632",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:59:3808",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:64:4102",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:60:3935",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:65:4305",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:63:4093",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:68:4538",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:11:550",
+        "after": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:16:835",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:12:634",
+        "after": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:17:975",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:13:710",
+        "after": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:18:1050",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:15:839",
+        "after": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:20:1177",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:18:1332",
+        "after": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:23:1667",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS single grouped52129 exit0 including TypeScript; app source unchanged afterward",
+    "lint": "PASS full91648 exit0/four prior warnings; new evidence56867 exit0/no warnings",
+    "native": "NOT RUN this batch; grouped qualification remains required",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 53,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Complex attendance import/classification/channel forms; People policy/assignment/compensation and remaining operator/management/Auth owning boundaries; read/search/logout kept distinct. Then consolidated native/reference/real actors and original capability gaps, no extras."
+}

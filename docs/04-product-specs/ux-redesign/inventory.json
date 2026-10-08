@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "670c32f53af97e43c6ac63a7f50f8a5d687edcfa",
+  "sourceHead": "d9b2bfaf1b5dac80dfb0dfdcdaa49f9d4484d29d",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -160,7 +160,7 @@
     {
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
       "phase": "R3",
-      "sha256": "93ecdb2d6ffd0efabb89d159d8d7b2cdbf745a7e86456be236008bd8ce3c6df2"
+      "sha256": "bc6236ac53b376c79aae10c6aac37e8d39a13281d74db756ad74552df51a7e1c"
     },
     {
       "file": "src/app/operator/invitations/new/page.tsx",
@@ -315,7 +315,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
       "phase": "R5",
-      "sha256": "19c63fd6e52d65a6e9d006d85972010c368a825e9fc5ddade5a4556af2a845ac"
+      "sha256": "f7a1b173238af2b67f06746f39ba492ea3223f8c272cd4115dfa7f266fcab54d"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
@@ -440,7 +440,7 @@
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
       "phase": "R2",
-      "sha256": "f5ef8b065a2034feaccaab78bbddd61221fb67d27f1e20f3f78f74fe9d7a0480"
+      "sha256": "01b4b9f8e036b3a5b6b07efdd6fff18dde5994793d04c6b612fa9a499b3c8997"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
@@ -450,7 +450,7 @@
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
       "phase": "R2",
-      "sha256": "28c9f6fe0bd2a03d6758f5e9dac30b059a8d58cc54339bd794a5ceef0467c697"
+      "sha256": "14f04e87623a88a3db0db8f9733f4736eee73730aa9d3b4ce14a198c5b7a5acc"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/page.tsx",
@@ -465,7 +465,7 @@
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
       "phase": "R2",
-      "sha256": "fb5036c0094d7be3add71f8f2bc979067367bbd339ee84eac9618ab248fb2e15"
+      "sha256": "17c70987e53ec7cbaebe149678d15fed300567900e5767819ecc1abd35f5623e"
     },
     {
       "file": "src/app/tenant/[tenantId]/entities-sites/new/page.tsx",
@@ -1185,7 +1185,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
       "phase": "R4",
-      "sha256": "d1710311b5d7f0934a398c077ddbe965cf98bb4158b336b8bcaa846f4e0d2983"
+      "sha256": "580bb10ced4e46efb3100b2d6781c6b7ac9f90d24714c49f91883a4e8286666c"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
@@ -1250,7 +1250,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
       "phase": "R4",
-      "sha256": "3dad3147eeb4ede6d2d5f8b3ca5275124532958bdb30c24c61a1b9c07ffaca96"
+      "sha256": "b78b11a01fb69003bbdc4f8a6a08aee1bf9fe63e6fab6e0f4c6a8d27dc09051f"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
@@ -1260,7 +1260,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
       "phase": "R4",
-      "sha256": "31fb3fdc44bef1aca4f41f98cb4a486472e0b12019fae693dd0ffd41b9e5ab86"
+      "sha256": "41691de54685981db714a026f1100c486ed015512d6e8f551fa5f9e7fefc6c4f"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/new/page.tsx",
@@ -1270,7 +1270,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
       "phase": "R4",
-      "sha256": "cecdd1d0228b1bd3fc7d4a402a17805cbf96683659369aec4d47e38ac0c2c2f0"
+      "sha256": "018713567ef97642bfc3d477374c509743850ce6d7c4aa65fa4da5b150a0768e"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/organization/[kind]/[recordId]/page.tsx",
@@ -1340,7 +1340,7 @@
     {
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
       "phase": "R2",
-      "sha256": "9224a5f5966f8621596f322c9d2999f01b714a43e2142b08151fc6393b77e9eb"
+      "sha256": "b5ba2ade62a8fce6aa4a1cb7fa732a8502733141a84a511558dcab2d6c1af5e6"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/invite/page.tsx",
@@ -8005,9 +8005,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:35:1278",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:40:1547",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 35,
+      "line": 40,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8015,9 +8015,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:36:1370",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:41:1695",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 36,
+      "line": 41,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8027,9 +8027,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:39:1530",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:44:1852",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 39,
+      "line": 44,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8037,9 +8037,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:41:1722",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:46:2042",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 41,
+      "line": 46,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8047,9 +8047,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:43:1930",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:48:2248",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 43,
+      "line": 48,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8057,9 +8057,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:46:2125",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:51:2440",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 46,
+      "line": 51,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8068,20 +8068,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:50:2556",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:55:2867",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 50,
+      "line": 55,
       "tag": "SubmitButton",
       "phase": "R3",
       "attributes": {
         "label": "\"إرسال الدعوة\"",
-        "pendingLabel": "\"جارٍ الإرسال…\""
+        "pendingLabel": "\"جارٍ الإرسال…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:63:3090",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:68:3551",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 63,
+      "line": 68,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -8090,9 +8091,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:69:3517",
+      "id": "CONTROL:src/app/operator/invitations/new/InvitationForm.tsx:74:3972",
       "file": "src/app/operator/invitations/new/InvitationForm.tsx",
-      "line": 69,
+      "line": 74,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -9448,9 +9449,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:18:988",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:23:1245",
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
-      "line": 18,
+      "line": 23,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -9458,9 +9459,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:19:1018",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:24:1331",
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
-      "line": 19,
+      "line": 24,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9470,9 +9471,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:20:1082",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:25:1394",
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
-      "line": 20,
+      "line": 25,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9482,9 +9483,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:23:1291",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:28:1600",
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
-      "line": 23,
+      "line": 28,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9494,14 +9495,14 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:28:1619",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx:33:1923",
       "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
-      "line": 28,
+      "line": 33,
       "tag": "button",
       "phase": "R5",
       "attributes": {
         "type": "\"submit\"",
-        "disabled": "{pending}"
+        "disabled": "{offline || (pending)}"
       }
     },
     {
@@ -11205,9 +11206,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:20:1111",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:25:1387",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 20,
+      "line": 25,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -11215,9 +11216,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:21:1195",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:26:1527",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 21,
+      "line": 26,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11227,9 +11228,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:22:1257",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:27:1588",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 22,
+      "line": 27,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11239,9 +11240,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:23:1351",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:28:1681",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 23,
+      "line": 28,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11251,9 +11252,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:24:1419",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:29:1748",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 24,
+      "line": 29,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11263,9 +11264,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:27:1639",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:32:1965",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 27,
+      "line": 32,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11273,9 +11274,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:30:1869",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:35:2192",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 30,
+      "line": 35,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11283,9 +11284,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:35:2157",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:40:2475",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 35,
+      "line": 40,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11293,14 +11294,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:37:2372",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx:42:2688",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
-      "line": 37,
+      "line": 42,
       "tag": "SubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "{label}",
-        "pendingLabel": "\"جارٍ الحفظ…\""
+        "pendingLabel": "\"جارٍ الحفظ…\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -11378,9 +11380,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:11:494",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:16:779",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -11388,9 +11390,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:12:578",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:17:919",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 12,
+      "line": 17,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11400,9 +11402,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:13:640",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:18:980",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 13,
+      "line": 18,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11412,9 +11414,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:15:767",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:20:1105",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 15,
+      "line": 20,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11422,9 +11424,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:17:945",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:22:1281",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 17,
+      "line": 22,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11432,20 +11434,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:19:1200",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx:24:1534",
       "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
-      "line": 19,
+      "line": 24,
       "tag": "SubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"إضافة الفرع\"",
-        "pendingLabel": "\"جارٍ الإضافة…\""
+        "pendingLabel": "\"جارٍ الإضافة…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:11:495",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:16:780",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -11453,9 +11456,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:12:579",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:17:920",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 12,
+      "line": 17,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11465,9 +11468,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:14:701",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:19:1040",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 14,
+      "line": 19,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11475,9 +11478,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:16:901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:21:1238",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 16,
+      "line": 21,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11485,9 +11488,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:19:1150",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:24:1484",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 19,
+      "line": 24,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11495,14 +11498,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:21:1407",
+      "id": "CONTROL:src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx:26:1739",
       "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
-      "line": 21,
+      "line": 26,
       "tag": "SubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"إضافة الجهة\"",
-        "pendingLabel": "\"جارٍ الإضافة…\""
+        "pendingLabel": "\"جارٍ الإضافة…\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -17568,17 +17572,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:60:4569",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:67:4920",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 60,
+      "line": 67,
       "tag": "summary",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:61:4613",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:68:4963",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 61,
+      "line": 68,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17586,9 +17590,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:62:4708",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:69:5114",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 62,
+      "line": 69,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17598,9 +17602,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:63:4774",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:70:5179",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 63,
+      "line": 70,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17610,9 +17614,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:64:4844",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:71:5248",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 64,
+      "line": 71,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17622,9 +17626,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:65:4980",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:72:5383",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 65,
+      "line": 72,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17633,9 +17637,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:77:5924",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:84:6315",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 77,
+      "line": 84,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17644,28 +17648,29 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:80:6280",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:87:6668",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 80,
+      "line": 87,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إنهاء علاقة العمل\"",
-        "pendingLabel": "\"جارٍ إنهاء العلاقة…\""
+        "pendingLabel": "\"جارٍ إنهاء العلاقة…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:86:6696",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:93:7241",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 86,
+      "line": 93,
       "tag": "summary",
       "phase": "R4",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:89:7075",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:96:7617",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 89,
+      "line": 96,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -17673,9 +17678,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:91:7314",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:7911",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 91,
+      "line": 98,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17685,9 +17690,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:91:7370",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:7967",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 91,
+      "line": 98,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17697,9 +17702,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:92:7492",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:99:8088",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 92,
+      "line": 99,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17707,9 +17712,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:95:7826",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:102:8419",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 95,
+      "line": 102,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17717,9 +17722,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:98:8138",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:105:8728",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 98,
+      "line": 105,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17727,9 +17732,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:101:8487",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:108:9074",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 101,
+      "line": 108,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17737,9 +17742,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:104:8799",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:111:9383",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 104,
+      "line": 111,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17748,9 +17753,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:106:9027",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:113:9609",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 106,
+      "line": 113,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -17758,9 +17763,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:108:9295",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:115:9875",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 108,
+      "line": 115,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17769,9 +17774,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:109:9480",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:116:10059",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 109,
+      "line": 116,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -17780,14 +17785,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:112:9955",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx:119:10531",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
-      "line": 112,
+      "line": 119,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إنشاء علاقة العمل الجديدة\"",
-        "pendingLabel": "\"جارٍ تسجيل إعادة التوظيف…\""
+        "pendingLabel": "\"جارٍ تسجيل إعادة التوظيف…\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -18329,9 +18335,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:21:1117",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:28:1515",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 21,
+      "line": 28,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18339,9 +18345,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:22:1189",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:29:1643",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 22,
+      "line": 29,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18351,9 +18357,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:25:1366",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:32:1817",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 25,
+      "line": 32,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18362,20 +18368,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:34:2121",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:41:2563",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 34,
+      "line": 41,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"فحص الملف\"",
-        "pendingLabel": "\"جارٍ فحص الصفوف…\""
+        "pendingLabel": "\"جارٍ فحص الصفوف…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:43:2984",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:50:3580",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 43,
+      "line": 50,
       "tag": "button",
       "phase": "R4",
       "attributes": {
@@ -18383,9 +18390,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:52:3794",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:59:4381",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 52,
+      "line": 59,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18393,9 +18400,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:53:3858",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:60:4501",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 53,
+      "line": 60,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18405,9 +18412,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:59:4273",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:66:4910",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 59,
+      "line": 66,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18417,14 +18424,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:63:4578",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx:70:5211",
       "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
-      "line": 63,
+      "line": 70,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إضافة الصفوف المحددة\"",
-        "pendingLabel": "\"جارٍ حفظ الدفعة…\""
+        "pendingLabel": "\"جارٍ حفظ الدفعة…\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -18436,9 +18444,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:36:2237",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:41:2499",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 36,
+      "line": 41,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18446,9 +18454,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:37:2321",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:42:2639",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 37,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18458,9 +18466,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:40:2512",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:45:2828",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 40,
+      "line": 45,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18468,9 +18476,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:42:2673",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:47:2987",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 42,
+      "line": 47,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18478,9 +18486,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:48:3045",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:53:3356",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 48,
+      "line": 53,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18489,9 +18497,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:53:3369",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:58:3675",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 53,
+      "line": 58,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18499,9 +18507,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:59:3848",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:64:4148",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 59,
+      "line": 64,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18510,9 +18518,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:61:4049",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:66:4347",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 61,
+      "line": 66,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18521,9 +18529,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:65:4459",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:70:4753",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 65,
+      "line": 70,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18531,9 +18539,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:73:4946",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:78:5235",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 73,
+      "line": 78,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18541,9 +18549,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:77:5200",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:82:5485",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 77,
+      "line": 82,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18552,9 +18560,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:80:5446",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:85:5728",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 80,
+      "line": 85,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18563,20 +18571,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:85:5793",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx:90:6073",
       "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
-      "line": 85,
+      "line": 90,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "\"إضافة الموظف\"",
-        "pendingLabel": "\"جارٍ إضافة الموظف…\""
+        "pendingLabel": "\"جارٍ إضافة الموظف…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:30:1604",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:35:1870",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 30,
+      "line": 35,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18584,9 +18593,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:31:1705",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:36:2027",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 31,
+      "line": 36,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18596,9 +18605,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:32:1767",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:37:2088",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 32,
+      "line": 37,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18608,9 +18617,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:33:1821",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:38:2141",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 33,
+      "line": 38,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18620,9 +18629,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:35:1947",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:40:2265",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 35,
+      "line": 40,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18630,9 +18639,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:37:2169",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:42:2485",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 37,
+      "line": 42,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18640,9 +18649,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:39:2335",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:44:2649",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 39,
+      "line": 44,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18650,9 +18659,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:53:3332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:58:3632",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 53,
+      "line": 58,
       "tag": "select",
       "phase": "R4",
       "attributes": {
@@ -18660,38 +18669,41 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:59:3808",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:64:4102",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 59,
+      "line": 64,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "{isNew ? 'إضافة السجل' : 'حفظ التغييرات'}",
-        "pendingLabel": "\"جارٍ الحفظ…\""
+        "pendingLabel": "\"جارٍ الحفظ…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:60:3935",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:65:4305",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 60,
+      "line": 65,
       "tag": "button",
       "phase": "R4",
       "attributes": {
         "type": "\"submit\"",
         "name": "\"intent\"",
-        "value": "\"disable\""
+        "value": "\"disable\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:63:4093",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx:68:4538",
       "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
-      "line": 63,
+      "line": 68,
       "tag": "button",
       "phase": "R4",
       "attributes": {
         "type": "\"submit\"",
         "name": "\"intent\"",
-        "value": "\"reactivate\""
+        "value": "\"reactivate\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -19183,9 +19195,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:11:550",
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:16:835",
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
-      "line": 11,
+      "line": 16,
       "tag": "form",
       "phase": "R2",
       "attributes": {
@@ -19193,9 +19205,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:12:634",
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:17:975",
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
-      "line": 12,
+      "line": 17,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -19205,9 +19217,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:13:710",
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:18:1050",
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
-      "line": 13,
+      "line": 18,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -19217,9 +19229,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:15:839",
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:20:1177",
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
-      "line": 15,
+      "line": 20,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -19228,14 +19240,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:18:1332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx:23:1667",
       "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
-      "line": 18,
+      "line": 23,
       "tag": "SubmitButton",
       "phase": "R2",
       "attributes": {
         "label": "\"إرسال الدعوة\"",
-        "pendingLabel": "\"جارٍ الإرسال…\""
+        "pendingLabel": "\"جارٍ الإرسال…\"",
+        "disabled": "{offline}"
       }
     },
     {

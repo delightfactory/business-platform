@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Link from 'next/link';
 import { useActionState, useState } from 'react';
@@ -12,6 +14,8 @@ const errors = {
 };
 
 export function InvitationForm({ requestKey }: { requestKey: string }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
   const initial: InvitationFormState = {
     error: null,
     attempt: 0,
@@ -27,12 +31,13 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
       sitesLimit: '10',
     },
   };
-  const [state, formAction] = useActionState(createInvitationAction, initial);
+  const [state, formAction, formActionPending] = useActionState(createInvitationAction, initial);
   const values = state.values;
 
+  const showOffline0 = offline && !formActionPending;
   return <section className="workspace-form-panel" aria-label="بيانات دعوة المسؤول الأول">
     {state.error && <p className="form-message form-error" role="alert">{errors[state.error]}</p>}
-    <form key={state.attempt} className="auth-form onboarding-form" action={formAction}>
+    <form key={state.attempt} className="auth-form onboarding-form" action={formAction} onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <input type="hidden" name="idempotencyKey" value={values.idempotencyKey} />
       <h2>الشركة</h2>
       <label htmlFor="tenantName">اسم الشركة</label>
@@ -47,9 +52,9 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
       <h2>حدود الاستخدام الأولية</h2>
       <LimitFields kind="seats" label="المستخدمون" mode={values.seatsMode} limit={values.seatsLimit} />
       <LimitFields kind="sites" label="الفروع" mode={values.sitesMode} limit={values.sitesLimit} />
-      <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…" />
+      <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
         <Link className="secondary-button" href="/operator/invitations">إلغاء</Link></div>
-    </form>
+    {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
   </section>;
 }
 

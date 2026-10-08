@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
 import Link from 'next/link';
@@ -8,14 +10,17 @@ type ReadyRow = { id: string; employee_code: string; full_name: string };
 const initial: BulkApprovalState = { message: '', items: [] };
 
 export function AttendanceBulkApprovalForm({ tenantId, date, rows }: { tenantId: string; date: string; rows: ReadyRow[] }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
   const [state, action, pending] = useActionState(bulkApproveReadyAttendanceAction, initial);
   const labels = new Map(rows.map((row) => [row.id, `${row.full_name} · ${row.employee_code}`]));
+  const showOffline0 = offline && !pending;
   return <section className="attendance-bulk-panel" aria-labelledby="bulk-approval-title">
     <div className="work-policy-panel-heading">
       <h2 id="bulk-approval-title">اعتماد الأيام الجاهزة</h2>
       <p>يشمل الاعتماد الأيام المكتملة بلا استثناء فقط. يعاد فحص كل سجل قبل الحفظ؛ الحالات التي تغيّرت تُعرض كنتيجة منفصلة.</p>
     </div>
-    <form action={action}>
+    <form action={action} onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <input type="hidden" name="tenantId" value={tenantId} />
       <input type="hidden" name="operationalDate" value={date} />
       <ul className="attendance-bulk-list">
@@ -25,8 +30,8 @@ export function AttendanceBulkApprovalForm({ tenantId, date, rows }: { tenantId:
           </label><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</Link></div>
         </li>)}
       </ul>
-      <button className="primary-button" type="submit" disabled={pending}>{pending ? 'جارٍ التحقق والاعتماد…' : 'اعتماد السجلات المحددة'}</button>
-    </form>
+      <button className="primary-button" type="submit" disabled={offline || (pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ التحقق والاعتماد…' : 'اعتماد السجلات المحددة'}</button>
+    {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
     {state.message && <div className="attendance-bulk-result" role="status" aria-live="polite">
       <p>{state.message}</p>
       {state.items.length > 0 && <ul>{state.items.map((item) => <li key={item.instance_id}>

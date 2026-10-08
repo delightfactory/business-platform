@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Link from 'next/link';
 import { useActionState } from 'react';
@@ -15,19 +17,22 @@ export type OrgCatalogRecord = {
 
 export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncated }:
   { tenantId: string; kind: OrgCatalogKind; record: OrgCatalogRecord | null; options: OrgCatalogOption[]; optionsTruncated: boolean }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
   const isNew = record === null;
   const relationId = kind === 'departments' ? record?.parent_id ?? '' : record?.department_id ?? '';
   const initial: OrgCatalogFormState = {
     tenantId, kind, recordId: record?.id ?? 'new', code: record?.code ?? '', name: record?.name ?? '',
     relationId, isActive: record?.is_active ?? true, error: '', attempt: 0,
   };
-  const [state, action] = useActionState(saveOrgCatalogAction, initial);
+  const [state, action, actionPending] = useActionState(saveOrgCatalogAction, initial);
   const choices = kind === 'departments' && record
     ? excludeDescendants(options, record.id)
     : options;
   const relationName = kind === 'departments' ? 'القسم الأعلى (اختياري)' : 'القسم (اختياري)';
   const missingCurrent = state.relationId && !choices.some((option) => option.id === state.relationId);
-  return <form key={state.attempt} action={action} className="auth-form compact-form org-catalog-form">
+  const showOffline0 = offline && !actionPending;
+  return <form key={state.attempt} action={action} className="auth-form compact-form org-catalog-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="kind" value={kind} />
     <input type="hidden" name="recordId" value={record?.id ?? 'new'} />
@@ -56,16 +61,16 @@ export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncat
     {!isNew && <p className="field-hint">تعطيل السجل يحفظ تاريخه وروابط التكليف السابقة، ويمنع اختياره في تكليفات جديدة.</p>}
     {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
     <div className="workspace-form-actions org-catalog-actions">
-      <SubmitButton label={isNew ? 'إضافة السجل' : 'حفظ التغييرات'} pendingLabel="جارٍ الحفظ…" />
-      {!isNew && state.isActive && <button className="secondary-button" type="submit" name="intent" value="disable">
+      <SubmitButton label={isNew ? 'إضافة السجل' : 'حفظ التغييرات'} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
+      {!isNew && state.isActive && <button className="secondary-button" type="submit" name="intent" value="disable" aria-describedby={showOffline0 ? offlineHint0 : undefined} disabled={offline}>
         تعطيل السجل
       </button>}
-      {!isNew && !state.isActive && <button className="secondary-button" type="submit" name="intent" value="reactivate">
+      {!isNew && !state.isActive && <button className="secondary-button" type="submit" name="intent" value="reactivate" aria-describedby={showOffline0 ? offlineHint0 : undefined} disabled={offline}>
         إعادة تفعيل السجل
       </button>}
       <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>إلغاء</Link>
     </div>
-  </form>;
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }
 
 function excludeDescendants(options: OrgCatalogOption[], recordId: string) {

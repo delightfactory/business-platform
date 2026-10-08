@@ -1,0 +1,52 @@
+[
+  {
+    "file": "src/app/operator/invitations/new/InvitationForm.tsx",
+    "baselineHash": "93ecdb2d6ffd0efabb89d159d8d7b2cdbf745a7e86456be236008bd8ce3c6df2",
+    "candidateHash": "bc6236ac53b376c79aae10c6aac37e8d39a13281d74db756ad74552df51a7e1c"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
+    "baselineHash": "fb5036c0094d7be3add71f8f2bc979067367bbd339ee84eac9618ab248fb2e15",
+    "candidateHash": "17c70987e53ec7cbaebe149678d15fed300567900e5767819ecc1abd35f5623e"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
+    "baselineHash": "f5ef8b065a2034feaccaab78bbddd61221fb67d27f1e20f3f78f74fe9d7a0480",
+    "candidateHash": "01b4b9f8e036b3a5b6b07efdd6fff18dde5994793d04c6b612fa9a499b3c8997"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
+    "baselineHash": "28c9f6fe0bd2a03d6758f5e9dac30b059a8d58cc54339bd794a5ceef0467c697",
+    "candidateHash": "14f04e87623a88a3db0db8f9733f4736eee73730aa9d3b4ce14a198c5b7a5acc"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
+    "baselineHash": "31fb3fdc44bef1aca4f41f98cb4a486472e0b12019fae693dd0ffd41b9e5ab86",
+    "candidateHash": "41691de54685981db714a026f1100c486ed015512d6e8f551fa5f9e7fefc6c4f"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
+    "baselineHash": "cecdd1d0228b1bd3fc7d4a402a17805cbf96683659369aec4d47e38ac0c2c2f0",
+    "candidateHash": "018713567ef97642bfc3d477374c509743850ce6d7c4aa65fa4da5b150a0768e"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
+    "baselineHash": "9224a5f5966f8621596f322c9d2999f01b714a43e2142b08151fc6393b77e9eb",
+    "candidateHash": "b5ba2ade62a8fce6aa4a1cb7fa732a8502733141a84a511558dcab2d6c1af5e6"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
+    "baselineHash": "19c63fd6e52d65a6e9d006d85972010c368a825e9fc5ddade5a4556af2a845ac",
+    "candidateHash": "f7a1b173238af2b67f06746f39ba492ea3223f8c272cd4115dfa7f266fcab54d"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
+    "baselineHash": "3dad3147eeb4ede6d2d5f8b3ca5275124532958bdb30c24c61a1b9c07ffaca96",
+    "candidateHash": "b78b11a01fb69003bbdc4f8a6a08aee1bf9fe63e6fab6e0f4c6a8d27dc09051f"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+    "baselineHash": "d1710311b5d7f0934a398c077ddbe965cf98bb4158b336b8bcaa846f4e0d2983",
+    "candidateHash": "580bb10ced4e46efb3100b2d6781c6b7ac9f90d24714c49f91883a4e8286666c"
+  }
+]

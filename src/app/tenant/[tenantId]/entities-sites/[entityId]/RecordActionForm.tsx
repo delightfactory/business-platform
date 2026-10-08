@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
@@ -11,13 +13,16 @@ type Props = {
 };
 
 export function RecordActionForm({ tenantId, entityId, siteId, action: recordAction, displayName = '', legalName = '', label }: Props) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
   const initial: RecordActionState = { displayName, legalName, reason: '', error: '', attempt: 0 };
-  const [state, action] = useActionState(siteId ? siteFormAction : legalEntityFormAction, initial);
+  const [state, action, actionPending] = useActionState(siteId ? siteFormAction : legalEntityFormAction, initial);
   const isSite = Boolean(siteId);
   const prefix = `${isSite ? 'site' : 'entity'}-${recordAction}-${siteId ?? entityId}`;
   const reasonLabel = recordAction === 'deactivate' ? 'سبب التعطيل' : recordAction === 'reactivate' ? 'سبب إعادة التفعيل'
     : recordAction === 'default' ? 'سبب تغيير الاختيار الأساسي' : 'سبب التعديل';
-  return <form key={state.attempt} action={action} className="auth-form compact-form">
+  const showOffline0 = offline && !actionPending;
+  return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name={isSite ? 'siteId' : 'entityId'} value={siteId ?? entityId} />
     <input type="hidden" name="returnEntityId" value={entityId} />
@@ -35,6 +40,6 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
     <input id={`${prefix}-reason`} name="reason" defaultValue={state.reason} required minLength={3} maxLength={500} />
     {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
     <SubmitButton className={recordAction === 'deactivate' ? 'danger-button' : 'secondary-button'} label={label}
-      ariaLabel={isSite && displayName ? `${label}: ${displayName}` : undefined} pendingLabel="جارٍ الحفظ…" />
-  </form>;
+      ariaLabel={isSite && displayName ? `${label}: ${displayName}` : undefined} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

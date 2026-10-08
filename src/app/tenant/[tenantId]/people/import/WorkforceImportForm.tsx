@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Link from 'next/link';
 import { useActionState, useState } from 'react';
@@ -8,17 +10,22 @@ import { confirmWorkforceImport, validateWorkforceCsv, type CommitImportState, t
 type PreviewRow = PreviewImportState['rows'][number];
 
 export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
+  const offlineHint1 = useId();
   const [fileName, setFileName] = useState('');
-  const [preview, previewAction] = useActionState(validateWorkforceCsv, emptyPreview(tenantId));
-  const [commit, commitAction] = useActionState(confirmWorkforceImport, emptyCommit());
+  const [preview, previewAction, previewActionPending] = useActionState(validateWorkforceCsv, emptyPreview(tenantId));
+  const [commit, commitAction, commitActionPending] = useActionState(confirmWorkforceImport, emptyCommit());
   const importableRows = preview.rows.filter((row) => row.importable);
   const selectedData = commit.staleRows ? commit.staleRows.filter((row) => row.importable).map((row) => row.data) : null;
   const shownRows = commit.staleRows ?? preview.rows;
   const rejected = shownRows.filter((row) => row.status === 'rejected');
   const selectableData = selectedData ?? importableRows.map((row) => row.data);
 
+  const showOffline1 = offline && !commitActionPending;
+  const showOffline0 = offline && !previewActionPending;
   return <div className="workforce-import">
-    <form action={previewAction} className="auth-form compact-form">
+    <form action={previewAction} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <input type="hidden" name="tenantId" value={tenantId} />
       <div className="workforce-file-control">
         <span className="workforce-file-label">ملف CSV</span>
@@ -31,8 +38,8 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
       </div>
       <p id="workforce-csv-hint" className="field-hint">الحد الأقصى 256 كيلوبايت و100 صف. سيُفحص الملف قبل أي حفظ.</p>
       {preview.error && <p className="form-message error-message" role="alert">{preview.error}</p>}
-      <SubmitButton label="فحص الملف" pendingLabel="جارٍ فحص الصفوف…" />
-    </form>
+      <SubmitButton label="فحص الملف" pendingLabel="جارٍ فحص الصفوف…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
+    {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
 
     {preview.rows.length > 0 && <section aria-live="polite" className="workforce-import-preview">
       <h2>نتيجة الفحص</h2>
@@ -49,7 +56,7 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
         <td>{[...row.errors, ...row.warnings].join(' · ') || '—'}</td>
       </tr>)}</tbody></table></div>
 
-      {commit.state !== 'imported' && selectableData.length > 0 && <form action={commitAction} className="compact-form">
+      {commit.state !== 'imported' && selectableData.length > 0 && <form action={commitAction} className="compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <input type="hidden" name="tenantId" value={tenantId} />
         {selectableData.map((data, index) => {
           const row = shownRows.find((item) => item.source_row_number === data.source_row_number);
@@ -60,9 +67,9 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
             <span>إضافة سطر الملف {row.source_row_number}: <bdi>{row.employee_code}</bdi> — {row.full_name}</span>
           </label>;
         })}
-        <div className="workspace-form-actions"><SubmitButton label="إضافة الصفوف المحددة" pendingLabel="جارٍ حفظ الدفعة…" />
+        <div className="workspace-form-actions"><SubmitButton label="إضافة الصفوف المحددة" pendingLabel="جارٍ حفظ الدفعة…"  ariaDescribedBy={showOffline1 ? offlineHint1 : undefined} disabled={offline}/>
           <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>إلغاء</Link></div>
-      </form>}
+      {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
     </section>}
   </div>;
 }

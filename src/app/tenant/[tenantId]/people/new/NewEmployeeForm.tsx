@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Link from 'next/link';
 import { useActionState, useState } from 'react';
@@ -12,6 +14,8 @@ type Job = Named & { department_id: string | null };
 export type OnboardingOptions = { employers: Named[]; sites: Site[]; departments: Named[]; jobs: Job[] };
 
 export function NewEmployeeForm({ tenantId, options }: { tenantId: string; options: OnboardingOptions }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
   const employers = Array.isArray(options.employers) ? options.employers : [];
   const sites = Array.isArray(options.sites) ? options.sites : [];
   const departments = Array.isArray(options.departments) ? options.departments : [];
@@ -22,7 +26,7 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
       timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit',
     }).format(new Date()),
     payBasis: 'monthly', amount: '', payrollEligible: true, error: '', attempt: 0 };
-  const [state, action] = useActionState(createEmployeeAction, initial);
+  const [state, action, actionPending] = useActionState(createEmployeeAction, initial);
   const [employerChoice, setEmployerChoice] = useState<string | null>(null);
   const [departmentChoice, setDepartmentChoice] = useState<string | null>(null);
   const employerId = employerChoice ?? state.employerId;
@@ -33,7 +37,8 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
     <p>يلزم وجود جهة توظيف وفرع نشط قبل إضافة موظف.</p>
     <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>الجهات والفروع</Link></div>;
 
-  return <form key={state.attempt} action={action} className="auth-form compact-form">
+  const showOffline0 = offline && !actionPending;
+  return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <fieldset className={styles.formGroup}><legend>بيانات الموظف</legend>
     <label htmlFor="employee-code">رمز الموظف</label>
@@ -82,7 +87,7 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
     </label>
     </fieldset>
     {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
-    <div className="workspace-form-actions"><SubmitButton label="إضافة الموظف" pendingLabel="جارٍ إضافة الموظف…" />
+    <div className="workspace-form-actions"><SubmitButton label="إضافة الموظف" pendingLabel="جارٍ إضافة الموظف…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
       <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>إلغاء</Link></div>
-  </form>;
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

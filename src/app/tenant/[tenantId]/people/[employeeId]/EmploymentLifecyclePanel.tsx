@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
@@ -23,18 +25,23 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
   employmentStartDate: string | null; workforceStatus: string; previousEndDate: string | null; canManage: boolean; today: string;
   history: EmploymentHistory | null; historyError: boolean; rehireOptions: RehireOptions | null; optionsError: boolean;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHint0 = useId();
+  const offlineHint1 = useId();
   const endInitial: LifecycleState = { tenantId, employeeId, employmentId: employmentId ?? '', endDate: today, error: '', attempt: 0 };
   const rehireInitial: RehireState = { tenantId, employeeId,
     employerId: rehireOptions?.employers[0]?.id ?? '',
     siteId: rehireOptions?.sites.find((site) => site.employer_id === rehireOptions.employers[0]?.id)?.id ?? '',
     departmentId: '', jobId: '', startDate: maxDate(today, nextDate(previousEndDate)),
     payBasis: 'monthly', amount: '', payrollEligible: true, error: '', attempt: 0 };
-  const [endState, endAction] = useActionState(endEmploymentAction, endInitial);
-  const [rehireState, rehireAction] = useActionState(rehireEmployeeAction, rehireInitial);
+  const [endState, endAction, endActionPending] = useActionState(endEmploymentAction, endInitial);
+  const [rehireState, rehireAction, rehireActionPending] = useActionState(rehireEmployeeAction, rehireInitial);
   const canEnd = canManage && Boolean(employmentId) && employmentStatus === 'active' && workforceStatus !== 'ended'
     && Boolean(employmentStartDate && employmentStartDate <= today);
   const canRehire = canManage && workforceStatus === 'ended';
 
+  const showOffline1 = offline && !rehireActionPending;
+  const showOffline0 = offline && !endActionPending;
   return <section className="workspace-records-panel assignment-history-panel" aria-labelledby="employment-history-heading">
     <h2 id="employment-history-heading">سجل علاقات العمل</h2>
     {historyError && <p className="form-message error-message" role="alert">تعذر تحميل سجل علاقات العمل. حدّث الصفحة أو تحقق من صلاحية عرض ملف الموظف.</p>}
@@ -58,7 +65,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
     {history?.events_truncated && <p className="record-meta">يعرض السجل أحدث 100 إجراء.</p>}
     {canEnd && <details className="compensation-change-details">
       <summary>إنهاء علاقة العمل</summary>
-      <form key={endState.attempt} action={endAction} className="compensation-change-form">
+      <form key={endState.attempt} action={endAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="employeeId" value={employeeId} />
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
@@ -77,8 +84,8 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
         <label className="checkbox-field"><input name="acknowledgeHandoff" type="checkbox" required />
           <span>أؤكد أنني راجعت هذه الآثار ونسّقت مع المسؤولين، وأفهم أن التاريخ السابق قد يتطلب تصحيحًا يدويًا لدى Payroll.</span></label>
         {endState.error && <p className="form-message error-message" role="alert">{endState.error}</p>}
-        <div className="workspace-form-actions"><SubmitButton label="إنهاء علاقة العمل" pendingLabel="جارٍ إنهاء العلاقة…" /></div>
-      </form>
+        <div className="workspace-form-actions"><SubmitButton label="إنهاء علاقة العمل" pendingLabel="جارٍ إنهاء العلاقة…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/></div>
+      {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
     </details>}
     {canManage && employmentStatus === 'active' && employmentStartDate && employmentStartDate > today
       && <p className="form-message">لا يمكن إنهاء علاقة العمل قبل تاريخ بدايتها <bdi>{employmentStartDate}</bdi>.</p>}
@@ -86,7 +93,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
       <summary>إعادة توظيف هذا الموظف</summary>
       {optionsError && <p className="form-message error-message" role="alert">تعذر تحميل جهات التوظيف والاختيارات النشطة. حدّث الصفحة قبل المتابعة.</p>}
       {!optionsError && !rehireOptions && <p className="form-message error-message" role="alert">خيارات إعادة التوظيف غير متاحة حاليًا.</p>}
-      {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form">
+      {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع تكليف وأجر ابتدائيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
         <label htmlFor="rehire-employer">جهة التوظيف</label><select id="rehire-employer" name="employerId" required defaultValue={rehireState.employerId}>
@@ -109,8 +116,8 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
         <label className="checkbox-field"><input name="payrollEligible" type="checkbox" defaultChecked={rehireState.payrollEligible} /><span>مشمول في Payroll</span></label>
         <div className="form-message">تتطلب مستحقات الفترة السابقة تسوية مستقلة. راجع Payroll للتسوية النهائية أو التسوية اليدوية المعتمدة، ونسّق الإجازات والتمويل مع مسؤوليها.</div>
         {rehireState.error && <p className="form-message error-message" role="alert">{rehireState.error}</p>}
-        <div className="workspace-form-actions"><SubmitButton label="إنشاء علاقة العمل الجديدة" pendingLabel="جارٍ تسجيل إعادة التوظيف…" /></div>
-      </form>}
+        <div className="workspace-form-actions"><SubmitButton label="إنشاء علاقة العمل الجديدة" pendingLabel="جارٍ تسجيل إعادة التوظيف…"  ariaDescribedBy={showOffline1 ? offlineHint1 : undefined} disabled={offline}/></div>
+      {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
     </details>}
   </section>;
 }
