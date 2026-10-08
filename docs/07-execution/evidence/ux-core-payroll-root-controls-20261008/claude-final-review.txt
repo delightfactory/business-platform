@@ -1,0 +1,63 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 root controls: final delta review
+
+## Source fixes: accepted. There is no source must-fix, but one evidence recapture is required
+- **Employer name.** `page.tsx:83` shows the full `calendar.employer_name` as plain text, while the select (`:85–87`) still sends only the employer. The same authorized field also supplies the fallback option.
+- **CSS.** `.workspace > header { min-width: 0; overflow-wrap: anywhere }` (`payroll.module.css:2`) and `.filters select { min-width: 0; max-width: 100% }` (`:28`) only change layout. The CSS export names are unchanged.
+- **Long-name evidence.** `long-employer-evidence.json` shows the name at 342.8×60px (two lines), the select at 342.8×44px and `scrollWidth` 375. The JSON and `long-employer-390.png` match. The full name is readable even though the select clips its own text, which is acceptable now that the plain text carries the identity.
+- **Titles.** `issue-titles.ts:11` ("تسوية ضريبية مستردة تؤثر على سعة الخصم") and `:17` ("السلف غير مفعّلة والالتزام قائم") match the suggested wording and stay faithful to the full guidance.
+
+**Evidence must-fix: `root-desktop-corrected.png` doesn't show the current source.** The header goes straight from "الرواتب" to the "جهة العمل" label, with no plain employer-name line. The primary also sits at about 682px, while the spec says 732px for 1366. That is a capture from before the fix. Recapture 1366 from the current source. This needs no source change, and the build doesn't need to run again.
+
+## Visual verdict (scope: exactly what I inspected)
+- **`long-employer-390.png`: verified for long-name identity at 390px.** The full name wraps onto two lines, there is no horizontal overflow, the full-width select is followed by its secondary submit, and the period form is unchanged.
+- **`issue-mobile-corrected.png`: verified for the issue disclosure on mobile.**
+  - Focus ring visible on the summary.
+  - The opened details shows the full original guidance, including the owner ("المسؤول: الموارد البشرية").
+  - The review link and the closed secondary-links disclosure are still there.
+  - One primary sits above.
+  - This frame doesn't show the header, so it doesn't prove which source build was captured.
+- **`root-desktop-corrected.png`:** invalid for this checkpoint because it predates the fix (see above).
+- **Comparison with the Concept C reference:** **NOT VISUALLY VERIFIED** for a full match. The mobile comparison stays partial, as established before, and the desktop reference is still invalid.
+
+**Scan cost, recorded and not to be optimized further now:** primaryTop is 677→838px on mobile and 596→732px on desktop. You get direct switching and a readable financial identity in exchange. No claim that the task is faster.
+
+**Still open (not accepted):**
+- the same-employer reset scenario;
+- showing the `blocking` flag;
+- all the remaining required R7 items listed in spec line 11;
+- real roles and hydration;
+- whole-R7 acceptance.
+
+## Next: the `runs` batch (spec first, read-only co-design)
+1. **Inputs needed:** `runs/page.tsx` plus its forms and actions, and the stale/issue rendering. `runs/rules.ts` is already known.
+2. **Scope, presentation and navigation only:**
+   - the same plain-text employer identity, with the period context carried consistently;
+   - one stage-specific primary per state, derived only from the existing permitted actions and current status;
+   - the issue title + full-guidance `<details>` pattern, reusing `issue-titles.ts`;
+   - all `staleNames` text kept visible.
+3. **Freeze unchanged:**
+   - the `runError` mapping;
+   - attempt and signature identity;
+   - `closedUncommitted` and `recovered`;
+   - the PT409, 55P03/40P01 and 42501 paths;
+   - the correction-required redirect;
+   - the cancel-reason rules;
+   - no automatic retry or resubmission, and unknown results stay blocked until reconciled;
+   - no new RPCs, permissions or calculations.
+4. **Before/after measures:**
+   - for the same actor and data: N/C/I and primaryTop;
+   - draft, review, approved, stale, cancelled, unknown result and closed-uncommitted states;
+   - 390/1366, keyboard, and denied/disabled.
+
+Then `inputs` → `output`. `payments`/`corrections` come last, presentation only.

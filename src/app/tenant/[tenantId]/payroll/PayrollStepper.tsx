@@ -24,6 +24,6 @@ export function PayrollStepper({ currentStage, historical = false }: { currentSt
       <summary>عرض مراحل الرواتب</summary>
       {list}
     </details>
-    <p className="field-hint">حالة الصرف تُراجع في شاشة الدفعات حسب صلاحياتك؛ وجود مسير نهائي لا يعني أنه صُرف.</p>
+    {currentStage === 5 && <p className="field-hint">حالة الصرف تُراجع في شاشة الدفعات حسب صلاحياتك؛ وجود مسير نهائي لا يعني أنه صُرف.</p>}
   </section>;
 }

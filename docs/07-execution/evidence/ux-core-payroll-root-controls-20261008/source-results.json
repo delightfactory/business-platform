@@ -1,0 +1,361 @@
+{
+  "baseline": "469da9ef102995252f6df55c223c82a6cc0851fd",
+  "cases": [
+    {
+      "case": "none-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "none-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "none-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "cancelled-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "cancelled-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "cancelled-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "draft-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "draft-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "draft-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "review-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "review-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "review-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "approved-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "approved-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "approved-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "locked-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "locked-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "locked-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "superseded-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "superseded-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "superseded-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "unexpected-prepare",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "unexpected-output",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "unexpected-payment",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "noSdk",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "noUser",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "noEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "noPeriods",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "noPeriodSelected",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "cannotView",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "accessDenied",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "workspaceFailed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "runFailed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "staleApproved",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "staleLockedNoOutput",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "disabled",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "lockedNoOutput",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "lockedNoPermission",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "longEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "allIssues",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "pagedEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "missingSelected",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "singleEmployer",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    },
+    {
+      "case": "lockedStaleNoFinalRole",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "nativeFields": "PASS",
+      "primary": "PASS",
+      "scope": "synthetic SDK, actual source"
+    }
+  ],
+  "stageCases": 11,
+  "allIssueCodes": 78,
+  "headerForm": "employer only; existing period form and all RPCs/primary/routes preserved",
+  "scope": "Actual source/SSR with controlled SDK; no real role/provider/financial/mutation acceptance"
+}

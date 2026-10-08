@@ -1,0 +1,41 @@
+{
+  "layouts": [
+    {
+      "employerLabel": "جهة العملجهة صناعيةجهة ثانية",
+      "employerWidth": 100,
+      "primaryCount": 1,
+      "primaryTop": 776.1500244140625,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "employerLabel": "جهة العملجهة صناعيةجهة ثانية",
+      "employerWidth": 100,
+      "primaryCount": 1,
+      "primaryTop": 669.9125366210938,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "employerLabel": "جهة العملجهة صناعيةجهة ثانية",
+      "employerWidth": 100,
+      "primaryCount": 1,
+      "primaryTop": 669.9125366210938,
+      "scrollWidth": 1351,
+      "width": 1366
+    }
+  ],
+  "keyboard": {
+    "focus": "الأجر لا يغطي كل أيام الفترة · التفاصيل",
+    "guidanceVisible": [
+      {
+        "open": true,
+        "text": "الأجر لا يغطي كل أيام الفترة · التفاصيللا يغطي الأجر جميع أيام العمل في الفترة؛ المسؤول: الموارد البشرية."
+      }
+    ]
+  },
+  "form": {
+    "url": "http://127.0.0.1:3594/tenant/33333333-3333-4333-8333-333333333333/payroll?employer=44444444-4444-4444-8444-444444444444",
+    "scope": "native GET request only; fixture destination does not prove real employer authorization/loading"
+  }
+}

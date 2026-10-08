@@ -1,0 +1,96 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 root controls checkpoint (baseline 469da9e): review
+
+## Must-fix: none confirmed. One item must be verified before acceptance
+
+**Verify before acceptance: the selected employer must stay readable when its name is long.** The header used to show `calendar.employer_name` as plain text. Now the name appears only inside the closed native `<select>` (`page.tsx:84–87`). `.filters select` only has `max-width: 100%` (`payroll.module.css:27`), so at 390px a long employer name gets clipped. In payroll, a cut-off employer identity risks cross-employer confusion. `render-evidence.json` only measured short names, so the 100px width tells us nothing about this case.
+
+Do one of these:
+- capture a long-name render at 390px showing the name is still distinguishable; or
+- give `.filters select` `width: 100%` below 600px. That is CSS only, with no change to the control.
+
+Don't add the text line back unless the capture fails; it would cost more scan height.
+
+Source checks:
+- **The header form sends only the employer.** It is `action={path}` with a single `name="employer"` field. The previous employer's period, `q`, `review_q` and `after_*` don't carry over. There is no submit on change, and the button is secondary.
+- **The current employer is always in the list.** If the selected employer isn't in the filtered, paged or empty results, a fallback option uses the authoritative `calendar.employer_name`. That name comes after `payroll_workspace` has authorized the employer, so the fallback doesn't widen access.
+- **The original chooser is reachable.** The "اختيار جهة أخرى" link to `path` remains. A hint says the list may not hold every employer.
+- **Everything else is unchanged:** the `payroll_employers` call and its 30-item limit, the period form, the primary branches, the secondary links, the `runLink` for issues, and `issue_count`.
+- **Payment caveat.** It now shows only when `currentStage === 5` (`PayrollStepper.tsx:27`). The superseded, no-permission and final cautions at `page.tsx:105` are untouched.
+- **Known behaviour to record, not fix.** Submitting the *same* employer drops the selected period, so the page falls back to the date-derived current period. That is consistent with the spec's "employer only" rule. Record it as a scenario.
+
+## Issue titles against the full guidance
+- I counted 78 keys in `issue-titles.ts:3–80`, which matches the reported 78-code parity. Order and repeats are kept, because the list maps over `global_issues` by index. Unknown codes get "مصدر الفترة يحتاج مراجعة" plus the original fallback text. The full `issueNames` text appears unchanged in `<details>`.
+- No title invents an employee, an owner route or an amount. Titles are titles only; the responsible owner and prerequisites stay in the details.
+- **Two titles weaken the meaning slightly. These are should-fix, a one-line change each:**
+  - `payroll_deduction_refund_basis_required`: "أساس التسوية الضريبية يحتاج مراجعة". The guidance says a refundable tax settlement affects the *deduction-capacity basis*. Suggested title: "تسوية ضريبية مستردة تؤثر على سعة الخصم".
+  - `advance_finance_disabled`: "ميزة السلف غير مفعّلة". This leaves out the key safeguard that the obligation still exists. Suggested title: "السلف غير مفعّلة والالتزام قائم".
+- I found no other title that changes the meaning.
+- **Maintenance risk:** `issue-titles.ts` is separate from `runs/rules.ts`. A new code added later would quietly use the generic title. The parity check needs to stay as a regression gate. That keeps an existing check; it isn't extra work.
+- **`blocking` is still not shown,** same as the baseline. The section intro calls everything "عوائق" (blockers). That is pre-existing and stays open.
+
+## Coverage, simplicity and reference
+
+**Coverage.** 43 actual-source cases pass with a controlled SDK, including all-issue parity, paged employers, a missing selected employer, a single employer and the locked + stale + no-final-role edge. The render evidence:
+- covers one scene at three widths;
+- shows keyboard focus on an issue summary, which opens to the full text;
+- shows the native GET sent only the employer.
+
+It does not prove the destination authorized and loaded that employer. Not covered:
+- long-name rendering;
+- zero-employer and 30-employer rendering;
+- disabled, superseded and can't-view states;
+- real roles and the hydrated parent.
+
+**Simplicity: a real tradeoff, not a gain.**
+- Switching employer now takes one control and one submit on the root page, where it used to need the chooser page. That cuts N (navigations) by one for that journey.
+- The primary moved down: 677→776px on mobile, 596→670px on desktop.
+- The two hints and the link stack up (see the mobile capture). Merging the two `field-hint` lines into one sentence would recover some height. That is optional and not worth another loop.
+- No claim that the whole task is faster.
+
+**Visual:**
+- **Mobile, partial comparison.** I inspected `root-mobile-corrected.png` and, earlier in this session, the valid `reference-payroll-390.png`. The employer control now matches the reference's intent: a selector in the header, here as native GET with an explicit submit. The stepper placement, the figure strip with deductions and net placeholder, and the blockers card with owner actions still differ. Those are open R7 work. The stepper's completion states are governed differences.
+- **Issue disclosure:** **NOT VISUALLY VERIFIED.** The corrected mobile image stops above the issues section, and I didn't inspect `issue-open-1366.png` as instructed.
+- **Desktop / full match:** **NOT VISUALLY VERIFIED.** The desktop reference is incomplete, and `root-390/768/1366.png` are invalid as you noted.
+
+## Still open (required, not accepted omissions)
+- **Root page:**
+  - deductions and net figures from a qualified source;
+  - per-employee owner routes;
+  - the unclassified-overtime notice;
+  - time/leave and payment source facts;
+  - showing the `blocking` flag.
+- **Sub-pages:**
+  - permanent employer context on every sub-page;
+  - stage-specific authorized actions;
+  - all of runs, inputs, output, payments, corrections, advances, reports and setup.
+- **Qualification:** the full parent shell and hydration, real roles, and financial and recovery qualification.
+
+## Next core work: `runs` first, with a bounded spec before any edit
+`runs` is where preparing, recalculating, approving and cancelling actually happen, so it is the R7 stage-action surface.
+
+**Co-design inputs:** I'd need `runs/page.tsx` and its forms and actions, plus `runs/rules.ts` (already read).
+
+**Constraints to freeze before any edit:**
+- **Errors and recovery stay exactly as they are:**
+  - the `runError` mapping;
+  - the reuse of attempt and signature identity;
+  - `closedUncommitted` and `recovered`;
+  - PT409, 55P03/40P01 and the 409/413 rejections;
+  - the correction-required redirect.
+- **No automatic resubmission:** unknown results stay blocked until reconciled.
+- **Stage-specific primary:** at most one per state, derived from the existing permitted actions, with no new rights.
+- **Employer context** follows the same native GET pattern, with no carryover between employers.
+- **Stale reasons:** `staleNames` stays fully visible.
+
+After `runs`, I'd do the same treatment for `inputs` and then `output`. Leave `payments` and `corrections` until last: their recovery mechanisms are the most critical and must stay untouched apart from presentation.

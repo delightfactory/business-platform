@@ -1,4 +1,5 @@
 .workspace { display: grid; gap: var(--space-4, 1.5rem); min-width: 0; }
+.workspace > header { min-width: 0; overflow-wrap: anywhere; }
 .progress { margin-block-start: 1rem; padding-block-start: 1rem; border-block-start: 1px solid var(--color-border); }
 .progressCurrent { font-weight: 700; }
 .progressDetails summary { cursor: pointer; min-height: var(--touch-target-size); }
@@ -16,12 +17,15 @@
 .dates dd { margin-inline-start: 0; overflow-wrap: anywhere; }
 .periods { display: grid; gap: 1rem; padding: 0; list-style: none; }
 .filters { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; }
-.filters label { display: grid; gap: .5rem; }
+.filters label { display: grid; gap: .5rem; min-width: 0; max-width: 100%; }
+.issues { padding: 0; list-style: none; display: grid; gap: .75rem; }
+.issues li { padding-block: .75rem; border-block-end: 1px solid var(--color-border); }
+.issues summary { cursor: pointer; min-height: var(--touch-target-size); font-weight: 600; }
 @media(max-width: 600px) { .fields,.dates { grid-template-columns: 1fr; } .primary { min-height: 44px; width: 100%; } .form,.card,.preview { padding: 1rem; } }
 .fields input,.fields select,.filters input { min-height: var(--field-height); border: 1px solid var(--color-control-border); border-radius: var(--radius-field); padding: .65rem .8rem; background: var(--color-surface); color: var(--color-text); font: inherit; }
 .fields input:focus-visible,.fields select:focus-visible,.filters input:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
 .form textarea { width: 100%; min-width: 0; }
-.filters select { max-width: 100%; min-height: var(--field-height); font: inherit; }
+.filters select { min-width: 0; max-width: 100%; min-height: var(--field-height); font: inherit; }
 .card { overflow-wrap: anywhere; }
 fieldset.fields { border: 0; padding: 0; margin: 0; }
 

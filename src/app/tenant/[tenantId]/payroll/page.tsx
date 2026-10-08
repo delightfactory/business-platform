@@ -6,6 +6,7 @@ import { displayDate, uuid } from './rules';
 import { issueNames, money, type Issue } from './runs/rules';
 import styles from './payroll.module.css';
 import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
+import { issueTitles } from './issue-titles';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
@@ -78,7 +79,18 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
     }
   }
   return <PageFrame><div dir="rtl" className={styles.workspace}>
-    <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>الرواتب</h1><p>{calendar.employer_name}</p><Link href={path}>اختيار جهة أخرى</Link></header>
+    <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>الرواتب</h1>
+      <p>{calendar.employer_name}</p>
+      <form method="get" action={path} className={styles.filters}>
+        <label htmlFor="payroll-employer">جهة العمل<select id="payroll-employer" name="employer" defaultValue={employer} aria-describedby="payroll-employer-hint" required>
+          {!employers.some(item => item.id === employer) && <option value={employer}>{calendar.employer_name}</option>}
+          {employers.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+        </select></label><button className="secondary-button">عرض جهة العمل</button>
+      </form>
+      <p id="payroll-employer-hint" className="field-hint">لكل جهة دورة ومسير مستقلان. عرض جهة أخرى ينقلك إلى فتراتها.</p>
+      <Link href={path}>اختيار جهة أخرى</Link>
+      <p className="field-hint">للبحث أو عرض بقية الجهات، افتح اختيار جهة أخرى.</p>
+    </header>
     {periods.length > 0 && <form method="get" className={styles.filters}><input type="hidden" name="employer" value={employer}/>{query.review_q && <input type="hidden" name="review_q" value={query.review_q}/>}
       <label htmlFor="payroll-period">فترة الرواتب<select id="payroll-period" name="period" defaultValue={periodId} required>
         {!periodId && <option value="" disabled>اختر فترة الرواتب</option>}
@@ -96,7 +108,10 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'}/>
     </section>
     {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>راجع عوائق الفترة والموظفين قبل الاعتماد، مع المسؤول المحدد لكل مصدر.</p>
-      {work.global_issues.length > 0 && <ul>{work.global_issues.map((item, index) => <li key={`${item.code}:${index}`}>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</li>)}</ul>}
+      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => <li key={`${item.code}:${index}`}><details>
+        <summary>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· التفاصيل</span></summary>
+        <p>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</p>
+      </details></li>)}</ul>}
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
     </section>}
     <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>
