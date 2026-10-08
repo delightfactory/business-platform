@@ -1,0 +1,207 @@
+{
+  "baseline": "7ee581689afc236e7dd7f77543f3a17e39fbec82",
+  "candidate": "60ef61c1ceaecc5c6ff6a5231b3f25a11baddcb0",
+  "checks": [
+    {
+      "state": "read-false-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "read-false-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "read-true-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "read-true-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "manage-false-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "manage-false-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "manage-true-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "manage-true-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "correct-false-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "correct-false-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "correct-true-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "correct-true-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "approve-false-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "approve-false-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "approve-true-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "approve-true-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "full-false-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "full-false-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "full-true-open",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "full-true-approved",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "ready",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "overtimeEditable",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "empty",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "absence",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "leave",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "reconcile",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "flexible",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "missing",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "short",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "unknownOutcome",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "stale",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "overtimeStale",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "malformed",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "denied",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "noSdk",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "noUser",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "overtimeFailed",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "classificationFailed",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "invalidTenant",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    },
+    {
+      "state": "invalidInstance",
+      "result": "pass",
+      "scope": "Actual source/components; same RPCs/fields/hrefs/auth boundary, valid native anchors/evidence ordering"
+    }
+  ],
+  "scope": "Synthetic SDK permissions/results; not actual role/DB/mutation acceptance"
+}

@@ -45,6 +45,51 @@
       "normalization": "LF trimEnd+newline"
     },
     {
+      "file": "detail-correction-390.jpg",
+      "sha256": "a470e823d5c18964d85d83e8ce3749d0ffc3ad96138d212c80e7f2dbbea75988",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "detail-overtime-390.jpg",
+      "sha256": "0ba8d8bcb9680364bbd6744cd47ab1704323a24080ba837a6d470ce670458868",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "detail-pages.cjs",
+      "sha256": "7a3dd05fac4c35a76c54bb35cc65eaedca91f344de23af138f0346911666d8e7",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "detail-qualification.md",
+      "sha256": "39de8f1872083f6690f0db0275c55b3bb759ba45d2956447ed1c51d1600e82a3",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "detail-ready-1366.jpg",
+      "sha256": "ddf41370f2f15956e24955840c03378666a536df3755df87c57e4bd03c0ec56a",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "detail-ready-390.jpg",
+      "sha256": "7fd83320cc3a690e018da0b3815ed2d97e64cce1d5d29f55107cf987e846a75e",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "detail-ready-768.jpg",
+      "sha256": "8de3f36b92c669bcf31b9701b49f00dec1f6c234dc27749e79927ef3a644bbf8",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "detail-results.json",
+      "sha256": "cfdc335719a62606883c536c42bcef2aa57d3c479f3b3f42d538c51962f6309d",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "detail-unknown-1366.jpg",
+      "sha256": "0d1709b8ddc151d95e3b828798df6e2ea6fd03d8a49c290b401765db566b788b",
+      "normalization": "raw bytes"
+    },
+    {
       "file": "import-duplicate-390.jpg",
       "sha256": "33a69c6de1b09584873bb56d4bbe31ca2ef2d5d1718005518f0aab4a3816b4cd",
       "normalization": "raw bytes"
@@ -94,5 +139,6 @@
       "sha256": "f24aac48d4b33fa3dd48befda1f5b162bf64b03d4ff83b95fbac745477147e2b",
       "normalization": "LF trimEnd+newline"
     }
-  ]
+  ],
+  "detailQualificationCandidate": "60ef61c1ceaecc5c6ff6a5231b3f25a11baddcb0"
 }
