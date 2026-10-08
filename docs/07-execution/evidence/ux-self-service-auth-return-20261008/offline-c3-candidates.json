@@ -1,0 +1,57 @@
+[
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+    "baselineHash": "de7e0c3c17ba717818e24f78f6ed33aa19cccde0770864ba73aa697252dac4be",
+    "candidateHash": "1e431b2d94d7dee710f1647f4be3d38eef029572e6ca6b08e43361ae4ce27936"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+    "baselineHash": "2d01ed1a43c9558c5b8e7e9deea1e23860282ac9046306c61b19f157fda4ceb8",
+    "candidateHash": "ae7ebe05ae54bc70f487de8823dda21f0eb4a9a301a69809d9b0a17d799f526a"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
+    "baselineHash": "9bff614eb4d77cd84a6006bc57913dd025a3dfc1a9affd5017435ed903b687d4",
+    "candidateHash": "0cea6e6aa0a7008090c6821445e09c004963ee47626dd3eb0a71eef5806d2304"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
+    "baselineHash": "4490411e259643d656ebc9594500136273ccbb75270d86a6954197d26c9d5124",
+    "candidateHash": "5f81371008579b92dff794125bde926c8b0986877c1c8b6b9b30e9a4009f8ea2"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
+    "baselineHash": "d1108012da6b2f2fdbd615b587b5126cda977484faa2eacece9c8dbc0ba93b08",
+    "candidateHash": "6de880166c92b9d2f07056926abff6c46f198f293f83219af438ef074896fdb4"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+    "baselineHash": "0df3b2b7a1310ff17a106868a64a54be029b839c66c0a1aba95e52ada1c6480a",
+    "candidateHash": "3d111cf23db694a3ce7678284b784c8d385fc11d1f051ac0838c58082013918b"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
+    "baselineHash": "208e4bf690032a3ea5b9e28a99d6e0c33485052a472046897280a3f01ed2265e",
+    "candidateHash": "953735ec8e644dc6962fa85dc7323fd1b0baa7fd67bcb2578f3e3555bbfd9ac4"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
+    "baselineHash": "c31fca33f7ec4f432509db45431930fc2b6934a97932c8f661a4054a6fbe7636",
+    "candidateHash": "2ec8ebe6c701a09c518039a50f40129ad603ba14d04413edb729e756f032e13c"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+    "baselineHash": "eed5d09edc1bd39a266555691d1ca63494c0303451bf44d8be3f0c17e8a72303",
+    "candidateHash": "68d82b34009d7fd070e9f2ee1c180a9735ae1967e373908f59378bd5c1baafb7"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
+    "baselineHash": "77dfdbac3d400c6b830f1c7fe8b14cf7e705f34776802c365d9ea78e838d8ef2",
+    "candidateHash": "753f452cfb31b0427dd0284c00458f7d3d320ebe8aa877d162717581de60ca1c"
+  },
+  {
+    "file": "src/components/offline-submission.tsx",
+    "baselineHash": "baa0f7bee194a937fc2d21fa224df270b50a78c8080d97fb4eb35c531b17321a",
+    "candidateHash": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+  }
+]

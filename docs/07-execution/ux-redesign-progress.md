@@ -2,13 +2,13 @@
 
 Owner continues implementation in economical development mode, preserving complete capability coverage and always simplifying user journeys. Use official Claude Opus5.5 Medium only at scoped direction/architecture/review checkpoints. Codex implements and checks routine work locally; prefer existing reviewed specs and targeted evidence over rediscovery. Never send secrets or silently change model/provider. No main merge/deployment/Actions authorized.
 
-## Current full-plan checkpoint — 2026-10-08
+## Current full-plan checkpoint — 2026-10-09
 
 The original plan remains the scope. No R0–R8 stage is fully closed. The entries below supersede the old initial-slice overview; chronological evidence remains below. Do not return to nonblocking card/link polish after scoped acceptance.
 
 | Stage | Implementation already present | Work still required to close original scope |
 |---|---|---|
-| R0 | Versioned current source inventory:289 files/75 pages/1732 slots;25 source-reviewed; exact migrations preserve reviews | Reviewed operation/state/actor cases and executed acceptance across the full denominator; structural counts are not percentages of completion |
+| R0 | Versioned current source inventory:296 files/75 pages/1731 slots;25 source-reviewed; exact migrations preserve reviews | Reviewed operation/state/actor cases and executed acceptance across the full denominator; structural counts are not percentages of completion |
 | R1 | Light/dark/system tokens and appearance controls; shared shell/components and scoped native/reference qualification | Remaining component/reference states, all affected feature screens/branding/gradient contrast and complete responsive/accessibility qualification; preserve Cairo/control contract until amendment |
 | R2 | Auth/invitation/recipient/tenant-entry fixes; owner-approved five-route self-service return applied; grouped lint/buildTS PASS | Remote preservation verified47a903a; real provider/session/role round trips and remaining management surfaces; no full Auth claim from fake SDK |
 | R3 | Lifecycle/grants/commercial/units/statutory journeys; actual local SQL reads and19 positive mutation commands/audits with rollback; selected native/reference checks | Actual Auth/roles/account changes and denied/stale/conflict/concurrency/state acceptance; full surface/reference qualification |
@@ -16,11 +16,11 @@ The original plan remains the scope. No R0–R8 stage is fully closed. The entri
 | R5 | Employee attendance integrity and HR daily/review/detail/import/channels/unassigned treatment | Actual role/device/interruption/privacy/financial and full state acceptance; original Today/inbox/count and backend gaps remain governed, no invented totals |
 | R6 | Employee leave/profile read guards, partial states, result integrity, overview/task/follow-up treatment | Actual complete employee/HR/cancellation/history/authority and unknown-result journeys; deferred D16 integration follows core, not a prerequisite added by polish |
 | R7 | Payroll workspace/selection/runs/input/preparation/final pages and recovery orientation; chosen advisory A implemented/native qualified with synthetic SDK | Actual financial/role/Auth/JS-off and remaining operation/state/full reference qualification; A does not become a hard precedence gate |
-| R8 | Journey maps and shared ownership/recovery contracts | Original Today/decisions composition, safe constrained PWA, cross-domain complete jobs and final acceptance; current company home is still setup-oriented, not a completed Today |
+| R8 | Journey maps; owner-approved existing Today composition; public-only PWA/static cache/install guidance; bounded native/reference evidence | Remaining original role/widget/source gaps, operation-specific offline gates, actual cross-domain journeys, installation/device and full reference/actor/final acceptance |
 
-Verified code gaps: current source now implements light/dark/system preference; no actual manifest/service-worker registration, and company home lacks unified Today/decision work. These are original-plan work, not optional enhancements. Their governed route/count/storage/navigation decisions must be resolved before implementation; do not describe the remaining plan as tests only.
+Current implemented foundation: light/dark/system preference, registered src/proxy.ts, owner-approved existing Today, manifest/service-worker public/static cache and profile installation guidance. Remaining code includes operation-specific offline gates and original role/widget/source gaps; real actor/state/journey/reference acceptance also remains. Existing-home option1 and five-route auth return are already approved; do not ask again or describe the remaining plan as tests only.
 
-Next execution order: D8 is implemented and remotely preserved; shared-theme sample qualified, preserve this batch then progress original Today/PWA governed scope and grouped real-actor journey qualification. Use existing records and reusable evidence. D16/backend extras and unrelated polish remain deferred. No deploy/main/Actions.
+Next execution order: complete remaining original operation-specific offline gates (Annual compound preview/post/policy next), then consolidated native/reference and real-actor journey acceptance and original capability gaps. Reuse unchanged evidence. D16/backend extras and unrelated polish remain deferred. No deploy/main/Actions.
 
 Current implementation lineage: accepted Cube5 3a310d25/tree1c06640 → backup afdc9a2 → reviewed references/specs → a5aec47 → R1-LIGHT-01. The old codex/ux-redesign-w1-foundation staged worktree remains preserved and is not reset/committed by this slice.
 
@@ -245,3 +245,9 @@ From5b8fcb5: actual balance opening/annual_grant/adjustment, new/recovered same 
 Actual isolated Nextdev native sample dark1280 retained balance/payment fields, disabled allfour submission/recovery/cancel buttons, offlineEnter0POST, balanceattemptedfalse/no newpaymentjournal, reconnect0POST. Synthetic action/provider boundary, no financial operation possible. Fixture theme import preparation error fixed before test, app unaffected. Screenshot clipped right-hand content and is external/unqualified; full ConceptC/390/768/1366/realAuthSQL/actor acceptance OPEN. Owned3619 and tabs118119 retired, userreference3/theme preserved; synthetic draft may remain only at isolatedloopback origin. No full C/R6/R7/R0-R8 closure or measured actor improvement.
 
 Next core: classify and implement remaining mutation forms/handlers plus read/search/GET/logout/access distinctions using the full frontier; consolidate valid native/reference/state/actor acceptance, preserve unchanged backend checks, no new extras or owner-choice reopening.
+
+## PWA-C3 — leave owning-operation offline checkpoint
+
+From0a73f04: ten actual forms cover calendar/type create-revise/activation/yearperiod, HR record, allseven HR review intents plus decision selector and historicalcorrection, own cancellation/withdraw. Native signal guard precedes action; only submit control disabled, original fieldsets/keys/versions/reasons/draft/backend unchanged. Neutral continuation avoids unsafe resend promises.63 controlled actual-source cases across20 variants PASS;667 other src/Supabase sources byte/normalised fingerprints unchanged. OfficialdirectOpus5.5Medium5e2093c7 SOURCE ACCEPT; exact11candidatehashes applied. One grouped productionbuild includingTS and full lint PASS (four prior warnings); final explicitTS/new evidence lint recorded in review.
+
+C3 native/full ConceptC390/768/1366/actualAuthSQL/roles NOT VERIFIED. Both visual verdicts NOT VISUALLY VERIFIED; existing shared C1/C2 native proof reused only within its unchanged-hook limits, not promoted to these forms. No new fixture/service/access. All1731 registry statuses retained/25source-reviewed, no semantic promotion;152forms/30handlers is structural counting only. Next Annual compound preview/post/policy, remaining mutation/read/search/logout/access frontier and consolidated actual journey/reference acceptance. Full R0–R8 remain OPEN, D16 extras deferred.

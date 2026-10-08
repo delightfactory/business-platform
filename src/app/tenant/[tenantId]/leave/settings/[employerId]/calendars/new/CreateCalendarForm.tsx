@@ -2,6 +2,8 @@
 
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { createCalendarAction } from '../../../actions';
 import { CalendarRuleFields } from '../../../CalendarRuleFields';
@@ -20,11 +22,15 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
   employerId: string;
   initialCode: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [state, action, pending] = useActionState(createCalendarAction,
     { ...EMPTY_CALENDAR_FORM, code: initialCode });
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
 
-  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="employerId" value={employerId} />
 
@@ -83,8 +89,9 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
     {pending && <p className="field-hint" role="status">جارٍ إنشاء التقويم…</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton label="إنشاء التقويم" pendingLabel="جارٍ الإنشاء…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="إنشاء التقويم" pendingLabel="جارٍ الإنشاء…" />
       <Link className="secondary-button" href={overviewPath}>العودة إلى الإعدادات</Link>
     </div>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

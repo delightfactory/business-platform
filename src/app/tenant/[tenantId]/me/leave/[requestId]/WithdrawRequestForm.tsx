@@ -3,6 +3,8 @@
 import styles from '../leave.module.css';
 
 import { useActionState, useState, type ChangeEvent } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { withdrawLeaveRequestAction } from '../actions';
 import { newOperationKey } from '../operation-key';
@@ -14,6 +16,8 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
   expectedVersion: number;
   idempotencyKey: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [operationKey, setOperationKey] = useState(idempotencyKey);
   const [reason, setReason] = useState('');
   const [submitState, action, pending] = useActionState(withdrawLeaveRequestAction, { error: '', attempt: 0 });
@@ -23,7 +27,9 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     setOperationKey(newOperationKey());
   }
 
-  return <form className="auth-form compact-form" action={action} aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form className="auth-form compact-form" action={action} aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="requestId" value={requestId} />
     <input type="hidden" name="expectedVersion" value={expectedVersion} />
@@ -35,9 +41,10 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     <p id="withdraw-reason-hint" className="field-hint">من 3 إلى 500 حرف. يُحفظ السبب في سجل العملية مع هويتك ووقتها.</p>
     {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
     <div className="workspace-form-actions">
-      <SubmitButton className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
       {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
         : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>}
     </div>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

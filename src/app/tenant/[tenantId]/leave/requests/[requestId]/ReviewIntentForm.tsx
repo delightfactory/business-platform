@@ -1,6 +1,8 @@
 'use client';
 
 import { useActionState, useRef, useState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import {
   acceptCancellationAction,
@@ -89,6 +91,8 @@ function IntentForm({
   backHref?: string;
   hint: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [intent, setIntent] = useState(initialIntent);
   const [state, action, pending] = useActionState(decision ? decideRequestAction : ACTION_BY_INTENT[intent], EMPTY_REVIEW_STATE);
   const [reason, setReason] = useState('');
@@ -127,7 +131,9 @@ function IntentForm({
     setOperationKey(fresh);
   }
 
-  return <form key={state.attempt} action={action} className="auth-form compact-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form key={state.attempt} action={action} className="auth-form compact-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="requestId" value={requestId} />
     <input type="hidden" name="expectedVersion" value={expectedVersion} />
@@ -172,12 +178,13 @@ function IntentForm({
     {pending && <p className="field-hint" role="status">جارٍ التنفيذ… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton className={decision && intent === 'reject' ? 'danger-button' : buttonClass}
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} className={decision && intent === 'reject' ? 'danger-button' : buttonClass}
         label={decision ? intent === 'approve' ? 'اعتماد الطلب' : 'رفض الطلب' : submitLabel}
         pendingLabel={decision ? 'جارٍ حفظ القرار…' : pendingLabel} />
       {backHref && (pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
         : <PendingLink className="secondary-button" href={backHref}>إلغاء</PendingLink>)}
     </div>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }
 

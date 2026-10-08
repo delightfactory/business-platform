@@ -2,6 +2,8 @@
 
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState, useState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { createYearPeriodAction } from '../../../actions';
 import {
@@ -17,12 +19,16 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
   employerId: string;
   calendars: { id: string; name: string; coverageText: string }[];
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [state, action, pending] = useActionState(createYearPeriodAction, EMPTY_YEAR_PERIOD_FORM);
   const [selected, setSelected] = useState(state.calendarId || calendars[0]?.id || '');
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
   const coverage = calendars.find((calendar) => calendar.id === selected);
 
-  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending && calendars.length > 0;
+
+  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="employerId" value={employerId} />
 
@@ -71,9 +77,10 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
     {pending && <p className="field-hint" role="status">جارٍ إنشاء الفترة…</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton label="إنشاء الفترة" pendingLabel="جارٍ الإنشاء…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="إنشاء الفترة" pendingLabel="جارٍ الإنشاء…" />
       <Link className="secondary-button" href={overviewPath}>العودة إلى الإعدادات</Link>
     </div>
     <p className="field-hint">اختر فترة يغطيها التقويم ولا تتداخل مع سنة رصيد محفوظة.</p>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

@@ -2,6 +2,8 @@
 
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { createTypeAction } from '../../../actions';
 import {
@@ -19,11 +21,15 @@ export function CreateTypeForm({ tenantId, employerId, initialCode }: {
   employerId: string;
   initialCode: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [state, action, pending] = useActionState(createTypeAction,
     { ...EMPTY_CREATE_TYPE_FORM, code: initialCode });
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
 
-  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="employerId" value={employerId} />
 
@@ -126,8 +132,9 @@ export function CreateTypeForm({ tenantId, employerId, initialCode }: {
     {pending && <p className="field-hint" role="status">جارٍ إنشاء نوع الإجازة…</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton label="إنشاء النوع" pendingLabel="جارٍ الإنشاء…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="إنشاء النوع" pendingLabel="جارٍ الإنشاء…" />
       <Link className="secondary-button" href={overviewPath}>العودة إلى الإعدادات</Link>
     </div>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

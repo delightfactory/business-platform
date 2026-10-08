@@ -2,6 +2,8 @@
 
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState, useRef, useState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { setTypeActiveAction } from '../../../actions';
 import { EMPTY_ACTIVATION_FORM, MAX_REASON_LENGTH, MIN_REASON_LENGTH } from '../../../rules';
@@ -15,6 +17,8 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
   initialKey: string;
   detailPath: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [state, action, pending] = useActionState(setTypeActiveAction, EMPTY_ACTIVATION_FORM);
   const [reason, setReason] = useState(state.reason);
   const [operationKey, setOperationKey] = useState(initialKey);
@@ -40,7 +44,9 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
     setOperationKey(fresh);
   }
 
-  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="employerId" value={employerId} />
     <input type="hidden" name="typeId" value={typeId} />
@@ -59,7 +65,7 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
     {pending && <p className="field-hint" role="status">جارٍ حفظ التغيير… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton label={targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label={targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}
         pendingLabel="جارٍ الحفظ…" className={targetActive ? 'primary-button' : 'danger-button'} />
       <Link className="secondary-button" href={detailPath}>العودة إلى الإعدادات</Link>
     </div>
@@ -69,5 +75,6 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
         : 'يُوقَف النوع عن الطلبات الجديدة؛ تبقى إصداراته وسجلاته محفوظة، ويمكن إعادة التفعيل لاحقًا. إن كانت الحالة كما هي بالفعل فلن يتغير شيء.'}
       {' '}المفتاح ثابت لكل (سبب وهدف) محددين، فتُعاد محاولة فاشلة بالنتيجة نفسها دون تكرار.
     </p>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

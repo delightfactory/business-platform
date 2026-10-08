@@ -1,0 +1,629 @@
+{
+  "schema": "business-platform.offline-c3-review.v1",
+  "baseline": "0a73f04d6c05b2517da806e750ecb747e0a124f5",
+  "status": "SOURCE-QUALIFIED; FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "sourceEvidence": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/offline-c3-controlled.json",
+  "cases": 63,
+  "variants": 20,
+  "unchangedSourceCount": 667,
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# PWA-C3 Source Review: **SOURCE ACCEPT**\n\nThis review used no tools, read no files and edited nothing, as you asked. That includes the plan file and ExitPlanMode. It is based only on the ten form candidates and the shared module you supplied, checked against the C3 contract text. I did not diff against baseline `0a73f04`; that diff and handler testing stay with Codex, using the exact hashes you listed.\n\nThere are **no MUST FIX defects**. Two advisories follow; neither blocks.\n\n## Checked per form (all ten)\n\n| Check | Result |\n|---|---|\n| Guard | `onSubmit` calls `blockOfflineSubmission(event)`. When `defaultPrevented` is set and no transition is scheduled, React's form-action plugin does not run `action`. The refresh is a synchronous `useReducer` call, not a transition (accepted from C1/C2). So a blocked send causes no action, no write and no new key. |\n| Disabling | Only `SubmitButton disabled={offline}` is added. No fieldset or input gets an offline condition, so offline alone never stops editing. A disabled default button also stops implicit Enter submission; the guard covers the race. |\n| Status association | `useId()` gives a unique `offlineHintId` per instance, including several `IntentForm`s on one page. `ariaDescribedBy` is set only when the notice renders, so it never points to a missing id. |\n| Notice priority | Hidden while pending in all ten. RecordLeave also requires `draftReady && types.length > 0`. YearPeriod also requires `calendars.length > 0`. Existing `role=\"alert\"` errors and pending statuses are unchanged and render first. |\n| Wording | Continuation text is neutral: it promises no resend and no success. It does not conflict with existing unknown-result messages, such as `KEY_NOTE` or RecordLeave's storage-unavailable status. |\n| Keys and state | `key={state.attempt}` on forms, `key={submitState.attempt}` on the RecordLeave fieldset, `ReviewIntentForm`'s identity key, and every `operationKey`/`idempotencyKey` derivation look untouched. This covers the signature maps in Activation and Review, and the per-edit rotation in employee Cancellation and Withdraw. A blocked submit changes no `attempt` and triggers no React auto-reset, so no fields are lost. |\n| Versions and context | Hidden `expectedVersion`, preview, cancellation and replacement versions, the decision select, `historicalPayrollCorrection`, and half-day `halfDay`/`halfDayPart` are all preserved. Refresh goes through the same guarded form as the other intents, so its write RPC is covered. |\n| Draft and storage | RecordLeave's two `sessionStorage` effects, the key `leave.hr.record.v1`, and the clear-on-`requestId` behaviour are unchanged. `useId` runs before the success early return, so hook order is stable. |\n| Shared module | Only `'continuation'` text is added. The `'submission'` default, the C2 `'recovery'` text and the hook body are unchanged. |\n| Scope | Nothing new for storage, auth, RPC, provider, schema, transitions, retries or queues. No speculative features. |\n\n## Advisories (not defects)\n\n1. **Separate `import { useId } from 'react';`** appears beside the existing React import in all ten files. It works, but it is not idiomatic.\n   - If the grouped lint flags it (`no-duplicate-imports` / `import/no-duplicates`), it becomes a MUST FIX. You would merge it into the existing import and re-hash.\n   - Otherwise, leave it so the reviewed hashes stay valid.\n2. **Baseline behaviour, not introduced by C3, only for awareness:**\n   - Employee Cancellation and Withdraw rotate the key on every reason edit. That applies offline too, but it is unchanged from baseline.\n   - `KEY_NOTE` and RecordLeave's half-day message suggest refreshing or reloading the page. Offline, that may not work, and in `ReviewIntentForm` it would lose the unpersisted reason and key.\n   - Neither is a C3 regression. Under your no-polish rule, they stay out of scope.\n\n## Still NOT VERIFIED or OPEN\n\n- Both visual verdicts: **NOT VISUALLY VERIFIED**. This includes notice placement below the actions and live-region behaviour when several `IntentForm` notices appear at once.\n- Concept C at 390, 768 and 1366, plus native platforms: **OPEN**.\n- Real Auth, SQL, role and actor scenarios, and the full R0–R8 denominator: **OPEN**.\n- Annual compound preview, post and policy, plus read, search, navigation and logout: **OPEN** original scope, not waived by this batch.\n- Handler-order, no-action and no-key evidence against baseline, plus backend, domain and draft fingerprints: **pending Codex's tests**.\n- The grouped lint, typecheck and build: **not yet run**.",
+    "sessionId": "5e2093c7-04d8-4288-9303-f520fa09f8bd"
+  },
+  "codex": {
+    "source": "ACCEPT exact11 candidate hashes; guard before owning action; actual refresh mutation covered",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "User tab3 Concept C employee leave read-only inspected; no matching native C3 states captured",
+    "simplicity": "Fields/context/key retained on known-offline send; no automatic reconnect submission; no measured before/after gain claimed",
+    "react": "Unconditional hooks/useId; synchronous native snapshot refresh retained; no transition/network/new storage; existing fieldset/form keys/actions remain unchanged",
+    "testGuard": "Data-driven actual TSX/rules, no internal domain helper mock; browser/React/server-action boundaries controlled; named field and action traces compare authoritative baseline. Cross-VM element equality corrected to type and serialised public props, not application change.",
+    "advisories": "Separate React useId imports accepted by lint; unchanged KEY_NOTE/reason-per-edit semantics retained, no unrelated polish"
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:128:6001",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:132:6105",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:134:6253",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:140:6438",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:136:6505",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:142:6745",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:137:6569",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:143:6808",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:138:6619",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:144:6857",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:139:6694",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:145:6931",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:140:6773",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:146:7009",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:141:6839",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:147:7074",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:142:6901",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:148:7135",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:143:6982",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:149:7215",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:144:7052",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:150:7284",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:147:7181",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:153:7410",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:158:8006",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:164:8224",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:168:8757",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:174:8965",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:173:9059",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:179:9262",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:182:9605",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:188:9799",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:194:10277",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:200:10459",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:130:4319",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:136:4471",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:131:4423",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:137:4631",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:132:4485",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:138:4692",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:133:4549",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:139:4755",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:135:4672",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:141:4876",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:136:4796",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:142:4999",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:138:4916",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:144:5117",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:139:5002",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:145:5202",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:141:5100",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:147:5298",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:142:5174",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:148:5371",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:143:5258",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:149:5454",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:147:5447",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:153:5639",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:156:5981",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:162:6164",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:161:6396",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:167:6574",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:175:7168",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:181:7332",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:25:810",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:31:1067",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:26:901",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:32:1214",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:27:963",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:33:1275",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:28:1029",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:34:1340",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:33:1260",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:39:1566",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:39:1675",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:45:1975",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:51:2255",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:57:2543",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:57:2657",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:63:2939",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:67:3206",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:73:3478",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:27:889",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:33:1144",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:28:980",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:34:1291",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:29:1042",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:35:1352",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:34:1251",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:40:1556",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:40:1587",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:46:1886",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:46:1931",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:52:2224",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:53:2279",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:59:2565",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:56:2455",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:62:2738",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:70:3082",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:76:3351",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:76:3468",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:82:3731",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:86:3989",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:92:4242",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:24:715",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:30:973",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:25:806",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:31:1120",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:26:868",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:32:1181",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:27:934",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:33:1246",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:31:1108",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:37:1416",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:40:1591",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:46:1890",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:44:1797",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:50:2092",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:54:2188",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:60:2473",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:58:2414",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:64:2695",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:69:2948",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:75:3218",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:74:3225",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:80:3490",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:84:3607",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:90:3862",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:92:3933",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:98:4180",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:98:4332",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:104:4573",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:108:4877",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:114:5108",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:43:1571",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:49:1810",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:44:1662",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:50:1957",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:45:1724",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:51:2018",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:46:1790",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:52:2083",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:47:1848",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:53:2140",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:48:1922",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:54:2213",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:52:2129",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:58:2416",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:62:2705",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:68:2982",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:26:816",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:32:1072",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:27:907",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:33:1219",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:28:969",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:34:1280",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:33:1172",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:39:1478",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:39:1544",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:45:1844",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:46:1842",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:52:2135",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:49:2012",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:55:2302",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:61:2554",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:67:2832",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:65:2760",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:71:3034",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:75:3151",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:81:3415",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:79:3377",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:85:3637",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:90:3911",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:96:4160",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:95:4188",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:101:4432",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:105:4570",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:111:4804",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:113:4889",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:119:5115",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:119:5266",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:125:5486",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:129:5787",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:135:5997",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:25:979",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:31:1260",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:26:1070",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:32:1407",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:27:1132",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:33:1468",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:31:1305",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:37:1637",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:45:1974",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:51:2292",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:51:2292",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:57:2604",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:59:2613",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:65:2917",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:65:2894",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:71:3192",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:74:3394",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:80:3683",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:28:1058",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:34:1339",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:29:1141",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:35:1479",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:30:1202",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:36:1540",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:31:1265",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:37:1603",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:32:1340",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:38:1678",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:34:1476",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:40:1814",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:41:2169",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:47:2507",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:26:946",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:32:1204",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:27:1030",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:33:1344",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:28:1092",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:34:1405",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:29:1156",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:35:1468",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:30:1232",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:36:1543",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:32:1360",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:38:1669",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:38:1913",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:44:2216",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS one grouped production build 43006 exit0; registered Node Proxy retained",
+    "typecheck": "PASS explicit tsc890528 exit0 and grouped build TypeScript43006",
+    "lint": "PASS full91749 zero errors/four historical warnings; new evidence targeted f8cd92 exit0",
+    "native": "NOT RUN C3; unchanged C1/C2 shared guard evidence reused only within its original limits",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 30,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Annual compound preview/post/policy, remaining actual mutation/read/search/logout/access frontier, grouped native/reference/real actors. No scope waiver/new features."
+}

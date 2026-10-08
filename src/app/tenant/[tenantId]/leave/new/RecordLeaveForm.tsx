@@ -1,6 +1,8 @@
 'use client';
 
 import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { detailHref, halfDayPartLabel, isObject, isUuid } from '../rules';
 import { PendingLink } from '../pending-link';
@@ -32,6 +34,8 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
   cancelHref: string;
   initialIntentKey: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [leaveTypeId, setLeaveTypeId] = useState('');
   const [halfDay, setHalfDay] = useState(false);
   const [halfDayPart, setHalfDayPart] = useState<HalfDayPart | ''>('');
@@ -129,9 +133,11 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
     </div>
   </div>;
 
+  const showOfflineNotice = offline && !submitting && draftReady && types.length > 0;
+
   return <div className={styles.formBlock}>
     <h2 className={styles.formTitle}>بيانات طلب الإجازة</h2>
-    <form className="auth-form" action={submitAction} aria-busy={submitting}>
+    <form className="auth-form" action={submitAction} aria-busy={submitting} onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <fieldset key={submitState.attempt} disabled={!draftReady || submitting} style={{ display: 'grid', gap: '.65rem', border: 0, padding: 0, margin: 0, minWidth: 0 }}>
       <input type="hidden" name="tenantId" value={tenantId} />
       <input type="hidden" name="q" value={q} />
@@ -191,13 +197,14 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
       {submitting && <p className="field-hint" role="status">جارٍ تسجيل الطلب… لا تغلق الصفحة.</p>}
 
       <div className="workspace-form-actions">
-        <SubmitButton label="تسجيل الطلب" pendingLabel="جارٍ التسجيل…" />
+        <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="تسجيل الطلب" pendingLabel="جارٍ التسجيل…" />
         {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
           : <PendingLink className="secondary-button" href={cancelHref}>إلغاء</PendingLink>}
       </div>
       <p className="field-hint">يُسجَّل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد من رصيد الموظف قبل الاعتماد.</p>
       {storageUnavailable && <p className="field-hint" role="status">حفظ المسودة بعد تحديث الصفحة غير متاح في هذا المتصفح. عند تعذر تأكيد النتيجة، أعد المحاولة من هذه الصفحة دون تحديثها.</p>}
       </fieldset>
+      {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
     </form>
   </div>;
 }

@@ -2,6 +2,8 @@
 
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState } from 'react';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { reviseTypeAction } from '../../../actions';
 import {
@@ -19,9 +21,13 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
   detailPath: string;
   initial: ReviseTypeState;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [state, action, pending] = useActionState(reviseTypeAction, initial);
 
-  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending}>
+  const showOfflineNotice = offline && !pending;
+
+  return <form key={state.attempt} action={action} className="auth-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="employerId" value={employerId} />
     <input type="hidden" name="typeId" value={typeId} />
@@ -105,9 +111,10 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
     {pending && <p className="field-hint" role="status">جارٍ حفظ الإصدار الجديد… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton label="حفظ الإصدار الجديد" pendingLabel="جارٍ الحفظ…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="حفظ الإصدار الجديد" pendingLabel="جارٍ الحفظ…" />
       <Link className="secondary-button" href={detailPath}>العودة إلى الإعدادات</Link>
     </div>
     <p className="field-hint">يُنشأ إصدار جديد فقط من تاريخ السريان الذي تختاره، والإصدار الحالي يبقى ساريًا حتى ذلك التاريخ. عند أي تعارض حُفظت بياناتك — حدّث الصفحة لعرض أحدث الإعدادات ثم عدّل وأعد الحفظ.</p>
+    {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;
 }

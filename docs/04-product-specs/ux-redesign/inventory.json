@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "5b8fcb528b7878d28004d89fe202d83f7d70739f",
+  "sourceHead": "0a73f04d6c05b2517da806e750ecb747e0a124f5",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -550,7 +550,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
       "phase": "R6",
-      "sha256": "208e4bf690032a3ea5b9e28a99d6e0c33485052a472046897280a3f01ed2265e"
+      "sha256": "953735ec8e644dc6962fa85dc7323fd1b0baa7fd67bcb2578f3e3555bbfd9ac4"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/new/actions.ts",
@@ -595,7 +595,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
       "phase": "R6",
-      "sha256": "c31fca33f7ec4f432509db45431930fc2b6934a97932c8f661a4054a6fbe7636"
+      "sha256": "2ec8ebe6c701a09c518039a50f40129ad603ba14d04413edb729e756f032e13c"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/loading.tsx",
@@ -635,7 +635,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
       "phase": "R6",
-      "sha256": "2d01ed1a43c9558c5b8e7e9deea1e23860282ac9046306c61b19f157fda4ceb8"
+      "sha256": "ae7ebe05ae54bc70f487de8823dda21f0eb4a9a301a69809d9b0a17d799f526a"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
@@ -645,7 +645,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
       "phase": "R6",
-      "sha256": "de7e0c3c17ba717818e24f78f6ed33aa19cccde0770864ba73aa697252dac4be"
+      "sha256": "1e431b2d94d7dee710f1647f4be3d38eef029572e6ca6b08e43361ae4ce27936"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/page.tsx",
@@ -660,12 +660,12 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
       "phase": "R6",
-      "sha256": "4490411e259643d656ebc9594500136273ccbb75270d86a6954197d26c9d5124"
+      "sha256": "5f81371008579b92dff794125bde926c8b0986877c1c8b6b9b30e9a4009f8ea2"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
       "phase": "R6",
-      "sha256": "d1108012da6b2f2fdbd615b587b5126cda977484faa2eacece9c8dbc0ba93b08"
+      "sha256": "6de880166c92b9d2f07056926abff6c46f198f293f83219af438ef074896fdb4"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
@@ -675,7 +675,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
       "phase": "R6",
-      "sha256": "9bff614eb4d77cd84a6006bc57913dd025a3dfc1a9affd5017435ed903b687d4"
+      "sha256": "0cea6e6aa0a7008090c6821445e09c004963ee47626dd3eb0a71eef5806d2304"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/page.tsx",
@@ -685,7 +685,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
       "phase": "R6",
-      "sha256": "0df3b2b7a1310ff17a106868a64a54be029b839c66c0a1aba95e52ada1c6480a"
+      "sha256": "3d111cf23db694a3ce7678284b784c8d385fc11d1f051ac0838c58082013918b"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/page.tsx",
@@ -745,12 +745,12 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
       "phase": "R6",
-      "sha256": "eed5d09edc1bd39a266555691d1ca63494c0303451bf44d8be3f0c17e8a72303"
+      "sha256": "68d82b34009d7fd070e9f2ee1c180a9735ae1967e373908f59378bd5c1baafb7"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
       "phase": "R6",
-      "sha256": "77dfdbac3d400c6b830f1c7fe8b14cf7e705f34776802c365d9ea78e838d8ef2"
+      "sha256": "753f452cfb31b0427dd0284c00458f7d3d320ebe8aa877d162717581de60ca1c"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-actions.ts",
@@ -1385,7 +1385,7 @@
     {
       "file": "src/components/offline-submission.tsx",
       "phase": "R1",
-      "sha256": "baa0f7bee194a937fc2d21fa224df270b50a78c8080d97fb4eb35c531b17321a"
+      "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
     },
     {
       "file": "src/components/pwa-foundation.tsx",
@@ -12009,9 +12009,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:128:6001",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:132:6105",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 128,
+      "line": 132,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -12019,9 +12019,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:134:6253",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:140:6438",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 134,
+      "line": 140,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12029,9 +12029,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:136:6505",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:142:6745",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 136,
+      "line": 142,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12041,9 +12041,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:137:6569",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:143:6808",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 137,
+      "line": 143,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12053,9 +12053,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:138:6619",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:144:6857",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 138,
+      "line": 144,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12065,9 +12065,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:139:6694",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:145:6931",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 139,
+      "line": 145,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12077,9 +12077,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:140:6773",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:146:7009",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 140,
+      "line": 146,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12089,9 +12089,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:141:6839",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:147:7074",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 141,
+      "line": 147,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12101,9 +12101,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:142:6901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:148:7135",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 142,
+      "line": 148,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12113,9 +12113,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:143:6982",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:149:7215",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 143,
+      "line": 149,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12125,9 +12125,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:144:7052",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:150:7284",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 144,
+      "line": 150,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12137,9 +12137,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:147:7181",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:153:7410",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 147,
+      "line": 153,
       "tag": "select",
       "phase": "R6",
       "attributes": {
@@ -12149,9 +12149,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:158:8006",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:164:8224",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 158,
+      "line": 164,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -12159,9 +12159,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:168:8757",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:174:8965",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 168,
+      "line": 174,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12170,9 +12170,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:173:9059",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:179:9262",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 173,
+      "line": 179,
       "tag": "select",
       "phase": "R6",
       "attributes": {
@@ -12181,9 +12181,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:182:9605",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:188:9799",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 182,
+      "line": 188,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -12193,12 +12193,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:194:10277",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx:200:10459",
       "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
-      "line": 194,
+      "line": 200,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"تسجيل الطلب\"",
         "pendingLabel": "\"جارٍ التسجيل…\""
       }
@@ -12277,9 +12278,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:130:4319",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:136:4471",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 130,
+      "line": 136,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12287,9 +12288,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:131:4423",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:137:4631",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 131,
+      "line": 137,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12299,9 +12300,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:132:4485",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:138:4692",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 132,
+      "line": 138,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12311,9 +12312,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:133:4549",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:139:4755",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 133,
+      "line": 139,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12323,9 +12324,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:135:4672",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:141:4876",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 135,
+      "line": 141,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12335,9 +12336,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:136:4796",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:142:4999",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 136,
+      "line": 142,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12347,9 +12348,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:138:4916",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:144:5117",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 138,
+      "line": 144,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12359,9 +12360,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:139:5002",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:145:5202",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 139,
+      "line": 145,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12371,9 +12372,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:141:5100",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:147:5298",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 141,
+      "line": 147,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12383,9 +12384,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:142:5174",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:148:5371",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 142,
+      "line": 148,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12395,9 +12396,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:143:5258",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:149:5454",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 143,
+      "line": 149,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12407,9 +12408,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:147:5447",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:153:5639",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 147,
+      "line": 153,
       "tag": "select",
       "phase": "R6",
       "attributes": {
@@ -12419,9 +12420,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:156:5981",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:162:6164",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 156,
+      "line": 162,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -12431,9 +12432,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:161:6396",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:167:6574",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 161,
+      "line": 167,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12443,12 +12444,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:175:7168",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx:181:7332",
       "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
-      "line": 175,
+      "line": 181,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "{decision ? intent === 'approve' ? 'اعتماد الطلب' : 'رفض الطلب' : submitLabel}",
         "pendingLabel": "{decision ? 'جارٍ حفظ القرار…' : pendingLabel}"
       }
@@ -12543,9 +12545,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:25:810",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:31:1067",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12553,9 +12555,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:26:901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:32:1214",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12565,9 +12567,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:27:963",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:33:1275",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12577,9 +12579,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:28:1029",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:34:1340",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 28,
+      "line": 34,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12589,9 +12591,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:33:1260",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:39:1566",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 33,
+      "line": 39,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12601,9 +12603,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:39:1675",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:45:1975",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 39,
+      "line": 45,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12613,9 +12615,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:51:2255",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:57:2543",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 51,
+      "line": 57,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12624,9 +12626,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:57:2657",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:63:2939",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 57,
+      "line": 63,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12635,12 +12637,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:67:3206",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx:73:3478",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
-      "line": 67,
+      "line": 73,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"حفظ الإصدار الجديد\"",
         "pendingLabel": "\"جارٍ الحفظ…\""
       }
@@ -12670,9 +12673,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:27:889",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:33:1144",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12680,9 +12683,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:28:980",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:34:1291",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 28,
+      "line": 34,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12692,9 +12695,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:29:1042",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:35:1352",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12704,9 +12707,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:34:1251",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:40:1556",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 34,
+      "line": 40,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12715,9 +12718,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:40:1587",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:46:1886",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12727,9 +12730,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:46:1931",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:52:2224",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 46,
+      "line": 52,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12739,17 +12742,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:53:2279",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:59:2565",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 53,
+      "line": 59,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:56:2455",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:62:2738",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 56,
+      "line": 62,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12758,9 +12761,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:70:3082",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:76:3351",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 70,
+      "line": 76,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12769,9 +12772,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:76:3468",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:82:3731",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 76,
+      "line": 82,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12780,20 +12783,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:86:3989",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx:92:4242",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
-      "line": 86,
+      "line": 92,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"إنشاء التقويم\"",
         "pendingLabel": "\"جارٍ الإنشاء…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:24:715",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:30:973",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 24,
+      "line": 30,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12801,9 +12805,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:25:806",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:31:1120",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12813,9 +12817,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:26:868",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:32:1181",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12825,9 +12829,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:27:934",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:33:1246",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12837,9 +12841,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:31:1108",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:37:1416",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 31,
+      "line": 37,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12849,9 +12853,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:40:1591",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:46:1890",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12861,9 +12865,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:44:1797",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:50:2092",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 44,
+      "line": 50,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12873,9 +12877,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:54:2188",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:60:2473",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 54,
+      "line": 60,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12885,9 +12889,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:58:2414",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:64:2695",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 58,
+      "line": 64,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12897,9 +12901,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:69:2948",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:75:3218",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 69,
+      "line": 75,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12909,9 +12913,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:74:3225",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:80:3490",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 74,
+      "line": 80,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12921,9 +12925,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:84:3607",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:90:3862",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 84,
+      "line": 90,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12933,9 +12937,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:92:3933",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:98:4180",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 92,
+      "line": 98,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12944,9 +12948,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:98:4332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:104:4573",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 98,
+      "line": 104,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12955,20 +12959,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:108:4877",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx:114:5108",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
-      "line": 108,
+      "line": 114,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"حفظ الإصدار الجديد\"",
         "pendingLabel": "\"جارٍ الحفظ…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:43:1571",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:49:1810",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 43,
+      "line": 49,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -12976,9 +12981,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:44:1662",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:50:1957",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 44,
+      "line": 50,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -12988,9 +12993,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:45:1724",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:51:2018",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 45,
+      "line": 51,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13000,9 +13005,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:46:1790",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:52:2083",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 46,
+      "line": 52,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13012,9 +13017,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:47:1848",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:53:2140",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 47,
+      "line": 53,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13024,9 +13029,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:48:1922",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:54:2213",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 48,
+      "line": 54,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13036,9 +13041,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:52:2129",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:58:2416",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 52,
+      "line": 58,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13048,12 +13053,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:62:2705",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx:68:2982",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
-      "line": 62,
+      "line": 68,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "{targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}",
         "pendingLabel": "\"جارٍ الحفظ…\""
       }
@@ -13083,9 +13089,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:26:816",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:32:1072",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -13093,9 +13099,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:27:907",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:33:1219",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13105,9 +13111,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:28:969",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:34:1280",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 28,
+      "line": 34,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13117,9 +13123,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:33:1172",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:39:1478",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 33,
+      "line": 39,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13128,9 +13134,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:39:1544",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:45:1844",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 39,
+      "line": 45,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13140,17 +13146,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:46:1842",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:52:2135",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 46,
+      "line": 52,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:49:2012",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:55:2302",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 49,
+      "line": 55,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13159,9 +13165,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:61:2554",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:67:2832",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 61,
+      "line": 67,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13171,9 +13177,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:65:2760",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:71:3034",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 65,
+      "line": 71,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13183,9 +13189,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:75:3151",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:81:3415",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 75,
+      "line": 81,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13195,9 +13201,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:79:3377",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:85:3637",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 79,
+      "line": 85,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13207,9 +13213,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:90:3911",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:96:4160",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 90,
+      "line": 96,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13219,9 +13225,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:95:4188",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:101:4432",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 95,
+      "line": 101,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13231,9 +13237,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:105:4570",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:111:4804",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 105,
+      "line": 111,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13243,9 +13249,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:113:4889",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:119:5115",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 113,
+      "line": 119,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13254,9 +13260,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:119:5266",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:125:5486",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 119,
+      "line": 125,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13265,20 +13271,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:129:5787",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx:135:5997",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
-      "line": 129,
+      "line": 135,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"إنشاء النوع\"",
         "pendingLabel": "\"جارٍ الإنشاء…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:25:979",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:31:1260",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -13286,9 +13293,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:26:1070",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:32:1407",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13298,9 +13305,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:27:1132",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:33:1468",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13310,26 +13317,14 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:31:1305",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:37:1637",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 31,
+      "line": 37,
       "tag": "select",
       "phase": "R6",
       "attributes": {
         "name": "\"calendarId\"",
         "value": "{selected}",
-        "disabled": "{pending}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:45:1974",
-      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 45,
-      "tag": "input",
-      "phase": "R6",
-      "attributes": {
-        "name": "\"startsOn\"",
-        "type": "\"date\"",
         "disabled": "{pending}"
       }
     },
@@ -13340,15 +13335,27 @@
       "tag": "input",
       "phase": "R6",
       "attributes": {
+        "name": "\"startsOn\"",
+        "type": "\"date\"",
+        "disabled": "{pending}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:57:2604",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+      "line": 57,
+      "tag": "input",
+      "phase": "R6",
+      "attributes": {
         "name": "\"endsOn\"",
         "type": "\"date\"",
         "disabled": "{pending}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:59:2613",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:65:2917",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 59,
+      "line": 65,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13357,9 +13364,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:65:2894",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:71:3192",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 65,
+      "line": 71,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13368,12 +13375,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:74:3394",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx:80:3683",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
-      "line": 74,
+      "line": 80,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"إنشاء الفترة\"",
         "pendingLabel": "\"جارٍ الإنشاء…\""
       }
@@ -13476,9 +13484,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:28:1058",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:34:1339",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 28,
+      "line": 34,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -13486,9 +13494,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:29:1141",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:35:1479",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13498,9 +13506,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:30:1202",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:36:1540",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 30,
+      "line": 36,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13510,9 +13518,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:31:1265",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:37:1603",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 31,
+      "line": 37,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13522,9 +13530,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:32:1340",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:38:1678",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 32,
+      "line": 38,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13534,9 +13542,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:34:1476",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:40:1814",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 34,
+      "line": 40,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -13546,20 +13554,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:41:2169",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx:47:2507",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
-      "line": 41,
+      "line": 47,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"إرسال طلب الإلغاء\"",
         "pendingLabel": "\"جارٍ الإرسال…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:26:946",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:32:1204",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -13567,9 +13576,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:27:1030",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:33:1344",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13579,9 +13588,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:28:1092",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:34:1405",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 28,
+      "line": 34,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13591,9 +13600,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:29:1156",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:35:1468",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13603,9 +13612,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:30:1232",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:36:1543",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 30,
+      "line": 36,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13615,9 +13624,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:32:1360",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:38:1669",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 32,
+      "line": 38,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -13627,12 +13636,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:38:1913",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx:44:2216",
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
+        "disabled": "{offline}",
         "label": "\"سحب الطلب\"",
         "pendingLabel": "\"جارٍ السحب…\""
       }
