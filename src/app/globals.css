@@ -457,3 +457,11 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .workspace-form-panel[role="search"] input[type="search"] { min-height: var(--field-height); min-width: 0; width: 100%; max-width: 100%; flex: 1 1 14rem; border: 1px solid var(--color-control-border); border-radius: var(--radius-field); padding: .65rem .8rem; background: var(--color-surface); color: var(--color-text); font: inherit; }
 .workspace-form-panel[role="search"] input[type="search"]:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
 .workspace-form-panel[role="search"] > button { justify-self: start; }
+
+/* Statutory task hierarchy preserves shared surfaces and control geometry. */
+.statutory-workspace .statutory-summary, .statutory-workspace .statutory-task { display: grid; gap: .75rem; }
+.statutory-summary > h2 { font-size: 1.25rem; font-weight: 700; line-height: 1.5; }
+.statutory-summary > ul { display: grid; gap: .5rem; }
+.statutory-task > p, .statutory-task > details { margin: 0; }
+.statutory-summary > .entity-status { justify-self: start; }
+.statutory-summary .inline-action { display: inline-flex; align-items: center; min-height: var(--field-height); color: var(--color-brand); font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }

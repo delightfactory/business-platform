@@ -1,0 +1,179 @@
+{
+  "schema": "ux-statutory-completed-batch.v1",
+  "base": "a6db74732164521c0c70898efea6b13d40734b88",
+  "scope": "Completed implementation and scoped synthetic acceptance of statutory forms/results; not full R3/B2 or real Auth/SQL/roles/financial acceptance",
+  "sourceFiles": [
+    {
+      "file": "src/app/globals.css",
+      "sha256LF": "3101ae6fbcf344156311f15466b071e0ff4a56cdadaed7ab9b6ff4c056b83b39"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "sha256LF": "316fcfc2e0fcd64349e68286f673357fe0d4221da6366cf527d66176f88c3bf9"
+    },
+    {
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "sha256LF": "a6c9f7a7da5de58ac8dfbc991ec4cb9eb36380d872263a268e872f43f92c3f87"
+    },
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256LF": "2e555ccfc8044dc8ad39d906345f4ba317a3368e3d12ddad12a46d839476d161"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "sha256LF": "3f3b27278e1ffa2a4197b67bbbb378017e9ddfed86a11b1883b86fd6eb6f42f4"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
+      "sha256LF": "2ad14c5ec1a3a3b1b2f4f1ffa4240554c8bf6a7c412edaa64f90166e788cbed7"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceStatus.tsx",
+      "sha256LF": "b71145a156d0d2693c825a1ae5466146b8369052c4f1d8b2c8577bb1867e96ac"
+    }
+  ],
+  "checks": {
+    "targetedSourceCases": 18,
+    "sourceScope": "Actual source with controlled SDK/hooks and SSR, not native hydration or real Auth/SQL/roles/provider/visual acceptance",
+    "affectedLint": "PASS",
+    "typecheck": "PASS",
+    "finalGroupedBuild": "PASS before final small guard/control-class delta; final delta affected lint/TS/native separately required",
+    "unaffectedEvidenceReused": [
+      "Statutory dto/serveractions/SQL/Auth/financial suites",
+      "Earlier 69 source/action/controlled-hook checks"
+    ],
+    "native": {
+      "actualRootAndOperatorParents": true,
+      "actualServerActions": true,
+      "SDK": "synthetic file-backed only",
+      "issuanceUnknown": "Original attempt replay, checked consent/reason retained; double-click one SDK call",
+      "issuanceConfirmed": "Issued state replaces issue form, tax/insurance-only scope retained",
+      "selectedSave": "Visible choices and SDK payload agree; reason clears, editor closes, acknowledgement and comparison continuation visible",
+      "selectedDenial": "Choices/reason retained, editor open",
+      "comparison": "High/synthetic choices retained on controlled saved receipt; one SDK call; date-fill-only and SQL case validity not accepted",
+      "newHeadSave": "Known receipt acknowledged with visible review link; new task stays open",
+      "date": "Draft keyboard ArrowUp + subsequent React redraw + confirmed save retained 2026-01-02; does not accept Safari or comparison dates"
+    },
+    "finalDeltaLintTypecheck": "PASS"
+  },
+  "measurements": [
+    {
+      "cairo": true,
+      "editorOpen": false,
+      "gap": "12px",
+      "height": 844,
+      "linkDecoration": "underline",
+      "overflow": false,
+      "titleSize": "20px",
+      "width": 390
+    },
+    {
+      "cairo": true,
+      "editorOpen": false,
+      "gap": "12px",
+      "height": 900,
+      "linkDecoration": "underline",
+      "overflow": false,
+      "titleSize": "20px",
+      "width": 768
+    },
+    {
+      "cairo": true,
+      "editorOpen": false,
+      "gap": "12px",
+      "height": 900,
+      "linkDecoration": "underline",
+      "overflow": false,
+      "titleSize": "20px",
+      "width": 1366
+    }
+  ],
+  "imageMetadata": [
+    {
+      "file": "continuation-summary-390.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "pixels": [
+        375,
+        812
+      ]
+    },
+    {
+      "file": "continuation-summary-768.jpg",
+      "viewport": [
+        768,
+        900
+      ],
+      "pixels": [
+        753,
+        882
+      ]
+    },
+    {
+      "file": "continuation-summary-1366.jpg",
+      "viewport": [
+        1366,
+        900
+      ],
+      "pixels": [
+        1351,
+        890
+      ]
+    },
+    {
+      "file": "continuation-confirmation-1366.jpg",
+      "viewport": [
+        1366,
+        900
+      ],
+      "pixels": [
+        1351,
+        890
+      ]
+    },
+    {
+      "file": "continuation-unknown-390.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "pixels": [
+        375,
+        812
+      ]
+    }
+  ],
+  "reviews": {
+    "model": "claude-opus-5-5",
+    "effort": "medium command-line setting",
+    "officialDirectPro": true,
+    "session": "372e97f9-65fd-48de-af23-085169eca0a4",
+    "source": "ACCEPTED after blocking findings fixed",
+    "codex": "MATCH WITH ACCEPTED DEVIATIONS for summary/read/confirmation frames only",
+    "claude": "MATCH WITH ACCEPTED DEVIATIONS summary390/768/1366; MATCH new confirmation1366; earlier scoped unknown390 accepted",
+    "fullVisual": "NOT VISUALLY VERIFIED",
+    "limitations": [
+      "Native screenshot pixels scaled, DOM sizes authoritative",
+      "Developer overlay remains visible; historic details-open hydration warning not suppressed",
+      "Real Auth/roles/SQL/provider, all-state parent/production hydration and Safari/iOS unqualified",
+      "Comparison date entry is inconclusive"
+    ]
+  },
+  "inventory": {
+    "items": 1731,
+    "priorStatusesPreserved": true,
+    "sourceReviewed": 19,
+    "semanticPromotion": false
+  },
+  "cleanup": {
+    "ownedNextSession": 64787,
+    "terminal": true,
+    "loopback3613ListenerAbsent": true,
+    "ownedTab98Closed": true,
+    "viewportReset": true,
+    "realAccessCreated": false,
+    "productionTouched": false
+  }
+}
