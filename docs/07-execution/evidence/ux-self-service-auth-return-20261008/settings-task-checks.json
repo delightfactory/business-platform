@@ -1,0 +1,28 @@
+{
+  "baseline": "2c9905a582fc38dfdd4caddc431ee92e7c2e853a",
+  "pageInversions": 2,
+  "owningFormsByteUnchanged": 3,
+  "guardHandlersByteEquivalentToQualifiedPolicyTask": 2,
+  "existingPolicyTaskUnchanged": true,
+  "candidateHashes": [
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "sha256": "50e47ca567527f7bc4d704f0cab008888fed883252c6af14127aa6bf9e2f5f26"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "sha256": "1a490acf91d65963efabe80eb7ec035ee7a49e589e3b3bad893cdb3d76839c03"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/SettingsTask.tsx",
+      "sha256": "0ebff51c8fb96073552d90a84d2091293d88e9fb521f5c49ba549b71f5cba1e4"
+    }
+  ],
+  "reusedEvidence": "ux-core-people-management-20261008/qualification.md and policy-retained-error.jpg; source-equivalent guard only, not full new parent qualification",
+  "newNative": "NOT RUN",
+  "visual": {
+    "codex": "NOT VISUALLY VERIFIED",
+    "claude": "NOT VISUALLY VERIFIED"
+  },
+  "authorityAndFinancialContracts": "Unchanged byte-for-byte owning forms, page gate/action parameters preserved through inverse comparison"
+}

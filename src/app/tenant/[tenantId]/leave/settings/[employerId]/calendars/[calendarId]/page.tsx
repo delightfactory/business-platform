@@ -17,6 +17,7 @@ import {
 } from '../../../rules';
 import styles from '../../../settings.module.css';
 import { ReviseCalendarForm } from './ReviseCalendarForm';
+import { SettingsTask } from '../../../SettingsTask';
 
 export const dynamic = 'force-dynamic';
 
@@ -137,11 +138,10 @@ export default async function CalendarDetailPage({ params, searchParams }: {
         </li>)}</ul>}
     </section>
 
-    {canEdit && initial && <details className="task-disclosure">
-      <summary className="secondary-button">إصدار جديد من تاريخ لاحق</summary>
+    {canEdit && initial && <SettingsTask label="إصدار جديد من تاريخ لاحق">
       <ReviseCalendarForm tenantId={tenantId} employerId={employerId} calendarId={calendarId}
         detailPath={path} initial={initial} />
-    </details>}
+    </SettingsTask>}
     {canEdit && !initial && <p className="field-hint">
       لا يمكن بدء إصدار جديد قبل أن يحمل التقويم إصدارًا أوليًا محفوظًا.
     </p>}

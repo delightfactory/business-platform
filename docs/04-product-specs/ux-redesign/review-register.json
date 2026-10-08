@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "ea615008cb7b8721717dc3ba64d77388df48480f",
+  "sourceSnapshot": "2c9905a582fc38dfdd4caddc431ee92e7c2e853a",
   "status": "Proposed",
   "items": [
     {
@@ -3329,7 +3329,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:55:2207",
+      "id": "RPC:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:56:2260",
       "category": "rpcCalls",
       "phase": "R6",
       "status": "pending",
@@ -3347,7 +3347,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:58:2274",
+      "id": "RPC:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:59:2327",
       "category": "rpcCalls",
       "phase": "R6",
       "status": "pending",
@@ -9773,7 +9773,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:89:3738",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:90:3791",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -9782,7 +9782,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:129:6082",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:130:6135",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -9791,7 +9791,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6582",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6589",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10106,7 +10106,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:99:4240",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:100:4293",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10115,7 +10115,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6679",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6686",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10124,7 +10124,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:152:7160",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:151:7045",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -15961,6 +15961,15 @@
       "reviewer": null,
       "evidence": null,
       "runtimeStatus": "not-run"
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/SettingsTask.tsx:15:463",
+      "category": "formControls",
+      "phase": "R6",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
     }
   ],
   "snapshotQualification": "Core channels controlled SDK and scoped common visual increment; original review states preserved, no full runtime/semantic promotion.",

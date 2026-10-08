@@ -20,6 +20,7 @@ import {
 import styles from '../../../settings.module.css';
 import { ReviseTypeForm } from './ReviseTypeForm';
 import { TypeActivationForm } from './TypeActivationForm';
+import { SettingsTask } from '../../../SettingsTask';
 
 export const dynamic = 'force-dynamic';
 
@@ -140,18 +141,17 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
         </li>)}</ul>}
     </section>
 
-    {canEdit && <details className="task-disclosure">
-      <summary className="secondary-button">إصدار جديد من تاريخ لاحق</summary>
+    {canEdit && <SettingsTask label="إصدار جديد من تاريخ لاحق">
       {initialRevise
         ? <ReviseTypeForm tenantId={tenantId} employerId={employerId} typeId={typeId}
           detailPath={path} initial={initialRevise} />
         : <p className="field-hint">لا يمكن بدء إصدار جديد قبل أن يحمل النوع إصدارًا أوليًا محفوظًا.</p>}
-    </details>}
+    </SettingsTask>}
 
-    {canEdit && <details className={targetActive ? 'task-disclosure' : 'task-disclosure danger-disclosure'}>
-      <summary className="secondary-button">{targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}</summary>
+    {canEdit && <SettingsTask className={targetActive ? 'task-disclosure' : 'task-disclosure danger-disclosure'}
+      label={targetActive ? 'تفعيل النوع' : 'إيقاف استخدام النوع'}>
       <TypeActivationForm tenantId={tenantId} employerId={employerId} typeId={typeId}
         targetActive={targetActive} initialKey={initialKey} detailPath={path} />
-    </details>}
+    </SettingsTask>}
   </PageFrame>;
 }
