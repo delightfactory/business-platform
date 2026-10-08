@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/app/operator/statutory/DraftForm.tsx",
+    "baselineHash": "316fcfc2e0fcd64349e68286f673357fe0d4221da6366cf527d66176f88c3bf9",
+    "candidateHash": "2f74441e0eb7faf8cc11e0da0522a0f83f7cb995f76b4b1dc8b5ad5825edcea4"
+  },
+  {
+    "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+    "baselineHash": "3f3b27278e1ffa2a4197b67bbbb378017e9ddfed86a11b1883b86fd6eb6f42f4",
+    "candidateHash": "dd8ddf159450f4e9284421fea26d0f68980349948c316868acc2827df94c24ae"
+  },
+  {
+    "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
+    "baselineHash": "2ad14c5ec1a3a3b1b2f4f1ffa4240554c8bf6a7c412edaa64f90166e788cbed7",
+    "candidateHash": "ff2811232a34cbfca43d274c2ff3c2cd49367c2d9363b328bd42963c719f360f"
+  }
+]

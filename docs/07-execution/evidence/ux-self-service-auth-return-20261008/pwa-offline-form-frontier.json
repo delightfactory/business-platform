@@ -444,42 +444,45 @@
     },
     {
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 16,
+      "line": 21,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{event=>{event.preventDefault();if(inFlight.current||pending||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;event.preventDefault();if(inFlight.current||pending||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
       },
       "client": true,
-      "sourceHash": "3f3b27278e1ffa2a4197b67bbbb378017e9ddfed86a11b1883b86fd6eb6f42f4",
+      "sourceHash": "dd8ddf159450f4e9284421fea26d0f68980349948c316868acc2827df94c24ae",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
-      "line": 24,
+      "line": 29,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{event=>{event.preventDefault();if(inFlight.current||pending||state.saved||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;event.preventDefault();if(inFlight.current||pending||state.saved||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
       },
       "client": true,
-      "sourceHash": "2ad14c5ec1a3a3b1b2f4f1ffa4240554c8bf6a7c412edaa64f90166e788cbed7",
+      "sourceHash": "ff2811232a34cbfca43d274c2ff3c2cd49367c2d9363b328bd42963c719f360f",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 32,
+      "line": 37,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{event=>{event.preventDefault();if(inFlight.current||pending||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;event.preventDefault();if(inFlight.current||pending||state.stale)return;const form=new FormData(event.currentTarget);inFlight.current=true;startTransition(()=>action(form));}}"
       },
       "client": true,
-      "sourceHash": "316fcfc2e0fcd64349e68286f673357fe0d4221da6366cf527d66176f88c3bf9",
+      "sourceHash": "2f74441e0eb7faf8cc11e0da0522a0f83f7cb995f76b4b1dc8b5ad5825edcea4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C7 three statutory owning forms;21 actual-source controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/tenants/page.tsx",
@@ -1938,5 +1941,5 @@
   ],
   "total": 152,
   "hasSubmitHandler": 54,
-  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage."
+  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage. C7 three existing inline handlers guarded;152 forms/54 handlers structural only, not acceptance percentage."
 }

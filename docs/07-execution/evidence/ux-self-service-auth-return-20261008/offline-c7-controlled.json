@@ -1,0 +1,121 @@
+{
+  "schema": "offline-c7-controlled.compact.v1",
+  "baseline": "0ac27943aa09075c46d79fde07c7a642c205ad36",
+  "count": 21,
+  "variants": 5,
+  "cases": [
+    {
+      "name": "draft {} offline blocks before attempt allocation and preserves original fields",
+      "status": "pass"
+    },
+    {
+      "name": "draft {} online signature attempt and payload preserve baseline",
+      "status": "pass"
+    },
+    {
+      "name": "draft {} pending and stale show no offline notice",
+      "status": "pass"
+    },
+    {
+      "name": "draft {} uncertain attempt retains identity offline and reuses it after explicit recovery",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\"} offline blocks before attempt allocation and preserves original fields",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\"} online signature attempt and payload preserve baseline",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\"} pending and stale show no offline notice",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\"} uncertain attempt retains identity offline and reuses it after explicit recovery",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\",\"issued\":true} offline blocks before attempt allocation and preserves original fields",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\",\"issued\":true} online signature attempt and payload preserve baseline",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\",\"issued\":true} pending and stale show no offline notice",
+      "status": "pass"
+    },
+    {
+      "name": "draft {\"head\":\"33333333-3333-4333-8333-333333333333\",\"issued\":true} uncertain attempt retains identity offline and reuses it after explicit recovery",
+      "status": "pass"
+    },
+    {
+      "name": "ComparisonForm.tsx offline blocks before attempt allocation and preserves original fields",
+      "status": "pass"
+    },
+    {
+      "name": "ComparisonForm.tsx online signature attempt and payload preserve baseline",
+      "status": "pass"
+    },
+    {
+      "name": "ComparisonForm.tsx pending and stale show no offline notice",
+      "status": "pass"
+    },
+    {
+      "name": "ComparisonForm.tsx uncertain attempt retains identity offline and reuses it after explicit recovery",
+      "status": "pass"
+    },
+    {
+      "name": "IssuanceForm.tsx offline blocks before attempt allocation and preserves original fields",
+      "status": "pass"
+    },
+    {
+      "name": "IssuanceForm.tsx online signature attempt and payload preserve baseline",
+      "status": "pass"
+    },
+    {
+      "name": "IssuanceForm.tsx pending and stale show no offline notice",
+      "status": "pass"
+    },
+    {
+      "name": "IssuanceForm.tsx uncertain attempt retains identity offline and reuses it after explicit recovery",
+      "status": "pass"
+    },
+    {
+      "name": "issued saved outcome has no new submit or offline advice",
+      "status": "pass"
+    }
+  ],
+  "pass": true,
+  "sourceCandidates": [
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "baselineHash": "316fcfc2e0fcd64349e68286f673357fe0d4221da6366cf527d66176f88c3bf9",
+      "candidateHash": "2f74441e0eb7faf8cc11e0da0522a0f83f7cb995f76b4b1dc8b5ad5825edcea4"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "baselineHash": "3f3b27278e1ffa2a4197b67bbbb378017e9ddfed86a11b1883b86fd6eb6f42f4",
+      "candidateHash": "dd8ddf159450f4e9284421fea26d0f68980349948c316868acc2827df94c24ae"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
+      "baselineHash": "2ad14c5ec1a3a3b1b2f4f1ffa4240554c8bf6a7c412edaa64f90166e788cbed7",
+      "candidateHash": "ff2811232a34cbfca43d274c2ff3c2cd49367c2d9363b328bd42963c719f360f"
+    }
+  ],
+  "unchangedSources": {
+    "count": 675,
+    "baseline": "0ac27943aa09075c46d79fde07c7a642c205ad36",
+    "normalizedFingerprintSetSha256": "8ca08cfc2b1dee34d591f9cdfa6720d1006ef18333f66fddea39650059c6c836",
+    "checked": "All other tracked src/Supabase files compared to baseline. Full list local; baseline and stored test reconstruct the check."
+  },
+  "limits": [
+    "Actual owning TSX/hooks; browser/React/FormData/randomness/action transport boundaries controlled",
+    "Unchanged NumericRulesEditor loaded but not expanded; owning field/signature comparisons do not qualify calculations or full financial DOM",
+    "Real Auth/SQL/operator roles/statutory authority/native/full visual and R0–R8 NOT VERIFIED"
+  ]
+}

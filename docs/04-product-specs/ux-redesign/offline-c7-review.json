@@ -1,0 +1,257 @@
+{
+  "schema": "business-platform.offline-c7-review.v1",
+  "baseline": "0ac27943aa09075c46d79fde07c7a642c205ad36",
+  "status": "SOURCE-QUALIFIED; NATIVE/FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "cases": 21,
+  "variants": 5,
+  "unchangedSourceCount": 675,
+  "exactAppliedCandidateHashesVerified": true,
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# SOURCE ACCEPT: PWA-C7 statutory owning forms\n\nNo MUST FIX. This review covers the pasted source only. I made no tool calls or edits, as you asked, and no plan file.\n\n## Guard ordering (all three forms)\n- `blockOfflineSubmission(event)` runs first in each `onSubmit`, before `preventDefault`, the `inFlight` check, `new FormData`, `startTransition` and `action`.\n- So when offline, `submit` never runs. No signature is computed, no `crypto.randomUUID()` is called, and `pendingRequest` / `request` refs are not touched.\n- The guard calls `preventDefault` itself when blocking, so React's `action={action}` is not invoked.\n- The guard re-reads `navigator.onLine` at submit time, so a submit that races the `offline` event is still caught.\n- The guard is the original synchronous hook with no transition, unchanged.\n\n## Native control only\n- Only the submit `<button>` changes, to `disabled={offline || (pending)}` with a conditional `aria-describedby`. The original pending condition is kept.\n- These are unchanged:\n  - Draft `fieldset disabled={pending}`, the per-field `readOnly` expressions, `NumericRulesEditor frozen`, the `onInvalid` details expansion, and the `onToggle` lock.\n  - Comparison `fieldset disabled={frozen}` and month add/remove (`type=\"button\"`, still usable offline).\n  - Issuance `frozen` including `saved`.\n  - The stale \"open current version\" links.\n- Local edits stay in component state while offline, so no inputs are dropped.\n\n## Notice priority\n- Pending hides the notice in all three forms.\n- Stale hides it in all three, and the stale state renders a link instead of a button.\n- Saved hides it only in Issuance (`!state.saved`), as specified. Draft and Comparison keep the notice after a save, which is correct because more submissions remain possible.\n- Uncertain shows the notice with `recovery` wording (\"reconnect, then verify the previous attempt\"). The original uncertain `role=\"alert\"` error and the \"استعادة نتيجة…\" button label are kept.\n- `useId` gives a separate ID per instance, so there are no collisions if Draft renders more than once.\n\n## Replay\n- Offline does not mutate the attempt refs.\n- After reconnecting, the button re-enables but nothing auto-sends.\n- A deliberate resend with the same signature reuses the original attempt key.\n- Each form keeps its original mismatch handling:\n  - Draft rejects a changed signature while uncertain.\n  - Comparison rejects a changed signature while uncertain.\n  - Issuance rejects any signature change.\n\n## Preserved scope\nThe source preserves all of the following, and the candidate adds no statutory authority, calculation or backend change:\n- financial non-qualification copy\n- `__actor`/`actor`, `head`, `revision`, `stamp`\n- scenarios, expected outputs and official reference fields\n- acknowledgements\n- stale and uncertain recovery\n\n## Non-blocking (no action required)\n- Each file has two `import … from 'react'` lines. This is harmless under the Next ESLint defaults.\n- If `NumericRulesEditor` has an untyped `<button>`, it would become the default for implicit (Enter-key) submission. This predates C7, and the guard in `onSubmit` still covers that path.\n\n## Remains OPEN\n- Both visuals are NOT VISUALLY VERIFIED.\n- Still to do: the focused TSX/hook/transport comparisons, the grouped build/lint, the native JS-off behaviour (not claimed protected), reference/AuthSQL/actors/financial evidence, provider/calculation work, and R0–R8 full-phase closure.\n- I make no measured-gain claim and no claim of full acceptance.",
+    "sessionId": "054c1587-9011-40e6-8513-c74eab772d2b"
+  },
+  "codex": {
+    "source": "ACCEPT exact three candidate hashes; no statutory calculation/authority/backend change; native submit guard before flight/FormData/action/UUID",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Concept C Payroll orientation inspected in own tab124 and closed; demo has no statutory screen, simulated finance not authority",
+    "simplicity": "Known offline avoids uncertain send while preserving original inputs/replay identity; online signature/payload traces match baseline; no numerical gain claimed",
+    "react": "Unconditional hydration-stable hooks/useId, operation submit controls only; current pending/stale/saved gates and read-only fields unchanged",
+    "testGuard": "Five data-driven new/existing/issued draft and comparison/issuance variants: guard/no UUID, online equivalence, pending/stale priorities, unknown attempt exact reuse after explicit recovery; saved issuance hides submit. Actual TSX/hooks with boundary fixtures; no financial calculation qualification. NumericRules local buttons all explicitly type button.",
+    "limits": [
+      "Actual owning TSX/hooks; browser/React/FormData/randomness/action transport boundaries controlled",
+      "Unchanged NumericRulesEditor loaded but not expanded; owning field/signature comparisons do not qualify calculations or full financial DOM",
+      "Real Auth/SQL/operator roles/statutory authority/native/full visual and R0–R8 NOT VERIFIED"
+    ]
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:2609",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:2819",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:2897",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:3107",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:3425",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:37:3698",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:4100",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:4413",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:34:4383",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:39:4695",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:4659",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:40:4970",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:36:5098",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:41:5408",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:5395",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:43:5703",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:41:6019",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:46:6325",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:44:6688",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:49:7196",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:47:7230",
+        "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:52:7738",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2284",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:19:2501",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:2808",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3088",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:2902",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3182",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3160",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3480",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3207",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3527",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3262",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3582",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3311",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3631",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3481",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3801",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3685",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4005",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4039",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4359",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4394",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4714",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4685",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:5005",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:5804",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:22:6123",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6273",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:6591",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6750",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7068",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6991",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7309",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:7200",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7518",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:19:8282",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:24:8599",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:24:1776",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2073",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:24:1893",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2190",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2167",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2504",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2214",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2551",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2269",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2606",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2318",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2655",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:26:2371",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:31:2707",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:26:2422",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:31:2758",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:28:2636",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:33:2970",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2812",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:34:3145",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:33:3666",
+        "after": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:38:3995",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS single grouped34442 exit0 including TypeScript; source unchanged afterward",
+    "lint": "PASS full37262 exit0/four historical warnings; new evidence24516 exit0/no warnings",
+    "native": "NOT RUN this batch, consolidated native qualification remains",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 54,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Remaining People compensation/assignment and server-owned/Auth boundaries, then consolidated native/reference/real actor acceptance and original gaps. D16/extras deferred."
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "0eb57ef39430758712d078255993abb740f75972",
+  "sourceSnapshot": "0ac27943aa09075c46d79fde07c7a642c205ad36",
   "status": "Proposed",
   "items": [
     {
@@ -6479,7 +6479,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:2609",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:2819",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6488,7 +6488,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:2897",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:3107",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6497,7 +6497,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:3425",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:37:3698",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6506,7 +6506,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:4100",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:4413",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6515,7 +6515,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:34:4383",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:39:4695",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6524,7 +6524,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:4659",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:40:4970",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6533,7 +6533,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:36:5098",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:41:5408",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6542,7 +6542,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:5395",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:43:5703",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6551,7 +6551,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:41:6019",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:46:6325",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6731,7 +6731,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2284",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:19:2501",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6740,7 +6740,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:2902",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3182",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6749,7 +6749,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3160",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3480",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6758,7 +6758,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3207",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3527",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6767,7 +6767,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3262",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3582",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6776,7 +6776,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3311",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3631",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6785,7 +6785,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3481",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3801",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6794,7 +6794,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:3685",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4005",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6803,7 +6803,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4039",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4359",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6812,7 +6812,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4394",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:4714",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6821,7 +6821,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:4685",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:5005",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6830,7 +6830,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:5804",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:22:6123",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6839,7 +6839,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6273",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:6591",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6848,7 +6848,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6750",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7068",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6857,7 +6857,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:6991",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7309",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6866,7 +6866,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:7200",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:23:7518",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6875,7 +6875,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:19:8282",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:24:8599",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6884,7 +6884,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:24:1893",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2190",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6893,7 +6893,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2167",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2504",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6902,7 +6902,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2214",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2551",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6911,7 +6911,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2269",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2606",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6920,7 +6920,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:25:2318",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:30:2655",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6929,7 +6929,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:26:2371",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:31:2707",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6938,7 +6938,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:26:2422",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:31:2758",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6947,7 +6947,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:28:2636",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:33:2970",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6956,7 +6956,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2812",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:34:3145",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6965,7 +6965,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:33:3666",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:38:3995",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6974,7 +6974,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:24:1776",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:29:2073",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7001,7 +7001,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:2808",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:21:3088",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7019,7 +7019,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:44:6688",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:49:7196",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15799,7 +15799,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:47:7230",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:52:7738",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
