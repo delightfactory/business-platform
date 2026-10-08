@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { startTransition, useActionState, useEffect, useRef, useState, type FormEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
@@ -16,6 +18,10 @@ const FIELDS = [
 type Header = { label: string; index: number };
 
 export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
+ const offlineHint1 = useId();
+ const offlineHint2 = useId();
   const [fileName, setFileName] = useState('');
   const [headers, setHeaders] = useState<Header[]>([]);
   const [mappingError, setMappingError] = useState('');
@@ -47,6 +53,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   function invalidateSelection() { const next = ++revisionRef.current; setRevision(next); return next; }
 
   function submitPreview(event: FormEvent<HTMLFormElement>) {
+  if (blockOfflineSubmission(event)) return;
     event.preventDefault();
     if (inFlight.current) return;
     const payload = new FormData(event.currentTarget);
@@ -57,6 +64,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   }
 
   function submitCommit(event: FormEvent<HTMLFormElement>) {
+  if (blockOfflineSubmission(event)) return;
     event.preventDefault();
     if (inFlight.current || !previewCurrent) return;
     const payload = new FormData(event.currentTarget);
@@ -79,7 +87,10 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
     }).catch(() => { if (selectionRevision === revisionRef.current) setMappingError('تعذر قراءة الملف في المتصفح.'); });
   }
 
-  return <div className="attendance-import">
+  const showOffline0 = offline && !busy;
+ const showOffline1 = offline && !busy;
+ const showOffline2 = offline && !busy;
+ return <div className="attendance-import">
     <ol className={styles.steps} aria-label="مراحل استيراد الحضور">
       <li aria-current={headers.length === 0 ? 'step' : undefined}>1. اختيار الملف</li>
       <li aria-current={headers.length > 0 && preview.rows.length === 0 ? 'step' : undefined}>2. مطابقة الأعمدة الخمسة</li>
@@ -114,8 +125,8 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
       {preview.rows.length > 0 && <p className="field-hint">تحميل ملف جديد يمحو معاينة الملف الحالي. لن تُحفظ البيانات قبل التأكيد.</p>}
       {headers.length > 0 && <label className="checkbox-row attendance-import-confirm-map"><input key={revision} type="checkbox" name="mappingConfirmed" required/>
         <span>تأكدت من ربط الأعمدة الخمسة بالطريقة الصحيحة.</span></label>}
-      <div className="workspace-form-actions"><SubmitButton disabled={busy} label={previewPending ? 'جارٍ فحص الصفوف…' : 'فحص ومعاينة الأحداث'} pendingLabel="جارٍ فحص الصفوف…"/></div>
-    </form>
+      <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={previewPending ? 'جارٍ فحص الصفوف…' : 'فحص ومعاينة الأحداث'} pendingLabel="جارٍ فحص الصفوف…" ariaDescribedBy={showOffline0 ? offlineHint0 : undefined}/></div>
+    {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
 
     {(preview.rows.length > 0 || showingCommitResult) && <section className="attendance-import-preview" aria-live="polite">
       <h2>{showingCommitResult ? 'آخر نتيجة حفظ مؤكدة' : 'معاينة الملف'}</h2>
@@ -158,8 +169,8 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
           <span>حفظ الحدث في قائمة «بلا تكليف» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
         </label>)}
         <p className="field-hint">تُفسر الأحداث داخل نافذة يوم العمل المطابقة. وقد يتحول اليوم إلى حالة تحتاج مراجعة إذا اكتملت به بصمة ناقصة.</p>
-        <div className="workspace-form-actions"><SubmitButton disabled={busy} label={commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'} pendingLabel="جارٍ حفظ الأحداث…"/></div>
-      </form>}
+        <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'} pendingLabel="جارٍ حفظ الأحداث…" ariaDescribedBy={showOffline1 ? offlineHint1 : undefined}/></div>
+      {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
       {showingCommitResult && ambiguousRows.length > 0 && <form action={commitAction} className="attendance-import-confirm-form attendance-import-ambiguous-retry"
         onSubmit={submitCommit} aria-busy={commitPending}>
         <input type="hidden" name="tenantId" value={tenantId}/>
@@ -173,8 +184,8 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
             </select>
           </label>
         </div>)}
-        <div className="workspace-form-actions"><SubmitButton disabled={busy} label={commitPending ? 'جارٍ إعادة الفحص والحفظ…' : 'تأكيد الأيام المختارة'} pendingLabel="جارٍ إعادة الفحص والحفظ…"/></div>
-      </form>}
+        <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ إعادة الفحص والحفظ…' : 'تأكيد الأيام المختارة'} pendingLabel="جارٍ إعادة الفحص والحفظ…" ariaDescribedBy={showOffline2 ? offlineHint2 : undefined}/></div>
+      {showOffline2 && <OfflineSubmissionNotice id={offlineHint2} purpose="continuation" />}</form>}
     </section>}
     </fieldset>
   </div>;

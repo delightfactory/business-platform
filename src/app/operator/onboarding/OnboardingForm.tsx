@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useRef, useState, useSyncExternalStore, useTransition, type FormEvent, type ReactNode } from 'react';
 import { onboardTenantAction, readOnboardingAttemptAction } from '@/app/operator/actions';
@@ -23,6 +25,9 @@ const messages: Record<OnboardingOutcome['state'], string> = {
 };
 
 export function OnboardingForm({ actorId, requestKey, children }: { actorId: string; requestKey: string; children: ReactNode }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
+ const offlineRecoveryHint = useId();
   const [scope] = useState(() => ({ actorId, requestKey }));
   const captured = useRef<FormData | null>(null);
   const inFlight = useRef(false);
@@ -35,6 +40,7 @@ export function OnboardingForm({ actorId, requestKey, children }: { actorId: str
   const frozen = phase !== 'editing' || actorChanged || outcome?.state === 'actor-changed' || outcome?.state === 'forbidden' || outcome?.state === 'conflict';
 
   function dispatch(operation: 'save' | 'read' | 'retry', form?: HTMLFormElement) {
+  if (blockOfflineSubmission()) return;
     if (!ready || pending || inFlight.current || phase === 'saved') return;
     if (operation === 'save') {
       if (frozen || !form) return;
@@ -74,26 +80,30 @@ export function OnboardingForm({ actorId, requestKey, children }: { actorId: str
     });
   }
 
-  function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); dispatch('save', event.currentTarget); }
+  function submit(event: FormEvent<HTMLFormElement>) {
+  if (blockOfflineSubmission(event)) return; event.preventDefault(); dispatch('save', event.currentTarget); }
 
   if (phase === 'saved' && outcome?.snapshot) return <OnboardingResult result={outcome.snapshot} />;
-  return <div>
+  const showOffline0 = offline && ready && !pending && !frozen;
+ const showOfflineRecovery = offline && ready && !pending && frozen && hasAttempt;
+ return <div>
     <form method="post" className="auth-form onboarding-form" onSubmit={submit} aria-busy={pending}>
       {!ready && <p className="field-hint" role="status">الحفظ غير جاهز بعد. يتطلب الإرسال تفعيل JavaScript.</p>}
       <noscript><p className="field-hint">يمكنك مراجعة الحالة الحالية دون حفظ؛ الإرسال يتطلب تفعيل JavaScript.</p></noscript>
       <fieldset className="operator-action-fields" disabled={!ready || pending || frozen} aria-label="إنشاء الشركة">
         <input type="hidden" name="idempotencyKey" value={scope.requestKey} />
         {children}
-        {!frozen && <button type="submit" className="primary-button" disabled={!ready || pending}>{pending ? 'جارٍ إنشاء الشركة…' : 'إنشاء الشركة'}</button>}
+        {!frozen && <button type="submit" className="primary-button" disabled={offline || (!ready || pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ إنشاء الشركة…' : 'إنشاء الشركة'}</button>}
       </fieldset>
-    </form>
+    {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
     {actorChanged && <p className="form-message form-error" role="alert">{messages['actor-changed']}</p>}
     {outcome && <p className="form-message" role={outcome.state === 'absent' ? 'status' : 'alert'}>{messages[outcome.state]}</p>}
     {pending && <p role="status" className="form-message">جارٍ التحقق من المحاولة…</p>}
     {frozen && hasAttempt && <div className="topbar-actions">
-      {phase === 'retry' && !actorChanged && <button type="button" className="primary-button" disabled={!ready || pending} onClick={() => dispatch('retry')}>إعادة إرسال البيانات الأصلية</button>}
-      <button type="button" className={phase === 'retry' && !actorChanged ? 'secondary-button' : 'primary-button'} disabled={!ready || pending} onClick={() => dispatch('read')}>مراجعة نتيجة المحاولة</button>
+      {phase === 'retry' && !actorChanged && <button type="button" className="primary-button" disabled={offline || (!ready || pending)} onClick={() => dispatch('retry')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>إعادة إرسال البيانات الأصلية</button>}
+      <button type="button" className={phase === 'retry' && !actorChanged ? 'secondary-button' : 'primary-button'} disabled={offline || (!ready || pending)} onClick={() => dispatch('read')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>مراجعة نتيجة المحاولة</button>
     </div>}
+    {showOfflineRecovery && <OfflineSubmissionNotice id={offlineRecoveryHint} purpose="recovery" />}
     {frozen && <p className="field-hint">البيانات الأصلية محفوظة في هذه الصفحة فقط. لا تغلقها أو تعيد تحميلها قبل حسم النتيجة؛ لا تُحفظ بيانات المحاولة على الجهاز.</p>}
   </div>;
 }

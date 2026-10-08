@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "d9b2bfaf1b5dac80dfb0dfdcdaa49f9d4484d29d",
+  "sourceSnapshot": "0eb57ef39430758712d078255993abb740f75972",
   "status": "Proposed",
   "items": [
     {
@@ -6164,7 +6164,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:5799",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6227,7 +6227,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:43:1623",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:1926",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6236,7 +6236,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:2155",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:55:2456",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -7154,7 +7154,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:47:2139",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:53:2419",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7163,7 +7163,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:48:2261",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:54:2593",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7172,7 +7172,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:49:2323",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:55:2654",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7181,7 +7181,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:50:2389",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:56:2719",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7190,7 +7190,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:51:2463",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:2792",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7199,7 +7199,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:3299",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:63:3622",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7208,7 +7208,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:61:3705",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:67:4024",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7217,7 +7217,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:62:3905",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:68:4295",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7730,7 +7730,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:5452",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:100:5923",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7739,7 +7739,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5585",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:101:6056",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7748,7 +7748,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:93:5761",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:104:6229",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7757,7 +7757,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:105:6841",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:116:7297",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7766,7 +7766,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:7721",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:126:8168",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7775,7 +7775,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:7917",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:8363",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7784,7 +7784,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:9672",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:10271",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7793,7 +7793,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10724",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:146:11316",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7802,7 +7802,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:137:10864",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:148:11455",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7811,7 +7811,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:11053",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:150:11642",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7820,7 +7820,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:144:11524",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:155:12108",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7829,7 +7829,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:149:12078",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:160:12657",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7838,7 +7838,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12694",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:13265",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7847,7 +7847,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13124",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:13691",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7856,7 +7856,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:163:13342",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:174:14065",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7865,7 +7865,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:165:13516",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14238",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7874,7 +7874,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:14058",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:179:14778",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7883,7 +7883,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:170:14299",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:181:15017",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7892,7 +7892,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14652",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:187:15364",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7964,7 +7964,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1758",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2080",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7973,7 +7973,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2223",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7982,7 +7982,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3278",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3764",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -7991,7 +7991,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3818",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8000,7 +8000,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3386",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3872",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8009,7 +8009,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3440",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3926",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8018,7 +8018,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3501",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3987",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8027,7 +8027,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3606",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4092",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8036,7 +8036,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3798",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4284",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8045,7 +8045,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4125",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4611",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8054,7 +8054,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4722",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8063,7 +8063,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4419",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:4905",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8072,7 +8072,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4700",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:5186",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8081,7 +8081,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:4813",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5299",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8090,7 +8090,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:5073",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5559",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8099,7 +8099,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:26:5205",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:32:5691",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8108,7 +8108,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5609",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6095",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8117,7 +8117,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5930",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6416",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8126,7 +8126,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6345",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6831",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8135,7 +8135,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6571",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:7057",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8144,7 +8144,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:7127",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:35:7613",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8153,7 +8153,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8064",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8550",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8162,7 +8162,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8180",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8666",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8171,7 +8171,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8384",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8870",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8180,7 +8180,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8695",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9181",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8189,7 +8189,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8960",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9446",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8198,7 +8198,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9208",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9694",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8207,7 +8207,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9399",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9885",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8216,7 +8216,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9466",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9952",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8225,7 +8225,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9737",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:10223",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8234,7 +8234,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10297",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10783",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8243,7 +8243,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10472",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10958",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8252,7 +8252,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10581",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11067",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8261,7 +8261,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10818",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11304",
       "category": "formControls",
       "phase": "R5",
       "status": "pending",
@@ -8495,7 +8495,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2764",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:82:3019",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8504,7 +8504,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:77:2852",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:83:3105",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8513,7 +8513,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:79:2984",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:85:3235",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8522,7 +8522,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:84:3331",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:90:3577",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8531,7 +8531,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:95:3958",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:101:4193",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8540,7 +8540,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:105:4646",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:4871",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8549,7 +8549,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:5169",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5388",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8558,7 +8558,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5713",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:123:5926",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -8567,7 +8567,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:120:5997",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:126:6207",
       "category": "formControls",
       "phase": "R2",
       "status": "pending",
@@ -14741,7 +14741,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:70:3523",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:75:3725",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14750,7 +14750,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:72:3674",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:77:3931",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14759,7 +14759,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:73:3755",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:78:4011",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14768,7 +14768,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3846",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4101",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14777,7 +14777,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3905",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4160",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14786,7 +14786,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:84:4452",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:89:4697",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14795,7 +14795,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:88:4729",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:93:4970",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14804,7 +14804,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:92:4996",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:97:5233",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14813,7 +14813,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:106:5693",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:111:5916",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14822,7 +14822,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:110:5990",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:115:6209",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14831,7 +14831,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:118:6438",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:123:6649",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14840,7 +14840,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:131:7373",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:7571",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14849,7 +14849,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:132:7608",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:7805",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14858,7 +14858,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:133:7790",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:7986",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14867,7 +14867,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:134:8046",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:139:8241",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14876,7 +14876,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:8396",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:141:8589",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14885,7 +14885,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:8704",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:142:8896",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14894,7 +14894,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:8975",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:143:9166",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14903,7 +14903,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:144:9350",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:149:9535",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14912,7 +14912,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:147:9963",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:152:10145",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14921,7 +14921,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:148:10247",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:153:10428",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14930,7 +14930,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:150:10778",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:155:10957",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14939,7 +14939,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:159:11559",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:164:11729",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14948,7 +14948,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:160:11833",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:165:12002",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14957,7 +14957,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:170:12475",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:12634",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14966,7 +14966,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:174:12910",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:179:13065",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14975,7 +14975,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:13256",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:180:13410",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14984,7 +14984,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13495",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13648",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14993,7 +14993,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13565",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13718",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -15002,7 +15002,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:186:14227",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:191:14370",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -15011,7 +15011,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:194:14758",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:199:14893",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -15826,7 +15826,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:90:5337",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15835,7 +15835,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:96:5908",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15844,7 +15844,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:103:6665",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -15853,7 +15853,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:104:6909",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

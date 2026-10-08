@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Image from 'next/image';
 import { useEffect, useRef, useState, useTransition, type CSSProperties, type FormEvent } from 'react';
@@ -28,6 +30,8 @@ export function BrandingEditor({
   hasStoredLogo: boolean;
   canManage: boolean;
 }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
   const [name, setName] = useState(initialName);
   const [color, setColor] = useState<keyof typeof colors>(colorKey);
   const [file, setFile] = useState<File | null>(null);
@@ -50,6 +54,7 @@ export function BrandingEditor({
   }
 
   function submit(event: FormEvent<HTMLFormElement>) {
+  if (blockOfflineSubmission(event)) return;
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     setError('');
@@ -59,7 +64,8 @@ export function BrandingEditor({
     });
   }
 
-  return (
+  const showOffline0 = offline && canManage && !pending;
+ return (
     <div className="branding-editor-layout">
       <section className="branding-preview" style={previewStyle} aria-labelledby="branding-preview-title">
         <p className="eyebrow" id="branding-preview-title">معاينة الهوية</p>
@@ -117,11 +123,11 @@ export function BrandingEditor({
           <textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
             value={reason} onChange={(event) => setReason(event.currentTarget.value)} />
           {error && <p className="form-message form-error" role="alert">{error}</p>}
-          <button className="primary-button" type="submit" disabled={pending} aria-busy={pending}>
+          <button className="primary-button" type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
             {pending && <span className="button-spinner" aria-hidden="true" />}
             {pending ? 'جارٍ الحفظ…' : 'حفظ الهوية'}
           </button>
-        </form>
+        {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
       )}
     </div>
   );

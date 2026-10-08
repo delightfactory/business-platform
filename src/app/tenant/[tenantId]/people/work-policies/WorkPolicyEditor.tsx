@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState, useState, type ChangeEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
@@ -43,6 +45,8 @@ export function WorkPolicyEditor({
   policy?: PolicySeed;
   returnToRequest?: string;
 }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
   const [saveState, saveAction, pending] = useActionState(action, { error: '' });
   const [values, setValues] = useState({
     code: policy?.code ?? '', name: policy?.name ?? '', timezone: policy?.timezone_name ?? 'Africa/Cairo',
@@ -67,7 +71,8 @@ export function WorkPolicyEditor({
   const [overtimeRounding, setOvertimeRounding] = useState(policy?.overtime_rounding_minutes ?? 15);
   const idPrefix = policy ? `revision-${policy.id}` : 'new-policy';
 
-  return <form action={saveAction} className="work-policy-editor" aria-busy={pending}>
+  const showOffline0 = offline && !pending;
+ return <form action={saveAction} className="work-policy-editor" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <fieldset disabled={pending} style={{ display: 'contents' }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     {returnToRequest && <input type="hidden" name="returnToRequest" value={returnToRequest} />}
@@ -191,9 +196,9 @@ export function WorkPolicyEditor({
 
     {saveState.error && <p className="form-message form-error" role="alert">{saveState.error}</p>}
     <div className="work-policy-editor-actions">
-      <SubmitButton label={policy ? 'حفظ إصدار جديد' : 'إنشاء قالب الدوام'} pendingLabel={policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'} />
+      <SubmitButton label={policy ? 'حفظ إصدار جديد' : 'إنشاء قالب الدوام'} pendingLabel={policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
       {policy && <span>سيبقى الإصدار السابق محفوظًا.</span>}
     </div>
     </fieldset>
-  </form>;
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

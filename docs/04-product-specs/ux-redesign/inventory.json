@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "d9b2bfaf1b5dac80dfb0dfdcdaa49f9d4484d29d",
+  "sourceHead": "0eb57ef39430758712d078255993abb740f75972",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -185,7 +185,7 @@
     {
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
       "phase": "R3",
-      "sha256": "0c2bd2e115ae8e78303ce74bdb9807bea37bbbcc00ba7dfefaba5d69e86159ff"
+      "sha256": "575ad432fbf81a9f3cc8e8b4d7a3fd15112a37b11b875c22c3dc81bad78925ce"
     },
     {
       "file": "src/app/operator/onboarding/OnboardingResult.tsx",
@@ -205,7 +205,7 @@
     {
       "file": "src/app/operator/operator-action-form.tsx",
       "phase": "R3",
-      "sha256": "85c51b10dbe46a62939483fdfa8ae7e3eff9226aec3a2e120b804716f2da2053"
+      "sha256": "3164bdf702eded1c93968954cae8985f59496b92f0bff43070f57af8a726a987"
     },
     {
       "file": "src/app/operator/operator-list-controls.tsx",
@@ -320,7 +320,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
       "phase": "R5",
-      "sha256": "81512f9c99e4121f848aa25554b2b3fa308f1684809a4354396cd7a759310229"
+      "sha256": "36e3b0a5d4f564ee4ad88dee1dcb9064b669979238530fe52f6a4cd6aa7bdaa4"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -360,7 +360,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
       "phase": "R5",
-      "sha256": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b"
+      "sha256": "19203dceacd7ea43f7de6e06fa2c5e8cd5a66066e24019fc690d6a75242f7a98"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
@@ -385,7 +385,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
       "phase": "R5",
-      "sha256": "fac5a950866cc0d773678bd274d369e01db8f3e569d7cf17c2051b36b4b47c58"
+      "sha256": "215f941e7a3a2c10fb53e0ff53b5849202359552e0e347d871e538d4e294a83b"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
@@ -425,7 +425,7 @@
     {
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
       "phase": "R2",
-      "sha256": "af0cdd3c26d10d380c574d5f2995e70d4b3cc90181432b21d81343544fa7815d"
+      "sha256": "58010cac3f9e88861a603537512bf77500d8f3b17c477e928a818afd5e154a47"
     },
     {
       "file": "src/app/tenant/[tenantId]/branding/actions.ts",
@@ -1315,7 +1315,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
       "phase": "R4",
-      "sha256": "04a0203a41286b83f1bf8dc055b8747798cf90b9401d0ce60c9221e8e7484c25"
+      "sha256": "ddd16995f4310a4e4be16eb83757b56e397c9006ced77340c928c26bfc9fa5da"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
@@ -8229,17 +8229,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:90:5337",
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
-      "line": 81,
+      "line": 90,
       "tag": "form",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:5799",
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
-      "line": 85,
+      "line": 94,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8249,36 +8249,36 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:96:5908",
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
-      "line": 87,
+      "line": 96,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "type": "\"submit\"",
-        "disabled": "{!ready || pending}"
+        "disabled": "{offline || (!ready || pending)}"
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:103:6665",
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
-      "line": 94,
+      "line": 103,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "type": "\"button\"",
-        "disabled": "{!ready || pending}"
+        "disabled": "{offline || (!ready || pending)}"
       }
     },
     {
-      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+      "id": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:104:6909",
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
-      "line": 95,
+      "line": 104,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "type": "\"button\"",
-        "disabled": "{!ready || pending}"
+        "disabled": "{offline || (!ready || pending)}"
       }
     },
     {
@@ -8383,22 +8383,22 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:43:1623",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:1926",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 43,
+      "line": 49,
       "tag": "form",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/operator-action-form.tsx:49:2155",
+      "id": "CONTROL:src/app/operator/operator-action-form.tsx:55:2456",
       "file": "src/app/operator/operator-action-form.tsx",
-      "line": 49,
+      "line": 55,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "type": "\"submit\"",
-        "disabled": "{!ready || pending}"
+        "disabled": "{offline || (!ready || pending)}"
       }
     },
     {
@@ -9506,9 +9506,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:47:2139",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:53:2419",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 47,
+      "line": 53,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -9516,9 +9516,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:48:2261",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:54:2593",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 48,
+      "line": 54,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9528,9 +9528,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:49:2323",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:55:2654",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 49,
+      "line": 55,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9540,9 +9540,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:50:2389",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:56:2719",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 50,
+      "line": 56,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9552,9 +9552,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:51:2463",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:2792",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 51,
+      "line": 57,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9564,9 +9564,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:3299",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:63:3622",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 57,
+      "line": 63,
       "tag": "textarea",
       "phase": "R5",
       "attributes": {
@@ -9576,25 +9576,26 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:61:3705",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:67:4024",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 61,
+      "line": 67,
       "tag": "button",
       "phase": "R5",
       "attributes": {
         "type": "\"button\"",
-        "disabled": "{pending || refreshing}"
+        "disabled": "{offline || (pending || refreshing)}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:62:3905",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:68:4295",
       "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
-      "line": 62,
+      "line": 68,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {
         "pendingLabel": "\"جارٍ الاعتماد...\"",
-        "label": "{correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}"
+        "label": "{correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}",
+        "disabled": "{offline}"
       }
     },
     {
@@ -10217,9 +10218,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:5452",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:100:5923",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 89,
+      "line": 100,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -10227,9 +10228,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5585",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:101:6056",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 90,
+      "line": 101,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10239,9 +10240,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:93:5761",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:104:6229",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 93,
+      "line": 104,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10250,9 +10251,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:105:6841",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:116:7297",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 105,
+      "line": 116,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10260,9 +10261,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:7721",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:126:8168",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 115,
+      "line": 126,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10271,21 +10272,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:7917",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:8363",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 117,
+      "line": 128,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {
-        "disabled": "{busy}",
+        "disabled": "{offline || (busy)}",
         "label": "{previewPending ? 'جارٍ فحص الصفوف…' : 'فحص ومعاينة الأحداث'}",
         "pendingLabel": "\"جارٍ فحص الصفوف…\""
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:9672",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:10271",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 128,
+      "line": 139,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -10293,9 +10294,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10724",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:146:11316",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 135,
+      "line": 146,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -10303,9 +10304,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:137:10864",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:148:11455",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 137,
+      "line": 148,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10315,9 +10316,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:11053",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:150:11642",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 139,
+      "line": 150,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10327,9 +10328,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:144:11524",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:155:12108",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 144,
+      "line": 155,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10339,9 +10340,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:149:12078",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:160:12657",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 149,
+      "line": 160,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10349,67 +10350,67 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12694",
-      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 157,
-      "tag": "input",
-      "phase": "R5",
-      "attributes": {
-        "type": "\"checkbox\"",
-        "name": "\"selectedRow\"",
-        "value": "{JSON.stringify(row)}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13124",
-      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 161,
-      "tag": "SubmitButton",
-      "phase": "R5",
-      "attributes": {
-        "disabled": "{busy}",
-        "label": "{commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'}",
-        "pendingLabel": "\"جارٍ حفظ الأحداث…\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:163:13342",
-      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 163,
-      "tag": "form",
-      "phase": "R5",
-      "attributes": {
-        "action": "{commitAction}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:165:13516",
-      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 165,
-      "tag": "input",
-      "phase": "R5",
-      "attributes": {
-        "type": "\"hidden\"",
-        "name": "\"tenantId\"",
-        "value": "{tenantId}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:14058",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:13265",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
       "line": 168,
       "tag": "input",
       "phase": "R5",
       "attributes": {
+        "type": "\"checkbox\"",
+        "name": "\"selectedRow\"",
+        "value": "{JSON.stringify(row)}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:13691",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 172,
+      "tag": "SubmitButton",
+      "phase": "R5",
+      "attributes": {
+        "disabled": "{offline || (busy)}",
+        "label": "{commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'}",
+        "pendingLabel": "\"جارٍ حفظ الأحداث…\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:174:14065",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 174,
+      "tag": "form",
+      "phase": "R5",
+      "attributes": {
+        "action": "{commitAction}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14238",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 176,
+      "tag": "input",
+      "phase": "R5",
+      "attributes": {
+        "type": "\"hidden\"",
+        "name": "\"tenantId\"",
+        "value": "{tenantId}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:179:14778",
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "line": 179,
+      "tag": "input",
+      "phase": "R5",
+      "attributes": {
         "type": "\"hidden\"",
         "name": "\"selectedRow\"",
         "value": "{JSON.stringify(row)}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:170:14299",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:181:15017",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 170,
+      "line": 181,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10417,13 +10418,13 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14652",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:187:15364",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 176,
+      "line": 187,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {
-        "disabled": "{busy}",
+        "disabled": "{offline || (busy)}",
         "label": "{commitPending ? 'جارٍ إعادة الفحص والحفظ…' : 'تأكيد الأيام المختارة'}",
         "pendingLabel": "\"جارٍ إعادة الفحص والحفظ…\""
       }
@@ -10499,27 +10500,28 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1758",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2080",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 14,
+      "line": 20,
       "tag": "form",
       "phase": "R5",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1901",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2223",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 14,
+      "line": 20,
       "tag": "button",
       "phase": "R5",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3278",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3764",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10529,9 +10531,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3818",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10541,9 +10543,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3386",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3872",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10553,9 +10555,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3440",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3926",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10565,9 +10567,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3501",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3987",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10577,9 +10579,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3606",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4092",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10589,9 +10591,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3798",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4284",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 21,
+      "line": 27,
       "tag": "textarea",
       "phase": "R5",
       "attributes": {
@@ -10599,9 +10601,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4125",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4611",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 23,
+      "line": 29,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10611,9 +10613,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4236",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4722",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 23,
+      "line": 29,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10621,9 +10623,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4419",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:4905",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 24,
+      "line": 30,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10633,9 +10635,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4700",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:5186",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 24,
+      "line": 30,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10645,9 +10647,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:4813",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5299",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10656,9 +10658,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:5073",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5559",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10668,9 +10670,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:26:5205",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:32:5691",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 26,
+      "line": 32,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10678,9 +10680,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5609",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6095",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10689,9 +10691,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5930",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6416",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10700,9 +10702,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6345",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6831",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10711,9 +10713,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6571",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:7057",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10721,9 +10723,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:7127",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:35:7613",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 29,
+      "line": 35,
       "tag": "textarea",
       "phase": "R5",
       "attributes": {
@@ -10731,9 +10733,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8064",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8550",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10743,9 +10745,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8180",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8666",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10753,9 +10755,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8384",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8870",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10763,9 +10765,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8695",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9181",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10773,9 +10775,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8960",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9446",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10784,9 +10786,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9208",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9694",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10795,9 +10797,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9399",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9885",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10807,9 +10809,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9466",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9952",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10819,9 +10821,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9737",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:10223",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 38,
+      "line": 44,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10829,9 +10831,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10297",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10783",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10841,9 +10843,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10472",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10958",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10853,9 +10855,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10581",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11067",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10863,9 +10865,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10818",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11304",
       "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
-      "line": 40,
+      "line": 46,
       "tag": "textarea",
       "phase": "R5",
       "attributes": {
@@ -11108,17 +11110,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2764",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:82:3019",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 76,
+      "line": 82,
       "tag": "form",
       "phase": "R2",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:77:2852",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:83:3105",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 77,
+      "line": 83,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11128,9 +11130,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:79:2984",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:85:3235",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 79,
+      "line": 85,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11139,9 +11141,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:84:3331",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:90:3577",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 84,
+      "line": 90,
       "tag": "select",
       "phase": "R2",
       "attributes": {
@@ -11150,9 +11152,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:95:3958",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:101:4193",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 95,
+      "line": 101,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11161,9 +11163,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:105:4646",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:4871",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 105,
+      "line": 111,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -11172,9 +11174,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:5169",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5388",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 111,
+      "line": 117,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11184,9 +11186,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5713",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:123:5926",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 117,
+      "line": 123,
       "tag": "textarea",
       "phase": "R2",
       "attributes": {
@@ -11195,14 +11197,14 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:120:5997",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:126:6207",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 120,
+      "line": 126,
       "tag": "button",
       "phase": "R2",
       "attributes": {
         "type": "\"submit\"",
-        "disabled": "{pending}"
+        "disabled": "{offline || (pending)}"
       }
     },
     {
@@ -18756,9 +18758,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:70:3523",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:75:3725",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 70,
+      "line": 75,
       "tag": "form",
       "phase": "R4",
       "attributes": {
@@ -18766,9 +18768,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:72:3674",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:77:3931",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 72,
+      "line": 77,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18778,9 +18780,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:73:3755",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:78:4011",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 73,
+      "line": 78,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18790,9 +18792,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3846",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4101",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 74,
+      "line": 79,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18802,9 +18804,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3905",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4160",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 74,
+      "line": 79,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18814,9 +18816,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:84:4452",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:89:4697",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 84,
+      "line": 89,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18825,9 +18827,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:88:4729",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:93:4970",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 88,
+      "line": 93,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18836,9 +18838,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:92:4996",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:97:5233",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 92,
+      "line": 97,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18847,9 +18849,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:106:5693",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:111:5916",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 106,
+      "line": 111,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18859,9 +18861,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:110:5990",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:115:6209",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 110,
+      "line": 115,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18871,9 +18873,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:118:6438",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:123:6649",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 118,
+      "line": 123,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18883,9 +18885,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:131:7373",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:7571",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 131,
+      "line": 136,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18895,9 +18897,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:132:7608",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:7805",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 132,
+      "line": 137,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18907,9 +18909,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:133:7790",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:7986",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 133,
+      "line": 138,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18918,9 +18920,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:134:8046",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:139:8241",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 134,
+      "line": 139,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18930,9 +18932,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:8396",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:141:8589",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 136,
+      "line": 141,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18942,9 +18944,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:8704",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:142:8896",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 137,
+      "line": 142,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18954,9 +18956,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:8975",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:143:9166",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 138,
+      "line": 143,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18966,9 +18968,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:144:9350",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:149:9535",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 144,
+      "line": 149,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18977,9 +18979,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:147:9963",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:152:10145",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 147,
+      "line": 152,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -18989,9 +18991,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:148:10247",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:153:10428",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 148,
+      "line": 153,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19001,9 +19003,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:150:10778",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:155:10957",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 150,
+      "line": 155,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19013,9 +19015,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:159:11559",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:164:11729",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 159,
+      "line": 164,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19025,9 +19027,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:160:11833",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:165:12002",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 160,
+      "line": 165,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19037,9 +19039,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:170:12475",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:12634",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 170,
+      "line": 175,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19048,9 +19050,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:174:12910",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:179:13065",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 174,
+      "line": 179,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19060,9 +19062,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:13256",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:180:13410",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 175,
+      "line": 180,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19072,9 +19074,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13495",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13648",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 176,
+      "line": 181,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19084,9 +19086,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13565",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13718",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 176,
+      "line": 181,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19096,9 +19098,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:186:14227",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:191:14370",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 186,
+      "line": 191,
       "tag": "input",
       "phase": "R4",
       "attributes": {
@@ -19107,14 +19109,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:194:14758",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:199:14893",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
-      "line": 194,
+      "line": 199,
       "tag": "SubmitButton",
       "phase": "R4",
       "attributes": {
         "label": "{policy ? 'حفظ إصدار جديد' : 'إنشاء قالب الدوام'}",
-        "pendingLabel": "{policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'}"
+        "pendingLabel": "{policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'}",
+        "disabled": "{offline}"
       }
     },
     {

@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useRef, useState, useSyncExternalStore, useTransition, type FormEvent, type ReactNode } from 'react';
 import { unstable_rethrow } from 'next/navigation';
@@ -18,12 +20,15 @@ type Props = {
 };
 
 export function OperatorActionForm({ action, children, errorMessages, label, pendingLabel = 'جارٍ الحفظ…', className = 'auth-form', buttonClassName = 'primary-button' }: Props) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const ready = useSyncExternalStore(subscribe, clientReady, serverReady);
   const inFlight = useRef(false);
 
   function submit(event: FormEvent<HTMLFormElement>) {
+  if (blockOfflineSubmission(event)) return;
     event.preventDefault();
     if (!ready || pending || inFlight.current) return;
     inFlight.current = true;
@@ -40,16 +45,17 @@ export function OperatorActionForm({ action, children, errorMessages, label, pen
     });
   }
 
-  return <form method="post" onSubmit={submit} className={className} aria-busy={pending}>
+  const showOffline0 = offline && ready && !pending;
+ return <form method="post" onSubmit={submit} className={className} aria-busy={pending}>
     {!ready && <p className="field-hint" role="status">الحفظ غير جاهز بعد. إذا استمر ذلك، فعّل JavaScript وأعد تحميل الصفحة.</p>}
     <noscript><p className="field-hint">الحفظ يتطلب تفعيل JavaScript؛ يمكنك مراجعة الحالة الحالية دون حفظ.</p></noscript>
     <fieldset className="operator-action-fields" disabled={!ready || pending} aria-label={label}>
     {children}
     {error && <p className="form-message form-error" role="alert">{error}</p>}
-    <button className={buttonClassName} type="submit" disabled={!ready || pending} aria-busy={pending}>
+    <button className={buttonClassName} type="submit" disabled={offline || (!ready || pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
       {pending && <span className="button-spinner" aria-hidden="true" />}
       {pending ? pendingLabel : label}
     </button>
     </fieldset>
-  </form>;
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

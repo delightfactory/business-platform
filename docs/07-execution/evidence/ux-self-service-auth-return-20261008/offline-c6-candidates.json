@@ -1,0 +1,37 @@
+[
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
+    "baselineHash": "81512f9c99e4121f848aa25554b2b3fa308f1684809a4354396cd7a759310229",
+    "candidateHash": "36e3b0a5d4f564ee4ad88dee1dcb9064b669979238530fe52f6a4cd6aa7bdaa4"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+    "baselineHash": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
+    "candidateHash": "19203dceacd7ea43f7de6e06fa2c5e8cd5a66066e24019fc690d6a75242f7a98"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+    "baselineHash": "fac5a950866cc0d773678bd274d369e01db8f3e569d7cf17c2051b36b4b47c58",
+    "candidateHash": "215f941e7a3a2c10fb53e0ff53b5849202359552e0e347d871e538d4e294a83b"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+    "baselineHash": "04a0203a41286b83f1bf8dc055b8747798cf90b9401d0ce60c9221e8e7484c25",
+    "candidateHash": "ddd16995f4310a4e4be16eb83757b56e397c9006ced77340c928c26bfc9fa5da"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
+    "baselineHash": "af0cdd3c26d10d380c574d5f2995e70d4b3cc90181432b21d81343544fa7815d",
+    "candidateHash": "58010cac3f9e88861a603537512bf77500d8f3b17c477e928a818afd5e154a47"
+  },
+  {
+    "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+    "baselineHash": "0c2bd2e115ae8e78303ce74bdb9807bea37bbbcc00ba7dfefaba5d69e86159ff",
+    "candidateHash": "575ad432fbf81a9f3cc8e8b4d7a3fd15112a37b11b875c22c3dc81bad78925ce"
+  },
+  {
+    "file": "src/app/operator/operator-action-form.tsx",
+    "baselineHash": "85c51b10dbe46a62939483fdfa8ae7e3eff9226aec3a2e120b804716f2da2053",
+    "candidateHash": "3164bdf702eded1c93968954cae8985f59496b92f0bff43070f57af8a726a987"
+  }
+]

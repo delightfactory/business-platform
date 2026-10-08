@@ -1,0 +1,613 @@
+{
+  "schema": "business-platform.offline-c6-review.v1",
+  "baseline": "0eb57ef39430758712d078255993abb740f75972",
+  "status": "SOURCE-QUALIFIED; NATIVE/FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "cases": 39,
+  "variants": 10,
+  "unchangedSourceCount": 671,
+  "exactAppliedCandidateHashesVerified": true,
+  "claude": {
+    "initial": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# PWA-C6 source review: MUST FIX (one item)\n\n## MUST FIX\n\n**`src/app/operator/onboarding/OnboardingForm.tsx`, recovery group: the JSX does not compile.**\n\n```tsx\n{frozen && hasAttempt && <div className=\"topbar-actions\">\n  …\n</div>{showOfflineRecovery && <OfflineSubmissionNotice id={offlineRecoveryHint} purpose=\"recovery\" />}}\n```\n\nThe outer expression is now `frozen && hasAttempt && <div>…</div>{…}`. That is two adjacent JSX nodes inside one expression container. TypeScript reports TS2657 (\"JSX expressions must have one parent element\"), so the grouped build fails. If the claimed build/lint already passed, then the diff shown here is not what was built.\n\nMinimal fix: close the original group unchanged, then render the notice as a sibling. `showOfflineRecovery` already includes `frozen && hasAttempt`.\n\n```tsx\n    </div>}\n    {showOfflineRecovery && <OfflineSubmissionNotice id={offlineRecoveryHint} purpose=\"recovery\" />}\n```\n\nThis keeps the notice next to the recovery buttons and leaves every original condition intact. Re-run the grouped build/lint after fixing.\n\n## Checked and accepted\n\n**Classification form**\n- The submit guard runs before `setReviewRenewed(false)`.\n- The `renewReview` guard runs before `setRefreshing`, the fetch and review replacement.\n- When offline, `preventDefault` in `onSubmit` stops React's `action` from dispatching.\n- The hint shows only when `!pending && !refreshing`.\n\n**Attendance import**\n- Both the preview and commit guards run before `FormData`, `inFlight`, revision/attempt binding and `startTransition`.\n- File reading, header mapping, `invalidateSelection` and the reject download have no new guard.\n- The three hints each have their own `useId` and are gated on `!busy`.\n\n**Channel forms**\n- The guard runs before date conversion, `flight`, `setBusy`, `setMessage`, the mutation and the router.\n- The `!ready || busy` gate on the fieldset is unchanged.\n- The hint condition is `ready && !busy`.\n\n**Work policy**\n- `blockOfflineSubmission(event)` in `onSubmit` blocks `saveAction` when offline.\n- Fields, preview and the fieldset are unchanged.\n\n**Branding**\n- The guard runs before `setError('')` and the transition.\n- The hint condition is `canManage && !pending`, and the form only renders for `canManage`.\n\n**Operator action form**\n- The guard runs before the `ready`/`pending`/`inFlight` check, `FormData`, error and transition.\n\n**Onboarding (apart from the syntax error)**\n- The `dispatch` guard runs before the `captured` payload, intent, `inFlight`, phase and action.\n- A blocked attempt leaves phase, key and outcome untouched, so the original unknown/absent/actor-changed/replay rules still apply.\n- No storage, new key or automatic resend is added.\n- The editing notice requires `!frozen`. The recovery notice requires `frozen && hasAttempt` and is hidden while pending or unready. The saved state returns early.\n\n**Across all files**\n- Only the reviewed submit/review/recovery buttons gain `offline ||`.\n- Fieldsets and local editing/reading/navigation are untouched.\n- No global disable, queue or reload is added.\n- The online signal is not treated as proof that the service is reachable.\n\n## Non-blocking (no polish loop requested)\n\nThese need a fix only if lint fails on them:\n- Each file adds a second `import … from 'react'`.\n- The new lines use one-space indentation.\n- The parentheses in `offline || (busy)` are redundant.\n- `showOffline0/1/2` in the import form are three identical values.\n\n## Status\n\n- Source after the fix above: acceptable for C6 scope.\n- Both visuals: NOT VISUALLY VERIFIED.\n- Source review is not actual role, device or provider proof. Native, reference, provider, SQL, roles, device and full R0–R8 acceptance remain OPEN.",
+      "sessionId": "c59c9155-2081-4be3-9565-550dd0fc0bf8"
+    },
+    "final": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "**SOURCE ACCEPT**, for the syntax correction only (candidate `575ad432…925ce`).\n\n- **Parse:** The original `{frozen && hasAttempt && <div className=\"topbar-actions\">…</div>}` now closes before the notice. The notice is a separate sibling expression, so the TS2657 error is gone.\n- **Conditions:** `showOfflineRecovery = offline && ready && !pending && frozen && hasAttempt` contains the recovery group's own guard. So the notice can never appear without the recovery buttons. It stays hidden while pending or unready, and the saved state still returns early before it.\n- **Wiring:** Both recovery buttons still point `aria-describedby` at `offlineRecoveryHint` under the same `showOfflineRecovery` condition. The recovery wording, the frozen-page warning, the actor/key/unknown/absent replay rules and the original button conditions are unchanged.\n\nThis accepts the source only; nothing has been applied or built yet. The other six files are accepted on your statement that they are byte-unchanged; I did not compare hashes. After applying, the grouped build/lint still has to pass, and its result decides whether the duplicate `react` imports flagged earlier need changing.\n\nBoth visuals remain **NOT VISUALLY VERIFIED**. Native, reference, provider, SQL, roles, device and full R0–R8 acceptance remain **OPEN**.",
+      "sessionId": "c59c9155-2081-4be3-9565-550dd0fc0bf8"
+    }
+  },
+  "codex": {
+    "source": "ACCEPT seven exact hashes/nine owning forms and explicit original review/recovery; guard before resets/captured payload/bindings/flight/transitions/actions",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Concept C Time view opened in owned tab123; closed without theme change; user tab3 untouched; no matched native renders claimed",
+    "simplicity": "Known offline avoids uncertain send while preserving local edits/context and original unknown outcome; online traces equivalent. No numerical improvement claimed.",
+    "reviewCorrection": "One initial JSX sibling syntax finding corrected externally before application; short resumed delta accepted. No source change after grouped build.",
+    "testGuard": "37 actual-source cases plus2 targeted state gates without repeating37/fingerprints. Real parser/intent modules loaded; browser/React/FormData/transport boundaries controlled. Native action pending cycle explicitly simulated for original import inFlight-clearing effect; not framework proof.",
+    "react": "Unconditional hooks, SSR-stable synchronous guard, unique hints, only operation controls disabled; existing fieldsets/availability/actor/keys/recovery/required acknowledgment/privacy unchanged.",
+    "limits": [
+      "Actual owning TSX/shared hook/real parser/intent modules; controlled React/browser/FormData and action transport boundaries",
+      "Native Enter/JS-off/real Auth/SQL/roles/provider/full reference NOT VERIFIED",
+      "Complete retained-confirmed-result and original full actor partitions remain open"
+    ]
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:81:4840",
+        "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:90:5337",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:85:5302",
+        "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:5799",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:87:5411",
+        "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:96:5908",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:94:6010",
+        "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:103:6665",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:95:6168",
+        "after": "CONTROL:src/app/operator/onboarding/OnboardingForm.tsx:104:6909",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/operator-action-form.tsx:43:1623",
+        "after": "CONTROL:src/app/operator/operator-action-form.tsx:49:1926",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/operator/operator-action-form.tsx:49:2155",
+        "after": "CONTROL:src/app/operator/operator-action-form.tsx:55:2456",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:47:2139",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:53:2419",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:48:2261",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:54:2593",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:49:2323",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:55:2654",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:50:2389",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:56:2719",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:51:2463",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:2792",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:57:3299",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:63:3622",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:61:3705",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:67:4024",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:62:3905",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx:68:4295",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:5452",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:100:5923",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5585",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:101:6056",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:93:5761",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:104:6229",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:105:6841",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:116:7297",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:7721",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:126:8168",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:7917",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:8363",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:9672",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:10271",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10724",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:146:11316",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:137:10864",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:148:11455",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:11053",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:150:11642",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:144:11524",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:155:12108",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:149:12078",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:160:12657",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12694",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:13265",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13124",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:13691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:163:13342",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:174:14065",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:165:13516",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14238",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:14058",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:179:14778",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:170:14299",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:181:15017",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14652",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:187:15364",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1758",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2080",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1901",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:2223",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3278",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3764",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3332",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3818",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3386",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3872",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3440",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3926",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3501",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:3987",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3606",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4092",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3798",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:4284",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4125",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4611",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4236",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:4722",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4419",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:4905",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4700",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:30:5186",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:4813",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5299",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:5073",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:31:5559",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:26:5205",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:32:5691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5609",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6095",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5930",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6416",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6345",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:6831",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6571",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:33:7057",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:7127",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:35:7613",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8064",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8550",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8180",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8666",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8384",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:8870",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8695",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9181",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8960",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9446",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9208",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9694",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9399",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9885",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9466",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:9952",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9737",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:44:10223",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10297",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10783",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10472",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:10958",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10581",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11067",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10818",
+        "after": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:46:11304",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2764",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:82:3019",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:77:2852",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:83:3105",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:79:2984",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:85:3235",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:84:3331",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:90:3577",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:95:3958",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:101:4193",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:105:4646",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:4871",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:5169",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5388",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5713",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:123:5926",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:120:5997",
+        "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:126:6207",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:70:3523",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:75:3725",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:72:3674",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:77:3931",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:73:3755",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:78:4011",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3846",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4101",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:74:3905",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:79:4160",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:84:4452",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:89:4697",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:88:4729",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:93:4970",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:92:4996",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:97:5233",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:106:5693",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:111:5916",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:110:5990",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:115:6209",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:118:6438",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:123:6649",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:131:7373",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:7571",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:132:7608",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:7805",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:133:7790",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:7986",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:134:8046",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:139:8241",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:136:8396",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:141:8589",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:137:8704",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:142:8896",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:138:8975",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:143:9166",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:144:9350",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:149:9535",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:147:9963",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:152:10145",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:148:10247",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:153:10428",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:150:10778",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:155:10957",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:159:11559",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:164:11729",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:160:11833",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:165:12002",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:170:12475",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:12634",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:174:12910",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:179:13065",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:175:13256",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:180:13410",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13495",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13648",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:176:13565",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:181:13718",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:186:14227",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:191:14370",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:194:14758",
+        "after": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:199:14893",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS single grouped72339 exit0 including TypeScript; source unchanged afterward",
+    "lint": "PASS full78725 exit0/four prior warnings; evidence7ca4ab exit0/no warnings. Unused helper declaration removed only, no runtime change.",
+    "native": "NOT RUN this batch; consolidated native/reference acceptance remains",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 54,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Remaining operator statutory three forms, People compensation/assignment and server-owned/Auth boundaries; preserve read/search/logout. Then consolidated native/reference/real actor journeys and original gaps, D16/extras deferred."
+}

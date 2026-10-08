@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState, useRef, useState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
@@ -8,6 +10,8 @@ import type { ClassificationReview } from './classification';
 export function ClassificationReviewForm({ tenantId, instanceId, review: initialReview }: {
   tenantId: string; instanceId: string; review: ClassificationReview;
 }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHint0 = useId();
   const [review, setReview] = useState(initialReview);
   const [reason, setReason] = useState('');
   const [state, action, pending] = useActionState(commitClassificationAction, { message: '', needsReview: false });
@@ -27,6 +31,7 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
   }
 
   async function renewReview() {
+  if (blockOfflineSubmission()) return;
     setRefreshing(true);
     try {
       const result = await renewClassificationReview(tenantId, instanceId);
@@ -44,7 +49,8 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
 
   const result = review.classification;
   const correction = review.expected_fact_id !== null;
-  return <form action={action} onSubmit={() => setReviewRenewed(false)} className="attendance-form attendance-approve-form">
+  const showOffline0 = offline && !pending && !refreshing;
+ return <form action={action} onSubmit={(event) => { if (blockOfflineSubmission(event)) return; setReviewRenewed(false); }} className="attendance-form attendance-approve-form">
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="instanceId" value={instanceId} />
     <input type="hidden" name="review" value={JSON.stringify(review)} />
@@ -58,7 +64,7 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
         minLength={3} maxLength={500} required disabled={pending || refreshing} />
     </label>
     {(reviewMessage || (state.message && !reviewRenewed)) && <p className="form-message form-error attendance-full-field" role="alert">{reviewMessage || state.message}</p>}
-    {stale ? <button type="button" className="primary-button" disabled={pending || refreshing} onClick={renewReview}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</button>
-      : <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'} />}
-  </form>;
+    {stale ? <button type="button" className="primary-button" disabled={offline || (pending || refreshing)} onClick={renewReview} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</button>
+      : <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>}
+  {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }
