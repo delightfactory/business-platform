@@ -22,7 +22,7 @@ export async function changeTenantEntitlementAction(formData: FormData) {
     p_is_granted: decision === 'grant',
     p_valid_until: expiresOn || null,
     p_reason: reason,
-  });
+  }).then((response) => response, () => ({ data: null, error: { message: 'unconfirmed_rpc_outcome' } }));
   if (error) {
     const state = mapError(error.message);
     if (capability === 'hr.employee_finance' && state === 'people-required') return 'finance-people-required';

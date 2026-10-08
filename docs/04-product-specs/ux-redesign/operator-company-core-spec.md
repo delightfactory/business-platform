@@ -20,6 +20,8 @@ Lifecycle/commercial/entitlements/grants/root must not celebrate URL success fla
 
 ## Shared client-form privacy and pending
 
+Bounded RPC-rejection amendment, jointly source-reviewed by Codex and official Opus5.5 Medium at8e8b220: only the three company mutation RPC promises map rejection to the existing `failed` response, with a neutral sentinel message discarded by the generic mapper. This supersedes propagation for these promise rejections only. Preserve all auth, synchronous SDK throws, framework redirects, shared form, validation, payloads, SQL and returned-error mappings. Never classify a rejection message as an authoritative SQL error, never claim rollback or success, never automatically retry. Existing `failed` copy instructs reviewing current company state before another operation; uncontrolled mounted inputs remain intact through the existing mapped-error path. Browser-to-server action transport, historical reload/unmount/account recovery and actual mutation authority remain separate open gates. No new backend protocol, journal, logging or broad catch.
+
 Existing OperatorActionForm is client-only onSubmit with no native action: unsupported prehydration submission defaultsGET and can leak reason/email. Preserve supported hydrated action path; do not invent native mutation. Stable useSyncExternalStore SSRfalse/hydratedtrue readiness, explicitPOST and outer disabledfieldset before ready/duringpending, visible preparation and noscript explanation; current read-only content remains. Exact child form names/defaults/required/disabled fields and functions remain. In-flight ref acquired before FormData capture, capture before pending/disabled change, preserve mapped validation errors/values. Ref closes only same-instance concurrent-event gap; no crossform/tab/serverfinanciallock claim. finally releasesref while exceptions/frameworkredirects propagate; no catch-all, replay/retry, newjournal or audit exemption. Thrown/unknown-action recovery remains requiredOPEN for broaderR3, not fixed by this guard.
 
 ## Reference and tests
@@ -37,3 +39,15 @@ See [source-qualified evidence](../../07-execution/evidence/ux-core-operator-com
 ## Complete consumed snapshot integrity
 
 Continuation from f9a0e82: lifecycle/company name and state must be source-valid before displaying tasks. Commercial snapshot must contain each exact users/max_users and sites/max_sites pair once, recognized status, typed usage/mode/value and displayable nullable date; effective rows require a current valid limit. Entitlements must contain each of the five current source capability keys once, typed grant/evaluator/current and historical displayed dates; effective requires current decision/start. Conflict/future/missing remain legitimate source states, including aggregate nullable fields; preserve existing task suppression/dependencies and defaults for valid data. Invalid/unknown variants show current unavailable Status without guessed forms or raw object children. SQL remains authority; no arithmetic/legal/dependency duplication or validation of unconsumed extras. Dictionary feedback must reject inherited query keys; generic failure cannot certify rollback/no commit. Keep original actions, FormData, grants, redirect/exception/storage/provider/CSS contracts unchanged. This closes consumed-shape defects only, not complete company/role/runtime/visual acceptance.
+
+## Reviewed company action source families
+
+These source-level controlled-SDK families are not complete actor/state semantic or real Auth/SQL acceptance. Exact114 case names/assertions/hashes are in existing company evidence; source rejection is never authoritative SQL failure.
+
+| Family | Source action / literal RPC | Covered source branches | Remaining acceptance |
+| --- | --- | --- | --- |
+| R3-COMPANY-ACT-LC | changeTenantLifecycleAction / change_tenant_lifecycle | Five transitions, UUID/state/reason, setup/auth, six SQL errors, malformed results, rejection/synchronous/auth throws, exact payload/redirect | Actual grants/SQL/audit; detailed receipt; browser transport/history |
+| R3-COMPANY-ACT-LM | changeCommercialLimitAction / change_tenant_capability_limit | Two pairs times two modes, numeric/reason, setup/auth, six SQL errors, rejection/synchronous/auth throws, exact payload/redirect | Actual grants/conflicts/capacity SQL/audit; detailed receipt; browser transport/history |
+| R3-COMPANY-ACT-EN | changeTenantEntitlementAction / change_tenant_capability_entitlement | Five capabilities times grant/deny, expiry shape/forwarding, twelve SQL errors and two dependency messages, rejection/synchronous/auth throws, exact payload/redirect | Actual grants/SQL dependencies/expiry/audit; detailed receipt; browser transport/history |
+
+Only six action/RPC register entries become source-reviewed; no reviewed/not-applicable semantic or runtime closure. Route/control items remain pending for whole applicable scope.

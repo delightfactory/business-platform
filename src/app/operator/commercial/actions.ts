@@ -25,7 +25,7 @@ export async function changeCommercialLimitAction(formData: FormData) {
     p_limit_mode: mode,
     p_limit_value: value,
     p_reason: reason,
-  });
+  }).then((response) => response, () => ({ data: null, error: { message: 'unconfirmed_rpc_outcome' } }));
   if (error) return mapError(error.message);
   redirect(`/operator/commercial/${tenantId}?state=updated`);
 }

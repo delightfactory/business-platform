@@ -1,0 +1,512 @@
+{
+  "scope": "Actual three server actions executed with controlled SDK; no real SQL writes/Auth/native runtime or full semantic acceptance",
+  "passed": 114,
+  "records": [
+    {
+      "name": "lifecycle:invalid-uuid",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:short-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:long-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:empty-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:reason-boundary-3",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:reason-boundary-500",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:setup-unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:unauthenticated",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:unknown-error-no-success",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:transport-throw-is-not-success-or-retry",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:rejection-nonauthoritative-undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:rejection-nonauthoritative-Synthetic plain rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:rejection-nonauthoritative-Error: tenant_lifecycle_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:auth-rejection-propagates",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:trimmed-payload",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-uuid",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:short-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:long-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:empty-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:reason-boundary-3",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:reason-boundary-500",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:setup-unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:unauthenticated",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:unknown-error-no-success",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:transport-throw-is-not-success-or-retry",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:rejection-nonauthoritative-undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:rejection-nonauthoritative-Synthetic plain rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:rejection-nonauthoritative-Error: commercial_access_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:auth-rejection-propagates",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:trimmed-payload",
+      "status": "PASS"
+    },
+    {
+      "name": "units:invalid-uuid",
+      "status": "PASS"
+    },
+    {
+      "name": "units:short-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "units:long-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "units:empty-reason",
+      "status": "PASS"
+    },
+    {
+      "name": "units:reason-boundary-3",
+      "status": "PASS"
+    },
+    {
+      "name": "units:reason-boundary-500",
+      "status": "PASS"
+    },
+    {
+      "name": "units:setup-unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "units:unauthenticated",
+      "status": "PASS"
+    },
+    {
+      "name": "units:unknown-error-no-success",
+      "status": "PASS"
+    },
+    {
+      "name": "units:transport-throw-is-not-success-or-retry",
+      "status": "PASS"
+    },
+    {
+      "name": "units:rejection-nonauthoritative-undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "units:rejection-nonauthoritative-Synthetic plain rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "units:rejection-nonauthoritative-Error: commercial_access_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "units:auth-rejection-propagates",
+      "status": "PASS"
+    },
+    {
+      "name": "units:trimmed-payload",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:command-active-suspended",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:command-active-archived",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:command-suspended-active",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:command-suspended-archived",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:command-archived-suspended",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:invalid-state-{\"expectedState\":\"unknown\"}",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:invalid-state-{\"targetState\":\"unknown\"}",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:malformed-result-null",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:malformed-result-[]",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:malformed-result-true",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:malformed-result-\"saved\"",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:malformed-result-20",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:command-tenant.users-limited",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:command-tenant.users-unlimited",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:command-tenant.sites-limited",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:command-tenant.sites-unlimited",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-wrong-pair",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-mode",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value-",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value-0",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value--1",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value-1.5",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value-1e2",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:invalid-value-9007199254740992",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.people-grant",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.people-deny",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.payroll-grant",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.payroll-deny",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.attendance-grant",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.attendance-deny",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.leave-grant",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.leave-deny",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.employee_finance-grant",
+      "status": "PASS"
+    },
+    {
+      "name": "units:command-hr.employee_finance-deny",
+      "status": "PASS"
+    },
+    {
+      "name": "units:invalid-capability",
+      "status": "PASS"
+    },
+    {
+      "name": "units:invalid-decision",
+      "status": "PASS"
+    },
+    {
+      "name": "units:invalid-date-shape",
+      "status": "PASS"
+    },
+    {
+      "name": "units:expiry-forwarded-to-SQL-not-client-reinterpreted",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_tenant_not_found",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_state_changed",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_transition_invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_reason_required",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:SQL-error-tenant_lifecycle_input_invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_access_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_tenant_unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_limit_future_conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_limit_conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_limit_reason_required",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:SQL-error-commercial_limit_value_invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-commercial_access_forbidden",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-commercial_tenant_unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_people_required",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_payroll_must_end_first",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_finance_must_end_first",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_leave_must_end_first",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_people_children_must_end_first",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_future_conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_expiry_invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_reason_required",
+      "status": "PASS"
+    },
+    {
+      "name": "units:SQL-error-tenant_entitlement_input_invalid",
+      "status": "PASS"
+    },
+    {
+      "name": "units:dependency-hr.leave",
+      "status": "PASS"
+    },
+    {
+      "name": "units:dependency-hr.employee_finance",
+      "status": "PASS"
+    },
+    {
+      "name": "units:rejected-dependency-message-hr.leave",
+      "status": "PASS"
+    },
+    {
+      "name": "units:rejected-dependency-message-hr.employee_finance",
+      "status": "PASS"
+    },
+    {
+      "name": "lifecycle:synchronous-SDK-throw-preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "limits:synchronous-SDK-throw-preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "units:synchronous-SDK-throw-preserved",
+      "status": "PASS"
+    }
+  ],
+  "source": [
+    {
+      "file": "src/app/operator/tenants/actions.ts",
+      "sha256": "b50fc20fb32489733fb4bd25501505cccab556cc2fe6f2d76d2b991f63922662"
+    },
+    {
+      "file": "src/app/operator/commercial/actions.ts",
+      "sha256": "2de228183f59995581404dad39d45f515b76e8ed47c53cc0b6209e48600d01e6"
+    },
+    {
+      "file": "src/app/operator/entitlements/actions.ts",
+      "sha256": "35c021b793315269724a656312b8e0a06e3acf52ba727d52e432e7dad6ce91d2"
+    }
+  ],
+  "open": [
+    "RPC promise rejection now returns neutral failed once; synchronous throws/auth/browser transport/framework/unmount and native historical recovery remain open",
+    "lifecycle accepts any non-array object as redirect result; URL display remains neutral, not receipt",
+    "limits/units trust successful RPC transport; no detailed mutation receipt",
+    "actual authenticated authority and SQL mutation/rollback/audit not executed"
+  ],
+  "applicationBaseSha": "8e8b22051cd28dcd52582b6fcfd7cfb84ded2a27",
+  "schema": "business-platform.ux-company-action-source-qualification.v1",
+  "candidate": "three RPC promise-rejection amendments; normalized source hashes identify exact candidate",
+  "reviewers": {
+    "Codex": "ACCEPT bounded source and observed commercial error component",
+    "Claude": {
+      "source": "ACCEPT",
+      "visual": "ACCEPT depicted commercial error component only; full reference NOT VISUALLY VERIFIED",
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "sessionId": "31259ffd-c1d8-48c6-b656-0db4d51e275f",
+      "readOnlyUnchanged": true
+    }
+  },
+  "native": {
+    "runtime": "Next16.3.6 actual copied root/operator/shared form/pages/three company actions; synthetic SDK",
+    "mutationCalls": 1,
+    "retainedReason": "سبب اختبار محفوظ بعد انقطاع الاتصال",
+    "retainedLimit": "20",
+    "routeUnchanged": true,
+    "formMethod": "post",
+    "width": 1280,
+    "height": 720,
+    "overflow": false,
+    "alert": "لم تتأكد نتيجة تحديث الحد. راجع الحدود الحالية قبل إجراء آخر.",
+    "realAuth": false,
+    "realSqlMutation": false,
+    "owned3614Retired": true,
+    "ownedTab103Closed": true
+  }
+}

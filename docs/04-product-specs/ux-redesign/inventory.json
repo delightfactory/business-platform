@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "f9a0e82e733871576a633491888320d393b1c84e",
+  "sourceHead": "8e8b22051cd28dcd52582b6fcfd7cfb84ded2a27",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -110,12 +110,12 @@
     {
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "fe6a4bedc4fceaff4943e4204a852fb570fbcef8acda8526b25273dccac503d4"
+      "sha256": "8a0e1f20838bf49b76354a830aee2e76f533463ecc840e22ab95cd3715a8dc83"
     },
     {
       "file": "src/app/operator/commercial/actions.ts",
       "phase": "R3",
-      "sha256": "eae33226b6cb402e88641619f5f59227af2b3a87d64a15c80d6fbed75c6bf0f5"
+      "sha256": "2de228183f59995581404dad39d45f515b76e8ed47c53cc0b6209e48600d01e6"
     },
     {
       "file": "src/app/operator/commercial/page.tsx",
@@ -130,12 +130,12 @@
     {
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "phase": "R3",
-      "sha256": "284ce8ae5f54d7799c99cacb2b17927bb48d0a02d3544fd2b5f52af04ea42840"
+      "sha256": "e605d37fcb3e833aa2a8b07e6ebb10cb7add29cd3961acb7a8928c79d65e539c"
     },
     {
       "file": "src/app/operator/entitlements/actions.ts",
       "phase": "R3",
-      "sha256": "cb3c61e0ace21dfb53c9f5c0169869d17bc0307a031bdf5e0d937cea5a1868f0"
+      "sha256": "35c021b793315269724a656312b8e0a06e3acf52ba727d52e432e7dad6ce91d2"
     },
     {
       "file": "src/app/operator/entitlements/page.tsx",
@@ -290,7 +290,7 @@
     {
       "file": "src/app/operator/tenants/actions.ts",
       "phase": "R3",
-      "sha256": "b99ce7693971ba3d49db53457b333d4bab7a57830d8005722362d2e69488b4f0"
+      "sha256": "b50fc20fb32489733fb4bd25501505cccab556cc2fe6f2d76d2b991f63922662"
     },
     {
       "file": "src/app/operator/tenants/page.tsx",
@@ -1345,7 +1345,7 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "1068138bc5c712df18645cc090c51ffba14e7d9ca0601e7ef7c71868eaf940c2"
+      "sha256": "06ef90d0d65d47987396a4e05a5b4d1f65d0830f4a9a32cbdf93d8d05e5e6aed"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
@@ -7803,7 +7803,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5797",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5821",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 69,
       "tag": "summary",
@@ -7811,7 +7811,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6124",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6148",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 71,
       "tag": "input",
@@ -7823,7 +7823,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6190",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6214",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 72,
       "tag": "input",
@@ -7835,7 +7835,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6273",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6297",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 73,
       "tag": "input",
@@ -7847,7 +7847,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6593",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6617",
       "file": "src/app/operator/commercial/[tenantId]/page.tsx",
       "line": 77,
       "tag": "textarea",
@@ -7897,7 +7897,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7312",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7336",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 79,
       "tag": "summary",
@@ -7905,7 +7905,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7581",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7605",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 81,
       "tag": "input",
@@ -7917,7 +7917,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7647",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7671",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 82,
       "tag": "input",
@@ -7929,7 +7929,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7809",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7833",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 84,
       "tag": "select",
@@ -7939,7 +7939,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8314",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8338",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 88,
       "tag": "input",
@@ -7950,7 +7950,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8485",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8509",
       "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
       "line": 90,
       "tag": "textarea",

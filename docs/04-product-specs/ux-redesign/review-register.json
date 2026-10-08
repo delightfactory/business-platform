@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "f9a0e82e733871576a633491888320d393b1c84e",
+  "sourceSnapshot": "8e8b22051cd28dcd52582b6fcfd7cfb84ded2a27",
   "status": "Proposed",
   "items": [
     {
@@ -1047,19 +1047,25 @@
       "id": "ACTION:src/app/operator/commercial/actions.ts#changeCommercialLimitAction",
       "category": "serverActions",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-LM"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "ACTION:src/app/operator/entitlements/actions.ts#changeTenantEntitlementAction",
       "category": "serverActions",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-EN"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "ACTION:src/app/operator/invitations/actions.ts#createInvitationAction",
@@ -1128,10 +1134,13 @@
       "id": "ACTION:src/app/operator/tenants/actions.ts#changeTenantLifecycleAction",
       "category": "serverActions",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-LC"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "ACTION:src/app/tenant/[tenantId]/attendance/actions.ts#recordPunchAction",
@@ -2063,10 +2072,13 @@
       "id": "RPC:src/app/operator/commercial/actions.ts:21:1088",
       "category": "rpcCalls",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-LM"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "RPC:src/app/operator/commercial/page.tsx:19:1018",
@@ -2126,10 +2138,13 @@
       "id": "RPC:src/app/operator/entitlements/actions.ts:19:1000",
       "category": "rpcCalls",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-EN"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "RPC:src/app/operator/entitlements/page.tsx:19:1005",
@@ -2450,10 +2465,13 @@
       "id": "RPC:src/app/operator/tenants/actions.ts:17:818",
       "category": "rpcCalls",
       "phase": "R3",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
+      "status": "source-reviewed",
+      "scenarioIds": [
+        "R3-COMPANY-ACT-LC"
+      ],
+      "reviewer": "Codex + official Claude Opus 5.5 medium",
+      "evidence": "operator-company-core-spec.md; ../../07-execution/evidence/ux-core-operator-company-20261008/company-action-qualification.json; qualify-company-actions.cjs",
+      "runtimeStatus": "114 controlled SDK source cases; one native commercial SDK-rejection path; real Auth/SQL and complete semantic acceptance not-run"
     },
     {
       "id": "RPC:src/app/operator/tenants/page.tsx:20:1084",
@@ -5813,7 +5831,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5797",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:69:5821",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5822,7 +5840,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6124",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:71:6148",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5831,7 +5849,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6190",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:72:6214",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5840,7 +5858,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6273",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:73:6297",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5849,7 +5867,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6593",
+      "id": "CONTROL:src/app/operator/commercial/[tenantId]/page.tsx:77:6617",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5894,7 +5912,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7312",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:79:7336",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5903,7 +5921,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7581",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:81:7605",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5912,7 +5930,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7647",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:82:7671",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5921,7 +5939,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7809",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:84:7833",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5930,7 +5948,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8314",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:88:8338",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -5939,7 +5957,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8485",
+      "id": "CONTROL:src/app/operator/entitlements/[tenantId]/page.tsx:90:8509",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

@@ -19,7 +19,7 @@ export async function changeTenantLifecycleAction(formData: FormData) {
     p_expected_state: expectedState,
     p_target_state: targetState,
     p_reason: reason,
-  });
+  }).then((response) => response, () => ({ data: null, error: { message: 'unconfirmed_rpc_outcome' } }));
   if (error) return mapError(error.message);
   if (!result || typeof result !== 'object' || Array.isArray(result)) return 'failed';
   redirect(`/operator/tenants/${tenantId}?state=updated&to=${targetState}`);
