@@ -1,0 +1,720 @@
+{
+  "schema": "offline-c4-native.v1",
+  "ownTab": 121,
+  "port": 3620,
+  "forms": [
+    "AnnualForm",
+    "CalendarForm",
+    "InputForm manual_units",
+    "RunActionForm draft"
+  ],
+  "syntheticPreviewSetup": true,
+  "offlineEnterForms": 3,
+  "offlinePosts": 0,
+  "reconnectPosts": 0,
+  "eventStreamComplete": true,
+  "before": {
+    "forms": [
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "$ACTION_REF_3",
+            "valid": true,
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_3:0",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_3:1",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_KEY",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "tenant",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employee",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employer",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "type",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "period",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "rates",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "reviewHash",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "operationKey",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "policyVersion",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "asOf",
+            "valid": true,
+            "value": "2026-10-09"
+          },
+          {
+            "disabled": false,
+            "name": "source",
+            "valid": true,
+            "value": "QA-native"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "valid": true,
+            "value": "سبب اصطناعي"
+          },
+          {
+            "disabled": false,
+            "name": "firstYear",
+            "valid": true,
+            "value": "21"
+          },
+          {
+            "disabled": false,
+            "name": "laterYear",
+            "valid": true,
+            "value": "30"
+          },
+          {
+            "disabled": false,
+            "name": "minimumService",
+            "valid": true,
+            "value": "180"
+          },
+          {
+            "disabled": false,
+            "name": "yearDays",
+            "valid": true,
+            "value": "365"
+          },
+          {
+            "disabled": false,
+            "name": "policySource",
+            "valid": true,
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "name": "policyReason",
+            "valid": true,
+            "value": ""
+          }
+        ],
+        "id": "",
+        "submits": [
+          {
+            "disabled": false,
+            "text": "عرض حساب الاستحقاق"
+          },
+          {
+            "disabled": false,
+            "text": "تأكيد تسجيل فرق الاستحقاق"
+          },
+          {
+            "disabled": false,
+            "text": "حفظ قاعدة الشركة"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "$ACTION_REF_4",
+            "valid": true,
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_4:0",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_4:1",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_KEY",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "tenant",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employer",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "start",
+            "valid": true,
+            "value": "2026-10-01"
+          },
+          {
+            "disabled": false,
+            "name": "cutoff",
+            "valid": true,
+            "value": "last_day"
+          },
+          {
+            "disabled": false,
+            "name": "payment",
+            "valid": true,
+            "value": "1"
+          },
+          {
+            "disabled": false,
+            "name": "month",
+            "valid": true,
+            "value": "following"
+          },
+          {
+            "disabled": false,
+            "name": "timezone",
+            "valid": true,
+            "value": "Africa/Cairo"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "valid": true,
+            "value": "سبب اصطناعي"
+          }
+        ],
+        "id": "",
+        "submits": [
+          {
+            "disabled": false,
+            "text": "معاينة التواريخ"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "$ACTION_REF_5",
+            "valid": true,
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_5:0",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_5:1",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "$ACTION_KEY",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "tenant",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employer",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "kind",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "period",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employment",
+            "valid": true,
+            "value": "33333333-3333-4333-8333-333333333333"
+          },
+          {
+            "disabled": false,
+            "name": "from",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "until",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "source",
+            "valid": true,
+            "value": "manual"
+          },
+          {
+            "disabled": false,
+            "name": "units",
+            "valid": true,
+            "value": "20"
+          },
+          {
+            "disabled": false,
+            "name": "reference",
+            "valid": true,
+            "value": "QA-native"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "valid": true,
+            "value": "سبب اصطناعي"
+          }
+        ],
+        "id": "payroll-input-editor",
+        "submits": [
+          {
+            "disabled": false,
+            "text": "حفظ المدخل"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "tenant",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "employer",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "period",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "candidate",
+            "valid": true,
+            "value": "<redacted>"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "valid": true,
+            "value": ""
+          }
+        ],
+        "id": "",
+        "submits": [
+          {
+            "disabled": false,
+            "text": "تجهيز نسخة جديدة للمراجعة"
+          },
+          {
+            "disabled": false,
+            "text": "إلغاء النسخة"
+          }
+        ]
+      }
+    ],
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  "offline": {
+    "forms": [
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "asOf",
+            "value": "2026-10-09"
+          },
+          {
+            "disabled": false,
+            "name": "source",
+            "value": "QA-native"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": "سبب اصطناعي"
+          },
+          {
+            "disabled": false,
+            "name": "firstYear",
+            "value": "21"
+          },
+          {
+            "disabled": false,
+            "name": "laterYear",
+            "value": "30"
+          },
+          {
+            "disabled": false,
+            "name": "minimumService",
+            "value": "180"
+          },
+          {
+            "disabled": false,
+            "name": "yearDays",
+            "value": "365"
+          },
+          {
+            "disabled": false,
+            "name": "policySource",
+            "value": ""
+          },
+          {
+            "disabled": false,
+            "name": "policyReason",
+            "value": ""
+          }
+        ],
+        "notices": [
+          "حساب اصطناعي فقط؛ لا توجد عملية أعمال.",
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال للمتابعة."
+        ],
+        "submits": [
+          {
+            "disabled": true,
+            "text": "عرض حساب الاستحقاق"
+          },
+          {
+            "disabled": true,
+            "text": "تأكيد تسجيل فرق الاستحقاق"
+          },
+          {
+            "disabled": true,
+            "text": "حفظ قاعدة الشركة"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "start",
+            "value": "2026-10-01"
+          },
+          {
+            "disabled": false,
+            "name": "cutoff",
+            "value": "last_day"
+          },
+          {
+            "disabled": false,
+            "name": "payment",
+            "value": "1"
+          },
+          {
+            "disabled": false,
+            "name": "month",
+            "value": "following"
+          },
+          {
+            "disabled": false,
+            "name": "timezone",
+            "value": "Africa/Cairo"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": "سبب اصطناعي"
+          }
+        ],
+        "notices": [
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال للمتابعة."
+        ],
+        "submits": [
+          {
+            "disabled": true,
+            "text": "معاينة التواريخ"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "employment",
+            "value": "33333333-3333-4333-8333-333333333333"
+          },
+          {
+            "disabled": false,
+            "name": "source",
+            "value": "manual"
+          },
+          {
+            "disabled": false,
+            "name": "units",
+            "value": "20"
+          },
+          {
+            "disabled": false,
+            "name": "reference",
+            "value": "QA-native"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": "سبب اصطناعي"
+          }
+        ],
+        "notices": [
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال للمتابعة."
+        ],
+        "submits": [
+          {
+            "disabled": true,
+            "text": "حفظ المدخل"
+          }
+        ]
+      },
+      {
+        "fields": [
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": ""
+          }
+        ],
+        "notices": [
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال للمتابعة."
+        ],
+        "submits": [
+          {
+            "disabled": true,
+            "text": "تجهيز نسخة جديدة للمراجعة"
+          },
+          {
+            "disabled": true,
+            "text": "إلغاء النسخة"
+          }
+        ]
+      }
+    ],
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  "reconnected": {
+    "fields": [
+      [
+        {
+          "disabled": false,
+          "name": "asOf",
+          "value": "2026-10-09"
+        },
+        {
+          "disabled": false,
+          "name": "source",
+          "value": "QA-native"
+        },
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": "سبب اصطناعي"
+        },
+        {
+          "disabled": false,
+          "name": "firstYear",
+          "value": "21"
+        },
+        {
+          "disabled": false,
+          "name": "laterYear",
+          "value": "30"
+        },
+        {
+          "disabled": false,
+          "name": "minimumService",
+          "value": "180"
+        },
+        {
+          "disabled": false,
+          "name": "yearDays",
+          "value": "365"
+        },
+        {
+          "disabled": false,
+          "name": "policySource",
+          "value": ""
+        },
+        {
+          "disabled": false,
+          "name": "policyReason",
+          "value": ""
+        }
+      ],
+      [
+        {
+          "disabled": false,
+          "name": "start",
+          "value": "2026-10-01"
+        },
+        {
+          "disabled": false,
+          "name": "cutoff",
+          "value": "last_day"
+        },
+        {
+          "disabled": false,
+          "name": "payment",
+          "value": "1"
+        },
+        {
+          "disabled": false,
+          "name": "month",
+          "value": "following"
+        },
+        {
+          "disabled": false,
+          "name": "timezone",
+          "value": "Africa/Cairo"
+        },
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": "سبب اصطناعي"
+        }
+      ],
+      [
+        {
+          "disabled": false,
+          "name": "employment",
+          "value": "33333333-3333-4333-8333-333333333333"
+        },
+        {
+          "disabled": false,
+          "name": "source",
+          "value": "manual"
+        },
+        {
+          "disabled": false,
+          "name": "units",
+          "value": "20"
+        },
+        {
+          "disabled": false,
+          "name": "reference",
+          "value": "QA-native"
+        },
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": "سبب اصطناعي"
+        }
+      ],
+      [
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": ""
+        }
+      ]
+    ],
+    "offlineNoticeCount": 0,
+    "submitDisabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "limits": [
+    "Synthetic action/provider boundary; no real financial/Auth/SQL/role acceptance",
+    "DOMStorage.getDOMStorageItems unsupported; storage observation stopped, native no-new-journal NOT VERIFIED (controlled source evidence separate)",
+    "Hidden fields redacted by browser; native identity/key retention NOT VERIFIED",
+    "No matched ConceptC/mobile/tablet/full visual qualification; actual viewport1280"
+  ],
+  "cleanup": {
+    "networkOverrideReset": true,
+    "serviceRetired": true,
+    "tabClosed": true,
+    "userTab3Unchanged": true,
+    "port3620Absent": true
+  },
+  "visibleFieldsRetained": true,
+  "reconnectFieldsRetained": true
+}

@@ -821,15 +821,17 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
-      "line": 14,
+      "line": 19,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "8242b624a87b45a560ab6a58885ef20fcf4997289f9130d49fc8fc90c5fc5634",
+      "sourceHash": "02187dcb5a807ae1ac210f0c491e64652f54bbf6cd82048cb412d959efb12c29",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/page.tsx",
@@ -1137,75 +1139,87 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
-      "line": 15,
+      "line": 20,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "35f6c1a6780d4276f330bbb11a4089d6c31b7605c8868cac6f2594ac798aaed8",
+      "sourceHash": "a03ca1e097a50e25fcc4ca781420c839791917a51f5c4e8e0767381a8a92d263",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
-      "line": 38,
+      "line": 46,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "35f6c1a6780d4276f330bbb11a4089d6c31b7605c8868cac6f2594ac798aaed8",
+      "sourceHash": "a03ca1e097a50e25fcc4ca781420c839791917a51f5c4e8e0767381a8a92d263",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
-      "line": 47,
+      "line": 52,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "be5dd392e3671d1c2e5fd6adddbcb46e5f7a6321ad88d9f61cd56504742c42f0",
+      "sourceHash": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
-      "line": 68,
+      "line": 76,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "be5dd392e3671d1c2e5fd6adddbcb46e5f7a6321ad88d9f61cd56504742c42f0",
+      "sourceHash": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
-      "line": 72,
+      "line": 83,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "be5dd392e3671d1c2e5fd6adddbcb46e5f7a6321ad88d9f61cd56504742c42f0",
+      "sourceHash": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
-      "line": 77,
+      "line": 91,
       "attrs": {
-        "action": "{r.action}"
+        "action": "{r.action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "be5dd392e3671d1c2e5fd6adddbcb46e5f7a6321ad88d9f61cd56504742c42f0",
+      "sourceHash": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/EmployerSelector.tsx",
@@ -1222,27 +1236,31 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
-      "line": 8,
+      "line": 13,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "6889d51182ff597af951ffd6b7d2cdf4b7d0bef4b39b2e343826713977fc2794",
+      "sourceHash": "8b13025b0e4267a7860a7b936ec0d7b8c29aa444867c96cd42085722f2476892",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
-      "line": 24,
+      "line": 29,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "99affa1ac3747a3c9a40818e0845c266123b3be02b1e2ff0f573d173793696fc",
+      "sourceHash": "37f2048fa672fee6271abd9d45373c347de563eb77279d70edb432f436abfd5e",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
@@ -1370,15 +1388,17 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
-      "line": 11,
+      "line": 16,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "d30d25ac6da15c799189cdf0b14c97f745fc026088a328fb456bcfb37b411aa4",
+      "sourceHash": "190aa921201f61152bc2666372a017913f56ae86bdae5576a0d88147f4dd57ae",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
@@ -1434,15 +1454,17 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
-      "line": 69,
+      "line": 77,
       "attrs": {
-        "action": "{action}"
+        "action": "{action}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "cb53c2a5a5d5579e89f618e303613286ea0e11bc229486fe4be6d5644b4817f0",
+      "sourceHash": "bd9e0de9d1e22eefeed33e417a988aa2a5b4b01c052d8de0eb7f3682b27735b7",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C4 eleven annual/payroll forms and direct run recovery;118 controlledcases plus four bounded native samples; fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
@@ -1881,6 +1903,6 @@
     }
   ],
   "total": 152,
-  "hasSubmitHandler": 30,
-  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20 handlers becomes30 after ten C3 leave form guards. C1/C2/C3 annotations are bounded offline source review only; all full semantics/actors/runtime still pending."
+  "hasSubmitHandler": 41,
+  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending."
 }

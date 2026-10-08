@@ -1,9 +1,13 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { calendarAction, generateAction } from './actions';
 import { type CalendarFields, type CalendarState, type CalendarPreview, displayDate } from './rules';
 import styles from './payroll.module.css';
 export function CalendarForm({ tenant, employer, start, last, defaults }: { tenant: string; employer: string; start: string; last: string | null; defaults?: {cutoff_day: number|null; payment_day: number; payment_month: string; timezone: string} }) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHintId = useId();
  const initial: CalendarState = { start, cutoff: defaults?.cutoff_day?.toString() ?? 'last_day', payment: String(defaults?.payment_day ?? 1), month: defaults?.payment_month ?? 'following', timezone: defaults?.timezone ?? 'Africa/Cairo', reason: '', error: '', preview: null, attemptKey: '', saved: false };
  const [fields, setFields] = useState<CalendarFields>(initial);
  const updateField = (field: keyof CalendarFields, value: string) => setFields(current => ({ ...current, [field]: value }));
@@ -12,7 +16,8 @@ export function CalendarForm({ tenant, employer, start, last, defaults }: { tena
  const feedback = useRef<HTMLParagraphElement>(null);
  useEffect(() => { if (state.error || state.saved) feedback.current?.focus(); }, [state]);
  const preview = state.preview && state.preview !== changedPreview;
- return <form action={action} className={styles.form} onReset={event => event.preventDefault()} onChange={() => setChangedPreview(state.preview)}>
+ const showOfflineNotice = offline && !pending;
+ return <form action={action} className={styles.form} onReset={event => event.preventDefault()} onChange={() => setChangedPreview(state.preview)} onSubmit={(event) => { blockOfflineSubmission(event); }}>
   <input type="hidden" name="tenant" value={tenant} /><input type="hidden" name="employer" value={employer} />
   <h2>{defaults ? 'تغيير الدورة للفترات القادمة' : 'إعداد دورة الرواتب'}</h2>
   {last && <p>آخر فترة محفوظة تنتهي في {displayDate(last)}. تبدأ النسخة الجديدة في اليوم التالي؛ الفترات السابقة محفوظة.</p>}
@@ -27,13 +32,16 @@ export function CalendarForm({ tenant, employer, start, last, defaults }: { tena
   <p className="muted">في الشهر الأقصر يُستخدم آخر يوم متاح. الدورة من 25 إلى 24 تستخدم نهاية يوم 24؛ ومن 26 إلى 25 تستخدم نهاية يوم 25. موعد الصرف موعد مقرر فقط ولا ينتقل تلقائيًا بسبب عطلة.</p>
   {preview && <section className={styles.preview} aria-label="معاينة الفترة"><h3>{state.preview?.is_transition ? 'الفترة الانتقالية للمراجعة' : 'معاينة أول فترة'}</h3><DateSummary preview={state.preview!} /><p>راجع هذه التواريخ قبل الحفظ. لن تتغير حدود الفترات المحفوظة.</p></section>}
   {(state.error || state.saved) && <p ref={feedback} tabIndex={-1} role={state.error ? 'alert' : 'status'}>{state.error || 'تم حفظ الدورة والفترة الأولى. راجع التواريخ والجاهزية في قائمة الفترات.'}</p>}
-  <div className={styles.actions}><button className={`primary-button ${styles.primary}`} name="operation" value={preview ? 'save' : 'preview'} disabled={pending}>{pending ? 'جارٍ التحقق…' : preview ? 'حفظ الدورة والفترة' : 'معاينة التواريخ'}</button>{state.preview && <button className="secondary-button" name="operation" value="cancel" formNoValidate disabled={pending}>إلغاء المعاينة</button>}</div>
- </form>;
+  <div className={styles.actions}><button className={`primary-button ${styles.primary}`} name="operation" value={preview ? 'save' : 'preview'} disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending ? 'جارٍ التحقق…' : preview ? 'حفظ الدورة والفترة' : 'معاينة التواريخ'}</button>{state.preview && <button className="secondary-button" name="operation" value="cancel" formNoValidate disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>إلغاء المعاينة</button>}</div>
+ {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }
 export function DateSummary({preview}: {preview: CalendarPreview}) {
  return <dl className={styles.dates}><div><dt>بداية الفترة</dt><dd>{displayDate(preview.starts_on)}</dd></div><div><dt>نهاية الفترة</dt><dd>{displayDate(preview.ends_on)}</dd></div><div><dt>الصرف المقرر</dt><dd>{displayDate(preview.payment_on)}</dd></div><div><dt>المنطقة الزمنية</dt><dd><bdi>{preview.timezone}</bdi></dd></div></dl>;
 }
 export function GenerateForm({tenant,employer,revision,preview}: {tenant: string; employer: string; revision: number; preview: CalendarPreview}) {
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHintId = useId();
  const [state,action,pending] = useActionState(generateAction,{error:'',saved:false,attemptKey:crypto.randomUUID()});
- return <form action={action}><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="reviewed" value={JSON.stringify(preview)}/><h2>الفترة التالية للمراجعة</h2><DateSummary preview={preview}/>{state.error && <p role="alert">{state.error}</p>}{state.saved && <p role="status">تم حفظ الفترة التالية.</p>}<button className={`primary-button ${styles.primary}`} disabled={pending}>{pending?'جارٍ الحفظ…':'توليد الفترة بهذه التواريخ'}</button></form>;
+ const showOfflineNotice = offline && !pending && !state.saved;
+ return <form action={action} onSubmit={(event) => { blockOfflineSubmission(event); }}><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="reviewed" value={JSON.stringify(preview)}/><h2>الفترة التالية للمراجعة</h2><DateSummary preview={preview}/>{state.error && <p role="alert">{state.error}</p>}{state.saved && <p role="status">تم حفظ الفترة التالية.</p>}<button className={`primary-button ${styles.primary}`} disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending?'جارٍ الحفظ…':'توليد الفترة بهذه التواريخ'}</button>{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }

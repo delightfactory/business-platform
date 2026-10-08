@@ -1,0 +1,37 @@
+[
+  {
+    "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+    "baselineHash": "8242b624a87b45a560ab6a58885ef20fcf4997289f9130d49fc8fc90c5fc5634",
+    "candidateHash": "02187dcb5a807ae1ac210f0c491e64652f54bbf6cd82048cb412d959efb12c29"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
+    "baselineHash": "35f6c1a6780d4276f330bbb11a4089d6c31b7605c8868cac6f2594ac798aaed8",
+    "candidateHash": "a03ca1e097a50e25fcc4ca781420c839791917a51f5c4e8e0767381a8a92d263"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+    "baselineHash": "be5dd392e3671d1c2e5fd6adddbcb46e5f7a6321ad88d9f61cd56504742c42f0",
+    "candidateHash": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
+    "baselineHash": "6889d51182ff597af951ffd6b7d2cdf4b7d0bef4b39b2e343826713977fc2794",
+    "candidateHash": "8b13025b0e4267a7860a7b936ec0d7b8c29aa444867c96cd42085722f2476892"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+    "baselineHash": "99affa1ac3747a3c9a40818e0845c266123b3be02b1e2ff0f573d173793696fc",
+    "candidateHash": "37f2048fa672fee6271abd9d45373c347de563eb77279d70edb432f436abfd5e"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+    "baselineHash": "d30d25ac6da15c799189cdf0b14c97f745fc026088a328fb456bcfb37b411aa4",
+    "candidateHash": "190aa921201f61152bc2666372a017913f56ae86bdae5576a0d88147f4dd57ae"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+    "baselineHash": "cb53c2a5a5d5579e89f618e303613286ea0e11bc229486fe4be6d5644b4817f0",
+    "candidateHash": "bd9e0de9d1e22eefeed33e417a988aa2a5b4b01c052d8de0eb7f3682b27735b7"
+  }
+]

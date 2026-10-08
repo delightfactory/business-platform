@@ -1,0 +1,126 @@
+{
+  "fixture": "C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-self-service-auth-return-20261008\\offline-c1-fixture",
+  "copied": [
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "sha256": "02187dcb5a807ae1ac210f0c491e64652f54bbf6cd82048cb412d959efb12c29"
+    },
+    {
+      "file": "src/components/offline-submission.tsx",
+      "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/rules.ts",
+      "sha256": "b1b40956724daaa73c3b0087e63fda278d6bcf795bc85e4d896d5b189c15aeb4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/rules.ts",
+      "sha256": "6dc7943cf5f85735f1226402873774fb5b61da2bbc99ef18f6ee0b4247ef12b2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
+      "sha256": "a03ca1e097a50e25fcc4ca781420c839791917a51f5c4e8e0767381a8a92d263"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/rules.ts",
+      "sha256": "18f09c61f3be281578be840de04b2c8168035c6bb0f717798eaec49d105aaf64"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+      "sha256": "05284b375e37eeec1328840e4db21ecb1ce436363e98255800eedfaf5a3056a8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+      "sha256": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/PagedChoice.tsx",
+      "sha256": "2654955e2513540b1207374260eddf6ff2b3bf2835557d372f86347bb4a3c5dd"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "sha256": "aab9e0367ec9931342793a7491379f9f3fa13269a5e73bbce7ff00dbd246a1ba"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/useCorrectionRecovery.ts",
+      "sha256": "bc2d2d6e43f6af3813d8831925b985cb7b681cbc9fdb3e7f43e01deef5f60dee"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/rules.ts",
+      "sha256": "28210df7049b652dfaf2bf583ca78818971e365236cf5d3d622a78d067922872"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
+      "sha256": "8b13025b0e4267a7860a7b936ec0d7b8c29aa444867c96cd42085722f2476892"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "sha256": "37f2048fa672fee6271abd9d45373c347de563eb77279d70edb432f436abfd5e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/employee-selection.ts",
+      "sha256": "2f0e9000d052cf8e5a6b2095b002eb42964b16fb8104765d89bc56cf35ffc565"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+      "sha256": "190aa921201f61152bc2666372a017913f56ae86bdae5576a0d88147f4dd57ae"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "sha256": "bd9e0de9d1e22eefeed33e417a988aa2a5b4b01c052d8de0eb7f3682b27735b7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "sha256": "3cc2f969b21c87f3d84408d052b8c12e90470aed320d2d7e9fac0a17a990b218"
+    }
+  ],
+  "syntheticActions": [
+    [
+      "src/app/tenant/[tenantId]/leave/balances/annual/actions",
+      [
+        "annualAction"
+      ]
+    ],
+    [
+      "src/app/tenant/[tenantId]/payroll/actions",
+      [
+        "calendarAction",
+        "generateAction"
+      ]
+    ],
+    [
+      "src/app/tenant/[tenantId]/payroll/corrections/actions",
+      [
+        "correctionChoices",
+        "correctionAction"
+      ]
+    ],
+    [
+      "src/app/tenant/[tenantId]/payroll/inputs/actions",
+      [
+        "correctionAction",
+        "inputAction"
+      ]
+    ],
+    [
+      "src/app/tenant/[tenantId]/payroll/runs/approval-actions",
+      [
+        "approvalAction"
+      ]
+    ],
+    [
+      "src/app/tenant/[tenantId]/payroll/runs/actions",
+      [
+        "runAction"
+      ]
+    ]
+  ],
+  "providerNull": true,
+  "environmentFilesCopied": false,
+  "port": 3620,
+  "host": "127.0.0.1",
+  "limits": [
+    "Synthetic owning page/actions; no Auth/SQL/provider/financial acceptance",
+    "Four representative actual forms only; remaining C4 actors/states/full visual OPEN"
+  ]
+}

@@ -1,4 +1,6 @@
 'use client';
+import { useId } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import {useActionState,useState,useSyncExternalStore} from 'react';
 import {runAction} from './actions';
 import Link from 'next/link';
@@ -11,6 +13,8 @@ const recoveryEvent='payroll-run-recovery';
 function readPending(key:string){try{return localStorage.getItem(key)??'';}catch{return '';}}
 function decodePending(value:string):PendingRun|null{try{const p=JSON.parse(value);return p.version===1&&typeof p.attempt==='string'&&p.previous&&Array.isArray(p.entries)&&p.entries.every((e:unknown)=>Array.isArray(e)&&e.length===2&&e.every(v=>typeof v==='string'))?p:null;}catch{return null;}}
 export function RunActions(props:Props){
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHintId = useId();
  const storageKey='payroll-run:v1:'+JSON.stringify([props.actor,props.tenant,props.employer,props.period]);
  const serialized=useSyncExternalStore(notify=>{window.addEventListener(recoveryEvent,notify);window.addEventListener('storage',notify);return()=>{window.removeEventListener(recoveryEvent,notify);window.removeEventListener('storage',notify);};},()=>readPending(storageKey),()=> '');
  const unresolved=Boolean(serialized);
@@ -19,6 +23,7 @@ export function RunActions(props:Props){
  function writePending(record:PendingRun|null){if(record)localStorage.setItem(storageKey,JSON.stringify(record));else localStorage.removeItem(storageKey);window.dispatchEvent(new Event(recoveryEvent));}
  function clearPending(attempt:string){if(decodePending(readPending(storageKey))?.attempt!==attempt)throw new Error('pending_run_identity_changed');writePending(null);}
  async function recover(){
+  if (blockOfflineSubmission()) return;
   if(!navigator.locks){setRecoveryError('تعذر حماية الطلب بين نوافذ المتصفح. استخدم متصفحًا يدعم حماية الطلبات قبل المتابعة.');return;}
   await navigator.locks.request(storageKey,{ifAvailable:true},async lock=>{if(!lock){setRecoveryError('طلب جارٍ في نافذة أخرى. انتظر نتيجته ثم تحقّق هنا.');return;}await recoverLocked();});
  }
@@ -53,7 +58,7 @@ export function RunActions(props:Props){
  const currentFeedback=feedback?.run===props.run&&feedback.revision===props.revision&&feedback.status===props.status;
  if(!props.canExecute&&!unresolved&&!feedback&&!closed)return null;
  return <section id={props.anchorId} className={styles.card}>
-  {unresolved&&<div><h2>استعادة نتيجة الطلب السابق</h2><p>لم تتأكد نتيجة الطلب. تحقّق منه أولًا قبل متابعة العمل.</p><button type="button" onClick={recover} disabled={saving}>{saving?'جارٍ التحقق…':'استعادة نتيجة الطلب الأصلي'}</button>{recoveryError&&<p role="alert">{recoveryError}</p>}</div>}
+  {unresolved&&<div><h2>استعادة نتيجة الطلب السابق</h2><p>لم تتأكد نتيجة الطلب. تحقّق منه أولًا قبل متابعة العمل.</p><button type="button" onClick={recover} disabled={saving || offline} aria-describedby={offline && !saving ? offlineHintId : undefined}>{saving?'جارٍ التحقق…':'استعادة نتيجة الطلب الأصلي'}</button>{offline && !saving && <OfflineSubmissionNotice id={offlineHintId} purpose="recovery" />}{recoveryError&&<p role="alert">{recoveryError}</p>}</div>}
   {closed&&<p role="status">تأكدنا أن الطلب السابق لم يُحفظ. يمكنك متابعة العمل بأمان.</p>}
   {feedback?.recovered&&!currentFeedback&&<p role="status">عُثر على نتيجة الطلب السابق. راجع حالة المسير الحالية الظاهرة.</p>}
   {currentFeedback&&<p role="status">{feedback.status==='locked'?'تم تثبيت النتيجة وحفظ استهلاك مدخلاتها.':feedback.status==='cancelled'?'أُلغيت النسخة مع الاحتفاظ بتاريخها.':'جهزنا نسخة للمراجعة. راجع النتائج قبل الاعتماد.'}</p>}
@@ -64,9 +69,12 @@ export function RunActions(props:Props){
  </section>;
 }
 function RunActionForm({tenant,employer,period,run,candidate,revision,status,stale,saving,submit,finalScope}:Props&{saving:boolean;submit:(previous:RunState,form:FormData)=>Promise<RunState>}){
+ const { offline, blockOfflineSubmission } = useOfflineSubmission();
+ const offlineHintId = useId();
  const [reason,setReason]=useState('');const [state,action,pending]=useActionState(submit,{error:'',saved:false,run,revision,status,signature:'',attempt:''});
  const finalizing=state.status==='approved';
- return <form action={action} onReset={e=>e.preventDefault()} className={styles.form}><h2>{finalizing?'تثبيت النتيجة المعتمدة':'تجهيز الرواتب'}</h2><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="period" value={period}/><input type="hidden" name="candidate" value={candidate}/><fieldset disabled={pending||saving} className={styles.fields}>
- {finalizing?<><p>{finalScope?.employer} · {finalScope?.starts} — {finalScope?.ends}</p><p>عدد الموظفين: {finalScope?.employees} · الاستحقاقات: {money(finalScope?.gross)} · الصافي: {money(finalScope?.net)}</p><label><input type="checkbox" name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><button className={stale?'secondary-button':'primary-button'} name="operation" value="finalize">تثبيت النتيجة واستهلاك المدخلات</button></>:<><button className={!state.run||state.status==='draft'||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate">{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء النسخة مع حفظ تاريخ المراجعة</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel">إلغاء النسخة</button></details>}</>}
- </fieldset>{pending&&<p role="status">جارٍ التنفيذ وحفظ النتيجة.</p>}{state.error&&<p role="alert">{state.error}</p>}</form>;
+ const showOfflineNotice = offline && !pending && !saving;
+ return <form action={action} onReset={e=>e.preventDefault()} className={styles.form} onSubmit={(event) => { blockOfflineSubmission(event); }}><h2>{finalizing?'تثبيت النتيجة المعتمدة':'تجهيز الرواتب'}</h2><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="period" value={period}/><input type="hidden" name="candidate" value={candidate}/><fieldset disabled={pending||saving} className={styles.fields}>
+ {finalizing?<><p>{finalScope?.employer} · {finalScope?.starts} — {finalScope?.ends}</p><p>عدد الموظفين: {finalScope?.employees} · الاستحقاقات: {money(finalScope?.gross)} · الصافي: {money(finalScope?.net)}</p><label><input type="checkbox" name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><button className={stale?'secondary-button':'primary-button'} name="operation" value="finalize" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>تثبيت النتيجة واستهلاك المدخلات</button></>:<><button className={!state.run||state.status==='draft'||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء النسخة مع حفظ تاريخ المراجعة</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>إلغاء النسخة</button></details>}</>}
+ </fieldset>{pending&&<p role="status">جارٍ التنفيذ وحفظ النتيجة.</p>}{state.error&&<p role="alert">{state.error}</p>}{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }

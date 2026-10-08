@@ -1,0 +1,736 @@
+{
+  "schema": "business-platform.offline-c4-review.v1",
+  "baseline": "670c32f53af97e43c6ac63a7f50f8a5d687edcfa",
+  "status": "SOURCE-QUALIFIED; BOUNDED NATIVE SAMPLES; FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "sourceEvidence": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/offline-c4-controlled.json",
+  "nativeEvidence": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/offline-c4-native.json",
+  "cases": 118,
+  "variants": 46,
+  "unchangedSourceCount": 671,
+  "claude": {
+    "initial": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "**Verdict: MUST FIX (one item).** Everything else in the contract checks out from source.\n\nPer your \"no tools/files/edits\" instruction, this is a source-only review. I did not write a plan file or run any tools.\n\n## MUST FIX\n\n**`src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx`: the notice still shows after a successful save.**\n\nOnce `state.saved` is true, the only submit button is permanently disabled (`pending||state.saved`). The form no longer offers anything to submit. But `showOfflineNotice = offline && !pending` still renders the continuation notice (\"أعد الاتصال للمتابعة\"), and `aria-describedby` links it to the dead button. That tells the user something will continue after reconnecting, which is false. It also breaks the contract's \"no offered mutation\" hide rule and the saved-hiding already applied to Generate, Command and Settlement.\n\nRequired change, with nothing else in the form altered:\n```ts\nconst showOfflineNotice = offline && !pending && !state.saved;\n```\n\n## Checked and accepted\n\n- **Guard runs before anything else happens:**\n  - Every form calls `blockOfflineSubmission(event)` in `onSubmit`. React runs the user's `onSubmit` before its own form-action listener. That listener skips dispatch when the event's default was prevented and no transition was scheduled.\n  - `refreshSignal` is a synchronous `useReducer` dispatch, not a transition, so no false pending state appears.\n  - Blocking at this point happens before the correction journal write and `__attempt` generation in `useCorrectionRecovery`, before `navigator.locks` and the pending-run write in `RunActions.submit`, and before React's automatic form reset.\n  - `RunActions.recover()` checks the guard synchronously before `navigator.locks` and `setSaving`.\n- **Submit buttons:**\n  - Every native submit control is `offline || <original condition>`, or `disabled={offline}` where it had no condition before.\n  - Fieldset disabling, `onReset`, the `onChange` preview invalidators, rate add/remove, PagedChoice inputs, refresh buttons (`type=\"button\"`, read-only) and links are unchanged.\n  - Enter-key submission falls on a disabled default button, and the guard backstops it anyway.\n- **Notice state priority:**\n  - All notices are hidden while pending.\n  - Proposal hides it when unresolved, stale, or source_change with no observations. A `closedUncommitted` record correctly counts as resolved and shows the continuation notice.\n  - Command hides it when saved or unresolved. Settlement hides it when saved, unresolved or `!canRecord`. Generate hides it when saved.\n  - InputForm's condition is exactly the OR of its three button-render conditions. The `''` short-circuit is harmless.\n  - Run form uses `saving||unresolved`. The recover button and `CorrectionRecoveryPanel` use `purpose=\"recovery\"` only at the original recovery boundaries.\n  - `RecoveryNotice` and the Approval device-recovery status keep their wording and position. Approval's approve/release stays offered in that state in the baseline, so its continuation notice is accurate.\n- **IDs and hooks:**\n  - `useId` is called once per component instance, and `aria-describedby` is only set when its notice renders, so there are no dangling references.\n  - All new hooks come before the early returns in ProposalForm, RunActions and CorrectionRecoveryPanel.\n- **Invariants:** blocked submits never reach an action, so nothing below changes.\n  - Annual: hidden fields (`reviewHash`, `policyVersion`, `rates`, `operationKey`), the key regeneration on edit, the `ready`/eligibility/reason gate and `canManage` policy gating are all intact.\n  - Calendar: `attemptKey`/preview retention on non-definitive errors is intact.\n  - Generate: `attemptKey` is intact.\n  - Payroll: versions, signatures, receipts, debt gating, confirmations, locks and journals are untouched.\n  - Calendar cancel and Run cancel stay server actions and correctly require a connection.\n\n## Visual verdicts\n\n- Source candidate: **NOT VISUALLY VERIFIED**\n- Rendered/visual acceptance: **NOT VISUALLY VERIFIED** (no new rendered evidence)\n\nStill open, to be proved independently: the build/TS/lint run, the exact applied-hash comparison, native/rendered/reference checks, real Auth/SQL/roles, and full R0–R8 acceptance.",
+      "sessionId": "7db7077f-ca28-4f85-b9cb-3b45b8ecb7b7"
+    },
+    "final": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "**SOURCE ACCEPT**\n\nThis applies to the updated `CorrectionForm.tsx` (hash `8b13025b…2476892`) together with the six previously accepted, unchanged candidate files.\n\n- **The fix:** the only change is `showOfflineNotice = offline && !pending && !state.saved`. After a successful save, the continuation notice no longer renders and its `aria-describedby` link to the disabled button is dropped.\n- **Unchanged:** the event-time `onSubmit` guard, `disabled={offline || (pending||state.saved)}`, the fields, the hidden inputs, the link and the status/alert priority are all the same as before.\n\nBoth visual verdicts are **NOT VISUALLY VERIFIED**.\n\nStill open: the grouped build/TS/lint run, the exact applied-hash comparison, native/rendered/reference evidence, real Auth/SQL/roles/actors, and full R0–R8 acceptance.",
+      "sessionId": "7db7077f-ca28-4f85-b9cb-3b45b8ecb7b7"
+    }
+  },
+  "codex": {
+    "source": "ACCEPT exact seven candidate hashes; eleven guarded forms + direct recover before locks; source/online traces preserve backend/financial contracts",
+    "visual": "NOT VISUALLY VERIFIED",
+    "reference": "Concept C payroll screen in own tab120 inspected, closed; user tab3 unchanged. No native matching ConceptC state captures.",
+    "simplicity": "Known offline prevents uncertain new send, keeps editable context, explicit reconnect only; no numerical before/after claim.",
+    "reviewCorrection": "Only inputs CorrectionForm saved continuation visibility changed after concrete MUST FIX; one short resumed delta SOURCE ACCEPT.",
+    "react": "Unconditional hooks/useId, original synchronous SSR-stable guard; only submit buttons disabled, original pending/fieldset/reset/journal/keys/preview invalidators retained.",
+    "testGuard": "Data-driven actual TSX/rules/recovery hook with controlled browser/React/randomness/server-action boundary; no mocked domain rules. Five targeted state gates ran alone after113cases, without repeating those cases/671 fingerprints. Native samples independently show0POST and editable values; no actual financial/provider acceptance.",
+    "nativeComparisonCorrection": "Initial JSON object-key ordering produced false comparison; canonical name/value/disabled tuples prove equality. Application and native run unchanged, no retest.",
+    "limits": [
+      "113 broad guard/online/priority cases plus5 annual quoted/permission/proposal state cases; other source-state partitions still not full actor acceptance",
+      "Native only Annual/Calendar/Input manual_units/Run draft; three valid Enter attempts, fourform disabled and reconnect0POST; native direct recovery/corrupt/saved priorities/fulldevices not qualified",
+      "DOMStorage read method unsupported; operation stopped. Browser redacts hidden fields. Native journal/key retention NOT VERIFIED, controlled evidence separate."
+    ]
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:14:1516",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:19:1780",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:15:1661",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:20:1981",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:16:1726",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:21:2045",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:16:1791",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:21:2110",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:16:1862",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:21:2181",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:16:1916",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:21:2235",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:19:2254",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:24:2570",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:20:2463",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:25:2778",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:22:2977",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:27:3290",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:24:3338",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:29:3649",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:25:3584",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:30:3894",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:26:3847",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:31:4156",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:27:4009",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:32:4317",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:29:4179",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:34:4485",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:31:4387",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:36:4691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:38:5678",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:43:6059",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:39:5844",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:44:6224",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:41:6083",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:46:6539",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:42:6611",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:47:7066",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:43:6857",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:48:7311",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:44:7063",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:49:7516",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:45:7209",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx:50:7661",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:15:1428",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:20:1691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:16:1571",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:21:1890",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:16:1623",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:21:1942",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:20:1970",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:25:2285",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:21:2226",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:26:2540",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:22:2576",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:27:2889",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:23:2826",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:28:3138",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:24:3140",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:29:3451",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:25:3403",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:30:3713",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:30:4337",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:35:4642",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:30:4570",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:35:4953",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5403",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6113",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5426",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6193",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5477",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6244",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5532",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6299",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5587",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6354",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:38:5831",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/CalendarForm.tsx:46:6598",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:41:8915",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:45:9104",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:42:9040",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:46:9228",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:43:9242",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:47:9429",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:44:9408",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:9594",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:47:10298",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:52:10633",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10418",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:10809",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10471",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:10862",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10528",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:10919",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10581",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:10972",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10636",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11027",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10693",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11084",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10766",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11157",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10827",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11218",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10904",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11295",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:10993",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11384",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:11081",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11472",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:48:11150",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:53:11541",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:50:11488",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:55:11877",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:51:12364",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:56:12752",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:51:12632",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:56:13020",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:54:13155",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:59:13540",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:54:13306",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:59:13691",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:57:14755",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:62:15137",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:58:15186",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:63:15567",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:59:15830",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:64:16210",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:60:16180",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:65:16559",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:60:16233",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:65:16612",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:61:16398",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:66:16776",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:62:16665",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:67:17042",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:62:17016",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:67:17471",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:63:17227",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:17759",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:63:17410",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:17942",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:18091",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:18899",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:18404",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:19269",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:18618",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:19483",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:18778",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:19643",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:18906",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:19771",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:68:19129",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:76:20078",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:19855",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:21096",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:20081",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:21379",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:20744",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:22042",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:21199",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:22497",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:21402",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:22700",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:72:21714",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:83:23096",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:77:22577",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:90:24147",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:77:22760",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:90:24330",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:77:23400",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:91:25020",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:77:23456",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx:91:25133",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:493",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:779",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:603",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:946",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:654",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:997",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:709",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:1052",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:760",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:1103",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:878",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:1221",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:8:1453",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx:13:1796",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:23:4788",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:4995",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:23:5231",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:5438",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6229",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:29:6681",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6411",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:29:6920",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6462",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:29:6971",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6517",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:29:7026",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6564",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:29:7073",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:25:6687",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:30:7195",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:6892",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:7399",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7272",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:7779",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7348",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:7855",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7416",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:32:7922",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7470",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:32:7976",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8278",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:33:8783",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8591",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:33:9096",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:9103",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:33:9608",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11664",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:36:12166",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11843",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:36:12423",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11997",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:36:12655",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1305",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:1578",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:1978",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:2308",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2029",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:2359",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2084",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:2414",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2270",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:2600",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:11:2474",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx:16:2804",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:56:5139",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:61:5356",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:61:5994",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:66:6372",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6657",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:77:7187",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6798",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:77:7385",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6849",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:77:7436",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6904",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:77:7491",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:69:6955",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:77:7542",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7293",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:7879",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7458",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:8044",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7600",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:8270",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:7943",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:8697",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:8042",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:8796",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:70:8166",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx:78:8920",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS single grouped52948 exit0 includes TypeScript; no app source changed afterward",
+    "typecheck": "PASS explicit19805 exit0 and build52948 TypeScript",
+    "lint": "PASS full61239 zero errors/four prior warnings; new evidence targeted56320 exit0",
+    "native": "PASS four bounded synthetic browser samples; original sample limits retained",
+    "fullConceptC": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 41,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  },
+  "next": "Remaining owning attendance/People/operator/management/Auth forms and read/search/logout/access distinctions, grouped native/reference/real actors and original capability gaps. No new extras."
+}
