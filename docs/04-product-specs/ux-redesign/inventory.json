@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
+  "sourceHead": "5b8fcb528b7878d28004d89fe202d83f7d70739f",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -490,7 +490,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
       "phase": "R6",
-      "sha256": "5b2077330a2127385f544440c4d2ecb22eaeab33d5f52c89b6fd2a74639a7680"
+      "sha256": "e14cedbb4e137fd6b1a9c344c5a6d888e8219aba998872b9329aae37e734b943"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/loading.tsx",
@@ -995,7 +995,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
       "phase": "R7",
-      "sha256": "b1c15ec4ef18a8947a714d1d3ad13b25fbb61c006664b67235d69c4c467fbb96"
+      "sha256": "27446d8be5536a77e0f43d28a57338b4f106e4c7d505ed31134b9fbd2a2e6a20"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/actions.ts",
@@ -1385,7 +1385,7 @@
     {
       "file": "src/components/offline-submission.tsx",
       "phase": "R1",
-      "sha256": "de1b48911cc583bee62b66405c33bf0c19dfb6ebf39a8e7386d0df345650265b"
+      "sha256": "baa0f7bee194a937fc2d21fa224df270b50a78c8080d97fb4eb35c531b17321a"
     },
     {
       "file": "src/components/pwa-foundation.tsx",
@@ -11506,17 +11506,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:171:7363",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:175:7693",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 171,
+      "line": 175,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:180:7996",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:184:8326",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 180,
+      "line": 184,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -11524,9 +11524,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:192:8488",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:196:8818",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 192,
+      "line": 196,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -11534,9 +11534,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:201:9159",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:206:9542",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 201,
+      "line": 206,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11546,9 +11546,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:202:9225",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:207:9608",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 202,
+      "line": 207,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11558,9 +11558,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:203:9293",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:208:9676",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 203,
+      "line": 208,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11570,9 +11570,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:204:9361",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:209:9744",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 204,
+      "line": 209,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11582,9 +11582,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:205:9419",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:210:9802",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 205,
+      "line": 210,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11594,9 +11594,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:206:9483",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:211:9866",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 206,
+      "line": 211,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11606,9 +11606,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:207:9548",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:212:9931",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 207,
+      "line": 212,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11618,9 +11618,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:208:9620",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:213:10003",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 208,
+      "line": 213,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11630,9 +11630,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:209:9694",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:214:10077",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 209,
+      "line": 214,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11642,9 +11642,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:212:9844",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:217:10227",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 212,
+      "line": 217,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11655,9 +11655,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:218:10305",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:223:10688",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 218,
+      "line": 223,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -11667,9 +11667,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:224:10742",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:229:11125",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 224,
+      "line": 229,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -11680,28 +11680,29 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:249:12449",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:254:12832",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 249,
+      "line": 254,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
         "label": "{hasRecoveredDraft || attempted ? 'التحقق من نتيجة العملية السابقة' : canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'}",
-        "pendingLabel": "\"جارٍ التحقق والحفظ…\""
+        "pendingLabel": "\"جارٍ التحقق والحفظ…\"",
+        "disabled": "{offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:261:13412",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:268:14032",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 261,
+      "line": 268,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:263:13582",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:270:14202",
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 263,
+      "line": 270,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -15820,51 +15821,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1595",
-      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 17,
-      "tag": "form",
-      "phase": "R7",
-      "attributes": {
-        "action": "{action}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1644",
-      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 17,
-      "tag": "button",
-      "phase": "R7",
-      "attributes": {
-        "name": "\"__recover\"",
-        "value": "\"yes\"",
-        "disabled": "{pending}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1811",
-      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 17,
-      "tag": "button",
-      "phase": "R7",
-      "attributes": {
-        "name": "\"__cancel\"",
-        "value": "\"yes\"",
-        "disabled": "{pending}"
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:19:2521",
-      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 19,
-      "tag": "button",
-      "phase": "R7",
-      "attributes": {
-        "type": "\"button\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:2729",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:1880",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
       "line": 20,
       "tag": "form",
@@ -15874,9 +15831,53 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2844",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:1980",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 21,
+      "line": 20,
+      "tag": "button",
+      "phase": "R7",
+      "attributes": {
+        "name": "\"__recover\"",
+        "value": "\"yes\"",
+        "disabled": "{pending||offline}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:2217",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 20,
+      "tag": "button",
+      "phase": "R7",
+      "attributes": {
+        "name": "\"__cancel\"",
+        "value": "\"yes\"",
+        "disabled": "{pending||offline}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:22:3082",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 22,
+      "tag": "button",
+      "phase": "R7",
+      "attributes": {
+        "type": "\"button\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3290",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 23,
+      "tag": "form",
+      "phase": "R7",
+      "attributes": {
+        "action": "{action}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3451",
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 24,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15886,9 +15887,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2897",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3504",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 21,
+      "line": 24,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15898,9 +15899,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2954",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3561",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 21,
+      "line": 24,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15910,9 +15911,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:3007",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3614",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 21,
+      "line": 24,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15922,9 +15923,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:3068",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3675",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 21,
+      "line": 24,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15934,9 +15935,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3316",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:3923",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 23,
+      "line": 26,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15946,9 +15947,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3526",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:4133",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 23,
+      "line": 26,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -15957,9 +15958,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:4083",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:4690",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 23,
+      "line": 26,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15969,9 +15970,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:4487",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:5094",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 23,
+      "line": 26,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15980,9 +15981,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:4810",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:27:5417",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 24,
+      "line": 27,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -15992,9 +15993,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:25:4944",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5551",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 25,
+      "line": 28,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16003,9 +16004,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:5129",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:29:5736",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 26,
+      "line": 29,
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
@@ -16014,9 +16015,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:27:5266",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:30:5873",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 27,
+      "line": 30,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16026,19 +16027,19 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5544",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:31:6151",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 28,
+      "line": 31,
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "disabled": "{pending||(!correction&&mode==='allocations'&&!selected.length)}"
+        "disabled": "{pending||offline||(!correction&&mode==='allocations'&&!selected.length)}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5934",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:31:6733",
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 28,
+      "line": 31,
       "tag": "button",
       "phase": "R7",
       "attributes": {

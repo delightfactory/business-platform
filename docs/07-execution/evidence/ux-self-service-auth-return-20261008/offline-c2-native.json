@@ -1,0 +1,122 @@
+{
+  "scope": "Isolated Next16.3.6 dev; actual C2 components and unchanged Payment recovery hook; synthetic server actions/provider disabled; dark1280 sample only",
+  "offline": {
+    "postRequests": 0,
+    "truncated": false,
+    "hasMore": false,
+    "dom": {
+      "buttons": [
+        {
+          "describedBy": "_R_75esnelb_",
+          "disabled": true,
+          "text": "تسجيل القيد"
+        },
+        {
+          "describedBy": "_R_95esnelb_",
+          "disabled": true,
+          "text": "تسجيل الدفعة الخارجية"
+        },
+        {
+          "describedBy": "_R_b5esnelb_",
+          "disabled": true,
+          "text": "استعادة نتيجة الدفعة الأصلية"
+        },
+        {
+          "describedBy": "_R_b5esnelb_",
+          "disabled": true,
+          "text": "إلغاء الطلب إذا لم يُسجّل"
+        }
+      ],
+      "fields": [
+        {
+          "disabled": false,
+          "name": "delta",
+          "value": "3"
+        },
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": "سبب اختبار محلي"
+        },
+        {
+          "disabled": false,
+          "name": "source",
+          "value": "QA-C2"
+        },
+        {
+          "disabled": false,
+          "name": "operation",
+          "value": "remaining"
+        },
+        {
+          "disabled": false,
+          "name": "date",
+          "value": "2026-10-09"
+        },
+        {
+          "disabled": false,
+          "name": "reference",
+          "value": "QA-C2-payment"
+        },
+        {
+          "disabled": false,
+          "name": "reason",
+          "value": "اختبار محلي بلا عملية مالية"
+        }
+      ],
+      "status": [
+        "الجهاز يبلغ أن الاتصال منقطع. قد لا تصل عمليات الإرسال؛ تحقق من نتيجة أي عملية لم تتأكد قبل تكرارها.",
+        "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.",
+        "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.",
+        "الجهاز يبلغ أن الاتصال منقطع. أعد الاتصال ثم تحقق من نتيجة المحاولة السابقة."
+      ],
+      "viewport": {
+        "scrollWidth": 1265,
+        "width": 1280
+      }
+    },
+    "journal": {
+      "balanceAttempted": false,
+      "paymentJournalPresent": false
+    }
+  },
+  "reconnect": {
+    "postRequests": 0,
+    "truncated": false,
+    "hasMore": false,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "تسجيل القيد"
+      },
+      {
+        "disabled": false,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      }
+    ]
+  },
+  "limits": [
+    "No actual Auth/SQL/payment/role acceptance",
+    "No full Concept C or mobile/tablet fidelity verdict",
+    "No native recovered balance or v1 legacy outcome qualification",
+    "No measured actor before/after",
+    "Full-page screenshot clipped right-hand content despite DOM width check; not valid visual fidelity evidence, kept external only",
+    "Fixture-only theme import preparation error corrected before native test; authoritative app unaffected",
+    "Own synthetic balance draft may remain at isolated loopback origin; no real data copied"
+  ],
+  "cleanup": {
+    "networkReset": true,
+    "themeUnchanged": "dark",
+    "port3619Retired": true,
+    "ownedTabs118119Closed": true,
+    "originalUserReferenceTab3Preserved": true
+  }
+}

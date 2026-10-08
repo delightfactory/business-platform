@@ -31,8 +31,10 @@ export function useOfflineSubmission() {
   return { offline, blockOfflineSubmission };
 }
 
-export function OfflineSubmissionNotice({ id }: { id: string }) {
+export function OfflineSubmissionNotice({ id, purpose = 'submission' }: { id: string; purpose?: 'submission' | 'recovery' }) {
   return <p id={id} className="form-message" role="status">
-    الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.
+    {purpose === 'recovery'
+      ? 'الجهاز يبلغ أن الاتصال منقطع. أعد الاتصال ثم تحقق من نتيجة المحاولة السابقة.'
+      : 'الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.'}
   </p>;
 }

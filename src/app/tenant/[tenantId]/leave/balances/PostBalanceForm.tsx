@@ -1,6 +1,7 @@
 'use client';
 
-import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { useActionState, useEffect, useId, useRef, useState, type ChangeEvent } from 'react';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
 import { isObject, isUuid } from '../rules';
 import { PendingLink } from '../pending-link';
@@ -63,6 +64,8 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
   cancelHref: string;
   backHref: string;
 }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [delta, setDelta] = useState('');
   const [reason, setReason] = useState('');
   const [source, setSource] = useState('');
@@ -87,6 +90,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
 
   const staleVersion = typeVersionOverride !== null && typeVersionOverride !== type?.typeVersionId;
   const unresolved = attempted && (submitState.attempt === 0 || submitState.uncertain);
+  const showOfflineNotice = offline && draftReady && !submitting && !unrecognizedDraft && (canStartNew || hasRecoveredDraft);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -189,7 +193,8 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
     {unrecognizedDraft && <p className="form-message form-error" role="alert">
       توجد مسودة محفوظة لا يمكن قراءتها بهذا الإصدار. لم تُمسح. راجع سجل الحساب قبل مسحها وبدء محاولة جديدة.
     </p>}
-    <form className="auth-form" action={submitAction} aria-busy={submitting} onSubmit={() => {
+    <form className="auth-form" action={submitAction} aria-busy={submitting} onSubmit={(event) => {
+      if (blockOfflineSubmission(event)) return;
       setAttempted(true);
       attemptedKeys.current.add(operationKey);
       try { sessionStorage.setItem(storageKey, JSON.stringify({
@@ -246,7 +251,8 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         {submitting && <p className="field-hint" role="status">جارٍ تسجيل القيد… لا تغلق الصفحة.</p>}
 
         <div className="workspace-form-actions">
-          <SubmitButton label={hasRecoveredDraft || attempted ? 'التحقق من نتيجة العملية السابقة' : canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'} pendingLabel="جارٍ التحقق والحفظ…" />
+          <SubmitButton label={hasRecoveredDraft || attempted ? 'التحقق من نتيجة العملية السابقة' : canStartNew ? 'تسجيل القيد' : 'إعادة المحاولة المحفوظة'} pendingLabel="جارٍ التحقق والحفظ…"
+            disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} />
           {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
             : <PendingLink className="secondary-button" href={cancelHref}>إلغاء</PendingLink>}
         </div>
@@ -255,6 +261,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
           الصفحة دون تحديثها مع الحفاظ على السبب والمرجع والقدر نفسها.
         </p>}
       </fieldset>
+      {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose={hasRecoveredDraft || attempted ? 'recovery' : 'submission'} />}
     </form>
     {unresolved && <p className="form-message" role="status">نتيجة العملية السابقة غير مؤكدة. احتفظنا ببياناتها؛ تحقق من نتيجتها قبل تسجيل قيد آخر.</p>}
     {draftReady && !submitting && !unresolved && !unrecognizedDraft && <details className="task-disclosure">

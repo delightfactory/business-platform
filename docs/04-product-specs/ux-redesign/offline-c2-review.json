@@ -1,0 +1,539 @@
+{
+  "schema": "business-platform.offline-c2-review.v1",
+  "baseline": "5b8fcb528b7878d28004d89fe202d83f7d70739f",
+  "status": "SOURCE-QUALIFIED; FULL VISUAL/ACTOR ACCEPTANCE OPEN",
+  "source": {
+    "baseline": "5b8fcb528b7878d28004d89fe202d83f7d70739f",
+    "scope": "Controlled actual TSX handlers/hook with synthetic React dispatch and server-action boundary; not native DOM/real Auth/SQL/payment acceptance",
+    "passed": 33,
+    "cases": [
+      {
+        "name": "Balance opening new blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance opening new online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance opening recovered blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance opening recovered online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance annual_grant new blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance annual_grant new online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance annual_grant recovered blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance annual_grant recovered online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance adjustment new blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance adjustment new online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance adjustment recovered blocked before attempted/write with context retained",
+        "status": "pass"
+      },
+      {
+        "name": "Balance adjustment recovered online trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment allocations blocked before pending journal/locks/dispatch",
+        "status": "pass"
+      },
+      {
+        "name": "Payment allocations online journal/action trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment remaining blocked before pending journal/locks/dispatch",
+        "status": "pass"
+      },
+      {
+        "name": "Payment remaining online journal/action trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment compensate blocked before pending journal/locks/dispatch",
+        "status": "pass"
+      },
+      {
+        "name": "Payment compensate online journal/action trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v2 __recover offline retains original attempt and journal",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v2 __recover online recovery trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v2 __cancel offline retains original attempt and journal",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v2 __cancel online recovery trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v1 __recover offline retains original attempt and journal",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v1 __recover online recovery trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v1 __cancel offline retains original attempt and journal",
+        "status": "pass"
+      },
+      {
+        "name": "Payment v1 __cancel online recovery trace matches baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Balance pending has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Balance corrupt has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Balance denied has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Payment pending has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Payment empty allocations has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Payment recovery pending has no misleading offline resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "C1 default notice text/markup unchanged; recovery wording makes no persistence promise",
+        "status": "pass"
+      }
+    ],
+    "unchanged": [
+      "src/app/tenant/[tenantId]/payroll/payments/usePaymentRecovery.ts",
+      "src/app/tenant/[tenantId]/payroll/payments/actions.ts",
+      "src/app/tenant/[tenantId]/leave/balances/actions.ts",
+      "src/app/tenant/[tenantId]/leave/balances/rules.ts"
+    ],
+    "sourceFiles": [
+      {
+        "file": "src/components/offline-submission.tsx",
+        "sha256": "baa0f7bee194a937fc2d21fa224df270b50a78c8080d97fb4eb35c531b17321a"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+        "sha256": "e14cedbb4e137fd6b1a9c344c5a6d888e8219aba998872b9329aae37e734b943"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+        "sha256": "27446d8be5536a77e0f43d28a57338b4f106e4c7d505ed31134b9fbd2a2e6a20"
+      }
+    ]
+  },
+  "native": {
+    "scope": "Isolated Next16.3.6 dev; actual C2 components and unchanged Payment recovery hook; synthetic server actions/provider disabled; dark1280 sample only",
+    "offline": {
+      "postRequests": 0,
+      "truncated": false,
+      "hasMore": false,
+      "dom": {
+        "buttons": [
+          {
+            "describedBy": "_R_75esnelb_",
+            "disabled": true,
+            "text": "تسجيل القيد"
+          },
+          {
+            "describedBy": "_R_95esnelb_",
+            "disabled": true,
+            "text": "تسجيل الدفعة الخارجية"
+          },
+          {
+            "describedBy": "_R_b5esnelb_",
+            "disabled": true,
+            "text": "استعادة نتيجة الدفعة الأصلية"
+          },
+          {
+            "describedBy": "_R_b5esnelb_",
+            "disabled": true,
+            "text": "إلغاء الطلب إذا لم يُسجّل"
+          }
+        ],
+        "fields": [
+          {
+            "disabled": false,
+            "name": "delta",
+            "value": "3"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": "سبب اختبار محلي"
+          },
+          {
+            "disabled": false,
+            "name": "source",
+            "value": "QA-C2"
+          },
+          {
+            "disabled": false,
+            "name": "operation",
+            "value": "remaining"
+          },
+          {
+            "disabled": false,
+            "name": "date",
+            "value": "2026-10-09"
+          },
+          {
+            "disabled": false,
+            "name": "reference",
+            "value": "QA-C2-payment"
+          },
+          {
+            "disabled": false,
+            "name": "reason",
+            "value": "اختبار محلي بلا عملية مالية"
+          }
+        ],
+        "status": [
+          "الجهاز يبلغ أن الاتصال منقطع. قد لا تصل عمليات الإرسال؛ تحقق من نتيجة أي عملية لم تتأكد قبل تكرارها.",
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.",
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.",
+          "الجهاز يبلغ أن الاتصال منقطع. أعد الاتصال ثم تحقق من نتيجة المحاولة السابقة."
+        ],
+        "viewport": {
+          "scrollWidth": 1265,
+          "width": 1280
+        }
+      },
+      "journal": {
+        "balanceAttempted": false,
+        "paymentJournalPresent": false
+      }
+    },
+    "reconnect": {
+      "postRequests": 0,
+      "truncated": false,
+      "hasMore": false,
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "تسجيل القيد"
+        },
+        {
+          "disabled": false,
+          "text": "تسجيل الدفعة الخارجية"
+        },
+        {
+          "disabled": false,
+          "text": "استعادة نتيجة الدفعة الأصلية"
+        },
+        {
+          "disabled": false,
+          "text": "إلغاء الطلب إذا لم يُسجّل"
+        }
+      ]
+    },
+    "limits": [
+      "No actual Auth/SQL/payment/role acceptance",
+      "No full Concept C or mobile/tablet fidelity verdict",
+      "No native recovered balance or v1 legacy outcome qualification",
+      "No measured actor before/after",
+      "Full-page screenshot clipped right-hand content despite DOM width check; not valid visual fidelity evidence, kept external only",
+      "Fixture-only theme import preparation error corrected before native test; authoritative app unaffected",
+      "Own synthetic balance draft may remain at isolated loopback origin; no real data copied"
+    ],
+    "cleanup": {
+      "networkReset": true,
+      "themeUnchanged": "dark",
+      "port3619Retired": true,
+      "ownedTabs118119Closed": true,
+      "originalUserReferenceTab3Preserved": true
+    }
+  },
+  "claude": {
+    "contract": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# SOURCE verdict: **ACCEPT**, with corrections and binding constraints below\n\nYou asked for no tools, so I wrote no plan file and made no tool calls. This review covers only the supplied source at `5b8fcb5`. Visual fidelity, actor and role scope, real Auth/SQL behavior, and measured journey improvement are **NOT VERIFIED**.\n\n## Classifications\n\n**Verified**\n- **PostBalance sends.** New and recovered sends both reach `leave_post_balance` (`actions.ts`).\n  - `recovering` is `attempted && (attempt===0 || uncertain)`. It only changes `uncertain` in `failed()`. It is not a read-only mode.\n  - Fields are `readOnly` while `unresolved`, so the same key and payload are resent.\n- **PostBalance fieldset.** Its disabled condition is `!draftReady || submitting || unrecognizedDraft || (!canStartNew && !hasRecoveredDraft)`.\n  - Your notice condition is exactly its negation plus `offline`.\n  - The recovery-purpose condition (`hasRecoveredDraft||attempted`) matches the button label branch.\n- **Payment new submissions** (allocations, remaining, compensate) go through prepare, then submit.\n- **Payment `__recover` (v2)** is ID-only. It calls `payroll_payment_request_submit` with the stored attempt, so it can complete the payment.\n- **Payment `__cancel`** goes to the guarded cancel and maps `request_committed` to a refusal.\n- **Today, an offline new payment is harmful.** The hook writes the v2 pending record before dispatch. The failed fetch then throws into `catch → recoverPending`, which turns the form into recovery-only.\n  - A pre-dispatch block avoids creating that record. This is the real benefit of C2 for Payment.\n- **Payment notice conditions.**\n  - The new-form condition mirrors the button's existing disabled logic.\n  - The recovery-only notice renders only inside the `unresolved` branch.\n\n**Corrections**\n1. **V1 recovery path.** The hook does `form.delete('__recover')`, sets `__migrate`, and appends the legacy entries. `paymentAction` never reads `__migrate`, and `recover` is false.\n   - So V1 recovery runs the **full prepare → submit path**, using the supplied legacy attempt and the legacy field values.\n   - The hook writes v2 only after `result.prepared && !result.saved`.\n   - Test traces must expect prepare+submit for V1, not ID-only submit.\n2. **V1 cancel** keeps `__cancel` and goes to the guarded cancel, the same as v2.\n3. **`state.recoverPending` in the new Payment form is rarely reachable.** Any new dispatch leaves a v2 record unless it saved or cancelled. That makes `unresolved` true, and the new form then returns `null`.\n   - The `recoverPending` text branch is harmless but should not be the main subject of tests.\n4. **`useOfflineSubmission`, `SubmitButton` and the C1 shared notice are not in the supplied source.** Their APIs and semantics are NOT VERIFIED.\n\n## Implementation constraints\n\n1. **Offline guard branch is minimal.** It does only `event.preventDefault(); return;`.\n   - In React 19, a prevented submit skips the action. But if anything in that same event schedules a transition, React still sets a pending form status.\n   - So the branch must have no `startTransition`, `requestFormReset`, optimistic update, or `setState`.\n   - The notice must be derived from render state, not set by the handler.\n2. **Read online status at event time.** The guard must check `navigator.onLine` (or the hook's live getter) synchronously in the handler, not a render snapshot that may be stale.\n   - The hook's server snapshot must report online, so SSR and hydration markup stays byte-equal to baseline.\n3. **Ordering.**\n   - PostBalance: the guard comes before `setAttempted`, `attemptedKeys.add` and `sessionStorage.setItem`.\n   - Payment new form: the guard comes before `setAnother(false)`.\n   - Recovery-only Payment form: add an `onSubmit` with the guard only. One handler covers both submitters (`__recover` and `__cancel`).\n4. **Online path unchanged.** When online, handler bodies and `action` bindings stay token-identical to baseline. `usePaymentRecovery.ts`, both `actions.ts` files, `rules`, the draft effects, `fieldset key`, the hidden inputs and the disclosure stay byte-identical.\n5. **`SubmitButton` change.** If it lacks a `disabled` input, add only an optional prop that defaults to current behavior. Do not touch its pending label or `useFormStatus` logic, and check other callers for unchanged output.\n6. **Disable submit buttons only.** Do not disable fields, the cancel link, `PendingLink`s, \"تحديث المطابقة\", \"تسجيل دفعة أخرى\", or \"مسح المسودة\".\n7. **Notice.**\n   - The C1 default text and markup stay exact.\n   - `purpose='recovery'` swaps only the text.\n   - Reuse the existing live-region semantics, and place the notice next to the disabled button(s) so it is not lost from tab order context.\n   - It must never render during `pending`/`submitting`, for a corrupt or unrecognized draft, for denied/`!canStartNew` without a recovered draft, or for `allocations` with nothing selected.\n8. **Tests.** Assert, through the real TSX handlers, that an offline submit produces:\n   - no action call, and no `sessionStorage` or `localStorage` writes;\n   - `operationKey`, `attemptedKeys` and field values unchanged;\n   - `another` unchanged;\n   - no v2 record created.\n\n   Online traces must equal baseline, including the corrected V1 prepare→submit trace. Add a hash check that `usePaymentRecovery.ts` is unchanged. Run lint, typecheck and build once after the batch.\n9. **Scope.** Native/reference acceptance, R0–R8, and the 152-form/19-handler frontier all remain **OPEN**. No numerical journey claims.",
+      "sessionId": "87ac4f5a-f202-43c0-afdf-8a0667643943"
+    },
+    "final": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# C2 SOURCE verdict: **ACCEPT**\n\nI found no blocking defect, and one cosmetic nit. This verdict covers the supplied source and the controlled harness report only.\n\n## Concrete findings\n\n**1. Nit, not blocking: a stray whitespace text node in the new Payment form** (`PaymentForm.tsx`, after the `fieldset`).\n- **Trigger:** `{showOfflineNotice&&<OfflineSubmissionNotice …/>} {state.error&&…}` has a literal space between the two expressions. JSX keeps that space as a `\" \"` text node, so it is rendered on every render, online included.\n- **Consequence:** the online DOM differs from baseline by one text node. It likely has no visual effect, since whitespace-only text is dropped in grid/flex containers and collapses in block layout. That is not visually verified.\n- **Minimal fix:** remove the space so it reads `…/>}{state.error&&…`.\n\n**2. The `refreshSignal` concern is withdrawn.**\n- `useReducer` dispatch inside a discrete submit handler runs on SyncLane, not a transition lane.\n- React only sets a pending form status for a prevented submit when an earlier handler scheduled a transition, which this dispatch does not do. The action is therefore not invoked and no pending status is set.\n- The guard reads `navigator.onLine` live at event time, so the race handling is sound.\n\nNo other defects found.\n\n## Coverage of affected operations and states\n- **Balance:** the guard is the first statement of the single `onSubmit`, ahead of `setAttempted`, `attemptedKeys` and `sessionStorage`.\n  - It covers opening, annual_grant and adjustment, for both new and recovered sends.\n  - The `recovering` flag, intent key, fieldsets, draft effects and disclosure are untouched.\n- **Payment new form:** the guard runs before `setAnother`. It covers allocations, remaining and compensate before the hook's journal write, lock or dispatch. The `onReset` behavior is unchanged.\n- **Payment recovery-only form:** one guard covers both submitters (`__recover` and `__cancel`), for both v1 and v2 recovery. The hook still controls the v1 prepare→submit path, the v2 ID-only submit and the guarded cancel. `usePaymentRecovery.ts` and both `actions.ts` files are reported unchanged.\n- **Harness gaps (coverage notes, not defects):** the same guard code path applies, but these states have no listed case:\n  - `!canStartNew` with a recovered draft (label \"إعادة المحاولة المحفوظة\", recovery notice shown);\n  - a stale policy version with a recovered draft;\n  - `storageUnavailable`;\n  - a corrupt or conflicting v2 record in recovery-only.\n\n## Simplicity\n- The change is three additive edits:\n  - a one-line guard per form;\n  - an optional `disabled` prop on `SubmitButton`, defaulting to `false`;\n  - an optional `purpose` prop on the notice.\n- The C1 default notice text is unchanged.\n- No queue, replay, auto-retry, new storage or remount was added.\n\n## Invariants\n- Online handler bodies and action bindings match baseline, apart from nit 1.\n- Only submit buttons are disabled. Fields, cancel links, refresh and the \"start new attempt\" control are not.\n- Notice visibility matches each form's existing submit-enabled condition, so no send advice appears while pending, for a corrupt draft, when denied, or with an empty allocation.\n- Offline sends are blocked without implying anything about service success.\n- `aria-describedby` points at the notice only while it is rendered.\n- `role=status` and SSR snapshot `false` are inherited from the accepted C1 hook.\n\n## Remaining scope\n- **Visual:** NOT VISUALLY VERIFIED for both the balance and payment recovery forms. The reference payroll view has no equivalent form.\n- **Native DOM, real Auth/SQL/payment, and actors:** OPEN. The 33 passes are controlled, synthetic-dispatch results only.\n- **R0–R8 and the 152-form/19-handler frontier:** OPEN. No numerical journey gains are claimed.",
+      "sessionId": "87ac4f5a-f202-43c0-afdf-8a0667643943"
+    }
+  },
+  "codex": {
+    "source": "ACCEPT bounded C2; contemporaneous guards precede new attempt state/write; unchanged financial hook/actions/rules",
+    "visual": "NOT VISUALLY VERIFIED; full parent/reference/state/device acceptance OPEN",
+    "simplicity": "Known-offline send does not create a new uncertain payment request; no numerical before/after claim",
+    "reviewCorrections": "Actual kinds opening/annual_grant/adjustment. V1 recovery prepares then submits; not ID-only. Shared synchronous snapshot refresh is not a React transition; Claude withdrew earlier concern.",
+    "reactReview": "Hooks unconditional, stableSSR, no transition/network/optimistic side effects, disabled submit explanations associated; existing pending/key/fields/links preserved.",
+    "testGuard": "Actual domain/rules and Payment hook loaded; React engine, browser storage/locks/randomness and server-action boundary controlled. Focused loops over distinct operations; no database/financial/runtime claim.",
+    "nonblockingNit": "Retained existing-style literal whitespace node between Payment notice and error; no behavioral defect or visual acceptance claimed",
+    "coverageNotes": [
+      "Recovered balance with new-work gate disabled/stale version/storageUnavailable not independently natively qualified",
+      "Corrupt/conflicting payment journals remain unchanged existing authority, not full actor acceptance"
+    ]
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:171:7363",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:175:7693",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:180:7996",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:184:8326",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:192:8488",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:196:8818",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:201:9159",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:206:9542",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:202:9225",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:207:9608",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:203:9293",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:208:9676",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:204:9361",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:209:9744",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:205:9419",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:210:9802",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:206:9483",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:211:9866",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:207:9548",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:212:9931",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:208:9620",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:213:10003",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:209:9694",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:214:10077",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:212:9844",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:217:10227",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:218:10305",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:223:10688",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:224:10742",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:229:11125",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:249:12449",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:254:12832",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:261:13412",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:268:14032",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:263:13582",
+        "after": "CONTROL:src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx:270:14202",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1595",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:1880",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1644",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:1980",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:17:1811",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:2217",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:19:2521",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:22:3082",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:20:2729",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3290",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2844",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3451",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2897",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3504",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:2954",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3561",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:3007",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3614",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:21:3068",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:3675",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3316",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:3923",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:3526",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:4133",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:4083",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:4690",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:23:4487",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:5094",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:24:4810",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:27:5417",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:25:4944",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5551",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:26:5129",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:29:5736",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:27:5266",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:30:5873",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5544",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:31:6151",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:28:5934",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx:31:6733",
+        "status": "pending"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS one grouped production build",
+    "typecheck": "PASS explicit tsc",
+    "lint": "PASS full application/docs baseline; four existing warnings; new evidence lint checked separately",
+    "fullPwa": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "next": "Remaining actual form/handler/GET/logout/access frontier and consolidated reference/native/actor acceptance; no additional feature or C/full-stage closure",
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 20,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  }
+}

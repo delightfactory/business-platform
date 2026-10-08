@@ -1,0 +1,159 @@
+{
+  "baseline": "5b8fcb528b7878d28004d89fe202d83f7d70739f",
+  "scope": "Controlled actual TSX handlers/hook with synthetic React dispatch and server-action boundary; not native DOM/real Auth/SQL/payment acceptance",
+  "passed": 33,
+  "cases": [
+    {
+      "name": "Balance opening new blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance opening new online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance opening recovered blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance opening recovered online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance annual_grant new blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance annual_grant new online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance annual_grant recovered blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance annual_grant recovered online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance adjustment new blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance adjustment new online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance adjustment recovered blocked before attempted/write with context retained",
+      "status": "pass"
+    },
+    {
+      "name": "Balance adjustment recovered online trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment allocations blocked before pending journal/locks/dispatch",
+      "status": "pass"
+    },
+    {
+      "name": "Payment allocations online journal/action trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment remaining blocked before pending journal/locks/dispatch",
+      "status": "pass"
+    },
+    {
+      "name": "Payment remaining online journal/action trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment compensate blocked before pending journal/locks/dispatch",
+      "status": "pass"
+    },
+    {
+      "name": "Payment compensate online journal/action trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v2 __recover offline retains original attempt and journal",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v2 __recover online recovery trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v2 __cancel offline retains original attempt and journal",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v2 __cancel online recovery trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v1 __recover offline retains original attempt and journal",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v1 __recover online recovery trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v1 __cancel offline retains original attempt and journal",
+      "status": "pass"
+    },
+    {
+      "name": "Payment v1 __cancel online recovery trace matches baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Balance pending has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Balance corrupt has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Balance denied has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Payment pending has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Payment empty allocations has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Payment recovery pending has no misleading offline resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "C1 default notice text/markup unchanged; recovery wording makes no persistence promise",
+      "status": "pass"
+    }
+  ],
+  "unchanged": [
+    "src/app/tenant/[tenantId]/payroll/payments/usePaymentRecovery.ts",
+    "src/app/tenant/[tenantId]/payroll/payments/actions.ts",
+    "src/app/tenant/[tenantId]/leave/balances/actions.ts",
+    "src/app/tenant/[tenantId]/leave/balances/rules.ts"
+  ],
+  "sourceFiles": [
+    {
+      "file": "src/components/offline-submission.tsx",
+      "sha256": "baa0f7bee194a937fc2d21fa224df270b50a78c8080d97fb4eb35c531b17321a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+      "sha256": "e14cedbb4e137fd6b1a9c344c5a6d888e8219aba998872b9329aae37e734b943"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "sha256": "27446d8be5536a77e0f43d28a57338b4f106e4c7d505ed31134b9fbd2a2e6a20"
+    }
+  ]
+}

@@ -846,16 +846,17 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
-      "line": 192,
+      "line": 196,
       "attrs": {
         "action": "{submitAction}",
-        "onSubmit": "{() => {\r\n      setAttempted(true);\r\n      attemptedKeys.current.add(operationKey);\r\n      try { sessionStorage.setItem(storageKey, JSON.stringify({\r\n        version: 1, savedAt: Date.now(), operationKey, typeVersion, typeVersionNumber, delta, reason, source, attempted: true,\r\n      })); } catch { setStorageUnavailable(true); }\r\n    }}"
+        "onSubmit": "{(event) => {\n      if (blockOfflineSubmission(event)) return;\n      setAttempted(true);\r\n      attemptedKeys.current.add(operationKey);\r\n      try { sessionStorage.setItem(storageKey, JSON.stringify({\r\n        version: 1, savedAt: Date.now(), operationKey, typeVersion, typeVersionNumber, delta, reason, source, attempted: true,\r\n      })); } catch { setStorageUnavailable(true); }\r\n    }}"
       },
       "client": true,
-      "sourceHash": "5b2077330a2127385f544440c4d2ecb22eaeab33d5f52c89b6fd2a74639a7680",
+      "sourceHash": "e14cedbb4e137fd6b1a9c344c5a6d888e8219aba998872b9329aae37e734b943",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C2 new/recovered opening/annual_grant/adjustment source-qualified33 controlledcases; actual actors/fullvisual OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
@@ -1297,28 +1298,31 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
-      "line": 17,
-      "attrs": {
-        "action": "{action}"
-      },
-      "client": true,
-      "sourceHash": "b1c15ec4ef18a8947a714d1d3ad13b25fbb61c006664b67235d69c4c467fbb96",
-      "candidateBoundary": "inspect action and actual owning operation",
-      "semanticReview": "pending",
-      "runtime": "not-run"
-    },
-    {
-      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
       "line": 20,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{()=>setAnother(false)}"
+        "onSubmit": "{event=>{blockOfflineSubmission(event);}}"
       },
       "client": true,
-      "sourceHash": "b1c15ec4ef18a8947a714d1d3ad13b25fbb61c006664b67235d69c4c467fbb96",
+      "sourceHash": "27446d8be5536a77e0f43d28a57338b4f106e4c7d505ed31134b9fbd2a2e6a20",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 23,
+      "attrs": {
+        "action": "{action}",
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;setAnother(false);}}"
+      },
+      "client": true,
+      "sourceHash": "27446d8be5536a77e0f43d28a57338b4f106e4c7d505ed31134b9fbd2a2e6a20",
+      "candidateBoundary": "inspect action and actual owning operation",
+      "semanticReview": "pending",
+      "runtime": "not-run",
+      "offlineReview": "C2 new allocations/remaining/compensate and v1-v2 recovery/cancel source-qualified33cases; fullactors/visual OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
@@ -1857,6 +1861,6 @@
     }
   ],
   "total": 152,
-  "hasSubmitHandler": 19,
-  "scope": "Current structural form frontier; source hashes normalized LF. Initial152sites/18handlers becomes152/19 after explicit NewLeave submit guard. C1 annotations are bounded offline source review only; all full semantics/actors/runtime still pending."
+  "hasSubmitHandler": 20,
+  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19 handlers becomes20 after recovery-only Payment guard. C1/C2 annotations are bounded offline source review only; all full semantics/actors/runtime still pending."
 }
