@@ -1,0 +1,48 @@
+{
+  "applicationSha": "7c5f48a85d5352552630f9f474522a928ecf4905",
+  "database": "business_platform_cube5_adam_channels_qa",
+  "scope": "Actual local authenticated SQL role; simulated claims; synthetic rollback transaction, NOT real Auth/browser/provider or exhaustive states",
+  "positiveCommands": {
+    "lifecycle": 5,
+    "limits": 4,
+    "entitlements": 10
+  },
+  "auditRowsAsserted": {
+    "lifecycle": 5,
+    "limits": 4,
+    "entitlements": 10
+  },
+  "currentRowsAsserted": {
+    "limits": 2,
+    "deniedEntitlements": 5
+  },
+  "cleanupIndependentConnection": {
+    "users": 0,
+    "grants": 0,
+    "tenants": 0,
+    "lifecycleAudit": 0,
+    "limitAudit": 0,
+    "entitlementAudit": 0,
+    "oldLoginEnabled": 0
+  },
+  "functionHashes": [
+    {
+      "signature": "change_tenant_capability_entitlement(uuid,text,boolean,date,text)",
+      "sha256": "ed79de9f5f81d7d4aef91073a0e685e7e08f342cb0d77d8897f15a6c5d1245b1"
+    },
+    {
+      "signature": "change_tenant_capability_limit(uuid,text,text,text,integer,text)",
+      "sha256": "bca8d8e58ae7a550784e54c37becb4332fa1ed3c1a4142ff2713260d39f7f641"
+    },
+    {
+      "signature": "change_tenant_lifecycle(uuid,text,text,text)",
+      "sha256": "6a5e211f2ae625bf43329af6d4e5943e944810b1d04700338f5448dab44d8999"
+    }
+  ],
+  "limits": [
+    "No denial/stale/conflict/concurrency/expiry acceptance",
+    "No repository migration equivalence proof",
+    "No real login access created; synthetic unusable hash only",
+    "Nontransactional sequence/cache effects not asserted absent"
+  ]
+}
