@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "ea615008cb7b8721717dc3ba64d77388df48480f",
+  "sourceHead": "169d08400c1b2077cdca6f661b4564a736a6fbc1",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -95,7 +95,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383"
+      "sha256": "317fb0350798cedff1dfc00fd13e2094a5616139897ae40b84bd7a80cdec7d5d"
     },
     {
       "file": "src/app/layout.tsx",

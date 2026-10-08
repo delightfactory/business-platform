@@ -1,0 +1,122 @@
+{
+  "baseline": "169d08400c1b2077cdca6f661b4564a736a6fbc1",
+  "candidateFile": "src/app/globals.css",
+  "candidateNormalizedSha256": "317fb0350798cedff1dfc00fd13e2094a5616139897ae40b84bd7a80cdec7d5d",
+  "change": "Only environment-pill background: white72% to existing surface-base token",
+  "referenceHtmlSha256": "AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508",
+  "scope": "Actual Login JSX in isolated fixture, shared palette and badge only; Concept C has no Auth screen",
+  "codexVisualVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "claudeVisualVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "claudeSession": "1f894b3a-dd0e-402c-8974-40eb4b2bd752",
+  "claudeModel": "claude-opus-5-5",
+  "effort": "medium",
+  "sourceCheck": "Exact one-property inversion and fixture/application normalized byte identity PASS",
+  "contrast": {
+    "darkAfter": 6.057764213546575,
+    "lightAfter": 5.7980211254593135,
+    "darkBefore": 1.5257644045298067
+  },
+  "dom": {
+    "dark": {
+      "background": "rgb(20, 27, 25)",
+      "color": "rgb(142, 155, 149)",
+      "documentWidth": 1366,
+      "theme": "dark",
+      "viewport": 1366
+    },
+    "light": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(93, 104, 98)",
+      "documentWidth": 390,
+      "theme": "light",
+      "viewport": 390
+    }
+  },
+  "renders": [
+    {
+      "file": "auth-login-offline-dark-1366.jpg",
+      "sha256": "1a3e26fdb00a90e39fea582967d77b3a71e0538829748b4bcb041889be7a040d"
+    },
+    {
+      "file": "auth-login-offline-light-390.jpg",
+      "sha256": "669c17f1d011c537ce9f4338356addd2178f7a00dec0d40ab0c3b8249f457253"
+    },
+    {
+      "file": "auth-badge-after-dark-1366.jpg",
+      "sha256": "71ff43380c71bbc7d7d37c5ce2b7645855df227bd3ec5c90f485f9d8c9823309"
+    },
+    {
+      "file": "auth-badge-after-light-390.jpg",
+      "sha256": "112d099c1f4e92b5988118dff7e2797cc758f512a650dd0e14a16da3716411bf"
+    }
+  ],
+  "limits": [
+    "No real Auth/provider/actor execution",
+    "After sample is dark desktop and light mobile only; offline-after, dark-mobile-after and light-desktop-after not visually verified",
+    "No badge focus/hover state: noninteractive element",
+    "Full R0-R8/whole platform visual and semantic closure remain OPEN",
+    "Claude source verdict relies on brief, exact source independently verified by Codex; its dark RGB calculation parsed the brief ambiguously, authoritative computed RGB and ratios recorded here"
+  ],
+  "journey": "Readability improves; unchanged email/password, primary login, session state, recovery links, actions and authority. No measured navigation/input reduction claimed.",
+  "economicalChecks": "Rendered candidate + exact single-property/fixture identity + source inventory verification. Prior C10 build/TS/lint reused; no behavior, SQL or TypeScript change.",
+  "cleanup": {
+    "ownedTab128Closed": true,
+    "networkOnlineRestored": true,
+    "viewportReset": true,
+    "ownedService50681Stopped": true,
+    "port3622Listeners": 0
+  },
+  "fixture": {
+    "baseline": "169d08400c1b2077cdca6f661b4564a736a6fbc1",
+    "copied": [
+      {
+        "file": "src/app/auth/login/page.tsx",
+        "sha256": "e290c5dbd9806fb31077a2934a64c94feaa42922315776b657cbffe995a850bb"
+      },
+      {
+        "file": "src/app/auth/safe-next.ts",
+        "sha256": "ff6cd2769192e5d2d3a4e65db1e1fb157ebdcb1c80890708fc206a39f02e8afa"
+      },
+      {
+        "file": "src/components/offline-form.tsx",
+        "sha256": "526ab256a91e001304b894f68b6e889055d40b7ea1539f9273b539f6ed2887b4"
+      },
+      {
+        "file": "src/components/offline-submit-button.tsx",
+        "sha256": "490edc52eafd7a11b63256c6ddbc56668f3d4e79f5bcd230e314618d40352e79"
+      },
+      {
+        "file": "src/components/offline-submission.tsx",
+        "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+      },
+      {
+        "file": "src/components/submit-button.tsx",
+        "sha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5"
+      },
+      {
+        "file": "src/app/globals.css",
+        "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383"
+      },
+      {
+        "file": "src/app/workspace.css",
+        "sha256": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1"
+      },
+      {
+        "file": "src/components/theme-preference.tsx",
+        "sha256": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954"
+      },
+      {
+        "file": "src/lib/theme.ts",
+        "sha256": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+      }
+    ],
+    "fixture": "C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-self-service-auth-return-20261008\\offline-c1-fixture",
+    "host": "127.0.0.1",
+    "port": 3622,
+    "providerNull": true,
+    "environmentFilesCopied": false,
+    "action": "synthetic no FormData read, no authentication, no credentials or account mutation",
+    "scope": "Actual Login server JSX and shared styles/theme/components. Reference shared palette/controls, original Concept C has no Auth page.",
+    "fixtureOnlyThemeOverride": "Read initial theme from synthetic request query/header, replacing cookie read only in fixture layout. No browser cookies/preferences changed; production source unchanged."
+  }
+}

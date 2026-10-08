@@ -39,7 +39,7 @@ a { color: inherit; }
 }
 .environment-pill {
   display: inline-flex; align-items: center; gap: .5rem; color: var(--color-muted);
-  font-size: .85rem; background: rgb(255 255 255 / 72%); padding: .5rem .75rem; border: 1px solid var(--color-border); border-radius: 999px;
+  font-size: .85rem; background: var(--surface-base); padding: .5rem .75rem; border: 1px solid var(--color-border); border-radius: 999px;
 }
 .environment-pill span { width: .5rem; height: .5rem; border-radius: 50%; background: #d49230; }
 .foundation-card {
