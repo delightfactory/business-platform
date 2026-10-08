@@ -1,0 +1,11 @@
+{
+  "scopedLint": "PASS",
+  "source": "exact8buttonclasses+specificfallbackformclass only",
+  "build": "REUSED from2411d45 verified-groupbuild",
+  "typeCheck": "REUSED pureliteralclasses/no type imports/contracts changed",
+  "SQLAuthFinancial": "REUSED unchanged",
+  "initialSourceCases": 8,
+  "affectedFallbackDeltaCases": 1,
+  "sourceFingerprintsMatch": true,
+  "semanticPromotion": false
+}

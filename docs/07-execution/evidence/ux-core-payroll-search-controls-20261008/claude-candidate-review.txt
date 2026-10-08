@@ -1,0 +1,39 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true}
+
+**No must-fix. The search-controls batch is accepted within the stated scope:** actual page source, CSS and Cairo with a mocked SDK, financial widgets and shell.
+
+## Source
+Searching for these search buttons now shows `className="secondary-button"` on exactly the eight planned buttons:
+- advances `:30,59,64,65,67`;
+- runs `:35`;
+- inputs `:30,46`.
+
+`reports:36` stays bare and is correctly excluded: the reports module rule already styles it with the token fill and 40/44px heights. Root, setup and payments already had the class. Combined with your proof that only class attributes changed, I accept the source equivalence.
+
+## Render (images opened this turn)
+`before-advanceList-390`, `advanceList-390`, `inputMissing-1366`, `focus-inputMissing-390`, `advancePeriod-768`.
+
+- **Advances list, before vs after at 390:** "بحث" goes from a tiny native button (about 21px) to an outlined secondary of about 44px beside the field. The rest of the frame is identical: the employer selector, recovery stub, list card and the "إعداد سلفة جديدة" link.
+- **Inputs, missing employee:**
+  - At 1366 an outlined 40px "البحث عن الموظف المحدد" with the "العودة إلى المدخلات" link still visible.
+  - At 390 the button has a visible 2px focus ring and the TEST value is kept.
+- **Advances period search at 768:** inside the open disclosure, an outlined "بحث الفترات" sits beside the field. The result link and the "ask the setup manager" note remain.
+- No overflow. Every chooser and fallback stays visible.
+
+## Remaining issue in the same journey (pre-existing, not introduced here)
+The missing-employee recovery form (`inputs/page.tsx:43`) has no `styles.filters` class. Its text **input** is still a small native field, visibly about 20px tall at 390 and 1366, well under 44px. The new button is compliant, but the search control beside it isn't.
+
+Record it as the next core accessibility item. The fix would be another literal class: `className={styles.filters}` on that form, so the existing field-height styling applies. It stays out of this batch's bounds.
+
+## Limits
+- Not tested: real Next and hydration, real roles and providers, finance, the full parent.
+- Concept C has no chooser or search screens. Only the shared direction (outlined secondary buttons, the same tokens and focus ring) is consistent, so a full match is **NOT VISUALLY VERIFIED**.
+- The metric is touch-target and hierarchy compliance, not task speed.
+- No semantic, register, R7, phase or R0–R8 promotion.
+
+**Still open:**
+- the owner's A/B recovery decision (untouched);
+- the missing-employee input height;
+- the name mismatch between the multi-employer select and the identity text;
+- stage facts and owner routes;
+- real roles and providers, finance, hydration and the full parent.

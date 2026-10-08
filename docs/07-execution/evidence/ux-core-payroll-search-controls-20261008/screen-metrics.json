@@ -1,0 +1,1442 @@
+[
+  {
+    "scene": "advanceEmployer",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployer",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceList",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceList",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 84.4749984741211
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 115.07500457763672
+  },
+  {
+    "scene": "advancePeriod",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 70.5999984741211
+  },
+  {
+    "scene": "advancePeriod",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 375,
+    "viewportWidth": 390,
+    "buttonWidth": 97.78125
+  },
+  {
+    "scene": "runEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "runEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "inputEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputMissing",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 128.11875915527344
+  },
+  {
+    "scene": "inputMissing",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 390,
+    "scroll": 390,
+    "viewportWidth": 390,
+    "buttonWidth": 180.9875030517578
+  },
+  {
+    "scene": "advanceEmployer",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployer",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceList",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceList",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 84.4749984741211
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 115.07500457763672
+  },
+  {
+    "scene": "advancePeriod",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 70.5999984741211
+  },
+  {
+    "scene": "advancePeriod",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 753,
+    "viewportWidth": 768,
+    "buttonWidth": 97.78125
+  },
+  {
+    "scene": "runEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "runEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "inputEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputMissing",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 128.11875915527344
+  },
+  {
+    "scene": "inputMissing",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 44,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 768,
+    "scroll": 768,
+    "viewportWidth": 768,
+    "buttonWidth": 180.9875030517578
+  },
+  {
+    "scene": "advanceEmployer",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployer",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": ""
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceList",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceList",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "advanceEmployment",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "new",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 84.4749984741211
+  },
+  {
+    "scene": "advanceCorrection",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_event",
+        "value": "<redacted>"
+      },
+      {
+        "name": "correction_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث المراجعات",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 115.07500457763672
+  },
+  {
+    "scene": "advancePeriod",
+    "before": true,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 70.5999984741211
+  },
+  {
+    "scene": "advancePeriod",
+    "before": false,
+    "action": "/tenant/33333333-3333-4333-8333-333333333333/payroll/advances",
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "advance",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث الفترات",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1351,
+    "viewportWidth": 1366,
+    "buttonWidth": 97.78125
+  },
+  {
+    "scene": "runEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "runEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputEmployer",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 35.83124923706055
+  },
+  {
+    "scene": "inputEmployer",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer_q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "بحث",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 53.72500228881836
+  },
+  {
+    "scene": "inputMissing",
+    "before": true,
+    "action": null,
+    "bg": "rgb(240, 240, 240)",
+    "class": "",
+    "color": "rgb(0, 0, 0)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Arial",
+    "fonts": "loaded",
+    "height": 21.200000762939453,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 128.11875915527344
+  },
+  {
+    "scene": "inputMissing",
+    "before": false,
+    "action": null,
+    "bg": "rgba(0, 0, 0, 0)",
+    "class": "secondary-button",
+    "color": "rgb(59, 70, 65)",
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "font": "Cairo, sans-serif",
+    "fonts": "loaded",
+    "height": 40,
+    "label": "البحث عن الموظف المحدد",
+    "method": "get",
+    "pageWidth": 1366,
+    "scroll": 1366,
+    "viewportWidth": 1366,
+    "buttonWidth": 180.9875030517578
+  }
+]

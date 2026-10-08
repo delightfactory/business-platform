@@ -1,0 +1,72 @@
+{
+  "baseline": "d50576c3cb0c9e819346067bf4a23e241b68f47f",
+  "cases": [
+    {
+      "name": "advanceEmployer",
+      "page": "advances",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "advanceList",
+      "page": "advances",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "advanceEmployment",
+      "page": "advances",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "advanceCorrection",
+      "page": "advances",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "advancePeriod",
+      "page": "advances",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "runEmployer",
+      "page": "runs",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "inputEmployer",
+      "page": "inputs",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    },
+    {
+      "name": "inputMissing",
+      "page": "inputs",
+      "contract": "PASS",
+      "RPCs": "PASS",
+      "widgets": "PASS",
+      "scope": "actual-source SSR/controlledSDK boundary, not actual role/financial/hydration"
+    }
+  ],
+  "sourceChange": "exactly8literalbuttonclasses+oneexistingfallbackformclass",
+  "financialServerHooks": "unchanged",
+  "heavyChecks": "prior valid build/TS/SQL/Auth reused"
+}

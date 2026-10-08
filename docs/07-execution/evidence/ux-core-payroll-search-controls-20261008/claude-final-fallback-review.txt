@@ -1,0 +1,24 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true}
+
+**No must-fix. The finding is resolved, and the missing-employee search form is now accessible as a whole.**
+
+**Source:** `inputs/page.tsx:46` now opens with `<form method="get" className={styles.filters}>`. Its hidden context fields (`employer`, `period`, `employee`, `kind` and the `review_*` keys), the label, the input, the button and the back link are unchanged. The class only applies existing tokens, and no CSS was added. Combined with your proof that only class attributes changed across all three files, I accept it.
+
+**Render (images opened this turn):**
+- **`inputMissing-390.png`:** the "اسم الموظف أو كوده" label now sits above a full-width token field (about 52px) that keeps TEST. The 44px outlined "البحث عن الموظف المحدد" button and the "العودة إلى المدخلات" link follow. No overflow.
+- **`inputMissing-1366.png`:** the token field and the 40px secondary button sit side by side under the label, with the back link below.
+- **`focus-inputMissing-390.png`:** the button shows a 2px blue focus-visible ring and the value is kept. Nothing is submitted.
+
+**Minor, recorded:** the back link sits close under the button with little vertical spacing. That's pre-existing link geometry, not a regression, and not a blocker.
+
+**Limits:**
+- mocked SDK, financial widgets and shell;
+- not tested: real Next and hydration, roles and providers, finance, the full parent;
+- the full Concept C match stays **NOT VISUALLY VERIFIED**;
+- no semantic, register, R7, phase or R0–R8 promotion.
+
+**Still open:**
+- the owner's A/B recovery decision;
+- the name mismatch between the multi-employer select and the identity text;
+- stage facts and owner routes;
+- real roles and providers, finance, hydration and the full parent.

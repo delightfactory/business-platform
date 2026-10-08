@@ -1,0 +1,9 @@
+{
+  "focusVisible": true,
+  "label": "البحث عن الموظف المحدد",
+  "outline": "solid",
+  "outlineColor": "rgb(11, 114, 217)",
+  "outlineWidth": "2px",
+  "search": "TEST",
+  "tag": "BUTTON"
+}

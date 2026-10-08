@@ -1,0 +1,170 @@
+[
+  {
+    "scene": "advanceEmployer",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceList",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceEmployment",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceCorrection",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advancePeriod",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "runEmployer",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputEmployer",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputMissing",
+    "viewport": 390,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceEmployer",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceList",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceEmployment",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceCorrection",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advancePeriod",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "runEmployer",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputEmployer",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputMissing",
+    "viewport": 768,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 44,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceEmployer",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceList",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceEmployment",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advanceCorrection",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "advancePeriod",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "runEmployer",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputEmployer",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  },
+  {
+    "scene": "inputMissing",
+    "viewport": 1366,
+    "beforeHeight": 21.200000762939453,
+    "afterHeight": 40,
+    "fieldsAndDestination": "PASS"
+  }
+]

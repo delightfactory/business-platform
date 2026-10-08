@@ -1,0 +1,230 @@
+[
+  {
+    "before": true,
+    "buttonHeight": 21.200000762939453,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 21.200000762939453,
+    "method": "get",
+    "scroll": 390,
+    "viewport": 390
+  },
+  {
+    "before": false,
+    "buttonHeight": 44,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 52.400001525878906,
+    "method": "get",
+    "scroll": 390,
+    "viewport": 390
+  },
+  {
+    "before": true,
+    "buttonHeight": 21.200000762939453,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 21.200000762939453,
+    "method": "get",
+    "scroll": 768,
+    "viewport": 768
+  },
+  {
+    "before": false,
+    "buttonHeight": 44,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 52.400001525878906,
+    "method": "get",
+    "scroll": 768,
+    "viewport": 768
+  },
+  {
+    "before": true,
+    "buttonHeight": 21.200000762939453,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 21.200000762939453,
+    "method": "get",
+    "scroll": 1366,
+    "viewport": 1366
+  },
+  {
+    "before": false,
+    "buttonHeight": 40,
+    "fields": [
+      {
+        "name": "employer",
+        "value": "<redacted>"
+      },
+      {
+        "name": "period",
+        "value": "<redacted>"
+      },
+      {
+        "name": "employee",
+        "value": "<redacted>"
+      },
+      {
+        "name": "kind",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_view",
+        "value": "<redacted>"
+      },
+      {
+        "name": "review_q",
+        "value": "<redacted>"
+      },
+      {
+        "name": "q",
+        "value": "TEST"
+      }
+    ],
+    "inputHeight": 52.400001525878906,
+    "method": "get",
+    "scroll": 1366,
+    "viewport": 1366
+  }
+]

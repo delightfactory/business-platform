@@ -1,0 +1,53 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true}
+
+# R7 search-control accessibility: co-design verdict (spec on d50576c)
+
+**One must-fix:** the spec's inventory is incomplete. The bounds are otherwise confirmed.
+
+## Must-fix: a bare search button the spec misses
+
+Searching for bare `<button>` in payroll pages finds **nine**. The spec lists seven, and one of the two it leaves out needs fixing:
+
+- **`inputs/page.tsx:46`, "البحث عن الموظف المحدد".** This is the native GET search on the "employee not on this page" recovery screen. Its button is bare, which contradicts the spec's statement that the other search submits are already secondary.
+  - **Fix:** add `className="secondary-button"` in this batch, with a controlled-SDK case for the `kind` + missing-employee branch.
+  - **Unchanged:** its hidden `employer`, `period`, `employee`, `kind` and `review_*` fields, `maxLength`, and the `back` link.
+- **`reports/page.tsx:36`, the employer search on the reports chooser.** This one is correctly left out, but the spec should state why:
+  - the reports module rule `.workspace form>button` (specificity 0,1,2) already styles it with the token fill and 40/44px heights;
+  - adding `secondary-button` (0,1,0) would have no visible effect;
+  - it is the only action on that page.
+
+  Record it as already compliant and leave it unchanged.
+
+So the batch covers **eight** buttons: advances `:30,59,64,65,67`, runs `:35`, inputs `:30` and inputs `:46`.
+
+## Bounds (confirmed)
+- **Only change:** a literal `className="secondary-button"` on each of those eight `<button>`s.
+- **Unchanged:**
+  - form `method`/`action` and the default GET submit;
+  - `name`, `defaultValue`, `maxLength={120}`;
+  - every hidden context and cursor field;
+  - text, predicates, element order and conditional rendering.
+- **Out of scope:**
+  - `CorrectionForms`, whose bare submits are mutation and recovery buttons;
+  - any broad CSS such as `button{}` or `form>button`.
+- **Pending recovery decision:** untouched.
+- **Primaries:** none of these forms sits next to a primary that the change would demote. Advances forms with the employee list and the new-employee chooser stay secondary next to the existing `AdvanceForm` primaries.
+
+## Checks
+- **Source equivalence:** the whole source with those eight class attributes removed must match the baseline exactly.
+- **Rendered branches** (controlled SDK, actual source), all eight:
+  - advances: employer chooser, list search, creation employee search (`new=1`), correction review chooser (`correction_event` with `can_approve` and `can_correct_payroll`), period search (`needPeriods`);
+  - runs: employer chooser (no employer);
+  - inputs: employer chooser, and missing-employee recovery.
+- **Renders** at 390/768/1366 with actual CSS and Cairo:
+  - computed heights of 44px on mobile and 40px on desktop;
+  - native Tab order and a visible `:focus-visible` ring.
+- **Lint and evidence:** scoped lint. Reuse the previous build/TS, SQL, Auth and financial evidence; pure class additions don't affect types or contracts.
+- **Metric:** touch-target and hierarchy compliance, not fewer clicks.
+
+**Still open:**
+- the owner's A/B recovery decision;
+- the multi-employer name mismatch between the select and the identity text;
+- stage facts and owner routes;
+- real roles and providers, finance, hydration, the full parent and the full reference (**NOT VISUALLY VERIFIED**);
+- R0–R8 and phase closure.
