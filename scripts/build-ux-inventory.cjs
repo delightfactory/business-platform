@@ -58,7 +58,7 @@ for (const {full,file} of files) {
       result.rpcCalls.push({id:`RPC:${file}:${line(node)}:${node.pos}`,file,line:line(node),phase:phase(file),name:literal?arg.text:null,expression:literal?null:arg?.getText(sf),candidates:[...new Set(candidates)],resolution:literal?'literal':candidates.length?'finite-candidates-need-manual-check':'unresolved-needs-manual-check'});
     }
     if(ts.isJsxOpeningElement(node)||ts.isJsxSelfClosingElement(node)) {
-      const tag=node.tagName.getText(sf);if(['form','button','input','select','textarea','SubmitButton','Tabs.Trigger','Form'].includes(tag)) {const attrs={};for(const a of node.attributes.properties)if(ts.isJsxAttribute(a)&&['action','formAction','name','type','aria-label','label','pendingLabel','disabled','value'].includes(a.name.text))attrs[a.name.text]=a.initializer?.getText(sf)??true;result.formControls.push({id:`CONTROL:${file}:${line(node)}:${node.pos}`,file,line:line(node),tag,phase:phase(file),attributes:attrs});}
+      const tag=node.tagName.getText(sf);if(['form','button','input','select','textarea','SubmitButton','Tabs.Trigger','Form','Dialog.Close'].includes(tag)) {const attrs={};for(const a of node.attributes.properties)if(ts.isJsxAttribute(a)&&['action','formAction','name','type','aria-label','label','pendingLabel','disabled','value'].includes(a.name.text))attrs[a.name.text]=a.initializer?.getText(sf)??true;result.formControls.push({id:`CONTROL:${file}:${line(node)}:${node.pos}`,file,line:line(node),tag,phase:phase(file),attributes:attrs});}
     }
     ts.forEachChild(node,visit);
   }

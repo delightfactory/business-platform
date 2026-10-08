@@ -1,0 +1,10 @@
+**Both blockers are resolved.**
+
+1. **Auth status:** only a missing session or no user now shows "signed out". Every other auth error shows `unavailable`, with retry and the full profile. That's truthful. One case to know about: an expired or revoked token (an auth 4xx) also lands on `unavailable`, so retry won't help there. The full-profile link still recovers it, because the profile page sends any request without a user to login with `next`. The route tests for missing session, no user and auth 503 never reach the RPC, which confirms the user check still runs first.
+2. **Label:** the neutral `مجدول` ("scheduled") makes no timing claim, and the start date is still the only source for when. Making the directory use the same label keeps them consistent and adds no new behaviour.
+
+**Visual: MATCH WITH ACCEPTED DEVIATIONS, reused unchanged.** The scope, deviation list and approval state are the same as before (D2/D3/D8 pending, D16 deferred). Only the text changed, so the layout is unaffected; `scheduled-ready-390.jpg` shows the label from before this fix, as documented.
+
+Verdicts: capability, completion, simplicity, failure and RTL all pass now.
+
+These gates are still open: the real SDK and roles, the privacy and financial boundary, JS off, the real directory page, root middleware handling of `/preview`, and D2/D3/D8. This is not a full-R4 claim.

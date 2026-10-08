@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "b0754a54a50932234437dc26024a06b3ed68cf78",
+  "sourceHead": "e51c50dcedba6a88d17af832df12b894f96ea811",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1058,6 +1058,11 @@
       "sha256": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f"
     },
     {
+      "file": "src/app/tenant/[tenantId]/people/EmployeePreview.tsx",
+      "phase": "R4",
+      "sha256": "c97c24c7b4aa0b986b6b2f7a16f446e3eebd8ba5ecffe68ca44f2ae9efde822c"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
       "phase": "R4",
       "sha256": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d"
@@ -1088,6 +1093,11 @@
       "sha256": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523"
     },
     {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "phase": "R4",
+      "sha256": "7564ca9275d903862e9150f9adb7776cd2dc07780b4b752e57dfa3048c9d2b31"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
       "phase": "R4",
       "sha256": "6cdce79e85a1ead330c46cc8acfef3933494908af63aba4ec758cdc203e45a5a"
@@ -1106,6 +1116,16 @@
       "file": "src/app/tenant/[tenantId]/people/employee-account-actions.ts",
       "phase": "R4",
       "sha256": "18a616a4dc90b36b5e8f2ffc1799180ea99c7d816d26f30e8e52db8360d37214"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview-data.ts",
+      "phase": "R4",
+      "sha256": "2d9019492650dbbeca991c88868a9922fe64d2c2847c03ac742fecaeaae2cc07"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview.module.css",
+      "phase": "R4",
+      "sha256": "20f3f398d4001db3b5a0cad0d3668710b740768165b9ab24a70db872cdeb2223"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/employee-user-link-actions.ts",
@@ -1165,7 +1185,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
       "phase": "R4",
-      "sha256": "3afff213a2d149401ad8125c09888158165054948dac92b58c4f791cab25539c"
+      "sha256": "af4df6c05f60a8d6c96595dc614d59d18f6a52d76cf6823fac07a8914f2fe256"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/people.module.css",
@@ -1785,6 +1805,13 @@
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
       "url": "/tenant/[tenantId]/people/[employeeId]",
       "kind": "page",
+      "phase": "R4"
+    },
+    {
+      "id": "ROUTE:src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "url": "/tenant/[tenantId]/people/[employeeId]/preview",
+      "kind": "endpoint",
       "phase": "R4"
     },
     {
@@ -6046,6 +6073,16 @@
       "resolution": "literal"
     },
     {
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts:22:1122",
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "line": 22,
+      "phase": "R4",
+      "name": "people_employee_snapshot",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
       "id": "RPC:src/app/tenant/[tenantId]/people/actions.ts:42:2255",
       "file": "src/app/tenant/[tenantId]/people/actions.ts",
       "line": 42,
@@ -6296,9 +6333,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:29:1776",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 28,
+      "line": 29,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6306,9 +6343,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:32:2024",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 31,
+      "line": 32,
       "phase": "R4",
       "name": "time_work_policy_catalog",
       "expression": null,
@@ -6316,9 +6353,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:37:2573",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 36,
+      "line": 37,
       "phase": "R4",
       "name": "people_directory_page",
       "expression": null,
@@ -15707,6 +15744,26 @@
       }
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/EmployeePreview.tsx:67:3069",
+      "file": "src/app/tenant/[tenantId]/people/EmployeePreview.tsx",
+      "line": 67,
+      "tag": "Dialog.Close",
+      "phase": "R4",
+      "attributes": {
+        "aria-label": "\"إغلاق معاينة الموظف\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/EmployeePreview.tsx:75:3912",
+      "file": "src/app/tenant/[tenantId]/people/EmployeePreview.tsx",
+      "line": 75,
+      "tag": "button",
+      "phase": "R4",
+      "attributes": {
+        "type": "\"button\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:53:3715",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
       "line": 53,
@@ -18402,15 +18459,15 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 260,
+    "sourceFiles": 264,
     "pages": 75,
-    "endpoints": 3,
+    "endpoints": 4,
     "boundaries": 8,
     "serverActions": 107,
-    "rpcCallSites": 341,
+    "rpcCallSites": 342,
     "uniqueLiteralRpcs": 215,
     "dynamicRpcSites": 6,
-    "formControls": 1056,
+    "formControls": 1058,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

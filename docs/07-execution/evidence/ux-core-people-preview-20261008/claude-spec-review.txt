@@ -1,0 +1,43 @@
+I checked the spec against `people_employee_snapshot` (`supabase/migrations/20260930024042_people_future_rehire_context.sql:86-128`) and the first 40 lines of `people/page.tsx` and `people/[employeeId]/page.tsx`. I made no edits, ran no commands and didn't write a plan file. This hasn't been checked visually.
+
+**Verdict: approve with the corrections below.** I found nothing that blocks the R4 slice. Items 1–4 have to be reflected in the code before the grouped build and lint.
+
+## Spec corrections
+
+1. **A missing or wrong-tenant employee comes back as `NULL`, not as an error.** The RPC returns `v_result` = NULL when `e.tenant_id/e.id` don't match (line 123). Treat `data === null`, a non-object, an array, or an `id` that doesn't match as `unavailable`. Code 42501 (`people_view_forbidden`) also maps to `unavailable`. Don't show a "not found" or "no access" message the data can't support.
+2. **Take dates and status from the RPC, never from the browser clock.** The RPC works out `today` in Cairo time (line 89).
+   - Show "scheduled" only when the top-level `status === 'scheduled'`, or `assignment.is_scheduled === true` for the assignment.
+   - Don't compare `start_date` with `new Date()`.
+   - Show "ended" only when `employment.status === 'ended'`. An `end_date` alone isn't enough, because an active employment can have a planned end date. In that case label it "ends on", not "ended".
+   - For ended employment, the assignment is the one in force on `end_date` (lines 114-117). Label it "at end of employment", not "current".
+3. **Format date-only strings without shifting the timezone.** `new Date('YYYY-MM-DD')` parses as UTC midnight, so formatting it in local time can move the date back a day. Format it as a plain string, or with `timeZone: 'UTC'`.
+4. **Narrow what goes back to the client.** Return only these fields: `id`, `code`, `name`, `status`, employment `{employer, start_date, end_date, status}`, and assignment `{site, department, job, manager, valid_from, valid_until, is_scheduled}`.
+   - Leave out `can_manage` so the preview can't offer edit actions, even by accident.
+   - Leave out every `*_id` foreign key.
+5. **Turn off prefetch on the preview anchor (`prefetch={false}`).** Next `<Link>` prefetches links as they come into view, so one link per row would preload every row. That breaks "read on demand only, no preload".
+6. **Give the preview anchor its own name and mark it as opening a dialog.** It shares the profile link's href, so it needs a distinct accessible name (e.g. "Quick preview: {name}") and `aria-haspopup="dialog"`. Also treat these as modified clicks that keep normal navigation: `button !== 0`, any of meta/ctrl/shift/alt, or `defaultPrevented`.
+7. **Return focus to the anchor explicitly.** The spec relies on Radix doing this, but there is no `Dialog.Trigger`, and Safari doesn't focus a link when it's clicked. Keep a ref to the anchor. In `onCloseAutoFocus`, call `preventDefault()` and then focus the ref. If the anchor is no longer in the page, focus the directory search input instead.
+8. **`Dialog.Title` and the description must be present while loading.** Fill the header straight away with the row's name and code, which are already on the page. Don't show the row's `status` as the employee's status; only the RPC's status counts. Put `aria-busy` on the body while it loads.
+9. **Check the Server Action's side effects.** `getUser()` may refresh the session and write cookies. A cookie write inside a Server Action makes Next refresh the current page from the server. Next also runs Server Actions one at a time, so quickly reopening the preview queues requests behind each other.
+   - Add a check that the instant-search input, page and scroll survive a refresh happening while the preview loads.
+   - The generation ref already handles stale responses from the queue.
+   - If the refresh does lose input or scroll, move the read to a GET Route Handler that uses the same client and RPC. Don't add workarounds around the action.
+10. **Keep errors quiet.** The action must return a result and never throw, because uncaught errors print in dev. Don't log the payload or the employee ID. A missing Supabase client maps to `unavailable`. The signed-out state's main anchor stays the full-profile link, which already redirects to login with `next` set, so the user can recover.
+
+## Invariant checks (confirmed against the code)
+- **Authority:** permission is enforced only inside the SECURITY DEFINER RPC (`people.view`), with grants for `authenticated` only. The action adds no privilege. Its tenant argument comes from the client and can be changed, but that's safe because the RPC checks it.
+- **Context:** the URL doesn't change and a modal Radix dialog makes the rest of the page inert, so the search text can't change while the preview is open. Search, page and scroll are kept apart from the refresh risk in item 9.
+- **Recovery:** every state other than `ready` offers retry plus the full-profile anchor.
+- **No false success:** `ready` only comes after the id matches and the shape check passes.
+- **RTL:** use `inset-inline-end` and a slide direction based on logical properties, so no physical-direction override is needed.
+- **Mobile:** set `max-height` in `dvh` and add safe-area bottom padding to the footer.
+
+## Focused tests to add
+- Plain click opens the preview; modified and middle clicks navigate.
+- Opening, closing and reopening with a stale response doesn't render the stale data.
+- A null, malformed or mismatched-id response shows `unavailable`.
+- Scheduled and ended labels come only from RPC fields.
+- Escape, outside click and the close button each return focus to the anchor.
+- The fallback focus target works when the anchor is gone.
+
+Then run the one grouped build and lint, followed by the grouped visual review against the pinned personDrawer.

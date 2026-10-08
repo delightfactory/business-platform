@@ -4,6 +4,7 @@ import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import styles from './people.module.css';
 import { DirectorySearch } from './DirectorySearch';
+import { EmployeePreview } from './EmployeePreview';
 
 export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
@@ -71,8 +72,8 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
             <p className={`record-meta ${styles.employmentContext}`}>{[employee.employer, employee.site].filter(Boolean).join(' · ') || 'لم يبدأ العمل بعد'}
               {employee.status === 'scheduled' && employee.start_date && <> · يبدأ في <bdi>{employee.start_date}</bdi></>}</p>
               <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
-                {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
-            <Link className="secondary-button" aria-label={`عرض ملف ${employee.name}`} href={`/tenant/${tenantId}/people/${employee.id}`}>عرض الملف</Link>
+                {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'مجدول' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
+            <EmployeePreview href={`/tenant/${tenantId}/people/${employee.id}`} employeeId={employee.id} name={employee.name} code={employee.code} />
           </li>)}</ul>
           <nav className="people-pagination" aria-label="صفحات دليل الموظفين">
             <span>الصفحة {page}</span>

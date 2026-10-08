@@ -1,0 +1,142 @@
+{
+  "baseline": "e51c50dcedba6a88d17af832df12b894f96ea811",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/EmployeePreview.tsx",
+      "sha256": "c97c24c7b4aa0b986b6b2f7a16f446e3eebd8ba5ecffe68ca44f2ae9efde822c",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview-data.ts",
+      "sha256": "2d9019492650dbbeca991c88868a9922fe64d2c2847c03ac742fecaeaae2cc07",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "sha256": "7564ca9275d903862e9150f9adb7776cd2dc07780b4b752e57dfa3048c9d2b31",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview.module.css",
+      "sha256": "20f3f398d4001db3b5a0cad0d3668710b740768165b9ab24a70db872cdeb2223",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/page.tsx",
+      "sha256": "af4df6c05f60a8d6c96595dc614d59d18f6a52d76cf6823fac07a8914f2fe256",
+      "normalization": "LF"
+    },
+    {
+      "file": "package.json",
+      "sha256": "9304b0639da6e6d79e3934b3972e8eb8149a30d2ebe383e6d2ecc0387788ed15",
+      "normalization": "LF"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "746ba92c24d526f856dcf72b1456fef5f598acf8c488045e0fc2fd57787b2fe5",
+      "normalization": "LF"
+    },
+    {
+      "file": "scripts/build-ux-inventory.cjs",
+      "sha256": "03761087289c97609aa5e45da5f6552be6b7a18beebfaa419398ef91001a037e",
+      "normalization": "LF"
+    },
+    {
+      "file": "proxy.ts",
+      "sha256": "7e7a7a30e7e3f2c2d91ef89dd6a56245f31aa63ac45171dd4c84443baebdc609",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/lib/supabase/proxy.ts",
+      "sha256": "75dc7f7f22d2f4b1081d7f9aba701812913687ea5689b4e7a727ac934dbac3f3",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "claude-candidate-review.txt",
+      "sha256": "8590eec949ec8d6872276adeea650e0b803a61a4e7b3ab36434c577129d511eb",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-final-review.txt",
+      "sha256": "bf080da2fa49aa2849914052722816c6578e0b8f201d593b93f1d70b8034998a",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-spec-review.txt",
+      "sha256": "c671d9991f40d47e927ae80b3c93b85404cd94572e01672a5339bd3124834fbe",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "ended-390.jpg",
+      "sha256": "0346c8783e69250062c00917ffa849b06daf1a9981757210e56a79013eb68255",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "fixture-get.txt",
+      "sha256": "2c7659546695ac190f9e2f2835554a396b08bc9eaadaef52d44d21373ce3f794",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-page.txt",
+      "sha256": "7cbbc3e5b9bb583b12c76cc1044543218e7f7a727bfb15a52b6b73b62404cb02",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "1a46922d25a4073ef24962f9cb483bf4b54a57d2a214246b06ef8891e609631b",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "e8b13674055593e5e2a51ac64ba7a60ac4c7def47aec966a080918864aba8e5e",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "ready-1366.jpg",
+      "sha256": "85c90aaaee93908f28cee36dfb14fb67f3dfcb0959a56cbd363b5080be90b541",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "ready-768.jpg",
+      "sha256": "904ee863a1061724f7572c052e408133925b72dfe375337b09c213f51a68b666",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "reference-pinned-1366.jpg",
+      "sha256": "d99870f928fe43610b5dd60df2349beefd0cc2de4c5f6ed6e01f8c4a4bf6e0f9",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "reference-pinned-390.jpg",
+      "sha256": "821ba23508dd6008d161d11c497636c430ba37c82894d049923c86daca5aed60",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "runtime-cases.json",
+      "sha256": "58ce878c6820a1edf762cd77eba0fe6607b93dec9ff2065f47922e2275a600c6",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "scheduled-390.jpg",
+      "sha256": "a876e3585661454244bc851fe03373ba81a410a66d403f66b6b75c116f11698d",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "scheduled-ready-390.jpg",
+      "sha256": "fd91e8fb90a048d343d748245704edda69298976e5ba1071778a6c6f0f13b687",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "unavailable-390.jpg",
+      "sha256": "227797bc65fad63b6338c2b35d9bdff3273f8910180ad7ac2dac7207d62b54b2",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "verify-read-contract.cjs",
+      "sha256": "5c8a18b20f323ba87ba67c105a183c3ce66cbf43a28fe309dec0c62176aa4be5",
+      "normalization": "LF trimEnd+newline"
+    }
+  ]
+}

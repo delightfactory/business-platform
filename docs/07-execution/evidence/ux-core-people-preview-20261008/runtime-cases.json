@@ -1,0 +1,28 @@
+{
+  "scope": "Actual Next16.3.6 + actual component/Radix1.2.0 with synthetic GET; no real project data/SDK",
+  "cases": [
+    "ready read-only; full profile native href remains",
+    "ShiftTab wraps from close to full-profile within dialog",
+    "Escape restores exact anchor/query/page2",
+    "explicit close restores anchor",
+    "outside click closes and restores anchor",
+    "scheduled RPC state/assignment label",
+    "ended employment/assignment-at-end label",
+    "malformed response -> unavailable",
+    "unavailable explicit retry preserves context",
+    "signed-out -> full-profile recovery",
+    "slow request canceled on close before opening another subject",
+    "768px460-wide Sheet, footer bottom within0.001px floating tolerance, no horizontal overflow"
+  ],
+  "sourceDelta": "final scheduled label is مجدول; scheduled-ready-390 screenshot predates copy-only correction. scheduled-390 is LOADING not ready. Final auth error classification verified by controlled actualroute tests; no visual geometry change.",
+  "serviceRetired": true,
+  "open": [
+    "real SDK/roles/privacy/financial boundary",
+    "actual directory parent integration",
+    "noJS/middle/modified native navigation runtime",
+    "real expiry/cookie refresh/proxy runtime",
+    "long content/mobile footer/browser variants",
+    "before-after same task numeric measurement",
+    "full R4"
+  ]
+}

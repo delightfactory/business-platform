@@ -4535,7 +4535,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:29:1776",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4544,7 +4544,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:32:2024",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4553,7 +4553,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:37:2573",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -14672,9 +14672,45 @@
       "scenarioIds": [],
       "reviewer": null,
       "evidence": null
+    },
+    {
+      "id": "ROUTE:src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "category": "routes",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts:22:1122",
+      "category": "rpcCalls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/EmployeePreview.tsx:67:3069",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/EmployeePreview.tsx:75:3912",
+      "category": "formControls",
+      "phase": "R4",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
     }
   ],
-  "snapshotQualification": "R4 search candidate: exact source-slot migrations; existing review statuses retained. Actual Next synthetic routing evidence is not project role/RPC or semantic coverage. Baseline b0754a54a50932234437dc26024a06b3ed68cf78.",
+  "snapshotQualification": "R4 preview candidate: existing statuses retained, new GET/RPC/Dialog.Close/retry source slots pending; actual component synthetic evidence not real role/provider or semantic acceptance.",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7,
   "entryControlIdMigrations": 14,
@@ -14715,6 +14751,26 @@
       "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:92:3382",
       "category": "formControls",
       "reason": "native GET -> official Next Form enhancement"
+    }
+  ],
+  "previewMigrations": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:29:1776",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:32:2024",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:37:2573",
+      "category": "rpcCalls",
+      "reason": "unchanged contract source position shifted"
     }
   ]
 }

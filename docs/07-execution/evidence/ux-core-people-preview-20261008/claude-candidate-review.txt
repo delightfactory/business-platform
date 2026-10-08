@@ -1,0 +1,60 @@
+**Verdict: two must-fixes. The visual result is MATCH WITH ACCEPTED DEVIATIONS.** This is not a full-R4 or goal-closure verdict.
+
+I read the four code files, the CSS and the five images you listed. I didn't read `people-quick-preview-spec.md`, so these findings come from the code you described and the screenshots. I made no edits and ran no commands.
+
+## Must-fix
+
+1. **`[employeeId]/preview/route.ts:20` can show "signed out" when the auth service just failed.** `getUser()` returns an `error` with `user: null` on network failures and server (5xx) errors too. The route treats every `authError` as `signed-out`, so the sheet tells the user to sign in when the real problem was the provider. That's a misleading status.
+   - Fix: return `signed-out` only when there's no session (no error, or `AuthSessionMissingError`), or when the auth API rejects the token with a 4xx.
+   - Retryable fetch errors and 5xx should return `unavailable`, which offers retry plus the full profile.
+   - Add one route test for each branch.
+2. **`EmployeePreview.tsx:94`: the label `سيبدأ قريبًا` ("starts soon") claims more than the data says.** The RPC only says the start date is in the future, which could be months away. Use a neutral label such as `مجدول` ("scheduled"). The start date is already shown under التوظيف (Employment).
+
+Everything else I checked holds:
+- **Authority:** the user check runs before the RPC, UUIDs are validated, 42501, null and thrown errors all become `unavailable`, and responses are `private, no-store` with `Vary: Cookie`.
+- **Data:** `projectEmployeePreview` drops all foreign ids and `can_manage`, checks the id matches, and runs on both server and client. Dates stay plain strings.
+- **Requests:** an `AbortController` plus the `request.current` identity check covers stale responses on close, reopen and unmount.
+- **Links:** modified clicks keep normal navigation.
+- **Focus:** `onCloseAutoFocus` returns focus to the anchor, and falls back to `#people-query`, which exists at `DirectorySearch.tsx:80`.
+- **Labels:** "ended" depends on `employment.status` alone, and "scheduled assignment" depends on `is_scheduled` alone.
+
+## Visual: MATCH WITH ACCEPTED DEVIATIONS
+**Scope:** `ready-1366`, `scheduled-ready-390`, `ended-390` and `unavailable-390`, compared only with `reference-pinned-1366` and `reference-pinned-390`.
+
+**Matches the reference:**
+- At 1366, a drawer about 460px wide sits on the physical left (the inline end in RTL) over a dimmed overlay.
+- At 390, it becomes a bottom sheet with a rounded top.
+- Header with title and close, then a body of label/value rows, then the primary action.
+- The green primary button.
+
+**Accepted deviations** (approved by the spec and the frontend contract):
+- No avatar, role subtitle or attendance-late chip, and no attendance, delay or leave metrics or work policy, because the snapshot doesn't support them.
+- One full-profile action instead of Edit plus Attendance log, because the preview is read-only.
+- A text "إغلاق" (Close) button instead of an X icon, for the 40–44px control minimum.
+- An 8px radius instead of the reference's larger top radius on mobile.
+- The footer stays fixed and the body scrolls; you can see the body scrollbar in `ended-390`.
+- Dates show as ISO strings instead of formatted Arabic dates.
+- Sections are flat cards instead of the elevated white card.
+
+**Ignored:** the synthetic directory background, the Next dev indicator, and the older `scheduled-390` (loading state).
+
+**Approval:** the deviations above are accepted under the spec and contract, but D2/D3/D8 are still pending and D16 is deferred.
+
+## Verdicts
+| Area | Verdict |
+|---|---|
+| Capability | Pass. The read-only preview keeps the full profile as the place for edits and hides nothing that's required. |
+| Completion | Pass once must-fix 2 is in. Ready, scheduled, ended, unavailable and signed-out each end in a truthful state with a path forward. |
+| Simplicity | Pass. One GET route, one projection, one component, no new SQL or grants. |
+| Failure | Conditional on must-fix 1. Malformed, null, 42501, config failure, thrown errors and aborts are handled. |
+| RTL | Pass. Uses `inset-inline-end`, `dir="rtl"`, `<bdi>` for codes and dates, and the scrollbar sits on the correct side. |
+
+## Open gates (not proven)
+- The real Supabase SDK, real roles and the privacy and financial boundary.
+- Native behaviour with JS off.
+- Running on the real directory page instead of the synthetic one.
+- Whether any root middleware or proxy redirects an unauthenticated `/preview` GET. If it does, the response would be an HTML redirect, which the client would treat as `unavailable` and not `signed-out`.
+- The D2/D3/D8 decisions.
+- Full R4 sign-off.
+
+After both fixes, re-run the scoped lint and only the route and label tests they affect. You don't need visual re-capture or global SQL/Auth runs.
