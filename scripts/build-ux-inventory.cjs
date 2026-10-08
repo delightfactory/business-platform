@@ -65,7 +65,7 @@ for (const {full,file} of files) {
   visit(sf);
 }
 const known=['R1','R2','R3','R4','R5','R6','R7','R8'];
-result.requestBoundaries=['proxy.ts','next.config.ts'].map(file=>({id:`REQUEST:${file}`,file,phase:'R1',reviewPhases:['R1','R2'],sha256:digest(path.join(root,file))}));
+result.requestBoundaries=['src/proxy.ts','next.config.ts'].map(file=>({id:`REQUEST:${file}`,file,phase:file === 'src/proxy.ts' ? 'R2' : 'R1',reviewPhases:['R1','R2'],sha256:digest(path.join(root,file))}));
 result.fingerprintPolicy='sha256-utf8-normalized-LF; PNG raw bytes';
 for(const list of [result.files,result.routes,result.boundaries,result.serverActions,result.rpcCalls,result.formControls]) for(const item of list) if(!known.includes(item.phase)) throw Error(`Unassigned source ${item.file}`);
 result.summary={sourceFiles:result.files.length,pages:result.routes.filter(r=>r.kind==='page').length,endpoints:result.routes.filter(r=>r.kind==='endpoint').length,boundaries:result.boundaries.length,serverActions:result.serverActions.length,rpcCallSites:result.rpcCalls.length,uniqueLiteralRpcs:new Set(result.rpcCalls.map(r=>r.name).filter(Boolean)).size,dynamicRpcSites:result.rpcCalls.filter(r=>!r.name).length,formControls:result.formControls.length,sourceAssignmentComplete:true,semanticScenarioReviewComplete:false,executionCoverageComplete:false};

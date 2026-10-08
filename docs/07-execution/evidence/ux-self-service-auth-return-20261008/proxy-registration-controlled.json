@@ -1,0 +1,41 @@
+{
+  "schema": "business-platform.proxy-registration-tests.v1",
+  "baseline": "6fc2e33a461272a09a733b5bc61aa6406df146f4",
+  "entrySha256": "a085a8a61039a17ec1978956c633684341129c86be0a41a0e767a5d34ec4cf09",
+  "helperSha256": "75dc7f7f22d2f4b1081d7f9aba701812913687ea5689b4e7a727ac934dbac3f3",
+  "scope": "Actual helper with native NextRequest/NextResponse; synthetic SDK only. No live auth/role/expiry qualification.",
+  "cases": [
+    {
+      "name": "Convention implementation and matcher unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "Missing NEXT_PUBLIC_SUPABASE_URL performs no provider call",
+      "status": "pass"
+    },
+    {
+      "name": "Missing NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY performs no provider call",
+      "status": "pass"
+    },
+    {
+      "name": "Claims verified exactly once without rotation",
+      "status": "pass"
+    },
+    {
+      "name": "Rotation forwards request and response cookies, options and provider headers",
+      "status": "pass"
+    },
+    {
+      "name": "Repeated rotation returns latest cookie response",
+      "status": "pass"
+    },
+    {
+      "name": "Returned claims error preserves existing pass-through, no invented authority",
+      "status": "pass"
+    },
+    {
+      "name": "Thrown provider failure is propagated, no hidden retry",
+      "status": "pass"
+    }
+  ]
+}

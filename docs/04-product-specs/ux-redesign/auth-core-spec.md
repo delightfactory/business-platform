@@ -50,6 +50,12 @@ flowchart TD
  C -->|throw| T["Unhandled baseline exception; separate recovery spec"]
 ```
 
+## R2-PROXY-REGISTRATION — bounded repair
+
+The installed Next16.3.6 build scans the directory containing `src/app` for its Proxy convention. The previous repository-root `proxy.ts` was not registered: both production manifests had no Proxy entry. Register the existing implementation at `src/proxy.ts`, with its literal matcher unchanged, and retain the root file as a compatibility re-export. Do not change claims verification, cookie rotation, protected page guards, provider settings, routes, privileges or public asset exclusions.
+
+Actor/task: an existing user navigating an application route should receive the existing verified session refresh without a new decision or manual context entry. This is a registration repair, not evidence of measured journey improvement. Acceptance requires the actual application production build to register the Proxy, controlled tests of the real session helper for request/response cookie propagation and missing configuration/provider failure, and loopback HTTP proof that matched requests receive no-store while excluded public PWA resources remain usable. Controlled SDK evidence cannot qualify actual expired sessions, logout assurance, all roles or production provider behavior. No UI changes: reuse unchanged Concept C visual evidence. The original R2 and full-plan gates stay open.
+
 ## Remaining acceptance gates
 
 Stage R2 is not complete. Provider error taxonomy, session/logout assurance, effective callback/cache headers, PKCE/browser/host behavior, scoped amendments, live synthetic-account journeys and measured before/after evidence remain open. Broad Today/inbox/People/Attendance/Payroll redesigns continue under their own stages; this slice cannot certify them.

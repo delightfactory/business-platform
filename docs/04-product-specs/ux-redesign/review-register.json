@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "6fb58afa6c17cedccd5be61f6bd1d4696c26c838",
+  "sourceSnapshot": "6fc2e33a461272a09a733b5bc61aa6406df146f4",
   "status": "Proposed",
   "items": [
     {
@@ -15574,9 +15574,9 @@
       "runtimeStatus": "not-run"
     },
     {
-      "id": "REQUEST:proxy.ts",
+      "id": "REQUEST:src/proxy.ts",
       "category": "requestBoundaries",
-      "phase": "R1",
+      "phase": "R2",
       "status": "pending",
       "scenarioIds": [],
       "reviewer": null,

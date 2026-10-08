@@ -1,0 +1,93 @@
+{
+  "schema": "business-platform.proxy-registration-native.v1",
+  "scope": "Actual repository production Next server; missing provider config, anonymous only. No live session/role qualification.",
+  "compiledFunctions": {
+    "/_middleware": {
+      "runtime": "nodejs",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next\\/static|_next\\/image|favicon.ico|sw\\.js$|offline\\.html$|manifest\\.webmanifest$|pwa\\/(?:offline\\.(?:css|js)|tokens\\.css|cairo-(?:400|600)\\.woff2|Cairo-OFL\\.txt)$|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*))(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+          "originalSource": "/((?!_next/static|_next/image|favicon.ico|sw\\.js$|offline\\.html$|manifest\\.webmanifest$|pwa/(?:offline\\.(?:css|js)|tokens\\.css|cairo-(?:400|600)\\.woff2|Cairo-OFL\\.txt)$|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "route": "/auth/login",
+      "status": 200,
+      "cacheControl": "private, no-store, max-age=0",
+      "pragma": "no-cache",
+      "expires": "0"
+    },
+    {
+      "route": "/auth/callback",
+      "status": 503,
+      "cacheControl": "private, no-store, max-age=0",
+      "pragma": "no-cache",
+      "expires": "0"
+    },
+    {
+      "route": "/tenant/select",
+      "status": 200,
+      "cacheControl": "private, no-store, max-age=0",
+      "pragma": "no-cache",
+      "expires": "0"
+    },
+    {
+      "route": "/tenant/synthetic/me",
+      "status": 200,
+      "cacheControl": "private, no-store, max-age=0",
+      "pragma": "no-cache",
+      "expires": "0"
+    },
+    {
+      "route": "/sw.js",
+      "status": 200,
+      "bytes": 6759,
+      "bodySha256": "a9c305fb886cd3d3df9f5da886c317f47d4fd7e0407f33f7189a21e7b3d3b69f",
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "proxyPragma": false
+    },
+    {
+      "route": "/offline.html",
+      "status": 200,
+      "bytes": 1031,
+      "bodySha256": "ba80c5bb132665da1497dc3efe2247e7fd36a7ae9b812fa7b2eaecf1af24aa5b",
+      "cacheControl": "public, max-age=0",
+      "proxyPragma": false
+    },
+    {
+      "route": "/manifest.webmanifest",
+      "status": 200,
+      "bytes": 472,
+      "bodySha256": "08e831f6957643d1be29d3fd10b7c09b3f24de6cefd196067933a3b5ef76bc6d",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "proxyPragma": false
+    },
+    {
+      "route": "/pwa/offline.css",
+      "status": 200,
+      "bytes": 1383,
+      "bodySha256": "08380a032e01fb2fc5c79473fb344c9c274509455ea72c7c37cb2bf736c69e54",
+      "cacheControl": "public, max-age=0",
+      "proxyPragma": false
+    },
+    {
+      "route": "/pwa/offline.js",
+      "status": 200,
+      "bytes": 493,
+      "bodySha256": "2ee3c8930a05463414f0006e7b6b481a4b85facfe930a03e1a7c0cc27c769df6",
+      "cacheControl": "public, max-age=0",
+      "proxyPragma": false
+    },
+    {
+      "route": "/pwa/cairo-400.woff2",
+      "status": 200,
+      "bytes": 13292,
+      "bodySha256": "1b36945f5f6a3d1fed3783999b887d0c56cfd66a41a04212a28aa79abbdff0e1",
+      "cacheControl": "public, max-age=0",
+      "proxyPragma": false
+    }
+  ]
+}

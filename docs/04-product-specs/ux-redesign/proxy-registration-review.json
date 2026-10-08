@@ -1,0 +1,68 @@
+{
+  "schema": "business-platform.proxy-registration-review.v1",
+  "baseline": "6fc2e33a461272a09a733b5bc61aa6406df146f4",
+  "sourceFiles": [
+    {
+      "file": "proxy.ts",
+      "sha256": "0b5aeb02a8f1bddd2bade351df3db373232c9d59a1aa1eb54149a26a92794b72"
+    },
+    {
+      "file": "src/proxy.ts",
+      "sha256": "a085a8a61039a17ec1978956c633684341129c86be0a41a0e767a5d34ec4cf09"
+    },
+    {
+      "file": "src/lib/supabase/proxy.ts",
+      "sha256": "75dc7f7f22d2f4b1081d7f9aba701812913687ea5689b4e7a727ac934dbac3f3"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383"
+    },
+    {
+      "file": "src/components/install-hint.tsx",
+      "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
+    }
+  ],
+  "codex": {
+    "verdict": "ACCEPT bounded registration repair",
+    "visual": "Unchanged theme/components; prior accepted Concept C evidence reused",
+    "scope": "8 actual-helper controlled cases; 10 actual production HTTP checks with missing provider configuration; production build registers nodejs Proxy. No actual expiry/provider/role acceptance."
+  },
+  "claude": {
+    "exitCode": 0,
+    "readOnlyUnchanged": true,
+    "modelRequested": "claude-opus-5-5",
+    "effortRequested": "medium",
+    "actualModels": [
+      "claude-opus-5-5"
+    ],
+    "subtype": "success",
+    "isError": false,
+    "result": "# R2-PROXY-REGISTRATION: **ACCEPT** (bounded registration repair only)\n\nI did not run any tools or inspect the repository. This verdict rests only on the source, manifest and test artefacts you supplied. I did not open the plan file or call ExitPlanMode, because you asked for no tools or edits.\n\n## Path discovery\n- Next 16 resolves the Proxy convention from the directory that holds `app`. With `src/app`, that directory is `src/`, so `src/proxy.ts` is the correct location.\n- The compiled `functions-config-manifest` registers a `nodejs` `/_middleware` entry. Its `originalSource` is byte-identical to the literal matcher. This proves registration in the actual build.\n- You correctly noted that the empty edge `middleware-manifest` is not evidence that the Node Proxy is absent.\n- The root `proxy.ts` re-export is inert while `src/app` exists. If it were ever picked up, a re-exported `config` is not statically analysable by Next, so the matcher would not apply. That is acceptable for a compatibility shim, but it should never be presented as a fallback registration. Non-blocking.\n\n## Auth trust, preserved versus newly active\n- **Preserved:** the helper source, the single `getClaims()` call, claims errors passing through without redirects or invented authority, the page guards, provider settings, routes and privileges. The Proxy is still not an authorization boundary. Page guards and RLS remain authoritative, which is the correct posture.\n- **Newly active in production:** session refresh, cookie rotation and no-store headers now run on every matched request, including Server Action POSTs and `_next/data`/`.rsc` variants. Previously none of this ran at all.\n- **Risk to carry into the provider-error gate (not introduced by this diff):** when the provider throws, the error now propagates as a 500 on every matched route, including `/auth/login`. The test proves the propagation and the absence of retries. It does not establish how often the real SDK throws as opposed to returning `{error}`.\n\n## Cookies and cache\n- **Request and response propagation:** proven against native `NextRequest`/`NextResponse`.\n  - `x-middleware-request-cookie` carries the rotated and retained cookies.\n  - `Set-Cookie` keeps HttpOnly, SameSite and Max-Age.\n  - When rotation repeats, the last value wins.\n- **Provider header ordering:** provider headers are applied after `noStore`, so they could overwrite `Cache-Control`. Real SSR headers are themselves no-store, so this is safe today. The test only covers a synthetic `x-qa-provider` header. Non-blocking.\n- **Effective headers over HTTP:** shown on `/auth/login`, `/auth/callback` (503), `/tenant/select` and `/tenant/synthetic/me`, all in the missing-config path only.\n\n## Public exclusions\n- Each sampled PWA resource returned 200 with its own route headers and no proxy Pragma, which confirms the exclusions work over HTTP.\n- `cairo-600`, `tokens.css`, `Cairo-OFL.txt`, `favicon.ico`, images and `_next/*` are excluded by the compiled regex but were not loopback-sampled. Claim them as manifest-derived, not HTTP-proven.\n- The `.*\\.(svg|png|…)$` exclusion also bypasses the Proxy for any such path under tenant routes. This is pre-existing, unchanged, and harmless given the page guards.\n\n## Test scope\nThe evidence is adequate for registration:\n- the build manifest,\n- 8 controlled tests of the actual helper with a mocked SDK,\n- the anonymous loopback run with missing config.\n\nTwo small evidence gaps, both non-blocking:\n- The report hashes the entry and helper but not the root shim. Hash it or describe it explicitly.\n- The inventory should mark root `proxy.ts` as a non-request compatibility file, so it is not left unclassified.\n\nBefore committing, confirm the commit excludes unrelated working-tree items, such as `statutory-preservation-candidates.json`.\n\n## Gates that remain open (none closed by this slice)\n- Provider error taxonomy, including the thrown versus returned error behaviour above.\n- Live session refresh, actual expiry and logout assurance.\n- Effective callback and cache headers with a configured provider.\n- PKCE, browser and host behaviour.\n- Scoped amendments.\n- Live synthetic-account journeys across all actual roles.\n- Measured before/after evidence.\n- The full R2 stage and the R0–R8 plan gates.\n- Today, inbox, People, Attendance and Payroll under their own stages.\n\nNo UI changed, so the existing Concept C visual evidence can be reused as is.",
+    "sessionId": "20a49d6c-3f50-4b77-b56a-b7d976a86dd3"
+  },
+  "gates": {
+    "build": "PASS once; includes final prior PWA spacing correction",
+    "typecheck": "PASS",
+    "lint": "PASS, zero errors, four existing evidence warnings. Standalone docs evidence .cjs CLIs allow CommonJS require only; all other lint rules preserved. New harness module variable renamed, eight tests rechecked after harness-only correction.",
+    "coverage": "295 srcfiles; 1731 reviewslots; all25 source-reviewed and other statuses preserved, no semantic promotion",
+    "open": [
+      "Actual expired authenticated sessions",
+      "Logout and callback cookie assurance",
+      "All role/provider journeys",
+      "Original PWA offline operation gating",
+      "Original R0-R8 semantic and execution acceptance"
+    ]
+  },
+  "cleanup": {
+    "ownedProductionPort": 3617,
+    "retired": true,
+    "unrelatedTasksUntouched": true
+  },
+  "toolingCorrection": {
+    "file": "eslint.config.mjs",
+    "scope": "docs/07-execution/evidence/**/*.cjs",
+    "rule": "@typescript-eslint/no-require-imports only",
+    "rationale": "CommonJS evidence CLIs; no app-source lint weakening, no test assertion changes"
+  }
+}

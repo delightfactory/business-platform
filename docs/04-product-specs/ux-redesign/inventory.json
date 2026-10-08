@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "6fb58afa6c17cedccd5be61f6bd1d4696c26c838",
+  "sourceHead": "6fc2e33a461272a09a733b5bc61aa6406df146f4",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -1466,6 +1466,11 @@
       "file": "src/lib/theme.ts",
       "phase": "R1",
       "sha256": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+    },
+    {
+      "file": "src/proxy.ts",
+      "phase": "R2",
+      "sha256": "a085a8a61039a17ec1978956c633684341129c86be0a41a0e767a5d34ec4cf09"
     },
     {
       "file": "src/styles/tokens.css",
@@ -19760,9 +19765,9 @@
   ],
   "requestBoundaries": [
     {
-      "id": "REQUEST:proxy.ts",
-      "file": "proxy.ts",
-      "phase": "R1",
+      "id": "REQUEST:src/proxy.ts",
+      "file": "src/proxy.ts",
+      "phase": "R2",
       "reviewPhases": [
         "R1",
         "R2"
@@ -19782,7 +19787,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF; PNG raw bytes",
   "summary": {
-    "sourceFiles": 294,
+    "sourceFiles": 295,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
