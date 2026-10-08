@@ -1,0 +1,346 @@
+{
+  "baseline": "24d0288d32acf42a8f9c12e3e6ada92254e919fd",
+  "scope": "actual root; synthetic SDK, no real roles/financial operations",
+  "results": [
+    {
+      "case": "policyAllowed",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "policyDenied",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "policyMissing",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "policyStringFlag",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "advancesAllowed",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "advancesDenied",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "advancesUnknown",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "advancesReadFailed",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "deductionsViewer",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "deductionsReviewOnly",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "labourEvidence",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "unknown",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "ownerDomains",
+      "result": "PASS",
+      "sourceActions": 15
+    },
+    {
+      "case": "stale",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "disabled",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "locked",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "superseded",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "noRun",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "noPeriods",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "noSelection",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "noProvider",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "signedOut",
+      "result": "PASS",
+      "boundary": "/auth/login?next=%2Ftenant%2F33333333-3333-4333-8333-333333333333%2Fpayroll%3Femployer%3D11111111-1111-4111-8111-111111111111%26period%3D22222222-2222-4222-8222-222222222222%26review_q%3D%25D9%2585%25D9%2588%25D8%25B8%25D9%2581%2B1"
+    },
+    {
+      "case": "denied",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "runReadFailed",
+      "result": "PASS",
+      "sourceActions": 0
+    },
+    {
+      "case": "statutory_legal_duration_required-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "statutory_legal_duration_required-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "statutory_composition_context_mismatch-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "statutory_composition_context_mismatch-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "statutory_duration_outside_adapter-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "statutory_duration_outside_adapter-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_obligation_attribution_required-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_obligation_attribution_required-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_month_scope_required-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_month_scope_required-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_pack_missing_or_ambiguous-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "insurance_pack_missing_or_ambiguous-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_choice_required-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_choice_required-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_choice_pending-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_choice_pending-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_time_disabled-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_time_disabled-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_leave_treatment_unknown-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_leave_treatment_unknown-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_quantity_unknown-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "source_quantity_unknown-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "manual_units_ambiguous-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "manual_units_ambiguous-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "approved_units_missing-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "approved_units_missing-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "units_exceed_eligibility-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "units_exceed_eligibility-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "daily_units_allocation_needed-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "daily_units_allocation_needed-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "daily_percentage_allocation_needed-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "daily_percentage_allocation_needed-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "opening_ytd_unknown-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "opening_ytd_unknown-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "prior_ytd_coverage_gap-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "prior_ytd_coverage_gap-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "employee_statutory_context_missing-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "employee_statutory_context_missing-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "recurring_overlap-scoped",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "recurring_overlap-period",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "kindDenied",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "kindMissing",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "kindInvalidEmployee",
+      "result": "PASS",
+      "sourceActions": 1
+    },
+    {
+      "case": "noReviewQuery",
+      "result": "PASS",
+      "sourceActions": 1
+    }
+  ]
+}

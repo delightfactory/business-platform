@@ -1,0 +1,50 @@
+{
+  "readOnlyUnchanged": true,
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium"
+}
+
+**No must-fix.** The source is accepted within its scope: actual root source rendered with a synthetic SDK and shell. That doesn't cover real roles, providers, finance, hydration or the full parent.
+
+## Source (`page.tsx:74–93`, `issue-responsibility.ts`)
+- **Fallback.** `sourceAction` falls back to the existing `runLink` ("مراجعة المصدر في مسير الرواتب") whenever there's no workspace, the code is unknown, access is denied or there's an error.
+- **Deductions (`:81`).** Routed to inputs when `can_prepare === true || calendar.access.can_view === true`. That matches `payroll_input_access`, which admits `payroll.view` and `payroll.prepare`, and `can_review` is not used.
+- **`issued_labour_evidence_required`** goes to review, the same as runs.
+- **`employee_finance` (`:83`).** Requires `!navigation.error && can_view_advances === true`, and the link carries `{employer}` only.
+- **Statutory and daily groups (`:84–89`).**
+  - They require `can_prepare === true`.
+  - `kind` and `employee` are added only when `employment_id` is a valid UUID (`:78`).
+  - Opening, employee-statutory and recurring codes go to plain inputs.
+- **`policy_missing` (`:91`).** Requires `can_configure === true`, an optional key that fails closed.
+- **Scope.** Links use the resolved `periodId` and `review_q` only, with no invented review keys.
+- **Unchanged:** the primary branches (`:97–99`), RPCs and native fields.
+- **Responsibility text.** It comes from a fixed domain-to-role map, with "مسؤول الرواتب" as the fallback. It never shows a raw code or a person. The file comments that it is guidance, not permission.
+  - I didn't verify that every mapped key appears in the SQL issue generator. Unmapped values fall back safely.
+
+## Render (scoped)
+**Opened this turn:** only `viewport-policyAllowed-390.png`. My tool budget didn't allow the other three candidate frames.
+
+That frame shows:
+- the new period-level note (it says employee details are on runs);
+- the open issue with its title, the "مانع" label and the full `issueNames` guidance;
+- "الجهة المسؤولة: مسؤول إعداد الرواتب";
+- a secondary "إعداد سياسة الشركة" link with a visible 2px focus ring;
+- the existing "عرض العوائق والموظفين المتأثرين" link;
+- no overflow.
+
+**Not opened, so no claim:** `viewport-before-policyAllowed-390`, `viewport-policyAllowed-1366` and `viewport-ownerDomains-390`. For Concept C I rely on my inspection earlier in this session.
+
+**Against Concept C:** this is consistent with its blocker rows, each with a title, owner context and an outlined action. The root list is period-level only, with no employee names, and the stepper shows no completion states. Full match **NOT VISUALLY VERIFIED**.
+
+## Limits
+- **Capability.** The links lead to existing permitted source tasks or to an honest review fallback. They don't prove the actor can resolve the issue, or that a correction was made.
+- **Reading load.** Issues without a supported route get a "مراجعة المصدر…" button that goes to the same destination as the section's existing review link. That's honest but repetitive; recorded, not a blocker.
+- **Recovery.** Untouched. The owner's A/B decision is still pending.
+- **Still open:**
+  - employee-level routes (on runs);
+  - stage completion and payment facts on root;
+  - overtime integration;
+  - real roles, the full parent and the full reference;
+  - R7, phase and R0–R8 closure.

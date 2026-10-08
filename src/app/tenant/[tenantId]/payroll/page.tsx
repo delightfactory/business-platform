@@ -9,6 +9,7 @@ import { issueNames, money, type Issue } from './runs/rules';
 import styles from './payroll.module.css';
 import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
 import { issueTitles } from './issue-titles';
+import { issueResponsibility } from './issue-responsibility';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
@@ -16,7 +17,7 @@ type Employer = { id: string; name: string };
 type Period = { id: string; starts_on: string; ends_on: string; is_transition?: boolean };
 type Calendar = { employer_name: string; versions: { timezone: string }[]; periods: { starts_on: string; ends_on: string; timezone: string }[]; access: { can_view: boolean; can_manage: boolean; enabled: boolean } };
 type Workspace = {
-  access: { can_prepare: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
+  access: { can_prepare: boolean; can_configure?: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
   period: Period; run: { status: string } | null; final_output_id: string | null;
   summary: { employee_count: number; known_gross: string | null; deductions?: string | null; net?: string | null; gross_complete?: boolean; financially_qualified?: boolean } | null;
   global_issues: Issue[]; issue_count: number; stale_reasons: string[];
@@ -70,6 +71,26 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
     }
   }
   const periodId = work?.period.id ?? query.period ?? '', runLink = scope('/runs', { period: periodId }), inputsLink = scope('/inputs', { period: periodId });
+  const sourceAction = (item: Issue) => {
+    const review = { href: runLink, label: 'مراجعة المصدر في مسير الرواتب' };
+    if (!work) return review;
+    const input = (label: string, kind?: string) => ({
+      href: scope('/inputs', { period: periodId, ...(query.review_q ? { review_q: query.review_q } : {}), ...(kind && uuid(item.employment_id ?? '') ? { kind, employee: item.employment_id! } : {}) }),
+      label,
+    });
+    if (item.code.startsWith('payroll_deduction') && (work.access.can_prepare === true || calendar.access.can_view === true)) return input('مراجعة الخصومات المعتمدة');
+    if (item.code === 'issued_labour_evidence_required') return review;
+    if (item.owner === 'employee_finance' && !navigation.error && navigation.data?.can_view_advances === true) return { href: `${path}/advances?${new URLSearchParams({ employer })}`, label: 'مراجعة السلف ومسؤولياتها' };
+    if (work.access.can_prepare === true && ['statutory_legal_duration_required', 'statutory_composition_context_mismatch', 'statutory_duration_outside_adapter', 'insurance_obligation_attribution_required', 'insurance_month_scope_required', 'insurance_pack_missing_or_ambiguous'].includes(item.code)) return input('مراجعة حقائق المدة القانونية', 'statutory_context');
+    if (work.access.can_prepare === true && ['source_choice_required', 'source_choice_pending', 'source_time_disabled', 'source_leave_treatment_unknown', 'source_quantity_unknown', 'manual_units_ambiguous', 'approved_units_missing', 'units_exceed_eligibility', 'opening_ytd_unknown', 'opening_ytd_ambiguous', 'opening_tax_due_unknown', 'opening_tax_coverage_unknown', 'opening_tax_net_income_unknown', 'opening_ytd_after_final_requires_review', 'prior_ytd_coverage_gap', 'employee_statutory_context_missing', 'employee_statutory_context_ambiguous', 'recurring_overlap', 'daily_units_allocation_needed', 'daily_percentage_allocation_needed'].includes(item.code)) {
+      if (item.code.startsWith('opening_') || item.code === 'prior_ytd_coverage_gap') return input('مراجعة الأرصدة السابقة');
+      if (item.code.startsWith('employee_statutory_context_')) return input('مراجعة بيانات الضريبة والتأمينات');
+      if (item.code === 'recurring_overlap') return input('مراجعة مكونات الموظف');
+      return input('مراجعة الأيام المستحقة', 'manual_units');
+    }
+    if (item.code === 'policy_missing' && work.access.can_configure === true) return input('إعداد سياسة الشركة');
+    return review;
+  };
   const final = work?.run?.status === 'locked' || work?.run?.status === 'superseded', stale = Boolean(work?.stale_reasons.length);
   const candidate = Boolean(work?.run && work.run.status !== 'cancelled' && !final);
   const status = !work ? periods.length ? 'اختر الفترة التي تريد مراجعتها' : 'يلزم مراجعة الفترة المحفوظة' : !work.run || work.run.status === 'cancelled' ? 'لم يبدأ تحضير مسير لهذه الفترة' : work.run.status === 'superseded' ? 'مسير مستبدل محفوظ في التاريخ' : work.run.status === 'locked' ? 'مسير نهائي محفوظ' : stale ? 'تغيّرت بيانات تؤثر على المسير' : work.run.status === 'approved' ? 'مرشح معتمد' : work.run.status === 'review' ? 'مرشح قيد المراجعة' : work.run.status === 'draft' ? 'التحضير جارٍ' : 'حالة المسير تحتاج مراجعة';
@@ -106,11 +127,11 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {!candidate && primaryAction}
       <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'}/>
     </section>
-    {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>راجع عوائق الفترة والموظفين قبل الاعتماد، مع المسؤول المحدد لكل مصدر.</p>
-      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => <li key={`${item.code}:${index}`}><details>
+    {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>هذه مراجعات على مستوى الفترة. راجع تفاصيل الموظفين في مراجعة الرواتب؛ لا تعرض هذه القائمة جميع موانعهم.</p>
+      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><details>
         <summary>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></summary>
         <p>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</p>
-      </details></li>)}</ul>}
+      </details><p className="field-hint">الجهة المسؤولة: {issueResponsibility(item.owner)}</p><Link className="secondary-button" href={action.href}>{action.label}</Link></li>; })}</ul>}
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
     </section>}
     <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>

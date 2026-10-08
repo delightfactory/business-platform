@@ -1,0 +1,88 @@
+{
+  "readOnlyUnchanged": true,
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium"
+}
+
+# R7 source routes (spec on 24d0288): co-design verdict
+
+**The spec is sound in intent but needs three must-fixes before implementation.** I read the spec, the root page, `payroll_input_access` (`20261002002040…sql:86–92`) and `payroll_run_access` (`20261002010419…sql:220–225`). For the runs issue function and the stepper I relied on my earlier reads in this session.
+
+## Must-fix before implementation
+
+1. **The deduction route must not use `can_review`.**
+   - **Why:** `payroll_input_access` admits only `payroll.view`, `payroll_config.manage`, `payroll.prepare`, `payroll.approve`, `employee_finance.view|manage|approve` and `payroll.correct` (`:89`). **`payroll.review` is not among them.** `payroll_run_access` does report `can_review` from `payroll.review` (`:222,224`), but that permission alone gets the actor a 42501 on inputs, which is a dead end.
+   - **So, on the question you asked:** the "deduction view" permission the spec assumes (`can_prepare || can_review`) does **not** match input access.
+   - **Fix:** route deductions to inputs only when `work.access.can_prepare === true` **or** `calendar.access.can_view === true && work` (the predicate root already uses for "مدخلات الفترة ومراجعتها", `page.tsx:117`). Otherwise fall back to review.
+
+2. **Root's access object doesn't carry the keys the spec relies on.**
+   - **Why:** the root `Workspace.access` type (`page.tsx:19`) has only `can_prepare`, `can_view_final`, `can_payment_record` and `enabled`. That builder isn't `payroll_run_access`: it includes final and payment flags that `payroll_run_access` doesn't. So `can_configure` (and `can_review`) aren't known to exist in root's payload.
+   - **Fix:**
+     - Verify the actual `payroll_run_workspace` access keys in SQL before implementing.
+     - Type any extra keys as optional, compared with `=== true`, so a missing key falls back to review.
+     - Never stand in `calendar.access.can_manage` for `can_configure`.
+     - Never take a capability from the owner text.
+
+3. **Don't send employee-scoped kinds without an employee.**
+   - **Why:** runs passes `kind` (`statutory_context`, `manual_units`, …) together with `employee` from the employee row or `i.employment_id`. Root has no employee row. With an empty `employee`, inputs shows its "الموظف المحدد غير موجود…" recovery screen instead of the source task (`inputs/page.tsx:43–46`).
+   - **Fix:**
+     - Pass `kind` + `employee` only when `i.employment_id` is a valid UUID.
+     - Otherwise use plain inputs, with no `kind`. For `manual_units`, the kind-less link is just plain inputs.
+     - Never pass a guessed employee.
+
+## Exact strict access predicates (root)
+
+| Issue | Condition | Destination |
+|---|---|---|
+| `policy_missing` | `work.access.can_configure === true` (key verified per must-fix 2; fails closed if absent) | inputs (no kind) |
+| `owner === 'employee_finance'` | `!navigation.error && navigation.data?.can_view_advances === true` | advances, `{employer}` only. Don't pass `review_q` as `q`. |
+| `payroll_deduction*` | as in must-fix 1 | inputs |
+| Statutory duration/context group | `work.access.can_prepare === true` | `kind=statutory_context` (+ `employee` only if a UUID), else plain inputs |
+| Daily/manual/opening/recurring/statutory-context group | `work.access.can_prepare === true` | runs' `kind` mapping only when `employment_id` is a UUID, else plain inputs |
+| `issued_labour_evidence_required` | — | no link, same as runs (review link only) |
+| `compensation_gap`, `assignment_gap` | — | excluded (no employee or profile) |
+| Unknown, denied or error | — | the existing `runLink` |
+
+- Keep `enabled` out of navigation predicates, as runs does. The destination stays authoritative for writes.
+- The links are secondary, placed after the native `<details>`. The primary (`:76–84`) stays exactly as it is.
+
+## Responsibility names safe to show
+- Show only a fixed role or function label for owner values **confirmed in the SQL that generates issues**. For example, `employee_finance` → "تمويل الموظفين".
+- Unknown or missing owner → "مسؤول الرواتب".
+- **Never** show the raw owner code, and never show a person or account name.
+- The full `issueNames` guidance already names owners in many entries. Keep that guidance verbatim, and don't add a label that could contradict it. Prefer a short "الجهة المسؤولة: …" line only where the mapped value agrees with the guidance.
+
+## Review-scope preservation (root `review_q` only)
+- Build every link with the existing `scope(...)` and the **resolved `periodId`**: `scope('/inputs', { period: periodId, ...(query.review_q ? { review_q: query.review_q } : {}), …kind/employee })`.
+- `scope()` already maps `review_q` to `q`, which is the employee search on inputs.
+- Don't invent `review_view`, `review_after` or `review_employee`. Inputs' "back" link will go to runs with `q`, which is acceptable and truthful.
+- Advances gets `{employer}` only, as root's existing advances link does.
+
+## Does this close the gap?
+**Partially.** It closes **root global-issue navigation** to existing, permitted source tasks, with fallback to review. It does not:
+- prove an issue is resolved, or that the actor can resolve it;
+- add employee-level routes (they stay on runs);
+- integrate overtime notices or stage completion (both still open).
+
+The stepper stays informational, and payment status stays on its protected pages.
+
+## Checks
+- **Cases:**
+  - predicates true, false or missing per route;
+  - navigation error;
+  - each code group with and without `employment_id`;
+  - unknown owner or code;
+  - stale, disabled, final, no-run and no-period states;
+  - `review_q` present or absent.
+- **Must stay equal:** the primary URL and label, the RPCs, the native fields.
+- **Renders** at 390/768/1366 with details and focus.
+- **Evidence:** reuse unchanged financial, SQL and Auth evidence. The change is in root presentation only.
+
+**Still open:**
+- the owner's A/B recovery decision;
+- overtime integration;
+- stage facts;
+- real roles and providers, the full parent and the full reference (**NOT VISUALLY VERIFIED**);
+- R7, phase and R0–R8 closure.

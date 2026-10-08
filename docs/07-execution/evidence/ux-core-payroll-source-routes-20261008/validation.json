@@ -1,0 +1,14 @@
+{
+  "frames": 9,
+  "primaryTolerancePixels": 0.01,
+  "semanticPromotion": false,
+  "scopedLint": "PASS",
+  "queryAbsenceDeltaCases": 1,
+  "groupedBuildIncludingTypeScript": "PASS",
+  "actualRoleProviderHydrationFinance": "NOT RUN",
+  "primaryScanMaxPixelDelta": 0,
+  "initialSourceCases": 67,
+  "preservedSourceCases": 68,
+  "SQLAuthFinancial": "REUSED unchanged",
+  "excludedCaptures": "unprefixed fullPage PNG browsercapture clipping; native viewport-* supersede"
+}

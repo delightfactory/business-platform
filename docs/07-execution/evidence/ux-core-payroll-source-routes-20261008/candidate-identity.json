@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "D300AC4E20D05A30277EBFA72A379D30A081395C14294E0E860BDDABB108D15B"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/issue-responsibility.ts",
+      "sha256": "6973D38F91FF5A7D8C5958F9D8B6FCE5345A35004B5AB9F1F4E596172127490F"
+    },
+    {
+      "file": "supabase/migrations/20261001233819_cube4_payroll_calendars.sql",
+      "sha256": "8FEBB880736387AE999E181A59F20900FE3CA4CF155AF172A9C8153A15C5012F"
+    },
+    {
+      "file": "supabase/migrations/20261002002040_cube4_payroll_inputs.sql",
+      "sha256": "84DBAD0FEC6BEA142491D5477D737273C4F72CAA3DF8E1D1D51D995BDFDF3975"
+    },
+    {
+      "file": "supabase/migrations/20261002010419_cube4_payroll_candidates.sql",
+      "sha256": "349B137134123AB8DFF204FE2D42994491F458E735E614A7100BBA27C039C357"
+    },
+    {
+      "file": "supabase/migrations/20261002020629_cube4_payroll_finalization_foundation.sql",
+      "sha256": "5F67A471C8EA8B47E4D6B2856554FD60785A6CBFBFE586597507203C8CBABC70"
+    },
+    {
+      "file": "supabase/migrations/20261002025507_cube4_payroll_external_payments.sql",
+      "sha256": "958F747BFA0452BA819E81FEC9FEF43FAB25040D5CCC72020EE5E2BF542CDCDE"
+    }
+  ],
+  "baseline": "24d0288d32acf42a8f9c12e3e6ada92254e919fd"
+}
