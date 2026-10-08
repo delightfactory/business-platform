@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "7ee581689afc236e7dd7f77543f3a17e39fbec82",
+  "sourceHead": "31e18c30fdb34708ae479be1dd5a32c571d25474",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -315,7 +315,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
       "phase": "R5",
-      "sha256": "4d8e8519a724eb2f008828daf69157f2f432990413f879d88821888c3c616174"
+      "sha256": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
@@ -9886,9 +9886,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:86:5308",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:89:5452",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 86,
+      "line": 89,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -9896,9 +9896,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:87:5441",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5585",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 87,
+      "line": 90,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9908,9 +9908,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:90:5617",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:93:5761",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 90,
+      "line": 93,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9919,9 +9919,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:102:6697",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:105:6841",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 102,
+      "line": 105,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -9929,9 +9929,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:112:7577",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:115:7721",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 112,
+      "line": 115,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9940,9 +9940,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:114:7773",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:117:7917",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 114,
+      "line": 117,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {
@@ -9952,9 +9952,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:124:9284",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:128:9672",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 124,
+      "line": 128,
       "tag": "button",
       "phase": "R5",
       "attributes": {
@@ -9962,9 +9962,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:131:10336",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10724",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 131,
+      "line": 135,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -9972,9 +9972,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:133:10476",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:137:10864",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 133,
+      "line": 137,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9984,9 +9984,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:135:10665",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:139:11053",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 135,
+      "line": 139,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -9996,9 +9996,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:140:11136",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:144:11524",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 140,
+      "line": 144,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10008,9 +10008,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:145:11690",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:149:12078",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 145,
+      "line": 149,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10018,9 +10018,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:153:12306",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12694",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 153,
+      "line": 157,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10030,9 +10030,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:157:12736",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13124",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 157,
+      "line": 161,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {
@@ -10042,9 +10042,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:159:12954",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:163:13342",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 159,
+      "line": 163,
       "tag": "form",
       "phase": "R5",
       "attributes": {
@@ -10052,9 +10052,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:161:13128",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:165:13516",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 161,
+      "line": 165,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10064,9 +10064,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:164:13511",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:168:14058",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 164,
+      "line": 168,
       "tag": "input",
       "phase": "R5",
       "attributes": {
@@ -10076,9 +10076,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:166:13752",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:170:14299",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 166,
+      "line": 170,
       "tag": "select",
       "phase": "R5",
       "attributes": {
@@ -10086,9 +10086,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:172:14105",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx:176:14652",
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "line": 172,
+      "line": 176,
       "tag": "SubmitButton",
       "phase": "R5",
       "attributes": {

@@ -1,6 +1,6 @@
 {
   "baseline": "7ee581689afc236e7dd7f77543f3a17e39fbec82",
-  "acceptance": "SOURCE WIP; mandatory Claude candidate gate blocked403",
+  "acceptance": "Official directPro source repair and scoped scenes qualified; fullR5/core OPEN",
   "source": [
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
@@ -9,7 +9,7 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
-      "sha256": "4d8e8519a724eb2f008828daf69157f2f432990413f879d88821888c3c616174",
+      "sha256": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
       "normalization": "LF"
     },
     {
@@ -90,6 +90,11 @@
       "normalization": "raw bytes"
     },
     {
+      "file": "final-inventory-migration.json",
+      "sha256": "10de972b09962413be4adbd3b42c5236b9a7fee6812d228606fb8b9b7b05a06d",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
       "file": "import-duplicate-390.jpg",
       "sha256": "33a69c6de1b09584873bb56d4bbe31ca2ef2d5d1718005518f0aab4a3816b4cd",
       "normalization": "raw bytes"
@@ -105,13 +110,53 @@
       "normalization": "raw bytes"
     },
     {
+      "file": "import-retry-failed-viewport-1366.jpg",
+      "sha256": "2a89f2436206e446ab71a1aa5034af9e733d42a560477f84adbe01eea2dfe985",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "import-retry-failed-viewport-390.jpg",
+      "sha256": "fdd015c76bdf73afe90f6ce65108191c8803d08f3227077b28e3f081dbcc37d9",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "import-retry-heading-390.jpg",
+      "sha256": "a1afab57f6be90f349736c764043cad912fe8943406a3281a30d111a5c27db49",
+      "normalization": "raw bytes"
+    },
+    {
       "file": "inventory-migration.json",
       "sha256": "7f6bba3ddc10c4bd12f5737acb6420bd2fe974f2f2ba7c0071d8656ec86f3a96",
       "normalization": "LF trimEnd+newline"
     },
     {
-      "file": "next-fixture/app/import/AttendanceImportForm.tsx",
-      "sha256": "4d8e8519a724eb2f008828daf69157f2f432990413f879d88821888c3c616174",
+      "file": "next-fixture/app/import/AttendanceImportForm.tsx.txt",
+      "sha256": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-candidate-recheck.json",
+      "sha256": "b70afc2bea88033bd2753d1aa0895db90bec9cc9fcde56e6ac9278c1ecdee23d",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-candidate-review.json",
+      "sha256": "db5945dcf7fe9606d0a6305465d4bb9a553941c2dfce6b36c65375605833e6c5",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-qualification.md",
+      "sha256": "60bae6f16051657dd40f3fab582c5dbdaae4c4fdb22f7e416336e7aceaa10bca",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-smoke.json",
+      "sha256": "57a134987eb90fd7ec742636113a2e2f6f7ac989025c2c92d8d7ea9eb17fc606",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "official-source-recheck.json",
+      "sha256": "20bc3a632123c40f871361ba8b3396f1e16345ab341442ed71dd502987ddf98f",
       "normalization": "LF trimEnd+newline"
     },
     {
@@ -126,7 +171,7 @@
     },
     {
       "file": "synthetic-actions.txt",
-      "sha256": "a3e52298ddff715def99792e83a68d63b251a6dc2133d216f8e78457f122b86e",
+      "sha256": "37ec2c49558f237768c29493431816ad6369dc1156c6b79dfb1cf6abcdf01ea8",
       "normalization": "LF trimEnd+newline"
     },
     {
@@ -136,7 +181,7 @@
     },
     {
       "file": "verify-source.cjs",
-      "sha256": "f24aac48d4b33fa3dd48befda1f5b162bf64b03d4ff83b95fbac745477147e2b",
+      "sha256": "ca721174875662746e6aa49e044baa9be08bc90b02585dcd10b6e54747c71df2",
       "normalization": "LF trimEnd+newline"
     }
   ],

@@ -1,0 +1,13 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success",
+  "isError": false,
+  "result": "CONNECTION_OK",
+  "sessionId": "68f1ebae-ed84-4d2f-a9b2-ce03bf0c794e"
+}

@@ -25,17 +25,20 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
   const inFlight = useRef(false);
   const [revision, setRevision] = useState(0);
   const [previewBinding, setPreviewBinding] = useState<{ revision: number; attempt: number } | null>(null);
-  const [commitBinding, setCommitBinding] = useState<{ revision: number; previewAttempt: number; attempt: number; retainResult: boolean } | null>(null);
+  const [commitBinding, setCommitBinding] = useState<{ revision: number; previewAttempt: number; attempt: number; retainedResult: ConfirmState | null } | null>(null);
   const busy = previewPending || commitPending;
   useEffect(() => { if (!busy) inFlight.current = false; }, [busy]);
   const previewCurrent = !previewPending && previewBinding?.revision === revision && previewBinding.attempt === rawPreview.attempt;
   const preview = previewCurrent ? rawPreview : emptyPreview(tenantId);
   const commitCurrent = previewCurrent && commitBinding?.revision === revision
     && commitBinding.previewAttempt === preview.attempt && (commitBinding.attempt === rawCommit.attempt
-      || (commitPending && commitBinding.retainResult && rawCommit.attempt === commitBinding.attempt - 1));
+      || (commitPending && commitBinding.retainedResult !== null && rawCommit.attempt === commitBinding.attempt - 1));
   const commit = commitCurrent ? rawCommit : emptyCommit();
-  const showingCommitResult = commitCurrent && commit.state === 'processed';
-  const rows = showingCommitResult ? commit.rows : preview.rows;
+  const confirmedResult = commitCurrent
+    ? (commit.state === 'processed' ? commit : commitBinding?.retainedResult ?? null)
+    : null;
+  const showingCommitResult = confirmedResult !== null;
+  const rows = confirmedResult ? confirmedResult.rows : preview.rows;
   const readyRows = rows.filter((row) => row.status === 'ready');
   const ambiguousRows = rows.filter((row) => row.status === 'ambiguous');
   const unassignedRows = rows.filter((row) => row.status === 'unassigned');
@@ -58,7 +61,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
     if (inFlight.current || !previewCurrent) return;
     const payload = new FormData(event.currentTarget);
     inFlight.current = true;
-    setCommitBinding({ revision: revisionRef.current, previewAttempt: preview.attempt, attempt: rawCommit.attempt + 1, retainResult: showingCommitResult });
+    setCommitBinding({ revision: revisionRef.current, previewAttempt: preview.attempt, attempt: rawCommit.attempt + 1, retainedResult: confirmedResult });
     startTransition(() => commitAction(payload));
   }
 
@@ -115,11 +118,12 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
     </form>
 
     {(preview.rows.length > 0 || showingCommitResult) && <section className="attendance-import-preview" aria-live="polite">
-      <h2>{showingCommitResult ? 'نتيجة آخر تأكيد' : 'معاينة الملف'}</h2>
-      <p>{showingCommitResult ? 'مقبول:' : 'جاهز للحفظ:'} {showingCommitResult ? commit.accepted : preview.ready} · يحتاج اختيار يوم: {showingCommitResult ? commit.ambiguous : preview.ambiguous} · بانتظار التكليف: {showingCommitResult ? commit.unassigned : preview.unassigned} · مكرر: {showingCommitResult ? commit.duplicate : preview.duplicate} · مرفوض: {showingCommitResult ? commit.rejected : preview.rejected}</p>
+      <h2>{showingCommitResult ? 'آخر نتيجة حفظ مؤكدة' : 'معاينة الملف'}</h2>
+      <p>{confirmedResult ? 'مقبول:' : 'جاهز للحفظ:'} {confirmedResult ? confirmedResult.accepted : preview.ready} · يحتاج اختيار يوم: {confirmedResult ? confirmedResult.ambiguous : preview.ambiguous} · بانتظار التكليف: {confirmedResult ? confirmedResult.unassigned : preview.unassigned} · مكرر: {confirmedResult ? confirmedResult.duplicate : preview.duplicate} · مرفوض: {confirmedResult ? confirmedResult.rejected : preview.rejected}</p>
       {commit.error && <p className="form-message error-message" role="alert">{commit.error}</p>}
-      {showingCommitResult && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</p>}
+      {showingCommitResult && commit.state === 'processed' && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</p>}
       {showingCommitResult && <p className="field-hint">هذه نتيجة آخر تأكيد فقط. الأحداث التي حُفظت في تأكيد سابق تظل محفوظة.</p>}
+      {showingCommitResult && commit.state === 'failed' && <p className="field-hint">النتيجة المعروضة من آخر حفظ مؤكد، وليست نتيجة المحاولة الأخيرة. تحقّق من السجل قبل إعادة التأكيد.</p>}
       {!showingCommitResult && readyRows.length === 0 && ambiguousRows.length === 0 && unassignedRows.length === 0 && <p className="field-hint">لا توجد أحداث يمكن تأكيد حفظها في هذه المعاينة. راجع الملاحظات؛ الأحداث المكررة لا تُحفظ مرة أخرى.</p>}
       {rejectedRows.length > 0 && <button className="secondary-button" type="button" onClick={() => downloadRejectReport(rejectedRows)}>تنزيل تقرير الأحداث المرفوضة</button>}
       <div className="attendance-import-table-wrap"><table className="attendance-import-table"><thead><tr>
@@ -159,7 +163,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
       {showingCommitResult && ambiguousRows.length > 0 && <form action={commitAction} className="attendance-import-confirm-form attendance-import-ambiguous-retry"
         onSubmit={submitCommit} aria-busy={commitPending}>
         <input type="hidden" name="tenantId" value={tenantId}/>
-        <p className="form-message form-error" role="alert">لم يُربط {ambiguousRows.length} حدثًا لأن تاريخ العمل لم يُحدد. اختر تاريخًا من النتائج الحالية ثم أعد التأكيد.</p>
+        <p className="form-message form-error" role="alert">{commit.state === 'failed' ? `تضمنت آخر نتيجة حفظ مؤكدة ${ambiguousRows.length} حدثًا يحتاج اختيار يوم. اختيارك محفوظ؛ تحقّق من السجل قبل إعادة التأكيد.` : `لم يُربط ${ambiguousRows.length} حدثًا لأن تاريخ العمل لم يُحدد. اختر تاريخًا من النتائج الحالية ثم أعد التأكيد.`}</p>
         {ambiguousRows.map((row) => <div className="attendance-import-ambiguous" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <input type="hidden" name="selectedRow" value={JSON.stringify(row)}/>
           <label className="attendance-import-work-date">{row.direction === 'in' ? 'دخول' : 'خروج'} · الموظف <bdi>{row.employee_code}</bdi> · اختر يوم العمل

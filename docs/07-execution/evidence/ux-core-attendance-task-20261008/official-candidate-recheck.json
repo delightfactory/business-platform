@@ -1,0 +1,13 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "modelRequested": "claude-opus-5-5",
+  "effortRequested": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success",
+  "isError": false,
+  "result": "## Visual verdict, failed-retry scene: MATCH WITH ACCEPTED DEVIATIONS\n\n**What I looked at:** only the three viewport images. Your scroll and bounds measurements are taken as reported; I didn't re-measure them.\n\n**What the images show:**\n- **Both widths:** the heading \"آخر نتيجة حفظ مؤكدة\" and the counts (accepted 2, ambiguous 1, unassigned 1) are shown. The two notes, \"latest confirmation only\" and \"not the latest attempt, check the record\", are visible.\n  - Rows SYN-0 and SYN-1 show as saved. SYN-2's retry select keeps `2026-10-08`, and the confirm-days button is there.\n  - The first confirmation form is absent.\n- **390:** no page overflow is visible. The table scrolls inside its own region, which I have not accepted as a finished mobile table design.\n\n**Not blocking:**\n- The failure message \"فشل تأكيد صناعي\" uses the same neutral teal box as success messages, not error red. The red warning right below it still makes the failure clear.\n- The SYN-2 label wraps awkwardly.\n\n**Still open:** real roles and provider, the native file picker, the late header read at runtime, the full parent page, and R5 / whole-core acceptance.",
+  "sessionId": "675082ef-4b7f-4c24-9f1d-105321a32ac6"
+}
