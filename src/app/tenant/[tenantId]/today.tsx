@@ -91,7 +91,14 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
 
 export function TodaySections({ model }: { model: TodayModel }) {
   return <div className="today-sections">
-    <TodayList title="مهام العمل" entries={model.work} />
+    {model.work.length > 0 && <section aria-labelledby="today-work-title"><h2 id="today-work-title" className="today-section-title">مهام العمل</h2><div className="today-work-grid">
+      {[
+        { title: 'الحضور', entries: model.work.filter(entry => entry.href.includes('/attendance/')) },
+        { title: 'الإجازات', entries: model.work.filter(entry => entry.href.includes('/leave')) },
+        { title: 'الرواتب', entries: model.work.filter(entry => entry.href.includes('/payroll')) },
+        { title: 'الموظفون', entries: model.work.filter(entry => entry.href.endsWith('/people')) },
+      ].filter(group => group.entries.length > 0).map(group => <TodayList key={group.title} title={group.title} entries={group.entries} nested />)}
+    </div></section>}
     <TodayList title="خدماتي" entries={model.own} />
     <TodayList title="عرض ومتابعة" entries={model.followUp} />
     {model.unavailable.length > 0 && <p className="form-message" role="status">تعذر التحقق من بعض الخدمات: {model.unavailable.join('، ')}. حدّث الصفحة لإعادة التحقق.</p>}
@@ -99,7 +106,8 @@ export function TodaySections({ model }: { model: TodayModel }) {
   </div>;
 }
 
-function TodayList({ title, entries }: { title: string; entries: Entry[] }) {
+function TodayList({ title, entries, nested = false }: { title: string; entries: Entry[]; nested?: boolean }) {
   if (!entries.length) return null;
-  return <section className="tenant-home-tasks"><h2>{title}</h2><ul className="tenant-task-list">{entries.map(entry => <li key={entry.href}><Link className="tenant-task-link" href={entry.href}><span><strong>{entry.title}</strong><small>{entry.detail}</small></span><span aria-hidden="true">←</span></Link></li>)}</ul></section>;
+  const Heading = nested ? 'h3' : 'h2';
+  return <section className="tenant-home-tasks"><Heading>{title}</Heading><ul className="tenant-task-list">{entries.map(entry => <li key={entry.href}><Link className="tenant-task-link" href={entry.href}><span><strong>{entry.title}</strong><small>{entry.detail}</small></span><span aria-hidden="true">←</span></Link></li>)}</ul></section>;
 }

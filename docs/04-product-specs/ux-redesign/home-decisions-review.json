@@ -215,5 +215,361 @@
     "codex": "Scoped source PASS. Full parent/session/actual Auth/SQL/native/matched simplicity/visual remain OPEN; no phase closure.",
     "corrections": "Payroll actual view-only retained, explicit People view flag, truthful failed service notice. Claude disabled-entitlement removal advice rejected against frozen history SQL: actual authorised read-only history retained and labelled. Payroll landing accepts successful view snapshot; no manage-only gate.",
     "sourceConfirmations": "Actual SQL scalar JSON object/42501 guards, leave cancellation canApprove, actual date/filter and cancellation anchor verified. Mobile available=false can carry history; capture remains exclusively native page authority. No new command, backend, storage or provider authority."
+  },
+  "renderedCheckpoint": {
+    "baseline": "c8d454ae58387d6462521858a58ba4dbbba5ba2a",
+    "sourceQualification": {
+      "scope": "Actual readToday and TodaySections with controlled SDK/SSR only, not real Auth/roles/SQL/native/visual",
+      "passed": 12,
+      "failed": 0,
+      "cases": [
+        {
+          "label": "all-denied-no-task-payload",
+          "result": "PASS"
+        },
+        {
+          "label": "self-only-no-HR-queue",
+          "result": "PASS"
+        },
+        {
+          "label": "attendance-reader-zero-not-all-clear",
+          "result": "PASS"
+        },
+        {
+          "label": "attendance-approver-counts-not-summed",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "leave-reader-no-cancellation",
+          "result": "PASS"
+        },
+        {
+          "label": "approver-independent-queue-failure",
+          "result": "PASS"
+        },
+        {
+          "label": "payroll-link-only-mixed-independent",
+          "result": "PASS"
+        },
+        {
+          "label": "payroll-view-only-retained",
+          "result": "PASS"
+        },
+        {
+          "label": "people-explicit-denied-object",
+          "result": "PASS"
+        }
+      ],
+      "sourceHashes": {
+        "src/app/tenant/[tenantId]/page.tsx": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d",
+        "src/app/tenant/[tenantId]/today.tsx": "642cbc43ec3edd1db7276e89c13176cb0123835f43b74dc2c0fe4493c777c934",
+        "src/app/globals.css": "2117263c5c931b52049186d9be095bedc74a3358a0c1c1a4b2ed9d8b2c40a131"
+      },
+      "lintTypecheck": "PASS",
+      "visual": "NOT VISUALLY VERIFIED",
+      "fullR8": "OPEN"
+    },
+    "parentQualification": {
+      "cases": [
+        {
+          "scenario": "self",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "reader",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "admin",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "failed",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "empty",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "suspended",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "archived",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "no-membership",
+          "status": 200,
+          "result": "PASS"
+        },
+        {
+          "scenario": "no-session",
+          "status": 307,
+          "result": "PASS"
+        }
+      ],
+      "passed": 9,
+      "scope": "Actual Next/root/shell/home HTTP with synthetic request-scoped SDK only; no real Auth/SQL/provider/private data",
+      "fullAcceptance": "OPEN"
+    },
+    "provenance": {
+      "candidate": "c8d454ae58387d6462521858a58ba4dbbba5ba2a",
+      "files": {
+        "src/app/layout.tsx": "8cc71260a70c4ec0da745954d5089d47b0d55f913ffd307e928a087d16473178",
+        "src/app/globals.css": "2117263c5c931b52049186d9be095bedc74a3358a0c1c1a4b2ed9d8b2c40a131",
+        "src/app/workspace.css": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1",
+        "src/styles/tokens.css": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2",
+        "src/components/context-navigation.tsx": "106b3489273decfd4dba293550b89e3e0ffb71ca8b317220c9bcdf6977a68782",
+        "src/components/context-navigation-client.tsx": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
+        "src/components/theme-preference.tsx": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954",
+        "src/components/feedback-toast.tsx": "f37ef70a08c1f78ef8f027b202e0c3f18a92c16de9d7ec175eb15dc8c9652d66",
+        "src/lib/theme.ts": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9",
+        "src/lib/operator-access.ts": "7b20e2bf5f357a8a4cc3d0798287d245bf235ed05eb96f85785b4ff1f58a10a9",
+        "src/app/tenant/[tenantId]/page.tsx": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d",
+        "src/app/tenant/[tenantId]/today.tsx": "642cbc43ec3edd1db7276e89c13176cb0123835f43b74dc2c0fe4493c777c934",
+        "src/app/tenant/[tenantId]/layout.tsx": "1454aafb188dfe12cc25c88075b09dc1ab037c1a23de75f412c11661d4224187",
+        "src/app/tenant/[tenantId]/leave/rules.ts": "b1b40956724daaa73c3b0087e63fda278d6bcf795bc85e4d896d5b189c15aeb4"
+      },
+      "baseline": "aaa4a7cb91fbfe992fdc7fb2bbff674dfc69fa5b",
+      "syntheticOnly": true,
+      "providerCalls": false,
+      "actualTaskDestination": false,
+      "fixture": "C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-self-service-auth-return-20261008\\home-fixture"
+    },
+    "layout": [
+      {
+        "grid": "329.612px 329.619px 329.619px",
+        "headings": [
+          "الحضور",
+          "الإجازات",
+          "الرواتب",
+          "الموظفون"
+        ],
+        "links": [
+          {
+            "height": 116.46875,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/attendance/review?date=2026-10-08"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/attendance/review?date=2026-10-08&filter=overtime"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/attendance/unassigned"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/attendance/sources"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave#leave-cancellation-queue-title"
+          },
+          {
+            "height": 116.46875,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/payroll"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/payroll/inputs"
+          },
+          {
+            "height": 94.7125015258789,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/people"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/me/attendance"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/me/leave"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/me"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/payroll/advances"
+          },
+          {
+            "height": 72.95625305175781,
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/payroll/reports?report=sheet"
+          }
+        ],
+        "mode": "light",
+        "overflow": false,
+        "width": 1351
+      },
+      {
+        "grid": "706.725px",
+        "mode": "light",
+        "overflow": false,
+        "width": 753
+      },
+      {
+        "grid": "342.8px",
+        "minLinkHeight": 72.95625305175781,
+        "mode": "light",
+        "overflow": false,
+        "width": 375
+      }
+    ],
+    "ingress": {
+      "baseline": {
+        "url": "http://127.0.0.1:3617/tenant/11111111-1111-4111-8111-111111111111/attendance",
+        "navigations": null,
+        "menuOpens": 1,
+        "manualInputs": 0,
+        "repeatedContextSelections": 0,
+        "scope": "Actual baseline home/shell plus synthetic intermediate/destination marker; not actual Attendance task execution",
+        "status": "INCONCLUSIVE",
+        "reason": "Second destination URL not confirmed; subsequent native menu hydration attempt did not open. Do not count attempted clicks as completed navigation."
+      },
+      "candidate": {
+        "url": "http://127.0.0.1:3617/tenant/11111111-1111-4111-8111-111111111111/attendance/review?date=2026-10-08",
+        "navigations": 1,
+        "menuOpens": 0,
+        "manualInputs": 0,
+        "repeatedContextSelections": 0,
+        "scope": "Actual candidate home/shell plus synthetic destination marker; not actual Attendance task execution"
+      },
+      "actor": "synthetic mixed-authority admin",
+      "viewport": 390,
+      "initialUnconfirmedClickExcluded": true,
+      "devBadgeCollisionExcluded": true,
+      "fullJourney": "OPEN",
+      "speedClaim": false,
+      "comparison": "INCONCLUSIVE; candidate direct arrival observed, no measured reduction claim",
+      "inferredBaselineFromSource": {
+        "navigations": 2,
+        "status": "source expectation only, not native measurement",
+        "source": "attendance/page.tsx explicit review link"
+      }
+    },
+    "officialVisual": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# Visual verdict: Today home, depicted samples only (Opus 5.5)\n\n**Overall: MATCH WITH ACCEPTED DEVIATIONS. No concrete blockers.** This verdict covers only the four candidate screenshots, compared against the pinned Concept C light and dark references. It is Claude's half of the comparison; the Codex verdict has to come from Codex. I made no edits and ran no commands.\n\n| Sample | Verdict |\n|---|---|\n| `home-grouped-desktop.png` (light) | MATCH WITH ACCEPTED DEVIATIONS |\n| `home-grouped-dark-desktop.png` | MATCH WITH ACCEPTED DEVIATIONS |\n| `home-grouped-mobile.png` | MATCH WITH ACCEPTED DEVIATIONS for the visible area. The rest is NOT VISUALLY VERIFIED. |\n| `home-self-mobile.png` (dark) | MATCH WITH ACCEPTED DEVIATIONS, but Concept C has no employee self-service view, so only the shared visual style could be compared |\n\n## Where the screenshots match Concept C\n\n- **Layout:** like Concept C, the page has a greeting and date line, then domain cards side by side, each with a coloured domain heading and divided rows. At 1366 the grid shows 3 columns, and People moves to the next row.\n- **Groups:** work items sit under one \"مهام العمل\" heading, split into the fixed groups:\n  - Attendance holds review, overtime, unassigned and channels.\n  - Leave holds requests and cancellations.\n  - Payroll holds the cycle and inputs.\n  - People is the fourth group.\n- **Content:** no fictional data appears. Payroll is link-only. The leave sample is honestly empty. Attendance shows real counts with the date and timezone, as written text.\n- **Dark theme:** the dark desktop keeps the same structure as light. Headings, row text and arrows stay readable on the dark cards, consistent with the dark reference.\n- **Mobile, grouped:** cards stack in one column, nothing overflows sideways, and rows are wide enough to tap.\n- **Mobile, self-service:** the employee sees only \"خدماتي\" with three own-service links, inside the existing wrapper card. No HR or work content leaks into it.\n\n## Deviations from Concept C\n\n- **Already accepted:**\n  - the existing sidebar and mobile shell\n  - Cairo font\n  - the existing radii\n  - the tenant brand header\n  - counts shown as text instead of large numbers, and no action buttons, both from the approved data limits\n  - no \"who's at work\" or \"what happened recently\" panels\n  - the dev badge, which is test-only\n- **Not on your accepted list:** Concept C puts Payroll first (top right), but the candidate puts Attendance first. This follows from payroll being link-only, so it has no blocker count to lead with, and it is consistent with your fixed grouping. I don't treat it as a blocker, but the owner should acknowledge it explicitly so it doesn't stay implicit.\n\n## Not visually verified\n\n- **Mobile grouped, below the fold:** the Leave, Payroll and People cards at mobile width, and whether the fixed bottom navigation leaves enough room under the last card.\n- **Light self-service:** the self-service view in light theme, and on desktop.\n- **States not shown:** the \"could not verify\" notice, the empty state, the disabled-entitlement read-only wording, and the view-only follow-up section.\n- **Tablet:** 768, and the 2-column layout at the 1100 breakpoint.\n\nFull acceptance stays **OPEN**: R0–R8, G1, real Auth/SQL/native, all parent states, brand and device coverage, and the ingress comparison, which is still inconclusive.",
+      "sessionId": "5eeb83dd-ac87-4c32-b673-04de5913db27"
+    },
+    "codexVisual": "MATCH WITH ACCEPTED DEVIATIONS for depicted grouped light/dark desktop and visible390mobile; tablet only local visual/layout checked. Full Today/employee reference/allstates NOT VISUALLY VERIFIED.",
+    "codexCorrections": [
+      "Fixed Attendance→Leave→Payroll→People order was already in the owner-selected contract; no new owner acknowledgement requested.",
+      "Original Concept C DOES contain employee role emp and يومي; reviewer saw HR reference only, so employee sample proves shared style only, not employee-reference match.",
+      "No who-is-at-work/recent/history/full-count capability is waived: these remain original G1/G2/G5 and full R8 requirements.",
+      "Header is Today + guidance, not a greeting/date-line replica; the actual date belongs to the scoped attendance text."
+    ],
+    "keyboard": {
+      "focusedDestination": "attendance/review?date=2026-10-08&filter=overtime",
+      "focusVisible": true,
+      "outline": "rgb(127, 169, 214) solid 2.8px"
+    },
+    "fixtureLimitations": [
+      "Actual source invoked through QA wrapper; controlled SDK/scenario and explicit eager navigation resolution, not actual provider/tenant route hierarchy acceptance.",
+      "Initial deferred-shell fixture lost scenario outside AsyncLocalStorage; corrected explicit navigation resolution; self screenshot replaced with proper self-only navigation. No product auth change.",
+      "Initial native baseline navigation and menu attempts inconclusive; no repeated polishing, no claimed reduction. Devbadge interfered with bottom More once.",
+      "Browser exact version unavailable; Codex IAB. Dark/light default source values and synthetic neutral tenant only; allbrand/native-device/no-JS/pending and fullbelowfold states open."
+    ],
+    "tests": {
+      "affectedLint": "PASS",
+      "affectedTypecheck": "PASS after grouping",
+      "build": "c8d454 actual production build PASS reused for unchanged data/root/shell; final presentation delta lint/TS/native/SSR checked, no second heavy build. Integration build before final acceptance remains required."
+    },
+    "cleanup": {
+      "ownSession35990": "terminal after CtrlC",
+      "own3617Listener": "absent",
+      "ownTab112": "closed",
+      "viewport": "reset",
+      "realAccessCreated": false
+    },
+    "assets": [
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-grouped-desktop.png",
+        "sha256": "678b916ea795d88048b496d1d91dddfd4733b9c2e7c532b80f146b105c6cc821"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-grouped-tablet.png",
+        "sha256": "fe94a593bbba08ac364c529702140f51de837f2fe446b02764ea468ee22a26b4"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-grouped-mobile.png",
+        "sha256": "0bf7af26608fe720698265419f608def98bf4cc417815aa2b45fe85b772eaf70"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-grouped-dark-desktop.png",
+        "sha256": "4bb30a91b4d831cc95345e80c8441fcf9f8b2c3fdc148e76ab2acdc193e82d43"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-self-mobile.png",
+        "sha256": "fff65409c5c47bd0fe32663713fc8da1338ac9990abec7d29367850569807499"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-failure-mobile.png",
+        "sha256": "0743def09348d4cb8b9c49339d3921aa4aeb70373a59aec78141229c8ea75d5a"
+      },
+      {
+        "path": "docs/07-execution/evidence/ux-self-service-auth-return-20261008/home-before-mobile.png",
+        "sha256": "7d4376ac6585f32336bbafe13e580e582cb326ddfc1d8af4a548a41b3378c4bc"
+      }
+    ],
+    "registry": {
+      "summary": {
+        "sourceFiles": 290,
+        "pages": 75,
+        "endpoints": 4,
+        "boundaries": 8,
+        "serverActions": 108,
+        "rpcCallSites": 349,
+        "uniqueLiteralRpcs": 217,
+        "dynamicRpcSites": 7,
+        "formControls": 1184,
+        "sourceAssignmentComplete": true,
+        "semanticScenarioReviewComplete": false,
+        "executionCoverageComplete": false
+      },
+      "items": 1730,
+      "sourceReviewedPreserved": 25,
+      "added": [],
+      "retired": [],
+      "migrations": [],
+      "semanticPromotion": false,
+      "scope": "Actual removed home RPC sites retired with original status retained here; dynamic RPC names in readToday must all be semantically expanded. Full semantic/runtime coverage OPEN."
+    },
+    "fullR8": "OPEN"
   }
 }
