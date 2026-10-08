@@ -1,0 +1,22 @@
+[
+  {
+    "buttonHeight": 44,
+    "paragraphMargins": [
+      "8px",
+      "8px",
+      "8px"
+    ],
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "buttonHeight": 44,
+    "paragraphMargins": [
+      "8px",
+      "8px",
+      "8px"
+    ],
+    "scrollWidth": 375,
+    "width": 390
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "firstKey": null,
+  "firstVisible": true,
+  "dismissClickHidden": true,
+  "keyAfterDismiss": "1",
+  "reloadHidden": true,
+  "profileRetained": true,
+  "resetOnlyOwnedTestKey": true,
+  "focus": {
+    "focus": "فهمت",
+    "hint": true,
+    "outline": "2px",
+    "theme": "dark"
+  },
+  "scope": "Actual hydrated profile/tenant layout with synthetic SDK; mixed fixture navigation not a role-permission proof; no physical install"
+}

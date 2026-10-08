@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "label": "ssr",
+      "result": "PASS"
+    },
+    {
+      "label": "seen",
+      "result": "PASS"
+    },
+    {
+      "label": "standalone",
+      "result": "PASS"
+    },
+    {
+      "label": "ios-standalone",
+      "result": "PASS"
+    },
+    {
+      "label": "new-explicit-onebit-dismiss",
+      "result": "PASS"
+    },
+    {
+      "label": "storage-unavailable-current-mount-dismiss",
+      "result": "PASS"
+    },
+    {
+      "label": "appinstalled-hidden-without-storage-write",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-ready",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-denied",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-failed",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-invalid",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-no-client",
+      "result": "PASS"
+    },
+    {
+      "label": "actual-profile-no-session",
+      "result": "PASS"
+    }
+  ],
+  "passed": 13,
+  "scope": "Actual source with controlled hooks/storage and SDK; no real OS install/Auth/SQL acceptance"
+}

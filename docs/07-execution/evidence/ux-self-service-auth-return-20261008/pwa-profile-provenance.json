@@ -1,0 +1,39 @@
+{
+  "fixture": "C:\\Users\\DELL\\OneDrive\\Documents\\ChatGPT\\PLATFORM\\artifacts\\ux-self-service-auth-return-20261008\\home-fixture",
+  "files": [
+    {
+      "file": "src/app/layout.tsx",
+      "sha256": "c1b6619cdcdbb50c18471914e53bcf337846750556b1d5efd86f11b31beb3136"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "2f15367e91aadd069559f2bde99fcc621e4eb3d6e409e67623169073c9b46418"
+    },
+    {
+      "file": "src/components/pwa-foundation.tsx",
+      "sha256": "e00c5f6fd633463b6264bbbdf5f53b20bb186fbd75f286de7702075560f4b79e"
+    },
+    {
+      "file": "src/components/install-hint.tsx",
+      "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/page.tsx",
+      "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/profile.module.css",
+      "sha256": "75ac8144b789e980226ca30f8f88dfa5da92d210f7f19e8d9c1dded869d2beef"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/form-rules.ts",
+      "sha256": "ec01272e6d9d8674cdf2f0f70b5f61ad3910a2880ae10237daca8b26d2a5093e"
+    }
+  ],
+  "actualProfileParent": true,
+  "actualTenantLayout": true,
+  "syntheticSdkOnly": true,
+  "realAuthSql": false,
+  "workerRegistration": "dev: disabled, production native tested separately",
+  "routeScenarioBoundary": "QA wrapper uses explicit request-scoped fixtureContext; actual nested-route default mixed SDK is not a role proof"
+}

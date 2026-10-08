@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"path\":\"/_next/static/css/f84def2c30128788.css\",\"status\":200,\"type\":\"text/css; charset=UTF-8\",\"headers\":[\"cache-control\",\"content-type\"],\"bytes\":59209,\"scope\":\"public static only; own server stopped/browser HTTP cache disabled\"}"
+  }
+}

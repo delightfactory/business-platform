@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"active\":\"activated\",\"controlled\":true,\"staticPaths\":[\"/_next/static/css/f84def2c30128788.css\",\"/_next/static/css/7d18c4aa22f31b1a.css\",\"/_next/static/chunks/webpack-eddd509cd77ff774.js\",\"/_next/static/chunks/main-app-f2fef83ce3f12966.js\",\"/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js\",\"/_next/static/chunks/3794-0a1186eb85c3950f.js\",\"/_next/static/chunks/app/layout-564f19e702e676f4.js\",\"/_next/static/chunks/8500-01a63dafd809e317.js\",\"/_next/static/chunks/app/auth/login/page-bf89dffeaef7293e.js\"],\"staticCount\":9}"
+  }
+}

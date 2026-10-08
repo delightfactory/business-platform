@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { PageFrame } from '@/components/context-navigation';
+import { InstallHint } from '@/components/install-hint';
 import styles from './profile.module.css';
 import { isDate, isObject } from './leave/form-rules';
 
@@ -51,6 +52,7 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
       </dl>
       {!profile.new_work_enabled && <p className="field-hint" role="status">يمكنك الاطلاع على ملفك الحالي. إنشاء طلبات عمل جديدة غير متاح حاليًا.</p>}
     </section>
+    <InstallHint />
     <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
   </PageFrame>;
 }

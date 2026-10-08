@@ -1,0 +1,154 @@
+{
+  "cases": [
+    {
+      "label": "hash-directory-only",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "nohash",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "map",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "query",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "encodedslash",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "devmanifest",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "data",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "rsc",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "authorization",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "range",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "post",
+      "result": "PASS",
+      "intercepted": false
+    },
+    {
+      "label": "500",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "private",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "noimmutable",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "nostore",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "html",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "varycookie",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "varyauth",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "varyall",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "redirect",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "differenturl",
+      "result": "PASS",
+      "stored": false,
+      "fetches": 1
+    },
+    {
+      "label": "public-miss-one-omit-fetch-cache-hit-decoded-headers",
+      "result": "PASS"
+    },
+    {
+      "label": "decoded-over-2MiB-not-stored-original-unchanged",
+      "result": "PASS"
+    },
+    {
+      "label": "failed-write-chain-recovers",
+      "result": "PASS"
+    },
+    {
+      "label": "cache-unavailable-single-network-response",
+      "result": "PASS"
+    },
+    {
+      "label": "parallel-write-bound32-serial-FIFO-own-only",
+      "result": "PASS"
+    },
+    {
+      "label": "encoded-next-label",
+      "result": "PASS"
+    },
+    {
+      "label": "css",
+      "result": "PASS"
+    },
+    {
+      "label": "font",
+      "result": "PASS"
+    }
+  ],
+  "passed": 29,
+  "workerHash": "a9c305fb886cd3d3df9f5da886c317f47d4fd7e0407f33f7189a21e7b3d3b69f",
+  "scope": "Actual worker source with native Node Request/Response/streams and controlled Cache/fetch; native browser/static/device acceptance separate"
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "c5c388bb56d6a304eaee7da1318945a10a79c572",
+  "sourceSnapshot": "6fb58afa6c17cedccd5be61f6bd1d4696c26c838",
   "status": "Proposed",
   "items": [
     {
@@ -3581,7 +3581,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:29:1112",
+      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:30:1169",
       "category": "rpcCalls",
       "phase": "R6",
       "status": "pending",
@@ -15927,6 +15927,15 @@
     {
       "id": "RPC:src/app/tenant/[tenantId]/today.tsx:20:1277",
       "category": "rpcCalls",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/components/install-hint.tsx:43:1950",
+      "category": "formControls",
       "phase": "R1",
       "status": "pending",
       "scenarioIds": [],

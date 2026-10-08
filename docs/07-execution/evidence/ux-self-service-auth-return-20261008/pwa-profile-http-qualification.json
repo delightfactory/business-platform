@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "scenario": "self",
+      "status": 200,
+      "result": "PASS"
+    },
+    {
+      "scenario": "profile-denied",
+      "status": 200,
+      "result": "PASS"
+    },
+    {
+      "scenario": "profile-failed",
+      "status": 200,
+      "result": "PASS"
+    },
+    {
+      "scenario": "no-session",
+      "status": 307,
+      "result": "PASS"
+    }
+  ],
+  "scope": "Actual Next/actual profile+shell explicitly invoked under synthetic request-scoped SDK, not real Auth/SQL"
+}

@@ -178,5 +178,170 @@
     "Generic public brand icon/text instead of tenant identity",
     "Truthful unreachable wording includes provider/service failure; no fabricated offline diagnosis"
   ],
-  "retirement": "Evidence payload only, not deployed; separately authorised release required"
+  "retirement": "Evidence payload only, not deployed; separately authorised release required",
+  "continuation": {
+    "baseline": "6fb58afa6c17cedccd5be61f6bd1d4696c26c838",
+    "authority": "Original10.3 PWA requirements; core no extras",
+    "sourceFiles": [
+      {
+        "file": "public/sw.js",
+        "sha256": "a9c305fb886cd3d3df9f5da886c317f47d4fd7e0407f33f7189a21e7b3d3b69f",
+        "workingCopySha256": "a9c305fb886cd3d3df9f5da886c317f47d4fd7e0407f33f7189a21e7b3d3b69f"
+      },
+      {
+        "file": "src/components/install-hint.tsx",
+        "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945",
+        "workingCopySha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/me/page.tsx",
+        "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a",
+        "workingCopySha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
+      },
+      {
+        "file": "src/app/globals.css",
+        "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383",
+        "workingCopySha256": "2f15367e91aadd069559f2bde99fcc621e4eb3d6e409e67623169073c9b46418"
+      }
+    ],
+    "contract": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# Continuation contract review (A/B/C), before implementation\n\nNo tools or edits. This reviews the contract text only.\n\n## Verdict: bounded CONTRACT ACCEPT for A and B, with six blocking amendments\n\nThe amendments below need to be added to the contract before implementation. C is correctly kept as the required next part and is not waived by A or B. Full R0–R8 stays OPEN.\n\n## A. Static cache\n\n**Sound as written:**\n- **Scope:** limited to `chunks/css/media`. That leaves out the `_buildManifest`/`_ssgManifest` files, source maps, dev files, data, Server Actions, exports and callbacks.\n- **Freshness:** requires an 8+ hex hash and `public` + `immutable`. Next only sends those on production hashed assets.\n- **Header rejections:** no-store, private, and `Vary: Cookie/Authorization/*` are rejected. `Vary: Accept-Encoding` is allowed, which is correct.\n- **Cache isolation:** uses a reserved `bp-static-v1`, never enumerates other caches, and retirement only touches its own caches.\n- **Size bound:** 32 entries of 2 MiB caps storage at 64 MiB.\n- **Lifecycle:** no fallback, no `skipWaiting`/`claim`, and no private HTML is ever cached.\n- **Proxy:** `_next/static` is already excluded from the proxy, so dropping credentials with `credentials: 'omit'` has no effect on the session.\n\n**Must-fix amendments:**\n\n- **A1. One network fetch per miss.**\n  - The contract says \"fetch credentials-omit\" and also \"return the original response unchanged\". It must state that a cache miss makes exactly one `credentials: 'omit'` request.\n  - That response is returned unchanged, and a `clone()` is validated and stored.\n  - No second fetch with the page's original request, and no refetch on validation failure.\n- **A2. Header allowlist on the stored copy.** The `new Response(validatedBytes, …)` copy should carry only `Content-Type`, `Cache-Control`, and status 200.\n  - Drop `Content-Encoding` and `Content-Length`, because the bytes are already decoded. Copying `Content-Encoding` labels plain bytes as compressed. Copying `Content-Length` mismatches the decoded size.\n  - Drop every other response header as well.\n- **A3. Enforce the cap while reading, and keep the write alive.**\n  - Read the clone with a stream reader that counts bytes and calls `cancel()` once 2 MiB is exceeded. Do not use `arrayBuffer()`, which buffers the whole body before the check.\n  - Run the serial write chain under `event.waitUntil(...)` so the browser can't stop the worker mid-write or mid-eviction. It must not delay `respondWith`.\n  - If writes fail, the chain should recover, so one rejected write doesn't block later ones.\n\n**Proof note, not a must-fix:** the static cache doesn't make any page usable offline, because navigation HTML is never cached. Evidence should say \"warm reload served static assets from cache\" plus the stopped-server fallback. It should not claim an offline app shell.\n\n## B. Install hint\n\n**Sound as written:**\n- It appears only after an authorised profile loads successfully, and receives no props or business data.\n- It's an inline card with no modal, no automatic install, no push and no permission requests.\n- One generic key and value are stored, and only when the user taps the explicit `فهمت` button.\n- It's hidden in standalone mode and after `appinstalled`.\n- Its markup is hidden during server rendering, and `useSyncExternalStore` keeps hydration stable.\n- If storage is unavailable, dismissal lasts for the current mount only.\n- A dismissal is shared by everyone who uses the same browser, but the value is generic, so nothing personal is revealed.\n\n**Must-fix amendments:**\n\n- **B1. Don't intercept `beforeinstallprompt`.**\n  - No listener should call `preventDefault()` or store the event. Doing so suppresses the browser's own install UI and amounts to prompt control, which the contract excludes.\n  - Detection should use only `matchMedia('(display-mode: standalone)')`, the read-only `navigator.standalone`, and `appinstalled`.\n- **B2. No UA collection means generic instructions.**\n  - The card has to show the browser-menu \"Install / Add to Home Screen\" step and the Safari Share-sheet step together, plus the honest note that some browsers don't support it, after which the user just continues.\n  - It must not branch on user agent, platform or `userAgentData`.\n- **B3. Honest copy about what installing does.**\n  - The text must not suggest that installing makes records, profile data or operations available offline, or that it saves data on the device.\n  - Install only adds a shortcut; data still needs a connection. That matches both the no-private-cache rule and the fact that C isn't implemented yet.\n\n## C. Per-task gating (next part, unchanged)\n\nThe constraints as listed are accepted:\n- A form/operation matrix comes before any gate.\n- Gates are checked at the submit point, before journaling.\n- No generic DOM `disabled` and no worker-side POST handling.\n- Attendance prepare/reconcile behaviour is unchanged.\n- Unknown-result financial and leave operations stay checkable and are never cleared or resent.\n- `onLine === false` may stop only new submissions. `onLine === true` is not a receipt, and nothing auto-retries.\n- Result checking, access, logout and GET requests are never blocked.\n\n## Still OPEN\n\n- C implementation and the operation matrix\n- Physical install\n- Native and controlled proof for A and B\n- Scoped visual review of the hint card\n- Full R0–R8",
+      "sessionId": "55689496-22a4-450a-9a46-9cc7e1cd9c8c"
+    },
+    "initialReview": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# Continuation review: A (static cache) and B (install hint)\n\nNo edits or commands. I read only the three new images and compared them with the two reference images from the previous round.\n\n## SOURCE: ACCEPT (A and B, bounded)\n\n**A. Static cache in `public/sw.js`**\n- **Path filtering:**\n  - `staticKind` turns only `%5B`/`%5D` back into brackets, so any other percent-encoded path fails the segment check.\n  - It rejects `.` and `..` segments, and only `chunks/css/media` paths ending in `.js`, `.css` or `.woff2` get through. That leaves out source maps, build manifests and images.\n  - Navigations and URLs with a query or hash are excluded.\n- **A1, one fetch per miss:** each miss makes exactly one request, with `credentials: 'omit'`. A failed fetch becomes the same network error the page would get without the worker. There's no retry and no fallback.\n- **A2, stored copy:** it's built from the validated decoded bytes with only `Content-Type` and `Cache-Control`. No `Content-Encoding`, `Content-Length` or `Vary` is stored, and matching still works.\n- **A3, size bound and write lifetime:**\n  - `response.clone()` is taken synchronously before the response is returned, so returning it is unaffected.\n  - The body is streamed and cancelled once it passes 2 MiB.\n  - At most 32 writes can be pending, and the write chain recovers after a failure.\n  - Eviction keeps 31 other entries plus the new one.\n  - `waitUntil` is registered in the same tick and keeps the write alive without delaying the response.\n- **Validation:**\n  - Only status 200 is stored, with no redirect and a `response.url` that exactly matches the request.\n  - The Content-Type must match the file kind, and `Cache-Control` must contain both `public` and `immutable` with no `private` or `no-store`.\n  - A `Vary` of `Cookie`, `Authorization` or `*` is rejected.\n  - After a deploy, missing old chunks (404) are passed through unchanged and never stored.\n- **Cache isolation:** `activate` doesn't touch `bp-static-v1` or any other cache, and the nine SRI entries are unchanged.\n\n**B. Install hint (`src/components/install-hint.tsx` and the profile page)**\n- **Placement:**\n  - It renders only on the branch where the snapshot loaded and validated.\n  - The no-client, no-session redirect, denied (`42501`) and failed states are unchanged.\n  - It receives no props.\n- **B1:** there's no `beforeinstallprompt` listener.\n- **B2:** there's no UA or platform branching; both instruction paths are always shown.\n- **B3:** the copy says installing only adds a shortcut and that viewing data and saving operations still need a connection.\n- **Storage:** it only ever touches the one generic key. A storage failure still dismisses the hint for the current mount, without any \"forever\" claim.\n- **Hydration:** the server snapshot is `false`, so hydration is stable. It hides on standalone and after `appinstalled`.\n\n## VISUAL (depicted samples only): CHANGES REQUIRED, one concrete blocker\n\n**V-1. Paragraph spacing inside the hint card.**\n- The three `<p>` elements have no space between them at 1366 and 390, in light and dark.\n- As a result, the browser-menu instruction, the iPhone/iPad Safari instruction and the honesty note read as one continuous block. The two separate install routes aren't visually distinct.\n- The records panel above it, and the reference cards, keep a clear gap between blocks.\n- **Fix:** CSS only, e.g. `.install-hint p { margin: 0 0 .5rem; }` with the button keeping its own spacing. No change to copy or structure.\n\n**Otherwise the samples match Concept C, with the accepted deviations:**\n- The card has the same surface, border and 8 px radius as the records panel.\n- `فهمت` is a secondary outlined control at least 44 px tall, which is the right level since it's not a primary action.\n- `iPhone`, `iPad` and `Safari` are correctly isolated inside the RTL text.\n- In dark at 390 the focus ring is visible and contrast is adequate.\n- There's no overflow at 390.\n- The tenant brand, navigation, Cairo and radius deviations are already accepted.\n\n**Evidence qualification:**\n- All three images show the Next **dev-tools \"N\" badge**, which only appears under `next dev`. So these samples are dev-server renders, not production.\n- At 390 the badge also covers the bottom-nav \"More\" item. That's dev-only, but it means these images can't count as production visual evidence.\n- Re-capture from the production build when you re-check V-1.\n\n## R2 finding: a likely cause (pre-existing, outside A/B scope)\n\nThe manifests show no compiled proxy, and the project uses `src/app`. In that layout Next only picks up `proxy.ts` (formerly `middleware.ts`) from **`src/proxy.ts`**, next to `app/`. A file at the repository root is ignored.\n\nConsequences to record against R2. Don't fix them inside A/B:\n- Supabase session refresh is probably not running at all.\n- The V1 bypass result I accepted earlier counts as a **source-pattern check only**, not runtime behaviour.\n- The page-level guards (`getUser()` plus redirect) still run, so nothing is exposed. The risk is sessions that aren't refreshed, which may send users back to login once their tokens expire.\n\n## Still OPEN\n\n- V-1 fix, plus production re-capture of the hint\n- C: operation matrix and per-task gating\n- R2: proxy placement and native registration\n- Physical installs on iOS and Android\n- Real auth/SQL private-role journeys\n- Full R0–R8",
+      "sessionId": "55689496-22a4-450a-9a46-9cc7e1cd9c8c"
+    },
+    "finalDelta": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# Final A/B delta: source and visual verdicts\n\nNo edits or commands. I read only the three production images and compared them with the two Concept C references I had already read.\n\n## SOURCE: ACCEPT (bounded A/B delta)\n\n**The hash check now looks at the filename only.** `(?:^|-)[a-f0-9]{8,}(?:[-.]|$)` is applied to `segments.at(-1)`.\n- A hex-named directory can no longer qualify an unhashed file.\n- The segment allowlist, the `%5B`/`%5D` handling, the `.js`/`.css`/`.woff2` limit and every response gate are unchanged.\n- It still matches Next's usual hashed file names: `page-<hex>.js`, `<id>-<hex>.js`, `css/<hex>.css` and `<hex>-s.p.woff2`.\n- Hashes in other formats, such as `name.<hex>.ext` or Turbopack's `__…_.js` names, don't match. Those files fail closed and get normal browser handling. That loses some cache coverage but has no safety cost.\n\n**The CSS change is bounded.** `.install-hint p { margin: 0 0 .5rem; }` is scoped to the hint and changes no behaviour, storage or props.\n\n**Still required:**\n- The final full staged integration build. Your full build and TypeScript pass came before the CSS-only fix, and the fixture build skipped TypeScript on purpose.\n- Proof across every branch of the 29 cases and real native concurrency. Your note already says that's not established.\n\n## VISUAL: MATCH WITH ACCEPTED DEVIATIONS (install-hint card, 3 production samples)\n\n- **V-1 is resolved.**\n  - The browser-menu step, the iPhone/iPad Safari step and the honesty note are now visibly separate blocks at 1366 and 390, in light and dark.\n  - The rhythm matches the records panel above and the Concept C reference cards.\n- **Card style:** same surface, hairline border and 8 px radius as the records panel. The heading is set apart from the body, and the honesty note is a quieter secondary line.\n- **Controls:** `فهمت` is a secondary outlined control at least 44 px tall, start-aligned in RTL. In dark the 2 px focus ring is clearly visible.\n- **Text:** `iPhone`, `iPad` and `Safari` are isolated correctly. There's no overflow at 390.\n- **Deviations already accepted:** Cairo, the 8 px radius, the 900-weight control contract, the tenant brand and the nav.\n- **No dev badge:** none of the three images shows it, so they count as production samples.\n\n## Outside this delta (not counted against the hint verdict)\n\nTwo navigation details in these production fixture images differ from the earlier dev samples. Check them during the private-role and nav qualification rather than counting them here:\n- **No active page marked.** Neither the 1366 sidebar nor the 390 bottom nav highlights `ملفي`. That could be a fixture route mismatch or a real regression in the active-state logic.\n- **Header context line.** At 390 the line under the header shows the tenant name `شركة الاختبار`, where the dev samples showed the page name `ملفي`.\n\n## Still OPEN\n\n- Final full staged integration build\n- C: operation matrix and per-task gating\n- R2: proxy placement/registration (likely `src/proxy.ts`) and runtime auth refresh\n- Real auth/SQL private-role journeys\n- Physical install on iOS and Android\n- Native concurrency\n- Full R0–R8",
+      "sessionId": "55689496-22a4-450a-9a46-9cc7e1cd9c8c"
+    },
+    "codex": {
+      "source": "ACCEPT bounded A/B",
+      "visual": "MATCH WITH ACCEPTED DEVIATIONS: three final production synthetic-parent samples only",
+      "sourceCorrection": "Hash required on filename, not ancestor directory; exclusion tested",
+      "visualCorrection": "Initial padding and paragraph spacing corrected; final production samples replaced dev acceptance evidence",
+      "reviewerCorrections": [
+        "900 is the px breakpoint, not a font weight",
+        "Runtime private-role/Proxy refresh remains unproven",
+        "QA wrapper pathname explains unmarked profile nav and tenant heading; actual nested-route nav acceptance remains OPEN"
+      ]
+    },
+    "tests": {
+      "staticSource": 29,
+      "legacyWorker": 27,
+      "hintSourceAndControlledParent": 13,
+      "actualNextSyntheticParentHttp": 4,
+      "realAuthSql": false
+    },
+    "build": {
+      "actualApp33198": 0,
+      "actualApp39497": 0,
+      "fixtureInitialFailure": "Wrong preparation cwd left fixture config absent, then synthetic SDK type errors; terminal, repaired fixture only",
+      "fixtureProduction": "PASS76236 followup configured production fixture build (types intentionally skipped only in fixture)",
+      "finalWholeStageIntegration": "OPEN: required before full-stage closure; last application build preceded CSS-only paragraph fix; unchanged app TypeScript evidence reused"
+    },
+    "native": {
+      "worker": "Nine proper hashed Next public assets observed cached; stopped owned server plus disabled browser HTTP cache returned same cached CSS20059209bytes with only Content-Type/Cache-Control. Not private offline app shell or all-branch/concurrency proof.",
+      "hint": "Actual copied profile/layout/root components; success profile/hint, explicit dismissal then reload hidden, one generic key; preliminary nested fixture SDK default mixed, final production QA wrapper explicitly scopes self SDK",
+      "responsive": "light1366/768/390; dark390; final paragraphs8px/control44/nooverflow; keyboardfocus2px",
+      "osInstallation": "NOT RUN"
+    },
+    "proxyRegistration": {
+      "status": "OPEN R2 blocker for full Auth qualification",
+      "actualProduction": "middleware-manifest middleware/functions empty; functions-config-manifest functions empty; no proxy artifact",
+      "installedDetector": "next/dist/build/index.js rootDir=join(pagesDir||appDir, ..), scans that directory; src/app therefore src/proxy.ts required",
+      "previousMatcher18": "Source pattern qualification only, not native registration/session-refresh proof",
+      "existingPageAuth": "Unchanged source getUser/redirect; do not infer full expiry/provider/private-role acceptance",
+      "action": "Fix/qualify original R2 registration before closure; no provider/global settings changes in A/B"
+    },
+    "coverage": {
+      "sourceFiles": 294,
+      "pages": 75,
+      "endpoints": 4,
+      "boundaries": 8,
+      "serverActions": 108,
+      "rpcCallSites": 349,
+      "uniqueLiteralRpcs": 217,
+      "dynamicRpcSites": 7,
+      "formControls": 1185,
+      "sourceAssignmentComplete": true,
+      "semanticScenarioReviewComplete": false,
+      "executionCoverageComplete": false,
+      "registerItems": 1731,
+      "sourceReviewedPreserved": 25,
+      "added": [
+        {
+          "id": "CONTROL:src/components/install-hint.tsx:43:1950",
+          "category": "formControls",
+          "phase": "R1",
+          "status": "pending",
+          "scenarioIds": [],
+          "reviewer": null,
+          "evidence": null
+        }
+      ],
+      "migrations": [
+        {
+          "before": "RPC:src/app/tenant/[tenantId]/me/page.tsx:29:1112",
+          "after": "RPC:src/app/tenant/[tenantId]/me/page.tsx:30:1169",
+          "status": "pending"
+        }
+      ],
+      "retired": [],
+      "semanticPromotion": false,
+      "operationFrontier": "152 structural forms/18 handlers; pending semantics, no generic gate"
+    },
+    "cleanup": {
+      "owned55063": "terminal",
+      "owned7634": "terminal",
+      "owned35399": "terminal",
+      "ports3617and3618": "no listeners",
+      "ownedTabs114115116": "closed",
+      "workerCaches": "own bp-public-v1 and bp-static-v1 only unregistered/deleted per tested origin",
+      "viewport": "reset",
+      "testPreferences": "original dark value and originally absent generic hint key restored"
+    },
+    "open": [
+      "C: exact new-submit guards before journaling/Attendance exception/unknown financial and leave result checking",
+      "R2 runtime Proxy registration/expiry/refreshed-auth return",
+      "physical iOS/Android install and WebKit/native concurrency/failed install",
+      "final full-stage integration build",
+      "actual roles/SQL/source scenario coverage/full R0-R8"
+    ],
+    "images": [
+      "docs/07-execution/evidence/ux-self-service-auth-return-20261008/pwa-profile-production-light-1366.png",
+      "docs/07-execution/evidence/ux-self-service-auth-return-20261008/pwa-profile-production-light-390.png",
+      "docs/07-execution/evidence/ux-self-service-auth-return-20261008/pwa-profile-production-dark-390.png"
+    ],
+    "scope": "Source A/B + depicted public/hint qualification only; full PWA and R0-R8 OPEN",
+    "fingerprintPolicy": "source text SHA256 normalized LF; copied fixture provenance retains exact working-copy raw hashes; images binary raw"
+  }
 }

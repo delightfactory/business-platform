@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c5c388bb56d6a304eaee7da1318945a10a79c572",
+  "sourceHead": "6fb58afa6c17cedccd5be61f6bd1d4696c26c838",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -95,7 +95,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "fae5c74b7a474135f3b6c7921a6fefda720bb61da4140551bf0e9bc48b182d06"
+      "sha256": "0c1feadfc9f6ce17884b3b6326994cdb2df01c0d0d2ee6ff891e116c5aba0383"
     },
     {
       "file": "src/app/layout.tsx",
@@ -815,7 +815,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
       "phase": "R6",
-      "sha256": "79405579b93abd9afdc16237d63c98d58c9e4e01ba517c6f0990de1b6aaef54e"
+      "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/profile.module.css",
@@ -1376,6 +1376,11 @@
       "file": "src/components/feedback-toast.tsx",
       "phase": "R1",
       "sha256": "f37ef70a08c1f78ef8f027b202e0c3f18a92c16de9d7ec175eb15dc8c9652d66"
+    },
+    {
+      "file": "src/components/install-hint.tsx",
+      "phase": "R1",
+      "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
     },
     {
       "file": "src/components/pwa-foundation.tsx",
@@ -5433,9 +5438,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:29:1112",
+      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:30:1169",
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
-      "line": 29,
+      "line": 30,
       "phase": "R6",
       "name": "tenant_my_employee_snapshot",
       "expression": null,
@@ -19721,6 +19726,16 @@
       }
     },
     {
+      "id": "CONTROL:src/components/install-hint.tsx:43:1950",
+      "file": "src/components/install-hint.tsx",
+      "line": 43,
+      "tag": "button",
+      "phase": "R1",
+      "attributes": {
+        "type": "\"button\""
+      }
+    },
+    {
       "id": "CONTROL:src/components/submit-button.tsx:13:343",
       "file": "src/components/submit-button.tsx",
       "line": 13,
@@ -19767,7 +19782,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF; PNG raw bytes",
   "summary": {
-    "sourceFiles": 293,
+    "sourceFiles": 294,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
@@ -19775,7 +19790,7 @@
     "rpcCallSites": 349,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 7,
-    "formControls": 1184,
+    "formControls": 1185,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

@@ -125,7 +125,7 @@
     }
   ],
   "passed": 27,
-  "sourceHash": "e5556e3a6027e9deb26613d31ede3085b8e5d605cb364a3f4b528d4be2fd4a44",
+  "sourceHash": "254be4edeb60a6b9123f127d0141ad006bc989ad5960dbacbfe6179ac9239bf5",
   "scope": "Actual worker source with controlled native Request/Response plus mock Cache/fetch events; no native SW/Cache/SRI/device/provider acceptance",
   "native": "OPEN",
   "fullPwa": "OPEN"
