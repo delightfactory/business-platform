@@ -11,11 +11,12 @@ import { OperatorListControls, operatorListQuery } from '@/app/operator/operator
 
 export const dynamic = 'force-dynamic';
 
-type SearchParams = Promise<{ id?: string; state?: string; page?: string; q?: string }>;
+type SearchParams = Promise<{ id?: string | string[]; state?: string; page?: string; q?: string }>;
 
 
 export default async function OperatorInvitationsPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
+  const selectedId = operatorUuid(params.id) ? params.id : null;
   const { page, search } = operatorListQuery(params);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
@@ -30,17 +31,19 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   if (!result) return <Status title="تعذر تحميل الدعوات" detail="بيانات القائمة غير مكتملة. أعد تحميل الصفحة؛ لم تتأكد قائمة فارغة." />;
   const rows = result.rows;
   const matchingCount = result.matching_count;
-  let selected = rows.find(row => row.id.toLowerCase() === params.id?.toLowerCase());
+  let selected = rows.find(row => selectedId !== null && row.id.toLowerCase() === selectedId.toLowerCase());
   let selectedNotice: string | null = null;
-  if (params.id && !operatorUuid(params.id)) selectedNotice = 'مرجع الدعوة غير صالح. راجع الدعوات الحالية أدناه.';
-  if (!selected && params.id && operatorUuid(params.id)) {
-    const { data: selectedData, error: selectedError } = await supabase.rpc('tenant_admin_invitation_get', { p_invitation_id: params.id });
+  if (params.id !== undefined && !selectedId) selectedNotice = 'مرجع الدعوة غير صالح. راجع الدعوات الحالية أدناه.';
+  if (!selected && selectedId) {
+    const { data: selectedData, error: selectedError } = await supabase.rpc('tenant_admin_invitation_get', { p_invitation_id: selectedId });
     if (selectedError) selectedNotice = 'تعذر قراءة الدعوة المرتبطة بالإجراء. لا يمكن تأكيد نتيجته من القائمة الحالية؛ أعد قراءة الصفحة.';
     else if (selectedData === null) selectedNotice = 'لا تتوفر الدعوة المرتبطة بالإجراء لهذا الحساب حاليًا. هذا لا يؤكد نتيجة الإجراء.';
-    else if (!operatorInvitation(selectedData) || selectedData.id.toLowerCase() !== params.id.toLowerCase()) selectedNotice = 'بيانات الدعوة المرتبطة بالإجراء غير مكتملة. أعد قراءة الصفحة قبل إجراء آخر.';
+    else if (!operatorInvitation(selectedData) || selectedData.id.toLowerCase() !== selectedId.toLowerCase()) selectedNotice = 'بيانات الدعوة المرتبطة بالإجراء غير مكتملة. أعد قراءة الصفحة قبل إجراء آخر.';
     else selected = selectedData;
   }
-  const visibleRows = selected ? [selected, ...rows.filter((row) => row.id !== selected.id)] : rows;
+  const visibleRows = selected ? [selected, ...rows.filter((row) => row.id.toLowerCase() !== selected.id.toLowerCase())] : rows;
+  const reviewQuery = new URLSearchParams({ page: String(page), q: search });
+  if (selectedId) reviewQuery.set('id', selectedId);
   const reviewMessage = invitationReviewMessage(params.state);
 
   return (
@@ -55,7 +58,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
         <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</Link>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
-        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <Link className="secondary-button" href={`/operator/invitations?${new URLSearchParams({ id: params.id ?? '', page: String(page), q: search })}`}>إعادة قراءة الدعوة</Link></p>}
+        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <Link className="secondary-button" href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</Link></p>}
         {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></p>}
         {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage()} <a href="#history-title">راجع حالة الدعوات</a></p>}
       </section>
@@ -72,7 +75,11 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   <p><bdi>{row.target_email}</bdi></p>
                   <p className={`entity-status ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</p>
                   {row.lifecycle_state === 'pending' && <p>{deliveryText(row.delivery_state)}</p>}
-                  {row.lifecycle_state === 'pending' && row.delivery_state !== 'sent' && <p className="field-hint">يمكنك إعادة الإرسال. كل إصدار جديد يبطل الرابط السابق.</p>}
+                  {row.lifecycle_state === 'pending' && <p className="field-hint">{row.delivery_state === 'failed'
+                    ? 'تعذر الإرسال المسجل لهذه الدعوة. إذا اخترت إعادة الإرسال، يُنشأ رابط جديد ويبطل الرابط السابق.'
+                    : row.delivery_state === 'sent'
+                      ? 'الإرسال المسجل لا يؤكد وصول البريد أو قبول الدعوة. إعادة الإرسال تنشئ رابطًا جديدًا وتبطل السابق.'
+                      : 'نتيجة الإرسال غير مؤكدة. راجع الحالة وتحقق مع المستلم قبل اختيار إعادة الإرسال؛ الإصدار الجديد يبطل الرابط السابق.'}</p>}
                   {row.lifecycle_state === 'accepted' && <p className="field-hint">اكتمل إنشاء الشركة ومسؤولها.</p>}
                 </div>
                 {row.lifecycle_state === 'pending' && (

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "a6db74732164521c0c70898efea6b13d40734b88",
+  "sourceSnapshot": "7ed679f5f9319bbf929fd07c7244c6f4128be09b",
   "status": "Proposed",
   "items": [
     {
@@ -2204,7 +2204,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:24:1357",
+      "id": "RPC:src/app/operator/invitations/page.tsx:25:1433",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2213,7 +2213,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:27:1743",
+      "id": "RPC:src/app/operator/invitations/page.tsx:28:1819",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -2222,7 +2222,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:37:2671",
+      "id": "RPC:src/app/operator/invitations/page.tsx:38:2745",
       "category": "rpcCalls",
       "phase": "R3",
       "status": "pending",
@@ -6047,7 +6047,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3588",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:53:3823",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6056,7 +6056,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3617",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:53:3852",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6065,7 +6065,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:80:6348",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:87:6945",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6074,7 +6074,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:81:6410",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:88:7007",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6083,7 +6083,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:82:6491",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:89:7088",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6092,7 +6092,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:84:6645",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:91:7242",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6101,7 +6101,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:85:6706",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:92:7303",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6110,7 +6110,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:86:6787",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:93:7384",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6119,7 +6119,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7943",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:126:8540",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",
@@ -6128,7 +6128,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7972",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:126:8569",
       "category": "formControls",
       "phase": "R3",
       "status": "pending",

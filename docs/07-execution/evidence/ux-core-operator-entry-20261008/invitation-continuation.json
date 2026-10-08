@@ -1,0 +1,109 @@
+{
+  "base": "7ed679f5f9319bbf929fd07c7244c6f4128be09b",
+  "scope": "actual async page/SSR with controlled SDK; not real roles/Auth/SQL/provider or native visual acceptance",
+  "checks": [
+    {
+      "id": "invalid-reference-clears-id-keeps-list-context",
+      "result": "pass"
+    },
+    {
+      "id": "valid-reference-error",
+      "result": "pass"
+    },
+    {
+      "id": "valid-reference-missing",
+      "result": "pass"
+    },
+    {
+      "id": "valid-reference-malformed",
+      "result": "pass"
+    },
+    {
+      "id": "valid-reference-wrong-identity",
+      "result": "pass"
+    },
+    {
+      "id": "delivery-guidance-sending",
+      "result": "pass"
+    },
+    {
+      "id": "delivery-guidance-future",
+      "result": "pass"
+    },
+    {
+      "id": "delivery-guidance-sent",
+      "result": "pass"
+    },
+    {
+      "id": "delivery-guidance-failed",
+      "result": "pass"
+    },
+    {
+      "id": "accepted-keeps-terminal-no-mutation",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-new-marker-current-state-not-recreate",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-new-marker-keeps-guidance",
+      "result": "pass"
+    },
+    {
+      "id": "repeated-id-recovery-nonempty-list",
+      "result": "pass"
+    },
+    {
+      "id": "uppercase-id-once-no-extra-lookup",
+      "result": "pass"
+    },
+    {
+      "id": "selected-outside-page-precedes-other-row",
+      "result": "pass"
+    },
+    {
+      "id": "setup-new-marker-keeps-guidance",
+      "result": "pass"
+    }
+  ],
+  "files": [
+    {
+      "file": "src/app/operator/invitations/page.tsx",
+      "sha256": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25"
+    },
+    {
+      "file": "src/app/operator/invitations/new/page.tsx",
+      "sha256": "2421b7388feb3739f00024d94402e711047fd36d3b71f13dcb73d42abce946ee"
+    }
+  ],
+  "review": {
+    "provider": "Official direct Claude Code Pro",
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "session": "70f9bad5-a5f8-4812-aa61-749ec7b36415",
+    "source": "ACCEPT repeated-id finding resolved",
+    "ClaudeVisual": "NOT VISUALLY VERIFIED",
+    "CodexVisual": "NOT VISUALLY VERIFIED",
+    "readOnlyUnchanged": true
+  },
+  "gates": {
+    "affectedEslint": 0,
+    "typecheck": 0,
+    "diffCheck": 0,
+    "build": "Prior grouped build reused; no imports/dependencies/actions/styles changed; no new build claimed",
+    "unchangedAuthSQLProvider": "Reused source contracts; real runtime acceptance remains open"
+  },
+  "inventory": {
+    "items": 1731,
+    "sourceReviewed": 19,
+    "priorStatusesPreserved": true,
+    "added": 0,
+    "semanticPromotion": false
+  },
+  "limits": [
+    "Controlled SDK/SSR only; no actual Auth/roles/SQL/provider/native visual acceptance",
+    "No claimed task-speed or full phase closure"
+  ],
+  "servicesCreated": 0
+}

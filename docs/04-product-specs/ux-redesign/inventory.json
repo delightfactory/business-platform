@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "a6db74732164521c0c70898efea6b13d40734b88",
+  "sourceHead": "7ed679f5f9319bbf929fd07c7244c6f4128be09b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -155,12 +155,12 @@
     {
       "file": "src/app/operator/invitations/new/page.tsx",
       "phase": "R3",
-      "sha256": "899581380185992f0b2cddd1c3a7f868169b419c40739adfd58e29182f9ef753"
+      "sha256": "2421b7388feb3739f00024d94402e711047fd36d3b71f13dcb73d42abce946ee"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
       "phase": "R3",
-      "sha256": "7be6fbccb0d084bdb4a2f34edda1443e6f6e559e19308120906c48d1297d6e3c"
+      "sha256": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25"
     },
     {
       "file": "src/app/operator/layout.tsx",
@@ -3868,9 +3868,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:24:1357",
+      "id": "RPC:src/app/operator/invitations/page.tsx:25:1433",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 24,
+      "line": 25,
       "phase": "R3",
       "name": "current_operator_can_onboard_tenants",
       "expression": null,
@@ -3878,9 +3878,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:27:1743",
+      "id": "RPC:src/app/operator/invitations/page.tsx:28:1819",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 27,
+      "line": 28,
       "phase": "R3",
       "name": "tenant_admin_invitation_page",
       "expression": null,
@@ -3888,9 +3888,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/invitations/page.tsx:37:2671",
+      "id": "RPC:src/app/operator/invitations/page.tsx:38:2745",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 37,
+      "line": 38,
       "phase": "R3",
       "name": "tenant_admin_invitation_get",
       "expression": null,
@@ -8076,9 +8076,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3588",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:53:3823",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 50,
+      "line": 53,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8086,9 +8086,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:50:3617",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:53:3852",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 50,
+      "line": 53,
       "tag": "button",
       "phase": "R3",
       "attributes": {
@@ -8096,9 +8096,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:80:6348",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:87:6945",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 80,
+      "line": 87,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8106,9 +8106,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:81:6410",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:88:7007",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 81,
+      "line": 88,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8118,9 +8118,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:82:6491",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:89:7088",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 82,
+      "line": 89,
       "tag": "SubmitButton",
       "phase": "R3",
       "attributes": {
@@ -8129,9 +8129,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:84:6645",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:91:7242",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 84,
+      "line": 91,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8139,9 +8139,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:85:6706",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:92:7303",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 85,
+      "line": 92,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8151,9 +8151,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:86:6787",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:93:7384",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 86,
+      "line": 93,
       "tag": "SubmitButton",
       "phase": "R3",
       "attributes": {
@@ -8161,9 +8161,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7943",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:126:8540",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 119,
+      "line": 126,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8171,9 +8171,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/invitations/page.tsx:119:7972",
+      "id": "CONTROL:src/app/operator/invitations/page.tsx:126:8569",
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 119,
+      "line": 126,
       "tag": "button",
       "phase": "R3",
       "attributes": {

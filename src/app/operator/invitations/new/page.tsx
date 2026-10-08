@@ -28,7 +28,7 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
       {query.state && <p className="form-message form-error" role="alert">{query.state === 'invalid'
         ? 'تحقق من البريد والبيانات والحدود، ثم حاول مجددًا.'
         : query.state === 'setup' ? 'خدمة الدعوات غير متاحة حاليًا. حاول لاحقًا.'
-          : 'تعذر إرسال الدعوة. تحقق من صلاحيتك والبيانات ثم حاول مجددًا.'}</p>}
+          : <>الرابط وحده لا يؤكد نتيجة إنشاء الدعوة أو إرسالها. <Link href="/operator/invitations">راجع الدعوات الحالية</Link> قبل إنشاء دعوة أخرى.</>}</p>}
       <InvitationForm requestKey={crypto.randomUUID()} />
       <p className="workspace-alternate-path">هل لدى المسؤول حساب مؤكد بالفعل؟ <Link href="/operator/onboarding">إعداد الشركة لهذا الحساب</Link></p>
     </div>
