@@ -1,3 +1,5 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -7,7 +9,6 @@ import { saveWorkPolicyAction, setWorkPolicyActiveAction } from '../work-policy-
 import { WorkPolicyEditor } from './WorkPolicyEditor';
 import { PolicyTask } from './PolicyTask';
 import styles from '../people-management.module.css';
-import { SubmitButton } from '@/components/submit-button';
 import { isUuid } from '../../leave/rules';
 
 export const dynamic = 'force-dynamic';
@@ -39,7 +40,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
       <p className="field-hint">التغييرات تحفظ إصدارًا جديدًا؛ الإصدارات السابقة تبقى محفوظة.</p>
       <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} policy={policy} returnToRequest={returnToRequest} />
      </PolicyTask>
-    <form action={setWorkPolicyActiveAction}><input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="policyId" value={policy.id}/><input type="hidden" name="active" value={String(!policy.is_active)}/><SubmitButton className="secondary-button" label={policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'} pendingLabel="جارٍ تحديث إتاحة القالب…" /></form></>}
+    <OfflineForm action={setWorkPolicyActiveAction}><input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="policyId" value={policy.id}/><input type="hidden" name="active" value={String(!policy.is_active)}/><OfflineSubmitButton className="secondary-button" label={policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'} pendingLabel="جارٍ تحديث إتاحة القالب…" /></OfflineForm></>}
   </article>)}</div>:<p className="empty-state">لم تُسجل قوالب بعد.</p>}</section>
  </PageFrame>;
 }

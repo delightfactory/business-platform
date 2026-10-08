@@ -1,0 +1,47 @@
+[
+  {
+    "file": "src/app/operator/invitations/page.tsx",
+    "baselineHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
+    "candidateHash": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+    "baselineHash": "24be1ff25f5f99e40c1a9cfe9e361ee70a958801ca9feaf0741ff3d5d4c7bcfe",
+    "candidateHash": "4b5b2f36e5148803d0405aa7ac70644bdc610d32bef5079878a0ae16f2deda56"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "baselineHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+    "candidateHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+    "baselineHash": "9c2bffb0b5df55a68634f52f7ef996506649c966f264787409049a6cfe61ad0c",
+    "candidateHash": "9bd750eaa8187ffc7350fa290285c0c655738376559a5ac8eafbee4f46a1e6c9"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "baselineHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+    "candidateHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+    "baselineHash": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523",
+    "candidateHash": "2d8fb40c40c67a2874a8d6c263afb10ce8ad43f0f3a4bddefbe788dc58826035"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "baselineHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+    "candidateHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6"
+  },
+  {
+    "file": "src/components/offline-form.tsx",
+    "baselineHash": null,
+    "candidateHash": "526ab256a91e001304b894f68b6e889055d40b7ea1539f9273b539f6ed2887b4"
+  },
+  {
+    "file": "scripts/build-ux-inventory.cjs",
+    "baselineHash": "85bd5dedbf94de50607d646859a844d84db0a79f4e789832a6026c7e40264e61",
+    "candidateHash": "780fc4965420b00518eb93e244ad160303075e12c28b7d67ce7872fe2ca7dbdc"
+  }
+]

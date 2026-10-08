@@ -1,5 +1,6 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
-import { SubmitButton } from '@/components/submit-button';
 import { EmployeeProfileTabs, type ProfileArea } from './EmployeeProfileTabs';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -145,7 +146,7 @@ export default async function EmployeePage({ params, searchParams }: {
         <strong>{row.name ? `${row.name} · ${row.code} · الإصدار ${row.version}` : 'دون سياسة دوام محددة'}</strong>
         <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
       </li>)}</ol> : <p className="empty-state">لا يوجد سجل سياسة دوام.</p>}
-      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && <form action={assignWorkPolicyAction} className="work-policy-assignment-form">
+      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignWorkPolicyAction} className="work-policy-assignment-form">
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
         <div className="work-policy-assignment-field"><label htmlFor="work-policy-id">قالب الدوام</label><select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>
         <div className="work-policy-assignment-field"><label htmlFor="work-policy-date">تاريخ بدء السريان</label><input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></div>
@@ -154,8 +155,8 @@ export default async function EmployeePage({ params, searchParams }: {
         {query.policy === 'failed' && <p className="form-message error-message" role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}
         {query.policy === 'pending' && <p className="form-message error-message" role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}
         {query.policy === 'materialized' && <p className="form-message error-message" role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</p>}
-        <div className="workspace-form-actions"><SubmitButton label="حفظ سياسة الدوام" pendingLabel="جارٍ حفظ السياسة…" disabled={!workPolicyPanel.options.length} /></div>
-      </form>}
+        <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ سياسة الدوام" pendingLabel="جارٍ حفظ السياسة…" disabled={!workPolicyPanel.options.length} /></div>
+      </OfflineForm>}
       {workPolicyPanel.can_manage_catalog && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</Link>}
       <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
       <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل تكليف الموظف الأساسي. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
@@ -163,13 +164,13 @@ export default async function EmployeePage({ params, searchParams }: {
         <strong>{override.name} · {override.code} · الإصدار {override.version}</strong>
         <p>من <bdi>{override.valid_from}</bdi> إلى <bdi>{override.valid_through}</bdi>{override.cancelled_at ? ' · ملغى' : ''}</p>
         <p>{override.reason}</p>
-        {override.can_cancel && workPolicyPanel.can_manage_catalog && <form action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
+        {override.can_cancel && workPolicyPanel.can_manage_catalog && <OfflineForm action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
           <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="overrideId" value={override.id}/>
           <div className="work-policy-assignment-field"><label htmlFor={`override-cancel-reason-${override.id}`}>سبب الإلغاء</label><input id={`override-cancel-reason-${override.id}`} name="cancelReason" minLength={3} maxLength={500} required/></div>
-          <div className="workspace-form-actions"><SubmitButton className="secondary-button" label="إلغاء التغيير المقرر" pendingLabel="جارٍ الإلغاء…" /></div>
-        </form>}
+          <div className="workspace-form-actions"><OfflineSubmitButton className="secondary-button" label="إلغاء التغيير المقرر" pendingLabel="جارٍ الإلغاء…" /></div>
+        </OfflineForm>}
       </li>)}</ol> : <p className="empty-state">لا توجد تغييرات دوام لفترات محددة.</p>}
-      {workPolicyPanel.can_manage_catalog && employmentId && employee.employment?.status === 'active' && <form action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
+      {workPolicyPanel.can_manage_catalog && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
         <div className="work-policy-assignment-field"><label htmlFor="policy-override-id">قالب الدوام للفترة</label><select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>
         <div className="work-policy-assignment-field"><label htmlFor="policy-override-from">من تاريخ</label><input id="policy-override-from" type="date" name="validFrom" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></div>
@@ -180,8 +181,8 @@ export default async function EmployeePage({ params, searchParams }: {
         {query.policyOverride === 'materialized' && <p className="form-message error-message" role="alert">بدأ فتح الحضور لأحد أيام الفترة؛ لم يُغيّر أي سجل. اختر تواريخ لم تُفتح بعد.</p>}
         {query.policyOverride === 'historical' && <p className="form-message error-message" role="alert">لا يمكن إضافة تغيير يبدأ بتاريخ سابق. اختر اليوم أو تاريخًا لاحقًا.</p>}
         {(query.policyOverride === 'failed' || query.policyOverride === 'forbidden' || query.policyOverride === 'cancel-failed') && <p className="form-message error-message" role="alert">تعذر حفظ التغيير. تحقق من صلاحيتك وحالة العمل والقالب، ثم حدّث الصفحة.</p>}
-        <div className="workspace-form-actions"><SubmitButton label="حفظ تغيير الدوام للفترة" pendingLabel="جارٍ حفظ التغيير…" disabled={!workPolicyPanel.options.length} /></div>
-      </form>}
+        <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير الدوام للفترة" pendingLabel="جارٍ حفظ التغيير…" disabled={!workPolicyPanel.options.length} /></div>
+      </OfflineForm>}
     </section>}
   </>;
   const compensation = <>

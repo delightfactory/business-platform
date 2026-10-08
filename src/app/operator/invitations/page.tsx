@@ -1,3 +1,5 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorInvitation, operatorPage, operatorUuid } from '@/lib/operator-read';
@@ -5,7 +7,6 @@ import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { signOutAction } from '@/app/auth/actions';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
-import { SubmitButton } from '@/components/submit-button';
 import { reissueInvitationAction, revokeInvitationAction } from './actions';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
@@ -84,14 +85,14 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                 </div>
                 {row.lifecycle_state === 'pending' && (
                   <div className="invitation-actions">
-                    <form action={reissueInvitationAction}>
+                    <OfflineForm action={reissueInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <SubmitButton className="secondary-button" label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
-                    </form>
-                    <form action={revokeInvitationAction}>
+                      <OfflineSubmitButton className="secondary-button" label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
+                    </OfflineForm>
+                    <OfflineForm action={revokeInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <SubmitButton className="secondary-button" label="إلغاء الدعوة" />
-                    </form>
+                      <OfflineSubmitButton className="secondary-button" label="إلغاء الدعوة" />
+                    </OfflineForm>
                   </div>
                 )}
               </li>

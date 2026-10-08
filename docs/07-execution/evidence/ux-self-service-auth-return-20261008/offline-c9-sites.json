@@ -1,0 +1,152 @@
+[
+  {
+    "file": "src/app/operator/invitations/page.tsx",
+    "line": 87,
+    "action": "{reissueInvitationAction}",
+    "baselineForm": "<form action={reissueInvitationAction}>\n                      <input type=\"hidden\" name=\"invitationId\" value={row.id} />\n                      <SubmitButton className=\"secondary-button\" label=\"إعادة إرسال دعوة جديدة\" pendingLabel=\"جارٍ الإرسال…\" />\n                    </form>"
+  },
+  {
+    "file": "src/app/operator/invitations/page.tsx",
+    "line": 91,
+    "action": "{revokeInvitationAction}",
+    "baselineForm": "<form action={revokeInvitationAction}>\n                      <input type=\"hidden\" name=\"invitationId\" value={row.id} />\n                      <SubmitButton className=\"secondary-button\" label=\"إلغاء الدعوة\" />\n                    </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+    "line": 35,
+    "action": "{attach}",
+    "baselineForm": "<form action={attach} className=\"auth-form attendance-import-confirm-form\"><input type=\"hidden\" name=\"tenantId\" value={tenantId}/><input type=\"hidden\" name=\"evidenceId\" value={row.id}/>{(row.candidate_work_dates?.length??0)>1&&<><label>اختر يوم العمل المقصود<select name=\"workDate\" defaultValue=\"\" required><option value=\"\">اختر تاريخًا</option>{row.candidate_work_dates?.map((date)=><option key={date} value={date}>{date}</option>)}</select></label><p className=\"form-message form-error\">يُطابق هذا التسجيل أكثر من يوم عمل؛ لن يُربط حتى تختار يومًا.</p></>}<label>سبب ربط التسجيل بعد مراجعة التكليف<textarea name=\"reason\" minLength={3} maxLength={500} required rows={3} placeholder=\"اذكر ما تم التحقق منه\"/></label><div className=\"workspace-form-actions\"><SubmitButton label=\"إعادة الفحص وربط التسجيل\" pendingLabel=\"جارٍ التحقق والربط…\"/></div></form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 87,
+    "action": "{correctPunchAction}",
+    "baselineForm": "<form action={correctPunchAction} className=\"attendance-form\">\n            <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"punchId\" value={punch.id} />\n            <input type=\"hidden\" name=\"action\" value=\"replace\" />\n            <label>نوع التسجيل<select name=\"direction\" defaultValue={punch.direction}><option value=\"in\">دخول</option><option value=\"out\">خروج</option></select></label>\n            <label>الوقت الصحيح <input name=\"localTime\" type=\"datetime-local\" required defaultValue={toLocalInput(punch.happened_at, zone)} /></label>\n            <label className=\"attendance-full-field\">سبب التصحيح <input name=\"reason\" minLength={3} maxLength={500} required /></label>\n            <SubmitButton className=\"primary-button\" pendingLabel=\"جارٍ الحفظ...\" label=\"حفظ التصحيح\" />\n          </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 95,
+    "action": "{correctPunchAction}",
+    "baselineForm": "<form action={correctPunchAction} className=\"attendance-form attendance-exclude-form\">\n            <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"punchId\" value={punch.id} /><input type=\"hidden\" name=\"action\" value=\"exclude\" />\n            <label className=\"attendance-full-field\">سبب الاستبعاد <input name=\"reason\" minLength={3} maxLength={500} required /></label>\n            <SubmitButton className=\"secondary-button\" pendingLabel=\"جارٍ الحفظ...\" label=\"استبعاد مع حفظ الدليل\" />\n          </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 104,
+    "action": "{recordPunchAction}",
+    "baselineForm": "<form action={recordPunchAction} className=\"attendance-form\">\n          <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"requestKey\" value={crypto.randomUUID()} />\n          <label>نوع التسجيل<select name=\"direction\" defaultValue=\"in\"><option value=\"in\">دخول</option><option value=\"out\">خروج</option></select></label>\n          <label>الوقت المحلي <input name=\"localTime\" type=\"datetime-local\" required defaultValue={defaultLocalInput(expectedStart, zone)} /></label>\n          {(permissions.can_manage !== true || instance.status !== \"open\") && <label className=\"attendance-full-field\">سبب إضافة التسجيل للمراجعة <input name=\"reason\" minLength={3} maxLength={500} required /></label>}<p className=\"field-hint attendance-full-field\">يُحفظ الوقت كحدث مستقل وفق {timezoneLabel(zone)}. إذا كان التوقيت المحلي ملتبسًا سيطلب النظام وقتًا آخر.</p>\n          <SubmitButton className=\"primary-button\" pendingLabel=\"جارٍ الحفظ...\" label=\"حفظ التسجيل\" />\n        </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 126,
+    "action": "{approveAttendanceAbsenceAction}",
+    "baselineForm": "<form action={approveAttendanceAbsenceAction} className=\"attendance-form attendance-approve-form\">\n            <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} />\n            {currentFact && <input type=\"hidden\" name=\"correctsFactId\" value={currentFact.id} />}\n            <label className=\"attendance-full-field\">{currentFact ? 'سبب تصحيح الاعتماد إلى غياب' : 'سبب إثبات الغياب'} <input name=\"reason\" minLength={3} maxLength={500} required /></label>\n            <SubmitButton className=\"primary-button\" pendingLabel=\"جارٍ الاعتماد...\" label={currentFact ? 'اعتماد تصحيح الغياب' : 'اعتماد يوم غياب'} />\n          </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 134,
+    "action": "{approveAttendanceAction}",
+    "baselineForm": "<form action={approveAttendanceAction} className=\"attendance-form attendance-approve-form\">\n        <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"correctsFactId\" value={currentFact?.id ?? ''} />\n        {(currentFact || interpretations.exception_code === 'short_workday') && <label className=\"attendance-full-field\">{interpretations.exception_code === 'short_workday' ? 'سبب اعتماد مدة أقل من المطلوب' : 'سبب إعادة الاعتماد'} <input name=\"reason\" minLength={3} maxLength={500} required /></label>}\n        <SubmitButton className=\"primary-button\" pendingLabel=\"جارٍ الاعتماد...\" label={currentFact ? 'اعتماد التصحيح كنسخة جديدة' : 'اعتماد نتيجة اليوم'} />\n      </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 154,
+    "action": "{reviewAttendanceOvertimeAction}",
+    "baselineForm": "<form action={reviewAttendanceOvertimeAction} className=\"attendance-form attendance-overtime-form\">\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"candidateId\" value={candidate.id} /><input type=\"hidden\" name=\"decision\" value=\"approved\" />\n                  <fieldset className=\"attendance-form-grid\"><legend>{candidate.classification ? 'إعادة تصنيف الكمية' : 'توزيع دقائق العمل الإضافي'}</legend>\n                    <label>عادي نهاري بالدقائق<input name=\"ordinary_day\" type=\"number\" min=\"0\" step=\"1\" required /></label>\n                    <label>عادي ليلي بالدقائق<input name=\"ordinary_night\" type=\"number\" min=\"0\" step=\"1\" required /></label>\n                    <label>راحة أسبوعية بالدقائق<input name=\"weekly_rest\" type=\"number\" min=\"0\" step=\"1\" required /></label>\n                    <label>عطلة رسمية بالدقائق<input name=\"official_holiday\" type=\"number\" min=\"0\" step=\"1\" required /></label>\n                  </fieldset>\n                  <p className=\"field-hint\">يجب أن يساوي مجموع الفئات {candidate.candidate_minutes} دقيقة بالضبط. إدخال كل فئة مطلوب، بما في ذلك صفر عند عدم انطباقها.</p>\n                  <label className=\"attendance-full-field\">سبب التصنيف أو ملاحظة الدليل <input name=\"reason\" minLength={3} maxLength={500} required /></label>\n                  <SubmitButton className=\"primary-button\" pendingLabel=\"جارٍ حفظ التصنيف...\" label={candidate.classification ? 'حفظ التصنيف الجديد' : 'اعتماد الكمية وتصنيفها'} />\n                </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+    "line": 166,
+    "action": "{reviewAttendanceOvertimeAction}",
+    "baselineForm": "<form action={reviewAttendanceOvertimeAction} className=\"attendance-form attendance-overtime-form\">\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"instanceId\" value={instanceId} /><input type=\"hidden\" name=\"candidateId\" value={candidate.id} /><input type=\"hidden\" name=\"decision\" value=\"rejected\" />\n                  <label className=\"attendance-full-field\">سبب الرفض <input name=\"reason\" minLength={3} maxLength={500} required /></label>\n                  <SubmitButton className=\"secondary-button\" pendingLabel=\"جارٍ الحفظ...\" label=\"رفض المرشح\" />\n                </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+    "line": 42,
+    "action": "{setWorkPolicyActiveAction}",
+    "baselineForm": "<form action={setWorkPolicyActiveAction}><input type=\"hidden\" name=\"tenantId\" value={tenantId}/><input type=\"hidden\" name=\"policyId\" value={policy.id}/><input type=\"hidden\" name=\"active\" value={String(!policy.is_active)}/><SubmitButton className=\"secondary-button\" label={policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'} pendingLabel=\"جارٍ تحديث إتاحة القالب…\" /></form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "line": 50,
+    "action": "{unlinkEmployeeUserAction}",
+    "baselineForm": "<form action={unlinkEmployeeUserAction} className=\"workspace-form-actions\">\n          <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"employeeId\" value={employeeId} />\n          <SubmitButton className=\"secondary-button\" label=\"فك الربط\" pendingLabel=\"جارٍ فك الربط…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "line": 68,
+    "action": "{linkEmployeeUserAction}",
+    "baselineForm": "<form action={linkEmployeeUserAction} className=\"compact-form\">\n          <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"employeeId\" value={employeeId} />\n          <label htmlFor=\"employee-user-id\">عضو نشط وبريد مؤكد</label>\n          <select id=\"employee-user-id\" name=\"userId\" required defaultValue=\"\">\n            <option value=\"\" disabled>اختر عضوًا</option>\n            {options.items.map((item) => <option key={item.user_id} value={item.user_id}>{item.display_name} — {item.email}</option>)}\n          </select>\n          <SubmitButton label=\"ربط الحساب\" pendingLabel=\"جارٍ ربط الحساب…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "line": 95,
+    "action": "{retryEmployeeAccountActivationAction}",
+    "baselineForm": "<form action={retryEmployeeAccountActivationAction}>\n            <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"employeeId\" value={employeeId} />\n            <input type=\"hidden\" name=\"intentId\" value={provision.intent_id} />\n            <SubmitButton label={provision.state === 'pending' ? 'متابعة إنشاء الحساب' : 'إعادة إرسال رابط التفعيل'} pendingLabel=\"جارٍ الإرسال…\" />\n          </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "line": 102,
+    "action": "{createEmployeeAccountAction}",
+    "baselineForm": "<form action={createEmployeeAccountAction} className=\"compact-form\">\n          <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"employeeId\" value={employeeId} />\n          <input type=\"hidden\" name=\"requestKey\" value={requestKey} />\n          <label htmlFor=\"employee-account-email\">بريد الموظف</label>\n          <input id=\"employee-account-email\" name=\"email\" type=\"email\" autoComplete=\"email\" maxLength={254} required />\n          <SubmitButton label=\"إنشاء الحساب وإرسال رابط التفعيل\" pendingLabel=\"جارٍ إنشاء الحساب…\" />\n        </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+    "line": 114,
+    "action": "{sendEmployeeAccountReadinessRecoveryAction}",
+    "baselineForm": "<form action={sendEmployeeAccountReadinessRecoveryAction}>\n        <input type=\"hidden\" name=\"tenantId\" value={tenantId} /><input type=\"hidden\" name=\"employeeId\" value={employeeId} />\n        <input type=\"hidden\" name=\"intentId\" value={provision.intent_id} />\n        <SubmitButton label=\"إرسال رابط تأكيد كلمة المرور\" pendingLabel=\"جارٍ الإرسال…\" />\n      </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+    "line": 148,
+    "action": "{assignWorkPolicyAction}",
+    "baselineForm": "<form action={assignWorkPolicyAction} className=\"work-policy-assignment-form\">\n        <input type=\"hidden\" name=\"tenantId\" value={tenantId}/><input type=\"hidden\" name=\"employeeId\" value={employee.id}/><input type=\"hidden\" name=\"employmentId\" value={employmentId}/>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"work-policy-id\">قالب الدوام</label><select id=\"work-policy-id\" name=\"policyId\" required defaultValue=\"\"><option value=\"\" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"work-policy-date\">تاريخ بدء السريان</label><input id=\"work-policy-date\" type=\"date\" name=\"effectiveDate\" min={today} defaultValue={today} required/></div>\n        <p className=\"field-hint\">إذا كان هذا أول تكليف ويبدأ اليوم، تُصحح السياسة في سجله. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>\n        {query.policy === 'payroll-correction' && <p className=\"form-message error-message\" role=\"alert\">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ للفترة نفسها.</p>}\n        {query.policy === 'failed' && <p className=\"form-message error-message\" role=\"alert\">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</p>}\n        {query.policy === 'pending' && <p className=\"form-message error-message\" role=\"alert\">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</p>}\n        {query.policy === 'materialized' && <p className=\"form-message error-message\" role=\"alert\">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</p>}\n        <div className=\"workspace-form-actions\"><SubmitButton label=\"حفظ سياسة الدوام\" pendingLabel=\"جارٍ حفظ السياسة…\" disabled={!workPolicyPanel.options.length} /></div>\n      </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+    "line": 166,
+    "action": "{cancelAttendancePolicyOverrideAction}",
+    "baselineForm": "<form action={cancelAttendancePolicyOverrideAction} className=\"work-policy-assignment-form\">\n          <input type=\"hidden\" name=\"tenantId\" value={tenantId}/><input type=\"hidden\" name=\"employeeId\" value={employee.id}/><input type=\"hidden\" name=\"overrideId\" value={override.id}/>\n          <div className=\"work-policy-assignment-field\"><label htmlFor={`override-cancel-reason-${override.id}`}>سبب الإلغاء</label><input id={`override-cancel-reason-${override.id}`} name=\"cancelReason\" minLength={3} maxLength={500} required/></div>\n          <div className=\"workspace-form-actions\"><SubmitButton className=\"secondary-button\" label=\"إلغاء التغيير المقرر\" pendingLabel=\"جارٍ الإلغاء…\" /></div>\n        </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+    "line": 172,
+    "action": "{assignAttendancePolicyOverrideAction}",
+    "baselineForm": "<form action={assignAttendancePolicyOverrideAction} className=\"work-policy-assignment-form\">\n        <input type=\"hidden\" name=\"tenantId\" value={tenantId}/><input type=\"hidden\" name=\"employeeId\" value={employee.id}/><input type=\"hidden\" name=\"employmentId\" value={employmentId}/>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"policy-override-id\">قالب الدوام للفترة</label><select id=\"policy-override-id\" name=\"policyId\" required defaultValue=\"\"><option value=\"\" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</select></div>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"policy-override-from\">من تاريخ</label><input id=\"policy-override-from\" type=\"date\" name=\"validFrom\" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></div>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"policy-override-through\">إلى تاريخ</label><input id=\"policy-override-through\" type=\"date\" name=\"validThrough\" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></div>\n        <div className=\"work-policy-assignment-field\"><label htmlFor=\"policy-override-reason\">سبب التغيير</label><input id=\"policy-override-reason\" name=\"reason\" minLength={3} maxLength={500} required/></div>\n        {query.policyOverride === 'invalid' && <p className=\"form-message error-message\" role=\"alert\">راجع القالب والتاريخين، واجعل الفترة 90 يومًا أو أقل، واكتب سببًا واضحًا.</p>}\n        {query.policyOverride === 'overlap' && <p className=\"form-message error-message\" role=\"alert\">تتداخل الفترة مع تغيير دوام محفوظ. اختر فترة أخرى.</p>}\n        {query.policyOverride === 'materialized' && <p className=\"form-message error-message\" role=\"alert\">بدأ فتح الحضور لأحد أيام الفترة؛ لم يُغيّر أي سجل. اختر تواريخ لم تُفتح بعد.</p>}\n        {query.policyOverride === 'historical' && <p className=\"form-message error-message\" role=\"alert\">لا يمكن إضافة تغيير يبدأ بتاريخ سابق. اختر اليوم أو تاريخًا لاحقًا.</p>}\n        {(query.policyOverride === 'failed' || query.policyOverride === 'forbidden' || query.policyOverride === 'cancel-failed') && <p className=\"form-message error-message\" role=\"alert\">تعذر حفظ التغيير. تحقق من صلاحيتك وحالة العمل والقالب، ثم حدّث الصفحة.</p>}\n        <div className=\"workspace-form-actions\"><SubmitButton label=\"حفظ تغيير الدوام للفترة\" pendingLabel=\"جارٍ حفظ التغيير…\" disabled={!workPolicyPanel.options.length} /></div>\n      </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 120,
+    "action": "{setProtectedAdminLeaveSelfAccessAction}",
+    "baselineForm": "<form action={setProtectedAdminLeaveSelfAccessAction}>\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                  <input type=\"hidden\" name=\"userId\" value={row.user_id} />\n                  <input type=\"hidden\" name=\"enabled\" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />\n                  <SubmitButton className=\"secondary-button\" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel=\"جارٍ الحفظ…\" />\n                  <p className=\"field-hint\">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات الإجازة الذاتية فقط، مع الحفاظ على دور مسؤول الشركة.</p>\n                </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 132,
+    "action": "{setTenantMemberPeopleBundlesAction}",
+    "baselineForm": "<form action={setTenantMemberPeopleBundlesAction}>\n                    <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                    <input type=\"hidden\" name=\"userId\" value={row.user_id} />\n                    <fieldset>\n                      <legend>اختر صلاحيات العضو</legend>\n                      {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>\n                        <input type=\"checkbox\" name=\"bundleKey\" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />\n                        <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>\n                      </label>)}\n                    </fieldset>\n                    <SubmitButton className=\"secondary-button\" label=\"حفظ الحزم\" pendingLabel=\"جارٍ الحفظ…\" />\n                  </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 150,
+    "action": "{changeTenantAdminRoleAction}",
+    "baselineForm": "<form action={changeTenantAdminRoleAction}>\n                    <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                    <input type=\"hidden\" name=\"userId\" value={row.user_id} />\n                    <input type=\"hidden\" name=\"roleAction\" value={row.protected_admin ? 'demote' : 'promote'} />\n                    <SubmitButton className=\"secondary-button\" label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />\n                  </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 157,
+    "action": "{setMemberAccessAction}",
+    "baselineForm": "<form action={setMemberAccessAction}>\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                  <input type=\"hidden\" name=\"userId\" value={row.user_id} />\n                  <input type=\"hidden\" name=\"accessState\" value={row.access_state === 'active' ? 'inactive' : 'active'} />\n                  <SubmitButton className=\"secondary-button\" label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />\n                </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 184,
+    "action": "{reissueMemberInvitationAction}",
+    "baselineForm": "<form action={reissueMemberInvitationAction}>\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                  <input type=\"hidden\" name=\"invitationId\" value={invitation.id} />\n                  <SubmitButton className=\"secondary-button\" label=\"إعادة إرسال\" pendingLabel=\"جارٍ الإرسال…\" />\n                </form>"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/users/page.tsx",
+    "line": 189,
+    "action": "{revokeMemberInvitationAction}",
+    "baselineForm": "<form action={revokeMemberInvitationAction}>\n                  <input type=\"hidden\" name=\"tenantId\" value={tenantId} />\n                  <input type=\"hidden\" name=\"invitationId\" value={invitation.id} />\n                  <SubmitButton className=\"secondary-button\" label=\"إلغاء الدعوة\" />\n                </form>"
+  }
+]

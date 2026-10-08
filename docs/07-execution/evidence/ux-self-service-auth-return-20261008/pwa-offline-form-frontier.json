@@ -268,51 +268,57 @@
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 53,
+      "line": 54,
       "attrs": {
         "action": "{signOutAction}"
       },
       "client": false,
-      "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
+      "sourceHash": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 87,
+      "line": 88,
       "attrs": {
         "action": "{reissueInvitationAction}"
       },
       "client": false,
-      "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
+      "sourceHash": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 91,
+      "line": 92,
       "attrs": {
         "action": "{revokeInvitationAction}"
       },
       "client": false,
-      "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
+      "sourceHash": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/invitations/page.tsx",
-      "line": 126,
+      "line": 127,
       "attrs": {
         "action": "{signOutAction}"
       },
       "client": false,
-      "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
+      "sourceHash": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/operator/onboarding/OnboardingForm.tsx",
@@ -691,99 +697,115 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
-      "line": 35,
+      "line": 36,
       "attrs": {
         "action": "{attach}"
       },
       "client": false,
-      "sourceHash": "24be1ff25f5f99e40c1a9cfe9e361ee70a958801ca9feaf0741ff3d5d4c7bcfe",
+      "sourceHash": "4b5b2f36e5148803d0405aa7ac70644bdc610d32bef5079878a0ae16f2deda56",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 87,
+      "line": 88,
       "attrs": {
         "action": "{correctPunchAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 95,
+      "line": 96,
       "attrs": {
         "action": "{correctPunchAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 104,
+      "line": 105,
       "attrs": {
         "action": "{recordPunchAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 126,
+      "line": 127,
       "attrs": {
         "action": "{approveAttendanceAbsenceAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 134,
+      "line": 135,
       "attrs": {
         "action": "{approveAttendanceAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 154,
+      "line": 155,
       "attrs": {
         "action": "{reviewAttendanceOvertimeAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
-      "line": 166,
+      "line": 167,
       "attrs": {
         "action": "{reviewAttendanceOvertimeAction}"
       },
       "client": false,
-      "sourceHash": "2a1d45c0273e628e0769a64a24105d1fc0ad30b8b8d710a2f38fe5454c96a6d1",
+      "sourceHash": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
@@ -1582,15 +1604,17 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
-      "line": 42,
+      "line": 43,
       "attrs": {
         "action": "{setWorkPolicyActiveAction}"
       },
       "client": false,
-      "sourceHash": "9c2bffb0b5df55a68634f52f7ef996506649c966f264787409049a6cfe61ad0c",
+      "sourceHash": "9bd750eaa8187ffc7350fa290285c0c655738376559a5ac8eafbee4f46a1e6c9",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
@@ -1650,76 +1674,87 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 50,
+      "line": 51,
       "attrs": {
         "action": "{unlinkEmployeeUserAction}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 62,
+      "line": 63,
       "attrs": {
         "method": "\"get\"",
         "action": "{base}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 68,
+      "line": 69,
       "attrs": {
         "action": "{linkEmployeeUserAction}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 95,
+      "line": 96,
       "attrs": {
         "action": "{retryEmployeeAccountActivationAction}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 102,
+      "line": 103,
       "attrs": {
         "action": "{createEmployeeAccountAction}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
-      "line": 114,
+      "line": 115,
       "attrs": {
         "action": "{sendEmployeeAccountReadinessRecoveryAction}"
       },
       "client": false,
-      "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
+      "sourceHash": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
@@ -1751,39 +1786,45 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 148,
+      "line": 149,
       "attrs": {
         "action": "{assignWorkPolicyAction}"
       },
       "client": false,
-      "sourceHash": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523",
+      "sourceHash": "2d8fb40c40c67a2874a8d6c263afb10ce8ad43f0f3a4bddefbe788dc58826035",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 166,
+      "line": 167,
       "attrs": {
         "action": "{cancelAttendancePolicyOverrideAction}"
       },
       "client": false,
-      "sourceHash": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523",
+      "sourceHash": "2d8fb40c40c67a2874a8d6c263afb10ce8ad43f0f3a4bddefbe788dc58826035",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
-      "line": 172,
+      "line": 173,
       "attrs": {
         "action": "{assignAttendancePolicyOverrideAction}"
       },
       "client": false,
-      "sourceHash": "3fa15c55f589e7221e34e8e69af73f6a67abf10c98fb7cccdaa8ecb9bd420523",
+      "sourceHash": "2d8fb40c40c67a2874a8d6c263afb10ce8ad43f0f3a4bddefbe788dc58826035",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
@@ -1843,88 +1884,101 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 100,
+      "line": 101,
       "attrs": {
         "action": "{`/tenant/${tenantId}/users`}",
         "method": "\"get\""
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 120,
+      "line": 121,
       "attrs": {
         "action": "{setProtectedAdminLeaveSelfAccessAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 132,
+      "line": 133,
       "attrs": {
         "action": "{setTenantMemberPeopleBundlesAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 150,
+      "line": 151,
       "attrs": {
         "action": "{changeTenantAdminRoleAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 157,
+      "line": 158,
       "attrs": {
         "action": "{setMemberAccessAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 184,
+      "line": 185,
       "attrs": {
         "action": "{reissueMemberInvitationAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/page.tsx",
-      "line": 189,
+      "line": 190,
       "attrs": {
         "action": "{revokeMemberInvitationAction}"
       },
       "client": false,
-      "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
+      "sourceHash": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "owningGuard": "OfflineForm",
+      "offlineReview": "C9 twenty-five server-owned management forms;38 focused source/controlledcases; native/fullvisual/actual actors OPEN"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
@@ -1949,9 +2003,19 @@
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
+    },
+    {
+      "file": "src/components/offline-form.tsx",
+      "line": 9,
+      "attrs": {
+        "onSubmit": "{(event) => {\n    if (blockOfflineSubmission(event)) return;\n    onSubmit?.(event);\n  }}"
+      },
+      "sharedImplementation": true,
+      "offlineReview": "C9 shared opt-in guard implementation, not a new operation"
     }
   ],
-  "total": 152,
-  "hasSubmitHandler": 60,
-  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage. C7 three existing inline handlers guarded;152 forms/54 handlers structural only, not acceptance percentage. C8 six new owning guards;152 forms/60 handlers structural only, not acceptance percentage."
+  "total": 153,
+  "hasSubmitHandler": 61,
+  "scope": "Current structural form frontier; source hashes normalized LF. Historical18/19/20/30 handlers becomes41 after eleven C4 guards. C1/C2/C3/C4 annotations are bounded offline source review only; all full semantics/actors/runtime still pending. C5 twelve new owning guards;152 forms/53 handlers structural only, not acceptance percentage. C6 one new policy handler plus eight existing custom guards;152 forms/54 handlers structural only, not acceptance percentage. C7 three existing inline handlers guarded;152 forms/54 handlers structural only, not acceptance percentage. C8 six new owning guards;152 forms/60 handlers structural only, not acceptance percentage. C9 twenty-five owning composite guards plus one shared implementation;153 source form sites/61 native handlers structural only, not acceptance percentage.",
+  "guardedCompositeSites": 25
 }

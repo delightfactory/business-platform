@@ -1,9 +1,10 @@
+import { OfflineForm } from '@/components/offline-form';
+import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
-import { SubmitButton } from '@/components/submit-button';
 import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -117,19 +118,19 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الحزمة محفوظة؛ يتطلب التسجيل ربط الموظف وسياسة الموقع' : 'الحزمة غير مضافة'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
                 {row.protected_admin && <p className="field-hint">تغيير حزم الحضور للأعضاء لا يغيّر دور مسؤول الشركة المحمي. لا تُمنح حزمة الحضور تلقائيًا لهذا الدور؛ راجع مدير الوصول لإتاحة المسار المسموح.</p>}
-                {canManageRoles && row.protected_admin && row.access_state === 'active' && <form action={setProtectedAdminLeaveSelfAccessAction}>
+                {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
-                  <SubmitButton className="secondary-button" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
+                  <OfflineSubmitButton className="secondary-button" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
                   <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات الإجازة الذاتية فقط، مع الحفاظ على دور مسؤول الشركة.</p>
-                </form>}
+                </OfflineForm>}
               </div>
               <div className="invitation-actions">
                 {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
                   <summary className="secondary-button">إدارة حزم الوصول</summary>
                   <p className="field-hint">يمكن اختيار حتى ٢٤ حزمة. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
-                  <form action={setTenantMemberPeopleBundlesAction}>
+                  <OfflineForm action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
                     <fieldset>
@@ -139,27 +140,27 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                         <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
                       </label>)}
                     </fieldset>
-                    <SubmitButton className="secondary-button" label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
-                  </form>
+                    <OfflineSubmitButton className="secondary-button" label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
+                  </OfflineForm>
                 </details>}
                 {canManageRoles && row.access_state === 'active' && <details className="role-change-confirmation">
                   <summary className="secondary-button">{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</summary>
                   <p className="field-hint">{row.protected_admin
                     ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
                     : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المقاعد.</p>
-                  <form action={changeTenantAdminRoleAction}>
+                  <OfflineForm action={changeTenantAdminRoleAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
                     <input type="hidden" name="roleAction" value={row.protected_admin ? 'demote' : 'promote'} />
-                    <SubmitButton className="secondary-button" label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
-                  </form>
+                    <OfflineSubmitButton className="secondary-button" label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
+                  </OfflineForm>
                 </details>}
-                {!row.protected_admin && <form action={setMemberAccessAction}>
+                {!row.protected_admin && <OfflineForm action={setMemberAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
-                  <SubmitButton className="secondary-button" label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
-                </form>}
+                  <OfflineSubmitButton className="secondary-button" label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
+                </OfflineForm>}
               </div>
             </li>
           ))}</ul>
@@ -181,16 +182,16 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 {invitation.lifecycle_state === 'pending' && <p className="field-hint">لا تُحتسب الدعوة ضمن المقاعد حتى يقبلها المستخدم.</p>}
               </div>
               {invitation.lifecycle_state === 'pending' && <div className="invitation-actions">
-                <form action={reissueMemberInvitationAction}>
+                <OfflineForm action={reissueMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <SubmitButton className="secondary-button" label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
-                </form>
-                <form action={revokeMemberInvitationAction}>
+                  <OfflineSubmitButton className="secondary-button" label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
+                </OfflineForm>
+                <OfflineForm action={revokeMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <SubmitButton className="secondary-button" label="إلغاء الدعوة" />
-                </form>
+                  <OfflineSubmitButton className="secondary-button" label="إلغاء الدعوة" />
+                </OfflineForm>
               </div>}
             </li>
           ))}</ul>
