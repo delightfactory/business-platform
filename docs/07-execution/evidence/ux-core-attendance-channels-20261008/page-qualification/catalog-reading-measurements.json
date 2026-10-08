@@ -1,0 +1,34 @@
+[
+  {
+    "scene": "before-catalog-manager",
+    "documentHeight": 1780,
+    "firstRecordTop": 288.63751220703125,
+    "lastRecordBottom": 1467.750030517578,
+    "recordCount": 3,
+    "width": 390
+  },
+  {
+    "scene": "catalog-manager",
+    "documentHeight": 1806,
+    "firstRecordTop": 315.8374938964844,
+    "lastRecordBottom": 1493.350067138672,
+    "recordCount": 3,
+    "width": 390
+  },
+  {
+    "scene": "before-catalog-manager",
+    "documentHeight": 1322,
+    "firstRecordTop": 263.4375,
+    "lastRecordBottom": 1182.1500549316406,
+    "recordCount": 3,
+    "width": 1366
+  },
+  {
+    "scene": "catalog-manager",
+    "documentHeight": 900,
+    "firstRecordTop": 263.4375,
+    "lastRecordBottom": 673.1125183105469,
+    "recordCount": 3,
+    "width": 1366
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "file": "docs/07-execution/evidence/ux-redesign-proposal-20261007/ux-concept-c.html",
+  "gitBlobSha256": "af24015383285eaf543e9c95839f55225c2fe9817dd8b1e16d2084f857725508",
+  "localNormalizedLfSha256": "af24015383285eaf543e9c95839f55225c2fe9817dd8b1e16d2084f857725508",
+  "localRawSha256": "65c4e1107f07cc3a69c90a6e79464b98313e0f496a0f414c254ba306cabb9f3c",
+  "referenceImages": [
+    {
+      "file": "reference-390.jpg",
+      "sha256": "b35b4f6e4e77c48ced8f598921200d291a5c856ce751c870d9398ad68c3ffb93",
+      "provenance": "Reused prior pinned ConceptC timeview captures; different synthetic product scene, common direction only"
+    },
+    {
+      "file": "reference-1366.jpg",
+      "sha256": "9c10a7c861c28f865c9bf561dca07a9d9b725c622fb98de8a3bd84c337896ad7",
+      "provenance": "Reused prior pinned ConceptC timeview captures; different synthetic product scene, common direction only"
+    }
+  ]
+}

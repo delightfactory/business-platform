@@ -1,0 +1,152 @@
+[
+  {
+    "scene": "catalog-manager",
+    "scrollWidth": 375,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج متابعة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "موقوفة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "مفعّلة"
+      }
+    ],
+    "width": 390
+  },
+  {
+    "scene": "source-manager",
+    "scrollWidth": 375,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج ربط الموظف"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تعذرت المعالجة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تم التسجيل"
+      }
+    ],
+    "width": 390
+  },
+  {
+    "scene": "catalog-manager",
+    "scrollWidth": 753,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج متابعة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "موقوفة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "مفعّلة"
+      }
+    ],
+    "width": 768
+  },
+  {
+    "scene": "source-manager",
+    "scrollWidth": 753,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج ربط الموظف"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تعذرت المعالجة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تم التسجيل"
+      }
+    ],
+    "width": 768
+  },
+  {
+    "scene": "catalog-manager",
+    "scrollWidth": 1366,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج متابعة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "موقوفة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "مفعّلة"
+      }
+    ],
+    "width": 1366
+  },
+  {
+    "scene": "source-manager",
+    "scrollWidth": 1351,
+    "statuses": [
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تحتاج ربط الموظف"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تعذرت المعالجة"
+      },
+      {
+        "background": "rgb(236, 238, 234)",
+        "color": "rgb(23, 32, 28)",
+        "radius": "99px",
+        "text": "تم التسجيل"
+      }
+    ],
+    "width": 1366
+  }
+]

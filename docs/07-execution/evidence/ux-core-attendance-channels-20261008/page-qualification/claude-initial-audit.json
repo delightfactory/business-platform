@@ -1,0 +1,10 @@
+{
+  "exitCode": 0,
+  "readOnlyUnchanged": true,
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "subtype": "success"
+}

@@ -1,0 +1,153 @@
+{
+  "baseline": "371ae4a7245d97475143d196f1be0ab4f708bf12",
+  "parent": "19e2be1a8e185cbe4509edbab277807e16cecd2b",
+  "acceptance": "Controlled source/common visual increment only; full R5/core OPEN",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/page.tsx",
+      "sha256": "7c30b4ddeed0ea5da8a90e22a3ece3c4e0b625b93845ee7971fa6af3c0eb2cbd",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "sha256": "72128d28bf618cc1ef056f8e6c31f24bc2086568597f31ba9c390901425f01e7",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-channels.module.css",
+      "sha256": "bbe22edcb4f18c452757e9c08a3a2f7dc0f5ec989eebd694557be2c8318ffdce",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "sha256": "fac5a950866cc0d773678bd274d369e01db8f3e569d7cf17c2051b36b4b47c58",
+      "normalization": "LF"
+    }
+  ],
+  "files": [
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/catalog-manager-1366.png",
+      "sha256": "89033e4f463f094cf93330d5cad88428fd0975b4cc9d19b068ec548a2103726f"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/catalog-manager-390.png",
+      "sha256": "f2368116aff4d984b93f68c802c8d03f9161fe3623aea1bbe4f7068391b47bca"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/catalog-manager-768.png",
+      "sha256": "ed63fbab50606a2a5d8106cd8159ffd36dc168a945a6b5374cc052686f8bfada"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/catalog-reading-measurements.json",
+      "sha256": "32ab53f96ee5a1a305c7d8a9c12d27b08734ba27f4d18df58730ae1128dc883c"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/channel-pages.cjs",
+      "sha256": "7f4f69a58ec03cf6555983f183240a29a2c3361ef32944d69b3acc6ac73e3881"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/claude-final-audit.json",
+      "sha256": "fe2eccc867df99ec50d5ad96c6b448847b3b34d0f3913118dc7171895bdea627"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/claude-final.txt",
+      "sha256": "89c669587a091c11d6ca4f5f743157eea967978bcbf56e1f2ab7c558d142cb65"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/claude-initial-audit.json",
+      "sha256": "fe2eccc867df99ec50d5ad96c6b448847b3b34d0f3913118dc7171895bdea627"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/claude-initial.txt",
+      "sha256": "523f88aa61fc7c69173597b332b1cd352202fdd91f0ccf4bfc78a0ec5ca78950"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/event-optionEmployeeFailed-1366.png",
+      "sha256": "9abb10b221211ea2cdc7e41840d7b5eacd74a0a108abcd1f470bf4116d48f3f7"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/event-optionEmployeeFailed-390.png",
+      "sha256": "82c92a0e126b24661b6d55105f768c99ff7829fed15cee0d5ce2ad259a50c33a"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/event-optionEmployeeFailed-768.png",
+      "sha256": "f4a07835c444516bc648952abcce2c031adb2c1012d7a312065ac7028e59cffa"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/final-parent-layout-evidence.json",
+      "sha256": "fe5b69a15011b8e14c3bd49e6ffb8629cb88d8a9170eda28b6ffac57738e49e3"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/gates.json",
+      "sha256": "9e9fe3b4573c0c56149e614e26b320234081f79ed1db0e29b0119968a98cd0f1"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/inventory-migration.json",
+      "sha256": "320e28b8cefdd672850bcaddf6ae836681d5be0c1b5160da03252ff671378f8a"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/native-anchor-evidence.json",
+      "sha256": "af1fb45a5e34a0b5d659e6cd24d3cb04759aefcef057d3d683a27d2d99ffc671"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/page-runtime-results.json",
+      "sha256": "46c840c11ce2d0a88b0d5a2b62c5373fbed248973cc6aeab54dc5586d6a32cd6"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/parent-reading-measurements.json",
+      "sha256": "dfd75384f8a9d70aea07b3fbf98c86275c5b1ac56da41e105ac154d8f035b9df"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/qualification.md",
+      "sha256": "cccc962f4a568de7932f5a52c7b7ef53a36ded3177164971c485530269acd4bb"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/queue-manager-1366.png",
+      "sha256": "ea64b8966f1aeb785b861129b782fe7bf9eea9adfe9b715ab404cda915d03317"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/queue-manager-390.png",
+      "sha256": "38250a534ee586f0c255f67013501bc4986809ce8485596bf566b4f46af56395"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/queue-manager-768.png",
+      "sha256": "f24aa98325122663dbb8de12b6f20f3569c7dba19733afa4715f0a9bb8724d59"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/reference-1366.jpg",
+      "sha256": "9c10a7c861c28f865c9bf561dca07a9d9b725c622fb98de8a3bd84c337896ad7"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/reference-390.jpg",
+      "sha256": "b35b4f6e4e77c48ced8f598921200d291a5c856ce751c870d9398ad68c3ffb93"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/reference-proof.cjs",
+      "sha256": "62ba16ce545fc17d650b781eebd78c2da182500514da94c6cfe25da0dc765b0d"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/reference-proof.json",
+      "sha256": "f97eebd8fb3d04ce8ff94c114decf749bb397c5d2a985ce468957bbe8d429a3c"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/serve-page-scenes.cjs",
+      "sha256": "ae46e3539089c7d5395bf3dd6f6cdb7b2b2e2043efb65b94bc83c808c78709cf"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/source-manager-1366.png",
+      "sha256": "6b11a880be712edecd765a68132850417edbe7be05036f266f23bb8ddaee2956"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/source-manager-390.png",
+      "sha256": "9b923437503ca48d48eda78a68d8c8487778b39396371019ac7759b3dece8d63"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/source-manager-768.png",
+      "sha256": "6d1f6a52a52f751bf204369d9fd0a4ca5eeb3af4a94d3c1df82acea4f31635ec"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/page-qualification/status-pill-evidence.json",
+      "sha256": "3c6a3d9d553804d5b5e06c094e7bef8f081dc987c386a63ad0163c9cd94e8fca"
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+[
+  {
+    "scene": "catalog-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": "341.2px",
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 315.8374938964844,
+    "markerPosition": null,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "source-manager",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "الحركات والمتابعة"
+      },
+      {
+        "height": 46,
+        "text": "ربط الموظفين"
+      },
+      {
+        "height": 46,
+        "text": "الإعدادات والإصدارات"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 492.9500122070313,
+    "markerPosition": null,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "event-optionEmployeeFailed",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "النتيجة والإجراء"
+      },
+      {
+        "height": 46,
+        "text": "قرارات الموقع"
+      },
+      {
+        "height": 46,
+        "text": "نتائج المعالجة"
+      },
+      {
+        "height": 46,
+        "text": "إعادة الإرسال"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 1370.875,
+    "markerPosition": null,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "queue-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 645.6000366210938,
+    "markerPosition": "inside",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "catalog-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": "344.562px 344.562px",
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 230.2375030517578,
+    "markerPosition": null,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "source-manager",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "الحركات والمتابعة"
+      },
+      {
+        "height": 46,
+        "text": "ربط الموظفين"
+      },
+      {
+        "height": 46,
+        "text": "الإعدادات والإصدارات"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 411.9125061035156,
+    "markerPosition": null,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "event-optionEmployeeFailed",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "النتيجة والإجراء"
+      },
+      {
+        "height": 46,
+        "text": "قرارات الموقع"
+      },
+      {
+        "height": 46,
+        "text": "نتائج المعالجة"
+      },
+      {
+        "height": 46,
+        "text": "إعادة الإرسال"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 1256.875,
+    "markerPosition": null,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "queue-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 431.5187683105469,
+    "markerPosition": "inside",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "catalog-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": "334.15px 334.15px 334.15px",
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 263.4375,
+    "markerPosition": null,
+    "scrollWidth": 1366,
+    "width": 1366
+  },
+  {
+    "scene": "source-manager",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "الحركات والمتابعة"
+      },
+      {
+        "height": 46,
+        "text": "ربط الموظفين"
+      },
+      {
+        "height": 46,
+        "text": "الإعدادات والإصدارات"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 420.4750061035156,
+    "markerPosition": null,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "event-optionEmployeeFailed",
+    "anchors": [
+      {
+        "height": 46,
+        "text": "النتيجة والإجراء"
+      },
+      {
+        "height": 46,
+        "text": "قرارات الموقع"
+      },
+      {
+        "height": 46,
+        "text": "نتائج المعالجة"
+      },
+      {
+        "height": 46,
+        "text": "إعادة الإرسال"
+      }
+    ],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 1290.0750732421875,
+    "markerPosition": null,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "queue-manager",
+    "anchors": [],
+    "cardBackground": "rgb(255, 255, 255)",
+    "catalogColumns": null,
+    "color": "rgb(23, 32, 28)",
+    "firstRecordY": 474,
+    "markerPosition": "inside",
+    "scrollWidth": 1351,
+    "width": 1366
+  }
+]

@@ -1,0 +1,456 @@
+{
+  "baseline": "371ae4a7245d97475143d196f1be0ab4f708bf12",
+  "cases": [
+    {
+      "page": "catalog",
+      "case": "manager",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "reader",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "disabled",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "empty",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "noSdk",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "noUser",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "manager",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "reader",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "disabled",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "empty",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "noSdk",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "noUser",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "manager",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "reader",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "disabled",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "empty",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "noSdk",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "noUser",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "manager",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "reader",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "disabled",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "empty",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "noSdk",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "noUser",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "manager",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "reader",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "disabled",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "empty",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "noSdk",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "noUser",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "accessFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "accessFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "accessFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "accessFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "catalog",
+      "case": "readFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "readFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "readFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "new",
+      "case": "readFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "readFailure",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "optionEmployeeFailed",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "optionSiteFailed",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "reviewer",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "noReplay",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "accepted",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "mobile",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "event",
+      "case": "wrongSource",
+      "rpcPreserved": true,
+      "fieldsPreserved": false,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "mobile",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "stopped",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "source",
+      "case": "optionsFailed",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "corrector",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "singleDate",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "malformed",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "attached",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "ambiguous",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "stale",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    },
+    {
+      "page": "queue",
+      "case": "error",
+      "rpcPreserved": true,
+      "fieldsPreserved": true,
+      "routeBoundaryPreserved": true,
+      "scope": "controlled SDK, not actual roles"
+    }
+  ],
+  "independentPagerSearchContext": true,
+  "nativeTargetsExist": true,
+  "scope": "Actual pages/components and library functions, synthetic SDK and PageFrame host. No mutations/hydration/full shell/real role acceptance."
+}

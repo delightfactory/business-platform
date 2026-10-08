@@ -1,0 +1,32 @@
+# R5 core channels: corrected checkpoint verdict
+
+**Verdict: MATCH WITH ACCEPTED DEVIATIONS** for the source and the scoped shared visual direction. **Full channel: NOT VISUALLY VERIFIED.** There's no equivalent reference screen, and the parent, real header and hydrated states haven't been captured.
+
+I read the spec at its `docs/04-product-specs/...` path, the catalog page, the module CSS, a grep of the source detail page, `status-pill-evidence.json`, `reference-proof.json` and the two images. I ran no commands and changed nothing.
+
+## Spec
+The spec file exists at the path you gave, so the evidence gap in my last report is closed.
+- **Matches the spec:** the presentation, the deliberate change to how GET links carry context, the retry behaviour, the native-submit repair section, the open risks, and its own statement that the work is not visually verified.
+- **Measurements:** the spec requires before/after measurements for the same user and data. The catalog numbers are historical, taken before the status pill was added; that's acceptable as long as it's labelled that way, which you've done.
+
+## Status pill fix
+- `.status` (`attendance-channels.module.css:5`) only sets text colour and background, using existing tokens. Shape comes from the existing `entity-status` class.
+- It's applied to exactly one span each in `sources/page.tsx:16` and `[sourceId]/page.tsx`. The status text, the attention logic and the permission checks are unchanged.
+- **Evidence:** the same computed style at all three widths for all six labels: background 236/238/234, text 23/32/28 (roughly 14:1 contrast), radius 99px, no overflow. Both screenshots show readable neutral pills.
+- **Same colour for every status:** "needs attention", "stopped" and "enabled" all use the neutral pill, so only the text tells them apart. That's correct under the spec, which forbids inventing success or failure colour rules.
+- **Reference provenance:** the reference images are tied to a pinned Concept C file and hashes, and labelled as a different scene used only for shared direction. That's appropriate.
+
+## Accepted deviations
+- Cairo font, 8px control corners, 40px desktop and 44px mobile controls, strong borders.
+- Section links measured at 44.4px.
+- Not addressed in this batch, by decision, and left for the parent visual review: the full-width back button, cards flush against the panel edges, and the count lines wrapping.
+
+## Remaining must-fix
+None, for source or the scoped visual.
+
+## Still open (not closed by this verdict)
+- Real header and parent shell, hydrated full parent, screen reader, JavaScript-off and client-side navigation.
+- Live SDK, real roles, providers, mutations and financial checks.
+- New density measurements after the pill.
+- The open risks listed in the spec.
+- R5 overall and any promotion to the registry.

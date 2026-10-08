@@ -1,0 +1,41 @@
+# R5 core channels: grouped checkpoint verdict
+
+I read the five JSON evidence files and the six `final-*` images, plus the two reference images. I ran no commands and changed nothing. **`attendance-channels-core-spec.md` isn't in the artifact folder** (searched with Glob), so I couldn't check the evidence against it. Restore it, or confirm its path, before you cite this checkpoint as tied to the spec.
+
+## 1. Shared visual direction (scoped)
+Broadly consistent with Concept C: light surface, white cards with 8px corners, green primary buttons, Cairo font, right-to-left layout, readable at 390, 768 and 1366 with no horizontal overflow. Section links are 46px tall. The catalog shows 3, 2 and 1 columns at the three widths. The step-number markers now sit inside each step with no collision.
+
+One concrete gap within this batch's scope, to fix before visual acceptance (it doesn't block anything functionally):
+- **Status labels on the catalog and source pages render as plain small text.** "تحتاج متابعة", "موقوفة", "مفعّلة" and the event states have no pill styling, unlike the reference and the queue's `entity-status is-*` pills. The text still says the status, so nothing is lost, but the main thing a user scans for doesn't stand out.
+
+## 2. Full channel match against the reference: NOT VISUALLY VERIFIED
+- **No matching reference screens:** the reference has no channels, settings or unassigned screens to compare against.
+- **Substitute frame:** these captures use a synthetic dark sidebar instead of the real top navigation.
+- **Pre-hydration forms:** the forms are shown in their preparing state, not working.
+- **Outside this batch, for the parent visual review:**
+  - The "back to channels" button stretches the full width on desktop.
+  - On desktop, cards sit flush against the panel edges.
+  - In narrow columns the counts wrap so "مراجعة" and "الموقع: 1" land on separate lines.
+
+## 3. Task, capability and role coverage
+All 56 cases keep the same RPCs, and their route boundaries hold. The `fieldsPreserved:false` results are only the expected `noUser` redirects and the `wrongSource` not-found, which is correct. Pagers keep their context independently and the anchor targets exist. **All roles here are modelled, not real roles.** Real providers, mutations, a complete hydrated parent and real roles all stay open.
+
+## 4. Simplicity trade-off: acceptable in this batch
+- **Catalog:** on desktop the last card now ends at 673px instead of 1182px, a real reduction. Mobile grows by 26px, which is negligible.
+- **Unassigned queue:** the first record moves down 106px on desktop and 218px on mobile. That buys three explicit, ordered steps, conditional day selection and every form still open. That's acceptable guidance with no hidden operations.
+- Record this as an honest reading cost, not as a faster task.
+- **Not required:** the intro paragraph's last sentence repeats steps 1 and 3. Removing it is optional copy work.
+
+## 5. Recovery and accessibility
+- **Present:** the option-failure alert with a retry link, the retry links on unavailable pages, the "preparing form…" text with a reload instruction, and the Cairo times kept without a UTC label on the unassigned page.
+- **Not yet shown:**
+  - A visible keyboard focus style on the section links.
+  - Whether the alert that is already present on page load is announced.
+  - How the anchor target sits under the real header (only measured at 295px in the fixture).
+
+## Must-fix
+- **Source and capability:** none.
+- **Evidence:** restore or point to the spec file.
+- **Visual (before candidate visual acceptance):** status pill styling on the catalog and source pages.
+
+Everything else stays open: real roles, providers, financial, mutations, the full parent, the build, and R5 overall.

@@ -1,0 +1,58 @@
+[
+  {
+    "scene": "before-catalog-manager",
+    "firstRecordY": 288.63751220703125,
+    "formCount": 0,
+    "recordCount": 3,
+    "width": 390
+  },
+  {
+    "scene": "before-queue-manager",
+    "firstRecordY": 428,
+    "formCount": 1,
+    "recordCount": 2,
+    "width": 390
+  },
+  {
+    "scene": "catalog-manager",
+    "firstRecordY": 315.8374938964844,
+    "formCount": 0,
+    "recordCount": 3,
+    "width": 390
+  },
+  {
+    "scene": "queue-manager",
+    "firstRecordY": 645.6000366210938,
+    "formCount": 1,
+    "recordCount": 2,
+    "width": 390
+  },
+  {
+    "scene": "before-catalog-manager",
+    "firstRecordY": 263.4375,
+    "formCount": 0,
+    "recordCount": 3,
+    "width": 1366
+  },
+  {
+    "scene": "before-queue-manager",
+    "firstRecordY": 368.3999938964844,
+    "formCount": 1,
+    "recordCount": 2,
+    "width": 1366
+  },
+  {
+    "scene": "catalog-manager",
+    "firstRecordY": 263.4375,
+    "formCount": 0,
+    "recordCount": 3,
+    "width": 1366
+  },
+  {
+    "scene": "queue-manager",
+    "firstRecordY": 474,
+    "formCount": 1,
+    "recordCount": 2,
+    "width": 1366
+  }
+]

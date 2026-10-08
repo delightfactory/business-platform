@@ -1,0 +1,13 @@
+{
+  "sourceCases": 56,
+  "RPCsAndFields": "PASS; modeled SDK only",
+  "lint": "PASS; affected source2files",
+  "typecheck": "PASS",
+  "groupedBuild": "PASS; final necessary build after reviewer status-export correction",
+  "unaffectedHeavySuites": "REUSED; no rerun",
+  "codexCommonVisual": "MATCH WITH ACCEPTED DEVIATIONS",
+  "fullChannelVisual": "NOT VISUALLY VERIFIED",
+  "wholeR5": "OPEN",
+  "servicesRetired": true,
+  "coveragePromoted": false
+}

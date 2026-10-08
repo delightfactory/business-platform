@@ -1,0 +1,67 @@
+{
+  "oldItems": 1694,
+  "newItems": 1694,
+  "migrations": [
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:4938",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:4957",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5603",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5622",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5636",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5655",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5694",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5713",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5767",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5786",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5886",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:5905",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6023",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6042",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6116",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:17:6135",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:18:6760",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:18:6779",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:18:6932",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx:18:6951",
+      "category": "formControls",
+      "reason": "same structural contract; neutral status class source-position shift"
+    }
+  ],
+  "existingReviewStatesPreserved": true
+}
