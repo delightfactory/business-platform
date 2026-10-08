@@ -1,0 +1,126 @@
+{
+  "applicationSha": "2cd7e45c1b37759b05ca8a68c89e4806bee7ccf1",
+  "database": "business_platform_cube5_adam_channels_qa",
+  "scope": "Actual local PostgreSQL authenticated role, explicit simulated claims, transaction-only synthetic fixtures; NOT real Auth login/browser/provider/full role or state acceptance",
+  "checks": [
+    {
+      "id": "lifecycle-user-has-lifecycle",
+      "observed": true,
+      "result": "pass"
+    },
+    {
+      "id": "commercial-user-has-commercial",
+      "observed": true,
+      "result": "pass"
+    },
+    {
+      "id": "lifecycle-grant-does-not-imply-commercial",
+      "result": "pass"
+    },
+    {
+      "id": "commercial-grant-does-not-imply-lifecycle",
+      "result": "pass"
+    },
+    {
+      "id": "live-lifecycle-snapshot-accepted-by-current-presentation-guard",
+      "result": "pass"
+    },
+    {
+      "id": "live-missing-limits-snapshot-accepted-by-current-presentation-guard",
+      "result": "pass"
+    },
+    {
+      "id": "live-five-missing-entitlements-snapshot-accepted-by-current-presentation-guard",
+      "result": "pass"
+    },
+    {
+      "id": "rollback-zero-owned-users-grants-tenant",
+      "result": "pass"
+    },
+    {
+      "id": "expired-runtime-login-remains-disabled",
+      "result": "pass"
+    }
+  ],
+  "sourceGuard": {
+    "file": "src/lib/operator-read.ts",
+    "sha256": "eb39ba4875655e2680c698cc9784dbaf44cec4f59d6856580a3d9f500347ffd0"
+  },
+  "newLoginAccessCreated": false,
+  "newServicesCreated": 0,
+  "realCredentialsRead": false,
+  "rollback": {
+    "case": "rollback",
+    "newUsersRemaining": 0,
+    "newGrantsRemaining": 0,
+    "newTenantRemaining": 0,
+    "existingQaLoginEnabled": 0
+  },
+  "rawRowsExcluded": true,
+  "sqlSourceFingerprints": [
+    {
+      "signature": "platform_tenant_lifecycle_get(uuid)",
+      "sha256": "19b4e05334204ea45782bacdfa30ee4f07fbaf4e3ab3a0a05044ea20723b4198"
+    },
+    {
+      "signature": "platform_tenant_commercial_snapshot(uuid)",
+      "sha256": "e22bd878baba76c09441273f35ffb01cc3990691bfaea16dae058e738071a5f5"
+    },
+    {
+      "signature": "platform_tenant_entitlement_snapshot(uuid)",
+      "sha256": "c17a5cc2d53147508d5838385d48004ccf9ca887668a71513eef8f6901ff48a7"
+    },
+    {
+      "signature": "current_operator_can_manage_tenant_lifecycle()",
+      "sha256": "a28a4dd85b5e018f52a4c72ddd536df798fdba8e90dbc11597e8964e512a82b7"
+    },
+    {
+      "signature": "current_operator_can_manage_commercial_access()",
+      "sha256": "c562cf824356a104f58efe7ae9b629b48bdfc98ffe1e880e7869a2b682c3246d"
+    }
+  ],
+  "snapshotActors": [
+    {
+      "snapshot": "platform_tenant_lifecycle_get(uuid)",
+      "actor": "transaction-only lifecycle-granted synthetic user",
+      "ownPermission": true,
+      "otherPermission": false,
+      "currentSqlRole": "authenticated"
+    },
+    {
+      "snapshot": "platform_tenant_commercial_snapshot(uuid)",
+      "actor": "transaction-only commercial-granted synthetic user",
+      "ownPermission": true,
+      "otherPermission": false,
+      "currentSqlRole": "authenticated"
+    },
+    {
+      "snapshot": "platform_tenant_entitlement_snapshot(uuid)",
+      "actor": "transaction-only commercial-granted synthetic user",
+      "ownPermission": true,
+      "currentSqlRole": "authenticated"
+    }
+  ],
+  "positiveEvidence": "Original executed transaction captured own=true and other=false for both actors and asserted each with strict equality before writing the report. This reporting correction reuses those captured results; no test rerun.",
+  "independentPostRollbackSession": {
+    "lifecycleExecute": true,
+    "commercialExecute": true,
+    "entitlementExecute": true,
+    "ownedNamespaceUsersRemaining": 0
+  },
+  "limits": [
+    "Simulated Auth claims; no real login/provider/browser acceptance",
+    "Local SQL definition hashes do not certify repository migration equivalence",
+    "Rollback removes transactional rows; nontransactional sequence/cache effects are not claimed absent",
+    "Only two positive independent grants and default/missing snapshots, not all operations/actors/states"
+  ],
+  "review": {
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "officialDirect": true,
+    "session": "23d1b583-b564-42d9-971e-a536f62372b7",
+    "verdict": "ACCEPT with reporting flaw; captured positive controls and snapshot actor labels added without rerun",
+    "reportingConditionLocallyVerified": true,
+    "fullVisual": "NOT VISUALLY VERIFIED"
+  }
+}
