@@ -1,0 +1,95 @@
+{
+  "base": "c5abab6c8f5e06bc8a13da064b7e5e2c91005ed4",
+  "sources": [
+    {
+      "file": "src/app/operator/statutory/dto.ts",
+      "sha256LF": "7877d6976929c36cd5eb78da52ee5ba327e4b4eaed30c5ee3b8107e2040025d3"
+    },
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256LF": "d026522db690737c74722cc74317a55a11f38b5d3ef253060a2821257d056bf9"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "sha256LF": "ef6a2a7fa08ce9f08f85cde920c1505af39e5815b7885bc35ba6aee99baec963"
+    },
+    {
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "sha256LF": "8e49884dbf5dbf8be545925d8b5ac3fc441719debcb37b5975e6a1ceb124fa08"
+    },
+    {
+      "file": "src/app/operator/statutory/actions.ts",
+      "sha256LF": "889802a5a4f04fd1388b8b86f7264faa0a018de2a61d217174b75c6ad0f68a0a"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonHistory.tsx",
+      "sha256LF": "34200ea5679492ed29e65052b5609446f73e0fbce07db8f171f5938a5b067ece"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "sha256LF": "36e7ca6f2ffd4bcfdffad64b8ca5d9ce6bb04a0e136dd1af1e2a740222779cee"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "sha256LF": "a2016b22ce37d7903b2d17dc3ef13b0cf9df8114f2afd6fa167c5390e8f7f017"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/issuance-actions.ts",
+      "sha256LF": "febbdd181840fa818924c76fbdabbc977fb1c094922a6b4e25a89839a4a6bb48"
+    }
+  ],
+  "checks": {
+    "controlledParserPageSSR": 52,
+    "controlledActualServerActions": 15,
+    "controlledHookJSX": 2,
+    "totalSourceCases": 69,
+    "groupedAffectedLintBuildIncludingTypeScript": "exit0 before final C1 delta",
+    "finalC1AffectedLintTypeScript": "exit0",
+    "secondHeavyBuild": false,
+    "sqlAuthFinancialRerun": false
+  },
+  "reviews": [
+    {
+      "file": "claude-candidate-review.md",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "effort": "medium",
+      "readOnlyUnchanged": true,
+      "sessionId": "6feb6b72-eeb5-4a8d-a33a-5e94614dd352",
+      "scope": "Nine source files supplied and three390PNG images actually Read"
+    },
+    {
+      "file": "claude-final-source-delta.md",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "effort": "medium",
+      "readOnlyUnchanged": true,
+      "sessionId": "6feb6b72-eeb5-4a8d-a33a-5e94614dd352",
+      "scope": "Final DraftForm source supplied; no fresh full-source/image reread"
+    }
+  ],
+  "cleanup": {
+    "ownedNextSession": 63001,
+    "terminalAfterCtrlC": 1,
+    "port3610Listeners": 0,
+    "ownedTabsClosed": [
+      "85",
+      "87",
+      "88"
+    ],
+    "viewportReset": true
+  },
+  "codexVisual": "NOT VISUALLY VERIFIED for full reference/state matrix; shared390 direction inspected only",
+  "claudeVisual": "NOT VISUALLY VERIFIED for full reference/state matrix; three390 images direction only",
+  "semanticPromotion": false,
+  "remaining": [
+    "Rest of B1 onboarding/entry flags/invitations",
+    "Mounted successful save/revalidation/issue/unknown/stale with actual roles and SQL",
+    "New descriptive labour wording acceptance",
+    "Complete production state/viewport render review",
+    "Matched simplicity metrics and B2 complete journeys",
+    "Full R0-R8"
+  ]
+}

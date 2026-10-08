@@ -1,0 +1,80 @@
+{
+  "scope": "Actual source server actions with controlled authenticated SDK mutation responses; no real database/provider writes or mounted unknown replay",
+  "checks": [
+    {
+      "id": "draft-historical-receipt",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "draft-wrong-head",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "draft-unincremented",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "draft-error-wins",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "draft-stale",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "draft-denied",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-valid",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-wrong-pack",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-wrong-revision",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-wrong-scope",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-financial-true",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-error-wins",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-stale",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-prerequisite",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    },
+    {
+      "id": "issue-denied",
+      "result": "pass",
+      "originalRPCBindingPreserved": true
+    }
+  ]
+}

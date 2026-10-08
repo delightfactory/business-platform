@@ -3,6 +3,7 @@ import {revalidatePath} from 'next/cache';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
 import type {IssuanceState} from './IssuanceForm';
+import {issueReceipt} from '../dto';
 
 export async function issueRules(previous:IssuanceState,form:FormData):Promise<IssuanceState>{
  const value=(key:string)=>String(form.get(key)??'');
@@ -19,7 +20,7 @@ export async function issueRules(previous:IssuanceState,form:FormData):Promise<I
   if(error.code?.startsWith('22'))return fail('راجع مرجع المراجعة وتأكيد التحقق قبل الإصدار.');
   return fail('لم تتأكد نتيجة الإصدار. استعدها بنفس البيانات أو أعد فتح الصفحة للتحقق.',true);
  }
- if(!data?.pack)return fail('لم تتأكد نتيجة الإصدار. استعدها بنفس البيانات.',true);
+ if(!issueReceipt(data,revision))return fail('لم تتأكد نتيجة الإصدار. استعدها بنفس البيانات.',true);
  revalidatePath('/operator/statutory');revalidatePath('/operator/statutory/comparisons');
  return {saved:true,error:'',uncertain:false,stale:false};
 }

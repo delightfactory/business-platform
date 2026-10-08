@@ -1,0 +1,231 @@
+{
+  "scope": "Pure consumed-shape guards and actual JSX/React SSR with controlled SDK; no real SQL/Auth/provider/hydration/visual/full-journey acceptance",
+  "checks": [
+    {
+      "id": "valid-selected",
+      "result": "pass"
+    },
+    {
+      "id": "uppercase-scope",
+      "result": "pass"
+    },
+    {
+      "id": "wrong-head",
+      "result": "pass"
+    },
+    {
+      "id": "wrong-version-head",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-date",
+      "result": "pass"
+    },
+    {
+      "id": "missing-history",
+      "result": "pass"
+    },
+    {
+      "id": "bad-source",
+      "result": "pass"
+    },
+    {
+      "id": "bad-nested-bands",
+      "result": "pass"
+    },
+    {
+      "id": "bad-branch",
+      "result": "pass"
+    },
+    {
+      "id": "current-revision-stale",
+      "result": "pass"
+    },
+    {
+      "id": "concurrent-history-stale",
+      "result": "pass"
+    },
+    {
+      "id": "extra-fields-tolerated",
+      "result": "pass"
+    },
+    {
+      "id": "missing-list-not-empty",
+      "result": "pass"
+    },
+    {
+      "id": "empty-list-valid",
+      "result": "pass"
+    },
+    {
+      "id": "malformed-cursor",
+      "result": "pass"
+    },
+    {
+      "id": "valid-release",
+      "result": "pass"
+    },
+    {
+      "id": "string-ready",
+      "result": "pass"
+    },
+    {
+      "id": "wrong-release-revision",
+      "result": "pass"
+    },
+    {
+      "id": "financial-qualification",
+      "result": "pass"
+    },
+    {
+      "id": "wrong-scope",
+      "result": "pass"
+    },
+    {
+      "id": "bad-missing-coverage",
+      "result": "pass"
+    },
+    {
+      "id": "bad-counts",
+      "result": "pass"
+    },
+    {
+      "id": "bad-stamp",
+      "result": "pass"
+    },
+    {
+      "id": "contradictory-ready",
+      "result": "pass"
+    },
+    {
+      "id": "issued-ready-valid",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-blocker-preserved",
+      "result": "pass"
+    },
+    {
+      "id": "missing-history-rows-not-empty",
+      "result": "pass"
+    },
+    {
+      "id": "historical-draft-replay",
+      "result": "pass"
+    },
+    {
+      "id": "wrong-receipt-head",
+      "result": "pass"
+    },
+    {
+      "id": "nonincremented-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "new-draft-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "invalid-issue-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "valid-issue-receipt",
+      "result": "pass"
+    },
+    {
+      "id": "unsafe-source-not-link",
+      "result": "pass"
+    },
+    {
+      "id": "labour-row-renders-without-tax",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-variant-visible",
+      "result": "pass"
+    },
+    {
+      "id": "malformed-row-visible",
+      "result": "pass"
+    },
+    {
+      "id": "unsafe-reference-not-anchor",
+      "result": "pass"
+    },
+    {
+      "id": "unknown-origin-not-official",
+      "result": "pass"
+    },
+    {
+      "id": "original-tax-fields-rendered",
+      "result": "pass"
+    },
+    {
+      "id": "selected-missing-no-form",
+      "result": "pass"
+    },
+    {
+      "id": "selected-wrong-head-no-form",
+      "result": "pass"
+    },
+    {
+      "id": "nonboolean-stat-grant-no-form",
+      "result": "pass"
+    },
+    {
+      "id": "valid-selected-form",
+      "result": "pass"
+    },
+    {
+      "id": "issued-form-context",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-string-readiness",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-release-revision",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-history-null",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-history-race",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-release-PT409",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-valid-issued-ready",
+      "result": "pass"
+    },
+    {
+      "id": "comparison-valid-labour",
+      "result": "pass"
+    }
+  ],
+  "sourceFingerprints": [
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256LF": "d026522db690737c74722cc74317a55a11f38b5d3ef253060a2821257d056bf9"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "sha256LF": "a2016b22ce37d7903b2d17dc3ef13b0cf9df8114f2afd6fa167c5390e8f7f017"
+    },
+    {
+      "file": "src/app/operator/statutory/dto.ts",
+      "sha256LF": "7877d6976929c36cd5eb78da52ee5ba327e4b4eaed30c5ee3b8107e2040025d3"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonHistory.tsx",
+      "sha256LF": "34200ea5679492ed29e65052b5609446f73e0fbce07db8f171f5938a5b067ece"
+    }
+  ]
+}

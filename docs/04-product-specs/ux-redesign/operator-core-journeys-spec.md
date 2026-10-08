@@ -72,3 +72,7 @@ Record matched before/after N/C/P/I/B, task completion, wrong turns and safe val
 Concept C has no operator screen: shared semantic palette, cards, hierarchy, readable RTL and secondary controls guide the work, with actual authority taking precedence. Both Codex and official Opus must inspect actual version-bound affected renders and state their separate verdicts. Neither source review nor inherited cropped tablet/desktop captures proves visual acceptance. Current verdict for this preparation: **NOT VISUALLY VERIFIED** for both.
 
 No application changes or tests are accepted by this document. Structural registry remains 281 files/1717 items with earlier statuses preserved; no semantic promotion. Full R3/R8 and complete real-role/cross-domain/visual/semantic acceptance remain open. No migration, production change, deployment, PR or main merge is included.
+
+## Statutory implementation checkpoint
+
+The statutory subpart of B1 is now implemented as source WIP, with69bounded source checks and focused synthetic browser observations. See [candidate evidence](../../07-execution/evidence/ux-core-statutory-20261008/README.md). Final C1 keeps existing forms mounted across no-rules/rules continuation changes and shows the saved acknowledgement outside disclosure. This does not freeze full B1/B2 or claim phase/runtime/visual acceptance; remaining onboarding, flags, invitations, wording and full journeys are unchanged gates.

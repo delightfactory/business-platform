@@ -1,0 +1,13 @@
+{
+  "scope": "Actual DraftForm returned JSX with controlled hook state; not mounted transition/server save acceptance",
+  "checks": [
+    {
+      "id": "no-rules-to-rules-stable-form-position",
+      "result": "pass"
+    },
+    {
+      "id": "save-acknowledgement-outside-closed-disclosure",
+      "result": "pass"
+    }
+  ]
+}

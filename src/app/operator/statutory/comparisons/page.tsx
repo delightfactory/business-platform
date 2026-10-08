@@ -2,12 +2,11 @@ import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
-import {ComparisonForm,type ComparisonCase} from './ComparisonForm';
-import {scenarios,outputs} from './labels';
-import {IssuanceStatus,type ReleaseStatus} from './IssuanceStatus';
-import type {Source} from '../DraftForm';
+import {ComparisonForm} from './ComparisonForm';
+import {ComparisonHistoryRow} from './ComparisonHistory';
+import {selectedWorkspace,comparisonHistory,releaseStatus} from '../dto';
+import {IssuanceStatus} from './IssuanceStatus';
 export const dynamic='force-dynamic';
-type Row={id:number;revision:number;case_data:ComparisonCase;result:{matched:boolean;actual:Record<string,number|string>;expected:Record<string,string>;tax:{annual_base:number|string;cumulative_tax_due:number|string;current_tax_delta:number|string}};created_at:string};
 export default async function ComparisonPage({searchParams}:{searchParams:Promise<{head?:string;before?:string}>}){
  const q=await searchParams;const url='/operator/statutory/comparisons?'+new URLSearchParams(q);const failure=(detail:string)=><main className="app-shell"><section className="work-card"><h1>تعذر فتح مقارنة القواعد</h1><p role="alert">{detail}</p><Link href={url}>إعادة المحاولة</Link> · <Link href="/operator/statutory">العودة إلى المسودات</Link></section></main>;
  if(!q.head||!uuid(q.head)||(q.before&&!/^[1-9][0-9]{0,14}$/.test(q.before)))return failure('راجع اختيار المسودة أو صفحة المقارنات.');
@@ -15,11 +14,16 @@ export default async function ComparisonPage({searchParams}:{searchParams:Promis
  const [workspace,history]=await Promise.all([client.rpc('statutory_draft_workspace',{p_head:q.head,p_limit:20}),client.rpc('statutory_draft_comparison_history',{p_head:q.head,p_before:q.before?Number(q.before):null,p_limit:20})]);
  if(workspace.error?.code==='42501'||history.error?.code==='42501')return failure('تحتاج مهمة إدارة القواعد القانونية الممنوحة صراحةً. راجع مسؤول تشغيل المنصة.');
  if(workspace.error||history.error||!workspace.data?.head||!history.data)return failure('تعذر تحميل المسودة أو المقارنات. لا تُعرض نتيجة التحميل كقائمة فارغة.');
- const release=await client.rpc('statutory_draft_issuance_status',{p_head:q.head,p_expected:workspace.data.head.revision});
- if(release.error||!release.data)return failure(release.error?.code==='42501'?'تحتاج مهمة مراجعة القواعد القانونية.':'تعذر التحقق من حالة التأهيل. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
- const w=workspace.data as {head:{id:string;version:string;revision:number};current:{numeric_rules:unknown;source_references:Source[]}};const h=history.data as {rows:Row[];next:number|null;current_revision:number};
+ const parsed=selectedWorkspace(workspace.data,q.head),h=comparisonHistory(history.data);
+ if(parsed.stale)return failure('تغيرت المسودة أثناء القراءة. أعد تحميل النسخة الحالية قبل مراجعة المقارنات.');
+ if(!parsed.value||!h)return failure('تعذر التحقق من بيانات المسودة أو سجل المقارنات. لا تُعرض البيانات غير المتاحة كقائمة فارغة.');
+ const w=parsed.value;
+ if(h.current_revision!==w.head.revision||h.rows.some(row=>row.revision>w.head.revision))return failure('تغيرت نسخة القواعد أثناء القراءة. أعد تحميل الحالة الحالية.');
+ const release=await client.rpc('statutory_draft_issuance_status',{p_head:q.head,p_expected:w.head.revision});
+ if(release.error)return failure(release.error.code==='42501'?'تحتاج مهمة مراجعة القواعد القانونية.':release.error.code==='PT409'?'تغيرت القواعد أو أدلتها أثناء القراءة. أعد تحميل النسخة الحالية.':'تعذر التحقق من حالة التأهيل. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
+ const status=releaseStatus(release.data,w.head.revision);if(!status)return failure('تعذر التحقق من حالة الإصدار. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
  return <main className="app-shell"><section className="work-card"><Link href={'/operator/statutory?head='+q.head} className="secondary-button">العودة إلى المسودة</Link><p className="eyebrow">الامتثال · مراجعة القواعد</p><h1>مقارنة الحساب بالنتائج المرجعية</h1><h2>{w.head.version}</h2><p>المقارنات مرتبطة بنسخة القواعد وقت حفظها. تغيير القواعد يستلزم مقارنات جديدة؛ الحالات الاصطناعية لا تؤهل قواعد الصرف.</p></section>
- <IssuanceStatus status={release.data as ReleaseStatus} head={q.head} actor={user.id}/>
- <section className="work-card"><h2>نتائج المقارنات المحفوظة</h2>{h.rows.length?<ul className="member-list">{h.rows.map(row=><li className="member-card" key={row.id}><h3>{row.case_data.name}</h3><p className="entity-status is-inactive">{row.result.matched?'الأرقام متطابقة':'يوجد اختلاف'} · {row.revision===w.head.revision?'نسخة القواعد الحالية':'نسخة سابقة من القواعد'}</p><p>{scenarios[row.case_data.scenario]} · {row.case_data.origin==='synthetic'?'حالة اصطناعية للاختبار فقط':'أرقام مسجلة من المصدر الرسمي'} · المقارنة وحدها لا تؤهل القواعد</p><p>حُفظت في {new Intl.DateTimeFormat('ar-EG',{timeZone:'Africa/Cairo',dateStyle:'medium'}).format(new Date(row.created_at))}</p><a href={row.case_data.source_url} target="_blank" rel="noopener noreferrer">مرجع النتيجة: {row.case_data.reference}</a><details><summary>الأرقام والمدخلات</summary>{Object.entries(outputs).map(([key,label])=><p key={key}>{label}: المتوقع {row.result.expected[key]} ج.م. · المحسوب {row.result.actual[key]} ج.م.</p>)}<p>صافي الدخل التراكمي قبل الإعفاء: {row.case_data.tax.net} ج.م. · المدة: {row.case_data.tax.duration} يومًا · الضريبة السابقة: {row.case_data.tax.prior_due} ج.م.</p><p>فترة الدخل: {row.case_data.tax.from} إلى {row.case_data.tax.until} · أساس الضريبة السنوي بعد التقريب: {row.result.tax.annual_base} ج.م.</p><ul>{row.case_data.insurance.map(month=><li key={month.month}>شهر {month.month.slice(0,7)} · أجر اشتراك {month.wage} ج.م. · مرجعه: {month.reference}</li>)}</ul></details></li>)}</ul>:<p>لا توجد مقارنات محفوظة في هذه الصفحة. أدخل حالة من المصدر المرجعي أو حالة اصطناعية للمراجعة المحلية.</p>}{h.next&&<Link href={'/operator/statutory/comparisons?'+new URLSearchParams({head:q.head,before:String(h.next)})}>مقارنات أقدم</Link>}</section>
- <section className="work-card">{release.data.issued_pack?<><h2>أدلة هذه النسخة ثابتة</h2><Link href={'/operator/statutory?head='+q.head}>مراجعة المسودة لإنشاء نسخة جديدة عند الحاجة</Link></>:w.current.numeric_rules?<details><summary className="primary-button">حالة مقارنة جديدة</summary><ComparisonForm head={w.head.id} revision={w.head.revision} actor={user.id} sources={w.current.source_references}/></details>:<><h2>أدخل القواعد الرقمية أولًا</h2><Link href={'/operator/statutory?head='+q.head}>مراجعة بيانات المسودة</Link></>}</section><footer className="footer">منصة الأعمال · مراجعة القواعد القانونية</footer></main>;
+ <IssuanceStatus status={status} head={q.head} actor={user.id}/>
+ <section className="work-card"><h2>نتائج المقارنات المحفوظة</h2>{h.rows.length?<ul className="member-list">{h.rows.map(row=><ComparisonHistoryRow key={row.id} row={row} currentRevision={w.head.revision}/>)}</ul>:<p>لا توجد مقارنات محفوظة في هذه الصفحة. أدخل حالة من المصدر المرجعي أو حالة اصطناعية للمراجعة المحلية.</p>}{h.next&&<Link href={'/operator/statutory/comparisons?'+new URLSearchParams({head:q.head,before:String(h.next)})}>مقارنات أقدم</Link>}</section>
+ <section className="work-card">{status.issued_pack?<><h2>أدلة هذه النسخة ثابتة</h2><Link href={'/operator/statutory?head='+q.head}>مراجعة المسودة لإنشاء نسخة جديدة عند الحاجة</Link></>:w.current.numeric_rules?<ComparisonForm head={w.head.id} revision={w.head.revision} actor={user.id} sources={w.current.source_references} secondary={status.ready}/>:<><h2>أدخل القواعد الرقمية أولًا</h2><Link href={'/operator/statutory?head='+q.head}>مراجعة بيانات المسودة</Link></>}</section><footer className="footer">منصة الأعمال · مراجعة القواعد القانونية</footer></main>;
 }

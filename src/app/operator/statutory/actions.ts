@@ -2,6 +2,7 @@
 import {revalidatePath} from 'next/cache';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import type {DraftState} from './DraftForm';
+import {draftReceipt} from './dto';
 const uuid=(s:string)=>/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(s);
 export async function saveDraftAction(previous:DraftState,form:FormData):Promise<DraftState>{
  const value=(key:string)=>String(form.get(key)??'').trim();
@@ -24,6 +25,6 @@ export async function saveDraftAction(previous:DraftState,form:FormData):Promise
   if(error.code==='22023'||error.code?.startsWith('22'))return fail('راجع التواريخ والمراجع؛ لم تُحفظ هذه البيانات.');
   return fail('تعذر تأكيد الحفظ. أعد المحاولة بنفس البيانات لاستعادة النتيجة.',true);
  }
- if(!data||!uuid(data.head)||!Number.isInteger(data.revision)||data.state!=='unqualified')return fail('تعذر تأكيد الحفظ. أعد المحاولة بنفس البيانات لاستعادة النتيجة.',true);
+ if(!draftReceipt(data,previous.head,previous.revision))return fail('تعذر تأكيد الحفظ. أعد المحاولة بنفس البيانات لاستعادة النتيجة.',true);
  revalidatePath('/operator/statutory');return {head:data.head,revision:data.revision,saved:true,error:'',uncertain:false,stale:false};
 }

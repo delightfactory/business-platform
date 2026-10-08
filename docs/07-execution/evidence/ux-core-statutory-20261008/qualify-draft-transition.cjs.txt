@@ -1,0 +1,11 @@
+const fs=require('fs');let source=fs.readFileSync(__dirname+'/qualify-statutory.cjs','utf8').split('const l=loader(),d=')[0];
+source=source.replace("return require(require.resolve(name,{paths:[repo]}));", `if(name==='react')return {...react,useState:initial=>[typeof initial==='function'?initial():initial,()=>{}],useRef:()=>({current:null}),useActionState:()=>[{head,revision:2,saved:true,error:'',uncertain:false,stale:false},()=>{},false]};return require(require.resolve(name,{paths:[repo]}));`);
+source+=`
+const Form=loader().load('src/app/operator/statutory/DraftForm.tsx').DraftForm;
+const before=Form({actor:other,head,revision:1,numericRules:null}),after=Form({actor:other,head,revision:2,numericRules:rules,next:'/operator/statutory/comparisons?head='+head});
+function paths(n,path=[],found=[]){if(!n||typeof n!=='object')return found;if(Array.isArray(n)){n.forEach((x,i)=>paths(x,[...path,i],found));return found;}if(n.type){found.push({tag:typeof n.type==='string'?n.type:n.type.name,path,node:n});paths(n.props.children,[...path,'children'],found);}return found;}
+const b=paths(before),a=paths(after),bp=b.find(x=>x.tag==='form').path,ap=a.find(x=>x.tag==='form').path;assert.deepEqual(ap,bp);
+const status=a.find(x=>x.node.props.role==='status'),details=a.find(x=>x.tag==='details');assert(status);assert.equal(details.node.props.open,false);assert(!status.path.slice(0,details.path.length).every((part,i)=>part===details.path[i]));
+const report={scope:'Actual DraftForm returned JSX with controlled hook state; not mounted transition/server save acceptance',checks:[{id:'no-rules-to-rules-stable-form-position',result:'pass'},{id:'save-acknowledgement-outside-closed-disclosure',result:'pass'}]};fs.writeFileSync(__dirname+'/draft-transition-source-qualification.json',JSON.stringify(report,null,2)+'\\n');console.log(JSON.stringify(report));
+`;
+fs.writeFileSync(__dirname+'/transition-probe.cjs',source);require('./transition-probe.cjs');

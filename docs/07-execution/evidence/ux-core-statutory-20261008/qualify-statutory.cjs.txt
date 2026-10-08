@@ -1,0 +1,68 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const repo='C:/Users/DELL/Documents/Codex/2026-10-07/business-platform-ux-auth-recovery',ts=require(repo+'/node_modules/typescript');
+const react=require(repo+'/node_modules/react'),server=require(repo+'/node_modules/react-dom/server');
+const head='a1111111-1111-4111-8111-111111111111',other='b2222222-2222-4222-8222-222222222222';
+const rules={tax:{treatment:'01',exemption:'0',column_basis:'annual_raw',columns:[{through:'',bands:[{upper:'',rate:'0'}]}]},insurance:{category:'Synthetic',minimum:'0',maximum:'0',branches:[{branch:'pension',employee:'0',employer:'0',deductible:false}]},base_taxable:false};
+const current={head_id:head,revision:1,effective_from:'2026-01-01',effective_until:'2027-01-01',source_references:[{title:'Synthetic source',url:'https://example.com/reference'}],reason:'Synthetic review',created_at:'2026-10-08T00:00:00Z',numeric_rules:rules};
+const workspace={head:{id:head,revision:1,version:'Synthetic draft',created_at:current.created_at},current,history:[current],next_before_revision:null,state:'unqualified'};
+const release={revision:1,evidence_stamp:'0'.repeat(32),ready:false,blockers:['official_coverage_missing'],missing_coverage:[],total:1,official:0,issued_pack:null,qualification_scope:'tax_insurance',financially_qualified:false};
+const defaults={current_operator_can_manage_statutory_rules:{data:true,error:null},statutory_draft_workspace:{data:workspace,error:null},statutory_draft_comparison_history:{data:{rows:[],next:null,current_revision:1},error:null},statutory_draft_issuance_status:{data:release,error:null}};
+function loader(responses={}){const calls=[],cache=new Map();function load(file){const full=repo+'/'+file;if(cache.has(full))return cache.get(full).exports;const m={exports:{}};cache.set(full,m);const req=name=>{
+ if(name==='next/cache')return{revalidatePath:()=>{}};
+ if(name==='@/lib/supabase/server')return{createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:other}},error:null})},rpc:async(name,args)=>{calls.push({name,args});const result=responses[name]??defaults[name];if(!result)throw Error('Unexpected SDK call '+name);return result;}})};
+ if(name.endsWith('/actions')||name.endsWith('-actions'))return new Proxy({},{get:()=>async()=>{throw Error('No client mutation in SSR');}});
+ if(name.startsWith('@/')||name.startsWith('.')){const f=name.startsWith('@/')?'src/'+name.slice(2):path.relative(repo,path.resolve(path.dirname(full),name));for(const ext of ['', '.tsx','.ts'])if(fs.existsSync(repo+'/'+f+ext))return load(f+ext);throw Error('Missing source '+name);}
+ return require(require.resolve(name,{paths:[repo]}));};const js=ts.transpileModule(fs.readFileSync(full,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;vm.runInThisContext('(function(require,module,exports){'+js+'\n})',{filename:full})(req,m,m.exports);return m.exports;}return{load,calls};}
+const l=loader(),d=l.load('src/app/operator/statutory/dto.ts'),checks=[];
+function check(id,run){run();checks.push({id,result:'pass'});}
+const copy=x=>JSON.parse(JSON.stringify(x));
+check('valid-selected',()=>assert(d.selectedWorkspace(workspace,head).value));
+check('uppercase-scope',()=>assert(d.selectedWorkspace(workspace,head.toUpperCase()).value));
+for(const [id,update] of [['wrong-head',x=>x.head.id=other],['wrong-version-head',x=>x.current.head_id=other],['invalid-date',x=>x.current.created_at='invalid'],['missing-history',x=>delete x.history],['bad-source',x=>x.current.source_references=[null]],['bad-nested-bands',x=>x.current.numeric_rules.tax.columns[0].bands=null],['bad-branch',x=>x.current.numeric_rules.insurance.branches=[{}]]])check(id,()=>{const x=copy(workspace);update(x);assert.equal(d.selectedWorkspace(x,head).value,null);});
+check('current-revision-stale',()=>{const x=copy(workspace);x.current.revision=2;assert(d.selectedWorkspace(x,head).stale);});
+check('concurrent-history-stale',()=>{const x=copy(workspace);x.history[0].revision=2;assert(d.selectedWorkspace(x,head).stale);});
+check('extra-fields-tolerated',()=>assert(d.selectedWorkspace({...workspace,extra:'future'},head).value));
+check('missing-list-not-empty',()=>assert.equal(d.listWorkspace({}),null));
+check('empty-list-valid',()=>assert(d.listWorkspace({items:[],next:null})));
+check('malformed-cursor',()=>assert.equal(d.listWorkspace({items:[],next:{created:'invalid',id:head}}),null));
+check('valid-release',()=>assert(d.releaseStatus(release,1)));
+for(const [id,patch]of [['string-ready',{ready:'true'}],['wrong-release-revision',{revision:2}],['financial-qualification',{financially_qualified:true}],['wrong-scope',{qualification_scope:'all'}],['bad-missing-coverage',{missing_coverage:null}],['bad-counts',{official:2}],['bad-stamp',{evidence_stamp:'invalid'}],['contradictory-ready',{ready:true}]])check(id,()=>assert.equal(d.releaseStatus({...release,...patch},1),null));
+check('issued-ready-valid',()=>assert(d.releaseStatus({...release,ready:true,blockers:[],issued_pack:head},1)));
+check('unknown-blocker-preserved',()=>assert(d.releaseStatus({...release,blockers:['future_blocker']},1)));
+check('missing-history-rows-not-empty',()=>assert.equal(d.comparisonHistory({rows:null,next:null,current_revision:1}),null));
+check('historical-draft-replay',()=>assert(d.draftReceipt({head,revision:2,state:'unqualified'},head,1)));
+check('wrong-receipt-head',()=>assert(!d.draftReceipt({head:other,revision:2,state:'unqualified'},head,1)));
+check('nonincremented-receipt',()=>assert(!d.draftReceipt({head,revision:1,state:'unqualified'},head,1)));
+check('new-draft-receipt',()=>assert(d.draftReceipt({head,revision:1,state:'unqualified'},'',0)));
+check('invalid-issue-receipt',()=>assert(!d.issueReceipt({pack:head,revision:1,qualification_scope:'all',financially_qualified:false},1)));
+check('valid-issue-receipt',()=>assert(d.issueReceipt({pack:head,revision:1,qualification_scope:'tax_insurance',financially_qualified:false},1)));
+check('unsafe-source-not-link',()=>assert(!d.safeSourceUrl('javascript:alert(1)')));
+const row={id:1,revision:1,created_at:current.created_at,case_data:{name:'Synthetic case',domain:'labour_deductions',scenario:'ordinary_limit',origin:'synthetic',source_url:'https://example.com/reference',reference:'Synthetic source',year:'2026',context:{gross:100,tax:0,employee_insurance:0,employer_loan:0}},result:{matched:true,actual:{wage_basis:100,ceiling:25,capacity_amount:0,unapplied_amount:0,claims:[]},expected:{wage_basis:'100',ceiling:'25',capacity_amount:'0',unapplied_amount:'0'}}};
+const Row=l.load('src/app/operator/statutory/comparisons/ComparisonHistory.tsx').ComparisonHistoryRow;
+const render=row=>server.renderToStaticMarkup(react.createElement(Row,{row,currentRevision:1}));
+check('labour-row-renders-without-tax',()=>assert(render(row).includes('سنة المقارنة')));
+check('unknown-variant-visible',()=>assert(render({...row,case_data:{...row.case_data,domain:'future_domain'}}).includes('تعذر عرض أرقام')));
+check('malformed-row-visible',()=>assert(render({...row,case_data:null}).includes('لم تُحذف الحالة')));
+check('unsafe-reference-not-anchor',()=>assert(!render({...row,case_data:{...row.case_data,source_url:'javascript:alert(1)'}}).includes('href="javascript')));
+check('unknown-origin-not-official',()=>assert(render({...row,case_data:{...row.case_data,origin:'future'}}).includes('تعذر عرض بيانات')));
+const taxRow=copy(row);delete taxRow.case_data.domain;taxRow.case_data.tax={net:'100',duration:'365',prior_due:'0',from:'2026-01-01',until:'2027-01-01'};taxRow.case_data.insurance=[];taxRow.result.tax={annual_base:100};taxRow.result.actual={};taxRow.result.expected={};for(const key of ['tax_due','tax_delta','employee_insurance','employer_insurance','deductible_insurance']){taxRow.result.actual[key]=0;taxRow.result.expected[key]='0';}
+check('original-tax-fields-rendered',()=>assert(render(taxRow).includes('صافي الدخل التراكمي')));
+const pages=['src/app/operator/statutory/page.tsx','src/app/operator/statutory/comparisons/page.tsx'];
+function nodes(n,out=[]){if(!n||typeof n!=='object')return out;if(Array.isArray(n)){n.forEach(x=>nodes(x,out));return out;}if(n.type){out.push(n);nodes(n.props?.children,out);}return out;}
+(async()=>{
+ for(const [id,kind,patch,expected]of [
+ ['selected-missing-no-form',0,{statutory_draft_workspace:{data:{items:[]},error:null}},false],
+ ['selected-wrong-head-no-form',0,{statutory_draft_workspace:{data:{...workspace,head:{...workspace.head,id:other}},error:null}},false],
+ ['nonboolean-stat-grant-no-form',0,{current_operator_can_manage_statutory_rules:{data:'true',error:null}},false],
+ ['valid-selected-form',0,{},true],
+ ['issued-form-context',0,{statutory_draft_issuance_status:{data:{...release,ready:true,blockers:[],issued_pack:head},error:null}},true],
+ ['comparison-string-readiness',1,{statutory_draft_issuance_status:{data:{...release,ready:'true'},error:null}},false],
+ ['comparison-release-revision',1,{statutory_draft_issuance_status:{data:{...release,revision:2},error:null}},false],
+ ['comparison-history-null',1,{statutory_draft_comparison_history:{data:{rows:null,current_revision:1,next:null},error:null}},false],
+ ['comparison-history-race',1,{statutory_draft_comparison_history:{data:{rows:[],current_revision:2,next:null},error:null}},false],
+ ['comparison-release-PT409',1,{statutory_draft_issuance_status:{data:null,error:{code:'PT409'} }},false],
+ ['comparison-valid-issued-ready',1,{statutory_draft_issuance_status:{data:{...release,ready:true,blockers:[],issued_pack:head},error:null}},true],
+ ['comparison-valid-labour',1,{statutory_draft_comparison_history:{data:{rows:[row],current_revision:1,next:null},error:null}},true]
+ ]){const x=loader(patch),el=await x.load(pages[kind]).default({searchParams:Promise.resolve({head})});const all=nodes(el),target=kind?'IssuanceStatus':'DraftForm',found=all.find(n=>n.type?.name===target);check(id,()=>{assert.equal(Boolean(found),expected);if(id==='issued-form-context')assert(found.props.issued);if(id==='comparison-valid-issued-ready')assert(found.props.status.issued_pack);});}
+ fs.writeFileSync(__dirname+'/statutory-source-qualification.json',JSON.stringify({scope:'Pure consumed-shape guards and actual JSX/React SSR with controlled SDK; no real SQL/Auth/provider/hydration/visual/full-journey acceptance',checks,sourceFingerprints:[...pages,'src/app/operator/statutory/dto.ts','src/app/operator/statutory/comparisons/ComparisonHistory.tsx'].map(file=>({file,sha256LF:crypto.createHash('sha256').update(fs.readFileSync(repo+'/'+file,'utf8').replace(/\r\n/g,'\n')).digest('hex')}))},null,2)+'\n');console.log(JSON.stringify({focusedSourceCases:checks.length,result:'pass',runtimeAcceptance:false}));
+})().catch(e=>{console.error(e);process.exitCode=1;});

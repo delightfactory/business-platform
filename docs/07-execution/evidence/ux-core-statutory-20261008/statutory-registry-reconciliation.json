@@ -1,0 +1,305 @@
+{
+  "summary": {
+    "sourceFiles": 283,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 107,
+    "rpcCallSites": 350,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1173,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1719,
+  "sourceReviewedPreserved": 19,
+  "added": [
+    {
+      "id": "RPC:src/app/operator/statutory/page.tsx:23:3020",
+      "category": "rpcCalls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:44:6198",
+      "category": "formControls",
+      "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    }
+  ],
+  "migrations": [
+    {
+      "before": "RPC:src/app/operator/statutory/actions.ts:18:2130",
+      "after": "RPC:src/app/operator/statutory/actions.ts:19:2165",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/comparisons/issuance-actions.ts:14:1216",
+      "after": "RPC:src/app/operator/statutory/comparisons/issuance-actions.ts:15:1252",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/comparisons/page.tsx:15:1637",
+      "after": "RPC:src/app/operator/statutory/comparisons/page.tsx:14:1372",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/comparisons/page.tsx:15:1704",
+      "after": "RPC:src/app/operator/statutory/comparisons/page.tsx:14:1439",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/comparisons/page.tsx:18:2171",
+      "after": "RPC:src/app/operator/statutory/comparisons/page.tsx:22:2432",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/page.tsx:19:2195",
+      "after": "RPC:src/app/operator/statutory/page.tsx:19:1957",
+      "status": "pending"
+    },
+    {
+      "before": "RPC:src/app/operator/statutory/page.tsx:20:2511",
+      "after": "RPC:src/app/operator/statutory/page.tsx:20:2318",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:25:2352",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2445",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:25:2640",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2733",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2900",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:3261",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:27:3101",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:3461",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:28:3384",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:31:3744",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:3660",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:4020",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:4099",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:4459",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:4396",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:4756",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:5171",
+      "after": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:5380",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3248",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3260",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3597",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3609",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:18:4775",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:18:4787",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5009",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5021",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5190",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5202",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:20:5440",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:20:5452",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:21:5666",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:21:5678",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:22:6273",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:22:6285",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:23:7004",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:23:7016",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:24:7664",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:24:7676",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8373",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8385",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8865",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8877",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9067",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9079",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9282",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9294",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9683",
+      "after": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9695",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:13:2122",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2200",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:24:5166",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2724",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2368",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2818",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2433",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2882",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2480",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2929",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2535",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2984",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2584",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3033",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2754",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3203",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2958",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3407",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3312",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3761",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3667",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:4116",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3958",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:4407",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:5077",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:5526",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:5546",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:5995",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6023",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6472",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6264",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6713",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6473",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6922",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:7555",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:8004",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:23:4009",
+      "after": "CONTROL:src/app/operator/statutory/comparisons/ComparisonHistory.tsx:34:2983",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/page.tsx:25:4349",
+      "after": "CONTROL:src/app/operator/statutory/page.tsx:31:5294",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/operator/statutory/page.tsx:27:5712",
+      "after": "CONTROL:src/app/operator/statutory/page.tsx:33:6726",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false,
+  "explicitMoves": [
+    "Existing comparison-number summary moved to ComparisonHistory",
+    "Existing new-comparison summary moved to ComparisonForm; state-specific primary/secondary styling, no operation removed"
+  ]
+}

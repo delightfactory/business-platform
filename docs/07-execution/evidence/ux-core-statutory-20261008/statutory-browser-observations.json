@@ -1,0 +1,30 @@
+{
+  "scope": "Actual Next root/operator layouts with copied source, synthetic SDK/actions; not real account/SQL/provider/legal acceptance",
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "draftOverflow": false,
+    "comparisonOverflow": false
+  },
+  "observed": {
+    "draftDirtyCloseBlocked": true,
+    "draftReasonRetained": "synthetic",
+    "draftPendingControlsDisabled": true,
+    "draftMappedFailureReasonRetained": true,
+    "comparisonDirtyCloseBlocked": true,
+    "comparisonNameRetained": "synthetic"
+  },
+  "notRun": [
+    "unknown/stale mounted replay",
+    "real actor changes",
+    "issued transition",
+    "tablet/desktop visual",
+    "full matched journeys",
+    "financial writes"
+  ],
+  "findingsResolved": [
+    "Native details closure bypassed unchanged React open prop; explicit guarded toggle restores open",
+    "One source-url replacement generated nested JSX and was repaired before qualification"
+  ],
+  "initialClickAfterReload": "locator input failed during reload/hydration; fresh hydrated state inspected before testing"
+}

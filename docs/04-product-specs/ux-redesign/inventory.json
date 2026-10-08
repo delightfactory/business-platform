@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "859e217e11322cf6655ea53441620542b63be32f",
+  "sourceHead": "c5abab6c8f5e06bc8a13da064b7e5e2c91005ed4",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -205,22 +205,27 @@
     {
       "file": "src/app/operator/statutory/DraftForm.tsx",
       "phase": "R3",
-      "sha256": "17979514337fdff51b09aeb87d7afaf23e01897b6123cb3fa13cfe8c0f0b72ef"
+      "sha256": "ef6a2a7fa08ce9f08f85cde920c1505af39e5815b7885bc35ba6aee99baec963"
     },
     {
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "phase": "R3",
-      "sha256": "419a9ca9e4aaac23a01fc0a0fc72af5773c7ed3cf24257fcf7690828bcedf160"
+      "sha256": "8e49884dbf5dbf8be545925d8b5ac3fc441719debcb37b5975e6a1ceb124fa08"
     },
     {
       "file": "src/app/operator/statutory/actions.ts",
       "phase": "R3",
-      "sha256": "640d7492c6ff04d955f7073f3eb2bc973e719714640b6c88cfcb826906afc1b5"
+      "sha256": "889802a5a4f04fd1388b8b86f7264faa0a018de2a61d217174b75c6ad0f68a0a"
     },
     {
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
       "phase": "R3",
-      "sha256": "b4e75627eb5ada1d488005e84d44285b8358c789f105d76e866cb1a5da96e318"
+      "sha256": "36e7ca6f2ffd4bcfdffad64b8ca5d9ce6bb04a0e136dd1af1e2a740222779cee"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonHistory.tsx",
+      "phase": "R3",
+      "sha256": "34200ea5679492ed29e65052b5609446f73e0fbce07db8f171f5938a5b067ece"
     },
     {
       "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
@@ -240,7 +245,7 @@
     {
       "file": "src/app/operator/statutory/comparisons/issuance-actions.ts",
       "phase": "R3",
-      "sha256": "a6d02d419787b4a2ddfaf2c38afea4cddb0679af9be41f53311bba0bcaf66962"
+      "sha256": "febbdd181840fa818924c76fbdabbc977fb1c094922a6b4e25a89839a4a6bb48"
     },
     {
       "file": "src/app/operator/statutory/comparisons/labels.ts",
@@ -250,12 +255,17 @@
     {
       "file": "src/app/operator/statutory/comparisons/page.tsx",
       "phase": "R3",
-      "sha256": "f20aad5eecab57e668fd986c54e9815e9b227b000ac26288287cccd8f158939b"
+      "sha256": "a2016b22ce37d7903b2d17dc3ef13b0cf9df8114f2afd6fa167c5390e8f7f017"
+    },
+    {
+      "file": "src/app/operator/statutory/dto.ts",
+      "phase": "R3",
+      "sha256": "7877d6976929c36cd5eb78da52ee5ba327e4b4eaed30c5ee3b8107e2040025d3"
     },
     {
       "file": "src/app/operator/statutory/page.tsx",
       "phase": "R3",
-      "sha256": "fff95a2a9a42a8353fdf67bcc4309400d5dd9d7702b544bd03ee548101fe603e"
+      "sha256": "d026522db690737c74722cc74317a55a11f38b5d3ef253060a2821257d056bf9"
     },
     {
       "file": "src/app/operator/tenants/[tenantId]/page.tsx",
@@ -2234,7 +2244,7 @@
     {
       "id": "ACTION:src/app/operator/statutory/actions.ts#saveDraftAction",
       "file": "src/app/operator/statutory/actions.ts",
-      "line": 6,
+      "line": 7,
       "name": "saveDraftAction",
       "phase": "R3",
       "inline": false,
@@ -2256,7 +2266,7 @@
     {
       "id": "ACTION:src/app/operator/statutory/comparisons/issuance-actions.ts#issueRules",
       "file": "src/app/operator/statutory/comparisons/issuance-actions.ts",
-      "line": 7,
+      "line": 8,
       "name": "issueRules",
       "phase": "R3",
       "inline": false,
@@ -3977,9 +3987,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/actions.ts:18:2130",
+      "id": "RPC:src/app/operator/statutory/actions.ts:19:2165",
       "file": "src/app/operator/statutory/actions.ts",
-      "line": 18,
+      "line": 19,
       "phase": "R3",
       "name": "statutory_draft_save",
       "expression": null,
@@ -3997,9 +4007,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/comparisons/issuance-actions.ts:14:1216",
+      "id": "RPC:src/app/operator/statutory/comparisons/issuance-actions.ts:15:1252",
       "file": "src/app/operator/statutory/comparisons/issuance-actions.ts",
-      "line": 14,
+      "line": 15,
       "phase": "R3",
       "name": "statutory_draft_issue",
       "expression": null,
@@ -4007,9 +4017,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:15:1637",
+      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:14:1372",
       "file": "src/app/operator/statutory/comparisons/page.tsx",
-      "line": 15,
+      "line": 14,
       "phase": "R3",
       "name": "statutory_draft_workspace",
       "expression": null,
@@ -4017,9 +4027,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:15:1704",
+      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:14:1439",
       "file": "src/app/operator/statutory/comparisons/page.tsx",
-      "line": 15,
+      "line": 14,
       "phase": "R3",
       "name": "statutory_draft_comparison_history",
       "expression": null,
@@ -4027,9 +4037,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:18:2171",
+      "id": "RPC:src/app/operator/statutory/comparisons/page.tsx:22:2432",
       "file": "src/app/operator/statutory/comparisons/page.tsx",
-      "line": 18,
+      "line": 22,
       "phase": "R3",
       "name": "statutory_draft_issuance_status",
       "expression": null,
@@ -4037,7 +4047,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/page.tsx:19:2195",
+      "id": "RPC:src/app/operator/statutory/page.tsx:19:1957",
       "file": "src/app/operator/statutory/page.tsx",
       "line": 19,
       "phase": "R3",
@@ -4047,11 +4057,21 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/operator/statutory/page.tsx:20:2511",
+      "id": "RPC:src/app/operator/statutory/page.tsx:20:2318",
       "file": "src/app/operator/statutory/page.tsx",
       "line": 20,
       "phase": "R3",
       "name": "statutory_draft_workspace",
+      "expression": null,
+      "candidates": [],
+      "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/operator/statutory/page.tsx:23:3020",
+      "file": "src/app/operator/statutory/page.tsx",
+      "line": 23,
+      "phase": "R3",
+      "name": "statutory_draft_issuance_status",
       "expression": null,
       "candidates": [],
       "resolution": "literal"
@@ -8533,9 +8553,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:25:2352",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2445",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 25,
+      "line": 26,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8544,9 +8564,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:25:2640",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2733",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 25,
+      "line": 26,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8556,9 +8576,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:26:2900",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:3261",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 26,
+      "line": 29,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8566,9 +8586,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:27:3101",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:3461",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 27,
+      "line": 30,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8577,9 +8597,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:28:3384",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:31:3744",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 28,
+      "line": 31,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8589,9 +8609,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:29:3660",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:4020",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 29,
+      "line": 32,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8601,17 +8621,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:30:4099",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:33:4459",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 30,
+      "line": 33,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:32:4396",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:4756",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 32,
+      "line": 35,
       "tag": "textarea",
       "phase": "R3",
       "attributes": {
@@ -8620,14 +8640,22 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:35:5171",
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:38:5380",
       "file": "src/app/operator/statutory/DraftForm.tsx",
-      "line": 35,
+      "line": 38,
       "tag": "button",
       "phase": "R3",
       "attributes": {
         "disabled": "{pending}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/DraftForm.tsx:44:6198",
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "line": 44,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:9:1602",
@@ -8671,7 +8699,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3248",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3260",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 16,
       "tag": "input",
@@ -8681,7 +8709,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3597",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:16:3609",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 16,
       "tag": "select",
@@ -8691,7 +8719,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:18:4775",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:18:4787",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 18,
       "tag": "button",
@@ -8701,7 +8729,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5009",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5021",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 19,
       "tag": "button",
@@ -8711,7 +8739,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5190",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:19:5202",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 19,
       "tag": "button",
@@ -8721,7 +8749,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:20:5440",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:20:5452",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 20,
       "tag": "button",
@@ -8731,7 +8759,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:21:5666",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:21:5678",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 21,
       "tag": "select",
@@ -8741,7 +8769,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:22:6273",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:22:6285",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 22,
       "tag": "select",
@@ -8751,7 +8779,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:23:7004",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:23:7016",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 23,
       "tag": "select",
@@ -8761,7 +8789,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:24:7664",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:24:7676",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 24,
       "tag": "input",
@@ -8771,7 +8799,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8373",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8385",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 25,
       "tag": "select",
@@ -8781,7 +8809,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8865",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:8877",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 25,
       "tag": "input",
@@ -8791,7 +8819,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9067",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9079",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 25,
       "tag": "button",
@@ -8801,7 +8829,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9282",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:25:9294",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 25,
       "tag": "button",
@@ -8811,7 +8839,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9683",
+      "id": "CONTROL:src/app/operator/statutory/NumericRules.tsx:30:9695",
       "file": "src/app/operator/statutory/NumericRules.tsx",
       "line": 30,
       "tag": "summary",
@@ -8819,9 +8847,9 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:13:2122",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2200",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 13,
+      "line": 14,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8829,9 +8857,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2368",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2724",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2818",
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "line": 15,
       "tag": "form",
       "phase": "R3",
       "attributes": {
@@ -8839,9 +8875,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2433",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2882",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8851,9 +8887,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2480",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2929",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8863,9 +8899,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2535",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:2984",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8875,9 +8911,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2584",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3033",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8887,9 +8923,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2754",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3203",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8897,9 +8933,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:2958",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3407",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -8907,9 +8943,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3312",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:3761",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -8917,9 +8953,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3667",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:4116",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "select",
       "phase": "R3",
       "attributes": {
@@ -8927,9 +8963,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:14:3958",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:4407",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 14,
+      "line": 15,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8937,9 +8973,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:15:5077",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:5526",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 15,
+      "line": 16,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8948,9 +8984,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:5546",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:5995",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 16,
+      "line": 17,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8959,9 +8995,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6023",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6472",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 16,
+      "line": 17,
       "tag": "input",
       "phase": "R3",
       "attributes": {
@@ -8969,34 +9005,42 @@
       }
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6264",
-      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 16,
-      "tag": "button",
-      "phase": "R3",
-      "attributes": {
-        "type": "\"button\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:16:6473",
-      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
-      "line": 16,
-      "tag": "button",
-      "phase": "R3",
-      "attributes": {
-        "type": "\"button\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:7555",
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6713",
       "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
       "line": 17,
       "tag": "button",
       "phase": "R3",
       "attributes": {
+        "type": "\"button\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:17:6922",
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "line": 17,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
+        "type": "\"button\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonForm.tsx:18:8004",
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "line": 18,
+      "tag": "button",
+      "phase": "R3",
+      "attributes": {
         "disabled": "{pending}"
       }
+    },
+    {
+      "id": "CONTROL:src/app/operator/statutory/comparisons/ComparisonHistory.tsx:34:2983",
+      "file": "src/app/operator/statutory/comparisons/ComparisonHistory.tsx",
+      "line": 34,
+      "tag": "summary",
+      "phase": "R3",
+      "attributes": {}
     },
     {
       "id": "CONTROL:src/app/operator/statutory/comparisons/IssuanceForm.tsx:19:1357",
@@ -9127,33 +9171,17 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:23:4009",
-      "file": "src/app/operator/statutory/comparisons/page.tsx",
-      "line": 23,
-      "tag": "summary",
-      "phase": "R3",
-      "attributes": {}
-    },
-    {
-      "id": "CONTROL:src/app/operator/statutory/comparisons/page.tsx:24:5166",
-      "file": "src/app/operator/statutory/comparisons/page.tsx",
-      "line": 24,
-      "tag": "summary",
-      "phase": "R3",
-      "attributes": {}
-    },
-    {
-      "id": "CONTROL:src/app/operator/statutory/page.tsx:25:4349",
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:31:5294",
       "file": "src/app/operator/statutory/page.tsx",
-      "line": 25,
+      "line": 31,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/operator/statutory/page.tsx:27:5712",
+      "id": "CONTROL:src/app/operator/statutory/page.tsx:33:6726",
       "file": "src/app/operator/statutory/page.tsx",
-      "line": 27,
+      "line": 33,
       "tag": "summary",
       "phase": "R3",
       "attributes": {}
@@ -19577,15 +19605,15 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 281,
+    "sourceFiles": 283,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
     "serverActions": 107,
-    "rpcCallSites": 349,
+    "rpcCallSites": 350,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 6,
-    "formControls": 1172,
+    "formControls": 1173,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false
