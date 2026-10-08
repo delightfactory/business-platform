@@ -72,4 +72,4 @@ Remaining R3 [complete operator journey preparation](operator-core-journeys-spec
 
 Statutory B1 subpart [source WIP evidence](../../07-execution/evidence/ux-core-statutory-20261008/README.md) implements response integrity, persisted variants and dominant steps. Full B1/B2/runtime/visual/core acceptance remains open.
 
-R8 home/decisions: [concrete owner-decision contract](home-decisions-spec.md) and [conditional joint review](home-decisions-review.json). Proposed existing-home + existing-task-pages first step; no owner approval or full R8/G1 closure inferred.
+R8 home/decisions: [concrete owner-decision contract](home-decisions-spec.md) and [conditional joint review](home-decisions-review.json). Owner explicitly selected option1 on2026-10-08. Existing-home + existing-task-pages first implementation is source-qualified WIP; full parent/native/actual-role/visual and R8/G1 closure remain OPEN.

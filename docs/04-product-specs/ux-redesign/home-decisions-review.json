@@ -20,5 +20,200 @@
     "correctionsApplied": 7,
     "correctionToReviewer": "Queue exposes no globally opened-day flag; cannot label zero as opened/not-opened. Own leave follow-up exists; notification is G6.",
     "open": "Owner material route/composition choice; full original R0-R8 semantic/runtime/visual coverage and G1–G9 remain open"
+  },
+  "ownerDecision": {
+    "date": "2026-10-08",
+    "choice": 1,
+    "verbatim": "نعم اعتمد القرار الاول",
+    "scope": "Today inside existing home and existing decision pages; no extra inbox, full original coverage remains required"
+  },
+  "implementation": {
+    "status": "SOURCE QUALIFIED WIP; runtime/visual acceptance OPEN",
+    "baseline": "aaa4a7cb91fbfe992fdc7fb2bbff674dfc69fa5b",
+    "qualification": {
+      "scope": "Actual readToday and TodaySections with controlled SDK/SSR only, not real Auth/roles/SQL/native/visual",
+      "passed": 12,
+      "failed": 0,
+      "cases": [
+        {
+          "label": "all-denied-no-task-payload",
+          "result": "PASS"
+        },
+        {
+          "label": "self-only-no-HR-queue",
+          "result": "PASS"
+        },
+        {
+          "label": "attendance-reader-zero-not-all-clear",
+          "result": "PASS"
+        },
+        {
+          "label": "attendance-approver-counts-not-summed",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "invalid-counts-unavailable",
+          "result": "PASS"
+        },
+        {
+          "label": "leave-reader-no-cancellation",
+          "result": "PASS"
+        },
+        {
+          "label": "approver-independent-queue-failure",
+          "result": "PASS"
+        },
+        {
+          "label": "payroll-link-only-mixed-independent",
+          "result": "PASS"
+        },
+        {
+          "label": "payroll-view-only-retained",
+          "result": "PASS"
+        },
+        {
+          "label": "people-explicit-denied-object",
+          "result": "PASS"
+        }
+      ],
+      "sourceHashes": {
+        "src/app/tenant/[tenantId]/page.tsx": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d",
+        "src/app/tenant/[tenantId]/today.tsx": "4d9f8ce734141baeac8826bf1dc353914124451059c69e3052adb7f7120b4191",
+        "src/app/globals.css": "957aff8e188ea9ef736f4a9138602975702fbb0533556829be0ff7745668c7d2"
+      },
+      "lintTypecheck": "PASS",
+      "visual": "NOT VISUALLY VERIFIED",
+      "fullR8": "OPEN"
+    },
+    "registry": {
+      "summary": {
+        "sourceFiles": 290,
+        "pages": 75,
+        "endpoints": 4,
+        "boundaries": 8,
+        "serverActions": 108,
+        "rpcCallSites": 349,
+        "uniqueLiteralRpcs": 217,
+        "dynamicRpcSites": 7,
+        "formControls": 1184,
+        "sourceAssignmentComplete": true,
+        "semanticScenarioReviewComplete": false,
+        "executionCoverageComplete": false
+      },
+      "items": 1730,
+      "sourceReviewedPreserved": 25,
+      "added": [
+        {
+          "id": "RPC:src/app/tenant/[tenantId]/today.tsx:20:1277",
+          "category": "rpcCalls",
+          "phase": "R1",
+          "status": "pending",
+          "scenarioIds": [],
+          "reviewer": null,
+          "evidence": null
+        }
+      ],
+      "retired": [
+        {
+          "id": "RPC:src/app/tenant/[tenantId]/page.tsx:37:1975",
+          "category": "rpcCalls",
+          "phase": "R8",
+          "status": "pending",
+          "scenarioIds": [],
+          "reviewer": null,
+          "evidence": null
+        },
+        {
+          "id": "RPC:src/app/tenant/[tenantId]/page.tsx:38:2048",
+          "category": "rpcCalls",
+          "phase": "R8",
+          "status": "pending",
+          "scenarioIds": [],
+          "reviewer": null,
+          "evidence": null
+        },
+        {
+          "id": "RPC:src/app/tenant/[tenantId]/page.tsx:71:4299",
+          "category": "rpcCalls",
+          "phase": "R8",
+          "status": "pending",
+          "scenarioIds": [],
+          "reviewer": null,
+          "evidence": null
+        }
+      ],
+      "migrations": [
+        {
+          "before": "RPC:src/app/tenant/[tenantId]/page.tsx:21:914",
+          "after": "RPC:src/app/tenant/[tenantId]/page.tsx:22:965",
+          "status": "pending"
+        },
+        {
+          "before": "RPC:src/app/tenant/[tenantId]/page.tsx:44:2585",
+          "after": "RPC:src/app/tenant/[tenantId]/page.tsx:37:2017",
+          "status": "pending"
+        },
+        {
+          "before": "RPC:src/app/tenant/[tenantId]/page.tsx:46:2732",
+          "after": "RPC:src/app/tenant/[tenantId]/page.tsx:39:2164",
+          "status": "pending"
+        },
+        {
+          "before": "RPC:src/app/tenant/[tenantId]/page.tsx:73:4537",
+          "after": "RPC:src/app/tenant/[tenantId]/page.tsx:66:3844",
+          "status": "pending"
+        },
+        {
+          "before": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8520",
+          "after": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7694",
+          "status": "pending"
+        },
+        {
+          "before": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8549",
+          "after": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7723",
+          "status": "pending"
+        }
+      ],
+      "semanticPromotion": false,
+      "scope": "Actual removed home RPC sites retired with original status retained here; dynamic RPC names in readToday must all be semantically expanded. Full semantic/runtime coverage OPEN."
+    },
+    "initialReview": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "I'm giving this review as text only, because you asked for no tools or edits. **Verdict: not accepted yet.** There are two must-fixes, one more that applies unless you can confirm a source fact, and one small wording fix. With those done, it can be accepted as bounded first-implementation source: R0–R8 stay open, and visual is NOT VERIFIED and still required.\n\n## Must-fix\n\n**1. The payroll link can send users to a page they can't use** (`today.tsx`, payroll entry)\nThe entry shows when `payroll?.can_manage === true || runs?.can_view === true`. But the link uses `payroll ? /payroll : /payroll/runs`, which only checks that the snapshot exists. A user with a non-null `payroll` snapshot, `can_manage: false` and `runs.can_view: true` passes the gate through `runs`, then gets linked to `/payroll`, which they can't manage.\n- Fix: `href: payroll?.can_manage === true ? \\`${base}/payroll\\` : \\`${base}/payroll/runs\\``.\n- Also: if `payroll_access_snapshot` has a view-only flag that the current navigation honours, gate on it too. Otherwise view-only payroll users lose a capability they have today.\n\n**2. `entitlement_enabled` is ignored for attendance**\nYou state the attendance access RPC returns `entitlement_enabled`, but the gate only checks `can_view`. A tenant without the entitlement whose role still says `can_view: true` would get the review, overtime and unassigned entries, plus a review-queue RPC call. Those pages will then deny or empty out.\n- Fix: `const attendanceOn = attendance?.entitlement_enabled === true && attendance.can_view === true;` and use it in both the queue read and the entries block.\n- Apply the same check to `channel` if its snapshot has the same flag.\n\n**3. Some gates only check that a snapshot exists (fix unless confirmed)**\n`people`, `inputs`, `mobile` and `employee` show their links whenever the snapshot is any object. The other entries check explicit flags.\n- This is only correct if each of these RPCs raises 42501 or returns `null` when the user has no access.\n- If any of them returns an object with flags (e.g. `{can_view:false}`, or a mobile snapshot for an unenrolled or disallowed employee), Today will show links the user can't use. `حضوري` says \"سجّل حضورك\", so a wrong mobile link overstates a capability.\n- Fix: gate each one on the same flag the current navigation uses for that page. If the navigation also only checks existence, say so and it's consistent.\n\n**4. Wording that can falsely reassure**\nThe unavailable notice ends with \"الخدمات الأخرى متاحة\". When every read fails, this appears next to \"تعذر التحقق من خدمات العمل الآن\", which contradicts it, and it implies availability nothing has checked.\n- Fix: replace it with \"الخدمات الظاهرة أعلاه متاحة\", or drop the clause.\n\n## Checked and acceptable as stated\n- **Auth boundary:** the lifecycle, membership and admin checks in the parent are unchanged. `readToday` runs only after membership or admin is validated, and 42501 is treated silently as no access.\n- **Attendance counts:**\n  - They are clearly limited to the date and the Africa/Cairo timezone.\n  - They aren't presented as global, and there is no all-clear.\n  - Overtime is marked as possibly overlapping.\n  - Unassigned is separate and not counted.\n  - Viewers without correct or approve go to \"عرض ومتابعة\".\n- **Leave:**\n  - The queues are labelled as samples (limit 3, with `hasMore`), and an empty result isn't presented as all-clear.\n  - Cancellation is gated on `canApprove` only, and a failure there is kept separate from the request queue.\n- **Scope:** there are no financial reads or writes, no amounts or blockers, no new storage, and the RPCs are STABLE so nothing is replayed.\n- **List keys:** these are unique within each list.\n\n## Assumptions I couldn't verify (no tools)\n- `leave_hr_queue` returns only submitted/pending items. The text \"طلبات مقدمة\" depends on this.\n- The attendance review page honours `?date=` and `&filter=overtime`.\n- `#leave-cancellation-queue-title` exists on `/leave`.\n- Hard-coding `Africa/Cairo` is valid for every tenant, i.e. there is no per-tenant operational timezone that the review page uses instead.",
+      "sessionId": "24a21926-9d0e-4b63-8b1d-fcf840f1db95"
+    },
+    "finalReview": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "# Bounded source verdict: review24a21926 (Today / current task)\n\n**Verdict: source PASS on must-fix 1–4.** No new blocking defect in this delta. This is a source-only verdict. The Auth, SQL, native and both visual verdicts stay OPEN. This is not a full closure claim.\n\nI used no tools, as you asked. That includes no plan file and no ExitPlanMode.\n\n## Must-fix closure (against the stated SQL/source facts)\n\n1. **Payroll entry: closed.**\n   - The gate is `payroll.can_manage || payroll.can_view || runs.can_view`.\n   - `href` goes to `/payroll` whenever the payroll snapshot succeeds, otherwise to `/payroll/runs`.\n   - The snapshot throws unless `payroll.view` or `payroll_config.manage` is granted. So a successful snapshot always carries one true flag, and the gate matches the page's success-only check.\n   - View-only users with no run access keep the entry.\n   - No amounts or blockers are read.\n2. **Attendance history: closed.**\n   - The gate is `can_view` only. Entitlement is not part of it.\n   - The review, overtime and unassigned links are all preserved.\n   - When the service is disabled, the scope wording now says read-only (\"موقوفة؛ السجل للقراءة\").\n   - With approve/correct false, the entries route to `followUp`.\n   - The channel entry is link-only, with no capture or mutation.\n3. **Navigation parity: closed.**\n   - `inputs`, `employee` and `mobile` use an existence check (snapshot succeeded), matching `TenantNavigation`.\n   - `people` uses an explicit `can_view === true`.\n4. **Notice: closed.**\n   - The unavailable notice only says verification failed.\n   - The empty state chooses between \"could not verify\" and \"no services\", so it no longer claims something is available when it isn't.\n\n## Must-verify (not must-fix; depends on facts outside this source)\n\n- **Denial error codes.** `access()` hides only `42501`. Any snapshot that denies ordinary users with another SQLSTATE puts a false \"تعذر التحقق\" notice in front of every such user. Examples would be a custom `P0001` or `PGRST116`. The highest risk is `attendance_mobile_snapshot` (\"raises on inaccessible enrollment\"). Also check `leave_access_snapshot`, `people_access_snapshot`, `attendance_channel_access`, `payroll_run_access` and `payroll_navigation_access`.\n- **Result shape.** If any snapshot returns a set or array instead of a scalar JSON object, `access()` marks it unavailable and drops the link. `tenant_my_employee_snapshot` is the most likely case.\n- **Field names and arguments.** These are not visible in this source:\n  - `payroll_run_access.can_view`\n  - `attendance_channel_access.can_view`\n  - `payroll_navigation_access.{can_view_advances, can_view_reports, report_kind}`\n  - the `p_tenant` vs `p_tenant_id` mapping\n\n  Your 12 passing SDK/SSR cases may already cover them.\n- **Cancellation gate.** Confirm the leave page shows the cancellation queue only on `canApprove`, not on `canManage`.\n\n## Non-blocking (simplification, no capability change)\n\n- Channel, inputs and people always go to `work`, even for view-only access. For consistency with attendance and leave, they could go to `followUp` when the user has no manage or act flag. This is optional.\n- The `حضوري` wording \"سجّل حضورك\" invites capture. If the mobile snapshot can succeed while attendance entitlement is disabled, that wording should be qualified.\n\nPreservation constraints hold in this source. R0–R8 and every permission listed above are preserved. The model is request-scoped only, with no new financial or private persistence. All reads are RPC reads, and no command RPC is invoked. Nothing assumes the RPCs are STABLE.",
+      "sessionId": "5eeb83dd-ac87-4c32-b673-04de5913db27"
+    },
+    "build": "One actual production build including TypeScript, session3076 exit0. No repeated build.",
+    "codex": "Scoped source PASS. Full parent/session/actual Auth/SQL/native/matched simplicity/visual remain OPEN; no phase closure.",
+    "corrections": "Payroll actual view-only retained, explicit People view flag, truthful failed service notice. Claude disabled-entitlement removal advice rejected against frozen history SQL: actual authorised read-only history retained and labelled. Payroll landing accepts successful view snapshot; no manage-only gate.",
+    "sourceConfirmations": "Actual SQL scalar JSON object/42501 guards, leave cancellation canApprove, actual date/filter and cancellation anchor verified. Mobile available=false can carry history; capture remains exclusively native page authority. No new command, backend, storage or provider authority."
   }
 }

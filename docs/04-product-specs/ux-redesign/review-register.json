@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "47a903a9b0a3f7a68637994975c89fee4bfbeec1",
+  "sourceSnapshot": "aaa4a7cb91fbfe992fdc7fb2bbff674dfc69fa5b",
   "status": "Proposed",
   "items": [
     {
@@ -3590,7 +3590,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:21:914",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:22:965",
       "category": "rpcCalls",
       "phase": "R8",
       "status": "pending",
@@ -3599,7 +3599,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:37:1975",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:37:2017",
       "category": "rpcCalls",
       "phase": "R8",
       "status": "pending",
@@ -3608,7 +3608,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:38:2048",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:39:2164",
       "category": "rpcCalls",
       "phase": "R8",
       "status": "pending",
@@ -3617,34 +3617,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:44:2585",
-      "category": "rpcCalls",
-      "phase": "R8",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:46:2732",
-      "category": "rpcCalls",
-      "phase": "R8",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:71:4299",
-      "category": "rpcCalls",
-      "phase": "R8",
-      "status": "pending",
-      "scenarioIds": [],
-      "reviewer": null,
-      "evidence": null
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:73:4537",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:66:3844",
       "category": "rpcCalls",
       "phase": "R8",
       "status": "pending",
@@ -10772,7 +10745,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8520",
+      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7694",
       "category": "formControls",
       "phase": "R8",
       "status": "pending",
@@ -10781,7 +10754,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8549",
+      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7723",
       "category": "formControls",
       "phase": "R8",
       "status": "pending",
@@ -15945,6 +15918,15 @@
     {
       "id": "CONTROL:src/components/theme-preference.tsx:46:1799",
       "category": "formControls",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/today.tsx:20:1277",
+      "category": "rpcCalls",
       "phase": "R1",
       "status": "pending",
       "scenarioIds": [],

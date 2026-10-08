@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "47a903a9b0a3f7a68637994975c89fee4bfbeec1",
+  "sourceHead": "aaa4a7cb91fbfe992fdc7fb2bbff674dfc69fa5b",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,7 +90,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "c7551f5a7799a6e51b108c8b29bedf6b48fe58875ab48b50cf746c721de9f767"
+      "sha256": "957aff8e188ea9ef736f4a9138602975702fbb0533556829be0ff7745668c7d2"
     },
     {
       "file": "src/app/layout.tsx",
@@ -815,7 +815,7 @@
     {
       "file": "src/app/tenant/[tenantId]/page.tsx",
       "phase": "R8",
-      "sha256": "b88aa2c0ba2833d17abd84da6a6bbeec925c6a227d13d624dd9de265bdf1e32d"
+      "sha256": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
@@ -1316,6 +1316,11 @@
       "file": "src/app/tenant/[tenantId]/people/work-policy-actions.ts",
       "phase": "R4",
       "sha256": "a62f8fb866b6a4d5802c73c7bad68ba53f9923007652389b5ca48e8d5565c019"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/today.tsx",
+      "phase": "R1",
+      "sha256": "4d9f8ce734141baeac8826bf1dc353914124451059c69e3052adb7f7120b4191"
     },
     {
       "file": "src/app/tenant/[tenantId]/users/actions.ts",
@@ -5423,9 +5428,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:21:914",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:22:965",
       "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 21,
+      "line": 22,
       "phase": "R8",
       "name": "tenant_lifecycle_status",
       "expression": null,
@@ -5433,29 +5438,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:37:1975",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:37:2017",
       "file": "src/app/tenant/[tenantId]/page.tsx",
       "line": 37,
-      "phase": "R8",
-      "name": "attendance_mobile_snapshot",
-      "expression": null,
-      "candidates": [],
-      "resolution": "literal"
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:38:2048",
-      "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 38,
-      "phase": "R8",
-      "name": "attendance_channel_access",
-      "expression": null,
-      "candidates": [],
-      "resolution": "literal"
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:44:2585",
-      "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 44,
       "phase": "R8",
       "name": "tenant_admin_snapshot",
       "expression": null,
@@ -5463,9 +5448,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:46:2732",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:39:2164",
       "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 46,
+      "line": 39,
       "phase": "R8",
       "name": "tenant_membership_snapshot",
       "expression": null,
@@ -5473,19 +5458,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:71:4299",
+      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:66:3844",
       "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 71,
-      "phase": "R8",
-      "name": "people_access_snapshot",
-      "expression": null,
-      "candidates": [],
-      "resolution": "literal"
-    },
-    {
-      "id": "RPC:src/app/tenant/[tenantId]/page.tsx:73:4537",
-      "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 73,
+      "line": 66,
       "phase": "R8",
       "name": "tenant_branding_snapshot",
       "expression": null,
@@ -6677,6 +6652,16 @@
       "expression": null,
       "candidates": [],
       "resolution": "literal"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/today.tsx:20:1277",
+      "file": "src/app/tenant/[tenantId]/today.tsx",
+      "line": 20,
+      "phase": "R1",
+      "name": null,
+      "expression": "name",
+      "candidates": [],
+      "resolution": "unresolved-needs-manual-check"
     },
     {
       "id": "RPC:src/app/tenant/[tenantId]/users/actions.ts:18:1029",
@@ -13827,9 +13812,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8520",
+      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7694",
       "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 144,
+      "line": 136,
       "tag": "form",
       "phase": "R8",
       "attributes": {
@@ -13837,9 +13822,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:144:8549",
+      "id": "CONTROL:src/app/tenant/[tenantId]/page.tsx:136:7723",
       "file": "src/app/tenant/[tenantId]/page.tsx",
-      "line": 144,
+      "line": 136,
       "tag": "button",
       "phase": "R8",
       "attributes": {
@@ -19767,14 +19752,14 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 289,
+    "sourceFiles": 290,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
     "serverActions": 108,
-    "rpcCallSites": 351,
+    "rpcCallSites": 349,
     "uniqueLiteralRpcs": 217,
-    "dynamicRpcSites": 6,
+    "dynamicRpcSites": 7,
     "formControls": 1184,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { readToday, TodaySections } from './today';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,14 +34,6 @@ export default async function TenantPage({ params, searchParams }: {
     return <TenantStatus title="المساحة غير متاحة" detail="تعذر التحقق من حالة الشركة." showSwitch />;
   }
 
-  const [mobileAttendance, channelAccess] = await Promise.all([
-    supabase.rpc('attendance_mobile_snapshot', { p_tenant: tenantId }),
-    supabase.rpc('attendance_channel_access', { p_tenant: tenantId }),
-  ]);
-  const attendanceLinks = <div className="workspace-form-actions">
-    {!mobileAttendance.error && mobileAttendance.data && <Link className="primary-button" href={`/tenant/${tenantId}/me/attendance`}>حضوري</Link>}
-    {!channelAccess.error && channelAccess.data?.can_view === true && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</Link>}
-  </div>;
   const { data: adminData, error: adminError } = await supabase.rpc('tenant_admin_snapshot', { p_tenant_id: tenantId });
   if (adminError) {
     const { data: memberData, error: memberError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
@@ -48,13 +41,14 @@ export default async function TenantPage({ params, searchParams }: {
       return <TenantStatus title="المساحة غير متاحة" detail="لا يملك هذا الحساب عضوية نشطة في هذه الشركة، أو أن الشركة غير متاحة." showSwitch />;
     }
     const member = memberData as Record<string, unknown>;
+    const today = await readToday(supabase, tenantId);
     return (
       <main className="app-shell">
         {query.state === 'admin-demoted' && <FeedbackToast key={crypto.randomUUID()} message="تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة." />}
         <section className="work-card" aria-labelledby="tenant-title">
-          <p className="eyebrow">مساحة الشركة</p><h1 id="tenant-title">{String(member.tenant_name ?? 'الشركة')}</h1>
-          <p className="intro">أنت عضو في هذه الشركة.</p>
-          {attendanceLinks}
+          <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><h1 id="tenant-title">اليوم</h1>
+          <p className="intro">ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
+          <TodaySections model={today} />
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
         </section>
@@ -68,8 +62,7 @@ export default async function TenantPage({ params, searchParams }: {
   }
 
   const snapshot = data as Record<string, unknown>;
-  const { data: peopleAccess, error: peopleAccessError } = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
-  const peopleAvailable = !peopleAccessError && peopleAccess && typeof peopleAccess === 'object' && !Array.isArray(peopleAccess);
+  const today = await readToday(supabase, tenantId);
   const { data: brandingData } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
   const branding = brandingData && typeof brandingData === 'object' && !Array.isArray(brandingData)
     ? brandingData as Record<string, unknown> : null;
@@ -80,14 +73,14 @@ export default async function TenantPage({ params, searchParams }: {
     <main className="app-shell">
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
-          <p className="eyebrow">مساحة الشركة</p>
-          <div className="tenant-home-title"><h1 id="tenant-title"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></h1>
+          <p className="eyebrow"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></p>
+          <div className="tenant-home-title"><h1 id="tenant-title">اليوم</h1>
             <span className="entity-status is-active">{lifecycleText(snapshot.lifecycle_state)}</span></div>
-          <p>تابع إعداد الشركة واستخدامها من مكان واحد.</p>
+          <p>ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
         </header>
-        {attendanceLinks}
+        <TodaySections model={today} />
         <section className="tenant-home-summary" aria-labelledby="tenant-summary-title">
-          <h2 id="tenant-summary-title">لمحة سريعة</h2>
+          <h2 id="tenant-summary-title">لمحة عن إعداد الشركة</h2>
           <dl className="snapshot-grid">
             <div><dt>المستخدمون</dt><dd>{usageText(snapshot.seat_limit_mode, snapshot.seat_limit, snapshot.seat_usage, 'مستخدمين')}</dd></div>
             <div><dt>الفروع</dt><dd>{usageText(snapshot.site_limit_mode, snapshot.site_limit, snapshot.site_usage, 'فروع')}</dd></div>
@@ -101,7 +94,6 @@ export default async function TenantPage({ params, searchParams }: {
             <TenantTaskLink href={`/tenant/${tenantId}/users`} title="المستخدمون والدعوات" detail="ادعُ الفريق وراجع صلاحياته وحالة الدعوات." />
             <TenantTaskLink href={`/tenant/${tenantId}/entities-sites`} title="الجهات والفروع" detail="أضف الفروع أو حدّث بيانات الجهات المرتبطة بالشركة." />
             <TenantTaskLink href={`/tenant/${tenantId}/branding`} title="هوية الشركة" detail="اضبط الاسم الظاهر والشعار واللون المستخدم داخل المساحة." />
-            {peopleAvailable && <TenantTaskLink href={`/tenant/${tenantId}/people`} title="الموظفون" detail="أضف ملفات الموظفين وتابع بيانات عملهم." />}
           </ul>
         </section>
       </div>

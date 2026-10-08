@@ -220,6 +220,9 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .site-actions-disclosure .compact-form { margin-top: .75rem; }
 .tenant-home { align-self: start; justify-self: center; width: min(100%, var(--work-content-max)); margin: clamp(1.5rem, 4vw, 3.5rem) 0; }
 .tenant-home-heading { margin-bottom: 1.5rem; }
+.today-sections { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+.today-sections .tenant-home-tasks { margin-top: 0; border-radius: 8px; }
+.today-sections .tenant-task-link span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .tenant-home-title { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1rem; }
 .tenant-home-heading > p:last-child { margin: .5rem 0 0; color: var(--color-muted); }
 .tenant-home-summary, .tenant-home-tasks { padding: clamp(1.2rem, 2.5vw, 1.75rem); border: 1px solid var(--color-border); border-radius: .9rem; background: var(--surface-base); }
