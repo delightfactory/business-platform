@@ -33,7 +33,12 @@
 }
 
 .requestSummary:global(.snapshot-grid) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
+}
+
+.requestSummary > div:first-child {
+  grid-column: 1 / -1;
 }
 
 .requestContext {

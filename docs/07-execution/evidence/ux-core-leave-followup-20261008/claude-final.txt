@@ -1,0 +1,20 @@
+**Verdict: MATCH WITH ACCEPTED DEVIATIONS.** This covers the actual-component fixture renders only, not the whole of R6.
+
+**Images I read (11):** before-submitted-390, after-submitted-390/768/1366, open-submitted-390, open-pending-390, open-error-390, open-approved-390, open-cancelPending-390, open-cancelError-390, reference-form-390. The reference image is low-resolution, so I only compared its visual language.
+
+**Confirmed:**
+- **Duplicate state removed:** the state card is gone, the badge stays, and the existing note points to «سحب الطلب».
+- **Layout:** total units has its own full row and the dates are paired at 390/768/1366. The dates (2026-10-10) are fully readable at 390, with no clipping.
+- **Hierarchy:** the withdrawal heading comes up much earlier. The style matches Concept C: Cairo, soft cards, light note box, pill disclosures.
+- **Mutation controls:** visible in every open capture. Submit and dismiss show in submitted, approved and both error states. Pending shows a disabled spinner label; dismiss isn't visibly disabled in either pending capture, so the item below applies to both. Error messages say the outcome can't be confirmed and give no false success.
+
+**Must-fix:** none.
+
+**Limitations and follow-ups (within the core plan):**
+1. The opened own-request reason/source disclosure was never captured. Long-reason wrapping and how the opened content looks are **NOT VISUALLY VERIFIED**, and that is the main trade-off of this change.
+2. In both pending states the dismiss button (إلغاء or إغلاق) still looks enabled. Check whether closing the disclosure mid-submit hides the pending state or the result.
+3. Only cancelPending shows a live "don't close" line; withdrawal pending doesn't. This is a minor inconsistency.
+4. After an error, the submit button still looks enabled, so the screenshots can't confirm the claimed failed-read blocking.
+5. The pale-red pending button looks low-contrast. Disabled controls are exempt, but readability is borderline.
+
+**Not covered:** hydrated provider/actions, real role and authority checks, history/cancellation lists below the fold, the production shell (the rail is synthetic), dark mode, and the whole-page R6 gates. D2/D3/D8 and D16 remain deferred.

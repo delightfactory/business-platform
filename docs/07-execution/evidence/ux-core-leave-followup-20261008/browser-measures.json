@@ -1,0 +1,178 @@
+{
+  "browser": "Codex In-app Browser",
+  "version": "unavailable",
+  "samples": [
+    {
+      "disclosures": [],
+      "overflow": false,
+      "summaryColumns": "401.2px 401.2px",
+      "title": "متابعة الإجازة — submitted — before",
+      "width": 1366,
+      "withdrawalTop": 899.5187377929688
+    },
+    {
+      "disclosures": [
+        {
+          "expanded": false,
+          "text": "سبب الإجازة وطريقة التسجيل",
+          "top": 626.7999877929688
+        },
+        {
+          "expanded": false,
+          "text": "كتابة سبب السحب",
+          "top": 936.7125244140624
+        }
+      ],
+      "overflow": false,
+      "summaryColumns": "401.2px 401.2px",
+      "title": "متابعة الإجازة — submitted — after",
+      "width": 1366,
+      "withdrawalTop": 788.3187866210938
+    },
+    {
+      "disclosures": [],
+      "overflow": false,
+      "summaryColumns": "315.844px 315.844px",
+      "title": "متابعة الإجازة — submitted — before",
+      "width": 768,
+      "withdrawalTop": 871.6749877929688
+    },
+    {
+      "disclosures": [
+        {
+          "expanded": false,
+          "text": "سبب الإجازة وطريقة التسجيل",
+          "top": 617.5187377929688
+        },
+        {
+          "expanded": false,
+          "text": "كتابة سبب السحب",
+          "top": 912.8687744140624
+        }
+      ],
+      "overflow": false,
+      "summaryColumns": "315.844px 315.844px",
+      "title": "متابعة الإجازة — submitted — after",
+      "width": 768,
+      "withdrawalTop": 764.4750366210938
+    },
+    {
+      "disclosures": [],
+      "overflow": false,
+      "summaryColumns": "309.2px",
+      "title": "متابعة الإجازة — submitted — before",
+      "width": 390,
+      "withdrawalTop": 1235.9188232421875
+    },
+    {
+      "disclosures": [
+        {
+          "expanded": false,
+          "text": "سبب الإجازة وطريقة التسجيل",
+          "top": 675.2000122070312
+        },
+        {
+          "expanded": false,
+          "text": "كتابة سبب السحب",
+          "top": 998.3875122070312
+        }
+      ],
+      "overflow": false,
+      "summaryColumns": "148.6px 148.6px",
+      "title": "متابعة الإجازة — submitted — after",
+      "width": 390,
+      "withdrawalTop": 800.71875
+    },
+    {
+      "buttons": [
+        {
+          "busy": "false",
+          "disabled": false,
+          "height": 44,
+          "text": "سحب الطلب"
+        }
+      ],
+      "close": [],
+      "overflow": false,
+      "title": "متابعة الإجازة — submitted — after",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "busy": "true",
+          "disabled": true,
+          "height": 44,
+          "text": "جارٍ السحب…"
+        }
+      ],
+      "close": [
+        "إلغاء"
+      ],
+      "overflow": false,
+      "title": "متابعة الإجازة — pending — after",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "busy": "false",
+          "disabled": false,
+          "height": 44,
+          "text": "سحب الطلب"
+        }
+      ],
+      "close": [],
+      "overflow": false,
+      "title": "متابعة الإجازة — error — after",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "busy": "false",
+          "disabled": false,
+          "height": 44,
+          "text": "إرسال طلب الإلغاء"
+        }
+      ],
+      "close": [],
+      "overflow": false,
+      "title": "متابعة الإجازة — approved — after",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "busy": "true",
+          "disabled": true,
+          "height": 44,
+          "text": "جارٍ الإرسال…"
+        }
+      ],
+      "close": [
+        "إغلاق"
+      ],
+      "overflow": false,
+      "title": "متابعة الإجازة — cancelPending — after",
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "busy": "false",
+          "disabled": false,
+          "height": 44,
+          "text": "إرسال طلب الإلغاء"
+        }
+      ],
+      "close": [],
+      "overflow": false,
+      "title": "متابعة الإجازة — cancelError — after",
+      "width": 390
+    }
+  ],
+  "nativeDisclosureRetainedReason": true,
+  "keyboardReasonDisclosureOpened": true,
+  "nativeCheckBoundary": "Earlier native DOM disclosure checks on same disclosure/form markup; not hydrated action-state qualification"
+}

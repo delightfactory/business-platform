@@ -1,0 +1,62 @@
+{
+  "passed": 8,
+  "cases": [
+    {
+      "kind": "withdraw",
+      "pending": false,
+      "error": false,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "withdraw",
+      "pending": false,
+      "error": true,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "withdraw",
+      "pending": true,
+      "error": false,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "withdraw",
+      "pending": true,
+      "error": true,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "cancel",
+      "pending": false,
+      "error": false,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "cancel",
+      "pending": false,
+      "error": true,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "cancel",
+      "pending": true,
+      "error": false,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    },
+    {
+      "kind": "cancel",
+      "pending": true,
+      "error": true,
+      "result": "PASS",
+      "fieldsKeyVersionAndActualSubmitMarkupPreserved": true
+    }
+  ],
+  "boundary": "Actual follow-up components and shared SubmitButton with controlled React/useFormStatus/action hooks. Not hydrated/provider mutation qualification."
+}

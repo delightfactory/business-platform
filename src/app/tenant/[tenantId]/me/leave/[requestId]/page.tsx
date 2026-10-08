@@ -90,15 +90,17 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
       {stateNote && <p className="form-message" role="status">{stateNote}</p>}
 
       <dl className={`snapshot-grid ${styles.requestSummary}`}>
-        <div><dt>الحالة</dt><dd>{stateLabel(request.state)}</dd></div>
         <div><dt>إجمالي أيام الإجازة المحتسبة</dt><dd>{formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</dd></div>
         <div><dt>تاريخ البداية</dt><dd><bdi>{request.start_date}</bdi></dd></div>
         <div><dt>تاريخ النهاية</dt><dd><bdi>{request.end_date}</bdi></dd></div>
       </dl>
+      <details className="task-disclosure">
+        <summary className="secondary-button">سبب الإجازة وطريقة التسجيل</summary>
       <dl className={styles.requestContext}>
         <div><dt>سبب الإجازة</dt><dd>{request.reason || 'غير مسجل'}</dd></div>
         <div><dt>طريقة التسجيل</dt><dd>{request.request_source === 'hr' ? 'إدارة الموارد البشرية' : 'خدمة الموظف'}</dd></div>
       </dl>
+      </details>
 
       {isObject(data) && Array.isArray(data.correction_links) && data.correction_links.length > 0 && <>
         <h2>سجل استبدال الإجازة</h2>
@@ -171,8 +173,11 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
       <h2 id="withdraw-title">سحب الطلب</h2>
       <p className="field-hint">يمكنك سحب طلبك ما دام بانتظار قرار الموارد البشرية. بعد السحب تصبح حالته «مسحوبًا» نهائيًا،
         ويُحفظ سببك في سجل العملية مع هويتك ووقتها. لن يُخصم أي رصيد لأن الطلب لم يُعتمد بعد.</p>
-      <WithdrawRequestForm tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
-        idempotencyKey={crypto.randomUUID()} />
+      <details className="task-disclosure">
+        <summary className="secondary-button">كتابة سبب السحب</summary>
+        <WithdrawRequestForm tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
+          idempotencyKey={crypto.randomUUID()} />
+      </details>
     </section>}
 
     <CancellationHistorySection tenantId={tenantId} requestId={requestId} view={history}
@@ -183,6 +188,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
 }
 
 function requestStateNote(state: string, canRequestCancellation: boolean): string {
+  if (state === 'submitted') return 'لم يصدر قرار الموارد البشرية بعد. إذا أردت سحب الطلب، راجع قسم «سحب الطلب» أدناه.';
   if (state === 'approved') return canRequestCancellation
     ? 'تم اعتماد الإجازة. يمكنك متابعة طلب إلغائها من القسم التالي.'
     : 'تم اعتماد الإجازة.';

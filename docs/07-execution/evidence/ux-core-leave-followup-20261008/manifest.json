@@ -1,0 +1,118 @@
+{
+  "baseline": "8436d3ce4815a32c22684facd993f40852aee06d",
+  "candidateSource": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sha256NormalizedLF": "558e383668563d919d666e49a3bb9452a44039578cd84f567731be1348f59873"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
+      "sha256NormalizedLF": "930fde298c993d592e3a3176114c60e243fdeb125e78850c91e72a43bb96cdda"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "after-submitted-1366.jpg",
+      "encoding": "binary",
+      "sha256": "5bffb8e46247c191194ad6252aba67ddab3ce17fe72e39396251e52bf4e3cdb5"
+    },
+    {
+      "file": "after-submitted-390.jpg",
+      "encoding": "binary",
+      "sha256": "4b8ad81753b2fd8a2ab79a7212f214d0d2e9b43558248cfb509de797db87652d"
+    },
+    {
+      "file": "after-submitted-768.jpg",
+      "encoding": "binary",
+      "sha256": "06d263bb5145b181b50c4ae33c377951b9833eb1d48735c4bfcd41d07259a05e"
+    },
+    {
+      "file": "before-submitted-1366.jpg",
+      "encoding": "binary",
+      "sha256": "76f46be0f43cfa6aabf965c64731859edbea78ce26f65b77f765edecbe716ae1"
+    },
+    {
+      "file": "before-submitted-390.jpg",
+      "encoding": "binary",
+      "sha256": "f953fd9a0beed9f4c51c4477725fef2a49e5b540c2a0c938aec2cf3382b8a707"
+    },
+    {
+      "file": "before-submitted-768.jpg",
+      "encoding": "binary",
+      "sha256": "852b14a954a8eb062a67abc7a4e989c7e14997be7492ccc98cb911c75b2e9104"
+    },
+    {
+      "file": "browser-measures.json",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "ded1851a137cb3e4ca1175efc9170427d3114d130de980603e9cdd23911118ed"
+    },
+    {
+      "file": "claude-final.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "9d9ff1ed825571c3ca1b7acef8a535a99613b55aa33b6c6ef2535d0d2c70a077"
+    },
+    {
+      "file": "client-engine-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "71d9474ef9e078c328385c8362a99c3824db2c3956b4ae1206e6db647e36038d"
+    },
+    {
+      "file": "fixture-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "c3b29b1b4a4223b8b27c42c086d94ed3c2dc5dc937d435cbcc86b50415000476"
+    },
+    {
+      "file": "focused-results.json",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "af8ceda7e67fa51088185cd220abaa9710e7d3b558015f85313d22e3a961272b"
+    },
+    {
+      "file": "open-approved-390.jpg",
+      "encoding": "binary",
+      "sha256": "517e2dcb82726907298dbc4ea0009c1c4cfd8684615f756dc94c761cdc9dbf45"
+    },
+    {
+      "file": "open-cancelError-390.jpg",
+      "encoding": "binary",
+      "sha256": "8d3fc06f2eca4759400cc00829731d514ba2bdb139095939f80501ea52e1892d"
+    },
+    {
+      "file": "open-cancelPending-390.jpg",
+      "encoding": "binary",
+      "sha256": "23a6feeb4fd1d358863edc25656df86cdaa293558143f8ee3b1ad37aa7a5e6bc"
+    },
+    {
+      "file": "open-error-390.jpg",
+      "encoding": "binary",
+      "sha256": "3ef1a331ecbfc2abd8632db9c1bfaa58f2cc4d51eb7a609704466e411ed3f320"
+    },
+    {
+      "file": "open-pending-390.jpg",
+      "encoding": "binary",
+      "sha256": "bbfce74ca6f3edf740d6cbc25de804b2c3819d071ee0687d9917022016577599"
+    },
+    {
+      "file": "open-submitted-390.jpg",
+      "encoding": "binary",
+      "sha256": "d6d35e0f228d2d37eb343d8e224316d3cbee9a7533382f9c9852b524334d38a3"
+    },
+    {
+      "file": "README.md",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "01f511c51ecc0173d8f3fde255f82755abc61d8e7b2826d0472efae9608c38e7"
+    },
+    {
+      "file": "review-brief.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "9d02125646ccc8eb9d8360b4bfc94cb823a2b650bf3efb233d679c48f78dec95"
+    },
+    {
+      "file": "runtime-source.txt",
+      "encoding": "UTF-8 normalized LF",
+      "sha256": "2b80f75e5c5d11a78d7b796d5fdd27dfe62623e26c51b559aff1adf8bf47316b"
+    }
+  ],
+  "codexVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "claudeVerdict": "MATCH WITH ACCEPTED DEVIATIONS",
+  "scope": "Actual-component fixture presentation only; reviewer follow-ups retained, NOT full R6"
+}
