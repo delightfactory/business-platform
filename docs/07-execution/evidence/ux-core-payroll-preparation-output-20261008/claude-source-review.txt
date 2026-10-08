@@ -1,0 +1,74 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+Inputs, output and the runs copy fix all hold up at source level; I'm finishing the visual check. The desktop captures show a frame problem I need to call out.
+
+# R7 inputs/output/payments + runs stale copy: candidate review (ff40f21)
+
+## Source must-fix: none. One evidence must-fix: recapture desktop with the standard parent frame
+
+**Recovery placement adjustment: accepted.**
+- **Mount order and identity:** the `PaymentForm` order is still `recoveryOnly` (no key) → main form keyed by `query.output` → correction forms inside each history `<article>` (`payments/page.tsx:35,39,41`).
+  - Everything before `recoveryOnly` (header, summary) is unconditional, so its position among siblings is stable and it doesn't remount between renders.
+  - Props come from the same `props` object (actor, tenant, employer, output, revision, `recoveryAttempt`), so its scope and identity are unchanged.
+- **Simplicity:** this is a real gain, not a tradeoff. With 30 employees, the recovery block's top moved from 4802px to 574px on mobile and from 3875px to 568px at 768/1366, with the same `__recover`/`__cancel` controls. Resolving the unknown result now comes before searching or recording, which matches the requirement to recover first.
+- **Unchanged:** no new anchor, storage, request or retry, and the nav still has no action anchor.
+
+**Other changes accepted:**
+- **CSS:** `.periods` is unchanged (`css:18`). `.cardGrid` is separate, with 3/2/1 columns at the 1100/600 breakpoints, and the 900px control breakpoint is untouched.
+- **Inputs:**
+  - The anchor IDs sit on the wrapping sections (`:50–54`); the evidence shows the details closed with the summary visible.
+  - The `#payroll-input-editor` link is shown only when `kind` is set. The ID is on `InputForm`'s only root `<form>` (`InputForm.tsx:24`), and nothing else in it changed.
+  - The employer name comes from the authorized list, with "الجهة المحددة" as the fallback (`:45`).
+- **Output:**
+  - The replacement link is primary only when the output is superseded.
+  - The payments link is `secondary-button` and its visibility is unchanged.
+  - Export is still a plain `<a>` with the page `context` and the exact label.
+  - Lines, dispositions, line keys, the pager and both employer identities are preserved, and `explanation.deductions` is still not rendered.
+- **Payments:** a superseded output uses historical labels ("المتبقي في سجل المخرج المستبدل"). Payable, recorded and compensated stay in `<details>`.
+- **Runs:** the approved + stale branch now shows the existing "readiness changed" text (`runs/page.tsx:59`), with no predicate changes.
+- **Build:** `build-exit.txt` shows 0. This also covers the runs build gate that was pending.
+
+**Should-fix (doesn't block):** in a superseded output, each employee's figure strip shows "صافي الراتب" in bold, with the same emphasis as a current output (`output/page.tsx:22`). The top alert says not to use it for payment, but the per-card figure doesn't. When `result.superseded` is true, apply the same historical labelling as payments. This is a label change only.
+
+**Recorded, not fixed (pre-existing and outside scope):** `payments-normal` has two `primary-button`s, "تسجيل الدفعة الخارجية" and "حفظ تصحيح القيد". The second sits inside a closed history `<details>`, so only one is visible by default. Both belong to `PaymentForm`, which this batch must not change.
+
+## Visual verdict
+Images inspected: `payments-recoveryPaged-390.png`, `payments-recoveryPaged-1366.png`, `output-superseded-1366.png`, `inputs-paged-1366.png`.
+
+- **390 payments recovery:**
+  - The order is right: heading, then the summary figures (remaining 80, recorded 20) with the reconciliation details, then the recovery card with its primary and the secondary cancel button.
+  - There is no horizontal overflow.
+  - The cards touch the left edge, which earlier slices didn't show. That points to a harness padding difference.
+- **The 1366 captures are invalid as layout evidence.** In all three desktop images, page content runs up to and under the sidebar:
+  - the start of the payments employer name and the inputs "الفترة" label are cut off;
+  - output cards and the full-width primary span from x=0 to the sidebar edge.
+
+  `scrollWidth` shows no horizontal overflow, and the root/runs captures from earlier slices had proper insets with the same page CSS. So this is most likely the simplified parent frame used by `serve-pages.cjs`, not the source. Recapture 1366 (and 768) with the same parent harness used for root and runs before accepting the desktop layout.
+- **What the 1366 images do show:** the 3-column employee grid in inputs, the superseded alert with a single primary to the replacement output, the dispositions fully visible, and recovery above the nav in payments.
+- **Verdict:** 390 is acceptable within its scope. **Desktop is NOT VISUALLY VERIFIED** until recaptured. The Concept C comparison covers only the shared direction (figure strip, cards), so a full match is **NOT VISUALLY VERIFIED**.
+
+## Core gates still open (not promoted)
+- **Inputs:** the hard-coded legal-qualification sentence, and the two primaries inside `InputForm`.
+- **Payments:**
+  - the heading for unknown payment statuses;
+  - two `PaymentForm` primaries (one inside history);
+  - showing a pending request on the server without a recovery anchor.
+- **Output:** the historical label on superseded net (should-fix), and `explanation.deductions` semantics.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Root:**
+  - deductions, net and overtime figures;
+  - payment and time/leave facts;
+  - stage completion;
+  - per-employee owner routes;
+  - the same-employer reset scenario.
+- **Sub-pages:** employer controls on every sub-page; corrections, advances, reports and setup.
+- **Qualification:** real roles and providers, financial transitions, JS-off, and the full hydrated parent.
+
+None of this source-only work closes the phase, the register or any semantic status. **Whole R7 is NOT accepted.**

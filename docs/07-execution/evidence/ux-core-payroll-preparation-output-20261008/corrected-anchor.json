@@ -1,0 +1,19 @@
+{
+  "keyboard": {
+    "clientWidth": 1351,
+    "detailsOpen": false,
+    "framePadding": "40.98px",
+    "summaryHeight": 30,
+    "targetTop": 752.6375122070312,
+    "url": "http://127.0.0.1:3596/?scene=inputs-manual_units",
+    "width": 1366,
+    "completed": false
+  },
+  "pointer": {
+    "detailsOpen": false,
+    "summaryHeight": 30,
+    "targetTop": 699.8375244140625,
+    "url": "http://127.0.0.1:3596/?scene=inputs-manual_units#payroll-input-records"
+  },
+  "scope": "Enter focus observed but fragment transition not confirmed; pointer transition confirmed. Keyboard gate remains open."
+}

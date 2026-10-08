@@ -40,3 +40,12 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
 .paymentFields input[type=checkbox] { width: 1.25rem; height: 1.25rem; }
 .paymentFields input:focus-visible,.paymentFields select:focus-visible,.paymentFields textarea:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
 @media(max-width:600px) { .paymentFields { grid-template-columns: 1fr; } }
+
+.cardGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; padding: 0; list-style: none; }
+.outputCards { display: grid; gap: 1rem; min-width: 0; }
+.figureStrip { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; margin-block: 1rem; padding: .75rem; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--surface-subtle); }
+.figureStrip div { min-width: 0; }
+.figureStrip dt { color: var(--text-secondary); }
+.figureStrip dd { margin: .25rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+@media(max-width: 1100px) { .cardGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width: 600px) { .cardGrid { grid-template-columns: 1fr; } }

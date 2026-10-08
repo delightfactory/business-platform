@@ -1,0 +1,7 @@
+{
+  "scopedLint": "PASS",
+  "buildExit": 0,
+  "typeScript": "PASS",
+  "scope": "one grouped final-source build after related edits; log local; previous runs pending build gate covered",
+  "unaffectedSuites": "SQL/Auth/financial/recovery/export reused, no repeated heavy tests"
+}

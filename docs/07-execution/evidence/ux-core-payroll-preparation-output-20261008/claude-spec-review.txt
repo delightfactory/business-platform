@@ -1,0 +1,79 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 inputs/output/payments: co-design verdict (spec on ff40f21; candidate not yet applied)
+
+The spec is acceptable as a bounded presentation batch once the corrections below are written into it. Four are must-fix; the others are constraints the implementation has to state explicitly.
+
+## Must-fix before implementation
+
+1. **Don't change the shared `.periods` class.** It is shared by the root employer list, the runs employee list, and the inputs employee and saved-record lists (`inputs/page.tsx:50,53`). Changing it would quietly re-layout root and runs. Add a separate class (for example `.cardGrid`) for the 3/2/1 grids, and apply it only on inputs and payments.
+2. **Inputs anchors must target the visible section, not content inside a closed `<details>`.** The employee and saved-record lists sit inside `<details open={!kind}>`. When an input type is selected (`kind`), those disclosures are closed. Put the IDs on the wrapping `<section>`, where the summary is always visible. Browsers don't reliably auto-open `<details>` on fragment navigation.
+3. **Payments: a superseded output must not show "remaining" as an actionable figure.**
+   - **The problem:** today the remaining amount appears for superseded outputs too (`payments/page.tsx:34`), under the heading "مخرج مستبدل للتاريخ". Turning it into a prominent figure would advertise an amount to pay on a historical output, while `canRecord` is false.
+   - **Required:** when `w.superseded` is true, label the figures as history, reusing the existing heading text. No figure gets primary emphasis.
+4. **Output: the payments link stays secondary, with unchanged visibility.** Output has no payment access RPC, and the payments link currently renders for every output viewer, including superseded (`output/page.tsx:22`). It can't become primary. The only primary allowed is "فتح المخرج البديل" (open the replacement output) when the output is superseded and `replacement_output_id` exists. A non-superseded output has no primary: reading is the task, and export is permission-gated on the server.
+
+## Constraints the spec must state
+- **Inputs, employer name:**
+  - `payroll_input_employers` is filtered and paged by `employer_q`, `after_name` and `after_id` (`:24`).
+  - Deep links from runs or root usually land on the first page, so tenants with more than 30 employers will often show the fallback. That is honest.
+  - Use neutral fallback text such as "الجهة المحددة", never a name from another page.
+  - The workspace payload has no employer name, so don't add a lookup.
+- **Inputs, form anchor:**
+  - `InputForm` mounts under `kind`, with its existing key (`:56`).
+  - Either wrap it in a `<div id>` under **exactly** the same `kind &&` condition, which keeps the same lifecycle, or anchor to an adjacent heading.
+  - Don't move it earlier in the DOM: the spec requires keeping mount order.
+  - `CorrectionForm` keys by `employment_id` stay unchanged.
+- **Inputs, a pre-existing hazard to record, not fix:** the "ما يلزم قبل الحساب" card hard-codes "المراجعة القانونية غير مؤهلة" (`:49`). It isn't derived from any source and could become false. Add it to the open source-fact gates, and don't promote it visually as a figure or status.
+- **Output:**
+  - Export must stay a plain `<a>` (not `Link`), with the page-scoped `context` cursor and the exact label "تنزيل كشف هذه الصفحة حسب صلاحية التصدير" (D12/F9).
+  - Keep the "next employees" pager next to the list, not in the tool group.
+  - `explanation.deductions` is in the payload but not rendered today. **Don't add it** in this batch: whether it is final statutory or operational isn't confirmed, so it stays an open requirement for the financial-figures work.
+  - Keep `display_name` and `legal_name` both visible, and keep line keys by index.
+  - When converting each disposition to a `<dl>`, keep all its fields: original, payroll, residual, mode and reference.
+- **Payments:**
+  - Keep the mount order exactly: `recoveryOnly` (no key) → the main form keyed by `query.output` → correction forms inside each history `<article>`.
+  - History stays a native `<details>` and stays mounted. Its anchor goes on the `<details>` itself.
+  - Unknown statuses currently fall into "لا توجد دفعات قائمة". That is pre-existing; record it and don't extend it.
+  - **Recovery visibility gate:** the recovery-only form renders *after* the employee list of up to 30 entries. Cards must not make that list taller at 390px. Measure the top of the recovery block with 30 employees, before and after. If it increases, that is a regression, not a tradeoff.
+  - The server already knows `recoveryAttempt` (`:31`), but this batch must not add a recovery anchor or notice from it. Record "pending-request visibility" as an open recovery gate.
+- **Runs copy (accepted):**
+  - **Condition:** `work.approval?.ready && work.stale_reasons.length === 0`.
+  - **True:** keep the ready-to-finalize text.
+  - **False:** use the existing "الاعتماد مرتبط بنسخة الحساب المعروضة. تغيرت جاهزية الحساب…" text.
+  - Copy only; no predicate change.
+
+## Acceptance for the bounded plan
+- **Controlled before/after cases on the actual source:**
+  - exact RPC parameters;
+  - every URL that isn't a new anchor;
+  - native fields;
+  - `InputForm`/`CorrectionForm`/`PaymentForm` props, keys and mount order;
+  - all financial text and values.
+- **States to cover:**
+  - inputs: no `kind`, `kind` selected, `head` missing, correction error, disabled;
+  - output: superseded with and without replacement, export, paging;
+  - payments: paid, partial, superseded, `can_record` false, disabled with recording allowed, `selected_entry`, empty history, 20+ history entries, `recoveryAttempt` present.
+- **At 390/768/1366:**
+  - check that every anchor has a target and works with the keyboard;
+  - measure the primary, and the payments recovery-block top with 30 employees;
+  - check that root and runs layouts are unchanged by the CSS (a guard for must-fix 1).
+- **Concept C:** shared direction only, with figure strip on payments and cards on output. **NOT VISUALLY VERIFIED** for a full match.
+
+## Required core gates still open
+- **Inputs:** the multiple save/approve primaries inside `InputForm`, and the static legal-qualification claim.
+- **Payments:** pending-request and recovery visibility, plus the unknown-status heading.
+- **Output and root:** output deductions and the root financial figures (deductions, net, overtime, payment and time/leave facts).
+- **Navigation:** employer controls on the sub-pages, and the same-employer reset scenario.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Remaining R7 pages:** corrections, advances, reports and setup.
+- **Qualification:** real roles, providers, financial transitions, JS-off and the full hydrated parent.
+
+Whole R7 is **not** accepted.

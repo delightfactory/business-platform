@@ -1,0 +1,128 @@
+[
+  {
+    "clientWidth": 375,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "16px",
+    "gridColumns": null,
+    "recoveryTop": 4802.23779296875,
+    "scene": "before-payments-recoveryPaged",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "clientWidth": 375,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "16px",
+    "gridColumns": null,
+    "recoveryTop": 574.0750122070312,
+    "scene": "payments-recoveryPaged",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "23.04px",
+    "gridColumns": null,
+    "recoveryTop": 3874.637451171875,
+    "scene": "before-payments-recoveryPaged",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "clientWidth": 753,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "23.04px",
+    "gridColumns": null,
+    "recoveryTop": 568.4750366210938,
+    "scene": "payments-recoveryPaged",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "clientWidth": 1351,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "40.98px",
+    "gridColumns": null,
+    "recoveryTop": 3874.637451171875,
+    "scene": "before-payments-recoveryPaged",
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "clientWidth": 1351,
+    "formFields": [
+      {
+        "name": "__recover",
+        "text": "استعادة نتيجة الدفعة الأصلية",
+        "value": "yes"
+      },
+      {
+        "name": "__cancel",
+        "text": "إلغاء الطلب إذا لم يُسجّل",
+        "value": "yes"
+      }
+    ],
+    "framePadding": "40.98px",
+    "gridColumns": null,
+    "recoveryTop": 568.4750366210938,
+    "scene": "payments-recoveryPaged",
+    "scrollWidth": 1351,
+    "width": 1366
+  }
+]

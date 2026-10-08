@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "ecccc2c422bf0ff484728e28f13a1187f29ed08e",
+  "sourceSnapshot": "ff40f21f518380c1c49f89316aaa941a4420813c",
   "status": "Proposed",
   "items": [
     {
@@ -11987,7 +11987,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6385",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6411",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -11996,7 +11996,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6436",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6462",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12005,7 +12005,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6491",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6517",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12014,7 +12014,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6538",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:24:6564",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12023,7 +12023,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:25:6661",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:25:6687",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12032,7 +12032,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:6866",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:6892",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12041,7 +12041,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7246",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7272",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12050,7 +12050,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7322",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:26:7348",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12059,7 +12059,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7390",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7416",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12068,7 +12068,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7444",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:27:7470",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12077,7 +12077,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8252",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8278",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12086,7 +12086,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8565",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:8591",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12095,7 +12095,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:9077",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:28:9103",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12104,7 +12104,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11638",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11664",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12113,7 +12113,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11817",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11843",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12122,7 +12122,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11971",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx:31:11997",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12194,7 +12194,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7120",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7223",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12203,7 +12203,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7166",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7269",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12212,7 +12212,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7271",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7374",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12221,7 +12221,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7343",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7446",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12230,7 +12230,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7617",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7720",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12239,7 +12239,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7685",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:46:7788",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12248,7 +12248,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:50:8530",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:51:9070",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12257,7 +12257,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:53:10175",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/inputs/page.tsx:54:10774",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12527,7 +12527,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4677",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4905",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12536,7 +12536,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5286",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5826",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12545,7 +12545,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5332",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5872",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12554,7 +12554,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5393",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5933",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12563,7 +12563,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5475",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6015",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12572,7 +12572,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:35:5543",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6083",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12581,7 +12581,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:6610",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7140",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -12590,7 +12590,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:39:7201",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7731",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -13193,7 +13193,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:59:25128",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:59:25159",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",
@@ -13202,7 +13202,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:60:25572",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/page.tsx:60:25603",
       "category": "formControls",
       "phase": "R7",
       "status": "pending",

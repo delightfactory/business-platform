@@ -1,0 +1,64 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# Corrected render evidence: visual verdict (source unchanged)
+
+**Verdict: accepted for these four views and the measured states.** I didn't re-review the source.
+
+## Images inspected
+`corrected-inputs-paged-1366.png`, `corrected-payments-recoveryPaged-1366.png`, `corrected-output-superseded-1366.png`, `corrected-payments-recoveryPaged-390.png`. I disregarded the earlier unprefixed images.
+
+## What the corrected views show
+- **Frame:**
+  - Content now sits inside the `main.app-shell` insets: 16px at 390, 23.04px at 768 and 40.98px at 1366, matching the JSON.
+  - Nothing runs under the sidebar or is clipped. `scrollWidth` equals `clientWidth` at every width.
+  - Cards are inset on both sides at 390.
+- **Inputs at 1366:**
+  - Header with the employer name, period, the three context links and the GET filters.
+  - The section nav, then the prerequisites card.
+  - The employee disclosure open, with a 3-column card grid (329.6px each). The measured columns are 2 at 768 and 1 at 390.
+  - No primary, as expected.
+- **Payments recovery at 1366 and 390:**
+  - Order: identity and period, the summary with the figure strip (remaining 80, recorded 20) and the reconciliation details, the "ever paid" note, then the recovery card, then the nav.
+  - Recovery has one primary ("استعادة نتيجة الدفعة الأصلية") and a secondary cancel button.
+  - Recovery top is 574px on mobile and 568px at 768/1366, against 4802px and 3875px before, with the same `__recover`/`__cancel` fields. The improvement is confirmed under the real frame.
+- **Output superseded at 1366:**
+  - Display and legal employer identity, the superseded alert, then a single primary, the replacement output.
+  - The employee card shows base and net, the line, and the full disposition with original, period deduction, remaining, mode and reference.
+  - The payments link is secondary and the return link is plain.
+
+## Evidence gaps (scoped)
+- **Inputs anchor:** `page-layouts.json` marks the earlier anchor capture as rejected (`previousAnchorFrameRejected`), and no corrected keyboard/anchor capture was provided. **Inputs anchor behaviour under the real frame is NOT VISUALLY VERIFIED.**
+- **Payments without recovery:** the corrected set has no `payments-normal` view, so that state is unverified visually under the real frame. The two-primary finding from source still stands.
+- **Superseded net emphasis:** in the corrected output image, the superseded net is still a bold figure. The historical-label should-fix stands.
+- **Concept C:** shared direction only, with the figure strip and card hierarchy. There is no equivalent sub-page reference, so a full match is **NOT VISUALLY VERIFIED**.
+
+## Core gates still open (not accepted)
+- **Inputs:** the hard-coded legal-qualification sentence; the two primaries inside `InputForm`; a corrected-frame anchor capture.
+- **Output:** the historical label on superseded net; the meaning of `explanation.deductions`.
+- **Payments:**
+  - the heading for unknown statuses;
+  - the second `PaymentForm` primary inside history;
+  - showing a pending request on the server.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Root:**
+  - deductions, net and overtime figures;
+  - payment and time/leave facts;
+  - stage completion;
+  - per-employee owner routes;
+  - the same-employer reset scenario.
+- **Sub-pages:** employer controls on every sub-page; corrections, advances, reports and setup.
+- **Not accepted:**
+  - a full reference match;
+  - real roles and providers;
+  - financial transitions;
+  - JS-off;
+  - hydrated recovery and the full parent;
+  - phase, register and semantic closure;
+  - whole R7.
