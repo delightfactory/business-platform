@@ -1,7 +1,8 @@
 'use client';
 
-import { useActionState, useRef, useState, useTransition, type ChangeEvent, type FormEvent } from 'react';
+import { useActionState, useId, useRef, useState, useTransition, type ChangeEvent, type FormEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { loadLeaveRequestOptionsAction, submitLeaveRequestAction } from '../actions';
 import {
   EMPTY_LEAVE_FIELDS,
@@ -17,6 +18,8 @@ import { PendingLink } from '../pending-link';
 import styles from '../leave.module.css';
 
 export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: string; idempotencyKey: string }) {
+  const { offline, blockOfflineSubmission } = useOfflineSubmission();
+  const offlineHintId = useId();
   const [fields, setFields] = useState<LeaveFields>(EMPTY_LEAVE_FIELDS);
   const fieldsRef = useRef<LeaveFields>(EMPTY_LEAVE_FIELDS);
   const [options, setOptions] = useState<LeaveOptionsState | null>(null);
@@ -29,6 +32,8 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
 
   const frozen = loadingOptions || submitting;
   const rangeError = rangeErrorText(fields.startDate, fields.endDate);
+  const showOfflineNotice = offline && !frozen && !rangeError && Boolean(options?.types.length)
+    && options?.startDate === fields.startDate && options?.endDate === fields.endDate;
   const selectedType = options?.types.find((type) => type.id === fields.leaveTypeId) ?? null;
   const halfDayAvailable = Boolean(options && selectedType && options.startDate === options.endDate
     && halfDayAllowedOn(selectedType, options.startDate));
@@ -147,7 +152,8 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
 
     {options && <div className={styles.formBlock}>
       <h2 className={styles.formTitle}>2 · بيانات الطلب</h2>
-      <form className="auth-form" action={submitAction} aria-busy={submitting}>
+      <form className="auth-form" action={submitAction} aria-busy={submitting}
+        onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <fieldset disabled={frozen || Boolean(rangeError) || options.startDate !== fields.startDate || options.endDate !== fields.endDate}
           className={styles.requestFields}>
         <input type="hidden" name="tenantId" value={tenantId} />
@@ -179,13 +185,15 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
-              <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" />
+              <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" disabled={offline}
+                ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} />
               {submitting ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
                 : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}
             </div>
             <p className="field-hint">يُرسَل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد قبل الاعتماد.</p>
           </>}
         </fieldset>
+        {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} />}
       </form>
     </div>}
   </>;

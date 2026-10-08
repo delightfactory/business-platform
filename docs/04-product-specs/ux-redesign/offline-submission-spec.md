@@ -1,0 +1,27 @@
+# PWA-C — operation-specific submission safety
+
+Authority: original Concept C plan10.3 and continuing R0–R8 owner goal. Baseline a8422f14d6c9bfea24166d5fa8ac388a12afc55b. This is the required offline submission work, not new functionality or a reduced completion definition. Whole frontier:152 structural form sites/19 handler sites (18 before the explicit NewLeave submit guard), plus non-form operations such as MobilePunch. All owning operations still require classification and appropriate execution evidence before full C acceptance.
+
+## Shared contract
+
+Use `navigator.onLine === false` only as the device's disconnected advisory. Online never proves server/provider reachability or business success. Use a hydration-stable external-store hook with online/offline events, no polling/fetch/storage, plus a contemporaneous submit-time guard. Opt into this guard at reviewed owning operations; do not mutate the DOM globally or disable every SubmitButton. Preserve native validation, existing authority/pending states, values, operation keys, journals, locks, unknown-result handling and financial confirmations. No queue, replay, automatic retry/reload, new journal, storage expansion or field remount. Read/search/navigation/logout/access and established checking/recovery keep their existing behavior until independently classified.
+
+Disabled submission must have a visible associated Arabic explanation using existing Concept C semantic styles. Keep editable fields editable unless existing rules lock them. Reconnection only re-enables eligibility; the user explicitly chooses whether to submit. A signal loss after submission begins uses the existing unknown-result/reconciliation contract. No promise that work was persisted merely because a field remains visible. JS-disabled behavior remains native, with no claim of offline protection before hydration.
+
+Review correction: new-submit advice must never outrank a pending/unresolved/corrupt attempt. Advance shows and associates it only when offline and not pending/unresolved/corrupt; Deduction only when offline and not pending (unresolved/committed already have their authoritative early returns). Leave only when offline, not frozen/submitting/loading, valid current date context and at least one offered type. Do not show a resend invitation with pending or unknown-result feedback, stale dates or no submission capability. The submit-time guard remains contemporaneous and only submit controls gain the offline disabled condition. Full native visual/device/actor qualification is still required.
+
+## C1 — related HR/financial interruption batch
+
+| Actor/job | Owning operation | Guard boundary | Preserved continuation |
+| --- | --- | --- | --- |
+| Authorised employee creating leave | NewLeaveRequestForm's submitLeaveRequestAction | Native submit before the action; disabled submit control with hint | Existing date/type option reads, controlled input values, same idempotency key and server recovery; no automatic resend |
+| Authorised payroll actor operating an advance | AdvanceForm, every currently supported operation in AdvanceOperation | At start of submit, before FormData, fresh UUID, journal write/lock and advanceAction(false) | AdvanceRecovery and advanceAction(record,true) unchanged; corrupt/unresolved locks and explicit closed_without_commit new intent preserved |
+| Authorised payroll actor resolving an obligation residual | DeductionDisposition approve (carry/external_settlement) and retract | Native submit before localStorage write/event/setUnresolved and action dispatch; only new-operation buttons disabled | Existing recovery section/event, same attempt identity, confirmation/reference/reason and server version/capacity checks unchanged |
+
+Normal: fill and review existing fields, choose the existing submit; offline: submission unavailable with a useful explanation, fields/context retained; reconnect: review then explicit submit; mid-flight loss: keep existing unknown outcome and explicit recovery. Attendance remains the documented exception. Balance-post recovered intent and payment recovery/cancellation are separate C2 classifiers, not guessed from button text. All other forms/operations remain required subsequent batches.
+
+Simplicity: remove the unnecessary offline send→unknown-attempt recovery when the device already reports disconnected. Do not assert a measured N/C/P/I/B improvement from source alone. Before/after evidence must use the same actor/input/state. Controlled tests must prove no fresh attempt/action/journal write on a blocked new submit; retained values/key, original online operation and no auto-call on reconnect; every applicable AdvanceOperation, both deduction modes/retraction; recovery/Attendance unchanged. Real authority, provider, SQL and role acceptance remain separate, not certified by a mocked SDK.
+
+## Grouped acceptance and reference
+
+One related lint/typecheck/build group after the implementation batch; reuse unchanged backend/security/financial checks by fingerprint. Controlled actual module/component handlers plus native browser keyboard/submit and field retention evidence. Concept C shared form, disabled state, semantic status, Arabic/RTL and existing Cairo/control geometry at390/768/1366; independent official Opus5.5 Medium source/direction and rendered verdicts. An offline local sample is not real authenticated actor qualification. Preserve source-qualified work with any missing visual/runtime gate explicitly open; never call C, R6, R7 or the entire goal closed from this batch.

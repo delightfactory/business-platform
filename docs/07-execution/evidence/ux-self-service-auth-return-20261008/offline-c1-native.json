@@ -1,0 +1,57 @@
+{
+  "scope": "Native Next dev synthetic-only fixture; no actual Auth/SQL/provider qualification",
+  "offlineEnter": {
+    "postRequests": 0,
+    "advanceJournalPresent": false,
+    "enteredAdvanceValuesRetained": true
+  },
+  "reconnect": {
+    "postRequests": 0,
+    "advanceSubmitEnabled": true
+  },
+  "layout": {
+    "forms": [
+      {
+        "fieldsEditable": true,
+        "hints": [
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك."
+        ],
+        "submit": [
+          {
+            "describedBy": "_R_155esnelb_",
+            "disabled": true,
+            "height": 80
+          }
+        ]
+      },
+      {
+        "fieldsEditable": true,
+        "hints": [
+          "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك."
+        ],
+        "submit": [
+          {
+            "describedBy": "_R_175esnelb_",
+            "disabled": true,
+            "height": 76
+          }
+        ]
+      }
+    ],
+    "scrollWidth": 1351,
+    "theme": "dark",
+    "width": 1351
+  },
+  "limitations": [
+    "No measured before/after actor journey",
+    "Controlled date fill did not establish valid native leave dates; request qualification remains controlled only",
+    "Later device metrics screenshots did not prove native 390/768 reference fidelity; full visual gate open",
+    "Fixture HMR parent change remounted sample inputs; not treated as offline loss"
+  ],
+  "cleanup": {
+    "networkAndMediaOverridesReset": true,
+    "deviceMetricsCleared": true,
+    "originalTheme": "dark",
+    "restoredTheme": "dark"
+  }
+}

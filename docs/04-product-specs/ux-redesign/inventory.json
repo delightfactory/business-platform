@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "6fc2e33a461272a09a733b5bc61aa6406df146f4",
+  "sourceHead": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -785,7 +785,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
       "phase": "R6",
-      "sha256": "2f254d3a6596ce6c55014db98309e9f6c09467c0e6bba98d2c4b09693502bfdd"
+      "sha256": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
@@ -860,7 +860,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
       "phase": "R7",
-      "sha256": "9d22d3b1d8508caee667f4e2c60641dcebb5cfb3044f2e5c1d2c2c4b075e6fb7"
+      "sha256": "d0b3ab03be2c94ba8fc1e99850d09747302da8b9743e2ee913b1adad44571256"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/actions.ts",
@@ -1100,7 +1100,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
       "phase": "R7",
-      "sha256": "a64c437bd092a1aabfe369f0c44dc1789ca037cbbf5d52049a8ad6edaeb73f39"
+      "sha256": "8408b69135aaeef64f7d480327e2ab4cd41147fb0f81f4429c2786f641f1ddb8"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionRecovery.tsx",
@@ -1383,6 +1383,11 @@
       "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
     },
     {
+      "file": "src/components/offline-submission.tsx",
+      "phase": "R1",
+      "sha256": "de1b48911cc583bee62b66405c33bf0c19dfb6ebf39a8e7386d0df345650265b"
+    },
+    {
       "file": "src/components/pwa-foundation.tsx",
       "phase": "R1",
       "sha256": "e00c5f6fd633463b6264bbbdf5f53b20bb186fbd75f286de7702075560f4b79e"
@@ -1390,7 +1395,7 @@
     {
       "file": "src/components/submit-button.tsx",
       "phase": "R1",
-      "sha256": "da4fb501b20218360a5e91dd9b1adac4d76c369d02f5533e029d2196d5311d87"
+      "sha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5"
     },
     {
       "file": "src/components/theme-preference.tsx",
@@ -13664,17 +13669,17 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:120:5200",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:125:5590",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 120,
+      "line": 125,
       "tag": "form",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:121:5287",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:126:5677",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 121,
+      "line": 126,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13684,9 +13689,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:125:5503",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:130:5893",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 125,
+      "line": 130,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13697,9 +13702,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:130:5851",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:135:6241",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 130,
+      "line": 135,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13710,9 +13715,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:139:6575",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:144:6965",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 139,
+      "line": 144,
       "tag": "button",
       "phase": "R6",
       "attributes": {
@@ -13721,9 +13726,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:150:7051",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:155:7441",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 150,
+      "line": 155,
       "tag": "form",
       "phase": "R6",
       "attributes": {
@@ -13731,9 +13736,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:153:7316",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:159:7771",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 153,
+      "line": 159,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13743,9 +13748,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:154:7381",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:160:7836",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 154,
+      "line": 160,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13755,9 +13760,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:155:7456",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:161:7911",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 155,
+      "line": 161,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13767,9 +13772,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:156:7527",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:162:7982",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 156,
+      "line": 162,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13779,9 +13784,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:157:7616",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:163:8071",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 157,
+      "line": 163,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13791,9 +13796,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:162:7959",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:168:8414",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 162,
+      "line": 168,
       "tag": "select",
       "phase": "R6",
       "attributes": {
@@ -13803,9 +13808,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:171:8697",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:177:9152",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 171,
+      "line": 177,
       "tag": "input",
       "phase": "R6",
       "attributes": {
@@ -13814,9 +13819,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:175:8976",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:181:9431",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 175,
+      "line": 181,
       "tag": "textarea",
       "phase": "R6",
       "attributes": {
@@ -13826,14 +13831,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:182:9675",
+      "id": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:188:10130",
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 182,
+      "line": 188,
       "tag": "SubmitButton",
       "phase": "R6",
       "attributes": {
         "label": "\"إرسال الطلب\"",
-        "pendingLabel": "\"جارٍ الإرسال…\""
+        "pendingLabel": "\"جارٍ الإرسال…\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -14128,17 +14134,17 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4136",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:30:4236",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 29,
+      "line": 30,
       "tag": "summary",
       "phase": "R7",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4532",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:30:4632",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 29,
+      "line": 30,
       "tag": "button",
       "phase": "R7",
       "attributes": {
@@ -14147,17 +14153,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:40:7006",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:43:7294",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 40,
+      "line": 43,
       "tag": "form",
       "phase": "R7",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7349",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7637",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14167,9 +14173,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7453",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7741",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14177,9 +14183,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7623",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7911",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14188,9 +14194,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7762",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8050",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -14198,9 +14204,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8010",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8298",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14209,9 +14215,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8238",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8526",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14221,9 +14227,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8309",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8597",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14232,9 +14238,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8456",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8744",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14242,9 +14248,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8623",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8911",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14252,9 +14258,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8801",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9089",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -14262,9 +14268,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9041",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9329",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14274,9 +14280,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9123",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9411",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -14286,9 +14292,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9270",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9558",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 41,
+      "line": 44,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -14296,9 +14302,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:42:9549",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:45:9837",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 42,
+      "line": 45,
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
@@ -14306,13 +14312,14 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:10333",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:47:10621",
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 44,
+      "line": 47,
       "tag": "button",
       "phase": "R7",
       "attributes": {
-        "type": "\"submit\""
+        "type": "\"submit\"",
+        "disabled": "{offline}"
       }
     },
     {
@@ -16352,9 +16359,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:32:2995",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:35:3225",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 32,
+      "line": 35,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16364,9 +16371,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:3633",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:3863",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "form",
       "phase": "R7",
       "attributes": {
@@ -16374,9 +16381,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:3866",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4139",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16386,9 +16393,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4166",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4439",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16397,9 +16404,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4322",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4595",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
@@ -16408,9 +16415,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4456",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4729",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16420,21 +16427,21 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4668",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4941",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "tag": "button",
       "phase": "R7",
       "attributes": {
         "name": "\"operation\"",
         "value": "\"retract\"",
-        "disabled": "{pending||!attempt}"
+        "disabled": "{pending||!attempt||offline}"
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:37:4842",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5252",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 37,
+      "line": 40,
       "tag": "form",
       "phase": "R7",
       "attributes": {
@@ -16442,9 +16449,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:37:5195",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5648",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 37,
+      "line": 40,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16454,9 +16461,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5485",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:5938",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 40,
+      "line": 43,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16465,9 +16472,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:42:5800",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:45:6253",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 42,
+      "line": 45,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -16476,9 +16483,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:6069",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6522",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 43,
+      "line": 46,
       "tag": "select",
       "phase": "R7",
       "attributes": {
@@ -16487,9 +16494,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:6362",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6815",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 43,
+      "line": 46,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16499,9 +16506,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:44:6499",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:47:6952",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 44,
+      "line": 47,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16510,9 +16517,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:45:6654",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:48:7107",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 45,
+      "line": 48,
       "tag": "textarea",
       "phase": "R7",
       "attributes": {
@@ -16521,9 +16528,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6791",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:49:7244",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 46,
+      "line": 49,
       "tag": "input",
       "phase": "R7",
       "attributes": {
@@ -16533,15 +16540,15 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:47:7121",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:50:7574",
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 47,
+      "line": 50,
       "tag": "button",
       "phase": "R7",
       "attributes": {
         "name": "\"operation\"",
         "value": "\"approve\"",
-        "disabled": "{pending||!attempt||(mode==='carry'&&!target)}"
+        "disabled": "{pending||!attempt||offline||(mode==='carry'&&!target)}"
       }
     },
     {
@@ -19741,9 +19748,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/submit-button.tsx:13:343",
+      "id": "CONTROL:src/components/submit-button.tsx:14:388",
       "file": "src/components/submit-button.tsx",
-      "line": 13,
+      "line": 14,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19787,7 +19794,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF; PNG raw bytes",
   "summary": {
-    "sourceFiles": 295,
+    "sourceFiles": 296,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,

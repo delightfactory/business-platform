@@ -1,0 +1,182 @@
+{
+  "baseline": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
+  "scope": "Actual modules/handlers with controlled React hooks, in-memory storage and synthetic actions; no native DOM/React dispatch or real Auth/SQL/provider acceptance.",
+  "advanceOperations": [
+    "save",
+    "approve",
+    "activate",
+    "cancel",
+    "settle",
+    "compensate",
+    "termination",
+    "defer",
+    "correct_disbursement",
+    "correct_deduction"
+  ],
+  "cases": [
+    {
+      "name": "Advance save offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance save online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance approve offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance approve online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance activate offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance activate online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance cancel offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance cancel online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance settle offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance settle online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance compensate offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance compensate online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance termination offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance termination online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance defer offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance defer online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance correct_disbursement offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance correct_disbursement online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance correct_deduction offline before UUID, lock, journal and action",
+      "status": "pass"
+    },
+    {
+      "name": "Advance correct_deduction online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction carry blocks before journal/event/action and retains identity",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction external_settlement blocks before journal/event/action and retains identity",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction retract blocks before journal/event/action and retains identity",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction carry online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction external_settlement online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction retract online unchanged versus accepted baseline",
+      "status": "pass"
+    },
+    {
+      "name": "Actual new leave submit retains controlled values/key and prevents action",
+      "status": "pass"
+    },
+    {
+      "name": "Stable SSR and listener cleanup of actual shared hook",
+      "status": "pass"
+    },
+    {
+      "name": "Advance unresolved never invites resend while offline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance corrupt never invites resend while offline",
+      "status": "pass"
+    },
+    {
+      "name": "Advance in-flight loss preserves recovery priority, not resend hint",
+      "status": "pass"
+    },
+    {
+      "name": "Deduction in-flight loss never shows resend notice",
+      "status": "pass"
+    },
+    {
+      "name": "Leave pending excludes misleading offline resend hint",
+      "status": "pass"
+    },
+    {
+      "name": "Leave no-types excludes misleading offline resend hint",
+      "status": "pass"
+    },
+    {
+      "name": "Leave stale-dates excludes misleading offline resend hint",
+      "status": "pass"
+    }
+  ],
+  "passed": 35,
+  "preservedRecoveryAndAttendance": true,
+  "sourceFiles": [
+    {
+      "file": "src/components/offline-submission.tsx",
+      "sha256": "de1b48911cc583bee62b66405c33bf0c19dfb6ebf39a8e7386d0df345650265b"
+    },
+    {
+      "file": "src/components/submit-button.tsx",
+      "sha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "sha256": "d0b3ab03be2c94ba8fc1e99850d09747302da8b9743e2ee913b1adad44571256"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+      "sha256": "8408b69135aaeef64f7d480327e2ab4cd41147fb0f81f4429c2786f641f1ddb8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "sha256": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b"
+    }
+  ]
+}

@@ -38,7 +38,7 @@
     },
     {
       "file": "src/app/auth/employee-account-activation/page.tsx",
-      "line": 49,
+      "line": 50,
       "attrs": {
         "action": "{setEmployeeAccountPasswordAction}"
       },
@@ -68,13 +68,13 @@
       },
       "client": false,
       "sourceHash": "8163ebf8b2e3aaea85bb97f14253f2bf8f5baf69d3ecabae59b07c87854e990b",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 44,
+      "line": 45,
       "attrs": {
         "action": "{setInvitationPasswordAction}"
       },
@@ -86,7 +86,7 @@
     },
     {
       "file": "src/app/auth/invitations/accept/page.tsx",
-      "line": 53,
+      "line": 54,
       "attrs": {
         "action": "{acceptInvitationAction}"
       },
@@ -104,7 +104,7 @@
       },
       "client": false,
       "sourceHash": "8163ebf8b2e3aaea85bb97f14253f2bf8f5baf69d3ecabae59b07c87854e990b",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -116,7 +116,7 @@
       },
       "client": false,
       "sourceHash": "5a73a5f87b731fb3036b268c2ea33b76d85e4755ee1eaa986424f5c317f25331",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -152,7 +152,7 @@
       },
       "client": false,
       "sourceHash": "d024d2daa6d27d7b1fc7a6eb0a8c8b29b020a8feab01925ca293ebdbed6c3c72",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -212,7 +212,7 @@
       },
       "client": false,
       "sourceHash": "220ab82f3dfb58a800d0764ede7c48e4f2409d3c33d37b78c848f147b5181bfb",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -224,7 +224,7 @@
       },
       "client": false,
       "sourceHash": "8a0e1f20838bf49b76354a830aee2e76f533463ecc840e22ab95cd3715a8dc83",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -236,7 +236,7 @@
       },
       "client": false,
       "sourceHash": "6be54022cf913a18b4fbb3acdd327445acd896571652158ae6c1ec7adf388890",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -248,7 +248,7 @@
       },
       "client": false,
       "sourceHash": "e605d37fcb3e833aa2a8b07e6ebb10cb7add29cd3961acb7a8928c79d65e539c",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -272,7 +272,7 @@
       },
       "client": false,
       "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -308,7 +308,7 @@
       },
       "client": false,
       "sourceHash": "b5996c8ae86d3708bb0e91372add1919597ed06eec33e48f4076c578ee1a6f25",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -321,7 +321,7 @@
       },
       "client": true,
       "sourceHash": "0c2bd2e115ae8e78303ce74bdb9807bea37bbbcc00ba7dfefaba5d69e86159ff",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -334,7 +334,7 @@
       },
       "client": false,
       "sourceHash": "7ec84f6874ff41798eadb0a5e4211d10f8dc6618ee4ece67512a409b4049821f",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -346,7 +346,7 @@
       },
       "client": false,
       "sourceHash": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -358,7 +358,7 @@
       },
       "client": false,
       "sourceHash": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -371,7 +371,7 @@
       },
       "client": true,
       "sourceHash": "85c51b10dbe46a62939483fdfa8ae7e3eff9226aec3a2e120b804716f2da2053",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -384,7 +384,7 @@
       },
       "client": false,
       "sourceHash": "c1a8c722b992eed5e8dd7d7f2e52ee9c155eb4ea465c9c977fe8792e522ac3db",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -396,7 +396,7 @@
       },
       "client": false,
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -409,7 +409,7 @@
       },
       "client": false,
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -422,7 +422,7 @@
       },
       "client": false,
       "sourceHash": "f855f417e4c222977384c65f59d01caf4da61649ce189ce0373dc881fc7016ab",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -434,7 +434,7 @@
       },
       "client": false,
       "sourceHash": "799178eb11885886fd5e086ade546af28eddee28526f5d4f15332018559f978a",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -447,7 +447,7 @@
       },
       "client": true,
       "sourceHash": "3f3b27278e1ffa2a4197b67bbbb378017e9ddfed86a11b1883b86fd6eb6f42f4",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -460,7 +460,7 @@
       },
       "client": true,
       "sourceHash": "2ad14c5ec1a3a3b1b2f4f1ffa4240554c8bf6a7c412edaa64f90166e788cbed7",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -473,7 +473,7 @@
       },
       "client": true,
       "sourceHash": "316fcfc2e0fcd64349e68286f673357fe0d4221da6366cf527d66176f88c3bf9",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -485,7 +485,7 @@
       },
       "client": false,
       "sourceHash": "e173b3aab5ddf5aa7fea309255d4159391685cdb5db2af93c5d0cdbc40c76cf0",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -497,7 +497,7 @@
       },
       "client": false,
       "sourceHash": "7b2d2c0e8d1ffdfcf4ac969ae0b84279486112261cc1e9c1f6bd09da05899f8a",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -510,7 +510,7 @@
       },
       "client": false,
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -522,7 +522,7 @@
       },
       "client": false,
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -534,7 +534,7 @@
       },
       "client": false,
       "sourceHash": "98f51fb4afc07574b4d5f13a34b06866920673d54c144729a14fbb54e70ef940",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -559,7 +559,7 @@
       },
       "client": true,
       "sourceHash": "81512f9c99e4121f848aa25554b2b3fa308f1684809a4354396cd7a759310229",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -572,7 +572,7 @@
       },
       "client": true,
       "sourceHash": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -585,7 +585,7 @@
       },
       "client": true,
       "sourceHash": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -598,7 +598,7 @@
       },
       "client": true,
       "sourceHash": "931a03cdbba16b7533bf14b97c952729c5fa8bd043250df59bf0ac2165a8ae8b",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -610,7 +610,7 @@
       },
       "client": false,
       "sourceHash": "6761b1488d1b21a7ef7a5daa76554739f191fcbbbdaf66ed7a93ff7ef1176982",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -622,7 +622,7 @@
       },
       "client": false,
       "sourceHash": "11f284d78acf105de571b90c8af217eab3111df8deb51704ff51a68eb57af166",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -635,7 +635,7 @@
       },
       "client": true,
       "sourceHash": "fac5a950866cc0d773678bd274d369e01db8f3e569d7cf17c2051b36b4b47c58",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -647,7 +647,7 @@
       },
       "client": false,
       "sourceHash": "a895a909bf94fea0e8229e6827e7761646a0d9ac5a31eef2c0c4a0ab9a5349a3",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -659,7 +659,7 @@
       },
       "client": false,
       "sourceHash": "ac8d2fe8d21ee781e2abb342ae76501da1ba4da27e303425dd9205f686cac43b",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -671,7 +671,7 @@
       },
       "client": false,
       "sourceHash": "72128d28bf618cc1ef056f8e6c31f24bc2086568597f31ba9c390901425f01e7",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -773,13 +773,13 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 75,
+      "line": 76,
       "attrs": {
         "onSubmit": "{submit}"
       },
       "client": true,
       "sourceHash": "af0cdd3c26d10d380c574d5f2995e70d4b3cc90181432b21d81343544fa7815d",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -840,7 +840,7 @@
       },
       "client": false,
       "sourceHash": "3be5ac7811d2b82a4c3e6bea482c2904c16fa3c56da162e994ab84f11f0aa5dc",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -853,7 +853,7 @@
       },
       "client": true,
       "sourceHash": "5b2077330a2127385f544440c4d2ecb22eaeab33d5f52c89b6fd2a74639a7680",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -865,7 +865,7 @@
       },
       "client": false,
       "sourceHash": "b1d3c56bba9c1a5d20a6541b5edbbba68ea89e44845f92d6f92f353e1bea0c8b",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -902,7 +902,7 @@
       },
       "client": false,
       "sourceHash": "4bbdcbb16492a9685429e2f3e1cb67a793dadf065764b427a87bbb18919b2398",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -980,27 +980,30 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 120,
+      "line": 125,
       "attrs": {
         "onSubmit": "{loadOptions}"
       },
       "client": true,
-      "sourceHash": "2f254d3a6596ce6c55014db98309e9f6c09467c0e6bba98d2c4b09693502bfdd",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "sourceHash": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "Read-only leave option load preserved; full native actor acceptance OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
-      "line": 150,
+      "line": 155,
       "attrs": {
-        "action": "{submitAction}"
+        "action": "{submitAction}",
+        "onSubmit": "{(event) => { blockOfflineSubmission(event); }}"
       },
       "client": true,
-      "sourceHash": "2f254d3a6596ce6c55014db98309e9f6c09467c0e6bba98d2c4b09693502bfdd",
+      "sourceHash": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b",
       "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C1 new leave submit: source-qualified35case batch; native actor/visual OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
@@ -1034,21 +1037,22 @@
       },
       "client": false,
       "sourceHash": "8dc207a65d920ec2489acecd213fdf213ab18aa677c6fec910fd6177a3bfcc1d",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
-      "line": 40,
+      "line": 43,
       "attrs": {
         "onSubmit": "{e=>{e.preventDefault();void submit(e.currentTarget);}}"
       },
       "client": true,
-      "sourceHash": "9d22d3b1d8508caee667f4e2c60641dcebb5cfb3044f2e5c1d2c2c4b075e6fb7",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "sourceHash": "d0b3ab03be2c94ba8fc1e99850d09747302da8b9743e2ee913b1adad44571256",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C1 all10 AdvanceOperation new submissions: source-qualified35case batch; native idle sample only; recovery separate and unchanged"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
@@ -1191,7 +1195,7 @@
       },
       "client": false,
       "sourceHash": "f081206218dcb903f43c7131072257013212178975e09f9e4ea15e76419372d8",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1227,7 +1231,7 @@
       },
       "client": false,
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1239,7 +1243,7 @@
       },
       "client": false,
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1251,7 +1255,7 @@
       },
       "client": false,
       "sourceHash": "259628d86ad1890dfd0849d7acb8163b4f69820b97bc33a465d3e7d55a5937d3",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1263,7 +1267,7 @@
       },
       "client": false,
       "sourceHash": "aab51534566a2b0f6d508c91c46d3fccc7f703040f084fdea6eeab685eae720b",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1275,7 +1279,7 @@
       },
       "client": false,
       "sourceHash": "aab51534566a2b0f6d508c91c46d3fccc7f703040f084fdea6eeab685eae720b",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1287,7 +1291,7 @@
       },
       "client": false,
       "sourceHash": "bcf58123ca5384a628e435efc5a4be3dbae8bcddc93614c378cbf50cc6c222c2",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1312,7 +1316,7 @@
       },
       "client": true,
       "sourceHash": "b1c15ec4ef18a8947a714d1d3ad13b25fbb61c006664b67235d69c4c467fbb96",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1324,7 +1328,7 @@
       },
       "client": false,
       "sourceHash": "a87127e99c61ba22ab66522ce0dfd6ead8b01a4b3ed173bd9d64484ac9850351",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1336,7 +1340,7 @@
       },
       "client": false,
       "sourceHash": "a87127e99c61ba22ab66522ce0dfd6ead8b01a4b3ed173bd9d64484ac9850351",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1354,29 +1358,31 @@
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 36,
+      "line": 39,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{()=>{try{localStorage.setItem(storageKey,attempt);window.dispatchEvent(new Event(deductionRecoveryEvent));}catch{}setUnresolved(true);}}"
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;try{localStorage.setItem(storageKey,attempt);window.dispatchEvent(new Event(deductionRecoveryEvent));}catch{}setUnresolved(true);}}"
       },
       "client": true,
-      "sourceHash": "a64c437bd092a1aabfe369f0c44dc1789ca037cbbf5d52049a8ad6edaeb73f39",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "sourceHash": "8408b69135aaeef64f7d480327e2ab4cd41147fb0f81f4429c2786f641f1ddb8",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
-      "line": 37,
+      "line": 40,
       "attrs": {
         "action": "{action}",
-        "onSubmit": "{()=>{try{localStorage.setItem(storageKey,attempt);window.dispatchEvent(new Event(deductionRecoveryEvent));}catch{}setUnresolved(true);}}"
+        "onSubmit": "{event=>{if(blockOfflineSubmission(event))return;try{localStorage.setItem(storageKey,attempt);window.dispatchEvent(new Event(deductionRecoveryEvent));}catch{}setUnresolved(true);}}"
       },
       "client": true,
-      "sourceHash": "a64c437bd092a1aabfe369f0c44dc1789ca037cbbf5d52049a8ad6edaeb73f39",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "sourceHash": "8408b69135aaeef64f7d480327e2ab4cd41147fb0f81f4429c2786f641f1ddb8",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
-      "runtime": "not-run"
+      "runtime": "not-run",
+      "offlineReview": "C1 carry/external-settlement/retract: source-qualified35case batch; full native actor/visual OPEN"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
@@ -1386,7 +1392,7 @@
       },
       "client": false,
       "sourceHash": "bbce4fc67ab78a8f48d445e4e1d09d95f25f1dd4198aa7bab6ee680523d505b5",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1398,7 +1404,7 @@
       },
       "client": false,
       "sourceHash": "bbce4fc67ab78a8f48d445e4e1d09d95f25f1dd4198aa7bab6ee680523d505b5",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1422,7 +1428,7 @@
       },
       "client": false,
       "sourceHash": "9808aa2d4c6dff7cbb4d293cf514282259acd972678611e5e94527d398b74336",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1435,7 +1441,7 @@
       },
       "client": true,
       "sourceHash": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f",
-      "candidateBoundary": "inspect handler BEFORE journal/action; no automatic classification",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1495,7 +1501,7 @@
       },
       "client": false,
       "sourceHash": "7084e11e995f2bfc5072228377bf5e2d1db91f0823eaaad9dd2a00e243e143e2",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1580,7 +1586,7 @@
       },
       "client": false,
       "sourceHash": "5763e8cebe4f636558058130fb36da3c384db4505632d31301e797df40ac844f",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1749,7 +1755,7 @@
       },
       "client": false,
       "sourceHash": "ead4a5e6414eaa89ecc1b76038845561893b1b9e4552965891301ee15931ac41",
-      "candidateBoundary": "native GET: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1833,7 +1839,7 @@
       },
       "client": true,
       "sourceHash": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     },
@@ -1845,12 +1851,12 @@
       },
       "client": true,
       "sourceHash": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
-      "candidateBoundary": "access/logout: preserve",
+      "candidateBoundary": "inspect action and actual owning operation",
       "semanticReview": "pending",
       "runtime": "not-run"
     }
   ],
   "total": 152,
-  "hasSubmitHandler": 18,
-  "scope": "Structural source frontier only. Explicit operation review required; no offline policies applied or acceptance inferred."
+  "hasSubmitHandler": 19,
+  "scope": "Current structural form frontier; source hashes normalized LF. Initial152sites/18handlers becomes152/19 after explicit NewLeave submit guard. C1 annotations are bounded offline source review only; all full semantics/actors/runtime still pending."
 }

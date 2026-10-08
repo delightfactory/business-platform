@@ -1,0 +1,577 @@
+{
+  "schema": "business-platform.offline-c1-review.v1",
+  "baseline": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
+  "status": "SOURCE-QUALIFIED; VISUAL/ACTOR ACCEPTANCE OPEN",
+  "source": {
+    "baseline": "a8422f14d6c9bfea24166d5fa8ac388a12afc55b",
+    "scope": "Actual modules/handlers with controlled React hooks, in-memory storage and synthetic actions; no native DOM/React dispatch or real Auth/SQL/provider acceptance.",
+    "advanceOperations": [
+      "save",
+      "approve",
+      "activate",
+      "cancel",
+      "settle",
+      "compensate",
+      "termination",
+      "defer",
+      "correct_disbursement",
+      "correct_deduction"
+    ],
+    "cases": [
+      {
+        "name": "Advance save offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance save online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance approve offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance approve online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance activate offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance activate online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance cancel offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance cancel online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance settle offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance settle online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance compensate offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance compensate online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance termination offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance termination online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance defer offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance defer online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance correct_disbursement offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance correct_disbursement online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance correct_deduction offline before UUID, lock, journal and action",
+        "status": "pass"
+      },
+      {
+        "name": "Advance correct_deduction online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction carry blocks before journal/event/action and retains identity",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction external_settlement blocks before journal/event/action and retains identity",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction retract blocks before journal/event/action and retains identity",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction carry online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction external_settlement online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction retract online unchanged versus accepted baseline",
+        "status": "pass"
+      },
+      {
+        "name": "Actual new leave submit retains controlled values/key and prevents action",
+        "status": "pass"
+      },
+      {
+        "name": "Stable SSR and listener cleanup of actual shared hook",
+        "status": "pass"
+      },
+      {
+        "name": "Advance unresolved never invites resend while offline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance corrupt never invites resend while offline",
+        "status": "pass"
+      },
+      {
+        "name": "Advance in-flight loss preserves recovery priority, not resend hint",
+        "status": "pass"
+      },
+      {
+        "name": "Deduction in-flight loss never shows resend notice",
+        "status": "pass"
+      },
+      {
+        "name": "Leave pending excludes misleading offline resend hint",
+        "status": "pass"
+      },
+      {
+        "name": "Leave no-types excludes misleading offline resend hint",
+        "status": "pass"
+      },
+      {
+        "name": "Leave stale-dates excludes misleading offline resend hint",
+        "status": "pass"
+      }
+    ],
+    "passed": 35,
+    "preservedRecoveryAndAttendance": true,
+    "sourceFiles": [
+      {
+        "file": "src/components/offline-submission.tsx",
+        "sha256": "de1b48911cc583bee62b66405c33bf0c19dfb6ebf39a8e7386d0df345650265b"
+      },
+      {
+        "file": "src/components/submit-button.tsx",
+        "sha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+        "sha256": "d0b3ab03be2c94ba8fc1e99850d09747302da8b9743e2ee913b1adad44571256"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+        "sha256": "8408b69135aaeef64f7d480327e2ab4cd41147fb0f81f4429c2786f641f1ddb8"
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+        "sha256": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b"
+      }
+    ]
+  },
+  "native": {
+    "scope": "Native Next dev synthetic-only fixture; no actual Auth/SQL/provider qualification",
+    "offlineEnter": {
+      "postRequests": 0,
+      "advanceJournalPresent": false,
+      "enteredAdvanceValuesRetained": true
+    },
+    "reconnect": {
+      "postRequests": 0,
+      "advanceSubmitEnabled": true
+    },
+    "layout": {
+      "forms": [
+        {
+          "fieldsEditable": true,
+          "hints": [
+            "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك."
+          ],
+          "submit": [
+            {
+              "describedBy": "_R_155esnelb_",
+              "disabled": true,
+              "height": 80
+            }
+          ]
+        },
+        {
+          "fieldsEditable": true,
+          "hints": [
+            "الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك."
+          ],
+          "submit": [
+            {
+              "describedBy": "_R_175esnelb_",
+              "disabled": true,
+              "height": 76
+            }
+          ]
+        }
+      ],
+      "scrollWidth": 1351,
+      "theme": "dark",
+      "width": 1351
+    },
+    "limitations": [
+      "No measured before/after actor journey",
+      "Controlled date fill did not establish valid native leave dates; request qualification remains controlled only",
+      "Later device metrics screenshots did not prove native 390/768 reference fidelity; full visual gate open",
+      "Fixture HMR parent change remounted sample inputs; not treated as offline loss"
+    ],
+    "cleanup": {
+      "networkAndMediaOverridesReset": true,
+      "deviceMetricsCleared": true,
+      "originalTheme": "dark",
+      "restoredTheme": "dark"
+    }
+  },
+  "claude": {
+    "contract": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "## Verdict: **ACCEPT**, with binding implementation conditions (no MUST FIX)\n\nThis review uses only the contract and the two sources you supplied. I did not read the repo. `NewLeaveRequestForm` was not supplied, so its row is accepted as a contract only and is not verified against code.\n\n### Why the contract holds against the supplied source\n\n- **AdvanceForm.** Every `AdvanceOperation` goes through the single `submit(form)` function. A guard at its first line, next to the existing `unresolved||corrupt||pending` early return, runs before `new FormData`, `crypto.randomUUID()`, `write(key, journal)` and `advanceAction(journal,false)`. So one guard covers all operations. `AdvanceRecovery` and the `advanceAction(record,true)` path are separate, so they stay unchanged. Recovery after a mid-flight loss still uses the existing `catch` branch (\"انقطعت الاستجابة…\"), and the journal stays unresolved.\n- **DeductionDisposition.** Both forms (approve and retract) use `action={action}` with an `onSubmit` that writes localStorage, dispatches `deductionRecoveryEvent` and calls `setUnresolved(true)`. In React 19, calling `preventDefault()` in `onSubmit` stops the form action from being dispatched. A guard at the top of `onSubmit` therefore blocks the storage write, the event, the unresolved state and the action together. `attempt`, the controlled field state and the hidden scope inputs stay untouched, so the same attempt identity is kept.\n- **Hydration.** `useSyncExternalStore(subscribe(online/offline), () => navigator.onLine === false, () => false)` renders the same output on the server and during hydration. This matches the rule that there is no offline protection claim before hydration.\n\n### Binding conditions (part of acceptance, not extras)\n\n1. **Read the signal at submit time.** Each guard must read `navigator.onLine === false` inside the handler, not the rendered hook value.\n2. **Deduction must cancel the event.** Both Deduction `onSubmit` handlers must take the event and call `e.preventDefault()` before any storage, event or state call. A bare `return` would still dispatch the action.\n3. **Disable only the submit button.** Add `offline` only to the submit button's `disabled`: Advance primary, Deduction approve and retract. Never add it to the `<fieldset disabled>` (Advance: `pending||unresolved||corrupt`), because that would lock fields. Never change the Advance `<form key=…>`, because that would remount the fields.\n4. **Show an associated hint.** Show a visible Arabic hint with existing semantic styling, linked to the button via `aria-describedby` (use `useId`). Render it only in the form paths, not in the committed or unresolved early returns.\n5. **Handle the race in Advance.** If the guard fires before the hook re-renders, the user must still see the offline explanation. Do not leave the button silently inert, and do not reuse the journal-conflict message.\n6. **Hook placement in Deduction.** Call the new hook together with the existing hooks, before the early returns.\n7. **No reconnect behavior.** The `online` event only changes the snapshot. It must not trigger submit, refresh or `setAttempt`.\n8. **Leave request.** Verify on the real source that the idempotency key is not generated in `onSubmit` or inside the blocked path. Otherwise the \"same key\" claim fails.\n\n### Required test proof\n\nFor a blocked submit, show zero calls to `randomUUID`, `write` or `localStorage.setItem`, the recovery event, and the action, with the attempt and values retained. Repeat this for every `labels` key and for carry, `external_settlement` and retract. Then show that the online path is unchanged and that reconnect causes no automatic call.\n\nOpen and not certified here: rendered/visual gates, real authority/provider/SQL/role acceptance, and the remaining frontier (C2 balance/payment, Attendance exception, other forms). Nothing about C, R6, R7 or the whole goal is closed by this review.",
+      "sessionId": "80952e5d-574a-4f61-99e6-8240772f4fd9"
+    },
+    "initial": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "## SOURCE: MUST FIX (one item)\n\n**Defect: the offline notice shows while a submission is in flight or still unresolved.** All three forms render `{offline && <OfflineSubmissionNotice/>}` no matter what else is happening. The notice ends with \"أعد الاتصال ثم أرسل بنفسك\" (reconnect, then send it yourself). That conflicts with the existing unknown-result contract in these cases:\n\n- **Advance with an unresolved or corrupt journal.** The form still renders with its fieldset locked, so the notice stays up indefinitely. It invites the user to resend, while `AdvanceRecovery` and the existing message tell them to check the earlier request first. This is the serious case.\n- **Advance, Deduction or Leave while the request is in flight.** If the connection drops mid-request, the notice appears beside \"جارٍ إرسال الطلب… لا تغلق الصفحة\" or the pending label. The contract says loss after submission starts must go through the existing unknown-result path, not a resend prompt.\n- **Leave with no leave types.** The notice appears even though there is no submit control.\n\n**Fix:** show the notice, and set `aria-describedby`, only when being offline is the actual reason the user can't make a new submission:\n- Advance: `offline && !pending && !unresolved && !corrupt`\n- Deduction: `offline && !pending`\n- Leave: `offline && !submitting && options.types.length > 0`\n\nLeave the guards, the disabled conditions and the hook as they are.\n\n**Accepted as is:**\n- **Hook.** It uses `useSyncExternalStore` with a `false` server snapshot. The submit-time `deviceIsOffline()` re-read and the `refreshSignal` that handles the race are correct, and `refreshSignal` doesn't change the form key or the journal.\n- **Advance guard.** It runs first in `submit()`, before `FormData`, UUID, lock, journal and action, so it covers all 10 operations.\n- **Deduction guards.** Both approve and retract call `preventDefault()` before `setItem`, the event and `setUnresolved`. The `attempt` value is kept.\n- **Leave.** `preventDefault()` on the form with `action={submitAction}` stops React 19's dispatch, because the guard doesn't schedule a transition. `operationKey` only changes through `applyFields`, so the key is kept.\n- **Scope.** Only the submit buttons are disabled; fieldsets and `<form key>` are untouched. `SubmitButton` only gains a pass-through `ariaDescribedBy`. Recovery, Attendance, balance and payment code is untouched.\n\n**Nit, not required:** the stray JSX `\" \"` text nodes between the notice and the message in Advance and Deduction.\n\n## VISUAL: NOT VISUALLY VERIFIED (full visual gate stays OPEN)\n\n- **Reference 1366.** This is the Leave home screen with no form, so there's no offline form view to compare against. I can only judge whether the hint looks like it belongs.\n- **Native 1366 (light).**\n  - **Visible:** the Deduction form only. Its hint is a full-width, right-aligned, teal-tinted bordered message with a radius of about 8 in the Cairo-family font. That is consistent with the existing semantic message language.\n  - **Disabled state:** the Deduction approve button is unstyled (a pre-existing legacy style), so you can't see that it's disabled. I'm not treating this as a new-source defect, but it means the disabled-state criterion isn't visually shown.\n  - **Leave:** the submit button and hint are outside the crop, and the dates are not a valid scenario.\n  - **Advance:** not shown.\n- **390.** The image is a heavily downscaled thumbnail and unreadable. As you noted, it doesn't prove the viewport. 768 is missing.\n- **Still required:**\n  - native 390, 768 and 1366 captures of all three forms;\n  - those captures in both offline and pending/unresolved states, after the fix;\n  - visible disabled styling;\n  - real authorised-actor, Auth, SQL and provider qualification.\n\nNothing here closes C, R6, R7 or the R0–R8 goal.",
+      "sessionId": "80952e5d-574a-4f61-99e6-8240772f4fd9"
+    },
+    "correction": {
+      "exitCode": 0,
+      "readOnlyUnchanged": true,
+      "modelRequested": "claude-opus-5-5",
+      "effortRequested": "medium",
+      "actualModels": [
+        "claude-opus-5-5"
+      ],
+      "subtype": "success",
+      "isError": false,
+      "result": "## ACCEPT\n\nThe correction covers every case named in the MUST FIX. Guards, disabled conditions, the hook and recovery are unchanged; only the display and description predicates moved.\n\n- **Advance.** `showOfflineNotice = offline && !pending && !unresolved && !corrupt` hides the \"reconnect, then send\" prompt while a journal is unresolved or corrupt and while a request is in flight. In those states the existing `AdvanceRecovery` and the pending or caught message remain the only guidance. `disabled={offline}` on the button and the fieldset lock still apply as before.\n- **Deduction.** Unresolved state already returns early with no form, so `offline && !pending` covers the remaining in-flight case on both approve and retract. `attempt`, the guards and the `preventDefault` ordering are untouched.\n- **Leave.** Using `frozen` covers both submitting and options loading. Requiring `!rangeError` and loaded types removes the no-types and invalid-range cases. `operationKey` and the action guard are unchanged.\n\n**Non-blocking check.** As pasted, the Leave predicate has no trailing semicolon and doesn't test `options.startDate === fields.startDate && options.endDate === fields.endDate`. Your \"stale-dates\" test and the \"current valid date context\" claim suggest it does. If the predicate really ends at `Boolean(options?.types.length)`, the notice can appear while the fieldset is locked by stale dates. That message is still true, since the device is offline and reloading the leave types would fail, and it creates no financial or replay risk. Still, mirror the fieldset's date condition so the predicate means \"offline is the only blocker.\"\n\nThis acceptance is source-only for the correction, including the production rebuild you noted as required. The visual verdict remains NOT VISUALLY VERIFIED. Native 390/768/1366, real actor, Auth, SQL, provider and financial acceptance, the rest of the C frontier, and R0–R8 all remain open.",
+      "sessionId": "80952e5d-574a-4f61-99e6-8240772f4fd9"
+    }
+  },
+  "codex": {
+    "source": "ACCEPT bounded C1 after priority correction",
+    "visual": "NOT VISUALLY VERIFIED; full affected-state/viewport/actor evidence required",
+    "simplicity": "No measured before/after improvement claimed; native idle advance retention and no automatic send demonstrated",
+    "financial": "No actual financial mutation/provider/SQL qualification; recovery contract unchanged by fingerprint",
+    "dateContextVerification": "Actual Leave predicate includes both options/fields date equalities on its continuation line; stale-date case passes. The final Claude short excerpt omitted that line, so the non-blocking suggestion is already implemented."
+  },
+  "register": {
+    "denominator": 1731,
+    "sourceReviewed": 25,
+    "migrations": [
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:120:5200",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:125:5590",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:121:5287",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:126:5677",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:125:5503",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:130:5893",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:130:5851",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:135:6241",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:139:6575",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:144:6965",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:150:7051",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:155:7441",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:153:7316",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:159:7771",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:154:7381",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:160:7836",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:155:7456",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:161:7911",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:156:7527",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:162:7982",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:157:7616",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:163:8071",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:162:7959",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:168:8414",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:171:8697",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:177:9152",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:175:8976",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:181:9431",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:182:9675",
+        "after": "CONTROL:src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx:188:10130",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4136",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:30:4236",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:29:4532",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:30:4632",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:40:7006",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:43:7294",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7349",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7637",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7453",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7741",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7623",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:7911",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:7762",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8050",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8010",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8298",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8238",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8526",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8309",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8597",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8456",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8744",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8623",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:8911",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:8801",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9089",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9041",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9329",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9123",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9411",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:41:9270",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:9558",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:42:9549",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:45:9837",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:44:10333",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx:47:10621",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:32:2995",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:35:3225",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:3633",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:3863",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:3866",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4139",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4166",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4439",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4322",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4595",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4456",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4729",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:36:4668",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:39:4941",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:37:4842",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5252",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:37:5195",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5648",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:40:5485",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:5938",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:42:5800",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:45:6253",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:6069",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6522",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:43:6362",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6815",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:44:6499",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:47:6952",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:45:6654",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:48:7107",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:46:6791",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:49:7244",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:47:7121",
+        "after": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx:50:7574",
+        "status": "pending"
+      },
+      {
+        "before": "CONTROL:src/components/submit-button.tsx:13:343",
+        "after": "CONTROL:src/components/submit-button.tsx:14:388",
+        "status": "source-reviewed"
+      }
+    ],
+    "allPriorStatusesPreserved": true,
+    "semanticPromotion": false
+  },
+  "gates": {
+    "build": "PASS after actual notice-priority correction; initial build reused for unaffected findings only",
+    "lint": "PASS with zero errors and four existing evidence warnings",
+    "typecheck": "PASS explicit tsc --noEmit and production build TypeScript",
+    "fullPwa": "OPEN",
+    "fullR0R8": "OPEN"
+  },
+  "nativeEvidenceReuse": "Recorded before notice-priority fix; hook/submit guards/fieldset/key/business callbacks unchanged. No native acceptance of the changed pending/unresolved display predicates; controlled35 cases cover them. Candidate partial desktop image shows old idle Deduction hint only.390 thumbnail excluded as unusable.",
+  "cleanup": {
+    "port3619Retired": true,
+    "originalThemeDarkRestored": true,
+    "networkMediaDeviceMetricsReset": true,
+    "originalReferenceTabPreserved": true,
+    "providerEnvironmentNamesPresent": false
+  },
+  "frontier": {
+    "formSites": 152,
+    "handlerSites": 19,
+    "priorHandlerSites": 18,
+    "fullSemanticReview": "pending",
+    "fullActorRuntime": "not-run"
+  }
+}
