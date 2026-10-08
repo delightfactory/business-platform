@@ -25,7 +25,7 @@
 
 .tab[data-state='active'] {
   border-bottom-color: var(--color-brand);
-  color: var(--color-brand);
+  color: var(--color-brand-text);
   font-weight: 700;
 }
 

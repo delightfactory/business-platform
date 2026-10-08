@@ -127,7 +127,7 @@
   padding: 0.5rem 0.7rem;
   border: 1px solid var(--color-control-border);
   border-radius: var(--radius-field);
-  background: white;
+  background: var(--surface-base);
   color: var(--color-text);
   font: inherit;
 }
@@ -152,7 +152,7 @@
 }
 
 .filterBar label {
-  color: #405660;
+  color: var(--theme-legacy-muted, #405660);
   font-size: 0.9rem;
   font-weight: 650;
 }
@@ -164,7 +164,7 @@
   padding: 0.5rem 0.7rem;
   border: 1px solid var(--color-control-border);
   border-radius: var(--radius-field);
-  background: white;
+  background: var(--surface-base);
   color: var(--color-text);
   font: inherit;
 }
@@ -197,7 +197,7 @@
   padding: 0.4rem 0.6rem;
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
-  background: #fbfcfd;
+  background: var(--theme-legacy-subtle, #fbfcfd);
   font-size: 0.86rem;
   line-height: 1.7;
   overflow-wrap: anywhere;

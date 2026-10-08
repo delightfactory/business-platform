@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "sourceFiles": 289,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 108,
+    "rpcCallSites": 351,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 6,
+    "formControls": 1184,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1732,
+  "sourceReviewedPreserved": 25,
+  "added": [
+    {
+      "id": "CONTROL:src/components/theme-preference.tsx:46:1799",
+      "category": "formControls",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    }
+  ],
+  "migrations": [
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:119:5227",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:121:5332",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:119:5256",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:121:5361",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:126:5598",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:128:5703",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:135:6182",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:137:6287",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:147:6832",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:149:6937",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:158:7854",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:161:7994",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:158:7883",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:161:8023",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false,
+  "coverage": "Structural slots, not runtime instances/full coverage"
+}

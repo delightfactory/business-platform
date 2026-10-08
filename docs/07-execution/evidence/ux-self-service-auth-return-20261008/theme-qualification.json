@@ -1,0 +1,282 @@
+{
+  "scope": "R1-THEME-CORE candidate, synthetic fixture only; no actual Auth/provider/business acceptance",
+  "cases": [
+    {
+      "kind": "strict-preference",
+      "input": "missing",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "light",
+      "expected": "light",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "dark",
+      "expected": "dark",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "system",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "LIGHT",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "light?x",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "<script>",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "strict-preference",
+      "input": "",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "actual-provider-controlled-hook",
+      "scenario": "http-saved",
+      "pass": true,
+      "blockedMessage": null
+    },
+    {
+      "kind": "actual-provider-controlled-hook",
+      "scenario": "https-saved",
+      "pass": true,
+      "blockedMessage": null
+    },
+    {
+      "kind": "actual-provider-controlled-hook",
+      "scenario": "blocked",
+      "pass": true,
+      "blockedMessage": "تغيّر المظهر هنا، لكن تعذر حفظ الاختيار. قد يعود المظهر السابق عند فتح الصفحة مجددًا."
+    },
+    {
+      "kind": "actual-provider-controlled-hook",
+      "scenario": "throws",
+      "pass": true,
+      "blockedMessage": "تغيّر المظهر هنا، لكن تعذر حفظ الاختيار. قد يعود المظهر السابق عند فتح الصفحة مجددًا."
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "missing",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "light",
+      "expected": "light",
+      "pass": true
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "dark",
+      "expected": "dark",
+      "pass": true
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "system",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "LIGHT",
+      "expected": "system",
+      "pass": true
+    },
+    {
+      "kind": "actual-root-HTTP-SSR",
+      "input": "garbage",
+      "expected": "system",
+      "pass": true
+    }
+  ],
+  "contrasts": [
+    {
+      "mode": "light",
+      "brand": "teal",
+      "primaryContrast": 6.31,
+      "linkContrast": 6.31,
+      "pass": true
+    },
+    {
+      "mode": "light",
+      "brand": "blue",
+      "primaryContrast": 5.17,
+      "linkContrast": 5.17,
+      "pass": true
+    },
+    {
+      "mode": "light",
+      "brand": "violet",
+      "primaryContrast": 5.7,
+      "linkContrast": 5.7,
+      "pass": true
+    },
+    {
+      "mode": "light",
+      "brand": "emerald",
+      "primaryContrast": 5.48,
+      "linkContrast": 5.48,
+      "pass": true
+    },
+    {
+      "mode": "dark",
+      "brand": "teal",
+      "primaryContrast": 6.31,
+      "linkContrast": 7.07,
+      "pass": true
+    },
+    {
+      "mode": "dark",
+      "brand": "blue",
+      "primaryContrast": 5.17,
+      "linkContrast": 7.52,
+      "pass": true
+    },
+    {
+      "mode": "dark",
+      "brand": "violet",
+      "primaryContrast": 5.7,
+      "linkContrast": 7.07,
+      "pass": true
+    },
+    {
+      "mode": "dark",
+      "brand": "emerald",
+      "primaryContrast": 5.48,
+      "linkContrast": 7.39,
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "src/app/globals.css": "c7551f5a7799a6e51b108c8b29bedf6b48fe58875ab48b50cf746c721de9f767",
+    "src/app/layout.tsx": "8cc71260a70c4ec0da745954d5089d47b0d55f913ffd307e928a087d16473178",
+    "src/app/tenant/[tenantId]/leave/review.module.css": "068a0c46e2bf95322ab761653b0a171590af1e767444e099a9d211cb4129b0dd",
+    "src/app/tenant/[tenantId]/leave/settings/settings.module.css": "5f68f71f6f8e3c5906e8ad58ed9ed038d5978d9adb0207b0b9d7f01699a395f5",
+    "src/app/tenant/[tenantId]/me/leave/leave.module.css": "41f2f48f5da26f84aa9b383e0b4d96459f1ec56510276d2cdc4208cd9aae538d",
+    "src/app/tenant/[tenantId]/payroll/reports/reports.module.css": "ea19f265ce51893142aa028589222eae285869f1e0c4d1803d71044ca82533c5",
+    "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css": "e9f42c75f25c3fd5f980d44c8c7ec3852983ad4f29a9609971612f85325cbe93",
+    "src/app/tenant/[tenantId]/people/people.module.css": "eb7d926d9ccd482085b3029dad49d9d1c33b20e73be12625dc42177907fe9109",
+    "src/app/workspace.css": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1",
+    "src/components/context-navigation-client.tsx": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337",
+    "src/styles/tokens.css": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2",
+    "src/components/theme-preference.tsx": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954",
+    "src/lib/theme.ts": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+  },
+  "nativeFiles": [
+    "theme-brand-samples.json",
+    "theme-system-print.json",
+    "theme-mobile.json"
+  ],
+  "build": "One production build+TypeScript exit0 before final CSS-only specificity/menu-role corrections; final CSS PostCSS parse passed. No repeat build. Build again at final integration/merge gate.",
+  "lint": "affected source lint exit0",
+  "limitations": [
+    "Controlled hooks for blocked cookie/HTTPS flags; not actual browser-blocked storage",
+    "Not complete route/state visual qualification or full R1",
+    "No performance or real Auth/financial claim"
+  ],
+  "finalControlStates": [
+    {
+      "bg": "color(srgb 0.916353 0.947765 0.946706)",
+      "border": "color(srgb 0.0705882 0.419608 0.407843)",
+      "fg": "rgb(23, 32, 28)",
+      "height": 59.20000076293945,
+      "hover": true,
+      "mode": "light",
+      "viewport": 1366,
+      "textContrast": 14.63
+    },
+    {
+      "bg": "color(srgb 0.0777255 0.134118 0.125922)",
+      "border": "color(srgb 0.488824 0.680784 0.674314)",
+      "fg": "rgb(231, 236, 233)",
+      "height": 59.20000076293945,
+      "hover": true,
+      "mode": "dark",
+      "viewport": 1366,
+      "textContrast": 13.71
+    },
+    {
+      "bg": "color(srgb 0.916353 0.947765 0.946706)",
+      "border": "color(srgb 0.0705882 0.419608 0.407843)",
+      "fg": "rgb(23, 32, 28)",
+      "height": 59.20000076293945,
+      "hover": true,
+      "mode": "system",
+      "viewport": 1366,
+      "textContrast": 14.63
+    }
+  ],
+  "mobileMenuContrast": {
+    "text": 14.64,
+    "border": 4.97
+  },
+  "tablet": {
+    "viewport": 768,
+    "scrollWidth": 753,
+    "theme": "dark",
+    "overflow": false
+  },
+  "browser": "Codex IAB; engine version unavailable through supported inspection APIs; no substitute attempted",
+  "codexVisualVerdict": "MATCH WITH ACCEPTED DEVIATIONS for version-bound theme sample only",
+  "claudeVisualVerdict": "MATCH WITH ACCEPTED DEVIATIONS for version-bound theme sample only",
+  "coverage": {
+    "sourceFiles": 289,
+    "structuralSlots": 1732,
+    "sourceReviewed": 25,
+    "addedSlots": 1,
+    "semanticPromotion": false,
+    "fullPhaseClosed": false
+  },
+  "nativeLimits": [
+    "Synthetic jobform/navigation only; not actual authenticated role/provider flows",
+    "Not all affected module screens/states rendered",
+    "Solid brand and preference control contrasts; gradient-button contrast not proven"
+  ],
+  "cleanup": {
+    "ownedServer3616": "terminated via session87777 Ctrl-C",
+    "ownedTabs": [
+      108,
+      109,
+      110
+    ],
+    "tabsClosed": true,
+    "viewportReset": true,
+    "mediaEmulationReset": true
+  },
+  "imageProvenance": {
+    "earlierDarkDesktop": "Palette baseline before CSS specificity/mobile-icon correction; reused only for unchanged canvas/card/palette, not final option/menu states",
+    "finalImages": "final-light-desktop/final-dark-mobile-menu/final-dark-mobile-form/dark-tablet captured with final declarations; trailing CSS blank-line cleanup after capture does not change rules/rendered pixels",
+    "reference": "Pinned original LF SHA256 AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508",
+    "hashes": {
+      "theme-dark-desktop.jpg": "f6a3bf358d18a129c60edf57bc678bdf7f1fa824ec7324d16421fe6f5cbe30e2",
+      "theme-dark-tablet.jpg": "4a906ec69147029ddd2843f5409c399e5d15e9fb33970b28912285d551f57efb",
+      "theme-final-dark-mobile-form.jpg": "2e6dc231ffe64eecabb8abc21ff83bf8763f0d03be11da12778d714061ecd00f",
+      "theme-final-dark-mobile-menu.jpg": "4c1fcd5f89da984140eb2dde57d9c19ee1dac9ec30ff0bc4a07e12f514c03b7e",
+      "theme-final-light-desktop.jpg": "c635036a8aea79b226b8b6004a0edf52a11efff2982810cfe9d75790fdead846",
+      "theme-reference-dark-desktop.jpg": "ffdc0a1e7554b901421da49f31c4b09b8e3ad15c00457a883e0a63ae1a0a6e86",
+      "theme-reference-dark-mobile.jpg": "8bd650890575d154c418c01dc781c9d30e2adeea6fa7755cbc80df67c6a54d52",
+      "theme-reference-light-desktop.jpg": "a407d86d3c944b1278080c8623f740458f3b76791d745d65b81158253f8c0b74"
+    }
+  }
+}

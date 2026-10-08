@@ -1,0 +1,22 @@
+[
+  {
+    "canvas": "rgb(13, 18, 17)",
+    "note": "نص مصطنع محفوظ أثناء تغيير المظهر",
+    "scheme": "dark",
+    "theme": "system"
+  },
+  {
+    "canvas": "rgb(242, 243, 241)",
+    "note": "نص مصطنع محفوظ أثناء تغيير المظهر",
+    "scheme": "light dark",
+    "theme": "system"
+  },
+  {
+    "canvas": "rgb(242, 243, 241)",
+    "mode": "print",
+    "note": "نص مصطنع محفوظ أثناء تغيير المظهر",
+    "preference": "none",
+    "scheme": "light",
+    "surface": "rgb(255, 255, 255)"
+  }
+]

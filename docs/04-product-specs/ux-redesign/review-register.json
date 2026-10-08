@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "af3046dcacf7a7415fb37f48d7430db8c23b862e",
+  "sourceSnapshot": "47a903a9b0a3f7a68637994975c89fee4bfbeec1",
   "status": "Proposed",
   "items": [
     {
@@ -15515,7 +15515,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5227",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5332",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15524,7 +15524,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5256",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5361",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15533,7 +15533,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5598",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:128:5703",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15542,7 +15542,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:135:6182",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:137:6287",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15551,7 +15551,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:147:6832",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:149:6937",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15560,7 +15560,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7854",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:161:7994",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15569,7 +15569,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7883",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:161:8023",
       "category": "formControls",
       "phase": "R1",
       "status": "pending",
@@ -15937,6 +15937,15 @@
       "id": "CONTROL:src/app/operator/operators/page.tsx:130:11488",
       "category": "formControls",
       "phase": "R3",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/components/theme-preference.tsx:46:1799",
+      "category": "formControls",
+      "phase": "R1",
       "status": "pending",
       "scenarioIds": [],
       "reviewer": null,

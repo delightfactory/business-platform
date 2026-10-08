@@ -5,6 +5,7 @@ import Link, { useLinkStatus } from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
 import { signOutAction } from '@/app/auth/actions';
+import { ThemePreferenceControl } from '@/components/theme-preference';
 
 export type ContextLink = { href: string; label: string };
 
@@ -115,6 +116,7 @@ export function ContextNavigationClient({
         </div>}
       </nav>
       <div className="workspace-sidebar-footer">
+        <ThemePreferenceControl />
         {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} currentHref={currentHref} />}
         <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
       </div>
@@ -155,6 +157,7 @@ export function ContextNavigationClient({
           {links.map((item) => <WorkspaceLink key={item.href} item={item} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} />)}
         </div>}
         {switchHref && switchLabel && <WorkspaceLink item={{ href: switchHref, label: switchLabel }} pathname={pathname} currentHref={currentHref} onClick={closeMobileMenu} />}
+        <ThemePreferenceControl />
         <form action={signOutAction}><button type="submit">تسجيل الخروج</button></form>
       </nav>
     </dialog>

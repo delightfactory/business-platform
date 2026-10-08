@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "af3046dcacf7a7415fb37f48d7430db8c23b862e",
+  "sourceHead": "47a903a9b0a3f7a68637994975c89fee4bfbeec1",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -90,12 +90,12 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "3101ae6fbcf344156311f15466b071e0ff4a56cdadaed7ab9b6ff4c056b83b39"
+      "sha256": "c7551f5a7799a6e51b108c8b29bedf6b48fe58875ab48b50cf746c721de9f767"
     },
     {
       "file": "src/app/layout.tsx",
       "phase": "R1",
-      "sha256": "efc77a2466fc28ab70d633df1c19ff388761d037d594b85e77b11cc841c6a15c"
+      "sha256": "8cc71260a70c4ec0da745954d5089d47b0d55f913ffd307e928a087d16473178"
     },
     {
       "file": "src/app/operator/actions.ts",
@@ -600,7 +600,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/review.module.css",
       "phase": "R6",
-      "sha256": "fdb8f43fc574ca7687f2efa5edcacda7c8081e4b6eecb3fcfd0e6fcdb5b83c86"
+      "sha256": "068a0c46e2bf95322ab761653b0a171590af1e767444e099a9d211cb4129b0dd"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/rules.ts",
@@ -705,7 +705,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/settings.module.css",
       "phase": "R6",
-      "sha256": "235df138f107428a48a087184049dcaeb25ca66f58ff10e52f913716649ee9fb"
+      "sha256": "5f68f71f6f8e3c5906e8ad58ed9ed038d5978d9adb0207b0b9d7f01699a395f5"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
@@ -770,7 +770,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
       "phase": "R6",
-      "sha256": "930fde298c993d592e3a3176114c60e243fdeb125e78850c91e72a43bb96cdda"
+      "sha256": "41f2f48f5da26f84aa9b383e0b4d96459f1ec56510276d2cdc4208cd9aae538d"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
@@ -1065,7 +1065,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/reports.module.css",
       "phase": "R7",
-      "sha256": "997856062dfc30eebd6b3baabf71a3094b8accffe3d413db06ec8633eacb1e5e"
+      "sha256": "ea19f265ce51893142aa028589222eae285869f1e0c4d1803d71044ca82533c5"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/rules.test.mjs",
@@ -1195,7 +1195,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
       "phase": "R4",
-      "sha256": "6cdce79e85a1ead330c46cc8acfef3933494908af63aba4ec758cdc203e45a5a"
+      "sha256": "e9f42c75f25c3fd5f980d44c8c7ec3852983ad4f29a9609971612f85325cbe93"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/actions.ts",
@@ -1290,7 +1290,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/people.module.css",
       "phase": "R4",
-      "sha256": "4e8e3d730ef23f814574468afbc92d337e7be4a625004a8ad8b016822afa1c90"
+      "sha256": "eb7d926d9ccd482085b3029dad49d9d1c33b20e73be12625dc42177907fe9109"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/work-assignment-actions.ts",
@@ -1345,12 +1345,12 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "06ef90d0d65d47987396a4e05a5b4d1f65d0830f4a9a32cbdf93d8d05e5e6aed"
+      "sha256": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
       "phase": "R1",
-      "sha256": "7249e3426997b83b649dc9b0012b88aa3b0d204f3e8cca6d2b452496c5f2aef1"
+      "sha256": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337"
     },
     {
       "file": "src/components/context-navigation.tsx",
@@ -1366,6 +1366,11 @@
       "file": "src/components/submit-button.tsx",
       "phase": "R1",
       "sha256": "da4fb501b20218360a5e91dd9b1adac4d76c369d02f5533e029d2196d5311d87"
+    },
+    {
+      "file": "src/components/theme-preference.tsx",
+      "phase": "R1",
+      "sha256": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954"
     },
     {
       "file": "src/lib/attendance-channel.ts",
@@ -1433,9 +1438,14 @@
       "sha256": "29bcaa48a1ddfb8c7b9e85672d55f69d64b554b305c40dca405380ff4249e09e"
     },
     {
+      "file": "src/lib/theme.ts",
+      "phase": "R1",
+      "sha256": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+    },
+    {
       "file": "src/styles/tokens.css",
       "phase": "R1",
-      "sha256": "594adf9f9af48748b190181ae1a335f3988669abdd0334dc9a02ee72b1fbab52"
+      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
     }
   ],
   "routes": [
@@ -19627,9 +19637,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5227",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5332",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 119,
+      "line": 121,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19637,9 +19647,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:119:5256",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5361",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 119,
+      "line": 121,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19647,9 +19657,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:126:5598",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:128:5703",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 126,
+      "line": 128,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19658,9 +19668,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:135:6182",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:137:6287",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 135,
+      "line": 137,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19669,9 +19679,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:147:6832",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:149:6937",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 147,
+      "line": 149,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19680,9 +19690,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7854",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:161:7994",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 158,
+      "line": 161,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19690,9 +19700,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:158:7883",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:161:8023",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 158,
+      "line": 161,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19721,6 +19731,16 @@
         "disabled": "{pending || disabled}",
         "aria-label": "{ariaLabel}"
       }
+    },
+    {
+      "id": "CONTROL:src/components/theme-preference.tsx:46:1799",
+      "file": "src/components/theme-preference.tsx",
+      "line": 46,
+      "tag": "button",
+      "phase": "R1",
+      "attributes": {
+        "type": "\"button\""
+      }
     }
   ],
   "requestBoundaries": [
@@ -19747,7 +19767,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 287,
+    "sourceFiles": 289,
     "pages": 75,
     "endpoints": 4,
     "boundaries": 8,
@@ -19755,7 +19775,7 @@
     "rpcCallSites": 351,
     "uniqueLiteralRpcs": 217,
     "dynamicRpcSites": 6,
-    "formControls": 1183,
+    "formControls": 1184,
     "sourceAssignmentComplete": true,
     "semanticScenarioReviewComplete": false,
     "executionCoverageComplete": false

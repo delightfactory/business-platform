@@ -8,9 +8,9 @@ The original plan remains the scope. No R0–R8 stage is fully closed. The entri
 
 | Stage | Implementation already present | Work still required to close original scope |
 |---|---|---|
-| R0 | Versioned current source inventory:287 files/75 pages/1731 slots;25 source-reviewed; exact migrations preserve reviews | Reviewed operation/state/actor cases and executed acceptance across the full denominator; structural counts are not percentages of completion |
-| R1 | Light tokens, shared controls, shell/accessibility improvements and bounded rendered reviews | Dark/system theme, remaining component/reference states, tenant-brand contrast and complete responsive/accessibility qualification; preserve Cairo/control contract until amendment |
-| R2 | Auth/invitation/recipient/tenant-entry fixes; owner-approved five-route self-service return applied; grouped lint/buildTS PASS | Remote preservation, then real provider/session/role round trips and remaining management surfaces; no full Auth claim from fake SDK |
+| R0 | Versioned current source inventory:289 files/75 pages/1732 slots;25 source-reviewed; exact migrations preserve reviews | Reviewed operation/state/actor cases and executed acceptance across the full denominator; structural counts are not percentages of completion |
+| R1 | Light/dark/system tokens and appearance controls; shared shell/components and scoped native/reference qualification | Remaining component/reference states, all affected feature screens/branding/gradient contrast and complete responsive/accessibility qualification; preserve Cairo/control contract until amendment |
+| R2 | Auth/invitation/recipient/tenant-entry fixes; owner-approved five-route self-service return applied; grouped lint/buildTS PASS | Remote preservation verified47a903a; real provider/session/role round trips and remaining management surfaces; no full Auth claim from fake SDK |
 | R3 | Lifecycle/grants/commercial/units/statutory journeys; actual local SQL reads and19 positive mutation commands/audits with rollback; selected native/reference checks | Actual Auth/roles/account changes and denied/stale/conflict/concurrency/state acceptance; full surface/reference qualification |
 | R4 | Directory cards/instant search/quick preview/profile tabs/organization/import/policy task treatment | Actual roles/mutations/import/provider and complete profile/management outcome and reference acceptance |
 | R5 | Employee attendance integrity and HR daily/review/detail/import/channels/unassigned treatment | Actual role/device/interruption/privacy/financial and full state acceptance; original Today/inbox/count and backend gaps remain governed, no invented totals |
@@ -18,9 +18,9 @@ The original plan remains the scope. No R0–R8 stage is fully closed. The entri
 | R7 | Payroll workspace/selection/runs/input/preparation/final pages and recovery orientation; chosen advisory A implemented/native qualified with synthetic SDK | Actual financial/role/Auth/JS-off and remaining operation/state/full reference qualification; A does not become a hard precedence gate |
 | R8 | Journey maps and shared ownership/recovery contracts | Original Today/decisions composition, safe constrained PWA, cross-domain complete jobs and final acceptance; current company home is still setup-oriented, not a completed Today |
 
-Verified code gaps: current source has light-only color-scheme, no actual theme controller/manifest/service-worker registration, and company home lacks unified Today/decision work. These are original-plan work, not optional enhancements. Their governed route/count/storage/navigation decisions must be resolved before implementation; do not describe the remaining plan as tests only.
+Verified code gaps: current source now implements light/dark/system preference; no actual manifest/service-worker registration, and company home lacks unified Today/decision work. These are original-plan work, not optional enhancements. Their governed route/count/storage/navigation decisions must be resolved before implementation; do not describe the remaining plan as tests only.
 
-Next execution order: finish and preserve the approved D8 candidate; progress original shared-theme/Today/PWA governed scope and grouped real-actor journey qualification. Use existing records and reusable evidence. D16/backend extras and unrelated polish remain deferred. No deploy/main/Actions.
+Next execution order: D8 is implemented and remotely preserved; shared-theme sample qualified, preserve this batch then progress original Today/PWA governed scope and grouped real-actor journey qualification. Use existing records and reusable evidence. D16/backend extras and unrelated polish remain deferred. No deploy/main/Actions.
 
 Current implementation lineage: accepted Cube5 3a310d25/tree1c06640 → backup afdc9a2 → reviewed references/specs → a5aec47 → R1-LIGHT-01. The old codex/ux-redesign-w1-foundation staged worktree remains preserved and is not reset/committed by this slice.
 

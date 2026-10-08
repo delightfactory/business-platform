@@ -1,0 +1,65 @@
+[
+  {
+    "bg": "color(srgb 0.916353 0.947765 0.946706)",
+    "border": "color(srgb 0.0705882 0.419608 0.407843)",
+    "fg": "rgb(23, 32, 28)",
+    "height": 59.20000076293945,
+    "hover": true,
+    "mode": "light",
+    "viewport": 1366
+  },
+  {
+    "bg": "color(srgb 0.0777255 0.134118 0.125922)",
+    "border": "color(srgb 0.488824 0.680784 0.674314)",
+    "fg": "rgb(231, 236, 233)",
+    "height": 59.20000076293945,
+    "hover": true,
+    "mode": "dark",
+    "viewport": 1366
+  },
+  {
+    "bg": "color(srgb 0.916353 0.947765 0.946706)",
+    "border": "color(srgb 0.0705882 0.419608 0.407843)",
+    "fg": "rgb(23, 32, 28)",
+    "height": 59.20000076293945,
+    "hover": true,
+    "mode": "system",
+    "viewport": 1366
+  },
+  {
+    "bg": "rgb(20, 27, 25)",
+    "border": "rgb(125, 140, 133)",
+    "fg": "rgb(231, 236, 233)",
+    "kind": "mobile-menu-button",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "controls": [
+      {
+        "bg": "rgb(20, 27, 25)",
+        "border": "rgb(125, 140, 133)",
+        "borderWidth": "0.8px",
+        "fg": "rgb(231, 236, 233)",
+        "height": 44
+      },
+      {
+        "bg": "color(srgb 0.0777255 0.134118 0.125922)",
+        "border": "color(srgb 0.488824 0.680784 0.674314)",
+        "borderWidth": "0.8px",
+        "fg": "rgb(231, 236, 233)",
+        "height": 44
+      },
+      {
+        "bg": "rgb(20, 27, 25)",
+        "border": "rgb(125, 140, 133)",
+        "borderWidth": "0.8px",
+        "fg": "rgb(231, 236, 233)",
+        "height": 44
+      }
+    ],
+    "dialog": true,
+    "kind": "mobile-choices",
+    "width": 390
+  }
+]
