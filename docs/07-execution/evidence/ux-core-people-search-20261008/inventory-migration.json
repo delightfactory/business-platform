@@ -1,0 +1,38 @@
+[
+  {
+    "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:27:1670",
+    "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
+    "category": "rpcCalls",
+    "reason": "source position shifted"
+  },
+  {
+    "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:30:1918",
+    "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
+    "category": "rpcCalls",
+    "reason": "source position shifted"
+  },
+  {
+    "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:35:2467",
+    "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
+    "category": "rpcCalls",
+    "reason": "source position shifted"
+  },
+  {
+    "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:54:3862",
+    "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:70:2448",
+    "category": "formControls",
+    "reason": "native GET -> official Next Form enhancement"
+  },
+  {
+    "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:56:4014",
+    "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:80:2905",
+    "category": "formControls",
+    "reason": "native GET -> official Next Form enhancement"
+  },
+  {
+    "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:57:4148",
+    "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:92:3382",
+    "category": "formControls",
+    "reason": "native GET -> official Next Form enhancement"
+  }
+]

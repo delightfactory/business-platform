@@ -1,0 +1,4 @@
+import {CompositionDriver} from '../../../CompositionDriver';
+import {DirectorySearch} from 'C:/Users/DELL/Documents/Codex/2026-10-07/business-platform-ux-auth-recovery/src/app/tenant/[tenantId]/people/DirectorySearch';
+export const dynamic='force-dynamic';
+export default async function Page({params,searchParams}:{params:Promise<{tenantId:string}>,searchParams:Promise<{q?:string,page?:string}>}) {const {tenantId}=await params,p=await searchParams,q=(p.q||'').trim();await new Promise(r=>setTimeout(r,q==='بطء'?1800:150));return <main><h1>دليل تجريبي</h1><DirectorySearch href={`/tenant/${tenantId}/people`} query={q} page={Number(p.page||1)}/><p id="applied">البحث المطبق: {q||'الكل'} · الصفحة {p.page||1}</p><p id="result">{q==='فارغ'?'لا توجد نتائج مطابقة':q==='فشل'?'تعذر تحميل الدليل':'نتيجة تجريبية'}</p><CompositionDriver/></main>}

@@ -1,0 +1,58 @@
+The four fixes you listed are all in the code, and the new pending screenshot looks right. I found one remaining must-fix: a timing problem where the search box and the results can disagree. It's a small fix but it blocks qualifying this slice.
+
+I read `search-pending-final-390.jpg`, `DirectorySearch.tsx`, and the applied-query lines of `page.tsx`. I ran nothing.
+
+## The four fixes
+- **Constant button label:** the button always says "بحث" and only `aria-busy` changes (`DirectorySearch.tsx:85`). The input no longer shrinks in the screenshot and is the same width as in `search-focus-390`. The pending message is unchanged (`:91`).
+- **Same-query no-op on every page:** automatic search now skips whenever the trimmed text matches the current query (`:23`), so typing a space keeps page 2. Pressing the search button with the same query still resets to page 1. That's an explicit retry, which the spec allows.
+- **Trimmed check on page load:** the check for text typed before hydration now compares trimmed text (`:36`).
+- **Applied-query label:** "نتائج البحث عن:" only shows when the query and page are both valid (`page.tsx:56`).
+
+## Must-fix: search box and results can disagree after a reverted edit
+**How it happens:**
+1. The applied query is "a". The user types "x", and 400ms later the search for "x" is sent.
+2. While that request is slow, the user edits the box back to "a".
+3. `:23` sees that "a" equals the current query, so it cancels the timer and schedules nothing.
+4. The "x" results arrive. Lines 45–46 keep the user's "a" in the box (`ownResult` is true and the text differs from what was sent).
+
+**Result:**
+- The box says "a" but the list shows results for "x".
+- Nothing is pending, so there's no pending message, and no follow-up search is scheduled.
+- The "نتائج البحث عن: x" label partly reveals the mismatch.
+
+This breaks the spec's rule that the latest typed text wins. It's also the kind of misleading-context problem you asked me to reject. The earlier `page === 1` version had the same gap.
+
+**Smallest fix:** in the branch that keeps the user's text (`:46`), if the trimmed box text doesn't match the new `query` and the user isn't composing, schedule the normal 400ms search. Comparing against the in-flight query at `:23` would also work.
+
+Nothing else here is a must-fix.
+
+## Visual verdict (search widget only, pinned Concept C): **MATCH WITH ACCEPTED DEVIATIONS**
+**What I checked in the screenshot:**
+- Cairo font, the persistent label, and the button sitting the same height as the input on the correct side for RTL all match.
+- The button no longer changes size while searching.
+- The pending message is muted, readable, and fits on one line at 390px.
+
+**Differences that are part of the existing contract (accepted):**
+- A persistent label instead of the Concept C pill with an icon.
+- A separate search button. It's the explicit way to search and to retry.
+- A text pending status.
+- The existing radius, control styles and minimum control size. The original instructions said to keep these.
+
+**Differences that are deferred polish, not accepted yet:**
+- Concept C's compact rounded pill with a magnifier icon, and its width at 1366. You told me to skip polish, so I'm not calling these defects. If the owner doesn't accept them as deferred, this becomes a MISMATCH.
+
+**Pending global amendments:** D2, D3 and D8 aren't shown in these widget images or affected by this change. That's a separate track, and D16 stays deferred.
+
+**What the screenshot doesn't prove:**
+- The "البحث المطبق" line and the composition-driver buttons are synthetic fixture elements. The real page's applied-query label isn't shown in any image.
+- The pending image shows no focus ring, so it doesn't prove focus is kept while a search is pending.
+
+## Gates still open
+- **Roles:** real-tenant behaviour for the different access flags isn't verified.
+- **Real RPC:** the real `people_directory_page` call and its errors under real Supabase auth aren't verified. The fixture can't prove this.
+- **IME:** your driver passed, but real input hardware isn't verified. That includes Safari, where composition ends before the Enter key, so Enter submits the confirmed text.
+- **JavaScript disabled:** the native GET fallback hasn't been run with JS off.
+- **Build and lint:** the grouped build and lint for the finished batch is still to do.
+- **Full page:** the full directory, the reference design, and the result → profile journey haven't been checked.
+
+None of this closes R4 or the full goal.

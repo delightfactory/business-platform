@@ -4535,7 +4535,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:27:1670",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4544,7 +4544,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:30:1918",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -4553,7 +4553,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:35:2467",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
       "category": "rpcCalls",
       "phase": "R4",
       "status": "pending",
@@ -13301,7 +13301,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:54:3862",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:70:2448",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13310,7 +13310,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:56:4014",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:80:2905",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -13319,7 +13319,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:57:4148",
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:92:3382",
       "category": "formControls",
       "phase": "R4",
       "status": "pending",
@@ -14674,9 +14674,47 @@
       "evidence": null
     }
   ],
-  "snapshotQualification": "Current profile tab working-tree source with native and known composite control usages; existing reviews migrated, new usages pending",
+  "snapshotQualification": "R4 search candidate: exact source-slot migrations; existing review statuses retained. Actual Next synthetic routing evidence is not project role/RPC or semantic coverage. Baseline b0754a54a50932234437dc26024a06b3ed68cf78.",
   "idMigrationCount": 7,
   "navigationControlIdMigrations": 7,
   "entryControlIdMigrations": 14,
-  "entryRpcIdMigrations": 1
+  "entryRpcIdMigrations": 1,
+  "searchIdMigrations": [
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:27:1670",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
+      "category": "rpcCalls",
+      "reason": "source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:30:1918",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
+      "category": "rpcCalls",
+      "reason": "source position shifted"
+    },
+    {
+      "from": "RPC:src/app/tenant/[tenantId]/people/page.tsx:35:2467",
+      "to": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
+      "category": "rpcCalls",
+      "reason": "source position shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:54:3862",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:70:2448",
+      "category": "formControls",
+      "reason": "native GET -> official Next Form enhancement"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:56:4014",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:80:2905",
+      "category": "formControls",
+      "reason": "native GET -> official Next Form enhancement"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:57:4148",
+      "to": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:92:3382",
+      "category": "formControls",
+      "reason": "native GET -> official Next Form enhancement"
+    }
+  ]
 }

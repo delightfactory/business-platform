@@ -1,0 +1,88 @@
+{
+  "baseline": "b0754a54a50932234437dc26024a06b3ed68cf78",
+  "scope": "search widget and actual Next routing with synthetic server, not full R4",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "sha256": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f",
+      "normalization": "LF"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/page.tsx",
+      "sha256": "3afff213a2d149401ad8125c09888158165054948dac92b58c4f791cab25539c",
+      "normalization": "LF"
+    },
+    {
+      "file": "scripts/build-ux-inventory.cjs",
+      "sha256": "719d84bd298a8929a06a4c4d17d49197acb869c89b2c0f312c83f85e0dc8c77b",
+      "normalization": "LF"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "claude-delta-review.txt",
+      "sha256": "7170d0562c8f6640a3f050e7d370c3306af32ca0df216a14f71c226cce01cc20",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-final-review.txt",
+      "sha256": "1f1c0be02206b720d93cef7d2456c9b29ae50f4f2da80ebc622738b5cdaf1a50",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "claude-review.txt",
+      "sha256": "c4b66dc93b0c12e50af375a1e0a693199885e5895a99f908fb5274cdb44e0ad7",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-composition-driver.txt",
+      "sha256": "790cc8031dd52e8a2808f6ee3f636ea4ec106faaf787c67645ee872a5178eaff",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-layout.txt",
+      "sha256": "1da161fcadb5756349001d1e472ead01c2e6e8d7a73b7d07109f380d26eeeeed",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "fixture-page.txt",
+      "sha256": "ac352a533a71f135f95429afbbf14ea24fd6cc4bdb2a1d74899e6545f08ee8d3",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "inventory-migration.json",
+      "sha256": "5d70b1043eeac4f0b7f2864d48df4b0e6ad951912db9c15f6b5ef96f2aab5f6a",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "qualification.md",
+      "sha256": "5a517eb01e85a4d5b6450a02c19f87e4424ad99dc37550659f27b66d9edaa784",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "runtime-cases.json",
+      "sha256": "a111e3a89b2f57ef0554ef503a5b7e0acd59f33780b4eb022d409bf22a1eb619",
+      "normalization": "LF trimEnd+newline"
+    },
+    {
+      "file": "search-clear-1366.jpg",
+      "sha256": "72217e358c208adf911f1d43ce15fca9db456229b00813b053ed9c3973f523a1",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "search-focus-390.jpg",
+      "sha256": "80b93c3ebc1a89e292b1ee00637467018ba0a8a25dd795fc77bfdae0934eb83d",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "search-pending-390.jpg",
+      "sha256": "132c248211674795d970f1d3e23e274bf825bde79c5cbafd1a214ac607eb0860",
+      "normalization": "raw bytes"
+    },
+    {
+      "file": "search-pending-final-390.jpg",
+      "sha256": "b2c9717082976add227992252ceb48c10715e33f0fc58765a486d460817389cf",
+      "normalization": "raw bytes"
+    }
+  ]
+}

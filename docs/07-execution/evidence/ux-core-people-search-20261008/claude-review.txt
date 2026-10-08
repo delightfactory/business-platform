@@ -1,0 +1,53 @@
+I found no introduced must-fix defect in the search widget for this bounded core R4 search candidate. There are three should-fix items and some gates that remain open. This was a read-only review. I didn't run anything and didn't write the plan file, because no write or ExitPlanMode tool was available.
+
+**Read:** `people-directory-search-spec.md`, `src/app/tenant/[tenantId]/people/DirectorySearch.tsx`, `src/app/tenant/[tenantId]/people/page.tsx`. I also checked `node_modules/next/dist/client/form.js`, the installed Next Form code. It calls your `onSubmit` first and stops if you cancel the event (`:69-74`), so the IME guard works. It wraps the navigation in a transition, which is what makes `useFormStatus` pending work (`:116-120`).
+
+**Not checked:** `runtime-cases.json`, `inventory.json`, `review-register.json`, `build-ux-inventory.cjs`. I can't confirm "1592 unchanged" or "19 statuses preserved".
+
+## Source review
+
+**Races I checked and found sound:**
+- **Typing over an older result:** if the user keeps typing after a submit, the older result doesn't overwrite the newer text (`DirectorySearch.tsx:45-46`). If an older result ever rendered after a newer submit, it would overwrite the field. Next drops stale navigations, and your fixture saw "latest replaces slow result", so this is fine.
+- **Back/forward:** going back or forward cancels the pending debounce, clears the remembered submit, then restores the field from the URL (`:50-55`). When the new page props arrive they set the same value.
+- **IME:** no auto-search while composing (`:22`, `:75-76`), and submit is blocked while composing (`:66-68`).
+- **No-op searches:** same query on page 1 doesn't auto-submit (`:23`). Explicit same-query retry still navigates and shows pending, and nothing gets re-synced.
+- **Cleanup:** timers are cleared on unmount (`:58`).
+- **Auth and data:** the RPC call, the 100-character query check, page bounds 1–1000, and permission flags in `page.tsx` are unchanged. Search always targets the fixed tenant directory path from the server.
+- **Retry link:** keeps the current query and page (`page.tsx:61`). The `invalidPage ? 1 :` there can never be true in that branch; it's harmless.
+- **Pending message:** it says the list on screen is from the last finished search, which is accurate. It doesn't claim the list matches the new text.
+
+**Should-fix (not blocking):**
+1. **Button label shifts the layout.** During a search the button changes from "بحث" to "جارٍ البحث…" and the input gets narrower while the user is typing (visible in `search-pending-390.jpg`). Fix: give the button a fixed width, or keep the label the same and let the status line carry the pending message.
+2. **Search box resets paging too easily.** On page 2 or later, an edit that trims back to the current query (e.g. a trailing space, or typing then deleting) still auto-submits and drops to page 1. That's because of the `page === 1` condition at `:23`. Fix: skip the auto-search whenever the trimmed text equals the current query.
+3. **Two small gaps:**
+   - The fresh-page typing check at `:36` compares untrimmed text, so typing only whitespace before hydration triggers a pointless search.
+   - `page.tsx:56` shows "نتائج البحث عن:" for a query over 100 characters, even though no search ran. It should only show when the query is valid.
+
+**Still-open gates, not new defects:**
+- Native GET with JS disabled.
+- Real IME hardware. Safari fires compositionend before the Enter keydown, so Enter would submit the committed text. That's acceptable.
+- Real project auth, Supabase and permissions; the fixture can't prove these.
+- Full directory, reference-design match, roles, build and lint.
+- D16 is deferred; D2, D3 and D8 are pending.
+
+## Visual verdict (search widget only)
+
+Images I looked at:
+- `ux-core-people-search-20261008/search-focus-390.jpg`
+- `ux-core-people-search-20261008/search-pending-390.jpg`
+- `ux-core-people-search-20261008/search-clear-1366.jpg`
+- `ux-core-people-entry-20261008/reference-1366.jpg`
+
+**Passes, with the layout-shift note above:**
+- Cairo font, the persistent label and the placeholder are kept.
+- Input on the right, button on the left (correct for RTL); the button is the same height as the input.
+- The focus ring is clearly visible, and so is the native clear ×.
+- The pending hint is muted and readable, and wraps cleanly at 390px.
+
+**Evidence limits:**
+- The "البحث المطبق: …" line is from the synthetic fixture, not the real page's "نتائج البحث عن:" text. The real applied-query line isn't shown in any image.
+- The pending image shows no focus ring, so it doesn't prove focus was kept during pending.
+- The Next dev indicator is visible in the images (fixture artifact).
+- At 1366, the input stretches the full panel width. The reference uses a compact pill with an icon instead. That's deferred polish, not a defect.
+
+This doesn't close R4 or the full goal, and it doesn't qualify the full directory, reference match, roles or hydration.

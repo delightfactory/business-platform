@@ -1,0 +1,29 @@
+{
+  "framework": "Actual Next16.3.6 dev/actual DirectorySearch; synthetic page results; no project SDK/actions/private data",
+  "sameDocument": true,
+  "retainedFocus": true,
+  "cases": [
+    "automatic changed query returns page1",
+    "same document retained",
+    "typed field focus retained",
+    "pending visible with previous applied query",
+    "latest query replaces slow query",
+    "fast fresh-page typed query applied after hydration repair",
+    "back restores original query",
+    "forward restores final query",
+    "synthetic empty result",
+    "synthetic failure retry preserves query",
+    "clear applies unfiltered page1",
+    "synthetic native composition start blocks manual submit; composition end searches",
+    "normalized same-query spaces retain page2",
+    "reverted edit during slow request triggers follow-up, final URL/input/results agree and focus retained"
+  ],
+  "open": [
+    "real project role/RPC authority",
+    "native IME hardware behavior",
+    "browser disabled-JS runtime fallback"
+  ],
+  "sourceNote": "Native HTML GET contract observed; explicit same-query pending observed; no total or provider success inferred",
+  "serviceRetired": true,
+  "finalBuild": "Grouped build/TypeScript and scoped lint passed before final seven-line follow-up fix; final scoped lint and tsc passed, affected real Next routing case passed; no second full build required for this local effect delta."
+}

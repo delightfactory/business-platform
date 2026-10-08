@@ -1,0 +1,29 @@
+Yes, the must-fix is resolved. I read only `DirectorySearch.tsx` and ran nothing.
+
+**Tracing the failing case through the new code (`DirectorySearch.tsx:45-53`):**
+1. The applied query is "a". The user types "x", and the search for "x" is sent.
+2. While it's in flight, the user edits the box back to "a". `:23` correctly cancels the debounce.
+3. The "x" results arrive. `ownResult` is true and the box text "a" differs from the "x" that was sent, so the user's text is kept.
+4. The new branch at `:47` sees that "a" doesn't match "x" and the user isn't composing, so it schedules the normal 400ms search.
+5. That search submits "a", and the box and results agree again.
+
+**Related cases, also fine:**
+- **Still typing:** further typing restarts the follow-up timer through `scheduleSearch`, so it just behaves like the normal debounce.
+- **Mid-composition:** no follow-up is scheduled while the user is composing. When composition ends, `scheduleSearch` compares the text against the current query and searches if needed.
+- **Whitespace-only difference:** if the kept text differs from the arriving query only by spaces, no search runs. That's correct.
+- **Cleanup:** going back or forward and unmounting both clear the timer (`:58-59`, and the unmount cleanup after it).
+- **Unchanged:** the existing branches still behave the same: syncing an external or own result (`:46`), and the page-load check (`:36-41`).
+
+**Optional, not blocking:** the 400ms scheduling code now appears three times (`:24-27`, `:38-41`, `:49-52`). `:49-52` could call `scheduleSearch()` instead. The cleanup can wait.
+
+There are no remaining introduced must-fix defects in this slice. My earlier visual verdict still stands for the search widget only: **MATCH WITH ACCEPTED DEVIATIONS**.
+
+These gates are still open:
+- real role and access flags
+- the real `people_directory_page` call under Supabase auth
+- IME on real input hardware
+- native GET with JavaScript off
+- the grouped build and lint
+- the full directory, the result → profile journey, and full R4
+
+R4 and the full goal are not closed. Core R0–R8 comes first and extras stay deferred.

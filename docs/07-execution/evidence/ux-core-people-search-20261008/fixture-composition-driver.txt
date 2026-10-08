@@ -1,0 +1,2 @@
+'use client';
+export function CompositionDriver(){return <aside aria-label="قيادة أحداث تركيب تجريبية"><button onClick={()=>document.querySelector('#people-query')?.dispatchEvent(new CompositionEvent('compositionstart',{bubbles:true}))}>بدء تركيب تجريبي</button><button onClick={()=>document.querySelector('#people-query')?.dispatchEvent(new CompositionEvent('compositionend',{bubbles:true}))}>إنهاء تركيب تجريبي</button></aside>}

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import styles from './people.module.css';
+import { DirectorySearch } from './DirectorySearch';
 
 export const dynamic = 'force-dynamic';
 const MAX_PAGE = 1000;
@@ -51,16 +52,13 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
       {canManagePolicies && <Link className="secondary-button" href={`/tenant/${tenantId}/people/work-policies`}>سياسات الدوام</Link>}
     </nav>}
     <section className={`workspace-records-panel ${styles.directoryPanel}`} aria-label="دليل الموظفين">
-      <form method="get" role="search" className="people-search-form">
-        <label htmlFor="people-query">ابحث بالاسم أو رمز الموظف</label>
-        <div><input id="people-query" name="q" type="search" maxLength={100} defaultValue={query} placeholder="مثال: أحمد أو EMP-12" />
-          <button className="secondary-button" type="submit">بحث</button></div>
-      </form>
+      <DirectorySearch href={`/tenant/${tenantId}/people`} query={query} page={page} />
+      {query && !invalidQuery && !invalidPage && <p className="record-meta">نتائج البحث عن: <bdi>{query}</bdi></p>}
       {invalidQuery ? <p className="form-message" role="alert">يجب ألا يتجاوز البحث 100 حرف.</p>
         : invalidPage ? <p className="form-message" role="alert">رقم الصفحة غير صالح.</p>
         : failed ? <div className="empty-state" role="alert"><h2>تعذر تحميل دليل الموظفين</h2>
           <p>تحقق من الاتصال والصلاحية، ثم أعد المحاولة.</p>
-          <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>إعادة المحاولة</Link></div>
+          <Link className="secondary-button" href={pageHref(tenantId, query, invalidPage ? 1 : page)}>إعادة المحاولة</Link></div>
         : employees.length === 0 ? <div className="empty-state"><h2>{query ? 'لا توجد نتائج مطابقة' : 'لا يوجد موظفون بعد'}</h2>
           <p>{query ? 'جرّب اسمًا أو رمز موظف مختلفًا.' : canAdd ? 'أضف أول موظف لتبدأ سجل العاملين.' : 'لم تُسجّل ملفات موظفين في هذه الشركة بعد.'}</p>
           {page > 1 && <Link className="secondary-button" href={pageHref(tenantId, query, page - 1)}>العودة إلى الصفحة السابقة</Link>}

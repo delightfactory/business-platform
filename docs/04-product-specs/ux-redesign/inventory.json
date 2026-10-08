@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "9b50408a7516555842c12e0bd6c07cf23cce236b",
+  "sourceHead": "b0754a54a50932234437dc26024a06b3ed68cf78",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -1053,6 +1053,11 @@
       "sha256": "63401f37f80d7287f8c0342fc5c4f20f37d1bdb6cd114c4aab8a356aee1c9080"
     },
     {
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "phase": "R4",
+      "sha256": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f"
+    },
+    {
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
       "phase": "R4",
       "sha256": "92b972e01f7e46c231d758c7ecd7cd0392ed1d5b39c2e402a2ea6d257a837d0d"
@@ -1160,7 +1165,7 @@
     {
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
       "phase": "R4",
-      "sha256": "7994dd9a01a9271952daacc81ddb0eb72d029bb4e24761cb05be7eadfa66d1d3"
+      "sha256": "3afff213a2d149401ad8125c09888158165054948dac92b58c4f791cab25539c"
     },
     {
       "file": "src/app/tenant/[tenantId]/people/people.module.css",
@@ -6291,9 +6296,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:27:1670",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:28:1723",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 27,
+      "line": 28,
       "phase": "R4",
       "name": "people_access_snapshot",
       "expression": null,
@@ -6301,9 +6306,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:30:1918",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:31:1971",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 30,
+      "line": 31,
       "phase": "R4",
       "name": "time_work_policy_catalog",
       "expression": null,
@@ -6311,9 +6316,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:35:2467",
+      "id": "RPC:src/app/tenant/[tenantId]/people/page.tsx:36:2520",
       "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 35,
+      "line": 36,
       "phase": "R4",
       "name": "people_directory_page",
       "expression": null,
@@ -15671,6 +15676,37 @@
       "attributes": {}
     },
     {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:70:2448",
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "line": 70,
+      "tag": "Form",
+      "phase": "R4",
+      "attributes": {
+        "action": "{href}"
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:80:2905",
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "line": 80,
+      "tag": "input",
+      "phase": "R4",
+      "attributes": {
+        "name": "\"q\"",
+        "type": "\"search\""
+      }
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/people/DirectorySearch.tsx:92:3382",
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "line": 92,
+      "tag": "button",
+      "phase": "R4",
+      "attributes": {
+        "type": "\"submit\""
+      }
+    },
+    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx:53:3715",
       "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
       "line": 53,
@@ -17352,35 +17388,6 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:54:3862",
-      "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 54,
-      "tag": "form",
-      "phase": "R4",
-      "attributes": {}
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:56:4014",
-      "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 56,
-      "tag": "input",
-      "phase": "R4",
-      "attributes": {
-        "name": "\"q\"",
-        "type": "\"search\""
-      }
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/people/page.tsx:57:4148",
-      "file": "src/app/tenant/[tenantId]/people/page.tsx",
-      "line": 57,
-      "tag": "button",
-      "phase": "R4",
-      "attributes": {
-        "type": "\"submit\""
-      }
-    },
-    {
       "id": "CONTROL:src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx:70:3523",
       "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
       "line": 70,
@@ -18395,7 +18402,7 @@
   ],
   "fingerprintPolicy": "sha256-utf8-normalized-LF",
   "summary": {
-    "sourceFiles": 259,
+    "sourceFiles": 260,
     "pages": 75,
     "endpoints": 3,
     "boundaries": 8,
