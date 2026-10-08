@@ -1,0 +1,46 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+**No must-fix. The candidate is accepted within its scope:** actual source rendered with a controlled SDK and Cairo. That doesn't cover real roles, providers, finance, hydration or the full parent.
+
+## Source (`page.tsx`)
+- **Summary type (`:21`):** the new fields are optional. Every amount goes through `money()`, so a missing value shows "غير متاح" and never 0.
+- **Net (`:103`) is shown only when all of these hold:**
+  - the run status is `draft`, `review` or `approved`;
+  - the source isn't stale;
+  - `financially_qualified === true`;
+  - `net != null`.
+
+  Otherwise it shows the unknown-status, recalculate or "يظهر بعد اكتمال التأهيل المالي…" explanation. There is no local arithmetic.
+- **Gross:** the label depends on `gross_complete === true` and the value is always `known_gross`, matching runs. Deductions use the exact runs label.
+- **Stale caption (`:101`):** "القيم المعروضة محفوظة من الحساب السابق للمراجعة". The caution sentence (`:104`) is kept in every candidate state.
+- **Primary (`:84,102,106`):** it's the same `Link`, URL and label, only placed above the figures for candidates and unchanged in every other state, so there's still one primary. Every primary branch (`:76–82`) is unchanged.
+- **Blocking badges:** three states on root (`:111`), and runs uses the same three states (`runs:41`), so the inconsistency I noted earlier is resolved. The full `issueNames` text and `runLink` are kept.
+
+I didn't re-read the inputs and setup copy this turn. My acceptance of those relies on your 28 cases.
+
+## Visual
+Images opened this turn: `concept-c-payroll-light-1366.png`, `workspace-qualified-390.png`, `workspace-unqualified-1366.png`.
+
+- **Reference (this file):** a payroll root with a header employer dropdown and a six-stage stepper with completion states. It shows a figure strip with estimated gross, estimated deductions and net shown as "يظهر بعد اكتمال التأهيل المالي لحزمة الضرائب والتأمينات.", then a blockers card with owner actions and a single bottom primary.
+- **Qualified at 390:**
+  - The heading and period are followed by the primary "متابعة مراجعة الرواتب", then the strip: count, gross, deductions, and net shown because the fixture is qualified.
+  - The labels wrap but there's no overflow.
+  - The caution sentence follows.
+- **Unqualified at 1366:**
+  - The same order, and the net cell shows the reference's exact explanation in bold.
+  - The stepper follows with no completed states.
+- **Shared direction:** the figure strip with gross, deductions and a gated net, the net explanation copy, and a single primary.
+- **Differences, governed or open:**
+  - **Governed:** no stepper completion states, because the root has no source facts for them.
+  - **Open:** the employer control here is the existing chooser link because the fixtures have a single employer; there are no per-employee blocker rows with owner actions; the primary sits above the figures rather than at the bottom; the figures use smaller type.
+- **Verdict:** the direction is consistent within scope. Full reference match **NOT VISUALLY VERIFIED**.
+
+Your measurement puts the primary 224px higher at 390 and 122px higher at 768/1366. That improves scan depth, not task speed.
+
+## Still open (not promoted)
+- **Root:** stage facts and source-owner routes.
+- **Dominant action:** a corrections case under review showing approve and recalculate together, and the second `PaymentForm` primary inside history.
+- **Runs:** release while a run attempt is unresolved.
+- **Visual:** the multi-employer check on the first five pages.
+- **Runtime:** real roles and providers, finance, print authorization, hydration, the full parent and unsaved input lost on navigation.
+- **Closure:** R0–R8, phase and semantic closure.

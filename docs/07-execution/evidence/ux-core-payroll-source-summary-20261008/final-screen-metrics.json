@@ -1,0 +1,74 @@
+[
+  {
+    "scene": "workspace-qualified",
+    "primaryTop": 480.4750061035156,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-unqualified",
+    "primaryTop": 480.4750061035156,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-stale",
+    "primaryTop": 586.4750366210938,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-badges",
+    "primaryTop": 480.4750061035156,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-qualified",
+    "primaryTop": 500.875,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-unqualified",
+    "primaryTop": 500.875,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-stale",
+    "primaryTop": 576.875,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-badges",
+    "primaryTop": 500.875,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-qualified",
+    "primaryTop": 500.875,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-unqualified",
+    "primaryTop": 500.875,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-stale",
+    "primaryTop": 546.875,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-badges",
+    "primaryTop": 500.875,
+    "scrollWidth": 1351,
+    "width": 1366
+  }
+]

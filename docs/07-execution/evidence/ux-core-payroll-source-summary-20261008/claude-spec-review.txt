@@ -1,0 +1,76 @@
+{"actualModels":["claude-opus-5-5"],"effort":"medium","readOnlyUnchanged":true,"sessionId":"59a34d84-30f4-4b34-8540-863591fc0623"}
+
+# R7 source summary and readiness: co-design verdict (spec on 463a16b)
+
+**I approve, with three spec corrections and the guards below.** I read the spec, the root summary type, the root summary and issue lines (`page.tsx:18–21`, `101–110`), and drew on my earlier reads of the inputs prerequisites and the runs summary.
+
+## Spec corrections (precise)
+
+1. **Show net only for recognized candidate statuses.**
+   - **Why:** on root, `candidate` is true for *any* run status other than cancelled, locked or superseded, which includes unknown statuses (`page.tsx`, the definition of `candidate`).
+   - **Rule:** show net only when **all** of these hold:
+     - the run status is one of `draft`, `review` or `approved`;
+     - `summary.financially_qualified === true`;
+     - there are no stale reasons;
+     - `summary.net != null`.
+   - **Otherwise:**
+     - **unknown status:** a neutral explanation;
+     - **stale:** "أعد الحساب لعرض الصافي";
+     - **unqualified or missing:** "يظهر بعد اكتمال التأهيل المالي".
+
+2. **Mirror the runs gross semantics exactly.** Runs shows **`known_gross`** in both cases and changes only the label with `gross_complete`: "إجمالي الاستحقاقات التشغيلية" when complete, "الاستحقاقات المعروفة من المدخلات التي أمكن حسابها" otherwise (`runs/page.tsx` summary). Root must do the same. Never show `summary.gross`, which can be null when incomplete. A missing flag keeps the "known" wording.
+
+3. **Label stale values honestly.** Gross and deductions stay visible when the source is stale, so add the runs wording "القيم محفوظة من الحساب السابق" (or a near equivalent) next to them, alongside the existing recalculate instruction.
+
+## Guards
+
+**Type and missing values:**
+- Extend the root `summary` type with optional `deductions`, `net`, `financially_qualified` and `gross_complete`.
+- Render through `money()`. It already returns "غير متاح" for null, undefined or malformed values, so no amount ever becomes zero.
+- No local arithmetic.
+- **Check before implementing:** confirm in the SQL that `payroll_run_workspace` (not only `payroll_run_review_workspace`) returns these keys inside `summary`. If a key is absent, the value shows as "غير متاح" rather than a guess.
+
+**Figures:**
+- **Deductions label:** reuse the exact runs label "الخصومات التشغيلية المعروفة دون الضريبة والتأمينات". Don't show `statutory_deductions` and don't combine values.
+- **Strip contents:** employee count, gross, deductions, and net or its explanation, in the existing `figureStrip` with uniform emphasis. The net cell gets no hero treatment.
+- **Caution:** keep the existing sentence "القيم مرشح للمراجعة، ولا تمثل راتبًا صالحًا للصرف قبل اكتمال التأهيل والاعتماد والتثبيت" in every state, including qualified. A qualified candidate still isn't approved or locked.
+
+**Blocking badge:**
+- Use `item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'`.
+- Keep the issue order, repeats, the full `issueNames` text in native `<details>`, and the `runLink` continuation.
+- Don't show `issue_count` as a count of blockers.
+- **Inconsistency to record, not fix here:** runs uses `i.blocking ? 'مانع' : 'تنبيه'`, so an undefined flag shows "تنبيه" there.
+
+**Final and historical states:** no figures. Keep the protected output and payment destinations and the existing primary branches unchanged. The stepper stays unchanged, with no completed-step states.
+
+**Inputs prerequisites:**
+- Replace only the second paragraph, the unconditional "المراجعة القانونية غير مؤهلة…".
+- New source-neutral sentence, for example: "يُفحص التأهيل المالي والقانوني على الحساب الحالي في مراجعة الرواتب؛ يتطلب التثبيت تأهيل الحساب واعتماده وصلاحية المسؤول المخول."
+- Keep the policy paragraph and the daily-source paragraph exactly.
+- No new link. The header already has "العودة إلى مراجعة الرواتب للفترة".
+- Setup's readiness card and saved-period cards still carry the same kind of unconditional claim. That stays an **open** core item and is out of this batch.
+
+**Unchanged:** RPCs, the `p_limit:1` workspace call, forms, recovery, predicates and the single primary per state.
+
+## Checks
+- Focused source cases:
+  - no summary;
+  - qualified and current, qualified and stale, unqualified, `net` null;
+  - `gross_complete` true, false or missing;
+  - zero amounts (zero is shown as zero; it is a real source value);
+  - malformed values;
+  - an unknown run status;
+  - `blocking` true, false or missing;
+  - final and superseded runs;
+  - auth and failure paths.
+- The inputs prerequisite text, before and after.
+- One grouped lint/build/TS run.
+- Renders at 390/768/1366 and keyboard testing of the details.
+
+**Still open:**
+- the visual and reference check (**NOT VISUALLY VERIFIED** from the spec);
+- per-source owner routes and stage facts;
+- the setup readiness claims;
+- the runs blocking-label inconsistency;
+- real roles and providers, finance, hydration and the full parent;
+- R0–R8 and phase closure.

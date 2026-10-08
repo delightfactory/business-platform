@@ -18,7 +18,7 @@ type Calendar = { employer_name: string; versions: { timezone: string }[]; perio
 type Workspace = {
   access: { can_prepare: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
   period: Period; run: { status: string } | null; final_output_id: string | null;
-  summary: { employee_count: number; known_gross: string | null } | null;
+  summary: { employee_count: number; known_gross: string | null; deductions?: string | null; net?: string | null; gross_complete?: boolean; financially_qualified?: boolean } | null;
   global_issues: Issue[]; issue_count: number; stale_reasons: string[];
 };
 export default async function PayrollPage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: Promise<Query> }) {
@@ -81,6 +81,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       else if (work.access.can_view_final) primary = { href: scope('/output', { output: work.final_output_id }), label: 'عرض المسير النهائي' };
     }
   }
+  const primaryAction = (work || periods.length === 0) && <Link className="primary-button" href={primary.href}>{primary.label}</Link>;
   return <PageFrame><div dir="rtl" className={styles.workspace}>
     <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>الرواتب</h1>
       <p>{calendar.employer_name}</p>
@@ -97,16 +98,17 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
     {!calendar.access.enabled && <p role="status">خدمة الرواتب غير مفعلة لإجراءات جديدة. يمكنك متابعة التاريخ والالتزامات القائمة حسب صلاحياتك.</p>}
     <section className={styles.card} aria-labelledby="payroll-stage"><h2 id="payroll-stage">{status}</h2>
       {work ? <p>{displayDate(work.period.starts_on)} — {displayDate(work.period.ends_on)}{work.period.is_transition ? ' · فترة انتقالية' : ''}</p> : <p>{periods.length ? 'لم تُحدَّد فترة حالية من التواريخ المحفوظة المعروضة. اختر فترة صراحةً؛ لن يبدأ التحضير في فترة مستقبلية تلقائيًا.' : calendar.access.can_view ? 'جهّز الدورة وفترتها الأولى، ثم ابدأ تحضير المدخلات.' : 'يمكنك مراجعة إعداد الدورة. مراجعة المسيرات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب.'}</p>}
-      {stale && <p>راجع المصادر المتغيرة وأعد الحساب قبل الاعتماد. القيم السابقة محفوظة للمراجعة.</p>}
-      {candidate && work?.summary && <dl className={styles.dates}><div><dt>علاقات التوظيف في المرشح</dt><dd>{new Intl.NumberFormat('ar-EG').format(work.summary.employee_count)}</dd></div><div><dt>الاستحقاقات التشغيلية المعروفة</dt><dd><bdi>{money(work.summary.known_gross)}</bdi></dd></div></dl>}
+      {stale && <p>راجع المصادر المتغيرة وأعد الحساب قبل الاعتماد. القيم المعروضة محفوظة من الحساب السابق للمراجعة.</p>}
+      {candidate && primaryAction}
+      {candidate && work?.summary && <dl className={styles.figureStrip}><div><dt>علاقات التوظيف في المرشح</dt><dd>{new Intl.NumberFormat('ar-EG').format(work.summary.employee_count)}</dd></div><div><dt>{work.summary.gross_complete === true ? 'إجمالي الاستحقاقات التشغيلية' : 'الاستحقاقات المعروفة من المدخلات التي أمكن حسابها'}</dt><dd><bdi>{money(work.summary.known_gross)}</bdi></dd></div><div><dt>الخصومات التشغيلية المعروفة دون الضريبة والتأمينات</dt><dd><bdi>{money(work.summary.deductions)}</bdi></dd></div><div><dt>صافي الحساب المراجع</dt><dd>{!['draft','review','approved'].includes(work.run?.status ?? '') ? 'حالة الحساب تحتاج مراجعة قبل عرض الصافي' : stale ? 'أعد الحساب لعرض الصافي من المصادر الحالية' : work.summary.financially_qualified === true && work.summary.net != null ? <bdi>{money(work.summary.net)}</bdi> : 'يظهر بعد اكتمال التأهيل المالي لحزمة الضرائب والتأمينات.'}</dd></div></dl>}
       {candidate && work?.summary && <p>القيم مرشح للمراجعة، ولا تمثل راتبًا صالحًا للصرف قبل اكتمال التأهيل والاعتماد والتثبيت.</p>}
       {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول مخوّل بعرض الرواتب أو تسجيل الدفعات.'}</p>}
-      {(work || periods.length === 0) && <Link className="primary-button" href={primary.href}>{primary.label}</Link>}
+      {!candidate && primaryAction}
       <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'}/>
     </section>
     {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>راجع عوائق الفترة والموظفين قبل الاعتماد، مع المسؤول المحدد لكل مصدر.</p>
       {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => <li key={`${item.code}:${index}`}><details>
-        <summary>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· التفاصيل</span></summary>
+        <summary>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></summary>
         <p>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</p>
       </details></li>)}</ul>}
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}

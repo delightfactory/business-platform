@@ -1,0 +1,170 @@
+[
+  {
+    "page": "workspace",
+    "name": "qualified",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "unqualified",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "stale",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "missing",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "nullNet",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "partial",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "zero",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "malformed",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "unknown",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "noSummary",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "noRun",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "locked",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "superseded",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "badges",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "noSdk",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "workspace",
+    "name": "noUser",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "inputs",
+    "name": "normal",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "inputs",
+    "name": "reader",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "inputs",
+    "name": "disabled",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "inputs",
+    "name": "noSdk",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "setup",
+    "name": "normal",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "setup",
+    "name": "reader",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "setup",
+    "name": "disabled",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "setup",
+    "name": "noSdk",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "runs",
+    "name": "normal",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "runs",
+    "name": "reader",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "runs",
+    "name": "disabled",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  },
+  {
+    "page": "runs",
+    "name": "noSdk",
+    "result": "PASS",
+    "scope": "actual source SSR/controlled SDK; financial/auth contracts compared, not real authority acceptance"
+  }
+]

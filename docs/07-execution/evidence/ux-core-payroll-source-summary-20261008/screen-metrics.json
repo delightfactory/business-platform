@@ -1,0 +1,143 @@
+[
+  {
+    "scene": "before-workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 704.4750366210938,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 828.0750122070312,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-unqualified",
+    "fontStatus": "loaded",
+    "primaryTop": 888.0750122070312,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-stale",
+    "fontStatus": "loaded",
+    "primaryTop": 964.0750122070312,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "workspace-badges",
+    "fontStatus": "loaded",
+    "primaryTop": 888.0750122070312,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "inputs-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "setup-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "scene": "before-workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 622.875,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 758.4750366210938,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-unqualified",
+    "fontStatus": "loaded",
+    "primaryTop": 758.4750366210938,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-stale",
+    "fontStatus": "loaded",
+    "primaryTop": 834.4750366210938,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "workspace-badges",
+    "fontStatus": "loaded",
+    "primaryTop": 758.4750366210938,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "inputs-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "setup-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "scene": "before-workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 622.875,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-qualified",
+    "fontStatus": "loaded",
+    "primaryTop": 728.4750366210938,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-unqualified",
+    "fontStatus": "loaded",
+    "primaryTop": 728.4750366210938,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-stale",
+    "fontStatus": "loaded",
+    "primaryTop": 774.4750366210938,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "workspace-badges",
+    "fontStatus": "loaded",
+    "primaryTop": 728.4750366210938,
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "inputs-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "width": 1366
+  },
+  {
+    "scene": "setup-normal",
+    "fontStatus": "loaded",
+    "scrollWidth": 1351,
+    "width": 1366
+  }
+]

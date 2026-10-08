@@ -1,0 +1,8 @@
+{
+  "scopedLint": "PASS",
+  "groupedBuild": "PASS",
+  "buildAttempts": 1,
+  "finalTypeCheckAfterPrimaryPosition": "PASS",
+  "finalScopedLint": "PASS",
+  "scope": "28 source cases then one grouped lint/build; final primary placement six actual-source cases plus lint/tsc only; no financial/SQL/Auth reruns"
+}
