@@ -1,0 +1,90 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 result tools and action hierarchy: co-design verdict (baseline 314f874)
+
+The spec is accepted as a bounded plan if the guards below are written into it. There is no reason to reject it.
+
+## Payment status codes the source actually returns
+`payroll_payment_workspace` sets `summary.status` in `supabase/migrations/20261002025507_cube4_payroll_external_payments.sql:103` (the same CASE appears in the mutation result at `:88`):
+
+```
+CASE WHEN COALESCE(sum(paid),0)=0 THEN 'unpaid'
+     WHEN COALESCE(sum(remaining),0)=0 THEN 'paid'
+     ELSE 'partially_paid' END
+```
+
+So there are exactly three values: `unpaid`, `paid` and `partially_paid`. Today the UI only tests `paid` and `partially_paid`, and anything else, including `unpaid`, shows "لا توجد دفعات قائمة في المطابقة" (`payments/page.tsx:34`).
+
+**Risks:**
+- **`unpaid` is checked first.** If the net paid amount is 0, the status is `unpaid` even when the payable is zero, or when payments were recorded and then fully corrected (`ever_paid` is true). That makes "غير مدفوع" or "unpaid" wording inaccurate.
+  - **Guard:** map exactly `'unpaid'` to the **existing** text "لا توجد دفعات قائمة في المطابقة", which is true in all of these cases, and keep the `ever_paid` note.
+- **Unknown values.** Any value other than the three recognized ones gets a neutral heading such as "حالة المطابقة المحفوظة غير معروفة؛ راجع المبالغ أدناه". It must not infer paid or unpaid.
+- **Order of checks:** superseded first, then the three recognized values, then unknown.
+- **Unchanged:** the figures, `canRecord`, `remaining_count`, the pending request, `recoveryOnly`, the main form key, and the history forms.
+
+## Output tool region
+- **Contents:** the existing links grouped in one region (for example `<nav aria-label="أدوات المخرج">`), placed under the identity and the superseded or current warning.
+- **Link order and classes:** replacement (`primary-button` only when superseded), correction (`!superseded && can_correct`), export, payments (`secondary-button`), back.
+- **Export:**
+  - stays a plain `<a>` (not `Link`);
+  - keeps exactly `${path}/export?${context}`, where `context` includes `after`;
+  - keeps the exact label "تنزيل كشف هذه الصفحة حسب صلاحية التصدير";
+  - stays absent when the output is superseded.
+
+  Moving it above the cards is fine because the label refers to the current page cursor.
+- **Stays with the list:** the "موظفون إضافيون" pager stays **after the cards**. It is pagination, not a tool.
+- **Superseded label:** when superseded, net reads something like "صافي الراتب المحفوظ للتاريخ (مخرج مستبدل)". Base, lines and dispositions keep the same values and keys; only the label changes. Current outputs keep "صافي الراتب".
+
+## Payments employee cards
+- Cards go inside the existing `#payroll-payment-employees` section, after the search form. Each card shows payable, recorded and remaining as a `<dl>`.
+- Keep the conditional `entry_amount` line, the `selected_entry` back link, the empty message and the 30-item pager outside the grid.
+- `recoveryOnly` already comes **before** this section, so its position (574px at 390) is unaffected. Re-measure it anyway.
+
+## Reports
+**Selector as secondary.**
+- **How:** `selector` is built once before `work` exists (`reports/page.tsx:48`). Turn it into a function or variant that takes `exportReady = work.can_export && !work.superseded && work.issues.length === 0`, the same predicate that renders the export link and sets `data-distributable`.
+- **When primary:** if no output has been chosen yet (`:49`), or the export is blocked, the selector stays primary.
+- **Styling:** the brand fill comes from the module rule `.selector button`, not from the global `primary-button` class. Add a screen-only modifier, for example `@media screen{.selectorSecondary button{…secondary tokens…}}`, on the form only when `exportReady` is true. Don't edit the original rules.
+
+**Second primary to check.** `PrintPayslipButton` renders beside the primary export in payslip mode. Confirm its class. If it is primary, payslip mode still has two primaries: record that as open, and don't restyle the print component in this batch.
+
+**Local nav.**
+- **Don't change `.actions` itself.** The footer tools rely on its mobile column and stretch layout.
+- **Use a second class** on the nav (for example `styles.sectionNav`), with `@media screen and (max-width:600px){.actions.sectionNav{flex-direction:row;flex-wrap:wrap;align-items:center}}`. The doubled class wins on specificity, so the footer is unaffected.
+- **Print:** keep `.actions` on the nav so the existing print rule still hides it.
+- **Touch targets:** keep 44px through the existing screen rule `.actions a`.
+
+**Print evidence.** Original stylesheet bytes stay unchanged, with additions in `@media screen` only. Repeat the authorized/unauthorized payslip and sheet print pairs.
+
+## Acceptance checks
+- **Contract cases** (actual source, controlled SDK): RPCs, fields, form positions, keys and props stay unchanged, and the multiset of non-anchor URLs is identical. Cover:
+  - status `unpaid`, `paid`, `partially_paid`, an unknown value, and superseded;
+  - zero payable, and `ever_paid` with fully corrected entries;
+  - output current/superseded, with and without replacement, and with an `after` cursor;
+  - every report purpose, blocked and ready.
+- **Primaries per state:**
+  - reports: exactly one, except payslip with a print button, which is recorded;
+  - output: superseded has one (replacement), current has none;
+  - payments: unchanged.
+- **Measurements** at 390/768/1366: no overflow, the payments recovery top, the reports nav height at 390 (expected to drop from about 200px), the print pair checks, and one grouped lint/build/TS run.
+
+## Still open (core, not accepted)
+- **Navigation:** employer controls on the sub-pages, and the same-employer reset scenario.
+- **Root facts:**
+  - deductions, net and overtime figures;
+  - payment and time/leave facts;
+  - stage completion;
+  - per-employee owner routes.
+- **Hard-coded sentences:** the legal and readiness text in inputs, setup and corrections.
+- **Dominant action:** the second `PaymentForm` primary inside history, a corrections case under review showing approve and recalculate together, and the payslip print primary.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Runtime:** real roles and providers, printer output and print authorization, financial transitions, hydrated recovery, keyboard testing on the full parent, and JS-off.
+- **Reference:** full Concept C match is **NOT VISUALLY VERIFIED**.
+- **Closure:** no semantic, register, phase or R0–R8 promotion.

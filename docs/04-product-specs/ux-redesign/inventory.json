@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c905a4aa99df09e75828bbd61f81179372edc2e9",
+  "sourceHead": "314f8748fb86d25ccf2e1791a38d321aa3772891",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -910,7 +910,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/output/page.tsx",
       "phase": "R7",
-      "sha256": "96c7efbf50aaadb258f77745ba01d980ecc51d7ee234915ff6e16b60b3ff90a2"
+      "sha256": "03677b1fa181bf8da87dd2228516d9775811c577b647ceee308c2ca0386f94c7"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
@@ -930,7 +930,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "phase": "R7",
-      "sha256": "78ce9e91208e9a2a3f64908c46dff1b3e77c6188a8eef0900a73f429a91f6ddc"
+      "sha256": "02890dc1466537ca067c530cdfbad3e79103715f164ca6dddc7b5cb66c74c88c"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/payments/recovery.test.mjs",
@@ -975,7 +975,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "phase": "R7",
-      "sha256": "c10205a15973bee1a348dfcd2b09ce016662e8bc7ddfa6ebb59ece4905f9d63f"
+      "sha256": "3513bf4f8d945d2130e8b2d8a0fdf391e830209e8eefc0c815b214ded16655eb"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/print-actions.test.mjs",
@@ -1000,7 +1000,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/reports.module.css",
       "phase": "R7",
-      "sha256": "db83ce2c6781a81166bde8d0412927669e3d00d13c2c78ad35d9e7e64120cdb4"
+      "sha256": "7c32335522d9f923e168843f4ec4046b63f8cbac591eaf7301a517f8df9b7103"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/reports/rules.test.mjs",
@@ -5828,7 +5828,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/payroll/reports/page.tsx:50:10286",
+      "id": "RPC:src/app/tenant/[tenantId]/payroll/reports/page.tsx:50:10366",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 50,
       "phase": "R7",
@@ -15655,7 +15655,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4905",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:34:4981",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 34,
       "tag": "summary",
@@ -15663,7 +15663,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5826",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5902",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 37,
       "tag": "form",
@@ -15671,7 +15671,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5872",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5948",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 37,
       "tag": "input",
@@ -15683,7 +15683,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:5933",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6009",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 37,
       "tag": "input",
@@ -15695,7 +15695,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6015",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6091",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 37,
       "tag": "input",
@@ -15705,7 +15705,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6083",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:37:6159",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 37,
       "tag": "button",
@@ -15713,7 +15713,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7140",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7393",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 41,
       "tag": "summary",
@@ -15721,7 +15721,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7731",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/payments/page.tsx:41:7984",
       "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
       "line": 41,
       "tag": "summary",
@@ -15798,7 +15798,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8174",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8195",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "form",
@@ -15806,7 +15806,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8251",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8272",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "input",
@@ -15818,7 +15818,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8348",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8369",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "input",
@@ -15830,7 +15830,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8430",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8451",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "select",
@@ -15841,7 +15841,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8646",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:8667",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "select",
@@ -15852,7 +15852,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9017",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9038",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "select",
@@ -15863,7 +15863,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9442",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9463",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "summary",
@@ -15871,7 +15871,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9638",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9659",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "input",
@@ -15881,7 +15881,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9716",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/reports/page.tsx:48:9737",
       "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
       "line": 48,
       "tag": "button",

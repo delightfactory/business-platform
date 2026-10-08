@@ -56,3 +56,10 @@
 }
 
 @media screen and (max-width: 900px) { .selector select,.selector input,.workspace form>label input,.selector button,.workspace form>button { min-height: var(--field-height); } }
+
+@media screen {
+ .selector .secondaryAction { background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-control-border); }
+}
+@media screen and (max-width: 600px) {
+ .actions.sectionNav { flex-direction: row; flex-wrap: wrap; align-items: center; }
+}

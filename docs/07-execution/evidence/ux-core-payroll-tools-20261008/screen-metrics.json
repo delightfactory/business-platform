@@ -1,0 +1,2003 @@
+[
+  {
+    "scene": "output-normal",
+    "width": 390,
+    "before": true,
+    "buttons": [],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-normal",
+    "width": 390,
+    "before": false,
+    "buttons": [],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 212,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "إعداد تصحيح مؤرخ مع حفظ الأصل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "تنزيل كشف هذه الصفحة حسب صلاحية التصدير"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 366.2375183105469
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 390,
+    "before": true,
+    "buttons": [],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 390,
+    "before": false,
+    "buttons": [],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "فتح المخرج البديل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 366.2375183105469
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 574.0750122070312
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 574.0750122070312
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 618.875
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "لا توجد دفعات قائمة في المطابقة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 618.875
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "حالة المطابقة المحفوظة غير معروفة؛ راجع المبالغ أدناه",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 967.1124877929688
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 826.3125
+      }
+    ],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 967.1124877929688
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 826.3125
+      }
+    ],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 224,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 799.1312866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 32, 28)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 104,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 800.7312622070312
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 224,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 799.1312866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 104,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 799.1312866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 375,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "output-normal",
+    "width": 768,
+    "before": true,
+    "buttons": [],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-normal",
+    "width": 768,
+    "before": false,
+    "buttons": [],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 100,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "إعداد تصحيح مؤرخ مع حفظ الأصل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "تنزيل كشف هذه الصفحة حسب صلاحية التصدير"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 352.63751220703125
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 768,
+    "before": true,
+    "buttons": [],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 768,
+    "before": false,
+    "buttons": [],
+    "client": 768,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "فتح المخرج البديل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 352.63751220703125
+      }
+    ],
+    "recovery": [],
+    "scroll": 768,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "لا توجد دفعات قائمة في المطابقة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "حالة المطابقة المحفوظة غير معروفة؛ راجع المبالغ أدناه",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 838.7125244140625
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 749.9125366210938
+      }
+    ],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 838.7125244140625
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 749.9125366210938
+      }
+    ],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 610.5687866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 32, 28)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 612.1687622070312
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 610.5687866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 610.5687866210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 753,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "output-normal",
+    "width": 1366,
+    "before": true,
+    "buttons": [],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-normal",
+    "width": 1366,
+    "before": false,
+    "buttons": [],
+    "client": 1366,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "إعداد تصحيح مؤرخ مع حفظ الأصل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "تنزيل كشف هذه الصفحة حسب صلاحية التصدير"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 352.63751220703125
+      }
+    ],
+    "recovery": [],
+    "scroll": 1366,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 1366,
+    "before": true,
+    "buttons": [],
+    "client": 1366,
+    "font": "Cairo, sans-serif",
+    "nav": [],
+    "recovery": [],
+    "scroll": 1366,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "output-superseded",
+    "width": 1366,
+    "before": false,
+    "buttons": [],
+    "client": 1366,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": null,
+            "text": "فتح المخرج البديل"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "مطابقة الدفعات الخارجية"
+          },
+          {
+            "height": 44,
+            "target": null,
+            "text": "العودة إلى مراجعة الرواتب"
+          }
+        ],
+        "name": "أدوات المخرج",
+        "top": 352.63751220703125
+      }
+    ],
+    "recovery": [],
+    "scroll": 1366,
+    "title": [
+      "جهة تجريبية",
+      "موظف تجريبي 0 · TEST-0"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-normal",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "لا توجد دفعات قائمة في المطابقة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-unknownStatus",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": true,
+        "text": "تسجيل الدفعة الخارجية"
+      },
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "حفظ تصحيح القيد"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 568.4750366210938
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "حالة المطابقة المحفوظة غير معروفة؛ راجع المبالغ أدناه",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 804.7125244140625
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 719.9125366210938
+      }
+    ],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "payments-recoveryPaged",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "استعادة نتيجة الدفعة الأصلية"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "إلغاء الطلب إذا لم يُسجّل"
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(59, 70, 65)",
+        "disabled": false,
+        "text": "بحث"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "ملخص المطابقة"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "مطابقة الموظفين"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "سجل الدفعات"
+          }
+        ],
+        "name": "أقسام مطابقة الدفعات",
+        "top": 804.7125244140625
+      }
+    ],
+    "recovery": [
+      {
+        "disabled": false,
+        "top": 719.9125366210938
+      }
+    ],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية",
+      "تم تسجيل جزء من المستحق",
+      "استعادة نتيجة تسجيل الدفعة",
+      "مطابقة الموظفين"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 581.9312744140625
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(23, 32, 28)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 581.9312744140625
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 581.9312744140625
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية"
+    ]
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "color": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "font": "Cairo, sans-serif",
+    "nav": [
+      {
+        "height": 44,
+        "links": [
+          {
+            "height": 44,
+            "target": true,
+            "text": "اختيارات التقرير"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "الإجماليات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "السجلات"
+          },
+          {
+            "height": 44,
+            "target": true,
+            "text": "أدوات التقرير"
+          }
+        ],
+        "name": "أقسام التقرير",
+        "top": 581.9312744140625
+      }
+    ],
+    "recovery": [],
+    "scroll": 1351,
+    "title": [
+      "جهة تجريبية"
+    ]
+  }
+]

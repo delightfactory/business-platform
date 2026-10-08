@@ -1,0 +1,266 @@
+[
+  {
+    "scene": "reports-sheet-ready",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "nav": [
+      {
+        "height": 224,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 375,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "nav": [
+      {
+        "height": 104,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 375,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 390,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "nav": [
+      {
+        "height": 224,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 375,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 390,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 375,
+    "nav": [
+      {
+        "height": 104,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 375,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 753,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 753,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 768,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 753,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 768,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 753,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 753,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 1351,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-ready",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 1351,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 1366,
+    "before": true,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 1351,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  },
+  {
+    "scene": "reports-sheet-unqualified",
+    "width": 1366,
+    "before": false,
+    "buttons": [
+      {
+        "background": "rgb(14, 107, 92)",
+        "disabled": false,
+        "text": "عرض التقرير"
+      }
+    ],
+    "client": 1351,
+    "nav": [
+      {
+        "height": 44,
+        "name": "أقسام التقرير"
+      }
+    ],
+    "scroll": 1351,
+    "selectedLabel": "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦",
+    "selectedOutput": "44444444-4444-4444-8444-444444444444"
+  }
+]

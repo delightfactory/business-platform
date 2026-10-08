@@ -1,0 +1,36 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+The corrected fixture resolves the placeholder issue I raised. The bounded visual direction for the reports selector is confirmed.
+
+**What the two 390px images show:**
+- **Both scenes:** the "النسخة النهائية" select now shows the real period, "١ أكتوبر ٢٠٢٦ — ٣١ أكتوبر ٢٠٢٦", instead of the placeholder. There is no horizontal overflow.
+- **`reports-sheet-ready-390.png`:** "عرض التقرير" is secondary (white with a border). The section nav wraps into two rows.
+- **`reports-sheet-unqualified-390.png`:** the same button stays primary (brand fill), as it should when export is blocked.
+
+**What `corrected-report-metrics.json` shows (12 entries):**
+- **Selection:** every scene at 390/768/1366, before and after, has `selectedOutput` 44444444-4444-4444-8444-444444444444 and the matching period label.
+- **Width:** `scroll` equals `client` everywhere.
+- **Button colour:**
+  - before the change, it is brand (rgb 14,107,92) in both states;
+  - after, it is white when ready and brand when unqualified;
+  - this holds at all three widths.
+- **Nav height:** 224px to 104px at 390, and 44px at 768 and 1366 before and after.
+
+This was a fixture-only correction, so the earlier print evidence still stands: the selector is hidden in print and the print scope is unchanged.
+
+**Still open (not accepted or promoted):**
+- **Reference:** a full Concept C match for these sub-pages is **NOT VISUALLY VERIFIED**. There is no equivalent reference screen.
+- **Navigation:** employer controls on the sub-pages, and the same-employer reset scenario.
+- **Root facts:** deductions, net and overtime figures, payment and time/leave facts, stage completion, and per-employee owner routes.
+- **Hard-coded sentences:** the legal and readiness text in inputs, setup and corrections.
+- **Dominant action:** a corrections case under review can show approve and recalculate together, and `PaymentForm` has a second primary inside history.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Runtime:** real roles and providers, real print authorization and printer output, financial transitions, hydrated recovery, keyboard testing on the full parent, and JS-off.
+- **Closure:** no semantic, register, phase or R0–R8 promotion.

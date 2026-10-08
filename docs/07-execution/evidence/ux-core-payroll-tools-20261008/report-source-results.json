@@ -1,0 +1,317 @@
+{
+  "baseline": "314f8748fb86d25ccf2e1791a38d321aa3772891",
+  "cases": [
+    {
+      "page": "reports",
+      "name": "normal",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "empty",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "reader",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "disabled",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "paged",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "long",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "noSdk",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "noUser",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": "/auth/login?next=%2Ftenant%2F33333333-3333-4333-8333-333333333333%2Fpayroll%2Freports%3Femployer%3D11111111-1111-4111-8111-111111111111%26output%3D44444444-4444-4444-8444-444444444444%26period%3D22222222-2222-4222-8222-222222222222%26report%3Dsheet"
+    },
+    {
+      "page": "reports",
+      "name": "choose",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "failed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "sheet-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "sheet-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "payslip-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "payslip-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "components-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "components-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "statutory-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "statutory-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "variance-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "variance-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "payments-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "payments-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "advances-ready",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "advances-unqualified",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "superseded",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "filters",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "scopeChanged",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": "/tenant/33333333-3333-4333-8333-333333333333/payroll/reports?employer=11111111-1111-4111-8111-111111111111&output=44444444-4444-4444-8444-444444444444&period=22222222-2222-4222-8222-222222222222&report=sheet&scope_changed=1"
+    },
+    {
+      "page": "reports",
+      "name": "stale",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "noOutput",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "dimensionFailed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    },
+    {
+      "page": "reports",
+      "name": "outputFailed",
+      "RPCs": "PASS",
+      "routes": "PASS",
+      "fields": "PASS",
+      "widgetPropsOrder": "PASS",
+      "financialValues": "PASS",
+      "boundary": null
+    }
+  ],
+  "contracts": "financial/recovery/print/export source unchanged; original report CSS preserved, screen-only overrides appended",
+  "scope": "actual page SSR, controlled SDK and financial component boundaries; not real roles/mutations/hydrated recovery/print-provider qualification"
+}

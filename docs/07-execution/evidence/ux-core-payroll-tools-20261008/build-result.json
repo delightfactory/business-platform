@@ -1,0 +1,7 @@
+{
+  "scopedLint": "PASS",
+  "buildExit": 0,
+  "typeScript": "PASS",
+  "scope": "ONE grouped four-page lint/build/TS; 63 actual-page controlled SDK caller cases",
+  "unaffectedSuites": "SQL/Auth/financial/recovery/export reused; no repeated heavy tests"
+}

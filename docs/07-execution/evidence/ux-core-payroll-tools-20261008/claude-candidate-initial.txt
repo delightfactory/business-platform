@@ -1,0 +1,64 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "readOnlyUnchanged": true,
+  "sessionId": "59a34d84-30f4-4b34-8540-863591fc0623"
+}
+
+# R7 result tools and action hierarchy: candidate checkpoint (baseline 314f874)
+
+**No blockers.** The candidate is accepted for source, simplicity and render direction within the tested scope. It is not accepted as a full reference match. I checked it against `candidate.diff` and the images below.
+
+## Source (from `candidate.diff`)
+**Output:**
+- The replacement, correction, export, payments and back links moved into one `<nav aria-label="أدوات المخرج">` under the warning. Their predicates and URLs are unchanged.
+- The replacement link is primary only when superseded, and the payments link is secondary.
+- Export is still a plain `<a>` with `${path}/export?${context}` and the same label, and it is absent when superseded.
+- The 30-item pager stays after the cards.
+- When superseded, the net label reads "صافي الراتب المحفوظ للتاريخ (مخرج مستبدل)". Base, lines, dispositions and keys are unchanged.
+
+**Payments:**
+- The heading checks run in this order: superseded, then `paid`, `partially_paid` and `unpaid`, then a neutral heading for unknown values. These are the only three values the SQL returns (`20261002025507…sql:103`).
+- `unpaid` keeps the accurate existing text, and the `ever_paid` note, figures and `remaining_count` are unchanged.
+- The employee rows became read-only cards inside the same section. The conditional `entry_amount` line, the empty message and the pager are kept.
+- `recoveryOnly`, the main form key, the history forms and their order are unchanged.
+
+**Reports:**
+- `selector(exportReady)` receives exactly the existing export predicate. The no-output branch calls `selector()`, which stays primary.
+- `.selector .secondaryAction` (specificity 0,2,0) overrides the brand-coloured `.selector button` (0,1,1) only on screen.
+- The nav has `actions` plus `sectionNav`. The `.actions.sectionNav` row-wrap applies only on screen, so the footer `.actions` column is unaffected.
+- The CSS changes are additions only, after the original bytes, and no print rule changed.
+- `PrintPayslipButton` is untouched and is already secondary, so payslip mode has no competing primary.
+
+## Visual verdict
+Images inspected: `output-superseded-390`, `payments-unknownStatus-390`, `payments-employee-anchor-390`, `reports-sheet-ready-390`, `reports-sheet-unqualified-390`, `output-normal-1366`, and the reference `concept-c-payroll-light-1366`.
+
+- **Output, superseded at 390:** the alert, then one primary ("فتح المخرج البديل"), a secondary payments link and the back link. The historical net label wraps clearly and dispositions are fully visible.
+- **Output, current at 1366:** the tool row has no primary, and the export is a plain link beside a bordered payments button. That matches the spec, which says a current output has no dominant action. Note that the payments link carries more visual weight than export. That is recorded, not a blocker.
+- **Payments, unknown status at 390:** the neutral heading "حالة المطابقة المحفوظة غير معروفة؛ راجع المبالغ أدناه" sits above the unchanged figures and `ever_paid` note. The nav wraps.
+- **Payments, employee card at 390:** shows payable, recorded and remaining in the card, with the unchanged recording form below.
+- **Reports at 390:**
+  - The selector button is secondary (white) when the report is ready and primary when it is unqualified, which is correct. The local nav wraps in a row.
+  - In both fixtures the "النسخة النهائية" select shows its placeholder. This is fixture fidelity, not a source defect: the source adds selected outputs to the option list (`reports/page.tsx:38`), so the fixture SDK probably didn't return `selected`.
+- **Concept C:** the 1366 reference is the payroll root, with a stepper, figure strip, blockers and a single bottom primary. These pages share its direction of one dominant action, figure groups and cards. There is no equivalent result-tools reference, so a **full reference match is NOT VISUALLY VERIFIED**.
+
+## Simplicity
+- Output tools are now in one place under the warning, rather than split above and below the cards.
+- The reports nav takes 104px at 390 instead of 224px.
+- The payments recovery position is unchanged (826/750/720px).
+- This is a scan and discovery gain with no change to capability. No task-speed claim.
+
+## Still open (core, not promoted)
+- **Navigation:** employer controls on the sub-pages, and the same-employer reset scenario.
+- **Root facts:**
+  - deductions, net and overtime figures;
+  - payment and time/leave facts;
+  - stage completion;
+  - per-employee owner routes.
+- **Hard-coded sentences:** the legal and readiness text in inputs, setup and corrections.
+- **Dominant action:** a corrections case under review can show approve and recalculate together, and the second `PaymentForm` primary inside history.
+- **Runs:** release while a run attempt is unresolved, and recovery precedence.
+- **Runtime:** real roles and providers, real print authorization and printer output, financial transitions, hydrated recovery, keyboard testing on the full parent, and JS-off.
+- **Closure:** no semantic, register, phase or R0–R8 promotion.

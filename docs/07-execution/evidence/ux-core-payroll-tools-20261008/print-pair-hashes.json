@@ -1,0 +1,26 @@
+[
+  {
+    "file": "print-reports-payslip-ready-0-after.png",
+    "sha256": "2beee60fb05442a2de4eb946772863cdb3f38f19d790045a78f94c7ed57ae68c"
+  },
+  {
+    "file": "print-reports-payslip-ready-0-before.png",
+    "sha256": "2beee60fb05442a2de4eb946772863cdb3f38f19d790045a78f94c7ed57ae68c"
+  },
+  {
+    "file": "print-reports-payslip-ready-1-after.png",
+    "sha256": "87dab0b59d35ee733ab426e888e6e7f49257f7a86d1840b1e0b05921eb30e46d"
+  },
+  {
+    "file": "print-reports-payslip-ready-1-before.png",
+    "sha256": "87dab0b59d35ee733ab426e888e6e7f49257f7a86d1840b1e0b05921eb30e46d"
+  },
+  {
+    "file": "print-reports-sheet-ready-0-after.png",
+    "sha256": "f974235471b90b140179cfd58882580a10a681e70da7ce63e767f7d426330649"
+  },
+  {
+    "file": "print-reports-sheet-ready-0-before.png",
+    "sha256": "f974235471b90b140179cfd58882580a10a681e70da7ce63e767f7d426330649"
+  }
+]

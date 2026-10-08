@@ -1,0 +1,231 @@
+{
+  "baseline": "314f8748fb86d25ccf2e1791a38d321aa3772891",
+  "cases": [
+    {
+      "page": "output",
+      "name": "normal",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "empty",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "long",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "reader",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "disabled",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "paged",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "recoveryPaged",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "noSdk",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "noUser",
+      "result": "PASS",
+      "rendered": false,
+      "boundary": "/auth/login?next=%2Ftenant%2F33333333-3333-4333-8333-333333333333%2Fpayroll%2Foutput%3Femployer%3D11111111-1111-4111-8111-111111111111%26output%3D44444444-4444-4444-8444-444444444444"
+    },
+    {
+      "page": "output",
+      "name": "failed",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "output",
+      "name": "superseded",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "normal",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "empty",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "long",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "reader",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "disabled",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "paged",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "recoveryPaged",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "noSdk",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "noUser",
+      "result": "PASS",
+      "rendered": false,
+      "boundary": "/auth/login?next=%2Ftenant%2F33333333-3333-4333-8333-333333333333%2Fpayroll%2Fpayments%3Femployer%3D11111111-1111-4111-8111-111111111111%26period%3D22222222-2222-4222-8222-222222222222%26output%3D44444444-4444-4444-8444-444444444444%26review_view%3Dattention%26review_q%3DTEST%26review_employee%3D44444444-4444-4444-8444-444444444444"
+    },
+    {
+      "page": "payments",
+      "name": "failed",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "superseded",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "paid",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "recovery",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "requestFailed",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "event",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "compensated",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "choose",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "unknownStatus",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "unpaid",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "fullyCorrected",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    },
+    {
+      "page": "payments",
+      "name": "zeroPayable",
+      "result": "PASS",
+      "rendered": true,
+      "boundary": null
+    }
+  ],
+  "scope": "Actual page SSR/controlled SDK and preserved composite boundaries, not real authority/financial transitions/hydrated recovery",
+  "contracts": "unchanged except InputForm anchor id"
+}
