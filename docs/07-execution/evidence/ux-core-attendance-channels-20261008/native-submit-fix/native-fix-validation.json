@@ -1,0 +1,40 @@
+{
+  "baseline": "d69f99cda81744511d60fc2e9954b67b9ac5a362",
+  "submitUnchanged": true,
+  "ssrStates": [
+    {
+      "operation": "save",
+      "beforeNativeGetEnabled": true,
+      "afterPostDisabled": true,
+      "preparationRecoveryVisible": true,
+      "noScriptGuidance": true
+    },
+    {
+      "operation": "map",
+      "beforeNativeGetEnabled": true,
+      "afterPostDisabled": true,
+      "preparationRecoveryVisible": true,
+      "noScriptGuidance": true
+    },
+    {
+      "operation": "reprocess",
+      "beforeNativeGetEnabled": true,
+      "afterPostDisabled": true,
+      "preparationRecoveryVisible": true,
+      "noScriptGuidance": true
+    },
+    {
+      "operation": "review",
+      "beforeNativeGetEnabled": true,
+      "afterPostDisabled": true,
+      "preparationRecoveryVisible": true,
+      "noScriptGuidance": true
+    }
+  ],
+  "hydratedCases": 7,
+  "exactPriorFormData": true,
+  "allPendingDisabled": true,
+  "allReasonsRetained": true,
+  "allFailureStatusFocused": true,
+  "scope": "Actual SSR MutationForm plus actual hydrated SourceForm/Next synthetic delayed-failure action; no real SDK/provider/role mutation; blocked scripts browser next"
+}

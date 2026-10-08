@@ -1,0 +1,28 @@
+# MutationForm pre-hydration repair: approve with three must-fix constraints
+
+The defect is real and needs fixing. `MutationForm` (`ChannelForms.tsx:10`) has no `method` or `action` and starts enabled. If someone submits before hydration, the browser does a native GET to the current page. That puts the reason, coordinates, external keys and validity periods in the URL, history and logs, and the user loses the page context. I don't see a simpler approach that is also safe.
+
+## Why the proposal works
+- **The ready flag is the right tool.** `useSyncExternalStore(noop, () => true, () => false)` renders `false` on the server and during hydration, then `true` straight after, without a hydration mismatch. Forms mounted by client-side navigation are `true` from the start, so they don't flash disabled. A `useEffect` flag would cause that flash, and a `typeof window` check would cause a mismatch.
+- **The disabled outer fieldset blocks every native path.** The submit button and all inputs are disabled, so pressing Enter can't submit either. The nested SourceForm fieldsets and their legends are inside it, and the "first legend" exception doesn't apply because the outer fieldset has no legend. Nobody can type before hydration, so no input can be lost.
+- **`method="post"` is a reasonable backup.** It has no effect once hydrated because of `preventDefault`. If a future control slipped past the disabling, the data would go in a POST body to the page, not the URL. Keep it as a backup only, not as the main protection.
+- **The `!ready` check in the handler** can't actually run before hydration, because the handler isn't attached yet. It's harmless.
+
+## Must-fix constraints
+1. **Derive the preparing text from `ready`.** Don't put it in `useState(message)`. The status and button should show the preparing text only while `!ready`. Once ready, the status falls back to `message`, which starts empty, and the button shows the normal `label`, or the busy text while saving. Otherwise the "preparing" text would stay after hydration and be false.
+2. **The preparing text needs a way out.** If a script chunk fails to load, JavaScript is on so `<noscript>` never shows, and the forms stay disabled forever. Add something like "إذا استمر ذلك، أعد تحميل الصفحة" ("If this continues, reload the page"). That avoids both a dead end and a disabled control with no explanation.
+3. **Keep `<noscript>` outside the fieldset and the status paragraph.** It must not say anything was saved. Several copies on the detail page are acceptable because most sit inside closed `<details>`.
+
+Everything else must stay exactly as it is: capturing the form data before disabling, the UTC conversion, the flight lock, `mutateChannel` and its permission checks, the routes after success, and the failure, value and focus logic.
+
+## Runtime checks still needed (this is a review of the proposal, not acceptance)
+1. **Before/after server-rendered HTML:** the fieldset is disabled, `method="post"` is present, and the preparing and reload text appears.
+2. **Real browser with slowed hydration:**
+   - Pressing Enter or clicking submit before hydration doesn't change the URL and doesn't send a request.
+   - After hydration the controls are enabled and the preparing text is gone.
+   - A form opened by client-side navigation is ready immediately.
+3. **Blocked script chunk:** the form stays disabled and the reload text is visible.
+4. **JavaScript off:** the `<noscript>` text shows and the URL never changes.
+5. **Re-run the seven FormData checks**, and confirm the busy state still disables the controls.
+
+Real roles, providers, the full parent flow, the rendered reference review and the build gates are all still open.

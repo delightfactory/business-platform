@@ -1,0 +1,211 @@
+{
+  "oldItems": 1694,
+  "newItems": 1694,
+  "migrations": [
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:10:1544",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1758",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:10:1657",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:14:1901",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:2851",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3278",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:2905",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3332",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:2959",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3386",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:3013",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3440",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:3074",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3501",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:3179",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3606",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:17:3371",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:3798",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:19:3698",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4125",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:19:3809",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:4236",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:3992",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4419",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:20:4273",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:24:4700",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:4386",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:4813",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:21:4646",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:5073",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:22:4778",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:26:5205",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:5182",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5609",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:5503",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:5930",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:5918",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6345",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:23:6144",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:27:6571",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:25:6700",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:29:7127",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:7637",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8064",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:7753",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8180",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:7957",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8384",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:8268",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8695",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:8533",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:8960",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:8781",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9208",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:8972",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9399",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:9039",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9466",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:34:9310",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:38:9737",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:36:9870",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10297",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:36:10045",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10472",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:36:10154",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10581",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    },
+    {
+      "from": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:36:10391",
+      "to": "CONTROL:src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx:40:10818",
+      "category": "formControls",
+      "reason": "same structural input contract, native readiness source positions shifted"
+    }
+  ],
+  "existingReviewStatesPreserved": true
+}

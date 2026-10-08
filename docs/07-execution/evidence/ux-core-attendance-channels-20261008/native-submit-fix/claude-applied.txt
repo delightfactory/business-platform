@@ -1,0 +1,25 @@
+# Native-submit repair: source accepted, no must-fix in this scope
+
+I read `ChannelForms.tsx` (lines 1–14), the two JSON files and the 390px screenshot. I ran nothing and changed nothing.
+
+## Source matches the approved proposal
+- **Readiness flag:** `subscribeToReadiness`, `clientReady` and `serverReady` are stable module-level functions (`:7-9`). `useSyncExternalStore` is used correctly (`:11`), so the server and hydration render `false`, then the client renders `true` with no mismatch.
+- **Native backstop:** the outer fieldset is `disabled={!ready||busy}`, the form has `method="post"`, and `aria-busy` covers both states (`:14`). Before hydration every control is unreachable, Enter included.
+- **Preparing text:** both the button and status text depend on `ready`, not on `message` state. They can't stay after hydration, and the status text includes the reload instruction.
+- **`<noscript>`** sits outside the fieldset and the status paragraph, and it doesn't claim anything was saved.
+- **`submit` is unchanged:** it still captures form data before disabling, converts to UTC, keeps the flight lock, uses the same authority, routes and failure/focus logic. Leaving out the `!ready` guard is correct, because the handler can't run before hydration.
+
+## Evidence
+- **`native-fix-validation.json`:** all four operations go from enabled GET before the fix to disabled POST after. The seven hydrated cases match the earlier FormData exactly, and the pending, value-retention and focus results hold.
+- **`blocked-script-browser.json`:** with scripts removed, every control is disabled, the method is POST and the URL didn't change after Enter. Its scope note correctly says this is not a JS-off or client-navigation test.
+- **Gap:** "proxy POST 0" doesn't appear in this file. It only proves the URL stayed the same. Record the POST count in the artifact, or don't cite it.
+- **Screenshot:** the preparing text and reload instruction are visible and readable at 390px. The controls are greyed out and the existing values still show.
+
+## Still open (not part of accepting this repair)
+- Testing with JavaScript turned off in the browser itself, and checking that a form opened by client-side navigation is ready immediately.
+- The next grouped build.
+- Real provider, SDK, role and auth checks.
+- The full channel parent and reference review.
+- The blue outline around the status in the screenshot may be a focus ring or the box's own styling; check it during visual review.
+
+**Full channel: NOT VISUALLY VERIFIED.** One partial pre-hydration screenshot doesn't show it matches Concept C. This accepts the source for this narrow privacy and native-submit repair only. It isn't a runtime or phase acceptance.

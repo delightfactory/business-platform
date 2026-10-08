@@ -1,13 +1,17 @@
 'use client';
 import styles from '../attendance-channels.module.css';
-import { useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { mutateChannel } from './actions';
 import type { Mapping, Options, Source } from './shared';
+const subscribeToReadiness = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
 function MutationForm({tenantId,operation,children,label,created=false}:{tenantId:string;operation:'save'|'map'|'reprocess'|'review';children:ReactNode;label:string;created?:boolean}) {
+  const ready=useSyncExternalStore(subscribeToReadiness,clientReady,serverReady);
   const [busy,setBusy]=useState(false),[message,setMessage]=useState('');const flight=useRef(false),status=useRef<HTMLParagraphElement>(null);const router=useRouter();
   async function submit(event:FormEvent<HTMLFormElement>) {event.preventDefault();if(flight.current) return;const data=new FormData(event.currentTarget);if(operation==='map') {for(const key of ['valid_from','valid_until']) {const value=String(data.get(key)??'');if(value && !/Z$|[+-]\d{2}:\d{2}$/.test(value)) {const date=new Date(value+'Z');if(Number.isFinite(date.getTime())) data.set(key,date.toISOString());}}}flight.current=true;setBusy(true);setMessage('جارٍ حفظ الإجراء…');try {const result=await mutateChannel(tenantId,operation,data);setMessage(result.message);if(result.ok) {if(created && result.id) router.push(`/tenant/${tenantId}/attendance/sources/${result.id}`);else router.refresh();}} catch {setMessage('لم يتأكد حفظ الإجراء. بقيت القيم؛ تحقق من السجل قبل إعادة المحاولة.');} finally {flight.current=false;setBusy(false);requestAnimationFrame(()=>status.current?.focus());}}
-  return <form className="auth-form channel-form" onSubmit={submit} aria-busy={busy}><fieldset disabled={busy}>{children}<button className="primary-button" type="submit">{busy?'جارٍ الحفظ…':label}</button></fieldset><p className="channel-outcome" role="status" aria-live="polite" tabIndex={-1} ref={status}>{message}</p></form>;
+  return <form className="auth-form channel-form" method="post" onSubmit={submit} aria-busy={!ready||busy}><fieldset disabled={!ready||busy}>{children}<button className="primary-button" type="submit">{!ready?'جارٍ تجهيز النموذج…':busy?'جارٍ الحفظ…':label}</button></fieldset><p className="channel-outcome" role="status" aria-live="polite" tabIndex={-1} ref={status}>{!ready?'جارٍ تجهيز النموذج. إذا استمر ذلك، أعد تحميل الصفحة.':message}</p><noscript><p>يلزم تفعيل JavaScript لإرسال هذا النموذج، ثم إعادة تحميل الصفحة.</p></noscript></form>;
 }
 const numericFields:Array<[string,string,number,number]>=[['latitude','خط العرض',-90,90],['longitude','خط الطول',-180,180],['radius_m','نصف قطر النطاق بالمتر',10,10000],['tolerance_m','هامش السماح بالمتر',0,500],['max_accuracy_m','أقصى خطأ مسموح للموقع بالمتر',1,500],['max_age_seconds','أقصى عمر لدليل الموقع بالثانية',5,600]];
 export function SourceForm({tenantId,source,options,disableOnly=false}:{tenantId:string;source?:Source;options:Options;disableOnly?:boolean}) {

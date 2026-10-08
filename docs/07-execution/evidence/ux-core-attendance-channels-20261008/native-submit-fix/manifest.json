@@ -1,0 +1,70 @@
+{
+  "baseline": "d69f99cda81744511d60fc2e9954b67b9ac5a362",
+  "acceptance": "Bounded source repair accepted; full channel visual/runtime/next grouped build OPEN",
+  "source": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "sha256": "fac5a950866cc0d773678bd274d369e01db8f3e569d7cf17c2051b36b4b47c58",
+      "normalization": "LF"
+    },
+    {
+      "file": "docs/04-product-specs/ux-redesign/attendance-channels-core-spec.md",
+      "sha256": "98305d3d34a2c5e5db97a6fec3bf6e5595bfa8654ae51751193662c16b911f29",
+      "normalization": "LF"
+    }
+  ],
+  "files": [
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/blocked-script-browser.json",
+      "sha256": "28554f89d6e3aecbf57caea1fac50900dc48edf7424045e3d99925f42c281bfe"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/blocked-script-proxy.cjs",
+      "sha256": "6f305ac374162880023779b142d2578260decc1f068e27680ba8541f17633041"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/blocked-script-request-counts.json",
+      "sha256": "2d11d09f30d4e821f53692f1c02f6bb4da53a439d24946f7fdf4d113dddbf168"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/blocked-status-390.png",
+      "sha256": "12cbad2dedc9a65d989d2dede581d91365c2eebc62dd959cac0380e59c667481"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/claude-applied-audit.json",
+      "sha256": "61dab03f78037347816b6686b5899261378c1ee798ca717173ac29d2a0d4f41f"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/claude-applied.txt",
+      "sha256": "1802181fb4f51efdc7574ac0638ed7887b71b418f383e0dd0413b2b498bc38e9"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/claude-proposal-audit.json",
+      "sha256": "61dab03f78037347816b6686b5899261378c1ee798ca717173ac29d2a0d4f41f"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/claude-proposal.txt",
+      "sha256": "7454a40ad134f5d1ab74f07332e6b87a4f3a6990806150595f7101be36cd71e0"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/inventory-migration.json",
+      "sha256": "a9b57c2eef79a67f762a062ec71eda6e9aac2fb10d9eaec891db2ddac571a1a2"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/native-fix-runtime-evidence.json",
+      "sha256": "cb57cfb667ff5c98b298ce5e834f806c15fee3f69d74a137416077bbfc3f0a3b"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/native-fix-validation.json",
+      "sha256": "7f61333f34dfb731816a322e98b65cfb102636f9d12d7dea9026d3245b839103"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/qualification.md",
+      "sha256": "7cf04c777da93c3be8ee4886db4d1f9d06ac1e8b3c4576785461551679f49c8d"
+    },
+    {
+      "file": "docs/07-execution/evidence/ux-core-attendance-channels-20261008/native-submit-fix/verify-native-fix.cjs",
+      "sha256": "41f7b57d7cc063aac306043a82d93007c10a6e58e1900a0c5fc31a7f09af7cab"
+    }
+  ]
+}

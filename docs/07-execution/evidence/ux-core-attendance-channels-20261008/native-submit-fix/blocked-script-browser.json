@@ -1,0 +1,16 @@
+{
+  "before": {
+    "allDisabled": true,
+    "method": "post",
+    "scripts": 0,
+    "status": "جارٍ تجهيز النموذج. إذا استمر ذلك، أعد تحميل الصفحة.",
+    "url": "http://127.0.0.1:3591/"
+  },
+  "after": {
+    "allDisabled": true,
+    "busy": "true",
+    "status": "جارٍ تجهيز النموذج. إذا استمر ذلك، أعد تحميل الصفحة.",
+    "url": "http://127.0.0.1:3591/"
+  },
+  "scope": "Actual Next SSR HTML with script elements removed by local GET-only proxy. Enter on document body; disabled input/button cannot be focused. Not browser-global JavaScript-off nor client-side transition qualification."
+}
