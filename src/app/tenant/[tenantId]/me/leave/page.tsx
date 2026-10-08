@@ -91,7 +91,8 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
       && <p className="form-message" role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</p>}
     {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
 
-    <section className="workspace-records-panel" aria-labelledby="leave-balances-title">
+    <div className={styles.overviewGrid}>
+    <section className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-balances-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-balances-title">أرصدة الإجازات</h2>
         <p>الرصيد المسجّل لكل نوع إجازة وفترة إجازات. لا يشمل الرصيد أي طلب معلق قبل اعتماده.</p>
@@ -104,10 +105,10 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
             : balances && balances.length === 0 ? <div className="empty-state"><h2>لا توجد أرصدة مسجّلة لك بعد</h2>
               <p>لا يوجد رصيد مسجّل لأي نوع إجازة حتى الآن. تظهر الأرصدة المسجّلة هنا فور حفظها لدى الشركة.</p></div>
             : balances ? <>
-              <ul className="record-list">{balances.map((balance) => <li className="record-card" key={`${balance.leave_type_id}-${balance.period_id}`}>
+              <ul className={styles.overviewList}>{balances.map((balance) => <li className="record-card" key={`${balance.leave_type_id}-${balance.period_id}`}>
                 <div className="record-main">
                   <div className="record-title-row"><h3>{balance.type_name}</h3>
-                    <span className="entity-status is-active">{formatDays(balance.balance_days)} يوم</span></div>
+                    <span className={styles.balanceValue}><bdi>{formatDays(balance.balance_days)}</bdi> يوم</span></div>
                   <p className="record-meta">فترة الإجازات: <bdi>{balance.period_label}</bdi></p>
                   <p className="record-meta">تبدأ في <bdi>{balance.starts_on}</bdi></p>
                 </div>
@@ -117,13 +118,13 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                 <span className={styles.paginationNav}>
                   {balancePage.value > 1 && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, balancePage.value - 1)}>السابق</PendingLink>}
                   {balancesPayload?.hasMore && balancePage.value < MAX_PAGE
-                    && <PendingLink className="primary-button" href={pageHref(tenantId, requestPage.value, balancePage.value + 1)}>التالي</PendingLink>}
+                    && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, balancePage.value + 1)}>التالي</PendingLink>}
                 </span>
               </nav>
             </> : null}
     </section>
 
-    <section className="workspace-records-panel" aria-labelledby="leave-history-title">
+    <section className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-history-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-history-title">سجل طلبات الإجازة</h2>
         <p>كل الطلبات المسجّلة باسمك مع حالتها. الحالة «مُقدَّم» تعني بانتظار قرار الموارد البشرية.</p>
@@ -134,10 +135,9 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
           <p>تعذر التحقق من أحدث حالات طلباتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
           : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
-            <p>{canRequest ? 'أرسل أول طلب إجازة ليظهر هنا مع حالته.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p>
-            {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}</div>
+            <p>{canRequest ? 'ابدأ من «طلب إجازة جديد» أعلى الصفحة. سيظهر طلبك هنا مع حالته بعد إرساله.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p></div>
             : requests ? <>
-              <ul className="record-list">{requests.map((request) => <li className="record-card" key={request.id}>
+              <ul className={styles.overviewList}>{requests.map((request) => <li className="record-card" key={request.id}>
                 <div className="record-main">
                   <div className="record-title-row"><h3>{request.leave_type_name}</h3>
                     <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span></div>
@@ -154,11 +154,12 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                 <span className={styles.paginationNav}>
                   {requestPage.value > 1 && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value - 1, balancePage.value)}>السابق</PendingLink>}
                   {requestsPayload?.hasMore && requestPage.value < MAX_PAGE
-                    && <PendingLink className="primary-button" href={pageHref(tenantId, requestPage.value + 1, balancePage.value)}>التالي</PendingLink>}
+                    && <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value + 1, balancePage.value)}>التالي</PendingLink>}
                 </span>
               </nav>
             </> : null}
     </section>
+    </div>
     <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
   </PageFrame>;
 }

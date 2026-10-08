@@ -1,0 +1,19 @@
+**Visual verdict: MATCH WITH ACCEPTED DEVIATIONS** for the responsive content batch at 390 and 768. I read all 10 viewport images.
+
+- **Layout:** full width with nothing clipped. Panels stack at 390 and 768, and RTL alignment is correct.
+- **Primary actions:** one filled create button in the normal, empty, paging, partial and negative states. Read-only has none and shows a clear notice.
+- **Empty states:** they point back to the create button at the top instead of repeating it.
+- **Partial failure:** balances stay in place and the requests panel offers retry.
+- **Paging:** "التالي" is visibly secondary.
+- **Focus:** the 2px ring is visible on the create button.
+- **Negative balance:** it shows in the neutral style.
+- **Data:** the real per-type/per-period balances and business text are kept, which is the accepted deviation from the reference.
+
+**Must-fix:** none.
+
+**Non-blocking:**
+- The negative balance shows as "2.5-". Wrapping the number in an LTR `<bdi>` would make the sign unambiguous.
+- The empty-state headings are large and wrap.
+- The sent-at time uses Arabic-Indic digits while the dates use Latin digits.
+
+**Limitations:** I only saw what each viewport shows, not content further down. Production parent shell, hydrated actions, the real provider, dark mode and full R6 remain unverified. D16 stays deferred.

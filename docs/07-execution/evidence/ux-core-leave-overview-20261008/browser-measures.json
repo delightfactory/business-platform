@@ -1,0 +1,279 @@
+{
+  "browser": "Codex In-app Browser",
+  "version": "unavailable through exposed DOM API",
+  "samples": [
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 40.97500228881836,
+          "top": 192.40000915527344,
+          "width": 1036.050048828125
+        },
+        {
+          "left": 40.97500228881836,
+          "top": 504.1937561035156,
+          "width": 1036.050048828125
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — before — normal",
+      "width": 1366
+    },
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 569,
+          "top": 192.40000915527344,
+          "width": 508.0249938964844
+        },
+        {
+          "left": 40.97500228881836,
+          "top": 192.40000915527344,
+          "width": 508.0249938964844
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — after — normal",
+      "width": 1366
+    },
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 23.037500381469727,
+          "top": 159.1999969482422,
+          "width": 721.9249877929688
+        },
+        {
+          "left": 23.037500381469727,
+          "top": 470.9937438964844,
+          "width": 721.9249877929688
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — before — normal",
+      "width": 768
+    },
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 23.037500381469727,
+          "top": 159.1999969482422,
+          "width": 721.9249877929688
+        },
+        {
+          "left": 23.037500381469727,
+          "top": 458.9937438964844,
+          "width": 721.9249877929688
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — after — normal",
+      "width": 768
+    },
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 16,
+          "top": 244.8000030517578,
+          "width": 358
+        },
+        {
+          "left": 16,
+          "top": 576.7875366210938,
+          "width": 358
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — before — normal",
+      "width": 390
+    },
+    {
+      "font": "Cairo, sans-serif",
+      "overflow": false,
+      "panels": [
+        {
+          "left": 16,
+          "top": 244.8000030517578,
+          "width": 358
+        },
+        {
+          "left": 16,
+          "top": 564.7875366210938,
+          "width": 358
+        }
+      ],
+      "primary": 1,
+      "title": "إجازاتي — after — normal",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 2,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — before — empty",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — after — empty",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 3,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "التالي"
+        },
+        {
+          "height": 44,
+          "text": "فتح الطلب"
+        },
+        {
+          "height": 44,
+          "text": "التالي"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — before — paging",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "التالي"
+        },
+        {
+          "height": 44,
+          "text": "فتح الطلب"
+        },
+        {
+          "height": 44,
+          "text": "التالي"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — after — paging",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "إعادة المحاولة"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — after — partial",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 1,
+      "targets": [
+        {
+          "height": 44,
+          "text": "طلب إجازة جديد"
+        },
+        {
+          "height": 44,
+          "text": "فتح الطلب"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — after — negative",
+      "width": 390
+    },
+    {
+      "fonts": "loaded",
+      "overflow": false,
+      "primary": 0,
+      "targets": [
+        {
+          "height": 44,
+          "text": "فتح الطلب"
+        },
+        {
+          "height": 44,
+          "text": "العودة إلى مساحة الشركة"
+        }
+      ],
+      "title": "إجازاتي — after — readonly",
+      "width": 390
+    },
+    {
+      "focus": "طلب إجازة جديد",
+      "outline": "rgb(11, 114, 217) solid 2px"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "9f975dc5a9f52a053c85e114eae9a17d4c4f698d",
+  "sourceHead": "97ed87a899362a123f3c04f197918d634dcbd92c",
   "files": [
     {
       "file": "src/app/auth/actions.ts",
@@ -725,7 +725,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
       "phase": "R6",
-      "sha256": "ac130ceb7c1d6a16fd31c783c4d318e34b48105e4c428305de7c802294d6c95a"
+      "sha256": "4d6f1b8fdcc02fe04ab2db17bceee6ca18e3e7fe043aadc606b3f0ace28c08ad"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
@@ -745,7 +745,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
       "phase": "R6",
-      "sha256": "4a728c1959d233fb58964fbbee04a2489b8aba9d86a94522e1a52c84fd848f10"
+      "sha256": "681a75a6f8819382e15749852b9810a894b07b9e32831806ba8f492308dcd415"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/pending-link.tsx",

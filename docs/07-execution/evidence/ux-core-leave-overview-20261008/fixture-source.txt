@@ -1,0 +1,31 @@
+const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert/strict');
+const {runtime,id,detail}=require('./runtime.cjs');
+const repo='C:/Users/DELL/Documents/Codex/2026-10-07/business-platform-ux-auth-recovery';
+const read=p=>fs.readFileSync(path.join(repo,p),'utf8');
+const balance={leave_type_id:id,period_id:id,type_name:'الإجازة السنوية',period_label:'فترة تجريبية 2026',starts_on:'2026-01-01',balance_days:14.5};
+const request={...detail,leave_type_name:'الإجازة السنوية',start_date:'2026-10-10',end_date:'2026-10-12',total_units:3};
+const font=[400,600,700].map(w=>read(`node_modules/@fontsource/cairo/${w}.css`).replaceAll('./files/','/fonts/')).join('\n');
+const shared=read('src/styles/tokens.css')+read('src/app/globals.css').replace(/^@import[^;]+;/gm,'')+read('src/app/workspace.css');
+const pages={},checks=[];
+const scenarios={normal:{canRequest:true,balances:[balance],requests:[request]},empty:{canRequest:true},readonly:{balances:[balance],requests:[request]},negative:{canRequest:true,balances:[{...balance,balance_days:-2.5}],requests:[request]},partial:{canRequest:true,balances:[balance],requests:[request],fail:'leave_my_requests'},balanceFailure:{canRequest:true,balances:[balance],requests:[request],fail:'leave_my_balances'},paging:{canRequest:true,dataByRpc:{leave_my_balances:{items:[balance],has_more:true},leave_my_requests:{items:[request],has_more:true}}}};
+(async()=>{
+ for(const [state,cfg] of Object.entries(scenarios)){
+  const before=runtime(cfg,true),after=runtime(cfg),old=await before.page('list'),now=await after.page('list');assert.deepEqual(after.calls,before.calls);
+  const links=h=>[...h.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual([...new Set(links(now))],[...new Set(links(old))]);
+  assert.equal((now.match(/class="primary-button"/g)||[]).length,cfg.canRequest?1:0);
+  if(state==='negative'){assert(now.includes('-٢٫٥')||now.includes('-2.5')||now.includes('؜-٢٫٥'));assert(!now.includes('entity-status is-active'));}
+  checks.push({state,result:'PASS',rpcCallsAndUniqueDestinationsUnchanged:true});
+  for(const [version,html] of [['before',old],['after',now]]){
+   const css=fs.readFileSync(path.join(__dirname,version==='before'?'before.css':'candidate.css'),'utf8').replace(/:global\(([^)]+)\)/g,'$1');
+   pages[`/${version}/${state}`]=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>إجازاتي — ${version} — ${state}</title><style>${font}${shared}${css}</style><body><div class="workspace-frame tenant-area"><aside class="workspace-navigation" aria-label="سياق تجريبي"><div class="workspace-sidebar"><p>شركة تجريبية</p><p>مساحة الشركة</p></div></aside><div class="workspace-content">${html}</div></div></body></html>`;
+  }
+ }
+ for(const state of ['draft','submitted','approved','rejected','withdrawn','cancelled','superseded']){
+  const cfg={canRequest:true,balances:[balance],requests:[{...request,state}]},a=runtime(cfg,true),b=runtime(cfg);await a.page('list');const html=await b.page('list');assert.deepEqual(a.calls,b.calls);assert(html.includes(`/me/leave/${id}`));checks.push({state,result:'PASS',requestStillAccessible:true});
+ }
+ const a=runtime(scenarios.paging,true),b=runtime(scenarios.paging);const old=await a.page('list',{page:'2',bal:'3'}),now=await b.page('list',{page:'2',bal:'3'});assert.deepEqual(a.calls,b.calls);assert(now.includes('page=2&amp;bal=4'));assert(now.includes('page=3&amp;bal=3'));
+ checks.push({state:'independent-pagination',result:'PASS'});
+ fs.writeFileSync(path.join(__dirname,'focused-results.json'),JSON.stringify({passed:checks.length,checks,boundary:'Actual async page with controlled read-only SDK and link/PageFrame rendering adapters. Not provider/authorization/action/hydration qualification.'},null,2)+'\n');
+ const server=http.createServer((req,res)=>{if(req.method!=='GET'){res.writeHead(405);return res.end();}if(pages[req.url]){res.setHeader('Content-Type','text/html;charset=utf-8');return res.end(pages[req.url]);}if(req.url==='/reference'){res.setHeader('Content-Type','text/html;charset=utf-8');return res.end(read('docs/07-execution/evidence/ux-redesign-proposal-20261007/ux-concept-c.html'));}if(/^\/fonts\/[a-z0-9-]+\.woff2?$/.test(req.url)){const p=path.join(repo,'node_modules/@fontsource/cairo/files',path.basename(req.url));if(fs.existsSync(p))return fs.createReadStream(p).pipe(res);}res.writeHead(404);res.end();});
+ server.listen(3577,'127.0.0.1',()=>console.log(JSON.stringify({passed:checks.length,fixture:'GET-only synthetic 127.0.0.1:3577',pid:process.pid})));
+})().catch(e=>{console.error(e.stack);process.exitCode=1});

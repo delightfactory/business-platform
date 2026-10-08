@@ -1,0 +1,80 @@
+{
+  "passed": 15,
+  "checks": [
+    {
+      "state": "normal",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "empty",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "readonly",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "negative",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "partial",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "balanceFailure",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "paging",
+      "result": "PASS",
+      "rpcCallsAndUniqueDestinationsUnchanged": true
+    },
+    {
+      "state": "draft",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "submitted",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "approved",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "rejected",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "withdrawn",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "cancelled",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "superseded",
+      "result": "PASS",
+      "requestStillAccessible": true
+    },
+    {
+      "state": "independent-pagination",
+      "result": "PASS"
+    }
+  ],
+  "boundary": "Actual async page with controlled read-only SDK and link/PageFrame rendering adapters. Not provider/authorization/action/hydration qualification."
+}

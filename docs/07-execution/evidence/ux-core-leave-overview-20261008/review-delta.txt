@@ -1,0 +1,12 @@
+Read-only review delta; same code candidate, NO code changes since your review. Your capture finding was correct: fullPage screenshot API generated narrow clips offset on RTL. Replaced evidence with viewport screenshots (normal getScreenshot), independently inspected correct full-width mobile. Please actually Read the corrected JPGs below, not prior after-normal-* cropped captures. Root prefix C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-core-leave-overview-20261008/
+viewport-reference-390.jpg
+viewport-reference-768.jpg
+viewport-normal-390.jpg
+viewport-normal-768.jpg
+viewport-partial-390.jpg
+viewport-focus-390.jpg
+viewport-empty-390.jpg
+viewport-paging-390.jpg
+viewport-negative-390.jpg
+viewport-readonly-390.jpg
+You can combine Read calls in one turn. Screenshots show viewport only; lower page content beyond viewport not claimed inspected. Same preserved source contracts/Cairo/8radius40desktop44mobile; content presentation-only verdict, production parent/hydrated/provider/dark/full R6 remain unqualified. Return final explicit visual verdict for responsive content batch, must-fix if any, limitations. Under150words. D16 stays deferred.

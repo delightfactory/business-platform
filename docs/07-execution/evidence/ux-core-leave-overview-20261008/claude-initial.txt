@@ -1,0 +1,26 @@
+**Images I read:** reference-1366, after-normal-1366, reference-390, after-normal-390, after-partial-390, after-focus-390, and after-normal-768 for a cross-check. I also read browser-measures.json.
+
+**Verdict:**
+- **1366 desktop:** MATCH WITH ACCEPTED DEVIATIONS.
+  - Balances sit on the right (the RTL start side) and requests on the left, as two equal panels (508px each).
+  - Rows are flat and the status pill matches the reference style.
+  - There is one filled primary button, "طلب إجازة جديد". The open-request button, the "back to company workspace" button and the pager text are visibly secondary.
+  - The real per-type/per-period balance and the full-history list replace the reference's annual 21 days, quota bar and current-year list. That is the accepted contract deviation.
+- **390 and 768:** NOT VISUALLY VERIFIED. Every 390 and 768 capture cuts off the right side, so the title, the panel headings and the create button are hidden. reference-390 is cut off the same way, which points to the capture tool rather than the CSS. The DOM numbers say there is no overflow and panels sit at left 16, width 358, but the pictures don't show that.
+
+**Must-fix (evidence only, no code change):** Re-capture 390 and 768 so the full width is visible, including the start edge, for the normal, partial, focus, empty, paging, negative and read-only states. Mobile acceptance should wait for those.
+
+**Non-blocking notes:**
+- On desktop the create button lines up with the subtitle, not the title.
+- The sent-at time uses Arabic-Indic digits while the date ranges use Latin digits. This looks like it comes from the existing formatter, so leave it unless that's confirmed otherwise.
+
+**What I could see in the narrow shots:**
+- Partial failure: the balances stay in place, and the requests error shows an outlined retry button with a first-page fallback, so the next step is clear.
+- Focus: a blue 2px ring is partly visible on the cut-off create button. The JSON records rgb(11,114,217) solid 2px.
+
+**Limitations:**
+- The per-state primary counts (empty 2→1, paging 3→1, default 1, read-only 0) and the 44px targets come from DOM measurements. I did not confirm them visually.
+- The browser version is unknown. Dark mode, the real provider/SDK, hydrated end-to-end actions, the production sidebar/parent shell, and screen-reader order were not checked.
+- None of this closes R6.
+
+**Next step for the core plan:** Fix the screenshot capture and re-run this review on 390/768 only. If those pass, accept the batch and move to the next core R6a surface. Keep D2/D3, D8 and D16 deferred as planned.
