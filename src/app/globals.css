@@ -402,7 +402,7 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .tenant-branding-strip { display: flex; align-items: center; gap: .65rem; width: fit-content; max-width: 100%; margin: .8rem auto 0; padding: .4rem .8rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface); color: var(--color-brand-text); font-weight: 700; }
 .tenant-branding-strip bdi { min-width: 0; overflow-wrap: anywhere; }
 .tenant-branding-strip img { width: 2.25rem; height: 2.25rem; border-radius: .5rem; object-fit: contain; }
-.tenant-branding-mark, .branding-preview-mark { display: grid; flex: 0 0 2.25rem; width: 2.25rem; height: 2.25rem; place-items: center; border-radius: .6rem; background: var(--color-brand); color: white; }
+.tenant-branding-mark, .branding-preview-mark { display: grid; flex: 0 0 2.25rem; width: 2.25rem; height: 2.25rem; place-items: center; border-radius: .6rem; background: var(--color-brand); color: var(--color-on-brand); }
 .branding-editor-layout { display: grid; gap: 1.25rem; }
 .branding-preview { padding: 1rem; border: 1px solid var(--color-border); border-radius: .85rem; background: var(--surface-subtle); }
 .branding-preview-card { display: flex; align-items: center; gap: .85rem; min-height: 5rem; padding: 1rem; border: 1px solid var(--color-border); border-inline-start: .35rem solid var(--color-brand); border-radius: .75rem; background: var(--surface-base); }

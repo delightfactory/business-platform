@@ -3,15 +3,10 @@ import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState, useTransition, type CSSProperties, type FormEvent } from 'react';
+import { useEffect, useRef, useState, useTransition, type FormEvent } from 'react';
 import { saveTenantBrandingFormAction } from './actions';
 
-const colors = {
-  teal: '#126b68',
-  blue: '#2563eb',
-  violet: '#7c3aed',
-  emerald: '#047857',
-} as const;
+type BrandColor = 'teal' | 'blue' | 'violet' | 'emerald';
 
 export function BrandingEditor({
   tenantId,
@@ -25,7 +20,7 @@ export function BrandingEditor({
   tenantId: string;
   initialName: string;
   baseName: string;
-  colorKey: keyof typeof colors;
+  colorKey: BrandColor;
   logoUrl: string | null;
   hasStoredLogo: boolean;
   canManage: boolean;
@@ -33,7 +28,7 @@ export function BrandingEditor({
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
   const [name, setName] = useState(initialName);
-  const [color, setColor] = useState<keyof typeof colors>(colorKey);
+  const [color, setColor] = useState<BrandColor>(colorKey);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [removeLogo, setRemoveLogo] = useState(false);
@@ -41,7 +36,6 @@ export function BrandingEditor({
   const [error, setError] = useState('');
   const [pending, startTransition] = useTransition();
   const fileInput = useRef<HTMLInputElement>(null);
-  const previewStyle = { '--color-brand': colors[color] } as CSSProperties;
 
   useEffect(() => () => {
     if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -67,7 +61,7 @@ export function BrandingEditor({
   const showOffline0 = offline && canManage && !pending;
  return (
     <div className="branding-editor-layout">
-      <section className="branding-preview" style={previewStyle} aria-labelledby="branding-preview-title">
+      <section className="branding-preview" data-brand={color} aria-labelledby="branding-preview-title">
         <p className="eyebrow" id="branding-preview-title">معاينة الهوية</p>
         <div className="branding-preview-card">
           {file && previewUrl ? <Image src={previewUrl} alt={`معاينة شعار ${name || baseName}`} width={80} height={80} unoptimized />
@@ -88,7 +82,7 @@ export function BrandingEditor({
 
           <label htmlFor="tenant-brand-color">اللون الرئيسي</label>
           <select id="tenant-brand-color" name="color" value={color}
-            onChange={(event) => setColor(event.currentTarget.value as keyof typeof colors)}>
+            onChange={(event) => setColor(event.currentTarget.value as BrandColor)}>
             <option value="teal">فيروزي</option>
             <option value="blue">أزرق</option>
             <option value="violet">بنفسجي</option>

@@ -1,0 +1,114 @@
+[
+  {
+    "brand": "teal",
+    "link": {
+      "bg": "#ffffff",
+      "fg": "color(srgb 0.0705882 0.419608 0.407843)"
+    },
+    "primary": {
+      "bg": "rgb(18, 107, 104)",
+      "fg": "rgb(255, 255, 255)"
+    },
+    "theme": "light",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "blue",
+    "link": {
+      "bg": "#ffffff",
+      "fg": "color(srgb 0.145098 0.388235 0.921569)"
+    },
+    "primary": {
+      "bg": "rgb(37, 99, 235)",
+      "fg": "rgb(255, 255, 255)"
+    },
+    "theme": "light",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "violet",
+    "link": {
+      "bg": "#ffffff",
+      "fg": "color(srgb 0.486275 0.227451 0.929412)"
+    },
+    "primary": {
+      "bg": "rgb(124, 58, 237)",
+      "fg": "rgb(255, 255, 255)"
+    },
+    "theme": "light",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "emerald",
+    "link": {
+      "bg": "#ffffff",
+      "fg": "color(srgb 0.0156863 0.470588 0.341176)"
+    },
+    "primary": {
+      "bg": "rgb(4, 120, 87)",
+      "fg": "rgb(255, 255, 255)"
+    },
+    "theme": "light",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "teal",
+    "link": {
+      "bg": "#141b19",
+      "fg": "color(srgb 0.648431 0.861961 0.816667)"
+    },
+    "primary": {
+      "bg": "rgb(92, 191, 170)",
+      "fg": "rgb(8, 32, 27)"
+    },
+    "theme": "dark",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "blue",
+    "link": {
+      "bg": "#141b19",
+      "fg": "color(srgb 0.721765 0.808039 0.971961)"
+    },
+    "primary": {
+      "bg": "rgb(126, 166, 242)",
+      "fg": "rgb(10, 21, 48)"
+    },
+    "theme": "dark",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "violet",
+    "link": {
+      "bg": "#141b19",
+      "fg": "color(srgb 0.836078 0.782157 0.967647)"
+    },
+    "primary": {
+      "bg": "rgb(179, 154, 240)",
+      "fg": "rgb(23, 12, 46)"
+    },
+    "theme": "dark",
+    "viewport": 390,
+    "width": 375
+  },
+  {
+    "brand": "emerald",
+    "link": {
+      "bg": "#141b19",
+      "fg": "color(srgb 0.654902 0.887843 0.764902)"
+    },
+    "primary": {
+      "bg": "rgb(95, 203, 146)",
+      "fg": "rgb(6, 32, 15)"
+    },
+    "theme": "dark",
+    "viewport": 390,
+    "width": 375
+  }
+]

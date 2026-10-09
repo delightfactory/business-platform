@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "54e140f2a8e95b1bac6f90c60f79769c54b685b1",
+  "sourceHead": "a9fad668279315f36bfd40b645e1265179b283f5",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -95,7 +95,7 @@
     {
       "file": "src/app/globals.css",
       "phase": "R1",
-      "sha256": "317fb0350798cedff1dfc00fd13e2094a5616139897ae40b84bd7a80cdec7d5d"
+      "sha256": "7681c30bb71c728f255653fbc8284309a054f57b4bb71c177278b6388db493df"
     },
     {
       "file": "src/app/layout.tsx",
@@ -430,7 +430,7 @@
     {
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
       "phase": "R2",
-      "sha256": "58010cac3f9e88861a603537512bf77500d8f3b17c477e928a818afd5e154a47"
+      "sha256": "1cb4856dfcb7bc7e962a15f18ebcfc350e7be0cb162b62b31a113dd76ffa330d"
     },
     {
       "file": "src/app/tenant/[tenantId]/branding/actions.ts",
@@ -485,7 +485,7 @@
     {
       "file": "src/app/tenant/[tenantId]/layout.tsx",
       "phase": "R1",
-      "sha256": "1454aafb188dfe12cc25c88075b09dc1ab037c1a23de75f412c11661d4224187"
+      "sha256": "b1c4ee5edb6b8721444952339f20cb187b1f790c597121a2eb8ceae1d1e40d34"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/actions.ts",
@@ -1375,12 +1375,12 @@
     {
       "file": "src/components/context-navigation-client.tsx",
       "phase": "R1",
-      "sha256": "ea38c25ad399f82e0a4c332308b443c223edd61a0ddc431fe32c6e991e298337"
+      "sha256": "e1dab17d27474e03140dca9855a61d97b69e47c0e3c64d3af4cde2d96f2eec07"
     },
     {
       "file": "src/components/context-navigation.tsx",
       "phase": "R1",
-      "sha256": "106b3489273decfd4dba293550b89e3e0ffb71ca8b317220c9bcdf6977a68782"
+      "sha256": "b7fbbcf2a5c232010c5b14faace45f7bb45cb3a0b877c5bfebc7d420a8362f30"
     },
     {
       "file": "src/components/feedback-toast.tsx",
@@ -1500,7 +1500,7 @@
     {
       "file": "src/styles/tokens.css",
       "phase": "R1",
-      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
+      "sha256": "df189247c2b0583f93305f8b1c815ab570c74f29c073506b423a7385766a6b19"
     }
   ],
   "routes": [
@@ -4798,7 +4798,7 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/layout.tsx:18:878",
+      "id": "RPC:src/app/tenant/[tenantId]/layout.tsx:18:862",
       "file": "src/app/tenant/[tenantId]/layout.tsx",
       "line": 18,
       "phase": "R1",
@@ -11138,17 +11138,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:82:3019",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2851",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 82,
+      "line": 76,
       "tag": "form",
       "phase": "R2",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:83:3105",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:77:2937",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 83,
+      "line": 77,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11158,9 +11158,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:85:3235",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:79:3067",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 85,
+      "line": 79,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11169,9 +11169,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:90:3577",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:84:3409",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 90,
+      "line": 84,
       "tag": "select",
       "phase": "R2",
       "attributes": {
@@ -11180,9 +11180,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:101:4193",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:95:4016",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 101,
+      "line": 95,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11191,9 +11191,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:4871",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:105:4694",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 111,
+      "line": 105,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -11202,9 +11202,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5388",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:5211",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 117,
+      "line": 111,
       "tag": "input",
       "phase": "R2",
       "attributes": {
@@ -11214,9 +11214,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:123:5926",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5749",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 123,
+      "line": 117,
       "tag": "textarea",
       "phase": "R2",
       "attributes": {
@@ -11225,9 +11225,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:126:6207",
+      "id": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:120:6030",
       "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
-      "line": 126,
+      "line": 120,
       "tag": "button",
       "phase": "R2",
       "attributes": {
@@ -19733,9 +19733,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5332",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:122:5449",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 121,
+      "line": 122,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19743,9 +19743,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:121:5361",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:122:5478",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 121,
+      "line": 122,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19753,9 +19753,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:128:5703",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:129:5820",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 128,
+      "line": 129,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19764,9 +19764,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:137:6287",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:138:6404",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 137,
+      "line": 138,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19775,9 +19775,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:149:6937",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:150:7054",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 149,
+      "line": 150,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19786,9 +19786,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:161:7994",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:162:8111",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 161,
+      "line": 162,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19796,9 +19796,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:161:8023",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:162:8140",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 161,
+      "line": 162,
       "tag": "button",
       "phase": "R1",
       "attributes": {

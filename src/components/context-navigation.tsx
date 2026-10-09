@@ -90,11 +90,11 @@ export async function TenantNavigation({
         supabase.rpc('attendance_mobile_snapshot', { p_tenant: tenantId }),
         supabase.rpc('attendance_channel_access', { p_tenant: tenantId }),
       ]);
-      if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري' });
+      if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري', mobilePriority: 10 });
       if (!channelAccess.error && channelAccess.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/attendance/sources`, label: 'قنوات الحضور' });
       if (!payrollAccess.error && payrollAccess.data?.can_manage === true && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll`, label: 'دورة الرواتب' });
       if (!payrollInputs.error && payrollInputs.data && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: 'مدخلات الرواتب' });
-      if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: !payrollAccess.error && payrollAccess.data ? `/tenant/${tenantId}/payroll` : `/tenant/${tenantId}/payroll/runs`, label: 'الرواتب' });
+      if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: !payrollAccess.error && payrollAccess.data ? `/tenant/${tenantId}/payroll` : `/tenant/${tenantId}/payroll/runs`, label: 'الرواتب', mobilePriority: 50 });
       if (!payrollNavigation.error && payrollNavigation.data?.can_view_advances === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/advances`, label: 'سلف الموظفين' });
       if (!payrollNavigation.error && payrollNavigation.data?.can_view_reports === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/reports?report=${payrollNavigation.data.report_kind === 'advances' ? 'advances' : 'sheet'}`, label: payrollNavigation.data.report_kind === 'advances' ? 'أرصدة السلف' : 'تقارير الرواتب' });
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;
@@ -108,10 +108,10 @@ export async function TenantNavigation({
         ? branding.data as Record<string, unknown> : null;
       if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة' });
       if (!peopleAccess.error && peopleAccess.data && typeof peopleAccess.data === 'object') {
-        businessLinks.push({ href: `/tenant/${tenantId}/people`, label: 'الموظفون' });
+        businessLinks.push({ href: `/tenant/${tenantId}/people`, label: 'الموظفون', mobilePriority: 60 });
       }
       if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
-        businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور' });
+        businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور', mobilePriority: 30 });
       }
       if (!ownEmployee.error && ownEmployee.data && typeof ownEmployee.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/me`, label: 'ملفي' });
@@ -119,10 +119,10 @@ export async function TenantNavigation({
       const leave = !leaveAccess.error && leaveAccess.data && typeof leaveAccess.data === 'object' && !Array.isArray(leaveAccess.data)
         ? leaveAccess.data as Record<string, unknown> : null;
       if (leave?.self_access === true) {
-        businessLinks.push({ href: `/tenant/${tenantId}/me/leave`, label: 'إجازاتي' });
+        businessLinks.push({ href: `/tenant/${tenantId}/me/leave`, label: 'إجازاتي', mobilePriority: 20 });
       }
       if (leave?.can_view === true) {
-        businessLinks.push({ href: `/tenant/${tenantId}/leave`, label: 'مراجعة الإجازات' });
+        businessLinks.push({ href: `/tenant/${tenantId}/leave`, label: 'مراجعة الإجازات', mobilePriority: 40 });
         businessLinks.push({ href: `/tenant/${tenantId}/leave/settings`, label: 'إعدادات الإجازات' });
       }
       if (leave?.can_view === true || leave?.can_adjust === true) {

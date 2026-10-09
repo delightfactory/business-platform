@@ -7,7 +7,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { signOutAction } from '@/app/auth/actions';
 import { ThemePreferenceControl } from '@/components/theme-preference';
 
-export type ContextLink = { href: string; label: string };
+export type ContextLink = { href: string; label: string; mobilePriority?: number };
 
 type Props = {
   homeHref: string;
@@ -57,7 +57,8 @@ export function ContextNavigationClient({
     .sort((left, right) => right.href.length - left.href.length)[0];
   const currentHref = pathname === homeHref ? homeHref : activeLink?.href;
   const pageTitle = pathname === homeHref ? 'الرئيسية' : activeLink?.label ?? contextLabel;
-  const primaryLinks = (mode === 'tenant' && businessLinks.length > 0 ? businessLinks : links).slice(0, 2);
+  const primaryLinks = [...(mode === 'tenant' && businessLinks.length > 0 ? businessLinks : links)]
+    .sort((left, right) => (left.mobilePriority ?? 100) - (right.mobilePriority ?? 100)).slice(0, 2);
 
   useEffect(() => {
     if (mobileDialog.current?.open) mobileDialog.current.close();

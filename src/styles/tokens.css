@@ -134,8 +134,37 @@
   color-scheme: dark;
  }
 }
+/* Company identity is resolved in its own scope, including nested editor previews. */
+[data-brand="teal"] { --brand-light: #126b68; --brand-dark: #5cbfaa; --brand-dark-ink: #08201b; }
+[data-brand="blue"] { --brand-light: #2563eb; --brand-dark: #7ea6f2; --brand-dark-ink: #0a1530; }
+[data-brand="violet"] { --brand-light: #7c3aed; --brand-dark: #b39af0; --brand-dark-ink: #170c2e; }
+[data-brand="emerald"] { --brand-light: #047857; --brand-dark: #5fcb92; --brand-dark-ink: #06200f; }
+[data-brand] {
+  --color-brand: var(--brand-light);
+  --color-on-brand: #fff;
+  --color-brand-text: var(--color-brand);
+  --color-brand-soft: color-mix(in srgb, var(--color-brand) 9%, var(--surface-base));
+  --color-brand-border: color-mix(in srgb, var(--color-brand) 35%, var(--surface-base));
+}
+:root[data-theme="dark"] [data-brand] {
+  --color-brand: var(--brand-dark);
+  --color-on-brand: var(--brand-dark-ink);
+  --theme-legacy-brand-text: var(--color-brand-text);
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] [data-brand] {
+    --color-brand: var(--brand-dark);
+    --color-on-brand: var(--brand-dark-ink);
+    --theme-legacy-brand-text: var(--color-brand-text);
+  }
+}
 /* Paper output must never inherit a device/night palette. */
 @media print {
+ :root[data-theme] [data-brand], [data-brand] {
+  --color-brand: var(--brand-light);
+  --color-on-brand: #fff;
+  --theme-legacy-brand-text: initial;
+ }
  :root, :root[data-theme] {
   --surface-canvas: #f2f3f1;
   --surface-base: #ffffff;

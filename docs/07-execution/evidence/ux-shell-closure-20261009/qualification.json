@@ -1,0 +1,155 @@
+{
+  "baseline": "a9fad668279315f36bfd40b645e1265179b283f5",
+  "hashes": {
+    "src/components/context-navigation-client.tsx": "e1dab17d27474e03140dca9855a61d97b69e47c0e3c64d3af4cde2d96f2eec07",
+    "src/components/context-navigation.tsx": "b7fbbcf2a5c232010c5b14faace45f7bb45cb3a0b877c5bfebc7d420a8362f30",
+    "src/app/tenant/[tenantId]/layout.tsx": "b1c4ee5edb6b8721444952339f20cb187b1f790c597121a2eb8ceae1d1e40d34",
+    "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx": "1cb4856dfcb7bc7e962a15f18ebcfc350e7be0cb162b62b31a113dd76ffa330d",
+    "src/styles/tokens.css": "df189247c2b0583f93305f8b1c815ab570c74f29c073506b423a7385766a6b19",
+    "src/app/globals.css": "7681c30bb71c728f255653fbc8284309a054f57b4bb71c177278b6388db493df"
+  },
+  "serverAuthorityAndRPCs": "inverse exact after removing six presentation priorities",
+  "contrast": [
+    {
+      "brand": "teal",
+      "link": {
+        "bg": "#ffffff",
+        "fg": "color(srgb 0.0705882 0.419608 0.407843)"
+      },
+      "primary": {
+        "bg": "rgb(18, 107, 104)",
+        "fg": "rgb(255, 255, 255)"
+      },
+      "theme": "light",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 6.31,
+      "linkContrast": 6.31
+    },
+    {
+      "brand": "blue",
+      "link": {
+        "bg": "#ffffff",
+        "fg": "color(srgb 0.145098 0.388235 0.921569)"
+      },
+      "primary": {
+        "bg": "rgb(37, 99, 235)",
+        "fg": "rgb(255, 255, 255)"
+      },
+      "theme": "light",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 5.17,
+      "linkContrast": 5.17
+    },
+    {
+      "brand": "violet",
+      "link": {
+        "bg": "#ffffff",
+        "fg": "color(srgb 0.486275 0.227451 0.929412)"
+      },
+      "primary": {
+        "bg": "rgb(124, 58, 237)",
+        "fg": "rgb(255, 255, 255)"
+      },
+      "theme": "light",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 5.7,
+      "linkContrast": 5.7
+    },
+    {
+      "brand": "emerald",
+      "link": {
+        "bg": "#ffffff",
+        "fg": "color(srgb 0.0156863 0.470588 0.341176)"
+      },
+      "primary": {
+        "bg": "rgb(4, 120, 87)",
+        "fg": "rgb(255, 255, 255)"
+      },
+      "theme": "light",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 5.48,
+      "linkContrast": 5.48
+    },
+    {
+      "brand": "teal",
+      "link": {
+        "bg": "#141b19",
+        "fg": "color(srgb 0.648431 0.861961 0.816667)"
+      },
+      "primary": {
+        "bg": "rgb(92, 191, 170)",
+        "fg": "rgb(8, 32, 27)"
+      },
+      "theme": "dark",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 7.7,
+      "linkContrast": 11.44
+    },
+    {
+      "brand": "blue",
+      "link": {
+        "bg": "#141b19",
+        "fg": "color(srgb 0.721765 0.808039 0.971961)"
+      },
+      "primary": {
+        "bg": "rgb(126, 166, 242)",
+        "fg": "rgb(10, 21, 48)"
+      },
+      "theme": "dark",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 7.42,
+      "linkContrast": 11.02
+    },
+    {
+      "brand": "violet",
+      "link": {
+        "bg": "#141b19",
+        "fg": "color(srgb 0.836078 0.782157 0.967647)"
+      },
+      "primary": {
+        "bg": "rgb(179, 154, 240)",
+        "fg": "rgb(23, 12, 46)"
+      },
+      "theme": "dark",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 7.8,
+      "linkContrast": 11.15
+    },
+    {
+      "brand": "emerald",
+      "link": {
+        "bg": "#141b19",
+        "fg": "color(srgb 0.654902 0.887843 0.764902)"
+      },
+      "primary": {
+        "bg": "rgb(95, 203, 146)",
+        "fg": "rgb(6, 32, 15)"
+      },
+      "theme": "dark",
+      "viewport": 390,
+      "width": 375,
+      "primaryContrast": 8.55,
+      "linkContrast": 11.96
+    }
+  ],
+  "checks": {
+    "eslint": "PASS affected files, zero warnings after removing obsolete preview colour values",
+    "typecheck": "PASS",
+    "build": "PASS one production build including final TS",
+    "mobileKeyboardMenu": "Enter opens, close focused, Escape returns to launcher; existing services all present",
+    "responsive": "390/768/1366 selected blue samples"
+  },
+  "limits": [
+    "Actual client/CSS with synthetic allowed links and stub server action, not real Auth/business flow",
+    "No complete all-screen/all-state visual acceptance",
+    "Before/after changes shortcut visibility; no end-to-end completion speed metric",
+    "System-dark and print CSS branch explicit; no new native system/print run"
+  ]
+}

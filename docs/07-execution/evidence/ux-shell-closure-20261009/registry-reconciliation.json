@@ -1,0 +1,108 @@
+{
+  "summary": {
+    "sourceFiles": 300,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 8,
+    "serverActions": 108,
+    "rpcCallSites": 349,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 7,
+    "formControls": 1189,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1735,
+  "sourceReviewedPreserved": 25,
+  "added": [],
+  "migrations": [
+    {
+      "before": "RPC:src/app/tenant/[tenantId]/layout.tsx:18:878",
+      "after": "RPC:src/app/tenant/[tenantId]/layout.tsx:18:862",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:82:3019",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:76:2851",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:83:3105",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:77:2937",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:85:3235",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:79:3067",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:90:3577",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:84:3409",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:101:4193",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:95:4016",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:4871",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:105:4694",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5388",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:111:5211",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:123:5926",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:117:5749",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:126:6207",
+      "after": "CONTROL:src/app/tenant/[tenantId]/branding/BrandingEditor.tsx:120:6030",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:121:5332",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:122:5449",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:121:5361",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:122:5478",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:128:5703",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:129:5820",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:137:6287",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:138:6404",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:149:6937",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:150:7054",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:161:7994",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:162:8111",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:161:8023",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:162:8140",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false,
+  "coverage": "Structural slots, not runtime instances/full coverage"
+}
