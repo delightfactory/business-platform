@@ -36,7 +36,7 @@ export function ReviseCalendarForm({ tenantId, employerId, calendarId, detailPat
 
     <div className={styles.formGrid}>
       <div className={styles.field}>
-        <Field id="calendar-revise-from" label={<>بداية سريان الإصدار الجديد</>} required><Input id="calendar-revise-from" name="effectiveFrom" type="date" required
+        <Field id="calendar-revise-from" label={<>تاريخ تطبيق الإعدادات الجديدة</>} required><Input id="calendar-revise-from" name="effectiveFrom" type="date" required
           defaultValue={state.effectiveFrom} disabled={pending} /></Field>
         <span className="field-hint">يجب أن يكون بعد تاريخ اليوم بتوقيت القاهرة؛ الإصدار الحالي يبقى ساريًا حتى ذلك الحين.</span>
       </div>
@@ -64,10 +64,10 @@ export function ReviseCalendarForm({ tenantId, employerId, calendarId, detailPat
     </div>
 
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
-    {pending && <p className="field-hint" role="status">جارٍ حفظ الإصدار الجديد… لا تغلق الصفحة.</p>}
+    {pending && <p className="field-hint" role="status">جارٍ حفظ الإعدادات الجديدة… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="حفظ الإصدار الجديد" pendingLabel="جارٍ الحفظ…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="حفظ الإعدادات الجديدة" pendingLabel="جارٍ الحفظ…" />
       <Link className="secondary-button" href={detailPath}>العودة إلى الإعدادات</Link>
     </div>
     <p className="field-hint">يُنشأ إصدار جديد فقط من تاريخ السريان الذي تختاره؛ الإصدارات السابقة وتغطيتها تبقى كما هي. عند أي تعارض حُفظت بياناتك في النموذج — حدّث الصفحة لعرض أحدث الإعدادات ثم عدّل وأعد الحفظ.</p>

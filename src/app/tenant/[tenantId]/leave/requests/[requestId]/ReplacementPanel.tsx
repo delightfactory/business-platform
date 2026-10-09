@@ -49,7 +49,7 @@ export async function ReplacementPanel({ tenantId, request, source, canReplace, 
     })}</ul>}
     {showChoice && <>
       <p className="field-hint">اختر طلبًا مرسلًا للموظف نفسه ثم راجع تفاصيله. سيُعاد الرصيد المستهلك للطلب الأصلي ويُعتمد البديل في عملية واحدة؛ يُحفظ الأصل وسجل التصحيح. إذا كانت أيامه معتمدة في الحضور، يلزم معالجة التعارض هناك أولًا.</p>
-      {replacementId && !validSelection && <Message tone="bad"  role="alert">الطلب البديل غير متاح أو ليس طلبًا مرسلًا لنفس علاقة العمل. اختر طلبًا آخر أو أعد تحميل الصفحة.</Message>}
+      {replacementId && !validSelection && <Message tone="bad"  role="alert">الطلب البديل غير متاح، أو لا يخص نفس توظيف الموظف. اختر طلبًا مرسلًا آخر أو أعد تحميل الصفحة.</Message>}
       {validSelection ? <>
         <h3>الطلب البديل: {validSelection.leaveTypeName}</h3>
         <p>{validSelection.employeeName} · <bdi>{validSelection.startDate}</bdi> إلى <bdi>{validSelection.endDate}</bdi> · {formatDays(validSelection.totalUnits)} يوم</p>

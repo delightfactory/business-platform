@@ -196,7 +196,7 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
       {submitting && <p className="field-hint" role="status">جارٍ تسجيل الطلب… لا تغلق الصفحة.</p>}
 
       <div className="workspace-form-actions">
-        <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="تسجيل الطلب" pendingLabel="جارٍ التسجيل…" />
+        <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="تسجيل طلب الإجازة" pendingLabel="جارٍ التسجيل…" />
         {submitting ? <span className="ui-button ui-button-ghost ui-button-md" aria-disabled="true">إلغاء</span>
           : <PendingLink className="ui-button ui-button-ghost ui-button-md" href={cancelHref}>إلغاء</PendingLink>}
       </div>

@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic';
 export default async function OperatorTenantsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
   const { page, search } = operatorListQuery(await searchParams);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [{ data: operatorStatus, error: statusError }, { data: canManageLifecycle, error: capabilityError }] = await Promise.all([

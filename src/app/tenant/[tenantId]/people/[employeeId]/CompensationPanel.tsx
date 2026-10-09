@@ -62,12 +62,12 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
           <OfflineSubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
         </form>}
       </RecordCard>)}
-    </ol> : canView && !historyError ? <Message tone="neutral" >لا توجد بيانات أجر مسجلة لهذه العلاقة.</Message> : null}
+    </ol> : canView && !historyError ? <Message tone="neutral" >لا توجد بيانات أجر مسجلة لهذا التوظيف.</Message> : null}
     {history?.truncated && <p className="record-meta">يعرض هذا الملف أحدث 100 تغيير في الأجر.</p>}
-    {canManage && !employmentId && <Message tone="info" >لا توجد علاقة توظيف يمكن تغيير أجرها.</Message>}
+    {canManage && !employmentId && <Message tone="info" >لا يوجد توظيف مسجل لتغيير الأجر.</Message>}
     {optionsError && canManage && employmentId && <Message tone="bad"  role="alert">تعذر تحميل حالة الأجر. حدّث الصفحة أو تحقق من صلاحية إدارة الأجر.</Message>}
-    {canManage && options && options.employment_status !== 'active' && <Message tone="info" >لا يمكن تغيير الأجر بعد انتهاء علاقة التوظيف.</Message>}
-    {canManage && options && !options.has_current && <Message tone="info" >لا يوجد أجر سارٍ اليوم لهذه العلاقة. يمكن تغيير الأجر بعد بداية علاقة العمل.</Message>}
+    {canManage && options && options.employment_status !== 'active' && <Message tone="info" >لا يمكن تغيير الأجر بعد انتهاء التوظيف.</Message>}
+    {canManage && options && !options.has_current && <Message tone="info" >لا يوجد أجر سارٍ اليوم. يمكن تغييره بعد بدء التوظيف.</Message>}
     {pending && canManage && <Message tone="info" >يوجد تغيير مقرر بتاريخ <bdi>{pending.valid_from}</bdi>. ألغِه قبل حفظ تغيير آخر.</Message>}
     {canChange && <Disclosure className="compensation-change-details" summary={<>تغيير الأجر الأساسي</>}>
       <form key={formState.attempt} action={formAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
@@ -80,7 +80,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
         <Field id="compensation-effective-date" label={<>تاريخ بدء الأجر الجديد</>} required><Input id="compensation-effective-date" name="effectiveDate" type="date" required
           min={options.effective_date_min ?? today} value={effectiveDateChoice}
           onChange={(event) => setEffectiveDateChoice(event.target.value)} /></Field>
-        {effectiveDateChoice < today && <p className="field-hint">التاريخ السابق متاح داخل فترة الأجر الحالية فقط. إذا مسّ التغيير راتبًا مقفلًا، يحتفظ النظام بالمصدر ويوجه مسؤول تصحيح الرواتب إلى مقترح مؤرخ ومراجعة المخرجات.</p>}
+        {effectiveDateChoice < today && <p className="field-hint">يمكن اختيار تاريخ سابق داخل فترة الأجر الحالية فقط. إذا تأثر مسير مقفل، يحتفظ النظام ببيانات المصدر ويوجّه مسؤول الرواتب لمراجعة مقترح التصحيح المؤرخ ونتيجته.</p>}
         {formState.error && <Message tone="bad"  role="alert">{formState.error}</Message>}
         <p className="field-hint">يوجد تغيير مقرر واحد فقط؛ ألغِه أولًا لتحديد تاريخ أو قيمة أخرى.</p>
         <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير الأجر" pendingLabel="جارٍ حفظ التغيير…" /></div>

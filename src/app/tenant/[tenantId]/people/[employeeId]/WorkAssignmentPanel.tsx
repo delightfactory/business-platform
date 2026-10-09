@@ -66,8 +66,8 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
       : history?.items.length ? <ol className="assignment-history-list">
         {history.items.map((assignment) => <RecordCard key={assignment.id} className="assignment-history-item">
           <div className="assignment-history-heading">
-            <strong>{assignment.status === 'initial_scheduled' ? 'سياق العمل عند بدء العلاقة'
-              : assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'السياق الحالي' : 'سياق سابق'}</strong>
+            <strong>{assignment.status === 'initial_scheduled' ? 'بيانات العمل عند بدء التوظيف'
+              : assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'بيانات العمل الحالية' : 'بيانات عمل سابقة'}</strong>
             <Badge className={`entity-status ${assignment.status === 'past' ? 'is-inactive' : 'is-active'}`}>
               {assignment.status === 'initial_scheduled' ? 'يبدأ مع العمل'
                 : assignment.status === 'scheduled' ? 'يبدأ لاحقًا' : assignment.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</Badge>
@@ -78,7 +78,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             {assignment.job && <div><dt>الوظيفة</dt><dd>{assignment.job}</dd></div>}
             {assignment.manager && <div><dt>المدير المباشر</dt><dd>{assignment.manager}</dd></div>}
             <div><dt>يبدأ في</dt><dd><bdi>{assignment.valid_from}</bdi></dd></div>
-            {assignment.valid_until && <div><dt>ينتهي السياق قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
+            {assignment.valid_until && <div><dt>تنتهي هذه البيانات قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
           </dl>
           {canManage && assignment.status === 'scheduled' && employmentId && <form action={cancelWorkAssignmentAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <input type="hidden" name="tenantId" value={tenantId} />
@@ -88,21 +88,21 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             <OfflineSubmitButton label="إلغاء النقل المقرر" pendingLabel="جارٍ الإلغاء…" />
           </form>}
         </RecordCard>)}
-      </ol> : <Message tone="neutral" >لا توجد تعيينات عمل مسجلة.</Message>}
+      </ol> : <Message tone="neutral" >لا توجد بيانات فرع أو قسم أو وظيفة مسجلة.</Message>}
     {history?.truncated && <p className="record-meta">يعرض هذا الملف أحدث 100 تغيير.</p>}
-    {canManage && !employmentId && <Message tone="info" >لا توجد علاقة توظيف يمكن تغيير سياق عملها.</Message>}
-    {canManage && employmentId && !employmentActive && <Message tone="info" >لا يمكن تغيير سياق العمل بعد انتهاء علاقة التوظيف.</Message>}
+    {canManage && !employmentId && <Message tone="info" >لا يوجد توظيف مسجل لتغيير بيانات العمل.</Message>}
+    {canManage && employmentId && !employmentActive && <Message tone="info" >لا يمكن تغيير بيانات العمل بعد انتهاء التوظيف.</Message>}
     {canManage && employmentId && employmentActive && !currentAssignment && history?.items.some((assignment) => assignment.status === 'initial_scheduled')
-      && <Message tone="info" >سياق العمل أعلاه مقرر عند بداية العلاقة؛ لا يمكن نقل الموظف قبل بدء العمل.</Message>}
+      && <Message tone="info" >تبدأ بيانات العمل الموضحة عند بدء التوظيف؛ لا يمكن نقل الموظف قبل هذا التاريخ.</Message>}
     {canManage && employmentId && employmentActive && !currentAssignment
       && !history?.items.some((assignment) => assignment.status === 'initial_scheduled')
-      && <Message tone="info" >لا يوجد سياق عمل سارٍ يمكن نقل الموظف منه.</Message>}
+      && <Message tone="info" >لا توجد بيانات عمل حالية يمكن نقل الموظف منها.</Message>}
     {canManage && hasPending && <Message tone="info" >يوجد نقل مقرر بالفعل. ألغِه من سجل العمل قبل إضافة تغيير آخر.</Message>}
     {mayTransfer && <Disclosure className="assignment-transfer-details" summary={<>تغيير الفرع أو القسم أو الوظيفة</>}>
-      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</Message>
-        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة توظيف الموظف.</Message>
+      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية تعديل بيانات العمل.</Message>
+        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={formState.attempt} action={formAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
-            <p className="field-hint">ابدأ من بيانات التكليف الحالي؛ غيّر الحقول التي تحتاج إلى تحديث فقط.</p>
+            <p className="field-hint">عدّل الفرع أو القسم أو الوظيفة المطلوبة، واترك بقية البيانات كما هي.</p>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
             <input type="hidden" name="employeeId" value={employeeId} />
@@ -128,15 +128,15 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
               value={effectiveDateChoice} onChange={(event) => setEffectiveDateChoice(event.target.value)} /></Field>
             {(options.sites_truncated || options.departments_truncated || options.jobs_truncated || options.managers_truncated)
               && <p className="field-hint">نعرض حتى 1000 اختيار لكل قائمة. راجع دليل الشركة إذا لم يظهر السجل المطلوب.</p>}
-            {currentChoiceMissing && <p className="field-hint">بعض بيانات التكليف الحالي لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
+            {currentChoiceMissing && <p className="field-hint">بعض بيانات العمل الحالي لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
             {formState.error && <Message tone="bad"  role="alert">{formState.error}</Message>}
-            <p className="field-hint">يبدأ السياق الجديد في التاريخ المحدد، وينتهي السياق الحالي عند بداية ذلك اليوم.</p>
+            <p className="field-hint">تبدأ بيانات العمل الجديدة في التاريخ المحدد، وتنتهي البيانات الحالية عند بداية ذلك اليوم.</p>
             <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير العمل" pendingLabel="جارٍ حفظ التغيير…" /></div>
           </form>}
     </Disclosure>}
     {mayCorrectInitial && <Disclosure className="assignment-transfer-details" summary={<>تصحيح بيانات العمل اليوم</>}>
-      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</Message>
-        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة توظيف الموظف.</Message>
+      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية تعديل بيانات العمل.</Message>
+        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={correctionState.attempt} action={correctionAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">يُتاح هذا التصحيح في يوم بداية العمل فقط، ويحفظ سجلًا قبل التعديل وبعده.</p>
             <input type="hidden" name="tenantId" value={tenantId} />

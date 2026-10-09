@@ -23,7 +23,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   const selectedId = operatorUuid(params.id) ? params.id : null;
   const { page, search } = operatorListQuery(params);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
   const { data: capable, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
@@ -32,7 +32,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   const { data, error } = await supabase.rpc('tenant_admin_invitation_page', { p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
   const result = operatorPage(data, operatorInvitation, row => row.id);
-  if (!result) return <Status title="تعذر تحميل الدعوات" detail="بيانات القائمة غير مكتملة. أعد تحميل الصفحة؛ لم تتأكد قائمة فارغة." />;
+  if (!result) return <Status title="تعذر تحميل الدعوات" detail="تعذر عرض قائمة الدعوات كاملة. أعد تحميل الصفحة للتحقق من الدعوات." />;
   const rows = result.rows;
   const matchingCount = result.matching_count;
   let selected = rows.find(row => selectedId !== null && row.id.toLowerCase() === selectedId.toLowerCase());
@@ -90,7 +90,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   <div className="invitation-actions">
                     <OfflineForm action={reissueInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <OfflineSubmitButton variant="ghost"  label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
+                      <OfflineSubmitButton variant="ghost"  label="إرسال رابط دعوة جديد" pendingLabel="جارٍ الإرسال…" />
                     </OfflineForm>
                     <OfflineForm action={revokeInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />

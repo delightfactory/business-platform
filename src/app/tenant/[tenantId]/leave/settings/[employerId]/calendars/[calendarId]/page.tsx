@@ -107,7 +107,7 @@ export default async function CalendarDetailPage({ params, searchParams }: {
         هذه الجهة موقوفة: يمكنك مراجعة الإصدارات المحفوظة دون حفظ إصدار جديد.
       </Message>}
       {!canEdit && employer.is_active && !access.canManage && <Message tone="info"  role="status">
-        عرض فقط: يمكنك مراجعة إصدارات التقويم دون تعديلها.
+        عرض فقط: يمكنك مراجعة سجل إعدادات التقويم دون تعديلها.
       </Message>}
       {!canEdit && employer.is_active && access.canManage && !access.newWorkEnabled && <Message tone="info"  role="status">
         خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن حفظ إصدار جديد. تبقى الإصدارات المحفوظة قابلة للمراجعة.
@@ -117,8 +117,8 @@ export default async function CalendarDetailPage({ params, searchParams }: {
     <Panel  aria-labelledby="calendar-versions-title">
       <div className={styles.panelHeading}>
         <div>
-          <h2 id="calendar-versions-title">إصدارات التقويم</h2>
-          <p>من الأحدث إلى الأقدم. كل إصدار يحمل تواريخ سريانه وأيام راحته وعطلاته ومنطقته الزمنية ومصدره.</p>
+          <h2 id="calendar-versions-title">سجل إعدادات التقويم</h2>
+          <p>أحدث الإعدادات أولًا، مع فترة تطبيقها وأيام الراحة والعطلات والتوقيت ومرجعها.</p>
         </div>
       </div>
       {versions.length === 0
@@ -143,7 +143,7 @@ export default async function CalendarDetailPage({ params, searchParams }: {
         </RecordCard>)}</ul>}
     </Panel>
 
-    {canEdit && initial && <SettingsTask label="إصدار جديد من تاريخ لاحق">
+    {canEdit && initial && <SettingsTask label="تعديل التقويم من تاريخ لاحق">
       <ReviseCalendarForm tenantId={tenantId} employerId={employerId} calendarId={calendarId}
         detailPath={path} initial={initial} />
     </SettingsTask>}

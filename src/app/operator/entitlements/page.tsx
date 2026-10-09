@@ -23,7 +23,7 @@ export default async function EntitlementsPage({ searchParams }: { searchParams:
     supabase.rpc('current_operator_can_manage_commercial_access'),
   ]);
   if (statusError || capabilityError) return <Status title="تعذر التحقق من الصلاحية" />;
-  if (status !== 'active' || !operatorPermission({ data: authorized, error: capabilityError })) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
+  if (status !== 'active' || !operatorPermission({ data: authorized, error: capabilityError })) return <Status title="إدارة خدمات الشركة غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_list_page', { p_scope: 'commercial', p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الشركات" />;
   const result = operatorPage(data, operatorTenant, row => row.tenant_id);
@@ -36,13 +36,13 @@ export default async function EntitlementsPage({ searchParams }: { searchParams:
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
         <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
     <Panel className="operator-collection" aria-labelledby="entitlements-title">
-      <p className="eyebrow">إتاحة الوحدات</p><PageHeader id="entitlements-title" title={<>الوحدات المتاحة للشركات</>} />
-      <p className="intro">الإتاحة والإنهاء لا يحذفان بيانات الشركة. تُسجل كل مراجعة مع سببها.</p>
+      <p className="eyebrow">خدمات الشركة</p><PageHeader id="entitlements-title" title={<>خدمات الشركات</>} />
+      <p className="intro">تفعيل الخدمة أو إيقافها لا يحذف بيانات الشركة. يُحفظ سبب كل تغيير.</p>
       <OperatorListControls basePath="/operator/entitlements" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة" inputId="entitlements-search" />
       {tenants.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد شركات مطابقة.'}</p> : <ul className="member-list">
         {tenants.map((tenant) => <RecordCard className="member-card" key={tenant.tenant_id}>
           <div><h2><bdi>{tenant.display_name}</bdi></h2><Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge></div>
-          <ButtonLink variant="ghost"  href={`/operator/entitlements/${tenant.tenant_id}`}>عرض الإتاحة</ButtonLink>
+          <ButtonLink variant="ghost"  href={`/operator/entitlements/${tenant.tenant_id}`}>عرض الخدمات</ButtonLink>
         </RecordCard>)}
       </ul>}
     </Panel>

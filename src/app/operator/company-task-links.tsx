@@ -6,11 +6,11 @@ export function CompanyTaskLinks({ tenantId, current, lifecycle, commercial }: {
   const destinations = [
     { key: 'lifecycle', allowed: lifecycle, label: 'حالة الشركة', href: `/operator/tenants/${tenantId}` },
     { key: 'commercial', allowed: commercial, label: 'حدود الاستخدام', href: `/operator/commercial/${tenantId}` },
-    { key: 'entitlements', allowed: commercial, label: 'إتاحة الوحدات', href: `/operator/entitlements/${tenantId}` },
+    { key: 'entitlements', allowed: commercial, label: 'خدمات الشركة', href: `/operator/entitlements/${tenantId}` },
   ].filter(item => item.allowed === true && item.key !== current);
   if (destinations.length === 0) return null;
   return <div className="operator-company-context">
     <nav aria-label="مهام هذه الشركة">{destinations.map(item => <ButtonLink variant="ghost" key={item.key}  href={item.href}>{item.label}</ButtonLink>)}</nav>
-    <p className="field-hint">هذه مهام الشركة نفسها. احفظ أي تعديل لم ترسله قبل الانتقال.</p>
+    <p className="field-hint">احفظ تعديلاتك قبل الانتقال إلى مهمة أخرى لهذه الشركة.</p>
   </div>;
 }

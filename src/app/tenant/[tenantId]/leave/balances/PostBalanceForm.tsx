@@ -172,7 +172,7 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
       <p>{submitState.replay
         ? 'هذه نتيجة العملية السابقة المؤكدة؛ لم يُسجّل القيد مرة أخرى.'
         : 'أُضيف القيد إلى دفتر الحساب وحُدِّث رصيد الحساب كاملًا.'}</p>
-      <Disclosure  summary={<>معرّفات القيد</>}>
+      <Disclosure  summary={<>أرقام مرجعية للمراجعة</>}>
         <p className="record-meta">معرّف الحساب: <bdi>{submitState.accountId}</bdi></p>
         <p className="record-meta">معرّف القيد في الدفتر: <bdi>{submitState.entryId}</bdi></p>
       </Disclosure>
@@ -223,10 +223,10 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
           aria-invalid={submitState.error !== ''} /></Field>
         <p className="field-hint">يُحفظ السبب في سجل القيد ولا يمكن تعديله لاحقًا.</p>
 
-        <Field id="balance-source" label={<>مرجع التدقيق اليدوي</>} required><Input id="balance-source" name="source" type="text" value={source} onChange={handleSourceChange}
+        <Field id="balance-source" label={<>مرجع تعديل الرصيد</>} required><Input id="balance-source" name="source" type="text" value={source} onChange={handleSourceChange}
           disabled={submitting} readOnly={!canStartNew || unresolved} required minLength={MIN_SOURCE_LENGTH} maxLength={MAX_SOURCE_LENGTH}
           aria-invalid={submitState.error !== ''} /></Field>
-        <p className="field-hint">مرجع داخلي تكتبه مثل رقم خطاب أو محضر. لا يُستخدم لاستخراج أي معرّف من النص.</p>
+        <p className="field-hint">اكتب رقم خطاب أو محضر يثبت التعديل. يُحفظ كمرجع للمراجعة.</p>
 
         {type && <p className="field-hint">النوع: {type.name} · رقم النوع <bdi>{type.code}</bdi>
           {periodLabel === '' ? '' : <> · الفترة: {periodLabel}</>}

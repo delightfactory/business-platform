@@ -41,7 +41,7 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
       <span className="field-hint">
         {coverage
           ? `تغطية التقويم: ${coverage.coverageText}. يجب أن تقع فترة الإجازة كاملة داخل هذه التغطية.`
-          : 'اختر تقويمًا يحمل إصدارات مغطية.'}
+          : 'اختر تقويمًا تغطي إعداداته الفترة المطلوبة.'}
       </span>
     </div>
 

@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 const messages: Record<string, string> = {
   invalid: 'تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور.',
   setup: 'الدخول غير متاح مؤقتًا. أعد المحاولة لاحقًا أو تواصل مع مسؤول المنصة.',
-  'no-session': 'انتهت الجلسة. سجّل الدخول للمتابعة.',
+  'no-session': 'انتهت مدة تسجيل دخولك. سجّل الدخول مرة أخرى للمتابعة.',
   updated: 'تم تحديث كلمة المرور. سجّل الدخول بكلمتك الجديدة.',
   'signed-out': 'تم تسجيل الخروج.',
   'operator-revoked': 'سُحبت صلاحية تشغيل المنصة من هذا الحساب وسُجّل الخروج. لم تتغير عضويات الشركات.',
@@ -45,7 +45,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
           <OfflineSubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />
         </OfflineForm>
         <p className="auth-links"><Link href="/auth/forgot-password">نسيت كلمة المرور؟</Link></p>
-        <p className="foundation-note">إنشاء الحسابات غير متاح من هذه الصفحة.</p>
+        <p className="foundation-note">ليس لديك حساب؟ اطلب دعوة من مسؤول شركتك.</p>
       </Panel>
 
     </main>

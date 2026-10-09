@@ -123,7 +123,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
 
   return <>
     <div className={styles.formBlock}>
-      <h2 className={styles.formTitle}>1 · تواريخ الإجازة</h2>
+      <h2 className={styles.formTitle}>تواريخ الإجازة</h2>
       <form className="auth-form" onSubmit={loadOptions} aria-busy={loadingOptions}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <div className={styles.dateFields}>
@@ -153,7 +153,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
     </div>
 
     {options && <div className={styles.formBlock}>
-      <h2 className={styles.formTitle}>2 · بيانات الطلب</h2>
+      <h2 className={styles.formTitle}>بيانات الطلب</h2>
       <form className="auth-form" action={submitAction} aria-busy={submitting}
         onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <fieldset disabled={frozen || Boolean(rangeError) || options.startDate !== fields.startDate || options.endDate !== fields.endDate}
@@ -187,7 +187,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
-              <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" disabled={offline}
+              <SubmitButton label="إرسال طلب الإجازة" pendingLabel="جارٍ الإرسال…" disabled={offline}
                 ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} />
               {submitting ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
                 : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}

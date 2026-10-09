@@ -55,7 +55,7 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
   const retryHref = historyHref(tenantId, requestId, requestedOffset);
   return <Panel className="task-page" aria-labelledby="cancellation-history-title">
     <h2 id="cancellation-history-title">سجل طلبات الإلغاء</h2>
-    <p className="field-hint">طلبات الإلغاء وقرارات الموارد البشرية، من الأقدم إلى الأحدث. الحالات أدناه هي وقت كل حركة؛ حالة الإجازة الحالية أعلى الصفحة.</p>
+    <p className="field-hint">طلبات الإلغاء وقراراتها، من الأقدم إلى الأحدث. حالة الإجازة الحالية تظهر أعلى الصفحة؛ هنا ترى حالتها وقت كل إجراء.</p>
 
     {offsetInvalid ? <Message tone="bad"  role="alert">رقم صفحة سجل الإلغاء غير صالح.{' '}
       <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></Message>

@@ -24,12 +24,12 @@ export default async function AttendanceImportPage({ params }: { params: Promise
     <Panel className=" task-page attendance-import-page" aria-labelledby="attendance-import-title">
       <ButtonLink icon="arrowRight" variant="ghost"  href={`/tenant/${tenantId}/attendance`}>العودة إلى الحضور اليومي</ButtonLink>
       <p className="eyebrow">استيراد تسجيلات العمل</p>
-      <PageHeader id="attendance-import-title" title={<>استيراد الحضور من ملف</>} description={<> ارفع الملف، واربط أعمدته، ثم راجع كل صف قبل الحفظ. تسجل الأحداث كأدلة حضور وتخضع لتفسير اليوم ومراجعته المعتاد. </>} />
+      <PageHeader id="attendance-import-title" title={<>استيراد الحضور من ملف</>} description={<> ارفع الملف، وحدد أعمدته، ثم راجع التسجيلات قبل الحفظ. تظل أيام العمل بحاجة إلى المراجعة والاعتماد المعتادين. </>} />
 
-      <a className={buttonClassName("ghost", "md", "attendance-import-template")} href="/templates/attendance-import.csv" download="attendance-import.csv">تنزيل قالب CSV</a>
+      <a className={buttonClassName("ghost", "md", "attendance-import-template")} href="/templates/attendance-import.csv" download="attendance-import.csv">تنزيل ملف نموذجي (CSV)</a>
       <p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</ButtonLink></p>
       <Disclosure summary="شروط الملف وقواعد الربط"><ul className="attendance-import-rules">
-        <li>الأعمدة المطلوبة: رمز الموظف، اسم الفرع، وقت الحدث بفرق توقيت، الاتجاه، ومعرّف الحدث في المصدر.</li>
+        <li>الأعمدة المطلوبة: رمز الموظف، اسم الفرع، وقت التسجيل مع فرق التوقيت، حضور أو انصراف، ورقم التسجيل في الملف الأصلي.</li>
         <li>اسم الفرع يجب أن يطابق فرعًا نشطًا وفريدًا. إذا لم يوجد تكليف مطابق لموظف معروف، يُحفظ الحدث للمراجعة ولا يُربط بيوم تلقائيًا.</li>
         <li>الحد الأقصى 100 حدث و256 كيلوبايت. الصفوف المكررة لا تتكرر، والمرفوضة لا تُحفظ.</li>
       </ul></Disclosure>

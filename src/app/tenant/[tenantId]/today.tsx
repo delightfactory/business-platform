@@ -72,24 +72,24 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
     if (valid && Number(counts.overtime_pending) > 0) entries.push({ title: 'إضافي بانتظار القرار', detail: `${scope}. عناصر الإضافي: ${counts.overtime_pending}؛ قد تتداخل مع الاستثناءات.`, href: `${base}/attendance/review?date=${date}&filter=overtime`, count: Number(counts.overtime_pending) });
     entries.push({ title: 'تسجيلات بلا تكليف', detail: 'قائمة مستقلة للتحقق من التسجيلات والأيام المحتملة؛ ليست ضمن عداد المراجعة.', href: `${base}/attendance/unassigned` });
   }
-  if (channel?.can_view === true) model.work.push({ title: 'قنوات الحضور ومراجعة الموقع', detail: 'افتح القناة لمتابعة الربط والمعالجة ومراجعة الموقع ضمن مصدرها.', href: `${base}/attendance/sources` });
+  if (channel?.can_view === true) model.work.push({ title: 'طرق تسجيل الحضور والمواقع', detail: 'راجع طريقة تسجيل الحضور وموقع العمل والتسجيلات الواردة.', href: `${base}/attendance/sources` });
   if (leave?.canView) {
     const queue = requestResult && !requestResult.error ? readRequestQueue(requestResult.data) : null;
     const entries = leave.canApprove || leave.canManage ? model.work : model.followUp;
     entries.push({ title: 'طلبات الإجازة', detail: queue
-      ? queue.items.length ? `طلبات مقدمة في العينة: ${queue.items.length}${queue.hasMore ? '؛ توجد طلبات أخرى. عرض كامل الطلبات في القائمة.' : '. افتح القائمة لمتابعتها.'}` : 'لم تظهر طلبات مقدمة في هذه القراءة؛ افتح القائمة لمتابعة الإجازات.'
-      : 'تعذر تحميل عينة الطلبات؛ افتح القائمة لإعادة المحاولة.', href: `${base}/leave`, count: queue?.items.length, more: queue?.hasMore,
+      ? queue.items.length ? `طلبات ظاهرة للمراجعة: ${queue.items.length}${queue.hasMore ? '؛ توجد طلبات أخرى. عرض كامل الطلبات في القائمة.' : '. افتح القائمة لمتابعتها.'}` : 'لم تظهر طلبات جديدة الآن. افتح القائمة لمتابعة الإجازات.'
+      : 'تعذر تحميل الطلبات هنا. افتح قائمة الإجازات للمحاولة من جديد.', href: `${base}/leave`, count: queue?.items.length, more: queue?.hasMore,
       preview: queue?.items.map(item => ({ label: item.employeeName, detail: item.leaveTypeName, href: `${base}/leave/requests/${item.id}` })) });
     if (leave.canApprove) {
       const queue = cancellationResult && !cancellationResult.error ? readCancellationQueue(cancellationResult.data) : null;
       entries.push({ title: 'طلبات إلغاء الإجازة', detail: queue
-        ? queue.items.length ? `طلبات إلغاء في العينة: ${queue.items.length}${queue.hasMore ? '؛ توجد طلبات أخرى. عرض كامل الطلبات في القائمة.' : '. راجع الطلب الأصلي قبل القرار.'}` : 'لم تظهر طلبات إلغاء معلقة في هذه القراءة.'
-        : 'تعذر تحميل عينة الإلغاء؛ قائمة الطلبات الأخرى مستقلة عنها.', href: `${base}/leave#leave-cancellation-queue-title`, count: queue?.items.length, more: queue?.hasMore,
+        ? queue.items.length ? `طلبات إلغاء ظاهرة: ${queue.items.length}${queue.hasMore ? '؛ توجد طلبات أخرى. عرض كامل الطلبات في القائمة.' : '. راجع الطلب الأصلي قبل القرار.'}` : 'لم تظهر طلبات إلغاء تحتاج مراجعة الآن.'
+        : 'تعذر تحميل طلبات الإلغاء. يمكنك متابعة باقي طلبات الإجازة.', href: `${base}/leave#leave-cancellation-queue-title`, count: queue?.items.length, more: queue?.hasMore,
         preview: queue?.items.map(item => ({ label: item.employeeName, detail: 'طلب إلغاء إجازة', href: `${base}/leave/requests/${item.requestId}` })) });
     }
   }
-  if (payroll?.can_manage === true || payroll?.can_view === true || runs?.can_view === true) model.work.push({ title: 'الرواتب', detail: 'افتح دورة الرواتب لاختيار الجهة والفترة ومراجعة حالتها؛ لا يتضمن هذا العرض قراءة مبالغ أو موانع المسير.', href: payroll ? `${base}/payroll` : `${base}/payroll/runs` });
-  if (inputs) model.work.push({ title: 'مدخلات الرواتب', detail: 'تابع المدخلات ضمن الجهة والفترة في صفحة التنفيذ.', href: `${base}/payroll/inputs` });
+  if (payroll?.can_manage === true || payroll?.can_view === true || runs?.can_view === true) model.work.push({ title: 'الرواتب', detail: 'اختر الجهة والشهر في قسم الرواتب لعرض المبالغ وما يحتاج مراجعة.', href: payroll ? `${base}/payroll` : `${base}/payroll/runs` });
+  if (inputs) model.work.push({ title: 'مدخلات الرواتب', detail: 'جهّز بيانات الرواتب للجهة والفترة المطلوبة.', href: `${base}/payroll/inputs` });
   if (navigation?.can_view_advances === true) model.followUp.push({ title: 'سلف الموظفين', detail: 'متابعة السلف والأرصدة في الصفحة المختصة.', href: `${base}/payroll/advances` });
   if (navigation?.can_view_reports === true) model.followUp.push({ title: 'تقارير الرواتب', detail: 'عرض التقرير المتاح لهذا الحساب دون تغيير أي مسير.', href: `${base}/payroll/reports?report=${navigation.report_kind === 'advances' ? 'advances' : 'sheet'}` });
   if (people?.can_view === true) model.work.push({ title: 'الموظفون', detail: 'ملفات الموظفين وبيانات العمل والعمليات المتاحة لحسابك.', href: `${base}/people` });

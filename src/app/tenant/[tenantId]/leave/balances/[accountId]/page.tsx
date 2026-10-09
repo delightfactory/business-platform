@@ -93,15 +93,14 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
   }
 
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title={<>سجل حساب الرصيد</>} eyebrow={<>الموارد البشرية</>} description={<>القيود مرتّبة من الأحدث إلى الأقدم بحد أقصى {PAGE_SIZE} قيدًا في الصفحة، وكل قيد يعرض
-          أيامه الموقعة وسببه ومرجعه ونسخة السياسة المرتبطة به.</>} action={<><div className="workspace-form-actions">
+    <PageHeader title={<>حركات رصيد الإجازة</>} eyebrow={<>الموارد البشرية</>} description={<>أحدث الحركات أولًا، حتى {PAGE_SIZE} حركة في الصفحة. تعرض كل حركة الأيام المضافة أو المخصومة وسببها ومرجعها والسياسة المستخدمة.</>} action={<><div className="workspace-form-actions">
         <PendingLink className="ui-button ui-button-ghost ui-button-md" href={backHref}>أرصدة الموظف</PendingLink>
         <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</PendingLink>
       </div></>} />
 
     {failure !== null
       ? <Panel  aria-label="خطأ في تحميل سجل الحساب">
-        <div role="alert"><EmptyState title={<>{failure === 'scope' ? 'هذا الحساب غير متاح لزوج الموظف المحدد'
+        <div role="alert"><EmptyState title={<>{failure === 'scope' ? 'هذا الرصيد لا يخص الموظف وجهة العمل المختارين'
             : 'تعذّر تحميل سجل الحساب'}</>} description={<>لم يتغير أي رصيد. {failure === 'scope'
             ? 'الرابط يشير إلى حساب لا يخص الموظف وجهة العمل المختارين.'
             : 'أعد المحاولة أو عُد إلى الأرصدة.'}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={failure === 'scope' ? backHref : path}>

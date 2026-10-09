@@ -11,7 +11,7 @@ import { createInvitationAction, type InvitationFormState } from '../actions';
 const errors = {
   invalid: 'تحقق من البريد وبيانات الشركة وحدود الاستخدام، ثم حاول مجددًا.',
   setup: 'خدمة الدعوات غير متاحة حاليًا. احتفظنا ببياناتك؛ حاول لاحقًا.',
-  forbidden: 'تعذر تسجيل الدعوة. راجع بياناتك وصلاحيتك، ثم حاول مجددًا. احتفظنا بمفتاح الطلب لتكون إعادة المحاولة آمنة.',
+  forbidden: 'تعذر حفظ الدعوة. راجع بياناتك وصلاحيتك، ثم حاول مجددًا من هذه الصفحة؛ نستخدم الطلب نفسه لمنع تكراره.',
 };
 
 export function InvitationForm({ requestKey }: { requestKey: string }) {

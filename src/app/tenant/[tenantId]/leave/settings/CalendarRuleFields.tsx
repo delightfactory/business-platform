@@ -34,7 +34,7 @@ export function CalendarRuleFields({
   return <>
     <fieldset className={styles.optionGroup} disabled={disabled}>
       <legend>أيام الراحة الأسبوعية</legend>
-      <p className={styles.optionGroupHint}>تُستثنى الأيام المحددة من احتساب أيام العمل في التقويم. لا يوجد عدد إلزامي؛ اختر ما يناسب سياسة شركتك.</p>
+      <p className={styles.optionGroupHint}>اختر أيام الراحة حسب سياسة الشركة. لا تُحسب ضمن أيام العمل، ولا يلزم اختيار عدد محدد.</p>
       <div className={styles.optionGrid}>
         {WEEKDAY_LABELS.map((label, day) => (
           <label className={styles.option} key={day}>
@@ -47,7 +47,7 @@ export function CalendarRuleFields({
 
     <fieldset className={styles.optionGroup} disabled={disabled}>
       <legend>العطلات</legend>
-      <p className={styles.optionGroupHint}>كل عطلة صف مستقل بتاريخها واسمها ضمن فترة سريان التقويم (بحد أقصى {MAX_HOLIDAY_ROWS} عطلة في الإصدار).</p>
+      <p className={styles.optionGroupHint}>أضف اسم كل عطلة وتاريخها ضمن فترة التقويم، حتى {MAX_HOLIDAY_ROWS} عطلة لكل مجموعة إعدادات.</p>
       <div className={styles.holidayRows}>
         {rows.map((row, index) => (
           <div className={styles.holidayRow} key={index}>

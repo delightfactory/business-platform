@@ -29,5 +29,5 @@ export async function RecordedPaymentNotice({ tenantId, employer, output, period
   if (result.error) return failure(result.error.code === '42501' && result.error.message === 'payroll_forbidden');
   const facts = readPaymentFacts(result.data, output, period);
   if (!facts) return failure();
-  return panel(<>{facts.superseded && <p>هذا المخرج مستبدل ومحفوظ للتاريخ؛ الحالة أدناه تخص قيوده فقط.</p>}<p>{recordedPaymentDescription(facts)}</p></>);
+  return panel(<>{facts.superseded && <p>استُبدل هذا المسير، وبقي محفوظًا في السجل. حالة الصرف أدناه تخص دفعاته فقط.</p>}<p>{recordedPaymentDescription(facts)}</p></>);
 }

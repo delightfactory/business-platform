@@ -55,15 +55,15 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
       {visibleSites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
     </Select></Field>
     <Field id="employee-start" label={<>تاريخ بداية العمل</>} required><Input id="employee-start" name="startDate" type="date" required defaultValue={state.startDate} /></Field>
-    {departments.length > 0 && <><label htmlFor="employee-department">القسم (اختياري)</label>
+    {departments.length > 0 && <Field id="employee-department" label="القسم (اختياري)">
       <Select id="employee-department" name="departmentId" value={departmentId}
         onChange={(event) => setDepartmentChoice(event.target.value)}><option value="">دون تحديد الآن</option>
-        {departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}</Select></>}
-    {jobs.length > 0 && <><label htmlFor="employee-job">الوظيفة (اختياري)</label>
+        {departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}</Select></Field>}
+    {jobs.length > 0 && <Field id="employee-job" label="الوظيفة (اختياري)">
       <Select key={`${state.attempt}-${departmentId}`} id="employee-job" name="jobId"
         defaultValue={visibleJobs.some((job) => job.id === state.jobId) ? state.jobId : ''}>
         <option value="">دون تحديد الآن</option>
-        {visibleJobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}</Select></>}
+        {visibleJobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}</Select></Field>}
     </fieldset>
 
     <fieldset className={styles.formGroup}><legend>الأجر الأساسي</legend>

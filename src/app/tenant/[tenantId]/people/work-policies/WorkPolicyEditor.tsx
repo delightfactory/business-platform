@@ -155,8 +155,8 @@ export function WorkPolicyEditor({
 
     <Panel className="work-policy-section" aria-labelledby={`${idPrefix}-attribution-heading`}>
       <div className="work-policy-section-heading">
-        <h3 id={`${idPrefix}-attribution-heading`}>نافذة إسناد البصمة</h3>
-        <p>المدة المحيطة بالجدول التي يمكن خلالها ربط البصمة به.</p>
+        <h3 id={`${idPrefix}-attribution-heading`}>مدة ربط التسجيل بيوم العمل</h3>
+        <p>حدد كم دقيقة قبل الدوام وبعده يُسمح فيها بربط التسجيل بيوم العمل.</p>
       </div>
       <div className="work-policy-grid work-policy-grid-narrow">
         <div className="work-policy-field"><Field id={`${idPrefix}-before`} label={<>قبل بداية الجدول (دقيقة)</>}><Input id={`${idPrefix}-before`} name="attributionBefore" type="number" min="0" max="720" value={values.attributionBefore} onChange={handleValueChange} /></Field></div>
@@ -167,14 +167,14 @@ export function WorkPolicyEditor({
     <Panel className="work-policy-section" aria-labelledby={`${idPrefix}-overtime-heading`}>
       <div className="work-policy-section-heading">
         <h3 id={`${idPrefix}-overtime-heading`}>العمل الإضافي</h3>
-        <p>عند التفعيل، تُراجع الدقائق الزائدة عن نهاية الوردية أو مدة العمل المطلوبة يدويًا. يُقرّب المرشح لأسفل حسب الخطوة المحددة، ولا يُعتمد تلقائيًا.</p>
+        <p>عند التفعيل، يُعرض الوقت الزائد للمراجعة ولا يُعتمد تلقائيًا. تُقرّب مدته لأسفل حسب القيمة التي تحددها.</p>
       </div>
       <label className="work-policy-check-option">
         <Checkbox  name="overtimeEnabled" checked={overtimeEnabled} onChange={(event) => setOvertimeEnabled(event.target.checked)} />
-        <span>احتساب مرشح للعمل الإضافي وفق هذا القالب</span>
+        <span>اقتراح وقت إضافي للمراجعة وفق هذا القالب</span>
       </label>
       {overtimeEnabled ? <div className="work-policy-grid work-policy-grid-narrow">
-        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-minimum`} label={<>أقل مدة زائدة لإنشاء مرشح (دقيقة)</>} required><Input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" value={overtimeMinimum} onChange={(event) => setOvertimeMinimum(Number(event.target.value))} required /></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-minimum`} label={<>أقل وقت إضافي يُعرض للمراجعة (دقيقة)</>} required><Input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" value={overtimeMinimum} onChange={(event) => setOvertimeMinimum(Number(event.target.value))} required /></Field></div>
         <div className="work-policy-field"><Field id={`${idPrefix}-overtime-rounding`} label={<>خطوة التقريب لأسفل (دقيقة)</>} required><Input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" value={overtimeRounding} onChange={(event) => setOvertimeRounding(Number(event.target.value))} required /></Field></div>
       </div> : <><input type="hidden" name="overtimeMinimum" value={overtimeMinimum} /><input type="hidden" name="overtimeRounding" value={overtimeRounding} /></>}
       <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. يصنف المراجع الدقائق الإضافية ويعتمدها يدويًا؛ لا يصنف النظام الليل أو الراحة الأسبوعية أو العطلات تلقائيًا.</p>
@@ -189,7 +189,7 @@ export function WorkPolicyEditor({
         <Checkbox  name="autoApproveClean" checked={values.autoApproveClean} onChange={handleValueChange} />
         <span>اعتماد اليوم تلقائيًا إذا كان مكتملًا بلا استثناء</span>
       </label>
-      <p className="field-hint">لا يشمل الغياب أو التسجيل الناقص أو المدة الأقل من المطلوبة أو أي تعارض. يسري الإعداد على Work Instances الجديدة فقط.</p>
+      <p className="field-hint">لا يشمل الغياب أو التسجيل الناقص أو المدة الأقل من المطلوبة أو أي تعارض. يسري الإعداد على أيام العمل الجديدة فقط.</p>
     </Panel>
 
     {saveState.error && <Message tone="bad"  role="alert">{saveState.error}</Message>}

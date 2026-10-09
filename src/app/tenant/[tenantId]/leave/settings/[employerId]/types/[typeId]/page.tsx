@@ -123,7 +123,7 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
     <Panel  aria-labelledby="type-versions-title">
       <div className={styles.panelHeading}>
         <div>
-          <h2 id="type-versions-title">إصدارات النوع</h2>
+          <h2 id="type-versions-title">سجل إعدادات نوع الإجازة</h2>
           <p>الإعدادات الحالية والسابقة، من الأحدث إلى الأقدم.</p>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
         </RecordCard>)}</ul>}
     </Panel>
 
-    {canEdit && <SettingsTask label="إصدار جديد من تاريخ لاحق">
+    {canEdit && <SettingsTask label="تعديل نوع الإجازة من تاريخ لاحق">
       {initialRevise
         ? <ReviseTypeForm tenantId={tenantId} employerId={employerId} typeId={typeId}
           detailPath={path} initial={initialRevise} />

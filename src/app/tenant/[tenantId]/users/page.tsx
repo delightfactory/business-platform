@@ -22,15 +22,15 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'employee.attendance.self.v1', label: 'الحضور الشخصي من الهاتف', description: 'يسجل العضو حضوره وانصرافه فقط. يحتاج ربطًا بموظف نشط وموقع وسياسة حضور مهيأة؛ لا يمنح إدارة حضور الآخرين.' },
   { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
   { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
-  { key: 'people.compensation_reader.v1', label: 'قارئ الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
-  { key: 'people.compensation_manager.v1', label: 'مدير الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
-  { key: 'people.import_operator.v1', label: 'مشغّل استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
-  { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الحزمة إدارة الموظفين أو الاطلاع على الأجور.' },
-  { key: 'attendance.reader.v1', label: 'قارئ الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
-  { key: 'attendance.operator.v1', label: 'مشغّل الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
+  { key: 'people.compensation_reader.v1', label: 'عرض الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
+  { key: 'people.compensation_manager.v1', label: 'إدارة الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
+  { key: 'people.import_operator.v1', label: 'استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
+  { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الصلاحيات إدارة الموظفين أو الاطلاع على الأجور.' },
+  { key: 'attendance.reader.v1', label: 'عرض الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
+  { key: 'attendance.operator.v1', label: 'إدخال الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
   { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
   { key: 'employee.leave.self.v1', label: 'الخدمة الذاتية للإجازات', description: 'عرض الملف الشخصي وطلب الإجازة مستقبلًا. لا تمنح عرض دليل الموظفين أو الأجور.' },
-  { key: 'payroll.reader.v1', label: 'قارئ الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
+  { key: 'payroll.reader.v1', label: 'عرض الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
   { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند إتاحة الحساب.' },
   { key: 'payroll.payment.recorder.v1', label: 'مسجل دفعات الرواتب الخارجية', description: 'عرض المستحق النهائي وتسجيل دفعات صُرفت خارجيًا ؛ لا تنفيذ تحويل بنكي.' },
   { key: 'payroll.reviewer.v1', label: 'مراجع الرواتب', description: 'عرض المرشح والعوائق والفروق دون الحساب أو الاعتماد المالي.' },
@@ -40,7 +40,7 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'employee_finance.approver.v1', label: 'معتمد مكافآت وخصومات الموظفين', description: 'اعتماد المدخلات المالية دون تحضيرها.' },
   { key: 'payroll.correction.requester.v1', label: 'مسؤول تصحيح الرواتب', description: 'إعداد ومراجعة مقترح تصحيح التاريخ المقفل؛ يلزم أيضًا تفويض المصدر والاعتماد أو تسجيل التسوية بحسب المهمة.' },
   { key: 'payroll.calendar.manager.v1', label: 'مدير دورة الرواتب', description: 'إعداد الدورة ومراجعة تواريخ الفترات وحفظها.' },
-  { key: 'leave.reader.v1', label: 'قارئ الإجازات', description: 'عرض سجلات الإجازات ضمن الصلاحيات الممنوحة.' },
+  { key: 'leave.reader.v1', label: 'عرض الإجازات', description: 'عرض سجلات الإجازات ضمن الصلاحيات الممنوحة.' },
   { key: 'leave.manager.v1', label: 'مدير الإجازات', description: 'عرض وإدارة سجلات الإجازات دون اعتماد الطلبات.' },
   { key: 'leave.approver.v1', label: 'معتمد الإجازات', description: 'عرض واعتماد طلبات الإجازة دون إدارة السجلات أو تعديل الأرصدة.' },
   { key: 'leave.balance.manager.v1', label: 'مدير أرصدة الإجازات', description: 'عرض الإجازات وتعديل الأرصدة ضمن سجل تدقيق.' },
@@ -96,7 +96,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {reviewMessage && <Message tone="info"  role="status">{reviewMessage} <a href="#pending-title">راجع حالة الدعوات</a></Message>}
         {query.state && !success && !deliveryIssue && !reviewMessage && <Message tone="bad"  role="alert">{stateMessage(query.state)}</Message>}
       </section>
-      <details className="workspace-records-panel admin-setup-details"><summary id="attendance-access-setup">تهيئة الحضور الشخصي للموظفين</summary><div><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</ButtonLink>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</div></details>
+      <details className="workspace-records-panel admin-setup-details"><summary id="attendance-access-setup">كيف أتيح تسجيل الحضور للموظف؟</summary><div><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في صلاحيات ذلك العضو. بعد حفظ الصلاحيات، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. سحب الصلاحية أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</ButtonLink>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</div></details>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
         <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
         <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
@@ -117,22 +117,22 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
-                {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
-                <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الحزمة محفوظة؛ يتطلب التسجيل ربط الموظف وسياسة الموقع' : 'الحزمة غير مضافة'}</p>
+                {!row.protected_admin && <p className="field-hint">الصلاحيات الحالية: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد صلاحيات إضافية للموظفين'}</p>}
+                <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة؛ يلزم ربط حساب الموظف وإعداد الحضور في موقعه' : 'الصلاحية غير مضافة'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
-                {row.protected_admin && <p className="field-hint">تغيير حزم الحضور للأعضاء لا يغيّر دور مسؤول الشركة المحمي. لا تُمنح حزمة الحضور تلقائيًا لهذا الدور؛ راجع مدير الوصول لإتاحة المسار المسموح.</p>}
+                {row.protected_admin && <p className="field-hint">صلاحية تسجيل الحضور للأعضاء مستقلة عن دور مسؤول الشركة. لا تُمنح تلقائيًا لمسؤول الشركة؛ راجع المسؤول عن الصلاحيات لإتاحتها.</p>}
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
                   <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
-                  <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات الإجازة الذاتية فقط، مع الحفاظ على دور مسؤول الشركة.</p>
+                  <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات إجازته فقط، مع الحفاظ على دور مسؤول الشركة.</p>
                 </OfflineForm>}
               </div>
               <div className="invitation-actions">
-                {!row.protected_admin && row.access_state === 'active' && <Disclosure summary={<>إدارة حزم الوصول</>} className="people-role-bundle-editor">
+                {!row.protected_admin && row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
 
-                  <p className="field-hint">يمكن اختيار حتى 24 حزمة. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
+                  <p className="field-hint">اختر الصلاحيات المطلوبة، حتى 24 مجموعة. احتفظ بالاختيارات الحالية ما لم ترد سحبها. انتبه: إدارة الموظفين واستيرادهم تشمل عرض الأجر الأساسي وتعديله.</p>
                   <OfflineForm action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
@@ -143,7 +143,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                         <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
                       </label>)}
                     </fieldset>
-                    <OfflineSubmitButton variant="ghost"  label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
+                    <OfflineSubmitButton variant="ghost"  label="حفظ الصلاحيات" pendingLabel="جارٍ الحفظ…" />
                   </OfflineForm>
                 </Disclosure>}
                 {canManageRoles && row.access_state === 'active' && <Disclosure summary={<>{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</>} className="role-change-confirmation">
@@ -249,7 +249,7 @@ function stateMessage(state: string) {
     'revoke-unchanged': 'لم يحدث إلغاء في هذه المحاولة. قد لا تكون الدعوة متاحة أو قابلة للإلغاء. راجع حالتها الحالية.',
     'revoke-unknown': 'تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر.',
     terminal: 'الدعوة لم تعد معلّقة، لذلك لم يُرسل بريد جديد.', 'limit-full': 'اكتمل عدد المستخدمين المسموح به. عطّل عضوية غير مستخدمة أو اطلب من مشغّل المنصة رفع الحد.',
-    reactivated: 'راجع حالة العضو وحزم وصوله أدناه؛ الرابط وحده لا يؤكد إعادة التفعيل.', deactivated: 'راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.',
+    reactivated: 'راجع حالة العضو وصلاحياته أدناه؛ الرابط وحده لا يؤكد إعادة التفعيل.', deactivated: 'راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.',
     'admin-governed': 'تغيير مسؤول الشركة يحتاج إجراءً منفصلًا.', 'key-conflict': 'تعذر إعادة استخدام الطلب نفسه ببيانات مختلفة.',
     'issuer-lost': 'لا يمكن إعادة إرسال هذه الدعوة لأن مُصدرها لم يعد يملك صلاحية إدارة الأعضاء. ألغها وأنشئ دعوة جديدة من حساب مخوّل.',
     'target-unavailable': 'لا يمكن تنفيذ هذا التغيير لأن الحساب محذوف أو محظور أو لم يؤكد بريده أو لم يكتمل إعداد كلمة مروره.',
@@ -261,20 +261,20 @@ function stateMessage(state: string) {
     'last-admin': 'لا يمكن خفض آخر مسؤول مؤهل. رقِّ مسؤولًا بديلًا أولًا.',
     'role-setup': 'قالب الدور الأساسي غير متاح؛ لم يتغير أي تعيين.',
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
-    'bundles-unchanged': 'راجع حزم الوصول الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
-    'bundle-invalid': 'تعذر التحقق من الحزم المختارة. حدّث الصفحة وأعد المحاولة.',
+    'bundles-unchanged': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
+    'bundle-invalid': 'تعذر التحقق من الصلاحيات المختارة. حدّث الصفحة وأعد المحاولة.',
     'bundle-admin-protected': 'حساب مسؤول الشركة محمي ويُدار من إجراء إدارة المسؤولين.',
-    'bundle-target-unavailable': 'يمكن إدارة الحزم لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
+    'bundle-target-unavailable': 'يمكن تعديل الصلاحيات لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
   };
   return Object.hasOwn(labels, state) ? labels[state] : 'تعذر تنفيذ الإجراء.';
 }
 function successMessage(state?: string) {
   const messages: Record<string, string> = {
-    reactivated: 'راجع حالة العضو وحزم وصوله أدناه؛ الرابط وحده لا يؤكد إعادة التفعيل.', deactivated: 'راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.',
+    reactivated: 'راجع حالة العضو وصلاحياته أدناه؛ الرابط وحده لا يؤكد إعادة التفعيل.', deactivated: 'راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.',
     promoted: 'راجع دور العضو أدناه؛ الرابط وحده لا يؤكد ترقيته إلى مسؤول.',
     demoted: 'راجع الدور الحالي أدناه؛ الرابط وحده لا يؤكد خفض المسؤول.',
-    'bundles-updated': 'راجع حزم الوصول الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
-    'bundles-unchanged': 'راجع حزم الوصول الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
+    'bundles-updated': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
+    'bundles-unchanged': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
     'leave-self-updated': 'راجع إتاحة الخدمة الذاتية للإجازات ودور المسؤول أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
   };
   return state && Object.hasOwn(messages, state) ? messages[state] : null;

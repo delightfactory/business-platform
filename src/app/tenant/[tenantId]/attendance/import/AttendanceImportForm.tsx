@@ -14,7 +14,7 @@ const FIELDS = [
   { key: 'site_name', label: 'اسم الفرع', hint: 'يجب أن يطابق اسم فرع نشط وفريد.' },
   { key: 'happened_at', label: 'وقت الحدث', hint: <>تاريخ ووقت مع فرق توقيت، مثل <bdi className={styles.formatValue}>2026-09-30T08:30:00+02:00</bdi>.</> },
   { key: 'direction', label: 'الاتجاه', hint: 'اكتب in للدخول أو out للخروج.' },
-  { key: 'source_event_key', label: 'معرّف الحدث في المصدر', hint: 'قيمة ثابتة تمنع تكرار استيراد الحدث نفسه.' },
+  { key: 'source_event_key', label: 'رقم التسجيل في المصدر', hint: 'رقم ثابت من الملف الأصلي يمنع حفظ التسجيل نفسه مرتين.' },
 ] as const;
 type Header = { label: string; index: number };
 
@@ -169,7 +169,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
           <Checkbox  name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
           <span>حفظ الحدث في قائمة «بلا تكليف» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
         </label>)}
-        <p className="field-hint">تُفسر الأحداث داخل نافذة يوم العمل المطابقة. وقد يتحول اليوم إلى حالة تحتاج مراجعة إذا اكتملت به بصمة ناقصة.</p>
+        <p className="field-hint">تُربط التسجيلات بيوم العمل المطابق. إذا أكمل التسجيل بصمة ناقصة، فقد يحتاج اليوم إلى مراجعة.</p>
         <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'} pendingLabel="جارٍ حفظ الأحداث…" ariaDescribedBy={showOffline1 ? offlineHint1 : undefined}/></div>
       {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
       {showingCommitResult && ambiguousRows.length > 0 && <form action={commitAction} className="attendance-import-confirm-form attendance-import-ambiguous-retry"

@@ -14,7 +14,7 @@ type SearchParams = Promise<{ state?: string }>;
 export default async function OperatorPage({ searchParams }: { searchParams: SearchParams }) {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة إلى ملف البيئة ثم أعد تشغيل التطبيق." />;
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بالمنصة. اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user }, error: userError } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   if (userError) return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
@@ -63,7 +63,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
               {canOnboard && <TaskLink href="/operator/onboarding" title="إعداد شركة بحساب موجود" detail="أنشئ شركة لمسؤول لديه حساب مؤكد بالفعل." />}
               {canManageLifecycle && <TaskLink href="/operator/tenants" title="حالة الشركات" detail="علّق الوصول أو استعده مع تسجيل السبب." />}
               {canManageCommercial && <TaskLink href="/operator/commercial" title="حدود الاستخدام" detail="راجع عدد المستخدمين والفروع واضبط الحدود." />}
-              {canManageCommercial && <TaskLink href="/operator/entitlements" title="إتاحة الوحدات" detail="راجع الوحدات المتاحة لكل شركة وغيّرها." />}
+              {canManageCommercial && <TaskLink href="/operator/entitlements" title="خدمات الشركة" detail="فعّل خدمات الشركة أو أوقفها حسب صلاحيتك." />}
             </ul>
           </section>}
           {canManage && <section className="operator-work-group" aria-labelledby="access-operations-title">

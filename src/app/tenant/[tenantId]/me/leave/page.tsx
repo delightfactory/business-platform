@@ -127,7 +127,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
     <Panel className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-history-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-history-title">سجل طلبات الإجازة</h2>
-        <p>كل الطلبات المسجّلة باسمك مع حالتها. الحالة «مُقدَّم» تعني بانتظار قرار الموارد البشرية.</p>
+        <p>طلباتك وحالتها الحالية. «مُقدَّم» يعني أن الطلب ينتظر قرار الموارد البشرية.</p>
       </div>
       {requestPage.invalid ? <Message tone="bad"  role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
         <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></Message>

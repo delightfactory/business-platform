@@ -13,5 +13,5 @@ export function PrintPayslipButton({scope,refreshHref}:{scope:PayslipPrintScope;
   catch{setError('تعذر التحقق من صلاحية القسيمة. أعد طلب الطباعة بعد عودة الاتصال.');}
   finally{setPending(false);}
  }
- return <div><Button variant="ghost" type="button"  disabled={pending} onClick={print}>{pending?'جارٍ التحقق قبل الطباعة…':'طباعة القسيمة أو حفظها PDF'}</Button>{error&&<Message tone="bad" role="alert">{error} <a href={refreshHref}>تحديث القسيمة</a></Message>}</div>;
+ return <div><Button variant="ghost" type="button"  disabled={pending} onClick={print}>{pending?'جارٍ التحقق قبل الطباعة…':'طباعة القسيمة أو حفظها PDF'}</Button>{error&&<Message tone="bad" role="alert">{error} <a href={refreshHref}>تحديث بيان الراتب</a></Message>}</div>;
 }

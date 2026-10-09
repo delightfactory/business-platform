@@ -36,8 +36,8 @@ export default async function CommercialTenantsPage({ searchParams }: { searchPa
       <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
         <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
     <Panel className="operator-collection" aria-labelledby="commercial-title">
-      <p className="eyebrow">الوصول التجاري</p><PageHeader id="commercial-title" title={<>حدود استخدام الشركات</>} />
-      <p className="intro">غيّر حد المستخدمين أو الفروع. خفض الحد لا يعطّل الموجود، لكنه يمنع إضافة المزيد حتى يصبح الاستخدام أقل من الحد أو يُرفع الحد.</p>
+      <p className="eyebrow">الشركات</p><PageHeader id="commercial-title" title={<>حدود استخدام الشركات</>} />
+      <p className="intro">حدد عدد المستخدمين والفروع المسموح به. خفض الحد لا يوقف الموجود، لكنه يمنع إضافة المزيد حتى يقل الاستخدام أو ترفع الحد.</p>
       <OperatorListControls basePath="/operator/commercial" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة" inputId="commercial-search" />
       {tenants.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد شركات مطابقة.'}</p> : <ul className="member-list">
         {tenants.map((tenant) => <RecordCard className="member-card" key={tenant.tenant_id}>

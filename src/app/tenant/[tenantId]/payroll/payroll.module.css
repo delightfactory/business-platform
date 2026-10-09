@@ -1,4 +1,5 @@
 .workspace { display: grid; gap: var(--space-4, 1.5rem); min-width: 0; }
+.workspace :is(h2,h3) { text-wrap: balance; }
 .workspace > header { min-width: 0; overflow-wrap: anywhere; }
 .progress { margin-block-start: 1rem; padding-block-start: 1rem; border-block-start: 1px solid var(--color-border); }
 .progressCurrent { font-weight: 700; }
@@ -103,4 +104,34 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
  .reviewNavigation{flex-wrap:nowrap;overflow-x:auto;padding-block:4px}.reviewNavigation a{white-space:nowrap;flex-shrink:0}
  .fields,.paymentFields{grid-template-columns:minmax(0,1fr)}
  .form :is(.fields,.paymentFields) label{line-height:1.6}
+}
+
+/* Clear section choices and compact records across the payroll workspace. */
+@media screen {
+  .reviewNavigation { flex-wrap:nowrap; overflow-x:auto; max-width:100%; padding:6px; border:1px solid var(--line); border-radius:var(--r-tile); background:var(--surface-2); scrollbar-width:thin; }
+  .reviewNavigation a { flex:0 0 auto; min-height:44px; background:var(--surface); border:1px solid var(--line); color:var(--ink-2); white-space:nowrap; }
+  .reviewNavigation a:hover { border-color:var(--brand); color:var(--brand-text); }
+  .periods .card { display:grid; gap:10px; }
+  .periods .card > :is(h2,h3,p) { margin:0; }
+  .periods .card > a { justify-self:start; }
+  .outputCards > .card { border-inline-start:3px solid var(--line-2); }
+  .outputCards > .card > ul { display:grid; gap:10px; padding-inline-start:20px; line-height:1.7; font-size:13px; }
+  .outputCards > .card > ul > li::marker { color:var(--brand); }
+  .figureStrip > div { padding:12px; border-radius:var(--r-tile); background:var(--surface-2); }
+  .figureStrip dd { line-height:1.55; }
+  .figureStrip dd:not(:has(bdi)) { font-size:14px; }
+  .issues li { padding:16px; border:1px solid var(--line); border-radius:var(--r-tile); background:var(--surface-2); }
+  .issues { gap:10px; }
+  .issues :global(.ui-disclosure) { background:var(--surface); }
+}
+@media screen and (max-width:640px) {
+  .workspace > div:first-child .actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .workspace > div:first-child .actions > a { justify-content:center; text-align:center; }
+  .workspace > div:first-child .actions > a:last-child:nth-child(odd) { grid-column:1 / -1; }
+  .figureStrip { gap:10px; }
+  .figureStrip > div { padding:10px; }
+  .figureStrip dd { font-size:20px; }
+  .figureStrip dd:not(:has(bdi)) { font-size:13px; }
+  .filters { gap:12px; }
+  .filters > button { min-height:44px; }
 }

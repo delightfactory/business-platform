@@ -856,6 +856,25 @@
 .tenant-users-list .invitation-row h3 { font: 500 15px/1.5 var(--f-body); }
 .tenant-users-list .invitation-actions { display: flex; flex-wrap: wrap; align-items: start; gap: 8px; }
 @media(max-width:600px) { .branding-color-preview { grid-template-columns: repeat(2,minmax(0,1fr)); } .tenant-users-list .invitation-row { flex-direction: column; padding: 16px; } .welcome-panel { padding-inline: 0; } }
+
+/* Keep permission choices readable without separating controls from their explanations. */
+@media screen {
+  .people-role-bundle-editor { width: 100%; }
+  .people-role-bundle-editor fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border: 0; padding: 16px 0; min-width: 0; }
+  .people-role-bundle-editor legend { font-weight: 600; margin-bottom: 8px; }
+  .people-role-bundle-editor fieldset > label { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface); cursor: pointer; }
+  .people-role-bundle-editor fieldset > label:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+  .people-role-bundle-editor label > input { margin-top: 3px; flex: 0 0 auto; }
+  .people-role-bundle-editor label > span { display: grid; gap: 6px; min-width: 0; }
+  .people-role-bundle-editor label strong { color: var(--ink); font-size: 14px; }
+  .people-role-bundle-editor label small { color: var(--ink-2); font-size: 13px; line-height: 1.65; }
+}
+@media screen and (max-width: 600px) {
+  .people-role-bundle-editor fieldset { grid-template-columns: minmax(0, 1fr); }
+  .tenant-users-list .invitation-actions { width: 100%; }
+  .tenant-users-list .invitation-actions > form { flex: 1 1 auto; }
+  .tenant-users-list .invitation-actions > form > button { width: 100%; white-space: normal; }
+}
 .workspace-account-menu [role="menuitemradio"] { display: block; padding: 10px; border-radius: var(--r-ctl); cursor: pointer; font-size: 14px; }
 .workspace-account-menu [role="menuitemradio"][data-highlighted] { outline: none; background: var(--surface-2); }
 .workspace-account-menu [role="menuitemradio"][data-state="checked"] { color: var(--brand-text); background: var(--brand-soft); }

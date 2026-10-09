@@ -17,12 +17,12 @@ type SearchParams = Promise<{ key?: string; state?: string }>;
 export default async function OperatorOnboardingPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const { data: status, error: statusError } = await supabase.rpc('current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
-  if (status !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
+  if (status !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب غير مصرح له بتشغيل المنصة حاليًا." />;
   const { data: canOnboard, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
   if (!operatorPermission({ data: canOnboard, error: capabilityError })) return <Status title="إعداد الشركات غير متاح" detail="صلاحية إعداد الشركات غير ممنوحة لهذا المشغّل." />;

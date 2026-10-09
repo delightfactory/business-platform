@@ -38,8 +38,8 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
    <p>{policy.overtime_enabled ? `مرشح الإضافي مفعّل · حد ${policy.overtime_minimum_minutes} د · تقريب ${policy.overtime_rounding_minutes} د` : 'مرشح العمل الإضافي غير مفعّل'}</p>
    <p>{policy.auto_approve_clean ? 'الاعتماد التلقائي مفعّل للأيام المكتملة بلا استثناء بعد إغلاق نافذة التسجيل' : 'الاعتماد التلقائي غير مفعّل'}</p>
 </Disclosure>
- {result.can_manage && <><PolicyTask className="work-policy-revision" label="إنشاء إصدار جديد">
-      <p className="field-hint">التغييرات تحفظ إصدارًا جديدًا؛ الإصدارات السابقة تبقى محفوظة.</p>
+ {result.can_manage && <><PolicyTask className="work-policy-revision" label="تعديل القالب من تاريخ جديد">
+      <p className="field-hint">تُحفظ التغييرات بإعدادات جديدة، وتبقى الإعدادات السابقة محفوظة.</p>
       <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} policy={policy} returnToRequest={returnToRequest} />
      </PolicyTask>
     <OfflineForm action={setWorkPolicyActiveAction}><input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="policyId" value={policy.id}/><input type="hidden" name="active" value={String(!policy.is_active)}/><OfflineSubmitButton className="secondary-button" label={policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'} pendingLabel="جارٍ تحديث إتاحة القالب…" /></OfflineForm></>}

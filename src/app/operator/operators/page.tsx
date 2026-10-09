@@ -17,7 +17,7 @@ type Grant = OperatorGrant;
 export default async function OperatorGrantsPage({ searchParams }: { searchParams: Query }) {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user }, error: authError } = await getWorkspaceUser(supabase);
   if (authError) return <Status title="تعذر التحقق من الحساب" detail="أعد قراءة الصفحة للتحقق من حسابك قبل تغيير أي صلاحية." />;
   if (!user) redirect('/auth/login?state=no-session');
@@ -27,7 +27,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   if (status.data !== 'active' || !operatorPermission(canManage)) return <Status denied title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
   const { data, error } = await supabase.rpc('platform_operator_grant_list');
   const grants = error ? null : operatorGrantList(data);
-  if (!grants) return <Status title="تعذر تحميل المنح" detail="لم تتأكد قائمة المنح الحالية. أعد قراءة الصفحة قبل إجراء أي تغيير." />;
+  if (!grants) return <Status title="تعذر تحميل الصلاحيات" detail="تعذر التحقق من الصلاحيات الحالية. حدّث الصفحة قبل تغييرها." />;
   const success = query.state === 'granted' || query.state === 'updated' || query.state === 'revoked';
 
   return (
@@ -47,7 +47,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             <label htmlFor="newEmail">بريد الحساب المؤكد</label>
             <Input id="newEmail" name="email" type="email" autoComplete="email" required maxLength={254} dir="ltr" />
             <CapabilityFields prefix="new" />
-            <label htmlFor="newReason">سبب المنح</label>
+            <label htmlFor="newReason">سبب منح الصلاحية</label>
             <Textarea id="newReason" name="reason" required minLength={3} maxLength={500} rows={3} />
             <input type="hidden" name="action" value="grant" />
             <p className="field-hint">يجب أن يكون الحساب موجودًا، مؤكد البريد، وقادرًا على تسجيل الدخول. لا تُنشئ هذه الصفحة حسابات جديدة.</p>
@@ -56,14 +56,14 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
       </Panel>
       <Panel className="operator-grants-list" aria-labelledby="grants-list-title">
         <h2 id="grants-list-title">المشغّلون</h2>
-        <form method="get" action="/operator/operators"><Button variant="ghost"  type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</Button></form>
+        <form method="get" action="/operator/operators"><Button variant="ghost"  type="submit" aria-describedby="grants-reread-hint">تحديث الصلاحيات</Button></form>
         <p className="field-hint" id="grants-reread-hint">إعادة القراءة تجلب الحالة الحالية وتُفقد أي إدخالات لم تُرسل. لا تؤكد وحدها نتيجة تغيير سابق غير مؤكدة.</p>
-        {grants.length === 0 ? <p>لا توجد منح مشغّل محفوظة.</p> : <ul className="member-list">
+        {grants.length === 0 ? <p>لا يوجد مشغّلون مسجلون في هذه الصفحة.</p> : <ul className="member-list">
           {grants.map((grant) => <RecordCard className="member-card" key={grant.user_id}>
             <div><h3><bdi>{grant.email}</bdi></h3>
               <Badge as="p" className={` ${grant.is_active ? 'is-active' : 'is-inactive'}`}>{grant.is_active ? 'نشط' : 'مسحوب'}</Badge>
               {!grant.recoverable && <p className="field-hint">الحساب غير جاهز لتسجيل الدخول</p>}
-              <ul className="operator-capability-list" aria-label="المهام الممنوحة">{capabilityNames(grant).length ? capabilityNames(grant).map((name) => <li key={name}>{name}</li>) : <li>لا توجد مهام حاليًا</li>}</ul>
+              <ul className="operator-capability-list" aria-label="المهام المسموح بها">{capabilityNames(grant).length ? capabilityNames(grant).map((name) => <li key={name}>{name}</li>) : <li>لا توجد مهام حاليًا</li>}</ul>
             </div>
             <div className="operator-grant-actions">
               {grant.recoverable && <>
@@ -96,7 +96,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
 }
 
 function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle' | 'can_manage_commercial_access' | 'can_manage_statutory_rules'> }) {
-  return <fieldset className="limit-fields"><legend>المهام الممنوحة</legend>
+  return <fieldset className="limit-fields"><legend>المهام المسموح بها</legend>
     <label className="check-option"><Checkbox  name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
     <label className="check-option"><Checkbox  name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
     <label className="check-option"><Checkbox  name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>

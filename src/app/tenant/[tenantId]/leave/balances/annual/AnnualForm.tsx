@@ -23,9 +23,9 @@ export function AnnualForm({tenant,employee,employer,type,period,policy,canManag
   <fieldset disabled={pending} style={{border:0,padding:0,minWidth:0}}>
    <p>خدمة الموظف تبدأ في <bdi>{serviceStart}</bdi>. تتراكم المنحة عن الأيام الفعلية، ويُسجّل الفرق فقط؛ استهلاك الإجازات يبقى محفوظًا.</p>
    <Field id="annual-date" label={<>حساب الخدمة حتى</>} required><Input id="annual-date" name="asOf" type="date" required max={asOf} value={date} onChange={e=>{change();setDate(e.target.value);}}/></Field>
-   <Field id="annual-source" label={<>مرجع التحقق من فئة استحقاق الموظف</>} required><Input id="annual-source" name="source" required minLength={3} maxLength={300} value={source} onChange={e=>{change();setSource(e.target.value);}}/></Field>
+   <Field id="annual-source" label={<>مستند يثبت فئة استحقاق الموظف</>} required><Input id="annual-source" name="source" required minLength={3} maxLength={300} value={source} onChange={e=>{change();setSource(e.target.value);}}/></Field>
    <p className="field-hint">قاعدة الشركة المعروضة {formatDays(current.first_year_days)} يوم في السنة الأولى، ثم {formatDays(current.later_year_days)} يوم؛ الأهلية بعد {current.minimum_service_days} يوم خدمة، ومقام الحساب {current.year_days}. تُقرّب الحصيلة لأعلى إلى 0.01 يوم. HR مسؤول عن توثيق الفئات الخاصة ومزاياها.</p>
-   <Disclosure  summary={<>فئات خاصة أو تغيّر موثّق في الاستحقاق</>}><p className="field-hint">أضف تاريخ بداية كل فئة وقيمتها السنوية ومرجع التحقق. تطبّق القيمة من ذلك التاريخ حتى التغيير التالي؛ لا تُستنتج الفئة تلقائيًا.</p>
+   <Disclosure  summary={<>فئة استحقاق خاصة أو تغيير مثبت بمستند</>}><p className="field-hint">أضف تاريخ بداية كل فئة وقيمتها السنوية ومرجع التحقق. تطبّق القيمة من ذلك التاريخ حتى التغيير التالي؛ لا تُستنتج الفئة تلقائيًا.</p>
     {rates.map((rate,index)=><Card  key={index}>
      <Field id={`annual-from-${index}`} label={<>بداية الفئة {index+1}</>} required><Input id={`annual-from-${index}`} type="date" required min={serviceStart} max={date} value={rate.from} onChange={e=>updateRate(index,{from:e.target.value})}/></Field>
      <Field id={`annual-days-${index}`} label={<>الاستحقاق السنوي للفئة {index+1}</>} required><Input id={`annual-days-${index}`} type="number" required min={15} max={366} step="0.01" value={rate.annual_days} onChange={e=>updateRate(index,{annual_days:Number(e.target.value)})}/></Field>
@@ -46,7 +46,7 @@ export function AnnualForm({tenant,employee,employer,type,period,policy,canManag
    </Panel>}
    {canManage&&<Disclosure  summary={<>تعديل قاعدة الشركة لهذا النوع</>}><p className="field-hint">يُحفظ التغيير كنسخة جديدة لهذه الشركة ونوع الإجازة. الحدود تسمح بمزايا أفضل، وتبقى القيود السابقة محفوظة.</p>
     {([['firstYear','أيام السنة الأولى',first,setFirst,15,366],['laterYear','أيام السنوات التالية',later,setLater,21,366],['minimumService','حدّ الخدمة بالأيام',minimum,setMinimum,0,180],['yearDays','مقام حساب السنة',basis,setBasis,360,365]] as const).map(([name,label,value,set,min,max])=><div key={name}><Field id={name} label={<>{label}</>}><Input id={name} name={name} type="number" min={min} max={max} step={name==='firstYear'||name==='laterYear'?'0.01':'1'} value={value} onChange={e=>set(e.target.value)}/></Field></div>)}
-    <Field id="annual-policy-source" label={<>مرجع قاعدة الشركة</>}><Input id="annual-policy-source" name="policySource" maxLength={300} value={policySource} onChange={e=>setPolicySource(e.target.value)}/></Field>
+    <Field id="annual-policy-source" label={<>مرجع سياسة الشركة</>}><Input id="annual-policy-source" name="policySource" maxLength={300} value={policySource} onChange={e=>setPolicySource(e.target.value)}/></Field>
     <Field id="annual-policy-reason" label={<>سبب تعديل القاعدة</>}><Textarea id="annual-policy-reason" name="policyReason" maxLength={500} value={policyReason} onChange={e=>setPolicyReason(e.target.value)}/></Field>
     <Button variant="ghost" type="submit" name="intent" value="policy"  formNoValidate aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>حفظ قاعدة الشركة</Button>
    </Disclosure>}

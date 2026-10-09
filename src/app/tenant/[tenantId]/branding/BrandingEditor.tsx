@@ -71,16 +71,16 @@ export function BrandingEditor({
               : <span className="branding-preview-mark" aria-hidden="true">م</span>}
           <strong><bdi>{name || baseName}</bdi></strong>
         </div>
-        <p className="field-hint">سيظهر الاسم واللون في مساحة الشركة. يظل الاسم القانوني للكيان منفصلًا.</p>
+        <p className="field-hint">هكذا سيظهر اسم الشركة وشعارها لفريقك. الاسم القانوني المسجل لا يتغير.</p>
       </section>
 
       {!canManage ? <Message tone="info"  role="status">تغيير الهوية متاح لمسؤول الشركة فقط.</Message> : (
         <form onSubmit={submit} className="auth-form" aria-busy={pending}>
           <input type="hidden" name="tenantId" value={tenantId} />
-          <label htmlFor="tenant-brand-name">اسم العرض</label>
+          <label htmlFor="tenant-brand-name">اسم الشركة الظاهر للفريق</label>
           <Input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
             onChange={(event) => setName(event.currentTarget.value)} />
-          <p className="field-hint">اتركه فارغًا لاستخدام اسم الشركة الحالي. لا يغيّر الاسم القانوني للكيان.</p>
+          <p className="field-hint">اتركه فارغًا لإبقاء اسم الشركة الحالي. لا يغيّر الاسم القانوني المسجل.</p>
 
           <label htmlFor="tenant-brand-color">اللون الرئيسي</label>
           <Select id="tenant-brand-color" name="color" value={color}
