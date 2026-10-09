@@ -1,0 +1,32 @@
+{
+  "sourceHEAD": "27d0224006dcbc8cb97a71739a5c8784c21033f2",
+  "actualAuthReturn": {
+    "status": "PASS",
+    "routes": 5,
+    "normalLogin": true,
+    "signedOutBeforeEach": true,
+    "exactNextAndReturnAssertions": true,
+    "sessionOrCookieInjection": false
+  },
+  "profileRead": "PASS actual UI employee profile",
+  "leaveRead": "PASS actual UI empty balances/requests",
+  "newRequest": "Expected disabled: fixture has no active employment/capabilities",
+  "detail": "Expected unavailable: synthetic missing request",
+  "attendanceRead": "OPEN: actual UI neutral load failure; direct rolled-back supplied-claims SQL returns valid assignment-unavailable shape, not proof of Auth-backed UI read",
+  "authorizations": {
+    "repairApproved": "Owner explicitly approved 2026-10-09 after previous refusal",
+    "standingLocalSimilarRepair": "Owner requested durable memory; owned isolated local synthetic environment only; no production/shared-service/tool-rejection bypass"
+  },
+  "wholeR2orR0R8Closed": false,
+  "semanticRegisterUnchanged": true,
+  "appSourceChanged": false,
+  "noHeavyRepeatedTests": true,
+  "review": "Existing approved D8 source/spec review reused; no new UI/visual design authored",
+  "cleanup": "runtime-and-retirement.json",
+  "excludedLocal": [
+    "raw logs",
+    "generated env (erased)",
+    "runtime source/dependencies",
+    "statutory-preservation-candidates.json"
+  ]
+}

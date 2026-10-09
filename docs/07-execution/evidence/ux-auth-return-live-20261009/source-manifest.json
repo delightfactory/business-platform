@@ -1,0 +1,1274 @@
+{
+  "head": "27d0224006dcbc8cb97a71739a5c8784c21033f2",
+  "files": [
+    {
+      "file": "next.config.ts",
+      "sha256": "fba54b56431b6cb538b5fe8cd32c1316a792789bc8a1f58aeb84fee84d4df1fc"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "475de0a1773fcd1895f367b7a968fdca4ec6c163099121ce4186f814e35eddd7"
+    },
+    {
+      "file": "package.json",
+      "sha256": "2e7986cb6066def4d84d01d6ca9f96c3334d4344ed144aac75a9f0d1d3205963"
+    },
+    {
+      "file": "postcss.config.mjs",
+      "sha256": "7b299d3d3b16699ddda397c0b2373b3af4f25f8fc9ccc9b3d9e64ef083bc1c21"
+    },
+    {
+      "file": "public/offline.html",
+      "sha256": "ba80c5bb132665da1497dc3efe2247e7fd36a7ae9b812fa7b2eaecf1af24aa5b"
+    },
+    {
+      "file": "public/pwa/Cairo-OFL.txt",
+      "sha256": "aa2b13bf0770c59a7fb7a3b793a7df5162c9cb5ad540ec81b0c0c1385946845d"
+    },
+    {
+      "file": "public/pwa/cairo-400.woff2",
+      "sha256": "1b36945f5f6a3d1fed3783999b887d0c56cfd66a41a04212a28aa79abbdff0e1"
+    },
+    {
+      "file": "public/pwa/cairo-600.woff2",
+      "sha256": "621909d2e4c8720d3af3a74028556956d343baaa5be48c47a0ad406607fc6515"
+    },
+    {
+      "file": "public/pwa/icon-192.png",
+      "sha256": "5dbe6e8cba903ce4093f83f631886553a3ba598fa75676a45c6edeaac3ff0660"
+    },
+    {
+      "file": "public/pwa/icon-512.png",
+      "sha256": "1654a6bde840f10ea574b23db285012d0692d53bbedd495755ebe61b6bf550a9"
+    },
+    {
+      "file": "public/pwa/maskable-512.png",
+      "sha256": "964f7317eaddec24d53e4a0577ca0676a33c87a8e2d4bd05bf080dcb2ca48167"
+    },
+    {
+      "file": "public/pwa/offline.css",
+      "sha256": "08380a032e01fb2fc5c79473fb344c9c274509455ea72c7c37cb2bf736c69e54"
+    },
+    {
+      "file": "public/pwa/offline.js",
+      "sha256": "2ee3c8930a05463414f0006e7b6b481a4b85facfe930a03e1a7c0cc27c769df6"
+    },
+    {
+      "file": "public/pwa/tokens.css",
+      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
+    },
+    {
+      "file": "public/sw.js",
+      "sha256": "a9c305fb886cd3d3df9f5da886c317f47d4fd7e0407f33f7189a21e7b3d3b69f"
+    },
+    {
+      "file": "public/templates/attendance-import.csv",
+      "sha256": "14420f43366dae3af7d099ab1e49d067d23c086055e03a5efa6a92d78ae22541"
+    },
+    {
+      "file": "public/templates/workforce-import.csv",
+      "sha256": "a2a90902a35402b4934cf38dfd2dc78f9e7c5218be7aa963398d1f933188d0cb"
+    },
+    {
+      "file": "src/app/apple-icon.png",
+      "sha256": "6eff45802265a21dc724b31f6ced596e968b9b27832b84797b3601687bed9d4b"
+    },
+    {
+      "file": "src/app/auth/actions.ts",
+      "sha256": "c761605b674bd5895d302c02e8878085da1682e290866102561feecb662578a6"
+    },
+    {
+      "file": "src/app/auth/callback/route.ts",
+      "sha256": "f202f0f5391cceeca4d4808205c1c16011c6dc8425aa36bf7a824ee60d5ae8ed"
+    },
+    {
+      "file": "src/app/auth/employee-account-activation/actions.ts",
+      "sha256": "6b18dd57879d588150d044708a1d46e6cedccda80d74a75572409016d3a1c8ab"
+    },
+    {
+      "file": "src/app/auth/employee-account-activation/callback/page.tsx",
+      "sha256": "7911468104de9a747e76386c548827ea3e42ccce8fcbabac0fc3104a171ea0d7"
+    },
+    {
+      "file": "src/app/auth/employee-account-activation/page.tsx",
+      "sha256": "6f0b9b96d67133b707bbfd6c2e21c22ad179d87762042d520b6d965779da3fd2"
+    },
+    {
+      "file": "src/app/auth/forgot-password/page.tsx",
+      "sha256": "7dd4a370a7c3da236c782893aa0d510e246484e341d189d594610bf5abbbfcca"
+    },
+    {
+      "file": "src/app/auth/invitations/accept/actions.ts",
+      "sha256": "c9f53ffc8161bd0c38b8092088ec3d8d80168ebb458c76c2219b9391f11babf3"
+    },
+    {
+      "file": "src/app/auth/invitations/accept/page.tsx",
+      "sha256": "7b0cd66c867753c8f57ecbc7a1dfec7d246207abd3ba245b6993e5600b8d731e"
+    },
+    {
+      "file": "src/app/auth/invitations/callback/actions.ts",
+      "sha256": "e1271fad81f35e5ff67bfbf03dd4fab33cee351f3a040e964d7027d09bd991b3"
+    },
+    {
+      "file": "src/app/auth/invitations/callback/page.tsx",
+      "sha256": "425e0f918c89d4fa3476133e2f9b6c9f089b0492714c6897f4fe4e2970dfafda"
+    },
+    {
+      "file": "src/app/auth/login/page.tsx",
+      "sha256": "e290c5dbd9806fb31077a2934a64c94feaa42922315776b657cbffe995a850bb"
+    },
+    {
+      "file": "src/app/auth/membership-invitations/accept/actions.ts",
+      "sha256": "4890f91d61a726d5fe75150d2ef705392b1e82bb884300d58368fef18c0f5d1a"
+    },
+    {
+      "file": "src/app/auth/membership-invitations/accept/page.tsx",
+      "sha256": "bcfcdcedbf5ecf49ed6ab96561f98dcf7eb0882f765066a655be8c380f2a1d05"
+    },
+    {
+      "file": "src/app/auth/membership-invitations/callback/actions.ts",
+      "sha256": "509bc135415bda055c5150db6a14901b3395d37f603f0429d4791487eea93501"
+    },
+    {
+      "file": "src/app/auth/membership-invitations/callback/page.tsx",
+      "sha256": "8d6017b458ea9b335a668396a4db1074486416d87c7286a848a7e6d5e2fd6b6f"
+    },
+    {
+      "file": "src/app/auth/password/update/page.tsx",
+      "sha256": "8924269e5447882a5cc5d616048b4804536a63bec815a2c80561b878b3b51801"
+    },
+    {
+      "file": "src/app/auth/safe-next.ts",
+      "sha256": "f7daf582d021467bb36b21fa9fee4f157677b96746af793ad58acc929c161cbd"
+    },
+    {
+      "file": "src/app/globals.css",
+      "sha256": "526f394fee54475a68499b80c7ceeccbab7dff5097652e0556a0709ad30d3ee4"
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "sha256": "c1b6619cdcdbb50c18471914e53bcf337846750556b1d5efd86f11b31beb3136"
+    },
+    {
+      "file": "src/app/manifest.ts",
+      "sha256": "ec5e83d5ebb4e5993fabb18211631f90c9da45160785910b3644df4b82d91d6f"
+    },
+    {
+      "file": "src/app/operator/actions.ts",
+      "sha256": "ce0048ec55225ac9b4a6350b2706b4e52308b7aa7e6bb2330718a6d281591143"
+    },
+    {
+      "file": "src/app/operator/commercial/[tenantId]/LimitModeFields.tsx",
+      "sha256": "ee34eae4cc103588e4fe0dfea39aad509cc6633afe9d0f7b290b6095a7f4b1b9"
+    },
+    {
+      "file": "src/app/operator/commercial/[tenantId]/page.tsx",
+      "sha256": "1e910695f599b05fef702cc59c43843a06c286a84329de94ad21e0ef34533a0c"
+    },
+    {
+      "file": "src/app/operator/commercial/actions.ts",
+      "sha256": "39f0f5ef786482225987b5d99063bfdc47b14fe85fb5d2a9affe8cc6870e1dc4"
+    },
+    {
+      "file": "src/app/operator/commercial/page.tsx",
+      "sha256": "220ab82f3dfb58a800d0764ede7c48e4f2409d3c33d37b78c848f147b5181bfb"
+    },
+    {
+      "file": "src/app/operator/company-task-links.tsx",
+      "sha256": "a849bf79ddc28d37347140091095637d2847ae73e56b33cb2843d71ad6ac56b4"
+    },
+    {
+      "file": "src/app/operator/entitlements/[tenantId]/page.tsx",
+      "sha256": "f68d3068ae0fa797273d50363cf383aa925608b64f7a7323dbabc435a2b0aa46"
+    },
+    {
+      "file": "src/app/operator/entitlements/actions.ts",
+      "sha256": "f24ef366b6712f422cc9a4912818fa809faa59afeb4c3cbdda451a613daf1494"
+    },
+    {
+      "file": "src/app/operator/entitlements/page.tsx",
+      "sha256": "6be54022cf913a18b4fbb3acdd327445acd896571652158ae6c1ec7adf388890"
+    },
+    {
+      "file": "src/app/operator/invitations/actions.ts",
+      "sha256": "5984e8f8e908d013e55e817ce2ea1690d843a499dab8967aabfcbaa1d469ef69"
+    },
+    {
+      "file": "src/app/operator/invitations/new/InvitationForm.tsx",
+      "sha256": "bc6236ac53b376c79aae10c6aac37e8d39a13281d74db756ad74552df51a7e1c"
+    },
+    {
+      "file": "src/app/operator/invitations/new/page.tsx",
+      "sha256": "2421b7388feb3739f00024d94402e711047fd36d3b71f13dcb73d42abce946ee"
+    },
+    {
+      "file": "src/app/operator/invitations/page.tsx",
+      "sha256": "905b8d153ae706a3ef4f6fd808051a75640e58d2d9a872864271f1017453c2c4"
+    },
+    {
+      "file": "src/app/operator/layout.tsx",
+      "sha256": "6d738890b49fdcfe9fdb45a7a1907af2eec67b610182ade2776fdff881848553"
+    },
+    {
+      "file": "src/app/operator/onboarding/LimitFields.tsx",
+      "sha256": "a6ba060992a9c2830d3af255d780763c8b070ef2c46859d156f0ec4690e40419"
+    },
+    {
+      "file": "src/app/operator/onboarding/OnboardingForm.tsx",
+      "sha256": "575ad432fbf81a9f3cc8e8b4d7a3fd15112a37b11b875c22c3dc81bad78925ce"
+    },
+    {
+      "file": "src/app/operator/onboarding/OnboardingResult.tsx",
+      "sha256": "7ec84f6874ff41798eadb0a5e4211d10f8dc6618ee4ece67512a409b4049821f"
+    },
+    {
+      "file": "src/app/operator/onboarding/intent.ts",
+      "sha256": "deff396725d6a07bba7bb247327fbca4e69f5120389bd527b50c0bf9b67923bb"
+    },
+    {
+      "file": "src/app/operator/onboarding/page.tsx",
+      "sha256": "2535103c26282b833054c1bff0ab532585aafba496b41b60a6fb0b358b42f827"
+    },
+    {
+      "file": "src/app/operator/operator-action-form.tsx",
+      "sha256": "3164bdf702eded1c93968954cae8985f59496b92f0bff43070f57af8a726a987"
+    },
+    {
+      "file": "src/app/operator/operator-list-controls.tsx",
+      "sha256": "b8ea8ad737341f3712e677b67d87790694b3c9466b0a2eff8ad3d37c4aaf842b"
+    },
+    {
+      "file": "src/app/operator/operators/actions.ts",
+      "sha256": "54c5ec3181cf1c2e9df56b22c9585a7dd169c284db497cb92b5a97f97103b19c"
+    },
+    {
+      "file": "src/app/operator/operators/page.tsx",
+      "sha256": "8df007c6509c4c2239dcb881eb31ec933494a6dc2ff9d54954ac5092242f08a7"
+    },
+    {
+      "file": "src/app/operator/page.tsx",
+      "sha256": "799178eb11885886fd5e086ade546af28eddee28526f5d4f15332018559f978a"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "sha256": "2f74441e0eb7faf8cc11e0da0522a0f83f7cb995f76b4b1dc8b5ad5825edcea4"
+    },
+    {
+      "file": "src/app/operator/statutory/NumericRules.tsx",
+      "sha256": "10071c5407e8f175edc5c3e26fada0b5764835e6e15be7bdfe388b23e6959da5"
+    },
+    {
+      "file": "src/app/operator/statutory/actions.ts",
+      "sha256": "2594f2618de36891bf69663434c919e8e57bb3d181b54a375b57122da7c788a3"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "sha256": "dd8ddf159450f4e9284421fea26d0f68980349948c316868acc2827df94c24ae"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonHistory.tsx",
+      "sha256": "34200ea5679492ed29e65052b5609446f73e0fbce07db8f171f5938a5b067ece"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceForm.tsx",
+      "sha256": "ff2811232a34cbfca43d274c2ff3c2cd49367c2d9363b328bd42963c719f360f"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/IssuanceStatus.tsx",
+      "sha256": "140992dc25e1a1eedb8ddf37eaa095402549e7566e1ebddfcc94acd2b98ed8e1"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/actions.ts",
+      "sha256": "8a856882eeaa38528dd592e00ce57c8921c2ccf04051064de6779b06d5db814d"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/issuance-actions.ts",
+      "sha256": "aa39efeb04fd0727105d60ef535db4c4f72ea0c9d4344c0d467355750bfcaa72"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/labels.ts",
+      "sha256": "de3e7467560fc6cbf19e9a63c78ca8f95e00d73b21e2d13f9d23f6df44fb434e"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/page.tsx",
+      "sha256": "d655d52432151ab2066d7a889480f9e0db0f0d08ab856081febe988aa9826c25"
+    },
+    {
+      "file": "src/app/operator/statutory/dto.ts",
+      "sha256": "7877d6976929c36cd5eb78da52ee5ba327e4b4eaed30c5ee3b8107e2040025d3"
+    },
+    {
+      "file": "src/app/operator/statutory/page.tsx",
+      "sha256": "cb148c91ea8ed6537741b76b17a924fac28eae02692cc0f4b9a5de79b83bc5cd"
+    },
+    {
+      "file": "src/app/operator/tenants/[tenantId]/page.tsx",
+      "sha256": "f770b7106c4b95410f45e6b91cfae53e137eca7c6d631ffe7fb9893fabf2ef98"
+    },
+    {
+      "file": "src/app/operator/tenants/actions.ts",
+      "sha256": "ba41f28581d346e17bd59a31c95a2605d847cf402370efc869b5f0362dd5cade"
+    },
+    {
+      "file": "src/app/operator/tenants/page.tsx",
+      "sha256": "e173b3aab5ddf5aa7fea309255d4159391685cdb5db2af93c5d0cdbc40c76cf0"
+    },
+    {
+      "file": "src/app/page.tsx",
+      "sha256": "e0c481265ce304cf5c7c7a83bc7e66ac6074f1797019cab6a8866f06db2116f8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/AttendanceBulkApprovalForm.tsx",
+      "sha256": "f7a1b173238af2b67f06746f39ba492ea3223f8c272cd4115dfa7f266fcab54d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/ClassificationReviewForm.tsx",
+      "sha256": "36e3b0a5d4f564ee4ad88dee1dcb9064b669979238530fe52f6a4cd6aa7bdaa4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "sha256": "7b55bf5f3453068e13a57986b7a890ef792214108e932352918d3520a2fdc49b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/actions.ts",
+      "sha256": "e0c1797da3478fe68304df68d27f9a44a26b024f4689321cfdf127edec18c0ef"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-channels.module.css",
+      "sha256": "bbe22edcb4f18c452757e9c08a3a2f7dc0f5ec989eebd694557be2c8318ffdce"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-lists.module.css",
+      "sha256": "e243eb37ea26b05a3040963302b1d43fdc786ac8710edf590aa51b61efd201b4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/attendance-task.module.css",
+      "sha256": "b66cbe3003df1aa6bbde6dcd42abe004009cc489d83ce4564a9386fe5fb57ca2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/classification-actions.ts",
+      "sha256": "e7d3ad450f3d201df512361949049ad691e7e23430461873f1b5bb5400f8682a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/classification.ts",
+      "sha256": "9549d452ba8abef6e72dc53f461baa7710d74729bdd5f58eeb78ab9bdd96df79"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/AttendanceImportForm.tsx",
+      "sha256": "19203dceacd7ea43f7de6e06fa2c5e8cd5a66066e24019fc690d6a75242f7a98"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/actions.ts",
+      "sha256": "027c4f8eea40174c6d65f9880c175691dc222cb1f29d3afd85d3f5e515727970"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/import/page.tsx",
+      "sha256": "2992b126fb70e25779ce4dc78f0e28181968fd873585ab67f555348267013e87"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
+      "sha256": "97cae38aa85b31deb60bad183803b631d691c9b0f3ec53fed4f580a70d2c685e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
+      "sha256": "9113ac55d4c40180bfb2633ac573ac17cd40c50b0b7272b4ed558e0c65d250d7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "sha256": "215f941e7a3a2c10fb53e0ff53b5849202359552e0e347d871e538d4e294a83b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
+      "sha256": "ac8d2fe8d21ee781e2abb342ae76501da1ba4da27e303425dd9205f686cac43b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "sha256": "72128d28bf618cc1ef056f8e6c31f24bc2086568597f31ba9c390901425f01e7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/actions.ts",
+      "sha256": "362b097955d0b11f1533e88028b44c580749ee807f4d8d0f3724f8d0923dc107"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/new/page.tsx",
+      "sha256": "a895a909bf94fea0e8229e6827e7761646a0d9ac5a31eef2c0c4a0ab9a5349a3"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/page.tsx",
+      "sha256": "7c30b4ddeed0ea5da8a90e22a3ece3c4e0b625b93845ee7971fa6af3c0eb2cbd"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/shared.tsx",
+      "sha256": "0bdf215d1ef38610d3a1a7a11360e102e47f1788b73ee9a49b64e0b4424d3f99"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+      "sha256": "4b5b2f36e5148803d0405aa7ac70644bdc610d32bef5079878a0ae16f2deda56"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/branding/BrandingEditor.tsx",
+      "sha256": "58010cac3f9e88861a603537512bf77500d8f3b17c477e928a818afd5e154a47"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/branding/actions.ts",
+      "sha256": "a96795e1af8cf4e0f9c9af972337a0abf005d2dc3862213158c3cfd9bf3a65c8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/branding/page.tsx",
+      "sha256": "7eb2274487c73f381dd6b66c99a80ca9417620fac25eb35e8635547e820e4b3a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/RecordActionForm.tsx",
+      "sha256": "01b4b9f8e036b3a5b6b07efdd6fff18dde5994793d04c6b612fa9a499b3c8997"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "sha256": "67aeaf473b6e98e27f92cbf2d70d1e0c88ac30f41d5d7ada63463c75a8b0616f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/NewSiteForm.tsx",
+      "sha256": "14f04e87623a88a3db0db8f9733f4736eee73730aa9d3b4ce14a198c5b7a5acc"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/page.tsx",
+      "sha256": "cd9d46cf4b86e91a7f94aacbe57beb274d49351f8d753e76712575385191c656"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/actions.ts",
+      "sha256": "e02f8d68369e2acee333eb989133e5b688f26e7956d5c3686b5f60ff33015848"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/new/NewEntityForm.tsx",
+      "sha256": "17c70987e53ec7cbaebe149678d15fed300567900e5767819ecc1abd35f5623e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/new/page.tsx",
+      "sha256": "dae7a9f0ff1033c2ad085d2897d18a0bb1fc1caeec51f0d8e7e0069d9e4a3b3b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/entities-sites/page.tsx",
+      "sha256": "1907350f19c858a3a780b37c3d158fbc32074f4e3e3a0d2e4d947c39d1d54c29"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/layout.tsx",
+      "sha256": "b19ed4fc5e54c696933b7ed06089b51efc1d84aefe7b66476f5c3bf645ce1eba"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/actions.ts",
+      "sha256": "de9bd5d2c6e0ec01fa4c4476b471ff33da571f9f32069fb239a81dd91c349f65"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/PostBalanceForm.tsx",
+      "sha256": "190ffad2364be30e0440b1e0587b8f605f504049946d5dd7b1e5bad1ec2d0eba"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/loading.tsx",
+      "sha256": "3496757e54b9d22859029483580eb17f6df34b7a6ccdda8f07b804b86ddea085"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+      "sha256": "f65559e8d8faabd460c3d1533c374a2dc999d037a9d90d5a1170a1f21b398af1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/actions.ts",
+      "sha256": "91a45bf09a7eb1cc20971950b4eb955dff52b807f42a8e97cf1c1d8654b089c6"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "sha256": "02187dcb5a807ae1ac210f0c491e64652f54bbf6cd82048cb412d959efb12c29"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/actions.ts",
+      "sha256": "959c0a09616cc7e2a12422d8817fb5bbe8d93f2934713a95f2a7a5881fe2491c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/page.tsx",
+      "sha256": "bfc24a3fdd1a7afb44fefa187a5c8c6212bd9be05469aaa17474bd7457a11d96"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/rules.ts",
+      "sha256": "21a27ed6e2155135c93cfc37e3948cca2c94aa6b6b3d471b21936478ac9a4ec3"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/loading.tsx",
+      "sha256": "593d64dbebe0a22d80313078fa1d75d95b273e0814d81fca9d202aee4017d656"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/page.tsx",
+      "sha256": "c4259d4e7dd8b72c7c3d0924442bda70d51f765bbd12ccd8235a2f8f2ba3c27a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/rules.ts",
+      "sha256": "3b55a14300f10d711526117fbcdc2b49e91bec472dcceaa4338044a44c7ab20f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/loading.tsx",
+      "sha256": "54cf58fa010cd24c9acbcb08a0e9a826a3ccc806b2eeda45d8ba15441e45bec6"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/RecordLeaveForm.tsx",
+      "sha256": "953735ec8e644dc6962fa85dc7323fd1b0baa7fd67bcb2578f3e3555bbfd9ac4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/actions.ts",
+      "sha256": "4ec158cf4b6d62d7bec61d15bf9db00c0800b488c62fe8b3ff083dded461c244"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/loading.tsx",
+      "sha256": "e4f4ccf6da548bb84f4743dac234942e4d3da9c572b732582f6418a0fd13eb8d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
+      "sha256": "4266ed012676041eaa7ec54901868a3c9d1d22176582fba537bc3299cc08414a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/rules.ts",
+      "sha256": "75c946fe69e01c81c9b1fb9de168330b42735cecc3dbe0247e7be84366518b33"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/page.tsx",
+      "sha256": "74ecd9e268f6b9704354c6eb10466a8d46368a08162e3d3e46bf226242cf2bb8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/pending-link.tsx",
+      "sha256": "6446ac30d1306fcc8545ccd69680e2143b68443aa7d65cb91f65ddab36b70a49"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/DayBreakdown.tsx",
+      "sha256": "d0bef73f1d516d674c55114e11d5e497cc4f687ad9117adca98d80770ea63515"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReplacementPanel.tsx",
+      "sha256": "ff5a16047a20d9f9e840b5ba33f4ecf32618bf5501d41544487c72d1557f1be2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/ReviewIntentForm.tsx",
+      "sha256": "2ec8ebe6c701a09c518039a50f40129ad603ba14d04413edb729e756f032e13c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/loading.tsx",
+      "sha256": "a3371e7741ccbc92f8dcf655c10fa4d8ee1b5fc5d10886c6a29150a0bf4a59ec"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "sha256": "2cac5e0f0a8e1c86c8bd18eabe057300afcaae30bac17d47484db53269488e06"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/review.module.css",
+      "sha256": "fa0afe02667f26ba87839ab27cfc5c676f60b357f32c659f198eced003d18065"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/rules.ts",
+      "sha256": "474de90ce4495511ec18f59e14205c754ec34cddc36cea980aebd1dac2743fdb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/CalendarRuleFields.tsx",
+      "sha256": "3da76d88f0015c3fcb1adb3c69f71a4388ba05c8c58d671d9cdff56cafd4e023"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/SettingsLink.tsx",
+      "sha256": "d8ed97423d69b31b142af8f730bc6cce64f40fc2c7d435a483d80109c0ea6d11"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/SettingsTask.tsx",
+      "sha256": "0ebff51c8fb96073552d90a84d2091293d88e9fb521f5c49ba549b71f5cba1e4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/StatusCard.tsx",
+      "sha256": "67e5deb4a68c8d4ada8181cd2e40bdf2f23d1c958c1fdb3805e329fdf9b33f4b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+      "sha256": "ae7ebe05ae54bc70f487de8823dda21f0eb4a9a301a69809d9b0a17d799f526a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "sha256": "9ba7f311273c87bd369b789cd021218d485ce151139acb3a848e2e3615f7ad42"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+      "sha256": "1e431b2d94d7dee710f1647f4be3d38eef029572e6ca6b08e43361ae4ce27936"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/page.tsx",
+      "sha256": "bef391bffead014dd399c92201f9aca1cb1a2db58181b1627ba549be2215352c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/page.tsx",
+      "sha256": "7f334cf31fb0f259971bcc50877a64b42e0de62bed2d3bbc1018e9430e7da033"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
+      "sha256": "5f81371008579b92dff794125bde926c8b0986877c1c8b6b9b30e9a4009f8ea2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
+      "sha256": "6de880166c92b9d2f07056926abff6c46f198f293f83219af438ef074896fdb4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "sha256": "d36e9660e9bbf29804c8ae9a1e84bb729b0d15773d3766617d56f74587102383"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
+      "sha256": "0cea6e6aa0a7008090c6821445e09c004963ee47626dd3eb0a71eef5806d2304"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/page.tsx",
+      "sha256": "47c84075635d111adddc549f894297ff9a4998659581bee0fc4682f9cf3d87e1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+      "sha256": "3d111cf23db694a3ce7678284b784c8d385fc11d1f051ac0838c58082013918b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/page.tsx",
+      "sha256": "6a52ae0f5222e1016a7a12a55a854ee1a33fe331d386c571281eda6b78f9d0b4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/access-gate.ts",
+      "sha256": "6ddc475e7cebfa625bbebafeb50eca4232d36a827cdef64e058c0c1798db25ac"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/actions.ts",
+      "sha256": "7388bd6cc9c3d1bf374bfbaab8f8485e139e065f22475c160bc199d1ae6071a8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/page.tsx",
+      "sha256": "4246c5455210d7dc62d7877e641e4040afb3527de2fc9ae0babb519fc8f25e0d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/rules.ts",
+      "sha256": "916ff3771835692f20766f5037ad973f237cfce3be4e1e2fe04cf3658bad23f8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/settings.module.css",
+      "sha256": "315e16a50b0bcf85a3bba6d511402a3e7a17587eee3a1615617e4d7fa72d3a9a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
+      "sha256": "cac763c9fa918da0384f3462029f66542686bb0819395841c8f21faefb98e515"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
+      "sha256": "952e8f64ad4c2407c4b670bd59f87796f12a2206d7c60cdcb08c3c10dc23a618"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "1f4759b570ed830cc4c2e466ebe3d57fb2c05eb7c953c84eac5c034d8b13f05d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
+      "sha256": "4abc3a5c00f1155e5d98e9e206ee6ec9efa2126d3a55db8c14f69ad41441164a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/DayBreakdown.tsx",
+      "sha256": "ef79d8933c3bd70bc102b8335439928741b5997cd84fa4c3cbb728b2b683d7a9"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/RequestCancellationForm.tsx",
+      "sha256": "68d82b34009d7fd070e9f2ee1c180a9735ae1967e373908f59378bd5c1baafb7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/WithdrawRequestForm.tsx",
+      "sha256": "753f452cfb31b0427dd0284c00458f7d3d320ebe8aa877d162717581de60ca1c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-actions.ts",
+      "sha256": "a4589c29da144a5607cc6ac3b40702291a928fabecc13acbadc1af9936ab570e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/cancellation-rules.ts",
+      "sha256": "eec8cd7ab34ad4ea81f90aef115b8e1bdfb8e07e6edc8d6f3f6c7b369c7eee4a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sha256": "558e383668563d919d666e49a3bb9452a44039578cd84f567731be1348f59873"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/actions.ts",
+      "sha256": "621e889b81876cf0b154081580df33c2601d4eb324d61309519043c853c79ed8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/form-rules.ts",
+      "sha256": "ec01272e6d9d8674cdf2f0f70b5f61ad3910a2880ae10237daca8b26d2a5093e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/leave.module.css",
+      "sha256": "b441363f6beec4d751c48fa19e00affa7282eefa222adf243ba55fc66bd66dfe"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "sha256": "9fb8a41dff72232f7fc7b1316992c44ef05669ce61621d0d5fff31ae5f681a4b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
+      "sha256": "bebd997d02a68c9ed1d7b56278061350ada6f819b6953b253682554216cd48cb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/operation-key.ts",
+      "sha256": "bf1abf6bf878446c3607acd22c0ea27183c572baddcdaa814bbc14d56c05fa6f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "sha256": "681a75a6f8819382e15749852b9810a894b07b9e32831806ba8f492308dcd415"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/pending-link.tsx",
+      "sha256": "6446ac30d1306fcc8545ccd69680e2143b68443aa7d65cb91f65ddab36b70a49"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/states.ts",
+      "sha256": "41a4763973052ce43872d1abc7554ef3c7d18186182c28e9755cfd2fceafce9a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/page.tsx",
+      "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/profile.module.css",
+      "sha256": "75ac8144b789e980226ca30f8f88dfa5da92d210f7f19e8d9c1dded869d2beef"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/page.tsx",
+      "sha256": "698d1e17b89030a6edd1739e5b66f721fcd0fa257c78fa3df871848131e8a000"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
+      "sha256": "a03ca1e097a50e25fcc4ca781420c839791917a51f5c4e8e0767381a8a92d263"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/EmployerSelector.tsx",
+      "sha256": "f081206218dcb903f43c7131072257013212178975e09f9e4ea15e76419372d8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/OvertimeNotice.tsx",
+      "sha256": "2abdcdbc96153d26c001c1ca6dc65fbe80dc9e2618fd45108605ca54f506b3a2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/PayrollStepper.tsx",
+      "sha256": "9744e0fa91b88257c499055521319001524f6336f6b8da6b272e8147b5fb3b26"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/RecordedPaymentNotice.tsx",
+      "sha256": "76bdf4fc56cdf3111cb1b97e004124dbcd4d4bbc2fd9ef05f1b78d5736d2d442"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/actions.ts",
+      "sha256": "abdd608bcaf04ae6bf5facf1100eef3f3931d606bd79b66776c0c498ee97eaf7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "sha256": "1ad49208c35892d4e182f254fe73603a60db4c7e526f38fb039066ae686e5f71"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/actions.ts",
+      "sha256": "2d3462cd9440b78ce16e8df8fa2538e3e9a337eebd9df38ebf8fe965a5e00cab"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "sha256": "b851a16458ced44b9331b560f9f003ca504ab51ca1dda966dde68640ecde0051"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/rules.ts",
+      "sha256": "477b0b9ef56227ee1d0592b59b2115ebd5f0381257181e3c004619c1b047485b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx",
+      "sha256": "3b897a11b3f53ffd7a24ec36bfaf5708fd3aa699f7acd87f828ae95f6ec18243"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/PagedChoice.tsx",
+      "sha256": "a342d9037139916165ef0b20ae356475e6ed257f5299341ef3f76c616059c5fe"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/SourcePicker.tsx",
+      "sha256": "cf0a423e14b95a5a493bb38497d46cdeeece8c1c5bee19f692280ce0c4410b7a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/actions.ts",
+      "sha256": "8637e9a3ae8b246d6d8452752b0be6a7bfb3e5f3bff634d4b718657f79d43b2f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "sha256": "396f6413d8042f1a33411d2e01c9c7856b9eae54a3683800a33d1000e76ffd82"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/rules.ts",
+      "sha256": "73f90a287dd32ec61c191c13ad385f909ed73f3ba3487f89948979a25cb58f40"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/corrections/useCorrectionRecovery.ts",
+      "sha256": "16ac18488931d5f4b9ce776058b848d0ca4c8d64ec6aba3cc848b212af1f0f89"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/employer-context.ts",
+      "sha256": "8082b2edbe7f5e5dba828416dda63ede3d76a8b885c80209697f859dd0de8722"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/CorrectionForm.tsx",
+      "sha256": "8b13025b0e4267a7860a7b936ec0d7b8c29aa444867c96cd42085722f2476892"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx",
+      "sha256": "37f2048fa672fee6271abd9d45373c347de563eb77279d70edb432f436abfd5e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/actions.ts",
+      "sha256": "7055530b5f1808056fe732391be5cbd7b93ebef967c8e78fafe7b7f160250377"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/employee-selection.ts",
+      "sha256": "5da58903523556b3ef6257ba6598ad6d697a932ea97fa09479b1dfd39e9a6c87"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/manual-source.ts",
+      "sha256": "c34a235e3330c4d5b5371d27c028cf3e2cf7ce615e7d078678f7fffa5d3eccb4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "sha256": "777e55e1d49511ba99f556a5d344e49ce282a5f9d6a681d5e09235efc7c3cb01"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/rules.ts",
+      "sha256": "0bef89fb3eec2d40b7eeac16f5f27f728df928a9bbb1cd55b22323a81386dd5d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/inputs/saved-adjustment.ts",
+      "sha256": "93bdd82cf117c2fdb61185f01e03716570077414be908cd1fc75911820bef037"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/issue-responsibility.ts",
+      "sha256": "6973d38f91ff5a7d8c5958f9d8b6fce5345a35004b5ab9f1f4e596172127490f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/issue-titles.ts",
+      "sha256": "010618b6ebba5186d2fe6d1d99ea2ce43c0625d1ae3bac361ea03841e5cdcfb9"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/output/export/route.ts",
+      "sha256": "5c6287c3b7dc58d4e1ab0e8df07c1e2e5b204849d0906b42ca270aabbaadd196"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/output/page.tsx",
+      "sha256": "4531d3bbbb950cdf5c1cf6b526ab421c721e53af2ddf4447099d1367f442df12"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/overtime-notice.ts",
+      "sha256": "01270931a25cb00992f4f2e4b88bb08d39a9ac5e09f00ebd5a231ff336a6a5d7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sha256": "ff9186b82553f757579a23c3bbd0b18f9e3c4125c149542dd4c3855b5dcfe41b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payment-facts.ts",
+      "sha256": "879a05bea44825c2d284e778fee3c88cab5e3e9f049c6b49d46cf0c0b07a9d90"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "sha256": "a51f9451e72da01657f764d819bfe6756fc591f93f538b14233d42c49aabd8c9"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/actions.ts",
+      "sha256": "dd0d4eb7c0195078d026d3f9b13b9e6db3e5adfd191125db77f2c7629355dfb2"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+      "sha256": "74378814c2340fccf7973fa54979a4f2945dc15c0a628b19ecd668c9bbdfd1fb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/recovery.test.mjs",
+      "sha256": "b00f9ef3efb7753cc9767869948f8659724c2ffc9960d77369e3ff2c063771e4"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/rules.ts",
+      "sha256": "13c85561d6f6080e01e8a7bc7a8f56d8e9c4e8adafa97cb39bc42cc57a2852a7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/usePaymentRecovery.ts",
+      "sha256": "ef5df5ffff0025ed918c942aaade24b4ae52bbd6db3d258efecdc33bde68b638"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payroll.module.css",
+      "sha256": "e0bcfa728413e238618a50c65dae8c6e72a050da7d6f401b8b3dda2f892d6cea"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/PrintPayslipButton.tsx",
+      "sha256": "f542ef94c6fa54a7e534a12e93996e6e89a68bd29514e1f12d8d95100562f249"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/export/route.test.mjs",
+      "sha256": "e4ea4c00cf1818b6a5ca2bdef25f56163bda8e3be79407749375aa4ec92190cc"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/export/route.ts",
+      "sha256": "8563a03e68ed418c50df8963cab2bfc3e5c7b684c12682611838d1dad70add77"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/page.test.mjs",
+      "sha256": "c1effeed4da50f9d0c4fd6ce61ec8b891ad123f2b775e91a63cd5dfed31a5269"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
+      "sha256": "88701f2b254e84bd2352c47992cd8443fcfafb4f62a0ea2cbe8999ef07f8a546"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/print-actions.test.mjs",
+      "sha256": "2e2a06ee879902cf606853edfe4d2c8db476a4db1bc79195b1f941de8014433b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/print-actions.ts",
+      "sha256": "19a37ac3a170c5e009c5e21a2d90c27535e98f79e5985cf08bad8e7a9014f8fb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/print-session.test.mjs",
+      "sha256": "33d08871dae03c05b3dd72afe0aab3f55ef51db571a5f8734594075e247e3b37"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/print-session.ts",
+      "sha256": "27eab60341524e01112a45b0a022c4e76ac75111f8bdd95e2c3fb1ab87100b9f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/reports.module.css",
+      "sha256": "9f1b455abed2d45870c8ff40229401e312aaa8aaafe443e7fc6a6d68084b8039"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/rules.test.mjs",
+      "sha256": "07c329b5855d24097e7bd1c24357ba1c9138612cdd9c2018ad096890c619fd13"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/reports/rules.ts",
+      "sha256": "474401028649d72030b312e4cf6ef90f3a43ad4182a3ee2f03d2696d38814835"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/rules.ts",
+      "sha256": "12c27697e8780e7f28bb7675065e352b34ef16318a32cdd5cfda17fc01e36ad1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/ApprovalActions.tsx",
+      "sha256": "190aa921201f61152bc2666372a017913f56ae86bdae5576a0d88147f4dd57ae"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+      "sha256": "eb46887981e9da3027dc36b6b56f37ba7ef8beba37e52d8ad9ed6beb35b9dfa1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionRecovery.tsx",
+      "sha256": "50ca0e406611b662596b117719cdb9bd68a07a573924d73cffd39c98cbed9200"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/RunActions.tsx",
+      "sha256": "bd9e0de9d1e22eefeed33e417a988aa2a5b4b01c052d8de0eb7f3682b27735b7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
+      "sha256": "f2a18872eac88bfff2c1495f0b2c3eeb106ca761b7c22592562ed4a217599897"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx",
+      "sha256": "16f5683434fa7568f13d479e2f9e41f9f31462e3cce7cf1f11925598fb2d9832"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/actions.ts",
+      "sha256": "3be3c28f4459c86e7c07302a0f47c62cae1c16203701a9a59051bfc0bfbfc9b1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/approval-actions.ts",
+      "sha256": "df839987f7bb704d3947bc8876b5ab528664e2ea380c30b3dbab2337a27fa2e1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/deduction-disposition-actions.ts",
+      "sha256": "1ea3b965b881dfedf25a775721aef1ec1553383d843b0ffd9097fcecfc896742"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sha256": "faa5aedc4385c01e3f0ce3b6dbeedaa87987d01dd1a288bf62142a997d5df459"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/rules.ts",
+      "sha256": "544d4a59a9948a73749fd4f2bd2aacf3c7f1d535a010febcb56963530e7ab0c1"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sha256": "9d6d1dc22f685ea48025ccf3378de3b9627ed8aebb2bafae028bfad4f95a084d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/stage-facts.ts",
+      "sha256": "264068872cc0b17c4e7f70eb07d2c888fab87885065a5ec94dca2ac128659264"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/DirectorySearch.tsx",
+      "sha256": "ad8ec8d016109771ce16b592fab7a06ef5970f970b44578e3adc3ee31f20513f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/EmployeePreview.tsx",
+      "sha256": "c97c24c7b4aa0b986b6b2f7a16f446e3eebd8ba5ecffe68ca44f2ae9efde822c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "sha256": "b654000228d540633ad1f1cb2d43adc1cb59f6a9bf8683d5b34152b53fbea39c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeProfileTabs.tsx",
+      "sha256": "9249bec4c05260f82a64ef6a9734af75783bd4a948489aa4391f650f214b2def"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmployeeUserLinkPanel.tsx",
+      "sha256": "8568dd46134ee9f61476260a6f46ee2aa822e438243ec05cf3d0f30846667ae8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "sha256": "580bb10ced4e46efb3100b2d6781c6b7ac9f90d24714c49f91883a4e8286666c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "sha256": "ac80083674ddc65a18d4bf14b9dadd981e82554287597dc1e92f7a5c93ad8bec"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "sha256": "2d8fb40c40c67a2874a8d6c263afb10ce8ad43f0f3a4bddefbe788dc58826035"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/preview/route.ts",
+      "sha256": "7564ca9275d903862e9150f9adb7776cd2dc07780b4b752e57dfa3048c9d2b31"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/profile-tabs.module.css",
+      "sha256": "e9f42c75f25c3fd5f980d44c8c7ec3852983ad4f29a9609971612f85325cbe93"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/actions.ts",
+      "sha256": "d4259db358a76683d0e8063142f61926f43c871f62ffe1f8f84808706e8ab027"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/compensation-actions.ts",
+      "sha256": "1e9e8242b5b4f1348942893178e79856108b73f80eac76c7b8c9d5b61cdfeb3a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-account-actions.ts",
+      "sha256": "5e6914f8932fe8826f024916c137a529d68294c2b17487218722d9c52e529fa7"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview-data.ts",
+      "sha256": "2d9019492650dbbeca991c88868a9922fe64d2c2847c03ac742fecaeaae2cc07"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-preview.module.css",
+      "sha256": "20f3f398d4001db3b5a0cad0d3668710b740768165b9ab24a70db872cdeb2223"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employee-user-link-actions.ts",
+      "sha256": "c36c9b9b397712847550fd7bab64d564673f19e09c04301f9ab46e34ffb72d3a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/employment-lifecycle-actions.ts",
+      "sha256": "8df31525e963b171498e6cb8890044bb48bb20908e6cab9a3c46f308d19f9e41"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/import-actions.ts",
+      "sha256": "7de240b62a7237437ad64a92a780c1ef47f688154d8afab45f7e8ae4a42adcbc"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/import/WorkforceImportForm.tsx",
+      "sha256": "b78b11a01fb69003bbdc4f8a6a08aee1bf9fe63e6fab6e0f4c6a8d27dc09051f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/import/page.tsx",
+      "sha256": "baabcfda6d7c23294ee515d21e17e0fdbf9bf6c7da5cd53f7dfcb619c055c720"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
+      "sha256": "41691de54685981db714a026f1100c486ed015512d6e8f551fa5f9e7fefc6c4f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/new/page.tsx",
+      "sha256": "e0d6927d4ed8dfa1b7e2fada2142e301e482ae6426d36734742244a2fc45a820"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx",
+      "sha256": "018713567ef97642bfc3d477374c509743850ce6d7c4aa65fa4da5b150a0768e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/[kind]/[recordId]/page.tsx",
+      "sha256": "f77f7cfb260a37f3242b863551d3b0b3a54d1e70f6d0f3ca647fa52d661c3231"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/actions.ts",
+      "sha256": "533a21f1e0542b890d2b6b2be15494b4f7431d04fc64d2254a78866c85c35e4c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/organization/page.tsx",
+      "sha256": "8135530f57f2696a06690843d2cf46549effa3f8517ede419eb048d86c9f888e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/page.tsx",
+      "sha256": "3e31f3e1c1c884a55b11995d7fbde247640de7000ae4a198934c61700d98fe2b"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people-management.module.css",
+      "sha256": "e3281c96dcc967b4d0dace8ded46e1ad117d0fbbf760ca3fdcec6f0780cc8c3c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/people.module.css",
+      "sha256": "eb7d926d9ccd482085b3029dad49d9d1c33b20e73be12625dc42177907fe9109"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-assignment-actions.ts",
+      "sha256": "5ea733217e83f8035a203427bfea319ac90ca5cf35467f9745c33ce1b2e9880c"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/PolicyTask.tsx",
+      "sha256": "0e320d17dde63e7357a6eba0d4fc4bec43e722a1192db2787056458584ba3687"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "sha256": "ddd16995f4310a4e4be16eb83757b56e397c9006ced77340c928c26bfc9fa5da"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "sha256": "9bd750eaa8187ffc7350fa290285c0c655738376559a5ac8eafbee4f46a1e6c9"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policy-actions.ts",
+      "sha256": "1b0ee39da94c787ce77175d864ba7c88cde5ade063a906b8271534121d9b40bd"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/today.tsx",
+      "sha256": "642cbc43ec3edd1db7276e89c13176cb0123835f43b74dc2c0fe4493c777c934"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/users/actions.ts",
+      "sha256": "accc9f8028836144b97564a2bf90bad6a85d38ce6ad27e2184556df6e13365bc"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/users/invite/InviteMemberForm.tsx",
+      "sha256": "b5ba2ade62a8fce6aa4a1cb7fa732a8502733141a84a511558dcab2d6c1af5e6"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/users/invite/page.tsx",
+      "sha256": "6872081b11f30c02a137d202eee750cf70c3235f5b913b520ef82b5b9bfa0cf8"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/users/page.tsx",
+      "sha256": "89ed96c8aeb77b8a6410e6b6cc44589d86e3dab0938f7c2109eb73ba67537dd6"
+    },
+    {
+      "file": "src/app/tenant/select/page.tsx",
+      "sha256": "89ad357771b219e421a1d40252f9461b03c133f2919d52c1779a0b9fe4be496b"
+    },
+    {
+      "file": "src/app/workspace.css",
+      "sha256": "5a475455a24d4664563698cebbaedf53a6329bb12abee6d67c9d100f840bedfa"
+    },
+    {
+      "file": "src/components/context-navigation-client.tsx",
+      "sha256": "4e6b4b0ec9e57609f8654782327b9e1553fe37b22c61e15255c7e276e30fbc85"
+    },
+    {
+      "file": "src/components/context-navigation.tsx",
+      "sha256": "4199bf7be2af1957b2143e8974e3e6f2396515f3a9b00aa92350105774bc524d"
+    },
+    {
+      "file": "src/components/feedback-toast.tsx",
+      "sha256": "4ce6abdec2df28db52cc4ef223d33dbe843424f068cf50c8e390f8e1e73a4d38"
+    },
+    {
+      "file": "src/components/install-hint.tsx",
+      "sha256": "0e97f7c01a97fda2aad7fa5132a3436f2a2675b5629a1eaa5bee723fe4caf945"
+    },
+    {
+      "file": "src/components/offline-form.tsx",
+      "sha256": "526ab256a91e001304b894f68b6e889055d40b7ea1539f9273b539f6ed2887b4"
+    },
+    {
+      "file": "src/components/offline-submission.tsx",
+      "sha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2"
+    },
+    {
+      "file": "src/components/offline-submit-button.tsx",
+      "sha256": "490edc52eafd7a11b63256c6ddbc56668f3d4e79f5bcd230e314618d40352e79"
+    },
+    {
+      "file": "src/components/pwa-foundation.tsx",
+      "sha256": "e00c5f6fd633463b6264bbbdf5f53b20bb186fbd75f286de7702075560f4b79e"
+    },
+    {
+      "file": "src/components/submit-button.tsx",
+      "sha256": "8f8f2231336b4fe61984b6de696ac37e8c9684e9f778f3168e9e8f93d823d61f"
+    },
+    {
+      "file": "src/components/theme-preference.tsx",
+      "sha256": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954"
+    },
+    {
+      "file": "src/lib/attendance-channel.ts",
+      "sha256": "1393b02358899f5b00fa14829f5a21573974744caa92849e241dc5a0bdff6625"
+    },
+    {
+      "file": "src/lib/employee-account-delivery.test.mjs",
+      "sha256": "a0da0aac6b1ba96646c8c96563c05f76cda49aca0f31ae64e1f73cc5ef854eb8"
+    },
+    {
+      "file": "src/lib/employee-account-delivery.ts",
+      "sha256": "835d738cbc2719da9abe42d2c04b6d5101455fa25c33a3811bc578702351f985"
+    },
+    {
+      "file": "src/lib/invitation-feedback.ts",
+      "sha256": "a2c3ab633591343ca3379e08a295046ec8c00bf3f8049930379884c785ea68be"
+    },
+    {
+      "file": "src/lib/operator-access.ts",
+      "sha256": "7b20e2bf5f357a8a4cc3d0798287d245bf235ed05eb96f85785b4ff1f58a10a9"
+    },
+    {
+      "file": "src/lib/operator-read.ts",
+      "sha256": "eb39ba4875655e2680c698cc9784dbaf44cec4f59d6856580a3d9f500347ffd0"
+    },
+    {
+      "file": "src/lib/payroll/leave-correction-context.ts",
+      "sha256": "603a8365f327a92f8018e18c4ca8b8ca5362a688e8fd627d6330f931ca0dc41e"
+    },
+    {
+      "file": "src/lib/people-csv-parser.d.mts",
+      "sha256": "024d417f459c7eb7678959fa7383464527ae2f6446ecceec7dc0cf2fe85ed661"
+    },
+    {
+      "file": "src/lib/people-csv-parser.mjs",
+      "sha256": "4982ad50c7d704c8a813453ffc2e849d6b6f55c1105fadd35838f7c75d1dde14"
+    },
+    {
+      "file": "src/lib/people-csv-parser.test.mjs",
+      "sha256": "bbc1492bdbddf1d8d0b24d5139b05076c3d38699d51306b8281e8a475fb34f27"
+    },
+    {
+      "file": "src/lib/supabase/admin.ts",
+      "sha256": "2207e2f77e3fa42fad1575c64a63a1c9e3b6dc1a2fc98c75b70dd02e915277b1"
+    },
+    {
+      "file": "src/lib/supabase/proxy.ts",
+      "sha256": "2955a149f348b0c64524fdcf59493bb235e17013503a0479cf14cfefd0258ccf"
+    },
+    {
+      "file": "src/lib/supabase/server.ts",
+      "sha256": "9b3d0e486139f50c1e0be1c3d4b11ab99e5f6ecfabac5ce79fb9910e3ab96bd9"
+    },
+    {
+      "file": "src/lib/theme.ts",
+      "sha256": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+    },
+    {
+      "file": "src/proxy.ts",
+      "sha256": "ab70156be3d1760af17d7d7b66afb5a810d58d0b49225a880b3343dc99f0f843"
+    },
+    {
+      "file": "src/styles/tokens.css",
+      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "499f3d50e774da6d65b1440ebf1ff5f8127029678222fed9c9d57240f8afd2b8"
+    }
+  ],
+  "noEnvironmentFilesCopied": true
+}
