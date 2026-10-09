@@ -1,0 +1,32 @@
+{
+  "sourceHEAD": "49d92cb74c7ed5ca110ba965cab65d403a929740",
+  "sourceFilesCopied": 317,
+  "actualSourceMatches": true,
+  "manifestSHA256": "ca38904a0fe803f841cded0ca6dfae1ba5ff3c4fb64cb1da431a5f0f0ee418f9",
+  "sourceManifestRetainedLocally": true,
+  "applicationEdits": 0,
+  "normalAuthActors": 2,
+  "requests": [
+    "rejected",
+    "withdrawn"
+  ],
+  "ledgerEntries": 1,
+  "balance": 10,
+  "userRowsExported": false,
+  "credentialsExported": false,
+  "countsSource": "actual owned read-only query after both commands before retirement",
+  "runtime": {
+    "status": "RETIRED",
+    "createdAtUTC": "2026-10-09T11:42:48.290Z",
+    "retiredAtUTC": "2026-10-09T11:51:22.406Z",
+    "expires": "2026-10-09T13:42:48.292Z",
+    "errors": [],
+    "containers": 0,
+    "network": 0,
+    "listeners3650through3654": 0,
+    "normalUISignoutConfirmed": true,
+    "ownedTabClosed": true,
+    "viewportReset": true,
+    "sharedServicesUntouched": true
+  }
+}

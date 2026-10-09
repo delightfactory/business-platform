@@ -1,0 +1,38 @@
+[
+  {
+    "id": "annual-submitted-no-hold",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/me/leave/7907ae1c-19e7-40fc-a975-5168d91eca26?state=submitted",
+    "result": "actual annual2days submitted; initialbalance10; submitted is not approved/no held balance",
+    "source": "49d92cb74c7ed5ca110ba965cab65d403a929740"
+  },
+  {
+    "id": "annual-withdrawn",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/me/leave/7907ae1c-19e7-40fc-a975-5168d91eca26?state=withdrawn",
+    "result": "actual withdrawn terminal; no withdrawal control; ledger1 original opening only, balance10 unchanged"
+  },
+  {
+    "id": "annual-second-submitted",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/me/leave/9eb6751a-1bf2-49b1-bee8-9f5a27b9e581?state=submitted",
+    "result": "second actual annual2days submitted; awaiting HR decision, no automatic approval"
+  },
+  {
+    "id": "today-withdrawal-removes-queue-item",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001",
+    "result": "actual HR Today submitted1 for second request; withdrawn first excluded"
+  },
+  {
+    "id": "hr-rejected",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/leave/requests/9eb6751a-1bf2-49b1-bee8-9f5a27b9e581?state=rejected",
+    "result": "actual rejected with reason; no approval/decision form; database rejected+withdrawn, ledger opening1/balance10 unchanged"
+  },
+  {
+    "id": "real-company-switch",
+    "url": "http://127.0.0.1:3654/tenant/f9110000-0000-4000-8000-000000000001",
+    "result": "normal two-membership select to UX Synthetic A; same account; correct company/context; no Cube5 HR decision links/data"
+  },
+  {
+    "id": "employee-rejected-follow-up",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/me/leave/9eb6751a-1bf2-49b1-bee8-9f5a27b9e581?state=submitted",
+    "result": "normal employee login; authoritative rejected/no deduction; no HR decision/control/identity; owner-only follow-up; decision reason not exposed by existing snapshot, no added data claim"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "25d5e361-9cdb-4cb3-8adb-764aea188f41",
+  "result": "**Reference verdict: MATCH WITH ACCEPTED DEVIATIONS**\n\nAll four captures follow Concept C: the same teal and green palette, rounded neutral cards, teal callouts, status pills, and correct Arabic right-to-left hierarchy (title, then status, then facts). Accepted deviations:\n- The reference shows a request drawer. The withdrawn and rejected detail pages have no literal equivalent in it.\n- The desktop shell is the existing dark sidebar, not the reference's top nav. That shell was already accepted earlier.\n\n**Task clarity verdict: MATCH WITH ACCEPTED DEVIATIONS**\n\n- **Employee, rejected (390 and 1366):** One clear result: \"HR rejected this request and no balance was deducted.\" The decision form, HR identity and HR controls are absent. The next step is the back link to My leaves, and the bottom/side nav is still there, so it's not a dead end.\n- **HR, rejected:** Status shows \"Closed — no action required\". No approve or reject form is visible.\n- **Second company:** The UX Synthetic A context is correct. The role shows \"member\", only the employee's own service links appear, and there's no Cube5 data. A \"switch company\" link is present.\n- **Accepted deviation:** On the rejected page, the subtitle still says \"a pending request doesn't hold balance before approval\". That's left over from the pending state. It isn't false and doesn't hide the outcome, but it's slightly confusing.\n\n**Blockers:** None.\n\n**Evidence note:** In `browser-cases.json`, the `employee-rejected-follow-up` URL contains `?state=submitted`, but the page shows the rejected state from the server. The README should point out that this is a stale label, not what the page displayed.\n\n**Not visually verified:**\n- No withdrawn-state image was in the 8 files.\n- The HR rejection reason and the absence of a decision form below the fold aren't visible (the captures show only the visible screen area).\n- The Next.js dev indicator (\"N\" / \"Rendering…\") covers the \"More\" tab on phone. It's dev-only, but that tab isn't checked.\n- Dark mode, 768px, accessibility and role coverage, and company colour switching weren't tested; both companies use default branding.\n- Database counts, ledger and balance come from the README; I didn't check them myself.\n\nI didn't create a plan file because this was a read-only review.",
+  "source": "49d92cb74c7ed5ca110ba965cab65d403a929740",
+  "applicationEdits": 0,
+  "scope": "selected existing actual terminal and company context states only",
+  "files": [
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/README.md",
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/browser-cases.json",
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/employee-rejected-390.jpg",
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/employee-rejected-1366.jpg",
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/hr-rejected.jpg",
+    "docs/07-execution/evidence/ux-leave-withdraw-reject-20261009/second-company.jpg",
+    "docs/07-execution/evidence/ux-core-leave-task-20261008/reference-form-390.jpg",
+    "docs/07-execution/evidence/ux-core-leave-task-20261008/reference-form-1366.jpg"
+  ]
+}
