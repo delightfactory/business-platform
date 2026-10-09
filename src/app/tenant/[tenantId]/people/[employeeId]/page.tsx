@@ -142,11 +142,12 @@ export default async function EmployeePage({ params, searchParams }: {
       canManage={canManageWorkContext} initialDate={today} />
     {workPolicyPanel && <Panel  aria-labelledby="work-policy-heading">
       <h2 id="work-policy-heading">سياسة الدوام</h2>
-      <p className="record-meta">تعرض القائمة سياسة التكليف الأساسية. أما التغيير لفترة محددة فيُسجل للحضور من دون تعديل تكليف People.</p>
+      <p className="record-meta">تعرض القائمة سياسة الدوام الأساسية. أما التغيير لفترة محددة فيُسجل للحضور من دون تعديل بيانات العمل الأساسية.</p>
       {workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <RecordCard className="assignment-history-item" key={row.assignment_id}>
         <strong>{row.name ? `${row.name} · ${row.code} · الإصدار ${row.version}` : 'دون سياسة دوام محددة'}</strong>
         <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
       </RecordCard>)}</ol> : <Message tone="neutral" >لا يوجد سجل سياسة دوام.</Message>}
+      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && !workPolicyPanel.options.length && <Message tone="info">لا توجد قوالب دوام متاحة للاختيار؛ لذلك لا يمكن حفظ سياسة جديدة الآن. {workPolicyPanel.can_manage_catalog ? 'أضف قالبًا من إدارة قوالب سياسات العمل أدناه.' : 'اطلب من مسؤول الشركة تجهيز قالب دوام.'}</Message>}
       {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignWorkPolicyAction} className="work-policy-assignment-form">
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
         <div className="work-policy-assignment-field"><Field id="work-policy-id" label={<>قالب الدوام</>} required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</Select></Field></div>
