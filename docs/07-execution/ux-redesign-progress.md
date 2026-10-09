@@ -340,3 +340,6 @@ Concrete unexecuted auth-only QA ownership proposal prepared for owner review. R
 
 ### Attendance read recovery source checkpoint — 2026-10-09
 Malformed/thrown own-attendance reads now reach the existing neutral reload state; 42501 retains denial without retry. Twenty parser cases, two real rolled-back SQL shapes, scoped lint and TypeScript passed. Official Claude Opus 5.5 Medium cleared source compatibility; Codex and Claude new-state visual verdicts remain NOT VISUALLY VERIFIED. No full stage closed; no business/device/Auth success claimed. The owner subsequently approved the previously proposed dedicated QA Auth ownership preparation and one fresh synthetic loopback runtime, maximum two hours, with retirement at completion. D16 remains deferred.
+
+### Approved local Auth preparation — refused, stopped — 2026-10-09
+Owner approved dedicated QA Auth ownership preparation and a maximum two-hour synthetic loopback runtime. The exact proposed transaction failed at ALTER SCHEMA with `must be able to SET ROLE "ux_c93f_auth"`; it rolled back. Read-only verification: Auth schema remains postgres-owned, both QA roles NOLOGIN/non-superuser, zero Auth users/connections/task containers/listeners. No privilege escalation, retry, or new access window. Real browser Auth acceptance remains open; no full plan stage closed.

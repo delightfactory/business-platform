@@ -1,0 +1,31 @@
+{
+  "status": "APPROVED_PREPARATION_REFUSED_STOPPED",
+  "database": "business_platform_ux_c93f09f_qa",
+  "error": "ERROR: must be able to SET ROLE \"ux_c93f_auth\"",
+  "authSchemaOwner": "postgres",
+  "transactionRolledBack": true,
+  "roles": [
+    {
+      "role": "ux_c93f_auth",
+      "login": false,
+      "superuser": false,
+      "createDB": false,
+      "createRole": false
+    },
+    {
+      "role": "ux_c93f_rest",
+      "login": false,
+      "superuser": false,
+      "createDB": false,
+      "createRole": false
+    }
+  ],
+  "authUsers": 0,
+  "qaConnections": 0,
+  "ownedContainers": 0,
+  "ownedListeners": 0,
+  "noAccessWindowCreated": true,
+  "noEscalationOrRetry": true,
+  "applicationAndSharedDatabaseUntouched": true,
+  "atUTC": "2026-10-09T00:43:11.104Z"
+}
