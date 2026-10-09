@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { operatorPermission } from '@/lib/operator-access';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { ContextNavigationClient, type ContextLink } from './context-navigation-client';
 
 export function ContextNavigation({
@@ -33,7 +33,7 @@ export async function OperatorNavigation() {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
   if (supabase) {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await getWorkspaceUser(supabase);
     if (user) {
       const [operator, onboarding, lifecycle, commercial, statutory] = await Promise.all([
         supabase.rpc('current_operator_can_manage_operators'),
@@ -72,23 +72,23 @@ export async function TenantNavigation({
   const businessLinks: ContextLink[] = [];
   let canSwitchTenant = false;
   if (supabase) {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await getWorkspaceUser(supabase);
     if (user) {
       const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess, payrollAccess, payrollInputs, payrollRuns, payrollNavigation, mobileAttendance, channelAccess] = await Promise.all([
-        supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' }),
-        supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId }),
-        supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId }),
+        readWorkspaceRpc(supabase, 'tenant_member_access_page', tenantId, 'p_tenant_id', 'summary'),
+        readWorkspaceRpc(supabase, 'tenant_entities_sites_snapshot', tenantId, 'p_tenant_id'),
+        readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id'),
         supabase.rpc('current_tenant_spaces'),
-        supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),
-        supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId }),
-        supabase.rpc('tenant_my_employee_snapshot', { p_tenant_id: tenantId }),
-        supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }),
-        supabase.rpc('payroll_access_snapshot', { p_tenant: tenantId }),
-        supabase.rpc('payroll_input_access', { p_tenant: tenantId }),
-        supabase.rpc('payroll_run_access', { p_tenant: tenantId }),
-        supabase.rpc('payroll_navigation_access', { p_tenant: tenantId }),
-        supabase.rpc('attendance_mobile_snapshot', { p_tenant: tenantId }),
-        supabase.rpc('attendance_channel_access', { p_tenant: tenantId }),
+        readWorkspaceRpc(supabase, 'people_access_snapshot', tenantId, 'p_tenant_id'),
+        readWorkspaceRpc(supabase, 'time_attendance_access_snapshot', tenantId, 'p_tenant_id'),
+        readWorkspaceRpc(supabase, 'tenant_my_employee_snapshot', tenantId, 'p_tenant_id'),
+        readWorkspaceRpc(supabase, 'leave_access_snapshot', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'payroll_access_snapshot', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'payroll_input_access', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'payroll_run_access', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'payroll_navigation_access', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'attendance_mobile_snapshot', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'attendance_channel_access', tenantId, 'p_tenant'),
       ]);
       if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري', mobilePriority: 10 });
       if (!channelAccess.error && channelAccess.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/attendance/sources`, label: 'قنوات الحضور' });
@@ -135,6 +135,6 @@ export async function TenantNavigation({
     switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} />;
 }
 
-export function PageFrame({ children, footer = 'منصة الأعمال' }: { children: ReactNode; footer?: string }) {
-  return <main className="app-shell">{children}<footer className="footer">{footer}</footer></main>;
+export function PageFrame({ children }: { children: ReactNode; footer?: string }) {
+  return <main className="app-shell">{children}</main>;
 }

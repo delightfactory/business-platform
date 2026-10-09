@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { readToday, TodaySections } from './today';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ export default async function TenantPage({ params, searchParams }: {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <TenantStatus title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد المحاولة." />;
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
 
   const { data: accessStatus, error: accessStatusError } = await supabase.rpc('tenant_lifecycle_status', { p_tenant_id: tenantId });
@@ -63,7 +63,7 @@ export default async function TenantPage({ params, searchParams }: {
 
   const snapshot = data as Record<string, unknown>;
   const today = await readToday(supabase, tenantId);
-  const { data: brandingData } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const { data: brandingData } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
   const branding = brandingData && typeof brandingData === 'object' && !Array.isArray(brandingData)
     ? brandingData as Record<string, unknown> : null;
   const entity = objectValue(snapshot.default_legal_entity);

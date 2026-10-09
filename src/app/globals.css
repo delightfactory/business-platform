@@ -481,3 +481,38 @@ details[open] > summary.primary-button::after, details[open] > summary.secondary
 .statutory-task > p, .statutory-task > details { margin: 0; }
 .statutory-summary > .entity-status { justify-self: start; }
 .statutory-summary .inline-action { display: inline-flex; align-items: center; min-height: var(--field-height); color: var(--color-brand-text); font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+/* Existing screens use the same geometry and surfaces as the UI kit. */
+.primary-button, .secondary-button, .danger-button { min-height: 40px; gap: 8px; padding: 9px 16px; border-radius: var(--r-ctl); font: 500 14px/1.4 var(--f-body); box-shadow: none; background-image: none; }
+.primary-button { color: var(--brand-ink); border-color: var(--brand); background: var(--brand); }
+.primary-button:hover { background: var(--brand-strong); border-color: var(--brand-strong); box-shadow: none; }
+.secondary-button { color: var(--ink-2); border-color: var(--line-2); background: var(--surface); }
+.secondary-button:hover { color: var(--ink); border-color: var(--line-2); background: var(--surface-2); }
+.danger-button { color: var(--bad-text); border-color: color-mix(in srgb,var(--bad) 30%,var(--line)); background: var(--bad-bg); }
+.danger-button:hover { color: var(--bad-text); background: color-mix(in srgb,var(--bad) 16%,var(--bad-bg)); }
+:is(h1,h2,h3,h4) { font-family: var(--f-head); letter-spacing: -.02em; }
+h2 { font-weight: 500; font-size: 20px; line-height: 1.5; }
+h3 { font-weight: 500; font-size: 16px; line-height: 1.5; }
+:is(input,select,textarea,button) { font-family: var(--f-body); }
+:is(.auth-form,.work-policy-field,.attendance-form,.attendance-date-form) :is(input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),select,textarea) { min-height: 44px; border: 1px solid var(--line-2); border-radius: var(--r-ctl); color: var(--ink); background: var(--surface); box-shadow: none; padding: 10px 12px; font: 400 14px/1.5 var(--f-body); }
+.auth-form label { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+.eyebrow { color: var(--muted); font: 500 12px/1.5 var(--f-body); letter-spacing: 0; }
+.field-hint, .record-meta { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.form-message, .form-error { border-radius: var(--r-tile); padding: 12px 14px; font-size: 13px; line-height: 1.6; }
+.form-message { background: var(--info-bg); color: var(--info-text); border: 1px solid color-mix(in srgb,var(--info) 22%,transparent); }
+.form-error { background: var(--bad-bg); color: var(--bad-text); border: 1px solid color-mix(in srgb,var(--bad) 22%,transparent); }
+.empty-state { display: grid; justify-items: center; gap: 12px; padding: 32px 20px; text-align: center; color: var(--muted); border-radius: var(--r-card); }
+.empty-state h2 { color: var(--ink); margin: 0; }
+.record-card { padding: 16px 20px; border-color: var(--line); background: var(--surface); }
+.record-title-row { gap: 12px; }
+.record-card h3 { font: 500 15px/1.5 var(--f-head); }
+.entity-status { border-radius: var(--r-chip); font: 500 12px/1.5 var(--f-body); padding: 4px 8px; background: var(--surface-3); color: var(--ink-2); }
+.entity-status.is-active { color: var(--ok-text); background: var(--ok-bg); }
+.snapshot-grid { gap: 16px; padding: 16px; border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface-2); }
+.snapshot-grid dt { color: var(--muted); font-size: 12px; font-weight: 400; }
+.snapshot-grid dd { color: var(--ink); font-size: 14px; font-weight: 500; margin: 4px 0 0; }
+.task-disclosure { border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface); }
+.task-disclosure > summary { padding: 12px 16px; color: var(--ink-2); font-weight: 500; cursor: pointer; }
+.auth-card { padding: clamp(24px,5vw,40px); border-radius: var(--r-card); border-color: var(--line); background: var(--surface); box-shadow: var(--sh-2); }
+.auth-card h1 { font: 600 26px/1.5 var(--f-head); }
+.intro { font-size: 14px; line-height: 1.7; }
+@media(max-width:859px) { .primary-button,.secondary-button,.danger-button { min-height: 44px; } .record-card { padding: 16px; } }
