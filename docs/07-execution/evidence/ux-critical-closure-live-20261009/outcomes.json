@@ -1,0 +1,55 @@
+{
+  "sourceHead": "a1a2b2dc435d1fe7c3547b09cee2f26a6aa05401",
+  "actualRuntimeCopiesVerified": 318,
+  "normalAuth": true,
+  "syntheticOnly": true,
+  "cases": [
+    {
+      "id": "mobile-in-out",
+      "observed": "IN accepted; OUT authoritative after interrupted result, new IN ready",
+      "requests": 2,
+      "events": {
+        "in": 1,
+        "out": 1
+      },
+      "realGeolocationUsed": false,
+      "policy": "owned fixture geofence false; no inside-area or physical-device claim"
+    },
+    {
+      "id": "interrupted-result-reconcile",
+      "observed": "Owned PostgREST temporarily paused; UI20s timeout retained pending and displayed unconfirmed; restored service and clicked verify only, no resend/new attempt; OUT appeared once",
+      "duplicateEvents": 0,
+      "limits": "service-path interruption; browser offline flag alone did NOT prevent a request and is not equivalent evidence of full network disconnection"
+    },
+    {
+      "id": "tenant-brand-switch",
+      "observed": "ordinary employee chose second active tenant; emerald name/colour and no work entries, returned to Cube5 blue own services",
+      "brands": [
+        {
+          "brand": "emerald",
+          "color": "#5fcb92",
+          "name": "مساحة الشركةشركة الاختبار الخضراء",
+          "theme": "dark"
+        },
+        {
+          "brand": "blue",
+          "color": "#7ea6f2",
+          "name": "مساحة الشركةشركة الاختبار الزرقاء",
+          "theme": "dark"
+        }
+      ],
+      "limits": "membership and branding are fixture prerequisites, not membership creation/branding save acceptance"
+    }
+  ],
+  "cleanup": {
+    "status": "RETIRED",
+    "errors": 0,
+    "retiredAtUTC": "2026-10-09T13:57:50.035Z",
+    "uiSignoutObserved": true,
+    "tabClosed": true,
+    "viewportReset": true,
+    "networkEmulationRestored": true
+  },
+  "testsReused": "unchanged source build/TS/ESLint and scoped Claude shell verdict from a1a2b2d; no heavy rerun",
+  "excludedLocalImage": "attendance-offline-390.jpg: offline flag accompanied a successful request; unsuitable negative-case proof"
+}

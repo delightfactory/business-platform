@@ -1,0 +1,9 @@
+# Remaining critical journeys — actual local Auth and application
+
+Source a1a2b2dc435d1fe7c3547b09cee2f26a6aa05401, normal GoTrue login, actual Next/PostgREST/owned synthetic DB, exact copied-source hashes verified (318 files). No source change, no real employees or GPS. All prerequisites guard owned DB/account/2 synthetic users.
+
+One IN and one OUT, two capture requests. OUT request waited during owned API pause: after20s UI truthfully retained unknown attempt and offered verification/same-attempt resend; API restored, verify clicked once, no resend/new attempt; original OUT visible once and next IN ready. SQL confirms one event each. No duplicate. This tests interrupted service/result recovery, not every timeout/reload/physical offline variant. Browser offline emulation alone left requests working; its image stays local and is not negative acceptance. No pending secret/scope/storage payload was read or published.
+
+Actual ordinary employee switched via company selector to second membership. Names and rendered dark colours changed emerald→blue; second tenant offered no work links/data, return restored own services. Membership/brand setup was synthetic, not actual creation/save flow acceptance. Both brand values asserted in branding-outcomes.json. Colour/reference source implementation already reviewed by Codex and official Claude Opus5.5Medium; this evidence does not add a full-page aesthetic verdict.
+
+Cleanup: normal UI confirmed signout, tab closed, viewport reset, network emulation restored. Owned v13 controller RETIRED with0errors; generated values erased and own containers/network removed. Independent listener/container readback is recorded at preservation. Source gates reused because code is unchanged; no SQL/heavy suite repeated. Full original deliverable reconciliation and final handoff still pending.
