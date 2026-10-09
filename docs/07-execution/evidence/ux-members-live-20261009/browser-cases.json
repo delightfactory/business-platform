@@ -1,0 +1,49 @@
+[
+  {
+    "id": "R2-member-list-entry",
+    "source": "b8f948b8c5f5bf8a22cd85de0292abbf94ddce7c",
+    "result": "normal real GoTrue admin; active2/cap3;2members; own admin protected; employee ordinary; configured users nav appears; source-backed bundles/disclosures present"
+  },
+  {
+    "id": "R2-admin-base-template-unavailable",
+    "result": "expected source setup refusal55000; admin/seat unchanged; truthful missing base template; supplied original source empty-permission member template locally only before fresh test"
+  },
+  {
+    "id": "R2-last-admin-protection",
+    "result": "actual SQL23514 lastrecoverableadmin refusal; clear alternate admin advice; admin retained;active2/cap3 unchanged"
+  },
+  {
+    "id": "R2-member-deactivate",
+    "result": "actual employee inactive; activecount1/cap3; bothrecords retained; no bundle/admin controls oninactive row; reactivation alternative visible"
+  },
+  {
+    "id": "R2-inactive-normal-auth-denial",
+    "result": "normal GoTrue login still permitted account; tenant inactive membership blocks work; no employee data; choose othercompany/signout"
+  },
+  {
+    "id": "R2-member-reactivate",
+    "result": "actual active2/cap3 restored; ordinary member only; previous People/attendance bundles removed by existing authority; no admin promotion"
+  },
+  {
+    "id": "R2-query-only-false-receipt-before",
+    "result": "observed defect: forgedstate deactivated says membershipdisabled/saved while actual employee active andusage2; no mutation occurred"
+  },
+  {
+    "id": "R2-query-only-neutral-after",
+    "result": "sameactual2active members; forgedstate deactivated now instructs reviewing currentmembership and explicitly denies URL receipt; no mutation/calls/authority change"
+  },
+  {
+    "id": "R2-member-search",
+    "result": "one matching employee, global activeusage2/cap3 preserved; own q URL; no other member row in filtered result"
+  },
+  {
+    "id": "R2-member-search-empty",
+    "result": "no matching memberships, original global counts2/cap3 and search editable; not false no-members-ever"
+  },
+  {
+    "id": "R2-already-member-invitation",
+    "result": "actual original RPC existing-member refusal; no invitation created/provider delivery attempted; inline message; email retained",
+    "emailRetained": true,
+    "emailRetentionEvidence": "already-member-invite.jpg: inspected painted input retains ux-employee@example.test; previous false DOM property equality was an invalid observation corrected without repeating submission."
+  }
+]

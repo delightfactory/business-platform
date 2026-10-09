@@ -1,0 +1,10 @@
+{
+  "baseline": "b8f948b8c5f5bf8a22cd85de0292abbf94ddce7c",
+  "file": "src/app/tenant/[tenantId]/users/page.tsx",
+  "candidateSHA256": "fd5d6807524bea45efff24ec7650e5d27c15b6914c5d7678ad9f1e9ea8132439",
+  "textOccurrences": 12,
+  "sourceInverse": "PASS only12literal replacements; all other bytes unchanged",
+  "actualRuntimeMatches": true,
+  "unchanged": "All actions/RPC/Auth/permissions/controls/counts/query keys/unknown/error/invitation/paging/search; no behavior or storage changes",
+  "inventory": "fingerprint only; source slots/statuses unchanged"
+}

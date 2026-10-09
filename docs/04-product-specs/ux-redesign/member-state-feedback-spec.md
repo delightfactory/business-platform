@@ -1,0 +1,9 @@
+# R2 membership current-state feedback
+
+Baseline b8f948b8c5f5bf8a22cd85de0292abbf94ddce7c. Existing tenant-admin management scope, original Concept C/journey/coverage contracts. Actual owned normal-GoTrue UI demonstrates query-only `state=deactivated` displays a saved-disable claim while both memberships remain active. URL labels are not operation receipts.
+
+Only the seven existing membership/admin/bundle/self-leave feedback keys get neutral review guidance, in both current dictionaries. Preserve keys, actions, RPCs, Auth, permissions, protected-admin last-manager safeguards, fields, selected view/search/page, redirects, authoritative current rows/counts and all unknown/failed/invitation handling. No new protocol, storage, automatic retry or operation. The current membership list is the verification destination; saving an action still returns there.
+
+Actor/task: authorized company administrator reviews or changes an existing member, then checks actual access/role/bundles in the returned list. Fake/stale success labels cannot prove a grant/removal or saved audit. Required decisions and sensitive-access confirmation remain unchanged. No numeric speed reduction claimed; existing list/search/clear alternative retained.
+
+Acceptance: exact source inversion of twelve existing text occurrences only; unchanged reads/actions/controls; scoped ESLint; actual live query-only deactivated label with active2 must no longer claim a disable; same source runtime bytes; selected native phone/tablet/desktop copy/reference review by Codex and official Opus5.5Medium. Reuse previous actual disable/deny/reactivate/last-admin evidence since authority unchanged; no heavy suite or permission mutation repeated merely for wording. Full R2/R0–R8 and other roles/provider/recovery/a11y partitions remain open.

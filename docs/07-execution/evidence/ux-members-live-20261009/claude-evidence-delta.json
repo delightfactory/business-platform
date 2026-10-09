@@ -1,0 +1,17 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "8abd4444-b8b3-4252-a9e1-59e814bb9b72",
+  "result": "**Verdict: both evidence problems are fixed. No new blockers.**\n\n**1. Neutral message at 768 and 1366: fixed**\n- `feedback-live-768.jpg` and `feedback-live-1366.jpg` both show the neutral toast: \"راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.\" It says to check the membership status below and states the link alone doesn't confirm deactivation. Neither shows a \"disabled/saved\" receipt.\n- The page beneath matches the real state. Both show \"المستخدمون النشطون: 2 من 3\" (2 of 3 active users) and the Members tab count of 2. At 1366, `ux-employee@example.test` is still marked نشط (active).\n- `feedback-toast.tsx:9` confirms the 5000ms auto-hide and the manual × dismissal. So it makes sense that the earlier feedback-768/1366 captures showed the layout after the toast had gone. The new captures replace them as proof that the message is visible.\n\n**2. Already-member email retention: fixed**\n- `already-member-invite.jpg` shows the email field still filled with `ux-employee@example.test`. Below it is the inline refusal \"هذا الشخص عضو بالفعل في الشركة.\" (\"this person is already a member of the company\"). The seat count stays at 2 of 3.\n- `browser-cases.json:44-47` now records `emailRetained: true` and says the earlier false DOM reading was invalid. It also notes the form was not submitted again. The record now matches the screenshot.\n\n**Non-blocking note:** at 768 the toast covers the top of the page, including where the \"دعوة عضو\" (invite member) button appears at 1366. It clears after 5 seconds or when dismissed, and it's existing toast behaviour, not part of this patch.\n\n**Still untested for full R2:**\n- The 5000ms auto-hide is backed only by the code. No capture is timed to show it.\n- Neither capture shows the browser address bar, so the faked `deactivated` URL parameter isn't visible in them. The `browser-cases.json` record lists result text only, without screenshot files, timestamps or URLs.\n- The neutral message wasn't captured at 390 or in dark mode.\n- Screen readers weren't tested, either for the toast's live announcement or for whether the inline refusal is announced or linked to the email field.\n- The already-member refusal was seen once. Repeat submissions, slow-network or double-submit behaviour, and other people's memberships (inactive, invited) weren't tested.",
+  "files": [
+    "docs/07-execution/evidence/ux-members-live-20261009/feedback-live-768.jpg",
+    "docs/07-execution/evidence/ux-members-live-20261009/feedback-live-1366.jpg",
+    "docs/07-execution/evidence/ux-members-live-20261009/browser-cases.json",
+    "docs/07-execution/evidence/ux-members-live-20261009/already-member-invite.jpg",
+    "src/components/feedback-toast.tsx"
+  ],
+  "priorReview": "6c15893c-cd3d-4875-9c61-95a6a7677d81",
+  "scope": "Evidence correction only; code unchanged"
+}

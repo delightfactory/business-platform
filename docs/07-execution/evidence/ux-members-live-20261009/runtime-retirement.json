@@ -1,0 +1,18 @@
+{
+  "status": "RETIRED",
+  "createdAtUTC": "2026-10-09T11:18:42.647Z",
+  "retiredAtUTC": "2026-10-09T11:36:11.189Z",
+  "expires": "2026-10-09T13:18:42.656Z",
+  "errors": [],
+  "sourceHEAD": "b8f948b8c5f5bf8a22cd85de0292abbf94ddce7c",
+  "actualAuthUsersBeforeRetirement": 2,
+  "ownedContainers": 0,
+  "ownedNetworks": 0,
+  "ownedListeners3650through3654": 0,
+  "viewportReset": true,
+  "browserTabClosedBeforeRetirement": true,
+  "normalUISignout": "clicked; final redirect not independently observed before closing tab; controller retirement revokes/removes owned authentication runtime",
+  "sharedServicesUntouched": true,
+  "setupPreflight": "v8 stopped on baseline HEAD assertion before service creation; v9 explicitly matched b8f948b",
+  "sourceDelta": "source-checks.json;12literal copy replacements only"
+}
