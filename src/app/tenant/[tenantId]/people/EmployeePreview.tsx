@@ -1,6 +1,7 @@
 'use client';
 
 import * as Dialog from '@radix-ui/react-dialog';
+import { Avatar, Icon, StatusBadge, buttonClassName } from '@/components/ui';
 import { useEffect, useRef, useState } from 'react';
 import { projectEmployeePreview, type EmployeePreviewResult, type EmployeePreviewData } from './employee-preview-data';
 import styles from './employee-preview.module.css';
@@ -48,11 +49,11 @@ export function EmployeePreview({ href, name, code, employeeId }: {
   }
 
   return <>
-    <a ref={trigger} className="secondary-button" href={href} aria-haspopup="dialog"
+    <a ref={trigger} className={buttonClassName('ghost')} href={href} aria-haspopup="dialog"
       aria-label={`معاينة ${name}`} onClick={(event) => {
         if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault(); setOpen(true); void load();
-      }}>معاينة</a>
+      }}><Icon name="eye" size={16} />معاينة</a>
     <Dialog.Root open={open} onOpenChange={(nextOpen) => { if (!nextOpen) close(); }}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
@@ -64,7 +65,7 @@ export function EmployeePreview({ href, name, code, employeeId }: {
           <header className={styles.header}><div>
             <Dialog.Title className={styles.title}>معاينة الموظف</Dialog.Title>
             <Dialog.Description className="field-hint">للقراءة فقط؛ التعديل من الملف الكامل.</Dialog.Description>
-          </div><Dialog.Close className="secondary-button" aria-label="إغلاق معاينة الموظف">إغلاق</Dialog.Close></header>
+          </div><Dialog.Close className="ui-icon-button ui-button ui-button-ghost" aria-label="إغلاق معاينة الموظف"><Icon name="close" /></Dialog.Close></header>
           <div className={styles.body} aria-busy={state.status === 'loading'}>
             {state.status === 'ready' ? <PreviewContent employee={state.employee} /> : <>
               <h2 className={styles.name}>{name}</h2><p className="record-meta">رمز الموظف: <bdi>{code}</bdi></p>
@@ -76,7 +77,7 @@ export function EmployeePreview({ href, name, code, employeeId }: {
               </div>}
             </>}
           </div>
-          <footer className={styles.footer}><a className="primary-button" href={href}>فتح الملف الكامل</a></footer>
+          <footer className={styles.footer}><a className={buttonClassName()} href={href}><Icon name="user" size={18} />فتح الملف الكامل</a></footer>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -88,11 +89,9 @@ function PreviewContent({ employee }: { employee: EmployeePreviewData }) {
   const assignment = employee.assignment;
   const ended = employment?.status === 'ended';
   return <>
-    <h2 className={styles.name}>{employee.name}</h2>
+    <div className={styles.identity}><Avatar name={employee.name} size={64} status={employee.status === 'active' ? 'ok' : 'neutral'} /><h2 className={styles.name}>{employee.name}</h2></div>
     <p className="record-meta">رمز الموظف: <bdi>{employee.code}</bdi></p>
-    <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
-      {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'مجدول'
-        : employee.status === 'ended' ? 'انتهت خدمته' : employee.status === 'inactive' ? 'غير نشط' : 'حالة غير معروفة'}</span>
+    <StatusBadge tone={employee.status === 'active' ? 'ok' : 'neutral'} label={employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'مجدول' : employee.status === 'ended' ? 'انتهت خدمته' : employee.status === 'inactive' ? 'غير نشط' : 'حالة غير معروفة'} />
     <section className={styles.section}><h3>التوظيف</h3>
       {employment ? <dl className={styles.details}>
         <dt>جهة العمل</dt><dd>{employment.employer}</dd>

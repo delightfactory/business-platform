@@ -1,6 +1,7 @@
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
+import { Avatar } from '@/components/ui';
 import { EmployeeProfileTabs, type ProfileArea } from './EmployeeProfileTabs';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -229,8 +230,8 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
     {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
     <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-    <header className="workspace-page-heading"><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
-      <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div>
+    <header className="workspace-page-heading"><div className="employee-profile-identity"><Avatar name={employee.name} size={64} status={employee.status === 'active' ? 'ok' : 'neutral'} /><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
+      <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div></div>
       <span className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
         {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</span>
     </header>

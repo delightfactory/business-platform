@@ -2,10 +2,12 @@
 
 import { useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
+import { Icon, type IconName } from '@/components/ui';
 import styles from './profile-tabs.module.css';
 
 export type ProfileArea = 'overview' | 'work' | 'compensation' | 'account' | 'employment';
 type Area = { value: ProfileArea; label: string; content: ReactNode };
+const areaIcons: Record<ProfileArea, IconName> = { overview: 'user', work: 'building', compensation: 'wallet', account: 'shield', employment: 'file' };
 const subscribe = () => () => {};
 
 export function EmployeeProfileTabs({ initialTab, areas }: { initialTab: ProfileArea; areas: Area[] }) {
@@ -28,7 +30,7 @@ export function EmployeeProfileTabs({ initialTab, areas }: { initialTab: Profile
   return <Tabs.Root ref={root} value={selected} onValueChange={selectArea} dir="rtl" activationMode="manual">
     <Tabs.List className={styles.tabList} aria-label="أقسام ملف الموظف" hidden={!ready}>
       {areas.map((area) => <Tabs.Trigger className={styles.tab} key={area.value} value={area.value}>
-        {area.label}
+        <Icon name={areaIcons[area.value]} size={17} />{area.label}
       </Tabs.Trigger>)}
     </Tabs.List>
     <p className={styles.notice} role="status" aria-live="polite">{notice}</p>
