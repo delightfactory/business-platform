@@ -49,7 +49,7 @@ export async function OperatorNavigation() {
       }
       if (operatorPermission(commercial)) {
         links.push({ href: '/operator/commercial', label: 'حدود الاشتراك' });
-        links.push({ href: '/operator/entitlements', label: 'الوحدات المتاحة' });
+        links.push({ href: '/operator/entitlements', label: 'خدمات الشركات' });
       }
       if (operatorPermission(operator)) links.push({ href: '/operator/operators', label: 'المشغّلون' });
       if (operatorPermission(statutory)) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });

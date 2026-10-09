@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 import Link, { useLinkStatus } from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useId, useRef, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useId, useRef, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { signOutAction } from '@/app/auth/actions';
 import { ThemePreferenceControl } from '@/components/theme-preference';
 import { Icon, type IconName } from '@/components/ui/icon';
-import { matchesDestination, workspaceAreas, type WorkspaceLink, type NavArea } from './navigation-model';
+import { matchesDestination, payrollDestination, workspaceAreas, type WorkspaceLink, type NavArea } from './navigation-model';
 
 export type WorkspaceNavigationProps = {
   homeHref: string; homeLabel: string; contextLabel: string; links: WorkspaceLink[];
@@ -38,13 +38,31 @@ function NavLink({ item, current, close, icon }: { item: WorkspaceLink; current:
   </Link>;
 }
 
-export function WorkspaceNavigation({ homeHref, homeLabel, contextLabel, links, businessLinks, mode, logoUrl, switchHref, switchLabel }: WorkspaceNavigationProps) {
+export function WorkspaceNavigation(props: WorkspaceNavigationProps) {
+  return <Suspense fallback={<WorkspaceNavigationView {...props} employer={null} />}><NavigationWithContext {...props} /></Suspense>;
+}
+
+function NavigationWithContext(props: WorkspaceNavigationProps) {
+  const search = useSearchParams();
+  return <WorkspaceNavigationView {...props} employer={search.get('employer')} />;
+}
+
+function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: originalLinks, businessLinks: originalBusinessLinks, mode, logoUrl, switchHref, switchLabel, employer }: WorkspaceNavigationProps & { employer: string | null }) {
   const pathname = usePathname();
+  const contextual = (item: WorkspaceLink) => ({ ...item, href: payrollDestination(pathname, item.href, employer) });
+  const links = originalLinks.map(contextual);
+  const businessLinks = originalBusinessLinks.map(contextual);
   const areas = workspaceAreas(homeHref, businessLinks, links, mode);
+  const groupedHrefs = new Set(areas.flatMap(area => area.links.map(item => item.href)));
+  const ownLinks = businessLinks.filter(item => !groupedHrefs.has(item.href));
+  const managementLinks = links.filter(item => !groupedHrefs.has(item.href));
   const allLinks = [{ href: homeHref, label: mode === 'tenant' ? 'اليوم' : 'نظرة عامة' }, ...businessLinks, ...links];
   const active = allLinks.filter(item => matchesDestination(pathname, item.href)).sort((a,b) => b.href.length-a.href.length)[0];
   const activeArea = areas.find(area => area.links.some(item => matchesDestination(pathname, item.href)))
-    ?? (pathname === homeHref ? areas[0] : undefined);
+    ?? (managementLinks.some(item => matchesDestination(pathname, item.href)) ? {
+      key: 'management', label: mode === 'operator' ? 'إدارة المنصة' : 'إعدادات الشركة',
+      icon: 'settings' as IconName, destination: managementLinks[0], links: managementLinks,
+    } : pathname === homeHref ? areas[0] : undefined);
   const localLinks = activeArea?.links ?? [];
   const dialog = useRef<HTMLDialogElement>(null);
   const id = useId();
@@ -105,8 +123,9 @@ export function WorkspaceNavigation({ homeHref, homeLabel, contextLabel, links, 
     <dialog ref={dialog} id={id} className="workspace-more-dialog" aria-label="كل أقسام مساحة العمل" onClose={closed} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
       <div className="workspace-dialog-heading"><h2>أقسام مساحة العمل</h2><button type="button" onClick={() => dialog.current?.close()} aria-label="إغلاق القائمة">×</button></div>
       <nav aria-label="كل الأقسام"><NavLink item={allLinks[0]} current={pathname === homeHref} close={() => dialog.current?.close()} />
-        {businessLinks.length > 0 && <section><h3>العمل وخدماتي</h3>{businessLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
-        {links.length > 0 && <section><h3>{mode === 'operator' ? 'تشغيل المنصة' : 'إدارة الشركة'}</h3>{links.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
+        {areas.filter(area => area.links.length > 0).map(area => <section key={area.key}><h3>{area.label}</h3>{area.links.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>)}
+        {ownLinks.length > 0 && <section><h3>خدماتي</h3>{ownLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
+        {managementLinks.length > 0 && <section><h3>{mode === 'operator' ? 'إدارة المنصة وقواعد الرواتب' : 'إعدادات الشركة والصلاحيات'}</h3>{managementLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
       </nav>
     </dialog>
   </div>;
