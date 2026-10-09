@@ -2,7 +2,7 @@ import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, editBlockedText, loadSettingsAccess } from '../../../access-gate';
 import { StatusCard } from '../../../StatusCard';
 import { isUuid } from '../../../rules';
@@ -27,7 +27,7 @@ export default async function NewCalendarPage({ params }: { params: Params }) {
     const text = GATE_TEXT['no-client'];
     return backCard(text.title, text.detail, text.retry);
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);

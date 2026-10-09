@@ -6,7 +6,7 @@ import styles from '../attendance-channels.module.css';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 type Evidence = { id:string; employee_id:string; source_employee_code:string; source_employee_name:string; site_id:string; source_site_name:string; direction:'in'|'out'; happened_at:string; source_event_key:string; created_at:string; resolved:boolean; work_instance_id:string|null; resolution_reason:string|null; resolved_at:string|null; candidate_work_dates?:string[]; date_resolution_status?:string };
@@ -16,7 +16,7 @@ export default async function UnassignedAttendancePage({ params, searchParams }:
   const {tenantId}=await params; const query=await searchParams; const cursor=query.cursor&&/^[0-9a-f-]{36}$/i.test(query.cursor)?query.cursor:null; const supabase=await createSupabaseServerClient();
   const retryHref=`/tenant/${tenantId}/attendance/unassigned${cursor?`?cursor=${encodeURIComponent(cursor)}`:''}`;
   if(!supabase) return <PageFrame><Panel className=" task-page"><PageHeader  title={<>تعذر الاتصال</>} /><ButtonLink  href={retryHref}>إعادة تحميل القائمة</ButtonLink></Panel></PageFrame>;
-  const {data:{user}}=await supabase.auth.getUser(); if(!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/unassigned`)}`);
+  const {data:{user}}=await getWorkspaceUser(supabase); if(!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/unassigned`)}`);
   const {data:access}=await supabase.rpc('time_attendance_access_snapshot',{p_tenant_id:tenantId});
   const {data,error}=await supabase.rpc('attendance_unassigned_evidence_queue',{p_tenant_id:tenantId,p_after:cursor,p_limit:50});
   if(error||!isObject(data)||!Array.isArray(data.items)) return <PageFrame><Panel className=" task-page"><PageHeader  title={<>قائمة التسجيلات بلا تكليف غير متاحة</>} description={<> تحقق من صلاحية الحضور ثم أعد المحاولة. </>} /><ButtonLink  href={retryHref}>إعادة تحميل القائمة</ButtonLink></Panel></PageFrame>;

@@ -7,7 +7,7 @@ import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import styles from '../attendance-task.module.css';
 import { ClassificationReviewForm } from '../ClassificationReviewForm';
 import { OvertimeClassificationForm } from '../OvertimeClassificationForm';
@@ -27,7 +27,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
   if (!isUuid(tenantId) || !isUuid(instanceId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <PageFrame><Status title="الاتصال غير متاح" text="تعذر الاتصال بخدمة الحسابات." /></PageFrame>;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/${instanceId}`)}`);
   const { data, error } = await supabase.rpc('attendance_instance_detail', { p_tenant_id: tenantId, p_instance_id: instanceId });
   if (error || !isObject(data) || !isObject(data.instance) || !isObject(data.permissions)) return <PageFrame><Status title="السجل غير متاح" text="لا تملك صلاحية عرض هذا السجل أو أنه غير موجود." /></PageFrame>;

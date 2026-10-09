@@ -4,7 +4,7 @@ import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
 import { Badge, Icon, KeyValueStrip } from '@/components/ui';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { isDayCountBasis, isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid, type RequestDay } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { formatDays, formatInstant, isRequestState, stateLabel } from '../states';
@@ -41,7 +41,7 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
   if (!isUuid(tenantId) || !isUuid(requestId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/${requestId}`)}`);
 
   const historyOffset = parseHistoryOffset(query.h);

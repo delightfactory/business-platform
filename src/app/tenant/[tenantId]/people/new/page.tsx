@@ -1,7 +1,7 @@
 import { ButtonLink, PageHeader, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { NewEmployeeForm, type OnboardingOptions } from './NewEmployeeForm';
 
 export const dynamic = 'force-dynamic';
@@ -10,7 +10,7 @@ export default async function NewEmployeePage({ params }: { params: Promise<{ te
   const { tenantId } = await params;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/new`)}`);
   const { data, error } = await supabase.rpc('people_onboarding_options', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Unavailable tenantId={tenantId} />;

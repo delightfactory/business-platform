@@ -2,7 +2,7 @@ import { Badge, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/com
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, loadSettingsAccess } from '../access-gate';
 import { SettingsLink as Link } from '../SettingsLink';
 import { StatusCard } from '../StatusCard';
@@ -40,7 +40,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
     return <StatusCard tenantId={tenantId} title={text.title} detail={text.detail} retryPath={basePath}
       backPath={`/tenant/${tenantId}/leave/settings`} backLabel="اختيار جهة أخرى" />;
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(basePath)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);

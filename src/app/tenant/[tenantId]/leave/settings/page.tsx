@@ -1,7 +1,7 @@
 import { Badge, Button, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT } from './access-gate';
 import { SettingsLink } from './SettingsLink';
 import { StatusCard } from './StatusCard';
@@ -36,7 +36,7 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
     const gateText = GATE_TEXT['no-client'];
     return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const { data, error } = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });

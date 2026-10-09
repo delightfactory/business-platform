@@ -3,7 +3,7 @@ import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, loadSettingsAccess } from '../../../access-gate';
 import { StatusCard } from '../../../StatusCard';
 import {
@@ -44,7 +44,7 @@ export default async function CalendarDetailPage({ params, searchParams }: {
     const text = GATE_TEXT['no-client'];
     return card(text.title, text.detail, text.retry);
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);

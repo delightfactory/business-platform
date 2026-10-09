@@ -2,7 +2,7 @@ import { Avatar, Panel, PageHeader, ButtonLink, Message, Input, Button, RecordCa
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { AttendanceBulkApprovalForm } from '../AttendanceBulkApprovalForm';
 import styles from '../attendance-lists.module.css';
 
@@ -21,7 +21,7 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
   const cursor = query.cursor && query.cursor.length <= 64 ? query.cursor : null;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <PageFrame><Status title="تعذر الاتصال" text="تعذر تحميل قائمة المراجعة. أعد المحاولة." /></PageFrame>;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/review`)}`);
   const { data: access, error: accessError } = await supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId });
   if (accessError || !isObject(access)) return <PageFrame><Status title="قائمة المراجعة غير متاحة" text="تحقق من عضويتك وصلاحيات الحضور لهذه الشركة." /></PageFrame>;

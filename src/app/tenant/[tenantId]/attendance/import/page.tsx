@@ -1,7 +1,7 @@
 import { ButtonLink, PageHeader, Panel, buttonClassName, Disclosure } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { AttendanceImportForm } from './AttendanceImportForm';
 
 export const dynamic = 'force-dynamic';
@@ -10,7 +10,7 @@ export default async function AttendanceImportPage({ params }: { params: Promise
   const { tenantId } = await params;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <PageFrame><Status text="تعذر الاتصال بخدمة الحسابات. أعد المحاولة."/></PageFrame>;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance/import`)}`);
   const { data, error } = await supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId });
   if (error || !isObject(data) || data.can_manage !== true) return <PageFrame>

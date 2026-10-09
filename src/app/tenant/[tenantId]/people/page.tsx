@@ -2,7 +2,7 @@ import { Avatar, ButtonLink, EmptyState, Message, PageHeader, Panel, RecordCard,
 
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import styles from './people.module.css';
 import { DirectorySearch } from './DirectorySearch';
 import { EmployeePreview } from './EmployeePreview';
@@ -25,7 +25,7 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   const invalidPage = !Number.isInteger(page) || page < 1 || page > MAX_PAGE;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people`)}`);
   const accessResult = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
   if (accessResult.error || !accessResult.data) return <Unavailable tenantId={tenantId} />;

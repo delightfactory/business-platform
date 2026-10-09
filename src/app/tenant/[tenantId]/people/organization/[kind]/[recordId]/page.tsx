@@ -1,7 +1,7 @@
 import { Badge, ButtonLink, KeyValueStrip, Message, PageHeader, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { OrgCatalogForm, type OrgCatalogOption, type OrgCatalogRecord } from '../../OrgCatalogForm';
 import type { OrgCatalogKind } from '../../actions';
 
@@ -20,7 +20,7 @@ export default async function OrgCatalogRecordPage({ params }: { params: RoutePa
   if (!isNew && !isUuid(recordId)) return <Unavailable tenantId={tenantId} title="السجل غير متاح" detail="لم نعثر على السجل المطلوب." />;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/organization/${kind}/${recordId}`)}`);
   const accessResult = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
   if (accessResult.error || !accessResult.data) return <Unavailable tenantId={tenantId} title="السجل غير متاح" detail="تحقق من صلاحيتك في هذه الشركة ثم أعد المحاولة." />;

@@ -1,7 +1,7 @@
 import { Badge, Button, ButtonLink, Card, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { PendingLink } from '../pending-link';
 import { isUuid } from '../rules';
 import {
@@ -44,7 +44,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
     return <Status tenantId={tenantId} title="الاتصال غير متاح"
       detail="تعذّر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." retryPath={path} />;
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const accessResult = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });

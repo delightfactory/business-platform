@@ -2,7 +2,7 @@ import { Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { isLeaveAccessSnapshot, isUuid } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { NewLeaveRequestForm } from './NewLeaveRequestForm';
@@ -18,7 +18,7 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
   if (!isUuid(tenantId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/new`)}`);
   let response;
   try {

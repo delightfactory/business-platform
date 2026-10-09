@@ -1,7 +1,7 @@
 'use client';
 import { Badge, Checkbox, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
@@ -38,6 +38,12 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
     payBasis: 'monthly', amount: '', payrollEligible: true, error: '', attempt: 0 };
   const [endState, endAction, endActionPending] = useActionState(endEmploymentAction, endInitial);
   const [rehireState, rehireAction, rehireActionPending] = useActionState(rehireEmployeeAction, rehireInitial);
+  const [employerChoice, setEmployerChoice] = useState<string | null>(null);
+  const [departmentChoice, setDepartmentChoice] = useState<string | null>(null);
+  const employerId = employerChoice ?? rehireState.employerId;
+  const departmentId = departmentChoice ?? rehireState.departmentId;
+  const visibleSites = rehireOptions?.sites.filter(site => site.employer_id === employerId) ?? [];
+  const visibleJobs = rehireOptions?.jobs.filter(job => !job.department_id || job.department_id === departmentId) ?? [];
   const canEnd = canManage && Boolean(employmentId) && employmentStatus === 'active' && workforceStatus !== 'ended'
     && Boolean(employmentStartDate && employmentStartDate <= today);
   const canRehire = canManage && workforceStatus === 'ended';
@@ -96,17 +102,18 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
       {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع تكليف وأجر ابتدائيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
-        <Field id="rehire-employer" label={<>جهة العمل</>} required><Select id="rehire-employer" name="employerId" required defaultValue={rehireState.employerId}>
+        <Field id="rehire-employer" label={<>جهة العمل</>} required><Select id="rehire-employer" name="employerId" required value={employerId} onChange={event => setEmployerChoice(event.target.value)}>
           <option value="">اختر جهة العمل</option>{rehireOptions.employers.map((employer) => <option key={employer.id} value={employer.id}>{employer.name}</option>)}
         </Select></Field>
-        <Field id="rehire-site" label={<>الفرع</>} required><Select id="rehire-site" name="siteId" required defaultValue={rehireState.siteId}>
-          <option value="">اختر الفرع</option>{rehireOptions.sites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
+        <Field id="rehire-site" label={<>الفرع</>} required><Select key={`${rehireState.attempt}-${employerId}`} id="rehire-site" name="siteId" required defaultValue={visibleSites.some(site => site.id === rehireState.siteId) ? rehireState.siteId : ''}>
+          <option value="">اختر الفرع</option>{visibleSites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
         </Select></Field>
-        <Field id="rehire-department" label={<>القسم (اختياري)</>}><Select id="rehire-department" name="departmentId" defaultValue={rehireState.departmentId}>
+        {employerId && visibleSites.length === 0 && <Message tone="info">لا يوجد فرع نشط لهذه الجهة ضمن الاختيارات المتاحة. اختر جهة أخرى أو اطلب إضافة فرع من مسؤول الشركة.</Message>}
+        <Field id="rehire-department" label={<>القسم (اختياري)</>}><Select id="rehire-department" name="departmentId" value={departmentId} onChange={event => setDepartmentChoice(event.target.value)}>
           <option value="">دون تحديد قسم</option>{rehireOptions.departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}
         </Select></Field>
-        <Field id="rehire-job" label={<>الوظيفة (اختياري)</>}><Select id="rehire-job" name="jobId" defaultValue={rehireState.jobId}>
-          <option value="">دون تحديد وظيفة</option>{rehireOptions.jobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}
+        <Field id="rehire-job" label={<>الوظيفة (اختياري)</>}><Select key={`${rehireState.attempt}-${departmentId}`} id="rehire-job" name="jobId" defaultValue={visibleJobs.some(job => job.id === rehireState.jobId) ? rehireState.jobId : ''}>
+          <option value="">دون تحديد وظيفة</option>{visibleJobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}
         </Select></Field>
         <Field id="rehire-start-date" label={<>تاريخ بدء التوظيف الجديد</>} required><Input id="rehire-start-date" name="startDate" type="date" required
           min={maxDate(today, nextDate(previousEndDate))} defaultValue={rehireState.startDate} /></Field>

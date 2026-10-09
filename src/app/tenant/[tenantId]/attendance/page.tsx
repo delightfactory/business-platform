@@ -2,7 +2,7 @@ import { Button, ButtonLink, DataTable, Input, Message, PageHeader, Panel, Empty
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import styles from './attendance-lists.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +18,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   const retryHref = `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}`;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <PageFrame><Status title="الاتصال غير متاح" text="تعذر الاتصال بخدمة الحسابات. أعد المحاولة." retryHref={retryHref} /></PageFrame>;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/attendance`)}`);
   const { data: access, error: accessError } = await supabase.rpc('time_attendance_access_snapshot', { p_tenant_id: tenantId });
   if (accessError || !isObject(access)) return <PageFrame><Status title="الحضور غير متاح" text="لا تملك صلاحية عرض الحضور أو أن وحدة الحضور غير مفعلة لهذه الشركة." /></PageFrame>;

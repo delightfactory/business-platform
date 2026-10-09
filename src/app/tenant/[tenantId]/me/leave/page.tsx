@@ -2,7 +2,7 @@ import { Panel } from '@/components/ui';
 import { Message, RecordCard, ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { Badge, Icon, PageHeader } from '@/components/ui';
 import { BalanceSegments } from '@/components/patterns/balance-segments/BalanceSegments';
 import { isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid } from './form-rules';
@@ -50,7 +50,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   const balancePage = parsePage(typeof query.bal === 'string' ? query.bal : '1');
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." retry />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave`)}`);
 
   const accessResult = await readResponse(() => supabase.rpc('leave_access_snapshot', { p_tenant: tenantId }));

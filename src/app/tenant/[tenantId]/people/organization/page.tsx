@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import styles from '../people-management.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -27,7 +27,7 @@ export default async function PeopleOrganizationPage({ params, searchParams }: {
   const invalidPage = !Number.isInteger(page) || page < 1 || page > MAX_PAGE;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/organization`)}`);
   const [accessResult, catalogResult] = await Promise.all([
     supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId }),

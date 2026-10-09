@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { saveWorkPolicyAction, setWorkPolicyActiveAction } from '../work-policy-actions';
 import { WorkPolicyEditor } from './WorkPolicyEditor';
 import { PolicyTask } from './PolicyTask';
@@ -18,7 +18,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
  const { tenantId } = await params; const query = await searchParams; const supabase = await createSupabaseServerClient();
  const returnToRequest = isUuid(query.returnToRequest) ? query.returnToRequest : undefined;
  if (!supabase) return <PageFrame><Panel ><h1>تعذر فتح سياسات العمل</h1><p>تعذر الاتصال بالخدمة. أعد المحاولة لاحقًا.</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink></Panel></PageFrame>;
- const { data: { user } } = await supabase.auth.getUser(); if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/work-policies`)}`);
+ const { data: { user } } = await getWorkspaceUser(supabase); if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/work-policies`)}`);
  const { data, error } = await supabase.rpc('time_work_policy_catalog', { p_tenant_id: tenantId });
  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <PageFrame><Panel ><h1>سياسات العمل غير متاحة</h1><p>تأكد من إتاحة وحدة الحضور وصلاحية العرض.</p><Link href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link></Panel></PageFrame>;
  const result = data as { items: Policy[]; can_manage: boolean };

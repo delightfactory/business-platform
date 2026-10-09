@@ -2,7 +2,7 @@ import { ButtonLink, Message, PageHeader, Panel } from '@/components/ui';
 import Link from 'next/link';
 import { notFound,redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { isObject,isUuid } from '../../rules';
 import { readBalanceAccess } from '../rules';
 import { AnnualForm } from './AnnualForm';
@@ -14,7 +14,7 @@ export default async function AnnualPage({params,searchParams}:{params:Promise<{
  const back=`/tenant/${tenant}/leave/balances?employee=${employee}&employer=${employer}&kind=annual_grant&period=${period}&type=${type}`;
  const path=`/tenant/${tenant}/leave/balances/annual?employee=${employee}&employer=${employer}&type=${type}&period=${period}`;
  const supabase=await createSupabaseServerClient();if(!supabase)return <PageFrame footer="الموارد البشرية"><Message tone="bad" role="alert">الاتصال غير متاح.</Message></PageFrame>;
- const {data:{user}}=await supabase.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(path)}`);
+ const {data:{user}}=await getWorkspaceUser(supabase);if(!user)redirect(`/auth/login?next=${encodeURIComponent(path)}`);
  const accessResult=await supabase.rpc('leave_access_snapshot',{p_tenant:tenant});const access=accessResult.error?null:readBalanceAccess(accessResult.data);
  if(!access?.canAdjust||!access.newWorkEnabled)return <PageFrame footer="الموارد البشرية"><Message tone="bad" role="alert">حساب استحقاق جديد غير متاح لهذا الحساب أو الشركة حاليًا.</Message><Link href={back}>العودة إلى الأرصدة</Link></PageFrame>;
  const {data,error}=await supabase.rpc('leave_annual_context',{p_tenant:tenant,p_employee:employee,p_employer:employer,p_type:type,p_period:period});const policy=isObject(data)?readPolicy(data.policy):null;
