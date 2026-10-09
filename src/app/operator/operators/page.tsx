@@ -4,7 +4,7 @@ import { Button, ButtonLink, Input, Textarea } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeOperatorGrantAction } from './actions';
 import { operatorPermission } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
@@ -18,7 +18,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  const { data: { user }, error: authError } = await getWorkspaceUser(supabase);
   if (authError) return <Status title="تعذر التحقق من الحساب" detail="أعد قراءة الصفحة للتحقق من حسابك قبل تغيير أي صلاحية." />;
   if (!user) redirect('/auth/login?state=no-session');
   const status = await supabase.rpc('current_platform_operator_status');

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorInvitation, operatorPage, operatorUuid } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { signOutAction } from '@/app/auth/actions';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { reissueInvitationAction, revokeInvitationAction } from './actions';
@@ -24,7 +24,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   const { page, search } = operatorListQuery(params);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
   const { data: capable, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;

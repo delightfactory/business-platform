@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +15,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة إلى ملف البيئة ثم أعد تشغيل التطبيق." />;
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  const { data: { user }, error: userError } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   if (userError) return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
   const { data: operatorStatus, error: statusError } = await supabase.rpc('current_platform_operator_status');

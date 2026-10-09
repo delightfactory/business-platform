@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { InvitationForm } from './InvitationForm';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?next=%2Foperator%2Finvitations%2Fnew');
   const { data: capable, error } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (error) return <Status detail="تعذر التحقق من صلاحية إعداد الشركات. أعد المحاولة لاحقًا." />;

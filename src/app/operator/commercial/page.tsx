@@ -6,7 +6,7 @@ import { operatorPermission } from '@/lib/operator-access';
 import { operatorPage, operatorTenant } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ export default async function CommercialTenantsPage({ searchParams }: { searchPa
   const { page, search } = operatorListQuery(await searchParams);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [{ data: operatorStatus, error: statusError }, { data: authorized, error: capabilityError }] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),

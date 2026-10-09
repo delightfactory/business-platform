@@ -4,7 +4,7 @@ import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {isReportKind,reportKinds,reportLabels,reportMoney,type ReportWorkspace,type ReportRow} from './rules';
 import styles from './reports.module.css';
@@ -30,7 +30,7 @@ export default async function ReportsPage({params,searchParams}:{params:Promise<
  if(!isReportKind(report)||['employer','output','employee','previous','site','department','site_after','department_after','scope_output','after','output_after','employer_after_id'].some(key=>query[key as keyof Query]&&!uuid(query[key as keyof Query]!))||[query.q,query.site_q,query.department_q].some(value=>(value?.length??0)>120))return failure('راجع رابط الجهة والنسخة ونوع التقرير.');
  if(query.scope_output&&query.output&&query.scope_output!==query.output)redirect(`${path}?${new URLSearchParams({...clearFilters,scope_changed:'1'})}`);
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال بالتقارير المحفوظة.');
- const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
+ const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
  if(!query.employer){
   const found=await client.rpc('payroll_report_employers',{p_tenant:tenantId,p_report:report,p_query:query.q??'',p_after_name:query.employer_after_name??null,p_after_id:query.employer_after_id??null});
   if(found.error)return failure('تعذر تحميل الجهات المسموح بها. راجع صلاحياتك أو أعد المحاولة.');

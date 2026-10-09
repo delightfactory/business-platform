@@ -1,6 +1,17 @@
 .domain {
   min-width:0
 }
+.domain :global(.ui-page-header){gap:8px 16px}
+.domain :global(.ui-panel){min-width:0}
+.domain :global(.ui-record){min-width:0}
+.domain :global(.workspace-form-actions){gap:8px}
+@media(max-width:640px){
+ .domain :global(.ui-page-header h1){font-size:23px}
+ .domain :global(.ui-page-description){font-size:13px;line-height:1.7}
+ .domain :global(.record-main){min-width:0}
+ .domain :global(.ui-record .record-actions){width:100%;flex-wrap:wrap}
+ .domain :global(.ui-record .record-actions a){max-width:100%;white-space:normal}
+}
 .domain :global(h1) {
   font:600 clamp(22px,2.2vw,28px)/1.4 var(--f-head)
 }

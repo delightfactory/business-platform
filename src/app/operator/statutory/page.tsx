@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {DraftForm} from './DraftForm';
 import {selectedWorkspace,listWorkspace,releaseStatus,safeSourceUrl,type SelectedWorkspace,type ListWorkspace} from './dto';
 import {operatorPermission} from '@/lib/operator-access';
@@ -19,7 +19,7 @@ export default async function StatutoryDraftPage({searchParams}:{searchParams:Pr
  const failure=(title:string,detail:string,denied=false)=><main className="app-shell"><Panel ><PageHeader  title={<>{title}</>} /><p role="alert">{detail}</p><ButtonLink variant="solid" href={retry} className={denied?undefined:"primary-button"}>إعادة المحاولة</ButtonLink> · <ButtonLink variant="ghost" href="/operator" className={denied?"primary-button":"secondary-button"}>العودة إلى تشغيل المنصة</ButtonLink></Panel></main>;
  if((q.head&&!uuid(q.head))||(q.after_id&&!uuid(q.after_id))||(q.after_created&&(!Number.isFinite(Date.parse(q.after_created))||q.after_created.length>64))||Boolean(q.after_created)!==Boolean(q.after_id)||(q.before&&!/^[1-9]\d{0,8}$/.test(q.before)))return failure('راجع رابط المسودة','تعذر التحقق من اختيار المسودة أو صفحة السجل.');
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال','أعد المحاولة لاستعادة المسودات؛ لا تُعرض البيانات المفقودة كقائمة فارغة.');
- const {data:{user}}=await client.auth.getUser();if(!user)redirect('/auth/login?next='+encodeURIComponent(retry));
+ const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect('/auth/login?next='+encodeURIComponent(retry));
  const {data:allowed,error:accessError}=await client.rpc('current_operator_can_manage_statutory_rules');if(accessError)return failure('تعذر التحقق من الصلاحية','أعد المحاولة قبل مراجعة القواعد القانونية.');if(!operatorPermission({data:allowed,error:accessError}))return failure('إدارة القواعد القانونية غير متاحة','تحتاج مهمة الامتثال الممنوحة صراحةً؛ راجع مسؤول تشغيل المنصة.',true);
  const {data,error}=await client.rpc('statutory_draft_workspace',{p_head:q.head??null,p_after_created:q.after_created??null,p_after_id:q.after_id??null,p_before_revision:q.before?Number(q.before):null,p_limit:20});if(error)return failure('تعذر تحميل المسودات','تعذر قراءة الحالة الحالية؛ لا يمكن تأكيد حالة المسودة من هنا. أعد التحميل.');
  let w:Workspace;let issued=false;let releaseUnavailable=false;

@@ -9,7 +9,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
 import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeCommercialLimitAction } from '../actions';
 import { LimitModeFields } from './LimitModeFields';
 
@@ -24,7 +24,7 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   if (!isUuid(tenantId)) redirect('/operator/commercial?state=invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [operatorStatus, commercial, lifecycle] = await Promise.all([
     supabase.rpc('current_platform_operator_status'), supabase.rpc('current_operator_can_manage_commercial_access'),

@@ -2,7 +2,7 @@ import { ButtonLink, Disclosure, Message, PageHeader, Panel } from '@/components
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {correctionKinds,correctionStatuses,type CorrectionKind} from './rules';
 import {ProposalForm,CorrectionCommand,SettlementForm,CorrectionRecoveryPanel} from './CorrectionForms';
@@ -22,7 +22,7 @@ export default async function CorrectionsPage({params,searchParams}:{params:Prom
  const failure=(text:string)=><PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>تصحيح راتب مقفل</>} /><Message tone="bad" role="alert">{text}</Message><Link href={href({})}>إعادة المحاولة بنفس السياق</Link> · <Link href={`/tenant/${tenantId}/payroll?${new URLSearchParams({employer:q.employer??'',period:q.period??''})}`}>العودة إلى الرواتب</Link></Panel></PageFrame>;
  if((q.employer&&!uuid(q.employer))||(q.output&&!uuid(q.output))||['case','employee','person','after','source','request'].some(key=>q[key]&&!uuid(q[key]!)))return failure('راجع سياق الجهة والموظف والفترة.');
  const kind=(q.request?'source_change':q.kind??'compensation') as CorrectionKind;if(!Object.hasOwn(correctionKinds,kind))return failure('راجع نوع المصدر المطلوب تصحيحه.');
- const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال ببيانات التصحيح.');const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
+ const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال ببيانات التصحيح.');const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
  let requestContext:LeaveCorrectionContext|undefined;
  if(q.request){
   const contextResult=await client.rpc('payroll_leave_correction_context',{p_tenant:tenantId,p_request:q.request});

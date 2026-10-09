@@ -4,7 +4,7 @@ import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {money} from '../runs/rules';
 import {AdvanceForm,AdvanceRecovery} from './AdvanceForm';
@@ -23,7 +23,7 @@ export default async function AdvancesPage({params,searchParams}:{params:Promise
  for(const key of ['q','employer_q','employee_q','period_q','correction_q'])if((q[key]?.length??0)>120)return failure('اختصر نص البحث ثم أعد المحاولة.');
  if(q.installment_after&&!/^\d{1,3}$/.test(q.installment_after))return failure('راجع صفحة الأقساط المطلوبة.');
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال بسجل السلف.');
- const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
+ const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
  actorId=user.id;
  const employerResult=await client.rpc('payroll_advance_choices',{p_tenant:tenantId,p_employer:null,p_kind:'employers',p_query:q.employer_q??'',p_after:q.employer_after||null,p_selected:q.employer||null});
  if(employerResult.error)return failure(advanceError(employerResult.error.code,employerResult.error.message));

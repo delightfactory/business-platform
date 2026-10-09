@@ -93,8 +93,10 @@ export async function TenantNavigation({
       if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري', mobilePriority: 10 });
       if (!channelAccess.error && channelAccess.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/attendance/sources`, label: 'قنوات الحضور' });
       if (!payrollAccess.error && payrollAccess.data?.can_manage === true && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll`, label: 'دورة الرواتب' });
-      if (!payrollInputs.error && payrollInputs.data && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: 'مدخلات الرواتب' });
+      if (!payrollInputs.error && payrollInputs.data) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: 'المدخلات والإعدادات' });
+      if (!payrollAccess.error && payrollAccess.data?.can_manage === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/setup`, label: 'دورة الرواتب والفترات' });
       if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: !payrollAccess.error && payrollAccess.data ? `/tenant/${tenantId}/payroll` : `/tenant/${tenantId}/payroll/runs`, label: 'الرواتب', mobilePriority: 50 });
+      if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/runs`, label: 'المراجعة والاعتماد' });
       if (!payrollNavigation.error && payrollNavigation.data?.can_view_advances === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/advances`, label: 'سلف الموظفين' });
       if (!payrollNavigation.error && payrollNavigation.data?.can_view_reports === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/reports?report=${payrollNavigation.data.report_kind === 'advances' ? 'advances' : 'sheet'}`, label: payrollNavigation.data.report_kind === 'advances' ? 'أرصدة السلف' : 'تقارير الرواتب' });
       canSwitchTenant = Array.isArray(spaces.data) && spaces.data.length > 1;

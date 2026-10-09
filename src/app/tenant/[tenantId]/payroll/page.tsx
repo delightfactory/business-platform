@@ -5,7 +5,7 @@ import {normalizeEmployerScope} from './employer-context';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { displayDate, uuid } from './rules';
 import { issueNames, money, type Issue } from './runs/rules';
 import styles from './payroll.module.css';
@@ -40,7 +40,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   if (query.stage === 'setup' || query.before) redirect(`${path}/setup?${new URLSearchParams(kept)}`);
   const client = await createSupabaseServerClient();
   if (!client) return failure('تعذر الاتصال ببيانات الرواتب.');
-  const { data: { user } } = await client.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(client);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
   const [access, navigation] = await Promise.all([client.rpc('payroll_access_snapshot', { p_tenant: tenantId }), client.rpc('payroll_navigation_access', { p_tenant: tenantId })]);
   if (access.error || !access.data) return failure(access.error?.code === '42501' ? 'هذا الحساب غير مخوّل للوصول إلى مساحة الرواتب. راجع مسؤول الشركة.' : 'تعذر تحميل صلاحيات الرواتب.');

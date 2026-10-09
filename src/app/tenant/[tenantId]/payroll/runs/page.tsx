@@ -5,7 +5,7 @@ import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {DeductionDisposition} from './DeductionDisposition';
 import {DeductionRecovery} from './DeductionRecovery';
@@ -31,7 +31,7 @@ export default async function RunsPage({params,searchParams}:{params:Promise<{te
  const failure=(text:string)=><PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>مراجعة الرواتب</>} /><Message tone="bad" role="alert">{text}</Message><Link href={href({})}>إعادة المحاولة بنفس الجهة والفترة</Link></Panel></PageFrame>;
  for(const k of ['employer','period','after','employee','after_id'])if(query[k]&&!uuid(query[k]!))return failure('راجع رابط الجهة والفترة والموظف.');
   if((query.q?.length??0)>120)return failure('اختصر عبارة البحث ثم أعد المحاولة.');if(query.view&&query.view!=='all'&&query.view!=='attention')return failure('راجع نوع قائمة المراجعة.');
- const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال ببيانات الرواتب.');const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
+ const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال ببيانات الرواتب.');const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
  const employers=await client.rpc('payroll_run_employers',{p_tenant:tenantId,p_query:query.employer_q??'',p_after_name:query.after_name??null,p_after_id:query.after_id??null});if(employers.error||!employers.data)return failure('تعذر تحميل الجهات أو لم يعد الحساب مخولًا للمراجعة.');
  const employer=query.employer||employers.data.unique_employer||'';
  if(!employer)return <PageFrame><section dir="rtl" className={styles.workspace}><PageHeader  title={<>اختر جهة مراجعة الرواتب</>} /><form method="get" className={styles.filters}><label>البحث عن جهة<Input name="employer_q" defaultValue={query.employer_q??''} maxLength={120}/></label><Button variant="ghost" type="submit" >بحث</Button></form><ul>{employers.data.items.map((e:{id:string;name:string})=><li key={e.id}><Link href={href({employer:e.id})}>{e.name}</Link></li>)}</ul>{employers.data.items.length===0&&<p>لا توجد جهة مطابقة؛ راجع البحث مع مسؤول الشركة.</p>}{employers.data.items.length===30&&<Link href={href({after_id:employers.data.items[29].id,after_name:employers.data.items[29].name})}>جهات إضافية</Link>}</section></PageFrame>;

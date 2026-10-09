@@ -14,7 +14,10 @@ export async function updateSession(request: NextRequest) {
   if (!url || !key) return noStore(NextResponse.next({ request }));
 
   let response = noStore(NextResponse.next({ request }));
-  const supabase = createServerClient(url, key, {
+  const supabase = createServerClient(process.env.SUPABASE_INTERNAL_URL || url, key, {
+    cookieOptions: process.env.SUPABASE_INTERNAL_URL
+      ? { name: `sb-${new URL(url).hostname.split('.')[0]}-auth-token` }
+      : undefined,
     cookies: {
       getAll: () => request.cookies.getAll(),
       setAll(cookiesToSet, headers) {

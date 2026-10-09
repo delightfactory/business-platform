@@ -5,7 +5,7 @@ import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { CalendarForm, DateSummary, GenerateForm } from '../CalendarForm';
 import { type CalendarPreview, displayDate, uuid } from '../rules';
 import styles from '../payroll.module.css';
@@ -18,7 +18,7 @@ export default async function PayrollSetupPage({params,searchParams}: {params:Pr
  const path = `/tenant/${tenantId}/payroll/setup`; const employerDestination=normalizeEmployerScope(path,'setup',query);if(employerDestination)redirect(employerDestination); const retry = `${path}?${new URLSearchParams(query).toString()}`;
  const failure = (text:string) => <PageFrame><Panel className={styles.card}><PageHeader  title={<>الرواتب</>} /><Message tone="bad" role="alert">{text}</Message><ButtonLink variant="ghost"  href={retry}>إعادة المحاولة</ButtonLink></Panel></PageFrame>;
  const client = await createSupabaseServerClient(); if(!client) return failure('تعذر الاتصال. أعد المحاولة لاستعادة بيانات الرواتب.');
- const {data:{user}} = await client.auth.getUser(); if(!user) redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
+ const {data:{user}} = await getWorkspaceUser(client); if(!user) redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
  const {data:access,error:accessError} = await client.rpc('payroll_access_snapshot',{p_tenant:tenantId});
  if(accessError || !access) return failure(accessError?.code==='42501'?'هذا الحساب غير مخوّل للوصول إلى الرواتب. راجع مسؤول الشركة.':'تعذر تحميل صلاحيات الرواتب.');
  if((query.review_q?.length ?? 0)>120 || (query.period && !uuid(query.period)) || (query.q?.length ?? 0)>120 || (query.employer && !uuid(query.employer)) || (query.after_id && !uuid(query.after_id)) || (query.before && !/^\d{4}-\d{2}-\d{2}$/.test(query.before))) return failure('راجع رابط البحث والفترة ثم أعد المحاولة.');

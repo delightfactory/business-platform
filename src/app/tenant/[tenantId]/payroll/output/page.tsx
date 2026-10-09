@@ -4,7 +4,7 @@ import {normalizeEmployerScope} from '../employer-context';
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {money} from '../runs/rules';
 import styles from '../payroll.module.css';
@@ -21,7 +21,7 @@ export default async function OutputPage({params,searchParams}:{params:Promise<{
  const client=await createSupabaseServerClient();
  const failure=(text:string)=><PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>مخرجات الرواتب النهائية</>} /><Message tone="bad" role="alert">{text}</Message><Link href={`${path}?${context}`}>إعادة المحاولة بنفس المخرج</Link></Panel></PageFrame>;
  if(!client)return failure('تعذر الاتصال بالمخرج المحفوظ.');
- const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(`${path}?${context}`)}`);
+ const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(`${path}?${context}`)}`);
  const response=await client.rpc('payroll_final_output',{p_tenant:tenantId,p_employer:query.employer,p_output:query.output,p_after:query.after??null,p_limit:30});
  if(response.error||!response.data)return failure('المخرج غير متاح أو لم يعد الحساب مخولًا لعرضه. مرشح المراجعة لا يُعرض كقسيمة راتب.');
  const employerList=await client.rpc('payroll_report_employers',{p_tenant:tenantId,p_report:'sheet',p_query:'',p_after_name:null,p_after_id:null});

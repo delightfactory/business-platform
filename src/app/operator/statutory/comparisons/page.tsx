@@ -3,7 +3,7 @@ import { Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
 import {ComparisonForm} from './ComparisonForm';
 import {ComparisonHistoryRow} from './ComparisonHistory';
@@ -13,7 +13,7 @@ export const dynamic='force-dynamic';
 export default async function ComparisonPage({searchParams}:{searchParams:Promise<{head?:string;before?:string}>}){
  const q=await searchParams;const url='/operator/statutory/comparisons?'+new URLSearchParams(q);const failure=(detail:string)=><main className="app-shell"><Panel ><PageHeader  title={<>تعذر فتح مقارنة القواعد</>} /><p role="alert">{detail}</p><Link href={url}>إعادة المحاولة</Link> · <Link href="/operator/statutory">العودة إلى المسودات</Link></Panel></main>;
  if(!q.head||!uuid(q.head)||(q.before&&!/^[1-9][0-9]{0,14}$/.test(q.before)))return failure('راجع اختيار المسودة أو صفحة المقارنات.');
- const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال. أعد المحاولة بنفس الاختيار.');const {data:{user}}=await client.auth.getUser();if(!user)redirect('/auth/login?next='+encodeURIComponent(url));
+ const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال. أعد المحاولة بنفس الاختيار.');const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect('/auth/login?next='+encodeURIComponent(url));
  const [workspace,history]=await Promise.all([client.rpc('statutory_draft_workspace',{p_head:q.head,p_limit:20}),client.rpc('statutory_draft_comparison_history',{p_head:q.head,p_before:q.before?Number(q.before):null,p_limit:20})]);
  if(workspace.error?.code==='42501'||history.error?.code==='42501')return failure('تحتاج مهمة إدارة القواعد القانونية الممنوحة صراحةً. راجع مسؤول تشغيل المنصة.');
  if(workspace.error||history.error||!workspace.data?.head||!history.data)return failure('تعذر تحميل المسودة أو المقارنات. لا تُعرض نتيجة التحميل كقائمة فارغة.');

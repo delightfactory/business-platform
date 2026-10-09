@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { operatorLifecycleSnapshot } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeTenantLifecycleAction } from '../actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
 import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
@@ -22,7 +22,7 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
   if (!isUuid(tenantId)) return <Status title="الشركة غير متاحة" detail="لم نعثر على شركة بهذه البيانات." />;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [operatorStatus, lifecycle, commercial] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),

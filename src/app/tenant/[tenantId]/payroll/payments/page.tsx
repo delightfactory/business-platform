@@ -2,7 +2,7 @@ import { Button, ButtonLink, Disclosure, Input, Message, PageHeader, Panel, Avat
 import Link from 'next/link';
 import {notFound,redirect} from 'next/navigation';
 import {PageFrame} from '@/components/context-navigation';
-import {createSupabaseServerClient} from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import {uuid,displayDate} from '../rules';
 import {money} from '../runs/rules';
 import {PaymentForm} from './PaymentForm';
@@ -19,7 +19,7 @@ export default async function PaymentsPage({params,searchParams}:{params:Promise
  for(const key of ['employer','output','after','history_before','event'])if(query[key]&&!uuid(query[key]!))return failure('راجع رابط الجهة والمخرج النهائي.');
  if((query.q?.length??0)>120)return failure('اختصر اسم الموظف أو رمزه في البحث.');
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال بسجل الدفعات.');
- const {data:{user}}=await client.auth.getUser();if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
+ const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect(`/auth/login?next=${encodeURIComponent(href({}))}`);
  const access=await client.rpc('payroll_payment_access',{p_tenant:tenantId});if(access.error)return failure(paymentError(access.error.code,access.error.message));
  if(!query.employer||!query.output)return <PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>مطابقة الدفعات الخارجية</>} description={<> اختر مخرجًا نهائيًا محفوظًا. المرشح التشغيلي لا ينشئ مبلغًا صالحًا للصرف قبل التأهيل القانوني والإقفال. </>} />{access.data?.can_review_entry?<Link href={`/tenant/${tenantId}/payroll/runs`}>اختيار مسير من مراجعة الرواتب</Link>:<p>اطلب من مسؤول الرواتب رابط المخرج الذي يخص مهمتك.</p>}</Panel></PageFrame>;
  const response=await client.rpc('payroll_payment_workspace',{p_tenant:tenantId,p_employer:query.employer,p_output:query.output,p_query:query.q??'',p_after:query.after||null,p_history_before:query.history_before||null,p_event:query.event||null});

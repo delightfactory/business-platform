@@ -9,7 +9,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { OnboardingForm } from './OnboardingForm';
 import { OnboardingResult } from './OnboardingResult';
 import { LimitFields } from './LimitFields';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 type SearchParams = Promise<{ key?: string; state?: string }>;
@@ -18,7 +18,7 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
   const params = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const { data: status, error: statusError } = await supabase.rpc('current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;

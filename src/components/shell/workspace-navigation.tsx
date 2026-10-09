@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link, { useLinkStatus } from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
+import { useFormStatus } from 'react-dom';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { signOutAction } from '@/app/auth/actions';
 import { ThemePreferenceControl } from '@/components/theme-preference';
@@ -19,6 +20,16 @@ export type WorkspaceNavigationProps = {
 function Progress() {
   const { pending } = useLinkStatus();
   return pending ? <span className="workspace-link-loading" role="status" aria-label="جارٍ فتح الصفحة" /> : null;
+}
+
+function SignOutMenuItem() {
+  const { pending } = useFormStatus();
+  // Keep the form mounted until its native submission reaches the server.
+  return <DropdownMenu.Item asChild onSelect={event => event.preventDefault()} disabled={pending}>
+    <button type="submit" disabled={pending} aria-busy={pending}>
+      {pending ? 'جارٍ الخروج…' : 'تسجيل الخروج'}
+    </button>
+  </DropdownMenu.Item>;
 }
 
 function NavLink({ item, current, close, icon }: { item: WorkspaceLink; current: boolean; close?: () => void; icon?: IconName }) {
@@ -81,7 +92,7 @@ export function WorkspaceNavigation({ homeHref, homeLabel, contextLabel, links, 
         {switchHref && switchLabel && <DropdownMenu.Item asChild><Link href={switchHref}>{switchLabel}</Link></DropdownMenu.Item>}
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
-        <form action={signOutAction}><DropdownMenu.Item asChild><button type="submit">تسجيل الخروج</button></DropdownMenu.Item></form>
+        <form action={signOutAction}><SignOutMenuItem /></form>
       </DropdownMenu.Content></DropdownMenu.Portal></DropdownMenu.Root>
     </header>
     {offline && <div className="workspace-offline-banner" role="status">الاتصال منقطع. يمكنك مراجعة ما هو ظاهر؛ أعد الاتصال قبل إرسال أي إجراء.</div>}
