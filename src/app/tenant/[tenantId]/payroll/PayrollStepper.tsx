@@ -22,7 +22,7 @@ export function PayrollStepper({ currentStage, historical = false, work = null }
   const list = <ol className={styles.progressList}>{stages.map((stage, index) => <li key={stage} aria-current={currentStage === index ? 'step' : undefined}><span className={styles.stageIcon}><Icon name={stageIcons[index]} size={18} /></span><span className={styles.stageName}>{stage}{currentStage === index && <small>الحالية</small>}</span><p className="field-hint">{descriptions[index]}</p></li>)}</ol>;
   return <section className={styles.progress} aria-label="مراحل الرواتب">
     <p className={styles.progressCurrent}>{current ? `المرحلة الحالية: ${current}` : historical ? 'المسير مستبدل ومحفوظ في التاريخ؛ راجع المسير البديل.' : 'لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.'}</p>
-    <p className="field-hint">حالة المصادر تخص الحساب المحفوظ. التغطية التشغيلية والتأهيل المالي والاعتماد والصرف حالات منفصلة.</p>
+    <p className="field-hint">حالة المصادر تخص الحساب المحفوظ. التغطية التشغيلية والتحقق من شروط الحساب المالي والاعتماد والصرف حالات منفصلة.</p>
     <div className={styles.progressDesktop}>{list}</div>
     <Disclosure summary={<>عرض مراحل الرواتب</>} className={styles.progressDetails}>
 

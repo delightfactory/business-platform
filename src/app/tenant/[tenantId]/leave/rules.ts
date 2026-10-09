@@ -557,7 +557,7 @@ export function reviewErrorText(code: ReviewErrorCode): string {
 }
 
 const FEEDBACK_TEXT: Record<string, string> = {
-  approved: 'تم اعتماد الطلب وسُجّل استهلاك أي رصيد مطلوب.',
+  approved: 'تم اعتماد طلب الإجازة وتسجيل خصم الرصيد المطلوب، إن وجد.',
   replaced: 'تم استبدال الإجازة واعتماد الطلب البديل، مع حفظ الأصل وسجل التصحيح.',
   rejected: 'تم رفض الطلب بسبب المذكور وسُجّل القرار في سجل العملية.',
   refreshed: 'تم تحديث معاينة الطلب. راجع أيامها الجديدة ثم اتخذ قرارك.',

@@ -157,7 +157,7 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                         فتح الطلب</PendingLink>
                       {' · '}<Badge className={`entity-status ${stateClass(entry.requestConsumption.requestState)}`}>
                         {stateLabel(entry.requestConsumption.requestState)}</Badge>
-                      {' · '}الأيام المستهلكة: <bdi>{formatDays(entry.requestConsumption.units)}</bdi>
+                      {' · '}الأيام المخصومة من الرصيد: <bdi>{formatDays(entry.requestConsumption.units)}</bdi>
                       {' · '}تاريخ الإجازة: <bdi>{entry.requestConsumption.leaveDate}</bdi>
                     </p>}
                     {entry.reversalEntries.length > 0 && <Disclosure  summary={<>قيود أعادت رصيد هذا القيد</>}>

@@ -43,7 +43,7 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
       <h2>الشركة</h2>
       <label htmlFor="tenantName">اسم الشركة</label>
       <Input id="tenantName" name="tenantName" defaultValue={values.tenantName} required maxLength={160} autoFocus />
-      <label htmlFor="entityName">اسم الجهة القانونية (اختياري)</label>
+      <label htmlFor="entityName">الاسم القانوني لجهة العمل (اختياري)</label>
       <Input id="entityName" name="entityName" defaultValue={values.entityName} maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
       <label htmlFor="siteName">اسم الفرع الرئيسي</label>
       <Input id="siteName" name="siteName" defaultValue={values.siteName} required maxLength={160} />

@@ -58,7 +58,7 @@ function isUuid(value: string) {
 function stateMessage(state?: string) {
   const labels: Record<string, string> = {
     invalid: 'رابط الدعوة غير مكتمل. افتح أحدث رسالة وصلتك.',
-    'link-expired': 'تعذر استخدام رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مشغّل المنصة إصدار رابط جديد.',
+    'link-expired': 'تعذر استخدام رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مسؤول تشغيل المنصة إصدار رابط جديد.',
     setup: 'إعداد خدمة الحسابات غير مكتمل. أعد المحاولة لاحقًا.',
   };
   return state && Object.hasOwn(labels, state) ? labels[state] : 'تعذر التحقق من رابط الدعوة.';

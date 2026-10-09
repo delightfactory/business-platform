@@ -15,7 +15,7 @@ export async function channelSession(tenantId:string) {
   if(error || !data) return null;
   return {db,access:data as ChannelAccess};
 }
-export function ChannelUnavailable({tenantId,retryHref=`/tenant/${tenantId}/attendance/sources`}:{tenantId:string;retryHref?:string}) { return <PageFrame><Panel ><PageHeader  title={<>قنوات الحضور غير متاحة</>} /><p>تحقق من الاتصال وصلاحية عرض الحضور، أو تواصل مع المسؤول.</p><ButtonLink  href={retryHref}>إعادة تحميل الصفحة</ButtonLink><ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</ButtonLink></Panel></PageFrame>; }
+export function ChannelUnavailable({tenantId,retryHref=`/tenant/${tenantId}/attendance/sources`}:{tenantId:string;retryHref?:string}) { return <PageFrame><Panel ><PageHeader  title={<>وسائل تسجيل الحضور غير متاحة</>} /><p>تحقق من الاتصال وصلاحية عرض الحضور، أو تواصل مع المسؤول.</p><ButtonLink  href={retryHref}>إعادة تحميل الصفحة</ButtonLink><ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</ButtonLink></Panel></PageFrame>; }
 export function ChannelPager({href,offset,more}:{href:string;offset:number;more:boolean}) { return <nav className="attendance-pagination" aria-label="صفحات السجل">{offset>0 && <ButtonLink variant="ghost"  href={`${href}${href.includes('?')?'&':'?'}offset=${Math.max(0,offset-20)}`}>السابق</ButtonLink>}{more && <ButtonLink variant="ghost"  href={`${href}${href.includes('?')?'&':'?'}offset=${offset+20}`}>التالي</ButtonLink>}</nav>; }
 export function channelOffset(value:string|undefined) { const n=Number(value??0);return Number.isInteger(n) && n>=0 && n<=1000000?n:0; }
 

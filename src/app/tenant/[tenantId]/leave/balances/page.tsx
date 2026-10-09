@@ -266,7 +266,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                         · الفترة: {account.periodLabel} · من <bdi>{account.startsOn}</bdi> إلى <bdi>{account.endsOn}</bdi></p>
                       <p className="record-meta">رقم النوع: <bdi>{account.typeCode}</bdi>
                         {' · '}رصيد افتتاحي: {account.hasOpening ? 'مُسجّل' : 'غير مسجل'}
-                        {' · '}منحة سنوية: {account.hasAnnualGrant ? 'مسجلة' : 'غير مسجلة'}</p>
+                        {' · '}استحقاق الإجازة السنوية: {account.hasAnnualGrant ? 'مسجل' : 'غير مسجل'}</p>
                       <p className="record-meta">الرصيد يشمل جميع حركات الحساب، بما فيها الحركات الموجودة في الصفحات الأخرى.</p>
                     </div>
                     {pair?.canAdjust && <PendingLink className="ui-button ui-button-ghost ui-button-md"
@@ -302,7 +302,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
               ? <Panel  aria-labelledby="balances-kind-title">
                 <div className={styles.panelHeading}>
                   <h2 id="balances-kind-title">تسجيل قيد رصيد</h2>
-                  <p>اختر نوع القيد المطلوب. لا تحتسب الواجهة أي منحة ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
+                  <p>اختر نوع القيد المطلوب. لا تحتسب الواجهة أي استحقاق ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
                     ولا تفترض قيمًا؛ أدخل عدد الأيام يدويًا. نتحقق من صلاحيتك عند الإرسال.</p>
                 </div>
                 <ul className="record-list">{(['opening', 'annual_grant', 'adjustment'] as PostingKind[])
@@ -310,7 +310,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                     <div className="record-main">
                       <div className="record-title-row"><h3>{postingKindLabel(kind)}</h3></div>
                       <p className="record-meta">{kind === 'opening' ? 'قيد واحد فقط لكل حساب حتى لو تغيّرت نسخة السياسة.'
-                        : kind === 'annual_grant' ? 'منحة واحدة فقط لكل حساب. أدخل عدد الأيام يدويًا.'
+                        : kind === 'annual_grant' ? 'استحقاق سنوي واحد فقط لكل حساب. أدخل عدد الأيام يدويًا.'
                           : 'إضافة أيام إلى الرصيد أو خصم أيام منه.'}</p>
                     </div>
                     <PendingLink className="ui-button ui-button-ghost ui-button-md" href={pairHref({ kind })}>اختيار</PendingLink>

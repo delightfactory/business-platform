@@ -131,9 +131,9 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
 
     {(preview.rows.length > 0 || showingCommitResult) && <Panel className="attendance-import-preview" aria-live="polite">
       <h2>{showingCommitResult ? 'آخر نتيجة حفظ مؤكدة' : 'معاينة الملف'}</h2>
-      <KeyValueStrip items={[{label:confirmedResult?"مقبول":"جاهز للحفظ",value:confirmedResult?confirmedResult.accepted:preview.ready},{label:"يحتاج اختيار يوم",value:confirmedResult?confirmedResult.ambiguous:preview.ambiguous},{label:"بانتظار التكليف",value:confirmedResult?confirmedResult.unassigned:preview.unassigned},{label:"مكرر",value:confirmedResult?confirmedResult.duplicate:preview.duplicate},{label:"مرفوض",value:confirmedResult?confirmedResult.rejected:preview.rejected}]}/>
+      <KeyValueStrip items={[{label:confirmedResult?"مقبول":"جاهز للحفظ",value:confirmedResult?confirmedResult.accepted:preview.ready},{label:"يحتاج اختيار يوم",value:confirmedResult?confirmedResult.ambiguous:preview.ambiguous},{label:"بانتظار بيانات العمل",value:confirmedResult?confirmedResult.unassigned:preview.unassigned},{label:"مكرر",value:confirmedResult?confirmedResult.duplicate:preview.duplicate},{label:"مرفوض",value:confirmedResult?confirmedResult.rejected:preview.rejected}]}/>
       {commit.error && <Message tone="bad"  role="alert">{commit.error}</Message>}
-      {showingCommitResult && commit.state === 'processed' && <Message tone="info"  role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</Message>}
+      {showingCommitResult && commit.state === 'processed' && <Message tone="info"  role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا بيانات عمل في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</Message>}
       {showingCommitResult && <p className="field-hint">هذه نتيجة آخر تأكيد فقط. الأحداث التي حُفظت في تأكيد سابق تظل محفوظة.</p>}
       {showingCommitResult && commit.state === 'failed' && <p className="field-hint">النتيجة المعروضة من آخر حفظ مؤكد، وليست نتيجة المحاولة الأخيرة. تحقّق من السجل قبل إعادة التأكيد.</p>}
       {!showingCommitResult && readyRows.length === 0 && ambiguousRows.length === 0 && unassignedRows.length === 0 && <p className="field-hint">لا توجد أحداث يمكن تأكيد حفظها في هذه المعاينة. راجع الملاحظات؛ الأحداث المكررة لا تُحفظ مرة أخرى.</p>}
@@ -167,7 +167,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
         </div>)}
         {unassignedRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <Checkbox  name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
-          <span>حفظ الحدث في قائمة «بلا تكليف» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
+          <span>حفظ الحدث في قائمة «بلا بيانات عمل» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
         </label>)}
         <p className="field-hint">تُربط التسجيلات بيوم العمل المطابق. إذا أكمل التسجيل بصمة ناقصة، فقد يحتاج اليوم إلى مراجعة.</p>
         <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'} pendingLabel="جارٍ حفظ الأحداث…" ariaDescribedBy={showOffline1 ? offlineHint1 : undefined}/></div>
@@ -194,7 +194,7 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
 
 function emptyPreview(tenantId: string): PreviewState { return { tenantId, rows: [], ready: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, error: '', attempt: 0 }; }
 function emptyCommit(): ConfirmState { return { state: 'idle', accepted: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, rows: [], error: '', attempt: 0 }; }
-function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', ambiguous: 'يحتاج اختيار يوم العمل', unassigned: 'بلا تكليف', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
+function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', ambiguous: 'يحتاج اختيار يوم العمل', unassigned: 'بلا بيانات عمل', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
 function downloadRejectReport(rows: ImportRow[]) {
   const quote = (value: unknown) => {
     let text = String(value ?? '');

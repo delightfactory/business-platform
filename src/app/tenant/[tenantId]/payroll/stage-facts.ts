@@ -35,12 +35,12 @@ export function readStageFacts(value: unknown): StageFacts | null {
   return { employee_count: value.employee_count, source, coverage, time_coverage, time_enabled, leave_enabled, issues, gross_complete: value.gross_complete, financially_qualified: value.financially_qualified };
 }
 export function payrollStageDescriptions(work: StageWork | null): string[] {
-  if (!work) return ['حدد الفترة أو راجع إعداد الدورة', 'لم تُحدد فترة للمراجعة', 'لم تُحدد فترة للمراجعة', 'لم يُعرض حساب', 'لم يُعرض اعتماد', 'لم يُعرض مخرج نهائي'];
-  const descriptions = ['فترة محفوظة', 'تظهر حالة المصدر بعد الحساب', 'تظهر الموانع بعد الحساب', 'لم يُحسب مرشح لهذه الفترة', 'لم يُعتمد مرشح لهذه الفترة', 'لم يُثبّت مسير نهائي بعد'];
+  if (!work) return ['حدد الفترة أو راجع إعداد الدورة', 'لم تُحدد فترة للمراجعة', 'لم تُحدد فترة للمراجعة', 'لم يُعرض حساب', 'لم يُعرض اعتماد', 'لم يُعرض مسير نهائي'];
+  const descriptions = ['فترة محفوظة', 'تظهر حالة المصدر بعد الحساب', 'تظهر الموانع بعد الحساب', 'لم يُجرَ حساب مبدئي لهذه الفترة', 'لم يُعتمد حساب مبدئي لهذه الفترة', 'لم يُثبّت مسير نهائي بعد'];
   if (!work.run || work.run.status === 'cancelled') return descriptions;
-  if (work.run.status === 'superseded') return ['فترة محفوظة', 'مصادر تاريخية', 'حساب تاريخي', 'حساب مستبدل', 'مسير مستبدل محفوظ', 'راجع المخرج البديل'];
-  if (work.run.status === 'locked') return ['فترة محفوظة', 'مصادر المخرج المحفوظ', 'موانع الحساب في سجله التاريخي', 'حساب نهائي محفوظ', 'مسير مثبت', work.final_output_id ? 'حالة الصرف المسجل معروضة أدناه حسب الصلاحية' : 'المخرج النهائي غير متاح؛ راجع المسير'];
-  if (!['draft', 'review', 'approved'].includes(work.run.status)) return ['فترة محفوظة', 'حالة المصدر غير معروفة', 'حالة الموانع غير معروفة', 'حالة الحساب تحتاج مراجعة', 'حالة الاعتماد غير معروفة', 'لم يُؤكد مخرج نهائي'];
+  if (work.run.status === 'superseded') return ['فترة محفوظة', 'مصادر تاريخية', 'حساب تاريخي', 'حساب مستبدل', 'مسير مستبدل محفوظ', 'راجع المسير البديل'];
+  if (work.run.status === 'locked') return ['فترة محفوظة', 'مصادر المسير المحفوظ', 'موانع الحساب في سجله التاريخي', 'حساب نهائي محفوظ', 'مسير مثبت', work.final_output_id ? 'حالة الصرف المسجل معروضة أدناه حسب الصلاحية' : 'المسير النهائي غير متاح؛ راجع المسير'];
+  if (!['draft', 'review', 'approved'].includes(work.run.status)) return ['فترة محفوظة', 'حالة المصدر غير معروفة', 'حالة الموانع غير معروفة', 'حالة الحساب تحتاج مراجعة', 'حالة الاعتماد غير معروفة', 'لم يُؤكد مسير نهائي'];
   if (work.stale_reasons.length > 0) return ['فترة محفوظة', 'أعد الحساب لتحديث حالة المصدر', 'أعد الحساب لتحديث الموانع', 'تغيّرت المصادر؛ يلزم إعادة الحساب', work.run.status === 'approved' ? 'الاعتماد السابق يحتاج مراجعة' : 'راجع الحساب قبل الاعتماد', 'لم يُثبّت مسير نهائي بعد'];
   const facts = readStageFacts(work.stage_facts);
   descriptions[1] = 'تعذر تحديد تغطية المصدر من البيانات المتاحة';
@@ -65,7 +65,7 @@ export function payrollStageDescriptions(work: StageWork | null): string[] {
   }
   const ready = work.approval?.ready;
   descriptions[4] = work.run.status === 'approved'
-    ? ready === true ? 'مرشح معتمد؛ التثبيت يتطلب التأكيد والصلاحية' : ready === false ? 'تغيّرت جاهزية المرشح المعتمد؛ راجع المسير' : 'مرشح معتمد؛ جاهزية التثبيت غير معروفة'
+    ? ready === true ? 'حساب مبدئي معتمد؛ التثبيت يتطلب التأكيد والصلاحية' : ready === false ? 'تغيّرت جاهزية الحساب المبدئي المعتمد؛ راجع المسير' : 'حساب مبدئي معتمد؛ جاهزية التثبيت غير معروفة'
     : ready === true ? 'فحص الخادم يسمح بالاعتماد حسب الصلاحية' : ready === false ? 'متطلبات الاعتماد غير مكتملة؛ راجع المسير' : 'حالة جاهزية الاعتماد غير معروفة؛ راجع المسير';
   return descriptions;
 }

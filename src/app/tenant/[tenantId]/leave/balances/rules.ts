@@ -781,14 +781,14 @@ export function deltaErrorText(reason: 'format' | 'range' | 'zero' | 'sign'): st
   }
   if (reason === 'range') return `القيمة خارج النطاق المسموح: القيمة المطلقة لا تتجاوز ${MAX_DELTA_MAGNITUDE} يومًا.`;
   if (reason === 'zero') return 'لا يمكن تسجيل قيد بصفر يوم.';
-  return 'الرصيد الافتتاحي والمنحة السنوية يجب أن يكونا موجبين. استخدم قيد تعديل موجبًا أو سالبًا بدلًا من ذلك.';
+  return 'الرصيد الافتتاحي واستحقاق الإجازة السنوية يجب أن يكونا موجبين. استخدم قيد تعديل موجبًا أو سالبًا بدلًا من ذلك.';
 }
 
 export function entryKindLabel(kind: string): string {
   if (kind === 'opening') return 'رصيد افتتاحي';
-  if (kind === 'annual_grant') return 'منحة سنوية';
+  if (kind === 'annual_grant') return 'استحقاق إجازة سنوية';
   if (kind === 'adjustment') return 'تعديل يدوي';
-  if (kind === 'leave_consumption') return 'استهلاك باعتماد طلب';
+  if (kind === 'leave_consumption') return 'خصم رصيد بعد اعتماد طلب إجازة';
   if (kind === 'cancellation_reversal') return 'إعادة رصيد بإلغاء الاعتماد';
   if (kind === 'correction_reversal') return 'إعادة رصيد ضمن تصحيح';
   return 'قيد غير محدد';
@@ -796,7 +796,7 @@ export function entryKindLabel(kind: string): string {
 
 export function postingKindLabel(kind: PostingKind): string {
   if (kind === 'opening') return 'رصيد افتتاحي';
-  if (kind === 'annual_grant') return 'منحة سنوية';
+  if (kind === 'annual_grant') return 'استحقاق إجازة سنوية';
   return 'تعديل يدوي';
 }
 
@@ -805,7 +805,7 @@ export function postingKindSummary(kind: PostingKind): string {
     return 'أدخل الرصيد الافتتاحي لهذا النوع في الفترة المختارة. يجب أن يكون القدر موجبًا أكبر من صفر.';
   }
   if (kind === 'annual_grant') {
-    return 'أدخل مقدار المنحة السنوية يدويًا كما هو مقرر داخليًا. الواجهة لا تحسب منحة نظامية ولا تقترح مقدارًا ولا تفترض أسلوب منح مبكر أو متدرج.';
+    return 'أدخل مقدار استحقاق الإجازة السنوية يدويًا كما هو مقرر داخليًا. الواجهة لا تحسب استحقاقًا قانونيًا ولا تقترح مقدارًا ولا تفترض تسجيل الرصيد مقدمًا أو على مراحل.';
   }
   return 'أدخل قدرًا موجبًا أو سالبًا (لا يقبل الصفر) لتصحيح الرصيد. الرصيد بعد التعديل لا يقبل أن يصبح سالبًا.';
 }
@@ -817,7 +817,7 @@ export function blockedReasonLabel(reason: string | null, canPost: boolean): str
   if (reason === 'employer_inactive') return 'جهة العمل غير نشطة، فلا يُقبل قيد جديد لها.';
   if (reason === 'active_employment_required') return 'لا توجد فترة عمل سارية اليوم بين الموظف وجهة العمل.';
   if (reason !== null && reason.endsWith('_already_posted')) {
-    return 'سُجّل هذا القيد لهذا الحساب مسبقًا؛ يبقى قيد واحد لكل من الرصيد الافتتاحي والمنحة السنوية حتى لو تغيّرت النسخة السياسية.';
+    return 'سُجّل هذا القيد لهذا الحساب مسبقًا؛ يبقى قيد واحد لكل من الرصيد الافتتاحي واستحقاق الإجازة السنوية حتى لو تغيّرت نسخة سياسة الإجازات.';
   }
   return 'لا يقبل هذا القيد حاليًا. راجع بيانات الموظف وجهة العمل والإعدادات.';
 }
@@ -913,7 +913,7 @@ export function postErrorText(code: PostErrorCode): string {
     case 'key-conflict':
       return 'استُخدم مفتاح التنفيذ نفسه سابقًا ببيانات مختلفة. رُفضت هذه المحاولة. راجع سجل الحساب قبل استخدام «بدء محاولة جديدة».';
     case 'grant-exists':
-      return 'سُجّلت منحة سنوية واحدة لهذا الحساب مسبقًا ويبقى واحدة حتى لو تغيّرت النسخة السياسية. لم يُسجَّل قيد جديد.';
+      return 'سُجّل استحقاق سنوي واحد لهذا الحساب مسبقًا ويظل استحقاقًا واحدًا حتى لو تغيّرت نسخة سياسة الإجازات. لم يُسجَّل قيد جديد.';
     case 'balance':
       return 'رصيد الحساب لا يكفي لهذا الخفض. رُفضت هذه المحاولة؛ راجع سجل الحساب قبل تعديل عدد الأيام.';
     case 'forbidden':

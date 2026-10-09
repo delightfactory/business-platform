@@ -20,7 +20,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   if (userError) return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
   const { data: operatorStatus, error: statusError } = await supabase.rpc('current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
-  if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
+  if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مسؤول تشغيل المنصة النشطة." />;
 
   const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators').then(result => result, (error: unknown) => ({ data: null, error })),

@@ -17,7 +17,7 @@ export async function RecordedPaymentNotice({ tenantId, employer, output, period
     <p className="field-hint">هذه قيود دفعات خارجية مسجلة في المنصة؛ لا تثبت تنفيذ تحويل بنكي أو إتاحة القسائم.</p>
   </Panel>;
   const failure = (denied = false) => panel(<>
-    <p>{denied ? 'هذا الحساب غير مخوّل لعرض الدفعات لهذا المخرج. راجع مسؤول الشركة؛ حالة الصرف غير مؤكدة هنا.' : 'تعذر التحقق من الدفعات المسجلة؛ حالة الصرف غير مؤكدة هنا.'}</p>
+    <p>{denied ? 'هذا الحساب ليس لديه صلاحية لعرض الدفعات لهذا المسير. راجع مسؤول الشركة؛ حالة الصرف غير مؤكدة هنا.' : 'تعذر التحقق من الدفعات المسجلة؛ حالة الصرف غير مؤكدة هنا.'}</p>
     {!denied && <ButtonLink variant="ghost"  prefetch={false} href={retry}>إعادة التحقق من حالة الصرف</ButtonLink>}
   </>);
   let result;

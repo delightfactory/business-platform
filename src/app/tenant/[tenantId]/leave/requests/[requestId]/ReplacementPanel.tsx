@@ -48,7 +48,7 @@ export async function ReplacementPanel({ tenantId, request, source, canReplace, 
       </RecordCard>;
     })}</ul>}
     {showChoice && <>
-      <p className="field-hint">اختر طلبًا مرسلًا للموظف نفسه ثم راجع تفاصيله. سيُعاد الرصيد المستهلك للطلب الأصلي ويُعتمد البديل في عملية واحدة؛ يُحفظ الأصل وسجل التصحيح. إذا كانت أيامه معتمدة في الحضور، يلزم معالجة التعارض هناك أولًا.</p>
+      <p className="field-hint">اختر طلبًا مرسلًا للموظف نفسه ثم راجع تفاصيله. سيُعاد الرصيد المخصوم للطلب الأصلي ويُعتمد البديل في عملية واحدة؛ يُحفظ الأصل وسجل التصحيح. إذا كانت أيامه معتمدة في الحضور، يلزم معالجة التعارض هناك أولًا.</p>
       {replacementId && !validSelection && <Message tone="bad"  role="alert">الطلب البديل غير متاح، أو لا يخص نفس توظيف الموظف. اختر طلبًا مرسلًا آخر أو أعد تحميل الصفحة.</Message>}
       {validSelection ? <>
         <h3>الطلب البديل: {validSelection.leaveTypeName}</h3>
@@ -66,7 +66,7 @@ export async function ReplacementPanel({ tenantId, request, source, canReplace, 
           reviewedPreviewVersion={request.approvedPreviewVersion} replacementId={validSelection.id}
           replacementVersion={validSelection.version} replacementPreviewVersion={validSelection.previewVersion}
           submitLabel="استبدال الإجازة واعتماد البديل" pendingLabel="جارٍ حفظ التصحيح…" backHref={path}
-          hint="تأكيد التصحيح يعكس استهلاك الأصل ويستهلك رصيد البديل وفق نوعه. يبقى الطلبان كما هما إذا تعذرت العملية." />}
+          hint="تأكيد التصحيح يعيد الرصيد المخصوم للطلب الأصلي، ويخصم رصيد الطلب البديل حسب نوع الإجازة. إذا تعذرت العملية، يبقى الطلبان كما هما." />}
       </> : <>
         {!queue ? <Message tone="bad"  role="alert">تعذر تحميل الطلبات المرسلة. <PendingLink href={path}>إعادة المحاولة</PendingLink></Message>
           : candidates.length === 0 ? <p>لا يوجد طلب بديل مرسل لهذا الموظف في هذه الصفحة. يمكن للموظف إرسال طلب جديد من إجازاتي.</p>

@@ -100,15 +100,15 @@ function PreviewContent({ employee }: { employee: EmployeePreviewData }) {
         {employment.end_date && <><dt>{ended ? 'انتهى العمل في' : 'نهاية العمل المسجلة'}</dt><dd><bdi>{employment.end_date}</bdi></dd></>}
       </dl> : <p>لا يوجد سجل توظيف.</p>}
     </section>
-    <section className={styles.section}><h3>{ended ? 'التكليف عند انتهاء العمل' : assignment?.is_scheduled ? 'التكليف المقرر' : 'تكليف العمل'}</h3>
+    <section className={styles.section}><h3>{ended ? 'بيانات العمل عند انتهاء الخدمة' : assignment?.is_scheduled ? 'بيانات العمل المقررة' : 'بيانات العمل'}</h3>
       {assignment ? <dl className={styles.details}>
         <dt>الموقع</dt><dd>{assignment.site}</dd>
         <dt>القسم</dt><dd>{assignment.department ?? 'غير محدد'}</dd>
         <dt>الوظيفة</dt><dd>{assignment.job ?? 'غير محددة'}</dd>
         <dt>المدير المباشر</dt><dd>{assignment.manager ?? 'غير محدد'}</dd>
-        <dt>بداية التكليف</dt><dd><bdi>{assignment.valid_from}</bdi></dd>
-        {assignment.valid_until && <><dt>نهاية التكليف</dt><dd><bdi>{assignment.valid_until}</bdi></dd></>}
-      </dl> : <p>لا يوجد تكليف عمل.</p>}
+        <dt>بداية سريان بيانات العمل</dt><dd><bdi>{assignment.valid_from}</bdi></dd>
+        {assignment.valid_until && <><dt>نهاية سريان بيانات العمل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></>}
+      </dl> : <p>لا توجد بيانات عمل مسجلة.</p>}
     </section>
   </>;
 }

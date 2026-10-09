@@ -21,7 +21,7 @@ export function AnnualForm({tenant,employee,employer,type,period,policy,canManag
   {Object.entries({tenant,employee,employer,type,period}).map(([name,value])=><input key={name} type="hidden" name={name} value={value}/>)}
   <input type="hidden" name="rates" value={JSON.stringify(rates)}/><input type="hidden" name="reviewHash" value={quote?.review_hash??''}/><input type="hidden" name="operationKey" value={key}/><input type="hidden" name="policyVersion" value={current.version}/>
   <fieldset disabled={pending} style={{border:0,padding:0,minWidth:0}}>
-   <p>خدمة الموظف تبدأ في <bdi>{serviceStart}</bdi>. تتراكم المنحة عن الأيام الفعلية، ويُسجّل الفرق فقط؛ استهلاك الإجازات يبقى محفوظًا.</p>
+   <p>خدمة الموظف تبدأ في <bdi>{serviceStart}</bdi>. يتراكم الاستحقاق عن الأيام الفعلية، ويُسجّل الفرق فقط؛ أيام الإجازة المخصومة تظل مسجلة.</p>
    <Field id="annual-date" label={<>حساب الخدمة حتى</>} required><Input id="annual-date" name="asOf" type="date" required max={asOf} value={date} onChange={e=>{change();setDate(e.target.value);}}/></Field>
    <Field id="annual-source" label={<>مستند يثبت فئة استحقاق الموظف</>} required><Input id="annual-source" name="source" required minLength={3} maxLength={300} value={source} onChange={e=>{change();setSource(e.target.value);}}/></Field>
    <p className="field-hint">قاعدة الشركة المعروضة {formatDays(current.first_year_days)} يوم في السنة الأولى، ثم {formatDays(current.later_year_days)} يوم؛ الأهلية بعد {current.minimum_service_days} يوم خدمة، وعدد أيام السنة المستخدم في الحساب {current.year_days}. تُقرّب الحصيلة لأعلى إلى 0.01 يوم. مسؤول الموارد البشرية مسؤول عن توثيق الفئات الخاصة ومزاياها.</p>

@@ -115,15 +115,15 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 
 function assignmentError(message: string) {
   if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
-  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
-  if (message.includes('people_org_manage_forbidden')) return 'تحتاج إلى صلاحية إدارة سياق العمل في هذه الشركة.';
-  if (message.includes('people_assignment_materialized_day')) return 'بدأ تسجيل حضور لهذا اليوم وفق التكليف الحالي؛ لا يمكن تغيير بياناته بعد فتح اليوم. اختر تاريخ سريان لاحقًا لم يُفتح للحضور.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد ومراجعة المسيرات المحفوظة المتأثرة للفترة نفسها.';
+  if (message.includes('people_org_manage_forbidden')) return 'تحتاج إلى صلاحية تعديل بيانات العمل في هذه الشركة.';
+  if (message.includes('people_assignment_materialized_day')) return 'بدأ تسجيل حضور لهذا اليوم وفق بيانات العمل الحالية؛ لا يمكن تغيير بياناته بعد فتح اليوم. اختر تاريخ سريان لاحقًا لم يُفتح للحضور.';
   if (message.includes('people_assignment_future_exists')) return 'يوجد نقل مقرر بالفعل. ألغِ النقل المقرر قبل إضافة تغيير آخر.';
   if (message.includes('people_assignment_current_missing')) return 'لا يوجد تعيين حالي مفتوح يمكن نقله. راجع سجل العمل أو مسؤول الموارد البشرية.';
   if (message.includes('people_assignment_before_current_start')) return 'يجب أن يبدأ التغيير بعد تاريخ بداية التعيين الحالي.';
-  if (message.includes('people_assignment_initial_correction_window_closed')) return 'انتهت نافذة تصحيح بيانات يوم بداية العمل. استخدم تغيير العمل بتاريخ سريان جديد.';
-  if (message.includes('people_assignment_initial_correction_only')) return 'التصحيح متاح للتكليف الأول في يوم بداية العمل فقط.';
-  if (message.includes('people_assignment_future_exists')) return 'ألغِ النقل المقرر أولًا قبل تصحيح التكليف الأول.';
+  if (message.includes('people_assignment_initial_correction_window_closed')) return 'انتهت الفترة المسموح فيها بتصحيح بيانات يوم بداية العمل. استخدم تغيير العمل بتاريخ سريان جديد.';
+  if (message.includes('people_assignment_initial_correction_only')) return 'التصحيح متاح لبيانات العمل الأولى في يوم بداية العمل فقط.';
+  if (message.includes('people_assignment_future_exists')) return 'ألغِ النقل المقرر أولًا قبل تصحيح بيانات العمل عند بداية التعيين.';
   if (message.includes('people_assignment_backdate_not_supported')) return 'لا يمكن تسجيل تغيير بتاريخ سابق. اختر اليوم أو تاريخًا لاحقًا.';
   if (message.includes('people_assignment_site_unavailable')) return 'الفرع غير نشط أو لا يتبع جهة التوظيف الحالية. اختر فرعًا آخر.';
   if (message.includes('people_assignment_department_unavailable')) return 'القسم غير نشط أو لا يتبع هذه الشركة. اختر قسمًا متاحًا.';
@@ -131,7 +131,7 @@ function assignmentError(message: string) {
   if (message.includes('people_assignment_job_unavailable')) return 'الوظيفة غير نشطة أو لم تعد متاحة. اختر وظيفة أخرى.';
   if (message.includes('people_assignment_self_manager')) return 'لا يمكن اختيار الموظف مديرًا لنفسه.';
   if (message.includes('people_assignment_manager_unavailable')) return 'المدير غير نشط في تاريخ سريان التغيير أو لا يتبع هذه الشركة. اختر مديرًا متاحًا في ذلك التاريخ.';
-  if (message.includes('people_assignment_employment_inactive')) return 'لا يمكن تغيير سياق العمل لعلاقة توظيف منتهية.';
+  if (message.includes('people_assignment_employment_inactive')) return 'لا يمكن تغيير بيانات العمل لعلاقة توظيف منتهية.';
   if (message.includes('people_assignment_after_employment_end')) return 'تاريخ التغيير يأتي بعد نهاية علاقة العمل.';
   if (message.includes('people_assignment_audit')) return 'تعذر تسجيل التغيير؛ لم يُحفظ أي تعديل. أعد المحاولة.';
   if (message.includes('work_assignment_no_overlap')) return 'يتعارض هذا التاريخ مع تعيين آخر. حدّث سجل العمل ثم أعد المحاولة.';

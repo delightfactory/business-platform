@@ -60,9 +60,9 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
   ));
 
   return <Panel className="assignment-history-panel" aria-labelledby="assignment-history-heading">
-    <h2 id="assignment-history-heading">سجل تكليفات العمل</h2>
+    <h2 id="assignment-history-heading">سجل تغييرات بيانات العمل</h2>
     <p className="record-meta">تظهر هنا الفروع والأقسام والوظائف التي ارتبطت بعلاقة العمل مع تواريخ سريانها.</p>
-    {historyError ? <Message tone="bad"  role="alert">تعذر تحميل سجل تكليفات العمل. حدّث الصفحة أو تحقق من صلاحية العرض.</Message>
+    {historyError ? <Message tone="bad"  role="alert">تعذر تحميل سجل تغييرات بيانات العمل. حدّث الصفحة أو تحقق من صلاحية العرض.</Message>
       : history?.items.length ? <ol className="assignment-history-list">
         {history.items.map((assignment) => <RecordCard key={assignment.id} className="assignment-history-item">
           <div className="assignment-history-heading">
@@ -128,7 +128,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
               value={effectiveDateChoice} onChange={(event) => setEffectiveDateChoice(event.target.value)} /></Field>
             {(options.sites_truncated || options.departments_truncated || options.jobs_truncated || options.managers_truncated)
               && <p className="field-hint">نعرض حتى 1000 اختيار لكل قائمة. راجع دليل الشركة إذا لم يظهر السجل المطلوب.</p>}
-            {currentChoiceMissing && <p className="field-hint">بعض بيانات العمل الحالي لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
+            {currentChoiceMissing && <p className="field-hint">بعض بيانات العمل الحالية لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
             {formState.error && <Message tone="bad"  role="alert">{formState.error}</Message>}
             <p className="field-hint">تبدأ بيانات العمل الجديدة في التاريخ المحدد، وتنتهي البيانات الحالية عند بداية ذلك اليوم.</p>
             <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير العمل" pendingLabel="جارٍ حفظ التغيير…" /></div>

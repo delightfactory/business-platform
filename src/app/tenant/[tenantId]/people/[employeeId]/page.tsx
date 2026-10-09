@@ -152,16 +152,16 @@ export default async function EmployeePage({ params, searchParams }: {
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
         <div className="work-policy-assignment-field"><Field id="work-policy-id" label={<>قالب الدوام</>} required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</Select></Field></div>
         <div className="work-policy-assignment-field"><Field id="work-policy-date" label={<>تاريخ بدء السريان</>} required><Input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></Field></div>
-        <p className="field-hint">إذا كان هذا أول تكليف ويبدأ اليوم، تُصحح السياسة في سجله. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
-        {query.policy === 'payroll-correction' && <Message tone="bad"  role="alert">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ للفترة نفسها.</Message>}
-        {query.policy === 'failed' && <Message tone="bad"  role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تكليف مستقبلي آخر.</Message>}
+        <p className="field-hint">إذا كانت هذه أول بيانات عمل ويبدأ سريانها اليوم، تُصحح السياسة في سجلها. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
+        {query.policy === 'payroll-correction' && <Message tone="bad"  role="alert">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد للفترة نفسها.</Message>}
+        {query.policy === 'failed' && <Message tone="bad"  role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تغيير آخر مقرر في بيانات العمل.</Message>}
         {query.policy === 'pending' && <Message tone="bad"  role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</Message>}
         {query.policy === 'materialized' && <Message tone="bad"  role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</Message>}
         <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ سياسة الدوام" pendingLabel="جارٍ حفظ السياسة…" disabled={!workPolicyPanel.options.length} /></div>
       </OfflineForm>}
       {workPolicyPanel.can_manage_catalog && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/work-policies`}>إدارة قوالب سياسات العمل</ButtonLink>}
       <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
-      <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل تكليف الموظف الأساسي. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
+      <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل بيانات عمل الموظف الأساسية. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
       {workPolicyPanel.overrides.length ? <ol className="assignment-history-list">{workPolicyPanel.overrides.map((override) => <RecordCard className="assignment-history-item" key={override.id}>
         <strong>{override.name} · {override.code} · الإصدار {override.version}</strong>
         <p>من <bdi>{override.valid_from}</bdi> إلى <bdi>{override.valid_through}</bdi>{override.cancelled_at ? ' · ملغى' : ''}</p>
@@ -214,18 +214,18 @@ export default async function EmployeePage({ params, searchParams }: {
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
     {query.assignment === 'scheduled' && <FeedbackToast key="assignment-scheduled" message="تم حفظ نقل العمل وسيبدأ في التاريخ المحدد." />}
-    {query.assignment === 'transferred' && <FeedbackToast key="assignment-transferred" message="تم تحديث سياق العمل اعتبارًا من اليوم." />}
+    {query.assignment === 'transferred' && <FeedbackToast key="assignment-transferred" message="تم تحديث بيانات العمل اعتبارًا من اليوم." />}
     {query.assignment === 'corrected' && <FeedbackToast key="assignment-corrected" message="تم تصحيح بيانات العمل لهذا اليوم وحفظ تفاصيل التعديل." />}
-    {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة سياق العمل السابق." />}
+    {query.assignment === 'cancelled' && <FeedbackToast key="assignment-cancelled" message="تم إلغاء النقل المقرر واستعادة بيانات العمل السابقة." />}
     {query.assignment === 'cancel-error' && <FeedbackToast key="assignment-cancel-error" message="تعذر إلغاء النقل. حدّث الصفحة للتحقق من حالته." />}
     {query.compensation === 'changed' && <FeedbackToast key="compensation-changed" message="تم تحديث الأجر الأساسي اعتبارًا من اليوم." />}
-    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة Payroll مقفلة؛ التواريخ المقفلة تخضع لمقترح تصحيح مستقل ومراجعة المخرجات المتأثرة." />}
+    {query.compensation === 'corrected' && <FeedbackToast key="compensation-corrected" message="تم حفظ التعديل بتاريخ سابق. راجع أي فترة رواتب مقفلة؛ التواريخ المقفلة تخضع لمقترح تصحيح مستقل ومراجعة المسيرات المحفوظة المتأثرة." />}
     {query.compensation === 'initial_corrected' && <FeedbackToast key="compensation-initial-corrected" message="تم تصحيح الأجر الأول لهذا اليوم وحُفظ سجل التعديل." />}
     {query.compensation === 'scheduled' && <FeedbackToast key="compensation-scheduled" message="تم حفظ تغيير الأجر وسيبدأ في التاريخ المحدد." />}
     {query.compensation === 'cancelled' && <FeedbackToast key="compensation-cancelled" message="تم إلغاء تغيير الأجر المقرر واستعادة الأجر السابق." />}
     {query.compensation === 'cancel-error' && <FeedbackToast key="compensation-cancel-error" message="تعذر إلغاء تغيير الأجر. حدّث الصفحة للتحقق من حالته." />}
-    {query.employment === 'ended' && <FeedbackToast key="employment-ended" message="تم إنهاء علاقة العمل. راجع Payroll والإجازات وتمويل الموظف للتسوية والمتابعة اللازمة." />}
-    {query.employment === 'rehired' && <FeedbackToast key="employment-rehired" message="تم إنشاء علاقة عمل جديدة للموظف. راجع Payroll والإجازات وتمويل الموظف بشأن الفترة السابقة." />}
+    {query.employment === 'ended' && <FeedbackToast key="employment-ended" message="تم إنهاء علاقة العمل. راجع الرواتب والإجازات وسلف الموظف للتسوية والمتابعة اللازمة." />}
+    {query.employment === 'rehired' && <FeedbackToast key="employment-rehired" message="تم إنشاء علاقة عمل جديدة للموظف. راجع الرواتب والإجازات وسلف الموظف بشأن الفترة السابقة." />}
     {query.policy === 'assigned' && <FeedbackToast key="policy-assigned" message="تم حفظ سياسة الدوام وسجل تاريخ سريانها."/>}
     {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
     {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}

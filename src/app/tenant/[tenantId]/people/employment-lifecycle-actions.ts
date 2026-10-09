@@ -76,21 +76,21 @@ function value(data: FormData, key: string) { return String(data.get(key) ?? '')
 
 function endError(message: string) {
   if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
-  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد ومراجعة المسيرات المحفوظة المتأثرة للفترة نفسها.';
   if (message.includes('people_employment_manage_forbidden')) return 'لا تملك الصلاحيات اللازمة لإنهاء علاقة العمل وإغلاق بياناتها.';
   if (message.includes('people_employment_end_before_materialized_day') || message.includes('people_assignment_materialized_day')) return 'يوجد يوم حضور مفتوح بعد تاريخ الإنهاء المختار. اختر آخر يوم عمل يشمل أيام الحضور المفتوحة، ثم أعد المحاولة.';
   if (message.includes('people_employment_future_end_unsupported')) return 'لا يمكن تحديد إنهاء مستقبلي في هذه النسخة؛ اختر اليوم أو تاريخًا سابقًا.';
   if (message.includes('people_employment_end_before_start')) return 'لا يمكن أن يسبق آخر يوم عمل تاريخ بداية العلاقة.';
-  if (message.includes('people_employment_end_after_effective_change')) return 'يوجد تكليف أو تغيير أجر بدأ بعد التاريخ المختار. اختر تاريخًا أحدث أو راجع السجل قبل الإنهاء.';
+  if (message.includes('people_employment_end_after_effective_change')) return 'توجد بيانات عمل أو تغييرات أجر بدأ سريانها بعد التاريخ المختار. اختر تاريخًا أحدث أو راجع السجل قبل الإنهاء.';
   if (message.includes('people_employment_not_started')) return 'لم تبدأ علاقة العمل بعد؛ لا يمكن إنهاؤها قبل يوم بدايتها.';
   if (message.includes('people_employment_not_active')) return 'علاقة العمل منتهية بالفعل أو تغيرت حالتها. حدّث الصفحة للتحقق.';
-  if (message.includes('people_employment_current_assignment_missing') || message.includes('people_employment_current_compensation_missing')) return 'بيانات العمل الحالية غير مكتملة؛ راجع سجل التكليف والأجر قبل الإنهاء.';
+  if (message.includes('people_employment_current_assignment_missing') || message.includes('people_employment_current_compensation_missing')) return 'بيانات العمل الحالية غير مكتملة؛ راجع سجل بيانات العمل والأجر قبل الإنهاء.';
   return 'تعذر إنهاء علاقة العمل. لم يُحفظ جزء من التغيير؛ حدّث الصفحة وراجع الحالة.';
 }
 
 function rehireError(message: string) {
   if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
-  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد ومراجعة المسيرات المحفوظة المتأثرة للفترة نفسها.';
   if (message.includes('people_rehire_forbidden')) return 'لا تملك الصلاحيات اللازمة لإعادة التوظيف وإدارة بيانات العمل والأجر.';
   if (message.includes('people_rehire_requires_ended_employee')) return 'إعادة التوظيف متاحة بعد انتهاء علاقة العمل السابقة فقط.';
   if (message.includes('people_rehire_active_employment_exists')) return 'لدى الموظف علاقة عمل نشطة بالفعل. حدّث الصفحة للتحقق.';

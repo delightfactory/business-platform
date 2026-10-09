@@ -102,7 +102,7 @@ function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pic
     <label className="check-option"><Checkbox  name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
     <label className="check-option"><Checkbox  name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
     <label className="check-option"><Checkbox  name="canManageStatutoryRules" defaultChecked={defaults?.can_manage_statutory_rules ?? false} /> إدارة القواعد القانونية للرواتب</label>
-    <p className="field-hint">تُمنح مهمة القواعد القانونية لمسؤول الامتثال صراحةً. لا يمنحها إعداد الشركات أو إدارة الرواتب، ولا يعني منحها اعتماد أي حزمة قانونية.</p>
+    <p className="field-hint">تُمنح مهمة القواعد القانونية لمسؤول الامتثال صراحةً. لا يمنحها إعداد الشركات أو إدارة الرواتب، ولا يعني منحها اعتماد أي نسخة قواعد قانونية للحساب.</p>
     <span className="field-hint" id={`${prefix}-capability-hint`}>اختر مهمة واحدة على الأقل. سحب الصلاحيات يتم بإجراء مستقل.</span>
   </fieldset>;
 }

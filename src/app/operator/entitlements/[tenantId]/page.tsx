@@ -73,7 +73,7 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
     {decision.status === 'future_conflict' && <Message tone="info"  role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</Message>}
     {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
       <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
-    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">إتاحة سلف الموظفين مستقلة؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الإتاحة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول المخول.</p>}
+    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">إتاحة سلف الموظفين مستقلة؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الإتاحة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول صاحب الصلاحية.</p>}
     {decision.capability_key === 'hr.employee_finance' && !peopleAvailable && <p className="field-hint">أتح إدارة الموارد البشرية أولًا لإنشاء سلف الموظفين.</p>}
     {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لإتاحة الإجازات، أتح إدارة الموارد البشرية أولًا.</p>}
     {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}

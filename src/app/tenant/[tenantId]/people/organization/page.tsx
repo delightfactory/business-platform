@@ -47,7 +47,7 @@ export default async function PeopleOrganizationPage({ params, searchParams }: {
 
   return <PageFrame footer="الموارد البشرية">
     {success && <FeedbackToast key={queryParams.state} message={success} />}
-    <PageHeader title={<>الأقسام والوظائف</>} eyebrow={<>الموارد البشرية</>} description={<>رتّب أقسام الشركة ووظائفها للاستخدام في ملفات الموظفين وتكليفاتهم.</>} action={<>{canManage && <ButtonLink variant="solid"  href={`${base}/${kind}/new`}>إضافة {noun}</ButtonLink>}</>} />
+    <PageHeader title={<>الأقسام والوظائف</>} eyebrow={<>الموارد البشرية</>} description={<>رتّب أقسام الشركة ووظائفها للاستخدام في ملفات الموظفين وبيانات عملهم.</>} action={<>{canManage && <ButtonLink variant="solid"  href={`${base}/${kind}/new`}>إضافة {noun}</ButtonLink>}</>} />
     <nav className="workspace-view-tabs" aria-label="نوع السجل">
       <Link href={`${base}?kind=departments`} aria-current={kind==='departments'?'page':undefined}>الأقسام</Link>
       <Link href={`${base}?kind=jobs`} aria-current={kind==='jobs'?'page':undefined}>الوظائف</Link>
@@ -93,9 +93,9 @@ function listingHref(tenantId:string,kind:Kind,query:string,page:number) {
 function successText(state?:string) {
   const messages:Record<string,string>={
     'department-created':'تمت إضافة القسم.','department-updated':'تم تحديث القسم.',
-    'department-deactivated':'تم تعطيل القسم مع حفظ سجل التكليفات السابقة.','department-reactivated':'تمت إعادة تفعيل القسم.',
+    'department-deactivated':'تم تعطيل القسم مع حفظ سجل بيانات العمل السابقة.','department-reactivated':'تمت إعادة تفعيل القسم.',
     'department-unchanged':'لم تتغير بيانات القسم.','job-created':'تمت إضافة الوظيفة.','job-updated':'تم تحديث الوظيفة.',
-    'job-deactivated':'تم تعطيل الوظيفة مع حفظ سجل التكليفات السابقة.','job-reactivated':'تمت إعادة تفعيل الوظيفة.',
+    'job-deactivated':'تم تعطيل الوظيفة مع حفظ سجل بيانات العمل السابقة.','job-reactivated':'تمت إعادة تفعيل الوظيفة.',
     'job-unchanged':'لم تتغير بيانات الوظيفة.',
   };
   return state?messages[state]:null;

@@ -23,7 +23,7 @@ export default async function ComparisonPage({searchParams}:{searchParams:Promis
  const w=parsed.value;
  if(h.current_revision!==w.head.revision||h.rows.some(row=>row.revision>w.head.revision))return failure('تغيرت نسخة القواعد أثناء القراءة. أعد تحميل الحالة الحالية.');
  const release=await client.rpc('statutory_draft_issuance_status',{p_head:q.head,p_expected:w.head.revision});
- if(release.error)return failure(release.error.code==='42501'?'تحتاج مهمة مراجعة القواعد القانونية.':release.error.code==='PT409'?'تغيرت القواعد أو أدلتها أثناء القراءة. أعد تحميل النسخة الحالية.':'تعذر التحقق من حالة التأهيل. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
+ if(release.error)return failure(release.error.code==='42501'?'تحتاج مهمة مراجعة القواعد القانونية.':release.error.code==='PT409'?'تغيرت القواعد أو أدلتها أثناء القراءة. أعد تحميل النسخة الحالية.':'تعذر التحقق من حالة استيفاء شروط الحساب. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
  const status=releaseStatus(release.data,w.head.revision);if(!status)return failure('تعذر التحقق من حالة الإصدار. أعد تحميل النسخة الحالية؛ لا يمكن اعتبارها جاهزة.');
  return <main className="app-shell"><Panel ><ButtonLink variant="ghost" href={'/operator/statutory?head='+q.head} >العودة إلى المسودة</ButtonLink><p className="eyebrow">الامتثال · مراجعة القواعد</p><PageHeader  title={<>مقارنة الحساب بالنتائج المرجعية</>} /><h2>{w.head.version}</h2><p>المقارنات مرتبطة بنسخة القواعد وقت حفظها. تغيير القواعد يستلزم مقارنات جديدة؛ الحالات الاصطناعية لا تؤهل قواعد الصرف.</p></Panel>
  <IssuanceStatus status={status} head={q.head} actor={user.id}/>

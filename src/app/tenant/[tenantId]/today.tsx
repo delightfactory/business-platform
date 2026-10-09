@@ -70,7 +70,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
       ? `${scope}. استثناءات: ${counts.exception_count}؛ جاهز للمراجعة: ${counts.clean_ready}. الأعداد لهذا التاريخ فقط؛ افتح القائمة للتحقق من اليوم أو الأيام السابقة.`
       : `${scope}. تعذر تحميل ملخص المراجعة؛ افتح القائمة لإعادة المحاولة.`, href: `${base}/attendance/review?date=${date}`, count: valid ? Number(counts.exception_count) : undefined });
     if (valid && Number(counts.overtime_pending) > 0) entries.push({ title: 'إضافي بانتظار القرار', detail: `${scope}. عناصر الإضافي: ${counts.overtime_pending}؛ قد تتداخل مع الاستثناءات.`, href: `${base}/attendance/review?date=${date}&filter=overtime`, count: Number(counts.overtime_pending) });
-    entries.push({ title: 'تسجيلات بلا تكليف', detail: 'قائمة مستقلة للتحقق من التسجيلات والأيام المحتملة؛ ليست ضمن عداد المراجعة.', href: `${base}/attendance/unassigned` });
+    entries.push({ title: 'تسجيلات بلا بيانات عمل', detail: 'قائمة مستقلة للتحقق من التسجيلات والأيام المحتملة؛ ليست ضمن عداد المراجعة.', href: `${base}/attendance/unassigned` });
   }
   if (channel?.can_view === true) model.work.push({ title: 'طرق تسجيل الحضور والمواقع', detail: 'راجع طريقة تسجيل الحضور وموقع العمل والتسجيلات الواردة.', href: `${base}/attendance/sources` });
   if (leave?.canView) {

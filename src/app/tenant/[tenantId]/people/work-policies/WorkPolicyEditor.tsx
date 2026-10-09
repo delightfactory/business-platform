@@ -183,7 +183,7 @@ export function WorkPolicyEditor({
     <Panel className="work-policy-section" aria-labelledby={`${idPrefix}-approval-heading`}>
       <div className="work-policy-section-heading">
         <h3 id={`${idPrefix}-approval-heading`}>اعتماد الأيام المكتملة</h3>
-        <p>لا يعتمد النظام اليوم إلا بعد انتهاء نافذة التسجيل وثبات جميع الأحداث.</p>
+        <p>لا يعتمد النظام اليوم إلا بعد انتهاء الفترة المسموح خلالها بتسجيل الحضور وثبات جميع الأحداث.</p>
       </div>
       <label className="work-policy-check-option">
         <Checkbox  name="autoApproveClean" checked={values.autoApproveClean} onChange={handleValueChange} />

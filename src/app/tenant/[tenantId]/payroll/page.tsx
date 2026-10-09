@@ -43,7 +43,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const { data: { user } } = await getWorkspaceUser(client);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(retry)}`);
   const [access, navigation] = await Promise.all([client.rpc('payroll_access_snapshot', { p_tenant: tenantId }), client.rpc('payroll_navigation_access', { p_tenant: tenantId })]);
-  if (access.error || !access.data) return failure(access.error?.code === '42501' ? 'هذا الحساب غير مخوّل للوصول إلى مساحة الرواتب. راجع مسؤول الشركة.' : 'تعذر تحميل صلاحيات الرواتب.');
+  if (access.error || !access.data) return failure(access.error?.code === '42501' ? 'هذا الحساب ليس لديه صلاحية للوصول إلى مساحة الرواتب. راجع مسؤول الشركة.' : 'تعذر تحميل صلاحيات الرواتب.');
   const found = await client.rpc('payroll_employers', { p_tenant: tenantId, p_query: query.q ?? '', p_after_name: query.after_name ?? null, p_after_id: query.after_id ?? null, p_limit: 30 });
   if (found.error || !Array.isArray(found.data?.items)) return failure('تعذر تحميل جهات العمل.');
   const employers = found.data.items as Employer[], employer = query.employer || found.data.unique_employer || '';
@@ -129,7 +129,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {candidate && primaryAction}
       {candidate && work?.summary && <dl className={styles.figureStrip}><div><dt>سجلات التوظيف في هذا الحساب</dt><dd>{new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(work.summary.employee_count)}</dd></div><div><dt>{work.summary.gross_complete === true ? 'إجمالي الاستحقاقات قبل الضريبة والتأمينات' : 'الاستحقاقات التي أمكن حسابها'}</dt><dd><bdi>{money(work.summary.known_gross)}</bdi></dd></div><div><dt>الخصومات المحسوبة دون الضريبة والتأمينات</dt><dd><bdi>{money(work.summary.deductions)}</bdi></dd></div><div><dt>صافي الحساب المراجع</dt><dd>{!['draft','review','approved'].includes(work.run?.status ?? '') ? 'حالة الحساب تحتاج مراجعة قبل عرض الصافي' : stale ? 'أعد الحساب لعرض الصافي من المصادر الحالية' : work.summary.financially_qualified === true && work.summary.net != null ? <bdi>{money(work.summary.net)}</bdi> : 'يظهر بعد استكمال مراجعة قواعد الضرائب والتأمينات واعتماد صلاحيتها ماليًا.'}</dd></div></dl>}
       {candidate && work?.summary && <p>هذه مبالغ مبدئية للمراجعة. لا تُصرف قبل استكمال المراجعة المالية واعتماد المسير وحفظه نهائيًا.</p>}
-      {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول مخوّل بعرض الرواتب أو تسجيل الدفعات.'}</p>}
+      {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب أو تسجيل الدفعات.'}</p>}
       {!candidate && primaryAction}
       <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work}/>
     </Panel>

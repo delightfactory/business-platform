@@ -51,12 +51,12 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
           <nav className={styles.tools} aria-label="مهام الحضور">
             {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</ButtonLink>}
             {canManage && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
-            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</ButtonLink>}
+            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا بيانات عمل</ButtonLink>}
             {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}
           </nav>
         </div>
         {canOpen && <p className="field-hint">استخدم التالي لعرض بقية الموظفين عند وجود سجلات إضافية.</p>}
-        {rows.length === 0 ? <EmptyState title={<>لا توجد سجلات لهذا اليوم</>} description={<>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد تكليفات دوام بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</>} /> : <DataTable className={styles.table} role="table">
+        {rows.length === 0 ? <EmptyState title={<>لا توجد سجلات لهذا اليوم</>} description={<>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد أيام عمل بدأت حسب التوقيت المحلي ومواعيد الدوام المسجلة.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</>} /> : <DataTable className={styles.table} role="table">
           <caption>سجلات يوم العمل <bdi>{day}</bdi> — المعروضة في هذه الصفحة</caption>
           <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">الموظف</th><th scope="col" role="columnheader">الدوام المتوقع</th><th scope="col" role="columnheader">مؤشرات اليوم والمراجعة</th><th scope="col" role="columnheader">الحالة</th><th scope="col" role="columnheader">الإجراء</th></tr></thead>
           <tbody role="rowgroup">{rows.map((row) => <tr role="row" key={row.id}>
@@ -70,7 +70,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
               {row.worked_minutes !== null && (row.status === 'ready' || row.status === 'approved') && (row.schedule_kind === 'flexible' ? <p className="record-meta">صافي العمل: {row.worked_minutes} من {row.required_minutes ?? '—'} دقيقة مطلوبة</p> : <p className="record-meta">التأخر: {row.late_minutes ?? 0} د · المغادرة المبكرة: {row.early_leave_minutes ?? 0} د · صافي العمل: {row.worked_minutes} د · الاستراحة المقررة: {row.scheduled_break_minutes ?? '—'} د</p>)}
               {row.exception_code === 'short_workday' && row.status !== 'approved' && <Message tone="bad" >صافي المدة أقل من المطلوب؛ راجع اليوم قبل الاعتماد.</Message>}
               {row.exception_code === 'absence_candidate' && row.status !== 'approved' && <Message tone="bad" >انتهت الفترة بلا تسجيلات؛ راجع الحالة قبل إثبات الغياب.</Message>}
-              {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >يوجد مرشح عمل إضافي بانتظار المراجعة: {row.overtime_pending_count}</Message>}
+              {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >يوجد وقت إضافي مقترح بانتظار المراجعة: {row.overtime_pending_count}</Message>}
             </td>
             <td role="cell"><span className={styles.mobileLabel} aria-hidden="true">الحالة</span><Badge tone={row.status === 'approved' ? "ok" : "neutral"} >{statusLabel(row.status)}</Badge></td>
             <td role="cell"><ButtonLink variant="ghost" aria-describedby={`attendance-person-${row.id}`}  href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</ButtonLink></td>

@@ -55,8 +55,8 @@ function LabourDetails({ context, actual, expected, year }: { context: unknown; 
     {claimsReadable && expectedReadable ? <ul>{claims.map((claim, index) => {
       const e = Array.isArray(expectedClaims) ? expectedClaims.find(item => record(item) && item.id === claim.id) : undefined;
       return <li key={index}>البند {index + 1} · المرجع: {claim.reference} · المبلغ: {claim.amount} ج.م. · المخصص: {claim.capacity_amount} ج.م. · غير المخصص: {claim.unapplied_amount} ج.م.
-        {record(e) && <> · المتوقع تخصيصه: {String(e.capacity_amount)} ج.م. · المتوقع عدم تخصيصه: {String(e.unapplied_amount)} ج.م.</>}</li>;
+        {record(e) && <> · المبلغ المتوقع تطبيقه: {String(e.capacity_amount)} ج.م. · المبلغ المتوقع عدم تطبيقه: {String(e.unapplied_amount)} ج.م.</>}</li>;
     })}</ul> : <p role="alert">تعذر عرض تفاصيل بنود هذه الحالة.</p>}
-    <p className="field-hint">هذه أرقام مقارنة محفوظة فقط؛ ليست اعتمادًا للصرف أو إثباتًا لاستهلاك المبالغ.</p>
+    <p className="field-hint">هذه أرقام مقارنة محفوظة فقط؛ ليست اعتمادًا للصرف أو إثباتًا لتسجيل المبالغ في مسير نهائي.</p>
   </>;
 }

@@ -82,7 +82,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
           <h3>قبل إنهاء التوظيف</h3>
           <ul>
             <li>يمكن اختيار اليوم أو تاريخ سابق؛ لا يدعم الإنهاء بتاريخ مستقبلي.</li>
-            <li>قد يرفض النظام التاريخ السابق إذا وُجد تكليف أو تغيير أجر لاحق يحتاج إلى إعادة ترتيب.</li>
+            <li>قد يرفض النظام التاريخ السابق إذا وُجدت بيانات عمل أو تغيير أجر لاحق يحتاج إلى إعادة ترتيب.</li>
             <li>تظل سجلات العمل والأجر محفوظة حتى آخر يوم، وتُلغى التغييرات المستقبلية غير النافذة.</li>
           </ul>
           <h3>مراجعات مطلوبة</h3>
@@ -100,7 +100,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
       {optionsError && <Message tone="bad"  role="alert">تعذر تحميل جهات التوظيف والاختيارات النشطة. حدّث الصفحة قبل المتابعة.</Message>}
       {!optionsError && !rehireOptions && <Message tone="bad"  role="alert">خيارات إعادة التوظيف غير متاحة حاليًا.</Message>}
       {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
-        <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع تكليف وأجر ابتدائيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
+        <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع بيانات عمل وأجر عند بداية التعيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
         <Field id="rehire-employer" label={<>جهة العمل</>} required><Select id="rehire-employer" name="employerId" required value={employerId} onChange={event => setEmployerChoice(event.target.value)}>
           <option value="">اختر جهة العمل</option>{rehireOptions.employers.map((employer) => <option key={employer.id} value={employer.id}>{employer.name}</option>)}

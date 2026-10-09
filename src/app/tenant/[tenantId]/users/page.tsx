@@ -33,7 +33,7 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'payroll.reader.v1', label: 'عرض الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
   { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند إتاحة الحساب.' },
   { key: 'payroll.payment.recorder.v1', label: 'مسجل دفعات الرواتب الخارجية', description: 'عرض المستحق النهائي وتسجيل دفعات صُرفت خارجيًا ؛ لا تنفيذ تحويل بنكي.' },
-  { key: 'payroll.reviewer.v1', label: 'مراجع الرواتب', description: 'عرض المرشح والعوائق والفروق دون الحساب أو الاعتماد المالي.' },
+  { key: 'payroll.reviewer.v1', label: 'مراجع الرواتب', description: 'عرض الحساب المبدئي والعوائق والفروق دون الحساب أو الاعتماد المالي.' },
   { key: 'payroll.input.approver.v1', label: 'معتمد وحدات الرواتب', description: 'عرض واعتماد الوحدات اليومية دون تحضيرها.' },
   { key: 'employee_finance.reader.v1', label: 'قارئ مكافآت وخصومات الموظفين', description: 'عرض المدخلات المالية ضمن الجهة والفترة.' },
   { key: 'employee_finance.author.v1', label: 'معد مكافآت وخصومات الموظفين', description: 'تحضير المسودة وإلغاؤها دون اعتماد.' },
@@ -150,7 +150,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
 
                   <p className="field-hint">{row.protected_admin
                     ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
-                    : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المقاعد.</p>
+                    : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المستخدمين المحتسبين.</p>
                   <OfflineForm action={changeTenantAdminRoleAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
@@ -182,7 +182,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                   <Message tone="info" className="capacity-message" role="status">{invitation.delivery_state === 'failed'
                     ? 'تعذر إرسال البريد. استخدم «إعادة إرسال» بعد التحقق من العنوان.'
                     : 'لم يتأكد إرسال البريد بعد. راجع الحالة قبل إعادة الإرسال.'}</Message>}
-                {invitation.lifecycle_state === 'pending' && <p className="field-hint">لا تُحتسب الدعوة ضمن المقاعد حتى يقبلها المستخدم.</p>}
+                {invitation.lifecycle_state === 'pending' && <p className="field-hint">لا تُحتسب الدعوة ضمن عدد المستخدمين المحتسبين حتى يقبلها المستخدم.</p>}
               </div>
               {invitation.lifecycle_state === 'pending' && <div className="invitation-actions">
                 <OfflineForm action={reissueMemberInvitationAction}>
@@ -248,10 +248,10 @@ function stateMessage(state: string) {
     existing: 'يوجد طلب سابق لهذا الإجراء.', revoked: 'أُلغيت الدعوة.', expired: 'انتهت الدعوة ويمكن إصدار واحدة جديدة.',
     'revoke-unchanged': 'لم يحدث إلغاء في هذه المحاولة. قد لا تكون الدعوة متاحة أو قابلة للإلغاء. راجع حالتها الحالية.',
     'revoke-unknown': 'تعذر تأكيد نتيجة الإلغاء. راجع الحالة الحالية قبل تنفيذ إجراء آخر.',
-    terminal: 'الدعوة لم تعد معلّقة، لذلك لم يُرسل بريد جديد.', 'limit-full': 'اكتمل عدد المستخدمين المسموح به. عطّل عضوية غير مستخدمة أو اطلب من مشغّل المنصة رفع الحد.',
+    terminal: 'الدعوة لم تعد معلّقة، لذلك لم يُرسل بريد جديد.', 'limit-full': 'اكتمل عدد المستخدمين المسموح به. عطّل عضوية غير مستخدمة أو اطلب من مسؤول تشغيل المنصة رفع الحد.',
     reactivated: 'راجع حالة العضو وصلاحياته أدناه؛ الرابط وحده لا يؤكد إعادة التفعيل.', deactivated: 'راجع حالة العضوية أدناه؛ الرابط وحده لا يؤكد تعطيلها.',
     'admin-governed': 'تغيير مسؤول الشركة يحتاج إجراءً منفصلًا.', 'key-conflict': 'تعذر إعادة استخدام الطلب نفسه ببيانات مختلفة.',
-    'issuer-lost': 'لا يمكن إعادة إرسال هذه الدعوة لأن مُصدرها لم يعد يملك صلاحية إدارة الأعضاء. ألغها وأنشئ دعوة جديدة من حساب مخوّل.',
+    'issuer-lost': 'لا يمكن إعادة إرسال هذه الدعوة لأن المسؤول الذي أرسلها لم يعد يملك صلاحية إدارة الأعضاء. ألغها وأنشئ دعوة جديدة من حساب لديه الصلاحية.',
     'target-unavailable': 'لا يمكن تنفيذ هذا التغيير لأن الحساب محذوف أو محظور أو لم يؤكد بريده أو لم يكتمل إعداد كلمة مروره.',
     promoted: 'راجع دور العضو أدناه؛ الرابط وحده لا يؤكد ترقيته إلى مسؤول.',
     demoted: 'راجع الدور الحالي أدناه؛ الرابط وحده لا يؤكد خفض المسؤول.',

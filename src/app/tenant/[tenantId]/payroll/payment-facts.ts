@@ -24,10 +24,10 @@ export function readPaymentFacts(value: unknown, output: string, period: Period)
   };
 }
 export function recordedPaymentDescription(facts: PaymentFacts): string {
-  if (facts.employee_count === 0) return 'لا توجد علاقات توظيف في هذا المخرج النهائي.';
+  if (facts.employee_count === 0) return 'لا توجد علاقات توظيف في هذا المسير النهائي.';
   if (facts.payable_sign === 'negative') return 'قيمة الالتزام تحتاج مراجعة في سجل الدفعات؛ لا يمكن تأكيد اكتمال الصرف.';
-  if (facts.payable_sign === 'zero') return 'لا يوجد مبلغ مستحق للصرف في هذا المخرج النهائي.';
-  if (facts.status === 'paid') return 'سُجل سداد كامل للمستحقات في هذا المخرج النهائي.';
+  if (facts.payable_sign === 'zero') return 'لا يوجد مبلغ مستحق للصرف في هذا المسير النهائي.';
+  if (facts.status === 'paid') return 'سُجل سداد كامل للمستحقات في هذا المسير النهائي.';
   if (facts.status === 'partially_paid') return `سُجل سداد جزئي؛ علاقات توظيف بها متبقٍ: \u2068${new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(facts.remaining_count)}\u2069.`;
-  return facts.ever_paid ? 'لا يوجد سداد قائم بعد تصحيح القيود السابقة؛ راجع سجل الدفعات.' : 'لم يُسجّل سداد للمستحقات في هذا المخرج النهائي بعد.';
+  return facts.ever_paid ? 'لا يوجد سداد قائم بعد تصحيح القيود السابقة؛ راجع سجل الدفعات.' : 'لم يُسجّل سداد للمستحقات في هذا المسير النهائي بعد.';
 }

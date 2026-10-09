@@ -54,7 +54,7 @@ export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncat
     <Field id="org-catalog-active" label={<>الحالة</>}><Select id="org-catalog-active" name="isActive" defaultValue={String(state.isActive)}>
       <option value="true">نشط</option><option value="false">غير نشط</option>
     </Select></Field>
-    {!isNew && <p className="field-hint">تعطيل السجل يحفظ تاريخه وروابط التكليف السابقة، ويمنع اختياره في تكليفات جديدة.</p>}
+    {!isNew && <p className="field-hint">تعطيل السجل يحفظ تاريخه وروابط بيانات العمل السابقة، ويمنع اختياره في تغييرات جديدة في بيانات العمل.</p>}
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions org-catalog-actions">
       <SubmitButton label={isNew ? 'إضافة السجل' : 'حفظ التغييرات'} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>

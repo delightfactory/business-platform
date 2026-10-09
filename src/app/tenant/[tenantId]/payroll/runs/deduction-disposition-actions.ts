@@ -8,7 +8,7 @@ export async function deductionDispositionAction(previous:DispositionState,form:
  const field=(key:string)=>String(form.get(key)??'').trim();
  const scope={p_tenant:field('tenant'),p_employer:field('employer'),p_period:field('period'),p_employment:field('employment'),p_claim:field('claim'),p_attempt:field('attempt')};
  if(![scope.p_tenant,scope.p_employer,scope.p_period,scope.p_employment,scope.p_attempt].every(uuid))return {status:'not_committed',error:inputError('22023')};
- const client=await createSupabaseServerClient();if(!client)return {...previous,status:'unresolved',error:'تعذر التحقق من نتيجة الطلب. استعد الإيصال قبل إنشاء طلب آخر.'};
+ const client=await createSupabaseServerClient();if(!client)return {...previous,status:'unresolved',error:'تعذر التحقق من نتيجة الطلب. استعد نتيجة الطلب قبل إنشاء طلب آخر.'};
  const {data:{user}}=await client.auth.getUser();if(!user)return {...previous,status:'unresolved',error:inputError('42501')};
  if(field('operation')==='recover'){
   const recovery=await client.rpc('payroll_deduction_reconcile',scope);

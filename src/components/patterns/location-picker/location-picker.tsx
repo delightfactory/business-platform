@@ -54,7 +54,7 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
       const point: [number, number] = [position.coords.latitude, position.coords.longitude];
       setLat(point[0].toFixed(6)); setLng(point[1].toFixed(6));
       map.current?.setView(point, 17);
-      setMessage(`دقة موقع الجهاز نحو ${Math.round(position.coords.accuracy)} متر. عدّل النقطة إذا لزم، ثم احفظ القناة.`);
+      setMessage(`دقة موقع الجهاز نحو ${Math.round(position.coords.accuracy)} متر. عدّل النقطة إذا لزم، ثم احفظ وسيلة تسجيل الحضور.`);
       setLocating(false);
     }, () => { if (mounted.current) { setLocating(false); setMessage('تعذر تحديد موقع الجهاز. اسمح بالموقع على اتصال آمن، أو اختر النقطة بالخريطة أو الإحداثيات.'); } }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
   }

@@ -46,9 +46,9 @@ export async function OvertimeNotice({ tenantId, employer, period, query }: Prop
     <h2 id="payroll-overtime-title">الإضافي غير المصنف · تنبيه غير مانع</h2>
     <p>{number(data.totals.minutes)} دقيقة غير مصنفة في {number(data.totals.instances)} سجل حضور معتمد لهذه الجهة والفترة.</p>
     <p>المصدر هو الحضور المعتمد فقط، وليس جميع سجلات الحضور. الدقائق غير المصنفة لا تدخل في مدخلات الرواتب.</p>
-    {data.totals.reconciliation_required > 0 && <p>تغيّر سياق {number(data.totals.reconciliation_required)} سجل؛ راجع الحقائق والتصنيف الحالي قبل الاعتماد على المصدر.</p>}
+    {data.totals.reconciliation_required > 0 && <p>تغيّرت بيانات {number(data.totals.reconciliation_required)} من السجلات؛ راجع البيانات والتصنيف الحالي قبل الاعتماد على المصدر.</p>}
     {data.items.length > 0 && <Disclosure summary={<>سجلات تحتاج تصنيفًا · عرض {number(data.items.length)} سجل</>}><ul className={styles.issues}>
-      {data.items.map(item => <li key={item.work_instance_id}><p><bdi>{item.employee_code}</bdi> · {displayDate(item.operational_date)} · {number(item.unclassified_minutes)} دقيقة{item.reconciliation_required ? ' · يحتاج مراجعة السياق' : ''}</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/${item.work_instance_id}`}>فتح سجل الحضور والتصنيف</ButtonLink></li>)}
+      {data.items.map(item => <li key={item.work_instance_id}><p><bdi>{item.employee_code}</bdi> · {displayDate(item.operational_date)} · {number(item.unclassified_minutes)} دقيقة{item.reconciliation_required ? ' · يحتاج مراجعة البيانات' : ''}</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/${item.work_instance_id}`}>فتح سجل الحضور والتصنيف</ButtonLink></li>)}
     </ul></Disclosure>}
     {data.totals.instances > 0 && data.items.length === 0 && <p>لم تعد هناك سجلات بعد موضع التصفح الحالي. ارجع إلى بداية التنبيه لمراجعة القائمة الحالية.</p>}
     <nav className={styles.reviewNavigation} aria-label="تصفح سجلات الإضافي غير المصنف">

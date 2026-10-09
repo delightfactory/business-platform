@@ -119,7 +119,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
     {correctionContext && correctionContext.outputs.length > 0 && <Panel className="work-card">
       <h2>تصحيح الرواتب المرتبط بهذا الطلب</h2>
-      <p>اختر المخرج المتأثر لمراجعة مسؤولية التصحيح. تُستعاد مصادر الطلب واستبدالاته تلقائيًا، وتُراجع المبالغ قبل الاعتماد.</p>
+      <p>اختر المسير المتأثر لمراجعة مسؤولية التصحيح. تُستعاد مصادر الطلب واستبدالاته تلقائيًا، وتُراجع المبالغ قبل الاعتماد.</p>
       {correctionContext.outputs.map(output => <p key={output.id}>
         <PendingLink className="ui-button ui-button-solid ui-button-md" href={leaveCorrectionHref(tenantId, correctionContext, output.id)}>
           مراجعة التصحيح — <bdi>{output.starts_on}</bdi> إلى <bdi>{output.ends_on}</bdi>
@@ -174,16 +174,16 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
       <dl className="snapshot-grid">
         <div><dt>أيام الإجازة المحتسبة</dt><dd>{formatDays(request.totalUnits)} يوم</dd></div>
         <div><dt>أثر الأجر</dt><dd>{unpaidDays.length > 0 ? `${unpaidDays.length} يوم بدون أجر` : 'لا توجد أيام بدون أجر في هذا الطلب'}</dd></div>
-        <div><dt>استهلاك الرصيد عند الاعتماد</dt><dd>{request.state === 'cancelled' || request.state === 'superseded'
-          ? 'لا يوجد استهلاك ساري؛ عُكس الاستهلاك السابق'
+        <div><dt>خصم رصيد الإجازة عند الاعتماد</dt><dd>{request.state === 'cancelled' || request.state === 'superseded'
+          ? 'لا يوجد خصم قائم؛ أُعيد أي رصيد خُصم سابقًا'
           : request.consumptionCount > 0
           ? `${formatDays(request.consumedUnits)} يوم`
           : request.state === 'submitted' ? `${formatDays(request.days.filter((day) => day.eligible && day.balanceMode === 'tracked').reduce((sum, day) => sum + day.units, 0))} يوم عند الاعتماد؛ لم يُخصم بعد` : 'لم يُستهلك رصيد لهذا الطلب'}</dd></div>
         {request.state === 'cancelled' && <div><dt>أثر الإلغاء</dt><dd>أُعيد أي رصيد استُهلك عند الاعتماد</dd></div>}
-        {request.state === 'superseded' && <div><dt>أثر التصحيح</dt><dd>عُكس الاستهلاك السابق وحُسب الطلب البديل</dd></div>}
+        {request.state === 'superseded' && <div><dt>أثر التصحيح</dt><dd>أُعيد الرصيد المخصوم سابقًا وحُسب الطلب البديل</dd></div>}
 
       </dl>
-      <Disclosure  summary={<>تفاصيل حساب الأيام</>}><p className="record-meta">إصدار الحساب: {request.previewVersion} · عدد الأيام المعروضة: {request.days.length} · قيود الاستهلاك: {request.consumptionCount}{request.approvedPreviewVersion !== null ? ` · الإصدار المعتمد: ${request.approvedPreviewVersion}` : ''}</p></Disclosure>
+      <Disclosure  summary={<>تفاصيل حساب الأيام</>}><p className="record-meta">إصدار الحساب: {request.previewVersion} · عدد الأيام المعروضة: {request.days.length} · حركات خصم الرصيد: {request.consumptionCount}{request.approvedPreviewVersion !== null ? ` · الإصدار المعتمد: ${request.approvedPreviewVersion}` : ''}</p></Disclosure>
       {request.isHalfDay && <Message tone={unmappedHalfDays.length > 0 ? 'bad' : 'info'}
         role={unmappedHalfDays.length > 0 ? 'alert' : 'status'}>
         {unmappedHalfDays.length > 0
