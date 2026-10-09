@@ -1,0 +1,10 @@
+/* Synthetic transaction-only acceptance; no Auth credentials/runtime. */
+const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict'),crypto=require('node:crypto'),path=require('node:path');
+const file=path.join(__dirname,'nonempty-own-request-isolation.test.sql'),sql=fs.readFileSync(file,'utf8'),db='business_platform_ux_c93f09f_qa';
+const args=['exec','-i','supabase_db_business-platform','psql','-X','-U','postgres','-d',db,'-v','ON_ERROR_STOP=1','-At'];
+const pre=cp.spawnSync('docker',args,{input:'SELECT (SELECT count(*) FROM auth.users)+(SELECT count(*) FROM platform_core.tenants)+(SELECT count(*) FROM leave.requests);',encoding:'utf8',windowsHide:true});assert.equal(pre.status,0,pre.stderr);assert.equal(pre.stdout.trim(),'0');
+const result=cp.spawnSync('docker',args,{input:sql,encoding:'utf8',windowsHide:true});
+const cases=[...(result.stderr||'').matchAll(/NOTICE:\s+PASS ([^\r\n]+)/g)].map(m=>m[1]);
+const report={head:cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),database:db,exitCode:result.status,expected:8,passed:cases.length,cases,sqlSHA256:crypto.createHash('sha256').update(sql.replace(/\r\n/g,'\n')).digest('hex'),scope:'Actual PostgreSQL supplied-claim nonempty own list/detail/paging, other-employee privacy, mixed self+HR role scope, membership loss. Not Auth issuance/browser or business mutation acceptance.',testGuard:'Real schema; synthetic rows; caller outputs and SQLSTATE; rollback; no mocks/broad suite.',fixtureCorrection:'Initial run passed four cases then rejected immutable role UPDATE; corrected fixture to add separate immutable role. Application unchanged.',authPreparationRefusalUntouched:true};
+if(result.status===0){report.after=JSON.parse(result.stdout.trim().split('\n').at(-1));assert.deepEqual(report.after,{users:0,tenants:0,employees:0,requests:0});}else report.error=result.stderr.slice(-1600);
+fs.writeFileSync(path.join(__dirname,'nonempty-own-request-result.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));assert.equal(result.status,0);assert.equal(cases.length,8);

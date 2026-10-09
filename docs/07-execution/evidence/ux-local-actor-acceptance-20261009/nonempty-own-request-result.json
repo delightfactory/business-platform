@@ -1,0 +1,28 @@
+{
+  "head": "11013f51f777a58e97d477cf4dfa28ad0a5abef4",
+  "database": "business_platform_ux_c93f09f_qa",
+  "exitCode": 0,
+  "expected": 8,
+  "passed": 8,
+  "cases": [
+    "nonempty/own-first-page",
+    "nonempty/own-terminal-page",
+    "nonempty/own-detail",
+    "nonempty/other-detail-unavailable",
+    "mixed-role/own-list",
+    "mixed-role/other-detail-unavailable",
+    "inactive/nonempty-list-denied",
+    "inactive/previous-own-detail-unavailable"
+  ],
+  "sqlSHA256": "1c65970f673108d5b9fbb37cb7c652afb2ec1a09d8c568e9fdd6587237d09e2c",
+  "scope": "Actual PostgreSQL supplied-claim nonempty own list/detail/paging, other-employee privacy, mixed self+HR role scope, membership loss. Not Auth issuance/browser or business mutation acceptance.",
+  "testGuard": "Real schema; synthetic rows; caller outputs and SQLSTATE; rollback; no mocks/broad suite.",
+  "fixtureCorrection": "Initial run passed four cases then rejected immutable role UPDATE; corrected fixture to add separate immutable role. Application unchanged.",
+  "authPreparationRefusalUntouched": true,
+  "after": {
+    "users": 0,
+    "tenants": 0,
+    "employees": 0,
+    "requests": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "liveFunctionDefinitions": [
+    "leave_my_request_detail|3591f510c00cdbd68dc86d2683766707",
+    "leave_my_requests|f2e76a1cf47802b745848dc2e3685797",
+    "request_actor_allowed|d4865dd241b6c5edba52a8e994ffc2b1",
+    "request_json|c59aeb6b7ff28e5a2506fd0009e2f7b9"
+  ],
+  "sourcePages": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "sha256": "681a75a6f8819382e15749852b9810a894b07b9e32831806ba8f492308dcd415",
+      "rpcSlots": [
+        "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3345"
+      ]
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sha256": "558e383668563d919d666e49a3bb9452a44039578cd84f567731be1348f59873",
+      "rpcSlots": [
+        "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:47:2184"
+      ]
+    }
+  ],
+  "semanticStatusUnchanged": true,
+  "limitations": [
+    "Read-only synthetic submitted rows with previews, not a real submission or full day/financial validity",
+    "Supplied PostgreSQL claims, not verified Auth sessions",
+    "Rendered page, device, cancellation, full-role and whole-plan acceptance remain open"
+  ]
+}
