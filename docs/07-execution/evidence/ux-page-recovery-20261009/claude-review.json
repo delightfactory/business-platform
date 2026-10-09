@@ -1,0 +1,8 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "session": "9956cfc3-78eb-4493-9bc0-a9b48c2dd7c1",
+  "result": "**SOURCE: PASS.** `error.tsx` only calls `retry` when the user clicks it. It never reads, shows or logs the `error` or its digest, and it doesn't replay or change anything automatically. Both pages are Arabic RTL and claim nothing about permissions or whether a record exists. The error page tells users to check the request's record before sending another, which covers the unknown-result case.\n\n**TASK: PASS.** Each page has one clear main action. The screenshots show the forced error, the recovered page after retry, and the 404 at 390 and 1366 widths. The overall task is still small.\n\n**REFERENCE: MATCH WITH ACCEPTED DEVIATIONS.** Both pages use the shared Auth card colours, buttons and Cairo font, consistent with the reference.\n\n**Scoped blockers:** none.\n\n**Non-blocking polish:** the card sits flush against the top of the screen with no margin, unlike the reference. Also, the 404 button isn't in `workspace-form-actions`, so it lacks the divider and spacing the error page has.\n\n**Limits:**\n- I only read the listed files. I didn't run the build or lint, check that Next 16.3 actually has the `retry` prop, or check the hashes. All of that relies on the README and the recovered screenshot.\n- There are no screenshots of the error page in light mode or the 404 in dark mode.",
+  "baseline": "3c041525",
+  "scope": "original W1item9 page fallback and explicit retry; selected actual Next fixture only"
+}

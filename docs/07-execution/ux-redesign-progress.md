@@ -33,6 +33,12 @@ Actual company selector and ordinary membership switch changed names and dark em
 
 Next and only remaining work list: reconcile original approved deliverables against existing source/evidence in the eight groups above, fix only a concrete unmet core requirement if found, then bounded independent final assessment and cloud handoff/preservation. No re-run of these cases, no additional scenario/fixture expansion; residual physical/provider/financial/full-platform gates stay explicit.
 
+### Completed original W1 item9 and route reconciliation
+
+Root error/not-found were a concrete unmet original requirement; now implemented as two small Arabic existing-token components with explicit retry/root navigation and unknown-result guidance, no automatic replay or error-detail exposure. One affectedlint and productionbuild/TS PASS. Actual throw-once Next fixture Enterretry succeeded; unmatched route HTTP404 and root-link navigation succeeded. Codex and official directOpus5.5Medium9956cfc3 SOURCE/TASK PASS, selected shared reference MATCH WITH ACCEPTED DEVIATIONS/no blockers. Nonblocking spacing polish excluded. Evidence ux-page-recovery-20261009. Owned3626/tab7 retired, zero listeners; no DB/access created.
+
+Appendix75 original pages match75 current pages with0missing/0new;54 sources changed versus acceptedCube5,21 retained with shared theme reach. Source presence is not full capability/visual assurance. Fresh302sourcefiles/1738slots preserve all1735 prior states/25source-reviewed;3new boundary/control slots remain pending without semantic promotion. Final remaining work: bounded approved-deliverable assessment across the eight current groups and cloud handoff; no repeat runtime, broad1738-slot qualification or optional polish. Goal stays ACTIVE until essential approved delivery is established.
+
 ## Historical owner-directed pause and replacement closure path — 9 October 2026
 
 **Execution state: PAUSED.** Owner explicitly stopped the old full-platform qualification goal to safely reassess original UX delivery. This section supersedes the broad closure queue below as an execution instruction; historical open records remain accurate backlog, not instructions to continue. No implementation or new business tests after pause. Safe-stop receipt and three latest ordinary-member screenshots are preserved in ux-attendance-decisions-live-20261009/safe-stop-checkpoint.md. Owned v12 retired; listeners3650–3654 and owned containers zero.

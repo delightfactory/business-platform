@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "a9fad668279315f36bfd40b645e1265179b283f5",
+  "sourceSnapshot": "3c041525590d244350f2375fe66da9e78e5d3f8c",
   "status": "Proposed",
   "items": [
     {
@@ -15975,6 +15975,33 @@
       "id": "CONTROL:src/app/tenant/[tenantId]/attendance/OvertimeClassificationForm.tsx:9:382",
       "category": "formControls",
       "phase": "R5",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "BOUNDARY:src/app/error.tsx",
+      "category": "boundaries",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "BOUNDARY:src/app/not-found.tsx",
+      "category": "boundaries",
+      "phase": "R1",
+      "status": "pending",
+      "scenarioIds": [],
+      "reviewer": null,
+      "evidence": null
+    },
+    {
+      "id": "CONTROL:src/app/error.tsx:11:442",
+      "category": "formControls",
+      "phase": "R1",
       "status": "pending",
       "scenarioIds": [],
       "reviewer": null,
