@@ -1,0 +1,28 @@
+{
+  "baseline": "54e140f2a8e95b1bac6f90c60f79769c54b685b1",
+  "candidateFiles": [
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "sha256": "c06e80bc2dc8b5d6068a493fcfd718d12604276f690aeab14868af3f953c8c42"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/OvertimeClassificationForm.tsx",
+      "sha256": "a7729a0fc95603c72e653cd11b7fa6b68bb566e154e815ed58dab6546d9db576"
+    }
+  ],
+  "parentInverseExact": true,
+  "preservedTrackedSourcePublicSupabase": 693,
+  "serverActionsSQLPermissionsFieldsRejectFormUnchanged": true,
+  "runtimeBytesEqual": true,
+  "checks": {
+    "scopedESLint": "PASS session75279 exit0",
+    "typecheck": "PASS session75279 exit0",
+    "structuralInventory": "PASS300files/1735slots;25source-reviewed;no semantic promotion",
+    "native": "normal GoTrue/Next/PostgREST:30/0/0/0+reason retained;native Arabic sum30→60 error/focus;Enter blocked;editing60 clears custom validity;Enter submits once;classified60/0/0/0v1"
+  },
+  "limits": [
+    "Existing server redirect still loses input after a server-side/session/stale-data error or JavaScript-disabled sum failure; not claimed fixed",
+    "No full R5 or financial/device/provider acceptance",
+    "Equivalent owned fixture recreated after confirmed machine restart; no same-record or elapsed-time improvement claim"
+  ]
+}

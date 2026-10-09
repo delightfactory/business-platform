@@ -1,0 +1,38 @@
+{
+  "observedAtUTC": "2026-10-09T12:46:36.754Z",
+  "database": "exact owned tmpfs QA only",
+  "beforeInvalidClassification": {
+    "classificationEvents": 0,
+    "reviewEvents": 0,
+    "evidence": "read-only psql observation after click/Enter with actual retained UI"
+  },
+  "after": {
+    "classificationEvents": 1,
+    "reviewEvents": 1,
+    "classified": [
+      {
+        "version": 1,
+        "day": 60,
+        "night": 0,
+        "rest": 0,
+        "holiday": 0,
+        "reason": "تصنيف اصطناعي للتحقق من منع توزيع ناقص"
+      }
+    ],
+    "channelEvents": 2,
+    "channelDecisions": [
+      {
+        "event": "d7e40253-9edc-4b0b-a082-757f16d17587",
+        "decision": "accept",
+        "reason": "قبول وفق دليل مراجعة اصطناعي مستقل"
+      },
+      {
+        "event": "b677903c-d4b8-4972-99e0-dad3a4ce9648",
+        "decision": "exclude",
+        "reason": "استبعاد وفق دليل مراجعة اصطناعي مع حفظ الحركة"
+      }
+    ],
+    "authUsers": 2
+  },
+  "noOutcomeRowsSeeded": true
+}

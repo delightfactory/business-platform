@@ -1,0 +1,92 @@
+[
+  {
+    "id": "missing-checkout-before",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/attendance/3c9d3712-ab20-49ec-8be7-b1efc7cdf80c",
+    "result": "normal HR login; one09:00manual in; needs_review; explicit missing punch instruction; no fact approval before correction"
+  },
+  {
+    "id": "missing-checkout-corrected",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/attendance/3c9d3712-ab20-49ec-8be7-b1efc7cdf80c?state=punch-recorded",
+    "result": "one actual HR out11:00 with required reason;2preserved punches09:00/11:00;120/60minutes; ready not yet approved"
+  },
+  {
+    "id": "attendance-approved-no-overtime-when-disabled",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/attendance/3c9d3712-ab20-49ec-8be7-b1efc7cdf80c?state=fact-approved",
+    "result": "actual approved attendance/historyversion1/120minutes; originalpolicy overtime disabled so no candidate is fabricated"
+  },
+  {
+    "id": "absence-approved",
+    "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/attendance/44092025-68c3-44d3-b442-743193968db0?state=classification-approved",
+    "result": "actual authoritative preview absence1/leave0/no punches; HR requiredreason; approved absence1, originalclassificationreason/history retained"
+  },
+  {
+    "id": "overtime-incomplete-baseline",
+    "runtime": "v11 before confirmed machine restart",
+    "source": "54e140f2",
+    "candidateMinutes": 60,
+    "entered": [
+      30,
+      0,
+      0,
+      0
+    ],
+    "reasonEntered": true,
+    "outcome": "backend rejected;0decisions;redirect erased5safe inputs",
+    "evidence": [
+      "overtime-incomplete-before.jpg",
+      "overtime-incomplete-after.jpg"
+    ]
+  },
+  {
+    "id": "overtime-incomplete-preserved",
+    "runtime": "v12 equivalent recreated fixture, candidate source hashes in source-qualification.json",
+    "entered": [
+      30,
+      0,
+      0,
+      0
+    ],
+    "reasonRetained": true,
+    "urlUnchanged": true,
+    "nativeArabicMessage": "المجموع الحالي 30 دقيقة؛ يجب أن يساوي 60 دقيقة بالضبط. عدّل الفئات.",
+    "firstCategoryFocused": true,
+    "clickAndEnterBlocked": true,
+    "outcome": "0classification/review events;all5inputs retained",
+    "evidence": [
+      "overtime-retained-desktop.jpg",
+      "overtime-retained-390.jpg"
+    ]
+  },
+  {
+    "id": "overtime-corrected-approved",
+    "runtime": "v12 actual manager normal Auth",
+    "correction": "ordinary_day30→60;other3zeros and reason preserved",
+    "nativeCustomErrorCleared": true,
+    "submittedBy": "Enter on reason, once",
+    "outcome": "authoritative approved/classified60/0/0/0v1;1classification and1review",
+    "evidence": [
+      "overtime-classified-desktop.jpg"
+    ]
+  },
+  {
+    "id": "outside-location-accepted",
+    "runtime": "v12 canonical synthetic prerequisite, not physical capture proof",
+    "decision": "accept",
+    "reasonRequired": true,
+    "outcome": "decision visible with actor/reason;pending reviewform removed",
+    "evidence": [
+      "channel-accepted-desktop.jpg"
+    ]
+  },
+  {
+    "id": "outside-location-excluded",
+    "runtime": "v12 canonical synthetic prerequisite, not physical capture proof",
+    "decision": "exclude",
+    "reasonRequired": true,
+    "outcome": "decision visible;original2events/punches retained;out excluded in actual day record;current day open,notapproved",
+    "evidence": [
+      "channel-excluded-desktop.jpg",
+      "channel-day-after-decisions.jpg"
+    ]
+  }
+]

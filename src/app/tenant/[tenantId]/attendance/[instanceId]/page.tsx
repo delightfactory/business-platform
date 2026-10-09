@@ -7,6 +7,7 @@ import { FeedbackToast } from '@/components/feedback-toast';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import styles from '../attendance-task.module.css';
 import { ClassificationReviewForm } from '../ClassificationReviewForm';
+import { OvertimeClassificationForm } from '../OvertimeClassificationForm';
 import { readClassificationReview } from '../classification';
 import { approveAttendanceAbsenceAction, approveAttendanceAction, correctPunchAction, recordPunchAction, reviewAttendanceOvertimeAction } from '../actions';
 
@@ -152,7 +153,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
               {candidate.classification && <p className="record-meta">التصنيف الحالي · عادي نهاري {candidate.classification.ordinary_day_minutes} د · عادي ليلي {candidate.classification.ordinary_night_minutes} د · راحة أسبوعية {candidate.classification.weekly_rest_minutes} د · عطلة رسمية {candidate.classification.official_holiday_minutes} د · النسخة {candidate.classification.version}</p>}
               {candidate.reason && <p className="record-meta">السبب: {candidate.reason}</p>}
               {(candidate.decision === 'pending' || candidate.decision === 'classification_pending' || candidate.decision === 'approved') && overtimePanel.can_review === true && entitlementEnabled && instance.status === 'approved' && currentFact?.id === candidate.attendance_fact_id && <div className="attendance-overtime-actions">
-                <OfflineForm action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
+                <OvertimeClassificationForm candidateMinutes={candidate.candidate_minutes} action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="approved" />
                   <fieldset className="attendance-form-grid"><legend>{candidate.classification ? 'إعادة تصنيف الكمية' : 'توزيع دقائق العمل الإضافي'}</legend>
                     <label>عادي نهاري بالدقائق<input name="ordinary_day" type="number" min="0" step="1" required /></label>
@@ -163,7 +164,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
                   <p className="field-hint">يجب أن يساوي مجموع الفئات {candidate.candidate_minutes} دقيقة بالضبط. إدخال كل فئة مطلوب، بما في ذلك صفر عند عدم انطباقها.</p>
                   <label className="attendance-full-field">سبب التصنيف أو ملاحظة الدليل <input name="reason" minLength={3} maxLength={500} required /></label>
                   <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ حفظ التصنيف..." label={candidate.classification ? 'حفظ التصنيف الجديد' : 'اعتماد الكمية وتصنيفها'} />
-                </OfflineForm>
+                </OvertimeClassificationForm>
                 {candidate.decision === 'pending' && <OfflineForm action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="rejected" />
                   <label className="attendance-full-field">سبب الرفض <input name="reason" minLength={3} maxLength={500} required /></label>

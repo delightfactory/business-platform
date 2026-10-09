@@ -1,0 +1,14 @@
+{
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "c4573d63-73fe-4aeb-8c71-59268ec9ddc6",
+  "result": "**Approved. No blockers.** I checked it against the three files only:\n\n- **Order is correct.** `OfflineForm` (`offline-form.tsx:10`) runs `blockOfflineSubmission` before it calls `onSubmit`, so the offline guard still runs first. In React 19, calling `preventDefault()` in `onSubmit` stops the server action from running. Because the action never starts, `OfflineSubmitButton` won't show its pending state.\n- **Clearing in `onInput` is necessary, as you said.** Put the handler on the form, since input events bubble up to it. Clear only when the edited field's name is one of the four category names. Editing just the reason should leave the error in place, which is correct because the total hasn't changed.\n- **Implementation notes:**\n  1. `page.tsx` is a server component, so the wrapper has to be a separate `'use client'` file. Give it `candidateMinutes: number` and pass `action` and `children` through. Use it only at `page.tsx:155`, and leave the reject form at `:167` as it is.\n  2. The browser checks required/min/step before `onSubmit` runs. So if any value fails the integer check, let the submit go through rather than blocking it.\n  3. Suggested message: `المجموع الحالي {sum} دقيقة؛ يجب أن يساوي {candidateMinutes} دقيقة بالضبط. عدّل الفئات.` (\"Current total is {sum} minutes; it must equal exactly {candidateMinutes} minutes. Adjust the categories.\")\n  4. `reportValidity()` already moves focus to the field, so you don't need a separate `focus()` call.",
+  "scope": "pre-source bounded native quantity-validation plan",
+  "files": [
+    "C:\\Users\\DELL\\Documents\\Codex\\2026-10-07\\business-platform-ux-auth-recovery\\docs\\04-product-specs\\ux-redesign\\overtime-input-preservation.md",
+    "C:\\Users\\DELL\\Documents\\Codex\\2026-10-07\\business-platform-ux-auth-recovery\\src\\components\\offline-form.tsx",
+    "C:\\Users\\DELL\\Documents\\Codex\\2026-10-07\\business-platform-ux-auth-recovery\\src\\app\\tenant\\[tenantId]\\attendance\\[instanceId]\\page.tsx"
+  ]
+}

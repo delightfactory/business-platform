@@ -1,0 +1,21 @@
+DO $$ DECLARE tenant uuid:='f5100000-0000-4000-8000-000000000001';manager uuid:='f9100000-0000-4000-8000-000000000001';employee_user uuid:='f9200000-0000-4000-8000-000000000002';employee uuid;instance uuid;mobile uuid;today date:=(now() AT TIME ZONE 'UTC')::date;snapshot jsonb;receipt jsonb;
+BEGIN
+IF current_database()<>'business_platform_ux_owned_qa' OR current_user<>'ux_qa_admin' OR (SELECT count(*) FROM auth.users)<>2 THEN RAISE EXCEPTION 'owned synthetic QA only'; END IF;
+PERFORM set_config('request.jwt.claim.sub',manager::text,true);
+SELECT employee_id INTO STRICT employee FROM people.employee_user_links WHERE tenant_id=tenant AND user_id=employee_user AND unlinked_at IS NULL;
+PERFORM public.attendance_open_day(tenant,today-1,NULL,50);
+PERFORM public.attendance_open_day(tenant,today-2,NULL,50);
+SELECT id INTO STRICT instance FROM time.work_instances WHERE tenant_id=tenant AND employee_id=employee AND operational_date=today-1;
+PERFORM public.record_manual_attendance_punch_local(tenant,instance,'in',(today-1+'09:00'::time)::timestamp,gen_random_uuid(),'تهيئة دخول اصطناعي دون انصراف لاختبار التصحيح');
+SELECT id INTO STRICT mobile FROM time.channel_sources WHERE tenant_id=tenant AND kind='mobile';
+PERFORM public.attendance_channel_save_source(tenant,mobile,'الحضور من الهاتف','mobile','f5140000-0000-4000-8000-000000000001',true,'{"geofence":true,"retention_seconds":300,"latitude":30,"longitude":31,"radius_m":100,"tolerance_m":10,"max_accuracy_m":50,"max_age_seconds":30,"failure_action":"review"}'::jsonb,'سياسة موقع اصطناعية لاختبار قرار مراجعة HR');
+PERFORM set_config('request.jwt.claim.sub',employee_user::text,true);
+snapshot:=public.attendance_mobile_snapshot(tenant);
+receipt:=public.attendance_mobile_punch(tenant,jsonb_build_object('id',gen_random_uuid(),'direction',snapshot->>'next_direction','happened_at',clock_timestamp(),'scope',snapshot->>'scope','policy_version',2,'location',jsonb_build_object('latitude',31,'longitude',31,'accuracy',10,'captured_at',clock_timestamp())));
+IF receipt->>'state'<>'accepted' THEN RAISE EXCEPTION 'synthetic pending review prerequisite not accepted: %',receipt->>'state'; END IF;
+snapshot:=public.attendance_mobile_snapshot(tenant);
+receipt:=public.attendance_mobile_punch(tenant,jsonb_build_object('id',gen_random_uuid(),'direction',snapshot->>'next_direction','happened_at',clock_timestamp(),'scope',snapshot->>'scope','policy_version',2,'location',jsonb_build_object('latitude',31,'longitude',31,'accuracy',10,'captured_at',clock_timestamp())));
+IF receipt->>'state'<>'accepted' THEN RAISE EXCEPTION 'second synthetic pending review prerequisite not accepted: %',receipt->>'state'; END IF;
+RAISE NOTICE 'OWNED_ATTENDANCE_REMAINING_PRECONDITIONS_READY';
+END $$;
+SELECT json_build_object('kind','synthetic prerequisites only; no approved facts/classifications/review decisions seeded','instances',(SELECT json_agg(json_build_object('id',id,'date',operational_date,'status',status) ORDER BY operational_date) FROM time.work_instances WHERE tenant_id='f5100000-0000-4000-8000-000000000001'),'reviewEvents',(SELECT json_agg(json_build_object('id',id,'source',source_id,'direction',direction,'review',review_required)) FROM time.channel_events WHERE tenant_id='f5100000-0000-4000-8000-000000000001' AND review_required));

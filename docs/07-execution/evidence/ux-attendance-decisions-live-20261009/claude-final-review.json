@@ -1,0 +1,19 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "bc0b8fb0-096b-409b-8c82-8a69bb886259",
+  "result": "**SOURCE: MATCH WITH ACCEPTED DEVIATIONS**\n- `OvertimeClassificationForm.tsx` (33 lines) only adds the sum guard. It steps aside when values are not safe integers, so native validation and the server stay in charge. It blocks only a mismatched total and clears the error whenever a category changes.\n- If the user edits only the reason and presses Enter, the old error blocks submission again. That is correct, because the total is still wrong.\n- Actual limit: this wrapper overrides `onSubmit`/`onInput` on `OfflineForm`. I didn't read that file, so I can't confirm its own offline submit guard still runs. Offline behaviour was reused from earlier evidence, not rerun with this wrapper.\n\n**TASK: MATCH WITH ACCEPTED DEVIATIONS**\n- Desktop: the Arabic error appears and the ordinary-day field is focused. The 30/0/0/0 values and the reason are kept, with one clear next step: \"عدّل الفئات\" (adjust the categories).\n- The classified view shows 60/0/0/0, version 1, with the same reason.\n- 390px: the focused 30 field is scrolled under the sticky header, so only the tooltip shows. The README's \"all5entries remain\" isn't visible in this image. Not a blocker, since the message alone tells the user what to do.\n- Still not input-preserving: server, session and stale-data errors, and the no-JavaScript case. These are disclosed.\n\n**REFERENCE: MATCH WITH ACCEPTED DEVIATIONS**\n- `reference-form-390.jpg` is too low-resolution to compare in detail. I could only confirm the overall hierarchy, palette and Arabic right-to-left layout match.\n- There is no overtime equivalent in the reference. Keeping Cairo, the native controls and the current layout is an intentional deviation.\n\n**Blockers:** none.\n\nI didn't rerun the inverse-exact check, the 693-file preservation check or the runtime.",
+  "baseline": "54e140f2",
+  "scope": "bounded new sum guard and selected native state/reference acceptance only",
+  "files": [
+    "src/app/tenant/[tenantId]/attendance/OvertimeClassificationForm.tsx",
+    "docs/07-execution/evidence/ux-attendance-decisions-live-20261009/README.md",
+    "docs/07-execution/evidence/ux-attendance-decisions-live-20261009/source-qualification.json",
+    "docs/07-execution/evidence/ux-attendance-decisions-live-20261009/overtime-retained-desktop.jpg",
+    "docs/07-execution/evidence/ux-attendance-decisions-live-20261009/overtime-retained-390.jpg",
+    "docs/07-execution/evidence/ux-attendance-decisions-live-20261009/overtime-classified-desktop.jpg",
+    "docs/07-execution/evidence/ux-core-leave-task-20261008/reference-form-390.jpg"
+  ]
+}

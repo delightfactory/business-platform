@@ -1,0 +1,7 @@
+# R5: preserve an incomplete overtime distribution
+
+Baseline: `54e140f2a8e95b1bac6f90c60f79769c54b685b1`. In the owned synthetic runtime, submitting 30/0/0/0 for a 60-minute candidate correctly produced no classification or review event, but the server redirect erased the four entries and the required reason.
+
+Bounded repair: validate the exact sum before submitting this existing classification form. Use native custom validity on the ordinary-day input, focus/report its Arabic correction message, and clear that custom error when any category is edited. Keep all uncontrolled entries and reason in the same form. No automatic distribution, storage, new API, permission, policy, financial calculation or server-action change. Retain native required/nonnegative/integer constraints and the existing offline submission guard. A valid distribution proceeds to the unchanged authoritative server action. With JavaScript disabled, existing server validation still rejects; this repair does not claim preservation after server/session/stale-data failures.
+
+Acceptance: incomplete 30/0/0/0 retains all five inputs, does not navigate or write a decision, and gives an actionable Arabic native validation message. Correcting to 60/0/0/0 then submits once and produces one authoritative classification and review event. Check actual keyboard correction and phone/desktop layout against the pinned Concept C common form direction; there is no literal overtime screen in that reference. Reuse unchanged source/policy/offline/theme evidence; do not rerun the full database suite.

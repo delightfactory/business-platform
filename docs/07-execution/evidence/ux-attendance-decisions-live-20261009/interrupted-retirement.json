@@ -1,0 +1,39 @@
+{
+  "status": "RETIRED_AFTER_MACHINE_RESTART",
+  "database": "business_platform_ux_owned_qa",
+  "containers": {
+    "auth": "ux-owned-auth",
+    "rest": "ux-owned-rest"
+  },
+  "ports": {
+    "rest": 3652,
+    "auth": 3651,
+    "gateway": 3653,
+    "app": 3654
+  },
+  "user": "f9100000-0000-4000-8000-000000000001",
+  "createdAtUTC": "2026-10-09T11:58:30.896Z",
+  "expires": "2026-10-09T13:58:30.896Z",
+  "head": "54e140f2a8e95b1bac6f90c60f79769c54b685b1",
+  "steps": [
+    {
+      "identityChecked": true,
+      "ownedContainersRemoved": 3,
+      "ownedNetworkRemoved": true,
+      "generatedValuesErased": true
+    }
+  ],
+  "noOriginalCredentialsRead": true,
+  "syntheticOnly": true,
+  "ownedDatabaseContainer": "ux-owned-db",
+  "ownedNetwork": "ux-owned-qa",
+  "schemaOnlySHA256": "68f46df2b21a7c1d5b4564ced5c765909b9db12412ff3158199a9cacb0ed2ec1",
+  "schemaSource": "Existing current204-migration empty dedicated QA; no data/role passwords copied",
+  "authAppReadSetup": "PASS verified guarded grants before LOGIN/user creation",
+  "groupedFixture": "Synthetic Cube5 + actual public Leave calendar/period/type preconditions + local operator; no request/approval outcomes seeded",
+  "syntheticActors": 2,
+  "authUsersCreated": 2,
+  "nextPID": 38140,
+  "retiredAtUTC": "2026-10-09T12:36:42.805Z",
+  "retirementReason": "User confirmed computer restart; exact owned containers already exited255, original controller absent, tmpfs runtime lost. No claim of final UI signout or final DB outcomes."
+}
