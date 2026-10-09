@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { operatorCommercialSnapshot, type OperatorLimit } from '@/lib/operator-read';
@@ -35,8 +36,8 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator/commercial">قائمة الشركات</ButtonLink>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
     <section className="work-card operator-setting-detail" aria-labelledby="commercial-title">
       <p className="eyebrow">حدود الاستخدام</p><h1 id="commercial-title"><bdi>{tenant.display_name}</bdi></h1>
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
@@ -44,7 +45,7 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
       {query.state === 'updated' && <p className="form-message" role="status">حدود الاستخدام الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <div className="operator-setting-grid">{tenant.limits.map((limit) => <LimitCard key={limit.capability_key} tenantId={tenantId} limit={limit} />)}</div>
-    </section><footer className="footer">منصة الأعمال · حدود الاستخدام</footer>
+    </section>
   </main>;
 }
 
@@ -75,7 +76,7 @@ function LimitCard({ tenantId, limit }: { tenantId: string; limit: Limit }) {
         <LimitModeFields id={limit.capability_key} label={users ? 'الحد الأقصى للمستخدمين' : 'الحد الأقصى للفروع'}
           mode={limit.mode} value={limit.value} />
         <label htmlFor={`${limit.capability_key}-reason`}>سبب التغيير</label>
-        <textarea id={`${limit.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
+        <Textarea id={`${limit.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
       </OperatorActionForm>
     </details>}
   </article>;
@@ -92,4 +93,4 @@ const limitErrors: Record<string, string> = {
     failed: 'لم تتأكد نتيجة تحديث الحد. راجع الحدود الحالية قبل إجراء آخر.',
 };
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/commercial">قائمة الشركات</Link></section></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost" className="secondary-button" href="/operator/commercial">قائمة الشركات</ButtonLink></section></main>; }

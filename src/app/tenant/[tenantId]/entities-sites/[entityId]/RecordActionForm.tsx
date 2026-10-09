@@ -1,4 +1,5 @@
 'use client';
+import { Input } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -29,15 +30,15 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
     <input type="hidden" name="action" value={recordAction} />
     {recordAction === 'update' && <>
       <label htmlFor={`${prefix}-display-name`}>{isSite ? 'اسم الفرع أو الموقع' : 'اسم الجهة داخل المنصة'}</label>
-      <input id={`${prefix}-display-name`} name="displayName" defaultValue={state.displayName} required maxLength={160} />
+      <Input id={`${prefix}-display-name`} name="displayName" defaultValue={state.displayName} required maxLength={160} />
       {!isSite && <>
         <label htmlFor={`${prefix}-legal-name`}>الاسم القانوني (اختياري)</label>
-        <input id={`${prefix}-legal-name`} name="legalName" defaultValue={state.legalName} maxLength={200} />
+        <Input id={`${prefix}-legal-name`} name="legalName" defaultValue={state.legalName} maxLength={200} />
         <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
       </>}
     </>}
     <label htmlFor={`${prefix}-reason`}>{reasonLabel}</label>
-    <input id={`${prefix}-reason`} name="reason" defaultValue={state.reason} required minLength={3} maxLength={500} />
+    <Input id={`${prefix}-reason`} name="reason" defaultValue={state.reason} required minLength={3} maxLength={500} />
     {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
     <SubmitButton className={recordAction === 'deactivate' ? 'danger-button' : 'secondary-button'} label={label}
       ariaLabel={isSite && displayName ? `${label}: ${displayName}` : undefined} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>

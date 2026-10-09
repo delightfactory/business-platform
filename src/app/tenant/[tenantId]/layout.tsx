@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { TenantNavigation } from '@/components/context-navigation';
+import { AppShell } from '@/components/shell/app-shell';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
@@ -25,8 +26,8 @@ export default async function TenantBrandingLayout({ children, params }: { child
     logoUrl = signed?.signedUrl ?? null;
   }
 
-  return <div className="tenant-area workspace-frame" data-workspace="tenant" data-brand={brandKey}>
-    <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />
-    <div className="workspace-content" id="workspace-content" tabIndex={-1}>{children}</div>
-  </div>;
+  return <AppShell mode="tenant" brand={brandKey}
+    navigation={<TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />}>
+    {children}
+  </AppShell>;
 }

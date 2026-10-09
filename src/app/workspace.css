@@ -7,12 +7,7 @@
   min-height: 100svh;
   background: var(--shell-canvas);
 }
-.tenant-area {
-  --color-brand-soft: color-mix(in srgb, var(--color-brand) 9%, var(--surface-base));
-  --color-brand-border: color-mix(in srgb, var(--color-brand) 35%, var(--surface-base));
-  --color-brand-text: color-mix(in srgb, var(--color-brand) var(--brand-text-share), white);
-  --color-on-brand: #fff;
-}
+
 
 .workspace-navigation { grid-column: 1; grid-row: 1; min-width: 0; }
 .workspace-content { grid-column: 2; grid-row: 1; min-width: 0; }
@@ -835,3 +830,32 @@
 .task-card-details { margin-bottom: 16px; font-size: 12px; color: var(--muted); line-height: 1.65; }
 .task-card-details summary { cursor: pointer; width: fit-content; min-height: 32px; display: flex; align-items: center; text-decoration: underline; text-underline-offset: 3px; }
 .task-card-details p { margin: 8px 0; }
+.welcome-page { grid-template-rows: auto 1fr; }
+.welcome-panel { align-self: center; justify-self: center; width: min(100%,680px); padding: 60px 24px; text-align: center; }
+.welcome-panel h1 { font: 600 clamp(32px,5vw,52px)/1.4 var(--f-head); color: var(--ink); }
+.welcome-illustration { display: grid; place-items: center; width: 80px; height: 80px; border: 1px solid var(--line); border-radius: 24px; color: var(--brand-text); background: var(--surface); box-shadow: var(--sh-2); margin: 0 auto 28px; }
+.welcome-domains { display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; margin-top: 40px; color: var(--muted); }
+.welcome-domains span { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; }
+.admin-setup-details { margin-bottom: 20px; padding: 0; }
+.admin-setup-details summary { cursor: pointer; padding: 14px 20px; color: var(--ink-2); font-size: 13px; }
+.admin-setup-details > div { padding: 0 20px 20px; max-width: 80ch; font-size: 13px; line-height: 1.7; }
+.branding-color-preview { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; margin-block: 8px 20px; }
+.branding-color-preview > div { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface); font-size: 12px; }
+.branding-color-dot { width: 22px; height: 22px; border-radius: 7px; background: var(--brand); }
+.branding-color-sample { padding: 7px 8px; border-radius: var(--r-chip); background: var(--brand); color: var(--brand-ink); text-align: center; }
+.operator-home { width: 100%; margin: 0; }
+.operator-featured-task { background: var(--brand-soft); border-color: var(--line); border-radius: var(--r-card); box-shadow: none; }
+.operator-work-group { border-radius: var(--r-card); box-shadow: var(--sh-1); }
+.operator-work-group :is(h2,h3) { font-weight: 500; }
+.workspace-branding-panel { background: var(--surface); border-color: var(--line); border-radius: var(--r-card); box-shadow: var(--sh-1); }
+.workspace-view-tabs { display: flex; width: fit-content; flex-wrap: wrap; gap: 3px; margin-bottom: 16px; padding: 3px; background: var(--surface-3); border-radius: var(--r-tile); }
+.workspace-view-tabs a { min-height: 40px; padding: 8px 14px; text-decoration: none; border: 0; border-radius: var(--r-ctl); color: var(--muted); font-size: 13px; }
+.workspace-view-tabs a[aria-current="page"] { color: var(--ink); background: var(--surface); box-shadow: var(--sh-1); }
+.tenant-users-list .invitation-row { align-items: start; gap: 24px; padding: 20px; }
+.tenant-users-list .invitation-row h3 { font: 500 15px/1.5 var(--f-body); }
+.tenant-users-list .invitation-actions { display: flex; flex-wrap: wrap; align-items: start; gap: 8px; }
+@media(max-width:600px) { .branding-color-preview { grid-template-columns: repeat(2,minmax(0,1fr)); } .tenant-users-list .invitation-row { flex-direction: column; padding: 16px; } .welcome-panel { padding-inline: 0; } }
+.workspace-account-menu [role="menuitemradio"] { display: block; padding: 10px; border-radius: var(--r-ctl); cursor: pointer; font-size: 14px; }
+.workspace-account-menu [role="menuitemradio"][data-highlighted] { outline: none; background: var(--surface-2); }
+.workspace-account-menu [role="menuitemradio"][data-state="checked"] { color: var(--brand-text); background: var(--brand-soft); }
+.workspace-account-theme-label { display: block; margin-top: 10px; padding: 8px 10px; color: var(--muted); font-size: 12px; }

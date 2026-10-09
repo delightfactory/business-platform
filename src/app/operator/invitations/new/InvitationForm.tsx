@@ -1,8 +1,8 @@
 'use client';
+import { ButtonLink, Input, Select } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
-import Link from 'next/link';
 import { useActionState, useState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { createInvitationAction, type InvitationFormState } from '../actions';
@@ -41,19 +41,19 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
       <input type="hidden" name="idempotencyKey" value={values.idempotencyKey} />
       <h2>الشركة</h2>
       <label htmlFor="tenantName">اسم الشركة</label>
-      <input id="tenantName" name="tenantName" defaultValue={values.tenantName} required maxLength={160} autoFocus />
+      <Input id="tenantName" name="tenantName" defaultValue={values.tenantName} required maxLength={160} autoFocus />
       <label htmlFor="entityName">اسم الجهة القانونية (اختياري)</label>
-      <input id="entityName" name="entityName" defaultValue={values.entityName} maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
+      <Input id="entityName" name="entityName" defaultValue={values.entityName} maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
       <label htmlFor="siteName">اسم الفرع الرئيسي</label>
-      <input id="siteName" name="siteName" defaultValue={values.siteName} required maxLength={160} />
+      <Input id="siteName" name="siteName" defaultValue={values.siteName} required maxLength={160} />
       <h2>المسؤول الأول</h2>
       <label htmlFor="targetEmail">البريد الإلكتروني</label>
-      <input id="targetEmail" name="targetEmail" type="email" autoComplete="email" defaultValue={values.targetEmail} required maxLength={254} />
+      <Input id="targetEmail" name="targetEmail" type="email" autoComplete="email" defaultValue={values.targetEmail} required maxLength={254} />
       <h2>حدود الاستخدام الأولية</h2>
       <LimitFields kind="seats" label="المستخدمون" mode={values.seatsMode} limit={values.seatsLimit} />
       <LimitFields kind="sites" label="الفروع" mode={values.sitesMode} limit={values.sitesLimit} />
       <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
-        <Link className="secondary-button" href="/operator/invitations">إلغاء</Link></div>
+        <ButtonLink variant="ghost" className="secondary-button" href="/operator/invitations">إلغاء</ButtonLink></div>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
   </section>;
 }
@@ -65,13 +65,13 @@ function LimitFields({ kind, label, mode, limit }: {
   return <fieldset className="limit-fields">
     <legend>{label}</legend>
     <label htmlFor={`${kind}Mode`}>نوع الحد</label>
-    <select id={`${kind}Mode`} name={`${kind}Mode`} value={selectedMode}
+    <Select id={`${kind}Mode`} name={`${kind}Mode`} value={selectedMode}
       onChange={(event) => setSelectedMode(event.currentTarget.value as 'limited' | 'unlimited')}>
       <option value="limited">عدد محدد</option><option value="unlimited">غير محدود</option>
-    </select>
+    </Select>
     {selectedMode === 'limited' && <>
       <label htmlFor={`${kind}Limit`}>الحد الأقصى {kind === 'seats' ? 'للمستخدمين' : 'للفروع'}</label>
-      <input id={`${kind}Limit`} name={`${kind}Limit`} type="number" min="1" step="1" defaultValue={limit} required />
+      <Input id={`${kind}Limit`} name={`${kind}Limit`} type="number" min="1" step="1" defaultValue={limit} required />
     </>}
   </fieldset>;
 }

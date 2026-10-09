@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -34,7 +35,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
       </header>
       <section className="work-card" aria-labelledby="accept-title">
         <p className="eyebrow">إعداد حساب المسؤول</p>
@@ -47,7 +48,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
             <input type="hidden" name="invitationId" value={invitationId} />
             <input type="hidden" name="issuance" value={issuance} />
             <label htmlFor="password">أنشئ كلمة مرور لحسابك</label>
-            <input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
+            <Input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
             <p className="field-hint">ثمانية أحرف على الأقل. لا تتغير كلمات مرور أي حسابات أخرى.</p>
             <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
           </OfflineForm>
@@ -60,7 +61,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
           </OfflineForm>
         )}
       </section>
-      <footer className="footer">منصة الأعمال · دعوة مسؤول الشركة</footer>
+
     </main>
   );
 }
@@ -88,10 +89,10 @@ function Status({ title, detail, link, linkText }: { title: string; detail: stri
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
       </header>
       <section className="auth-card"><p className="eyebrow">دعوة مسؤول الشركة</p><h1>{title}</h1><p className="intro">{detail}</p>
-        {link && linkText && <Link className="primary-button" href={link}>{linkText}</Link>}
+        {link && linkText && <ButtonLink variant="solid" className="primary-button" href={link}>{linkText}</ButtonLink>}
       </section>
     </main>
   );

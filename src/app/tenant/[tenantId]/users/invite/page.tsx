@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -42,6 +43,6 @@ export default async function InviteMemberPage({ params, searchParams }: { param
 function Status({ tenantId }: { tenantId: string }) {
   return <PageFrame><section className="auth-card"><h1>لا يمكن إرسال الدعوة</h1>
     <p className="intro">تحقق من صلاحية إدارة المستخدمين أو أعد المحاولة لاحقًا.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+    <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
   </section></PageFrame>;
 }

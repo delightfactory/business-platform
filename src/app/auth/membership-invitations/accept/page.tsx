@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const passwordHint = ['password-set', 'password', 'marker-failed'].includes(query.state ?? '');
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
+      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></header>
       <section className="auth-card" aria-labelledby="accept-title">
         <p className="eyebrow">دعوة عضو</p><h1 id="accept-title">الانضمام إلى الشركة</h1>
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. سيُمنح حسابك دور «عضو» بعد تأكيد القبول.</p>
@@ -30,7 +31,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
         {query.state && !passwordHint && <p className="form-message" role="alert">{validationMessage(validation, query.state)}</p>}
         {needsPassword ? <OfflineForm className="auth-form" action={setMemberInvitationPasswordAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
-          <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
+          <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><Input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
           <p className="field-hint">ثمانية أحرف على الأقل. ستُستخدم كلمة المرور نفسها لكل مساحاتك.</p>
           <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
         </OfflineForm> : <OfflineForm className="auth-form" action={acceptMemberInvitationAction}>
@@ -58,5 +59,5 @@ function validationMessage(validation: unknown, state?: string) {
   return 'تعذر التحقق من حالة الدعوة. اطلب من مسؤول الشركة مراجعتها قبل المتابعة.';
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><Link className="primary-button" href="/auth/login">العودة إلى الدخول</Link></section></main>;
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><ButtonLink variant="solid" className="primary-button" href="/auth/login">العودة إلى الدخول</ButtonLink></section></main>;
 }

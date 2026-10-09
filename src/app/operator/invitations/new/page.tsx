@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
@@ -38,6 +39,6 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
 function Status({ detail = 'تحقق من صلاحية إعداد الشركات أو أعد المحاولة لاحقًا.' }: { detail?: string } = {}) {
   return <PageFrame><section className="auth-card"><h1>الدعوة غير متاحة</h1>
     <p className="intro">{detail}</p>
-    <Link className="secondary-button" href="/operator/invitations">العودة إلى الدعوات</Link>
+    <ButtonLink variant="ghost" className="secondary-button" href="/operator/invitations">العودة إلى الدعوات</ButtonLink>
   </section></PageFrame>;
 }

@@ -79,7 +79,7 @@ export function WorkspaceNavigation({ homeHref, homeLabel, contextLabel, links, 
       </DropdownMenu.Trigger><DropdownMenu.Portal><DropdownMenu.Content className="workspace-account-menu" sideOffset={10} align="end">
         <DropdownMenu.Label className="workspace-account-label"><bdi>{contextLabel}</bdi><small>{mode === 'operator' ? 'تشغيل المنصة' : 'مساحة الشركة'}</small></DropdownMenu.Label>
         {switchHref && switchLabel && <DropdownMenu.Item asChild><Link href={switchHref}>{switchLabel}</Link></DropdownMenu.Item>}
-        <ThemePreferenceControl />
+        <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
         <form action={signOutAction}><DropdownMenu.Item asChild><button type="submit">تسجيل الخروج</button></DropdownMenu.Item></form>
       </DropdownMenu.Content></DropdownMenu.Portal></DropdownMenu.Root>

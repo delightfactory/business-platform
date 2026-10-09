@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { ButtonLink } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -44,7 +44,7 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
       <header className="workspace-page-heading">
         <div><p className="eyebrow">إدارة الشركة</p><h1 id="entities-sites-title">الجهات والفروع</h1>
           <p>رتّب الجهات التابعة للشركة، ثم أدر فروع كل جهة من صفحتها.</p></div>
-        {canEntities && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites/new`}>إضافة جهة</Link>}
+        {canEntities && <ButtonLink variant="solid" className="primary-button" href={`/tenant/${tenantId}/entities-sites/new`}>إضافة جهة</ButtonLink>}
       </header>
       <div className="workspace-page-summary"><strong>{siteLimitText}</strong><span>الفروع المعطّلة محفوظة ولا تُحتسب ضمن الحد.</span></div>
       <section className="workspace-records-panel tenant-collection" aria-labelledby="entities-sites-title">
@@ -66,7 +66,7 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
               {entity.legal_name && <p className="record-meta">الاسم القانوني: <bdi>{entity.legal_name}</bdi></p>}
               <p className="record-meta">{entity.is_default ? 'الجهة الأساسية' : 'جهة قانونية'} · الفروع النشطة: {Number(entity.active_site_count ?? 0)}</p>
             </div>
-            <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض التفاصيل</Link>
+            <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض التفاصيل</ButtonLink>
           </li>)}
         </ul>}
       </section>
@@ -111,5 +111,5 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
   return <PageFrame>
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></section></PageFrame>;
+      <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink></section></PageFrame>;
 }

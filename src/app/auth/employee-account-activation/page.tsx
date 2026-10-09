@@ -1,3 +1,4 @@
+import { Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -34,8 +35,8 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
           <p className="form-message capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</p>
           <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
-            <label htmlFor="employee-password">كلمة مرور جديدة</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
-            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password">كلمة مرور جديدة</label><Input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><Input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <OfflineSubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
           </OfflineForm>
@@ -50,8 +51,8 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
           </> : (
           <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
-            <label htmlFor="employee-password">أنشئ كلمة المرور</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
-            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password">أنشئ كلمة المرور</label><Input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><Input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <OfflineSubmitButton label="حفظ وتفعيل الحساب" pendingLabel="جارٍ التفعيل…" />
           </OfflineForm>

@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input, Select, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { operatorEntitlementSnapshot, type OperatorEntitlement } from '@/lib/operator-read';
@@ -40,8 +41,8 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator/entitlements">قائمة الشركات</ButtonLink>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
     <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
       <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
       <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
@@ -50,7 +51,7 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
       {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
       <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
       <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
-    </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
+    </section>
   </main>;
 }
 
@@ -82,13 +83,13 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
         <label htmlFor={`${decision.capability_key}-decision`}>القرار</label>
-        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
+        <Select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
           <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
-        </select>
+        </Select>
         <label htmlFor={`${decision.capability_key}-expiry`}>آخر يوم سريان (اختياري، بتوقيت القاهرة)</label>
-        <input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
+        <Input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
         <label htmlFor={`${decision.capability_key}-reason`}>سبب التغيير</label>
-        <textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
+        <Textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
       </OperatorActionForm>
     </details>}
   </article>;
@@ -114,4 +115,4 @@ const entitlementErrors: Record<string, string> = {
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'لم تتأكد نتيجة تحديث القرار. راجع إتاحة الوحدات الحالية قبل إجراء آخر.',
 };
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link></section></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost" className="secondary-button" href="/operator/entitlements">قائمة الشركات</ButtonLink></section></main>; }

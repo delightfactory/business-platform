@@ -1,3 +1,4 @@
+import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorPage, operatorTenant } from '@/lib/operator-read';
@@ -36,8 +37,8 @@ export default async function OperatorTenantsPage({ searchParams }: { searchPara
       <header className="topbar">
         <Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <Link className="secondary-button" href="/operator">العودة للمهام</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+          <ButtonLink variant="ghost" className="secondary-button" href="/operator">العودة للمهام</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
         </nav>
       </header>
       <section className="work-card operator-collection" aria-labelledby="tenants-title">
@@ -53,13 +54,13 @@ export default async function OperatorTenantsPage({ searchParams }: { searchPara
                   <h2>{tenant.display_name}</h2>
                   <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
                 </div>
-                <Link className="secondary-button" href={`/operator/tenants/${tenant.tenant_id}`}>عرض الحالة والإجراءات</Link>
+                <ButtonLink variant="ghost" className="secondary-button" href={`/operator/tenants/${tenant.tenant_id}`}>عرض الحالة والإجراءات</ButtonLink>
               </li>
             ))}
           </ul>
         )}
       </section>
-      <footer className="footer">منصة الأعمال · إدارة حالة الشركات</footer>
+
     </main>
   );
 }

@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -84,7 +85,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
       <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
         <h1 id="members-title">المستخدمون والدعوات</h1>
         <p>تابع وصول فريقك، وأرسل دعوات جديدة عند الحاجة.</p></div>
-        <Link className="primary-button" href={`/tenant/${tenantId}/users/invite`}>دعوة عضو</Link>
+        <ButtonLink variant="solid" className="primary-button" href={`/tenant/${tenantId}/users/invite`}>دعوة عضو</ButtonLink>
       </header>
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>الدعوات المعلّقة لا تُحتسب قبل قبولها.</span></div>
@@ -93,7 +94,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#pending-title">راجع حالة الدعوات</a></p>}
         {query.state && !success && !deliveryIssue && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
       </section>
-      <section className="workspace-records-panel" aria-labelledby="attendance-access-setup"><h2 id="attendance-access-setup">إتاحة الحضور الشخصي للموظف</h2><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<Link className="secondary-button" href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</Link>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</section>
+      <details className="workspace-records-panel admin-setup-details"><summary id="attendance-access-setup">تهيئة الحضور الشخصي للموظفين</summary><div><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</ButtonLink>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</div></details>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
         <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
         <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
@@ -101,8 +102,8 @@ export default async function TenantUsersPage({ params, searchParams }: { params
       <form action={`/tenant/${tenantId}/users`} method="get" role="search" className="workspace-form-panel">
         <input type="hidden" name="view" value={view} />
         <label htmlFor="member-search">البحث بالبريد الإلكتروني</label>
-        <input id="member-search" type="search" name="q" defaultValue={search} maxLength={120} placeholder="ابحث عن بريد مستخدم أو دعوة" />
-        <button className="secondary-button" type="submit">بحث</button>
+        <Input id="member-search" type="search" name="q" defaultValue={search} maxLength={120} placeholder="ابحث عن بريد مستخدم أو دعوة" />
+        <Button variant="ghost" className="secondary-button" type="submit">بحث</Button>
       </form>
       <p className="field-hint">{search ? `نتائج البحث: ${matchingCount}` : `الإجمالي: ${matchingCount}`} · {page > pageCount ? 'هذه الصفحة لم تعد متاحة' : `صفحة ${page} من ${pageCount}`}</p>
       {!showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
@@ -202,7 +203,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         {page < pageCount && <Link href={usersUrl(tenantId, view, page + 1, search)}>الصفحة التالية</Link>}
         {page > pageCount && <Link href={usersUrl(tenantId, view, pageCount, search)}>عرض آخر صفحة</Link>}
       </nav>
-      <footer className="footer">منصة الأعمال · مستخدمو الشركة</footer>
+
     </main>
   );
 }
@@ -277,5 +278,5 @@ function successMessage(state?: string) {
   return state && Object.hasOwn(messages, state) ? messages[state] : null;
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><Link className="primary-button" href="/auth/login">العودة إلى الدخول</Link></section></main>;
+  return <main className="app-shell"><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><ButtonLink variant="solid" className="primary-button" href="/auth/login">العودة إلى الدخول</ButtonLink></section></main>;
 }

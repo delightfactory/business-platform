@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -32,6 +33,6 @@ export default async function NewLegalEntityPage({ params }: { params: Promise<{
 function Status({ tenantId }: { tenantId: string }) {
   return <PageFrame><section className="auth-card"><h1>لا يمكن إضافة جهة</h1>
     <p className="intro">تحقق من صلاحياتك أو أعد المحاولة لاحقًا.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</Link>
+    <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</ButtonLink>
   </section></PageFrame>;
 }

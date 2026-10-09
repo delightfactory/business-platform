@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Textarea } from '@/components/ui';
 import Link from 'next/link';
 import { operatorLifecycleSnapshot } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
@@ -40,8 +41,8 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
       <header className="topbar">
         <Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <Link className="secondary-button" href="/operator/tenants">قائمة الشركات</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+          <ButtonLink variant="ghost" className="secondary-button" href="/operator/tenants">قائمة الشركات</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
         </nav>
       </header>
       <section className="work-card operator-lifecycle-detail" aria-labelledby="tenant-title">
@@ -69,14 +70,14 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
                 <input type="hidden" name="expectedState" value={tenant.lifecycle_state} />
                 <input type="hidden" name="targetState" value={transition.target} />
                 <label htmlFor={`reason-${transition.target}`}>سبب الإجراء</label>
-                <textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
+                <Textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
               </OperatorActionForm>
               </details>
             </article>
           ))}
         </div>
       </section>
-      <footer className="footer">منصة الأعمال · إدارة حالة الشركات</footer>
+
     </main>
   );
 }

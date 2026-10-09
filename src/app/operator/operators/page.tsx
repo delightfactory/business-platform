@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input, Textarea } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
@@ -30,8 +31,8 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator">العودة للمهام</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
       <section className="work-card operator-grants-overview" aria-labelledby="operators-title">
         <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
         {success && <p className="form-message" role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
@@ -42,10 +43,10 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
           <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} label="تأكيد منح الصلاحية المحددة">
             <h2>منح صلاحية مشغّل</h2>
             <label htmlFor="newEmail">بريد الحساب المؤكد</label>
-            <input id="newEmail" name="email" type="email" autoComplete="email" required maxLength={254} dir="ltr" />
+            <Input id="newEmail" name="email" type="email" autoComplete="email" required maxLength={254} dir="ltr" />
             <CapabilityFields prefix="new" />
             <label htmlFor="newReason">سبب المنح</label>
-            <textarea id="newReason" name="reason" required minLength={3} maxLength={500} rows={3} />
+            <Textarea id="newReason" name="reason" required minLength={3} maxLength={500} rows={3} />
             <input type="hidden" name="action" value="grant" />
             <p className="field-hint">يجب أن يكون الحساب موجودًا، مؤكد البريد، وقادرًا على تسجيل الدخول. لا تُنشئ هذه الصفحة حسابات جديدة.</p>
           </OperatorActionForm>
@@ -53,7 +54,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
       </section>
       <section className="work-card operator-grants-list" aria-labelledby="grants-list-title">
         <h2 id="grants-list-title">المشغّلون</h2>
-        <form method="get" action="/operator/operators"><button className="secondary-button" type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</button></form>
+        <form method="get" action="/operator/operators"><Button variant="ghost" className="secondary-button" type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</Button></form>
         <p className="field-hint" id="grants-reread-hint">إعادة القراءة تجلب الحالة الحالية وتُفقد أي إدخالات لم تُرسل. لا تؤكد وحدها نتيجة تغيير سابق غير مؤكدة.</p>
         {grants.length === 0 ? <p>لا توجد منح مشغّل محفوظة.</p> : <ul className="member-list">
           {grants.map((grant) => <li className="member-card" key={grant.user_id}>
@@ -71,7 +72,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <input type="hidden" name="action" value={grant.is_active ? 'update' : 'grant'} />
                   <CapabilityFields prefix={grant.user_id} defaults={grant} />
                   <label htmlFor={`reason-${grant.user_id}`}>{grant.is_active ? 'سبب التعديل' : 'سبب إعادة المنح'}</label>
-                  <textarea id={`reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
+                  <Textarea id={`reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
                 </OperatorActionForm>
               </details></>}
               {grant.is_active && <details className="role-change-confirmation"><summary className="secondary-button danger-action" aria-label={`سحب الصلاحية: ${grant.email}`}>سحب الصلاحية</summary>
@@ -81,13 +82,13 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                   <input type="hidden" name="email" value={grant.email} /><input type="hidden" name="action" value="revoke" />
                   <input type="hidden" name="canManageOperators" value="off" /><input type="hidden" name="canOnboardTenants" value="off" />
                   <label htmlFor={`revoke-reason-${grant.user_id}`}>سبب السحب</label>
-                  <textarea id={`revoke-reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
+                  <Textarea id={`revoke-reason-${grant.user_id}`} name="reason" required minLength={3} maxLength={500} rows={2} />
                 </OperatorActionForm>
               </details>}
             </div>
           </li>)}
         </ul>}
-      </section><footer className="footer">منصة الأعمال · إدارة المشغّلين</footer>
+      </section>
     </main>
   );
 }
@@ -128,5 +129,5 @@ function Status({ title, detail, denied = false }: { title: string; detail: stri
     <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>
       <h1 id="status-title">{title}</h1><p className="intro">{detail}</p>
       <form method="get" action="/operator/operators"><button className={denied ? 'secondary-button' : 'primary-button'} type="submit">إعادة قراءة الصفحة</button></form>
-      <Link className={denied ? 'primary-button' : 'secondary-button'} href="/operator">العودة لمهام المنصة</Link></section><footer className="footer">منصة الأعمال</footer></main>;
+      <Link className={denied ? 'primary-button' : 'secondary-button'} href="/operator">العودة لمهام المنصة</Link></section></main>;
 }

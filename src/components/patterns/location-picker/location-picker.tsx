@@ -64,7 +64,7 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
     <div ref={host} className={styles.map} role="region" aria-label="خريطة اختيار مقر العمل؛ يمكن إدخال الإحداثيات مباشرة أدناه" />
     <p role="status" className={styles.message}>{message}</p>
     <Field id={`${prefix}-radius_m`} label="نصف قطر النطاق بالمتر" required><Input name="radius_m" type="number" min={10} max={10000} step="any" required value={range} onChange={event => setRange(event.target.value)} /></Field>
-    <Disclosure summary="الإحداثيات — إدخال يدوي أو مراجعة النقطة" open={lat === '' || lng === ''}>
+    <Disclosure summary="الإحداثيات — إدخال يدوي أو مراجعة النقطة" open={latitude === undefined || longitude === undefined}>
       <div className={styles.coordinates}>
         <Field id={`${prefix}-latitude`} label="خط العرض" required><Input name="latitude" type="number" step="any" min={-90} max={90} required value={lat} onChange={event => setLat(event.target.value)} /></Field>
         <Field id={`${prefix}-longitude`} label="خط الطول" required><Input name="longitude" type="number" step="any" min={-180} max={180} required value={lng} onChange={event => setLng(event.target.value)} /></Field>

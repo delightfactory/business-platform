@@ -1,3 +1,4 @@
+import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
@@ -36,7 +37,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
   return (
     <main className="app-shell">
       {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
-      {partialRead && <p className="form-message" role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <Link href="/operator" className="secondary-button">إعادة قراءة المهام</Link></p>}
+      {partialRead && <p className="form-message" role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <ButtonLink variant="ghost" href="/operator" className="secondary-button">إعادة قراءة المهام</ButtonLink></p>}
       <div className="operator-home" aria-labelledby="operator-title">
         <header className="operator-home-heading">
           <p className="eyebrow">مساحة التشغيل</p>
@@ -50,7 +51,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <h2 id="new-company-title">شركة جديدة</h2>
             <p>أرسل دعوة للمسؤول الأول لتُنشأ الشركة بفرعها وحدود استخدامها عند قبولها.</p>
           </div>
-          <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></Link>
+          <ButtonLink variant="solid" className="primary-button" href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></ButtonLink>
         </section>}
 
         <div className="operator-home-grid">
@@ -72,7 +73,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
         {!partialRead && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}
       </div>
-      <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>
+
     </main>
   );
 }
@@ -87,10 +88,10 @@ function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></header>
       <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
         <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section>
-      <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>
+
     </main>
   );
 }

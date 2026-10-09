@@ -1,4 +1,5 @@
 'use client';
+import { Button, Input, Select, Textarea } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -76,19 +77,20 @@ export function BrandingEditor({
         <form onSubmit={submit} className="auth-form" aria-busy={pending}>
           <input type="hidden" name="tenantId" value={tenantId} />
           <label htmlFor="tenant-brand-name">اسم العرض</label>
-          <input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
+          <Input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
             onChange={(event) => setName(event.currentTarget.value)} />
           <p className="field-hint">اتركه فارغًا لاستخدام اسم الشركة الحالي. لا يغيّر الاسم القانوني للكيان.</p>
 
           <label htmlFor="tenant-brand-color">اللون الرئيسي</label>
-          <select id="tenant-brand-color" name="color" value={color}
+          <Select id="tenant-brand-color" name="color" value={color}
             onChange={(event) => setColor(event.currentTarget.value as BrandColor)}>
             <option value="teal">فيروزي</option>
             <option value="blue">أزرق</option>
             <option value="violet">بنفسجي</option>
             <option value="emerald">أخضر</option>
-          </select>
+          </Select>
 
+          <div className="branding-color-preview" aria-label="معاينة ألوان الهوية">{(['teal','blue','violet','emerald'] as const).map(key => <div key={key} data-brand={key} aria-label={key === 'teal' ? 'فيروزي' : key === 'blue' ? 'أزرق' : key === 'violet' ? 'بنفسجي' : 'أخضر'}><span className="branding-color-dot" /><strong>منصة الأعمال</strong><span className="branding-color-sample">إجراء أساسي</span></div>)}</div>
           <label htmlFor="tenant-brand-logo">الشعار</label>
           <p className="field-hint" id="tenant-brand-logo-help">اختر صورة PNG أو JPG أو WebP بحجم لا يتجاوز 2 ميجابايت.</p>
           <div className="branding-file-picker">
@@ -114,13 +116,13 @@ export function BrandingEditor({
           {hasStoredLogo && <p className="field-hint">سيبقى الشعار السابق محفوظًا عند تغييره أو إزالته من العرض.</p>}
 
           <label htmlFor="tenant-brand-reason">سبب التغيير</label>
-          <textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
+          <Textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
             value={reason} onChange={(event) => setReason(event.currentTarget.value)} />
           {error && <p className="form-message form-error" role="alert">{error}</p>}
-          <button className="primary-button" type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
+          <Button variant="solid" className="primary-button" type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
             {pending && <span className="button-spinner" aria-hidden="true" />}
             {pending ? 'جارٍ الحفظ…' : 'حفظ الهوية'}
-          </button>
+          </Button>
         {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
       )}
     </div>

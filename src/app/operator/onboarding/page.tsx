@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Input } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorUuid, onboardingSnapshot } from '@/lib/operator-read';
@@ -31,27 +32,27 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
+        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator">العودة للمهام</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
       <section className="work-card" aria-labelledby="onboard-title">
         <p className="eyebrow">إعداد الشركات</p><h1 id="onboard-title">إعداد شركة جديدة</h1>
         <p className="intro">أدخل بيانات الشركة ومسؤولًا لديه حساب موجود وبريد مؤكد.</p>
-        <p><Link className="secondary-button" href="/operator/invitations">دعوة مسؤول جديد عبر البريد</Link></p>
+        <p><ButtonLink variant="ghost" className="secondary-button" href="/operator/invitations">دعوة مسؤول جديد عبر البريد</ButtonLink></p>
         {params.state && !resultUnavailable && !result && <p className="form-message" role="alert">{stateMessage()}</p>}
-        {resultUnavailable ? <div role="alert" className="form-message form-error"><p>تعذر التحقق من نتيجة إعداد الشركة. لا تبدأ طلبًا جديدًا قبل مراجعة المحاولة الأصلية.</p><Link className="primary-button" href={`/operator/onboarding?key=${encodeURIComponent(key ?? '')}`}>إعادة قراءة النتيجة</Link></div> : result ? <OnboardingResult result={result} /> : (<>
+        {resultUnavailable ? <div role="alert" className="form-message form-error"><p>تعذر التحقق من نتيجة إعداد الشركة. لا تبدأ طلبًا جديدًا قبل مراجعة المحاولة الأصلية.</p><ButtonLink variant="solid" className="primary-button" href={`/operator/onboarding?key=${encodeURIComponent(key ?? '')}`}>إعادة قراءة النتيجة</ButtonLink></div> : result ? <OnboardingResult result={result} /> : (<>
           {key && <p className="form-message" role="status">لم تُرجع قراءة هذا الحساب نتيجة محفوظة للمحاولة. هذا لا يؤكد نتيجة حساب آخر؛ يُستخدم المرجع نفسه عند إرسال النموذج.</p>}
           <OnboardingForm actorId={user.id} requestKey={key ?? crypto.randomUUID()}>
-            <label htmlFor="tenantName">اسم الشركة</label><input id="tenantName" name="tenantName" required maxLength={160} />
+            <label htmlFor="tenantName">اسم الشركة</label><Input id="tenantName" name="tenantName" required maxLength={160} />
             <label htmlFor="entityName">الاسم القانوني للشركة (اختياري)</label>
-            <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
-            <label htmlFor="siteName">اسم الفرع الأول</label><input id="siteName" name="siteName" required maxLength={160} />
+            <Input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
+            <label htmlFor="siteName">اسم الفرع الأول</label><Input id="siteName" name="siteName" required maxLength={160} />
             <label htmlFor="adminEmail">بريد مسؤول الشركة الحالي</label>
-            <input id="adminEmail" name="adminEmail" type="email" dir="ltr" autoComplete="email" required maxLength={254} />
+            <Input id="adminEmail" name="adminEmail" type="email" dir="ltr" autoComplete="email" required maxLength={254} />
             <p className="field-hint">يجب أن يكون الحساب موجودًا ومؤكد البريد. لا يتم إنشاء حساب جديد هنا.</p>
             <LimitFields kind="seats" label="حد المستخدمين" /><LimitFields kind="sites" label="حد الفروع" />
           </OnboardingForm></>
         )}
-      </section><footer className="footer">منصة الأعمال · تأسيس الشركات</footer>
+      </section>
     </main>
   );
 }
@@ -61,8 +62,8 @@ function stateMessage() {
 }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-    <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
+    <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></header>
     <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
       <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section>
-    <footer className="footer">منصة الأعمال · تأسيس الشركات</footer></main>;
+    </main>;
 }

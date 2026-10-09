@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -76,7 +77,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
         <div className="record-title-row"><div><h2 id="sites-title">الفروع والمواقع</h2>
           <span className="record-meta">الفروع النشطة بالشركة: {snapshot.site_limit?.mode === 'unlimited'
             ? `${activeSites} نشط · بلا حد أقصى` : `${activeSites} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`}</span></div>
-          {canSites && entity.is_active && <Link className="primary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</Link>}</div>
+          {canSites && entity.is_active && <ButtonLink variant="solid" className="primary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</ButtonLink>}</div>
         <p className="field-hint">يُسجَّل كل فرع أو موقع عمل تحت الجهة القانونية التي يتبعها.</p>
         {!canSites && <p className="form-message" role="status">عرض التفاصيل يتطلب صلاحية إدارة المواقع.</p>}
         {canSites && entity.sites.length === 0 && <div className="empty-state"><p>لا توجد فروع أو مواقع مسجلة لهذه الجهة.</p></div>}
@@ -147,5 +148,5 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
   return <PageFrame>
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link></section></PageFrame>;
+      <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink></section></PageFrame>;
 }

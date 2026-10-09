@@ -1,9 +1,9 @@
 'use client';
+import { ButtonLink, Input } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
-import Link from 'next/link';
 import { SubmitButton } from '@/components/submit-button';
 import { createLegalEntityFormAction, type NewEntityState } from '../actions';
 
@@ -16,14 +16,14 @@ export function NewEntityForm({ tenantId }: { tenantId: string }) {
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <label htmlFor="entity-display-name">اسم الجهة</label>
-    <input id="entity-display-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
+    <Input id="entity-display-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
     <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-    <input id="entity-legal-name" name="legalName" maxLength={200} defaultValue={state.legalName} />
+    <Input id="entity-legal-name" name="legalName" maxLength={200} defaultValue={state.legalName} />
     <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر للمستخدمين.</p>
     <label htmlFor="entity-create-reason">سبب الإضافة</label>
-    <input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} defaultValue={state.reason} />
+    <Input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} defaultValue={state.reason} />
     {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
     <div className="workspace-form-actions"><SubmitButton label="إضافة الجهة" pendingLabel="جارٍ الإضافة…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
-      <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>إلغاء</Link></div>
+      <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>إلغاء</ButtonLink></div>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

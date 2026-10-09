@@ -1,3 +1,4 @@
+import { Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -26,7 +27,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
     <main className="app-shell">
       <header className="topbar">
         <Link className="brand" href="/">منصة الأعمال</Link>
-        <span className="environment-pill"><span aria-hidden="true" /> بيئة التطوير</span>
+
       </header>
       <section className="auth-card" aria-labelledby="login-title">
         <p className="eyebrow">الدخول إلى المنصة</p>
@@ -36,15 +37,15 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <OfflineForm action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>
-          <input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr" />
+          <Input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr" />
           <label htmlFor="password">كلمة المرور</label>
-          <input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} dir="ltr" />
+          <Input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} dir="ltr" />
           <OfflineSubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />
         </OfflineForm>
         <p className="auth-links"><Link href="/auth/forgot-password">نسيت كلمة المرور؟</Link></p>
         <p className="foundation-note">إنشاء الحسابات غير متاح من هذه الصفحة.</p>
       </section>
-      <footer className="footer">منصة الأعمال · أساس التطوير</footer>
+
     </main>
   );
 }

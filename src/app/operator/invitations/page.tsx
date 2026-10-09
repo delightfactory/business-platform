@@ -1,3 +1,4 @@
+import { Button, ButtonLink } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -51,15 +52,15 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
     <main className="app-shell">
       <header className="topbar">
         <Link className="brand" href="/operator">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
       </header>
       <header className="workspace-page-heading"><div><p className="eyebrow">إعداد الشركات</p>
         <h1 id="invite-title">دعوات مسؤولي الشركات</h1>
         <p>تابع حالة الدعوات. تُنشأ الشركة عند قبول المسؤول الأول للدعوة.</p></div>
-        <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</Link>
+        <ButtonLink variant="solid" className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</ButtonLink>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
-        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <Link className="secondary-button" href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</Link></p>}
+        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <ButtonLink variant="ghost" className="secondary-button" href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</ButtonLink></p>}
         {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></p>}
         {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage()} <a href="#history-title">راجع حالة الدعوات</a></p>}
       </section>
@@ -100,7 +101,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
           </ul>
         )}
       </section>
-      <footer className="footer">منصة الأعمال · دعوات الشركات</footer>
+
     </main>
   );
 }
@@ -124,7 +125,7 @@ function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
       </header>
       <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p></section>
     </main>

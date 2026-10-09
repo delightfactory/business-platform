@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -24,7 +25,7 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
       </header>
       <section className="auth-card" aria-labelledby="callback-title">
         <p className="eyebrow">دعوة مسؤول الشركة</p>
@@ -44,7 +45,7 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
           <p className="intro" role="alert">{stateMessage(params.state)}</p>
         )}
       </section>
-      <footer className="footer">منصة الأعمال · متابعة آمنة للدعوة</footer>
+
     </main>
   );
 }

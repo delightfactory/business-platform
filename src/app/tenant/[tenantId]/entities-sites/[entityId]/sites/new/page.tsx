@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -42,6 +43,6 @@ export default async function NewSitePage({ params }: { params: Promise<{ tenant
 function Status({ tenantId, entityId }: { tenantId: string; entityId: string }) {
   return <PageFrame><section className="auth-card"><h1>إضافة الفرع غير متاحة</h1>
     <p className="intro">تحقق من حالة الجهة وصلاحيتك ثم أعد المحاولة.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>العودة إلى الجهة</Link>
+    <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>العودة إلى الجهة</ButtonLink>
   </section></PageFrame>;
 }

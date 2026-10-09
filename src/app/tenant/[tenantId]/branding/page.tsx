@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -42,7 +43,7 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}
         hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} />
-    </section><footer className="footer">منصة الأعمال · هوية الشركة</footer>
+    </section>
   </main>;
 }
 
@@ -59,4 +60,4 @@ function stateText(state: string) {
   };
   return messages[state] ?? 'تعذر حفظ الهوية.';
 }
-function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة للشركة</Link></section></main>; }
+function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة للشركة</ButtonLink></section></main>; }
