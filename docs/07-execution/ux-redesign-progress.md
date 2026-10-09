@@ -2,7 +2,50 @@
 
 Owner continues implementation in economical development mode, preserving complete capability coverage and always simplifying user journeys. Use official Claude Opus5.5 Medium only at scoped direction/architecture/review checkpoints. Codex implements and checks routine work locally; prefer existing reviewed specs and targeted evidence over rediscovery. Never send secrets or silently change model/provider. No main merge/deployment/Actions authorized.
 
-## Current full-plan checkpoint — 2026-10-09
+## Owner-directed pause and replacement closure path — 9 October 2026
+
+**Execution state: PAUSED.** Owner explicitly stopped the old full-platform qualification goal to safely reassess original UX delivery. This section supersedes the broad closure queue below as an execution instruction; historical open records remain accurate backlog, not instructions to continue. No implementation or new business tests after pause. Safe-stop receipt and three latest ordinary-member screenshots are preserved in ux-attendance-decisions-live-20261009/safe-stop-checkpoint.md. Owned v12 retired; listeners3650–3654 and owned containers zero.
+
+### Independent assessment
+
+Official Claude Code claude-opus-5-5 Medium reviewed six original reference/source files and the current checkpoint/diff profile; see evidence/ux-redesign-strategic-reset-20261009.json. Real changes span192 source/public files, including theme/PWA, entry/auth return, People search/preview/profile tabs, Leave/Attendance task presentation, payroll orientation and Today. This is source change evidence, not a completion percentage. Drift arose in closure: exhaustive1735 structural-slot semantic qualification, expanding operation/provider/financial partitions and repeated runtime preparation displaced visible UX completion. The old whole-platform goal is not complete.
+
+Codex checked the two concrete source findings: context-navigation-client.tsx still selects the first two business links via slice(0,2); tenant layout injects one fixed brand colour and tokens lack per-brand dark variants. Claude's broader statements about missing error pages/components are leads requiring a quick source check, not accepted defects from diffstat absence. Its statement that several numbered critical flows are already fully proven is too broad: existing evidence closes only the named paths below. No blanket full-flow pass is adopted.
+
+### New proposed objective (ready for goal replacement)
+
+Deliver the original UX redesign core as a reviewable branch release candidate: coherent reference-aligned interface, simpler source-authorized navigation and next actions, mobile/desktop and light/dark company identity, complete page/function coverage mapped to changed or explicitly retained surfaces, and bounded risk-based proof of critical journeys. Preserve current business/financial/security contracts and existing approvals. Do not require enumerating/testing every state permutation; do not claim full original100% closure or production readiness from ten smoke tests. Record every remaining original deliverable or accepted deferral explicitly. No merge/main/deployment/Actions.
+
+### Three bounded batches
+
+1. **Visible shell completion:** fix mobile priority from existing authorized links (no inferred role permissions); clarify existing grouping without promoting unapproved HR domain authority; add static light/dark branding variants for four existing keys. Check shared error/loading/empty states only for concrete user dead ends. Avoid a new access-service/refactor/cache project unless a measured defect requires it. Compare affected real screens to pinned ConceptC, retaining approved Cairo/native-control deviations.
+2. **Remaining critical journey proof:** reuse already valid onboarding, Auth return, annual withdrawal/rejection, unpaid approval/cancellation, payroll blocker, attendance correction/classification/accept-exclude and ordinary-member evidence. Only missing portions of original §12.2 require execution: full IN→OUT/mobile channel outcome, interrupted connection→reconciliation, and visibly different company identities/colours. Existing quantity negative/positive and channel decisions passed; do not repeat them. Use one owned synthetic runtime for the remaining cases, retire on completion. Check any genuinely uncovered risk-bearing surface by a grouped representative test, not a new scenario registry project.
+3. **Single closure/release-candidate pass:** check original deliverable list against source and existing evidence; one grouped affected lint/typecheck/build and responsive/reference/keyboard/brand contrast pass. Reuse unchanged contracts' tests. Preserve reviewed source/evidence remotely and verify SHA, unchanged main and zero unintended automation. Deliver actual screenshots, concise runbook, residual original requirements and explicit release go/no-go. One bounded Claude direction review of final changed batch; no per-copy re-review.
+
+### Critical-flow status at pause (not whole-flow closure)
+
+| Original §12.2 flow | Reusable evidence / exact remaining gap |
+|---|---|
+| 1 Mobile IN→OUT in permitted area | accepted mobile IN/history proved; full matched OUT/device/location scope not yet established |
+| 2 Interrupted capture→reconciliation | remaining; prerequisite-only mobile fixture change was not acceptance |
+| 3 Annual request→withdraw | proved selected actual local case |
+| 4 HR approval and reasoned refusal | selected unpaid approval and annual refusal proved; preserve evidence limits |
+| 5 Overtime complete/incomplete split | actual incomplete retained-input refusal and corrected classification proved |
+| 6 Missing OUT/absence approval | actual cases observed/preserved before restart; no final post-restart DB receipt claimed |
+| 7 Outside-area accept/reject | actual accept IN and exclude OUT with reasons/history proved |
+| 8 Payroll selection/blocker remediation route | actual preparation/truthful14 blockers/employee denial proved; finalized financial amounts not proved |
+| 9 No work area | actual ordinary-member desktop390 empty state and switch back proved; fixture membership, not invite creation |
+| 10 Two companies identity/colour | switch and tenant isolation proved; different branding still missing |
+
+### Boundaries and closure conditions
+
+D16 server unknown Leave recovery24h remains approved separate post-core backlog, not removed or invented as a redesign prerequisite. New inbox/G1, domain-promotion D2/D3, numerical D1 and any other original unimplemented commitments need reconciliation with existing approved decisions; do not re-ask approvals already given or silently call them delivered. Prefer existing Today/source queues and current number contract under current compatibility baseline; material changes or deferrals must be stated explicitly. This scoped release candidate does not close broader financial/statutory/provider/device/production gates.
+
+Stop after one observed pass per applicable normal/failure path; reopen only when a code change invalidates evidence, an actual defect appears, or a required material risk lacks proof. Fix only a user-visible blocker, wrong state, accessibility obstruction or incorrect authority; other polish goes to backlog. No new capability, scenario classes, unnecessary specs, heavyweight repeated tests or broad refactor. Owner asks Saturday10October release; Claude's conditional estimate is1–1.5 focused working days, with assumptions and gaps above, not a guaranteed deadline or deployment permission.
+
+Goal mechanism: old goal remains PAUSED, unfinished. Available create_goal cannot replace an unfinished goal; do not falsely mark it complete to unlock creation. This objective is ready for replacement via goal management, with the old progress preserved.
+
+## Historical full-plan checkpoint — 2026-10-09
 
 The original plan remains the scope. No R0–R8 stage is fully closed. The entries below supersede the old initial-slice overview; chronological evidence remains below. Do not return to nonblocking card/link polish after scoped acceptance.
 
