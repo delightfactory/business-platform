@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "3cbe6dee755a534f6887681433f755183073b3b4",
+  "sourceHead": "c0a98bf505fedf711ffc029db41ef180c996785b",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -735,7 +735,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
       "phase": "R5",
-      "sha256": "07450fb8cbc559965d7a44864ee041d2904e2e2f75a96bf0678607bbf11b7f33"
+      "sha256": "1f4759b570ed830cc4c2e466ebe3d57fb2c05eb7c953c84eac5c034d8b13f05d"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
@@ -1365,7 +1365,7 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1"
+      "sha256": "94772daaaf81ef86ce9866c337149383f58749611aff512957e9745aa9fce951"
     },
     {
       "file": "src/components/context-navigation-client.tsx",

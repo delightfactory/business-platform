@@ -706,3 +706,9 @@
 .workspace-navigation .theme-preference-options button:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
 .theme-preference p { margin-block: .4rem 0; font-size: .85rem; overflow-wrap: anywhere; }
 @media print { .theme-preference { display: none; } }
+
+/* Own-attendance unavailable reads: readable context and one recovery action. */
+.channel-page .channel-read-state { padding: clamp(1rem, 2.5vw, 1.5rem); display: grid; gap: .75rem; }
+.channel-page .channel-read-state h2 { margin: 0; font-size: 1.125rem; font-weight: 600; }
+.channel-page .channel-read-state p { margin: 0; line-height: 1.7; }
+.channel-page .channel-read-state > a { justify-self: start; }

@@ -1,0 +1,144 @@
+{
+  "baseline": "c0a98bf505fedf711ffc029db41ef180c996785b",
+  "candidate": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "1f4759b570ed830cc4c2e466ebe3d57fb2c05eb7c953c84eac5c034d8b13f05d"
+    },
+    {
+      "file": "src/app/workspace.css",
+      "sha256": "94772daaaf81ef86ce9866c337149383f58749611aff512957e9745aa9fce951"
+    }
+  ],
+  "pageInversion": "PASS exact whole source including business/access/valid branch preserved",
+  "cssInversion": "PASS original stylesheet prefix exact, four scoped recovery-only selectors",
+  "fixtureMatchesCandidate": true,
+  "priorEvidenceReused": "e71063f parser/SQL source review/lint/TypeScript unchanged; c93f09f shared CSS integration build retained; no repeated heavy suite",
+  "native": {
+    "measures": [
+      {
+        "cardPadding": "24px",
+        "fontLoaded": true,
+        "heading": "18px",
+        "links": [
+          {
+            "background": "rgb(18, 107, 104)",
+            "class": "primary-button",
+            "color": "rgb(255, 255, 255)",
+            "height": 44,
+            "text": "إعادة تحميل الصفحة"
+          },
+          {
+            "background": "rgba(0, 0, 0, 0)",
+            "class": "secondary-button",
+            "color": "rgb(194, 204, 199)",
+            "height": 44,
+            "text": "العودة إلى مساحة العمل"
+          }
+        ],
+        "mode": "dark",
+        "overflow": false,
+        "viewport": [
+          1366,
+          900
+        ]
+      },
+      {
+        "cardPadding": "19.2px",
+        "fontLoaded": true,
+        "links": [
+          {
+            "class": "primary-button",
+            "height": 44,
+            "text": "إعادة تحميل الصفحة"
+          },
+          {
+            "class": "secondary-button",
+            "height": 44,
+            "text": "العودة إلى مساحة العمل"
+          }
+        ],
+        "mode": "light",
+        "overflow": false,
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      {
+        "cardPadding": "19.2px",
+        "fontLoaded": true,
+        "links": [
+          {
+            "background": "rgb(18, 107, 104)",
+            "class": "primary-button",
+            "color": "rgb(255, 255, 255)",
+            "height": 44,
+            "text": "إعادة تحميل الصفحة"
+          },
+          {
+            "background": "rgba(0, 0, 0, 0)",
+            "class": "secondary-button",
+            "color": "rgb(194, 204, 199)",
+            "height": 44,
+            "text": "العودة إلى مساحة العمل"
+          }
+        ],
+        "mode": "dark",
+        "overflow": false,
+        "viewport": [
+          768,
+          1024
+        ]
+      }
+    ],
+    "lightMobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "cardPadding": "16px",
+      "overflow": false,
+      "controlHeights": [
+        44,
+        44
+      ],
+      "fontLoaded": true
+    },
+    "keyboard": {
+      "tabFromReloadToReturn": true,
+      "enterReloadNavigation": true,
+      "stillUnavailable": true
+    },
+    "deniedDarkMobile": {
+      "onlyWorkspaceReturn": true,
+      "noRetry": true
+    },
+    "baseline": {
+      "innerPadding": 0,
+      "linksBothSecondary": true
+    },
+    "noSpeedOrBusinessSuccessClaim": true
+  },
+  "codexVisual": "MATCH WITH ACCEPTED DEVIATIONS — scoped recovery cards/controls only. Cairo, stronger border and radius8 retained; no exact demo error state/full shell/Auth/device acceptance.",
+  "open": [
+    "Real Auth/roles",
+    "All valid capture/history/device states",
+    "Whole R1/R5/R0-R8",
+    "Full tenant composition"
+  ],
+  "scopedLint": "PASS exit0",
+  "retirement": {
+    "ownedPort": 3624,
+    "listeners": 0,
+    "tabsClosed": [
+      131,
+      132
+    ],
+    "viewportReset": true,
+    "ownedProcessIdentityVerified": true,
+    "controllerTerminal": true,
+    "sharedServicesUntouched": true
+  },
+  "codexReviewCorrection": "Pinned reference font/control geometry is not identical: retain accepted Cairo600/14/radius8 control contract. Card corner radius remains its existing CSS; do not claim reference or every card uses Cairo/radius8."
+}

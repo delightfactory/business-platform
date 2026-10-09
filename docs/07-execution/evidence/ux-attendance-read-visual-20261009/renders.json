@@ -1,0 +1,44 @@
+{
+  "referenceSHA256": "AF24015383285EAF543E9C95839F55225C2FE9817DD8B1E16D2084F857725508",
+  "referenceCommit": "76c7a8e662954be8f9228cf1bb66d3351274d9d7",
+  "browser": "Codex in-app Chromium; exact engine version unavailable through supported API",
+  "images": [
+    {
+      "file": "before-light-mobile.jpg",
+      "sha256": "ee33a24defca647cdbc6cf90c16a5192092e51d92c9ab00d6c1986a28c24367f"
+    },
+    {
+      "file": "after-light-mobile.jpg",
+      "sha256": "5882c734fccf4f846c2a82d8d6ccf00493eca25b38657d71da3341b76266b5df"
+    },
+    {
+      "file": "after-dark-mobile.jpg",
+      "sha256": "7f6644ab8b19b3286a13f70fb413bafe6195162599bf9cdf6e4a3bba673df84a"
+    },
+    {
+      "file": "after-dark-desktop.jpg",
+      "sha256": "25db37f5dbdfd38fae5f2a5906e82384743056eb363d309658c6504d12a59ed5"
+    },
+    {
+      "file": "after-light-desktop.jpg",
+      "sha256": "f5c8d675354d5751104e0795e3cc32303d0f66a8bf8f1797c295e0cb977a0eb4"
+    },
+    {
+      "file": "after-light-tablet.jpg",
+      "sha256": "05662306b166a8ecbbd3ae9ecb4fc517e897e5ea5ffc33aea43cd8327a6e2083"
+    },
+    {
+      "file": "denied-dark-mobile.jpg",
+      "sha256": "169007a4c5edeacd4177f2a3515cc78d44416efd7b37a9d217f96586b1d7ee40"
+    },
+    {
+      "file": "reference-light-mobile.jpg",
+      "sha256": "b35b4f6e4e77c48ced8f598921200d291a5c856ce751c870d9398ad68c3ffb93"
+    },
+    {
+      "file": "reference-dark-desktop.jpg",
+      "sha256": "56f5d4bda930175b5934eff2253bda6f05b12f6b5f6e348863e0715cc9913b85"
+    }
+  ],
+  "scope": "Scoped card content, palette and control hierarchy only; synthetic read provider and tenant wrapper. Actual authorized shell excluded."
+}

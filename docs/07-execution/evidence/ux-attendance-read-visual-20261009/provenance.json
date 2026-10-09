@@ -1,0 +1,51 @@
+{
+  "head": "c0a98bf505fedf711ffc029db41ef180c996785b",
+  "fixture": "C:/Users/DELL/OneDrive/Documents/ChatGPT/PLATFORM/artifacts/ux-self-service-auth-return-20261008/attendance-visual-fixture",
+  "host": "127.0.0.1",
+  "port": 3624,
+  "actualCopied": [
+    {
+      "file": "src/app/globals.css",
+      "sha256": "526f394fee54475a68499b80c7ceeccbab7dff5097652e0556a0709ad30d3ee4"
+    },
+    {
+      "file": "src/app/workspace.css",
+      "sha256": "5a475455a24d4664563698cebbaedf53a6329bb12abee6d67c9d100f840bedfa"
+    },
+    {
+      "file": "src/styles/tokens.css",
+      "sha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2"
+    },
+    {
+      "file": "src/lib/attendance-channel.ts",
+      "sha256": "1393b02358899f5b00fa14829f5a21573974744caa92849e241dc5a0bdff6625"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "1f4759b570ed830cc4c2e466ebe3d57fb2c05eb7c953c84eac5c034d8b13f05d"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/MobilePunch.tsx",
+      "sha256": "cac763c9fa918da0384f3462029f66542686bb0819395841c8f21faefb98e515"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/actions.ts",
+      "sha256": "952e8f64ad4c2407c4b670bd59f87796f12a2206d7c60cdcb08c3c10dc23a618"
+    },
+    {
+      "file": "src/components/theme-preference.tsx",
+      "sha256": "8a8ed9863a9f2c1a42bc548a008d9e85c206769dae18402a49eca266db6ed954"
+    },
+    {
+      "file": "src/lib/theme.ts",
+      "sha256": "44f78c3b62e540794e74532ebdf21ac9a15f6f5537ed23117128bcdcc2eeddc9"
+    }
+  ],
+  "provider": "Synthetic getUser/read failure/denial/malformed only; no Auth/DB mutation or external service",
+  "frame": "Exact PageFrame; fixture tenant wrapper uses actual teal branding property/color from tenant layout; no navigation or real branding RPC.",
+  "root": "Prior scoped theme root with query/header theme; PWA omitted; fonts actual Cairo locally hosted",
+  "noSecretFilesCopied": true,
+  "scope": "Actual attendance error/denied JSX, shared palette and controls only. No full shell, actual roles/Auth or capture/device acceptance.",
+  "postcss": "Actual @tailwindcss/postcss config; externalDir and isolated tracing root",
+  "candidateBoundBy": "review.json normalized hashes, raw exact copied source hashes below"
+}
