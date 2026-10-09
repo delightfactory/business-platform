@@ -13,7 +13,7 @@ export function reportMoney(value:string|null|undefined):string {
  if(value==null)return 'غير متاح';
  const match=/^(-?)(\d+)(?:\.(\d{1,2})0*)?$/.exec(value);
  if(!match)return 'غير مكتمل';
- return `${match[1]}${match[2].replace(/\B(?=(\d{3})+(?!\d))/g,'٬')}٫${(match[3]??'').padEnd(2,'0')} ج.م.`;
+ return `${match[1]}${match[2].replace(/\B(?=(\d{3})+(?!\d))/g,',')}.${(match[3]??'').padEnd(2,'0')} ج.م.`;
 }
 export function csvCell(value:string):string {
  const safe=/^[\s\uFEFF]*[=+\-@]|^[\t\r\n]/u.test(value)?`'${value}`:value;

@@ -135,3 +135,6 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
   .filters { gap:12px; }
   .filters > button { min-height:44px; }
 }
+
+.employeeReviewHeading { display:grid; gap:4px; min-width:0; text-align:start; }
+.employeeReviewHeading bdi { font-variant-numeric:tabular-nums; }
