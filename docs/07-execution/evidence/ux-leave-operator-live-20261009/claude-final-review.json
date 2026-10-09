@@ -1,0 +1,17 @@
+{
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "effort": "medium",
+  "session": "ea5f5f21-cbb0-447b-a980-212b3e7bbce5",
+  "result": "**Verdict: the blocker is resolved.** I read only the four files you listed.\n\n**Blocker: an old pending badge looked like the current state.** Fixed by clearly historical labels.\n- `CancellationHistory.tsx:57`: the intro now says the states below are as of each movement, and that the current leave status is at the top of the page.\n- `CancellationHistory.tsx:94-95`: each badge now starts with \"بعد هذه الحركة:\" (\"after this movement:\").\n- The first event still shows \"معلّق بانتظار القرار\" (pending). It was not rewritten to accepted. The second event shows the move from pending to accepted. The badge's state and color still come from `event.to_state`.\n- The original time, reason, actor, from→to line and paging nav in the source are unchanged.\n\n**Copy and layout.** Both are readable and match the shared Concept C look.\n- **390:** each badge sits on its own line under the event title. Nothing is clipped and the wrapping is clean. The intro wraps to three lines and stays readable.\n- **1366:** the badge sits inline next to the title, on one line.\n- The images show the same Cairo font, card, badge colors and RTL alignment as the rest of the app.\n- One small thing, not a blocker: on the first event (the one with no previous state), the badge and the line below it both say \"after this movement: pending\", so the text is repeated. Nothing in the screenshots looks misleading.\n\n**Introduced blockers:** none.\n\n**What I did not verify myself:**\n- The SHA256, the inverse proof (only two text changes, all other markup identical) and the \"same read calls\" check are taken from `copy-source-checks.json`. I didn't run a diff or hash. That said, the source matches those claims: the RPC, its arguments and the paging are as described.\n\n**Limitations that still apply to the full phase:**\n- The images come from a controlled read-only fixture rendering only the history section. They don't show the current-status area at the top of the page that the intro points to, so these images don't show the current status and the history together.\n- The error, empty, invalid-offset and multi-page states were not rendered.\n- The full parent page, Auth and the mutations were not rerun. The earlier real employee/HR flow still stands on its own baseline, `3ccbf10`.\n- Inventory gets a fingerprint only; no status promotion.",
+  "files": [
+    "docs/07-execution/evidence/ux-leave-operator-live-20261009/history-copy-390.jpg",
+    "docs/07-execution/evidence/ux-leave-operator-live-20261009/history-copy-1366.jpg",
+    "docs/07-execution/evidence/ux-leave-operator-live-20261009/copy-source-checks.json",
+    "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx"
+  ],
+  "sourceHEAD": "3ccbf10e1df5033ce50ebfda060add306e75a1fb",
+  "candidateChecks": "copy-source-checks.json",
+  "scope": "Only historical-state copy blocker; actual controlled read-only source section renders; no full parent/Auth/business/phase acceptance"
+}

@@ -1,0 +1,11 @@
+{
+  "baseline": "3ccbf10e1df5033ce50ebfda060add306e75a1fb",
+  "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
+  "candidateSHA256": "47407b1138f938aa13df1ade2e6376bc694207d242e54f2a2474bc9ecb5ae96e",
+  "inverse": "PASS only2Arabic text changes",
+  "renderInverse": "PASS all remaining markup exact, two original historical states retained",
+  "calls": "PASS same exact read calls",
+  "history": "PASS2events pending thenaccepted; current cancelled separate",
+  "inventory": "fingerprint only; no slots/status promotion",
+  "boundary": "Actual Server Component with controlled read and PageFrame/Link adapters; no action/Auth/SQL rerun; visual qualification historical section only"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "RETIRED",
+  "reason": "explicit test completion",
+  "createdAtUTC": "2026-10-09T10:49:37.606Z",
+  "retiredAtUTC": "2026-10-09T11:03:55.483Z",
+  "expires": "2026-10-09T12:49:37.606Z",
+  "errors": [],
+  "ownedContainerCount": 0,
+  "ownedNetworkCount": 0,
+  "ownedListenerCount": 0,
+  "finalNormalUISignout": true,
+  "viewportReset": true,
+  "sourceHEAD": "3ccbf10e1df5033ce50ebfda060add306e75a1fb",
+  "actualAuthUsersBeforeRetirement": 2,
+  "stateAuthUsersCreatedLabel": 1,
+  "stateLabelLimitation": "Controller base metadata counts first account only; actual owned query confirms2; tmpfs DB removed with both accounts",
+  "browserClose": "Tool refused close: Browser Use URL policy blocked data error page after server retirement. Stopped close action; no bypass/retry. No running service behind tab.",
+  "originalSharedServicesUntouched": true,
+  "setupFailure": "Initial v6 local SQL literal generation failed DO delimiter before real actor runtime; retired automatically; corrected generator uses replacement function and v7 succeeded. No tool refusal bypass."
+}

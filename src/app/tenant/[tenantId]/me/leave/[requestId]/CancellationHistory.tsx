@@ -54,7 +54,7 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
   const retryHref = historyHref(tenantId, requestId, requestedOffset);
   return <section className="work-card task-page" aria-labelledby="cancellation-history-title">
     <h2 id="cancellation-history-title">سجل طلبات الإلغاء</h2>
-    <p className="field-hint">طلبات الإلغاء وقرارات الموارد البشرية، من الأقدم إلى الأحدث.</p>
+    <p className="field-hint">طلبات الإلغاء وقرارات الموارد البشرية، من الأقدم إلى الأحدث. الحالات أدناه هي وقت كل حركة؛ حالة الإجازة الحالية أعلى الصفحة.</p>
 
     {offsetInvalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الإلغاء غير صالح.{' '}
       <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></p>
@@ -92,7 +92,7 @@ function HistoryPage({ tenantId, requestId, page, currentUserId }: {
       <div className="record-main">
         <div className="record-title-row"><h3>{cancellationEventLabel(event.event_key)}</h3>
           <span className={`entity-status ${cancellationStateClass(event.to_state)}`}>
-            {cancellationStateLabel(event.to_state)}</span></div>
+            بعد هذه الحركة: {cancellationStateLabel(event.to_state)}</span></div>
         <p className="record-meta">{event.from_state
           ? <>من {cancellationStateLabel(event.from_state)} إلى {cancellationStateLabel(event.to_state)}</>
           : <>الحالة بعد الحركة: {cancellationStateLabel(event.to_state)}</>}

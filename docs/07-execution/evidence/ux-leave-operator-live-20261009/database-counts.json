@@ -1,0 +1,12 @@
+{
+  "database": "business_platform_ux_owned_qa",
+  "requests": 1,
+  "authUsers": 2,
+  "userLimit": 3,
+  "tenantState": "active",
+  "requestState": "cancelled",
+  "cancellations": 1,
+  "lifecycleAudit": 2,
+  "cancellationEvents": 2,
+  "source": "Read-only owned database count query before retirement; no rows/secrets exported"
+}

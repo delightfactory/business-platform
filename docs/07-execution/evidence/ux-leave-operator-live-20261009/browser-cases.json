@@ -1,0 +1,90 @@
+{
+  "source": "3ccbf10e1df5033ce50ebfda060add306e75a1fb",
+  "environment": "owned loopback v7 normal GoTrue actual Next PostgREST; synthetic actors",
+  "cases": [
+    {
+      "id": "R6-employee-submit",
+      "source": "3ccbf10e1df5033ce50ebfda060add306e75a1fb",
+      "actor": "synthetic employee normal GoTrue UI",
+      "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/me/leave/07347e5b-e1d1-407c-88c0-a980bba8bdb3?state=submitted",
+      "result": "submitted awaiting HR; 2 days 2026-10-12..13; no balance held; withdraw entry; empty cancellation history"
+    },
+    {
+      "id": "R8-today-leave-queue",
+      "actor": "synthetic HR",
+      "result": "actual submitted request count1 with leave/cancellation source links; no seeded outcomes"
+    },
+    {
+      "id": "R6-HR-approve",
+      "actor": "synthetic HR normal login",
+      "url": "http://127.0.0.1:3654/tenant/f5100000-0000-4000-8000-000000000001/leave/requests/07347e5b-e1d1-407c-88c0-a980bba8bdb3?state=approved",
+      "result": "approved2days unpaid; required reason persisted; no balance consumed; future request nonhistorical; cancellation and replacement retained"
+    },
+    {
+      "id": "R6-self-cancel-pending",
+      "actor": "synthetic employee",
+      "result": "approved remains; one pending cancellation with own reason/history; no second submission control; HR responsible"
+    },
+    {
+      "id": "R8-today-cancellation-queue",
+      "result": "submittedcount0/cancellationcount1 from actual employee mutation; original-request review link"
+    },
+    {
+      "id": "R6-HR-cancel-terminal",
+      "result": "cancel accepted; request revoked; 2 cancellation events with reasons; no current decision; no consumed balance"
+    },
+    {
+      "id": "R3-company-suspend",
+      "result": "actual state suspended; reason required; neutral state feedback not URL-only success"
+    },
+    {
+      "id": "R3-suspended-tenant-boundary",
+      "result": "same real HR session denied tenant work; suspended message and choose another company; no work data"
+    },
+    {
+      "id": "R3-company-restore",
+      "result": "actual lifecycle active again; same company; required reason; own permissions retained"
+    },
+    {
+      "id": "R3-company-limit",
+      "result": "2active users; cap3 actually stored; own scope retained; no repeated company selection; neutral receipt policy"
+    },
+    {
+      "id": "R3-company-context-units",
+      "result": "same tenant across lifecycle→commercial→entitlements; 5 source-valid capabilities with current state/dates/dependencies; no mutation or newly expanded access"
+    },
+    {
+      "id": "R6-employee-terminal-followup",
+      "actor": "employee normal GoTrue login",
+      "result": "cancelled; authoritative terminal feedback; own2event cancellationhistory; no new cancellation control; no HR identities leaked"
+    },
+    {
+      "id": "R3-employee-operator-denial",
+      "result": "expected application denial; no operator task entries or mutation controls; no privileged data"
+    }
+  ],
+  "geometry": [
+    {
+      "cairo": "Cairo, sans-serif",
+      "dir": "rtl",
+      "heading": "إجازة اختبار بدون أجر",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "cairo": "Cairo, sans-serif",
+      "dir": "rtl",
+      "heading": "إجازة اختبار بدون أجر",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "cairo": "Cairo, sans-serif",
+      "dir": "rtl",
+      "heading": "إجازة اختبار بدون أجر",
+      "scrollWidth": 1366,
+      "width": 1366
+    }
+  ],
+  "limitations": "No full R3/R6/R8 or every role/financial/provider/unknown/a11y acceptance. No numeric before-redesign speed or coverage claim. Initial fullPage images invalid cropped artifact, excluded from visual evidence; viewport images authoritative for depicted states. No app code changes."
+}

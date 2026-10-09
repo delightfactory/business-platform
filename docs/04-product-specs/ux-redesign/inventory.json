@@ -740,7 +740,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
       "phase": "R6",
-      "sha256": "4abc3a5c00f1155e5d98e9e206ee6ec9efa2126d3a55db8c14f69ad41441164a"
+      "sha256": "47407b1138f938aa13df1ade2e6376bc694207d242e54f2a2474bc9ecb5ae96e"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/DayBreakdown.tsx",
