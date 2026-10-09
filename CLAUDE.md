@@ -1,3 +1,5 @@
+مرحلة التحول البصري (ux/visual-concept-c) تعمل وفق docs/07-execution/ux-visual-concept-c-brief.md وdocs/07-execution/ux-visual-concept-c-plan.md؛ الحوكمة فيهما تتقدم لهذه المرحلة فقط.
+
 @AGENTS.md
 
 # Claude execution instructions
