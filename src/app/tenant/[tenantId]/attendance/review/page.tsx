@@ -1,3 +1,4 @@
+import { Avatar } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -52,7 +53,7 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
         ? <AttendanceBulkApprovalForm tenantId={tenantId} date={date} rows={queue.items.filter((row) => row.can_bulk_approve)} />
         : <ul className="record-list attendance-review-list">
         {queue.items.map((row) => <li className="record-card" key={row.id}>
-          <div className="record-main"><div className="record-title-row"><h2>{row.full_name}</h2><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></div>
+          <div className="record-main"><div className="record-title-row"><Avatar name={row.full_name} size={40}/><h2>{row.full_name}</h2><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></div>
             <p className="record-meta">رقم الموظف: <bdi>{row.employee_code}</bdi></p>
             {row.exception_code && <p className="form-message form-error">{exceptionLabel(row.exception_code)} · المسؤول: {ownerLabel(row.owner_permission)}</p>}
             {!row.exception_code && row.status === 'ready' && <p className="record-meta">اليوم مكتمل ولا توجد استثناءات؛ يمكن مراجعته واعتماده.</p>}

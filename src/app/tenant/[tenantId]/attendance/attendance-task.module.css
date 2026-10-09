@@ -1,8 +1,8 @@
 .controls { min-width: 0; padding: 0; margin: 0; border: 0; }
 .formatValue { white-space: nowrap; }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; padding: 0; margin-block: 1rem; list-style: none; }
-.steps li { padding: .65rem .8rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--surface-subtle); line-height: 1.8; }
-.steps li[aria-current="step"] { border-color: var(--color-brand); background: var(--color-brand-soft); font-weight: 650; }
+.steps li { padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface-2); line-height: 1.8; font-size: 13px; color: var(--muted); }
+.steps li[aria-current="step"] { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 600; }
 .sectionNav { display: flex; flex-wrap: wrap; gap: .65rem; margin-block: 1rem; }
 .sectionNav a { display: inline-flex; align-items: center; min-height: var(--control-height); padding: .45rem .75rem; border: 1px solid var(--color-control-border); border-radius: .5rem; color: var(--color-text); text-decoration: none; background: var(--surface-base); }
 .sectionNav a:hover { background: var(--color-brand-soft); }

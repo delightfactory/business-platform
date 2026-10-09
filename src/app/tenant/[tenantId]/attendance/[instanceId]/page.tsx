@@ -1,3 +1,5 @@
+import { DecisionPanel } from '@/components/patterns/decision-panel/decision-panel';
+import { AllocationStepper } from '@/components/patterns/allocation-stepper/allocation-stepper';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -73,10 +75,9 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       </nav>
     </section>
 
-    {classificationReview && <section className="work-card task-page" aria-labelledby="classification-review-title">
-      <h2 id="classification-review-title">{currentFact ? 'تصحيح نتيجة اليوم' : 'مراجعة نتيجة اليوم'}</h2>
+    {classificationReview && <DecisionPanel id="classification-review-title" person={employeeName} kind="نتيجة يوم العمل" title={currentFact ? 'تصحيح نتيجة اليوم' : 'مراجعة نتيجة اليوم'} facts={[{text: 'راجع التسجيلات والإجازة قبل اعتماد النتيجة. يبقى الدليل الأصلي وسجل الاعتماد محفوظين.'}]}>
       <ClassificationReviewForm tenantId={tenantId} instanceId={instanceId} review={classificationReview} />
-    </section>}
+    </DecisionPanel>}
 
     <section className={`work-card task-page ${styles.timeline}`} aria-labelledby="punches-title">
       <div className="record-title-row"><h2 id="punches-title">تسجيلات الحضور</h2><span className="record-meta">{punches.length} تسجيل</span></div>
@@ -147,7 +148,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
       {!overtimePanel ? <p className="form-message form-error">تعذر تحميل مراجعة العمل الإضافي. لم يُعتمد أي مرشح.</p>
         : overtimeCandidates.length === 0 ? <p className="empty-state">لا يوجد مرشح إضافي لهذا اليوم.</p>
           : <ol className="record-list attendance-overtime-list">{overtimeCandidates.map((candidate) => <li className="record-card" key={candidate.id}>
-            <div className="record-main">
+            <DecisionPanel person={employeeName} kind="عمل إضافي" title={`${candidate.candidate_minutes} دقيقة تحتاج تصنيفًا`} values={[{label: 'الكمية بعد التقريب', value: `${candidate.candidate_minutes} دقيقة`}, {label: 'قبل التقريب', value: `${candidate.raw_minutes} دقيقة`}]} facts={[{text: 'وزّع كامل الدقائق وفق سجل الدوام والسياسة المعتمدة. لا يستنتج النظام فئات الليل أو الراحة أو العطلة.'}]}>
               <div className="record-title-row"><h3>كمية عمل إضافي مرشحة</h3><span className={`entity-status ${candidate.decision === 'approved' ? 'is-active' : 'is-inactive'}`}>{(candidate.decision === 'pending' || candidate.decision === 'classification_pending') && (instance.status !== 'approved' || currentFact?.id !== candidate.attendance_fact_id) ? 'معلّق حتى تحديث اعتماد الحضور' : overtimeDecisionLabel(candidate.decision)}</span></div>
               <p className="record-meta">الكمية بعد التقريب: {candidate.candidate_minutes} دقيقة · الزمن الزائد قبل التقريب: {candidate.raw_minutes} دقيقة</p>
               <p className="field-hint">يلزم توزيع كامل الدقائق على الفئات الأربع. يحدد المراجع التصنيف بناءً على سجل الدوام والسياسة المعتمدة؛ لا يستنتج النظام ليلًا أو راحة أسبوعية أو عطلة رسمية.</p>
@@ -156,23 +157,18 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
               {(candidate.decision === 'pending' || candidate.decision === 'classification_pending' || candidate.decision === 'approved') && overtimePanel.can_review === true && entitlementEnabled && instance.status === 'approved' && currentFact?.id === candidate.attendance_fact_id && <div className="attendance-overtime-actions">
                 <OvertimeClassificationForm candidateMinutes={candidate.candidate_minutes} action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="approved" />
-                  <fieldset className="attendance-form-grid"><legend>{candidate.classification ? 'إعادة تصنيف الكمية' : 'توزيع دقائق العمل الإضافي'}</legend>
-                    <label>عادي نهاري بالدقائق<input name="ordinary_day" type="number" min="0" step="1" required /></label>
-                    <label>عادي ليلي بالدقائق<input name="ordinary_night" type="number" min="0" step="1" required /></label>
-                    <label>راحة أسبوعية بالدقائق<input name="weekly_rest" type="number" min="0" step="1" required /></label>
-                    <label>عطلة رسمية بالدقائق<input name="official_holiday" type="number" min="0" step="1" required /></label>
-                  </fieldset>
+                  <AllocationStepper minutes={candidate.candidate_minutes} />
                   <p className="field-hint">يجب أن يساوي مجموع الفئات {candidate.candidate_minutes} دقيقة بالضبط. إدخال كل فئة مطلوب، بما في ذلك صفر عند عدم انطباقها.</p>
                   <label className="attendance-full-field">سبب التصنيف أو ملاحظة الدليل <input name="reason" minLength={3} maxLength={500} required /></label>
                   <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ حفظ التصنيف..." label={candidate.classification ? 'حفظ التصنيف الجديد' : 'اعتماد الكمية وتصنيفها'} />
                 </OvertimeClassificationForm>
-                {candidate.decision === 'pending' && <OfflineForm action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
+                {candidate.decision === 'pending' && <details className="task-disclosure"><summary>رفض مرشح العمل الإضافي</summary><OfflineForm action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="rejected" />
                   <label className="attendance-full-field">سبب الرفض <input name="reason" minLength={3} maxLength={500} required /></label>
                   <OfflineSubmitButton className="secondary-button" pendingLabel="جارٍ الحفظ..." label="رفض المرشح" />
-                </OfflineForm>}
+                </OfflineForm></details>}
               </div>}
-            </div>
+            </DecisionPanel>
           </li>)}</ol>}
     </section>
   </PageFrame>;

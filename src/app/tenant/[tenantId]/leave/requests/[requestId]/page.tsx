@@ -1,3 +1,5 @@
+import { DecisionPanel } from '@/components/patterns/decision-panel/decision-panel';
+import { KeyValueStrip } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -142,7 +144,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
         ? <>أُرسل في <bdi>{formatInstant(request.submittedAt)}</bdi> · </>
         : 'لم يُرسل بعد · '}{nextOwnerText(request.state, pending !== null)}</p>
 
-      <dl className="snapshot-grid">
+      <KeyValueStrip items={[{label: 'الفترة', value: `${request.startDate} — ${request.endDate}`}, {label: 'المدة', value: `${formatDays(request.totalUnits)} يوم`}, {label: 'السبب', value: request.reason || 'غير مسجل'}]} /><details className="task-disclosure"><summary>بيانات الطلب وسجل التوقيت</summary><dl className="snapshot-grid">
         <div><dt>الحالة</dt><dd>{stateLabel(request.state)}</dd></div>
         <div><dt>المسؤول الحالي</dt><dd>{nextOwnerText(request.state, pending !== null)}</dd></div>
         <div><dt>الموظف</dt><dd>{request.employeeName}</dd></div>
@@ -159,7 +161,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
         {request.submittedAt && <div><dt>وقت الإرسال</dt><dd><bdi>{formatInstant(request.submittedAt)}</bdi></dd></div>}
         {request.approvedAt && <div><dt>وقت الاعتماد</dt><dd><bdi>{formatInstant(request.approvedAt)}</bdi></dd></div>}
         {request.cancelledAt && <div><dt>وقت إلغاء الاعتماد</dt><dd><bdi>{formatInstant(request.cancelledAt)}</bdi></dd></div>}
-      </dl>
+      </dl></details>
 
       {request.days.length > 0 && <details className="task-disclosure">
         <summary className="secondary-button">تفاصيل أيام الطلب · {request.days.length} يوم</summary>
@@ -201,8 +203,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
       </p>}
     </section>
 
-    {canReview && <section className="work-card task-page" aria-labelledby="leave-review-title">
-      <h2 id="leave-review-title">قرار الطلب</h2>
+    {canReview && <DecisionPanel id="leave-review-title" person={request.employeeName} kind="طلب إجازة" title="قرار طلب الإجازة" values={[{label: 'نوع الإجازة', value: request.leaveTypeName}, {label: 'المدة', value: `${formatDays(request.totalUnits)} يوم`}]} facts={[{text: 'الاعتماد يستهلك الرصيد للأنواع التي تتطلب رصيدًا فقط؛ الرفض لا يستهلك رصيدًا.'}]}>
       <p className="field-hint">راجع أثر الإجازة ثم اختر القرار واكتب سببه. تحديث الحساب مطلوب فقط إذا تغيّرت بياناته.</p>
       {!access.newWorkEnabled && <p className="form-message" role="status">الاعتماد والتحديث غير متاحين حاليًا؛ يمكنك رفض الطلب.</p>}
       <ReviewIntentForm decision canApprove={access.newWorkEnabled} intent={access.newWorkEnabled ? "approve" : "reject"}
@@ -214,7 +215,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
           submitLabel="تحديث الحساب" pendingLabel="جارٍ التحديث…" backHref={path}
           hint="يعيد حساب أيام الطلب دون اتخاذ قرار بالموافقة أو الرفض." />
       </details>}
-    </section>}
+    </DecisionPanel>}
     {(access.canApprove || access.canManage) && <section className="work-card task-page" aria-labelledby="leave-cancellation-title">
       <h2 id="leave-cancellation-title">إلغاء الاعتماد</h2>
       {historyFailed

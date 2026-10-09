@@ -1,3 +1,4 @@
+import { Avatar } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -124,15 +125,15 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
               <ul className="record-list">{requests.items.map((request) => <li className="record-card" key={request.id}>
                 <div className="record-main">
                   <div className="record-title-row">
-                    <h3>{request.employeeName}</h3>
+                    <Avatar name={request.employeeName} size={40}/><h3>{request.employeeName}</h3>
                     <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span>
                   </div>
                   <p className="record-meta">رقم الموظف: <bdi>{request.employeeCode}</bdi> · {request.leaveTypeName}</p>
                   <p className="record-meta">من <bdi>{request.startDate}</bdi> إلى <bdi>{request.endDate}</bdi>
                     · {formatDays(request.totalUnits)} يوم{request.isHalfDay ? ' · نصف يوم' : ''}</p>
-                  <p className="record-meta">{request.submittedAt
+                  <details className="task-disclosure"><summary>تفاصيل الإرسال والمتابعة</summary><p className="record-meta">{request.submittedAt
                     ? <>أُرسل في <bdi>{formatInstant(request.submittedAt)}</bdi> · </>
-                    : 'لم يُرسل بعد · '}{nextOwnerText(request.state, false)}</p>
+                    : 'لم يُرسل بعد · '}{nextOwnerText(request.state, false)}</p></details>
                 </div>
                 <PendingLink className="secondary-button" href={detailHref(tenantId, request.id)}>فتح الطلب</PendingLink>
               </li>)}</ul>
@@ -173,7 +174,7 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
               <ul className="record-list">{cancellations.items.map((cancellation) => <li className="record-card" key={cancellation.cancellationId}>
                 <div className="record-main">
                   <div className="record-title-row">
-                    <h3>{cancellation.employeeName}</h3>
+                    <Avatar name={cancellation.employeeName} size={40}/><h3>{cancellation.employeeName}</h3>
                     <span className="entity-status is-pending">طلب إلغاء بانتظار القرار</span>
                   </div>
                   <p className="record-meta">رقم الموظف: <bdi>{cancellation.employeeCode}</bdi> · {cancellation.leaveTypeName}</p>

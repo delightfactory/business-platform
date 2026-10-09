@@ -6,7 +6,7 @@
 .sectionNav { display: flex; flex-wrap: wrap; gap: .65rem; }
 .sectionNav a { display: inline-flex; align-items: center; min-height: var(--touch-target-size); padding: .45rem .75rem; border: 1px solid var(--color-control-border); border-radius: .5rem; background: var(--surface-base); color: var(--color-text); text-decoration: none; }
 .sectionNav a:hover { background: var(--color-brand-soft); }
-.fieldGroup { padding: 1rem !important; margin-block: .5rem !important; border: 1px solid var(--color-border) !important; border-radius: .5rem; background: var(--surface-subtle); }
+.fieldGroup { padding: 24px !important; margin-block: 1rem !important; border: 1px solid var(--line) !important; border-radius: var(--r-card); background: var(--surface); display: grid; gap: 12px; }
 .fieldGroup legend { padding-inline: .4rem; font-weight: 700; color: var(--color-text); }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; padding-inline-start: 0; list-style-position: inside; line-height: 1.8; }
 .queue :global(.record-card) { padding: 1rem; }
