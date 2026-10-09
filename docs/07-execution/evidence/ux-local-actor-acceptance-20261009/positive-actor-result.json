@@ -1,0 +1,92 @@
+{
+  "sourceHead": "681dca1ca98b90b57ddac39c9e1331aa6d4bcfd4",
+  "schemaSource": "c93f09ff94d2a67bc1309355c8c2bf9a8624cf0f",
+  "exitCode": 0,
+  "expected": 18,
+  "passed": 18,
+  "sha256": "ce933974326d7ec911c3459613842c32e9951ac9c98be707db420a7672bed450",
+  "cases": [
+    "active/profile",
+    "active/leave-access",
+    "active/leave-balances",
+    "active/leave-requests",
+    "active/attendance-setup",
+    "active/missing-detail",
+    "cross-tenant/profile",
+    "cross-tenant/attendance",
+    "cross-tenant/leave-access",
+    "cross-tenant/leave-balances",
+    "cross-tenant/leave-requests",
+    "cross-tenant/leave-detail",
+    "inactive-membership/profile",
+    "inactive-membership/attendance",
+    "inactive-membership/leave-access",
+    "inactive-membership/leave-balances",
+    "inactive-membership/leave-requests",
+    "inactive-membership/leave-detail"
+  ],
+  "scope": "Real authenticated PostgreSQL caller with transaction-only synthetic active linked employee, empty own history/missing assignment, cross-tenant and inactive membership; supplied claims are not Auth provider/login proof",
+  "untested": [
+    "Existing nonempty own/other employee records",
+    "Successful attendance capture",
+    "Leave preview/submit/cancellation",
+    "Actual Auth login/session/browser return"
+  ],
+  "noPasswordsCreated": true,
+  "after": {
+    "users": 0,
+    "tenants": 0,
+    "employees": 0
+  },
+  "sourceSlots": [
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:13:1072",
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "name": "attendance_mobile_snapshot",
+      "phase": "R5"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:47:2184",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "name": "leave_my_request_detail",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx:49:2404",
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "name": "leave_access_snapshot",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/new/page.tsx:22:1030",
+      "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
+      "name": "leave_access_snapshot",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:53:2115",
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "name": "leave_access_snapshot",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:69:3154",
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "name": "leave_my_balances",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/leave/page.tsx:72:3345",
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "name": "leave_my_requests",
+      "phase": "R6"
+    },
+    {
+      "id": "RPC:src/app/tenant/[tenantId]/me/page.tsx:30:1169",
+      "file": "src/app/tenant/[tenantId]/me/page.tsx",
+      "name": "tenant_my_employee_snapshot",
+      "phase": "R6"
+    }
+  ],
+  "testGuard": "Real migrated PostgreSQL and transaction-only synthetic fixtures; caller-visible outcomes, no internal mocks; variant denials generated without duplicated fixtures. Required positive boundary added, unchanged broad suites not repeated."
+}
