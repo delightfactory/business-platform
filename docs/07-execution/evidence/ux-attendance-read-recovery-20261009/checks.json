@@ -1,0 +1,104 @@
+{
+  "baseline": "3cbe6dee755a534f6887681433f755183073b3b4",
+  "cases": [
+    {
+      "name": "no-link optional site/time",
+      "accepted": true
+    },
+    {
+      "name": "available valid",
+      "accepted": true
+    },
+    {
+      "name": "history optional time",
+      "accepted": true
+    },
+    {
+      "name": "unknown labels/date fallback",
+      "accepted": true
+    },
+    {
+      "name": "null",
+      "accepted": false
+    },
+    {
+      "name": "array",
+      "accepted": false
+    },
+    {
+      "name": "missing history",
+      "accepted": false
+    },
+    {
+      "name": "null history",
+      "accepted": false
+    },
+    {
+      "name": "bad scope",
+      "accepted": false
+    },
+    {
+      "name": "bad availability",
+      "accepted": false
+    },
+    {
+      "name": "bad direction",
+      "accepted": false
+    },
+    {
+      "name": "bad geofence",
+      "accepted": false
+    },
+    {
+      "name": "negative version",
+      "accepted": false
+    },
+    {
+      "name": "bad retention",
+      "accepted": false
+    },
+    {
+      "name": "null row",
+      "accepted": false
+    },
+    {
+      "name": "bad row direction",
+      "accepted": false
+    },
+    {
+      "name": "bad history optional boolean",
+      "accepted": false
+    },
+    {
+      "name": "bad review shape",
+      "accepted": false
+    },
+    {
+      "name": "unknown review decision",
+      "accepted": false
+    },
+    {
+      "name": "excluded review",
+      "accepted": true
+    }
+  ],
+  "passed": 20,
+  "normalUiAndAuthorityInverse": "PASS",
+  "mobilePunchUnchanged": true,
+  "sourceHashes": [
+    {
+      "file": "src/lib/attendance-channel.ts",
+      "sha256": "e1f2d0ad60104f1098bfe4e1a5b9723ae330d0acb9f3b91bb624272a6cd7154f"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "07450fb8cbc559965d7a44864ee041d2904e2e2f75a96bf0678607bbf11b7f33"
+    }
+  ],
+  "native": "NOT RUN",
+  "realAuth": "Pending owner decision; not used or bypassed",
+  "visual": {
+    "codex": "NOT VISUALLY VERIFIED",
+    "claude": "NOT VISUALLY VERIFIED"
+  }
+}

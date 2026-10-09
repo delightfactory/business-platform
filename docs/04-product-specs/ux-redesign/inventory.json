@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "324814a0dd13adf3c32574c6879c710040b6f8c1",
+  "sourceHead": "3cbe6dee755a534f6887681433f755183073b3b4",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -735,7 +735,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
       "phase": "R5",
-      "sha256": "f3e36244362b885dcc04a773c15888905395446b8f67055c7d9aaf3d1e93697e"
+      "sha256": "07450fb8cbc559965d7a44864ee041d2904e2e2f75a96bf0678607bbf11b7f33"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/CancellationHistory.tsx",
@@ -1420,7 +1420,7 @@
     {
       "file": "src/lib/attendance-channel.ts",
       "phase": "R5",
-      "sha256": "fbfc755e43469212c6b0d264e4b41d5fff37167542f49aa2e19e3a11413646cd"
+      "sha256": "e1f2d0ad60104f1098bfe4e1a5b9723ae330d0acb9f3b91bb624272a6cd7154f"
     },
     {
       "file": "src/lib/employee-account-delivery.test.mjs",
@@ -5343,9 +5343,9 @@
       "resolution": "literal"
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:13:1072",
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:15:1087",
       "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
-      "line": 13,
+      "line": 15,
       "phase": "R5",
       "name": "attendance_mobile_snapshot",
       "expression": null,

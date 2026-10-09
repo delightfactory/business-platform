@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "324814a0dd13adf3c32574c6879c710040b6f8c1",
+  "sourceSnapshot": "3cbe6dee755a534f6887681433f755183073b3b4",
   "status": "Proposed",
   "items": [
     {
@@ -3473,7 +3473,7 @@
       "evidence": null
     },
     {
-      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:13:1072",
+      "id": "RPC:src/app/tenant/[tenantId]/me/attendance/page.tsx:15:1087",
       "category": "rpcCalls",
       "phase": "R5",
       "status": "pending",

@@ -1,0 +1,35 @@
+{
+  "samples": [
+    {
+      "case": "assignment",
+      "snapshot": {
+        "scope": "f9110000-0000-4000-8000-000000000001:f9100000-0000-4000-8000-000000000001:37f85e1d-1991-4543-98c5-bba2dd551ea1:84d8c11dea8d8b454fc7b433f0053ea7",
+        "reason": "assignment",
+        "history": [],
+        "available": false,
+        "site_name": null,
+        "timezone_name": null,
+        "next_direction": "in",
+        "policy_version": 0,
+        "geofence_required": false,
+        "retention_seconds": 60
+      }
+    },
+    {
+      "case": "link",
+      "snapshot": {
+        "scope": "f9110000-0000-4000-8000-000000000001:f9100000-0000-4000-8000-000000000001",
+        "reason": "link",
+        "history": [],
+        "available": false,
+        "next_direction": "in",
+        "policy_version": 0,
+        "geofence_required": false,
+        "retention_seconds": 60
+      }
+    }
+  ],
+  "accepted": 2,
+  "rollback": true,
+  "noCredentialsOrAccessCreated": true
+}
