@@ -1,0 +1,57 @@
+{
+  "baseline": "9833ed0572e05a4466118d96dc6cc26fa0920add",
+  "sourceCandidate": {
+    "file": "src/app/workspace.css",
+    "sha256": "b53bd29b65492ecd20ad1409d97198fa19ea0640c5bb36468b4ecf24dc4a98be",
+    "actualRuntimeSameBytes": true,
+    "rulesAdded": 8,
+    "oldRulesUnchanged": true
+  },
+  "codex": {
+    "verdict": "MATCH WITH ACCEPTED DEVIATIONS for depicted channel state; actual bounded HR/employee operations PASS",
+    "lightWidths": [
+      390,
+      768,
+      1366
+    ],
+    "darkWidths": [
+      390,
+      768,
+      1366
+    ],
+    "keyboardEditAndStopDisclosures": "Enter open/close PASS; no mutation submitted",
+    "cropCorrection": "Original768 captures invalid/superseded; final fixed captures valid",
+    "sidebar": "Preserved baseline per pinned compatibility review navigation row; not introduced by patch",
+    "noMeasuredSpeedClaim": true
+  },
+  "runtime": {
+    "ownedDatabase": "business_platform_ux_owned_qa",
+    "syntheticActors": 2,
+    "realGoTrueAndPostgREST": true,
+    "sourceBase": "9833ed0572e05a4466118d96dc6cc26fa0920add",
+    "fixture": "Existing Cube5 synthetic QA fixture; only exact owned database guard adapted",
+    "activeUntilUTC": "2026-10-09T11:59:54.184Z",
+    "cleanup": "Still owned-live for next original-plan batch; retire by deadline/end"
+  },
+  "checks": {
+    "cssParse": "PASS",
+    "scopedRuleInversion": "PASS",
+    "sameRuntimeBytes": "PASS",
+    "diffWhitespace": "PASS",
+    "reviewRegisterUnchanged": true,
+    "heavyTests": "Not repeated for CSS-only source delta"
+  },
+  "businessCounts": {
+    "employeeCount": 2,
+    "newEmployeeCount": 1,
+    "employmentCount": 1,
+    "assignmentCount": 1,
+    "compensationCount": 1,
+    "onboardingAuditCount": 1,
+    "eventCount": 1,
+    "acceptedCanonicalResultCount": 1,
+    "locationRows": 0,
+    "authUsers": 2
+  },
+  "open": "Full R0-R8, all roles/states, real device/geofence/import/provider/financial/concurrency, full semantic/a11y coverage; D16 deferred"
+}

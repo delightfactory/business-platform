@@ -680,6 +680,14 @@
 .channel-page { --control-height: var(--touch-target-size); width: min(100%, var(--work-content-max, 72rem)); margin-inline: auto; display: grid; gap: 1.25rem; min-width: 0; }
 .channel-page :is(button, .primary-button, .secondary-button, summary) { min-height: var(--touch-target-size); }
 .channel-page summary { display: flex; align-items: center; cursor: pointer; padding-block: .5rem; }
+.channel-page .workspace-records-panel:not(.channel-read-state) { padding: 1rem; }
+.channel-page :is(.task-disclosure, .danger-disclosure) > summary { max-width: 100%; width: fit-content; gap: .5rem; margin-block: .5rem; padding: .5rem var(--control-padding-inline); border: 1px solid var(--color-control-border); border-radius: var(--radius-control); color: var(--text-secondary); background: var(--surface-subtle); font-size: .875rem; font-weight: 600; list-style: none; }
+.channel-page :is(.task-disclosure, .danger-disclosure) > summary::after { content: ''; width: .375rem; height: .375rem; flex: 0 0 auto; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.channel-page :is(.task-disclosure, .danger-disclosure)[open] > summary::after { transform: rotate(225deg); }
+.channel-page :is(.task-disclosure, .danger-disclosure) > summary::-webkit-details-marker { display: none; }
+.channel-page :is(.task-disclosure, .danger-disclosure) > summary:hover { background: var(--surface-inset); }
+.channel-page :is(.task-disclosure, .danger-disclosure) > summary:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
+.channel-page .danger-disclosure > summary { border-color: var(--status-danger-text); color: var(--status-danger-text); background: var(--status-danger-surface); }
 .channel-page :is(input, select, textarea) { width: 100%; min-width: 0; min-height: var(--touch-target-size); }
 .channel-page :is(fieldset, .record-main, .workspace-records-panel, .workspace-form-panel) { min-width: 0; }
 .channel-page .record-card { align-items: start; flex-wrap: wrap; }

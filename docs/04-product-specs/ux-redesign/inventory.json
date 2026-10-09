@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "c0a98bf505fedf711ffc029db41ef180c996785b",
+  "sourceHead": "9833ed0572e05a4466118d96dc6cc26fa0920add",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -1365,7 +1365,7 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "94772daaaf81ef86ce9866c337149383f58749611aff512957e9745aa9fce951"
+      "sha256": "b53bd29b65492ecd20ad1409d97198fa19ea0640c5bb36468b4ecf24dc4a98be"
     },
     {
       "file": "src/components/context-navigation-client.tsx",

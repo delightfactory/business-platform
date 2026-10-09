@@ -1,0 +1,14 @@
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"in","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":0,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"in","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":0,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"in","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":0,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"out","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":1,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"out","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":1,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"out","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":1,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"out","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":1,"scopeType":"string"}}
+{"status":200,"result":{"type":"object","isArray":false,"available":true,"reason":null,"next_direction":"out","policy_version":1,"retention_seconds":300,"geofence_required":false,"historyCount":1,"scopeType":"string"}}
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
+{"status":403,"result":{"type":"object","isArray":false,"code":"42501","message":"channel_self_forbidden","details":null,"hint":null,"historyCount":null,"scopeType":"undefined"}}
