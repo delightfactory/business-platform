@@ -1,0 +1,467 @@
+{
+  "baseline": "324814a0dd13adf3c32574c6879c710040b6f8c1",
+  "scope": "R6 actual two page bodies / three client forms; isolated synthetic SDK, action and outer tenant shell. No real Auth, roles, SQL or business mutation.",
+  "native": {
+    "typeIdle": {
+      "date": "2027-02-01",
+      "documentWidth": 375,
+      "open": true,
+      "reason": "سبب اختبار اصطناعي",
+      "source": "مرجع اختبار اصطناعي",
+      "viewport": 390
+    },
+    "typePending": {
+      "busy": "true",
+      "open": true,
+      "otherDisclosureOpen": false,
+      "statusVisible": [
+        "جارٍ حفظ الإصدار الجديد… لا تغلق الصفحة."
+      ]
+    },
+    "typeFailure": {
+      "busy": "false",
+      "documentWidth": 375,
+      "error": "فشل تجريبي: لم تُحفظ أي تغييرات. مدخلاتك باقية للمراجعة.",
+      "formCount": 2,
+      "hintIds": [
+        "_R_cpbn5ritpesnebn9esnelb_",
+        "_R_epbn5ritpesnebn9esnelb_"
+      ],
+      "open": true,
+      "reason": "سبب اختبار اصطناعي",
+      "source": "مرجع اختبار اصطناعي",
+      "viewport": 390
+    },
+    "typeRects": {
+      "documentWidth": 390,
+      "formRect": {
+        "width": 358,
+        "x": 16
+      },
+      "frameDisplay": "block",
+      "width": 390
+    },
+    "activationPending": {
+      "busy": "true",
+      "open": true,
+      "otherBusy": "false",
+      "summaryHint": "_R_epbn5ritpesnebn9esnelb_"
+    },
+    "activationFailure": {
+      "busy": "false",
+      "error": "فشل تجريبي: لم تُحفظ أي تغييرات. مدخلاتك باقية للمراجعة.",
+      "open": true,
+      "reason": "سبب إيقاف اصطناعي"
+    },
+    "typeBeforePending": {
+      "busy": "true",
+      "open": false,
+      "reason": "سبب اختبار اصطناعي",
+      "statusVisible": true,
+      "axPendingFeedbackPresent": false,
+      "rectsDoNotProveVisibility": true
+    },
+    "calendarPending": {
+      "busy": "true",
+      "documentWidth": 1351,
+      "open": true,
+      "theme": "dark",
+      "viewport": 1366
+    },
+    "calendarFailure": {
+      "busy": "false",
+      "error": "فشل تجريبي: لم تُحفظ أي تغييرات. مدخلاتك باقية للمراجعة.",
+      "holidayNames": [
+        "عطلة تجريبية"
+      ],
+      "open": true,
+      "reason": "سبب اختبار تقويم",
+      "restDays": [
+        "5",
+        "6"
+      ],
+      "source": "مرجع اختبار تقويم"
+    },
+    "readOnly": {
+      "bodyText": "العودة إلى إعدادات الجهة\n\nأنواع الإجازة\n\nنوع إجازة تجريبي\nمفعّل\n\nمن 2026-01-01 · بدون نهاية محددة. يحتفظ كل تعديل بالإعدادات السابقة وتاريخ سريانها.\n\nالرمز المرجعي\n\nعرض فقط: يمكنك مراجعة إعدادات النوع دون تعديلها.\n\nإصدارات النوع\n\nالإعدادات الحالية والسابقة، من الأحدث إلى الأقدم.\n\nالإصدار 1 · من 2026-01-01 · بدون نهاية محددة\n\nالأجر: الإجازة بأجر · خصم الرصيد: تُخصم أيامها من الرصيد\n\nالأيام: أيام العمل في التقويم (تستثني الراحة والعطلات) · نصف يوم: غير مسموح\n\nالمصدر: مرجع اصطناعي\n\nالموارد البشرية",
+      "documentWidth": 768,
+      "formCount": 0,
+      "summaryTexts": [
+        "الرمز المرجعي"
+      ],
+      "viewport": 768
+    },
+    "failedBefore": {
+      "heading": "هذا النوع لم يعد متاحًا",
+      "links": [
+        {
+          "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/types/44444444-4444-4444-8444-444444444444",
+          "text": "إعادة المحاولة"
+        },
+        {
+          "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+          "text": "العودة إلى إعدادات الجهة"
+        }
+      ],
+      "text": "هذا النوع لم يعد متاحًا\n\nلم نعثر على نوع الإجازة المطلوب ضمن إعدادات هذه الجهة. عُدّلت الصفحة بأحدث الإعدادات؛ راجع قائمة الأنواع ثم اختر ما تريد.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+    },
+    "readCases": [
+      {
+        "entity": "types",
+        "mode": "failed",
+        "forms": 0,
+        "heading": "تعذر تحميل إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/types/44444444-4444-4444-8444-444444444444",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر تحميل إعدادات الجهة\n\nلم نتمكن من تحميل الإعدادات والتحقق من نوع الإجازة المطلوب. أعد المحاولة أو عُد إلى إعدادات الجهة.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "types",
+        "mode": "denied",
+        "forms": 0,
+        "heading": "تعذر عرض إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر عرض إعدادات الجهة\n\nلا يمكن عرض هذه الإعدادات بصلاحية الحساب الحالية. عُد إلى إعدادات الجهة للمراجعة.\n\nالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "types",
+        "mode": "malformed",
+        "forms": 0,
+        "heading": "تعذر تحميل إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/types/44444444-4444-4444-8444-444444444444",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر تحميل إعدادات الجهة\n\nلم تصل إعدادات يمكن الاعتماد عليها. أعد المحاولة أو عُد إلى إعدادات الجهة.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "types",
+        "mode": "missing",
+        "forms": 0,
+        "heading": "هذا النوع لم يعد متاحًا",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/types/44444444-4444-4444-8444-444444444444",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "هذا النوع لم يعد متاحًا\n\nلم نعثر على نوع الإجازة المطلوب ضمن إعدادات هذه الجهة. عُدّلت الصفحة بأحدث الإعدادات؛ راجع قائمة الأنواع ثم اختر ما تريد.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "calendars",
+        "mode": "failed",
+        "forms": 0,
+        "heading": "تعذر تحميل إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/calendars/33333333-3333-4333-8333-333333333333",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر تحميل إعدادات الجهة\n\nلم نتمكن من تحميل الإعدادات والتحقق من التقويم المطلوب. أعد المحاولة أو عُد إلى إعدادات الجهة.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "calendars",
+        "mode": "denied",
+        "forms": 0,
+        "heading": "تعذر عرض إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر عرض إعدادات الجهة\n\nلا يمكن عرض هذه الإعدادات بصلاحية الحساب الحالية. عُد إلى إعدادات الجهة للمراجعة.\n\nالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "calendars",
+        "mode": "malformed",
+        "forms": 0,
+        "heading": "تعذر تحميل إعدادات الجهة",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/calendars/33333333-3333-4333-8333-333333333333",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "تعذر تحميل إعدادات الجهة\n\nلم تصل إعدادات يمكن الاعتماد عليها. أعد المحاولة أو عُد إلى إعدادات الجهة.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      },
+      {
+        "entity": "calendars",
+        "mode": "missing",
+        "forms": 0,
+        "heading": "هذا التقويم لم يعد متاحًا",
+        "links": [
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/calendars/33333333-3333-4333-8333-333333333333",
+            "text": "إعادة المحاولة"
+          },
+          {
+            "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+            "text": "العودة إلى إعدادات الجهة"
+          }
+        ],
+        "text": "هذا التقويم لم يعد متاحًا\n\nلم نعثر على التقويم المطلوب ضمن إعدادات هذه الجهة. عُدّلت الصفحة بأحدث الإعدادات؛ راجع قائمة التقويمات ثم اختر ما تريد.\n\nإعادة المحاولةالعودة إلى إعدادات الجهة\nالموارد البشرية"
+      }
+    ],
+    "failedAfterMetrics": {
+      "documentWidth": 768,
+      "heading": "تعذر تحميل إعدادات الجهة",
+      "width": 768
+    },
+    "scope": "Actual two server page bodies/three client forms and shared CSS in isolated synthetic fixture; provider/action and outer tenant shell substituted, no real roles/SQL/Auth",
+    "excludedImages": [
+      "type-pending-390.jpg",
+      "type-error-390.jpg"
+    ],
+    "exclusion": "Full-page capture caused invalid screenshot composition; viewport captures only accepted",
+    "activationObservation": "First visible-wait observation timed out; same live attempt later completed and was read once, no resubmission",
+    "measurement": "Same synthetic actor/type task/date/source/reason at390: baseline allows close while busy; candidate mouse+Space attempts keep owning form open. One baseline and one candidate observation, no population/task-time claim.",
+    "retryHierarchy": {
+      "documentWidth": 768,
+      "links": [
+        {
+          "class": "primary-button",
+          "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222/types/44444444-4444-4444-8444-444444444444",
+          "text": "إعادة المحاولة"
+        },
+        {
+          "class": "secondary-button",
+          "href": "/tenant/11111111-1111-4111-8111-111111111111/leave/settings/22222222-2222-4222-8222-222222222222",
+          "text": "العودة إلى إعدادات الجهة"
+        }
+      ],
+      "viewport": 768
+    }
+  },
+  "sourceIdentity": {
+    "finalSources": [
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/SettingsTask.tsx",
+        "initialSha256": "0ebff51c8fb96073552d90a84d2091293d88e9fb521f5c49ba549b71f5cba1e4",
+        "finalSha256": "0ebff51c8fb96073552d90a84d2091293d88e9fb521f5c49ba549b71f5cba1e4",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/SettingsLink.tsx",
+        "initialSha256": "d8ed97423d69b31b142af8f730bc6cce64f40fc2c7d435a483d80109c0ea6d11",
+        "finalSha256": "dbd825b02eaebbf61cc285957a886867cb944ec8f8f101206a90521bf6107bfe",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/rules.ts",
+        "initialSha256": "916ff3771835692f20766f5037ad973f237cfce3be4e1e2fe04cf3658bad23f8",
+        "finalSha256": "99a2e4914180baa4d0a277ecc90743b478951dc3105e4938f6aed6feec1361a7",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/access-gate.ts",
+        "initialSha256": "6ddc475e7cebfa625bbebafeb50eca4232d36a827cdef64e058c0c1798db25ac",
+        "finalSha256": "c78b08be353553af802cff363b65fb1f38b44e7652499a972f351f741c75c1d4",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/StatusCard.tsx",
+        "initialSha256": "7c733821d7e82aaa9cca987f38384c7872713c79bf3228a7fb5ae0fbfdf87a5d",
+        "finalSha256": "9f9129f1282842dc97ee29ae47c7786925ea92d028c44cfb6b1809a1872d2a7f",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/CalendarRuleFields.tsx",
+        "initialSha256": "3da76d88f0015c3fcb1adb3c69f71a4388ba05c8c58d671d9cdff56cafd4e023",
+        "finalSha256": "0e9217893b512453e544e9ecb2923d557177a0c2b8f57c7a6f39006e99088798",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/settings.module.css",
+        "initialSha256": "315e16a50b0bcf85a3bba6d511402a3e7a17587eee3a1615617e4d7fa72d3a9a",
+        "finalSha256": "5f68f71f6f8e3c5906e8ad58ed9ed038d5978d9adb0207b0b9d7f01699a395f5",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+        "initialSha256": "a9439ce245cbc260e87a566a3b816d7e2064291909d5f04c3cff54ed6bc6954a",
+        "finalSha256": "d524bb24a104ac7a1b1b96c6c4354d58eda129f3b47cb821441dc6c859db35c9",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+        "initialSha256": "ae7ebe05ae54bc70f487de8823dda21f0eb4a9a301a69809d9b0a17d799f526a",
+        "finalSha256": "ae7ebe05ae54bc70f487de8823dda21f0eb4a9a301a69809d9b0a17d799f526a",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+        "initialSha256": "caa30ca818b502b18d79f3f3dcc0239046e85f843eedebe426f0ad5447ce19b3",
+        "finalSha256": "d4f6862de4e2340d7b734ca3a07799cdc2c4f3408b7bc2845c1d7fe1cf0727df",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
+        "initialSha256": "5f81371008579b92dff794125bde926c8b0986877c1c8b6b9b30e9a4009f8ea2",
+        "finalSha256": "5f81371008579b92dff794125bde926c8b0986877c1c8b6b9b30e9a4009f8ea2",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/TypeActivationForm.tsx",
+        "initialSha256": "6de880166c92b9d2f07056926abff6c46f198f293f83219af438ef074896fdb4",
+        "finalSha256": "6de880166c92b9d2f07056926abff6c46f198f293f83219af438ef074896fdb4",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/app/globals.css",
+        "initialSha256": "526f394fee54475a68499b80c7ceeccbab7dff5097652e0556a0709ad30d3ee4",
+        "finalSha256": "317fb0350798cedff1dfc00fd13e2094a5616139897ae40b84bd7a80cdec7d5d",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/app/workspace.css",
+        "initialSha256": "6dc5c917711284808c306e0961e19da27f2b8d7697865ea1cb5889566061436c",
+        "finalSha256": "cdb13e15ce5cfc92f0630b817ecb5988461748fca605c19e53ec1dea8f2065a1",
+        "changedAfterManagerCapture": true
+      },
+      {
+        "file": "src/styles/tokens.css",
+        "initialSha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2",
+        "finalSha256": "93a457b310b81989beaf1def7b2a41d6b95107a46fa826bf36caefcbbb7e01d2",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/components/offline-submission.tsx",
+        "initialSha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2",
+        "finalSha256": "e5a3a65c7775fcf4f4fefc9bdc881598c3fd0ac505ae5446144a69168f055cc2",
+        "changedAfterManagerCapture": false
+      },
+      {
+        "file": "src/components/submit-button.tsx",
+        "initialSha256": "8f8f2231336b4fe61984b6de696ac37e8c9684e9f778f3168e9e8f93d823d61f",
+        "finalSha256": "7532704456537649e05334af7b462693f0d1a5c00e9efac9ffb84990c1ca86b5",
+        "changedAfterManagerCapture": true
+      }
+    ],
+    "finalChangedSourcesMatchFixture": true,
+    "managerBodyByteUnchangedAfterReadCorrection": true,
+    "owningFormsUnchanged": true,
+    "statusCardOneClassInverse": "settings-task-source-checks.cjs"
+  },
+  "checks": {
+    "groupedBuildAndTypeScript": {
+      "session": 61445,
+      "exitCode": 0,
+      "scope": "Both read branches; final retry class delta checked separately, no second heavy build"
+    },
+    "scopedLint": "PASS pages, StatusCard and checker",
+    "readPartitions": 8,
+    "readPartitionsPassed": 8,
+    "sourceInversions": "PASS two whole pages and one StatusCard class",
+    "registry": "299 files / 1734 slots; six ID migrations, zero additions, all statuses retained; 25 source-reviewed"
+  },
+  "visual": {
+    "codex": {
+      "verdict": "MATCH WITH ACCEPTED DEVIATIONS",
+      "scope": [
+        "type-error-viewport-390.jpg",
+        "type-visible-error-390.jpg",
+        "activation-error-390.jpg",
+        "calendar-error-1366.jpg",
+        "type-readonly-768.jpg",
+        "failed-after-primary-768.jpg"
+      ],
+      "limits": "Inspected page regions only, no whole R6 or tenant branding acceptance"
+    },
+    "claude": {
+      "verdict": "MATCH WITH ACCEPTED DEVIATIONS",
+      "sessionId": "14285166-816c-4eab-87f8-e90043f5a9ed",
+      "model": "claude-opus-5-5",
+      "effort": "medium",
+      "sourceVerdict": "SOURCE ACCEPT",
+      "readOnlyUnchanged": true,
+      "report": "# SOURCE ACCEPT\n\nI checked the exact patch against R0–R8 and the journey requirements, within the bounds you set.\n\n- **The read defect is fixed in both pages.**\n  - A `configResult.error` with code `42501` now shows neutral account-access text with no retry. Only the back link remains, so a denied account isn't asked to retry.\n  - Any other error, or data that `readConfiguration` rejects, now shows neutral \"couldn't load\" text with retry and return. It no longer says the type or calendar is missing.\n  - When the snapshot is valid but the record isn't in it, the existing \"no longer available\" text still shows.\n- **Nothing else changed.** The RPC name and params, gates, `card` helper, form props, actions, keys, date, reason and history code are the same. No permission, financial, backend, storage or retry logic was touched.\n- **The missing-record retry flag behaves as before.** It is now a literal `true`. The old expression `!configResult.error || …` was always true on that branch, so nothing changes.\n- **`StatusCard` change:** only one class changes, from secondary to primary. The result is one primary recovery action plus a secondary return, with the same URLs, conditions and text.\n\nTwo non-blocking notes. Neither needs a change under your no-polish rule:\n1. The `configuration?.` optional chaining on the `.find` lines is now redundant. It's harmless.\n2. The missing-record card now shows retry as the primary action, but its text tells the user to go back and review the list. The retry button was already there before this patch, retrying is harmless, and it may fix a stale read, so I'm not treating it as a defect.\n\nI couldn't inspect other `StatusCard` callers, which are now also promoted to primary. I'm assuming they all show retry only for failures.\n\n# Visual: MATCH WITH ACCEPTED DEVIATIONS\n\n**States I inspected:**\n- **`theme-reference-light-mobile.jpg` and `theme-reference-dark-mobile.jpg`:** the pinned Concept C palette references. Green primary in light, mint primary in dark, Cairo font.\n- **`type-error-viewport-390.jpg` (light):** the \"new version\" section is open with its hint shown. The 01/02/2027 date and the history card are kept. Field borders are strong, and the pay-effect radio cards are readable in RTL.\n- **`type-visible-error-390.jpg` (light):** source and reason are kept. The red-tinted error says nothing was saved. There is one green primary (\"حفظ الإصدار الجديد\"), a secondary back button, and the stop-type section closed in a danger outline.\n- **`activation-error-390.jpg` (light):** the stop-type section is open on its own while the new-version section stays closed. The reason is kept, the error is visible, and the only primary is a red danger button.\n- **`calendar-error-1366.jpg` (dark):** Friday and Saturday rest days stay checked. The 01/01/2027 \"عطلة تجريبية\" holiday row, source and reason are kept. The error banner is dark red and the primary is mint. Matches the dark palette.\n- **`type-readonly-768.jpg`:** shows the \"عرض فقط\" banner, the status badge and version history. There are no forms or actions.\n- **`failed-after-primary-768.jpg`:** the type-page \"couldn't load\" card. The text is neutral, retry is the green primary, and return is secondary. This matches the patched hierarchy.\n\n**Accepted deviations:**\n- The outer tenant layout is substituted. The card in `failed-after-primary-768.jpg` sits flush against the top of the viewport, which I put down to that.\n- Concept C has no authoritative settings screen, so I judged against the palette references only.\n- The browser's own date controls show `dd/mm/yyyy` LTR inside the RTL layout.\n- The Next.js dev \"N\" badge covers the bottom-left corner.\n\n**Not visually verified:**\n- Pending states: still images can't show a section staying open during the 8-second save. That rests on your native claims.\n- The denied card, the bad-data card, the missing-record card, and every calendar-page read-failure card.\n- Distinct hint IDs, hidden operation-key values, no-JS behaviour, the full tenant shell and branding, real actors, provider, SQL, and business success. These remain OPEN as you stated.\n\nI made no edits and ran no commands. I only read the 8 named images."
+    },
+    "interpretation": "Fixture shell substitution and Next dev badge are evidence limits, not approved production design amendments. Existing native date control and accepted shared Cairo/control/radius/border contracts retained. Concept C has no authoritative settings screen."
+  },
+  "images": [
+    {
+      "file": "settings-native-type-error-viewport-390.jpg",
+      "sha256": "1a5a2692a0e386fa2583ea274469bab5fb9f6df93ac53faf7973d43e2df747c6"
+    },
+    {
+      "file": "settings-native-type-visible-error-390.jpg",
+      "sha256": "b8c41377098c3b25c2862929255e2b88fbb4b6656e827f77eb978f51b33a198b"
+    },
+    {
+      "file": "settings-native-activation-error-390.jpg",
+      "sha256": "e472124868e62ccb17da8cfd6df51bc3ab02b1e759220ec00d07c17097959390"
+    },
+    {
+      "file": "settings-native-calendar-error-1366.jpg",
+      "sha256": "1a70ad2e81b15145b2e4144db81b27145abcb21c6987f67f2b894ac4dbb51a45"
+    },
+    {
+      "file": "settings-native-type-readonly-768.jpg",
+      "sha256": "b052a5cd62adce6c5560d0ebf7efee6acd06ce12b475b7371f0cdd9ceaea6a60"
+    },
+    {
+      "file": "settings-native-failed-after-primary-768.jpg",
+      "sha256": "3e63e3b0a445aeb901912ececab8de642495b4429bf580c6048e3d49f6634ecc"
+    }
+  ],
+  "callerReview": "All StatusCard callers inspected: retry appears only in failed/gated/invalid-input/missing-record recovery states; no normal success action promoted. Existing URLs and conditions unchanged.",
+  "cleanup": {
+    "ownedTabClosed": true,
+    "viewportReset": true,
+    "ownedDevSession": 42130,
+    "ownedPort": 3623,
+    "listeningAfterCleanup": 0,
+    "noDatabaseOrAuthAccessCreated": true
+  },
+  "environment": {
+    "ownerConfirmed": "Entire project is development; no production and no separate test environment",
+    "localDiscovery": "Existing business-platform Supabase development stack, 73 migrations through 20260930162029; current source has newer migrations. Read-only metadata inspected, shared services/database not modified."
+  },
+  "open": [
+    "Real Auth/actor permissions",
+    "SQL business success and financial outcomes",
+    "No-JS",
+    "Complete tenant navigation and branding",
+    "Uninspected visual state/breakpoint combinations",
+    "Full R0-R8 acceptance"
+  ],
+  "excludedLocal": [
+    "Invalid full-page screenshot compositions type-pending-390.jpg and type-error-390.jpg",
+    "Raw Claude relay, scratch fixture and redundant captures",
+    "Unrelated statutory-preservation-candidates.json"
+  ],
+  "d16": "Deferred after original plan"
+}

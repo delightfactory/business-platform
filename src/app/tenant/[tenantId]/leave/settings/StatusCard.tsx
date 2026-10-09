@@ -11,7 +11,7 @@ export function StatusCard({ tenantId, title, detail, retryPath, backPath, backL
 }) {
   return <PageFrame footer="الموارد البشرية">
     <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retryPath && <Link className="secondary-button" href={retryPath}>إعادة المحاولة</Link>}
+      {retryPath && <Link className="primary-button" href={retryPath}>إعادة المحاولة</Link>}
       <Link className="secondary-button" href={backPath ?? `/tenant/${tenantId}`}>{backLabel ?? 'العودة إلى مساحة الشركة'}</Link>
     </section>
   </PageFrame>;

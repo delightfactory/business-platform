@@ -7,11 +7,11 @@
   "candidateHashes": [
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
-      "sha256": "50e47ca567527f7bc4d704f0cab008888fed883252c6af14127aa6bf9e2f5f26"
+      "sha256": "d524bb24a104ac7a1b1b96c6c4354d58eda129f3b47cb821441dc6c859db35c9"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
-      "sha256": "1a490acf91d65963efabe80eb7ec035ee7a49e589e3b3bad893cdb3d76839c03"
+      "sha256": "d4f6862de4e2340d7b734ca3a07799cdc2c4f3408b7bc2845c1d7fe1cf0727df"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/SettingsTask.tsx",
@@ -19,7 +19,7 @@
     }
   ],
   "reusedEvidence": "ux-core-people-management-20261008/qualification.md and policy-retained-error.jpg; source-equivalent guard only, not full new parent qualification",
-  "newNative": "NOT RUN",
+  "newNative": "See settings-native-review.json; this source audit does not execute browser",
   "visual": {
     "codex": "NOT VISUALLY VERIFIED",
     "claude": "NOT VISUALLY VERIFIED"

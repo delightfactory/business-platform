@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-review-register.v1",
-  "sourceSnapshot": "2c9905a582fc38dfdd4caddc431ee92e7c2e853a",
+  "sourceSnapshot": "324814a0dd13adf3c32574c6879c710040b6f8c1",
   "status": "Proposed",
   "items": [
     {
@@ -9773,7 +9773,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:90:3791",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:101:4242",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -9782,7 +9782,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:130:6135",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6586",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -9791,7 +9791,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6589",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:152:7040",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10106,7 +10106,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:100:4293",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:111:4748",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10115,7 +10115,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6686",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:155:7141",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",
@@ -10124,7 +10124,7 @@
       "evidence": null
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:151:7045",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:162:7500",
       "category": "formControls",
       "phase": "R6",
       "status": "pending",

@@ -59,12 +59,23 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
   const configResult = await supabase.rpc('leave_configuration_snapshot', {
     p_tenant: tenantId, p_employer: employerId,
   });
-  const configuration = configResult.error ? null : readConfiguration(configResult.data);
+  if (configResult.error) {
+    const denied = configResult.error.code === '42501';
+    return card(denied ? 'تعذر عرض إعدادات الجهة' : 'تعذر تحميل إعدادات الجهة',
+      denied ? 'لا يمكن عرض هذه الإعدادات بصلاحية الحساب الحالية. عُد إلى إعدادات الجهة للمراجعة.'
+        : 'لم نتمكن من تحميل الإعدادات والتحقق من نوع الإجازة المطلوب. أعد المحاولة أو عُد إلى إعدادات الجهة.',
+      !denied);
+  }
+  const configuration = readConfiguration(configResult.data);
+  if (!configuration) {
+    return card('تعذر تحميل إعدادات الجهة',
+      'لم تصل إعدادات يمكن الاعتماد عليها. أعد المحاولة أو عُد إلى إعدادات الجهة.', true);
+  }
   const leaveType = configuration?.types.find((entry) => entry.id === typeId) ?? null;
-  if (!configuration || !leaveType) {
+  if (!leaveType) {
     return card('هذا النوع لم يعد متاحًا',
       'لم نعثر على نوع الإجازة المطلوب ضمن إعدادات هذه الجهة. عُدّلت الصفحة بأحدث الإعدادات؛ راجع قائمة الأنواع ثم اختر ما تريد.',
-      !configResult.error || configResult.error.code !== '42501');
+      true);
   }
 
   const state = typeof query.state === 'string' ? query.state : '';

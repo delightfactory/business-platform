@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "2c9905a582fc38dfdd4caddc431ee92e7c2e853a",
+  "sourceHead": "324814a0dd13adf3c32574c6879c710040b6f8c1",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -635,7 +635,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/StatusCard.tsx",
       "phase": "R6",
-      "sha256": "1f8568c5aed342464e0a28b584ac7bebb967f56ed7969d28eec9a78c3794cd06"
+      "sha256": "9f9129f1282842dc97ee29ae47c7786925ea92d028c44cfb6b1809a1872d2a7f"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
@@ -645,7 +645,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
       "phase": "R6",
-      "sha256": "50e47ca567527f7bc4d704f0cab008888fed883252c6af14127aa6bf9e2f5f26"
+      "sha256": "d524bb24a104ac7a1b1b96c6c4354d58eda129f3b47cb821441dc6c859db35c9"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
@@ -675,7 +675,7 @@
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
       "phase": "R6",
-      "sha256": "1a490acf91d65963efabe80eb7ec035ee7a49e589e3b3bad893cdb3d76839c03"
+      "sha256": "d4f6862de4e2340d7b734ca3a07799cdc2c4f3408b7bc2845c1d7fe1cf0727df"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
@@ -12680,25 +12680,25 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:90:3791",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:101:4242",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
-      "line": 90,
+      "line": 101,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:130:6135",
-      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
-      "line": 130,
-      "tag": "summary",
-      "phase": "R6",
-      "attributes": {}
-    },
-    {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6589",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:141:6586",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
       "line": 141,
+      "tag": "summary",
+      "phase": "R6",
+      "attributes": {}
+    },
+    {
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx:152:7040",
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "line": 152,
       "tag": "SettingsTask",
       "phase": "R6",
       "attributes": {
@@ -13098,17 +13098,17 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:100:4293",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:111:4748",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
-      "line": 100,
+      "line": 111,
       "tag": "summary",
       "phase": "R6",
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:144:6686",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:155:7141",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
-      "line": 144,
+      "line": 155,
       "tag": "SettingsTask",
       "phase": "R6",
       "attributes": {
@@ -13116,9 +13116,9 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:151:7045",
+      "id": "CONTROL:src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx:162:7500",
       "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
-      "line": 151,
+      "line": 162,
       "tag": "SettingsTask",
       "phase": "R6",
       "attributes": {

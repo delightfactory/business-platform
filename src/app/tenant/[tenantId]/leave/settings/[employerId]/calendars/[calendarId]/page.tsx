@@ -56,12 +56,23 @@ export default async function CalendarDetailPage({ params, searchParams }: {
   const configResult = await supabase.rpc('leave_configuration_snapshot', {
     p_tenant: tenantId, p_employer: employerId,
   });
-  const configuration = configResult.error ? null : readConfiguration(configResult.data);
+  if (configResult.error) {
+    const denied = configResult.error.code === '42501';
+    return card(denied ? 'تعذر عرض إعدادات الجهة' : 'تعذر تحميل إعدادات الجهة',
+      denied ? 'لا يمكن عرض هذه الإعدادات بصلاحية الحساب الحالية. عُد إلى إعدادات الجهة للمراجعة.'
+        : 'لم نتمكن من تحميل الإعدادات والتحقق من التقويم المطلوب. أعد المحاولة أو عُد إلى إعدادات الجهة.',
+      !denied);
+  }
+  const configuration = readConfiguration(configResult.data);
+  if (!configuration) {
+    return card('تعذر تحميل إعدادات الجهة',
+      'لم تصل إعدادات يمكن الاعتماد عليها. أعد المحاولة أو عُد إلى إعدادات الجهة.', true);
+  }
   const calendar = configuration?.calendars.find((entry) => entry.id === calendarId) ?? null;
-  if (!configuration || !calendar) {
+  if (!calendar) {
     return card('هذا التقويم لم يعد متاحًا',
       'لم نعثر على التقويم المطلوب ضمن إعدادات هذه الجهة. عُدّلت الصفحة بأحدث الإعدادات؛ راجع قائمة التقويمات ثم اختر ما تريد.',
-      !configResult.error || configResult.error.code !== '42501');
+      true);
   }
 
   const state = typeof query.state === 'string' ? query.state : '';
