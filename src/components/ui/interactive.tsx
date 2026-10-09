@@ -1,0 +1,12 @@
+'use client';
+
+import * as Dialog from '@radix-ui/react-dialog';
+import Link from 'next/link';
+import { useEffect, useState, type ReactNode } from 'react';
+import { Icon } from './icon';
+import { IconButton } from './primitives';
+
+export type SegmentOption = { value: string; label: ReactNode; href?: string; count?: number; disabled?: boolean };
+export function SegmentedControl({ options, value, onChange, label }: { options: SegmentOption[]; value: string; onChange?: (value: string) => void; label: string }) { return <div className="ui-segments" role="group" aria-label={label}>{options.map(option => { const content = <>{option.label}{option.count !== undefined && <span className="ui-segment-count">{option.count}</span>}</>; return option.href ? <Link key={option.value} href={option.href} className="ui-segment" aria-current={value === option.value ? 'page' : undefined}>{content}</Link> : <button key={option.value} type="button" className="ui-segment" aria-pressed={value === option.value} disabled={option.disabled} onClick={() => onChange?.(option.value)}>{content}</button>; })}</div>; }
+export function Sheet({ trigger, title, description, children, open, onOpenChange }: { trigger?: ReactNode; title: string; description?: string; children: ReactNode; open?: boolean; onOpenChange?: (open: boolean) => void }) { return <Dialog.Root open={open} onOpenChange={onOpenChange}>{trigger && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}<Dialog.Portal><Dialog.Overlay className="ui-sheet-overlay" /><Dialog.Content className="ui-sheet"><div className="ui-sheet-header"><div><Dialog.Title>{title}</Dialog.Title><Dialog.Description className={description ? 'ui-page-description' : 'ui-sr'}>{description ?? title}</Dialog.Description></div><Dialog.Close asChild><IconButton icon="close" aria-label="إغلاق" /></Dialog.Close></div><div className="ui-sheet-body">{children}</div></Dialog.Content></Dialog.Portal></Dialog.Root>; }
+export function Toast({ message, duration = 3600, onDismiss }: { message: string; duration?: number; onDismiss?: () => void }) { const [visible, setVisible] = useState(true); useEffect(() => { const timer = setTimeout(() => { setVisible(false); onDismiss?.(); }, duration); return () => clearTimeout(timer); }, [duration, onDismiss]); return visible ? <div className="ui-toast" role="status"><Icon name="check" size={20} /><span>{message}</span><button type="button" aria-label="إغلاق الإشعار" onClick={() => { setVisible(false); onDismiss?.(); }}><Icon name="close" size={16} /></button></div> : null; }

@@ -7,7 +7,7 @@ const ASSETS = [
   ],
   [
     "/pwa/offline.css",
-    "sha256-CDgKAy4B+y/Fx5Rz+zRMnCdFCUVepyx8N8sr9zbGnlQ="
+    "sha256-NqlocxHgnM94p3aW3RWb9d55uw5y7+X/U7hPxvH0gNk="
   ],
   [
     "/pwa/offline.js",
@@ -15,15 +15,55 @@ const ASSETS = [
   ],
   [
     "/pwa/tokens.css",
-    "sha256-k6RXsxC4GYm+rx3veypB1rlRB6RvqCa/Nsrvy7t+AdI="
+    "sha256-vg7L5Fq/+93TcZVj08kECySQrFUwro2FAiBabziWFw8="
   ],
   [
-    "/pwa/cairo-400.woff2",
-    "sha256-GzaUX19qPR/tN4OZm4h9DFbP1mpBoEISooqnmrvf8OE="
+    "/pwa/alexandria-arabic-500-normal.woff2",
+    "sha256-N29mhZ7TbYP7Q70cqLCom9Hr6IACsavDWRemuqYSY7s="
   ],
   [
-    "/pwa/cairo-600.woff2",
-    "sha256-YhkJ0uTIcg0686dAKFVpVtNDuqpb5IxHoK1AZgf8ZRU="
+    "/pwa/alexandria-latin-500-normal.woff2",
+    "sha256-bF8Y62xoAGETXZ1BfRPY8ULtwHee5sdjW16F62ZLnN4="
+  ],
+  [
+    "/pwa/alexandria-arabic-600-normal.woff2",
+    "sha256-c6qlXzo91P1SSnx+44NVwU3nT4/OnelFCFYBJQaiIM8="
+  ],
+  [
+    "/pwa/alexandria-latin-600-normal.woff2",
+    "sha256-idqFVGmMoJiEtTpGW+zoTEX6yZzgwiAmcjKi9p0ji/A="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-arabic-400-normal.woff2",
+    "sha256-YBDn/Q3OXVJ1g5UXUHKMvjyJXvvRaqD4CauMgkh4ydg="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-latin-400-normal.woff2",
+    "sha256-ntjcsC5sckbeTBIClfr6Oae7cwhfSVGkUkoH3JEQafI="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-arabic-500-normal.woff2",
+    "sha256-kK72T+qXlPIyMy6QfUWBCrJo0aEXITQAJeuios2zbVw="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-latin-500-normal.woff2",
+    "sha256-vmo7LjfzrWeqgipVzjVtKMQWMxyXUwoewHbCEYJAyi0="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-arabic-600-normal.woff2",
+    "sha256-FnNKWtsnsPNj5WbLvqzsSA2g3AuqGcjwBTJRwuK8Dqw="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-latin-600-normal.woff2",
+    "sha256-Y/R1cnHkA/e67Ahi8oT/qkVg6mCWup/ovG5YXKZW5yQ="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-arabic-700-normal.woff2",
+    "sha256-BMcwtCknMcztrdW9gHVhJDZK5JI4lRRdnNex8o5EPeE="
+  ],
+  [
+    "/pwa/ibm-plex-sans-arabic-latin-700-normal.woff2",
+    "sha256-ri1Z+R7Pn37SeeSh/BqdqBcPsM5bkVKReo91kDP1d3w="
   ],
   [
     "/pwa/icon-192.png",

@@ -5,11 +5,12 @@
   --color-ui-canvas: var(--color-canvas);
   --color-ui-surface: var(--color-surface);
   --color-ui-brand: var(--color-brand);
-  --font-sans: "Cairo", sans-serif;
+  --font-sans: var(--f-body);
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; }
+body { margin: 0; min-height: 100vh; font-family: var(--f-body); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--f-head); }
 a { color: inherit; }
 
 :focus-visible {
