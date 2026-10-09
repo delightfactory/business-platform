@@ -1,0 +1,996 @@
+{
+  "sourceHead": "c93f09ff94d2a67bc1309355c8c2bf9a8624cf0f",
+  "status": "CURRENT_SCHEMA_READY_NO_AUTH_ACCESS",
+  "database": "business_platform_ux_c93f09f_qa",
+  "migrationsApplied": 204,
+  "migrations": [
+    {
+      "file": "20260929005743_operator_bootstrap_authority.sql",
+      "sha256": "c6fe7966d5de8d73c93243754c259d828fdd62d352e4d660eceb78cbafc7a9ad"
+    },
+    {
+      "file": "20260929013413_current_platform_operator_status.sql",
+      "sha256": "b9ee1ec04fb1022bd494449502cb9aa759940855123c6f0ad80b69f49a569be2"
+    },
+    {
+      "file": "20260929021044_tenant_onboarding_atomic.sql",
+      "sha256": "561723f822c6494b2bd160a65b9de35146f5e133e33655175879148299c6bd19"
+    },
+    {
+      "file": "20260929025717_first_admin_invitation_intent.sql",
+      "sha256": "676e1e4b883409c4bc112a9ed3a969ba8684d4d49adc9bf3566cf92402b090f1"
+    },
+    {
+      "file": "20260929042529_tenant_member_invitations.sql",
+      "sha256": "6365a9b7c791e3ec4194069a0125daa2525b116d981e8dc6d29ba147b98a10b5"
+    },
+    {
+      "file": "20260929050000_tenant_admin_role_governance.sql",
+      "sha256": "13245ca6e8fafa952916325b11ef0448d9f2b00663bc557313cbf01b7388e33f"
+    },
+    {
+      "file": "20260929050100_tenant_member_access_list_roles.sql",
+      "sha256": "a8787387cf9f261868a7da3a1b89434aa33c1a2f147e9e91d0b16c5bbb69bc6d"
+    },
+    {
+      "file": "20260929055355_operator_authority_management.sql",
+      "sha256": "a1aa0593fbb12089873eee87883e9331566a60ec52b27fc446ffb9a6e9568159"
+    },
+    {
+      "file": "20260929064009_operator_tenant_lifecycle_management.sql",
+      "sha256": "8ec182779fec317294d18f4630d1f885abca0f667011b3198d0cfab3eb4b9041"
+    },
+    {
+      "file": "20260929071151_tenant_legal_entities_sites_management.sql",
+      "sha256": "c300f10c79ede720d5e056a67b72304503da1ccd604562a040fa06d8e9d10e66"
+    },
+    {
+      "file": "20260929074403_operator_commercial_access_controls.sql",
+      "sha256": "6e1c9b37a1c8bf0b994ad39c1015ffeac9e624936680b5d22561ec03dfb69e04"
+    },
+    {
+      "file": "20260929082023_tenant_capability_entitlements.sql",
+      "sha256": "99bdacf56aae5b7ff305bd468f52277dfe9b8c09f7903f1c245e73b5e021c940"
+    },
+    {
+      "file": "20260929085259_tenant_branding.sql",
+      "sha256": "670098772ba8bd9f68fbb1346acabd709ab2b7489ee0ab11373de5f993eee822"
+    },
+    {
+      "file": "20260929233759_people_employee_onboarding.sql",
+      "sha256": "e3b15f0c89ad09fc19116525c6a8872569895afce5a2827da8d02878d655357f"
+    },
+    {
+      "file": "20260930001739_people_directory_search.sql",
+      "sha256": "aede983df562d27160cafabcce570220d5cae0799102ccfd4b4461c4795e6493"
+    },
+    {
+      "file": "20260930003348_people_departments_jobs_catalog.sql",
+      "sha256": "28324e2fe2f84404e2800453ff3ccb2b773712fdaf42bbfb891130a879c55475"
+    },
+    {
+      "file": "20260930005546_people_work_assignment_catalog_history_guard.sql",
+      "sha256": "fca6e5468cbd613dada9380fd130722d012efbaa338687f88bf8dd86b47119d8"
+    },
+    {
+      "file": "20260930010156_people_job_history_guard_and_onboarding_audit.sql",
+      "sha256": "a0833f263ad03462b95c81b43f908c16e15ae78ce02539a6e5422b74f8da7802"
+    },
+    {
+      "file": "20260930011017_people_work_assignment_transfers.sql",
+      "sha256": "6425a985d1d3f213a3fa41b31176b6c5dcf6e2131d133cc5678a4617af07a32e"
+    },
+    {
+      "file": "20260930013832_people_initial_assignment_correction_and_dated_managers.sql",
+      "sha256": "e7eaebca2c2bf5607961456afd7fa5c8906fd6c609b9900ea6efb19984e149c2"
+    },
+    {
+      "file": "20260930015152_people_effective_compensation_history.sql",
+      "sha256": "b0225f40b85d71c13c54279bfb66f3a3f9c12c6be01f7b768b197d93f84ebf4d"
+    },
+    {
+      "file": "20260930020540_people_compensation_initial_correction_and_bounded_backdate.sql",
+      "sha256": "0f28e96edd0baa507b78835574a30bd08803a1cd477f4bdb5761270825eb68b5"
+    },
+    {
+      "file": "20260930020825_people_compensation_pending_change_options.sql",
+      "sha256": "717c19c3a670a27de8777720fa2a829dd1228b403509354c6e024f1d8121b61a"
+    },
+    {
+      "file": "20260930021630_people_employment_termination_rehire.sql",
+      "sha256": "23dd7bd8bc182c091ef83e85323aef6d0b1caf720edb9ebe118d55fb72fa606e"
+    },
+    {
+      "file": "20260930022648_people_employment_bounded_backdate.sql",
+      "sha256": "c13f86dbce6935fd5f311c033f7ec75e8110584d57cab8e6f6107f10a5e0e9ce"
+    },
+    {
+      "file": "20260930023342_people_employment_audit_end_date.sql",
+      "sha256": "668644af94d62cfd075055349a5bddf9c33e95ce5432725b1da96f70815513b4"
+    },
+    {
+      "file": "20260930023500_people_lifecycle_history_redaction.sql",
+      "sha256": "0cd412d92adcd5da0fe8a4c33339ce0d078ec82716e4e243ad18f277ea280c58"
+    },
+    {
+      "file": "20260930024042_people_future_rehire_context.sql",
+      "sha256": "e1aff53575a2fc3148c8022d927b0aae2541881bd09c377519e2dc03bae28d2d"
+    },
+    {
+      "file": "20260930025500_people_employee_user_links.sql",
+      "sha256": "0994d0dadb28aa9138fbde50f08bb1e23fc8d607880e2df8b68c3ee682ceb158"
+    },
+    {
+      "file": "20260930025600_people_employee_user_link_options_fix.sql",
+      "sha256": "d616f80503a6c9e3f1f7dd640397208e3dd1b1a5fa4471fdd7c4afca5542e40b"
+    },
+    {
+      "file": "20260930025700_people_employee_user_link_identity_redaction.sql",
+      "sha256": "fae6910e3ccf6cff727cd639199215c58d6a10f5a91775051a08f2d8a612af99"
+    },
+    {
+      "file": "20260930030000_people_employee_account_provisioning.sql",
+      "sha256": "cd80675afb3668619cc0a8dc8630ad2b24b3d217142c7e0f60592dd29977df90"
+    },
+    {
+      "file": "20260930030100_people_employee_account_intent_recovery.sql",
+      "sha256": "998f3f7564fa9d0f289e938988948ed65d80dc498161f6f6203ac2949184784e"
+    },
+    {
+      "file": "20260930033051_people_employee_account_issuer_recheck.sql",
+      "sha256": "3f778f7dda694d59d14319d517daabf5df3abb5f29537264562d88542b36272d"
+    },
+    {
+      "file": "20260930034040_people_employee_account_auth_capture_recovery.sql",
+      "sha256": "08d3dc589d602e872fe27b9eb0ed37780b7dfbe3e5640169746b2e5101b68def"
+    },
+    {
+      "file": "20260930034347_people_employee_account_capture_audit_event.sql",
+      "sha256": "1b97bc772d6708bfcfadba123337f182c585d07e067d4b31dfd33ff6d7fbe765"
+    },
+    {
+      "file": "20260930035000_people_employee_account_issuer_lock_order.sql",
+      "sha256": "7916530ba375aeb23972a32d9353e48c73c38ec56336e3ca2d2192478443ee98"
+    },
+    {
+      "file": "20260930040000_people_workforce_csv_import.sql",
+      "sha256": "93a61840d88b5b453f5007672bb0004f55c771924f8900c08e225d5ad5d13092"
+    },
+    {
+      "file": "20260930041000_people_workforce_csv_import_audit_hint.sql",
+      "sha256": "5b81a814a1ef7808ac9bbf841134ff5183dd3512c83a3152b7b46268897dde51"
+    },
+    {
+      "file": "20260930083111_tenant_people_role_bundles.sql",
+      "sha256": "bae7b380d8ce28e04f41a2f37c726d8fd046ea639146f57ab168a4afe64234e3"
+    },
+    {
+      "file": "20260930085616_attendance_named_work_policies.sql",
+      "sha256": "34ec58087c21b6902f3d3624cc1ba23daa8c1bf244e1052638f75e911c69bc76"
+    },
+    {
+      "file": "20260930090259_attendance_work_policy_integrity.sql",
+      "sha256": "e430d88d34b26963b82d654e36450522ceb14eee35d2f404612668ae77740b01"
+    },
+    {
+      "file": "20260930090534_attendance_work_policy_cancel_audit.sql",
+      "sha256": "d364a9740327a1c89dfee050b66d6dbc41003dc1b35861d283f264b60f7f0a7b"
+    },
+    {
+      "file": "20260930091317_attendance_policy_assignment_dates.sql",
+      "sha256": "553c536dba3d6fa60d047c71103d7af40fc5fbfc096b9c4f0a92fb842562187a"
+    },
+    {
+      "file": "20260930091806_attendance_work_policy_revision_fix.sql",
+      "sha256": "0740acc9a225ebfc39985c10f3e9ab8364503db286c1a4b93dfce04624cd32b7"
+    },
+    {
+      "file": "20260930092532_attendance_policy_initial_assignment.sql",
+      "sha256": "c1a53868420caaaf69e726eba16fc1da1b76c4b17eb6b68c62ac77780d75a6d9"
+    },
+    {
+      "file": "20260930102608_cube2_manual_attendance_v1.sql",
+      "sha256": "e0528058bf258fef6b4aaf957cb9bb7eb3f950ac46109eed00ac5373e889ae66"
+    },
+    {
+      "file": "20260930104100_cube2_manual_attendance_integrity.sql",
+      "sha256": "392d013a4ea80c4b32555724807ed0b32ce942607fb4198b9a8960e58a9bf013"
+    },
+    {
+      "file": "20260930105500_cube2_manual_attendance_review_entries.sql",
+      "sha256": "bfa6a4f717f15619cc24eca400009ed43f8ff40894149b339aa27a5be68b32e5"
+    },
+    {
+      "file": "20260930111500_attendance_history_after_entitlement.sql",
+      "sha256": "242696e1eabf84b132d0bb6e1d6b3ce3836765c807c94eb75f0f0c2854446b55"
+    },
+    {
+      "file": "20260930114857_attendance_fixed_shift_metrics.sql",
+      "sha256": "1d5410382f3a7ebee42eba2168a3113d317d6a702cc9ebf1bf6749b3cb53a1b1"
+    },
+    {
+      "file": "20260930120653_attendance_flexible_workday.sql",
+      "sha256": "c14845d5886b1562f8ac608e2b784c3983760d4d7a7da6cd004f02fdba3ba5e1"
+    },
+    {
+      "file": "20260930122008_attendance_dated_policy_overrides.sql",
+      "sha256": "8bc89f83e8de290e721105dc8de6adfa65faeb9e4fa7714504a41a4570b0e56b"
+    },
+    {
+      "file": "20260930123725_attendance_csv_import.sql",
+      "sha256": "3195198263159cf7a5ce07eaf231bbc47bcd8894649d6fa0991636d3295d9e6c"
+    },
+    {
+      "file": "20260930124928_attendance_import_source_display.sql",
+      "sha256": "bbfed36fe630a77084a308e62bedf29ce7bb6bbe9845547a2a9f2b09f982d027"
+    },
+    {
+      "file": "20260930130030_attendance_overtime_review_v1.sql",
+      "sha256": "e8fdb49e40551f2c4080077ff3b710a7d34c4ed8b79a7e6f6bf702528097ae84"
+    },
+    {
+      "file": "20260930131357_attendance_overtime_policy_compat.sql",
+      "sha256": "b4402e18d4f777f0395e64eedb693d90549caf230f905069a7bd63512ce5dcaa"
+    },
+    {
+      "file": "20260930132537_attendance_review_queue_bulk_v1.sql",
+      "sha256": "c11f7cc37661394174129bdc9f6dd11880480584d8e48f3f5a2562db2c1848ad"
+    },
+    {
+      "file": "20260930133541_attendance_review_queue_exception_counts.sql",
+      "sha256": "a1b697c0b826ddd56ab4a4a1d6d3b0f2c7afb83545e9f5afb9793f7ba6834532"
+    },
+    {
+      "file": "20260930134418_attendance_payroll_input_projection_v1.sql",
+      "sha256": "7507e6935454ea6c57daae3fc489e4a214707338e82c0a98a1c706b5abc49157"
+    },
+    {
+      "file": "20260930140506_attendance_clean_auto_approval.sql",
+      "sha256": "2e1c8bcd047b83cd6938d3d2d888167badd7d6356107b7e7b2d42b1dba35be46"
+    },
+    {
+      "file": "20260930142536_attendance_unassigned_import_evidence.sql",
+      "sha256": "35503a024eec2bb787dde9c29c5ad00164afd8305bf40e233b9c541c983c555e"
+    },
+    {
+      "file": "20260930143501_attendance_unassigned_idempotency_guard.sql",
+      "sha256": "7357a6479395f7fad7921fbbc105f6945fd0af43e85fd73e1f18780b3aac4e95"
+    },
+    {
+      "file": "20260930143744_attendance_unassigned_queue_pagination.sql",
+      "sha256": "4b534c0d670a1f368635249791cdcefbb549fe77815821a4dbae6110e311c46e"
+    },
+    {
+      "file": "20260930144026_attendance_unassigned_identity_binding.sql",
+      "sha256": "ddabd09345a9e5bf6427d0e9fd2320c4ee3d9529b957f728b2d8c252eec4fc23"
+    },
+    {
+      "file": "20260930144815_overtime_explicit_classification.sql",
+      "sha256": "137de359b2a01606951d450d70ce551d2d100ff9b27aa54ecc6a9180c7e1a0da"
+    },
+    {
+      "file": "20260930145846_overtime_classification_lock_order.sql",
+      "sha256": "94068735aca5ca19ff8be318f2d5c5313b4e75197412c6d4f0e56c720e863218"
+    },
+    {
+      "file": "20260930155003_people_attendance_temporal_integrity.sql",
+      "sha256": "e64a056e6e3bdb70a53eb7e442741936b57d5a0594957cffbaad47ce84b9bb41"
+    },
+    {
+      "file": "20260930160002_people_directory_scale_search.sql",
+      "sha256": "0ca3c5e2a30dbf92ac9116424dd13059a3433d78ff9068f766cbf548d5adfb4e"
+    },
+    {
+      "file": "20260930160953_attendance_import_employment_lock_order.sql",
+      "sha256": "fdeeccb3395d50fcd8480b4efb1bbd0e062085da0da8689ee52d63c0a209c2c6"
+    },
+    {
+      "file": "20260930161157_tenant_member_access_pagination.sql",
+      "sha256": "998d967a47500ca7a33d800ba9d47ff29a1ddd9fcee0810fd2ee5d9adbf573c1"
+    },
+    {
+      "file": "20260930161330_attendance_review_queue_scale.sql",
+      "sha256": "8480a558085b3bdcf13edf7b1c7d6b75e9dbacf2017830cb56ed7caa1a89f3ff"
+    },
+    {
+      "file": "20260930162029_operator_listing_pagination.sql",
+      "sha256": "aa711e1efcd9978ec5332c04cf7bf1eaa0643c03a496d91de25eb6b6e12c4248"
+    },
+    {
+      "file": "20260930190000_people_transfer_preserves_attendance_policy.sql",
+      "sha256": "e6a8d6298eea0e0676c6462077223edb2c38493cb6ade9c3e9ac98dc6f29c540"
+    },
+    {
+      "file": "20260930191000_people_employee_account_password_readiness.sql",
+      "sha256": "9f931e536b648fc565827316af3e52c18601002657954351f32bb390a0eac864"
+    },
+    {
+      "file": "20260930191500_people_activated_employee_password_readiness_recovery.sql",
+      "sha256": "c9c056c9c85bed3c24b9c4600f5ab1d6830391f3f7c69bcc54340975b7b5ab41"
+    },
+    {
+      "file": "20260930191624_people_employee_account_readiness_delivery_audit_event.sql",
+      "sha256": "de8202fe9d76b64e637f6cc7af94866cd519e8add6553624394d81d7343affdb"
+    },
+    {
+      "file": "20260930192000_attendance_ambiguous_work_date_resolution.sql",
+      "sha256": "e3d8de4d0f97c3ab59ef08f7f7d53779a04df060fe0388168f48c03269c044bc"
+    },
+    {
+      "file": "20260930193000_attendance_absence_corrections.sql",
+      "sha256": "af01355d3ef7a2cf94d71af3ee8cba87b2c464123479bf7101687315c05e6a05"
+    },
+    {
+      "file": "20260930194000_governed_unrecoverable_admin_demotion.sql",
+      "sha256": "2f0df11a8cd235761b47c557cb0b68dd206bba2c17538dd032f7d216d20101b4"
+    },
+    {
+      "file": "20260930202731_employee_replacement_account_snapshot.sql",
+      "sha256": "b1e7e748362bcc590011cab053146fd12d4566514084f5814ef47e88031e839d"
+    },
+    {
+      "file": "20260930221654_reconcile_live_function_definitions.sql",
+      "sha256": "414543b842a5eecf06a9ec7952c3c94c931f8e99f3f36266bf52007e6f08e47b"
+    },
+    {
+      "file": "20261001004629_cube3_leave_access_foundation.sql",
+      "sha256": "19dcb73abdacff007c381980e1f64be8ceb9c534d987b3f0b22266cc53164858"
+    },
+    {
+      "file": "20261001011428_cube3_leave_calendar_balance_foundation.sql",
+      "sha256": "b5bd722c1437250f47ad09528ab5536ee65b2a04f18a423c9918efbcb4a8e0a4"
+    },
+    {
+      "file": "20261001015100_cube3_leave_configuration_integrity.sql",
+      "sha256": "a8c45764149ae416b08a078cd1508a68bf582f68a65e79920730b4bd945c9a37"
+    },
+    {
+      "file": "20261001020124_cube3_leave_balance_finite_values.sql",
+      "sha256": "316cad362d300af03c0f66f5ea0e738cb8a92846ec9edc17f54bf6977151299b"
+    },
+    {
+      "file": "20261001020818_cube3_leave_request_submission.sql",
+      "sha256": "9ddf12eb0626a12cc497670b207400c20d0a962d1c04d49076f348a0ef786a14"
+    },
+    {
+      "file": "20261001023454_cube3_leave_attendance_lock_integrity.sql",
+      "sha256": "94406d3f5091f44f46dde5127dd042bfba7eed0486ec904bbbc83a836a417baa"
+    },
+    {
+      "file": "20261001025105_cube3_leave_configuration_recovery.sql",
+      "sha256": "f840266281aad1142e203e34e4321d912c823e6cf4f847f9a0dbfac8881e5460"
+    },
+    {
+      "file": "20261001030140_cube3_leave_request_list_summaries.sql",
+      "sha256": "c1c9c974026956433f836d6f10df24ed24f29b8b05564b3cacc238030a169060"
+    },
+    {
+      "file": "20261001030600_cube3_leave_approval_consumption.sql",
+      "sha256": "3105894195eb6bb7f45f0224882700ae606eb9ed980b4541dd0d255747fa00c7"
+    },
+    {
+      "file": "20261001030700_cube3_leave_self_request_snapshot.sql",
+      "sha256": "f771c98ee6e19cefdc9f761d2d42dbeefa8ccd55859fd36dc30e6ae09865276c"
+    },
+    {
+      "file": "20261001030710_cube3_leave_own_detail_scope.sql",
+      "sha256": "48bd279bfe508f027a8fe1d5a39cf4a9b04783dd5dd91b2a995a5fa99d51a81b"
+    },
+    {
+      "file": "20261001030800_cube3_leave_cancellation.sql",
+      "sha256": "da5d99dc0e599cb69614a18939fd09880aa97ce2d62953d30484e0c5f1f4ab41"
+    },
+    {
+      "file": "20261001030900_cube3_leave_time_fact_guard.sql",
+      "sha256": "88cca84f307f2a27cdd1edf007c2c06c18dba625a648bac113bf302e4e30221e"
+    },
+    {
+      "file": "20261001030910_cube3_leave_configuration_read_closure.sql",
+      "sha256": "27ce41abe68c1a2d08b418a23ecdeab35eafee971eef5d3e7771c713e6cec870"
+    },
+    {
+      "file": "20261001031000_cube3_half_day_policy_mapping.sql",
+      "sha256": "19cc26e03f65cab2c71bb454eefb4cbfd6ff36439896ebaedc216c65988dad61"
+    },
+    {
+      "file": "20261001031100_cube3_leave_payroll_facts_projection.sql",
+      "sha256": "cb420adf26a014e26bef7a25ed0a91c72ee3b4ccb90a8e2ccc42920935a86f18"
+    },
+    {
+      "file": "20261001031110_cube3_time_observed_break_overlap.sql",
+      "sha256": "3cabf3ea2a9b32a11b90cc2c2e881bbae3511f94ff382c011054a2d66741b8af"
+    },
+    {
+      "file": "20261001031200_cube3_leave_halfday_request_mapping.sql",
+      "sha256": "b22acdf6e297b0c7449a9ccec510ca886bff44fd565066682110224e4c6d8533"
+    },
+    {
+      "file": "20261001031300_cube3_leave_cancellation_history_latest_event.sql",
+      "sha256": "a91a6ff4c944be0eebbf57c189979100a30a61a3bae051ce2ebfcd4f9378c55b"
+    },
+    {
+      "file": "20261001090221_cube3_deterministic_conflict_http_status.sql",
+      "sha256": "bb3fb8fa1ba7e50e5165b1a7bfa17d5bf6175bd07d0220ff9f040bcf22032aa6"
+    },
+    {
+      "file": "20261001093604_cube3_leave_approved_replacement.sql",
+      "sha256": "fece93dd68349a55ff7d00b578c6c88684797008ce5c2ce8a8759f0c9f1761f8"
+    },
+    {
+      "file": "20261001103609_cube3_leave_hr_balance_read_closure.sql",
+      "sha256": "a4c4a6c974e84e50caff09d62a52d60837cca40d9a293aa767ea6ef8e80a1f35"
+    },
+    {
+      "file": "20261001112549_cube3_halfday_attendance_remaining_work.sql",
+      "sha256": "39581d5d298ce705e426e46c4ff7ebed80406dafc337d7f9fd2366786c53225a"
+    },
+    {
+      "file": "20261001160000_cube3_time_shared_calculator.sql",
+      "sha256": "acd046b88d357dda59df53016c2523afcb15807660d151e8547adeb81194a9c7"
+    },
+    {
+      "file": "20261001170000_cube3_attendance_coverage_classifier.sql",
+      "sha256": "6a0f99936f3d3040cf543c38582e346a4208991330a189f99cb66e18d1df7461"
+    },
+    {
+      "file": "20261001180000_cube3_classified_attendance_facts.sql",
+      "sha256": "af9f1349f4d7793f02f51b18fc99e2b52aa799f14f41a2f367766b2182ea7be0"
+    },
+    {
+      "file": "20261001220000_cube3_annual_entitlement_calculation.sql",
+      "sha256": "551d766af663f5b53b141380ab55bb5ce180f43a9d9dbeddd448ee7b6f7930cf"
+    },
+    {
+      "file": "20261001233819_cube4_payroll_calendars.sql",
+      "sha256": "8febb880736387ae999e181a59f20900fe3ca4cf155af172a9c8153a15c5012f"
+    },
+    {
+      "file": "20261002002040_cube4_payroll_inputs.sql",
+      "sha256": "84dbad0fec6bea142491d5477d737273c4f72caa3df8e1d1d51d995bdfdf3975"
+    },
+    {
+      "file": "20261002010419_cube4_payroll_candidates.sql",
+      "sha256": "349b137134123ab8dff204fe2d42994491f458e735e614a7100bba27c039c357"
+    },
+    {
+      "file": "20261002020629_cube4_payroll_finalization_foundation.sql",
+      "sha256": "5f67a471c8ea8b47e4d6b2856554fd60785a6cbfbfe586597507203c8cbabc70"
+    },
+    {
+      "file": "20261002025507_cube4_payroll_external_payments.sql",
+      "sha256": "958f747bfa0452ba819e81fec9fef43fab25040d5ccc72020ee5e2bf542cdcde"
+    },
+    {
+      "file": "20261002030000_cube4_payroll_review_fixes.sql",
+      "sha256": "44349e55850836e72603859e6bbb00b2c6b0f0c4c16fcca7784a32e03581e02d"
+    },
+    {
+      "file": "20261002040200_cube4_payroll_governed_corrections.sql",
+      "sha256": "7be2313058e1d82f142be57d274c3ae52d7969fb7bc4dea6283c7f9c473bb14c"
+    },
+    {
+      "file": "20261002063000_cube4_payroll_advances.sql",
+      "sha256": "c716f486b41d5bfe99d7185689af30567b2a44d1370b42e0bed14e49a145b63c"
+    },
+    {
+      "file": "20261002064500_cube4_payroll_advance_namespace_fixes.sql",
+      "sha256": "e9888c5c625aff55af039ffbfe5dc5bcddaea86dfe4929f6304847708a240350"
+    },
+    {
+      "file": "20261002074500_cube4_payroll_reports.sql",
+      "sha256": "42dcd52ebd5cfd20e10c8686652d43919e5d43f9c620bb90354ebd229b731801"
+    },
+    {
+      "file": "20261002080000_cube4_payroll_navigation_access.sql",
+      "sha256": "2123989481e315014abcc7bf8cb124ff0e5640b02279f32d8a127a587ac2cc44"
+    },
+    {
+      "file": "20261002103813_cube4_payroll_optional_source_capture.sql",
+      "sha256": "f1a8e7b6232c2f45ba97fe69dd24a11a930f7a8b52eb024545c1d1da4eedfeff"
+    },
+    {
+      "file": "20261002120126_cube4_payroll_source_reconciliation.sql",
+      "sha256": "6aaeab2c87b4c51ab89c339793942da9ecd154b6135119b97a0c0bf28ffb85e2"
+    },
+    {
+      "file": "20261002132650_cube4_payroll_time_expected_coverage.sql",
+      "sha256": "87526b5c581a29407ce376abf47268962875df35adfb5a2a4db90c8c26b71a6a"
+    },
+    {
+      "file": "20261002145027_cube4_payroll_statutory_arithmetic.sql",
+      "sha256": "4e7eb0e91415e319da994ecf9e78eda53a0689e9dbb7b97ccb0686664585c013"
+    },
+    {
+      "file": "20261002160500_cube4_payroll_opening_tax_due.sql",
+      "sha256": "30cea62e0e653651eb57f085b5130779feb5f84d4539bf24428c6cee324c2dd4"
+    },
+    {
+      "file": "20261002163500_cube4_payroll_employee_statutory_context.sql",
+      "sha256": "535d686253b27f4ad838bd907e73deef757defde0bea1a31d69b87d307ef6599"
+    },
+    {
+      "file": "20261002170500_cube4_payroll_opening_coverage.sql",
+      "sha256": "cd24d3ec35b6165902bf58946f29cbe37022b33d8e97de9e5fc20da9f2379c09"
+    },
+    {
+      "file": "20261002174500_cube4_payroll_cumulative_tax_adapter.sql",
+      "sha256": "8efd8fe5c0ef79f575796ff84b0c2a502cfd4b3d7e6a0d1a174bd9626f2fa19d"
+    },
+    {
+      "file": "20261002181500_cube4_payroll_insurance_adapter.sql",
+      "sha256": "2c071b0976ca86470d6436474ddbbd7755a444a2978cf35f0e2e06db0df00b0d"
+    },
+    {
+      "file": "20261002185000_cube4_payroll_statutory_employee_calculation.sql",
+      "sha256": "7b9d42a03a0456a9863cc49b3bac57d114512ab25c8f0a29e4432cf2e43d9882"
+    },
+    {
+      "file": "20261002192500_cube4_payroll_component_statutory_sources.sql",
+      "sha256": "7950301e2a3bb231b2103111a167c2bb6452b0ce04b89da5b1a8ff1999d89a08"
+    },
+    {
+      "file": "20261002195000_cube4_payroll_employee_statutory_sources.sql",
+      "sha256": "e8c8df47aa0ccccccc32fa91f36ff48569acc19a2f5bda9c544364652b09490a"
+    },
+    {
+      "file": "20261002203500_cube4_payroll_prior_statutory_outputs.sql",
+      "sha256": "052beb9c10138d1b832e96d3a96b7f49b35d423841afb59f65666dbfbeffc5c9"
+    },
+    {
+      "file": "20261002210500_cube4_payroll_cumulative_balances.sql",
+      "sha256": "6df763211eb71bcf65e933acdf0fc566f7ba1e305f5f964701ac0cf02d953744"
+    },
+    {
+      "file": "20261002214000_cube4_payroll_current_earning_sources.sql",
+      "sha256": "2f60be09d743f8864d89bded0ee4036a9f52006b5420f64ca13a936b310caa53"
+    },
+    {
+      "file": "20261002220504_cube4_statutory_authority.sql",
+      "sha256": "da127b4782139ae48604327f011fec6786129532db737f056dc3bc9c37db9ec7"
+    },
+    {
+      "file": "20261002222602_cube4_statutory_drafts.sql",
+      "sha256": "15ae1886e571bf87a851c45edce35cf46c2f547e220aafdf9c68aa5b2aad2b3d"
+    },
+    {
+      "file": "20261002225319_cube4_statutory_numeric_drafts.sql",
+      "sha256": "120a7e501fd263d1a3684a62389a3f3f104b0fda104d6793f0c6c8baf5c2507e"
+    },
+    {
+      "file": "20261002230816_cube4_statutory_comparisons.sql",
+      "sha256": "77639dde1b9e90b82e522bcc222e17d660b62f82180113913da1bdf7888616ea"
+    },
+    {
+      "file": "20261002233957_cube4_statutory_issuance.sql",
+      "sha256": "287d5948b7d608fbe25a4a3adf7b3d8b06ffe0d66a7c5dd0ce4931df5a44ad67"
+    },
+    {
+      "file": "20261003000616_cube4_statutory_calendar_sources.sql",
+      "sha256": "ed990a910057d95cb7bbf076d4092eeac97c3f0eff1352fdf303d76d00bbfc39"
+    },
+    {
+      "file": "20261003001000_cube4_payroll_statutory_source_precision.sql",
+      "sha256": "6dd5faf5bf6260b7417e84f8e294c7bcccdaf84e86e0831d56d9e98915cd1149"
+    },
+    {
+      "file": "20261003002259_cube4_earning_date_partitions.sql",
+      "sha256": "9d212b5582247ef3a50c85c818c45b961821cb9b61714ff0ba898611cf096157"
+    },
+    {
+      "file": "20261003003000_cube4_payroll_run_recovery.sql",
+      "sha256": "f7e70a9291cb3c738a9a7f20da3be5fc9803f7e89689564f63fbd47b48ad0f08"
+    },
+    {
+      "file": "20261003005000_cube4_payroll_distribution_readiness.sql",
+      "sha256": "ef4e700e193ead6256afa3618aaecd3550343593a79685d77d228e39db6db057"
+    },
+    {
+      "file": "20261003010817_cube4_financial_civil_dates.sql",
+      "sha256": "f0166b523acef104ab105cdb4f66da3c0be7fa7f5809e7f104f77b1d2de451d5"
+    },
+    {
+      "file": "20261003011000_cube4_payroll_governed_earning_attribution.sql",
+      "sha256": "de5cff56b91005d48109337eb0e758c7bc7ee7a48b810732858a3480575e120f"
+    },
+    {
+      "file": "20261003020000_cube4_payment_recovery_requests.sql",
+      "sha256": "2cb223c833f811072c42c0691282743bf4c32d7fde51641abdc14ff55a33b507"
+    },
+    {
+      "file": "20261003021000_cube4_review_attention_workspace.sql",
+      "sha256": "ce0505f96d76ddddef5a563c0f95f8425e0e011c1f6470a1888e7ced643d0665"
+    },
+    {
+      "file": "20261003022000_cube4_independent_statutory_pack_binding.sql",
+      "sha256": "e47fd0f00ac1f3705db8451564e4e727b981f76a3222b18c315ee3c65079af31"
+    },
+    {
+      "file": "20261003023000_cube4_complete_daily_time_sources.sql",
+      "sha256": "5057ee1c60070c7a73f85f30a8e6fda8647dfc45c125f2db933aba0efa0b2654"
+    },
+    {
+      "file": "20261003024000_cube4_final_source_bindings.sql",
+      "sha256": "a800109f7f070ff14147156babd2259e1943d8cc6a8b4feb2d3675757e81527b"
+    },
+    {
+      "file": "20261003025000_cube4_bound_source_correction_requirements.sql",
+      "sha256": "a7ec705fe9d13fe9b81039e8c9576be1a972cfe9fe071f6cb3a474c07e9d4eb4"
+    },
+    {
+      "file": "20261003026000_cube4_source_observation_corrections.sql",
+      "sha256": "43a57ed138ec2696131943e8f05c72cc39defa3700dd1e0abbd1450a1983316a"
+    },
+    {
+      "file": "20261003027000_cube4_source_correction_closure.sql",
+      "sha256": "4ad62980e867146b88404c0ce12c602228f729a0b9e2d794cc6683eb61c7707d"
+    },
+    {
+      "file": "20261003028000_cube4_external_settlement_completion.sql",
+      "sha256": "ab0c8338ce2497ac0a06923e23f8b4a112fe6c8aa26cb867b5f1eda22d66758d"
+    },
+    {
+      "file": "20261003029000_cube4_pending_replacement_authority.sql",
+      "sha256": "126c98dd9f48acf4aaeebf13dd03d6038aad0a9e55b902e0dd3dc96cd9a7af93"
+    },
+    {
+      "file": "20261003030000_cube4_calendar_change_review.sql",
+      "sha256": "5fb28dba0d6fee1a4bd03687b328a03e4b7fcdada986b3161187bd555797db8c"
+    },
+    {
+      "file": "20261003031000_cube4_calendar_pending_source_review.sql",
+      "sha256": "cb40e9e781ba1ea7121e1d76667a422b12eb88e508f3d243826cf169782fff48"
+    },
+    {
+      "file": "20261003032000_cube4_review_contract_repairs.sql",
+      "sha256": "4ee45225fa754bcac928a6b1c6fd084fdf1ec5aceab3397ed6814c7b8d32591d"
+    },
+    {
+      "file": "20261003033000_cube4_historical_leave_addition.sql",
+      "sha256": "2d0e4bea1ab1b3a7337bc078d7dc8e4681824ccb2c8df7c9b4d2d903be63139f"
+    },
+    {
+      "file": "20261003034000_cube4_historical_leave_replacement.sql",
+      "sha256": "c9e017f29ee055bcf9b1b228223a690aee895000ac5ab941db3706208a45f19a"
+    },
+    {
+      "file": "20261003035000_cube4_leave_correction_navigation.sql",
+      "sha256": "7aed3a9195b8d473b496a49135eff991b444e5db4482ad67697fe88da5b55395"
+    },
+    {
+      "file": "20261003036000_cube4_source_bound_statutory_review.sql",
+      "sha256": "d11f6a483a994ac820cb3ce351f47163110a013e72a5bfd040084132e17b4208"
+    },
+    {
+      "file": "20261003037000_cube4_issued_earning_treatment_binding.sql",
+      "sha256": "753a3ffd27d9c26a4742a2df21b8a0b4759b17c0949fdae427f0f0d97d3c1364"
+    },
+    {
+      "file": "20261003038000_cube4_public_finalization_consumption.sql",
+      "sha256": "c00e6c37a2e0e60f80de2fe0450d40ba691533a500a3a47575cb9001be92f987"
+    },
+    {
+      "file": "20261003039000_cube4_public_unpaid_replacement_consumption.sql",
+      "sha256": "d2fcaf7ac8ba912d5108b6ae676914634a25cc922acd58b8e5162357f15fbaa4"
+    },
+    {
+      "file": "20261003040000_cube4_nondebt_financial_qualification.sql",
+      "sha256": "9afffb2ff4c923a2a0705a2aceddb7fb0b1a95753e228699221456c34f347b15"
+    },
+    {
+      "file": "20261003041000_cube4_unpaid_amendment_review_amounts.sql",
+      "sha256": "1eeaac95d4bd35293a4b47621e1697d09146d54419e437e3b50d3c23df9dac3b"
+    },
+    {
+      "file": "20261003042000_cube4_reviewed_employer_loan_consumption.sql",
+      "sha256": "8a1415b56df2cd0555ecbdf3d1129bfc1a436805a74ad44a4c063610b767658e"
+    },
+    {
+      "file": "20261003043000_cube4_reviewed_single_month_insurance_ownership.sql",
+      "sha256": "dd5e132163b1857ef361d54515167d79256ffbb472ee3ad537414d20348e1f71"
+    },
+    {
+      "file": "20261003044000_cube4_insurance_ownership_duration_validation_isolation.sql",
+      "sha256": "3af88b6ab62dd16aeedbb3cd2fe45e67d8751b0551a58e0b3a64a270b2d62302"
+    },
+    {
+      "file": "20261003045000_cube4_reviewed_partial_month_insurance_disposition.sql",
+      "sha256": "e057d828e50472e130357828ff2638fd66406ec01a2e7a9c6fb54ee5e83dce74"
+    },
+    {
+      "file": "20261003046000_cube4_reviewed_monthly_earnings_financial_composition.sql",
+      "sha256": "e62cb0da2ed743007a38e87726617d0e5bd03c22c11e2f7c236dbe7976e97460"
+    },
+    {
+      "file": "20261003047000_cube4_reviewed_context_year_composition.sql",
+      "sha256": "27194d31e3b370a9872b85ce4d6e5f17e3e837c20d4926584b3706b9f671c750"
+    },
+    {
+      "file": "20261003048000_cube4_reviewed_wage_deduction_composition.sql",
+      "sha256": "92245537007ec49d51666fb3d4b4e90f348321b5c09ec2f247f043ffecd5c941"
+    },
+    {
+      "file": "20261003049000_cube4_deduction_capacity_review_closure.sql",
+      "sha256": "153bb981cc46a4fa90cefd8f17325ba621581b85ff6fff34cf5afe5a61669d09"
+    },
+    {
+      "file": "20261003050000_cube4_approved_manual_daily_financial_composition.sql",
+      "sha256": "516deefb7fc322a1f60005632f0ad3f266c381a59ba7429d1c32d0055c8b72fd"
+    },
+    {
+      "file": "20261003051000_cube4_reconciled_daily_source_financial_profile.sql",
+      "sha256": "6a01d1370652e7872495b86b23191589a0283b77e2332f7e03b1c78380d01c40"
+    },
+    {
+      "file": "20261003052000_cube4_approved_dated_time_context_composition.sql",
+      "sha256": "989cacb249a89cf5f8dfc383479b081715aab01eb4729d4de91fe720e0d91635"
+    },
+    {
+      "file": "20261003053000_cube4_monthly_approved_source_fractions.sql",
+      "sha256": "2c93bde3110ba53d40cb4b04759525f1c9f859aae10ccb25d35dbd8a7a6d59c7"
+    },
+    {
+      "file": "20261003054000_cube4_fixed_utc_coverage_resolution.sql",
+      "sha256": "0c3757e69ec45beee8cc72850558537ba01f1fec27979cdc4738d3c068afb612"
+    },
+    {
+      "file": "20261003055000_cube4_fixed30_approved_unpaid_portions.sql",
+      "sha256": "709331f84671c5445637684020be084b6af2b75c0cbfa1b02928e545b8360d41"
+    },
+    {
+      "file": "20261003056000_cube4_approved_deduction_dispositions.sql",
+      "sha256": "ef8bd3e60c27a7ad6b3e0d28d40fdf983a79e7c2b70efedefc5e383f652b966c"
+    },
+    {
+      "file": "20261003057000_cube4_grouped_statutory_payslip_binding.sql",
+      "sha256": "814f2b9e6efe8a10e5974b0a51631557080351e3cf52ade0eb56ada34ed8ce42"
+    },
+    {
+      "file": "20261003058000_cube4_linked_correction_consumption_completion.sql",
+      "sha256": "67c9d4bae5b193fe87100659ed6037bd88d9dd3c5dfde8b3eccecda4cd521d60"
+    },
+    {
+      "file": "20261003059000_cube4_saved_source_selection_restoration.sql",
+      "sha256": "65f528ba6cc7947080be555e79da0d38518e52d72ab8a060358c8724ae299200"
+    },
+    {
+      "file": "20261004142814_cube5_attendance_channels.sql",
+      "sha256": "51f0ce0aa0b194b5e7dab8d6116ae8bc721f5ec9bbd132b060baa13a78a815d8"
+    },
+    {
+      "file": "20261004143859_cube5_channel_closure.sql",
+      "sha256": "ecb5d96c5f5d7301c3b4ad3dcbb7a5fc24d1445b5b0c05740d885e77d003958e"
+    },
+    {
+      "file": "20261004144450_cube5_channel_guards.sql",
+      "sha256": "eab80329e4cc501a9d6898aa30ffda6fedcebdf35035bc1f6d89efaa37bd95a9"
+    },
+    {
+      "file": "20261004144527_cube5_mobile_receipt_guard.sql",
+      "sha256": "d027d8601a9996e20291472b7dcc0f66225423f726dd9b48aa025fce5eba41fb"
+    },
+    {
+      "file": "20261004144615_cube5_capture_limits_mapping_history.sql",
+      "sha256": "9a01dc05d7b9e037dc70f1453a625c3b18549d5beadcf75df1e6df5c1fb87b81"
+    },
+    {
+      "file": "20261004144910_cube5_effective_mobile_state.sql",
+      "sha256": "41d847017e1445371318bdc28e8c5a37dbea348c1a07b4b0b1e6d09b99a68c1a"
+    },
+    {
+      "file": "20261004145438_cube5_mapping_order.sql",
+      "sha256": "2af2945230828db5d63be7a255bf39f78a122a4ab24569a053796e347296de33"
+    },
+    {
+      "file": "20261004145757_cube5_review_authority.sql",
+      "sha256": "4022156ce00347e798c220730421ad272b8ac420be15fadcc1084a5c108d893d"
+    },
+    {
+      "file": "20261004151828_cube5_mobile_context_binding.sql",
+      "sha256": "f9c8c553a2b27be2809770872f33ab8bf523c2e478f4d077de50cc005eda6826"
+    },
+    {
+      "file": "20261004184141_cube5_channel_history_site.sql",
+      "sha256": "474fe0d68d9165733add5190ff430a2919134349810de5a50f434e1b724ded49"
+    },
+    {
+      "file": "20261004190058_cube5_own_history_review_state.sql",
+      "sha256": "b4aca3aa17fc11327e869c5cd2548e48a4db7764d6a1053db5c3be6c5e07b49f"
+    },
+    {
+      "file": "20261004200852_cube5_channel_review_history.sql",
+      "sha256": "e657dea492a4dab09ade58f9ff47241ae65f8b67ab997fc7aaa4fde20f42398e"
+    },
+    {
+      "file": "20261004201539_cube5_own_history_review_decision.sql",
+      "sha256": "d7154e71542a121ad274457222d7668f2f8bea730c971ec4cf1d2aa128f8ae97"
+    },
+    {
+      "file": "20261007234428_leave_attempt_temporal_fence.sql",
+      "sha256": "6d822a076a163d2a33aa489193a3969d09219a839cb68643a7ce9885f4cc7cd0"
+    },
+    {
+      "file": "20261008091439_payroll_unclassified_overtime_notice.sql",
+      "sha256": "f9172148db8fd2aefdd763e8e86a69ea8f4a44bc1724e14493fe6b00c18319d9"
+    },
+    {
+      "file": "20261008094817_payroll_candidate_stage_facts.sql",
+      "sha256": "fae9923560785230abbe8960db9ecdc67603dd41fac27b825a4b063cc5ee380c"
+    },
+    {
+      "file": "20261008095336_payroll_recorded_payment_facts.sql",
+      "sha256": "7ea179ad1886ea9193d4c524cb0992e29b56dee8695fa36260049ddb0cd06609"
+    }
+  ],
+  "engineSchemaOnly": {
+    "originalSha256": "cf44713abd1fcab76c0334d03dbeab7b35e7136cf81efa02af6b91b52bf12a75",
+    "appliedSha256": "0d8648959a3dc535fa7e1a08750d6b02ea77cc436f6633555a3556abada0a3bb",
+    "excludedApplicationObjects": [
+      "people_capture_employee_account_provision",
+      "tenant_branding_object_insert",
+      "tenant_branding_object_read"
+    ]
+  },
+  "noDataCopied": true,
+  "noSecretsRead": true,
+  "startedAtUTC": "2026-10-09T00:12:27.891Z",
+  "finishedAtUTC": "2026-10-09T00:13:23.750Z",
+  "identity": {
+    "authUsers": 0,
+    "sessions": 0,
+    "tenants": 0,
+    "employees": 0,
+    "leaveRequests": 0,
+    "finalPayrollContexts": 0,
+    "publicConnect": false
+  },
+  "servicesOpened": 0,
+  "temporaryAuthAccessCreated": false,
+  "sharedDevelopmentDatabaseUnchanged": true,
+  "oldCube5AuthRoles": "Verified NOLOGIN, expiry remains 2026-10-04; not re-enabled",
+  "ownerEnvironment": "Entire project in development; no production or separate test environment",
+  "authority": {
+    "head": "c93f09ff94d2a67bc1309355c8c2bf9a8624cf0f",
+    "database": "business_platform_ux_c93f09f_qa",
+    "exitCode": 0,
+    "expected": 18,
+    "passed": 18,
+    "sqlSha256": "3b6cd744b0cc61c0e1b0ea51cdba00834516817b4fa2fd39e6bfcdc1dd603dd2",
+    "cases": [
+      {
+        "context": "anon",
+        "operation": "profile",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "anon",
+        "operation": "attendance",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "anon",
+        "operation": "leave-access",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "anon",
+        "operation": "leave-balances",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "anon",
+        "operation": "leave-requests",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "anon",
+        "operation": "leave-detail",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "profile",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "attendance",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "leave-access",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "leave-balances",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "leave-requests",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-no-actor",
+        "operation": "leave-detail",
+        "expectedCode": "P0002"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "profile",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "attendance",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "leave-access",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "leave-balances",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "leave-requests",
+        "expectedCode": "42501"
+      },
+      {
+        "context": "authenticated-unbound-actor",
+        "operation": "leave-detail",
+        "expectedCode": "P0002"
+      }
+    ],
+    "rollback": true,
+    "scope": "Actual PostgreSQL anon/authenticated privilege and supplied-claim denial contracts; no Auth login/provider/session issuance or positive actor journey",
+    "untested": [
+      "Verified session login",
+      "Active/revoked employee membership",
+      "Cross-tenant positive fixture",
+      "Business operation success"
+    ],
+    "testGuard": "One parametrized caller-visible denial check; no mocks/internal-call assertions, required credential/role partitions; no broad unchanged suite repeated",
+    "after": {
+      "authUsers": 0,
+      "sessions": 0,
+      "tenants": 0
+    }
+  },
+  "routeSources": [
+    {
+      "file": "src/app/tenant/[tenantId]/me/page.tsx",
+      "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sha256": "f3e36244362b885dcc04a773c15888905395446b8f67055c7d9aaf3d1e93697e"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "sha256": "681a75a6f8819382e15749852b9810a894b07b9e32831806ba8f492308dcd415"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
+      "sha256": "bebd997d02a68c9ed1d7b56278061350ada6f819b6953b253682554216cd48cb"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sha256": "558e383668563d919d666e49a3bb9452a44039578cd84f567731be1348f59873"
+    }
+  ],
+  "registry": "All 1734 statuses unchanged; no full phase promotion",
+  "next": "Positive active/revoked/cross-tenant actor fixtures and actual login/return journey. Supplied claim SQL tests do not certify Auth/provider success.",
+  "reused": "c93f09f grouped build/TS/scoped lint; no app code, CSS or contract changed, so no build/visual/model/unchanged business suite rerun",
+  "localOnly": [
+    "Complete setup steps and logs",
+    "Preparation and caller-test orchestration scripts",
+    "Owned empty QA database retained locally with PUBLIC CONNECT revoked"
+  ],
+  "testReview": "test-guard applied: parametrized caller-visible outcome assertions; no internal helper or mock response asserted"
+}
