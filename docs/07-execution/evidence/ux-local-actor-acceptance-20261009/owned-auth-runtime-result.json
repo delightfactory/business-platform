@@ -1,0 +1,28 @@
+{
+  "sourceHEAD": "e8a478756a95d3f090459cb9f8f91b99c7ea1ee8",
+  "environment": "Independent disposable PostgreSQL 17 container; schema only from empty current204-migration QA",
+  "noOriginalCredentialsRead": true,
+  "noSensitiveRowsCopied": true,
+  "syntheticOnly": true,
+  "ownership": "Own ux_qa_admin inside new container only; shared-engine refused transaction remains rolled back",
+  "actualAuth": "PASS normal GoTrue password login from actual UI; no cookies or session tokens injected",
+  "signedOutEntry": "/tenant/f9110000-0000-4000-8000-000000000001/me",
+  "loginEntry": "/auth/login?next=%2Ftenant%2Ff9110000-0000-4000-8000-000000000001%2Fme",
+  "actualReturn": "/tenant/f9110000-0000-4000-8000-000000000001/me",
+  "profileRead": "REFUSED: permission denied for schema auth",
+  "sqlstate": "42501",
+  "cause": "Auth schema ownership transfer removed postgres USAGE; SECURITY DEFINER tenant_my_employee_snapshot runs as postgres and calls auth.uid(). Read-only has_schema_privilege postgres/auth/USAGE returned false.",
+  "response": "Stopped refused read; no ACL patch, retry or ownership escalation after refusal",
+  "fiveRouteAcceptance": "OPEN: only profile return observed; other four routes not exercised after refusal",
+  "screenshot": "owned-auth-profile-denied.jpg",
+  "fullStageAcceptance": false,
+  "noBusinessSuccessClaim": true,
+  "remaining": "Prepare correct grants preserving existing application-owner access before any fresh separately authorized runtime. Do not retry either refused shared-engine ownership operation.",
+  "cleanup": "owned-auth-retirement.json",
+  "localExcluded": [
+    "generated private env files (values erased)",
+    "runtime source copy/dependencies",
+    "raw logs/schema dump",
+    "statutory-preservation-candidates.json"
+  ]
+}

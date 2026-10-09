@@ -1,0 +1,32 @@
+{
+  "status": "RETIRED_VERIFIED",
+  "verifiedAtUTC": "2026-10-09T09:23:33.343Z",
+  "controller": "Terminal; automatic cleanup reported RETIREMENT_NEEDS_ATTENTION with undefined errors; manually retired exact owned resources",
+  "authSessions": 0,
+  "refreshTokens": 0,
+  "syntheticUserPasswordErasedAndBanned": true,
+  "rolesNOLOGINPasswordsNULL": [
+    "ux_c93f_auth",
+    "ux_c93f_rest"
+  ],
+  "stoppedRemovedContainers": [
+    "ux-owned-auth",
+    "ux-owned-rest",
+    "ux-owned-db"
+  ],
+  "removedNetwork": "ux-owned-qa",
+  "remainingOwnedContainers": 0,
+  "remainingOwnedNetworks": 0,
+  "listeners3650Through3654": 0,
+  "next40728Present": false,
+  "tab133Closed": true,
+  "sharedQA": {
+    "authSchemaOwner": "postgres",
+    "rolesNOLOGINNonSuper": true,
+    "originalMembership": "supabase_admin ADMIN true INHERIT false SET false",
+    "users": 0,
+    "otherConnections": 0
+  },
+  "noOtherServicesStopped": true,
+  "temporaryDatabase": "tmpfs contents disappeared with owned container removal"
+}

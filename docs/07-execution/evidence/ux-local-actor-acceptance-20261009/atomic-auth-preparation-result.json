@@ -1,0 +1,7 @@
+{
+  "status": "REFUSED_OR_FAILED_STOPPED",
+  "exitCode": 3,
+  "error": "ERROR:  must be owner of sequence refresh_tokens_id_seq\nCONTEXT:  SQL statement \"ALTER SEQUENCE auth.refresh_tokens_id_seq OWNER TO ux_c93f_auth\"\nPL/pgSQL function inline_code_block line 6 at EXECUTE\n",
+  "ownerAuthorization": "Full local Docker database permissions for testing, 2026-10-09",
+  "noRetry": true
+}
