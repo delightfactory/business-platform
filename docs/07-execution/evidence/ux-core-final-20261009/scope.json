@@ -1,0 +1,29 @@
+{
+  "sourceBaseline": "b7e9663ec3d1a5885dd99606423b1d3ffb036e65",
+  "candidateSource": {
+    "src/app/operator/layout.tsx": "ae13210664bd6bd1d245b2bfe04582a25d7853da41b7b9d699bb9e466546e3b4",
+    "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx": "c8fe4a6a8add539a7e6496164c29f1fce0c5b72470e24e63da4fe6f1d9f1ec51",
+    "src/app/tenant/[tenantId]/layout.tsx": "b23580587c053583576c9f71c2900638c1aa1acf45450294d3d8ddeb8abaa94b",
+    "src/app/tenant/[tenantId]/me/page.tsx": "0a377464de00ae45157bc9d1310e25b0e8eda4f16de8005bc1f53a4b606439ce",
+    "src/app/workspace.css": "1a94a22721172b0d890186f54687e10e0ac7aa838036a2d530a5be3df6b2308c",
+    "src/components/context-navigation-client.tsx": "2cb2d1b39fa6f87f3ed7b5415cfe86c41fcc70fb5c692388d1c23fc99ba87a0e"
+  },
+  "ownedRuntime": "current-owned-auth-qa-v14",
+  "noAuthProviderMocks": true,
+  "geolocation": "Browser.setPermission unsupported; operation stopped. Native override alone timed out. Controlled page-local getCurrentPosition denial and fixed30/31/5 callbacks test application/actual RPC, not browser permission service or physical GPS. No permission granted; restore original function or destroy own document at cleanup.",
+  "network": "Actual Fetch ERR_INTERNET_DISCONNECTED with worker bypass on owned tab; online verify once confirmed not recorded, no automatic resend. Browser network/cache/worker settings restored before logout/close.",
+  "physicalDeviceDecision": "Owner personally tests devices after local closure before production",
+  "P1": "PASS actual missing OUT -> ready2punches; absence -> approved1fact; required-reason native refusals and skipEnter target focus observed",
+  "P2": "PASS actual app/RPC inside controlled coordinates IN/OUT and policy-review denial, 4 events/4 distinct keys; true transport failure -> verify not recorded, no fifth event. Native permission/GPS not qualified.",
+  "P3": "PASS scoped production-build 4G navigation: own profile390 LCP1880ms/CLS upper0.047451; Today1366 LCP736ms/CLS upper0.002036. Manifest/service-worker metadata present; actual installation deferred.",
+  "P4": "PASS axe4.13.0 20 scans/10 critical owning pages at390/1366, zero automated violations; bounded shared incomplete-node checks recorded. Not universal WCAG/screen-reader qualification.",
+  "retirement": {
+    "status": "RETIRED",
+    "at": "2026-10-09T15:13:04.158Z",
+    "reason": "explicit test completion",
+    "ownedContainers": 0,
+    "ownedNetwork": 0,
+    "ports": "3650-3654 zero listeners independently observed",
+    "browser": "normal logout; network/cache/worker/geo restored; viewport reset and own tab8 closed; user tab untouched"
+  }
+}

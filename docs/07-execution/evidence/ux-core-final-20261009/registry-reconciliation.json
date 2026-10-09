@@ -1,0 +1,248 @@
+{
+  "summary": {
+    "sourceFiles": 302,
+    "pages": 75,
+    "endpoints": 4,
+    "boundaries": 10,
+    "serverActions": 108,
+    "rpcCallSites": 349,
+    "uniqueLiteralRpcs": 217,
+    "dynamicRpcSites": 7,
+    "formControls": 1190,
+    "sourceAssignmentComplete": true,
+    "semanticScenarioReviewComplete": false,
+    "executionCoverageComplete": false
+  },
+  "items": 1738,
+  "sourceReviewedPreserved": 25,
+  "added": [],
+  "migrations": [
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11403",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11504",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11482",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11583",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11538",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11639",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11598",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11699",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:11696",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:11797",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:11852",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:11953",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:110:12118",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:110:12219",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:111:12356",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:111:12457",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15195",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15296",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15314",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15415",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15370",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15471",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15458",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15559",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:131:15649",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:131:15750",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:132:15732",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:132:15833",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16111",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16212",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16219",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16320",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16275",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16376",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16335",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16436",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:138:16642",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:138:16743",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:139:16722",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:139:16823",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:156:19542",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:156:19643",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19729",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19830",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19785",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19886",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19845",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19946",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19908",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:20009",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20169",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20270",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20292",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20393",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:161:20420",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:161:20521",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:162:20543",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:162:20644",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:165:20914",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:165:21015",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21003",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21104",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21270",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21371",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21396",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21497",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21452",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21553",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21512",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21613",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21575",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21676",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:170:21701",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:170:21802",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:171:21790",
+      "after": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:171:21891",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:122:5449",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:123:5535",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:122:5478",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:123:5564",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:129:5820",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:130:5906",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:138:6404",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:139:6490",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:150:7054",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:151:7140",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:162:8111",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:163:8197",
+      "status": "pending"
+    },
+    {
+      "before": "CONTROL:src/components/context-navigation-client.tsx:162:8140",
+      "after": "CONTROL:src/components/context-navigation-client.tsx:163:8226",
+      "status": "pending"
+    }
+  ],
+  "semanticPromotion": false,
+  "coverage": "Structural slots, not runtime instances/full coverage"
+}

@@ -102,6 +102,7 @@ export function ContextNavigationClient({
   </>;
 
   return <div className="workspace-navigation">
+    <a className="workspace-skip-link" href="#workspace-content">تخطَّ إلى المحتوى</a>
     <aside className="workspace-sidebar" aria-label="التنقل الرئيسي">
       <Link className="workspace-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
       {mode === 'operator' && <span className="workspace-mode">وضع المشغّل</span>}

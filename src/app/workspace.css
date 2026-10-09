@@ -16,6 +16,18 @@
 
 .workspace-navigation { grid-column: 1; grid-row: 1; min-width: 0; }
 .workspace-content { grid-column: 2; grid-row: 1; min-width: 0; }
+.workspace-skip-link {
+  position: fixed;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--surface-base);
+  color: var(--text-primary);
+  transform: translateY(-200%);
+}
+.workspace-skip-link:focus { transform: translateY(0); }
 .workspace-frame .app-shell {
   display: flex;
   flex-direction: column;

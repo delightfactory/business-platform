@@ -27,6 +27,6 @@ export default async function TenantBrandingLayout({ children, params }: { child
 
   return <div className="tenant-area workspace-frame" data-workspace="tenant" data-brand={brandKey}>
     <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />
-    <div className="workspace-content">{children}</div>
+    <div className="workspace-content" id="workspace-content" tabIndex={-1}>{children}</div>
   </div>;
 }

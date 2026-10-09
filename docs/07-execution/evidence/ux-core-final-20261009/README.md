@@ -1,0 +1,24 @@
+# Final bounded original-core qualification — 9 October 2026
+
+Baseline b7e9663ec3d1a5885dd99606423b1d3ffb036e65 plus exact six source fingerprints in source-hashes.json. This is local release-candidate evidence, not a production deployment or full-platform/device certification.
+
+## Delivered corrections and focused proof
+
+- Attendance add-punch disclosure remains available under identical permissions; ready records emphasize approval, missing/empty records emphasize capture. Profile adds the existing HR correction route as clear guidance. Native keyboard skip link focuses the existing workspace content, without a new page or role.
+- One affected ESLint and production build including TypeScript passed. Exact candidate/runtime source hashes remain unchanged; existing Cube5 SQL tests unchanged. No repeated heavy suite required.
+- P1: normal GoTrue login and actual Next/PostgREST missing OUT completed to ready with exactly IN/OUT; absence approved with one fact and zero punches. Both required-reason refusals preserved input/focus. Actual DB receipts in attendance-decisions-db.json. Native Enter skip focus and ready approval primary were observed.
+- P2: actual app/RPC inside-area IN/OUT using controlled page-local coordinates, denial/timeout following existing review policy: 4 events, 4 distinct keys, no duplicates. Actual transport offline produced ERR_INTERNET_DISCONNECTED; restored online and verified the original attempt once as not recorded, no resend or fifth event. No Auth/RPC mocks. Native Browser.setPermission was unsupported and stopped; native GPS/permission-provider accuracy is not passed.
+- P3: production runtime 4G profile390 LCP1880ms / CLS conservative upper bound0.047451; Today1366 LCP736ms / CLS upper0.002036. These are two scoped navigations, not population performance claims. Manifest ar/rtl/standalone/icons and active service worker verified; installation not performed. Unsupported Page.addScriptToEvaluateOnNewDocument stopped; buffered observers used instead.
+- P4: axe4.13.0 already installed locally, 20 scans of 10 critical owning pages at390/1366, zero automated violations. Shared aria-controls targets were existing labelled dialogs; decorative icons hidden; inspected gradient controls not visible. Incomplete nodes are not blanket passes. No physical screen-reader or universal WCAG claim.
+
+## Reference and source coverage
+
+Codex rendered verdict: MATCH WITH ACCEPTED DEVIATIONS for the affected ready-action light390/dark1366 and profile390 samples: Cairo/RTL, shared cards/tokens, clear HR correction, capture secondary and approval primary on ready state. Not pixel-identical reproduction and not proof of every route/state. Prior unchanged shell/brands/error/other owning-page reviews retained. Original75-page reconciliation missing0/new0 is source presence, not100% semantic coverage; broad structural register remains honestly pending.
+
+## Scope and preproduction owner action
+
+Owner explicitly will test actual mobile devices after local closure before publication: physical GPS/denial, installation and VoiceOver/TalkBack. No deployment authorization. D1 mixed digit formatting remains pending an owner answer; no formatter or silent waiver. Existing Cairo/native controls and Today plus existing task pages retained. G1-G9/domain promotions/new inbox/backend expansions are not reopened. Approved D16 Leave server recovery24h remains post-core backlog, not a closure prerequisite.
+
+Owned synthetic QA only: schema-only isolated tmpfs DB, two artificial actors, loopback3650-3654. Immutable role UPDATE and colliding role INSERT were rolled back; new independent legal fixture roles used, no guard disabled or shared/real grants changed. These are fixture preconditions, not application fixes or canonical-role certification. Normal UI logout, browser overrides restored, own tab closed. Environment RETIRED with owned containers/network/listeners zero; shared Supabase untouched. No private env files, passwords, tokens, server logs or real employee data included.
+
+Remote handoff: use the verified commit containing this README on codex/ux-core-payroll-workspace, not main. Node24, npm ci, copy .env.example to private .env.local, Docker Desktop + Supabase CLI, supabase start; apply current migrations only to an owned disposable local DB with supabase migration up --local as needed; npm run dev. Follow tracked README for invite-only account/operator bootstrap. Environment names only: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY, NEXT_PUBLIC_APP_URL, SUPABASE_SECRET_KEY (server-only invitations). Local app3000/API55321/Mailpit55324. No cloud environment created. Existing13 invalid/unapproved local evidence files retained and excluded; runtime private artifacts retained only locally with private values erased by retirement.

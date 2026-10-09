@@ -102,7 +102,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
         </details>}
       </li>)}</ul>}
 
-      {(permissions.can_manage === true || permissions.can_correct === true) && <details className="task-disclosure attendance-add-punch"><summary className="primary-button">تسجيل دخول أو خروج</summary>
+      {(permissions.can_manage === true || permissions.can_correct === true) && <details className="task-disclosure attendance-add-punch"><summary className={interpretations?.exception_code === 'missing_punch' || punches.length === 0 ? 'primary-button' : 'secondary-button'}>تسجيل دخول أو خروج</summary>
         <OfflineForm action={recordPunchAction} className="attendance-form">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="requestKey" value={crypto.randomUUID()} />
           <label>نوع التسجيل<select name="direction" defaultValue="in"><option value="in">دخول</option><option value="out">خروج</option></select></label>

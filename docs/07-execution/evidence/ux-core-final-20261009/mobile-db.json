@@ -1,0 +1,12 @@
+{
+  "events": 4,
+  "insideNoReview": 2,
+  "locationFailureReview": 2,
+  "insideDirections": [
+    "in",
+    "out"
+  ],
+  "requests": 4,
+  "distinctEventKeys": 4,
+  "scope": "Actual normal Auth/app/RPC: native location timeout plus controlled denial are policy-review events, controlled inside30/31/5 IN/OUT2 no-review; transport disconnected then original verify confirms no recording, no5th event/no duplicate. Browser permission/GPS provider not qualified; no auto resend."
+}

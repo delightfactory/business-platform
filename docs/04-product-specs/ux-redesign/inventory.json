@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "3c041525590d244350f2375fe66da9e78e5d3f8c",
+  "sourceHead": "b7e9663ec3d1a5885dd99606423b1d3ffb036e65",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -185,7 +185,7 @@
     {
       "file": "src/app/operator/layout.tsx",
       "phase": "R3",
-      "sha256": "0322352724518dc15aed3a0be67e93145e418f102d231bf49d40c0d767f1acc8"
+      "sha256": "4e88b40612dd2de0212b3a14b85d7789e1cfcd1fb25697d1d2b0ec9d734502af"
     },
     {
       "file": "src/app/operator/onboarding/LimitFields.tsx",
@@ -340,7 +340,7 @@
     {
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "phase": "R5",
-      "sha256": "c06e80bc2dc8b5d6068a493fcfd718d12604276f690aeab14868af3f953c8c42"
+      "sha256": "c8fe4a6a8add539a7e6496164c29f1fce0c5b72470e24e63da4fe6f1d9f1ec51"
     },
     {
       "file": "src/app/tenant/[tenantId]/attendance/actions.ts",
@@ -495,7 +495,7 @@
     {
       "file": "src/app/tenant/[tenantId]/layout.tsx",
       "phase": "R1",
-      "sha256": "b1c4ee5edb6b8721444952339f20cb187b1f790c597121a2eb8ceae1d1e40d34"
+      "sha256": "9e9bd19909bd789495cf82505043d94b023e6ff5d89d7dea53d7c4a85e82d6ee"
     },
     {
       "file": "src/app/tenant/[tenantId]/leave/actions.ts",
@@ -835,7 +835,7 @@
     {
       "file": "src/app/tenant/[tenantId]/me/page.tsx",
       "phase": "R6",
-      "sha256": "d4864d09a1afbb960f47de3fa9e38e6feeed7b65983bea62d4afd718fac1092a"
+      "sha256": "0a377464de00ae45157bc9d1310e25b0e8eda4f16de8005bc1f53a4b606439ce"
     },
     {
       "file": "src/app/tenant/[tenantId]/me/profile.module.css",
@@ -1380,12 +1380,12 @@
     {
       "file": "src/app/workspace.css",
       "phase": "R1",
-      "sha256": "b53bd29b65492ecd20ad1409d97198fa19ea0640c5bb36468b4ecf24dc4a98be"
+      "sha256": "2cfc93d31e5f279ab4943ea406ea33b499d7f139988f2e6251780eb1b22fb62a"
     },
     {
       "file": "src/components/context-navigation-client.tsx",
       "phase": "R1",
-      "sha256": "e1dab17d27474e03140dca9855a61d97b69e47c0e3c64d3af4cde2d96f2eec07"
+      "sha256": "337c04e153df154ad95aad0763afe6f31b42e2349f140cc8eac93de4303903f7"
     },
     {
       "file": "src/components/context-navigation.tsx",
@@ -9852,7 +9852,7 @@
       "attributes": {}
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11403",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:106:11504",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 106,
       "tag": "OfflineForm",
@@ -9862,7 +9862,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11482",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11583",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 107,
       "tag": "input",
@@ -9874,7 +9874,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11538",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11639",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 107,
       "tag": "input",
@@ -9886,7 +9886,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11598",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:107:11699",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 107,
       "tag": "input",
@@ -9898,7 +9898,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:11696",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:108:11797",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 108,
       "tag": "select",
@@ -9908,7 +9908,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:11852",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:109:11953",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 109,
       "tag": "input",
@@ -9919,7 +9919,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:110:12118",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:110:12219",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 110,
       "tag": "input",
@@ -9929,7 +9929,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:111:12356",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:111:12457",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 111,
       "tag": "OfflineSubmitButton",
@@ -9940,7 +9940,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15195",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:128:15296",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 128,
       "tag": "OfflineForm",
@@ -9950,7 +9950,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15314",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15415",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 129,
       "tag": "input",
@@ -9962,7 +9962,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15370",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:129:15471",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 129,
       "tag": "input",
@@ -9974,7 +9974,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15458",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:130:15559",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 130,
       "tag": "input",
@@ -9986,7 +9986,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:131:15649",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:131:15750",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 131,
       "tag": "input",
@@ -9996,7 +9996,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:132:15732",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:132:15833",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 132,
       "tag": "OfflineSubmitButton",
@@ -10007,7 +10007,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16111",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:136:16212",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 136,
       "tag": "OfflineForm",
@@ -10017,7 +10017,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16219",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16320",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 137,
       "tag": "input",
@@ -10029,7 +10029,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16275",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16376",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 137,
       "tag": "input",
@@ -10041,7 +10041,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16335",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:137:16436",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 137,
       "tag": "input",
@@ -10053,7 +10053,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:138:16642",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:138:16743",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 138,
       "tag": "input",
@@ -10063,7 +10063,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:139:16722",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:139:16823",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 139,
       "tag": "OfflineSubmitButton",
@@ -10074,7 +10074,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:156:19542",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:156:19643",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 156,
       "tag": "OvertimeClassificationForm",
@@ -10084,7 +10084,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19729",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19830",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 157,
       "tag": "input",
@@ -10096,7 +10096,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19785",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19886",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 157,
       "tag": "input",
@@ -10108,7 +10108,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19845",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19946",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 157,
       "tag": "input",
@@ -10120,7 +10120,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:19908",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:157:20009",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 157,
       "tag": "input",
@@ -10132,7 +10132,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20169",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:159:20270",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 159,
       "tag": "input",
@@ -10143,7 +10143,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20292",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:160:20393",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 160,
       "tag": "input",
@@ -10154,7 +10154,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:161:20420",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:161:20521",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 161,
       "tag": "input",
@@ -10165,7 +10165,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:162:20543",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:162:20644",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 162,
       "tag": "input",
@@ -10176,7 +10176,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:165:20914",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:165:21015",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 165,
       "tag": "input",
@@ -10186,7 +10186,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21003",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:166:21104",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 166,
       "tag": "OfflineSubmitButton",
@@ -10197,7 +10197,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21270",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:168:21371",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 168,
       "tag": "OfflineForm",
@@ -10207,7 +10207,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21396",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21497",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 169,
       "tag": "input",
@@ -10219,7 +10219,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21452",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21553",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 169,
       "tag": "input",
@@ -10231,7 +10231,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21512",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21613",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 169,
       "tag": "input",
@@ -10243,7 +10243,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21575",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:169:21676",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 169,
       "tag": "input",
@@ -10255,7 +10255,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:170:21701",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:170:21802",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 170,
       "tag": "input",
@@ -10265,7 +10265,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:171:21790",
+      "id": "CONTROL:src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx:171:21891",
       "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
       "line": 171,
       "tag": "OfflineSubmitButton",
@@ -19763,9 +19763,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:122:5449",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:123:5535",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 122,
+      "line": 123,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19773,9 +19773,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:122:5478",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:123:5564",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 122,
+      "line": 123,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19783,9 +19783,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:129:5820",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:130:5906",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 129,
+      "line": 130,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19794,9 +19794,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:138:6404",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:139:6490",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 138,
+      "line": 139,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19805,9 +19805,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:150:7054",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:151:7140",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 150,
+      "line": 151,
       "tag": "button",
       "phase": "R1",
       "attributes": {
@@ -19816,9 +19816,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:162:8111",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:163:8197",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 162,
+      "line": 163,
       "tag": "form",
       "phase": "R1",
       "attributes": {
@@ -19826,9 +19826,9 @@
       }
     },
     {
-      "id": "CONTROL:src/components/context-navigation-client.tsx:162:8140",
+      "id": "CONTROL:src/components/context-navigation-client.tsx:163:8226",
       "file": "src/components/context-navigation-client.tsx",
-      "line": 162,
+      "line": 163,
       "tag": "button",
       "phase": "R1",
       "attributes": {

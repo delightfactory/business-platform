@@ -50,6 +50,7 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
         <div><dt>الفرع</dt><dd>{profile.site_name ?? 'غير محدد'}</dd></div>
         <div><dt>المسمى الوظيفي</dt><dd>{profile.job_title ?? 'غير محدد'}</dd></div>
       </dl>
+      <p className="field-hint">لتصحيح بياناتك تواصل مع الموارد البشرية.</p>
       {!profile.new_work_enabled && <p className="field-hint" role="status">يمكنك الاطلاع على ملفك الحالي. إنشاء طلبات عمل جديدة غير متاح حاليًا.</p>}
     </section>
     <InstallHint />

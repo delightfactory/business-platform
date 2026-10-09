@@ -1,0 +1,85 @@
+{
+  "kind": "P1 actual normal GoTrue/Next/PostgREST selected missing-OUT and absence approval; required-reason refusal before both observed natively; no duplicate OUT",
+  "rows": [
+    {
+      "id": "e08aca8b-242f-422d-958c-12d1cecbbe71",
+      "status": "ready",
+      "punchCount": 2,
+      "directions": [
+        "in",
+        "out"
+      ],
+      "facts": []
+    },
+    {
+      "id": "b94eb5e9-b0a2-4626-8a08-bf258eed4858",
+      "status": "approved",
+      "punchCount": 0,
+      "directions": null,
+      "facts": [
+        {
+          "id": "2601de60-d712-4c72-994f-36e8cd583af8",
+          "fact": {
+            "outcome": "absence",
+            "site_id": "f5140000-0000-4000-8000-000000000001",
+            "first_in": null,
+            "last_out": null,
+            "employee_id": "9ed57255-8cf0-4d37-97ec-a9cf55d75fe5",
+            "leave_units": 0,
+            "expected_end": null,
+            "late_minutes": null,
+            "observations": {
+              "state": "needs_review",
+              "first_in": null,
+              "last_out": null,
+              "late_minutes": null,
+              "exception_code": "absence_candidate",
+              "worked_minutes": null,
+              "owner_permission": "attendance.approve",
+              "early_leave_minutes": null,
+              "gross_worked_minutes": null,
+              "applied_break_minutes": null,
+              "scheduled_break_minutes": 0
+            },
+            "absence_units": 1,
+            "assignment_id": "f984404f-4795-4fec-ac39-d91134a7a739",
+            "employment_id": "0a74aa9e-571b-452b-8feb-47e45d60fa57",
+            "leave_sources": [],
+            "schedule_kind": "flexible",
+            "timezone_name": "UTC",
+            "classification": {
+              "kind": "absence",
+              "version": 1,
+              "diagnostics": [
+                "absence_candidate"
+              ],
+              "context_hash": "d751713988987e9331980363e24189ce"
+            },
+            "expected_start": null,
+            "policy_version": 1,
+            "worked_minutes": 0,
+            "contract_version": 2,
+            "operational_date": "2026-10-07",
+            "required_minutes": 60,
+            "input_fingerprint": "7e7d6b30b9e03f58677466d225c25629",
+            "employer_entity_id": "f5130000-0000-4000-8000-000000000001",
+            "policy_template_id": "f5150000-0000-4000-8000-000000000001",
+            "early_leave_minutes": null,
+            "gross_worked_minutes": null,
+            "applied_break_minutes": null,
+            "scheduled_break_minutes": 0,
+            "interpretation_exception": "absence_candidate"
+          },
+          "reason": "اعتماد غياب اليوم الاصطناعي بلا تسجيلات لاختبار الإغلاق",
+          "version": 1,
+          "tenant_id": "f5100000-0000-4000-8000-000000000001",
+          "created_at": "2026-10-09T14:38:03.512781+00:00",
+          "actor_user_id": "f9100000-0000-4000-8000-000000000001",
+          "corrects_fact_id": null,
+          "work_instance_id": "b94eb5e9-b0a2-4626-8a08-bf258eed4858",
+          "interpretation_id": "ee8df453-be1c-4418-a797-8fb248607641"
+        }
+      ]
+    }
+  ]
+}

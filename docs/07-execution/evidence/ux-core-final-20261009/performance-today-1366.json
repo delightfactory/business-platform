@@ -1,0 +1,66 @@
+{
+  "settings": {
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "uploadBytesPerSecond": 93750,
+    "cacheDisabled": true,
+    "serviceWorkerBypassed": true
+  },
+  "result": {
+    "result": {
+      "type": "object",
+      "value": {
+        "clsUpperBound": 0.0020359847248697773,
+        "fonts": "loaded",
+        "headings": [
+          "اليوم"
+        ],
+        "lcpMs": 736,
+        "path": "/tenant/f5100000-0000-4000-8000-000000000001",
+        "resources": [
+          {
+            "duration": 1446.5,
+            "transferSize": 63609
+          },
+          {
+            "duration": 214.39999999850988,
+            "transferSize": 826
+          },
+          {
+            "duration": 411.2999999988824,
+            "transferSize": 1654
+          },
+          {
+            "duration": 457,
+            "transferSize": 3886
+          },
+          {
+            "duration": 1476,
+            "transferSize": 66653
+          },
+          {
+            "duration": 488.7999999988824,
+            "transferSize": 1309
+          },
+          {
+            "duration": 535.7999999988824,
+            "transferSize": 1053
+          },
+          {
+            "duration": 231.2999999988824,
+            "transferSize": 6013
+          },
+          {
+            "duration": 214.90000000037253,
+            "transferSize": 3014
+          },
+          {
+            "duration": 183.5,
+            "transferSize": 439
+          }
+        ],
+        "responseStart": 253.90000000037253
+      }
+    }
+  }
+}

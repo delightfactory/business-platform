@@ -1,0 +1,1190 @@
+[
+  {
+    "actor": "employee",
+    "width": 390,
+    "headings": [
+      "ملفي"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".secondary-button[type=\"button\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 1366,
+    "headings": [
+      "ملفي"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > a:nth-child(2) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".secondary-button[type=\"button\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 390,
+    "headings": [
+      "إجازاتي"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 21,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me/leave",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 1366,
+    "headings": [
+      "إجازاتي"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > a:nth-child(2) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 21,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me/leave",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 390,
+    "headings": [
+      "طلب إجازة جديد"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me/leave/new",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 1366,
+    "headings": [
+      "طلب إجازة جديد"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group > a:nth-child(2) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/me/leave/new",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "اليوم"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(1) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(1) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "li:nth-child(3) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".today-work-grid > .tenant-home-tasks:nth-child(2) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(2) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(3) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(3) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(4) > ul > li > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".today-sections > .tenant-home-tasks > ul > li > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 25,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "اليوم"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(7) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(1) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(1) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "li:nth-child(3) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".today-work-grid > .tenant-home-tasks:nth-child(2) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(2) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(3) > ul > li:nth-child(1) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(3) > ul > li:nth-child(2) > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".tenant-home-tasks:nth-child(4) > ul > li > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".today-sections > .tenant-home-tasks > ul > li > .tenant-task-link > span[aria-hidden=\"true\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 26,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "موظف تجريبي"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".attendance-add-punch > summary"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 24,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/e08aca8b-242f-422d-958c-12d1cecbbe71",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "موظف تجريبي"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(7) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".attendance-add-punch > summary"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 25,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/e08aca8b-242f-422d-958c-12d1cecbbe71",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "مراجعة الحضور"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              "li > .secondary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 25,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/review",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "مراجعة الحضور"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(7) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              "li > .secondary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 26,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/review",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "قنوات الحضور"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/sources",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "قنوات الحضور"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(7) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 24,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/attendance/sources",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "مراجعة طلبات الإجازة"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-form-actions > .secondary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 21,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/leave",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "مراجعة طلبات الإجازة"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-form-actions > .secondary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 22,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/leave",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 390,
+    "headings": [
+      "الرواتب"
+    ],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": [
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              ".workspace-mobile-menu-button"
+            ]
+          },
+          {
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"_R_35ubtb_\"",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"]"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              ".workspace-mobile-menu-button > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+            "target": [
+              "button[aria-label=\"عرض كل الأقسام\"] > span[aria-hidden=\"true\"]"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 22,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/payroll",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "HR",
+    "width": 1366,
+    "headings": [
+      "الرواتب"
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": [
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-identity > .workspace-identity-text > bdi"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > p"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(4) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(5) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(7) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(8) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(2) > a:nth-child(9) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-nav-group:nth-child(3) > a:nth-child(3) > span:nth-child(1)"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".workspace-sidebar-footer > fieldset > legend"
+            ]
+          },
+          {
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "target": [
+              ".primary-button"
+            ]
+          }
+        ]
+      }
+    ],
+    "passes": 25,
+    "path": "/tenant/f5100000-0000-4000-8000-000000000001/payroll",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 1366,
+    "incomplete": 1,
+    "passes": 23,
+    "url": "/tenant/f5100000-0000-4000-8000-000000000001/me/attendance",
+    "version": "4.13.0",
+    "violations": []
+  },
+  {
+    "actor": "employee",
+    "width": 390,
+    "incomplete": [
+      "aria-valid-attr-value",
+      "color-contrast"
+    ],
+    "passes": 23,
+    "url": "/tenant/f5100000-0000-4000-8000-000000000001/me/attendance",
+    "version": "4.13.0",
+    "violations": []
+  }
+]

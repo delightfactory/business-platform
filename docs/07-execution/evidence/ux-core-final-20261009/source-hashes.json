@@ -1,0 +1,17 @@
+{
+  "baseline": "b7e9663ec3d1a5885dd99606423b1d3ffb036e65",
+  "candidates": {
+    "src/app/operator/layout.tsx": "ae13210664bd6bd1d245b2bfe04582a25d7853da41b7b9d699bb9e466546e3b4",
+    "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx": "c8fe4a6a8add539a7e6496164c29f1fce0c5b72470e24e63da4fe6f1d9f1ec51",
+    "src/app/tenant/[tenantId]/layout.tsx": "b23580587c053583576c9f71c2900638c1aa1acf45450294d3d8ddeb8abaa94b",
+    "src/app/tenant/[tenantId]/me/page.tsx": "0a377464de00ae45157bc9d1310e25b0e8eda4f16de8005bc1f53a4b606439ce",
+    "src/app/workspace.css": "1a94a22721172b0d890186f54687e10e0ac7aa838036a2d530a5be3df6b2308c",
+    "src/components/context-navigation-client.tsx": "2cb2d1b39fa6f87f3ed7b5415cfe86c41fcc70fb5c692388d1c23fc99ba87a0e"
+  },
+  "build": "PASS session19738",
+  "eslint": "PASS session42393",
+  "tests": "Existing supabase/tests byte unchanged from Cube5",
+  "scope": "Six source presentation corrections; no changed mutations, grants, fields, RPCs or business calculations",
+  "runtimeFilesVerified": 320,
+  "sourceUnchangedAfterGates": true
+}

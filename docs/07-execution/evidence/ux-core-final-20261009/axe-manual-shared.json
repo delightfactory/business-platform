@@ -1,0 +1,30 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "controls": [
+        {
+          "label": "فتح قائمة التنقل",
+          "targetExists": true,
+          "targetTag": "DIALOG"
+        },
+        {
+          "label": "عرض كل الأقسام",
+          "targetExists": true,
+          "targetTag": "DIALOG"
+        }
+      ],
+      "decorativeIcons": [
+        {
+          "hidden": "true",
+          "parentLabel": "فتح قائمة التنقل"
+        },
+        {
+          "hidden": "true",
+          "parentLabel": "عرض كل الأقسام"
+        }
+      ],
+      "gradientButtons": []
+    }
+  }
+}
