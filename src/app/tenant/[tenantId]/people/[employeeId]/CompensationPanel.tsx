@@ -1,4 +1,5 @@
 'use client';
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 
 import { useActionState, useState } from 'react';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -98,5 +99,5 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
 }
 
 function formatAmount(value: number | string) {
-  return Number(value).toLocaleString('ar-EG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return Number(value).toLocaleString(ARABIC_DISPLAY_LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }

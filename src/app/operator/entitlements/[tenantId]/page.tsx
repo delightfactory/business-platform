@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { operatorEntitlementSnapshot, type OperatorEntitlement } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
@@ -74,7 +75,7 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
     {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لإتاحة الإجازات، أتح إدارة الموارد البشرية أولًا.</p>}
     {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
-    {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
+    {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
       <summary className="secondary-button">{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</summary>
       <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ إتاحة ${label}`}>
@@ -94,7 +95,7 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
 }
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
-function dateLabel(value: string) { return new Date(value).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' }); }
+function dateLabel(value: string) { return new Date(value).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
   return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع الإتاحة الحالية قبل إجراء آخر.';

@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { operatorCommercialSnapshot, type OperatorLimit } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
@@ -64,7 +65,7 @@ function LimitCard({ tenantId, limit }: { tenantId: string; limit: Limit }) {
       <p>الحد الحالي: <strong>{limit.mode === 'unlimited' ? 'غير محدود' : limit.value}</strong></p>
       {over && <p className="form-message" role="status">تبقى الموارد الموجودة فعّالة. لا يمكن إضافة {users ? 'مستخدمين' : 'فروع'} جديدة إلا عندما يصبح الاستخدام أقل من الحد أو يُرفع الحد. يمكن لمسؤول الشركة تعطيل {users ? 'حسابات' : 'فروع'} غير مستخدمة، أو طلب رفع الحد.</p>}
       {atCapacity && <p className="field-hint">بلغ الاستخدام الحد. لا يمكن إضافة جديد إلا عندما يصبح الاستخدام أقل من الحد أو يُرفع الحد؛ مسؤول الشركة يدير تعطيل الموارد غير المستخدمة.</p>}
-      {limit.valid_from && <p className="field-hint">ساري من {new Date(limit.valid_from).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
+      {limit.valid_from && <p className="field-hint">ساري من {new Date(limit.valid_from).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
     </>}
     {limit.status !== 'conflict' && limit.status !== 'future_conflict' && <details className="operator-grant-form"><summary className="secondary-button">{limit.status === 'missing' ? `تحديد حد ${users ? 'المستخدمين' : 'الفروع'}` : `تغيير حد ${users ? 'المستخدمين' : 'الفروع'}`}</summary>
       <OperatorActionForm action={changeCommercialLimitAction} errorMessages={limitErrors} label={`حفظ حد ${users ? 'المستخدمين' : 'الفروع'}`}>

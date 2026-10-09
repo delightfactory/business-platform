@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { uuid } from './rules';
 
 type Period = { id: string; starts_on: string; ends_on: string };
@@ -27,6 +28,6 @@ export function recordedPaymentDescription(facts: PaymentFacts): string {
   if (facts.payable_sign === 'negative') return 'قيمة الالتزام تحتاج مراجعة في سجل الدفعات؛ لا يمكن تأكيد اكتمال الصرف.';
   if (facts.payable_sign === 'zero') return 'لا يوجد مبلغ مستحق للصرف في هذا المخرج النهائي.';
   if (facts.status === 'paid') return 'سُجل سداد كامل للمستحقات في هذا المخرج النهائي.';
-  if (facts.status === 'partially_paid') return `سُجل سداد جزئي؛ علاقات توظيف بها متبقٍ: \u2068${new Intl.NumberFormat('ar-EG').format(facts.remaining_count)}\u2069.`;
+  if (facts.status === 'partially_paid') return `سُجل سداد جزئي؛ علاقات توظيف بها متبقٍ: \u2068${new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(facts.remaining_count)}\u2069.`;
   return facts.ever_paid ? 'لا يوجد سداد قائم بعد تصحيح القيود السابقة؛ راجع سجل الدفعات.' : 'لم يُسجّل سداد للمستحقات في هذا المخرج النهائي بعد.';
 }

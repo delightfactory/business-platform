@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {displayDate} from '../rules';
 
 export type TimeCoverageSummary = {
@@ -6,7 +7,7 @@ export type TimeCoverageSummary = {
 };
 export type TimeCoverageDay = {date:string;state:string;expected:boolean|null;elapsed:boolean|null};
 
-const formatter=new Intl.NumberFormat('ar-EG');
+const formatter=new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE);
 const count=(value:number)=>Number.isInteger(value)&&value>=0?formatter.format(value):'غير محدد';
 const dayStates:Record<string,string>={
   scheduled_nonworkday:'غير مطلوب للعمل بحسب سياسة الدوام',

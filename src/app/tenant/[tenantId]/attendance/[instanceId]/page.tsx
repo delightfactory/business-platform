@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -184,8 +185,8 @@ function feedback(state?: string) { const map: Record<string, { text: string; er
 function overtimeDecisionLabel(decision: string) { return ({ pending: 'بانتظار المراجعة', classification_pending: 'معتمد الحضور · بانتظار تصنيف الإضافي', approved: 'معتمد ومصنف', rejected: 'مرفوض', superseded: 'استُبدل باعتماد أحدث' } as Record<string, string>)[decision] ?? 'غير معروف'; }
 function toLocalInput(value: string, zone: string) { const d = new Date(value); const parts = new Intl.DateTimeFormat('en-CA', { timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(d); const p = Object.fromEntries(parts.map((x) => [x.type, x.value])); return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`; }
 function defaultLocalInput(value: string | null, zone: string) { return value ? toLocalInput(value, zone) : ''; }
-function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'توقيت القاهرة'; try { return new Intl.DateTimeFormat('ar-EG', { timeZone: zone, timeZoneName: 'long' }).formatToParts(new Date()).find((part) => part.type === 'timeZoneName')?.value ?? 'توقيت سياسة الدوام'; } catch { return 'توقيت سياسة الدوام'; } }
-function formatInstant(value: string, zone: string) { return new Intl.DateTimeFormat('ar-EG', { dateStyle: 'short', timeStyle: 'short', timeZone: zone }).format(new Date(value)); }
+function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'توقيت القاهرة'; try { return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { timeZone: zone, timeZoneName: 'long' }).formatToParts(new Date()).find((part) => part.type === 'timeZoneName')?.value ?? 'توقيت سياسة الدوام'; } catch { return 'توقيت سياسة الدوام'; } }
+function formatInstant(value: string, zone: string) { return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { dateStyle: 'short', timeStyle: 'short', timeZone: zone }).format(new Date(value)); }
 function formatOptionalInstant(value: unknown, zone: string) { return typeof value === 'string' ? formatInstant(value, zone) : 'غير محدد'; }
 function isObject(value: unknown): value is Record<string, unknown> { return Boolean(value && typeof value === 'object' && !Array.isArray(value)); }
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }

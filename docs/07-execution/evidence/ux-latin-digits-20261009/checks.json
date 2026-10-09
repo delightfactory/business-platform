@@ -1,0 +1,20 @@
+{
+  "baseline": "10e6f79f7850b60437ead1391b0b192de8d57851",
+  "locale": "ar-EG-u-nu-latn",
+  "numberingSystem": "latn",
+  "moneyCases": 7,
+  "moneyOutputs": [
+    "900,719,925,474,099,312,345.67 ج.م.",
+    "-1,234.50 ج.م.",
+    "0.00 ج.م.",
+    "-0.05 ج.م.",
+    "1.23 ج.م.",
+    "غير متاح",
+    "غير متاح"
+  ],
+  "channelOutput": "09‏/10‏/2026، 12:05 م",
+  "sourceOnlyDisplayInverseProof": 30,
+  "noEasternDigitLiterals": true,
+  "noUncontrolledArabicFormatters": true,
+  "userTextAndStoredValuesUnchanged": true
+}

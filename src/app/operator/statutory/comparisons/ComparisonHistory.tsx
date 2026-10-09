@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { record, safeSourceUrl, type ComparisonRow } from '../dto';
 import { outputs, scenarios } from './labels';
 
@@ -29,7 +30,7 @@ export function ComparisonHistoryRow({ row, currentRevision }: { row: Comparison
   return <li className="member-card"><h3>{String(c.name)}</h3>
     <p className="entity-status is-inactive">{r.matched ? 'الأرقام متطابقة' : 'يوجد اختلاف'} · {row.revision === currentRevision ? 'نسخة القواعد الحالية' : 'نسخة سابقة من القواعد'}</p>
     <p>{(labour ? labourScenarios : scenarios)[String(c.scenario)] ?? 'حالة مقارنة محفوظة'} · {c.origin === 'synthetic' ? 'حالة اصطناعية للاختبار فقط' : 'أرقام مسجلة من المصدر الرسمي'} · المقارنة وحدها لا تؤهل القواعد</p>
-    <p>حُفظت في {new Intl.DateTimeFormat('ar-EG', { timeZone: 'Africa/Cairo', dateStyle: 'medium' }).format(new Date(row.created_at))}</p>
+    <p>حُفظت في {new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', dateStyle: 'medium' }).format(new Date(row.created_at))}</p>
     {safeSourceUrl(String(c.source_url)) ? <a href={String(c.source_url)} target="_blank" rel="noopener noreferrer">مرجع النتيجة: {String(c.reference)}</a> : <p>مرجع النتيجة: {String(c.reference)}؛ رابط المرجع غير متاح.</p>}
     {readable ? <details><summary>الأرقام والمدخلات</summary>
       {Object.entries(labels).map(([key, label]) => <p key={key}>{label}: المتوقع {String(record(r.expected) ? r.expected[key] : '')} ج.م. · المحسوب {String(record(r.actual) ? r.actual[key] : '')} ج.م.</p>)}

@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {displayDate} from '../rules';
 import {TimeCoverageExplanation,type TimeCoverageSummary,type TimeCoverageDay} from './TimeCoverageExplanation';
 
@@ -10,7 +11,7 @@ export type SourceDay = {
   date:string;status:string;work_units:number|null;paid_leave_units:number|null;unpaid_leave_units:number|null;
 };
 const sources:Record<string,string>={monthly_approved_sources:'مصادر الحضور والإجازات للأجر الشهري',manual:'إجمالي يدوي معتمد',legacy_manual:'أيام يدوية محفوظة سابقًا',time:'الحضور المعتمد'};
-const quantities=new Intl.NumberFormat('ar-EG',{maximumFractionDigits:2});
+const quantities=new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE,{maximumFractionDigits:2});
 const quantity=(value:number|null|undefined)=>value==null?'غير محدد':quantities.format(value);
 
 export function SourceExplanation({summary,days,coverageDays}:{summary?:SourceSummary;days?:SourceDay[];coverageDays?:TimeCoverageDay[]}) {

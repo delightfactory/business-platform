@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 export type CalendarFields = { start: string; cutoff: string; payment: string; month: string; timezone: string; reason: string };
 export type CalendarPreview = { starts_on: string; ends_on: string; payment_on: string; timezone: string; label: string; revision?: number; last_generated_end?: string | null; is_transition?: boolean };
 export type CalendarState = CalendarFields & { error: string; preview: CalendarPreview | null; attemptKey: string; saved: boolean };
@@ -14,5 +15,5 @@ export function errorText(code?: string, message?: string) {
  return 'تعذر إتمام الطلب. بياناتك محفوظة؛ أعد المحاولة بنفس الطلب للتحقق من نتيجته.';
 }
 export function displayDate(value: string) {
- return new Intl.DateTimeFormat('ar-EG', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
+ return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
 }

@@ -1,0 +1,21 @@
+{
+  "sourceComponents": [
+    "Home",
+    "TimeCoverageExplanation"
+  ],
+  "actualFormatters": [
+    "money",
+    "formatChannelInstant"
+  ],
+  "syntheticOnly": true,
+  "authOrRpcAcceptance": false,
+  "mobile": {
+    "dir": "rtl",
+    "easternDigits": false,
+    "font": "Cairo, sans-serif",
+    "lang": "ar",
+    "overflow": false
+  },
+  "reference": "Pinned original ConceptC served locally and opened",
+  "unchangedThemeEvidenceReused": true
+}

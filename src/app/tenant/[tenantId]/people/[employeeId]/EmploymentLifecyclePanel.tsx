@@ -1,4 +1,5 @@
 'use client';
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -60,7 +61,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
       {event.event === 'employment.ended' ? 'انتهت علاقة عمل بتاريخ ' : 'سُجلت إعادة توظيف في '}
       <bdi>{event.event === 'employment.ended' && event.details.after?.end_date
         ? event.details.after.end_date
-        : new Date(event.created_at).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo' })}</bdi>
+        : new Date(event.created_at).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo' })}</bdi>
     </p>)}
     {history?.events_truncated && <p className="record-meta">يعرض السجل أحدث 100 إجراء.</p>}
     {canEnd && <details className="compensation-change-details">

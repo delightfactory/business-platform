@@ -1,0 +1,8 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "session": "27ddaf14-c18a-4da5-840e-84f7b6431c30",
+  "sourceBaseline": "10e6f79f7850b60437ead1391b0b192de8d57851",
+  "result": "# Final D1 check: negative-amount fix\n\n**SOURCE: PASS.** `money()` at `payroll/runs/rules.ts:7` now keeps only the minus sign from the formatter, with no hidden direction mark. In checks.json the negative outputs are plain `-1,234.50 ج.م.` and `-0.05 ج.م.`, laid out the same way as the positives. Large, zero, fractional and missing values are unchanged. No other source changed.\n\n**TASK: PASS.** The blocker I raised is fixed. Negatives and positives now lay out the same way inside `<bdi>`, so no amount can be misread. No calculation, input, RPC, grant or recovery path changed.\n\n**REFERENCE: MATCH.** In the light-390 and dark-1366 renders, `-0.05 ج.م.` and `1,234.50 ج.م.` keep the minus next to the digits and the currency on the same side. Digits are Latin throughout, with Arabic labels, RTL, Cairo and no overflow. This fits the pinned Concept C, which also uses Latin digits.\n\n**D1: resolved.** Your choice of English digits (123) is implemented in every existing display formatter and in the fixed UI text.\n\n**Closure:** I found no remaining blocker, so the bounded technical core is closed locally. These renders use synthetic data, and the authenticated business proofs are the earlier ones, reused unchanged. Real-device GPS, installation and screen-reader checks stay with you before production, and nothing has been deployed.",
+  "scope": "D1 display-only delta; actual source components synthetic rendered; previous full-page/core proofs reused"
+}

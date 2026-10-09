@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 export type RequestState = 'draft' | 'submitted' | 'approved' | 'rejected' | 'withdrawn' | 'cancelled' | 'superseded';
 
 export function isRequestState(value: unknown): value is RequestState {
@@ -29,5 +30,5 @@ export function formatDays(value: number): string {
 export function formatInstant(value: string): string {
   const instant = new Date(value);
   if (Number.isNaN(instant.getTime())) return value;
-  return instant.toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', dateStyle: 'short', timeStyle: 'short' });
+  return instant.toLocaleString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', dateStyle: 'short', timeStyle: 'short' });
 }

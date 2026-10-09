@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { displayDate } from './rules';
@@ -39,7 +40,7 @@ export async function OvertimeNotice({ tenantId, employer, period, query }: Prop
     <p>لا يوجد إضافي غير مصنف في سجلات الحضور المعتمدة لهذه الجهة والفترة.</p>
     <p className="field-hint">لا يشمل ذلك الحضور غير المعتمد، ولا يثبت جاهزية المسير.</p>
   </section>;
-  const number = (value: number) => new Intl.NumberFormat('ar-EG').format(value);
+  const number = (value: number) => new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(value);
   const next = data.next_cursor;
   return <section id="payroll-overtime" className={`${styles.card} ${styles.overtimeNotice}`} aria-labelledby="payroll-overtime-title">
     <h2 id="payroll-overtime-title">الإضافي غير المصنف · تنبيه غير مانع</h2>

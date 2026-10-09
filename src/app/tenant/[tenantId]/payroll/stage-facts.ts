@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 type Partition = Record<string, number>;
 export type StageFacts = {
   employee_count: number; source: Partition; coverage: Partition; time_coverage: Partition;
@@ -46,7 +47,7 @@ export function payrollStageDescriptions(work: StageWork | null): string[] {
   descriptions[2] = 'تعذر تحديد موانع الحساب المحفوظ';
   descriptions[3] = 'حساب محفوظ للمراجعة؛ حالة التأهيل المالي غير معروفة';
   if (facts) {
-    const n = (value: number) => new Intl.NumberFormat('ar-EG').format(value);
+    const n = (value: number) => new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(value);
     const manual = facts.coverage.approved_manual_total > 0 ? ` · مدخل يدوي معتمد: ${n(facts.coverage.approved_manual_total)}` : '';
     if (facts.employee_count === 0) descriptions[1] = 'لا توجد علاقات توظيف في نطاق الحساب المحفوظ';
     else if (facts.time_enabled.false === facts.employee_count && facts.leave_enabled.false === facts.employee_count) descriptions[1] = `الحضور والإجازات غير مفعلين${manual}`;

@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
@@ -9,7 +10,7 @@ import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
 export const dynamic='force-dynamic';
 type Query={head?:string;after_created?:string;after_id?:string;before?:string};
 type Workspace=Partial<SelectedWorkspace & ListWorkspace>;
-const date=(v:string)=>new Intl.DateTimeFormat('ar-EG',{timeZone:'Africa/Cairo',day:'numeric',month:'long',year:'numeric'}).format(new Date(v));
+const date=(v:string)=>new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE,{timeZone:'Africa/Cairo',day:'numeric',month:'long',year:'numeric'}).format(new Date(v));
 export default async function StatutoryDraftPage({searchParams}:{searchParams:Promise<Query>}){
  const q=await searchParams;const retry='/operator/statutory?'+new URLSearchParams(q).toString();
  const failure=(title:string,detail:string,denied=false)=><main className="app-shell"><section className="work-card"><h1>{title}</h1><p role="alert">{detail}</p><Link href={retry} className={denied?undefined:"primary-button"}>إعادة المحاولة</Link> · <Link href="/operator" className={denied?"primary-button":"secondary-button"}>العودة إلى تشغيل المنصة</Link></section></main>;

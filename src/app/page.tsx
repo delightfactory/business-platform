@@ -18,8 +18,8 @@ export default function Home() {
           الشركات وتسجيل الدخول.
         </p>
         <div className="next-slices" aria-label="خطوات التطوير التالية">
-          <div><span className="step-number">١</span><span>إعداد الشركة</span><span className="step-status">قادم</span></div>
-          <div><span className="step-number">٢</span><span>تسجيل الدخول والصلاحيات</span><span className="step-status">قادم</span></div>
+          <div><span className="step-number">1</span><span>إعداد الشركة</span><span className="step-status">قادم</span></div>
+          <div><span className="step-number">2</span><span>تسجيل الدخول والصلاحيات</span><span className="step-status">قادم</span></div>
         </div>
         <p className="foundation-note">لا توجد بيانات أو وظائف أعمال في هذه المرحلة.</p>
       </section>

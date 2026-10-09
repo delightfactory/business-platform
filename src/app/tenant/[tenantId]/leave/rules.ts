@@ -1,3 +1,4 @@
+import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 export const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export const MIN_REASON_LENGTH = 3;
@@ -453,7 +454,7 @@ export function formatDays(value: number): string {
 export function formatInstant(value: string): string {
   const instant = new Date(value);
   if (Number.isNaN(instant.getTime())) return value;
-  return instant.toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', dateStyle: 'short', timeStyle: 'short' });
+  return instant.toLocaleString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', dateStyle: 'short', timeStyle: 'short' });
 }
 
 export type ReviewErrorCode =
