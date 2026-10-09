@@ -1,0 +1,20 @@
+{
+  "sourceHEAD": "0610e98decb9a504c5bcfdfa098af810ecb5e6be",
+  "status": "PASS bounded actual Auth-backed read/access boundaries",
+  "actualAttendance": "GoTrue UI session + actual PostgREST HTTP200 + actual page assignment-unavailable, disabled capture, empty history",
+  "otherTenant": "Actual UI denied, no own employee data leaked",
+  "membershipLoss": "Actual UI denies previously readable profile after fixture membership becomes inactive, existing Auth session count1",
+  "fixtureRestoredForFinalSignOut": true,
+  "previousAttendanceLoadFailure": "Preserved historical v3 evidence; not reproduced in this fresh runtime. Root cause NOT established. No claimed source fix or global reliability acceptance.",
+  "sourceUnchangedFromD8": "git diff27d0224..0610e98 src/supabase empty; prior eleven-blob source-bound Auth return evidence retained",
+  "review": "No new UI/design/business change; existing contracts/reviews reused. No full stage/semantic promotion.",
+  "scopeExcluded": [
+    "successful capture/location/device",
+    "employment and assignment transitions",
+    "business Leave submission/decision/cancellation",
+    "HR/finance/operator roles and financial outcomes",
+    "full visual/accessibility and semantic coverage",
+    "full R0-R8 closure"
+  ],
+  "noHeavyRepeatedTests": true
+}

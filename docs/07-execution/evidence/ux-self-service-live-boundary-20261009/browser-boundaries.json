@@ -1,0 +1,22 @@
+{
+  "sourceHEAD": "0610e98decb9a504c5bcfdfa098af810ecb5e6be",
+  "syntheticOnly": true,
+  "normalUIAuth": true,
+  "cases": [
+    {
+      "case": "actual-attendance-no-assignment",
+      "url": "http://127.0.0.1:3654/tenant/f9110000-0000-4000-8000-000000000001/me/attendance",
+      "dom": "- button \"Open Next.js Dev Tools\":\n- alert: حضوري\n- complementary \"التنقل الرئيسي\":\n  - link \"مساحة الشركة، الرئيسية\":\n    - /url: /tenant/f9110000-0000-4000-8000-000000000001\n    - generic: م\n    - generic: مساحة الشركة\n    - generic: UX Synthetic A\n  - navigation \"أقسام مساحة العمل\":\n    - link \"الرئيسية\":\n      - /url: /tenant/f9110000-0000-4000-8000-000000000001\n      - generic: الرئيسية\n    - paragraph: مجالات العمل\n    - link \"حضوري\":\n      - /url: /tenant/f9110000-0000-4000-8000-000000000001/me/attendance\n      - generic: حضوري\n    - link \"ملفي\":\n      - /url: /tenant/f9110000-0000-4000-8000-000000000001/me\n      - generic: ملفي\n    - link \"إجازاتي\":\n      - /url: /tenant/f9110000-0000-4000-8000-000000000001/me/leave\n      - generic: إجازاتي\n  - group \"مظهر المنصة\":\n    - generic: مظهر المنصة\n    - button \"فاتح\"\n    - button \"داكن\" [pressed]\n    - button \"حسب الجهاز\"\n  - button \"تسجيل الخروج\"\n- main:\n  - heading \"حضوري\" [level=1]\n  - paragraph: سجّل الحضور أو الانصراف وراجع نتيجة محاولاتك.\n  - heading \"التسجيل غير متاح الآن\" [level=2]\n  - paragraph: لا يوجد موقع عمل سارٍ لحسابك. تواصل مع الموارد البشرية.\n  - status\n  - button \"تسجيل الحضور\" [disabled]\n  - heading \"آخر المحاولات\" [level=2]\n  - paragraph: لا توجد محاولات سابقة.\n  - paragraph: آخر ٢٠ محاولة. تواصل مع الموارد البشرية إذا احتاج سجل الحضور تصحيحًا.\n  - link \"العودة إلى مساحة العمل\":\n    - /url: /tenant/f9110000-0000-4000-8000-000000000001\n  - generic: الحضور الشخصي"
+    },
+    {
+      "case": "other-tenant-profile-denied",
+      "url": "http://127.0.0.1:3654/tenant/f9110000-0000-4000-8000-000000000002/me",
+      "dom": "- main:\n  - paragraph: الخدمة الذاتية\n  - heading \"ملفي\" [level=1]\n  - heading \"الخدمة الذاتية غير مفعّلة لهذا الحساب\" [level=2]\n  - paragraph: يجب أن تكون عضوًا نشطًا وأن يكون حسابك مرتبطًا بملف موظف مع صلاحية الخدمة الذاتية.\n  - link \"العودة إلى مساحة الشركة\":\n    - /url: /tenant/f9110000-0000-4000-8000-000000000002\n  - generic: منصة الأعمال\n- button \"Open Next.js Dev Tools\":\n- alert"
+    },
+    {
+      "case": "membership-loss-with-existing-session",
+      "url": "http://127.0.0.1:3654/tenant/f9110000-0000-4000-8000-000000000001/me",
+      "dom": "- main:\n  - paragraph: الخدمة الذاتية\n  - heading \"ملفي\" [level=1]\n  - heading \"الخدمة الذاتية غير مفعّلة لهذا الحساب\" [level=2]\n  - paragraph: يجب أن تكون عضوًا نشطًا وأن يكون حسابك مرتبطًا بملف موظف مع صلاحية الخدمة الذاتية.\n  - link \"العودة إلى مساحة الشركة\":\n    - /url: /tenant/f9110000-0000-4000-8000-000000000001\n  - generic: منصة الأعمال\n- button \"Open Next.js Dev Tools\":\n- alert"
+    }
+  ]
+}

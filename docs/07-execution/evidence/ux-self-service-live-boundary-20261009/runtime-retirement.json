@@ -1,0 +1,44 @@
+{
+  "status": "RETIRED",
+  "database": "business_platform_ux_owned_qa",
+  "roles": {
+    "auth": "ux_c93f_auth",
+    "rest": "ux_c93f_rest"
+  },
+  "containers": {
+    "auth": "ux-owned-auth",
+    "rest": "ux-owned-rest"
+  },
+  "ports": {
+    "rest": 3652,
+    "auth": 3651,
+    "gateway": 3653,
+    "app": 3654
+  },
+  "user": "f9100000-0000-4000-8000-000000000001",
+  "email": "ux-self@example.test",
+  "createdAtUTC": "2026-10-09T09:47:41.052Z",
+  "expires": "2026-10-09T11:47:41.053Z",
+  "head": "0610e98decb9a504c5bcfdfa098af810ecb5e6be",
+  "steps": [],
+  "noOriginalCredentialsRead": true,
+  "syntheticOnly": true,
+  "ownedDatabaseContainer": "ux-owned-db",
+  "ownedNetwork": "ux-owned-qa",
+  "schemaOnlySHA256": "d16f8e1da270ac9981dc86753802c40ccb2792ac1984ac010a00f65a0b0a9a6b",
+  "schemaSource": "Existing current204-migration empty dedicated QA; no data/role passwords copied",
+  "authAppReadSetup": "PASS verified guarded grants before LOGIN/user creation",
+  "nextPID": 18844,
+  "authUsersCreated": 1,
+  "retirementReason": "explicit test completion",
+  "retiredAtUTC": "2026-10-09T09:51:52.842Z",
+  "verified": {
+    "ownedContainers": 0,
+    "ownedNetwork": 0,
+    "listeners3650Through3654": 0,
+    "tab5Closed": true,
+    "normalUISignOut": true,
+    "sharedServicesUnchanged": true,
+    "privateGeneratedValuesErased": true
+  }
+}

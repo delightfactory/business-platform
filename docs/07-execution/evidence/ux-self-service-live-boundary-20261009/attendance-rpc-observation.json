@@ -1,0 +1,62 @@
+[
+  {
+    "status": 200,
+    "result": {
+      "type": "object",
+      "isArray": false,
+      "available": false,
+      "reason": "assignment",
+      "next_direction": "in",
+      "policy_version": 0,
+      "retention_seconds": 60,
+      "geofence_required": false,
+      "historyCount": 0,
+      "scopeType": "string"
+    }
+  },
+  {
+    "status": 200,
+    "result": {
+      "type": "object",
+      "isArray": false,
+      "available": false,
+      "reason": "assignment",
+      "next_direction": "in",
+      "policy_version": 0,
+      "retention_seconds": 60,
+      "geofence_required": false,
+      "historyCount": 0,
+      "scopeType": "string"
+    }
+  },
+  {
+    "status": 200,
+    "result": {
+      "type": "object",
+      "isArray": false,
+      "available": false,
+      "reason": "assignment",
+      "next_direction": "in",
+      "policy_version": 0,
+      "retention_seconds": 60,
+      "geofence_required": false,
+      "historyCount": 0,
+      "scopeType": "string"
+    }
+  },
+  {
+    "status": 200,
+    "result": {
+      "type": "object",
+      "isArray": false,
+      "available": false,
+      "reason": "assignment",
+      "next_direction": "in",
+      "policy_version": 0,
+      "retention_seconds": 60,
+      "geofence_required": false,
+      "historyCount": 0,
+      "scopeType": "string"
+    }
+  }
+]
