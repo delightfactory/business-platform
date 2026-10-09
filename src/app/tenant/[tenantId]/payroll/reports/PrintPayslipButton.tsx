@@ -9,9 +9,9 @@ export function PrintPayslipButton({scope,refreshHref}:{scope:PayslipPrintScope;
  const [pending,setPending]=useState(false),[error,setError]=useState('');
  async function print(){
   setPending(true);setError('');
-  try{const result=await authorizePayslipPrint(scope);if(result.allowed){const root=document.getElementById('payroll-report');if(!root||root.getAttribute('data-print-scope')!==signature){setError('تغيرت القسيمة المفتوحة. حدّثها قبل الطباعة.');return;}cleanup.current?.();cleanup.current=startPayslipPrint(root,window);}else setError(result.error);}
-  catch{setError('تعذر التحقق من صلاحية القسيمة. أعد طلب الطباعة بعد عودة الاتصال.');}
+  try{const result=await authorizePayslipPrint(scope);if(result.allowed){const root=document.getElementById('payroll-report');if(!root||root.getAttribute('data-print-scope')!==signature){setError('تغيرت مفردات المرتب المفتوحة. حدّثها قبل الطباعة.');return;}cleanup.current?.();cleanup.current=startPayslipPrint(root,window);}else setError(result.error);}
+  catch{setError('تعذر التحقق من صلاحية مفردات المرتب. أعد طلب الطباعة بعد عودة الاتصال.');}
   finally{setPending(false);}
  }
- return <div><Button variant="ghost" type="button"  disabled={pending} onClick={print}>{pending?'جارٍ التحقق قبل الطباعة…':'طباعة القسيمة أو حفظها PDF'}</Button>{error&&<Message tone="bad" role="alert">{error} <a href={refreshHref}>تحديث بيان الراتب</a></Message>}</div>;
+ return <div><Button variant="ghost" type="button"  disabled={pending} onClick={print}>{pending?'جارٍ التحقق قبل الطباعة…':'طباعة مفردات المرتب أو حفظها PDF'}</Button>{error&&<Message tone="bad" role="alert">{error} <a href={refreshHref}>تحديث بيان الراتب</a></Message>}</div>;
 }

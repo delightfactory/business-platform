@@ -20,7 +20,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
  if (!supabase) return <PageFrame><Panel ><h1>تعذر فتح سياسات العمل</h1><p>تعذر الاتصال بالخدمة. أعد المحاولة لاحقًا.</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink></Panel></PageFrame>;
  const { data: { user } } = await getWorkspaceUser(supabase); if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/work-policies`)}`);
  const { data, error } = await supabase.rpc('time_work_policy_catalog', { p_tenant_id: tenantId });
- if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <PageFrame><Panel ><h1>سياسات العمل غير متاحة</h1><p>تأكد من إتاحة وحدة الحضور وصلاحية العرض.</p><Link href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link></Panel></PageFrame>;
+ if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <PageFrame><Panel ><h1>سياسات العمل غير متاحة</h1><p>تأكد من تفعيل خدمة الحضور وصلاحية العرض.</p><Link href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link></Panel></PageFrame>;
  const result = data as { items: Policy[]; can_manage: boolean };
  return <PageFrame>
   <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
@@ -42,8 +42,8 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
       <p className="field-hint">تُحفظ التغييرات بإعدادات جديدة، وتبقى الإعدادات السابقة محفوظة.</p>
       <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} policy={policy} returnToRequest={returnToRequest} />
      </PolicyTask>
-    <OfflineForm action={setWorkPolicyActiveAction}><input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="policyId" value={policy.id}/><input type="hidden" name="active" value={String(!policy.is_active)}/><OfflineSubmitButton className="secondary-button" label={policy.is_active?'إيقاف التعيين الجديد':'إعادة إتاحة القالب'} pendingLabel="جارٍ تحديث إتاحة القالب…" /></OfflineForm></>}
+    <OfflineForm action={setWorkPolicyActiveAction}><input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="policyId" value={policy.id}/><input type="hidden" name="active" value={String(!policy.is_active)}/><OfflineSubmitButton className="secondary-button" label={policy.is_active?'إيقاف التعيين الجديد':'السماح باستخدام القالب مجددًا'} pendingLabel="جارٍ تحديث حالة القالب…" /></OfflineForm></>}
   </Card>)}</div>:<EmptyState title="لم تُسجّل قوالب دوام بعد" description="تظهر القوالب المحفوظة هنا لتعيينها من ملفات الموظفين." />}</Panel>
  </PageFrame>;
 }
-function stateMessage(state:string){return ({'mapping-invalid':'راجع إعداد نصف اليوم: أوقات الاستراحة يجب أن تقع داخل الوردية وتساوي مدتها، واستراحة الدوام المرن بين صفر و360 دقيقة.',saved:'تم حفظ إصدار القالب.',activated:'تمت إتاحة القالب للتعيين.',deactivated:'أوقف القالب عن التعيينات الجديدة.',invalid:'تحقق من بيانات القالب.',forbidden:'لا تملك صلاحية إدارة سياسات الحضور.',setup:'إعداد الاتصال غير مكتمل.',failed:'تعذر حفظ التغيير؛ لم يُعتمد دون تسجيل تدقيق.'} as Record<string,string>)[state]??'تعذر إتمام الإجراء.'}
+function stateMessage(state:string){return ({'mapping-invalid':'راجع إعداد نصف اليوم: أوقات الاستراحة يجب أن تقع داخل الوردية وتساوي مدتها، واستراحة الدوام المرن بين صفر و360 دقيقة.',saved:'تم حفظ إصدار القالب.',activated:'أصبح القالب متاحًا للتعيينات الجديدة.',deactivated:'أوقف القالب عن التعيينات الجديدة.',invalid:'تحقق من بيانات القالب.',forbidden:'لا تملك صلاحية إدارة سياسات الحضور.',setup:'إعداد الاتصال غير مكتمل.',failed:'تعذر حفظ التغيير؛ لم يُعتمد دون تسجيل تدقيق.'} as Record<string,string>)[state]??'تعذر إتمام الإجراء.'}

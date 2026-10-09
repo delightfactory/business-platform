@@ -91,7 +91,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
     if (work.access.can_prepare === true && ['source_choice_required', 'source_choice_pending', 'source_time_disabled', 'source_leave_treatment_unknown', 'source_quantity_unknown', 'manual_units_ambiguous', 'approved_units_missing', 'units_exceed_eligibility', 'opening_ytd_unknown', 'opening_ytd_ambiguous', 'opening_tax_due_unknown', 'opening_tax_coverage_unknown', 'opening_tax_net_income_unknown', 'opening_ytd_after_final_requires_review', 'prior_ytd_coverage_gap', 'employee_statutory_context_missing', 'employee_statutory_context_ambiguous', 'recurring_overlap', 'daily_units_allocation_needed', 'daily_percentage_allocation_needed'].includes(item.code)) {
       if (item.code.startsWith('opening_') || item.code === 'prior_ytd_coverage_gap') return input('مراجعة الأرصدة السابقة');
       if (item.code.startsWith('employee_statutory_context_')) return input('مراجعة بيانات الضريبة والتأمينات');
-      if (item.code === 'recurring_overlap') return input('مراجعة مكونات الموظف');
+      if (item.code === 'recurring_overlap') return input('مراجعة بنود راتب الموظف');
       return input('مراجعة الأيام المستحقة', 'manual_units');
     }
     if (item.code === 'policy_missing' && work.access.can_configure === true) return input('إعداد سياسة الشركة');

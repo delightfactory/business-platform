@@ -54,11 +54,11 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </OfflineForm>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
-    <div className="workspace-page-summary"><h3>إكمال إتاحة الحضور الشخصي</h3><p>{snapshot?.linked ? 'الحساب مرتبط بالموظف. راجع صلاحية الحضور للحساب وإعداد موقع العمل أيضًا.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم فعّل له صلاحية الحضور الشخصي.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة صلاحية الحضور لحساب الموظف</ButtonLink> : <p>اطلب من مسؤول الأعضاء تفعيل «الحضور الشخصي من الهاتف» للحساب المرتبط. صلاحية ربط الموظفين لا تشمل إدارة الأعضاء.</p>}</div>
+    <div className="workspace-page-summary"><h3>استكمال تفعيل تسجيل الحضور للموظف</h3><p>{snapshot?.linked ? 'الحساب مرتبط بالموظف. راجع صلاحية الحضور للحساب وإعداد موقع العمل أيضًا.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم فعّل له صلاحية الحضور الشخصي.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة صلاحية الحضور لحساب الموظف</ButtonLink> : <p>اطلب من مسؤول الأعضاء تفعيل «الحضور الشخصي من الهاتف» للحساب المرتبط. صلاحية ربط الموظفين لا تشمل إدارة الأعضاء.</p>}</div>
     {accountState && accountMessages[accountState] && <Message tone={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState) ? 'bad' : 'info'} role="status">{accountMessages[accountState]}</Message>}
     {!snapshotError && !snapshot?.linked && canManage && <>
       <h3>ربط عضو موجود</h3>
-      {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المؤهلين.</p> : <>
+      {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المستوفين لشروط الربط.</p> : <>
         <form method="get" action={base} className="compact-form">
           <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} /></Field>
           <input type="hidden" name="linkPage" value="1" />
@@ -71,7 +71,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
             {options.items.map((item) => <option key={item.user_id} value={item.user_id}>{item.display_name} — {item.email}</option>)}
           </Select></Field>
           <OfflineSubmitButton label="ربط الحساب" pendingLabel="جارٍ ربط الحساب…" />
-        </OfflineForm> : <p>لا توجد عضوية نشطة مؤهلة لهذا البحث.</p>}
+        </OfflineForm> : <p>لا توجد عضوية نشطة تستوفي شروط الربط وتطابق البحث.</p>}
         <nav className="workspace-form-actions" aria-label="صفحات الأعضاء">
           {page > 1 && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`}>السابق</ButtonLink>}
           <span>صفحة {page}</span>

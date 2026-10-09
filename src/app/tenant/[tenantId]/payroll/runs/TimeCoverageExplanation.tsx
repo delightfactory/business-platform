@@ -17,7 +17,7 @@ const dayStates:Record<string,string>={
   instance_open_or_pending:'سجل لم يُعتمد بعد؛ المسؤول: معتمد الحضور',
   approved_fact_not_current:'اعتماد سابق يحتاج مراجعة أحدث بيانات اليوم',
   classification_reconciliation_required:'يلزم توافق الحضور والإجازات؛ المسؤول: مراجعة الحضور',
-  schedule_context_missing_or_ambiguous:'بيانات عمل أو سياسة دوام غير محسومة؛ المسؤول: شؤون العاملين',
+  schedule_context_missing_or_ambiguous:'بيانات العمل أو سياسة الدوام تحتاج مراجعة؛ المسؤول: شؤون العاملين',
   schedule_context_mismatch:'بيانات العمل لا تتوافق مع جهة العمل؛ المسؤول: شؤون العاملين',
   policy_context_mismatch:'سجل اليوم لا يتوافق مع سياسة الدوام السارية؛ المسؤول: الحضور وشؤون العاملين',
   schedule_context_missing:'سياسة الدوام تحتاج مراجعة؛ المسؤول: مدير الدوام',

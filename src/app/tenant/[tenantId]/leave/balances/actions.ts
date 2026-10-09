@@ -56,7 +56,7 @@ export async function postBalanceAction(previous: PostBalanceState, formData: Fo
   }
 
   const normalized = normalizeDelta(delta, kind);
-  if (!normalized.ok) return failed('delta', `${deltaErrorText(normalized.reason)} لم يُرسل أي قيد.`);
+  if (!normalized.ok) return failed('delta', `${deltaErrorText(normalized.reason)} لم تُرسل أي حركة رصيد.`);
 
   const supabase = await createSupabaseServerClient();
   if (!supabase) return failed('setup');

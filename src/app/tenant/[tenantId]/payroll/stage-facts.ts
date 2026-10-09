@@ -45,7 +45,7 @@ export function payrollStageDescriptions(work: StageWork | null): string[] {
   const facts = readStageFacts(work.stage_facts);
   descriptions[1] = 'تعذر تحديد تغطية المصدر من البيانات المتاحة';
   descriptions[2] = 'تعذر تحديد موانع الحساب المحفوظ';
-  descriptions[3] = 'حساب محفوظ للمراجعة؛ حالة التأهيل المالي غير معروفة';
+  descriptions[3] = 'حساب محفوظ للمراجعة؛ لم تتأكد سلامة الحساب المالي';
   if (facts) {
     const n = (value: number) => new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(value);
     const manual = facts.coverage.approved_manual_total > 0 ? ` · مدخل يدوي معتمد: ${n(facts.coverage.approved_manual_total)}` : '';
@@ -60,12 +60,12 @@ export function payrollStageDescriptions(work: StageWork | null): string[] {
       descriptions[1] = observed.join(' · ') + manual;
     }
     if (facts.issues) descriptions[2] = facts.issues.blocking_true > 0 ? `${n(facts.issues.blocking_true)} مانع في الحساب المحفوظ` : facts.issues.blocking_unknown > 0 ? 'توجد مراجعات لم يُحدد أثرها المانع' : facts.issues.blocking_false > 0 ? `تنبيهات فقط: ${n(facts.issues.blocking_false)}` : 'لا موانع في الحساب المحفوظ';
-    if (facts.financially_qualified === true) descriptions[3] = work.run.status === 'approved' ? 'حساب محفوظ مؤهل ماليًا؛ حالة الاعتماد والتثبيت منفصلة' : 'حساب محفوظ مؤهل ماليًا؛ المراجعة والاعتماد مطلوبان';
-    else if (facts.financially_qualified === false) descriptions[3] = 'حساب محفوظ؛ التأهيل المالي غير مكتمل';
+    if (facts.financially_qualified === true) descriptions[3] = work.run.status === 'approved' ? 'حساب محفوظ يستوفي الشروط المالية؛ حالة الاعتماد والحفظ النهائي منفصلة' : 'حساب محفوظ يستوفي الشروط المالية؛ المراجعة والاعتماد مطلوبان';
+    else if (facts.financially_qualified === false) descriptions[3] = 'حساب محفوظ؛ شروط الحساب المالي غير مكتملة';
   }
   const ready = work.approval?.ready;
   descriptions[4] = work.run.status === 'approved'
-    ? ready === true ? 'حساب مبدئي معتمد؛ التثبيت يتطلب التأكيد والصلاحية' : ready === false ? 'تغيّرت جاهزية الحساب المبدئي المعتمد؛ راجع المسير' : 'حساب مبدئي معتمد؛ جاهزية التثبيت غير معروفة'
+    ? ready === true ? 'حساب مبدئي معتمد؛ الحفظ النهائي يتطلب التأكيد والصلاحية' : ready === false ? 'تغيّرت جاهزية الحساب المبدئي المعتمد؛ راجع المسير' : 'حساب مبدئي معتمد؛ جاهزية الحفظ النهائي غير معروفة'
     : ready === true ? 'فحص الخادم يسمح بالاعتماد حسب الصلاحية' : ready === false ? 'متطلبات الاعتماد غير مكتملة؛ راجع المسير' : 'حالة جاهزية الاعتماد غير معروفة؛ راجع المسير';
   return descriptions;
 }

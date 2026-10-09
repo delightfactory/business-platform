@@ -5,7 +5,7 @@ export const correctionStatuses:Record<string,string>={draft:'مقترح محف�
 export function correctionError(code?:string,message?:string){
  if(message?.includes('financial_qualification_required'))return 'لم يكتمل التحقق من شروط الحساب المالي للبدائل. راجع نسخة قواعد الحساب ومصادر الحساب ثم أعد المراجعة.';
  if(message?.includes('mixed_dispositions'))return 'يشمل الأثر مسيرات محفوظة مدفوعة وأخرى غير مدفوعة. استكمل مراجعة البدائل والتحقق من شروط الحساب القانونية قبل تطبيقها مع مسؤوليات التصحيح معًا.';
- if(message?.includes('proposal_approval_required'))return 'اعتمد المقترح ونطاق الأثر أولًا، ثم راجع اعتماد الحساب المبدئي المؤهل.';
+ if(message?.includes('proposal_approval_required'))return 'اعتمد المقترح ونطاق الأثر أولًا، ثم راجع اعتماد الحساب المبدئي المستوفي للشروط.';
  if(message?.includes('outside_protected_dates'))return 'هذه التغييرات لا تؤثر في تاريخ راتب مقفل. نفّذ التغيير من مصدره المعتاد.';
  if(message?.includes('cross_employer'))return 'تؤثر السياسة في أكثر من جهة قانونية. يلزم مسار تصحيح يجمع جميع الجهات المتأثرة قبل تغييرها.';
  if(message?.includes('approval_blocked'))return 'لم يجتز الحساب المبدئي مراجعة الأثر والتحقق من شروط الحساب القانونية. راجع الموانع؛ لم يتغير المصدر أو الراتب الأصلي.';

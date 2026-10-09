@@ -1,7 +1,7 @@
 export const reportKinds = ['sheet','payslip','components','statutory','variance','payments','advances'] as const;
 export type ReportKind = typeof reportKinds[number];
 export const reportLabels:Record<ReportKind,string> = {
- sheet:'كشف الرواتب',payslip:'قسيمة موظف',components:'ملخص المكونات',statutory:'مطابقة الضريبة والتأمينات',
+ sheet:'كشف الرواتب',payslip:'مفردات مرتب موظف',components:'ملخص البنود',statutory:'مطابقة الضريبة والتأمينات',
  variance:'مقارنة فترتين نهائيتين',payments:'المدفوع والمتبقي',advances:'أرصدة السلف',
 };
 export function isReportKind(value:string):value is ReportKind {

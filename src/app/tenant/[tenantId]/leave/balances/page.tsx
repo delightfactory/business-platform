@@ -152,7 +152,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
     { message: errors.searchCursor, href: searchHref({ q: query.q }), label: 'العودة إلى أول صفحة للبحث' },
     { message: errors.pair, href: searchHref({ q: query.q }), label: 'اختيار الموظف من جديد' },
     { message: errors.accountsCursor, href: pairHref(), label: 'العودة إلى أول صفحة للأرصدة' },
-    { message: errors.kind, href: pairHref(), label: 'مسح نوع القيد' },
+    { message: errors.kind, href: pairHref(), label: 'مسح نوع حركة الرصيد' },
     { message: errors.period, href: pairHref({ kind: query.kind }), label: 'اختيار الفترة من جديد' },
     { message: errors.periodsCursor, href: pairHref({ kind: query.kind }), label: 'العودة إلى أول صفحة للفترات' },
     { message: errors.type, href: pairHref(selectedPeriodQuery), label: 'اختيار النوع من جديد' },
@@ -167,7 +167,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
         <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}`}>مساحة الشركة</PendingLink>
       </div></>} />
     {!access.newWorkEnabled && <Message tone="info"  role="status">
-      خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا تُقبل قيود رصيد جديدة.
+      خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا تُقبل حركات رصيد جديدة.
       تبقى عرض الأرصدة وسجل الحساب متاحًا.
     </Message>}
 
@@ -291,7 +291,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
 
             {pair && !pair.canAdjust
               ? <Message tone="info"  role="status">
-                عرض الأرصدة متاح لحسابك، لكن تسجيل قيود الرصيد يتطلب صلاحية تعديل أرصدة الإجازات.
+                عرض الأرصدة متاح لحسابك، لكن تسجيل حركات الرصيد يتطلب صلاحية تعديل أرصدة الإجازات.
                 راجع إدارة الموارد البشرية.
               </Message>
               : pair && !pair.canPost
@@ -301,15 +301,15 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
             {canPost && pair && query.kind === ''
               ? <Panel  aria-labelledby="balances-kind-title">
                 <div className={styles.panelHeading}>
-                  <h2 id="balances-kind-title">تسجيل قيد رصيد</h2>
-                  <p>اختر نوع القيد المطلوب. لا تحتسب الواجهة أي استحقاق ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
+                  <h2 id="balances-kind-title">تسجيل حركة رصيد</h2>
+                  <p>اختر نوع حركة الرصيد المطلوب. لا تحتسب الواجهة أي استحقاق ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
                     ولا تفترض قيمًا؛ أدخل عدد الأيام يدويًا. نتحقق من صلاحيتك عند الإرسال.</p>
                 </div>
                 <ul className="record-list">{(['opening', 'annual_grant', 'adjustment'] as PostingKind[])
                   .map((kind) => <RecordCard  key={kind}>
                     <div className="record-main">
                       <div className="record-title-row"><h3>{postingKindLabel(kind)}</h3></div>
-                      <p className="record-meta">{kind === 'opening' ? 'قيد واحد فقط لكل حساب حتى لو تغيّرت نسخة السياسة.'
+                      <p className="record-meta">{kind === 'opening' ? 'حركة واحدة فقط لكل حساب حتى لو تغيّرت نسخة السياسة.'
                         : kind === 'annual_grant' ? 'استحقاق سنوي واحد فقط لكل حساب. أدخل عدد الأيام يدويًا.'
                           : 'إضافة أيام إلى الرصيد أو خصم أيام منه.'}</p>
                     </div>
@@ -321,7 +321,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
             {canPost && pair && query.kind !== '' && <>
               <Panel  aria-labelledby="balances-period-title">
                 <div className={styles.panelHeading}>
-                  <h2 id="balances-period-title">فترة القيد · {postingKindLabel(query.kind as PostingKind)}</h2>
+                  <h2 id="balances-period-title">فترة الحركة · {postingKindLabel(query.kind as PostingKind)}</h2>
                   <p>اختر الفترة من قائمة الفترات المخزّنة، كل فترة مرتّبة بتاريخ بدايتها.</p>
                 </div>
                 {periodsResult && periodsResult.error
@@ -343,8 +343,8 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                       </div><PendingLink className="ui-button ui-button-ghost ui-button-md"
                         href={pairHref({ kind: query.kind })}>تغيير الفترة</PendingLink></Card>
                       : periods.items.length === 0
-                        ? <div ><EmptyState title={<>لا توجد فترات إجازات متاحة</>} description={<>لم تُعرَّف أي فترة إجازات يمكن ربط قيد الرصيد بها.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
-                            href={pairHref()}>مسح نوع القيد</PendingLink></>} /></div>
+                        ? <div ><EmptyState title={<>لا توجد فترات إجازات متاحة</>} description={<>لم تُعرَّف أي فترة إجازات يمكن ربط حركة الرصيد بها.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
+                            href={pairHref()}>مسح نوع حركة الرصيد</PendingLink></>} /></div>
                         : <>
                           <ul className="record-list">{periods.items.map((period) => <RecordCard
                             key={period.periodId}>
@@ -355,7 +355,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                             <PendingLink className="ui-button ui-button-ghost ui-button-md"
                               href={pairHref({ kind: query.kind, period: period.periodId, pcs: query.pcs, pcp: query.pcp })}>اختيار الفترة</PendingLink>
                           </RecordCard>)}</ul>
-                          <nav className={styles.pagination} aria-label="صفحات فترات القيد">
+                          <nav className={styles.pagination} aria-label="صفحات فترات الحركة">
                             <span>حتى {PAGE_SIZE} فترة في الصفحة</span>
                             <span className={styles.paginationNav}>
                               {query.pcs !== '' && <PendingLink className="ui-button ui-button-ghost ui-button-md"
@@ -371,7 +371,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
               {query.period !== '' && <Panel  aria-labelledby="balances-type-title">
                 <div className={styles.panelHeading}>
                   <h2 id="balances-type-title">نوع الإجازة</h2>
-                  <p>اختر نوع الإجازة داخل الفترة المحددة. الأنواع التي لا يقبل قيدها تُعرض بحالتها دون رابط.</p>
+                  <p>اختر نوع الإجازة داخل الفترة المحددة. الأنواع التي لا يمكن تسجيل حركة رصيد لها تُعرض بحالتها دون رابط.</p>
                 </div>
                 {typesResult && typesResult.error
                   ? <div role="alert"><EmptyState title={<>تعذّر تحميل أنواع الإجازات</>} description={<>لم يتغير أي شيء. {readFailure(typesResult.error.code) === 'scope'
@@ -389,7 +389,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                         href={`/tenant/${tenantId}/leave/balances/annual?employee=${query.employee}&employer=${query.employer}&type=${query.type}&period=${query.period}`}>
                         حساب الاستحقاق السنوي تلقائيًا</PendingLink>}{postingForm}</>
                       : types.items.length === 0
-                        ? <div ><EmptyState title={<>لا توجد أنواع إجازات في هذه الفترة</>} description={<>لم يُعرَّف أي نوع إجازة يمكن تسجيل قيده في الفترة المحددة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
+                        ? <div ><EmptyState title={<>لا توجد أنواع إجازات في هذه الفترة</>} description={<>لم يُعرَّف أي نوع إجازة يمكن تسجيل حركة في رصيده في الفترة المحددة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
                             href={pairHref({ kind: query.kind })}>تغيير الفترة</PendingLink></>} /></div>
                         : <>
                           <ul className="record-list">{types.items.map((item) => <RecordCard
@@ -398,7 +398,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                               <div className="record-title-row">
                                 <h3>{item.name}</h3>
                                 <Badge className={`entity-status ${item.canPost ? 'is-active' : 'is-pending'}`}>
-                                  {item.canPost ? 'يقبل قيدًا' : blockedReasonLabel(item.postingBlockedReason, false)}
+                                  {item.canPost ? 'يقبل حركة رصيد' : blockedReasonLabel(item.postingBlockedReason, false)}
                                 </Badge>
                               </div>
                               <p className="record-meta">رقم النوع: <bdi>{item.code}</bdi>
@@ -416,7 +416,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                                 })}>اختيار النوع</PendingLink>
                               : <span className="ui-button ui-button-ghost ui-button-md" aria-disabled="true">غير متاح</span>}
                           </RecordCard>)}</ul>
-                          <nav className={styles.pagination} aria-label="صفحات أنواع القيد">
+                          <nav className={styles.pagination} aria-label="صفحات أنواع الحركة">
                             <span>حتى {PAGE_SIZE} نوعًا في الصفحة</span>
                             <span className={styles.paginationNav}>
                               {query.tcs !== '' && <PendingLink className="ui-button ui-button-ghost ui-button-md"

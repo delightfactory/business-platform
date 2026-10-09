@@ -123,7 +123,7 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
             </div>
             {ledger.items.length === 0
               ? <div ><EmptyState title={<>{scope.cursor === null ? 'لا توجد قيود على هذا الحساب بعد' : 'لا توجد قيود أقدم في هذه الصفحة'}</>} description={<>{scope.cursor === null
-                  ? 'لم يُسجَّل أي قيد على حساب الرصيد هذا حتى الآن.'
+                  ? 'لم تُسجَّل أي حركة في رصيد الإجازة هذا حتى الآن.'
                   : 'عُد إلى أحدث القيود لعرض أحدث حركة على الحساب.'}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={scope.cursor === null ? backHref : newerHref}>
                   {scope.cursor === null ? 'العودة إلى الأرصدة' : 'أحدث القيود'}</PendingLink></>} /></div>
               : <>
@@ -146,11 +146,11 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                       {' · '}وضع الرصيد: {entry.typeVersion.balanceMode === 'tracked' ? 'متتبع' : 'غير متتبع'}
                     </p>}
                     {entry.reversalOfEntryId !== null && <p className="record-meta">
-                      قيد إرجاع يعيد رصيد قيد سابق.
+                      حركة تعيد الرصيد المخصوم في حركة سابقة.
                       {entry.reversedSourceDeltaDays !== null && <>
-                        {' '}قدر القيد الأصلي: {formatSignedDays(entry.reversedSourceDeltaDays)} يوم</>}
+                        {' '}عدد الأيام في الحركة الأصلية: {formatSignedDays(entry.reversedSourceDeltaDays)} يوم</>}
                     </p>}
-                    {entry.correctionId !== null && <p className="record-meta">قيد ضمن تصحيح طلبات.</p>}
+                    {entry.correctionId !== null && <p className="record-meta">حركة رصيد ناتجة عن تصحيح طلب إجازة.</p>}
                     {entry.requestConsumption && <p className="record-meta">
                       رُبط باعتماد طلب إجازة:{' '}
                       <PendingLink href={detailHref(tenantId, entry.requestConsumption.requestId)}>
@@ -160,11 +160,11 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                       {' · '}الأيام المخصومة من الرصيد: <bdi>{formatDays(entry.requestConsumption.units)}</bdi>
                       {' · '}تاريخ الإجازة: <bdi>{entry.requestConsumption.leaveDate}</bdi>
                     </p>}
-                    {entry.reversalEntries.length > 0 && <Disclosure  summary={<>قيود أعادت رصيد هذا القيد</>}>
+                    {entry.reversalEntries.length > 0 && <Disclosure  summary={<>حركات أعادت الرصيد المرتبط بهذه الحركة</>}>
                       {entry.reversalEntries.map((reversal) => <p className="record-meta" key={reversal.entryId}>
                         {entryKindLabel(reversal.entryKind)} · {formatSignedDays(reversal.deltaDays)} يوم
                         {reversal.correctionId === null ? '' : ' · ضمن تصحيح'}
-                        {' · '}معرّف قيد الإرجاع: <bdi>{reversal.entryId}</bdi>
+                        {' · '}معرّف حركة إعادة الرصيد: <bdi>{reversal.entryId}</bdi>
                       </p>)}
                     </Disclosure>}
                     {entry.correctionLinks.length > 0 && <Disclosure  summary={<>تفاصيل التصحيح المرتبط</>}>
@@ -183,10 +183,10 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                         </p>}
                       </div>)}
                     </Disclosure>}
-                    <Disclosure  summary={<>تفاصيل تدقيق هذا القيد</>}>
+                    <Disclosure  summary={<>تفاصيل تدقيق هذه الحركة</>}>
                       {entry.sourceReference && <p className="record-meta">مرجع المصدر: <bdi>{entry.sourceReference}</bdi></p>}
-                      <p className="record-meta">معرّف القيد: <bdi>{entry.entryId}</bdi></p>
-                      {entry.reversalOfEntryId && <p className="record-meta">معرّف القيد الأصلي: <bdi>{entry.reversalOfEntryId}</bdi></p>}
+                      <p className="record-meta">معرّف الحركة: <bdi>{entry.entryId}</bdi></p>
+                      {entry.reversalOfEntryId && <p className="record-meta">معرّف الحركة الأصلية: <bdi>{entry.reversalOfEntryId}</bdi></p>}
                       <p className="record-meta">معرّف الحساب: <bdi>{entry.accountId}</bdi></p>
                       <p className="record-meta">معرّف المنفّذ: {entry.actorUserId
                         ? <bdi>{entry.actorUserId}</bdi> : 'غير محدّد'}</p>

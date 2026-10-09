@@ -32,9 +32,9 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   ]);
   if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة خدمات الشركة غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل تفعيل خدمات الشركة" />;
   const tenant = data;
-  if (!operatorEntitlementSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  if (!operatorEntitlementSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات تفعيل الخدمات غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
   const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
@@ -67,26 +67,26 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
     <h2 id={`${decision.capability_key}-title`}>{label}</h2>
     <Badge as="p" className={` ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</Badge>
     {decision.status === 'missing' && <p className="field-hint">{decision.last_decision_valid_until
-      ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار إتاحة جديد.`
+      ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار تفعيل جديد.`
       : 'لم تُفعّل هذه الخدمة للشركة بعد.'}</p>}
     {decision.status === 'conflict' && <Message tone="info"  role="alert">توجد إعدادات متعارضة لهذه الخدمة. تبقى غير متاحة حتى يصححها مسؤول التشغيل.</Message>}
     {decision.status === 'future_conflict' && <Message tone="info"  role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</Message>}
     {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
-      <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
-    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">إتاحة سلف الموظفين مستقلة؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الإتاحة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول صاحب الصلاحية.</p>}
-    {decision.capability_key === 'hr.employee_finance' && !peopleAvailable && <p className="field-hint">أتح إدارة الموارد البشرية أولًا لإنشاء سلف الموظفين.</p>}
-    {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لإتاحة الإجازات، أتح إدارة الموارد البشرية أولًا.</p>}
-    {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}
+      <p className="field-hint">لتفعيل الرواتب، <a href="#hr.people-title">فعّل إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
+    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">تفعيل سلف الموظفين مستقل؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الخدمة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول صاحب الصلاحية.</p>}
+    {decision.capability_key === 'hr.employee_finance' && !peopleAvailable && <p className="field-hint">فعّل إدارة الموارد البشرية أولًا لإنشاء سلف الموظفين.</p>}
+    {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لتفعيل الإجازات، فعّل إدارة الموارد البشرية أولًا.</p>}
+    {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على تفعيل الحضور.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
     {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
-    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <Disclosure summary={<>{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</>} className="operator-grant-form">
+    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <Disclosure summary={<>{decision.status === 'missing' ? `تحديد حالة خدمة ${label}` : `تغيير حالة خدمة ${label}`}</>} className="operator-grant-form">
 
-      <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ إتاحة ${label}`}>
+      <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ حالة خدمة ${label}`}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
         <label htmlFor={`${decision.capability_key}-decision`}>حالة الخدمة</label>
         <Select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
-          <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
+          <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>تفعيل</option><option value="deny">منع</option>
         </Select>
         <label htmlFor={`${decision.capability_key}-expiry`}>آخر يوم سريان (اختياري، بتوقيت القاهرة)</label>
         <Input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
@@ -101,18 +101,18 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function dateLabel(value: string) { return new Date(value).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
-  return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع الإتاحة الحالية قبل إجراء آخر.';
+  return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع حالة الخدمات الحالية قبل إجراء آخر.';
 }
 const entitlementErrors: Record<string, string> = {
     invalid: 'تحقق من بيانات حالة الخدمة.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
-    'finance-people-required': 'أتح إدارة الموارد البشرية أولًا، واجعل نهاية إتاحة سلف الموظفين ضمن فترة إتاحتها.',
-    'finance-first': 'أوقف إتاحة سلف الموظفين أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية. لا تُسقط الأرصدة القائمة.',
-    'leave-people-required': 'أتح إدارة الموارد البشرية أولًا، وتأكد أن نهاية إتاحة الإجازات لا تتجاوز نهايتها.',
-    forbidden: 'لم تعد لديك صلاحية إدارة الإتاحة.', 'not-found': 'الشركة غير متاحة.',
-    'people-required': 'أتح إدارة الموارد البشرية أولًا، واجعل نهاية إتاحة الرواتب والإجازات ضمن فترة إتاحتها.',
-    'payroll-first': 'أوقف إتاحة الرواتب أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
-    'leave-first': 'أوقف إتاحة الإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
-    'people-children-first': 'أوقف إتاحة الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
+    'finance-people-required': 'فعّل إدارة الموارد البشرية أولًا، واجعل نهاية تفعيل سلف الموظفين ضمن فترة تفعيلها.',
+    'finance-first': 'أوقف تفعيل سلف الموظفين أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية. لا تُسقط الأرصدة القائمة.',
+    'leave-people-required': 'فعّل إدارة الموارد البشرية أولًا، وتأكد أن نهاية تفعيل الإجازات لا تتجاوز نهايتها.',
+    forbidden: 'لم تعد لديك صلاحية إدارة تفعيل الخدمات.', 'not-found': 'الشركة غير متاحة.',
+    'people-required': 'فعّل إدارة الموارد البشرية أولًا، واجعل نهاية تفعيل الرواتب والإجازات ضمن فترة تفعيلها.',
+    'payroll-first': 'أوقف تفعيل الرواتب أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
+    'leave-first': 'أوقف تفعيل الإجازات أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
+    'people-children-first': 'أوقف تفعيل الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
     'future-conflict': 'يوجد قرار مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد قرارات فعّالة متعارضة؛ لم يتغير شيء.',
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'لم تتأكد نتيجة تحديث حالة الخدمة. راجع خدمات الشركة الحالية قبل إجراء آخر.',

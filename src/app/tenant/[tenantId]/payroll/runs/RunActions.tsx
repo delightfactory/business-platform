@@ -26,7 +26,7 @@ export function RunActions(props:Props){
  async function recover(){
   if (blockOfflineSubmission()) return;
   if(!navigator.locks){setRecoveryError('تعذر حماية الطلب بين نوافذ المتصفح. استخدم متصفحًا يدعم حماية الطلبات قبل المتابعة.');return;}
-  await navigator.locks.request(storageKey,{ifAvailable:true},async lock=>{if(!lock){setRecoveryError('طلب جارٍ في نافذة أخرى. انتظر نتيجته ثم تحقّق هنا.');return;}await recoverLocked();});
+  await navigator.locks.request(storageKey,{ifAvailable:true},async lock=>{if(!lock){setRecoveryError('طلب قيد التنفيذ في صفحة أخرى. انتظر نتيجته ثم تحقّق هنا.');return;}await recoverLocked();});
  }
  async function recoverLocked(){
   const original=decodePending(readPending(storageKey));if(!original){setRecoveryError('تعذر قراءة الطلب المحفوظ. راجع مسؤول النظام قبل إجراء جديد.');return;}
@@ -41,7 +41,7 @@ export function RunActions(props:Props){
  const primary=props.status==='approved'?!props.stale:props.status==='draft'||!props.run||props.status==='cancelled'||props.stale;
  async function submit(previous:RunState,form:FormData){
   if(!navigator.locks)return {...previous,saved:false,error:'تعذر حماية الطلب بين نوافذ المتصفح. استخدم متصفحًا يدعم حماية الطلبات قبل المتابعة.'};
-  return navigator.locks.request(storageKey,{ifAvailable:true},async lock=>lock?submitLocked(previous,form):{...previous,saved:false,error:'طلب جارٍ في نافذة أخرى. انتظر نتيجته ثم تحقّق هنا.'});
+  return navigator.locks.request(storageKey,{ifAvailable:true},async lock=>lock?submitLocked(previous,form):{...previous,saved:false,error:'طلب قيد التنفيذ في صفحة أخرى. انتظر نتيجته ثم تحقّق هنا.'});
  }
  async function submitLocked(previous:RunState,form:FormData){
   if(readPending(storageKey))return {...previous,saved:false,error:'استعد نتيجة الطلب السابق أولًا.'};

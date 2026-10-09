@@ -31,7 +31,7 @@ const PEOPLE_ROLE_BUNDLES = [
   { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
   { key: 'employee.leave.self.v1', label: 'الخدمة الذاتية للإجازات', description: 'عرض الملف الشخصي وطلب الإجازة مستقبلًا. لا تمنح عرض دليل الموظفين أو الأجور.' },
   { key: 'payroll.reader.v1', label: 'عرض الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
-  { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند إتاحة الحساب.' },
+  { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند تفعيل الحساب.' },
   { key: 'payroll.payment.recorder.v1', label: 'مسجل دفعات الرواتب الخارجية', description: 'عرض المستحق النهائي وتسجيل دفعات صُرفت خارجيًا ؛ لا تنفيذ تحويل بنكي.' },
   { key: 'payroll.reviewer.v1', label: 'مراجع الرواتب', description: 'عرض الحساب المبدئي والعوائق والفروق دون الحساب أو الاعتماد المالي.' },
   { key: 'payroll.input.approver.v1', label: 'معتمد وحدات الرواتب', description: 'عرض واعتماد الوحدات اليومية دون تحضيرها.' },
@@ -119,13 +119,13 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
                 {!row.protected_admin && <p className="field-hint">الصلاحيات الحالية: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد صلاحيات إضافية للموظفين'}</p>}
                 <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة؛ يلزم ربط حساب الموظف وإعداد الحضور في موقعه' : 'الصلاحية غير مضافة'}</p>
-                {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
+                {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر يستوفي شروط إدارة الشركة قبل خفض دوره.</p>}
                 {row.protected_admin && <p className="field-hint">صلاحية تسجيل الحضور للأعضاء مستقلة عن دور مسؤول الشركة. لا تُمنح تلقائيًا لمسؤول الشركة؛ راجع المسؤول عن الصلاحيات لإتاحتها.</p>}
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
-                  <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
+                  <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'تفعيل إجازات الموظف'} pendingLabel="جارٍ الحفظ…" />
                   <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات إجازته فقط، مع الحفاظ على دور مسؤول الشركة.</p>
                 </OfflineForm>}
               </div>
@@ -149,7 +149,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 {canManageRoles && row.access_state === 'active' && <Disclosure summary={<>{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</>} className="role-change-confirmation">
 
                   <p className="field-hint">{row.protected_admin
-                    ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
+                    ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول يستوفي شروط إدارة الشركة.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
                     : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المستخدمين المحتسبين.</p>
                   <OfflineForm action={changeTenantAdminRoleAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
@@ -258,7 +258,7 @@ function stateMessage(state: string) {
     already_admin: 'هذا المستخدم مسؤول بالفعل؛ لم يتغير الدور.',
     already_member: 'هذا المستخدم عضو بالفعل؛ لم يتغير الدور.',
     'role-forbidden': 'تحتاج إدارة أدوار المسؤولين إلى صلاحية إدارة الشركة وإدارة الأعضاء.',
-    'last-admin': 'لا يمكن خفض آخر مسؤول مؤهل. رقِّ مسؤولًا بديلًا أولًا.',
+    'last-admin': 'لا يمكن خفض آخر مسؤول يستوفي شروط إدارة الشركة. رقِّ مسؤولًا بديلًا أولًا.',
     'role-setup': 'قالب الدور الأساسي غير متاح؛ لم يتغير أي تعيين.',
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
     'bundles-unchanged': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
@@ -275,7 +275,7 @@ function successMessage(state?: string) {
     demoted: 'راجع الدور الحالي أدناه؛ الرابط وحده لا يؤكد خفض المسؤول.',
     'bundles-updated': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
     'bundles-unchanged': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
-    'leave-self-updated': 'راجع إتاحة الخدمة الذاتية للإجازات ودور المسؤول أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
+    'leave-self-updated': 'راجع تفعيل إجازات الموظف ودور المسؤول أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.',
   };
   return state && Object.hasOwn(messages, state) ? messages[state] : null;
 }

@@ -3,7 +3,7 @@ import { Icon, type IconName, Disclosure } from '@/components/ui';
 import { payrollStageDescriptions, type StageWork } from './stage-facts';
 
 const stageIcons: IconName[] = ['calendar', 'clock', 'file', 'wallet', 'shield', 'checkCheck'];
-const stages = ['الدورة والفترة', 'الحضور والإجازات', 'المدخلات والموانع', 'الحساب والمراجعة', 'الاعتماد والتثبيت', 'الصرف والقسائم'];
+const stages = ['الدورة والفترة', 'الحضور والإجازات', 'المدخلات والموانع', 'الحساب والمراجعة', 'الاعتماد والحفظ النهائي', 'الصرف ومفردات المرتب'];
 
 export function payrollCurrentStage(work: { run: { status: string } | null; final_output_id: string | null; stale_reasons: string[] } | null): number | null {
   if (!work) return 0;

@@ -14,7 +14,7 @@ export async function RecordedPaymentNotice({ tenantId, employer, output, period
   const retry = `/tenant/${tenantId}/payroll?${new URLSearchParams(context)}#payroll-recorded-payment`;
   const panel = (content: ReactNode) => <Panel id="payroll-recorded-payment" className={styles.card} aria-labelledby="payroll-recorded-payment-title">
     <h2 id="payroll-recorded-payment-title">حالة الصرف المسجل</h2>{content}
-    <p className="field-hint">هذه قيود دفعات خارجية مسجلة في المنصة؛ لا تثبت تنفيذ تحويل بنكي أو إتاحة القسائم.</p>
+    <p className="field-hint">هذه قيود دفعات خارجية مسجلة في المنصة؛ لا تثبت تنفيذ تحويل بنكي أو إتاحة مفردات المرتب.</p>
   </Panel>;
   const failure = (denied = false) => panel(<>
     <p>{denied ? 'هذا الحساب ليس لديه صلاحية لعرض الدفعات لهذا المسير. راجع مسؤول الشركة؛ حالة الصرف غير مؤكدة هنا.' : 'تعذر التحقق من الدفعات المسجلة؛ حالة الصرف غير مؤكدة هنا.'}</p>

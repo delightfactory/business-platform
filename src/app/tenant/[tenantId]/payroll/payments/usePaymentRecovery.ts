@@ -20,14 +20,14 @@ export function usePaymentRecovery(scope:Scope){
  const [state,action,pending]=useActionState(async(previous:PaymentState,form:FormData)=>{
   if(!navigator.locks)return {...previous,saved:false,error:'تعذر حماية الطلب بين نوافذ المتصفح. استخدم متصفحًا يدعم حماية الطلبات قبل المتابعة.'};
   return navigator.locks.request(key,{ifAvailable:true},async lock=>{
-   if(!lock)return {...previous,saved:false,error:'يوجد طلب جارٍ في نافذة أخرى. انتظر نتيجته ثم تحقّق هنا.'};
+   if(!lock)return {...previous,saved:false,error:'يوجد طلب قيد التنفيذ في صفحة أخرى. انتظر نتيجته ثم تحقّق هنا.'};
    const v2=read(key),v1=read(legacyKey),decoded=decode(v2),existing=decoded&&decoded.actor===scope.actor&&decoded.tenant===scope.tenant&&decoded.employer===scope.employer&&decoded.output===scope.output?decoded:null,legacy=decodeLegacy(v1),cancel=form.get('__cancel')==='yes',recover=form.get('__recover')==='yes'||cancel;
-   if((v2&&!existing)||(v1&&!legacy)||(v1&&v2&&legacy&&existing&&legacy.attempt!==existing.attempt))return {...previous,saved:false,error:'يوجد طلب محفوظ غير محسوم أو متعارض. استعده أو راجع مسؤول النظام قبل تسجيل دفعة أخرى.'};
+   if((v2&&!existing)||(v1&&!legacy)||(v1&&v2&&legacy&&existing&&legacy.attempt!==existing.attempt))return {...previous,saved:false,error:'يوجد طلب محفوظ لم تتأكد نتيجته أو تختلف بياناته. استرجع نتيجته أو راجع مسؤول النظام قبل تسجيل دفعة أخرى.'};
    if((existing||legacy)&&!recover)return {...previous,saved:false,error:'استعد نتيجة طلب الدفعة السابق أولًا.'};
    if(recover&&!existing&&!legacy&&!scope.recoveryAttempt)return {...previous,saved:false,error:'حُسم الطلب السابق بالفعل. حدّث المطابقة قبل إجراء جديد.'};
    const attempt=existing?.attempt||legacy?.attempt||scope.recoveryAttempt||crypto.randomUUID();
    if(legacy&&recover&&!cancel){form.delete('__recover');form.set('__migrate','yes');legacy.entries.forEach(([k,v])=>form.append(k,v));}
-   if(!existing&&!legacy&&!recover&&!write({version:2,attempt,actor:scope.actor,tenant:scope.tenant,employer:scope.employer,output:scope.output}))return {...previous,saved:false,error:'تعذر تثبيت هوية الطلب على هذا الجهاز؛ لم يُرسل أي طلب.'};
+   if(!existing&&!legacy&&!recover&&!write({version:2,attempt,actor:scope.actor,tenant:scope.tenant,employer:scope.employer,output:scope.output}))return {...previous,saved:false,error:'تعذر حفظ مرجع الطلب على هذا الجهاز؛ لم يُرسل أي طلب.'};
    form.set('tenant',scope.tenant);form.set('employer',scope.employer);form.set('output',scope.output);form.set('__attempt',attempt);form.set('__actor',scope.actor);
    try{const result=await paymentAction({...previous,recoverPending:Boolean(existing)||Boolean(legacy)||Boolean(scope.recoveryAttempt)},form);if(legacy&&result.prepared&&!result.saved&&write({version:2,attempt,actor:scope.actor,tenant:scope.tenant,employer:scope.employer,output:scope.output})){try{localStorage.removeItem(legacyKey);window.dispatchEvent(new Event(event));}catch{}}if(result.saved||result.cancelled){write(null);try{localStorage.removeItem(legacyKey);}catch{}}return result;}
    catch{return {...previous,saved:false,recoverPending:true,attempt,error:'لم تصل نتيجة الطلب. استعد نتيجة الطلب الأصلي قبل تسجيل دفعة أخرى.'};}
