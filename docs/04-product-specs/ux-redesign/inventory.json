@@ -1,6 +1,6 @@
 {
   "schema": "business-platform.ux-inventory.v1",
-  "sourceHead": "9833ed0572e05a4466118d96dc6cc26fa0920add",
+  "sourceHead": "532c138ebf21fc26ecaa7ec65ef0eed2141273eb",
   "files": [
     {
       "file": "src/app/apple-icon.png",
@@ -1120,7 +1120,7 @@
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
       "phase": "R7",
-      "sha256": "527325a09ba63343cbaa0652b485f3efd6eeada4f0041e4df93186290bc5cee3"
+      "sha256": "0271dfeba6e7270c8c14a7d347b0304a5ad33a5199d43e7816a4caf4119770b4"
     },
     {
       "file": "src/app/tenant/[tenantId]/payroll/runs/TimeCoverageExplanation.tsx",
@@ -16759,7 +16759,7 @@
       }
     },
     {
-      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx:29:2931",
+      "id": "CONTROL:src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx:29:3037",
       "file": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
       "line": 29,
       "tag": "summary",

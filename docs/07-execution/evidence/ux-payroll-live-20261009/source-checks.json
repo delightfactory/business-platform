@@ -1,0 +1,11 @@
+{
+  "baseline": "532c138ebf21fc26ecaa7ec65ef0eed2141273eb",
+  "file": "src/app/tenant/[tenantId]/payroll/runs/SourceExplanation.tsx",
+  "sha256": "0271dfeba6e7270c8c14a7d347b0304a5ad33a5199d43e7816a4caf4119770b4",
+  "copyOnlyChanges": 2,
+  "sourceInverse": "PASS: all noncopy source unchanged",
+  "runtimeSameBytes": true,
+  "scopedLint": "PASS",
+  "heavySuites": "Unchanged contracts reused; no repeat",
+  "fullPhaseClosed": false
+}

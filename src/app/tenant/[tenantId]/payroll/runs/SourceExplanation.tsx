@@ -21,9 +21,9 @@ export function SourceExplanation({summary,days,coverageDays}:{summary?:SourceSu
     <p>{sources[summary.selected_source??'']??'مصادر الحضور والإجازات للمراجعة'} · {summary.status==='needs_source_review'?'يلزم مراجعة المصادر':complete?'أيام المصدر مكتملة للحساب':'مصادر محفوظة للمراجعة'}</p>
     {summary.selected_source&&!monthly&&<p>الأيام المستحقة من المصدر المختار: {quantity(summary.approved_units)}</p>}
     {monthly&&<p>الغياب غير المدفوع: {quantity(summary.absence_units??0)} · الإجازة غير المدفوعة: {quantity(summary.unpaid_leave_units??0)}</p>}
-    {monthly&&summary.status==='reconciliation_ready'&&<p>حُسب الأجر الأساسي من الأجر الساري وتوزيعه على تواريخ الفترة، مع تخفيض الجزء غير المدفوع من المصدر المعتمد مرة واحدة. تحتفظ المكوّنات الثابتة بطريقة حسابها المعتمدة.</p>}
+    {monthly&&summary.status==='reconciliation_ready'&&<p>يعتمد احتساب الأجر الأساسي على الأجر الساري وتوزيعه على تواريخ الفترة، مع تخفيض الجزء غير المدفوع من المصدر المعتمد مرة واحدة. تحتفظ المكوّنات الثابتة بطريقة حسابها المعتمدة. راجع القيم والعوائق للتأكد من اكتمال الحساب.</p>}
     {summary.coverage==='captured_parts_only'&&<p>{summary.time_coverage?.enabled?'السجلات المعتمدة متاحة للمراجعة؛ احتساب الأيام والمبالغ المستحقة من الحضور والإجازات لم يُؤهّل بعد.':'تشرح هذه القيم وقائع الحضور المعتمدة المتاحة؛ تغطية أيام العمل المتوقعة لم تُؤهّل بعد.'}</p>}
-    {complete&&!monthly&&<p>حُسب الأجر الأساسي من أيام العمل والإجازات المدفوعة المعتمدة، حسب الأجر الساري لكل يوم. الإجازة المدفوعة تُحسب مرة واحدة. ما زالت المراجعة المالية والقانونية مطلوبة قبل اعتماد الراتب أو صرفه.</p>}
+    {complete&&!monthly&&<p>يعتمد احتساب الأجر الأساسي على أيام العمل والإجازات المدفوعة المعتمدة، حسب الأجر الساري لكل يوم. الإجازة المدفوعة تُحسب مرة واحدة. راجع القيم والعوائق للتأكد من اكتمال الحساب؛ ما زالت المراجعة المالية والقانونية مطلوبة قبل اعتماد الراتب أو صرفه.</p>}
     {summary.coverage==='approved_manual_total'&&<p>الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى.</p>}
     <TimeCoverageExplanation summary={summary.time_coverage} days={coverageDays}/>
     {days&&days.length>0&&<details><summary>شرح الأيام المتاحة ({quantity(days.length)})</summary><ul>{days.map(day=><li key={day.date}>

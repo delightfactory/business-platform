@@ -1,0 +1,12 @@
+{
+  "status": "RETIRED",
+  "reason": "explicit test completion",
+  "retiredAtUTC": "2026-10-09T10:39:43.59Z",
+  "errors": [],
+  "ownedContainerCount": 0,
+  "ownedNetworkCount": 0,
+  "ownedListenerCount": 0,
+  "browserTab6Closed": true,
+  "finalNormalUISignout": true,
+  "originalSharedServicesUntouched": true
+}

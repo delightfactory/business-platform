@@ -1,0 +1,46 @@
+{
+  "sourceBase": "532c138ebf21fc26ecaa7ec65ef0eed2141273eb",
+  "cases": [
+    {
+      "id": "calendar-preview",
+      "result": "PASS",
+      "dates": [
+        "2026-10-01",
+        "2026-10-31",
+        "2026-11-01"
+      ],
+      "timezone": "Africa/Cairo"
+    },
+    {
+      "id": "owned-calendar-first-save",
+      "result": "ROLLED BACK 42501",
+      "message": "لم يعد هذا الحساب مخوّلًا لهذه الجهة. راجع مسؤول الشركة لاستعادة الوصول.",
+      "setupReadLockRepair": "UPDATE(updated_at) only owned NOLOGIN app-owner under standing approval; fresh preview/attempt thereafter"
+    },
+    {
+      "id": "calendar-save-after-owned-repair",
+      "result": "PASS",
+      "period": "0c05d1e1-ddfd-43eb-8ea9-97125cb12568",
+      "revision": 1
+    },
+    {
+      "id": "one-run-calculation",
+      "result": "PASS bounded review",
+      "blockingIssues": 14,
+      "employees": 2,
+      "financiallyQualified": false,
+      "noApprovalOrFinalize": true
+    },
+    {
+      "id": "copy-method-not-outcome",
+      "result": "PASS actual DOM",
+      "sourceParagraph": "مصدر الأيام\n\nمصادر الحضور والإجازات للأجر الشهري · مصادر محفوظة للمراجعة\n\nالغياب غير المدفوع: ٠ · الإجازة غير المدفوعة: ٠\n\nيعتمد احتساب الأجر الأساسي على الأجر الساري وتوزيعه على تواريخ الفترة، مع تخفيض الجزء غير المدفوع من المصدر المعتمد مرة واحدة. تحتفظ المكوّنات الثابتة بطريقة حسابها المعتمدة. راجع القيم والعوائق للتأكد من اكتمال الحساب.\n\nاكتمال سجلات الحضور\n\nبعض أيام الحضور تحتاج استكمالًا أو مراجعة.\n\nالأيام المطلوبة بحسب الدوام: ٣١ · سجلات معتمدة ومتوافقة: ٠\n\nأيام ينقصها سجل حضور: ٨\nأيام لم ينتهِ وقت تسجيلها عند الحساب: ٢٣\n\nاليوم الناقص أو المعلّق لا يُعتبر غيابًا أو صفر استحقاق. اكتمال السجلات وحده لا يتيح الاعتماد المالي.\n\nراجع الأيام الناقصة مع المسؤول الموضّح في التفاصيل، ثم أعد حساب مراجعة الراتب."
+    },
+    {
+      "id": "employee-payroll-access",
+      "result": "PASS expected denial",
+      "message": "تعذر تحميل الجهات أو لم يعد الحساب مخولًا للمراجعة.",
+      "noFinancialRowsRendered": true
+    }
+  ]
+}
