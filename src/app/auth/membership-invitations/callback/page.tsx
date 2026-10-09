@@ -1,3 +1,4 @@
+import { Panel, PageHeader } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -14,9 +15,9 @@ export default async function MemberInvitationCallbackPage({ searchParams }: { s
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
-      <section className="auth-card" aria-labelledby="callback-title">
+      <Panel className="auth-card" aria-labelledby="callback-title">
         <p className="eyebrow">دعوة عضو</p>
-        <h1 id="callback-title">تابع الانضمام للشركة</h1>
+        <PageHeader id="callback-title" title={<>تابع الانضمام للشركة</>} />
         {valid ? <>
           <p className="intro">اضغط للمتابعة والتحقق من الرابط. لن تُحتسب عضوية أو مقعد قبل قبولك.</p>
           <OfflineForm className="auth-form" action={verifyMemberInvitationAction}>
@@ -27,7 +28,7 @@ export default async function MemberInvitationCallbackPage({ searchParams }: { s
             <OfflineSubmitButton label="التحقق والمتابعة" pendingLabel="جارٍ التحقق…" />
           </OfflineForm>
         </> : <p className="intro" role="alert">{query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب إعادة إرسال الدعوة.' : 'رابط الدعوة غير مكتمل. افتح أحدث رسالة وصلتك.'}</p>}
-      </section>
+      </Panel>
     </main>
   );
 }

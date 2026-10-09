@@ -1,3 +1,4 @@
+import { Badge, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
@@ -72,32 +73,28 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}
     <Link className="back-link" href={`/tenant/${tenantId}/leave/settings`}>اختيار جهة أخرى</Link>
-    <header className="workspace-page-heading"><div>
-      <p className="eyebrow">الموارد البشرية</p>
-      <h1>إعدادات الإجازات</h1>
-      <p>التقويمات وسنوات الإجازة وأنواع الإجازة الخاصة بـ«<bdi>{employer.display_name}</bdi>».
-        راجع الإعدادات الحالية أو أضف تغييرًا بتاريخ تطبيق واضح. يبقى سجل الإعدادات السابقة محفوظًا.</p>
-    </div></header>
+    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>التقويمات وسنوات الإجازة وأنواع الإجازة الخاصة بـ«<bdi>{employer.display_name}</bdi>».
+        راجع الإعدادات الحالية أو أضف تغييرًا بتاريخ تطبيق واضح. يبقى سجل الإعدادات السابقة محفوظًا.</>} />
 
     <div className={styles.notices}>
-      {notice && notice.tone !== 'success' && <p
-        className={notice.tone === 'error' ? 'form-message form-error' : 'form-message'}
+      {notice && notice.tone !== 'success' && <Message
+        tone={notice.tone === 'error' ? 'bad' : 'info'}
         role={notice.tone === 'error' ? 'alert' : 'status'}>
         {notice.message}
-      </p>}
-      {!access.canManage && <p className="form-message" role="status">
+      </Message>}
+      {!access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إعدادات هذه الجهة دون تعديلها.
-      </p>}
-      {access.canManage && !access.newWorkEnabled && <p className="form-message" role="status">
+      </Message>}
+      {access.canManage && !access.newWorkEnabled && <Message tone="info"  role="status">
         خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن إنشاء إعدادات جديدة أو إصدارات لاحقة.
         تبقى الإعدادات المحفوظة قابلة للمراجعة كما هي.
-      </p>}
-      {!employer.is_active && <p className="form-message" role="status">
+      </Message>}
+      {!employer.is_active && <Message tone="info"  role="status">
         هذه الجهة موقوفة: يمكنك مراجعة إعداداتها السابقة وسجلها دون إنشاء جديد.
-      </p>}
+      </Message>}
     </div>
 
-    <section className="workspace-records-panel" aria-labelledby="leave-calendars-title">
+    <Panel  aria-labelledby="leave-calendars-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-calendars-title">تقويمات الإجازات</h2>
@@ -106,13 +103,11 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
         {canEdit && <Link className="primary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}
       </div>
       {configuration.calendars.length === 0
-        ? <div className="empty-state"><h2>لا توجد تقويمات لهذه الجهة بعد</h2>
-          <p>{canEdit ? 'أنشئ أول تقويم لتحديد أيام الراحة والعطلات قبل تعريف سنوات الإجازة.'
-            : 'لم تُنشأ تقويمات لهذه الجهة حتى الآن.'}</p>
-          {canEdit && <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}</div>
+        ? <div ><EmptyState title={<>لا توجد تقويمات لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ أول تقويم لتحديد أيام الراحة والعطلات قبل تعريف سنوات الإجازة.'
+            : 'لم تُنشأ تقويمات لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}</>} /></div>
         : <ul className="record-list">{configuration.calendars.map((calendar) => {
           const latest = calendar.versions[0] ?? null;
-          return <li className="record-card" key={calendar.id}>
+          return <RecordCard  key={calendar.id}>
             <div className="record-main">
               <div className="record-title-row"><h3>{calendar.name}</h3></div>
               <p className="record-meta">
@@ -124,11 +119,11 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
                 {' · '}المنطقة الزمنية: <bdi>{latest.timezone}</bdi></p>}
             </div>
             <Link className="secondary-button" href={`${basePath}/calendars/${calendar.id}`}>التفاصيل والإصدارات</Link>
-          </li>;
+          </RecordCard>;
         })}</ul>}
-    </section>
+    </Panel>
 
-    <section className="workspace-records-panel" aria-labelledby="leave-years-title">
+    <Panel  aria-labelledby="leave-years-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-years-title">سنوات الإجازة</h2>
@@ -137,20 +132,18 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
         {canEdit && <Link className="primary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}
       </div>
       {configuration.yearPeriods.length === 0
-        ? <div className="empty-state"><h2>لا توجد سنوات إجازة لهذه الجهة بعد</h2>
-          <p>{canEdit ? 'أنشئ تقويمًا ثم أضف فترة سنة الإجازة بتواريخ بدايتها ونهايتها وتصنيفها.'
-            : 'لم تُنشأ سنوات إجازة لهذه الجهة حتى الآن.'}</p>
-          {canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}</div>
-        : <ul className="record-list">{configuration.yearPeriods.map((period) => <li className="record-card" key={period.id}>
+        ? <div ><EmptyState title={<>لا توجد سنوات إجازة لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ تقويمًا ثم أضف فترة سنة الإجازة بتواريخ بدايتها ونهايتها وتصنيفها.'
+            : 'لم تُنشأ سنوات إجازة لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}</>} /></div>
+        : <ul className="record-list">{configuration.yearPeriods.map((period) => <RecordCard  key={period.id}>
           <div className="record-main">
             <div className="record-title-row"><h3>{period.label}</h3></div>
             <p className="record-meta">{periodRangeText(period.starts_on, period.ends_on)}
               {' · '}التقويم: <bdi>{calendarName.get(period.calendar_id) ?? period.calendar_id}</bdi></p>
           </div>
-        </li>)}</ul>}
-    </section>
+        </RecordCard>)}</ul>}
+    </Panel>
 
-    <section className="workspace-records-panel" aria-labelledby="leave-types-title">
+    <Panel  aria-labelledby="leave-types-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-types-title">أنواع الإجازة</h2>
@@ -159,17 +152,15 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
         {canEdit && <Link className="primary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}
       </div>
       {configuration.types.length === 0
-        ? <div className="empty-state"><h2>لا توجد أنواع إجازة لهذه الجهة بعد</h2>
-          <p>{canEdit ? 'أنشئ أول نوع إجازة وحدد إعداداته الأربعة وتاريخ سريانه.'
-            : 'لم تُنشأ أنواع إجازة لهذه الجهة حتى الآن.'}</p>
-          {canEdit && <Link className="secondary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}</div>
+        ? <div ><EmptyState title={<>لا توجد أنواع إجازة لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ أول نوع إجازة وحدد إعداداته الأربعة وتاريخ سريانه.'
+            : 'لم تُنشأ أنواع إجازة لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}</>} /></div>
         : <ul className="record-list">{configuration.types.map((type) => {
           const latest = type.versions[0] ?? null;
-          return <li className="record-card" key={type.id}>
+          return <RecordCard  key={type.id}>
             <div className="record-main">
               <div className="record-title-row"><h3>{type.name}</h3>
-                <span className={`entity-status ${type.is_active ? 'is-active' : 'is-inactive'}`}>
-                  {type.is_active ? 'مفعّل' : 'موقوف'}</span></div>
+                <Badge className={`entity-status ${type.is_active ? 'is-active' : 'is-inactive'}`}>
+                  {type.is_active ? 'مفعّل' : 'موقوف'}</Badge></div>
               <p className="record-meta">
                 {latest ? <>{versionText(latest.version)} · {effectiveRangeText(latest.effective_from, latest.effective_until)}</>
                   : ' · لا توجد إصدارات'}</p>
@@ -180,9 +171,9 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
               {latest && <p className="record-meta">المصدر: <bdi>{latest.source}</bdi></p>}
             </div>
             <Link className="secondary-button" href={`${basePath}/types/${type.id}`}>التفاصيل والإصدارات</Link>
-          </li>;
+          </RecordCard>;
         })}</ul>}
-    </section>
+    </Panel>
 
     <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
   </PageFrame>;

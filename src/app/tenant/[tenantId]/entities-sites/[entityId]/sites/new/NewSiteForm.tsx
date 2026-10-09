@@ -1,4 +1,5 @@
 'use client';
+import { Message } from '@/components/ui';
 import { ButtonLink, Input } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -20,8 +21,8 @@ export function NewSiteForm({ tenantId, entityId }: { tenantId: string; entityId
     <Input id="site-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
     <label htmlFor="site-create-reason">سبب الإضافة</label>
     <Input id="site-create-reason" name="reason" required minLength={3} maxLength={500} defaultValue={state.reason} />
-    {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions"><SubmitButton label="إضافة الفرع" pendingLabel="جارٍ الإضافة…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
-      <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>إلغاء</ButtonLink></div>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites/${entityId}`}>إلغاء</ButtonLink></div>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

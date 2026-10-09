@@ -1,3 +1,4 @@
+import { Disclosure } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {displayDate} from '../rules';
 import {TimeCoverageExplanation,type TimeCoverageSummary,type TimeCoverageDay} from './TimeCoverageExplanation';
@@ -27,9 +28,9 @@ export function SourceExplanation({summary,days,coverageDays}:{summary?:SourceSu
     {complete&&!monthly&&<p>يعتمد احتساب الأجر الأساسي على أيام العمل والإجازات المدفوعة المعتمدة، حسب الأجر الساري لكل يوم. الإجازة المدفوعة تُحسب مرة واحدة. راجع القيم والعوائق للتأكد من اكتمال الحساب؛ ما زالت المراجعة المالية والقانونية مطلوبة قبل اعتماد الراتب أو صرفه.</p>}
     {summary.coverage==='approved_manual_total'&&<p>الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى.</p>}
     <TimeCoverageExplanation summary={summary.time_coverage} days={coverageDays}/>
-    {days&&days.length>0&&<details><summary>شرح الأيام المتاحة ({quantity(days.length)})</summary><ul>{days.map(day=><li key={day.date}>
+    {days&&days.length>0&&<Disclosure summary={<>شرح الأيام المتاحة ({quantity(days.length)})</>}><ul>{days.map(day=><li key={day.date}>
       {displayDate(day.date)} · عمل {quantity(day.work_units)} · إجازة مدفوعة {quantity(day.paid_leave_units)} · إجازة غير مدفوعة {quantity(day.unpaid_leave_units)}
       {day.status==='needs_source_review'?' · يلزم مراجعة المصدر':''}
-    </li>)}</ul></details>}
+    </li>)}</ul></Disclosure>}
   </section>;
 }

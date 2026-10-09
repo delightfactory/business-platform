@@ -1,6 +1,6 @@
+import { Button, ButtonLink, Field, Input, Message, Panel, Select } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
-import Link from 'next/link';
 import { linkEmployeeUserAction, unlinkEmployeeUserAction } from '../employee-user-link-actions';
 import { createEmployeeAccountAction, retryEmployeeAccountActivationAction, sendEmployeeAccountReadinessRecoveryAction } from '../employee-account-actions';
 
@@ -41,9 +41,9 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
   const currentlyLinkedProvision = snapshot?.linked === true && provision?.currently_linked === true;
   const canStartNewAccount = !accountProvisionError && !snapshotError && snapshot?.linked === false && Boolean(provision)
     && (provision?.state === 'none' || (provision?.state === 'activated' && provision.currently_linked === false));
-  return <section className="workspace-records-panel" aria-labelledby="employee-user-link-heading">
+  return <Panel  aria-labelledby="employee-user-link-heading">
     <h2 id="employee-user-link-heading">حساب المستخدم</h2>
-    {state && messages[state] && <p className={state === 'error' || state === 'forbidden' || state === 'invite-failed' ? 'form-message error-message' : 'form-message'} role="status">{messages[state]}</p>}
+    {state && messages[state] && <Message tone={state === 'error' || state === 'forbidden' || state === 'invite-failed' ? 'bad' : 'info'} role="status">{messages[state]}</Message>}
     {snapshotError || !snapshot ? <p role="alert">تعذر تحميل حالة ربط الحساب.</p> : snapshot.linked
       ? <div><p>{snapshot.identity_visible
         ? <><strong>{snapshot.display_name ?? snapshot.email}</strong>{snapshot.email && <> <bdi>{snapshot.email}</bdi></>}</>
@@ -54,39 +54,36 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </OfflineForm>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
-    <div className="workspace-page-summary"><h3>إكمال إتاحة الحضور الشخصي</h3><p>{snapshot?.linked ? 'رابط الحساب موجود. هذا لا يثبت وجود صلاحية الحضور؛ أكمل حزمة وصول العضو ثم راجع إعداد موقع العمل.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم أتح له الحضور الشخصي من حزم الوصول.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <Link className="secondary-button" href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة حزمة الحضور لحساب الموظف</Link> : <p>اطلب من مدير الأعضاء إضافة حزمة «الحضور الشخصي من الهاتف» للحساب المرتبط. لا تمنح صلاحية ربط الموظف صلاحية إدارة الأعضاء.</p>}</div>
-    {accountState && accountMessages[accountState] && <p className={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState)
-      ? 'form-message error-message' : 'form-message'} role="status">{accountMessages[accountState]}</p>}
+    <div className="workspace-page-summary"><h3>إكمال إتاحة الحضور الشخصي</h3><p>{snapshot?.linked ? 'رابط الحساب موجود. هذا لا يثبت وجود صلاحية الحضور؛ أكمل حزمة وصول العضو ثم راجع إعداد موقع العمل.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم أتح له الحضور الشخصي من حزم الوصول.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة حزمة الحضور لحساب الموظف</ButtonLink> : <p>اطلب من مدير الأعضاء إضافة حزمة «الحضور الشخصي من الهاتف» للحساب المرتبط. لا تمنح صلاحية ربط الموظف صلاحية إدارة الأعضاء.</p>}</div>
+    {accountState && accountMessages[accountState] && <Message tone={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState) ? 'bad' : 'info'} role="status">{accountMessages[accountState]}</Message>}
     {!snapshotError && !snapshot?.linked && canManage && <>
       <h3>ربط عضو موجود</h3>
       {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المؤهلين.</p> : <>
         <form method="get" action={base} className="compact-form">
-          <label htmlFor="user-link-query">البحث بالبريد أو الاسم</label>
-          <input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} />
+          <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} /></Field>
           <input type="hidden" name="linkPage" value="1" />
-          <button className="secondary-button" type="submit">بحث</button>
+          <Button variant="ghost"  type="submit">بحث</Button>
         </form>
         {options.items.length ? <OfflineForm action={linkEmployeeUserAction} className="compact-form">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
-          <label htmlFor="employee-user-id">عضو نشط وبريد مؤكد</label>
-          <select id="employee-user-id" name="userId" required defaultValue="">
+          <Field id="employee-user-id" label={<>عضو نشط وبريد مؤكد</>} required><Select id="employee-user-id" name="userId" required defaultValue="">
             <option value="" disabled>اختر عضوًا</option>
             {options.items.map((item) => <option key={item.user_id} value={item.user_id}>{item.display_name} — {item.email}</option>)}
-          </select>
+          </Select></Field>
           <OfflineSubmitButton label="ربط الحساب" pendingLabel="جارٍ ربط الحساب…" />
         </OfflineForm> : <p>لا توجد عضوية نشطة مؤهلة لهذا البحث.</p>}
         <nav className="workspace-form-actions" aria-label="صفحات الأعضاء">
-          {page > 1 && <Link className="secondary-button" href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`}>السابق</Link>}
+          {page > 1 && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`}>السابق</ButtonLink>}
           <span>صفحة {page}</span>
-          {options.has_more && <Link className="secondary-button" href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page + 1}`}>التالي</Link>}
+          {options.has_more && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page + 1}`}>التالي</ButtonLink>}
         </nav>
       </>}
       {canInvite && <div className="workspace-page-summary"><p>لا يوجد حساب؟ أرسل دعوة العضوية، وبعد القبول ارجع هنا لتفعيل الربط.</p>
-        <Link className="secondary-button" href={`/tenant/${tenantId}/users/invite?employeeId=${encodeURIComponent(employeeId)}`}>دعوة عضو جديد</Link></div>}
+        <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users/invite?employeeId=${encodeURIComponent(employeeId)}`}>دعوة عضو جديد</ButtonLink></div>}
       {canProvisionAccount && <div className="workspace-page-summary">
         <h3>إنشاء حساب للموظف</h3>
         <p>يُنشأ الحساب دون أن يختار المسؤول كلمة مرور. سيؤكد الموظف بريده ويضع كلمة المرور، ثم تضاف له عضوية «عضو» ويرتبط حسابه بهذا الملف.</p>
-        {accountProvisionError && <p className="form-message error-message" role="alert">تعذر تحميل حالة إنشاء الحساب. حدّث الصفحة قبل بدء طلب جديد.</p>}
+        {accountProvisionError && <Message tone="bad"  role="alert">تعذر تحميل حالة إنشاء الحساب. حدّث الصفحة قبل بدء طلب جديد.</Message>}
         {provision && provision.state !== 'none' && provision.state !== 'activated' && <div className="record-meta">
           <p>حالة الطلب: {provision.state === 'pending' ? 'قيد الإنشاء' : provision.state === 'user_created'
             ? provision.delivery_state === 'sent' ? 'بانتظار تفعيل الموظف' : 'الحساب جاهز لإعادة إرسال رابط التفعيل'
@@ -99,12 +96,11 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
             <OfflineSubmitButton label={provision.state === 'pending' ? 'متابعة إنشاء الحساب' : 'إعادة إرسال رابط التفعيل'} pendingLabel="جارٍ الإرسال…" />
           </OfflineForm>}
         </div>}
-        {provision?.state === 'activated' && provision.currently_linked === false && <p className="form-message">الحساب السابق لم يعد مرتبطًا بهذا الموظف. يمكنك إنشاء حساب بديل.</p>}
+        {provision?.state === 'activated' && provision.currently_linked === false && <Message tone="info" >الحساب السابق لم يعد مرتبطًا بهذا الموظف. يمكنك إنشاء حساب بديل.</Message>}
         {canStartNewAccount && <OfflineForm action={createEmployeeAccountAction} className="compact-form">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="requestKey" value={requestKey} />
-          <label htmlFor="employee-account-email">بريد الموظف</label>
-          <input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required />
+          <Field id="employee-account-email" label={<>بريد الموظف</>} required><Input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required /></Field>
           <OfflineSubmitButton label="إنشاء الحساب وإرسال رابط التفعيل" pendingLabel="جارٍ إنشاء الحساب…" />
         </OfflineForm>}
       </div>}
@@ -118,5 +114,5 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         <OfflineSubmitButton label="إرسال رابط تأكيد كلمة المرور" pendingLabel="جارٍ الإرسال…" />
       </OfflineForm>
     </div>}
-  </section>;
+  </Panel>;
 }

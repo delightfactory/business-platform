@@ -1,5 +1,6 @@
 'use client';
 
+import { Checkbox, Field, Input, Message, Radio } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState } from 'react';
 import { useId } from 'react';
@@ -33,9 +34,8 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
     <input type="hidden" name="typeId" value={typeId} />
 
     <div className={styles.field}>
-      <label htmlFor="type-revise-from">بداية سريان الإصدار الجديد</label>
-      <input id="type-revise-from" name="effectiveFrom" type="date" required
-        defaultValue={state.effectiveFrom} disabled={pending} />
+      <Field id="type-revise-from" label={<>بداية سريان الإصدار الجديد</>} required><Input id="type-revise-from" name="effectiveFrom" type="date" required
+        defaultValue={state.effectiveFrom} disabled={pending} /></Field>
       <span className="field-hint">يجب أن يكون بعد تاريخ اليوم بتوقيت القاهرة؛ الإصدار الحالي يبقى ساريًا حتى ذلك الحين.</span>
     </div>
 
@@ -43,11 +43,11 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
       <legend>الأثر على الأجر</legend>
       <div className={styles.optionGrid}>
         <label className={styles.option}>
-          <input type="radio" name="payEffect" value="paid" defaultChecked={state.payEffect === 'paid'} />
+          <Radio  name="payEffect" value="paid" defaultChecked={state.payEffect === 'paid'} />
           <span>الإجازة بأجر</span>
         </label>
         <label className={styles.option}>
-          <input type="radio" name="payEffect" value="unpaid" defaultChecked={state.payEffect === 'unpaid'} />
+          <Radio  name="payEffect" value="unpaid" defaultChecked={state.payEffect === 'unpaid'} />
           <span>الإجازة بدون أجر</span>
         </label>
       </div>
@@ -57,11 +57,11 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
       <legend>خصم الرصيد</legend>
       <div className={styles.optionGrid}>
         <label className={styles.option}>
-          <input type="radio" name="balanceMode" value="tracked" defaultChecked={state.balanceMode === 'tracked'} />
+          <Radio  name="balanceMode" value="tracked" defaultChecked={state.balanceMode === 'tracked'} />
           <span>تُخصم أيامها من الرصيد</span>
         </label>
         <label className={styles.option}>
-          <input type="radio" name="balanceMode" value="untracked" defaultChecked={state.balanceMode === 'untracked'} />
+          <Radio  name="balanceMode" value="untracked" defaultChecked={state.balanceMode === 'untracked'} />
           <span>لا تُخصم من الرصيد</span>
         </label>
       </div>
@@ -72,12 +72,12 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
       <p className={styles.optionGroupHint}>يحدد ما إذا كانت الأيام المحتسبة تراعي تقويم الشركة أم أيامًا تقويمية متتالية.</p>
       <div className={styles.optionGrid}>
         <label className={styles.option}>
-          <input type="radio" name="dayCountBasis" value="working_days"
+          <Radio  name="dayCountBasis" value="working_days"
             defaultChecked={state.dayCountBasis === 'working_days'} />
           <span>أيام العمل في التقويم (تستثني الراحة والعطلات)</span>
         </label>
         <label className={styles.option}>
-          <input type="radio" name="dayCountBasis" value="calendar_days"
+          <Radio  name="dayCountBasis" value="calendar_days"
             defaultChecked={state.dayCountBasis === 'calendar_days'} />
           <span>أيام تقويمية متتالية</span>
         </label>
@@ -87,27 +87,25 @@ export function ReviseTypeForm({ tenantId, employerId, typeId, detailPath, initi
     <fieldset className={styles.optionGroup} disabled={pending}>
       <legend>النصف يوم</legend>
       <label className={styles.option}>
-        <input type="checkbox" name="halfDay" value="true" defaultChecked={state.halfDay} />
+        <Checkbox  name="halfDay" value="true" defaultChecked={state.halfDay} />
         <span>يُسمح بطلب نصف يوم من هذا النوع</span>
       </label>
     </fieldset>
 
     <div className={styles.formGrid}>
       <div className={styles.field}>
-        <label htmlFor="type-revise-source">مصدر التعديل</label>
-        <input id="type-revise-source" name="source" required maxLength={MAX_SOURCE_LENGTH}
-          defaultValue={state.source} disabled={pending} placeholder="مثال: مراجعة سياسة الإجازات" />
+        <Field id="type-revise-source" label={<>مصدر التعديل</>} required><Input id="type-revise-source" name="source" required maxLength={MAX_SOURCE_LENGTH}
+          defaultValue={state.source} disabled={pending} placeholder="مثال: مراجعة سياسة الإجازات" /></Field>
         <span className="field-hint">يظهر مع الإصدار الجديد في سجل التغييرات.</span>
       </div>
       <div className={styles.field}>
-        <label htmlFor="type-revise-reason">سبب التعديل</label>
-        <input id="type-revise-reason" name="reason" required minLength={MIN_REASON_LENGTH}
-          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} />
+        <Field id="type-revise-reason" label={<>سبب التعديل</>} required><Input id="type-revise-reason" name="reason" required minLength={MIN_REASON_LENGTH}
+          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} /></Field>
         <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
       </div>
     </div>
 
-    {state.error && <p className="form-message form-error" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ حفظ الإصدار الجديد… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">

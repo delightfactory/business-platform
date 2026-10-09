@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { ButtonLink, Disclosure, PageHeader, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -22,25 +22,24 @@ export default async function WorkforceImportPage({ params }: { params: Promise<
   if (!(access.can_manage && access.can_manage_employment && access.can_view_compensation
     && access.can_manage_compensation && access.can_import)) return <Unavailable tenantId={tenantId} />;
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page">
-    <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-    <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
-      <h1>استيراد الموظفين</h1><p>افحص الملف كاملًا، راجع الصفوف، ثم أضف الصفوف التي وافقت عليها دفعة واحدة.</p></div></header>
-    <section className="workspace-form-panel" aria-label="استيراد ملف الموظفين">
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+    <PageHeader title={<>استيراد الموظفين</>} eyebrow={<>الموارد البشرية</>} description={<>افحص الملف كاملًا، راجع الصفوف، ثم أضف الصفوف التي وافقت عليها دفعة واحدة.</>} />
+    <Panel  aria-label="استيراد ملف الموظفين">
       <div className={styles.importGuide}><h2>ابدأ بالقالب المعتمد</h2>
         <p>نزّل القالب واملأ بيانات الموظفين، ثم اختر الملف أدناه لفحصه قبل الإضافة.</p>
-        <a className="secondary-button" href="/templates/workforce-import.csv" download="workforce-import.csv">تنزيل قالب CSV</a>
-        <details><summary className={styles.taskSummary}>صيغة الملف والقيم المقبولة</summary>
+        <a className="ui-button ui-button-ghost ui-button-md" href="/templates/workforce-import.csv" download="workforce-import.csv">تنزيل قالب CSV</a>
+        <Disclosure  summary={<>صيغة الملف والقيم المقبولة</>}>
           <p className={styles.formatHelp}>استخدم UTF-8، واحتفظ بأسماء الأعمدة كما هي. التاريخ بصيغة <bdi>YYYY-MM-DD</bdi>، وطريقة الأجر <bdi>monthly</bdi> أو <bdi>daily</bdi>، والرواتب <bdi>true</bdi> أو <bdi>false</bdi>. المبلغ بالجنيه المصري. أدخل القسم والوظيفة برمزهما؛ لا ينشئ الاستيراد عناصر تنظيمية جديدة.</p>
-        </details>
+        </Disclosure>
       </div>
       <WorkforceImportForm tenantId={tenantId} />
-    </section>
+    </Panel>
   </div></PageFrame>;
 }
 
 function Unavailable({ tenantId }: { tenantId: string }) {
-  return <PageFrame><section className="auth-card"><h1>الاستيراد غير متاح</h1>
+  return <PageFrame><Panel ><h1>الاستيراد غير متاح</h1>
     <p className="intro">تحتاج إلى صلاحيات إدارة الموظفين والتوظيف والأجور واستيراد القوى العاملة، وإلى تفعيل الموارد البشرية لهذه الشركة.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+  </Panel></PageFrame>;
 }

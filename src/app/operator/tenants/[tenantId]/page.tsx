@@ -1,3 +1,5 @@
+import { PageHeader, Badge, Disclosure } from '@/components/ui';
+import { Panel, Message } from '@/components/ui';
 import { Button, ButtonLink, Textarea } from '@/components/ui';
 import Link from 'next/link';
 import { operatorLifecycleSnapshot } from '@/lib/operator-read';
@@ -41,29 +43,29 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
       <header className="topbar">
         <Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <ButtonLink variant="ghost" className="secondary-button" href="/operator/tenants">قائمة الشركات</ButtonLink>
-          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+          <ButtonLink variant="ghost"  href="/operator/tenants">قائمة الشركات</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
         </nav>
       </header>
-      <section className="work-card operator-lifecycle-detail" aria-labelledby="tenant-title">
+      <Panel className="operator-lifecycle-detail" aria-labelledby="tenant-title">
         <p className="eyebrow">إدارة حالة الشركة</p>
-        <h1 id="tenant-title"><bdi>{tenant.tenant_name}</bdi></h1>
-        <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : tenant.lifecycle_state === 'suspended' ? 'is-pending' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+        <PageHeader id="tenant-title" title={<><bdi>{tenant.tenant_name}</bdi></>} />
+        <Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : tenant.lifecycle_state === 'suspended' ? 'is-pending' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge>
         <CompanyTaskLinks tenantId={tenantId} current="lifecycle" lifecycle={true} commercial={operatorPermission(commercial)} />
-        {((query.state === 'updated' && (!query.to || query.to === tenant.lifecycle_state)) || query.state === 'active' || query.state === 'suspended' || query.state === 'archived') && <p className="form-message" role="status">راجع حالة الشركة الحالية والإجراءات المتاحة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+        {((query.state === 'updated' && (!query.to || query.to === tenant.lifecycle_state)) || query.state === 'active' || query.state === 'suspended' || query.state === 'archived') && <Message tone="info"  role="status">راجع حالة الشركة الحالية والإجراءات المتاحة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</Message>}
         <p className="intro">اختر الإجراء المناسب. سيتطلب تأكيده سببًا ويُسجل التغيير للمراجعة.</p>
-        {query.state === 'stale' && <p className="form-message capacity-message" role="alert">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</p>}
+        {query.state === 'stale' && <Message tone="info" className="capacity-message" role="alert">تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية قبل اختيار إجراء جديد.</Message>}
         {query.state && !['stale', 'updated', 'active', 'suspended', 'archived'].includes(query.state)
-          && <p className="form-message form-error" role="alert">{messageFor(query.state)}</p>}
+          && <Message tone="bad"  role="alert">{messageFor(query.state)}</Message>}
         {query.state === 'updated' && query.to && query.to !== tenant.lifecycle_state
-          && <p className="form-message capacity-message" role="status">الحالة الحالية لا تطابق الحالة المطلوبة في الرابط. راجعها قبل اختيار إجراء جديد.</p>}
+          && <Message tone="info" className="capacity-message" role="status">الحالة الحالية لا تطابق الحالة المطلوبة في الرابط. راجعها قبل اختيار إجراء جديد.</Message>}
         <h2>الإجراءات المتاحة</h2>
         <div className="lifecycle-choice-list">
           {transitions.map((transition) => (
             <article className="lifecycle-choice" key={transition.target}>
               <div><h3>{transition.label}</h3><p>{transition.description}</p></div>
-              <details className="role-change-confirmation">
-              <summary className={`secondary-button ${transition.target === 'archived' ? 'danger-action' : ''}`}>متابعة {transition.label}</summary>
+              <Disclosure summary={<>متابعة {transition.label}</>} className="role-change-confirmation">
+
               <p className="field-hint">سيُطبق هذا الإجراء على <bdi>{tenant.tenant_name}</bdi>.</p>
               <OperatorActionForm action={changeTenantLifecycleAction} errorMessages={lifecycleErrors} className="auth-form compact-form" buttonClassName={transition.target === 'archived' ? 'danger-button' : 'primary-button'} label={`تأكيد ${transition.label} وتسجيل السبب`}>
                 <input type="hidden" name="tenantId" value={tenant.tenant_id} />
@@ -72,11 +74,11 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
                 <label htmlFor={`reason-${transition.target}`}>سبب الإجراء</label>
                 <Textarea id={`reason-${transition.target}`} name="reason" required minLength={3} maxLength={500} rows={3} />
               </OperatorActionForm>
-              </details>
+              </Disclosure>
             </article>
           ))}
         </div>
-      </section>
+      </Panel>
 
     </main>
   );
@@ -120,6 +122,6 @@ const lifecycleErrors: Record<string, string> = {
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator/tenants">قائمة الشركات</Link></header>
-    <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">إدارة حالة الشركات</p>
-      <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section></main>;
+    <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">إدارة حالة الشركات</p>
+      <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel></main>;
 }

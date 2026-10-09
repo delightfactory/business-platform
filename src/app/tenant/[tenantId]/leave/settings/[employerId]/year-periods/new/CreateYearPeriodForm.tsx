@@ -1,5 +1,6 @@
 'use client';
 
+import { Field, Input, Message, Select } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState, useState } from 'react';
 import { useId } from 'react';
@@ -33,11 +34,10 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
     <input type="hidden" name="employerId" value={employerId} />
 
     <div className={styles.field}>
-      <label htmlFor="period-calendar">تقويم فترة الإجازة</label>
-      <select id="period-calendar" name="calendarId" value={selected} required disabled={pending}
+      <Field id="period-calendar" label={<>تقويم فترة الإجازة</>} required><Select id="period-calendar" name="calendarId" value={selected} required disabled={pending}
         onChange={(event) => setSelected(event.target.value)}>
         {calendars.map((calendar) => <option key={calendar.id} value={calendar.id}>{calendar.name}</option>)}
-      </select>
+      </Select></Field>
       <span className="field-hint">
         {coverage
           ? `تغطية التقويم: ${coverage.coverageText}. يجب أن تقع فترة الإجازة كاملة داخل هذه التغطية.`
@@ -47,33 +47,29 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
 
     <div className={styles.formGrid}>
       <div className={styles.field}>
-        <label htmlFor="period-starts">بداية الفترة</label>
-        <input id="period-starts" name="startsOn" type="date" required
-          defaultValue={state.startsOn} disabled={pending} />
+        <Field id="period-starts" label={<>بداية الفترة</>} required><Input id="period-starts" name="startsOn" type="date" required
+          defaultValue={state.startsOn} disabled={pending} /></Field>
         <span className="field-hint">أول يوم مشمول داخل الفترة.</span>
       </div>
       <div className={styles.field}>
-        <label htmlFor="period-ends">نهاية الفترة</label>
-        <input id="period-ends" name="endsOn" type="date" required
-          defaultValue={state.endsOn} disabled={pending} />
+        <Field id="period-ends" label={<>نهاية الفترة</>} required><Input id="period-ends" name="endsOn" type="date" required
+          defaultValue={state.endsOn} disabled={pending} /></Field>
         <span className="field-hint">آخر يوم مشمول في سنة الرصيد.</span>
       </div>
     </div>
 
     <div className={styles.field}>
-      <label htmlFor="period-label">اسم الفترة</label>
-      <input id="period-label" name="label" required maxLength={MAX_LABEL_LENGTH}
-        defaultValue={state.label} disabled={pending} placeholder="مثال: إجازات 2027" />
+      <Field id="period-label" label={<>اسم الفترة</>} required><Input id="period-label" name="label" required maxLength={MAX_LABEL_LENGTH}
+        defaultValue={state.label} disabled={pending} placeholder="مثال: إجازات 2027" /></Field>
     </div>
 
     <div className={styles.field}>
-      <label htmlFor="period-reason">سبب الإنشاء</label>
-      <input id="period-reason" name="reason" required minLength={MIN_REASON_LENGTH}
-        maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} />
+      <Field id="period-reason" label={<>سبب الإنشاء</>} required><Input id="period-reason" name="reason" required minLength={MIN_REASON_LENGTH}
+        maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} /></Field>
       <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
     </div>
 
-    {state.error && <p className="form-message form-error" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ إنشاء الفترة…</p>}
 
     <div className="workspace-form-actions">

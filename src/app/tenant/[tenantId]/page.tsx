@@ -1,3 +1,5 @@
+import { PageHeader } from '@/components/ui';
+import { Panel, Badge, Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
@@ -45,13 +47,13 @@ export default async function TenantPage({ params, searchParams }: {
     return (
       <main className="app-shell">
         {query.state === 'admin-demoted' && <FeedbackToast key={crypto.randomUUID()} message="تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة." />}
-        <section className="work-card" aria-labelledby="tenant-title">
-          <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><h1 id="tenant-title">اليوم</h1>
+        <Panel  aria-labelledby="tenant-title">
+          <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><PageHeader id="tenant-title" title={<>اليوم</>} />
           <p className="intro">ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
           <TodaySections model={today} />
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
-        </section>
+        </Panel>
         <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
       </main>
     );
@@ -74,8 +76,8 @@ export default async function TenantPage({ params, searchParams }: {
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
           <p className="eyebrow"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></p>
-          <div className="tenant-home-title"><h1 id="tenant-title">اليوم</h1>
-            <span className="entity-status is-active">{lifecycleText(snapshot.lifecycle_state)}</span></div>
+          <div className="tenant-home-title"><PageHeader id="tenant-title" title={<>اليوم</>} />
+            <Badge className="is-active">{lifecycleText(snapshot.lifecycle_state)}</Badge></div>
           <p>ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
         </header>
         <TodaySections model={today} />
@@ -133,15 +135,15 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
       <header className="topbar">
         <Link className="brand" href="/">منصة الأعمال</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
         </nav>
       </header>
-      <section className="auth-card" aria-labelledby="tenant-status-title">
+      <Panel className="auth-card" aria-labelledby="tenant-status-title">
         <p className="eyebrow">مساحة الشركة</p>
-        <h1 id="tenant-status-title">{title}</h1>
+        <PageHeader id="tenant-status-title" title={<>{title}</>} />
         <p className="intro">{detail}</p>
-        {showSwitch && <Link className="secondary-button" href="/tenant/select">اختر شركة أخرى</Link>}
-      </section>
+        {showSwitch && <ButtonLink variant="ghost"  href="/tenant/select">اختر شركة أخرى</ButtonLink>}
+      </Panel>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>
   );

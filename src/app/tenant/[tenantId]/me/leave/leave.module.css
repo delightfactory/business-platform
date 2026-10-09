@@ -24,8 +24,8 @@
   margin: 1.5rem auto 3rem;
 }
 
-:global(.workspace-frame) .detailPage > :global(.work-card),
-:global(.workspace-frame) .detailPage > :global(.work-card):first-of-type {
+:global(.workspace-frame) .detailPage > :global(:is(.work-card,.ui-panel)),
+:global(.workspace-frame) .detailPage > :global(:is(.work-card,.ui-panel)):first-of-type {
   width: 100%;
   min-width: 0;
   margin: 0;
@@ -91,7 +91,7 @@
   list-style: none;
 }
 
-.overviewList > :global(.record-card) {
+.overviewList > :global(:is(.record-card,.ui-record)) {
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -119,8 +119,8 @@
 .dailyBalanceHeading p { margin: .3rem 0 0; }
 .dailyBalanceItem { border-top: 1px solid var(--line); padding-top: 1rem; margin-top: 1rem; }
 .dailyBalanceItem small { font-size: .8rem; color: var(--muted); font-family: var(--f-body); }
-.overviewList > :global(.record-card) { padding: 1rem 1.4rem; border-bottom: 1px solid var(--line); }
-.overviewList > :global(.record-card):last-child { border-bottom: 0; }
+.overviewList > :global(:is(.record-card,.ui-record)) { padding: 1rem 1.4rem; border-bottom: 1px solid var(--line); }
+.overviewList > :global(:is(.record-card,.ui-record)):last-child { border-bottom: 0; }
 .overviewList :global(.record-title-row) { align-items: baseline; }
 .overviewList :global(.record-title-row) h3 { margin: 0; font-size: .95rem; }
 .formTitle { display: flex; align-items: center; gap: .6rem; color: var(--brand-text); }
@@ -223,9 +223,9 @@
 }
 
 /* Non-interactive pending leave actions: retain readable text and existing geometry. */
-.disabledAction:global(.secondary-button),
-.disabledAction:global(.secondary-button):hover,
-.disabledAction:global(.secondary-button):active {
+.disabledAction:global(:is(.secondary-button,.ui-button-ghost)),
+.disabledAction:global(:is(.secondary-button,.ui-button-ghost)):hover,
+.disabledAction:global(:is(.secondary-button,.ui-button-ghost)):active {
   color: var(--text-muted);
   background: var(--surface-subtle);
   border-color: var(--color-control-border);

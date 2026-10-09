@@ -1,3 +1,4 @@
+import { Button, ButtonLink, Disclosure, Input, Message, PageHeader, Panel, RecordCard, Select, Field } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {EmployerSelector} from './EmployerSelector';
 import {normalizeEmployerScope} from './employer-context';
@@ -34,7 +35,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const employerDestination=normalizeEmployerScope(path,'workspace',query);if(employerDestination)redirect(employerDestination);
   const kept = Object.fromEntries(Object.entries(query).filter((entry): entry is [string, string] => typeof entry[1] === 'string'));
   const retry = `${path}?${new URLSearchParams(kept)}`;
-  const failure = (text: string) => <PageFrame><section dir="rtl" className={styles.card}><h1>الرواتب</h1><p role="alert">{text}</p><p>اختيارات الجهة والفترة محفوظة في الرابط.</p><Link className="secondary-button" href={retry}>إعادة المحاولة</Link></section></PageFrame>;
+  const failure = (text: string) => <PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>الرواتب</>} /><Message tone="bad" role="alert">{text}</Message><p>اختيارات الجهة والفترة محفوظة في الرابط.</p><ButtonLink variant="ghost"  href={retry}>إعادة المحاولة</ButtonLink></Panel></PageFrame>;
   if (['employer', 'period', 'after_id'].some(key => query[key] && !uuid(query[key]!)) || (query.q?.length ?? 0) > 120 || (query.review_q?.length ?? 0) > 120) return failure('راجع رابط الجهة والفترة وعبارة البحث.');
   if (query.stage === 'setup' || query.before) redirect(`${path}/setup?${new URLSearchParams(kept)}`);
   const client = await createSupabaseServerClient();
@@ -48,9 +49,9 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const employers = found.data.items as Employer[], employer = query.employer || found.data.unique_employer || '';
   const scope = (suffix: string, extra: Record<string, string> = {}) => `${path}${suffix}?${new URLSearchParams({ ...(employer ? { employer } : {}), ...(query.period ? { period: query.period } : {}), ...(query.review_q ? { q: query.review_q } : {}), ...extra })}`;
   if (!employer) return <PageFrame><div dir="rtl" className={styles.workspace}>
-    <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>رواتب أي جهة ستراجع؟</h1><p>لكل جهة دورة ومسيرات مستقلة. اختر الجهة للمتابعة.</p></header>
-    <form method="get" className={styles.filters}><label htmlFor="payroll-employer-search">البحث عن جهة<input id="payroll-employer-search" name="q" maxLength={120} defaultValue={query.q ?? ''}/></label><button className="secondary-button">بحث</button></form>
-    {employers.length ? <ul className={styles.periods}>{employers.map(item => <li className={styles.card} key={item.id}><Link href={`${path}?${new URLSearchParams({ employer: item.id })}`}>{item.name}</Link></li>)}</ul> : <p>لا توجد جهات مطابقة. عدّل البحث أو راجع مسؤول الشركة.</p>}
+    <div><p className="eyebrow">مساحة الشركة · الرواتب</p><PageHeader  title={<>رواتب أي جهة ستراجع؟</>} description={<> لكل جهة دورة ومسيرات مستقلة. اختر الجهة للمتابعة. </>} /></div>
+    <form method="get" className={styles.filters}><Field  id="payroll-employer-search" label={<>البحث عن جهة</>}><Input id="payroll-employer-search" name="q" maxLength={120} defaultValue={query.q ?? ''}/></Field><Button variant="ghost" type="submit" >بحث</Button></form>
+    {employers.length ? <ul className={styles.periods}>{employers.map(item => <RecordCard className={styles.card} key={item.id}><Link href={`${path}?${new URLSearchParams({ employer: item.id })}`}>{item.name}</Link></RecordCard>)}</ul> : <p>لا توجد جهات مطابقة. عدّل البحث أو راجع مسؤول الشركة.</p>}
     {employers.length === 30 && <Link href={`${path}?${new URLSearchParams({ q: query.q ?? '', after_name: employers[29].name, after_id: employers[29].id })}`}>جهات إضافية</Link>}
   </div></PageFrame>;
   const loaded = await client.rpc('payroll_workspace', { p_tenant: tenantId, p_employer: employer, p_limit: 24 });
@@ -107,22 +108,22 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       else if (work.access.can_view_final) primary = { href: scope('/output', { output: work.final_output_id }), label: 'عرض المسير النهائي' };
     }
   }
-  const primaryAction = (work || periods.length === 0) && <Link className="primary-button" href={primary.href}>{primary.label}</Link>;
+  const primaryAction = (work || periods.length === 0) && <ButtonLink  href={primary.href}>{primary.label}</ButtonLink>;
   return <PageFrame><div dir="rtl" className={styles.workspace}>
-    <header><p className="eyebrow">مساحة الشركة · الرواتب</p><h1>الرواتب</h1>
-      <p>{calendar.employer_name}</p>
+    <div><p className="eyebrow">مساحة الشركة · الرواتب</p><PageHeader  title={<>الرواتب</>} description={<> {calendar.employer_name} </>} />
+
       <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={{...query,period:periodId}} singleEmployer={found.data.unique_employer===employer}/>
       <Link href={path}>اختيار جهة أخرى</Link>
       <p className="field-hint">للبحث أو عرض بقية الجهات، افتح اختيار جهة أخرى.</p>
-    </header>
+    </div>
     {periods.length > 0 && <form method="get" className={styles.filters}><input type="hidden" name="employer" value={employer}/>{query.review_q && <input type="hidden" name="review_q" value={query.review_q}/>}
-      <label htmlFor="payroll-period">فترة الرواتب<select id="payroll-period" name="period" defaultValue={periodId} required>
+      <Field  id="payroll-period" label={<>فترة الرواتب</>}><Select id="payroll-period" name="period" defaultValue={periodId} required>
         {!periodId && <option value="" disabled>اختر فترة الرواتب</option>}
         {work && !periods.some(item => item.id === periodId) && <option value={periodId}>{displayDate(work.period.starts_on)} — {displayDate(work.period.ends_on)}</option>}
         {periods.map(item => <option key={item.id} value={item.id}>{displayDate(item.starts_on)} — {displayDate(item.ends_on)}</option>)}
-      </select></label><button className={work ? 'secondary-button' : 'primary-button'}>عرض الفترة</button></form>}
-    {!calendar.access.enabled && <p role="status">خدمة الرواتب غير مفعلة لإجراءات جديدة. يمكنك متابعة التاريخ والالتزامات القائمة حسب صلاحياتك.</p>}
-    <section className={styles.card} aria-labelledby="payroll-stage"><h2 id="payroll-stage">{status}</h2>
+      </Select></Field><Button variant={work ? "ghost" : "solid"} type="submit" className={work ? '' : ''}>عرض الفترة</Button></form>}
+    {!calendar.access.enabled && <Message tone="info" role="status">خدمة الرواتب غير مفعلة لإجراءات جديدة. يمكنك متابعة التاريخ والالتزامات القائمة حسب صلاحياتك.</Message>}
+    <Panel className={styles.card} aria-labelledby="payroll-stage"><h2 id="payroll-stage">{status}</h2>
       {work ? <p>{displayDate(work.period.starts_on)} — {displayDate(work.period.ends_on)}{work.period.is_transition ? ' · فترة انتقالية' : ''}</p> : <p>{periods.length ? 'لم تُحدَّد فترة حالية من التواريخ المحفوظة المعروضة. اختر فترة صراحةً؛ لن يبدأ التحضير في فترة مستقبلية تلقائيًا.' : calendar.access.can_view ? 'جهّز الدورة وفترتها الأولى، ثم ابدأ تحضير المدخلات.' : 'يمكنك مراجعة إعداد الدورة. مراجعة المسيرات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب.'}</p>}
       {stale && <p>راجع المصادر المتغيرة وأعد الحساب قبل الاعتماد. القيم المعروضة محفوظة من الحساب السابق للمراجعة.</p>}
       {candidate && primaryAction}
@@ -131,22 +132,22 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول مخوّل بعرض الرواتب أو تسجيل الدفعات.'}</p>}
       {!candidate && primaryAction}
       <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work}/>
-    </section>
-    {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <section className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>هذه مراجعات على مستوى الفترة. راجع تفاصيل الموظفين في مراجعة الرواتب؛ لا تعرض هذه القائمة جميع موانعهم.</p>
-      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><details>
-        <summary>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></summary>
+    </Panel>
+    {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <Panel className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>هذه مراجعات على مستوى الفترة. راجع تفاصيل الموظفين في مراجعة الرواتب؛ لا تعرض هذه القائمة جميع موانعهم.</p>
+      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><Disclosure summary={<>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></>}>
+
         <p>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</p>
-      </details><p className="field-hint">الجهة المسؤولة: {issueResponsibility(item.owner)}</p><Link className="secondary-button" href={action.href}>{action.label}</Link></li>; })}</ul>}
+      </Disclosure><p className="field-hint">الجهة المسؤولة: {issueResponsibility(item.owner)}</p><ButtonLink variant="ghost"  href={action.href}>{action.label}</ButtonLink></li>; })}</ul>}
       {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
-    </section>}
-    {work && !final && <Suspense fallback={<p role="status">جارٍ التحقق من تنبيه الإضافي؛ يمكنك متابعة مراجعة الرواتب.</p>}><OvertimeNotice tenantId={tenantId} employer={employer} period={work.period} query={query}/></Suspense>}
-    {work && final && work.final_output_id && <Suspense fallback={<p role="status">جارٍ التحقق من حالة الصرف المسجل؛ يمكنك متابعة مراجعة المسير.</p>}><RecordedPaymentNotice tenantId={tenantId} employer={employer} output={work.final_output_id} period={work.period} query={query}/></Suspense>}
-    <details className={styles.card}><summary>المدخلات وإعداد الدورة والفترات السابقة</summary>
+    </Panel>}
+    {work && !final && <Suspense fallback={<Message tone="info" role="status">جارٍ التحقق من تنبيه الإضافي؛ يمكنك متابعة مراجعة الرواتب.</Message>}><OvertimeNotice tenantId={tenantId} employer={employer} period={work.period} query={query}/></Suspense>}
+    {work && final && work.final_output_id && <Suspense fallback={<Message tone="info" role="status">جارٍ التحقق من حالة الصرف المسجل؛ يمكنك متابعة مراجعة المسير.</Message>}><RecordedPaymentNotice tenantId={tenantId} employer={employer} output={work.final_output_id} period={work.period} query={query}/></Suspense>}
+    <Disclosure summary={<>المدخلات وإعداد الدورة والفترات السابقة</>} className={styles.card}>
       {calendar.access.can_view && work && <p><Link href={inputsLink}>مدخلات الفترة ومراجعتها</Link></p>}
       <p><Link href={setupLink}>دورة الجهة والفترات المحفوظة</Link></p>
       {!navigation.error && navigation.data?.can_view_advances === true && <p><Link href={`${path}/advances?${new URLSearchParams({ employer })}`}>سلف موظفي الجهة وأقساطها</Link></p>}
       {!navigation.error && navigation.data?.can_view_reports === true && <p><Link href={`${path}/reports?${new URLSearchParams({ employer, report: navigation.data.report_kind === 'advances' ? 'advances' : 'sheet', ...(navigation.data.report_kind !== 'advances' && work?.final_output_id ? { output: work.final_output_id } : {}) })}`}>التقارير المحفوظة للجهة</Link></p>}
       {periods.length === 24 && <p><Link href={scope('/runs', { before: periods[23].starts_on, period: '' })}>فترات أقدم</Link></p>}
-    </details>
+    </Disclosure>
   </div></PageFrame>;
 }

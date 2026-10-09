@@ -1,3 +1,4 @@
+import { Panel, PageHeader } from '@/components/ui';
 import { Button } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -25,11 +26,11 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
-      <section className="auth-card" aria-labelledby="callback-title">
+      <Panel className="auth-card" aria-labelledby="callback-title">
         <p className="eyebrow">دعوة مسؤول الشركة</p>
-        <h1 id="callback-title">تابع قبول الدعوة</h1>
+        <PageHeader id="callback-title" title={<>تابع قبول الدعوة</>} />
         {valid ? (
           <>
             <p className="intro">اضغط للمتابعة والتحقق من الرابط. لن تُنشأ الشركة قبل تأكيدك في الخطوة التالية.</p>
@@ -44,7 +45,7 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
         ) : (
           <p className="intro" role="alert">{stateMessage(params.state)}</p>
         )}
-      </section>
+      </Panel>
 
     </main>
   );

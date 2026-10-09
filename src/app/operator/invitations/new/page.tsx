@@ -1,3 +1,5 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
@@ -24,12 +26,12 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
     <div className="workspace-form-page operator-invitation-form-page">
       <Link className="back-link" href="/operator/invitations">العودة إلى الدعوات</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">دعوات الشركات</p>
-        <h1>دعوة مسؤول لشركة جديدة</h1>
+        <PageHeader  title={<>دعوة مسؤول لشركة جديدة</>} />
         <p>أدخل بيانات الشركة ومسؤولها الأول وحدود الاستخدام. ستُنشأ الشركة بعد قبول الدعوة.</p></div></header>
-      {query.state && <p className="form-message form-error" role="alert">{query.state === 'invalid'
+      {query.state && <Message tone="bad"  role="alert">{query.state === 'invalid'
         ? 'تحقق من البريد والبيانات والحدود، ثم حاول مجددًا.'
         : query.state === 'setup' ? 'خدمة الدعوات غير متاحة حاليًا. حاول لاحقًا.'
-          : <>الرابط وحده لا يؤكد نتيجة إنشاء الدعوة أو إرسالها. <Link href="/operator/invitations">راجع الدعوات الحالية</Link> قبل إنشاء دعوة أخرى.</>}</p>}
+          : <>الرابط وحده لا يؤكد نتيجة إنشاء الدعوة أو إرسالها. <Link href="/operator/invitations">راجع الدعوات الحالية</Link> قبل إنشاء دعوة أخرى.</>}</Message>}
       <InvitationForm requestKey={crypto.randomUUID()} />
       <p className="workspace-alternate-path">هل لدى المسؤول حساب مؤكد بالفعل؟ <Link href="/operator/onboarding">إعداد الشركة لهذا الحساب</Link></p>
     </div>
@@ -37,8 +39,8 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
 }
 
 function Status({ detail = 'تحقق من صلاحية إعداد الشركات أو أعد المحاولة لاحقًا.' }: { detail?: string } = {}) {
-  return <PageFrame><section className="auth-card"><h1>الدعوة غير متاحة</h1>
+  return <PageFrame><Panel className="auth-card"><PageHeader  title={<>الدعوة غير متاحة</>} />
     <p className="intro">{detail}</p>
-    <ButtonLink variant="ghost" className="secondary-button" href="/operator/invitations">العودة إلى الدعوات</ButtonLink>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href="/operator/invitations">العودة إلى الدعوات</ButtonLink>
+  </Panel></PageFrame>;
 }

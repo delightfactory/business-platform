@@ -1,3 +1,5 @@
+import { PageHeader, Badge } from '@/components/ui';
+import { Message, Panel } from '@/components/ui';
 import { Button, ButtonLink } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -52,19 +54,19 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
     <main className="app-shell">
       <header className="topbar">
         <Link className="brand" href="/operator">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
       <header className="workspace-page-heading"><div><p className="eyebrow">إعداد الشركات</p>
-        <h1 id="invite-title">دعوات مسؤولي الشركات</h1>
+        <PageHeader id="invite-title" title={<>دعوات مسؤولي الشركات</>} />
         <p>تابع حالة الدعوات. تُنشأ الشركة عند قبول المسؤول الأول للدعوة.</p></div>
-        <ButtonLink variant="solid" className="primary-button" href="/operator/invitations/new">دعوة مسؤول جديد</ButtonLink>
+        <ButtonLink variant="solid"  href="/operator/invitations/new">دعوة مسؤول جديد</ButtonLink>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
-        {selectedNotice && <p className="form-message form-error" role="alert">{selectedNotice} <ButtonLink variant="ghost" className="secondary-button" href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</ButtonLink></p>}
-        {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></p>}
-        {params.state && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage()} <a href="#history-title">راجع حالة الدعوات</a></p>}
+        {selectedNotice && <Message tone="bad"  role="alert">{selectedNotice} <ButtonLink variant="ghost"  href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</ButtonLink></Message>}
+        {reviewMessage && <Message tone="info"  role="status">{reviewMessage} <a href="#history-title">راجع حالة الدعوات</a></Message>}
+        {params.state && !reviewMessage && <Message tone="bad"  role="alert">{stateMessage()} <a href="#history-title">راجع حالة الدعوات</a></Message>}
       </section>
-      <section className="work-card invitation-list operator-invitations-history" aria-labelledby="history-title">
+      <Panel className="invitation-list operator-invitations-history" aria-labelledby="history-title">
         <h2 id="history-title">الدعوات وحالتها</h2>
         <OperatorListControls basePath="/operator/invitations" search={search} page={page} matchingCount={matchingCount} searchLabel="البحث باسم الشركة أو البريد" inputId="invitation-search" />
         {visibleRows.length === 0 ? <p className="intro">{matchingCount ? 'لا توجد نتائج في هذه الصفحة.' : 'لا توجد دعوات مطابقة.'}</p> : (
@@ -75,7 +77,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   {row.id === selected?.id && <p className="field-hint">الدعوة المحددة في الرابط</p>}
                   <h3>{row.tenant_name}</h3>
                   <p><bdi>{row.target_email}</bdi></p>
-                  <p className={`entity-status ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</p>
+                  <Badge as="p" className={` ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</Badge>
                   {row.lifecycle_state === 'pending' && <p>{deliveryText(row.delivery_state)}</p>}
                   {row.lifecycle_state === 'pending' && <p className="field-hint">{row.delivery_state === 'failed'
                     ? 'تعذر الإرسال المسجل لهذه الدعوة. إذا اخترت إعادة الإرسال، يُنشأ رابط جديد ويبطل الرابط السابق.'
@@ -88,11 +90,11 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   <div className="invitation-actions">
                     <OfflineForm action={reissueInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <OfflineSubmitButton className="secondary-button" label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
+                      <OfflineSubmitButton variant="ghost"  label="إعادة إرسال دعوة جديدة" pendingLabel="جارٍ الإرسال…" />
                     </OfflineForm>
                     <OfflineForm action={revokeInvitationAction}>
                       <input type="hidden" name="invitationId" value={row.id} />
-                      <OfflineSubmitButton className="secondary-button" label="إلغاء الدعوة" />
+                      <OfflineSubmitButton variant="ghost"  label="إلغاء الدعوة" />
                     </OfflineForm>
                   </div>
                 )}
@@ -100,7 +102,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
             ))}
           </ul>
         )}
-      </section>
+      </Panel>
 
     </main>
   );
@@ -125,9 +127,9 @@ function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
-      <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p></section>
+      <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
     </main>
   );
 }

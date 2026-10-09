@@ -1,5 +1,6 @@
 'use client';
 
+import { Textarea, Message } from '@/components/ui';
 import styles from '../leave.module.css';
 
 import { useActionState, useState, type ChangeEvent } from 'react';
@@ -37,11 +38,11 @@ export function RequestCancellationForm({ tenantId, requestId, expectedVersion, 
     <input type="hidden" name="expectedVersion" value={expectedVersion} />
     <input type="hidden" name="idempotencyKey" value={operationKey} />
     <label htmlFor="cancellation-reason">سبب طلب الإلغاء</label>
-    <textarea id="cancellation-reason" name="reason" required minLength={3} maxLength={500}
+    <Textarea id="cancellation-reason" name="reason" required minLength={3} maxLength={500}
       value={reason} onChange={handleReasonChange} disabled={pending}
       aria-invalid={Boolean(submitState.error)} aria-describedby="cancellation-reason-hint" />
     <p id="cancellation-reason-hint" className="field-hint">وضح السبب في 3 إلى 500 حرف. يبقى طلب الإجازة معتمدًا حتى قرار الموارد البشرية.</p>
-    {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
+    {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ إرسال طلب الإلغاء… لا تغلق الصفحة ولا تغيّر السبب.</p>}
     <div className="workspace-form-actions">
       <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="إرسال طلب الإلغاء" pendingLabel="جارٍ الإرسال…" />

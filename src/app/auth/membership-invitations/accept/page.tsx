@@ -1,3 +1,5 @@
+import { Panel, PageHeader } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -23,12 +25,12 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const passwordHint = ['password-set', 'password', 'marker-failed'].includes(query.state ?? '');
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></header>
-      <section className="auth-card" aria-labelledby="accept-title">
-        <p className="eyebrow">دعوة عضو</p><h1 id="accept-title">الانضمام إلى الشركة</h1>
+      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+      <Panel className="auth-card" aria-labelledby="accept-title">
+        <p className="eyebrow">دعوة عضو</p><PageHeader id="accept-title" title={<>الانضمام إلى الشركة</>} />
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. سيُمنح حسابك دور «عضو» بعد تأكيد القبول.</p>
-        {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة قبول الدعوة.'}</p>}
-        {query.state && !passwordHint && <p className="form-message" role="alert">{validationMessage(validation, query.state)}</p>}
+        {passwordHint && <Message tone="info"  role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة قبول الدعوة.'}</Message>}
+        {query.state && !passwordHint && <Message tone="info"  role="alert">{validationMessage(validation, query.state)}</Message>}
         {needsPassword ? <OfflineForm className="auth-form" action={setMemberInvitationPasswordAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
           <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><Input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
@@ -38,7 +40,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
           <OfflineSubmitButton label="قبول الدعوة" pendingLabel="جارٍ القبول…" />
         </OfflineForm>}
-      </section>
+      </Panel>
     </main>
   );
 }
@@ -59,5 +61,5 @@ function validationMessage(validation: unknown, state?: string) {
   return 'تعذر التحقق من حالة الدعوة. اطلب من مسؤول الشركة مراجعتها قبل المتابعة.';
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><ButtonLink variant="solid" className="primary-button" href="/auth/login">العودة إلى الدخول</ButtonLink></section></main>;
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid"  href="/auth/login">العودة إلى الدخول</ButtonLink></Panel></main>;
 }

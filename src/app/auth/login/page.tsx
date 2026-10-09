@@ -1,3 +1,5 @@
+import { Panel, PageHeader } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -29,11 +31,11 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <Link className="brand" href="/">منصة الأعمال</Link>
 
       </header>
-      <section className="auth-card" aria-labelledby="login-title">
+      <Panel className="auth-card" aria-labelledby="login-title">
         <p className="eyebrow">الدخول إلى المنصة</p>
-        <h1 id="login-title">تسجيل الدخول</h1>
+        <PageHeader id="login-title" title={<>تسجيل الدخول</>} />
         <p className="intro">استخدم البريد الإلكتروني وكلمة المرور المرتبطين بحسابك.</p>
-        {message && <p className="form-message" role="status">{message}</p>}
+        {message && <Message tone="info"  role="status">{message}</Message>}
         <OfflineForm action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>
@@ -44,7 +46,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         </OfflineForm>
         <p className="auth-links"><Link href="/auth/forgot-password">نسيت كلمة المرور؟</Link></p>
         <p className="foundation-note">إنشاء الحسابات غير متاح من هذه الصفحة.</p>
-      </section>
+      </Panel>
 
     </main>
   );

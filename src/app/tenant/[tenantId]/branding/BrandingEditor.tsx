@@ -1,4 +1,5 @@
 'use client';
+import { Message, FileInput, Checkbox } from '@/components/ui';
 import { Button, Input, Select, Textarea } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -73,7 +74,7 @@ export function BrandingEditor({
         <p className="field-hint">سيظهر الاسم واللون في مساحة الشركة. يظل الاسم القانوني للكيان منفصلًا.</p>
       </section>
 
-      {!canManage ? <p className="form-message" role="status">تغيير الهوية متاح لمسؤول الشركة فقط.</p> : (
+      {!canManage ? <Message tone="info"  role="status">تغيير الهوية متاح لمسؤول الشركة فقط.</Message> : (
         <form onSubmit={submit} className="auth-form" aria-busy={pending}>
           <input type="hidden" name="tenantId" value={tenantId} />
           <label htmlFor="tenant-brand-name">اسم العرض</label>
@@ -94,7 +95,7 @@ export function BrandingEditor({
           <label htmlFor="tenant-brand-logo">الشعار</label>
           <p className="field-hint" id="tenant-brand-logo-help">اختر صورة PNG أو JPG أو WebP بحجم لا يتجاوز 2 ميجابايت.</p>
           <div className="branding-file-picker">
-            <input ref={fileInput} className="branding-file-input" id="tenant-brand-logo" name="logo" type="file"
+            <FileInput ref={fileInput} className="branding-file-input" id="tenant-brand-logo" name="logo"
               accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp"
               aria-describedby="tenant-brand-logo-help tenant-brand-logo-selection"
             onChange={(event) => {
@@ -104,22 +105,22 @@ export function BrandingEditor({
               setPreviewUrl(nextFile ? URL.createObjectURL(nextFile) : null);
             }} />
             <label className="secondary-button branding-file-trigger" htmlFor="tenant-brand-logo">اختيار ملف الشعار</label>
-            {file && <button className="secondary-button branding-file-clear" type="button" onClick={clearSelectedFile}
-              aria-label={`إلغاء اختيار ملف ${file.name}`}>إلغاء الاختيار</button>}
+            {file && <Button variant="ghost" className="branding-file-clear" type="button" onClick={clearSelectedFile}
+              aria-label={`إلغاء اختيار ملف ${file.name}`}>إلغاء الاختيار</Button>}
             <span className="branding-file-name" id="tenant-brand-logo-selection" role="status" aria-live="polite" aria-atomic="true">
               {file?.name ?? (hasStoredLogo ? 'سيبقى الشعار الحالي كما هو.' : 'لم يتم اختيار ملف.')}
             </span>
           </div>
-          {hasStoredLogo && <label className="check-option"><input name="removeLogo" type="checkbox" checked={removeLogo}
+          {hasStoredLogo && <label className="check-option"><Checkbox name="removeLogo"  checked={removeLogo}
             disabled={Boolean(file)} onChange={(event) => setRemoveLogo(event.currentTarget.checked)} />إزالة الشعار من العرض</label>}
-          {hasStoredLogo && !logoUrl && <p className="form-message" role="status">تعذرت معاينة الشعار الحالي؛ يمكنك استبداله أو إزالة عرضه.</p>}
+          {hasStoredLogo && !logoUrl && <Message tone="info"  role="status">تعذرت معاينة الشعار الحالي؛ يمكنك استبداله أو إزالة عرضه.</Message>}
           {hasStoredLogo && <p className="field-hint">سيبقى الشعار السابق محفوظًا عند تغييره أو إزالته من العرض.</p>}
 
           <label htmlFor="tenant-brand-reason">سبب التغيير</label>
           <Textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
             value={reason} onChange={(event) => setReason(event.currentTarget.value)} />
-          {error && <p className="form-message form-error" role="alert">{error}</p>}
-          <Button variant="solid" className="primary-button" type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
+          {error && <Message tone="bad"  role="alert">{error}</Message>}
+          <Button variant="solid"  type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
             {pending && <span className="button-spinner" aria-hidden="true" />}
             {pending ? 'جارٍ الحفظ…' : 'حفظ الهوية'}
           </Button>

@@ -1,4 +1,6 @@
-import Link from 'next/link';
+import { Avatar, Icon, Badge } from '@/components/ui';
+import { PageHeader } from '@/components/ui';
+import { ButtonLink, Button, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -9,31 +11,33 @@ type TenantOption = { tenant_id: string; tenant_name: string; lifecycle_state: '
 
 export default async function SelectTenantPage() {
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <main className="app-shell"><section className="auth-card"><h1>إعداد الاتصال غير مكتمل</h1><p className="intro" role="alert">تعذر الاتصال بخدمة الحسابات. تواصل مع دعم المنصة إذا استمرت المشكلة.</p><Link className="primary-button link-button" href="/auth/login">العودة إلى تسجيل الدخول</Link></section></main>;
+  if (!supabase) return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>إعداد الاتصال غير مكتمل</>} /><p className="intro" role="alert">تعذر الاتصال بخدمة الحسابات. تواصل مع دعم المنصة إذا استمرت المشكلة.</p><ButtonLink variant="solid" className="link-button" href="/auth/login">العودة إلى تسجيل الدخول</ButtonLink></Panel></main>;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('current_tenant_spaces');
-  if (error || !Array.isArray(data)) return <main className="app-shell"><section className="auth-card"><h1>تعذر تحميل الشركات</h1><p className="intro" role="alert">لا يمكن عرض مساحاتك الآن. أعد المحاولة، أو تواصل مع دعم المنصة إذا استمرت المشكلة.</p><form action="/tenant/select" method="get"><button className="primary-button link-button" type="submit">إعادة تحميل الشركات</button></form><form action={signOutAction}><SubmitButton className="secondary-button" label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form></section></main>;
+  if (error || !Array.isArray(data)) return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>تعذر تحميل الشركات</>} /><p className="intro" role="alert">لا يمكن عرض مساحاتك الآن. أعد المحاولة، أو تواصل مع دعم المنصة إذا استمرت المشكلة.</p><form action="/tenant/select" method="get"><Button variant="solid" className="link-button" type="submit">إعادة تحميل الشركات</Button></form><form action={signOutAction}><SubmitButton variant="ghost"  label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form></Panel></main>;
   const options = data as TenantOption[];
   if (options.length === 1 && options[0].lifecycle_state === 'active' && /^[0-9a-f-]{36}$/i.test(options[0].tenant_id)) {
     redirect(`/tenant/${options[0].tenant_id}`);
   }
   return (
     <main className="app-shell">
-      <section className="work-card" aria-labelledby="tenant-select-title">
-        <p className="eyebrow">مساحاتك</p><h1 id="tenant-select-title">اختر الشركة</h1>
+      <Panel  aria-labelledby="tenant-select-title">
+        <p className="eyebrow">مساحاتك</p><PageHeader id="tenant-select-title" title={<>اختر الشركة</>} />
         {options.length === 0 ? <>
           <p className="intro">لا توجد مساحة عمل متاحة لهذا الحساب حاليًا. إذا كنت تتوقع ظهور شركة، تواصل مع دعم المنصة.</p>
-          <form action={signOutAction}><SubmitButton className="secondary-button" label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form>
+          <form action={signOutAction}><SubmitButton variant="ghost"  label="تسجيل الخروج" pendingLabel="جارٍ الخروج…" /></form>
         </> : (
-          <ul className="tenant-choice-list">{options.map((tenant) => <li key={tenant.tenant_id}>
-            <Link className="secondary-button tenant-choice-option" href={`/tenant/${tenant.tenant_id}`}>
-              <span>{tenant.tenant_name}</span>
-              {tenant.lifecycle_state === 'suspended' && <span className="field-hint">معلّقة · الاستخدام غير متاح، تواصل مع دعم المنصة</span>}
-            </Link>
+          <ul className="tenant-choice-list company-choice-grid">{options.map((tenant) => <li key={tenant.tenant_id}>
+            <ButtonLink variant="ghost" className="tenant-choice-option company-choice" href={`/tenant/${tenant.tenant_id}`}>
+              <Avatar name={tenant.tenant_name} size={48} />
+              <span className="company-choice-copy"><strong>{tenant.tenant_name}</strong>
+                {tenant.lifecycle_state === 'suspended' && <><Badge tone="warn">معلّقة</Badge><small>الاستخدام غير متاح، تواصل مع دعم المنصة</small></>}
+              </span><Icon name="arrowLeft" size={18} />
+            </ButtonLink>
           </li>)}</ul>
         )}
-      </section>
+      </Panel>
     </main>
   );
 }

@@ -1,3 +1,4 @@
+import { Badge, Button, Card, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -180,35 +181,25 @@ export default async function RecordLeavePage({ params, searchParams }: {
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <PendingLink className="back-link" href={`/tenant/${tenantId}/leave`}>العودة إلى قائمة مراجعة الإجازات</PendingLink>
-      <header className="workspace-page-heading">
-        <div>
-          <p className="eyebrow">الموارد البشرية</p>
-          <h1>تسجيل إجازة موظف</h1>
-          <p>ابحث عن الموظف ضمن تواريخ الإجازة، اختره، ثم سجّل طلبه. لا يشترط أن يكون للموظف حساب استخدام في الشركة.</p>
-        </div>
-        <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
-      </header>
+      <PageHeader title={<>تسجيل إجازة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>ابحث عن الموظف ضمن تواريخ الإجازة، اختره، ثم سجّل طلبه. لا يشترط أن يكون للموظف حساب استخدام في الشركة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink></>} />
 
-      <section className="workspace-form-panel" aria-label="تسجيل إجازة موظف">
+      <Panel  aria-label="تسجيل إجازة موظف">
         <div className={styles.formBlock}>
           <h2 className={styles.formTitle}>البحث عن الموظف</h2>
           <form className="auth-form" method="get" role="search">
-            <label htmlFor="leave-start-date">تاريخ البداية</label>
-            <input id="leave-start-date" name="start" type="date" required defaultValue={query.start} />
-            <label htmlFor="leave-end-date">تاريخ النهاية</label>
-            <input id="leave-end-date" name="end" type="date" required defaultValue={query.end} />
-            <label htmlFor="leave-employee-query">ابحث بالاسم أو رمز الموظف</label>
-            <input id="leave-employee-query" name="q" type="search" minLength={MIN_QUERY_LENGTH}
-              maxLength={MAX_QUERY_LENGTH} defaultValue={query.q} placeholder="مثال: أحمد أو EMP-12" />
+            <Field id="leave-start-date" label={<>تاريخ البداية</>} required><Input id="leave-start-date" name="start" type="date" required defaultValue={query.start} /></Field>
+            <Field id="leave-end-date" label={<>تاريخ النهاية</>} required><Input id="leave-end-date" name="end" type="date" required defaultValue={query.end} /></Field>
+            <Field id="leave-employee-query" label={<>ابحث بالاسم أو رمز الموظف</>}><Input id="leave-employee-query" name="q" type="search" minLength={MIN_QUERY_LENGTH}
+              maxLength={MAX_QUERY_LENGTH} defaultValue={query.q} placeholder="مثال: أحمد أو EMP-12" /></Field>
             <p className="field-hint">تُعرض الملفات النشطاء الذين تغطي فترة عملهم التواريخ المحددة،
               بحد أقصى {PAGE_SIZE} نتيجة في الصفحة.</p>
             <div className="workspace-form-actions">
-              <button className="primary-button" type="submit">بحث</button>
+              <Button variant="solid"  type="submit">بحث</Button>
             </div>
           </form>
           {query.datesProvided && query.dateError !== ''
-            && <p className="form-message form-error" role="alert">{query.dateError}</p>}
-          {query.queryError !== '' && <p className="form-message form-error" role="alert">{query.queryError}</p>}
+            && <Message tone="bad"  role="alert">{query.dateError}</Message>}
+          {query.queryError !== '' && <Message tone="bad"  role="alert">{query.queryError}</Message>}
           {!query.datesProvided && <p className="field-hint" role="status">
             اختر تاريخي البداية والنهاية، ثم اكتب حرفين على الأقل لعرض الموظفين المتاحين في هذه الفترة.
           </p>}
@@ -222,53 +213,46 @@ export default async function RecordLeavePage({ params, searchParams }: {
           <div className={styles.divider} />
           <div className={styles.formBlock}>
             <h2 className={styles.formTitle}>الموظفون المتاحون</h2>
-            {stale && <p className="form-message" role="status">
+            {stale && <Message tone="info"  role="status">
               الموظف المحدد سابقًا لم يعد ضمن نتائج البحث لهذه التواريخ. اختر موظفًا من القائمة.
-            </p>}
-            {query.selectionInvalid && <p className="form-message form-error" role="alert">
+            </Message>}
+            {query.selectionInvalid && <Message tone="bad"  role="alert">
               بيانات الموظف المحدد غير صالحة. اختر الموظف من جديد.
-            </p>}
+            </Message>}
             {query.pageInvalid
-              ? <p className="form-message form-error" role="alert">رقم الصفحة غير صالح.{' '}
-                <PendingLink href={resultsHref}>العودة إلى الصفحة الأولى</PendingLink></p>
+              ? <Message tone="bad"  role="alert">رقم الصفحة غير صالح.{' '}
+                <PendingLink href={resultsHref}>العودة إلى الصفحة الأولى</PendingLink></Message>
               : optionsFailed
-                ? <div className="empty-state" role="alert">
-                  <h2>تعذر تحميل نتائج البحث</h2>
-                  <p>لم يتغير شيء. أعد المحاولة أو عدّل التواريخ أو كلم البحث.</p>
-                  <PendingLink className="secondary-button" href={resultsHref}>إعادة المحاولة</PendingLink>
-                </div>
+                ? <div role="alert"><EmptyState title={<>تعذر تحميل نتائج البحث</>} description={<>لم يتغير شيء. أعد المحاولة أو عدّل التواريخ أو كلم البحث.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={resultsHref}>إعادة المحاولة</PendingLink></>} /></div>
                 : options !== null && options.items.length === 0
-                  ? <div className="empty-state">
-                    <h2>لا توجد نتائج مطابقة</h2>
-                    <p>جرّب اسمًا أو رمز موظف آخر، أو تواريخًا مختلفة ضمن فترة عمل الموظف.</p>
-                  </div>
+                  ? <div ><EmptyState title={<>لا توجد نتائج مطابقة</>} description={<>جرّب اسمًا أو رمز موظف آخر، أو تواريخًا مختلفة ضمن فترة عمل الموظف.</>} /></div>
                   : options !== null ? <>
                     <ul className="record-list">{options.items.map((item) => {
                       const selectHref = recordHref(tenantId, {
                         start: query.start, end: query.end, q: query.q, page: query.page,
                         employee: item.employeeId, employment: item.employmentId,
                       });
-                      return <li className="record-card" key={item.employmentId}>
+                      return <RecordCard  key={item.employmentId}>
                         <div className="record-main">
                           <div className="record-title-row">
                             <h3>{item.employeeName}</h3>
-                            <span className="entity-status is-active">نشط</span>
+                            <Badge className="is-active">نشط</Badge>
                           </div>
                           <p className="record-meta">رقم الموظف: <bdi>{item.employeeCode}</bdi></p>
                           <p className="record-meta">{item.employerName} · فترة العمل:{' '}
                             {item.employmentStart ? <>من <bdi>{item.employmentStart}</bdi></> : 'غير محددة'}{' '}
                             {item.employmentEnd ? <>إلى <bdi>{item.employmentEnd}</bdi></> : 'حتى الآن'}</p>
                         </div>
-                        <PendingLink className="secondary-button" href={selectHref}>اختيار وتسجيل</PendingLink>
-                      </li>;
+                        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={selectHref}>اختيار وتسجيل</PendingLink>
+                      </RecordCard>;
                     })}</ul>
                     <nav className={styles.pagination} aria-label="صفحات نتائج البحث">
                       <span>الصفحة {query.page} · {options.items.length} نتيجة</span>
                       <span className={styles.paginationNav}>
-                        {query.page > 1 && <PendingLink className="secondary-button"
+                        {query.page > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
                           href={recordHref(tenantId, { start: query.start, end: query.end, q: query.q, page: query.page - 1 })}>
                           السابق</PendingLink>}
-                        {options.hasMore && <PendingLink className="primary-button"
+                        {options.hasMore && <PendingLink className="ui-button ui-button-solid ui-button-md"
                           href={recordHref(tenantId, { start: query.start, end: query.end, q: query.q, page: query.page + 1 })}>
                           التالي</PendingLink>}
                       </span>
@@ -281,33 +265,25 @@ export default async function RecordLeavePage({ params, searchParams }: {
           <div className={styles.divider} />
           <div className={styles.formBlock}>
             <h2 className={styles.formTitle}>الموظف المحدد</h2>
-            <div className="record-card">
+            <Card >
               <div className="record-main">
                 <div className="record-title-row">
                   <h3>{selected.employeeName}</h3>
-                  <span className="entity-status is-active">نشط</span>
+                  <Badge className="is-active">نشط</Badge>
                 </div>
                 <p className="record-meta">رقم الموظف: <bdi>{selected.employeeCode}</bdi> · {selected.employerName}</p>
                 <p className="record-meta">الفترة: من <bdi>{query.start}</bdi> إلى <bdi>{query.end}</bdi>
                   {' · '}{dayCount(query.start, query.end)} يومًا</p>
               </div>
-              <PendingLink className="secondary-button" href={keepHref}>تغيير الموظف</PendingLink>
-            </div>
-            {configProblem !== null && <div className="empty-state" role="alert">
-              <h2>{configProblem.title}</h2>
-              <p>{configProblem.detail}</p>
-              <PendingLink className="secondary-button"
+              <PendingLink className="ui-button ui-button-ghost ui-button-md" href={keepHref}>تغيير الموظف</PendingLink>
+            </Card>
+            {configProblem !== null && <div role="alert"><EmptyState title={<>{configProblem.title}</>} description={<>{configProblem.detail}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
                 href={configProblem.retry ? retryHref : resultsHref}>
                 {configProblem.retry ? 'إعادة المحاولة' : 'اختيار موظف آخر'}
-              </PendingLink>
-            </div>}
-            {configProblem === null && types.length === 0 && <div className="empty-state">
-              <h2>لا توجد أنواع إجازة متاحة لهذه الفترة</h2>
-              <p>لا يوجد نوع إجازة مفعّل يغطي التواريخ المحددة لدى «{selected.employerName}».
-                راجع إعدادات إجازات هذه الجهة ثم أعد المحاولة.</p>
-              <PendingLink className="secondary-button"
-                href={`/tenant/${tenantId}/leave/settings/${selected.employerId}`}>إعدادات إجازات الجهة</PendingLink>
-            </div>}
+              </PendingLink></>} /></div>}
+            {configProblem === null && types.length === 0 && <div ><EmptyState title={<>لا توجد أنواع إجازة متاحة لهذه الفترة</>} description={<>لا يوجد نوع إجازة مفعّل يغطي التواريخ المحددة لدى «{selected.employerName}».
+                راجع إعدادات إجازات هذه الجهة ثم أعد المحاولة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md"
+                href={`/tenant/${tenantId}/leave/settings/${selected.employerId}`}>إعدادات إجازات الجهة</PendingLink></>} /></div>}
           </div>
           {configProblem === null && types.length > 0 && <>
             <div className={styles.divider} />
@@ -317,7 +293,7 @@ export default async function RecordLeavePage({ params, searchParams }: {
               halfDayContext={halfDayContext} halfDayError={halfDayError} cancelHref={keepHref} />
           </>}
         </>}
-      </section>
+      </Panel>
     </div>
   </PageFrame>;
 }
@@ -335,23 +311,16 @@ function SubmittedView({ tenantId, requestId, request, start, end, q }: {
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <PendingLink className="back-link" href={`/tenant/${tenantId}/leave`}>العودة إلى قائمة مراجعة الإجازات</PendingLink>
-      <header className="workspace-page-heading">
-        <div>
-          <p className="eyebrow">الموارد البشرية</p>
-          <h1>تسجيل إجازة موظف</h1>
-          <p>{confirmed ? 'سُجّل الطلب وحُوِّل إلى فريق اعتماد الإجازات دون حجز أي رصيد.'
-            : 'راجع حالة الطلب الحالية قبل تسجيل طلب آخر.'}</p>
-        </div>
-        <PendingLink className="secondary-button" href={againHref}>تسجيل طلب آخر</PendingLink>
-      </header>
+      <PageHeader title={<>تسجيل إجازة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>{confirmed ? 'سُجّل الطلب وحُوِّل إلى فريق اعتماد الإجازات دون حجز أي رصيد.'
+            : 'راجع حالة الطلب الحالية قبل تسجيل طلب آخر.'}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={againHref}>تسجيل طلب آخر</PendingLink></>} />
 
-      <section className="workspace-form-panel" aria-label="نتيجة تسجيل الإجازة">
+      <Panel  aria-label="نتيجة تسجيل الإجازة">
         <div className="success-panel" role="status">
           <div className="record-title-row">
             <h2>{confirmed ? 'الطلب مُقدَّم للمراجعة' : 'حالة طلب الإجازة'}</h2>
-            {request !== null && <span className={`entity-status ${stateClass(request.state)}`}>
+            {request !== null && <Badge className={`entity-status ${stateClass(request.state)}`}>
               {stateLabel(request.state)}
-            </span>}
+            </Badge>}
           </div>
           {request !== null ? <>
             <p>{request.employeeName} · رقم الموظف: <bdi>{request.employeeCode}</bdi> · {request.leaveTypeName}</p>
@@ -360,12 +329,12 @@ function SubmittedView({ tenantId, requestId, request, start, end, q }: {
             {confirmed && <p>الطلب الآن بانتظار قرار فريق الاعتماد، ولم يُحجز أي رصيد من رصيد الموظف.</p>}
           </> : <p>تعذّر تأكيد تفاصيل هذا الطلب الآن. راجع قائمة مراجعة الإجازات للتحقق من الحالة.</p>}
           <div className="workspace-form-actions">
-            <PendingLink className="primary-button" href={detailHref(tenantId, requestId)}>فتح الطلب</PendingLink>
-            <PendingLink className="secondary-button" href={againHref}>تسجيل طلب آخر</PendingLink>
-            <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave`}>قائمة المراجعة</PendingLink>
+            <PendingLink className="ui-button ui-button-solid ui-button-md" href={detailHref(tenantId, requestId)}>فتح الطلب</PendingLink>
+            <PendingLink className="ui-button ui-button-ghost ui-button-md" href={againHref}>تسجيل طلب آخر</PendingLink>
+            <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave`}>قائمة المراجعة</PendingLink>
           </div>
         </div>
-      </section>
+      </Panel>
     </div>
   </PageFrame>;
 }
@@ -378,14 +347,14 @@ function Status({ tenantId, title, detail, retryPath, showQueue = false }: {
   showQueue?: boolean;
 }) {
   return <PageFrame footer="الموارد البشرية">
-    <section className="auth-card">
+    <Panel >
       <h1>{title}</h1>
       <p className="intro">{detail}</p>
-      {retryPath && <PendingLink className="secondary-button" href={retryPath}>إعادة المحاولة</PendingLink>}
-      {showQueue && <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave`}>
+      {retryPath && <PendingLink className="ui-button ui-button-ghost ui-button-md" href={retryPath}>إعادة المحاولة</PendingLink>}
+      {showQueue && <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave`}>
         مراجعة طلبات الإجازة
       </PendingLink>}
-      <PendingLink className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</PendingLink>
-    </section>
+      <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</PendingLink>
+    </Panel>
   </PageFrame>;
 }

@@ -1,3 +1,4 @@
+import { PageHeader, Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
@@ -30,7 +31,7 @@ export default async function InviteMemberPage({ params, searchParams }: { param
       <Link className="back-link" href={employeeId ? `/tenant/${tenantId}/people/${employeeId}` : `/tenant/${tenantId}/users`}>
         {employeeId ? 'العودة إلى ملف الموظف' : 'العودة إلى المستخدمين'}</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">المستخدمون والدعوات</p>
-        <h1>دعوة عضو</h1><p>أرسل دعوة إلى بريد الشخص الذي سينضم لفريق الشركة.</p></div></header>
+        <PageHeader  title={<>دعوة عضو</>} /><p>أرسل دعوة إلى بريد الشخص الذي سينضم لفريق الشركة.</p></div></header>
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>لا يُحجز مقعد قبل قبول الدعوة.</span></div>
       <section className="workspace-form-panel" aria-label="بيانات الدعوة">
@@ -41,8 +42,8 @@ export default async function InviteMemberPage({ params, searchParams }: { param
 }
 
 function Status({ tenantId }: { tenantId: string }) {
-  return <PageFrame><section className="auth-card"><h1>لا يمكن إرسال الدعوة</h1>
+  return <PageFrame><Panel className="auth-card"><PageHeader  title={<>لا يمكن إرسال الدعوة</>} />
     <p className="intro">تحقق من صلاحية إدارة المستخدمين أو أعد المحاولة لاحقًا.</p>
-    <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+  </Panel></PageFrame>;
 }

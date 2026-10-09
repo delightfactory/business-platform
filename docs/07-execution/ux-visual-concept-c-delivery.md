@@ -7,23 +7,29 @@
 - عينات مرئية محدودة: معرض المكونات، اليوم، الناس على الديسكتوب والهاتف؛ أصلح قص البحث. هذه عينات وليست قبولًا بصريًا لكل حالة.
 - لا تغيير في supabase/ أو actions.ts؛ لا إعادة اختبارات قواعد البيانات. اختبار الأجهزة الفعلية والقبول الشامل قبل النشر لدى المالك.
 - حد جلسة Claude سبق أن توقف؛ استُخدمت خطته ومراجعته السابقة دون إعادة محاولات أو استبدال نموذج تلقائي.
-- استخدام الأصناف القديمة الستة في TSX/JSX: 684 → 661؛ الباقي مربوط بالرموز الجديدة. ESLint يمنع استخدامها في UI/patterns/shell الجديدة.
 - CI لا يُشغّل لهذا التسليم ([skip ci])، وتعطيل نشر Vercel خاص بهذا الفرع؛ لا main أو نشر.
+
+## اكتمال التعميم — 2026-10-09
+
+- استبدال عناصر العرض والنماذج الظاهرة بمكونات مشتركة للحقول والأزرار والبطاقات والرسائل والجداول، مع تنظيم أقسام النماذج وطي التفاصيل الاختيارية.
+- مراجعة مصدرية مستقلة حافظت على أسماء الحقول والقيود والأحداث والإرسال والصلاحيات؛ أُصلح توزيع نماذج الموظفين بعد اعتماد Field.
+- معاينة الأرصدة على الديسكتوب والهاتف ناجحة؛ لا مصفوفة صور أو اختبارات قواعد بيانات إضافية.
+- توحيد بواقي التوافق في CSS ومظهر صفحة offline؛ تحقق سلامة 19 أصلًا عامًا مخزنًا مسبقًا.
 
 ## تغطية 75 صفحة
 
-التغطية هنا تطبيق الكود والتنسيق، ولا تعني فحص جميع الصفحات بصريًا. الصفحات التابعة تستخدم المكونات المشتركة وCSS المجال؛ لا أدّعي إعادة كتابة كل صفحة من الصفر.
+كل الصفحات الـ75 تحتوي تعديلات مباشرة مقارنة بالأساس 13b2b7a، مع استخدام المكونات المشتركة وتنسيق المجال. هذا حصر تنفيذ مصدري، ولا يعني قبول جميع الحالات بصريًا.
 
 | المسار | المجال | التنفيذ |
 |---|---|---|
-| `/auth/employee-account-activation/callback` | الدخول | الأساس المشترك وتنسيق المجال |
+| `/auth/employee-account-activation/callback` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/employee-account-activation` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/forgot-password` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/invitations/accept` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/invitations/callback` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/login` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/membership-invitations/accept` | الدخول | تعديل مباشر + الأساس المشترك |
-| `/auth/membership-invitations/callback` | الدخول | الأساس المشترك وتنسيق المجال |
+| `/auth/membership-invitations/callback` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/auth/password/update` | الدخول | تعديل مباشر + الأساس المشترك |
 | `/operator/commercial/[tenantId]` | المشغّل | تعديل مباشر + الأساس المشترك |
 | `/operator/commercial` | المشغّل | تعديل مباشر + الأساس المشترك |
@@ -40,54 +46,54 @@
 | `/operator/tenants` | المشغّل | تعديل مباشر + الأساس المشترك |
 | `/` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/attendance/[instanceId]` | الحضور | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/attendance/import` | الحضور | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/attendance` | الحضور | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/attendance/import` | الحضور | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/attendance` | الحضور | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/attendance/review` | الحضور | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]` | الحضور | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/attendance/sources/[sourceId]` | الحضور | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/attendance/sources/new` | الحضور | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/attendance/sources` | الحضور | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/attendance/unassigned` | الحضور | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/attendance/sources/[sourceId]` | الحضور | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/attendance/sources/new` | الحضور | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/attendance/sources` | الحضور | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/attendance/unassigned` | الحضور | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/branding` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/entities-sites/[entityId]` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/entities-sites/[entityId]/sites/new` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/entities-sites/new` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/entities-sites` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/leave/balances/[accountId]` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/balances/annual` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/balances` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/new` | الإجازات | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/leave/balances/[accountId]` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/balances/annual` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/balances` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/new` | الإجازات | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/leave` | الإجازات | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/leave/requests/[requestId]` | الإجازات | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings/[employerId]/calendars/new` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings/[employerId]` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings/[employerId]/types/new` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new` | الإجازات | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/leave/settings` | الإجازات | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings/[employerId]/calendars/new` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings/[employerId]` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings/[employerId]/types/new` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new` | الإجازات | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/leave/settings` | الإجازات | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/me/attendance` | الموظف | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/me/leave/[requestId]` | الموظف | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/me/leave/new` | الموظف | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/me/leave` | الموظف | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/me` | الموظف | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/payroll/advances` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll/corrections` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll/inputs` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll/output` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll/payments` | الرواتب | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/payroll/advances` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll/corrections` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll/inputs` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll/output` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll/payments` | الرواتب | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/payroll/reports` | الرواتب | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/payroll/runs` | الرواتب | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/payroll/setup` | الرواتب | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/payroll/runs` | الرواتب | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/payroll/setup` | الرواتب | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/people/[employeeId]` | الناس | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/people/import` | الناس | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/people/new` | الناس | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/people/organization/[kind]/[recordId]` | الناس | الأساس المشترك وتنسيق المجال |
-| `/tenant/[tenantId]/people/organization` | الناس | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/people/import` | الناس | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/people/new` | الناس | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/people/organization/[kind]/[recordId]` | الناس | تعديل مباشر + الأساس المشترك |
+| `/tenant/[tenantId]/people/organization` | الناس | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/people` | الناس | تعديل مباشر + الأساس المشترك |
-| `/tenant/[tenantId]/people/work-policies` | الناس | الأساس المشترك وتنسيق المجال |
+| `/tenant/[tenantId]/people/work-policies` | الناس | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/users/invite` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
 | `/tenant/[tenantId]/users` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |
-| `/tenant/select` | الإدارة والإطار | الأساس المشترك وتنسيق المجال |
+| `/tenant/select` | الإدارة والإطار | تعديل مباشر + الأساس المشترك |

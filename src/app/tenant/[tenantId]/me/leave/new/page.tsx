@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { Panel } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -59,9 +60,9 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
 
 function Status({ tenantId, title, detail, retry = false }: { tenantId: string; title: string; detail: string; retry?: boolean }) {
   return <PageFrame footer="الخدمة الذاتية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retry && <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave/new`}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</Link>
-    </section>
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+      {retry && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave/new`}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</ButtonLink>
+    </Panel>
   </PageFrame>;
 }

@@ -1,3 +1,5 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -36,10 +38,10 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   return <main className="app-shell">
     {query.state === 'saved' && <FeedbackToast key={crypto.randomUUID()} message={stateText('saved')} />}
     <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
-      <h1 id="branding-title">هوية الشركة</h1>
+      <PageHeader id="branding-title" title={<>هوية الشركة</>} />
       <p>اضبط الاسم والشعار واللون الذي يراه فريق <bdi>{branding.tenant_name}</bdi>.</p></div></header>
     <section className="workspace-branding-panel" aria-labelledby="branding-title">
-      {query.state && query.state !== 'saved' && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
+      {query.state && query.state !== 'saved' && <Message tone="bad"  role="alert">{stateText(query.state)}</Message>}
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}
         hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} />
@@ -60,4 +62,4 @@ function stateText(state: string) {
   };
   return messages[state] ?? 'تعذر حفظ الهوية.';
 }
-function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة للشركة</ButtonLink></section></main>; }
+function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة للشركة</ButtonLink></Panel></main>; }

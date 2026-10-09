@@ -1,3 +1,4 @@
+import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -44,15 +45,11 @@ export default async function NewCalendarPage({ params }: { params: Params }) {
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-      <header className="workspace-page-heading"><div>
-        <p className="eyebrow">تقويمات الإجازات</p>
-        <h1>إضافة تقويم إجازات</h1>
-        <p>حدد اسم التقويم وأيام الراحة والعطلات وتاريخ بدء تطبيقه.</p>
-      </div></header>
-      <section className="workspace-form-panel" aria-label="بيانات تقويم الإجازات">
+      <PageHeader title={<>إضافة تقويم إجازات</>} eyebrow={<>تقويمات الإجازات</>} description={<>حدد اسم التقويم وأيام الراحة والعطلات وتاريخ بدء تطبيقه.</>} />
+      <Panel  aria-label="بيانات تقويم الإجازات">
         <CreateCalendarForm tenantId={tenantId} employerId={employerId}
           initialCode={initialCode} />
-      </section>
+      </Panel>
     </div>
   </PageFrame>;
 }

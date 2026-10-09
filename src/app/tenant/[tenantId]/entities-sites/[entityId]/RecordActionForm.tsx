@@ -1,4 +1,5 @@
 'use client';
+import { Message } from '@/components/ui';
 import { Input } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -39,7 +40,7 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
     </>}
     <label htmlFor={`${prefix}-reason`}>{reasonLabel}</label>
     <Input id={`${prefix}-reason`} name="reason" defaultValue={state.reason} required minLength={3} maxLength={500} />
-    {state.error && <p className="form-message error-message" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <SubmitButton className={recordAction === 'deactivate' ? 'danger-button' : 'secondary-button'} label={label}
       ariaLabel={isSite && displayName ? `${label}: ${displayName}` : undefined} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;

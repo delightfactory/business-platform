@@ -1,5 +1,5 @@
+import { Button, ButtonLink, DataTable, Input, Message, PageHeader, Panel, EmptyState, Badge, Field } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -42,21 +42,21 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   const moreHref = nextCursor ? `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}&cursor=${encodeURIComponent(nextCursor)}` : null;
 
   return <PageFrame footer="الحضور وسجل العمل">
-      <section className="work-card task-page" aria-labelledby="attendance-title">
+      <Panel className=" task-page" aria-labelledby="attendance-title">
         <p className="eyebrow">متابعة يوم العمل</p>
-        <div className="workspace-page-heading"><div><h1 id="attendance-title">الحضور اليومي</h1><p className="field-hint">اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام.</p></div></div>
-        {!entitlementEnabled && <p className="form-message">وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</p>}
+        <div className="workspace-page-heading"><div><PageHeader id="attendance-title" title={<>الحضور اليومي</>} description={<> اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام. </>} /></div></div>
+        {!entitlementEnabled && <Message tone="info" >وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</Message>}
         <div className={styles.toolbar}>
-          <form method="get" className={styles.dateForm}><label htmlFor="attendance-date">تاريخ العمل<input id="attendance-date" type="date" name="date" defaultValue={day} /></label><button className="primary-button" type="submit">عرض اليوم</button></form>
+          <form method="get" className={styles.dateForm}><Field  id="attendance-date" label={<>تاريخ العمل</>}><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field><Button variant="solid"  type="submit">عرض اليوم</Button></form>
           <nav className={styles.tools} aria-label="مهام الحضور">
-            {!channelAccessError && channelAccess?.can_view === true && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</Link>}
-            {canManage && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</Link>}
-            {access.can_view === true && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</Link>}
-            {access.can_view === true && <Link className="secondary-button" href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</Link>}
+            {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</ButtonLink>}
+            {canManage && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
+            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا تكليف</ButtonLink>}
+            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}
           </nav>
         </div>
         {canOpen && <p className="field-hint">استخدم التالي لعرض بقية الموظفين عند وجود سجلات إضافية.</p>}
-        {rows.length === 0 ? <div className="empty-state"><h2>لا توجد سجلات لهذا اليوم</h2><p>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد تكليفات دوام بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</p></div> : <table className={styles.table} role="table">
+        {rows.length === 0 ? <EmptyState title={<>لا توجد سجلات لهذا اليوم</>} description={<>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد تكليفات دوام بدأ يومها المحلي ضمن سياسة الدوام.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</>} /> : <DataTable className={styles.table} role="table">
           <caption>سجلات يوم العمل <bdi>{day}</bdi> — المعروضة في هذه الصفحة</caption>
           <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">الموظف</th><th scope="col" role="columnheader">الدوام المتوقع</th><th scope="col" role="columnheader">مؤشرات اليوم والمراجعة</th><th scope="col" role="columnheader">الحالة</th><th scope="col" role="columnheader">الإجراء</th></tr></thead>
           <tbody role="rowgroup">{rows.map((row) => <tr role="row" key={row.id}>
@@ -68,18 +68,18 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
             </td>
             <td role="cell"><span className={styles.mobileLabel} aria-hidden="true">مؤشرات اليوم والمراجعة</span>
               {row.worked_minutes !== null && (row.status === 'ready' || row.status === 'approved') && (row.schedule_kind === 'flexible' ? <p className="record-meta">صافي العمل: {row.worked_minutes} من {row.required_minutes ?? '—'} دقيقة مطلوبة</p> : <p className="record-meta">التأخر: {row.late_minutes ?? 0} د · المغادرة المبكرة: {row.early_leave_minutes ?? 0} د · صافي العمل: {row.worked_minutes} د · الاستراحة المقررة: {row.scheduled_break_minutes ?? '—'} د</p>)}
-              {row.exception_code === 'short_workday' && row.status !== 'approved' && <p className="form-message form-error">صافي المدة أقل من المطلوب؛ راجع اليوم قبل الاعتماد.</p>}
-              {row.exception_code === 'absence_candidate' && row.status !== 'approved' && <p className="form-message form-error">انتهت الفترة بلا تسجيلات؛ راجع الحالة قبل إثبات الغياب.</p>}
-              {(row.overtime_pending_count ?? 0) > 0 && <p className="form-message form-error">يوجد مرشح عمل إضافي بانتظار المراجعة: {row.overtime_pending_count}</p>}
+              {row.exception_code === 'short_workday' && row.status !== 'approved' && <Message tone="bad" >صافي المدة أقل من المطلوب؛ راجع اليوم قبل الاعتماد.</Message>}
+              {row.exception_code === 'absence_candidate' && row.status !== 'approved' && <Message tone="bad" >انتهت الفترة بلا تسجيلات؛ راجع الحالة قبل إثبات الغياب.</Message>}
+              {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >يوجد مرشح عمل إضافي بانتظار المراجعة: {row.overtime_pending_count}</Message>}
             </td>
-            <td role="cell"><span className={styles.mobileLabel} aria-hidden="true">الحالة</span><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></td>
-            <td role="cell"><Link aria-describedby={`attendance-person-${row.id}`} className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</Link></td>
+            <td role="cell"><span className={styles.mobileLabel} aria-hidden="true">الحالة</span><Badge tone={row.status === 'approved' ? "ok" : "neutral"} >{statusLabel(row.status)}</Badge></td>
+            <td role="cell"><ButtonLink variant="ghost" aria-describedby={`attendance-person-${row.id}`}  href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</ButtonLink></td>
           </tr>)}</tbody>
-        </table>}
+        </DataTable>}
         <div className="attendance-pagination" aria-live="polite"><span>عدد السجلات في هذه الصفحة: {rows.length}{hasMore ? '، توجد سجلات أخرى' : ''}</span>
-          {hasMore && moreHref && <Link className="primary-button" href={moreHref}>التالي</Link>}
+          {hasMore && moreHref && <ButtonLink  href={moreHref}>التالي</ButtonLink>}
         </div>
-      </section>
+      </Panel>
   </PageFrame>;
 }
 
@@ -88,4 +88,4 @@ function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'تو
 function formatInstant(value: string, zone: string) { return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { dateStyle: 'short', timeStyle: 'short', timeZone: zone }).format(new Date(value)); }
 function statusLabel(status: string) { return ({ open: 'قيد المتابعة', ready: 'جاهز للمراجعة', needs_review: 'يحتاج مراجعة', approved: 'معتمد' } as Record<string, string>)[status] ?? 'قيد المتابعة'; }
 function isObject(value: unknown): value is Record<string, unknown> { return Boolean(value && typeof value === 'object' && !Array.isArray(value)); }
-function Status({ title, text, retryHref }: { title: string; text: string; retryHref?: string }) { return <section className="work-card task-page"><h1>{title}</h1><p>{text}</p>{retryHref && <Link className="secondary-button" href={retryHref}>إعادة المحاولة</Link>}</section>; }
+function Status({ title, text, retryHref }: { title: string; text: string; retryHref?: string }) { return <Panel className=" task-page"><PageHeader  title={<>{title}</>} description={<> {text} </>} />{retryHref && <ButtonLink variant="ghost"  href={retryHref}>إعادة المحاولة</ButtonLink>}</Panel>; }

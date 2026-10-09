@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { PageHeader, Disclosure } from '@/components/ui';
+import { Panel, Message, RecordCard, ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
@@ -79,29 +80,29 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
   return <PageFrame footer="الخدمة الذاتية">
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
     <div className={styles.detailPage}>
-    <section className="work-card task-page" aria-labelledby="leave-request-title">
+    <Panel className="task-page" aria-labelledby="leave-request-title">
       <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave`}><Icon name="arrowRight" size={18}/>إجازاتي</PendingLink>
       <p className="eyebrow">طلب إجازة</p>
-      <div className="record-title-row"><h1 id="leave-request-title">{request.leave_type_name}</h1>
+      <div className="record-title-row"><PageHeader id="leave-request-title" title={<>{request.leave_type_name}</>} />
         <Badge tone={request.state === 'approved' ? 'ok' : request.state === 'rejected' ? 'bad' : request.state === 'submitted' ? 'warn' : 'neutral'}>{stateLabel(request.state)}</Badge></div>
       <p className="record-meta">{request.submitted_at
         ? <>أُرسل في <bdi>{formatInstant(request.submitted_at)}</bdi> · </>
         : 'لم يُرسل بعد · '}الطلب المعلّق لا يحجز رصيدًا قبل الاعتماد.</p>
 
-      {stateNote && <p className="form-message" role="status">{stateNote}</p>}
+      {stateNote && <Message tone="info"  role="status">{stateNote}</Message>}
 
       <KeyValueStrip items={[
         { label: 'أيام الإجازة المحتسبة', value: <>{formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</> },
         { label: 'من', value: <bdi>{request.start_date}</bdi> },
         { label: 'إلى', value: <bdi>{request.end_date}</bdi> },
       ]}/>
-      <details className="task-disclosure">
-        <summary className="secondary-button">سبب الإجازة وطريقة التسجيل</summary>
+      <Disclosure summary={<>سبب الإجازة وطريقة التسجيل</>} className="task-disclosure">
+
       <dl className={styles.requestContext}>
         <div><dt>سبب الإجازة</dt><dd>{request.reason || 'غير مسجل'}</dd></div>
         <div><dt>طريقة التسجيل</dt><dd>{request.request_source === 'hr' ? 'إدارة الموارد البشرية' : 'خدمة الموظف'}</dd></div>
       </dl>
-      </details>
+      </Disclosure>
 
       {isObject(data) && Array.isArray(data.correction_links) && data.correction_links.length > 0 && <>
         <h2>سجل استبدال الإجازة</h2>
@@ -109,27 +110,27 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
           if (!isObject(link) || !isUuid(link.original_request_id) || !isUuid(link.replacement_request_id)
             || typeof link.reason !== 'string') return null;
           const original = link.original_request_id.toLowerCase() === request.id.toLowerCase();
-          return <li className="record-card" key={index}>
+          return <RecordCard  key={index}>
             <p>{link.reason}</p>
             <p className="record-meta">وقت التصحيح: {isInstant(link.created_at) ? <bdi>{formatInstant(link.created_at)}</bdi> : 'غير متاح الآن'}</p>
             <PendingLink href={`/tenant/${tenantId}/me/leave/${original ? link.replacement_request_id : link.original_request_id}`}>
               {original ? 'عرض الطلب البديل' : 'عرض الطلب الأصلي'}
             </PendingLink>
-          </li>;
+          </RecordCard>;
         })}</ul>
       </>}
 
-      {request.days.length > 0 && <details className="task-disclosure">
-        <summary className="secondary-button">تفاصيل أيام الطلب</summary>
-        <DayBreakdown days={request.days} />
-      </details>}
-    </section>
+      {request.days.length > 0 && <Disclosure summary={<>تفاصيل أيام الطلب</>} className="task-disclosure">
 
-    {request.state === 'approved' && <section className="work-card task-page" aria-labelledby="cancellation-action-title">
+        <DayBreakdown days={request.days} />
+      </Disclosure>}
+    </Panel>
+
+    {request.state === 'approved' && <Panel className="task-page" aria-labelledby="cancellation-action-title">
       {pendingEvent
         ? <>
           <div className="record-title-row"><h2 id="cancellation-action-title">طلب إلغاء معلّق</h2>
-            <span className="entity-status is-pending">بانتظار قرار الموارد البشرية</span></div>
+            <Badge className="is-pending">بانتظار قرار الموارد البشرية</Badge></div>
           <dl className="snapshot-grid">
             <div><dt>حالة طلب الإجازة</dt><dd>معتمد</dd></div>
             <div><dt>الخطوة التالية</dt><dd>إدارة الموارد البشرية</dd></div>
@@ -137,49 +138,49 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
             <div><dt>أُرسل من طرف</dt><dd>{cancellationEventActor(pendingEvent, user.id)}</dd></div>
             <div><dt>سبب طلب الإلغاء</dt><dd>{pendingEvent.reason}</dd></div>
           </dl>
-          <p className="form-message" role="status">الموارد البشرية ستراجع طلب الإلغاء. عند قبوله تُلغى الإجازة ويُعاد أي
-            رصيد خُصم لها. لا تحتاج إلى إرسال طلب آخر أثناء الانتظار.</p>
+          <Message tone="info"  role="status">الموارد البشرية ستراجع طلب الإلغاء. عند قبوله تُلغى الإجازة ويُعاد أي
+            رصيد خُصم لها. لا تحتاج إلى إرسال طلب آخر أثناء الانتظار.</Message>
         </>
         : historyFailed
           ? <>
             <h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
-            <p className="form-message" role="status">تعذّر تحميل سجل طلبات الإلغاء لهذه الصفحة، لذلك لن يُعرض إرسال طلب
+            <Message tone="info"  role="status">تعذّر تحميل سجل طلبات الإلغاء لهذه الصفحة، لذلك لن يُعرض إرسال طلب
               إلغاء جديد حتى نتحقق من الحالة الحالية. يمكنك مراجعة التفاصيل المتاحة أعلاه؛ أعد المحاولة من قسم «سجل طلبات
-              الإلغاء» أدناه.</p>
+              الإلغاء» أدناه.</Message>
           </>
           : !canRequestCancellation
             ? <>
                 <h2 id="cancellation-action-title">إلغاء الإجازة</h2>
-                <p className="form-message" role="status">{accessUnavailable
+                <Message tone="info"  role="status">{accessUnavailable
                   ? 'تعذّر التحقق من صلاحية طلب الإلغاء الآن. أعد تحميل الصفحة للمحاولة من جديد.'
-                  : 'حسابك يسمح بعرض الإجازة دون طلب إلغائها. راجع إدارة الموارد البشرية إذا أردت إلغاءها.'}</p>
+                  : 'حسابك يسمح بعرض الإجازة دون طلب إلغائها. راجع إدارة الموارد البشرية إذا أردت إلغاءها.'}</Message>
                 {accessUnavailable && <PendingLink className="secondary-button"
                   href={`/tenant/${tenantId}/me/leave/${requestId}`}>إعادة المحاولة</PendingLink>}
               </>
             : <>
               <div className="record-title-row"><h2 id="cancellation-action-title">طلب إلغاء الطلب المعتمد</h2>
-                <span className="entity-status is-active">معتمد — قابل للإلغاء</span></div>
+                <Badge className="is-active">معتمد — قابل للإلغاء</Badge></div>
               <p className="field-hint">اكتب سبب الإلغاء ليُراجعَه فريق الموارد البشرية. يظل الطلب معتمدًا حتى القرار.</p>
-              {latest?.to_state === 'rejected' && <p className="form-message" role="status">رُفض طلب إلغاء سابق لهذا
-                الطلب. يمكنك إرسال طلب إلغاء جديد بسبب واضح.</p>}
-              <details className="task-disclosure">
-                <summary className="secondary-button">كتابة سبب الإلغاء وإرسال الطلب</summary>
+              {latest?.to_state === 'rejected' && <Message tone="info"  role="status">رُفض طلب إلغاء سابق لهذا
+                الطلب. يمكنك إرسال طلب إلغاء جديد بسبب واضح.</Message>}
+              <Disclosure summary={<>كتابة سبب الإلغاء وإرسال الطلب</>} className="task-disclosure">
+
                 <RequestCancellationForm tenantId={tenantId} requestId={requestId}
                   expectedVersion={request.version} idempotencyKey={crypto.randomUUID()} />
-              </details>
+              </Disclosure>
             </>}
-    </section>}
+    </Panel>}
 
-    {request.state === 'submitted' && <section className="work-card task-page" aria-labelledby="withdraw-title">
+    {request.state === 'submitted' && <Panel className="task-page" aria-labelledby="withdraw-title">
       <h2 id="withdraw-title">سحب الطلب</h2>
       <p className="field-hint">يمكنك سحب طلبك ما دام بانتظار قرار الموارد البشرية. بعد السحب تصبح حالته «مسحوبًا» نهائيًا،
         ويُحفظ سببك في سجل العملية مع هويتك ووقتها. لن يُخصم أي رصيد لأن الطلب لم يُعتمد بعد.</p>
-      <details className="task-disclosure">
-        <summary className="secondary-button">كتابة سبب السحب</summary>
+      <Disclosure summary={<>كتابة سبب السحب</>} className="task-disclosure">
+
         <WithdrawRequestForm tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
           idempotencyKey={crypto.randomUUID()} />
-      </details>
-    </section>}
+      </Disclosure>
+    </Panel>}
 
     <CancellationHistorySection tenantId={tenantId} requestId={requestId} view={history}
       requestedOffset={historyOffset.invalid ? 0 : historyOffset.value}
@@ -249,11 +250,11 @@ function Status({ tenantId, requestId, title, detail, retry = false }: {
   tenantId: string; requestId?: string; title: string; detail: string; retry?: boolean;
 }) {
   return <PageFrame footer="الخدمة الذاتية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retry && <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</Link>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
-    </section>
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+      {retry && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave/${requestId}`}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</ButtonLink>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+    </Panel>
   </PageFrame>;
 }
 

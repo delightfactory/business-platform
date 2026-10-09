@@ -1,3 +1,4 @@
+import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -44,15 +45,11 @@ export default async function NewLeaveTypePage({ params }: { params: Params }) {
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-      <header className="workspace-page-heading"><div>
-        <p className="eyebrow">أنواع الإجازة</p>
-        <h1>إضافة نوع إجازة</h1>
-        <p>حدد نوع الإجازة وطريقة احتسابها وأثرها على الرصيد والأجر.</p>
-      </div></header>
-      <section className="workspace-form-panel" aria-label="بيانات نوع الإجازة">
+      <PageHeader title={<>إضافة نوع إجازة</>} eyebrow={<>أنواع الإجازة</>} description={<>حدد نوع الإجازة وطريقة احتسابها وأثرها على الرصيد والأجر.</>} />
+      <Panel  aria-label="بيانات نوع الإجازة">
         <CreateTypeForm tenantId={tenantId} employerId={employerId}
           initialCode={initialCode} />
-      </section>
+      </Panel>
     </div>
   </PageFrame>;
 }

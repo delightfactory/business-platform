@@ -1,7 +1,8 @@
 'use client';
 
+import { Avatar, Button, Icon, StatusBadge, buttonClassName } from '@/components/ui';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Avatar, Icon, StatusBadge, buttonClassName } from '@/components/ui';
+
 import { useEffect, useRef, useState } from 'react';
 import { projectEmployeePreview, type EmployeePreviewResult, type EmployeePreviewData } from './employee-preview-data';
 import styles from './employee-preview.module.css';
@@ -73,7 +74,7 @@ export function EmployeePreview({ href, name, code, employeeId }: {
                 <h3>{state.status === 'signed-out' ? 'تحتاج تسجيل الدخول' : 'الملخص غير متاح'}</h3>
                 <p>{state.status === 'signed-out' ? 'افتح الملف الكامل لتسجيل الدخول والمتابعة.'
                   : 'تعذر التحقق من الملخص. أعد المحاولة أو افتح الملف الكامل للتحقق من الوصول.'}</p>
-                {state.status === 'unavailable' && <button className="secondary-button" type="button" onClick={() => { void load(); }}>إعادة المحاولة</button>}
+                {state.status === 'unavailable' && <Button variant="ghost"  type="button" onClick={() => { void load(); }}>إعادة المحاولة</Button>}
               </div>}
             </>}
           </div>

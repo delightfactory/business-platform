@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Panel } from '@/components/ui';
 import { Suspense } from 'react';
 import { redirect } from 'next/navigation';
 import { getWorkspaceClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
@@ -85,19 +85,19 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
     </section>
     </div>
     </div>
-    <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
   </PageFrame>;
 }
 
 function State({ tenantId, forbidden }: { tenantId: string; forbidden?: boolean }) {
   return <PageFrame>
-    <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p><h1>ملفي</h1></div></header>
-    <section className="workspace-records-panel">
+    <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p><PageHeader  title={<>ملفي</>} /></div></header>
+    <Panel className="workspace-records-panel">
       <h2>{forbidden ? 'الخدمة الذاتية غير مفعّلة لهذا الحساب' : 'تعذر تحميل ملفك الآن'}</h2>
       <p className="field-hint">{forbidden ? 'يجب أن تكون عضوًا نشطًا وأن يكون حسابك مرتبطًا بملف موظف مع صلاحية الخدمة الذاتية.' : 'حدث خطأ أثناء تحميل البيانات. أعد المحاولة.'}</p>
-      {!forbidden && <Link className="secondary-button" href={`/tenant/${tenantId}/me`}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
-    </section>
+      {!forbidden && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me`}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+    </Panel>
   </PageFrame>;
 }
 

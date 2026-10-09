@@ -1,5 +1,6 @@
 'use client';
 
+import { Checkbox, Field, Message, Select, Textarea } from '@/components/ui';
 import { useActionState, useRef, useState } from 'react';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -150,21 +151,20 @@ function IntentForm({
     </>}
 
     {decision && <><label htmlFor="leave-request-decision">قرار الطلب</label>
-      <select id="leave-request-decision" name="decision" value={intent} disabled={pending} onChange={(event) => {
+      <Select id="leave-request-decision" name="decision" value={intent} disabled={pending} onChange={(event) => {
         const selectedIntent = event.target.value === 'approve' ? 'approve' : 'reject';
         setIntent(selectedIntent);
         handleReasonChange(reason, selectedIntent);
       }}>
         {canApprove && <option value="approve">اعتماد الطلب</option>}
         <option value="reject">رفض الطلب</option>
-      </select></>}
-    <label htmlFor={reasonId}>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</label>
-    <textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
+      </Select></>}
+    <Field id={reasonId} label={<>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</>} required><Textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
       value={reason} onChange={(event) => handleReasonChange(event.target.value)} disabled={pending}
-      aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`} />
+      aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`} /></Field>
     <p id={`${reasonId}-hint`} className="field-hint">{hint} {KEY_NOTE}</p>
     {intent === 'approve' && <label>
-      <input type="checkbox" name="historicalPayrollCorrection" checked={historicalAddition} disabled={pending}
+      <Checkbox  name="historicalPayrollCorrection" checked={historicalAddition} disabled={pending}
         onChange={(event) => {
           const selected = event.target.checked;
           setHistoricalAddition(selected);
@@ -174,15 +174,15 @@ function IntentForm({
       <span className="field-hint">ينشئ الاعتماد مسؤولية تصحيح لكل مسير متأثر. أكملها من تصحيحات الرواتب؛ لا تتغير مبالغ المسير المقفل تلقائيًا.</span>
     </label>}
 
-    {state.error && <p key={state.attempt} className="form-message form-error" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad" key={state.attempt}  role="alert">{state.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ التنفيذ… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
       <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} className={decision && intent === 'reject' ? 'danger-button' : buttonClass}
         label={decision ? intent === 'approve' ? 'اعتماد الطلب' : 'رفض الطلب' : submitLabel}
         pendingLabel={decision ? 'جارٍ حفظ القرار…' : pendingLabel} />
-      {backHref && (pending ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
-        : <PendingLink className="secondary-button" href={backHref}>إلغاء</PendingLink>)}
+      {backHref && (pending ? <span className="ui-button ui-button-ghost ui-button-md" aria-disabled="true">إلغاء</span>
+        : <PendingLink className="ui-button ui-button-ghost ui-button-md" href={backHref}>إلغاء</PendingLink>)}
     </div>
     {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;

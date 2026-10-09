@@ -1,7 +1,8 @@
 'use client';
 
+import { Button, Icon, Input } from '@/components/ui';
 import Form from 'next/form';
-import { Button, Icon } from '@/components/ui';
+
 import { useEffect, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -78,7 +79,7 @@ export function DirectorySearch({ href, query, page }: { href: string; query: st
       if (input.current) submitted.current = { query: input.current.value.trim(), raw: input.current.value };
     }}>
     <label htmlFor="people-query">ابحث بالاسم أو رمز الموظف</label>
-    <div><Icon name="search" size={19} /><input ref={input} id="people-query" name="q" type="search" maxLength={100} defaultValue={query}
+    <div><Icon name="search" size={19} /><Input ref={input} id="people-query" name="q" type="search" maxLength={100} defaultValue={query}
       placeholder="ابحث بالاسم أو الرمز" onChange={scheduleSearch}
       onCompositionStart={() => { composing.current = true; cancelScheduledSearch(); }}
       onCompositionEnd={() => { composing.current = false; scheduleSearch(); }} />

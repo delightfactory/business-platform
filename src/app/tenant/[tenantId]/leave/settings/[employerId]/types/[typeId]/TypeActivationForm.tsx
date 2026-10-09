@@ -1,5 +1,6 @@
 'use client';
 
+import { Field, Input, Message } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState, useRef, useState } from 'react';
 import { useId } from 'react';
@@ -54,14 +55,13 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
     <input type="hidden" name="operationKey" value={operationKey} />
 
     <div className={styles.field}>
-      <label htmlFor="activation-reason">{targetActive ? 'سبب التفعيل' : 'سبب الإيقاف'}</label>
-      <input id="activation-reason" name="reason" required minLength={MIN_REASON_LENGTH}
+      <Field id="activation-reason" label={<>{targetActive ? 'سبب التفعيل' : 'سبب الإيقاف'}</>} required><Input id="activation-reason" name="reason" required minLength={MIN_REASON_LENGTH}
         maxLength={MAX_REASON_LENGTH} value={reason} onChange={(event) => handleReasonChange(event.target.value)}
-        disabled={pending} />
+        disabled={pending} /></Field>
       <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
     </div>
 
-    {state.error && <p className="form-message form-error" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ حفظ التغيير… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">

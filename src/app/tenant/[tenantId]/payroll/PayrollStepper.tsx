@@ -1,5 +1,5 @@
 import styles from './payroll.module.css';
-import { Icon, type IconName } from '@/components/ui';
+import { Icon, type IconName, Disclosure } from '@/components/ui';
 import { payrollStageDescriptions, type StageWork } from './stage-facts';
 
 const stageIcons: IconName[] = ['calendar', 'clock', 'file', 'wallet', 'shield', 'checkCheck'];
@@ -24,10 +24,10 @@ export function PayrollStepper({ currentStage, historical = false, work = null }
     <p className={styles.progressCurrent}>{current ? `المرحلة الحالية: ${current}` : historical ? 'المسير مستبدل ومحفوظ في التاريخ؛ راجع المسير البديل.' : 'لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.'}</p>
     <p className="field-hint">حالة المصادر تخص الحساب المحفوظ. التغطية التشغيلية والتأهيل المالي والاعتماد والصرف حالات منفصلة.</p>
     <div className={styles.progressDesktop}>{list}</div>
-    <details className={styles.progressDetails}>
-      <summary>عرض مراحل الرواتب</summary>
+    <Disclosure summary={<>عرض مراحل الرواتب</>} className={styles.progressDetails}>
+
       {list}
-    </details>
+    </Disclosure>
     {currentStage === 5 && <p className="field-hint">حالة الصرف المسجل معروضة أدناه حسب صلاحيتك؛ وجود مسير نهائي لا يعني أنه صُرف.</p>}
   </section>;
 }

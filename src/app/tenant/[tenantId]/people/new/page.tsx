@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { ButtonLink, PageHeader, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -16,18 +16,17 @@ export default async function NewEmployeePage({ params }: { params: Promise<{ te
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Unavailable tenantId={tenantId} />;
   const options = data as unknown as OnboardingOptions;
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page">
-    <Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-    <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
-      <h1>إضافة موظف</h1><p>سجّل الموظف وجهة عمله وفرعه وأجره الأساسي في خطوة واحدة.</p></div></header>
-    <section className="workspace-form-panel" aria-label="بيانات الموظف">
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+    <PageHeader title={<>إضافة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>سجّل الموظف وجهة عمله وفرعه وأجره الأساسي في خطوة واحدة.</>} />
+    <Panel  aria-label="بيانات الموظف">
       <NewEmployeeForm tenantId={tenantId} options={options} />
-    </section>
+    </Panel>
   </div></PageFrame>;
 }
 
 function Unavailable({ tenantId }: { tenantId: string }) {
-  return <PageFrame><section className="auth-card"><h1>لا يمكن إضافة موظف</h1>
+  return <PageFrame><Panel ><h1>لا يمكن إضافة موظف</h1>
     <p className="intro">تحتاج إلى صلاحية إدارة الموظفين والتوظيف والأجور، وإلى تفعيل الموارد البشرية لهذه الشركة.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</Link>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+  </Panel></PageFrame>;
 }

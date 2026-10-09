@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Badge, ButtonLink, Disclosure, EmptyState, KeyValueStrip, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -86,79 +86,55 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
 
   if (failure === 'denied') {
     return <PageFrame footer="الموارد البشرية">
-      <section className="workspace-records-panel">
-        <div className="empty-state" role="alert">
-          <h2>عرض سجل الحساب غير مصرح به</h2>
-          <p>لا تملك صلاحية عرض سجل رصيد الموظف لدى جهة العمل المختارة. راجع إدارة الموارد البشرية.</p>
-          <PendingLink className="secondary-button" href={backHref}>العودة إلى الأرصدة</PendingLink>
-        </div>
-      </section>
+      <Panel >
+        <div role="alert"><EmptyState title={<>عرض سجل الحساب غير مصرح به</>} description={<>لا تملك صلاحية عرض سجل رصيد الموظف لدى جهة العمل المختارة. راجع إدارة الموارد البشرية.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={backHref}>العودة إلى الأرصدة</PendingLink></>} /></div>
+      </Panel>
     </PageFrame>;
   }
 
   return <PageFrame footer="الموارد البشرية">
-    <header className="workspace-page-heading">
-      <div>
-        <p className="eyebrow">الموارد البشرية</p>
-        <h1>سجل حساب الرصيد</h1>
-        <p>القيود مرتّبة من الأحدث إلى الأقدم بحد أقصى {PAGE_SIZE} قيدًا في الصفحة، وكل قيد يعرض
-          أيامه الموقعة وسببه ومرجعه ونسخة السياسة المرتبطة به.</p>
-      </div>
-      <div className="workspace-form-actions">
-        <PendingLink className="secondary-button" href={backHref}>أرصدة الموظف</PendingLink>
-        <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</PendingLink>
-      </div>
-    </header>
+    <PageHeader title={<>سجل حساب الرصيد</>} eyebrow={<>الموارد البشرية</>} description={<>القيود مرتّبة من الأحدث إلى الأقدم بحد أقصى {PAGE_SIZE} قيدًا في الصفحة، وكل قيد يعرض
+          أيامه الموقعة وسببه ومرجعه ونسخة السياسة المرتبطة به.</>} action={<><div className="workspace-form-actions">
+        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={backHref}>أرصدة الموظف</PendingLink>
+        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</PendingLink>
+      </div></>} />
 
     {failure !== null
-      ? <section className="workspace-records-panel" aria-label="خطأ في تحميل سجل الحساب">
-        <div className="empty-state" role="alert">
-          <h2>{failure === 'scope' ? 'هذا الحساب غير متاح لزوج الموظف المحدد'
-            : 'تعذّر تحميل سجل الحساب'}</h2>
-          <p>لم يتغير أي رصيد. {failure === 'scope'
+      ? <Panel  aria-label="خطأ في تحميل سجل الحساب">
+        <div role="alert"><EmptyState title={<>{failure === 'scope' ? 'هذا الحساب غير متاح لزوج الموظف المحدد'
+            : 'تعذّر تحميل سجل الحساب'}</>} description={<>لم يتغير أي رصيد. {failure === 'scope'
             ? 'الرابط يشير إلى حساب لا يخص الموظف وجهة العمل المختارين.'
-            : 'أعد المحاولة أو عُد إلى الأرصدة.'}</p>
-          <PendingLink className="secondary-button" href={failure === 'scope' ? backHref : path}>
-            {failure === 'scope' ? 'العودة إلى الأرصدة' : 'إعادة المحاولة'}</PendingLink>
-        </div>
-      </section>
+            : 'أعد المحاولة أو عُد إلى الأرصدة.'}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={failure === 'scope' ? backHref : path}>
+            {failure === 'scope' ? 'العودة إلى الأرصدة' : 'إعادة المحاولة'}</PendingLink></>} /></div>
+      </Panel>
       : ledger === null
-        ? <section className="workspace-records-panel" aria-label="خطأ في قراءة سجل الحساب">
-          <div className="empty-state" role="alert">
-            <h2>تعذّر قراءة بيانات سجل الحساب</h2>
-            <p>لم يتغير أي رصيد. أعد المحاولة.</p>
-            <PendingLink className="secondary-button" href={path}>إعادة المحاولة</PendingLink>
-          </div>
-        </section>
+        ? <Panel  aria-label="خطأ في قراءة سجل الحساب">
+          <div role="alert"><EmptyState title={<>تعذّر قراءة بيانات سجل الحساب</>} description={<>لم يتغير أي رصيد. أعد المحاولة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={path}>إعادة المحاولة</PendingLink></>} /></div>
+        </Panel>
         : <>
-          <section className="workspace-records-panel" aria-labelledby="ledger-account-title">
+          <Panel  aria-labelledby="ledger-account-title">
             <div className={styles.panelHeading}>
               <h2 id="ledger-account-title">{ledger.pair.employeeName} · {ledger.account.typeName}</h2>
               <p>رقم الموظف: <bdi>{ledger.pair.employeeCode}</bdi> · جهة العمل: {ledger.pair.employerName}
                 {' · '}{employmentStatusLabel(ledger.pair)} · {employerStatusLabel(ledger.pair)}</p>
               <p className="record-meta">الفترة: {ledger.account.periodLabel} · من{' '}
                 <bdi>{ledger.account.startsOn}</bdi> إلى <bdi>{ledger.account.endsOn}</bdi></p>
-              <p>الرصيد الحالي للحساب كاملًا: <bdi>{formatDays(ledger.account.balanceDays)}</bdi> يوم.
-                هذا الرقم هو رصيد الحساب الذي يعيده الخادم، وليس مجموع القيود المعروضة في هذه الصفحة؛
-                الصفحة تعرض آخر القيود فقط.</p>
+              <KeyValueStrip items={[{ label: 'الرصيد الحالي', value: <>{formatDays(ledger.account.balanceDays)} يوم</> }, { label: 'فترة الرصيد', value: ledger.account.periodLabel }]} />
+              <Disclosure summary="كيف يُقرأ الرصيد؟"><p>هذا الرقم هو رصيد الحساب كاملًا الذي يعيده الخادم، وليس مجموع القيود المعروضة في هذه الصفحة؛ الصفحة تعرض آخر القيود فقط.</p></Disclosure>
             </div>
             {ledger.items.length === 0
-              ? <div className="empty-state">
-                <h2>{scope.cursor === null ? 'لا توجد قيود على هذا الحساب بعد' : 'لا توجد قيود أقدم في هذه الصفحة'}</h2>
-                <p>{scope.cursor === null
+              ? <div ><EmptyState title={<>{scope.cursor === null ? 'لا توجد قيود على هذا الحساب بعد' : 'لا توجد قيود أقدم في هذه الصفحة'}</>} description={<>{scope.cursor === null
                   ? 'لم يُسجَّل أي قيد على حساب الرصيد هذا حتى الآن.'
-                  : 'عُد إلى أحدث القيود لعرض أحدث حركة على الحساب.'}</p>
-                <PendingLink className="secondary-button" href={scope.cursor === null ? backHref : newerHref}>
-                  {scope.cursor === null ? 'العودة إلى الأرصدة' : 'أحدث القيود'}</PendingLink>
-              </div>
+                  : 'عُد إلى أحدث القيود لعرض أحدث حركة على الحساب.'}</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={scope.cursor === null ? backHref : newerHref}>
+                  {scope.cursor === null ? 'العودة إلى الأرصدة' : 'أحدث القيود'}</PendingLink></>} /></div>
               : <>
-                <ul className="record-list">{ledger.items.map((entry) => <li className="record-card"
+                <ul className="record-list">{ledger.items.map((entry) => <RecordCard
                   key={entry.entryId}>
                   <div className="record-main">
                     <div className="record-title-row">
                       <h3>{entryKindLabel(entry.entryKind)}</h3>
-                      <span className={`entity-status ${entry.deltaDays >= 0 ? 'is-active' : 'is-inactive'}`}>
-                        {formatSignedDays(entry.deltaDays)} يوم</span>
+                      <Badge className={`entity-status ${entry.deltaDays >= 0 ? 'is-active' : 'is-inactive'}`}>
+                        {formatSignedDays(entry.deltaDays)} يوم</Badge>
                     </div>
                     <p className="record-meta"><bdi>{formatInstant(entry.createdAt)}</bdi>
                       {entry.requestConsumption ? ' · طلب إجازة' : entry.reversalOfEntryId ? ' · إعادة رصيد' : entry.sourceReference === '' ? '' : ` · المرجع: ${entry.sourceReference}`}</p>
@@ -180,21 +156,19 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                       رُبط باعتماد طلب إجازة:{' '}
                       <PendingLink href={detailHref(tenantId, entry.requestConsumption.requestId)}>
                         فتح الطلب</PendingLink>
-                      {' · '}<span className={`entity-status ${stateClass(entry.requestConsumption.requestState)}`}>
-                        {stateLabel(entry.requestConsumption.requestState)}</span>
+                      {' · '}<Badge className={`entity-status ${stateClass(entry.requestConsumption.requestState)}`}>
+                        {stateLabel(entry.requestConsumption.requestState)}</Badge>
                       {' · '}الأيام المستهلكة: <bdi>{formatDays(entry.requestConsumption.units)}</bdi>
                       {' · '}تاريخ الإجازة: <bdi>{entry.requestConsumption.leaveDate}</bdi>
                     </p>}
-                    {entry.reversalEntries.length > 0 && <details className="task-disclosure">
-                      <summary>قيود أعادت رصيد هذا القيد</summary>
+                    {entry.reversalEntries.length > 0 && <Disclosure  summary={<>قيود أعادت رصيد هذا القيد</>}>
                       {entry.reversalEntries.map((reversal) => <p className="record-meta" key={reversal.entryId}>
                         {entryKindLabel(reversal.entryKind)} · {formatSignedDays(reversal.deltaDays)} يوم
                         {reversal.correctionId === null ? '' : ' · ضمن تصحيح'}
                         {' · '}معرّف قيد الإرجاع: <bdi>{reversal.entryId}</bdi>
                       </p>)}
-                    </details>}
-                    {entry.correctionLinks.length > 0 && <details className="task-disclosure">
-                      <summary>تفاصيل التصحيح المرتبط</summary>
+                    </Disclosure>}
+                    {entry.correctionLinks.length > 0 && <Disclosure  summary={<>تفاصيل التصحيح المرتبط</>}>
                       {entry.correctionLinks.map((correction) => <div key={correction.correctionId}>
                         <p className="record-meta">سبب التصحيح: {correction.reason}
                           {' · '}سُجّل في <bdi>{formatInstant(correction.createdAt)}</bdi></p>
@@ -209,9 +183,8 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                             فتح الطلب البديل</PendingLink>
                         </p>}
                       </div>)}
-                    </details>}
-                    <details className="task-disclosure">
-                      <summary>تفاصيل تدقيق هذا القيد</summary>
+                    </Disclosure>}
+                    <Disclosure  summary={<>تفاصيل تدقيق هذا القيد</>}>
                       {entry.sourceReference && <p className="record-meta">مرجع المصدر: <bdi>{entry.sourceReference}</bdi></p>}
                       <p className="record-meta">معرّف القيد: <bdi>{entry.entryId}</bdi></p>
                       {entry.reversalOfEntryId && <p className="record-meta">معرّف القيد الأصلي: <bdi>{entry.reversalOfEntryId}</bdi></p>}
@@ -222,23 +195,23 @@ export default async function LeaveBalanceLedgerPage({ params, searchParams }: {
                         <bdi>{entry.sourceVersionId}</bdi></p>}
                       {entry.typeVersion && <p className="record-meta">معرّف نسخة السياسة:{' '}
                         <bdi>{entry.typeVersion.id}</bdi></p>}
-                    </details>
+                    </Disclosure>
                   </div>
-                </li>)}</ul>
+                </RecordCard>)}</ul>
                 <nav className={styles.pagination} aria-label="صفحات سجل الحساب">
                   <span>{scope.cursor === null ? 'أحدث القيود' : 'صفحة من قيود أقدم'}</span>
                   <span className={styles.paginationNav}>
-                    {scope.cursor !== null && <PendingLink className="secondary-button"
+                    {scope.cursor !== null && <PendingLink className="ui-button ui-button-ghost ui-button-md"
                       href={newerHref}>أحدث القيود</PendingLink>}
-                    {ledger.hasMore && olderHref && <PendingLink className="primary-button"
+                    {ledger.hasMore && olderHref && <PendingLink className="ui-button ui-button-solid ui-button-md"
                       href={olderHref}>الأقدم</PendingLink>}
                   </span>
                 </nav>
               </>}
-          </section>
+          </Panel>
         </>}
 
-    <PendingLink className="secondary-button" href={backHref}>العودة إلى أرصدة الموظف</PendingLink>
+    <PendingLink className="ui-button ui-button-ghost ui-button-md" href={backHref}>العودة إلى أرصدة الموظف</PendingLink>
   </PageFrame>;
 }
 
@@ -249,10 +222,10 @@ function Status({ tenantId, title, detail, retryPath }: {
   retryPath?: string;
 }) {
   return <PageFrame footer="الموارد البشرية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retryPath && <Link className="secondary-button" href={retryPath}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</Link>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
-    </section>
+    <Panel ><h1>{title}</h1><p className="intro">{detail}</p>
+      {retryPath && <ButtonLink variant="ghost"  href={retryPath}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</ButtonLink>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+    </Panel>
   </PageFrame>;
 }

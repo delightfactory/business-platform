@@ -1,3 +1,4 @@
+import { Disclosure } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {displayDate} from '../rules';
 
@@ -40,8 +41,8 @@ export function TimeCoverageExplanation({summary,days}:{summary?:TimeCoverageSum
     </ul>}
     <p>اليوم الناقص أو المعلّق لا يُعتبر غيابًا أو صفر استحقاق. اكتمال السجلات وحده لا يتيح الاعتماد المالي.</p>
     {!complete&&<p>راجع الأيام الناقصة مع المسؤول الموضّح في التفاصيل، ثم أعد حساب مراجعة الراتب.</p>}
-    {days&&days.length>0&&<details><summary>أيام الفترة وحالة سجلاتها ({count(days.length)})</summary><ul>{days.map(day=><li key={day.date}>
+    {days&&days.length>0&&<Disclosure summary={<>أيام الفترة وحالة سجلاتها ({count(days.length)})</>}><ul>{days.map(day=><li key={day.date}>
       {displayDate(day.date)} · {dayStates[day.state]??'يلزم مراجعة حالة اليوم مع مسؤول الحضور'}
-    </li>)}</ul></details>}
+    </li>)}</ul></Disclosure>}
   </section>;
 }

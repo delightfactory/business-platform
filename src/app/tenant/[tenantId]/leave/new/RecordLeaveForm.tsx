@@ -1,5 +1,6 @@
 'use client';
 
+import { Button, Checkbox, Field, Message, Select, Textarea } from '@/components/ui';
 import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -128,8 +129,8 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
     <h2>تم تسجيل طلب الإجازة</h2>
     <p>افتح الطلب لمراجعة حالته الحالية. الاعتماد خطوة منفصلة بصلاحية اعتماد الإجازات.</p>
     <div className="workspace-form-actions">
-      <PendingLink className="primary-button" href={detailHref(tenantId, submitState.requestId)}>فتح الطلب</PendingLink>
-      <button type="button" className="secondary-button" onClick={() => window.location.reload()}>تسجيل طلب آخر</button>
+      <PendingLink className="ui-button ui-button-solid ui-button-md" href={detailHref(tenantId, submitState.requestId)}>فتح الطلب</PendingLink>
+      <Button variant="ghost" type="button"  onClick={() => window.location.reload()}>تسجيل طلب آخر</Button>
     </div>
   </div>;
 
@@ -149,20 +150,19 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
       <input type="hidden" name="halfDayPart" value={halfDayPart} />
       <input type="hidden" name="operationKey" value={operationKey} />
 
-      <label htmlFor="leave-type">نوع الإجازة</label>
-      <select id="leave-type" name="leaveTypeId" value={leaveTypeId} onChange={handleTypeChange} disabled={submitting} required>
+      <Field id="leave-type" label={<>نوع الإجازة</>} required><Select id="leave-type" name="leaveTypeId" value={leaveTypeId} onChange={handleTypeChange} disabled={submitting} required>
         <option value="" disabled>اختر نوع الإجازة</option>
         {leaveTypeId && !selectedType && <option value={leaveTypeId}>النوع المحفوظ لم يعد ضمن الخيارات المتاحة</option>}
         {types.map((type) => <option key={type.id} value={type.id}>{type.name}</option>)}
-      </select>
+      </Select></Field>
       <p className="field-hint">الفترة المختارة: <bdi>{startDate}</bdi> إلى <bdi>{endDate}</bdi>
         {' · '}{dayCount(startDate, endDate)} يومًا. أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة وتقويم الجهة.</p>
 
       {halfDayBlocked
-        ? <p className="form-message" role="status">
+        ? <Message tone="info"  role="status">
           تعذر تحميل إعدادات نصف اليوم لهذا التاريخ. أعد تحميل الخيارات قبل تسجيل إجازة مدتها نصف يوم.
-          <button type="button" className="secondary-button" onClick={() => window.location.reload()}>إعادة تحميل الخيارات</button>
-        </p>
+          <Button variant="ghost" type="button"  onClick={() => window.location.reload()}>إعادة تحميل الخيارات</Button>
+        </Message>
         : singleDate && selectedType === null
           ? <p className="field-hint" role="status">اختر نوع الإجازة لعرض خيار نصف يوم إن كان متاحًا في هذا اليوم.</p>
           : singleDate && !halfDayAvailable
@@ -171,35 +171,34 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
               ? <p className="field-hint" role="status">تسجيل نصف يوم متاح عندما يكون تاريخ البداية والنهاية متطابقين.</p>
               : null}
       {singleDate && (halfDay || (!halfDayBlocked && halfDayAvailable)) && <label className="check-option">
-        <input type="checkbox" checked={halfDay} onChange={handleHalfDayChange} disabled={submitting} />
+        <Checkbox  checked={halfDay} onChange={handleHalfDayChange} disabled={submitting} />
         <span>نصف يوم — يُحتسب وفق سياسة نوع الإجازة في هذا اليوم</span>
       </label>}
       {halfDay && partChoices && <>
         <label htmlFor="leave-half-day-part">جزء نصف اليوم</label>
-        <select id="leave-half-day-part" value={halfDayPart} onChange={handlePartChange} disabled={submitting}>
+        <Select id="leave-half-day-part" value={halfDayPart} onChange={handlePartChange} disabled={submitting}>
           <option value="first">{halfDayPartLabel('first')}</option>
           <option value="second">{halfDayPartLabel('second')}</option>
-        </select>
+        </Select>
         <p className="field-hint">اختر الجزء الذي يشمله نصف يوم حسب دوام الموظف في هذا اليوم.</p>
       </>}
-      {notice && <p className={noticeTone ? 'form-message' : 'field-hint'} role="status">{notice}</p>}
+      {notice && <Message tone={noticeTone ? 'info' : 'info'} role="status">{notice}</Message>}
 
-      <label htmlFor="leave-reason">سبب الإجازة</label>
-      <textarea id="leave-reason" name="reason" value={reason} onChange={(event) => {
+      <Field id="leave-reason" label={<>سبب الإجازة</>} required><Textarea id="leave-reason" name="reason" value={reason} onChange={(event) => {
         setReason(event.target.value);
         updateIntent(leaveTypeId, halfDay, halfDayPart, event.target.value);
       }}
         disabled={submitting} required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
-        aria-invalid={Boolean(submitState.error)} />
-      {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">
+        aria-invalid={Boolean(submitState.error)} /></Field>
+      {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">
         {submitState.error}
-      </p>}
+      </Message>}
       {submitting && <p className="field-hint" role="status">جارٍ تسجيل الطلب… لا تغلق الصفحة.</p>}
 
       <div className="workspace-form-actions">
         <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="تسجيل الطلب" pendingLabel="جارٍ التسجيل…" />
-        {submitting ? <span className="secondary-button" aria-disabled="true">إلغاء</span>
-          : <PendingLink className="secondary-button" href={cancelHref}>إلغاء</PendingLink>}
+        {submitting ? <span className="ui-button ui-button-ghost ui-button-md" aria-disabled="true">إلغاء</span>
+          : <PendingLink className="ui-button ui-button-ghost ui-button-md" href={cancelHref}>إلغاء</PendingLink>}
       </div>
       <p className="field-hint">يُسجَّل الطلب بحالة «مُقدَّم وبانتظار القرار»، ولا يُحجز أي رصيد من رصيد الموظف قبل الاعتماد.</p>
       {storageUnavailable && <p className="field-hint" role="status">حفظ المسودة بعد تحديث الصفحة غير متاح في هذا المتصفح. عند تعذر تأكيد النتيجة، أعد المحاولة من هذه الصفحة دون تحديثها.</p>}

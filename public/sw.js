@@ -7,7 +7,7 @@ const ASSETS = [
   ],
   [
     "/pwa/offline.css",
-    "sha256-NqlocxHgnM94p3aW3RWb9d55uw5y7+X/U7hPxvH0gNk="
+    "sha256-ghHBX8Cq11sfYFEQmxbtBOC0xhrjeNo9XmsAO88bCus="
   ],
   [
     "/pwa/offline.js",
@@ -15,7 +15,7 @@ const ASSETS = [
   ],
   [
     "/pwa/tokens.css",
-    "sha256-vg7L5Fq/+93TcZVj08kECySQrFUwro2FAiBabziWFw8="
+    "sha256-7g8efnhuocX5OTLcrAfndqba3V8CJarTET4CdL6+Nyg="
   ],
   [
     "/pwa/alexandria-arabic-500-normal.woff2",

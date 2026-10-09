@@ -1,4 +1,5 @@
 'use client';
+import { Message } from '@/components/ui';
 import { ButtonLink, Input } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -19,8 +20,8 @@ export function InviteMemberForm({ tenantId, employeeId, idempotencyKey }: { ten
     <label htmlFor="member-email">البريد الإلكتروني</label>
     <Input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} autoFocus defaultValue={state.email} aria-invalid={Boolean(state.error)} aria-describedby={state.error ? 'member-invite-error' : undefined} />
     <p className="field-hint">سيدخل بدور «عضو». يمكنك تعديل دوره بعد قبوله الدعوة.</p>
-    {state.error && <p id="member-invite-error" className="form-message error-message" role="alert">{state.error}</p>}
+    {state.error && <Message tone="bad" id="member-invite-error"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
-      <ButtonLink variant="ghost" className="secondary-button" href={employeeId ? `/tenant/${tenantId}/people/${employeeId}` : `/tenant/${tenantId}/users`}>إلغاء</ButtonLink></div>
+      <ButtonLink variant="ghost"  href={employeeId ? `/tenant/${tenantId}/people/${employeeId}` : `/tenant/${tenantId}/users`}>إلغاء</ButtonLink></div>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

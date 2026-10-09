@@ -1,3 +1,4 @@
+import { Badge, Button, ButtonLink, EmptyState, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -46,50 +47,42 @@ export default async function PeopleOrganizationPage({ params, searchParams }: {
 
   return <PageFrame footer="الموارد البشرية">
     {success && <FeedbackToast key={queryParams.state} message={success} />}
-    <header className="workspace-page-heading"><div><p className="eyebrow">الموارد البشرية</p>
-      <h1>الأقسام والوظائف</h1><p>رتّب أقسام الشركة ووظائفها للاستخدام في ملفات الموظفين وتكليفاتهم.</p></div>
-      {canManage && <Link className="primary-button" href={`${base}/${kind}/new`}>إضافة {noun}</Link>}
-    </header>
+    <PageHeader title={<>الأقسام والوظائف</>} eyebrow={<>الموارد البشرية</>} description={<>رتّب أقسام الشركة ووظائفها للاستخدام في ملفات الموظفين وتكليفاتهم.</>} action={<>{canManage && <ButtonLink variant="solid"  href={`${base}/${kind}/new`}>إضافة {noun}</ButtonLink>}</>} />
     <nav className="workspace-view-tabs" aria-label="نوع السجل">
       <Link href={`${base}?kind=departments`} aria-current={kind==='departments'?'page':undefined}>الأقسام</Link>
       <Link href={`${base}?kind=jobs`} aria-current={kind==='jobs'?'page':undefined}>الوظائف</Link>
     </nav>
-    <section className="workspace-records-panel org-catalog-panel" aria-label={kind==='departments'?'دليل الأقسام':'دليل الوظائف'}>
+    <Panel className="org-catalog-panel" aria-label={kind==='departments'?'دليل الأقسام':'دليل الوظائف'}>
       <form method="get" role="search" className="people-search-form">
         <input type="hidden" name="kind" value={kind} />
         <label htmlFor="org-catalog-query">ابحث بالاسم أو الرمز</label>
-        <div><input id="org-catalog-query" name="q" type="search" maxLength={100} defaultValue={rawQuery} />
-          <button className="secondary-button" type="submit">بحث</button></div>
+        <div><Input id="org-catalog-query" name="q" type="search" maxLength={100} defaultValue={rawQuery} />
+          <Button variant="ghost"  type="submit">بحث</Button></div>
       </form>
-      {invalidQuery ? <p className="form-message form-error" role="alert">يجب ألا يتجاوز البحث 100 حرف.</p>
-        : invalidPage ? <p className="form-message form-error" role="alert">رقم الصفحة غير صالح.</p>
-          : failed ? <div className="empty-state" role="alert"><h2>تعذر تحميل القائمة</h2>
-            <p>تحقق من الاتصال والصلاحية، ثم أعد المحاولة.</p>
-            <Link className="secondary-button" href={listingHref(tenantId,kind,rawQuery,page)}>إعادة المحاولة</Link></div>
-            : items.length === 0 ? <div className="empty-state"><h2>{rawQuery ? 'لا توجد نتائج مطابقة' : kind==='departments'?'لا توجد أقسام مسجلة':'لا توجد وظائف مسجلة'}</h2>
-              <p>{rawQuery ? 'جرّب اسمًا أو رمزًا مختلفًا.' : canManage ? `أضف ${kind==='departments'?'قسمًا':'وظيفة'} لتظهر في ملفات الموظفين.` : 'اطلب من مسؤول الموارد البشرية إضافة السجلات المطلوبة.'}</p>
-              {canManage && !rawQuery && <Link className="secondary-button" href={`${base}/${kind}/new`}>إضافة {noun}</Link>}
-            </div>
+      {invalidQuery ? <Message tone="bad"  role="alert">يجب ألا يتجاوز البحث 100 حرف.</Message>
+        : invalidPage ? <Message tone="bad"  role="alert">رقم الصفحة غير صالح.</Message>
+          : failed ? <div role="alert"><EmptyState title={<>تعذر تحميل القائمة</>} description={<>تحقق من الاتصال والصلاحية، ثم أعد المحاولة.</>} action={<><ButtonLink variant="ghost"  href={listingHref(tenantId,kind,rawQuery,page)}>إعادة المحاولة</ButtonLink></>} /></div>
+            : items.length === 0 ? <div ><EmptyState title={<>{rawQuery ? 'لا توجد نتائج مطابقة' : kind==='departments'?'لا توجد أقسام مسجلة':'لا توجد وظائف مسجلة'}</>} description={<>{rawQuery ? 'جرّب اسمًا أو رمزًا مختلفًا.' : canManage ? `أضف ${kind==='departments'?'قسمًا':'وظيفة'} لتظهر في ملفات الموظفين.` : 'اطلب من مسؤول الموارد البشرية إضافة السجلات المطلوبة.'}</>} action={<>{canManage && !rawQuery && <ButtonLink variant="ghost"  href={`${base}/${kind}/new`}>إضافة {noun}</ButtonLink>}</>} /></div>
               : <>
-                <ul className={styles.catalogGrid}>{items.map((item) => <li className="record-card" key={item.id}>
+                <ul className={styles.catalogGrid}>{items.map((item) => <RecordCard  key={item.id}>
                   <div className="record-main"><div className="record-title-row"><h2>{item.name}</h2>
-                    <span className={`entity-status ${item.effectively_active?'is-active':'is-inactive'}`}>
-                      {item.effectively_active?'نشط':item.is_active?'غير متاح للتعيين':'غير نشط'}</span></div>
+                    <Badge className={`entity-status ${item.effectively_active?'is-active':'is-inactive'}`}>
+                      {item.effectively_active?'نشط':item.is_active?'غير متاح للتعيين':'غير نشط'}</Badge></div>
                     <p className="record-meta">الرمز: <bdi>{item.code}</bdi></p>
                     {kind==='departments' && item.parent_name && <p className="record-meta">القسم الأعلى: {item.parent_name}</p>}
                     {kind==='jobs' && item.department_name && <p className="record-meta">القسم: {item.department_name}</p>}
                     {item.is_active && !item.effectively_active && <p className="record-meta">تعطّل هذا الاختيار لأن القسم المرتبط به غير نشط.</p>}
                   </div>
-                  {canManage && <Link className="secondary-button" href={`${base}/${kind}/${item.id}`}>تعديل</Link>}
-                </li>)}</ul>
+                  {canManage && <ButtonLink variant="ghost"  href={`${base}/${kind}/${item.id}`}>تعديل</ButtonLink>}
+                </RecordCard>)}</ul>
                 <nav className="people-pagination" aria-label="صفحات القائمة">
                   <span>الصفحة {page}</span>
-                  {page>1 && <Link className="secondary-button" href={previousHref}>السابق</Link>}
-                  {result?.has_more && page<MAX_PAGE && <Link className="secondary-button" href={nextHref}>التالي</Link>}
+                  {page>1 && <ButtonLink variant="ghost"  href={previousHref}>السابق</ButtonLink>}
+                  {result?.has_more && page<MAX_PAGE && <ButtonLink variant="ghost"  href={nextHref}>التالي</ButtonLink>}
                 </nav>
               </>}
-    </section>
-    <p className="org-catalog-back"><Link className="back-link" href={`/tenant/${tenantId}/people`}>العودة إلى دليل الموظفين</Link></p>
+    </Panel>
+    <p className="org-catalog-back"><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى دليل الموظفين</ButtonLink></p>
   </PageFrame>;
 }
 
@@ -108,6 +101,6 @@ function successText(state?:string) {
   return state?messages[state]:null;
 }
 function Unavailable({tenantId,title,detail}:{tenantId:string;title:string;detail:string}) {
-  return <PageFrame><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>العودة إلى دليل الموظفين</Link></section></PageFrame>;
+  return <PageFrame><Panel ><h1>{title}</h1><p className="intro">{detail}</p>
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى دليل الموظفين</ButtonLink></Panel></PageFrame>;
 }

@@ -1,3 +1,5 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
@@ -36,12 +38,12 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
 
   return (
     <main className="app-shell">
-      {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
-      {partialRead && <p className="form-message" role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <ButtonLink variant="ghost" href="/operator" className="secondary-button">إعادة قراءة المهام</ButtonLink></p>}
+      {(query.state === 'updated-self' || query.state === 'revoked-self') && <Message tone="info"  role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</Message>}
+      {partialRead && <Message tone="info"  role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <ButtonLink variant="ghost" href="/operator" >إعادة قراءة المهام</ButtonLink></Message>}
       <div className="operator-home" aria-labelledby="operator-title">
         <header className="operator-home-heading">
           <p className="eyebrow">مساحة التشغيل</p>
-          <h1 id="operator-title">تشغيل المنصة</h1>
+          <PageHeader id="operator-title" title={<>تشغيل المنصة</>} />
           <p>اختر المهمة التي تريد إنجازها. تظهر هنا الأعمال المسموحة لحسابك فقط.</p>
         </header>
 
@@ -51,7 +53,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <h2 id="new-company-title">شركة جديدة</h2>
             <p>أرسل دعوة للمسؤول الأول لتُنشأ الشركة بفرعها وحدود استخدامها عند قبولها.</p>
           </div>
-          <ButtonLink variant="solid" className="primary-button" href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></ButtonLink>
+          <ButtonLink variant="solid"  href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></ButtonLink>
         </section>}
 
         <div className="operator-home-grid">
@@ -88,9 +90,9 @@ function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></header>
-      <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
-        <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+      <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
+        <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
 
     </main>
   );

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { ButtonLink, Panel } from '@/components/ui';
 import type { ReactNode } from 'react';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { readPaymentFacts, recordedPaymentDescription } from './payment-facts';
@@ -12,13 +12,13 @@ type Props = {
 export async function RecordedPaymentNotice({ tenantId, employer, output, period, query }: Props) {
   const context = { employer, period: period.id, ...(query.q ? { q: query.q } : {}), ...(query.review_q ? { review_q: query.review_q } : {}) };
   const retry = `/tenant/${tenantId}/payroll?${new URLSearchParams(context)}#payroll-recorded-payment`;
-  const panel = (content: ReactNode) => <section id="payroll-recorded-payment" className={styles.card} aria-labelledby="payroll-recorded-payment-title">
+  const panel = (content: ReactNode) => <Panel id="payroll-recorded-payment" className={styles.card} aria-labelledby="payroll-recorded-payment-title">
     <h2 id="payroll-recorded-payment-title">حالة الصرف المسجل</h2>{content}
     <p className="field-hint">هذه قيود دفعات خارجية مسجلة في المنصة؛ لا تثبت تنفيذ تحويل بنكي أو إتاحة القسائم.</p>
-  </section>;
+  </Panel>;
   const failure = (denied = false) => panel(<>
     <p>{denied ? 'هذا الحساب غير مخوّل لعرض الدفعات لهذا المخرج. راجع مسؤول الشركة؛ حالة الصرف غير مؤكدة هنا.' : 'تعذر التحقق من الدفعات المسجلة؛ حالة الصرف غير مؤكدة هنا.'}</p>
-    {!denied && <Link className="secondary-button" prefetch={false} href={retry}>إعادة التحقق من حالة الصرف</Link>}
+    {!denied && <ButtonLink variant="ghost"  prefetch={false} href={retry}>إعادة التحقق من حالة الصرف</ButtonLink>}
   </>);
   let result;
   try {

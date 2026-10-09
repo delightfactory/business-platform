@@ -1,3 +1,4 @@
+import { Disclosure, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -93,32 +94,27 @@ export default async function CalendarDetailPage({ params, searchParams }: {
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}
     <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-    <header className="workspace-page-heading"><div>
-      <p className="eyebrow">تقويمات الإجازات</p>
-      <h1>{calendar.name}</h1>
-      <p>{calendarCoverageText(calendar)}.
-        يحتفظ كل تعديل بالإعدادات السابقة وتاريخ سريانها.</p>
-      <details><summary>الرمز المرجعي</summary><bdi>{calendar.code}</bdi></details>
-    </div></header>
+    <PageHeader title={<>{calendar.name}</>} eyebrow="تقويمات الإجازات" description={<>{calendarCoverageText(calendar)}. يحتفظ كل تعديل بالإعدادات السابقة وتاريخ سريانها.</>} />
+<Disclosure summary="الرمز المرجعي"><bdi>{calendar.code}</bdi></Disclosure>
 
     <div className={styles.notices}>
-      {notice && notice.tone !== 'success' && <p
-        className={notice.tone === 'error' ? 'form-message form-error' : 'form-message'}
+      {notice && notice.tone !== 'success' && <Message
+        tone={notice.tone === 'error' ? 'bad' : 'info'}
         role={notice.tone === 'error' ? 'alert' : 'status'}>
         {notice.message}
-      </p>}
-      {!canEdit && !employer.is_active && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && !employer.is_active && <Message tone="info"  role="status">
         هذه الجهة موقوفة: يمكنك مراجعة الإصدارات المحفوظة دون حفظ إصدار جديد.
-      </p>}
-      {!canEdit && employer.is_active && !access.canManage && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && employer.is_active && !access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إصدارات التقويم دون تعديلها.
-      </p>}
-      {!canEdit && employer.is_active && access.canManage && !access.newWorkEnabled && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && employer.is_active && access.canManage && !access.newWorkEnabled && <Message tone="info"  role="status">
         خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن حفظ إصدار جديد. تبقى الإصدارات المحفوظة قابلة للمراجعة.
-      </p>}
+      </Message>}
     </div>
 
-    <section className="workspace-records-panel" aria-labelledby="calendar-versions-title">
+    <Panel  aria-labelledby="calendar-versions-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="calendar-versions-title">إصدارات التقويم</h2>
@@ -126,9 +122,8 @@ export default async function CalendarDetailPage({ params, searchParams }: {
         </div>
       </div>
       {versions.length === 0
-        ? <div className="empty-state"><h2>لا توجد إصدارات لهذا التقويم</h2>
-          <p>أعِد فتح صفحة الإعدادات؛ إن استمر عدم وجود إصدار فراجع إدارة الموارد البشرية.</p></div>
-        : <ul className="record-list">{versions.map((version) => <li className="record-card" key={version.id}>
+        ? <div ><EmptyState title={<>لا توجد إصدارات لهذا التقويم</>} description={<>أعِد فتح صفحة الإعدادات؛ إن استمر عدم وجود إصدار فراجع إدارة الموارد البشرية.</>} /></div>
+        : <ul className="record-list">{versions.map((version) => <RecordCard  key={version.id}>
           <div className="record-main">
             <div className="record-title-row">
               <h3>{versionText(version.version)} · {effectiveRangeText(version.effective_from, version.effective_until)}</h3>
@@ -137,17 +132,16 @@ export default async function CalendarDetailPage({ params, searchParams }: {
               {' · '}العطلات: {version.holidays.length}</p>
             <p className="record-meta">المنطقة الزمنية: <bdi>{version.timezone}</bdi>
               {' · '}المصدر: <bdi>{version.source}</bdi></p>
-            {version.holidays.length > 0 && <details className={styles.versionHolidays}>
-              <summary>عرض عطلات هذا الإصدار ({version.holidays.length})</summary>
+            {version.holidays.length > 0 && <Disclosure className={styles.versionHolidays} summary={<>عرض عطلات هذا الإصدار ({version.holidays.length})</>}>
               <ul className={styles.versionHolidayList}>
                 {version.holidays.map((holiday, index) => <li key={`${holiday.date}-${index}`}>
                   <bdi>{holiday.date}</bdi> · <bdi>{holiday.name}</bdi>
                 </li>)}
               </ul>
-            </details>}
+            </Disclosure>}
           </div>
-        </li>)}</ul>}
-    </section>
+        </RecordCard>)}</ul>}
+    </Panel>
 
     {canEdit && initial && <SettingsTask label="إصدار جديد من تاريخ لاحق">
       <ReviseCalendarForm tenantId={tenantId} employerId={employerId} calendarId={calendarId}

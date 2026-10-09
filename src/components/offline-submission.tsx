@@ -1,6 +1,7 @@
 'use client';
 
 import { useReducer, useSyncExternalStore, type FormEvent } from 'react';
+import { Message } from './ui/primitives';
 
 function deviceIsOffline() {
   return typeof navigator !== 'undefined' && navigator.onLine === false;
@@ -32,11 +33,11 @@ export function useOfflineSubmission() {
 }
 
 export function OfflineSubmissionNotice({ id, purpose = 'submission' }: { id: string; purpose?: 'submission' | 'recovery' | 'continuation' }) {
-  return <p id={id} className="form-message" role="status">
+  return <Message id={id} role="status">
     {purpose === 'continuation'
       ? 'الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال للمتابعة.'
       : purpose === 'recovery'
       ? 'الجهاز يبلغ أن الاتصال منقطع. أعد الاتصال ثم تحقق من نتيجة المحاولة السابقة.'
       : 'الجهاز يبلغ أن الاتصال منقطع. يمكنك مراجعة البيانات؛ أعد الاتصال ثم أرسل بنفسك.'}
-  </p>;
+  </Message>;
 }

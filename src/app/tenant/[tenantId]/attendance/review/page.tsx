@@ -1,4 +1,4 @@
-import { Avatar } from '@/components/ui';
+import { Avatar, Panel, PageHeader, ButtonLink, Message, Input, Button, RecordCard, EmptyState, Badge, Field } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -35,36 +35,36 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
   const count = queue.counts ?? { exception_count: 0, clean_ready: 0, overtime_pending: 0 };
 
   return <PageFrame footer="مراجعة الحضور وسجل العمل">
-    <section className={`work-card task-page attendance-review-page ${styles.reviewPage}`} aria-labelledby="attendance-review-title">
+    <Panel className={` task-page attendance-review-page ${styles.reviewPage}`} aria-labelledby="attendance-review-title">
       <p className="eyebrow">مهام مراجعة اليوم</p>
-      <div className="workspace-page-heading"><div><h1 id="attendance-review-title">مراجعة الحضور</h1><p>ابدأ بالحالات التي تحتاج قرارًا، واعتمد الأيام المكتملة بعد مراجعة بياناتها. لا تُعتمد الحالات الاستثنائية جماعيًا.</p></div>
-        <Link className="secondary-button" href={`/tenant/${tenantId}/attendance?date=${encodeURIComponent(date)}`}>العودة إلى اليوم</Link>
+      <div className="workspace-page-heading"><div><PageHeader id="attendance-review-title" title={<>مراجعة الحضور</>} description={<> ابدأ بالحالات التي تحتاج قرارًا، واعتمد الأيام المكتملة بعد مراجعة بياناتها. لا تُعتمد الحالات الاستثنائية جماعيًا. </>} /></div>
+        <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance?date=${encodeURIComponent(date)}`}>العودة إلى اليوم</ButtonLink>
       </div>
-      {access.entitlement_enabled !== true && <p className="form-message">وحدة الحضور غير مفعلة. هذه القائمة للقراءة فقط.</p>}
-      <div className={styles.toolbar}><form method="get" className={styles.dateForm}><label htmlFor="review-date">تاريخ العمل<input id="review-date" type="date" name="date" defaultValue={date} /></label><input type="hidden" name="filter" value={filter} /><button className="primary-button" type="submit">عرض التاريخ</button></form></div>
+      {access.entitlement_enabled !== true && <Message tone="info" >وحدة الحضور غير مفعلة. هذه القائمة للقراءة فقط.</Message>}
+      <div className={styles.toolbar}><form method="get" className={styles.dateForm}><Field  id="review-date" label={<>تاريخ العمل</>}><Input id="review-date" type="date" name="date" defaultValue={date} /></Field><input type="hidden" name="filter" value={filter} /><Button variant="solid"  type="submit">عرض التاريخ</Button></form></div>
       <nav className="attendance-review-filters" aria-label="تصفية قائمة المراجعة">
         <FilterLink tenantId={tenantId} date={date} active={filter === 'all'} filter="all" label="الكل" />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'exceptions'} filter="exceptions" label={`استثناءات تحتاج قرارًا · ${count.exception_count}`} />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'ready'} filter="ready" label={`جاهز للاعتماد · ${count.clean_ready}`} />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'overtime'} filter="overtime" label={`إضافي بانتظار القرار · ${count.overtime_pending}`} />
       </nav>
-      {queue.items.length === 0 ? <div className="empty-state"><h2>لا توجد مهام في هذا العرض</h2><p>جرّب تصفية أخرى أو اختر تاريخًا مختلفًا.</p></div>
+      {queue.items.length === 0 ? <EmptyState title={<>لا توجد مهام في هذا العرض</>} description={<>جرّب تصفية أخرى أو اختر تاريخًا مختلفًا.</>} />
       : filter === 'ready' && canBulkApprove && queue.items.some((row) => row.can_bulk_approve)
         ? <AttendanceBulkApprovalForm tenantId={tenantId} date={date} rows={queue.items.filter((row) => row.can_bulk_approve)} />
         : <ul className="record-list attendance-review-list">
-        {queue.items.map((row) => <li className="record-card" key={row.id}>
-          <div className="record-main"><div className="record-title-row"><Avatar name={row.full_name} size={40}/><h2>{row.full_name}</h2><span className={`entity-status ${row.status === 'approved' ? 'is-active' : 'is-inactive'}`}>{statusLabel(row.status)}</span></div>
+        {queue.items.map((row) => <RecordCard  key={row.id}>
+          <div className="record-main"><div className="record-title-row"><Avatar name={row.full_name} size={40}/><h2>{row.full_name}</h2><Badge tone={row.status === 'approved' ? "ok" : "neutral"} >{statusLabel(row.status)}</Badge></div>
             <p className="record-meta">رقم الموظف: <bdi>{row.employee_code}</bdi></p>
-            {row.exception_code && <p className="form-message form-error">{exceptionLabel(row.exception_code)} · المسؤول: {ownerLabel(row.owner_permission)}</p>}
+            {row.exception_code && <Message tone="bad" >{exceptionLabel(row.exception_code)} · المسؤول: {ownerLabel(row.owner_permission)}</Message>}
             {!row.exception_code && row.status === 'ready' && <p className="record-meta">اليوم مكتمل ولا توجد استثناءات؛ يمكن مراجعته واعتماده.</p>}
-            {(row.overtime_pending_count ?? 0) > 0 && <p className="form-message form-error">عمل إضافي بانتظار قرار فردي: {row.overtime_pending_count}</p>}
+            {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >عمل إضافي بانتظار قرار فردي: {row.overtime_pending_count}</Message>}
             {row.worked_minutes !== null && <p className="record-meta">صافي العمل: {row.worked_minutes} دقيقة{row.late_minutes !== null ? ` · التأخر ${row.late_minutes} د` : ''}{row.early_leave_minutes !== null ? ` · المغادرة المبكرة ${row.early_leave_minutes} د` : ''}</p>}
-          </div><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>مراجعة السجل</Link>
-        </li>)}
+          </div><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/${row.id}`}>مراجعة السجل</ButtonLink>
+        </RecordCard>)}
       </ul>}
       {filter === 'ready' && !canBulkApprove && queue.items.some((row) => row.can_bulk_approve) && <p className="field-hint">يمكن لمراجع الحضور اعتماد الأيام الجاهزة؛ لا تملك هذه العضوية صلاحية الاعتماد.</p>}
-      <div className="attendance-pagination"><span>عدد السجلات في هذه الصفحة: {queue.items.length}{queue.has_more ? '، توجد سجلات أخرى' : ''}</span>{queue.has_more && nextHref && <Link className="primary-button" href={nextHref}>التالي</Link>}</div>
-    </section>
+      <div className="attendance-pagination"><span>عدد السجلات في هذه الصفحة: {queue.items.length}{queue.has_more ? '، توجد سجلات أخرى' : ''}</span>{queue.has_more && nextHref && <ButtonLink  href={nextHref}>التالي</ButtonLink>}</div>
+    </Panel>
   </PageFrame>;
 }
 
@@ -76,4 +76,4 @@ function exceptionLabel(code: string) { return ({ ambiguous_local_time: 'وقت 
 function ownerLabel(owner: string | null) { return owner === 'attendance.approve' ? 'مراجع الحضور' : 'مسؤول تصحيح التسجيلات'; }
 function cairoToday() { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
 function isObject(value: unknown): value is Record<string, unknown> { return Boolean(value && typeof value === 'object' && !Array.isArray(value)); }
-function Status({ title, text }: { title: string; text: string }) { return <section className="work-card task-page"><h1>{title}</h1><p>{text}</p></section>; }
+function Status({ title, text }: { title: string; text: string }) { return <Panel className=" task-page"><PageHeader  title={<>{title}</>} description={<> {text} </>} /></Panel>; }

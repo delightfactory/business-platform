@@ -1,4 +1,5 @@
 'use client';
+import { Message } from '@/components/ui';
 import { ButtonLink, Input, Select } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -36,7 +37,7 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
 
   const showOffline0 = offline && !formActionPending;
   return <section className="workspace-form-panel" aria-label="بيانات دعوة المسؤول الأول">
-    {state.error && <p className="form-message form-error" role="alert">{errors[state.error]}</p>}
+    {state.error && <Message tone="bad"  role="alert">{errors[state.error]}</Message>}
     <form key={state.attempt} className="auth-form onboarding-form" action={formAction} onSubmit={(event) => { blockOfflineSubmission(event); }}>
       <input type="hidden" name="idempotencyKey" value={values.idempotencyKey} />
       <h2>الشركة</h2>
@@ -53,7 +54,7 @@ export function InvitationForm({ requestKey }: { requestKey: string }) {
       <LimitFields kind="seats" label="المستخدمون" mode={values.seatsMode} limit={values.seatsLimit} />
       <LimitFields kind="sites" label="الفروع" mode={values.sitesMode} limit={values.sitesLimit} />
       <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
-        <ButtonLink variant="ghost" className="secondary-button" href="/operator/invitations">إلغاء</ButtonLink></div>
+        <ButtonLink variant="ghost"  href="/operator/invitations">إلغاء</ButtonLink></div>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
   </section>;
 }

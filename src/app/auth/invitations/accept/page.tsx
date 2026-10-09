@@ -1,3 +1,5 @@
+import { PageHeader } from '@/components/ui';
+import { Panel, Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -35,14 +37,14 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
-      <section className="work-card" aria-labelledby="accept-title">
+      <Panel  aria-labelledby="accept-title">
         <p className="eyebrow">إعداد حساب المسؤول</p>
-        <h1 id="accept-title">أكمل إعداد حسابك</h1>
+        <PageHeader id="accept-title" title={<>أكمل إعداد حسابك</>} />
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. أنشئ مساحة الشركة بعد إكمال بيانات الحساب.</p>
-        {passwordHint && <p className="form-message" role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة إنشاء مساحة الشركة.'}</p>}
-        {params.state && !passwordHint && <p className="form-message" role="alert">{stateMessage(params.state)}</p>}
+        {passwordHint && <Message tone="info"  role="status">{needsPassword ? 'يحتاج هذا الحساب إلى إعداد كلمة المرور. استخدم ثمانية أحرف على الأقل ثم أكمل الخطوة أدناه.' : 'الحساب جاهز للخطوة التالية. يمكنك متابعة إنشاء مساحة الشركة.'}</Message>}
+        {params.state && !passwordHint && <Message tone="info"  role="alert">{stateMessage(params.state)}</Message>}
         {needsPassword ? (
           <OfflineForm className="auth-form" action={setInvitationPasswordAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
@@ -60,7 +62,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
             <OfflineSubmitButton label="تأكيد الدعوة وإنشاء الشركة" pendingLabel="جارٍ إنشاء الشركة…" />
           </OfflineForm>
         )}
-      </section>
+      </Panel>
 
     </main>
   );
@@ -89,11 +91,11 @@ function Status({ title, detail, link, linkText }: { title: string; detail: stri
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
-      <section className="auth-card"><p className="eyebrow">دعوة مسؤول الشركة</p><h1>{title}</h1><p className="intro">{detail}</p>
-        {link && linkText && <ButtonLink variant="solid" className="primary-button" href={link}>{linkText}</ButtonLink>}
-      </section>
+      <Panel className="auth-card"><p className="eyebrow">دعوة مسؤول الشركة</p><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+        {link && linkText && <ButtonLink variant="solid"  href={link}>{linkText}</ButtonLink>}
+      </Panel>
     </main>
   );
 }

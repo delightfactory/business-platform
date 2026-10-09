@@ -1,3 +1,5 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message, RecordCard, Badge } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -42,34 +44,34 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
     <PageFrame footer="إعداد الشركة">
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
       <header className="workspace-page-heading">
-        <div><p className="eyebrow">إدارة الشركة</p><h1 id="entities-sites-title">الجهات والفروع</h1>
+        <div><p className="eyebrow">إدارة الشركة</p><PageHeader id="entities-sites-title" title={<>الجهات والفروع</>} />
           <p>رتّب الجهات التابعة للشركة، ثم أدر فروع كل جهة من صفحتها.</p></div>
-        {canEntities && <ButtonLink variant="solid" className="primary-button" href={`/tenant/${tenantId}/entities-sites/new`}>إضافة جهة</ButtonLink>}
+        {canEntities && <ButtonLink variant="solid"  href={`/tenant/${tenantId}/entities-sites/new`}>إضافة جهة</ButtonLink>}
       </header>
       <div className="workspace-page-summary"><strong>{siteLimitText}</strong><span>الفروع المعطّلة محفوظة ولا تُحتسب ضمن الحد.</span></div>
-      <section className="workspace-records-panel tenant-collection" aria-labelledby="entities-sites-title">
-        {feedback.error && <p className="form-message form-error" role="alert">{feedback.error}</p>}
-        {feedback.info && <p className="form-message" role="status">{feedback.info}</p>}
+      <Panel className="workspace-records-panel tenant-collection" aria-labelledby="entities-sites-title">
+        {feedback.error && <Message tone="bad"  role="alert">{feedback.error}</Message>}
+        {feedback.info && <Message tone="info"  role="status">{feedback.info}</Message>}
         {!entities.some((entity) => entity.is_active && entity.is_default) &&
-          <p className="form-message" role="status">لا توجد جهة افتراضية نشطة؛ اختر جهة نشطة من تفاصيلها.</p>}
+          <Message tone="info"  role="status">لا توجد جهة افتراضية نشطة؛ اختر جهة نشطة من تفاصيلها.</Message>}
 
         {entities.length === 0 ? <div className="empty-state">
           <h2>لا توجد جهات مسجلة</h2>
           <p>{canEntities ? 'أضف الجهة الأولى، ثم أنشئ فروعها من صفحة التفاصيل.' : 'اطلب من مسؤول الشركة إضافة جهة.'}</p>
         </div> : <ul className="record-list">
-          {entities.map((entity) => <li className="record-card" key={entity.id}>
+          {entities.map((entity) => <RecordCard  key={entity.id}>
             <div className="record-main">
               <div className="record-title-row">
                 <h2>{entity.display_name}</h2>
-                <span className={`entity-status ${entity.is_active ? 'is-active' : 'is-inactive'}`}>{entity.is_active ? 'نشط' : 'غير نشط'}</span>
+                <Badge className={` ${entity.is_active ? 'is-active' : 'is-inactive'}`}>{entity.is_active ? 'نشط' : 'غير نشط'}</Badge>
               </div>
               {entity.legal_name && <p className="record-meta">الاسم القانوني: <bdi>{entity.legal_name}</bdi></p>}
               <p className="record-meta">{entity.is_default ? 'الجهة الأساسية' : 'جهة قانونية'} · الفروع النشطة: {Number(entity.active_site_count ?? 0)}</p>
             </div>
-            <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض التفاصيل</ButtonLink>
-          </li>)}
+            <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites/${entity.id}`}>عرض التفاصيل</ButtonLink>
+          </RecordCard>)}
         </ul>}
-      </section>
+      </Panel>
     </PageFrame>
   );
 }
@@ -110,6 +112,6 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 
 function Status({ title, detail, tenantId }: { title: string; detail: string; tenantId: string }) {
   return <PageFrame>
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink></section></PageFrame>;
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink></Panel></PageFrame>;
 }

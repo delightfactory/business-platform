@@ -1,5 +1,6 @@
 'use client';
 
+import { Message, Button, Checkbox } from '@/components/ui';
 import { useActionState, useId, useRef, useState, useTransition, type ChangeEvent, type FormEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { DateInput, Disclosure, Select, Textarea } from '@/components/ui';
@@ -138,15 +139,15 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         </div>
         </div>
         <p className="field-hint">اختر التواريخ أولًا؛ تُحمَّل بعدها أنواع الإجازة المتاحة في هذه الفترة.</p>
-        {rangeError && <p className="form-message form-error" role="alert">{rangeError}</p>}
-        {optionsError && <p className="form-message form-error" role="alert">{optionsError}</p>}
+        {rangeError && <Message tone="bad"  role="alert">{rangeError}</Message>}
+        {optionsError && <Message tone="bad"  role="alert">{optionsError}</Message>}
         {loadingOptions && <p className="field-hint" role="status">جارٍ تحميل أنواع الإجازة المتاحة…</p>}
         {optionsError && <div className="workspace-form-actions">
-          <button className="secondary-button" type="submit" disabled={frozen || Boolean(rangeError)}
+          <Button variant="ghost"  type="submit" disabled={frozen || Boolean(rangeError)}
             aria-busy={loadingOptions}>
             {loadingOptions && <span className="button-spinner" aria-hidden="true" />}
             {loadingOptions ? 'جارٍ تحميل الأنواع…' : 'إعادة تحميل الأنواع'}
-          </button>
+          </Button>
         </div>}
       </form>
     </div>
@@ -163,7 +164,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         <input type="hidden" name="halfDay" value={fields.halfDay ? 'true' : 'false'} />
         <input type="hidden" name="idempotencyKey" value={operationKey} />
         {options.types.length === 0
-          ? <p className="form-message" role="status">لا توجد أنواع إجازة متاحة في هذه الفترة. جرّب تواريخًا أخرى أو تواصل مع إدارة الموارد البشرية.</p>
+          ? <Message tone="info"  role="status">لا توجد أنواع إجازة متاحة في هذه الفترة. جرّب تواريخًا أخرى أو تواصل مع إدارة الموارد البشرية.</Message>
           : <>
             <label htmlFor="leave-type">نوع الإجازة</label>
             <Select id="leave-type" name="leaveTypeId" required value={fields.leaveTypeId}
@@ -175,7 +176,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
               {' · '}{dayCount(options.startDate, options.endDate)} يومًا متتاليًا (مدة تقويمية بين التاريخين،
               وليست كمية إجازة مخصومة). أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة.</p></Disclosure>
             {halfDayAvailable && <label className="check-option">
-              <input type="checkbox" checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
+              <Checkbox  checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
               <span>نصف يوم — يُحتسب وفق سياسة نوع الإجازة في هذا اليوم</span>
             </label>}
             <label htmlFor="leave-reason">سبب الإجازة</label>
@@ -183,7 +184,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
               aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint" />
             <p id="leave-reason-hint" className="field-hint">اكتب السبب في 3 إلى 500 حرف ليُراجعه فريق الموارد البشرية.</p>
-            {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
+            {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
               <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" disabled={offline}

@@ -1,4 +1,5 @@
 'use client';
+import { Button, Message, Panel } from '@/components/ui';
 import {useState,useSyncExternalStore} from 'react';
 import {useRouter} from 'next/navigation';
 import {uuid} from '../rules';
@@ -31,5 +32,5 @@ export function DeductionRecovery(p:Scope){
   }catch{setMessage('تعذر التحقق الآن. احتفظنا بمعرّف الطلب؛ استعد نتيجته قبل إرسال معالجة أخرى.');}finally{setPending('');}
  }
  if(!requests.length&&!message)return null;
- return <section className={styles.card}><h2>طلبات معالجة تحتاج استعادة النتيجة</h2><p>لا تُرسل معالجة جديدة قبل التحقق من الطلب المحفوظ. تبقى الاستعادة متاحة حتى لو تغيرت حالة المصدر أو سُحب اعتماد المعالجة.</p>{requests.map(request=><button key={request.key} type="button" disabled={Boolean(pending)} onClick={()=>recover(request)}>{request.retraction?'استعادة نتيجة سحب الاعتماد':'استعادة نتيجة معالجة الالتزام'}</button>)}{message&&<p role="status">{message}</p>}</section>;
+ return <Panel className={styles.card}><h2>طلبات معالجة تحتاج استعادة النتيجة</h2><p>لا تُرسل معالجة جديدة قبل التحقق من الطلب المحفوظ. تبقى الاستعادة متاحة حتى لو تغيرت حالة المصدر أو سُحب اعتماد المعالجة.</p>{requests.map(request=><Button variant="solid" key={request.key} type="button" disabled={Boolean(pending)} onClick={()=>recover(request)}>{request.retraction?'استعادة نتيجة سحب الاعتماد':'استعادة نتيجة معالجة الالتزام'}</Button>)}{message&&<Message tone="info" role="status">{message}</Message>}</Panel>;
 }

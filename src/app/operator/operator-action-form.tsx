@@ -1,4 +1,6 @@
 'use client';
+import { Button } from '@/components/ui';
+import { Message } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -51,11 +53,11 @@ export function OperatorActionForm({ action, children, errorMessages, label, pen
     <noscript><p className="field-hint">الحفظ يتطلب تفعيل JavaScript؛ يمكنك مراجعة الحالة الحالية دون حفظ.</p></noscript>
     <fieldset className="operator-action-fields" disabled={!ready || pending} aria-label={label}>
     {children}
-    {error && <p className="form-message form-error" role="alert">{error}</p>}
-    <button className={buttonClassName} type="submit" disabled={offline || (!ready || pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
+    {error && <Message tone="bad"  role="alert">{error}</Message>}
+    <Button variant={buttonClassName.includes("danger") ? "danger" : buttonClassName.includes("secondary") ? "ghost" : "solid"} className={buttonClassName.replace(/\b(primary-button|secondary-button|danger-button)\b/g, "").trim()} type="submit" disabled={offline || (!ready || pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
       {pending && <span className="button-spinner" aria-hidden="true" />}
       {pending ? pendingLabel : label}
-    </button>
+    </Button>
     </fieldset>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

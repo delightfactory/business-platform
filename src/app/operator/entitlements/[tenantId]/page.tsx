@@ -1,3 +1,5 @@
+import { PageHeader, Badge, Disclosure } from '@/components/ui';
+import { Panel, Message } from '@/components/ui';
 import { Button, ButtonLink, Input, Select, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
@@ -41,17 +43,17 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator/entitlements">قائمة الشركات</ButtonLink>
-        <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
-    <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
-      <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
-      <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+    <Panel className="operator-setting-detail" aria-labelledby="entitlements-title">
+      <p className="eyebrow">إتاحة الوحدات</p><PageHeader id="entitlements-title" title={<><bdi>{tenant.display_name}</bdi></>} />
+      <Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge>
       <CompanyTaskLinks tenantId={tenantId} current="entitlements" lifecycle={operatorPermission(lifecycle)} commercial={true} />
-      {query.state === 'updated' && <p className="form-message" role="status">إتاحة الوحدات الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
-      {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
+      {query.state === 'updated' && <Message tone="info"  role="status">إتاحة الوحدات الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</Message>}
+      {query.state && query.state !== 'updated' && <Message tone="info"  role="alert">{stateText(query.state)}</Message>}
       <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
       <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
-    </section>
+    </Panel>
   </main>;
 }
 
@@ -63,12 +65,12 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
     : enabled ? 'متاحة' : decision.is_granted && !decision.evaluator_enabled ? 'غير فعّالة' : 'غير متاحة';
   return <article className="operator-setting-card" aria-labelledby={`${decision.capability_key}-title`}>
     <h2 id={`${decision.capability_key}-title`}>{label}</h2>
-    <p className={`entity-status ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</p>
+    <Badge as="p" className={` ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</Badge>
     {decision.status === 'missing' && <p className="field-hint">{decision.last_decision_valid_until
       ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار إتاحة جديد.`
       : 'لم تُتح هذه الوحدة للشركة بعد.'}</p>}
-    {decision.status === 'conflict' && <p className="form-message" role="alert">تعارض في القرارات السارية؛ الإتاحة مغلقة حتى إصلاح البيانات.</p>}
-    {decision.status === 'future_conflict' && <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</p>}
+    {decision.status === 'conflict' && <Message tone="info"  role="alert">تعارض في القرارات السارية؛ الإتاحة مغلقة حتى إصلاح البيانات.</Message>}
+    {decision.status === 'future_conflict' && <Message tone="info"  role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</Message>}
     {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
       <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
     {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">إتاحة تمويل الموظفين مستقلة؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الإتاحة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول المخول.</p>}
@@ -77,8 +79,8 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
     {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
     {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
-    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
-      <summary className="secondary-button">{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</summary>
+    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <Disclosure summary={<>{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</>} className="operator-grant-form">
+
       <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ إتاحة ${label}`}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
@@ -91,7 +93,7 @@ function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: {
         <label htmlFor={`${decision.capability_key}-reason`}>سبب التغيير</label>
         <Textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
       </OperatorActionForm>
-    </details>}
+    </Disclosure>}
   </article>;
 }
 
@@ -115,4 +117,4 @@ const entitlementErrors: Record<string, string> = {
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'لم تتأكد نتيجة تحديث القرار. راجع إتاحة الوحدات الحالية قبل إجراء آخر.',
 };
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost" className="secondary-button" href="/operator/entitlements">قائمة الشركات</ButtonLink></section></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink></Panel></main>; }

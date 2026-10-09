@@ -26,17 +26,17 @@ export function OperatorListControls({ basePath, search, page, matchingCount, se
       <label htmlFor={inputId}>{searchLabel}</label>
       <div className="topbar-actions">
         <Input id={inputId} name="q" type="search" defaultValue={search} maxLength={120} />
-        <Button variant="ghost" className="secondary-button" type="submit">بحث</Button>
+        <Button variant="ghost"  type="submit">بحث</Button>
       </div>
     </form>
     <nav className="topbar-actions" aria-label="صفحات النتائج">
       {page > pageCount ? <>
         <span>هذه الصفحة لم تعد متاحة · {matchingCount} نتيجة</span>
-        <ButtonLink variant="ghost" className="secondary-button" href={pageUrl(pageCount)}>عرض آخر صفحة</ButtonLink>
+        <ButtonLink variant="ghost"  href={pageUrl(pageCount)}>عرض آخر صفحة</ButtonLink>
       </> : <>
-        {page > 1 && <ButtonLink variant="ghost" className="secondary-button" href={pageUrl(page - 1)}>السابق</ButtonLink>}
+        {page > 1 && <ButtonLink variant="ghost"  href={pageUrl(page - 1)}>السابق</ButtonLink>}
         <span>صفحة {page} من {pageCount} · {matchingCount} نتيجة</span>
-        {page < pageCount && <ButtonLink variant="ghost" className="secondary-button" href={pageUrl(page + 1)}>التالي</ButtonLink>}
+        {page < pageCount && <ButtonLink variant="ghost"  href={pageUrl(page + 1)}>التالي</ButtonLink>}
       </>}
     </nav>
   </>;

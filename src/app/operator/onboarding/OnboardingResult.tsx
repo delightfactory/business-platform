@@ -7,9 +7,9 @@ export function OnboardingResult({ result }: { result: Record<string, unknown> }
     <p>المستخدمون: {limitText(result.seat_limit_mode, result.seat_limit)} (المستخدم حاليًا {String(result.seat_usage)})</p>
     <p>الفروع: {limitText(result.site_limit_mode, result.site_limit)} (المستخدم حاليًا {String(result.site_usage)})</p>
     <p>أرسل رابط مساحة المسؤول إلى الحساب المُعيّن. يتطلب فتحه تسجيل الدخول بذلك الحساب:</p>
-    <ButtonLink variant="solid" className="primary-button" href={`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}`)}`}>دخول مسؤول الشركة إلى المساحة</ButtonLink>
+    <ButtonLink variant="solid"  href={`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}`)}`}>دخول مسؤول الشركة إلى المساحة</ButtonLink>
     {/* A new task after a confirmed receipt needs a fresh server-rendered form, even at the same URL. */}
-    <form method="get" action="/operator/onboarding"><Button variant="ghost" className="secondary-button" type="submit">إعداد شركة أخرى</Button></form>
+    <form method="get" action="/operator/onboarding"><Button variant="ghost"  type="submit">إعداد شركة أخرى</Button></form>
   </div>;
 }
 

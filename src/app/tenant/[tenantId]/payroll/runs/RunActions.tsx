@@ -1,4 +1,5 @@
 'use client';
+import { Button, Disclosure, Input, Message, Panel, Checkbox, Field, KeyValueStrip } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import {useActionState,useState,useSyncExternalStore} from 'react';
@@ -57,16 +58,16 @@ export function RunActions(props:Props){
  }
  const currentFeedback=feedback?.run===props.run&&feedback.revision===props.revision&&feedback.status===props.status;
  if(!props.canExecute&&!unresolved&&!feedback&&!closed)return null;
- return <section id={props.anchorId} className={styles.card}>
-  {unresolved&&<div><h2>استعادة نتيجة الطلب السابق</h2><p>لم تتأكد نتيجة الطلب. تحقّق منه أولًا قبل متابعة العمل.</p><button type="button" onClick={recover} disabled={saving || offline} aria-describedby={offline && !saving ? offlineHintId : undefined}>{saving?'جارٍ التحقق…':'استعادة نتيجة الطلب الأصلي'}</button>{offline && !saving && <OfflineSubmissionNotice id={offlineHintId} purpose="recovery" />}{recoveryError&&<p role="alert">{recoveryError}</p>}</div>}
-  {closed&&<p role="status">تأكدنا أن الطلب السابق لم يُحفظ. يمكنك متابعة العمل بأمان.</p>}
-  {feedback?.recovered&&!currentFeedback&&<p role="status">عُثر على نتيجة الطلب السابق. راجع حالة المسير الحالية الظاهرة.</p>}
-  {currentFeedback&&<p role="status">{feedback.status==='locked'?'تم تثبيت النتيجة وحفظ استهلاك مدخلاتها.':feedback.status==='cancelled'?'أُلغيت النسخة مع الاحتفاظ بتاريخها.':'جهزنا نسخة للمراجعة. راجع النتائج قبل الاعتماد.'}</p>}
+ return <Panel id={props.anchorId} className={styles.card}>
+  {unresolved&&<div><h2>استعادة نتيجة الطلب السابق</h2><p>لم تتأكد نتيجة الطلب. تحقّق منه أولًا قبل متابعة العمل.</p><Button variant="solid" type="button" onClick={recover} disabled={saving || offline} aria-describedby={offline && !saving ? offlineHintId : undefined}>{saving?'جارٍ التحقق…':'استعادة نتيجة الطلب الأصلي'}</Button>{offline && !saving && <OfflineSubmissionNotice id={offlineHintId} purpose="recovery" />}{recoveryError&&<Message tone="bad" role="alert">{recoveryError}</Message>}</div>}
+  {closed&&<Message tone="info" role="status">تأكدنا أن الطلب السابق لم يُحفظ. يمكنك متابعة العمل بأمان.</Message>}
+  {feedback?.recovered&&!currentFeedback&&<Message tone="info" role="status">عُثر على نتيجة الطلب السابق. راجع حالة المسير الحالية الظاهرة.</Message>}
+  {currentFeedback&&<Message tone="info" role="status">{feedback.status==='locked'?'تم تثبيت النتيجة وحفظ استهلاك مدخلاتها.':feedback.status==='cancelled'?'أُلغيت النسخة مع الاحتفاظ بتاريخها.':'جهزنا نسخة للمراجعة. راجع النتائج قبل الاعتماد.'}</Message>}
   {feedback?.output&&<Link href={`/tenant/${props.tenant}/payroll/output?${new URLSearchParams({employer:props.employer,output:feedback.output})}`}>عرض النتيجة المثبتة</Link>}
-  {props.canExecute&&<details open={primary}><summary>{primary?'الخطوة التالية':'إجراءات اختيارية للمسير بعد مراجعة العوائق'}</summary>
+  {props.canExecute&&<Disclosure summary={<>{primary?'الخطوة التالية':'إجراءات اختيارية للمسير بعد مراجعة العوائق'}</>} open={primary}>
    <RunActionForm key={`${props.run}:${props.revision}:${props.status}`} {...props} saving={saving||unresolved} submit={submit}/>
-  </details>}
- </section>;
+  </Disclosure>}
+ </Panel>;
 }
 function RunActionForm({tenant,employer,period,run,candidate,revision,status,stale,saving,submit,finalScope}:Props&{saving:boolean;submit:(previous:RunState,form:FormData)=>Promise<RunState>}){
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
@@ -75,6 +76,6 @@ function RunActionForm({tenant,employer,period,run,candidate,revision,status,sta
  const finalizing=state.status==='approved';
  const showOfflineNotice = offline && !pending && !saving;
  return <form action={action} onReset={e=>e.preventDefault()} className={styles.form} onSubmit={(event) => { blockOfflineSubmission(event); }}><h2>{finalizing?'تثبيت النتيجة المعتمدة':'تجهيز الرواتب'}</h2><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="period" value={period}/><input type="hidden" name="candidate" value={candidate}/><fieldset disabled={pending||saving} className={styles.fields}>
- {finalizing?<><p>{finalScope?.employer} · {finalScope?.starts} — {finalScope?.ends}</p><p>عدد الموظفين: {finalScope?.employees} · الاستحقاقات: {money(finalScope?.gross)} · الصافي: {money(finalScope?.net)}</p><label><input type="checkbox" name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><button className={stale?'secondary-button':'primary-button'} name="operation" value="finalize" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>تثبيت النتيجة واستهلاك المدخلات</button></>:<><button className={!state.run||state.status==='draft'||state.status==='cancelled'||stale?'primary-button':'secondary-button'} name="operation" value="calculate" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</button>{state.run&&state.status!=='cancelled'&&<details><summary>إلغاء النسخة مع حفظ تاريخ المراجعة</summary><label htmlFor="run-cancel-reason">سبب الإلغاء<input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></label><button className="secondary-button" name="operation" value="cancel" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>إلغاء النسخة</button></details>}</>}
- </fieldset>{pending&&<p role="status">جارٍ التنفيذ وحفظ النتيجة.</p>}{state.error&&<p role="alert">{state.error}</p>}{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
+ {finalizing?<><div className={styles.scopeSummary}><KeyValueStrip items={[{label:"جهة العمل",value:finalScope?.employer},{label:"الفترة",value:<>{finalScope?.starts} — {finalScope?.ends}</>},{label:"عدد الموظفين",value:finalScope?.employees},{label:"الاستحقاقات",value:money(finalScope?.gross),money:true},{label:"الصافي",value:money(finalScope?.net),money:true}]}/></div><label><Checkbox  name="confirm" required/>راجعت هذه النتيجة وأريد تثبيتها واستهلاك مدخلاتها مرة واحدة. بعد التثبيت، يتم التعديل بمسار تصحيح يحفظ الأصل.</label><Button variant={stale ? "ghost" : "solid"} type="submit"  name="operation" value="finalize" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>تثبيت النتيجة واستهلاك المدخلات</Button></>:<><Button variant={!state.run||state.status==='draft'||state.status==='cancelled'||stale ? "solid" : "ghost"} type="submit"  name="operation" value="calculate" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>{state.run&&state.status!=='cancelled'?stale?'إعادة الحساب بعد التغييرات':'تجهيز نسخة جديدة للمراجعة':'تجهيز نسخة للمراجعة'}</Button>{state.run&&state.status!=='cancelled'&&<Disclosure summary={<>إلغاء النسخة مع حفظ تاريخ المراجعة</>}><Field  id="run-cancel-reason" label={<>سبب الإلغاء</>}><Input id="run-cancel-reason" name="reason" value={reason} onChange={e=>setReason(e.target.value)} maxLength={500}/></Field><Button variant="ghost" type="submit"  name="operation" value="cancel" aria-describedby={showOfflineNotice ? offlineHintId : undefined} disabled={offline}>إلغاء النسخة</Button></Disclosure>}</>}
+ </fieldset>{pending&&<Message tone="info" role="status">جارٍ التنفيذ وحفظ النتيجة.</Message>}{state.error&&<Message tone="bad" role="alert">{state.error}</Message>}{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }

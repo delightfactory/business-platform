@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { Panel } from '@/components/ui';
+import { Message, RecordCard, ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -86,24 +87,24 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   return <PageFrame footer="الخدمة الذاتية">
     <PageHeader eyebrow="يومي" title="إجازاتي" description="رصيدك وطلباتك في مكان واحد. الطلب المعلق لا يحجز رصيدًا قبل اعتماده." action={canRequest && <PendingLink className="ui-button ui-button-solid ui-button-md" href={`/tenant/${tenantId}/me/leave/new`}><Icon name="plus" size={18}/>طلب إجازة</PendingLink>} />
     {showResultGuide && !requestsFailed && !requestPage.invalid
-      && <p className="form-message" role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</p>}
-    {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
+      && <Message tone="info"  role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</Message>}
+    {!canRequest && <Message tone="info"  role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</Message>}
 
     <div className={styles.overviewGrid}>
-    <section className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-balances-title">
+    <Panel className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-balances-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-balances-title">أرصدة الإجازات</h2>
         <p>الرصيد الحالي لكل نوع وفترة؛ الطلب المعلق لا يخصم منه.</p>
       </div>
-      {balancePage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة الأرصدة غير صالح.{' '}
-        <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
+      {balancePage.invalid ? <Message tone="bad"  role="alert">رقم صفحة الأرصدة غير صالح.{' '}
+        <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></Message>
         : balancesFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل أرصدة إجازاتك</h2>
           <p>تعذر التحقق من أحدث أرصدة إجازاتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink></div>
             : balances && balances.length === 0 ? <div className="empty-state"><h2>لا توجد أرصدة مسجّلة لك بعد</h2>
               <p>لا يوجد رصيد مسجّل لأي نوع إجازة حتى الآن. تظهر الأرصدة المسجّلة هنا فور حفظها لدى الشركة.</p></div>
             : balances ? <>
-              <ul className={styles.overviewList}>{balances.map((balance) => <li className="record-card" key={`${balance.leave_type_id}-${balance.period_id}`}>
+              <ul className={styles.overviewList}>{balances.map((balance) => <RecordCard  key={`${balance.leave_type_id}-${balance.period_id}`}>
                 <div className="record-main">
                   <div className="record-title-row"><h3>{balance.type_name}</h3>
                     <span className={styles.balanceValue}><bdi>{formatDays(balance.balance_days)}</bdi> يوم</span></div>
@@ -111,7 +112,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                   <p className="record-meta">فترة الإجازات: <bdi>{balance.period_label}</bdi></p>
                   <p className="record-meta">تبدأ في <bdi>{balance.starts_on}</bdi></p>
                 </div>
-              </li>)}</ul>
+              </RecordCard>)}</ul>
               <nav className={styles.pagination} aria-label="صفحات أرصدة الإجازات">
                 <span>الصفحة {balancePage.value} · {balances.length} صنف</span>
                 <span className={styles.paginationNav}>
@@ -121,22 +122,22 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                 </span>
               </nav>
             </> : null}
-    </section>
+    </Panel>
 
-    <section className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-history-title">
+    <Panel className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-history-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-history-title">سجل طلبات الإجازة</h2>
         <p>كل الطلبات المسجّلة باسمك مع حالتها. الحالة «مُقدَّم» تعني بانتظار قرار الموارد البشرية.</p>
       </div>
-      {requestPage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
-        <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></p>
+      {requestPage.invalid ? <Message tone="bad"  role="alert">رقم صفحة سجل الطلبات غير صالح.{' '}
+        <PendingLink href={pageHref(tenantId, 1, balancePage.value)}>العودة إلى الصفحة الأولى</PendingLink></Message>
         : requestsFailed ? <div className="empty-state" role="alert"><h2>تعذر تحميل سجل طلباتك</h2>
           <p>تعذر التحقق من أحدث حالات طلباتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
           : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
             <p>{canRequest ? 'ابدأ من «طلب إجازة جديد» أعلى الصفحة. سيظهر طلبك هنا مع حالته بعد إرساله.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p></div>
             : requests ? <>
-              <ul className={styles.overviewList}>{requests.map((request) => <li className="record-card" key={request.id}>
+              <ul className={styles.overviewList}>{requests.map((request) => <RecordCard  key={request.id}>
                 <div className="record-main">
                   <div className="record-title-row"><h3>{request.leave_type_name}</h3>
                     <Badge tone={request.state === 'approved' ? 'ok' : request.state === 'rejected' ? 'bad' : request.state === 'submitted' ? 'warn' : 'neutral'}>{stateLabel(request.state)}</Badge></div>
@@ -147,7 +148,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                     : 'لم يُرسل بعد'}</p>
                 </div>
                 <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave/${request.id}`}>التفاصيل<Icon name="arrowLeft" size={16}/></PendingLink>
-              </li>)}</ul>
+              </RecordCard>)}</ul>
               <nav className={styles.pagination} aria-label="صفحات سجل طلبات الإجازة">
                 <span>الصفحة {requestPage.value} · {requests.length} طلب</span>
                 <span className={styles.paginationNav}>
@@ -157,9 +158,9 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                 </span>
               </nav>
             </> : null}
-    </section>
+    </Panel>
     </div>
-    <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
   </PageFrame>;
 }
 
@@ -229,11 +230,11 @@ function readRequests(items: unknown[]): RequestSummary[] | null {
 
 function Status({ tenantId, title, detail, retry = false }: { tenantId: string; title: string; detail: string; retry?: boolean }) {
   return <PageFrame footer="الخدمة الذاتية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retry && <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/me`}>العودة إلى ملفي</Link>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
-    </section>
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+      {retry && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave`}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me`}>العودة إلى ملفي</ButtonLink>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+    </Panel>
   </PageFrame>;
 }
 

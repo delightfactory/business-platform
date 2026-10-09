@@ -1,3 +1,4 @@
+import { PageHeader, Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
@@ -22,7 +23,7 @@ export default async function NewLegalEntityPage({ params }: { params: Promise<{
     <div className="workspace-form-page">
       <Link className="back-link" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">الجهات والفروع</p>
-        <h1>إضافة جهة</h1><p>أدخل بيانات الجهة. ستتمكن من إضافة فروعها بعد حفظها.</p></div></header>
+        <PageHeader  title={<>إضافة جهة</>} /><p>أدخل بيانات الجهة. ستتمكن من إضافة فروعها بعد حفظها.</p></div></header>
       <section className="workspace-form-panel" aria-label="بيانات الجهة">
         <NewEntityForm tenantId={tenantId} />
       </section>
@@ -31,8 +32,8 @@ export default async function NewLegalEntityPage({ params }: { params: Promise<{
 }
 
 function Status({ tenantId }: { tenantId: string }) {
-  return <PageFrame><section className="auth-card"><h1>لا يمكن إضافة جهة</h1>
+  return <PageFrame><Panel className="auth-card"><PageHeader  title={<>لا يمكن إضافة جهة</>} />
     <p className="intro">تحقق من صلاحياتك أو أعد المحاولة لاحقًا.</p>
-    <ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</ButtonLink>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</ButtonLink>
+  </Panel></PageFrame>;
 }

@@ -1,3 +1,5 @@
+import { PageHeader, Badge, Disclosure } from '@/components/ui';
+import { Message, Panel, Checkbox } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -83,18 +85,18 @@ export default async function TenantUsersPage({ params, searchParams }: { params
     <main className="app-shell">
       {success && <FeedbackToast key={crypto.randomUUID()} message={success} />}
       <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
-        <h1 id="members-title">المستخدمون والدعوات</h1>
+        <PageHeader id="members-title" title={<>المستخدمون والدعوات</>} />
         <p>تابع وصول فريقك، وأرسل دعوات جديدة عند الحاجة.</p></div>
-        <ButtonLink variant="solid" className="primary-button" href={`/tenant/${tenantId}/users/invite`}>دعوة عضو</ButtonLink>
+        <ButtonLink variant="solid"  href={`/tenant/${tenantId}/users/invite`}>دعوة عضو</ButtonLink>
       </header>
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>الدعوات المعلّقة لا تُحتسب قبل قبولها.</span></div>
       <section className="workspace-notices" aria-labelledby="members-title">
-        {deliveryIssue && <p className="form-message capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></p>}
-        {reviewMessage && <p className="form-message" role="status">{reviewMessage} <a href="#pending-title">راجع حالة الدعوات</a></p>}
-        {query.state && !success && !deliveryIssue && !reviewMessage && <p className="form-message form-error" role="alert">{stateMessage(query.state)}</p>}
+        {deliveryIssue && <Message tone="info" className="capacity-message" role="alert">{deliveryIssue} <a href="#pending-title">عرض الدعوات وإعادة الإرسال</a></Message>}
+        {reviewMessage && <Message tone="info"  role="status">{reviewMessage} <a href="#pending-title">راجع حالة الدعوات</a></Message>}
+        {query.state && !success && !deliveryIssue && !reviewMessage && <Message tone="bad"  role="alert">{stateMessage(query.state)}</Message>}
       </section>
-      <details className="workspace-records-panel admin-setup-details"><summary id="attendance-access-setup">تهيئة الحضور الشخصي للموظفين</summary><div><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<ButtonLink variant="ghost" className="secondary-button" href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</ButtonLink>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</div></details>
+      <details className="workspace-records-panel admin-setup-details"><summary id="attendance-access-setup">تهيئة الحضور الشخصي للموظفين</summary><div><p>اربط ملف الموظف بحساب عضو نشط، ثم اختر «الحضور الشخصي من الهاتف» في حزم وصول ذلك العضو. بعد حفظ الحزمة، يفتح الموظف «حضوري» من حسابه.</p><p className="field-hint">يلزم أيضًا عمل سارٍ وموقع وسياسة حضور مهيأة وخدمة حضور مفعّلة. الربط وحده لا يمنح التسجيل. إزالة الحزمة أو فك الربط يوقف التسجيل للحساب.</p>{canOpenPeopleSetup?<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>فتح ملفات الموظفين لإكمال الربط</ButtonLink>:<p>تواصل مع مدير الموارد البشرية لإكمال ربط الموظف؛ صلاحية إدارة الأعضاء لا تمنح الاطلاع على ملفات الموظفين.</p>}</div></details>
       <nav className="workspace-view-tabs" aria-label="عرض المستخدمين والدعوات">
         <Link href={usersUrl(tenantId, 'members', 1, search)} aria-current={!showInvitations ? 'page' : undefined}>الأعضاء <span>{memberCount}</span></Link>
         <Link href={usersUrl(tenantId, 'invitations', 1, search)} aria-current={showInvitations ? 'page' : undefined}>الدعوات <span>{invitationCount}</span></Link>
@@ -103,10 +105,10 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         <input type="hidden" name="view" value={view} />
         <label htmlFor="member-search">البحث بالبريد الإلكتروني</label>
         <Input id="member-search" type="search" name="q" defaultValue={search} maxLength={120} placeholder="ابحث عن بريد مستخدم أو دعوة" />
-        <Button variant="ghost" className="secondary-button" type="submit">بحث</Button>
+        <Button variant="ghost"  type="submit">بحث</Button>
       </form>
       <p className="field-hint">{search ? `نتائج البحث: ${matchingCount}` : `الإجمالي: ${matchingCount}`} · {page > pageCount ? 'هذه الصفحة لم تعد متاحة' : `صفحة ${page} من ${pageCount}`}</p>
-      {!showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="member-list-title">
+      {!showInvitations && <Panel className="invitation-list tenant-users-list" aria-labelledby="member-list-title">
         <h2 id="member-list-title">العضويات</h2>
         {memberships.length === 0 ? <p className="intro">{search ? 'لا توجد عضويات تطابق البحث.' : 'لا يوجد مستخدمون في هذه الصفحة.'}</p> : (
           <ul>{memberships.map((row) => (
@@ -114,7 +116,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
               <div>
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
-                <p className={`entity-status ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</p>
+                <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
                 {!row.protected_admin && <p className="field-hint">حزم الوصول: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد حزمة من People'}</p>}
                 <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الحزمة محفوظة؛ يتطلب التسجيل ربط الموظف وسياسة الموقع' : 'الحزمة غير مضافة'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر مؤهل قبل خفض دوره.</p>}
@@ -123,13 +125,13 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
-                  <OfflineSubmitButton className="secondary-button" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
+                  <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'إتاحة الخدمة الذاتية للإجازات'} pendingLabel="جارٍ الحفظ…" />
                   <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات الإجازة الذاتية فقط، مع الحفاظ على دور مسؤول الشركة.</p>
                 </OfflineForm>}
               </div>
               <div className="invitation-actions">
-                {!row.protected_admin && row.access_state === 'active' && <details className="people-role-bundle-editor">
-                  <summary className="secondary-button">إدارة حزم الوصول</summary>
+                {!row.protected_admin && row.access_state === 'active' && <Disclosure summary={<>إدارة حزم الوصول</>} className="people-role-bundle-editor">
+
                   <p className="field-hint">يمكن اختيار حتى 24 حزمة. تبقى الحزم المحددة الحالية محفوظة عند إضافة الحضور الشخصي؛ لا تلغِ حزمة أخرى إلا إذا أردت سحبها. راجع وصف كل حزمة؛ حزم عمليات الموارد البشرية والاستيراد تمنح الاطلاع على الأجر الأساسي وتعديله.</p>
                   <OfflineForm action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
@@ -137,15 +139,15 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                     <fieldset>
                       <legend>اختر صلاحيات العضو</legend>
                       {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>
-                        <input type="checkbox" name="bundleKey" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />
+                        <Checkbox  name="bundleKey" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />
                         <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
                       </label>)}
                     </fieldset>
-                    <OfflineSubmitButton className="secondary-button" label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
+                    <OfflineSubmitButton variant="ghost"  label="حفظ الحزم" pendingLabel="جارٍ الحفظ…" />
                   </OfflineForm>
-                </details>}
-                {canManageRoles && row.access_state === 'active' && <details className="role-change-confirmation">
-                  <summary className="secondary-button">{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</summary>
+                </Disclosure>}
+                {canManageRoles && row.access_state === 'active' && <Disclosure summary={<>{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</>} className="role-change-confirmation">
+
                   <p className="field-hint">{row.protected_admin
                     ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول مؤهل.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
                     : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المقاعد.</p>
@@ -153,51 +155,51 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
                     <input type="hidden" name="roleAction" value={row.protected_admin ? 'demote' : 'promote'} />
-                    <OfflineSubmitButton className="secondary-button" label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
+                    <OfflineSubmitButton variant="ghost"  label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
                   </OfflineForm>
-                </details>}
+                </Disclosure>}
                 {!row.protected_admin && <OfflineForm action={setMemberAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
-                  <OfflineSubmitButton className="secondary-button" label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
+                  <OfflineSubmitButton variant="ghost"  label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
                 </OfflineForm>}
               </div>
             </li>
           ))}</ul>
         )}
-      </section>}
-      {showInvitations && <section className="work-card invitation-list tenant-users-list" aria-labelledby="pending-title">
+      </Panel>}
+      {showInvitations && <Panel className="invitation-list tenant-users-list" aria-labelledby="pending-title">
         <h2 id="pending-title">الدعوات</h2>
         {invitations.length === 0 ? <p className="intro">{search ? 'لا توجد دعوات تطابق البحث.' : 'لا توجد دعوات في هذه الصفحة.'}</p> : (
           <ul>{invitations.map((invitation) => (
             <li className="invitation-row" key={invitation.id}>
               <div>
                 <h3><bdi>{invitation.target_email}</bdi></h3>
-                <p className={`entity-status ${invitation.lifecycle_state === 'accepted' ? 'is-active' : invitation.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{invitationText(invitation.lifecycle_state)}</p>
+                <Badge as="p" className={` ${invitation.lifecycle_state === 'accepted' ? 'is-active' : invitation.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{invitationText(invitation.lifecycle_state)}</Badge>
                 <p>{deliveryText(invitation.delivery_state)}</p>
                 {invitation.lifecycle_state === 'pending' && invitation.delivery_state !== 'sent' &&
-                  <p className="form-message capacity-message" role="status">{invitation.delivery_state === 'failed'
+                  <Message tone="info" className="capacity-message" role="status">{invitation.delivery_state === 'failed'
                     ? 'تعذر إرسال البريد. استخدم «إعادة إرسال» بعد التحقق من العنوان.'
-                    : 'لم يتأكد إرسال البريد بعد. راجع الحالة قبل إعادة الإرسال.'}</p>}
+                    : 'لم يتأكد إرسال البريد بعد. راجع الحالة قبل إعادة الإرسال.'}</Message>}
                 {invitation.lifecycle_state === 'pending' && <p className="field-hint">لا تُحتسب الدعوة ضمن المقاعد حتى يقبلها المستخدم.</p>}
               </div>
               {invitation.lifecycle_state === 'pending' && <div className="invitation-actions">
                 <OfflineForm action={reissueMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <OfflineSubmitButton className="secondary-button" label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
+                  <OfflineSubmitButton variant="ghost"  label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
                 </OfflineForm>
                 <OfflineForm action={revokeMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
-                  <OfflineSubmitButton className="secondary-button" label="إلغاء الدعوة" />
+                  <OfflineSubmitButton variant="ghost"  label="إلغاء الدعوة" />
                 </OfflineForm>
               </div>}
             </li>
           ))}</ul>
         )}
-      </section>}
+      </Panel>}
       <nav aria-label="صفحات المستخدمين والدعوات" className="workspace-view-tabs">
         {page > 1 && page <= pageCount && <Link href={usersUrl(tenantId, view, page - 1, search)}>الصفحة السابقة</Link>}
         {page < pageCount && <Link href={usersUrl(tenantId, view, page + 1, search)}>الصفحة التالية</Link>}
@@ -278,5 +280,5 @@ function successMessage(state?: string) {
   return state && Object.hasOwn(messages, state) ? messages[state] : null;
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p><ButtonLink variant="solid" className="primary-button" href="/auth/login">العودة إلى الدخول</ButtonLink></section></main>;
+  return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid"  href="/auth/login">العودة إلى الدخول</ButtonLink></Panel></main>;
 }

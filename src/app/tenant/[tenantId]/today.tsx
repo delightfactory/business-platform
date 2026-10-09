@@ -1,3 +1,4 @@
+import { Message } from '@/components/ui';
 import Link from 'next/link';
 import { TaskCard, type TaskPreview } from '@/components/patterns/task-card';
 import { Icon, type IconName } from '@/components/ui/icon';
@@ -114,7 +115,7 @@ export function TodaySections({ model }: { model: TodayModel }) {
     <TodayList title="أكمل العمل" entries={otherWork} />
     <TodayList title="خدماتي" entries={model.own} />
     <TodayList title="عرض ومتابعة" entries={model.followUp} />
-    {model.unavailable.length > 0 && <p className="form-message" role="status">تعذر تحميل {model.unavailable.join('، ')}. يمكنك متابعة باقي الخدمات أو تحديث الصفحة.</p>}
+    {model.unavailable.length > 0 && <Message tone="info"  role="status">تعذر تحميل {model.unavailable.join('، ')}. يمكنك متابعة باقي الخدمات أو تحديث الصفحة.</Message>}
     {!model.work.length && !model.own.length && !model.followUp.length && <div className="empty-state"><Icon name="info" size={28} /><h2>{model.unavailable.length ? 'الخدمات غير متاحة الآن' : 'مساحتك جاهزة'}</h2><p>{model.unavailable.length ? 'حدّث الصفحة لإعادة المحاولة.' : 'راجع مسؤول الشركة لإتاحة خدمات العمل لحسابك.'}</p></div>}
   </div>;
 }

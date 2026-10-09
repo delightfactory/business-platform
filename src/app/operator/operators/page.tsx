@@ -1,3 +1,5 @@
+import { PageHeader, Disclosure, RecordCard, Badge } from '@/components/ui';
+import { Panel, Message, Checkbox } from '@/components/ui';
 import { Button, ButtonLink, Input, Textarea } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -31,15 +33,15 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost" className="secondary-button" href="/operator">العودة للمهام</ButtonLink>
-          <form action={signOutAction}><Button variant="ghost" className="secondary-button" type="submit">تسجيل الخروج</Button></form></nav></header>
-      <section className="work-card operator-grants-overview" aria-labelledby="operators-title">
-        <p className="eyebrow">صلاحيات المنصة</p><h1 id="operators-title">مشغّلو المنصة</h1>
-        {success && <p className="form-message" role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
+        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+      <Panel className="operator-grants-overview" aria-labelledby="operators-title">
+        <p className="eyebrow">صلاحيات المنصة</p><PageHeader id="operators-title" title={<>مشغّلو المنصة</>} />
+        {success && <Message tone="info"  role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</Message>}
         <p className="intro">حدد من يمكنه تشغيل المنصة والمهام المسموح له بها. يُسجل سبب كل تغيير.</p>
-        {query.state && !success && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
-        <details className="operator-grant-form">
-          <summary className="primary-button">إضافة مشغّل</summary>
+        {query.state && !success && <Message tone="bad"  role="alert">{stateText(query.state)}</Message>}
+        <Disclosure summary={<>إضافة مشغّل</>} className="operator-grant-form">
+
           <OperatorActionForm action={changeOperatorGrantAction} errorMessages={operatorErrors} label="تأكيد منح الصلاحية المحددة">
             <h2>منح صلاحية مشغّل</h2>
             <label htmlFor="newEmail">بريد الحساب المؤكد</label>
@@ -50,16 +52,16 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
             <input type="hidden" name="action" value="grant" />
             <p className="field-hint">يجب أن يكون الحساب موجودًا، مؤكد البريد، وقادرًا على تسجيل الدخول. لا تُنشئ هذه الصفحة حسابات جديدة.</p>
           </OperatorActionForm>
-        </details>
-      </section>
-      <section className="work-card operator-grants-list" aria-labelledby="grants-list-title">
+        </Disclosure>
+      </Panel>
+      <Panel className="operator-grants-list" aria-labelledby="grants-list-title">
         <h2 id="grants-list-title">المشغّلون</h2>
-        <form method="get" action="/operator/operators"><Button variant="ghost" className="secondary-button" type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</Button></form>
+        <form method="get" action="/operator/operators"><Button variant="ghost"  type="submit" aria-describedby="grants-reread-hint">إعادة قراءة المنح</Button></form>
         <p className="field-hint" id="grants-reread-hint">إعادة القراءة تجلب الحالة الحالية وتُفقد أي إدخالات لم تُرسل. لا تؤكد وحدها نتيجة تغيير سابق غير مؤكدة.</p>
         {grants.length === 0 ? <p>لا توجد منح مشغّل محفوظة.</p> : <ul className="member-list">
-          {grants.map((grant) => <li className="member-card" key={grant.user_id}>
+          {grants.map((grant) => <RecordCard className="member-card" key={grant.user_id}>
             <div><h3><bdi>{grant.email}</bdi></h3>
-              <p className={`entity-status ${grant.is_active ? 'is-active' : 'is-inactive'}`}>{grant.is_active ? 'نشط' : 'مسحوب'}</p>
+              <Badge as="p" className={` ${grant.is_active ? 'is-active' : 'is-inactive'}`}>{grant.is_active ? 'نشط' : 'مسحوب'}</Badge>
               {!grant.recoverable && <p className="field-hint">الحساب غير جاهز لتسجيل الدخول</p>}
               <ul className="operator-capability-list" aria-label="المهام الممنوحة">{capabilityNames(grant).length ? capabilityNames(grant).map((name) => <li key={name}>{name}</li>) : <li>لا توجد مهام حاليًا</li>}</ul>
             </div>
@@ -86,20 +88,20 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
                 </OperatorActionForm>
               </details>}
             </div>
-          </li>)}
+          </RecordCard>)}
         </ul>}
-      </section>
+      </Panel>
     </main>
   );
 }
 
 function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pick<Grant, 'can_manage_operators' | 'can_onboard_tenants' | 'can_manage_tenant_lifecycle' | 'can_manage_commercial_access' | 'can_manage_statutory_rules'> }) {
   return <fieldset className="limit-fields"><legend>المهام الممنوحة</legend>
-    <label className="check-option"><input type="checkbox" name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
-    <label className="check-option"><input type="checkbox" name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
-    <label className="check-option"><input type="checkbox" name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
-    <label className="check-option"><input type="checkbox" name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
-    <label className="check-option"><input type="checkbox" name="canManageStatutoryRules" defaultChecked={defaults?.can_manage_statutory_rules ?? false} /> إدارة القواعد القانونية للرواتب</label>
+    <label className="check-option"><Checkbox  name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
+    <label className="check-option"><Checkbox  name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
+    <label className="check-option"><Checkbox  name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
+    <label className="check-option"><Checkbox  name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
+    <label className="check-option"><Checkbox  name="canManageStatutoryRules" defaultChecked={defaults?.can_manage_statutory_rules ?? false} /> إدارة القواعد القانونية للرواتب</label>
     <p className="field-hint">تُمنح مهمة القواعد القانونية لمسؤول الامتثال صراحةً. لا يمنحها إعداد الشركات أو إدارة الرواتب، ولا يعني منحها اعتماد أي حزمة قانونية.</p>
     <span className="field-hint" id={`${prefix}-capability-hint`}>اختر مهمة واحدة على الأقل. سحب الصلاحيات يتم بإجراء مستقل.</span>
   </fieldset>;
@@ -126,8 +128,8 @@ const operatorErrors: Record<string, string> = {
 };
 function Status({ title, detail, denied = false }: { title: string; detail: string; denied?: boolean }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header>
-    <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>
-      <h1 id="status-title">{title}</h1><p className="intro">{detail}</p>
-      <form method="get" action="/operator/operators"><button className={denied ? 'secondary-button' : 'primary-button'} type="submit">إعادة قراءة الصفحة</button></form>
-      <Link className={denied ? 'primary-button' : 'secondary-button'} href="/operator">العودة لمهام المنصة</Link></section></main>;
+    <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>
+      <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p>
+      <form method="get" action="/operator/operators"><Button variant="ghost" className={denied ? 'secondary-button' : 'primary-button'} type="submit">إعادة قراءة الصفحة</Button></form>
+      <ButtonLink variant="ghost" className={denied ? 'primary-button' : 'secondary-button'} href="/operator">العودة لمهام المنصة</ButtonLink></Panel></main>;
 }

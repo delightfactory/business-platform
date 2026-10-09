@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Panel } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
@@ -11,7 +11,7 @@ export const dynamic='force-dynamic';
 export default async function MyAttendance({params}:{params:Promise<{tenantId:string}>}) {
   const {tenantId}=await params;if(!/^[0-9a-f-]{36}$/i.test(tenantId)) notFound();
   const db=await getWorkspaceClient();
-  if(!db) return <PageFrame><section className="workspace-records-panel"><h1>حضوري</h1><p>تعذر الاتصال. أعد تحميل الصفحة عند عودة الاتصال.</p><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</Link></section></PageFrame>;
+  if(!db) return <PageFrame><Panel className="workspace-records-panel"><PageHeader  title={<>حضوري</>} /><p>تعذر الاتصال. أعد تحميل الصفحة عند عودة الاتصال.</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة العمل</ButtonLink></Panel></PageFrame>;
   const {data:{user}}=await getWorkspaceUser(db);if(!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/attendance`)}`);
   let response;
   try {

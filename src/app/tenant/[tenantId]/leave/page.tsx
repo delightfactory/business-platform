@@ -1,5 +1,5 @@
-import { Avatar } from '@/components/ui';
-import Link from 'next/link';
+import { Avatar, Badge, ButtonLink, Disclosure, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -83,99 +83,76 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
   const cancellationsFailed = access.canApprove && !cancellationPage.invalid && cancellations === null;
 
   return <PageFrame footer="الموارد البشرية">
-    <header className="workspace-page-heading">
-      <div>
-        <p className="eyebrow">الموارد البشرية</p>
-        <h1>مراجعة طلبات الإجازة</h1>
-        <p>الطلبات المقدمة مرتبة من الأقدم إلى الأحدث، بحد أقصى 50 طلبًا في الصفحة. افتح الطلب لعرض أيامه واتخاذ قراره.</p>
-      </div>
-      <div className="workspace-form-actions">
-        {access.canManage && access.newWorkEnabled && <PendingLink className="primary-button"
+    <PageHeader title={<>مراجعة طلبات الإجازة</>} eyebrow={<>الموارد البشرية</>} description={<>الطلبات المقدمة مرتبة من الأقدم إلى الأحدث، بحد أقصى 50 طلبًا في الصفحة. افتح الطلب لعرض أيامه واتخاذ قراره.</>} action={<><div className="workspace-form-actions">
+        {access.canManage && access.newWorkEnabled && <PendingLink className="ui-button ui-button-solid ui-button-md"
           href={`/tenant/${tenantId}/leave/new`}>تسجيل إجازة موظف</PendingLink>}
-        <PendingLink className="secondary-button" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
-      </div>
-    </header>
-    {!access.newWorkEnabled && <p className="form-message" role="status">
+        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
+      </div></>} />
+    {!access.newWorkEnabled && <Message tone="info"  role="status">
       خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن اعتماد طلبات جديدة أو تحديث معايناتها.
       تبقى مراجعة الطلبات ورفضها متاحة.
-    </p>}
+    </Message>}
 
-    <section className="workspace-records-panel" aria-labelledby="leave-queue-title">
+    <Panel  aria-labelledby="leave-queue-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-queue-title">طلبات بانتظار القرار</h2>
         <p>حالة «مُقدَّم» تعني أن الطلب لم يُعتمد بعد ولم يحجز أي رصيد من رصيد الموظف.</p>
       </div>
       {requestPage.invalid
-        ? <p className="form-message form-error" role="alert">رقم صفحة الطلبات غير صالح.{' '}
-          <PendingLink href={queueHref(tenantId, 1, cancellationPage.value)}>العودة إلى الصفحة الأولى</PendingLink></p>
+        ? <Message tone="bad"  role="alert">رقم صفحة الطلبات غير صالح.{' '}
+          <PendingLink href={queueHref(tenantId, 1, cancellationPage.value)}>العودة إلى الصفحة الأولى</PendingLink></Message>
         : requestsFailed
-          ? <div className="empty-state" role="alert">
-            <h2>تعذر تحميل قائمة الطلبات</h2>
-            <p>لم يتغير أي طلب. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
-            <PendingLink className="secondary-button" href={queueHref(tenantId, 1, cancellationPage.value)}>إعادة المحاولة</PendingLink>
-          </div>
+          ? <div role="alert"><EmptyState title={<>تعذر تحميل قائمة الطلبات</>} description={<>لم يتغير أي طلب. أعد المحاولة أو عُد إلى الصفحة الأولى.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={queueHref(tenantId, 1, cancellationPage.value)}>إعادة المحاولة</PendingLink></>} /></div>
           : requests && requests.items.length === 0
-            ? <div className="empty-state">
-              <h2>{requestPage.value > 1 ? 'لا توجد طلبات في هذه الصفحة' : 'لا توجد طلبات بانتظار القرار'}</h2>
-              <p>{requestPage.value > 1 ? 'عُد إلى الصفحة الأولى لعرض الطلبات الحالية.' : 'لا توجد طلبات مقدمة بانتظار القرار حاليًا.'}</p>
-              {requestPage.value > 1 && <PendingLink className="secondary-button"
-                href={queueHref(tenantId, 1, cancellationPage.value)}>العودة إلى أول صفحة للطلبات</PendingLink>}
-            </div>
+            ? <div ><EmptyState title={<>{requestPage.value > 1 ? 'لا توجد طلبات في هذه الصفحة' : 'لا توجد طلبات بانتظار القرار'}</>} description={<>{requestPage.value > 1 ? 'عُد إلى الصفحة الأولى لعرض الطلبات الحالية.' : 'لا توجد طلبات مقدمة بانتظار القرار حاليًا.'}</>} action={<>{requestPage.value > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
+                href={queueHref(tenantId, 1, cancellationPage.value)}>العودة إلى أول صفحة للطلبات</PendingLink>}</>} /></div>
             : requests ? <>
-              <ul className="record-list">{requests.items.map((request) => <li className="record-card" key={request.id}>
+              <ul className="record-list">{requests.items.map((request) => <RecordCard  key={request.id}>
                 <div className="record-main">
                   <div className="record-title-row">
                     <Avatar name={request.employeeName} size={40}/><h3>{request.employeeName}</h3>
-                    <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span>
+                    <Badge className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</Badge>
                   </div>
                   <p className="record-meta">رقم الموظف: <bdi>{request.employeeCode}</bdi> · {request.leaveTypeName}</p>
                   <p className="record-meta">من <bdi>{request.startDate}</bdi> إلى <bdi>{request.endDate}</bdi>
                     · {formatDays(request.totalUnits)} يوم{request.isHalfDay ? ' · نصف يوم' : ''}</p>
-                  <details className="task-disclosure"><summary>تفاصيل الإرسال والمتابعة</summary><p className="record-meta">{request.submittedAt
+                  <Disclosure  summary={<>تفاصيل الإرسال والمتابعة</>}><p className="record-meta">{request.submittedAt
                     ? <>أُرسل في <bdi>{formatInstant(request.submittedAt)}</bdi> · </>
-                    : 'لم يُرسل بعد · '}{nextOwnerText(request.state, false)}</p></details>
+                    : 'لم يُرسل بعد · '}{nextOwnerText(request.state, false)}</p></Disclosure>
                 </div>
-                <PendingLink className="secondary-button" href={detailHref(tenantId, request.id)}>فتح الطلب</PendingLink>
-              </li>)}</ul>
+                <PendingLink className="ui-button ui-button-ghost ui-button-md" href={detailHref(tenantId, request.id)}>فتح الطلب</PendingLink>
+              </RecordCard>)}</ul>
               <nav className={styles.pagination} aria-label="صفحات طلبات الإجازة">
                 <span>الصفحة {requestPage.value} · {requests.items.length} طلب</span>
                 <span className={styles.paginationNav}>
-                  {requestPage.value > 1 && <PendingLink className="secondary-button"
+                  {requestPage.value > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
                     href={queueHref(tenantId, requestPage.value - 1, cancellationPage.value)}>السابق</PendingLink>}
-                  {requests.hasMore && <PendingLink className="primary-button"
+                  {requests.hasMore && <PendingLink className="ui-button ui-button-solid ui-button-md"
                     href={queueHref(tenantId, requestPage.value + 1, cancellationPage.value)}>التالي</PendingLink>}
                 </span>
               </nav>
             </> : null}
-    </section>
+    </Panel>
 
-    {access.canApprove && <section className="workspace-records-panel" aria-labelledby="leave-cancellation-queue-title">
+    {access.canApprove && <Panel  aria-labelledby="leave-cancellation-queue-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-cancellation-queue-title">طلبات إلغاء اعتماد بانتظار القرار</h2>
         <p>الطلب المعتمد يبقى ساريًا ولا يُعاد الرصيد إلا بعد قبول طلب الإلغاء.</p>
       </div>
       {cancellationPage.invalid
-        ? <p className="form-message form-error" role="alert">رقم صفحة طلبات الإلغاء غير صالح.{' '}
-          <PendingLink href={queueHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
+        ? <Message tone="bad"  role="alert">رقم صفحة طلبات الإلغاء غير صالح.{' '}
+          <PendingLink href={queueHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></Message>
         : cancellationsFailed
-          ? <div className="empty-state" role="alert">
-            <h2>تعذر تحميل طلبات إلغاء الاعتماد</h2>
-            <p>لم يتغير أي طلب إلغاء. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
-            <PendingLink className="secondary-button" href={queueHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink>
-          </div>
+          ? <div role="alert"><EmptyState title={<>تعذر تحميل طلبات إلغاء الاعتماد</>} description={<>لم يتغير أي طلب إلغاء. أعد المحاولة أو عُد إلى الصفحة الأولى.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={queueHref(tenantId, requestPage.value, 1)}>إعادة المحاولة</PendingLink></>} /></div>
           : cancellations && cancellations.items.length === 0
-            ? <div className="empty-state">
-              <h2>{cancellationPage.value > 1 ? 'لا توجد طلبات إلغاء في هذه الصفحة' : 'لا توجد طلبات إلغاء اعتماد'}</h2>
-              <p>{cancellationPage.value > 1 ? 'عُد إلى الصفحة الأولى لعرض طلبات الإلغاء الحالية.' : 'لا يوجد أي طلب إلغاء معلق بانتظار قرارك الآن.'}</p>
-              {cancellationPage.value > 1 && <PendingLink className="secondary-button"
-                href={queueHref(tenantId, requestPage.value, 1)}>العودة إلى أول صفحة للإلغاء</PendingLink>}
-            </div>
+            ? <div ><EmptyState title={<>{cancellationPage.value > 1 ? 'لا توجد طلبات إلغاء في هذه الصفحة' : 'لا توجد طلبات إلغاء اعتماد'}</>} description={<>{cancellationPage.value > 1 ? 'عُد إلى الصفحة الأولى لعرض طلبات الإلغاء الحالية.' : 'لا يوجد أي طلب إلغاء معلق بانتظار قرارك الآن.'}</>} action={<>{cancellationPage.value > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
+                href={queueHref(tenantId, requestPage.value, 1)}>العودة إلى أول صفحة للإلغاء</PendingLink>}</>} /></div>
             : cancellations ? <>
-              <ul className="record-list">{cancellations.items.map((cancellation) => <li className="record-card" key={cancellation.cancellationId}>
+              <ul className="record-list">{cancellations.items.map((cancellation) => <RecordCard  key={cancellation.cancellationId}>
                 <div className="record-main">
                   <div className="record-title-row">
                     <Avatar name={cancellation.employeeName} size={40}/><h3>{cancellation.employeeName}</h3>
-                    <span className="entity-status is-pending">طلب إلغاء بانتظار القرار</span>
+                    <Badge className="is-pending">طلب إلغاء بانتظار القرار</Badge>
                   </div>
                   <p className="record-meta">رقم الموظف: <bdi>{cancellation.employeeCode}</bdi> · {cancellation.leaveTypeName}</p>
                   <p className="record-meta">من <bdi>{cancellation.startDate}</bdi> إلى <bdi>{cancellation.endDate}</bdi>
@@ -183,21 +160,21 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
                   <p className="record-meta">طلبه {requesterKindLabel(cancellation.requesterKind)} في{' '}
                     <bdi>{formatInstant(cancellation.requestedAt)}</bdi></p>
                 </div>
-                <PendingLink className="secondary-button" href={detailHref(tenantId, cancellation.requestId)}>فتح الطلب</PendingLink>
-              </li>)}</ul>
+                <PendingLink className="ui-button ui-button-ghost ui-button-md" href={detailHref(tenantId, cancellation.requestId)}>فتح الطلب</PendingLink>
+              </RecordCard>)}</ul>
               <nav className={styles.pagination} aria-label="صفحات طلبات إلغاء الاعتماد">
                 <span>الصفحة {cancellationPage.value} · {cancellations.items.length} طلب</span>
                 <span className={styles.paginationNav}>
-                  {cancellationPage.value > 1 && <PendingLink className="secondary-button"
+                  {cancellationPage.value > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
                     href={queueHref(tenantId, requestPage.value, cancellationPage.value - 1)}>السابق</PendingLink>}
-                  {cancellations.hasMore && <PendingLink className="primary-button"
+                  {cancellations.hasMore && <PendingLink className="ui-button ui-button-solid ui-button-md"
                     href={queueHref(tenantId, requestPage.value, cancellationPage.value + 1)}>التالي</PendingLink>}
                 </span>
               </nav>
             </> : null}
-    </section>}
+    </Panel>}
 
-    <PendingLink className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</PendingLink>
+    <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</PendingLink>
   </PageFrame>;
 }
 
@@ -208,10 +185,10 @@ function Status({ tenantId, title, detail, retryPath }: {
   retryPath?: string;
 }) {
   return <PageFrame footer="الموارد البشرية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retryPath && <Link className="secondary-button" href={retryPath}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</Link>
-      <Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</Link>
-    </section>
+    <Panel ><h1>{title}</h1><p className="intro">{detail}</p>
+      {retryPath && <ButtonLink variant="ghost"  href={retryPath}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</ButtonLink>
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</ButtonLink>
+    </Panel>
   </PageFrame>;
 }

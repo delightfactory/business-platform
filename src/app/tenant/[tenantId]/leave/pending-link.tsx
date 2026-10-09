@@ -2,6 +2,7 @@
 
 import Link, { useLinkStatus } from 'next/link';
 import type { ReactNode } from 'react';
+import { ButtonLink } from '@/components/ui';
 
 export function PendingLink({ href, className, children, ariaLabel }: {
   href: string;
@@ -9,6 +10,11 @@ export function PendingLink({ href, className, children, ariaLabel }: {
   children: ReactNode;
   ariaLabel?: string;
 }) {
+  const isButton = /primary-button|secondary-button|danger-button|back-link|ui-button/.test(className ?? '');
+  const variant = className?.includes('danger') ? 'danger' : className?.includes('primary') || className?.includes('solid') ? 'solid' : 'ghost';
+  if (isButton) return <ButtonLink href={href} variant={variant} aria-label={ariaLabel}>
+    <PendingMarker />{children}
+  </ButtonLink>;
   return <Link href={href} className={className} aria-label={ariaLabel}>
     <PendingMarker />
     {children}
