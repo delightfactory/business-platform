@@ -1,0 +1,4 @@
+.balance { margin-block: .8rem; }
+.segments { display: flex; gap: 4px; max-width: 100%; }
+.segments span { height: 24px; flex: 1 1 0; max-width: 17px; min-width: 3px; border-radius: 3px; background: var(--brand); }
+.caption { font-size: .76rem; color: var(--muted); margin: .55rem 0 0; }

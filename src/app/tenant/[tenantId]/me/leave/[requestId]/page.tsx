@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
+import { Badge, Icon, KeyValueStrip } from '@/components/ui';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { isDayCountBasis, isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid, type RequestDay } from '../form-rules';
 import { PendingLink } from '../pending-link';
-import { formatDays, formatInstant, isRequestState, stateClass, stateLabel } from '../states';
+import { formatDays, formatInstant, isRequestState, stateLabel } from '../states';
 import { CancellationHistorySection, loadCancellationHistory } from './CancellationHistory';
 import { cancellationEventActor, parseHistoryOffset } from './cancellation-rules';
 import { DayBreakdown } from './DayBreakdown';
@@ -79,21 +80,21 @@ export default async function MyLeaveRequestPage({ params, searchParams }: { par
     {feedback && <FeedbackToast key={crypto.randomUUID()} message={feedback} />}
     <div className={styles.detailPage}>
     <section className="work-card task-page" aria-labelledby="leave-request-title">
-      <PendingLink className="back-link" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</PendingLink>
+      <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave`}><Icon name="arrowRight" size={18}/>إجازاتي</PendingLink>
       <p className="eyebrow">طلب إجازة</p>
       <div className="record-title-row"><h1 id="leave-request-title">{request.leave_type_name}</h1>
-        <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span></div>
+        <Badge tone={request.state === 'approved' ? 'ok' : request.state === 'rejected' ? 'bad' : request.state === 'submitted' ? 'warn' : 'neutral'}>{stateLabel(request.state)}</Badge></div>
       <p className="record-meta">{request.submitted_at
         ? <>أُرسل في <bdi>{formatInstant(request.submitted_at)}</bdi> · </>
         : 'لم يُرسل بعد · '}الطلب المعلّق لا يحجز رصيدًا قبل الاعتماد.</p>
 
       {stateNote && <p className="form-message" role="status">{stateNote}</p>}
 
-      <dl className={`snapshot-grid ${styles.requestSummary}`}>
-        <div><dt>إجمالي أيام الإجازة المحتسبة</dt><dd>{formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</dd></div>
-        <div><dt>تاريخ البداية</dt><dd><bdi>{request.start_date}</bdi></dd></div>
-        <div><dt>تاريخ النهاية</dt><dd><bdi>{request.end_date}</bdi></dd></div>
-      </dl>
+      <KeyValueStrip items={[
+        { label: 'أيام الإجازة المحتسبة', value: <>{formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</> },
+        { label: 'من', value: <bdi>{request.start_date}</bdi> },
+        { label: 'إلى', value: <bdi>{request.end_date}</bdi> },
+      ]}/>
       <details className="task-disclosure">
         <summary className="secondary-button">سبب الإجازة وطريقة التسجيل</summary>
       <dl className={styles.requestContext}>

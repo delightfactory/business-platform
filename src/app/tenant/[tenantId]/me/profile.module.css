@@ -1,6 +1,16 @@
 .panel {
   padding: clamp(1rem, 3vw, 1.5rem);
 }
+.dailyGrid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 1.5rem; align-items: start; }
+.dailyMain { display: grid; gap: 1rem; min-width: 0; }
+.quickActions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.quickActions > * { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 96px; padding: .85rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-tile); box-shadow: var(--sh-1); }
+.quickActions :global(.ui-icon) { color: var(--brand-text); }
+.profileHeading { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin-bottom: 1rem; }
+.profileHeading h2, .profileHeading p { margin: 0; }
+.profileHeading > :last-child { margin-inline-start: auto; }
+@media (max-width: 860px) { .dailyGrid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 440px) { .quickActions > * { flex-direction: column; font-size: .82rem; } }
 
 .panel h2 {
   margin: 0 0 .75rem;

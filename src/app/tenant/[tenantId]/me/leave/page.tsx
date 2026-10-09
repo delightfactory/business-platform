@@ -2,9 +2,11 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { Badge, Icon, PageHeader } from '@/components/ui';
+import { BalanceSegments } from '@/components/patterns/balance-segments/BalanceSegments';
 import { isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid } from './form-rules';
 import { PendingLink } from './pending-link';
-import { formatDays, formatInstant, isRequestState, stateClass, stateLabel } from './states';
+import { formatDays, formatInstant, isRequestState, stateLabel } from './states';
 import styles from './leave.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -82,11 +84,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
   const showResultGuide = query.state === 'submitted' || query.state === 'withdrawn';
 
   return <PageFrame footer="الخدمة الذاتية">
-    <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
-      <h1>إجازاتي</h1>
-      <p>أرصدة إجازاتك وسجل طلباتك لدى الشركة. الطلب المعلق لا يحجز أي رصيد قبل اعتماده.</p></div>
-      {canRequest && <PendingLink className="primary-button" href={`/tenant/${tenantId}/me/leave/new`}>طلب إجازة جديد</PendingLink>}
-    </header>
+    <PageHeader eyebrow="يومي" title="إجازاتي" description="رصيدك وطلباتك في مكان واحد. الطلب المعلق لا يحجز رصيدًا قبل اعتماده." action={canRequest && <PendingLink className="ui-button ui-button-solid ui-button-md" href={`/tenant/${tenantId}/me/leave/new`}><Icon name="plus" size={18}/>طلب إجازة</PendingLink>} />
     {showResultGuide && !requestsFailed && !requestPage.invalid
       && <p className="form-message" role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</p>}
     {!canRequest && <p className="form-message" role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</p>}
@@ -95,7 +93,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
     <section className={`workspace-records-panel ${styles.overviewPanel}`} aria-labelledby="leave-balances-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-balances-title">أرصدة الإجازات</h2>
-        <p>الرصيد المسجّل لكل نوع إجازة وفترة إجازات. لا يشمل الرصيد أي طلب معلق قبل اعتماده.</p>
+        <p>الرصيد الحالي لكل نوع وفترة؛ الطلب المعلق لا يخصم منه.</p>
       </div>
       {balancePage.invalid ? <p className="form-message form-error" role="alert">رقم صفحة الأرصدة غير صالح.{' '}
         <PendingLink href={pageHref(tenantId, requestPage.value, 1)}>العودة إلى الصفحة الأولى</PendingLink></p>
@@ -109,6 +107,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
                 <div className="record-main">
                   <div className="record-title-row"><h3>{balance.type_name}</h3>
                     <span className={styles.balanceValue}><bdi>{formatDays(balance.balance_days)}</bdi> يوم</span></div>
+                  <BalanceSegments days={balance.balance_days}/>
                   <p className="record-meta">فترة الإجازات: <bdi>{balance.period_label}</bdi></p>
                   <p className="record-meta">تبدأ في <bdi>{balance.starts_on}</bdi></p>
                 </div>
@@ -140,14 +139,14 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
               <ul className={styles.overviewList}>{requests.map((request) => <li className="record-card" key={request.id}>
                 <div className="record-main">
                   <div className="record-title-row"><h3>{request.leave_type_name}</h3>
-                    <span className={`entity-status ${stateClass(request.state)}`}>{stateLabel(request.state)}</span></div>
+                    <Badge tone={request.state === 'approved' ? 'ok' : request.state === 'rejected' ? 'bad' : request.state === 'submitted' ? 'warn' : 'neutral'}>{stateLabel(request.state)}</Badge></div>
                   <p className="record-meta">من <bdi>{request.start_date}</bdi> إلى <bdi>{request.end_date}</bdi>
                     · {formatDays(request.total_units)} يوم{request.is_half_day ? ' · نصف يوم' : ''}</p>
                   <p className="record-meta">{request.submitted_at
                     ? <>أُرسل في <bdi>{formatInstant(request.submitted_at)}</bdi></>
                     : 'لم يُرسل بعد'}</p>
                 </div>
-                <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${request.id}`}>فتح الطلب</PendingLink>
+                <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave/${request.id}`}>التفاصيل<Icon name="arrowLeft" size={16}/></PendingLink>
               </li>)}</ul>
               <nav className={styles.pagination} aria-label="صفحات سجل طلبات الإجازة">
                 <span>الصفحة {requestPage.value} · {requests.length} طلب</span>

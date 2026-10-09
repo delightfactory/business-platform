@@ -5,6 +5,8 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { isLeaveAccessSnapshot, isUuid } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { NewLeaveRequestForm } from './NewLeaveRequestForm';
+import { Icon, PageHeader } from '@/components/ui';
+import styles from '../leave.module.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,12 +47,10 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
   }
 
   return <PageFrame footer="الخدمة الذاتية">
-    <div className="workspace-form-page">
-      <PendingLink className="back-link" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</PendingLink>
-      <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
-        <h1>طلب إجازة جديد</h1>
-        <p>اختر تاريخين أولًا لعرض أنواع الإجازة المتاحة في هذه الفترة، ثم أرسل الطلب.</p></div></header>
-      <section className="workspace-form-panel" aria-label="بيانات طلب الإجازة">
+    <div className={styles.requestSheet}>
+      <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave`}><Icon name="arrowRight" size={18}/>إجازاتي</PendingLink>
+      <PageHeader title="طلب إجازة" description="اختر الفترة ثم نوع الإجازة. أرسل الطلب عندما تكتمل البيانات." />
+      <section className={styles.requestSheetBody} aria-label="بيانات طلب الإجازة">
         <NewLeaveRequestForm tenantId={tenantId} idempotencyKey={crypto.randomUUID()} />
       </section>
     </div>

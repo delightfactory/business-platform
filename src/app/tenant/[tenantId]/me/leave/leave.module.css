@@ -29,7 +29,7 @@
   width: 100%;
   min-width: 0;
   margin: 0;
-  border-radius: 0.5rem;
+  border-radius: var(--r-card);
 }
 
 .requestSummary:global(.snapshot-grid) {
@@ -80,7 +80,9 @@
   width: 100%;
   min-width: 0;
   margin: 0;
-  border-radius: 0.5rem;
+  border-radius: var(--r-card);
+  background: var(--surface);
+  box-shadow: var(--sh-1);
 }
 
 .overviewList {
@@ -103,10 +105,29 @@
 
 .balanceValue {
   color: var(--color-text);
-  font-size: 1.15rem;
+  font-family: var(--f-head);
+  font-size: 1.65rem;
   font-weight: 700;
   white-space: nowrap;
 }
+.requestSheet { width: min(100%, 38rem); margin-inline: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: clamp(1rem, 4vw, 1.75rem); box-shadow: var(--sh-2); }
+.requestSheet > :global(.ui-page-header) { margin-block: 1rem 1.5rem; }
+.requestSheetBody { min-width: 0; }
+.dailyBalance { padding: 1.35rem; }
+.dailyBalanceHeading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.dailyBalanceHeading h2 { display: flex; align-items: center; gap: .5rem; margin: 0; font-size: 1.05rem; }
+.dailyBalanceHeading p { margin: .3rem 0 0; }
+.dailyBalanceItem { border-top: 1px solid var(--line); padding-top: 1rem; margin-top: 1rem; }
+.dailyBalanceItem small { font-size: .8rem; color: var(--muted); font-family: var(--f-body); }
+.overviewList > :global(.record-card) { padding: 1rem 1.4rem; border-bottom: 1px solid var(--line); }
+.overviewList > :global(.record-card):last-child { border-bottom: 0; }
+.overviewList :global(.record-title-row) { align-items: baseline; }
+.overviewList :global(.record-title-row) h3 { margin: 0; font-size: .95rem; }
+.formTitle { display: flex; align-items: center; gap: .6rem; color: var(--brand-text); }
+.requestSheetBody input:not([type=hidden]):not([type=checkbox]), .requestSheetBody select, .requestSheetBody textarea { width: 100%; min-height: 44px; border: 1px solid var(--line-2); border-radius: var(--r-ctl); background: var(--surface); color: var(--ink); padding: .65rem .8rem; font: inherit; }
+.requestSheetBody textarea { min-height: 110px; resize: vertical; }
+.requestSheetBody label { font-size: .9rem; font-weight: 600; }
+@media (max-width: 640px) { .requestSheet { border-radius: 20px 20px var(--r-card) var(--r-card); } .requestSheet .formBlock { gap: .8rem; } }
 
 @media (max-width: 1100px) {
   .overviewGrid {

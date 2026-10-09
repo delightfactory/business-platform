@@ -2,6 +2,7 @@
 
 import { useActionState, useId, useRef, useState, useTransition, type ChangeEvent, type FormEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { DateInput, Disclosure, Select, Textarea } from '@/components/ui';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { loadLeaveRequestOptionsAction, submitLeaveRequestAction } from '../actions';
 import {
@@ -127,12 +128,12 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         <div className={styles.dateFields}>
         <div className={styles.formField}>
         <label htmlFor="leave-start-date">تاريخ البداية</label>
-        <input id="leave-start-date" name="startDate" type="date" required value={fields.startDate}
+        <DateInput id="leave-start-date" name="startDate" required value={fields.startDate}
           onChange={handleStartDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         </div>
         <div className={styles.formField}>
         <label htmlFor="leave-end-date">تاريخ النهاية</label>
-        <input id="leave-end-date" name="endDate" type="date" required value={fields.endDate}
+        <DateInput id="leave-end-date" name="endDate" required value={fields.endDate}
           onChange={handleEndDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         </div>
         </div>
@@ -165,20 +166,20 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
           ? <p className="form-message" role="status">لا توجد أنواع إجازة متاحة في هذه الفترة. جرّب تواريخًا أخرى أو تواصل مع إدارة الموارد البشرية.</p>
           : <>
             <label htmlFor="leave-type">نوع الإجازة</label>
-            <select id="leave-type" name="leaveTypeId" required value={fields.leaveTypeId}
+            <Select id="leave-type" name="leaveTypeId" required value={fields.leaveTypeId}
               onChange={handleTypeChange} disabled={submitting}>
               <option value="" disabled>اختر نوع الإجازة</option>
               {options.types.map((type) => <option key={type.id} value={type.id}>{type.name}</option>)}
-            </select>
-            <p className="field-hint">الفترة المختارة: <bdi>{options.startDate}</bdi> إلى <bdi>{options.endDate}</bdi>
+            </Select>
+            <Disclosure summary="الفترة وطريقة احتساب الأيام"><p className="field-hint">الفترة المختارة: <bdi>{options.startDate}</bdi> إلى <bdi>{options.endDate}</bdi>
               {' · '}{dayCount(options.startDate, options.endDate)} يومًا متتاليًا (مدة تقويمية بين التاريخين،
-              وليست كمية إجازة مخصومة). أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة.</p>
+              وليست كمية إجازة مخصومة). أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة.</p></Disclosure>
             {halfDayAvailable && <label className="check-option">
               <input type="checkbox" checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
               <span>نصف يوم — يُحتسب وفق سياسة نوع الإجازة في هذا اليوم</span>
             </label>}
             <label htmlFor="leave-reason">سبب الإجازة</label>
-            <textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
+            <Textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
               aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint" />
             <p id="leave-reason-hint" className="field-hint">اكتب السبب في 3 إلى 500 حرف ليُراجعه فريق الموارد البشرية.</p>
