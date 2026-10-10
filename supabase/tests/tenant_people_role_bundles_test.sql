@@ -34,6 +34,13 @@ INSERT INTO platform_core.tenant_capability_entitlements(tenant_id,capability_ke
 VALUES ('bc200000-0000-4000-8000-000000000001','hr.people',true,pg_catalog.now()-interval '1 minute',
  'bc100000-0000-4000-8000-000000000001','People role bundle test');
 
+CREATE TEMP TABLE protected_admin_before AS
+SELECT pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object('assignment',pg_catalog.to_jsonb(assignment),'role',pg_catalog.to_jsonb(role_snapshot))
+ ORDER BY assignment.tenant_id,assignment.role_id) AS snapshot
+FROM platform_core.membership_roles AS assignment
+JOIN platform_core.tenant_roles AS role_snapshot USING (tenant_id,role_id)
+WHERE assignment.user_id='bc100000-0000-4000-8000-000000000004' AND role_snapshot.protects_tenant_admin;
+
 SELECT has_function('public','set_tenant_member_people_bundles',ARRAY['uuid','uuid','text[]']::name[],'bounded People role bundle command exists');
 SELECT ok(NOT has_function_privilege('anon','public.set_tenant_member_people_bundles(uuid,uuid,text[])','EXECUTE'),'anonymous callers cannot change People role bundles');
 SELECT ok(NOT has_table_privilege('authenticated','platform_core.membership_roles','INSERT'),'authenticated callers cannot assign roles directly');
@@ -98,8 +105,33 @@ SELECT set_config('request.jwt.claim.sub','bc100000-0000-4000-8000-000000000003'
 SELECT throws_ok($$SELECT public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000002',ARRAY['people.reader.v1'])$$,
  '42501','tenant_members_manage_forbidden','people.view alone cannot manage member bundles');
 SELECT set_config('request.jwt.claim.sub','bc100000-0000-4000-8000-000000000001',true);
-SELECT throws_ok($$SELECT public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY['people.reader.v1'])$$,
- '42501','tenant_people_role_bundle_admin_protected','protected Tenant Admin role cannot be modified through People bundles');
+SELECT is(public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY['people.reader.v1'])->>'state',
+ 'updated','member manager can explicitly grant work bundles to a protected administrator');
+SELECT set_config('request.jwt.claim.sub','bc100000-0000-4000-8000-000000000004',true);
+SELECT is(public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY['people.operations.v1'])->>'state',
+ 'updated','protected administrator can explicitly select own operational access');
+SELECT is(public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY['people.operations.v1'])->>'state',
+ 'unchanged','repeating the same own-access selection is idempotent');
+SELECT throws_ok($$SELECT public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY['tenant.owner_admin.v1'])$$,
+ '22023','tenant_people_role_bundle_unknown','protected administrative roles are not grantable work bundles');
+SELECT is(public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004',ARRAY[]::text[])->>'state',
+ 'updated','administrator can revoke own work access without revoking administration');
+RESET ROLE;
+SELECT is((SELECT pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object('assignment',pg_catalog.to_jsonb(assignment),'role',pg_catalog.to_jsonb(role_snapshot))
+ ORDER BY assignment.tenant_id,assignment.role_id)
+ FROM platform_core.membership_roles AS assignment
+ JOIN platform_core.tenant_roles AS role_snapshot USING (tenant_id,role_id)
+ WHERE assignment.user_id='bc100000-0000-4000-8000-000000000004' AND role_snapshot.protects_tenant_admin),
+ (SELECT snapshot FROM protected_admin_before),'protected role and assignment snapshots remain byte-for-byte unchanged in both companies');
+SELECT ok(platform_private.has_tenant_permission('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004','tenant.members.manage'),
+ 'administrator retains member-management authority after own work-access revocation');
+SELECT ok(NOT platform_private.has_people_permission('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004','people.view'),
+ 'revoked own work access is no longer effective');
+SELECT is((SELECT pg_catalog.count(*)::integer FROM platform_core.tenant_membership_audit_events
+ WHERE tenant_id='bc200000-0000-4000-8000-000000000001' AND subject_user_id='bc100000-0000-4000-8000-000000000004'
+ AND action='people_role_bundles_changed'),3,'administrator grant, replacement and revocation are audited without duplicate no-op events');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','bc100000-0000-4000-8000-000000000001',true);
 SELECT throws_ok($$SELECT public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000002','bc100000-0000-4000-8000-000000000002',ARRAY['people.reader.v1'])$$,
  '42501','tenant_members_manage_forbidden','cross-Tenant operator cannot alter other Tenant assignments');
 SELECT throws_ok($$SELECT public.set_tenant_member_people_bundles('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000002',ARRAY['arbitrary.permission.v1'])$$,

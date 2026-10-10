@@ -117,10 +117,10 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
-                {!row.protected_admin && <p className="field-hint">الصلاحيات الحالية: {assignedBundleLabels(row.roles).join('، ') || 'لا توجد صلاحيات إضافية للموظفين'}</p>}
+                <p className="field-hint">صلاحيات العمل الحالية: {assignedBundleLabels(row.roles).join('، ') || 'لم تُضف صلاحيات عمل بعد'}</p>
                 <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة؛ يلزم ربط حساب الموظف وإعداد الحضور في موقعه' : 'الصلاحية غير مضافة'}</p>
                 {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر يستوفي شروط إدارة الشركة قبل خفض دوره.</p>}
-                {row.protected_admin && <p className="field-hint">صلاحية تسجيل الحضور للأعضاء مستقلة عن دور مسؤول الشركة. لا تُمنح تلقائيًا لمسؤول الشركة؛ راجع المسؤول عن الصلاحيات لإتاحتها.</p>}
+                {row.protected_admin && <p className="field-hint">يمكنك إضافة صلاحيات الموظفين والرواتب من «تعديل صلاحيات المستخدم». لا تُضاف تلقائيًا، وإزالتها لا تسحب دور مسؤول الشركة.</p>}
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
@@ -130,7 +130,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 </OfflineForm>}
               </div>
               <div className="invitation-actions">
-                {!row.protected_admin && row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
+                {row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
 
                   <p className="field-hint">اختر الصلاحيات المطلوبة، حتى 24 مجموعة. احتفظ بالاختيارات الحالية ما لم ترد سحبها. انتبه: إدارة الموظفين واستيرادهم تشمل عرض الأجر الأساسي وتعديله.</p>
                   <OfflineForm action={setTenantMemberPeopleBundlesAction}>
