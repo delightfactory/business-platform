@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui';
 import { useState } from 'react';
 import { dayCountBasisLabel, type RequestDay } from '../form-rules';
 import { formatDays } from '../states';
@@ -33,10 +34,10 @@ export function DayBreakdown({ days }: { days: RequestDay[] }) {
     {totalPages > 1 && <nav className={styles.pagination} aria-label="صفحات تفاصيل أيام الطلب">
       <span role="status" aria-live="polite">صفحة {current} من {totalPages} · يوم {from}–{to} من {days.length}</span>
       <span className={styles.paginationNav}>
-        <button type="button" className="secondary-button" disabled={current <= 1}
-          onClick={() => setPage(current - 1)}>السابق</button>
-        <button type="button" className="secondary-button" disabled={current >= totalPages}
-          onClick={() => setPage(current + 1)}>التالي</button>
+        <Button variant="ghost" type="button"  disabled={current <= 1}
+          onClick={() => setPage(current - 1)}>السابق</Button>
+        <Button variant="ghost" type="button"  disabled={current >= totalPages}
+          onClick={() => setPage(current + 1)}>التالي</Button>
       </span>
     </nav>}
   </div>;

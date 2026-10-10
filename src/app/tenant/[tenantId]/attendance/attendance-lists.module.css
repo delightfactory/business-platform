@@ -1,11 +1,11 @@
-.toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; margin-block: 1rem; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; margin-block: 1rem 1.5rem; padding: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-tile); }
 .dateForm { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; margin: 0; }
 .dateForm label { display: grid; gap: .35rem; min-width: 0; font-weight: 650; }
 .dateForm input { min-width: 0; min-height: var(--control-height); padding: .55rem .7rem; border: 1px solid var(--color-control-border); border-radius: .5rem; background: var(--surface-base); color: var(--color-text); font: inherit; }
-.tools { display: flex; flex-wrap: wrap; gap: .65rem; }
+.tools { display: flex; flex-wrap: wrap; gap: .65rem; flex: 1; justify-content: flex-end; }
 .table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: .94rem; }
 .table caption { text-align: start; padding-block: .6rem; color: var(--color-muted); }
-.table :is(th, td) { padding: .85rem .65rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--color-border); overflow-wrap: anywhere; }
+.table :is(th, td) { padding: 1.15rem .8rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
 .table thead th { background: var(--surface-subtle); color: var(--color-muted); font-weight: 600; }
 .table thead th:first-child { width: 22%; }
 .table thead th:nth-child(2) { width: 23%; }
@@ -17,14 +17,16 @@
 .table tbody tr:hover { background: var(--surface-subtle); }
 .mobileLabel { display: none; }
 .reviewPage :global(.attendance-review-list) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.reviewPage :global(.attendance-review-list .record-card) { min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: .75rem; background: var(--surface-base); }
+.reviewPage :global(.attendance-review-list h2) { flex: 1; font-size: 16px; }
+.reviewPage :global(.attendance-review-list :is(.record-card,.ui-record)) { padding: 20px; border-radius: var(--r-card); border: 1px solid var(--line); box-shadow: var(--sh-1); }
+.reviewPage :global(.attendance-review-list :is(.record-card,.ui-record)) { min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: .75rem; background: var(--surface-base); }
 .reviewPage :global(.attendance-review-list .record-title-row) { flex-wrap: wrap; }
-.reviewPage :global(.attendance-review-list .record-card > a) { align-self: start; }
+.reviewPage :global(.attendance-review-list :is(.record-card,.ui-record) > a) { align-self: start; }
 @media (max-width: 900px) {
   .table, .table tbody { display: block; }
   .table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .table tbody { display: grid; gap: 1rem; }
-  .table tbody tr { display: grid; gap: .5rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--surface-base); }
+  .table tbody tr { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--sh-1); }
   .table :is(th, td) { display: block; padding: 0; border: 0; }
   .table caption { display: block; }
   .mobileLabel { display: block; color: var(--color-muted); font-size: .85rem; font-weight: 600; }

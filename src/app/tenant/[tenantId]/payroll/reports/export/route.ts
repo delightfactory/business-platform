@@ -3,7 +3,7 @@ import {uuid} from '../../rules';
 import {csvDocument,isReportKind,type ReportRow,type ReportWorkspace} from '../rules';
 export const dynamic='force-dynamic';
 const maximumBytes=20*1024*1024;
-const labels:Record<string,string>={base:'الأجر الأساسي',gross:'إجمالي الاستحقاقات',deductions:'الخصومات التشغيلية',statutory_deductions:'الخصومات النظامية',net:'صافي الراتب',paid:'المدفوع المسجل',remaining:'المتبقي للصرف',previous:'صافي الفترة السابقة',difference:'فرق الصافي',principal:'أصل السلفة',outstanding:'الرصيد المتبقي',amount:'قيمة المكوّن',insured_wage:'الأجر المؤمن عليه'};
+const labels:Record<string,string>={base:'الأجر الأساسي',gross:'إجمالي الاستحقاقات',deductions:'الخصومات الأخرى',statutory_deductions:'خصومات الضريبة والتأمينات',net:'صافي الراتب',paid:'المدفوع المسجل',remaining:'المتبقي للصرف',previous:'صافي الفترة السابقة',difference:'فرق الصافي',principal:'أصل السلفة',outstanding:'الرصيد المتبقي',amount:'قيمة البند',insured_wage:'الأجر التأميني'};
 export async function GET(request:Request,{params}:{params:Promise<{tenantId:string}>}){
  const {tenantId}=await params,q=new URL(request.url).searchParams,employer=q.get('employer')??'',report=q.get('report')??'sheet';
  const fail=(error:string,status:number)=>Response.json({error},{status,headers:{'Cache-Control':'private, no-store'}});
@@ -38,7 +38,7 @@ export async function GET(request:Request,{params}:{params:Promise<{tenantId:str
  const columns=report==='payments'?['net','paid','remaining']:report==='variance'?['net','previous','difference']:report==='advances'?['principal','outstanding']:report==='components'?['amount']:report==='statutory'?['insured_wage','statutory_deductions','net']:['base','gross','deductions','statutory_deductions','net'];
  const withStatus=['variance','advances','components'].includes(report);
  const statusLabels:Record<string,string>={active:'نشطة',settled:'مسددة',record_corrected:'تسجيل خاطئ صُحح',new:'ظهر في نطاق الفترة الحالية',left:'غير موجود في نطاق الفترة الحالية',continuing:'موجود في نطاق الفترتين',earning:'استحقاق',deduction:'خصم',employer_cost:'تكلفة صاحب العمل'};
- const header=['الجهة القانونية','بداية الفترة','نهاية الفترة','الموظف أو المكوّن','كود الموظف',...columns.map(key=>labels[key]),...(withStatus?['الحالة']:[]),...(report==='statutory'?['سنة الحساب','الفئة المحفوظة','أشهر الالتزام','مصدر الأجر المؤمن عليه']:[])];
+ const header=['الجهة القانونية','بداية الفترة','نهاية الفترة','الموظف أو البند','كود الموظف',...columns.map(key=>labels[key]),...(withStatus?['الحالة']:[]),...(report==='statutory'?['سنة الحساب','الفئة المحفوظة','أشهر الالتزام','مصدر الأجر التأميني']:[])];
  const rows=records.map(row=>[workspace!.employer.legal_name,workspace!.period?.starts_on??'',workspace!.period?.ends_on??'',row.employee?.name??row.label??'',row.employee?.code??'',...columns.map(key=>String(row[key as keyof ReportRow]??'')),...(withStatus?[row.status?statusLabels[row.status]??'تحتاج إلى مراجعة':'']:[]),...(report==='statutory'?[String(row.statutory_context?.calendar_year??''),row.statutory_context?.category??'',row.statutory_context?.obligation_months?.join('، ')??'',row.statutory_context?.insured_wage_source??'']:[])]);
  const body=csvDocument([header,...rows]);if(Buffer.byteLength(body,'utf8')>maximumBytes)return fail('نطاق التصدير كبير. حدّد اسم الموظف أو كوده لتصدير نطاق أصغر.',413);
  return new Response(body,{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="payroll-${report}.csv"`,'Cache-Control':'private, no-store'}});

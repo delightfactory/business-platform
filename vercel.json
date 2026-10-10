@@ -73,7 +73,8 @@
       "codex/ux-core-attendance-lists": false,
       "codex/ux-core-attendance-task": false,
       "codex/ux-core-attendance-channels": false,
-      "codex/ux-core-payroll-workspace": false
+      "codex/ux-core-payroll-workspace": false,
+      "ux/visual-concept-c": false
     }
   }
 }

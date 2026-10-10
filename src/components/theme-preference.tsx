@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, type ReactNode } from 'react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import type { ThemePreference } from '@/lib/theme';
 
 const ThemeContext = createContext<{
@@ -32,7 +33,7 @@ export function ThemeProvider({ initialPreference, children }: {
   return <ThemeContext.Provider value={{ preference, change, message }}>{children}</ThemeContext.Provider>;
 }
 
-export function ThemePreferenceControl() {
+export function ThemePreferenceControl({ menu = false }: { menu?: boolean }) {
   const context = useContext(ThemeContext);
   if (!context) return null;
   const choices: { value: ThemePreference; label: string }[] = [
@@ -40,6 +41,17 @@ export function ThemePreferenceControl() {
     { value: 'dark', label: 'داكن' },
     { value: 'system', label: 'حسب الجهاز' },
   ];
+  if (menu) return <>
+    <DropdownMenu.Label className="workspace-account-theme-label">المظهر</DropdownMenu.Label>
+    <DropdownMenu.RadioGroup value={context.preference} onValueChange={value => {
+      if (value === 'light' || value === 'dark' || value === 'system') context.change(value);
+    }}>
+      {choices.map(choice => <DropdownMenu.RadioItem key={choice.value} value={choice.value}>
+        <DropdownMenu.ItemIndicator aria-hidden="true">✓ </DropdownMenu.ItemIndicator>{choice.label}
+      </DropdownMenu.RadioItem>)}
+    </DropdownMenu.RadioGroup>
+    {context.message && <p role="status">{context.message}</p>}
+  </>;
   return <fieldset className="theme-preference">
     <legend>مظهر المنصة</legend>
     <div className="theme-preference-options">

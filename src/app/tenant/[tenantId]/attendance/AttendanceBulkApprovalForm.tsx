@@ -1,9 +1,9 @@
 'use client';
+import { Button, ButtonLink, Message, Checkbox } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState } from 'react';
-import Link from 'next/link';
 import { bulkApproveReadyAttendanceAction, type BulkApprovalState } from './actions';
 
 type ReadyRow = { id: string; employee_code: string; full_name: string };
@@ -25,20 +25,20 @@ export function AttendanceBulkApprovalForm({ tenantId, date, rows }: { tenantId:
       <input type="hidden" name="operationalDate" value={date} />
       <ul className="attendance-bulk-list">
         {rows.map((row) => <li key={row.id}>
-          <div className="attendance-bulk-choice"><label><input type="checkbox" name="instanceIds" value={row.id} />
+          <div className="attendance-bulk-choice"><label><Checkbox  name="instanceIds" value={row.id} />
             <span><strong>{row.full_name}</strong><small><bdi>{row.employee_code}</bdi></small></span>
-          </label><Link className="secondary-button" href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</Link></div>
+          </label><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</ButtonLink></div>
         </li>)}
       </ul>
-      <button className="primary-button" type="submit" disabled={offline || (pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ التحقق والاعتماد…' : 'اعتماد السجلات المحددة'}</button>
+      <Button variant="solid"  type="submit" disabled={offline || (pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ التحقق والاعتماد…' : 'اعتماد السجلات المحددة'}</Button>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
-    {state.message && <div className="attendance-bulk-result" role="status" aria-live="polite">
+    {state.message && <Message tone="info" as="div" className="attendance-bulk-result" role="status" aria-live="polite">
       <p>{state.message}</p>
       {state.items.length > 0 && <ul>{state.items.map((item) => <li key={item.instance_id}>
         <span>{labels.get(item.instance_id) ?? 'سجل غير معروض في الصفحة'}</span>
         <strong>{item.state === 'approved' ? 'تم الاعتماد' : reasonLabel(item.reason_code)}</strong>
       </li>)}</ul>}
-    </div>}
+    </Message>}
   </section>;
 }
 

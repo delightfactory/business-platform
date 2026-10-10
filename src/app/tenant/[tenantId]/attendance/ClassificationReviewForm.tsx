@@ -1,4 +1,5 @@
 'use client';
+import { Button, Message, Textarea, Field } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -58,13 +59,12 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
     <p className="attendance-full-field">{result.kind === 'leave_covered' ? 'اليوم مغطى بإجازة معتمدة، ولا يُحسب غيابًا.'
       : result.absence_units === 0.5 ? 'نصف يوم إجازة معتمد، والنصف المتبقي غياب بلا تسجيلات حضور.' : 'يوم غياب بلا تسجيلات حضور فعالة.'}</p>
     <p className="record-meta attendance-full-field">إجازة معتمدة: {result.leave_units} يوم · غياب: {result.absence_units} يوم</p>
-    {result.diagnostics.includes('observed_work_during_excused') && <p className="form-message attendance-full-field">توجد تسجيلات عمل خلال الإجازة. ستبقى محفوظة: {result.observations.worked_minutes ?? '—'} دقيقة عمل.</p>}
-    <label className="attendance-full-field" htmlFor="classification-reason">{correction ? 'سبب تصحيح نتيجة اليوم' : 'سبب اعتماد نتيجة اليوم'}
-      <textarea id="classification-reason" name="reason" value={reason} onChange={(event) => changeReason(event.target.value)}
-        minLength={3} maxLength={500} required disabled={pending || refreshing} />
-    </label>
-    {(reviewMessage || (state.message && !reviewRenewed)) && <p className="form-message form-error attendance-full-field" role="alert">{reviewMessage || state.message}</p>}
-    {stale ? <button type="button" className="primary-button" disabled={offline || (pending || refreshing)} onClick={renewReview} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</button>
-      : <SubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>}
+    {result.diagnostics.includes('observed_work_during_excused') && <Message tone="info" className=" attendance-full-field">توجد تسجيلات عمل خلال الإجازة. ستبقى محفوظة: {result.observations.worked_minutes ?? '—'} دقيقة عمل.</Message>}
+    <Field  id="classification-reason" label={<>{correction ? 'سبب تصحيح نتيجة اليوم' : 'سبب اعتماد نتيجة اليوم'}
+      </>}><Textarea id="classification-reason" name="reason" value={reason} onChange={(event) => changeReason(event.target.value)}
+        minLength={3} maxLength={500} required disabled={pending || refreshing} /></Field>
+    {(reviewMessage || (state.message && !reviewRenewed)) && <Message tone="bad" className="  attendance-full-field" role="alert">{reviewMessage || state.message}</Message>}
+    {stale ? <Button variant="solid" type="button"  disabled={offline || (pending || refreshing)} onClick={renewReview} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</Button>
+      : <SubmitButton  pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>}
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { Textarea, Message } from '@/components/ui';
 import styles from '../leave.module.css';
 
 import { useActionState, useState, type ChangeEvent } from 'react';
@@ -35,13 +36,13 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     <input type="hidden" name="expectedVersion" value={expectedVersion} />
     <input type="hidden" name="idempotencyKey" value={operationKey} />
     <label htmlFor="withdraw-reason">سبب السحب</label>
-    <textarea id="withdraw-reason" name="reason" required minLength={3} maxLength={500}
+    <Textarea id="withdraw-reason" name="reason" required minLength={3} maxLength={500}
       value={reason} onChange={handleReasonChange} disabled={pending} aria-invalid={Boolean(submitState.error)}
       aria-describedby="withdraw-reason-hint" />
     <p id="withdraw-reason-hint" className="field-hint">من 3 إلى 500 حرف. يُحفظ السبب في سجل العملية مع هويتك ووقتها.</p>
-    {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
+    {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
     <div className="workspace-form-actions">
-      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} className="danger-button" label="سحب الطلب" pendingLabel="جارٍ السحب…" />
+      <SubmitButton variant="danger" disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined}  label="سحب الطلب" pendingLabel="جارٍ السحب…" />
       {pending ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
         : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave/${requestId}`}>إلغاء</PendingLink>}
     </div>

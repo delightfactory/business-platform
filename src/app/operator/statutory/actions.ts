@@ -20,7 +20,7 @@ export async function saveDraftAction(previous:DraftState,form:FormData):Promise
  if(error){
   if(error.code==='42501')return fail('لم تعد مهمة إدارة القواعد القانونية متاحة لحسابك. راجع مسؤول تشغيل المنصة.');
   if(error.message.includes('statutory_draft_exists'))return fail('توجد مسودة باسم النسخة نفسه. راجع المسودات المحفوظة قبل إعادة الحفظ.');
-  if(error.code==='PT409')return fail('تغيرت المسودة منذ فتحها. الحقول كما هي هنا؛ افتح النسخة الحالية في نافذة جديدة للمقارنة وإجراء تعديل عليها.',false,true);
+  if(error.code==='PT409')return fail('تغيرت المسودة منذ فتحها. بياناتك المدخلة محفوظة هنا؛ افتح النسخة الحالية في نافذة جديدة للمقارنة وإجراء تعديل عليها.',false,true);
   if(error.message.includes('statutory_numeric')||error.message.includes('payroll_arithmetic_input_invalid'))return fail('راجع القواعد الرقمية: الحدود متزايدة، والشريحة والجدول الأخيران بلا حد نهائي، والنسب بين صفر و100، وفروع التأمين بلا تكرار. الحقول كما هي؛ لم تُحفظ هذه البيانات.');
   if(error.code==='22023'||error.code?.startsWith('22'))return fail('راجع التواريخ والمراجع؛ لم تُحفظ هذه البيانات.');
   return fail('تعذر تأكيد الحفظ. أعد المحاولة بنفس البيانات لاستعادة النتيجة.',true);

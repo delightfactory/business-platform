@@ -1,114 +1,139 @@
 .entryActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap
 }
-
 .settingsLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  width: min(100%, 70rem);
-  margin: 0 auto 1rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  width:100%;
+  margin:0 0 16px;
+  padding:6px;
+  background:var(--surface-3);
+  border-radius:var(--r-tile)
 }
-
+.settingsLinks a {
+  background:transparent;
+  border-color:transparent;
+  font-size:13px;
+  box-shadow:none
+}
+.settingsLinks a:hover {
+  background:var(--surface)
+}
 .directoryPanel:global(.workspace-records-panel) {
-  border-radius: 0.5rem;
+  border-radius:var(--r-card);
+  box-shadow:var(--sh-1)
 }
-
 .directoryList {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
-  gap: 1rem;
-  margin: 0;
-  padding: 1rem 1.4rem;
-  list-style: none;
-  background: var(--surface-subtle);
+  display:grid;
+  grid-template-columns:1fr;
+  list-style:none;
+  margin:0;
+  padding:0
 }
-
 .employeeRow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: start;
-  padding: 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  background: var(--surface-base);
-  overflow-wrap: anywhere;
+  display:grid;
+  grid-template-columns:minmax(220px,1.5fr) minmax(180px,1fr) auto auto;
+  gap:20px;
+  align-items:center;
+  padding:16px 20px;
+  border-block-start:1px solid var(--line);
+  background:var(--surface);
+  min-width:0;
+  overflow-wrap:anywhere
 }
-
-.employeeRow > :global(.entity-status) {
-  grid-column: 2;
-  grid-row: 1;
+.employeeRow:hover {
+  background:var(--surface-2)
 }
-
-.employmentContext {
-  grid-column: 1 / -1;
+.employeeIdentity {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0
 }
-
-.employmentContext bdi {
-  white-space: nowrap;
-}
-
-.employeeRow > :global(.secondary-button) {
-  grid-column: 1 / -1;
-  justify-self: start;
-}
-
-.employeeIdentity,
-.employmentContext {
-  min-width: 0;
-}
-
 .employeeIdentity h2 {
-  margin: 0;
-  font-size: 1.05rem;
+  margin:0;
+  font:600 14px/1.5 var(--f-head)
 }
-
-.employeeIdentity p,
+.employeeIdentity p {
+  margin:2px 0 0;
+  font-size:12px
+}
 .employmentContext {
-  margin-block: 0.25rem 0;
+  min-width:0;
+  margin:0;
+  font-size:13px;
+  line-height:1.65
 }
-
+.employmentContext bdi {
+  white-space:nowrap
+}
 .formGroup {
-  display: grid;
-  min-width: 0;
-  gap: 0.65rem;
-  margin: 0;
-  padding: 0;
-  border: 0;
+  display:grid;
+  gap:12px;
+  min-width:0;
+  margin:0;
+  padding:0;
+  border:0
 }
-
 .formGroup legend {
-  width: 100%;
-  padding: 0;
-  margin-bottom: 0.75rem;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font:600 16px/1.5 var(--f-head);
+  margin-bottom:16px
+}
+.formGroup+.formGroup {
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--line)
 }
 
-.formGroup + .formGroup {
-  margin-top: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-border);
-}
-
-@media (max-width: 1100px) {
-  .directoryList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .directoryList {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 1rem;
-  }
+@media(max-width:900px) {
   .employeeRow {
-    padding: 1rem;
-    gap: 0.6rem;
-  }
+  grid-template-columns:minmax(180px,1fr) auto;
+  gap:10px 16px
+}
+.employmentContext {
+  grid-column:1;
+  grid-row:2
+}
+.employeeRow>:global(.ui-badge) {
+  grid-column:2;
+  grid-row:1
+}
+.employeeRow>a {
+  grid-column:2;
+  grid-row:2
+}
+
+}
+@media(max-width:599px) {
+  .directoryList {
+  padding:12px;
+  gap:10px;
+  background:var(--bg)
+}
+.employeeRow {
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:var(--r-tile);
+  grid-template-columns:minmax(0,1fr) auto
+}
+.employeeIdentity {
+  gap:10px
+}
+.employmentContext {
+  font-size:12px
+}
+.employeeRow>a {
+  padding-inline:10px;
+  font-size:12px
+}
+.employeeRow>:global(.ui-badge) {
+  max-width:110px;
+  white-space:normal;
+  text-align:center
+}
+
 }

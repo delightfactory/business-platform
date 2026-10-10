@@ -28,5 +28,5 @@ export async function annualAction(previous:AnnualState,form:FormData):Promise<A
  if(!isUuid(field('operationKey'))||!/^[a-f0-9]{64}$/.test(field('reviewHash')))return fail('input_invalid');
  const {data,error}=await supabase.rpc('leave_post_annual_entitlement',{...payload,p_review_hash:field('reviewHash'),p_reason:field('reason'),p_key:field('operationKey')});
  if(error)return fail(error.message);if(!isObject(data)||!['posted','up_to_date'].includes(String(data.state)))return fail('unknown');
- return {...previous,error:'',posted:true,quote:readQuote(data.quote),accountId:isUuid(data.account_id)?data.account_id:null,message:data.state==='up_to_date'?'الاستحقاق مسجّل حتى هذا التاريخ؛ لم يُضف قيد آخر.':'تم تسجيل فرق الاستحقاق السنوي في الرصيد.'};
+ return {...previous,error:'',posted:true,quote:readQuote(data.quote),accountId:isUuid(data.account_id)?data.account_id:null,message:data.state==='up_to_date'?'الاستحقاق مسجّل حتى هذا التاريخ؛ لم تُضف حركة أخرى.':'تم تسجيل فرق الاستحقاق السنوي في الرصيد.'};
 }

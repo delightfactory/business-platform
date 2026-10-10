@@ -1,3 +1,6 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -29,9 +32,9 @@ export default async function NewSitePage({ params }: { params: Promise<{ tenant
     <div className="workspace-form-page">
       <Link className="back-link" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>العودة إلى فروع الجهة</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">الجهات والفروع</p>
-        <h1>إضافة فرع</h1><p>سيُضاف الفرع إلى جهة <bdi>{String(entity.display_name ?? '')}</bdi>.</p></div></header>
+        <PageHeader  title={<>إضافة فرع</>} /><p>سيُضاف الفرع إلى جهة <bdi>{String(entity.display_name ?? '')}</bdi>.</p></div></header>
       <div className="workspace-page-summary"><strong>{limit?.mode === 'unlimited' ? `${usage} فرع نشط · بلا حد أقصى` : `${usage} من ${String(limit?.value ?? 'غير متاح')} فروع نشطة`}</strong></div>
-      {full ? <p className="form-message capacity-message" role="status">اكتمل حد الفروع. عطّل فرعًا غير مستخدم أو اطلب رفع الحد.</p>
+      {full ? <Message tone="info" className="capacity-message" role="status">اكتمل حد الفروع. عطّل فرعًا غير مستخدم أو اطلب رفع الحد.</Message>
         : <section className="workspace-form-panel" aria-label="بيانات الفرع">
           <NewSiteForm tenantId={tenantId} entityId={entityId} />
         </section>}
@@ -40,8 +43,8 @@ export default async function NewSitePage({ params }: { params: Promise<{ tenant
 }
 
 function Status({ tenantId, entityId }: { tenantId: string; entityId: string }) {
-  return <PageFrame><section className="auth-card"><h1>إضافة الفرع غير متاحة</h1>
+  return <PageFrame><Panel className="auth-card"><PageHeader  title={<>إضافة الفرع غير متاحة</>} />
     <p className="intro">تحقق من حالة الجهة وصلاحيتك ثم أعد المحاولة.</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/entities-sites/${entityId}`}>العودة إلى الجهة</Link>
-  </section></PageFrame>;
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites/${entityId}`}>العودة إلى الجهة</ButtonLink>
+  </Panel></PageFrame>;
 }

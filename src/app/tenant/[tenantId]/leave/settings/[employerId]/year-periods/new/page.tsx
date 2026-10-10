@@ -1,7 +1,8 @@
+import { EmptyState, PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, editBlockedText, loadSettingsAccess } from '../../../access-gate';
 import { StatusCard } from '../../../StatusCard';
 import { calendarCoverageText, isUuid, readConfiguration } from '../../../rules';
@@ -26,7 +27,7 @@ export default async function NewYearPeriodPage({ params }: { params: Params }) 
     const text = GATE_TEXT['no-client'];
     return card(text.title, text.detail, text.retry);
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);
@@ -64,20 +65,12 @@ export default async function NewYearPeriodPage({ params }: { params: Params }) 
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-      <header className="workspace-page-heading"><div>
-        <p className="eyebrow">سنوات الإجازة</p>
-        <h1>إضافة فترة إجازات</h1>
-        <p>اختر التقويم وحدد بداية سنة الرصيد ونهايتها واسمًا واضحًا لها. يجب أن يغطي التقويم جميع أيام السنة المحددة.</p>
-      </div></header>
+      <PageHeader title={<>إضافة فترة إجازات</>} eyebrow={<>سنوات الإجازة</>} description={<>اختر التقويم وحدد بداية سنة الرصيد ونهايتها واسمًا واضحًا لها. يجب أن يغطي التقويم جميع أيام السنة المحددة.</>} />
       {calendars.length === 0
-        ? <div className="empty-state">
-          <h2>{hasAnyCalendar ? 'لا توجد تقويمات مغطاة بإصدارات بعد' : 'لا توجد تقويمات لهذه الجهة بعد'}</h2>
-          <p>فترة الإجازة تحتاج تقويمًا يحمل إصدارًا واحدًا على الأقل يحدد تغطيته. أنشئ التقويم أولًا ثم عد إلى هنا.</p>
-          <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>
-        </div>
-        : <section className="workspace-form-panel" aria-label="بيانات فترة الإجازات">
+        ? <div ><EmptyState title={<>{hasAnyCalendar ? 'لا توجد تقويمات مغطاة بإصدارات بعد' : 'لا توجد تقويمات لهذه الجهة بعد'}</>} description={<>فترة الإجازة تحتاج تقويمًا يحمل إصدارًا واحدًا على الأقل يحدد تغطيته. أنشئ التقويم أولًا ثم عد إلى هنا.</>} action={<><Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link></>} /></div>
+        : <Panel  aria-label="بيانات فترة الإجازات">
           <CreateYearPeriodForm tenantId={tenantId} employerId={employerId} calendars={calendars} />
-        </section>}
+        </Panel>}
     </div>
   </PageFrame>;
 }

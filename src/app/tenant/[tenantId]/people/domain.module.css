@@ -1,0 +1,131 @@
+.domain {
+  min-width:0
+}
+.domain :global(.workspace-page-heading) {
+  margin-bottom:24px
+}
+.domain :global(.workspace-page-heading h1) {
+  font:600 clamp(22px,2.2vw,28px)/1.4 var(--f-head)
+}
+.domain :global(.employee-profile-identity) {
+  display:flex;
+  align-items:center;
+  gap:16px
+}
+.domain :global(.employee-profile-identity p) {
+  margin:6px 0 0
+}
+.domain :global(.people-search-form) {
+  padding:20px;
+  background:var(--surface);
+  border-radius:var(--r-card) var(--r-card) 0 0
+}
+.domain :global(.people-search-form>label) {
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted)
+}
+.domain :global(.people-search-form>div) {
+  display:flex;
+  min-width:0;
+  align-items:center;
+  gap:10px
+}
+.domain :global(.people-search-form>div>.ui-icon) {
+  color:var(--muted)
+}
+.domain :global(.people-search-form input) {
+  flex:1;
+  width:0;
+  min-width:0;
+  max-width:480px;
+  border:1px solid var(--line-2);
+  border-radius:var(--r-ctl);
+  background:var(--surface);
+  min-height:44px;
+  font-size:14px;
+  padding:9px 12px
+}
+.domain :global(.people-search-form .field-hint:empty) {
+  display:none
+}
+.domain :global(.people-pagination) {
+  padding:16px 20px;
+  font-size:13px;
+  border-top:1px solid var(--line)
+}
+.domain :global(:is(.work-card,.ui-panel)) {
+  box-shadow:var(--sh-1)
+}
+.domain :global(:is(.work-card,.ui-panel) h2) {
+  font:600 16px/1.5 var(--f-head)
+}
+.domain :global(.record-meta) {
+  font-size:13px;
+  line-height:1.7
+}
+.domain :global(.snapshot-grid) {
+  gap:16px
+}
+.domain :global(.snapshot-grid dt) {
+  font-size:12px;
+  color:var(--muted)
+}
+.domain :global(.snapshot-grid dd) {
+  margin:4px 0 0;
+  font-size:14px;
+  font-weight:500
+}
+.domain :global(.workspace-form-page) {
+  max-width:900px
+}
+.domain :global(.task-form label) {
+  font-size:13px
+}
+.domain :global(.task-form input:not([type=checkbox])) {
+  border-radius:var(--r-ctl);
+  font-size:14px
+}
+.domain :global(.record-list) {
+  gap:12px
+}
+.domain :global(:is(.record-card,.ui-record)) {
+  border-radius:var(--r-tile);
+  background:var(--surface)
+}
+.domain :global(:is(.record-card,.ui-record) h2) {
+  font-size:14px
+}
+.domain :global(.task-disclosure>summary) {
+  font-size:14px
+}
+.domain :global(.task-disclosure .record-meta) {
+  color:var(--muted)
+}
+@media(max-width:599px) {
+  .domain :global(.people-search-form) {
+  padding:16px
+}
+.domain :global(.people-search-form>div) {
+  gap:8px
+}
+.domain :global(.people-search-form>div>.ui-icon) {
+  display:none
+}
+.domain :global(.employee-profile-identity) {
+  gap:12px
+}
+.domain :global(.workspace-form-page) {
+  width:100%
+}
+.domain :global(.workspace-page-heading) {
+  margin-bottom:16px
+}
+
+}
+
+/* Composed form fields and responsive domain content. */
+.domain :global(.ui-field){min-width:0}.domain :global(.ui-field>label){font-size:13px;font-weight:500}.domain :global(.ui-key-values){margin:16px 0}.domain :global(.ui-panel>.ui-page-header){margin-bottom:24px}.domain :global(.ui-disclosure>summary){justify-content:space-between;gap:12px}.domain :global(.ui-disclosure>summary>.ui-icon){flex-shrink:0}.domain :global(.ui-message){overflow-wrap:anywhere}.domain :global(.ui-record .record-main){min-width:0}.domain :global(.ui-record .ui-disclosure){margin-top:12px}
+
+.domain :global(.workforce-import-preview){margin-top:24px}.domain :global(.workforce-import-preview>.ui-key-values){padding:16px;background:var(--surface-2);border-radius:var(--r-tile)}.domain :global(.workforce-import-preview .checkbox-row){padding:12px;border:1px solid var(--line);border-radius:var(--r-ctl);margin:8px 0}.domain :global(.workforce-import-preview .checkbox-row:has(input:checked)){background:var(--brand-soft);border-color:var(--brand-line)}.domain :global(.workforce-file-trigger){align-items:center;gap:12px}.domain :global(.work-policy-section){border-radius:var(--r-tile)}
+@media(max-width:640px){.domain :global(.workforce-import-table thead){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.domain :global(.workforce-import-table tbody){display:grid;gap:12px}.domain :global(.workforce-import-table tr){display:grid;border:1px solid var(--line);border-radius:var(--r-tile);padding:12px;background:var(--surface)}.domain :global(.workforce-import-table td){display:grid;grid-template-columns:95px minmax(0,1fr);gap:8px;padding:8px 0;border:0;overflow-wrap:anywhere}.domain :global(.workforce-import-table td::before){content:attr(data-label);color:var(--muted);font-size:12px}.domain :global(.workforce-import-table-wrap){overflow:visible}.domain :global(.workforce-import-table){min-width:0;width:100%}.domain :global(.workforce-file-trigger){align-items:stretch;flex-direction:column}.domain :global(.work-policy-grid){grid-template-columns:1fr}}

@@ -1,10 +1,13 @@
-import Link from 'next/link';
+import { Panel } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { isLeaveAccessSnapshot, isUuid } from '../form-rules';
 import { PendingLink } from '../pending-link';
 import { NewLeaveRequestForm } from './NewLeaveRequestForm';
+import { Icon, PageHeader } from '@/components/ui';
+import styles from '../leave.module.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +18,7 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
   if (!isUuid(tenantId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/me/leave/new`)}`);
   let response;
   try {
@@ -45,12 +48,10 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
   }
 
   return <PageFrame footer="الخدمة الذاتية">
-    <div className="workspace-form-page">
-      <PendingLink className="back-link" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</PendingLink>
-      <header className="workspace-page-heading"><div><p className="eyebrow">الخدمة الذاتية</p>
-        <h1>طلب إجازة جديد</h1>
-        <p>اختر تاريخين أولًا لعرض أنواع الإجازة المتاحة في هذه الفترة، ثم أرسل الطلب.</p></div></header>
-      <section className="workspace-form-panel" aria-label="بيانات طلب الإجازة">
+    <div className={styles.requestSheet}>
+      <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/me/leave`}><Icon name="arrowRight" size={18}/>إجازاتي</PendingLink>
+      <PageHeader title="طلب إجازة" description="اختر الفترة ثم نوع الإجازة. أرسل الطلب عندما تكتمل البيانات." />
+      <section className={styles.requestSheetBody} aria-label="بيانات طلب الإجازة">
         <NewLeaveRequestForm tenantId={tenantId} idempotencyKey={crypto.randomUUID()} />
       </section>
     </div>
@@ -59,9 +60,9 @@ export default async function NewLeaveRequestPage({ params }: { params: Params }
 
 function Status({ tenantId, title, detail, retry = false }: { tenantId: string; title: string; detail: string; retry?: boolean }) {
   return <PageFrame footer="الخدمة الذاتية">
-    <section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-      {retry && <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave/new`}>إعادة المحاولة</Link>}
-      <Link className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</Link>
-    </section>
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>
+      {retry && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave/new`}>إعادة المحاولة</ButtonLink>}
+      <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/me/leave`}>العودة إلى إجازاتي</ButtonLink>
+    </Panel>
   </PageFrame>;
 }

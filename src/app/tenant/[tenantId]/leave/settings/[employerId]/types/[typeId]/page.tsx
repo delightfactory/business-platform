@@ -1,8 +1,9 @@
+import { Badge, Disclosure, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, loadSettingsAccess } from '../../../access-gate';
 import { StatusCard } from '../../../StatusCard';
 import {
@@ -46,7 +47,7 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
     const text = GATE_TEXT['no-client'];
     return card(text.title, text.detail, text.retry);
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);
@@ -99,46 +100,36 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}
     <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-    <header className="workspace-page-heading"><div>
-      <p className="eyebrow">أنواع الإجازة</p>
-      <div className="record-title-row">
-        <h1>{leaveType.name}</h1>
-        <span className={`entity-status ${leaveType.is_active ? 'is-active' : 'is-inactive'}`}>
-          {leaveType.is_active ? 'مفعّل' : 'موقوف'}</span>
-      </div>
-      <p>{versions.length === 0 ? 'لا توجد إصدارات بعد' : effectiveRangeText(latest?.effective_from ?? '', latest?.effective_until ?? null)}.
-        يحتفظ كل تعديل بالإعدادات السابقة وتاريخ سريانها.</p>
-      <details><summary>الرمز المرجعي</summary><bdi>{leaveType.code}</bdi></details>
-    </div></header>
+    <PageHeader title={<>{leaveType.name}</>} eyebrow="أنواع الإجازة" description={<>{versions.length === 0 ? 'لا توجد إصدارات بعد' : effectiveRangeText(latest?.effective_from ?? '', latest?.effective_until ?? null)}. يحتفظ كل تعديل بالإعدادات السابقة وتاريخ سريانها.</>} />
+<Badge tone={leaveType.is_active ? 'ok' : 'neutral'}>{leaveType.is_active ? 'مفعّل' : 'موقوف'}</Badge><Disclosure summary="الرمز المرجعي"><bdi>{leaveType.code}</bdi></Disclosure>
 
     <div className={styles.notices}>
-      {notice && notice.tone !== 'success' && <p
-        className={notice.tone === 'error' ? 'form-message form-error' : 'form-message'}
+      {notice && notice.tone !== 'success' && <Message
+        tone={notice.tone === 'error' ? 'bad' : 'info'}
         role={notice.tone === 'error' ? 'alert' : 'status'}>
         {notice.message}
-      </p>}
-      {!canEdit && !employer.is_active && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && !employer.is_active && <Message tone="info"  role="status">
         هذه الجهة موقوفة: يمكنك مراجعة الإعدادات المحفوظة دون حفظ إصدار جديد أو تغيير التفعيل.
-      </p>}
-      {!canEdit && employer.is_active && !access.canManage && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && employer.is_active && !access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إعدادات النوع دون تعديلها.
-      </p>}
-      {!canEdit && employer.is_active && access.canManage && !access.newWorkEnabled && <p className="form-message" role="status">
+      </Message>}
+      {!canEdit && employer.is_active && access.canManage && !access.newWorkEnabled && <Message tone="info"  role="status">
         خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن حفظ إصدار جديد أو تغيير التفعيل. تبقى الإعدادات المحفوظة قابلة للمراجعة.
-      </p>}
+      </Message>}
     </div>
 
-    <section className="workspace-records-panel" aria-labelledby="type-versions-title">
+    <Panel  aria-labelledby="type-versions-title">
       <div className={styles.panelHeading}>
         <div>
-          <h2 id="type-versions-title">إصدارات النوع</h2>
+          <h2 id="type-versions-title">سجل إعدادات نوع الإجازة</h2>
           <p>الإعدادات الحالية والسابقة، من الأحدث إلى الأقدم.</p>
         </div>
       </div>
       {versions.length === 0
-        ? <div className="empty-state"><h2>لا توجد إصدارات لهذا النوع</h2>
-          <p>أعِد فتح صفحة الإعدادات؛ إن استمر عدم وجود إصدار فراجع إدارة الموارد البشرية.</p></div>
-        : <ul className="record-list">{versions.map((version) => <li className="record-card" key={version.id}>
+        ? <div ><EmptyState title={<>لا توجد إصدارات لهذا النوع</>} description={<>أعِد فتح صفحة الإعدادات؛ إن استمر عدم وجود إصدار فراجع إدارة الموارد البشرية.</>} /></div>
+        : <ul className="record-list">{versions.map((version) => <RecordCard  key={version.id}>
           <div className="record-main">
             <div className="record-title-row">
               <h3>{versionText(version.version)} · {effectiveRangeText(version.effective_from, version.effective_until)}</h3>
@@ -149,10 +140,10 @@ export default async function LeaveTypeDetailPage({ params, searchParams }: {
               {' · '}نصف يوم: {halfDayLabel(version.half_day_allowed)}</p>
             <p className="record-meta">المصدر: <bdi>{version.source}</bdi></p>
           </div>
-        </li>)}</ul>}
-    </section>
+        </RecordCard>)}</ul>}
+    </Panel>
 
-    {canEdit && <SettingsTask label="إصدار جديد من تاريخ لاحق">
+    {canEdit && <SettingsTask label="تعديل نوع الإجازة من تاريخ لاحق">
       {initialRevise
         ? <ReviseTypeForm tenantId={tenantId} employerId={employerId} typeId={typeId}
           detailPath={path} initial={initialRevise} />

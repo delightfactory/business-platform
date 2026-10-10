@@ -1,5 +1,6 @@
 'use client';
 
+import { Field, Input, Message } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { useActionState } from 'react';
 import { useId } from 'react';
@@ -35,15 +36,13 @@ export function ReviseCalendarForm({ tenantId, employerId, calendarId, detailPat
 
     <div className={styles.formGrid}>
       <div className={styles.field}>
-        <label htmlFor="calendar-revise-from">بداية سريان الإصدار الجديد</label>
-        <input id="calendar-revise-from" name="effectiveFrom" type="date" required
-          defaultValue={state.effectiveFrom} disabled={pending} />
+        <Field id="calendar-revise-from" label={<>تاريخ تطبيق الإعدادات الجديدة</>} required><Input id="calendar-revise-from" name="effectiveFrom" type="date" required
+          defaultValue={state.effectiveFrom} disabled={pending} /></Field>
         <span className="field-hint">يجب أن يكون بعد تاريخ اليوم بتوقيت القاهرة؛ الإصدار الحالي يبقى ساريًا حتى ذلك الحين.</span>
       </div>
       <div className={styles.field}>
-        <label htmlFor="calendar-revise-until">نهاية السريان (اختياري)</label>
-        <input id="calendar-revise-until" name="effectiveUntil" type="date"
-          defaultValue={state.effectiveUntil} disabled={pending} />
+        <Field id="calendar-revise-until" label={<>نهاية السريان (اختياري)</>}><Input id="calendar-revise-until" name="effectiveUntil" type="date"
+          defaultValue={state.effectiveUntil} disabled={pending} /></Field>
         <span className="field-hint">أول يوم خارج سريان الإصدار الجديد، ولا يُحتسب ضمنه. اتركه فارغًا ليظل مفتوحًا.</span>
       </div>
     </div>
@@ -53,24 +52,22 @@ export function ReviseCalendarForm({ tenantId, employerId, calendarId, detailPat
 
     <div className={styles.formGrid}>
       <div className={styles.field}>
-        <label htmlFor="calendar-revise-source">مصدر التعديل</label>
-        <input id="calendar-revise-source" name="source" required maxLength={MAX_SOURCE_LENGTH}
-          defaultValue={state.source} disabled={pending} placeholder="مثال: تحديث تقويم 2027" />
+        <Field id="calendar-revise-source" label={<>مصدر التعديل</>} required><Input id="calendar-revise-source" name="source" required maxLength={MAX_SOURCE_LENGTH}
+          defaultValue={state.source} disabled={pending} placeholder="مثال: تحديث تقويم 2027" /></Field>
         <span className="field-hint">يظهر مع الإصدار الجديد في سجل التغييرات.</span>
       </div>
       <div className={styles.field}>
-        <label htmlFor="calendar-revise-reason">سبب التعديل</label>
-        <input id="calendar-revise-reason" name="reason" required minLength={MIN_REASON_LENGTH}
-          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} />
+        <Field id="calendar-revise-reason" label={<>سبب التعديل</>} required><Input id="calendar-revise-reason" name="reason" required minLength={MIN_REASON_LENGTH}
+          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} /></Field>
         <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
       </div>
     </div>
 
-    {state.error && <p className="form-message form-error" role="alert">{state.error}</p>}
-    {pending && <p className="field-hint" role="status">جارٍ حفظ الإصدار الجديد… لا تغلق الصفحة.</p>}
+    {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
+    {pending && <p className="field-hint" role="status">جارٍ حفظ الإعدادات الجديدة… لا تغلق الصفحة.</p>}
 
     <div className="workspace-form-actions">
-      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="حفظ الإصدار الجديد" pendingLabel="جارٍ الحفظ…" />
+      <SubmitButton disabled={offline} ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} label="حفظ الإعدادات الجديدة" pendingLabel="جارٍ الحفظ…" />
       <Link className="secondary-button" href={detailPath}>العودة إلى الإعدادات</Link>
     </div>
     <p className="field-hint">يُنشأ إصدار جديد فقط من تاريخ السريان الذي تختاره؛ الإصدارات السابقة وتغطيتها تبقى كما هي. عند أي تعارض حُفظت بياناتك في النموذج — حدّث الصفحة لعرض أحدث الإعدادات ثم عدّل وأعد الحفظ.</p>

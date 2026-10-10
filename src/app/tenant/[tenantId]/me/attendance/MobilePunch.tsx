@@ -3,6 +3,9 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { channelReasonLabel, type MobileAttempt, type MobileSnapshot, type PunchResult } from '@/lib/attendance-channel';
 import { reconcileMobilePunch, submitMobilePunch } from './actions';
+import { Button, Icon } from '@/components/ui';
+import { SlideToConfirm } from '@/components/patterns/attendance-pass/SlideToConfirm';
+import styles from '@/components/patterns/attendance-pass/attendance-pass.module.css';
 type Pending = { id: string; scope: string };
 export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot: MobileSnapshot }) {
   const router=useRouter();
@@ -36,7 +39,7 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
     if(result.state==='unconfirmed' && result.reason==='invalid_input') { announce('بيانات المحاولة غير صالحة. لم نرسل المحاولة إلى خدمة الحضور ولم نحذف مرجع المحاولة السابقة. لا تسجّل محاولة جديدة قبل مراجعة المسؤول.');return; }
     if(['accepted','duplicate'].includes(result.state)) { release();setTerminal(false);announce(nativeFeedback+(result.review?'سُجلت الحركة وتحتاج مراجعة المسؤول وفق سياسة الموقع.':result.state==='duplicate'?'المحاولة مسجلة بالفعل. لم تُضف حركة أخرى.':'تم تسجيل الحركة.'));refreshSnapshot(); }
     else if(result.state==='blocked' && result.reason==='scope_changed') { release();setTerminal(true);announce('المحاولة السابقة لا تخص رابط الموظف الحالي، ولا يمكن الوصول إليها بهذا الرابط. يمكنك تجهيز محاولة جديدة لحسابك الحالي.');refreshSnapshot(); }
-    else if(result.state==='rejected') { release();setTerminal(true);announce(nativeFeedback+(result.reason==='scope_changed'?'تغيّر سياق العمل ولم تُقبل هذه المحاولة. جهّز محاولة جديدة بعد تحديث السياق.':channelReasonLabel(result.reason)));refreshSnapshot(); }
+    else if(result.state==='rejected') { release();setTerminal(true);announce(nativeFeedback+(result.reason==='scope_changed'?'تغيّر حسابك أو بيانات العمل ولم تُقبل هذه المحاولة. جهّز محاولة جديدة بعد تحديث البيانات.':channelReasonLabel(result.reason)));refreshSnapshot(); }
     else announce(nativeFeedback+channelReasonLabel(result.reason));
   }
   async function reconcile() { if(!ready || refreshing || !pending?.id || flight.current) return;flight.current=true;setBusy(true);announce('جارٍ التحقق من المحاولة السابقة.');try {finish(await reconcileMobilePunch(tenantId,pending.id,pending.scope));} catch {announce('تعذر الاتصال. نتيجة المحاولة لم تتأكد بعد. أعد التحقق عندما يعود الاتصال.');} finally {flight.current=false;setBusy(false);} }
@@ -73,11 +76,13 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
       announce('جارٍ إرسال الحركة. انتظر تأكيد التسجيل.');finish(await Promise.race([submitMobilePunch(tenantId,current),new Promise<never>((_,reject)=>setTimeout(()=>reject(new Error('response_timeout')),20000))]),nativeLocationFeedback.current);
     } catch {announce(completeAttempt.current?nativeLocationFeedback.current+'لم يتأكد التسجيل. تحقق من المحاولة أو أعد إرسال المحاولة نفسها عند عودة الاتصال.':'تعذر تجهيز المحاولة. لم تُرسل حركة؛ راجع إعدادات المتصفح أو تواصل مع المسؤول.'); } finally {flight.current=false;setBusy(false);}
   }
-  return <section className="workspace-records-panel channel-punch" aria-busy={busy || refreshing || !ready}>
-    <h2>{!ready?'تجهيز تسجيل الحضور':busy?'انتظر نتيجة العملية':refreshing?'جارٍ تحديث حالة الحضور':pending?(pending.id?'تحقق من المحاولة السابقة':'تعذر قراءة المحاولة السابقة'):terminal?'راجع نتيجة المحاولة':!snapshot.available?'التسجيل غير متاح الآن':next==='in'?'تسجيل الحضور':'تسجيل الانصراف'}</h2>
-    {snapshot.site_name && <p>موقع العمل: {snapshot.site_name}</p>}{snapshot.geofence_required && <p className="field-hint">يُطلب موقعك مرة واحدة للتحقق من نطاق العمل.</p>}
-    {!snapshot.available && <p className="form-message">{channelReasonLabel(snapshot.reason)}</p>}
-    <div className="channel-outcome" ref={status} tabIndex={-1} role="status" aria-live="polite">{ready?message:'جارٍ تجهيز الصفحة وقراءة مرجع المحاولة السابقة إن وُجد…'}</div>
-    <div className="workspace-form-actions">{pending?<><button type="button" className="primary-button" disabled={busy || refreshing || !ready || !pending.id} onClick={reconcile}>التحقق من المحاولة</button>{canResend && <button type="button" className="secondary-button" disabled={busy || refreshing || !ready || !snapshot.available} onClick={punch}>إعادة إرسال نفس المحاولة</button>}</>:terminal?<button type="button" className="primary-button" disabled={busy || refreshing || !ready} onClick={()=>{setTerminal(false);refreshSnapshot();announce('جارٍ تحديث السياق. انتظر ظهور الإجراء المطلوب ثم سجّل الحركة.');}}>تجهيز محاولة جديدة</button>:<button type="button" className="primary-button" disabled={busy || refreshing || !ready || !snapshot.available} onClick={punch}>{busy?'انتظر نتيجة العملية…':next==='in'?'تسجيل الحضور':'تسجيل الانصراف'}</button>}</div>
+  return <section className={styles.pass} aria-busy={busy || refreshing || !ready} aria-label="بطاقة تسجيل الحضور">
+    <div className={styles.top}><span className={styles.label}><Icon name="shield" size={18} /> تسجيلك الشخصي</span><Icon name={next==='in'?'clock':'checkCheck'} size={26} /></div>
+    <div><h2 className={styles.title}>{!ready?'تجهيز تسجيل الحضور':busy?'انتظر نتيجة العملية':refreshing?'جارٍ تحديث حالة الحضور':pending?(pending.id?'محاولة لم تتأكد بعد':'تعذر قراءة المحاولة السابقة'):terminal?'راجع نتيجة المحاولة':!snapshot.available?'التسجيل غير متاح الآن':next==='in'?'جاهز لبدء يومك؟':'أنت في العمل'}</h2>
+    {snapshot.site_name && <p className={styles.site}><Icon name="mapPin" size={16}/>{snapshot.site_name}</p>}</div>
+    {!snapshot.available && <p className={styles.feedback}>{channelReasonLabel(snapshot.reason)}</p>}
+    <div className={styles.feedback} ref={status} tabIndex={-1} role="status" aria-live="polite">{ready?message:'جارٍ تجهيز الصفحة وقراءة مرجع المحاولة السابقة إن وُجد…'}</div>
+    {pending?<div className={styles.actions}><Button disabled={busy || refreshing || !ready || !pending.id} onClick={reconcile} icon="refresh">التحقق من المحاولة</Button>{canResend && <Button variant="ghost" disabled={busy || refreshing || !ready || !snapshot.available} onClick={punch}>إعادة إرسال نفس المحاولة</Button>}</div>:terminal?<div className={styles.actions}><Button disabled={busy || refreshing || !ready} onClick={()=>{setTerminal(false);refreshSnapshot();announce('جارٍ تحديث البيانات. انتظر ظهور الإجراء المطلوب ثم سجّل الحركة.');}}>تجهيز محاولة جديدة</Button></div>:<SlideToConfirm disabled={busy || refreshing || !ready || !snapshot.available} onConfirm={punch} label={next==='in'?'الحضور':'الانصراف'}/>}
+    {snapshot.geofence_required && <p className={styles.location}>يُطلب موقعك لهذه المحاولة فقط للتحقق من نطاق العمل.</p>}
   </section>;
 }

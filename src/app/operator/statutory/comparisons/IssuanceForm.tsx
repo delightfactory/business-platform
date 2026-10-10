@@ -1,4 +1,6 @@
 'use client';
+import { Checkbox, Message } from '@/components/ui';
+import { Button, Textarea } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import {startTransition,useActionState,useRef,useState} from 'react';
@@ -30,11 +32,11 @@ export function IssuanceForm({head,revision,actor,stamp}:{head:string;revision:n
   <input type="hidden" name="head" value={head}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="actor" value={actor}/><input type="hidden" name="stamp" value={stamp}/>
   <input type="hidden" name="reason" value={reason}/><input type="hidden" name="reviewed" value={String(reviewed)}/>
   <fieldset disabled={frozen}><legend>مراجعة إصدار الضريبة والتأمين</legend>
-   <label htmlFor="issuance-reason">مرجع المراجعة وسبب الاعتماد</label><textarea id="issuance-reason" required minLength={10} maxLength={1000} value={reason} onChange={event=>setReason(event.target.value)}/>
-   <label htmlFor="issuance-reviewed"><input id="issuance-reviewed" type="checkbox" required checked={reviewed} onChange={event=>setReviewed(event.target.checked)}/>راجعت أصل النتائج الرسمية، وانطباقها على الفئة والفترة، وتغطية حالات الضريبة والتأمين. تصنيف الحالة وحده لا يثبت أنها رسمية أو ممثلة.</label>
+   <label htmlFor="issuance-reason">مرجع المراجعة وسبب الاعتماد</label><Textarea id="issuance-reason" required minLength={10} maxLength={1000} value={reason} onChange={event=>setReason(event.target.value)}/>
+   <label htmlFor="issuance-reviewed"><Checkbox id="issuance-reviewed"  required checked={reviewed} onChange={event=>setReviewed(event.target.checked)}/>راجعت أصل النتائج الرسمية، وانطباقها على الفئة والفترة، وتغطية حالات الضريبة والتأمين. تصنيف الحالة وحده لا يثبت أنها رسمية أو ممثلة.</label>
   </fieldset>
-  <p className="field-hint">الإصدار يثبت هذه النسخة وأدلتها للضريبة والتأمين فقط. لا يعتمد قواعد العمل الإضافي أو حدود الخصم، ولا يفتح تثبيت المسير المالي.</p>
-  {state.error&&<p role="alert" className="form-message form-error">{state.error}</p>}
-  {state.saved?<p role="status">صدر تعريف الضريبة والتأمين لهذه النسخة. تأهيل المسير المالي الكامل ما زال مطلوبًا.</p>:state.stale?<a className="primary-button" href={'/operator/statutory/comparisons?head='+encodeURIComponent(head)} target="_blank" rel="noopener noreferrer">فتح حالة المراجعة الحالية في نافذة جديدة</a>:<button className="primary-button" disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending?'جارٍ إصدار القواعد…':state.uncertain?'استعادة نتيجة الإصدار':'إصدار قواعد الضريبة والتأمين'}</button>}
+  <p className="field-hint">الإصدار يثبت هذه النسخة وأدلتها للضريبة والتأمين فقط. لا يعتمد قواعد العمل الإضافي أو حدود الخصم، ولا يسمح بحفظ المسير المالي نهائيًا.</p>
+  {state.error&&<Message tone="bad" role="alert" >{state.error}</Message>}
+  {state.saved?<p role="status">صدر تعريف الضريبة والتأمين لهذه النسخة. استكمال شروط حساب المسير المالي ما زال مطلوبًا.</p>:state.stale?<a className="primary-button" href={'/operator/statutory/comparisons?head='+encodeURIComponent(head)} target="_blank" rel="noopener noreferrer">فتح حالة المراجعة الحالية في نافذة جديدة</a>:<Button variant="solid" type="submit"  disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending?'جارٍ إصدار القواعد…':state.uncertain?'استعادة نتيجة الإصدار':'إصدار قواعد الضريبة والتأمين'}</Button>}
  {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose={state.uncertain ? "recovery" : "continuation"} />}</form></details>;
 }

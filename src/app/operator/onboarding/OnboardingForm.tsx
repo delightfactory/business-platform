@@ -1,4 +1,6 @@
 'use client';
+import { Message } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -15,7 +17,7 @@ type Phase = 'editing' | 'unknown' | 'retry' | 'saved';
 const messages: Record<OnboardingOutcome['state'], string> = {
   saved: 'تم تأكيد إعداد الشركة.',
   invalid: 'تحقق من الأسماء والبريد وحدود المستخدمين والفروع. استخدم عددًا موجبًا أو اختر غير محدود.',
-  admin: 'تحقق من وجود حساب المسؤول وتأكيد بريده وإتاحة الحساب، ثم صحح البيانات بنفس المرجع.',
+  admin: 'تحقق من وجود حساب المسؤول وتأكيد بريده وتفعيل الحساب، ثم صحح البيانات بنفس المرجع.',
   unknown: 'نتيجة الإعداد غير مؤكدة. احتفظ بهذه الصفحة وراجع المحاولة الأصلية قبل أي إرسال آخر.',
   unavailable: 'تعذر التحقق الآن. احتفظ بالبيانات وراجع المحاولة الأصلية إذا سبق إرسالها.',
   'actor-changed': 'المحاولة مرتبطة بالحساب الذي بدأها. ارجع إلى الحساب الأصلي ثم راجع النتيجة؛ لا تُرسلها من حساب آخر.',
@@ -93,15 +95,15 @@ export function OnboardingForm({ actorId, requestKey, children }: { actorId: str
       <fieldset className="operator-action-fields" disabled={!ready || pending || frozen} aria-label="إنشاء الشركة">
         <input type="hidden" name="idempotencyKey" value={scope.requestKey} />
         {children}
-        {!frozen && <button type="submit" className="primary-button" disabled={offline || (!ready || pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ إنشاء الشركة…' : 'إنشاء الشركة'}</button>}
+        {!frozen && <Button variant="solid" type="submit"  disabled={offline || (!ready || pending)} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{pending ? 'جارٍ إنشاء الشركة…' : 'إنشاء الشركة'}</Button>}
       </fieldset>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
-    {actorChanged && <p className="form-message form-error" role="alert">{messages['actor-changed']}</p>}
-    {outcome && <p className="form-message" role={outcome.state === 'absent' ? 'status' : 'alert'}>{messages[outcome.state]}</p>}
-    {pending && <p role="status" className="form-message">جارٍ التحقق من المحاولة…</p>}
+    {actorChanged && <Message tone="bad"  role="alert">{messages['actor-changed']}</Message>}
+    {outcome && <Message tone="info"  role={outcome.state === 'absent' ? 'status' : 'alert'}>{messages[outcome.state]}</Message>}
+    {pending && <Message tone="info" role="status" >جارٍ التحقق من المحاولة…</Message>}
     {frozen && hasAttempt && <div className="topbar-actions">
-      {phase === 'retry' && !actorChanged && <button type="button" className="primary-button" disabled={offline || (!ready || pending)} onClick={() => dispatch('retry')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>إعادة إرسال البيانات الأصلية</button>}
-      <button type="button" className={phase === 'retry' && !actorChanged ? 'secondary-button' : 'primary-button'} disabled={offline || (!ready || pending)} onClick={() => dispatch('read')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>مراجعة نتيجة المحاولة</button>
+      {phase === 'retry' && !actorChanged && <Button variant="solid" type="button"  disabled={offline || (!ready || pending)} onClick={() => dispatch('retry')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>إعادة إرسال البيانات الأصلية</Button>}
+      <Button variant="ghost" type="button" className={phase === 'retry' && !actorChanged ? 'secondary-button' : 'primary-button'} disabled={offline || (!ready || pending)} onClick={() => dispatch('read')} aria-describedby={showOfflineRecovery ? offlineRecoveryHint : undefined}>مراجعة نتيجة المحاولة</Button>
     </div>}
     {showOfflineRecovery && <OfflineSubmissionNotice id={offlineRecoveryHint} purpose="recovery" />}
     {frozen && <p className="field-hint">البيانات الأصلية محفوظة في هذه الصفحة فقط. لا تغلقها أو تعيد تحميلها قبل حسم النتيجة؛ لا تُحفظ بيانات المحاولة على الجهاز.</p>}

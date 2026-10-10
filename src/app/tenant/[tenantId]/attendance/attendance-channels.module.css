@@ -1,16 +1,23 @@
 .catalog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; }
-.catalog :global(.record-card) { display: flex; flex-direction: column; gap: .8rem; height: 100%; }
+.catalog :global(:is(.record-card,.ui-record)) { display: flex; flex-direction: column; gap: .8rem; height: 100%; }
 .catalog :global(.record-main) { flex: 1; }
-.catalog :global(.secondary-button) { width: 100%; }
+.catalog :global(:is(.secondary-button,.ui-button-ghost)) { width: 100%; }
 .status { color: var(--text-primary); background: var(--surface-inset); }
 .sectionNav { display: flex; flex-wrap: wrap; gap: .65rem; }
 .sectionNav a { display: inline-flex; align-items: center; min-height: var(--touch-target-size); padding: .45rem .75rem; border: 1px solid var(--color-control-border); border-radius: .5rem; background: var(--surface-base); color: var(--color-text); text-decoration: none; }
 .sectionNav a:hover { background: var(--color-brand-soft); }
-.fieldGroup { padding: 1rem !important; margin-block: .5rem !important; border: 1px solid var(--color-border) !important; border-radius: .5rem; background: var(--surface-subtle); }
+.fieldGroup { padding: 24px !important; margin-block: 1rem !important; border: 1px solid var(--line) !important; border-radius: var(--r-card); background: var(--surface); display: grid; gap: 12px; }
 .fieldGroup legend { padding-inline: .4rem; font-weight: 700; color: var(--color-text); }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; padding-inline-start: 0; list-style-position: inside; line-height: 1.8; }
-.queue :global(.record-card) { padding: 1rem; }
+.queue :global(:is(.record-card,.ui-record)) { padding: 1rem; }
 .queue :global(.record-main) { width: 100%; min-width: 0; }
 .queue :global(.record-meta) { overflow-wrap: anywhere; }
 @media (max-width: 1100px) { .catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .catalog, .steps { grid-template-columns: minmax(0, 1fr); } }
+.fieldGroup { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:20px; }
+.fieldGroup > :global(.ui-field) { min-width:0; }
+.fieldGroup > p,.fieldGroup > div:not(:global(.ui-field)),.fieldGroup > :global(.ui-message) { grid-column:1 / -1; }
+.catalog :global(.ui-record-card) { display:flex; flex-direction:column; gap:14px; height:100%; }
+.catalog :global(.ui-button-ghost) { width:100%; }
+.queue :global(.ui-record-card) { padding:20px; }
+@media(max-width:640px) { .fieldGroup{grid-template-columns:minmax(0,1fr);padding:16px !important;gap:16px}.queue :global(.ui-record-card){padding:16px} }

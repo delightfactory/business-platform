@@ -1,7 +1,8 @@
+import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT, editBlockedText, loadSettingsAccess } from '../../../access-gate';
 import { StatusCard } from '../../../StatusCard';
 import { isUuid } from '../../../rules';
@@ -26,7 +27,7 @@ export default async function NewLeaveTypePage({ params }: { params: Params }) {
     const text = GATE_TEXT['no-client'];
     return card(text.title, text.detail, text.retry);
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const gate = await loadSettingsAccess(supabase, tenantId, employerId);
@@ -44,15 +45,11 @@ export default async function NewLeaveTypePage({ params }: { params: Params }) {
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
       <Link className="back-link" href={basePath}>العودة إلى إعدادات الجهة</Link>
-      <header className="workspace-page-heading"><div>
-        <p className="eyebrow">أنواع الإجازة</p>
-        <h1>إضافة نوع إجازة</h1>
-        <p>حدد نوع الإجازة وطريقة احتسابها وأثرها على الرصيد والأجر.</p>
-      </div></header>
-      <section className="workspace-form-panel" aria-label="بيانات نوع الإجازة">
+      <PageHeader title={<>إضافة نوع إجازة</>} eyebrow={<>أنواع الإجازة</>} description={<>حدد نوع الإجازة وطريقة احتسابها وأثرها على الرصيد والأجر.</>} />
+      <Panel  aria-label="بيانات نوع الإجازة">
         <CreateTypeForm tenantId={tenantId} employerId={employerId}
           initialCode={initialCode} />
-      </section>
+      </Panel>
     </div>
   </PageFrame>;
 }

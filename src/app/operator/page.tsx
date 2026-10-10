@@ -1,8 +1,11 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
+import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,13 +14,13 @@ type SearchParams = Promise<{ state?: string }>;
 export default async function OperatorPage({ searchParams }: { searchParams: SearchParams }) {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة إلى ملف البيئة ثم أعد تشغيل التطبيق." />;
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بالمنصة. اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
+  const { data: { user }, error: userError } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   if (userError) return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
   const { data: operatorStatus, error: statusError } = await supabase.rpc('current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
-  if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
+  if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مسؤول تشغيل المنصة النشطة." />;
 
   const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
     supabase.rpc('current_operator_can_manage_operators').then(result => result, (error: unknown) => ({ data: null, error })),
@@ -35,12 +38,12 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
 
   return (
     <main className="app-shell">
-      {(query.state === 'updated-self' || query.state === 'revoked-self') && <p className="form-message" role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</p>}
-      {partialRead && <p className="form-message" role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <Link href="/operator" className="secondary-button">إعادة قراءة المهام</Link></p>}
+      {(query.state === 'updated-self' || query.state === 'revoked-self') && <Message tone="info"  role="status">المهام المتاحة لصلاحياتك الحالية معروضة أدناه؛ الرابط وحده لا يؤكد تغيير الصلاحيات.</Message>}
+      {partialRead && <Message tone="info"  role="alert">تعذر التحقق من بعض المهام. يمكنك متابعة المهام المؤكدة أدناه. <ButtonLink variant="ghost" href="/operator" >إعادة قراءة المهام</ButtonLink></Message>}
       <div className="operator-home" aria-labelledby="operator-title">
         <header className="operator-home-heading">
           <p className="eyebrow">مساحة التشغيل</p>
-          <h1 id="operator-title">تشغيل المنصة</h1>
+          <PageHeader id="operator-title" title={<>تشغيل المنصة</>} />
           <p>اختر المهمة التي تريد إنجازها. تظهر هنا الأعمال المسموحة لحسابك فقط.</p>
         </header>
 
@@ -50,7 +53,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <h2 id="new-company-title">شركة جديدة</h2>
             <p>أرسل دعوة للمسؤول الأول لتُنشأ الشركة بفرعها وحدود استخدامها عند قبولها.</p>
           </div>
-          <Link className="primary-button" href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></Link>
+          <ButtonLink variant="solid"  href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></ButtonLink>
         </section>}
 
         <div className="operator-home-grid">
@@ -60,7 +63,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
               {canOnboard && <TaskLink href="/operator/onboarding" title="إعداد شركة بحساب موجود" detail="أنشئ شركة لمسؤول لديه حساب مؤكد بالفعل." />}
               {canManageLifecycle && <TaskLink href="/operator/tenants" title="حالة الشركات" detail="علّق الوصول أو استعده مع تسجيل السبب." />}
               {canManageCommercial && <TaskLink href="/operator/commercial" title="حدود الاستخدام" detail="راجع عدد المستخدمين والفروع واضبط الحدود." />}
-              {canManageCommercial && <TaskLink href="/operator/entitlements" title="إتاحة الوحدات" detail="راجع الوحدات المتاحة لكل شركة وغيّرها." />}
+              {canManageCommercial && <TaskLink href="/operator/entitlements" title="خدمات الشركة" detail="فعّل خدمات الشركة أو أوقفها حسب صلاحيتك." />}
             </ul>
           </section>}
           {canManage && <section className="operator-work-group" aria-labelledby="access-operations-title">
@@ -72,7 +75,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
         {!partialRead && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}
       </div>
-      <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>
+
     </main>
   );
 }
@@ -87,10 +90,10 @@ function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
-      <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
-        <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section>
-      <footer className="footer">منصة الأعمال · تشغيل المنصة</footer>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+      <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
+        <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
+
     </main>
   );
 }

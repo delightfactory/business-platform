@@ -1,3 +1,6 @@
+import { PageHeader } from '@/components/ui';
+import { Panel, Message } from '@/components/ui';
+import { Button, ButtonLink, Input } from '@/components/ui';
 import Link from 'next/link';
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorUuid, onboardingSnapshot } from '@/lib/operator-read';
@@ -6,7 +9,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { OnboardingForm } from './OnboardingForm';
 import { OnboardingResult } from './OnboardingResult';
 import { LimitFields } from './LimitFields';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 type SearchParams = Promise<{ key?: string; state?: string }>;
@@ -14,12 +17,12 @@ type SearchParams = Promise<{ key?: string; state?: string }>;
 export default async function OperatorOnboardingPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد تشغيل التطبيق." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const { data: status, error: statusError } = await supabase.rpc('current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
-  if (status !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مشغّل المنصة النشطة." />;
+  if (status !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب غير مصرح له بتشغيل المنصة حاليًا." />;
   const { data: canOnboard, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
   if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
   if (!operatorPermission({ data: canOnboard, error: capabilityError })) return <Status title="إعداد الشركات غير متاح" detail="صلاحية إعداد الشركات غير ممنوحة لهذا المشغّل." />;
@@ -31,27 +34,27 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator">العودة للمهام</Link>
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-      <section className="work-card" aria-labelledby="onboard-title">
-        <p className="eyebrow">إعداد الشركات</p><h1 id="onboard-title">إعداد شركة جديدة</h1>
+        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
+          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+      <Panel  aria-labelledby="onboard-title">
+        <p className="eyebrow">إعداد الشركات</p><PageHeader id="onboard-title" title={<>إعداد شركة جديدة</>} />
         <p className="intro">أدخل بيانات الشركة ومسؤولًا لديه حساب موجود وبريد مؤكد.</p>
-        <p><Link className="secondary-button" href="/operator/invitations">دعوة مسؤول جديد عبر البريد</Link></p>
-        {params.state && !resultUnavailable && !result && <p className="form-message" role="alert">{stateMessage()}</p>}
-        {resultUnavailable ? <div role="alert" className="form-message form-error"><p>تعذر التحقق من نتيجة إعداد الشركة. لا تبدأ طلبًا جديدًا قبل مراجعة المحاولة الأصلية.</p><Link className="primary-button" href={`/operator/onboarding?key=${encodeURIComponent(key ?? '')}`}>إعادة قراءة النتيجة</Link></div> : result ? <OnboardingResult result={result} /> : (<>
-          {key && <p className="form-message" role="status">لم تُرجع قراءة هذا الحساب نتيجة محفوظة للمحاولة. هذا لا يؤكد نتيجة حساب آخر؛ يُستخدم المرجع نفسه عند إرسال النموذج.</p>}
+        <p><ButtonLink variant="ghost"  href="/operator/invitations">دعوة مسؤول جديد عبر البريد</ButtonLink></p>
+        {params.state && !resultUnavailable && !result && <Message tone="info"  role="alert">{stateMessage()}</Message>}
+        {resultUnavailable ? <Message as="div" tone="bad" role="alert" ><p>تعذر التحقق من نتيجة إعداد الشركة. لا تبدأ طلبًا جديدًا قبل مراجعة المحاولة الأصلية.</p><ButtonLink variant="solid"  href={`/operator/onboarding?key=${encodeURIComponent(key ?? '')}`}>إعادة قراءة النتيجة</ButtonLink></Message> : result ? <OnboardingResult result={result} /> : (<>
+          {key && <Message tone="info"  role="status">لم تُرجع قراءة هذا الحساب نتيجة محفوظة للمحاولة. هذا لا يؤكد نتيجة حساب آخر؛ يُستخدم المرجع نفسه عند إرسال النموذج.</Message>}
           <OnboardingForm actorId={user.id} requestKey={key ?? crypto.randomUUID()}>
-            <label htmlFor="tenantName">اسم الشركة</label><input id="tenantName" name="tenantName" required maxLength={160} />
+            <fieldset className="ui-form-section"><legend>الشركة والفرع</legend><label htmlFor="tenantName">اسم الشركة</label><Input id="tenantName" name="tenantName" required maxLength={160} />
             <label htmlFor="entityName">الاسم القانوني للشركة (اختياري)</label>
-            <input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
-            <label htmlFor="siteName">اسم الفرع الأول</label><input id="siteName" name="siteName" required maxLength={160} />
-            <label htmlFor="adminEmail">بريد مسؤول الشركة الحالي</label>
-            <input id="adminEmail" name="adminEmail" type="email" dir="ltr" autoComplete="email" required maxLength={254} />
+            <Input id="entityName" name="entityName" maxLength={160} placeholder="يُستخدم اسم الشركة إذا تُرك فارغًا" />
+            <label htmlFor="siteName">اسم الفرع الأول</label><Input id="siteName" name="siteName" required maxLength={160} />
+            </fieldset><fieldset className="ui-form-section"><legend>المسؤول وحدود الاستخدام</legend><label htmlFor="adminEmail">بريد مسؤول الشركة الحالي</label>
+            <Input id="adminEmail" name="adminEmail" type="email" dir="ltr" autoComplete="email" required maxLength={254} />
             <p className="field-hint">يجب أن يكون الحساب موجودًا ومؤكد البريد. لا يتم إنشاء حساب جديد هنا.</p>
-            <LimitFields kind="seats" label="حد المستخدمين" /><LimitFields kind="sites" label="حد الفروع" />
+            <LimitFields kind="seats" label="حد المستخدمين" /><LimitFields kind="sites" label="حد الفروع" /></fieldset>
           </OnboardingForm></>
         )}
-      </section><footer className="footer">منصة الأعمال · تأسيس الشركات</footer>
+      </Panel>
     </main>
   );
 }
@@ -61,8 +64,8 @@ function stateMessage() {
 }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-    <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></header>
-    <section className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
-      <h1 id="status-title">{title}</h1><p className="intro">{detail}</p></section>
-    <footer className="footer">منصة الأعمال · تأسيس الشركات</footer></main>;
+    <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+    <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
+      <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
+    </main>;
 }

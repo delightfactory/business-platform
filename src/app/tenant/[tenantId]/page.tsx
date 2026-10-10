@@ -1,8 +1,10 @@
+import { PageHeader } from '@/components/ui';
+import { Panel, Badge, Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { readToday, TodaySections } from './today';
 
 export const dynamic = 'force-dynamic';
@@ -14,9 +16,9 @@ export default async function TenantPage({ params, searchParams }: {
   const { tenantId } = await params;
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <TenantStatus title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد المحاولة." />;
+  if (!supabase) return <TenantStatus title="تعذر الاتصال بالمنصة" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة؛ لا تحتاج إلى تغيير إعدادات شركتك." />;
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
 
   const { data: accessStatus, error: accessStatusError } = await supabase.rpc('tenant_lifecycle_status', { p_tenant_id: tenantId });
@@ -45,13 +47,13 @@ export default async function TenantPage({ params, searchParams }: {
     return (
       <main className="app-shell">
         {query.state === 'admin-demoted' && <FeedbackToast key={crypto.randomUUID()} message="تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة." />}
-        <section className="work-card" aria-labelledby="tenant-title">
-          <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><h1 id="tenant-title">اليوم</h1>
+        <Panel  aria-labelledby="tenant-title">
+          <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><PageHeader id="tenant-title" title={<>اليوم</>} />
           <p className="intro">ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
           <TodaySections model={today} />
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
-        </section>
+        </Panel>
         <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
       </main>
     );
@@ -63,7 +65,7 @@ export default async function TenantPage({ params, searchParams }: {
 
   const snapshot = data as Record<string, unknown>;
   const today = await readToday(supabase, tenantId);
-  const { data: brandingData } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const { data: brandingData } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
   const branding = brandingData && typeof brandingData === 'object' && !Array.isArray(brandingData)
     ? brandingData as Record<string, unknown> : null;
   const entity = objectValue(snapshot.default_legal_entity);
@@ -74,8 +76,8 @@ export default async function TenantPage({ params, searchParams }: {
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
           <p className="eyebrow"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></p>
-          <div className="tenant-home-title"><h1 id="tenant-title">اليوم</h1>
-            <span className="entity-status is-active">{lifecycleText(snapshot.lifecycle_state)}</span></div>
+          <div className="tenant-home-title"><PageHeader id="tenant-title" title={<>اليوم</>} />
+            <Badge className="is-active">{lifecycleText(snapshot.lifecycle_state)}</Badge></div>
           <p>ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
         </header>
         <TodaySections model={today} />
@@ -133,15 +135,15 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
       <header className="topbar">
         <Link className="brand" href="/">منصة الأعمال</Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
         </nav>
       </header>
-      <section className="auth-card" aria-labelledby="tenant-status-title">
+      <Panel className="auth-card" aria-labelledby="tenant-status-title">
         <p className="eyebrow">مساحة الشركة</p>
-        <h1 id="tenant-status-title">{title}</h1>
+        <PageHeader id="tenant-status-title" title={<>{title}</>} />
         <p className="intro">{detail}</p>
-        {showSwitch && <Link className="secondary-button" href="/tenant/select">اختر شركة أخرى</Link>}
-      </section>
+        {showSwitch && <ButtonLink variant="ghost"  href="/tenant/select">اختر شركة أخرى</ButtonLink>}
+      </Panel>
       <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
     </main>
   );

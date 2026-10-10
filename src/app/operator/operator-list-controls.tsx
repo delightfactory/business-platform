@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Button, ButtonLink, Input } from '@/components/ui';
 
 type QueryParams = { page?: string | string[]; q?: string | string[] };
 
@@ -25,18 +25,18 @@ export function OperatorListControls({ basePath, search, page, matchingCount, se
     <form action={basePath} method="get" role="search" className="workspace-form-panel">
       <label htmlFor={inputId}>{searchLabel}</label>
       <div className="topbar-actions">
-        <input id={inputId} name="q" type="search" defaultValue={search} maxLength={120} />
-        <button className="secondary-button" type="submit">بحث</button>
+        <Input id={inputId} name="q" type="search" defaultValue={search} maxLength={120} />
+        <Button variant="ghost"  type="submit">بحث</Button>
       </div>
     </form>
     <nav className="topbar-actions" aria-label="صفحات النتائج">
       {page > pageCount ? <>
         <span>هذه الصفحة لم تعد متاحة · {matchingCount} نتيجة</span>
-        <Link className="secondary-button" href={pageUrl(pageCount)}>عرض آخر صفحة</Link>
+        <ButtonLink variant="ghost"  href={pageUrl(pageCount)}>عرض آخر صفحة</ButtonLink>
       </> : <>
-        {page > 1 && <Link className="secondary-button" href={pageUrl(page - 1)}>السابق</Link>}
+        {page > 1 && <ButtonLink variant="ghost"  href={pageUrl(page - 1)}>السابق</ButtonLink>}
         <span>صفحة {page} من {pageCount} · {matchingCount} نتيجة</span>
-        {page < pageCount && <Link className="secondary-button" href={pageUrl(page + 1)}>التالي</Link>}
+        {page < pageCount && <ButtonLink variant="ghost"  href={pageUrl(page + 1)}>التالي</ButtonLink>}
       </>}
     </nav>
   </>;

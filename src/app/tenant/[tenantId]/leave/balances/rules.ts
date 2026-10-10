@@ -656,7 +656,7 @@ export function parseBalanceQuery(raw: Record<string, string | string[] | undefi
   }
 
   if (params.kind !== '' && !isPostingKind(params.kind)) {
-    errors.kind = 'نوع القيد المحدد غير صالح. اختر نوع القيد من جديد.';
+    errors.kind = 'نوع حركة الرصيد المحدد غير صالح. اختر نوع حركة الرصيد من جديد.';
     params.kind = '';
   }
   if (params.kind === '') {
@@ -780,23 +780,23 @@ export function deltaErrorText(reason: 'format' | 'range' | 'zero' | 'sign'): st
     return `أدخل عدد أيام صالحًا بمنزلتين عشريتين كحد أقصى، مثل 2 أو 2.5. القيم غير المحدودة والكسر الأعمى غير مقبولة.`;
   }
   if (reason === 'range') return `القيمة خارج النطاق المسموح: القيمة المطلقة لا تتجاوز ${MAX_DELTA_MAGNITUDE} يومًا.`;
-  if (reason === 'zero') return 'لا يمكن تسجيل قيد بصفر يوم.';
-  return 'الرصيد الافتتاحي والمنحة السنوية يجب أن يكونا موجبين. استخدم قيد تعديل موجبًا أو سالبًا بدلًا من ذلك.';
+  if (reason === 'zero') return 'لا يمكن تسجيل حركة رصيد بصفر يوم.';
+  return 'الرصيد الافتتاحي واستحقاق الإجازة السنوية يجب أن يكونا موجبين. استخدم حركة تعديل موجبة أو سالبة بدلًا من ذلك.';
 }
 
 export function entryKindLabel(kind: string): string {
   if (kind === 'opening') return 'رصيد افتتاحي';
-  if (kind === 'annual_grant') return 'منحة سنوية';
+  if (kind === 'annual_grant') return 'استحقاق إجازة سنوية';
   if (kind === 'adjustment') return 'تعديل يدوي';
-  if (kind === 'leave_consumption') return 'استهلاك باعتماد طلب';
+  if (kind === 'leave_consumption') return 'خصم رصيد بعد اعتماد طلب إجازة';
   if (kind === 'cancellation_reversal') return 'إعادة رصيد بإلغاء الاعتماد';
   if (kind === 'correction_reversal') return 'إعادة رصيد ضمن تصحيح';
-  return 'قيد غير محدد';
+  return 'نوع حركة الرصيد غير محدد';
 }
 
 export function postingKindLabel(kind: PostingKind): string {
   if (kind === 'opening') return 'رصيد افتتاحي';
-  if (kind === 'annual_grant') return 'منحة سنوية';
+  if (kind === 'annual_grant') return 'استحقاق إجازة سنوية';
   return 'تعديل يدوي';
 }
 
@@ -805,7 +805,7 @@ export function postingKindSummary(kind: PostingKind): string {
     return 'أدخل الرصيد الافتتاحي لهذا النوع في الفترة المختارة. يجب أن يكون القدر موجبًا أكبر من صفر.';
   }
   if (kind === 'annual_grant') {
-    return 'أدخل مقدار المنحة السنوية يدويًا كما هو مقرر داخليًا. الواجهة لا تحسب منحة نظامية ولا تقترح مقدارًا ولا تفترض أسلوب منح مبكر أو متدرج.';
+    return 'أدخل مقدار استحقاق الإجازة السنوية يدويًا كما هو مقرر داخليًا. الواجهة لا تحسب استحقاقًا قانونيًا ولا تقترح مقدارًا ولا تفترض تسجيل الرصيد مقدمًا أو على مراحل.';
   }
   return 'أدخل قدرًا موجبًا أو سالبًا (لا يقبل الصفر) لتصحيح الرصيد. الرصيد بعد التعديل لا يقبل أن يصبح سالبًا.';
 }
@@ -813,13 +813,13 @@ export function postingKindSummary(kind: PostingKind): string {
 export function blockedReasonLabel(reason: string | null, canPost: boolean): string {
   if (canPost) return '';
   if (reason === 'adjust_permission_required') return 'تحتاج إلى صلاحية تعديل أرصدة الإجازات.';
-  if (reason === 'new_work_disabled') return 'خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، فلا تُقبل قيود رصيد جديدة.';
-  if (reason === 'employer_inactive') return 'جهة العمل غير نشطة، فلا يُقبل قيد جديد لها.';
+  if (reason === 'new_work_disabled') return 'خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، فلا تُقبل حركات رصيد جديدة.';
+  if (reason === 'employer_inactive') return 'جهة العمل غير نشطة، فلا تُقبل حركة جديدة لها.';
   if (reason === 'active_employment_required') return 'لا توجد فترة عمل سارية اليوم بين الموظف وجهة العمل.';
   if (reason !== null && reason.endsWith('_already_posted')) {
-    return 'سُجّل هذا القيد لهذا الحساب مسبقًا؛ يبقى قيد واحد لكل من الرصيد الافتتاحي والمنحة السنوية حتى لو تغيّرت النسخة السياسية.';
+    return 'سُجّلت هذه الحركة لهذا الحساب مسبقًا؛ تبقى حركة واحدة لكل من الرصيد الافتتاحي واستحقاق الإجازة السنوية حتى لو تغيّرت نسخة سياسة الإجازات.';
   }
-  return 'لا يقبل هذا القيد حاليًا. راجع بيانات الموظف وجهة العمل والإعدادات.';
+  return 'لا يمكن تسجيل هذه الحركة حاليًا. راجع بيانات الموظف وجهة العمل والإعدادات.';
 }
 
 export function employmentStatusLabel(pair: BalancePair): string {
@@ -889,13 +889,13 @@ export const EMPTY_POST_STATE: PostBalanceState = {
 export function postErrorText(code: PostErrorCode): string {
   switch (code) {
     case 'input':
-      return 'راجع بيانات القيد المختارة (النوع والفترة والنوع المحدد) ثم أعد المحاولة. لم يُرسل أي قيد.';
+      return 'راجع بيانات حركة الرصيد المختارة (النوع والفترة والنوع المحدد) ثم أعد المحاولة. لم تُرسل أي حركة رصيد.';
     case 'reason':
-      return `اكتب سببًا للقيد من ${MIN_REASON} إلى ${MAX_REASON} حرفًا. لم يُرسل أي قيد.`;
+      return `اكتب سببًا للقيد من ${MIN_REASON} إلى ${MAX_REASON} حرفًا. لم تُرسل أي حركة رصيد.`;
     case 'source':
-      return `اكتب مرجع تدقيق يدويًا من ${MIN_SOURCE_LENGTH} إلى ${MAX_SOURCE_LENGTH} حرفًا. لم يُرسل أي قيد.`;
+      return `اكتب مرجع تدقيق يدويًا من ${MIN_SOURCE_LENGTH} إلى ${MAX_SOURCE_LENGTH} حرفًا. لم تُرسل أي حركة رصيد.`;
     case 'delta':
-      return 'راجع عدد الأيام المكتوب ثم أعد المحاولة. لم يُرسل أي قيد.';
+      return 'راجع عدد الأيام المكتوب ثم أعد المحاولة. لم تُرسل أي حركة رصيد.';
     case 'new-work-disabled':
       return 'خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا. هذه المحاولة لم تُنفّذ؛ راجع سجل الحساب للتحقق من أي محاولة سابقة.';
     case 'employee':
@@ -907,17 +907,17 @@ export function postErrorText(code: PostErrorCode): string {
     case 'scope':
       return 'نوع الإجازة أو الفترة لا تنتمي إلى هذا الموظف وجهة عمله أو لم تعد متاحة. رُفضت هذه المحاولة؛ راجع سجل أي محاولة سابقة.';
     case 'version':
-      return 'نسخة السياسة المحفوظة لم تعد سارية في تاريخ القيد. رُفضت هذه المحاولة. راجع سجل الحساب أولًا، ثم استخدم «بدء محاولة جديدة» إذا أردت استخدام النسخة الحالية.';
+      return 'نسخة السياسة المحفوظة لم تعد سارية في تاريخ الحركة. رُفضت هذه المحاولة. راجع سجل الحساب أولًا، ثم استخدم «بدء محاولة جديدة» إذا أردت استخدام النسخة الحالية.';
     case 'untracked':
-      return 'نوع الإجازة المختار لا يُدار رصيده، فلا يقبل قيدًا. اختر نوعًا متتبع الرصيد.';
+      return 'نوع الإجازة المختار لا يُدار رصيده، فلا يقبل حركة رصيد. اختر نوع إجازة له رصيد مسجل.';
     case 'key-conflict':
       return 'استُخدم مفتاح التنفيذ نفسه سابقًا ببيانات مختلفة. رُفضت هذه المحاولة. راجع سجل الحساب قبل استخدام «بدء محاولة جديدة».';
     case 'grant-exists':
-      return 'سُجّلت منحة سنوية واحدة لهذا الحساب مسبقًا ويبقى واحدة حتى لو تغيّرت النسخة السياسية. لم يُسجَّل قيد جديد.';
+      return 'سُجّل استحقاق سنوي واحد لهذا الحساب مسبقًا ويظل استحقاقًا واحدًا حتى لو تغيّرت نسخة سياسة الإجازات. لم تُسجَّل حركة جديدة.';
     case 'balance':
       return 'رصيد الحساب لا يكفي لهذا الخفض. رُفضت هذه المحاولة؛ راجع سجل الحساب قبل تعديل عدد الأيام.';
     case 'forbidden':
-      return 'ليست لديك صلاحية تسجيل قيود أرصدة الإجازات في هذه الشركة. راجع إدارة الموارد البشرية.';
+      return 'ليست لديك صلاحية تسجيل حركات أرصدة الإجازات في هذه الشركة. راجع إدارة الموارد البشرية.';
     case 'access':
       return 'تعذّر التحقق من صلاحيتك الآن. أعد المحاولة لاحقًا.';
     case 'session':

@@ -1,7 +1,10 @@
+import { PageHeader, Panel } from '@/components/ui';
+import { Message } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { BrandingEditor } from './BrandingEditor';
 
 export const dynamic = 'force-dynamic';
@@ -17,10 +20,10 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   const query = await searchParams;
   if (!isUuid(tenantId)) redirect('/tenant/select?state=invalid');
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status tenantId={tenantId} title="إعداد الاتصال غير مكتمل" />;
-  const { data: { user } } = await supabase.auth.getUser();
+  if (!supabase) return <Status tenantId={tenantId} title="تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم." />;
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/branding`)}`);
-  const { data, error } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const { data, error } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status tenantId={tenantId} title="مساحة الشركة غير متاحة" />;
   const branding = data as Branding;
   const { data: tenantData } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
@@ -35,14 +38,14 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   return <main className="app-shell">
     {query.state === 'saved' && <FeedbackToast key={crypto.randomUUID()} message={stateText('saved')} />}
     <header className="workspace-page-heading"><div><p className="eyebrow">إدارة الشركة</p>
-      <h1 id="branding-title">هوية الشركة</h1>
+      <PageHeader id="branding-title" title={<>هوية الشركة</>} />
       <p>اضبط الاسم والشعار واللون الذي يراه فريق <bdi>{branding.tenant_name}</bdi>.</p></div></header>
     <section className="workspace-branding-panel" aria-labelledby="branding-title">
-      {query.state && query.state !== 'saved' && <p className="form-message form-error" role="alert">{stateText(query.state)}</p>}
+      {query.state && query.state !== 'saved' && <Message tone="bad"  role="alert">{stateText(query.state)}</Message>}
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}
         hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} />
-    </section><footer className="footer">منصة الأعمال · هوية الشركة</footer>
+    </section>
   </main>;
 }
 
@@ -50,7 +53,7 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function stateText(state: string) {
   const messages: Record<string, string> = {
     saved: 'تم حفظ هوية الشركة وتسجيل التغيير.',
-    invalid: 'تحقق من الاسم واللون والصورة المختارة.', reason: 'اكتب سببًا من 3 إلى 500 حرف.', setup: 'إعداد الاتصال غير مكتمل.',
+    invalid: 'تحقق من الاسم واللون والصورة المختارة.', reason: 'اكتب سببًا من 3 إلى 500 حرف.', setup: 'تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم.',
     forbidden: 'تغيير الهوية متاح لمسؤول الشركة فقط.', unavailable: 'الشركة غير متاحة حاليًا.',
     file: 'اختر صورة PNG أو JPG أو WebP لا يتجاوز حجمها 2MB.',
     'upload-failed': 'تعذر رفع الصورة. لم يتغير إعداد الهوية.',
@@ -59,4 +62,4 @@ function stateText(state: string) {
   };
   return messages[state] ?? 'تعذر حفظ الهوية.';
 }
-function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><Link className="secondary-button" href={`/tenant/${tenantId}`}>العودة للشركة</Link></section></main>; }
+function Status({ tenantId, title }: { tenantId: string; title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href={`/tenant/${tenantId}`}>مساحة الشركة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من العضوية والصلاحية ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href={`/tenant/${tenantId}`}>العودة للشركة</ButtonLink></Panel></main>; }

@@ -1,0 +1,88 @@
+.domain {
+  min-width:0
+}
+.domain :global(.ui-page-header){gap:8px 16px}
+.domain :global(.ui-panel){min-width:0}
+.domain :global(.ui-record){min-width:0}
+.domain :global(.workspace-form-actions){gap:8px}
+@media(max-width:640px){
+ .domain :global(.ui-page-header h1){font-size:23px}
+ .domain :global(.ui-page-description){font-size:13px;line-height:1.7}
+ .domain :global(.record-main){min-width:0}
+ .domain :global(.ui-record .record-actions){width:100%;flex-wrap:wrap}
+ .domain :global(.ui-record .record-actions a){max-width:100%;white-space:normal}
+}
+.domain :global(h1) {
+  font:600 clamp(22px,2.2vw,28px)/1.4 var(--f-head)
+}
+.domain :global(h2) {
+  font:600 16px/1.5 var(--f-head)
+}
+.domain :global(h3) {
+  font:600 14px/1.5 var(--f-head)
+}
+.domain :global(summary) {
+  font-size:14px;
+  line-height:1.6;
+  padding-block:8px;
+  cursor:pointer
+}
+.domain :global(details>p) {
+  font-size:13px;
+  color:var(--ink-2);
+  line-height:1.7;
+  max-width:78ch
+}
+.domain :global(details details) {
+  padding:12px 16px;
+  margin-block:12px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:var(--r-tile)
+}
+.domain :global(form p) {
+  font-size:13px;
+  line-height:1.7
+}
+.domain :global(form input:not([type=checkbox])),.domain :global(form select),.domain :global(form textarea) {
+  font-family:var(--f-body);
+  border-radius:var(--r-ctl);
+  max-width:100%
+}
+.domain :global([role=alert]) {
+  background:var(--bad-bg);
+  color:var(--bad-text);
+  padding:12px 16px;
+  border-radius:var(--r-tile);
+  font-size:13px
+}
+.domain :global([role=status]:not(:empty)) {
+  font-size:13px;
+  line-height:1.7
+}
+.domain :global(article+article) {
+  margin-block-start:16px;
+  padding-block-start:16px;
+  border-block-start:1px solid var(--line)
+}
+.domain :global(.field-hint) {
+  font-size:12px;
+  color:var(--muted)
+}
+.domain :global(dl) {
+  font-variant-numeric:tabular-nums
+}
+.domain :global(a:not([class])) {
+  text-underline-offset:4px;
+  min-height:32px;
+  display:inline-flex;
+  align-items:center
+}
+@media print {
+  .domain :global([role=alert]) {
+  background:#fff;
+  color:#111;
+  border:1px solid #111
+}
+
+}

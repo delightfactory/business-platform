@@ -1,11 +1,11 @@
-import Link from 'next/link';
-
+import { Panel, PageHeader } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 export default function PageNotFound() {
   return <main className="app-shell">
-    <section className="auth-card" aria-labelledby="page-not-found-title">
-      <h1 id="page-not-found-title">الصفحة غير متاحة على هذا الرابط</h1>
+    <Panel className="auth-card" aria-labelledby="page-not-found-title">
+      <PageHeader id="page-not-found-title" title={<>الصفحة غير متاحة على هذا الرابط</>} />
       <p>تحقق من الرابط، أو ارجع للرئيسية للوصول إلى خدماتك المتاحة.</p>
-      <Link className="primary-button" href="/">العودة للرئيسية</Link>
-    </section>
+      <ButtonLink variant="solid"  href="/">العودة للرئيسية</ButtonLink>
+    </Panel>
   </main>;
 }

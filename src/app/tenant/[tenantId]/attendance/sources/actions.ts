@@ -29,7 +29,7 @@ export async function mutateChannel(tenantId:string,operation:'save'|'map'|'repr
   } else if(operation==='review') { rpc='attendance_channel_review';args={p_tenant:tenantId,p_event:value('event'),p_decision:value('decision'),p_reason:value('reason')}; }
   else {rpc='attendance_channel_reprocess';args={p_tenant:tenantId,p_event:value('event')};}
   const {data,error}=await db.rpc(rpc,args);
-  if(error) return {ok:false,message:!error.code?'لم يتأكد حفظ الإجراء. بقيت القيم؛ راجع سجل القناة قبل إعادة الإرسال.':error.code==='42501'?'تغيرت صلاحيتك أو توقفت الخدمة. تواصل مع المسؤول.':'لم يُحفظ الإجراء. تحقق من الحقول والفترة والموقع ثم أعد المحاولة. بقيت القيم كما أدخلتها.'};
+  if(error) return {ok:false,message:!error.code?'لم يتأكد حفظ الإجراء. بقيت القيم؛ راجع سجل وسيلة تسجيل الحضور قبل إعادة الإرسال.':error.code==='42501'?'تغيرت صلاحيتك أو توقفت الخدمة. تواصل مع المسؤول.':'لم يُحفظ الإجراء. تحقق من الحقول والفترة والموقع ثم أعد المحاولة. بقيت القيم كما أدخلتها.'};
   revalidatePath(`/tenant/${tenantId}/attendance/sources`,'layout');revalidatePath(`/tenant/${tenantId}/me/attendance`);
-  return {ok:true,id:typeof data==='string'?data:undefined,message:operation==='save'?'حُفظ إصدار القناة.':operation==='map'?'حُفظ قرار الربط. أعد معالجة الحركة المطلوبة من سجلها.':operation==='review'?'حُفظ قرار المراجعة.':`${channelStateLabel(data?.state)}. ${data?.reason?channelReasonLabel(data.reason):''}`};
+  return {ok:true,id:typeof data==='string'?data:undefined,message:operation==='save'?'حُفظ إصدار وسيلة تسجيل الحضور.':operation==='map'?'حُفظ قرار الربط. أعد معالجة الحركة المطلوبة من سجلها.':operation==='review'?'حُفظ قرار المراجعة.':`${channelStateLabel(data?.state)}. ${data?.reason?channelReasonLabel(data.reason):''}`};
 }

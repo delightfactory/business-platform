@@ -1,8 +1,8 @@
 'use client';
+import { Badge, Button, ButtonLink, Checkbox, DataTable, FileInput, KeyValueStrip, Message, Panel } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
-import Link from 'next/link';
 import { useActionState, useState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
 import { confirmWorkforceImport, validateWorkforceCsv, type CommitImportState, type PreviewImportState } from '../import-actions';
@@ -29,32 +29,32 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
       <input type="hidden" name="tenantId" value={tenantId} />
       <div className="workforce-file-control">
         <span className="workforce-file-label">ملف CSV</span>
-        <input id="workforce-csv" className="workforce-file-native" name="file" type="file" accept=".csv,text/csv" required
+        <FileInput id="workforce-csv" className="workforce-file-native" name="file"  accept=".csv,text/csv" required
           aria-describedby="workforce-csv-hint" onChange={(event) => setFileName(event.currentTarget.files?.[0]?.name ?? '')} />
         <label className="workforce-file-trigger" htmlFor="workforce-csv">
-          <span className="secondary-button">اختيار ملف</span>
+          <span className="ui-button ui-button-ghost ui-button-md">اختيار ملف</span>
           <span className="workforce-file-name" aria-live="polite">{fileName || 'لم يتم اختيار ملف'}</span>
         </label>
       </div>
       <p id="workforce-csv-hint" className="field-hint">الحد الأقصى 256 كيلوبايت و100 صف. سيُفحص الملف قبل أي حفظ.</p>
-      {preview.error && <p className="form-message error-message" role="alert">{preview.error}</p>}
+      {preview.error && <Message tone="bad"  role="alert">{preview.error}</Message>}
       <SubmitButton label="فحص الملف" pendingLabel="جارٍ فحص الصفوف…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
 
-    {preview.rows.length > 0 && <section aria-live="polite" className="workforce-import-preview">
+    {preview.rows.length > 0 && <Panel aria-live="polite" className="workforce-import-preview">
       <h2>نتيجة الفحص</h2>
-      <p>جاهز: {preview.readyCount} · يحتاج مراجعة: {preview.warningCount} · مرفوض: {preview.rejectedCount}</p>
+      <KeyValueStrip items={[{ label: 'جاهز للإضافة', value: preview.readyCount }, { label: 'يحتاج مراجعتك', value: preview.warningCount }, { label: 'مرفوض', value: preview.rejectedCount }]} />
       <p className="field-hint">الصفوف ذات التحذير تستخدم جهة أو فرعًا نشطًا وحيدًا كاختيار آمن. حدّدها يدويًا إذا وافقت. لن تُضاف الصفوف المرفوضة.</p>
-      {(commit.message || commit.error) && <p className={`form-message ${commit.state === 'imported' ? '' : 'error-message'}`} role={commit.state === 'imported' ? 'status' : 'alert'}>{commit.message || commit.error}</p>}
-      {commit.state === 'imported' && <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>عرض دليل الموظفين</Link>}
-      {rejected.length > 0 && <button className="secondary-button" type="button" onClick={() => downloadRejectReport(rejected)}>تنزيل تقرير الصفوف المرفوضة</button>}
-      <div className="workforce-import-table-wrap"><table className="workforce-import-table"><thead><tr>
+      {(commit.message || commit.error) && <Message tone={commit.state === 'imported' ? 'ok' : 'bad'} role={commit.state === 'imported' ? 'status' : 'alert'}>{commit.message || commit.error}</Message>}
+      {commit.state === 'imported' && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>عرض دليل الموظفين</ButtonLink>}
+      {rejected.length > 0 && <Button variant="ghost"  type="button" onClick={() => downloadRejectReport(rejected)}>تنزيل تقرير الصفوف المرفوضة</Button>}
+      <div className="workforce-import-table-wrap"><DataTable className="workforce-import-table"><thead><tr>
         <th>سطر الملف</th><th>رمز الموظف</th><th>الاسم</th><th>الحالة</th><th>الملاحظات</th>
       </tr></thead><tbody>{shownRows.map((row) => <tr key={row.source_row_number}>
-        <td>{row.source_row_number}</td><td><bdi>{row.employee_code}</bdi></td><td>{row.full_name}</td>
-        <td>{row.status === 'ready' ? 'جاهز' : row.status === 'warning' ? 'يحتاج مراجعة' : 'مرفوض'}</td>
-        <td>{[...row.errors, ...row.warnings].join(' · ') || '—'}</td>
-      </tr>)}</tbody></table></div>
+        <td data-label="سطر الملف">{row.source_row_number}</td><td data-label="رمز الموظف"><bdi>{row.employee_code}</bdi></td><td data-label="الاسم">{row.full_name}</td>
+        <td data-label="الحالة"><Badge tone={row.status === 'ready' ? 'ok' : row.status === 'warning' ? 'warn' : 'bad'}>{row.status === 'ready' ? 'جاهز' : row.status === 'warning' ? 'يحتاج مراجعة' : 'مرفوض'}</Badge></td>
+        <td data-label="الملاحظات">{[...row.errors, ...row.warnings].join(' · ') || '—'}</td>
+      </tr>)}</tbody></DataTable></div>
 
       {commit.state !== 'imported' && selectableData.length > 0 && <form action={commitAction} className="compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <input type="hidden" name="tenantId" value={tenantId} />
@@ -63,14 +63,14 @@ export function WorkforceImportForm({ tenantId }: { tenantId: string }) {
           if (!row?.importable) return null;
           const defaultChecked = row.status === 'ready';
           return <label className="checkbox-row" key={`${row.source_row_number}-${index}`}>
-            <input type="checkbox" name="selectedRow" value={JSON.stringify(data)} defaultChecked={defaultChecked} />
+            <Checkbox  name="selectedRow" value={JSON.stringify(data)} defaultChecked={defaultChecked} />
             <span>إضافة سطر الملف {row.source_row_number}: <bdi>{row.employee_code}</bdi> — {row.full_name}</span>
           </label>;
         })}
         <div className="workspace-form-actions"><SubmitButton label="إضافة الصفوف المحددة" pendingLabel="جارٍ حفظ الدفعة…"  ariaDescribedBy={showOffline1 ? offlineHint1 : undefined} disabled={offline}/>
-          <Link className="secondary-button" href={`/tenant/${tenantId}/people`}>إلغاء</Link></div>
+          <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>إلغاء</ButtonLink></div>
       {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
-    </section>}
+    </Panel>}
   </div>;
 }
 

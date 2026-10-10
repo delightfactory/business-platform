@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { TenantNavigation } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { AppShell } from '@/components/shell/app-shell';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -13,9 +14,9 @@ export default async function TenantBrandingLayout({ children, params }: { child
   const { tenantId } = await params;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return children;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) return children;
-  const { data, error } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const { data, error } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return children;
   const branding = data as Branding;
   const brandKey = Object.hasOwn(colors, branding.primary_color_key) ? branding.primary_color_key : 'teal';
@@ -25,8 +26,8 @@ export default async function TenantBrandingLayout({ children, params }: { child
     logoUrl = signed?.signedUrl ?? null;
   }
 
-  return <div className="tenant-area workspace-frame" data-workspace="tenant" data-brand={brandKey}>
-    <TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />
-    <div className="workspace-content" id="workspace-content" tabIndex={-1}>{children}</div>
-  </div>;
+  return <AppShell mode="tenant" brand={brandKey}
+    navigation={<TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />}>
+    {children}
+  </AppShell>;
 }

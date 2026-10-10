@@ -1,3 +1,6 @@
+import { Panel, PageHeader } from '@/components/ui';
+import { Message, ButtonLink } from '@/components/ui';
+import { Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -26,23 +29,23 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
   }
   const hintMessage = query.state === 'password' && intent.password_ready === true ? null : recoveryHint(query.state);
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
-    <section className="auth-card" aria-labelledby="employee-activation-title">
-      <p className="eyebrow">تفعيل حساب الموظف</p><h1 id="employee-activation-title">إعداد حسابك</h1>
+    <Panel className="auth-card" aria-labelledby="employee-activation-title">
+      <p className="eyebrow">تفعيل حساب الموظف</p><PageHeader id="employee-activation-title" title={<>إعداد حسابك</>} />
       <p className="intro">الحساب مرتبط ببريد <bdi>{String(intent.email ?? user.email ?? '')}</bdi> للموظف {String(intent.employee_name ?? '')} في {String(intent.tenant_name ?? '')}.</p>
-      {intent.state === 'activated' && intent.password_ready === true ? <><p className="form-message" role="status">الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.</p><Link className="primary-button link-button" href="/tenant/select">المتابعة إلى مساحة العمل</Link></>
+      {intent.state === 'activated' && intent.password_ready === true ? <><Message tone="info"  role="status">الحساب نشط ومرتبط بملف الموظف. تم تأكيد جاهزية كلمة المرور.</Message><ButtonLink variant="solid" className="link-button" href="/tenant/select">المتابعة إلى مساحة العمل</ButtonLink></>
         : intent.state === 'activated' ? <>
-          <p className="form-message capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</p>
+          <Message tone="info" className="capacity-message" role="status">الحساب نشط بالفعل. أعد تعيين كلمة المرور لتأكيد جاهزيتها. لن يغيّر ذلك عضوية الشركة أو صلاحياتها.</Message>
           <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
-            <label htmlFor="employee-password">كلمة مرور جديدة</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
-            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password">كلمة مرور جديدة</label><Input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><Input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <OfflineSubmitButton label="تحديث كلمة المرور" pendingLabel="جارٍ التحديث…" />
           </OfflineForm>
         </> : <>
-          {hintMessage && <p className="form-message capacity-message" role="status">{hintMessage}</p>}
+          {hintMessage && <Message tone="info" className="capacity-message" role="status">{hintMessage}</Message>}
           {intent.password_ready === true ? <>
-            <p className="form-message" role="status">يمكنك متابعة التفعيل دون إعادة إدخال كلمة المرور. سيتحقق النظام من إمكانية إكمال عضوية الشركة. تواصل مع الموارد البشرية إذا استمرت المشكلة.</p>
+            <Message tone="info"  role="status">يمكنك متابعة التفعيل دون إعادة إدخال كلمة المرور. سيتحقق النظام من إمكانية إكمال عضوية الشركة. تواصل مع الموارد البشرية إذا استمرت المشكلة.</Message>
             <OfflineForm className="auth-form" action={retryEmployeeAccountActivationAction}>
               <input type="hidden" name="intentId" value={intentId} />
               <OfflineSubmitButton label="إكمال التفعيل" pendingLabel="جارٍ التحقق…" />
@@ -50,14 +53,14 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
           </> : (
           <OfflineForm className="auth-form" action={setEmployeeAccountPasswordAction}>
             <input type="hidden" name="intentId" value={intentId} />
-            <label htmlFor="employee-password">أنشئ كلمة المرور</label><input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
-            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password">أنشئ كلمة المرور</label><Input id="employee-password" name="password" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
+            <label htmlFor="employee-password-confirm">تأكيد كلمة المرور</label><Input id="employee-password-confirm" name="confirmation" type="password" autoComplete="new-password" minLength={8} required dir="ltr" />
             <p className="field-hint">لن يختارها أو يطّلع عليها مسؤول الموارد البشرية.</p>
             <OfflineSubmitButton label="حفظ وتفعيل الحساب" pendingLabel="جارٍ التفعيل…" />
           </OfflineForm>
           )}
         </>}
-    </section></main>;
+    </Panel></main>;
 }
 
 function recoveryHint(state?: string) {
@@ -66,7 +69,7 @@ function recoveryHint(state?: string) {
     password: 'استخدم 8 أحرف على الأقل وتأكد من تطابق الحقلين.',
     readiness: 'إذا لم يكتمل إعداد الحساب، نفّذ الخطوة الموضحة أدناه. تواصل مع الموارد البشرية إذا استمرت المشكلة.',
     retry: 'إذا لم يكتمل التفعيل، نفّذ الخطوة الموضحة أدناه أو تواصل مع الموارد البشرية.',
-    'limit-full': 'إذا استمرت مشكلة المقاعد، اطلب من مسؤول الشركة مراجعة الحد قبل المحاولة التالية.',
+    'limit-full': 'إذا اكتمل عدد المستخدمين المسموح، اطلب من مسؤول الشركة مراجعة الحد قبل المحاولة التالية.',
     'employee-unavailable': 'إذا استمرت مشكلة ملف الموظف، تواصل مع الموارد البشرية لمراجعته قبل المحاولة التالية.',
   };
   return Object.hasOwn(hints, state) ? hints[state] : null;
@@ -75,5 +78,5 @@ function recoveryHint(state?: string) {
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail }: { title: string; detail: string }) {
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
-    <section className="auth-card"><h1>{title}</h1><p className="intro" role="alert">{detail}</p></section></main>;
+    <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro" role="alert">{detail}</p></Panel></main>;
 }

@@ -1,3 +1,5 @@
+import { Panel, PageHeader } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
@@ -24,11 +26,11 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
   return (
     <main className="app-shell">
       <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
-      <section className="auth-card" aria-labelledby="callback-title">
+      <Panel className="auth-card" aria-labelledby="callback-title">
         <p className="eyebrow">دعوة مسؤول الشركة</p>
-        <h1 id="callback-title">تابع قبول الدعوة</h1>
+        <PageHeader id="callback-title" title={<>تابع قبول الدعوة</>} />
         {valid ? (
           <>
             <p className="intro">اضغط للمتابعة والتحقق من الرابط. لن تُنشأ الشركة قبل تأكيدك في الخطوة التالية.</p>
@@ -43,8 +45,8 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
         ) : (
           <p className="intro" role="alert">{stateMessage(params.state)}</p>
         )}
-      </section>
-      <footer className="footer">منصة الأعمال · متابعة آمنة للدعوة</footer>
+      </Panel>
+
     </main>
   );
 }
@@ -56,7 +58,7 @@ function isUuid(value: string) {
 function stateMessage(state?: string) {
   const labels: Record<string, string> = {
     invalid: 'رابط الدعوة غير مكتمل. افتح أحدث رسالة وصلتك.',
-    'link-expired': 'تعذر استخدام رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مشغّل المنصة إصدار رابط جديد.',
+    'link-expired': 'تعذر استخدام رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مسؤول تشغيل المنصة إصدار رابط جديد.',
     setup: 'إعداد خدمة الحسابات غير مكتمل. أعد المحاولة لاحقًا.',
   };
   return state && Object.hasOwn(labels, state) ? labels[state] : 'تعذر التحقق من رابط الدعوة.';

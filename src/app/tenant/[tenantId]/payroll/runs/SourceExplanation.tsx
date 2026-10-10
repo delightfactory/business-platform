@@ -1,3 +1,4 @@
+import { Disclosure, HelpNote } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {displayDate} from '../rules';
 import {TimeCoverageExplanation,type TimeCoverageSummary,type TimeCoverageDay} from './TimeCoverageExplanation';
@@ -22,14 +23,14 @@ export function SourceExplanation({summary,days,coverageDays}:{summary?:SourceSu
     <p>{sources[summary.selected_source??'']??'مصادر الحضور والإجازات للمراجعة'} · {summary.status==='needs_source_review'?'يلزم مراجعة المصادر':complete?'أيام المصدر مكتملة للحساب':'مصادر محفوظة للمراجعة'}</p>
     {summary.selected_source&&!monthly&&<p>الأيام المستحقة من المصدر المختار: {quantity(summary.approved_units)}</p>}
     {monthly&&<p>الغياب غير المدفوع: {quantity(summary.absence_units??0)} · الإجازة غير المدفوعة: {quantity(summary.unpaid_leave_units??0)}</p>}
-    {monthly&&summary.status==='reconciliation_ready'&&<p>يعتمد احتساب الأجر الأساسي على الأجر الساري وتوزيعه على تواريخ الفترة، مع تخفيض الجزء غير المدفوع من المصدر المعتمد مرة واحدة. تحتفظ المكوّنات الثابتة بطريقة حسابها المعتمدة. راجع القيم والعوائق للتأكد من اكتمال الحساب.</p>}
-    {summary.coverage==='captured_parts_only'&&<p>{summary.time_coverage?.enabled?'السجلات المعتمدة متاحة للمراجعة؛ احتساب الأيام والمبالغ المستحقة من الحضور والإجازات لم يُؤهّل بعد.':'تشرح هذه القيم وقائع الحضور المعتمدة المتاحة؛ تغطية أيام العمل المتوقعة لم تُؤهّل بعد.'}</p>}
-    {complete&&!monthly&&<p>يعتمد احتساب الأجر الأساسي على أيام العمل والإجازات المدفوعة المعتمدة، حسب الأجر الساري لكل يوم. الإجازة المدفوعة تُحسب مرة واحدة. راجع القيم والعوائق للتأكد من اكتمال الحساب؛ ما زالت المراجعة المالية والقانونية مطلوبة قبل اعتماد الراتب أو صرفه.</p>}
+    {monthly&&summary.status==='reconciliation_ready'&&<HelpNote label="كيف حُسب الأجر الشهري؟"><p>يُوزّع الأجر الساري على تواريخ الفترة، ثم يُخصم الجزء غير المدفوع المعتمد مرة واحدة. تُحسب البنود الثابتة بالطريقة المعتمدة لكل بند.</p></HelpNote>}
+    {summary.coverage==='captured_parts_only'&&<p>{summary.time_coverage?.enabled?'السجلات المعتمدة متاحة للمراجعة؛ احتساب الأيام والمبالغ المستحقة من الحضور والإجازات لم يكتمل التحقق من سلامته بعد.':'تشرح هذه القيم وقائع الحضور المعتمدة المتاحة؛ تغطية أيام العمل المتوقعة لم تُؤهّل بعد.'}</p>}
+    {complete&&!monthly&&<><HelpNote label="كيف حُسب الأجر من الأيام؟"><p>يُحسب الأجر من أيام العمل والإجازات المدفوعة المعتمدة، بالأجر الساري لكل يوم. تُحسب الإجازة المدفوعة مرة واحدة.</p></HelpNote><p>اكتمال الأيام لا يعني جاهزية الصرف؛ راجع شروط الحساب المالي والقانوني قبل الاعتماد.</p></>}
     {summary.coverage==='approved_manual_total'&&<p>الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى.</p>}
     <TimeCoverageExplanation summary={summary.time_coverage} days={coverageDays}/>
-    {days&&days.length>0&&<details><summary>شرح الأيام المتاحة ({quantity(days.length)})</summary><ul>{days.map(day=><li key={day.date}>
+    {days&&days.length>0&&<Disclosure summary={<>شرح الأيام المتاحة ({quantity(days.length)})</>}><ul>{days.map(day=><li key={day.date}>
       {displayDate(day.date)} · عمل {quantity(day.work_units)} · إجازة مدفوعة {quantity(day.paid_leave_units)} · إجازة غير مدفوعة {quantity(day.unpaid_leave_units)}
       {day.status==='needs_source_review'?' · يلزم مراجعة المصدر':''}
-    </li>)}</ul></details>}
+    </li>)}</ul></Disclosure>}
   </section>;
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
 import { useState, useActionState } from 'react';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { useOfflineSubmission } from '@/components/offline-submission';
@@ -58,18 +59,18 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
       || (currentAssignment.manager_employee_id && !options.managers.some((manager) => manager.id === currentAssignment.manager_employee_id))
   ));
 
-  return <section className="workspace-records-panel assignment-history-panel" aria-labelledby="assignment-history-heading">
-    <h2 id="assignment-history-heading">سجل تكليفات العمل</h2>
+  return <Panel className="assignment-history-panel" aria-labelledby="assignment-history-heading">
+    <h2 id="assignment-history-heading">سجل تغييرات بيانات العمل</h2>
     <p className="record-meta">تظهر هنا الفروع والأقسام والوظائف التي ارتبطت بعلاقة العمل مع تواريخ سريانها.</p>
-    {historyError ? <p className="form-message error-message" role="alert">تعذر تحميل سجل تكليفات العمل. حدّث الصفحة أو تحقق من صلاحية العرض.</p>
+    {historyError ? <Message tone="bad"  role="alert">تعذر تحميل سجل تغييرات بيانات العمل. حدّث الصفحة أو تحقق من صلاحية العرض.</Message>
       : history?.items.length ? <ol className="assignment-history-list">
-        {history.items.map((assignment) => <li key={assignment.id} className="assignment-history-item">
+        {history.items.map((assignment) => <RecordCard key={assignment.id} className="assignment-history-item">
           <div className="assignment-history-heading">
-            <strong>{assignment.status === 'initial_scheduled' ? 'سياق العمل عند بدء العلاقة'
-              : assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'السياق الحالي' : 'سياق سابق'}</strong>
-            <span className={`entity-status ${assignment.status === 'past' ? 'is-inactive' : 'is-active'}`}>
+            <strong>{assignment.status === 'initial_scheduled' ? 'بيانات العمل عند بدء التوظيف'
+              : assignment.status === 'scheduled' ? 'نقل مقرر' : assignment.status === 'current' ? 'بيانات العمل الحالية' : 'بيانات عمل سابقة'}</strong>
+            <Badge className={`entity-status ${assignment.status === 'past' ? 'is-inactive' : 'is-active'}`}>
               {assignment.status === 'initial_scheduled' ? 'يبدأ مع العمل'
-                : assignment.status === 'scheduled' ? 'يبدأ لاحقًا' : assignment.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</span>
+                : assignment.status === 'scheduled' ? 'يبدأ لاحقًا' : assignment.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</Badge>
           </div>
           <dl className="snapshot-grid">
             <div><dt>الفرع</dt><dd>{assignment.site ?? 'غير محدد'}</dd></div>
@@ -77,7 +78,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             {assignment.job && <div><dt>الوظيفة</dt><dd>{assignment.job}</dd></div>}
             {assignment.manager && <div><dt>المدير المباشر</dt><dd>{assignment.manager}</dd></div>}
             <div><dt>يبدأ في</dt><dd><bdi>{assignment.valid_from}</bdi></dd></div>
-            {assignment.valid_until && <div><dt>ينتهي السياق قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
+            {assignment.valid_until && <div><dt>تنتهي هذه البيانات قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
           </dl>
           {canManage && assignment.status === 'scheduled' && employmentId && <form action={cancelWorkAssignmentAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <input type="hidden" name="tenantId" value={tenantId} />
@@ -86,93 +87,82 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             <input type="hidden" name="assignmentId" value={assignment.id} />
             <OfflineSubmitButton label="إلغاء النقل المقرر" pendingLabel="جارٍ الإلغاء…" />
           </form>}
-        </li>)}
-      </ol> : <p className="empty-state">لا توجد تعيينات عمل مسجلة.</p>}
+        </RecordCard>)}
+      </ol> : <Message tone="neutral" >لا توجد بيانات فرع أو قسم أو وظيفة مسجلة.</Message>}
     {history?.truncated && <p className="record-meta">يعرض هذا الملف أحدث 100 تغيير.</p>}
-    {canManage && !employmentId && <p className="form-message">لا توجد علاقة توظيف يمكن تغيير سياق عملها.</p>}
-    {canManage && employmentId && !employmentActive && <p className="form-message">لا يمكن تغيير سياق العمل بعد انتهاء علاقة التوظيف.</p>}
+    {canManage && !employmentId && <Message tone="info" >لا يوجد توظيف مسجل لتغيير بيانات العمل.</Message>}
+    {canManage && employmentId && !employmentActive && <Message tone="info" >لا يمكن تغيير بيانات العمل بعد انتهاء التوظيف.</Message>}
     {canManage && employmentId && employmentActive && !currentAssignment && history?.items.some((assignment) => assignment.status === 'initial_scheduled')
-      && <p className="form-message">سياق العمل أعلاه مقرر عند بداية العلاقة؛ لا يمكن نقل الموظف قبل بدء العمل.</p>}
+      && <Message tone="info" >تبدأ بيانات العمل الموضحة عند بدء التوظيف؛ لا يمكن نقل الموظف قبل هذا التاريخ.</Message>}
     {canManage && employmentId && employmentActive && !currentAssignment
       && !history?.items.some((assignment) => assignment.status === 'initial_scheduled')
-      && <p className="form-message">لا يوجد سياق عمل سارٍ يمكن نقل الموظف منه.</p>}
-    {canManage && hasPending && <p className="form-message">يوجد نقل مقرر بالفعل. ألغِه من سجل العمل قبل إضافة تغيير آخر.</p>}
-    {mayTransfer && <details className="assignment-transfer-details">
-      <summary>تغيير الفرع أو القسم أو الوظيفة</summary>
-      {optionsError || !options ? <p className="form-message error-message" role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</p>
-        : options.sites.length === 0 ? <p className="empty-state">لا يوجد فرع نشط تابع لجهة توظيف الموظف.</p>
+      && <Message tone="info" >لا توجد بيانات عمل حالية يمكن نقل الموظف منها.</Message>}
+    {canManage && hasPending && <Message tone="info" >يوجد نقل مقرر بالفعل. ألغِه من سجل العمل قبل إضافة تغيير آخر.</Message>}
+    {mayTransfer && <Disclosure className="assignment-transfer-details" summary={<>تغيير الفرع أو القسم أو الوظيفة</>}>
+      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية تعديل بيانات العمل.</Message>
+        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={formState.attempt} action={formAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
-            <p className="field-hint">ابدأ من بيانات التكليف الحالي؛ غيّر الحقول التي تحتاج إلى تحديث فقط.</p>
+            <p className="field-hint">عدّل الفرع أو القسم أو الوظيفة المطلوبة، واترك بقية البيانات كما هي.</p>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
             <input type="hidden" name="employeeId" value={employeeId} />
-            <label htmlFor="assignment-site">الفرع</label>
-            <select id="assignment-site" name="siteId" required defaultValue={formState.siteId || options.sites[0]?.id}>
+            <Field id="assignment-site" label={<>الفرع</>} required><Select id="assignment-site" name="siteId" required defaultValue={formState.siteId || options.sites[0]?.id}>
               {options.sites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
-            </select>
-            <label htmlFor="assignment-department">القسم</label>
-            <select id="assignment-department" name="departmentId" value={departmentId}
+            </Select></Field>
+            <Field id="assignment-department" label={<>القسم</>}><Select id="assignment-department" name="departmentId" value={departmentId}
               onChange={(event) => setDepartmentChoice(event.target.value)}>
               <option value="">دون تحديد</option>
               {options.departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}
-            </select>
-            <label htmlFor="assignment-job">الوظيفة</label>
-            <select key={`${formState.attempt}-${departmentId}`} id="assignment-job" name="jobId"
+            </Select></Field>
+            <Field id="assignment-job" label={<>الوظيفة</>}><Select key={`${formState.attempt}-${departmentId}`} id="assignment-job" name="jobId"
               defaultValue={visibleJobs.some((job) => job.id === formState.jobId) ? formState.jobId : ''}>
               <option value="">دون تحديد</option>
               {visibleJobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}
-            </select>
-            <label htmlFor="assignment-manager">المدير المباشر (اختياري)</label>
-            <select id="assignment-manager" name="managerId" defaultValue={formState.managerId}>
+            </Select></Field>
+            <Field id="assignment-manager" label={<>المدير المباشر (اختياري)</>}><Select id="assignment-manager" name="managerId" defaultValue={formState.managerId}>
               <option value="">دون تحديد</option>
               {options.managers.filter((manager) => manager.start_date <= effectiveDateChoice).map((manager) =>
                 <option key={manager.id} value={manager.id}>{manager.name}{manager.start_date > initialDate ? ` (يبدأ ${manager.start_date})` : ''}</option>)}
-            </select>
-            <label htmlFor="assignment-effective-date">تاريخ سريان التغيير</label>
-            <input id="assignment-effective-date" name="effectiveDate" type="date" required min={minimumTransferDate}
-              value={effectiveDateChoice} onChange={(event) => setEffectiveDateChoice(event.target.value)} />
+            </Select></Field>
+            <Field id="assignment-effective-date" label={<>تاريخ سريان التغيير</>} required><Input id="assignment-effective-date" name="effectiveDate" type="date" required min={minimumTransferDate}
+              value={effectiveDateChoice} onChange={(event) => setEffectiveDateChoice(event.target.value)} /></Field>
             {(options.sites_truncated || options.departments_truncated || options.jobs_truncated || options.managers_truncated)
               && <p className="field-hint">نعرض حتى 1000 اختيار لكل قائمة. راجع دليل الشركة إذا لم يظهر السجل المطلوب.</p>}
-            {currentChoiceMissing && <p className="field-hint">بعض بيانات التكليف الحالي لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
-            {formState.error && <p className="form-message error-message" role="alert">{formState.error}</p>}
-            <p className="field-hint">يبدأ السياق الجديد في التاريخ المحدد، وينتهي السياق الحالي عند بداية ذلك اليوم.</p>
+            {currentChoiceMissing && <p className="field-hint">بعض بيانات العمل الحالية لم تعد ضمن الاختيارات النشطة؛ اختر بديلًا مناسبًا قبل الحفظ.</p>}
+            {formState.error && <Message tone="bad"  role="alert">{formState.error}</Message>}
+            <p className="field-hint">تبدأ بيانات العمل الجديدة في التاريخ المحدد، وتنتهي البيانات الحالية عند بداية ذلك اليوم.</p>
             <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير العمل" pendingLabel="جارٍ حفظ التغيير…" /></div>
           </form>}
-    </details>}
-    {mayCorrectInitial && <details className="assignment-transfer-details">
-      <summary>تصحيح بيانات العمل اليوم</summary>
-      {optionsError || !options ? <p className="form-message error-message" role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية إدارة سياق العمل.</p>
-        : options.sites.length === 0 ? <p className="empty-state">لا يوجد فرع نشط تابع لجهة توظيف الموظف.</p>
+    </Disclosure>}
+    {mayCorrectInitial && <Disclosure className="assignment-transfer-details" summary={<>تصحيح بيانات العمل اليوم</>}>
+      {optionsError || !options ? <Message tone="bad"  role="alert">تعذر تحميل الاختيارات المتاحة. حدّث الصفحة أو تحقق من صلاحية تعديل بيانات العمل.</Message>
+        : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={correctionState.attempt} action={correctionAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">يُتاح هذا التصحيح في يوم بداية العمل فقط، ويحفظ سجلًا قبل التعديل وبعده.</p>
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
             <input type="hidden" name="employeeId" value={employeeId} />
-            <label htmlFor="correction-site">الفرع</label>
-            <select id="correction-site" name="siteId" required defaultValue={correctionState.siteId || options.sites[0]?.id}>
+            <Field id="correction-site" label={<>الفرع</>} required><Select id="correction-site" name="siteId" required defaultValue={correctionState.siteId || options.sites[0]?.id}>
               {options.sites.map((site) => <option key={site.id} value={site.id}>{site.name}</option>)}
-            </select>
-            <label htmlFor="correction-department">القسم</label>
-            <select id="correction-department" name="departmentId" defaultValue={correctionState.departmentId}>
+            </Select></Field>
+            <Field id="correction-department" label={<>القسم</>}><Select id="correction-department" name="departmentId" defaultValue={correctionState.departmentId}>
               <option value="">دون تحديد</option>
               {options.departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}
-            </select>
-            <label htmlFor="correction-job">الوظيفة</label>
-            <select id="correction-job" name="jobId" defaultValue={correctionState.jobId}>
+            </Select></Field>
+            <Field id="correction-job" label={<>الوظيفة</>}><Select id="correction-job" name="jobId" defaultValue={correctionState.jobId}>
               <option value="">دون تحديد</option>
               {options.jobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}
-            </select>
-            <label htmlFor="correction-manager">المدير المباشر (اختياري)</label>
-            <select id="correction-manager" name="managerId" defaultValue={correctionState.managerId}>
+            </Select></Field>
+            <Field id="correction-manager" label={<>المدير المباشر (اختياري)</>}><Select id="correction-manager" name="managerId" defaultValue={correctionState.managerId}>
               <option value="">دون تحديد</option>
               {options.managers.filter((manager) => manager.start_date <= initialDate).map((manager) =>
                 <option key={manager.id} value={manager.id}>{manager.name}</option>)}
-            </select>
-            {correctionState.error && <p className="form-message error-message" role="alert">{correctionState.error}</p>}
+            </Select></Field>
+            {correctionState.error && <Message tone="bad"  role="alert">{correctionState.error}</Message>}
             <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تصحيح بيانات العمل" pendingLabel="جارٍ حفظ التصحيح…" /></div>
           </form>}
-    </details>}
-  </section>;
+    </Disclosure>}
+  </Panel>;
 }
 
 function addOneDay(value: string) {

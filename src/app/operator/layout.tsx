@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
 import { OperatorNavigation } from '@/components/context-navigation';
+import { AppShell } from '@/components/shell/app-shell';
 
 export default function OperatorLayout({ children }: { children: ReactNode }) {
-  return <div className="operator-area workspace-frame" data-workspace="operator">
-    <OperatorNavigation />
-    <div className="workspace-content" id="workspace-content" tabIndex={-1}>{children}</div>
-  </div>;
+  return <AppShell mode="operator" navigation={<OperatorNavigation />}>{children}</AppShell>;
 }

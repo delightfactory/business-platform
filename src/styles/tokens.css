@@ -1,206 +1,86 @@
-/* W1.a: concept C light palette; retain the accepted control and type contracts. */
+/* Concept C: authoritative tokens, with compatibility aliases for existing pages. */
 :root {
-  color-scheme: light;
-  --surface-canvas: #f2f3f1;
-  --surface-base: #ffffff;
-  --surface-subtle: #f6f7f5;
-  --surface-inset: #eceeea;
-  --text-primary: #17201c;
-  --text-secondary: #3b4641;
-  --text-muted: #5d6862;
-  --border-subtle: #e2e5e0;
-  /* Strong enough to identify a control against the white surface. */
-  --border-control: #7c8780;
-  --status-success-text: #17603c;
-  --status-success-surface: #e6f3eb;
-  --status-warning-text: #8a4806;
-  --status-warning-surface: #fbeedc;
-  --status-danger-text: #962016;
-  --status-danger-surface: #fbe8e6;
-  --status-info-text: #264d75;
-  --status-info-surface: #e8eff7;
-  --navigation-surface: #14211d;
-  --navigation-muted: #a9bcb4;
+  /* Light: "Daylight ledger" — neutral paper, deep Nile teal as the single brand color */
+  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#F6F7F5;--surface-3:#ECEEEA;
+  --line:#E2E5E0;--line-2:#CCD1CA;
+  --ink:#17201C;--ink-2:#3B4641;--muted:#5D6862;
+  --brand:#0E6B5C;--brand-strong:#0A5146;--brand-ink:#FFFFFF;--brand-soft:#E4F0EC;--brand-text:#0B5D50;
+  --money:#17201C;--toast-bg:#17201C;--toast-ink:#EEF4F1;--toast-ic:#7ED3C0;
+  --pass:#14211D;--pass-2:#1D2D28;--pass-accent:#5CBFAA;--pass-accent-ink:#08201B;--pass-ink:#EEF4F1;--pass-muted:#A9BCB4;--pass-line:rgb(255 255 255 / 12%);
+  --ok:#1E7A4C;--ok-bg:#E6F3EB;--ok-text:#17603C;
+  --warn:#B4600A;--warn-bg:#FBEEDC;--warn-text:#8A4806;
+  --bad:#B42318;--bad-bg:#FBE8E6;--bad-text:#962016;
+  --info:#2F5D8C;--info-bg:#E8EFF7;--info-text:#264D75;
+  --idle:#97A09B;
+  --scrim:rgb(15 22 19 / 45%);
+  --sh-1:0 1px 2px rgb(20 33 29 / 6%),0 1px 1px rgb(20 33 29 / 4%);
+  --sh-2:0 1px 2px rgb(20 33 29 / 6%),0 8px 24px rgb(20 33 29 / 8%);
+  --sh-3:0 24px 60px rgb(20 33 29 / 18%);
+  --r-card:16px;--r-tile:12px;--r-ctl:10px;--r-chip:6px;
+  --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --f-head:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  color-scheme:light;
 
-  /* Existing feature CSS consumes these aliases; tenant branding still owns brand. */
-  --color-canvas: var(--surface-canvas);
-  --color-surface: var(--surface-base);
-  --color-text: var(--text-primary);
-  --color-muted: var(--text-muted);
-  --color-border: var(--border-subtle);
-  --color-control-border: var(--border-control);
-  --color-brand: #0e6b5c;
-  --color-brand-soft: color-mix(in srgb, var(--color-brand) 9%, var(--surface-base));
-  --color-brand-border: color-mix(in srgb, var(--color-brand) 35%, var(--surface-base));
-  --color-focus: #0b72d9;
-  --color-danger: var(--status-danger-text);
-  --radius-card: 1.25rem;
-  --radius-control: .5rem;
-  --radius-field: .5rem;
-  --control-height: 2.5rem;
-  --field-height: 2.75rem;
-  --touch-target-size: 2.75rem;
-  --control-padding-inline: .875rem;
-  --focus-width: 2px;
-  --shadow-card: 0 1px 3px rgb(23 32 28 / 4%), 0 8px 24px rgb(23 32 28 / 4%);
-  --shadow-control: 0 1px 2px rgb(23 32 28 / 7%), inset 0 1px 0 rgb(255 255 255 / 70%);
-  --space-page: clamp(1rem, 4vw, 3rem);
-  --operator-rail-width: 15.5rem;
-  --work-content-max: 74rem;
-  font-family: "Cairo", sans-serif;
-  color: var(--color-text);
-  background: var(--color-canvas);
-}
-
-/* Original plan5.5: explicit modes and CSS-only device preference. */
-:root { --color-on-brand: #fff; --color-danger-action: #962016; --brand-text-share: 100%; --color-brand-text: color-mix(in srgb, var(--color-brand) var(--brand-text-share), white); }
-:root[data-theme="system"] { color-scheme: light dark; }
-:root[data-theme="light"] { color-scheme: light; }
+--surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}
 :root[data-theme="dark"] {
-  --surface-canvas: #0d1211;
-  --surface-base: #141b19;
-  --surface-subtle: #19211f;
-  --surface-inset: #212a27;
-  --text-primary: #e7ece9;
-  --text-secondary: #c2ccc7;
-  --text-muted: #8e9b95;
-  --border-subtle: #26302d;
-  --border-control: #7d8c85;
-  --status-success-text: #7dd3a6;
-  --status-success-surface: #132a1f;
-  --status-warning-text: #edb872;
-  --status-warning-surface: #2e2213;
-  --status-danger-text: #f29c93;
-  --status-danger-surface: #331a17;
-  --status-info-text: #9dbde0;
-  --status-info-surface: #16222f;
-  --navigation-surface: #18221f;
-  --navigation-muted: #93a39c;
-  --color-brand: #5cbfaa;
-  --color-focus: #7fa9d6;
-  --color-on-brand: #08201b;
-  --color-danger-action: #b42318;
-  --brand-text-share: 55%;
-  --shadow-card: 0 0 0 1px rgb(255 255 255 / 3%), 0 10px 30px rgb(0 0 0 / 35%);
-  --shadow-control: 0 1px 2px rgb(0 0 0 / 35%), inset 0 1px 0 rgb(255 255 255 / 7%);
-  --theme-legacy-ink: var(--text-primary);
-  --theme-legacy-muted: var(--text-muted);
-  --theme-legacy-brand-text: var(--color-brand-text);
-  --theme-legacy-border: var(--border-subtle);
-  --theme-legacy-control-border: var(--border-control);
-  --theme-legacy-warning-border: #876338;
-  --theme-legacy-warning-surface: var(--status-warning-surface);
-  --theme-legacy-subtle: var(--surface-subtle);
-  --theme-legacy-soft: var(--surface-inset);
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: dark) {
- :root[data-theme="system"] {
-  --surface-canvas: #0d1211;
-  --surface-base: #141b19;
-  --surface-subtle: #19211f;
-  --surface-inset: #212a27;
-  --text-primary: #e7ece9;
-  --text-secondary: #c2ccc7;
-  --text-muted: #8e9b95;
-  --border-subtle: #26302d;
-  --border-control: #7d8c85;
-  --status-success-text: #7dd3a6;
-  --status-success-surface: #132a1f;
-  --status-warning-text: #edb872;
-  --status-warning-surface: #2e2213;
-  --status-danger-text: #f29c93;
-  --status-danger-surface: #331a17;
-  --status-info-text: #9dbde0;
-  --status-info-surface: #16222f;
-  --navigation-surface: #18221f;
-  --navigation-muted: #93a39c;
-  --color-brand: #5cbfaa;
-  --color-focus: #7fa9d6;
-  --color-on-brand: #08201b;
-  --color-danger-action: #b42318;
-  --brand-text-share: 55%;
-  --shadow-card: 0 0 0 1px rgb(255 255 255 / 3%), 0 10px 30px rgb(0 0 0 / 35%);
-  --shadow-control: 0 1px 2px rgb(0 0 0 / 35%), inset 0 1px 0 rgb(255 255 255 / 7%);
-  --theme-legacy-ink: var(--text-primary);
-  --theme-legacy-muted: var(--text-muted);
-  --theme-legacy-brand-text: var(--color-brand-text);
-  --theme-legacy-border: var(--border-subtle);
-  --theme-legacy-control-border: var(--border-control);
-  --theme-legacy-warning-border: #876338;
-  --theme-legacy-warning-surface: var(--status-warning-surface);
-  --theme-legacy-subtle: var(--surface-subtle);
-  --theme-legacy-soft: var(--surface-inset);
-  color-scheme: dark;
- }
-}
-/* Company identity is resolved in its own scope, including nested editor previews. */
-[data-brand="teal"] { --brand-light: #126b68; --brand-dark: #5cbfaa; --brand-dark-ink: #08201b; }
-[data-brand="blue"] { --brand-light: #2563eb; --brand-dark: #7ea6f2; --brand-dark-ink: #0a1530; }
-[data-brand="violet"] { --brand-light: #7c3aed; --brand-dark: #b39af0; --brand-dark-ink: #170c2e; }
-[data-brand="emerald"] { --brand-light: #047857; --brand-dark: #5fcb92; --brand-dark-ink: #06200f; }
-[data-brand] {
-  --color-brand: var(--brand-light);
-  --color-on-brand: #fff;
-  --color-brand-text: var(--color-brand);
-  --color-brand-soft: color-mix(in srgb, var(--color-brand) 9%, var(--surface-base));
-  --color-brand-border: color-mix(in srgb, var(--color-brand) 35%, var(--surface-base));
-}
-:root[data-theme="dark"] [data-brand] {
-  --color-brand: var(--brand-dark);
-  --color-on-brand: var(--brand-dark-ink);
-  --theme-legacy-brand-text: var(--color-brand-text);
-}
-@media (prefers-color-scheme: dark) {
-  :root[data-theme="system"] [data-brand] {
-    --color-brand: var(--brand-dark);
-    --color-on-brand: var(--brand-dark-ink);
-    --theme-legacy-brand-text: var(--color-brand-text);
-  }
-}
-/* Paper output must never inherit a device/night palette. */
-@media print {
- :root[data-theme] [data-brand], [data-brand] {
-  --color-brand: var(--brand-light);
-  --color-on-brand: #fff;
-  --theme-legacy-brand-text: initial;
- }
- :root, :root[data-theme] {
-  --surface-canvas: #f2f3f1;
-  --surface-base: #ffffff;
-  --surface-subtle: #f6f7f5;
-  --surface-inset: #eceeea;
-  --text-primary: #17201c;
-  --text-secondary: #3b4641;
-  --text-muted: #5d6862;
-  --border-subtle: #e2e5e0;
-  --border-control: #7c8780;
-  --status-success-text: #17603c;
-  --status-success-surface: #e6f3eb;
-  --status-warning-text: #8a4806;
-  --status-warning-surface: #fbeedc;
-  --status-danger-text: #962016;
-  --status-danger-surface: #fbe8e6;
-  --status-info-text: #264d75;
-  --status-info-surface: #e8eff7;
-  --navigation-surface: #14211d;
-  --navigation-muted: #a9bcb4;
-  --color-brand: #0e6b5c;
-  --color-focus: #0b72d9;
-  --shadow-card: 0 1px 3px rgb(23 32 28 / 4%), 0 8px 24px rgb(23 32 28 / 4%);
-  --shadow-control: 0 1px 2px rgb(23 32 28 / 7%), inset 0 1px 0 rgb(255 255 255 / 70%);
-  --color-on-brand: #fff;
-  --color-danger-action: #962016;
-  --brand-text-share: 100%;
-  --theme-legacy-ink: initial;
-  --theme-legacy-muted: initial;
-  --theme-legacy-brand-text: initial;
-  --theme-legacy-border: initial;
-  --theme-legacy-control-border: initial;
-  --theme-legacy-warning-border: initial;
-  --theme-legacy-warning-surface: initial;
-  --theme-legacy-subtle: initial;
-  --theme-legacy-soft: initial;
-  color-scheme: light;
- }
-}
+  --bg:#0D1211;--surface:#141B19;--surface-2:#19211F;--surface-3:#212A27;
+  --line:#26302D;--line-2:#34403C;
+  --ink:#E7ECE9;--ink-2:#C2CCC7;--muted:#8E9B95;
+  --brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-ink:#08201B;--brand-soft:#15302A;--brand-text:#7ED3C0;
+  --money:#D9B56E;--toast-bg:#E7ECE9;--toast-ink:#0D1211;--toast-ic:#0E6B5C;
+  --pass:#18221F;--pass-2:#202D29;--pass-ink:#E7ECE9;--pass-muted:#93A39C;--pass-line:rgb(255 255 255 / 9%);
+  --ok:#55C08A;--ok-bg:#132A1F;--ok-text:#7DD3A6;
+  --warn:#E3A048;--warn-bg:#2E2213;--warn-text:#EDB872;
+  --bad:#EF7D72;--bad-bg:#331A17;--bad-text:#F29C93;
+  --info:#7FA9D6;--info-bg:#16222F;--info-text:#9DBDE0;
+  --idle:#5B6762;--scrim:rgb(0 0 0 / 62%);
+  --sh-1:0 0 0 1px rgb(255 255 255 / 2%);--sh-2:0 0 0 1px rgb(255 255 255 / 3%),0 10px 30px rgb(0 0 0 / 35%);--sh-3:0 30px 70px rgb(0 0 0 / 60%);
+  color-scheme:dark}
+@media(prefers-color-scheme:dark){:root[data-theme="system"]{
+  --bg:#0D1211;--surface:#141B19;--surface-2:#19211F;--surface-3:#212A27;
+  --line:#26302D;--line-2:#34403C;
+  --ink:#E7ECE9;--ink-2:#C2CCC7;--muted:#8E9B95;
+  --brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-ink:#08201B;--brand-soft:#15302A;--brand-text:#7ED3C0;
+  --money:#D9B56E;--toast-bg:#E7ECE9;--toast-ink:#0D1211;--toast-ic:#0E6B5C;
+  --pass:#18221F;--pass-2:#202D29;--pass-ink:#E7ECE9;--pass-muted:#93A39C;--pass-line:rgb(255 255 255 / 9%);
+  --ok:#55C08A;--ok-bg:#132A1F;--ok-text:#7DD3A6;
+  --warn:#E3A048;--warn-bg:#2E2213;--warn-text:#EDB872;
+  --bad:#EF7D72;--bad-bg:#331A17;--bad-text:#F29C93;
+  --info:#7FA9D6;--info-bg:#16222F;--info-text:#9DBDE0;
+  --idle:#5B6762;--scrim:rgb(0 0 0 / 62%);
+  --sh-1:0 0 0 1px rgb(255 255 255 / 2%);--sh-2:0 0 0 1px rgb(255 255 255 / 3%),0 10px 30px rgb(0 0 0 / 35%);--sh-3:0 30px 70px rgb(0 0 0 / 60%);
+  color-scheme:dark}}
+[data-brand="teal"]{--brand:#0E6B5C;--brand-strong:#0A5146;--brand-soft:#E4F0EC;--brand-text:#0B5D50;--brand-ink:#fff;--brand-light:#0E6B5C;--brand-dark:#5CBFAA;--brand-dark-ink:#08201B;--pass-accent:#5CBFAA;--pass-accent-ink:#08201B;--surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}
+:root[data-theme="dark"] [data-brand="teal"]{--brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-soft:#15302A;--brand-text:#7ED3C0;--brand-ink:#08201B;}
+@media(prefers-color-scheme:dark){:root[data-theme="system"] [data-brand="teal"]{--brand:#5CBFAA;--brand-strong:#7ED3C0;--brand-soft:#15302A;--brand-text:#7ED3C0;--brand-ink:#08201B;}}
+[data-brand="blue"]{--brand:#2456C7;--brand-strong:#1B419A;--brand-soft:#E6EDFA;--brand-text:#1E4BAE;--brand-ink:#fff;--brand-light:#2456C7;--brand-dark:#7EA6F2;--brand-dark-ink:#0A1530;--pass-accent:#7EA6F2;--pass-accent-ink:#0A1530;--surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}
+:root[data-theme="dark"] [data-brand="blue"]{--brand:#7EA6F2;--brand-strong:#A3C0F7;--brand-soft:#16233D;--brand-text:#A3C0F7;--brand-ink:#0A1530;}
+@media(prefers-color-scheme:dark){:root[data-theme="system"] [data-brand="blue"]{--brand:#7EA6F2;--brand-strong:#A3C0F7;--brand-soft:#16233D;--brand-text:#A3C0F7;--brand-ink:#0A1530;}}
+[data-brand="violet"]{--brand:#6A3FC2;--brand-strong:#532F9A;--brand-soft:#EFE9FA;--brand-text:#5B35A8;--brand-ink:#fff;--brand-light:#6A3FC2;--brand-dark:#B39AF0;--brand-dark-ink:#170C2E;--pass-accent:#B39AF0;--pass-accent-ink:#170C2E;--surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}
+:root[data-theme="dark"] [data-brand="violet"]{--brand:#B39AF0;--brand-strong:#CBB9F6;--brand-soft:#25193D;--brand-text:#CBB9F6;--brand-ink:#170C2E;}
+@media(prefers-color-scheme:dark){:root[data-theme="system"] [data-brand="violet"]{--brand:#B39AF0;--brand-strong:#CBB9F6;--brand-soft:#25193D;--brand-text:#CBB9F6;--brand-ink:#170C2E;}}
+[data-brand="emerald"]{--brand:#0F7A47;--brand-strong:#0B5E37;--brand-soft:#E3F2EA;--brand-text:#0C6B3E;--brand-ink:#fff;--brand-light:#0F7A47;--brand-dark:#5FCB92;--brand-dark-ink:#06200F;--pass-accent:#5FCB92;--pass-accent-ink:#06200F;--surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}
+:root[data-theme="dark"] [data-brand="emerald"]{--brand:#5FCB92;--brand-strong:#86DCAE;--brand-soft:#12301F;--brand-text:#86DCAE;--brand-ink:#06200F;}
+@media(prefers-color-scheme:dark){:root[data-theme="system"] [data-brand="emerald"]{--brand:#5FCB92;--brand-strong:#86DCAE;--brand-soft:#12301F;--brand-text:#86DCAE;--brand-ink:#06200F;}}
+@media print{:root,:root[data-theme]{
+  /* Light: "Daylight ledger" — neutral paper, deep Nile teal as the single brand color */
+  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#F6F7F5;--surface-3:#ECEEEA;
+  --line:#E2E5E0;--line-2:#CCD1CA;
+  --ink:#17201C;--ink-2:#3B4641;--muted:#5D6862;
+  --brand:#0E6B5C;--brand-strong:#0A5146;--brand-ink:#FFFFFF;--brand-soft:#E4F0EC;--brand-text:#0B5D50;
+  --money:#17201C;--toast-bg:#17201C;--toast-ink:#EEF4F1;--toast-ic:#7ED3C0;
+  --pass:#14211D;--pass-2:#1D2D28;--pass-accent:#5CBFAA;--pass-accent-ink:#08201B;--pass-ink:#EEF4F1;--pass-muted:#A9BCB4;--pass-line:rgb(255 255 255 / 12%);
+  --ok:#1E7A4C;--ok-bg:#E6F3EB;--ok-text:#17603C;
+  --warn:#B4600A;--warn-bg:#FBEEDC;--warn-text:#8A4806;
+  --bad:#B42318;--bad-bg:#FBE8E6;--bad-text:#962016;
+  --info:#2F5D8C;--info-bg:#E8EFF7;--info-text:#264D75;
+  --idle:#97A09B;
+  --scrim:rgb(15 22 19 / 45%);
+  --sh-1:0 1px 2px rgb(20 33 29 / 6%),0 1px 1px rgb(20 33 29 / 4%);
+  --sh-2:0 1px 2px rgb(20 33 29 / 6%),0 8px 24px rgb(20 33 29 / 8%);
+  --sh-3:0 24px 60px rgb(20 33 29 / 18%);
+  --r-card:16px;--r-tile:12px;--r-ctl:10px;--r-chip:6px;
+  --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --f-head:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  color-scheme:light;
+  }:root[data-theme] [data-brand="teal"],[data-brand="teal"]{--brand:#0E6B5C;--brand-strong:#0A5146;--brand-soft:#E4F0EC;--brand-text:#0B5D50;--brand-ink:#fff;}:root[data-theme] [data-brand="blue"],[data-brand="blue"]{--brand:#2456C7;--brand-strong:#1B419A;--brand-soft:#E6EDFA;--brand-text:#1E4BAE;--brand-ink:#fff;}:root[data-theme] [data-brand="violet"],[data-brand="violet"]{--brand:#6A3FC2;--brand-strong:#532F9A;--brand-soft:#EFE9FA;--brand-text:#5B35A8;--brand-ink:#fff;}:root[data-theme] [data-brand="emerald"],[data-brand="emerald"]{--brand:#0F7A47;--brand-strong:#0B5E37;--brand-soft:#E3F2EA;--brand-text:#0C6B3E;--brand-ink:#fff;}}

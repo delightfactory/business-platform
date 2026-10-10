@@ -16,7 +16,7 @@ export async function issueRules(previous:IssuanceState,form:FormData):Promise<I
  if(error){
   if(error.code==='42501')return fail('لم تعد مهمة إدارة القواعد القانونية متاحة لحسابك.');
   if(error.code==='PT409')return fail('تغيرت القواعد أو أدلة المقارنة. افتح الحالة الحالية لمراجعتها؛ البيانات هنا محفوظة.',false,true);
-  if(error.code==='23514')return fail('لم تكتمل شروط الإصدار. راجع النواقص والاختلافات في حالة التأهيل.',false,true);
+  if(error.code==='23514')return fail('لم تكتمل شروط الإصدار. راجع النواقص والاختلافات في حالة استيفاء شروط الحساب.',false,true);
   if(error.code?.startsWith('22'))return fail('راجع مرجع المراجعة وتأكيد التحقق قبل الإصدار.');
   return fail('لم تتأكد نتيجة الإصدار. استعدها بنفس البيانات أو أعد فتح الصفحة للتحقق.',true);
  }

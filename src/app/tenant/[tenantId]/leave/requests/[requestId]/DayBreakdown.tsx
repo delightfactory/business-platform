@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge, Button } from '@/components/ui';
 import { useState } from 'react';
 import { formatDays, mappingStateClass, mappingStateLabel, type RequestDay } from '../../rules';
 import styles from '../../review.module.css';
@@ -29,8 +30,8 @@ export function DayBreakdown({ days, showMapping = false }: { days: RequestDay[]
           <bdi>{day.date}</bdi>
           {day.holidayName ? ` · ${day.holidayName}` : day.isWeeklyRest ? ' · راحة أسبوعية' : ''}
           {showMapping && day.isHalfDay
-            ? <span className={`entity-status ${mappingStateClass(day.mappingState)}`}>
-              {mappingStateLabel(day.mappingState)}</span>
+            ? <Badge className={`entity-status ${mappingStateClass(day.mappingState)}`}>
+              {mappingStateLabel(day.mappingState)}</Badge>
             : null}
         </span>
         <span>{day.eligible ? `${formatDays(day.units)} يوم` : 'لا يُحتسب'}</span>
@@ -39,10 +40,10 @@ export function DayBreakdown({ days, showMapping = false }: { days: RequestDay[]
     {totalPages > 1 && <nav className={styles.pagination} aria-label="صفحات تفاصيل أيام الطلب">
       <span role="status" aria-live="polite">صفحة {current} من {totalPages} · يوم {from}–{to} من {days.length}</span>
       <span className={styles.paginationNav}>
-        <button type="button" className="secondary-button" disabled={current <= 1}
-          onClick={() => setPage(current - 1)}>السابق</button>
-        <button type="button" className="secondary-button" disabled={current >= totalPages}
-          onClick={() => setPage(current + 1)}>التالي</button>
+        <Button variant="ghost" type="button"  disabled={current <= 1}
+          onClick={() => setPage(current - 1)}>السابق</Button>
+        <Button variant="ghost" type="button"  disabled={current >= totalPages}
+          onClick={() => setPage(current + 1)}>التالي</Button>
       </span>
     </nav>}
   </div>;

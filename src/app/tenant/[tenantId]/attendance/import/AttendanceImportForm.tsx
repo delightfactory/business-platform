@@ -1,4 +1,5 @@
 'use client';
+import { Button, DataTable, Message, Select, FileInput, Checkbox, buttonClassName, Panel, KeyValueStrip } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -13,7 +14,7 @@ const FIELDS = [
   { key: 'site_name', label: 'اسم الفرع', hint: 'يجب أن يطابق اسم فرع نشط وفريد.' },
   { key: 'happened_at', label: 'وقت الحدث', hint: <>تاريخ ووقت مع فرق توقيت، مثل <bdi className={styles.formatValue}>2026-09-30T08:30:00+02:00</bdi>.</> },
   { key: 'direction', label: 'الاتجاه', hint: 'اكتب in للدخول أو out للخروج.' },
-  { key: 'source_event_key', label: 'معرّف الحدث في المصدر', hint: 'قيمة ثابتة تمنع تكرار استيراد الحدث نفسه.' },
+  { key: 'source_event_key', label: 'رقم التسجيل في المصدر', hint: 'رقم ثابت من الملف الأصلي يمنع حفظ التسجيل نفسه مرتين.' },
 ] as const;
 type Header = { label: string; index: number };
 
@@ -101,9 +102,9 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
       <input type="hidden" name="tenantId" value={tenantId}/>
       <div className="workforce-file-control">
         <span className="workforce-file-label">ملف CSV</span>
-        <input id="attendance-csv" className="workforce-file-native" name="file" type="file" accept=".csv,text/csv" required
+        <FileInput id="attendance-csv" className="workforce-file-native" name="file"  accept=".csv,text/csv" required
           aria-describedby="attendance-csv-hint" onChange={(event) => readHeaders(event.currentTarget.files?.[0])}/>
-        <label className="workforce-file-trigger" htmlFor="attendance-csv"><span className="secondary-button">اختيار ملف</span>
+        <label className="workforce-file-trigger" htmlFor="attendance-csv"><span className={buttonClassName("ghost", "md", "")}>اختيار ملف</span>
           <span className="workforce-file-name" aria-live="polite">{fileName || 'لم يتم اختيار ملف'}</span></label>
       </div>
       <p id="attendance-csv-hint" className="field-hint">الحد الأقصى 256 كيلوبايت و100 حدث. الملفات المشفرة أو غير UTF-8 مرفوضة.</p>
@@ -113,87 +114,87 @@ export function AttendanceImportForm({ tenantId }: { tenantId: string }) {
           const defaultIndex = headers.find((header) => header.label.trim().toLowerCase() === field.key)?.index;
           return <label className="attendance-import-map-field" key={field.key}>
             <span>{field.label}<small>{field.hint}</small></span>
-            <select name={`column_${field.key}`} required defaultValue={defaultIndex === undefined ? '' : String(defaultIndex)} onChange={() => invalidateSelection()}>
+            <Select name={`column_${field.key}`} required defaultValue={defaultIndex === undefined ? '' : String(defaultIndex)} onChange={() => invalidateSelection()}>
               <option value="" disabled>اختر عمودًا</option>
               {headers.map((header) => <option key={header.index} value={header.index}>العمود {header.index + 1}: {header.label || 'بلا عنوان'}</option>)}
-            </select>
+            </Select>
           </label>;
         })}
       </fieldset>}
-      {mappingError && <p className="form-message error-message" role="alert">{mappingError}</p>}
-      {preview.error && <p className="form-message error-message" role="alert">{preview.error}</p>}
+      {mappingError && <Message tone="bad"  role="alert">{mappingError}</Message>}
+      {preview.error && <Message tone="bad"  role="alert">{preview.error}</Message>}
       {preview.rows.length > 0 && <p className="field-hint">تحميل ملف جديد يمحو معاينة الملف الحالي. لن تُحفظ البيانات قبل التأكيد.</p>}
-      {headers.length > 0 && <label className="checkbox-row attendance-import-confirm-map"><input key={revision} type="checkbox" name="mappingConfirmed" required/>
+      {headers.length > 0 && <label className="checkbox-row attendance-import-confirm-map"><Checkbox key={revision}  name="mappingConfirmed" required/>
         <span>تأكدت من ربط الأعمدة الخمسة بالطريقة الصحيحة.</span></label>}
       <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={previewPending ? 'جارٍ فحص الصفوف…' : 'فحص ومعاينة الأحداث'} pendingLabel="جارٍ فحص الصفوف…" ariaDescribedBy={showOffline0 ? offlineHint0 : undefined}/></div>
     {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
 
-    {(preview.rows.length > 0 || showingCommitResult) && <section className="attendance-import-preview" aria-live="polite">
+    {(preview.rows.length > 0 || showingCommitResult) && <Panel className="attendance-import-preview" aria-live="polite">
       <h2>{showingCommitResult ? 'آخر نتيجة حفظ مؤكدة' : 'معاينة الملف'}</h2>
-      <p>{confirmedResult ? 'مقبول:' : 'جاهز للحفظ:'} {confirmedResult ? confirmedResult.accepted : preview.ready} · يحتاج اختيار يوم: {confirmedResult ? confirmedResult.ambiguous : preview.ambiguous} · بانتظار التكليف: {confirmedResult ? confirmedResult.unassigned : preview.unassigned} · مكرر: {confirmedResult ? confirmedResult.duplicate : preview.duplicate} · مرفوض: {confirmedResult ? confirmedResult.rejected : preview.rejected}</p>
-      {commit.error && <p className="form-message error-message" role="alert">{commit.error}</p>}
-      {showingCommitResult && commit.state === 'processed' && <p className="form-message" role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا تكليف في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</p>}
+      <KeyValueStrip items={[{label:confirmedResult?"مقبول":"جاهز للحفظ",value:confirmedResult?confirmedResult.accepted:preview.ready},{label:"يحتاج اختيار يوم",value:confirmedResult?confirmedResult.ambiguous:preview.ambiguous},{label:"بانتظار بيانات العمل",value:confirmedResult?confirmedResult.unassigned:preview.unassigned},{label:"مكرر",value:confirmedResult?confirmedResult.duplicate:preview.duplicate},{label:"مرفوض",value:confirmedResult?confirmedResult.rejected:preview.rejected}]}/>
+      {commit.error && <Message tone="bad"  role="alert">{commit.error}</Message>}
+      {showingCommitResult && commit.state === 'processed' && <Message tone="info"  role="status">حُفظت الأحداث المطابقة، وأُبقيت الأحداث بلا بيانات عمل في قائمة المراجعة دون ربطها بيوم عمل. الأحداث التي تحتاج اختيار يوم لم تُربط بعد، والمرفوضة لم تُحفظ.</Message>}
       {showingCommitResult && <p className="field-hint">هذه نتيجة آخر تأكيد فقط. الأحداث التي حُفظت في تأكيد سابق تظل محفوظة.</p>}
       {showingCommitResult && commit.state === 'failed' && <p className="field-hint">النتيجة المعروضة من آخر حفظ مؤكد، وليست نتيجة المحاولة الأخيرة. تحقّق من السجل قبل إعادة التأكيد.</p>}
       {!showingCommitResult && readyRows.length === 0 && ambiguousRows.length === 0 && unassignedRows.length === 0 && <p className="field-hint">لا توجد أحداث يمكن تأكيد حفظها في هذه المعاينة. راجع الملاحظات؛ الأحداث المكررة لا تُحفظ مرة أخرى.</p>}
-      {rejectedRows.length > 0 && <button className="secondary-button" type="button" onClick={() => downloadRejectReport(rejectedRows)}>تنزيل تقرير الأحداث المرفوضة</button>}
-      <div className="attendance-import-table-wrap"><table className="attendance-import-table"><thead><tr>
+      {rejectedRows.length > 0 && <Button variant="ghost"  type="button" onClick={() => downloadRejectReport(rejectedRows)}>تنزيل تقرير الأحداث المرفوضة</Button>}
+      <div className="attendance-import-table-wrap"><DataTable className="attendance-import-table"><thead><tr>
         <th>سطر الملف</th><th>رمز الموظف</th><th>الفرع</th><th>وقت الحدث</th><th>الاتجاه</th><th>الحالة والملاحظات</th>
       </tr></thead><tbody>{rows.map((row) => <tr key={`${row.source_line_hint}-${row.source_event_key}`}>
-        <td>{row.source_line_hint}</td><td><bdi>{row.employee_code}</bdi></td><td>{row.site_name}</td><td><bdi>{row.happened_at}</bdi></td><td>{row.direction === 'in' ? 'دخول' : row.direction === 'out' ? 'خروج' : row.direction}</td>
-        <td>{statusLabel(row.status)}{[...row.errors, ...row.warnings].length > 0 && <small className="attendance-import-note">{[...row.errors, ...row.warnings].join(' · ')}</small>}</td>
-      </tr>)}</tbody></table></div>
+        <td data-label="سطر الملف">{row.source_line_hint}</td><td data-label="رمز الموظف"><bdi>{row.employee_code}</bdi></td><td data-label="الفرع">{row.site_name}</td><td data-label="وقت الحدث"><bdi>{row.happened_at}</bdi></td><td data-label="الاتجاه">{row.direction === 'in' ? 'دخول' : row.direction === 'out' ? 'خروج' : row.direction}</td>
+        <td data-label="الحالة والملاحظات">{statusLabel(row.status)}{[...row.errors, ...row.warnings].length > 0 && <small className="attendance-import-note">{[...row.errors, ...row.warnings].join(' · ')}</small>}</td>
+      </tr>)}</tbody></DataTable></div>
       {!showingCommitResult && (readyRows.length > 0 || ambiguousRows.length > 0 || unassignedRows.length > 0) && <form action={commitAction} className="attendance-import-confirm-form"
         onSubmit={submitCommit} aria-busy={commitPending}>
         <input type="hidden" name="tenantId" value={tenantId}/>
         {readyRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
-          <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
+          <Checkbox  name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
           <span>حفظ تسجيل {row.direction === 'in' ? 'الدخول' : 'الخروج'} للموظف <bdi>{row.employee_code}</bdi> في <bdi>{row.work_date ?? row.happened_at}</bdi></span>
         </label>)}
         {ambiguousRows.map((row) => <div className="attendance-import-ambiguous" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <label className="checkbox-row">
-            <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked
+            <Checkbox  name="selectedRow" value={JSON.stringify(row)} defaultChecked
               onChange={(event) => { const dateSelect = event.currentTarget.closest('.attendance-import-ambiguous')?.querySelector('select'); if (dateSelect) dateSelect.required = event.currentTarget.checked; }}/>
             <span>تسجيل {row.direction === 'in' ? 'الدخول' : 'الخروج'} للموظف <bdi>{row.employee_code}</bdi> يطابق أكثر من يوم عمل.</span>
           </label>
           <label className="attendance-import-work-date">اختر يوم العمل المقصود
-            <select name={`workDate_${row.source_line_hint}`} defaultValue="" required>
+            <Select name={`workDate_${row.source_line_hint}`} defaultValue="" required>
               <option value="">اختر تاريخًا</option>
               {(row.candidate_work_dates ?? []).map((date) => <option key={date} value={date}>{date}</option>)}
-            </select>
+            </Select>
           </label>
-          <p className="form-message form-error" role="note">لن يُربط الحدث بأي يوم تلقائيًا. اختر أحد الأيام المطابقة قبل التأكيد؛ ويعيد النظام فحص الاختيار وقت الحفظ.</p>
+          <Message tone="bad"  role="note">لن يُربط الحدث بأي يوم تلقائيًا. اختر أحد الأيام المطابقة قبل التأكيد؛ ويعيد النظام فحص الاختيار وقت الحفظ.</Message>
         </div>)}
         {unassignedRows.map((row) => <label className="checkbox-row" key={`${row.source_line_hint}-${row.source_event_key}`}>
-          <input type="checkbox" name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
-          <span>حفظ الحدث في قائمة «بلا تكليف» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
+          <Checkbox  name="selectedRow" value={JSON.stringify(row)} defaultChecked/>
+          <span>حفظ الحدث في قائمة «بلا بيانات عمل» للموظف <bdi>{row.employee_code}</bdi>؛ لن يُربط بيوم حتى تراجع الحالة.</span>
         </label>)}
-        <p className="field-hint">تُفسر الأحداث داخل نافذة يوم العمل المطابقة. وقد يتحول اليوم إلى حالة تحتاج مراجعة إذا اكتملت به بصمة ناقصة.</p>
+        <p className="field-hint">تُربط التسجيلات بيوم العمل المطابق. إذا أكمل التسجيل بصمة ناقصة، فقد يحتاج اليوم إلى مراجعة.</p>
         <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ حفظ الأحداث…' : 'تأكيد حفظ الأحداث المحددة'} pendingLabel="جارٍ حفظ الأحداث…" ariaDescribedBy={showOffline1 ? offlineHint1 : undefined}/></div>
       {showOffline1 && <OfflineSubmissionNotice id={offlineHint1} purpose="continuation" />}</form>}
       {showingCommitResult && ambiguousRows.length > 0 && <form action={commitAction} className="attendance-import-confirm-form attendance-import-ambiguous-retry"
         onSubmit={submitCommit} aria-busy={commitPending}>
         <input type="hidden" name="tenantId" value={tenantId}/>
-        <p className="form-message form-error" role="alert">{commit.state === 'failed' ? `تضمنت آخر نتيجة حفظ مؤكدة ${ambiguousRows.length} حدثًا يحتاج اختيار يوم. اختيارك محفوظ؛ تحقّق من السجل قبل إعادة التأكيد.` : `لم يُربط ${ambiguousRows.length} حدثًا لأن تاريخ العمل لم يُحدد. اختر تاريخًا من النتائج الحالية ثم أعد التأكيد.`}</p>
+        <Message tone="bad"  role="alert">{commit.state === 'failed' ? `تضمنت آخر نتيجة حفظ مؤكدة ${ambiguousRows.length} حدثًا يحتاج اختيار يوم. اختيارك محفوظ؛ تحقّق من السجل قبل إعادة التأكيد.` : `لم يُربط ${ambiguousRows.length} حدثًا لأن تاريخ العمل لم يُحدد. اختر تاريخًا من النتائج الحالية ثم أعد التأكيد.`}</Message>
         {ambiguousRows.map((row) => <div className="attendance-import-ambiguous" key={`${row.source_line_hint}-${row.source_event_key}`}>
           <input type="hidden" name="selectedRow" value={JSON.stringify(row)}/>
           <label className="attendance-import-work-date">{row.direction === 'in' ? 'دخول' : 'خروج'} · الموظف <bdi>{row.employee_code}</bdi> · اختر يوم العمل
-            <select name={`workDate_${row.source_line_hint}`} defaultValue="" required>
+            <Select name={`workDate_${row.source_line_hint}`} defaultValue="" required>
               <option value="">اختر تاريخًا</option>
               {(row.candidate_work_dates ?? []).map((date) => <option key={date} value={date}>{date}</option>)}
-            </select>
+            </Select>
           </label>
         </div>)}
         <div className="workspace-form-actions"><SubmitButton disabled={offline || (busy)} label={commitPending ? 'جارٍ إعادة الفحص والحفظ…' : 'تأكيد الأيام المختارة'} pendingLabel="جارٍ إعادة الفحص والحفظ…" ariaDescribedBy={showOffline2 ? offlineHint2 : undefined}/></div>
       {showOffline2 && <OfflineSubmissionNotice id={offlineHint2} purpose="continuation" />}</form>}
-    </section>}
+    </Panel>}
     </fieldset>
   </div>;
 }
 
 function emptyPreview(tenantId: string): PreviewState { return { tenantId, rows: [], ready: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, error: '', attempt: 0 }; }
 function emptyCommit(): ConfirmState { return { state: 'idle', accepted: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, rows: [], error: '', attempt: 0 }; }
-function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', ambiguous: 'يحتاج اختيار يوم العمل', unassigned: 'بلا تكليف', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
+function statusLabel(status: ImportRow['status']) { return ({ ready: 'جاهز', ambiguous: 'يحتاج اختيار يوم العمل', unassigned: 'بلا بيانات عمل', duplicate: 'مكرر', rejected: 'مرفوض', accepted: 'تم الحفظ' } as const)[status]; }
 function downloadRejectReport(rows: ImportRow[]) {
   const quote = (value: unknown) => {
     let text = String(value ?? '');

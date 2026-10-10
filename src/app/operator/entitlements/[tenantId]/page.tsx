@@ -1,3 +1,6 @@
+import { PageHeader, Badge, Disclosure } from '@/components/ui';
+import { Panel, Message } from '@/components/ui';
+import { Button, ButtonLink, Input, Select, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
 import { operatorEntitlementSnapshot, type OperatorEntitlement } from '@/lib/operator-read';
@@ -6,7 +9,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
 import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeTenantEntitlementAction } from '../actions';
 
 export const dynamic = 'force-dynamic';
@@ -20,18 +23,18 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   if (!isUuid(tenantId)) redirect('/operator/entitlements?state=invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [status, commercial, lifecycle] = await Promise.all([
     supabase.rpc('current_platform_operator_status'),
     supabase.rpc('current_operator_can_manage_commercial_access'),
     supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
-  if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة إتاحة الوحدات غير متاحة" />;
+  if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة خدمات الشركة غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل إتاحة الشركة" />;
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل تفعيل خدمات الشركة" />;
   const tenant = data;
-  if (!operatorEntitlementSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الإتاحة غير مكتملة" />;
+  if (!operatorEntitlementSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات تفعيل الخدمات غير مكتملة" />;
   const decisions = [...tenant.entitlements].sort((a, b) => Number(a.capability_key === 'hr.payroll') - Number(b.capability_key === 'hr.payroll'));
   const peopleAvailable = decisions.some((decision) => decision.capability_key === 'hr.people'
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
@@ -40,57 +43,57 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
 
   return <main className="app-shell">
     <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link>
-        <form action={signOutAction}><button className="secondary-button" type="submit">تسجيل الخروج</button></form></nav></header>
-    <section className="work-card operator-setting-detail" aria-labelledby="entitlements-title">
-      <p className="eyebrow">إتاحة الوحدات</p><h1 id="entitlements-title"><bdi>{tenant.display_name}</bdi></h1>
-      <p className={`entity-status ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</p>
+      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink>
+        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+    <Panel className="operator-setting-detail" aria-labelledby="entitlements-title">
+      <p className="eyebrow">خدمات الشركة</p><PageHeader id="entitlements-title" title={<><bdi>{tenant.display_name}</bdi></>} />
+      <Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge>
       <CompanyTaskLinks tenantId={tenantId} current="entitlements" lifecycle={operatorPermission(lifecycle)} commercial={true} />
-      {query.state === 'updated' && <p className="form-message" role="status">إتاحة الوحدات الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</p>}
-      {query.state && query.state !== 'updated' && <p className="form-message" role="alert">{stateText(query.state)}</p>}
-      <p className="field-hint">تحدد هذه القرارات ما سيتاح للشركة عند إطلاق وحدات الموارد البشرية والرواتب.</p>
+      {query.state === 'updated' && <Message tone="info"  role="status">خدمات الشركة الحالية معروضة أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</Message>}
+      {query.state && query.state !== 'updated' && <Message tone="info"  role="alert">{stateText(query.state)}</Message>}
+      <p className="field-hint">تحدد هذه الإعدادات الخدمات المتاحة للشركة.</p>
       <div className="operator-setting-grid">{decisions.map((decision) => <DecisionCard key={decision.capability_key} tenantId={tenantId} decision={decision} peopleAvailable={peopleAvailable} leaveAvailable={leaveAvailable} />)}</div>
-    </section><footer className="footer">منصة الأعمال · إتاحة الوحدات</footer>
+    </Panel>
   </main>;
 }
 
 function DecisionCard({ tenantId, decision, peopleAvailable, leaveAvailable }: { tenantId: string; decision: Decision; peopleAvailable: boolean; leaveAvailable: boolean }) {
   const people = decision.capability_key === 'hr.people';
-  const label = people ? 'إدارة الموارد البشرية' : decision.capability_key === 'hr.payroll' ? 'الرواتب' : decision.capability_key === 'hr.attendance' ? 'الحضور والسياسات' : decision.capability_key === 'hr.employee_finance' ? 'تمويل الموظفين' : 'إدارة الإجازات';
+  const label = people ? 'إدارة الموارد البشرية' : decision.capability_key === 'hr.payroll' ? 'الرواتب' : decision.capability_key === 'hr.attendance' ? 'الحضور والسياسات' : decision.capability_key === 'hr.employee_finance' ? 'سلف الموظفين' : 'إدارة الإجازات';
   const enabled = decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled;
-  const state = decision.status === 'conflict' || decision.status === 'future_conflict' ? 'تحتاج مراجعة'
+  const state = decision.status === 'conflict' || decision.status === 'future_conflict' ? 'تحتاج إلى مراجعة'
     : enabled ? 'متاحة' : decision.is_granted && !decision.evaluator_enabled ? 'غير فعّالة' : 'غير متاحة';
   return <article className="operator-setting-card" aria-labelledby={`${decision.capability_key}-title`}>
     <h2 id={`${decision.capability_key}-title`}>{label}</h2>
-    <p className={`entity-status ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</p>
+    <Badge as="p" className={` ${enabled ? 'is-active' : 'is-inactive'}`}>{state}</Badge>
     {decision.status === 'missing' && <p className="field-hint">{decision.last_decision_valid_until
-      ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار إتاحة جديد.`
-      : 'لم تُتح هذه الوحدة للشركة بعد.'}</p>}
-    {decision.status === 'conflict' && <p className="form-message" role="alert">تعارض في القرارات السارية؛ الإتاحة مغلقة حتى إصلاح البيانات.</p>}
-    {decision.status === 'future_conflict' && <p className="form-message" role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</p>}
+      ? `انتهى آخر قرار في ${dateLabel(decision.last_decision_valid_until)}. يلزم قرار تفعيل جديد.`
+      : 'لم تُفعّل هذه الخدمة للشركة بعد.'}</p>}
+    {decision.status === 'conflict' && <Message tone="info"  role="alert">توجد إعدادات متعارضة لهذه الخدمة. تبقى غير متاحة حتى يصححها مسؤول التشغيل.</Message>}
+    {decision.status === 'future_conflict' && <Message tone="info"  role="alert">يوجد قرار مستقبلي متعارض؛ عالجه عبر مسار الصيانة.</Message>}
     {decision.capability_key === 'hr.payroll' && !peopleAvailable &&
-      <p className="field-hint">لإتاحة الرواتب، <a href="#hr.people-title">أتح إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
-    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">إتاحة تمويل الموظفين مستقلة؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الإتاحة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول المخول.</p>}
-    {decision.capability_key === 'hr.employee_finance' && !peopleAvailable && <p className="field-hint">أتح إدارة الموارد البشرية أولًا لإنشاء سلف الموظفين.</p>}
-    {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لإتاحة الإجازات، أتح إدارة الموارد البشرية أولًا.</p>}
-    {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على إتاحة الحضور.</p>}
+      <p className="field-hint">لتفعيل الرواتب، <a href="#hr.people-title">فعّل إدارة الموارد البشرية أولًا</a>. يمكنك إيقاف الرواتب من هنا إذا لزم.</p>}
+    {decision.capability_key === 'hr.employee_finance' && <p className="field-hint">تفعيل سلف الموظفين مستقل؛ جدولة الخصم تحتاج فترات رواتب محفوظة. إيقاف الخدمة يمنع التزامات جديدة ويُبقي تسوية الأرصدة القائمة للمسؤول صاحب الصلاحية.</p>}
+    {decision.capability_key === 'hr.employee_finance' && !peopleAvailable && <p className="field-hint">فعّل إدارة الموارد البشرية أولًا لإنشاء سلف الموظفين.</p>}
+    {decision.capability_key === 'hr.leave' && !peopleAvailable && <p className="field-hint">لتفعيل الإجازات، فعّل إدارة الموارد البشرية أولًا.</p>}
+    {decision.capability_key === 'hr.leave' && leaveAvailable && <p className="field-hint">الإجازات لا تعتمد على تفعيل الحضور.</p>}
     {decision.valid_from && <p className="field-hint">ساري من {dateLabel(decision.valid_from)}</p>}
     {decision.valid_until && <p className="field-hint">آخر يوم سريان: {new Date(new Date(decision.valid_until).getTime() - 1).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' })}</p>}
-    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <details className="operator-grant-form">
-      <summary className="secondary-button">{decision.status === 'missing' ? `تحديد إتاحة ${label}` : `تغيير إتاحة ${label}`}</summary>
-      <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ إتاحة ${label}`}>
+    {decision.status !== 'conflict' && decision.status !== 'future_conflict' && <Disclosure summary={<>{decision.status === 'missing' ? `تحديد حالة خدمة ${label}` : `تغيير حالة خدمة ${label}`}</>} className="operator-grant-form">
+
+      <OperatorActionForm action={changeTenantEntitlementAction} errorMessages={entitlementErrors} label={`حفظ حالة خدمة ${label}`}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="capability" value={decision.capability_key} />
-        <label htmlFor={`${decision.capability_key}-decision`}>القرار</label>
-        <select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
-          <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>إتاحة</option><option value="deny">منع</option>
-        </select>
+        <label htmlFor={`${decision.capability_key}-decision`}>حالة الخدمة</label>
+        <Select id={`${decision.capability_key}-decision`} name="decision" defaultValue={decision.is_granted && (people || decision.capability_key === 'hr.attendance' || peopleAvailable) ? 'grant' : 'deny'}>
+          <option value="grant" disabled={!people && decision.capability_key !== 'hr.attendance' && !peopleAvailable}>تفعيل</option><option value="deny">منع</option>
+        </Select>
         <label htmlFor={`${decision.capability_key}-expiry`}>آخر يوم سريان (اختياري، بتوقيت القاهرة)</label>
-        <input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
+        <Input id={`${decision.capability_key}-expiry`} name="expiresOn" type="date" />
         <label htmlFor={`${decision.capability_key}-reason`}>سبب التغيير</label>
-        <textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
+        <Textarea id={`${decision.capability_key}-reason`} name="reason" required minLength={3} maxLength={500} rows={3} />
       </OperatorActionForm>
-    </details>}
+    </Disclosure>}
   </article>;
 }
 
@@ -98,20 +101,20 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function dateLabel(value: string) { return new Date(value).toLocaleDateString(ARABIC_DISPLAY_LOCALE, { timeZone: 'Africa/Cairo', numberingSystem: 'latn', day: 'numeric', month: 'long', year: 'numeric' }); }
 function stateLabel(state: string) { return state === 'active' ? 'نشطة' : state === 'suspended' ? 'معلّقة' : state === 'archived' ? 'مؤرشفة' : 'غير متاحة'; }
 function stateText(state: string) {
-  return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع الإتاحة الحالية قبل إجراء آخر.';
+  return Object.hasOwn(entitlementErrors, state) ? entitlementErrors[state] : 'نتيجة الإجراء غير مؤكدة. راجع حالة الخدمات الحالية قبل إجراء آخر.';
 }
 const entitlementErrors: Record<string, string> = {
-    invalid: 'تحقق من بيانات القرار.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
-    'finance-people-required': 'أتح إدارة الموارد البشرية أولًا، واجعل نهاية إتاحة تمويل الموظفين ضمن فترة إتاحتها.',
-    'finance-first': 'أوقف إتاحة تمويل الموظفين أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية. لا تُسقط الأرصدة القائمة.',
-    'leave-people-required': 'أتح إدارة الموارد البشرية أولًا، وتأكد أن نهاية إتاحة الإجازات لا تتجاوز نهايتها.',
-    forbidden: 'لم تعد لديك صلاحية إدارة الإتاحة.', 'not-found': 'الشركة غير متاحة.',
-    'people-required': 'أتح إدارة الموارد البشرية أولًا، واجعل نهاية إتاحة الرواتب والإجازات ضمن فترة إتاحتها.',
-    'payroll-first': 'أوقف إتاحة الرواتب أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
-    'leave-first': 'أوقف إتاحة الإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
-    'people-children-first': 'أوقف إتاحة الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إنهاء الموارد البشرية.',
+    invalid: 'تحقق من بيانات حالة الخدمة.', reason: 'أدخل سببًا من 3 إلى 500 حرف.', setup: 'إعداد Supabase غير مكتمل.',
+    'finance-people-required': 'فعّل إدارة الموارد البشرية أولًا، واجعل نهاية تفعيل سلف الموظفين ضمن فترة تفعيلها.',
+    'finance-first': 'أوقف تفعيل سلف الموظفين أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية. لا تُسقط الأرصدة القائمة.',
+    'leave-people-required': 'فعّل إدارة الموارد البشرية أولًا، وتأكد أن نهاية تفعيل الإجازات لا تتجاوز نهايتها.',
+    forbidden: 'لم تعد لديك صلاحية إدارة تفعيل الخدمات.', 'not-found': 'الشركة غير متاحة.',
+    'people-required': 'فعّل إدارة الموارد البشرية أولًا، واجعل نهاية تفعيل الرواتب والإجازات ضمن فترة تفعيلها.',
+    'payroll-first': 'أوقف تفعيل الرواتب أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
+    'leave-first': 'أوقف تفعيل الإجازات أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
+    'people-children-first': 'أوقف تفعيل الرواتب والإجازات أولًا أو اجعلها تنتهي قبل إيقاف خدمات الموارد البشرية.',
     'future-conflict': 'يوجد قرار مستقبلي؛ لم يتغير أي سجل.', conflict: 'توجد قرارات فعّالة متعارضة؛ لم يتغير شيء.',
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
-    failed: 'لم تتأكد نتيجة تحديث القرار. راجع إتاحة الوحدات الحالية قبل إجراء آخر.',
+    failed: 'لم تتأكد نتيجة تحديث حالة الخدمة. راجع خدمات الشركة الحالية قبل إجراء آخر.',
 };
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><section className="auth-card"><h1>{title}</h1><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><Link className="secondary-button" href="/operator/entitlements">قائمة الشركات</Link></section></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink></Panel></main>; }

@@ -1,4 +1,6 @@
 'use client';
+import { Message, FileInput, Checkbox } from '@/components/ui';
+import { Button, Input, Select, Textarea } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -69,30 +71,31 @@ export function BrandingEditor({
               : <span className="branding-preview-mark" aria-hidden="true">م</span>}
           <strong><bdi>{name || baseName}</bdi></strong>
         </div>
-        <p className="field-hint">سيظهر الاسم واللون في مساحة الشركة. يظل الاسم القانوني للكيان منفصلًا.</p>
+        <p className="field-hint">هكذا سيظهر اسم الشركة وشعارها لفريقك. الاسم القانوني المسجل لا يتغير.</p>
       </section>
 
-      {!canManage ? <p className="form-message" role="status">تغيير الهوية متاح لمسؤول الشركة فقط.</p> : (
+      {!canManage ? <Message tone="info"  role="status">تغيير الهوية متاح لمسؤول الشركة فقط.</Message> : (
         <form onSubmit={submit} className="auth-form" aria-busy={pending}>
           <input type="hidden" name="tenantId" value={tenantId} />
-          <label htmlFor="tenant-brand-name">اسم العرض</label>
-          <input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
+          <label htmlFor="tenant-brand-name">اسم الشركة الظاهر للفريق</label>
+          <Input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
             onChange={(event) => setName(event.currentTarget.value)} />
-          <p className="field-hint">اتركه فارغًا لاستخدام اسم الشركة الحالي. لا يغيّر الاسم القانوني للكيان.</p>
+          <p className="field-hint">اتركه فارغًا لإبقاء اسم الشركة الحالي. لا يغيّر الاسم القانوني المسجل.</p>
 
           <label htmlFor="tenant-brand-color">اللون الرئيسي</label>
-          <select id="tenant-brand-color" name="color" value={color}
+          <Select id="tenant-brand-color" name="color" value={color}
             onChange={(event) => setColor(event.currentTarget.value as BrandColor)}>
             <option value="teal">فيروزي</option>
             <option value="blue">أزرق</option>
             <option value="violet">بنفسجي</option>
             <option value="emerald">أخضر</option>
-          </select>
+          </Select>
 
+          <div className="branding-color-preview" aria-label="معاينة ألوان الهوية">{(['teal','blue','violet','emerald'] as const).map(key => <div key={key} data-brand={key} aria-label={key === 'teal' ? 'فيروزي' : key === 'blue' ? 'أزرق' : key === 'violet' ? 'بنفسجي' : 'أخضر'}><span className="branding-color-dot" /><strong>منصة الأعمال</strong><span className="branding-color-sample">إجراء أساسي</span></div>)}</div>
           <label htmlFor="tenant-brand-logo">الشعار</label>
           <p className="field-hint" id="tenant-brand-logo-help">اختر صورة PNG أو JPG أو WebP بحجم لا يتجاوز 2 ميجابايت.</p>
           <div className="branding-file-picker">
-            <input ref={fileInput} className="branding-file-input" id="tenant-brand-logo" name="logo" type="file"
+            <FileInput ref={fileInput} className="branding-file-input" id="tenant-brand-logo" name="logo"
               accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp"
               aria-describedby="tenant-brand-logo-help tenant-brand-logo-selection"
             onChange={(event) => {
@@ -102,25 +105,25 @@ export function BrandingEditor({
               setPreviewUrl(nextFile ? URL.createObjectURL(nextFile) : null);
             }} />
             <label className="secondary-button branding-file-trigger" htmlFor="tenant-brand-logo">اختيار ملف الشعار</label>
-            {file && <button className="secondary-button branding-file-clear" type="button" onClick={clearSelectedFile}
-              aria-label={`إلغاء اختيار ملف ${file.name}`}>إلغاء الاختيار</button>}
+            {file && <Button variant="ghost" className="branding-file-clear" type="button" onClick={clearSelectedFile}
+              aria-label={`إلغاء اختيار ملف ${file.name}`}>إلغاء الاختيار</Button>}
             <span className="branding-file-name" id="tenant-brand-logo-selection" role="status" aria-live="polite" aria-atomic="true">
               {file?.name ?? (hasStoredLogo ? 'سيبقى الشعار الحالي كما هو.' : 'لم يتم اختيار ملف.')}
             </span>
           </div>
-          {hasStoredLogo && <label className="check-option"><input name="removeLogo" type="checkbox" checked={removeLogo}
+          {hasStoredLogo && <label className="check-option"><Checkbox name="removeLogo"  checked={removeLogo}
             disabled={Boolean(file)} onChange={(event) => setRemoveLogo(event.currentTarget.checked)} />إزالة الشعار من العرض</label>}
-          {hasStoredLogo && !logoUrl && <p className="form-message" role="status">تعذرت معاينة الشعار الحالي؛ يمكنك استبداله أو إزالة عرضه.</p>}
+          {hasStoredLogo && !logoUrl && <Message tone="info"  role="status">تعذرت معاينة الشعار الحالي؛ يمكنك استبداله أو إزالة عرضه.</Message>}
           {hasStoredLogo && <p className="field-hint">سيبقى الشعار السابق محفوظًا عند تغييره أو إزالته من العرض.</p>}
 
           <label htmlFor="tenant-brand-reason">سبب التغيير</label>
-          <textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
+          <Textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
             value={reason} onChange={(event) => setReason(event.currentTarget.value)} />
-          {error && <p className="form-message form-error" role="alert">{error}</p>}
-          <button className="primary-button" type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
+          {error && <Message tone="bad"  role="alert">{error}</Message>}
+          <Button variant="solid"  type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>
             {pending && <span className="button-spinner" aria-hidden="true" />}
             {pending ? 'جارٍ الحفظ…' : 'حفظ الهوية'}
-          </button>
+          </Button>
         {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>
       )}
     </div>

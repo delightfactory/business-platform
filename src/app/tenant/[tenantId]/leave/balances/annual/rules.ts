@@ -14,10 +14,10 @@ export function readQuote(data:unknown):Quote|null{
 }
 export function annualError(message:string):string{
  if(message.includes('review_conflict'))return 'تغيّر الإعداد أو الحساب منذ المراجعة. أعد عرض الحساب قبل التأكيد.';
- if(message.includes('manual_balance'))return 'هذا الحساب يحتوي على رصيد افتتاحي أو منحة سنوية يدوية. أكمل تعديل رصيده يدويًا لهذه الفترة؛ الحساب التلقائي يبدأ في فترة بلا افتتاحي أو منحة يدوية، لمنع تكرار الاستحقاق.';
+ if(message.includes('manual_balance'))return 'هذا الحساب يحتوي على رصيد افتتاحي أو استحقاق سنوي مسجل يدويًا. أكمل تعديل رصيده يدويًا لهذه الفترة؛ الحساب التلقائي يبدأ في فترة دون رصيد افتتاحي أو استحقاق سنوي يدوي، لمنع تكرار الاستحقاق.';
  if(message.includes('reduction_requires_review'))return 'الناتج أقل من الاستحقاق المسجل سابقًا. يلزم تصحيح موثّق من HR؛ لن يُخصم شيء تلقائيًا.';
  if(message.includes('employment_history'))return 'توجد أكثر من علاقة عمل خلال الفترة. يلزم مراجعة الخدمة من HR قبل حسابها تلقائيًا.';
- if(message.includes('not_eligible'))return 'لم يكتمل حدّ الخدمة المطلوب بعد. لم تُسجّل منحة.';
+ if(message.includes('not_eligible'))return 'لم يكتمل حدّ الخدمة المطلوب بعد. لم يُسجّل استحقاق.';
  if(message.includes('type_requires'))return 'الحساب السنوي يتطلب نوع إجازة مدفوعًا، برصيد، وأساسه أيام العمل. راجع إعدادات النوع.';
  if(message.includes('rates_invalid')||message.includes('rate_below'))return 'راجع تواريخ الفئات ومراجعها وقيمها؛ لا يجوز أن تقل عن قاعدة الشركة في أي يوم.';
  if(message.includes('forbidden'))return 'ليست لديك صلاحية تنفيذ هذا الإجراء.';

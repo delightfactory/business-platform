@@ -82,7 +82,7 @@ function brandingErrorText(code: string) {
   const messages: Record<string, string> = {
     invalid: 'تحقق من الاسم واللون والصورة المختارة.',
     reason: 'اكتب سببًا من 3 إلى 500 حرف.',
-    setup: 'إعداد الاتصال غير مكتمل.',
+    setup: 'تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم.',
     forbidden: 'تغيير الهوية متاح لمسؤول الشركة فقط.',
     unavailable: 'الشركة غير متاحة حاليًا.',
     file: 'اختر صورة PNG أو JPG أو WebP لا يتجاوز حجمها 2MB.',

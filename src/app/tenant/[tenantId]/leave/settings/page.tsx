@@ -1,6 +1,7 @@
+import { Badge, Button, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { GATE_TEXT } from './access-gate';
 import { SettingsLink } from './SettingsLink';
 import { StatusCard } from './StatusCard';
@@ -35,7 +36,7 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
     const gateText = GATE_TEXT['no-client'];
     return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
   }
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
 
   const { data, error } = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
@@ -93,68 +94,62 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
   const onLaterPage = afterName !== '' || afterId !== '';
 
   return <PageFrame footer="الموارد البشرية">
-    <header className="workspace-page-heading"><div>
-      <p className="eyebrow">الموارد البشرية</p>
-      <h1>إعدادات الإجازات</h1>
-      <p>ابحث عن الجهة القانونية لفتح تقويماتها وسنوات إجازاتها وأنواع إجازاتها. كل تغيير يُسجَّل بسبب ومصدر.</p>
-    </div></header>
+    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>ابحث عن الجهة القانونية لفتح تقويماتها وسنوات إجازاتها وأنواع إجازاتها. كل تغيير يُسجَّل بسبب ومصدر.</>} />
     <div className={styles.notices}>
-      {!access.canManage && <p className="form-message" role="status">
+      {!access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إعدادات الإجازات دون تعديلها.
-      </p>}
-      {!access.newWorkEnabled && <p className="form-message" role="status">
+      </Message>}
+      {!access.newWorkEnabled && <Message tone="info"  role="status">
         خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن إنشاء إعدادات جديدة أو إصدارات لاحقة.
         تبقى الإعدادات المحفوظة قابلة للمراجعة.
-      </p>}
+      </Message>}
     </div>
 
-    <section className="workspace-records-panel" aria-labelledby="leave-employers-title">
+    <Panel  aria-labelledby="leave-employers-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-employers-title">الجهات القانونية</h2>
-          <p>ابحث بالاسم لفتح إعدادات الجهة. تظهر الجهات الموقوفة كذلك للاطلاع على سجلها دون تعديل جديد.</p>
+          <HelpNote label="ما الجهات التي تظهر هنا؟"><p>تظهر الجهات النشطة والموقوفة. يمكنك الاطلاع على سجل الجهة الموقوفة؛ لا تتاح إضافة إعدادات جديدة لها.</p></HelpNote>
         </div>
       </div>
       <div className={styles.panelBody}>
         <form className={styles.filterBar} method="get" action={path}>
-          <label htmlFor="employer-search">بحث باسم الجهة</label>
-          <input id="employer-search" type="search" name="q" defaultValue={q} maxLength={120}
-            placeholder="اكتب جزءًا من اسم الشركة…" />
+          <Field id="employer-search" label={<>بحث باسم الجهة</>}><Input id="employer-search" type="search" name="q" defaultValue={q} maxLength={120}
+            placeholder="اكتب جزءًا من اسم الشركة…" /></Field>
           <div className={styles.rowActions}>
-            <button className="primary-button" type="submit">بحث</button>
-            {q !== '' && <SettingsLink className="secondary-button" href={path}>مسح البحث</SettingsLink>}
+            <Button variant="solid"  type="submit">بحث</Button>
+            {q !== '' && <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={path}>مسح البحث</SettingsLink>}
           </div>
         </form>
 
         {employerPage.items.length === 0
-          ? <div className="empty-state"><h2>لا توجد نتائج</h2>
-            <p>{q
+          ? <div ><EmptyState title={<>لا توجد نتائج</>} description={<>{q
               ? <>لا توجد جهات تطابق <bdi>{q}</bdi> في هذه الشركة.</>
               : 'لا توجد جهات قانونية في هذه الشركة.'}
-              {' '}جرّب كلمة أخرى أو امسح البحث.</p></div>
-          : <ul className="record-list">{employerPage.items.map((employer) => <li className="record-card" key={employer.id}>
+              {' '}جرّب كلمة أخرى أو امسح البحث.</>} /></div>
+          : <ul className="record-list">{employerPage.items.map((employer) => <RecordCard  key={employer.id}>
             <div className="record-main">
               <div className="record-title-row">
                 <h3>{employer.display_name}</h3>
-                <span className={`entity-status ${employer.is_active ? 'is-active' : 'is-inactive'}`}>
-                  {employer.is_active ? 'نشطة' : 'موقوفة'}</span>
+                <Badge className={`entity-status ${employer.is_active ? 'is-active' : 'is-inactive'}`}>
+                  {employer.is_active ? 'نشطة' : 'موقوفة'}</Badge>
               </div>
               <p className="record-meta">{employer.is_active
                 ? 'متاحة للإعداد والتعديل.'
                 : 'موقوفة: متاحة للاطلاع على إعداداتها السابقة دون تعديل جديد.'}</p>
             </div>
-            <SettingsLink className="secondary-button"
+            <SettingsLink className="ui-button ui-button-ghost ui-button-md"
               href={`/tenant/${tenantId}/leave/settings/${employer.id}`}>فتح الإعدادات</SettingsLink>
-          </li>)}</ul>}
+          </RecordCard>)}</ul>}
 
         {(employerPage.hasMore || onLaterPage) && <div className={styles.rowActions}>
           {employerPage.hasMore && employerPage.nextAfterName && employerPage.nextAfterId &&
-            <SettingsLink className="primary-button" href={nextHref}>الصفحة التالية</SettingsLink>}
-          {onLaterPage && <SettingsLink className="secondary-button" href={firstHref}>النتائج من البداية</SettingsLink>}
+            <SettingsLink className="ui-button ui-button-solid ui-button-md" href={nextHref}>الصفحة التالية</SettingsLink>}
+          {onLaterPage && <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={firstHref}>النتائج من البداية</SettingsLink>}
         </div>}
       </div>
-    </section>
+    </Panel>
 
-    <SettingsLink className="secondary-button" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</SettingsLink>
+    <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}`}>العودة إلى مساحة الشركة</SettingsLink>
   </PageFrame>;
 }

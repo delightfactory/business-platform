@@ -1,16 +1,16 @@
 'use client';
 
-import Link from 'next/link';
-
+import { Panel, PageHeader } from '@/components/ui';
+import { Button, ButtonLink } from '@/components/ui';
 export default function PageError({ retry }: { retry: () => void }) {
   return <main className="app-shell">
-    <section className="auth-card" aria-labelledby="page-error-title">
-      <h1 id="page-error-title">تعذر عرض الصفحة</h1>
+    <Panel className="auth-card" aria-labelledby="page-error-title">
+      <PageHeader id="page-error-title" title={<>تعذر عرض الصفحة</>} />
       <p>حاول فتح الصفحة مرة أخرى. إذا كنت قد أرسلت طلبًا ولم تتأكد نتيجته، راجع سجله قبل إرسال طلب آخر.</p>
       <div className="workspace-form-actions">
-        <button type="button" className="primary-button" onClick={retry}>إعادة فتح الصفحة</button>
-        <Link className="secondary-button" href="/">العودة للرئيسية</Link>
+        <Button variant="solid" type="button"  onClick={retry}>إعادة فتح الصفحة</Button>
+        <ButtonLink variant="ghost"  href="/">العودة للرئيسية</ButtonLink>
       </div>
-    </section>
+    </Panel>
   </main>;
 }

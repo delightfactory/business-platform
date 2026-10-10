@@ -9,8 +9,8 @@ const code=ts.transpileModule(readFileSync(new URL('./rules.ts',import.meta.url)
 const context=createContext({exports:{}});runInContext(code,context);
 const {reportMoney,csvCell,csvDocument}=context.exports;
 test('large numeric(18,2) values preserve their exact cents without a Number conversion',()=>{
- assert.equal(reportMoney('9999999999999999.99'),'9٬999٬999٬999٬999٬999٫99 ج.م.');
- assert.equal(reportMoney('-1234.50'),'-1٬234٫50 ج.م.');
+ assert.equal(reportMoney('9999999999999999.99'),'9,999,999,999,999,999.99 ج.م.');
+ assert.equal(reportMoney('-1234.50'),'-1,234.50 ج.م.');
  assert.equal(reportMoney(null),'غير متاح');
  assert.equal(reportMoney('NaN'),'غير مكتمل');
 });

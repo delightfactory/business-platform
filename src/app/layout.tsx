@@ -4,15 +4,14 @@ import { cookies } from 'next/headers';
 import { ThemeProvider } from '@/components/theme-preference';
 import { themePreference } from '@/lib/theme';
 import { PwaFoundation } from '@/components/pwa-foundation';
-import "@fontsource/cairo/400.css";
-import "@fontsource/cairo/600.css";
-import "@fontsource/cairo/700.css";
+import "../styles/fonts.css";
 import "./globals.css";
+import "../components/ui/ui.css";
 import "./workspace.css";
 
 export const metadata: Metadata = {
-  title: "منصة الأعمال | أساس التطوير",
-  description: "الأساس التقني لمنصة الأعمال قيد التطوير.",
+  title: "منصة الأعمال",
+  description: "مساحة عمل واحدة لإدارة الناس والوقت والرواتب.",
 };
 
 export const viewport: Viewport = {

@@ -73,3 +73,36 @@
  .employerControl form { padding: 0; }
  .employerControl p { margin-block: .35rem; }
 }
+.workspace{padding:0;gap:24px;color:var(--ink)}.workspace header{border:0;padding:0}.workspace h1{font:600 clamp(22px,2.2vw,28px)/1.4 var(--f-head);margin:0}.workspace h2{font:600 16px/1.5 var(--f-head)}.workspace header>p{color:var(--muted);font-size:13px;margin:6px 0}.card,.panel,.payslip{border-color:var(--line);border-radius:var(--r-card);background:var(--surface);box-shadow:var(--sh-1);padding:20px}.selector{border:1px solid var(--line);border-radius:var(--r-tile);background:var(--surface);padding:16px}.selector button,.workspace form>button{background:var(--brand);color:var(--brand-ink);border-radius:var(--r-ctl);min-height:40px;font-size:14px;font-weight:600}.selector select,.selector input{border-color:var(--line-2);border-radius:var(--r-ctl);min-height:44px}.totals{gap:16px}.totals div{border-color:var(--line);border-radius:var(--r-tile);padding:16px}.totals dt{color:var(--muted);font-size:12px}.totals dd{font:600 24px/1.5 var(--f-head);color:var(--money);font-variant-numeric:tabular-nums;margin-top:6px}.tableRegion{border-color:var(--line);border-radius:var(--r-card)}.tableRegion th,.tableRegion td{padding:14px 16px;border-color:var(--line);font-size:13px}.tableRegion thead{background:var(--surface-2);color:var(--muted)}.tableRegion tbody th{font-weight:600}.tableRegion td bdi{font-variant-numeric:tabular-nums;color:var(--money)}.tableRegion th[scope=row]{min-width:0}.payslip dd{color:var(--money);font-variant-numeric:tabular-nums}.choices li{border-color:var(--line);border-radius:var(--r-tile)}
+@media(max-width:859px){.tableRegion{border:0;overflow:visible;background:transparent}.tableRegion table,.tableRegion tbody{display:block;width:100%}.tableRegion thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.tableRegion tbody{display:grid;gap:12px}.tableRegion tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r-tile);padding:16px}.tableRegion th[scope=row]{grid-column:1/-1;font:600 14px/1.6 var(--f-head);padding:0 0 12px;border-block-end:1px solid var(--line)}.tableRegion td{padding:0;border:0;white-space:normal;min-width:0;overflow-wrap:anywhere;display:flex;flex-direction:column;gap:4px}.tableRegion td::before{content:attr(data-label);color:var(--muted);font-size:11px}.tableRegion td:last-child{grid-column:1/-1;padding-top:8px}.tableRegion td dl{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px}.tableRegion td dd{margin:0}.totals{grid-template-columns:repeat(2,minmax(0,1fr))}.totals dd{font-size:20px}}@media print{.tableRegion{overflow:visible;border:1px solid #111}.tableRegion table{display:table}.tableRegion thead{position:static;display:table-header-group;width:auto;height:auto;clip:auto;white-space:normal}.tableRegion tbody{display:table-row-group}.tableRegion tr{display:table-row;padding:0}.tableRegion th,.tableRegion td{display:table-cell;padding:8px;border:1px solid #111}.tableRegion td::before{display:none}.totals dd,.payslip dd,.tableRegion td bdi{color:#111}.workspace{padding:0}}
+
+@media screen{
+ .workspace{max-width:none;padding:0;gap:20px;color:var(--ink)}
+ .workspace header{border:0;padding:0}.workspace h1{font:600 26px/1.4 var(--f-head)}
+ .card,.panel,.payslip,.notice{padding:20px;border-color:var(--line);border-radius:var(--r-card);background:var(--surface)}
+ .selector{border:1px solid var(--line);border-radius:var(--r-tile);background:var(--surface-2);padding:16px;gap:12px}
+ .selector label{flex:1 1 190px}.selector :is(input,select){width:100%;border-color:var(--line-2);border-radius:var(--r-ctl);font:inherit}
+ .selector button,.workspace form>button{background:var(--brand);color:var(--brand-ink);border-radius:var(--r-ctl);min-height:44px;font:500 14px var(--f-body)}
+ .totals{gap:12px}.totals div{background:var(--surface);border-color:var(--line);border-radius:var(--r-tile)}
+ .totals dt{font-size:12px;color:var(--muted)}.totals dd{font:600 22px/1.5 var(--f-head);color:var(--money)}
+ .tableRegion{border-color:var(--line);border-radius:var(--r-tile)}.tableRegion th{font-size:12px;background:var(--surface-2);color:var(--muted)}
+ .tableRegion td{font-size:13px}.tableRegion :is(th,td){padding:12px;border-color:var(--line)}
+ .choices li{border-color:var(--line);border-radius:var(--r-tile);background:var(--surface)}
+}
+@media screen and (max-width:640px){
+ .workspace{gap:16px}.selector{grid-template-columns:minmax(0,1fr);padding:14px}.selector button{width:100%}
+ .card,.panel,.payslip,.notice{padding:16px}.totals{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .totals div{min-width:0;padding:12px}.totals dd{font-size:18px;overflow-wrap:anywhere}
+ .actions{gap:8px}.actions > :is(a,button){width:100%;white-space:normal;text-align:start;justify-content:flex-start}
+}
+
+/* Keep the report visible; selection controls remain available on demand. */
+.reportOptions { min-width:0; }
+.reportOptions > :global(.ui-disclosure-content) { padding-block-start:12px; }
+@media screen {
+ .actions.sectionNav { gap:8px; }
+ .actions.sectionNav > a { width:auto; padding:8px 12px; min-height:44px; display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:var(--r-ctl); background:var(--surface-2); font-size:13px; text-decoration:none; }
+}
+@media print { .reportOptions { display:none; } }
+
+@media screen { .notice.reportWarning { background:var(--warn-bg); color:var(--warn-text); border-color:var(--warn); } }

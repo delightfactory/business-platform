@@ -1,3 +1,4 @@
+import { Panel, Message, RecordCard, Badge, HelpNote } from '@/components/ui';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { PendingLink } from '../pending-link';
 import { formatInstant } from '../states';
@@ -52,12 +53,12 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
   currentUserId: string;
 }) {
   const retryHref = historyHref(tenantId, requestId, requestedOffset);
-  return <section className="work-card task-page" aria-labelledby="cancellation-history-title">
+  return <Panel className="task-page" aria-labelledby="cancellation-history-title">
     <h2 id="cancellation-history-title">سجل طلبات الإلغاء</h2>
-    <p className="field-hint">طلبات الإلغاء وقرارات الموارد البشرية، من الأقدم إلى الأحدث. الحالات أدناه هي وقت كل حركة؛ حالة الإجازة الحالية أعلى الصفحة.</p>
+    <HelpNote label="كيف أقرأ سجل الإلغاء؟"><p>السجل مرتب من الأقدم إلى الأحدث، ويعرض الحالة وقت كل إجراء. حالة الإجازة الحالية تظهر أعلى الصفحة.</p></HelpNote>
 
-    {offsetInvalid ? <p className="form-message form-error" role="alert">رقم صفحة سجل الإلغاء غير صالح.{' '}
-      <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></p>
+    {offsetInvalid ? <Message tone="bad"  role="alert">رقم صفحة سجل الإلغاء غير صالح.{' '}
+      <PendingLink href={historyHref(tenantId, requestId, 0)}>العودة إلى أول صفحة</PendingLink></Message>
       : !view.ok ? <div className="empty-state" role="alert">
         <h2>تعذر تحميل سجل طلبات الإلغاء</h2>
         <p>{historyErrorText(view.code)} تعذر التحقق من أحدث حالة لطلب الإلغاء. قد تكون حالة طلب الإلغاء تغيّرت. أعد تحميل
@@ -65,7 +66,7 @@ export function CancellationHistorySection({ tenantId, requestId, view, requeste
         <PendingLink className="secondary-button" href={retryHref}>إعادة المحاولة</PendingLink>
       </div>
         : <HistoryPage tenantId={tenantId} requestId={requestId} page={view.page} currentUserId={currentUserId} />}
-  </section>;
+  </Panel>;
 }
 
 function HistoryPage({ tenantId, requestId, page, currentUserId }: {
@@ -88,11 +89,11 @@ function HistoryPage({ tenantId, requestId, page, currentUserId }: {
       <p>لم يُرسل أي طلب إلغاء لهذا الطلب بعد، ولا توجد قرارات محفوظة عليه.</p>
     </div>;
   return <>
-    <ul className="record-list">{page.items.map((event) => <li className="record-card" key={event.id}>
+    <ul className="record-list">{page.items.map((event) => <RecordCard  key={event.id}>
       <div className="record-main">
         <div className="record-title-row"><h3>{cancellationEventLabel(event.event_key)}</h3>
-          <span className={`entity-status ${cancellationStateClass(event.to_state)}`}>
-            بعد هذه الحركة: {cancellationStateLabel(event.to_state)}</span></div>
+          <Badge className={` ${cancellationStateClass(event.to_state)}`}>
+            بعد هذه الحركة: {cancellationStateLabel(event.to_state)}</Badge></div>
         <p className="record-meta">{event.from_state
           ? <>من {cancellationStateLabel(event.from_state)} إلى {cancellationStateLabel(event.to_state)}</>
           : <>الحالة بعد الحركة: {cancellationStateLabel(event.to_state)}</>}
@@ -102,7 +103,7 @@ function HistoryPage({ tenantId, requestId, page, currentUserId }: {
         {event.time_reconciliation_required && <p className="record-meta">
           يتطلب هذا القرار مراجعة سجل الحضور المرتبط بأيام الطلب لدى فريق الموارد البشرية.</p>}
       </div>
-    </li>)}</ul>
+    </RecordCard>)}</ul>
     <HistoryNav tenantId={tenantId} requestId={requestId} page={page} />
   </>;
 }

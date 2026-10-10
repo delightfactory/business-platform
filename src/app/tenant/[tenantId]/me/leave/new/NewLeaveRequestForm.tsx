@@ -1,7 +1,9 @@
 'use client';
 
+import { Message, Button, Checkbox } from '@/components/ui';
 import { useActionState, useId, useRef, useState, useTransition, type ChangeEvent, type FormEvent } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { DateInput, Disclosure, Select, Textarea } from '@/components/ui';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { loadLeaveRequestOptionsAction, submitLeaveRequestAction } from '../actions';
 import {
@@ -121,37 +123,37 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
 
   return <>
     <div className={styles.formBlock}>
-      <h2 className={styles.formTitle}>1 · تواريخ الإجازة</h2>
+      <h2 className={styles.formTitle}>تواريخ الإجازة</h2>
       <form className="auth-form" onSubmit={loadOptions} aria-busy={loadingOptions}>
         <input type="hidden" name="tenantId" value={tenantId} />
         <div className={styles.dateFields}>
         <div className={styles.formField}>
         <label htmlFor="leave-start-date">تاريخ البداية</label>
-        <input id="leave-start-date" name="startDate" type="date" required value={fields.startDate}
+        <DateInput id="leave-start-date" name="startDate" required value={fields.startDate}
           onChange={handleStartDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         </div>
         <div className={styles.formField}>
         <label htmlFor="leave-end-date">تاريخ النهاية</label>
-        <input id="leave-end-date" name="endDate" type="date" required value={fields.endDate}
+        <DateInput id="leave-end-date" name="endDate" required value={fields.endDate}
           onChange={handleEndDateChange} onBlur={() => loadOptions()} disabled={frozen} aria-invalid={Boolean(rangeError)} />
         </div>
         </div>
         <p className="field-hint">اختر التواريخ أولًا؛ تُحمَّل بعدها أنواع الإجازة المتاحة في هذه الفترة.</p>
-        {rangeError && <p className="form-message form-error" role="alert">{rangeError}</p>}
-        {optionsError && <p className="form-message form-error" role="alert">{optionsError}</p>}
+        {rangeError && <Message tone="bad"  role="alert">{rangeError}</Message>}
+        {optionsError && <Message tone="bad"  role="alert">{optionsError}</Message>}
         {loadingOptions && <p className="field-hint" role="status">جارٍ تحميل أنواع الإجازة المتاحة…</p>}
         {optionsError && <div className="workspace-form-actions">
-          <button className="secondary-button" type="submit" disabled={frozen || Boolean(rangeError)}
+          <Button variant="ghost"  type="submit" disabled={frozen || Boolean(rangeError)}
             aria-busy={loadingOptions}>
             {loadingOptions && <span className="button-spinner" aria-hidden="true" />}
             {loadingOptions ? 'جارٍ تحميل الأنواع…' : 'إعادة تحميل الأنواع'}
-          </button>
+          </Button>
         </div>}
       </form>
     </div>
 
     {options && <div className={styles.formBlock}>
-      <h2 className={styles.formTitle}>2 · بيانات الطلب</h2>
+      <h2 className={styles.formTitle}>بيانات الطلب</h2>
       <form className="auth-form" action={submitAction} aria-busy={submitting}
         onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <fieldset disabled={frozen || Boolean(rangeError) || options.startDate !== fields.startDate || options.endDate !== fields.endDate}
@@ -162,30 +164,30 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         <input type="hidden" name="halfDay" value={fields.halfDay ? 'true' : 'false'} />
         <input type="hidden" name="idempotencyKey" value={operationKey} />
         {options.types.length === 0
-          ? <p className="form-message" role="status">لا توجد أنواع إجازة متاحة في هذه الفترة. جرّب تواريخًا أخرى أو تواصل مع إدارة الموارد البشرية.</p>
+          ? <Message tone="info"  role="status">لا توجد أنواع إجازة متاحة في هذه الفترة. جرّب تواريخًا أخرى أو تواصل مع إدارة الموارد البشرية.</Message>
           : <>
             <label htmlFor="leave-type">نوع الإجازة</label>
-            <select id="leave-type" name="leaveTypeId" required value={fields.leaveTypeId}
+            <Select id="leave-type" name="leaveTypeId" required value={fields.leaveTypeId}
               onChange={handleTypeChange} disabled={submitting}>
               <option value="" disabled>اختر نوع الإجازة</option>
               {options.types.map((type) => <option key={type.id} value={type.id}>{type.name}</option>)}
-            </select>
-            <p className="field-hint">الفترة المختارة: <bdi>{options.startDate}</bdi> إلى <bdi>{options.endDate}</bdi>
+            </Select>
+            <Disclosure summary="الفترة وطريقة احتساب الأيام"><p className="field-hint">الفترة المختارة: <bdi>{options.startDate}</bdi> إلى <bdi>{options.endDate}</bdi>
               {' · '}{dayCount(options.startDate, options.endDate)} يومًا متتاليًا (مدة تقويمية بين التاريخين،
-              وليست كمية إجازة مخصومة). أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة.</p>
+              وليست كمية إجازة مخصومة). أيام الإجازة المحتسبة تحددها سياسة نوع الإجازة.</p></Disclosure>
             {halfDayAvailable && <label className="check-option">
-              <input type="checkbox" checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
+              <Checkbox  checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
               <span>نصف يوم — يُحتسب وفق سياسة نوع الإجازة في هذا اليوم</span>
             </label>}
             <label htmlFor="leave-reason">سبب الإجازة</label>
-            <textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
+            <Textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
               aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint" />
             <p id="leave-reason-hint" className="field-hint">اكتب السبب في 3 إلى 500 حرف ليُراجعه فريق الموارد البشرية.</p>
-            {submitState.error && <p key={submitState.attempt} className="form-message form-error" role="alert">{submitState.error}</p>}
+            {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}
             <div className="workspace-form-actions">
-              <SubmitButton label="إرسال الطلب" pendingLabel="جارٍ الإرسال…" disabled={offline}
+              <SubmitButton label="إرسال طلب الإجازة" pendingLabel="جارٍ الإرسال…" disabled={offline}
                 ariaDescribedBy={showOfflineNotice ? offlineHintId : undefined} />
               {submitting ? <span className={`secondary-button ${styles.disabledAction}`} aria-disabled="true">إلغاء</span>
                 : <PendingLink className="secondary-button" href={`/tenant/${tenantId}/me/leave`}>إلغاء</PendingLink>}

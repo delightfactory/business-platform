@@ -67,7 +67,7 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 
 function compensationError(message: string) {
   if (message.includes('lock timeout') || message.includes('deadlock detected')) return 'هناك إجراء جارٍ على مصادر الرواتب. البيانات محفوظة؛ أعد المحاولة بعد اكتماله.';
-  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد المقترح المؤرخ ومراجعة المخرجات المتأثرة للفترة نفسها.';
+  if (message.includes('payroll_people_correction_required')) return 'يمس هذا التغيير فترة راتب مقفلة. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد ومراجعة المسيرات المحفوظة المتأثرة للفترة نفسها.';
   if (message.includes('compensation_manage_forbidden')) return 'تحتاج إلى صلاحية إدارة الأجر الأساسي في هذه الشركة.';
   if (message.includes('people_compensation_backdate_outside_current_version')) return 'التاريخ السابق لا يقع ضمن الأجر الساري حاليًا. يمكن تعديل الأجر من بداية النسخة الحالية فقط.';
   if (message.includes('people_compensation_future_exists')) return 'يوجد تغيير أجر مقرر بالفعل. ألغِه قبل حفظ تغيير آخر.';

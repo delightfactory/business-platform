@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import { Badge, ButtonLink, KeyValueStrip, Message, PageHeader, Panel } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { OrgCatalogForm, type OrgCatalogOption, type OrgCatalogRecord } from '../../OrgCatalogForm';
 import type { OrgCatalogKind } from '../../actions';
 
@@ -20,7 +20,7 @@ export default async function OrgCatalogRecordPage({ params }: { params: RoutePa
   if (!isNew && !isUuid(recordId)) return <Unavailable tenantId={tenantId} title="السجل غير متاح" detail="لم نعثر على السجل المطلوب." />;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/people/organization/${kind}/${recordId}`)}`);
   const accessResult = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
   if (accessResult.error || !accessResult.data) return <Unavailable tenantId={tenantId} title="السجل غير متاح" detail="تحقق من صلاحيتك في هذه الشركة ثم أعد المحاولة." />;
@@ -47,26 +47,20 @@ export default async function OrgCatalogRecordPage({ params }: { params: RoutePa
   const currentMissing = Boolean(currentRelation && !options.some((item) => item.id === currentRelation));
 
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page org-catalog-page">
-    <Link className="back-link" href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>العودة إلى {kind==='departments'?'الأقسام':'الوظائف'}</Link>
-    <header className="workspace-page-heading"><div><p className="eyebrow">الأقسام والوظائف</p>
-      <h1>{isNew ? `إضافة ${title}` : canManage ? `تعديل ${title}` : `تفاصيل ${title}`}</h1>
-      <p>{description}</p></div></header>
-    <section className="workspace-form-panel" aria-label={isNew?`إضافة ${title}`:`بيانات ${title}`}>
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>العودة إلى {kind==='departments'?'الأقسام':'الوظائف'}</ButtonLink>
+    <PageHeader title={<>{isNew ? `إضافة ${title}` : canManage ? `تعديل ${title}` : `تفاصيل ${title}`}</>} eyebrow={<>الأقسام والوظائف</>} description={<>{description}</>} />
+    <Panel  aria-label={isNew?`إضافة ${title}`:`بيانات ${title}`}>
       {canManage ? <OrgCatalogForm tenantId={tenantId} kind={kind} record={record} options={options}
         optionsTruncated={optionsData.truncated===true} />
-        : <div className="empty-state"><h2>{record?.name}</h2>
-          <p>الرمز: <bdi>{record?.code}</bdi> · {record?.is_active?'نشط':'غير نشط'}</p>
-          {relationName && <p>{kind==='departments'?'القسم الأعلى':'القسم'}: {relationName}</p>}
-          <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>العودة إلى القائمة</Link>
-        </div>}
-      {currentMissing && <p className="form-message" role="status">تعذر تحميل {kind==='departments'?'القسم الأعلى':'القسم'} الحالي ضمن قائمة الاختيارات؛ سيبقى محفوظًا ما لم تغيّره.</p>}
-    </section>
+        : <div><h2>{record?.name}</h2><KeyValueStrip items={[{ label: 'الرمز', value: <bdi>{record?.code}</bdi> }, { label: 'الحالة', value: <Badge tone={record?.is_active ? 'ok' : 'neutral'}>{record?.is_active ? 'نشط' : 'غير نشط'}</Badge> }, ...(relationName ? [{ label: kind === 'departments' ? 'القسم الأعلى' : 'القسم', value: relationName }] : [])]} /><ButtonLink variant="ghost" href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>العودة إلى القائمة</ButtonLink></div>}
+      {currentMissing && <Message tone="info"  role="status">تعذر تحميل {kind==='departments'?'القسم الأعلى':'القسم'} الحالي ضمن قائمة الاختيارات؛ سيبقى محفوظًا ما لم تغيّره.</Message>}
+    </Panel>
   </div></PageFrame>;
 }
 
 function isUuid(value:string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Unavailable({tenantId,title,detail}:{tenantId:string;title:string;detail:string}) {
-  return <PageFrame><section className="auth-card"><h1>{title}</h1><p className="intro">{detail}</p>
-    <Link className="secondary-button" href={`/tenant/${tenantId}/people/organization`}>العودة إلى الأقسام والوظائف</Link>
-  </section></PageFrame>;
+  return <PageFrame><Panel ><h1>{title}</h1><p className="intro">{detail}</p>
+    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/organization`}>العودة إلى الأقسام والوظائف</ButtonLink>
+  </Panel></PageFrame>;
 }
