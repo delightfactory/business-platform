@@ -69,6 +69,13 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
   const state = typeof query.state === 'string' ? query.state : '';
   const notice = noticeForState(state);
   const calendarName = new Map(configuration.calendars.map((calendar) => [calendar.id, calendar.name]));
+  const nextSetup = !configuration.calendars.length
+    ? { path: 'calendars/new', label: 'تحديد أيام الراحة والعطلات', detail: 'ابدأ بتقويم الشركة، ثم حدد سنة الرصيد وأنواع الإجازات.' }
+    : !configuration.yearPeriods.length
+      ? { path: 'year-periods/new', label: 'تحديد سنة رصيد الإجازات', detail: 'التقويم محفوظ. حدد بداية سنة الرصيد ونهايتها.' }
+      : !configuration.types.length
+        ? { path: 'types/new', label: 'إضافة أول نوع إجازة', detail: 'حدد نوع الإجازة وأثره على الأجر ورصيد الموظف.' }
+        : null;
 
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}
@@ -94,17 +101,23 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       </Message>}
     </div>
 
+    {canEdit && nextSetup && <Panel aria-labelledby="leave-next-setup">
+      <h2 id="leave-next-setup">الخطوة التالية</h2>
+      <p>{nextSetup.detail}</p>
+      <Link className="primary-button" href={`${basePath}/${nextSetup.path}`}>{nextSetup.label}</Link>
+    </Panel>}
+
     <Panel  aria-labelledby="leave-calendars-title">
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-calendars-title">تقويمات الإجازات</h2>
           <p>أيام الراحة الأسبوعية والعطلات وفترة سريان كل إصدار. الاحتساب السنوي يستهدف أيام العمل داخل التقويم.</p>
         </div>
-        {canEdit && <Link className="primary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}
+        {canEdit && <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}
       </div>
       {configuration.calendars.length === 0
         ? <div ><EmptyState title={<>لا توجد تقويمات لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ أول تقويم لتحديد أيام الراحة والعطلات قبل تعريف سنوات الإجازة.'
-            : 'لم تُنشأ تقويمات لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}</>} /></div>
+            : 'لم تُنشأ تقويمات لهذه الجهة حتى الآن.'}</>} /></div>
         : <ul className="record-list">{configuration.calendars.map((calendar) => {
           const latest = calendar.versions[0] ?? null;
           return <RecordCard  key={calendar.id}>
@@ -129,11 +142,11 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
           <h2 id="leave-years-title">سنوات الإجازة</h2>
           <p>حدد بداية سنة الرصيد ونهايتها والتقويم المستخدم. يمكن أن تبدأ السنة في أي شهر تختاره الشركة.</p>
         </div>
-        {canEdit && <Link className="primary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}
+        {canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}
       </div>
       {configuration.yearPeriods.length === 0
         ? <div ><EmptyState title={<>لا توجد سنوات إجازة لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ تقويمًا ثم أضف فترة سنة الإجازة بتواريخ بدايتها ونهايتها وتصنيفها.'
-            : 'لم تُنشأ سنوات إجازة لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}</>} /></div>
+            : 'لم تُنشأ سنوات إجازة لهذه الجهة حتى الآن.'}</>} /></div>
         : <ul className="record-list">{configuration.yearPeriods.map((period) => <RecordCard  key={period.id}>
           <div className="record-main">
             <div className="record-title-row"><h3>{period.label}</h3></div>
@@ -149,11 +162,11 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
           <h2 id="leave-types-title">أنواع الإجازة</h2>
           <p>لكل نوع أثر على الأجر وخصم الرصيد وطريقة احتساب الأيام والسماح بنصف يوم، كل منها إعداد مستقل.</p>
         </div>
-        {canEdit && <Link className="primary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}
+        {canEdit && <Link className="secondary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}
       </div>
       {configuration.types.length === 0
         ? <div ><EmptyState title={<>لا توجد أنواع إجازة لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ أول نوع إجازة وحدد إعداداته الأربعة وتاريخ سريانه.'
-            : 'لم تُنشأ أنواع إجازة لهذه الجهة حتى الآن.'}</>} action={<>{canEdit && <Link className="secondary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}</>} /></div>
+            : 'لم تُنشأ أنواع إجازة لهذه الجهة حتى الآن.'}</>} /></div>
         : <ul className="record-list">{configuration.types.map((type) => {
           const latest = type.versions[0] ?? null;
           return <RecordCard  key={type.id}>

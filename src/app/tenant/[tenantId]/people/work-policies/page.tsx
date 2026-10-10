@@ -28,7 +28,7 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
   {query.state && <FeedbackToast key={query.state} message={stateMessage(query.state)} />}
   <PageHeader title={<>قوالب سياسات العمل</>} eyebrow={<>إعدادات الحضور</>} description={<>قوالب تحدد مواعيد الوردية أو مدة العمل المرنة، ويمكن إسنادها من ملف الموظف.</>} />
   {result.can_manage && <PolicyTask className="workspace-records-panel work-policy-create-panel" label="إنشاء قالب دوام"><div className="work-policy-panel-heading"><p>حدد نوع الجدول وأيامه ومواعيده قبل إتاحته للتعيين.</p></div>
-   <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} returnToRequest={returnToRequest} />
+   <WorkPolicyEditor tenantId={tenantId} action={saveWorkPolicyAction} initialCode={`dwm-${crypto.randomUUID().replaceAll('-', '').slice(0, 20)}`} returnToRequest={returnToRequest} />
   </PolicyTask>}
   <Panel className={styles.policyCatalog}><h2>القوالب المسجلة</h2>{result.items.length ? <div className={styles.policyGrid}>{result.items.map((policy)=><Card className={styles.policyCard} key={policy.id}>
    <div className="workspace-record-heading"><h3>{policy.name}</h3><Badge className={`entity-status ${policy.is_active?'is-active':'is-inactive'}`}>{policy.is_active?'متاح للتعيين':'موقوف'}</Badge></div>

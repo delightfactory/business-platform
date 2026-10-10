@@ -47,6 +47,10 @@ export function PageHeader({ title, description, action, eyebrow, id, className 
 export function Banner({ tone = 'info', title, children, action, className = '', ...props }: Omit<HTMLAttributes<HTMLDivElement>, 'title'> & { tone?: Tone; title?: ReactNode; action?: ReactNode }) { return <div className={`ui-banner ui-tone-${tone} ${className}`} {...props}><Icon name={tone === 'bad' || tone === 'warn' ? 'alert' : tone === 'ok' ? 'success' : 'info'} /><div>{title && <strong>{title}</strong>}{children && <div>{children}</div>}</div>{action && <div className="ui-banner-action">{action}</div>}</div>; }
 export const Notice = Banner;
 export function Disclosure({ summary, children, className = '', ...props }: DetailsHTMLAttributes<HTMLDetailsElement> & { summary: ReactNode }) { return <details className={`ui-disclosure ${className}`} {...props}><summary>{summary}<Icon name="chevronDown" size={18} /></summary><div className="ui-disclosure-content">{children}</div></details>; }
+/** Optional explanation only; keep errors and decision-critical guidance visible. */
+export function HelpNote({ label, children }: { label: string; children: ReactNode }) {
+  return <Disclosure className="ui-help-note" summary={<span><Icon name="info" size={16} />{label}</span>}>{children}</Disclosure>;
+}
 export function EmptyState({ title, description, action, icon = 'file', className = '', ...props }: Omit<HTMLAttributes<HTMLDivElement>, 'title'> & { title: ReactNode; description?: ReactNode; action?: ReactNode; icon?: IconName }) { return <div className={`ui-empty ${className}`} {...props}><span className="ui-empty-icon"><Icon name={icon} size={28} /></span><h2>{title}</h2>{description && <p>{description}</p>}{action}</div>; }
 export function Skeleton({ className = '', ...props }: HTMLAttributes<HTMLDivElement>) { return <div aria-hidden="true" className={`ui-skeleton ${className}`} {...props} />; }
 export type KeyValueItem = { label: ReactNode; value: ReactNode; money?: boolean };

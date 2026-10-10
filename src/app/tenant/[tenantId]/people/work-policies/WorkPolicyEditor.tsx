@@ -1,5 +1,5 @@
 'use client';
-import { Checkbox, Field, Input, Message, Panel, Radio } from '@/components/ui';
+import { Checkbox, Disclosure, Field, Input, Message, Panel, Radio } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -39,18 +39,20 @@ export function WorkPolicyEditor({
   tenantId,
   action,
   policy,
+  initialCode,
   returnToRequest,
 }: {
   tenantId: string;
   action: (previous: WorkPolicySaveState, formData: FormData) => Promise<WorkPolicySaveState>;
   policy?: PolicySeed;
+  initialCode?: string;
   returnToRequest?: string;
 }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
   const [saveState, saveAction, pending] = useActionState(action, { error: '' });
   const [values, setValues] = useState({
-    code: policy?.code ?? '', name: policy?.name ?? '', timezone: policy?.timezone_name ?? 'Africa/Cairo',
+    code: policy?.code ?? initialCode ?? '', name: policy?.name ?? '', timezone: policy?.timezone_name ?? 'Africa/Cairo',
     shiftStart: policy?.shift_start?.slice(0, 5) ?? '', shiftEnd: policy?.shift_end?.slice(0, 5) ?? '',
     requiredMinutes: String(policy?.required_minutes ?? ''), earliestPunch: policy?.earliest_punch?.slice(0, 5) ?? '', latestPunch: policy?.latest_punch?.slice(0, 5) ?? '',
     attributionBefore: String(policy?.attribution_before_minutes ?? 120), attributionAfter: String(policy?.attribution_after_minutes ?? 360),
@@ -87,6 +89,7 @@ export function WorkPolicyEditor({
       <div className="work-policy-grid">
         {!policy && <div className="work-policy-field">
           <Field id={`${idPrefix}-code`} label={<>رمز القالب</>} required><Input id={`${idPrefix}-code`} name="code" value={values.code} onChange={handleValueChange} required maxLength={32} autoComplete="off" /></Field>
+          <small>جاهز للاستخدام. عدّله فقط إذا كانت الشركة تستخدم كودًا محددًا للدوام.</small>
         </div>}
         <div className="work-policy-field">
           <Field id={`${idPrefix}-name`} label={<>اسم القالب</>} required><Input id={`${idPrefix}-name`} name="name" value={values.name} onChange={handleValueChange} required maxLength={100} /></Field>
@@ -153,6 +156,7 @@ export function WorkPolicyEditor({
       </div> : <p className="field-hint">الوردية بلا استراحة؛ لا تحتاج إلى تحديد وقت للاستراحة.</p> : <div className="work-policy-field"><Field id={`${idPrefix}-halfday-break`} label={<>استراحة العمل المتبقي مع نصف يوم إجازة (دقيقة)</>} required><Input id={`${idPrefix}-halfday-break`} name="flexibleHalfdayBreak" type="number" min="0" max="360" required value={halfdayBreak} onChange={(event) => setHalfdayBreak(event.target.value)} /></Field><small>أدخل صفرًا إذا لم توجد استراحة في الجزء المتبقي من اليوم.</small></div>)}
     </Panel>
 
+    <Disclosure summary="خيارات إضافية: تسجيل الحضور والإضافي والاعتماد" open={Boolean(policy || saveState.error)} onInvalidCapture={event => { event.currentTarget.open = true; }}>
     <Panel className="work-policy-section" aria-labelledby={`${idPrefix}-attribution-heading`}>
       <div className="work-policy-section-heading">
         <h3 id={`${idPrefix}-attribution-heading`}>مدة ربط التسجيل بيوم العمل</h3>
@@ -191,6 +195,7 @@ export function WorkPolicyEditor({
       </label>
       <p className="field-hint">لا يشمل الغياب أو التسجيل الناقص أو المدة الأقل من المطلوبة أو أي تعارض. يسري الإعداد على أيام العمل الجديدة فقط.</p>
     </Panel>
+    </Disclosure>
 
     {saveState.error && <Message tone="bad"  role="alert">{saveState.error}</Message>}
     <div className="work-policy-editor-actions">

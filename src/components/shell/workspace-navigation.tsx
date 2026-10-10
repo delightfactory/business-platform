@@ -32,8 +32,8 @@ function SignOutMenuItem() {
   </DropdownMenu.Item>;
 }
 
-function NavLink({ item, current, close, icon }: { item: WorkspaceLink; current: boolean; close?: () => void; icon?: IconName }) {
-  return <Link href={item.href} aria-current={current ? 'page' : undefined} onClick={close}>
+function NavLink({ item, current, icon }: { item: WorkspaceLink; current: boolean; icon?: IconName }) {
+  return <Link href={item.href} aria-current={current ? 'page' : undefined}>
     {icon && <Icon name={icon} size={20} />}<span>{item.label}</span><Progress />
   </Link>;
 }
@@ -122,10 +122,10 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
     </nav>
     <dialog ref={dialog} id={id} className="workspace-more-dialog" aria-label="كل أقسام مساحة العمل" onClose={closed} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
       <div className="workspace-dialog-heading"><h2>أقسام مساحة العمل</h2><button type="button" onClick={() => dialog.current?.close()} aria-label="إغلاق القائمة">×</button></div>
-      <nav aria-label="كل الأقسام"><NavLink item={allLinks[0]} current={pathname === homeHref} close={() => dialog.current?.close()} />
-        {areas.filter(area => area.links.length > 0).map(area => <section key={area.key}><h3>{area.label}</h3>{area.links.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>)}
-        {ownLinks.length > 0 && <section><h3>خدماتي</h3>{ownLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
-        {managementLinks.length > 0 && <section><h3>{mode === 'operator' ? 'إدارة المنصة وقواعد الرواتب' : 'إعدادات الشركة والصلاحيات'}</h3>{managementLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} close={() => dialog.current?.close()} />)}</section>}
+      <nav aria-label="كل الأقسام"><NavLink item={allLinks[0]} current={pathname === homeHref} />
+        {areas.filter(area => area.links.length > 0).map(area => <section key={area.key}><h3>{area.label}</h3>{area.links.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} />)}</section>)}
+        {ownLinks.length > 0 && <section><h3>خدماتي</h3>{ownLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} />)}</section>}
+        {managementLinks.length > 0 && <section><h3>{mode === 'operator' ? 'إدارة المنصة وقواعد الرواتب' : 'إعدادات الشركة والصلاحيات'}</h3>{managementLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} />)}</section>}
       </nav>
     </dialog>
   </div>;

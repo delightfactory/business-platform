@@ -1,4 +1,4 @@
-import { PageHeader, Badge, Disclosure } from '@/components/ui';
+import { PageHeader, Badge, Disclosure, HelpNote } from '@/components/ui';
 import { Message, Panel, Checkbox } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
@@ -117,22 +117,25 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
-                <p className="field-hint">صلاحيات العمل الحالية: {assignedBundleLabels(row.roles).join('، ') || 'لم تُضف صلاحيات عمل بعد'}</p>
-                <p className="field-hint">الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة؛ يلزم ربط حساب الموظف وإعداد الحضور في موقعه' : 'الصلاحية غير مضافة'}</p>
-                {row.protected_admin && <p className="field-hint">مسؤول الشركة. يجب وجود مسؤول آخر يستوفي شروط إدارة الشركة قبل خفض دوره.</p>}
-                {row.protected_admin && <p className="field-hint">يمكنك إضافة صلاحيات الموظفين والرواتب من «تعديل صلاحيات المستخدم». لا تُضاف تلقائيًا، وإزالتها لا تسحب دور مسؤول الشركة.</p>}
+                {assignedBundleLabels(row.roles).length ? <Disclosure summary={`صلاحيات العمل: ${assignedBundleLabels(row.roles).length} — عرض القائمة`}>
+                  <ul>{assignedBundleLabels(row.roles).map(label => <li key={label}>{label}</li>)}</ul>
+                </Disclosure> : <p>لم تُضف صلاحيات عمل بعد</p>}
+                <p>الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة' : 'الصلاحية غير مضافة'}</p>
+                {hasBundle(row.roles, 'employee.attendance.self.v1') && <p className="field-hint">يلزم ربط حساب الموظف وإعداد الحضور في موقعه قبل التسجيل.</p>}
+                {row.protected_admin && <HelpNote label="عن صلاحيات مسؤول الشركة"><p>صلاحيات الموظفين والرواتب تُختار من «تعديل صلاحيات المستخدم». إضافتها أو إزالتها لا تغيّر دور مسؤول الشركة.</p></HelpNote>}
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
                   <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
                   <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'تفعيل إجازات الموظف'} pendingLabel="جارٍ الحفظ…" />
-                  <p className="field-hint">يضيف هذا الإجراء صلاحيات الملف الشخصي وطلبات إجازته فقط، مع الحفاظ على دور مسؤول الشركة.</p>
+                  <p className="field-hint">للملف الشخصي والإجازات فقط؛ لا يغيّر دور المسؤول.</p>
                 </OfflineForm>}
               </div>
               <div className="invitation-actions">
                 {row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
 
-                  <p className="field-hint">اختر الصلاحيات المطلوبة، حتى 24 مجموعة. احتفظ بالاختيارات الحالية ما لم ترد سحبها. انتبه: إدارة الموظفين واستيرادهم تشمل عرض الأجر الأساسي وتعديله.</p>
+                  <p className="field-hint">احتفظ بالاختيارات الحالية ما لم ترد سحبها.</p>
+                  <Message tone="warn">إدارة الموظفين أو استيرادهم تمنح عرض الأجر الأساسي وتعديله.</Message>
                   <OfflineForm action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
@@ -148,9 +151,9 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 </Disclosure>}
                 {canManageRoles && row.access_state === 'active' && <Disclosure summary={<>{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</>} className="role-change-confirmation">
 
-                  <p className="field-hint">{row.protected_admin
-                    ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة. لا يمكن خفض آخر مسؤول يستوفي شروط إدارة الشركة.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
-                    : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'} لن يتغير عدد المستخدمين المحتسبين.</p>
+                  <Message tone="warn">{row.protected_admin
+                    ? row.user_id === user.id ? 'سيُخفض دورك إلى عضو وتفقد صلاحيات إدارة الشركة.' : 'سيُخفض هذا المستخدم إلى عضو وتُسحب منه صلاحيات إدارة الشركة.'
+                    : 'سيكتسب هذا المستخدم صلاحيات إدارة الشركة. يحتاج الحساب إلى تأكيد البريد وإعداد دخول صالح.'}{row.protected_admin && ' لا يمكن خفض آخر مسؤول يستوفي شروط إدارة الشركة.'} لن يتغير عدد المستخدمين المحتسبين.</Message>
                   <OfflineForm action={changeTenantAdminRoleAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />

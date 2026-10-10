@@ -43,3 +43,4 @@
   .ui-key-values > div { min-width: 0; }
   .ui-key-values dd { overflow-wrap: anywhere; }
 }
+.ui-help-note{border:0;background:transparent;box-shadow:none}.ui-help-note>summary{min-height:44px;font-size:13px;color:var(--muted);padding:4px 0}.ui-help-note>summary>span{display:inline-flex;align-items:center;gap:6px}.ui-help-note .ui-disclosure-content{font-size:14px;line-height:1.7}.ui-help-note .ui-disclosure-content>p{margin:0}
