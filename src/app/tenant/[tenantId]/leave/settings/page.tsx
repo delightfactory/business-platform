@@ -1,4 +1,4 @@
-import { Badge, Button, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, Button, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
@@ -109,7 +109,7 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-employers-title">الجهات القانونية</h2>
-          <p>ابحث بالاسم لفتح إعدادات الجهة. تظهر الجهات الموقوفة كذلك للاطلاع على سجلها دون تعديل جديد.</p>
+          <HelpNote label="ما الجهات التي تظهر هنا؟"><p>تظهر الجهات النشطة والموقوفة. يمكنك الاطلاع على سجل الجهة الموقوفة؛ لا تتاح إضافة إعدادات جديدة لها.</p></HelpNote>
         </div>
       </div>
       <div className={styles.panelBody}>

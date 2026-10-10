@@ -2,7 +2,7 @@ import styles from './payroll.module.css';
 import { Button, Icon, Select } from '@/components/ui';
 import {employerContext,type EmployerPage,type EmployerQuery} from './employer-context';
 type Props={path:string;page:EmployerPage;employer:string;name:string;choices:{id:string;name:string}[];context:EmployerQuery;singleEmployer?:boolean;hint?:string};
-export function EmployerSelector({path,page,employer,name,choices,context,singleEmployer=false,hint='احفظ تعديلاتك قبل تغيير جهة العمل. عند اختيار الجهة نفسها، تبقى اختيارات الصفحة كما هي.'}:Props){
+export function EmployerSelector({path,page,employer,name,choices,context,singleEmployer=false,hint='احفظ تعديلاتك قبل تغيير جهة العمل. اختيار الجهة نفسها يحافظ على اختيارات الصفحة.'}:Props){
  if(singleEmployer)return null;
  const fields=employerContext(page,context);
  return <div className={styles.employerSelector}><form method="get" action={path} className={styles.filters} aria-label="اختيار جهة العمل">

@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/ui';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,9 +26,9 @@ export default async function TenantEntitiesSitesPage({ params, searchParams }: 
   if (!isUuid(tenantId)) return <Status tenantId={tenantId} title="الشركة غير متاحة" detail="تعذر العثور على الشركة المطلوبة." />;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/entities-sites`)}`);
-  const { data, error } = await supabase.rpc('tenant_entities_sites_snapshot', { p_tenant_id: tenantId });
+  const { data, error } = await readWorkspaceRpc(supabase, 'tenant_entities_sites_snapshot', tenantId, 'p_tenant_id');
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) {
     return <Status tenantId={tenantId} title="لا يمكن عرض هذه الصفحة" detail="تحتاج إلى صلاحية إدارة الجهات أو المواقع في الشركة." />;
   }

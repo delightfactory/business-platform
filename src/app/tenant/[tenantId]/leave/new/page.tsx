@@ -1,4 +1,4 @@
-import { Badge, Button, Card, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, Button, Card, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
@@ -191,8 +191,7 @@ export default async function RecordLeavePage({ params, searchParams }: {
             <Field id="leave-end-date" label={<>تاريخ النهاية</>} required><Input id="leave-end-date" name="end" type="date" required defaultValue={query.end} /></Field>
             <Field id="leave-employee-query" label={<>ابحث بالاسم أو رمز الموظف</>}><Input id="leave-employee-query" name="q" type="search" minLength={MIN_QUERY_LENGTH}
               maxLength={MAX_QUERY_LENGTH} defaultValue={query.q} placeholder="مثال: أحمد أو EMP-12" /></Field>
-            <p className="field-hint">تُعرض الملفات النشطاء الذين تغطي فترة عملهم التواريخ المحددة،
-              بحد أقصى {PAGE_SIZE} نتيجة في الصفحة.</p>
+            <HelpNote label="من يظهر في نتائج البحث؟"><p>تظهر ملفات الموظفين النشطين الذين تغطي فترة عملهم تواريخ الإجازة، بحد أقصى {PAGE_SIZE} نتيجة في الصفحة.</p></HelpNote>
             <div className="workspace-form-actions">
               <Button variant="solid"  type="submit">بحث</Button>
             </div>

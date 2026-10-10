@@ -1,4 +1,4 @@
-import { Badge, EmptyState, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, EmptyState, HelpNote, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
@@ -111,7 +111,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-calendars-title">تقويمات الإجازات</h2>
-          <p>أيام الراحة الأسبوعية والعطلات وفترة سريان كل إصدار. الاحتساب السنوي يستهدف أيام العمل داخل التقويم.</p>
+          <HelpNote label="عن تقويم الإجازات"><p>حدد أيام الراحة والعطلات وتاريخ العمل بالتقويم. تُحسب إجازات أيام العمل وفقًا لهذا التقويم.</p></HelpNote>
         </div>
         {canEdit && <Link className="secondary-button" href={`${basePath}/calendars/new`}>إضافة تقويم</Link>}
       </div>
@@ -140,7 +140,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-years-title">سنوات الإجازة</h2>
-          <p>حدد بداية سنة الرصيد ونهايتها والتقويم المستخدم. يمكن أن تبدأ السنة في أي شهر تختاره الشركة.</p>
+          <HelpNote label="عن سنة الرصيد"><p>حدد بداية سنة الرصيد ونهايتها والتقويم المستخدم. يمكن أن تبدأ السنة في أي شهر تختاره الشركة.</p></HelpNote>
         </div>
         {canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}
       </div>
@@ -160,7 +160,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       <div className={styles.panelHeading}>
         <div>
           <h2 id="leave-types-title">أنواع الإجازة</h2>
-          <p>لكل نوع أثر على الأجر وخصم الرصيد وطريقة احتساب الأيام والسماح بنصف يوم، كل منها إعداد مستقل.</p>
+          <HelpNote label="عن أنواع الإجازات"><p>لكل نوع إعدادات للأجر والرصيد وطريقة حساب الأيام والسماح بنصف يوم. تظهر هذه الاختيارات عند إعداد النوع.</p></HelpNote>
         </div>
         {canEdit && <Link className="secondary-button" href={`${basePath}/types/new`}>إضافة نوع إجازة</Link>}
       </div>

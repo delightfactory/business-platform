@@ -115,7 +115,6 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
 
       <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={{...query,period:periodId}} singleEmployer={found.data.unique_employer===employer}/>
       <Link href={path}>اختيار جهة أخرى</Link>
-      <p className="field-hint">لمراجعة جهة مختلفة، اختر «اختيار جهة أخرى».</p>
     </div>
     {periods.length > 0 && <form method="get" className={styles.filters}><input type="hidden" name="employer" value={employer}/>{query.review_q && <input type="hidden" name="review_q" value={query.review_q}/>}
       <Field  id="payroll-period" label={<>فترة الرواتب</>}><Select id="payroll-period" name="period" defaultValue={periodId} required>

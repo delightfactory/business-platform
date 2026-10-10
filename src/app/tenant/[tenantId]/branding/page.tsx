@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { BrandingEditor } from './BrandingEditor';
 
 export const dynamic = 'force-dynamic';
@@ -21,9 +21,9 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   if (!isUuid(tenantId)) redirect('/tenant/select?state=invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/branding`)}`);
-  const { data, error } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
+  const { data, error } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status tenantId={tenantId} title="مساحة الشركة غير متاحة" />;
   const branding = data as Branding;
   const { data: tenantData } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });

@@ -5,7 +5,7 @@ import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
@@ -56,17 +56,19 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const search = (query.q ?? '').trim().slice(0, 120);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users`)}`);
   const { data, error } = await supabase.rpc('tenant_member_access_page', {
     p_tenant_id: tenantId, p_view: view, p_page: page, p_query: search,
   });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
-  const { data: snapshot, error: snapshotError } = await supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId });
+  const [{ data: snapshot, error: snapshotError }, { data: peopleSetupAccess, error: peopleSetupError }, { data: canManageRoles }] = await Promise.all([
+    readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id'),
+    readWorkspaceRpc(supabase, 'people_access_snapshot', tenantId, 'p_tenant_id'),
+    supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId }),
+  ]);
   if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
-  const { data: peopleSetupAccess, error: peopleSetupError } = await supabase.rpc('people_access_snapshot', { p_tenant_id: tenantId });
   const canOpenPeopleSetup = !peopleSetupError && Boolean(peopleSetupAccess);
-  const { data: canManageRoles } = await supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId });
   const result = data as Record<string, unknown>;
   const memberships = view === 'members' && Array.isArray(result.rows) ? result.rows as Row[] : [];
   const invitations = view === 'invitations' && Array.isArray(result.rows) ? result.rows as Invitation[] : [];

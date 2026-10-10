@@ -65,49 +65,44 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
 
   // parseBalanceQuery has already discarded any incomplete cursor tuple, so a bad cursor
   // simply restarts at the first page while the matching alert explains what happened.
-  const optionsResult = query.q === '' ? null
-    : await supabase.rpc('leave_balance_employee_options', {
+  const hasPair = query.employee !== '' && errors.pair === '';
+  const [optionsResult, accountsResult] = await Promise.all([
+    query.q === '' ? null : supabase.rpc('leave_balance_employee_options', {
       p_tenant: tenantId,
       p_query: query.q,
       p_limit: PAGE_SIZE,
       p_after_code: query.sc === '' ? null : query.sc,
       p_after_employee: query.se === '' ? null : query.se,
       p_after_employer: query.so === '' ? null : query.so,
-    });
-  const options = optionsResult && !optionsResult.error ? readOptionsPage(optionsResult.data) : null;
-
-  const hasPair = query.employee !== '' && errors.pair === '';
-  const accountsResult = !hasPair ? null
-    : await supabase.rpc('leave_balance_accounts', {
+    }),
+    !hasPair ? null : supabase.rpc('leave_balance_accounts', {
       p_tenant: tenantId,
       p_employee: query.employee,
       p_employer: query.employer,
       p_limit: PAGE_SIZE,
       p_after_period_start: query.acs === '' ? null : query.acs,
       p_after_account: query.aca === '' ? null : query.aca,
-    });
+    }),
+  ]);
+  const options = optionsResult && !optionsResult.error ? readOptionsPage(optionsResult.data) : null;
   const accounts = accountsResult && !accountsResult.error ? readAccountsPage(accountsResult.data) : null;
   const pair = accounts?.pair ?? null;
   const canPost = pair !== null && pair.canAdjust;
   const accountContext = query.kind === 'adjustment' ? accounts?.items.find((account) =>
     account.periodId === query.period && account.leaveTypeId === query.type) ?? null : null;
 
-  const periodsResult = !canPost || query.kind === '' ? null
-    : await supabase.rpc('leave_balance_posting_periods', {
+  const [periodsResult, initialTypesResult] = await Promise.all([
+    !canPost || query.kind === '' ? null
+    : supabase.rpc('leave_balance_posting_periods', {
       p_tenant: tenantId,
       p_employee: query.employee,
       p_employer: query.employer,
       p_limit: PAGE_SIZE,
       p_after_start: query.pcs === '' ? null : query.pcs,
       p_after_period: query.pcp === '' ? null : query.pcp,
-    });
-  const periods = periodsResult && !periodsResult.error ? readPeriodsPage(periodsResult.data) : null;
-  const selectedPeriod = query.period === '' ? null
-    : periods?.items.find((item) => item.periodId === query.period)
-      ?? (accountContext ? { label: accountContext.periodLabel, startsOn: accountContext.startsOn, endsOn: accountContext.endsOn } : null);
-
-  let typesResult = !canPost || query.kind === '' || query.period === '' ? null
-    : await supabase.rpc('leave_balance_posting_types', {
+    }),
+    !canPost || query.kind === '' || query.period === '' ? null
+    : supabase.rpc('leave_balance_posting_types', {
       p_tenant: tenantId,
       p_employee: query.employee,
       p_employer: query.employer,
@@ -116,7 +111,14 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
       p_limit: PAGE_SIZE,
       p_after_code: query.tcs === '' ? null : query.tcs,
       p_after_type: query.tct === '' ? null : query.tct,
-    });
+    }),
+  ]);
+  const periods = periodsResult && !periodsResult.error ? readPeriodsPage(periodsResult.data) : null;
+  const selectedPeriod = query.period === '' ? null
+    : periods?.items.find((item) => item.periodId === query.period)
+      ?? (accountContext ? { label: accountContext.periodLabel, startsOn: accountContext.startsOn, endsOn: accountContext.endsOn } : null);
+
+  let typesResult = initialTypesResult;
   let types = typesResult && !typesResult.error ? readTypesPage(typesResult.data) : null;
   let selectedType = query.type === '' || !types ? null
     : types.items.find((item) => item.leaveTypeId === query.type) ?? null;
@@ -302,8 +304,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
               ? <Panel  aria-labelledby="balances-kind-title">
                 <div className={styles.panelHeading}>
                   <h2 id="balances-kind-title">تسجيل حركة رصيد</h2>
-                  <p>اختر نوع حركة الرصيد المطلوب. لا تحتسب الواجهة أي استحقاق ولا رصيدًا افتتاحيًا من تاريخ الالتحاق
-                    ولا تفترض قيمًا؛ أدخل عدد الأيام يدويًا. نتحقق من صلاحيتك عند الإرسال.</p>
+                  <p>اختر نوع الحركة وأدخل عدد الأيام المعتمد لدى الشركة. لا يُحسب الرصيد أو الاستحقاق تلقائيًا من تاريخ التعيين.</p>
                 </div>
                 <ul className="record-list">{(['opening', 'annual_grant', 'adjustment'] as PostingKind[])
                   .map((kind) => <RecordCard  key={kind}>
