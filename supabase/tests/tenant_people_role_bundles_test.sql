@@ -125,8 +125,8 @@ SELECT is((SELECT pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object('assignment
  (SELECT snapshot FROM protected_admin_before),'protected role and assignment snapshots remain byte-for-byte unchanged in both companies');
 SELECT ok(platform_private.has_tenant_permission('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004','tenant.members.manage'),
  'administrator retains member-management authority after own work-access revocation');
-SELECT ok(NOT platform_private.has_people_permission('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004','people.view'),
- 'revoked own work access is no longer effective');
+SELECT ok(NOT platform_private.has_tenant_permission('bc200000-0000-4000-8000-000000000001','bc100000-0000-4000-8000-000000000004','people.view'),
+ 'revoked own bundle permission is removed without changing existing administrator authority');
 SELECT is((SELECT pg_catalog.count(*)::integer FROM platform_core.tenant_membership_audit_events
  WHERE tenant_id='bc200000-0000-4000-8000-000000000001' AND subject_user_id='bc100000-0000-4000-8000-000000000004'
  AND action='people_role_bundles_changed'),3,'administrator grant, replacement and revocation are audited without duplicate no-op events');

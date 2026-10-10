@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { refresh } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 
@@ -93,6 +94,7 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
   const state = (data as Record<string, unknown>).state;
+  if (state === 'updated' || state === 'unchanged') refresh();
   go(tenantId, state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
 }
 
