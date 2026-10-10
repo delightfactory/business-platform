@@ -20,7 +20,7 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
   const query = await searchParams;
   if (!isUuid(tenantId)) redirect('/tenant/select?state=invalid');
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status tenantId={tenantId} title="إعداد الاتصال غير مكتمل" />;
+  if (!supabase) return <Status tenantId={tenantId} title="تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/branding`)}`);
   const { data, error } = await supabase.rpc('tenant_branding_snapshot', { p_tenant_id: tenantId });
@@ -53,7 +53,7 @@ function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{
 function stateText(state: string) {
   const messages: Record<string, string> = {
     saved: 'تم حفظ هوية الشركة وتسجيل التغيير.',
-    invalid: 'تحقق من الاسم واللون والصورة المختارة.', reason: 'اكتب سببًا من 3 إلى 500 حرف.', setup: 'إعداد الاتصال غير مكتمل.',
+    invalid: 'تحقق من الاسم واللون والصورة المختارة.', reason: 'اكتب سببًا من 3 إلى 500 حرف.', setup: 'تعذر الاتصال بالمنصة. حاول لاحقًا أو تواصل مع الدعم.',
     forbidden: 'تغيير الهوية متاح لمسؤول الشركة فقط.', unavailable: 'الشركة غير متاحة حاليًا.',
     file: 'اختر صورة PNG أو JPG أو WebP لا يتجاوز حجمها 2MB.',
     'upload-failed': 'تعذر رفع الصورة. لم يتغير إعداد الهوية.',

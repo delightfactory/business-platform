@@ -19,7 +19,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
   const issuance = params.issuance ?? '';
   const validReference = /^[0-9a-f-]{36}$/i.test(invitationId) && /^\d+$/.test(issuance);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
+  if (!supabase) return <Status title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!validReference) return <Status title="رابط الدعوة غير صالح" detail={stateMessage(params.state)} link="/auth/login" linkText="العودة إلى الدخول" />;
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/auth/invitations/accept?id=${invitationId}&issuance=${issuance}`)}`);
@@ -82,7 +82,7 @@ function stateMessage(state?: string) {
     'password-marker-failed': 'تعذر تأكيد حالة الحساب أو الدعوة الآن. اطلب من مسؤول تشغيل المنصة مراجعتها.',
     'link-expired': 'انتهت صلاحية رابط التفعيل. إذا كانت الدعوة ضمن الأيام السبعة، اطلب من مسؤول تشغيل المنصة إصدار رابط جديد.',
     'no-session': 'انتهت جلسة الدعوة السابقة. تحقق من الحساب الحالي قبل المتابعة.',
-    setup: 'تعذر إكمال الخطوة السابقة بسبب إعداد خدمة الحسابات. تحقق من الاتصال الحالي قبل المتابعة.',
+    setup: 'تعذر الاتصال بخدمة الحسابات في الخطوة السابقة. حاول مرة أخرى لاحقًا، أو تواصل مع دعم المنصة إذا استمرت المشكلة.',
   };
   return state && Object.hasOwn(labels, state) ? labels[state] : 'تعذر التحقق من الدعوة. اطلب من مسؤول تشغيل المنصة مراجعتها.';
 }

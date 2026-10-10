@@ -11,7 +11,7 @@ type TenantOption = { tenant_id: string; tenant_name: string; lifecycle_state: '
 
 export default async function SelectTenantPage() {
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>إعداد الاتصال غير مكتمل</>} /><p className="intro" role="alert">تعذر الاتصال بخدمة الحسابات. تواصل مع دعم المنصة إذا استمرت المشكلة.</p><ButtonLink variant="solid" className="link-button" href="/auth/login">العودة إلى تسجيل الدخول</ButtonLink></Panel></main>;
+  if (!supabase) return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>تعذر الاتصال بخدمة الحسابات</>} /><p className="intro" role="alert">حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة.</p><ButtonLink variant="solid" className="link-button" href="/auth/login">العودة إلى تسجيل الدخول</ButtonLink></Panel></main>;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/auth/login?state=no-session');
   const { data, error } = await supabase.rpc('current_tenant_spaces');

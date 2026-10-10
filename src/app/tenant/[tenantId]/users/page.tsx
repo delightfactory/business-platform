@@ -55,7 +55,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const page = /^[1-9]\d{0,5}$/.test(query.page ?? '') ? Math.min(Number(query.page), 100000) : 1;
   const search = (query.q ?? '').trim().slice(0, 120);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
+  if (!supabase) return <Status title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users`)}`);
   const { data, error } = await supabase.rpc('tenant_member_access_page', {
@@ -236,7 +236,7 @@ function deliveryText(state: string) {
 }
 function stateMessage(state: string) {
   const labels: Record<string, string> = {
-    invalid: 'أدخل بريدًا إلكترونيًا صحيحًا.', setup: 'إعداد خدمة الحسابات غير مكتمل.',
+    invalid: 'أدخل بريدًا إلكترونيًا صحيحًا.', setup: 'تعذر الاتصال بخدمة الحسابات. حاول لاحقًا أو تواصل مع دعم المنصة.',
     forbidden: 'لا تملك صلاحية إدارة أعضاء هذه الشركة.', failed: 'تعذر إتمام الإجراء. لم تتغير العضوية؛ أعد المحاولة.',
     'created-sent': 'أُرسلت الدعوة. لن يحصل المستخدم على وصول أو مقعد قبل قبولها.',
     'created-failed': 'حُفظت الدعوة لكن تعذر إرسال البريد. يمكنك إعادة الإرسال.',

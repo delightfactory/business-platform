@@ -16,7 +16,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const query = await searchParams; const id = query.id ?? ''; const issuance = query.issuance ?? '';
   if (!isUuid(id) || !/^\d+$/.test(issuance)) return <Status title="رابط الدعوة غير صالح" detail="افتح أحدث رسالة وصلتك أو اطلب إعادة إرسال الدعوة." />;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
+  if (!supabase) return <Status title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/auth/membership-invitations/accept?id=${id}&issuance=${issuance}`)}`);
   const { data: validation, error } = await supabase.rpc('validate_tenant_member_invitation', { p_invitation_id: id, p_issuance: Number(issuance) });

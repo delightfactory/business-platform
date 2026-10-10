@@ -16,7 +16,7 @@ export default async function TenantPage({ params, searchParams }: {
   const { tenantId } = await params;
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <TenantStatus title="إعداد الاتصال غير مكتمل" detail="أضف إعدادات Supabase العامة ثم أعد المحاولة." />;
+  if (!supabase) return <TenantStatus title="تعذر الاتصال بالمنصة" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة؛ لا تحتاج إلى تغيير إعدادات شركتك." />;
 
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
