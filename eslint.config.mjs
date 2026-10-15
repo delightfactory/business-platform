@@ -15,8 +15,8 @@ export default defineConfig([
     },
   },
   {
-    // Standalone evidence CLIs intentionally use the CommonJS .cjs convention.
-    files: ["docs/07-execution/evidence/**/*.cjs"],
+    // Standalone evidence and guide CLIs intentionally use CommonJS .cjs.
+    files: ["docs/07-execution/evidence/**/*.cjs", "scripts/build-user-guide.cjs"],
     rules: { "@typescript-eslint/no-require-imports": "off" },
   },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),

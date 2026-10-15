@@ -1,0 +1,8 @@
+# Keep local credentials, QA tooling and historical evidence out of cloud builds.
+.env*
+.git/
+.next/
+node_modules/
+supabase/.temp/
+supabase/tests/
+docs/
