@@ -44,8 +44,9 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
   }
   function openDuration(key: ServiceKey, original: ServiceChange[] = [], source = snapshot) {
     const row = source.entitlements.find(item => item.capability_key === key)!;
-    setMode(row.valid_until_last_day || row.resume_kind === 'expired' || row.resume_kind === 'unknown' ? 'last_day' : 'indefinite');
-    setDay(row.is_granted ? row.valid_until_last_day ?? '' : '');
+    const savedGrantDay = row.is_granted ? row.valid_until_last_day : row.resume_kind === 'finite' ? row.resume_last_day : null;
+    setMode(savedGrantDay || row.resume_kind === 'expired' || row.resume_kind === 'unknown' ? 'last_day' : 'indefinite');
+    setDay(savedGrantDay ?? '');
     setStopDay(''); setDialog({ kind: 'duration', key, original });
   }
   async function send(changes: ServiceChange[], submittedNote = note) {
@@ -60,6 +61,7 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
       if (result.outcome === 'error') { setMessage(result.message); return; }
       acceptSnapshot(result.snapshot);
       if (result.outcome === 'plan_required') {
+        if (dialog?.kind === 'plan') setMessage('تغيّرت الخطة منذ عرضها؛ راجعها ثم أكّد.');
         setDialog({ kind: 'plan', plan: result.plan }); return;
       }
       if (result.outcome === 'duration_required') {
@@ -97,7 +99,7 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
   }
   const durationRow = dialog?.kind === 'duration' ? rows.find(row => row.capability_key === dialog.key)! : null;
   const additional = dialog?.kind === 'duration' ? dialog.original.filter(row => row.capability_key !== dialog.key) : [];
-  const parentDay = snapshot.entitlements.find(row => row.capability_key === 'hr.people')?.valid_until_last_day;
+  const parentDay = snapshot.entitlements.find(row => row.capability_key === 'hr.people' && row.is_granted === true)?.valid_until_last_day;
   const prerequisite = dialog?.kind === 'plan' ? dialog.plan.find(row => row.capability_key === 'hr.people') : undefined;
   const requestedDependent = dialog?.kind === 'plan' ? dialog.plan.find(row => dependent(row.capability_key) && row.is_granted) : undefined;
   const planTitle = prerequisite?.is_granted === false ? 'إيقاف الموارد البشرية يوقف خدمات مرتبطة'
@@ -139,7 +141,7 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
     <Sheet open={dialog?.kind === 'plan'} onOpenChange={open => { if (!open) closeDialog(); }}
       title={planTitle} description="لن يُحفظ أي تغيير قبل تأكيد هذه الخطة.">
       {dialog?.kind === 'plan' && <>
-        <FactList items={dialog.plan.map(row => ({ text: `${operatorServiceLabels[row.capability_key]}: ${snapshot.entitlements.find(item => item.capability_key === row.capability_key)?.is_granted ? 'مفعّلة' : 'غير مفعّلة'} ← ${row.is_granted ? 'تفعيل' : 'إيقاف'} · ${row.last_day ? `حتى ${serviceDayLabel(row.last_day)}` : 'بلا تاريخ انتهاء'}` }))} />
+        <FactList items={[...dialog.plan].sort((a, b) => serviceOrder.indexOf(a.capability_key) - serviceOrder.indexOf(b.capability_key)).map(row => ({ text: `${operatorServiceLabels[row.capability_key]}: ${snapshot.entitlements.find(item => item.capability_key === row.capability_key)?.is_granted ? 'مفعّلة' : 'غير مفعّلة'} ← ${row.is_granted ? 'مفعّلة' : 'غير مفعّلة'}${row.derived ? ' (مطلوبة)' : ''} · ${row.last_day ? `حتى ${serviceDayLabel(row.last_day)}` : 'بلا تاريخ انتهاء'}` }))} />
         {dialog.plan.filter(row => !row.is_granted && denialImpact[row.capability_key]).map(row => <p className="field-hint" key={row.capability_key}>{operatorServiceLabels[row.capability_key]}: {denialImpact[row.capability_key]}</p>)}
         {message && <Banner role="status">{message}</Banner>}
         <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="service-plan-note">الملاحظة</label><Textarea id="service-plan-note" value={note} maxLength={500} disabled={locked} onChange={event => setNote(event.target.value)} /></Disclosure>
