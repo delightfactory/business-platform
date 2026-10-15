@@ -1,4 +1,5 @@
 import styles from './payroll.module.css';
+import Link from 'next/link';
 import { Icon, type IconName, Disclosure } from '@/components/ui';
 import { payrollStageDescriptions, type StageWork } from './stage-facts';
 
@@ -16,10 +17,10 @@ export function payrollCurrentStage(work: { run: { status: string } | null; fina
   return null;
 }
 
-export function PayrollStepper({ currentStage, historical = false, work = null }: { currentStage: number | null; historical?: boolean; work?: StageWork | null }) {
+export function PayrollStepper({ currentStage, historical = false, work = null, actions = {} }: { currentStage: number | null; historical?: boolean; work?: StageWork | null; actions?: Partial<Record<number, {href:string;label:string}[]>> }) {
   const current = currentStage === null ? null : stages[currentStage];
   const descriptions = payrollStageDescriptions(work);
-  const list = <ol className={styles.progressList}>{stages.map((stage, index) => <li key={stage} aria-current={currentStage === index ? 'step' : undefined}><span className={styles.stageIcon}><Icon name={stageIcons[index]} size={18} /></span><span className={styles.stageName}>{stage}{currentStage === index && <small>الحالية</small>}</span><p className="field-hint">{descriptions[index]}</p></li>)}</ol>;
+  const list = <ol className={styles.progressList}>{stages.map((stage, index) => <li key={stage} aria-current={currentStage === index ? 'step' : undefined}><span className={styles.stageIcon}><Icon name={stageIcons[index]} size={18} /></span><span className={styles.stageName}>{stage}{currentStage === index && <small>الحالية</small>}</span><p className="field-hint">{descriptions[index]}</p>{actions[index]?.map(action=><p key={action.href}><Link href={action.href}>{action.label}</Link></p>)}</li>)}</ol>;
   return <section className={styles.progress} aria-label="مراحل الرواتب">
     <p className={styles.progressCurrent}>{current ? `المرحلة الحالية: ${current}` : historical ? 'المسير مستبدل ومحفوظ في التاريخ؛ راجع المسير البديل.' : 'لا يمكن تحديد المرحلة الحالية من البيانات المتاحة؛ تابع مراجعة الرواتب.'}</p>
     <p className="field-hint">حالة المصادر تخص الحساب المحفوظ. التغطية التشغيلية والتحقق من شروط الحساب المالي والاعتماد والصرف حالات منفصلة.</p>

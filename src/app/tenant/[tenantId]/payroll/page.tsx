@@ -1,3 +1,4 @@
+import { validatePayrollPeriod } from './period-scope';
 import { Button, ButtonLink, Disclosure, Input, Message, PageHeader, Panel, RecordCard, Select, Field } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import {EmployerSelector} from './EmployerSelector';
@@ -6,7 +7,7 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
-import { displayDate, uuid } from './rules';
+import { currentPeriodId, displayDate, uuid } from './rules';
 import { issueNames, money, type Issue } from './runs/rules';
 import styles from './payroll.module.css';
 import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
@@ -22,7 +23,7 @@ type Employer = { id: string; name: string };
 type Period = { id: string; starts_on: string; ends_on: string; is_transition?: boolean };
 type Calendar = { employer_name: string; versions: { timezone: string }[]; periods: { starts_on: string; ends_on: string; timezone: string }[]; access: { can_view: boolean; can_manage: boolean; enabled: boolean } };
 type Workspace = {
-  access: { can_prepare: boolean; can_configure?: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
+  access: { can_prepare: boolean; can_approve: boolean; can_lock: boolean; can_configure?: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
   period: Period; run: { status: string } | null; final_output_id: string | null;
   summary: { employee_count: number; known_gross: string | null; deductions?: string | null; net?: string | null; gross_complete?: boolean; financially_qualified?: boolean } | null;
   global_issues: Issue[]; issue_count: number; stale_reasons: string[];
@@ -57,25 +58,26 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const loaded = await client.rpc('payroll_workspace', { p_tenant: tenantId, p_employer: employer, p_limit: 24 });
   if (loaded.error || !loaded.data) return failure('تعذر تحميل دورة الجهة.');
   const calendar = loaded.data as Calendar;
-  const setupLink = scope('/setup', { q: query.q ?? '', ...(query.review_q ? { review_q: query.review_q } : {}) });
   let periods: Period[] = [], work: Workspace | null = null;
+  let invalidPeriod = false;
   if (calendar.access.can_view) {
     const result = await client.rpc('payroll_run_periods', { p_tenant: tenantId, p_employer: employer });
     if (result.error || !Array.isArray(result.data)) return failure('تعذر تحميل فترات الرواتب.');
     periods = result.data as Period[];
-    const current = periods.find(item => {
-      const saved = calendar.periods.find(boundary => boundary.starts_on === item.starts_on && boundary.ends_on === item.ends_on);
-      if (!saved) return false;
-      const today = new Intl.DateTimeFormat('en-CA', { timeZone: saved.timezone }).format(new Date());
-      return item.starts_on <= today && item.ends_on >= today;
-    });
-    const period = query.period || current?.id;
+    if (query.period) {
+      const validity=await validatePayrollPeriod(client,tenantId,employer,query.period,periods);
+      if(validity==='unavailable')return failure('تعذر التحقق من فترة الرواتب. احتفظنا بالاختيار؛ أعد المحاولة.');
+      invalidPeriod=validity==='invalid';if(invalidPeriod)query.period='';
+    }
+    const period = invalidPeriod ? undefined : query.period || currentPeriodId(periods,calendar.periods);
+    if (period && !query.period && !invalidPeriod) redirect(`${path}?${new URLSearchParams({...kept,employer,period})}`);
     if (period) {
       const state = await client.rpc('payroll_run_workspace', { p_tenant: tenantId, p_employer: employer, p_period: period, p_limit: 1, p_query: '', p_after: null, p_employee: null });
       if (state.error || !state.data) return failure('تعذر تحميل حالة المسير وجاهزيته.');
       work = state.data as Workspace;
     }
   }
+  const setupLink = scope('/setup', { period: work?.period.id ?? query.period ?? '', q: query.q ?? '', ...(query.review_q ? { review_q: query.review_q } : {}) });
   const periodId = work?.period.id ?? query.period ?? '', runLink = scope('/runs', { period: periodId }), inputsLink = scope('/inputs', { period: periodId });
   const sourceAction = (item: Issue) => {
     const review = { href: runLink, label: 'مراجعة المصدر في مسير الرواتب' };
@@ -95,27 +97,41 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       if (item.code === 'recurring_overlap') return input('مراجعة بنود راتب الموظف');
       return input('مراجعة الأيام المستحقة', 'manual_units');
     }
-    if (item.code === 'policy_missing' && work.access.can_configure === true) return input('إعداد سياسة الشركة');
+    if (item.code === 'policy_missing' && work.access.can_configure === true) return { href: `${inputsLink}&mode=config&kind=policy`, label: 'إعداد سياسة الشركة' };
     return review;
   };
   const final = work?.run?.status === 'locked' || work?.run?.status === 'superseded', stale = Boolean(work?.stale_reasons.length);
   const candidate = Boolean(work?.run && work.run.status !== 'cancelled' && !final);
   const status = !work ? periods.length ? 'اختر الفترة التي تريد مراجعتها' : 'يلزم مراجعة الفترة المحفوظة' : !work.run || work.run.status === 'cancelled' ? 'لم يبدأ تحضير مسير لهذه الفترة' : work.run.status === 'superseded' ? 'مسير مستبدل محفوظ في التاريخ' : work.run.status === 'locked' ? 'مسير نهائي محفوظ' : stale ? 'تغيّرت بيانات تؤثر على المسير' : work.run.status === 'approved' ? 'حساب مبدئي معتمد' : work.run.status === 'review' ? 'حساب مبدئي قيد المراجعة' : work.run.status === 'draft' ? 'التحضير جارٍ' : 'حالة المسير تحتاج مراجعة';
-  let primary = { href: setupLink, label: calendar.versions.length ? 'مراجعة الدورة والفترات' : 'إعداد دورة الرواتب' };
+  let primary: { href: string; label: string } | null = calendar.access.can_manage && calendar.access.enabled
+    ? { href: setupLink, label: calendar.versions.length ? 'مراجعة الدورة والفترات' : 'إعداد دورة الرواتب' } : null;
+  let requiredRole = 'مدير دورة الرواتب';
   if (work) {
-    primary = { href: runLink, label: stale && work.access.can_prepare && work.access.enabled ? 'مراجعة وإعادة حساب الرواتب' : !work.run || work.run.status === 'cancelled' ? (work.access.can_prepare && work.access.enabled ? 'إعداد مسير الرواتب' : 'مراجعة الفترة') : 'متابعة مراجعة الرواتب' };
+    requiredRole = !work.run || work.run.status === 'cancelled' ? 'معد الرواتب' : 'مسؤول مراجعة الرواتب';
+    primary = !work.run || work.run.status === 'cancelled'
+      ? work.access.can_prepare && work.access.enabled ? { href: inputsLink, label: 'تجهيز بيانات الفترة' } : null
+      : { href: runLink, label: stale && work.access.can_prepare && work.access.enabled ? 'مراجعة وإعادة حساب الرواتب' : 'متابعة مراجعة الرواتب' };
+    if (work.run?.status === 'approved' && !stale) {
+      requiredRole = 'معتمد الرواتب أو مسؤول الحفظ النهائي';
+      primary = work.access.can_approve || work.access.can_lock ? { href: `${runLink}#payroll-review-approval`, label: 'متابعة الاعتماد والحفظ النهائي' } : null;
+    }
     if (work.run?.status === 'locked' && work.final_output_id) {
+      requiredRole = 'مسؤول عرض المسير النهائي أو تسجيل الدفعات';
+      primary = null;
       if (work.access.can_payment_record) primary = { href: scope('/payments', { output: work.final_output_id }), label: 'مراجعة الدفعات والمتبقي' };
       else if (work.access.can_view_final) primary = { href: scope('/output', { output: work.final_output_id }), label: 'عرض المسير النهائي' };
     }
   }
-  const primaryAction = (work || periods.length === 0) && <ButtonLink  href={primary.href}>{primary.label}</ButtonLink>;
+  const primaryAction = (work || periods.length === 0) && (primary
+    ? <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
+    : <p>المرحلة الحالية تحتاج: {requiredRole}.{!calendar.access.enabled && ' خدمة الرواتب غير مفعّلة؛ راجع مسؤول الشركة.'}</p>);
   return <PageFrame><div dir="rtl" className={styles.workspace}>
     <div><p className="eyebrow">مساحة الشركة · الرواتب</p><PageHeader  title={<>الرواتب</>} description={<> {calendar.employer_name} </>} />
 
       <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={{...query,period:periodId}} singleEmployer={found.data.unique_employer===employer}/>
       <Link href={path}>اختيار جهة أخرى</Link>
     </div>
+    {invalidPeriod&&<Message tone="info" role="status">الفترة المختارة لا تخص هذه الجهة. اختر فترة.</Message>}
     {periods.length > 0 && <form method="get" className={styles.filters}><input type="hidden" name="employer" value={employer}/>{query.review_q && <input type="hidden" name="review_q" value={query.review_q}/>}
       <Field  id="payroll-period" label={<>فترة الرواتب</>}><Select id="payroll-period" name="period" defaultValue={periodId} required>
         {!periodId && <option value="" disabled>اختر فترة الرواتب</option>}
@@ -131,7 +147,17 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       {candidate && work?.summary && <p>هذه مبالغ مبدئية للمراجعة. لا تُصرف قبل استكمال المراجعة المالية واعتماد المسير وحفظه نهائيًا.</p>}
       {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب أو تسجيل الدفعات.'}</p>}
       {!candidate && primaryAction}
-      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work}/>
+      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work} actions={{
+        0: calendar.access.can_manage ? [{href:setupLink,label:'إعداد رواتب الجهة'}] : [],
+        2: work?.access.can_prepare ? [{href:inputsLink,label:'بيانات الفترة'}] : [],
+        3: work ? [{href:runLink,label:'مراجعة الفترة'}] : [],
+        4: work && (work.access.can_approve||work.access.can_lock) ? [{href:`${runLink}#payroll-review-approval`,label:'الاعتماد والحفظ النهائي'}] : [],
+        5: work?.final_output_id ? [
+          ...(work.access.can_payment_record ? [{href:scope('/payments',{output:work.final_output_id}),label:'الدفعات'}] : []),
+          ...(work.access.can_view_final ? [{href:scope('/output',{output:work.final_output_id}),label:'الكشف النهائي'}] : []),
+          ...(!navigation.error&&navigation.data?.can_view_reports===true ? [{href:scope('/reports',{report:'sheet',output:work.final_output_id}),label:'التقارير'}] : []),
+        ] : [],
+      }}/>
     </Panel>
     {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <Panel className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>ابدأ بمراجعة هذه الملاحظات العامة، ثم افتح مراجعة الرواتب لملاحظات كل موظف.</p>
       {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><Disclosure summary={<>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></>}>

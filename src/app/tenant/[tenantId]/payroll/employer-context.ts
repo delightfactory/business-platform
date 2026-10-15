@@ -6,13 +6,14 @@ export type EmployerQuery=Record<string,string|undefined>;
 const contextKeys:Record<EmployerPage,readonly string[]>={
  workspace:['period','review_q'],
  setup:['period','review_q','before'],
- inputs:['period','q','after','records_after','employee','kind','head','review_view','review_q','review_after','review_employee','before'],
+ inputs:['period','q','after','records_after','employee','kind','head','review_view','review_q','review_after','review_employee','before','mode'],
  runs:['period','q','view','after','employee','before'],
  advances:['advance','q','after','installment_after','history_before','period','new','employment','corrected_advance','correction_event','correction_case','correction_q','correction_after'],
  reports:['report','output','employee','previous','site','department','site_q','department_q','site_after','department_after','q','after','output_after','revision'],
  output:['output','after']
 };
 function validContext(key:string,value:string):boolean {
+ if(key==='mode')return value==='config';
  if(['q','review_q','correction_q','site_q','department_q'].includes(key))return value.length<=120;
  if(key==='view'||key==='review_view')return value==='all'||value==='attention';
  if(key==='report')return isReportKind(value);

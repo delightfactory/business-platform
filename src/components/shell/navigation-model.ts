@@ -51,15 +51,17 @@ export function matchesDestination(path: string, href: string) {
   return path === target || path.startsWith(`${target}/`);
 }
 
-/** Carry only the selected employer between authorized links in the same payroll workspace. */
-export function payrollDestination(pathname: string, href: string, employer: string | null) {
+/** Carry explicit employer/period context; each destination still validates its own scope. */
+export function payrollDestination(pathname: string, href: string, employer: string | null, period: string | null = null) {
   if (!employer || !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(employer)) return href;
   const base = pathname.match(/^(\/tenant\/[^/]+\/payroll)(?:\/|$)/)?.[1];
   const [destination, hash] = href.split('#', 2);
   const [target, query] = destination.split('?', 2);
   if (!base || (target !== base && !target.startsWith(`${base}/`))) return href;
   const params = new URLSearchParams(query);
-  if (params.has('employer')) return href;
+  if (params.has('employer') && params.get('employer') !== employer) return href;
   params.set('employer', employer);
+  if ([base,`${base}/setup`,`${base}/inputs`,`${base}/runs`].includes(target)
+    && !params.has('period') && period && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(period)) params.set('period',period);
   return `${target}?${params}${hash === undefined ? '' : `#${hash}`}`;
 }

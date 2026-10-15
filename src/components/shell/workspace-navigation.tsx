@@ -51,7 +51,7 @@ function NavigationWithContext(props: WorkspaceNavigationProps) {
 
 function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: originalLinks, businessLinks: originalBusinessLinks, mode, logoUrl, switchHref, switchLabel, employer, query }: WorkspaceNavigationProps & { employer: string | null; query: string }) {
   const pathname = usePathname();
-  const contextual = (item: WorkspaceLink) => ({ ...item, href: payrollDestination(pathname, item.href, employer) });
+  const contextual = (item: WorkspaceLink) => ({ ...item, href: payrollDestination(pathname, item.href, employer, new URLSearchParams(query).get('period')) });
   const links = originalLinks.map(contextual);
   const businessLinks = originalBusinessLinks.map(contextual);
   const profile = mode === 'tenant' ? businessLinks.find(item => item.href.endsWith('/me')) : undefined;
