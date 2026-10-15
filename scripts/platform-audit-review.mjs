@@ -5,6 +5,12 @@ const args = process.argv.slice(2);
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const usage = "Use --tenant <tenant-uuid> or --platform, optionally with --limit <1-100>.";
 const databaseUrl = process.env.PLATFORM_OPERATOR_MAINTENANCE_DATABASE_URL;
+const changeSourceLabels = {
+  legacy_rpc_reason: 'سبب مُسجَّل عبر المسار القديم',
+  operator_limit_editor: 'تعديل حدود الاستخدام',
+  operator_switch: 'مفتاح الخدمة',
+  operator_plan: 'خطة خدمات مترابطة',
+};
 let tenantId = null;
 let platform = false;
 let limit = 50;
@@ -42,7 +48,9 @@ async function main() {
       const { rows: roleRows } = await client.query("SELECT current_user AS role");
       if (roleRows[0]?.role !== "postgres") throw new Error("maintenance_role_required");
       const { rows } = await client.query(platform ? platformQuery : tenantQuery, platform ? [limit] : [tenantId, limit]);
-      for (const row of rows) console.log(JSON.stringify(row));
+      for (const row of rows) console.log(JSON.stringify({ ...row,
+        ...(row.change_source ? { change_source_label: changeSourceLabels[row.change_source] ?? row.change_source } : {}),
+      }));
       await client.query("COMMIT");
     } catch (error) {
       await client.query("ROLLBACK").catch(() => {});
@@ -56,12 +64,18 @@ async function main() {
   }
 }
 
-// Only bounded identifiers, actions, timestamps, and entered reasons leave the database.
+// Only bounded identifiers, actions, timestamps, recorded reasons and notes leave the database.
 // Raw audit details and stored email/name/path fields remain in protected tables.
 const tenantQuery = `
-  SELECT $1::uuid AS tenant_id, category, action, event_id, actor_class, actor_user_id, subject,
-    CASE WHEN action = 'delivery_failed' THEN 'failed' ELSE 'succeeded' END AS outcome,
-    reason, occurred_at FROM (
+  SELECT $1::uuid AS tenant_id, events.category, events.action, events.event_id,
+    events.actor_class, events.actor_user_id, events.subject,
+    CASE WHEN events.action = 'delivery_failed' THEN 'failed' ELSE 'succeeded' END AS outcome,
+    events.reason, events.occurred_at,
+    CASE WHEN category='commercial_limit' THEN COALESCE(to_jsonb(limit_event)->>'change_source','legacy_rpc_reason')
+      WHEN category='entitlement' THEN COALESCE(to_jsonb(service_event)->>'change_source','legacy_rpc_reason') END AS change_source,
+    CASE WHEN category='commercial_limit' THEN to_jsonb(limit_event)->>'operator_note'
+      WHEN category='entitlement' THEN to_jsonb(service_event)->>'operator_note' END AS operator_note
+    FROM (
     SELECT 'tenant_onboarding' category, a.event_key action, a.id event_id,
       'platform_operator'::text actor_class, a.actor_user_id, a.subject_user_id::text subject, NULL::text reason, a.created_at occurred_at
     FROM platform_core.audit_events a WHERE a.tenant_id = $1::uuid
@@ -89,7 +103,12 @@ const tenantQuery = `
     SELECT 'branding', 'updated', a.id, 'tenant_user', a.actor_user_id,
       a.tenant_id::text, a.reason, a.created_at
     FROM platform_core.tenant_branding_audit_events a WHERE a.tenant_id = $1::uuid
-  ) events ORDER BY occurred_at DESC, category, event_id DESC LIMIT $2::integer`;
+  ) events
+  LEFT JOIN platform_core.tenant_capability_limit_audit_events limit_event
+    ON events.category='commercial_limit' AND limit_event.id=events.event_id AND limit_event.tenant_id=$1::uuid
+  LEFT JOIN platform_core.tenant_capability_entitlement_audit_events service_event
+    ON events.category='entitlement' AND service_event.id=events.event_id AND service_event.tenant_id=$1::uuid
+  ORDER BY events.occurred_at DESC, category, event_id DESC LIMIT $2::integer`;
 
 const platformQuery = `
   SELECT tenant_id, category, action, event_id, actor_class, actor_user_id, subject,
