@@ -35,6 +35,8 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
 
   const frozen = loadingOptions || submitting;
   const rangeError = rangeErrorText(fields.startDate, fields.endDate);
+  const needsOptions = Boolean(fields.startDate && fields.endDate && !rangeError)
+    && (!options || options.startDate !== fields.startDate || options.endDate !== fields.endDate);
   const showOfflineNotice = offline && !frozen && !rangeError && Boolean(options?.types.length)
     && options?.startDate === fields.startDate && options?.endDate === fields.endDate;
   const selectedType = options?.types.find((type) => type.id === fields.leaveTypeId) ?? null;
@@ -143,11 +145,12 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
         {rangeError && <Message tone="bad"  role="alert">{rangeError}</Message>}
         {optionsError && <Message tone="bad"  role="alert">{optionsError}</Message>}
         {loadingOptions && <p className="field-hint" role="status">جارٍ تحميل أنواع الإجازة المتاحة…</p>}
-        {optionsError && <div className="workspace-form-actions">
+        {needsOptions && options && !loadingOptions && <p className="field-hint" role="status">تغيّرت التواريخ؛ اعرض الأنواع المتاحة للمتابعة. احتفظنا بباقي بيانات الطلب.</p>}
+        {(optionsError || needsOptions) && <div className="workspace-form-actions">
           <Button variant="ghost"  type="submit" disabled={frozen || Boolean(rangeError)}
             aria-busy={loadingOptions}>
             {loadingOptions && <span className="button-spinner" aria-hidden="true" />}
-            {loadingOptions ? 'جارٍ تحميل الأنواع…' : 'إعادة تحميل الأنواع'}
+            {loadingOptions ? 'جارٍ تحميل الأنواع…' : optionsError ? 'إعادة تحميل الأنواع' : 'عرض الأنواع المتاحة'}
           </Button>
         </div>}
       </form>
