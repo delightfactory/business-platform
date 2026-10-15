@@ -253,6 +253,10 @@ content_path = "./supabase/templates/first_admin_invite.html"
 subject = "رابط آمن لإكمال إعداد حسابك"
 content_path = "./supabase/templates/invitation_magic_link.html"
 
+[auth.email.template.recovery]
+subject = "إعداد كلمة المرور أو استعادتها — منصة الأعمال"
+content_path = "./supabase/templates/password_recovery.html"
+
 # Uncomment to customize notification email template
 # [auth.email.notification.password_changed]
 # enabled = true
