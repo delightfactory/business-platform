@@ -16,7 +16,9 @@ const filters = ['all', 'exceptions', 'ready', 'overtime'] as const;
 export default async function AttendanceReviewPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
   const query = await searchParams;
-  const date = query.date && /^\d{4}-\d{2}-\d{2}$/.test(query.date) ? query.date : cairoToday();
+  const today = cairoToday();
+  const yesterday = new Date(Date.parse(`${today}T12:00:00Z`) - 86400000).toISOString().slice(0, 10);
+  const date = query.date && /^\d{4}-\d{2}-\d{2}$/.test(query.date) ? query.date : today;
   const filter = filters.includes(query.filter as typeof filters[number]) ? query.filter as typeof filters[number] : 'all';
   const cursor = query.cursor && query.cursor.length <= 64 ? query.cursor : null;
   const supabase = await createSupabaseServerClient();
@@ -41,7 +43,7 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
         <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance?date=${encodeURIComponent(date)}`}>العودة إلى اليوم</ButtonLink>
       </div>
       {access.entitlement_enabled !== true && <Message tone="info" >وحدة الحضور غير مفعلة. هذه القائمة للقراءة فقط.</Message>}
-      <div className={styles.toolbar}><form method="get" className={styles.dateForm}><Field  id="review-date" label={<>تاريخ العمل</>}><Input id="review-date" type="date" name="date" defaultValue={date} /></Field><input type="hidden" name="filter" value={filter} /><Button variant="solid"  type="submit">عرض التاريخ</Button></form></div>
+      <div className={styles.toolbar}><nav className={styles.dateShortcuts} aria-label="اختيار يوم المراجعة"><ButtonLink variant="ghost" aria-current={date === today ? 'date' : undefined} href={`/tenant/${tenantId}/attendance/review?date=${today}&filter=${filter}`}>اليوم</ButtonLink><ButtonLink variant="ghost" aria-current={date === yesterday ? 'date' : undefined} href={`/tenant/${tenantId}/attendance/review?date=${yesterday}&filter=${filter}`}>أمس</ButtonLink></nav><form method="get" className={styles.dateForm}><Field  id="review-date" label={<>تاريخ العمل</>}><Input id="review-date" type="date" name="date" defaultValue={date} /></Field><input type="hidden" name="filter" value={filter} /><Button variant="solid"  type="submit">عرض التاريخ</Button></form></div>
       <nav className="attendance-review-filters" aria-label="تصفية قائمة المراجعة">
         <FilterLink tenantId={tenantId} date={date} active={filter === 'all'} filter="all" label="الكل" />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'exceptions'} filter="exceptions" label={`استثناءات تحتاج قرارًا · ${count.exception_count}`} />

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { channelReasonLabel, type MobileAttempt, type MobileSnapshot, type PunchResult } from '@/lib/attendance-channel';
 import { reconcileMobilePunch, submitMobilePunch } from './actions';
-import { Button, Icon } from '@/components/ui';
+import { Button, ButtonLink, Icon } from '@/components/ui';
 import { SlideToConfirm } from '@/components/patterns/attendance-pass/SlideToConfirm';
 import styles from '@/components/patterns/attendance-pass/attendance-pass.module.css';
 type Pending = { id: string; scope: string };
@@ -15,6 +15,7 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
   const storageKey=`attendance-pending:${tenantId}`;
   const ready=hydratedKey===storageKey;
   const next=snapshot.next_direction;
+  const unavailableOwner = ({ link: 'مسؤول الموارد البشرية', assignment: 'مسؤول الموارد البشرية', permission: 'مسؤول المستخدمين', entitlement: 'مسؤول الشركة', disabled: 'مسؤول وسائل تسجيل الحضور', unconfigured: 'مسؤول وسائل تسجيل الحضور' } as Record<string, string>)[snapshot.reason ?? ''] ?? 'مسؤول الحضور';
   const [refreshing,startRefresh]=useTransition();
   function refreshSnapshot() { startRefresh(()=>router.refresh()); }
   useEffect(()=>{
@@ -80,9 +81,9 @@ export function MobilePunch({ tenantId, snapshot }: { tenantId: string; snapshot
     <div className={styles.top}><span className={styles.label}><Icon name="shield" size={18} /> تسجيلك الشخصي</span><Icon name={next==='in'?'clock':'checkCheck'} size={26} /></div>
     <div><h2 className={styles.title}>{!ready?'تجهيز تسجيل الحضور':busy?'انتظر نتيجة العملية':refreshing?'جارٍ تحديث حالة الحضور':pending?(pending.id?'محاولة لم تتأكد بعد':'تعذر قراءة المحاولة السابقة'):terminal?'راجع نتيجة المحاولة':!snapshot.available?'التسجيل غير متاح الآن':next==='in'?'جاهز لبدء يومك؟':'أنت في العمل'}</h2>
     {snapshot.site_name && <p className={styles.site}><Icon name="mapPin" size={16}/>{snapshot.site_name}</p>}</div>
-    {!snapshot.available && <p className={styles.feedback}>{channelReasonLabel(snapshot.reason)}</p>}
+    {!snapshot.available && <div className={styles.feedback}><p>{channelReasonLabel(snapshot.reason)}</p><p>للمتابعة: {unavailableOwner}.</p><div className={styles.actions}><ButtonLink variant="ghost" href={`/tenant/${tenantId}/me/attendance`}>سجلي</ButtonLink></div></div>}
     <div className={styles.feedback} ref={status} tabIndex={-1} role="status" aria-live="polite">{ready?message:'جارٍ تجهيز الصفحة وقراءة مرجع المحاولة السابقة إن وُجد…'}</div>
-    {pending?<div className={styles.actions}><Button disabled={busy || refreshing || !ready || !pending.id} onClick={reconcile} icon="refresh">التحقق من المحاولة</Button>{canResend && <Button variant="ghost" disabled={busy || refreshing || !ready || !snapshot.available} onClick={punch}>إعادة إرسال نفس المحاولة</Button>}</div>:terminal?<div className={styles.actions}><Button disabled={busy || refreshing || !ready} onClick={()=>{setTerminal(false);refreshSnapshot();announce('جارٍ تحديث البيانات. انتظر ظهور الإجراء المطلوب ثم سجّل الحركة.');}}>تجهيز محاولة جديدة</Button></div>:<SlideToConfirm disabled={busy || refreshing || !ready || !snapshot.available} onConfirm={punch} label={next==='in'?'الحضور':'الانصراف'}/>}
-    {snapshot.geofence_required && <p className={styles.location}>يُطلب موقعك لهذه المحاولة فقط للتحقق من نطاق العمل.</p>}
+    {pending?<div className={styles.actions}><Button disabled={busy || refreshing || !ready || !pending.id} onClick={reconcile} icon="refresh">التحقق من المحاولة</Button>{canResend && snapshot.available && <Button variant="ghost" disabled={busy || refreshing || !ready} onClick={punch}>إعادة إرسال نفس المحاولة</Button>}</div>:snapshot.available ? terminal?<div className={styles.actions}><Button disabled={busy || refreshing || !ready} onClick={()=>{setTerminal(false);refreshSnapshot();announce('جارٍ تحديث البيانات. انتظر ظهور الإجراء المطلوب ثم سجّل الحركة.');}}>تجهيز محاولة جديدة</Button></div>:<SlideToConfirm disabled={busy || refreshing || !ready} onConfirm={punch} label={next==='in'?'الحضور':'الانصراف'}/>:null}
+    {snapshot.available && snapshot.geofence_required && <p className={styles.location}>يُطلب موقعك لهذه المحاولة فقط للتحقق من نطاق العمل.</p>}
   </section>;
 }
