@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'r
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { SubmitButton } from '@/components/submit-button';
+import { LeaveRequestImpact } from '@/components/leave-request-impact';
 import { detailHref, halfDayPartLabel, isObject, isUuid } from '../rules';
 import { PendingLink } from '../pending-link';
 import { recordLeaveAction } from './actions';
@@ -183,6 +184,7 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
         <p className="field-hint">اختر الجزء الذي يشمله نصف يوم حسب دوام الموظف في هذا اليوم.</p>
       </>}
       {notice && <Message tone={noticeTone ? 'info' : 'info'} role="status">{notice}</Message>}
+      <LeaveRequestImpact tenantId={tenantId} employeeId={employee.employeeId} employmentId={employee.employmentId} typeId={selectedType ? leaveTypeId : ''} start={startDate} end={endDate} halfDay={halfDay} part={halfDayPart || null} />
 
       <Field id="leave-reason" label={<>سبب الإجازة</>} required><Textarea id="leave-reason" name="reason" value={reason} onChange={(event) => {
         setReason(event.target.value);

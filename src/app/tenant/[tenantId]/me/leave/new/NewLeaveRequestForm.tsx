@@ -17,6 +17,7 @@ import {
 } from '../form-rules';
 import { newOperationKey } from '../operation-key';
 import { PendingLink } from '../pending-link';
+import { LeaveRequestImpact } from '@/components/leave-request-impact';
 import styles from '../leave.module.css';
 
 export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: string; idempotencyKey: string }) {
@@ -179,6 +180,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
               <Checkbox  checked={fields.halfDay} onChange={handleHalfDayChange} disabled={submitting} />
               <span>نصف يوم — يُحتسب وفق سياسة نوع الإجازة في هذا اليوم</span>
             </label>}
+            <LeaveRequestImpact tenantId={tenantId} typeId={selectedType && options.startDate === fields.startDate && options.endDate === fields.endDate ? fields.leaveTypeId : ''} start={fields.startDate} end={fields.endDate} halfDay={fields.halfDay} part={null} />
             <label htmlFor="leave-reason">سبب الإجازة</label>
             <Textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
