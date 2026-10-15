@@ -16,6 +16,24 @@ const values = (data: unknown, keys: string[]): data is Record<string, string | 
   record(data) && keys.every(key => displayValue(data[key]));
 const text = (value: unknown): value is string => typeof value === 'string';
 
+export function ComparisonHistoryGroups({ rows, currentRevision }: { rows: ComparisonRow[]; currentRevision: number }) {
+  const matched: ComparisonRow[] = [], different: ComparisonRow[] = [], unknown: ComparisonRow[] = [];
+  for (const row of rows) {
+    const c = row.case_data, r = row.result;
+    const known = record(c) && record(r) && text(c.name) && text(c.scenario) && text(c.reference) &&
+      text(c.source_url) && (c.origin === 'official' || c.origin === 'synthetic') && typeof r.matched === 'boolean';
+    if (!known) unknown.push(row);
+    else if (r.matched) matched.push(row);
+    else different.push(row);
+  }
+  return <><p className="field-hint">الأعداد تخص الصفوف المعروضة في هذه الصفحة، وقد تشمل نسخًا سابقة. التطابق وحده لا يؤهل القواعد للحساب.</p>
+    {([{ title: 'مختلفة', rows: different }, { title: 'مطابقة', rows: matched }, { title: 'نتيجة غير متاحة', rows: unknown }]).filter(group => group.title !== 'نتيجة غير متاحة' || group.rows.length > 0).map(group => <section className="statutory-comparison-group" key={group.title}>
+      <h3>{group.title} <Badge>{group.rows.length}</Badge></h3>
+      {group.rows.length > 0 && <ul className="member-list">{group.rows.map(row => <ComparisonHistoryRow key={row.id} row={row} currentRevision={currentRevision} />)}</ul>}
+    </section>)}
+  </>;
+}
+
 export function ComparisonHistoryRow({ row, currentRevision }: { row: ComparisonRow; currentRevision: number }) {
   const c = row.case_data, r = row.result;
   const common = record(c) && record(r) && text(c.name) && text(c.scenario) && text(c.reference) &&
