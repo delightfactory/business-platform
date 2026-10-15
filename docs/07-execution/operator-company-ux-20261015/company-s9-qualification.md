@@ -22,7 +22,7 @@ Previously verified employee, own-only, limited HR reader, leave approver, payro
 
 Permission editor actual keyboard sequence: focus trigger+Enter, two Tabs to HR preset, Enter; visible exact5 additions and sensitive consequence; three ShiftTabs wrap focus to Save; Enter saves. Normal authoritative member read proves exact preset5 and denied payroll. Reopen with Enter then Escape closes; document focus returns to تعديل الصلاحيات with a solid outline and0 dialogs. Images permission-keyboard-preview/saved retained. Actor is synthetic only. No existing user's grants were broadened.
 
-The13 additional QA actors increased membership usage beyond the original fixture's10 seats. A separate normal authorized Operator set_tenant_capability_limit call with expected timestamp adjusted only this owned local QA capacity19/10->19/30. Journal s9-qa-capacity-adjustment.json; no production or permission semantics changed. Earlier capacity-specific tests remain their historical fixtures.
+The12 additional QA actors increased membership usage beyond the original fixture's10 seats. A separate normal authorized Operator set_tenant_capability_limit call with expected timestamp adjusted only this owned local QA capacity19/10->19/30. Journal s9-qa-capacity-adjustment.json; no production or permission semantics changed. Earlier capacity-specific tests remain their historical fixtures.
 
 ## Attendance channel event
 
