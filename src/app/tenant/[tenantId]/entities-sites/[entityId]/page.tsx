@@ -1,6 +1,6 @@
 import { PageHeader, Disclosure } from '@/components/ui';
 import { Panel, Badge, Message, RecordCard } from '@/components/ui';
-import { ButtonLink } from '@/components/ui';
+import { Button, ButtonLink, Sheet } from '@/components/ui';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -54,6 +54,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
         {feedback.info && <Message tone="info"  role="status">{feedback.info}</Message>}
 
         {canEntities && <div className="task-actions">
+          <Sheet title="إجراءات الجهة" description={entity.display_name} trigger={<Button variant="ghost">إجراءات الجهة</Button>}>
           <Disclosure summary={<>تعديل بيانات الجهة</>} className="task-disclosure">
 
             <RecordActionForm tenantId={tenantId} entityId={entity.id} action="update" displayName={entity.display_name}
@@ -72,6 +73,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
 
               <RecordActionForm tenantId={tenantId} entityId={entity.id} action="reactivate" label="تأكيد إعادة تفعيل الجهة" />
             </Disclosure>}
+          </Sheet>
         </div>}
       </Panel>
 
@@ -79,9 +81,10 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
         <div className="record-title-row"><div><h2 id="sites-title">الفروع والمواقع</h2>
           <span className="record-meta">الفروع النشطة بالشركة: {snapshot.site_limit?.mode === 'unlimited'
             ? `${activeSites} نشط · بلا حد أقصى` : `${activeSites} من ${String(snapshot.site_limit?.value ?? 'غير متاح')}`}</span></div>
-          {canSites && entity.is_active && <ButtonLink variant="solid"  href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</ButtonLink>}</div>
+          {canSites && entity.is_active && !full && <ButtonLink variant="solid"  href={`/tenant/${tenantId}/entities-sites/${entity.id}/sites/new`}>إضافة فرع</ButtonLink>}</div>
         <p className="field-hint">يُسجَّل كل فرع أو موقع عمل تحت الجهة القانونية التي يتبعها.</p>
-        {!canSites && <Message tone="info"  role="status">عرض التفاصيل يتطلب صلاحية إدارة المواقع.</Message>}
+        {!canSites && <Message tone="info" role="status">إدارة الفروع تحتاج صلاحية إدارة المواقع.</Message>}
+        {canSites && entity.is_active && full && <Message tone="info" role="status">اكتمل حد الفروع. عطّل فرعًا غير مستخدم أو اطلب رفع الحد قبل الإضافة.</Message>}
         {canSites && entity.sites.length === 0 && <div className="empty-state"><p>لا توجد فروع أو مواقع مسجلة لهذه الجهة.</p></div>}
         {canSites && entity.sites.length > 0 && <ul className="record-list">
           {entity.sites.map((site) => <RecordCard className="site-record" key={site.id}>
@@ -90,8 +93,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
                 <Badge className={` ${site.is_active ? 'is-active' : 'is-inactive'}`}>{site.is_active ? 'نشط' : 'غير نشط'}</Badge></div>
               {site.is_default && <p className="record-meta">الموقع الافتراضي للشركة</p>}
             </div>
-            <details className="task-disclosure site-actions-disclosure">
-              <summary className="secondary-button" aria-label={`إجراءات فرع ${site.display_name}`}>إجراءات الفرع</summary>
+            <Sheet title="إجراءات الفرع" description={site.display_name} trigger={<Button variant="ghost" aria-label={`إجراءات فرع ${site.display_name}`}>إجراءات الفرع</Button>}>
               <div className="task-actions">
                 <Disclosure summary={<>تعديل الاسم</>} className="task-disclosure">
                 <RecordActionForm tenantId={tenantId} entityId={entity.id} siteId={site.id} action="update"
@@ -111,7 +113,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
                           displayName={site.display_name} label="تأكيد إعادة تفعيل الفرع" />
                       </Disclosure>}
               </div>
-            </details>
+            </Sheet>
           </RecordCard>)}
         </ul>}
       </Panel>

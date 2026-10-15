@@ -6,12 +6,13 @@ import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offl
 
 import { useActionState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { ReasonField } from '@/components/reason-field';
 import { createLegalEntityFormAction, type NewEntityState } from '../actions';
 
 export function NewEntityForm({ tenantId }: { tenantId: string }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHint0 = useId();
-  const initial: NewEntityState = { displayName: '', legalName: '', reason: '', error: '', attempt: 0 };
+  const initial: NewEntityState = { displayName: '', legalName: '', reason: 'إضافة جهة للشركة', error: '', attempt: 0 };
   const [state, action, actionPending] = useActionState(createLegalEntityFormAction, initial);
   const showOffline0 = offline && !actionPending;
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
@@ -21,8 +22,7 @@ export function NewEntityForm({ tenantId }: { tenantId: string }) {
     <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
     <Input id="entity-legal-name" name="legalName" maxLength={200} defaultValue={state.legalName} />
     <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر للمستخدمين.</p>
-    <label htmlFor="entity-create-reason">سبب الإضافة</label>
-    <Input id="entity-create-reason" name="reason" required minLength={3} maxLength={500} defaultValue={state.reason} />
+    <ReasonField id="entity-create-reason" label="سبب الإضافة" suggested defaultValue={state.reason} />
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions"><SubmitButton label="إضافة الجهة" pendingLabel="جارٍ الإضافة…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
       <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites`}>إلغاء</ButtonLink></div>

@@ -1,6 +1,7 @@
 'use client';
 import { Message, FileInput, Checkbox } from '@/components/ui';
-import { Button, Input, Select, Textarea } from '@/components/ui';
+import { Button, Input, Select } from '@/components/ui';
+import { ReasonField } from '@/components/reason-field';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
@@ -18,6 +19,7 @@ export function BrandingEditor({
   logoUrl,
   hasStoredLogo,
   canManage,
+  isFirstSetup,
 }: {
   tenantId: string;
   initialName: string;
@@ -26,6 +28,7 @@ export function BrandingEditor({
   logoUrl: string | null;
   hasStoredLogo: boolean;
   canManage: boolean;
+  isFirstSetup: boolean;
 }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
@@ -34,7 +37,7 @@ export function BrandingEditor({
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [removeLogo, setRemoveLogo] = useState(false);
-  const [reason, setReason] = useState('');
+  const [reason, setReason] = useState(isFirstSetup ? 'إعداد هوية الشركة' : '');
   const [error, setError] = useState('');
   const [pending, startTransition] = useTransition();
   const fileInput = useRef<HTMLInputElement>(null);
@@ -116,8 +119,7 @@ export function BrandingEditor({
           {hasStoredLogo && !logoUrl && <Message tone="info"  role="status">تعذرت معاينة الشعار الحالي؛ يمكنك استبداله أو إزالة عرضه.</Message>}
           {hasStoredLogo && <p className="field-hint">سيبقى الشعار السابق محفوظًا عند تغييره أو إزالته من العرض.</p>}
 
-          <label htmlFor="tenant-brand-reason">سبب التغيير</label>
-          <Textarea id="tenant-brand-reason" name="reason" required minLength={3} maxLength={500} rows={3}
+          <ReasonField id="tenant-brand-reason" label="سبب التغيير" suggested={isFirstSetup}
             value={reason} onChange={(event) => setReason(event.currentTarget.value)} />
           {error && <Message tone="bad"  role="alert">{error}</Message>}
           <Button variant="solid"  type="submit" disabled={offline || (pending)} aria-busy={pending} aria-describedby={showOffline0 ? offlineHint0 : undefined}>

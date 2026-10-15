@@ -6,6 +6,7 @@ import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offl
 
 import { useActionState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { ReasonField } from '@/components/reason-field';
 import { legalEntityFormAction, siteFormAction, type RecordActionState } from '../actions';
 
 type Action = 'update' | 'default' | 'deactivate' | 'reactivate';
@@ -38,8 +39,7 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
         <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
       </>}
     </>}
-    <label htmlFor={`${prefix}-reason`}>{reasonLabel}</label>
-    <Input id={`${prefix}-reason`} name="reason" defaultValue={state.reason} required minLength={3} maxLength={500} />
+    <ReasonField id={`${prefix}-reason`} label={reasonLabel} defaultValue={state.reason} />
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <SubmitButton className={recordAction === 'deactivate' ? 'danger-button' : 'secondary-button'} label={label}
       ariaLabel={isSite && displayName ? `${label}: ${displayName}` : undefined} pendingLabel="جارٍ الحفظ…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>

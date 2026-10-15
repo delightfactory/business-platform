@@ -39,6 +39,7 @@ VALUES ('e2000000-0000-4000-8000-000000000001','e1000000-0000-4000-8000-00000000
 
 SET LOCAL ROLE authenticated;
 SELECT set_config('request.jwt.claim.sub','e1000000-0000-4000-8000-000000000002',true);
+SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'has_saved_branding','false','unsaved branding is explicit rather than inferred from default colors');
 SELECT is(public.tenant_branding_storage_allowed('e2000000-0000-4000-8000-000000000001',false),true,'active Tenant member may read same-Tenant branding objects');
 SELECT is(public.tenant_branding_storage_allowed('e2000000-0000-4000-8000-000000000002',false),false,'member cannot read another Tenant branding objects');
 SELECT is(public.tenant_branding_storage_allowed('e2000000-0000-4000-8000-000000000001',true),false,'ordinary Member cannot write branding objects');
@@ -54,6 +55,7 @@ SELECT is(public.tenant_branding_storage_allowed('e2000000-0000-4000-8000-000000
 SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'tenant_name','Branding Tenant A','snapshot falls back to the Tenant display name');
 SELECT is(public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','violet',NULL,false,'Brand refresh')->>'state','saved','Admin saves an audited display override');
 SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'tenant_name','Aster','snapshot uses the display override');
+SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'has_saved_branding','true','saved branding is distinct from first setup');
 SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'primary_color_key','violet','snapshot returns the selected safe color');
 SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000002','Cross Tenant','blue',NULL,false,'test')$$,'42501','tenant_branding_forbidden','Tenant Admin cannot update another Tenant');
 SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Invalid','pink',NULL,false,'test')$$,'22023','tenant_branding_input_invalid','unsupported color is rejected');

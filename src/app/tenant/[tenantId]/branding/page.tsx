@@ -12,7 +12,7 @@ type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string }>;
 type Branding = {
   tenant_id: string; tenant_name: string; display_name_override: string | null;
-  primary_color_key: 'teal' | 'blue' | 'violet' | 'emerald'; logo_object_path: string | null; can_manage_branding: boolean;
+  primary_color_key: 'teal' | 'blue' | 'violet' | 'emerald'; logo_object_path: string | null; can_manage_branding: boolean; has_saved_branding?: boolean;
 };
 
 export default async function TenantBrandingPage({ params, searchParams }: { params: Params; searchParams: Query }) {
@@ -44,7 +44,7 @@ export default async function TenantBrandingPage({ params, searchParams }: { par
       {query.state && query.state !== 'saved' && <Message tone="bad"  role="alert">{stateText(query.state)}</Message>}
       <BrandingEditor tenantId={tenantId} initialName={branding.display_name_override ?? ''}
         baseName={String(tenant?.tenant_name ?? branding.tenant_name)} colorKey={branding.primary_color_key} logoUrl={logoUrl}
-        hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} />
+        hasStoredLogo={Boolean(branding.logo_object_path)} canManage={branding.can_manage_branding} isFirstSetup={branding.has_saved_branding === false} />
     </section>
   </main>;
 }
