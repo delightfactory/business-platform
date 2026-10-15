@@ -211,7 +211,7 @@ export default async function EmployeePage({ params, searchParams }: {
         {override.can_cancel && workPolicyPanel.can_manage_catalog && <OfflineForm action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
           <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="overrideId" value={override.id}/>
-          <div className="work-policy-assignment-field"><Field id={`override-cancel-reason-${override.id}`} label={<>سبب الإلغاء</>} required><Input id={`override-cancel-reason-${override.id}`} name="cancelReason" minLength={3} maxLength={500} required/></Field></div>
+          <div className="work-policy-assignment-field"><Field id={`override-cancel-reason-${override.id}`} label={<>سبب الإلغاء</>} required help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Input id={`override-cancel-reason-${override.id}`} name="cancelReason" minLength={3} maxLength={500} required placeholder="مثال: تحديث البيانات بعد مراجعتها"/></Field></div>
           <div className="workspace-form-actions"><OfflineSubmitButton className="secondary-button" label="إلغاء التغيير المقرر" pendingLabel="جارٍ الإلغاء…" /></div>
         </OfflineForm>}
       </RecordCard>)}</ol> : <Message tone="neutral" >لا توجد تغييرات دوام لفترات محددة.</Message>}
@@ -221,7 +221,7 @@ export default async function EmployeePage({ params, searchParams }: {
         <div className="work-policy-assignment-field"><Field id="policy-override-id" label={<>قالب الدوام للفترة</>} required><Select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-from" label={<>من تاريخ</>} required><Input id="policy-override-from" type="date" name="validFrom" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-through" label={<>إلى تاريخ</>} required><Input id="policy-override-through" type="date" name="validThrough" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
-        <div className="work-policy-assignment-field"><Field id="policy-override-reason" label={<>سبب التغيير</>} required><Input id="policy-override-reason" name="reason" minLength={3} maxLength={500} required/></Field></div>
+        <div className="work-policy-assignment-field"><Field id="policy-override-reason" label={<>سبب التغيير</>} required help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Input id="policy-override-reason" name="reason" minLength={3} maxLength={500} required placeholder="مثال: تحديث البيانات بعد مراجعتها"/></Field></div>
         {query.policyOverride === 'invalid' && <Message tone="bad"  role="alert">راجع القالب والتاريخين، واجعل الفترة 90 يومًا أو أقل، واكتب سببًا واضحًا.</Message>}
         {query.policyOverride === 'overlap' && <Message tone="bad"  role="alert">تتداخل الفترة مع تغيير دوام محفوظ. اختر فترة أخرى.</Message>}
         {query.policyOverride === 'materialized' && <Message tone="bad"  role="alert">بدأ فتح الحضور لأحد أيام الفترة؛ لم يُغيّر أي سجل. اختر تواريخ لم تُفتح بعد.</Message>}

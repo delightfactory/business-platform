@@ -66,8 +66,8 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
     <Field id={`${prefix}-radius_m`} label="المسافة المسموح بها من المقر (متر)" hint="أبعد مسافة يمكن للموظف تسجيل حضوره منها، محسوبة من النقطة المحددة." required><Input name="radius_m" type="number" min={10} max={10000} step="any" required value={range} onChange={event => setRange(event.target.value)} /></Field>
     <Disclosure summary="عرض الإحداثيات أو تعديلها يدويًا" open={latitude === undefined || longitude === undefined}>
       <div className={styles.coordinates}>
-        <Field id={`${prefix}-latitude`} label="خط العرض" required><Input name="latitude" type="number" step="any" min={-90} max={90} required value={lat} onChange={event => setLat(event.target.value)} /></Field>
-        <Field id={`${prefix}-longitude`} label="خط الطول" required><Input name="longitude" type="number" step="any" min={-180} max={180} required value={lng} onChange={event => setLng(event.target.value)} /></Field>
+        <Field id={`${prefix}-latitude`} label="خط العرض" required help="يُملأ من نقطة الخريطة؛ يمكنك إدخاله يدويًا إذا عرفت إحداثيات مقر العمل."><Input name="latitude" type="number" step="any" min={-90} max={90} required value={lat} onChange={event => setLat(event.target.value)}  placeholder="مثال: 30.0444"/></Field>
+        <Field id={`${prefix}-longitude`} label="خط الطول" required help="يُملأ من نقطة الخريطة؛ يمكنك إدخاله يدويًا إذا عرفت إحداثيات مقر العمل."><Input name="longitude" type="number" step="any" min={-180} max={180} required value={lng} onChange={event => setLng(event.target.value)}  placeholder="مثال: 31.2357"/></Field>
       </div>
     </Disclosure>
   </div>;

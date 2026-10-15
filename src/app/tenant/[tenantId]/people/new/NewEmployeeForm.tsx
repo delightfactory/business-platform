@@ -39,8 +39,8 @@ export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <fieldset className={styles.formGroup}><legend>بيانات الموظف</legend>
-    <Field id="employee-code" label={<>رمز الموظف (مقترح، يمكنك تغييره)</>} required><Input id="employee-code" name="code" required maxLength={40} defaultValue={state.code} /></Field>
-    <Field id="employee-name" label={<>اسم الموظف</>} required><Input id="employee-name" name="name" required minLength={2} maxLength={160} autoFocus defaultValue={state.name} /></Field>
+    <Field id="employee-code" label={<>رمز الموظف (مقترح، يمكنك تغييره)</>} required><Input id="employee-code" name="code" required maxLength={40} defaultValue={state.code}  placeholder="مثال: EMP-014"/></Field>
+    <Field id="employee-name" label={<>اسم الموظف</>} required><Input id="employee-name" name="name" required minLength={2} maxLength={160} autoFocus defaultValue={state.name}  placeholder="مثال: أحمد محمد"/></Field>
     <p className="field-hint">يمكن إنشاء حساب دخول وربطه بالموظف لاحقًا؛ الملف الوظيفي لا يحتاج إلى حساب.</p>
     </fieldset>
 
@@ -70,8 +70,8 @@ export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId
     <Field id="employee-pay-basis" label={<>طريقة الأجر</>}><Select id="employee-pay-basis" name="payBasis" defaultValue={state.payBasis}>
       <option value="monthly">شهري</option><option value="daily">يومي</option>
     </Select></Field>
-    <Field id="employee-amount" label={<>الأجر الأساسي بالجنيه المصري</>} required><Input id="employee-amount" name="amount" type="number" min="0" max="999999999999.99" step="0.01"
-      inputMode="decimal" required defaultValue={state.amount} /></Field>
+    <Field id="employee-amount" label={<>الأجر الأساسي بالجنيه المصري</>} required help="الأجر الأساسي بالجنيه المصري وفق طريقة الأجر المختارة، دون إضافة البدلات هنا."><Input id="employee-amount" name="amount" type="number" min="0" max="999999999999.99" step="0.01"
+      inputMode="decimal" required defaultValue={state.amount}  placeholder="مثال: 5000.00"/></Field>
     <label className="checkbox-row" htmlFor="employee-payroll-eligible">
       <Checkbox id="employee-payroll-eligible" name="payrollEligible"  defaultChecked={state.payrollEligible} />
       <span>يُدرج في كشوف الرواتب عند تفعيل الرواتب</span>

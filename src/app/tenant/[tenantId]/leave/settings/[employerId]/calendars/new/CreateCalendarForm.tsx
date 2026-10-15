@@ -38,7 +38,7 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
     <div className={styles.formGrid}>
       <div className={styles.field}>
         <Field id="calendar-name" label={<>اسم التقويم</>} required><Input id="calendar-name" name="name" required maxLength={MAX_NAME_LENGTH}
-          defaultValue={state.name} disabled={pending} /></Field>
+          defaultValue={state.name} disabled={pending}  placeholder="مثال: تقويم العمل 2026"/></Field>
         <span className="field-hint">مثال: تقويم المكتب الرئيسي.</span>
       </div>
       <div className={styles.field}>
@@ -56,7 +56,7 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
     <Disclosure  summary={<>خيارات متقدمة: الرمز</>}>
       <div className={styles.field}>
         <Field id="calendar-code" label={<>رمز التقويم</>} required><Input id="calendar-code" name="code" required maxLength={MAX_CODE_LENGTH} autoComplete="off"
-          defaultValue={state.code} disabled={pending} /></Field>
+          defaultValue={state.code} disabled={pending}  placeholder="مثال: CAL-2026"/></Field>
         <span className="field-hint">
           يُملأ تلقائيًا. عدّله فقط إن كانت شركتك تستخدم رمزًا محددًا؛ الحد {MAX_CODE_LENGTH} حرفًا.
         </span>
@@ -74,7 +74,7 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
       </div>
       <div className={styles.field}>
         <Field id="calendar-reason" label={<>سبب الإنشاء</>} required><Input id="calendar-reason" name="reason" required minLength={MIN_REASON_LENGTH}
-          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} /></Field>
+          maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending}  placeholder="مثال: تطبيق القرار المعتمد مع إثبات مرجعه"/></Field>
         <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
       </div>
     </div>

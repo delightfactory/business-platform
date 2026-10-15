@@ -1,0 +1,22 @@
+[
+  {
+    "path": "images/help-desktop.jpg",
+    "sha256": "892bc8973dcfad2afdccb189251a476a0887f98288a1b86cdcc303172c646357",
+    "bytes": 62930
+  },
+  {
+    "path": "images/demo.jpg",
+    "sha256": "60bd4bec3c01a826a9fe168a2d1bbd6c213c8a2f20ac38351cf3dee9d8bceed6",
+    "bytes": 46118
+  },
+  {
+    "path": "images/guide.jpg",
+    "sha256": "deb0e0074a7748f33181428317806b40fc97722d5d208275226a7b18028d6725",
+    "bytes": 92947
+  },
+  {
+    "path": "images/help-mobile.jpg",
+    "sha256": "019d3f15ec0111858f5d643803ec6554dc11e241b2871b5bd4af385a39f995ae",
+    "bytes": 37171
+  }
+]

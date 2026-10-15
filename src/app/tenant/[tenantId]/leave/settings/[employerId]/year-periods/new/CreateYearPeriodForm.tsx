@@ -65,7 +65,7 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
 
     <div className={styles.field}>
       <Field id="period-reason" label={<>سبب الإنشاء</>} required><Input id="period-reason" name="reason" required minLength={MIN_REASON_LENGTH}
-        maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending} /></Field>
+        maxLength={MAX_REASON_LENGTH} defaultValue={state.reason} disabled={pending}  placeholder="مثال: تطبيق القرار المعتمد مع إثبات مرجعه"/></Field>
       <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
     </div>
 

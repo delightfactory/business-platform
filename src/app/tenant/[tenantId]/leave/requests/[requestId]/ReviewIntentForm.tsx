@@ -161,7 +161,7 @@ function IntentForm({
       </Select></>}
     <Field id={reasonId} label={<>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</>} required><Textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
       value={reason} onChange={(event) => handleReasonChange(event.target.value)} disabled={pending}
-      aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`} /></Field>
+      aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`}  placeholder="مثال: مراجعة الطلب والرصيد والمستند المؤيد"/></Field>
     <p id={`${reasonId}-hint`} className="field-hint">{hint} {KEY_NOTE}</p>
     {intent === 'approve' && <label>
       <Checkbox  name="historicalPayrollCorrection" checked={historicalAddition} disabled={pending}

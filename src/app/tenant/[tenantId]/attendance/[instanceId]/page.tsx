@@ -93,12 +93,12 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
             <input type="hidden" name="action" value="replace" />
             <label>نوع التسجيل<Select name="direction" defaultValue={punch.direction}><option value="in">دخول</option><option value="out">خروج</option></Select></label>
             <label>الوقت الصحيح <Input name="localTime" type="datetime-local" required defaultValue={toLocalInput(punch.happened_at, zone)} /></label>
-            <label className="attendance-full-field">سبب التصحيح <Input name="reason" minLength={3} maxLength={500} required /></label>
+            <label className="attendance-full-field">سبب التصحيح <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: تصحيح وقت الحركة وفق المستند"/></label>
             <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ الحفظ..." label="حفظ التصحيح" />
           </OfflineForm>
           {!punch.excluded && <OfflineForm action={correctPunchAction} className="attendance-form attendance-exclude-form">
             <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="punchId" value={punch.id} /><input type="hidden" name="action" value="exclude" />
-            <label className="attendance-full-field">سبب الاستبعاد <Input name="reason" minLength={3} maxLength={500} required /></label>
+            <label className="attendance-full-field">سبب الاستبعاد <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: تسجيل مكرر موثق في سجل المصدر"/></label>
             <OfflineSubmitButton className="secondary-button" pendingLabel="جارٍ الحفظ..." label="استبعاد مع حفظ الدليل" />
           </OfflineForm>}
         </details>}
@@ -109,7 +109,7 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="requestKey" value={crypto.randomUUID()} />
           <label>نوع التسجيل<Select name="direction" defaultValue="in"><option value="in">دخول</option><option value="out">خروج</option></Select></label>
           <label>الوقت المحلي <Input name="localTime" type="datetime-local" required defaultValue={defaultLocalInput(expectedStart, zone)} /></label>
-          {(permissions.can_manage !== true || instance.status !== "open") && <label className="attendance-full-field">سبب إضافة التسجيل للمراجعة <Input name="reason" minLength={3} maxLength={500} required /></label>}<p className="field-hint attendance-full-field">يُحفظ الوقت كحدث مستقل وفق {timezoneLabel(zone)}. إذا كان التوقيت المحلي ملتبسًا سيطلب النظام وقتًا آخر.</p>
+          {(permissions.can_manage !== true || instance.status !== "open") && <label className="attendance-full-field">سبب إضافة التسجيل للمراجعة <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: إضافة حركة ناقصة وفق سجل موثق"/></label>}<p className="field-hint attendance-full-field">يُحفظ الوقت كحدث مستقل وفق {timezoneLabel(zone)}. إذا كان التوقيت المحلي ملتبسًا سيطلب النظام وقتًا آخر.</p>
           <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ الحفظ..." label="حفظ التسجيل" />
         </OfflineForm>
       </details>}
@@ -130,14 +130,14 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
           {permissions.can_approve === true && (!currentFact || permissions.can_correct === true) && entitlementEnabled && <OfflineForm action={approveAttendanceAbsenceAction} className="attendance-form attendance-approve-form">
             <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} />
             {currentFact && <input type="hidden" name="correctsFactId" value={currentFact.id} />}
-            <label className="attendance-full-field">{currentFact ? 'سبب تصحيح الاعتماد إلى غياب' : 'سبب إثبات الغياب'} <Input name="reason" minLength={3} maxLength={500} required /></label>
+            <label className="attendance-full-field">{currentFact ? 'سبب تصحيح الاعتماد إلى غياب' : 'سبب إثبات الغياب'} <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: غياب دون تسجيل أو مستند حضور"/></label>
             <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={currentFact ? 'اعتماد تصحيح الغياب' : 'اعتماد يوم غياب'} />
           </OfflineForm>}
         </div>}
       </>}
       {!classificationReview && permissions.can_approve === true && interpretations?.state === 'ready' && (!currentFact || currentFact.interpretation_id !== interpretations.id) && <OfflineForm action={approveAttendanceAction} className="attendance-form attendance-approve-form">
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="correctsFactId" value={currentFact?.id ?? ''} />
-        {(currentFact || interpretations.exception_code === 'short_workday') && <label className="attendance-full-field">{interpretations.exception_code === 'short_workday' ? 'سبب اعتماد مدة أقل من المطلوب' : 'سبب إعادة الاعتماد'} <Input name="reason" minLength={3} maxLength={500} required /></label>}
+        {(currentFact || interpretations.exception_code === 'short_workday') && <label className="attendance-full-field">{interpretations.exception_code === 'short_workday' ? 'سبب اعتماد مدة أقل من المطلوب' : 'سبب إعادة الاعتماد'} <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: اعتماد مدة العمل الفعلية وفق المستند"/></label>}
         <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ الاعتماد..." label={currentFact ? 'اعتماد التصحيح كنسخة جديدة' : 'اعتماد نتيجة اليوم'} />
       </OfflineForm>}
       {facts.length > 0 && <div className="attendance-fact-history"><h3>سجل الاعتماد</h3><ol>{facts.map((fact) => <li key={fact.id}><strong>النسخة {fact.version}</strong> · {fact.fact.outcome === 'leave_covered' ? 'مغطى بإجازة' : fact.fact.outcome === 'absence' ? `غياب ${String(fact.fact.absence_units ?? 1)} يوم` : fact.corrects_fact_id ? 'تصحيح لنسخة سابقة' : 'اعتماد'}{fact.reason ? ` · السبب: ${fact.reason}` : ''}</li>)}</ol></div>}
@@ -157,12 +157,12 @@ export default async function AttendanceInstancePage({ params, searchParams }: {
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="approved" />
                   <AllocationStepper minutes={candidate.candidate_minutes} />
                   <p className="field-hint">يجب أن يساوي مجموع الفئات {candidate.candidate_minutes} دقيقة بالضبط. إدخال كل فئة مطلوب، بما في ذلك صفر عند عدم انطباقها.</p>
-                  <label className="attendance-full-field">سبب التصنيف أو ملاحظة الدليل <Input name="reason" minLength={3} maxLength={500} required /></label>
+                  <label className="attendance-full-field">سبب التصنيف أو ملاحظة الدليل <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: ساعات إضافية بطلب موثق من المسؤول"/></label>
                   <OfflineSubmitButton className="primary-button" pendingLabel="جارٍ حفظ التصنيف..." label={candidate.classification ? 'حفظ التصنيف الجديد' : 'اعتماد مدة الإضافي وتصنيفها'} />
                 </OvertimeClassificationForm>
                 {candidate.decision === 'pending' && <Disclosure summary={<>رفض الوقت الإضافي المقترح</>} className="task-disclosure"><OfflineForm action={reviewAttendanceOvertimeAction} className="attendance-form attendance-overtime-form">
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="candidateId" value={candidate.id} /><input type="hidden" name="decision" value="rejected" />
-                  <label className="attendance-full-field">سبب الرفض <Input name="reason" minLength={3} maxLength={500} required /></label>
+                  <label className="attendance-full-field">سبب الرفض <Input name="reason" minLength={3} maxLength={500} required  placeholder="مثال: وقت زائد لم يعتمد تكليفه"/></label>
                   <OfflineSubmitButton className="secondary-button" pendingLabel="جارٍ الحفظ..." label="رفض الوقت الإضافي المقترح" />
                 </OfflineForm></Disclosure>}
               </div>}

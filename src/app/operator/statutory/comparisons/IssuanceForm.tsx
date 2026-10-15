@@ -32,7 +32,7 @@ export function IssuanceForm({head,revision,actor,stamp}:{head:string;revision:n
   <input type="hidden" name="head" value={head}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="actor" value={actor}/><input type="hidden" name="stamp" value={stamp}/>
   <input type="hidden" name="reason" value={reason}/><input type="hidden" name="reviewed" value={String(reviewed)}/>
   <fieldset disabled={frozen}><legend>مراجعة إصدار الضريبة والتأمين</legend>
-   <label htmlFor="issuance-reason">مرجع المراجعة وسبب الاعتماد</label><Textarea id="issuance-reason" required minLength={10} maxLength={1000} value={reason} onChange={event=>setReason(event.target.value)}/>
+   <label htmlFor="issuance-reason">مرجع المراجعة وسبب الاعتماد</label><Textarea id="issuance-reason" required minLength={10} maxLength={1000} value={reason} onChange={event=>setReason(event.target.value)} placeholder="مثال: مراجعة المقارنات مقابل المرجع الرسمي"/>
    <label htmlFor="issuance-reviewed"><Checkbox id="issuance-reviewed"  required checked={reviewed} onChange={event=>setReviewed(event.target.checked)}/>راجعت أصل النتائج الرسمية، وانطباقها على الفئة والفترة، وتغطية حالات الضريبة والتأمين. تصنيف الحالة وحده لا يثبت أنها رسمية أو ممثلة.</label>
   </fieldset>
   <p className="field-hint">الإصدار يثبت هذه النسخة وأدلتها للضريبة والتأمين فقط. لا يعتمد قواعد العمل الإضافي أو حدود الخصم، ولا يسمح بحفظ المسير المالي نهائيًا.</p>

@@ -40,7 +40,7 @@ export function RequestCancellationForm({ tenantId, requestId, expectedVersion, 
     <label htmlFor="cancellation-reason">سبب طلب الإلغاء</label>
     <Textarea id="cancellation-reason" name="reason" required minLength={3} maxLength={500}
       value={reason} onChange={handleReasonChange} disabled={pending}
-      aria-invalid={Boolean(submitState.error)} aria-describedby="cancellation-reason-hint" />
+      aria-invalid={Boolean(submitState.error)} aria-describedby="cancellation-reason-hint"  placeholder="مثال: تغيير الموعد المطلوب"/>
     <p id="cancellation-reason-hint" className="field-hint">وضح السبب في 3 إلى 500 حرف. يبقى طلب الإجازة معتمدًا حتى قرار الموارد البشرية.</p>
     {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ إرسال طلب الإلغاء… لا تغلق الصفحة ولا تغيّر السبب.</p>}

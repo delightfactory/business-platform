@@ -58,9 +58,9 @@ export function LimitManager({ initial }: { initial: OperatorCommercialSnapshot 
         {row.status === 'missing' && <p className="field-hint">حدد حدًا جديدًا قبل متابعة إدارة النمو.</p>}
         {editing === row.capability_key && <form onSubmit={event => void save(event, row)} className="operator-limit-editor"><fieldset disabled={locked} className="operator-duration-fields"><legend>تعديل حد {row.capability_key === 'tenant.users' ? 'المستخدمين' : 'الفروع'}</legend>
           <SegmentedControl label="نوع الحد" value={mode} onChange={setMode} options={[{ value: 'limited', label: 'عدد محدد' }, { value: 'unlimited', label: 'غير محدود' }]} />
-          {mode === 'limited' && <><label htmlFor="new-commercial-limit">الحد الجديد</label><Input id="new-commercial-limit" type="number" required min={1} step={1} value={value} onChange={event => setValue(event.target.value)} /></>}
+          {mode === 'limited' && <><label htmlFor="new-commercial-limit">الحد الجديد</label><Input id="new-commercial-limit" type="number" required min={1} step={1} value={value} onChange={event => setValue(event.target.value)}  placeholder="مثال: 10"/></>}
           {mode === 'limited' && Number(value) > 0 && Number(value) < row.usage && <Banner tone="warn">الاستخدام الحالي {row.usage} أعلى من {value}: يبقى الموجود نشطًا، ولن تُضاف موارد جديدة حتى ينخفض الاستخدام أو يُرفع الحد.</Banner>}
-          <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="commercial-limit-note">الملاحظة</label><Textarea id="commercial-limit-note" value={note} maxLength={500} onChange={event => setNote(event.target.value)} /></Disclosure>
+          <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="commercial-limit-note">الملاحظة</label><Textarea id="commercial-limit-note" value={note} maxLength={500} onChange={event => setNote(event.target.value)}  placeholder="مثال: تعديل وفق الاتفاق المحدث مع الشركة"/></Disclosure>
           <div className="operator-form-actions"><Button type="submit" pending={busy}>حفظ الحد</Button><Button variant="ghost" onClick={() => setEditing(null)}>إلغاء</Button></div>
         </fieldset></form>}
       </article>;

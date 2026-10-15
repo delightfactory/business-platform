@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/ui';
+import { Field, PageHeader } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
@@ -49,8 +49,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
           <OfflineForm className="auth-form" action={setInvitationPasswordAction}>
             <input type="hidden" name="invitationId" value={invitationId} />
             <input type="hidden" name="issuance" value={issuance} />
-            <label htmlFor="password">أنشئ كلمة مرور لحسابك</label>
-            <Input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required />
+            <Field id="password" label="أنشئ كلمة مرور لحسابك" help="اختر كلمة مرور من 8 أحرف على الأقل، واستخدمها لهذا الحساب."><Input id="password" name="password" type="password" autoComplete="new-password" minLength={8} required  /></Field>
             <p className="field-hint">ثمانية أحرف على الأقل. لا تتغير كلمات مرور أي حسابات أخرى.</p>
             <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
           </OfflineForm>

@@ -66,7 +66,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
       {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المستوفين لشروط الربط.</p> : <>
         <form method="get" action={base} className="compact-form">
           <ProfileReturnField value={returnTo} name="return" />
-          <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} /></Field>
+          <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query}  placeholder="مثال: name@example.com"/></Field>
           <input type="hidden" name="linkPage" value="1" />
           <Button variant="ghost"  type="submit">بحث</Button>
         </form>
@@ -109,7 +109,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
           <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="requestKey" value={requestKey} />
-          <Field id="employee-account-email" label={<>بريد الموظف</>} required><Input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required /></Field>
+          <Field id="employee-account-email" label={<>بريد الموظف</>} required><Input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required  placeholder="مثال: name@example.com"/></Field>
           <OfflineSubmitButton label="إنشاء الحساب وإرسال رابط التفعيل" pendingLabel="جارٍ إنشاء الحساب…" />
         </OfflineForm>}
       </Disclosure>}

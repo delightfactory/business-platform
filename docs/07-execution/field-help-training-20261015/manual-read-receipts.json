@@ -1,0 +1,44 @@
+{
+  "manualReads": [
+    {
+      "offset": 1,
+      "limit": 230,
+      "error": false,
+      "characters": 14540,
+      "returnedLines": 230,
+      "first": 1,
+      "last": 230,
+      "truncated": false
+    },
+    {
+      "offset": 231,
+      "limit": 230,
+      "error": false,
+      "characters": 17043,
+      "returnedLines": 230,
+      "first": 231,
+      "last": 460,
+      "truncated": false
+    },
+    {
+      "offset": 461,
+      "limit": 230,
+      "error": false,
+      "characters": 15682,
+      "returnedLines": 230,
+      "first": 461,
+      "last": 690,
+      "truncated": false
+    },
+    {
+      "offset": 691,
+      "limit": 230,
+      "error": false,
+      "characters": 15613,
+      "returnedLines": 220,
+      "first": 691,
+      "last": 910,
+      "truncated": false
+    }
+  ]
+}

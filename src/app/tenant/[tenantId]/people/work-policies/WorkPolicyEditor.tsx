@@ -94,14 +94,14 @@ export function WorkPolicyEditor({
       </div>
       <div className="work-policy-grid">
         {!policy && <div className="work-policy-field">
-          <Field id={`${idPrefix}-code`} label={<>رمز القالب</>} required><Input id={`${idPrefix}-code`} name="code" value={values.code} onChange={handleValueChange} required maxLength={32} autoComplete="off" /></Field>
+          <Field id={`${idPrefix}-code`} label={<>رمز القالب</>} required><Input id={`${idPrefix}-code`} name="code" value={values.code} onChange={handleValueChange} required maxLength={32} autoComplete="off"  placeholder="مثال: OFFICE-01"/></Field>
           <small>جاهز للاستخدام. عدّله فقط إذا كانت الشركة تستخدم كودًا محددًا للدوام.</small>
         </div>}
         <div className="work-policy-field">
-          <Field id={`${idPrefix}-name`} label={<>اسم القالب</>} required><Input id={`${idPrefix}-name`} name="name" value={values.name} onChange={handleValueChange} required maxLength={100} /></Field>
+          <Field id={`${idPrefix}-name`} label={<>اسم القالب</>} required><Input id={`${idPrefix}-name`} name="name" value={values.name} onChange={handleValueChange} required maxLength={100}  placeholder="مثال: دوام المكتب الرئيسي"/></Field>
         </div>
         <div className="work-policy-field">
-          <Field id={`${idPrefix}-timezone`} label={<>المنطقة الزمنية</>} required><Input id={`${idPrefix}-timezone`} name="timezone" value={values.timezone} onChange={handleValueChange} required /></Field>
+          <Field id={`${idPrefix}-timezone`} label={<>المنطقة الزمنية</>} required help="المنطقة الزمنية التي تُفسر بها أوقات هذا الإعداد."><Input id={`${idPrefix}-timezone`} name="timezone" value={values.timezone} onChange={handleValueChange} required  placeholder="مثال: Africa/Cairo"/></Field>
           <small>مثال: <bdi>Africa/Cairo</bdi></small>
         </div>
       </div>
@@ -143,9 +143,9 @@ export function WorkPolicyEditor({
         <div className="work-policy-field"><Field id={`${idPrefix}-start`} label={<>بداية الوردية</>} required><Input id={`${idPrefix}-start`} name="shiftStart" type="time" required value={values.shiftStart} onChange={handleValueChange} /></Field></div>
         <div className="work-policy-field"><Field id={`${idPrefix}-end`} label={<>نهاية الوردية</>} required><Input id={`${idPrefix}-end`} name="shiftEnd" type="time" required value={values.shiftEnd} onChange={handleValueChange} /></Field></div>
         <label className="work-policy-check-option"><Checkbox  name="nextDay" checked={values.nextDay} onChange={handleValueChange} /><span>تنتهي الوردية في اليوم التالي</span></label>
-        <div className="work-policy-field"><Field id={`${idPrefix}-break`} label={<>مدة الاستراحة بالدقائق</>}><Input id={`${idPrefix}-break`} name="breakMinutes" type="number" min="0" max="360" value={breakMinutes} onChange={(event) => setBreakMinutes(Number(event.target.value))} /></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-break`} label={<>مدة الاستراحة بالدقائق</>}><Input id={`${idPrefix}-break`} name="breakMinutes" type="number" min="0" max="360" value={breakMinutes} onChange={(event) => setBreakMinutes(Number(event.target.value))}  placeholder="مثال: 60"/></Field></div>
       </div> : <div className="work-policy-grid">
-        <div className="work-policy-field"><Field id={`${idPrefix}-required`} label={<>مدة العمل المطلوبة بالدقائق</>} required><Input id={`${idPrefix}-required`} name="requiredMinutes" type="number" min="60" max="960" required value={values.requiredMinutes} onChange={handleValueChange} /></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-required`} label={<>مدة العمل المطلوبة بالدقائق</>} required><Input id={`${idPrefix}-required`} name="requiredMinutes" type="number" min="60" max="960" required value={values.requiredMinutes} onChange={handleValueChange}  placeholder="مثال: 480"/></Field></div>
         <div className="work-policy-field"><Field id={`${idPrefix}-earliest`} label={<>أبكر وقت لاستقبال البصمة <span>(اختياري)</span></>}><Input id={`${idPrefix}-earliest`} name="earliestPunch" type="time" value={values.earliestPunch} onChange={handleValueChange} /></Field></div>
         <div className="work-policy-field"><Field id={`${idPrefix}-latest`} label={<>آخر وقت لاستقبال البصمة <span>(اختياري)</span></>}><Input id={`${idPrefix}-latest`} name="latestPunch" type="time" value={values.latestPunch} onChange={handleValueChange} /></Field></div>
       </div>}
@@ -159,7 +159,7 @@ export function WorkPolicyEditor({
         <div className="work-policy-field"><Field id={`${idPrefix}-break-start`} label={<>بداية الاستراحة</>} required><Input id={`${idPrefix}-break-start`} name="fixedBreakStart" type="time" required value={fixedBreakStart} onChange={(event) => setFixedBreakStart(event.target.value)} /></Field></div>
         <div className="work-policy-field"><Field id={`${idPrefix}-break-end`} label={<>نهاية الاستراحة</>} required><Input id={`${idPrefix}-break-end`} name="fixedBreakEnd" type="time" required value={fixedBreakEnd} onChange={(event) => setFixedBreakEnd(event.target.value)} /></Field></div>
         <p className="field-hint">يجب أن تقع الاستراحة داخل الوردية وأن تساوي مدتها المحددة، بما في ذلك الوردية الليلية.</p>
-      </div> : <p className="field-hint">الوردية بلا استراحة؛ لا تحتاج إلى تحديد وقت للاستراحة.</p> : <div className="work-policy-field"><Field id={`${idPrefix}-halfday-break`} label={<>استراحة العمل المتبقي مع نصف يوم إجازة (دقيقة)</>} required><Input id={`${idPrefix}-halfday-break`} name="flexibleHalfdayBreak" type="number" min="0" max="360" required value={halfdayBreak} onChange={(event) => setHalfdayBreak(event.target.value)} /></Field><small>أدخل صفرًا إذا لم توجد استراحة في الجزء المتبقي من اليوم.</small></div>)}
+      </div> : <p className="field-hint">الوردية بلا استراحة؛ لا تحتاج إلى تحديد وقت للاستراحة.</p> : <div className="work-policy-field"><Field id={`${idPrefix}-halfday-break`} label={<>استراحة العمل المتبقي مع نصف يوم إجازة (دقيقة)</>} required><Input id={`${idPrefix}-halfday-break`} name="flexibleHalfdayBreak" type="number" min="0" max="360" required value={halfdayBreak} onChange={(event) => setHalfdayBreak(event.target.value)}  placeholder="مثال: 30"/></Field><small>أدخل صفرًا إذا لم توجد استراحة في الجزء المتبقي من اليوم.</small></div>)}
     </Panel>
 
     <Disclosure summary="خيارات إضافية: تسجيل الحضور والإضافي والاعتماد" open={Boolean(policy || saveState.error)} onInvalidCapture={event => { event.currentTarget.open = true; }}>
@@ -169,8 +169,8 @@ export function WorkPolicyEditor({
         <p>حدد كم دقيقة قبل الدوام وبعده يُسمح فيها بربط التسجيل بيوم العمل.</p>
       </div>
       <div className="work-policy-grid work-policy-grid-narrow">
-        <div className="work-policy-field"><Field id={`${idPrefix}-before`} label={<>قبل بداية الجدول (دقيقة)</>}><Input id={`${idPrefix}-before`} name="attributionBefore" type="number" min="0" max="720" value={values.attributionBefore} onChange={handleValueChange} /></Field></div>
-        <div className="work-policy-field"><Field id={`${idPrefix}-after`} label={<>بعد نهاية الجدول (دقيقة)</>}><Input id={`${idPrefix}-after`} name="attributionAfter" type="number" min="0" max="720" value={values.attributionAfter} onChange={handleValueChange} /></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-before`} label={<>قبل بداية الجدول (دقيقة)</>}><Input id={`${idPrefix}-before`} name="attributionBefore" type="number" min="0" max="720" value={values.attributionBefore} onChange={handleValueChange}  placeholder="مثال: 120"/></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-after`} label={<>بعد نهاية الجدول (دقيقة)</>}><Input id={`${idPrefix}-after`} name="attributionAfter" type="number" min="0" max="720" value={values.attributionAfter} onChange={handleValueChange}  placeholder="مثال: 360"/></Field></div>
       </div>
     </Panel>
 
@@ -184,8 +184,8 @@ export function WorkPolicyEditor({
         <span>اقتراح وقت إضافي للمراجعة وفق هذا القالب</span>
       </label>
       {overtimeEnabled ? <div className="work-policy-grid work-policy-grid-narrow">
-        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-minimum`} label={<>أقل وقت إضافي يُعرض للمراجعة (دقيقة)</>} required><Input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" value={overtimeMinimum} onChange={(event) => setOvertimeMinimum(Number(event.target.value))} required /></Field></div>
-        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-rounding`} label={<>خطوة التقريب لأسفل (دقيقة)</>} required><Input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" value={overtimeRounding} onChange={(event) => setOvertimeRounding(Number(event.target.value))} required /></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-minimum`} label={<>أقل وقت إضافي يُعرض للمراجعة (دقيقة)</>} required><Input id={`${idPrefix}-overtime-minimum`} name="overtimeMinimum" type="number" min="15" max="480" step="1" value={overtimeMinimum} onChange={(event) => setOvertimeMinimum(Number(event.target.value))} required  placeholder="مثال: 30"/></Field></div>
+        <div className="work-policy-field"><Field id={`${idPrefix}-overtime-rounding`} label={<>خطوة التقريب لأسفل (دقيقة)</>} required><Input id={`${idPrefix}-overtime-rounding`} name="overtimeRounding" type="number" min="5" max="60" step="1" value={overtimeRounding} onChange={(event) => setOvertimeRounding(Number(event.target.value))} required  placeholder="مثال: 15"/></Field></div>
       </div> : <><input type="hidden" name="overtimeMinimum" value={overtimeMinimum} /><input type="hidden" name="overtimeRounding" value={overtimeRounding} /></>}
       <p className="field-hint">تُحفظ الإعدادات في إصدار القالب. يصنف المراجع الدقائق الإضافية ويعتمدها يدويًا؛ لا يصنف النظام الليل أو الراحة الأسبوعية أو العطلات تلقائيًا.</p>
     </Panel>

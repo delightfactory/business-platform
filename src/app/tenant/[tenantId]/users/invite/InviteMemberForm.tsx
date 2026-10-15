@@ -21,7 +21,7 @@ export function InviteMemberForm({ tenantId, employeeId, idempotencyKey, returnT
     {employeeId && <input type="hidden" name="employeeId" value={employeeId} />}
     <ProfileReturnField value={employeeId ? returnTo : null} />
     <label htmlFor="member-email">البريد الإلكتروني</label>
-    <Input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} autoFocus defaultValue={state.email} aria-invalid={Boolean(state.error)} aria-describedby={state.error ? 'member-invite-error' : undefined} />
+    <Input id="member-email" name="email" type="email" autoComplete="email" required maxLength={254} autoFocus defaultValue={state.email} aria-invalid={Boolean(state.error)} aria-describedby={state.error ? 'member-invite-error' : undefined}  placeholder="مثال: name@example.com"/>
     <p className="field-hint">سيدخل بدور «عضو». يمكنك تعديل دوره بعد قبوله الدعوة.</p>
     {state.error && <Message tone="bad" id="member-invite-error"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions"><SubmitButton label="إرسال الدعوة" pendingLabel="جارٍ الإرسال…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>

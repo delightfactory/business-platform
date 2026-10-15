@@ -144,7 +144,7 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
         <FactList items={[...dialog.plan].sort((a, b) => serviceOrder.indexOf(a.capability_key) - serviceOrder.indexOf(b.capability_key)).map(row => ({ text: `${operatorServiceLabels[row.capability_key]}: ${snapshot.entitlements.find(item => item.capability_key === row.capability_key)?.is_granted ? 'مفعّلة' : 'غير مفعّلة'} ← ${row.is_granted ? 'مفعّلة' : 'غير مفعّلة'}${row.derived ? ' (مطلوبة)' : ''} · ${row.last_day ? `حتى ${serviceDayLabel(row.last_day)}` : 'بلا تاريخ انتهاء'}` }))} />
         {dialog.plan.filter(row => !row.is_granted && denialImpact[row.capability_key]).map(row => <p className="field-hint" key={row.capability_key}>{operatorServiceLabels[row.capability_key]}: {denialImpact[row.capability_key]}</p>)}
         {message && <Banner role="status">{message}</Banner>}
-        <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="service-plan-note">الملاحظة</label><Textarea id="service-plan-note" value={note} maxLength={500} disabled={locked} onChange={event => setNote(event.target.value)} /></Disclosure>
+        <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="service-plan-note">الملاحظة</label><Textarea id="service-plan-note" value={note} maxLength={500} disabled={locked} onChange={event => setNote(event.target.value)}  placeholder="مثال: تعديل وفق الاتفاق المحدث مع الشركة"/></Disclosure>
         <div className="operator-form-actions"><Button disabled={locked} pending={pending === 'plan'} onClick={() => void send(confirmationChanges(dialog.plan))}>تأكيد التغييرات ({dialog.plan.length})</Button>
           <Button variant="ghost" disabled={pending !== null} onClick={closeDialog}>إلغاء</Button></div>
       </>}
@@ -159,7 +159,7 @@ export function ServiceManager({ initial }: { initial: ServiceSnapshot }) {
           <legend className="ui-sr">مدة التفعيل</legend><SegmentedControl label="مدة التفعيل" value={mode} onChange={setMode}
             options={[{ value: 'indefinite', label: 'بلا تاريخ انتهاء' }, { value: 'last_day', label: 'حتى تاريخ' }]} />
           {mode === 'last_day' && <><label htmlFor="service-last-day">آخر يوم سريان بتوقيت القاهرة</label><Input id="service-last-day" name="lastDay" type="date" required max={dependent(durationRow.capability_key) ? parentDay ?? undefined : undefined} value={day} onChange={event => setDay(event.target.value)} /></>}
-          <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="service-duration-note">الملاحظة</label><Textarea id="service-duration-note" value={note} maxLength={500} onChange={event => setNote(event.target.value)} /></Disclosure>
+          <Disclosure summary="إضافة ملاحظة (اختياري)"><label htmlFor="service-duration-note">الملاحظة</label><Textarea id="service-duration-note" value={note} maxLength={500} onChange={event => setNote(event.target.value)}  placeholder="مثال: تعديل وفق الاتفاق المحدث مع الشركة"/></Disclosure>
           <div className="operator-form-actions"><Button type="submit" pending={pending !== null}>تأكيد التفعيل{additional.length ? ` (${additional.length + 1})` : ''}</Button><Button variant="ghost" onClick={closeDialog}>إلغاء</Button></div>
         </fieldset></form>
         <Disclosure summary="خيارات متقدمة"><form onSubmit={event => durationSubmit(event, true)}><fieldset disabled={locked} className="operator-duration-fields">

@@ -51,7 +51,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const scope = (suffix: string, extra: Record<string, string> = {}) => `${path}${suffix}?${new URLSearchParams({ ...(employer ? { employer } : {}), ...(query.period ? { period: query.period } : {}), ...(query.review_q ? { q: query.review_q } : {}), ...extra })}`;
   if (!employer) return <PageFrame><div dir="rtl" className={styles.workspace}>
     <div><p className="eyebrow">مساحة الشركة · الرواتب</p><PageHeader  title={<>اختر جهة العمل</>} description={<> ابدأ باختيار جهة العمل، ثم اختر فترة الرواتب. </>} /></div>
-    <form method="get" className={styles.filters}><Field  id="payroll-employer-search" label={<>البحث عن جهة</>}><Input id="payroll-employer-search" name="q" maxLength={120} defaultValue={query.q ?? ''}/></Field><Button variant="ghost" type="submit" >بحث</Button></form>
+    <form method="get" className={styles.filters}><Field  id="payroll-employer-search" label={<>البحث عن جهة</>}><Input id="payroll-employer-search" name="q" maxLength={120} defaultValue={query.q ?? ''} placeholder="مثال: شركة النور"/></Field><Button variant="ghost" type="submit" >بحث</Button></form>
     {employers.length ? <ul className={styles.periods}>{employers.map(item => <RecordCard className={styles.card} key={item.id}><Link href={`${path}?${new URLSearchParams({ employer: item.id })}`}>{item.name}</Link></RecordCard>)}</ul> : <p>لا توجد جهات مطابقة. عدّل البحث أو راجع مسؤول الشركة.</p>}
     {employers.length === 30 && <Link href={`${path}?${new URLSearchParams({ q: query.q ?? '', after_name: employers[29].name, after_id: employers[29].id })}`}>جهات إضافية</Link>}
   </div></PageFrame>;

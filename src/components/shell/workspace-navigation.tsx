@@ -120,6 +120,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
           <DropdownMenu.Item asChild><Link href={`${profile.href}#my-employee-heading`}>ملفي</Link></DropdownMenu.Item>
         </>}
         {mode === 'operator' && <DropdownMenu.Item asChild><Link href="/">مساحات العمل</Link></DropdownMenu.Item>}
+        <DropdownMenu.Item asChild><a href="/user-guide.html" target="_blank" rel="noopener">دليل الاستخدام والتدريب</a></DropdownMenu.Item>
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
         <form action={signOutAction}><SignOutMenuItem /></form>

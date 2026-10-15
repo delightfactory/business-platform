@@ -1,4 +1,4 @@
-import { Panel, PageHeader } from '@/components/ui';
+import { Field, Panel, PageHeader } from '@/components/ui';
 import { Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
@@ -33,7 +33,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
         {query.state && !passwordHint && <Message tone="info"  role="alert">{validationMessage(validation, query.state)}</Message>}
         {needsPassword ? <OfflineForm className="auth-form" action={setMemberInvitationPasswordAction}>
           <input type="hidden" name="invitationId" value={id} /><input type="hidden" name="issuance" value={issuance} />
-          <label htmlFor="member-password">أنشئ كلمة مرور لحسابك</label><Input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required />
+          <Field id="member-password" label="أنشئ كلمة مرور لحسابك" help="اختر كلمة مرور من 8 أحرف على الأقل، واستخدمها لهذا الحساب."><Input id="member-password" name="password" type="password" autoComplete="new-password" minLength={8} required  /></Field>
           <p className="field-hint">ثمانية أحرف على الأقل. ستُستخدم كلمة المرور نفسها لكل مساحاتك.</p>
           <OfflineSubmitButton label="حفظ كلمة المرور" pendingLabel="جارٍ الحفظ…" />
         </OfflineForm> : <OfflineForm className="auth-form" action={acceptMemberInvitationAction}>

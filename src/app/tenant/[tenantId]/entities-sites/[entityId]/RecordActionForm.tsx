@@ -32,10 +32,10 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
     <input type="hidden" name="action" value={recordAction} />
     {recordAction === 'update' && <>
       <label htmlFor={`${prefix}-display-name`}>{isSite ? 'اسم الفرع أو الموقع' : 'اسم الجهة داخل المنصة'}</label>
-      <Input id={`${prefix}-display-name`} name="displayName" defaultValue={state.displayName} required maxLength={160} />
+      <Input id={`${prefix}-display-name`} name="displayName" defaultValue={state.displayName} required maxLength={160}  placeholder="مثال: فرع مدينة نصر"/>
       {!isSite && <>
         <label htmlFor={`${prefix}-legal-name`}>الاسم القانوني (اختياري)</label>
-        <Input id={`${prefix}-legal-name`} name="legalName" defaultValue={state.legalName} maxLength={200} />
+        <Input id={`${prefix}-legal-name`} name="legalName" defaultValue={state.legalName} maxLength={200}  placeholder="مثال: شركة النور للتجارة"/>
         <p className="field-hint">اسم هذه الجهة مستقل عن اسم الشركة الظاهر في مساحة العمل.</p>
       </>}
     </>}

@@ -18,9 +18,9 @@ export function NewEntityForm({ tenantId }: { tenantId: string }) {
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <label htmlFor="entity-display-name">اسم الجهة</label>
-    <Input id="entity-display-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
+    <Input id="entity-display-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName}  placeholder="مثال: شركة النور"/>
     <label htmlFor="entity-legal-name">الاسم القانوني (اختياري)</label>
-    <Input id="entity-legal-name" name="legalName" maxLength={200} defaultValue={state.legalName} />
+    <Input id="entity-legal-name" name="legalName" maxLength={200} defaultValue={state.legalName}  placeholder="مثال: شركة النور للتجارة"/>
     <p className="field-hint">اسم الجهة مستقل عن اسم الشركة الظاهر للمستخدمين.</p>
     <ReasonField id="entity-create-reason" label="سبب الإضافة" suggested defaultValue={state.reason} />
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}

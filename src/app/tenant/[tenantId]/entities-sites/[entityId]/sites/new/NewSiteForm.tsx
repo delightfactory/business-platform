@@ -19,7 +19,7 @@ export function NewSiteForm({ tenantId, entityId }: { tenantId: string; entityId
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="legalEntityId" value={entityId} />
     <label htmlFor="site-name">اسم الفرع أو الموقع</label>
-    <Input id="site-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName} />
+    <Input id="site-name" name="displayName" required maxLength={160} autoFocus defaultValue={state.displayName}  placeholder="مثال: فرع مدينة نصر"/>
     <ReasonField id="site-create-reason" label="سبب الإضافة" suggested defaultValue={state.reason} />
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     <div className="workspace-form-actions"><SubmitButton label="إضافة الفرع" pendingLabel="جارٍ الإضافة…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>

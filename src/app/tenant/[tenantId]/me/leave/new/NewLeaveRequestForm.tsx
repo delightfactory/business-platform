@@ -187,7 +187,7 @@ export function NewLeaveRequestForm({ tenantId, idempotencyKey }: { tenantId: st
             <label htmlFor="leave-reason">سبب الإجازة</label>
             <Textarea id="leave-reason" name="reason" required minLength={3} maxLength={500}
               value={fields.reason} onChange={handleReasonChange} disabled={submitting}
-              aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint" />
+              aria-invalid={Boolean(submitState.error)} aria-describedby="leave-reason-hint"  placeholder="مثال: ظرف عائلي يتطلب إجازة"/>
             <p id="leave-reason-hint" className="field-hint">اكتب السبب في 3 إلى 500 حرف ليُراجعه فريق الموارد البشرية.</p>
             {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
             {submitting && <p className="field-hint" role="status">جارٍ إرسال الطلب… لا تغلق الصفحة.</p>}

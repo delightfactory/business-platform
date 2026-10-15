@@ -46,7 +46,7 @@ export function LifecycleManager({ initial }: { initial: OperatorLifecycleSnapsh
       {choice && <form onSubmit={event => void act(event)}><fieldset className="operator-duration-fields" disabled={locked}><legend className="ui-sr">تأكيد إجراء الشركة</legend>
         <p>سيُطبق الإجراء على <strong><bdi>{snapshot.tenant_name}</bdi></strong>.</p>
         {message && <Banner role="alert">{message}</Banner>}
-        <label htmlFor="lifecycle-reason">سبب الإجراء</label><Textarea id="lifecycle-reason" required minLength={3} maxLength={500} value={reason} onChange={event => setReason(event.target.value)} />
+        <label htmlFor="lifecycle-reason">سبب الإجراء</label><Textarea id="lifecycle-reason" required minLength={3} maxLength={500} value={reason} onChange={event => setReason(event.target.value)}  placeholder="مثال: تغيير الحالة بناءً على طلب الشركة"/>
         <div className="operator-form-actions"><Button type="submit" variant={choice.target === 'archived' ? 'danger' : 'solid'} pending={busy}>{choice.label}</Button><Button variant="ghost" onClick={() => setChoice(null)}>إلغاء</Button></div>
       </fieldset></form>}
     </Sheet>

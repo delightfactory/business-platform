@@ -1,0 +1,284 @@
+{
+  "appCandidates": 349,
+  "textInputCandidates": 217,
+  "withExistingOrProposedGuidance": 171,
+  "exceptions": [
+    {
+      "file": "src/app/operator/companies/[tenantId]/services/ServiceManager.tsx",
+      "line": 161,
+      "name": "\"lastDay\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/operator/companies/[tenantId]/services/ServiceManager.tsx",
+      "line": 166,
+      "name": "\"lastDay\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "line": 25,
+      "name": "{`comparison-${key}`}",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/operator/statutory/comparisons/ComparisonForm.tsx",
+      "line": 26,
+      "name": "{`comparison-month-${index}`}",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "line": 41,
+      "name": "\"from\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/operator/statutory/DraftForm.tsx",
+      "line": 42,
+      "name": "\"until\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/page.tsx",
+      "line": 51,
+      "name": "\"date\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
+      "line": 46,
+      "name": "\"date\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "line": 46,
+      "name": "{mapping?undefined:\"valid_from\"}",
+      "reason": "Existing persistent UTC/exclusive-end/no-overlap paragraph already supplies guidance; preserve without duplicate help."
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx",
+      "line": 46,
+      "name": "{mapping?undefined:\"valid_until\"}",
+      "reason": "Existing persistent UTC/exclusive-end/no-overlap paragraph already supplies guidance; preserve without duplicate help."
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 95,
+      "name": "\"localTime\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "line": 111,
+      "name": "\"localTime\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "line": 25,
+      "name": "\"asOf\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/balances/annual/AnnualForm.tsx",
+      "line": 30,
+      "name": "{`annual-from-${index}`}",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
+      "line": 190,
+      "name": "\"start\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/new/page.tsx",
+      "line": 191,
+      "name": "\"end\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/CalendarRuleFields.tsx",
+      "line": 57,
+      "name": "\"holidayDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+      "line": 45,
+      "name": "\"effectiveFrom\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/CreateCalendarForm.tsx",
+      "line": 50,
+      "name": "\"effectiveUntil\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+      "line": 39,
+      "name": "\"effectiveFrom\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/ReviseCalendarForm.tsx",
+      "line": 44,
+      "name": "\"effectiveUntil\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/CreateTypeForm.tsx",
+      "line": 44,
+      "name": "\"effectiveFrom\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/ReviseTypeForm.tsx",
+      "line": 37,
+      "name": "\"effectiveFrom\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+      "line": 50,
+      "name": "\"startsOn\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/CreateYearPeriodForm.tsx",
+      "line": 55,
+      "name": "\"endsOn\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "line": 135,
+      "name": "\"startDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/me/leave/new/NewLeaveRequestForm.tsx",
+      "line": 140,
+      "name": "\"endDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "line": 45,
+      "name": "\"effective_on\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/advances/AdvanceForm.tsx",
+      "line": 45,
+      "name": "\"date\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/CalendarForm.tsx",
+      "line": 26,
+      "name": "\"start\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/payments/PaymentForm.tsx",
+      "line": 28,
+      "name": "\"date\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/payroll/runs/DeductionDisposition.tsx",
+      "line": 47,
+      "name": "\"date\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/new/NewEmployeeForm.tsx",
+      "line": 57,
+      "name": "\"startDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 143,
+      "name": "\"shiftStart\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 144,
+      "name": "\"shiftEnd\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 149,
+      "name": "\"earliestPunch\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 150,
+      "name": "\"latestPunch\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 159,
+      "name": "\"fixedBreakStart\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/work-policies/WorkPolicyEditor.tsx",
+      "line": 160,
+      "name": "\"fixedBreakEnd\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/CompensationPanel.tsx",
+      "line": 84,
+      "name": "\"effectiveDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 82,
+      "name": "\"endDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/EmploymentLifecyclePanel.tsx",
+      "line": 122,
+      "name": "\"startDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "line": 196,
+      "name": "\"effectiveDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "line": 222,
+      "name": "\"validFrom\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "line": 223,
+      "name": "\"validThrough\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    },
+    {
+      "file": "src/app/tenant/[tenantId]/people/[employeeId]/WorkAssignmentPanel.tsx",
+      "line": 131,
+      "name": "\"effectiveDate\"",
+      "reason": "native-date/time: retain label; add domain-specific effect only where date boundary ambiguous"
+    }
+  ],
+  "sharedReasonFieldClosure": "Resolved through shared ReasonField: example plus optional question help"
+}

@@ -39,7 +39,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <OfflineForm action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>
-          <Input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr" />
+          <Input id="email" name="email" type="email" autoComplete="username" required maxLength={254} dir="ltr"  placeholder="مثال: name@example.com"/>
           <label htmlFor="password">كلمة المرور</label>
           <Input id="password" name="password" type="password" autoComplete="current-password" required minLength={8} dir="ltr" />
           <OfflineSubmitButton label="دخول" pendingLabel="جارٍ الدخول…" />

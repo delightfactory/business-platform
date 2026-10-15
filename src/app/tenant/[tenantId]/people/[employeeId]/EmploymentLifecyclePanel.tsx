@@ -123,7 +123,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
           min={maxDate(today, nextDate(previousEndDate))} defaultValue={rehireState.startDate} /></Field>
         <Field id="rehire-pay-basis" label={<>أساس الأجر</>}><Select id="rehire-pay-basis" name="payBasis" defaultValue={rehireState.payBasis}>
           <option value="monthly">راتب شهري</option><option value="daily">أجر يومي</option></Select></Field>
-        <Field id="rehire-amount" label={<>الأجر الأساسي الابتدائي (جنيه مصري)</>} required><Input id="rehire-amount" name="amount" type="number" min="0" max="999999999999.99" step="0.01" required defaultValue={rehireState.amount} /></Field>
+        <Field id="rehire-amount" label={<>الأجر الأساسي الابتدائي (جنيه مصري)</>} required help="الأجر الأساسي بالجنيه المصري وفق طريقة الأجر المختارة، دون إضافة البدلات هنا."><Input id="rehire-amount" name="amount" type="number" min="0" max="999999999999.99" step="0.01" required defaultValue={rehireState.amount}  placeholder="مثال: 5000.00"/></Field>
         <label className="checkbox-field"><Checkbox name="payrollEligible"  defaultChecked={rehireState.payrollEligible} /><span>مشمول في الرواتب</span></label>
         <Message as="div" tone="info" >تحتاج المستحقات السابقة إلى تسوية مستقلة. راجع مسؤول الرواتب، ونسّق الإجازات وتمويل الموظف مع مسؤوليها.</Message>
         {rehireState.error && <Message tone="bad"  role="alert">{rehireState.error}</Message>}

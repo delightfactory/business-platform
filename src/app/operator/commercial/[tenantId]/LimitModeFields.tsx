@@ -15,7 +15,7 @@ export function LimitModeFields({ id, label, mode, value }: {
     </Select>
     {selectedMode === 'limited' && <>
       <label htmlFor={`${id}-value`}>{label}</label>
-      <Input id={`${id}-value`} name="value" type="number" min="1" step="1" defaultValue={value ?? ''} required />
+      <Input id={`${id}-value`} name="value" type="number" min="1" step="1" defaultValue={value ?? ''} required  placeholder="مثال: 10"/>
     </>}
     <p className="field-hint">إذا خُفّض الحد عن الاستخدام الحالي، تبقى الموارد الموجودة فعّالة ويُمنع إضافة جديد حتى ينخفض الاستخدام أو يُرفع الحد.</p>
   </>;

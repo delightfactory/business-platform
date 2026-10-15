@@ -56,7 +56,7 @@ export default async function PeopleOrganizationPage({ params, searchParams }: {
       <form method="get" role="search" className="people-search-form">
         <input type="hidden" name="kind" value={kind} />
         <label htmlFor="org-catalog-query">ابحث بالاسم أو الرمز</label>
-        <div><Input id="org-catalog-query" name="q" type="search" maxLength={100} defaultValue={rawQuery} />
+        <div><Input id="org-catalog-query" name="q" type="search" maxLength={100} defaultValue={rawQuery}  placeholder="مثال: المبيعات"/>
           <Button variant="ghost"  type="submit">بحث</Button></div>
       </form>
       {invalidQuery ? <Message tone="bad"  role="alert">يجب ألا يتجاوز البحث 100 حرف.</Message>

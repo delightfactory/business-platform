@@ -61,8 +61,8 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
     <p className="record-meta attendance-full-field">إجازة معتمدة: {result.leave_units} يوم · غياب: {result.absence_units} يوم</p>
     {result.diagnostics.includes('observed_work_during_excused') && <Message tone="info" className=" attendance-full-field">توجد تسجيلات عمل خلال الإجازة. ستبقى محفوظة: {result.observations.worked_minutes ?? '—'} دقيقة عمل.</Message>}
     <Field  id="classification-reason" label={<>{correction ? 'سبب تصحيح نتيجة اليوم' : 'سبب اعتماد نتيجة اليوم'}
-      </>}><Textarea id="classification-reason" name="reason" value={reason} onChange={(event) => changeReason(event.target.value)}
-        minLength={3} maxLength={500} required disabled={pending || refreshing} /></Field>
+      </>} help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Textarea id="classification-reason" name="reason" value={reason} onChange={(event) => changeReason(event.target.value)}
+        minLength={3} maxLength={500} required disabled={pending || refreshing}  placeholder="مثال: تصحيح تسجيل ناقص بعد مراجعة السجل"/></Field>
     {(reviewMessage || (state.message && !reviewRenewed)) && <Message tone="bad" className="  attendance-full-field" role="alert">{reviewMessage || state.message}</Message>}
     {stale ? <Button variant="solid" type="button"  disabled={offline || (pending || refreshing)} onClick={renewReview} aria-describedby={showOffline0 ? offlineHint0 : undefined}>{refreshing ? 'جارٍ مراجعة النتيجة...' : 'إعادة مراجعة النتيجة مع حفظ السبب'}</Button>
       : <SubmitButton  pendingLabel="جارٍ الاعتماد..." label={correction ? 'اعتماد التصحيح وحفظ النتيجة السابقة' : 'اعتماد نتيجة اليوم'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>}

@@ -79,8 +79,8 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
         <input type="hidden" name="employeeId" value={employeeId} />
-        <Field id="compensation-amount" label={<>{options.pay_basis === 'daily' ? 'الأجر اليومي' : 'الراتب الشهري'} (جنيه مصري)</>} required><Input id="compensation-amount" name="amount" type="number" inputMode="decimal" min="0" max="999999999999.99"
-          step="0.01" required defaultValue={formState.amount} /></Field>
+        <Field id="compensation-amount" label={<>{options.pay_basis === 'daily' ? 'الأجر اليومي' : 'الراتب الشهري'} (جنيه مصري)</>} required help="الأجر الأساسي بالجنيه المصري وفق طريقة الأجر المختارة، دون إضافة البدلات هنا."><Input id="compensation-amount" name="amount" type="number" inputMode="decimal" min="0" max="999999999999.99"
+          step="0.01" required defaultValue={formState.amount}  placeholder="مثال: 5000.00"/></Field>
         <Field id="compensation-effective-date" label={<>تاريخ بدء الأجر الجديد</>} required><Input id="compensation-effective-date" name="effectiveDate" type="date" required
           min={options.effective_date_min ?? today} value={effectiveDateChoice}
           onChange={(event) => setEffectiveDateChoice(event.target.value)} /></Field>

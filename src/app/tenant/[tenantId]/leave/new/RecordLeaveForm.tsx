@@ -186,12 +186,12 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
       {notice && <Message tone={noticeTone ? 'info' : 'info'} role="status">{notice}</Message>}
       <LeaveRequestImpact tenantId={tenantId} employeeId={employee.employeeId} employmentId={employee.employmentId} typeId={selectedType ? leaveTypeId : ''} start={startDate} end={endDate} halfDay={halfDay} part={halfDayPart || null} />
 
-      <Field id="leave-reason" label={<>سبب الإجازة</>} required><Textarea id="leave-reason" name="reason" value={reason} onChange={(event) => {
+      <Field id="leave-reason" label={<>سبب الإجازة</>} required help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Textarea id="leave-reason" name="reason" value={reason} onChange={(event) => {
         setReason(event.target.value);
         updateIntent(leaveTypeId, halfDay, halfDayPart, event.target.value);
       }}
         disabled={submitting} required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
-        aria-invalid={Boolean(submitState.error)} /></Field>
+        aria-invalid={Boolean(submitState.error)}  placeholder="مثال: ظرف عائلي يتطلب إجازة"/></Field>
       {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">
         {submitState.error}
       </Message>}

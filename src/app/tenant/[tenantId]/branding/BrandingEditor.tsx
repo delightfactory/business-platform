@@ -82,7 +82,7 @@ export function BrandingEditor({
           <input type="hidden" name="tenantId" value={tenantId} />
           <label htmlFor="tenant-brand-name">اسم الشركة الظاهر للفريق</label>
           <Input id="tenant-brand-name" name="displayName" value={name} maxLength={160}
-            onChange={(event) => setName(event.currentTarget.value)} />
+            onChange={(event) => setName(event.currentTarget.value)}  placeholder="مثال: شركة النور"/>
           <p className="field-hint">اتركه فارغًا لإبقاء اسم الشركة الحالي. لا يغيّر الاسم القانوني المسجل.</p>
 
           <label htmlFor="tenant-brand-color">اللون الرئيسي</label>

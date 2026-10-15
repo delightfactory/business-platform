@@ -38,7 +38,7 @@ export function WithdrawRequestForm({ tenantId, requestId, expectedVersion, idem
     <label htmlFor="withdraw-reason">سبب السحب</label>
     <Textarea id="withdraw-reason" name="reason" required minLength={3} maxLength={500}
       value={reason} onChange={handleReasonChange} disabled={pending} aria-invalid={Boolean(submitState.error)}
-      aria-describedby="withdraw-reason-hint" />
+      aria-describedby="withdraw-reason-hint"  placeholder="مثال: تغيير الموعد المطلوب"/>
     <p id="withdraw-reason-hint" className="field-hint">من 3 إلى 500 حرف. يُحفظ السبب في سجل العملية مع هويتك ووقتها.</p>
     {submitState.error && <Message tone="bad" key={submitState.attempt}  role="alert">{submitState.error}</Message>}
     <div className="workspace-form-actions">

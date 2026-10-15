@@ -213,19 +213,19 @@ export function PostBalanceForm({ tenantId, actorId, employeeId, employerId, kin
         <input type="hidden" name="operationKey" value={operationKey} />
         <input type="hidden" name="recovering" value={unresolved ? 'true' : 'false'} />
 
-        <Field id="balance-delta" label={<>عدد الأيام</>} required><Input id="balance-delta" name="delta" type="text" inputMode="decimal" maxLength={40}
+        <Field id="balance-delta" label={<>عدد الأيام</>} required help="التغيير في رصيد الإجازة بالأيام؛ القيمة الموجبة تزيد الرصيد والسالبة تخصم منه."><Input id="balance-delta" name="delta" type="text" inputMode="decimal" maxLength={40}
           value={delta} onChange={handleDeltaChange} disabled={submitting} readOnly={!canStartNew || unresolved} required
-          aria-describedby="balance-delta-hint" aria-invalid={submitState.error !== ''} /></Field>
+          aria-describedby="balance-delta-hint" aria-invalid={submitState.error !== ''}  placeholder="مثال: 2 للإضافة، أو -1 للخصم"/></Field>
         <p className="field-hint" id="balance-delta-hint">{postingKindSummary(kind)}</p>
 
         <Field id="balance-reason" label={<>سبب الحركة</>} required><Textarea id="balance-reason" name="reason" value={reason} onChange={handleReasonChange}
           disabled={submitting} readOnly={!canStartNew || unresolved} required minLength={MIN_REASON} maxLength={MAX_REASON}
-          aria-invalid={submitState.error !== ''} /></Field>
+          aria-invalid={submitState.error !== ''}  placeholder="مثال: تطبيق القرار المعتمد مع إثبات مرجعه"/></Field>
         <p className="field-hint">يُحفظ السبب في سجل الحركة ولا يمكن تعديله لاحقًا.</p>
 
         <Field id="balance-source" label={<>مرجع تعديل الرصيد</>} required><Input id="balance-source" name="source" type="text" value={source} onChange={handleSourceChange}
           disabled={submitting} readOnly={!canStartNew || unresolved} required minLength={MIN_SOURCE_LENGTH} maxLength={MAX_SOURCE_LENGTH}
-          aria-invalid={submitState.error !== ''} /></Field>
+          aria-invalid={submitState.error !== ''}  placeholder="مثال: قرار الشركة رقم 12"/></Field>
         <p className="field-hint">اكتب رقم خطاب أو محضر يثبت التعديل. يُحفظ كمرجع للمراجعة.</p>
 
         {type && <p className="field-hint">النوع: {type.name} · رقم النوع <bdi>{type.code}</bdi>

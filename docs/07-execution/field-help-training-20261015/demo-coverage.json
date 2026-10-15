@@ -1,0 +1,103 @@
+{
+  "synthetic": true,
+  "tenant": "a21c4ddf-83f8-4851-abc6-2e226c65a661",
+  "companyName": "شركة الرحلة المتكاملة — بيانات تدريب فقط",
+  "status": "fixture-created-not-all-journeys-tested",
+  "counts": {
+    "actors": 14,
+    "employees": 12,
+    "departments": 3,
+    "jobs": 3,
+    "sites": 2,
+    "policies": 1,
+    "attendanceDays": 11,
+    "attendanceInstances": 99,
+    "leaveTypes": 2,
+    "leaveRequests": 6,
+    "payrollPeriods": 4,
+    "advances": 3,
+    "payrollInputs": 3,
+    "mobileSources": 1
+  },
+  "roles": {
+    "admin": [
+      "people.operations.v1",
+      "people.compensation_manager.v1",
+      "attendance.operator.v1",
+      "attendance.policy.manager.v1",
+      "attendance.reviewer.v1",
+      "leave.manager.v1",
+      "leave.balance.manager.v1",
+      "payroll.calendar.manager.v1",
+      "payroll.preparer.v1",
+      "employee_finance.author.v1"
+    ],
+    "hr": [
+      "people.operations.v1",
+      "attendance.operator.v1",
+      "leave.manager.v1"
+    ],
+    "reviewer": [
+      "attendance.reviewer.v1"
+    ],
+    "employee": [
+      "employee.attendance.self.v1",
+      "employee.leave.self.v1"
+    ],
+    "leave-approver": [
+      "leave.approver.v1"
+    ],
+    "payroll": [
+      "payroll.calendar.manager.v1",
+      "payroll.preparer.v1",
+      "payroll.reviewer.v1",
+      "payroll.input.approver.v1"
+    ],
+    "finance-author": [
+      "employee_finance.author.v1"
+    ],
+    "finance-approver": [
+      "employee_finance.approver.v1"
+    ],
+    "reader": [
+      "people.reader.v1",
+      "attendance.reader.v1",
+      "leave.reader.v1",
+      "payroll.reader.v1",
+      "employee_finance.reader.v1"
+    ],
+    "no-work": [],
+    "payroll-finalizer": [
+      "payroll.finalizer.v1"
+    ],
+    "payroll-exporter": [
+      "payroll.exporter.v1"
+    ],
+    "payroll-payments": [
+      "payroll.payment.recorder.v1"
+    ],
+    "payroll-corrections": [
+      "payroll.correction.requester.v1",
+      "people.operations.v1",
+      "payroll.finalizer.v1"
+    ]
+  },
+  "scenarios": [
+    "Operator company/module/limits/audit — new company only",
+    "Company membership/presets/reader/no-work role comparison",
+    "People directory/profile/org/pay basis/branch/self-service linkage",
+    "Attendance clean approved / late / missing out / absent / early leave / today open / no-policy",
+    "Leave balances high/low; paid/unpaid; pending/approved/rejected/cancelled; self submission ready",
+    "Payroll calendar/periods, bonus draft+approved and real calculation attempt; source/readiness blockers retained honestly",
+    "Advance drafts and approved-awaiting-disbursement; NO fabricated cash/bank proof",
+    "External unmapped event plus duplicate replay and independent active mapping",
+    "Dedicated finalizer/exporter/payment/correction test accounts; real final-output prerequisites intentionally remain enforced"
+  ],
+  "exclusions": [
+    "No claim all journeys tested; fixture setup only",
+    "No issued financial outputs, payroll payments, statutory/legal qualification or governed corrections fabricated",
+    "No bank transaction or advance disbursement; approver can inspect next required evidence",
+    "No physical attendance/mobile permission/GPS/device/provider success fabricated",
+    "No real identities, existing Company05 records, owner trial edits or protected role definitions changed"
+  ]
+}

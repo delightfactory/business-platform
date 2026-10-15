@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { cloneElement, isValidElement, type ComponentProps, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, type Ref, type SelectHTMLAttributes, type TextareaHTMLAttributes, type DetailsHTMLAttributes, type TableHTMLAttributes } from 'react';
 import { Icon, type IconName } from './icon';
+import { FieldHelp } from './field-help';
 
 export type Tone = 'neutral' | 'ok' | 'warn' | 'bad' | 'info' | 'brand';
 export type ButtonVariant = 'solid' | 'ghost' | 'danger';
@@ -12,9 +13,14 @@ export function Button({ variant, size, pending = false, pendingLabel, icon, dis
 export function ButtonLink({ href, variant, size, icon, children, className, ...props }: Omit<ComponentProps<typeof Link>, 'href'> & { href: string; variant?: ButtonVariant; size?: 'md' | 'lg'; icon?: IconName }) { return <Link href={href} className={buttonClassName(variant, size, className)} {...props}>{icon && <Icon name={icon} size={18} />}{children}</Link>; }
 export function IconButton({ icon, 'aria-label': label, className = '', ...props }: Omit<ButtonProps, 'children' | 'icon'> & { icon: IconName; 'aria-label': string }) { return <Button className={`ui-icon-button ${className}`} variant="ghost" aria-label={label} {...props}><Icon name={icon} /></Button>; }
 
-export function Field({ id, label, hint, error, children, className = '', required }: { id: string; label: ReactNode; hint?: ReactNode; error?: ReactNode; children: ReactNode; className?: string; required?: boolean }) {
+function fieldLabelText(label: ReactNode): string {
+  if (typeof label === 'string' || typeof label === 'number') return String(label);
+  if (Array.isArray(label)) return label.map(fieldLabelText).join(' ');
+  return isValidElement<{ children?: ReactNode }>(label) ? fieldLabelText(label.props.children) : '';
+}
+export function Field({ id, label, hint, help, error, children, className = '', required }: { id: string; label: ReactNode; hint?: ReactNode; help?: ReactNode; error?: ReactNode; children: ReactNode; className?: string; required?: boolean }) {
   const control = isValidElement<InputHTMLAttributes<HTMLInputElement>>(children) ? cloneElement(children, { id, 'aria-describedby': [children.props['aria-describedby'], hint ? `${id}-hint` : undefined, error ? `${id}-error` : undefined].filter(Boolean).join(' ') || undefined, 'aria-invalid': error ? true : children.props['aria-invalid'] }) : children;
-  return <div className={`ui-field ${className}`}><label htmlFor={id}>{label}{required && <span aria-hidden="true" className="ui-required"> *</span>}</label>{control}{hint && <p id={`${id}-hint`} className="ui-field-hint">{hint}</p>}{error && <p id={`${id}-error`} className="ui-field-error" role="alert">{error}</p>}</div>;
+  return <div className={`ui-field ${className}`}><div className="ui-field-label-row"><label htmlFor={id}>{label}{required && <span aria-hidden="true" className="ui-required"> *</span>}</label>{help && <FieldHelp label={fieldLabelText(label) || 'شرح الحقل ومثال'}>{help}</FieldHelp>}</div>{control}{hint && <p id={`${id}-hint`} className="ui-field-hint">{hint}</p>}{error && <p id={`${id}-error`} className="ui-field-error" role="alert">{error}</p>}</div>;
 }
 type InputProps = InputHTMLAttributes<HTMLInputElement> & { error?: boolean; ref?: Ref<HTMLInputElement> };
 export function Input({ className = '', error, ...props }: InputProps) { return <input className={`ui-input ${className}`} aria-invalid={error || props['aria-invalid']} {...props} />; }

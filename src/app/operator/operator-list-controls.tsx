@@ -25,7 +25,7 @@ export function OperatorListControls({ basePath, search, page, matchingCount, se
     <form action={basePath} method="get" role="search" className="workspace-form-panel">
       <label htmlFor={inputId}>{searchLabel}</label>
       <div className="topbar-actions">
-        <Input id={inputId} name="q" type="search" defaultValue={search} maxLength={120} />
+        <Input id={inputId} name="q" type="search" defaultValue={search} maxLength={120}  placeholder={searchLabel.includes('بريد') ? 'مثال: name@example.com' : 'مثال: شركة النور'}/>
         <Button variant="ghost"  type="submit">بحث</Button>
       </div>
     </form>

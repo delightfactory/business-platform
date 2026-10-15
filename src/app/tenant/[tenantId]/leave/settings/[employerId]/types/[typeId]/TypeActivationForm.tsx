@@ -57,7 +57,7 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
     <div className={styles.field}>
       <Field id="activation-reason" label={<>{targetActive ? 'سبب التفعيل' : 'سبب الإيقاف'}</>} required><Input id="activation-reason" name="reason" required minLength={MIN_REASON_LENGTH}
         maxLength={MAX_REASON_LENGTH} value={reason} onChange={(event) => handleReasonChange(event.target.value)}
-        disabled={pending} /></Field>
+        disabled={pending}  placeholder="مثال: تطبيق القرار المعتمد مع إثبات مرجعه"/></Field>
       <span className="field-hint">يُحفظ في سجل التغييرات ولا يمكن تعديله لاحقًا.</span>
     </div>
 

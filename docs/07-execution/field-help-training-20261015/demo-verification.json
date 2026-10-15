@@ -1,0 +1,57 @@
+{
+  "synthetic": true,
+  "readOnlyDatabaseVerification": true,
+  "status": "PASS",
+  "tenant": "a21c4ddf-83f8-4851-abc6-2e226c65a661",
+  "counts": {
+    "people.employees": 12,
+    "platform_core.tenant_memberships": 14,
+    "platform_core.tenant_sites": 2,
+    "time.work_instances": 99,
+    "time.attendance_facts": 24,
+    "leave.requests": 6,
+    "payroll.periods": 4
+  },
+  "leaveStates": [
+    {
+      "state": "approved",
+      "n": 2
+    },
+    {
+      "state": "cancelled",
+      "n": 1
+    },
+    {
+      "state": "rejected",
+      "n": 1
+    },
+    {
+      "state": "submitted",
+      "n": 2
+    }
+  ],
+  "roles": [
+    {
+      "actor": "admin",
+      "authenticated": true,
+      "peopleAccess": "allowed"
+    },
+    {
+      "actor": "reader",
+      "authenticated": true,
+      "peopleAccess": "allowed"
+    },
+    {
+      "actor": "employee",
+      "authenticated": true,
+      "peopleAccess": "denied"
+    },
+    {
+      "actor": "no-work",
+      "authenticated": true,
+      "peopleAccess": "denied"
+    }
+  ],
+  "noProductionAccess": true,
+  "fullFinancialOrPhysicalQualificationClaim": false
+}
