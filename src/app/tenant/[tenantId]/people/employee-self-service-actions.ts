@@ -1,12 +1,13 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { bundleKeySet, PEOPLE_ROLE_BUNDLES } from '../users/bundles';
 
 export async function enableEmployeeSelfServiceAction(form: FormData) {
   const tenantId = String(form.get('tenantId') ?? '');
   const employeeId = String(form.get('employeeId') ?? '');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, form.get('profileReturn'));
   const bundle = String(form.get('bundle') ?? '');
   const expectedUser = String(form.get('linkedUserId') ?? '');
   const expected = form.getAll('expectedBundleKey').map(String);

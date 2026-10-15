@@ -1,6 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export type LifecycleState = {
@@ -19,6 +19,7 @@ const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}
 export async function endEmploymentAction(previous: LifecycleState, formData: FormData): Promise<LifecycleState> {
   const tenantId = value(formData, 'tenantId');
   const employeeId = value(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const employmentId = value(formData, 'employmentId');
   const endDate = value(formData, 'endDate');
   const state = { tenantId, employeeId, employmentId, endDate, error: '', attempt: previous.attempt + 1 };
@@ -39,6 +40,7 @@ export async function endEmploymentAction(previous: LifecycleState, formData: Fo
 export async function rehireEmployeeAction(previous: RehireState, formData: FormData): Promise<RehireState> {
   const tenantId = value(formData, 'tenantId');
   const employeeId = value(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const employerId = value(formData, 'employerId');
   const siteId = value(formData, 'siteId');
   const departmentId = value(formData, 'departmentId');

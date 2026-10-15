@@ -5,6 +5,7 @@ import { formatDecimalAmount } from '@/lib/format-decimal-amount';
 import { useActionState, useState } from 'react';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { useOfflineSubmission } from '@/components/offline-submission';
+import { ProfileReturnField } from '@/components/profile-return-field';
 import { cancelCompensationChangeAction, changeCompensationAction, type CompensationFormState } from '../compensation-actions';
 
 type CompensationVersion = {
@@ -20,7 +21,8 @@ export type CompensationOptions = {
 };
 
 export function CompensationPanel({ tenantId, employeeId, employmentId, canView, canManage, history, historyError,
-  options, optionsError, today }: {
+  options, optionsError, today, returnTo }: {
+  returnTo?: string | null;
   tenantId: string; employeeId: string; employmentId: string | null; canView: boolean; canManage: boolean;
   history: CompensationHistory | null; historyError: boolean; options: CompensationOptions | null;
   optionsError: boolean; today: string;
@@ -55,6 +57,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
           {version.valid_until && <div><dt>ينتهي قبل</dt><dd><bdi>{version.valid_until}</bdi></dd></div>}
         </dl>
         {canManage && version.status === 'scheduled' && pending?.id === version.id && employmentId && <form action={cancelCompensationChangeAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
+          <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId} />
           <input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="employmentId" value={employmentId} />
@@ -72,6 +75,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
     {canChange && <Disclosure className="compensation-change-details" summary={<>تغيير الأجر الأساسي</>}>
       <form key={formState.attempt} action={formAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <p className="field-hint">يسري التغيير من التاريخ المحدد؛ وتبقى القيم السابقة محفوظة في سجل الأجر.</p>
+        <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
         <input type="hidden" name="employeeId" value={employeeId} />
@@ -87,6 +91,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
       </form>
     </Disclosure>}
     {canManage && !canView && employmentId && options?.pending && <form action={cancelCompensationChangeAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
+      <ProfileReturnField value={returnTo} />
       <input type="hidden" name="tenantId" value={tenantId} />
       <input type="hidden" name="employeeId" value={employeeId} />
       <input type="hidden" name="employmentId" value={employmentId} />

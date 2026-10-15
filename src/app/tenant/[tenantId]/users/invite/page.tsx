@@ -5,13 +5,16 @@ import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { InviteMemberForm } from './InviteMemberForm';
+import { safeReturn } from '@/lib/return-to';
+import { profileReturnUrl } from '@/lib/profile-return';
 
 export const dynamic = 'force-dynamic';
 
 export default async function InviteMemberPage({ params, searchParams }: { params: Promise<{ tenantId: string }>;
-  searchParams: Promise<{ employeeId?: string }> }) {
+  searchParams: Promise<{ employeeId?: string; profileReturn?: string }> }) {
   const { tenantId } = await params;
-  const { employeeId: employeeIdParam } = await searchParams;
+  const { employeeId: employeeIdParam, profileReturn } = await searchParams;
+  const returnTo = safeReturn(tenantId, profileReturn);
   const employeeId = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(employeeIdParam ?? '')
     ? employeeIdParam! : '';
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(tenantId)) notFound();
@@ -28,7 +31,7 @@ export default async function InviteMemberPage({ params, searchParams }: { param
 
   return <PageFrame footer="إدارة الشركة">
     <div className="workspace-form-page">
-      <Link className="back-link" href={employeeId ? `/tenant/${tenantId}/people/${employeeId}` : `/tenant/${tenantId}/users`}>
+      <Link className="back-link" href={employeeId ? profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?tab=account`, returnTo) : `/tenant/${tenantId}/users`}>
         {employeeId ? 'العودة إلى ملف الموظف' : 'العودة إلى المستخدمين'}</Link>
       <header className="workspace-page-heading"><div><p className="eyebrow">المستخدمون والدعوات</p>
         <PageHeader  title={<>دعوة عضو</>} /><p>أرسل دعوة إلى بريد الشخص الذي سينضم لفريق الشركة.</p></div></header>
@@ -36,7 +39,7 @@ export default async function InviteMemberPage({ params, searchParams }: { param
         <span>لا يُحجز مقعد قبل قبول الدعوة.</span></div>
       <section className="workspace-form-panel" aria-label="بيانات الدعوة">
         {employeeId && <p className="field-hint">بعد قبول الدعوة اربط الحساب من ملف الموظف؛ الدعوة لا تربطه تلقائيًا.</p>}
-        <InviteMemberForm tenantId={tenantId} employeeId={employeeId} idempotencyKey={crypto.randomUUID()} />
+        <InviteMemberForm tenantId={tenantId} employeeId={employeeId} idempotencyKey={crypto.randomUUID()} returnTo={returnTo} />
       </section>
     </div>
   </PageFrame>;

@@ -1,6 +1,7 @@
 import { Panel } from '@/components/ui';
 import { ReadinessList, type ReadinessItem } from '@/components/patterns/readiness-list/ReadinessList';
 import type { SelfServiceAccess } from './EmployeeSelfServices';
+import { profileReturnUrl, workPolicyCatalogUrl } from '@/lib/profile-return';
 
 type Facts = {
   work: { active: boolean; hasAssignment: boolean; canManage: boolean };
@@ -13,9 +14,9 @@ type Facts = {
   canPreparePayroll: boolean | null;
 };
 
-export function EmployeeReadiness({ tenantId, employeeId, employerId, facts }: { tenantId: string; employeeId: string; employerId: string | null; facts: Facts }) {
+export function EmployeeReadiness({ tenantId, employeeId, employerId, facts, returnTo }: { tenantId: string; employeeId: string; employerId: string | null; facts: Facts; returnTo?: string | null }) {
   const base = `/tenant/${tenantId}`, profile = `${base}/people/${employeeId}`;
-  const tab = (area: string, label: string) => ({ href: `${profile}?tab=${area}`, label });
+  const tab = (area: string, label: string) => ({ href: profileReturnUrl(tenantId, employeeId, `${profile}?tab=${area}`, returnTo), label });
   const steps: ReadinessItem[] = [];
   steps.push({ title: 'العمل والفرع الحاليان', state: facts.work.active && facts.work.hasAssignment ? 'done' : facts.work.canManage ? 'todo' : 'other-role',
     detail: facts.work.active && facts.work.hasAssignment ? 'بيانات العمل والفرع الحالي محفوظة.' : 'راجع علاقة العمل والفرع وتاريخ بدايتها؛ العمل المقرر أو المنتهي لا يعني عملًا جاريًا.',
@@ -27,7 +28,7 @@ export function EmployeeReadiness({ tenantId, employeeId, employerId, facts }: {
   steps.push({ title: 'سياسة الدوام', state: policy.forbidden ? 'other-role' : policy.current === null ? 'unknown' : policy.current ? 'done' : policy.canAssign || policy.canManageCatalog ? 'todo' : 'other-role',
     detail: policy.current ? 'سياسة دوام أساسية سارية محفوظة.' : policy.current === null && !policy.forbidden ? 'تعذر قراءة سياسة الدوام الحالية.' : 'يلزم تعيين سياسة دوام لتجهيز الحضور.',
     owner: !policy.canAssign && !policy.canManageCatalog ? 'مسؤول الدوام' : undefined,
-    action: !policy.current && policy.canManageCatalog && !policy.hasOptions ? { href: `${base}/people/work-policies`, label: 'أنشئ قالب دوام' }
+    action: !policy.current && policy.canManageCatalog && !policy.hasOptions ? { href: workPolicyCatalogUrl(tenantId, employeeId, returnTo), label: 'أنشئ قالب دوام' }
       : policy.canAssign ? tab('work', policy.current ? 'راجع سياسة الدوام' : 'عيّن سياسة الدوام') : undefined });
   const account = facts.account;
   const pending = ['pending', 'user_created'].includes(account.provisionState ?? '');

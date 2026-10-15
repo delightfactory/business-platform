@@ -1,10 +1,11 @@
 import { ButtonLink, Message, Panel, StatusBadge } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
+import { ProfileReturnField } from '@/components/profile-return-field';
 import { enableEmployeeSelfServiceAction } from '../employee-self-service-actions';
 
 export type SelfServiceAccess = { state: 'ready' | 'inactive' | 'unlinked' | 'other-role' | 'unknown'; keys: string[]; userId?: string; email?: string };
-export function EmployeeSelfServices({ tenantId, employeeId, access, result }: { tenantId: string; employeeId: string; access: SelfServiceAccess; result?: string }) {
+export function EmployeeSelfServices({ tenantId, employeeId, access, result, returnTo }: { tenantId: string; employeeId: string; access: SelfServiceAccess; result?: string; returnTo?: string | null }) {
   const feedback: Record<string, string> = {
     saved: 'تم حفظ الصلاحية. الحالة أدناه من الصلاحيات الحالية للحساب المرتبط.',
     stale: 'تغيّرت صلاحيات الحساب. راجع الحالة الحالية ثم أعد اختيار الخدمة المطلوبة.',
@@ -25,6 +26,7 @@ export function EmployeeSelfServices({ tenantId, employeeId, access, result }: {
             { key: 'employee.leave.self.v1', label: 'الإجازات', action: 'إتاحة الإجازات' },
           ].map(service => access.keys.includes(service.key) ? <StatusBadge key={service.key} tone="ok" label={`${service.label}: الصلاحية مضافة`} />
             : <OfflineForm key={service.key} action={enableEmployeeSelfServiceAction}>
+              <ProfileReturnField value={returnTo} />
               <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
               <input type="hidden" name="bundle" value={service.key} />
               <input type="hidden" name="linkedUserId" value={access.userId} />

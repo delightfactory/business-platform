@@ -1,5 +1,7 @@
 import { Button, ButtonLink, Disclosure, Field, Input, Message, Panel, Select } from '@/components/ui';
 import styles from '../people.module.css';
+import { ProfileReturnField } from '@/components/profile-return-field';
+import { profileReturnUrl } from '@/lib/profile-return';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { linkEmployeeUserAction, unlinkEmployeeUserAction } from '../employee-user-link-actions';
@@ -10,7 +12,7 @@ export type Options = { items: Array<{ user_id: string; email: string; display_n
 export type AccountProvision = { intent_id?: string; state: string; target_email?: string; delivery_state?: string; last_error_code?: string; password_ready?: boolean; currently_linked?: boolean };
 
 export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvite, canProvisionAccount, snapshot, snapshotError, options, optionsError,
-  accountProvision, accountProvisionError, requestKey, accountState, query, page, state }: { tenantId: string; employeeId: string; canManage: boolean; canInvite: boolean;
+  accountProvision, accountProvisionError, requestKey, accountState, query, page, state, returnTo }: { tenantId: string; employeeId: string; canManage: boolean; canInvite: boolean; returnTo?: string | null;
   canProvisionAccount: boolean;
   snapshot: LinkSnapshot | null; snapshotError: boolean; options: Options | null; optionsError: boolean;
   accountProvision: AccountProvision | null; accountProvisionError: boolean; requestKey: string; accountState?: string; query: string; page: number; state?: string }) {
@@ -50,6 +52,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         ? <><strong><bdi>{snapshot.display_name ?? snapshot.email}</bdi></strong>{snapshot.email && snapshot.display_name && snapshot.display_name !== snapshot.email && <> <bdi>{snapshot.email}</bdi></>}</>
         : <strong>حساب مرتبط</strong>}</p>
         {canManage && <OfflineForm action={unlinkEmployeeUserAction} className="workspace-form-actions">
+          <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <OfflineSubmitButton className="secondary-button" label="فك الربط" pendingLabel="جارٍ فك الربط…" />
         </OfflineForm>}
@@ -62,11 +65,13 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
       <p>اختر حسابًا بعضوية نشطة وبريد مؤكد في هذه الشركة.</p>
       {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المستوفين لشروط الربط.</p> : <>
         <form method="get" action={base} className="compact-form">
+          <ProfileReturnField value={returnTo} name="return" />
           <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} /></Field>
           <input type="hidden" name="linkPage" value="1" />
           <Button variant="ghost"  type="submit">بحث</Button>
         </form>
         {options.items.length ? <OfflineForm action={linkEmployeeUserAction} className="compact-form">
+          <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <Field id="employee-user-id" label={<>عضو نشط وبريد مؤكد</>} required><Select id="employee-user-id" name="userId" required defaultValue="">
             <option value="" disabled>اختر عضوًا</option>
@@ -75,14 +80,14 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
           <OfflineSubmitButton label="ربط الحساب" pendingLabel="جارٍ ربط الحساب…" />
         </OfflineForm> : <p>لا توجد عضوية نشطة تستوفي شروط الربط وتطابق البحث.</p>}
         <nav className="workspace-form-actions" aria-label="صفحات الأعضاء">
-          {page > 1 && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`}>السابق</ButtonLink>}
+          {page > 1 && <ButtonLink variant="ghost" href={profileReturnUrl(tenantId, employeeId, `${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page - 1}`, returnTo)}>السابق</ButtonLink>}
           <span>صفحة {page}</span>
-          {options.has_more && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page + 1}`}>التالي</ButtonLink>}
+          {options.has_more && <ButtonLink variant="ghost" href={profileReturnUrl(tenantId, employeeId, `${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page + 1}`, returnTo)}>التالي</ButtonLink>}
         </nav>
       </>}
       </Disclosure>
       {canInvite && <Disclosure summary="دعوة عضو ثم ربطه" className="task-disclosure"><p>أرسل دعوة العضوية، وبعد القبول ارجع هنا لربط الحساب. الدعوة لا تربطه تلقائيًا.</p>
-        <ButtonLink variant="ghost" href={`/tenant/${tenantId}/users/invite?employeeId=${encodeURIComponent(employeeId)}`}>دعوة عضو جديد</ButtonLink></Disclosure>}
+        <ButtonLink variant="ghost" href={`/tenant/${tenantId}/users/invite?${new URLSearchParams({ employeeId, ...(returnTo ? { profileReturn: returnTo } : {}) })}`}>دعوة عضو جديد</ButtonLink></Disclosure>}
       {canProvisionAccount && <Disclosure summary="إنشاء حساب للموظف" className="task-disclosure" open={Boolean(accountState || accountProvisionError || (provision && !['none', 'activated'].includes(provision.state)))}>
         <p>يُنشأ الحساب دون أن يختار المسؤول كلمة مرور. سيؤكد الموظف بريده ويضع كلمة المرور، ثم تضاف له عضوية «عضو» ويرتبط حسابه بهذا الملف.</p>
         {accountProvisionError && <Message tone="bad"  role="alert">تعذر تحميل حالة إنشاء الحساب. حدّث الصفحة قبل بدء طلب جديد.</Message>}
@@ -93,6 +98,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
           {provision.target_email && <p>البريد: <bdi>{provision.target_email}</bdi></p>}
           {provision.state === 'manual_review' && <p role="alert">لن يتم اعتماد حساب لم تثبت ملكية هذا الطلب له.</p>}
           {['pending','user_created'].includes(provision.state) && provision.intent_id && <OfflineForm action={retryEmployeeAccountActivationAction}>
+            <ProfileReturnField value={returnTo} />
             <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
             <input type="hidden" name="intentId" value={provision.intent_id} />
             <OfflineSubmitButton label={provision.state === 'pending' ? 'متابعة إنشاء الحساب' : 'إعادة إرسال رابط التفعيل'} pendingLabel="جارٍ الإرسال…" />
@@ -100,6 +106,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </div>}
         {provision?.state === 'activated' && provision.currently_linked === false && <Message tone="info" >الحساب السابق لم يعد مرتبطًا بهذا الموظف. يمكنك إنشاء حساب بديل.</Message>}
         {canStartNewAccount && <OfflineForm action={createEmployeeAccountAction} className="compact-form">
+          <ProfileReturnField value={returnTo} />
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
           <input type="hidden" name="requestKey" value={requestKey} />
           <Field id="employee-account-email" label={<>بريد الموظف</>} required><Input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required /></Field>
@@ -111,6 +118,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
       <h3>تأكيد جاهزية كلمة المرور</h3>
       <p>الحساب نشط بالفعل. يمكن إرسال رابط للموظف لتحديث كلمة المرور وتأكيد جاهزيتها دون تغيير العضوية أو الصلاحيات.</p>
       <OfflineForm action={sendEmployeeAccountReadinessRecoveryAction}>
+        <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
         <input type="hidden" name="intentId" value={provision.intent_id} />
         <OfflineSubmitButton label="إرسال رابط تأكيد كلمة المرور" pendingLabel="جارٍ الإرسال…" />

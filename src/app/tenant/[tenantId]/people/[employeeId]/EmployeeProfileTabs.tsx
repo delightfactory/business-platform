@@ -25,6 +25,9 @@ export function EmployeeProfileTabs({ initialTab, areas }: { initialTab: Profile
     }
     setNotice('');
     setSelected(value as ProfileArea);
+    const url = new URL(window.location.href);
+    url.searchParams.set('tab', value);
+    window.history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
 
   return <Tabs.Root ref={root} value={selected} onValueChange={selectArea} dir="rtl" activationMode="manual">

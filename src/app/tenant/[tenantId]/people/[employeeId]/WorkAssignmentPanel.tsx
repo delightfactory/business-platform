@@ -4,6 +4,7 @@ import { Badge, Disclosure, Field, Input, Message, Panel, RecordCard, Select } f
 import { useState, useActionState } from 'react';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { useOfflineSubmission } from '@/components/offline-submission';
+import { ProfileReturnField } from '@/components/profile-return-field';
 import { cancelWorkAssignmentAction, correctInitialWorkAssignmentAction, scheduleWorkAssignmentAction, type AssignmentFormState } from '../work-assignment-actions';
 
 type Named = { id: string; name: string };
@@ -23,7 +24,8 @@ export type TransferOptions = {
 };
 
 export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employmentStartDate, employmentActive,
-  history, historyError, options, optionsError, canManage, initialDate }: {
+  history, historyError, options, optionsError, canManage, initialDate, returnTo }: {
+  returnTo?: string | null;
   tenantId: string; employeeId: string; employmentId: string | null; employmentStartDate: string | null;
   employmentActive: boolean; history: AssignmentHistory | null; historyError: boolean;
   options: TransferOptions | null; optionsError: boolean; canManage: boolean; initialDate: string;
@@ -81,6 +83,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
             {assignment.valid_until && <div><dt>تنتهي هذه البيانات قبل</dt><dd><bdi>{assignment.valid_until}</bdi></dd></div>}
           </dl>
           {canManage && assignment.status === 'scheduled' && employmentId && <form action={cancelWorkAssignmentAction} className="assignment-cancel-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
+            <ProfileReturnField value={returnTo} />
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employeeId" value={employeeId} />
             <input type="hidden" name="employmentId" value={employmentId} />
@@ -103,6 +106,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
         : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={formState.attempt} action={formAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">عدّل الفرع أو القسم أو الوظيفة المطلوبة، واترك بقية البيانات كما هي.</p>
+            <ProfileReturnField value={returnTo} />
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
             <input type="hidden" name="employeeId" value={employeeId} />
@@ -139,6 +143,7 @@ export function WorkAssignmentPanel({ tenantId, employeeId, employmentId, employ
         : options.sites.length === 0 ? <Message tone="neutral" >لا يوجد فرع نشط تابع لجهة عمل الموظف.</Message>
           : <form key={correctionState.attempt} action={correctionAction} className="assignment-transfer-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
             <p className="field-hint">يُتاح هذا التصحيح في يوم بداية العمل فقط، ويحفظ سجلًا قبل التعديل وبعده.</p>
+            <ProfileReturnField value={returnTo} />
             <input type="hidden" name="tenantId" value={tenantId} />
             <input type="hidden" name="employmentId" value={employmentId ?? ''} />
             <input type="hidden" name="employeeId" value={employeeId} />

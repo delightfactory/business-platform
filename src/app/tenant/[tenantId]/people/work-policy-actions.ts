@@ -1,6 +1,8 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
+import { profileReturnUrl, workPolicyCatalogUrl } from '@/lib/profile-return';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export type WorkPolicySaveState = { error: string };
@@ -48,22 +50,29 @@ export async function saveWorkPolicyAction(_previous: WorkPolicySaveState, formD
   });
   if (error) return { error: error.message.includes('attendance_policy_manage_forbidden') ? 'لا تملك صلاحية إدارة سياسات الحضور.' : error.message.includes('time_policy_halfday_mapping') ? 'راجع أوقات الاستراحة: يجب أن تقع داخل الوردية وتساوي مدتها المحددة. بياناتك محفوظة في النموذج.' : 'تعذر حفظ القالب. بياناتك محفوظة في النموذج؛ أعد المحاولة.' };
   const returnToRequest = text(formData, 'returnToRequest');
+  const employeeId = text(formData, 'employeeId');
+  if (!isUuid(returnToRequest) && isUuid(employeeId)) redirect(profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?tab=work&policy=template-saved`, formData.get('profileReturn')));
   redirect(`/tenant/${tenantId}/people/work-policies?state=saved${isUuid(returnToRequest) ? `&returnToRequest=${returnToRequest}` : ''}`);
 }
 
 export async function setWorkPolicyActiveAction(formData: FormData) {
   const tenantId = text(formData, 'tenantId'); const policyId = text(formData, 'policyId');
+  const catalog = new URL(workPolicyCatalogUrl(tenantId, formData.get('employeeId'), formData.get('profileReturn')), 'https://workspace.invalid');
+  const returnToRequest = text(formData, 'returnToRequest');
+  if (isUuid(returnToRequest)) catalog.searchParams.set('returnToRequest', returnToRequest);
+  const destination = (state: string) => { catalog.searchParams.set('state', state); return catalog.pathname + catalog.search; };
   const active = text(formData, 'active') === 'true';
-  if (!isUuid(tenantId) || !isUuid(policyId)) redirect(`/tenant/${tenantId}/people/work-policies?state=invalid`);
+  if (!isUuid(tenantId) || !isUuid(policyId)) redirect(destination('invalid'));
   const supabase = await createSupabaseServerClient();
-  if (!supabase) redirect(`/tenant/${tenantId}/people/work-policies?state=setup`);
+  if (!supabase) redirect(destination('setup'));
   const { error } = await supabase.rpc('set_time_work_policy_active', { p_tenant_id: tenantId, p_template_id: policyId, p_active: active });
-  if (error) redirect(`/tenant/${tenantId}/people/work-policies?state=failed`);
-  redirect(`/tenant/${tenantId}/people/work-policies?state=${active ? 'activated' : 'deactivated'}`);
+  if (error) redirect(destination('failed'));
+  redirect(destination(active ? 'activated' : 'deactivated'));
 }
 
 export async function assignWorkPolicyAction(formData: FormData) {
   const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const employmentId = text(formData, 'employmentId'); const policyId = text(formData, 'policyId'); const effectiveDate = text(formData, 'effectiveDate');
   if (!isUuid(tenantId) || !isUuid(employeeId) || !isUuid(employmentId) || !isUuid(policyId) || !/^\d{4}-\d{2}-\d{2}$/.test(effectiveDate)) redirect(`/tenant/${tenantId}/people/${employeeId}?policy=invalid`);
   const supabase = await createSupabaseServerClient();
@@ -75,6 +84,7 @@ export async function assignWorkPolicyAction(formData: FormData) {
 
 export async function assignAttendancePolicyOverrideAction(formData: FormData) {
   const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const employmentId = text(formData, 'employmentId'); const policyId = text(formData, 'policyId');
   const validFrom = text(formData, 'validFrom'); const validThrough = text(formData, 'validThrough');
   const reason = text(formData, 'reason');
@@ -101,6 +111,7 @@ export async function assignAttendancePolicyOverrideAction(formData: FormData) {
 
 export async function cancelAttendancePolicyOverrideAction(formData: FormData) {
   const tenantId = text(formData, 'tenantId'); const employeeId = text(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const overrideId = text(formData, 'overrideId'); const reason = text(formData, 'cancelReason');
   const path = `/tenant/${tenantId}/people/${employeeId}`;
   if (!isUuid(tenantId) || !isUuid(employeeId) || !isUuid(overrideId) || reason.length < 3 || reason.length > 500) redirect(`${path}?policyOverride=invalid`);

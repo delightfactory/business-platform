@@ -1,6 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { sendEmployeeAccountActivation } from '@/lib/employee-account-delivery';
@@ -8,6 +8,7 @@ import { sendEmployeeAccountActivation } from '@/lib/employee-account-delivery';
 export async function createEmployeeAccountAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const employeeId = field(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const email = field(formData, 'email').toLowerCase();
   const requestKey = field(formData, 'requestKey');
   const path = `/tenant/${tenantId}/people/${employeeId}`;
@@ -18,23 +19,25 @@ export async function createEmployeeAccountAction(formData: FormData) {
     p_tenant_id: tenantId, p_employee_id: employeeId, p_target_email: email, p_request_key: requestKey,
   });
   if (error || !isRecord(data) || !isUuid(data.intent_id)) redirect(`${path}?account=${mapError(error?.message)}`);
-  await sendActivation(supabase, tenantId, employeeId, data.intent_id, path);
+  await sendActivation(supabase, tenantId, employeeId, data.intent_id, path, formData.get('profileReturn'));
 }
 
 export async function retryEmployeeAccountActivationAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const employeeId = field(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const intentId = field(formData, 'intentId');
   const path = `/tenant/${tenantId}/people/${employeeId}`;
   if (![tenantId, employeeId, intentId].every(isUuid)) redirect(`${path}?account=invalid`);
   const supabase = await createSupabaseServerClient();
   if (!supabase) redirect(`${path}?account=setup`);
-  await sendActivation(supabase, tenantId, employeeId, intentId, path);
+  await sendActivation(supabase, tenantId, employeeId, intentId, path, formData.get('profileReturn'));
 }
 
 export async function sendEmployeeAccountReadinessRecoveryAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const employeeId = field(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const intentId = field(formData, 'intentId');
   const path = `/tenant/${tenantId}/people/${employeeId}`;
   if (![tenantId, employeeId, intentId].every(isUuid)) redirect(`${path}?account=invalid`);
@@ -60,7 +63,8 @@ export async function sendEmployeeAccountReadinessRecoveryAction(formData: FormD
 }
 
 async function sendActivation(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
-  tenantId: string, employeeId: string, intentId: string, profilePath: string): Promise<never> {
+  tenantId: string, employeeId: string, intentId: string, profilePath: string, returnTo: unknown): Promise<never> {
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, returnTo);
   const { data, error } = await supabase.rpc('prepare_people_employee_account_provision', {
     p_tenant_id: tenantId, p_employee_id: employeeId, p_intent_id: intentId,
   });

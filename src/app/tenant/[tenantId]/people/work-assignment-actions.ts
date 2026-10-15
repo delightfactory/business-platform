@@ -1,6 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export type AssignmentFormState = {
@@ -24,6 +24,7 @@ export async function scheduleWorkAssignmentAction(
     error: '',
     attempt: previous.attempt + 1,
   };
+  const redirect: (destination: string) => never = profileActionRedirect(next.tenantId, next.employeeId, formData.get('profileReturn'));
   const fail = (message: string) => ({ ...next, error: message });
   if (!isUuid(next.tenantId) || !isUuid(next.employmentId) || !isUuid(next.employeeId) || !isUuid(next.siteId)
       || (next.departmentId && !isUuid(next.departmentId))
@@ -58,6 +59,7 @@ export async function correctInitialWorkAssignmentAction(
   formData: FormData,
 ): Promise<AssignmentFormState> {
   const next = { ...readAssignmentForm(formData), error: '', attempt: previous.attempt + 1 };
+  const redirect: (destination: string) => never = profileActionRedirect(next.tenantId, next.employeeId, formData.get('profileReturn'));
   const fail = (message: string) => ({ ...next, error: message });
   if (!isUuid(next.tenantId) || !isUuid(next.employmentId) || !isUuid(next.employeeId) || !isUuid(next.siteId)
       || (next.departmentId && !isUuid(next.departmentId))
@@ -88,6 +90,7 @@ export async function cancelWorkAssignmentAction(formData: FormData): Promise<vo
   const employmentId = readForm(formData, 'employmentId');
   const assignmentId = readForm(formData, 'assignmentId');
   const employeeId = readForm(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   if (![tenantId, employmentId, assignmentId, employeeId].every(isUuid)) {
     redirect('/tenant');
   }

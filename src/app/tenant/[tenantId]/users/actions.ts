@@ -2,6 +2,7 @@
 import { PEOPLE_ROLE_BUNDLES, bundleKeySet } from './bundles';
 
 import { redirect } from 'next/navigation';
+import { profileReturnUrl } from '@/lib/profile-return';
 import { refresh } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
@@ -25,7 +26,7 @@ export async function inviteMemberFormAction(previous: InviteMemberState, formDa
   if (invitation.state === 'already_member') return failure('already-member');
   if (invitation.created !== true) return failure(invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
   const sent = await deliverMemberInvitation(supabase, invitation);
-  redirect(isUuid(employeeId) ? `/tenant/${tenantId}/people/${employeeId}?userLink=${sent === 'sent' ? 'invite-sent' : sent === 'failed' ? 'invite-failed' : 'invite-unknown'}`
+  redirect(isUuid(employeeId) ? profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?userLink=${sent === 'sent' ? 'invite-sent' : sent === 'failed' ? 'invite-failed' : 'invite-unknown'}`, formData.get('profileReturn'))
     : `/tenant/${tenantId}/users?${new URLSearchParams({ state: `created-${sent}`, view: 'invitations', invitation: String(invitation.id), q: email.slice(0, 120) })}`);
 }
 

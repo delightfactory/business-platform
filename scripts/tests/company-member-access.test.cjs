@@ -5,12 +5,13 @@ const fs = require('node:fs'), path = require('node:path'), ts = require('typesc
 const root = path.resolve(__dirname, '../..');
 Object.assign(process.env, { NEXT_PUBLIC_SUPABASE_URL: 'http://127.0.0.1:56321', NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: 'synthetic-key', SUPABASE_SECRET_KEY: 'synthetic-secret', NEXT_PUBLIC_APP_URL: 'http://127.0.0.1:61190' });
 function load(file, dependencies = {}) {
-  const compiled = ts.transpileModule(fs.readFileSync(path.join(root, file), 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
+  const compiled = ts.transpileModule(fs.readFileSync(path.join(root, file), 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2017 } }).outputText;
   const loaded = { exports: {} };
   new Function('require', 'module', 'exports', compiled)(name => Object.hasOwn(dependencies, name) ? dependencies[name] : require(name), loaded, loaded.exports);
   return loaded.exports;
 }
 const bundles = load('src/app/tenant/[tenantId]/users/bundles.ts');
+const profileReturn = load('src/lib/profile-return.ts', { './return-to': load('src/lib/return-to.ts') });
 const tenant = 'a1000000-0000-4000-8000-000000000001', invitation = 'a1000000-0000-4000-8000-000000000002', member = 'a1000000-0000-4000-8000-000000000003';
 function setup({ writeError = null, mailError = null, throwMail = false, recordError = null } = {}) {
   const writes = [], records = []; let mails = 0;
@@ -23,10 +24,10 @@ function setup({ writeError = null, mailError = null, throwMail = false, recordE
     auth: { admin: { inviteUserByEmail: async () => { mails++; if (throwMail) throw Error('Transport interrupted'); return { error: mailError }; } } },
     rpc: async (name, args) => { records.push({ name, args }); return { error: recordError }; },
   }) } });
-  const actions = load('src/app/tenant/[tenantId]/users/actions.ts', { './bundles': bundles, '@/lib/supabase/server': server, '@/lib/supabase/admin': admin,
+  const actions = load('src/app/tenant/[tenantId]/users/actions.ts', { './bundles': bundles, '@/lib/supabase/server': server, '@/lib/supabase/admin': admin, '@/lib/profile-return': profileReturn,
     'next/cache': { refresh: () => {} }, 'next/navigation': { redirect: href => { throw Object.assign(Error('Redirect'), { href }); } } });
   const form = new FormData(); for (const [key, value] of Object.entries({ tenantId: tenant, userId: member, memberEmail: 'qa@example.test', invitationId: invitation, invitationEmail: 'qa@example.test', email: 'qa@example.test', idempotencyKey: member })) form.set(key, value);
-  const redirect = async method => { try { await actions[method](form); } catch (error) { if (error.href) return new URL(error.href, 'https://workspace.invalid'); throw error; } throw Error('Expected a review destination'); };
+  const redirect = async (method, previous) => { try { if (previous) await actions[method](previous, form); else await actions[method](form); } catch (error) { if (error.href) return new URL(error.href, 'https://workspace.invalid'); throw error; } throw Error('Expected a review destination'); };
   return { form, redirect, writes, records, mails: () => mails };
 }
 
@@ -62,4 +63,12 @@ test('stale member editing carries observed selection once and returns to the cu
   const url = await system.redirect('setTenantMemberPeopleBundlesAction');
   assert.equal(url.searchParams.get('state'), 'bundles-stale'); assert.equal(url.searchParams.get('member'), member); assert.equal(url.searchParams.get('q'), 'qa@example.test');
   assert.equal(system.writes.length, 1); assert.deepEqual(system.writes[0].args.p_expected_bundle_keys, ['employee.leave.self.v1']);
+});
+test('employee invitation completion returns to the same task without altering invitation semantics', async () => {
+  const system = setup(), task = `/tenant/${tenant}/payroll?employer=${member}`;
+  system.form.set('employeeId', member); system.form.set('profileReturn', task);
+  const result = await system.redirect('inviteMemberFormAction', { email: '', idempotencyKey: member, error: '', attempt: 0 });
+  assert.equal(result.pathname, `/tenant/${tenant}/people/${member}`);
+  assert.equal(result.searchParams.get('return'), task); assert.equal(result.searchParams.get('userLink'), 'invite-sent');
+  assert.equal(system.writes.length, 1); assert.equal(system.mails(), 1);
 });

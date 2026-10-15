@@ -41,12 +41,16 @@ export function WorkPolicyEditor({
   policy,
   initialCode,
   returnToRequest,
+  employeeId,
+  profileReturn,
 }: {
   tenantId: string;
   action: (previous: WorkPolicySaveState, formData: FormData) => Promise<WorkPolicySaveState>;
   policy?: PolicySeed;
   initialCode?: string;
   returnToRequest?: string;
+  employeeId?: string;
+  profileReturn?: string | null;
 }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
@@ -79,6 +83,8 @@ export function WorkPolicyEditor({
     <fieldset disabled={pending} style={{ display: 'contents' }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     {returnToRequest && <input type="hidden" name="returnToRequest" value={returnToRequest} />}
+    {employeeId && <input type="hidden" name="employeeId" value={employeeId} />}
+    {profileReturn && <input type="hidden" name="profileReturn" value={profileReturn} />}
     {policy && <><input type="hidden" name="templateId" value={policy.id} /><input type="hidden" name="code" value={policy.code} /></>}
 
     <Panel className="work-policy-section" aria-labelledby={`${idPrefix}-identity-heading`}>
@@ -201,6 +207,7 @@ export function WorkPolicyEditor({
     <div className="work-policy-editor-actions">
       <SubmitButton label={policy ? 'حفظ إصدار جديد' : 'إنشاء قالب الدوام'} pendingLabel={policy ? 'جارٍ حفظ الإصدار…' : 'جارٍ إنشاء القالب…'}  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
       {policy && <span>سيبقى الإصدار السابق محفوظًا.</span>}
+      {employeeId && !returnToRequest && <span>بعد الحفظ ستعود إلى الموظف لاختيار القالب وتاريخ سريانه.</span>}
     </div>
     </fieldset>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;

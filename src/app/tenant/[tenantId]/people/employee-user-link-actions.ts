@@ -1,11 +1,12 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export async function linkEmployeeUserAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const employeeId = field(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const userId = field(formData, 'userId');
   const path = `/tenant/${tenantId}/people/${employeeId}`;
   if (![tenantId, employeeId, userId].every(isUuid)) redirect(`${path}?userLink=error`);
@@ -20,6 +21,7 @@ export async function linkEmployeeUserAction(formData: FormData) {
 export async function unlinkEmployeeUserAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const employeeId = field(formData, 'employeeId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   const path = `/tenant/${tenantId}/people/${employeeId}`;
   if (![tenantId, employeeId].every(isUuid)) redirect(`${path}?userLink=error`);
   const supabase = await createSupabaseServerClient();

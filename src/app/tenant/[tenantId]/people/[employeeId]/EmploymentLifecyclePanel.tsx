@@ -6,6 +6,7 @@ import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offl
 
 import { useActionState } from 'react';
 import { SubmitButton } from '@/components/submit-button';
+import { ProfileReturnField } from '@/components/profile-return-field';
 import { endEmploymentAction, rehireEmployeeAction, type LifecycleState, type RehireState } from '../employment-lifecycle-actions';
 
 type EmploymentItem = {
@@ -22,7 +23,8 @@ type Job = { id: string; name: string; department_id: string | null };
 export type RehireOptions = { employers: Employer[]; sites: Site[]; departments: Department[]; jobs: Job[] };
 
 export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, employmentStatus,
-  employmentStartDate, workforceStatus, previousEndDate, canManage, today, history, historyError, rehireOptions, optionsError }: {
+  employmentStartDate, workforceStatus, previousEndDate, canManage, today, history, historyError, rehireOptions, optionsError, returnTo }: {
+  returnTo?: string | null;
   tenantId: string; employeeId: string; employmentId: string | null; employmentStatus: string | null;
   employmentStartDate: string | null; workforceStatus: string; previousEndDate: string | null; canManage: boolean; today: string;
   history: EmploymentHistory | null; historyError: boolean; rehireOptions: RehireOptions | null; optionsError: boolean;
@@ -73,6 +75,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
     {history?.events_truncated && <p className="record-meta">يعرض السجل أحدث 100 إجراء.</p>}
     {canEnd && <Disclosure className="compensation-change-details" summary={<>إنهاء علاقة العمل</>}>
       <form key={endState.attempt} action={endAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
+        <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId} />
         <input type="hidden" name="employeeId" value={employeeId} />
         <input type="hidden" name="employmentId" value={employmentId ?? ''} />
@@ -101,6 +104,7 @@ export function EmploymentLifecyclePanel({ tenantId, employeeId, employmentId, e
       {!optionsError && !rehireOptions && <Message tone="bad"  role="alert">خيارات إعادة التوظيف غير متاحة حاليًا.</Message>}
       {!optionsError && rehireOptions && <form key={rehireState.attempt} action={rehireAction} className="compensation-change-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
         <p className="field-hint">سيُنشأ سجل توظيف جديد للموظف نفسه، مع بيانات عمل وأجر عند بداية التعيين. تبقى العلاقة السابقة وسجلاتها كما هي.</p>
+        <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
         <Field id="rehire-employer" label={<>جهة العمل</>} required><Select id="rehire-employer" name="employerId" required value={employerId} onChange={event => setEmployerChoice(event.target.value)}>
           <option value="">اختر جهة العمل</option>{rehireOptions.employers.map((employer) => <option key={employer.id} value={employer.id}>{employer.name}</option>)}

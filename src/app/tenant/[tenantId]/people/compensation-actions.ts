@@ -1,6 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { profileActionRedirect } from '@/lib/profile-action-redirect';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export type CompensationFormState = {
@@ -17,6 +17,7 @@ export async function changeCompensationAction(
     employeeId: field(formData, 'employeeId'), amount: field(formData, 'amount'),
     effectiveDate: field(formData, 'effectiveDate'), error: '', attempt: previous.attempt + 1,
   };
+  const redirect: (destination: string) => never = profileActionRedirect(next.tenantId, next.employeeId, formData.get('profileReturn'));
   const fail = (message: string) => ({ ...next, error: message });
   if (![next.tenantId, next.employmentId, next.employeeId].every(isUuid)
       || !/^\d{4}-\d{2}-\d{2}$/.test(next.effectiveDate)
@@ -49,6 +50,7 @@ export async function cancelCompensationChangeAction(formData: FormData): Promis
   const employmentId = field(formData, 'employmentId');
   const employeeId = field(formData, 'employeeId');
   const versionId = field(formData, 'versionId');
+  const redirect: (destination: string) => never = profileActionRedirect(tenantId, employeeId, formData.get('profileReturn'));
   if (![tenantId, employmentId, employeeId, versionId].every(isUuid)) redirect('/tenant');
   const profilePath = `/tenant/${tenantId}/people/${employeeId}`;
   const supabase = await createSupabaseServerClient();
