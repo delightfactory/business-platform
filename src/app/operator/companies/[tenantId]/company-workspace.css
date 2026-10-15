@@ -1,0 +1,35 @@
+.operator-company-workspace { gap: 24px; }
+.operator-company-breadcrumb { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.operator-company-breadcrumb a { color: var(--muted); text-decoration: none; }
+.operator-company-breadcrumb a:hover { color: var(--ink); }
+.operator-company-tabs { display: flex; gap: 28px; border-block-end: 1px solid var(--line); margin-block-end: 8px; }
+.operator-company-tabs a { min-block-size: 48px; display: flex; align-items: center; color: var(--muted); text-decoration: none; border-block-end: 3px solid transparent; font-weight: 600; }
+.operator-company-tabs a[aria-current="page"] { color: var(--brand); border-color: var(--brand); }
+.operator-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-block-end: 8px; }
+.operator-section-heading h2 { margin: 0; font-size: 20px; }
+.operator-section-heading p { color: var(--muted); margin-block: 6px 0; font-size: 13px; }
+.operator-service-list { border-block-start: 1px solid var(--line); margin-block-start: 20px; }
+.operator-service-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-block: 24px; border-block-end: 1px solid var(--line); }
+.operator-service-info { flex: 1; min-inline-size: 0; }
+.operator-service-title { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.operator-service-title h3 { font-size: 16px; margin: 0; }
+.operator-service-info .field-hint { margin-block: 8px 0; }
+.operator-service-controls { display: flex; align-items: center; gap: 8px; min-inline-size: 108px; }
+.operator-service-menu { z-index: 100; min-inline-size: 180px; border: 1px solid var(--line); border-radius: 12px; padding: 6px; background: var(--surface); box-shadow: 0 8px 28px #0002; }
+.operator-service-menu [role="menuitem"] { display: flex; align-items: center; min-block-size: 44px; padding-inline: 12px; border-radius: 8px; cursor: pointer; color: var(--ink); outline: none; }
+.operator-service-menu [data-highlighted] { background: var(--surface-2); }
+.operator-service-controls > .ui-button { font-size: 12px; }
+.operator-form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-block-start: 24px; }
+.operator-duration-fields { display: grid; gap: 14px; min-inline-size: 0; border: 0; padding: 0; margin: 0; }
+.operator-limit-row { padding-block: 24px; border-block-end: 1px solid var(--line); }
+.operator-limit-row h3 { margin: 0; font-size: 16px; }
+.operator-limit-row meter { inline-size: 100%; block-size: 8px; accent-color: var(--brand); margin-block: 12px; }
+.operator-limit-editor { background: var(--surface-2); border-radius: 12px; padding: 20px; margin-block-start: 20px; max-inline-size: 620px; }
+@media (max-width: 600px) {
+  .operator-company-tabs { gap: 18px; font-size: 13px; }
+  .operator-section-heading { align-items: flex-start; }
+  .operator-section-heading > .ui-button { max-inline-size: 132px; font-size: 12px; }
+  .operator-service-row { gap: 12px; align-items: flex-start; }
+  .operator-service-controls { min-inline-size: 88px; }
+  .operator-service-title { gap: 8px; }
+}
