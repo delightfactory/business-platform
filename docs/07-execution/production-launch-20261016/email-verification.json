@@ -1,0 +1,22 @@
+{
+  "projectRef": "msryvzefjdqjcfikerne",
+  "sender": "platform@delight-world.com",
+  "recipientScope": "owner-designated operator manager only",
+  "recoveryRequestsObserved": 3,
+  "authRecoverStatus": "three HTTP 200 request-completed events",
+  "deliveredMessages": [
+    "01a141bc-1778-72ed-851c-4b0e177bdca2",
+    "01a141bf-3b9f-7203-a097-233f0e879597",
+    "01a141c4-298b-7866-89f9-7291f6da23ca"
+  ],
+  "functionalResult": "Recovery link opened password update form; authenticated manager could read Operator workspace and empty invitations list",
+  "storedTemplateResult": "Reloaded recovery editor and preview show Arabic-only content; invite and magic-link editors replaced with source templates",
+  "deliveredCopyResult": "Latest delivered message still includes prior English content plus Arabic; final-copy parity remains open",
+  "retryBoundary": "No further recovery emails sent in this preparation round",
+  "pending": [
+    "Owner chooses password and signs in with it",
+    "Verify final delivered copy on subsequent intended email",
+    "First real company invitation acceptance journey"
+  ],
+  "sensitiveMaterialIncluded": false
+}
