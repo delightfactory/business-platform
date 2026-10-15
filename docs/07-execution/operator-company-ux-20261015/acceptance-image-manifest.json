@@ -1,0 +1,38 @@
+[
+  {
+    "path": "acceptance-images/operator-services-desktop.png",
+    "source": "evidence/d3/services-1366.png",
+    "bytes": 46899,
+    "sha256": "d6dc1ad598b48d036b2c19a433ca95221bbb5057646eae51581ea29109e3f4ca"
+  },
+  {
+    "path": "acceptance-images/operator-service-plan-mobile.png",
+    "source": "evidence/d3/service-plan-390.png",
+    "bytes": 27854,
+    "sha256": "ab8c53bb541b3c0e2a0b43951117d0ef0c6bf17375383d5563044411e4b16ea5"
+  },
+  {
+    "path": "acceptance-images/company-payroll-desktop.png",
+    "source": "evidence/company-s9-payroll-blockers-light1366.png",
+    "bytes": 66427,
+    "sha256": "713bd91accfd63ab2ea02c4353d04a21405dbdae2ee8e7ac4852d88549be77fb"
+  },
+  {
+    "path": "acceptance-images/company-payroll-mobile-dark.png",
+    "source": "evidence/company-s9-payroll-blockers-dark390.png",
+    "bytes": 40062,
+    "sha256": "6c0c9b22ccb673ae4a7db5f6e68be802d82f56a21b55d71557e32ebbacb1780a"
+  },
+  {
+    "path": "acceptance-images/company-attendance-event.png",
+    "source": "evidence/company-s9-r2-event-human-time1366.png",
+    "bytes": 63234,
+    "sha256": "6ebd1ad32fcc112b9249bd6707f2dec5409279bbf5770591296ba0ddacdb6d81"
+  },
+  {
+    "path": "acceptance-images/company-permission-keyboard.png",
+    "source": "evidence/company-s9-permission-keyboard-preview.png",
+    "bytes": 54682,
+    "sha256": "57069c86d8b5cdd15fd29922610ada18cdb6d6b8df083498003460218e1673f8"
+  }
+]

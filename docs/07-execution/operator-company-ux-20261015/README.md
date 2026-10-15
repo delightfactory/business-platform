@@ -1,14 +1,16 @@
-# Operator then company workspace simplification
+# Operator and Company UX delivery
 
-Owner approved 2026-10-15. Status: preparation complete; awaiting first Claude specifications. Implementation and acceptance remain open.
+Both spaces have independent official Claude Opus5.5 Medium UX acceptance, with explicitly nonblocking items. Operator accepted on723fdbe. Company reviewed in full62-route R2 on8c5a8b7, then focused closure on3fa3f42, with the exact final two-string condition satisfied and development-pushed inf5e19e0. Final storage/completion audit is recorded in the delivery report.
 
-- Repository: delightfactory/business-platform. Base: 9a98ed8f1f7a1471efe60620182cf9d92d931b77 from ux/visual-concept-c.
-- Development branch: codex/operator-company-ux. Commits and branch pushes authorized; no merge or production deployment.
-- Claude: official claude.ai, claude-opus-5-5, effort medium; no alternative provider. Earliest first call: 02:45 Africa/Cairo on 2026-10-15.
-- Sequence: full Operator specifications, implementation and independent acceptance; only then complete company audit, specifications, implementation and acceptance.
-- The approved goal supersedes the prior visual-only restriction solely for minimal backend/action changes necessary for the accepted journeys. Preserve all authority, tenancy, transaction, audit, financial and recovery guarantees. Record explicit amendments before implementation.
-- Concept C remains the visual system. The direction JSON is a proposed design, not a Frozen specification or runtime proof.
-- One writer in an external worktree. All active dependencies, caches, raw images and logs outside OneDrive. Codex owns cleanup at each safe verified boundary. Retain concise version-bound evidence; protect tracked/dirty sources, user assets, secrets, databases, backups, recovery records and active consumers. No broad deletion or cloud-quota recovery claim.
-- Bound reviews by journey, reuse unchanged evidence, maximum two failed repair cycles per issue, focused gates and no repeated full suites without relevant change.
+- [Company acceptance and gates](company-acceptance.json)
+- [Independent Company closure and explicit condition](claude-company-acceptance-conditional.md)
+- [Full Company review](claude-company-review-r2.md)
+- [Complete62-route Read receipt validation](company-route-read-receipts.json)
+- [Operator acceptance](operator-acceptance.json)
+- [Representative images](acceptance-image-manifest.json)
+- [Frozen Company implementation baseline](company-implementation-baseline.md)
+- [Approved goal and controls](approved-goal.json)
 
-See approved-goal.json for stages and acceptance. No application change or completed product acceptance is claimed by this preparation checkpoint.
+Development branch codex/operator-company-ux only. No merge, deployment or production/real-user mutation. QA is isolated and synthetic. First physical/mobile capture and formal financial/legal payroll qualification are not claimed. Optional nonblocking findings remain explicit in the acceptance records.
+
+Historical stage documents retain their original checkpoint status; the acceptance records and final delivery report supersede those preparation/open-stage statements. Source, dependencies and evidence were developed outside OneDrive; global storage-hygiene rules remain installed across projects. Keep protected evidence/QA databases/recovery journals; no blanket cleanup or cloud-quota claim.

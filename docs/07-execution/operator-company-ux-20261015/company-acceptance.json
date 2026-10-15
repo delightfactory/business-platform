@@ -1,0 +1,91 @@
+{
+  "status": "accepted-with-nonblocking-items-after-explicit-condition-satisfied",
+  "provider": "official claude.ai",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "sessionId": "e6835477-166a-495e-b822-43dbb406bad1",
+  "reviewedSource": "3fa3f4277490950c698e25561ba0b6e408afa725",
+  "acceptedApplicationSource": "f5e19e0139c41ff416c2b22a0383463617583d36",
+  "independentVerdict": "claude-company-acceptance-conditional.md",
+  "condition": "Exactly2 UTC display literals in AttendanceHistory replaced by human wording; whole src/app/tenant search has0 (UTC); reviewer explicitly required no further review or build",
+  "conditionSatisfied": true,
+  "fullRouteReviewSource": "8c5a8b740d522f16d8a012dfa4993b435bf1895b",
+  "fullRoutes": 62,
+  "routeClosure": "R3 targeted8 changed pages+Today after fullR2; final2 string replacements only",
+  "runtime": "Observed by Codex, source and representative visuals reviewed independently by Claude",
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "Accepted frozen physical/financial limits",
+    "G7": "PASS",
+    "G8": "PASS final condition satisfied",
+    "QM1": "PASS source audit",
+    "QP1": "PASS source authority",
+    "QR1": "PASS B3"
+  },
+  "latestCoherentBuild": {
+    "handle": 46782,
+    "exitCode": 0,
+    "source": "3fa3f42 UI; final2 literals verified by source-only condition as reviewer required"
+  },
+  "focused": "TS/lint PASS;13 navigation/member/context tests PASS on94ced01; later scope presentation-only with actual focused requalification",
+  "nonblocking": [
+    "N3 clearer linked-account access explanation",
+    "Payroll overview notes visual consistency",
+    "Explicit daily-workspace link after employee activation",
+    "Hide seconds in work-policy display"
+  ],
+  "notQualified": [
+    "First physical/mobile capture",
+    "Formal financial/legal payroll qualification",
+    "Real finalization/payment",
+    "Merge or production deployment"
+  ],
+  "historicalSqlGates": [
+    {
+      "name": "s0-authority-test.log",
+      "assertions": 31,
+      "plan": 31,
+      "sha256": "e987f03658bf16dcb43442c5fdb0b5e9141d59a27e6a2f9b36693393ce9e9500",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    },
+    {
+      "name": "s0-legacy-bundles-test.log",
+      "assertions": 41,
+      "plan": 41,
+      "sha256": "7e93edc3b1f71e5c3836ca10da20daea71518b10a6696c2cb32603c194d8fe7e",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    },
+    {
+      "name": "s3-legacy-member-invitations-test.log",
+      "assertions": 45,
+      "plan": 45,
+      "sha256": "16f0b19500a1cb6028dd5751629030187c6c0b66999f66c595aa0633eb018e77",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    },
+    {
+      "name": "s4-branding-test.log",
+      "assertions": 31,
+      "plan": 31,
+      "sha256": "6731786fc93280dcace4ba9c125b1f37226144f1073787564e6234f6b04595b1",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    },
+    {
+      "name": "s5-channel-readiness-test.log",
+      "assertions": 18,
+      "plan": 18,
+      "sha256": "19c8a2e5d7950378ae4f6609a2ebeb4d0416fecac60f9bdb6fc191e23e4466bb",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    },
+    {
+      "name": "s7-impact-sql.log",
+      "assertions": 32,
+      "plan": 32,
+      "sha256": "71d21cc4a04bfb440f79f62aedb66da5898d388876ded349a96688953ee41d5b",
+      "verdict": "PASS historical verified slice; not rerun for final copy"
+    }
+  ]
+}
