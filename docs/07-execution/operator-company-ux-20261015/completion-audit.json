@@ -1,5 +1,5 @@
 {
-  "status": "UI accepted; final cleanup handoff OPEN",
+  "status": "Complete: whole Operator and Company accepted; owner cleanup independently verified",
   "acceptedApplicationSource": "f5e19e0139c41ff416c2b22a0383463617583d36",
   "operatorAcceptanceSource": "723fdbe",
   "branch": "codex/operator-company-ux",
@@ -12,12 +12,14 @@
   "globalHygieneInstalledVerified": true,
   "duplicateHeartbeatPausedVerified": true,
   "cleanup": {
-    "status": "policy-rejected-again-after-explicit-owner-reauthorization",
+    "status": "complete-by-owner-independently-verified",
     "targets": 8,
-    "retainedBytes": 1381355635,
-    "removedBytes": 0,
+    "retainedBytes": 0,
+    "removedBytes": 1381355635,
     "manualScript": "manual-final-cleanup.ps1",
-    "allEightStillPresentVerified": true
+    "allEightAbsentVerified": true,
+    "observedDiskFreeIncreaseBytes": 1210130432,
+    "cloudQuotaFreedClaim": false
   },
-  "goalComplete": false
+  "goalComplete": true
 }

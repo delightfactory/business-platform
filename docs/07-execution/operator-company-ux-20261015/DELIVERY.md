@@ -13,13 +13,15 @@ The entire Operator and Company redesign is implemented, independently reviewed 
 
 These are local synthetic UX results. They do not constitute physical attendance capture qualification, legal/financial payroll certification, final payment/output execution, or production acceptance.
 
-## Storage and final handoff: OPEN
+## Storage and final handoff: COMPLETE
 
 Global development storage hygiene is installed. Work occurred outside OneDrive. The owned preview is stopped; the six owned QA containers were observed stopped. Their databases, mounts, credentials, journals and recovery evidence remain preserved. Graceful database shutdown and post-restart database qualification are not claimed.
 
-Eight reviewed, reconstructible dependency/build/review-copy paths total 1,381,355,635 logical file bytes (about 1.29 GiB). Automatic approval review rejected the original cleanup and rejected the transparent guarded PowerShell command again after the owner's explicit instruction to execute it. Both refusals occurred before process execution and returned only `blocked by policy`. All eight paths remain present; zero bytes were removed by these attempts. No alternative deletion method was attempted and no cloud quota recovery is claimed.
+The owner executed the corrected Windows PowerShell-compatible script successfully. Independent read-only verification confirmed all eight reviewed targets absent: 1,381,355,635 logical file bytes removed (about 1.29 GiB). The script observed free space increase by 1,210,130,432 bytes; filesystem allocation and concurrent disk activity can make this differ from logical file sizes. No cloud quota recovery is claimed.
 
-`manual-final-cleanup.ps1` preserves the reviewed, guarded cleanup scope. The cleanup requirement and overall goal remain open; they are not silently waived. Source, Git history, acceptance evidence, QA data, Docker recovery material, unrelated projects and global caches are protected.
+The earlier automatic policy refusals occurred before execution. They were not bypassed by the agent; the owner ran the script manually. The script compatibility fix was verified under Windows PowerShell 5.1 against all eight inventory entries before owner execution.
+
+Final checks passed: clean Git state, Git connectivity, unchanged accepted application and Operator source, all six acceptance-image hashes, all 62 reviewed-route hashes, six retained SQL-evidence hashes, and the final Company copy condition. QA evidence, source and history remain preserved. See `final-cleanup-verification.json`. Cleanup and the delivery audit are complete; no required UX work remains. Nonblocking polish and the separate Docker limitation below retain their stated scope.
 
 The duplicate scheduling heartbeat remains paused to prevent duplicate work. No further Claude review, build, or reimplementation is needed for this cleanup blocker.
 
