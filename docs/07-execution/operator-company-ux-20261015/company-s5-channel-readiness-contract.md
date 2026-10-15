@@ -1,0 +1,9 @@
+# Conditional B3: employee site recording setup
+
+Q-R1 inspection is complete. attendance_channel_sources is paginated and exposes a site name, not site identity or setup configuration. attendance_channel_source_detail exposes site_id but hides config from read-only viewers. Matching a name or fetching an unbounded collection cannot establish readiness. No employee-own capture endpoint is used for another employee.
+
+The approved conditional B3 is implemented as people_employee_channel_readiness(p_tenant uuid,p_employee uuid), one STABLE SECURITY DEFINER read with empty search_path. It first reuses time.channel_operator_can(...,false), then the existing people_employee_snapshot to enforce People visibility and obtain its authoritative current/scheduled/ended assignment. It requires an active site/entity and looks up only the unique mobile source for that exact tenant/site and its latest version. It returns work-unavailable/site-inactive/missing/disabled/unconfigured/ready, optional source_id and existing service-enabled state. It returns no coordinates, config, employee identity, counts or capture eligibility promise. The source_id was already readable through authorized channel surfaces.
+
+This is configuration readiness only. Linked account, granted self-service, work policy, actual capture guards and physical device/location outcomes remain separate. A ready source never claims the employee can record now. Read-only channel viewers receive only the setup verdict, preserving the existing hiding of the underlying configuration.
+
+No new write, audit, lock, reservation, counter, permission, own-endpoint bypass or workflow engine. Anonymous/service execution is revoked and authenticated execution retains both existing domain guards. Source uniqueness is the existing partial mobile/site index. Full Company independent Claude review must include this conditional contract and its focused scope/side-effect evidence.

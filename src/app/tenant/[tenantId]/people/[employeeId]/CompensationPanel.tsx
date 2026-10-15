@@ -1,6 +1,6 @@
 'use client';
 import { Badge, Disclosure, Field, Input, Message, Panel, RecordCard } from '@/components/ui';
-import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
+import { formatDecimalAmount } from '@/lib/format-decimal-amount';
 
 import { useActionState, useState } from 'react';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -50,7 +50,7 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
               : version.status === 'scheduled' ? 'يبدأ لاحقًا' : version.status === 'current' ? 'سارٍ الآن' : 'انتهى'}</Badge>
         </div>
         <dl className="snapshot-grid">
-          <div><dt>القيمة</dt><dd><bdi>{formatAmount(version.amount)}</bdi> جنيه مصري</dd></div>
+          <div><dt>القيمة</dt><dd><bdi>{formatDecimalAmount(version.amount)}</bdi> جنيه مصري</dd></div>
           <div><dt>يبدأ في</dt><dd><bdi>{version.valid_from}</bdi></dd></div>
           {version.valid_until && <div><dt>ينتهي قبل</dt><dd><bdi>{version.valid_until}</bdi></dd></div>}
         </dl>
@@ -94,8 +94,4 @@ export function CompensationPanel({ tenantId, employeeId, employmentId, canView,
       <OfflineSubmitButton label="إلغاء تغيير الأجر المقرر" pendingLabel="جارٍ الإلغاء…" />
     </form>}
   </Panel>;
-}
-
-function formatAmount(value: number | string) {
-  return Number(value).toLocaleString(ARABIC_DISPLAY_LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }

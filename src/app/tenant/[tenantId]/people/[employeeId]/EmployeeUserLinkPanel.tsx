@@ -1,4 +1,5 @@
-import { Button, ButtonLink, Field, Input, Message, Panel, Select } from '@/components/ui';
+import { Button, ButtonLink, Disclosure, Field, Input, Message, Panel, Select } from '@/components/ui';
+import styles from '../people.module.css';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 import { linkEmployeeUserAction, unlinkEmployeeUserAction } from '../employee-user-link-actions';
@@ -46,7 +47,7 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
     {state && messages[state] && <Message tone={state === 'error' || state === 'forbidden' || state === 'invite-failed' ? 'bad' : 'info'} role="status">{messages[state]}</Message>}
     {snapshotError || !snapshot ? <p role="alert">تعذر تحميل حالة ربط الحساب.</p> : snapshot.linked
       ? <div><p>{snapshot.identity_visible
-        ? <><strong>{snapshot.display_name ?? snapshot.email}</strong>{snapshot.email && <> <bdi>{snapshot.email}</bdi></>}</>
+        ? <><strong><bdi>{snapshot.display_name ?? snapshot.email}</bdi></strong>{snapshot.email && snapshot.display_name && snapshot.display_name !== snapshot.email && <> <bdi>{snapshot.email}</bdi></>}</>
         : <strong>حساب مرتبط</strong>}</p>
         {canManage && <OfflineForm action={unlinkEmployeeUserAction} className="workspace-form-actions">
           <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="employeeId" value={employeeId} />
@@ -54,10 +55,11 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
         </OfflineForm>}
       </div>
       : <p>لا يوجد حساب مستخدم مرتبط بهذا الموظف. الربط اختياري ولا يغيّر صلاحيات العضوية.</p>}
-    <div className="workspace-page-summary"><h3>استكمال تفعيل تسجيل الحضور للموظف</h3><p>{snapshot?.linked ? 'الحساب مرتبط بالموظف. راجع صلاحية الحضور للحساب وإعداد موقع العمل أيضًا.' : 'اربط أولًا حساب عضو نشط بملف هذا الموظف، ثم فعّل له صلاحية الحضور الشخصي.'}</p><p className="field-hint">يحتاج الموظف عملًا ساريًا وموقعًا وسياسة حضور مهيأة وخدمة مفعلة. فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة.</p>{canInvite ? <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users?view=members${snapshot?.identity_visible && snapshot.email ? `&q=${encodeURIComponent(snapshot.email)}` : ''}`}>إدارة صلاحية الحضور لحساب الموظف</ButtonLink> : <p>اطلب من مسؤول الأعضاء تفعيل «الحضور الشخصي من الهاتف» للحساب المرتبط. صلاحية ربط الموظفين لا تشمل إدارة الأعضاء.</p>}</div>
+    {snapshot?.linked && <p className="field-hint">فك الربط يمنع التسجيل من الحساب السابق، ولا يمحو الحركات المسجلة. إتاحة الخدمات الذاتية مستقلة وتظهر أدناه.</p>}
     {accountState && accountMessages[accountState] && <Message tone={['delivery-failed','manual-review','create-failed','forbidden','subject-unavailable','setup','operation-error','readiness-link-failed'].includes(accountState) ? 'bad' : 'info'} role="status">{accountMessages[accountState]}</Message>}
-    {!snapshotError && !snapshot?.linked && canManage && <>
-      <h3>ربط عضو موجود</h3>
+    {!snapshotError && !snapshot?.linked && canManage && <div className={styles.accountChoices}>
+      <Disclosure summary="ربط عضو موجود" className="task-disclosure" open={Boolean(query || state)}>
+      <p>اختر حسابًا بعضوية نشطة وبريد مؤكد في هذه الشركة.</p>
       {optionsError || !options ? <p role="alert">تعذر تحميل قائمة الأعضاء المستوفين لشروط الربط.</p> : <>
         <form method="get" action={base} className="compact-form">
           <Field id="user-link-query" label={<>البحث بالبريد أو الاسم</>}><Input id="user-link-query" name="linkQuery" type="search" maxLength={100} defaultValue={query} /></Field>
@@ -78,10 +80,10 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
           {options.has_more && <ButtonLink variant="ghost"  href={`${base}?linkQuery=${encodeURIComponent(query)}&linkPage=${page + 1}`}>التالي</ButtonLink>}
         </nav>
       </>}
-      {canInvite && <div className="workspace-page-summary"><p>لا يوجد حساب؟ أرسل دعوة العضوية، وبعد القبول ارجع هنا لتفعيل الربط.</p>
-        <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/users/invite?employeeId=${encodeURIComponent(employeeId)}`}>دعوة عضو جديد</ButtonLink></div>}
-      {canProvisionAccount && <div className="workspace-page-summary">
-        <h3>إنشاء حساب للموظف</h3>
+      </Disclosure>
+      {canInvite && <Disclosure summary="دعوة عضو ثم ربطه" className="task-disclosure"><p>أرسل دعوة العضوية، وبعد القبول ارجع هنا لربط الحساب. الدعوة لا تربطه تلقائيًا.</p>
+        <ButtonLink variant="ghost" href={`/tenant/${tenantId}/users/invite?employeeId=${encodeURIComponent(employeeId)}`}>دعوة عضو جديد</ButtonLink></Disclosure>}
+      {canProvisionAccount && <Disclosure summary="إنشاء حساب للموظف" className="task-disclosure" open={Boolean(accountState || accountProvisionError || (provision && !['none', 'activated'].includes(provision.state)))}>
         <p>يُنشأ الحساب دون أن يختار المسؤول كلمة مرور. سيؤكد الموظف بريده ويضع كلمة المرور، ثم تضاف له عضوية «عضو» ويرتبط حسابه بهذا الملف.</p>
         {accountProvisionError && <Message tone="bad"  role="alert">تعذر تحميل حالة إنشاء الحساب. حدّث الصفحة قبل بدء طلب جديد.</Message>}
         {provision && provision.state !== 'none' && provision.state !== 'activated' && <div className="record-meta">
@@ -103,8 +105,8 @@ export function EmployeeUserLinkPanel({ tenantId, employeeId, canManage, canInvi
           <Field id="employee-account-email" label={<>بريد الموظف</>} required><Input id="employee-account-email" name="email" type="email" autoComplete="email" maxLength={254} required /></Field>
           <OfflineSubmitButton label="إنشاء الحساب وإرسال رابط التفعيل" pendingLabel="جارٍ إنشاء الحساب…" />
         </OfflineForm>}
-      </div>}
-    </>}
+      </Disclosure>}
+    </div>}
     {!snapshotError && !accountProvisionError && currentlyLinkedProvision && canProvisionAccount && provision?.state === 'activated' && provision.password_ready !== true && provision.intent_id && <div className="workspace-page-summary">
       <h3>تأكيد جاهزية كلمة المرور</h3>
       <p>الحساب نشط بالفعل. يمكن إرسال رابط للموظف لتحديث كلمة المرور وتأكيد جاهزيتها دون تغيير العضوية أو الصلاحيات.</p>

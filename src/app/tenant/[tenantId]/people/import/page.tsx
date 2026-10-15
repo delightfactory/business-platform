@@ -24,6 +24,7 @@ export default async function WorkforceImportPage({ params }: { params: Promise<
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page">
     <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
     <PageHeader title={<>استيراد الموظفين</>} eyebrow={<>الموارد البشرية</>} description={<>افحص الملف كاملًا، راجع الصفوف، ثم أضف الصفوف التي وافقت عليها دفعة واحدة.</>} />
+    <p className="field-hint">الاستيراد لا يعيّن سياسات الدوام أو أرصدة الإجازات؛ تابع من جاهزية كل موظف بعد إضافته.</p>
     <Panel  aria-label="استيراد ملف الموظفين">
       <div className={styles.importGuide}><h2>ابدأ بالقالب المعتمد</h2>
         <p>نزّل القالب واملأ بيانات الموظفين، ثم اختر الملف أدناه لفحصه قبل الإضافة.</p>

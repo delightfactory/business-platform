@@ -1,4 +1,4 @@
-import { Avatar, Badge, ButtonLink, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
+import { Avatar, Badge, ButtonLink, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 
@@ -6,7 +6,11 @@ import { EmployeeProfileTabs, type ProfileArea } from './EmployeeProfileTabs';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
-import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
+import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
+import { safeReturn } from '@/lib/return-to';
+import { PEOPLE_ROLE_BUNDLES } from '../../users/bundles';
+import { EmployeeSelfServices, type SelfServiceAccess } from './EmployeeSelfServices';
+import { EmployeeReadiness } from './EmployeeReadiness';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
@@ -14,13 +18,13 @@ import { EmployeeUserLinkPanel, type AccountProvision, type LinkSnapshot, type O
 import { assignAttendancePolicyOverrideAction, assignWorkPolicyAction, cancelAttendancePolicyOverrideAction } from '../work-policy-actions';
 
 export const dynamic = 'force-dynamic';
-type Employment = { id: string; employer: string; start_date: string; end_date: string | null; status: string };
+type Employment = { id: string; employer_id: string; employer: string; start_date: string; end_date: string | null; status: string };
 type Assignment = { id: string; site: string; department: string | null; job: string | null; manager: string | null; valid_from: string };
 type Employee = { id: string; code: string; name: string; status: string; employment: Employment | null; assignment: Assignment | null };
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string; tab?: string; return?: string; selfService?: string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -67,8 +71,7 @@ export default async function EmployeePage({ params, searchParams }: {
     access.can_manage === true ? supabase.rpc('people_employee_user_link_options', {
       p_tenant_id: tenantId, p_employee_id: employeeId, p_query: linkQuery, p_page: linkPage,
     }) : Promise.resolve({ data: null, error: null }),
-    access.can_manage === true ? supabase.rpc('tenant_membership_snapshot', { p_tenant_id: tenantId })
-      : Promise.resolve({ data: null, error: null }),
+    readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id'),
     employmentId ? supabase.rpc('people_work_policy_panel', { p_tenant_id: tenantId, p_employment_id: employmentId }) : Promise.resolve({ data: null, error: null }),
   ]);
   const linkSnapshot = linkSnapshotResult.data && typeof linkSnapshotResult.data === 'object'
@@ -113,12 +116,43 @@ export default async function EmployeePage({ params, searchParams }: {
       overrides: { id: string; policy_id: string; version: number; name: string; code: string; valid_from: string; valid_through: string; reason: string; cancelled_at: string | null; can_cancel: boolean }[];
       can_assign: boolean; can_manage_catalog: boolean;
     } : null;
+  const canManageMembers = membershipSnapshot?.can_manage_members === true;
+  let selfService: SelfServiceAccess = { state: membershipSnapshotResult.error || !membershipSnapshot || canManageMembers ? 'unknown' : 'other-role', keys: [] };
+  const [memberAccess, channelAccess, leaveAccess, payrollAccess] = await Promise.all([
+    canManageMembers && linkSnapshot?.linked && linkSnapshot.identity_visible && linkSnapshot.email
+      ? supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'members', p_page: 1, p_query: linkSnapshot.email.slice(0, 120) }) : Promise.resolve({ data: null, error: null }),
+    readWorkspaceRpc(supabase, 'attendance_channel_access', tenantId, 'p_tenant'),
+    readWorkspaceRpc(supabase, 'leave_access_snapshot', tenantId, 'p_tenant'),
+    readWorkspaceRpc(supabase, 'payroll_access_snapshot', tenantId, 'p_tenant'),
+  ]);
+  if (canManageMembers && !linkSnapshotResult.error && linkSnapshot?.linked === false) selfService = { state: 'unlinked', keys: [] };
+  else if (canManageMembers && !memberAccess.error && Array.isArray(memberAccess.data?.rows)) {
+    const member = memberAccess.data.rows.find((row: { user_id: string }) => row.user_id === linkSnapshot?.user_id);
+    if (member && Array.isArray(member.roles)) selfService = { state: member.access_state === 'active' ? 'ready' : 'inactive', userId: member.user_id, email: member.email,
+      keys: PEOPLE_ROLE_BUNDLES.filter(bundle => member.roles.some((role: { role_key: string }) => role.role_key === bundle.key)).map(bundle => bundle.key) };
+  }
+  const channelReady = !channelAccess.error && channelAccess.data?.can_view === true
+    ? await supabase.rpc('people_employee_channel_readiness', { p_tenant: tenantId, p_employee: employeeId }) : { data: null, error: null };
+  const returnTo = safeReturn(tenantId, query.return);
   const correctionAccess=await supabase.rpc('payroll_correction_access',{p_tenant:tenantId});
-  const initialTab: ProfileArea = query.userLink || query.account || query.linkQuery !== undefined || query.linkPage !== undefined
+  const requestedTab = ['overview', 'work', 'account', 'employment', ...(canViewCompensation || canManageCompensation ? ['compensation'] : [])].includes(query.tab ?? '') ? query.tab as ProfileArea : 'overview';
+  const initialTab: ProfileArea = query.userLink || query.account || query.selfService || query.linkQuery !== undefined || query.linkPage !== undefined
     ? 'account' : query.employment ? 'employment'
       : query.compensation && (canViewCompensation || canManageCompensation) ? 'compensation'
-        : query.assignment || query.policy || query.policyOverride ? 'work' : 'overview';
+        : query.assignment || query.policy || query.policyOverride ? 'work' : requestedTab;
   const overview = <>
+    <EmployeeReadiness tenantId={tenantId} employeeId={employeeId} employerId={employee.employment?.employer_id ?? null} facts={{
+      work: { active: employee.status === 'active' && employee.employment?.status === 'active', hasAssignment: Boolean(employee.assignment), canManage: canManageWorkContext },
+      compensation: { canView: canViewCompensation, current: compensationHistoryError ? null : compensationHistory?.items.some(item => item.status === 'current') ?? false },
+      policy: { current: workPolicyPanel ? workPolicyPanel.history.some(item => Boolean(item.policy_id) && item.valid_from <= today && (!item.valid_until || item.valid_until > today)) : null,
+        canAssign: workPolicyPanel?.can_assign === true, hasOptions: Boolean(workPolicyPanel?.options.length), canManageCatalog: workPolicyPanel?.can_manage_catalog === true, forbidden: workPolicyResult.error?.code === '42501' },
+      account: { linked: linkSnapshotResult.error || !linkSnapshot ? null : linkSnapshot.linked, canManage: access.can_manage === true, provisionState: accountProvision?.state },
+      selfService,
+      channel: channelAccess.error || typeof channelAccess.data?.can_view !== 'boolean' ? channelAccess.error?.code === '42501' ? { canView: false, canManage: false } : null
+        : { canView: channelAccess.data?.can_view === true, canManage: channelAccess.data?.can_manage === true, state: channelReady.error ? undefined : channelReady.data?.state, captureEnabled: channelReady.data?.capture_enabled },
+      canReviewBalances: leaveAccess.error?.code === '42501' ? false : leaveAccess.error || typeof leaveAccess.data?.can_view !== 'boolean' ? null : leaveAccess.data.can_view,
+      canPreparePayroll: payrollAccess.error?.code === '42501' ? false : payrollAccess.error || typeof payrollAccess.data?.can_prepare !== 'boolean' ? null : payrollAccess.data.can_prepare,
+    }} />
     <Panel  aria-labelledby="employment-heading">
       <h2 id="employment-heading">{employee.status === 'scheduled' ? 'العمل المقرر' : employee.status === 'ended' ? 'آخر علاقة عمل' : 'العمل الحالي'}</h2>
       {employee.employment ? <dl className="snapshot-grid">
@@ -144,13 +178,15 @@ export default async function EmployeePage({ params, searchParams }: {
       <h2 id="work-policy-heading">سياسة الدوام</h2>
       <p className="record-meta">تعرض القائمة سياسة الدوام الأساسية. أما التغيير لفترة محددة فيُسجل للحضور من دون تعديل بيانات العمل الأساسية.</p>
       {workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <RecordCard className="assignment-history-item" key={row.assignment_id}>
-        <strong>{row.name ? `${row.name} · ${row.code} · الإصدار ${row.version}` : 'دون سياسة دوام محددة'}</strong>
+        <strong>{row.name ?? 'دون سياسة دوام محددة'}</strong>
+        {row.name && <Disclosure summary="تفاصيل القالب"><p>الرمز: <bdi>{row.code}</bdi> · الإصدار {row.version}</p></Disclosure>}
         <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
       </RecordCard>)}</ol> : <Message tone="neutral" >لا يوجد سجل سياسة دوام.</Message>}
       {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && !workPolicyPanel.options.length && <Message tone="info">لا توجد قوالب دوام متاحة للاختيار؛ لذلك لا يمكن حفظ سياسة جديدة الآن. {workPolicyPanel.can_manage_catalog ? 'أضف قالبًا من إدارة قوالب سياسات العمل أدناه.' : 'اطلب من مسؤول الشركة تجهيز قالب دوام.'}</Message>}
-      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignWorkPolicyAction} className="work-policy-assignment-form">
+      {workPolicyPanel.can_assign && workPolicyPanel.options.length > 0 && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignWorkPolicyAction} className="work-policy-assignment-form">
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
-        <div className="work-policy-assignment-field"><Field id="work-policy-id" label={<>قالب الدوام</>} required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</Select></Field></div>
+        <div className="work-policy-assignment-field"><Field id="work-policy-id" label={<>قالب الدوام</>} required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
+        <Disclosure summary="رموز القوالب وإصداراتها"><ul>{workPolicyPanel.options.map(item => <li key={item.id}>{item.name} — <bdi>{item.code}</bdi> · الإصدار {item.version}</li>)}</ul></Disclosure>
         <div className="work-policy-assignment-field"><Field id="work-policy-date" label={<>تاريخ بدء السريان</>} required><Input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></Field></div>
         <p className="field-hint">إذا كانت هذه أول بيانات عمل ويبدأ سريانها اليوم، تُصحح السياسة في سجلها. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
         {query.policy === 'payroll-correction' && <Message tone="bad"  role="alert">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد للفترة نفسها.</Message>}
@@ -163,7 +199,7 @@ export default async function EmployeePage({ params, searchParams }: {
       <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
       <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل بيانات عمل الموظف الأساسية. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
       {workPolicyPanel.overrides.length ? <ol className="assignment-history-list">{workPolicyPanel.overrides.map((override) => <RecordCard className="assignment-history-item" key={override.id}>
-        <strong>{override.name} · {override.code} · الإصدار {override.version}</strong>
+        <strong>{override.name}</strong><Disclosure summary="تفاصيل القالب"><p>الرمز: <bdi>{override.code}</bdi> · الإصدار {override.version}</p></Disclosure>
         <p>من <bdi>{override.valid_from}</bdi> إلى <bdi>{override.valid_through}</bdi>{override.cancelled_at ? ' · ملغى' : ''}</p>
         <p>{override.reason}</p>
         {override.can_cancel && workPolicyPanel.can_manage_catalog && <OfflineForm action={cancelAttendancePolicyOverrideAction} className="work-policy-assignment-form">
@@ -172,9 +208,9 @@ export default async function EmployeePage({ params, searchParams }: {
           <div className="workspace-form-actions"><OfflineSubmitButton className="secondary-button" label="إلغاء التغيير المقرر" pendingLabel="جارٍ الإلغاء…" /></div>
         </OfflineForm>}
       </RecordCard>)}</ol> : <Message tone="neutral" >لا توجد تغييرات دوام لفترات محددة.</Message>}
-      {workPolicyPanel.can_manage_catalog && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
+      {workPolicyPanel.can_manage_catalog && workPolicyPanel.options.length > 0 && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
-        <div className="work-policy-assignment-field"><Field id="policy-override-id" label={<>قالب الدوام للفترة</>} required><Select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{item.name} · {item.code} · إصدار {item.version}</option>)}</Select></Field></div>
+        <div className="work-policy-assignment-field"><Field id="policy-override-id" label={<>قالب الدوام للفترة</>} required><Select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-from" label={<>من تاريخ</>} required><Input id="policy-override-from" type="date" name="validFrom" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-through" label={<>إلى تاريخ</>} required><Input id="policy-override-through" type="date" name="validThrough" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-reason" label={<>سبب التغيير</>} required><Input id="policy-override-reason" name="reason" minLength={3} maxLength={500} required/></Field></div>
@@ -210,6 +246,7 @@ export default async function EmployeePage({ params, searchParams }: {
       snapshot={linkSnapshot} snapshotError={Boolean(linkSnapshotResult.error || !linkSnapshot)}
       options={linkOptions} optionsError={Boolean(access.can_manage === true && (linkOptionsResult.error || !linkOptions))}
       query={linkQuery} page={linkPage} state={query.userLink} />
+    <EmployeeSelfServices tenantId={tenantId} employeeId={employeeId} access={selfService} result={query.selfService} />
   </>;
   return <PageFrame footer="الموارد البشرية">
     {query.state === 'created' && <FeedbackToast key={employeeId} message="تمت إضافة الموظف وحفظ بيانات عمله." />}
@@ -230,13 +267,14 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
     {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
     {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
-    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+    <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
     <header className="workspace-page-heading"><div className="employee-profile-identity"><Avatar name={employee.name} size={64} status={employee.status === 'active' ? 'ok' : 'neutral'} /><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
       <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div></div>
       <Badge className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
         {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</Badge>
     </header>
-    <EmployeeProfileTabs initialTab={initialTab} areas={[
+    {returnTo && <ButtonLink variant="ghost" href={returnTo}>العودة إلى المهمة</ButtonLink>}
+    <EmployeeProfileTabs key={initialTab} initialTab={initialTab} areas={[
       { value: 'overview', label: 'نظرة عامة', content: overview },
       { value: 'work', label: 'العمل والتعيينات', content: work },
       ...(canViewCompensation || canManageCompensation
@@ -244,8 +282,8 @@ export default async function EmployeePage({ params, searchParams }: {
       { value: 'account', label: 'الحساب والدخول', content: account },
       { value: 'employment', label: 'علاقة العمل والسجل', content: employment },
     ]} />
-    <Panel  aria-label="الخطوة التالية">
-      <h2>الخطوة التالية</h2>{correctionAccess.data?.can_correct&&<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</ButtonLink>}<p>تأكد من بيانات العمل المسجلة، ثم تابع إلى دليل الموظفين أو أضف موظفًا آخر.</p>
+    <Panel aria-label="متابعة العمل">
+      <h2>متابعة العمل</h2>{correctionAccess.data?.can_correct&&<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</ButtonLink>}
       <div className="workspace-form-actions"><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</ButtonLink>
         {access.can_manage === true && access.can_manage_employment === true && access.can_manage_compensation === true &&
           <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/new`}>إضافة موظف آخر</ButtonLink>}</div>
@@ -253,6 +291,9 @@ export default async function EmployeePage({ params, searchParams }: {
   </PageFrame>;
 }
 
+function policyChoiceLabel(item: { id: string; name: string; code: string; version: number }, options: { id: string; name: string }[]) {
+  return options.some(other => other.id !== item.id && other.name === item.name) ? `${item.name} (${item.code}، إصدار ${item.version})` : item.name;
+}
 function cairoToday() {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -262,6 +303,6 @@ function cairoToday() {
 function Unavailable({ tenantId }: { tenantId: string }) {
   return <PageFrame><Panel ><h1>ملف الموظف غير متاح</h1>
     <p className="intro">قد يكون الملف غير موجود، أو ليس لديك صلاحية عرضه في هذه الشركة.</p>
-    <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+    <ButtonLink variant="ghost" href={`/tenant/${tenantId}`}>العودة إلى اليوم</ButtonLink>
   </Panel></PageFrame>;
 }

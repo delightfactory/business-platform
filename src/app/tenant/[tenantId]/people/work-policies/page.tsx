@@ -32,7 +32,8 @@ export default async function WorkPoliciesPage({ params, searchParams }: { param
   </PolicyTask>}
   <Panel className={styles.policyCatalog}><h2>القوالب المسجلة</h2>{result.items.length ? <div className={styles.policyGrid}>{result.items.map((policy)=><Card className={styles.policyCard} key={policy.id}>
    <div className="workspace-record-heading"><h3>{policy.name}</h3><Badge className={`entity-status ${policy.is_active?'is-active':'is-inactive'}`}>{policy.is_active?'متاح للتعيين':'موقوف'}</Badge></div>
-   <p>الرمز: <bdi>{policy.code}</bdi> · الإصدار {policy.head_version} · {policy.schedule_kind==='fixed'?'وردية ثابتة':'ساعات مرنة'}</p>
+   <p>{policy.schedule_kind==='fixed'?'وردية ثابتة':'ساعات مرنة'}</p>
+   <Disclosure summary="تفاصيل القالب"><p>الرمز: <bdi>{policy.code}</bdi> · الإصدار {policy.head_version}</p></Disclosure>
    <p>{policy.schedule_kind==='fixed'?`${policy.shift_start} – ${policy.shift_end}${policy.ends_next_day?' (اليوم التالي)':''}`:`${policy.required_minutes} دقيقة متوقعة`} · {policy.timezone_name}</p>
    <Disclosure summary="نصف يوم الإجازة والإضافي والاعتماد">   <p>{policy.schedule_kind === 'fixed' ? policy.break_minutes === 0 ? 'نصف يوم الإجازة: وردية بلا استراحة' : policy.fixed_break_start && policy.fixed_break_end ? `استراحة نصف اليوم: ${policy.fixed_break_start.slice(0, 5)} – ${policy.fixed_break_end.slice(0, 5)}` : 'إعداد نصف يوم الإجازة غير مكتمل' : policy.flexible_halfday_break_minutes != null ? `استراحة العمل المتبقي مع نصف يوم إجازة: ${policy.flexible_halfday_break_minutes} دقيقة` : 'إعداد نصف يوم الإجازة غير مكتمل'}</p>
    <p>{policy.overtime_enabled ? `اقتراح الوقت الإضافي مفعّل · حد ${policy.overtime_minimum_minutes} د · تقريب ${policy.overtime_rounding_minutes} د` : 'الوقت الإضافي المقترح غير مفعّل'}</p>
