@@ -1,0 +1,51 @@
+{
+  "pending": "Populated leave/configuration and payroll candidate/blocked-review states, broader limited-role checks, invitation/activation contract qualification. Collect representative module baselines before changing each module; do not label these initial scenes full Company acceptance.",
+  "scenes": [
+    "Admin home1366, zero review card and setup links",
+    "Unified employee-create1366",
+    "Nested users25-checkbox permission editor1366",
+    "Payroll viewer1366/390; setup readable without edit form",
+    "Employee account tab1366; original existing-link/provision/invite choices",
+    "Employee work tab1366; no policy template; explicit missing state",
+    "Linked account without self permission: self-service denied",
+    "Explicit self permission: me390 shows employee, missing active recording location and no balances",
+    "Leave request390 initial dates only, no request submitted"
+  ],
+  "employee": "774d7c16-f63d-40b0-823f-0b55bc60431e",
+  "tenant": "444dbbab-b569-47ca-beae-2bacbce266c6",
+  "otherVerified": [
+    "Existing account linked through normal UI and current account details shown",
+    "Link alone did not grant self-service",
+    "Normal authorized bundle RPC explicitly enabled attendance/leave self; protected admin role unchanged",
+    "No location permission requested, no actual attendance sent, no legal/financial qualification or transaction created"
+  ],
+  "source": "727c304 (Company/auth source unchanged from c9ae0b5)",
+  "measuredJourneys": [
+    {
+      "defaults": [
+        "only employer",
+        "only main site",
+        "today start",
+        "monthly wage",
+        "payroll eligible"
+      ],
+      "job": "Create one synthetic employee from Company home",
+      "exclusions": "Role/fixture setup excluded; selector label retries wrote nothing and no request was sent before the single submit",
+      "trace": [
+        "Home to People",
+        "Add employee",
+        "Enter code,name,base wage and submit once",
+        "Authoritative employee details"
+      ],
+      "id": "CPJ1",
+      "viewport": "1366x900",
+      "navigations": 3,
+      "role": "Tenant administrator with explicit people.operations and payroll view",
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 3,
+      "success": "Active employee, current employment/site and compensation created; no account or attendance readiness implied"
+    }
+  ],
+  "environment": "Owned local synthetic Company05; API56321/app61190",
+  "companyAccepted": false
+}
