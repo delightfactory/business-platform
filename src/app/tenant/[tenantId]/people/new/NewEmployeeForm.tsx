@@ -13,14 +13,14 @@ type Site = Named & { employer_id: string };
 type Job = Named & { department_id: string | null };
 export type OnboardingOptions = { employers: Named[]; sites: Site[]; departments: Named[]; jobs: Job[] };
 
-export function NewEmployeeForm({ tenantId, options }: { tenantId: string; options: OnboardingOptions }) {
+export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId: string; options: OnboardingOptions; suggestedCode: string }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHint0 = useId();
   const employers = Array.isArray(options.employers) ? options.employers : [];
   const sites = Array.isArray(options.sites) ? options.sites : [];
   const departments = Array.isArray(options.departments) ? options.departments : [];
   const jobs = Array.isArray(options.jobs) ? options.jobs : [];
-  const initial: NewEmployeeState = { code: '', name: '', employerId: employers[0]?.id ?? '',
+  const initial: NewEmployeeState = { code: suggestedCode, name: '', employerId: employers[0]?.id ?? '',
     siteId: sites.find((site) => site.employer_id === employers[0]?.id)?.id ?? '',
     departmentId: '', jobId: '', startDate: new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -39,8 +39,8 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
     <fieldset className={styles.formGroup}><legend>بيانات الموظف</legend>
-    <Field id="employee-code" label={<>رمز الموظف</>} required><Input id="employee-code" name="code" required maxLength={40} autoFocus defaultValue={state.code} /></Field>
-    <Field id="employee-name" label={<>اسم الموظف</>} required><Input id="employee-name" name="name" required minLength={2} maxLength={160} defaultValue={state.name} /></Field>
+    <Field id="employee-code" label={<>رمز الموظف (مقترح، يمكنك تغييره)</>} required><Input id="employee-code" name="code" required maxLength={40} defaultValue={state.code} /></Field>
+    <Field id="employee-name" label={<>اسم الموظف</>} required><Input id="employee-name" name="name" required minLength={2} maxLength={160} autoFocus defaultValue={state.name} /></Field>
     <p className="field-hint">يمكن إنشاء حساب دخول وربطه بالموظف لاحقًا؛ الملف الوظيفي لا يحتاج إلى حساب.</p>
     </fieldset>
 
@@ -78,6 +78,7 @@ export function NewEmployeeForm({ tenantId, options }: { tenantId: string; optio
     </label>
     </fieldset>
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
+    {state.uncertainCode && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people?${new URLSearchParams({ q: state.uncertainCode })}`}>تحقق في دليل الموظفين</ButtonLink>}
     <div className="workspace-form-actions"><SubmitButton label="إضافة الموظف" pendingLabel="جارٍ إضافة الموظف…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
       <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>إلغاء</ButtonLink></div>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;

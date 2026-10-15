@@ -7,7 +7,7 @@ export type NewEmployeeState = {
   code: string; name: string; employerId: string; siteId: string;
   departmentId: string; jobId: string; startDate: string;
   payBasis: string; amount: string; payrollEligible: boolean;
-  error: string; attempt: number;
+  error: string; attempt: number; uncertainCode?: string;
 };
 
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -25,7 +25,8 @@ export async function createEmployeeAction(previous: NewEmployeeState, formData:
   const amount = value(formData, 'amount');
   const payrollEligible = formData.get('payrollEligible') === 'on';
   const state = { code, name, employerId, siteId, departmentId, jobId, startDate,
-    payBasis, amount, payrollEligible, error: '', attempt: previous.attempt + 1 };
+    payBasis, amount, payrollEligible, error: '', attempt: previous.attempt + 1,
+    uncertainCode: previous.uncertainCode === code ? code : undefined };
   const fail = (error: string): NewEmployeeState => ({ ...state, error });
 
   if (!uuidPattern.test(tenantId) || !uuidPattern.test(employerId) || !uuidPattern.test(siteId)
@@ -39,16 +40,27 @@ export async function createEmployeeAction(previous: NewEmployeeState, formData:
   }
   const supabase = await createSupabaseServerClient();
   if (!supabase) return fail('الاتصال غير متاح الآن. أعد المحاولة؛ بقيت البيانات التي أدخلتها محفوظة.');
-  const { data, error } = await supabase.rpc('create_people_employee', {
-    p_tenant_id: tenantId, p_employee_code: code, p_full_name: name,
-    p_employer_entity_id: employerId, p_site_id: siteId, p_start_date: startDate,
-    p_pay_basis: payBasis, p_base_amount: amount, p_payroll_eligible: payrollEligible,
-    p_department_id: departmentId || null, p_job_id: jobId || null,
-  });
-  if (error) return fail(errorText(error.message));
-  const result = data && typeof data === 'object' && !Array.isArray(data) ? data as Record<string, unknown> : null;
+  const uncertain = (): NewEmployeeState => ({ ...state, uncertainCode: code, error: 'تعذر تأكيد حفظ الموظف. تحقق في دليل الموظفين قبل أي محاولة جديدة؛ بقيت بياناتك والرمز محفوظة.' });
+  let resultData: unknown;
+  try {
+    const { data, error } = await supabase.rpc('create_people_employee', {
+      p_tenant_id: tenantId, p_employee_code: code, p_full_name: name,
+      p_employer_entity_id: employerId, p_site_id: siteId, p_start_date: startDate,
+      p_pay_basis: payBasis, p_base_amount: amount, p_payroll_eligible: payrollEligible,
+      p_department_id: departmentId || null, p_job_id: jobId || null,
+    });
+    if (error) {
+      if (error.message.includes('employees_code_per_tenant_idx') && previous.uncertainCode === code) {
+        return { ...state, uncertainCode: code, error: 'قد تكون إضافة هذا الموظف تمت في المحاولة السابقة. تحقق في دليل الموظفين قبل أي تغيير.' };
+      }
+      const message = errorText(error.message);
+      return message ? fail(message) : uncertain();
+    }
+    resultData = data;
+  } catch { return uncertain(); }
+  const result = resultData && typeof resultData === 'object' && !Array.isArray(resultData) ? resultData as Record<string, unknown> : null;
   const employeeId = typeof result?.employee_id === 'string' ? result.employee_id : '';
-  if (!uuidPattern.test(employeeId)) return fail('تعذر تأكيد حفظ الموظف. أعد المحاولة بعد التحقق من الدليل.');
+  if (!uuidPattern.test(employeeId)) return uncertain();
   redirect(`/tenant/${tenantId}/people/${employeeId}?state=created`);
 }
 
@@ -67,5 +79,5 @@ function errorText(message: string) {
   if (message.includes('people_assignment_job_unavailable')) return 'الوظيفة أو قسمها غير نشط. اختر وظيفة متاحة.';
   if (message.includes('people_assignment_job_department_mismatch')) return 'الوظيفة لا تتبع القسم المختار. اختر وظيفة مناسبة.';
   if (message.includes('people_onboard_invalid')) return 'بعض البيانات غير صحيحة. راجع الحقول ثم أعد المحاولة.';
-  return 'تعذر إضافة الموظف الآن. لم يُحفظ سجل جزئي؛ راجع البيانات وأعد المحاولة.';
+  return null;
 }
