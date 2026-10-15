@@ -1,4 +1,4 @@
-import { Badge, EmptyState, HelpNote, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, Disclosure, EmptyState, HelpNote, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { PageFrame } from '@/components/context-navigation';
@@ -101,6 +101,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       <p>{nextSetup.detail}</p>
       <Link className="primary-button" href={`${basePath}/${nextSetup.path}`}>{nextSetup.label}</Link>
     </Panel>}
+    {canEdit && !nextSetup && <Panel aria-labelledby="leave-opening-setup"><h2 id="leave-opening-setup">سجّل الأرصدة الافتتاحية للموظفين</h2><p>اختياري حسب سياستك. التقويم وسنة الإجازة والأنواع مسجلة؛ راجع الأرصدة الفعلية قبل إتاحة طلبات الإجازات المتابعة بالرصيد.</p><Link className="secondary-button" href={`/tenant/${tenantId}/leave/balances`}>مراجعة أرصدة الموظفين</Link></Panel>}
 
     <Panel  aria-labelledby="leave-calendars-title">
       <div className={styles.panelHeading}>
@@ -123,8 +124,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
                   : ' · لا توجد إصدارات'}</p>
               {latest && <p className="record-meta">أيام الراحة: {restDaysText(latest.rest_weekdays)}
                 {' · '}العطلات: {latest.holidays.length}</p>}
-              {latest && <p className="record-meta">المصدر: <bdi>{latest.source}</bdi>
-                {' · '}المنطقة الزمنية: <bdi>{latest.timezone}</bdi></p>}
+              {latest && <Disclosure summary="تفاصيل التقويم"><p>المصدر: <bdi>{latest.source}</bdi> · المنطقة الزمنية: <bdi>{latest.timezone}</bdi></p></Disclosure>}
             </div>
             <Link className="secondary-button" href={`${basePath}/calendars/${calendar.id}`}>التفاصيل والإصدارات</Link>
           </RecordCard>;
@@ -146,7 +146,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
           <div className="record-main">
             <div className="record-title-row"><h3>{period.label}</h3></div>
             <p className="record-meta">{periodRangeText(period.starts_on, period.ends_on)}
-              {' · '}التقويم: <bdi>{calendarName.get(period.calendar_id) ?? period.calendar_id}</bdi></p>
+              {' · '}التقويم: <bdi>{calendarName.get(period.calendar_id) ?? 'تقويم غير متاح'}</bdi></p>
           </div>
         </RecordCard>)}</ul>}
     </Panel>
@@ -176,7 +176,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
                 {' · '}خصم الرصيد: {balanceModeLabel(latest.balance_mode)}</p>}
               {latest && <p className="record-meta">الأيام: {dayCountBasisLabel(latest.day_count_basis)}
                 {' · '}نصف يوم: {halfDayLabel(latest.half_day_allowed)}</p>}
-              {latest && <p className="record-meta">المصدر: <bdi>{latest.source}</bdi></p>}
+              {latest && <Disclosure summary="مصدر إعداد النوع"><p>{latest.source}</p></Disclosure>}
             </div>
             <Link className="secondary-button" href={`${basePath}/types/${type.id}`}>التفاصيل والإصدارات</Link>
           </RecordCard>;

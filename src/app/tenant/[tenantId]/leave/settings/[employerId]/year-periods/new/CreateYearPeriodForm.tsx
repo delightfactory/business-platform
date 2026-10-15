@@ -22,7 +22,7 @@ export function CreateYearPeriodForm({ tenantId, employerId, calendars }: {
 }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHintId = useId();
-  const [state, action, pending] = useActionState(createYearPeriodAction, EMPTY_YEAR_PERIOD_FORM);
+  const [state, action, pending] = useActionState(createYearPeriodAction, { ...EMPTY_YEAR_PERIOD_FORM, reason: 'تحديد سنة الإجازات' });
   const [selected, setSelected] = useState(state.calendarId || calendars[0]?.id || '');
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
   const coverage = calendars.find((calendar) => calendar.id === selected);

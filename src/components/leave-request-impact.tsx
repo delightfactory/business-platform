@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { loadLeaveImpact } from '@/app/tenant/[tenantId]/leave/impact-actions';
-import { leaveImpactSignature, type LeaveImpactInput, type LeaveImpactResult } from '@/lib/leave-impact';
+import { loadLeaveCurrentBalance, loadLeaveImpact } from '@/app/tenant/[tenantId]/leave/impact-actions';
+import { leaveImpactSignature, type LeaveImpactInput, type LeaveImpactResult, type LeaveCurrentBalance } from '@/lib/leave-impact';
 import { formatDecimalAmount } from '@/lib/format-decimal-amount';
 import { Button, Disclosure, Message } from '@/components/ui';
 
@@ -15,7 +15,42 @@ const reasons: Record<string,string> = {
 };
 
 export function LeaveRequestImpact(input: LeaveImpactInput) {
-  return <RequestImpact key={leaveImpactSignature(input)} {...input} />;
+  if (!input.typeId) return null;
+  return <>
+    <CurrentBalance key={JSON.stringify([input.tenantId,input.employeeId,input.typeId])} tenantId={input.tenantId} employeeId={input.employeeId} typeId={input.typeId} />
+    <RequestImpact key={leaveImpactSignature(input)} {...input} />
+  </>;
+}
+
+function CurrentBalance(input: Pick<LeaveImpactInput, 'tenantId' | 'typeId' | 'employeeId'>) {
+  const { tenantId,typeId,employeeId } = input;
+  const [result,setResult] = useState<LeaveCurrentBalance | null>(null);
+  const [page,setPage] = useState(0);
+  const [retry,setRetry] = useState(0);
+  const [accounts,setAccounts] = useState<NonNullable<LeaveCurrentBalance['accounts']>>([]);
+  useEffect(() => {
+    let cancelled = false;
+    const frame = requestAnimationFrame(() => {
+      void loadLeaveCurrentBalance({tenantId,typeId,employeeId},page).then(value => {
+        if (cancelled) return;
+        setResult(value);
+        if (value.state === 'ready') setAccounts(previous => [...previous,...(value.accounts ?? [])]);
+      }).catch(() => { if (!cancelled) setResult({state:'unavailable'}); });
+    });
+    return () => { cancelled=true;cancelAnimationFrame(frame); };
+  },[tenantId,typeId,employeeId,page,retry]);
+  return <section aria-label="الرصيد الحالي للنوع المختار" aria-busy={!result}>
+    <h3>الرصيد الحالي للنوع</h3>
+    {accounts.length > 0 && <ul>{accounts.map(account=><li key={account.periodId}>{account.label} · من <bdi>{account.startsOn}</bdi>: <bdi>{formatDecimalAmount(account.days)}</bdi> يوم</li>)}</ul>}
+    {!result ? <p role="status">جارٍ قراءة الرصيد…</p>
+      : result.state === 'hidden' ? <p>لا تسمح صلاحيتك الحالية بعرض الرصيد. راجع مسؤول الإجازات.</p>
+      : result.state === 'unavailable' ? <><p>تعذر التحقق من الرصيد الآن.</p><Button type="button" variant="ghost" onClick={()=>{setResult(null);setRetry(value=>value+1);}}>إعادة قراءة الرصيد</Button></>
+      : <>
+        {accounts.length === 0 && <p>{result.hasMore ? 'لم يظهر حساب لهذا النوع في الصفحة المقروءة بعد.' : 'لا يوجد رصيد مسجل لهذا النوع.'}</p>}
+        {result.hasMore && <Button type="button" variant="ghost" onClick={()=>{setResult(null);setPage(value=>value+1);}}>قراءة حسابات الرصيد التالية</Button>}
+      </>}
+    <p className="field-hint">هذه أرصدة الحسابات المسجلة. أهلية استخدامها لتواريخ الطلب تظهر في الأثر أدناه؛ لا تُحجز قبل الاعتماد.</p>
+  </section>;
 }
 
 function RequestImpact(input: LeaveImpactInput) {

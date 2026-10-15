@@ -6,6 +6,11 @@ export type LeaveImpact = {
   balance?: { state: 'shown' | 'hidden' | 'not_tracked' | 'unavailable'; accounts?: Array<{ period_label: string; starts_on: string; ends_on: string; balance_days: string }>; available_days?: string; shortfall_days?: string; after_approval_days?: string | null };
 };
 export type LeaveImpactResult = { signature: string; impact: LeaveImpact };
+export type LeaveCurrentBalance = {
+  state: 'ready' | 'hidden' | 'unavailable';
+  accounts?: Array<{ periodId: string; label: string; startsOn: string; days: string }>;
+  hasMore?: boolean;
+};
 export function leaveImpactSignature(input: LeaveImpactInput) {
   return JSON.stringify([input.tenantId,input.employeeId ?? '',input.employmentId ?? '',input.typeId,input.start,input.end,input.halfDay,input.part]);
 }

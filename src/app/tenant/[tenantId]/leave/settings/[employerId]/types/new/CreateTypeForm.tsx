@@ -25,7 +25,7 @@ export function CreateTypeForm({ tenantId, employerId, initialCode }: {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHintId = useId();
   const [state, action, pending] = useActionState(createTypeAction,
-    { ...EMPTY_CREATE_TYPE_FORM, code: initialCode });
+    { ...EMPTY_CREATE_TYPE_FORM, code: initialCode, reason: 'إضافة نوع إجازة' });
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
 
   const showOfflineNotice = offline && !pending;

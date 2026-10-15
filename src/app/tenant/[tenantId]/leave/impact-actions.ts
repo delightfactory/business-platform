@@ -1,8 +1,37 @@
 'use server';
 
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { leaveImpactSignature, type LeaveImpactInput, type LeaveImpactResult } from '@/lib/leave-impact';
+import { leaveImpactSignature, type LeaveImpactInput, type LeaveImpactResult, type LeaveCurrentBalance } from '@/lib/leave-impact';
 import { daySpan, isDate, isObject, isUuid, MAX_DATE_SPAN } from '../me/leave/form-rules';
+
+// Independent from the date preview: missing calendar coverage must not erase the current accounts.
+export async function loadLeaveCurrentBalance(input: Pick<LeaveImpactInput, 'tenantId' | 'typeId' | 'employeeId'>, page = 0): Promise<LeaveCurrentBalance> {
+  const unavailable: LeaveCurrentBalance = { state: 'unavailable' };
+  if (!isUuid(input.tenantId) || !isUuid(input.typeId) || (input.employeeId !== undefined && !isUuid(input.employeeId))
+    || !Number.isInteger(page) || page < 0 || page > 21474836) return unavailable;
+  try {
+    const client = await createSupabaseServerClient();
+    if (!client) return unavailable;
+    const { data: { user } } = await client.auth.getUser();
+    if (!user) return unavailable;
+    const { data, error } = await client.rpc(input.employeeId ? 'leave_hr_balances' : 'leave_my_balances', {
+      p_tenant: input.tenantId, p_limit: 100, p_offset: page * 100,
+      ...(input.employeeId ? { p_employee: input.employeeId } : {}),
+    });
+    if (error) return error.code === '42501' ? { state: 'hidden' } : unavailable;
+    if (!isObject(data) || !Array.isArray(data.items) || typeof data.has_more !== 'boolean') return unavailable;
+    const accounts: NonNullable<LeaveCurrentBalance['accounts']> = [];
+    for (const item of data.items) {
+      if (!isObject(item) || !isUuid(item.leave_type_id) || !isUuid(item.period_id)
+        || typeof item.period_label !== 'string' || typeof item.starts_on !== 'string' || !isDate(item.starts_on)
+        || (input.employeeId && item.employee_id !== input.employeeId)
+        || typeof item.balance_days !== 'number' || !Number.isFinite(item.balance_days)) return unavailable;
+      if (item.leave_type_id === input.typeId) accounts.push({ periodId: item.period_id, label: item.period_label,
+        startsOn: item.starts_on, days: String(item.balance_days) });
+    }
+    return { state: 'ready', accounts, hasMore: data.has_more };
+  } catch { return unavailable; }
+}
 
 export async function loadLeaveImpact(input: LeaveImpactInput): Promise<LeaveImpactResult> {
   const signature = leaveImpactSignature(input);

@@ -97,3 +97,9 @@
     gap: 0.2rem;
   }
 }
+
+.postingSteps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; padding:0; gap:.5rem; margin-block:1rem; }
+.postingSteps li { padding:.8rem; border:1px solid var(--line); border-radius:var(--r-tile); color:var(--muted); background:var(--surface); }
+.postingSteps li[aria-current='step'] { color:var(--ink); border-color:var(--brand); font-weight:650; }
+.postingSteps a { color:inherit; }
+@media(max-width:640px) { .postingSteps { grid-template-columns:repeat(2,minmax(0,1fr)); } }

@@ -73,7 +73,6 @@ export function TypeActivationForm({ tenantId, employerId, typeId, targetActive,
       {targetActive
         ? 'يُفعَّل النوع للاستخدام الجديد. إن كانت الحالة كما هي بالفعل فلن يتغير شيء.'
         : 'يُوقَف النوع عن الطلبات الجديدة؛ تبقى إصداراته وسجلاته محفوظة، ويمكن إعادة التفعيل لاحقًا. إن كانت الحالة كما هي بالفعل فلن يتغير شيء.'}
-      {' '}المفتاح ثابت لكل (سبب وهدف) محددين، فتُعاد محاولة فاشلة بالنتيجة نفسها دون تكرار.
     </p>
     {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}
   </form>;

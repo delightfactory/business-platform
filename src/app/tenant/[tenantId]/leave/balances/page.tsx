@@ -1,4 +1,4 @@
-import { Badge, Button, ButtonLink, Card, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, Button, ButtonLink, Card, Disclosure, EmptyState, Field, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
@@ -142,6 +142,13 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
     balancesHref(tenantId, { employee: query.employee, employer: query.employer, ...next });
   const selectedPeriodQuery = { kind: query.kind, period: query.period, pcs: query.pcs, pcp: query.pcp };
   const selectedTypeQuery = { ...selectedPeriodQuery, type: query.type, tcs: query.tcs, tct: query.tct };
+  const postingStep = !hasPair ? 0 : query.kind === '' ? 1 : query.period === '' ? 2 : 3;
+  const postingSteps = [
+    { label: 'الموظف والجهة', href: searchHref({ q: query.q }) },
+    { label: 'نوع الحركة', href: pairHref() },
+    { label: 'الفترة', href: pairHref({ kind: query.kind }) },
+    { label: 'نوع الإجازة والحفظ', href: pairHref(selectedTypeQuery) },
+  ];
 
   const postingForm = canPost && query.type !== '' && query.period !== '' && query.kind !== ''
     ? <PostBalanceForm key={[user.id,tenantId,query.employee,query.employer,query.kind,query.period,query.type].join(':')}
@@ -179,6 +186,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
         <PendingLink href={entry.href}>{entry.label}</PendingLink></Message>)}
     </Panel>}
 
+    {access.canAdjust && <nav aria-label="خطوات تسجيل حركة الرصيد"><ol className={styles.postingSteps}>{postingSteps.map((step,index)=><li key={step.label} aria-current={index === postingStep ? 'step' : undefined}>{index < postingStep ? <PendingLink href={step.href}>{index + 1}. {step.label}</PendingLink> : <span>{index + 1}. {step.label}</span>}</li>)}</ol></nav>}
     <Panel  aria-labelledby="balances-search-title">
       <div className={styles.panelHeading}>
         <h2 id="balances-search-title">البحث عن موظف</h2>
@@ -266,8 +274,8 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                       </div>
                       <p className="record-meta">الرصيد الحالي: <bdi>{formatDays(account.balanceDays)}</bdi> يوم
                         · الفترة: {account.periodLabel} · من <bdi>{account.startsOn}</bdi> إلى <bdi>{account.endsOn}</bdi></p>
-                      <p className="record-meta">رقم النوع: <bdi>{account.typeCode}</bdi>
-                        {' · '}رصيد افتتاحي: {account.hasOpening ? 'مُسجّل' : 'غير مسجل'}
+                      <Disclosure summary="تفاصيل حساب الرصيد"><p>رمز النوع: <bdi>{account.typeCode}</bdi> · معرّف الفترة: <bdi>{account.periodId}</bdi></p></Disclosure>
+                      <p className="record-meta">رصيد افتتاحي: {account.hasOpening ? 'مُسجّل' : 'غير مسجل'}
                         {' · '}استحقاق الإجازة السنوية: {account.hasAnnualGrant ? 'مسجل' : 'غير مسجل'}</p>
                       <p className="record-meta">الرصيد يشمل جميع حركات الحساب، بما فيها الحركات الموجودة في الصفحات الأخرى.</p>
                     </div>

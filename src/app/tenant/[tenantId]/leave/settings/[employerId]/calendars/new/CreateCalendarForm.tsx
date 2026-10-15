@@ -26,7 +26,7 @@ export function CreateCalendarForm({ tenantId, employerId, initialCode }: {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHintId = useId();
   const [state, action, pending] = useActionState(createCalendarAction,
-    { ...EMPTY_CALENDAR_FORM, code: initialCode });
+    { ...EMPTY_CALENDAR_FORM, code: initialCode, reason: 'إنشاء تقويم الإجازات' });
   const overviewPath = `/tenant/${tenantId}/leave/settings/${employerId}`;
 
   const showOfflineNotice = offline && !pending;

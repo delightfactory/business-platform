@@ -130,8 +130,8 @@ export default async function CalendarDetailPage({ params, searchParams }: {
             </div>
             <p className="record-meta">أيام الراحة الأسبوعية: {restDaysText(version.rest_weekdays)}
               {' · '}العطلات: {version.holidays.length}</p>
-            <p className="record-meta">المنطقة الزمنية: <bdi>{version.timezone}</bdi>
-              {' · '}المصدر: <bdi>{version.source}</bdi></p>
+            <Disclosure summary="المنطقة الزمنية ومصدر التقويم"><p className="record-meta">المنطقة الزمنية: <bdi>{version.timezone}</bdi>
+              {' · '}المصدر: <bdi>{version.source}</bdi></p></Disclosure>
             {version.holidays.length > 0 && <Disclosure className={styles.versionHolidays} summary={<>عرض عطلات هذا الإصدار ({version.holidays.length})</>}>
               <ul className={styles.versionHolidayList}>
                 {version.holidays.map((holiday, index) => <li key={`${holiday.date}-${index}`}>

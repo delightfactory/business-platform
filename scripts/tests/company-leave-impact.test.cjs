@@ -20,3 +20,25 @@ test('permission and session failures stay unavailable without a guessed zero or
  const forbidden=setup({data:null,error:{code:'42501'}}),result=await forbidden.loadLeaveImpact(input);assert.deepEqual(result.impact,{state:'unavailable',reason:'forbidden'});assert.equal(forbidden.calls.length,1);
  const expired=setup(null,false);assert.equal((await expired.loadLeaveImpact(input)).impact.reason,'session');assert.equal(expired.calls.length,0);
 });
+
+test('current accounts read independently, filter by type, preserve signed amounts and explicit pagination',async()=>{
+ const item={leave_type_id:input.typeId,period_id:'a7000000-0000-4000-8000-000000000005',period_label:'QA year',starts_on:'2026-01-01',balance_days:-1.25};
+ const own=setup({data:{items:[item,{...item,leave_type_id:'a7000000-0000-4000-8000-000000000006'}],has_more:true},error:null});
+ const result=await own.loadLeaveCurrentBalance(input,1);
+ assert.equal(result.state,'ready');assert.equal(result.accounts.length,1);assert.equal(result.accounts[0].days,'-1.25');assert.equal(result.hasMore,true);
+ assert.equal(own.calls[0].name,'leave_my_balances');assert.equal(own.calls[0].args.p_offset,100);
+ const employeeId='a7000000-0000-4000-8000-000000000003';
+ const hr=setup({data:{items:[{...item,employee_id:employeeId}],has_more:false},error:null});
+ assert.equal((await hr.loadLeaveCurrentBalance({...input,employeeId})).state,'ready');assert.equal(hr.calls[0].name,'leave_hr_balances');assert.equal(hr.calls[0].args.p_employee,employeeId);
+ const wrong=setup({data:{items:[{...item,employee_id:'another'}],has_more:false},error:null});
+ assert.equal((await wrong.loadLeaveCurrentBalance({...input,employeeId})).state,'unavailable');
+});
+
+test('current balance distinguishes denied, failed and empty; never converts them to a zero',async()=>{
+ for(const [error,state] of [[{code:'42501'},'hidden'],[{code:'08000'},'unavailable']]){
+  const s=setup({data:null,error});assert.deepEqual(await s.loadLeaveCurrentBalance(input),{state});assert.equal(s.calls.length,1);
+ }
+ const empty=setup({data:{items:[],has_more:false},error:null});assert.deepEqual(await empty.loadLeaveCurrentBalance(input),{state:'ready',accounts:[],hasMore:false});
+ const expired=setup(null,false);assert.equal((await expired.loadLeaveCurrentBalance(input)).state,'unavailable');assert.equal(expired.calls.length,0);
+ const invalid=setup(null);assert.equal((await invalid.loadLeaveCurrentBalance(input,-1)).state,'unavailable');assert.equal(invalid.calls.length,0);
+});
