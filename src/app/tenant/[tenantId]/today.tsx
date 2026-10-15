@@ -56,7 +56,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
   const employee = access(3, 'ملفي');
   const mobile = access(4, 'حضوري');
   model.mobile = readMobileSnapshot(mobile);
-  const channel = access(5, 'قنوات الحضور');
+  const channel = access(5, terms.attendanceSources);
   const payroll = access(6, 'دورة الرواتب');
   const inputs = access(7, 'مدخلات الرواتب');
   const runs = access(8, 'مسيرات الرواتب');
@@ -113,7 +113,10 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
     }
     model.work.push(entry);
   }
-  if (inputs) model.work.push({ title: 'مدخلات الرواتب', detail: 'جهّز بيانات الرواتب للجهة والفترة المطلوبة.', href: `${base}/payroll/inputs` });
+  if (inputs) {
+    const canPrepare = ['payroll.prepare', 'payroll_config.manage', 'employee_finance.manage', 'payroll.correct'].some(key => inputs[key] === true);
+    (canPrepare ? model.work : model.followUp).push({ title: canPrepare ? 'مدخلات الرواتب' : 'عرض بيانات الفترة', detail: canPrepare ? 'جهّز بيانات الرواتب للجهة والفترة المطلوبة.' : 'راجع بيانات الرواتب للجهة والفترة المطلوبة حسب صلاحياتك.', href: `${base}/payroll/inputs` });
+  }
   if (navigation?.can_view_advances === true) model.followUp.push({ title: 'سلف الموظفين', detail: 'متابعة السلف والأرصدة في الصفحة المختصة.', href: `${base}/payroll/advances` });
   if (navigation?.can_view_reports === true) model.followUp.push({ title: 'تقارير الرواتب', detail: 'عرض التقرير المتاح لهذا الحساب دون تغيير أي مسير.', href: `${base}/payroll/reports?report=${navigation.report_kind === 'advances' ? 'advances' : 'sheet'}` });
   if (people?.can_view === true) model.work.push({ title: 'الموظفون', detail: 'ملفات الموظفين وبيانات العمل والعمليات المتاحة لحسابك.', href: `${base}/people` });

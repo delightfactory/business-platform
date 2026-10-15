@@ -1,3 +1,4 @@
+import { terms } from '@/lib/terms';
 import { Button, ButtonLink, DataTable, Input, Message, PageHeader, Panel, EmptyState, Badge, Field } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { redirect } from 'next/navigation';
@@ -49,7 +50,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
         <div className={styles.toolbar}>
           <form method="get" className={styles.dateForm}><Field  id="attendance-date" label={<>تاريخ العمل</>}><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field><Button variant="solid"  type="submit">عرض اليوم</Button></form>
           <nav className={styles.tools} aria-label="مهام الحضور">
-            {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/sources`}>قنوات الحضور</ButtonLink>}
+            {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/sources`}>{terms.attendanceSources}</ButtonLink>}
             {canManage && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
             {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا بيانات عمل</ButtonLink>}
             {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}

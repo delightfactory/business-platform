@@ -347,7 +347,7 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                         </div>
                         <p className="record-meta">{selectedPeriod
                           ? <>من <bdi>{selectedPeriod.startsOn}</bdi> إلى <bdi>{selectedPeriod.endsOn}</bdi></>
-                          : <>معرّف الفترة: <bdi>{query.period}</bdi></>}</p>
+                          : <>الفترة المحددة</>}</p>
                         <p className="record-meta">اختر فترة أخرى لعرض الأنواع المتاحة فيها.</p>
                       </div><PendingLink className="ui-button ui-button-ghost ui-button-md"
                         href={pairHref({ kind: query.kind })}>تغيير الفترة</PendingLink></Card>
@@ -410,9 +410,8 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
                                   {item.canPost ? 'يقبل حركة رصيد' : blockedReasonLabel(item.postingBlockedReason, false)}
                                 </Badge>
                               </div>
-                              <p className="record-meta">رقم النوع: <bdi>{item.code}</bdi>
-                                {' · '}{item.isActive ? 'النوع مفعّل' : 'النوع غير مفعّل'}
-                                {' · '}النسخة {item.typeVersion} سارية من <bdi>{item.effectiveFrom}</bdi></p>
+                              <p className="record-meta">{item.isActive ? 'النوع مفعّل' : 'النوع غير مفعّل'}</p>
+                              <Disclosure summary="تفاصيل نوع الإجازة"><p>رمز النوع: <bdi>{item.code}</bdi> · النسخة {item.typeVersion} سارية من <bdi>{item.effectiveFrom}</bdi></p></Disclosure>
                               <p className="record-meta">الرصيد الحالي لهذا النوع:
                                 {' '}<bdi>{formatDays(item.balanceDays)}</bdi> يوم
                                 {' · '}تاريخ الاستحقاق <bdi>{item.policyDate}</bdi></p>
