@@ -1,3 +1,4 @@
+import { PEOPLE_ROLE_BUNDLES } from './bundles';
 import { PageHeader, Badge, Disclosure, HelpNote } from '@/components/ui';
 import { Message, Panel, Checkbox } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
@@ -18,33 +19,7 @@ type RoleAssignment = { role_key: string; role_version: number };
 type Row = { user_id: string; email: string; access_state: string; role_key: string | null; roles: RoleAssignment[]; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
 
-const PEOPLE_ROLE_BUNDLES = [
-  { key: 'employee.attendance.self.v1', label: 'الحضور الشخصي من الهاتف', description: 'يسجل العضو حضوره وانصرافه فقط. يحتاج ربطًا بموظف نشط وموقع وسياسة حضور مهيأة؛ لا يمنح إدارة حضور الآخرين.' },
-  { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
-  { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
-  { key: 'people.compensation_reader.v1', label: 'عرض الأجور', description: 'عرض بيانات الأجر الأساسي وسجل تغييره، دون تعديلها.' },
-  { key: 'people.compensation_manager.v1', label: 'إدارة الأجور', description: 'عرض الأجر الأساسي وتعديله وسجل تغييره.' },
-  { key: 'people.import_operator.v1', label: 'استيراد الموظفين', description: 'استيراد الموظفين من CSV؛ تشمل إدارة بيانات الموظف والتوظيف والاطلاع على الأجور الأساسية وتعديلها.' },
-  { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الصلاحيات إدارة الموظفين أو الاطلاع على الأجور.' },
-  { key: 'attendance.reader.v1', label: 'عرض الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
-  { key: 'attendance.operator.v1', label: 'إدخال الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
-  { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
-  { key: 'employee.leave.self.v1', label: 'الخدمة الذاتية للإجازات', description: 'عرض الملف الشخصي وطلب الإجازة مستقبلًا. لا تمنح عرض دليل الموظفين أو الأجور.' },
-  { key: 'payroll.reader.v1', label: 'عرض الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
-  { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند تفعيل الحساب.' },
-  { key: 'payroll.payment.recorder.v1', label: 'مسجل دفعات الرواتب الخارجية', description: 'عرض المستحق النهائي وتسجيل دفعات صُرفت خارجيًا ؛ لا تنفيذ تحويل بنكي.' },
-  { key: 'payroll.reviewer.v1', label: 'مراجع الرواتب', description: 'عرض الحساب المبدئي والعوائق والفروق دون الحساب أو الاعتماد المالي.' },
-  { key: 'payroll.input.approver.v1', label: 'معتمد وحدات الرواتب', description: 'عرض واعتماد الوحدات اليومية دون تحضيرها.' },
-  { key: 'employee_finance.reader.v1', label: 'قارئ مكافآت وخصومات الموظفين', description: 'عرض المدخلات المالية ضمن الجهة والفترة.' },
-  { key: 'employee_finance.author.v1', label: 'معد مكافآت وخصومات الموظفين', description: 'تحضير المسودة وإلغاؤها دون اعتماد.' },
-  { key: 'employee_finance.approver.v1', label: 'معتمد مكافآت وخصومات الموظفين', description: 'اعتماد المدخلات المالية دون تحضيرها.' },
-  { key: 'payroll.correction.requester.v1', label: 'مسؤول تصحيح الرواتب', description: 'إعداد ومراجعة مقترح تصحيح التاريخ المقفل؛ يلزم أيضًا تفويض المصدر والاعتماد أو تسجيل التسوية بحسب المهمة.' },
-  { key: 'payroll.calendar.manager.v1', label: 'مدير دورة الرواتب', description: 'إعداد الدورة ومراجعة تواريخ الفترات وحفظها.' },
-  { key: 'leave.reader.v1', label: 'عرض الإجازات', description: 'عرض سجلات الإجازات ضمن الصلاحيات الممنوحة.' },
-  { key: 'leave.manager.v1', label: 'مدير الإجازات', description: 'عرض وإدارة سجلات الإجازات دون اعتماد الطلبات.' },
-  { key: 'leave.approver.v1', label: 'معتمد الإجازات', description: 'عرض واعتماد طلبات الإجازة دون إدارة السجلات أو تعديل الأرصدة.' },
-  { key: 'leave.balance.manager.v1', label: 'مدير أرصدة الإجازات', description: 'عرض الإجازات وتعديل الأرصدة ضمن سجل تدقيق.' },
-] as const;
+
 
 export default async function TenantUsersPage({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
   const { tenantId } = await params;
@@ -137,10 +112,11 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 {row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
 
                   <p className="field-hint">احتفظ بالاختيارات الحالية ما لم ترد سحبها.</p>
-                  <Message tone="warn">إدارة الموظفين أو استيرادهم تمنح عرض الأجر الأساسي وتعديله.</Message>
+                  <Message tone="warn">إدارة الموظفين أو استيرادهم تمنح عرض الأجر الأساسي وتعديله. اعتماد حساب المسير والحفظ النهائي والتصدير صلاحيات مستقلة؛ راجع أثر كل اختيار قبل الحفظ.</Message>
                   <OfflineForm action={setTenantMemberPeopleBundlesAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
+                    {PEOPLE_ROLE_BUNDLES.filter(bundle => hasBundle(row.roles, bundle.key)).map(bundle => <input key={bundle.key} type="hidden" name="expectedBundleKey" value={bundle.key} />)}
                     <fieldset>
                       <legend>اختر صلاحيات العضو</legend>
                       {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>
@@ -159,6 +135,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                   <OfflineForm action={changeTenantAdminRoleAction}>
                     <input type="hidden" name="tenantId" value={tenantId} />
                     <input type="hidden" name="userId" value={row.user_id} />
+
                     <input type="hidden" name="roleAction" value={row.protected_admin ? 'demote' : 'promote'} />
                     <OfflineSubmitButton variant="ghost"  label={row.protected_admin ? 'تأكيد الخفض إلى عضو' : 'تأكيد الترقية إلى مسؤول'} />
                   </OfflineForm>
@@ -166,6 +143,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 {!row.protected_admin && <OfflineForm action={setMemberAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="userId" value={row.user_id} />
+
                   <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
                   <OfflineSubmitButton variant="ghost"  label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
                 </OfflineForm>}
@@ -268,6 +246,7 @@ function stateMessage(state: string) {
     'tenant-unavailable': 'الشركة غير نشطة؛ لم يتغير أي تعيين.',
     'bundles-unchanged': 'راجع الصلاحيات الحالية أدناه؛ الرابط وحده لا يثبت نتيجة محاولة الحفظ.',
     'bundle-invalid': 'تعذر التحقق من الصلاحيات المختارة. حدّث الصفحة وأعد المحاولة.',
+    'bundles-stale': 'تغيّرت صلاحيات هذا العضو منذ فتحت المحرر. راجع الحالية ثم أعد الاختيار.',
     'bundle-admin-protected': 'حساب مسؤول الشركة محمي ويُدار من إجراء إدارة المسؤولين.',
     'bundle-target-unavailable': 'يمكن تعديل الصلاحيات لعضو نشط بحساب صالح فقط. تحقق من حالة العضوية والحساب.',
   };

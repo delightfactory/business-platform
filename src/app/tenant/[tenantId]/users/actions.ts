@@ -1,4 +1,5 @@
 'use server';
+import { PEOPLE_ROLE_BUNDLES, bundleKeySet } from './bundles';
 
 import { redirect } from 'next/navigation';
 import { refresh } from 'next/cache';
@@ -86,11 +87,15 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const userId = field(formData, 'userId');
   const bundleKeys = formData.getAll('bundleKey').map((value) => String(value));
-  if (!isUuid(tenantId) || !isUuid(userId) || bundleKeys.length > 24) go(tenantId, 'bundle-invalid');
+  const expectedBundleKeys = formData.getAll('expectedBundleKey').map(String);
+  if (!isUuid(tenantId) || !isUuid(userId)
+    || bundleKeys.length > PEOPLE_ROLE_BUNDLES.length || expectedBundleKeys.length > PEOPLE_ROLE_BUNDLES.length
+    || [...bundleKeys, ...expectedBundleKeys].some(key => !bundleKeySet.has(key))
+    || new Set(bundleKeys).size !== bundleKeys.length || new Set(expectedBundleKeys).size !== expectedBundleKeys.length) go(tenantId, 'bundle-invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) go(tenantId, 'setup');
   const { data, error } = await supabase.rpc('set_tenant_member_people_bundles', {
-    p_tenant_id: tenantId, p_user_id: userId, p_bundle_keys: bundleKeys,
+    p_tenant_id: tenantId, p_user_id: userId, p_bundle_keys: bundleKeys, p_expected_bundle_keys: expectedBundleKeys,
   });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
   const state = (data as Record<string, unknown>).state;
@@ -186,6 +191,7 @@ function safeCode(value: unknown) { return typeof value === 'string' && /^[a-z0-
 function field(formData: FormData, name: string) { return String(formData.get(name) ?? '').trim(); }
 function isUuid(value: unknown): value is string { return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function mapError(message?: string) {
+  if (message?.includes('tenant_people_role_bundle_stale')) return 'bundles-stale';
   if (message?.includes('tenant_member_limit_full')) return 'limit-full';
   if (message?.includes('tenant_member_admin_requires_governed_change')) return 'admin-governed';
   if (message?.includes('tenant_member_invite_issuer_authority_lost')) return 'issuer-lost';
