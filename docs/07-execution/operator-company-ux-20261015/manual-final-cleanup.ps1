@@ -13,7 +13,7 @@ if ($LASTEXITCODE -ne 0 -or $cleanupTracked) { throw 'A candidate is tracked by 
 $cleanupConsumers = @(Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -like '*20261015-operator-company-ux*' -and $_.Name -match '^(node|claude|python|npm)(\.exe)?$' })
 if ($cleanupConsumers.Count) { throw 'An owned development/review consumer is active.' }
 if (Get-NetTCPConnection -LocalPort 61190 -State Listen -ErrorAction SilentlyContinue) { throw 'The preview is still running.' }
-$cleanupInventory = @(Get-Content -LiteralPath (Join-Path $cleanupRun 'qa\final-cleanup-inventory.json') -Raw | ConvertFrom-Json)
+$cleanupInventory = Get-Content -LiteralPath (Join-Path $cleanupRun 'qa\final-cleanup-inventory.json') -Raw | ConvertFrom-Json
 $cleanupDiskBefore = [System.IO.DriveInfo]::new('C:\').AvailableFreeSpace
 $cleanupRemoved = @()
 foreach ($relative in $cleanupAllowed) {
@@ -32,7 +32,9 @@ foreach ($relative in $cleanupAllowed) {
   if (@($entries | Where-Object { ($_.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0 }).Count) { throw 'Reparse child; stop.' }
   $files = @($entries | Where-Object { -not $_.PSIsContainer })
   $bytes = [long](($files | Measure-Object Length -Sum).Sum)
-  if ($bytes -ne [long]$snapshot[0].Bytes -or $files.Count -ne $snapshot[0].Files) { throw 'Candidate changed since review; stop and refresh the inventory.' }
+  $expectedBytes = [long]($snapshot[0].Bytes)
+  $expectedFiles = [long]($snapshot[0].Files)
+  if (($bytes -ne $expectedBytes) -or ($files.Count -ne $expectedFiles)) { throw 'Candidate changed since review; stop and refresh the inventory.' }
   Remove-Item -LiteralPath $target -Recurse -Force
   if (Test-Path -LiteralPath $target) { throw 'Removal incomplete.' }
   $cleanupRemoved += [PSCustomObject]@{Relative=$relative;RemovedBytes=$bytes;Files=$files.Count;VerifiedAbsent=$true}
