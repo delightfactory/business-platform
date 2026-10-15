@@ -50,10 +50,9 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
         <FilterLink tenantId={tenantId} date={date} active={filter === 'ready'} filter="ready" label={`جاهز للاعتماد · ${count.clean_ready}`} />
         <FilterLink tenantId={tenantId} date={date} active={filter === 'overtime'} filter="overtime" label={`إضافي بانتظار القرار · ${count.overtime_pending}`} />
       </nav>
+      {filter === 'ready' && canBulkApprove && <AttendanceBulkApprovalForm key={`${date}:${cursor ?? ''}`} tenantId={tenantId} date={date} rows={queue.items.filter((row) => row.can_bulk_approve)} />}
       {queue.items.length === 0 ? <EmptyState title={<>لا توجد مهام في هذا العرض</>} description={<>جرّب تصفية أخرى أو اختر تاريخًا مختلفًا.</>} />
-      : filter === 'ready' && canBulkApprove && queue.items.some((row) => row.can_bulk_approve)
-        ? <AttendanceBulkApprovalForm tenantId={tenantId} date={date} rows={queue.items.filter((row) => row.can_bulk_approve)} />
-        : <ul className="record-list attendance-review-list">
+        : !(filter === 'ready' && canBulkApprove && queue.items.some(row => row.can_bulk_approve)) && <ul className="record-list attendance-review-list">
         {queue.items.map((row) => <RecordCard  key={row.id}>
           <div className="record-main"><div className="record-title-row"><Avatar name={row.full_name} size={40}/><h2>{row.full_name}</h2><Badge tone={row.status === 'approved' ? "ok" : "neutral"} >{statusLabel(row.status)}</Badge></div>
             <p className="record-meta">رقم الموظف: <bdi>{row.employee_code}</bdi></p>

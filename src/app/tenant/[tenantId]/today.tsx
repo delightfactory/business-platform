@@ -31,7 +31,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
   }
   const names = ['time_attendance_access_snapshot', 'leave_access_snapshot', 'people_access_snapshot',
     'tenant_my_employee_snapshot', 'attendance_mobile_snapshot', 'attendance_channel_access',
-    'payroll_access_snapshot', 'payroll_input_access', 'payroll_run_access', 'payroll_navigation_access'];
+    'payroll_access_snapshot', 'payroll_input_access', 'payroll_run_access', 'payroll_navigation_access', 'time_work_policy_catalog'];
   const results = await Promise.all(names.map(async name => {
     const argument = name.startsWith('payroll_') || name === 'leave_access_snapshot'
       || name === 'attendance_mobile_snapshot' || name === 'attendance_channel_access' ? 'p_tenant' : 'p_tenant_id';
@@ -61,6 +61,8 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
   const inputs = access(7, 'مدخلات الرواتب');
   const runs = access(8, 'مسيرات الرواتب');
   const navigation = access(9, 'متابعة الرواتب');
+  const policies = access(10, 'قوالب الدوام');
+  if (policies?.can_manage === true) model.work.push({ title: 'قوالب الدوام', detail: 'أنشئ قوالب مواعيد العمل وراجع إصداراتها قبل إتاحتها للتعيين.', href: `${base}/people/work-policies` });
 
   const [attendanceResult, requestResult, cancellationResult] = await Promise.all([
     attendance?.can_view === true ? read('attendance_review_queue', { p_tenant_id: tenantId, p_operational_date: date, p_filter: 'all', p_after: null, p_limit: 1 }) : null,
@@ -70,7 +72,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
   if (attendance?.can_view === true) {
     const counts = attendanceResult && !attendanceResult.error ? object(object(attendanceResult.data)?.counts) : null;
     const valid = counts && ['exception_count', 'clean_ready', 'overtime_pending'].every(key => typeof counts[key] === 'number' && Number.isSafeInteger(counts[key]) && Number(counts[key]) >= 0);
-    const scope = `تاريخ ${date} · Africa/Cairo${attendance.entitlement_enabled === false ? ' · خدمة الحضور موقوفة؛ السجل للقراءة' : ''}`;
+    const scope = `تاريخ ${date} · توقيت القاهرة${attendance.entitlement_enabled === false ? ' · خدمة الحضور موقوفة؛ السجل للقراءة' : ''}`;
     const entries = attendance.can_approve === true || attendance.can_correct === true ? model.work : model.followUp;
     entries.push({ title: 'مراجعة الحضور', detail: valid
       ? `${scope}. استثناءات: ${counts.exception_count}؛ جاهز للمراجعة: ${counts.clean_ready}. الأعداد لهذا التاريخ فقط؛ افتح القائمة للتحقق من اليوم أو الأيام السابقة.`

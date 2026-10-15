@@ -11,13 +11,13 @@ import styles from '../payroll.module.css';
 export const dynamic='force-dynamic';
 type Row={employment_id:string;employee:{name:string;code:string};net:string;explanation:{base:string;deductions:string;lines:{name:string;classification:string;amount:string;deduction_disposition?:{original_amount:number;payroll_amount:number;residual_amount:number;disposition:string;reference:string}}[]}};
 type Output={output_id:string;legal_employer:{display_name:string;legal_name:string};period:{starts_on:string;ends_on:string};replacement_output_id?:string;superseded:boolean;employees:Row[]};
-export default async function OutputPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<{employer_scope?:string;employer?:string;output?:string;after?:string}>}){
+export default async function OutputPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<{employer_scope?:string;employer?:string;period?:string;output?:string;after?:string}>}){
  const {tenantId}=await params,query=await searchParams;
  if(!uuid(tenantId))notFound();
  const path=`/tenant/${tenantId}/payroll/output`;
  const employerDestination=normalizeEmployerScope(path,'output',query);if(employerDestination)redirect(employerDestination);
  if(!uuid(query.employer??'')||!uuid(query.output??'')||(query.after&&!uuid(query.after)))notFound();
- const context=new URLSearchParams({employer:query.employer!,output:query.output!,...(query.after?{after:query.after}:{})});
+ const context=new URLSearchParams({employer:query.employer!,output:query.output!,...(uuid(query.period??'')?{period:query.period!}:{}),...(query.after?{after:query.after}:{})});
  const client=await createSupabaseServerClient();
  const failure=(text:string)=><PageFrame><Panel dir="rtl" className={styles.card}><PageHeader  title={<>مسير الرواتب النهائي</>} /><Message tone="bad" role="alert">{text}</Message><Link href={`${path}?${context}`}>إعادة المحاولة بنفس المسير</Link></Panel></PageFrame>;
  if(!client)return failure('تعذر الاتصال بالمسير المحفوظ.');
@@ -32,9 +32,9 @@ export default async function OutputPage({params,searchParams}:{params:Promise<{
  <nav className={styles.reviewNavigation} aria-label="أدوات المسير">
  {result.replacement_output_id&&<ButtonLink className={result.superseded?'':''} href={`${path}?${new URLSearchParams({employer:query.employer!,output:result.replacement_output_id})}`}>فتح المسير البديل</ButtonLink>}
  {!result.superseded&&correctionAccess.data?.can_correct&&<Link href={`/tenant/${tenantId}/payroll/corrections?${context}`}>إعداد تصحيح مؤرخ مع حفظ الأصل</Link>}
- {!result.superseded&&(reportRead?.data?.can_export===true?<Link href={`/tenant/${tenantId}/payroll/reports?${new URLSearchParams({employer:query.employer!,output:query.output!,report:'sheet'})}`}>الكشف الكامل وخيارات التصدير</Link>:<p>{reportRead?.error?'تعذر التحقق من خيارات التصدير الآن.':'التصدير يحتاج صلاحية «تصدير الرواتب» واستيفاء شروط التقرير.'}</p>)}
+ {!result.superseded&&(reportRead?.data?.can_export===true?<Link href={`/tenant/${tenantId}/payroll/reports?${new URLSearchParams({employer:query.employer!,output:query.output!,report:'sheet'})}`}>الكشف الكامل وخيارات التصدير</Link>:<p>{reportRead?.error&&reportRead.error.code!=='42501'?'تعذر التحقق من خيارات التصدير الآن.':'التصدير يحتاج صلاحية «تصدير الرواتب» واستيفاء شروط التقرير.'}</p>)}
  <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/payroll/payments?${new URLSearchParams({employer:query.employer!,output:query.output!})}`}>مطابقة الدفعات الخارجية</ButtonLink>
- <Link href={`/tenant/${tenantId}/payroll/runs?${new URLSearchParams({employer:query.employer!})}`}>العودة إلى مراجعة الرواتب</Link>
+ <Link href={`/tenant/${tenantId}/payroll/runs?${new URLSearchParams({employer:query.employer!,...(uuid(query.period??'')?{period:query.period!}:{})})}`}>العودة إلى مراجعة الرواتب</Link>
  </nav>
  <div className={styles.outputCards}>{result.employees.map(e=><Panel as="article" key={e.employment_id} className={styles.card}><div className={styles.recordHeading}><Avatar name={e.employee.name}/><h2>{e.employee.name} · <bdi>{e.employee.code}</bdi></h2></div><dl className={styles.figureStrip}><div><dt>الأجر الأساسي</dt><dd>{money(e.explanation.base)}</dd></div><div><dt>{result.superseded?'صافي الراتب المحفوظ للتاريخ (مسير مستبدل)':'صافي الراتب'}</dt><dd>{money(e.net)}</dd></div></dl><Disclosure summary="تفاصيل الراتب والخصومات"><ul>{e.explanation.lines.map((line,i)=><li key={i}>{line.name} · {money(line.amount)}{line.deduction_disposition&&<p>أصل الالتزام {money(line.deduction_disposition.original_amount)}؛ خصم هذه الفترة {money(line.deduction_disposition.payroll_amount)}؛ المتبقي {money(line.deduction_disposition.residual_amount)} — {line.deduction_disposition.disposition==='carry'?'مرحّل إلى فترة لاحقة':'سُوّي خارج الرواتب'}، المرجع: {line.deduction_disposition.reference}.</p>}</li>)}</ul></Disclosure></Panel>)}</div>
  {result.employees.length===0&&<Message tone="info">{query.after?<>انتهت قائمة الموظفين في هذه النسخة. <Link href={`${path}?${new URLSearchParams({employer:query.employer!,output:query.output!})}`}>العودة إلى أول الموظفين</Link></>:<>لا توجد بيانات موظفين في هذه الصفحة من المسير المحفوظ. راجع مسؤول الرواتب قبل استخدامه.</>}</Message>}

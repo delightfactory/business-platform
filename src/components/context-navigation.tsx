@@ -61,7 +61,7 @@ export async function TenantNavigation({
   if (supabase) {
     const { data: { user } } = await getWorkspaceUser(supabase);
     if (user) {
-      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess, payrollAccess, payrollInputs, payrollRuns, payrollNavigation, mobileAttendance, channelAccess] = await Promise.all([
+      const [members, entitiesSites, branding, spaces, peopleAccess, attendanceAccess, ownEmployee, leaveAccess, payrollAccess, payrollInputs, payrollRuns, payrollNavigation, mobileAttendance, channelAccess, workPolicies] = await Promise.all([
         readWorkspaceRpc(supabase, 'tenant_member_access_page', tenantId, 'p_tenant_id', 'summary'),
         readWorkspaceRpc(supabase, 'tenant_entities_sites_snapshot', tenantId, 'p_tenant_id'),
         readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id'),
@@ -76,6 +76,7 @@ export async function TenantNavigation({
         readWorkspaceRpc(supabase, 'payroll_navigation_access', tenantId, 'p_tenant'),
         readWorkspaceRpc(supabase, 'attendance_mobile_snapshot', tenantId, 'p_tenant'),
         readWorkspaceRpc(supabase, 'attendance_channel_access', tenantId, 'p_tenant'),
+        readWorkspaceRpc(supabase, 'time_work_policy_catalog', tenantId, 'p_tenant_id'),
       ]);
       if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري', mobilePriority: 10 });
       if (!channelAccess.error && channelAccess.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/attendance/sources`, label: terms.attendanceSources });
@@ -101,6 +102,9 @@ export async function TenantNavigation({
       }
       if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور', mobilePriority: 30 });
+      }
+      if (!workPolicies.error && workPolicies.data?.can_manage === true) {
+        businessLinks.push({ href: `/tenant/${tenantId}/people/work-policies`, label: 'قوالب الدوام' });
       }
       if (!ownEmployee.error && ownEmployee.data && typeof ownEmployee.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/me`, label: 'ملفي' });

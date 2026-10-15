@@ -8,7 +8,7 @@ const catalog = [
   { key: 'attendance.policy.manager.v1', label: 'مدير سياسات الدوام', description: 'إنشاء قوالب الدوام المسماة وإصداراتها وإيقافها. لا تشمل هذه الصلاحيات إدارة الموظفين أو الاطلاع على الأجور.' },
   { key: 'attendance.reader.v1', label: 'عرض الحضور', description: 'عرض أيام الحضور وسجلها دون إدخال أو اعتماد.' },
   { key: 'attendance.operator.v1', label: 'إدخال الحضور', description: 'إدخال البصمات اليدوية ومتابعة الحالات، دون صلاحية التصحيح أو الاعتماد.' },
-  { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح سجل البصمات واعتماد النتائج اليومية. لا تشمل إدخال بصمات جديدة.' },
+  { key: 'attendance.reviewer.v1', label: 'مراجع الحضور', description: 'تصحيح التسجيلات واعتماد النتائج اليومية، وإضافة تسجيل للمراجعة بسبب موثّق. لا تمنح الإدخال اليومي دون سبب.' },
   { key: 'employee.leave.self.v1', label: 'الخدمة الذاتية للإجازات', description: 'عرض الملف الشخصي وطلب الإجازة مستقبلًا. لا تمنح عرض دليل الموظفين أو الأجور.' },
   { key: 'payroll.reader.v1', label: 'عرض الرواتب', description: 'عرض دورات الرواتب وفتراتها.' },
   { key: 'payroll.preparer.v1', label: 'معد الرواتب', description: 'عرض الرواتب مع صلاحية التحضير عند تفعيل الحساب.' },
