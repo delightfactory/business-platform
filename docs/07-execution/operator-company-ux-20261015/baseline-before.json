@@ -1,0 +1,147 @@
+{
+  "source": "9a98ed8f1f7a1471efe60620182cf9d92d931b77",
+  "actor": "synthetic manager with all five Operator tasks",
+  "environment": "owned QA business-platform-operator-ux-20261015, same dependencies/API56321/app61190",
+  "measurementPolicy": "One run per journey. Navigation counts user-initiated link/GET-form transitions, including search, excluding transient canonical redirect hops and mutation revalidation. UI activations count buttons/links/select choices; text focus/typing is counted separately as manual fields. No timing benchmark or invented counts. Product data mutations are synthetic only; preserve history and reset ordinary reversible state with authorized RPCs when needed. Creation journeys retain their output.",
+  "journeys": [
+    {
+      "id": "OPJ1",
+      "job": "Find a company by name from Operator home",
+      "status": "observed-complete",
+      "navigations": 3,
+      "uiActivations": 3,
+      "manualTextFields": 1,
+      "trace": [
+        "home: services task link",
+        "service company list: search for اختبار 02",
+        "filtered company: view services"
+      ],
+      "success": "Company02 service page loaded from authoritative snapshot",
+      "searchContextCarriedToDetail": false
+    },
+    {
+      "id": "OPJ2",
+      "job": "Enable payroll when People is unavailable",
+      "entry": "selected company services",
+      "status": "observed-complete",
+      "navigations": 0,
+      "uiActivations": 6,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "open People disclosure",
+        "select grant",
+        "fill required reason and save",
+        "open payroll disclosure",
+        "select grant",
+        "fill required reason and save"
+      ],
+      "success": "People and Payroll both rendered available from refreshed authoritative snapshots",
+      "note": "Followed the existing dependency guidance rather than manufacturing an initial failure. Form closes after each save. No expiry entered."
+    },
+    {
+      "id": "OPJ3",
+      "job": "Disable an ordinary enabled service",
+      "entry": "selected company services",
+      "status": "observed-complete",
+      "navigations": 0,
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 1,
+      "trace": [
+        "open payroll disclosure",
+        "select deny",
+        "fill required reason and save"
+      ],
+      "success": "Payroll row rendered unavailable after save; People remains available",
+      "note": "Effective denial retains the change-form summary wording; a selector wait expecting initial missing-state wording was corrected by observing the actual saved state. No mutation was retried."
+    },
+    {
+      "id": "OPJ4",
+      "job": "Lower a commercial limit below existing usage",
+      "entry": "selected company limits",
+      "status": "observed-complete",
+      "navigations": 0,
+      "uiActivations": 2,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "open users limit disclosure",
+        "change numeric limit 10 to 1",
+        "fill required reason and save"
+      ],
+      "success": "Authoritative snapshot showed usage2 limit1 and retained-existing-resources warning",
+      "note": "Company02 synthetic usage2; historical audit retained"
+    },
+    {
+      "id": "OPJ5",
+      "job": "Suspend and restore company access",
+      "entry": "selected company status",
+      "status": "observed-complete",
+      "navigations": 0,
+      "uiActivations": 4,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "open suspend disclosure",
+        "fill reason and confirm suspension",
+        "observe suspended snapshot",
+        "open restore disclosure",
+        "fill reason and confirm restore",
+        "observe active snapshot"
+      ],
+      "success": "Company02 suspended then active; required reasons and immutable history preserved"
+    },
+    {
+      "id": "OPJ6",
+      "job": "Create company for confirmed account and reach its services",
+      "entry": "Operator home",
+      "status": "observed-complete",
+      "navigations": 5,
+      "uiActivations": 6,
+      "mandatoryManualTextFields": 3,
+      "additionalSearchFields": 1,
+      "trace": [
+        "home existing-account onboarding link",
+        "enter company, site, existing confirmed account email; submit",
+        "result has tenant login link but no Operator service continuation",
+        "overview link",
+        "services task link",
+        "search created company",
+        "view services"
+      ],
+      "success": "New synthetic company929c5575-6641-44de-8ad6-e6f2e2a0b31e services snapshot opened",
+      "note": "Default finite10 users/sites retained. Automatic mutation result navigation excluded. Existing result breaks Operator continuation."
+    },
+    {
+      "id": "OPJ7",
+      "job": "Invite first administrator and follow the invitation",
+      "entry": "Operator home",
+      "status": "observed-complete",
+      "navigations": 1,
+      "uiActivations": 2,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "home invite link",
+        "fill company and synthetic email; keep default site and limits",
+        "send invitation",
+        "automatic invitation list highlights new pending invitation and recorded sent status"
+      ],
+      "success": "Invitationac96e7ae-5b76-40c5-bd83-d1c0130fe8c6 pending acceptance, recorded sent",
+      "note": "Local mail only; recorded sent does not prove inbox delivery or acceptance. Company not created before acceptance."
+    },
+    {
+      "id": "OPJ8",
+      "job": "Edit an Operator task grants",
+      "entry": "Operator team",
+      "status": "observed-complete",
+      "navigations": 0,
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 1,
+      "trace": [
+        "open commercial test operator edit disclosure",
+        "select onboard task",
+        "fill reason and confirm",
+        "observe saved tasks"
+      ],
+      "success": "Onboard plus commercial tasks rendered after save",
+      "note": "Restored original commercial-only authority using normal edit with reason after measurement, audit retained; restoration excluded from metric."
+    }
+  ]
+}
