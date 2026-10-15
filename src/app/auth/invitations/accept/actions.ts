@@ -59,7 +59,7 @@ export async function acceptInvitationAction(formData: FormData) {
   const accepted = result as Record<string, unknown>;
   const tenantId = typeof accepted.tenant_id === 'string' ? accepted.tenant_id : '';
   if (!isUuid(tenantId)) redirect('/auth/invitations/accept?state=accept-failed');
-  redirect(`/tenant/${encodeURIComponent(tenantId)}`);
+  redirect(`/tenant/${encodeURIComponent(tenantId)}?state=joined-admin`);
 }
 
 function field(formData: FormData, name: string) { return String(formData.get(name) ?? '').trim(); }

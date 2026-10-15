@@ -13,6 +13,7 @@ import {
   halfDayLabel,
   isUuid,
   noticeForState,
+  nextLeaveSetup,
   payEffectLabel,
   periodRangeText,
   readConfiguration,
@@ -69,13 +70,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
   const state = typeof query.state === 'string' ? query.state : '';
   const notice = noticeForState(state);
   const calendarName = new Map(configuration.calendars.map((calendar) => [calendar.id, calendar.name]));
-  const nextSetup = !configuration.calendars.length
-    ? { path: 'calendars/new', label: 'تحديد أيام الراحة والعطلات', detail: 'ابدأ بتقويم الشركة، ثم حدد سنة الرصيد وأنواع الإجازات.' }
-    : !configuration.yearPeriods.length
-      ? { path: 'year-periods/new', label: 'تحديد سنة رصيد الإجازات', detail: 'التقويم محفوظ. حدد بداية سنة الرصيد ونهايتها.' }
-      : !configuration.types.length
-        ? { path: 'types/new', label: 'إضافة أول نوع إجازة', detail: 'حدد نوع الإجازة وأثره على الأجر ورصيد الموظف.' }
-        : null;
+  const nextSetup = nextLeaveSetup(configuration);
 
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}

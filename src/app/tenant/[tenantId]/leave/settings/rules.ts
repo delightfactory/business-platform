@@ -76,6 +76,13 @@ export type Configuration = {
   yearPeriods: YearPeriod[];
 };
 
+export function nextLeaveSetup(configuration: Configuration) {
+  if (!configuration.calendars.length) return { path: 'calendars/new', label: 'تحديد أيام الراحة والعطلات', detail: 'ابدأ بتقويم الشركة، ثم حدد سنة الرصيد وأنواع الإجازات.' };
+  if (!configuration.yearPeriods.length) return { path: 'year-periods/new', label: 'تحديد سنة رصيد الإجازات', detail: 'التقويم محفوظ. حدد بداية سنة الرصيد ونهايتها.' };
+  if (!configuration.types.length) return { path: 'types/new', label: 'إضافة أول نوع إجازة', detail: 'حدد نوع الإجازة وأثره على الأجر ورصيد الموظف.' };
+  return null;
+}
+
 export type CreateCalendarState = {
   code: string;
   name: string;

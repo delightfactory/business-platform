@@ -6,6 +6,8 @@ import { signOutAction } from '@/app/auth/actions';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { readToday, TodaySections } from './today';
+import { readCompanyReadiness } from './company-readiness';
+import { ReadinessList } from '@/components/patterns/readiness-list/ReadinessList';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,6 +49,7 @@ export default async function TenantPage({ params, searchParams }: {
     return (
       <main className="app-shell">
         {query.state === 'admin-demoted' && <FeedbackToast key={crypto.randomUUID()} message="تم خفض دورك إلى عضو. بقيت عضويتك فعالة ويمكنك متابعة استخدام مساحة الشركة." />}
+        {query.state === 'joined' && <FeedbackToast message={`انضممت إلى ${String(member.tenant_name ?? 'الشركة')}. صلاحيات عملك يحددها مسؤول الشركة.`} />}
         <Panel  aria-labelledby="tenant-title">
           <p className="eyebrow">{String(member.tenant_name ?? 'الشركة')}</p><PageHeader id="tenant-title" title={<>اليوم</>} />
           <p className="intro">ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
@@ -70,9 +73,12 @@ export default async function TenantPage({ params, searchParams }: {
     ? brandingData as Record<string, unknown> : null;
   const entity = objectValue(snapshot.default_legal_entity);
   const site = objectValue(snapshot.default_site);
+  const readiness = await readCompanyReadiness(supabase, tenantId, user.email ?? '', snapshot, today);
 
   return (
     <main className="app-shell">
+      {query.state === 'joined-admin' && <FeedbackToast message="انضممت إلى الشركة مسؤولًا. ابدأ من خطوات تجهيز الشركة المتاحة لك." />}
+      {query.state === 'joined' && <FeedbackToast message={`انضممت إلى ${String(snapshot.tenant_name ?? 'الشركة')}. صلاحيات عملك يحددها مسؤول الشركة.`} />}
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
           <p className="eyebrow"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></p>
@@ -80,7 +86,9 @@ export default async function TenantPage({ params, searchParams }: {
             <Badge className="is-active">{lifecycleText(snapshot.lifecycle_state)}</Badge></div>
           <p>ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
         </header>
-        <TodaySections model={today} />
+        <TodaySections model={today}>{readiness.length > 0 && <section className="tenant-home-summary" aria-labelledby="company-readiness-title">
+          <h2 id="company-readiness-title">تجهيز الشركة: الخطوات المتاحة لك</h2><ReadinessList items={readiness} />
+        </section>}</TodaySections>
         <section className="tenant-home-summary" aria-labelledby="tenant-summary-title">
           <h2 id="tenant-summary-title">لمحة عن إعداد الشركة</h2>
           <dl className="snapshot-grid">

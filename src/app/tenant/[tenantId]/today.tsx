@@ -1,15 +1,20 @@
-import { Message } from '@/components/ui';
+import { ButtonLink, Message } from '@/components/ui';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { TaskCard, type TaskPreview } from '@/components/patterns/task-card';
 import { Icon, type IconName } from '@/components/ui/icon';
 import { readWorkspaceRpc } from '@/lib/workspace-access';
 import type { createSupabaseServerClient } from '@/lib/supabase/server';
 import { readAccess, readCancellationQueue, readRequestQueue } from './leave/rules';
+import { readMobileSnapshot, type MobileSnapshot } from '@/lib/attendance-channel';
+import { MobilePunch } from './me/attendance/MobilePunch';
+import { terms } from '@/lib/terms';
 
 type Client = NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>;
 type ReadResult = { data: unknown; error: { code?: string } | null };
-type Entry = { title: string; detail: string; href: string; count?: number; more?: boolean; preview?: TaskPreview[] };
-export type TodayModel = { work: Entry[]; own: Entry[]; followUp: Entry[]; unavailable: string[]; date: string };
+type Entry = { title: string; detail: string; href: string; summary?: string; count?: number; more?: boolean; preview?: TaskPreview[] };
+export type TodayModel = { work: Entry[]; own: Entry[]; followUp: Entry[]; unavailable: string[]; date: string; tenantId: string; mobile: MobileSnapshot | null;
+  payrollSetup: { employerId: string; name: string; configured: boolean; canManage: boolean; enabled: boolean } | null };
 
 function object(value: unknown): Record<string, unknown> | null {
   return value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
@@ -18,7 +23,7 @@ function object(value: unknown): Record<string, unknown> | null {
 // Optional reads fail independently. Authentication/lifecycle/membership are checked by the parent.
 export async function readToday(client: Client, tenantId: string): Promise<TodayModel> {
   const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-  const model: TodayModel = { work: [], own: [], followUp: [], unavailable: [], date };
+  const model: TodayModel = { work: [], own: [], followUp: [], unavailable: [], date, tenantId, mobile: null, payrollSetup: null };
   const base = `/tenant/${tenantId}`;
   async function read(name: string, args: Record<string, unknown>): Promise<ReadResult> {
     try { return await client.rpc(name, args); }
@@ -50,6 +55,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
   const people = access(2, 'الموظفون');
   const employee = access(3, 'ملفي');
   const mobile = access(4, 'حضوري');
+  model.mobile = readMobileSnapshot(mobile);
   const channel = access(5, 'قنوات الحضور');
   const payroll = access(6, 'دورة الرواتب');
   const inputs = access(7, 'مدخلات الرواتب');
@@ -72,7 +78,7 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
     if (valid && Number(counts.overtime_pending) > 0) entries.push({ title: 'إضافي بانتظار القرار', detail: `${scope}. عناصر الإضافي: ${counts.overtime_pending}؛ قد تتداخل مع الاستثناءات.`, href: `${base}/attendance/review?date=${date}&filter=overtime`, count: Number(counts.overtime_pending) });
     entries.push({ title: 'تسجيلات بلا بيانات عمل', detail: 'قائمة مستقلة للتحقق من التسجيلات والأيام المحتملة؛ ليست ضمن عداد المراجعة.', href: `${base}/attendance/unassigned` });
   }
-  if (channel?.can_view === true) model.work.push({ title: 'طرق تسجيل الحضور والمواقع', detail: 'راجع طريقة تسجيل الحضور وموقع العمل والتسجيلات الواردة.', href: `${base}/attendance/sources` });
+  if (channel?.can_view === true) model.work.push({ title: terms.attendanceSources, detail: 'راجع طريقة تسجيل الحضور وموقع العمل والتسجيلات الواردة.', href: `${base}/attendance/sources` });
   if (leave?.canView) {
     const queue = requestResult && !requestResult.error ? readRequestQueue(requestResult.data) : null;
     const entries = leave.canApprove || leave.canManage ? model.work : model.followUp;
@@ -88,7 +94,23 @@ export async function readToday(client: Client, tenantId: string): Promise<Today
         preview: queue?.items.map(item => ({ label: item.employeeName, detail: 'طلب إلغاء إجازة', href: `${base}/leave/requests/${item.requestId}` })) });
     }
   }
-  if (payroll?.can_manage === true || payroll?.can_view === true || runs?.can_view === true) model.work.push({ title: 'الرواتب', detail: 'اختر الجهة والشهر في قسم الرواتب لعرض المبالغ وما يحتاج مراجعة.', href: payroll ? `${base}/payroll` : `${base}/payroll/runs` });
+  if (payroll?.can_manage === true || payroll?.can_view === true || runs?.can_view === true) {
+    const entry: Entry = { title: 'الرواتب', detail: 'اختر الجهة والشهر في قسم الرواتب لعرض المبالغ وما يحتاج مراجعة.', href: payroll ? `${base}/payroll` : `${base}/payroll/runs` };
+    if (payroll?.can_manage === true || payroll?.can_view === true) {
+      const employers = await read('payroll_employers', { p_tenant: tenantId, p_query: '', p_after_name: null, p_after_id: null, p_limit: 1 });
+      const employerId = !employers.error ? object(employers.data)?.unique_employer : null;
+      if (typeof employerId === 'string' && /^[0-9a-f-]{36}$/i.test(employerId)) {
+        const loaded = await read('payroll_workspace', { p_tenant: tenantId, p_employer: employerId, p_limit: 1 });
+        const calendar = !loaded.error ? object(loaded.data) : null, calendarAccess = object(calendar?.access);
+        if (calendar && Array.isArray(calendar.versions) && typeof calendar.employer_name === 'string' && calendarAccess) {
+          model.payrollSetup = { employerId, name: calendar.employer_name, configured: calendar.versions.length > 0, canManage: calendarAccess.can_manage === true, enabled: calendarAccess.enabled === true };
+          entry.href = `${base}/payroll?employer=${employerId}`;
+          entry.summary = calendar.versions.length ? `دورة رواتب ${calendar.employer_name} محفوظة. راجع الفترة وحالة المسير في مساحة الرواتب.` : `تحتاج ${calendar.employer_name} إلى إعداد دورة الرواتب قبل إنشاء الفترات.`;
+        } else model.unavailable.push('إعداد رواتب الجهة');
+      } else if (employers.error) model.unavailable.push('جهات الرواتب');
+    }
+    model.work.push(entry);
+  }
   if (inputs) model.work.push({ title: 'مدخلات الرواتب', detail: 'جهّز بيانات الرواتب للجهة والفترة المطلوبة.', href: `${base}/payroll/inputs` });
   if (navigation?.can_view_advances === true) model.followUp.push({ title: 'سلف الموظفين', detail: 'متابعة السلف والأرصدة في الصفحة المختصة.', href: `${base}/payroll/advances` });
   if (navigation?.can_view_reports === true) model.followUp.push({ title: 'تقارير الرواتب', detail: 'عرض التقرير المتاح لهذا الحساب دون تغيير أي مسير.', href: `${base}/payroll/reports?report=${navigation.report_kind === 'advances' ? 'advances' : 'sheet'}` });
@@ -105,15 +127,17 @@ function iconFor(entry: Entry): IconName {
   if (entry.href.includes('/people') || entry.href.endsWith('/me')) return 'users';
   return 'clock';
 }
-export function TodaySections({ model }: { model: TodayModel }) {
+export function TodaySections({ model, children }: { model: TodayModel; children?: ReactNode }) {
   const featured = model.work.filter(entry => ['مراجعة الحضور', 'طلبات الإجازة', 'الرواتب'].includes(entry.title));
   const otherWork = model.work.filter(entry => !featured.includes(entry));
   return <div className="today-sections">
     {featured.length > 0 && <section aria-labelledby="today-work-title"><h2 id="today-work-title" className="today-section-title">ما يحتاج انتباهك</h2>
-      <div className="today-work-grid">{featured.map(entry => <TaskCard key={entry.href} title={entry.title} description={entry.detail} href={entry.href} count={entry.count} more={entry.more} preview={entry.preview} icon={iconFor(entry)} scope={entry.href.includes('/attendance/review') ? model.date : undefined} action={entry.href.includes('/payroll') ? 'افتح مساحة الرواتب' : entry.href.includes('/leave') ? 'راجع الطلبات' : 'افتح المهمة'} />)}</div>
+      <div className="today-work-grid">{featured.map(entry => <TaskCard key={entry.href} title={entry.title} description={entry.detail} summary={entry.summary} href={entry.href} count={entry.count} more={entry.more} preview={entry.preview} icon={iconFor(entry)} scope={entry.href.includes('/attendance/review') ? model.date : undefined} action={entry.href.includes('/payroll') ? 'افتح مساحة الرواتب' : entry.href.includes('/leave') ? 'راجع الطلبات' : 'افتح المهمة'} />)}</div>
     </section>}
+    {model.mobile && <section aria-labelledby="today-own-attendance"><div className="today-own-heading"><h2 id="today-own-attendance">حضوري اليوم</h2><ButtonLink href={`/tenant/${model.tenantId}/me/attendance`} variant="ghost">الأيام السابقة</ButtonLink></div><MobilePunch tenantId={model.tenantId} snapshot={model.mobile} /></section>}
+    {children}
     <TodayList title="أكمل العمل" entries={otherWork} />
-    <TodayList title="خدماتي" entries={model.own} />
+    <TodayList title="خدماتي" entries={model.own.filter(entry => !model.mobile || !entry.href.endsWith('/me/attendance'))} />
     <TodayList title="عرض ومتابعة" entries={model.followUp} />
     {model.unavailable.length > 0 && <Message tone="info"  role="status">تعذر تحميل {model.unavailable.join('، ')}. يمكنك متابعة باقي الخدمات أو تحديث الصفحة.</Message>}
     {!model.work.length && !model.own.length && !model.followUp.length && <div className="empty-state"><Icon name="info" size={28} /><h2>{model.unavailable.length ? 'الخدمات غير متاحة الآن' : 'مساحتك جاهزة'}</h2><p>{model.unavailable.length ? 'حدّث الصفحة لإعادة المحاولة.' : 'راجع مسؤول الشركة لإتاحة خدمات العمل لحسابك.'}</p></div>}

@@ -44,7 +44,7 @@ export async function acceptMemberInvitationAction(formData: FormData) {
   const result = data as Record<string, unknown>;
   const tenantId = typeof result.tenant_id === 'string' ? result.tenant_id : '';
   if (!isUuid(tenantId)) go(id, issuance, 'unavailable');
-  redirect(`/tenant/${tenantId}`);
+  redirect(`/tenant/${tenantId}?state=joined`);
 }
 
 function field(formData: FormData, name: string) { return String(formData.get(name) ?? '').trim(); }
