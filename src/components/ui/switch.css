@@ -1,0 +1,41 @@
+.ui-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-inline-size: 58px;
+  min-block-size: 44px;
+  padding: 4px;
+  border: 0;
+  border-radius: var(--r-ctl);
+  background: transparent;
+  color: var(--brand-text);
+  cursor: pointer;
+}
+.ui-switch-track {
+  position: relative;
+  display: block;
+  inline-size: 46px;
+  block-size: 28px;
+  border: 1px solid var(--line-2);
+  border-radius: 20px;
+  background: var(--surface-3);
+}
+.ui-switch-thumb {
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  display: grid;
+  place-items: center;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--sh-1);
+  transition: inset-inline-start .15s ease;
+}
+.ui-switch[aria-checked="true"] .ui-switch-track { background: var(--brand); border-color: var(--brand); }
+.ui-switch[aria-checked="true"] .ui-switch-thumb { inset-inline-start: 21px; background: var(--brand-ink); }
+.ui-switch:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.ui-switch:disabled { cursor: not-allowed; opacity: .65; }
+@media (prefers-reduced-motion: reduce) { .ui-switch-thumb { transition: none; } }

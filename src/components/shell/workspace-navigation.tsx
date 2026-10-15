@@ -58,9 +58,12 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
   const groupedHrefs = new Set(areas.flatMap(area => area.links.map(item => item.href)));
   const ownLinks = businessLinks.filter(item => !groupedHrefs.has(item.href));
   const managementLinks = links.filter(item => !groupedHrefs.has(item.href));
+  const showMoreMenu = mode === 'tenant' || ownLinks.length > 0 || managementLinks.length > 0;
   const allLinks = [{ href: homeHref, label: mode === 'tenant' ? 'اليوم' : 'نظرة عامة' }, ...businessLinks, ...links];
   const active = allLinks.filter(item => matchesDestination(pathname, item.href)).sort((a,b) => b.href.length-a.href.length)[0];
   const activeArea = areas.find(area => area.links.some(item => matchesDestination(pathname, item.href)))
+    ?? (mode === 'operator' && /^\/operator\/(tenants|commercial|entitlements)(?:\/|$)/.test(pathname)
+      ? areas.find(area => area.key === 'companies') : undefined)
     ?? (managementLinks.some(item => matchesDestination(pathname, item.href)) ? {
       key: 'management', label: mode === 'operator' ? 'إدارة المنصة' : 'إعدادات الشركة',
       icon: 'settings' as IconName, destination: managementLinks[0], links: managementLinks,
@@ -103,7 +106,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
     <header className="workspace-topbar">
       <Link className="workspace-identity" href={homeHref} aria-label={`${homeLabel}، الرئيسية`}>{identity}</Link>
       <nav className="workspace-primary-nav" aria-label="التنقل الرئيسي">{areas.map(areaLink)}
-        <button type="button" onClick={showMore} aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name={'more'} size={20} /><span>المزيد</span></button>
+        {showMoreMenu && <button type="button" onClick={showMore} aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name={'more'} size={20} /><span>المزيد</span></button>}
       </nav>
       <DropdownMenu.Root><DropdownMenu.Trigger className="workspace-account-trigger" aria-label="الحساب والمظهر">
         <span className="workspace-account-avatar" aria-hidden="true"><Icon name={'user'} size={20} /></span><span className="workspace-account-caption">حسابي</span>
@@ -120,7 +123,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
       {localLinks.map(item => <NavLink key={item.href} item={item} current={active?.href === item.href} />)}
     </nav>}
     <nav className="workspace-bottom-tabs" aria-label="التنقل السريع">{areas.map(areaLink)}
-      <button type="button" onClick={showMore} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name={'more'} size={22} /><span>المزيد</span></button>
+      {showMoreMenu && <button type="button" onClick={showMore} aria-label="عرض كل الأقسام" aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name={'more'} size={22} /><span>المزيد</span></button>}
     </nav>
     <dialog ref={dialog} id={id} className="workspace-more-dialog" aria-label="كل أقسام مساحة العمل" onClose={closed} onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
       <div className="workspace-dialog-heading"><h2>أقسام مساحة العمل</h2><button type="button" onClick={() => dialog.current?.close()} aria-label="إغلاق القائمة">×</button></div>

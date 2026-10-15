@@ -9,9 +9,10 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
     if (links.length) areas.push({ key, label, icon, destination: links[0], links });
   };
   if (mode === 'operator') {
-    add('companies', 'الشركات', 'building', admin.filter(item => /\/tenants(?:\/|$)/.test(item.href)));
-    add('onboarding', 'إعداد الشركات', 'users', admin.filter(item => /\/(onboarding|invitations)(?:\/|$)/.test(item.href)));
-    add('commercial', 'الاشتراكات', 'wallet', admin.filter(item => /\/(commercial|entitlements)(?:\/|$)/.test(item.href)));
+    add('companies', 'الشركات', 'building', admin.filter(item => /\/(companies|tenants|commercial|entitlements)(?:\/|$)/.test(item.href)));
+    add('invitations', 'الدعوات', 'mail', admin.filter(item => /\/(onboarding|invitations)(?:\/|$)/.test(item.href)));
+    add('team', 'فريق التشغيل', 'users', admin.filter(item => /\/(team|operators)(?:\/|$)/.test(item.href)));
+    add('statutory', 'قواعد الرواتب', 'shield', admin.filter(item => /\/statutory(?:\/|$)/.test(item.href)));
   } else {
     const team = business.some(item => /\/(people|attendance|leave|payroll)(?:\/|\?|$)/.test(item.href) && !item.href.includes('/me/'));
     if (team) {

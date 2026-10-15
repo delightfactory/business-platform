@@ -2,13 +2,20 @@
 
 import { useState } from 'react';
 import { ThemePreferenceControl } from '@/components/theme-preference';
+import { Switch } from '@/components/ui/switch';
 import { Panel, RecordCard, Message, DataTable, Checkbox, Radio, FileInput, Avatar, Badge, Banner, Button, Card, DateInput, Disclosure, EmptyState, FactList, Field, IconButton, Input, KeyValueStrip, PageHeader, SegmentedControl, Select, Sheet, Skeleton, StatusBadge, Textarea, TimeInput, Toast, type Tone } from '@/components/ui';
 
 const tones: Tone[] = ['neutral', 'ok', 'warn', 'bad', 'info', 'brand'];
 export function Gallery() {
   const [segment, setSegment] = useState('all');
   const [toast, setToast] = useState(false);
+  const [serviceAvailable, setServiceAvailable] = useState(true);
   return <main className="ui-gallery"><PageHeader title="مكتبة الواجهة" description="معرض تطوير للمكونات وحالاتها؛ لا يحتوي بيانات تشغيل." action={<ThemePreferenceControl />} /><div className="ui-gallery-grid">
+    <Card><h2>إتاحة الخدمات</h2><div className="ui-gallery-stack">
+      <div className="ui-gallery-row"><span>خدمة تجريبية</span><Switch label="خدمة تجريبية" checked={serviceAvailable} onCheckedChange={setServiceAvailable} /><span role="status">{serviceAvailable ? 'ممنوحة' : 'غير ممنوحة'}</span></div>
+      <div className="ui-gallery-row"><span>جارٍ حفظ التغيير</span><Switch label="خدمة قيد الحفظ" checked pending onCheckedChange={() => {}} /></div>
+      <div className="ui-gallery-row"><span>للعرض فقط</span><Switch label="خدمة للعرض فقط" checked={false} disabled onCheckedChange={() => {}} /></div>
+    </div></Card>
     <Card><h2>الإجراءات</h2><div className="ui-gallery-stack"><div className="ui-gallery-row"><Button icon="plus">إجراء أساسي</Button><Button variant="ghost">إجراء ثانوي</Button><Button variant="danger">حذف</Button></div><div className="ui-gallery-row"><Button size="lg">إجراء كبير</Button><Button disabled>غير متاح</Button><Button pending pendingLabel="جارٍ الحفظ…">حفظ</Button><IconButton icon="search" aria-label="بحث" /></div></div></Card>
     <Card><h2>الحقول</h2><div className="ui-gallery-stack"><Field id="gallery-name" label="الاسم" hint="اكتب الاسم كما سيظهر في القائمة."><Input id="gallery-name" aria-describedby="gallery-name-hint" placeholder="اسم العرض" /></Field><Field id="gallery-error" label="رمز" error="أدخل رمزًا صحيحًا."><Input id="gallery-error" error aria-describedby="gallery-error-error" defaultValue="?" /></Field><Field id="gallery-disabled" label="حقل قراءة"><Input id="gallery-disabled" disabled defaultValue="قراءة فقط" /></Field><Field id="gallery-select" label="الخيار"><Select id="gallery-select"><option>اختر</option><option>الخيار الأول</option></Select></Field><Field id="gallery-note" label="ملاحظة"><Textarea id="gallery-note" /></Field><Field id="gallery-date" label="التاريخ"><DateInput id="gallery-date" /></Field><Field id="gallery-time" label="الوقت"><TimeInput id="gallery-time" /></Field></div></Card>
     <Card><h2>الحالات والهوية</h2><div className="ui-gallery-stack"><div className="ui-gallery-row">{tones.map(tone => <Badge key={tone} tone={tone}>{tone}</Badge>)}</div><StatusBadge label="بانتظار المراجعة" tone="warn" /><div className="ui-gallery-row">{tones.map(tone => <Avatar key={tone} name="مستخدم تجريبي" size={48} status={tone} />)}</div><SegmentedControl label="فلتر المعرض" value={segment} onChange={setSegment} options={[{value:'all',label:'الكل'},{value:'pending',label:'المعلق',count:3},{value:'done',label:'المكتمل'},{value:'disabled',label:'معطل',disabled:true}]} /></div></Card>

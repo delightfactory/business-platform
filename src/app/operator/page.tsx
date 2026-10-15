@@ -2,10 +2,9 @@ import { PageHeader, Panel } from '@/components/ui';
 import { Message } from '@/components/ui';
 import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
-import { operatorPermission } from '@/lib/operator-access';
+import { readOperatorAuthority } from '@/lib/operator-authority';
 import { redirect } from 'next/navigation';
 import { signOutAction } from '@/app/auth/actions';
-import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,28 +12,14 @@ type SearchParams = Promise<{ state?: string }>;
 
 export default async function OperatorPage({ searchParams }: { searchParams: SearchParams }) {
   const query = await searchParams;
-  const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بالمنصة. اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
-  const { data: { user }, error: userError } = await getWorkspaceUser(supabase);
-  if (!user) redirect('/auth/login?state=no-session');
-  if (userError) return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
-  const { data: operatorStatus, error: statusError } = await supabase.rpc('current_platform_operator_status');
-  if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
-  if (operatorStatus !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مسؤول تشغيل المنصة النشطة." />;
-
-  const [{ data: manage, error: manageError }, { data: onboard, error: onboardError }, { data: lifecycle, error: lifecycleError }, { data: commercial, error: commercialError }, { data: statutory, error: statutoryError }] = await Promise.all([
-    supabase.rpc('current_operator_can_manage_operators').then(result => result, (error: unknown) => ({ data: null, error })),
-    supabase.rpc('current_operator_can_onboard_tenants').then(result => result, (error: unknown) => ({ data: null, error })),
-    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
-    supabase.rpc('current_operator_can_manage_commercial_access').then(result => result, (error: unknown) => ({ data: null, error })),
-    supabase.rpc('current_operator_can_manage_statutory_rules').then(result => result, (error: unknown) => ({ data: null, error })),
-  ]);
-  const partialRead = Boolean(manageError || onboardError || lifecycleError || commercialError || statutoryError);
-  const canManage = operatorPermission({ data: manage, error: manageError });
-  const canOnboard = operatorPermission({ data: onboard, error: onboardError });
-  const canManageLifecycle = operatorPermission({ data: lifecycle, error: lifecycleError });
-  const canManageCommercial = operatorPermission({ data: commercial, error: commercialError });
-  const canManageStatutory = operatorPermission({ data: statutory, error: statutoryError });
+  const authority = await readOperatorAuthority();
+  if (authority.session === 'unconfigured') return <Status title="إعداد الاتصال غير مكتمل" detail="تعذر الاتصال بالمنصة. اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
+  if (authority.session === 'signed-out') redirect('/auth/login?state=no-session');
+  if (authority.session === 'unavailable') return <Status title="تعذر التحقق من الجلسة" detail="حاول تسجيل الدخول مرة أخرى." />;
+  if (!authority.active && authority.partial) return <Status title="تعذر التحقق من الصلاحية" detail="تعذر التحقق من صلاحية تشغيل المنصة. حاول لاحقًا." />;
+  if (!authority.active) return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب لا يملك صلاحية مسؤول تشغيل المنصة النشطة." />;
+  const { manage: canManage, onboard: canOnboard, lifecycle: canManageLifecycle, commercial: canManageCommercial,
+    statutory: canManageStatutory, partial: partialRead } = authority;
 
   return (
     <main className="app-shell">
@@ -46,6 +31,11 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           <PageHeader id="operator-title" title={<>تشغيل المنصة</>} />
           <p>اختر المهمة التي تريد إنجازها. تظهر هنا الأعمال المسموحة لحسابك فقط.</p>
         </header>
+
+        {(canManageLifecycle || canManageCommercial) && <form action="/operator/companies" method="get" role="search" className="workspace-form-panel">
+          <label htmlFor="operator-company-search">ابحث عن شركة</label>
+          <div className="topbar-actions"><input className="ui-input" id="operator-company-search" name="q" type="search" maxLength={120} placeholder="اسم الشركة" /><Button type="submit" icon="search">بحث</Button></div>
+        </form>}
 
         {canOnboard && <section className="operator-featured-task" aria-labelledby="new-company-title">
           <div>
@@ -61,9 +51,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <div className="operator-group-heading"><p className="eyebrow">الشركات</p><h2 id="company-operations-title">إدارة الشركات</h2></div>
             <ul className="operator-work-list">
               {canOnboard && <TaskLink href="/operator/onboarding" title="إعداد شركة بحساب موجود" detail="أنشئ شركة لمسؤول لديه حساب مؤكد بالفعل." />}
-              {canManageLifecycle && <TaskLink href="/operator/tenants" title="حالة الشركات" detail="علّق الوصول أو استعده مع تسجيل السبب." />}
-              {canManageCommercial && <TaskLink href="/operator/commercial" title="حدود الاستخدام" detail="راجع عدد المستخدمين والفروع واضبط الحدود." />}
-              {canManageCommercial && <TaskLink href="/operator/entitlements" title="خدمات الشركة" detail="فعّل خدمات الشركة أو أوقفها حسب صلاحيتك." />}
+              {(canManageLifecycle || canManageCommercial) && <TaskLink href="/operator/companies" title="الشركات" detail="ابحث عن الشركة ثم تابع خدماتها وحدودها وحالتها حسب صلاحيتك." />}
             </ul>
           </section>}
           {canManage && <section className="operator-work-group" aria-labelledby="access-operations-title">

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { operatorPermission } from '@/lib/operator-access';
+import { readOperatorAuthority } from '@/lib/operator-authority';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { ContextNavigationClient, type ContextLink } from './context-navigation-client';
 
@@ -30,30 +30,16 @@ export function ContextNavigation({
 }
 
 export async function OperatorNavigation() {
-  const supabase = await createSupabaseServerClient();
+  const authority = await readOperatorAuthority();
   const links: ContextLink[] = [];
-  if (supabase) {
-    const { data: { user } } = await getWorkspaceUser(supabase);
-    if (user) {
-      const [operator, onboarding, lifecycle, commercial, statutory] = await Promise.all([
-        supabase.rpc('current_operator_can_manage_operators'),
-        supabase.rpc('current_operator_can_onboard_tenants'),
-        supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
-        supabase.rpc('current_operator_can_manage_commercial_access'),
-        supabase.rpc('current_operator_can_manage_statutory_rules'),
-      ]);
-      if (operatorPermission(lifecycle)) links.push({ href: '/operator/tenants', label: 'الشركات' });
-      if (operatorPermission(onboarding)) {
-        links.push({ href: '/operator/invitations', label: 'دعوات الشركات' });
-        links.push({ href: '/operator/onboarding', label: 'إعداد شركة' });
-      }
-      if (operatorPermission(commercial)) {
-        links.push({ href: '/operator/commercial', label: 'حدود الاشتراك' });
-        links.push({ href: '/operator/entitlements', label: 'خدمات الشركات' });
-      }
-      if (operatorPermission(operator)) links.push({ href: '/operator/operators', label: 'المشغّلون' });
-      if (operatorPermission(statutory)) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
+  if (authority.active) {
+    if (authority.lifecycle || authority.commercial) links.push({ href: '/operator/companies', label: 'الشركات' });
+    if (authority.onboard) {
+      links.push({ href: '/operator/invitations', label: 'الدعوات' });
+      links.push({ href: '/operator/onboarding', label: 'إعداد شركة بحساب موجود' });
     }
+    if (authority.manage) links.push({ href: '/operator/operators', label: 'فريق التشغيل' });
+    if (authority.statutory) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
   }
   return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;
 }
