@@ -66,4 +66,4 @@ function mapError(message: string) {
   if (message.includes('platform_operator_action_invalid') || message.includes('platform_operator_email_invalid')) return 'invalid';
   return 'failed';
 }
-function go(state: string): never { redirect(`/operator/operators?state=${encodeURIComponent(state)}`); }
+function go(state: string): never { redirect(`/operator/team?state=${encodeURIComponent(state)}`); }

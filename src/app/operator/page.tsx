@@ -56,7 +56,7 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
           </section>}
           {canManage && <section className="operator-work-group" aria-labelledby="access-operations-title">
             <div className="operator-group-heading"><p className="eyebrow">الفريق</p><h2 id="access-operations-title">صلاحيات التشغيل</h2></div>
-            <ul className="operator-work-list"><TaskLink href="/operator/operators" title="مشغّلو المنصة" detail="امنح مهام التشغيل أو عدّلها أو ألغها." /></ul>
+            <ul className="operator-work-list"><TaskLink href="/operator/team" title="فريق التشغيل" detail="امنح مهام التشغيل أو عدّلها أو ألغها." /></ul>
           </section>}
         </div>
         {canManageStatutory && <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد القانونية للرواتب</h2><ul className="operator-work-list"><TaskLink href="/operator/statutory" title="مسودات القواعد ومراجعها" detail="احفظ النسخ المؤرخة وراجع سجل تعديلاتها؛ الحفظ لا يعتمدها لحساب الرواتب." /></ul></section>}

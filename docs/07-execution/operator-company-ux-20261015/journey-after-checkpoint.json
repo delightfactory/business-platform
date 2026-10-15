@@ -1,5 +1,5 @@
 {
-  "source": "D3 plus D4 source checkpoints; see stage documents for source revisions and measurement limits",
+  "source": "D3-D5 source checkpoints; exact source identity in stage journals and Git history",
   "environment": "owned synthetic QA, manager with all five Operator tasks",
   "policy": "One representative after run per measured journey; separate duration, failure and permission probes are not included in the journey metrics.",
   "journeys": [
@@ -96,11 +96,23 @@
         "follow-up receipt"
       ],
       "success": "Pending invitation, company not created, provider accepted"
+    },
+    {
+      "id": "OPJ8",
+      "status": "observed-complete",
+      "viewport": "1366x900",
+      "navigations": 0,
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 1,
+      "trace": [
+        "open commercial fixture task editor",
+        "select onboarding",
+        "reason and save"
+      ],
+      "success": "Added task rendered in authoritative current list; original fixture restored with audit"
     }
   ],
-  "remainingAfterMeasurements": [
-    "OPJ8 Operator task edit"
-  ],
+  "remainingAfterMeasurements": [],
   "additionalEvidence": {
     "finiteDuration": "Attendance through3 November2026 survived ordinary OFF/ON",
     "unknownResponse": "One blocked POST, one failure, no automatic second POST; five switches locked until explicit read. Network block removed and instrumentation disabled.",

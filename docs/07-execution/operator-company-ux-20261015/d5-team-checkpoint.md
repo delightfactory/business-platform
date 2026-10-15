@@ -1,0 +1,18 @@
+# D5 Operator team checkpoint
+
+The canonical /operator/team workspace replaces /operator/operators, which preserves state on redirect. Home and navigation use the canonical route. Shared request-local authority determines M access; the existing grant-list DTO fails closed. Team cards show current email, self badge, active/revoked state, sign-in readiness and correctly scoped tasks. Add, edit, regrant and revoke open a focused Sheet with explicit target identity. Task selection has a one-line scope description and a live added/removed preview. Self-change warns about losing M; self-revocation warns about ending the local session. Reason remains mandatory (3..500 characters).
+
+The existing authoritative mutation RPC, receipt validation, last-manager guard and self-redirect/sign-out branches are unchanged. Only its ordinary success route now points to /operator/team. Controls lock during dispatch; unknown outcomes lock the entire workspace until deliberate full-page read. No silent retry occurs. Read links use actual page reads rather than a same-URL client transition. A changed authoritative grant snapshot remounts the workspace after a successful redirect, closing the completed editor; this was corrected after real QA showed Next retaining the open Sheet across query navigation.
+
+## Real isolated qualification
+
+- OPJ8 at1366x900: open the original commercial fixture, add onboarding, enter reason, save. Three activations and one required manual field, matching before3/1. Improvement is clearer scope/difference/confirmation, not a claimed reduction in this security-sensitive journey. Confirmed cards showed both tasks. Original commercial-only authority was restored through normal UI with an audit reason.
+- Actual team-only login: remove own M and add C, save with reason. Redirected to /operator?state=updated-self, company tasks available, team link absent. Manager restored original team-only fixture via the normal authorized RPC, retaining history.
+- Same team-only account: confirmed self-revocation, redirected to login with operator-revoked message and ended local session. Manager regranted original team-only authority via normal RPC; full manager login restored.
+- Latest database authority RPC tested in one transaction: after removing the other manager, final recoverable manager removal rejected23514/platform_operator_last_manager. Unconfirmed target update rejected22023/platform_operator_target_unavailable. Entire transaction, including temporary Auth state and audit, rolled back.
+- One blocked team action POST produced one request and one failure. Form locked and reported unknown; no second POST. Blocking removed, Network instrumentation disabled and raw events discarded. Explicit read returned commercial-only state and usable controls.
+- Mobile390 Sheet inspected: checkbox scopes, diff, reason and actions remain in the scrollable panel. Document width375 with viewport390 (scrollbar), no horizontal overflow. Desktop1366 and mobile390 representative screenshots retained externally; temporary viewport reset. Mobile preview canceled without mutation.
+
+Addition/regrant share the same task editor and existing authoritative action; regrant was exercised through the actual RPC during fixture restoration, not claimed as a browser add-flow test. Full independent acceptance and remaining D6 statutory scope are open. No company-user workspace redesign has begun.
+
+Final TypeScript, focused lint and coherent build are logged externally before this slice commit. No new backend contract or test framework was introduced. Active dependencies and QA remain outside OneDrive for the continuing goal; two representative images retained, no reclaimed-byte claim.
