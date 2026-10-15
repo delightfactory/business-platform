@@ -35,6 +35,7 @@ export default async function InviteMemberPage({ params, searchParams }: { param
       <div className="workspace-page-summary"><strong>المستخدمون النشطون: {limit?.mode === 'unlimited' ? `${used} · بلا حد أقصى` : `${used} من ${String(limit?.value ?? 'غير متاح')}`}</strong>
         <span>لا يُحجز مقعد قبل قبول الدعوة.</span></div>
       <section className="workspace-form-panel" aria-label="بيانات الدعوة">
+        {employeeId && <p className="field-hint">بعد قبول الدعوة اربط الحساب من ملف الموظف؛ الدعوة لا تربطه تلقائيًا.</p>}
         <InviteMemberForm tenantId={tenantId} employeeId={employeeId} idempotencyKey={crypto.randomUUID()} />
       </section>
     </div>

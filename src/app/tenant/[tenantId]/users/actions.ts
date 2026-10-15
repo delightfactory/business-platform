@@ -26,7 +26,7 @@ export async function inviteMemberFormAction(previous: InviteMemberState, formDa
   if (invitation.created !== true) return failure(invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
   const sent = await deliverMemberInvitation(supabase, invitation);
   redirect(isUuid(employeeId) ? `/tenant/${tenantId}/people/${employeeId}?userLink=${sent === 'sent' ? 'invite-sent' : sent === 'failed' ? 'invite-failed' : 'invite-unknown'}`
-    : `/tenant/${tenantId}/users?state=created-${sent}`);
+    : `/tenant/${tenantId}/users?${new URLSearchParams({ state: `created-${sent}`, view: 'invitations', invitation: String(invitation.id), q: email.slice(0, 120) })}`);
 }
 
 export async function inviteMemberAction(formData: FormData) {
@@ -44,20 +44,21 @@ export async function inviteMemberAction(formData: FormData) {
   if (invitation.state === 'already_member') go(tenantId, 'already-member');
   if (invitation.created !== true) go(tenantId, invitation.state === 'pending_exists' ? 'pending-exists' : 'existing');
   const sent = await deliverMemberInvitation(supabase, invitation);
-  go(tenantId, `created-${sent}`);
+  go(tenantId, `created-${sent}`, String(invitation.id), email);
 }
 
 export async function reissueMemberInvitationAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
   const invitationId = field(formData, 'invitationId');
+  const email = field(formData, 'invitationEmail');
   if (!isUuid(tenantId) || !isUuid(invitationId)) go(tenantId, 'invalid');
   const supabase = await createSupabaseServerClient();
   if (!supabase) go(tenantId, 'setup');
   const { data, error } = await supabase.rpc('reissue_tenant_member_invitation', { p_invitation_id: invitationId });
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message), invitationId, email);
   const invitation = data as Record<string, unknown>;
-  if (invitation.created !== true) go(tenantId, invitation.state === 'expired' ? 'expired' : 'terminal');
-  go(tenantId, `reissued-${await deliverMemberInvitation(supabase, invitation)}`);
+  if (invitation.created !== true) go(tenantId, invitation.state === 'expired' ? 'expired' : 'terminal', invitationId, email);
+  go(tenantId, `reissued-${await deliverMemberInvitation(supabase, invitation)}`, invitationId, email);
 }
 
 export async function revokeMemberInvitationAction(formData: FormData) {
@@ -67,7 +68,7 @@ export async function revokeMemberInvitationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) go(tenantId, 'setup');
   const { data, error } = await supabase.rpc('revoke_tenant_member_invitation', { p_invitation_id: invitationId });
-  go(tenantId, error ? mapError(error.message) : data === true ? 'revoked' : data === false ? 'revoke-unchanged' : 'revoke-unknown');
+  go(tenantId, error ? mapError(error.message) : data === true ? 'revoked' : data === false ? 'revoke-unchanged' : 'revoke-unknown', invitationId, field(formData, 'invitationEmail'));
 }
 
 export async function setMemberAccessAction(formData: FormData) {
@@ -88,6 +89,7 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   const userId = field(formData, 'userId');
   const bundleKeys = formData.getAll('bundleKey').map((value) => String(value));
   const expectedBundleKeys = formData.getAll('expectedBundleKey').map(String);
+  const finish = (state: string): never => redirect(`/tenant/${tenantId}/users?${new URLSearchParams({ state, member: userId, q: field(formData, 'memberEmail').slice(0, 120) })}`);
   if (!isUuid(tenantId) || !isUuid(userId)
     || bundleKeys.length > PEOPLE_ROLE_BUNDLES.length || expectedBundleKeys.length > PEOPLE_ROLE_BUNDLES.length
     || [...bundleKeys, ...expectedBundleKeys].some(key => !bundleKeySet.has(key))
@@ -97,10 +99,10 @@ export async function setTenantMemberPeopleBundlesAction(formData: FormData) {
   const { data, error } = await supabase.rpc('set_tenant_member_people_bundles', {
     p_tenant_id: tenantId, p_user_id: userId, p_bundle_keys: bundleKeys, p_expected_bundle_keys: expectedBundleKeys,
   });
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) go(tenantId, mapError(error?.message));
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) finish(mapError(error?.message));
   const state = (data as Record<string, unknown>).state;
   if (state === 'updated' || state === 'unchanged') refresh();
-  go(tenantId, state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
+  finish(state === 'updated' ? 'bundles-updated' : state === 'unchanged' ? 'bundles-unchanged' : 'failed');
 }
 
 export async function setProtectedAdminLeaveSelfAccessAction(formData: FormData) {
@@ -142,6 +144,12 @@ export async function changeTenantAdminRoleAction(formData: FormData) {
 }
 
 async function deliverMemberInvitation(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
+  invitation: Record<string, unknown>): Promise<'sent' | 'failed' | 'unknown'> {
+  try { return await attemptMemberInvitationDelivery(supabase, invitation); }
+  catch { return 'unknown'; }
+}
+
+async function attemptMemberInvitationDelivery(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
   invitation: Record<string, unknown>): Promise<'sent' | 'failed' | 'unknown'> {
   const admin = createSupabaseAdminClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -225,6 +233,8 @@ function inviteErrorText(code: string) {
   };
   return messages[code] ?? 'تعذر إرسال الدعوة. أعد المحاولة.';
 }
-function go(tenantId: string, state: string): never {
-  redirect(isUuid(tenantId) ? `/tenant/${tenantId}/users?state=${encodeURIComponent(state)}` : '/auth/login?state=invalid');
+function go(tenantId: string, state: string, invitationId?: string, email = ''): never {
+  const params = new URLSearchParams({ state });
+  if (isUuid(invitationId)) { params.set('view', 'invitations'); params.set('invitation', invitationId); if (email) params.set('q', email.slice(0, 120)); }
+  redirect(isUuid(tenantId) ? `/tenant/${tenantId}/users?${params}` : '/auth/login?state=invalid');
 }

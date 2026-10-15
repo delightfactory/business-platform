@@ -1,6 +1,6 @@
 import { PEOPLE_ROLE_BUNDLES } from './bundles';
 import { PageHeader, Badge, Disclosure, HelpNote } from '@/components/ui';
-import { Message, Panel, Checkbox } from '@/components/ui';
+import { Message, Panel, Sheet } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -9,12 +9,13 @@ import { redirect } from 'next/navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
-import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setTenantMemberPeopleBundlesAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
+import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
+import { MemberAccessSheet } from './MemberAccessSheet';
 
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
-type SearchParams = Promise<{ state?: string; view?: string; page?: string; q?: string }>;
+type SearchParams = Promise<{ state?: string; view?: string; page?: string; q?: string; member?: string; invitation?: string }>;
 type RoleAssignment = { role_key: string; role_version: number };
 type Row = { user_id: string; email: string; access_state: string; role_key: string | null; roles: RoleAssignment[]; protected_admin: boolean };
 type Invitation = { id: string; target_email: string; lifecycle_state: string; delivery_state: string; issuance: number; expires_at: string };
@@ -30,19 +31,19 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const page = /^[1-9]\d{0,5}$/.test(query.page ?? '') ? Math.min(Number(query.page), 100000) : 1;
   const search = (query.q ?? '').trim().slice(0, 120);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return <Status title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
+  if (!supabase) return <Status tenantId={tenantId} title="تعذر الاتصال بخدمة الحسابات" detail="حاول مرة أخرى لاحقًا. إذا استمرت المشكلة، تواصل مع دعم المنصة." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users`)}`);
   const { data, error } = await supabase.rpc('tenant_member_access_page', {
     p_tenant_id: tenantId, p_view: view, p_page: page, p_query: search,
   });
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل المستخدمين" detail="أعد تحميل الصفحة. لم تتغير أي عضوية." />;
+  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status tenantId={tenantId} title="تعذر تحميل المستخدمين" detail="تعذر قراءة الحالة الحالية. أعد تحميل الصفحة قبل تنفيذ أي إجراء جديد." />;
   const [{ data: snapshot, error: snapshotError }, { data: peopleSetupAccess, error: peopleSetupError }, { data: canManageRoles }] = await Promise.all([
     readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id'),
     readWorkspaceRpc(supabase, 'people_access_snapshot', tenantId, 'p_tenant_id'),
     supabase.rpc('tenant_admin_role_governance_available', { p_tenant_id: tenantId }),
   ]);
-  if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
+  if (snapshotError || !snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return <Status tenantId={tenantId} title="المساحة غير متاحة" detail="تعذر قراءة هذه الشركة." />;
   const canOpenPeopleSetup = !peopleSetupError && Boolean(peopleSetupAccess);
   const result = data as Record<string, unknown>;
   const memberships = view === 'members' && Array.isArray(result.rows) ? result.rows as Row[] : [];
@@ -54,7 +55,10 @@ export default async function TenantUsersPage({ params, searchParams }: { params
   const limit = objectValue(result.seat_limit);
   const used = Number(result.seat_usage ?? 0);
 
-  const success = successMessage(query.state);
+  const savedMember = memberships.find(row => row.user_id === query.member);
+  const success = savedMember && ['bundles-updated', 'bundles-unchanged'].includes(query.state ?? '')
+    ? `الصلاحيات المحفوظة الآن: ${assignedBundleLabels(savedMember.roles).length}.`
+    : successMessage(query.state);
   const reviewMessage = invitationReviewMessage(query.state);
   const deliveryIssue = query.state && ['created-failed', 'created-unknown', 'reissued-failed', 'reissued-unknown'].includes(query.state)
     ? stateMessage(query.state) : null;
@@ -94,39 +98,23 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
-                {assignedBundleLabels(row.roles).length ? <Disclosure summary={`صلاحيات العمل: ${assignedBundleLabels(row.roles).length} — عرض القائمة`}>
+                <p>صلاحيات العمل: <strong>{assignedBundleLabels(row.roles).length}</strong></p>
+                {row.access_state !== 'active' && assignedBundleLabels(row.roles).length > 0 && <Disclosure summary="عرض الصلاحيات المحفوظة">
                   <ul>{assignedBundleLabels(row.roles).map(label => <li key={label}>{label}</li>)}</ul>
-                </Disclosure> : <p>لم تُضف صلاحيات عمل بعد</p>}
-                <p>الحضور الشخصي: {hasBundle(row.roles, 'employee.attendance.self.v1') ? 'الصلاحية مضافة' : 'الصلاحية غير مضافة'}</p>
-                {hasBundle(row.roles, 'employee.attendance.self.v1') && <p className="field-hint">يلزم ربط حساب الموظف وإعداد الحضور في موقعه قبل التسجيل.</p>}
+                </Disclosure>}
+                {PEOPLE_ROLE_BUNDLES.some(bundle => bundle.financial && hasBundle(row.roles, bundle.key)) && <Badge tone="warn">سلطة مالية</Badge>}
                 {row.protected_admin && <HelpNote label="عن صلاحيات مسؤول الشركة"><p>صلاحيات الموظفين والرواتب تُختار من «تعديل صلاحيات المستخدم». إضافتها أو إزالتها لا تغيّر دور مسؤول الشركة.</p></HelpNote>}
-                {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
-                  <input type="hidden" name="tenantId" value={tenantId} />
-                  <input type="hidden" name="userId" value={row.user_id} />
-                  <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
-                  <OfflineSubmitButton variant="ghost"  label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'تفعيل إجازات الموظف'} pendingLabel="جارٍ الحفظ…" />
-                  <p className="field-hint">للملف الشخصي والإجازات فقط؛ لا يغيّر دور المسؤول.</p>
-                </OfflineForm>}
               </div>
               <div className="invitation-actions">
-                {row.access_state === 'active' && <Disclosure summary={<>تعديل صلاحيات المستخدم</>} className="people-role-bundle-editor">
-
-                  <p className="field-hint">احتفظ بالاختيارات الحالية ما لم ترد سحبها.</p>
-                  <Message tone="warn">إدارة الموظفين أو استيرادهم تمنح عرض الأجر الأساسي وتعديله. اعتماد حساب المسير والحفظ النهائي والتصدير صلاحيات مستقلة؛ راجع أثر كل اختيار قبل الحفظ.</Message>
-                  <OfflineForm action={setTenantMemberPeopleBundlesAction}>
-                    <input type="hidden" name="tenantId" value={tenantId} />
-                    <input type="hidden" name="userId" value={row.user_id} />
-                    {PEOPLE_ROLE_BUNDLES.filter(bundle => hasBundle(row.roles, bundle.key)).map(bundle => <input key={bundle.key} type="hidden" name="expectedBundleKey" value={bundle.key} />)}
-                    <fieldset>
-                      <legend>اختر صلاحيات العضو</legend>
-                      {PEOPLE_ROLE_BUNDLES.map((bundle) => <label key={bundle.key}>
-                        <Checkbox  name="bundleKey" value={bundle.key} defaultChecked={hasBundle(row.roles, bundle.key)} />
-                        <span><strong>{bundle.label}</strong><small>{bundle.description}</small></span>
-                      </label>)}
-                    </fieldset>
-                    <OfflineSubmitButton variant="ghost"  label="حفظ الصلاحيات" pendingLabel="جارٍ الحفظ…" />
-                  </OfflineForm>
-                </Disclosure>}
+                {row.access_state === 'active' && <MemberAccessSheet key={`${row.user_id}:${row.roles.map(role => role.role_key).sort().join(',')}`} tenantId={tenantId} userId={row.user_id} email={row.email}
+                  initialKeys={PEOPLE_ROLE_BUNDLES.filter(bundle => hasBundle(row.roles, bundle.key)).map(bundle => bundle.key)} />}
+                {((canManageRoles && row.access_state === 'active') || !row.protected_admin) && <Sheet title="إجراءات العضو" description={row.email} trigger={<Button variant="ghost">إجراءات العضو</Button>}>
+                {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
+                  <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="userId" value={row.user_id} />
+                  <input type="hidden" name="enabled" value={hasBundle(row.roles, 'employee.leave.self.v1') ? 'false' : 'true'} />
+                  <OfflineSubmitButton variant="ghost" label={hasBundle(row.roles, 'employee.leave.self.v1') ? 'إزالة الخدمة الذاتية للإجازات' : 'تفعيل إجازات الموظف'} pendingLabel="جارٍ الحفظ…" />
+                  <p className="field-hint">للملف الشخصي والإجازات فقط؛ لا يغيّر دور المسؤول.</p>
+                </OfflineForm>}
                 {canManageRoles && row.access_state === 'active' && <Disclosure summary={<>{row.protected_admin ? 'خفض إلى عضو' : 'ترقية إلى مسؤول'}</>} className="role-change-confirmation">
 
                   <Message tone="warn">{row.protected_admin
@@ -147,6 +135,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                   <input type="hidden" name="accessState" value={row.access_state === 'active' ? 'inactive' : 'active'} />
                   <OfflineSubmitButton variant="ghost"  label={row.access_state === 'active' ? 'تعطيل العضوية' : 'إعادة تفعيل كعضو'} />
                 </OfflineForm>}
+                </Sheet>}
               </div>
             </li>
           ))}</ul>
@@ -156,7 +145,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
         <h2 id="pending-title">الدعوات</h2>
         {invitations.length === 0 ? <p className="intro">{search ? 'لا توجد دعوات تطابق البحث.' : 'لا توجد دعوات في هذه الصفحة.'}</p> : (
           <ul>{invitations.map((invitation) => (
-            <li className="invitation-row" key={invitation.id}>
+            <li className={`invitation-row ${query.invitation === invitation.id ? 'is-recent-invitation' : ''}`} key={invitation.id}>
               <div>
                 <h3><bdi>{invitation.target_email}</bdi></h3>
                 <Badge as="p" className={` ${invitation.lifecycle_state === 'accepted' ? 'is-active' : invitation.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{invitationText(invitation.lifecycle_state)}</Badge>
@@ -171,11 +160,13 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <OfflineForm action={reissueMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
+                  <input type="hidden" name="invitationEmail" value={invitation.target_email} />
                   <OfflineSubmitButton variant="ghost"  label="إعادة إرسال" pendingLabel="جارٍ الإرسال…" />
                 </OfflineForm>
                 <OfflineForm action={revokeMemberInvitationAction}>
                   <input type="hidden" name="tenantId" value={tenantId} />
                   <input type="hidden" name="invitationId" value={invitation.id} />
+                  <input type="hidden" name="invitationEmail" value={invitation.target_email} />
                   <OfflineSubmitButton variant="ghost"  label="إلغاء الدعوة" />
                 </OfflineForm>
               </div>}
@@ -220,7 +211,7 @@ function deliveryText(state: string) {
 function stateMessage(state: string) {
   const labels: Record<string, string> = {
     invalid: 'أدخل بريدًا إلكترونيًا صحيحًا.', setup: 'تعذر الاتصال بخدمة الحسابات. حاول لاحقًا أو تواصل مع دعم المنصة.',
-    forbidden: 'لا تملك صلاحية إدارة أعضاء هذه الشركة.', failed: 'تعذر إتمام الإجراء. لم تتغير العضوية؛ أعد المحاولة.',
+    forbidden: 'لا تملك صلاحية إدارة أعضاء هذه الشركة.', failed: 'تعذر تأكيد نتيجة الإجراء. راجع الحالة الحالية قبل أي محاولة جديدة.',
     'created-sent': 'أُرسلت الدعوة. لن يحصل المستخدم على وصول أو مقعد قبل قبولها.',
     'created-failed': 'حُفظت الدعوة لكن تعذر إرسال البريد. يمكنك إعادة الإرسال.',
     'created-unknown': 'حُفظت الدعوة وحالة الإرسال غير مؤكدة. راجعها ثم أعد الإرسال عند الحاجة.',
@@ -263,6 +254,6 @@ function successMessage(state?: string) {
   };
   return state && Object.hasOwn(messages, state) ? messages[state] : null;
 }
-function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid"  href="/auth/login">العودة إلى الدخول</ButtonLink></Panel></main>;
+function Status({ tenantId, title, detail }: { tenantId: string; title: string; detail: string }) {
+  return <main className="app-shell"><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid" href={`/tenant/${tenantId}`}>العودة إلى اليوم</ButtonLink></Panel></main>;
 }

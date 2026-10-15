@@ -1,4 +1,4 @@
-export const PEOPLE_ROLE_BUNDLES = [
+const catalog = [
   { key: 'employee.attendance.self.v1', label: 'الحضور الشخصي من الهاتف', description: 'يسجل العضو حضوره وانصرافه فقط. يحتاج ربطًا بموظف نشط وموقع وسياسة حضور مهيأة؛ لا يمنح إدارة حضور الآخرين.' },
   { key: 'people.reader.v1', label: 'قراءة بيانات الموظفين', description: 'عرض دليل الموظفين وبيانات العمل. لا تشمل الاطلاع على الأجور.' },
   { key: 'people.operations.v1', label: 'عمليات الموارد البشرية', description: 'إدارة ملفات الموظفين والتوظيف والعمل، وتشمل الاطلاع على الأجر الأساسي وتعديله.' },
@@ -27,4 +27,23 @@ export const PEOPLE_ROLE_BUNDLES = [
   { key: 'payroll.finalizer.v1', label: 'الحفظ النهائي للمسير', description: 'حفظ نسخة مسير معتمدة نهائيًا بعد تأكيد الإجماليات. مطلوبة أيضًا مع تصحيح الرواتب لتنفيذ تصحيح مسير محفوظ. لا تشمل التحضير أو الاعتماد.' },
   { key: 'payroll.exporter.v1', label: 'تصدير الرواتب', description: 'تنزيل الكشوف والتقارير المحفوظة ملفًا؛ يُسجَّل كل تنزيل.' },
 ] as const;
+export const BUNDLE_DOMAINS = ['الخدمة الذاتية', 'الموظفون', 'الحضور', 'الإجازات', 'الرواتب', 'مكافآت وخصومات الموظفين'] as const;
+const sensitive = new Set<string>(['people.compensation_manager.v1', 'people.operations.v1', 'people.import_operator.v1', 'payroll.input.approver.v1', 'payroll.finalizer.v1', 'payroll.exporter.v1', 'payroll.payment.recorder.v1', 'payroll.correction.requester.v1', 'employee_finance.approver.v1']);
+const financial = new Set<string>(['payroll.input.approver.v1', 'payroll.finalizer.v1', 'payroll.exporter.v1', 'payroll.payment.recorder.v1', 'payroll.correction.requester.v1', 'employee_finance.approver.v1']);
+function domain(key: string): typeof BUNDLE_DOMAINS[number] {
+  if (key.startsWith('employee.')) return 'الخدمة الذاتية';
+  if (key.startsWith('people.')) return 'الموظفون';
+  if (key.startsWith('attendance.')) return 'الحضور';
+  if (key.startsWith('leave.')) return 'الإجازات';
+  return key.startsWith('employee_finance.') ? 'مكافآت وخصومات الموظفين' : 'الرواتب';
+}
+export const PEOPLE_ROLE_BUNDLES = catalog.map(bundle => ({ ...bundle, domain: domain(bundle.key), sensitive: sensitive.has(bundle.key), financial: financial.has(bundle.key) }));
 export const bundleKeySet: ReadonlySet<string> = new Set(PEOPLE_ROLE_BUNDLES.map(bundle => bundle.key));
+
+export const BUNDLE_PRESETS = [
+  { key: 'self', label: 'خدمة ذاتية للموظف', detail: 'يضيف الحضور والإجازات الشخصية؛ يلزم ربط الحساب بموظف وتجهيز حضوره.', keys: ['employee.attendance.self.v1', 'employee.leave.self.v1'] },
+  { key: 'hr', label: 'موارد بشرية', detail: 'يمنح إدارة الموظفين والأجور الأساسية والإجازات، واعتماد الإجازات وتعديل أرصدتها، وعرض الحضور.', keys: ['people.operations.v1', 'leave.manager.v1', 'leave.approver.v1', 'leave.balance.manager.v1', 'attendance.reader.v1'] },
+  { key: 'attendance', label: 'مسؤول الحضور', detail: 'يضيف إدخال الحضور وتصحيحه واعتماده وإدارة سياسات الدوام.', keys: ['attendance.operator.v1', 'attendance.reviewer.v1', 'attendance.policy.manager.v1'] },
+  { key: 'prepare', label: 'تحضير الرواتب', detail: 'يضيف التحضير ودورة الرواتب والمراجعة. الاعتماد والحفظ النهائي والتصدير اختيارات مستقلة.', keys: ['payroll.preparer.v1', 'payroll.calendar.manager.v1', 'payroll.reviewer.v1'] },
+  { key: 'view', label: 'عرض الرواتب', detail: 'يضيف عرض الرواتب دون صلاحية التحضير أو الاعتماد أو الحفظ النهائي.', keys: ['payroll.reader.v1'] },
+] as const;

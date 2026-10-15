@@ -1,0 +1,19 @@
+.body { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.options { min-height: 0; overflow-y: auto; display: grid; gap: 28px; padding-inline-end: 6px; }
+.form h3 { font: 600 16px/1.6 var(--f-head); margin: 0 0 8px; }
+.presets > div { display: grid; gap: 10px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.presets > div > button { justify-self: start; }
+.presets strong { font-weight: 500; }
+.presets p { font-size: 12px; line-height: 1.7; color: var(--muted); margin: 4px 0 0; }
+.group { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 10px; }
+.group legend { font: 600 16px/1.6 var(--f-head); margin-bottom: 12px; }
+.group label { display: flex; align-items: flex-start; gap: 12px; border: 1px solid var(--line); border-radius: var(--r-tile); padding: 14px; cursor: pointer; }
+.group label:has(input:checked) { background: var(--surface-2); }
+.group label.sensitive { border-color: var(--warn-text); }
+.group label > span { min-width: 0; display: grid; gap: 5px; }
+.group strong { font-size: 14px; font-weight: 500; }
+.group small { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.group .warning { color: var(--warn-text); }
+.preview { flex-shrink: 0; border-top: 1px solid var(--line); padding-top: 16px; max-height: 45vh; overflow-y: auto; }
+.preview p { line-height: 1.8; font-size: 13px; }
