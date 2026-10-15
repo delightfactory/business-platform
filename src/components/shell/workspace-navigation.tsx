@@ -10,6 +10,7 @@ import { signOutAction } from '@/app/auth/actions';
 import { ThemePreferenceControl } from '@/components/theme-preference';
 import { Icon, type IconName } from '@/components/ui/icon';
 import { matchesDestination, payrollDestination, workspaceAreas, type WorkspaceLink, type NavArea } from './navigation-model';
+import { guideHref } from './guide-navigation';
 
 export type WorkspaceNavigationProps = {
   homeHref: string; homeLabel: string; contextLabel: string; links: WorkspaceLink[];
@@ -120,7 +121,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
           <DropdownMenu.Item asChild><Link href={`${profile.href}#my-employee-heading`}>ملفي</Link></DropdownMenu.Item>
         </>}
         {mode === 'operator' && <DropdownMenu.Item asChild><Link href="/">مساحات العمل</Link></DropdownMenu.Item>}
-        <DropdownMenu.Item asChild><a href="/user-guide.html" target="_blank" rel="noopener">دليل الاستخدام والتدريب</a></DropdownMenu.Item>
+        <DropdownMenu.Item asChild><a href={guideHref(mode, [...originalLinks, ...originalBusinessLinks])} target="_blank" rel="noopener">دليل الاستخدام والتدريب</a></DropdownMenu.Item>
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
         <form action={signOutAction}><SignOutMenuItem /></form>

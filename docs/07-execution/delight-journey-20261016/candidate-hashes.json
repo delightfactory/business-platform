@@ -1,0 +1,30 @@
+[
+  {
+    "path": "src/components/shell/guide-navigation.ts",
+    "sha256": "97985B97088BFE5E5AF9C1AC043E9D03D49F58FF531283D22AA3C61E946B3DFA"
+  },
+  {
+    "path": "src/components/shell/workspace-navigation.tsx",
+    "sha256": "3DE97E8B8FC863E6DFCD9F6F5CEA2C623E6EDAEBFA4416E5AC6967A9B44448EC"
+  },
+  {
+    "path": "scripts/build-user-guide.cjs",
+    "sha256": "DD531D2422E0CABDBE2773BD9E28AF64C0D669200747D205AA7A9AAC8DF5B8B4"
+  },
+  {
+    "path": "public/user-guide-filter.js",
+    "sha256": "148B2CD846F05666E7CDB0DAEA0C062EE5D4F40D890057942574B12638D0E437"
+  },
+  {
+    "path": "public/user-guide.html",
+    "sha256": "0EAB45604044E9BB6F0DEB0B3F83E45696B6BD5659F350A191F6552C90C27468"
+  },
+  {
+    "path": "public/user-guide.pdf",
+    "sha256": "EC543794A7F17A900889E4471864411B6F3F4808FAFB98637C086761F0840CD6"
+  },
+  {
+    "path": "docs/user-guide/ar.md",
+    "sha256": "98EEA0164191CA39AD4372ABAA1FBB3A07FF947F88C2269FB2609046C876B05D"
+  }
+]
