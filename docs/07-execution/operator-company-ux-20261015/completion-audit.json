@@ -12,11 +12,12 @@
   "globalHygieneInstalledVerified": true,
   "duplicateHeartbeatPausedVerified": true,
   "cleanup": {
-    "status": "policy-rejected-before-execution",
+    "status": "policy-rejected-again-after-explicit-owner-reauthorization",
     "targets": 8,
     "retainedBytes": 1381355635,
     "removedBytes": 0,
-    "manualScript": "manual-final-cleanup.ps1"
+    "manualScript": "manual-final-cleanup.ps1",
+    "allEightStillPresentVerified": true
   },
   "goalComplete": false
 }
