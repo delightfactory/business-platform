@@ -38,11 +38,14 @@ export function operatorGrantNoop(value: unknown, action: string): string | null
 
 export type OperatorInvitationRow = {
   id: string; target_email: string; tenant_name: string; lifecycle_state: string; delivery_state: string;
+  expires_at: string; tenant_id: string | null;
 };
 
 export function operatorInvitation(value: unknown): value is OperatorInvitationRow {
   return operatorRecord(value) && operatorUuid(value.id) && text(value.target_email)
-    && text(value.tenant_name) && text(value.lifecycle_state) && text(value.delivery_state);
+    && text(value.tenant_name) && text(value.lifecycle_state) && text(value.delivery_state)
+    && timestamp(value.expires_at) && (value.tenant_id === null || operatorUuid(value.tenant_id))
+    && (value.lifecycle_state !== 'accepted' || operatorUuid(value.tenant_id));
 }
 
 export function operatorPage<T>(value: unknown, row: (value: unknown) => value is T, identity: (value: T) => string): { rows: T[]; matching_count: number } | null {

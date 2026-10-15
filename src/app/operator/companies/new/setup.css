@@ -1,0 +1,30 @@
+.operator-setup-page { gap: 24px; }
+.operator-setup-page > .ui-button { align-self: flex-start; }
+.operator-company-setup, .operator-setup-result { inline-size: 100%; max-inline-size: 880px; }
+.operator-setup-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0; margin: 0 0 28px; border: 0; min-inline-size: 0; }
+.operator-setup-mode legend { margin-block-end: 14px; font-weight: 600; }
+.operator-setup-mode label { display: flex; align-items: flex-start; gap: 12px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); cursor: pointer; }
+.operator-setup-mode label.is-selected { border-color: var(--brand); background: var(--brand-soft); }
+.operator-setup-mode input { accent-color: var(--brand); margin-block-start: 5px; }
+.operator-setup-mode span { display: grid; gap: 8px; }
+.operator-setup-mode strong { font-size: 15px; }
+.operator-setup-mode small { font-size: 12px; line-height: 1.8; color: var(--muted); }
+.operator-company-setup .operator-action-fields { display: grid; gap: 24px; min-inline-size: 0; padding: 0; margin: 0; border: 0; }
+.operator-company-setup .operator-action-fields > .ui-button { justify-self: start; min-inline-size: 160px; }
+.operator-setup-fields { display: grid; gap: 24px; }
+.operator-setup-fields summary span { display: grid; gap: 6px; }
+.operator-setup-fields summary small { font-size: 12px; font-weight: 400; color: var(--muted); }
+.operator-setup-core { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.operator-setup-core > div { display: grid; align-content: start; gap: 10px; min-inline-size: 0; }
+.operator-setup-core .field-hint { margin: 0; }
+.operator-setup-limits { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+.operator-setup-limits legend { font-weight: 600; padding-inline-end: 12px; }
+.operator-setup-limits > div { display: grid; gap: 12px; align-content: start; min-inline-size: 0; }
+.operator-setup-limits h3 { font-size: 14px; margin: 0; }
+.operator-setup-result { display: grid; gap: 24px; padding-block: 20px; }
+.operator-setup-result > .ui-button { justify-self: start; }
+.operator-setup-secondary { display: flex; flex-wrap: wrap; gap: 12px; align-items: start; }
+@media (max-width: 600px) {
+  .operator-setup-mode, .operator-setup-core, .operator-setup-limits { grid-template-columns: 1fr; }
+  .operator-setup-mode label { padding: 16px; }
+}

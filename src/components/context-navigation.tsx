@@ -36,7 +36,6 @@ export async function OperatorNavigation() {
     if (authority.lifecycle || authority.commercial) links.push({ href: '/operator/companies', label: 'الشركات' });
     if (authority.onboard) {
       links.push({ href: '/operator/invitations', label: 'الدعوات' });
-      links.push({ href: '/operator/onboarding', label: 'إعداد شركة بحساب موجود' });
     }
     if (authority.manage) links.push({ href: '/operator/operators', label: 'فريق التشغيل' });
     if (authority.statutory) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });

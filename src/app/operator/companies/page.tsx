@@ -37,7 +37,7 @@ export default async function CompanyDirectory({ searchParams }: {
 
   return <main className="app-shell">
     <PageHeader title="الشركات" description="اختر شركة لمتابعة المهام المسموحة لحسابك."
-      action={authority.onboard ? <ButtonLink href="/operator/invitations/new" icon="plus">شركة جديدة</ButtonLink> : undefined} />
+      action={authority.onboard ? <ButtonLink href="/operator/companies/new" icon="plus">شركة جديدة</ButtonLink> : undefined} />
     {authority.partial && <Banner>تعذر التحقق من بعض المهام. تظهر الصلاحيات المؤكدة فقط.</Banner>}
     <section className="operator-company-directory" aria-label="نتائج البحث عن الشركات">
       <OperatorListControls basePath="/operator/companies" search={search} page={page} matchingCount={result.matching_count}
@@ -50,7 +50,7 @@ export default async function CompanyDirectory({ searchParams }: {
       </RecordCard>)}</ul> : page > Math.max(1, Math.ceil(result.matching_count / 25)) ? null :
         <EmptyState title={search ? `لا توجد نتائج لـ «${search}»` : 'لا توجد شركات بعد'}
           action={search ? <ButtonLink href="/operator/companies" variant="ghost">مسح البحث</ButtonLink> :
-            authority.onboard ? <ButtonLink href="/operator/invitations/new">شركة جديدة</ButtonLink> : undefined} />}
+            authority.onboard ? <ButtonLink href="/operator/companies/new">شركة جديدة</ButtonLink> : undefined} />}
     </section>
   </main>;
 }

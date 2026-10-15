@@ -34,23 +34,23 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
 
         {(canManageLifecycle || canManageCommercial) && <form action="/operator/companies" method="get" role="search" className="workspace-form-panel">
           <label htmlFor="operator-company-search">ابحث عن شركة</label>
-          <div className="topbar-actions"><input className="ui-input" id="operator-company-search" name="q" type="search" maxLength={120} placeholder="اسم الشركة" /><Button type="submit" icon="search">بحث</Button></div>
+          <div className="topbar-actions"><input className="ui-input" id="operator-company-search" name="q" type="search" maxLength={120} placeholder="اسم الشركة" /><Button variant="ghost" type="submit" icon="search">بحث</Button></div>
         </form>}
 
         {canOnboard && <section className="operator-featured-task" aria-labelledby="new-company-title">
           <div>
             <p className="eyebrow">بدء العمل</p>
             <h2 id="new-company-title">شركة جديدة</h2>
-            <p>أرسل دعوة للمسؤول الأول لتُنشأ الشركة بفرعها وحدود استخدامها عند قبولها.</p>
+            <p>أنشئ شركة بحساب مسؤول مؤكد، أو أرسل دعوة لمسؤولها الأول.</p>
           </div>
-          <ButtonLink variant="solid"  href="/operator/invitations/new">دعوة مسؤول الشركة <span aria-hidden="true">←</span></ButtonLink>
+          <ButtonLink variant="solid" href="/operator/companies/new">شركة جديدة <span aria-hidden="true">←</span></ButtonLink>
         </section>}
 
         <div className="operator-home-grid">
           {(canOnboard || canManageLifecycle || canManageCommercial) && <section className="operator-work-group" aria-labelledby="company-operations-title">
             <div className="operator-group-heading"><p className="eyebrow">الشركات</p><h2 id="company-operations-title">إدارة الشركات</h2></div>
             <ul className="operator-work-list">
-              {canOnboard && <TaskLink href="/operator/onboarding" title="إعداد شركة بحساب موجود" detail="أنشئ شركة لمسؤول لديه حساب مؤكد بالفعل." />}
+              {canOnboard && <TaskLink href="/operator/companies/new?mode=existing" title="إنشاء شركة بحساب مؤكد" detail="أنشئ شركة لمسؤول لديه حساب مؤكد بالفعل." />}
               {(canManageLifecycle || canManageCommercial) && <TaskLink href="/operator/companies" title="الشركات" detail="ابحث عن الشركة ثم تابع خدماتها وحدودها وحالتها حسب صلاحيتك." />}
             </ul>
           </section>}

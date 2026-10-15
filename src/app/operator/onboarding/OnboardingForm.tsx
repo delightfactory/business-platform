@@ -26,7 +26,9 @@ const messages: Record<OnboardingOutcome['state'], string> = {
   absent: 'لم تُرجع القراءة نتيجة محفوظة لهذا الحساب الآن. هذا لا يثبت أن الإعداد لم يحدث؛ يمكنك إعادة إرسال البيانات الأصلية نفسها فقط.',
 };
 
-export function OnboardingForm({ actorId, requestKey, children }: { actorId: string; requestKey: string; children: ReactNode }) {
+export function OnboardingForm({ actorId, requestKey, children, onDispatch, canManageServices = false }: {
+  actorId: string; requestKey: string; children: ReactNode; onDispatch?: () => void; canManageServices?: boolean;
+}) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
  const offlineRecoveryHint = useId();
@@ -50,6 +52,7 @@ export function OnboardingForm({ actorId, requestKey, children }: { actorId: str
       payload.set('idempotencyKey', scope.requestKey);
       if (!onboardingIntent(payload)) { setOutcome({ state: 'invalid', mutationDispatched: false }); return; }
       captured.current = payload; setHasAttempt(true);
+      onDispatch?.();
     } else if (!captured.current || (operation === 'retry' && (phase !== 'retry' || actorChanged))) return;
     const original = captured.current;
     if (!original) return;
@@ -85,7 +88,7 @@ export function OnboardingForm({ actorId, requestKey, children }: { actorId: str
   function submit(event: FormEvent<HTMLFormElement>) {
   if (blockOfflineSubmission(event)) return; event.preventDefault(); dispatch('save', event.currentTarget); }
 
-  if (phase === 'saved' && outcome?.snapshot) return <OnboardingResult result={outcome.snapshot} />;
+  if (phase === 'saved' && outcome?.snapshot) return <OnboardingResult result={outcome.snapshot} canManageServices={canManageServices} />;
   const showOffline0 = offline && ready && !pending && !frozen;
  const showOfflineRecovery = offline && ready && !pending && frozen && hasAttempt;
  return <div>

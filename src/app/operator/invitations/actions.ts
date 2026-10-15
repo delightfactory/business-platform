@@ -3,9 +3,12 @@
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
+import { invitationCreationError } from '@/lib/invitation-creation';
+import { revalidatePath } from 'next/cache';
 
 export type InvitationFormState = {
-  error: 'invalid' | 'setup' | 'forbidden' | null;
+  error: 'invalid' | 'setup' | 'forbidden' | 'conflict' | 'unknown' | null;
+  receipt?: { id: string; created: boolean; lifecycle: string; delivery: 'sent' | 'failed' | 'unknown' };
   attempt: number;
   values: {
     idempotencyKey: string;
@@ -61,18 +64,22 @@ export async function createInvitationAction(previous: InvitationFormState, form
     p_seat_limit: seatLimit,
     p_site_limit_mode: siteMode,
     p_site_limit: siteLimit,
-  });
-  if (error || !isInvitation(data)) return failed('forbidden');
+  }).then(result => result, () => ({ data: null, error: { message: 'unconfirmed_invitation_outcome' } }));
+  if (error) return failed(invitationCreationError(error));
+  if (!isInvitation(data) || typeof data.created !== 'boolean'
+    || !['pending', 'accepted', 'expired', 'revoked'].includes(data.lifecycle_state ?? '')
+    || data.target_email.toLowerCase() !== email) return failed('unknown');
   if (data.created !== true) {
-    const state = data.lifecycle_state === 'accepted' ? 'already-accepted'
-      : data.lifecycle_state === 'revoked' ? 'already-revoked'
-      : data.lifecycle_state === 'expired' ? 'expired'
-      : 'existing';
-    redirect(`/operator/invitations?id=${encodeURIComponent(data.id)}&state=${state}`);
+    return { error: null, attempt: previous.attempt + 1, values, receipt: {
+      id: data.id, created: false, lifecycle: data.lifecycle_state!,
+      delivery: data.delivery_state === 'sent' ? 'sent' : data.delivery_state === 'failed' ? 'failed' : 'unknown',
+    } };
   }
 
-  const recorded = await deliverInvitation(supabase, data);
-  redirect(`/operator/invitations?id=${encodeURIComponent(data.id)}&state=created-${recorded}`);
+  const recorded = await deliverInvitation(supabase, data).catch(() => 'unknown' as const);
+  revalidatePath('/operator/invitations');
+  return { error: null, attempt: previous.attempt + 1, values,
+    receipt: { id: data.id, created: true, lifecycle: data.lifecycle_state!, delivery: recorded } };
 }
 
 export async function reissueInvitationAction(formData: FormData) {
@@ -135,7 +142,7 @@ async function deliverInvitation(
   return succeeded ? 'sent' : 'failed';
 }
 
-type Invitation = { id: string; issuance: number; target_email: string; lifecycle_state?: string; created?: boolean };
+type Invitation = { id: string; issuance: number; target_email: string; lifecycle_state?: string; delivery_state?: string; created?: boolean };
 
 function isInvitation(value: unknown): value is Invitation {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
@@ -181,5 +188,5 @@ function parseLimit(formData: FormData, kind: 'seats' | 'sites', mode: 'limited'
   const value = textField(formData, `${kind}Limit`);
   if (!/^\d+$/.test(value)) return INVALID;
   const number = Number(value);
-  return Number.isSafeInteger(number) && number > 0 ? number : INVALID;
+  return Number.isSafeInteger(number) && number > 0 && number <= 2147483647 ? number : INVALID;
 }

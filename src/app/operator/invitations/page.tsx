@@ -1,18 +1,19 @@
-import { readOperatorRpc } from '@/lib/operator-authority';
+import { readOperatorAuthority } from '@/lib/operator-authority';
 import { PageHeader, Badge } from '@/components/ui';
 import { Message, Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 
-import { operatorPermission } from '@/lib/operator-access';
 import { operatorInvitation, operatorPage, operatorUuid } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
-import { reissueInvitationAction, revokeInvitationAction } from './actions';
+import { reissueInvitationAction } from './actions';
+import { RevokeInvitationConfirm } from './RevokeInvitationConfirm';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
+import './invitations.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,9 +28,9 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
-  const { data: capable, error: capabilityError } = await readOperatorRpc(supabase, 'current_operator_can_onboard_tenants');
-  if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
-  if (!operatorPermission({ data: capable, error: capabilityError })) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
+  const authority = await readOperatorAuthority();
+  if (!authority.onboard && authority.partial) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
+  if (!authority.active || !authority.onboard) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
   const { data, error } = await supabase.rpc('tenant_admin_invitation_page', { p_page: page, p_query: search });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status title="تعذر تحميل الدعوات" detail="لم نتمكن من عرض حالة الدعوات الآن. أعد تحميل الصفحة وحاول مرة أخرى." />;
   const result = operatorPage(data, operatorInvitation, row => row.id);
@@ -57,7 +58,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
       <header className="workspace-page-heading"><div><p className="eyebrow">إعداد الشركات</p>
         <PageHeader id="invite-title" title={<>دعوات مسؤولي الشركات</>} />
         <p>تابع حالة الدعوات. تُنشأ الشركة عند قبول المسؤول الأول للدعوة.</p></div>
-        <ButtonLink variant="solid"  href="/operator/invitations/new">دعوة مسؤول جديد</ButtonLink>
+        <ButtonLink variant="solid" href="/operator/companies/new?mode=invite">شركة جديدة</ButtonLink>
       </header>
       <section className="workspace-notices" aria-labelledby="invite-title">
         {selectedNotice && <Message tone="bad"  role="alert">{selectedNotice} <ButtonLink variant="ghost"  href={`/operator/invitations?${reviewQuery}`}>{selectedId ? 'إعادة قراءة الدعوة' : 'مراجعة الدعوات الحالية'}</ButtonLink></Message>}
@@ -77,12 +78,14 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                   <p><bdi>{row.target_email}</bdi></p>
                   <Badge as="p" className={` ${row.lifecycle_state === 'accepted' ? 'is-active' : row.lifecycle_state === 'pending' ? 'is-pending' : 'is-inactive'}`}>{lifecycleText(row.lifecycle_state)}</Badge>
                   {row.lifecycle_state === 'pending' && <p>{deliveryText(row.delivery_state)}</p>}
+                  {row.lifecycle_state === 'pending' && <p className="field-hint">تنتهي في {new Date(row.expires_at).toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', numberingSystem: 'latn', dateStyle: 'medium', timeStyle: 'short' })} بتوقيت القاهرة.</p>}
                   {row.lifecycle_state === 'pending' && <p className="field-hint">{row.delivery_state === 'failed'
                     ? 'تعذر الإرسال المسجل لهذه الدعوة. إذا اخترت إعادة الإرسال، يُنشأ رابط جديد ويبطل الرابط السابق.'
                     : row.delivery_state === 'sent'
                       ? 'الإرسال المسجل لا يؤكد وصول البريد أو قبول الدعوة. إعادة الإرسال تنشئ رابطًا جديدًا وتبطل السابق.'
                       : 'نتيجة الإرسال غير مؤكدة. راجع الحالة وتحقق مع المستلم قبل اختيار إعادة الإرسال؛ الإصدار الجديد يبطل الرابط السابق.'}</p>}
-                  {row.lifecycle_state === 'accepted' && <p className="field-hint">اكتمل إنشاء الشركة ومسؤولها.</p>}
+                  {row.lifecycle_state === 'accepted' && <><p className="field-hint">أُنشئت الشركة ومسؤولها.</p>{(authority.commercial || authority.lifecycle) && row.tenant_id && <ButtonLink variant="ghost" href={`/operator/companies/${row.tenant_id}`}>فتح الشركة</ButtonLink>}</>}
+                  {(row.lifecycle_state === 'expired' || row.lifecycle_state === 'revoked') && <ButtonLink variant="ghost" href="/operator/companies/new?mode=invite">دعوة جديدة</ButtonLink>}
                 </div>
                 {row.lifecycle_state === 'pending' && (
                   <div className="invitation-actions">
@@ -90,10 +93,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
                       <input type="hidden" name="invitationId" value={row.id} />
                       <OfflineSubmitButton variant="ghost"  label="إرسال رابط دعوة جديد" pendingLabel="جارٍ الإرسال…" />
                     </OfflineForm>
-                    <OfflineForm action={revokeInvitationAction}>
-                      <input type="hidden" name="invitationId" value={row.id} />
-                      <OfflineSubmitButton variant="ghost"  label="إلغاء الدعوة" />
-                    </OfflineForm>
+                    <RevokeInvitationConfirm id={row.id} company={row.tenant_name} />
                   </div>
                 )}
               </li>

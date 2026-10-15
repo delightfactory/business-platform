@@ -1,0 +1,6 @@
+.operator-invitations-history { border: 0; background: transparent; box-shadow: none; padding-inline: 0; }
+.operator-invitations-history > ul { padding: 0; }
+.operator-invitations-history .invitation-row { border-block-end: 1px solid var(--line); padding: 24px 0; }
+.operator-invite-cancel { padding: 0; border: 0; background: transparent; }
+.operator-invite-cancel > summary { min-block-size: 44px; padding-inline: 14px; font-size: 13px; }
+.operator-invite-cancel .ui-disclosure-content { max-inline-size: 320px; padding: 14px; background: var(--surface-2); border-radius: 12px; }

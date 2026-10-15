@@ -1,20 +1,117 @@
 {
-  "source": "D3 implementation committed with this checkpoint; base 05a378c",
+  "source": "D3 plus D4 source checkpoints; see stage documents for source revisions and measurement limits",
   "environment": "owned synthetic QA, manager with all five Operator tasks",
   "policy": "One representative after run per measured journey; separate duration, failure and permission probes are not included in the journey metrics.",
   "journeys": [
-    {"id":"OPJ2","status":"observed-complete","fixture":"fresh Company03, matching original Company02 missing-service state","navigations":0,"uiActivations":2,"mandatoryManualTextFields":0,"trace":["Payroll switch","approve People and Payroll plan"],"success":"Both grants rendered enabled"},
-    {"id":"OPJ3","status":"observed-complete","fixture":"Company03 Payroll enabled indefinitely","navigations":0,"uiActivations":1,"mandatoryManualTextFields":0,"trace":["Payroll switch OFF"],"success":"Payroll disabled; People retained"},
-    {"id":"OPJ4","status":"observed-complete","fixture":"original Company02 usage2/limit10, restored by authorized RPC before measurement without deleting history","navigations":0,"uiActivations":2,"mandatoryManualTextFields":1,"trace":["edit users limit","enter1 and save"],"success":"Live warning before save; usage2/limit1 and preserved-member warning afterwards"},
-    {"id":"OPJ5","status":"observed-complete","fixture":"original Company02 active","navigations":0,"uiActivations":4,"mandatoryManualTextFields":2,"trace":["open suspend sheet","enter reason and confirm","open restore sheet","enter reason and confirm"],"success":"Suspended then active; authoritative header and actions updated"}
+    {
+      "id": "OPJ2",
+      "status": "observed-complete",
+      "fixture": "fresh Company03, matching original Company02 missing-service state",
+      "navigations": 0,
+      "uiActivations": 2,
+      "mandatoryManualTextFields": 0,
+      "trace": [
+        "Payroll switch",
+        "approve People and Payroll plan"
+      ],
+      "success": "Both grants rendered enabled"
+    },
+    {
+      "id": "OPJ3",
+      "status": "observed-complete",
+      "fixture": "Company03 Payroll enabled indefinitely",
+      "navigations": 0,
+      "uiActivations": 1,
+      "mandatoryManualTextFields": 0,
+      "trace": [
+        "Payroll switch OFF"
+      ],
+      "success": "Payroll disabled; People retained"
+    },
+    {
+      "id": "OPJ4",
+      "status": "observed-complete",
+      "fixture": "original Company02 usage2/limit10, restored by authorized RPC before measurement without deleting history",
+      "navigations": 0,
+      "uiActivations": 2,
+      "mandatoryManualTextFields": 1,
+      "trace": [
+        "edit users limit",
+        "enter1 and save"
+      ],
+      "success": "Live warning before save; usage2/limit1 and preserved-member warning afterwards"
+    },
+    {
+      "id": "OPJ5",
+      "status": "observed-complete",
+      "fixture": "original Company02 active",
+      "navigations": 0,
+      "uiActivations": 4,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "open suspend sheet",
+        "enter reason and confirm",
+        "open restore sheet",
+        "enter reason and confirm"
+      ],
+      "success": "Suspended then active; authoritative header and actions updated"
+    },
+    {
+      "id": "OPJ1",
+      "status": "observed-complete",
+      "viewport": "1280x720",
+      "navigations": 2,
+      "uiActivations": 2,
+      "mandatoryManualTextFields": 1,
+      "trace": [
+        "home search",
+        "directory row"
+      ],
+      "success": "Company services with query preserved"
+    },
+    {
+      "id": "OPJ6",
+      "status": "observed-complete",
+      "viewport": "1280x720",
+      "navigations": 2,
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "confirmed-account shortcut",
+        "create with company and email",
+        "open services"
+      ],
+      "success": "New company receipt and services"
+    },
+    {
+      "id": "OPJ7",
+      "status": "observed-complete",
+      "viewport": "1366x900",
+      "navigations": 2,
+      "uiActivations": 3,
+      "mandatoryManualTextFields": 2,
+      "trace": [
+        "new company",
+        "send invitation",
+        "follow-up receipt"
+      ],
+      "success": "Pending invitation, company not created, provider accepted"
+    }
   ],
-  "remainingAfterMeasurements": ["OPJ1 final discovery flow","OPJ6 confirmed-account creation","OPJ7 invitation follow-up","OPJ8 Operator task edit"],
+  "remainingAfterMeasurements": [
+    "OPJ8 Operator task edit"
+  ],
   "additionalEvidence": {
     "finiteDuration": "Attendance through3 November2026 survived ordinary OFF/ON",
     "unknownResponse": "One blocked POST, one failure, no automatic second POST; five switches locked until explicit read. Network block removed and instrumentation disabled.",
     "permissions": "Commercial-only service control enabled, lifecycle link absent, direct status URL denied; full manager restored",
-    "responsive": [1366,768,390],
+    "responsive": [
+      1366,
+      768,
+      390
+    ],
     "horizontalOverflow": false,
     "legacyDetailContext": "Services redirect preserved q, page2 and state; header links retained q/page without claiming URL success"
-  }
+  },
+  "measurementQualification": "OPJ1/6 actually1280x720; D3 early OPJ2/3 viewport unrecorded. Counts observed; exact viewport comparability remains for independent review."
 }
