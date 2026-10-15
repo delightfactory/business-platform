@@ -4,7 +4,7 @@ import { Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { readOperatorAuthority } from '@/lib/operator-authority';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 
 export const dynamic = 'force-dynamic';
 
@@ -77,8 +77,7 @@ function TaskLink({ href, title, detail }: { href: string; title: string; detail
 function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+
       <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
         <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
 

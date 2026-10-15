@@ -1,14 +1,15 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Badge } from '@/components/ui';
 import { Message, Panel } from '@/components/ui';
-import { Button, ButtonLink } from '@/components/ui';
+import { ButtonLink } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
-import Link from 'next/link';
+
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorInvitation, operatorPage, operatorUuid } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
-import { signOutAction } from '@/app/auth/actions';
+
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { reissueInvitationAction, revokeInvitationAction } from './actions';
 import { OperatorListControls, operatorListQuery } from '@/app/operator/operator-list-controls';
@@ -26,7 +27,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session&next=%2Foperator%2Finvitations');
-  const { data: capable, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
+  const { data: capable, error: capabilityError } = await readOperatorRpc(supabase, 'current_operator_can_onboard_tenants');
   if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
   if (!operatorPermission({ data: capable, error: capabilityError })) return <Status title="إعداد الدعوات غير متاح" detail="هذا الحساب لا يملك صلاحية إعداد الشركات." />;
   const { data, error } = await supabase.rpc('tenant_admin_invitation_page', { p_page: page, p_query: search });
@@ -52,10 +53,7 @@ export default async function OperatorInvitationsPage({ searchParams }: { search
 
   return (
     <main className="app-shell">
-      <header className="topbar">
-        <Link className="brand" href="/operator">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
-      </header>
+
       <header className="workspace-page-heading"><div><p className="eyebrow">إعداد الشركات</p>
         <PageHeader id="invite-title" title={<>دعوات مسؤولي الشركات</>} />
         <p>تابع حالة الدعوات. تُنشأ الشركة عند قبول المسؤول الأول للدعوة.</p></div>
@@ -126,9 +124,7 @@ function stateMessage() {
 function Status({ title, detail }: { title: string; detail: string }) {
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
-      </header>
+
       <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
     </main>
   );

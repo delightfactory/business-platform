@@ -1,15 +1,16 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Badge, Disclosure, RecordCard } from '@/components/ui';
 import { Panel } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import Link from 'next/link';
-import {redirect} from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
-import {DraftForm} from './DraftForm';
-import {selectedWorkspace,listWorkspace,releaseStatus,safeSourceUrl,type SelectedWorkspace,type ListWorkspace} from './dto';
-import {operatorPermission} from '@/lib/operator-access';
-import {NumericRulesSummary} from './NumericRules';
-import {uuid} from '@/app/tenant/[tenantId]/payroll/rules';
+import { DraftForm } from './DraftForm';
+import { selectedWorkspace, listWorkspace, releaseStatus, safeSourceUrl, type SelectedWorkspace, type ListWorkspace } from './dto';
+import { operatorPermission } from '@/lib/operator-access';
+import { NumericRulesSummary } from './NumericRules';
+import { uuid } from '@/app/tenant/[tenantId]/payroll/rules';
 export const dynamic='force-dynamic';
 type Query={head?:string;after_created?:string;after_id?:string;before?:string};
 type Workspace=Partial<SelectedWorkspace & ListWorkspace>;
@@ -20,7 +21,7 @@ export default async function StatutoryDraftPage({searchParams}:{searchParams:Pr
  if((q.head&&!uuid(q.head))||(q.after_id&&!uuid(q.after_id))||(q.after_created&&(!Number.isFinite(Date.parse(q.after_created))||q.after_created.length>64))||Boolean(q.after_created)!==Boolean(q.after_id)||(q.before&&!/^[1-9]\d{0,8}$/.test(q.before)))return failure('راجع رابط المسودة','تعذر التحقق من اختيار المسودة أو صفحة السجل.');
  const client=await createSupabaseServerClient();if(!client)return failure('تعذر الاتصال','أعد المحاولة لاستعادة المسودات؛ لا تُعرض البيانات المفقودة كقائمة فارغة.');
  const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect('/auth/login?next='+encodeURIComponent(retry));
- const {data:allowed,error:accessError}=await client.rpc('current_operator_can_manage_statutory_rules');if(accessError)return failure('تعذر التحقق من الصلاحية','أعد المحاولة قبل مراجعة القواعد القانونية.');if(!operatorPermission({data:allowed,error:accessError}))return failure('إدارة القواعد القانونية غير متاحة','تحتاج إلى صلاحية إدارة القواعد القانونية. اطلبها من مسؤول تشغيل المنصة.',true);
+ const {data:allowed,error:accessError}=await readOperatorRpc(client, 'current_operator_can_manage_statutory_rules');if(accessError)return failure('تعذر التحقق من الصلاحية','أعد المحاولة قبل مراجعة القواعد القانونية.');if(!operatorPermission({data:allowed,error:accessError}))return failure('إدارة القواعد القانونية غير متاحة','تحتاج إلى صلاحية إدارة القواعد القانونية. اطلبها من مسؤول تشغيل المنصة.',true);
  const {data,error}=await client.rpc('statutory_draft_workspace',{p_head:q.head??null,p_after_created:q.after_created??null,p_after_id:q.after_id??null,p_before_revision:q.before?Number(q.before):null,p_limit:20});if(error)return failure('تعذر تحميل المسودات','تعذر قراءة الحالة الحالية؛ لا يمكن تأكيد حالة المسودة من هنا. أعد التحميل.');
  let w:Workspace;let issued=false;let releaseUnavailable=false;
  if(q.head){const parsed=selectedWorkspace(data,q.head);if(parsed.stale)return failure('تغيرت المسودة أثناء القراءة','أعد تحميل النسخة الحالية قبل متابعة المراجعة.');if(!parsed.value)return failure('تعذر التحقق من المسودة','تعذر قراءة النسخة المطلوبة وسجلها؛ لا يُعرض ذلك كقائمة فارغة.');w=parsed.value;
@@ -30,7 +31,7 @@ export default async function StatutoryDraftPage({searchParams}:{searchParams:Pr
  const status=release.error?null:releaseStatus(release.data,parsed.value.head.revision);issued=Boolean(status?.issued_pack);releaseUnavailable=!status;
  }else{const parsed=listWorkspace(data);if(!parsed)return failure('تعذر التحقق من المسودات','تعذر قراءة القائمة الحالية؛ لا تُعرض البيانات غير المتاحة كقائمة فارغة.');w=parsed;}
 
- return <main className="app-shell statutory-workspace"><header className="topbar"><Link className="brand" href="/operator">تشغيل المنصة</Link><ButtonLink variant="ghost" href="/operator" >العودة إلى المهام</ButtonLink></header>
+ return <main className="app-shell statutory-workspace">
  <Panel ><p className="eyebrow">الامتثال · الرواتب</p><PageHeader  title={<>القواعد القانونية للرواتب</>} /><p className="intro">احفظ قواعد الضرائب والتأمينات ومراجعها وتاريخ بدء العمل بها. حفظ المسودة لا يسمح باستخدامها لحساب الرواتب أو اعتماد الصرف.</p></Panel>
  {w.head&&w.current?<><Panel className="statutory-summary"><h2>{w.head.version}</h2><Badge as="p" className=" is-inactive">{releaseUnavailable?'حالة الإصدار غير مؤكدة':issued?'صدرت للضريبة والتأمين فقط؛ لا تستوفي شروط الحساب المالي':'مسودة غير معتمدة لحساب الرواتب'}</Badge>{releaseUnavailable&&<p role="alert">تعذر قراءة حالة الإصدار الحالية. <ButtonLink variant="solid" href={retry} >إعادة قراءة الحالة</ButtonLink></p>}<p>بدء العمل بالقواعد: {date(w.current.effective_from)}{w.current.effective_until&&<> · تتوقف من: {date(w.current.effective_until)}</>}</p><h3>المراجع المحفوظة</h3><ul>{w.current.source_references.map((s,i)=><li key={i}>{safeSourceUrl(s.url)?<a className="inline-action" href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a>:<span>{s.title}؛ رابط المرجع غير متاح.</span>}</li>)}</ul><NumericRulesSummary rules={w.current.numeric_rules}/><Link className="inline-action" href="/operator/statutory">العودة إلى المسودات</Link></Panel>
  <Panel className="statutory-task"><DraftForm key={w.head.id} actor={user.id} head={w.head.id} revision={w.head.revision} version={w.head.version} from={w.current.effective_from} until={w.current.effective_until} sources={w.current.source_references} numericRules={w.current.numeric_rules} issued={issued} secondary={releaseUnavailable} next={w.current.numeric_rules&&!issued&&!releaseUnavailable?'/operator/statutory/comparisons?head='+w.head.id:undefined}/></Panel>

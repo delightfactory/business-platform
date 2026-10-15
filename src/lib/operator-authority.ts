@@ -10,6 +10,20 @@ const permissionReads = [
   ['statutory', 'current_operator_can_manage_statutory_rules'],
 ] as const;
 
+type OperatorPermissionRpc = typeof permissionReads[number][1] | 'current_platform_operator_status';
+type OperatorClient = NonNullable<Awaited<ReturnType<typeof getWorkspaceClient>>>;
+type PermissionRead = { data: unknown; error: unknown };
+
+// Share these six reads with existing pages while retaining their error/denial handling.
+export const readOperatorRpc = cache(async (client: OperatorClient, name: OperatorPermissionRpc): Promise<PermissionRead> => {
+  if (name !== 'current_platform_operator_status') {
+    const status = await readOperatorRpc(client, 'current_platform_operator_status');
+    if (status.error || status.data !== 'active') return { data: false, error: status.error };
+  }
+  const { data, error } = await client.rpc(name);
+  return { data, error };
+});
+
 export type OperatorAuthority = Record<typeof permissionReads[number][0], boolean> & {
   active: boolean;
   partial: boolean;
@@ -32,12 +46,12 @@ export const readOperatorAuthority = cache(async (): Promise<OperatorAuthority> 
   authority.session = 'verified';
   authority.userId = identity.data.user.id;
 
-  const status = await client.rpc('current_platform_operator_status').then(
+  const status = await readOperatorRpc(client, 'current_platform_operator_status').then(
     result => result, () => ({ data: null, error: true }),
   );
   if (status.error || status.data !== 'active') return { ...authority, partial: Boolean(status.error) };
   authority.active = true;
-  const results = await Promise.all(permissionReads.map(([, rpc]) => client.rpc(rpc).then(
+  const results = await Promise.all(permissionReads.map(([, rpc]) => readOperatorRpc(client, rpc).then(
     result => result, () => ({ data: null, error: true }),
   )));
   results.forEach((result, index) => {

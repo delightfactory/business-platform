@@ -1,11 +1,12 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
-import { Button, ButtonLink, Input } from '@/components/ui';
-import Link from 'next/link';
+import { ButtonLink, Input } from '@/components/ui';
+
 import { operatorPermission } from '@/lib/operator-access';
 import { operatorUuid, onboardingSnapshot } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 import { OnboardingForm } from './OnboardingForm';
 import { OnboardingResult } from './OnboardingResult';
 import { LimitFields } from './LimitFields';
@@ -20,10 +21,10 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
   if (!supabase) return <Status title="إعداد الاتصال غير مكتمل" detail="اطلب من مسؤول التشغيل مراجعة إعدادات الاتصال." />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
-  const { data: status, error: statusError } = await supabase.rpc('current_platform_operator_status');
+  const { data: status, error: statusError } = await readOperatorRpc(supabase, 'current_platform_operator_status');
   if (statusError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
   if (status !== 'active') return <Status title="لا توجد صلاحية تشغيل" detail="هذا الحساب غير مصرح له بتشغيل المنصة حاليًا." />;
-  const { data: canOnboard, error: capabilityError } = await supabase.rpc('current_operator_can_onboard_tenants');
+  const { data: canOnboard, error: capabilityError } = await readOperatorRpc(supabase, 'current_operator_can_onboard_tenants');
   if (capabilityError) return <Status title="تعذر التحقق من الصلاحية" detail="أعد قراءة الصفحة للتحقق من مهمة إعداد الشركات." />;
   if (!operatorPermission({ data: canOnboard, error: capabilityError })) return <Status title="إعداد الشركات غير متاح" detail="صلاحية إعداد الشركات غير ممنوحة لهذا المشغّل." />;
   if (params.key !== undefined && !operatorUuid(params.key)) return <Status title="مرجع الإعداد غير صالح" detail="تعذر مراجعة المحاولة بهذا الرابط. احتفظ بصفحة المحاولة الأصلية ولا تبدأ شركة جديدة لتجاوز نتيجتها غير المؤكدة." />;
@@ -33,9 +34,7 @@ export default async function OperatorOnboardingPage({ searchParams }: { searchP
 
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
-          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+
       <Panel  aria-labelledby="onboard-title">
         <p className="eyebrow">إعداد الشركات</p><PageHeader id="onboard-title" title={<>إعداد شركة جديدة</>} />
         <p className="intro">أدخل بيانات الشركة ومسؤولًا لديه حساب موجود وبريد مؤكد.</p>
@@ -63,8 +62,7 @@ function stateMessage() {
   return 'الرابط وحده لا يؤكد نتيجة إعداد الشركة. راجع بيانات المحاولة والحالة الحالية قبل الإرسال.';
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
-    <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+  return <main className="app-shell">
     <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">مساحة المشغّل</p>
       <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel>
     </main>;

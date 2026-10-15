@@ -1,14 +1,16 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Disclosure, RecordCard, Badge } from '@/components/ui';
 import { Panel, Message, Checkbox } from '@/components/ui';
 import { Button, ButtonLink, Input, Textarea } from '@/components/ui';
-import Link from 'next/link';
+
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeOperatorGrantAction } from './actions';
 import { operatorPermission } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
 import { operatorGrantList, type OperatorGrant } from '@/lib/operator-read';
+import { operatorTaskLabels } from '@/lib/operator-labels';
 
 export const dynamic = 'force-dynamic';
 type Query = Promise<{ state?: string }>;
@@ -21,9 +23,9 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
   const { data: { user }, error: authError } = await getWorkspaceUser(supabase);
   if (authError) return <Status title="تعذر التحقق من الحساب" detail="أعد قراءة الصفحة للتحقق من حسابك قبل تغيير أي صلاحية." />;
   if (!user) redirect('/auth/login?state=no-session');
-  const status = await supabase.rpc('current_platform_operator_status');
-  const canManage = await supabase.rpc('current_operator_can_manage_operators');
-  if (status.error || canManage.error || !['active', 'revoked', 'not_operator'].includes(status.data) || typeof canManage.data !== 'boolean') return <Status title="تعذر التحقق من الصلاحية" detail="لم تتأكد صلاحية إدارة المشغّلين الآن. أعد قراءة الصفحة قبل أي تغيير." />;
+  const status = await readOperatorRpc(supabase, 'current_platform_operator_status');
+  const canManage = await readOperatorRpc(supabase, 'current_operator_can_manage_operators');
+  if (status.error || canManage.error || typeof status.data !== 'string' || !['active', 'revoked', 'not_operator'].includes(status.data) || typeof canManage.data !== 'boolean') return <Status title="تعذر التحقق من الصلاحية" detail="لم تتأكد صلاحية إدارة المشغّلين الآن. أعد قراءة الصفحة قبل أي تغيير." />;
   if (status.data !== 'active' || !operatorPermission(canManage)) return <Status denied title="إدارة المشغّلين غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة المشغّلين الحالية." />;
   const { data, error } = await supabase.rpc('platform_operator_grant_list');
   const grants = error ? null : operatorGrantList(data);
@@ -32,9 +34,7 @@ export default async function OperatorGrantsPage({ searchParams }: { searchParam
 
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator">العودة للمهام</ButtonLink>
-          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+
       <Panel className="operator-grants-overview" aria-labelledby="operators-title">
         <p className="eyebrow">صلاحيات المنصة</p><PageHeader id="operators-title" title={<>مشغّلو المنصة</>} />
         {success && <Message tone="info"  role="status">راجع المنح الحالية أدناه؛ الرابط وحده لا يؤكد حفظ تغيير.</Message>}
@@ -100,7 +100,7 @@ function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pic
     <label className="check-option"><Checkbox  name="canManageOperators" defaultChecked={defaults?.can_manage_operators ?? false} /> إدارة المشغّلين</label>
     <label className="check-option"><Checkbox  name="canOnboardTenants" defaultChecked={defaults?.can_onboard_tenants ?? false} /> إعداد الشركات</label>
     <label className="check-option"><Checkbox  name="canManageTenantLifecycle" defaultChecked={defaults?.can_manage_tenant_lifecycle ?? false} /> تعليق الشركات واستعادتها وأرشفتها</label>
-    <label className="check-option"><Checkbox  name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> إدارة حدود الاستخدام</label>
+    <label className="check-option"><Checkbox  name="canManageCommercialAccess" defaultChecked={defaults?.can_manage_commercial_access ?? false} /> {operatorTaskLabels.can_manage_commercial_access}</label>
     <label className="check-option"><Checkbox  name="canManageStatutoryRules" defaultChecked={defaults?.can_manage_statutory_rules ?? false} /> إدارة القواعد القانونية للرواتب</label>
     <p className="field-hint">تُمنح مهمة القواعد القانونية لمسؤول الامتثال صراحةً. لا يمنحها إعداد الشركات أو إدارة الرواتب، ولا يعني منحها اعتماد أي نسخة قواعد قانونية للحساب.</p>
     <span className="field-hint" id={`${prefix}-capability-hint`}>اختر مهمة واحدة على الأقل. سحب الصلاحيات يتم بإجراء مستقل.</span>
@@ -109,7 +109,7 @@ function CapabilityFields({ prefix, defaults }: { prefix: string; defaults?: Pic
 
 function capabilityNames(grant: Grant) {
   return [grant.can_manage_operators && 'إدارة المشغّلين', grant.can_onboard_tenants && 'إعداد الشركات',
-    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && 'إدارة حدود الاستخدام', grant.can_manage_statutory_rules && 'إدارة القواعد القانونية للرواتب'].filter((name): name is string => Boolean(name));
+    grant.can_manage_tenant_lifecycle && 'إدارة حالة الشركات', grant.can_manage_commercial_access && operatorTaskLabels.can_manage_commercial_access, grant.can_manage_statutory_rules && 'إدارة القواعد القانونية للرواتب'].filter((name): name is string => Boolean(name));
 }
 
 function stateText(state: string) {
@@ -127,7 +127,7 @@ const operatorErrors: Record<string, string> = {
     failed: 'نتيجة التغيير غير مؤكدة. راجع المنح الحالية قبل إجراء تغيير آخر؛ لا تُعد الإرسال اعتمادًا على هذه الرسالة وحدها.',
 };
 function Status({ title, detail, denied = false }: { title: string; detail: string; denied?: boolean }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header>
+  return <main className="app-shell">
     <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">صلاحيات المنصة</p>
       <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p>
       <form method="get" action="/operator/operators"><Button variant="ghost" className={denied ? 'secondary-button' : 'primary-button'} type="submit">إعادة قراءة الصفحة</Button></form>

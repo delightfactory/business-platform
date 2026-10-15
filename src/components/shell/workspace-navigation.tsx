@@ -113,6 +113,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
       </DropdownMenu.Trigger><DropdownMenu.Portal><DropdownMenu.Content className="workspace-account-menu" sideOffset={10} align="end">
         <DropdownMenu.Label className="workspace-account-label"><bdi>{contextLabel}</bdi><small>{mode === 'operator' ? 'تشغيل المنصة' : 'مساحة الشركة'}</small></DropdownMenu.Label>
         {switchHref && switchLabel && <DropdownMenu.Item asChild><Link href={switchHref}>{switchLabel}</Link></DropdownMenu.Item>}
+        {mode === 'operator' && <DropdownMenu.Item asChild><Link href="/">مساحات العمل</Link></DropdownMenu.Item>}
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
         <form action={signOutAction}><SignOutMenuItem /></form>

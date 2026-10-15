@@ -1,11 +1,12 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Badge, Disclosure } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
-import { Button, ButtonLink, Input, Select, Textarea } from '@/components/ui';
+import { ButtonLink, Input, Select, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
-import Link from 'next/link';
+
 import { operatorEntitlementSnapshot, type OperatorEntitlement } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
 import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
@@ -26,9 +27,9 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [status, commercial, lifecycle] = await Promise.all([
-    supabase.rpc('current_platform_operator_status'),
-    supabase.rpc('current_operator_can_manage_commercial_access'),
-    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
+    readOperatorRpc(supabase, 'current_platform_operator_status'),
+    readOperatorRpc(supabase, 'current_operator_can_manage_commercial_access'),
+    readOperatorRpc(supabase, 'current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
   if (status.error || status.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة خدمات الشركة غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_entitlement_snapshot', { p_tenant_id: tenantId });
@@ -42,9 +43,7 @@ export default async function TenantEntitlementsPage({ params, searchParams }: {
     && decision.status === 'effective' && decision.is_granted === true && decision.evaluator_enabled);
 
   return <main className="app-shell">
-    <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink>
-        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+    <nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav>
     <Panel className="operator-setting-detail" aria-labelledby="entitlements-title">
       <p className="eyebrow">خدمات الشركة</p><PageHeader id="entitlements-title" title={<><bdi>{tenant.display_name}</bdi></>} />
       <Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge>
@@ -117,4 +116,4 @@ const entitlementErrors: Record<string, string> = {
     expiry: 'يجب أن يكون آخر يوم سريان في المستقبل.',
     failed: 'لم تتأكد نتيجة تحديث حالة الخدمة. راجع خدمات الشركة الحالية قبل إجراء آخر.',
 };
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink></Panel></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/entitlements">قائمة الشركات</ButtonLink></Panel></main>; }

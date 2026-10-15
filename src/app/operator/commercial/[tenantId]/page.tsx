@@ -1,11 +1,12 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Badge, Disclosure } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
-import { Button, ButtonLink, Textarea } from '@/components/ui';
+import { ButtonLink, Textarea } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
-import Link from 'next/link';
+
 import { operatorCommercialSnapshot, type OperatorLimit } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
 import { operatorPermission, sameCompanyScope } from '@/lib/operator-access';
 import { OperatorActionForm } from '@/app/operator/operator-action-form';
@@ -27,8 +28,8 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [operatorStatus, commercial, lifecycle] = await Promise.all([
-    supabase.rpc('current_platform_operator_status'), supabase.rpc('current_operator_can_manage_commercial_access'),
-    supabase.rpc('current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
+    readOperatorRpc(supabase, 'current_platform_operator_status'), readOperatorRpc(supabase, 'current_operator_can_manage_commercial_access'),
+    readOperatorRpc(supabase, 'current_operator_can_manage_tenant_lifecycle').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
   if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(commercial)) return <Status title="إدارة الحدود غير متاحة" />;
   const { data, error } = await supabase.rpc('platform_tenant_commercial_snapshot', { p_tenant_id: tenantId });
@@ -37,9 +38,7 @@ export default async function CommercialTenantPage({ params, searchParams }: { p
   if (!operatorCommercialSnapshot(tenant) || !sameCompanyScope(tenant.tenant_id, tenantId)) return <Status title="بيانات الحدود غير مكتملة" />;
 
   return <main className="app-shell">
-    <header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-      <nav className="topbar-actions" aria-label="إجراءات الحساب"><ButtonLink variant="ghost"  href="/operator/commercial">قائمة الشركات</ButtonLink>
-        <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></nav></header>
+    <nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav>
     <Panel className="operator-setting-detail" aria-labelledby="commercial-title">
       <p className="eyebrow">حدود الاستخدام</p><PageHeader id="commercial-title" title={<><bdi>{tenant.display_name}</bdi></>} />
       <Badge as="p" className={` ${tenant.lifecycle_state === 'active' ? 'is-active' : 'is-inactive'}`}>{stateLabel(tenant.lifecycle_state)}</Badge>
@@ -95,4 +94,4 @@ const limitErrors: Record<string, string> = {
     failed: 'لم تتأكد نتيجة تحديث الحد. راجع الحدود الحالية قبل إجراء آخر.',
 };
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
-function Status({ title }: { title: string }) { return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator">مهام تشغيل المنصة</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/commercial">قائمة الشركات</ButtonLink></Panel></main>; }
+function Status({ title }: { title: string }) { return <main className="app-shell"><nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">تحقق من الصلاحية والاتصال ثم أعد المحاولة.</p><ButtonLink variant="ghost"  href="/operator/commercial">قائمة الشركات</ButtonLink></Panel></main>; }

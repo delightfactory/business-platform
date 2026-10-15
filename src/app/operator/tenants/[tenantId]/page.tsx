@@ -1,10 +1,11 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Badge, Disclosure } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
-import { Button, ButtonLink, Textarea } from '@/components/ui';
-import Link from 'next/link';
+import { ButtonLink, Textarea } from '@/components/ui';
+
 import { operatorLifecycleSnapshot } from '@/lib/operator-read';
 import { redirect } from 'next/navigation';
-import { signOutAction } from '@/app/auth/actions';
+
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { changeTenantLifecycleAction } from '../actions';
 import { CompanyTaskLinks } from '@/app/operator/company-task-links';
@@ -25,9 +26,9 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?state=no-session');
   const [operatorStatus, lifecycle, commercial] = await Promise.all([
-    supabase.rpc('current_platform_operator_status'),
-    supabase.rpc('current_operator_can_manage_tenant_lifecycle'),
-    supabase.rpc('current_operator_can_manage_commercial_access').then(result => result, (error: unknown) => ({ data: null, error })),
+    readOperatorRpc(supabase, 'current_platform_operator_status'),
+    readOperatorRpc(supabase, 'current_operator_can_manage_tenant_lifecycle'),
+    readOperatorRpc(supabase, 'current_operator_can_manage_commercial_access').then(result => result, (error: unknown) => ({ data: null, error })),
   ]);
   if (operatorStatus.error || operatorStatus.data !== 'active' || !operatorPermission(lifecycle)) {
     return <Status title="إدارة حالة الشركات غير متاحة" detail="تحتاج هذه الصفحة إلى صلاحية إدارة حالة الشركات الحالية." />;
@@ -40,13 +41,7 @@ export default async function OperatorTenantLifecyclePage({ params, searchParams
   const transitions = transitionsFor(tenant.lifecycle_state);
   return (
     <main className="app-shell">
-      <header className="topbar">
-        <Link className="brand" href="/operator">مهام تشغيل المنصة</Link>
-        <nav className="topbar-actions" aria-label="إجراءات الحساب">
-          <ButtonLink variant="ghost"  href="/operator/tenants">قائمة الشركات</ButtonLink>
-          <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
-        </nav>
-      </header>
+      <nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav>
       <Panel className="operator-lifecycle-detail" aria-labelledby="tenant-title">
         <p className="eyebrow">إدارة حالة الشركة</p>
         <PageHeader id="tenant-title" title={<><bdi>{tenant.tenant_name}</bdi></>} />
@@ -113,6 +108,7 @@ const lifecycleErrors: Record<string, string> = {
     active: 'أُعيد تشغيل الشركة.', suspended: 'عُلّقت الشركة.', archived: 'أُرشفت الشركة.',
     invalid: 'تعذر التحقق من الإجراء.', reason: 'أدخل سببًا من 3 إلى 500 حرف.',
     transition: 'هذا الانتقال غير مسموح من الحالة الحالية.',
+    stale: 'تغيّرت حالة الشركة منذ فتح الصفحة. راجع الحالة الحالية ثم اختر الإجراء المناسب من جديد.',
     forbidden: 'لا تسمح صلاحيتك الحالية بإدارة حالة الشركات.',
     'not-found': 'لم نعثر على الشركة المطلوبة.',
     failed: 'لم تتأكد نتيجة تغيير الحالة. راجع حالة الشركة الحالية قبل إجراء آخر.',
@@ -121,7 +117,7 @@ const lifecycleErrors: Record<string, string> = {
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/operator/tenants">قائمة الشركات</Link></header>
+  return <main className="app-shell"><nav aria-label="العودة للشركات"><ButtonLink variant="ghost" href="/operator/companies">الشركات</ButtonLink></nav>
     <Panel className="auth-card" aria-labelledby="status-title"><p className="eyebrow">إدارة حالة الشركات</p>
       <PageHeader id="status-title" title={<>{title}</>} /><p className="intro">{detail}</p></Panel></main>;
 }

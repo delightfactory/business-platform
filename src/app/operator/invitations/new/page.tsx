@@ -1,3 +1,4 @@
+import { readOperatorRpc } from '@/lib/operator-authority';
 import { PageHeader, Panel } from '@/components/ui';
 import { Message } from '@/components/ui';
 import { ButtonLink } from '@/components/ui';
@@ -18,7 +19,7 @@ export default async function NewFirstAdminInvitationPage({ searchParams }: {
   if (!supabase) return <Status />;
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect('/auth/login?next=%2Foperator%2Finvitations%2Fnew');
-  const { data: capable, error } = await supabase.rpc('current_operator_can_onboard_tenants');
+  const { data: capable, error } = await readOperatorRpc(supabase, 'current_operator_can_onboard_tenants');
   if (error) return <Status detail="تعذر التحقق من صلاحية إعداد الشركات. أعد المحاولة لاحقًا." />;
   if (!operatorPermission({ data: capable, error })) return <Status />;
 
