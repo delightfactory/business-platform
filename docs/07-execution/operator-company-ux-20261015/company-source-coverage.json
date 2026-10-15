@@ -1,0 +1,385 @@
+{
+  "formerlyIncomplete": 21,
+  "model": "claude-opus-5-5",
+  "routes": [
+    {
+      "path": "src/app/auth/employee-account-activation/callback/page.tsx",
+      "sourceSha256NormalizedLf": "8B6E8A8861E3275B82BBDF5CCC28BE0D8AA2B0D6693B604BD6B2221FC988E217",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/employee-account-activation/page.tsx",
+      "sourceSha256NormalizedLf": "0ACE6188227D7961CC3732C10F686E744EA046A7A011A00FFD96ED0EB3B12D50",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/forgot-password/page.tsx",
+      "sourceSha256NormalizedLf": "8CBC49CF6B5CE161EE75BD7B38C0B01D3036FA70CCA5BF75DA40A74FEB96FC4F",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/invitations/accept/page.tsx",
+      "sourceSha256NormalizedLf": "6A4EF8FD31A10444B0E9E913BB8B7A1F07A538359BAC1E5F1279EA8B4132C75A",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/invitations/callback/page.tsx",
+      "sourceSha256NormalizedLf": "114322BADEB08DFA6A43C880B65E9E5933BD3384E7AD921126C3E9EF5676E86D",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/login/page.tsx",
+      "sourceSha256NormalizedLf": "35A9EAA2DBFCE30A167C8FD753B1020C4F22688298DB9B9D8EE976FACADB73A8",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/membership-invitations/accept/page.tsx",
+      "sourceSha256NormalizedLf": "927BBC5DC4E910199039429731893187B9040B6FAE7A814CC3938D361655AE84",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/membership-invitations/callback/page.tsx",
+      "sourceSha256NormalizedLf": "030DD70B07D8CAA314E71CCE421EBB21242F0B4A3044B363A7DEA6BE03552262",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/auth/password/update/page.tsx",
+      "sourceSha256NormalizedLf": "33C35A949E17416E1BC3180853A69639BA3A69B8119B3CCEB7957BE43C2C140F",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/page.tsx",
+      "sourceSha256NormalizedLf": "E0586EC4AF05D7F190F735A1098434A6AA0830760F60CAE822634097C8F44090",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/[instanceId]/page.tsx",
+      "sourceSha256NormalizedLf": "9DAC236E667347E55E05D25C7D7BD1FAA8805A80A555A647C727E2B1091D2306",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/import/page.tsx",
+      "sourceSha256NormalizedLf": "57C15633776B0A2B943F3E653EA7E856D717FB52EB74AA896F172FB54C5F9377",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/page.tsx",
+      "sourceSha256NormalizedLf": "8060CBB9909AEA7D789F894EADDBEE749B2999B51D7B79E64F5C9BD3EC465FA6",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/review/page.tsx",
+      "sourceSha256NormalizedLf": "30343B721CC8D83001C55D44D3DE2948094B753764911E6C945E537E230B3D07",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/events/[eventId]/page.tsx",
+      "sourceSha256NormalizedLf": "1392928D84F4C8C9E79E6FED950B789D92D4DEECCB95B6B0C2D66FCBAC73BE30",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/sources/[sourceId]/page.tsx",
+      "sourceSha256NormalizedLf": "17871BE1D654652561D942942358ED71526830FC2EB55CD3294E72FB846C9F83",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/sources/new/page.tsx",
+      "sourceSha256NormalizedLf": "47816678BBA4BF11952941DC226E0F026D9DEB245159D7677AD554370394BD55",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/sources/page.tsx",
+      "sourceSha256NormalizedLf": "1D8A990AADF4CF01812F992EA8B4B614ED3A65B429C1BB6B9743408D0873F569",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/attendance/unassigned/page.tsx",
+      "sourceSha256NormalizedLf": "D31C4D032469CCEBAF9FEFE9BF60E65787233FBEB8D403D8A34A0DC5D09C6ABA",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/branding/page.tsx",
+      "sourceSha256NormalizedLf": "A8BD0C70B275D20BA2C637520F01B3F02969417336FE011728302D7F91ABD139",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/entities-sites/[entityId]/page.tsx",
+      "sourceSha256NormalizedLf": "170B31466574C81299AE752769A5F2DF06AC7419F88BE02A0DCDB08E1E064605",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/entities-sites/[entityId]/sites/new/page.tsx",
+      "sourceSha256NormalizedLf": "FD4D136A0B2CC61FCC30ABC392E2ED6C70770FD0477E8EA1072C5AF6B6AA2019",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/entities-sites/new/page.tsx",
+      "sourceSha256NormalizedLf": "8A016BDE1CE17BD34E53B51DD78A6715D1C05196F4BFA6445E4A2F5ACF9DE31E",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/entities-sites/page.tsx",
+      "sourceSha256NormalizedLf": "B8DB28D8A61BEBFB52F732D6681F396EF807430EC74DE680A664488FC3D901F4",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/balances/[accountId]/page.tsx",
+      "sourceSha256NormalizedLf": "FC33B3AF0E04BB5D5176C982B6FD5A7382A23DB4562843828D9B3900C871CE6D",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/balances/annual/page.tsx",
+      "sourceSha256NormalizedLf": "FF45AA4D4232BF903047A7D5B02DE658F3868536F0CC362CADD65455466E43E3",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/balances/page.tsx",
+      "sourceSha256NormalizedLf": "D1F3F7E4EEBF5A6CC93FF1F650C60CA24C41EF9B4C93F090FEDF83FDADD087A3",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/new/page.tsx",
+      "sourceSha256NormalizedLf": "9C25E73D81BC28E14CD770836664A42328E57534739BF22BA9461E61BD4F0DAF",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/page.tsx",
+      "sourceSha256NormalizedLf": "286170D72ED614DA260559ECAFDC5CC04ACAA7A9EC87DDA37AF8AEAEFC6EEAE4",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/requests/[requestId]/page.tsx",
+      "sourceSha256NormalizedLf": "898605959283F20CEB86C5B3E30FD9185870662744B1E2F43ED9A67A2F99DE1C",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/[calendarId]/page.tsx",
+      "sourceSha256NormalizedLf": "20EBD75BA7ED31F6068D025541594AF3BBD0017932228B3D10EC3ED492C126B5",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/page.tsx",
+      "sourceSha256NormalizedLf": "CA69D0CADA6BCCE6E21D588C3755E9AEBF6915024BA21CDACE32070EA12CACF2",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/page.tsx",
+      "sourceSha256NormalizedLf": "4025B2A96E942E2909E36A4CABE17C09BCAE7C785BA8D5CE40A52AB3FCFF6D7D",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/[typeId]/page.tsx",
+      "sourceSha256NormalizedLf": "3AFE5065E253250A34909E318023ABFB2582C49836FCD3EE876BDC3A4CEC39BC",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/page.tsx",
+      "sourceSha256NormalizedLf": "B8EA59E59398F36C80C593463945937113CC3C50C6FF243900BFB0FC834B8228",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/[employerId]/year-periods/new/page.tsx",
+      "sourceSha256NormalizedLf": "04479DEFEE7B3FF5651CF6A955A2078392917CB16DBBA9C47B739674FC7D72B2",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/leave/settings/page.tsx",
+      "sourceSha256NormalizedLf": "ADF4351A7D951DD7B36E305968343907118B95E9160AF65F7C6606642C5A7129",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/me/attendance/page.tsx",
+      "sourceSha256NormalizedLf": "474835C2D9DBD79F40E528978E336641A3536A90E9D0752F8036AA0C82F3E07D",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/me/leave/[requestId]/page.tsx",
+      "sourceSha256NormalizedLf": "9DB7D353941FC1F595C8103BE206CBE40AEA195F8D99A91E6ED40CC24E036C85",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/me/leave/new/page.tsx",
+      "sourceSha256NormalizedLf": "1A88CFCE3D078195DCA605E04E924F4BFCF2D25450A1921C057A569AC27167A2",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/me/leave/page.tsx",
+      "sourceSha256NormalizedLf": "CF54CD5C25E2AB64B32E71ECCACA94E5215762525BFBCD956123A37F11A0CD8C",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/me/page.tsx",
+      "sourceSha256NormalizedLf": "3932EBA9AF0F4D3A69EB4F87F6C03C415D695EE027C2915616CD53E894657D3E",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/page.tsx",
+      "sourceSha256NormalizedLf": "BCFBF085D32581847A4C5B82B758E97549E2BFF1ED674772D662A8EE550C99B7",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/advances/page.tsx",
+      "sourceSha256NormalizedLf": "91153DBDE00EECB71FC85F65B4BAFFBF10FDCC0F65E4E84DEC9D787917299734",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/corrections/page.tsx",
+      "sourceSha256NormalizedLf": "3AF5F15087E4BDA21BF86F6DD7C4CDD0CB956E03E2CB07AF28D660D735A71783",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/inputs/page.tsx",
+      "sourceSha256NormalizedLf": "F18FEF157195E4FF2BADDBB4E6FAD60B7A9DCDEC51B4F7059902182C65DCA188",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/output/page.tsx",
+      "sourceSha256NormalizedLf": "A23A96354EE78917F39C7AFED43A34EA60B34B45A76E780FDBEBA5111679C464",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/page.tsx",
+      "sourceSha256NormalizedLf": "4E921CAD46F80CFD82A45C2EDEEFCF60C375E7E6C09398D1DEA459F5406EE66A",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/payments/page.tsx",
+      "sourceSha256NormalizedLf": "5DD930BB6D046970B1D180A43B8BE8B3BFE828E78D4F92A8DE0628D9E01EC3D2",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/reports/page.tsx",
+      "sourceSha256NormalizedLf": "26143F1EFFDF4E189FC3F6BC5D4CBA644080C918CB2A132F397276728A9CFDBC",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/runs/page.tsx",
+      "sourceSha256NormalizedLf": "E59E38B91E742E46D96B216300B3D7149B8A42FDACD391F77E29E295FA83D1A4",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/payroll/setup/page.tsx",
+      "sourceSha256NormalizedLf": "C2206FD370A3ACC3E0FD899C31AAF02C963401203E5B57C68E29E98B2A4B62EB",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/[employeeId]/page.tsx",
+      "sourceSha256NormalizedLf": "72F2D999F69F4004CAC6DC8296385CCF76FF3AF1AC9BB631D988F61F32A1C119",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/import/page.tsx",
+      "sourceSha256NormalizedLf": "EA83026CD04D4CB4FE75D2B0D6CDF3FDC788968CE9D21195BFE1E7232311B665",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/new/page.tsx",
+      "sourceSha256NormalizedLf": "783336659740844ADC1F688C1573CDA11C15506C84F32F5087CF2F675B8EA4F5",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/organization/[kind]/[recordId]/page.tsx",
+      "sourceSha256NormalizedLf": "CE0F4BA5B42BD4D3C895B5A848D7479A102CB27F466C3C7FA78598AA8064FE60",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/organization/page.tsx",
+      "sourceSha256NormalizedLf": "D43DC49DF49EFE814F494E93B2DCA5B5165B78F424BE8EFDFB392314F517CE3E",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/page.tsx",
+      "sourceSha256NormalizedLf": "B6D3361D07FDDB90B1CE7EC7802D459AA3378E6B5199896C7130936271DFFBBA",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/people/work-policies/page.tsx",
+      "sourceSha256NormalizedLf": "FCDD3C5A0334BB0202E14A74A73C6AAE2AD6730B1BECF78BCCDEA81FCCE0BFFD",
+      "previousRead": "full-pack-read",
+      "freshFullRangeReadReceipt": false
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/users/invite/page.tsx",
+      "sourceSha256NormalizedLf": "E876B0A69B141A8D24A65D865C16B102D1CFEC8DAE17EAF3CA5B985E85B2ED72",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/[tenantId]/users/page.tsx",
+      "sourceSha256NormalizedLf": "67FBAF53B70E1F71E143649DFE012B57BBDB430CEA2C47BF207B86CB94160F51",
+      "previousRead": "partial-read",
+      "freshFullRangeReadReceipt": true
+    },
+    {
+      "path": "src/app/tenant/select/page.tsx",
+      "sourceSha256NormalizedLf": "BCD55A6E9CA016C16EBC09D1E8782438915E3C86C693C95CD586EE41AC84F48A",
+      "previousRead": "not-observed",
+      "freshFullRangeReadReceipt": true
+    }
+  ],
+  "claudeSession": "bfe31bcf-a00b-4684-a377-bee8687a8fe5",
+  "effort": "medium",
+  "pages": 62,
+  "source": "c9ae0b5",
+  "sourceUnchanged": true,
+  "warning": "Read requests and prior unchanged-file receipts are not semantic or runtime acceptance. Dependency gaps are explicitly listed in the study. Company implementation has not begun.",
+  "freshFullRangeReadReceipts": 21
+}
