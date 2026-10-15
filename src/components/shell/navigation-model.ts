@@ -2,6 +2,21 @@ import type { IconName } from '@/components/ui/icon';
 export type WorkspaceLink = { href: string; label: string; mobilePriority?: number };
 export type NavArea = { key: string; label: string; icon: IconName; destination: WorkspaceLink; links: WorkspaceLink[] };
 
+export function hasTeamWorkspace(links: WorkspaceLink[]) {
+  return links.some(item => /\/(people|attendance|leave|payroll)(?:\/|\?|$)/.test(item.href) && !item.href.includes('/me/'));
+}
+
+const timeOrder = ['attendance', 'attendance/review', 'leave', 'leave/balances', 'attendance/sources', 'leave/settings'];
+const payrollOrder = ['payroll', 'payroll/runs', 'payroll/inputs', 'payroll/setup', 'payroll/advances', 'payroll/reports'];
+function ordered(links: WorkspaceLink[], order: string[]) {
+  const rank = (href: string) => {
+    const route = href.split(/[?#]/)[0].replace(/^\/tenant\/[^/]+\//, '');
+    const index = order.indexOf(route);
+    return index < 0 ? order.length : index;
+  };
+  return links.sort((a, b) => rank(a.href) - rank(b.href));
+}
+
 // Group only links already authorized by the server. No destination is invented.
 export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admin: WorkspaceLink[], mode: 'tenant' | 'operator'): NavArea[] {
   const areas: NavArea[] = [{ key: 'today', label: mode === 'tenant' ? 'اليوم' : 'نظرة عامة', icon: 'home', destination: { href: homeHref, label: 'اليوم' }, links: [] }];
@@ -14,17 +29,18 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
     add('team', 'فريق التشغيل', 'users', admin.filter(item => /\/(team|operators)(?:\/|$)/.test(item.href)));
     add('statutory', 'قواعد الرواتب', 'shield', admin.filter(item => /\/statutory(?:\/|$)/.test(item.href)));
   } else {
-    const team = business.some(item => /\/(people|attendance|leave|payroll)(?:\/|\?|$)/.test(item.href) && !item.href.includes('/me/'));
+    const team = hasTeamWorkspace(business);
     if (team) {
       add('people', 'الناس', 'users', business.filter(item => item.href.includes('/people')));
-      add('time', 'الوقت', 'clock', business.filter(item => !item.href.includes('/me/') && /\/(attendance|leave)(?:\/|$)/.test(item.href)).sort((a,b) => a.href.length-b.href.length));
-      add('payroll', 'الرواتب', 'wallet', business.filter(item => item.href.includes('/payroll')).sort((a,b) => a.href.length-b.href.length));
+      add('time', 'الوقت', 'clock', ordered(business.filter(item => !item.href.includes('/me/') && /\/(attendance|leave)(?:\/|$)/.test(item.href)), timeOrder));
+      add('payroll', 'الرواتب', 'wallet', ordered(business.filter(item => item.href.includes('/payroll')), payrollOrder));
     } else {
       // Self-service destinations remain available even when the employee has no HR access.
       const attendance = business.filter(item => item.href.endsWith('/me/attendance'));
-      if (attendance.length) areas[0] = { key: 'today', label: 'يومي', icon: 'home', destination: attendance[0], links: attendance };
+      const profile = business.find(item => item.href.endsWith('/me'));
+      if (profile) areas[0] = { key: 'today', label: 'يومي', icon: 'home', destination: profile, links: [] };
       add('leave', 'إجازاتي', 'calendar', business.filter(item => item.href.includes('/me/leave')));
-      add('profile', 'ملفي', 'user', business.filter(item => item.href.endsWith('/me')));
+      add('record', 'سجلي', 'clock', attendance);
     }
   }
   return areas;

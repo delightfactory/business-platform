@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { safeAuthNext } from './safe-next';
+import { readOperatorAuthority } from '@/lib/operator-authority';
 
 export async function signInAction(formData: FormData) {
   const email = String(formData.get('email') ?? '').trim();
@@ -21,7 +22,8 @@ export async function signInAction(formData: FormData) {
     if (typeof tenantId === 'string' && /^[0-9a-f-]{36}$/i.test(tenantId)) redirect(`/tenant/${tenantId}`);
   }
   if (Array.isArray(memberships) && memberships.length > 1) redirect('/tenant/select');
-  redirect('/operator');
+  const operator = await readOperatorAuthority();
+  redirect(operator.active ? '/operator' : '/tenant/select');
 }
 
 export async function requestPasswordResetAction(formData: FormData) {

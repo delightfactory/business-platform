@@ -54,12 +54,14 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
   const contextual = (item: WorkspaceLink) => ({ ...item, href: payrollDestination(pathname, item.href, employer) });
   const links = originalLinks.map(contextual);
   const businessLinks = originalBusinessLinks.map(contextual);
+  const profile = mode === 'tenant' ? businessLinks.find(item => item.href.endsWith('/me')) : undefined;
   const areas = workspaceAreas(homeHref, businessLinks, links, mode);
   const groupedHrefs = new Set(areas.flatMap(area => area.links.map(item => item.href)));
-  const ownLinks = businessLinks.filter(item => !groupedHrefs.has(item.href));
+  const ownLinks = businessLinks.filter(item => !groupedHrefs.has(item.href) && item !== profile);
   const managementLinks = links.filter(item => !groupedHrefs.has(item.href));
   const showMoreMenu = mode === 'tenant' || ownLinks.length > 0 || managementLinks.length > 0;
-  const allLinks = [{ href: homeHref, label: mode === 'tenant' ? 'اليوم' : 'نظرة عامة' }, ...businessLinks, ...links];
+  const personalHome = mode === 'tenant' && homeHref.endsWith('/me');
+  const allLinks = [{ href: homeHref, label: areas[0].label }, ...businessLinks, ...links];
   const active = allLinks.filter(item => matchesDestination(pathname, item.href)).sort((a,b) => b.href.length-a.href.length)[0];
   const activeArea = areas.find(area => area.links.some(item => matchesDestination(pathname, item.href)))
     ?? (mode === 'operator' && /^\/operator\/(tenants|commercial|entitlements)(?:\/|$)/.test(pathname)
@@ -113,6 +115,10 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
       </DropdownMenu.Trigger><DropdownMenu.Portal><DropdownMenu.Content className="workspace-account-menu" sideOffset={10} align="end">
         <DropdownMenu.Label className="workspace-account-label"><bdi>{contextLabel}</bdi><small>{mode === 'operator' ? 'تشغيل المنصة' : 'مساحة الشركة'}</small></DropdownMenu.Label>
         {switchHref && switchLabel && <DropdownMenu.Item asChild><Link href={switchHref}>{switchLabel}</Link></DropdownMenu.Item>}
+        {profile && <>
+          {!personalHome && <DropdownMenu.Item asChild><Link href={profile.href}>يومي</Link></DropdownMenu.Item>}
+          <DropdownMenu.Item asChild><Link href={`${profile.href}#my-employee-heading`}>ملفي</Link></DropdownMenu.Item>
+        </>}
         {mode === 'operator' && <DropdownMenu.Item asChild><Link href="/">مساحات العمل</Link></DropdownMenu.Item>}
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />

@@ -17,17 +17,21 @@ export default async function TenantBrandingLayout({ children, params }: { child
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) return children;
   const { data, error } = await readWorkspaceRpc(supabase, 'tenant_branding_snapshot', tenantId, 'p_tenant_id');
-  if (error || !data || typeof data !== 'object' || Array.isArray(data)) return children;
-  const branding = data as Branding;
-  const brandKey = Object.hasOwn(colors, branding.primary_color_key) ? branding.primary_color_key : 'teal';
+  const branding = !error && data && typeof data === 'object' && !Array.isArray(data) ? data as Branding : null;
+  let tenantName = branding?.tenant_name;
+  if (!tenantName) {
+    const { data: membership, error: membershipError } = await readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id');
+    if (!membershipError && membership && typeof membership === 'object' && !Array.isArray(membership) && typeof membership.tenant_name === 'string') tenantName = membership.tenant_name;
+  }
+  const brandKey = branding && Object.hasOwn(colors, branding.primary_color_key) ? branding.primary_color_key : 'teal';
   let logoUrl: string | null = null;
-  if (branding.logo_object_path) {
+  if (branding?.logo_object_path) {
     const { data: signed } = await supabase.storage.from('tenant-branding').createSignedUrl(branding.logo_object_path, 60);
     logoUrl = signed?.signedUrl ?? null;
   }
 
   return <AppShell mode="tenant" brand={brandKey}
-    navigation={<TenantNavigation tenantId={tenantId} tenantName={branding.tenant_name} logoUrl={logoUrl} />}>
+    navigation={<TenantNavigation tenantId={tenantId} tenantName={tenantName || 'مساحة الشركة'} logoUrl={logoUrl} />}>
     {children}
   </AppShell>;
 }
