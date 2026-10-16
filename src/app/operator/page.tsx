@@ -59,12 +59,12 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <ul className="operator-work-list"><TaskLink href="/operator/team" title="فريق التشغيل" detail="امنح مهام التشغيل أو عدّلها أو ألغها." /></ul>
           </section>}
         </div>
-        <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد المصرية للرواتب</h2><ul className="operator-work-list">
+        <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">إعدادات حساب الرواتب</h2><ul className="operator-work-list">
           {canManageStatutory
-            ? <TaskLink href="/operator/statutory" title="الضرائب والتأمينات" detail="راجع القواعد ومراجعها وتواريخ سريانها، ثم تابع المقارنات والإصدار." />
+            ? <TaskLink href="/operator/statutory" title="الضرائب والتأمينات" detail="اضبط إعدادات الحساب وفعّلها مباشرة. المراجع والمقارنات اختيارية." />
             : canManage
-              ? <TaskLink href="/operator/team" title="تفعيل إدارة القواعد المالية" detail="افتح مهام حسابك في فريق التشغيل وفعّل إدارة القواعد القانونية للرواتب. تُسجَّل هذه الصلاحية بشكل مستقل." />
-              : <li><strong>الضرائب والتأمينات</strong><small>تحتاج إدارة القواعد القانونية للرواتب. اطلبها من مسؤول فريق التشغيل.</small></li>}
+              ? <TaskLink href="/operator/team" title="تفعيل إدارة القواعد المالية" detail="افتح مهام حسابك في فريق التشغيل وفعّل إدارة إعدادات الحساب للرواتب. تُسجَّل هذه الصلاحية بشكل مستقل." />
+              : <li><strong>الضرائب والتأمينات</strong><small>تحتاج إدارة إعدادات الحساب للرواتب. اطلبها من مسؤول فريق التشغيل.</small></li>}
         </ul></section>
         {!partialRead && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}

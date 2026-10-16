@@ -40,7 +40,7 @@ export async function OperatorNavigation() {
       links.push({ href: '/operator/invitations', label: 'الدعوات' });
     }
     if (authority.manage) links.push({ href: '/operator/team', label: 'فريق التشغيل' });
-    if (authority.statutory) links.push({ href: '/operator/statutory', label: 'قواعد الرواتب' });
+    if (authority.statutory) links.push({ href: '/operator/statutory', label: 'إعدادات حساب الرواتب' });
   }
   return <ContextNavigation homeHref="/operator" homeLabel="تشغيل المنصة" contextLabel="تشغيل المنصة" links={links} mode="operator" />;
 }

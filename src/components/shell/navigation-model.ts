@@ -28,7 +28,7 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
     add('companies', 'الشركات', 'building', admin.filter(item => /\/(companies|tenants|commercial|entitlements)(?:\/|$)/.test(item.href)));
     add('invitations', 'الدعوات', 'mail', admin.filter(item => /\/(onboarding|invitations)(?:\/|$)/.test(item.href)));
     add('team', 'فريق التشغيل', 'users', admin.filter(item => /\/(team|operators)(?:\/|$)/.test(item.href)));
-    add('statutory', 'قواعد الرواتب', 'shield', admin.filter(item => /\/statutory(?:\/|$)/.test(item.href)));
+    add('statutory', 'إعدادات حساب الرواتب', 'shield', admin.filter(item => /\/statutory(?:\/|$)/.test(item.href)));
   } else {
     const team = hasTeamWorkspace(business);
     if (team) {

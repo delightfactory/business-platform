@@ -1,0 +1,649 @@
+{
+  "evidence_origin": "ai_independently_derived_from_primary_sources",
+  "official": false,
+  "reviewer_model": "claude-opus-5-5",
+  "model_effort": "medium (as appointed)",
+  "review_date": "2026-10-16",
+  "scope": "Egyptian salary tax 2026, ETA treatment 1, resident private-sector employee; insured-wage bounds 2026. Insurance contribution amounts UNRESOLVED (category-dependent). Not labour-law pay, not bank execution.",
+  "global_assumptions": [
+    "Annualize: cumulative net x 360 / cumulative days (FAQ v4 p.6 Q15).",
+    "Full annual personal exemption 20,000 deducted from the annualized net (Law 7/2024 Art.13(1)); floor to 10 EGP after exemption.",
+    "Column chosen on floored annual taxable base (see EG2026-10 unresolved note).",
+    "Annual tax kept exact; period tax = annual x days/360 rounded HALF_UP to 0.01 EGP (assumption: no primary piaster-rounding rule found).",
+    "Tax delta = period cumulative tax - prior tax DUE (not prior withheld).",
+    "Inputs are synthetic; no real persons/companies."
+  ],
+  "cases": [
+    {
+      "case_id": "EG2026-01",
+      "scenario": "low",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-12-31",
+      "tax_duration_days": 360,
+      "tax_net_before_personal_exemption": "30000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "full-year cumulative at December pay; below 40,000 zero band",
+      "tax": {
+        "annualized_net_before_exemption": "30000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "10000",
+        "annual_taxable_floor10": "10000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(10000-0)x0=0"
+        ],
+        "annual_tax": "0",
+        "period_tax_exact": "0",
+        "expected_tax_due_cumulative_period": "0.00",
+        "prior_due": "0",
+        "expected_tax_delta": "0.00"
+      },
+      "expected_tax_due": "0.00",
+      "expected_tax_delta": "0.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      }
+    },
+    {
+      "case_id": "EG2026-02",
+      "scenario": "medium",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-12-31",
+      "tax_duration_days": 360,
+      "tax_net_before_personal_exemption": "180000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "column 1",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "21750.00",
+        "expected_tax_due_cumulative_period": "21750.00",
+        "prior_due": "0",
+        "expected_tax_delta": "21750.00"
+      },
+      "expected_tax_due": "21750.00",
+      "expected_tax_delta": "21750.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      }
+    },
+    {
+      "case_id": "EG2026-03",
+      "scenario": "high",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-12-31",
+      "tax_duration_days": 360,
+      "tax_net_before_personal_exemption": "1400000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "column 6 (>1,200,000): 25% from 1 EGP, 27.5% above",
+      "tax": {
+        "annualized_net_before_exemption": "1400000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "1380000",
+        "annual_taxable_floor10": "1380000",
+        "column_basis": "rounded",
+        "art8_column": 6,
+        "bands": [
+          "(1200000-0)x0.25=300000.00",
+          "(1380000-1200000)x0.275=49500.000"
+        ],
+        "annual_tax": "349500.000",
+        "period_tax_exact": "349500.000",
+        "expected_tax_due_cumulative_period": "349500.00",
+        "prior_due": "0",
+        "expected_tax_delta": "349500.00"
+      },
+      "expected_tax_due": "349500.00",
+      "expected_tax_delta": "349500.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      }
+    },
+    {
+      "case_id": "EG2026-04",
+      "scenario": "mid_year",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-06-01",
+      "tax_period_until": "2026-06-30",
+      "tax_duration_days": 30,
+      "tax_net_before_personal_exemption": "15000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "hired 2026-06-01; FAQ Q39/Q40: duration from hire date, 30-day month",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "1812.50",
+        "expected_tax_due_cumulative_period": "1812.50",
+        "prior_due": "0",
+        "expected_tax_delta": "1812.50"
+      },
+      "expected_tax_due": "1812.50",
+      "expected_tax_delta": "1812.50",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      }
+    },
+    {
+      "case_id": "EG2026-05",
+      "scenario": "cumulative",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-06-30",
+      "tax_duration_days": 180,
+      "tax_net_before_personal_exemption": "90000",
+      "prior_tax_due": "5000",
+      "prior_tax_withheld": "4800",
+      "assumption_note": "June pay; prior_due=5000 is tax DUE on Jan-May filings (synthetic, uneven earnings); prior_withheld=4800 is informational and NOT used in delta (remittance gap is separate)",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "10875.00",
+        "expected_tax_due_cumulative_period": "10875.00",
+        "prior_due": "5000",
+        "expected_tax_delta": "5875.00"
+      },
+      "expected_tax_due": "10875.00",
+      "expected_tax_delta": "5875.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      }
+    },
+    {
+      "case_id": "EG2026-06",
+      "scenario": "insurance_min",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-01-31",
+      "tax_duration_days": 30,
+      "tax_net_before_personal_exemption": "15000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "insured wage threshold sides at min 2,700",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "1812.50",
+        "expected_tax_due_cumulative_period": "1812.50",
+        "prior_due": "0",
+        "expected_tax_delta": "1812.50"
+      },
+      "expected_tax_due": "1812.50",
+      "expected_tax_delta": "1812.50",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null,
+        "insured_months": 1,
+        "insured_wage_clamp_2026": {
+          "2699.99": "2700",
+          "2700": "2700",
+          "2700.01": "2700.01"
+        },
+        "insured_wage_status": "resolved (NOSI 30/11/2025)"
+      },
+      "insurance_month": "2026-01"
+    },
+    {
+      "case_id": "EG2026-07",
+      "scenario": "insurance_max",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-01-31",
+      "tax_duration_days": 30,
+      "tax_net_before_personal_exemption": "30000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "insured wage threshold sides at max 16,700; period tax has repeating decimal -> rounding",
+      "tax": {
+        "annualized_net_before_exemption": "360000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "340000",
+        "annual_taxable_floor10": "340000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(200000-70000)x0.20=26000.00",
+          "(340000-200000)x0.225=31500.000"
+        ],
+        "annual_tax": "61250.000",
+        "period_tax_exact": "5104.166666666666666666666667",
+        "expected_tax_due_cumulative_period": "5104.17",
+        "prior_due": "0",
+        "expected_tax_delta": "5104.17"
+      },
+      "expected_tax_due": "5104.17",
+      "expected_tax_delta": "5104.17",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null,
+        "insured_months": 1,
+        "insured_wage_clamp_2026": {
+          "16699.99": "16699.99",
+          "16700": "16700",
+          "16700.01": "16700",
+          "30000": "16700"
+        },
+        "insured_wage_status": "resolved (NOSI 30/11/2025)"
+      },
+      "insurance_month": "2026-01"
+    },
+    {
+      "case_id": "EG2026-08",
+      "scenario": "component_mix",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-12-31",
+      "tax_duration_days": 360,
+      "tax_net_before_personal_exemption": "180000",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "net_before_exemption = 120000+60000 = 180000; 10000 item excluded ONLY under the stated assumption that its exemption classification is valid (classification itself not verified here). FAQ p.19 Q: employer-borne employee insurance share must be ADDED as a benefit; set 0 here.",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "21750.00",
+        "expected_tax_due_cumulative_period": "21750.00",
+        "prior_due": "0",
+        "expected_tax_delta": "21750.00"
+      },
+      "expected_tax_due": "21750.00",
+      "expected_tax_delta": "21750.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      },
+      "components": {
+        "basic_taxable": "120000",
+        "allowances_taxable": "60000",
+        "employer_paid_employee_insurance_share_benefit": "0",
+        "excluded_by_operator_classification": "10000"
+      }
+    },
+    {
+      "case_id": "EG2026-09",
+      "scenario": "correction",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-06-30",
+      "tax_duration_days": 180,
+      "tax_net_before_personal_exemption": "90000",
+      "prior_tax_due": "10000",
+      "prior_tax_withheld": null,
+      "assumption_note": "positive and negative delta variants below",
+      "tax": {
+        "annualized_net_before_exemption": "180000",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "160000",
+        "annual_taxable_floor10": "160000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(160000-70000)x0.20=18000.00"
+        ],
+        "annual_tax": "21750.00",
+        "period_tax_exact": "10875.00",
+        "expected_tax_due_cumulative_period": "10875.00",
+        "prior_due": "10000",
+        "expected_tax_delta": "875.00"
+      },
+      "expected_tax_due": "10875.00",
+      "expected_tax_delta": "875.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      },
+      "variants": {
+        "original_filing_net_96000": {
+          "annualized_net_before_exemption": "192000",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "172000",
+          "annual_taxable_floor10": "172000",
+          "column_basis": "rounded",
+          "art8_column": 1,
+          "bands": [
+            "(40000-0)x0=0",
+            "(55000-40000)x0.10=1500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(172000-70000)x0.20=20400.00"
+          ],
+          "annual_tax": "24150.00",
+          "period_tax_exact": "12075.00",
+          "expected_tax_due_cumulative_period": "12075.00",
+          "prior_due": "10000",
+          "expected_tax_delta": "2075.00"
+        },
+        "corrected_net_90000": {
+          "annualized_net_before_exemption": "180000",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "160000",
+          "annual_taxable_floor10": "160000",
+          "column_basis": "rounded",
+          "art8_column": 1,
+          "bands": [
+            "(40000-0)x0=0",
+            "(55000-40000)x0.10=1500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(160000-70000)x0.20=18000.00"
+          ],
+          "annual_tax": "21750.00",
+          "period_tax_exact": "10875.00",
+          "expected_tax_due_cumulative_period": "10875.00",
+          "prior_due": "10000",
+          "expected_tax_delta": "875.00"
+        },
+        "correction_effect_on_period_due": "-1200.00",
+        "negative_delta_prior_due_12000": {
+          "annualized_net_before_exemption": "180000",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "160000",
+          "annual_taxable_floor10": "160000",
+          "column_basis": "rounded",
+          "art8_column": 1,
+          "bands": [
+            "(40000-0)x0=0",
+            "(55000-40000)x0.10=1500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(160000-70000)x0.20=18000.00"
+          ],
+          "annual_tax": "21750.00",
+          "period_tax_exact": "10875.00",
+          "expected_tax_due_cumulative_period": "10875.00",
+          "prior_due": "12000",
+          "expected_tax_delta": "-1125.00"
+        },
+        "negative_delta_handling": "credit settled via annual settlement (FAQ v4 p.11 ~L517); not a refund computed here"
+      }
+    },
+    {
+      "case_id": "EG2026-10",
+      "scenario": "rounding",
+      "evidence_origin": "ai_independently_derived_from_primary_sources",
+      "official": false,
+      "tax_treatment": "ETA payroll treatment 1 (FAQ v4 p.13 Q27): permanent/temporary employee, original employer, resident, no disability/chronic/SCZone/foreign special rules",
+      "tax_year": "2026-01-01..2026-12-31 (calendar tax year 2026)",
+      "tax_period_from": "2026-01-01",
+      "tax_period_until": "2026-12-31",
+      "tax_duration_days": 360,
+      "tax_net_before_personal_exemption": "600009.99",
+      "prior_tax_due": "0",
+      "prior_tax_withheld": null,
+      "assumption_note": "input is BEFORE exemption -> taxable 580009.99 -> 580000 (column 1); threshold variants below",
+      "tax": {
+        "annualized_net_before_exemption": "600009.99",
+        "personal_exemption": "20000",
+        "annual_taxable_unrounded": "580009.99",
+        "annual_taxable_floor10": "580000",
+        "column_basis": "rounded",
+        "art8_column": 1,
+        "bands": [
+          "(40000-0)x0=0",
+          "(55000-40000)x0.10=1500.00",
+          "(70000-55000)x0.15=2250.00",
+          "(200000-70000)x0.20=26000.00",
+          "(400000-200000)x0.225=45000.000",
+          "(580000-400000)x0.25=45000.00"
+        ],
+        "annual_tax": "119750.000",
+        "period_tax_exact": "119750.000",
+        "expected_tax_due_cumulative_period": "119750.00",
+        "prior_due": "0",
+        "expected_tax_delta": "119750.00"
+      },
+      "expected_tax_due": "119750.00",
+      "expected_tax_delta": "119750.00",
+      "insurance": {
+        "status": "unresolved",
+        "reason": "Contribution rates depend on the NOSI insurance case/category (FAQ v4 p.38 Q35); Law 148/2019 PDF text extraction was unreadable in this session so Art.19 rates were NOT verified; UHI (Law 2/2018) is a separate regime and governorate-rollout dependent. No universal 11%/18.75% applied.",
+        "expected_employee_insurance": null,
+        "expected_employer_insurance": null,
+        "expected_deductible_insurance": null
+      },
+      "variants": {
+        "taxable_exactly_600000 (net 620000)": {
+          "annualized_net_before_exemption": "620000",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "600000",
+          "annual_taxable_floor10": "600000",
+          "column_basis": "rounded",
+          "art8_column": 1,
+          "bands": [
+            "(40000-0)x0=0",
+            "(55000-40000)x0.10=1500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(200000-70000)x0.20=26000.00",
+            "(400000-200000)x0.225=45000.000",
+            "(600000-400000)x0.25=50000.00"
+          ],
+          "annual_tax": "124750.000",
+          "period_tax_exact": "124750.000",
+          "expected_tax_due_cumulative_period": "124750.00",
+          "prior_due": "0",
+          "expected_tax_delta": "124750.00"
+        },
+        "taxable_600009.99_rounded_basis (net 620009.99)": {
+          "annualized_net_before_exemption": "620009.99",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "600009.99",
+          "annual_taxable_floor10": "600000",
+          "column_basis": "rounded",
+          "art8_column": 1,
+          "bands": [
+            "(40000-0)x0=0",
+            "(55000-40000)x0.10=1500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(200000-70000)x0.20=26000.00",
+            "(400000-200000)x0.225=45000.000",
+            "(600000-400000)x0.25=50000.00"
+          ],
+          "annual_tax": "124750.000",
+          "period_tax_exact": "124750.000",
+          "expected_tax_due_cumulative_period": "124750.00",
+          "prior_due": "0",
+          "expected_tax_delta": "124750.00"
+        },
+        "taxable_600009.99_UNROUNDED_basis (net 620009.99)": {
+          "annualized_net_before_exemption": "620009.99",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "600009.99",
+          "annual_taxable_floor10": "600000",
+          "column_basis": "unrounded",
+          "art8_column": 2,
+          "bands": [
+            "(55000-0)x0.10=5500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(200000-70000)x0.20=26000.00",
+            "(400000-200000)x0.225=45000.000",
+            "(600000-400000)x0.25=50000.00"
+          ],
+          "annual_tax": "128750.000",
+          "period_tax_exact": "128750.000",
+          "expected_tax_due_cumulative_period": "128750.00",
+          "prior_due": "0",
+          "expected_tax_delta": "128750.00"
+        },
+        "taxable_600010 (net 620010)": {
+          "annualized_net_before_exemption": "620010",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "600010",
+          "annual_taxable_floor10": "600010",
+          "column_basis": "rounded",
+          "art8_column": 2,
+          "bands": [
+            "(55000-0)x0.10=5500.00",
+            "(70000-55000)x0.15=2250.00",
+            "(200000-70000)x0.20=26000.00",
+            "(400000-200000)x0.225=45000.000",
+            "(600010-400000)x0.25=50002.50"
+          ],
+          "annual_tax": "128752.500",
+          "period_tax_exact": "128752.500",
+          "expected_tax_due_cumulative_period": "128752.50",
+          "prior_due": "0",
+          "expected_tax_delta": "128752.50"
+        },
+        "taxable_1200000 (net 1220000)": {
+          "annualized_net_before_exemption": "1220000",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "1200000",
+          "annual_taxable_floor10": "1200000",
+          "column_basis": "rounded",
+          "art8_column": 5,
+          "bands": [
+            "(400000-0)x0.225=90000.000",
+            "(1200000-400000)x0.25=200000.00"
+          ],
+          "annual_tax": "290000.000",
+          "period_tax_exact": "290000.000",
+          "expected_tax_due_cumulative_period": "290000.00",
+          "prior_due": "0",
+          "expected_tax_delta": "290000.00"
+        },
+        "taxable_1200010 (net 1220010)": {
+          "annualized_net_before_exemption": "1220010",
+          "personal_exemption": "20000",
+          "annual_taxable_unrounded": "1200010",
+          "annual_taxable_floor10": "1200010",
+          "column_basis": "rounded",
+          "art8_column": 6,
+          "bands": [
+            "(1200000-0)x0.25=300000.00",
+            "(1200010-1200000)x0.275=2.750"
+          ],
+          "annual_tax": "300002.750",
+          "period_tax_exact": "300002.750",
+          "expected_tax_due_cumulative_period": "300002.75",
+          "prior_due": "0",
+          "expected_tax_delta": "300002.75"
+        },
+        "column_basis_status": "UNRESOLVED interpretation for 600000<x<600010: Law 7/2024 says annual net is floored to 10 'when computing tax'; primary text does not state whether column selection uses floored or unfloored base. Primary expected uses floored base."
+      }
+    }
+  ]
+}

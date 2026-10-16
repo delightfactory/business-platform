@@ -34,3 +34,8 @@ Additional bounded QA while cloud build ran: protected-base admin with0additiona
 ## Remaining boundary
 
 User will appoint the human payroll reviewer; no name, independent official expected outputs or signed attestation supplied. Prepared10case packet remains proposed inputs with blank expected outputs. Legal financial qualification/issuance remains blocked by actual existing rules, not marked complete. Next step requires the reviewer's results/provenance; no new broad UX redesign or repeated tests while awaiting them. Goal is not marked achieved. Preserve exact source/release/DB backups and unresolved recovery journals. Automatic rejection of prior obsolete-capture cleanup remains in force; no alternate deletion or disk/cloud reclamation claim. Active QA dependencies/previews retained for reviewer work; no blanket cache/database cleanup.
+
+
+## Superseded review policy
+
+The Remaining boundary above records the historical pre-amendment state, not the current product rule. The owner subsequently removed mandatory external comparisons/reviewer attestations; see docs/04-product-specs/optional-company-payroll-review-20261016.md. No company must obtain human, AI or government approval to operate the module.

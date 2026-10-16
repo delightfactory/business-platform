@@ -1,0 +1,35 @@
+{
+  "phase": "1-blind",
+  "sealed_at_utc": "2026-10-16T11:21:03.5074164Z",
+  "statement": "Sealed before reading any platform payroll source/starter/test outputs.",
+  "files": [
+    {
+      "file": "independent-calculator.py",
+      "sha256": "93e211074dc7706f003b7720e616042e1a66739d26cfcc80c4e24e96e79b41e1"
+    },
+    {
+      "file": "independent-cases.json",
+      "sha256": "389c0231716484f0079b8fcd76bbdff19facb88eb4f0c67291dde5a3ea01ecfd"
+    },
+    {
+      "file": "proposed-inputs.csv",
+      "sha256": "a1eaf26e7b4baa194cd9946562e4a6189e5b74520358d4e6fa7ad45087537f08"
+    },
+    {
+      "file": "refs/faqs-payroll-v4.pdf",
+      "sha256": "a2f475ab2ba1d61dd662436a2d855140c4a319616fc3a7d3a4a45522699c21dc"
+    },
+    {
+      "file": "refs/nosi-2025-11-30.html",
+      "sha256": "bff3d90d9370a095b59ff408d0844d6491887aa6a079453b787bb68daca0713a"
+    },
+    {
+      "file": "refs/law148-2019.pdf",
+      "sha256": "5b724b9adafc92df5884431c78987f6169616383bc22a3809701072757dc0b8f"
+    },
+    {
+      "file": "../official/tax-law-7-2024.pdf",
+      "sha256": "2aaec2ecac90165eb13ca738422c5a18775289b7e19fd861bcb7bed1ccd67cfc"
+    }
+  ]
+}

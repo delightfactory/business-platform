@@ -62,6 +62,7 @@ export function releaseStatus(value: unknown, revision: number): ReleaseStatus |
       !Array.isArray(value.missing_coverage) || !value.missing_coverage.every(item => record(item) && integer(item.year) && text(item.scenario)) ||
       !integer(value.total) || !integer(value.official) || value.official > value.total ||
       !(value.issued_pack === null || id(value.issued_pack)) || value.qualification_scope !== 'tax_insurance' || value.financially_qualified !== false) return null;
+  if (value.review_policy !== undefined && value.review_policy !== 'optional_company_review_v1' && value.review_policy !== 'legacy_issued_review') return null;
   if (value.ready && (value.blockers.length || value.missing_coverage.length)) return null;
   return value as ReleaseStatus;
 }

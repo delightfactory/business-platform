@@ -24,12 +24,12 @@ SELECT throws_ok($$SELECT public.statutory_draft_issuance_status('f1440000-0000-
 SELECT set_config('request.jwt.claims','{"sub":"f1440000-0000-4000-8000-000000000001","role":"authenticated"}',true);
 INSERT INTO issuance_head SELECT public.statutory_draft_save(NULL,0,'f1441000-0000-4000-8000-000000000001','NONLEGAL-ISSUANCE','2030-01-01','2031-01-01','[{"title":"NONLEGAL mocked official source","url":"https://eta.gov.eg/NONLEGAL-mocked-results"},{"title":"NONLEGAL other source","url":"https://example.test/other"}]','NONLEGAL mock setup',(SELECT rules FROM issuance_fixture));
 INSERT INTO issuance_status SELECT public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1);
-SELECT is((SELECT value->>'ready' FROM issuance_status),'false','no official results blocks issue');
-SELECT is(jsonb_array_length((SELECT value->'missing_coverage' FROM issuance_status)),10,'all ten required cases reported for covered year');
-SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000002',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL reviewer attestation')$$,'23514','statutory_issuance_not_ready','attestation cannot replace missing official coverage');
+SELECT is((SELECT value->>'ready' FROM issuance_status),'true','configuration is usable without official results');
+SELECT is(jsonb_array_length((SELECT value->'missing_coverage' FROM issuance_status)),0,'no mandatory annual comparison coverage');
+SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000002',repeat('0',32),true,'NONLEGAL reviewer attestation')$$,'PT409','statutory_issuance_evidence_stale','stale configuration fingerprint is rejected');
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),jsonb_set(item,'{name}',to_jsonb('NONLEGAL synthetic '||scenario)))
  FROM issuance_fixture CROSS JOIN unnest(ARRAY['low','medium','high','mid_year','cumulative','insurance_min','insurance_max','component_mix','correction','rounding'])scenario;
-SELECT is(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->>'ready','false','ten matching synthetic labels never qualify');
+SELECT is(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->>'ready','true','optional synthetic results do not gate activation');
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),
  jsonb_set(jsonb_set(jsonb_set(item,'{name}',to_jsonb('NONLEGAL official mock '||scenario)),'{scenario}',to_jsonb(scenario)),'{origin}','"official"') ||
  CASE WHEN scenario='insurance_max' THEN '{"insurance":[{"month":"2030-07-01","wage":"200","reference":"NONLEGAL max"}],"expected":{"tax_due":"5","tax_delta":"-5","employee_insurance":"2","employer_insurance":"4","deductible_insurance":"2"}}'::jsonb ELSE '{}' END)
@@ -37,35 +37,35 @@ SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuanc
 DELETE FROM issuance_status;INSERT INTO issuance_status SELECT public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1);
 SELECT is((SELECT value->>'ready' FROM issuance_status),'true','isolated official-provenance mocks satisfy mechanical adapter coverage, not real law');
 SELECT is((SELECT value->>'financially_qualified' FROM issuance_status),'false','mechanical readiness never qualifies whole payroll');
-SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT value->>'evidence_stamp' FROM issuance_status),false,'NONLEGAL reviewer attestation')$$,'22023','statutory_issuance_invalid','explicit provenance/applicability review required');
--- A new mismatch must invalidate previous readiness and block release.
+SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT value->>'evidence_stamp' FROM issuance_status),false,repeat('x',1001))$$,'22023','statutory_issuance_invalid','oversized command note rejected');
+-- Optional results preserve configuration identity and are not activation gates.
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),jsonb_set(jsonb_set(jsonb_set(item,'{name}','"NONLEGAL official mock rounding"'),'{origin}','"official"'),'{expected,tax_due}','"6"')) FROM issuance_fixture;
-SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL reviewer attestation')$$,'PT409','statutory_issuance_evidence_stale','comparison saved after review invalidates stamp');
-SELECT ok(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->'blockers' ? 'official_result_unresolved','current official mismatch blocks despite other matches');
+SELECT is(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->>'evidence_stamp',(SELECT value->>'evidence_stamp' FROM issuance_status),'optional comparison does not stale configuration fingerprint');
+SELECT ok(NOT(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->'blockers' ? 'official_result_unresolved'),'optional mismatch does not block activation');
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),jsonb_set(jsonb_set(item,'{name}','"NONLEGAL official mock rounding"'),'{origin}','"official"')) FROM issuance_fixture;
 SELECT is(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->>'ready','true','corrected same case supersedes mismatch without deleting history');
 -- Official label with an unrelated URL cannot qualify or hide unresolved results.
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),jsonb_set(jsonb_set(jsonb_set(item,'{name}','"NONLEGAL official mock rounding"'),'{origin}','"official"'),'{source_url}','"https://example.test/other"')) FROM issuance_fixture;
-SELECT ok(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->'blockers' ? 'official_result_unresolved','arbitrary URL and official tag are insufficient');
+SELECT ok(NOT(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)->'blockers' ? 'official_result_unresolved'),'optional source choice does not gate activation');
 SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000003',jsonb_set(jsonb_set(item,'{name}','"NONLEGAL official mock rounding"'),'{origin}','"official"')) FROM issuance_fixture;
 DELETE FROM issuance_status;INSERT INTO issuance_status SELECT public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1);
 INSERT INTO issuance_result SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000004',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL mocked reviewer attestation for rollback only');
 SELECT is(public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000004',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL mocked reviewer attestation for rollback only'),(SELECT value FROM issuance_result),'same attempt returns original issued pack');
 SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000004',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'Changed review intent')$$,'PT409','statutory_draft_attempt_conflict','changed intent cannot reuse receipt');
 SELECT is(public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL duplicate browser review'),(SELECT value FROM issuance_result),'another attempt cannot duplicate same revision issuance');
-SELECT throws_ok($$SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT item FROM issuance_fixture))$$,'PT409','statutory_revision_issued','issued evidence revision is frozen');
+SELECT lives_ok($$SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),(SELECT item FROM issuance_fixture))$$,'optional comparison remains available after activation');
 SELECT lives_ok($$SELECT public.statutory_draft_compare((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000003',(SELECT jsonb_set(jsonb_set(item,'{name}','"NONLEGAL official mock rounding"'),'{origin}','"official"') FROM issuance_fixture))$$,'original comparison receipt still recovers after issuance');
 RESET ROLE;
 SELECT is((SELECT count(*) FROM payroll.statutory_draft_issuances),1::bigint,'one immutable issuance');
 SELECT is((SELECT review_evidence->>'scope' FROM payroll.statutory_packs WHERE id=(SELECT(value->>'pack')::uuid FROM issuance_result)),'tax_insurance','issued scope is explicit');
-SELECT is((SELECT earning_rules FROM payroll.statutory_packs WHERE id=(SELECT(value->>'pack')::uuid FROM issuance_result)),'{}'::jsonb,'no inferred earning or labour qualification');
-SELECT is(jsonb_array_length((SELECT review_evidence->'numeric_comparisons' FROM payroll.statutory_packs WHERE id=(SELECT(value->>'pack')::uuid FROM issuance_result))),14,'all original official records preserved including superseded mismatch');
+SELECT is((SELECT earning_rules->>'base_taxable' FROM payroll.statutory_packs WHERE id=(SELECT(value->>'pack')::uuid FROM issuance_result)),'true','explicit taxable earnings choice is preserved');
+SELECT is(jsonb_array_length((SELECT review_evidence->'numeric_comparisons' FROM payroll.statutory_packs WHERE id=(SELECT(value->>'pack')::uuid FROM issuance_result))),24,'all optional records at activation preserved including superseded mismatch');
 SELECT throws_ok($$UPDATE payroll.statutory_draft_issuances SET reason='rewrite'$$,'55000','payroll_immutable','issuance evidence cannot be rewritten');
 SELECT is((SELECT md5(coalesce(string_agg(md5(to_jsonb(p)::text),'' ORDER BY id),'')) FROM payroll.statutory_packs p WHERE id<>(SELECT(value->>'pack')::uuid FROM issuance_result)),(SELECT digest FROM issuance_before),'all previous packs unchanged');
 SET LOCAL ROLE authenticated;
 SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM issuance_head),1,gen_random_uuid(),'NONLEGAL-ISSUANCE','2030-01-01','2032-01-01','[{"title":"NONLEGAL mocked official source","url":"https://eta.gov.eg/NONLEGAL-mocked-results"}]','New review extending across year',(SELECT rules FROM issuance_fixture));
 SELECT throws_ok($$SELECT public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),1)$$,'PT409','statutory_draft_stale','old head revision cannot be issued freshly');
-SELECT is(jsonb_array_length(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),2)->'missing_coverage'),20,'each covered year requires its own official representative results');
+SELECT is(jsonb_array_length(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),2)->'missing_coverage'),0,'extending dates does not require annual official comparison sets');
 SELECT is(public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000004',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL mocked reviewer attestation for rollback only'),(SELECT value FROM issuance_result),'original issuance receipt recovers even after draft changes');
 SELECT ok(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),2)->'blockers' ? 'qualified_scope_overlap','overlapping category/treatment cannot issue ambiguously');
 SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM issuance_head),2,gen_random_uuid(),'NONLEGAL-ISSUANCE','2030-01-01','2031-01-01','[{"title":"NONLEGAL mocked official source","url":"https://eta.gov.eg/NONLEGAL-mocked-results"}]','Different insurance category with conflicting tax',(SELECT jsonb_set(jsonb_set(rules,'{insurance,category}','"NONLEGAL-other"'),'{tax,exemption}','"10"') FROM issuance_fixture));
@@ -75,10 +75,20 @@ SELECT ok(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid F
 SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM issuance_head),4,gen_random_uuid(),'NONLEGAL-ISSUANCE','2030-01-01','2031-01-01','[{"title":"NONLEGAL mocked official source","url":"https://eta.gov.eg/NONLEGAL-mocked-results"}]','Another category sharing identical tax schedule',(SELECT jsonb_set(rules,'{insurance,category}','"NONLEGAL-other"') FROM issuance_fixture));
 SELECT ok(NOT(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),5)->'blockers' ? 'qualified_scope_overlap'),'identical tax rules can serve another insurance category without artificial restriction');
 SELECT public.statutory_draft_save((SELECT(value->>'head')::uuid FROM issuance_head),5,gen_random_uuid(),'NONLEGAL-ISSUANCE','2030-01-01',NULL,'[{"title":"NONLEGAL mocked official source","url":"https://eta.gov.eg/NONLEGAL-mocked-results"}]','Open-ended review cannot qualify unknown future years',(SELECT rules FROM issuance_fixture));
-SELECT ok(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),6)->'blockers' ? 'review_end_missing','unknown future years cannot be silently qualified');
+SELECT ok(NOT(public.statutory_draft_issuance_status((SELECT(value->>'head')::uuid FROM issuance_head),6)->'blockers' ? 'review_end_missing'),'open-ended configuration does not need a review expiry');
 RESET ROLE;
 UPDATE platform_private.platform_operator_grants SET can_manage_statutory_rules=false,is_active=false WHERE user_id='f1440000-0000-4000-8000-000000000001';
 SET LOCAL ROLE authenticated;
 SELECT throws_ok($$SELECT public.statutory_draft_issue((SELECT(value->>'head')::uuid FROM issuance_head),1,'f1441000-0000-4000-8000-000000000004',(SELECT value->>'evidence_stamp' FROM issuance_status),true,'NONLEGAL mocked reviewer attestation for rollback only')$$,'42501','statutory_draft_forbidden','revoked reviewer cannot recover sensitive receipt');
 RESET ROLE;
+-- Readiness must report the actual policy for historical published revisions.
+CREATE TEMP TABLE legacy_identity AS SELECT gen_random_uuid() head,gen_random_uuid() pack;
+INSERT INTO payroll.statutory_draft_heads(id,version,revision,created_by) SELECT head,'NONLEGAL-LEGACY-POLICY',1,'f1440000-0000-4000-8000-000000000001' FROM legacy_identity;
+INSERT INTO payroll.statutory_draft_versions(head_id,revision,effective_from,effective_until,source_references,reason,actor_id,numeric_rules)
+SELECT head,1,'2050-01-01','2051-01-01','[]','NONLEGAL legacy fixture','f1440000-0000-4000-8000-000000000001',rules FROM legacy_identity CROSS JOIN issuance_fixture;
+INSERT INTO payroll.statutory_packs(id,jurisdiction,family,version,effective_from,effective_until,source_references,review_evidence,state,verified_by,engine_adapter,rules,insurance_rules,earning_rules,labour_rules)
+SELECT l.pack,p.jurisdiction,p.family,'NONLEGAL-LEGACY-POLICY','2050-01-01','2051-01-01',p.source_references,p.review_evidence-'review_policy',p.state,p.verified_by,p.engine_adapter,p.rules,p.insurance_rules,p.earning_rules,p.labour_rules FROM legacy_identity l CROSS JOIN payroll.statutory_packs p WHERE p.id=(SELECT(value->>'pack')::uuid FROM issuance_result);
+INSERT INTO payroll.statutory_draft_issuances(head_id,revision,pack_id,evidence_stamp,actor_id,reason)
+SELECT head,1,pack,repeat('0',32),'f1440000-0000-4000-8000-000000000001','NONLEGAL legacy fixture' FROM legacy_identity;
+SELECT is(payroll.statutory_issuance_readiness((SELECT head FROM legacy_identity),1)->>'review_policy','legacy_issued_review','historical issued policy is identified instead of promising writable comparisons');
 SELECT * FROM finish();

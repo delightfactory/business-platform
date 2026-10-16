@@ -12,7 +12,7 @@ const tasks = [
   { key: 'can_onboard_tenants', field: 'canOnboardTenants', description: 'إنشاء الشركات وإرسال دعوات مسؤوليها ومتابعتها.' },
   { key: 'can_manage_tenant_lifecycle', field: 'canManageTenantLifecycle', description: 'تعليق الشركات واستعادتها وأرشفتها.' },
   { key: 'can_manage_commercial_access', field: 'canManageCommercialAccess', description: 'تفعيل خدمات الشركات وتحديد حدود الاستخدام.' },
-  { key: 'can_manage_statutory_rules', field: 'canManageStatutoryRules', description: 'إدارة نسخ القواعد القانونية للرواتب؛ لا يمنح ذلك اعتمادها للحساب تلقائيًا.' },
+  { key: 'can_manage_statutory_rules', field: 'canManageStatutoryRules', description: 'إدارة إعدادات حساب الرواتب وحفظها وتفعيلها؛ المراجعة المحاسبية اختيارية.' },
 ] as const;
 const errors: Record<string, string> = {
   invalid: 'راجع البريد والإجراء المحدد.', capability: 'اختر مهمة واحدة على الأقل. لسحب جميع المهام استخدم سحب الصلاحية.', reason: 'أدخل سببًا من 3 إلى 500 حرف.',
