@@ -4,7 +4,7 @@ export type SetupValues = {
   tenantName: string; entityName: string; siteName: string; email: string;
   seatsMode: 'limited' | 'unlimited'; seatsLimit: string; sitesMode: 'limited' | 'unlimited'; sitesLimit: string;
 };
-export const initialSetupValues: SetupValues = { tenantName: '', entityName: '', siteName: 'المقر الرئيسي', email: '', seatsMode: 'limited', seatsLimit: '10', sitesMode: 'limited', sitesLimit: '10' };
+export const initialSetupValues: SetupValues = { tenantName: '', entityName: '', siteName: 'المقر الرئيسي', email: '', seatsMode: 'limited', seatsLimit: '10', sitesMode: 'limited', sitesLimit: '1' };
 export function CompanySetupFields({ values, onChange, mode }: { values: SetupValues; onChange: (key: keyof SetupValues, value: string) => void; mode: 'invite' | 'existing' }) {
   return <div className="operator-setup-fields">
     <div className="operator-setup-core"><div><label htmlFor="setup-company-name">اسم الشركة</label><Input id="setup-company-name" name="tenantName" required maxLength={160} value={values.tenantName} onChange={event => onChange('tenantName', event.target.value)}  placeholder="مثال: شركة النور"/></div>
@@ -18,7 +18,7 @@ export function CompanySetupFields({ values, onChange, mode }: { values: SetupVa
         <input type="hidden" name={`${kind}Mode`} value={values[`${kind}Mode`]} />
         <SegmentedControl label={kind === 'seats' ? 'نوع حد المستخدمين' : 'نوع حد الفروع'} value={values[`${kind}Mode`]}
           onChange={value => onChange(`${kind}Mode`, value)} options={[{ value: 'limited', label: 'عدد محدد' }, { value: 'unlimited', label: 'غير محدود' }]} />
-        {values[`${kind}Mode`] === 'limited' && <><label htmlFor={`setup-${kind}-limit`}>{kind === 'seats' ? 'الحد الأقصى للمستخدمين' : 'الحد الأقصى للفروع'}</label><Input id={`setup-${kind}-limit`} name={`${kind}Limit`} type="number" min={1} max={2147483647} step={1} required value={values[`${kind}Limit`]} onChange={event => onChange(`${kind}Limit`, event.target.value)}  placeholder="مثال: 10"/></>}
+        {values[`${kind}Mode`] === 'limited' && <><label htmlFor={`setup-${kind}-limit`}>{kind === 'seats' ? 'الحد الأقصى للمستخدمين' : 'الحد الأقصى للفروع'}</label><Input id={`setup-${kind}-limit`} name={`${kind}Limit`} type="number" min={1} max={2147483647} step={1} required value={values[`${kind}Limit`]} onChange={event => onChange(`${kind}Limit`, event.target.value)}  placeholder={kind === 'seats' ? 'مثال: 10' : 'مثال: 1'}/></>}
       </div>)}
     </fieldset></Disclosure>
   </div>;

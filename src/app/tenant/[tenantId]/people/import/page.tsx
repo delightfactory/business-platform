@@ -27,10 +27,11 @@ export default async function WorkforceImportPage({ params }: { params: Promise<
     <p className="field-hint">الاستيراد لا يعيّن سياسات الدوام أو أرصدة الإجازات؛ تابع من جاهزية كل موظف بعد إضافته.</p>
     <Panel  aria-label="استيراد ملف الموظفين">
       <div className={styles.importGuide}><h2>ابدأ بالقالب المعتمد</h2>
-        <p>نزّل القالب واملأ بيانات الموظفين، ثم اختر الملف أدناه لفحصه قبل الإضافة.</p>
+        <p>نزّل القالب بعناوين عربية واملأ بيانات الموظفين، ثم اختر الملف أدناه لفحصه قبل الإضافة.</p>
         <a className="ui-button ui-button-ghost ui-button-md" href="/templates/workforce-import.csv" download="workforce-import.csv">تنزيل قالب CSV</a>
         <Disclosure  summary={<>صيغة الملف والقيم المقبولة</>}>
-          <p className={styles.formatHelp}>استخدم UTF-8، واحتفظ بأسماء الأعمدة كما هي. التاريخ بصيغة <bdi>YYYY-MM-DD</bdi>، وطريقة الأجر <bdi>monthly</bdi> أو <bdi>daily</bdi>، والرواتب <bdi>true</bdi> أو <bdi>false</bdi>. المبلغ بالجنيه المصري. أدخل القسم والوظيفة برمزهما؛ لا ينشئ الاستيراد عناصر تنظيمية جديدة.</p>
+          <p className={styles.formatHelp}>احفظ الملف بصيغة CSV بترميز UTF-8. احتفظ بالأعمدة العشرة وعناوينها؛ يمكنك تغيير ترتيبها، وما زال القالب الإنجليزي السابق مقبولًا. لا تجمع عمودين للمعلومة نفسها بالعربية والإنجليزية.</p>
+          <p className={styles.formatHelp}>«تاريخ بدء العمل» مثل <bdi>2026-10-16</bdi>. «طريقة الأجر»: <bdi>monthly</bdi> للشهري أو <bdi>daily</bdi> لليومي. «مشمول بالرواتب»: <bdi>true</bdi> لنعم أو <bdi>false</bdi> للا. «الأجر الأساسي» بالجنيه المصري. أدخل «رمز القسم» و«رمز الوظيفة» الموجودين عند الحاجة؛ لا ينشئ الاستيراد عناصر تنظيمية جديدة.</p>
         </Disclosure>
       </div>
       <WorkforceImportForm tenantId={tenantId} />

@@ -1,3 +1,27 @@
+// Arabic download labels and legacy English keys resolve to the same backend fields.
+export const workforceCsvColumns = Object.freeze([
+  ['employee_code', 'رمز الموظف'], ['full_name', 'الاسم الكامل'],
+  ['employer_name', 'جهة العمل'], ['site_name', 'الفرع'],
+  ['start_date', 'تاريخ بدء العمل'], ['pay_basis', 'طريقة الأجر'],
+  ['base_amount', 'الأجر الأساسي'], ['payroll_eligible', 'مشمول بالرواتب'],
+  ['department_code', 'رمز القسم'], ['job_code', 'رمز الوظيفة'],
+].map((column) => Object.freeze(column)));
+
+export function mapWorkforceCsvHeaders(headers) {
+  if (!headers || headers.length !== workforceCsvColumns.length) {
+    return 'أعمدة الملف لا تطابق القالب. نزّل القالب واحتفظ بأعمدته العشرة، حتى لو تركت بعض القيم فارغة.';
+  }
+  const aliases = new Map(workforceCsvColumns.flatMap(([key, label]) => [[key, key], [label, key]]));
+  const mapped = [];
+  for (const header of headers) {
+    const key = aliases.get(header.replace(/^\uFEFF/, '').trim().toLowerCase());
+    if (!key) return 'يوجد عنوان عمود غير معروف. استخدم عناوين القالب العربي أو القالب الإنجليزي السابق.';
+    if (mapped.includes(key)) return 'يوجد عمود مكرر في الملف، بالعربية أو الإنجليزية. احتفظ بعمود واحد لكل معلومة ثم أعد الفحص.';
+    mapped.push(key);
+  }
+  return mapped;
+}
+
 export function parsePeopleCsv(text) {
   const rows = []; let row = []; let cell = ''; let quoted = false; let afterQuote = false;
   let physicalLine = 1; let recordStartLine = 1;

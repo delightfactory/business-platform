@@ -31,7 +31,7 @@ const errors = {
   unknown: 'لم تتأكد نتيجة الطلب. راجع الدعوات قبل إرسال طلب آخر.',
 };
 function SetupInvitationForm({ requestKey, onDispatch, children }: { requestKey: string; onDispatch: () => void; children: ReactNode }) {
-  const [answer, setAnswer] = useState<InvitationFormState>({ error: null, attempt: 0, values: { idempotencyKey: requestKey, tenantName: '', entityName: '', siteName: 'المقر الرئيسي', targetEmail: '', seatsMode: 'limited', seatsLimit: '10', sitesMode: 'limited', sitesLimit: '10' } });
+  const [answer, setAnswer] = useState<InvitationFormState>({ error: null, attempt: 0, values: { idempotencyKey: requestKey, tenantName: '', entityName: '', siteName: 'المقر الرئيسي', targetEmail: '', seatsMode: 'limited', seatsLimit: '10', sitesMode: 'limited', sitesLimit: '1' } });
   const [pending, setPending] = useState(false); const inFlight = useRef(false);
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const { offline, blockOfflineSubmission } = useOfflineSubmission();

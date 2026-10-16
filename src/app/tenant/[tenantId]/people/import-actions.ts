@@ -1,11 +1,10 @@
 'use server';
 
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { parsePeopleCsv } from '@/lib/people-csv-parser.mjs';
+import { mapWorkforceCsvHeaders, parsePeopleCsv } from '@/lib/people-csv-parser.mjs';
 
 const MAX_BYTES = 256 * 1024;
 const MAX_ROWS = 100;
-const HEADERS = ['employee_code','full_name','employer_name','site_name','start_date','pay_basis','base_amount','payroll_eligible','department_code','job_code'];
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export type ImportData = {
@@ -35,15 +34,13 @@ export async function validateWorkforceCsv(previous: PreviewImportState, formDat
   const parsed = parsePeopleCsv(csv);
   if (typeof parsed === 'string') return fail(parsed);
   const [headerRecord, ...records] = parsed;
-  const headers = headerRecord?.cells;
-  if (!headers || headers.length !== HEADERS.length || headers.some((header, index) => header.trim().toLowerCase() !== HEADERS[index])) {
-    return fail('الأعمدة لا تطابق قالب استيراد الموظفين. نزّل القالب وأعد ترتيب الأعمدة كما هو.');
-  }
+  const headers = mapWorkforceCsvHeaders(headerRecord?.cells);
+  if (typeof headers === 'string') return fail(headers);
   const rows = records.filter((record) => record.cells.some((cell) => cell.trim() !== ''));
   if (rows.length === 0) return fail('لا يحتوي الملف على صفوف موظفين.');
   if (rows.length > MAX_ROWS) return fail('يسمح الملف بحد أقصى 100 صف في كل مرة.');
-  if (rows.some((row) => row.cells.length !== HEADERS.length)) return fail('يوجد صف بعدد أعمدة غير مطابق للقالب. لم يُحفظ أي شيء.');
-  const payload = rows.map((record) => Object.fromEntries(HEADERS.map((key, col) => [key, record.cells[col].trim()])
+  if (rows.some((row) => row.cells.length !== headers.length)) return fail('يوجد صف بعدد أعمدة غير مطابق للقالب. لم يُحفظ أي شيء.');
+  const payload = rows.map((record) => Object.fromEntries(headers.map((key, col) => [key, record.cells[col].trim()])
     .concat([['source_row_number', String(record.line)]])));
   const supabase = await createSupabaseServerClient();
   if (!supabase) return fail('الاتصال غير متاح الآن. أعد الفحص لاحقًا.');

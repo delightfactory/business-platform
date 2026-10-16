@@ -86,7 +86,7 @@ function downloadRejectReport(rows: PreviewRow[]) {
     if (/^[\s]*[=+@\-\t\r]/.test(text)) text = `'${text}`;
     return `"${text.replaceAll('"', '""')}"`;
   };
-  const lines = [['source_line_hint','employee_code','full_name','reasons'].map(quote).join(',')];
+  const lines = [['سطر الملف الأصلي','رمز الموظف','الاسم الكامل','أسباب الرفض'].map(quote).join(',')];
   for (const row of rows) lines.push([row.source_row_number,row.employee_code,row.full_name,row.errors.join(' | ')].map(quote).join(','));
   const blob = new Blob(['\uFEFF', lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob); const link = document.createElement('a');
