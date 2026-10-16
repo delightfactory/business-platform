@@ -175,6 +175,7 @@ SET LOCAL ROLE authenticated;
 SELECT set_config('test.preview',public.payroll_correction_proposal('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',(current_setting('test.final')::jsonb->>'output')::uuid,NULL,0,current_setting('test.source_changes')::jsonb,'[]',NULL,'NONLEGAL reviewed unpaid correction','NONLEGAL implementation reference',NULL,'preview',gen_random_uuid())::text,true);
 SELECT set_config('test.proposal',public.payroll_correction_proposal('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',(current_setting('test.final')::jsonb->>'output')::uuid,NULL,0,current_setting('test.source_changes')::jsonb,'[]',NULL,'NONLEGAL reviewed unpaid correction','NONLEGAL implementation reference',current_setting('test.preview')::jsonb->>'preview_hash','save',gen_random_uuid())::text,true);
 SELECT public.payroll_correction_command('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',(current_setting('test.proposal')::jsonb->>'case_id')::uuid,1,'calculate','NONLEGAL amendment calculation',gen_random_uuid());
+SELECT ok((w->'run'->>'id')=(current_setting('test.run')::jsonb->>'id') AND w->'run'->>'status'='locked' AND w->>'final_output_id'=current_setting('test.final')::jsonb->>'output','ordinary workspace keeps published original while amendment awaits review') FROM (SELECT public.payroll_run_review_workspace(p_tenant=>'d5921000-0000-4000-8000-000000000001',p_employer=>'d5923000-0000-4000-8000-000000000001',p_period=>'d592e000-0000-4000-8000-000000000001',p_view=>'all') AS w) q;
 SELECT set_config('test.amendment_review',public.payroll_correction_workspace('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',(current_setting('test.final')::jsonb->>'output')::uuid,(current_setting('test.proposal')::jsonb->>'case_id')::uuid,'compensation',NULL,NULL)::text,true);
 SELECT is((current_setting('test.amendment_review')::jsonb->'amendments'->0->'summary'->>'gross')::numeric,182.5::numeric,'actual authorized correction review displays replacement gross before approval');
 SELECT is((current_setting('test.amendment_review')::jsonb->'amendments'->0->'summary'->>'net')::numeric,164.25::numeric,'actual authorized correction review displays replacement net before approval');
@@ -248,5 +249,26 @@ RESET ROLE;
 SELECT set_config('test.frozen_opening',(SELECT jsonb_build_object('head',h.id,'revision',h.revision,'data',v.data)::text FROM payroll.input_heads h JOIN payroll.input_versions v ON v.tenant_id=h.tenant_id AND v.head_id=h.id AND v.revision=h.revision WHERE h.tenant_id='d5921000-0000-4000-8000-000000000001' AND h.kind='opening_ytd'),true);
 SET LOCAL ROLE authenticated;
 SELECT throws_ok($$SELECT public.payroll_save_input('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001','opening_ytd','d5926000-0000-4000-8000-000000000001',NULL,(current_setting('test.frozen_opening')::jsonb->>'head')::uuid,(current_setting('test.frozen_opening')::jsonb->>'revision')::integer,'2026-01-04',NULL,current_setting('test.frozen_opening')::jsonb->'data','save',gen_random_uuid())$$,'23514','payroll_correction_required','same-date edit cannot alter frozen opening');
+RESET ROLE;
+-- The new collection must reflect the actual corrected and paid result above,
+-- not a manually inserted final record or an obsolete original output.
+SET LOCAL ROLE authenticated;
+SELECT set_config('test.collection',public.payroll_run_collection('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001')::text,true);
+SELECT is(jsonb_array_length(current_setting('test.collection')::jsonb->'items'),1,'collection has one row for the period after correction');
+SELECT is(current_setting('test.collection')::jsonb->'items'->0->>'output_id',current_setting('test.payment_output'),'collection selects the actual replacement output');
+SELECT is((current_setting('test.collection')::jsonb->'items'->0->>'net')::numeric,164.25::numeric,'collection exposes the actual calculated replacement net');
+SELECT is((current_setting('test.collection')::jsonb->'items'->0->>'paid')::numeric,164.25::numeric,'collection payment total matches recorded evidence');
+SELECT is((current_setting('test.collection')::jsonb->'items'->0->>'remaining')::numeric,0::numeric,'collection shows no remaining amount after full recording');
+RESET ROLE;
+INSERT INTO platform_core.tenant_roles(tenant_id,role_id,role_key,role_version,permission_snapshot)
+VALUES('d5921000-0000-4000-8000-000000000001','d5922000-0000-4000-8000-000000000003','d592.collection.prepare_only',1,ARRAY['payroll.prepare']);
+INSERT INTO platform_core.membership_roles(tenant_id,user_id,role_id)
+VALUES('d5921000-0000-4000-8000-000000000001','d5920000-0000-4000-8000-000000000002','d5922000-0000-4000-8000-000000000003');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','d5920000-0000-4000-8000-000000000002',true);
+SELECT set_config('test.restricted_collection',public.payroll_run_collection('d5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001')::text,true);
+SELECT ok((current_setting('test.restricted_collection')::jsonb->'items'->0->>'net') IS NULL
+AND(current_setting('test.restricted_collection')::jsonb->'items'->0->>'paid') IS NULL
+AND(current_setting('test.restricted_collection')::jsonb->'items'->0->>'remaining') IS NULL,'preparer without final-output or payment permission receives no finalized financial amounts');
 RESET ROLE;
 SELECT * FROM finish();ROLLBACK;

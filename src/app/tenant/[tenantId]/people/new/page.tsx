@@ -19,7 +19,7 @@ export default async function NewEmployeePage({ params }: { params: Promise<{ te
   const suggestedCode = generateElementCode('E');
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page">
     <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
-    <PageHeader title={<>إضافة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>سجّل الموظف وجهة عمله وفرعه وأجره الأساسي في خطوة واحدة.</>} />
+    <PageHeader title="إضافة موظف" description="بياناته، مكان عمله، ثم راتبه. راجعها قبل الإضافة." />
     <Panel  aria-label="بيانات الموظف">
       <NewEmployeeForm tenantId={tenantId} options={options} suggestedCode={suggestedCode} />
     </Panel>

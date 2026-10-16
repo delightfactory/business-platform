@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox, Field, Message, Select, Textarea } from '@/components/ui';
+import { Checkbox, Disclosure, Field, Message, Select, Textarea } from '@/components/ui';
 import { useActionState, useRef, useState } from 'react';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
@@ -72,6 +72,7 @@ function IntentForm({
   pendingLabel,
   buttonClass = 'primary-button',
   backHref,
+  returnTo,
   hint,
 }: {
   intent: ReviewIntent;
@@ -90,6 +91,7 @@ function IntentForm({
   pendingLabel: string;
   buttonClass?: string;
   backHref?: string;
+  returnTo?: string | null;
   hint: string;
 }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
@@ -136,6 +138,7 @@ function IntentForm({
 
   return <form key={state.attempt} action={action} className="auth-form compact-form" aria-busy={pending} onSubmit={(event) => { blockOfflineSubmission(event); }}>
     <input type="hidden" name="tenantId" value={tenantId} />
+    <input type="hidden" name="return" value={returnTo ?? ''} />
     <input type="hidden" name="requestId" value={requestId} />
     <input type="hidden" name="expectedVersion" value={expectedVersion} />
     {reviewedPreviewVersion !== undefined
@@ -159,20 +162,18 @@ function IntentForm({
         {canApprove && <option value="approve">اعتماد الطلب</option>}
         <option value="reject">رفض الطلب</option>
       </Select></>}
-    <Field id={reasonId} label={<>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</>} required><Textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
+    <Field id={reasonId} label={<>{decision ? 'سبب القرار' : REASON_LABEL[intent]}</>} help={`${hint} ${KEY_NOTE}`} required><Textarea id={reasonId} name="reason" required minLength={MIN_REASON_LENGTH} maxLength={MAX_REASON_LENGTH}
       value={reason} onChange={(event) => handleReasonChange(event.target.value)} disabled={pending}
-      aria-invalid={Boolean(state.error)} aria-describedby={`${reasonId}-hint`}  placeholder="مثال: مراجعة الطلب والرصيد والمستند المؤيد"/></Field>
-    <p id={`${reasonId}-hint`} className="field-hint">{hint} {KEY_NOTE}</p>
-    {intent === 'approve' && <label>
+      aria-invalid={Boolean(state.error)} placeholder="مثال: مراجعة الطلب والرصيد والمستند المؤيد"/></Field>
+    {intent === 'approve' && <Disclosure summary="الإجازة تخص رواتب مقفلة؟" open={Boolean(state.error)}><label>
       <Checkbox  name="historicalPayrollCorrection" checked={historicalAddition} disabled={pending}
         onChange={(event) => {
           const selected = event.target.checked;
           setHistoricalAddition(selected);
           handleReasonChange(reason, intent, selected);
         }} />
-      إضافة تاريخية بعد إقفال الرواتب
-      <span className="field-hint">ينشئ الاعتماد مسؤولية تصحيح لكل مسير متأثر. أكملها من تصحيحات الرواتب؛ لا تتغير مبالغ المسير المقفل تلقائيًا.</span>
-    </label>}
+      أوافق على مراجعة الرواتب التي يؤثر عليها هذا الاعتماد
+    </label><p className="field-hint">استخدم هذا الاختيار فقط لإجازة تخص فترة رواتب مقفلة. ستظهر مهمة لتصحيح الرواتب المتأثرة؛ لن يتغير الراتب المقفل تلقائيًا.</p></Disclosure>}
 
     {state.error && <Message tone="bad" key={state.attempt}  role="alert">{state.error}</Message>}
     {pending && <p className="field-hint" role="status">جارٍ التنفيذ… لا تغلق الصفحة.</p>}

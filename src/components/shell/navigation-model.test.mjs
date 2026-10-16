@@ -58,6 +58,14 @@ test('payroll navigation retains employer and period without replacing explicit 
   assert.equal(result, `${root}/payroll/inputs?employer=${employer}&period=${period}`);
   const explicit = `${root}/payroll/inputs?employer=${other}`;
   assert.equal(payrollDestination(`${root}/payroll/runs`, explicit, employer, period), explicit);
+  assert.equal(payrollDestination(`${root}/payroll/runs`, `${root}/payroll`, employer, period), `${root}/payroll?employer=${employer}`, 'the payroll menu opens the collection rather than forcing the previously selected run');
+});
+
+test('attendance, leave, payroll, advances and reports have direct independent entries',()=>{
+  const menu=workspaceMenu(root,['attendance','attendance/calendar','leave','leave/balances','payroll','payroll/advances','payroll/reports'].map(item),[],'tenant');
+  assert.deepEqual(Array.from(menu.areas,area=>area.key),['today','time','leave','payroll','advances','reports']);
+  assert.equal(menu.areas.find(area=>area.key==='leave').destination.href,`${root}/leave`);
+  assert.equal(menu.areas.find(area=>area.key==='payroll').destination.href,`${root}/payroll`);
 });
 
 

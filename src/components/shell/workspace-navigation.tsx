@@ -42,20 +42,14 @@ function NavLink({ item, current, icon, closeCurrent }: { item: WorkspaceLink; c
   </Link>;
 }
 
-function NavigationTree({menu,activeHref,activeArea,closeCurrent,showSettings=false}:{menu:WorkspaceMenu;activeHref?:string;activeArea?:string;closeCurrent:()=>void;showSettings?:boolean}) {
+function NavigationTree({menu,activeHref,activeArea,closeCurrent,settingsHref,settingsCurrent=false}:{menu:WorkspaceMenu;activeHref?:string;activeArea?:string;closeCurrent:()=>void;settingsHref?:string;settingsCurrent?:boolean}) {
   const link=(item:WorkspaceLink,icon?:IconName)=><NavLink key={item.href} item={item} icon={icon} current={activeHref===item.href} closeCurrent={closeCurrent}/>;
   return <>
     {link({...menu.areas[0].destination,label:menu.areas[0].label},menu.areas[0].icon)}
     {menu.areas.length>1 && <p className={styles.sectionLabel}>العمل اليومي</p>}
-    {menu.areas.slice(1).map(area=>area.links.length===1 ? link(area.links[0],area.icon) : <details className={styles.group} key={area.key} open={activeArea===area.key}>
-      <summary><Icon name={area.icon}/><span>{area.label}</span><Icon name="chevronDown" size={16}/></summary>
-      <div className={styles.children}>{area.links.map(item=>link(item))}</div>
-    </details>)}
-    {menu.settings.length>0 && <details className={styles.group} open={showSettings||menu.settings.some(item=>item.href===activeHref)}>
-      <summary><Icon name="settings"/><span>الإعدادات وإدارة المساحة</span><Icon name="chevronDown" size={16}/></summary>
-      <div className={styles.children}>{menu.settings.map(item=>link(item))}</div>
-    </details>}
-    {menu.personal.length>0 && <section className={styles.personal}><h3 className={styles.sectionLabel}>خدماتي وروابطي</h3>{menu.personal.map(item=>link(item))}</section>}
+    {menu.areas.slice(1).map(area=><NavLink key={area.key} item={{...area.destination,label:area.label}} icon={area.icon} current={activeArea===area.key} closeCurrent={closeCurrent}/>)}
+    {settingsHref ? <section className={styles.personal}><NavLink item={{href:settingsHref,label:'الإعدادات'}} icon="settings" current={settingsCurrent||menu.settings.some(item=>item.href===activeHref)} closeCurrent={closeCurrent}/></section> : menu.settings.length>0&&<section className={styles.personal}>{menu.settings.map(item=>link(item,'settings'))}</section>}
+    {menu.personal.length>0 && <section className={styles.personal}><h3 className={styles.sectionLabel}>حسابي</h3>{menu.personal.map(item=>link(item))}</section>}
   </>;
 }
 
@@ -78,6 +72,8 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
   const areas = menu.areas;
   const personalHome = mode === 'tenant' && homeHref.endsWith('/me');
   const { active, area: activeArea } = currentWorkspaceLocation(pathname, homeHref, menu, mode);
+  const settingsHref = mode==='tenant' && menu.settings.length>0 ? `${homeHref.replace(/\/me$/,'')}/settings` : undefined;
+  const settingsCurrent = pathname===settingsHref;
   const dialog = useRef<HTMLDialogElement>(null);
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -108,7 +104,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
       : <span className={`${styles.logo} ${styles.monogram}`} aria-hidden="true">{contextLabel.trim().slice(0,1) || 'م'}</span>}
     <span className={styles.identityText}><strong>منصة الأعمال</strong><small><bdi>{contextLabel}</bdi></small></span>
   </>;
-  const tree = <NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} />;
+  const tree = <NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} settingsHref={settingsHref} settingsCurrent={settingsCurrent}/>;
   const manual = guideHref(mode, [...originalLinks, ...originalBusinessLinks]);
 
   return <div className={styles.navigation}>
@@ -120,7 +116,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
     </aside>
     <header className={styles.header}>
       <button className={styles.menuTrigger} type="button" onClick={showMore} aria-label="فتح قائمة مساحة العمل" aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name="menu"/></button>
-      <div className={styles.context}><span>{mode === 'operator' ? 'تشغيل المنصة' : <bdi>{contextLabel}</bdi>}</span><Icon name="chevronLeft" size={14}/><strong>{active?.label ?? 'مساحة العمل'}</strong></div>
+      <div className={styles.context}><span>{mode === 'operator' ? 'إدارة المنصة' : <bdi>{contextLabel}</bdi>}</span><Icon name="chevronLeft" size={14}/><strong>{settingsCurrent?'الإعدادات':activeArea?.label??active?.label??'مساحة العمل'}</strong></div>
       <DropdownMenu.Root><DropdownMenu.Trigger className="workspace-account-trigger" aria-label="الحساب والمظهر">
         <span className="workspace-account-avatar" aria-hidden="true"><Icon name={'user'} size={20} /></span><span className="workspace-account-caption">حسابي</span>
       </DropdownMenu.Trigger><DropdownMenu.Portal><DropdownMenu.Content className="workspace-account-menu" sideOffset={10} align="end">
@@ -138,12 +134,12 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
       </DropdownMenu.Content></DropdownMenu.Portal></DropdownMenu.Root>
     </header>
     {offline && <div className={styles.offline} role="status">الاتصال منقطع. يمكنك مراجعة ما هو ظاهر؛ أعد الاتصال قبل إرسال أي إجراء.</div>}
-    <nav className={styles.bottomTabs} aria-label="التنقل السريع">{areas.slice(0,4).map(area => <NavLink key={area.key} item={{...area.destination,label:area.key==='time'?'الوقت':area.label}} icon={area.icon} current={activeArea?.key===area.key}/>)}
+    <nav className={styles.bottomTabs} aria-label="التنقل السريع">{areas.slice(0,4).map(area => <NavLink key={area.key} item={{...area.destination,label:area.label}} icon={area.icon} current={activeArea?.key===area.key}/>)}
       <button type="button" onClick={showMore} aria-label="عرض قائمة مساحة العمل" aria-haspopup="dialog" aria-expanded={open} aria-controls={id}><Icon name="menu" size={22}/><span>القائمة</span></button>
     </nav>
     <dialog ref={dialog} id={id} className={styles.menuDialog} aria-label="قائمة مساحة العمل" onClose={closed} onClick={event => {if(event.target===event.currentTarget)dialog.current?.close();}}>
       <div className={styles.dialogHeading}><div><small>{mode==='operator'?'تشغيل المنصة':'مساحة الشركة'}</small><h2><bdi>{contextLabel}</bdi></h2></div><button type="button" onClick={() => dialog.current?.close()} aria-label="إغلاق القائمة"><Icon name="close"/></button></div>
-      <nav className={styles.tree} aria-label="كل الأقسام"><NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} showSettings/></nav>
+      <nav className={styles.tree} aria-label="كل الأقسام"><NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} settingsHref={settingsHref} settingsCurrent={settingsCurrent}/></nav>
       <a className={styles.guide} href={manual} target="_blank" rel="noopener"><Icon name="help" size={18}/>دليل الاستخدام والتدريب</a>
     </dialog>
   </div>;

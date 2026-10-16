@@ -6,10 +6,11 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import styles from './attendance-lists.module.css';
+import { AttendanceWorkspaceTabs } from './AttendanceWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
-type Query = Promise<{ date?: string; cursor?: string }>;
+type Query = Promise<{ date?: string; cursor?: string; payroll_employer?:string; payroll_period?:string }>;
 type DayRow = { id: string; employee_code: string; full_name: string; status: string; timezone_name: string; expected_start: string | null; expected_end: string | null; schedule_kind: string; required_minutes: number | null; late_minutes: number | null; early_leave_minutes: number | null; worked_minutes: number | null; gross_worked_minutes: number | null; scheduled_break_minutes: number | null; exception_code: string | null; overtime_pending_count?: number };
 
 export default async function AttendanceDayPage({ params, searchParams }: { params: Params; searchParams: Query }) {
@@ -18,7 +19,10 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   const day = isCivilDate(query.date) ? query.date : cairoToday();
   const previousDay=adjacentDay(day,-1), nextDay=adjacentDay(day,1);
   const cursor = query.cursor && query.cursor.length <= 40 ? query.cursor : null;
-  const retryHref = `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}`;
+  const payrollPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const payrollContext = payrollPattern.test(query.payroll_employer ?? '') && payrollPattern.test(query.payroll_period ?? '') ? { payroll_employer: query.payroll_employer!, payroll_period: query.payroll_period! } : null;
+  const payrollQuery = payrollContext ? `&${new URLSearchParams(payrollContext)}` : '';
+  const retryHref = `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}${payrollQuery}`;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <PageFrame><Status title="الاتصال غير متاح" text="تعذر الاتصال بخدمة الحسابات. أعد المحاولة." retryHref={retryHref} /></PageFrame>;
   const { data: { user } } = await getWorkspaceUser(supabase);
@@ -42,23 +46,22 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   }
   const nextCursor = typeof result.data.next_cursor === 'string' ? result.data.next_cursor : null;
   const hasMore = result.data.has_more === true;
-  const moreHref = nextCursor ? `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}&cursor=${encodeURIComponent(nextCursor)}` : null;
+  const moreHref = nextCursor ? `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}&cursor=${encodeURIComponent(nextCursor)}${payrollQuery}` : null;
 
   return <PageFrame footer="الحضور وسجل العمل">
+      {payrollContext && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/payroll/runs?${new URLSearchParams({ employer: payrollContext.payroll_employer, period: payrollContext.payroll_period })}`}>العودة إلى المسير</ButtonLink>}
       <Panel className=" task-page" aria-labelledby="attendance-title">
-        <p className="eyebrow">متابعة يوم العمل</p>
-        <div className="workspace-page-heading"><div><PageHeader id="attendance-title" title={<>الحضور اليومي</>} description={<> اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام. </>} /></div></div>
+        <PageHeader id="attendance-title" title="الحضور والانصراف" description="اختر اليوم، ثم افتح سجل الموظف للمراجعة أو التصحيح." />
+        <AttendanceWorkspaceTabs tenantId={tenantId} current="day" date={day} payrollEmployer={query.payroll_employer} payrollPeriod={query.payroll_period} />
         {query.date&&!isCivilDate(query.date)&&<Message tone="info" role="status">التاريخ المطلوب غير صالح؛ نعرض يوم اليوم. اختر تاريخًا صحيحًا لعرض سجل آخر.</Message>}
         {!entitlementEnabled && <Message tone="info" >وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</Message>}
         <div className={`${styles.toolbar} ${styles.dayToolbar}`}>
-          <form key={day} method="get" className={styles.dateForm}><Field  id="attendance-date" label={<>تاريخ العمل</>}><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field><Button variant="solid"  type="submit">عرض اليوم</Button></form>
+          <form key={day} method="get" className={styles.dateForm}><Field id="attendance-date" label="تاريخ العمل"><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field>{payrollContext && <><input type="hidden" name="payroll_employer" value={payrollContext.payroll_employer}/><input type="hidden" name="payroll_period" value={payrollContext.payroll_period}/></>}<Button variant="solid" type="submit">عرض اليوم</Button></form>
           <nav className={styles.dateShortcuts} aria-label="التنقل بين أيام الحضور">
-            {previousDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${previousDay}`}>اليوم السابق</ButtonLink>}
-            {nextDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${nextDay}`}>اليوم التالي</ButtonLink>}
-            <ButtonLink variant="ghost" icon="calendar" href={`/tenant/${tenantId}/attendance/calendar?month=${day.slice(0,7)}#day-${day}`}>عرض الشهر</ButtonLink>
+            {previousDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${previousDay}${payrollQuery}`}>اليوم السابق</ButtonLink>}
+            {nextDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${nextDay}${payrollQuery}`}>اليوم التالي</ButtonLink>}
           </nav>
           <nav className={styles.tools} aria-label="مهام الحضور">
-            {access.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}
             <Disclosure summary="أدوات الحضور"><div className={styles.secondaryTools}>
               {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/sources`}>{terms.attendanceSources}</ButtonLink>}
               {canManage && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
@@ -84,7 +87,7 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
               {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >يوجد وقت إضافي مقترح بانتظار المراجعة: {row.overtime_pending_count}</Message>}
             </td>
             <td role="cell"><span className={styles.mobileLabel} aria-hidden="true">الحالة</span><Badge tone={row.status === 'approved' ? "ok" : "neutral"} >{statusLabel(row.status)}</Badge></td>
-            <td role="cell"><ButtonLink variant="ghost" aria-describedby={`attendance-person-${row.id}`}  href={`/tenant/${tenantId}/attendance/${row.id}`}>فتح السجل</ButtonLink></td>
+            <td role="cell"><ButtonLink variant="ghost" aria-describedby={`attendance-person-${row.id}`} href={`/tenant/${tenantId}/attendance/${row.id}?${new URLSearchParams({ return: retryHref, ...payrollContext })}`}>فتح السجل</ButtonLink></td>
           </tr>)}</tbody>
         </DataTable>}
         <div className="attendance-pagination" aria-live="polite"><span>عدد السجلات في هذه الصفحة: {rows.length}{hasMore ? '، توجد سجلات أخرى' : ''}</span>

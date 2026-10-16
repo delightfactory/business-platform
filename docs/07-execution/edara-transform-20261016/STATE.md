@@ -1,0 +1,15 @@
+# EDARA transformation checkpoint
+
+Owner goal ACTIVE: actual coherent company/platform transformation, reference EDARA. Implementation integrated; tests/gates/real local browser complete, final independent official Claude PASS. See QUALIFICATION.md, CLAUDE-FINAL.md, RELEASE.md for exact evidence/limits. No more optional redesign loop; next task is concrete qualified release then scoped cleanup.
+
+Integration C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20261015-operator-company-ux/worktree, branchcodex/operator-company-ux, baseabe7ee93. External artifacts C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20261016-edara-transform. All three agents completed; no active writer. Their source-only checkouts retained pending integrated source commit. No worker dependencies installed.
+
+Verified: navigation10; activitySQL28; atomicSQL24; real financialSQL75. All SQL regressionROLLBACK on namedownedQA DB/container. UI created employee and saved actual Egyptian setup on sameprofile with success; actual payroll savedperiod/calculation/review/close/testpayment/correction/re-record endingremaining0; leaveapproved on same request. Authenticated built server61194 exec65323; olddevexec3103 stopped. Production data untouched by testfixture. Newmigrations21/22 only inQA sofar.
+
+Official Claude finalsession9b0c5f11-798e-4d0e-93d6-1560b3d4e771 PASS, no permissiondenials. Two bounded reviews. Reviewresults externalJSON; compact final preserved inrepo. BuildPASS,TSincluded;ESLintPASS,diffcheckPASS. GuideHTML35sectionsandPDF38A4pages generated/visuallyinspected.
+
+Vercelprojectprj_O5OSEuyyJkJZtVW5sRXm7M4XfPaa/teamteam_AYQTvxuQJ1EepKxDVhzjX1ew. Domainplatform.delight-world.com stillolddeploymentdpl_CHVLjiVVuuuUhpZPbHYHaArsm7zv. Supabase msryvzefjdqjcfikerne/eu-west-1, accountlink_6ace660ce2308191a038ffd3e17a0daf verified. NewRPCs absentprod beforeDDL; actualexistingdependencyfunctiondefs/ACL capturedexternally production-preflight-snapshot.json. Ownerauthorizesdevcommit/push, qualifiedproductionrelease; no mainmerge/paidchange/banktransfer.
+
+Browser: IABtab2 originalliveDelightpreserved;tab5 olddev becameerrorpageduringstop;tab7 activebuiltQA, handletransformBuilt, CDPtransformBuiltCdp. Tab6guideclosedafterPDFexport. Emulationtab7cleared;tab5old768emulationneedsresetorclosetemporarytabatcompletion;browserviewportoverridealsoresetbeforefinal. RootvariablestransformFs/transformEvidenceavailable. Evidence13-built-calendar-tablet.png isactual768x1024;11mislabeledduplicateand12uncroppedtabletarenotqualification, candidatesforscopedcleanup. Keepbefore01andrepresentativeimages,source,DBs,backups,journals.
+
+Next: commitverifiedsource+pushdev, stageVercel--prod--skip-domainwithexactsourceCommit, waitREADY, applyONLY2newqualifiedmigrationsviaSupabaseMCP,verifyACL/ledgerandpromoteexactstage. LiveDelightread-onlyUIproof,newguide200,authprotection. Thenreleaseproofdocscommit/push, stopowned65323ifnoneeds, exactownedcache/duplicatecleanupwithinventory/path/reparse/Gitchecks. Neverblanketcleanup or erasehistory. Markgoalcompleteonlythen.

@@ -41,10 +41,10 @@ export function EmployeeReadiness({ tenantId, employeeId, employerId, facts, ret
     action: account.canManage ? tab('account', 'راجع حساب الدخول') : undefined });
   const self = facts.selfService;
   const both = ['employee.attendance.self.v1', 'employee.leave.self.v1'].every(key => self.keys.includes(key));
-  core.push({ title: 'الخدمات الذاتية', state: self.state === 'ready' ? both ? 'done' : 'todo' : self.state === 'other-role' ? 'other-role' : self.state === 'unknown' ? 'unknown' : 'todo',
+  core.push({ title: 'حضور الموظف وإجازاته', state: self.state === 'ready' ? both ? 'done' : 'todo' : self.state === 'other-role' ? 'other-role' : self.state === 'unknown' ? 'unknown' : 'todo',
     detail: self.state === 'other-role' ? 'إتاحة الخدمات تحتاج مسؤول المستخدمين.' : self.state === 'unknown' ? 'تعذر قراءة صلاحيات الحساب.' : self.state === 'inactive' ? 'عضوية الحساب المرتبط غير نشطة؛ راجعها قبل إتاحة الخدمات.' : self.state === 'unlinked' ? 'اربط الحساب أولًا، ثم اختر الخدمات المطلوبة صراحة.' : both ? 'صلاحيتا الحضور الشخصي والإجازات مضافتان للحساب.' : 'اختر إتاحة الحضور والإجازات من قسم الحساب.',
     owner: self.state === 'other-role' ? 'مسؤول المستخدمين' : undefined,
-    action: ['ready', 'inactive'].includes(self.state) || (self.state === 'unlinked' && account.canManage) ? tab('account', 'راجع الخدمات الذاتية') : undefined });
+    action: ['ready', 'inactive'].includes(self.state) || (self.state === 'unlinked' && account.canManage) ? tab('account', 'إعداد حساب الموظف') : undefined });
   const channel = facts.channel;
   const channelReady = channel?.state === 'ready' && channel.captureEnabled === true;
   core.push({ title: 'موقع تسجيل الحضور لفرع الموظف', state: !channel ? 'unknown' : !channel.canView ? 'other-role' : !channel.state ? 'unknown' : channelReady ? 'done' : channel.captureEnabled === false ? 'other-role' : channel.canManage ? 'todo' : 'other-role',
@@ -68,7 +68,7 @@ export function EmployeeReadiness({ tenantId, employeeId, employerId, facts, ret
     <h2 id="employee-readiness">متابعة تجهيز الموظف</h2>
     <section className={styles.focusCard} data-state={focus?.state ?? 'done'} aria-labelledby="employee-next-step">
       <div><h3 id="employee-next-step">{title}</h3>
-        <p>{focus?.detail ?? 'الإعدادات الأساسية الخمسة مسجلة. تظهر إمكانية تسجيل الحضور الفعلية للموظف في يومه، وفق الحساب والخدمة والدوام.'}</p>
+        <p>{focus?.detail ?? 'البيانات الأساسية مسجلة. يستطيع الموظف مراجعة إتاحة الحضور من صفحة «يومي».'}</p>
         {focus?.owner && <p className={styles.owner}>يتولاها: {focus.owner}</p>}
         {focus?.state === 'unknown' && <p>أعد تحميل الصفحة أو راجع القسم المختص للتحقق.</p>}
       </div>

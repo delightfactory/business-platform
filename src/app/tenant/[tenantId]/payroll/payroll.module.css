@@ -153,3 +153,40 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
 .configurationToolbar h2 { margin:0; }
 .configurationSearch { display:flex; align-items:end; gap:12px; margin-block:16px 24px; }
 .configurationSearch > :global(.ui-field) { flex:1; min-width:0; }
+
+/* EDARA: a business record collection, then one record workspace. */
+.collectionHeading { display:flex!important; align-items:center; justify-content:space-between; gap:16px; }
+.collectionHeading>header { flex:1; }
+.collectionTools { display:flex; flex-wrap:wrap; align-items:center; gap:20px; padding-block:16px; border-block-start:1px solid var(--line); font-size:13px; }
+.collectionTools>details { margin-inline-start:auto; }
+.recordList,.createWorkspace,.runOverview,.runSection { min-width:0; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card); overflow:hidden; }
+.createWorkspace,.runOverview,.runSection { padding:24px; }
+.createWorkspace .form { padding:0; box-shadow:none; border:0; margin-block-start:24px; }
+.createWorkspace h3,.runSection h2 { margin-block-start:0; }
+.recordList { box-shadow:var(--sh-1); }
+.tableScroll { max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; }
+.recordTable { border-collapse:collapse; width:100%; text-align:start; font-size:13px; line-height:1.7; }
+.recordTable th,.recordTable td { padding:16px; text-align:start; border-block-end:1px solid var(--line); vertical-align:middle; }
+.recordTable thead th { background:var(--surface-2); color:var(--ink-2); font-weight:600; white-space:nowrap; }
+.recordTable tbody th { font-weight:500; min-width:190px; }
+.recordTable tbody tr:last-child>:is(th,td) { border-block-end:0; }
+.recordTable tbody tr:hover { background:var(--surface-2); }
+.recordTable td { font-variant-numeric:tabular-nums; }
+.recordTable small { display:block; color:var(--muted); font-size:12px; font-weight:400; margin-block-start:5px; }
+.recordTable a { text-decoration:none; }
+.recordStatus { display:inline-block; border-radius:6px; padding:4px 8px; background:var(--surface-2); font-size:12px; white-space:nowrap; }
+.listNote { margin:0; padding:14px 16px; color:var(--muted); font-size:12px; line-height:1.8; border-block-start:1px solid var(--line); }
+.emptyWorkspace { padding:48px 24px; text-align:center; }
+.emptyWorkspace p { max-width:55ch; margin:12px auto 24px; line-height:1.8; color:var(--ink-2); }
+.runTabs { display:flex; align-items:center; gap:28px; border-block-end:1px solid var(--line); overflow-x:auto; }
+.runTabs a { padding:12px 2px; color:var(--ink-2); white-space:nowrap; text-decoration:none; border-block-end:3px solid transparent; font-size:14px; }
+.runTabs a[aria-current=page] { border-color:var(--brand); color:var(--brand-text); font-weight:600; }
+.runOverview h2 { margin:0; font-size:17px; }
+.runOverview .figureStrip { grid-template-columns:repeat(auto-fit,minmax(min(120px,100%),1fr)); gap:12px; padding-block:12px; margin-block-end:0; }
+.runSection { display:grid; gap:20px; }
+.runSection .figureStrip { margin:0; }
+.historyList { display:grid; gap:0; }
+.historyList article { padding-block:16px; border-block-end:1px solid var(--line); }
+.historyList h3 { margin:0 0 8px; font-size:14px; }
+.historyList p { font-size:13px; color:var(--ink-2); }
+@media(max-width:640px) { .collectionHeading { align-items:start; flex-wrap:wrap; }.collectionHeading>header { min-width:180px; }.recordTable th,.recordTable td { padding:12px; }.recordTable tbody th { min-width:165px; }.createWorkspace,.runOverview,.runSection { padding:16px; }.runTabs { gap:20px; }.collectionTools { gap:16px; }.collectionTools>details { margin-inline-start:0; } }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { Banner, Badge, ButtonLink, EmptyState, Icon, PageHeader, RecordCard } from '@/components/ui';
+import { Banner, Badge, ButtonLink, EmptyState, Icon, PageHeader } from '@/components/ui';
 import { readOperatorAuthority } from '@/lib/operator-authority';
 import { operatorLifecycleLabel } from '@/lib/operator-labels';
 import { operatorPage, operatorTenant } from '@/lib/operator-read';
@@ -42,12 +42,11 @@ export default async function CompanyDirectory({ searchParams }: {
     <section className="operator-company-directory" aria-label="نتائج البحث عن الشركات">
       <OperatorListControls basePath="/operator/companies" search={search} page={page} matchingCount={result.matching_count}
         searchLabel="البحث باسم الشركة" inputId="company-directory-search" />
-      {result.rows.length ? <ul className="member-list">{result.rows.map(company => <RecordCard className="operator-directory-record" key={company.tenant_id}>
-        <Link className="operator-directory-row" href={`/operator/companies/${company.tenant_id}${suffix}`}>
-          <span className="operator-directory-meta"><strong><bdi>{company.display_name}</bdi></strong><Badge tone={company.lifecycle_state === 'active' ? 'ok' : company.lifecycle_state === 'suspended' ? 'warn' : 'neutral'}>{operatorLifecycleLabel(company.lifecycle_state)}</Badge></span>
-          <Icon name="chevronRight" />
-        </Link>
-      </RecordCard>)}</ul> : page > Math.max(1, Math.ceil(result.matching_count / 25)) ? null :
+      {result.rows.length ? <div className="workspace-table-wrap"><table className="workspace-record-table"><thead><tr><th scope="col">الشركة</th><th scope="col">الحالة</th><th scope="col"><span className="sr-only">فتح ملف الشركة</span></th></tr></thead><tbody>{result.rows.map(company=><tr key={company.tenant_id}>
+        <td><Link href={`/operator/companies/${company.tenant_id}${suffix}`}><strong><bdi>{company.display_name}</bdi></strong></Link></td>
+        <td><Badge tone={company.lifecycle_state==='active'?'ok':company.lifecycle_state==='suspended'?'warn':'neutral'}>{operatorLifecycleLabel(company.lifecycle_state)}</Badge></td>
+        <td><Link className="operator-directory-open" href={`/operator/companies/${company.tenant_id}${suffix}`} aria-label={`فتح ملف ${company.display_name}`}><Icon name="chevronLeft"/></Link></td>
+      </tr>)}</tbody></table></div> : page > Math.max(1, Math.ceil(result.matching_count / 25)) ? null :
         <EmptyState title={search ? `لا توجد نتائج لـ «${search}»` : 'لا توجد شركات بعد'}
           action={search ? <ButtonLink href="/operator/companies" variant="ghost">مسح البحث</ButtonLink> :
             authority.onboard ? <ButtonLink href="/operator/companies/new">شركة جديدة</ButtonLink> : undefined} />}

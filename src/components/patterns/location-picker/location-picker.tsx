@@ -17,6 +17,7 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
   const circle = useRef<Circle | null>(null);
   const marker = useRef<CircleMarker | null>(null);
   const mounted = useRef(false);
+  const coordinates = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     mounted.current = true;
@@ -34,7 +35,7 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
       });
       circle.current = L.circle([latitude ?? 0, longitude ?? 0], { radius: radius ?? 0, color: '#0E6B5C', fillOpacity: .16, weight: 2 }).addTo(instance);
       marker.current = L.circleMarker([latitude ?? 0, longitude ?? 0], { radius: 6, color: '#fff', fillColor: '#0E6B5C', fillOpacity: 1, weight: 2 }).addTo(instance);
-    }).catch(() => { if (!cancelled) setMessage('تعذر تحميل الخريطة. يمكنك استخدام موقع الجهاز أو الإحداثيات أدناه.'); });
+    }).catch(() => { if (!cancelled) { setMessage('تعذر تحميل الخريطة. استخدم موقع جهازك أو أدخل الموقع يدويًا.'); if(coordinates.current)coordinates.current.open=true; } });
     return () => { cancelled = true; mounted.current = false; map.current?.remove(); map.current = null; circle.current = null; marker.current = null; };
   }, [latitude, longitude, radius]);
 
@@ -59,12 +60,18 @@ export function LocationPicker({ prefix, latitude, longitude, radius }: { prefix
     }, () => { if (mounted.current) { setLocating(false); setMessage('تعذر تحديد موقع الجهاز. اسمح بالموقع على اتصال آمن، أو اختر النقطة بالخريطة أو الإحداثيات.'); } }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
   }
 
-  return <div className={styles.picker}>
+  return <div className={styles.picker} onInvalidCapture={event=>{
+    const control=event.target;
+    if(control instanceof HTMLInputElement&&['latitude','longitude'].includes(control.name)){
+      if(coordinates.current)coordinates.current.open=true;
+      setMessage('اختر مقر العمل على الخريطة أو أدخل موقعه يدويًا قبل الحفظ.');
+    }
+  }}>
     <div className={styles.heading}><div><h3>أين يقع مقر العمل؟</h3><p>اختر نقطة على الخريطة، أو استخدم موقع جهازك وأنت في المقر. احفظ النموذج لتأكيد الموقع.</p></div><Button onClick={locate} pending={locating} pendingLabel="جارٍ تحديد الموقع…">استخدم موقعي الحالي</Button></div>
     <div ref={host} className={styles.map} role="region" aria-label="خريطة اختيار مقر العمل؛ يمكن إدخال الإحداثيات مباشرة أدناه" />
     <p role="status" className={styles.message}>{message}</p>
-    <Field id={`${prefix}-radius_m`} label="المسافة المسموح بها من المقر (متر)" hint="أبعد مسافة يمكن للموظف تسجيل حضوره منها، محسوبة من النقطة المحددة." required><Input name="radius_m" type="number" min={10} max={10000} step="any" required value={range} onChange={event => setRange(event.target.value)} /></Field>
-    <Disclosure summary="عرض الإحداثيات أو تعديلها يدويًا" open={latitude === undefined || longitude === undefined}>
+    <Field id={`${prefix}-radius_m`} label="المسافة المسموح بها للحضور (متر)" help="مثال: 200 يسمح بالتسجيل من المقر وما حوله حتى مسافة 200 متر." required><Input name="radius_m" type="number" min={10} max={10000} step="any" required value={range} onChange={event => setRange(event.target.value)} placeholder="مثال: 200"/></Field>
+    <Disclosure ref={coordinates} summary="إدخال الموقع يدويًا">
       <div className={styles.coordinates}>
         <Field id={`${prefix}-latitude`} label="خط العرض" required help="يُملأ من نقطة الخريطة؛ يمكنك إدخاله يدويًا إذا عرفت إحداثيات مقر العمل."><Input name="latitude" type="number" step="any" min={-90} max={90} required value={lat} onChange={event => setLat(event.target.value)}  placeholder="مثال: 30.0444"/></Field>
         <Field id={`${prefix}-longitude`} label="خط الطول" required help="يُملأ من نقطة الخريطة؛ يمكنك إدخاله يدويًا إذا عرفت إحداثيات مقر العمل."><Input name="longitude" type="number" step="any" min={-180} max={180} required value={lng} onChange={event => setLng(event.target.value)}  placeholder="مثال: 31.2357"/></Field>

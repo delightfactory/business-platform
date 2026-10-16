@@ -10,7 +10,7 @@ import styles from './payroll.module.css';
 export function CalendarForm({ tenant, employer, start, last, defaults }: { tenant: string; employer: string; start: string; last: string | null; defaults?: {cutoff_day: number|null; payment_day: number; payment_month: string; timezone: string} }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHintId = useId();
- const initial: CalendarState = { start, cutoff: defaults?.cutoff_day?.toString() ?? 'last_day', payment: String(defaults?.payment_day ?? 1), month: defaults?.payment_month ?? 'following', timezone: defaults?.timezone ?? 'Africa/Cairo', reason: defaults ? '' : 'إعداد دورة شهرية بتوقيت القاهرة', error: '', preview: null, attemptKey: '', saved: false };
+ const initial: CalendarState = { start, cutoff: defaults?.cutoff_day?.toString() ?? 'last_day', payment: String(defaults?.payment_day ?? 1), month: defaults?.payment_month ?? 'following', timezone: defaults?.timezone ?? 'Africa/Cairo', reason: defaults ? 'تحديث مواعيد الرواتب للفترات القادمة' : 'إعداد دورة شهرية بتوقيت القاهرة', error: '', preview: null, attemptKey: '', saved: false };
  const [fields, setFields] = useState<CalendarFields>(initial);
  const updateField = (field: keyof CalendarFields, value: string) => setFields(current => ({ ...current, [field]: value }));
  const [state, action, pending] = useActionState(calendarAction, initial);
@@ -25,11 +25,11 @@ export function CalendarForm({ tenant, employer, start, last, defaults }: { tena
   {last && <p>آخر فترة محفوظة تنتهي في {displayDate(last)}. تبدأ النسخة الجديدة في اليوم التالي؛ الفترات السابقة محفوظة.</p>}
   <div className={styles.fields}>
    <Field  id="payroll-start" label={<>بداية أول فترة</>}><Input id="payroll-start" name="start" type="date" required value={fields.start} onChange={event => updateField('start', event.currentTarget.value)} disabled={pending} readOnly={Boolean(last)} /></Field>
-   <Field  id="payroll-cutoff" label={<>يوم نهاية الفترة</>}><Select id="payroll-cutoff" name="cutoff" value={fields.cutoff} onChange={event => updateField('cutoff', event.currentTarget.value)} disabled={pending}><option value="last_day">آخر يوم من الشهر</option>{Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}</Select></Field>
+   <Field  id="payroll-cutoff" label={<>نهاية كل فترة</>}><Select id="payroll-cutoff" name="cutoff" value={fields.cutoff} onChange={event => updateField('cutoff', event.currentTarget.value)} disabled={pending}><option value="last_day">آخر يوم من الشهر</option>{Array.from({length:31},(_,i)=><option key={i+1} value={i+1}>{i+1}</option>)}</Select></Field>
    <Field  id="payroll-payment" label={<>يوم الصرف المقرر</>} help="رقم يوم الصرف المقرر داخل الشهر، وفق إعدادات الشركة."><Input id="payroll-payment" name="payment" type="number" min="1" max="31" required value={fields.payment} onChange={event => updateField('payment', event.currentTarget.value)} disabled={pending}  placeholder="مثال: 28"/></Field>
    <Field  id="payroll-month" label={<>شهر الصرف</>}><Select id="payroll-month" name="month" value={fields.month} onChange={event => updateField('month', event.currentTarget.value)} disabled={pending}><option value="ending">شهر نهاية الفترة</option><option value="following">الشهر التالي</option></Select></Field>
-   <Disclosure summary="المنطقة الزمنية وسبب الإعداد" style={{gridColumn:"1 / -1"}}>   <Field  id="payroll-timezone" label={<>المنطقة الزمنية</>} help="المنطقة الزمنية التي تُفسر بها أوقات هذا الإعداد."><Input id="payroll-timezone" name="timezone" required maxLength={100} value={fields.timezone} onChange={event => updateField('timezone', event.currentTarget.value)} disabled={pending} dir="ltr"  placeholder="مثال: Africa/Cairo"/></Field>
-   <Field  id="payroll-reason" label={<>سبب الإعداد أو التغيير</>} help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Input id="payroll-reason" name="reason" required minLength={3} maxLength={500} value={fields.reason} onChange={event => updateField('reason', event.currentTarget.value)} disabled={pending}  placeholder="مثال: تحديث موثق وفق المستند المراجع"/></Field>
+   <Disclosure summary="خيارات إضافية" style={{gridColumn:"1 / -1"}}>   <Field  id="payroll-timezone" label={<>المنطقة الزمنية</>} help="المنطقة الزمنية التي تُفسر بها أوقات هذا الإعداد."><Input id="payroll-timezone" name="timezone" required maxLength={100} value={fields.timezone} onChange={event => updateField('timezone', event.currentTarget.value)} disabled={pending} dir="ltr"  placeholder="مثال: Africa/Cairo"/></Field>
+   <Field  id="payroll-reason" label={<>ملاحظة التغيير</>} help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Input id="payroll-reason" name="reason" required minLength={3} maxLength={500} value={fields.reason} onChange={event => updateField('reason', event.currentTarget.value)} disabled={pending}  placeholder="مثال: تغيير يوم الصرف إلى نهاية الشهر"/></Field>
 </Disclosure>
   </div>
   <Disclosure summary="كيف تتحدد التواريخ؟"><p>في الشهر الأقصر يُستخدم آخر يوم متاح. الدورة من 25 إلى 24 تستخدم نهاية يوم 24؛ ومن 26 إلى 25 تستخدم نهاية يوم 25. موعد الصرف موعد مقرر فقط ولا ينتقل تلقائيًا بسبب عطلة.</p></Disclosure>
@@ -39,7 +39,7 @@ export function CalendarForm({ tenant, employer, start, last, defaults }: { tena
  {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }
 export function DateSummary({preview}: {preview: CalendarPreview}) {
- return <KeyValueStrip items={[{label:"بداية الفترة",value:displayDate(preview.starts_on)},{label:"نهاية الفترة",value:displayDate(preview.ends_on)},{label:"الصرف المقرر",value:displayDate(preview.payment_on)},{label:"المنطقة الزمنية",value:<bdi>{preview.timezone}</bdi>}]}/>;
+ return <KeyValueStrip items={[{label:"بداية الفترة",value:displayDate(preview.starts_on)},{label:"نهاية الفترة",value:displayDate(preview.ends_on)},{label:"الصرف المقرر",value:displayDate(preview.payment_on)},{label:"التوقيت",value:preview.timezone==='Africa/Cairo'?'القاهرة':preview.timezone}]}/>;
 }
 export function GenerateForm({tenant,employer,revision,preview}: {tenant: string; employer: string; revision: number; preview: CalendarPreview}) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();

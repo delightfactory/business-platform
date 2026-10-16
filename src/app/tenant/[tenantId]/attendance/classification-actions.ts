@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { safeReturn } from '@/lib/return-to';
 import { readClassificationReview, uuid, type ClassificationActionState } from './classification';
 
 export async function renewClassificationReview(tenantId: string, instanceId: string) {
@@ -58,6 +59,8 @@ export async function commitClassificationAction(
   revalidatePath(`/tenant/${tenantId}/attendance`);
   revalidatePath(`/tenant/${tenantId}/attendance/review`);
   const context=new URLSearchParams({state:'classification-approved'});
+  const returnTo = safeReturn(tenantId, field('return'));
+  if (returnTo) context.set('return', returnTo);
   const employer=field('payroll_employer'),period=field('payroll_period');
   if(uuid(employer)&&uuid(period)){context.set('payroll_employer',employer);context.set('payroll_period',period);}
   redirect(`/tenant/${tenantId}/attendance/${instanceId}?${context}`);

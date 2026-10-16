@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components/ui';
+import { Disclosure, PageHeader } from '@/components/ui';
 import { Panel, Badge, Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -82,13 +82,13 @@ export default async function TenantPage({ params, searchParams }: {
       <div className="tenant-home" aria-labelledby="tenant-title">
         <header className="tenant-home-heading">
           <p className="eyebrow"><bdi>{String(branding?.tenant_name ?? snapshot.tenant_name ?? 'الشركة')}</bdi></p>
-          <div className="tenant-home-title"><PageHeader id="tenant-title" title={<>اليوم</>} />
+          <div className="tenant-home-title"><PageHeader id="tenant-title" title={<>الرئيسية</>} />
             <Badge className="is-active">{lifecycleText(snapshot.lifecycle_state)}</Badge></div>
-          <p>ابدأ مهمتك من هنا، وتابع نتيجتها في صفحتها المختصة.</p>
+          <p>تابع طلبات الفريق، وأيام الحضور، ومسيرات الرواتب.</p>
         </header>
-        <TodaySections model={today}>{readiness.length > 0 && <section className="tenant-home-summary" aria-labelledby="company-readiness-title">
-          <h2 id="company-readiness-title">تجهيز الشركة: الخطوات المتاحة لك</h2><ReadinessList items={readiness} />
-        </section>}</TodaySections>
+        <TodaySections model={today}>{readiness.length > 0 && <Disclosure summary="إعداد الشركة" open={!entity||!site}>
+          <ReadinessList items={readiness} />
+        </Disclosure>}</TodaySections>
         <section className="tenant-home-summary" aria-labelledby="tenant-summary-title">
           <h2 id="tenant-summary-title">لمحة عن إعداد الشركة</h2>
           <dl className="snapshot-grid">
@@ -99,11 +99,9 @@ export default async function TenantPage({ params, searchParams }: {
           </dl>
         </section>
         <section className="tenant-home-tasks" aria-labelledby="tenant-tasks-title">
-          <h2 id="tenant-tasks-title">إدارة الشركة</h2>
+          <h2 id="tenant-tasks-title">إعدادات الشركة</h2>
           <ul className="tenant-task-list">
-            <TenantTaskLink href={`/tenant/${tenantId}/users`} title="المستخدمون والدعوات" detail="ادعُ الفريق وراجع صلاحياته وحالة الدعوات." />
-            <TenantTaskLink href={`/tenant/${tenantId}/entities-sites`} title="الجهات والفروع" detail="أضف الفروع أو حدّث بيانات الجهات المرتبطة بالشركة." />
-            <TenantTaskLink href={`/tenant/${tenantId}/branding`} title="هوية الشركة" detail="اضبط الاسم الظاهر والشعار واللون المستخدم داخل المساحة." />
+            <TenantTaskLink href={`/tenant/${tenantId}/settings`} title="فتح الإعدادات" detail="الفروع والفريق والدوام والحضور والإجازات والرواتب." />
           </ul>
         </section>
       </div>

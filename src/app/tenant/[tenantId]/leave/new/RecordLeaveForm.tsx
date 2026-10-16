@@ -23,7 +23,7 @@ import {
 } from './rules';
 import styles from '../review.module.css';
 
-export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, endDate, types, halfDayContext, halfDayError, cancelHref, initialIntentKey }: {
+export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, endDate, types, halfDayContext, halfDayError, cancelHref, initialIntentKey, returnTo }: {
   tenantId: string;
   actorId: string;
   q: string;
@@ -35,6 +35,7 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
   halfDayError: string | null;
   cancelHref: string;
   initialIntentKey: string;
+  returnTo?: string | null;
 }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHintId = useId();
@@ -130,7 +131,8 @@ export function RecordLeaveForm({ tenantId, actorId, q, employee, startDate, end
     <h2>تم تسجيل طلب الإجازة</h2>
     <p>افتح الطلب لمراجعة حالته الحالية. الاعتماد خطوة منفصلة بصلاحية اعتماد الإجازات.</p>
     <div className="workspace-form-actions">
-      <PendingLink className="ui-button ui-button-solid ui-button-md" href={detailHref(tenantId, submitState.requestId)}>فتح الطلب</PendingLink>
+      <PendingLink className="ui-button ui-button-solid ui-button-md" href={`${detailHref(tenantId, submitState.requestId)}${returnTo ? `?${new URLSearchParams({ return: returnTo })}` : ''}`}>فتح الطلب</PendingLink>
+      {returnTo && <PendingLink className="ui-button ui-button-ghost ui-button-md" href={returnTo}>العودة إلى ملف الموظف</PendingLink>}
       <Button variant="ghost" type="button"  onClick={() => window.location.reload()}>تسجيل طلب آخر</Button>
     </div>
   </div>;

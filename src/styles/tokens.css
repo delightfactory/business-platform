@@ -1,10 +1,10 @@
-/* Concept C: authoritative tokens, with compatibility aliases for existing pages. */
+/* EDARA workflow reference: calm record workspaces; tenant branding remains editable. */
 :root {
   /* Light: "Daylight ledger" — neutral paper, deep Nile teal as the single brand color */
-  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#F6F7F5;--surface-3:#ECEEEA;
-  --line:#E2E5E0;--line-2:#CCD1CA;
-  --ink:#17201C;--ink-2:#3B4641;--muted:#5D6862;
-  --brand:#0E6B5C;--brand-strong:#0A5146;--brand-ink:#FFFFFF;--brand-soft:#E4F0EC;--brand-text:#0B5D50;
+  --bg:#F4F6FA;--surface:#FFFFFF;--surface-2:#F8FAFC;--surface-3:#EEF2F6;
+  --line:#E4E8EF;--line-2:#CCD3DE;
+  --ink:#1E293B;--ink-2:#475569;--muted:#64748B;
+  --brand:#2563EB;--brand-strong:#1D4ED8;--brand-ink:#FFFFFF;--brand-soft:#EFF6FF;--brand-text:#1D4ED8;
   --money:#17201C;--toast-bg:#17201C;--toast-ink:#EEF4F1;--toast-ic:#7ED3C0;
   --pass:#14211D;--pass-2:#1D2D28;--pass-accent:#5CBFAA;--pass-accent-ink:#08201B;--pass-ink:#EEF4F1;--pass-muted:#A9BCB4;--pass-line:rgb(255 255 255 / 12%);
   --ok:#1E7A4C;--ok-bg:#E6F3EB;--ok-text:#17603C;
@@ -16,9 +16,9 @@
   --sh-1:0 1px 2px rgb(20 33 29 / 6%),0 1px 1px rgb(20 33 29 / 4%);
   --sh-2:0 1px 2px rgb(20 33 29 / 6%),0 8px 24px rgb(20 33 29 / 8%);
   --sh-3:0 24px 60px rgb(20 33 29 / 18%);
-  --r-card:16px;--r-tile:12px;--r-ctl:10px;--r-chip:6px;
+  --r-card:12px;--r-tile:10px;--r-ctl:8px;--r-chip:6px;
   --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
-  --f-head:'Alexandria','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --f-head:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
   color-scheme:light;
 
 --surface-canvas:var(--bg);--surface-base:var(--surface);--surface-subtle:var(--surface-2);--surface-inset:var(--surface-3);--text-primary:var(--ink);--text-secondary:var(--ink-2);--text-muted:var(--muted);--border-subtle:var(--line);--border-control:var(--line-2);--color-canvas:var(--bg);--color-surface:var(--surface);--color-text:var(--ink);--color-muted:var(--muted);--color-border:var(--line);--color-control-border:var(--line-2);--color-brand:var(--brand);--color-on-brand:var(--brand-ink);--color-brand-text:var(--brand-text);--color-brand-soft:var(--brand-soft);--color-brand-border:var(--line-2);--color-focus:var(--brand);--color-danger:var(--bad-text);--color-danger-action:var(--bad);--status-success-text:var(--ok-text);--status-success-surface:var(--ok-bg);--status-warning-text:var(--warn-text);--status-warning-surface:var(--warn-bg);--status-danger-text:var(--bad-text);--status-danger-surface:var(--bad-bg);--status-info-text:var(--info-text);--status-info-surface:var(--info-bg);--navigation-surface:var(--pass);--navigation-muted:var(--pass-muted);--radius-card:var(--r-card);--radius-control:var(--r-ctl);--radius-field:var(--r-ctl);--shadow-card:var(--sh-1);--shadow-control:var(--sh-1);--control-height:40px;--field-height:44px;--touch-target-size:44px;--control-padding-inline:16px;--focus-width:2px;--space-page:clamp(16px,3vw,32px);--operator-rail-width:15.5rem;--work-content-max:77.5rem;--theme-legacy-ink:var(--ink);--theme-legacy-muted:var(--muted);--theme-legacy-brand-text:var(--brand-text);--theme-legacy-border:var(--line);--theme-legacy-control-border:var(--line-2);--theme-legacy-warning-border:var(--warn);--theme-legacy-warning-surface:var(--warn-bg);--theme-legacy-subtle:var(--surface-2);--theme-legacy-soft:var(--surface-3);font-family:var(--f-body);color:var(--ink);background:var(--bg);}

@@ -6,6 +6,7 @@ import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { AttendanceBulkApprovalForm } from '../AttendanceBulkApprovalForm';
 import styles from '../attendance-lists.module.css';
+import { AttendanceWorkspaceTabs } from '../AttendanceWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -41,10 +42,8 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
 
   return <PageFrame footer="مراجعة الحضور وسجل العمل">{payrollReturn&&<ButtonLink variant="ghost" href={payrollReturn}>العودة إلى مسير الرواتب نفسه</ButtonLink>}
     <Panel className={` task-page attendance-review-page ${styles.reviewPage}`} aria-labelledby="attendance-review-title">
-      <p className="eyebrow">مهام مراجعة اليوم</p>
-      <div className="workspace-page-heading"><div><PageHeader id="attendance-review-title" title={<>مراجعة الحضور</>} description={<> ابدأ بالحالات التي تحتاج قرارًا، واعتمد الأيام المكتملة بعد مراجعة بياناتها. لا تُعتمد الحالات الاستثنائية جماعيًا. </>} /></div>
-        <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance?date=${encodeURIComponent(date)}`}>العودة إلى اليوم</ButtonLink>
-      </div>
+      <PageHeader id="attendance-review-title" title="الحضور والانصراف" description="راجع الحالات الناقصة، ثم اعتمد الأيام المكتملة." />
+      <AttendanceWorkspaceTabs tenantId={tenantId} current="review" date={date} payrollEmployer={query.payroll_employer} payrollPeriod={query.payroll_period} />
       {access.entitlement_enabled !== true && <Message tone="info" >وحدة الحضور غير مفعلة. هذه القائمة للقراءة فقط.</Message>}
       <div className={styles.toolbar}><nav className={styles.dateShortcuts} aria-label="اختيار يوم المراجعة"><ButtonLink variant="ghost" aria-current={date === today ? 'date' : undefined} href={`/tenant/${tenantId}/attendance/review?date=${today}&filter=${filter}${payrollQuery}`}>اليوم</ButtonLink><ButtonLink variant="ghost" aria-current={date === yesterday ? 'date' : undefined} href={`/tenant/${tenantId}/attendance/review?date=${yesterday}&filter=${filter}${payrollQuery}`}>أمس</ButtonLink></nav><form method="get" className={styles.dateForm}><Field  id="review-date" label={<>تاريخ العمل</>}><Input id="review-date" type="date" name="date" defaultValue={date} /></Field>{payrollReturn&&<><input type="hidden" name="payroll_employer" value={query.payroll_employer}/><input type="hidden" name="payroll_period" value={query.payroll_period}/></>}<input type="hidden" name="filter" value={filter} /><Button variant="solid"  type="submit">عرض التاريخ</Button></form></div>
       <nav className="attendance-review-filters" aria-label="تصفية قائمة المراجعة">
@@ -63,7 +62,7 @@ export default async function AttendanceReviewPage({ params, searchParams }: { p
             {!row.exception_code && row.status === 'ready' && <p className="record-meta">اليوم مكتمل ولا توجد استثناءات؛ يمكن مراجعته واعتماده.</p>}
             {(row.overtime_pending_count ?? 0) > 0 && <Message tone="bad" >عمل إضافي بانتظار قرار فردي: {row.overtime_pending_count}</Message>}
             {row.worked_minutes !== null && <p className="record-meta">صافي العمل: {row.worked_minutes} دقيقة{row.late_minutes !== null ? ` · التأخر ${row.late_minutes} د` : ''}{row.early_leave_minutes !== null ? ` · المغادرة المبكرة ${row.early_leave_minutes} د` : ''}</p>}
-          </div><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/${row.id}${payrollQuery?'?'+payrollQuery.slice(1):''}`}>مراجعة السجل</ButtonLink>
+          </div><ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/${row.id}?${new URLSearchParams({ return: `/tenant/${tenantId}/attendance/review?date=${date}&filter=${filter}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}${payrollQuery}`, ...(payrollReturn ? { payroll_employer: query.payroll_employer!, payroll_period: query.payroll_period! } : {}) })}`}>مراجعة السجل</ButtonLink>
         </RecordCard>)}
       </ul>}
       {filter === 'ready' && !canBulkApprove && queue.items.some((row) => row.can_bulk_approve) && <p className="field-hint">يمكن لمراجع الحضور اعتماد الأيام الجاهزة؛ لا تملك هذه العضوية صلاحية الاعتماد.</p>}

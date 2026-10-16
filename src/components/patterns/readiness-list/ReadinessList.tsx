@@ -12,7 +12,7 @@ export type ReadinessItem = {
 const states = {
   done: { label: 'مكتمل', tone: 'ok' },
   todo: { label: 'خطوتك التالية', tone: 'brand' },
-  'other-role': { label: 'يحتاج دورًا آخر', tone: 'neutral' },
+  'other-role': { label: 'راجع المسؤول', tone: 'neutral' },
   unknown: { label: 'تعذر التحقق', tone: 'warn' },
 } as const;
 

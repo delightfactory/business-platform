@@ -6,8 +6,8 @@ export function hasTeamWorkspace(links: WorkspaceLink[]) {
   return links.some(item => /\/(people|attendance|leave|payroll)(?:\/|\?|$)/.test(item.href) && !item.href.includes('/me/'));
 }
 
-const timeOrder = ['attendance', 'attendance/calendar', 'attendance/review', 'leave', 'leave/balances', 'attendance/sources', 'leave/settings'];
-const payrollOrder = ['payroll', 'payroll/runs', 'payroll/inputs', 'payroll/setup', 'payroll/advances', 'payroll/reports'];
+const timeOrder = ['attendance', 'attendance/calendar', 'attendance/review', 'attendance/unassigned', 'attendance/sources'];
+const payrollOrder = ['payroll', 'payroll/runs', 'payroll/inputs', 'payroll/setup'];
 const setupOrder = ['entities-sites', 'users', 'people/organization', 'people/work-policies', 'attendance/sources', 'leave/settings', 'payroll/setup', 'branding'];
 function ordered(links: WorkspaceLink[], order: string[]) {
   const rank = (href: string) => {
@@ -20,7 +20,7 @@ function ordered(links: WorkspaceLink[], order: string[]) {
 
 // Group only links already authorized by the server. No destination is invented.
 export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admin: WorkspaceLink[], mode: 'tenant' | 'operator'): NavArea[] {
-  const areas: NavArea[] = [{ key: 'today', label: mode === 'tenant' ? 'اليوم' : 'نظرة عامة', icon: 'home', destination: { href: homeHref, label: 'اليوم' }, links: [] }];
+  const areas: NavArea[] = [{ key: 'today', label: mode === 'tenant' ? 'الرئيسية' : 'نظرة عامة', icon: 'home', destination: { href: homeHref, label: 'الرئيسية' }, links: [] }];
   const add = (key: string, label: string, icon: IconName, links: WorkspaceLink[]) => {
     if (links.length) areas.push({ key, label, icon, destination: links[0], links });
   };
@@ -33,8 +33,11 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
     const team = hasTeamWorkspace(business);
     if (team) {
       add('people', 'الموظفون', 'users', business.filter(item => item.href.includes('/people')));
-      add('time', 'الحضور والإجازات', 'clock', ordered(business.filter(item => !item.href.includes('/me/') && /\/(attendance|leave)(?:\/|$)/.test(item.href)), timeOrder));
-      add('payroll', 'الرواتب', 'wallet', ordered(business.filter(item => item.href.includes('/payroll')), payrollOrder));
+      add('time', 'الحضور', 'clock', ordered(business.filter(item => !item.href.includes('/me/') && /\/attendance(?:\/|$)/.test(item.href)), timeOrder));
+      add('leave', 'الإجازات', 'calendar', business.filter(item => !item.href.includes('/me/') && /\/leave(?:\/|$)/.test(item.href)));
+      add('payroll', 'الرواتب', 'wallet', ordered(business.filter(item => /\/payroll(?:\?|$|\/(?:runs|inputs|setup)(?:\?|$|\/))/.test(item.href)), payrollOrder));
+      add('advances', 'السلف', 'wallet', business.filter(item => /\/payroll\/advances(?:\?|$)/.test(item.href)));
+      add('reports', 'التقارير', 'file', business.filter(item => /\/payroll\/reports(?:\?|$)/.test(item.href)));
     } else {
       // Self-service destinations remain available even when the employee has no HR access.
       const attendance = business.filter(item => item.href.endsWith('/me/attendance'));
@@ -94,7 +97,7 @@ export function payrollDestination(pathname: string, href: string, employer: str
   const params = new URLSearchParams(query);
   if (params.has('employer') && params.get('employer') !== employer) return href;
   params.set('employer', employer);
-  if ([base,`${base}/setup`,`${base}/inputs`,`${base}/runs`].includes(target)
+  if ([`${base}/setup`,`${base}/inputs`,`${base}/runs`].includes(target)
     && !params.has('period') && period && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(period)) params.set('period',period);
   return `${target}?${params}${hash === undefined ? '' : `#${hash}`}`;
 }

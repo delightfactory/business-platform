@@ -7,6 +7,7 @@ import { MobilePunch } from './MobilePunch';
 import { AttendanceHistory } from './AttendanceHistory';
 import { ButtonLink, PageHeader } from '@/components/ui';
 import styles from './attendance.module.css';
+import { SelfWorkspaceTabs } from '../SelfWorkspaceTabs';
 export const dynamic='force-dynamic';
 export default async function MyAttendance({params}:{params:Promise<{tenantId:string}>}) {
   const {tenantId}=await params;if(!/^[0-9a-f-]{36}$/i.test(tenantId)) notFound();
@@ -21,7 +22,8 @@ export default async function MyAttendance({params}:{params:Promise<{tenantId:st
   }
   const {data,error}=response;
   const snapshot=!error?readMobileSnapshot(data):null;
-  return <PageFrame><PageHeader title="حضوري" description="سجّل يومك وراجع نتيجة كل محاولة." eyebrow="يومي" action={<ButtonLink variant="ghost" href={`/tenant/${tenantId}/me`} icon="arrowRight">العودة إلى يومي</ButtonLink>} />
+  return <PageFrame><PageHeader title="حضوري" description="سجّل حضورك وانصرافك، وتابع النتيجة هنا." />
+    <SelfWorkspaceTabs tenantId={tenantId} current="attendance" hasAttendance={Boolean(snapshot)} />
     {snapshot ? <div className={styles.layout}><MobilePunch tenantId={tenantId} snapshot={snapshot}/><section className={`ui-card ${styles.panel}`}><h2>آخر تسجيلات الحضور</h2><p className="field-hint">آخر 20 محاولة تسجيل، مع نتيجتها. لتصحيح الحضور تواصل مع الموارد البشرية.</p><AttendanceHistory history={snapshot.history}/></section></div> : <section className="ui-card channel-read-state"><h2>{error?.code==='42501'?'التسجيل غير متاح لحسابك':'تعذر تحميل الحضور'}</h2><p>{error?.code==='42501'?channelReasonLabel('permission'):'لم تُحمّل حالة حضورك. أعد المحاولة عند عودة الاتصال.'}</p>{error?.code!=='42501' && <ButtonLink href={`/tenant/${tenantId}/me/attendance`}>إعادة تحميل الصفحة</ButtonLink>}</section>}
   </PageFrame>;
 }

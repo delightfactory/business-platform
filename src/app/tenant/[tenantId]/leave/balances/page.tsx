@@ -24,6 +24,7 @@ import {
 } from './rules';
 import { PostBalanceForm } from './PostBalanceForm';
 import styles from '../review.module.css';
+import { LeaveWorkspaceTabs } from '../LeaveWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 
@@ -170,11 +171,8 @@ export default async function LeaveBalancesPage({ params, searchParams }: {
   ].filter((entry) => entry.message !== '');
 
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title={<>أرصدة الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>ابحث عن الموظف بالاسم أو رمزه، ثم اختر جهة عمله لعرض أرصدة حساباته كاملة
-          وسجل حساب كل رصيد.</>} action={<><div className="workspace-form-actions">
-        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave`}>طلبات الإجازة</PendingLink>
-        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}`}>مساحة الشركة</PendingLink>
-      </div></>} />
+    <PageHeader title="أرصدة الإجازات" description="اختر الموظف لمراجعة رصيده وتسجيل أي تعديل." />
+    <LeaveWorkspaceTabs tenantId={tenantId} current="balances" />
     {!access.newWorkEnabled && <Message tone="info"  role="status">
       خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا تُقبل حركات رصيد جديدة.
       تبقى عرض الأرصدة وسجل الحساب متاحًا.

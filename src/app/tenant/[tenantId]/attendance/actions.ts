@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { safeReturn } from '@/lib/return-to';
 
 export async function recordPunchAction(formData: FormData) {
   const tenantId = field(formData, 'tenantId');
@@ -165,6 +166,8 @@ function mapOvertimeError(message: string) {
 }
 function move(tenantId: string, instanceId: string, state: string, formData?:FormData): never {
   const context=new URLSearchParams({state});
+  const returnTo = safeReturn(tenantId, formData?.get('return'));
+  if (returnTo) context.set('return', returnTo);
   const employer=formData?field(formData,'payroll_employer'):'',period=formData?field(formData,'payroll_period'):'';
   if(isUuid(employer)&&isUuid(period)){context.set('payroll_employer',employer);context.set('payroll_period',period);}
   redirect(`/tenant/${tenantId}/attendance/${instanceId}?${context}`);

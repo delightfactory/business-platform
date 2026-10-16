@@ -9,6 +9,7 @@ import { isDate, isInstant, isLeaveAccessSnapshot, isObject, isUuid } from './fo
 import { PendingLink } from './pending-link';
 import { formatDays, formatInstant, isRequestState, stateLabel } from './states';
 import styles from './leave.module.css';
+import { SelfWorkspaceTabs } from '../SelfWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 
@@ -86,6 +87,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
 
   return <PageFrame footer="الخدمة الذاتية">
     <PageHeader eyebrow="يومي" title="إجازاتي" description="رصيدك وطلباتك في مكان واحد. الطلب المعلق لا يحجز رصيدًا قبل اعتماده." action={canRequest && <PendingLink className="ui-button ui-button-solid ui-button-md" href={`/tenant/${tenantId}/me/leave/new`}><Icon name="plus" size={18}/>طلب إجازة</PendingLink>} />
+    <SelfWorkspaceTabs tenantId={tenantId} current="leave" hasLeave />
     {showResultGuide && !requestsFailed && !requestPage.invalid
       && <Message tone="info"  role="status">راجع سجل طلبات الإجازة لمعرفة الحالة الحالية لطلباتك.</Message>}
     {!canRequest && <Message tone="info"  role="status">يمكنك مراجعة أرصدة إجازاتك وسجل طلباتك. إنشاء طلبات جديدة غير متاح حاليًا.</Message>}

@@ -11,7 +11,7 @@ export type SourceSummary = {
 export type SourceDay = {
   date:string;status:string;work_units:number|null;paid_leave_units:number|null;unpaid_leave_units:number|null;
 };
-const sources:Record<string,string>={monthly_approved_sources:'مصادر الحضور والإجازات للأجر الشهري',manual:'إجمالي يدوي معتمد',legacy_manual:'أيام يدوية محفوظة سابقًا',time:'الحضور المعتمد'};
+const sources:Record<string,string>={monthly_approved_sources:'الحضور والإجازات',manual:'إجمالي يدوي معتمد',legacy_manual:'أيام يدوية محفوظة سابقًا',time:'الحضور المعتمد'};
 const quantities=new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE,{maximumFractionDigits:2});
 const quantity=(value:number|null|undefined)=>value==null?'غير محدد':quantities.format(value);
 
@@ -19,13 +19,13 @@ export function SourceExplanation({summary,days,coverageDays}:{summary?:SourceSu
   if(!summary||summary.status==='disabled'&&!summary.selected_source)return null;
   const monthly=summary.selected_source==='monthly_approved_sources';
   const complete=summary.coverage==='operational_complete'&&summary.operational_complete===true;
-  return <section aria-label="مصادر الأيام"><h4>مصدر الأيام</h4>
-    <p>{sources[summary.selected_source??'']??'مصادر الحضور والإجازات للمراجعة'} · {summary.status==='needs_source_review'?'يلزم مراجعة المصادر':complete?'أيام المصدر مكتملة للحساب':'مصادر محفوظة للمراجعة'}</p>
+  return <section aria-label="مصادر الأيام"><h4>الأيام المحتسبة</h4>
+    <p>{sources[summary.selected_source??'']??'الحضور والإجازات'} · {summary.status==='needs_source_review'?'تحتاج مراجعة':complete?'الأيام مكتملة':'البيانات المتاحة للمراجعة'}</p>
     {summary.selected_source&&!monthly&&<p>الأيام المستحقة من المصدر المختار: {quantity(summary.approved_units)}</p>}
     {monthly&&<p>الغياب غير المدفوع: {quantity(summary.absence_units??0)} · الإجازة غير المدفوعة: {quantity(summary.unpaid_leave_units??0)}</p>}
     {monthly&&summary.status==='reconciliation_ready'&&<HelpNote label="كيف حُسب الأجر الشهري؟"><p>يُوزّع الأجر الساري على تواريخ الفترة، ثم يُخصم الجزء غير المدفوع المعتمد مرة واحدة. تُحسب البنود الثابتة بالطريقة المعتمدة لكل بند.</p></HelpNote>}
-    {summary.coverage==='captured_parts_only'&&<p>{summary.time_coverage?.enabled?'السجلات المعتمدة متاحة للمراجعة؛ احتساب الأيام والمبالغ المستحقة من الحضور والإجازات لم يكتمل التحقق من سلامته بعد.':'تشرح هذه القيم وقائع الحضور المعتمدة المتاحة؛ تغطية أيام العمل المتوقعة لم تُؤهّل بعد.'}</p>}
-    {complete&&!monthly&&<><HelpNote label="كيف حُسب الأجر من الأيام؟"><p>يُحسب الأجر من أيام العمل والإجازات المدفوعة المعتمدة، بالأجر الساري لكل يوم. تُحسب الإجازة المدفوعة مرة واحدة.</p></HelpNote><p>اكتمال الأيام لا يعني جاهزية الصرف؛ راجع شروط الحساب المالي والقانوني قبل الاعتماد.</p></>}
+    {summary.coverage==='captured_parts_only'&&<p>{summary.time_coverage?.enabled?'السجلات المعتمدة متاحة. أكمل مراجعة الأيام الناقصة قبل الاعتماد.':'تظهر الأيام المسجلة بالفعل. لم تكتمل مراجعة كل أيام الفترة بعد.'}</p>}
+    {complete&&!monthly&&<><HelpNote label="كيف حُسب الأجر من الأيام؟"><p>يُحسب الأجر من أيام العمل والإجازات المدفوعة المعتمدة، بالأجر الساري لكل يوم. تُحسب الإجازة المدفوعة مرة واحدة.</p></HelpNote><p>بعد مراجعة الأيام، راجع الرواتب وأكمل اعتماد المسير.</p></>}
     {summary.coverage==='approved_manual_total'&&<p>الإجمالي اليدوي يشمل الإجازة المدفوعة؛ لا تُضاف إليه أيام الحضور أو الإجازة مرة أخرى.</p>}
     <TimeCoverageExplanation summary={summary.time_coverage} days={coverageDays}/>
     {days&&days.length>0&&<Disclosure summary={<>شرح الأيام المتاحة ({quantity(days.length)})</>}><ul>{days.map(day=><li key={day.date}>

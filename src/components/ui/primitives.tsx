@@ -51,9 +51,12 @@ export function DataTable({ className = '', children, ...props }: TableHTMLAttri
   return <table className={`ui-data-table ${className}`} {...props}>{children}</table>;
 }
 export function PageHeader({ title, description, action, eyebrow, id, className = '' }: { title: ReactNode; description?: ReactNode; action?: ReactNode; eyebrow?: ReactNode; id?: string; className?: string }) { return <header className={`ui-page-header ${className}`}><div>{eyebrow && <p className="ui-eyebrow">{eyebrow}</p>}<h1 id={id}>{title}</h1>{description && <p className="ui-page-description">{description}</p>}</div>{action && <div className="ui-page-actions">{action}</div>}</header>; }
+export function WorkspaceTabs({ items, label = 'أقسام الصفحة' }: { items: { href: string; label: string; current?: boolean }[]; label?: string }) {
+  return <nav className="workspace-tabs" aria-label={label}>{items.map(item => <Link key={item.href} href={item.href} aria-current={item.current ? 'page' : undefined} prefetch={/\/attendance(?:\/review)?(?:\?|$)/.test(item.href) ? false : undefined}>{item.label}</Link>)}</nav>;
+}
 export function Banner({ tone = 'info', title, children, action, className = '', ...props }: Omit<HTMLAttributes<HTMLDivElement>, 'title'> & { tone?: Tone; title?: ReactNode; action?: ReactNode }) { return <div className={`ui-banner ui-tone-${tone} ${className}`} {...props}><Icon name={tone === 'bad' || tone === 'warn' ? 'alert' : tone === 'ok' ? 'success' : 'info'} /><div>{title && <strong>{title}</strong>}{children && <div>{children}</div>}</div>{action && <div className="ui-banner-action">{action}</div>}</div>; }
 export const Notice = Banner;
-export function Disclosure({ summary, children, className = '', ...props }: DetailsHTMLAttributes<HTMLDetailsElement> & { summary: ReactNode }) { return <details className={`ui-disclosure ${className}`} {...props}><summary>{summary}<Icon name="chevronDown" size={18} /></summary><div className="ui-disclosure-content">{children}</div></details>; }
+export function Disclosure({ summary, children, className = '', ...props }: DetailsHTMLAttributes<HTMLDetailsElement> & { summary: ReactNode; ref?: Ref<HTMLDetailsElement> }) { return <details className={`ui-disclosure ${className}`} {...props}><summary>{summary}<Icon name="chevronDown" size={18} /></summary><div className="ui-disclosure-content">{children}</div></details>; }
 /** Optional explanation only; keep errors and decision-critical guidance visible. */
 export function HelpNote({ label, children }: { label: string; children: ReactNode }) {
   return <Disclosure className="ui-help-note" summary={<span><Icon name="info" size={16} />{label}</span>}>{children}</Disclosure>;

@@ -21,6 +21,7 @@ import {
   stateLabel,
 } from './rules';
 import styles from './review.module.css';
+import { LeaveWorkspaceTabs } from './LeaveWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 
@@ -83,11 +84,11 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
   const cancellationsFailed = access.canApprove && !cancellationPage.invalid && cancellations === null;
 
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title={<>مراجعة طلبات الإجازة</>} eyebrow={<>الموارد البشرية</>} description={<>الطلبات المقدمة مرتبة من الأقدم إلى الأحدث، بحد أقصى 50 طلبًا في الصفحة. افتح الطلب لعرض أيامه واتخاذ قراره.</>} action={<><div className="workspace-form-actions">
+    <PageHeader title="الإجازات" description="افتح الطلب لمراجعته واتخاذ القرار." action={<><div className="workspace-form-actions">
         {access.canManage && access.newWorkEnabled && <PendingLink className="ui-button ui-button-solid ui-button-md"
           href={`/tenant/${tenantId}/leave/new`}>تسجيل إجازة موظف</PendingLink>}
-        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink>
       </div></>} />
+    <LeaveWorkspaceTabs tenantId={tenantId} current="requests" />
     {!access.newWorkEnabled && <Message tone="info"  role="status">
       خدمة إدارة الموظفين أو الإجازات موقوفة حاليًا، لذا لا يمكن اعتماد طلبات جديدة أو تحديث معايناتها.
       تبقى مراجعة الطلبات ورفضها متاحة.
@@ -96,7 +97,7 @@ export default async function LeaveReviewQueuePage({ params, searchParams }: {
     <Panel  aria-labelledby="leave-queue-title">
       <div className={styles.panelHeading}>
         <h2 id="leave-queue-title">طلبات بانتظار القرار</h2>
-        <p>حالة «مُقدَّم» تعني أن الطلب لم يُعتمد بعد ولم يحجز أي رصيد من رصيد الموظف.</p>
+        <p>من الأقدم إلى الأحدث. لا يُخصم الرصيد إلا بعد الاعتماد.</p>
       </div>
       {requestPage.invalid
         ? <Message tone="bad"  role="alert">رقم صفحة الطلبات غير صالح.{' '}

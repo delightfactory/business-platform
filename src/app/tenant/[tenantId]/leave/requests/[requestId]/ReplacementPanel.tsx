@@ -6,11 +6,12 @@ import { detailHref, formatDays, formatInstant, isObject, isUuid, PAGE_SIZE, par
 import { DayBreakdown } from './DayBreakdown';
 import { ReviewIntentForm } from './ReviewIntentForm';
 
-export async function ReplacementPanel({ tenantId, request, source, canReplace, replacementId, page }: {
+export async function ReplacementPanel({ tenantId, request, source, canReplace, replacementId, page, returnTo }: {
   tenantId: string; request: RequestPayload; source: unknown; canReplace: boolean;
-  replacementId?: string; page?: string;
+  replacementId?: string; page?: string; returnTo?:string|null;
 }) {
   const path = detailHref(tenantId, request.id);
+  const contextHref = (href: string) => returnTo ? `${href}${href.includes('?') ? '&' : '?'}${new URLSearchParams({ return: returnTo })}` : href;
   const links = isObject(source) && Array.isArray(source.correction_links) ? source.correction_links : [];
   const history = links.filter((link): link is Record<string, unknown> => isObject(link)
     && isUuid(link.original_request_id) && isUuid(link.replacement_request_id)
@@ -42,7 +43,7 @@ export async function ReplacementPanel({ tenantId, request, source, canReplace, 
       return <RecordCard  key={index}>
         <p>{link.reason as string}</p>
         <p className="record-meta">وقت التصحيح: <bdi>{formatInstant(link.created_at as string)}</bdi></p>
-        <PendingLink href={detailHref(tenantId, request.id === original ? replacement : original)}>
+        <PendingLink href={contextHref(detailHref(tenantId, request.id === original ? replacement : original))}>
           {request.id === original ? 'عرض الطلب البديل' : 'عرض الطلب الأصلي'}
         </PendingLink>
       </RecordCard>;
@@ -60,22 +61,23 @@ export async function ReplacementPanel({ tenantId, request, source, canReplace, 
             .filter((day) => day.eligible && day.balanceMode === 'tracked')
             .reduce((sum, day) => sum + day.units, 0))} يوم</> }]} />
         <DayBreakdown days={validSelection.days} showMapping={validSelection.isHalfDay} />
-        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={detailHref(tenantId, validSelection.id)}>عرض الطلب البديل وتحديث حسابه عند الحاجة</PendingLink>
+        <PendingLink className="ui-button ui-button-ghost ui-button-md" href={contextHref(detailHref(tenantId, validSelection.id))}>عرض الطلب البديل وتحديث حسابه عند الحاجة</PendingLink>
         {request.approvedPreviewVersion !== null && <ReviewIntentForm intent="replacement"
+          returnTo={returnTo}
           tenantId={tenantId} requestId={request.id} expectedVersion={request.version}
           reviewedPreviewVersion={request.approvedPreviewVersion} replacementId={validSelection.id}
           replacementVersion={validSelection.version} replacementPreviewVersion={validSelection.previewVersion}
-          submitLabel="استبدال الإجازة واعتماد البديل" pendingLabel="جارٍ حفظ التصحيح…" backHref={path}
+          submitLabel="استبدال الإجازة واعتماد البديل" pendingLabel="جارٍ حفظ التصحيح…" backHref={contextHref(path)}
           hint="تأكيد التصحيح يعيد الرصيد المخصوم للطلب الأصلي، ويخصم رصيد الطلب البديل حسب نوع الإجازة. إذا تعذرت العملية، يبقى الطلبان كما هما." />}
       </> : <>
-        {!queue ? <Message tone="bad"  role="alert">تعذر تحميل الطلبات المرسلة. <PendingLink href={path}>إعادة المحاولة</PendingLink></Message>
+        {!queue ? <Message tone="bad"  role="alert">تعذر تحميل الطلبات المرسلة. <PendingLink href={contextHref(path)}>إعادة المحاولة</PendingLink></Message>
           : candidates.length === 0 ? <p>لا يوجد طلب بديل مرسل لهذا الموظف في هذه الصفحة. يمكن للموظف إرسال طلب جديد من إجازاتي.</p>
             : <ul className="record-list">{candidates.map((item) => <RecordCard  key={item.id}>
-              <PendingLink href={`${path}?replacement=${item.id}`}>{item.leaveTypeName} · <bdi>{item.startDate}</bdi> إلى <bdi>{item.endDate}</bdi> · {formatDays(item.totalUnits)} يوم — مراجعة كبديل</PendingLink>
+              <PendingLink href={contextHref(`${path}?replacement=${item.id}`)}>{item.leaveTypeName} · <bdi>{item.startDate}</bdi> إلى <bdi>{item.endDate}</bdi> · {formatDays(item.totalUnits)} يوم — مراجعة كبديل</PendingLink>
             </RecordCard>)}</ul>}
         <nav className="workspace-form-actions" aria-label="صفحات اختيار الطلب البديل">
-          {pagination.value > 1 && <PendingLink href={`${path}?rpage=${pagination.value - 1}`}>السابق</PendingLink>}
-          {queue?.hasMore && <PendingLink href={`${path}?rpage=${pagination.value + 1}`}>التالي</PendingLink>}
+          {pagination.value > 1 && <PendingLink href={contextHref(`${path}?rpage=${pagination.value - 1}`)}>السابق</PendingLink>}
+          {queue?.hasMore && <PendingLink href={contextHref(`${path}?rpage=${pagination.value + 1}`)}>التالي</PendingLink>}
         </nav>
       </>}
     </>}

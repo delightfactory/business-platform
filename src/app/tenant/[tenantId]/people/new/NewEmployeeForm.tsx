@@ -1,6 +1,6 @@
 'use client';
-import { ButtonLink, Checkbox, EmptyState, Field, Input, Message, Select } from '@/components/ui';
-import { useId } from 'react';
+import { Button, ButtonLink, Checkbox, EmptyState, Field, Input, Message, Select } from '@/components/ui';
+import { useId, useRef, useSyncExternalStore } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 
 import { useActionState, useState } from 'react';
@@ -12,6 +12,8 @@ type Named = { id: string; name: string };
 type Site = Named & { employer_id: string };
 type Job = Named & { department_id: string | null };
 export type OnboardingOptions = { employers: Named[]; sites: Site[]; departments: Named[]; jobs: Job[] };
+const subscribe = () => () => {};
+const steps = ['بيانات الموظف', 'العمل والفرع', 'الراتب', 'المراجعة والإضافة'];
 
 export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId: string; options: OnboardingOptions; suggestedCode: string }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
@@ -29,22 +31,46 @@ export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId
   const [state, action, actionPending] = useActionState(createEmployeeAction, initial);
   const [employerChoice, setEmployerChoice] = useState<string | null>(null);
   const [departmentChoice, setDepartmentChoice] = useState<string | null>(null);
+  const [step, setStep] = useState(0);
+  const [review, setReview] = useState<Record<string, string>>({});
+  const form = useRef<HTMLFormElement>(null);
+  const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const employerId = employerChoice ?? state.employerId;
   const departmentId = departmentChoice ?? state.departmentId;
   const visibleSites = sites.filter((site) => site.employer_id === employerId);
   const visibleJobs = jobs.filter((job) => !job.department_id || job.department_id === departmentId);
+  function goTo(next: number) {
+    if (actionPending) return;
+    if (next > step) {
+      const controls = form.current?.querySelectorAll<HTMLInputElement | HTMLSelectElement>(`[data-step="${step}"] input, [data-step="${step}"] select`);
+      for (const control of controls ?? []) if (!control.reportValidity()) return;
+    }
+    if (next === 3 && form.current) {
+      const data = new FormData(form.current);
+      setReview(Object.fromEntries(Array.from(data.entries()).filter((entry): entry is [string, string] => typeof entry[1] === 'string')));
+    }
+    setStep(next);
+    requestAnimationFrame(() => form.current?.querySelector<HTMLElement>(`[data-step="${next}"] legend, [data-step="${next}"] h2`)?.focus());
+  }
   if (employers.length === 0 || sites.length === 0) return <div ><EmptyState title={<>أكمل إعداد الشركة أولًا</>} description={<>يلزم وجود جهة توظيف وفرع نشط قبل إضافة موظف.</>} action={<><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/entities-sites`}>الجهات والفروع</ButtonLink></>} /></div>;
 
   const showOffline0 = offline && !actionPending;
-  return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
+  return <form ref={form} key={state.attempt} action={action} className="auth-form compact-form" aria-busy={actionPending}
+    onKeyDown={(event) => { if (ready && step < 3 && event.key === 'Enter' && event.target instanceof HTMLInputElement) { event.preventDefault(); goTo(step + 1); } }}
+    onInvalidCapture={(event) => {
+      const target = event.target as HTMLElement;
+      const area = target.closest<HTMLElement>('[data-step]');
+      if (area) { setStep(Number(area.dataset.step)); requestAnimationFrame(() => target.focus()); }
+    }}
+    onSubmit={(event) => { if (blockOfflineSubmission(event)) return; if (ready && step < 3) { event.preventDefault(); goTo(step + 1); } }}>
     <input type="hidden" name="tenantId" value={tenantId} />
-    <fieldset className={styles.formGroup}><legend>بيانات الموظف</legend>
-    <Field id="employee-code" label={<>رمز الموظف (مقترح، يمكنك تغييره)</>} required><Input id="employee-code" name="code" required maxLength={40} defaultValue={state.code}  placeholder="مثال: EMP-014"/></Field>
+    {ready && <ol className={styles.onboardingSteps} aria-label="خطوات إضافة الموظف">{steps.map((label, index) => <li key={label} aria-current={step === index ? 'step' : undefined}><span>{index + 1}</span>{label}</li>)}</ol>}
+    <fieldset className={styles.formGroup} data-step="0" hidden={ready && step !== 0}><legend tabIndex={-1}>بيانات الموظف</legend>
     <Field id="employee-name" label={<>اسم الموظف</>} required><Input id="employee-name" name="name" required minLength={2} maxLength={160} autoFocus defaultValue={state.name}  placeholder="مثال: أحمد محمد"/></Field>
-    <p className="field-hint">يمكن إنشاء حساب دخول وربطه بالموظف لاحقًا؛ الملف الوظيفي لا يحتاج إلى حساب.</p>
+    <Field id="employee-code" label="رقم الموظف" help="جهّزنا رقمًا مقترحًا. يمكنك تغييره إذا كان للموظف رقم في شركتك، بشرط ألا يكون مستخدمًا." required><Input id="employee-code" name="code" required maxLength={40} defaultValue={state.code} placeholder="مثال: EMP-014"/></Field>
     </fieldset>
 
-    <fieldset className={styles.formGroup}><legend>العمل والفرع</legend>
+    <fieldset className={styles.formGroup} data-step="1" hidden={ready && step !== 1}><legend tabIndex={-1}>العمل والفرع</legend>
     <Field id="employee-employer" label={<>جهة التوظيف</>} required><Select id="employee-employer" name="employerId" required value={employerId}
       onChange={(event) => setEmployerChoice(event.target.value)}>
       {employers.map((employer) => <option key={employer.id} value={employer.id}>{employer.name}</option>)}
@@ -66,7 +92,7 @@ export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId
         {visibleJobs.map((job) => <option key={job.id} value={job.id}>{job.name}</option>)}</Select></Field>}
     </fieldset>
 
-    <fieldset className={styles.formGroup}><legend>الأجر الأساسي</legend>
+    <fieldset className={styles.formGroup} data-step="2" hidden={ready && step !== 2}><legend tabIndex={-1}>الراتب</legend>
     <Field id="employee-pay-basis" label={<>طريقة الأجر</>}><Select id="employee-pay-basis" name="payBasis" defaultValue={state.payBasis}>
       <option value="monthly">شهري</option><option value="daily">يومي</option>
     </Select></Field>
@@ -74,12 +100,26 @@ export function NewEmployeeForm({ tenantId, options, suggestedCode }: { tenantId
       inputMode="decimal" required defaultValue={state.amount}  placeholder="مثال: 5000.00"/></Field>
     <label className="checkbox-row" htmlFor="employee-payroll-eligible">
       <Checkbox id="employee-payroll-eligible" name="payrollEligible"  defaultChecked={state.payrollEligible} />
-      <span>يُدرج في كشوف الرواتب عند تفعيل الرواتب</span>
+      <span>إضافة الموظف إلى مسيرات الرواتب</span>
     </label>
     </fieldset>
+    {ready && <section data-step="3" hidden={step !== 3} className={styles.onboardingReview}>
+      <h2 tabIndex={-1}>راجع بيانات الموظف</h2>
+      <dl className="snapshot-grid">
+        <div><dt>الاسم</dt><dd>{review.name}</dd></div><div><dt>رقم الموظف</dt><dd><bdi>{review.code}</bdi></dd></div>
+        <div><dt>جهة العمل</dt><dd>{employers.find(item => item.id === review.employerId)?.name}</dd></div>
+        <div><dt>الفرع</dt><dd>{sites.find(item => item.id === review.siteId)?.name}</dd></div>
+        <div><dt>بداية العمل</dt><dd><bdi>{review.startDate}</bdi></dd></div>
+        <div><dt>الأجر الأساسي</dt><dd>{review.amount} جنيه {review.payBasis === 'daily' ? 'يوميًا' : 'شهريًا'}</dd></div>
+        <div><dt>مسيرات الرواتب</dt><dd>{review.payrollEligible === 'on' ? 'يُضاف إلى المسير' : 'غير مشمول'}</dd></div>
+      </dl>
+      <p className="field-hint">بعد الإضافة يفتح ملف الموظف لتحديد دوامه وإرسال دعوة حسابه.</p>
+    </section>}
     {state.error && <Message tone="bad"  role="alert">{state.error}</Message>}
     {state.uncertainCode && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people?${new URLSearchParams({ q: state.uncertainCode })}`}>تحقق في دليل الموظفين</ButtonLink>}
-    <div className="workspace-form-actions"><SubmitButton label="إضافة الموظف" pendingLabel="جارٍ إضافة الموظف…"  ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>
+    <div className="workspace-form-actions">
+      {ready && step < 3 ? <Button type="button" onClick={() => goTo(step + 1)} disabled={actionPending}>متابعة</Button> : <SubmitButton label="إضافة الموظف وفتح ملفه" pendingLabel="جارٍ إضافة الموظف…" ariaDescribedBy={showOffline0 ? offlineHint0 : undefined} disabled={offline}/>}
+      {ready && step > 0 && <Button type="button" variant="ghost" onClick={() => goTo(step - 1)} disabled={actionPending}>السابق</Button>}
       <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>إلغاء</ButtonLink></div>
   {showOffline0 && <OfflineSubmissionNotice id={offlineHint0} purpose="continuation" />}</form>;
 }

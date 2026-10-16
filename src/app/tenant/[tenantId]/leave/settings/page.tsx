@@ -1,4 +1,5 @@
 import { Badge, Button, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { LeaveWorkspaceTabs } from '../LeaveWorkspaceTabs';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
@@ -109,7 +110,8 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
   const onLaterPage = afterName !== '' || afterId !== '';
 
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>اختر الجهة القانونية لإعداد تقويمها وسنة رصيد الإجازات وأنواع الإجازة.</>} />
+    <PageHeader title="إعدادات الإجازات" description="أنواع الإجازات والعطلات ورصيد السنة لكل جهة عمل." />
+    <LeaveWorkspaceTabs tenantId={tenantId} current="settings" />
     <div className={styles.notices}>
       {!access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إعدادات الإجازات دون تعديلها.

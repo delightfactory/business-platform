@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { safeReturn } from '@/lib/return-to';
 import {
   MAX_REASON_LENGTH,
   MIN_REASON_LENGTH,
@@ -58,7 +59,7 @@ export async function replaceApprovedRequestAction(previous: ReviewActionState, 
   if (!isObject(data)) return failed('unknown', previous.attempt);
   if (data.state === 'refresh_required') return failed('refresh-required', previous.attempt);
   if (data.state !== 'corrected') return failed('unknown', previous.attempt);
-  redirect(detailStateHref(tenantId, requestId, 'replaced'));
+  redirect(resultHref(tenantId, requestId, 'replaced', formData));
 }
 
 async function openGate(tenantId: string, need: Need): Promise<Gate> {
@@ -81,6 +82,12 @@ function failed(code: string, previousAttempt: number): ReviewActionState {
 
 function field(formData: FormData, name: string): string {
   return String(formData.get(name) ?? '').trim();
+}
+
+function resultHref(tenantId: string, requestId: string, state: string, formData: FormData) {
+  const href = detailStateHref(tenantId, requestId, state);
+  const returnTo = safeReturn(tenantId, formData.get('return'));
+  return returnTo ? `${href}&${new URLSearchParams({ return: returnTo })}` : href;
 }
 
 function parseVersion(raw: string): number | null {
@@ -129,7 +136,7 @@ export async function approveRequestAction(
   if (!isObject(data)) return failed('unknown', previous.attempt);
   if (data.state === 'refresh_required') return failed('refresh-required', previous.attempt);
   if (data.state !== 'approved') return failed('unknown', previous.attempt);
-  redirect(detailStateHref(tenantId, requestId, 'approved') + (historicalAddition ? '&payrollCorrection=required' : ''));
+  redirect(resultHref(tenantId, requestId, 'approved', formData) + (historicalAddition ? '&payrollCorrection=required' : ''));
 }
 
 export async function rejectRequestAction(
@@ -157,7 +164,7 @@ export async function rejectRequestAction(
   });
   if (error) return failed(mapReviewError(error.message, error.code), previous.attempt);
   if (!isObject(data) || data.state !== 'rejected') return failed('unknown', previous.attempt);
-  redirect(detailStateHref(tenantId, requestId, 'rejected'));
+  redirect(resultHref(tenantId, requestId, 'rejected', formData));
 }
 
 export async function refreshRequestAction(
@@ -188,7 +195,7 @@ export async function refreshRequestAction(
   if (!isObject(data) || data.state !== 'refreshed') return failed('unknown', previous.attempt);
   if (!isObject(data.request) || !isInteger(data.request.version) || !isInteger(data.request.preview_version))
     return failed('unknown', previous.attempt);
-  redirect(`${detailStateHref(tenantId, requestId, 'refreshed')}&rv=${data.request.version}&pv=${data.request.preview_version}`);
+  redirect(`${resultHref(tenantId, requestId, 'refreshed', formData)}&rv=${data.request.version}&pv=${data.request.preview_version}`);
 }
 
 export async function requestCancellationAction(
@@ -216,7 +223,7 @@ export async function requestCancellationAction(
   });
   if (error) return failed(mapReviewError(error.message, error.code), previous.attempt);
   if (!isObject(data) || data.state !== 'pending') return failed('unknown', previous.attempt);
-  redirect(detailStateHref(tenantId, requestId, 'cancellation-requested'));
+  redirect(resultHref(tenantId, requestId, 'cancellation-requested', formData));
 }
 
 async function decideCancellation(
@@ -253,7 +260,7 @@ async function decideCancellation(
   const state = decision === 'accept'
     ? (needsTime ? 'cancellation-accepted-time' : 'cancellation-accepted')
     : 'cancellation-rejected';
-  redirect(detailStateHref(tenantId, requestId, state));
+  redirect(resultHref(tenantId, requestId, state, formData));
 }
 
 export async function acceptCancellationAction(

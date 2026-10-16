@@ -1,4 +1,5 @@
-import { Badge, Button, Card, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { Badge, Button, Card, Disclosure, EmptyState, Field, HelpNote, Input, Message, PageHeader, Panel, RecordCard } from '@/components/ui';
+import { safeReturn } from '@/lib/return-to';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
@@ -44,6 +45,7 @@ type Query = Promise<{
   employment?: string | string[];
   state?: string | string[];
   request?: string | string[];
+  return?: string;
 }>;
 
 type ConfigProblem = { title: string; detail: string; retry: boolean };
@@ -57,6 +59,7 @@ export default async function RecordLeavePage({ params, searchParams }: {
   if (!isUuid(tenantId)) notFound();
   const homePath = recordHref(tenantId, {});
   const query = parseRecordQuery(raw);
+  const returnTo = safeReturn(tenantId, raw.return);
   const stateParam = typeof raw.state === 'string' ? raw.state : '';
   const submittedId = typeof raw.request === 'string' && isUuid(raw.request) ? raw.request : '';
 
@@ -180,13 +183,16 @@ export default async function RecordLeavePage({ params, searchParams }: {
 
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">
-      <PendingLink className="back-link" href={`/tenant/${tenantId}/leave`}>العودة إلى قائمة مراجعة الإجازات</PendingLink>
-      <PageHeader title={<>تسجيل إجازة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>ابحث عن الموظف ضمن تواريخ الإجازة، اختره، ثم سجّل طلبه. لا يشترط أن يكون للموظف حساب استخدام في الشركة.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={`/tenant/${tenantId}/leave/settings`}>إعدادات الإجازات</PendingLink></>} />
+      <PendingLink className="back-link" href={returnTo ?? `/tenant/${tenantId}/leave`}>{returnTo ? 'العودة إلى ملف الموظف' : 'العودة إلى الإجازات'}</PendingLink>
+      <PageHeader title="تسجيل إجازة موظف" description={selected ? 'اختر نوع الإجازة وأكمل الطلب.' : 'حدد التواريخ والموظف، ثم أكمل الطلب.'} />
 
       <Panel  aria-label="تسجيل إجازة موظف">
+        <Disclosure summary="التواريخ واختيار الموظف" open={selected === null}>
         <div className={styles.formBlock}>
           <h2 className={styles.formTitle}>البحث عن الموظف</h2>
           <form className="auth-form" method="get" role="search">
+            {returnTo && <input type="hidden" name="return" value={returnTo}/>}
+            {query.employee && query.employment && <><input type="hidden" name="employee" value={query.employee}/><input type="hidden" name="employment" value={query.employment}/></>}
             <Field id="leave-start-date" label={<>تاريخ البداية</>} required><Input id="leave-start-date" name="start" type="date" required defaultValue={query.start} /></Field>
             <Field id="leave-end-date" label={<>تاريخ النهاية</>} required><Input id="leave-end-date" name="end" type="date" required defaultValue={query.end} /></Field>
             <Field id="leave-employee-query" label={<>ابحث بالاسم أو رمز الموظف</>}><Input id="leave-employee-query" name="q" type="search" minLength={MIN_QUERY_LENGTH}
@@ -207,6 +213,7 @@ export default async function RecordLeavePage({ params, searchParams }: {
               التواريخ جاهزة. اكتب حرفين على الأقل في حقل البحث لعرض الموظفين المتاحين.
             </p>}
         </div>
+        </Disclosure>
 
         {searchReady && selected === null && <>
           <div className={styles.divider} />
@@ -289,7 +296,7 @@ export default async function RecordLeavePage({ params, searchParams }: {
             <RecordLeaveForm key={[user.id, tenantId, selected.employeeId, selected.employmentId, query.start, query.end].join(':')}
               initialIntentKey={crypto.randomUUID()} actorId={user.id} tenantId={tenantId} q={query.q} employee={selected}
               startDate={query.start} endDate={query.end} types={types}
-              halfDayContext={halfDayContext} halfDayError={halfDayError} cancelHref={keepHref} />
+              halfDayContext={halfDayContext} halfDayError={halfDayError} cancelHref={returnTo ?? keepHref} returnTo={returnTo} />
           </>}
         </>}
       </Panel>

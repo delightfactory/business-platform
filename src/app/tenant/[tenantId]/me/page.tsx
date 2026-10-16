@@ -12,6 +12,7 @@ import { AttendanceHistory } from './attendance/AttendanceHistory';
 import { BalancePreview } from './leave/BalancePreview';
 import styles from './profile.module.css';
 import { isDate, isLeaveAccessSnapshot, isObject } from './leave/form-rules';
+import { SelfWorkspaceTabs } from './SelfWorkspaceTabs';
 
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
@@ -57,10 +58,10 @@ export default async function MyEmployeePage({ params }: { params: Params }) {
   } catch { /* Keep the readable employee profile when attendance is unavailable. */ }
   return <PageFrame>
     <PageHeader eyebrow="يومي" title={`أهلًا، ${profile.display_name}`} description={profile.site_name ?? 'مساحتك الشخصية للعمل'} />
+    <SelfWorkspaceTabs tenantId={tenantId} current="today" hasAttendance={Boolean(attendance)} hasLeave={hasLeaveAccess} />
     <div className={styles.dailyGrid}>
       <div className={styles.dailyMain}>
         {attendance ? <MobilePunch tenantId={tenantId} snapshot={attendance} /> : <section className={`ui-card ${styles.panel}`}><Icon name="clock"/><h2>حضوري</h2><p className="field-hint">افتح سجل الحضور للتحقق من إتاحة التسجيل لحسابك.</p><ButtonLink href={`/tenant/${tenantId}/me/attendance`} icon="arrowLeft">فتح الحضور</ButtonLink></section>}
-        <nav className={styles.quickActions} aria-label="خدماتي"><ButtonLink variant="ghost" href={`/tenant/${tenantId}/me/attendance`} icon="clock">سجل الحضور</ButtonLink>{hasLeaveAccess && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/me/leave`} icon="calendar">إجازاتي</ButtonLink>}<a href="#my-employee-heading" className="ui-button ui-button-ghost ui-button-md"><Icon name="user" size={18}/>ملفي</a></nav>
         {attendance && <section className={`ui-card ${styles.panel}`}><div className={styles.profileHeading}><h2>آخر التسجيلات</h2><ButtonLink variant="ghost" href={`/tenant/${tenantId}/me/attendance`}>السجل الكامل</ButtonLink></div><AttendanceHistory history={attendance.history.slice(0, 3)} /></section>}
         <InstallHint />
       </div>

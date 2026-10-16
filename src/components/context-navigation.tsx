@@ -54,6 +54,15 @@ export async function TenantNavigation({
   tenantName: string;
   logoUrl?: string | null;
 }) {
+  const { links, businessLinks, canSwitchTenant } = await readTenantNavigationLinks(tenantId);
+  const personalHome = !hasTeamWorkspace(businessLinks) && businessLinks.some(item => item.href === `/tenant/${tenantId}/me`);
+  return <ContextNavigation homeHref={`/tenant/${tenantId}${personalHome ? '/me' : ''}`} homeLabel={personalHome ? 'يومي' : 'مساحة الشركة'} contextLabel={tenantName}
+    links={links} businessLinks={businessLinks} mode="tenant" logoUrl={logoUrl}
+    switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} />;
+}
+
+/** Read only the destinations granted by the same server-side access snapshots as navigation. */
+export async function readTenantNavigationLinks(tenantId: string) {
   const supabase = await createSupabaseServerClient();
   const links: ContextLink[] = [];
   const businessLinks: ContextLink[] = [];
@@ -81,8 +90,8 @@ export async function TenantNavigation({
       if (!mobileAttendance.error && mobileAttendance.data) businessLinks.push({ href: `/tenant/${tenantId}/me/attendance`, label: 'حضوري', mobilePriority: 10 });
       if (!channelAccess.error && channelAccess.data?.can_view === true) businessLinks.push({ href: `/tenant/${tenantId}/attendance/sources`, label: terms.attendanceSources });
       if (!payrollAccess.error && payrollAccess.data?.can_manage === true && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll`, label: 'دورة الرواتب' });
-      if (!payrollInputs.error && payrollInputs.data && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: terms.periodInputs });
-      if (!payrollAccess.error && payrollAccess.data?.can_manage === true && (payrollRuns.error || payrollRuns.data?.can_view !== true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/setup`, label: terms.payrollSetup });
+      if (!payrollInputs.error && payrollInputs.data) businessLinks.push({ href: `/tenant/${tenantId}/payroll/inputs`, label: terms.periodInputs });
+      if (!payrollAccess.error && (payrollAccess.data?.can_manage === true||payrollAccess.data?.can_view === true)) businessLinks.push({ href: `/tenant/${tenantId}/payroll/setup`, label: terms.payrollSetup });
       if (!payrollRuns.error && payrollRuns.data?.can_view === true) businessLinks.push({ href: !payrollAccess.error && payrollAccess.data ? `/tenant/${tenantId}/payroll` : `/tenant/${tenantId}/payroll/runs`, label: 'الرواتب', mobilePriority: 50 });
 
       if (!payrollNavigation.error && payrollNavigation.data?.can_view_advances === true) businessLinks.push({ href: `/tenant/${tenantId}/payroll/advances`, label: 'سلف الموظفين' });
@@ -125,10 +134,7 @@ export async function TenantNavigation({
       }
     }
   }
-  const personalHome = !hasTeamWorkspace(businessLinks) && businessLinks.some(item => item.href === `/tenant/${tenantId}/me`);
-  return <ContextNavigation homeHref={`/tenant/${tenantId}${personalHome ? '/me' : ''}`} homeLabel={personalHome ? 'يومي' : 'مساحة الشركة'} contextLabel={tenantName}
-    links={links} businessLinks={businessLinks} mode="tenant" logoUrl={logoUrl}
-    switchHref={canSwitchTenant ? '/tenant/select' : undefined} switchLabel={canSwitchTenant ? 'تبديل الشركة' : undefined} />;
+  return { links, businessLinks, canSwitchTenant };
 }
 
 export function PageFrame({ children }: { children: ReactNode; footer?: string }) {

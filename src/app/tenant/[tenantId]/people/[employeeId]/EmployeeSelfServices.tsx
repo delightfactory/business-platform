@@ -14,7 +14,7 @@ export function EmployeeSelfServices({ tenantId, employeeId, access, result, ret
     invalid: 'تعذر قراءة اختيار الخدمة. حدّث الصفحة ثم أعد الاختيار.',
     unknown: 'تعذر تأكيد النتيجة. راجع الحالة الحالية قبل أي محاولة جديدة.',
   };
-  return <Panel aria-labelledby="employee-self-services"><h2 id="employee-self-services">الخدمات الذاتية للموظف</h2>
+  return <Panel aria-labelledby="employee-self-services"><h2 id="employee-self-services">ما يمكن للموظف استخدامه</h2>
     {access.state === 'ready' && access.email && <p>الحساب المرتبط: <bdi>{access.email}</bdi></p>}
     {result && feedback[result] && <Message tone={result === 'saved' ? 'info' : 'warn'}>{feedback[result]}</Message>}
     {access.state === 'other-role' ? <p>إتاحة هذه الخدمات تحتاج مسؤول المستخدمين.</p>
@@ -34,6 +34,6 @@ export function EmployeeSelfServices({ tenantId, employeeId, access, result, ret
               <OfflineSubmitButton label={service.action} pendingLabel="جارٍ الحفظ…" />
             </OfflineForm>)}</div>}
     {(access.state === 'ready' || access.state === 'inactive') && access.email && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/users?${new URLSearchParams({ view: 'members', q: access.email.slice(0, 120) })}`}>راجع عضوية الحساب وصلاحياته</ButtonLink>}
-    <p className="field-hint">إتاحة الخدمة لا تمنح إدارة الموظفين أو الرواتب. تسجيل الحضور يحتاج أيضًا عملًا ساريًا، وسياسة دوام، وموقع تسجيل نشطًا لفرع الموظف؛ السبب الفعلي لعدم الإتاحة يراه الموظف في يومه.</p>
+    <p className="field-hint">تظهر هذه الخدمات في حساب الموظف فقط، دون صلاحيات الإدارة. يحتاج الحضور إلى دوام ووسيلة تسجيل مفعّلة لفرعه.</p>
   </Panel>;
 }

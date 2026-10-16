@@ -1,9 +1,11 @@
 import styles from './profile-summary.module.css';
-import { Avatar, Badge, ButtonLink, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
+import { Avatar, Badge, Button, ButtonLink, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
 
 import { EmployeeProfileTabs, type ProfileArea } from './EmployeeProfileTabs';
+import { activityKinds, activityLabels, EmployeeActivity, readActivity, type ActivityResult } from './EmployeeActivity';
+import { readAccountsPage } from '../../leave/balances/rules';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -16,6 +18,7 @@ import { EmployeeSelfServices, type SelfServiceAccess } from './EmployeeSelfServ
 import { EmployeeReadiness } from './EmployeeReadiness';
 import { PayrollInclusion } from './PayrollInclusion';
 import { payrollInclusion } from './payroll-inclusion-rules';
+import { EmployeePayrollSetup } from './EmployeePayrollSetup';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
@@ -29,7 +32,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string; tab?: string; return?: string; selfService?: string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string; tab?: string; return?: string; selfService?: string; activityAfter?:string; payrollPeriod?:string; payrollBefore?:string; payrollSaved?:string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -142,29 +145,29 @@ export default async function EmployeePage({ params, searchParams }: {
   const channelReady = !channelAccess.error && channelAccess.data?.can_view === true
     ? await supabase.rpc('people_employee_channel_readiness', { p_tenant: tenantId, p_employee: employeeId }) : { data: null, error: null };
   const correctionAccess=await supabase.rpc('payroll_correction_access',{p_tenant:tenantId});
-  const requestedTab = ['overview', 'work', 'account', 'employment', ...(canViewCompensation || canManageCompensation ? ['compensation'] : [])].includes(query.tab ?? '') ? query.tab as ProfileArea : null;
+  const hasPayrollSetupAccess = !payrollAccess.error && payrollAccess.data?.can_prepare === true;
+  const payrollSaveConfirmed = hasPayrollSetupAccess && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(query.payrollSaved ?? '')
+    && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(query.payrollPeriod ?? '');
+  const validAfter = typeof query.activityAfter === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(query.activityAfter) ? query.activityAfter : undefined;
+  const activityResponses = await Promise.all(activityKinds.map(kind => kind === 'payroll' && query.tab !== 'payroll' ? Promise.resolve(null) : supabase.rpc('people_employee_activity', {
+    p_tenant: tenantId, p_employee: employeeId, p_kind: kind, p_after: query.tab === kind ? validAfter ?? null : null, p_limit: 20,
+  })));
+  const activities = Object.fromEntries(activityKinds.map((kind,index) => {
+    const response = activityResponses[index];
+    return [kind, { page: !response || response.error ? null : readActivity(response.data, employeeId, kind), forbidden: response?.error?.code === '42501' }];
+  })) as Record<typeof activityKinds[number], ActivityResult>;
+  const balanceResponse = !leaveAccess.error && leaveAccess.data?.can_view === true && employee.employment?.employer_id
+    ? await supabase.rpc('leave_balance_accounts', { p_tenant: tenantId, p_employee: employeeId, p_employer: employee.employment.employer_id, p_limit: 50 }) : null;
+  const employeeBalances = balanceResponse && !balanceResponse.error ? readAccountsPage(balanceResponse.data) : null;
+  const requestedTab = ['overview', 'work', 'account', 'employment', ...activityKinds, ...(canViewCompensation || canManageCompensation || hasPayrollSetupAccess ? ['compensation'] : [])].includes(query.tab ?? '') ? query.tab as ProfileArea : null;
   const initialTab: ProfileArea = requestedTab ?? (query.userLink || query.account || query.selfService || query.linkQuery !== undefined || query.linkPage !== undefined
     ? 'account' : query.employment ? 'employment'
       : query.compensation && (canViewCompensation || canManageCompensation) ? 'compensation'
         : query.assignment || query.policy || query.policyOverride ? 'work' : 'overview');
   const lifecycleFollowup = ['ended', 'rehired'].includes(query.employment ?? '');
-  const advanceAccess = lifecycleFollowup ? await readWorkspaceRpc(supabase, 'payroll_navigation_access', tenantId, 'p_tenant') : { data: null, error: null };
   const employerQuery: Record<string, string> = employee.employment?.employer_id ? { employer: employee.employment.employer_id } : {};
   const inclusion = inclusionResult.error ? null : payrollInclusion(inclusionResult.data);
   const overview = <>
-    {employmentId && (inclusion ? <PayrollInclusion key={employmentId} tenant={tenantId} employment={employmentId} employee={employeeId} employer={employee.employment?.employer_id ?? ''} active={employee.employment?.status === 'active'} snapshot={inclusion}/> : <Message tone="info">تعذر قراءة حالة إدراج الموظف في الرواتب. أعد تحميل الملف للتحقق؛ لا نفترض أنه مشمول.</Message>)}
-    <EmployeeReadiness tenantId={tenantId} employeeId={employeeId} employerId={employee.employment?.employer_id ?? null} returnTo={returnTo} facts={{
-      work: { active: employee.status === 'active' && employee.employment?.status === 'active', hasAssignment: Boolean(employee.assignment), canManage: canManageWorkContext },
-      compensation: { canView: canViewCompensation, current: compensationHistoryError ? null : compensationHistory?.items.some(item => item.status === 'current') ?? false },
-      policy: { current: workPolicyPanel ? workPolicyPanel.history.some(item => Boolean(item.policy_id) && item.valid_from <= today && (!item.valid_until || item.valid_until > today)) : null,
-        canAssign: workPolicyPanel?.can_assign === true, hasOptions: Boolean(workPolicyPanel?.options.length), canManageCatalog: workPolicyPanel?.can_manage_catalog === true, forbidden: workPolicyResult.error?.code === '42501' },
-      account: { linked: linkSnapshotResult.error || !linkSnapshot ? null : linkSnapshot.linked, canManage: access.can_manage === true, provisionState: accountProvision?.state },
-      selfService,
-      channel: channelAccess.error || typeof channelAccess.data?.can_view !== 'boolean' ? channelAccess.error?.code === '42501' ? { canView: false, canManage: false } : null
-        : { canView: channelAccess.data?.can_view === true, canManage: channelAccess.data?.can_manage === true, state: channelReady.error ? undefined : channelReady.data?.state, captureEnabled: channelReady.data?.capture_enabled },
-      canReviewBalances: leaveAccess.error?.code === '42501' ? false : leaveAccess.error || typeof leaveAccess.data?.can_view !== 'boolean' ? null : leaveAccess.data.can_view,
-      canPreparePayroll: payrollAccess.error?.code === '42501' ? false : payrollAccess.error || typeof payrollAccess.data?.can_prepare !== 'boolean' ? null : payrollAccess.data.can_prepare,
-    }} />
     <Panel  aria-labelledby="employment-heading">
       <h2 id="employment-heading">{employee.status === 'scheduled' ? 'العمل المقرر' : employee.status === 'ended' ? 'آخر علاقة عمل' : 'العمل الحالي'}</h2>
       {employee.employment ? <dl className="snapshot-grid">
@@ -179,6 +182,19 @@ export default async function EmployeePage({ params, searchParams }: {
         بيانات الفرع والقسم والوظيفة المعروضة مقررة لتبدأ مع العمل في <bdi>{employee.employment.start_date}</bdi>؛ لم تبدأ بعد.
       </p>}
     </Panel>
+    <EmployeeReadiness tenantId={tenantId} employeeId={employeeId} employerId={employee.employment?.employer_id ?? null} returnTo={returnTo} facts={{
+      work: { active: employee.status === 'active' && employee.employment?.status === 'active', hasAssignment: Boolean(employee.assignment), canManage: canManageWorkContext },
+      compensation: { canView: canViewCompensation, current: compensationHistoryError ? null : compensationHistory?.items.some(item => item.status === 'current') ?? false },
+      policy: { current: workPolicyPanel ? workPolicyPanel.history.some(item => Boolean(item.policy_id) && item.valid_from <= today && (!item.valid_until || item.valid_until > today)) : null,
+        canAssign: workPolicyPanel?.can_assign === true, hasOptions: Boolean(workPolicyPanel?.options.length), canManageCatalog: workPolicyPanel?.can_manage_catalog === true, forbidden: workPolicyResult.error?.code === '42501' },
+      account: { linked: linkSnapshotResult.error || !linkSnapshot ? null : linkSnapshot.linked, canManage: access.can_manage === true, provisionState: accountProvision?.state },
+      selfService,
+      channel: channelAccess.error || typeof channelAccess.data?.can_view !== 'boolean' ? channelAccess.error?.code === '42501' ? { canView: false, canManage: false } : null
+        : { canView: channelAccess.data?.can_view === true, canManage: channelAccess.data?.can_manage === true, state: channelReady.error ? undefined : channelReady.data?.state, captureEnabled: channelReady.data?.capture_enabled },
+      canReviewBalances: leaveAccess.error?.code === '42501' ? false : leaveAccess.error || typeof leaveAccess.data?.can_view !== 'boolean' ? null : leaveAccess.data.can_view,
+      canPreparePayroll: payrollAccess.error?.code === '42501' ? false : payrollAccess.error || typeof payrollAccess.data?.can_prepare !== 'boolean' ? null : payrollAccess.data.can_prepare,
+    }} />
+
   </>;
   const work = <>
     <WorkAssignmentPanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId} returnTo={returnTo}
@@ -187,30 +203,30 @@ export default async function EmployeePage({ params, searchParams }: {
       history={assignmentHistory} historyError={historyError} options={transferOptions} optionsError={optionsError}
       canManage={canManageWorkContext} initialDate={today} />
     {workPolicyPanel && <Panel  aria-labelledby="work-policy-heading">
-      <h2 id="work-policy-heading">سياسة الدوام</h2>
-      <p className="record-meta">تعرض القائمة سياسة الدوام الأساسية. أما التغيير لفترة محددة فيُسجل للحضور من دون تعديل بيانات العمل الأساسية.</p>
-      {workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <RecordCard className="assignment-history-item" key={row.assignment_id}>
+      <h2 id="work-policy-heading">نظام الدوام</h2>
+      <p className="record-meta">الدوام الحالي: {workPolicyPanel.history.find(item => item.valid_from <= today && (!item.valid_until || item.valid_until > today))?.name ?? 'لم يُحدد بعد'}</p>
+      <Disclosure summary="سجل أنظمة الدوام">{workPolicyPanel.history.length ? <ol className="assignment-history-list">{workPolicyPanel.history.map((row) => <RecordCard className="assignment-history-item" key={row.assignment_id}>
         <strong>{row.name ?? 'دون سياسة دوام محددة'}</strong>
         {row.name && <Disclosure summary="تفاصيل القالب"><p>الرمز: <bdi>{row.code}</bdi> · الإصدار {row.version}</p></Disclosure>}
         <p>من <bdi>{row.valid_from}</bdi>{row.valid_until ? ` إلى ما قبل ${row.valid_until}` : ' · مستمر'}</p>
-      </RecordCard>)}</ol> : <Message tone="neutral" >لا يوجد سجل سياسة دوام.</Message>}
-      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && !workPolicyPanel.options.length && <Message tone="info">لا توجد قوالب دوام متاحة للاختيار؛ لذلك لا يمكن حفظ سياسة جديدة الآن. {workPolicyPanel.can_manage_catalog ? 'أضف قالبًا من إدارة قوالب سياسات العمل أدناه.' : 'اطلب من مسؤول الشركة تجهيز قالب دوام.'}</Message>}
+      </RecordCard>)}</ol> : <Message tone="neutral">لم يُسجل نظام دوام بعد.</Message>}</Disclosure>
+      {workPolicyPanel.can_assign && employmentId && employee.employment?.status === 'active' && !workPolicyPanel.options.length && <Message tone="info">لا توجد أنظمة دوام للاختيار. {workPolicyPanel.can_manage_catalog ? 'أضف نظامًا من «إعداد أنظمة الدوام» أدناه.' : 'اطلب من مسؤول الشركة إعداد نظام الدوام.'}</Message>}
       {workPolicyPanel.can_assign && workPolicyPanel.options.length > 0 && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignWorkPolicyAction} className="work-policy-assignment-form">
         <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
-        <div className="work-policy-assignment-field"><Field id="work-policy-id" label={<>قالب الدوام</>} required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
-        <Disclosure summary="رموز القوالب وإصداراتها"><ul>{workPolicyPanel.options.map(item => <li key={item.id}>{item.name} — <bdi>{item.code}</bdi> · الإصدار {item.version}</li>)}</ul></Disclosure>
-        <div className="work-policy-assignment-field"><Field id="work-policy-date" label={<>تاريخ بدء السريان</>} required><Input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></Field></div>
-        <p className="field-hint">إذا كانت هذه أول بيانات عمل ويبدأ سريانها اليوم، تُصحح السياسة في سجلها. وفي غير ذلك يُسجل تغيير بتاريخ سريانه مع حفظ السجل السابق.</p>
+        <div className="work-policy-assignment-field"><Field id="work-policy-id" label="نظام الدوام" required><Select id="work-policy-id" name="policyId" required defaultValue=""><option value="" disabled>اختر الدوام</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
+        <Disclosure summary="تفاصيل أنظمة الدوام المتاحة"><ul>{workPolicyPanel.options.map(item => <li key={item.id}>{item.name} — <bdi>{item.code}</bdi> · الإصدار {item.version}</li>)}</ul></Disclosure>
+        <div className="work-policy-assignment-field"><Field id="work-policy-date" label="يبدأ من يوم" required><Input id="work-policy-date" type="date" name="effectiveDate" min={today} defaultValue={today} required/></Field></div>
+        <Disclosure summary="كيف يُحفظ تغيير الدوام؟"><p>يبدأ العمل بالنظام من اليوم الذي تختاره. تبقى مواعيد الدوام السابقة محفوظة، ولا تتغير سجلات الحضور التي بدأت بالفعل.</p></Disclosure>
         {query.policy === 'payroll-correction' && <Message tone="bad"  role="alert">يمس هذا التغيير تاريخ راتب مقفل. لم تتغير البيانات؛ راجع مسؤول تصحيح الرواتب لإعداد مقترح التصحيح بتاريخ سريان محدد للفترة نفسها.</Message>}
-        {query.policy === 'failed' && <Message tone="bad"  role="alert">تعذر تعيين السياسة. تحقق من الإتاحة، التاريخ، وعدم وجود تغيير آخر مقرر في بيانات العمل.</Message>}
+        {query.policy === 'failed' && <Message tone="bad" role="alert">تعذر تغيير الدوام. راجع التاريخ وأي تغيير عمل مقرر بالفعل.</Message>}
         {query.policy === 'pending' && <Message tone="bad"  role="alert">يوجد تغيير عمل مقرر؛ عالجه أولًا قبل جدولة سياسة أخرى.</Message>}
         {query.policy === 'materialized' && <Message tone="bad"  role="alert">بدأ تسجيل حضور لهذا اليوم وفق سياسة الدوام الحالية؛ اختر تاريخ سريان لاحقًا لم يُفتح للحضور.</Message>}
-        <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ سياسة الدوام" pendingLabel="جارٍ حفظ السياسة…" disabled={!workPolicyPanel.options.length} /></div>
+        <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ نظام الدوام" pendingLabel="جارٍ حفظ الدوام…" disabled={!workPolicyPanel.options.length} /></div>
       </OfflineForm>}
-      {workPolicyPanel.can_manage_catalog && <ButtonLink variant="ghost" href={workPolicyCatalogUrl(tenantId, employeeId, returnTo)}>إدارة قوالب سياسات العمل</ButtonLink>}
-      <h3 className="section-subheading">تغيير الدوام لفترة محددة</h3>
-      <p className="record-meta">يسري التغيير على أيام العمل داخل الفترة، من دون تعديل بيانات عمل الموظف الأساسية. تُحفظ نسخة القالب الحالية، ولا يمكن تغيير يوم سبق فتحه للحضور.</p>
+      {workPolicyPanel.can_manage_catalog && <ButtonLink variant="ghost" href={workPolicyCatalogUrl(tenantId, employeeId, returnTo)}>إعداد أنظمة الدوام</ButtonLink>}
+      <Disclosure summary="تغيير الدوام لفترة محددة" open={Boolean(query.policyOverride)}>
+      <p className="record-meta">اختر مواعيد مختلفة لفترة مؤقتة، ثم يعود الموظف إلى دوامه المعتاد. الأيام التي بدأ تسجيل حضورها لا تتغير.</p>
       {workPolicyPanel.overrides.length ? <ol className="assignment-history-list">{workPolicyPanel.overrides.map((override) => <RecordCard className="assignment-history-item" key={override.id}>
         <strong>{override.name}</strong><Disclosure summary="تفاصيل القالب"><p>الرمز: <bdi>{override.code}</bdi> · الإصدار {override.version}</p></Disclosure>
         <p>من <bdi>{override.valid_from}</bdi> إلى <bdi>{override.valid_through}</bdi>{override.cancelled_at ? ' · ملغى' : ''}</p>
@@ -225,7 +241,7 @@ export default async function EmployeePage({ params, searchParams }: {
       {workPolicyPanel.can_manage_catalog && workPolicyPanel.options.length > 0 && employmentId && employee.employment?.status === 'active' && <OfflineForm action={assignAttendancePolicyOverrideAction} className="work-policy-assignment-form">
         <ProfileReturnField value={returnTo} />
         <input type="hidden" name="tenantId" value={tenantId}/><input type="hidden" name="employeeId" value={employee.id}/><input type="hidden" name="employmentId" value={employmentId}/>
-        <div className="work-policy-assignment-field"><Field id="policy-override-id" label={<>قالب الدوام للفترة</>} required><Select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر قالبًا متاحًا</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
+        <div className="work-policy-assignment-field"><Field id="policy-override-id" label="الدوام المؤقت" required><Select id="policy-override-id" name="policyId" required defaultValue=""><option value="" disabled>اختر الدوام</option>{workPolicyPanel.options.map((item)=><option key={item.id} value={item.id}>{policyChoiceLabel(item, workPolicyPanel.options)}</option>)}</Select></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-from" label={<>من تاريخ</>} required><Input id="policy-override-from" type="date" name="validFrom" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-through" label={<>إلى تاريخ</>} required><Input id="policy-override-through" type="date" name="validThrough" min={policyOverrideMinDate} defaultValue={policyOverrideMinDate} required/></Field></div>
         <div className="work-policy-assignment-field"><Field id="policy-override-reason" label={<>سبب التغيير</>} required help="اكتب سببًا مختصرًا وواضحًا يساعد على مراجعة الإجراء لاحقًا."><Input id="policy-override-reason" name="reason" minLength={3} maxLength={500} required placeholder="مثال: تحديث البيانات بعد مراجعتها"/></Field></div>
@@ -236,13 +252,17 @@ export default async function EmployeePage({ params, searchParams }: {
         {(query.policyOverride === 'failed' || query.policyOverride === 'forbidden' || query.policyOverride === 'cancel-failed') && <Message tone="bad"  role="alert">تعذر حفظ التغيير. تحقق من صلاحيتك وحالة العمل والقالب، ثم حدّث الصفحة.</Message>}
         <div className="workspace-form-actions"><OfflineSubmitButton label="حفظ تغيير الدوام للفترة" pendingLabel="جارٍ حفظ التغيير…" disabled={!workPolicyPanel.options.length} /></div>
       </OfflineForm>}
+      </Disclosure>
     </Panel>}
   </>;
   const compensation = <>
+    {payrollSaveConfirmed && <Message tone="ok" role="status">تم حفظ بيانات الضريبة والتأمينات للموظف. راجع القيم المحفوظة أدناه، ثم افتح المسير لحساب الرواتب.</Message>}
+    {employmentId && (inclusion ? <PayrollInclusion key={employmentId} tenant={tenantId} employment={employmentId} employee={employeeId} employer={employee.employment?.employer_id ?? ''} active={employee.employment?.status === 'active'} snapshot={inclusion}/> : <Message tone="info">تعذر التحقق من إضافة الموظف إلى مسيرات الرواتب. أعد تحميل الملف للتحقق.</Message>)}
     {(canViewCompensation || canManageCompensation) && <CompensationPanel tenantId={tenantId} employeeId={employee.id} returnTo={returnTo}
       employmentId={employmentId} canView={canViewCompensation} canManage={canManageCompensation}
       history={compensationHistory} historyError={compensationHistoryError}
       options={compensationOptions} optionsError={compensationOptionsError} today={today} />}
+    {employee.employment && <EmployeePayrollSetup tenantId={tenantId} employeeId={employeeId} employmentId={employee.employment.id} employerId={employee.employment.employer_id} employeeCode={employee.code} employmentStart={employee.employment.start_date} employmentEnd={employee.employment.end_date} periodId={query.payrollPeriod} before={query.payrollBefore} returnTo={returnTo} canPrepare={payrollAccess.error ? payrollAccess.error.code === '42501' ? false : null : payrollAccess.data?.can_prepare === true}/>}
   </>;
   const employment = <>
     <EmploymentLifecyclePanel tenantId={tenantId} employeeId={employee.id} employmentId={employmentId} returnTo={returnTo}
@@ -289,25 +309,43 @@ export default async function EmployeePage({ params, searchParams }: {
       <Badge className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
         {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</Badge>
     </header>
-    <EmployeeProfileTabs key={initialTab} initialTab={initialTab} areas={[
-      { value: 'overview', label: 'نظرة عامة', content: overview },
-      { value: 'work', label: 'العمل والتعيينات', content: work },
-      ...(canViewCompensation || canManageCompensation
-        ? [{ value: 'compensation' as const, label: 'الأجر الأساسي', content: compensation }] : []),
+    <EmployeeProfileTabs key={initialTab} initialTab={initialTab} baseHref={profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}`, returnTo)} areas={[
+      { value: 'overview', label: 'ملخص الموظف', content: overview },
+      { value: 'work', label: 'العمل والدوام', content: work },
+      ...(canViewCompensation || canManageCompensation || hasPayrollSetupAccess
+        ? [{ value: 'compensation' as const, label: 'الراتب', content: compensation }] : []),
+      ...activityKinds.map(kind => ({ value: kind, label: activityLabels[kind], ...(kind === 'payroll' && query.tab !== 'payroll' ? { href: profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?tab=payroll`, returnTo) } : {}), content: <>
+        {query.tab === kind && query.activityAfter && !validAfter && <Message tone="info">تعذر متابعة الصفحة المطلوبة. نعرض أحدث السجلات.</Message>}
+        {kind === 'leave' && leaveAccess.data?.can_manage === true && leaveAccess.data?.new_work_enabled === true && employee.employment?.status === 'active' && <Disclosure summary="تسجيل إجازة لهذا الموظف">
+          <form method="get" action={`/tenant/${tenantId}/leave/new`} className="auth-form compact-form">
+            <input type="hidden" name="employee" value={employeeId}/><input type="hidden" name="employment" value={employee.employment.id}/><input type="hidden" name="q" value={employee.code}/>
+            <input type="hidden" name="return" value={`/tenant/${tenantId}/people/${employeeId}?tab=leave`}/>
+            <Field id="employee-leave-start" label="من يوم" required><Input id="employee-leave-start" type="date" name="start" required/></Field>
+            <Field id="employee-leave-end" label="إلى يوم" required><Input id="employee-leave-end" type="date" name="end" required/></Field>
+            <Button type="submit">اختيار نوع الإجازة</Button>
+          </form>
+        </Disclosure>}
+        {kind === 'payroll' && query.tab !== 'payroll' ? <Panel><h2>رواتب الموظف</h2><p className="record-meta">افتح السجل لتحميل المسيرات المحفوظة لهذا الموظف.</p><a className="ui-button ui-button-solid ui-button-md" href={profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?tab=payroll`, returnTo)}>تحميل رواتب الموظف</a></Panel>
+          : <EmployeeActivity tenantId={tenantId} employeeId={employeeId} kind={kind} result={activities[kind]} after={query.tab === kind ? validAfter : undefined} />}
+        {kind === 'leave' && !leaveAccess.error && leaveAccess.data?.can_view === true && employee.employment?.employer_id && <Panel><h2>رصيد الإجازات</h2>
+          {employeeBalances ? employeeBalances.items.length ? <dl className="snapshot-grid">{employeeBalances.items.map(item => <div key={item.accountId}><dt>{item.typeName} · {item.periodLabel}</dt><dd>{item.balanceDays} يوم</dd></div>)}</dl> : <p>لم يُسجل رصيد إجازات لهذا الموظف بعد.</p> : <Message tone="info">تعذر تحميل الأرصدة. افتح صفحة الأرصدة لإعادة المحاولة.</Message>}
+          <ButtonLink variant="ghost" href={`/tenant/${tenantId}/leave/balances?${new URLSearchParams({ employee: employeeId, employer: employee.employment.employer_id })}`}>{employeeBalances?.hasMore ? 'عرض باقي الأرصدة وتعديلها' : 'عرض الأرصدة وحركاتها'}</ButtonLink>
+        </Panel>}
+      </> })),
       { value: 'account', label: 'الحساب والدخول', content: account },
-      { value: 'employment', label: 'علاقة العمل والسجل', content: employment },
+      { value: 'employment', label: 'سجل العمل', content: employment },
     ]} />
-    <Panel aria-label="متابعة العمل">
+    <Disclosure summary="إجراءات إضافية" open={lifecycleFollowup}>
       {lifecycleFollowup && <section aria-label="متابعة التسوية"><p>راجع آثار علاقة العمل في المساحات المصرّح لك بها؛ لا يُنفّذ هذا التنبيه أي تسوية تلقائية.</p><div className="workspace-form-actions">
         {!payrollAccess.error && payrollAccess.data?.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/payroll?${new URLSearchParams(employerQuery)}`}>راجع الرواتب</ButtonLink>}
         {!leaveAccess.error && leaveAccess.data?.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/leave/balances?${new URLSearchParams({ ...employerQuery, employee: employeeId })}`}>راجع أرصدة الإجازات</ButtonLink>}
-        {!advanceAccess.error && advanceAccess.data?.can_view_advances === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/payroll/advances?${new URLSearchParams({ ...employerQuery, q: employee.code })}`}>راجع السلف</ButtonLink>}
+        {!activities.advances.forbidden && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people/${employeeId}?tab=advances`}>راجع سلف الموظف</ButtonLink>}
       </div></section>}
-      <h2>متابعة العمل</h2>{correctionAccess.data?.can_correct&&<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</ButtonLink>}
+      {correctionAccess.data?.can_correct&&<ButtonLink variant="ghost" href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح بيانات مسير محفوظ</ButtonLink>}
       <div className="workspace-form-actions">{backLink.fromTask && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</ButtonLink>}
         {access.can_manage === true && access.can_manage_employment === true && access.can_manage_compensation === true &&
           <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/new`}>إضافة موظف آخر</ButtonLink>}</div>
-    </Panel>
+    </Disclosure>
   </PageFrame>;
 }
 

@@ -1,5 +1,6 @@
 import { Badge, ButtonLink, Disclosure, EmptyState, KeyValueStrip, Message, Panel, RecordCard } from '@/components/ui';
 import { DecisionPanel } from '@/components/patterns/decision-panel/decision-panel';
+import { safeReturn } from '@/lib/return-to';
 
 import { notFound, redirect } from 'next/navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
@@ -38,7 +39,7 @@ import { leaveCorrectionHref, type LeaveCorrectionContext } from '@/lib/payroll/
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string; requestId: string }>;
-type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string; replacement?: string; rpage?: string; payrollCorrection?: string }>;
+type Query = Promise<{ state?: string | string[]; hpage?: string | string[]; rv?: string; pv?: string; replacement?: string; rpage?: string; payrollCorrection?: string; return?:string }>;
 
 export default async function LeaveRequestReviewPage({ params, searchParams }: {
   params: Params;
@@ -46,8 +47,11 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
 }) {
   const { tenantId, requestId } = await params;
   const query = await searchParams;
+  const returnTo = safeReturn(tenantId, query.return);
   if (!isUuid(tenantId) || !isUuid(requestId)) notFound();
-  const path = detailHref(tenantId, requestId);
+  const basePath = detailHref(tenantId, requestId);
+  const path = returnTo ? `${basePath}?${new URLSearchParams({ return: returnTo })}` : basePath;
+  const historyLink = (page: number) => { const href=historyHref(tenantId,requestId,page); return returnTo ? `${href}${href.includes('?')?'&':'?'}${new URLSearchParams({ return: returnTo })}` : href; };
   const historyPage = parsePage(query.hpage);
 
   const supabase = await createSupabaseServerClient();
@@ -133,7 +137,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
     </Panel>}
 
     <Panel className="work-card task-page" aria-labelledby="leave-request-title">
-      <PendingLink className="back-link" href={`/tenant/${tenantId}/leave`}>العودة إلى قائمة المراجعة</PendingLink>
+      <PendingLink className="back-link" href={returnTo ?? `/tenant/${tenantId}/leave`}>{returnTo?.includes('/people/') ? 'العودة إلى ملف الموظف' : 'العودة إلى قائمة الإجازات'}</PendingLink>
       <p className="eyebrow">مراجعة طلب إجازة</p>
       <div className="record-title-row">
         <h1 id="leave-request-title">{request.leaveTypeName}</h1>
@@ -205,17 +209,17 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
     {canReview && <DecisionPanel id="leave-review-title" person={request.employeeName} kind="طلب إجازة" title="قرار طلب الإجازة" values={[{label: 'نوع الإجازة', value: request.leaveTypeName}, {label: 'المدة', value: `${formatDays(request.totalUnits)} يوم`}]} facts={[{text: 'الاعتماد يستهلك الرصيد للأنواع التي تتطلب رصيدًا فقط؛ الرفض لا يستهلك رصيدًا.'}]}>
       <p className="field-hint">راجع أثر الإجازة ثم اختر القرار واكتب سببه. تحديث الحساب مطلوب فقط إذا تغيّرت بياناته.</p>
       {!access.newWorkEnabled && <Message tone="info"  role="status">الاعتماد والتحديث غير متاحين حاليًا؛ يمكنك رفض الطلب.</Message>}
-      <ReviewIntentForm decision canApprove={access.newWorkEnabled} intent={access.newWorkEnabled ? "approve" : "reject"}
+      <ReviewIntentForm returnTo={returnTo} decision canApprove={access.newWorkEnabled} intent={access.newWorkEnabled ? "approve" : "reject"}
         tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
         reviewedPreviewVersion={request.previewVersion} submitLabel="اعتماد الطلب" pendingLabel="جارٍ حفظ القرار…"
         backHref={path} hint="يُحفظ القرار وسببه. الاعتماد يستهلك الرصيد للأنواع التي تتطلب رصيدًا فقط؛ الرفض لا يستهلك رصيدًا." />
       {access.newWorkEnabled && <Disclosure  summary={<>تحديث حساب أيام الإجازة</>}>
-        <ReviewIntentForm intent="refresh" tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
+        <ReviewIntentForm returnTo={returnTo} intent="refresh" tenantId={tenantId} requestId={requestId} expectedVersion={request.version}
           submitLabel="تحديث الحساب" pendingLabel="جارٍ التحديث…" backHref={path}
           hint="يعيد حساب أيام الطلب دون اتخاذ قرار بالموافقة أو الرفض." />
       </Disclosure>}
     </DecisionPanel>}
-    {(access.canApprove || access.canManage) && <Panel className="work-card task-page" aria-labelledby="leave-cancellation-title">
+    {(access.canApprove || access.canManage) && (request.state === 'approved' || pending || historyFailed) && <Panel className="work-card task-page" aria-labelledby="leave-cancellation-title">
       <h2 id="leave-cancellation-title">إلغاء الاعتماد</h2>
       {historyFailed
         ? <div role="alert"><EmptyState title={<>تعذر تحميل سجل طلبات الإلغاء</>} description={<>لم يتغير الطلب. أعد المحاولة للتحقق من وجود طلب إلغاء معلق قبل أي إجراء.</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={path}>إعادة المحاولة</PendingLink></>} /></div>
@@ -227,7 +231,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
           <KeyValueStrip items={[{ label: <>من طلب الإلغاء</>, value: <>{requesterKindLabel(pending.requesterKind)}</> }, { label: <>وقت الطلب</>, value: <><bdi>{formatInstant(pending.requestedAt)}</bdi></> }, { label: <>سبب طلب الإلغاء</>, value: <>{pending.reason || 'غير مسجل'}</> }, { label: <>حالة الطلب</>, value: <>بانتظار القرار</> }]} />
           <div className={styles.formBlock}>
             <h3 className={styles.formTitle}>قبول طلب الإلغاء</h3>
-            <ReviewIntentForm
+            <ReviewIntentForm returnTo={returnTo}
               intent="cancellation-accept"
               tenantId={tenantId}
               requestId={requestId}
@@ -243,7 +247,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
           <div className={styles.divider} />
           <div className={styles.formBlock}>
             <h3 className={styles.formTitle}>رفض طلب الإلغاء</h3>
-            <ReviewIntentForm
+            <ReviewIntentForm returnTo={returnTo}
               intent="cancellation-reject"
               tenantId={tenantId}
               requestId={requestId}
@@ -266,7 +270,7 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
               لا يتغير الطلب ولا يُعاد الرصيد قبل قبول الطلب.
             </p>
             <Disclosure  summary={<>طلب إلغاء اعتماد هذا الطلب</>}>
-              <ReviewIntentForm
+              <ReviewIntentForm returnTo={returnTo}
                 intent="cancellation-request"
                 tenantId={tenantId}
                 requestId={requestId}
@@ -284,23 +288,23 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
           </Message>}
     </Panel>}
 
-    <ReplacementPanel tenantId={tenantId} request={request} source={detailResult.data}
+    {(request.state === 'approved' || query.replacement) && <Disclosure summary="تغيير الإجازة المعتمدة أو استبدالها" open={Boolean(query.replacement)}><ReplacementPanel returnTo={returnTo} tenantId={tenantId} request={request} source={detailResult.data}
       canReplace={access.canApprove && access.newWorkEnabled && !historyFailed && pending === null}
-      replacementId={query.replacement} page={query.rpage} />
+      replacementId={query.replacement} page={query.rpage} /></Disclosure>}
 
-    <Panel  aria-labelledby="leave-history-title">
+    <Disclosure summary="سجل طلبات الإلغاء" open={historyFailed || historyPage.invalid || Boolean(pending)}>
       <div className={styles.panelHeading}>
         <h2 id="leave-history-title">سجل طلبات إلغاء الاعتماد</h2>
         <p>سجل طلبات الإلغاء بأسبابها وأوقاتها. الحالة الحالية تعتمد على أحدث قرار مهما كان عدد الصفحات.</p>
       </div>
       {historyPage.invalid
         ? <Message tone="bad"  role="alert">رقم صفحة السجل غير صالح.{' '}
-          <PendingLink href={historyHref(tenantId, requestId, 1)}>العودة إلى الصفحة الأولى</PendingLink></Message>
-        : historyFailed ? <div role="alert"><EmptyState title={<>تعذر تحميل سجل الإلغاء</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyHref(tenantId, requestId, 1)}>إعادة المحاولة</PendingLink></>} /></div>
+          <PendingLink href={historyLink(1)}>العودة إلى الصفحة الأولى</PendingLink></Message>
+        : historyFailed ? <div role="alert"><EmptyState title={<>تعذر تحميل سجل الإلغاء</>} action={<><PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyLink(1)}>إعادة المحاولة</PendingLink></>} /></div>
         : history && history.items.length === 0
           ? <div ><EmptyState title={<>{historyPage.value > 1 ? 'لا توجد أحداث في هذه الصفحة' : 'لا توجد طلبات إلغاء لهذا الطلب'}</>} description={<>{historyPage.value > 1 ? 'عُد إلى صفحة سابقة لعرض سجل الإلغاء.' : 'لم يُنشأ أي طلب إلغاء اعتماد لهذا الطلب حتى الآن.'}</>} action={<>{historyPage.value > 1 && <div className="workspace-form-actions">
-              <PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyHref(tenantId, requestId, historyPage.value - 1)}>السابق</PendingLink>
-              <PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyHref(tenantId, requestId, 1)}>الصفحة الأولى</PendingLink>
+              <PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyLink(historyPage.value - 1)}>السابق</PendingLink>
+              <PendingLink className="ui-button ui-button-ghost ui-button-md" href={historyLink(1)}>الصفحة الأولى</PendingLink>
             </div>}</>} /></div>
           : history ? <>
             <ul className="record-list">{history.items.map((event) => <RecordCard  key={event.id}>
@@ -321,13 +325,13 @@ export default async function LeaveRequestReviewPage({ params, searchParams }: {
               <span>الصفحة {historyPage.value} · {history.items.length} حدث</span>
               <span className={styles.paginationNav}>
                 {historyPage.value > 1 && <PendingLink className="ui-button ui-button-ghost ui-button-md"
-                  href={historyHref(tenantId, requestId, historyPage.value - 1)}>السابق</PendingLink>}
+                  href={historyLink(historyPage.value - 1)}>السابق</PendingLink>}
                 {history.hasMore && <PendingLink className="ui-button ui-button-solid ui-button-md"
-                  href={historyHref(tenantId, requestId, historyPage.value + 1)}>التالي</PendingLink>}
+                  href={historyLink(historyPage.value + 1)}>التالي</PendingLink>}
               </span>
             </nav>
           </> : null}
-    </Panel>
+    </Disclosure>
   </PageFrame>;
 }
 

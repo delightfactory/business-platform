@@ -23,4 +23,6 @@
 @media(max-width:640px) { .fieldGroup{grid-template-columns:minmax(0,1fr);padding:16px !important;gap:16px}.queue :global(.ui-record-card){padding:16px} }.sourceSiteSearch { display:flex; align-items:end; gap:12px; margin-block-end:16px; }
 .sourceSiteSearch > :global(.ui-field) { flex:1; min-width:0; }
 .sourceRetention { display:grid; align-items:end; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:12px; }
+.qualityFields { display:grid; gap:16px; padding-block:16px; }
+.fieldGroup > :global(details) { grid-column:1/-1; }
 @media(max-width:480px) { .sourceSiteSearch { align-items:end; } }

@@ -3,11 +3,12 @@ import { notFound, redirect } from 'next/navigation';
 import { Button, ButtonLink, EmptyState, Field, HelpNote, Icon, Input, Message, PageHeader, Panel } from '@/components/ui';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient, getWorkspaceUser } from '@/lib/workspace-access';
-import { adjacentMonth, attendanceStates, calendarDateLabel, calendarMonthLabel, calendarWeeks, cairoToday, dayCountLabel, dayTotal, isAttendanceMonth, MAX_ATTENDANCE_MONTH, MIN_ATTENDANCE_MONTH, readMonthCalendar } from '@/lib/attendance-calendar';
+import { adjacentMonth, attendanceStates, calendarDateLabel, calendarMonthLabel, calendarWeeks, cairoToday, dayCountLabel, dayTotal, isAttendanceMonth, isCivilDate, MAX_ATTENDANCE_MONTH, MIN_ATTENDANCE_MONTH, readMonthCalendar } from '@/lib/attendance-calendar';
 import styles from './calendar.module.css';
+import { AttendanceWorkspaceTabs } from '../AttendanceWorkspaceTabs';
 
 export const dynamic='force-dynamic';
-type Props={params:Promise<{tenantId:string}>;searchParams:Promise<{month?:string|string[]}>};
+type Props={params:Promise<{tenantId:string}>;searchParams:Promise<{month?:string|string[];date?:string;payroll_employer?:string;payroll_period?:string}>};
 const weekdays=['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
 const shortWeekdays=['سبت','أحد','اثن','ثلا','أرب','خمي','جمع'];
 
@@ -18,8 +19,11 @@ export default async function AttendanceCalendar({params,searchParams}:Props) {
   const validMonth=isAttendanceMonth(query.month), invalidMonth=query.month!==undefined&&!validMonth;
   const month=validMonth?query.month as string:today.slice(0,7);
   const path=`/tenant/${tenantId}/attendance/calendar`;
-  const currentHref=`${path}?month=${month}`;
-  const dayHref=(date:string)=>`/tenant/${tenantId}/attendance?date=${date}`;
+  const scopePattern=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const payrollContext=scopePattern.test(query.payroll_employer??'')&&scopePattern.test(query.payroll_period??'')?{payroll_employer:query.payroll_employer!,payroll_period:query.payroll_period!}:null;
+  const scopeQuery=payrollContext?`&${new URLSearchParams(payrollContext)}`:'';
+  const currentHref=`${path}?month=${month}${scopeQuery}`;
+  const dayHref=(date:string)=>`/tenant/${tenantId}/attendance?date=${date}${scopeQuery}`;
   const db=await getWorkspaceClient();
   if (!db) return <PageFrame><Panel><PageHeader title="تعذر الاتصال" description="لم نتمكن من تحميل تقويم الحضور."/><ButtonLink href={currentHref} variant="ghost">إعادة المحاولة</ButtonLink></Panel></PageFrame>;
   const {data:{user}}=await getWorkspaceUser(db);
@@ -38,18 +42,19 @@ export default async function AttendanceCalendar({params,searchParams}:Props) {
   const reviewDays=calendar?.days.filter(day=>day.needs_review>0)??[];
 
   return <PageFrame footer="الحضور وسجل العمل">
-    <PageHeader title="تقويم الحضور" description="سجلات العمل المحفوظة، دون استنتاج الغياب. افتح اليوم للتفاصيل."
-      action={<ButtonLink prefetch={false} href={dayHref(today)} icon="calendar">عرض حضور اليوم</ButtonLink>}/>
+    <PageHeader title="الحضور والانصراف" description="افتح أي يوم لعرض الموظفين وتسجيلاتهم."/>
+    <AttendanceWorkspaceTabs tenantId={tenantId} current="calendar" date={isCivilDate(query.date)&&query.date.startsWith(month)?query.date:today.startsWith(month)?today:`${month}-01`} payrollEmployer={query.payroll_employer} payrollPeriod={query.payroll_period} />
     {invalidMonth&&<Message tone="info" role="status">الشهر المطلوب غير صالح؛ نعرض الشهر الحالي. اختر شهرًا بين 2000 و2100.</Message>}
     {access.entitlement_enabled!==true&&<Message tone="info">خدمة الحضور موقوفة حاليًا. يمكنك الاطلاع على السجلات السابقة دون إضافة أو تعديل.</Message>}
     <Panel className={styles.calendarPanel}>
       <div className={styles.monthToolbar}>
         <nav className={styles.monthNavigation} aria-label="تغيير شهر التقويم">
-          {previous?<ButtonLink variant="ghost" href={`${path}?month=${previous}`} aria-label="الشهر السابق" icon="chevronLeft"/>:<span/>}
+          {previous?<ButtonLink variant="ghost" href={`${path}?month=${previous}${scopeQuery}`} aria-label="الشهر السابق" icon="chevronLeft"/>:<span/>}
           <h2>{calendarMonthLabel(month)}</h2>
-          {next?<ButtonLink variant="ghost" href={`${path}?month=${next}`} aria-label="الشهر التالي" icon="chevronRight"/>:<span/>}
+          {next?<ButtonLink variant="ghost" href={`${path}?month=${next}${scopeQuery}`} aria-label="الشهر التالي" icon="chevronRight"/>:<span/>}
         </nav>
         <form key={month} method="get" action={path} className={styles.monthForm}>
+          {payrollContext&&<><input type="hidden" name="payroll_employer" value={payrollContext.payroll_employer}/><input type="hidden" name="payroll_period" value={payrollContext.payroll_period}/></>}
           <Field id="calendar-month" label="انتقل إلى شهر"><Input id="calendar-month" name="month" type="month" required min={MIN_ATTENDANCE_MONTH} max={MAX_ATTENDANCE_MONTH} pattern="[0-9]{4}-[0-9]{2}" placeholder="مثال: 2026-10" defaultValue={month}/></Field>
           <Button variant="ghost" type="submit">عرض الشهر</Button>
         </form>

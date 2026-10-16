@@ -1,4 +1,4 @@
-import { ButtonLink, Message } from '@/components/ui';
+import { ButtonLink, Disclosure, Message } from '@/components/ui';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { TaskCard, type TaskPreview } from '@/components/patterns/task-card';
@@ -134,7 +134,9 @@ function iconFor(entry: Entry): IconName {
 }
 export function TodaySections({ model, children }: { model: TodayModel; children?: ReactNode }) {
   const featured = model.work.filter(entry => ['مراجعة الحضور', 'طلبات الإجازة', 'الرواتب'].includes(entry.title));
-  const otherWork = model.work.filter(entry => !featured.includes(entry));
+  const setup = (entry:Entry)=>/\/(?:people\/work-policies|attendance\/sources|payroll\/inputs)(?:\?|$)/.test(entry.href);
+  const otherWork = model.work.filter(entry => !featured.includes(entry)&&!setup(entry));
+  const setupEntries=model.work.filter(setup);
   return <div className="today-sections">
     {featured.length > 0 && <section aria-labelledby="today-work-title"><h2 id="today-work-title" className="today-section-title">ما يحتاج انتباهك</h2>
       <div className="today-work-grid">{featured.map(entry => <TaskCard key={entry.href} title={entry.title} description={entry.detail} summary={entry.summary} href={entry.href} count={entry.count} more={entry.more} preview={entry.preview} icon={iconFor(entry)} scope={entry.href.includes('/attendance/review') ? model.date : undefined} action={entry.href.includes('/payroll') ? 'افتح مساحة الرواتب' : entry.href.includes('/leave') ? 'راجع الطلبات' : 'افتح المهمة'} />)}</div>
@@ -143,7 +145,8 @@ export function TodaySections({ model, children }: { model: TodayModel; children
     {children}
     <TodayList title="أكمل العمل" entries={otherWork} />
     <TodayList title="خدماتي" entries={model.own.filter(entry => !model.mobile || !entry.href.endsWith('/me/attendance'))} />
-    <TodayList title="عرض ومتابعة" entries={model.followUp} />
+    <TodayList title="السلف والتقارير" entries={model.followUp} />
+    {setupEntries.length>0&&<Disclosure summary="إعدادات العمل"><TodayList title="إعدادات وأدوات" entries={setupEntries}/></Disclosure>}
     {model.unavailable.length > 0 && <Message tone="info"  role="status">تعذر تحميل {model.unavailable.join('، ')}. يمكنك متابعة باقي الخدمات أو تحديث الصفحة.</Message>}
     {!model.work.length && !model.own.length && !model.followUp.length && <div className="empty-state"><Icon name="info" size={28} /><h2>{model.unavailable.length ? 'الخدمات غير متاحة الآن' : 'مساحتك جاهزة'}</h2><p>{model.unavailable.length ? 'حدّث الصفحة لإعادة المحاولة.' : 'راجع مسؤول الشركة لإتاحة خدمات العمل لحسابك.'}</p></div>}
   </div>;

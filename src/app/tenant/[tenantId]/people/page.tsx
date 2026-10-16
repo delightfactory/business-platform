@@ -1,5 +1,5 @@
 import { employeeDirectoryLinks } from '@/lib/profile-return';
-import { Avatar, ButtonLink, EmptyState, Message, PageHeader, Panel, RecordCard, StatusBadge } from '@/components/ui';
+import { Avatar, ButtonLink, DataTable, Disclosure, EmptyState, Message, PageHeader, Panel, StatusBadge } from '@/components/ui';
 
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -43,14 +43,14 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
   const failed = Boolean(directoryResult?.error || !result || !Array.isArray(result.items));
   const employees = failed || !result ? [] : result.items;
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title="الموظفون" description="ابحث عن موظف، وافتح ملخصه أو ملفه لإكمال العمل." action={<>
+    <PageHeader title="الموظفون" description="ملف واحد لكل موظف: العمل والراتب والحضور والإجازات." action={<>
       {canImport && <ButtonLink variant="ghost" icon="upload" href={`/tenant/${tenantId}/people/import`}>استيراد</ButtonLink>}
       {canAdd && <ButtonLink icon="plus" href={`/tenant/${tenantId}/people/new`}>إضافة موظف</ButtonLink>}
     </>} />
-    {(access.can_manage_org || canManagePolicies) && <nav className={styles.settingsLinks} aria-label="إعدادات الموارد البشرية">
+    {(access.can_manage_org || canManagePolicies) && <Disclosure summary="إعدادات الموظفين"><nav className={styles.settingsLinks} aria-label="إعدادات الموارد البشرية">
       {access.can_manage_org && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/organization`}>الأقسام والوظائف</ButtonLink>}
       {canManagePolicies && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/work-policies`}>قوالب الدوام</ButtonLink>}
-    </nav>}
+    </nav></Disclosure>}
     <Panel className={`${styles.directoryPanel}`} aria-label="دليل الموظفين">
       <DirectorySearch href={`/tenant/${tenantId}/people`} query={query} page={page} />
       {query && !invalidQuery && !invalidPage && <p className="record-meta">نتائج البحث عن: <bdi>{query}</bdi></p>}
@@ -59,19 +59,19 @@ export default async function PeoplePage({ params, searchParams }: { params: Pro
         : failed ? <div role="alert"><EmptyState title={<>تعذر تحميل دليل الموظفين</>} description={<>تحقق من الاتصال والصلاحية، ثم أعد المحاولة.</>} action={<><ButtonLink variant="ghost"  href={pageHref(tenantId, query, invalidPage ? 1 : page)}>إعادة المحاولة</ButtonLink></>} /></div>
         : employees.length === 0 ? <div ><EmptyState title={<>{query ? 'لا توجد نتائج مطابقة' : 'لا يوجد موظفون بعد'}</>} description={<>{query ? 'جرّب اسمًا أو رمز موظف مختلفًا.' : canAdd ? 'أضف أول موظف لتبدأ سجل العاملين.' : 'لم تُسجّل ملفات موظفين في هذه الشركة بعد.'}</>} action={<>{page > 1 && <ButtonLink variant="ghost"  href={pageHref(tenantId, query, page - 1)}>العودة إلى الصفحة السابقة</ButtonLink>}</>} /></div>
         : <>
-          <ul className={styles.directoryList}>{employees.map((employee) => {
+          <div className="workspace-table-wrap"><DataTable className="workspace-record-table"><caption>الموظفون — الصفحة {page}</caption><thead><tr><th scope="col">الموظف</th><th scope="col">مكان العمل</th><th scope="col">الحالة</th><th scope="col">الملف</th></tr></thead><tbody>{employees.map((employee) => {
             const links = employeeDirectoryLinks(tenantId, employee.id, query || page > 1 ? pageHref(tenantId, query, page) : null);
-            return <RecordCard className={styles.employeeRow} key={employee.id}>
-            <div className={styles.employeeIdentity}><Avatar name={employee.name} size={40} status={employee.status === 'active' ? 'ok' : 'neutral'} /><div><h2>{employee.name}</h2>
-              <p className="record-meta"><bdi>{employee.code}</bdi></p></div></div>
-            <p className={`record-meta ${styles.employmentContext}`}>{[employee.employer, employee.site].filter(Boolean).join(' · ') || 'لم يبدأ العمل بعد'}
-              {employee.status === 'scheduled' && employee.start_date && <> · يبدأ في <bdi>{employee.start_date}</bdi></>}</p>
-              <StatusBadge tone={employee.status === 'active' ? 'ok' : 'neutral'} label={employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'مجدول' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'} />
-            <div className={styles.rowActions}><ButtonLink variant="ghost" href={links.href} aria-label={`فتح الملف: ${employee.name}`}>فتح الملف</ButtonLink>
+            return <tr key={employee.id}>
+            <th scope="row"><div className={styles.employeeIdentity}><Avatar name={employee.name} size={40} status={employee.status === 'active' ? 'ok' : 'neutral'} /><div><strong>{employee.name}</strong>
+              <p className="record-meta"><bdi>{employee.code}</bdi></p></div></div></th>
+            <td>{[employee.employer, employee.site].filter(Boolean).join(' · ') || 'لم يبدأ العمل بعد'}
+              {employee.status === 'scheduled' && employee.start_date && <> · يبدأ في <bdi>{employee.start_date}</bdi></>}</td>
+              <td><StatusBadge tone={employee.status === 'active' ? 'ok' : 'neutral'} label={employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'} /></td>
+            <td><div className={styles.rowActions}><ButtonLink variant="ghost" href={links.href} aria-label={`فتح الملف: ${employee.name}`}>فتح الملف</ButtonLink>
               <EmployeePreview href={links.href} previewHref={links.previewHref} employeeId={employee.id} name={employee.name} code={employee.code} />
-            </div>
-          </RecordCard>;
-          })}</ul>
+            </div></td>
+          </tr>;
+          })}</tbody></DataTable></div>
           <nav className="people-pagination" aria-label="صفحات دليل الموظفين">
             <span>الصفحة {page}</span>
             {page > 1 && <ButtonLink variant="ghost"  href={pageHref(tenantId, query, page - 1)}>السابق</ButtonLink>}
