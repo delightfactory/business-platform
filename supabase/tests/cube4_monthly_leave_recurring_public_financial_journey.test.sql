@@ -156,4 +156,45 @@ SELECT is((SELECT amount FROM people.compensation_versions WHERE id='d5927000-00
 SELECT is((SELECT count(*) FROM payroll.input_frozen_versions),14::bigint,'each monthly Leave output owns exactly one three-version frozen input set');
 SELECT is((SELECT count(*) FROM payroll.final_source_bindings WHERE source_domain='time'),0::bigint,'replacement owns its current absent Time binding without deleting original');
 SELECT is((SELECT count(*) FROM payroll.final_source_bindings WHERE source_domain='leave'),2::bigint,'original and unpaid replacement retain exact Leave request lineage once each');
+-- Complete the public journey by recording synthetic external-payment evidence
+-- against the actual canonical replacement. No manual final-output insertion or
+-- financially_qualified override: only the explicit NONLEGAL issuer boundary
+-- above is simulated. These APIs do not execute any bank transfer.
+SELECT set_config('test.payment_output',(SELECT id::text FROM payroll.final_contexts
+ WHERE tenant_id='d5921000-0000-4000-8000-000000000001'
+ AND id<>(current_setting('test.final')::jsonb->>'output')::uuid),true);
+SELECT set_config('test.payment_attempt',gen_random_uuid()::text,true);
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','d5920000-0000-4000-8000-000000000001',true);
+SELECT is(public.payroll_payment_request_prepare(
+ 'd5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',
+ current_setting('test.payment_output')::uuid,current_setting('test.payment_attempt')::uuid,
+ jsonb_build_object('expected',0,'operation','remaining','date',CURRENT_DATE,
+ 'reference','NONLEGAL external payment fixture','reason','Synthetic recording; no bank transfer',
+ 'allocations','[]'::jsonb,'original',NULL,'confirmed','yes'))->>'state','pending',
+ 'public payment preparation retains a recoverable intent on the calculated replacement');
+SELECT is(public.payroll_payment_request_get(
+ 'd5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',
+ current_setting('test.payment_output')::uuid)->>'attempt',current_setting('test.payment_attempt'),
+ 'pending payment can be recovered before submission');
+SELECT set_config('test.payment_result',public.payroll_payment_request_submit(
+ 'd5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',
+ current_setting('test.payment_output')::uuid,current_setting('test.payment_attempt')::uuid)::text,true);
+SELECT is((current_setting('test.payment_result')::jsonb->>'remaining')::numeric,0::numeric,
+ 'recorded synthetic external payment covers the actual replacement net');
+SELECT is(public.payroll_payment_request_submit(
+ 'd5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',
+ current_setting('test.payment_output')::uuid,current_setting('test.payment_attempt')::uuid),
+ current_setting('test.payment_result')::jsonb,'lost-response retry returns the original payment receipt');
+SELECT is(public.payroll_payment_facts(
+ 'd5921000-0000-4000-8000-000000000001','d5923000-0000-4000-8000-000000000001',
+ current_setting('test.payment_output')::uuid)->>'status','paid',
+ 'public payment facts show the final replacement paid');
+RESET ROLE;
+SELECT is((SELECT count(*) FROM payroll.payment_events
+ WHERE tenant_id='d5921000-0000-4000-8000-000000000001'),1::bigint,
+ 'payment replay records exactly one external-payment event');
+SELECT is((SELECT to_jsonb(e) FROM payroll.final_employees e
+ WHERE output_id=(current_setting('test.final')::jsonb->>'output')::uuid),
+ current_setting('test.original_employee')::jsonb,'payment on replacement preserves the original frozen result');
 SELECT * FROM finish();ROLLBACK;
