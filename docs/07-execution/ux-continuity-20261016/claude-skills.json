@@ -1,0 +1,37 @@
+{
+  "installed_skills": [
+    {
+      "skill": "arabic-ux-writing",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\arabic-ux-writing\\SKILL.md",
+      "sha256": "45acc115395aeee554735597accf840523e423ff6f5b1462ca96b3aa536f37be"
+    },
+    {
+      "skill": "backend-ui-closure",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\backend-ui-closure\\SKILL.md",
+      "sha256": "a95ca342d0650b48df0815ef04df2f1b79aa697b87488f457299631011e20fb9"
+    },
+    {
+      "skill": "clean-code-guard",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\clean-code-guard\\SKILL.md",
+      "sha256": "4694ad1d36cdcff2e1bfe3b1f903bc21820b682a35385e0f8b382e2cce897be2"
+    },
+    {
+      "skill": "enterprise-workflow-ux",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\enterprise-workflow-ux\\SKILL.md",
+      "sha256": "9908c4a23530a186b42799c35dff95082084acf14d18b45fcc1e17e229729406"
+    },
+    {
+      "skill": "frontend-design",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\frontend-design\\SKILL.md",
+      "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+    },
+    {
+      "skill": "product-flow-ux",
+      "path": "C:\\Users\\DELL\\AppData\\Local\\ClaudeCode-Official-Pro\\skills\\product-flow-ux\\SKILL.md",
+      "sha256": "423fa4da31715ec6e2d2f46b83f8463c347990492b7fb8eb613260c905cafacf"
+    }
+  ],
+  "cli_validation": "claude plugin validate: exit0, Validation passed",
+  "official_frontend_source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md",
+  "relay_usage": "Skill slash commands remain disabled; task brief explicitly requires reading installed SKILL.md. Actual usage must be confirmed from child tool log."
+}

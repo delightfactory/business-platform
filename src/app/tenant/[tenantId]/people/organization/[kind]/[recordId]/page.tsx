@@ -4,6 +4,7 @@ import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { OrgCatalogForm, type OrgCatalogOption, type OrgCatalogRecord } from '../../OrgCatalogForm';
 import type { OrgCatalogKind } from '../../actions';
+import { generateElementCode } from '@/lib/element-code';
 
 export const dynamic = 'force-dynamic';
 type RouteParams = Promise<{ tenantId: string; kind: string; recordId: string }>;
@@ -51,7 +52,7 @@ export default async function OrgCatalogRecordPage({ params }: { params: RoutePa
     <PageHeader title={<>{isNew ? `إضافة ${title}` : canManage ? `تعديل ${title}` : `تفاصيل ${title}`}</>} eyebrow={<>الأقسام والوظائف</>} description={<>{description}</>} />
     <Panel  aria-label={isNew?`إضافة ${title}`:`بيانات ${title}`}>
       {canManage ? <OrgCatalogForm tenantId={tenantId} kind={kind} record={record} options={options}
-        optionsTruncated={optionsData.truncated===true} />
+        optionsTruncated={optionsData.truncated===true} suggestedCode={isNew ? generateElementCode(kind === 'departments' ? 'DEP' : 'JOB') : ''} />
         : <div><h2>{record?.name}</h2><KeyValueStrip items={[{ label: 'الرمز', value: <bdi>{record?.code}</bdi> }, { label: 'الحالة', value: <Badge tone={record?.is_active ? 'ok' : 'neutral'}>{record?.is_active ? 'نشط' : 'غير نشط'}</Badge> }, ...(relationName ? [{ label: kind === 'departments' ? 'القسم الأعلى' : 'القسم', value: relationName }] : [])]} /><ButtonLink variant="ghost" href={`/tenant/${tenantId}/people/organization?kind=${kind}`}>العودة إلى القائمة</ButtonLink></div>}
       {currentMissing && <Message tone="info"  role="status">تعذر تحميل {kind==='departments'?'القسم الأعلى':'القسم'} الحالي ضمن قائمة الاختيارات؛ سيبقى محفوظًا ما لم تغيّره.</Message>}
     </Panel>

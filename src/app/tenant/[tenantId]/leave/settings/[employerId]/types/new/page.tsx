@@ -1,3 +1,4 @@
+import { generateElementCode } from '@/lib/element-code';
 import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
@@ -40,7 +41,7 @@ export default async function NewLeaveTypePage({ params }: { params: Params }) {
     return card(blocked.title, blocked.detail);
   }
 
-  const initialCode = `typ-${crypto.randomUUID().replaceAll('-', '')}`;
+  const initialCode = generateElementCode('typ');
 
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">

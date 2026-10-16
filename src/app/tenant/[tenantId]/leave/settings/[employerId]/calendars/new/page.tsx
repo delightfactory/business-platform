@@ -1,3 +1,4 @@
+import { generateElementCode } from '@/lib/element-code';
 import { PageHeader, Panel } from '@/components/ui';
 import { SettingsLink as Link } from '../../../SettingsLink';
 import { notFound, redirect } from 'next/navigation';
@@ -40,7 +41,7 @@ export default async function NewCalendarPage({ params }: { params: Params }) {
     return backCard(blocked.title, blocked.detail);
   }
 
-  const initialCode = `cal-${crypto.randomUUID().replaceAll('-', '')}`;
+  const initialCode = generateElementCode('cal');
 
   return <PageFrame footer="الموارد البشرية">
     <div className="workspace-form-page">

@@ -1,0 +1,16 @@
+{
+  "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx": "cb674e1f6fa11ec7c95c78698b1cd66e704ce6bf3c4a71000dd033db797dd120",
+  "src/app/tenant/[tenantId]/attendance/sources/actions.ts": "1fc60f4d24a339f9aa67bc178b2fac7a96ce71c188e1e9168a48ffec725745ad",
+  "src/app/tenant/[tenantId]/leave/settings/[employerId]/calendars/new/page.tsx": "f8ca3dc8b72cb275ef4caef8ab033b22b7fbda7c081075a9334112014d3b94c8",
+  "src/app/tenant/[tenantId]/leave/settings/[employerId]/types/new/page.tsx": "ae9b2c540307860fd2ae26d153f7d009bd00f365d0f384ac7bf6549913cc2b34",
+  "src/app/tenant/[tenantId]/payroll/corrections/CorrectionForms.tsx": "be4e941bc1a790a2f5b6cb7f68f0d6b4d2502ad0987f1294222e073c5b1f80bf",
+  "src/app/tenant/[tenantId]/payroll/corrections/page.tsx": "e0b3ac8b96184aa66ead445cdbb6ed92109745c5e84694ab7fdd7583e73e90b1",
+  "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx": "728aeffea8715581bd8e2766f5c07ea1e873c01eca5cc3348741fdde8937eac2",
+  "src/app/tenant/[tenantId]/payroll/inputs/page.tsx": "f1b942bccf1d296cb978b6dd10f0fd5ae7166f1c0ca640e1ed1bd8ccfec14cb4",
+  "src/app/tenant/[tenantId]/payroll/inputs/rules.ts": "2c64d00e30a7702f9b3fbe35fb30233bdc6a6ec84e3e326a798797502daa795c",
+  "src/app/tenant/[tenantId]/people/new/page.tsx": "d559100e8aac0a02e425b6bca4b604528e8e2aa66d5115ae670b937fb0a46415",
+  "src/app/tenant/[tenantId]/people/organization/OrgCatalogForm.tsx": "7a891eb9c5c4ec3ad68b0cc0dd9d80d53114c9976cbad461a417dc0b491e6e15",
+  "src/app/tenant/[tenantId]/people/organization/[kind]/[recordId]/page.tsx": "470bb79f50cab6ca08b9c69bde1f069ba5fe161c29fe42dd6455f2306a0198dd",
+  "src/app/tenant/[tenantId]/people/work-policies/page.tsx": "097f2937cdc4f577921d56d4d6f354503a9fedfbb488ac717bae437416dcf719",
+  "src/lib/element-code.ts": "3fd2cd4697c59cf6f229d51fd637f90fbd9eddfba54ae25e2d407192e1f76cd3"
+}

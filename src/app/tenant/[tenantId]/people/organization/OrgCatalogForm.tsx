@@ -15,14 +15,14 @@ export type OrgCatalogRecord = {
   parent_id?: string | null; department_id?: string | null; parent_name?: string | null; department_name?: string | null;
 };
 
-export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncated }:
-  { tenantId: string; kind: OrgCatalogKind; record: OrgCatalogRecord | null; options: OrgCatalogOption[]; optionsTruncated: boolean }) {
+export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncated, suggestedCode }:
+  { tenantId: string; kind: OrgCatalogKind; record: OrgCatalogRecord | null; options: OrgCatalogOption[]; optionsTruncated: boolean; suggestedCode: string }) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHint0 = useId();
   const isNew = record === null;
   const relationId = kind === 'departments' ? record?.parent_id ?? '' : record?.department_id ?? '';
   const initial: OrgCatalogFormState = {
-    tenantId, kind, recordId: record?.id ?? 'new', code: record?.code ?? '', name: record?.name ?? '',
+    tenantId, kind, recordId: record?.id ?? 'new', code: record?.code ?? suggestedCode, name: record?.name ?? '',
     relationId, isActive: record?.is_active ?? true, error: '', attempt: 0,
   };
   const [state, action, actionPending] = useActionState(saveOrgCatalogAction, initial);
@@ -36,8 +36,8 @@ export function OrgCatalogForm({ tenantId, kind, record, options, optionsTruncat
     <input type="hidden" name="tenantId" value={tenantId} />
     <input type="hidden" name="kind" value={kind} />
     <input type="hidden" name="recordId" value={record?.id ?? 'new'} />
-    <Field id="org-catalog-code" label={<>الرمز</>} required><Input id="org-catalog-code" name="code" required maxLength={40} autoFocus defaultValue={state.code} dir="auto"  placeholder="مثال: SALES-01"/></Field>
-    <Field id="org-catalog-name" label={<>{kind === 'departments' ? 'اسم القسم' : 'اسم الوظيفة'}</>} required><Input id="org-catalog-name" name="name" required maxLength={160} defaultValue={state.name}  placeholder="مثال: إدارة المبيعات"/></Field>
+    <Field id="org-catalog-code" label={<>الرمز</>} required help={isNew ? 'مقترح تلقائيًا. يمكنك تغييره إلى رمز غير مستخدم في الشركة.' : undefined}><Input id="org-catalog-code" name="code" required maxLength={40} defaultValue={state.code} dir="auto" autoComplete="off" placeholder="مثال: SALES-01"/></Field>
+    <Field id="org-catalog-name" label={<>{kind === 'departments' ? 'اسم القسم' : 'اسم الوظيفة'}</>} required><Input id="org-catalog-name" name="name" required maxLength={160} autoFocus defaultValue={state.name}  placeholder="مثال: إدارة المبيعات"/></Field>
     <Field id="org-catalog-relation" label={<>{relationName}</>}><Select id="org-catalog-relation" name="relationId" defaultValue={state.relationId}>
       <option value="">دون تحديد</option>
       {missingCurrent && <option value={state.relationId}>{kind==='departments' ? record?.parent_name : record?.department_name ?? 'الارتباط الحالي محفوظ'}</option>}

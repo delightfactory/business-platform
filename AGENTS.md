@@ -1,5 +1,9 @@
 مرحلة التحول البصري (ux/visual-concept-c) تعمل وفق docs/07-execution/ux-visual-concept-c-brief.md وdocs/07-execution/ux-visual-concept-c-plan.md؛ الحوكمة فيهما تتقدم لهذه المرحلة فقط.
 
+## Latest owner direction — 2026-10-16
+
+The owner explicitly removed binding constraints from the current visual design and prior design references for the ongoing UX improvement goal. Concept C and the current interface are background references, not a required pixel target or approval gate. The required outcome is a better design system, screens, components, navigation, user experience and complete journeys. Work in small direct batches without open review loops or unnecessary complexity. Independent review and proportional rendered journey checks remain useful, but must assess the improved result rather than require fidelity to old designs. Preserve business behavior, authorization, tenant isolation, financial/audit/privacy guarantees and recovery; this instruction changes design authority, not those safeguards. See docs/07-execution/ux-continuity-20261016/STATE.md for active scope and resumption.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know

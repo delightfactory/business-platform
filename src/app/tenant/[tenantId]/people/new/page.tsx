@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
 import { NewEmployeeForm, type OnboardingOptions } from './NewEmployeeForm';
-import { randomInt } from 'node:crypto';
+import { generateElementCode } from '@/lib/element-code';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,8 +16,7 @@ export default async function NewEmployeePage({ params }: { params: Promise<{ te
   const { data, error } = await supabase.rpc('people_onboarding_options', { p_tenant_id: tenantId });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Unavailable tenantId={tenantId} />;
   const options = data as unknown as OnboardingOptions;
-  const alphabet = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
-  const suggestedCode = `E-${Array.from({ length: 6 }, () => alphabet[randomInt(alphabet.length)]).join('')}`;
+  const suggestedCode = generateElementCode('E');
   return <PageFrame footer="الموارد البشرية"><div className="workspace-form-page">
     <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
     <PageHeader title={<>إضافة موظف</>} eyebrow={<>الموارد البشرية</>} description={<>سجّل الموظف وجهة عمله وفرعه وأجره الأساسي في خطوة واحدة.</>} />

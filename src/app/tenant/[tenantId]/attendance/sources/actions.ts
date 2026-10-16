@@ -2,7 +2,7 @@
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { channelReasonLabel, channelStateLabel } from '@/lib/attendance-channel';
-export type ChannelActionResult = { ok:boolean;message:string;id?:string };
+export type ChannelActionResult = { ok:boolean;message:string;id?:string;uncertain?:boolean;recovery?:'sources' };
 export async function mutateChannel(tenantId:string,operation:'save'|'map'|'reprocess'|'review',form:FormData):Promise<ChannelActionResult> {
   const db=await createSupabaseServerClient();if(!db) return {ok:false,message:'تعذر الاتصال. احتفظنا بالقيم؛ أعد المحاولة.'};
   const {data:{user}}=await db.auth.getUser();if(!user) return {ok:false,message:'انتهت الجلسة. سجّل الدخول ثم أعد المحاولة.'};
@@ -11,6 +11,8 @@ export async function mutateChannel(tenantId:string,operation:'save'|'map'|'repr
   const value=(key:string)=>String(form.get(key)??'').trim();
   let rpc:string;let args:Record<string,unknown>;
   if(operation==='save') {
+    if(Array.from(value('name')).length<2 || Array.from(value('name')).length>100) return {ok:false,message:'اكتب اسمًا لوسيلة تسجيل الحضور من حرفين إلى 100 حرف، دون احتساب الفراغات في البداية والنهاية.'};
+    if(Array.from(value('reason')).length<3 || Array.from(value('reason')).length>500) return {ok:false,message:'اكتب سبب الإنشاء أو التغيير من 3 إلى 500 حرف، دون احتساب الفراغات في البداية والنهاية.'};
     const kind=value('kind');const config:Record<string,unknown>={};
     if(kind==='mobile') {
       config.geofence=value('geofence')==='true';
@@ -29,7 +31,11 @@ export async function mutateChannel(tenantId:string,operation:'save'|'map'|'repr
   } else if(operation==='review') { rpc='attendance_channel_review';args={p_tenant:tenantId,p_event:value('event'),p_decision:value('decision'),p_reason:value('reason')}; }
   else {rpc='attendance_channel_reprocess';args={p_tenant:tenantId,p_event:value('event')};}
   const {data,error}=await db.rpc(rpc,args);
-  if(error) return {ok:false,message:!error.code?'لم يتأكد حفظ الإجراء. بقيت القيم؛ راجع سجل وسيلة تسجيل الحضور قبل إعادة الإرسال.':error.code==='42501'?'تغيرت صلاحيتك أو توقفت الخدمة. تواصل مع المسؤول.':'لم يُحفظ الإجراء. تحقق من الحقول والفترة والموقع ثم أعد المحاولة. بقيت القيم كما أدخلتها.'};
+  if(error) {
+    if(operation==='save' && !value('source') && value('kind')==='mobile' && error.code==='23505' && error.message?.includes('channel_mobile_site_idx')) return {ok:false,recovery:'sources',message:'توجد وسيلة حضور من الهاتف لهذا الفرع بالفعل، حتى لو كانت موقوفة. افتح الوسيلة الموجودة لتعديل إعداداتها أو تفعيلها؛ لا تحتاج إلى إنشاء وسيلة ثانية.'};
+    if(!error.code) return {ok:false,uncertain:true,recovery:'sources',message:'لم يتأكد حفظ الإجراء. بقيت القيم؛ راجع سجل وسيلة تسجيل الحضور قبل إعادة الإرسال.'};
+    return {ok:false,message:error.code==='42501'?'تغيرت صلاحيتك أو توقفت الخدمة. تواصل مع المسؤول.':'لم يُحفظ الإجراء. تحقق من الحقول والفترة والموقع ثم أعد المحاولة. بقيت القيم كما أدخلتها.'};
+  }
   revalidatePath(`/tenant/${tenantId}/attendance/sources`,'layout');revalidatePath(`/tenant/${tenantId}/me/attendance`);
   return {ok:true,id:typeof data==='string'?data:undefined,message:operation==='save'?'حُفظ إصدار وسيلة تسجيل الحضور.':operation==='map'?'حُفظ قرار الربط. أعد معالجة الحركة المطلوبة من سجلها.':operation==='review'?'حُفظ قرار المراجعة.':`${channelStateLabel(data?.state)}. ${data?.reason?channelReasonLabel(data.reason):''}`};
 }
