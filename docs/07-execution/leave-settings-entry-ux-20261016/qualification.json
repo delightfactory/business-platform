@@ -1,0 +1,36 @@
+{
+  "base_commit": "80067e93ea03229a55e002877a5185e87a720fce",
+  "build_id": "-qlzhHANFZdW8rf4w_7CN",
+  "qa_database": "supabase_db_business-platform-operator-ux-20261015:56322",
+  "claude_session": "5bb102ac-71b8-4acd-a770-3e5f95516879",
+  "claude_verdict": "ACCEPTED no blockers",
+  "readOnlyViolation": false,
+  "source_sha256": {
+    "src/app/tenant/[tenantId]/leave/settings/page.tsx": "e31e68d6be85c93f6194dae460d54bc43a5b6795582a5b0bee5aa81588b5fa66",
+    "src/app/tenant/[tenantId]/leave/settings/rules.ts": "eb62f724775cc6ed7733eb880feb0b0886e39a3b9a1e49227099a3f26bcc52c1",
+    "src/app/tenant/[tenantId]/leave/settings/[employerId]/page.tsx": "4ce468c5b05896e332eb7db41d71ae3b969cf06f6105f0cf8de5f04bc69e440e",
+    "src/app/tenant/[tenantId]/leave/settings/settings.module.css": "e3574155bfa5f31b9e5905b69f879e42870d2d11224688375eca818d49baa6db",
+    "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx": "b75db865ac4d8f7313aceee7ea0dd42a3dc4af6a72447c73d83fce178e75c053",
+    "src/app/tenant/[tenantId]/payroll/setup/configuration/page.tsx": "fd0216b9c000929e8c6dd6e98bed6597f172b7675ddb6439d766fc2f343eaa6d",
+    "supabase/migrations/20261016030516_leave_settings_entry_context.sql": "e8b354091a2e83181ce69e02a8d01e18019885f5251c515e41706c017b227685",
+    "supabase/tests/cube3_leave_configuration_read_closure.test.sql": "d8e9c6de76e69952828aabb174f2d31a4161921e757939604ef7b840fe4b9a86",
+    "src/app/tenant/[tenantId]/leave/settings/entry.test.mjs": "606cd8012dbd2e5d82eed8c88a54652169118a9216a9fb9f6c0967ff91b7c355",
+    "docs/user-guide/ar.md": "17c4b8269cc5db52159471153f950ca15dca4d1d3c998dba67170e650fb4c50c",
+    "public/user-guide.html": "4dd48e6872735637beb1fff0e08d1721ff2443c30faf4c298342487eb35b9f84",
+    "public/user-guide.pdf": "84a5600fa0d2c253ed4c0f68af05f09e9153a72bc24fe8d9249e22f6d20bcbea"
+  },
+  "checks": {
+    "pgTAP": "31PASS rollback",
+    "adapter": "2PASS node file (not glob)",
+    "input_form_ssr": "PASS actual component with stub UI primitives",
+    "scoped_eslint": "PASS",
+    "final_build_and_typecheck": "PASS",
+    "built_direct_entry_and_back": "PASS final-built-history.json",
+    "phone_tablet_desktop_no_horizontal_overflow": "PASS representative390/768/1366",
+    "full_role_browser_matrix": "NOT_RUN",
+    "new_policy_browser_save": "NOT_RUN alreadyset QApolicy; SSR boundary checked",
+    "financial_suite": "NOT_RUN unchanged",
+    "guide": "35A4pages changed16/22/23 rendered and inspected"
+  },
+  "post_review_housekeeping": "Migration EOF blank line trimmed only; no SQL/function change."
+}

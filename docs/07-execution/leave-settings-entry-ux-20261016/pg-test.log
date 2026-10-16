@@ -1,0 +1,71 @@
+BEGIN
+INSERT 0 3
+INSERT 0 2
+INSERT 0 3
+INSERT 0 3
+INSERT 0 3
+INSERT 0 4
+INSERT 0 101
+ok 1 - tenant entities are not directly readable
+ok 2 - configuration reads do not grant an entity mutation path
+ok 3 - authenticated HR can call the bounded entity selector
+ok 4 - authenticated HR can resolve a selected historical entity
+ok 5 - anonymous users cannot resolve entities
+ok 6 - service role cannot bypass the HR selector authorization
+SET
+e3910000-0000-4000-8000-000000000001
+ok 7 - leave.manage-only member can read configuration without leave.view
+{"items": [{"id": "075ee13f-9ea8-a351-3751-31562ea49dbc", "is_active": true, "display_name": "Config Entity 001"}, {"id": "3895f9c1-55fc-3de1-f313-b9aa31173df8", "is_active": true, "display_name": "Config Entity 002"}, {"id": "4bbf0ad5-5c83-cdab-6cbb-3542cc1c6d6e", "is_active": true, "display_name": "Config Entity 003"}, {"id": "31fa34e3-88ab-29b8-bb8f-4f5b3fad052a", "is_active": true, "display_name": "Config Entity 004"}, {"id": "6bcd9659-3440-7369-1f4c-6d92352112fa", "is_active": true, "display_name": "Config Entity 005"}, {"id": "7a915f9c-3991-2691-64e5-970a7d9ee6a1", "is_active": true, "display_name": "Config Entity 006"}, {"id": "80d40a98-8dc1-3f0d-5406-e4d798326c5f", "is_active": true, "display_name": "Config Entity 007"}, {"id": "144356ff-98ad-b1e7-6261-ee7225dd9e30", "is_active": true, "display_name": "Config Entity 008"}, {"id": "0f84c5ee-1c95-3689-41c5-19dd65fdfb9e", "is_active": true, "display_name": "Config Entity 009"}, {"id": "20c65cee-bebb-e0f4-f925-befb52cdc88e", "is_active": true, "display_name": "Config Entity 010"}, {"id": "1843e3e4-cac3-ebda-f2cb-82128b529572", "is_active": true, "display_name": "Config Entity 011"}, {"id": "4c6bca57-1cd6-3710-0192-7b016a8d5a0d", "is_active": true, "display_name": "Config Entity 012"}, {"id": "dfb40b05-ccb6-2869-592a-7622f9dbdcd2", "is_active": true, "display_name": "Config Entity 013"}, {"id": "4749a6ba-1a02-dbc6-917b-ef51f5b51835", "is_active": true, "display_name": "Config Entity 014"}, {"id": "04bba673-3451-b1fb-121b-8396aa274e87", "is_active": true, "display_name": "Config Entity 015"}, {"id": "1d5ddfc9-7bb5-b541-3b3e-7d99475c1c64", "is_active": true, "display_name": "Config Entity 016"}, {"id": "db9ff001-221d-e8b1-1f8c-7609991f5742", "is_active": true, "display_name": "Config Entity 017"}, {"id": "bd7f88c8-aca3-de3e-aec1-a214f1c516d0", "is_active": true, "display_name": "Config Entity 018"}, {"id": "3682f86d-868a-e5a8-ee86-265af27c0102", "is_active": true, "display_name": "Config Entity 019"}, {"id": "5145208a-3dcd-c8c4-fc99-a00183b8552d", "is_active": true, "display_name": "Config Entity 020"}, {"id": "8598c859-1b20-48c9-598e-8f8352d6304d", "is_active": true, "display_name": "Config Entity 021"}, {"id": "4736299a-c0fd-459c-ae23-abc1eeac0086", "is_active": true, "display_name": "Config Entity 022"}, {"id": "3bff5ce0-5bd8-4835-8903-cecfdd397252", "is_active": true, "display_name": "Config Entity 023"}, {"id": "c7c260d3-3ab1-6fbe-00d6-5899dad6c37e", "is_active": true, "display_name": "Config Entity 024"}, {"id": "b858f530-f0df-b487-89cb-c7cc3b2fdc99", "is_active": true, "display_name": "Config Entity 025"}, {"id": "834e48c3-cdfe-236e-6c47-1de3e8a5ab93", "is_active": true, "display_name": "Config Entity 026"}, {"id": "07e6ae8b-90fa-dc0b-fd0a-87caea5a6614", "is_active": true, "display_name": "Config Entity 027"}, {"id": "90ec41d9-7930-d0fb-d09d-cf36ac98c71e", "is_active": true, "display_name": "Config Entity 028"}, {"id": "717545ae-15fc-1ec9-f05f-960a7fbfe679", "is_active": true, "display_name": "Config Entity 029"}, {"id": "cbf50956-04bf-7b3f-d0a6-f86082c441e1", "is_active": true, "display_name": "Config Entity 030"}, {"id": "4520db0f-b66b-05dc-c2a1-e61ffd0ca486", "is_active": true, "display_name": "Config Entity 031"}, {"id": "c7eac971-497f-8b9f-d0ba-d0eea96b2b54", "is_active": true, "display_name": "Config Entity 032"}, {"id": "8b611178-4d02-2d40-2bdc-9937a52b9dfc", "is_active": true, "display_name": "Config Entity 033"}, {"id": "1c42238a-336c-373c-abf3-3d8e0b881816", "is_active": true, "display_name": "Config Entity 034"}, {"id": "4674b0b6-be55-b461-2bc7-e1577b573b3e", "is_active": true, "display_name": "Config Entity 035"}, {"id": "952df611-cced-35a2-430a-5bfe8adcc488", "is_active": true, "display_name": "Config Entity 036"}, {"id": "57592ab3-c548-3218-12de-ac62c1c566e6", "is_active": true, "display_name": "Config Entity 037"}, {"id": "1002cf67-55bf-1d2d-17bd-98688c96bcd4", "is_active": true, "display_name": "Config Entity 038"}, {"id": "25d54faa-5786-e7e0-5927-dd775471fd52", "is_active": true, "display_name": "Config Entity 039"}, {"id": "0fa769a6-c27a-3769-a261-f51bc263b1c1", "is_active": true, "display_name": "Config Entity 040"}, {"id": "16991595-8108-841b-e75a-52efba958bd3", "is_active": true, "display_name": "Config Entity 041"}, {"id": "e3cee6df-6579-6a4f-fe5d-be3f1dd68f8d", "is_active": true, "display_name": "Config Entity 042"}, {"id": "c86c5fbe-ec8d-d873-88bc-84d2b79036b8", "is_active": true, "display_name": "Config Entity 043"}, {"id": "680beefd-cdac-bec8-b745-7747df25f774", "is_active": true, "display_name": "Config Entity 044"}, {"id": "a56de5dd-4fb9-9cb4-fe6c-7041df44b59d", "is_active": true, "display_name": "Config Entity 045"}, {"id": "943c30ee-8f78-de0f-1490-63d71f96b61d", "is_active": true, "display_name": "Config Entity 046"}, {"id": "e67b274a-03fd-8dfb-115f-db5c5f336fbc", "is_active": true, "display_name": "Config Entity 047"}, {"id": "0de47b76-42b7-251d-35c0-ad18cb457797", "is_active": true, "display_name": "Config Entity 048"}, {"id": "e625ac86-8641-4051-a235-e0be2f12c880", "is_active": true, "display_name": "Config Entity 049"}, {"id": "7feea4e7-89a3-1e9c-9eff-f07eaab8405c", "is_active": true, "display_name": "Config Entity 050"}, {"id": "02ee97fe-9ead-d92b-8ca7-c2e1144d57a4", "is_active": true, "display_name": "Config Entity 051"}, {"id": "4e59e773-2a3f-7161-5714-0f3448e0ae6f", "is_active": true, "display_name": "Config Entity 052"}, {"id": "c9b460a3-115f-a0e4-7279-f0cd00dd23e3", "is_active": true, "display_name": "Config Entity 053"}, {"id": "76264483-d34f-e8a1-f3e5-a30e451e8da0", "is_active": true, "display_name": "Config Entity 054"}, {"id": "b0b167cf-84ae-201e-2c76-401a98a1af57", "is_active": true, "display_name": "Config Entity 055"}, {"id": "73c6919f-8e5f-5393-ceb5-22b4118cf473", "is_active": true, "display_name": "Config Entity 056"}, {"id": "eb5b5676-f90f-9036-53a8-dd89f1544c68", "is_active": true, "display_name": "Config Entity 057"}, {"id": "5a9ad67a-021a-b21d-9fca-029205e5ec2c", "is_active": true, "display_name": "Config Entity 058"}, {"id": "f61cffda-ffb0-5382-ee43-5ee9bae68a40", "is_active": true, "display_name": "Config Entity 059"}, {"id": "6d03a988-1df9-3480-ca32-bde0b9d0e1b9", "is_active": true, "display_name": "Config Entity 060"}, {"id": "c9cbfb1a-1eb6-5929-0ab5-0354dc63e336", "is_active": true, "display_name": "Config Entity 061"}, {"id": "d0a7e2d2-a426-936c-1d1f-ebb1de0ac8f1", "is_active": true, "display_name": "Config Entity 062"}, {"id": "640cba10-dcba-8268-307b-74a8bb6361a0", "is_active": true, "display_name": "Config Entity 063"}, {"id": "b6cf72d1-c26d-9dbe-c917-8eba01df242a", "is_active": true, "display_name": "Config Entity 064"}, {"id": "bdf46bfe-053e-dd16-976a-ec202451ec15", "is_active": true, "display_name": "Config Entity 065"}, {"id": "dd33bb0d-04e9-050c-610c-06d2f73b6f56", "is_active": true, "display_name": "Config Entity 066"}, {"id": "bbccfafd-5b1f-e3c1-4bd1-a2f954a09aa6", "is_active": true, "display_name": "Config Entity 067"}, {"id": "3c44fe6f-e084-acaf-e6ed-03cfcbc3e738", "is_active": true, "display_name": "Config Entity 068"}, {"id": "0d50e1e0-ff29-d137-d3f2-40caecde3fd9", "is_active": true, "display_name": "Config Entity 069"}, {"id": "b1dc3459-62f8-98fc-f3e4-fb4cca58d728", "is_active": true, "display_name": "Config Entity 070"}, {"id": "9cfe13f4-7c29-8ef8-52f3-16a9f89fb175", "is_active": true, "display_name": "Config Entity 071"}, {"id": "334767de-cf6f-8599-27e5-525a55e3d751", "is_active": true, "display_name": "Config Entity 072"}, {"id": "025e17e2-4ed1-21a2-31e2-b1e06bc77c0f", "is_active": true, "display_name": "Config Entity 073"}, {"id": "7cac3d47-0273-9379-5a0f-1353c82da323", "is_active": true, "display_name": "Config Entity 074"}, {"id": "6d30283b-3e50-9722-d48e-83e60370e175", "is_active": true, "display_name": "Config Entity 075"}, {"id": "f0f45964-b7b1-1de6-73a2-33ccf4bc6bf8", "is_active": true, "display_name": "Config Entity 076"}, {"id": "558b8b29-cd50-8d02-f5b1-b5135995e646", "is_active": true, "display_name": "Config Entity 077"}, {"id": "715e2b70-d01c-ce0e-87f8-a77f17ed1f7c", "is_active": true, "display_name": "Config Entity 078"}, {"id": "fafd5e17-dcde-6cae-92b8-a999c8badbba", "is_active": true, "display_name": "Config Entity 079"}, {"id": "b9a35bcb-1846-0859-c1d7-38d33c9ea860", "is_active": true, "display_name": "Config Entity 080"}, {"id": "b78b6b36-4028-75f0-a785-4e6e4ede67da", "is_active": true, "display_name": "Config Entity 081"}, {"id": "31f6b530-dd4e-f1e9-2c0f-bf28f9da5275", "is_active": true, "display_name": "Config Entity 082"}, {"id": "2bab5eb7-26b8-5fb9-c55b-4b33b2102ea7", "is_active": true, "display_name": "Config Entity 083"}, {"id": "277fbd90-ad61-6620-0615-f4c68f5458ca", "is_active": true, "display_name": "Config Entity 084"}, {"id": "e9220f43-a918-7175-9b03-44aa7277c826", "is_active": true, "display_name": "Config Entity 085"}, {"id": "96b7deb3-adbb-b4c7-14ac-f8759cf49083", "is_active": true, "display_name": "Config Entity 086"}, {"id": "6e0128a4-38d7-c0aa-57af-d79463b62f37", "is_active": true, "display_name": "Config Entity 087"}, {"id": "2b731579-279d-834c-7e2f-bdf53a82fed7", "is_active": true, "display_name": "Config Entity 088"}, {"id": "4c3c801d-4aa1-99c6-5e26-11c159952aa0", "is_active": true, "display_name": "Config Entity 089"}, {"id": "316695d7-029d-751d-ae2c-c04efda4a4b5", "is_active": true, "display_name": "Config Entity 090"}, {"id": "e9c6a5dc-f7c0-da13-b178-07f230b6ac19", "is_active": true, "display_name": "Config Entity 091"}, {"id": "7fa16f9a-dce2-3365-10c5-44eb90093a11", "is_active": true, "display_name": "Config Entity 092"}, {"id": "f3e088a5-9de1-66b2-c809-e0e32cf7b4f0", "is_active": true, "display_name": "Config Entity 093"}, {"id": "ddeb9a45-0617-f97b-18d9-6119e38c1a46", "is_active": true, "display_name": "Config Entity 094"}, {"id": "9177ec15-02c7-6a62-d454-417ad88fbe74", "is_active": true, "display_name": "Config Entity 095"}, {"id": "d65b2921-ce0b-3109-aaf9-f768a49952a0", "is_active": true, "display_name": "Config Entity 096"}, {"id": "4f5c348d-d90a-4e3a-0bc4-88c27e16676a", "is_active": true, "display_name": "Config Entity 097"}, {"id": "f486b4c3-c9e8-35c2-5734-d62b20beb270", "is_active": true, "display_name": "Config Entity 098"}, {"id": "9506b75f-2322-0055-12b3-62eb3ba1f345", "is_active": true, "display_name": "Config Entity 099"}, {"id": "3f2836f6-46fb-ff10-b1ec-c87f5c49fb84", "is_active": true, "display_name": "Config Entity 100"}], "limit": 100, "has_more": true, "next_after_id": "3f2836f6-46fb-ff10-b1ec-c87f5c49fb84", "next_after_name": "Config Entity 100", "unique_employer": null}
+ok 8 - first page returns 100 matching legal entities
+ok 9 - selector reports entities after the first page
+{"items": [{"id": "f29b285a-2e32-1738-6215-f42edc288361", "is_active": true, "display_name": "Config Entity 101"}], "limit": 100, "has_more": false, "next_after_id": null, "next_after_name": null, "unique_employer": null}
+ok 10 - second keyset page returns the 101st entity
+ok 11 - keyset resumes in name/id order without omission
+ok 12 - final keyset page has no further cursor
+{"items": [{"id": "e3940000-0000-4000-8000-000000000003", "is_active": true, "display_name": "Literal % Employer"}], "limit": 100, "has_more": false, "next_after_id": null, "next_after_name": null, "unique_employer": null}
+ok 13 - percent search character is treated literally rather than as a wildcard
+ok 14 - literal match returns the entity containing percent
+{"id": "e3940000-0000-4000-8000-000000000002", "is_active": false, "display_name": "Historical Employer"}
+ok 15 - exact entity lookup retains inactive historical entities
+{"items": [{"id": "e3940000-0000-4000-8000-000000000002", "is_active": false, "display_name": "Historical Employer"}], "limit": 10, "has_more": false, "next_after_id": null, "next_after_name": null, "unique_employer": null}
+ok 16 - selector includes inactive references with explicit status
+ok 17 - search text above 120 characters is rejected
+ok 18 - page sizes above 100 are rejected
+ok 19 - cursor name and id must be supplied together
+ok 20 - tenant tampering is denied for exact employer lookup
+RESET
+SET
+e3910000-0000-4000-8000-000000000002
+ok 21 - leave.approve-only member can read configuration without leave.view
+RESET
+SET
+e3910000-0000-4000-8000-000000000003
+ok 22 - self-only member cannot read HR configuration
+ok 23 - self-only member cannot enumerate tenant employers
+RESET
+SET
+e3910000-0000-4000-8000-000000000001
+ok 24 - single filtered row is not global uniqueness
+ok 25 - single last-page row is not global uniqueness
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+ok 26 - zero entities returns no unique entity
+RESET
+INSERT 0 1
+SET
+ok 27 - sole stopped entity remains accessible and other tenants are not counted
+ok 28 - uniqueness is not filtered by search
+ok 29 - uniqueness is not filtered by keyset cursor
+RESET
+INSERT 0 1
+SET
+ok 30 - one active plus one stopped requires chooser
+e3910000-0000-4000-8000-000000000003
+ok 31 - unique hint never bypasses tenant authorization
+RESET
+1..31
+ROLLBACK

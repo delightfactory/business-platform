@@ -77,5 +77,36 @@ SELECT throws_ok($q$SELECT public.leave_configuration_snapshot('e3920000-0000-40
 SELECT throws_ok($q$SELECT public.leave_configuration_employers('e3920000-0000-4000-8000-000000000001','',NULL,NULL,50)$q$,
  '42501','leave_forbidden','self-only member cannot enumerate tenant employers');
 RESET ROLE;
+-- Entry context is global, independent of the visible result/page and active status.
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e3910000-0000-4000-8000-000000000001',true);
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000001','%',NULL,NULL,1)->>'unique_employer',NULL::text,'single filtered row is not global uniqueness');
+SELECT is(current_setting('test.page2')::jsonb->>'unique_employer',NULL::text,'single last-page row is not global uniqueness');
+RESET ROLE;
+INSERT INTO platform_core.tenants(id,display_name,created_by_operator_id)
+VALUES ('e3920000-0000-4000-8000-000000000003','Entry context test','e3910000-0000-4000-8000-000000000001');
+INSERT INTO platform_core.tenant_roles(tenant_id,role_id,role_key,role_version,permission_snapshot,protects_tenant_admin)
+VALUES ('e3920000-0000-4000-8000-000000000003','e3930000-0000-4000-8000-000000000004','config.manage',1,ARRAY['leave.manage'],false);
+INSERT INTO platform_core.tenant_memberships(tenant_id,user_id,created_by_operator_id)
+VALUES ('e3920000-0000-4000-8000-000000000003','e3910000-0000-4000-8000-000000000001','e3910000-0000-4000-8000-000000000001');
+INSERT INTO platform_core.membership_roles(tenant_id,user_id,role_id)
+VALUES ('e3920000-0000-4000-8000-000000000003','e3910000-0000-4000-8000-000000000001','e3930000-0000-4000-8000-000000000004');
+SET LOCAL ROLE authenticated;
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003')->>'unique_employer',NULL::text,'zero entities returns no unique entity');
+RESET ROLE;
+INSERT INTO platform_core.tenant_legal_entities(tenant_id,id,display_name,is_default,is_active)
+VALUES ('e3920000-0000-4000-8000-000000000003','e3940000-0000-4000-8000-000000000005','Only historical entity',false,false);
+SET LOCAL ROLE authenticated;
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003')->>'unique_employer','e3940000-0000-4000-8000-000000000005','sole stopped entity remains accessible and other tenants are not counted');
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003','no match')->>'unique_employer','e3940000-0000-4000-8000-000000000005','uniqueness is not filtered by search');
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003','','ZZZ','e3940000-0000-4000-8000-000000000005',1)->>'unique_employer','e3940000-0000-4000-8000-000000000005','uniqueness is not filtered by keyset cursor');
+RESET ROLE;
+INSERT INTO platform_core.tenant_legal_entities(tenant_id,id,display_name,is_default,is_active)
+VALUES ('e3920000-0000-4000-8000-000000000003','e3940000-0000-4000-8000-000000000006','Active entity',false,true);
+SET LOCAL ROLE authenticated;
+SELECT is(public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003')->>'unique_employer',NULL::text,'one active plus one stopped requires chooser');
+SELECT set_config('request.jwt.claim.sub','e3910000-0000-4000-8000-000000000003',true);
+SELECT throws_ok($q$SELECT public.leave_configuration_employers('e3920000-0000-4000-8000-000000000003')$q$,'42501','leave_forbidden','unique hint never bypasses tenant authorization');
+RESET ROLE;
 SELECT * FROM finish();
 ROLLBACK;

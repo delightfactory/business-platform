@@ -39,7 +39,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
   if (!supabase) {
     const text = GATE_TEXT['no-client'];
     return <StatusCard tenantId={tenantId} title={text.title} detail={text.detail} retryPath={basePath}
-      backPath={`/tenant/${tenantId}/leave/settings`} backLabel="اختيار جهة أخرى" />;
+      backPath={`/tenant/${tenantId}/leave/settings?choose_employer=1`} backLabel="عرض كل الجهات" />;
   }
   const { data: { user } } = await getWorkspaceUser(supabase);
   if (!user) redirect(`/auth/login?next=${encodeURIComponent(basePath)}`);
@@ -49,7 +49,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
     const text = GATE_TEXT[gate.kind];
     return <StatusCard tenantId={tenantId} title={text.title} detail={text.detail}
       retryPath={text.retry ? basePath : undefined}
-      backPath={`/tenant/${tenantId}/leave/settings`} backLabel="اختيار جهة أخرى" />;
+      backPath={`/tenant/${tenantId}/leave/settings?choose_employer=1`} backLabel="عرض كل الجهات" />;
   }
   const { access, employer, canEdit } = gate;
 
@@ -65,7 +65,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
         ? 'لا يملك حسابك صلاحية عرض إعدادات الإجازات لهذه الجهة. راجع إدارة الموارد البشرية.'
         : 'حدث خطأ أثناء تحميل الإعدادات. أعد المحاولة.'}
       retryPath={forbidden ? undefined : basePath}
-      backPath={`/tenant/${tenantId}/leave/settings`} backLabel="اختيار جهة أخرى" />;
+      backPath={`/tenant/${tenantId}/leave/settings?choose_employer=1`} backLabel="عرض كل الجهات" />;
   }
   const state = typeof query.state === 'string' ? query.state : '';
   const notice = noticeForState(state);
@@ -74,9 +74,9 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
 
   return <PageFrame footer="الموارد البشرية">
     {notice?.tone === 'success' && <FeedbackToast key={state} message={notice.message} />}
-    <Link className="back-link" href={`/tenant/${tenantId}/leave/settings`}>اختيار جهة أخرى</Link>
-    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>التقويمات وسنوات الإجازة وأنواع الإجازة الخاصة بـ«<bdi>{employer.display_name}</bdi>».
-        راجع الإعدادات الحالية أو أضف تغييرًا بتاريخ تطبيق واضح. يبقى سجل الإعدادات السابقة محفوظًا.</>} />
+    <Link className={styles.backLink} href={`/tenant/${tenantId}/leave/settings?choose_employer=1`}>عرض كل الجهات</Link>
+    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>«<bdi>{employer.display_name}</bdi>»: التقويم، ثم سنة رصيد الإجازات، ثم أنواع الإجازة.
+        كل تغيير يسري من التاريخ الذي تختاره، ويبقى السجل السابق محفوظًا.</>} />
 
     <div className={styles.notices}>
       {notice && notice.tone !== 'success' && <Message
@@ -95,6 +95,18 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
         هذه الجهة موقوفة: يمكنك مراجعة إعداداتها السابقة وسجلها دون إنشاء جديد.
       </Message>}
     </div>
+
+    <ol className={styles.setupSteps} aria-label="مراحل إعداد الإجازات">
+      {[
+        { label: 'أيام الراحة والعطلات', done: configuration.calendars.length > 0, path: 'calendars/new' },
+        { label: 'سنة رصيد الإجازات', done: configuration.yearPeriods.length > 0, path: 'year-periods/new' },
+        { label: 'أنواع الإجازة', done: configuration.types.length > 0, path: 'types/new' },
+      ].map((step, index) => <li key={step.path} data-state={step.done ? 'done' : nextSetup?.path === step.path ? 'current' : 'pending'}
+        aria-current={nextSetup?.path === step.path ? 'step' : undefined}>
+        <span className={styles.stepNumber} aria-hidden="true">{step.done ? '✓' : index + 1}</span>
+        <span>{step.label}<small>{step.done ? 'مسجل' : nextSetup?.path === step.path ? 'الخطوة التالية' : 'لم يُسجل بعد'}</small></span>
+      </li>)}
+    </ol>
 
     {canEdit && nextSetup && <Panel aria-labelledby="leave-next-setup">
       <h2 id="leave-next-setup">الخطوة التالية</h2>
@@ -137,7 +149,9 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
           <h2 id="leave-years-title">سنوات الإجازة</h2>
           <HelpNote label="عن سنة الرصيد"><p>حدد بداية سنة الرصيد ونهايتها والتقويم المستخدم. يمكن أن تبدأ السنة في أي شهر تختاره الشركة.</p></HelpNote>
         </div>
-        {canEdit && <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>}
+        {canEdit && (configuration.calendars.length > 0
+          ? <Link className="secondary-button" href={`${basePath}/year-periods/new`}>إضافة سنة إجازة</Link>
+          : <p>يتطلب إضافة تقويم أولًا.</p>)}
       </div>
       {configuration.yearPeriods.length === 0
         ? <div ><EmptyState title={<>لا توجد سنوات إجازة لهذه الجهة بعد</>} description={<>{canEdit ? 'أنشئ تقويمًا ثم أضف فترة سنة الإجازة بتواريخ بدايتها ونهايتها وتصنيفها.'

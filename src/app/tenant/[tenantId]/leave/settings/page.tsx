@@ -11,7 +11,7 @@ import styles from './settings.module.css';
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string }>;
-type Query = Promise<{ q?: string | string[]; after_name?: string | string[]; after_id?: string | string[] }>;
+type Query = Promise<{ choose_employer?: string | string[]; q?: string | string[]; after_name?: string | string[]; after_id?: string | string[] }>;
 
 const PAGE_LIMIT = 50;
 
@@ -24,6 +24,8 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
   if (!isUuid(tenantId)) notFound();
   const path = `/tenant/${tenantId}/leave/settings`;
   const text = (value: string | string[] | undefined) => (typeof value === 'string' ? value : '');
+  const chooseEmployer = text(query.choose_employer) === '1';
+  const chooserPath = `${path}?choose_employer=1`;
   const q = text(query.q).trim();
   const afterName = text(query.after_name);
   const afterId = text(query.after_id);
@@ -80,11 +82,15 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
     return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
   }
 
-  const firstParams = new URLSearchParams();
+  if (!chooseEmployer && q === '' && afterName === '' && afterId === '' && employerPage.uniqueEmployer) {
+    redirect(`${path}/${employerPage.uniqueEmployer}`);
+  }
+
+  const firstParams = new URLSearchParams({ choose_employer: '1' });
   if (q) firstParams.set('q', q);
   const firstSearch = firstParams.toString();
   const firstHref = firstSearch ? `${path}?${firstSearch}` : path;
-  const nextParams = new URLSearchParams();
+  const nextParams = new URLSearchParams({ choose_employer: '1' });
   if (q) nextParams.set('q', q);
   if (employerPage.hasMore && employerPage.nextAfterName && employerPage.nextAfterId) {
     nextParams.set('after_name', employerPage.nextAfterName);
@@ -94,7 +100,7 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
   const onLaterPage = afterName !== '' || afterId !== '';
 
   return <PageFrame footer="الموارد البشرية">
-    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>ابحث عن الجهة القانونية لفتح تقويماتها وسنوات إجازاتها وأنواع إجازاتها. كل تغيير يُسجَّل بسبب ومصدر.</>} />
+    <PageHeader title={<>إعدادات الإجازات</>} eyebrow={<>الموارد البشرية</>} description={<>اختر الجهة القانونية لإعداد تقويمها وسنة رصيد الإجازات وأنواع الإجازة.</>} />
     <div className={styles.notices}>
       {!access.canManage && <Message tone="info"  role="status">
         عرض فقط: يمكنك مراجعة إعدادات الإجازات دون تعديلها.
@@ -114,19 +120,19 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
       </div>
       <div className={styles.panelBody}>
         <form className={styles.filterBar} method="get" action={path}>
+          <input type="hidden" name="choose_employer" value="1" />
           <Field id="employer-search" label={<>بحث باسم الجهة</>}><Input id="employer-search" type="search" name="q" defaultValue={q} maxLength={120}
             placeholder="اكتب جزءًا من اسم الشركة…" /></Field>
           <div className={styles.rowActions}>
-            <Button variant="solid"  type="submit">بحث</Button>
-            {q !== '' && <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={path}>مسح البحث</SettingsLink>}
+            <Button variant="ghost"  type="submit">بحث</Button>
+            {q !== '' && <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={chooserPath}>مسح البحث</SettingsLink>}
           </div>
         </form>
 
         {employerPage.items.length === 0
-          ? <div ><EmptyState title={<>لا توجد نتائج</>} description={<>{q
-              ? <>لا توجد جهات تطابق <bdi>{q}</bdi> في هذه الشركة.</>
-              : 'لا توجد جهات قانونية في هذه الشركة.'}
-              {' '}جرّب كلمة أخرى أو امسح البحث.</>} /></div>
+          ? <EmptyState title={q ? 'لا توجد نتائج' : 'لا توجد جهات قانونية بعد'} description={q
+              ? <>لا توجد جهات تطابق <bdi>{q}</bdi>. جرّب كلمة أخرى أو امسح البحث.</>
+              : 'يضيف مسؤول الشركة الجهة القانونية من إعدادات الجهات والفروع.'} />
           : <ul className="record-list">{employerPage.items.map((employer) => <RecordCard  key={employer.id}>
             <div className="record-main">
               <div className="record-title-row">
@@ -134,17 +140,15 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
                 <Badge className={`entity-status ${employer.is_active ? 'is-active' : 'is-inactive'}`}>
                   {employer.is_active ? 'نشطة' : 'موقوفة'}</Badge>
               </div>
-              <p className="record-meta">{employer.is_active
-                ? 'متاحة للإعداد والتعديل.'
-                : 'موقوفة: متاحة للاطلاع على إعداداتها السابقة دون تعديل جديد.'}</p>
+              {!employer.is_active && <p className="record-meta">متاحة للاطلاع على إعداداتها السابقة دون تعديل جديد.</p>}
             </div>
             <SettingsLink className="ui-button ui-button-ghost ui-button-md"
-              href={`/tenant/${tenantId}/leave/settings/${employer.id}`}>فتح الإعدادات</SettingsLink>
+              href={`/tenant/${tenantId}/leave/settings/${employer.id}`}>{employer.is_active ? 'فتح إعدادات الجهة' : 'عرض السجل'}</SettingsLink>
           </RecordCard>)}</ul>}
 
         {(employerPage.hasMore || onLaterPage) && <div className={styles.rowActions}>
           {employerPage.hasMore && employerPage.nextAfterName && employerPage.nextAfterId &&
-            <SettingsLink className="ui-button ui-button-solid ui-button-md" href={nextHref}>الصفحة التالية</SettingsLink>}
+            <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={nextHref}>الصفحة التالية</SettingsLink>}
           {onLaterPage && <SettingsLink className="ui-button ui-button-ghost ui-button-md" href={firstHref}>النتائج من البداية</SettingsLink>}
         </div>}
       </div>

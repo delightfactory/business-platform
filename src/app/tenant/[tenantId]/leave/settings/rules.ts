@@ -223,6 +223,7 @@ export function readEmployer(value: unknown): EmployerInfo | null {
 }
 
 export type EmployerPage = {
+  uniqueEmployer: string | null;
   items: EmployerInfo[];
   hasMore: boolean;
   nextAfterName: string | null;
@@ -231,6 +232,8 @@ export type EmployerPage = {
 
 export function readEmployerPage(value: unknown): EmployerPage | null {
   if (!isObject(value) || !Array.isArray(value.items) || typeof value.has_more !== 'boolean') return null;
+  const uniqueEmployer = value.unique_employer === undefined ? null : value.unique_employer;
+  if (uniqueEmployer !== null && !isUuid(uniqueEmployer)) return null;
   const items: EmployerInfo[] = [];
   for (const entry of value.items) {
     const employer = readEmployer(entry);
@@ -246,6 +249,7 @@ export function readEmployerPage(value: unknown): EmployerPage | null {
     return null;
   }
   return {
+    uniqueEmployer,
     items,
     hasMore: value.has_more,
     nextAfterName: typeof nextName === 'string' ? nextName : null,
