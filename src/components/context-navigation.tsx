@@ -103,6 +103,7 @@ export async function TenantNavigation({
       }
       if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور', mobilePriority: 30 });
+        businessLinks.push({ href: `/tenant/${tenantId}/attendance/calendar`, label: 'تقويم الحضور' });
       }
       if (!workPolicies.error && workPolicies.data?.can_manage === true) {
         businessLinks.push({ href: `/tenant/${tenantId}/people/work-policies`, label: 'قوالب الدوام' });

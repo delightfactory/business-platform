@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:61193/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-15",
+  "date": "2026-10-15",
+  "monthReturn": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10#day-2026-10-15",
+  "tools": "فتح قائمة المراجعة\nأدوات الحضور\nوسائل تسجيل الحضور\nاستيراد تسجيلات من ملف\nمراجعة التسجيلات بلا بيانات عمل",
+  "returned": "http://localhost:61193/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10#day-2026-10-15"
+}

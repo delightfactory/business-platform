@@ -1,0 +1,5 @@
+{
+  "url": "http://localhost:61192/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+  "rowCount": 12,
+  "monthReturn": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10#day-2026-10-14"
+}

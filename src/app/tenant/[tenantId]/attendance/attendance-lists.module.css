@@ -39,3 +39,8 @@
   .dateForm label { flex: 1 1 10rem; }
   .dateForm input { width: 100%; }
 }
+
+/* Separate daily decisions from occasional ingestion/setup tools. */
+.dayToolbar .tools { flex-basis: 100%; justify-content: flex-start; align-items: flex-start; }
+.dayToolbar .tools > details { min-width: min(100%, 12rem); margin: 0; }
+.secondaryTools { display: flex; flex-wrap: wrap; gap: .65rem; }

@@ -1,0 +1,8 @@
+{
+  "url": "http://localhost:61193/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-15",
+  "actions": [
+    "fill date 2026-10-15",
+    "click عرض اليوم"
+  ],
+  "selectedInput": "2026-10-15"
+}

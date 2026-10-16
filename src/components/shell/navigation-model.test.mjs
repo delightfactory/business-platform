@@ -59,3 +59,11 @@ test('payroll navigation retains employer and period without replacing explicit 
   const explicit = `${root}/payroll/inputs?employer=${other}`;
   assert.equal(payrollDestination(`${root}/payroll/runs`, explicit, employer, period), explicit);
 });
+
+
+test('attendance calendar keeps daily work destination and deepest active context',()=>{
+ const menu=workspaceMenu(root,['attendance','attendance/calendar','attendance/review'].map(item),[],'tenant');
+ assert.equal(currentWorkspaceLocation(`${root}/attendance/calendar`,root,menu,'tenant').active.href,`${root}/attendance/calendar`);
+ assert.equal(currentWorkspaceLocation(`${root}/attendance/00000000-0000-4000-8000-000000000001`,root,menu,'tenant').active.href,`${root}/attendance`);
+ assert.equal(menu.areas.find(area=>area.key==='time').destination.href,`${root}/attendance`);
+});

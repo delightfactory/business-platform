@@ -35,7 +35,7 @@ function SignOutMenuItem() {
 }
 
 function NavLink({ item, current, icon, closeCurrent }: { item: WorkspaceLink; current: boolean; icon?: IconName; closeCurrent?: () => void }) {
-  return <Link className={styles.navLink} href={item.href} aria-current={current ? 'page' : undefined} onNavigate={() => {
+  return <Link className={styles.navLink} href={item.href} prefetch={/^\/tenant\/[^/]+\/attendance(?:\?|$)/.test(item.href) ? false : undefined} aria-current={current ? 'page' : undefined} onNavigate={() => {
     if (new URL(item.href, window.location.href).href === window.location.href) closeCurrent?.();
   }}>
     {icon && <Icon name={icon} size={20} />}<span>{item.label}</span><Progress />

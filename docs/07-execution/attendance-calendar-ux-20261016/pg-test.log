@@ -1,0 +1,94 @@
+BEGIN
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000001
+{"employee_id": "67c9b6d1-e914-43dd-b0dc-fc4f357c814f", "employment_id": "8caa0d50-bd77-4b0c-88b9-087b48087e60"}
+{"employee_id": "3db4c79f-80fb-4085-aa97-68d67757d9db", "employment_id": "c4bd9d5f-b22e-4787-a2ad-5d015f3260f8"}
+RESET
+INSERT 0 5
+INSERT 0 2
+7
+ok 1 - month calendar is stable
+ok 2 - anonymous calendar execution denied
+ok 3 - service role has no direct grant
+SET
+{"days": [{"date": "2026-10-01", "open": 1, "ready": 0, "approved": 0, "needs_review": 0}, {"date": "2026-10-14", "open": 0, "ready": 1, "approved": 1, "needs_review": 0}, {"date": "2026-10-31", "open": 0, "ready": 0, "approved": 0, "needs_review": 2}], "month": "2026-10"}
+ok 4 - only three saved civil dates in month, outside boundaries excluded
+ok 5 - operational date, not timezone or UTC instant, determines month
+ok 6 - approved records counted once
+ok 7 - ready records from another employee counted
+ok 8 - review records grouped across employees
+ok 9 - summary exposes no employee projection
+ok 10 - empty month is explicit sparse result
+ok 11 - non-first day rejected
+ok 12 - null month rejected
+ok 13 - infinite date rejected
+ok 14 - month below bounded range rejected
+ok 15 - month above bounded range rejected
+ok 16 - cross tenant access denied before reading
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000002
+ok 17 - attendance.view reads same complete calendar
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000003
+ok 18 - attendance.manage reads same complete calendar
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000004
+ok 19 - attendance.correct reads same complete calendar
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000005
+ok 20 - attendance.approve reads same complete calendar
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000006
+ok 21 - tenant.administer reads same complete calendar
+RESET
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+SET
+e4c10000-0000-4000-8000-000000000007
+ok 22 - unrelated active member cannot read calendar
+RESET
+SET
+e4c10000-0000-4000-8000-000000000002
+ok 23 - fixture proves attendance entitlement is off
+ok 24 - entitlement-off historical month readable
+RESET
+ok 25 - month reads created no instances
+1..25
+ROLLBACK

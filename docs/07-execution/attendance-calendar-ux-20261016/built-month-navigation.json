@@ -1,0 +1,16 @@
+{
+  "forward": "2026-11",
+  "back": "2026-10",
+  "dailyRequests": [],
+  "attendancePaths": [
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-09&_rsc=vpCShrFN6qmdGnBc",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-11&_rsc=vpCShrFN6qmdGnBc",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-11&_rsc=2z3V9vdPDdphlWyZ",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/review?date=2026-10-16&_rsc=8OIFr59ZlEZzLD7J",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/review?date=2026-10-16&_rsc=vpCShrFN6qmdGnBc",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/review?_rsc=8OIFr59ZlEZzLD7J",
+    "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10&_rsc=2z3V9vdPDdphlWyZ"
+  ],
+  "truncated": false,
+  "hasMore": false
+}

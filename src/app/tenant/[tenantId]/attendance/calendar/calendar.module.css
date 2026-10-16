@@ -1,0 +1,79 @@
+.calendarPanel:global(.ui-panel) { padding: 1.25rem; min-width: 0; }
+.monthToolbar { display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:1rem; margin-block-end:1.25rem; }
+.monthNavigation { display:grid; grid-template-columns:2.75rem minmax(9rem,1fr) 2.75rem; align-items:center; gap:.5rem; }
+.monthNavigation h2 { margin:0; text-align:center; font-size:1.3rem; }
+.monthNavigation a { min-width:2.75rem; min-height:2.75rem; padding:.4rem; }
+.monthForm { display:flex; align-items:end; gap:.6rem; flex-wrap:wrap; }
+.monthForm label { font-size:.85rem; }
+.monthForm input { min-width:0; width:12rem; }
+.monthTotals { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin:0 0 1.2rem; padding:.9rem 0; border-block:1px solid var(--color-border); }
+.monthTotals > div { padding-inline:1rem; border-inline-end:1px solid var(--color-border); }
+.monthTotals > div:last-child { border:0; }
+.monthTotals dt { display:flex; align-items:center; gap:.45rem; color:var(--color-muted); font-size:.84rem; }
+.monthTotals dd { margin:.35rem 0 0; font-size:1.7rem; font-weight:750; line-height:1.3; }
+.monthTotals small { margin-inline-start:.4rem; font-size:.75rem; font-weight:400; color:var(--color-muted); }
+.monthTotals [data-tone='review'] dt { color:var(--color-danger); }
+.calendar { width:100%; table-layout:fixed; border-collapse:separate; border-spacing:3px; }
+.calendar caption { text-align:start; color:var(--color-muted); font-size:.8rem; padding-block:0 .65rem; }
+.calendar th { padding:.6rem .1rem; text-align:center; font-size:.82rem; font-weight:600; color:var(--color-muted); }
+.calendar td { padding:0; vertical-align:top; }
+.day { display:flex; flex-direction:column; gap:.4rem; min-width:0; min-height:7rem; padding:.65rem; border:1px solid var(--color-border); border-radius:.65rem; color:var(--color-text); text-decoration:none; background:var(--surface-base); scroll-margin-top:6rem; }
+.day:hover { background:var(--color-brand-soft); border-color:var(--color-brand-border); }
+.day:focus-visible,.day:target { outline:2px solid var(--color-focus); outline-offset:2px; }
+.day[aria-current='date'] { box-shadow:inset 0 0 0 1px var(--color-brand-border); background:var(--color-brand-soft); }
+.dayHeading { display:flex; justify-content:space-between; align-items:center; gap:.2rem; font-size:1.05rem; font-weight:700; }
+.dayHeading small { font-size:.68rem; font-weight:600; color:var(--color-brand-text); }
+.dayStates { display:grid; gap:.25rem; }
+.stateLine { display:flex; align-items:baseline; gap:.3rem; font-size:.78rem; line-height:1.45; }
+.stateLine[data-tone='review'] { color:var(--color-danger); }
+.stateLine[data-tone='approved'] { color:var(--color-brand-text); }
+.noRecords { font-size:.75rem; color:var(--color-muted); }
+.compactState,.weekdayShort { display:none; }
+.emptyMonth { color:var(--color-muted); font-size:.9rem; margin-block:0 1rem; }
+.calendarNotes { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:.5rem; font-size:.8rem; color:var(--color-muted); padding-block:1rem; }
+.reviewAgenda { margin-block-start:.75rem; border-block-start:1px solid var(--color-border); padding-block-start:1rem; }
+.reviewAgenda h3 { margin:0 0 .7rem; font-size:1rem; }
+.reviewAgenda ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem; }
+.reviewAgenda a { display:flex; align-items:center; gap:.7rem; justify-content:space-between; min-height:3rem; padding:.8rem; border:1px solid var(--color-border); border-radius:.6rem; text-decoration:none; color:var(--color-text); }
+.reviewAgenda a:hover { background:var(--color-brand-soft); }
+.reviewAgenda a > span { display:flex; align-items:center; gap:.45rem; font-size:.85rem; }
+.reviewAgenda strong { font-size:.78rem; font-weight:600; color:var(--color-danger); }
+.readError,.continuation { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; }
+@media (max-width:1100px) {
+ .day { min-height:7.5rem; padding:.45rem; }
+ .stateLine { font-size:.72rem; }
+ .reviewAgenda ul { grid-template-columns:1fr; }
+}
+@media (max-width:900px) {
+ .day { min-height:4.4rem; }
+ .dayStates { display:none; }
+ .compactState { display:flex; align-items:center; justify-content:center; gap:.3rem; font-weight:700; font-size:.85rem; }
+ .compactState small { color:var(--color-muted); font-size:.7rem; font-weight:500; }
+ .day[data-review='true'] .compactState { color:var(--color-danger); }
+}
+@media (max-width:640px) {
+ .calendarPanel:global(.ui-panel) { padding:.5rem; }
+ .monthToolbar { gap:.85rem; }
+ .monthNavigation { width:100%; }
+ .monthForm { width:100%; }
+ .monthForm > :first-child { flex:1; min-width:0; }
+ .monthForm input { width:100%; }
+ .monthTotals { grid-template-columns:repeat(4,minmax(0,1fr)); padding-block:.5rem; }
+ .monthTotals > div { padding-inline:.35rem; }
+ .monthTotals dt { min-height:2.3rem; font-size:.72rem; line-height:1.4; gap:.2rem; }
+ .monthTotals dd { font-size:1.35rem; }
+ .monthTotals small { font-size:.62rem; margin-inline-start:.2rem; }
+ .calendar caption { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+ .calendar { border-spacing:1px; }
+ .calendar th { font-size:.68rem; }
+ .weekdayFull { display:none; }
+ .weekdayShort { display:inline; text-decoration:none; }
+ .day { min-height:3.5rem; padding:.3rem .1rem; border-radius:.4rem; }
+ .dayHeading { justify-content:center; font-size:.9rem; }
+ .dayHeading small { display:none; }
+ .compactState { font-size:.75rem; }
+ .compactState small { font-size:.6rem; }
+ .reviewAgenda a { flex-wrap:wrap; gap:.4rem; }
+ .reviewAgenda a > span { flex:1 1 10rem; }
+ .reviewAgenda a > svg { display:none; }
+}

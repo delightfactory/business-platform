@@ -1,5 +1,6 @@
+import { adjacentDay, cairoToday, isCivilDate } from '@/lib/attendance-calendar';
 import { terms } from '@/lib/terms';
-import { Button, ButtonLink, DataTable, Input, Message, PageHeader, Panel, EmptyState, Badge, Field } from '@/components/ui';
+import { Button, ButtonLink, DataTable, Input, Message, PageHeader, Panel, EmptyState, Badge, Field, Disclosure } from '@/components/ui';
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 import { redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
@@ -14,7 +15,8 @@ type DayRow = { id: string; employee_code: string; full_name: string; status: st
 export default async function AttendanceDayPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId } = await params;
   const query = await searchParams;
-  const day = query.date && /^\d{4}-\d{2}-\d{2}$/.test(query.date) ? query.date : cairoToday();
+  const day = isCivilDate(query.date) ? query.date : cairoToday();
+  const previousDay=adjacentDay(day,-1), nextDay=adjacentDay(day,1);
   const cursor = query.cursor && query.cursor.length <= 40 ? query.cursor : null;
   const retryHref = `/tenant/${tenantId}/attendance?date=${encodeURIComponent(day)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}`;
   const supabase = await createSupabaseServerClient();
@@ -46,17 +48,25 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
       <Panel className=" task-page" aria-labelledby="attendance-title">
         <p className="eyebrow">متابعة يوم العمل</p>
         <div className="workspace-page-heading"><div><PageHeader id="attendance-title" title={<>الحضور اليومي</>} description={<> اختر تاريخ العمل لمراجعة تسجيلات الدخول والخروج. لا يُجهّز يوم قبل بدايته حسب توقيت سياسة الدوام. </>} /></div></div>
+        {query.date&&!isCivilDate(query.date)&&<Message tone="info" role="status">التاريخ المطلوب غير صالح؛ نعرض يوم اليوم. اختر تاريخًا صحيحًا لعرض سجل آخر.</Message>}
         {!entitlementEnabled && <Message tone="info" >وحدة الحضور غير مفعلة حاليًا. يمكنك مراجعة السجلات السابقة، ولن تتاح إضافة أو تعديل سجلات جديدة.</Message>}
-        <div className={styles.toolbar}>
-          <form method="get" className={styles.dateForm}><Field  id="attendance-date" label={<>تاريخ العمل</>}><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field><Button variant="solid"  type="submit">عرض اليوم</Button></form>
+        <div className={`${styles.toolbar} ${styles.dayToolbar}`}>
+          <form key={day} method="get" className={styles.dateForm}><Field  id="attendance-date" label={<>تاريخ العمل</>}><Input id="attendance-date" type="date" name="date" defaultValue={day} /></Field><Button variant="solid"  type="submit">عرض اليوم</Button></form>
+          <nav className={styles.dateShortcuts} aria-label="التنقل بين أيام الحضور">
+            {previousDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${previousDay}`}>اليوم السابق</ButtonLink>}
+            {nextDay&&<ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance?date=${nextDay}`}>اليوم التالي</ButtonLink>}
+            <ButtonLink variant="ghost" icon="calendar" href={`/tenant/${tenantId}/attendance/calendar?month=${day.slice(0,7)}#day-${day}`}>عرض الشهر</ButtonLink>
+          </nav>
           <nav className={styles.tools} aria-label="مهام الحضور">
-            {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/sources`}>{terms.attendanceSources}</ButtonLink>}
-            {canManage && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
-            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا بيانات عمل</ButtonLink>}
-            {access.can_view === true && <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}
+            {access.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/review?date=${encodeURIComponent(day)}`}>فتح قائمة المراجعة</ButtonLink>}
+            <Disclosure summary="أدوات الحضور"><div className={styles.secondaryTools}>
+              {!channelAccessError && channelAccess?.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/sources`}>{terms.attendanceSources}</ButtonLink>}
+              {canManage && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/import`}>استيراد تسجيلات من ملف</ButtonLink>}
+              {access.can_view === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/unassigned`}>مراجعة التسجيلات بلا بيانات عمل</ButtonLink>}
+            </div></Disclosure>
           </nav>
         </div>
-        {canOpen && <p className="field-hint">استخدم التالي لعرض بقية الموظفين عند وجود سجلات إضافية.</p>}
+        {hasMore && <p className="field-hint">استخدم «التالي» لعرض بقية سجلات اليوم.</p>}
         {rows.length === 0 ? <EmptyState title={<>لا توجد سجلات لهذا اليوم</>} description={<>{!entitlementEnabled ? 'لا توجد سجلات سابقة لهذا التاريخ.' : canOpen ? 'لا توجد أيام عمل بدأت حسب التوقيت المحلي ومواعيد الدوام المسجلة.' : 'لم تُجهّز سجلات لهذا اليوم بعد.'}</>} /> : <DataTable className={styles.table} role="table">
           <caption>سجلات يوم العمل <bdi>{day}</bdi> — المعروضة في هذه الصفحة</caption>
           <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">الموظف</th><th scope="col" role="columnheader">الدوام المتوقع</th><th scope="col" role="columnheader">مؤشرات اليوم والمراجعة</th><th scope="col" role="columnheader">الحالة</th><th scope="col" role="columnheader">الإجراء</th></tr></thead>
@@ -84,7 +94,6 @@ export default async function AttendanceDayPage({ params, searchParams }: { para
   </PageFrame>;
 }
 
-function cairoToday() { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Cairo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
 function timezoneLabel(zone: string) { if (zone === 'Africa/Cairo') return 'توقيت القاهرة'; try { return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { timeZone: zone, timeZoneName: 'long' }).formatToParts(new Date()).find((part) => part.type === 'timeZoneName')?.value ?? 'توقيت سياسة الدوام'; } catch { return 'توقيت سياسة الدوام'; } }
 function formatInstant(value: string, zone: string) { return new Intl.DateTimeFormat(ARABIC_DISPLAY_LOCALE, { dateStyle: 'short', timeStyle: 'short', timeZone: zone }).format(new Date(value)); }
 function statusLabel(status: string) { return ({ open: 'قيد المتابعة', ready: 'جاهز للمراجعة', needs_review: 'يحتاج مراجعة', approved: 'معتمد' } as Record<string, string>)[status] ?? 'قيد المتابعة'; }

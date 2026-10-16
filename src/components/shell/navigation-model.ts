@@ -6,7 +6,7 @@ export function hasTeamWorkspace(links: WorkspaceLink[]) {
   return links.some(item => /\/(people|attendance|leave|payroll)(?:\/|\?|$)/.test(item.href) && !item.href.includes('/me/'));
 }
 
-const timeOrder = ['attendance', 'attendance/review', 'leave', 'leave/balances', 'attendance/sources', 'leave/settings'];
+const timeOrder = ['attendance', 'attendance/calendar', 'attendance/review', 'leave', 'leave/balances', 'attendance/sources', 'leave/settings'];
 const payrollOrder = ['payroll', 'payroll/runs', 'payroll/inputs', 'payroll/setup', 'payroll/advances', 'payroll/reports'];
 const setupOrder = ['entities-sites', 'users', 'people/organization', 'people/work-policies', 'attendance/sources', 'leave/settings', 'payroll/setup', 'branding'];
 function ordered(links: WorkspaceLink[], order: string[]) {
