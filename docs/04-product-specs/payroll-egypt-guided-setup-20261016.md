@@ -1,0 +1,15 @@
+# Guided Egyptian payroll preparation
+
+Owner-approved direction 2026-10-16: Egyptian defaults, editable exceptions, company-manager task language, complete setup-to-payment guide. This amends the earlier manual-only statutory-duration UI, not the calculation engine or financial controls.
+
+Actor: company manager or payroll preparer. Entry: payroll setup / employee inputs. Outcome: atomic saved employee statutory draft and, only after an explicit no-prior-income statement, a zero opening draft. Then review calculation, approve, finalize and record an external payment as separate authorized steps.
+
+Use the published ordinary-private-sector Egyptian pack covering the employee/period. Do not embed pack IDs/rates in frontend. Show scope and version, with advanced overrides; no automatic government certification. Policy remains tenant-wide and existing policy is preserved; new policy form suggests fixed30, Cairo/month-end calendar defaults retained.
+
+Baseline before: statutory form asks treatment code, category, wage, insurance dates/month/period binding/reference/reason and three calculation fields, plus a separate opening form. After: ordinary monthly case asks insurance state, insured wage and start date; if no opening exists, explicit prior-income choice; partial-month insurance requires explicit due/not-due choice. Dates, source references, owning period and applicable pack category derive from server context. A single atomic save retains immutable revisions and a stable exact-intent retry key. Existing opening balances are never reset.
+
+Monthly suggested tax duration: complete calendar month30; otherwise inclusive employee/service overlap capped30, single-month only, per ETA FAQv4 questions39–40 (March2026). Display as editable suggestion. Daily workers require actual payable duration confirmation, not calendar-day assumption. Cross-month/year cases retain explicit advanced preparation rather than guessing insurance ownership/earning attribution. Source: https://www.eta.gov.eg/sites/default/files/2026-05/faqs-payroll-system-v4.pdf
+
+Preserve payroll_prepare/service/tenant/employee predicates, frozen-source guards, expected revisions, append-only audit, exact intent receipts, approval separation and existing correction paths. No bank transfer or automatic finalization. On failure keep all user-entered values; no success until all parts commit. Missing or ambiguous pack, stale version, ended/frozen employment and unsupported multi-month scope are explicit recovery states with links. Date and IDs are server-derived. Scope and defaults can be reviewed; never overwrite special existing context through silent defaults.
+
+Gates: actual public RPC allowed/denied and atomic rollback/replay; defaults full/partial/February/daily scope; protected UI save and revisited state; phone and desktop; guide source/HTML/PDF match, independent bounded review. Reuse existing dependencies outside OneDrive; preserve source, DB and recovery evidence; no blanket cleanup or repeated build/test loops.
