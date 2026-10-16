@@ -214,4 +214,9 @@ SELECT is((SELECT count(*) FROM payroll.payment_events
 SELECT is((SELECT to_jsonb(e) FROM payroll.final_employees e
  WHERE output_id=(current_setting('test.final')::jsonb->>'output')::uuid),
  current_setting('test.original_employee')::jsonb,'payment on replacement preserves the original frozen result');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','d5920000-0000-4000-8000-000000000001',true);
+SELECT is(public.people_payroll_inclusion('d5921000-0000-4000-8000-000000000001','d5926000-0000-4000-8000-000000000001')->>'locked','true','closed payroll exposes inclusion as read-only');
+SELECT throws_ok($$SELECT public.set_people_payroll_inclusion('d5921000-0000-4000-8000-000000000001','d5926000-0000-4000-8000-000000000001',public.people_payroll_inclusion('d5921000-0000-4000-8000-000000000001','d5926000-0000-4000-8000-000000000001')->>'stamp',false,gen_random_uuid())$$,'23514','payroll_people_correction_required','real finalized financial journey cannot be removed from history by inclusion toggle');
+RESET ROLE;
 SELECT * FROM finish();ROLLBACK;

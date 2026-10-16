@@ -3,7 +3,7 @@ export const operatorTaskLabels = {
   can_onboard_tenants: 'إنشاء الشركات ودعواتها',
   can_manage_tenant_lifecycle: 'حالة الشركات',
   can_manage_commercial_access: 'خدمات الشركات وحدودها',
-  can_manage_statutory_rules: 'القواعد القانونية للرواتب',
+  can_manage_statutory_rules: 'إعدادات حساب الرواتب',
 } as const;
 
 export function operatorLifecycleLabel(state: string) {

@@ -64,7 +64,7 @@ export const issueTitles: Record<string, string> = {
   time_integration_pending: 'لم تكتمل مراجعة احتساب الحضور',
   leave_integration_pending: 'لم تكتمل مراجعة احتساب الإجازات',
   correction_open: 'طلب تصحيح مفتوح للفترة',
-  no_eligible_employees: 'لا توجد سجلات توظيف تستوفي شروط الحساب',
+  no_eligible_employees: 'لا يوجد موظفون مشمولون في هذه الفترة',
   compensation_gap: 'الأجر لا يغطي كل أيام الفترة',
   assignment_gap: 'بيانات العمل لا تغطي كل الفترة',
   manual_units_ambiguous: 'مدخلات الوحدات اليومية متعارضة',

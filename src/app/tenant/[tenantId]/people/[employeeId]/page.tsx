@@ -14,6 +14,8 @@ import { ProfileReturnField } from '@/components/profile-return-field';
 import { PEOPLE_ROLE_BUNDLES } from '../../users/bundles';
 import { EmployeeSelfServices, type SelfServiceAccess } from './EmployeeSelfServices';
 import { EmployeeReadiness } from './EmployeeReadiness';
+import { PayrollInclusion } from './PayrollInclusion';
+import { payrollInclusion } from './payroll-inclusion-rules';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
@@ -55,7 +57,7 @@ export default async function EmployeePage({ params, searchParams }: {
     && canManageWorkContext && canManageCompensation;
   const linkQuery = typeof query.linkQuery === 'string' ? query.linkQuery.slice(0, 100) : '';
   const linkPage = Math.min(1000, Math.max(1, Number.parseInt(query.linkPage ?? '1', 10) || 1));
-  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult, linkSnapshotResult, linkOptionsResult, membershipSnapshotResult, workPolicyResult] = await Promise.all([
+  const [historyResult, optionsResult, compensationHistoryResult, compensationOptionsResult, employmentHistoryResult, rehireOptionsResult, linkSnapshotResult, linkOptionsResult, membershipSnapshotResult, workPolicyResult, inclusionResult] = await Promise.all([
     employmentId ? supabase.rpc('people_work_assignment_history', {
       p_tenant_id: tenantId, p_employment_id: employmentId,
     }) : Promise.resolve({ data: null, error: null }),
@@ -78,6 +80,7 @@ export default async function EmployeePage({ params, searchParams }: {
     }) : Promise.resolve({ data: null, error: null }),
     readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id'),
     employmentId ? supabase.rpc('people_work_policy_panel', { p_tenant_id: tenantId, p_employment_id: employmentId }) : Promise.resolve({ data: null, error: null }),
+    employmentId ? supabase.rpc('people_payroll_inclusion', { p_tenant_id: tenantId, p_employment_id: employmentId }) : Promise.resolve({ data: null, error: null }),
   ]);
   const linkSnapshot = linkSnapshotResult.data && typeof linkSnapshotResult.data === 'object'
     ? linkSnapshotResult.data as unknown as LinkSnapshot : null;
@@ -147,7 +150,9 @@ export default async function EmployeePage({ params, searchParams }: {
   const lifecycleFollowup = ['ended', 'rehired'].includes(query.employment ?? '');
   const advanceAccess = lifecycleFollowup ? await readWorkspaceRpc(supabase, 'payroll_navigation_access', tenantId, 'p_tenant') : { data: null, error: null };
   const employerQuery: Record<string, string> = employee.employment?.employer_id ? { employer: employee.employment.employer_id } : {};
+  const inclusion = inclusionResult.error ? null : payrollInclusion(inclusionResult.data);
   const overview = <>
+    {employmentId && (inclusion ? <PayrollInclusion key={employmentId} tenant={tenantId} employment={employmentId} employee={employeeId} employer={employee.employment?.employer_id ?? ''} active={employee.employment?.status === 'active'} snapshot={inclusion}/> : <Message tone="info">تعذر قراءة حالة إدراج الموظف في الرواتب. أعد تحميل الملف للتحقق؛ لا نفترض أنه مشمول.</Message>)}
     <EmployeeReadiness tenantId={tenantId} employeeId={employeeId} employerId={employee.employment?.employer_id ?? null} returnTo={returnTo} facts={{
       work: { active: employee.status === 'active' && employee.employment?.status === 'active', hasAssignment: Boolean(employee.assignment), canManage: canManageWorkContext },
       compensation: { canView: canViewCompensation, current: compensationHistoryError ? null : compensationHistory?.items.some(item => item.status === 'current') ?? false },
