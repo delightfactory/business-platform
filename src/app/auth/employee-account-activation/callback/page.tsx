@@ -13,7 +13,7 @@ export default async function EmployeeAccountActivationCallbackPage({ searchPara
     && (query.type === 'invite' || query.type === 'email' || query.type === 'magiclink') && isUuid(query.intent_id ?? '');
   const message = query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب من الموارد البشرية إعادة إرساله.'
     : query.state === 'identity' ? 'هذا الرابط لا يطابق عملية التفعيل. استخدم الرابط المرسل لهذا الحساب.'
-      : query.state ? 'تعذر التحقق من الرابط. افتح أحدث رسالة وصلتك.' : 'تحقق من البريد للمتابعة وإعداد كلمة المرور.';
+      : query.state ? 'تعذر التحقق من الرابط. افتح أحدث رسالة وصلتك.' : !valid ? 'رابط التفعيل غير مكتمل. افتح أحدث رسالة وصلتك أو اطلب من الموارد البشرية إعادة إرساله.' : 'تحقق من البريد للمتابعة وإعداد كلمة المرور.';
   return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
     <Panel className="auth-card" aria-labelledby="activation-callback-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><PageHeader id="activation-callback-title" title={<>تأكيد البريد والمتابعة</>} />

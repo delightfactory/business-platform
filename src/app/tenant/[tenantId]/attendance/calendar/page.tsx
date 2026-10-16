@@ -85,6 +85,6 @@ export default async function AttendanceCalendar({params,searchParams}:Props) {
         </section>}
       </>}
     </Panel>
-    <div className={styles.continuation}><ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/review?date=${today}`}>قائمة مراجعة اليوم</ButtonLink></div>
+    <div className={styles.continuation}><ButtonLink variant="ghost" prefetch={false} href={`/tenant/${tenantId}/attendance/review?date=${today}${scopeQuery}`}>قائمة مراجعة اليوم</ButtonLink></div>
   </PageFrame>;
 }

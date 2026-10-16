@@ -105,7 +105,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
     <span className={styles.identityText}><strong>منصة الأعمال</strong><small><bdi>{contextLabel}</bdi></small></span>
   </>;
   const tree = <NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} settingsHref={settingsHref} settingsCurrent={settingsCurrent}/>;
-  const manual = guideHref(mode, [...originalLinks, ...originalBusinessLinks]);
+  const manual = guideHref(mode, [...originalLinks, ...originalBusinessLinks], homeHref);
 
   return <div className={styles.navigation}>
     <a className="workspace-skip-link" href="#workspace-content">تخطَّ إلى المحتوى</a>
@@ -127,7 +127,7 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
           <DropdownMenu.Item asChild><Link href={`${profile.href}#my-employee-heading`}>ملفي</Link></DropdownMenu.Item>
         </>}
         {mode === 'operator' && <DropdownMenu.Item asChild><Link href="/">مساحات العمل</Link></DropdownMenu.Item>}
-        <DropdownMenu.Item asChild><a href={guideHref(mode, [...originalLinks, ...originalBusinessLinks])} target="_blank" rel="noopener">دليل الاستخدام والتدريب</a></DropdownMenu.Item>
+        <DropdownMenu.Item asChild><a href={manual} target="_blank" rel="noopener">دليل الاستخدام والتدريب</a></DropdownMenu.Item>
         <ThemePreferenceControl menu />
         <DropdownMenu.Separator />
         <form action={signOutAction}><SignOutMenuItem /></form>

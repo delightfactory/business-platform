@@ -2,6 +2,7 @@ import { Button, ButtonLink, Field, Message, Panel, Select } from '@/components/
 import { getWorkspaceClient } from '@/lib/workspace-access';
 import { cairoToday, isCivilDate } from '@/lib/attendance-calendar';
 import { EgyptForm, type EgyptContext } from '../../payroll/setup/employee/EgyptForm';
+import { displayDate } from '../../payroll/rules';
 
 type Period = { id: string; starts_on: string; ends_on: string };
 type Props = {
@@ -56,7 +57,7 @@ async function PayrollSetup({ tenantId, employeeId, employmentId, employerId, em
   const heading = <h2>الضريبة والتأمينات</h2>;
   const picker = <form method="get" action={profile} className="workspace-form-actions">
     {Object.entries(profileQuery).map(([key,value]) => <input key={key} type="hidden" name={key} value={value}/>)}
-    <Field id="employee-payroll-period" label="فترة الرواتب"><Select id="employee-payroll-period" name="payrollPeriod" required defaultValue={selected?.id ?? ''}><option value="" disabled>اختر الفترة</option>{eligible.map(period => <option key={period.id} value={period.id}>{period.starts_on} — {period.ends_on}</option>)}</Select></Field>
+    <Field id="employee-payroll-period" label="فترة الرواتب"><Select id="employee-payroll-period" name="payrollPeriod" required defaultValue={selected?.id ?? ''}><option value="" disabled>اختر الفترة</option>{eligible.map(period => <option key={period.id} value={period.id}>{displayDate(period.starts_on)} — {displayDate(period.ends_on)}</option>)}</Select></Field>
     <Button type="submit" variant="ghost">عرض البيانات</Button>
   </form>;
   if (!selected) return <Panel>{heading}

@@ -20,7 +20,7 @@ function fieldLabelText(label: ReactNode): string {
 }
 export function Field({ id, label, hint, help, error, children, className = '', required }: { id: string; label: ReactNode; hint?: ReactNode; help?: ReactNode; error?: ReactNode; children: ReactNode; className?: string; required?: boolean }) {
   const control = isValidElement<InputHTMLAttributes<HTMLInputElement>>(children) ? cloneElement(children, { id, 'aria-describedby': [children.props['aria-describedby'], hint ? `${id}-hint` : undefined, error ? `${id}-error` : undefined].filter(Boolean).join(' ') || undefined, 'aria-invalid': error ? true : children.props['aria-invalid'] }) : children;
-  const title = <>{label}{required && <span aria-hidden="true" className="ui-required"> *</span>}</>;
+  const title = <>{label}{required && <span aria-hidden="true" className="ui-required">{'\u00a0*'}</span>}</>;
   return <div className={`ui-field ${className}`}>{help ? <FieldHelp fieldId={id} title={title} label={fieldLabelText(label) || 'شرح الحقل ومثال'}>{help}</FieldHelp> : <div className="ui-field-label-row"><label htmlFor={id}>{title}</label></div>}{control}{hint && <p id={`${id}-hint`} className="ui-field-hint">{hint}</p>}{error && <p id={`${id}-error`} className="ui-field-error" role="alert">{error}</p>}</div>;
 }
 type InputProps = InputHTMLAttributes<HTMLInputElement> & { error?: boolean; ref?: Ref<HTMLInputElement> };

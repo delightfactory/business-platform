@@ -190,3 +190,20 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
 .historyList h3 { margin:0 0 8px; font-size:14px; }
 .historyList p { font-size:13px; color:var(--ink-2); }
 @media(max-width:640px) { .collectionHeading { align-items:start; flex-wrap:wrap; }.collectionHeading>header { min-width:180px; }.recordTable th,.recordTable td { padding:12px; }.recordTable tbody th { min-width:165px; }.createWorkspace,.runOverview,.runSection { padding:16px; }.runTabs { gap:20px; }.collectionTools { gap:16px; }.collectionTools>details { margin-inline-start:0; } }
+
+/* The same collection table becomes complete, labelled records on a phone. */
+.collectionLabel { display:none; }
+@media screen and (max-width:640px) {
+ .collectionTable,.collectionTable tbody { display:block; }
+ .collectionTable thead { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+ .collectionTable tbody tr { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); padding:16px; gap:14px 16px; border-block-end:1px solid var(--line); }
+ .collectionTable tbody tr:last-child { border-block-end:0; }
+ .collectionTable tbody :is(th,td) { display:block; min-width:0; padding:0; border:0; overflow-wrap:anywhere; }
+ .collectionTable tbody th { grid-column:1 / -1; font-size:14px; }
+ .collectionTable tbody th>a { display:inline-block; min-height:44px; align-content:center; }
+ .collectionTable .collectionLabel { display:block; margin-block-end:4px; color:var(--muted); font-size:12px; }
+ .collectionTable .collectionValue { display:block; font-weight:500; }
+ .collectionTable .recordStatus { max-width:100%; white-space:normal; }
+ .collectionTable .collectionAction { grid-column:1 / -1; padding-block-start:2px; }
+ .collectionTable .collectionAction>a { display:flex; min-height:44px; width:100%; }
+}

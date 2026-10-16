@@ -14,7 +14,7 @@ export default async function EgyptSetupPage({params,searchParams}:{params:Promi
  const error=(text:string)=><PageFrame><Panel><PageHeader title="تجهيز بيانات الموظف"/><Message tone="warn">{text}</Message><ButtonLink href={back}>العودة إلى إعداد الرواتب</ButtonLink></Panel></PageFrame>;
  if(!uuid(q.employer??'')||q.period&&!uuid(q.period)||q.employee&&!uuid(q.employee))return error('اختر جهة وفترة محفوظة أولًا.');
  const client=await getWorkspaceClient();if(!client)return error('تعذر الاتصال. أعد فتح الإعداد بنفس الفترة.');
- const {data:{user}}=await getWorkspaceUser(client);if(!user)redirect('/auth/login');
+ const {data:{user}}=await getWorkspaceUser(client);if(!user){const task=`/tenant/${tenantId}/payroll/setup/employee?${new URLSearchParams(Object.fromEntries(Object.entries(q).filter((item):item is [string,string]=>typeof item[1]==='string')))}`;redirect(`/auth/login?next=${encodeURIComponent(task)}`);}
  if(!q.period){const periods=await client.rpc('payroll_input_periods',{p_tenant:tenantId,p_employer:q.employer});if(periods.error||!periods.data?.length)return error('احفظ دورة الرواتب وفترتها الأولى قبل تجهيز الموظفين.');redirect(`/tenant/${tenantId}/payroll/setup/employee?${new URLSearchParams({employer:q.employer!,period:periods.data[0].id})}`);}
  const result=await client.rpc('payroll_input_workspace',{p_tenant:tenantId,p_employer:q.employer,p_period:q.period,p_query:q.q??'',p_after:q.after??null,p_limit:30});
  if(result.error||!result.data)return error('تعذر تحميل الموظفين أو لا تتوفر صلاحية إعداد الرواتب.');

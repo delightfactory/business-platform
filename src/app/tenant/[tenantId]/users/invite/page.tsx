@@ -21,7 +21,12 @@ export default async function InviteMemberPage({ params, searchParams }: { param
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} />;
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users/invite`)}`);
+  if (!user) {
+    const task = new URLSearchParams();
+    if (employeeId) task.set('employeeId', employeeId);
+    if (returnTo) task.set('profileReturn', returnTo);
+    redirect(`/auth/login?next=${encodeURIComponent(`/tenant/${tenantId}/users/invite${task.size ? `?${task}` : ''}`)}`);
+  }
   const { data, error } = await supabase.rpc('tenant_member_access_page', { p_tenant_id: tenantId, p_view: 'summary' });
   if (error || !data || typeof data !== 'object' || Array.isArray(data)) return <Status tenantId={tenantId} />;
   const result = data as Record<string, unknown>;
