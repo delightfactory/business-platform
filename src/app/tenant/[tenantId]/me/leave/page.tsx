@@ -135,7 +135,7 @@ export default async function MyLeavePage({ params, searchParams }: { params: Pa
           <p>تعذر التحقق من أحدث حالات طلباتك. أعد المحاولة أو عُد إلى الصفحة الأولى.</p>
           <PendingLink className="secondary-button" href={pageHref(tenantId, 1, balancePage.value)}>إعادة المحاولة</PendingLink></div>
           : requests && requests.length === 0 ? <div className="empty-state"><h2>لا توجد طلبات إجازة بعد</h2>
-            <p>{canRequest ? 'ابدأ من «طلب إجازة جديد» أعلى الصفحة. سيظهر طلبك هنا مع حالته بعد إرساله.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p></div>
+            <p>{canRequest ? 'ابدأ من «طلب إجازة» أعلى الصفحة. سيظهر طلبك هنا مع حالته بعد إرساله.' : 'لم تُسجَّل أي طلبات إجازة باسمك حتى الآن.'}</p></div>
             : requests ? <>
               <ul className={styles.overviewList}>{requests.map((request) => <RecordCard  key={request.id}>
                 <div className="record-main">
