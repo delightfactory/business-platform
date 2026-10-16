@@ -1,3 +1,4 @@
+import styles from './profile-summary.module.css';
 import { Avatar, Badge, ButtonLink, Disclosure, Field, Input, Message, Panel, RecordCard, Select } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -8,7 +9,7 @@ import { PageFrame } from '@/components/context-navigation';
 import { FeedbackToast } from '@/components/feedback-toast';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
 import { safeReturn } from '@/lib/return-to';
-import { profileReturnUrl, workPolicyCatalogUrl } from '@/lib/profile-return';
+import { profileBackLink, profileReturnUrl, workPolicyCatalogUrl } from '@/lib/profile-return';
 import { ProfileReturnField } from '@/components/profile-return-field';
 import { PEOPLE_ROLE_BUNDLES } from '../../users/bundles';
 import { EmployeeSelfServices, type SelfServiceAccess } from './EmployeeSelfServices';
@@ -31,6 +32,7 @@ export default async function EmployeePage({ params, searchParams }: {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
   const returnTo = safeReturn(tenantId, query.return);
+  const backLink = profileBackLink(tenantId, returnTo);
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Unavailable tenantId={tenantId} />;
   const { data: { user } } = await getWorkspaceUser(supabase);
@@ -276,13 +278,12 @@ export default async function EmployeePage({ params, searchParams }: {
     {query.policy === 'invalid' && <FeedbackToast key="policy-invalid" message="تحقق من بيانات سياسة الدوام."/>}
     {query.policyOverride === 'assigned' && <FeedbackToast key="policy-override-assigned" message="تم حفظ سياسة الدوام للفترة المحددة."/>}
     {query.policyOverride === 'cancelled' && <FeedbackToast key="policy-override-cancelled" message="تم إلغاء التغيير المقرر للدوام."/>}
-    <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people`}>العودة إلى الموظفين</ButtonLink>
+    <ButtonLink className={styles.profileReturn} variant="ghost" href={backLink.href}>{backLink.label}</ButtonLink>
     <header className="workspace-page-heading"><div className="employee-profile-identity"><Avatar name={employee.name} size={64} status={employee.status === 'active' ? 'ok' : 'neutral'} /><div><p className="eyebrow">ملف الموظف</p><h1>{employee.name}</h1>
       <p>رمز الموظف: <bdi>{employee.code}</bdi></p></div></div>
       <Badge className={`entity-status ${employee.status === 'active' ? 'is-active' : 'is-inactive'}`}>
         {employee.status === 'active' ? 'نشط' : employee.status === 'scheduled' ? 'سيبدأ قريبًا' : employee.status === 'ended' ? 'انتهت خدمته' : 'غير نشط'}</Badge>
     </header>
-    {returnTo && <ButtonLink variant="ghost" href={returnTo}>العودة إلى المهمة</ButtonLink>}
     <EmployeeProfileTabs key={initialTab} initialTab={initialTab} areas={[
       { value: 'overview', label: 'نظرة عامة', content: overview },
       { value: 'work', label: 'العمل والتعيينات', content: work },
@@ -298,7 +299,7 @@ export default async function EmployeePage({ params, searchParams }: {
         {!advanceAccess.error && advanceAccess.data?.can_view_advances === true && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/payroll/advances?${new URLSearchParams({ ...employerQuery, q: employee.code })}`}>راجع السلف</ButtonLink>}
       </div></section>}
       <h2>متابعة العمل</h2>{correctionAccess.data?.can_correct&&<ButtonLink variant="ghost"  href={`/tenant/${tenantId}/payroll/corrections?${new URLSearchParams({person:employee.id})}`}>تصحيح مصدر يمس راتبًا مقفلًا</ButtonLink>}
-      <div className="workspace-form-actions"><ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</ButtonLink>
+      <div className="workspace-form-actions">{backLink.fromTask && <ButtonLink variant="ghost" href={`/tenant/${tenantId}/people`}>عرض جميع الموظفين</ButtonLink>}
         {access.can_manage === true && access.can_manage_employment === true && access.can_manage_compensation === true &&
           <ButtonLink variant="ghost"  href={`/tenant/${tenantId}/people/new`}>إضافة موظف آخر</ButtonLink>}</div>
     </Panel>

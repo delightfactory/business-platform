@@ -29,3 +29,19 @@ export function profileReturnUrl(tenantId: string, employeeId: string, destinati
   }
   return target.pathname + target.search + target.hash;
 }
+
+/** Keep read-only preview routing independent of the profile's return query. */
+export function employeeDirectoryLinks(tenantId: string, employeeId: string, rawReturn: unknown) {
+  const profile = `/tenant/${tenantId}/people/${employeeId}`;
+  return { href: profileReturnUrl(tenantId, employeeId, profile, rawReturn), previewHref: `${profile}/preview` };
+}
+
+export function profileBackLink(tenantId: string, rawReturn: unknown): { href: string; label: string; fromTask: boolean } {
+  const directory = `/tenant/${tenantId}/people`;
+  const returnTo = safeReturn(tenantId, rawReturn);
+  if (!returnTo) return { href: directory, label: 'العودة إلى الموظفين', fromTask: false };
+  const destination = new URL(returnTo, 'https://workspace.invalid');
+  if (destination.pathname === directory) return { href: returnTo,
+    label: destination.searchParams.get('q') ? 'العودة إلى نتائج البحث' : 'العودة إلى الموظفين', fromTask: false };
+  return { href: returnTo, label: 'العودة إلى المهمة', fromTask: true };
+}

@@ -1,0 +1,17 @@
+.profileReturn:global(.ui-button) { width:fit-content; justify-self:start; min-height:2.75rem; }
+.readinessPanel:global(.ui-panel) { padding:1.25rem; }
+.readinessPanel > h2 { margin-block:0 1rem; font-size:1.15rem; }
+.focusCard { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:1.25rem; padding:1.1rem; background:var(--color-brand-soft); border-inline-start:3px solid var(--color-brand-border); border-radius:.65rem; }
+.focusCard[data-state='unknown'] { background:var(--status-warning-surface); border-color:var(--status-warning-text); }
+.focusCard[data-state='other-role'] { background:var(--surface-subtle); border-color:var(--color-border); }
+.focusCard h3 { margin:0; font-size:1.05rem; line-height:1.65; }
+.focusCard p { margin:.4rem 0 0; font-size:.9rem; line-height:1.8; }
+.focusCard .owner { color:var(--color-muted); font-size:.82rem; }
+.focusAction:global(.ui-button) { min-height:2.75rem; }
+.progress { font-size:.85rem; color:var(--color-muted); margin:.75rem 0; }
+.detailGroups { display:grid; gap:.6rem; margin-block:1rem; }
+@media(max-width:599px) {
+ .readinessPanel:global(.ui-panel) { padding:1rem; }
+ .focusCard { grid-template-columns:minmax(0,1fr); gap:.8rem; padding:.9rem; }
+ .focusAction:global(.ui-button) { width:100%; }
+}

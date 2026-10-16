@@ -9,8 +9,8 @@ import styles from './employee-preview.module.css';
 
 type State = EmployeePreviewResult | { status: 'loading' };
 
-export function EmployeePreview({ href, name, code, employeeId }: {
-  href: string; name: string; code: string; employeeId: string;
+export function EmployeePreview({ href, previewHref, name, code, employeeId }: {
+  href: string; previewHref: string; name: string; code: string; employeeId: string;
 }) {
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<State>({ status: 'loading' });
@@ -25,7 +25,7 @@ export function EmployeePreview({ href, name, code, employeeId }: {
     request.current = controller;
     setState({ status: 'loading' });
     try {
-      const response = await fetch(`${href}/preview`, { credentials: 'same-origin',
+      const response = await fetch(previewHref, { credentials: 'same-origin',
         cache: 'no-store', signal: controller.signal });
       const result: unknown = response.ok ? await response.json() : null;
       if (controller.signal.aborted || request.current !== controller) return;
@@ -50,11 +50,11 @@ export function EmployeePreview({ href, name, code, employeeId }: {
   }
 
   return <>
-    <a ref={trigger} className={buttonClassName('ghost')} href={href} aria-haspopup="dialog"
+    <a ref={trigger} className={buttonClassName('ghost', 'md', styles.previewTrigger)} href={href} title={`معاينة ${name}`} aria-haspopup="dialog"
       aria-label={`معاينة ${name}`} onClick={(event) => {
         if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault(); setOpen(true); void load();
-      }}><Icon name="eye" size={16} />معاينة</a>
+      }}><Icon name="eye" size={18} /></a>
     <Dialog.Root open={open} onOpenChange={(nextOpen) => { if (!nextOpen) close(); }}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />

@@ -23,7 +23,8 @@
 .settingsLinks a:hover {
   background:var(--surface)
 }
-.directoryPanel:global(.workspace-records-panel) {
+.directoryPanel:global(.ui-panel) {
+  padding:0;
   border-radius:var(--r-card);
   box-shadow:var(--sh-1)
 }
@@ -102,7 +103,7 @@
   grid-column:2;
   grid-row:1
 }
-.employeeRow>a {
+.rowActions {
   grid-column:2;
   grid-row:2
 }
@@ -126,7 +127,7 @@
 .employmentContext {
   font-size:12px
 }
-.employeeRow>a {
+.rowActions {
   padding-inline:10px;
   font-size:12px
 }
@@ -138,3 +139,15 @@
 
 }
 .accountChoices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; align-items: start; }
+
+.directoryPanel > :global(.people-search-form) { padding:1.1rem 1.25rem; margin:0; }
+.directoryPanel > :global(.record-meta) { padding-inline:1.25rem; }
+.directoryPanel > :global(.ui-empty),.directoryPanel > [role='alert'],.directoryPanel > :global(.ui-message) { margin:1rem; }
+.directoryPanel > :global(.people-pagination) { padding:1rem 1.25rem; }
+.rowActions { display:flex; align-items:center; justify-content:flex-end; gap:.5rem; min-width:0; }
+.rowActions :global(.ui-button) { min-height:2.75rem; }
+@media(max-width:599px) {
+ .employmentContext { grid-column:1/-1; grid-row:2; }
+ .rowActions { grid-column:1/-1; grid-row:3; justify-content:stretch; }
+ .rowActions > a:first-child { flex:1; }
+}

@@ -104,3 +104,5 @@
 }
 
 }
+
+.previewTrigger:global(.ui-button) { width:2.75rem; min-width:2.75rem; min-height:2.75rem; padding:.5rem; }
