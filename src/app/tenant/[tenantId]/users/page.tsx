@@ -99,17 +99,17 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <h3><bdi>{row.email}</bdi></h3>
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
-                <p>صلاحيات العمل: <strong>{assignedBundleLabels(row.roles).length}</strong></p>
+                <p>{row.protected_admin ? 'إدارة الخدمات المتاحة: تلقائية · صلاحيات إضافية: ' : 'صلاحيات العمل: '}<strong>{assignedBundleLabels(row.roles).length}</strong></p>
                 {row.access_state === 'active' && <MemberTasks roles={row.roles} />}
                 {row.access_state !== 'active' && assignedBundleLabels(row.roles).length > 0 && <Disclosure summary="عرض الصلاحيات المحفوظة">
                   <ul>{assignedBundleLabels(row.roles).map(label => <li key={label}>{label}</li>)}</ul>
                 </Disclosure>}
                 {PEOPLE_ROLE_BUNDLES.some(bundle => bundle.financial && hasBundle(row.roles, bundle.key)) && <Badge tone="warn">سلطة مالية</Badge>}
-                {row.protected_admin && <HelpNote label="عن صلاحيات مسؤول الشركة"><p>صلاحيات الموظفين والرواتب تُختار من «تعديل صلاحيات المستخدم». إضافتها أو إزالتها لا تغيّر دور مسؤول الشركة.</p></HelpNote>}
+                {row.protected_admin && <HelpNote label="عن صلاحيات مسؤول الشركة"><p>يدير مسؤول الشركة الخدمات المتاحة لها تلقائيًا، بما فيها إعداد الرواتب وتحضيرها واعتمادها وحفظها وتسجيل الدفعات. إيقاف الخدمة يمنع العمليات الجديدة؛ قراءة السجلات السابقة تخضع لضوابط كل خدمة. الاختيارات الإضافية لا تسحب هذه الإدارة، والخدمة الذاتية للموظف تبقى مستقلة.</p></HelpNote>}
               </div>
               <div className="invitation-actions">
                 {row.access_state === 'active' && <MemberAccessSheet key={`${row.user_id}:${row.roles.map(role => role.role_key).sort().join(',')}`} tenantId={tenantId} userId={row.user_id} email={row.email}
-                  initialKeys={PEOPLE_ROLE_BUNDLES.filter(bundle => hasBundle(row.roles, bundle.key)).map(bundle => bundle.key)} />}
+                  protectedAdmin={row.protected_admin} initialKeys={PEOPLE_ROLE_BUNDLES.filter(bundle => hasBundle(row.roles, bundle.key)).map(bundle => bundle.key)} />}
                 {((canManageRoles && row.access_state === 'active') || !row.protected_admin) && <Sheet title="إجراءات العضو" description={row.email} trigger={<Button variant="ghost">إجراءات العضو</Button>}>
                 {canManageRoles && row.protected_admin && row.access_state === 'active' && <OfflineForm action={setProtectedAdminLeaveSelfAccessAction}>
                   <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="userId" value={row.user_id} />

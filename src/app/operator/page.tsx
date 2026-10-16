@@ -59,7 +59,13 @@ export default async function OperatorPage({ searchParams }: { searchParams: Sea
             <ul className="operator-work-list"><TaskLink href="/operator/team" title="فريق التشغيل" detail="امنح مهام التشغيل أو عدّلها أو ألغها." /></ul>
           </section>}
         </div>
-        {canManageStatutory && <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد القانونية للرواتب</h2><ul className="operator-work-list"><TaskLink href="/operator/statutory" title="مسودات القواعد ومراجعها" detail="احفظ النسخ المؤرخة وراجع سجل تعديلاتها؛ الحفظ لا يعتمدها لحساب الرواتب." /></ul></section>}
+        <section className="operator-work-group" aria-labelledby="statutory-authority-title"><h2 id="statutory-authority-title">القواعد المصرية للرواتب</h2><ul className="operator-work-list">
+          {canManageStatutory
+            ? <TaskLink href="/operator/statutory" title="الضرائب والتأمينات" detail="راجع القواعد ومراجعها وتواريخ سريانها، ثم تابع المقارنات والإصدار." />
+            : canManage
+              ? <TaskLink href="/operator/team" title="تفعيل إدارة القواعد المالية" detail="افتح مهام حسابك في فريق التشغيل وفعّل إدارة القواعد القانونية للرواتب. تُسجَّل هذه الصلاحية بشكل مستقل." />
+              : <li><strong>الضرائب والتأمينات</strong><small>تحتاج إدارة القواعد القانونية للرواتب. اطلبها من مسؤول فريق التشغيل.</small></li>}
+        </ul></section>
         {!partialRead && !canManage && !canOnboard && !canManageLifecycle && !canManageCommercial && !canManageStatutory &&
           <p className="empty-state">لا توجد مهام تشغيل ممنوحة لحسابك حاليًا. تواصل مع مسؤول تشغيل المنصة إذا كنت تحتاج مهمة محددة.</p>}
       </div>

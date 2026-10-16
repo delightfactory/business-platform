@@ -8,7 +8,7 @@ import { BUNDLE_DOMAINS, BUNDLE_PRESETS, PEOPLE_ROLE_BUNDLES } from './bundles';
 import { setTenantMemberPeopleBundlesAction } from './actions';
 import styles from './member-access.module.css';
 
-export function MemberAccessSheet({ tenantId, userId, email, initialKeys }: { tenantId: string; userId: string; email: string; initialKeys: string[] }) {
+export function MemberAccessSheet({ tenantId, userId, email, initialKeys, protectedAdmin = false }: { tenantId: string; userId: string; email: string; initialKeys: string[]; protectedAdmin?: boolean }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(() => new Set(initialKeys));
   const added = PEOPLE_ROLE_BUNDLES.filter(bundle => selected.has(bundle.key) && !initialKeys.includes(bundle.key));
@@ -21,7 +21,7 @@ export function MemberAccessSheet({ tenantId, userId, email, initialKeys }: { te
   function toggle(key: string, checked: boolean) {
     setSelected(current => { const next = new Set(current); if (checked) next.add(key); else next.delete(key); return next; });
   }
-  return <Sheet open={open} onOpenChange={changeOpen} bodyClassName={styles.body} title="صلاحيات العمل" description={`اختر مهام ${email}. دور مسؤول الشركة يبقى مستقلًا.`}
+  return <Sheet open={open} onOpenChange={changeOpen} bodyClassName={styles.body} title={protectedAdmin ? 'الصلاحيات الإضافية' : 'صلاحيات العمل'} description={protectedAdmin ? `إدارة الخدمات المتاحة مضمنة لحساب ${email}. الاختيارات هنا إضافية ولا تسحب صلاحيات الإدارة التلقائية.` : `اختر مهام ${email}. دور مسؤول الشركة يبقى مستقلًا.`}
     trigger={<Button variant="ghost">تعديل الصلاحيات</Button>}>
     <OfflineForm action={setTenantMemberPeopleBundlesAction} className={styles.form}>
       <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="userId" value={userId} /><input type="hidden" name="memberEmail" value={email} />
