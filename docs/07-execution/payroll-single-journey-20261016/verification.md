@@ -20,3 +20,16 @@ This slice does not transfer money, auto-approve/finalize, invent company legal 
 Current UI finalization/payment were not repeated in the local fixture; existing authoritative financial lifecycle passed the 68 regression checks and the previously completed production synthetic payment remains the live terminal-state example. Unknown-result journal and split-role behavior were reviewed in source rather than claiming a new exhaustive runtime execution.
 
 Storage: existing shared dependencies and essential prior evidence retained outside OneDrive. Temporary local dev server stopped after verification. No blanket cache, Docker or database cleanup.
+
+## Production acceptance
+
+- Deployed source `9779320ee5e8960397360428adcf123c141dd17a`, Vercel `dpl_CHVLjiVVuuuUhpZPbHYHaArsm7zv`, READY and promoted to `platform.delight-world.com`. Previous deployment retained for rollback. No database migration or subscription change in this release.
+- Actual company-admin session: selected Delight employer/period entry redirects directly to the same run. One payroll navigation entry remains. The stored current period honestly waits for incomplete attendance, including twelve future workdays in its saved calculation; no fictitious completion was recorded.
+- Existing finalized synthetic run opens its payment screen with actual period/output context. UI still shows 311.58 recorded, zero remaining, and both return links target that exact run period. No new payment was submitted.
+- Built local UI additionally executed legal-entity update with explicitly synthetic legal name, confirmed successful POST redirect retaining both UUIDs and an exact run return link.
+- Role-filtered live guide HTTP 200 contains new future/incomplete-day explanation. No error/fatal logs found for this deployment in the checked 10-minute window.
+- Native viewport screenshot `production-run.png` inspected after removing responsive overrides. Earlier full-page QA captures are retained externally with their documented sticky-capture caveat.
+- Clean-code guard: preserved existing financial commands/recovery boundaries, reused concrete repair destinations instead of duplicate routing knowledge, no added dependency or workflow framework. Documentation guard reconciled actual initial calculation label and task-section wording with source.
+- Both owned local dev/built preview processes stopped. Removed three exact redundant PNG intermediates after owned-root, parent reparse, Git-state and active-writer checks: 563970 verified local bytes. Representative phone/desktop evidence, source, PDF, shared dependencies and databases retained; no cloud-quota claim.
+
+This is bounded release evidence, not a claim of perfect UX or a newly repeated full production approval/payment lifecycle. The owner should assess the revised journey with their actual tasks; attendance currently opens the selected day queue rather than a prefiltered individual queue.
