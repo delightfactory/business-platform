@@ -1,0 +1,26 @@
+[
+  {
+    "file": "src/app/auth/safe-next.ts",
+    "sha256": "9d0c3bce52eda71abcaba0749383448732864d050faa7b0df2186dd299fb1086"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/leave/settings/SettingsLink.tsx",
+    "sha256": "c5fb7d0e815aa09db6a9e6976becd6f1040bf711ab25e1166f67d8e0e1212ef2"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/calendar/page.tsx",
+    "sha256": "e0a2f6f26e9da0a89bf6cb3af770f968cb67a2363a6a0561d20374e7142ec187"
+  },
+  {
+    "file": "src/app/tenant/[tenantId]/attendance/calendar/calendar.module.css",
+    "sha256": "253477a0fe3e2ce5a50aeeedbc20aefb96c06ad8e176dfc2a8729ef2c5c8c692"
+  },
+  {
+    "file": "scripts/tests/shared-ux-context.test.cjs",
+    "sha256": "9bc7a81b63c37697a758c9c09d592815983c24f8ae8cd8c445e5050b6ea5cce0"
+  },
+  {
+    "file": "scripts/check-ux-auth-core.cjs",
+    "sha256": "1a6ef2fc1c817c39ff423ae98aedb6bcd6c36d3e52f83f3a217faf016909af2c"
+  }
+]

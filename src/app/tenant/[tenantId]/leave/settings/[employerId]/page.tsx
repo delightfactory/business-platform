@@ -104,7 +104,7 @@ export default async function LeaveSettingsOverviewPage({ params, searchParams }
       ].map((step, index) => <li key={step.path} data-state={step.done ? 'done' : nextSetup?.path === step.path ? 'current' : 'pending'}
         aria-current={nextSetup?.path === step.path ? 'step' : undefined}>
         <span className={styles.stepNumber} aria-hidden="true">{step.done ? '✓' : index + 1}</span>
-        <span>{step.label}<small>{step.done ? 'مسجل' : nextSetup?.path === step.path ? 'الخطوة التالية' : 'لم يُسجل بعد'}</small></span>
+        <span>{step.label}<small>{step.done ? 'مسجل' : canEdit && nextSetup?.path === step.path ? 'الخطوة التالية' : 'لم يُسجل بعد'}</small></span>
       </li>)}
     </ol>
 

@@ -73,12 +73,13 @@ export default async function AttendanceCalendar({params,searchParams}:Props) {
             </Link></td>;
           })}</tr>)}</tbody>
         </table>
+        <p className={styles.symbolLegend}><span>! يحتاج مراجعة</span><span>✓ معتمد</span><span>• حالات أخرى</span><span>— لا سجلات</span></p>
         <div className={styles.calendarNotes}><span>الأعداد سجلات عمل، وليست عدد الموظفين أو إثبات حضورهم.</span><HelpNote label="كيف أقرأ التقويم؟"><p>! وعدده للسجلات التي تحتاج مراجعة، ✓ وعدده لكل سجلات اليوم المعتمدة، • وعدده لسجلات أخرى، — لا سجلات محفوظة. افتح اليوم لمراجعة التسجيلات والوقت الإضافي؛ اعتماد الحضور لا يعني اعتماد راتب.</p>{canOpen&&<p>فتح يوم قد يجهّز سجلاته حسب توقيت الدوام؛ قد تتغير أعداد التقويم بعد العودة.</p>}</HelpNote></div>
         {calendar.days.length>0&&<section className={styles.reviewAgenda} aria-labelledby="calendar-review-days"><h3 id="calendar-review-days">أيام تحتاج مراجعة</h3>
           {reviewDays.length?<ul>{reviewDays.map(day=><li key={day.date}><Link prefetch={false} href={dayHref(day.date)}><span><Icon name="alert" size={16}/>{calendarDateLabel(day.date)}</span><strong>{day.needs_review} سجل يحتاج مراجعة</strong><Icon name="chevronRight" size={16}/></Link></li>)}</ul>:<EmptyState title="لا توجد سجلات بحالة «يحتاج مراجعة»" description="راجع تفاصيل اليوم قبل اتخاذ قرار؛ قد توجد سجلات جاهزة للاعتماد أو وقت إضافي ينتظر المراجعة."/>}
         </section>}
       </>}
     </Panel>
-    <div className={styles.continuation}><ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/review?date=${today}`}>قائمة مراجعة اليوم</ButtonLink><ButtonLink variant="ghost" prefetch={false} href={dayHref(today)}>عرض اليوم وأدوات الحضور</ButtonLink></div>
+    <div className={styles.continuation}><ButtonLink variant="ghost" href={`/tenant/${tenantId}/attendance/review?date=${today}`}>قائمة مراجعة اليوم</ButtonLink></div>
   </PageFrame>;
 }

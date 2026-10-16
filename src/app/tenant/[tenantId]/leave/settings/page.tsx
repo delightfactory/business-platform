@@ -29,32 +29,41 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
   const q = text(query.q).trim();
   const afterName = text(query.after_name);
   const afterId = text(query.after_id);
+  const invalidQuery = q.length > 120 || afterName.length > 160 || (afterName === '' && afterId !== '')
+    || (afterName !== '' && afterId === '') || (afterId !== '' && !isUuid(afterId));
+  const context = new URLSearchParams();
+  if (chooseEmployer) context.set('choose_employer', '1');
+  if (!invalidQuery) {
+    if (q) context.set('q', q);
+    if (afterName && afterId) { context.set('after_name', afterName); context.set('after_id', afterId); }
+  }
+  const currentHref = `${path}${context.size ? `?${context}` : ''}`;
+  const resetHref = chooseEmployer ? chooserPath : path;
   const invalidInput = (detail: string) => (
-    <StatusCard tenantId={tenantId} title="معاملات بحث غير صالحة" detail={detail} retryPath={path} />
+    <StatusCard tenantId={tenantId} title="معاملات بحث غير صالحة" detail={detail} retryPath={resetHref} />
   );
 
   const supabase = await createSupabaseServerClient();
   if (!supabase) {
     const gateText = GATE_TEXT['no-client'];
-    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
+    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={currentHref} />;
   }
   const { data: { user } } = await getWorkspaceUser(supabase);
-  if (!user) redirect(`/auth/login?next=${encodeURIComponent(path)}`);
+  if (!user) redirect(`/auth/login?next=${encodeURIComponent(currentHref)}`);
 
   const { data, error } = await supabase.rpc('leave_access_snapshot', { p_tenant: tenantId });
   const access = error ? null : readAccess(data);
   if (!access) {
     const gateText = error?.code === '42501' ? GATE_TEXT.forbidden : GATE_TEXT.error;
     return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail}
-      retryPath={gateText.retry ? path : undefined} />;
+      retryPath={gateText.retry ? currentHref : undefined} />;
   }
   if (!access.canView) {
     const gateText = GATE_TEXT['no-view'];
     return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} />;
   }
 
-  if (q.length > 120 || afterName.length > 160 || (afterName === '' && afterId !== '')
-    || (afterName !== '' && afterId === '') || (afterId !== '' && !isUuid(afterId))) {
+  if (invalidQuery) {
     return invalidInput('راجع رابط الصفحة أو أعد البحث من البداية.');
   }
 
@@ -74,12 +83,12 @@ export default async function LeaveSettingsPage({ params, searchParams }: {
       return invalidInput('راجع رابط الصفحة أو أعد البحث من البداية.');
     }
     const gateText = GATE_TEXT.error;
-    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
+    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={currentHref} />;
   }
   const employerPage = readEmployerPage(pageResult.data);
   if (!employerPage) {
     const gateText = GATE_TEXT.error;
-    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={path} />;
+    return <StatusCard tenantId={tenantId} title={gateText.title} detail={gateText.detail} retryPath={currentHref} />;
   }
 
   if (!chooseEmployer && q === '' && afterName === '' && afterId === '' && employerPage.uniqueEmployer) {

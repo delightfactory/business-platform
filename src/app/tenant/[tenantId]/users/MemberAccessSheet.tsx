@@ -33,9 +33,9 @@ export function MemberAccessSheet({ tenantId, userId, email, initialKeys }: { te
         {BUNDLE_PRESETS.map(preset => <div key={preset.key}><div><strong>{preset.label}</strong><p>{preset.detail}</p></div>
           <Button variant="ghost" onClick={() => setSelected(current => new Set([...current, ...preset.keys]))}>إضافة {preset.label}</Button></div>)}
       </section></Disclosure>
-      <p className={styles.selectedCount}>المهام المختارة: {selected.size}. افتح المجال لتعديل مهامه.</p>
+      <p className={styles.selectedCount}>المهام المختارة: {selected.size}. {selected.size ? 'افتح المجال لتعديل مهامه.' : 'افتح مجالًا لإضافة مهام.'}</p>
       {BUNDLE_DOMAINS.map(domain => <Disclosure key={domain} className={styles.domain} open={PEOPLE_ROLE_BUNDLES.some(bundle => bundle.domain === domain && initialKeys.includes(bundle.key))}
-        summary={<span>{domain}<span className={styles.domainCount}>{PEOPLE_ROLE_BUNDLES.filter(bundle => bundle.domain === domain && selected.has(bundle.key)).length} مختارة</span></span>}>
+        summary={<span>{domain}<span className={styles.domainCount}>{PEOPLE_ROLE_BUNDLES.some(bundle => bundle.domain === domain && selected.has(bundle.key)) ? `${PEOPLE_ROLE_BUNDLES.filter(bundle => bundle.domain === domain && selected.has(bundle.key)).length} مختارة` : 'لا مهام مختارة'}</span></span>}>
         <fieldset className={styles.group}><legend className="ui-sr">{domain}</legend>
         {PEOPLE_ROLE_BUNDLES.filter(bundle => bundle.domain === domain).map(bundle => <label key={bundle.key} className={bundle.sensitive ? styles.sensitive : undefined}>
           <Checkbox name="bundleKey" value={bundle.key} checked={selected.has(bundle.key)} onChange={event => toggle(bundle.key, event.target.checked)} />

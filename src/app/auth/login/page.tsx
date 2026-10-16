@@ -35,7 +35,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
         <p className="eyebrow">الدخول إلى المنصة</p>
         <PageHeader id="login-title" title={<>تسجيل الدخول</>} />
         <p className="intro">استخدم البريد الإلكتروني وكلمة المرور المرتبطين بحسابك.</p>
-        {message && <Message tone="info"  role="status">{message}</Message>}
+        {message && <Message tone={state === 'invalid' || state === 'setup' ? 'bad' : 'info'} role={state === 'invalid' || state === 'setup' ? 'alert' : 'status'}>{message}</Message>}
         <OfflineForm action={signInAction} className="auth-form">
           <input type="hidden" name="next" value={next} />
           <label htmlFor="email">البريد الإلكتروني</label>
