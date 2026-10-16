@@ -1,0 +1,13 @@
+# Egypt 2026 statutory review starter
+
+Owner-authorized scope: provide the Egyptian basis and simplify payroll setup, without relaxing statutory evidence/issuance or company/employee facts. This slice is a review-draft starter, not a complete issued legal pack.
+
+Actor: an operator already authorized to manage statutory rules. Entry: statutory workspace → new draft. Job: prepare the first dated2026 review draft using sourced information without copying all table entries and source URLs by hand. Successful endpoint: editable, unsaved draft with its incomplete decisions visible, followed by the existing save/comparison/issuance journey.
+
+On a pristine new form only, “ابدأ بأساس مصر 2026” fills the2026 interval (end exclusive2027-01-01), a changeable version name, three official sources, Law7/2024's six tax columns and20000 personal exemption, and NOSI's2026 insured-wage minimum2700/maximum16700. Source anchors are in the starter data and the reviewer packet. This is a transcription for review; it is not official comparison output or legal approval. The numeric editor opens immediately.
+
+Deliberate remaining decisions: actual tax treatment, raw/floored column selection, base-wage treatment, insurance category/branches/rates/deductibility and save reason. Do not default to a universally applicable11%/18.75% or silently select a special treatment. Mandatory browser choices stay blank until reviewed. Their existing server/database validation, independent scenarios and issuance attestation stay authoritative. No automatic save, issuance, financial-ready flag, recipient grant or bank transfer.
+
+Input protection: starter disappears after any form edit, on saved/existing/prefilled/issued forms, while pending, stale or uncertain. Loading the starter marks the form dirty and cannot be repeated over later edits. Unknown-result recovery reuses the existing attempt and never reapplies a template. Standard manual creation remains available. Existing saved editor initialization is unchanged. A duplicate version name follows the existing explicit error without losing fields.
+
+Qualification: record rendered before/after field population with one authorized synthetic operator; confirm relevant required choices remain blank, loading does not call save, manual edits hide the starter, and existing drafts do not expose it. Inspect phone and larger rendering proportionate to the existing unchanged form layout. Measure actual populated values; do not invent navigation/input-count improvements from source alone. Scoped lint/build and bounded independent code/UX review; no new constant-equals-literal unit tests. No production activation until separately qualified/released. Whole financial/legal goal remains open.
