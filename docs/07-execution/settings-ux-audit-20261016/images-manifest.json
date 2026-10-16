@@ -1,0 +1,32 @@
+[
+  {
+    "file": "attendance-duplicate-valid-local.jpg",
+    "bytes": 75359,
+    "sha256": "6A3C1FFDE0289351066E492A4FD01EA09E73EB67E81468AA66F6FEE843101DC3"
+  },
+  {
+    "file": "attendance-mobile-geofence.jpg",
+    "bytes": 138887,
+    "sha256": "CD0DF2D506EC6FAB64E5AF8DCBD89F4F7B8C9616DD8251D10C5B3962E027DAEC"
+  },
+  {
+    "file": "leave-settings-entry.jpg",
+    "bytes": 37421,
+    "sha256": "5A1594476179B0B697725F3505527463B6F837A74EA4F1C93B804E3A9BF8A781"
+  },
+  {
+    "file": "leave-settings-hub.jpg",
+    "bytes": 52208,
+    "sha256": "EC7A5A6875947D5975B2E435894DCF4377E2B319C0DF0AC39B90E37E5A52251B"
+  },
+  {
+    "file": "payroll-company-config-local.jpg",
+    "bytes": 35714,
+    "sha256": "15B5F56964E5881550D79E57D785D31885376E599CB2AF019301941E0627D3AD"
+  },
+  {
+    "file": "payroll-setup-local.jpg",
+    "bytes": 117847,
+    "sha256": "03D6E21B5E7A4522B54A40D9188B28AC39117F26B6350A499BEF528F6CD9B5C7"
+  }
+]
