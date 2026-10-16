@@ -1,0 +1,6 @@
+{
+  "files": 218,
+  "localBytesReclaimed": 2754017,
+  "cloudQuotaClaim": false,
+  "protected": "source, secrets, backups, QA databases, active previews, journals, earlier rejected targets"
+}
