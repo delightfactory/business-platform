@@ -31,3 +31,5 @@ Official Claude Opus 5.5 Medium, first-party session e5114873-1591-4ae3-b14e-98a
 Development branch only; preserve prior production deployment for rollback. Verify exact project/team/source and domain after any promotion. No Supabase migration or data mutation is part of this pass. Temporary outputs/dependencies remain outside OneDrive; retain source, final guide, review summaries and representative evidence. Cleanup only validated owned unused build/dependency output after stopping owned preview processes; never global caches, Docker/DB, user files or old rejected cleanup targets.
 
 Final gates: production build PASS, TypeScript PASS, changed TS/TSX ESLint PASS, diff whitespace PASS; PDF37 pages490745 bytes; route count88 verified. No production database changes.
+
+Delivered: see RELEASE.md for exact live source/deployment and cleanup. Parent resolved the final review findings: separate can_lock grant and shared chapter25 reader handoff; published guide/PDF and authenticated Delight help/search verified. Cleanup removed1055492595 bytes with source unchanged.
