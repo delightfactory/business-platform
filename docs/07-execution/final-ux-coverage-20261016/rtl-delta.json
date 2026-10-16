@@ -1,0 +1,246 @@
+[
+  {
+    "key": "entry",
+    "build": "gCUZl_HX4-Mpre7RH2uba",
+    "arrows": [
+      {
+        "class": "lucide lucide-arrow-left ui-icon",
+        "transform": "none"
+      }
+    ],
+    "metrics": {
+      "contentSize": {
+        "height": 1055,
+        "width": 488,
+        "x": 0,
+        "y": 0
+      },
+      "cssContentSize": {
+        "height": 844,
+        "width": 390,
+        "x": 0,
+        "y": 0
+      },
+      "cssLayoutViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "cssVisualViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390.3999938964844,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      },
+      "layoutViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "visualViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      }
+    },
+    "file": "entry-rtl-fixed-390.png",
+    "sha256": "c78ef6209d0127226de4730d3cb79c6d81adb972cffb6ebbe7acacb0f49afa9d"
+  },
+  {
+    "key": "employee-home",
+    "build": "gCUZl_HX4-Mpre7RH2uba",
+    "arrows": [
+      {
+        "class": "lucide lucide-arrow-left ui-icon",
+        "transform": "none"
+      },
+      {
+        "class": "lucide lucide-arrow-left ui-icon",
+        "transform": "none"
+      }
+    ],
+    "metrics": {
+      "contentSize": {
+        "height": 2878,
+        "width": 488,
+        "x": 0,
+        "y": 0
+      },
+      "cssContentSize": {
+        "height": 2302,
+        "width": 390,
+        "x": 0,
+        "y": 0
+      },
+      "cssLayoutViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "cssVisualViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390.3999938964844,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      },
+      "layoutViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "visualViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      }
+    },
+    "file": "employee-home-rtl-fixed-390.png",
+    "sha256": "953b29bddc859a883903034f4c5e52d88fb7a3a83011828e60eb213f01620412"
+  },
+  {
+    "key": "employee-request",
+    "build": "gCUZl_HX4-Mpre7RH2uba",
+    "arrows": [
+      {
+        "class": "lucide lucide-arrow-left ui-icon",
+        "transform": "none"
+      },
+      {
+        "class": "lucide lucide-arrow-right ui-icon",
+        "transform": "none"
+      }
+    ],
+    "metrics": {
+      "contentSize": {
+        "height": 1055,
+        "width": 488,
+        "x": 0,
+        "y": 0
+      },
+      "cssContentSize": {
+        "height": 844,
+        "width": 390,
+        "x": 0,
+        "y": 0
+      },
+      "cssLayoutViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "cssVisualViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390.3999938964844,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      },
+      "layoutViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "visualViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      }
+    },
+    "file": "employee-request-rtl-fixed-390.png",
+    "sha256": "c56979b59493c0862921103462b3eb3e73c4025bf0467bfe71436dd78e6d820e"
+  },
+  {
+    "key": "employee-work-unavailable",
+    "build": "gCUZl_HX4-Mpre7RH2uba",
+    "arrows": [
+      {
+        "class": "lucide lucide-arrow-left ui-icon",
+        "transform": "none"
+      },
+      {
+        "class": "lucide lucide-arrow-right ui-icon",
+        "transform": "none"
+      }
+    ],
+    "metrics": {
+      "contentSize": {
+        "height": 1180,
+        "width": 488,
+        "x": 0,
+        "y": 0
+      },
+      "cssContentSize": {
+        "height": 944,
+        "width": 390,
+        "x": 0,
+        "y": 0
+      },
+      "cssLayoutViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "cssVisualViewport": {
+        "clientHeight": 844,
+        "clientWidth": 390.3999938964844,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      },
+      "layoutViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "pageX": 0,
+        "pageY": 0
+      },
+      "visualViewport": {
+        "clientHeight": 1055,
+        "clientWidth": 488,
+        "offsetX": 0,
+        "offsetY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "scale": 1,
+        "zoom": 1
+      }
+    },
+    "file": "employee-work-unavailable-rtl-fixed-390.png",
+    "sha256": "0b2e3afab5b613db7a07bee410b31109358f016f469f186959f88e546b3339c0"
+  }
+]

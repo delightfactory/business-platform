@@ -1,0 +1,11 @@
+# Phase 9 — representative coverage and completion audit
+
+Source: codex/operator-company-ux at 996d96d, build 3VOK6EPUUdjArWXEc7jn5. Previous turn was progress: accepted shared-context/component changes, tests/build and push.
+
+Finite scope: 85 page files, one dev-only gallery excluded, 84 user routes in 14 screen families. Use current built local QA, existing operator/admin/employee accounts, no credential or permission changes. Capture one representative per family at 390×844 and 1366×900 in light/dark. Add employee leave form/history/detail and operator service controls because their journeys matter. Read-only except ordinary navigation; do not submit attendance, finance, invitation, cancellation or new-account operations. Reuse earlier verified mutation/state tests when affected business sources are unchanged.
+
+Representatives: landing; login error; operator overview; employee directory; employee profile; attendance source form; leave setup hub; payroll overview; leave review queue; daily attendance; month calendar; payroll configuration; employee import; employee self-service home. Additional employee leave list/new/history/existing approved request and operator company services, without changing their state.
+
+One bounded independent Claude Opus5.5Medium review of the evidence and requirement audit. Parent inspects representative images; retain exact source/build identity, actual role and dimensions, real result/denial/error distinctions. An empty or denied screen is not proof of a populated authorized workflow. No all-84-route runtime claim, no financial/legal or production certification. Do not reopen optional notes as blockers or start another aesthetic loop. Fix only an observed material defect.
+
+Completion audit maps all owner requirements to current evidence: eight editable code flows and uniqueness, attendance save/result clarity, real design/components/navigation and complete existing journeys, role-sensitive guide, independent review and proportional tests, dev-only commits/push, Free/no production mutation, and safe storage hygiene. Recheck current Git, source hashes and owned process/storage state before deciding closure. Keep goal active if required evidence is incomplete.

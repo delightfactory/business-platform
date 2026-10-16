@@ -1,0 +1,8 @@
+BEGIN
+foreign_saved_instances=2
+SET
+64b1a759-4660-4f6c-ad93-c4afbc27bc09
+own_days=9
+DO
+ROLLBACK
+NOTICE:  PASS real foreign tenant calendar denied 42501

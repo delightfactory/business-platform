@@ -1,0 +1,2076 @@
+[
+  {
+    "family": "مدخل وتوجيه",
+    "key": "entry",
+    "path": "/",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "file": "entry-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "72aa5c40654deb46ac6befd28de6516cacdd13a344acb9a8e1d05361653fbcd0",
+    "retained": true
+  },
+  {
+    "family": "مدخل وتوجيه",
+    "key": "entry",
+    "path": "/",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "file": "entry-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "d985425571073f33617bf89f548e7b8cd464afe72c53988e745184d131098b58",
+    "retained": false
+  },
+  {
+    "family": "مهمة مصادقة مركزة",
+    "key": "auth",
+    "path": "/auth/login?state=invalid",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "file": "auth-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e71002dececb23efdfbfcf26feef4fa61e7bacaafafac93380a996c9d1fa7aa3",
+    "retained": true
+  },
+  {
+    "family": "مهمة مصادقة مركزة",
+    "key": "auth",
+    "path": "/auth/login?state=invalid",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "file": "auth-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "f90c7b73c4406183d1c22a8bc032ff19e4fa1a5449f85ae758053a6a5fab5a9e",
+    "retained": false
+  },
+  {
+    "family": "دليل + معاينة",
+    "key": "directory",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "file": "directory-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "c6671fb374907d80cb1b9d1369020cf6aa342d9359043db3a4685b05feb91c1b",
+    "retained": false
+  },
+  {
+    "family": "دليل + معاينة",
+    "key": "directory",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "file": "directory-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "612e49e4ef1d83b01f2a847de53d063aaea75a8b15dcff74ba5dc41c6fe72a41",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "record",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1829,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "record-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "6d8b34f0426107ad25244dffdfd675eaec7ee98767981d6562276c6dbe7b758d",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "record",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1444,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "record-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "5a01b247d34d85bd0576c11b303540bd248ba3d57276b70b8a987be32deb17e7",
+    "retained": false
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "task-form",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "task-form-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "42a31bc7c2d608379e91c0fc1b19937f960054f89c5895032bf1f2dd0d792046",
+    "retained": true
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "task-form",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "task-form-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "c6d02a74e7280ce8405a2d7ac690c2152e45b73ab75b797d90dd8b110c7e0ff4",
+    "retained": false
+  },
+  {
+    "family": "مركز إعداد وجاهزية",
+    "key": "setup",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2964,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "setup-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "7c2f2817e21a7a9e6dcd8d099ee7a9aa1c57b61396cef9572d5d95da2df17942",
+    "retained": false
+  },
+  {
+    "family": "مركز إعداد وجاهزية",
+    "key": "setup",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2333,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "setup-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "62dbaefe2b662bc325f03bef2480732a775c4e785fe3dec18f056aabbb8d622a",
+    "retained": false
+  },
+  {
+    "family": "مالي وتقارير",
+    "key": "finance",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2647,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "finance-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "ad8ec883a2035260efeeb457c4ee1a33f86ccf20cd2745ac558cb8137a04bbb7",
+    "retained": true
+  },
+  {
+    "family": "مالي وتقارير",
+    "key": "finance",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2464,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "finance-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "32f6cd8a322ec965ed1a38d2d0c7612206e1985ece9d120efcb4f5d0bfe7b880",
+    "retained": false
+  },
+  {
+    "family": "قائمة مراجعة وقرار",
+    "key": "review",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1221,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "review-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "415e1cf1f5251a383951cc6d81449ccbbb93421867fefb3fda219f5fb315b8e4",
+    "retained": false
+  },
+  {
+    "family": "قائمة مراجعة وقرار",
+    "key": "review",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 908,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "review-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "ccf2848d47d4fbdf7e4e62c143cdcfc3be9c7e5adfa41a689ddc322498988015",
+    "retained": false
+  },
+  {
+    "family": "تقويم ووقت",
+    "key": "daily",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 5398,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "daily-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "358f6503b3c4c84db765a6f3bb23695ceaf7a4c21419396b0986bcf46beee4ca",
+    "retained": true
+  },
+  {
+    "family": "تقويم ووقت",
+    "key": "daily",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2034,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "daily-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "f39ae65cc2c728d279876de00260386eead8d1fc51f30b6ec560a3b4cfb0e4bb",
+    "retained": false
+  },
+  {
+    "family": "الحضور الشهري",
+    "key": "month",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1777,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "month-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "010c3a194015c1294ca2db169d3f9ddc95aa6f890735d18b8f1743fd09fa8a09",
+    "retained": false
+  },
+  {
+    "family": "الحضور الشهري",
+    "key": "month",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1709,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "month-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "2757c6daf734bc2799cbc93caf13d2ce80e07a4888c9a33870df1009d137b2b4",
+    "retained": false
+  },
+  {
+    "family": "إعداد الرواتب",
+    "key": "payroll-config",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1202,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "payroll-config-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "11111a00c7e8e3bce5648914dec0b7375274e68f049e4bf8a9ca5ead51c083b5",
+    "retained": true
+  },
+  {
+    "family": "إعداد الرواتب",
+    "key": "payroll-config",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 964,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "payroll-config-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e445ea0d1410cefd5dcb688e053e16c435b89d6770e01a5a9be9528a555fae1a",
+    "retained": false
+  },
+  {
+    "family": "استيراد مجمع",
+    "key": "import",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1011,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "import-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "1f5be411b9fe03fbb3b63ef0c5ca5264659eba5ab59f9b39dc1c4571facabbbd",
+    "retained": false
+  },
+  {
+    "family": "استيراد مجمع",
+    "key": "import",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+    "role": "company-admin",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "import-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "03cc852e43f64cc61e1196bfdf75a66e90e13e9e55bd78a6a49dcb4c4d4b3cb5",
+    "retained": false
+  },
+  {
+    "family": "مدخل وتوجيه",
+    "key": "entry",
+    "path": "/",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "entry-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "d5083cf0beb4227af7a922f4096c3339e4664b8aa7fd9b31f7e879534eb4a9e2",
+    "retained": false
+  },
+  {
+    "family": "مدخل وتوجيه",
+    "key": "entry",
+    "path": "/",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "entry-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e8a8fdfe084a182cbecb52ee6e5847d358a515b1835945e0004ff2d0d6169650",
+    "retained": false
+  },
+  {
+    "family": "مهمة مصادقة مركزة",
+    "key": "auth",
+    "path": "/auth/login?state=invalid",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "auth-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "8dfed8dd9f7333b08d710ab13db7242dd38dc2d9a060751bbef522dfb80d5f18",
+    "retained": false
+  },
+  {
+    "family": "مهمة مصادقة مركزة",
+    "key": "auth",
+    "path": "/auth/login?state=invalid",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "auth-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "1863e75623b747cdca95ae8c9f0d84d77db5d28de2873d1c93dd573231cd5163",
+    "retained": false
+  },
+  {
+    "family": "دليل + معاينة",
+    "key": "directory",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "directory-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "bbe0d82de997e9eb5244436c7e9423382c380225ed514259f3a875fb64935921",
+    "retained": false
+  },
+  {
+    "family": "دليل + معاينة",
+    "key": "directory",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "directory-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "5eaa6ce6582bc2bc7340cfb8db3f331bbad56f7a816c37411157c448eb6a18d5",
+    "retained": true
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "record",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1829,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "record-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "aac99a519c8ecbb727b4cacd867cbfbd716b5ce33b2e839477fbb28494676388",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "record",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1444,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "record-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a0d0be258dfa093161f7b786a5a3586dff9be3022e1d8ce4c040099327da28c8",
+    "retained": true
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "task-form",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "task-form-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "08349080f9475a963be5c0b69401c7590fa354b6e9e03152403fb89b546edd0e",
+    "retained": false
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "task-form",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "task-form-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "4da612dab8371b8f3c134521460449cb915d5a9f633a5d3a041c0d424f8c3d8b",
+    "retained": false
+  },
+  {
+    "family": "مركز إعداد وجاهزية",
+    "key": "setup",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2964,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "setup-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e739c660c6932d3438f7e862bd7d9695474c3928cb8069aba014efe008e6e592",
+    "retained": false
+  },
+  {
+    "family": "مركز إعداد وجاهزية",
+    "key": "setup",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2333,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "setup-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "71cfe1756b0f92472ce76c42761c14f946341cf6e40959ed2d2906996734d4f3",
+    "retained": true
+  },
+  {
+    "family": "مالي وتقارير",
+    "key": "finance",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2647,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "finance-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "462f8d9061bfe4b8003d873013dcff63299043d50ce64fbc9e5070cc524ae41f",
+    "retained": false
+  },
+  {
+    "family": "مالي وتقارير",
+    "key": "finance",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2464,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "finance-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "835468efb004a07eb0a3bd21c66c6f0222bbbf5031b7979d5a303eb3db2707d2",
+    "retained": false
+  },
+  {
+    "family": "قائمة مراجعة وقرار",
+    "key": "review",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1221,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "review-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "d61d18bce99b271311df52bbb7740fc6429a1f43c8db548d7c425c8388aa9712",
+    "retained": false
+  },
+  {
+    "family": "قائمة مراجعة وقرار",
+    "key": "review",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 908,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "review-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "77e0d4f3237af6cf39ba227285cc2b65e2edb09d559fb377592b68de5889d56b",
+    "retained": true
+  },
+  {
+    "family": "تقويم ووقت",
+    "key": "daily",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 5398,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "daily-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "1517cb527ff76770286286735a9f3b3d702c131d7805610edf71d35319428e57",
+    "retained": false
+  },
+  {
+    "family": "تقويم ووقت",
+    "key": "daily",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2034,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "daily-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "56b9ce9e2f0790c49680abcc56c4211ec988eb6f8164e349c5dbdd42cc4e9646",
+    "retained": false
+  },
+  {
+    "family": "الحضور الشهري",
+    "key": "month",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1777,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "month-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "7183b634adbea3ca42d4f6de76f31fb2306258c9755cab223993483c1e3bc7e8",
+    "retained": false
+  },
+  {
+    "family": "الحضور الشهري",
+    "key": "month",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1709,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "month-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "0f9b9276fd1b57344d48637f06e541e20f276cc34b8b3b5c05d90d7d15d750da",
+    "retained": true
+  },
+  {
+    "family": "إعداد الرواتب",
+    "key": "payroll-config",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1202,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "payroll-config-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "eef8d01c23b385682e5bc222b150fccdd0f69216896a3d34deb87fb11e7551d9",
+    "retained": false
+  },
+  {
+    "family": "إعداد الرواتب",
+    "key": "payroll-config",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 964,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "payroll-config-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "72abe20337dfb56cad9beb58e4e4155297caaa8cca771f6b1b78c64227fd0385",
+    "retained": false
+  },
+  {
+    "family": "استيراد مجمع",
+    "key": "import",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1011,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "import-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "f012a4cd26f741968d7617b9b7c0af67dbd1b90648eb021c1640af3c378b58cd",
+    "retained": false
+  },
+  {
+    "family": "استيراد مجمع",
+    "key": "import",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+    "role": "company-admin",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "import-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e3a1f48ad8a01ae7e7d14eecdf28a74667d9f3359d14c51749aa4f7d1e271d05",
+    "retained": true
+  },
+  {
+    "family": "اليوم والملخص",
+    "key": "operator-home",
+    "path": "/operator",
+    "role": "platform-operator",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 375,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1404,
+      "width": 375,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-home-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "12fe813c039423672a37dc52391d9fceea839af6696c7cc5b82fccdd891b6946",
+    "retained": true
+  },
+  {
+    "family": "اليوم والملخص",
+    "key": "operator-home",
+    "path": "/operator",
+    "role": "platform-operator",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1016,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-home-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "15aaea52ef1a0ca88f15b0fb086a222b27ee24def874ad72f245ed2ae0e44ac8",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "operator-services",
+    "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+    "role": "platform-operator",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1123,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-services-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a9edb559b7975c2c4c5f6e7fd048a8be1d53ac2696f788bc8cf7a214fbb408c1",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "operator-services",
+    "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+    "role": "platform-operator",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1023,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-services-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "dbe1fb2fac2450f5c6a0e607d0f33e09905e5bdb0d73c68c805ae1ce7ad9a20c",
+    "retained": false
+  },
+  {
+    "family": "اليوم والملخص",
+    "key": "operator-home",
+    "path": "/operator",
+    "role": "platform-operator",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1354,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-home-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "bad227f7c4c54201dfdb7030d5f0ef1f63fd3ccdfb314147ff08c9081e11efe4",
+    "retained": false
+  },
+  {
+    "family": "اليوم والملخص",
+    "key": "operator-home",
+    "path": "/operator",
+    "role": "platform-operator",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1016,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-home-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "fbb786dba3317b392d966584d6efd211c92cd67257e7030f45c33b75d333fc57",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "operator-services",
+    "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+    "role": "platform-operator",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 375,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1123,
+      "width": 375,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-services-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "3a1d01aefd973e8b62df25d853fce27ab66c5cf2889e3b67ef077e8cc48222e6",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "operator-services",
+    "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+    "role": "platform-operator",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1023,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "operator-services-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "3d9866e56c10c9c1009528c6c4ee38f56678e09618c6aed5b29ce9e1ec3036f8",
+    "retained": true
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-home",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2302,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-home-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "c6dd67cfa87b168fa7ab1a05b70a33a7edcef464147904388c2b8d6de5b21fa4",
+    "retained": true
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-home",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1354,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-home-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a277c96d5e794f2742105b67474f736f5033febd3aa2c133a16900a6a1713a66",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-leave",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1201,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-leave-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "0051f18862f7a3b465bde85724d3972968259d14619a9ba4ff2eb7db9be23ddc",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-leave",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-leave-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a14a9e1d9ad0f15a0d362de205af6895560ea708d6625f8e71f9e266a1fb34fd",
+    "retained": false
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "employee-request",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "0544b41fd44d545c3c446b10c16d11ad93088772ccc7a1e4706bea818ea09caf",
+    "retained": true
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "employee-request",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "7eed9b2f243a43db61995a1b7b5cb18c28b7999ffaaeef7f6b71184279bf387e",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-history",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 976,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-history-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "012b7814a30177ad726c75b1a0f1fc1296e3ca51066791ed4f0a4647111768b9",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-history",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-history-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e9410fc118993a8f0e5c1c4ea1034468999d5bb9308ae12b7c546f5b36cfb775",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "employee-request-detail",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1509,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-detail-dark-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "b11e132796a89b299cdd26b393cd5e3282d86bcdf5925f54b545b405474239d0",
+    "retained": true
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "employee-request-detail",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1281,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-detail-dark-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "8daff98ee5cd7e38c3a439e9748074baccc19067a8b37b57e73eb199bc0b2676",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-home",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 2302,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-home-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "8fe64fb579e3b39ae003d11ab27e6e19ce8722249b13be981ccdd3f679b9db5c",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-home",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1354,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-home-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "45adc0f6a237b08dbade1fd58465800731313564ebc18201fd38f5c5fbf2b6bd",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-leave",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1201,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-leave-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "1750e0dbfdc9f5c256afdd51ef4986c9274ba7b2928dd182887aa37c138cafce",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-leave",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-leave-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "5487065f40692aa2a4ae75899f3679f6ec0f1d16c9f2c768b2f21d29c832b1a3",
+    "retained": true
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "employee-request",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "e62f295bf96754d039ddb4560dce6ca29b36e665481221ceb2d6f73e95b03008",
+    "retained": false
+  },
+  {
+    "family": "نموذج مهمة",
+    "key": "employee-request",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "84b4964fbfee3a11d7be3b67642906a2a9770634e525cfec6f441aa187e4e6ac",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-history",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 976,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-history-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "ed2539f626ba500c40cb24b80fd56d84424df06ac1368a12d4dcf284a7612cc7",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-history",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-history-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "5796d54d8c38701ecf7d7cf21252f4531542198a8507bcad2befe5777e9bbfb1",
+    "retained": true
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "employee-request-detail",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 375,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1509,
+      "width": 375,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-detail-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "3f8148ea111ecf0fe482ad30433f7113acea8d4b38104816d1e47176339969b9",
+    "retained": false
+  },
+  {
+    "family": "ملف سجل وتاريخه",
+    "key": "employee-request-detail",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+    "role": "employee-self-only",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1351,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 1281,
+      "width": 1351,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-request-detail-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a876d34b2cac94a2cca3f023c41874e89b4c5ae9a2780c143a6e6d335a22fe41",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-work-unavailable",
+    "path": "/tenant/444dbbab-b569-47ca-beae-2bacbce266c6/me/attendance",
+    "role": "employee-existing-unavailable",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 944,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-work-unavailable-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "ec349765865441b1a775304f205c2aeee5f22d3bfdb7cabcfc33a401772ecaa2",
+    "retained": true
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "employee-work-unavailable",
+    "path": "/tenant/444dbbab-b569-47ca-beae-2bacbce266c6/me/attendance",
+    "role": "employee-existing-unavailable",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "employee-work-unavailable-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "a132af8bc2393dbfa2253dcf9bda287851ed45eebe046e4b931e253164fa3fd7",
+    "retained": false
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "self-permission-denied",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "company-admin-without-self-attendance",
+    "theme": "light",
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "clientHeight": 844,
+      "clientWidth": 390,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "self-permission-denied-light-390.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "91d954eccd983831a14413f97dc6c633e961b7c228e30b235b8cdc40a2e324e9",
+    "retained": true
+  },
+  {
+    "family": "مساحة الموظف الذاتية",
+    "key": "self-permission-denied",
+    "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+    "role": "company-admin-without-self-attendance",
+    "theme": "light",
+    "width": 1366,
+    "height": 900,
+    "viewport": {
+      "clientHeight": 900,
+      "clientWidth": 1366,
+      "pageX": 0,
+      "pageY": 0
+    },
+    "content": {
+      "height": 900,
+      "width": 1366,
+      "x": 0,
+      "y": 0
+    },
+    "horizontalPageOverflow": false,
+    "file": "self-permission-denied-light-1366.png",
+    "build": "3VOK6EPUUdjArWXEc7jn5",
+    "sha256": "37450636d92299824bc5cab83ba703022250f278c7f47b509357a67fd984debd",
+    "retained": false
+  }
+]

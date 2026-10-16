@@ -1,0 +1,8 @@
+{
+  "origin": "http://localhost:61193",
+  "role": "employee-self-only",
+  "href": "/user-guide.html?topics=self-attendance,profile,self-leave",
+  "selected": "الأقسام المتاحة لحسابي",
+  "observedStatus": "الأقسام المعروضة: حضوري، ملفي وأول دخول، إجازاتي. يمكنك تغيير المسار أو اختيار الدليل الكامل.",
+  "temporaryGuideTabClosed": true
+}

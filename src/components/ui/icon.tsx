@@ -6,6 +6,8 @@ export type IconName = keyof typeof icons;
 export type IconProps = SVGProps<SVGSVGElement> & { name: IconName; size?: number; label?: string };
 export function Icon({ name, size = 20, label, className = '', ...props }: IconProps) {
   const Glyph = icons[name];
-  const directional = ['arrowLeft', 'arrowRight', 'chevronLeft', 'chevronRight'].includes(name);
+  // Arrow names specify physical directions (including the attendance swipe).
+  // Chevrons express previous/next navigation and mirror with reading direction.
+  const directional = ['chevronLeft', 'chevronRight'].includes(name);
   return <Glyph size={size} strokeWidth={1.75} className={`ui-icon ${directional ? 'ui-icon-directional' : ''} ${className}`} aria-hidden={label ? undefined : true} aria-label={label} role={label ? 'img' : undefined} {...props} />;
 }

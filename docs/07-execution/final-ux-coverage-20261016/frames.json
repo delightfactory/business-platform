@@ -1,0 +1,526 @@
+[
+  {
+    "key": "entry",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الناس والوقت والرواتب.في مكان واحد."
+      ],
+      "path": "/",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "auth",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [
+        "تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور."
+      ],
+      "h1": [
+        "تسجيل الدخول"
+      ],
+      "path": "/auth/login?state=invalid",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "directory",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الموظفون"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "record",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "نور هاني — دون حساب دخول"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "task-form",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إضافة وسيلة تسجيل حضور"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "setup",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إعدادات الإجازات"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "finance",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الرواتب"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "review",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "مراجعة طلبات الإجازة"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "daily",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الحضور اليومي"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "month",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "تقويم الحضور"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "payroll-config",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إعداد بنود وسياسة الرواتب"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "import",
+    "role": "company-admin",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "استيراد الموظفين"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "entry",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الناس والوقت والرواتب.في مكان واحد."
+      ],
+      "path": "/",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "auth",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [
+        "تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور."
+      ],
+      "h1": [
+        "تسجيل الدخول"
+      ],
+      "path": "/auth/login?state=invalid",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "directory",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الموظفون"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people?q=DEMO-010&page=1",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "record",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "نور هاني — دون حساب دخول"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/accc89c1-f8d2-43ae-8878-936a706706f0",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "task-form",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إضافة وسيلة تسجيل حضور"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "setup",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إعدادات الإجازات"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave/settings/1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "finance",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الرواتب"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=b5e7e919-be5e-41c2-8141-13fd2401f29a",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "review",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "مراجعة طلبات الإجازة"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/leave",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "daily",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "الحضور اليومي"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance?date=2026-10-14",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "month",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "تقويم الحضور"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/calendar?month=2026-10",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "payroll-config",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إعداد بنود وسياسة الرواتب"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/setup/configuration?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "import",
+    "role": "company-admin",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "استيراد الموظفين"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/people/import",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "operator-home",
+    "role": "platform-operator",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "تشغيل المنصة"
+      ],
+      "path": "/operator",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "operator-services",
+    "role": "platform-operator",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "شركة اختبار 13"
+      ],
+      "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "operator-home",
+    "role": "platform-operator",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "تشغيل المنصة"
+      ],
+      "path": "/operator",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "operator-services",
+    "role": "platform-operator",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "شركة اختبار 13"
+      ],
+      "path": "/operator/companies/9417bc11-9dc3-435e-bf08-edd40460e93b/services",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-home",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "أهلًا، أحمد محمود — خدمة ذاتية"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "employee-leave",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إجازاتي"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "employee-request",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "طلب إجازة"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "employee-history",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "حضوري"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "employee-request-detail",
+    "role": "employee-self-only",
+    "theme": "dark",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إجازة سنوية تدريبية"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+      "theme": "dark"
+    }
+  },
+  {
+    "key": "employee-home",
+    "role": "employee-self-only",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "أهلًا، أحمد محمود — خدمة ذاتية"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-leave",
+    "role": "employee-self-only",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إجازاتي"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-request",
+    "role": "employee-self-only",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "طلب إجازة"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/new",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-history",
+    "role": "employee-self-only",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "حضوري"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-request-detail",
+    "role": "employee-self-only",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "إجازة سنوية تدريبية"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/leave/fc8834a5-322e-4eed-8863-4f5c8b7ade18",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "employee-work-unavailable",
+    "role": "employee-existing-unavailable",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "حضوري"
+      ],
+      "path": "/tenant/444dbbab-b569-47ca-beae-2bacbce266c6/me/attendance",
+      "theme": "light"
+    }
+  },
+  {
+    "key": "self-permission-denied",
+    "role": "company-admin-without-self-attendance",
+    "theme": "light",
+    "frame": {
+      "alerts": [],
+      "h1": [
+        "حضوري"
+      ],
+      "path": "/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/me/attendance",
+      "theme": "light"
+    }
+  }
+]

@@ -1,0 +1,15 @@
+family,keys,captures
+إعداد الرواتب,payroll-config,4
+استيراد مجمع,import,4
+الحضور الشهري,month,4
+اليوم والملخص,operator-home,4
+تقويم ووقت,daily,4
+دليل + معاينة,directory,4
+قائمة مراجعة وقرار,review,4
+مالي وتقارير,finance,4
+مدخل وتوجيه,entry,4
+مركز إعداد وجاهزية,setup,4
+مساحة الموظف الذاتية,"employee-history, employee-home, employee-leave, employee-work-unavailable, self-permission-denied",16
+ملف سجل وتاريخه,"employee-request-detail, operator-services, record",12
+مهمة مصادقة مركزة,auth,4
+نموذج مهمة,"employee-request, task-form",8
