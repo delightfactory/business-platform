@@ -1,0 +1,25 @@
+{
+  "base": "87df8604dd7c726a9ccf5f9cf39ad752d757980b",
+  "build_id": "Sv7n9G5mVSi_R0yhoTgEu",
+  "runtime": "localhost:61193 production mode, owned synthetic QA56321/56322; previous61190 build preserved",
+  "gates": {
+    "action_contract": "PASS external boundary harness",
+    "typecheck_build": 0,
+    "lint": 0,
+    "retention_tests": "2passed",
+    "lookup_pgtap": "16passed on exact container, rolled back"
+  },
+  "source_sha256": {
+    "src/app/tenant/[tenantId]/attendance/sources/ChannelForms.tsx": "4c9ff654f01ae8c82082cfb303295c3b46e71630fa619ca0865e9a60211938a9",
+    "src/app/tenant/[tenantId]/attendance/sources/SourceSetupFields.tsx": "804695723407fdcc6a5e1dfa29ccb2452853ff58e9ce8e97d4c5bc6c5c0b92b8",
+    "src/app/tenant/[tenantId]/attendance/sources/actions.ts": "fd4dc1a74bfb687f68f5457b8980883c610727486ab97d38a47c9dbb4a090e63",
+    "src/app/tenant/[tenantId]/attendance/sources/new/page.tsx": "81ae752be7599abbbbbc38f80b28d07b3844bc2fbf0c1d8518ee586d1c20aaa8",
+    "src/app/tenant/[tenantId]/attendance/sources/shared.tsx": "c03833442c7b51a17d9d38b80c7e282553b29d8ad6e5df6acd34859086ec05ca",
+    "src/app/tenant/[tenantId]/attendance/attendance-channels.module.css": "c23ef94418359fc8696d3a3ee73224d505622bbf0e04f4fc2da97920ca9c1680",
+    "src/lib/attendance-retention.ts": "48e572adc668a9ce83e132e885a212c6924f2b011b698e48a1a20c66a127cc94",
+    "src/lib/attendance-retention.test.mjs": "ece83fd76728b8466ffacf7e7f39b3cd565cf39408b663da36b35356c70b6943",
+    "supabase/migrations/20261016012154_attendance_source_setup_lookup.sql": "2e2262211ad2acdda7af1229cc3e27985e6bdbcdc21f56deb7a199aee46cb6b4",
+    "supabase/tests/attendance_source_setup_lookup.test.sql": "4a67b643d803a9a3d476bd0ec30b24daf87950456f4f64dbe572b7543b9b583f"
+  },
+  "limits": "No live permission revoke/restore UI, actual simultaneous clients, real touch or screen reader test. Read-only reviewer distinguishes parent runtime evidence from own inspection."
+}

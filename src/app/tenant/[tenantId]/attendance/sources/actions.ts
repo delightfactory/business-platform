@@ -2,7 +2,19 @@
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { channelReasonLabel, channelStateLabel } from '@/lib/attendance-channel';
-export type ChannelActionResult = { ok:boolean;message:string;id?:string;uncertain?:boolean;recovery?:'sources' };
+import { retentionSeconds } from '@/lib/attendance-retention';
+import type { SourceSites } from './shared';
+export type ChannelActionResult = { ok:boolean;message:string;id?:string;uncertain?:boolean;recovery?:'sources';existingSourceId?:string };
+export async function findSourceSites(tenantId:string, search:string):Promise<{data?:SourceSites;message?:string;denied?:boolean}> {
+  if(typeof search!=='string' || search.length>100) return {message:'اكتب اسم الفرع في 100 حرف أو أقل.'};
+  const db=await createSupabaseServerClient();
+  if(!db) return {message:'تعذر البحث الآن. بقيت اختياراتك؛ حاول مرة أخرى.'};
+  const {data:{user}}=await db.auth.getUser();
+  if(!user) return {denied:true,message:'انتهت الجلسة. سجّل الدخول للمتابعة؛ بقيت المسودة في هذه الصفحة.'};
+  const {data,error}=await db.rpc('attendance_channel_mobile_site_lookup',{p_tenant:tenantId,p_search:search,p_limit:20});
+  if(error) return {denied:error.code==='42501',message:error.code==='42501'?'ليست لديك صلاحية إعداد الحضور لهذه الشركة. تواصل مع المسؤول.':'تعذر البحث الآن. بقيت اختياراتك؛ حاول مرة أخرى.'};
+  return {data:data as SourceSites};
+}
 export async function mutateChannel(tenantId:string,operation:'save'|'map'|'reprocess'|'review',form:FormData):Promise<ChannelActionResult> {
   const db=await createSupabaseServerClient();if(!db) return {ok:false,message:'تعذر الاتصال. احتفظنا بالقيم؛ أعد المحاولة.'};
   const {data:{user}}=await db.auth.getUser();if(!user) return {ok:false,message:'انتهت الجلسة. سجّل الدخول ثم أعد المحاولة.'};
@@ -15,8 +27,14 @@ export async function mutateChannel(tenantId:string,operation:'save'|'map'|'repr
     if(Array.from(value('reason')).length<3 || Array.from(value('reason')).length>500) return {ok:false,message:'اكتب سبب الإنشاء أو التغيير من 3 إلى 500 حرف، دون احتساب الفراغات في البداية والنهاية.'};
     const kind=value('kind');const config:Record<string,unknown>={};
     if(kind==='mobile') {
+      if(!value('site')&&!value('source')) return {ok:false,message:'اختر فرع العمل لتسجيل الحضور من الهاتف. بقيت القيم كما أدخلتها.'};
       config.geofence=value('geofence')==='true';
-      const keys=config.geofence?['retention_seconds','latitude','longitude','radius_m','tolerance_m','max_accuracy_m','max_age_seconds']:['retention_seconds'];
+      const seconds=form.has('retention_amount') || form.has('retention_unit')
+        ? retentionSeconds(value('retention_amount'),value('retention_unit'))
+        : retentionSeconds(value('retention_seconds'),'seconds');
+      if(seconds===null) return {ok:false,message:'أدخل مدة حفظ كاملة بين دقيقة و30 يومًا، واختر وحدتها. بقيت القيم كما أدخلتها.'};
+      config.retention_seconds=seconds;
+      const keys=config.geofence?['latitude','longitude','radius_m','tolerance_m','max_accuracy_m','max_age_seconds']:[];
       for(const key of keys) { if(!value(key) || !Number.isFinite(Number(value(key)))) return {ok:false,message:'أكمل قيم سياسة الموقع بأرقام صالحة. بقيت القيم كما أدخلتها.'};config[key]=Number(value(key)); }
       if(config.geofence) config.failure_action=value('failure_action');
       if(!['true','false'].includes(value('geofence'))) return {ok:false,message:'اختر هل يتطلب التسجيل التحقق من الموقع.'};
@@ -32,7 +50,11 @@ export async function mutateChannel(tenantId:string,operation:'save'|'map'|'repr
   else {rpc='attendance_channel_reprocess';args={p_tenant:tenantId,p_event:value('event')};}
   const {data,error}=await db.rpc(rpc,args);
   if(error) {
-    if(operation==='save' && !value('source') && value('kind')==='mobile' && error.code==='23505' && error.message?.includes('channel_mobile_site_idx')) return {ok:false,recovery:'sources',message:'توجد وسيلة حضور من الهاتف لهذا الفرع بالفعل، حتى لو كانت موقوفة. افتح الوسيلة الموجودة لتعديل إعداداتها أو تفعيلها؛ لا تحتاج إلى إنشاء وسيلة ثانية.'};
+    if(operation==='save' && !value('source') && value('kind')==='mobile' && error.code==='23505' && error.message?.includes('channel_mobile_site_idx')) {
+      const existing=await db.rpc('attendance_channel_mobile_site_lookup',{p_tenant:tenantId,p_site:value('site'),p_limit:1});
+      const existingSourceId=existing.error?undefined:(existing.data as SourceSites)?.items?.[0]?.source?.id;
+      return {ok:false,recovery:'sources',existingSourceId,message:'توجد وسيلة حضور من الهاتف لهذا الفرع بالفعل، حتى لو كانت موقوفة. افتح الوسيلة الموجودة لتعديل إعداداتها أو تفعيلها؛ لا تحتاج إلى إنشاء وسيلة ثانية.'};
+    }
     if(!error.code) return {ok:false,uncertain:true,recovery:'sources',message:'لم يتأكد حفظ الإجراء. بقيت القيم؛ راجع سجل وسيلة تسجيل الحضور قبل إعادة الإرسال.'};
     return {ok:false,message:error.code==='42501'?'تغيرت صلاحيتك أو توقفت الخدمة. تواصل مع المسؤول.':'لم يُحفظ الإجراء. تحقق من الحقول والفترة والموقع ثم أعد المحاولة. بقيت القيم كما أدخلتها.'};
   }

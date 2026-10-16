@@ -1,0 +1,15 @@
+{
+  "amount": "2",
+  "name": "مسودة اختبار البناء النهائي",
+  "options": [
+    "اختر الفرع",
+    "QA draft branch",
+    "مقر القاهرة التدريبي"
+  ],
+  "reason": "اختبار الاحتفاظ بالقيم دون حفظ سجل",
+  "scroll": 375,
+  "site": "e1610300-0000-4000-8000-000000000004",
+  "unit": "days",
+  "url": "http://localhost:61193/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/attendance/sources/new",
+  "viewport": 390
+}

@@ -1,0 +1,24 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const repo=path.resolve(__dirname,'../../..'),ts=require(path.join(repo,'node_modules/typescript'));
+const load=file=>ts.transpileModule(fs.readFileSync(path.join(repo,file),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
+const retention={};vm.runInNewContext(load('src/lib/attendance-retention.ts'),{exports:retention});
+let calls=[],response={data:'saved'},access=true;
+const db={auth:{getUser:async()=>({data:{user:{id:'synthetic'}}})},rpc:async(name,args)=>{calls.push({name,args});if(name==='attendance_channel_access')return {data:{can_manage:access}};if(name==='attendance_channel_mobile_site_lookup')return {data:{items:[{source:{id:'existing-source'}}]}};return response;}};
+const actions={};vm.runInNewContext(load('src/app/tenant/[tenantId]/attendance/sources/actions.ts'),{exports:actions,require:name=>({'next/cache':{revalidatePath:()=>{}},'@/lib/supabase/server':{createSupabaseServerClient:async()=>db},'@/lib/attendance-channel':{channelReasonLabel:String,channelStateLabel:String},'@/lib/attendance-retention':retention}[name])});
+const run=async(values={})=>{calls=[];const data=new FormData();for(const [key,value]of Object.entries({name:'QA phone',kind:'mobile',site:'qa-site',reason:'QA reason',geofence:'false',enabled:'false',...values}))data.set(key,value);return actions.mutateChannel('qa-tenant','save',data);};
+(async()=>{
+ assert.equal((await run({retention_amount:'1',retention_unit:'days',retention_seconds:'60'})).ok,true);
+ assert.equal(calls.at(-1).args.p_config.retention_seconds,86400,'server computes canonical duration rather than trusting client seconds');
+ assert.equal((await run({source:'existing',retention_seconds:'5400'})).ok,true);
+ assert.equal(calls.at(-1).args.p_config.retention_seconds,5400,'legacy disable payload stays exact');
+ assert.equal((await run({retention_amount:'1.5',retention_unit:'days'})).ok,false);
+ assert.equal(calls.length,1,'invalid retention never reaches write RPC');
+ assert.equal((await run({site:'',retention_seconds:'60'})).ok,false);
+ assert.equal(calls.length,1,'new phone requires a branch on server');
+ response={error:{code:'23505',message:'channel_mobile_site_idx'}};
+ assert.equal((await run({retention_seconds:'60'})).existingSourceId,'existing-source','duplicate race recovers to scoped source');
+ response={error:{message:'network failed'}};
+ assert.equal((await run({retention_seconds:'60'})).uncertain,true,'unknown write stays unknown');
+ access=false;assert.equal((await run({retention_seconds:'60'})).ok,false);assert.equal(calls.length,1,'removed permission blocks write');
+ console.log('PASS: server duration conversion, legacy stop, validation, branch requirement, duplicate recovery, unknown outcome and permission guard');
+})().catch(error=>{console.error(error);process.exitCode=1});

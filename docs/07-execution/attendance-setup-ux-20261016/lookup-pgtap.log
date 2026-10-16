@@ -1,0 +1,36 @@
+BEGIN
+INSERT 0 5
+INSERT 0 1
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+ok 1 - anonymous has no lookup grant
+ok 2 - service role has no lookup grant
+ok 3 - lookup is a stable read
+INSERT 0 24
+INSERT 0 2
+INSERT 0 1
+SET
+c8251000-0000-4000-8000-000000000001
+1984048a-cbac-4f17-9bf9-a9c7e3bd67d7
+ok 4 - site results bounded at20
+ok 5 - more results signalled honestly
+{"items": [{"id": "c8254000-0000-4000-8000-000000000001", "source": {"id": "1984048a-cbac-4f17-9bf9-a9c7e3bd67d7", "name": "Stopped source", "enabled": false}, "display_name": "Site"}], "has_more": false}
+ok 6 - exact site finds source beyond search page
+ok 7 - stopped source still reported
+ok 8 - exact one result not truncated
+ok 9 - wildcards and escape are literal search characters
+ok 10 - inactive site excluded
+ok 11 - unknown or foreign site does not leak a row
+ok 12 - cross tenant lookup denied
+ok 13 - oversized limit rejected
+ok 14 - oversized search rejected
+c8251000-0000-4000-8000-000000000004
+ok 15 - attendance reader cannot inspect setup
+c8251000-0000-4000-8000-000000000003
+ok 16 - outsider denied
+1..16
+ROLLBACK

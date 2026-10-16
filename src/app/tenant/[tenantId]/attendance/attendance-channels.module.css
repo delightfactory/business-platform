@@ -20,4 +20,7 @@
 .catalog :global(.ui-record-card) { display:flex; flex-direction:column; gap:14px; height:100%; }
 .catalog :global(.ui-button-ghost) { width:100%; }
 .queue :global(.ui-record-card) { padding:20px; }
-@media(max-width:640px) { .fieldGroup{grid-template-columns:minmax(0,1fr);padding:16px !important;gap:16px}.queue :global(.ui-record-card){padding:16px} }
+@media(max-width:640px) { .fieldGroup{grid-template-columns:minmax(0,1fr);padding:16px !important;gap:16px}.queue :global(.ui-record-card){padding:16px} }.sourceSiteSearch { display:flex; align-items:end; gap:12px; margin-block-end:16px; }
+.sourceSiteSearch > :global(.ui-field) { flex:1; min-width:0; }
+.sourceRetention { display:grid; align-items:end; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:12px; }
+@media(max-width:480px) { .sourceSiteSearch { align-items:end; } }

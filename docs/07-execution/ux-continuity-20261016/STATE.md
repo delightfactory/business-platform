@@ -1,51 +1,34 @@
-# هدف تحسين المنصة المستمر — حالة الاستئناف
+# Business Platform UX — current resumption state
 
-## تفويض المالك الأحدث
+Latest owner direction16Oct2026: finish current tasks then proactively improve the full design system, screens, components, main/sub navigation and complete journeys across company, operator and self service. No binding old design or ConceptC fidelity. Preserve business/security/tenant/financial/privacy/audit/recovery rules. Work directly in bounded economical batches, no speculative loops.
 
-16 أكتوبر2026: مواصلة العمل أثناء نوم المالك، إنهاء المهام الحالية ثم حصر وتحسين نقاط ضعف أخرى، خصوصًا التجربة ورحلات المستخدم والتبويبات والمسارات والتنقل والقائمة الرئيسية والفرعية والمكونات. **لا ثوابت ملزمة في التصميم الحالي**؛ المطلوب نتيجة أفضل بلا تعقيد أو loops. المرجع القديم ليس بوابة مطابقة بصرية. تبقى ضوابط الأمان والبيانات والعزل والعمليات المالية والاسترجاع.
+## Authority and identity
 
-الهدف مسجل `active` في المحادثة. متابعة heartbeat نشطة كل30دقيقة، المعرّف `automation`، تقرأ هذه الحالة وتتفادى الكاتب المتزامن. التشغيل يتطلب توافر الجهاز والتطبيق؛ لا وعد بالعمل أثناء الإغلاق أو انقطاع الجهاز.
+- Goal remains active; whole-platform work is incomplete. Heartbeat configured every30minutes as automation. Do not create a duplicate goal/automation or concurrent writer. Application/device must be available.
+- Single writing worktree: C:/Users/DELL/AppData/Local/ai-dev-workflow/runs/20261015-operator-company-ux/worktree, outside OneDrive. Branch codex/operator-company-ux, origin delightfactory/business-platform. Commits/push approved for development branch only; no main merge or expanded production deployment authority. Supabase Free.
+- Inspect Git head/status first. Latest completed commits before current3a:1c2315a automatic codes/recovery;87df860 navigation/help. Current3a acceptance is complete; inspect head for its final commit rather than repeat implementation.
+- Local runtime Supabase56321/56322, exact container supabase_db_business-platform-operator-ux-20261015. Repo CLI config instead points legacy55322; **do not use default --local or --linked blindly**. Current new read migration manually applied only to owned56322. Production CLI link exists and must not be used for QA.
+-61190 previous built QA preserved.61192 owned dev reused.61193 owned final3a candidate built in .next/qualification, buildSv7n9G5mVSi_R0yhoTgEu, exec session92130. Stop it before rewriting that directory. All env/secrets remain outside reports/briefs.
 
-## الهوية والحدود
+## Completed, do not repeat
 
-- worktree الوحيد للكتابة: `%LOCALAPPDATA%/ai-dev-workflow/runs/20261015-operator-company-ux/worktree`، خارج OneDrive.
-- الفرع `codex/operator-company-ux`، آخر دفعة محفوظة `1c2315a8` في `delightfactory/business-platform`.
-- commits وpush لفرع التطوير مصرحان. لا main merge. لا توسيع تفويض الإنتاج أو تغيير الاشتراك؛ Supabase Free.
-- 61190 نسخة QA مبنية سابقة يستخدمها المالك. 61192 dev مؤقت يملكه هذا التشغيل؛ يعاد استعماله عند نشاطه ولا تبدأ نسخة مكررة. `.env.local` QA محلية، وربط CLI المؤقت production: لا تستخدم `--linked` للاختبار.
-- لا كلمات مرور أو بيانات عملاء في ملخص الاستئناف أو briefs.
+1. Eight editable generated-code flows, SQL uniqueness preserved; payroll key format fixed to pay_lowercase. Actual save and duplicate recovery qualified. Attendance duplicate-source message/known-vs-unknown outcomes fixed. Independent Claude accepted. Evidence automatic-element-codes-20261016.
+2. RTL desktop sidebar, daily/setup grouping, complete drawer, bottom navigation, authorized destination closure, quiet inline help, current-page resolution. Eight model tests, built/runtime proof and independent acceptance. Evidence navigation-ux-20261016.
+3a. Attendance setup: method/branch first, existing active/stopped source direct link, inline search retaining draft/site, editable suggested name, human exact duration units, legacy stop preserved, server validation and additive tenant-scoped lookup. Actual create/edit/stop + geofence save proved. DB16PASS, unit2PASS, boundary harnessPASS, lint/buildPASS. Claude review983e84c0/delta7a6e3d26/visualclosuree6cb88d0 ACCEPTED after correcting stale-denied recovery and screenshot capture. Final images and limits in docs/07-execution/attendance-setup-ux-20261016. GuideHTML/PDF35pages updated. No production mutations.
 
-## الدفعات بالترتيب
+Claude skills installed/validated in C:/Users/DELL/AppData/Local/ClaudeCode-Official-Pro/skills, actual reads verified. Use official claude-opus-5-5 --effort medium with bounded read-only design/review; brief instructs Read relevant installed SKILL.md (relay intentionally disables slashskills). Do not reinstall. No Claude process active after3a closure.
 
-1. **الأكواد + P0الحضور — قيد الإغلاق:** حصر8مسارات، دالة خادم مشتركة ومقترحات قابلة للتعديل، لا تغيير للأكواد القائمة أو قواعد التفرد. رسالة مصدر الهاتف المكرر وتعافي القائمة والنبرات الصحيحة. الدليل HTML/PDF محدث. typecheck وlint نجحا قبل إصلاح PAY. مراجعة Claude وجدت blocker حقيقي: صيغة مفتاح بند الراتب يجب lowercase+underscore؛ أُصلح إلى `pay_...`. المطلوب الآن اختبار حفظ المقترح دون تعديله في QA، وتحقق حدود الأنواع/التقويم والتصحيح، وإعادة صور واضحة دون popover، ثم مراجعة delta محددة وإغلاق الدفعة بكوميت وpush.
-2. **نظام التصميم والتنقل:** تطوير الإطار والقائمة الرئيسية والفرعية والتبويبات والمكونات على كل الأدوار، مع فصل التشغيل اليومي عن الإعداد، وتسمية واضحة، ومساعدة هادئة، ومنع ازدحام الأزرار. اعتمد التوجيه الأحدث أعلاه، لا تجعل مطابقة Concept C شرطًا. اكتب عقد دفعة مختصر قبل التنفيذ وحدد التحسن المرئي والرحلة والتغطية.
-3. **الإعداد والرحلات:** حضور الفرع (موجود/جديد)، عدم فقد القيم عند البحث، فصل سياق رواتب الجهة عن الفترة، إعداد الإجازات وجاهزية الموظف. الدراسة في `settings-ux-audit-20261016` مستقلة ومراجعة. لا تغيير لقواعد الخصوصية أو أرقام GPS دون سياسة الشركة.
-4. **الحضور والقوائم:** إعادة تركيب اليوم والتفاصيل والمصفوفات. التقويم الشهري المقترح يحتاج قراءة مجمعة مصرحًا بها؛ لا31طلبات ولا استنتاج غياب من نقص سجل. ادرس العقد قبل تنفيذه، أو سلّم وضع اليوم بوضوح دون إيهام باكتمال الشهر.
-5. **استكمال الحصر والتحسين:** مصفوفة83صفحة في `visual-design-proposal-20261016/screen-matrix.csv` مطابقة لملفات الصفحات، لكنها لا تثبت فحصها جميعًا. طوّر الأسر الباقية: الناس، الإجازات، الرواتب، المشغّل، إدارة الشركة والخدمة الذاتية، ثم راجع نقاط الضعف المتبقية.
-6. **التسليم:** دليل أدوار محدث، فحص حقيقي ممثل هاتف/كمبيوتر ومظهرين، مراجعة مستقلة محدودة، حفظ كل دفعة، تنظيف المؤقتات المتقادمة المملوكة فقط، تقرير المنفذ والمتبقي. لا تغلق الهدف ما دام عمل مطلوب مفتوحًا.
+## Next exact actions
 
-## الاستدعاءات والأدلة الحالية
+- Batch3b payroll: inputs/page.tsx configMode still uses period=query.period||periods[0]?.id and payroll_input_workspace(p_period), then filters mixed records client-side. Setup links mode=config with possibly empty period. Study RPC authorization, effective-date and version semantics; separate employer config from period execution with a narrow reviewed contract. Do not pick current month arbitrarily or drop period context from operational payroll.
+- Leave: settings/page.tsx always lists legal employers before hub. Any single-employer shortcut requires authoritative global uniqueness, never one page/filtered result. Review balance/policy context and employee readiness journey.
+- Complete remaining screen families and routes: people terminology (page H1 still الناس, nav الموظفون), operator controls, company administration, self service, attendance day/list/calendar, leave, payroll.83page-file matrix exists but not all pages have been visually assessed. Monthly calendar needs authorized batched data, no31dailyRPCloops or invented absence/totals.
+- Keep guide role-sensitive and synchronized with actual verified UI. Representative desktop/tablet/phone and light/dark checks, bounded independent review, commit/push each accepted batch. Do not close goal until full scope and honest remaining-gap audit passes.
 
-- التصميم: official Claude Opus5.5Medium، `0a64f086-ff42-4128-9c06-fed157de6165`. سلّم الخطة/المصفوفة/المكونات والخطين، ثم timeout15m قبل HTML. لا يوجد نموذج تفاعلي مُسلّم؛ لا تكرر الاستدعاء كحلقة. ملاحظات المنسق في `visual-design-proposal-20261016/REVIEW.md`.
-- مراجعة الدفعة1: official Claude Opus5.5Medium، `5f43f8b0-fa51-481f-a91c-ee2383b20a1a`. الجولة الأولى max-turn8، أُكمل الحكم بدورة واحدة بلا أدوات؛ readOnlyViolation=false. رفض محدود بسبب PAY المذكور. المخرجات خارج Git في `../automatic-element-codes-20261016/claude-verdict/final.txt`.
-- rawlogs والصور والاختبارات خارج Git في `../automatic-element-codes-20261016/` و`../settings-ux-audit-20261016/`. احتفظ بدليل مختصر نهائي وصور ممثلة فقط عند إغلاق الدفعة.
-- اختبارات المتصفح الفعلية: وظيفة QAحُفظت بـ`JOB-KMHQAFVW5HKA`، اسم «وظيفة اختبار الأكواد التلقائية — محلي»؛ قسم برمز مكرر `demo-d0` رُفض مع حفظ القيم؛ بند `demo_bonus` مكرر رُفض مع حفظ القيم؛ مصدر هاتف مكرر رُفض برسالة صحيحة ورابط القائمة. **لم يُختبر حفظ defaultPAY قبل المراجعة ولذلك كشفت الخطأ.**
+## Storage and testing rules
 
-## ضوابط الاقتصاد والاستئناف
+Use external run and active caches/dependencies.3a removed only an unused run-owned image,53165verified local bytes. No cloud quota claim. Preserve projects/source/assets/secrets/DB/backups/journals/active deps and prior rejected cleanup paths. Never global cache wipe or Docker reset. At final completion stop unused owned processes and prune validated owned obsolete output.
 
-### تحديث إغلاق الدفعة1 وتجهيز الدفعة2
+No arbitrary repeated tests: run relevant changed contracts and real success/recovery paths; broaden only for actual new concern. Keep unknown outcomes unknown and no automatic resend. At most two concrete source-fix cycles before reassessing; extra3a visual check cleared an identified capture artifact, not speculative code review.
 
-أُصلحPAY، ونجح حفظdefaultالبند ونوع الإجازة والتقويم في QA. مراجعةdeltaالنهائية لنفس جلسةClaude: ACCEPTED، B1closed، no blockers، readOnlyViolation=false. typecheck/lintوالـharnessوdiffcheckاجتازت. النتائج الدقيقة وحدودالتحقق في `automatic-element-codes-20261016/VALIDATION.md`؛ لاproductionنشر أوbuildشاملبعد. التقريروصور1366/390مختصرة محفوظة.
-
-ثُبتت6مهارات في ملفClaudeالرسمي، منهاfrontend-designمن المصدر الرسمي؛ `claude plugin validate` نجح. كلودقرأ4مهارات فعلًا (`frontend-design/enterprise-workflow-ux/product-flow-ux/arabic-ux-writing`) في جلسة`aeb29caa-dcaa-406b-a871-7d032a8b6907`، اقرأ `visual-design-proposal-20261016/claude-design-system-v2.md`؛ هذه هي توصيةالتصميمالأحدث بعد إلغاءقيدConceptC. الحكملايتضمنرسمًا. مهاراتالـrelayتظلslashcommandsمعطلة، لذلكالوصولبقراءةSKILL.mdصراحةفيالـbrief، دونتخفيفحمايةالمراجعة. البصماتفيclaude-skills.json.
-
-**التالي مباشرة:** احفظ دفعة1والوثائق بكوميتوpushعلىفرعالتطوير، ثم نفذدفعة2بنفسworktree: sidebarيمينواضحعلىالكمبيوتر، drawerقائمةمجمعةللهاتف/اللوحي، فصليومي/إعداد، وصولمصرحللهيكلالتنظيميوإعداداتالشركة، تحسينFieldHelpليفتحفيالتدفق، ثمصفحات/نماذجأهدأ. تفضيلتابلتأبسطمنrailأيقوناتإذاحققالوضوحدونتعقيد. لا تسقطperiodمنروابطsetupقبلتحققاعتمادالرحلةعليه؛ كلودنفسهتركذلكمشروطًا. لا حاجةلإهدارعملعلىprototypeمنفصلبعدتفويضالمالكالتنفيذالمباشرالواسع؛ الجهدللواجهاتالفعلية.
-
-اقرأ Git والعمليات والأدلة قبل أي استدعاء. كاتب واحد في worktree. استعمل التبعيات الخارجية القائمة. فحوص مجمعة لكل دفعة؛ لا pgTAP شامل لخلفية لم تتغير، ولا اختبارات تعكس التنفيذ فقط. سقف مراجعتين إصلاح محددتين قبل إعادة تقييم النهج. لا تعاود دفعة ناجحة دون سبب جديد. لا تحذف مخلفات قديمة رُفض تنظيفها آليًا سابقًا أو تغير وسيلة التنفيذ لتجاوز الرفض. احتفظ بالخطأ غير المحسوم والأصول والأسرار والنسخ الاحتياطية والعمليات الجارية.
-
-## تحديث قبول الدفعتين1و2
-
-- الدفعة1 مكتملة ومحفوظة ومرفوعة: `1c2315a8c952562e64e1d8ead8851e7fe2476e03`. ثمانية اقتراحات أكواد، حفظ pay_ التلقائي مثبت، رفض التكرار واستبقاء القيم مثبتان، استعادة مصدر الهاتف ورسائله والدليل محدثة. مراجعة Claude المستقلة ACCEPTED. لا تعاودها.
-- الدفعة2 نفذت وفُحصت: sidebarRTL، فصل اليومي عن الإعداد، drawer كامل، مساعدة داخل التدفق، دليل محدث. مراجعة c1306a72 ثم delta164666ec اعتمدتا النتيجة بعد تصحيح تحديد الصفحة الحالية. الأدلة في `../navigation-ux-20261016/` وموجزها في `docs/07-execution/navigation-ux-20261016/`. افحص Git لمعرفة commit النهائي؛ لا تعتمد فقرة الحالة القديمة أعلاه.
-- مهارات Claude مثبتة ومتحقق من قراءتها فعليًا؛ لا تعاود التثبيت. يستخدم official Opus5.5Medium مع قراءة المهارات الملائمة في brief محدود، ولا يكتب بالتوازي مع المنسق.
-- التالي الدفعة3: إعداد مصدر الهاتف (اكتشاف الموجود مبكرًا، بحث الفرع دون فقد المسودة، كشف تدريجي للسياسة التقنية) ثم سياقات الإجازات والرواتب. دراسة options الحالية تأكدت أنها ترجع أول20نتيجة مع search، وقائمة المصادر paginated بلا site filter؛ لا تستنتج عدم وجود مصدر من الصفحة الأولى. أي قراءة جديدة تلتزم صلاحية channel_operator_can والعزل وتُختبر محليًا فقط. لا --linked.
--61193 نسخة qualification محلية مبنية في `.next/qualification`، مملوكة للتشغيل؛ توقف قبل الكتابة فوق بنائها.61190 محفوظ. لا بيانات حقيقية/إنتاج تغيرت في هاتين الدفعتين.
+Screenshot host issue: Playwright UI operations may reset host scaling while same-value viewport.set is cached. After UI actions, viewport.reset then set target width, readDOM geometry, rawPage.captureScreenshot(captureBeyondViewport:false); inspect actual image before sending review. tab.screenshot in this IAB produced distorted images. Reset viewport/theme afterward. Current tab18 retained for continuation; handles may expire after turn.
