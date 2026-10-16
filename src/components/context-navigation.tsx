@@ -99,6 +99,7 @@ export async function TenantNavigation({
       if (brand?.can_manage_branding === true) links.push({ href: `/tenant/${tenantId}/branding`, label: 'هوية الشركة' });
       if (!peopleAccess.error && peopleAccess.data && typeof peopleAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/people`, label: 'الموظفون', mobilePriority: 60 });
+        if (peopleAccess.data.can_manage_org === true) businessLinks.push({ href: `/tenant/${tenantId}/people/organization`, label: 'الأقسام والوظائف' });
       }
       if (!attendanceAccess.error && attendanceAccess.data && typeof attendanceAccess.data === 'object') {
         businessLinks.push({ href: `/tenant/${tenantId}/attendance`, label: 'الحضور', mobilePriority: 30 });

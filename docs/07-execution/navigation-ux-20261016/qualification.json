@@ -1,0 +1,23 @@
+{
+  "base": "1c2315a8c952562e64e1d8ead8851e7fe2476e03",
+  "build_id": "BXIymLjET3iQpztiCkf7N",
+  "build_log": "../navigation-ux-build-20261016.log",
+  "build_exit": 0,
+  "lint_exit": 0,
+  "role_tests": "8pass0fail, node --test src/components/shell/navigation-model.test.mjs",
+  "source_sha256": {
+    "next.config.ts": "2007254b88246b2297000a787c242f26b5184eaad4da62b9f821eee6cb07b0ff",
+    "src/components/context-navigation.tsx": "d188760010ebb2606583bff8b718ae7c28043dbcf216566e5a81d9be1d40b85c",
+    "src/components/shell/app-shell.tsx": "50bfe594f3206de1d1bb10fbaba0971e1241d2e07335838f019d1e0fec4fa9cb",
+    "src/components/shell/navigation-model.ts": "80b0d42b1b0e73c20b9893988894f8a498580b8f43401ea1dcd3d13d03fb3aea",
+    "src/components/shell/workspace-navigation.tsx": "f0e328b49e9e7a600f81758ff7d8b1dc4c07fea44eb4be9da82e68f8076dd74f",
+    "src/components/ui/field-help.tsx": "d526c7b5ef909ce06b0d2e21749735243a6d13d6ec93caef6ce38347c01fcf61",
+    "src/components/ui/primitives.tsx": "978612f30551977f2ba2af90efabc6a0b71bb523be2cd93b1c2149af6c4b3a8d",
+    "src/components/ui/ui.css": "7edcc9ed989ed18044d15e1c6c80f733f9df5d0eb79af2c857966d748d5a8ef3",
+    "tsconfig.json": "4bfb7e7c4d320201814a4c09431a58a9193f61ee3c029de3bab7b82f0001e828",
+    "src/components/shell/workspace-navigation.module.css": "2ef97b1ccb76c2724b4696192a79755f0124524addd8104b2dac3d3127eba16d",
+    "src/components/shell/navigation-model.test.mjs": "ad79033a13862207a1f502bc5bf7dbe8ea0710fbe1341eee548b8c304a5eea04"
+  },
+  "runtime": "localhost:61193 production mode, synthetic local QA, 61190 untouched",
+  "limits": "Actual admin UI and mobile/tablet/desktop sampled. Self-service/operator/unknown-link closure is controlled role-fixture evidence; not every live role or route visually certified."
+}

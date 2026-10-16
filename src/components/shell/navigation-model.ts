@@ -8,6 +8,7 @@ export function hasTeamWorkspace(links: WorkspaceLink[]) {
 
 const timeOrder = ['attendance', 'attendance/review', 'leave', 'leave/balances', 'attendance/sources', 'leave/settings'];
 const payrollOrder = ['payroll', 'payroll/runs', 'payroll/inputs', 'payroll/setup', 'payroll/advances', 'payroll/reports'];
+const setupOrder = ['entities-sites', 'users', 'people/organization', 'people/work-policies', 'attendance/sources', 'leave/settings', 'payroll/setup', 'branding'];
 function ordered(links: WorkspaceLink[], order: string[]) {
   const rank = (href: string) => {
     const route = href.split(/[?#]/)[0].replace(/^\/tenant\/[^/]+\//, '');
@@ -31,8 +32,8 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
   } else {
     const team = hasTeamWorkspace(business);
     if (team) {
-      add('people', 'الناس', 'users', business.filter(item => item.href.includes('/people')));
-      add('time', 'الوقت', 'clock', ordered(business.filter(item => !item.href.includes('/me/') && /\/(attendance|leave)(?:\/|$)/.test(item.href)), timeOrder));
+      add('people', 'الموظفون', 'users', business.filter(item => item.href.includes('/people')));
+      add('time', 'الحضور والإجازات', 'clock', ordered(business.filter(item => !item.href.includes('/me/') && /\/(attendance|leave)(?:\/|$)/.test(item.href)), timeOrder));
       add('payroll', 'الرواتب', 'wallet', ordered(business.filter(item => item.href.includes('/payroll')), payrollOrder));
     } else {
       // Self-service destinations remain available even when the employee has no HR access.
@@ -46,9 +47,41 @@ export function workspaceAreas(homeHref: string, business: WorkspaceLink[], admi
   return areas;
 }
 
+export type WorkspaceMenu = { areas: NavArea[]; settings: WorkspaceLink[]; personal: WorkspaceLink[] };
+
+/** Classify the authorized set without inventing or dropping a destination. */
+export function workspaceMenu(homeHref: string, business: WorkspaceLink[], admin: WorkspaceLink[], mode: 'tenant' | 'operator'): WorkspaceMenu {
+  const isSetup = (href: string) => /\/(?:people\/(?:organization|work-policies)|attendance\/sources|leave\/settings|payroll\/setup|operator\/statutory)(?:\/|$)/.test(href.split(/[?#]/)[0]);
+  const settings = business.filter(item => isSetup(item.href));
+  const areas = workspaceAreas(homeHref, business, admin, mode).flatMap((area, index) => {
+    if (index === 0) return [area];
+    const links = area.links.filter(item => !isSetup(item.href));
+    return links.length ? [{ ...area, destination: links[0], links }] : [];
+  });
+  const grouped = new Set(areas.flatMap(area => [area.destination.href, ...area.links.map(item => item.href)]));
+  settings.push(...admin.filter(item => !grouped.has(item.href)));
+  const settingsHrefs = new Set(settings.map(item => item.href));
+  return { areas, settings: ordered(settings, setupOrder), personal: business.filter(item => !grouped.has(item.href) && !settingsHrefs.has(item.href)) };
+}
+
 export function matchesDestination(path: string, href: string) {
   const target = href.split(/[?#]/)[0];
   return path === target || path.startsWith(`${target}/`);
+}
+
+/** Resolve the deepest destination; the workspace root is never a catch-all. */
+export function currentWorkspaceLocation(pathname: string, homeHref: string, menu: WorkspaceMenu, mode: 'tenant' | 'operator') {
+  const candidates = [...menu.areas.flatMap(area => [area.destination, ...area.links]), ...menu.settings, ...menu.personal];
+  const active = candidates.filter(item => item.href.split(/[?#]/)[0] === homeHref
+    ? pathname === homeHref : matchesDestination(pathname, item.href))
+    .sort((a, b) => b.href.split(/[?#]/)[0].length - a.href.split(/[?#]/)[0].length)[0];
+  const isSetting = menu.settings.some(item => item.href === active?.href);
+  const area = isSetting ? undefined : menu.areas.find(item => item.destination.href === active?.href || item.links.some(link => link.href === active?.href));
+  if (!active && mode === 'operator' && /^\/operator\/(tenants|commercial|entitlements)(?:\/|$)/.test(pathname)) {
+    const companies = menu.areas.find(item => item.key === 'companies');
+    return { active: companies?.destination, area: companies };
+  }
+  return { active, area };
 }
 
 /** Carry explicit employer/period context; each destination still validates its own scope. */
