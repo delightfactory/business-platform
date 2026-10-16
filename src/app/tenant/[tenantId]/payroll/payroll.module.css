@@ -1,6 +1,6 @@
 .workspace { display: grid; gap: var(--space-4, 1.5rem); min-width: 0; }
 .workspace :is(h2,h3) { text-wrap: balance; }
-.workspace > header { min-width: 0; overflow-wrap: anywhere; }
+.workspace > header { min-width: 0; overflow-wrap: anywhere; align-items: stretch; }
 .progress { margin-block-start: 1rem; padding-block-start: 1rem; border-block-start: 1px solid var(--color-border); }
 .progressCurrent { font-weight: 700; }
 .progressDetails summary { cursor: pointer; min-height: var(--touch-target-size); }
@@ -144,3 +144,12 @@ fieldset.fields { border: 0; padding: 0; margin: 0; }
 .runIssueHeading h3 { margin: 0; min-width: 0; }
 .runIssue > p { margin: 0; color: var(--ink-2); font-size: 13px; line-height: 1.7; }
 .runIssue > a { justify-self: start; }
+
+.configurationTabs { display:flex; flex-wrap:wrap; gap:4px; padding:6px; border-radius:12px; background:var(--surface-2); width:fit-content; max-width:100%; }
+.configurationTabs a { border:0; background:transparent; }
+.configurationTabs a[aria-current="page"] { background:var(--color-brand-soft); color:var(--brand); font-weight:700; }
+
+.configurationToolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-block-end:20px; }
+.configurationToolbar h2 { margin:0; }
+.configurationSearch { display:flex; align-items:end; gap:12px; margin-block:16px 24px; }
+.configurationSearch > :global(.ui-field) { flex:1; min-width:0; }

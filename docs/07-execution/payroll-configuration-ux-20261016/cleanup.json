@@ -1,0 +1,6 @@
+{
+  "local_reclaimed_bytes": 5329,
+  "kept": "C:\\Users\\DELL\\AppData\\Local\\ai-dev-workflow\\runs\\20261015-operator-company-ux\\payroll-configuration-ux-20261016\\claude-review\\brief.txt",
+  "method": "Removed only byte-identical owned duplicate if hashes match; exact path/reparse/Git checks",
+  "exclusions": "Source, DB, active builds/dependencies, review results/images, backups and previous rejected cleanup targets retained. No cloud quota claim."
+}

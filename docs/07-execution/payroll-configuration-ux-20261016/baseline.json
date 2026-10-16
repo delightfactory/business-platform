@@ -1,0 +1,14 @@
+{
+  "dates": [
+    {
+      "name": "from",
+      "value": "2027-01-01"
+    },
+    {
+      "name": "until",
+      "value": ""
+    }
+  ],
+  "periodSelect": true,
+  "url": "http://localhost:61193/tenant/a21c4ddf-83f8-4851-abc6-2e226c65a661/payroll/inputs?employer=1714cec4-a4b5-440a-9dcf-52ec60ecaa5a&period=9f99f52d-0b73-41ed-9bab-b5cd9eedde14&q=&mode=config&kind=component&head="
+}

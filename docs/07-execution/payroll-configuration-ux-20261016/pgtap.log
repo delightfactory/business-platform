@@ -1,0 +1,60 @@
+BEGIN
+INSERT 0 5
+INSERT 0 1
+INSERT 0 4
+INSERT 0 4
+INSERT 0 4
+INSERT 0 2
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ok 1 - anon has no config grant
+ok 2 - service role has no config grant
+SET
+c8251000-0000-4000-8000-000000000001
+{"access": {"enabled": true, "payroll.view": true, "time_enabled": true, "payroll.approve": false, "payroll.correct": false, "payroll.prepare": false, "employee_finance.view": false, "payroll_config.manage": true, "employee_finance.manage": false, "employee_finance.approve": false}, "policy": null, "has_more": false, "selected": null, "components": [], "employer_name": "Employer", "policy_open_ended_min": null, "component_open_ended_min": null}
+ok 3 - configuration loads without any payroll period
+ok 4 - no employee projection
+ok 5 - no period scope
+DO
+{"access": {"enabled": true, "payroll.view": true, "time_enabled": true, "payroll.approve": false, "payroll.correct": false, "payroll.prepare": false, "employee_finance.view": false, "payroll_config.manage": true, "employee_finance.manage": false, "employee_finance.approve": false}, "policy": null, "has_more": true, "selected": null, "components": [{"id": "a03aadbc-6c3b-4d65-a432-e9514ba733ea", "data": {"key": "qa_setup_3", "base": "", "name": "QA Setup 3", "order": "10", "value": "100", "active": true, "reason": "Synthetic configuration", "social": false, "taxable": false, "visible": true, "behavior": "period_input", "proration": "paid_full_period", "calculation": "fixed", "classification": "earning"}, "kind": "component", "status": "draft", "revision": 1, "period_id": null, "employment_id": null, "effective_from": "2026-01-01", "effective_until": null}], "employer_name": "Employer", "policy_open_ended_min": null, "component_open_ended_min": null}
+ok 6 - component page bounded
+ok 7 - has_more uses actual extra row
+{"access": {"enabled": true, "payroll.view": true, "time_enabled": true, "payroll.approve": false, "payroll.correct": false, "payroll.prepare": false, "employee_finance.view": false, "payroll_config.manage": true, "employee_finance.manage": false, "employee_finance.approve": false}, "policy": null, "has_more": false, "selected": null, "components": [{"id": "a03aadbc-6c3b-4d65-a432-e9514ba733ea", "data": {"key": "qa_setup_3", "base": "", "name": "QA Setup 3", "order": "10", "value": "100", "active": true, "reason": "Synthetic configuration", "social": false, "taxable": false, "visible": true, "behavior": "period_input", "proration": "paid_full_period", "calculation": "fixed", "classification": "earning"}, "kind": "component", "status": "draft", "revision": 1, "period_id": null, "employment_id": null, "effective_from": "2026-01-01", "effective_until": null}, {"id": "f15f978c-e4ac-4313-aab7-de97dc3b3bd0", "data": {"key": "qa_setup_2", "base": "", "name": "QA Setup 2", "order": "10", "value": "100", "active": true, "reason": "Synthetic configuration", "social": false, "taxable": false, "visible": true, "behavior": "period_input", "proration": "paid_full_period", "calculation": "fixed", "classification": "earning"}, "kind": "component", "status": "draft", "revision": 1, "period_id": null, "employment_id": null, "effective_from": "2026-01-01", "effective_until": null}, {"id": "f6e1efc7-6103-4e2f-a0d0-7e3639de5600", "data": {"key": "qa_setup_1", "base": "", "name": "QA Setup 1", "order": "10", "value": "100", "active": true, "reason": "Synthetic configuration", "social": false, "taxable": false, "visible": true, "behavior": "period_input", "proration": "paid_full_period", "calculation": "fixed", "classification": "earning"}, "kind": "component", "status": "draft", "revision": 1, "period_id": null, "employment_id": null, "effective_from": "2026-01-01", "effective_until": null}], "employer_name": "Employer", "policy_open_ended_min": null, "component_open_ended_min": null}
+f6e1efc7-6103-4e2f-a0d0-7e3639de5600
+ok 8 - direct head opens independently of first page
+ok 9 - component head cannot cross employer
+ok 10 - component search by name
+ok 11 - search wildcards literal
+e8e7a2ae-fe02-4c6e-b8ec-fa6065b81b02
+ok 12 - company policy visible from another employer
+ok 13 - policy deep link scoped to company
+ok 14 - cross tenant denied
+ok 15 - oversized page denied
+c8251000-0000-4000-8000-000000000002
+ok 16 - payroll reader sees config without manage
+c8251000-0000-4000-8000-000000000004
+ok 17 - finance-only cannot read full configuration
+c8251000-0000-4000-8000-000000000005
+ok 18 - payroll preparer retains prior read access
+c8251000-0000-4000-8000-000000000003
+ok 19 - outsider denied
+RESET
+INSERT 0 1
+SET
+c8251000-0000-4000-8000-000000000001
+b5e33dbe-9cef-402c-af3a-12dae7a6b4c0
+09729ba0-aed6-40fb-8d52-f6f185dd844e
+RESET
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+INSERT 0 2
+SET
+ok 20 - component open-ended guidance scoped to employer history
+ok 21 - company policy guidance includes other employers frozen history
+ok 22 - finite range before frozen history remains a supported capability
+1..22
+ROLLBACK

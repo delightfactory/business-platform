@@ -1,0 +1,26 @@
+{
+  "base": "78ddc2db6160d475b9e9088b85376089c8a21212",
+  "build_id": "vi2r7EzDBcxaxG5VF4f_v",
+  "runtime": "61193 production-mode synthetic QA, exact DB56322",
+  "gates": {
+    "pgtap": "22pass",
+    "build_typecheck": 0,
+    "lint": 0,
+    "inventory": "84page files =84rows, no missing/extra/duplicates",
+    "date_tests": "2pass"
+  },
+  "source_sha256": {
+    "src/app/tenant/[tenantId]/payroll/inputs/InputForm.tsx": "91cf71f9260dcfc2877cf91b3e5cbc409aedac5228d994a74e69a86e63d61fcc",
+    "src/app/tenant/[tenantId]/payroll/inputs/page.tsx": "7a5d842ae2c5543fbfa94fbd877cb4f24c84ee621d1c44f61335b049aeb88b07",
+    "src/app/tenant/[tenantId]/payroll/inputs/rules.ts": "5da2edb4b9a372119b41f2d4557245f0e68e0d6f5f26c7df905c6b502102fa33",
+    "src/app/tenant/[tenantId]/payroll/setup/page.tsx": "974eaab14dc676b43de169040faa575ae7353da4023aae35b8953e8ab83b6375",
+    "src/app/tenant/[tenantId]/payroll/setup/configuration/page.tsx": "ded01abaa1bb470d99d2a8f59429eb9010dd5e61d04d3e77387d170d4c05f287",
+    "src/app/tenant/[tenantId]/payroll/setup/configuration/navigation.ts": "f80dba7a78dab4ccfc003b8daaf2ea0de8a8ba46845dff98c50f8a778c16a118",
+    "src/app/tenant/[tenantId]/payroll/payroll.module.css": "f55f7934b8fc4be61316a82784ffeb891ded566cc5fc1d2896b9229144d4a209",
+    "src/lib/payroll-configuration-date.ts": "335e8152153102e056b008a2337bb01dec3707f4e68fa365be05da65f497cf69",
+    "supabase/migrations/20261016020006_payroll_configuration_workspace.sql": "8e931d347d15ef16cf88dab48c0dad6d4cd47880f13e7c3f3b98ec9ff792e9a7",
+    "src/lib/payroll-configuration-date.test.mjs": "326941176235f2cf70664f6db49aa753317de9507529331ce7fdf03de748d600",
+    "supabase/tests/payroll_configuration_workspace.test.sql": "ad6bf23a4a284d2eca7390f16bd1091613bace7ee27b5430c3b523f00a5fa020"
+  },
+  "limits": "No real touch/screenreader, live simultaneous users, actual payroll calculation/finalization or payment. Write action and write RPC unchanged; read DTO and form rendering changed."
+}
