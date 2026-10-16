@@ -9,7 +9,8 @@ export const dynamic='force-dynamic';
 export default async function EgyptSetupPage({params,searchParams}:{params:Promise<{tenantId:string}>;searchParams:Promise<Record<string,string|undefined>>}){
  const {tenantId}=await params;const q=await searchParams;
  if(!uuid(tenantId))notFound();
- const back=`/tenant/${tenantId}/payroll/setup?${new URLSearchParams({employer:q.employer??'',period:q.period??''})}`;
+ const fromRun=q.task==='fix'&&uuid(q.period??'');
+ const back=`/tenant/${tenantId}/payroll/${fromRun?'runs':'setup'}?${new URLSearchParams({employer:q.employer??'',period:q.period??''})}`;
  const error=(text:string)=><PageFrame><Panel><PageHeader title="تجهيز بيانات الموظف"/><Message tone="warn">{text}</Message><ButtonLink href={back}>العودة إلى إعداد الرواتب</ButtonLink></Panel></PageFrame>;
  if(!uuid(q.employer??'')||q.period&&!uuid(q.period)||q.employee&&!uuid(q.employee))return error('اختر جهة وفترة محفوظة أولًا.');
  const client=await getWorkspaceClient();if(!client)return error('تعذر الاتصال. أعد فتح الإعداد بنفس الفترة.');
@@ -25,11 +26,12 @@ export default async function EgyptSetupPage({params,searchParams}:{params:Promi
  const review=`/tenant/${tenantId}/payroll/runs?${scope}`;
  const advanced=`/tenant/${tenantId}/payroll/inputs?${scope}&employee=${employee?.id??''}`;
  return <PageFrame><div dir="rtl" className={styles.workspace}><PageHeader title="تجهيز رواتب الموظفين" description="ابدأ بالأساس المصري، وعدّل ما يختلف في حالة الموظف."/>
- <form method="get" className={styles.filters}><input type="hidden" name="employer" value={q.employer}/><input type="hidden" name="period" value={q.period}/><label>اسم الموظف أو رمزه<Input name="q" defaultValue={q.q??''} maxLength={120} placeholder="مثال: أحمد محمد"/></label><Button type="submit" variant="ghost">بحث</Button></form>
+ {!fromRun&&<><form method="get" className={styles.filters}><input type="hidden" name="employer" value={q.employer}/><input type="hidden" name="period" value={q.period}/><label>اسم الموظف أو رمزه<Input name="q" defaultValue={q.q??''} maxLength={120} placeholder="مثال: أحمد محمد"/></label><Button type="submit" variant="ghost">بحث</Button></form>
  <form method="get" className={styles.filters}><input type="hidden" name="employer" value={q.employer}/><input type="hidden" name="period" value={q.period}/><input type="hidden" name="q" value={q.q??''}/><label>الموظف<Select name="employee" defaultValue={employee?.id??''} required><option value="" disabled>اختر الموظف</option>{work.employees.map(e=><option value={e.id} key={e.id}>{e.full_name} · {e.employee_code}</option>)}</Select></label><Button type="submit">استكمال بياناته</Button></form>
+ </>}
  {q.employee&&!employee&&<Message tone="warn">الموظف خارج نتائج البحث الحالية؛ ابحث باسمه أو رمزه. لم نختر موظفًا آخر بدلًا منه.</Message>}
  {work.employees.length===0&&<Message tone="info">لا يوجد موظف مطابق مشمول في رواتب هذه الفترة. راجع ملف الموظف وتفعيل إدراجه في الرواتب.</Message>}
  {employee&&<Panel className={styles.card}><h2>{employee.full_name}</h2>{facts?.data?<EgyptForm key={employee.id+q.period} tenant={tenantId} employer={q.employer!} period={q.period!} employment={employee.id} facts={facts.data as EgyptContext} advanced={advanced} review={review}/>:<Message tone="warn">تعذر تحميل إعداد الموظف. أعد فتح بياناته؛ لم يتغير شيء.</Message>}</Panel>}
- <nav className={styles.actions}><ButtonLink variant="ghost" href={back}>إعداد رواتب الجهة</ButtonLink><ButtonLink variant="ghost" href={review}>حساب ومراجعة الرواتب</ButtonLink><ButtonLink variant="ghost" href={advanced}>الإعدادات المتقدمة</ButtonLink></nav>
+ <nav className={styles.actions}><ButtonLink variant="ghost" href={back}>{fromRun?'العودة إلى نفس المسير':'إعداد رواتب الجهة'}</ButtonLink>{!fromRun&&<ButtonLink variant="ghost" href={review}>حساب ومراجعة الرواتب</ButtonLink>}<ButtonLink variant="ghost" href={advanced}>الإعدادات المتقدمة</ButtonLink></nav>
  </div></PageFrame>;
 }

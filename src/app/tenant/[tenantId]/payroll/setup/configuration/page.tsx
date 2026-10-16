@@ -47,6 +47,7 @@ export default async function ConfigurationPage({params,searchParams}:{params:Pr
     if(!periods.error&&Array.isArray(periods.data)&&await validatePayrollPeriod(client,tenantId,employer,query.return_period!,periods.data,'input')==='valid')returnContext.return_period=query.return_period!;
   }
   if(returnContext.return_period) {
+    if(query.return_task==='run')returnContext.return_task='run';
     if(query.return_q&&(query.return_q.length<=120))returnContext.return_q=query.return_q;
     for(const key of ['review_view','review_q','review_after','review_employee']) {
       const value=query[key];if(value&&(key==='review_view'?value==='all'||value==='attention':key==='review_q'?value.length<=120:uuid(value)))returnContext[key]=value;
@@ -61,11 +62,11 @@ export default async function ConfigurationPage({params,searchParams}:{params:Pr
   const editingRecord=canEdit&&query.view!=='record';
   const setup=`/tenant/${tenantId}/payroll/setup?${new URLSearchParams({employer})}`;
   const back=href(policyTab?{tab:'policy'}:{after:query.after??''});
-  const periodReturn=returnContext.return_period?`/tenant/${tenantId}/payroll/inputs?${new URLSearchParams({employer,period:returnContext.return_period,...(returnContext.return_q?{q:returnContext.return_q}:{}),...Object.fromEntries(Object.entries(returnContext).filter(([key])=>key.startsWith('review_')))})}`:null;
+  const periodReturn=returnContext.return_period?`/tenant/${tenantId}/payroll/${returnContext.return_task==='run'?'runs':'inputs'}?${new URLSearchParams({employer,period:returnContext.return_period,...(returnContext.return_q?{q:returnContext.return_q}:{}),...Object.fromEntries(Object.entries(returnContext).filter(([key])=>key.startsWith('review_')))})}`:null;
   if(policyTab&&!work.policy&&canEdit&&query.kind!=='policy')redirect(href({kind:'policy'}));
   return <ConfigurationFrame>
     <PageHeader title={editor?(record?(editingRecord?'إصدار جديد لبند الراتب':'تفاصيل بند الراتب'):'إضافة بند راتب'):'إعداد بنود وسياسة الرواتب'} description={work.employer_name}/>
-    <nav className={styles.reviewNavigation} aria-label="العودة من إعداد الرواتب"><ButtonLink variant="ghost" href={setup}>إعداد رواتب الجهة</ButtonLink>{periodReturn&&<ButtonLink variant="ghost" href={periodReturn}>العودة إلى بيانات الفترة</ButtonLink>}{employers.data.unique_employer!==employer&&<ButtonLink variant="ghost" href={`${path}?choose_employer=1`}>تغيير جهة العمل</ButtonLink>}</nav>
+    <nav className={styles.reviewNavigation} aria-label="العودة من إعداد الرواتب"><ButtonLink variant="ghost" href={setup}>إعداد رواتب الجهة</ButtonLink>{periodReturn&&<ButtonLink variant="ghost" href={periodReturn}>{returnContext.return_task==='run'?'العودة إلى نفس المسير':'العودة إلى بيانات الفترة'}</ButtonLink>}{employers.data.unique_employer!==employer&&<ButtonLink variant="ghost" href={`${path}?choose_employer=1`}>تغيير جهة العمل</ButtonLink>}</nav>
     {!work.access['payroll_config.manage']&&<Message tone="info">عرض فقط. تعديل الإعدادات من اختصاص مدير إعداد الرواتب.</Message>}
     {!work.access.enabled&&<Message tone="info">خدمة الرواتب موقوفة. الإعدادات المحفوظة متاحة للمراجعة؛ تواصل مع مسؤول الشركة لتفعيل الخدمة قبل التعديل.</Message>}
     {!editor&&<nav className={styles.configurationTabs} aria-label="إعدادات الرواتب"><ButtonLink variant="ghost" href={href()} aria-current={!policyTab?'page':undefined}>بنود رواتب الجهة</ButtonLink><ButtonLink variant="ghost" href={href({tab:'policy'})} aria-current={policyTab?'page':undefined}>سياسة احتساب الفترة للشركة</ButtonLink></nav>}

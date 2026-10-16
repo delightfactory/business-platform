@@ -1,10 +1,11 @@
 'use client';
-import { Button, Input, Message, Panel, Select, Field, Disclosure, KeyValueStrip } from '@/components/ui';
+import { Button, ButtonLink, Input, Message, Panel, Select, Field, Disclosure, KeyValueStrip } from '@/components/ui';
 import { useId } from 'react';
 import { OfflineSubmissionNotice, useOfflineSubmission } from '@/components/offline-submission';
 import { useActionState, useEffect, useRef, useState } from 'react';
-import { calendarAction, generateAction } from './actions';
-import { type CalendarFields, type CalendarState, type CalendarPreview, displayDate } from './rules';
+import Link from 'next/link';
+import { calendarAction, generateAction, type GenerateState } from './actions';
+import { type CalendarFields, type CalendarState, type CalendarPreview, displayDate, uuid } from './rules';
 import styles from './payroll.module.css';
 export function CalendarForm({ tenant, employer, start, last, defaults }: { tenant: string; employer: string; start: string; last: string | null; defaults?: {cutoff_day: number|null; payment_day: number; payment_month: string; timezone: string} }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
@@ -33,7 +34,7 @@ export function CalendarForm({ tenant, employer, start, last, defaults }: { tena
   </div>
   <Disclosure summary="كيف تتحدد التواريخ؟"><p>في الشهر الأقصر يُستخدم آخر يوم متاح. الدورة من 25 إلى 24 تستخدم نهاية يوم 24؛ ومن 26 إلى 25 تستخدم نهاية يوم 25. موعد الصرف موعد مقرر فقط ولا ينتقل تلقائيًا بسبب عطلة.</p></Disclosure>
   {preview && <Panel className={styles.preview} aria-label="معاينة الفترة"><h3>{state.preview?.is_transition ? 'مراجعة فترة تغيير الدورة' : 'معاينة أول فترة'}</h3><DateSummary preview={state.preview!} /><p>راجع هذه التواريخ قبل الحفظ. لن تتغير حدود الفترات المحفوظة.</p></Panel>}
-  {(state.error || state.saved) && <Message tone={state.error ? "bad" : "ok"} ref={feedback} tabIndex={-1} role={state.error ? 'alert' : 'status'}>{state.error || 'تم حفظ الدورة والفترة الأولى. راجع التواريخ والجاهزية في قائمة الفترات.'}</Message>}
+  {(state.error || state.saved) && <Message tone={state.error ? "bad" : "ok"} ref={feedback} tabIndex={-1} role={state.error ? 'alert' : 'status'}>{state.error||<>تم حفظ الدورة والفترة الأولى. {state.periodId&&<Link href={`/tenant/${tenant}/payroll/runs?${new URLSearchParams({employer,period:state.periodId})}`}>فتح المسير وحساب الموظفين</Link>}</>}</Message>}
   <div className={styles.actions}><Button variant="solid" type="submit" className={` ${styles.primary}`} name="operation" value={preview ? 'save' : 'preview'} disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending ? 'جارٍ التحقق…' : preview ? 'حفظ الدورة والفترة' : 'معاينة التواريخ'}</Button>{state.preview && <Button variant="ghost" type="submit"  name="operation" value="cancel" formNoValidate disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>إلغاء المعاينة</Button>}</div>
  {showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }
@@ -43,7 +44,8 @@ export function DateSummary({preview}: {preview: CalendarPreview}) {
 export function GenerateForm({tenant,employer,revision,preview}: {tenant: string; employer: string; revision: number; preview: CalendarPreview}) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHintId = useId();
- const [state,action,pending] = useActionState(generateAction,{error:'',saved:false,attemptKey:crypto.randomUUID()});
+ const [state,action,pending] = useActionState<GenerateState,FormData>(generateAction,{error:'',saved:false,attemptKey:crypto.randomUUID()});
  const showOfflineNotice = offline && !pending && !state.saved;
- return <form action={action} onSubmit={(event) => { blockOfflineSubmission(event); }}><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="reviewed" value={JSON.stringify(preview)}/><h2>الفترة التالية للمراجعة</h2><DateSummary preview={preview}/>{state.error && <Message tone="bad" role="alert">{state.error}</Message>}{state.saved && <Message tone="info" role="status">تم حفظ الفترة التالية.</Message>}<Button variant="solid" type="submit" className={` ${styles.primary}`} disabled={offline || (pending)} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending?'جارٍ الحفظ…':'إنشاء الفترة بهذه التواريخ'}</Button>{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
+ if(state.saved&&uuid(state.periodId??''))return <section aria-label="نتيجة إنشاء فترة الرواتب"><Message tone="ok" role="status">تم إنشاء الفترة بالتواريخ التي راجعتها.</Message><ButtonLink href={`/tenant/${tenant}/payroll/runs?${new URLSearchParams({employer,period:state.periodId!})}`}>فتح المسير وحساب الموظفين</ButtonLink></section>;
+ return <form action={action} onSubmit={(event) => { blockOfflineSubmission(event); }}><input type="hidden" name="tenant" value={tenant}/><input type="hidden" name="employer" value={employer}/><input type="hidden" name="revision" value={revision}/><input type="hidden" name="reviewed" value={JSON.stringify(preview)}/><h2>الفترة التالية للمراجعة</h2><DateSummary preview={preview}/>{state.error && <Message tone="bad" role="alert">{state.error}</Message>}{state.saved&&state.periodId?<Message tone="ok" as="div" role="status">تم إنشاء الفترة. <Link href={`/tenant/${tenant}/payroll/runs?${new URLSearchParams({employer,period:state.periodId})}`}>فتح المسير وحساب الموظفين</Link></Message>:null}<Button variant="solid" type="submit" className={` ${styles.primary}`} disabled={offline || pending || state.saved} aria-describedby={showOfflineNotice ? offlineHintId : undefined}>{pending?'جارٍ الحفظ…':'إنشاء الفترة بهذه التواريخ'}</Button>{showOfflineNotice && <OfflineSubmissionNotice id={offlineHintId} purpose="continuation" />}</form>;
 }

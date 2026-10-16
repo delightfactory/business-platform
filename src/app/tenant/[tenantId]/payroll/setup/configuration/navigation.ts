@@ -5,6 +5,7 @@ export function legacyConfigurationHref(tenantId:string,query:Record<string,stri
   for(const key of ['employer','head'] as const) if(uuid(query[key]??''))next.set(key,query[key]!);
   if(query.kind==='component'||query.kind==='policy')next.set('kind',query.kind);
   if(uuid(query.records_after??''))next.set('after',query.records_after!);
+  if(query.task==='fix')next.set('return_task','run');
   if(uuid(query.period??''))next.set('return_period',query.period!);
   if(query.q&&query.q.length<=120)next.set('return_q',query.q);
   for(const key of ['review_view','review_q','review_after','review_employee'] as const) {

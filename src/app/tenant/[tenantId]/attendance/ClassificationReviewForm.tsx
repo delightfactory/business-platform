@@ -8,8 +8,8 @@ import { SubmitButton } from '@/components/submit-button';
 import { commitClassificationAction, renewClassificationReview } from './classification-actions';
 import type { ClassificationReview } from './classification';
 
-export function ClassificationReviewForm({ tenantId, instanceId, review: initialReview }: {
-  tenantId: string; instanceId: string; review: ClassificationReview;
+export function ClassificationReviewForm({ tenantId, instanceId, review: initialReview, payrollEmployer, payrollPeriod }: {
+  tenantId: string; instanceId: string; review: ClassificationReview; payrollEmployer?:string; payrollPeriod?:string;
 }) {
  const { offline, blockOfflineSubmission } = useOfflineSubmission();
  const offlineHint0 = useId();
@@ -53,7 +53,7 @@ export function ClassificationReviewForm({ tenantId, instanceId, review: initial
   const showOffline0 = offline && !pending && !refreshing;
  return <form action={action} onSubmit={(event) => { if (blockOfflineSubmission(event)) return; setReviewRenewed(false); }} className="attendance-form attendance-approve-form">
     <input type="hidden" name="tenantId" value={tenantId} />
-    <input type="hidden" name="instanceId" value={instanceId} />
+    <input type="hidden" name="instanceId" value={instanceId} /><input type="hidden" name="payroll_employer" value={payrollEmployer??''}/><input type="hidden" name="payroll_period" value={payrollPeriod??''}/>
     <input type="hidden" name="review" value={JSON.stringify(review)} />
     <input type="hidden" name="operationKey" value={intent.key} />
     <p className="attendance-full-field">{result.kind === 'leave_covered' ? 'اليوم مغطى بإجازة معتمدة، ولا يُحسب غيابًا.'

@@ -1,34 +1,20 @@
 import { validatePayrollPeriod } from './period-scope';
-import { Button, ButtonLink, Disclosure, Input, Message, PageHeader, Panel, RecordCard, Select, Field } from '@/components/ui';
-import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
+import { Button, ButtonLink, Disclosure, Input, Message, PageHeader, Panel, RecordCard, Field } from '@/components/ui';
 import {EmployerSelector} from './EmployerSelector';
 import {normalizeEmployerScope} from './employer-context';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { PageFrame } from '@/components/context-navigation';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser } from '@/lib/workspace-access';
-import { currentPeriodId, displayDate, uuid } from './rules';
-import { issueNames, money, type Issue } from './runs/rules';
+import { displayDate, uuid } from './rules';
 import styles from './payroll.module.css';
-import { PayrollStepper, payrollCurrentStage } from './PayrollStepper';
-import { issueTitles } from './issue-titles';
-import { issueResponsibility } from './issue-responsibility';
-import { Suspense } from 'react';
-import { OvertimeNotice } from './OvertimeNotice';
-import { RecordedPaymentNotice } from './RecordedPaymentNotice';
+import { GenerateForm } from './CalendarForm';
 
 export const dynamic = 'force-dynamic';
 type Query = Record<string, string | undefined>;
 type Employer = { id: string; name: string };
 type Period = { id: string; starts_on: string; ends_on: string; is_transition?: boolean };
-type Calendar = { employer_name: string; versions: { timezone: string }[]; periods: { starts_on: string; ends_on: string; timezone: string }[]; access: { can_view: boolean; can_manage: boolean; enabled: boolean } };
-type Workspace = {
-  access: { can_prepare: boolean; can_approve: boolean; can_lock: boolean; can_configure?: boolean; can_view_final: boolean; can_payment_record: boolean; enabled: boolean };
-  period: Period; run: { status: string } | null; final_output_id: string | null;
-  summary: { employee_count: number; known_gross: string | null; deductions?: string | null; net?: string | null; gross_complete?: boolean; financially_qualified?: boolean } | null;
-  global_issues: Issue[]; issue_count: number; stale_reasons: string[];
-  stage_facts?: unknown; approval?: { ready?: unknown } | null;
-};
+type Calendar = { employer_name: string; versions: { timezone: string }[]; periods: { starts_on: string; ends_on: string; timezone: string }[]; access: { can_view: boolean; can_manage: boolean; enabled: boolean }; revision:number; next_preview?:import('./rules').CalendarPreview };
 export default async function PayrollPage({ params, searchParams }: { params: Promise<{ tenantId: string }>; searchParams: Promise<Query> }) {
   const { tenantId } = await params;
   if (!uuid(tenantId)) notFound();
@@ -58,7 +44,7 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
   const loaded = await client.rpc('payroll_workspace', { p_tenant: tenantId, p_employer: employer, p_limit: 24 });
   if (loaded.error || !loaded.data) return failure('تعذر تحميل دورة الجهة.');
   const calendar = loaded.data as Calendar;
-  let periods: Period[] = [], work: Workspace | null = null;
+  let periods: Period[] = [];
   let invalidPeriod = false;
   if (calendar.access.can_view) {
     const result = await client.rpc('payroll_run_periods', { p_tenant: tenantId, p_employer: employer });
@@ -69,111 +55,17 @@ export default async function PayrollPage({ params, searchParams }: { params: Pr
       if(validity==='unavailable')return failure('تعذر التحقق من فترة الرواتب. احتفظنا بالاختيار؛ أعد المحاولة.');
       invalidPeriod=validity==='invalid';if(invalidPeriod)query.period='';
     }
-    const period = invalidPeriod ? undefined : query.period || currentPeriodId(periods,calendar.periods);
-    if (period && !query.period && !invalidPeriod) redirect(`${path}?${new URLSearchParams({...kept,employer,period})}`);
-    if (period) {
-      const state = await client.rpc('payroll_run_workspace', { p_tenant: tenantId, p_employer: employer, p_period: period, p_limit: 1, p_query: '', p_after: null, p_employee: null });
-      if (state.error || !state.data) return failure('تعذر تحميل حالة المسير وجاهزيته.');
-      work = state.data as Workspace;
-    }
+    if(query.period&&!invalidPeriod)redirect(scope('/runs',{period:query.period}));
   }
-  const setupLink = scope('/setup', { period: work?.period.id ?? query.period ?? '', q: query.q ?? '', ...(query.review_q ? { review_q: query.review_q } : {}) });
-  const periodId = work?.period.id ?? query.period ?? '', runLink = scope('/runs', { period: periodId }), inputsLink = scope('/inputs', { period: periodId });
-  const sourceAction = (item: Issue) => {
-    const review = { href: runLink, label: 'مراجعة المصدر في مسير الرواتب' };
-    if (!work) return review;
-    const input = (label: string, kind?: string) => ({
-      href: scope('/inputs', { period: periodId, ...(query.review_q ? { review_q: query.review_q } : {}), ...(kind && uuid(item.employment_id ?? '') ? { kind, employee: item.employment_id! } : {}) }),
-      label,
-    });
-    if (item.code.startsWith('payroll_deduction') && (work.access.can_prepare === true || calendar.access.can_view === true)) return input('مراجعة الخصومات المعتمدة');
-    if (item.code === 'issued_labour_evidence_required') return review;
-    if (item.owner === 'employee_finance' && !navigation.error && navigation.data?.can_view_advances === true) return { href: `${path}/advances?${new URLSearchParams({ employer })}`, label: 'مراجعة السلف ومسؤولياتها' };
-    if (work.access.can_prepare === true && ['statutory_legal_duration_required', 'statutory_composition_context_mismatch', 'statutory_duration_outside_adapter', 'insurance_obligation_attribution_required', 'insurance_month_scope_required', 'insurance_pack_missing_or_ambiguous'].includes(item.code)) return input('مراجعة مدة حساب الضريبة والتأمينات', 'statutory_context');
-    if (work.access.can_prepare === true && ['source_choice_required', 'source_choice_pending', 'source_time_disabled', 'source_leave_treatment_unknown', 'source_quantity_unknown', 'manual_units_ambiguous', 'approved_units_missing', 'units_exceed_eligibility', 'opening_ytd_unknown', 'opening_ytd_ambiguous', 'opening_tax_due_unknown', 'opening_tax_coverage_unknown', 'opening_tax_net_income_unknown', 'opening_ytd_after_final_requires_review', 'prior_ytd_coverage_gap', 'employee_statutory_context_missing', 'employee_statutory_context_ambiguous', 'recurring_overlap', 'daily_units_allocation_needed', 'daily_percentage_allocation_needed'].includes(item.code)) {
-      if (item.code.startsWith('opening_') || item.code === 'prior_ytd_coverage_gap') return input('مراجعة الأرصدة السابقة');
-      if (item.code === 'employee_statutory_context_missing' && work.access.enabled === true && uuid(item.employment_id ?? '')) return input('استكمال بيانات الضريبة والتأمينات', 'statutory_context');
-      if (item.code.startsWith('employee_statutory_context_')) return input('مراجعة بيانات الضريبة والتأمينات');
-      if (item.code === 'recurring_overlap') return input('مراجعة بنود راتب الموظف');
-      return input('مراجعة الأيام المستحقة', 'manual_units');
-    }
-    if (item.code === 'policy_missing' && work.access.can_configure === true) return { href: `${inputsLink}&mode=config&kind=policy`, label: 'إعداد سياسة الشركة' };
-    return review;
-  };
-  const final = work?.run?.status === 'locked' || work?.run?.status === 'superseded', stale = Boolean(work?.stale_reasons.length);
-  const candidate = Boolean(work?.run && work.run.status !== 'cancelled' && !final);
-  const status = !work ? periods.length ? 'اختر الفترة التي تريد مراجعتها' : 'يلزم مراجعة الفترة المحفوظة' : !work.run || work.run.status === 'cancelled' ? 'لم يبدأ تحضير مسير لهذه الفترة' : work.run.status === 'superseded' ? 'مسير مستبدل محفوظ في التاريخ' : work.run.status === 'locked' ? 'مسير نهائي محفوظ' : stale ? 'تغيّرت بيانات تؤثر على المسير' : work.run.status === 'approved' ? 'حساب مبدئي معتمد' : work.run.status === 'review' ? 'حساب مبدئي قيد المراجعة' : work.run.status === 'draft' ? 'التحضير جارٍ' : 'حالة المسير تحتاج مراجعة';
-  let primary: { href: string; label: string } | null = calendar.access.can_manage && calendar.access.enabled
-    ? { href: setupLink, label: calendar.versions.length ? 'مراجعة الدورة والفترات' : 'إعداد دورة الرواتب' } : null;
-  let requiredRole = 'مدير دورة الرواتب';
-  if (work) {
-    requiredRole = !work.run || work.run.status === 'cancelled' ? 'معد الرواتب' : 'مسؤول مراجعة الرواتب';
-    primary = !work.run || work.run.status === 'cancelled'
-      ? work.access.can_prepare && work.access.enabled ? { href: inputsLink, label: 'تجهيز بيانات الفترة' } : null
-      : { href: runLink, label: stale && work.access.can_prepare && work.access.enabled ? 'مراجعة وإعادة حساب الرواتب' : 'متابعة مراجعة الرواتب' };
-    if (work.run?.status === 'approved' && !stale) {
-      requiredRole = 'معتمد الرواتب أو مسؤول الحفظ النهائي';
-      primary = work.access.can_approve || work.access.can_lock ? { href: `${runLink}#payroll-review-approval`, label: 'متابعة الاعتماد والحفظ النهائي' } : null;
-    }
-    if (work.run?.status === 'locked' && work.final_output_id) {
-      requiredRole = 'مسؤول عرض المسير النهائي أو تسجيل الدفعات';
-      primary = null;
-      if (work.access.can_payment_record) primary = { href: scope('/payments', { output: work.final_output_id }), label: 'مراجعة الدفعات والمتبقي' };
-      else if (work.access.can_view_final) primary = { href: scope('/output', { output: work.final_output_id }), label: 'عرض المسير النهائي' };
-    }
-  }
-  const primaryAction = (work || periods.length === 0) && (primary
-    ? <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
-    : <p>المرحلة الحالية تحتاج: {requiredRole}.{!calendar.access.enabled && ' خدمة الرواتب غير مفعّلة؛ راجع مسؤول الشركة.'}</p>);
+  const setupLink = scope('/setup', { period: query.period ?? '', q: query.q ?? '', ...(query.review_q ? { review_q: query.review_q } : {}) });
   return <PageFrame><div dir="rtl" className={styles.workspace}>
-    <div><p className="eyebrow">مساحة الشركة · الرواتب</p><PageHeader  title={<>الرواتب</>} description={<> {calendar.employer_name} </>} />
-
-      <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={{...query,period:periodId}} singleEmployer={found.data.unique_employer===employer}/>
-      <Link href={path}>اختيار جهة أخرى</Link>
-    </div>
-    {invalidPeriod&&<Message tone="info" role="status">الفترة المختارة لا تخص هذه الجهة. اختر فترة.</Message>}
-    {periods.length > 0 && <form method="get" className={styles.filters}><input type="hidden" name="employer" value={employer}/>{query.review_q && <input type="hidden" name="review_q" value={query.review_q}/>}
-      <Field  id="payroll-period" label={<>فترة الرواتب</>}><Select id="payroll-period" name="period" defaultValue={periodId} required>
-        {!periodId && <option value="" disabled>اختر فترة الرواتب</option>}
-        {work && !periods.some(item => item.id === periodId) && <option value={periodId}>{displayDate(work.period.starts_on)} — {displayDate(work.period.ends_on)}</option>}
-        {periods.map(item => <option key={item.id} value={item.id}>{displayDate(item.starts_on)} — {displayDate(item.ends_on)}</option>)}
-      </Select></Field><Button variant={work ? "ghost" : "solid"} type="submit" className={work ? '' : ''}>عرض الفترة</Button></form>}
-    {!calendar.access.enabled && <Message tone="info" role="status">خدمة الرواتب غير مفعلة لإجراءات جديدة. يمكنك متابعة التاريخ والالتزامات القائمة حسب صلاحياتك.</Message>}
-    <Panel className={styles.card} aria-labelledby="payroll-stage"><h2 id="payroll-stage">{status}</h2>
-      {work ? <p>{displayDate(work.period.starts_on)} — {displayDate(work.period.ends_on)}{work.period.is_transition ? ' · فترة انتقالية' : ''}</p> : <p>{periods.length ? 'لم تُحدَّد فترة حالية من التواريخ المحفوظة المعروضة. اختر فترة صراحةً؛ لن يبدأ التحضير في فترة مستقبلية تلقائيًا.' : calendar.access.can_view ? 'جهّز الدورة وفترتها الأولى، ثم ابدأ تحضير المدخلات.' : 'يمكنك مراجعة إعداد الدورة. مراجعة المسيرات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب.'}</p>}
-      {stale && <p>راجع المصادر المتغيرة وأعد الحساب قبل الاعتماد. القيم المعروضة محفوظة من الحساب السابق للمراجعة.</p>}
-      {candidate && primaryAction}
-      {candidate && work?.summary && <dl className={styles.figureStrip}><div><dt>سجلات التوظيف في هذا الحساب</dt><dd>{new Intl.NumberFormat(ARABIC_DISPLAY_LOCALE).format(work.summary.employee_count)}</dd></div><div><dt>{work.summary.gross_complete === true ? 'إجمالي الاستحقاقات قبل الضريبة والتأمينات' : 'الاستحقاقات التي أمكن حسابها'}</dt><dd><bdi>{money(work.summary.known_gross)}</bdi></dd></div><div><dt>الخصومات المحسوبة دون الضريبة والتأمينات</dt><dd><bdi>{money(work.summary.deductions)}</bdi></dd></div><div><dt>صافي الحساب المراجع</dt><dd>{!['draft','review','approved'].includes(work.run?.status ?? '') ? 'حالة الحساب تحتاج مراجعة قبل عرض الصافي' : stale ? 'أعد الحساب لعرض الصافي من المصادر الحالية' : work.summary.financially_qualified === true && work.summary.net != null ? <bdi>{money(work.summary.net)}</bdi> : 'يظهر بعد استكمال مراجعة قواعد الضرائب والتأمينات واعتماد صلاحيتها ماليًا.'}</dd></div></dl>}
-      {candidate && work?.summary && <p>هذه مبالغ مبدئية للمراجعة. لا تُصرف قبل استكمال المراجعة المالية واعتماد المسير وحفظه نهائيًا.</p>}
-      {final && <p>{work?.run?.status === 'superseded' ? 'استُبدل هذا المسير. راجع المسير البديل قبل استخدام بيان الراتب أو تسجيل دفعة.' : work?.access.can_view_final || work?.access.can_payment_record ? 'المسير محفوظ. انتقل إلى تفاصيله لمراجعة المبالغ أو الدفعات والمتبقي حسب صلاحياتك.' : 'المسير محفوظ. مراجعة المبالغ والدفعات تحتاج إلى مسؤول لديه صلاحية عرض الرواتب أو تسجيل الدفعات.'}</p>}
-      {!candidate && primaryAction}
-      <PayrollStepper currentStage={payrollCurrentStage(work)} historical={work?.run?.status === 'superseded'} work={work} actions={{
-        0: calendar.access.can_manage ? [{href:setupLink,label:'إعداد رواتب الجهة'}] : [],
-        2: work?.access.can_prepare ? [{href:inputsLink,label:'بيانات الفترة'}] : [],
-        3: work ? [{href:runLink,label:'مراجعة الفترة'}] : [],
-        4: work && (work.access.can_approve||work.access.can_lock) ? [{href:`${runLink}#payroll-review-approval`,label:'الاعتماد والحفظ النهائي'}] : [],
-        5: work?.final_output_id ? [
-          ...(work.access.can_payment_record ? [{href:scope('/payments',{output:work.final_output_id}),label:'الدفعات'}] : []),
-          ...(work.access.can_view_final ? [{href:scope('/output',{output:work.final_output_id}),label:'الكشف النهائي'}] : []),
-          ...(!navigation.error&&navigation.data?.can_view_reports===true ? [{href:scope('/reports',{report:'sheet',output:work.final_output_id}),label:'التقارير'}] : []),
-        ] : [],
-      }}/>
-    </Panel>
-    {candidate && work && (work.global_issues.length > 0 || work.issue_count > 0) && <Panel className={styles.card}><h2>ما الذي يحتاج مراجعة؟</h2><p>ابدأ بمراجعة هذه الملاحظات العامة، ثم افتح مراجعة الرواتب لملاحظات كل موظف.</p>
-      {work.global_issues.length > 0 && <ul className={styles.issues}>{work.global_issues.map((item, index) => { const action = sourceAction(item); return <li key={`${item.code}:${index}`}><Disclosure summary={<>{issueTitles[item.code] ?? 'مصدر الفترة يحتاج مراجعة'} <span className="field-hint">· {item.blocking === true ? 'مانع' : item.blocking === false ? 'تنبيه' : 'يحتاج مراجعة'} · التفاصيل</span></>}>
-
-        <p>{issueNames[item.code] ?? 'يلزم مراجعة أحد مصادر الفترة مع مسؤول الرواتب.'}</p>
-      </Disclosure><p className="field-hint">الجهة المسؤولة: {issueResponsibility(item.owner)}</p><ButtonLink variant="ghost"  href={action.href}>{action.label}</ButtonLink></li>; })}</ul>}
-      {work.issue_count > 0 && <Link href={runLink}>عرض العوائق والموظفين المتأثرين</Link>}
-    </Panel>}
-    {work && !final && <Suspense fallback={<Message tone="info" role="status">جارٍ التحقق من تنبيه الإضافي؛ يمكنك متابعة مراجعة الرواتب.</Message>}><OvertimeNotice tenantId={tenantId} employer={employer} period={work.period} query={query}/></Suspense>}
-    {work && final && work.final_output_id && <Suspense fallback={<Message tone="info" role="status">جارٍ التحقق من حالة الصرف المسجل؛ يمكنك متابعة مراجعة المسير.</Message>}><RecordedPaymentNotice tenantId={tenantId} employer={employer} output={work.final_output_id} period={work.period} query={query}/></Suspense>}
-    <Disclosure summary={<>المدخلات وإعداد الدورة والفترات السابقة</>} className={styles.card}>
-      {calendar.access.can_view && work && <p><Link href={inputsLink}>مدخلات الفترة ومراجعتها</Link></p>}
-      <p><Link href={setupLink}>دورة الجهة والفترات المحفوظة</Link></p>
-      {!navigation.error && navigation.data?.can_view_advances === true && <p><Link href={`${path}/advances?${new URLSearchParams({ employer })}`}>سلف موظفي الجهة وأقساطها</Link></p>}
-      {!navigation.error && navigation.data?.can_view_reports === true && <p><Link href={`${path}/reports?${new URLSearchParams({ employer, report: navigation.data.report_kind === 'advances' ? 'advances' : 'sheet', ...(navigation.data.report_kind !== 'advances' && work?.final_output_id ? { output: work.final_output_id } : {}) })}`}>التقارير المحفوظة للجهة</Link></p>}
-      {periods.length === 24 && <p><Link href={scope('/runs', { before: periods[23].starts_on, period: '' })}>فترات أقدم</Link></p>}
-    </Disclosure>
+    <PageHeader title="مسيرات الرواتب" description={calendar.employer_name}/>
+    <EmployerSelector path={path} page="workspace" employer={employer} name={calendar.employer_name} choices={employers} context={query} singleEmployer={found.data.unique_employer===employer}/>
+    {invalidPeriod&&<Message tone="warn">الفترة المختارة لا تخص هذه الجهة. اختر المسير من القائمة.</Message>}
+    {!calendar.access.enabled&&<Message tone="info">خدمة الرواتب غير مفعلة لإجراءات جديدة؛ التاريخ متاح حسب الصلاحيات.</Message>}
+    <section><h2>افتح المسير الذي تريد إنجازه</h2>{periods.length===0?<Message tone="info">لا توجد فترة محفوظة بعد. ابدأ بإعداد دورة الرواتب.</Message>:<ul className={styles.cardGrid}>{periods.map(p=><RecordCard key={p.id} className={styles.card}><h3>{displayDate(p.starts_on)} — {displayDate(p.ends_on)}</h3><ButtonLink href={scope('/runs',{period:p.id})}>فتح المسير</ButtonLink></RecordCard>)}</ul>}</section>
+    {calendar.access.can_manage&&calendar.access.enabled&&(calendar.next_preview?<Disclosure summary="إنشاء المسير للفترة التالية" open={periods.length===0}><GenerateForm tenant={tenantId} employer={employer} revision={calendar.revision} preview={calendar.next_preview}/></Disclosure>:calendar.versions.length===0?<ButtonLink href={setupLink}>إعداد دورة الرواتب والفترة الأولى</ButtonLink>:null)}
+    <Disclosure summary="إعدادات وأدوات الرواتب"><nav className={styles.actions}><ButtonLink variant="ghost" href={setupLink}>الدورة وإعدادات الرواتب</ButtonLink>{calendar.access.can_view&&<ButtonLink variant="ghost" href={scope('/inputs')}>المدخلات المتقدمة</ButtonLink>}{!navigation.error&&navigation.data?.can_view_advances&&<ButtonLink variant="ghost" href={scope('/advances')}>السلف والأقساط</ButtonLink>}{!navigation.error&&navigation.data?.can_view_reports&&<ButtonLink variant="ghost" href={scope('/reports',{report:navigation.data.report_kind==='advances'?'advances':'sheet'})}>تقارير الرواتب</ButtonLink>}</nav></Disclosure>
+    {periods.length===24&&<Link href={scope('/runs',{before:periods[23].starts_on,period:''})}>فترات أقدم</Link>}
   </div></PageFrame>;
 }

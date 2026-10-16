@@ -1,7 +1,7 @@
 import { ARABIC_DISPLAY_LOCALE } from '@/lib/display-locale';
 export type CalendarFields = { start: string; cutoff: string; payment: string; month: string; timezone: string; reason: string };
 export type CalendarPreview = { starts_on: string; ends_on: string; payment_on: string; timezone: string; label: string; revision?: number; last_generated_end?: string | null; is_transition?: boolean };
-export type CalendarState = CalendarFields & { error: string; preview: CalendarPreview | null; attemptKey: string; saved: boolean };
+export type CalendarState = CalendarFields & { error: string; preview: CalendarPreview | null; attemptKey: string; saved: boolean; periodId?:string };
 export const uuid = (value: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 export function currentPeriodId(
  periods: readonly { id: string; starts_on: string; ends_on: string }[],

@@ -28,7 +28,10 @@ export async function legalEntityFormAction(previous: RecordActionState, formDat
   if (error) return failure(mapError(error.message));
   const result = data && typeof data === 'object' && !Array.isArray(data) ? data as Record<string, unknown> : null;
   if (!result || typeof result.state !== 'string') return failure('failed');
-  redirect(`/tenant/${tenantId}/entities-sites/${entityId}?state=entity-${encodeURIComponent(result.state)}`);
+  const context=new URLSearchParams({state:'entity-'+result.state});
+  const payrollEmployer=field(formData,'payroll_employer'),payrollPeriod=field(formData,'payroll_period');
+  if(action==='update'&&payrollEmployer===entityId&&isUuid(payrollEmployer)&&isUuid(payrollPeriod)){context.set('payroll_employer',payrollEmployer);context.set('payroll_period',payrollPeriod);}
+  redirect(`/tenant/${tenantId}/entities-sites/${entityId}?${context}`);
 }
 
 export async function siteFormAction(previous: RecordActionState, formData: FormData): Promise<RecordActionState> {

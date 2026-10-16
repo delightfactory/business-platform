@@ -57,5 +57,8 @@ export async function commitClassificationAction(
   revalidatePath(`/tenant/${tenantId}/attendance/${instanceId}`);
   revalidatePath(`/tenant/${tenantId}/attendance`);
   revalidatePath(`/tenant/${tenantId}/attendance/review`);
-  redirect(`/tenant/${tenantId}/attendance/${instanceId}?state=classification-approved`);
+  const context=new URLSearchParams({state:'classification-approved'});
+  const employer=field('payroll_employer'),period=field('payroll_period');
+  if(uuid(employer)&&uuid(period)){context.set('payroll_employer',employer);context.set('payroll_period',period);}
+  redirect(`/tenant/${tenantId}/attendance/${instanceId}?${context}`);
 }

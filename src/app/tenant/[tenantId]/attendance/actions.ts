@@ -11,14 +11,14 @@ export async function recordPunchAction(formData: FormData) {
   const localTime = field(formData, 'localTime');
   const requestKey = field(formData, 'requestKey');
   const reason = field(formData, 'reason');
-  if (!isUuid(tenantId) || !isUuid(instanceId) || !isUuid(requestKey) || !['in', 'out'].includes(direction) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(localTime)) move(tenantId, instanceId, 'input');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || !isUuid(requestKey) || !['in', 'out'].includes(direction) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(localTime)) move(tenantId, instanceId, 'input', formData);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) move(tenantId, instanceId, 'setup');
+  if (!supabase) move(tenantId, instanceId, 'setup', formData);
   const { error } = await supabase.rpc('record_manual_attendance_punch_local', {
     p_tenant_id: tenantId, p_instance_id: instanceId, p_direction: direction,
     p_local_time: localTime, p_request_key: requestKey, p_reason: reason || null,
   });
-  move(tenantId, instanceId, error ? mapError(error.message) : 'punch-recorded');
+  move(tenantId, instanceId, error ? mapError(error.message) : 'punch-recorded', formData);
 }
 
 export async function correctPunchAction(formData: FormData) {
@@ -30,14 +30,14 @@ export async function correctPunchAction(formData: FormData) {
   const localTime = field(formData, 'localTime');
   const reason = field(formData, 'reason');
   if (!isUuid(tenantId) || !isUuid(instanceId) || !isUuid(punchId) || !['replace', 'exclude'].includes(action)
-    || (action === 'replace' && (!['in', 'out'].includes(direction) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(localTime))) || reason.trim().length < 3) move(tenantId, instanceId, 'input');
+    || (action === 'replace' && (!['in', 'out'].includes(direction) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(localTime))) || reason.trim().length < 3) move(tenantId, instanceId, 'input', formData);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) move(tenantId, instanceId, 'setup');
+  if (!supabase) move(tenantId, instanceId, 'setup', formData);
   const { error } = await supabase.rpc('correct_manual_attendance_punch_local', {
     p_tenant_id: tenantId, p_instance_id: instanceId, p_punch_id: punchId, p_action: action,
     p_direction: direction || null, p_local_time: localTime || null, p_reason: reason,
   });
-  move(tenantId, instanceId, error ? mapError(error.message) : 'punch-corrected');
+  move(tenantId, instanceId, error ? mapError(error.message) : 'punch-corrected', formData);
 }
 
 export async function approveAttendanceAction(formData: FormData) {
@@ -45,13 +45,13 @@ export async function approveAttendanceAction(formData: FormData) {
   const instanceId = field(formData, 'instanceId');
   const correctsFactId = field(formData, 'correctsFactId');
   const reason = field(formData, 'reason');
-  if (!isUuid(tenantId) || !isUuid(instanceId) || (correctsFactId && !isUuid(correctsFactId)) || (correctsFactId && reason.trim().length < 3)) move(tenantId, instanceId, 'input');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || (correctsFactId && !isUuid(correctsFactId)) || (correctsFactId && reason.trim().length < 3)) move(tenantId, instanceId, 'input', formData);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) move(tenantId, instanceId, 'setup');
+  if (!supabase) move(tenantId, instanceId, 'setup', formData);
   const { error } = await supabase.rpc('approve_attendance_fact', {
     p_tenant_id: tenantId, p_instance_id: instanceId, p_corrects_fact_id: correctsFactId || null, p_reason: reason || null,
   });
-  move(tenantId, instanceId, error ? mapError(error.message) : 'fact-approved');
+  move(tenantId, instanceId, error ? mapError(error.message) : 'fact-approved', formData);
 }
 
 export async function approveAttendanceAbsenceAction(formData: FormData) {
@@ -59,9 +59,9 @@ export async function approveAttendanceAbsenceAction(formData: FormData) {
   const instanceId = field(formData, 'instanceId');
   const correctsFactId = field(formData, 'correctsFactId');
   const reason = field(formData, 'reason');
-  if (!isUuid(tenantId) || !isUuid(instanceId) || (correctsFactId && !isUuid(correctsFactId)) || reason.trim().length < 3 || reason.length > 500) move(tenantId, instanceId, 'input');
+  if (!isUuid(tenantId) || !isUuid(instanceId) || (correctsFactId && !isUuid(correctsFactId)) || reason.trim().length < 3 || reason.length > 500) move(tenantId, instanceId, 'input', formData);
   const supabase = await createSupabaseServerClient();
-  if (!supabase) move(tenantId, instanceId, 'setup');
+  if (!supabase) move(tenantId, instanceId, 'setup', formData);
   const { error } = correctsFactId
     ? await supabase.rpc('correct_attendance_absence', {
       p_tenant_id: tenantId, p_instance_id: instanceId, p_corrects_fact_id: correctsFactId, p_reason: reason,
@@ -69,7 +69,7 @@ export async function approveAttendanceAbsenceAction(formData: FormData) {
     : await supabase.rpc('approve_attendance_absence', {
       p_tenant_id: tenantId, p_instance_id: instanceId, p_reason: reason,
     });
-  move(tenantId, instanceId, error ? mapError(error.message) : 'absence-approved');
+  move(tenantId, instanceId, error ? mapError(error.message) : 'absence-approved', formData);
 }
 
 export async function reviewAttendanceOvertimeAction(formData: FormData) {
@@ -79,23 +79,23 @@ export async function reviewAttendanceOvertimeAction(formData: FormData) {
   const decision = field(formData, 'decision');
   const reason = field(formData, 'reason');
   if (!isUuid(tenantId) || !isUuid(instanceId) || !isUuid(candidateId) || !['approved', 'rejected'].includes(decision) || reason.length < 3 || reason.length > 500) {
-    move(tenantId, instanceId, 'overtime-input');
+    move(tenantId, instanceId, 'overtime-input', formData);
   }
   const supabase = await createSupabaseServerClient();
-  if (!supabase) move(tenantId, instanceId, 'setup');
+  if (!supabase) move(tenantId, instanceId, 'setup', formData);
   if (decision === 'approved') {
     const buckets = ['ordinary_day', 'ordinary_night', 'weekly_rest', 'official_holiday'].map((name) => Number(field(formData, name)));
-    if (buckets.some((value) => !Number.isInteger(value) || value < 0)) move(tenantId, instanceId, 'overtime-classification-input');
+    if (buckets.some((value) => !Number.isInteger(value) || value < 0)) move(tenantId, instanceId, 'overtime-classification-input', formData);
     const { error } = await supabase.rpc('classify_attendance_overtime', {
       p_tenant_id: tenantId, p_candidate_id: candidateId, p_ordinary_day: buckets[0], p_ordinary_night: buckets[1],
       p_weekly_rest: buckets[2], p_official_holiday: buckets[3], p_reason: reason,
     });
-    move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-classified');
+    move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-classified', formData);
   }
   const { error } = await supabase.rpc('review_attendance_overtime', {
     p_tenant_id: tenantId, p_candidate_id: candidateId, p_decision: decision, p_reason: reason,
   });
-  move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-rejected');
+  move(tenantId, instanceId, error ? mapOvertimeError(error.message) : 'overtime-rejected', formData);
 }
 
 export type BulkApprovalState = {
@@ -163,6 +163,9 @@ function mapOvertimeError(message: string) {
   if (message.includes('classification_invalid')) return 'overtime-classification-input';
   return 'failed';
 }
-function move(tenantId: string, instanceId: string, state: string): never {
-  redirect(`/tenant/${tenantId}/attendance/${instanceId}?state=${encodeURIComponent(state)}`);
+function move(tenantId: string, instanceId: string, state: string, formData?:FormData): never {
+  const context=new URLSearchParams({state});
+  const employer=formData?field(formData,'payroll_employer'):'',period=formData?field(formData,'payroll_period'):'';
+  if(isUuid(employer)&&isUuid(period)){context.set('payroll_employer',employer);context.set('payroll_period',period);}
+  redirect(`/tenant/${tenantId}/attendance/${instanceId}?${context}`);
 }

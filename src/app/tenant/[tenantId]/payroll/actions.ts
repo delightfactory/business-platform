@@ -18,16 +18,16 @@ export async function calendarAction(previous: CalendarState, form: FormData): P
   return { ...state, preview: data as CalendarPreview, attemptKey: crypto.randomUUID() };
  }
  if (operation !== 'save' || !previous.preview || !uuid(previous.attemptKey)) return fail('22023');
- const { error } = await client.rpc('payroll_save_calendar', { ...args, p_expected: previous.preview.revision, p_attempt: previous.attemptKey, p_reviewed: previous.preview, p_reason: state.reason });
+ const { data,error } = await client.rpc('payroll_save_calendar', { ...args, p_expected: previous.preview.revision, p_attempt: previous.attemptKey, p_reviewed: previous.preview, p_reason: state.reason });
  if (error) {
   const definitive = ['PT409','42501','55000'].includes(error.code);
   return { ...fail(error.code, error.message), ...(definitive ? { preview: null, attemptKey: '' } : {}) };
  }
  revalidatePath(`/tenant/${tenant}/payroll`);
  revalidatePath(`/tenant/${tenant}/payroll/setup`);
- return { ...state, error: '', preview: null, attemptKey: '', saved: true };
+ return { ...state, error: '', preview: null, attemptKey: '', saved: true,periodId:data?.period_id };
 }
-export type GenerateState = { error: string; saved: boolean; attemptKey: string };
+export type GenerateState = { error: string; saved: boolean; attemptKey: string; periodId?:string };
 export async function generateAction(previous: GenerateState, form: FormData): Promise<GenerateState> {
  const tenant = String(form.get('tenant') ?? ''); const employer = String(form.get('employer') ?? '');
  const state = { ...previous, saved: false, error: '' };
@@ -36,7 +36,7 @@ export async function generateAction(previous: GenerateState, form: FormData): P
  const { data: { user } } = await client.auth.getUser(); if (!user) return { ...state, error: errorText('42501') };
  let reviewed: CalendarPreview;
  try { reviewed = JSON.parse(String(form.get('reviewed') ?? '')); } catch { return { ...state, error: errorText('22023') }; }
- const { error } = await client.rpc('payroll_generate_next_period', { p_tenant: tenant, p_employer: employer, p_expected: Number(form.get('revision')), p_attempt: previous.attemptKey, p_reviewed: reviewed });
+ const { data,error } = await client.rpc('payroll_generate_next_period', { p_tenant: tenant, p_employer: employer, p_expected: Number(form.get('revision')), p_attempt: previous.attemptKey, p_reviewed: reviewed });
  if (error) return { ...state, error: errorText(error.code, error.message) };
- revalidatePath(`/tenant/${tenant}/payroll`); revalidatePath(`/tenant/${tenant}/payroll/setup`); return { error: '', saved: true, attemptKey: crypto.randomUUID() };
+ revalidatePath(`/tenant/${tenant}/payroll`); revalidatePath(`/tenant/${tenant}/payroll/setup`); return { error: '', saved: true, attemptKey: crypto.randomUUID(),periodId:data?.period_id };
 }

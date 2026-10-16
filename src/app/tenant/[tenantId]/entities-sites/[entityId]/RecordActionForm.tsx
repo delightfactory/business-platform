@@ -12,10 +12,10 @@ import { legalEntityFormAction, siteFormAction, type RecordActionState } from '.
 type Action = 'update' | 'default' | 'deactivate' | 'reactivate';
 type Props = {
   tenantId: string; entityId: string; action: Action; siteId?: string;
-  displayName?: string; legalName?: string; label: string;
+  displayName?: string; legalName?: string; label: string; payrollEmployer?:string; payrollPeriod?:string;
 };
 
-export function RecordActionForm({ tenantId, entityId, siteId, action: recordAction, displayName = '', legalName = '', label }: Props) {
+export function RecordActionForm({ tenantId, entityId, siteId, action: recordAction, displayName = '', legalName = '', label, payrollEmployer, payrollPeriod }: Props) {
   const { offline, blockOfflineSubmission } = useOfflineSubmission();
   const offlineHint0 = useId();
   const initial: RecordActionState = { displayName, legalName, reason: '', error: '', attempt: 0 };
@@ -26,7 +26,7 @@ export function RecordActionForm({ tenantId, entityId, siteId, action: recordAct
     : recordAction === 'default' ? 'سبب تغيير الاختيار الأساسي' : 'سبب التعديل';
   const showOffline0 = offline && !actionPending;
   return <form key={state.attempt} action={action} className="auth-form compact-form" onSubmit={(event) => { blockOfflineSubmission(event); }}>
-    <input type="hidden" name="tenantId" value={tenantId} />
+    <input type="hidden" name="tenantId" value={tenantId} /><input type="hidden" name="payroll_employer" value={payrollEmployer??''}/><input type="hidden" name="payroll_period" value={payrollPeriod??''}/>
     <input type="hidden" name={isSite ? 'siteId' : 'entityId'} value={siteId ?? entityId} />
     <input type="hidden" name="returnEntityId" value={entityId} />
     <input type="hidden" name="action" value={recordAction} />

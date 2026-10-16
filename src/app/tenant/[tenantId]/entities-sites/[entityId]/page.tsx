@@ -11,7 +11,7 @@ import { RecordActionForm } from './RecordActionForm';
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ tenantId: string; entityId: string }>;
-type Query = Promise<{ state?: string }>;
+type Query = Promise<{ state?: string; payroll_employer?:string; payroll_period?:string }>;
 type Site = { id: string; display_name: string; is_active: boolean; is_default: boolean };
 type Entity = { id: string; display_name: string; legal_name: string | null; is_active: boolean; is_default: boolean; active_site_count: number; sites: Site[] };
 type Snapshot = {
@@ -22,6 +22,8 @@ type Snapshot = {
 export default async function LegalEntitySitesPage({ params, searchParams }: { params: Params; searchParams: Query }) {
   const { tenantId, entityId } = await params;
   const query = await searchParams;
+  const payrollEmployer=isUuid(query.payroll_employer??'')&&query.payroll_employer===entityId?query.payroll_employer:'',payrollPeriod=isUuid(query.payroll_period??'')?query.payroll_period:'';
+  const payrollReturn=payrollEmployer&&payrollPeriod?`/tenant/${tenantId}/payroll/runs?${new URLSearchParams({employer:payrollEmployer,period:payrollPeriod})}`:null;
   if (!isUuid(tenantId) || !isUuid(entityId)) notFound();
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <Status tenantId={tenantId} title="الاتصال غير متاح" detail="تعذر الاتصال بخدمة الحسابات. أعد المحاولة لاحقًا." />;
@@ -41,7 +43,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
   const feedback = feedbackForState(query.state);
 
   return (
-    <PageFrame footer="بيانات الشركة">
+    <PageFrame footer="بيانات الشركة">{payrollReturn&&<ButtonLink variant="ghost" href={payrollReturn}>العودة إلى مسير الرواتب نفسه</ButtonLink>}
       {feedback.success && <FeedbackToast key={crypto.randomUUID()} message={feedback.success} />}
       <Panel className="task-page tenant-detail-header" aria-labelledby="entity-title">
         <Link className="back-link" href={`/tenant/${tenantId}/entities-sites`}>العودة إلى الجهات والفروع</Link>
@@ -58,7 +60,7 @@ export default async function LegalEntitySitesPage({ params, searchParams }: { p
           <Disclosure summary={<>تعديل بيانات الجهة</>} className="task-disclosure">
 
             <RecordActionForm tenantId={tenantId} entityId={entity.id} action="update" displayName={entity.display_name}
-              legalName={entity.legal_name ?? ''} label="حفظ بيانات الجهة" />
+              legalName={entity.legal_name ?? ''} payrollEmployer={payrollEmployer} payrollPeriod={payrollPeriod} label="حفظ بيانات الجهة" />
           </Disclosure>
           {entity.is_active && !entity.is_default && <Disclosure summary={<>جعلها الجهة الافتراضية</>} className="task-disclosure">
 
