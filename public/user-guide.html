@@ -1,8 +1,19 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>دليل استخدام المنصة والموارد البشرية</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#172b3a;font:16px/1.95 Tahoma,Arial,sans-serif}a{color:#116d71;text-decoration:none}a:hover{text-decoration:underline}header{background:#123c46;color:white;padding:32px max(24px,calc((100vw - 1100px)/2));}header p{margin:0 0 14px}header a,header button{display:inline-block;border:1px solid #dce8e8;border-radius:8px;background:#fff;color:#123c46;padding:9px 16px;font:inherit;cursor:pointer;margin:4px}main{display:grid;grid-template-columns:260px minmax(0,800px);gap:24px;max-width:1140px;margin:24px auto;padding:0 20px}nav{align-self:start;position:sticky;top:16px;background:#fff;border:1px solid #dce2e7;border-radius:12px;padding:16px;max-height:90vh;overflow:auto;font-size:13px}nav a{display:block;padding:5px 0}article{background:#fff;border:1px solid #dce2e7;border-radius:12px;padding:32px;min-width:0}h1{font-size:28px;line-height:1.6;margin:0 0 20px}h2{font-size:22px;color:#116d71;border-bottom:1px solid #dce2e7;padding-bottom:10px;margin-top:40px;scroll-margin-top:20px}h3{font-size:18px;margin-top:26px}h4{font-size:16px}p{margin:12px 0}li{padding-inline-start:4px;margin:6px 0}hr{border:0;border-top:1px solid #e1e6eb;margin:28px 0}.table-wrap{max-width:100%;overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #dce2e7;padding:9px 12px;text-align:right;vertical-align:top}th{background:#eef5f5}bdi{direction:ltr;unicode-bidi:isolate}footer{text-align:center;color:#586875;padding:24px;font-size:13px}.skip{position:absolute;top:-100px}.skip:focus{top:0;background:white;padding:10px;z-index:2}
-@media(max-width:850px){main{display:block;padding:0 12px}nav{position:static;max-height:280px;margin-bottom:16px}article{padding:20px}header{padding:24px 16px}}
-@page{size:A4;margin:17mm 15mm 19mm} @media print{body{background:white;font-size:10.5pt;line-height:1.85}header,nav,.skip,footer{display:none}main{display:block;margin:0;padding:0;max-width:none}article{border:0;border-radius:0;padding:0}h1{font-size:24pt}h2{font-size:17pt;margin-top:22pt;break-before:auto}h3{font-size:13pt}h1,h2,h3,h4{break-after:avoid}p,li{orphans:3;widows:3}tr{break-inside:avoid}table{font-size:9pt}.table-wrap{overflow:visible}thead{display:table-header-group}a{color:inherit}hr{margin:16pt 0}}
-[hidden]{display:none!important}.guide-tools{max-width:1140px;margin:24px auto;padding:20px;background:white;border:1px solid #dce2e7;border-radius:12px}.guide-tools label{font-weight:700}.guide-tools input{font:inherit;max-width:100%;width:320px;padding:8px;margin:8px;border:1px solid #71838b;border-radius:8px;min-height:44px}.guide-tools select{font:inherit;max-width:100%;padding:8px;margin:8px;border:1px solid #71838b;border-radius:8px;min-height:44px}.guide-tools p{margin:6px 0}.guide-tools a{display:inline-block;min-height:44px;padding:6px}.guide-tools button{font:inherit;min-height:44px;cursor:pointer}#guide-clear{border:1px solid #b6c4ca;border-radius:8px;background:#fff;color:#244951;padding:8px 14px}#guide-clear:hover{background:#eef5f5}#guide-clear:focus-visible{outline:2px solid #116d71;outline-offset:3px}.guide-intro{max-width:75ch}.guide-status{color:#244951}@media(max-width:850px){.guide-tools{margin:12px}.guide-tools select,.guide-tools input{display:block;margin-inline:0;width:100%}}@media print{.guide-tools{display:none}} </style></head><body><a class="skip" href="#guide">انتقل إلى الدليل</a><header><p><strong>دليل الشركة للتدريب والاستخدام اليومي</strong><br>اختر مهمتك من الفهرس. الأمثلة توضيحية؛ سياسات الشركة والصلاحيات هي المرجع.</p><button type="button" onclick="window.print()">طباعة الأقسام المعروضة أو حفظها PDF</button><a href="user-guide.pdf" download>تنزيل الدليل الكامل PDF</a></header><section class="guide-tools" aria-label="اختيار محتوى الدليل"><label for="guide-role">الدليل المناسب لمهمتك</label><select id="guide-role"><option value="personal">مهامي حسب صلاحياتي</option><option value="employee">الموظف</option><option value="company">مسؤول الشركة</option><option value="people">الموارد البشرية</option><option value="attendance">مسؤول الحضور</option><option value="leave">مسؤول الإجازات</option><option value="payroll">مسؤول الرواتب</option><option value="advances">السلف</option><option value="reports">التقارير</option><option value="operator">مشغّل المنصة</option><option value="all">الدليل الكامل للتدريب</option></select><label for="guide-search">ابحث عن مهمة أو شاشة</label><input id="guide-search" type="search" placeholder="مثال: إضافة موظف أو تسجيل دفعة" autocomplete="off" aria-controls="guide"><button id="guide-clear" type="button" hidden>مسح البحث</button><p id="guide-status" class="guide-status" role="status" aria-live="polite" aria-atomic="true"></p><p id="guide-partial" hidden>تعذر التحقق من بعض مهام حسابك الآن. افتح الدليل مجددًا من حسابك بعد إعادة المحاولة، أو اختر المهمة يدويًا؛ هذا لا يعني سحب صلاحياتك.</p><p>ابدأ من المهمة في الفهرس. عرض الشرح لا يمنح صلاحية تنفيذ الإجراء؛ تتحدد الأزرار والبيانات من حسابك وخدمات شركتك.</p></section><main><nav aria-label="فهرس دليل الاستخدام"><strong>انتقل إلى القسم</strong><a data-guide-topic="common" href="#section-2">كيف تستخدم الدليل؟</a><a data-guide-topic="common" href="#section-3">1. رحلتك حسب دورك</a><a data-guide-topic="common" href="#section-10">2. التعرف على مساحة الشركة</a><a data-guide-topic="common" href="#section-12">3. أول دخول وقبول الدعوة</a><a data-guide-topic="company-users company-structure people-manage payroll-configure" href="#section-13">4. تجهيز الشركة لأول استخدام</a><a data-guide-topic="company-users" href="#section-14">5. المستخدمون والصلاحيات</a><a data-guide-topic="company-branding company-structure people-org" href="#section-17">6. هوية الشركة والجهات والفروع</a><a data-guide-topic="people-view people-manage people-employment people-compensation" href="#section-21">7. دليل الموظفين وإنشاء ملف جديد</a><a data-guide-topic="people-import" href="#section-23">8. استيراد الموظفين من ملف</a><a data-guide-topic="people-manage people-employment company-users" href="#section-24">9. تجهيز الموظف للعمل والخدمات الذاتية</a><a data-guide-topic="people-employment people-compensation" href="#section-27">10. تغيير العمل والأجر وإنهاء التوظيف</a><a data-guide-topic="work-policies" href="#section-32">11. قوالب الدوام: إعداد مفهوم بدل التخمين</a><a data-guide-topic="attendance-sources" href="#section-34">12. وسائل تسجيل الحضور: الموقع والخصوصية</a><a data-guide-topic="attendance-sources attendance-review" href="#section-37">13. مصدر خارجي وربط الموظفين</a><a data-guide-topic="profile self-attendance" href="#section-40">14. الموظف: سجّل حضورك وانصرافك</a><a data-guide-topic="attendance-input attendance-review" href="#section-41">15. إدخال الحضور يدويًا واستيراده</a><a data-guide-topic="attendance-view attendance-review" href="#section-44">16. مراجعة الحضور والاستثناءات والإضافي</a><a data-guide-topic="leave-manage" href="#section-49">17. إعداد الإجازات لأول مرة</a><a data-guide-topic="leave-balances" href="#section-51">18. أرصدة الإجازات والاستحقاق السنوي</a><a data-guide-topic="self-leave" href="#section-54">19. الموظف: اطلب إجازة وتابع القرار</a><a data-guide-topic="leave-view leave-manage leave-approve" href="#section-56">20. مراجعة الإجازة والإلغاء والاستبدال</a><a data-guide-topic="payroll-view payroll-prepare payroll-configure payroll-approve payroll-close payroll-payments" href="#section-61">21. رحلة الرواتب من البداية إلى النهاية</a><a data-guide-topic="payroll-prepare payroll-configure" href="#section-62">22. دورة الرواتب والفترات</a><a data-guide-topic="payroll-prepare payroll-configure" href="#section-66">23. مدخلات الرواتب وشرح أهم الحقول</a><a data-guide-topic="payroll-view payroll-prepare payroll-approve" href="#section-74">24. مراجعة المسير وحل العوائق</a><a data-guide-topic="payroll-view payroll-approve payroll-close" href="#section-78">25. الاعتماد والحفظ النهائي</a><a data-guide-topic="payroll-reports" href="#section-81">26. التقارير والتصدير والطباعة</a><a data-guide-topic="advances" href="#section-82">27. سلف الموظفين ومتابعة الأقساط</a><a data-guide-topic="payroll-payments" href="#section-87">28. تسجيل دفعات الرواتب التي صُرفت خارجيًا</a><a data-guide-topic="payroll-correct" href="#section-90">29. تصحيح راتب مقفل</a><a data-guide-topic="common" href="#section-91">30. برنامج تدريب عملي تسلمه الشركة لموظفيها</a><a data-guide-topic="common" href="#section-98">31. حلول المشكلات والمصطلحات</a><a data-guide-topic="operator-companies operator-invitations operator-commercial operator-lifecycle operator-team operator-statutory" href="#section-102">32. ملحق مشغّل المنصة</a><a data-guide-topic="company-users" href="#section-112">صفحة اعتماد التدريب داخل الشركة</a></nav><article id="guide"><p id="guide-empty" hidden>لا توجد أقسام تطابق بحثك ضمن هذا العرض. جرّب كلمة أخرى، أو امسح البحث، أو اختر الدليل الكامل للتدريب.</p><div data-guide-intro>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>دليل استخدام المنصة والموارد البشرية</title><style>@font-face{font-family:Cairo;src:url('fonts/cairo.ttf') format('truetype');font-weight:200 1000;font-display:swap}
+:root{--ink:#173b44;--text:#344f5b;--muted:#607880;--teal:#177d80;--line:#d7e4e3;--soft:#f2f8f6}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:#f0f3f4;color:var(--text);font:16px/1.9 Cairo,Tahoma,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}h1,h2,h3,h4{color:var(--ink);line-height:1.65;font-weight:750}a{color:#166f75;text-decoration:none}a:hover{text-decoration:underline}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #157b80;outline-offset:4px}.guide-icon{display:inline-block;vertical-align:middle;flex-shrink:0}.skip{position:absolute;top:-120px}.skip:focus{top:8px;right:8px;background:#fff;padding:12px;z-index:20}[hidden]{display:none!important}
+.guide-masthead{background:#fff;max-width:1260px;margin:24px auto 0;border:1px solid var(--line);border-radius:16px;padding:30px 42px 24px}.guide-brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:15px;font-weight:750}.guide-brand span{font-size:12px;font-weight:600;color:var(--muted);border-right:1px solid #cfdcdd;padding-right:12px;margin-right:3px}.cover-edition{color:#437674;font-size:12px;margin:25px 0 13px}.cover-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:45px;align-items:center}.cover-title{font-size:44px;line-height:1.5;letter-spacing:-1px;color:var(--ink);font-weight:800;margin:0}.cover-title em{font-style:normal;color:var(--teal)}.cover-lead{font-size:15px;margin:15px 0 20px;color:#4f6973}.guide-masthead h1{font-size:19px;margin:0 0 5px}.guide-masthead #guide-cover-scope{font-size:12px;color:#5a737b;margin:0}.cover-journey{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;background:#f7faf9;padding:21px 17px}.cover-journey>p{font-size:12px;color:#2b686b;font-weight:700;flex-basis:100%;margin:0 0 13px}.cover-journey>div{flex:1;min-width:70px;border:1px solid var(--line);background:#fff;border-radius:8px;text-align:center;padding:15px 4px;color:var(--teal)}.cover-journey>div strong{display:block;font-size:11px;color:var(--ink);margin:9px 0 3px}.cover-journey small{font-size:9px;color:#617c83}.cover-journey .cover-arrow{color:#85a9a8}.cover-arrow svg{width:16px}.cover-caption{flex-basis:100%;text-align:center;margin-top:10px}.guide-actions{border-top:1px solid var(--line);padding-top:18px;margin-top:27px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}.guide-actions a,.guide-actions button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;min-height:44px;border:1px solid #ccdcdb;border-radius:7px;font-size:12px;background:white;color:#225d64}.guide-actions button{background:var(--teal);border-color:var(--teal);color:#fff}.guide-actions svg{width:17px}
+.guide-tools{max-width:1260px;margin:20px auto;padding:22px 28px;background:#fff;border:1px solid var(--line);border-radius:12px;scroll-margin-top:16px}.guide-fields{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}.guide-field{display:flex;flex-direction:column;gap:6px;min-width:230px}.guide-field label{font-size:12px;font-weight:750;color:var(--ink)}.guide-field select,.guide-field input{min-height:46px;padding:8px 12px;max-width:100%;border:1px solid #a8bfc1;border-radius:7px;background:#fff;color:var(--text);font-size:14px}.guide-field input{width:350px}.guide-tools>p{font-size:12px;color:#5c747d;margin:9px 0 0}.guide-tools .guide-status{color:#286d70;font-weight:700;margin-top:14px}#guide-clear{min-height:46px;padding:8px 14px;background:#fff;border:1px solid #a8bfc1;border-radius:7px;font-size:12px}
+main{display:grid;grid-template-columns:270px minmax(0,1fr);gap:22px;max-width:1260px;margin:22px auto;padding-bottom:24px}nav{align-self:start;position:sticky;top:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;max-height:92vh;overflow:auto;font-size:12px}nav>strong{display:block;font-size:14px;color:var(--ink);padding-bottom:12px;margin-bottom:7px;border-bottom:1px solid var(--line)}nav a{display:block;padding:7px 9px;border-radius:5px;color:#4f7078}nav a:hover{background:#eff7f5;color:#126f73;text-decoration:none}article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:35px 40px;min-width:0}article h1{font-size:26px;margin:0 0 18px}article h2{font-size:25px;margin:38px 0 24px;padding:18px 0 12px;border-top:2px solid #1e8183;border-bottom:1px solid var(--line);scroll-margin-top:22px}article h3{font-size:19px;margin:25px 0 10px}article h4{font-size:16px;margin:21px 0 8px}article p{margin:13px 0}article strong{font-weight:750;color:#244d57}article hr{border:0;border-top:1px solid var(--line);margin:24px 0}article li{margin:9px 0;padding-inline-start:5px}article ul,article ol{padding-inline-start:27px}article ol{list-style:none;counter-reset:guide-step;padding-inline-start:0}article ol>li{counter-increment:guide-step;position:relative;padding-inline-start:43px;min-height:32px;margin:13px 0}article ol>li:before{content:counter(guide-step);position:absolute;inset-inline-start:0;top:2px;background:#edf6f2;color:#1a7778;font-weight:750;font-size:12px;width:29px;height:29px;display:flex;align-items:center;justify-content:center;border-radius:50%}bdi{direction:ltr;unicode-bidi:isolate;white-space:nowrap;font-family:Cairo,Arial,sans-serif}article .guide-callout{display:flex;gap:12px;padding:15px 17px;background:#f4f8f8;border:1px solid #dce8e6;border-radius:7px;margin:18px 0}article .guide-callout>.guide-icon{margin-top:4px;color:#438087;width:20px}article .guide-callout>span{min-width:0}article .guide-callout.success{background:#f0f8f2;border-color:#dbe9df}article .guide-callout.success>.guide-icon{color:#467c60}article .guide-callout.caution{background:#fbf7ef;border-color:#ece3d1;border-inline-start:3px solid #bd9f6c}article .guide-callout.caution>.guide-icon{color:#937341}article .guide-callout.next{background:#fff;border:0;border-top:1px solid var(--line);border-radius:0;padding-inline:0}.table-wrap{max-width:100%;overflow:auto;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #dce6e4;padding:11px 13px;text-align:right;vertical-align:top}th{background:#edf5f3;color:#285f65;font-weight:700}tbody tr:nth-child(even){background:#fbfcfc}
+.guide-diagram{margin:23px 0;padding:18px;border:1px solid #d8e6e2;border-radius:8px;background:#fafcfb}.guide-diagram figcaption{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:750;color:#2d686c;margin-bottom:14px}.guide-diagram figcaption svg{width:18px}.diagram-flow{display:flex;align-items:stretch;gap:11px}.diagram-flow>div{flex:1;border:1px solid #c9ddda;background:#fff;padding:12px 8px;text-align:center;min-width:0}.diagram-flow strong{display:block;font-size:12px;color:#255e64}.diagram-flow span:not(.diagram-boundary){display:block;font-size:10px;color:#607b82;margin-top:4px}.diagram-flow .diagram-preview{border:1px dashed #76959e}.diagram-flow .diagram-saved{border-color:#258384}.diagram-boundary{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#a28046}.diagram-boundary small{font-size:9px}.diagram-boundary svg{width:18px}.guide-diagram>p{font-size:11px;color:#5d7780;margin:12px 0 0}.guide-footer{text-align:center;font-size:11px;color:#5e767f;padding:15px 24px 30px}
+@media(max-width:1300px){.guide-masthead,.guide-tools,main{margin-inline:20px}}@media(max-width:900px){.cover-layout{grid-template-columns:1fr;gap:22px}.cover-journey{max-width:580px}.guide-masthead{padding:24px}.cover-title{font-size:38px}main{grid-template-columns:220px minmax(0,1fr);gap:14px}article{padding:27px 23px}nav{padding:15px;font-size:11px}}@media(max-width:680px){.guide-masthead,.guide-tools,main{margin-inline:12px}.guide-masthead{padding:22px 20px}.cover-title{font-size:34px}.guide-masthead h1{font-size:17px}.guide-brand{font-size:13px}.guide-brand span{font-size:10px}.cover-journey{gap:5px;padding:14px 10px}.cover-journey>div{padding:13px 3px;min-width:60px}.cover-journey>div strong{font-size:10px}.cover-journey small{font-size:9px}.cover-arrow svg{width:12px}.guide-tools{padding:20px}.guide-fields{display:block}.guide-field{min-width:0;margin-bottom:13px}.guide-field input{width:100%}.guide-actions{align-items:stretch}.guide-actions button,.guide-actions a{width:100%}main{display:block}nav{position:static;max-height:230px;margin-bottom:17px;font-size:12px}article{padding:24px 18px;font-size:15px}article h1{font-size:23px}article h2{font-size:22px}article h3{font-size:18px}.diagram-flow{gap:6px}.diagram-flow>div{padding:10px 5px}.diagram-flow strong{font-size:10px}.diagram-flow span:not(.diagram-boundary){font-size:9px}.diagram-boundary svg{width:13px}.guide-diagram{padding:12px}.guide-diagram figcaption{font-size:12px}.guide-callout{font-size:14px}th,td{padding:8px}article ol>li{padding-inline-start:37px}article .guide-callout{padding:13px;gap:9px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@page{size:A4;margin:19mm 17mm 20mm;@top-right{padding-top:5mm;vertical-align:middle;content:'منصة الأعمال  /  دليل الاستخدام';font:8pt Cairo,sans-serif;color:#5c727a}@bottom-left{content:counter(page);font:8pt Cairo,sans-serif;color:#267378}@bottom-right{content:'دليل الشركة للتدريب والاستخدام اليومي';font:8pt Cairo,sans-serif;color:#607880}}
+@page guide-cover{@top-right{content:none}@bottom-left{content:none}@bottom-right{content:none}}
+@media print{html{scroll-behavior:auto}body{background:white;font-size:10.5pt;line-height:1.75;color:#263f4a}.skip,.guide-tools,.guide-actions,.guide-footer{display:none!important}.guide-masthead{page:guide-cover;break-after:page;border:0;border-radius:0;margin:0;padding:0;min-height:245mm;position:relative}.guide-brand{font-size:13pt;padding-top:1mm}.cover-edition{margin-top:22mm;font-size:10pt}.cover-layout{display:block}.cover-title{font-size:37pt;line-height:1.5;margin:5mm 0 0}.cover-lead{font-size:13pt;line-height:1.9;margin:6mm 0 12mm}.guide-masthead h1{font-size:17pt;margin-top:6mm}.guide-masthead #guide-cover-scope{font-size:10pt}.cover-journey{max-width:none;display:flex;margin-top:15mm;padding:7mm 6mm;gap:4mm}.cover-journey>p{font-size:10pt}.cover-journey>div{padding:5mm 1mm}.cover-journey>div strong{font-size:10pt}.cover-journey small{font-size:8pt}.cover-journey .cover-caption{margin-top:4mm}.cover-arrow svg{width:18px}main{display:block;margin:0;padding:0;max-width:none}nav{display:block;position:static;max-height:none;overflow:visible;border:0;border-radius:0;padding:0;margin:0 0 10mm;break-after:page;columns:2;column-gap:9mm;font-size:9pt}nav>strong{column-span:all;font-size:21pt;border-bottom:2px solid #238185;margin-bottom:6mm;padding-bottom:4mm}nav a{padding:2.2mm 0;break-inside:avoid;color:#344f59;line-height:1.65}article{border:0;border-radius:0;padding:0;margin:0;font-size:10.5pt}article h1{font-size:24pt}article section[data-guide-topic]{break-before:page}article h2{font-size:19pt;margin:0 0 6mm;padding:2mm 0 4mm;border-top:0;border-bottom:1px solid #b9d4d1}article h3{font-size:13pt;margin:6mm 0 3mm}article h4{font-size:11pt;margin:5mm 0 2mm}article p{margin:3mm 0}article li{margin:2mm 0}article ol>li{padding-inline-start:10mm;min-height:8mm;margin:3mm 0}article ol>li:before{width:7mm;height:7mm;font-size:9pt;top:.4mm}article h1,article h2,article h3,article h4{break-after:avoid}p,li{orphans:3;widows:3}article .guide-callout{break-inside:avoid;padding:4mm;margin:5mm 0;gap:3mm;border-radius:2mm}article .guide-callout>.guide-icon{width:4.5mm;height:4.5mm;margin-top:1mm}article .guide-callout.next{padding-inline:0}.table-wrap{overflow:visible;margin:4mm 0}table{font-size:8.8pt;line-height:1.7}th,td{padding:2.5mm 3mm}thead{display:table-header-group}tr{break-inside:avoid}bdi{white-space:normal;overflow-wrap:anywhere}.guide-diagram{break-inside:avoid;padding:4mm;margin:5mm 0}.guide-diagram figcaption{font-size:10pt}.diagram-flow strong{font-size:9pt}.diagram-flow span:not(.diagram-boundary){font-size:8pt}.diagram-flow>div{padding:3mm 2mm}.guide-diagram>p{font-size:8.5pt}.diagram-boundary small{font-size:7pt}a{color:inherit;text-decoration:none}article hr{margin:5mm 0}[hidden]{display:none!important}}
+
+/* Major print breaks use stable chapter anchors; update these selectors if heading IDs change. */
+@media print{body,article{line-height:1.7}article section[data-guide-topic]{break-before:auto}article h2{margin-top:9mm}article section:has(>h2#section-21),article section:has(>h2#section-61),article section:has(>h2#section-102),article section:has(>h2#section-112){break-before:page}article section:has(>h2#section-21)>h2,article section:has(>h2#section-61)>h2,article section:has(>h2#section-102)>h2,article section:has(>h2#section-112)>h2{margin-top:0}article .guide-callout{padding:3mm;margin:3.5mm 0}article ol>li{margin:2.5mm 0}}
+.guide-token{white-space:nowrap!important}
+</style></head><body><a class="skip" href="#guide">انتقل إلى الدليل</a><header class="guide-masthead"><div class="guide-brand"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H3zM12 7a3 3 0 0 1 3-3h6v14h-5a4 4 0 0 0-4 3"/></svg> منصة الأعمال <span>دليل الاستخدام</span></div><p class="cover-edition">دليل الشركة للتدريب والاستخدام اليومي</p><div class="cover-layout"><div><p class="cover-title">دليلك إلى<br>عمل <em>أكثر سلاسة.</em></p><p class="cover-lead">اعرف من أين تبدأ، وما الخطوة التالية،<br>وكيف تتأكد أن مهمتك تمت بنجاح.</p><h1>دليل استخدام المنصة والموارد البشرية</h1><p id="guide-cover-scope">للشركة، وفريق الموارد البشرية، وكل موظف.</p></div><div class="cover-journey"><p>من تجهيز الفريق إلى الرواتب</p><div><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5v2"/></svg><strong>الموظفون</strong><small>جهّز ملفات فريقك</small></div><span class="cover-arrow"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 2v6m10-6v6M3 11h18m-13 5h2m4 0h2"/></svg><strong>الحضور والإجازات</strong><small>تابع العمل اليومي</small></div><span class="cover-arrow"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 9h18m-5 5h5m-5 3h2"/></svg><strong>الرواتب</strong><small>راجع وأكمل المسير</small></div><small class="cover-caption">رسم يوضح ارتباط المهام، وليس صورة لشاشة داخل المنصة.</small></div></div><div class="guide-actions"><button type="button" onclick="window.print()"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H5v20h14V7zM14 2v6h5M8 12h8M8 16h8"/></svg> طباعة الأقسام المعروضة أو حفظها PDF</button><a href="user-guide.pdf" download><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H3zM12 7a3 3 0 0 1 3-3h6v14h-5a4 4 0 0 0-4 3"/></svg> تنزيل الدليل الكامل PDF</a><a href="#guide-tools">اختر مهمتك <svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></a></div></header><section class="guide-tools" id="guide-tools" aria-label="اختيار محتوى الدليل"><div class="guide-fields"><div class="guide-field"><label for="guide-role">الدليل المناسب لمهمتك</label><select id="guide-role"><option value="personal">مهامي حسب صلاحياتي</option><option value="employee">الموظف</option><option value="company">مسؤول الشركة</option><option value="people">الموارد البشرية</option><option value="attendance">مسؤول الحضور</option><option value="leave">مسؤول الإجازات</option><option value="payroll">مسؤول الرواتب</option><option value="advances">السلف</option><option value="reports">التقارير</option><option value="operator">مشغّل المنصة</option><option value="all">الدليل الكامل للتدريب</option></select></div><div class="guide-field"><label for="guide-search">ابحث عن مهمة أو شاشة</label><input id="guide-search" type="search" placeholder="مثال: إضافة موظف أو تسجيل دفعة" autocomplete="off" aria-controls="guide"></div><button id="guide-clear" type="button" hidden>مسح البحث</button></div><p id="guide-status" class="guide-status" role="status" aria-live="polite" aria-atomic="true"></p><p id="guide-partial" hidden>تعذر التحقق من بعض مهام حسابك الآن. افتح الدليل مجددًا من حسابك بعد إعادة المحاولة، أو اختر المهمة يدويًا؛ هذا لا يعني سحب صلاحياتك.</p><p>ابدأ من المهمة في الفهرس. عرض الشرح لا يمنح صلاحية تنفيذ الإجراء؛ تتحدد الأزرار والبيانات من حسابك وخدمات شركتك.</p></section><main><nav aria-label="فهرس دليل الاستخدام"><strong>انتقل إلى القسم</strong><a data-guide-topic="common" href="#section-2">كيف تستخدم الدليل؟</a><a data-guide-topic="common" href="#section-3">1. رحلتك حسب دورك</a><a data-guide-topic="common" href="#section-10">2. التعرف على مساحة الشركة</a><a data-guide-topic="common" href="#section-12">3. أول دخول وقبول الدعوة</a><a data-guide-topic="company-users company-structure people-manage payroll-configure" href="#section-13">4. تجهيز الشركة لأول استخدام</a><a data-guide-topic="company-users" href="#section-14">5. المستخدمون والصلاحيات</a><a data-guide-topic="company-branding company-structure people-org" href="#section-17">6. هوية الشركة والجهات والفروع</a><a data-guide-topic="people-view people-manage people-employment people-compensation" href="#section-21">7. دليل الموظفين وإنشاء ملف جديد</a><a data-guide-topic="people-import" href="#section-23">8. استيراد الموظفين من ملف</a><a data-guide-topic="people-manage people-employment company-users" href="#section-24">9. تجهيز الموظف للعمل والخدمات الذاتية</a><a data-guide-topic="people-employment people-compensation" href="#section-27">10. تغيير العمل والأجر وإنهاء التوظيف</a><a data-guide-topic="work-policies" href="#section-32">11. قوالب الدوام: إعداد مفهوم بدل التخمين</a><a data-guide-topic="attendance-sources" href="#section-34">12. وسائل تسجيل الحضور: الموقع والخصوصية</a><a data-guide-topic="attendance-sources attendance-review" href="#section-37">13. مصدر خارجي وربط الموظفين</a><a data-guide-topic="profile self-attendance" href="#section-40">14. الموظف: سجّل حضورك وانصرافك</a><a data-guide-topic="attendance-input attendance-review" href="#section-41">15. إدخال الحضور يدويًا واستيراده</a><a data-guide-topic="attendance-view attendance-review" href="#section-44">16. مراجعة الحضور والاستثناءات والإضافي</a><a data-guide-topic="leave-manage" href="#section-49">17. إعداد الإجازات لأول مرة</a><a data-guide-topic="leave-balances" href="#section-51">18. أرصدة الإجازات والاستحقاق السنوي</a><a data-guide-topic="self-leave" href="#section-54">19. الموظف: اطلب إجازة وتابع القرار</a><a data-guide-topic="leave-view leave-manage leave-approve" href="#section-56">20. مراجعة الإجازة والإلغاء والاستبدال</a><a data-guide-topic="payroll-view payroll-prepare payroll-configure payroll-approve payroll-close payroll-payments" href="#section-61">21. رحلة الرواتب من البداية إلى النهاية</a><a data-guide-topic="payroll-prepare payroll-configure" href="#section-62">22. دورة الرواتب والفترات</a><a data-guide-topic="payroll-prepare payroll-configure" href="#section-66">23. مدخلات الرواتب وشرح أهم الحقول</a><a data-guide-topic="payroll-view payroll-prepare payroll-approve" href="#section-74">24. مراجعة المسير وحل العوائق</a><a data-guide-topic="payroll-view payroll-approve payroll-close" href="#section-78">25. الاعتماد والحفظ النهائي</a><a data-guide-topic="payroll-reports" href="#section-81">26. التقارير والتصدير والطباعة</a><a data-guide-topic="advances" href="#section-82">27. سلف الموظفين ومتابعة الأقساط</a><a data-guide-topic="payroll-payments" href="#section-87">28. تسجيل دفعات الرواتب التي صُرفت خارجيًا</a><a data-guide-topic="payroll-correct" href="#section-90">29. تصحيح راتب مقفل</a><a data-guide-topic="common" href="#section-91">30. برنامج تدريب عملي تسلمه الشركة لموظفيها</a><a data-guide-topic="common" href="#section-98">31. حلول المشكلات والمصطلحات</a><a data-guide-topic="operator-companies operator-invitations operator-commercial operator-lifecycle operator-team operator-statutory" href="#section-102">32. ملحق مشغّل المنصة</a><a data-guide-topic="company-users" href="#section-112">صفحة اعتماد التدريب داخل الشركة</a></nav><article id="guide"><p id="guide-empty" hidden>لا توجد أقسام تطابق بحثك ضمن هذا العرض. جرّب كلمة أخرى، أو امسح البحث، أو اختر الدليل الكامل للتدريب.</p><div data-guide-intro>
 <h1 id="section-1">دليل استخدام المنصة والموارد البشرية</h1>
 <p><strong>نسخة تدريب الشركات — 16 أكتوبر 2026</strong> دليل عملي لمسؤول الشركة وفريق الموارد البشرية والحضور والرواتب والموظفين، مع ملحق مستقل لفريق تشغيل المنصة.</p>
 <p>يعكس هذا الدليل الوظائف الموجودة في النسخة الحالية. ما يظهر لكل مستخدم يعتمد على خدمات شركته وصلاحيات حسابه وحالة بياناته. أسماء الأدوار الواردة هنا تصف المهام؛ يمكن للشركة جمع أكثر من مهمة في حساب واحد وفق تفويضها. الأمثلة للتوضيح والتدريب، وليست سياسة مقترحة للشركة أو اعتمادًا قانونيًا أو ماليًا.</p>
@@ -14,7 +25,7 @@
 <p>للوصول إلى النسخة الإلكترونية من داخل المنصة، افتح قائمة حسابك واختر <strong>«دليل الاستخدام والتدريب»</strong>. استخدم البحث لكتابة المهمة أو اسم الشاشة، أو اخترها من الفهرس. لا تحتاج إلى قراءة الدليل كاملًا قبل تنفيذ كل مهمة.</p>
 <p>عند فتح الدليل من حسابك يعرض المهام المناسبة لصلاحياتك الحالية، ويجمعها إذا كنت تتولى أكثر من مهمة. تبقى الخطوة التالية موضحة عندما يتولاها مسؤول آخر؛ ظهور شرحها لا يعني أن حسابك يستطيع تنفيذها. من «الدليل المناسب لمهمتك» يمكنك التركيز على الموظف أو الموارد البشرية أو الحضور أو الإجازات أو الرواتب أو إدارة الشركة أو تشغيل المنصة. اختر «الدليل الكامل للتدريب» لتجهيز تدريب جماعي. هذا تخصيص للشرح؛ الأزرار والبيانات داخل المنصة تظل محكومة بصلاحيات حسابك وخدمات شركتك. الدليل العام لا يقرأ بيانات الموظفين.</p>
 <p>استخدم «طباعة الأقسام المعروضة أو حفظها PDF» لإعداد نسخة مخصصة للدور. زر تنزيل الدليل الكامل يعطي جميع الأقسام، وليس محتوى حسابك فقط. إذا تغيرت صلاحياتك، افتح الدليل مجددًا من قائمة الحساب لتحديث المهام المقترحة. عند فتح النسخة العامة مباشرة تظهر جميع الأقسام؛ اختر المهمة المطلوبة بنفسك.</p>
-<p><strong>قاعدة مهمة عند العمل:</strong> انتهاء الانتظار أو اختفاء رسالة لا يؤكد حفظ العملية. اقرأ الحالة أو إيصال النتيجة. إذا ظهرت «لم تتأكد النتيجة»، استخدم التحقق أو الاستعادة المتاحين في الصفحة قبل إنشاء طلب جديد، خصوصًا في الرواتب والسلف والدفعات والأرصدة.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>قاعدة مهمة عند العمل:</strong> انتهاء الانتظار أو اختفاء رسالة لا يؤكد حفظ العملية. اقرأ الحالة أو إيصال النتيجة. إذا ظهرت «لم تتأكد النتيجة»، استخدم التحقق أو الاستعادة المتاحين في الصفحة قبل إنشاء طلب جديد، خصوصًا في الرواتب والسلف والدفعات والأرصدة.</span></p>
 <hr>
 </section>
 <section data-guide-topic="common">
@@ -60,17 +71,17 @@
 <h2 id="section-10">2. التعرف على مساحة الشركة</h2>
 <p>تبدأ مساحة إدارة الشركة من «الرئيسية». ومنها تصل إلى مهام حسابك. القائمة تعرض مداخل مباشرة مثل «الموظفون» و«الحضور» و«الإجازات» و«الرواتب» و«السلف» و«التقارير»، حسب الخدمات والصلاحيات المتاحة. افتح اسم العمل نفسه؛ لا تحتاج إلى البحث عنه داخل مجموعة تجمع عدة أعمال.</p>
 <p>تجد إعدادات الشركة والموارد البشرية في موضع مستقل، مثل الجهات والفروع والمستخدمين وأنظمة الدوام ووسائل الحضور وإعدادات الإجازات والرواتب. على الهاتف افتح «القائمة» للوصول إلى المداخل المسموح بها لحسابك. وقد تختلف قائمة زميلك عن قائمتك لاختلاف مهامه.</p>
-<p><strong>ابدأ من القائمة، ثم افتح السجل:</strong> موظف، أو يوم حضور، أو طلب إجازة، أو مسير رواتب، أو سلفة. داخل السجل ستجد تفاصيله والإجراءات المتاحة وحالته بعد الحفظ. مثال: افتح «الرواتب»، ثم افتح المسير المطلوب؛ تراجع موظفيه وتكمل الاعتماد والصرف من مساحته.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من القائمة، ثم افتح السجل:</strong> موظف، أو يوم حضور، أو طلب إجازة، أو مسير رواتب، أو سلفة. داخل السجل ستجد تفاصيله والإجراءات المتاحة وحالته بعد الحفظ. مثال: افتح «الرواتب»، ثم افتح المسير المطلوب؛ تراجع موظفيه وتكمل الاعتماد والصرف من مساحته.</span></p>
 <p>قبل الإجراء تأكد من <strong>اسم الشركة، وجهة العمل، والموظف، والفترة أو التاريخ</strong>. إذا كانت للشركة أكثر من جهة، اختر الجهة الصحيحة مرة وراجع الاسم أعلى الصفحة عند الانتقال. لا تكفي مطابقة اسم الموظف وحده لاختيار سجل مالي.</p>
 <p>القوائم الطويلة تعرض بحثًا وصفحات إضافية. عدم ظهور الاسم في أول صفحة لا يعني أنه غير موجود. و«لا توجد نتائج» تختلف عن «تعذر تحميل البيانات»؛ عند تعذر التحميل أعد المحاولة قبل إنشاء سجل بديل.</p>
 <h3 id="section-11">المساعدة بجوار الحقول</h3>
 <p>عنوان الحقل يبقى ظاهرًا، وقد تجد مثالًا داخل الحقل وعلامة مساعدة صغيرة <strong>؟</strong> بجواره. افتحها عند الحاجة لفهم المطلوب أو وحدته. المثال يوضح شكل الإجابة؛ لا يُعد قيمة محفوظة أو سياسة للشركة.</p>
 <p>الأجزاء مثل «خيارات إضافية» و«سجل المسير وتفاصيل الحساب» تفتح عند الحاجة. ابدأ بالمهمة الواضحة، ثم افتح التفاصيل عندما تريد مراجعة التاريخ أو تعديل إعداد قليل الاستخدام. تظل الأخطاء والتأكيدات المهمة ظاهرة بجوار الإجراء.</p>
-<p><strong>النتيجة:</strong> تنجز مهمتك من السجل الصحيح وتقرأ حالته بعد الحفظ. إذا لم يظهر إجراء تحتاجه، اطلب من مسؤول المستخدمين إتاحة المهمة المطلوبة لحسابك.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تنجز مهمتك من السجل الصحيح وتقرأ حالته بعد الحفظ. إذا لم يظهر إجراء تحتاجه، اطلب من مسؤول المستخدمين إتاحة المهمة المطلوبة لحسابك.</span></p>
 </section>
 <section data-guide-topic="common">
 <h2 id="section-12">3. أول دخول وقبول الدعوة</h2>
-<p><strong>لمن؟</strong> مسؤول الشركة الجديد أو عضو دُعي إليها.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مسؤول الشركة الجديد أو عضو دُعي إليها.</span></p>
 <ol>
 <li>افتح رابط الدعوة الذي أرسله المسؤول. استخدم بريدك المقصود بالدعوة.</li>
 <li>أكمل خطوة الدخول أو إنشاء الحساب كما تعرضها الصفحة. لا تشارك رابط الدعوة أو كلمة مرورك مع آخرين.</li>
@@ -78,13 +89,13 @@
 <li>بعد الدخول اختر الشركة المطلوبة إذا كان حسابك عضوًا في أكثر من شركة.</li>
 <li>افتح «الرئيسية» وتأكد من اسم الشركة والمهام المتاحة.</li>
 </ol>
-<p><strong>كيف أعرف أنها اكتملت؟</strong> تظهر الشركة ضمن المساحات التي تستطيع دخولها، وتظهر عضويتك وصلاحياتها لدى مسؤول المستخدمين. وصول رسالة البريد وحده لا يعني قبول الدعوة.</p>
-<p><strong>إذا تعذر الدخول:</strong> تحقق أنك تستخدم البريد الصحيح. إذا كان الرابط منتهيًا أو ملغيًا، اطلب من المسؤول مراجعة الدعوة وإرسال رابط جديد من مسارها الحالي. لا تنشئ شركة أخرى لحل مشكلة دعوة.</p>
-<p><strong>إذا دخلت ولم تظهر وظائفك:</strong> قد تكون عضويتك نشطة دون حزم المهام المطلوبة، أو الخدمة غير مفعلة للشركة، أو بيانات الموظف غير مكتملة. أخبر المسؤول باسم المهمة المطلوبة ورسالة المنع التي ظهرت.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>كيف أعرف أنها اكتملت؟</strong> تظهر الشركة ضمن المساحات التي تستطيع دخولها، وتظهر عضويتك وصلاحياتها لدى مسؤول المستخدمين. وصول رسالة البريد وحده لا يعني قبول الدعوة.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا تعذر الدخول:</strong> تحقق أنك تستخدم البريد الصحيح. إذا كان الرابط منتهيًا أو ملغيًا، اطلب من المسؤول مراجعة الدعوة وإرسال رابط جديد من مسارها الحالي. لا تنشئ شركة أخرى لحل مشكلة دعوة.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا دخلت ولم تظهر وظائفك:</strong> قد تكون عضويتك نشطة دون حزم المهام المطلوبة، أو الخدمة غير مفعلة للشركة، أو بيانات الموظف غير مكتملة. أخبر المسؤول باسم المهمة المطلوبة ورسالة المنع التي ظهرت.</span></p>
 </section>
 <section data-guide-topic="company-users company-structure people-manage payroll-configure">
 <h2 id="section-13">4. تجهيز الشركة لأول استخدام</h2>
-<p><strong>لمن؟</strong> مسؤول الشركة بالتعاون مع الموارد البشرية والحضور والرواتب.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مسؤول الشركة بالتعاون مع الموارد البشرية والحضور والرواتب.</span></p>
 <p>نفّذ التجهيز بهذا الترتيب لتجنب الرجوع المتكرر إلى النماذج:</p>
 <ol>
 <li>تأكد أن الخدمات المتفق عليها مفعلة للشركة بواسطة فريق تشغيل المنصة.</li>
@@ -103,7 +114,7 @@
 </section>
 <section data-guide-topic="company-users">
 <h2 id="section-14">5. المستخدمون والصلاحيات</h2>
-<p><strong>ابدأ من:</strong> المستخدمون، ثم الأعضاء أو الدعوات حسب المهمة.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> المستخدمون، ثم الأعضاء أو الدعوات حسب المهمة.</span></p>
 <div data-guide-task="company-users">
 <h3 id="section-15">إضافة عضو ومتابعته</h3>
 <p>افتح دعوة العضو من الصفحة المخصصة، وأدخل بريده الصحيح والاختيارات المتاحة حسب دورك. راجع حالة الدعوة بعد إرسالها. إذا كانت الدعوة محفوظة لكن البريد لم يصل، تابع الدعوة الحالية؛ لا تعتبر عدم وصول الرسالة سببًا لإنشاء دعوات متكررة دون مراجعة.</p>
@@ -118,7 +129,7 @@
 <li>احفظ وانتظر النتيجة، ثم أعد فتح العضو للتأكد من الصلاحيات الحالية.</li>
 </ol>
 <p>قالب «موارد بشرية» يضم إدارة الموظفين والأجور الأساسية وإدارة الإجازات واعتمادها وأرصدتها وعرض الحضور. للعضو العادي، قالب «تحضير الرواتب» لا يضيف الاعتماد والحفظ النهائي والتصدير تلقائيًا. أما مسؤول الشركة فإدارة الخدمات المتاحة مضمنة في دوره؛ الاختيارات المعروضة له إضافية ولا تسحب هذه الإدارة عند إزالتها. وقالب «خدمة ذاتية للموظف» لا يجهز ملف الموظف أو موقع حضوره بدلًا منك.</p>
-<p><strong>التعافي:</strong> إذا تغيرت الصلاحيات منذ فتح المحرر، اقرأ الحالة الحالية ثم أعد الاختيار؛ لا تحفظ نسخة قديمة فوق قرار زميلك. وإذا لم تتأكد النتيجة، راجع العضوية الحالية قبل إعادة الإرسال. لا تستخدم قوالب واسعة لمجرد إزالة رسالة منع دون فهم أثرها.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>التعافي:</strong> إذا تغيرت الصلاحيات منذ فتح المحرر، اقرأ الحالة الحالية ثم أعد الاختيار؛ لا تحفظ نسخة قديمة فوق قرار زميلك. وإذا لم تتأكد النتيجة، راجع العضوية الحالية قبل إعادة الإرسال. لا تستخدم قوالب واسعة لمجرد إزالة رسالة منع دون فهم أثرها.</span></p>
 </div>
 </section>
 <section data-guide-topic="company-branding company-structure people-org">
@@ -135,13 +146,13 @@
 <div data-guide-task="people-org">
 <h3 id="section-20">الأقسام والوظائف</h3>
 <p>افتح «الإعدادات» ← «الأقسام والوظائف»، أو ادخل إلى البيانات التنظيمية من الموظفين. أنشئ القسم أو الوظيفة المطلوبة بالاسم المناسب. يقترح النظام الرمز تلقائيًا؛ اتركه كما هو، أو عدّله إذا كانت الشركة تستخدم نظام ترميز، بشرط ألا يكون مستخدمًا داخل الشركة. قد ترتبط الوظيفة بقسم. عند تعيينها لموظف اختر القيمة الصحيحة من القائمة بدل إنشاء مسميات متشابهة.</p>
-<p><strong>إذا لم تظهر جهة أو فرع:</strong> راجع حالتها وصلاحيتك وحدود الاستخدام. عدم القدرة على إضافة فرع قد يرجع إلى حد الشركة؛ ارفع الطلب لمسؤول الشركة أو مشغّل المنصة بدل تعطيل فرع مستخدم للتحايل على الحد.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا لم تظهر جهة أو فرع:</strong> راجع حالتها وصلاحيتك وحدود الاستخدام. عدم القدرة على إضافة فرع قد يرجع إلى حد الشركة؛ ارفع الطلب لمسؤول الشركة أو مشغّل المنصة بدل تعطيل فرع مستخدم للتحايل على الحد.</span></p>
 </div>
 </section>
 <section data-guide-topic="people-view people-manage people-employment people-compensation">
 <h2 id="section-21">7. دليل الموظفين وإنشاء ملف جديد</h2>
 <div data-guide-task="people-manage">
-<p><strong>لمن؟</strong> مسؤول الموارد البشرية الذي يملك إضافة الموظفين وبيانات عملهم وأجورهم.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مسؤول الموارد البشرية الذي يملك إضافة الموظفين وبيانات عملهم وأجورهم.</span></p>
 <ol>
 <li>اذهب إلى «الموظفون»، وابحث عن الشخص باسمه أو رقمه قبل إضافته.</li>
 <li>اختر إضافة موظف. في «بيانات الموظف» اكتب الاسم وراجع «رقم الموظف» المقترح. يمكنك تغييره إلى رقم غير مستخدم في الشركة.</li>
@@ -150,7 +161,7 @@
 <li>اضغط «متابعة» وراجع الاسم والفرع والتاريخ والأجر. استخدم «السابق» لتصحيح أي قيمة.</li>
 <li>اضغط «إضافة الموظف وفتح ملفه»، وانتظر فتح الملف وظهور النتيجة.</li>
 </ol>
-<p><strong>النتيجة:</strong> ملف موظف وبيانات عمل وأجر محفوظة. تحديد الدوام وتجهيز حساب الدخول والخدمات الذاتية خطوات تالية من الملف؛ الإضافة وحدها لا تفعّلها.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> ملف موظف وبيانات عمل وأجر محفوظة. تحديد الدوام وتجهيز حساب الدخول والخدمات الذاتية خطوات تالية من الملف؛ الإضافة وحدها لا تفعّلها.</span></p>
 </div>
 <div data-guide-task="people-view people-manage people-employment people-compensation">
 <h3 id="section-22">ماذا يوجد داخل الملف؟</h3>
@@ -165,27 +176,28 @@
 <p>إتاحة الملف لا تعني إتاحة الأجور أو جميع سجلاته المالية. وقد تكون القائمة على صفحات؛ تابع النتائج الإضافية عند الحاجة.</p>
 <p><strong>إضافة موظف موجود إلى الرواتب:</strong> من تبويب «الراتب» افتح «إدراج الموظف في الرواتب»، ثم راجع مفتاح «مشمول في الرواتب». يحتاج تغييره صلاحية إدارة الموظف وعمله. بعد التغيير أعد حساب المسير المطلوب. إذا ارتبط العمل براتب مقفل، اتبع رابط التصحيح المعروض بدل تغيير التاريخ المحفوظ.</p>
 <p><strong>استكمال التجهيز:</strong> اقرأ «متابعة تجهيز الموظف» وافتح الإجراء المقترح. ويمكنك فتح «تفاصيل الإعدادات الأساسية» لمراجعة ما اكتمل وما ينقصه. لا تعتبر تعذر التحقق نتيجة مكتملة.</p>
-<p><strong>إذا رفضت الإضافة:</strong> صحح الحقل المذكور، مثل الرقم المكرر أو الفرع أو التاريخ. إذا لم تتأكد النتيجة، استخدم «تحقق في دليل الموظفين» قبل إرسال إضافة أخرى. لا تغيّر رقم الشخص لمجرد تجاوز اكتشاف التكرار.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا رفضت الإضافة:</strong> صحح الحقل المذكور، مثل الرقم المكرر أو الفرع أو التاريخ. إذا لم تتأكد النتيجة، استخدم «تحقق في دليل الموظفين» قبل إرسال إضافة أخرى. لا تغيّر رقم الشخص لمجرد تجاوز اكتشاف التكرار.</span></p>
 </div>
 </section>
 <section data-guide-topic="people-import">
 <h2 id="section-23">8. استيراد الموظفين من ملف</h2>
-<p><strong>ابدأ من:</strong> الموظفون ← استيراد الموظفين. تحتاج صلاحيات إدارة الموظفين والتوظيف والأجور والاستيراد، وإلى تفعيل الخدمة.</p>
+<div data-guide-task="people-import"><figure class="guide-diagram" aria-label="الفرق بين فحص الملف وحفظ الموظفين"><figcaption><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H5v20h14V7zM14 2v6h5M8 12h8M8 16h8"/></svg> افحص أولًا، ثم أكمل الإضافة</figcaption><div class="diagram-flow"><div class="diagram-preview"><strong>«فحص الملف»</strong><span>معاينة ومراجعة · لا يُضاف موظفون</span></div><span class="diagram-boundary"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><small>الحفظ</small></span><div class="diagram-saved"><strong>«إضافة الصفوف المحددة»</strong><span>هنا تبدأ الإضافة الفعلية</span></div></div><p>صف مرفوض؟ صحّح الملف الأصلي ثم أعد الفحص. تقرير المرفوضات ليس قالب استيراد.</p></figure></div>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الموظفون ← استيراد الموظفين. تحتاج صلاحيات إدارة الموظفين والتوظيف والأجور والاستيراد، وإلى تفعيل الخدمة.</span></p>
 <ol>
 <li>نزّل «قالب CSV» من الصفحة نفسها؛ عناوين الأعمدة بالعربية.</li>
-<li>املأه واحتفظ بالأعمدة العشرة حتى لو كانت بعض قيمها فارغة. يمكنك تغيير ترتيبها. القالب الإنجليزي السابق مقبول أيضًا، ويمكن مزج عناوين عربية وإنجليزية دون تكرار المعلومة نفسها. احفظ الملف بصيغة CSV بترميز UTF-8 والتاريخ بصيغة سنة-شهر-يوم مثل <bdi>2026-10-16</bdi>.</li>
-<li>اكتب أساس الأجر <bdi>monthly</bdi> للشهري أو <bdi>daily</bdi> لليومي، ودخوله في الرواتب <bdi>true</bdi> أو <bdi>false</bdi> وفق شرح القالب.</li>
+<li>املأه واحتفظ بالأعمدة العشرة حتى لو كانت بعض قيمها فارغة. يمكنك تغيير ترتيبها. القالب الإنجليزي السابق مقبول أيضًا، ويمكن مزج عناوين عربية وإنجليزية دون تكرار المعلومة نفسها. احفظ الملف بصيغة CSV بترميز <bdi class="guide-token" dir="ltr">UTF-8</bdi> والتاريخ بصيغة سنة-شهر-يوم مثل <bdi dir="ltr">2026-10-16</bdi>.</li>
+<li>اكتب أساس الأجر <bdi dir="ltr">monthly</bdi> للشهري أو <bdi dir="ltr">daily</bdi> لليومي، ودخوله في الرواتب <bdi dir="ltr">true</bdi> أو <bdi dir="ltr">false</bdi> وفق شرح القالب.</li>
 <li>أدخل القسم والوظيفة برمزيهما الموجودين؛ الاستيراد لا ينشئ أقسامًا أو وظائف جديدة.</li>
 <li>اختر الملف ثم «فحص الملف». الحد الحالي 256 كيلوبايت و100 صف في الدفعة.</li>
 <li>راجع كل صف: جاهز، يحتاج مراجعة، أو مرفوض. إذا اختار النظام الجهة أو الفرع الوحيد النشط تلقائيًا، فحدّد الصف للإضافة فقط بعد التأكد من صحة الاختيار.</li>
 <li>استخدم «إضافة الصفوف المحددة»، وانتظر النتيجة، ثم افتح دليل الموظفين.</li>
 </ol>
-<p><strong>النتيجة:</strong> تضاف الصفوف المحددة المقبولة، ولا تضاف المرفوضة. الفحص وحده لا يحفظ الموظفين. يمكنك تنزيل تقرير الصفوف المرفوضة بعناوين عربية لمعرفة سطر الملف وسبب الرفض؛ صحح ملف الموظفين الأصلي وأعد فحصه. التقرير ليس قالبًا لإعادة الاستيراد.</p>
-<p><strong>بعد الإضافة:</strong> راجع جاهزية الموظفين. الملف لا يعيّن قوالب الدوام أو أرصدة الإجازات تلقائيًا. إذا تغيرت البيانات بين الفحص والتأكيد، راجع النتيجة الجديدة بدل إعادة تأكيد نسخة قديمة. وإذا انقطع الرد، تحقق من الدليل والنتيجة قبل رفع الدفعة نفسها مجددًا.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تضاف الصفوف المحددة المقبولة، ولا تضاف المرفوضة. الفحص وحده لا يحفظ الموظفين. يمكنك تنزيل تقرير الصفوف المرفوضة بعناوين عربية لمعرفة سطر الملف وسبب الرفض؛ صحح ملف الموظفين الأصلي وأعد فحصه. التقرير ليس قالبًا لإعادة الاستيراد.</span></p>
+<p class="guide-callout next"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>بعد الإضافة:</strong> راجع جاهزية الموظفين. الملف لا يعيّن قوالب الدوام أو أرصدة الإجازات تلقائيًا. إذا تغيرت البيانات بين الفحص والتأكيد، راجع النتيجة الجديدة بدل إعادة تأكيد نسخة قديمة. وإذا انقطع الرد، تحقق من الدليل والنتيجة قبل رفع الدفعة نفسها مجددًا.</span></p>
 </section>
 <section data-guide-topic="people-manage people-employment company-users">
 <h2 id="section-24">9. تجهيز الموظف للعمل والخدمات الذاتية</h2>
-<p><strong>ابدأ من:</strong> الموظفون ← افتح الموظف ← «متابعة تجهيز الموظف». أكمل كل إعداد من تبويبه داخل الملف.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الموظفون ← افتح الموظف ← «متابعة تجهيز الموظف». أكمل كل إعداد من تبويبه داخل الملف.</span></p>
 <div data-guide-task="people-manage people-employment">
 <h3 id="section-25">من ملف جديد إلى أول حضور</h3>
 <ol>
@@ -208,7 +220,7 @@
 </ul>
 <p>إذا بقي الطلب «قيد الإنشاء»، اختر «متابعة إنشاء الحساب». وإذا كان ينتظر التفعيل فأعد إرسال الرابط عند الحاجة. لا تنشئ حسابًا آخر. «مراجعة مطلوبة» تعني أن هوية الحساب تحتاج التحقق؛ لا تربطه اعتمادًا على تشابه الاسم. وقد يظهر «إرسال رابط تأكيد كلمة المرور» لحساب قائم يحتاج إكمال هذه الخطوة.</p>
 <p><strong>فك الربط:</strong> يمنع التسجيل من الحساب السابق ويحفظ حركاته الماضية. لا تستخدمه لتصحيح حضور قديم؛ صحح سجل الحضور نفسه.</p>
-<p><strong>كيف أعرف أن التجهيز اكتمل؟</strong> تحقق من دخول الموظف بحسابه، وتسجيل حركة حضور حقيقية، ووصول طلب إجازته وظهور قرار المسؤول. إذا ظهرت رسالة تطلب مراجعة المسؤول، افتح متابعة التجهيز وحدد الإعداد الناقص؛ نجاح الدخول وحده لا يثبت اكتمال خدمات العمل.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>كيف أعرف أن التجهيز اكتمل؟</strong> تحقق من دخول الموظف بحسابه، وتسجيل حركة حضور حقيقية، ووصول طلب إجازته وظهور قرار المسؤول. إذا ظهرت رسالة تطلب مراجعة المسؤول، افتح متابعة التجهيز وحدد الإعداد الناقص؛ نجاح الدخول وحده لا يثبت اكتمال خدمات العمل.</span></p>
 </div>
 </section>
 <section data-guide-topic="people-employment people-compensation">
@@ -224,7 +236,7 @@
 <div data-guide-task="people-employment">
 <h3 id="section-30">إنهاء علاقة العمل</h3>
 <p>من ملف الموظف ← «سجل العمل» افتح «إنهاء علاقة العمل»، وحدد آخر يوم عمل. النسخة الحالية تقبل اليوم أو تاريخًا سابقًا وفق القيود، ولا تدعم إنهاءً مستقبليًا. اقرأ آثار الإجراء وأكد التنسيق مع المسؤولين، ثم نفذ.</p>
-<p><strong>النتيجة:</strong> تبقى سجلات العلاقة والأجر محفوظة، وتلغى التغييرات المستقبلية التي لم يبدأ سريانها وفق قواعد العملية. الإنهاء لا يحسب تسوية نهائية للرواتب أو الإجازات أو السلف تلقائيًا؛ سلّم هذه المراجعات لأصحابها.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تبقى سجلات العلاقة والأجر محفوظة، وتلغى التغييرات المستقبلية التي لم يبدأ سريانها وفق قواعد العملية. الإنهاء لا يحسب تسوية نهائية للرواتب أو الإجازات أو السلف تلقائيًا؛ سلّم هذه المراجعات لأصحابها.</span></p>
 </div>
 <div data-guide-task="people-employment">
 <h3 id="section-31">إعادة التوظيف</h3>
@@ -233,10 +245,10 @@
 </section>
 <section data-guide-topic="work-policies">
 <h2 id="section-32">11. قوالب الدوام: إعداد مفهوم بدل التخمين</h2>
-<p><strong>لمن؟</strong> مدير سياسات الدوام. <strong>ابدأ من:</strong> الإعدادات ← «قوالب الدوام». ويمكن الوصول إلى إعداد أنظمة الدوام من «العمل والدوام» داخل ملف الموظف بحسب صلاحياتك.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مدير سياسات الدوام. <strong>ابدأ من:</strong> الإعدادات ← «قوالب الدوام». ويمكن الوصول إلى إعداد أنظمة الدوام من «العمل والدوام» داخل ملف الموظف بحسب صلاحياتك.</span></p>
 <ol>
 <li>أنشئ قالبًا باسم يشرح لمن يصلح؛ مثل «دوام المكتب الصباحي» كمثال تسمية.</li>
-<li>راجع رمز القالب والمنطقة الزمنية، مثل <bdi>Africa/Cairo</bdi> لمواعيد القاهرة.</li>
+<li>راجع رمز القالب والمنطقة الزمنية، مثل <bdi dir="ltr">Africa/Cairo</bdi> لمواعيد القاهرة.</li>
 <li>اختر وردية ثابتة لها بداية ونهاية، أو ساعات مرنة بمدة مطلوبة خلال اليوم.</li>
 <li>حدّد أيام العمل الفعلية. في الثابت أدخل المواعيد والاستراحة، وحدد «تنتهي الوردية في اليوم التالي» إذا كانت ليلية.</li>
 <li>في المرن أدخل دقائق العمل المطلوبة. مثال: 480 دقيقة تعني 8 ساعات؛ ليست قيمة موصى بها لكل شركة.</li>
@@ -247,11 +259,11 @@
 <h3 id="section-33">ماذا تعني الحقول الإضافية؟</h3>
 <p>«قبل بداية الجدول» و«بعد نهاية الجدول» تحددان نافذة ربط التسجيل بيوم العمل، بالدقائق؛ لا تعنيان مدة سماح قانونية للتأخير أو أجرة إضافية. «أقل وقت إضافي» يحدد متى يعرض الوقت الزائد للمراجعة. و«خطوة التقريب لأسفل» مثل 15 دقيقة تعني تجميعه بهذه الخطوة؛ يظل القرار للمراجع.</p>
 <p>«اعتماد اليوم تلقائيًا إذا كان مكتملًا بلا استثناء» لا يعتمد الغياب أو النقص أو التعارض، ولا يعتمد اليوم قبل انتهاء نافذة التسجيل وثبات الأحداث. يسري على الأيام الجديدة حسب شرح الصفحة.</p>
-<p><strong>النتيجة:</strong> نسخة واضحة من الدوام تستخدم في الأيام التي تنطبق عليها. الإصدار السابق محفوظ. إذا تغيرت سياسة الشركة، أنشئ إصدارًا معتمدًا بالتاريخ الصحيح بدل محاولة إخفاء سجل قديم.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> نسخة واضحة من الدوام تستخدم في الأيام التي تنطبق عليها. الإصدار السابق محفوظ. إذا تغيرت سياسة الشركة، أنشئ إصدارًا معتمدًا بالتاريخ الصحيح بدل محاولة إخفاء سجل قديم.</span></p>
 </section>
 <section data-guide-topic="attendance-sources">
 <h2 id="section-34">12. وسائل تسجيل الحضور: الموقع والخصوصية</h2>
-<p><strong>ابدأ من:</strong> الإعدادات ← وسائل تسجيل الحضور ← إضافة وسيلة تسجيل حضور. تظهر الإدارة فقط للحساب المخول.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الإعدادات ← وسائل تسجيل الحضور ← إضافة وسيلة تسجيل حضور. تظهر الإدارة فقط للحساب المخول.</span></p>
 <ol>
 <li>اختر «حضور الموظف من الهاتف» أو «مصدر خارجي»، ثم اختر فرع العمل. يمكنك البحث بالاسم داخل النموذج؛ تبقى بياناتك والفرع المختار محفوظة أثناء البحث.</li>
 <li>إذا ظهرت وسيلة هاتف موجودة، اضغط «فتح إعداد الوسيلة» لتعديلها أو تفعيلها. لكل فرع وسيلة واحدة، حتى لو كانت موقوفة؛ لا يلزم ملء نموذج جديد. لا تعني أول صفحة من نتائج البحث أنها كل فروع الشركة.</li>
@@ -288,10 +300,11 @@
 <p>نهاية الفترة لا تدخل ضمنها، ويجب أن تشمل وقت التسجيل وألا تتداخل مع ربط آخر لنفس الرمز. رمز الشخص في الجهاز قد يختلف عن رمزه في دليل الشركة؛ الربط هو الذي يوضح أن كليهما يمثل الشخص نفسه.</p>
 <h3 id="section-39">معالجة تسجيل لم يرتبط</h3>
 <p>افتح التسجيل واقرأ سبب التعثر. إذا كان السبب غياب الربط، أكمل الربط الصحيح للفترة ثم استخدم «إعادة معالجة التسجيل» إن كانت لديك صلاحية ذلك. لا تغيّر اسم الموظف عشوائيًا أو تنشئ حركة يدوية مكررة قبل فهم السجل.</p>
-<p><strong>النتيجة:</strong> يظهر قرار المعالجة وما إذا أصبح التسجيل صالحًا لبقية رحلة الحضور. قبول الحدث أو إعادة معالجته لا يعني أن يوم الحضور معتمد أو أن راتبًا صُرف. يحتفظ النظام بسجل المعالجة والتكرار؛ إعادة استقبال الحدث نفسه ليست حركة عمل جديدة.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> يظهر قرار المعالجة وما إذا أصبح التسجيل صالحًا لبقية رحلة الحضور. قبول الحدث أو إعادة معالجته لا يعني أن يوم الحضور معتمد أو أن راتبًا صُرف. يحتفظ النظام بسجل المعالجة والتكرار؛ إعادة استقبال الحدث نفسه ليست حركة عمل جديدة.</span></p>
 </section>
 <section data-guide-topic="profile self-attendance">
 <h2 id="section-40">14. الموظف: سجّل حضورك وانصرافك</h2>
+<div data-guide-task="self-attendance"><figure class="guide-diagram" aria-label="رحلة تسجيل حضور الموظف"><figcaption><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 2v6m10-6v6M3 11h18m-13 5h2m4 0h2"/></svg> من الحركة المطلوبة إلى النتيجة</figcaption><div class="diagram-flow"><div><strong>افتح «يومي»</strong><span>راجع الحركة المطلوبة</span></div><span class="diagram-boundary"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><strong>سجّل الحركة</strong><span>وفق وسيلة الحضور المجهزة</span></div><span class="diagram-boundary"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><strong>راجع النتيجة</strong><span>تحقق من الحالة قبل التكرار</span></div></div><p>هذا رسم للمهمة؛ تفاصيل الموقع والجاهزية والتعافي موضحة في الخطوات أدناه.</p></figure></div>
 <div data-guide-task="profile">
 <p><strong>لفتح ملفك:</strong> من قائمة الحساب اختر «ملفي»، أو افتحه من خدماتك في «يومي». راجع رمزك واسمك وبيانات عملك وحالتها. إذا احتاجت تصحيحًا، أبلغ الموارد البشرية؛ عرض الملف لا يمنحك صلاحية تعديل بيانات التوظيف أو الأجر.</p>
 </div>
@@ -305,36 +318,36 @@
 <li>اقرأ النتيجة وسجل الحضور. إذا تغيرت الحالة إلى «أنت في العمل»، فالإجراء التالي وفق البطاقة يكون الانصراف عند انتهاء العمل.</li>
 <li>في نهاية العمل سجل الانصراف بالطريقة نفسها وتحقق من «تم تسجيل الحركة» ومن ظهور «انصراف — تم التسجيل» في «سجلي». قد تتيح البطاقة حضورًا جديدًا لبدء فترة أخرى؛ لا تضغطه إذا انتهى عملك بالفعل.</li>
 </ol>
-<p><strong>إذا ظهرت محاولة لم تتأكد:</strong> اختر «التحقق من المحاولة». قد تتيح الصفحة «إعادة إرسال نفس المحاولة» عندما يكون ذلك آمنًا؛ هذه ليست دعوة لإنشاء حركة جديدة. وبعد نتيجة نهائية قد تظهر «تجهيز محاولة جديدة» لتحديث الحالة قبل الحركة التالية.</p>
-<p><strong>إذا رُفض الموقع:</strong> تأكد من إذن الموقع وإشارة الجهاز ووجودك في الموقع الصحيح، ثم اتبع الحالة المعروضة. لا تغيّر ساعة الهاتف أو تطلب من شخص آخر تسجيل حضورك. ارفع للمسؤول نص السبب والتاريخ والحركة المطلوبة.</p>
-<p><strong>إذا لم تظهر البطاقة:</strong> تواصل مع مسؤول المستخدمين أو الموارد البشرية ليراجع الربط والصلاحية والعمل والقالب والموقع. لا تحتاج إلى معرفة تفاصيل تقنية لتجهيزها؛ يكفي إبلاغه بما تعرضه بطاقة الجاهزية.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا ظهرت محاولة لم تتأكد:</strong> اختر «التحقق من المحاولة». قد تتيح الصفحة «إعادة إرسال نفس المحاولة» عندما يكون ذلك آمنًا؛ هذه ليست دعوة لإنشاء حركة جديدة. وبعد نتيجة نهائية قد تظهر «تجهيز محاولة جديدة» لتحديث الحالة قبل الحركة التالية.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا رُفض الموقع:</strong> تأكد من إذن الموقع وإشارة الجهاز ووجودك في الموقع الصحيح، ثم اتبع الحالة المعروضة. لا تغيّر ساعة الهاتف أو تطلب من شخص آخر تسجيل حضورك. ارفع للمسؤول نص السبب والتاريخ والحركة المطلوبة.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا لم تظهر البطاقة:</strong> تواصل مع مسؤول المستخدمين أو الموارد البشرية ليراجع الربط والصلاحية والعمل والقالب والموقع. لا تحتاج إلى معرفة تفاصيل تقنية لتجهيزها؛ يكفي إبلاغه بما تعرضه بطاقة الجاهزية.</span></p>
 </div>
 </section>
 <section data-guide-topic="attendance-input attendance-review">
 <h2 id="section-41">15. إدخال الحضور يدويًا واستيراده</h2>
 <div data-guide-task="attendance-input attendance-review">
 <h3 id="section-42">إدخال حركة يدوية</h3>
-<p><strong>لمن؟</strong> مدخل الحضور أو المراجع ضمن مهمته المسموحة. افتح الحضور واختر مهمة الإدخال المتاحة. اختر الموظف والفرع واليوم والحركة ووقتها وفق المستند. إذا كنت تضيف بوصفك مراجعًا، وثّق سبب الإضافة كما يطلب النموذج. احفظ ثم راجع يوم الموظف.</p>
-<p><strong>النتيجة:</strong> تسجيل دخول أو خروج يحتاج إلى اكتمال اليوم ومراجعته؛ ليس اعتمادًا تلقائيًا. لا تدخل زوج حضور وانصراف بقيم افتراضية إذا كان المستند يثبت حركة واحدة فقط.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مدخل الحضور أو المراجع ضمن مهمته المسموحة. افتح الحضور واختر مهمة الإدخال المتاحة. اختر الموظف والفرع واليوم والحركة ووقتها وفق المستند. إذا كنت تضيف بوصفك مراجعًا، وثّق سبب الإضافة كما يطلب النموذج. احفظ ثم راجع يوم الموظف.</span></p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تسجيل دخول أو خروج يحتاج إلى اكتمال اليوم ومراجعته؛ ليس اعتمادًا تلقائيًا. لا تدخل زوج حضور وانصراف بقيم افتراضية إذا كان المستند يثبت حركة واحدة فقط.</span></p>
 </div>
 <div data-guide-task="attendance-input">
 <h3 id="section-43">استيراد الحضور</h3>
 <ol>
-<li>افتح الحضور ← أدوات الحضور ← استيراد تسجيلات من ملف، واختر ملف CSV بترميز UTF-8، حتى 256 كيلوبايت و100 حدث.</li>
+<li>افتح الحضور ← أدوات الحضور ← استيراد تسجيلات من ملف، واختر ملف CSV بترميز <bdi class="guide-token" dir="ltr">UTF-8</bdi>، حتى 256 كيلوبايت و100 حدث.</li>
 <li>طابق الأعمدة الخمسة: رمز الموظف، اسم الفرع، وقت الحدث، الاتجاه، ورقم التسجيل في المصدر.</li>
-<li>وقت الحدث يحتاج فرق توقيت صريحًا؛ مثال تنسيقي: <bdi>2026-09-30T08:30:00+02:00</bdi>. استخدم فرق التوقيت الصحيح للتاريخ والمصدر، ولا تنقل المثال كما هو لكل تاريخ.</li>
-<li>الاتجاه <bdi>in</bdi> للدخول و<bdi>out</bdi> للخروج. رقم المصدر رقم ثابت من الملف الأصلي يمنع حفظ التسجيل نفسه مرتين.</li>
+<li>وقت الحدث يحتاج فرق توقيت صريحًا؛ مثال تنسيقي: <bdi dir="ltr">2026-09-30T08:30:00+02:00</bdi>. استخدم فرق التوقيت الصحيح للتاريخ والمصدر، ولا تنقل المثال كما هو لكل تاريخ.</li>
+<li>الاتجاه <bdi dir="ltr">in</bdi> للدخول و<bdi dir="ltr">out</bdi> للخروج. رقم المصدر رقم ثابت من الملف الأصلي يمنع حفظ التسجيل نفسه مرتين.</li>
 <li>أكد مطابقة الأعمدة واختر «فحص ومعاينة الأحداث».</li>
 <li>راجع الجاهز والمكرر والمرفوض والذي يحتاج اختيار يوم أو بيانات عمل. اختر يوم العمل الصحيح للحركة الملتبسة وفق المستند.</li>
 <li>أكد الصفوف المقصودة فقط، ثم اقرأ «آخر نتيجة حفظ مؤكدة».</li>
 </ol>
-<p><strong>التعافي:</strong> نزّل تقرير المرفوضات لتصحيح الملف. الحركات بلا بيانات عمل تبقى للمراجعة دون ربطها بيوم حتى إصلاح السبب. المرفوضة لا تُحفظ. تحميل ملف جديد يبدل المعاينة، لكنه لا يلغي حركات حُفظت من قبل. عند انقطاع الرد تحقّق من السجل قبل إعادة التأكيد.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>التعافي:</strong> نزّل تقرير المرفوضات لتصحيح الملف. الحركات بلا بيانات عمل تبقى للمراجعة دون ربطها بيوم حتى إصلاح السبب. المرفوضة لا تُحفظ. تحميل ملف جديد يبدل المعاينة، لكنه لا يلغي حركات حُفظت من قبل. عند انقطاع الرد تحقّق من السجل قبل إعادة التأكيد.</span></p>
 </div>
 </section>
 <section data-guide-topic="attendance-view attendance-review">
 <h2 id="section-44">16. مراجعة الحضور والاستثناءات والإضافي</h2>
 <div data-guide-task="attendance-review">
-<p><strong>ابدأ من:</strong> الحضور ← «يحتاج مراجعة». <strong>لمن؟</strong> مراجع الحضور.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الحضور ← «يحتاج مراجعة». <strong>لمن؟</strong> مراجع الحضور.</span></p>
 <ol>
 <li>راجع تاريخ القائمة؛ «اليوم» و«أمس» قد يعرضان عددًا مختلفًا.</li>
 <li>اختر الحالة التي تحتاج مراجعة، ثم افتح يوم الموظف.</li>
@@ -354,7 +367,7 @@
 <div data-guide-task="attendance-review">
 <h3 id="section-47">مراجعة الموقع</h3>
 <p>إذا كان الحدث يحتاج مراجعة موقع، افتحه واختر قبول التسجيل أو استبعاده مع السبب. القبول هنا قرار حول التسجيل؛ أكمل بعدها مراجعة يوم الحضور إن لزم.</p>
-<p><strong>النتيجة:</strong> اليوم أو التسجيل يحمل حالة مؤكدة وسجل قرار. إذا تغيّر المصدر بعد المراجعة، اقرأ الحالة الجديدة قبل الاعتماد. لا تعتبر «جميع الصفوف الحالية سليمة» إثباتًا لاكتمال كل أيام فترة الرواتب.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> اليوم أو التسجيل يحمل حالة مؤكدة وسجل قرار. إذا تغيّر المصدر بعد المراجعة، اقرأ الحالة الجديدة قبل الاعتماد. لا تعتبر «جميع الصفوف الحالية سليمة» إثباتًا لاكتمال كل أيام فترة الرواتب.</span></p>
 </div>
 <div data-guide-task="attendance-view attendance-review">
 <h3 id="section-48">متابعة الشهر بالتقويم</h3>
@@ -365,7 +378,7 @@
 </section>
 <section data-guide-topic="leave-manage">
 <h2 id="section-49">17. إعداد الإجازات لأول مرة</h2>
-<p><strong>لمن؟</strong> مدير الإجازات بصلاحية الإعداد. <strong>ابدأ من:</strong> الإجازات ← الإعدادات. إذا كانت للشركة جهة قانونية واحدة، تفتح إعداداتها مباشرة. عند تعدد الجهات اختر الجهة المطلوبة. يفتح «عرض كل الجهات» القائمة دائمًا، بما فيها الجهات الموقوفة للاطلاع على سجلها.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مدير الإجازات بصلاحية الإعداد. <strong>ابدأ من:</strong> الإجازات ← الإعدادات. إذا كانت للشركة جهة قانونية واحدة، تفتح إعداداتها مباشرة. عند تعدد الجهات اختر الجهة المطلوبة. يفتح «عرض كل الجهات» القائمة دائمًا، بما فيها الجهات الموقوفة للاطلاع على سجلها.</span></p>
 <p>توجهك الصفحة إلى الخطوة الناقصة. الترتيب المعتاد:</p>
 <ol>
 <li><strong>التقويم:</strong> أنشئ تقويمًا باسم واضح، وحدد بدء سريانه وأيام الراحة والعطلات وتواريخها ومصدر السياسة. لا تجعل أيام التقويم متناقضة مع القرار المعتمد للشركة.</li>
@@ -376,15 +389,15 @@
 <h3 id="section-50">اختيارات تؤثر على النتيجة</h3>
 <p>«أيام العمل في التقويم» تستثني الراحة والعطلات المعرفة، بينما «أيام تقويمية متتالية» تعد أيام المدة وفق النوع. و«دون رصيد» لا تعني «دون أجر»؛ أثر الرصيد وأثر الأجر قراران مختلفان. راجع كلًا منهما.</p>
 <p><strong>تغيير الإعدادات:</strong> استخدم إصدارًا جديدًا بالتاريخ الصحيح. تبقى النسخ السابقة؛ لا يُستبدل التاريخ القديم بصمت. إذا منع النظام تعديلًا لأنه يترك فترة خارج التغطية، عدّل التواريخ أو اطلب مراجعة الإعداد بدل إلغاء السجلات المستخدمة.</p>
-<p><strong>النتيجة:</strong> توجد أنواع وتقاويم وفترات صالحة للمدد المقصودة. إذا لم يظهر نوع لموظف، افحص تاريخ الطلب وتغطية التقويم والجهة وحالة النوع وخدمته وصلاحيته، وليس اسم النوع وحده.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> توجد أنواع وتقاويم وفترات صالحة للمدد المقصودة. إذا لم يظهر نوع لموظف، افحص تاريخ الطلب وتغطية التقويم والجهة وحالة النوع وخدمته وصلاحيته، وليس اسم النوع وحده.</span></p>
 </section>
 <section data-guide-topic="leave-balances">
 <h2 id="section-51">18. أرصدة الإجازات والاستحقاق السنوي</h2>
-<p><strong>لمن؟</strong> مدير أرصدة الإجازات. <strong>ابدأ من:</strong> الإجازات ← الأرصدة، ثم الموظف والجهة ونوع الإجازة وفترة الرصيد.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مدير أرصدة الإجازات. <strong>ابدأ من:</strong> الإجازات ← الأرصدة، ثم الموظف والجهة ونوع الإجازة وفترة الرصيد.</span></p>
 <div data-guide-task="leave-balances">
 <h3 id="section-52">تسجيل حركة رصيد</h3>
 <p>اختر نوع الحركة المعروض، مثل الرصيد الافتتاحي أو التسوية، ثم أدخل عدد الأيام وفق اتجاه الحركة وشرح النموذج، وسببها ومرجعها. مثال مرجع مفهوم: «كشف رصيد معتمد — مراجعة أكتوبر»، دون وضع بيانات شخصية غير لازمة. راجع الموظف والنوع والفترة قبل التأكيد.</p>
-<p><strong>النتيجة:</strong> يضاف قيد إلى سجل الرصيد، وليس مجرد رقم يستبدل التاريخ. افتح حساب الرصيد وتأكد من الحركة والرصيد الناتج. لا تُعد تسجيل رصيد افتتاحي لمجرد عدم ظهور طلب إجازة في الحالة التي توقعتها.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> يضاف قيد إلى سجل الرصيد، وليس مجرد رقم يستبدل التاريخ. افتح حساب الرصيد وتأكد من الحركة والرصيد الناتج. لا تُعد تسجيل رصيد افتتاحي لمجرد عدم ظهور طلب إجازة في الحالة التي توقعتها.</span></p>
 </div>
 <div data-guide-task="leave-balances">
 <h3 id="section-53">حساب الاستحقاق السنوي</h3>
@@ -397,12 +410,13 @@
 <li>إذا صحت النتيجة واكتملت الأهلية، اكتب السبب ثم «تأكيد تسجيل فرق الاستحقاق».</li>
 </ol>
 <p><strong>مهم:</strong> يسجل الفرق فقط؛ أيام الإجازة المخصومة تبقى مسجلة. تعديل بيانات الحساب يبطل معاينته السابقة ويحتاج عرضًا جديدًا. حدود النموذج والقيم المعروضة لا تغني عن توثيق فئة الموظف وسياسة الشركة. تغيير قاعدة الشركة يحفظ نسخة جديدة ولا يمحو القيود السابقة.</p>
-<p><strong>التعافي:</strong> إذا لم تتأكد حركة رصيد أو تعذر قراءة محاولة محفوظة، استخدم استعادة النتيجة أو راجع سجل الحساب مع الدعم. لا تنشئ قيدًا معاكسًا تخمينيًا قبل معرفة هل سُجل القيد الأول.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>التعافي:</strong> إذا لم تتأكد حركة رصيد أو تعذر قراءة محاولة محفوظة، استخدم استعادة النتيجة أو راجع سجل الحساب مع الدعم. لا تنشئ قيدًا معاكسًا تخمينيًا قبل معرفة هل سُجل القيد الأول.</span></p>
 </div>
 </section>
 <section data-guide-topic="self-leave">
 <h2 id="section-54">19. الموظف: اطلب إجازة وتابع القرار</h2>
-<p><strong>ابدأ من:</strong> إجازاتي. يمكن عرض الرصيد والطلبات وفق إعداد الشركة وصلاحيتك.</p>
+<div data-guide-task="self-leave"><figure class="guide-diagram" aria-label="رحلة طلب إجازة الموظف"><figcaption><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 2v6m10-6v6M3 11h18m-13 5h2m4 0h2"/></svg> تقديم الطلب لا يعني الموافقة عليه</figcaption><div class="diagram-flow"><div><strong>اختر الإجازة</strong><span>النوع والتواريخ</span></div><span class="diagram-boundary"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><strong>راجع وأرسل</strong><span>اقرأ الأثر قبل الإرسال</span></div><span class="diagram-boundary"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg></span><div><strong>تابع القرار</strong><span>يراجعه المسؤول المخول</span></div></div><p>لا تفترض أن الرصيد أو الموافقة تغيّرا بمجرد إرسال الطلب؛ اقرأ الحالة الحالية.</p></figure></div>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> إجازاتي. يمكن عرض الرصيد والطلبات وفق إعداد الشركة وصلاحيتك.</span></p>
 <ol>
 <li>اختر «طلب إجازة».</li>
 <li>حدّد تاريخ البداية والنهاية أولًا؛ بعدها تُحمّل الأنواع المتاحة لهذه الفترة.</li>
@@ -415,7 +429,7 @@
 <p><strong>ما الذي يحدث عند الإرسال؟</strong> يكون الطلب «مُقدَّم وبانتظار القرار». لا يُحجز أي رصيد قبل الاعتماد. وجود رصيد كافٍ أو نجاح الإرسال لا يعني موافقة الإدارة.</p>
 <h3 id="section-55">التعديل أو التراجع</h3>
 <p>إذا كانت الحالة تسمح بسحب الطلب، استخدم الإجراء الذي تعرضه صفحته. بعد الاعتماد لا تتعامل مع الطلب كمسودة؛ قد يتطلب إلغاؤه «طلب إلغاء» وقرارًا من المعتمد. راجع تاريخ الإلغاء وحالته بدل تقديم طلب عكسي من تلقاء نفسك.</p>
-<p><strong>إذا لم توجد أنواع متاحة:</strong> جرّب التاريخ الصحيح أو تواصل مع الموارد البشرية ليراجع التجهيز. إذا لم تتأكد نتيجة الإرسال، افتح قائمة طلباتك والطلب الحالي، واتبع رسالة الاستعادة قبل إرسال طلب مماثل.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا لم توجد أنواع متاحة:</strong> جرّب التاريخ الصحيح أو تواصل مع الموارد البشرية ليراجع التجهيز. إذا لم تتأكد نتيجة الإرسال، افتح قائمة طلباتك والطلب الحالي، واتبع رسالة الاستعادة قبل إرسال طلب مماثل.</span></p>
 </section>
 <section data-guide-topic="leave-view leave-manage leave-approve">
 <h2 id="section-56">20. مراجعة الإجازة والإلغاء والاستبدال</h2>
@@ -425,7 +439,7 @@
 </div>
 <div data-guide-task="leave-approve">
 <h3 id="section-58">اتخاذ قرار الطلب</h3>
-<p><strong>لمن؟</strong> معتمد الإجازات. افتح «طلبات الإجازة» أو بطاقة الطلب من «الرئيسية».</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> معتمد الإجازات. افتح «طلبات الإجازة» أو بطاقة الطلب من «الرئيسية».</span></p>
 <ol>
 <li>راجع الشخص والجهة والنوع والتواريخ والحالة.</li>
 <li>افتح تفصيل الأيام، وراجع المعاينة والرصيد وأثر الأجر والملاحظات. إذا تغيرت المعاينة، راجع النسخة الحالية قبل القرار.</li>
@@ -440,12 +454,12 @@
 <div data-guide-task="leave-manage leave-approve">
 <h3 id="section-60">الاستبدال أو الإضافة التاريخية</h3>
 <p>إذا عرضت الصفحة مسار استبدال، راجع الطلب الأصلي والبديل ومعاينة كل منهما قبل القرار؛ لا تلغِ سجلًا وتضيف آخر بصورة منفصلة دون فهم الآثار. وعند إضافة تاريخية بعد إقفال الرواتب، الإقرار المخصص ينشئ مسؤولية تصحيح لكل مسير متأثر؛ <strong>لا يغير مبالغ راتب مقفل تلقائيًا</strong>. سلّم المتابعة لمسؤول تصحيح الرواتب.</p>
-<p><strong>التعافي:</strong> قد يتغير الطلب بقرار مستخدم آخر. حدّث واقرأ الحالة الحالية ثم تابع الإجراء المتاح. لا تستخدم سببًا عامًا مثل «تم» إذا كان المطلوب توثيق سبب قرار مختلف عليه.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>التعافي:</strong> قد يتغير الطلب بقرار مستخدم آخر. حدّث واقرأ الحالة الحالية ثم تابع الإجراء المتاح. لا تستخدم سببًا عامًا مثل «تم» إذا كان المطلوب توثيق سبب قرار مختلف عليه.</span></p>
 </div>
 </section>
 <section data-guide-topic="payroll-view payroll-prepare payroll-configure payroll-approve payroll-close payroll-payments">
 <h2 id="section-61">21. رحلة الرواتب من البداية إلى النهاية</h2>
-<p><strong>لمن؟</strong> مدير الشركة أو مسؤول الرواتب، بحسب الصلاحيات الممنوحة له.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مدير الشركة أو مسؤول الرواتب، بحسب الصلاحيات الممنوحة له.</span></p>
 <ol>
 <li>اذهب إلى «الرواتب». تعرض «مسيرات الرواتب» الفترات وحالة كل مسير وعدد موظفيه ومبالغه المتاحة والمدفوع والمتبقي. علامة «—» تعني أن المبلغ لم يكتمل أو لا يتاح لحسابك، ولا تعني صفرًا.</li>
 <li>افتح مسيرًا موجودًا، أو اختر «مسير جديد». اختر فترة محفوظة لم تُحسب، أو الفترة التالية إذا كنت مخولًا بإضافتها. راجع التواريخ ثم احسب؛ ينتقل بك التطبيق إلى المسير نفسه.</li>
@@ -454,7 +468,7 @@
 <li>راجع الفترة والمبالغ وأكدها، ثم «إقفال المسير» لصاحب صلاحية الإقفال.</li>
 <li>بعد دفع الرواتب فعليًا خارج المنصة، افتح «الصرف والدفعات» داخل المسير وسجّل الدفعة. راجع المدفوع والمتبقي وسجل الدفعات.</li>
 </ol>
-<p><strong>النتيجة:</strong> مسير مقفل ورواتب محفوظة، ومعه ما سُجّل من صرف فعلي. قد يكون الصرف جزئيًا ويبقى مبلغ مستحق؛ ليس مطلوبًا تسجيله كاملًا في دفعة واحدة.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> مسير مقفل ورواتب محفوظة، ومعه ما سُجّل من صرف فعلي. قد يكون الصرف جزئيًا ويبقى مبلغ مستحق؛ ليس مطلوبًا تسجيله كاملًا في دفعة واحدة.</span></p>
 <p>إذا كانت مهمتك قراءة المسير فقط، راجع حالته ومبالغه ثم سلّم النواقص لمعد الرواتب. إذا كنت تعد الرواتب، أصلح البيانات وأعد الحساب ثم سلّم المسير لصاحب الاعتماد. بعد الاعتماد يتولى المخول بالإقفال حفظ الرواتب نهائيًا؛ ويتولى مسجل الصرف توثيق ما دُفع بالفعل. لا تحتاج إلى طلب كل هذه الصلاحيات لإنجاز مهمتك.</p>
 <p>يمكن أن تتوزع المراجعة والإقفال والتصدير وتسجيل الصرف على أشخاص مختلفين. اعمل من حسابك، وسلّم الخطوة التالية للمخول بها إذا لم تتوفر لك. الإقفال لا يحول أموالًا إلى البنك.</p>
 <p>إذا ظهرت «تغيّرت بيانات الرواتب»، فالمبالغ من الحساب السابق. راجع التغيير وأعد الحساب قبل المتابعة. وإذا لم تتأكد نتيجة إنشاء أو حساب أو إقفال، استخدم استكمال الطلب أو استعادة نتيجته في الصفحة نفسها؛ لا تبدأ مسيرًا بديلًا.</p>
@@ -463,7 +477,7 @@
 <h2 id="section-62">22. دورة الرواتب والفترات</h2>
 <div data-guide-task="payroll-prepare payroll-configure">
 <h3 id="section-63">إنشاء مسير للفترة المطلوبة</h3>
-<p><strong>ابدأ من:</strong> الرواتب ← «مسير جديد».</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الرواتب ← «مسير جديد».</span></p>
 <ol>
 <li>عند وجود فترات محفوظة لم تُحسب أو أُلغي مسيرها، اختر «فترة الرواتب» المطلوبة. يقترح التطبيق الفترة الحالية إن كانت متاحة، ثم فترة مناسبة من المحفوظة. يمكنك اختيار غيرها أو فتح «اختيار فترة أقدم».</li>
 <li>راجع «من» و«إلى» و«الصرف المقرر»، ثم اضغط «حساب المسير». تُستخدم الفترة نفسها دون إضافة فترة أخرى.</li>
@@ -472,7 +486,7 @@
 <li>يفتح المسير الناتج وتظهر رواتب الموظفين المشمولين أو ما يحتاج استكمالًا. إذا كانت الفترة قد أصبحت لها مسيرة مفتوحة أثناء عملك، افتحها من القائمة بدل تكرار الإنشاء.</li>
 </ol>
 <p>موعد الصرف يوم داخل الشهر، وليس عدد أيام انتظار. لا تغيّر تواريخ فترة محفوظة لتجاوز مشكلة حضور أو راتب.</p>
-<p><strong>إذا لم تتأكد النتيجة:</strong> اختر «استكمال الطلب السابق». سيُفتح المسير إذا كان قد حُفظ، أو يُستكمل الطلب نفسه مرة واحدة. احتفظ بالصفحة وتخزين المتصفح حتى تتأكد؛ لا تنشئ طلبًا آخر لتجاوز الانتظار.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا لم تتأكد النتيجة:</strong> اختر «استكمال الطلب السابق». سيُفتح المسير إذا كان قد حُفظ، أو يُستكمل الطلب نفسه مرة واحدة. احتفظ بالصفحة وتخزين المتصفح حتى تتأكد؛ لا تنشئ طلبًا آخر لتجاوز الانتظار.</span></p>
 </div>
 <div data-guide-task="payroll-configure">
 <h3 id="section-64">تعديل مواعيد الرواتب</h3>
@@ -535,12 +549,12 @@
 <div data-guide-task="payroll-configure">
 <h3 id="section-73">ز. سياسة احتساب الجزء من الفترة</h3>
 <p>افتح تبويب «سياسة احتساب الفترة للشركة» من إعداد البنود والسياسة. السياسة تخص جميع جهات الشركة. اختر الطريقة المعتمدة، مثل أيام التقويم أو أساس 30 يومًا، وتاريخ البداية والسبب ثم «تحديد سياسة الشركة». لتعديلها لاحقًا اختر «تعديل السياسة للفترات القادمة»، وحدد تاريخًا بعد اليوم وبعد آخر إصدار محفوظ، ثم «حفظ إصدار السياسة». الحفظ يضيف إصدارًا ويحفظ الأصل دون حساب أو صرف راتب. كل فترة تستخدم السياسة المحددة عند بدايتها حتى نهايتها؛ مثال: تعديل يبدأ 1 نوفمبر لا يغير فترة بدأت 25 أكتوبر، لكنه يطبق على فترة تبدأ 1 نوفمبر. تظهر الصفحة آخر إصدار محفوظ وقد يكون مستقبليًا، وتوضح عندها أيضًا السياسة المحددة لبداية فترة اليوم؛ تُراجع تغطية الفترة كاملة عند الحساب. لا يُعدل راتب مقفل؛ استخدم مسار التصحيح عند الحاجة. إذا كان سجل قديم ينتهي بتاريخ صريح، يلزم أن تغطي السياسة الفترة كاملة، وإلا تظهر ملاحظة تمنع اكتمال الحساب. لا تستخدم السياسة لتعويض خطأ في تاريخ التعيين أو الأجر. الراتب الشهري الكامل للفترة العادية يظل كاملًا حسب وصف الرحلة، وتظهر تفاصيل الفترة الانتقالية في المراجعة.</p>
-<p><strong>النتيجة:</strong> مدخلات بتاريخ وحالة ومصدر معروفين. بعدها افتح مراجعة المسير وأعد الحساب؛ لا تنتظر أن تتغير نسخة قديمة محفوظة تلقائيًا.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> مدخلات بتاريخ وحالة ومصدر معروفين. بعدها افتح مراجعة المسير وأعد الحساب؛ لا تنتظر أن تتغير نسخة قديمة محفوظة تلقائيًا.</span></p>
 </div>
 </section>
 <section data-guide-topic="payroll-view payroll-prepare payroll-approve">
 <h2 id="section-74">24. مراجعة المسير وحل العوائق</h2>
-<p><strong>ابدأ من:</strong> الرواتب ← «فتح المسير» أمام الفترة المطلوبة.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الرواتب ← «فتح المسير» أمام الفترة المطلوبة.</span></p>
 <ol>
 <li>تأكد من الشركة والفترة أعلى المسير. يبدأ جدول الموظفين بعرض الجميع، ويمكنك اختيار من «يحتاج إجراء» أو البحث بالاسم أو الرقم.</li>
 <li>إذا لم يُحسب المسير، اختر «حساب رواتب الفترة». وإذا تغيرت البيانات بعد حسابه، استخدم «إعادة الحساب بعد التغييرات». يحتفظ كل حساب بتاريخه.</li>
@@ -556,14 +570,14 @@
 <p>قد يظهر إجراء مقترح لاستكمال إعداد يخص الجميع. استخدمه ثم عد إلى المسير. تجد الشرح الإضافي داخل «مراجعات إضافية تخص الفترة». إذا استكملت بيانات الموظفين وأعدت الحساب وما زالت رسالة لا يمكنك معالجتها ظاهرة، أرسل اسم الفترة والخطوة للدعم؛ لا تضف بيانات غير صحيحة لإخفائها.</p>
 <h3 id="section-77">الخصم الذي يتجاوز الحد المسموح</h3>
 <p>لصاحب الصلاحية: افتح معالجة المتبقي من تفاصيل الموظف، وراجع أصل المبلغ وما يمكن خصمه والباقي. اعتمد ترحيله أو تسجيل تسويته خارج الرواتب عندما تكون قد تمت فعلًا. يُحفظ الأصل والباقي، ثم تعاد حسابات المسير قبل اعتماده.</p>
-<p><strong>النتيجة:</strong> تفهم راتب كل موظف وما بقي لمراجعته. بعد اكتمال الحساب يظهر إجراء الاعتماد لصاحب الصلاحية. المبالغ المقارنة أو غير المكتملة لا تحل محل الراتب المعتمد.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تفهم راتب كل موظف وما بقي لمراجعته. بعد اكتمال الحساب يظهر إجراء الاعتماد لصاحب الصلاحية. المبالغ المقارنة أو غير المكتملة لا تحل محل الراتب المعتمد.</span></p>
 </section>
 <section data-guide-topic="payroll-view payroll-approve payroll-close">
 <h2 id="section-78">25. الاعتماد والحفظ النهائي</h2>
 <p>بعد اكتمال حساب المسير، يعتمد صاحب الصلاحية المراجعة، ثم يقفله المخول بالإقفال ليصبح جاهزًا لتسجيل الصرف. إذا كانت مهمتك القراءة فقط، راجع الحالة وسلّم الخطوة التالية للمسؤول؛ لا يلزم أن تنفذ كل المراحل بنفسك.</p>
 <div data-guide-task="payroll-approve">
 <h3 id="section-79">اعتماد المراجعة</h3>
-<p><strong>لمن؟</strong> الحساب الذي يملك اعتماد الرواتب.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> الحساب الذي يملك اعتماد الرواتب.</span></p>
 <ol>
 <li>افتح المسير وتأكد من الموظفين والفترة والمبالغ.</li>
 <li>استكمل المراجعات المطلوبة وأعد الحساب عند الحاجة. يظهر «اعتماد المراجعة» عندما تسمح حالة المسير وصلاحياتك.</li>
@@ -574,20 +588,20 @@
 </div>
 <div data-guide-task="payroll-close">
 <h3 id="section-80">إقفال المسير وتجهيزه للصرف</h3>
-<p><strong>لمن؟</strong> الحساب الذي يملك إقفال الرواتب؛ قد يختلف عن حساب المراجع.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> الحساب الذي يملك إقفال الرواتب؛ قد يختلف عن حساب المراجع.</span></p>
 <ol>
 <li>افتح المسير المعتمد وراجع الشركة والفترة وعدد الموظفين والاستحقاقات والصافي.</li>
 <li>أكد الفترة والمبالغ المعروضة، ثم اضغط «إقفال المسير».</li>
 <li>انتظر النتيجة. تجد الرواتب المحفوظة في «الموظفون والرواتب»، والصرف في «الصرف والدفعات» بحسب صلاحياتك.</li>
 <li>للتفصيل أو كشوف الرواتب افتح «التفاصيل وكشوف الرواتب». الطباعة والتصدير يتطلبان صلاحياتهما.</li>
 </ol>
-<p><strong>النتيجة:</strong> رواتب مقفلة محفوظة يمكن الرجوع إليها. التعديل اللاحق يمر بمسار التصحيح الذي يحتفظ بالأصل؛ الإقفال لا ينفذ صرفًا أو تحويلًا بنكيًا.</p>
-<p><strong>إذا لم تتأكد النتيجة:</strong> استخدم «استعادة نتيجة الطلب الأصلي» داخل المسير قبل عملية جديدة. احتفظ بالمتصفح وتخزينه حتى تُحسم المحاولة. إذا كانت الخطوة غير متاحة لحسابك، يتولاها المخول بها دون مشاركة كلمة المرور.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> رواتب مقفلة محفوظة يمكن الرجوع إليها. التعديل اللاحق يمر بمسار التصحيح الذي يحتفظ بالأصل؛ الإقفال لا ينفذ صرفًا أو تحويلًا بنكيًا.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا لم تتأكد النتيجة:</strong> استخدم «استعادة نتيجة الطلب الأصلي» داخل المسير قبل عملية جديدة. احتفظ بالمتصفح وتخزينه حتى تُحسم المحاولة. إذا كانت الخطوة غير متاحة لحسابك، يتولاها المخول بها دون مشاركة كلمة المرور.</span></p>
 </div>
 </section>
 <section data-guide-topic="payroll-reports">
 <h2 id="section-81">26. التقارير والتصدير والطباعة</h2>
-<p><strong>ابدأ من:</strong> تقارير الرواتب أو المسير النهائي المحفوظ، حسب نوع التقرير وصلاحيتك.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> تقارير الرواتب أو المسير النهائي المحفوظ، حسب نوع التقرير وصلاحيتك.</span></p>
 <ol>
 <li>اختر جهة العمل والفترة أو النتيجة المحفوظة التي تريدها.</li>
 <li>اختر التقرير المتاح للحساب، وراجع نطاق الموظفين والفلاتر.</li>
@@ -606,13 +620,13 @@
 <tr><td>أرصدة السلف</td><td>متابعة الأصل والمدفوع والرصيد حسب صلاحية الحساب</td></tr>
 </tbody></table></div>
 <p>قد لا تتاح كل الأنواع في حسابك. اختر التقرير الموافق لمهمتك، ولا تطلب صلاحية تنزيل جميع التقارير إذا كان عملك يقتصر على قراءة نوع معين.</p>
-<p><strong>إذا كانت القائمة فارغة:</strong> قد لا توجد نتائج نهائية لهذا النطاق، أو يكون البحث مختلفًا، أو لا يملك حسابك عرضها. لا تتعامل مع حساب مبدئي باعتباره تقريرًا نهائيًا بديلًا. اطلب من مسؤول الرواتب مراجعة الحالة.</p>
-<p><strong>إذا ظهرت مشكلة في الطباعة:</strong> أعد فتح التقرير الصحيح، ثم تحقق من الطابعة وإعداد الورق ومعاينة المتصفح. نجاح الضغط على «طباعة» لا يثبت خروج ورقة. افحص العينة فعليًا قبل طباعة دفعة كبيرة.</p>
-<p><strong>النتيجة:</strong> ملف أو طباعة للنسخة المطلوبة، ضمن الصلاحيات الحالية. إذا تغير راتب لاحقًا بتصحيح، استخدم النتيجة التي يحددها مسار التصحيح بدل تعديل ملف التقرير يدويًا.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا كانت القائمة فارغة:</strong> قد لا توجد نتائج نهائية لهذا النطاق، أو يكون البحث مختلفًا، أو لا يملك حسابك عرضها. لا تتعامل مع حساب مبدئي باعتباره تقريرًا نهائيًا بديلًا. اطلب من مسؤول الرواتب مراجعة الحالة.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>إذا ظهرت مشكلة في الطباعة:</strong> أعد فتح التقرير الصحيح، ثم تحقق من الطابعة وإعداد الورق ومعاينة المتصفح. نجاح الضغط على «طباعة» لا يثبت خروج ورقة. افحص العينة فعليًا قبل طباعة دفعة كبيرة.</span></p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> ملف أو طباعة للنسخة المطلوبة، ضمن الصلاحيات الحالية. إذا تغير راتب لاحقًا بتصحيح، استخدم النتيجة التي يحددها مسار التصحيح بدل تعديل ملف التقرير يدويًا.</span></p>
 </section>
 <section data-guide-topic="advances">
 <h2 id="section-82">27. سلف الموظفين ومتابعة الأقساط</h2>
-<p><strong>ابدأ من:</strong> «السلف». اختر الشركة إذا كان حسابك يعمل على أكثر من جهة. تعرض القائمة الموظف والحالة ومبلغ السلفة والمتبقي والقسط التالي. افتح «فتح السلفة» لمتابعتها.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> «السلف». اختر الشركة إذا كان حسابك يعمل على أكثر من جهة. تعرض القائمة الموظف والحالة ومبلغ السلفة والمتبقي والقسط التالي. افتح «فتح السلفة» لمتابعتها.</span></p>
 <h3 id="section-83">إضافة سلفة</h3>
 <ol>
 <li>اضغط «سلفة جديدة».</li>
@@ -621,7 +635,7 @@
 <li>اختر «أول راتب يُخصم منه» وحدد عدد الأقساط. راجع ملاحظة العملية المقترحة وعدّلها عند الحاجة.</li>
 <li>اضغط «حفظ السلفة». يفتح سجلها لمراجعة المبلغ والأقساط.</li>
 </ol>
-<p><strong>النتيجة:</strong> سلفة بحالة «مسودة». حفظها لا يثبت صرف المبلغ أو خصم أول قسط. تُقسم القيمة بالقروش ويحمل القسط الأخير باقي التقسيم. إذا لم تكفِ الفترات المحفوظة للأقساط، يجهز المخول الفترات اللازمة من إعدادات الرواتب ← «إضافة فترة لاحقة دون حسابها»، ثم يعيد المراجعة.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> سلفة بحالة «مسودة». حفظها لا يثبت صرف المبلغ أو خصم أول قسط. تُقسم القيمة بالقروش ويحمل القسط الأخير باقي التقسيم. إذا لم تكفِ الفترات المحفوظة للأقساط، يجهز المخول الفترات اللازمة من إعدادات الرواتب ← «إضافة فترة لاحقة دون حسابها»، ثم يعيد المراجعة.</span></p>
 <h3 id="section-84">الاعتماد والصرف</h3>
 <p>افتح السلفة، وراجع مبلغها وجدولها ثم «اعتماد السلفة» لصاحب الصلاحية. تصبح «معتمدة · لم يُسجل الصرف». بعد صرفها فعليًا خارج المنصة، يستخدم المخول «تسجيل صرف السلفة» مع التاريخ ومرجع العملية وملاحظتها. تصبح سارية وتظهر مسؤولية سدادها. هذا يسجل الصرف، ولا يحول أموالًا إلى الموظف.</p>
 <h3 id="section-85">السداد والأقساط</h3>
@@ -633,7 +647,7 @@
 </section>
 <section data-guide-topic="payroll-payments">
 <h2 id="section-87">28. تسجيل دفعات الرواتب التي صُرفت خارجيًا</h2>
-<p><strong>ابدأ من:</strong> الرواتب ← افتح المسير المقفل ← «الصرف والدفعات». ويمكن استخدام «تسجيل الصرف» داخل المسير. يحتاج التسجيل صلاحية تسجيل دفعات الرواتب.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>ابدأ من:</strong> الرواتب ← افتح المسير المقفل ← «الصرف والدفعات». ويمكن استخدام «تسجيل الصرف» داخل المسير. يحتاج التسجيل صلاحية تسجيل دفعات الرواتب.</span></p>
 <ol>
 <li>راجع المستحق والمدفوع والمتبقي، وافتح «تسجيل دفعة» إذا كان هناك مبلغ باقٍ.</li>
 <li>الاختيار المعتاد هو «كامل المتبقي لجميع الموظفين». اتركه فقط إذا كنت قد صرفت المبلغ المعروض كاملًا فعلًا.</li>
@@ -642,7 +656,7 @@
 <li>أكد أن المبالغ صُرفت خارج المنصة وأن المرجع يخصها، ثم اضغط «تسجيل دفعة صُرفت بالفعل».</li>
 <li>انتظر التأكيد، وراجع المدفوع والمتبقي وسجل الدفعات من المسير نفسه. افتح توزيع الدفعة إذا أردت مراجعة مبالغ الموظفين.</li>
 </ol>
-<p><strong>النتيجة:</strong> تسجيل دفع حدث بالفعل خارج المنصة. قد تبقى مبالغ لم تُصرف بعد؛ سجلها عند دفعها. المتبقي صفر يعني اكتمال تسجيل مستحق هذا المسير، ولا يعني أن التطبيق نفذ تحويلًا بنكيًا.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> تسجيل دفع حدث بالفعل خارج المنصة. قد تبقى مبالغ لم تُصرف بعد؛ سجلها عند دفعها. المتبقي صفر يعني اكتمال تسجيل مستحق هذا المسير، ولا يعني أن التطبيق نفذ تحويلًا بنكيًا.</span></p>
 <h3 id="section-88">تصحيح دفعة سُجلت بالخطأ</h3>
 <p>من «سجل الدفعات وتصحيحها» افتح التصحيح المتاح لصاحب الصلاحية. أدخل تاريخه ومرجعه وسبب الخطأ. يعكس الإجراء تسجيل الدفعة كاملة ويحفظ الأصل؛ لا يسترد مالًا صُرف فعليًا. إذا كان الخطأ في الراتب نفسه، اتبع تصحيح المسير بدل تغيير سجل الدفعة لإخفائه.</p>
 <h3 id="section-89">نتيجة لم تتأكد</h3>
@@ -650,7 +664,7 @@
 </section>
 <section data-guide-topic="payroll-correct">
 <h2 id="section-90">29. تصحيح راتب مقفل</h2>
-<p><strong>لمن؟</strong> مسؤول تصحيح الرواتب مع تفويض المصدر المطلوب؛ تنفيذ تصحيح المسير المحفوظ يتطلب أيضًا صلاحية الحفظ النهائي. وقد يتطلب اعتماد المقترح أو تسجيل التسوية صلاحيات أخرى حسب المهمة.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> مسؤول تصحيح الرواتب مع تفويض المصدر المطلوب؛ تنفيذ تصحيح المسير المحفوظ يتطلب أيضًا صلاحية الحفظ النهائي. وقد يتطلب اعتماد المقترح أو تسجيل التسوية صلاحيات أخرى حسب المهمة.</span></p>
 <ol>
 <li>ابدأ من «تصحيح راتب مقفل» أو رابط التصحيح داخل المصدر المتأثر، مثل تغيير أجر تاريخي أو إجازة بعد الإقفال.</li>
 <li>اختر الجهة والموظف والمسير الأصلي الذي تأثر. راجع حالة الصرف السابقة ولا تفترض أن «لم يُسجل دفع» تعني عدم حدوث صرف خارجي لم يوثق بعد.</li>
@@ -660,8 +674,8 @@
 <li>إذا احتاجت الحالة تسوية لاحقة، حدد أساس المسؤولية المعتمد ومسارها، ثم تابعها حتى تظهر نتيجتها.</li>
 </ol>
 <p>المبلغ الموجب في مسؤولية التسوية المقترحة يعني مستحقًا إضافيًا للموظف، والسالب مسؤولية استرداد وفق شرح الصفحة. <strong>لا تستنتج هذه المسؤولية من فرق صافي وحده</strong>، ولا تعتبر إنشاء مدخل خصم لاحق تسديدًا للمبلغ. الخصم اللاحق يحتاج شروطه ومراجعته.</p>
-<p><strong>النتيجة:</strong> سلسلة تصحيح مرتبطة بالسجل الأصلي، مع حفظ التاريخ ومسؤولية المتابعة. لا يغيّر ذلك من تلقاء نفسه مستندات خارجية أو تحويلات بنكية. افحص السجل والنتيجة ومرحلة التسوية المطلوبة.</p>
-<p><strong>عند نتيجة غير مؤكدة:</strong> استخدم «استعادة نتيجة الطلب الأصلي» بالقيم المحفوظة. لا تبدّل المصدر أو السبب أو المبلغ لتنشئ محاولة جديدة قبل حسم السابقة.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> سلسلة تصحيح مرتبطة بالسجل الأصلي، مع حفظ التاريخ ومسؤولية المتابعة. لا يغيّر ذلك من تلقاء نفسه مستندات خارجية أو تحويلات بنكية. افحص السجل والنتيجة ومرحلة التسوية المطلوبة.</span></p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>عند نتيجة غير مؤكدة:</strong> استخدم «استعادة نتيجة الطلب الأصلي» بالقيم المحفوظة. لا تبدّل المصدر أو السبب أو المبلغ لتنشئ محاولة جديدة قبل حسم السابقة.</span></p>
 </section>
 <section data-guide-topic="common">
 <h2 id="section-91">30. برنامج تدريب عملي تسلمه الشركة لموظفيها</h2>
@@ -748,7 +762,7 @@
 <div data-guide-task="operator-companies operator-lifecycle operator-commercial">
 <h3 id="section-103">32.1 ابدأ من الشركات</h3>
 <p>ابحث عن الشركة باسمها، وافتح صفحتها، ثم راجع الاسم والحالة قبل أي تعديل. من مساحة الشركة تستطيع الانتقال إلى الخدمات وحدود الاستخدام والحالة وفق تفويضك. لا تنفذ إجراء على شركة اعتمادًا على ترتيب الصفوف أو تشابه اسمين.</p>
-<p><strong>النتيجة المطلوبة:</strong> تصل إلى الشركة المقصودة وتعرف حالتها الحالية والخدمات الفعلية. إذا كان لديك دور تجاري فقط فلن يتيح لك ذلك بالضرورة إنشاء شركة أو تعليقها أو منح مشغّل جديد.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة المطلوبة:</strong> تصل إلى الشركة المقصودة وتعرف حالتها الحالية والخدمات الفعلية. إذا كان لديك دور تجاري فقط فلن يتيح لك ذلك بالضرورة إنشاء شركة أو تعليقها أو منح مشغّل جديد.</span></p>
 </div>
 <div data-guide-task="operator-invitations">
 <h3 id="section-104">32.2 إنشاء شركة: اختر نقطة البداية الصحيحة</h3>
@@ -762,11 +776,11 @@
 <div data-guide-task="operator-invitations">
 <h3 id="section-105">32.3 متابعة الدعوات</h3>
 <p>افتح الدعوات، وابحث عن الدعوة المقصودة، واقرأ حالتها: محفوظة أو مقبولة أو غيرها مما تعرضه الصفحة. إذا لم يكتمل البريد، استخدم إرسال رابط جديد من الدعوة الحالية عندما يسمح النظام. وإذا كان المطلوب إلغاء دعوة قبل استخدامها، راجع المستهدف والآثار ثم أكد الإلغاء.</p>
-<p><strong>النتيجة:</strong> حالة دعوة موثقة أو رابط جديد حسب العملية، وليس وعدًا بوصول البريد. إذا كانت مقبولة فانتقل إلى الشركة الناتجة بدل إنشاء دعوة تأسيس بديلة. وعند غموض الرد راجع الدعوة الحالية ولا تضاعف الطلبات.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> حالة دعوة موثقة أو رابط جديد حسب العملية، وليس وعدًا بوصول البريد. إذا كانت مقبولة فانتقل إلى الشركة الناتجة بدل إنشاء دعوة تأسيس بديلة. وعند غموض الرد راجع الدعوة الحالية ولا تضاعف الطلبات.</span></p>
 </div>
 <div data-guide-task="operator-commercial">
 <h3 id="section-106">32.4 تشغيل الخدمات وإيقافها</h3>
-<p><strong>لمن؟</strong> صاحب إدارة الخدمات والوصول التجاري. <strong>ابدأ من:</strong> الشركة ← الخدمات.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> صاحب إدارة الخدمات والوصول التجاري. <strong>ابدأ من:</strong> الشركة ← الخدمات.</span></p>
 <ol>
 <li>اقرأ حالة كل خدمة ومدتها وأي تنبيه ارتباط.</li>
 <li>استخدم مفتاح التشغيل أو الإيقاف للتغيير المعتاد.</li>
@@ -776,18 +790,18 @@
 <li>انتظر ظهور الحالة الجديدة. الملاحظة في هذه العملية اختيارية حيث يصفها النموذج بذلك.</li>
 </ol>
 <p>خدمات مثل الحضور والإجازات والرواتب تعتمد على الموارد البشرية. تشغيل خدمة مرتبطة قد يستلزم تشغيل الموارد البشرية معها، وإيقاف الموارد البشرية قد يوقف خدمات أخرى. خطة التأكيد توضح ذلك قبل التنفيذ. مدة الخدمة التابعة لا تتجاوز مدة الأساس الذي تعتمد عليه.</p>
-<p><strong>النتيجة:</strong> حالة الخدمة محدثة وفق القراءة المؤكدة. «ممنوحة» قد تختلف عن «قابلة للاستخدام» إذا كان الأساس المطلوب غير متاح. وإيقاف خدمة تمويل الموظف لا يلغي تسوية الأرصدة القائمة للمخول بها.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> حالة الخدمة محدثة وفق القراءة المؤكدة. «ممنوحة» قد تختلف عن «قابلة للاستخدام» إذا كان الأساس المطلوب غير متاح. وإيقاف خدمة تمويل الموظف لا يلغي تسوية الأرصدة القائمة للمخول بها.</span></p>
 <p>إذا ظهر «تحتاج مراجعة فنية»، لا تحاول علاج التعارض بتبديل المفاتيح مرات متتالية. وإذا لم تتأكد النتيجة، استخدم «إعادة قراءة الحالة» قبل أي تعديل آخر.</p>
 </div>
 <div data-guide-task="operator-commercial">
 <h3 id="section-107">32.5 حدود المستخدمين والفروع</h3>
 <p>من الشركة ← حدود الاستخدام، راجع العدد المستخدم والحد الحالي. اختر تعديل الحد، وحدد «عدد محدد» وأدخل عددًا صحيحًا، أو «غير محدود». راجع التنبيه ثم احفظ؛ الملاحظة اختيارية.</p>
 <p><strong>مثال:</strong> إذا كان الاستخدام 12 وخفضت الحد إلى 10، يبقى الموجود نشطًا، وتُمنع الإضافة حتى ينخفض الاستخدام أو يرفع الحد. خفض الحد لا يعطل تلقائيًا مستخدمين أو فروعًا لاختيار العدد المطلوب.</p>
-<p><strong>النتيجة:</strong> الحد الحالي ظاهر بجوار الاستخدام. إذا كانت النتيجة غير مؤكدة استخدم «إعادة قراءة الحدود». وإذا تغير الحد منذ فتح المحرر، راجع القيمة الجديدة وأعد الاختيار. لا تفترض أن عدد المستخدمين يعادل عدد ملفات الموظفين؛ الحد المعروض هنا للمستخدمين النشطين وفق تعريف الصفحة.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> الحد الحالي ظاهر بجوار الاستخدام. إذا كانت النتيجة غير مؤكدة استخدم «إعادة قراءة الحدود». وإذا تغير الحد منذ فتح المحرر، راجع القيمة الجديدة وأعد الاختيار. لا تفترض أن عدد المستخدمين يعادل عدد ملفات الموظفين؛ الحد المعروض هنا للمستخدمين النشطين وفق تعريف الصفحة.</span></p>
 </div>
 <div data-guide-task="operator-lifecycle">
 <h3 id="section-108">32.6 تعليق الشركة والأرشفة والاستعادة</h3>
-<p><strong>لمن؟</strong> صاحب إدارة دورة حياة الشركات. <strong>ابدأ من:</strong> الشركة ← الحالة.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> صاحب إدارة دورة حياة الشركات. <strong>ابدأ من:</strong> الشركة ← الحالة.</span></p>
 <p>راجع الحالة، ثم اختر الإجراء المتاح. اقرأ اسم الشركة وأثره، واكتب سببًا واضحًا، ثم أكد:</p>
 <ul>
 <li><strong>تعليق الشركة:</strong> يوقف وصول مستخدميها إلى بيانات الشركة حتى استعادة التشغيل.</li>
@@ -795,17 +809,17 @@
 <li><strong>أرشفة الشركة:</strong> تمنع الوصول مع حفظ البيانات وفق العملية، ولا تمثل حذفًا شاملًا.</li>
 <li><strong>استعادة إلى حالة معلقة:</strong> تعيد المؤرشفة إلى معلقة أولًا؛ يلزم إجراء آخر مستقل لاستعادة التشغيل.</li>
 </ul>
-<p><strong>النتيجة:</strong> رسالة الإجراء والحالة الحالية. عند تغير الحالة بواسطة زميل، راجع الحالة الجديدة وأعد اختيار الإجراء المناسب. وعند غموض الرد اقرأ الحالة قبل محاولة أخرى. هذه العمليات حساسة ويظل السبب والتأكيد مطلوبين؛ سهولة التشغيل لا تعني إلغاء الضبط.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>النتيجة:</strong> رسالة الإجراء والحالة الحالية. عند تغير الحالة بواسطة زميل، راجع الحالة الجديدة وأعد اختيار الإجراء المناسب. وعند غموض الرد اقرأ الحالة قبل محاولة أخرى. هذه العمليات حساسة ويظل السبب والتأكيد مطلوبين؛ سهولة التشغيل لا تعني إلغاء الضبط.</span></p>
 </div>
 <div data-guide-task="operator-team">
 <h3 id="section-109">32.7 فريق التشغيل</h3>
-<p><strong>لمن؟</strong> صاحب إدارة فريق التشغيل. افتح «فريق التشغيل» ثم «إضافة مشغّل»، أو افتح «تعديل المهام» لمشغّل موجود.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> صاحب إدارة فريق التشغيل. افتح «فريق التشغيل» ثم «إضافة مشغّل»، أو افتح «تعديل المهام» لمشغّل موجود.</span></p>
 <p>أدخل بريد حساب موجود ومؤكد وقادر على الدخول. حدد مهامه، وراجع «سيضاف» و«سيزال»، واكتب سبب التغيير ثم «حفظ المهام». لسحب جميع المهام استخدم «سحب الصلاحية» مع تأكيده. عند تعديل حسابك نفسك اقرأ التنبيه؛ قد تفقد إدارة الفريق أو وصولك التشغيلي.</p>
 <p>يجب أن يبقى مدير مؤهل واحد على الأقل يستطيع إدارة الفريق. لا تطلب من زميل تعطيل هذا القيد لمعالجة تغيير سريع. وإذا لم يتأكد الحفظ، استخدم «إعادة قراءة الفريق» وراجع النتيجة؛ القراءة تعرض الحالة الحالية وليست وحدها دليلًا على هوية من حفظ محاولة سابقة.</p>
 </div>
 <div data-guide-task="operator-statutory">
 <h3 id="section-110">32.8 إعدادات حساب الضرائب والتأمينات</h3>
-<p><strong>لمن؟</strong> صاحب مهمة إدارة إعدادات الحساب. تضبط الشركة بيانات موظفيها وسياساتها، وتختار إجراء المراجعة المحاسبية أو إرفاق المراجع عند رغبتها؛ ليست شرطًا لتشغيل الموديول.</p>
+<p class="guide-callout entry"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg><span><strong>لمن؟</strong> صاحب مهمة إدارة إعدادات الحساب. تضبط الشركة بيانات موظفيها وسياساتها، وتختار إجراء المراجعة المحاسبية أو إرفاق المراجع عند رغبتها؛ ليست شرطًا لتشغيل الموديول.</span></p>
 <ol>
 <li>افتح «إعدادات حساب الرواتب»، وأنشئ إعدادًا باسم وتاريخ بداية. تاريخ التوقف اختياري.</li>
 <li>يمكنك استخدام «ابدأ بأساس مصر 2026» لملء الشرائح والحدود الأساسية، ثم تحديد المعاملة والفئة وفروع التأمين والنسب المناسبة للحساب. لا يحفظ هذا الخيار تلقائيًا ولا يستبدل إعدادًا محفوظًا أو بيانات بدأت إدخالها.</li>
@@ -815,12 +829,12 @@
 </ol>
 <p>«مقارنات الحساب (اختيارية)» تتيح تسجيل نتائج متوقعة ومقارنتها بالمحرك. يمكنك إضافتها بعد التفعيل، ولا يوقف غيابها أو اختلافها تشغيل الحساب. تظل نتيجة المقارنة ومنشؤها محفوظين دون تغيير السجلات السابقة. الرابط اختياري للحالة الاختبارية، ويلزم عند وصف النتيجة بأنها من مصدر رسمي حتى يكون وصفها واضحًا.</p>
 <p>عند تعديل الإعداد يُحفظ إصدار مستقل. راجع نطاق التواريخ والمعاملة والفئة لتجنب إعدادات متعارضة. التفعيل يعني إتاحة إعدادات الحساب، ولا يمثل شهادة حكومية أو اعتماد محاسب. مسؤولية المراجعة والإثبات لدى كل شركة وباختيارها.</p>
-<p><strong>التعافي:</strong> إذا تغير الإصدار، افتح الحالة الحالية. وإذا لم تتأكد نتيجة الحفظ أو التفعيل، استعد المحاولة نفسها قبل تعديل القيم. لا يلزم تكرار المقارنات أو إعادة إدخال المراجع لتشغيل الحساب.</p>
+<p class="guide-callout caution"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 8.5a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></svg><span><strong>التعافي:</strong> إذا تغير الإصدار، افتح الحالة الحالية. وإذا لم تتأكد نتيجة الحفظ أو التفعيل، استعد المحاولة نفسها قبل تعديل القيم. لا يلزم تكرار المقارنات أو إعادة إدخال المراجع لتشغيل الحساب.</span></p>
 </div>
 <div data-guide-task="operator-companies operator-invitations operator-lifecycle operator-commercial">
 <h3 id="section-111">32.9 تسليم الشركة بعد التجهيز</h3>
 <p>قبل تسليم مساحة جديدة، تحقق من اسمها ومسؤولها وعضويته، والجهة والفرع والخدمات ومددها والحدود والحالة. اطلب من مسؤول الشركة الدخول بحسابه، ثم سلّمه أقسام الدليل المناسبة. تجهيز مساحة تشغيل المنصة لا يضيف الموظفين أو القوالب أو أرصدة الشركة بدل فريقها.</p>
-<p><strong>نقطة انتهاء الرحلة:</strong> يستطيع مسؤول الشركة دخول المساحة، ويعرف خطوات تجهيزها ومن يتواصل معه. لا تعتبر رسالة بريد مرسلة أو شركة أنشئت في القائمة وحدها دليلًا على اكتمال تسليم الاستخدام.</p>
+<p class="guide-callout success"><svg class="guide-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>نقطة انتهاء الرحلة:</strong> يستطيع مسؤول الشركة دخول المساحة، ويعرف خطوات تجهيزها ومن يتواصل معه. لا تعتبر رسالة بريد مرسلة أو شركة أنشئت في القائمة وحدها دليلًا على اكتمال تسليم الاستخدام.</span></p>
 <hr>
 </div>
 </section>
@@ -839,7 +853,7 @@
 <p>........................................................................................................</p>
 <p>........................................................................................................</p>
 <p>هذا الحقل لتوثيق تدريب الشركة ومسؤوليها بعد التنفيذ الفعلي. لا يمثل اعتمادًا مسبقًا أو توقيعًا نيابة عن أي جهة.</p>
-</section></article></main><footer>نسخة تدريب الشركات — 16 أكتوبر 2026 · دليل عام بلا بيانات عملاء أو حسابات دخول. · البحث والتصفية داخل الدليل فقط.</footer><script>(() => {
+</section></article></main><footer class="guide-footer">نسخة تدريب الشركات — 16 أكتوبر 2026 · دليل عام بلا بيانات عملاء أو حسابات دخول. · البحث والتصفية داخل الدليل فقط.</footer><script>(() => {
   'use strict';
   const labels = {
     profile: 'ملفي وأول دخول', 'self-attendance': 'حضوري', 'self-leave': 'إجازاتي',
@@ -913,6 +927,8 @@
     clear.hidden = !search.value;
     empty.hidden = count > 0;
     const mode = all ? 'الدليل الكامل للتدريب' : select.value === 'personal' ? 'المهام المقترحة حسب صلاحياتك' : select.selectedOptions[0].textContent;
+    const coverScope = document.getElementById('guide-cover-scope');
+    if (coverScope) coverScope.textContent = mode;
     status.textContent = mode + ' · ' + count + ' قسم' + (query ? ' يطابق البحث.' : '.');
     if (select.value === 'personal' && !personal.length) status.textContent += ' لم تُحدد مهام إضافية؛ تظهر إرشادات البداية والمساعدة فقط.';
     const target = document.getElementById(window.location.hash.slice(1));

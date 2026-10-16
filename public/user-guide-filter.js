@@ -72,6 +72,8 @@
     clear.hidden = !search.value;
     empty.hidden = count > 0;
     const mode = all ? 'الدليل الكامل للتدريب' : select.value === 'personal' ? 'المهام المقترحة حسب صلاحياتك' : select.selectedOptions[0].textContent;
+    const coverScope = document.getElementById('guide-cover-scope');
+    if (coverScope) coverScope.textContent = mode;
     status.textContent = mode + ' · ' + count + ' قسم' + (query ? ' يطابق البحث.' : '.');
     if (select.value === 'personal' && !personal.length) status.textContent += ' لم تُحدد مهام إضافية؛ تظهر إرشادات البداية والمساعدة فقط.';
     const target = document.getElementById(window.location.hash.slice(1));
