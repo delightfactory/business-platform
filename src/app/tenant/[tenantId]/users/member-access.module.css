@@ -1,6 +1,6 @@
 .body { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
 .form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
-.options { min-height: 0; overflow-y: auto; display: grid; gap: 28px; padding-inline-end: 6px; }
+.options { min-height: 0; overflow-y: auto; display: grid; gap: 12px; padding-inline-end: 6px; }
 .form h3 { font: 600 16px/1.6 var(--f-head); margin: 0 0 8px; }
 .presets > div { display: grid; gap: 10px; padding-block: 14px; border-bottom: 1px solid var(--line); }
 .presets > div > button { justify-self: start; }
@@ -17,3 +17,13 @@
 .group .warning { color: var(--warn-text); }
 .preview { flex-shrink: 0; border-top: 1px solid var(--line); padding-top: 16px; max-height: 45vh; overflow-y: auto; }
 .preview p { line-height: 1.8; font-size: 13px; }
+.selectedCount { margin: 0; font-size: .85rem; color: var(--color-muted); line-height: 1.7; }
+.domain > summary > span { display: flex; flex-wrap: wrap; gap: .35rem .8rem; align-items: center; justify-content: space-between; width: 100%; }
+.domainCount { font-size: .8rem; font-weight: 400; color: var(--color-muted); }
+.domain > summary, .presetDisclosure > summary { min-height: 44px; }
+.domain .group legend { margin: 0; }
+.memberTasks { max-width: 38rem; }
+.memberTasks > p { font-size: .85rem; line-height: 1.8; }
+.memberTasks :global(.ui-disclosure) { margin-top: .5rem; }
+.memberTasks :global(.ui-disclosure) ul { border: 0; background: transparent; padding-inline-start: 1.2rem; overflow: visible; }
+.memberTasks :global(.ui-disclosure) li { font-size: .85rem; line-height: 1.8; }

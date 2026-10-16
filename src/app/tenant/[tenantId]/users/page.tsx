@@ -11,6 +11,7 @@ import { FeedbackToast } from '@/components/feedback-toast';
 import { invitationReviewMessage } from '@/lib/invitation-feedback';
 import { reissueMemberInvitationAction, revokeMemberInvitationAction, setMemberAccessAction, setProtectedAdminLeaveSelfAccessAction, changeTenantAdminRoleAction } from './actions';
 import { MemberAccessSheet } from './MemberAccessSheet';
+import styles from './member-access.module.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -99,6 +100,7 @@ export default async function TenantUsersPage({ params, searchParams }: { params
                 <p>{row.protected_admin ? 'مسؤول الشركة' : 'عضو'}</p>
                 <Badge as="p" className={` ${row.access_state === 'active' ? 'is-active' : 'is-inactive'}`}>{row.access_state === 'active' ? 'نشط' : 'غير نشط'}</Badge>
                 <p>صلاحيات العمل: <strong>{assignedBundleLabels(row.roles).length}</strong></p>
+                {row.access_state === 'active' && <MemberTasks roles={row.roles} />}
                 {row.access_state !== 'active' && assignedBundleLabels(row.roles).length > 0 && <Disclosure summary="عرض الصلاحيات المحفوظة">
                   <ul>{assignedBundleLabels(row.roles).map(label => <li key={label}>{label}</li>)}</ul>
                 </Disclosure>}
@@ -199,6 +201,15 @@ function usersUrl(tenantId: string, view: 'members' | 'invitations', page: numbe
 function hasBundle(roles: RoleAssignment[] | undefined, key: string) { return roles?.some((role) => role.role_key === key) ?? false; }
 function assignedBundleLabels(roles: RoleAssignment[] | undefined) {
   return PEOPLE_ROLE_BUNDLES.filter((bundle) => hasBundle(roles, bundle.key)).map((bundle) => bundle.label);
+}
+function MemberTasks({ roles }: { roles: RoleAssignment[] }) {
+  const labels = assignedBundleLabels(roles);
+  return <div className={styles.memberTasks}>
+    <p>{labels.length ? labels.slice(0, 2).join(' · ') : 'لم تُضف مهام عمل من هذه القائمة بعد.'}</p>
+    {labels.length > 2 && <Disclosure summary={`عرض بقية المهام (${labels.length - 2})`}>
+      <ul>{labels.slice(2).map(label => <li key={label}>{label}</li>)}</ul>
+    </Disclosure>}
+  </div>;
 }
 function invitationText(state: string) {
   const labels: Record<string, string> = { pending: 'بانتظار القبول', accepted: 'مقبولة', expired: 'منتهية', revoked: 'ملغاة' };

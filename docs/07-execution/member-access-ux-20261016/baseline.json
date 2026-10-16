@@ -1,0 +1,9 @@
+{
+  "checkboxes": 27,
+  "domains": 6,
+  "presetButtons": 5,
+  "selected": [
+    "employee.attendance.self.v1",
+    "employee.leave.self.v1"
+  ]
+}
