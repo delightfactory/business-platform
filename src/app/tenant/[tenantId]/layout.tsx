@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
+import { customBrandStyle, normalizeBrandColor } from '@/lib/brand-colors.mjs';
 import { TenantNavigation } from '@/components/context-navigation';
 import { AppShell } from '@/components/shell/app-shell';
 import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, readWorkspaceRpc } from '@/lib/workspace-access';
@@ -6,9 +7,6 @@ import { getWorkspaceClient as createSupabaseServerClient, getWorkspaceUser, rea
 export const dynamic = 'force-dynamic';
 type Params = Promise<{ tenantId: string }>;
 type Branding = { tenant_name: string; primary_color_key: string; logo_object_path: string | null };
-const colors: Record<string, string> = {
-  teal: '#126b68', blue: '#2563eb', violet: '#7c3aed', emerald: '#047857',
-};
 
 export default async function TenantBrandingLayout({ children, params }: { children: ReactNode; params: Params }) {
   const { tenantId } = await params;
@@ -23,14 +21,15 @@ export default async function TenantBrandingLayout({ children, params }: { child
     const { data: membership, error: membershipError } = await readWorkspaceRpc(supabase, 'tenant_membership_snapshot', tenantId, 'p_tenant_id');
     if (!membershipError && membership && typeof membership === 'object' && !Array.isArray(membership) && typeof membership.tenant_name === 'string') tenantName = membership.tenant_name;
   }
-  const brandKey = branding && Object.hasOwn(colors, branding.primary_color_key) ? branding.primary_color_key : 'teal';
+  const brandKey = normalizeBrandColor(branding?.primary_color_key) || 'teal';
+  const brandStyle = customBrandStyle(brandKey);
   let logoUrl: string | null = null;
   if (branding?.logo_object_path) {
     const { data: signed } = await supabase.storage.from('tenant-branding').createSignedUrl(branding.logo_object_path, 60);
     logoUrl = signed?.signedUrl ?? null;
   }
 
-  return <AppShell mode="tenant" brand={brandKey}
+  return <AppShell mode="tenant" brand={brandStyle ? 'custom' : brandKey} style={brandStyle as CSSProperties}
     navigation={<TenantNavigation tenantId={tenantId} tenantName={tenantName || 'مساحة الشركة'} logoUrl={logoUrl} />}>
     {children}
   </AppShell>;

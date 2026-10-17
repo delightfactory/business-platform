@@ -63,6 +63,24 @@ RESET ROLE;
 SELECT is((SELECT legal_name FROM platform_core.tenant_legal_entities WHERE tenant_id='e2000000-0000-4000-8000-000000000001'),'A Legal Name Ltd','branding does not write Legal Entity legal names');
 SELECT is((SELECT count(*)::integer FROM platform_core.tenant_branding_audit_events WHERE tenant_id='e2000000-0000-4000-8000-000000000001'),1,'successful branding change writes one audit event');
 
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e1000000-0000-4000-8000-000000000001',true);
+SELECT is(public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','#FfC000',NULL,false,'Custom color')->>'state','saved','Admin saves arbitrary RGB color');
+SELECT is(public.tenant_branding_snapshot('e2000000-0000-4000-8000-000000000001')->>'primary_color_key','#ffc000','custom color is returned canonically');
+SELECT is(public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','#ffc000',NULL,false,'Same color')->>'state','unchanged','same custom color is a no-op');
+SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','#fff;display:none',NULL,false,'Invalid CSS')$$,'22023','tenant_branding_input_invalid','CSS input is rejected');
+SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','#11223344',NULL,false,'Invalid alpha')$$,'22023','tenant_branding_input_invalid','alpha colors are rejected');
+SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000002','Cross Tenant','#123456',NULL,false,'Cross tenant')$$,'42501','tenant_branding_forbidden','custom colors preserve tenant isolation');
+RESET ROLE;
+SELECT is((SELECT after_state->>'primary_color_key' FROM platform_core.tenant_branding_audit_events WHERE tenant_id='e2000000-0000-4000-8000-000000000001' ORDER BY id DESC LIMIT 1),'#ffc000','audit includes exact custom color');
+SELECT is((SELECT count(*)::integer FROM platform_core.tenant_branding_audit_events WHERE tenant_id='e2000000-0000-4000-8000-000000000001'),2,'rejected and no-op colors add no audit events');
+SET LOCAL ROLE authenticated;
+SELECT set_config('request.jwt.claim.sub','e1000000-0000-4000-8000-000000000002',true);
+SELECT throws_ok($$SELECT public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','#123456',NULL,false,'Member attempt')$$,'42501','tenant_branding_forbidden','member cannot save a custom color');
+SELECT set_config('request.jwt.claim.sub','e1000000-0000-4000-8000-000000000001',true);
+SELECT is(public.save_tenant_branding('e2000000-0000-4000-8000-000000000001','Aster','violet',NULL,false,'Return to preset')->>'state','saved','legacy presets still work after custom colors');
+RESET ROLE;
+
 CREATE FUNCTION pg_temp.fail_branding_audit() RETURNS trigger LANGUAGE plpgsql AS $function$
 BEGIN RAISE EXCEPTION 'audit_failure_test' USING ERRCODE='P0001'; END; $function$;
 CREATE TRIGGER fail_branding_audit BEFORE INSERT ON platform_core.tenant_branding_audit_events

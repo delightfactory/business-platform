@@ -12,7 +12,7 @@ type Params = Promise<{ tenantId: string }>;
 type Query = Promise<{ state?: string }>;
 type Branding = {
   tenant_id: string; tenant_name: string; display_name_override: string | null;
-  primary_color_key: 'teal' | 'blue' | 'violet' | 'emerald'; logo_object_path: string | null; can_manage_branding: boolean; has_saved_branding?: boolean;
+  primary_color_key: string; logo_object_path: string | null; can_manage_branding: boolean; has_saved_branding?: boolean;
 };
 
 export default async function TenantBrandingPage({ params, searchParams }: { params: Params; searchParams: Query }) {

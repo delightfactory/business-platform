@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseAdminClient } from '@/lib/supabase/admin';
+import { normalizeBrandColor } from '@/lib/brand-colors.mjs';
 
 const bucket = 'tenant-branding';
 const maxLogoBytes = 2 * 1024 * 1024;
@@ -13,13 +14,13 @@ export type BrandingFormState = { error: string };
 export async function saveTenantBrandingFormAction(_previous: BrandingFormState, formData: FormData): Promise<BrandingFormState> {
   const tenantId = text(formData, 'tenantId');
   const displayName = text(formData, 'displayName');
-  const color = text(formData, 'color');
+  const color = normalizeBrandColor(text(formData, 'color'));
   const reason = text(formData, 'reason');
   const removeLogo = formData.get('removeLogo') === 'on';
   const fileField = formData.get('logo');
   const file = fileField instanceof File && fileField.size > 0 ? fileField : null;
   const failure = (code: string): BrandingFormState => ({ error: brandingErrorText(code) });
-  if (!isUuid(tenantId) || !['teal', 'blue', 'violet', 'emerald'].includes(color)
+  if (!isUuid(tenantId) || !color
     || (removeLogo && file) || displayName.length > 160) return failure('invalid');
   if (reason.length < 3 || reason.length > 500) return failure('reason');
   const supabase = await createSupabaseServerClient();
