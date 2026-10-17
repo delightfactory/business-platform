@@ -1,0 +1,15 @@
+# Release receipt — 2026-10-17
+
+Application source 9317f5a96407809dd41e596fcd32c21498d71db5 pushed to codex/operator-company-ux. No main merge.
+
+Production deployment dpl_DE3gEc7KDBiqFNBu8EdpS7gacX8j / business-platform-production-houcfxssh.vercel.app, project prj_O5OSEuyyJkJZtVW5sRXm7M4XfPaa, team team_AYQTvxuQJ1EepKxDVhzjX1ew. Remote build passed compilation, TypeScript and routes. Staged with --prod --skip-domain, authenticated guide hash verified using vercel curl, then explicitly promoted. Raw authenticated Vercel API lookup of platform.delight-world.com confirms READY and exact sourceCommit above. Previous rollback deployment dpl_9kxgvVqak8yakz1Q7K45cDyNmeJr preserved.
+
+Supabase production identity verified as business-platform-production / msryvzefjdqjcfikerne / eu-west-1 / ACTIVE_HEALTHY. Applied tenant_custom_brand_colors; MCP migration ledger version 20261017095129 (local source migration 20261017093957). Post-application read confirms expanded table constraint, canonical HEX function validation, anon execute false and authenticated execute true. No production tenant branding records changed during verification. Browser save/reload coverage used the owned local synthetic QA tenant, not a production company.
+
+Live HTTP 200 artifacts verified byte-for-byte against committed deliverables:
+- user-guide.html: 5555CB56FF568FD36DA862FCFB798979BAAD9C163173BBF793D385559DB1AF7F
+- user-guide.pdf: 5B799BF8B24730B80C309DD5FA348800CF8940A1E61E7B55D6E319B91BFD156F
+
+Security advisor context: private RLS tables intentionally deny direct access; existing authenticated SECURITY DEFINER RPCs explicitly check application permission. Branding migration preserves those exact checks/grants, independently reviewed and tested for denied/cross-tenant contexts. Generic advisor notices remain; no blanket claim of a clean platform security audit. Existing leaked-password-protection warning remains outside this feature; https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection . npm audit --omit=dev returned 0 vulnerabilities; cloud installation reported 5 high findings among development dependencies, no dependency changes in this feature.
+
+Cleanup: local Next server stopped, five QA containers stopped, Docker Desktop stopped. No database/container/volume deletion. Source, user guide PDF, representative desktop/mobile and guide page proof, compact tests/review verdict and Docker recovery journal retained outside sync. A bounded cleanup inventory measured .next = 376433403 bytes (664 files) and node_modules = 479538745 bytes (27508 files), total 855972148 bytes (816.32 MiB). Exact path/reparse/active-consumer/Git checks passed inventory, but automatic execution policy rejected the deletion command. No deletion occurred and no alternative deletion method was attempted. Both reconstructible directories remain excluded from Git/cloud deployment; no local or cloud reclaimed bytes claimed. Previous cleanup exclusions from other runs remain untouched.
