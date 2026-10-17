@@ -1,4 +1,6 @@
-# Business Platform
+# باشر — BASHER
+
+كل أعمالك في مكان واحد. Product identity is maintained in `src/lib/product-brand.json`; the [brand kit](public/brand/README.txt) contains application/browser assets. Internal repository and service identifiers retain `business-platform` for compatibility.
 
 UX redesign work starts from the [execution reference](docs/05-engineering/ux-redesign-reference.md): live interactive demo, pinned original HTML and plan, compatibility review, and issue #47.
 

@@ -246,15 +246,15 @@ otp_expiry = 3600
 # sender_name = "Admin"
 
 [auth.email.template.invite]
-subject = "دعوة للانضمام إلى منصة الأعمال"
+subject = "دعوة للانضمام إلى باشر"
 content_path = "./supabase/templates/first_admin_invite.html"
 
 [auth.email.template.magic_link]
-subject = "رابط آمن لإكمال إعداد حسابك"
+subject = "رابط آمن لإكمال إعداد حسابك — باشر"
 content_path = "./supabase/templates/invitation_magic_link.html"
 
 [auth.email.template.recovery]
-subject = "إعداد كلمة المرور أو استعادتها — منصة الأعمال"
+subject = "إعداد كلمة المرور أو استعادتها — باشر"
 content_path = "./supabase/templates/password_recovery.html"
 
 # Uncomment to customize notification email template
@@ -420,3 +420,15 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 # declarative_schema_path = "./database"
 # JSON string passed through to pg-delta SQL formatting.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":80,\"commaStyle\":\"trailing\"}"
+
+[auth.email.template.confirmation]
+subject = "تأكيد بريدك الإلكتروني — باشر"
+content_path = "./supabase/templates/confirm_signup.html"
+
+[auth.email.template.email_change]
+subject = "تأكيد تغيير البريد الإلكتروني — باشر"
+content_path = "./supabase/templates/change_email.html"
+
+[auth.email.template.reauthentication]
+subject = "رمز التحقق من هويتك — باشر"
+content_path = "./supabase/templates/reauthentication.html"

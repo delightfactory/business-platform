@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Panel, PageHeader } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -14,7 +15,7 @@ export default async function EmployeeAccountActivationCallbackPage({ searchPara
   const message = query.state === 'expired' ? 'انتهت صلاحية الرابط. اطلب من الموارد البشرية إعادة إرساله.'
     : query.state === 'identity' ? 'هذا الرابط لا يطابق عملية التفعيل. استخدم الرابط المرسل لهذا الحساب.'
       : query.state ? 'تعذر التحقق من الرابط. افتح أحدث رسالة وصلتك.' : !valid ? 'رابط التفعيل غير مكتمل. افتح أحدث رسالة وصلتك أو اطلب من الموارد البشرية إعادة إرساله.' : 'تحقق من البريد للمتابعة وإعداد كلمة المرور.';
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link></header>
     <Panel className="auth-card" aria-labelledby="activation-callback-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><PageHeader id="activation-callback-title" title={<>تأكيد البريد والمتابعة</>} />
       <p className="intro" role={query.state ? 'alert' : undefined}>{message}</p>

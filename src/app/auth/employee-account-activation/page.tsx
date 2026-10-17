@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Field, Panel, PageHeader } from '@/components/ui';
 import { Message, ButtonLink } from '@/components/ui';
 import { Input } from '@/components/ui';
@@ -28,7 +29,7 @@ export default async function EmployeeAccountActivationPage({ searchParams }: { 
     return <Status title="عملية التفعيل غير متاحة" detail="تعذر تأكيد حالة هذا الحساب. افتح أحدث رابط أو تواصل مع الموارد البشرية." />;
   }
   const hintMessage = query.state === 'password' && intent.password_ready === true ? null : recoveryHint(query.state);
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link></header>
     <Panel className="auth-card" aria-labelledby="employee-activation-title">
       <p className="eyebrow">تفعيل حساب الموظف</p><PageHeader id="employee-activation-title" title={<>إعداد حسابك</>} />
       <p className="intro">الحساب مرتبط ببريد <bdi>{String(intent.email ?? user.email ?? '')}</bdi> للموظف {String(intent.employee_name ?? '')} في {String(intent.tenant_name ?? '')}.</p>
@@ -77,6 +78,6 @@ function recoveryHint(state?: string) {
 
 function isUuid(value: string) { return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value); }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link></header>
     <Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro" role="alert">{detail}</p></Panel></main>;
 }

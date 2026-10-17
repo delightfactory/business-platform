@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Disclosure, PageHeader } from '@/components/ui';
 import { Panel, Badge, Button, ButtonLink } from '@/components/ui';
 import Link from 'next/link';
@@ -57,7 +58,7 @@ export default async function TenantPage({ params, searchParams }: {
           <dl className="snapshot-grid"><div><dt>الحساب</dt><dd><bdi>{String(member.member_email ?? user.email ?? '')}</bdi></dd></div>
             <div><dt>الدور</dt><dd>عضو</dd></div></dl>
         </Panel>
-        <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
+        <footer className="footer">باشر · مساحة الشركة</footer>
       </main>
     );
   }
@@ -105,7 +106,7 @@ export default async function TenantPage({ params, searchParams }: {
           </ul>
         </section>
       </div>
-      <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
+      <footer className="footer">باشر · مساحة الشركة</footer>
     </main>
   );
 }
@@ -139,7 +140,7 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
   return (
     <main className="app-shell">
       <header className="topbar">
-        <Link className="brand" href="/">منصة الأعمال</Link>
+        <Link className="brand" href="/"><ProductBrand /></Link>
         <nav className="topbar-actions" aria-label="إجراءات الحساب">
           <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
         </nav>
@@ -150,7 +151,7 @@ function TenantStatus({ title, detail, showSwitch = false }: { title: string; de
         <p className="intro">{detail}</p>
         {showSwitch && <ButtonLink variant="ghost"  href="/tenant/select">اختر شركة أخرى</ButtonLink>}
       </Panel>
-      <footer className="footer">منصة الأعمال · مساحة الشركة</footer>
+      <footer className="footer">باشر · مساحة الشركة</footer>
     </main>
   );
 }

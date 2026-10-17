@@ -12,6 +12,7 @@ import { Icon, type IconName } from '@/components/ui/icon';
 import { currentWorkspaceLocation, payrollDestination, workspaceMenu, type WorkspaceLink, type WorkspaceMenu } from './navigation-model';
 import { guideHref } from './guide-navigation';
 import styles from './workspace-navigation.module.css';
+import brand from '@/lib/product-brand.json';
 
 export type WorkspaceNavigationProps = {
   homeHref: string; homeLabel: string; contextLabel: string; links: WorkspaceLink[];
@@ -101,8 +102,8 @@ function WorkspaceNavigationView({ homeHref, homeLabel, contextLabel, links: ori
   }
   const identity = <>
     {logoUrl ? <Image src={logoUrl} alt="" width={36} height={36} unoptimized className={styles.logo} />
-      : <span className={`${styles.logo} ${styles.monogram}`} aria-hidden="true">{contextLabel.trim().slice(0,1) || 'م'}</span>}
-    <span className={styles.identityText}><strong>منصة الأعمال</strong><small><bdi>{contextLabel}</bdi></small></span>
+      : <Image src={brand.icon} alt="" width={36} height={36} className={styles.logo} />}
+    <span className={styles.identityText}><strong>{brand.nameAr} <bdi>{brand.nameEn}</bdi></strong><small><bdi>{contextLabel}</bdi></small></span>
   </>;
   const tree = <NavigationTree menu={menu} activeHref={active?.href} activeArea={activeArea?.key} closeCurrent={() => dialog.current?.close()} settingsHref={settingsHref} settingsCurrent={settingsCurrent}/>;
   const manual = guideHref(mode, [...originalLinks, ...originalBusinessLinks], homeHref);

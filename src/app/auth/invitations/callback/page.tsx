@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Panel, PageHeader } from '@/components/ui';
 import { Button } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
@@ -25,7 +26,7 @@ export default async function InvitationCallbackPage({ searchParams }: { searchP
 
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
+      <header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link>
         <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
       <Panel className="auth-card" aria-labelledby="callback-title">

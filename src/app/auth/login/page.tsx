@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Panel, PageHeader } from '@/components/ui';
 import { Message } from '@/components/ui';
 import { Input } from '@/components/ui';
@@ -28,7 +29,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
   return (
     <main className="app-shell">
       <header className="topbar">
-        <Link className="brand" href="/">منصة الأعمال</Link>
+        <Link className="brand" href="/"><ProductBrand /></Link>
 
       </header>
       <Panel className="auth-card" aria-labelledby="login-title">

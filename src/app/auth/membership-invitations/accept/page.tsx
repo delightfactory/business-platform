@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Field, Panel, PageHeader } from '@/components/ui';
 import { Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
@@ -25,7 +26,7 @@ export default async function AcceptMemberInvitationPage({ searchParams }: { sea
   const passwordHint = ['password-set', 'password', 'marker-failed'].includes(query.state ?? '');
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link><form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
+      <header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link><form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form></header>
       <Panel className="auth-card" aria-labelledby="accept-title">
         <p className="eyebrow">دعوة عضو</p><PageHeader id="accept-title" title={<>الانضمام إلى الشركة</>} />
         <p className="intro">الدعوة مرتبطة بالبريد <bdi>{user.email}</bdi>. سيُمنح حسابك دور «عضو» بعد تأكيد القبول.</p>
@@ -61,5 +62,5 @@ function validationMessage(validation: unknown, state?: string) {
   return 'تعذر التحقق من حالة الدعوة. اطلب من مسؤول الشركة مراجعتها قبل المتابعة.';
 }
 function Status({ title, detail }: { title: string; detail: string }) {
-  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid"  href="/auth/login">العودة إلى الدخول</ButtonLink></Panel></main>;
+  return <main className="app-shell"><header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link></header><Panel className="auth-card"><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p><ButtonLink variant="solid"  href="/auth/login">العودة إلى الدخول</ButtonLink></Panel></main>;
 }

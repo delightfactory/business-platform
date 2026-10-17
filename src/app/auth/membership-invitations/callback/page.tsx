@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Panel, PageHeader } from '@/components/ui';
 import { OfflineForm } from '@/components/offline-form';
 import { OfflineSubmitButton } from '@/components/offline-submit-button';
@@ -14,7 +15,7 @@ export default async function MemberInvitationCallbackPage({ searchParams }: { s
     && isUuid(query.invitation_id ?? '') && /^[1-9]\d{0,8}$/.test(query.issuance ?? '');
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link></header>
+      <header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link></header>
       <Panel className="auth-card" aria-labelledby="callback-title">
         <p className="eyebrow">دعوة عضو</p>
         <PageHeader id="callback-title" title={<>تابع الانضمام للشركة</>} />

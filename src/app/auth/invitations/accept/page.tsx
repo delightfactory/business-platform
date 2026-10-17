@@ -1,3 +1,4 @@
+import { ProductBrand } from '@/components/product-brand';
 import { Field, PageHeader } from '@/components/ui';
 import { Panel, Message } from '@/components/ui';
 import { Button, ButtonLink, Input } from '@/components/ui';
@@ -36,7 +37,7 @@ export default async function InvitationAcceptancePage({ searchParams }: { searc
 
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
+      <header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link>
         <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
       <Panel  aria-labelledby="accept-title">
@@ -89,7 +90,7 @@ function stateMessage(state?: string) {
 function Status({ title, detail, link, linkText }: { title: string; detail: string; link?: string; linkText?: string }) {
   return (
     <main className="app-shell">
-      <header className="topbar"><Link className="brand" href="/">منصة الأعمال</Link>
+      <header className="topbar"><Link className="brand" href="/"><ProductBrand /></Link>
         <form action={signOutAction}><Button variant="ghost"  type="submit">تسجيل الخروج</Button></form>
       </header>
       <Panel className="auth-card"><p className="eyebrow">دعوة مسؤول الشركة</p><PageHeader  title={<>{title}</>} /><p className="intro">{detail}</p>

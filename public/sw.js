@@ -2,81 +2,81 @@
 const CACHE = 'bp-public-v1';
 const ASSETS = [
   [
-    "/offline.html",
-    "sha256-uoDFuxMmZdoUl9w+/iJH5/02p66bgS+nsurs8a8kqls="
-  ],
+  "/offline.html",
+  "sha256-X3VJ2SV0yDgSYV2+/cKRtXC1seBteAj0wjJQ/upkvHs="
+],
   [
-    "/pwa/offline.css",
-    "sha256-ghHBX8Cq11sfYFEQmxbtBOC0xhrjeNo9XmsAO88bCus="
-  ],
+  "/pwa/offline.css",
+  "sha256-ghHBX8Cq11sfYFEQmxbtBOC0xhrjeNo9XmsAO88bCus="
+],
   [
-    "/pwa/offline.js",
-    "sha256-LuPIkwoFRjQU8ABue2tIGkuF+s/pMKA+GnwMwnx2nfY="
-  ],
+  "/pwa/offline.js",
+  "sha256-LuPIkwoFRjQU8ABue2tIGkuF+s/pMKA+GnwMwnx2nfY="
+],
   [
-    "/pwa/tokens.css",
-    "sha256-7g8efnhuocX5OTLcrAfndqba3V8CJarTET4CdL6+Nyg="
-  ],
+  "/pwa/tokens.css",
+  "sha256-7g8efnhuocX5OTLcrAfndqba3V8CJarTET4CdL6+Nyg="
+],
   [
-    "/pwa/alexandria-arabic-500-normal.woff2",
-    "sha256-N29mhZ7TbYP7Q70cqLCom9Hr6IACsavDWRemuqYSY7s="
-  ],
+  "/pwa/alexandria-arabic-500-normal.woff2",
+  "sha256-N29mhZ7TbYP7Q70cqLCom9Hr6IACsavDWRemuqYSY7s="
+],
   [
-    "/pwa/alexandria-latin-500-normal.woff2",
-    "sha256-bF8Y62xoAGETXZ1BfRPY8ULtwHee5sdjW16F62ZLnN4="
-  ],
+  "/pwa/alexandria-latin-500-normal.woff2",
+  "sha256-bF8Y62xoAGETXZ1BfRPY8ULtwHee5sdjW16F62ZLnN4="
+],
   [
-    "/pwa/alexandria-arabic-600-normal.woff2",
-    "sha256-c6qlXzo91P1SSnx+44NVwU3nT4/OnelFCFYBJQaiIM8="
-  ],
+  "/pwa/alexandria-arabic-600-normal.woff2",
+  "sha256-c6qlXzo91P1SSnx+44NVwU3nT4/OnelFCFYBJQaiIM8="
+],
   [
-    "/pwa/alexandria-latin-600-normal.woff2",
-    "sha256-idqFVGmMoJiEtTpGW+zoTEX6yZzgwiAmcjKi9p0ji/A="
-  ],
+  "/pwa/alexandria-latin-600-normal.woff2",
+  "sha256-idqFVGmMoJiEtTpGW+zoTEX6yZzgwiAmcjKi9p0ji/A="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-arabic-400-normal.woff2",
-    "sha256-YBDn/Q3OXVJ1g5UXUHKMvjyJXvvRaqD4CauMgkh4ydg="
-  ],
+  "/pwa/ibm-plex-sans-arabic-arabic-400-normal.woff2",
+  "sha256-YBDn/Q3OXVJ1g5UXUHKMvjyJXvvRaqD4CauMgkh4ydg="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-latin-400-normal.woff2",
-    "sha256-ntjcsC5sckbeTBIClfr6Oae7cwhfSVGkUkoH3JEQafI="
-  ],
+  "/pwa/ibm-plex-sans-arabic-latin-400-normal.woff2",
+  "sha256-ntjcsC5sckbeTBIClfr6Oae7cwhfSVGkUkoH3JEQafI="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-arabic-500-normal.woff2",
-    "sha256-kK72T+qXlPIyMy6QfUWBCrJo0aEXITQAJeuios2zbVw="
-  ],
+  "/pwa/ibm-plex-sans-arabic-arabic-500-normal.woff2",
+  "sha256-kK72T+qXlPIyMy6QfUWBCrJo0aEXITQAJeuios2zbVw="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-latin-500-normal.woff2",
-    "sha256-vmo7LjfzrWeqgipVzjVtKMQWMxyXUwoewHbCEYJAyi0="
-  ],
+  "/pwa/ibm-plex-sans-arabic-latin-500-normal.woff2",
+  "sha256-vmo7LjfzrWeqgipVzjVtKMQWMxyXUwoewHbCEYJAyi0="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-arabic-600-normal.woff2",
-    "sha256-FnNKWtsnsPNj5WbLvqzsSA2g3AuqGcjwBTJRwuK8Dqw="
-  ],
+  "/pwa/ibm-plex-sans-arabic-arabic-600-normal.woff2",
+  "sha256-FnNKWtsnsPNj5WbLvqzsSA2g3AuqGcjwBTJRwuK8Dqw="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-latin-600-normal.woff2",
-    "sha256-Y/R1cnHkA/e67Ahi8oT/qkVg6mCWup/ovG5YXKZW5yQ="
-  ],
+  "/pwa/ibm-plex-sans-arabic-latin-600-normal.woff2",
+  "sha256-Y/R1cnHkA/e67Ahi8oT/qkVg6mCWup/ovG5YXKZW5yQ="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-arabic-700-normal.woff2",
-    "sha256-BMcwtCknMcztrdW9gHVhJDZK5JI4lRRdnNex8o5EPeE="
-  ],
+  "/pwa/ibm-plex-sans-arabic-arabic-700-normal.woff2",
+  "sha256-BMcwtCknMcztrdW9gHVhJDZK5JI4lRRdnNex8o5EPeE="
+],
   [
-    "/pwa/ibm-plex-sans-arabic-latin-700-normal.woff2",
-    "sha256-ri1Z+R7Pn37SeeSh/BqdqBcPsM5bkVKReo91kDP1d3w="
-  ],
+  "/pwa/ibm-plex-sans-arabic-latin-700-normal.woff2",
+  "sha256-ri1Z+R7Pn37SeeSh/BqdqBcPsM5bkVKReo91kDP1d3w="
+],
   [
-    "/pwa/icon-192.png",
-    "sha256-Xb5ujLqQPOQJP4P2MYhlU6O6WY+nVnakXG7eqsP/BmA="
-  ],
+  "/pwa/basher-icon-192.png",
+  "sha256-P0nzOo9mFbkEG7IgpADP7f/3w1+7hrfCZkKINPYRVRA="
+],
   [
-    "/pwa/icon-512.png",
-    "sha256-FlSmvehA8Q6ldLI9soUBLQaS1Tu+3UlXVevmG2v1UKk="
-  ],
+  "/pwa/basher-icon-512.png",
+  "sha256-ki0JkU0dvtexCmYxaoO5Dy/HYVsUqT7p4rh8SYLwW10="
+],
   [
-    "/pwa/maskable-512.png",
-    "sha256-lk9zF+rd7CTVPkoFd8oGdqM8h6ji1L0FvwgNyyykgWc="
-  ]
+  "/pwa/basher-maskable-512.png",
+  "sha256-m+3fsZ0IkjSOgMqsTeUB0ldkLIGVk4cKs8grl98QMh8="
+]
 ];
 const urls = new Set(ASSETS.map(([pathname]) => new URL(pathname, self.location.origin).href));
 const STATIC_CACHE = 'bp-static-v1';
