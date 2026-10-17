@@ -7,7 +7,7 @@
     'people-compensation': 'الأجور', 'people-import': 'استيراد الموظفين', 'people-org': 'الأقسام والوظائف', 'work-policies': 'أنظمة الدوام',
     'attendance-view': 'قراءة الحضور', 'attendance-input': 'إدخال الحضور', 'attendance-review': 'مراجعة الحضور', 'attendance-sources': 'وسائل التسجيل',
     'leave-view': 'قراءة الإجازات', 'leave-manage': 'إعداد الإجازات', 'leave-approve': 'قرارات الإجازات', 'leave-balances': 'أرصدة الإجازات',
-    'payroll-view': 'قراءة مسيرات الرواتب', 'payroll-prepare': 'إعداد وحساب الرواتب', 'payroll-configure': 'إعدادات الرواتب',
+    'payroll-view': 'قراءة مسيرات الرواتب', 'payroll-prepare': 'إعداد وحساب الرواتب', 'payroll-configure': 'إعدادات الرواتب', 'employee-finance': 'المكافآت والجزاءات',
     'payroll-approve': 'اعتماد مراجعة الرواتب', 'payroll-close': 'إقفال مسير الرواتب', 'payroll-payments': 'تسجيل صرف الرواتب', 'payroll-correct': 'تصحيح راتب مقفل',
     'payroll-reports': 'تقارير الرواتب', advances: 'السلف', 'operator-companies': 'شركات المنصة',
     'operator-invitations': 'دعوات الشركات', 'operator-commercial': 'خدمات الشركات وحدودها', 'operator-lifecycle': 'حالة الشركات',
@@ -19,7 +19,7 @@
     people: ['people-view', 'people-manage', 'people-employment', 'people-compensation', 'people-import', 'people-org', 'work-policies'],
     attendance: ['attendance-view', 'attendance-input', 'attendance-review', 'attendance-sources'],
     leave: ['leave-view', 'leave-manage', 'leave-approve', 'leave-balances'],
-    payroll: ['payroll-view', 'payroll-prepare', 'payroll-configure', 'payroll-approve', 'payroll-close', 'payroll-payments', 'payroll-correct', 'payroll-reports'],
+    payroll: ['payroll-view', 'payroll-prepare', 'payroll-configure', 'payroll-approve', 'payroll-close', 'payroll-payments', 'payroll-correct', 'payroll-reports', 'employee-finance'],
     advances: ['advances'], reports: ['payroll-reports'],
     operator: ['operator-companies', 'operator-invitations', 'operator-commercial', 'operator-lifecycle', 'operator-team', 'operator-statutory'],
   };

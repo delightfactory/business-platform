@@ -10,6 +10,11 @@ const { tenantGuideTopics, operatorGuideTopics } = exports;
 const snapshot = data => ({ data });
 const list = value => Array.from(value).sort();
 
+test('employee finance roles receive the direct-entry guide without payroll preparation authority',()=>{
+  for(const flag of ['employee_finance.view','employee_finance.manage','employee_finance.approve'])
+    assert.deepEqual(list(tenantGuideTopics({inputs:snapshot({[flag]:true})})),['employee-finance']);
+});
+
 test('read-only payroll and people accounts do not receive mutation task recommendations', () => {
   assert.deepEqual(list(tenantGuideTopics({ people: snapshot({ can_view: true }), runs: snapshot({ can_view: true, can_prepare: false }), payments: snapshot({ can_record: false }) })), ['payroll-view', 'people-view']);
 });

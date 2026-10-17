@@ -17,7 +17,7 @@ const chapterTopics = {
   16: 'attendance-view attendance-review', 17: 'leave-manage', 18: 'leave-balances',
   19: 'self-leave', 20: 'leave-view leave-manage leave-approve',
   21: 'payroll-view payroll-prepare payroll-configure payroll-approve payroll-close payroll-payments',
-  22: 'payroll-prepare payroll-configure', 23: 'payroll-prepare payroll-configure',
+  22: 'payroll-prepare payroll-configure', 23: 'payroll-prepare payroll-configure employee-finance',
   24: 'payroll-view payroll-prepare payroll-approve', 25: 'payroll-view payroll-approve payroll-close',
   26: 'payroll-reports', 27: 'advances', 28: 'payroll-payments', 29: 'payroll-correct',
   30: 'common', 31: 'common',

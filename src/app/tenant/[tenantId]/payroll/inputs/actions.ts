@@ -13,6 +13,9 @@ export async function inputAction(previous:InputState,form:FormData):Promise<Inp
  const values:Record<string,string>={...Object.fromEntries(inputFields[kind].map(key=>[key,field(key)])),...(kind==='manual_units'?{source:field('source')}:{})};
  if(kind==='recurring')for(const key of ['deduction_category','consent_reference','reference','carry_component_id'])if(values[key]==='')delete values[key];
  if(kind==='adjustment')for(const key of ['deduction_category','consent_reference'])if(values[key]==='')delete values[key];
+ // An older earning may have no reference key at all. Keep that exact saved
+ // shape for approval/cancellation instead of inventing profile provenance.
+ if(kind==='adjustment'&&values.reference===''&&previous.adjustment_data&&!Object.hasOwn(previous.adjustment_data,'reference'))delete values.reference;
  if(kind==='opening_ytd')for(const key of ['tax_due','tax_net_income',...openingCoverageFields])if(values[key]==='')delete values[key];
  if(kind==='statutory_context')for(const key of ['insurance_category','insured_wage','insurance_from','insurance_until','insurance_obligation_month','insurance_owner_period','insurance_obligation_reference','insurance_month_disposition',...statutoryCalculationFields])if(values[key]==='')delete values[key];
  const manual=kind==='manual_units'?manualSubmission(values,previous.manual_data,operation):null;

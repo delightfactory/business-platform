@@ -32,6 +32,7 @@ export function tenantGuideTopics(snapshots: GuideSnapshots): string[] {
   add(has('calendar', 'can_view') || has('runs', 'can_view'), 'payroll-view');
   add(has('calendar', 'can_manage') || has('inputs', 'payroll_config.manage'), 'payroll-configure');
   add(has('runs', 'can_prepare') || has('inputs', 'payroll.prepare'), 'payroll-prepare');
+  add(['employee_finance.view','employee_finance.manage','employee_finance.approve'].some(flag=>has('inputs',flag)), 'employee-finance');
   add(has('runs', 'can_approve') || has('inputs', 'payroll.approve'), 'payroll-approve');
   add(has('runs', 'can_lock'), 'payroll-close');
   add(has('payments', 'can_record'), 'payroll-payments');

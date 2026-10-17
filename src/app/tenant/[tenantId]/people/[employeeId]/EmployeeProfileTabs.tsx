@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 import { Icon, type IconName } from '@/components/ui';
 import styles from './profile-tabs.module.css';
 
-export type ProfileArea = 'overview' | 'work' | 'compensation' | 'account' | 'employment' | 'attendance' | 'leave' | 'payroll' | 'advances';
+export type ProfileArea = 'overview' | 'work' | 'compensation' | 'adjustments' | 'account' | 'employment' | 'attendance' | 'leave' | 'payroll' | 'advances';
 type Area = { value: ProfileArea; label: string; content: ReactNode; href?: string };
-const areaIcons: Record<ProfileArea, IconName> = { overview: 'user', work: 'building', compensation: 'wallet', account: 'shield', employment: 'file', attendance: 'clock', leave: 'calendar', payroll: 'wallet', advances: 'wallet' };
+const areaIcons: Record<ProfileArea, IconName> = { overview: 'user', work: 'building', compensation: 'wallet', adjustments: 'wallet', account: 'shield', employment: 'file', attendance: 'clock', leave: 'calendar', payroll: 'wallet', advances: 'wallet' };
 const subscribe = () => () => {};
 
 export function EmployeeProfileTabs({ initialTab, areas, baseHref }: { initialTab: ProfileArea; areas: Area[]; baseHref: string }) {

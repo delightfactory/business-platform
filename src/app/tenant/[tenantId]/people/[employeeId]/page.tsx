@@ -19,6 +19,7 @@ import { EmployeeReadiness } from './EmployeeReadiness';
 import { PayrollInclusion } from './PayrollInclusion';
 import { payrollInclusion } from './payroll-inclusion-rules';
 import { EmployeePayrollSetup } from './EmployeePayrollSetup';
+import { EmployeeAdjustments } from './EmployeeAdjustments';
 import { WorkAssignmentPanel, type AssignmentHistory, type TransferOptions } from './WorkAssignmentPanel';
 import { CompensationPanel, type CompensationHistory, type CompensationOptions } from './CompensationPanel';
 import { EmploymentLifecyclePanel, type EmploymentHistory, type RehireOptions } from './EmploymentLifecyclePanel';
@@ -32,7 +33,7 @@ type Employee = { id: string; code: string; name: string; status: string; employ
 
 export default async function EmployeePage({ params, searchParams }: {
   params: Promise<{ tenantId: string; employeeId: string }>;
-  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string; tab?: string; return?: string; selfService?: string; activityAfter?:string; payrollPeriod?:string; payrollBefore?:string; payrollSaved?:string }>;
+  searchParams: Promise<{ state?: string; assignment?: string; compensation?: string; employment?: string; userLink?: string; linkQuery?: string; linkPage?: string; account?: string; policy?: string; policyOverride?: string; tab?: string; return?: string; selfService?: string; activityAfter?:string; payrollPeriod?:string; payrollBefore?:string; payrollSaved?:string; adjustmentPeriod?:string; adjustmentBefore?:string; adjustmentAfter?:string; adjustmentFocus?:string; adjustmentResult?:string }>;
 }) {
   const { tenantId, employeeId } = await params;
   const query = await searchParams;
@@ -145,6 +146,8 @@ export default async function EmployeePage({ params, searchParams }: {
   const channelReady = !channelAccess.error && channelAccess.data?.can_view === true
     ? await supabase.rpc('people_employee_channel_readiness', { p_tenant: tenantId, p_employee: employeeId }) : { data: null, error: null };
   const correctionAccess=await supabase.rpc('payroll_correction_access',{p_tenant:tenantId});
+  const financeAccess=await supabase.rpc('payroll_input_access',{p_tenant:tenantId});
+  const canViewAdjustments=!financeAccess.error && ['employee_finance.view','employee_finance.manage','employee_finance.approve'].some(key=>financeAccess.data?.[key]===true);
   const hasPayrollSetupAccess = !payrollAccess.error && payrollAccess.data?.can_prepare === true;
   const payrollSaveConfirmed = hasPayrollSetupAccess && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(query.payrollSaved ?? '')
     && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(query.payrollPeriod ?? '');
@@ -159,7 +162,7 @@ export default async function EmployeePage({ params, searchParams }: {
   const balanceResponse = !leaveAccess.error && leaveAccess.data?.can_view === true && employee.employment?.employer_id
     ? await supabase.rpc('leave_balance_accounts', { p_tenant: tenantId, p_employee: employeeId, p_employer: employee.employment.employer_id, p_limit: 50 }) : null;
   const employeeBalances = balanceResponse && !balanceResponse.error ? readAccountsPage(balanceResponse.data) : null;
-  const requestedTab = ['overview', 'work', 'account', 'employment', ...activityKinds, ...(canViewCompensation || canManageCompensation || hasPayrollSetupAccess ? ['compensation'] : [])].includes(query.tab ?? '') ? query.tab as ProfileArea : null;
+  const requestedTab = ['overview', 'work', 'account', 'employment', ...activityKinds, ...(canViewAdjustments ? ['adjustments'] : []), ...(canViewCompensation || canManageCompensation || hasPayrollSetupAccess ? ['compensation'] : [])].includes(query.tab ?? '') ? query.tab as ProfileArea : null;
   const initialTab: ProfileArea = requestedTab ?? (query.userLink || query.account || query.selfService || query.linkQuery !== undefined || query.linkPage !== undefined
     ? 'account' : query.employment ? 'employment'
       : query.compensation && (canViewCompensation || canManageCompensation) ? 'compensation'
@@ -314,6 +317,10 @@ export default async function EmployeePage({ params, searchParams }: {
       { value: 'work', label: 'العمل والدوام', content: work },
       ...(canViewCompensation || canManageCompensation || hasPayrollSetupAccess
         ? [{ value: 'compensation' as const, label: 'الراتب', content: compensation }] : []),
+      ...(canViewAdjustments ? [{ value: 'adjustments' as const, label: 'المكافآت والجزاءات',
+        ...(query.tab !== 'adjustments' ? {href:profileReturnUrl(tenantId,employeeId,`/tenant/${tenantId}/people/${employeeId}?tab=adjustments`,returnTo)} : {}),
+        content: query.tab === 'adjustments' ? <EmployeeAdjustments tenant={tenantId} employee={employeeId} period={query.adjustmentPeriod} before={query.adjustmentBefore} after={query.adjustmentAfter} focus={query.adjustmentFocus} feedback={query.adjustmentResult} returnTo={returnTo}/> : <Panel><ButtonLink href={profileReturnUrl(tenantId,employeeId,`/tenant/${tenantId}/people/${employeeId}?tab=adjustments`,returnTo)}>فتح المكافآت والجزاءات</ButtonLink></Panel>
+      }] : []),
       ...activityKinds.map(kind => ({ value: kind, label: activityLabels[kind], ...(kind === 'payroll' && query.tab !== 'payroll' ? { href: profileReturnUrl(tenantId, employeeId, `/tenant/${tenantId}/people/${employeeId}?tab=payroll`, returnTo) } : {}), content: <>
         {query.tab === kind && query.activityAfter && !validAfter && <Message tone="info">تعذر متابعة الصفحة المطلوبة. نعرض أحدث السجلات.</Message>}
         {kind === 'leave' && leaveAccess.data?.can_manage === true && leaveAccess.data?.new_work_enabled === true && employee.employment?.status === 'active' && <Disclosure summary="تسجيل إجازة لهذا الموظف">
