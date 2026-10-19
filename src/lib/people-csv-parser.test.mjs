@@ -36,6 +36,16 @@ test('bounds row and field sizes', () => {
   assert.match(parsePeopleCsv('h\n' + 'x'.repeat(4001)), /أطول من الحد/);
 });
 
+test('maxRows is opt-in: default stays 100, attendance can request 100,000', () => {
+  const rows = (count) => 'h\n' + Array.from({ length: count }, (_, i) => `r${i}`).join('\n');
+  assert.equal(parsePeopleCsv(rows(100)).length, 101);
+  assert.match(parsePeopleCsv(rows(101)), /100 صف/);
+  assert.equal(parsePeopleCsv(rows(101), { maxRows: 100_000 }).length, 102);
+  assert.equal(parsePeopleCsv(rows(100_000), { maxRows: 100_000 }).length, 100_001);
+  assert.match(parsePeopleCsv(rows(100_001), { maxRows: 100_000 }), /صف/);
+  assert.match(parsePeopleCsv('h\n"x', { maxRows: 100_000 }), /اقتباس غير مغلق/);
+});
+
 test('downloaded Arabic template has an Excel UTF-8 BOM and every canonical column exactly once', () => {
   const bytes = readFileSync(new URL('../../public/templates/workforce-import.csv', import.meta.url));
   assert.deepEqual([...bytes.subarray(0, 3)], [0xef, 0xbb, 0xbf]);

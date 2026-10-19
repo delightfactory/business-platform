@@ -22,7 +22,10 @@ export function mapWorkforceCsvHeaders(headers) {
   return mapped;
 }
 
-export function parsePeopleCsv(text) {
+// maxRows counts data records after the header; employee import and legacy callers keep 100.
+export function parsePeopleCsv(text, { maxRows = 100 } = {}) {
+  const limit = maxRows + 1;
+  const limitError = maxRows === 100 ? 'يسمح الملف بحد أقصى 100 صف.' : `يسمح الملف بحد أقصى ${maxRows.toLocaleString('ar-EG')} صف.`;
   const rows = []; let row = []; let cell = ''; let quoted = false; let afterQuote = false;
   let physicalLine = 1; let recordStartLine = 1;
   for (let i = 0; i < text.length; i += 1) {
@@ -47,7 +50,7 @@ export function parsePeopleCsv(text) {
       if (row.some((value) => value.length > 4000)) return 'أحد الحقول أطول من الحد المسموح.';
       rows.push({ line: recordStartLine, cells: row }); row = [];
       physicalLine += 1; recordStartLine = physicalLine;
-      if (rows.length > 101) return 'يسمح الملف بحد أقصى 100 صف.';
+      if (rows.length > limit) return limitError;
     } else {
       if (afterQuote && !/\s/.test(char)) return 'يوجد نص بعد علامة إغلاق الاقتباس. صحح الملف ثم أعد الفحص.';
       cell += char;
@@ -56,6 +59,6 @@ export function parsePeopleCsv(text) {
   if (quoted) return 'يوجد اقتباس غير مغلق في الملف. صحح الملف ثم أعد الفحص.';
   if (cell.length > 4000) return 'أحد الحقول أطول من الحد المسموح.';
   if (cell.length > 0 || row.length > 0) { row.push(cell); rows.push({ line: recordStartLine, cells: row }); }
-  if (rows.length > 101) return 'يسمح الملف بحد أقصى 100 صف.';
+  if (rows.length > limit) return limitError;
   return rows;
 }

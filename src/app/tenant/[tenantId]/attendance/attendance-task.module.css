@@ -1,5 +1,14 @@
 .controls { min-width: 0; padding: 0; margin: 0; border: 0; }
 .formatValue { white-space: nowrap; }
+.importWorkspace { min-width: 0; }
+.importWorkspace :global(.attendance-import-progress) { display: grid; gap: .65rem; margin-block: 1rem; }
+.importWorkspace progress { width: 100%; accent-color: var(--brand); }
+@media (max-width: 640px) {
+ .importWorkspace :global(.attendance-import-table) { min-width: 0; }
+ .importWorkspace :global(.attendance-import-table td[data-label]) { min-width: 0; overflow-wrap: anywhere; flex-wrap: wrap; }
+ .importWorkspace :global(.attendance-import-table td[data-label])::before { content: attr(data-label); }
+ .importWorkspace :global(.attendance-import-work-date) { min-width: 0; max-width: 100%; }
+}
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; padding: 0; margin-block: 1rem; list-style: none; }
 .steps li { padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--r-tile); background: var(--surface-2); line-height: 1.8; font-size: 13px; color: var(--muted); }
 .steps li[aria-current="step"] { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 600; }

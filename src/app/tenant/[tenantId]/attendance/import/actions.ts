@@ -24,7 +24,41 @@ export type ImportRow = {
   warnings: string[];
 };
 export type PreviewState = { tenantId: string; rows: ImportRow[]; ready: number; ambiguous: number; unassigned: number; duplicate: number; rejected: number; error: string; attempt: number };
-export type ConfirmState = { state: 'idle' | 'processed' | 'failed'; accepted: number; ambiguous: number; unassigned: number; duplicate: number; rejected: number; rows: ImportRow[]; error: string; attempt: number };
+// auth/not_saved: nothing from this request was written. unknown: the write may have happened; verify before retrying.
+export type ImportErrorKind = 'auth' | 'invalid' | 'not_saved' | 'unknown';
+export type ConfirmState = { state: 'idle' | 'processed' | 'failed'; accepted: number; ambiguous: number; unassigned: number; duplicate: number; rejected: number; rows: ImportRow[]; error: string; attempt: number; errorKind?: ImportErrorKind };
+export type BatchPreviewResult = { ok: true; rows: ImportRow[] } | { ok: false; kind: ImportErrorKind; error: string };
+
+// Previews one ≤100-row slice of a file read in the browser. Client values are untrusted: only the five
+// fields and the physical line are rebuilt and sent; authorization and status come from the RPC.
+export async function previewAttendanceBatch(tenantId: unknown, input: unknown): Promise<BatchPreviewResult> {
+  const fail = (kind: ImportErrorKind, error: string): BatchPreviewResult => ({ ok: false, kind, error });
+  if (typeof tenantId !== 'string' || !uuidPattern.test(tenantId)) return fail('invalid', 'تعذر تحديد الشركة الحالية. أعد فتح صفحة الاستيراد.');
+  if (!Array.isArray(input) || input.length < 1 || input.length > MAX_ROWS) return fail('invalid', 'تعذر قراءة دفعة التسجيلات. أعد فحص الملف.');
+  const payload: Record<string, string | number>[] = [];
+  for (const item of input) {
+    if (!isObject(item)) return fail('invalid', 'تعذر قراءة دفعة التسجيلات. أعد فحص الملف.');
+    const line = item.source_line_hint;
+    if (typeof line !== 'number' || !Number.isInteger(line) || line < 2 || line > 10_000_000) return fail('invalid', 'تعذر قراءة دفعة التسجيلات. أعد فحص الملف.');
+    const row: Record<string, string | number> = { source_line_hint: line };
+    for (const name of FIELDS) {
+      const value = item[name];
+      if (typeof value !== 'string' || value.length > 4000) return fail('invalid', 'تعذر قراءة دفعة التسجيلات. أعد فحص الملف.');
+      row[name] = value.trim();
+    }
+    if (JSON.stringify(row).length > 2000) return fail('invalid', 'أحد الصفوف أطول من المسموح. أعد فحص الملف.');
+    payload.push(row);
+  }
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) return fail('not_saved', 'الاتصال غير متاح الآن. أعد المحاولة بعد قليل.');
+  const { data, error } = await supabase.rpc('preview_attendance_csv_import', { p_tenant_id: tenantId, p_rows: payload });
+  if (error) return error.message.includes('attendance_import_forbidden')
+    ? fail('auth', 'تغيرت صلاحيتك أو توقفت وحدة الحضور. لم يُحفظ أي حدث.')
+    : fail('unknown', 'تعذر فحص هذه الدفعة. لم يُحفظ شيء أثناء الفحص؛ أعد المحاولة.');
+  if (!Array.isArray(data) || !validBatchReply(data, payload, ['ready', 'ambiguous', 'unassigned', 'duplicate', 'rejected'])) return fail('unknown', 'لم تكتمل نتيجة فحص الدفعة. أعد المحاولة.');
+  const rows = data.map((row, index) => normalizeRow(row, Number(payload[index].source_line_hint), payload[index]));
+  return { ok: true, rows };
+}
 
 export async function previewAttendanceCsv(previous: PreviewState, formData: FormData): Promise<PreviewState> {
   const tenantId = field(formData, 'tenantId');
@@ -70,7 +104,7 @@ export async function previewAttendanceCsv(previous: PreviewState, formData: For
 
 export async function confirmAttendanceCsv(previous: ConfirmState, formData: FormData): Promise<ConfirmState> {
   const tenantId = field(formData, 'tenantId');
-  const fail = (error: string): ConfirmState => ({ state: 'failed', accepted: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, rows: [], error, attempt: previous.attempt + 1 });
+  const fail = (error: string, errorKind: ImportErrorKind = 'invalid'): ConfirmState => ({ state: 'failed', accepted: 0, ambiguous: 0, unassigned: 0, duplicate: 0, rejected: 0, rows: [], error, attempt: previous.attempt + 1, errorKind });
   if (!uuidPattern.test(tenantId)) return fail('تعذر تحديد الشركة الحالية. أعد فتح صفحة الاستيراد.');
   const selected = formData.getAll('selectedRow');
   if (selected.length < 1 || selected.length > MAX_ROWS) return fail('حدد حدثًا واحدًا على الأقل ولا تتجاوز 100 حدث.');
@@ -91,14 +125,27 @@ export async function confirmAttendanceCsv(previous: ConfirmState, formData: For
     });
   } catch { return fail('تعذر قراءة الصفوف المحددة. أعد فحص الملف.'); }
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return fail('الاتصال غير متاح الآن. لم يُحفظ أي حدث.');
+  if (!supabase) return fail('الاتصال غير متاح الآن. لم يُحفظ أي حدث.', 'not_saved');
   const { data, error } = await supabase.rpc('confirm_attendance_csv_import', { p_tenant_id: tenantId, p_rows: rows });
-  if (error) return fail(error.message.includes('attendance_import_forbidden')
-    ? 'تغيرت الصلاحيات أو توقفت وحدة الحضور. لم يُحفظ أي حدث.' : 'تعذر تأكيد الاستيراد. لم تتغير الصفوف التي تعذر حفظها. أعد الفحص.');
-  if (!isObject(data) || !Array.isArray(data.rows)) return fail('تعذر قراءة نتيجة الاستيراد. حدّث الصفحة وتحقق من سجل الحضور.');
+  if (error) {
+    if (error.message.includes('attendance_import_forbidden')) return fail('تغيرت الصلاحيات أو توقفت وحدة الحضور. لم يُحفظ أي حدث.', 'auth');
+    // A database error code means the function raised and its transaction rolled back; anything else may be a lost reply.
+    return /^[0-9A-Z]{5}$/.test(String(error.code ?? ''))
+      ? fail('تعذر تأكيد الاستيراد. لم تتغير الصفوف التي تعذر حفظها. أعد الفحص.', 'not_saved')
+      : fail('انقطع الاتصال قبل وصول نتيجة الحفظ، وقد يكون الحفظ تم. تحقّق قبل إعادة المحاولة.', 'unknown');
+  }
+  if (!isObject(data) || !Array.isArray(data.rows) || !validBatchReply(data.rows, rows, ['accepted', 'ambiguous', 'unassigned', 'duplicate', 'rejected'])) return fail('تعذر قراءة نتيجة الاستيراد، وقد يكون الحفظ تم. تحقّق من السجل قبل إعادة المحاولة.', 'unknown');
   const resultRows = data.rows.map((row, index) => normalizeRow(row, Number(rows[index]?.source_line_hint) || index + 1, rows[index]));
   return { state: 'processed', accepted: numberValue(data.accepted_count), ambiguous: numberValue(data.ambiguous_count), unassigned: numberValue(data.unassigned_count), duplicate: numberValue(data.duplicate_count),
     rejected: numberValue(data.rejected_count), rows: resultRows, error: '', attempt: previous.attempt + 1 };
+}
+
+function validBatchReply(reply: unknown[], submitted: Record<string, unknown>[], statuses: string[]) {
+  return reply.length === submitted.length && reply.every((row, index) => isObject(row)
+    && statuses.includes(String(row.status))
+    && typeof row.source_event_key === 'string'
+    && row.source_event_key.trim() === String(submitted[index].source_event_key ?? '').trim()
+    && Number(row.source_line_hint) === Number(submitted[index].source_line_hint));
 }
 
 function normalizeRow(value: unknown, line: number, fallback: Record<string, unknown>): ImportRow {

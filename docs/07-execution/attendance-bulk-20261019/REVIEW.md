@@ -1,0 +1,13 @@
+# Independent review
+
+Official Claude Code2.1.289, claude-opus-5-5, Medium, authenticated official Claude Pro subscription; no API/pay-as-you-go fallback. Source review session3e6d0208-a298-47a7-b327-c302e5750e37 completed: no P1, one P2 mismatch between duplicate row labels and recovery copy. Corrected preview summary and row labels to «مكرر أو محفوظ مسبقًا».
+
+That first review could not read external images and explicitly did not claim visual acceptance. Three compact synthetic screenshots were then placed in this evidence directory. Read-only final sessiond664b56a-023f-4d68-8a02-1ec9b2e9be17 read all three, reached its bounded turn limit while checking the response-echo contract, then completed a final-only resumption without more tool calls. Final verdict: **delta accepted; visual and user task pass; P2 fixed; no material new raw-reply-validation bug**. No edits or DB/browser operations by the reviewer.
+
+Codex independently reviewed Claude-authored parser, state machine, server actions and interface, applied code/test/docs guard passes, verified the actual browser and database, and added strict raw reply validation before normalization so malformed successful write replies become uncertain rather than false rejection results. Actual final optimized build preview/save of two additional synthetic events passed this guard. The final Claude review accepted this change and the scoped mobile CSS fix.
+
+Critical Codex source reviewer separately accepted exact-Cairo catalog-scan bypass, requiring nested IF to guarantee skip and preservation tests for normal/gap/overlap/other/invalid/null zones and private ACL. All9 passed; existing56 import DB tests also passed. Clarification to the final Claude wording: the private time resolver DID change only in the documented Cairo validation fast path; public import command/permission/interpretation contracts did not change.
+
+Non-blocking observations: wording order in one duplicate summary is reversed with identical meaning; guide bidi punctuation around English direction examples could be polished;100,000 is the validated parser/file admission limit, not an end-to-end measured throughput claim. Actual database qualification is1,000 events, actual browser journey125 plus final guard check2. No invented100k database run, hardware UAT or full-theme acceptance.
+
+Representative images show task completion,390px result cards/labels and printed guide page18. They precede the final duplicate-label-only copy correction; structure is unchanged. Source/style/response changes were all included in the final successful build and browser guard check.
