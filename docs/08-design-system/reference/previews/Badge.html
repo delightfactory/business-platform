@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Badge</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-grid">
+ <div class="bp-row">
+  <span class="bp-badge bp-badge--success">نشط</span>
+  <span class="bp-badge bp-badge--info">يبدأ قريبًا</span>
+  <span class="bp-badge bp-badge--warning">يحتاج مراجعة</span>
+  <span class="bp-badge bp-badge--danger">تعذر الإرسال</span>
+  <span class="bp-badge">انتهت خدمته</span>
+  <span class="bp-badge bp-badge--brand">جاهز للاعتماد</span>
+ </div>
+ <div class="bp-row">
+  <span class="bp-badge bp-badge--plain">مسؤول الشركة</span>
+  <span class="bp-badge bp-badge--count bp-badge--brand">9</span>
+  <span class="bp-badge bp-badge--count">128</span>
+  <span class="bp-tag">فرع المعادي <i data-icon="x" class="bp-icon--sm"></i></span>
+  <span class="bp-tag">المبيعات</span>
+ </div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

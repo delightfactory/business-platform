@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Field</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-cols">
+ <div class="bp-field"><label class="bp-label" for="f1">اسم الموظف</label>
+  <input class="bp-input" id="f1" value="منى عبد الرحمن"><p class="bp-hint">كما يظهر في بطاقة الهوية.</p></div>
+ <div class="bp-field"><label class="bp-label" for="f2">الفرع</label>
+  <div class="bp-control"><select class="bp-select" id="f2"><option>فرع المعادي</option><option>فرع مدينة نصر</option></select><i data-icon="chevron-down"></i></div></div>
+ <div class="bp-field"><label class="bp-label" for="f3">الأجر الأساسي</label>
+  <div class="bp-control"><input class="bp-input" id="f3" inputmode="decimal" value="12,500.00" style="padding-inline-end:48px"><span class="bp-affix">ج.م</span></div></div>
+ <div class="bp-field"><label class="bp-label" for="f4">رمز الموظف</label>
+  <input class="bp-input" id="f4" value="EMP-0412" aria-invalid="true" aria-describedby="f4e">
+  <p class="bp-error" id="f4e"><i data-icon="alert"></i>هذا الرمز مستخدم لموظف آخر. اختر رمزًا مختلفًا.</p></div>
+ <div class="bp-field"><label class="bp-label" for="f5">تاريخ بداية العمل</label>
+  <div class="bp-control"><input class="bp-input" id="f5" value="1 ديسمبر 2026"><i data-icon="calendar"></i></div></div>
+ <div class="bp-field"><label class="bp-label" for="f6">القسم <span class="bp-opt">(اختياري)</span></label>
+  <div class="bp-control bp-control--lead"><input class="bp-input" id="f6" placeholder="ابحث عن قسم…"><i data-icon="search"></i></div></div>
+ <div class="bp-field"><label class="bp-label" for="f7">جهة التوظيف</label>
+  <input class="bp-input" id="f7" value="شركة النور للتجارة" disabled><p class="bp-hint">تتغير من «نقل الموظف» فقط.</p></div>
+ <div class="bp-field"><label class="bp-label" for="f8">ملاحظات <span class="bp-opt">(اختياري)</span></label>
+  <textarea class="bp-textarea" id="f8" placeholder="سبب التعديل يظهر في سجل التغييرات"></textarea></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

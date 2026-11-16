@@ -6,6 +6,8 @@ Define the experience and implementation guardrails for the web application so e
 
 Use the [platform experience architecture](platform-experience-architecture.md) for the shared shell and future Business Domain expansion. The current [Cube 0 experience redesign](cube-0-experience-redesign.md) applies that structure to Operator and Tenant journeys.
 
+Visual and interaction specifics are defined by [Design System v2](../08-design-system/README.md) (ADR-011). This baseline keeps the experience principles; where a concrete value or control rule here differs from Design System v2, Design System v2 governs.
+
 ## Product experience objective
 
 Business Platform is delivered as a web application, but the experience must adapt convincingly to the device context:
@@ -61,6 +63,8 @@ A component must not be made generic merely because reuse is imaginable. Reusabl
 ## Single-source improvement principle
 
 ### Cube 0 control and surface contract
+
+> **Superseded on 2026-11-16 by [ADR-011](../03-architecture/adr/ADR-011-design-system-v2.md) (DEC-025).** Control sizes, typeface, radii, button treatments and surface rules are now defined by [Design System v2](../08-design-system/README.md). The text below is kept as history and is not implementation authority.
 
 - Action buttons use Cairo 600 at 14 px, an 8 px radius, and a shared minimum height of 40 px on desktop and 44 px at widths up to 900 px. Labels may wrap when necessary; never clip a translated action to force a fixed height.
 - Use the filled brand treatment for the task's primary action, a neutral bordered treatment for secondary actions, and the danger treatment for consequential destructive confirmation. A subtle top highlight and small shadow identify a pressable control; continuous shine, pulsing, and decorative card movement are not part of this system.

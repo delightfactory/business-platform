@@ -1,0 +1,89 @@
+{
+ "note": "Tenant brand palettes. Keys are the existing tenant_branding primary_color_key values. Each key is a complete, pre-verified set for both themes. Never derive at runtime.",
+ "palettes": {
+  "teal": {
+   "label": "Petrol (default)",
+   "light": {
+    "brand": "#0b6b75",
+    "brand-hover": "#095962",
+    "brand-pressed": "#074a52",
+    "on-brand": "#ffffff",
+    "brand-subtle": "#e3f2f3",
+    "brand-subtle-border": "#a9d3d6",
+    "brand-text": "#0a5f68"
+   },
+   "dark": {
+    "brand": "#3fb8c2",
+    "brand-hover": "#5cc8d1",
+    "brand-pressed": "#34a3ac",
+    "on-brand": "#04262a",
+    "brand-subtle": "#0f2e33",
+    "brand-subtle-border": "#1d525a",
+    "brand-text": "#5cc8d1"
+   }
+  },
+  "blue": {
+   "label": "Blue",
+   "light": {
+    "brand": "#1f5fd1",
+    "brand-hover": "#1a50b3",
+    "brand-pressed": "#154394",
+    "on-brand": "#ffffff",
+    "brand-subtle": "#e6eefb",
+    "brand-subtle-border": "#b3caf2",
+    "brand-text": "#1b54ba"
+   },
+   "dark": {
+    "brand": "#7aa7f5",
+    "brand-hover": "#98bbf8",
+    "brand-pressed": "#6492e6",
+    "on-brand": "#061a3a",
+    "brand-subtle": "#13233f",
+    "brand-subtle-border": "#24406f",
+    "brand-text": "#98bbf8"
+   }
+  },
+  "violet": {
+   "label": "Violet",
+   "light": {
+    "brand": "#6b3fd4",
+    "brand-hover": "#5a33b8",
+    "brand-pressed": "#4b2a9a",
+    "on-brand": "#ffffff",
+    "brand-subtle": "#efe9fb",
+    "brand-subtle-border": "#cdbdf2",
+    "brand-text": "#5f36c2"
+   },
+   "dark": {
+    "brand": "#a78bf5",
+    "brand-hover": "#bba5f8",
+    "brand-pressed": "#9377e6",
+    "on-brand": "#1c0f45",
+    "brand-subtle": "#231a44",
+    "brand-subtle-border": "#3d2f77",
+    "brand-text": "#bba5f8"
+   }
+  },
+  "emerald": {
+   "label": "Emerald",
+   "light": {
+    "brand": "#0a7a55",
+    "brand-hover": "#086747",
+    "brand-pressed": "#06553b",
+    "on-brand": "#ffffff",
+    "brand-subtle": "#e2f4ec",
+    "brand-subtle-border": "#a8d8c4",
+    "brand-text": "#086747"
+   },
+   "dark": {
+    "brand": "#45c493",
+    "brand-hover": "#63d2a7",
+    "brand-pressed": "#38ad80",
+    "on-brand": "#03281a",
+    "brand-subtle": "#0f2c21",
+    "brand-subtle-border": "#1c5340",
+    "brand-text": "#63d2a7"
+   }
+  }
+ }
+}

@@ -57,6 +57,8 @@ Do not invent material product behavior inside code. If a missing decision affec
 
 Before implementing domain screens, establish the shared application experience foundation.
 
+Since 2026-11-16 that foundation is [Design System v2](../08-design-system/README.md) (ADR-011). The migration of existing screens is assigned in the [Design System v2 brief](codex-design-system-v2-brief.md). New domain screens are built on Design System v2 components from the start.
+
 Use the [platform experience architecture](../05-engineering/platform-experience-architecture.md) to design the workspace and Business Domain hierarchy first. Prove the shared shell with zero, one, and several available Domain entries before using the current Cube 0 Operator/Tenant screens as task examples. Do not make HR or Tenant administration the permanent root of the application.
 
 Required first-class foundations:

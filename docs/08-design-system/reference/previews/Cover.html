@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>منصة الأعمال</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--canvas); color:var(--text); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; width:960px; height:300px; overflow:hidden; direction:rtl; }
+  /* mirrored for an RTL brand: the name sits on the right, the composition fills the 480 box on the left */
+  .art { position:absolute; top:0; left:0; width:480px; height:300px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:300px; }
+  .ink { fill:var(--operator-bg); }
+  .brand { fill:var(--brand); }
+  .tint { fill:var(--brand-subtle-border); }
+  .signal { fill:var(--warning); }
+  .on { fill:var(--on-brand); }
+  .blk { rx:var(--radius-lg); }
+  .cell { rx:var(--radius-xs); }
+  .words { position:absolute; right:var(--space-8); bottom:var(--space-6); width:440px; text-align:right; }
+  .name { margin:0; font-size:92px; line-height:1.02; font-weight:700; color:var(--text); }
+  .tag { margin:var(--space-3) 0 0; font-size:14px; line-height:22px; color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 300" width="480" height="300">
+<!--
+  blocks      operator-bg 176×252 bleeding off the left edge (the operator shell) · brand 144×228 bleeding off the top (the primary, the tallest) · brand-subtle-border 120×204 (the tint) · warning 64×24 once (it only ever means a state)
+  arrangement three unequal slabs standing on staggered baselines, space-4 gutters, two of them bleeding off an edge
+  pattern     tiles, from "DataTable is the primary component of every list": table cells of space-4 height at a space-8 row pitch, some merged wide like a name column beside a narrow status cell
+  scales      sides in space-2 multiples; gutters space-4; row pitch space-8; slabs radius-lg; cells radius-xs; the pill rx = half of space-6
+-->
+<rect class="ink blk" x="-16" y="24" width="176" height="252" rx="12"/>
+<rect class="brand blk" x="176" y="-16" width="144" height="228" rx="12"/>
+<rect class="tint blk" x="336" y="72" width="120" height="204" rx="12"/>
+<rect class="signal" x="176" y="228" width="64" height="24" rx="12"/>
+<g class="tint">
+<rect class="cell" x="16" y="56" width="24" height="16" rx="4"/><rect class="cell" x="48" y="56" width="88" height="16" rx="4"/>
+<rect class="cell" x="16" y="88" width="24" height="16" rx="4"/><rect class="cell" x="48" y="88" width="64" height="16" rx="4"/>
+<rect class="cell" x="16" y="120" width="24" height="16" rx="4"/><rect class="cell" x="48" y="120" width="88" height="16" rx="4"/>
+<rect class="cell" x="16" y="152" width="24" height="16" rx="4"/><rect class="cell" x="48" y="152" width="72" height="16" rx="4"/>
+<rect class="cell" x="16" y="184" width="24" height="16" rx="4"/><rect class="cell" x="48" y="184" width="88" height="16" rx="4"/>
+<rect class="cell" x="16" y="216" width="24" height="16" rx="4"/><rect class="cell" x="48" y="216" width="56" height="16" rx="4"/>
+</g>
+<g class="on">
+<rect class="cell" x="200" y="40" width="96" height="16" rx="4"/>
+<rect class="cell" x="200" y="72" width="64" height="16" rx="4"/>
+<rect class="cell" x="200" y="104" width="80" height="16" rx="4"/>
+</g>
+<g class="brand">
+<rect class="cell" x="352" y="96" width="24" height="16" rx="4"/><rect class="cell" x="384" y="96" width="56" height="16" rx="4"/>
+<rect class="cell" x="352" y="128" width="24" height="16" rx="4"/><rect class="cell" x="384" y="128" width="40" height="16" rx="4"/>
+<rect class="cell" x="352" y="160" width="24" height="16" rx="4"/><rect class="cell" x="384" y="160" width="56" height="16" rx="4"/>
+<rect class="cell" x="352" y="192" width="24" height="16" rx="4"/><rect class="cell" x="384" y="192" width="48" height="16" rx="4"/>
+</g>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">منصة<br>الأعمال</h1>
+<p class="tag">وضوح في العرض، وحسم في الإجراء.</p>
+</div>
+</div>
+</body>
+</html>

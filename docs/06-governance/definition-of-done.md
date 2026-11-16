@@ -33,6 +33,18 @@ For material user-facing changes:
 - accessibility behavior is verified to the level appropriate for the affected components/workflow;
 - UX acceptance evidence is reviewable when the change materially affects user interaction or layout.
 
+### Screen completion under Design System v2
+
+A screen built or changed after ADR-011 is complete only when it:
+
+- is composed only from `src/components/ui` and `src/components/patterns`, with no page-local styling;
+- has loading, first-use empty, no-results, error, unavailable and read-only states where they can occur;
+- is fully keyboard operable with visible focus, and returns focus after overlays close;
+- is correct in RTL, in light and dark themes, at 390, 820 and 1440 px, with no horizontal page scroll;
+- was checked as an admin, as a partial-access member and as a user without access;
+- follows `docs/08-design-system/foundations.ar.md` for copy, numerals, dates and amounts;
+- passes `npm run lint:design`.
+
 ## Security and tenancy completion
 
 - authorization is enforced at an authoritative layer;

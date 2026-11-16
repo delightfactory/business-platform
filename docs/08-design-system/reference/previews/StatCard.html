@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>StatCard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1180px;margin:auto">
+ <div class="bp-stat"><p class="bp-stat__label"><i data-icon="users" class="bp-icon--sm"></i>الموظفون النشطون</p><p class="bp-stat__value">128</p><p class="bp-stat__foot">4 يبدأون خلال 30 يومًا</p></div>
+ <div class="bp-stat"><p class="bp-stat__label"><i data-icon="clock" class="bp-icon--sm"></i>حضور اليوم</p><p class="bp-stat__value">112 <small>من 121</small></p><div class="bp-meter"><span style="width:92%"></span></div></div>
+ <div class="bp-stat"><p class="bp-stat__label"><i data-icon="alert" class="bp-icon--sm"></i>بانتظار مراجعتك</p><p class="bp-stat__value">9</p><p class="bp-stat__foot"><a class="bp-btn bp-btn--link" href="#">فتح قائمة المراجعة</a></p></div>
+ <div class="bp-stat"><p class="bp-stat__label"><i data-icon="key" class="bp-icon--sm"></i>مقاعد المستخدمين</p><p class="bp-stat__value">18 <small>من 20</small></p><div class="bp-meter bp-meter--warning"><span style="width:90%"></span></div></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

@@ -44,6 +44,7 @@ Use sequential identifiers such as:
 - `ADR-008-authoritative-data-access-and-transaction-boundaries.md` — **Accepted**
 - `ADR-009-vercel-supabase-environments-and-preview-isolation.md` — **Accepted**
 - `ADR-010-frontend-design-system-foundation.md` — **Accepted**
+- `ADR-011-design-system-v2.md` — **Accepted** (2026-11-16, Product Owner directive; implements ADR-010)
 
 ADR-001 through ADR-010 were accepted together in the **2026-09-05 Phase 0D Platform Foundation freeze review** after the corrective constraints in `docs/04-product-specs/platform-foundation-freeze-review-amendment-2026-09-05.md` were incorporated into the governing Foundation set.
 

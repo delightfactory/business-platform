@@ -13,6 +13,7 @@ This repository treats product and engineering documentation as part of the prod
 - `06-governance/` — source-of-truth rules, decision log, change control, specification lifecycle, repository governance, Definition of Ready, and Definition of Done.
 - `07-execution/` — Cube plan, implementation brief, execution-readiness amendments, and [Cube 0 qualification evidence](07-execution/cube-0-qualification.md).
 - `07-reuse-audits/` — controlled audits of donor systems and reusable implementation assets.
+- `08-design-system/` — [Design System v2](08-design-system/README.md): tokens, component specifications, experience patterns, screen migration map and visual reference (ADR-011).
 
 ## Authority model
 
@@ -31,6 +32,8 @@ A newer document does not automatically supersede an older accepted baseline. Ma
 7. Material changes preserve history through amendments or explicit supersession.
 
 ## Experience baseline
+
+Visual language, components and interaction are governed by [Design System v2](08-design-system/README.md) under ADR-011; its [execution plan](07-execution/design-system-v2-execution-plan.md) and [Codex brief](07-execution/codex-design-system-v2-brief.md) drive the migration.
 
 User-facing implementation is governed by `05-engineering/frontend-ux-baseline.md`. The [platform experience architecture](05-engineering/platform-experience-architecture.md) defines the working shared-shell and Business Domain navigation structure; the [Cube 0 experience redesign](05-engineering/cube-0-experience-redesign.md) applies it to current Operator and Tenant tasks. Responsive/adaptive behavior, reusable design-system primitives, interaction states, accessibility, and UX-flow consistency are product-quality requirements rather than post-implementation polish.
 

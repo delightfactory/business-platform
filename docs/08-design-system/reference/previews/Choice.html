@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Choice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-cols">
+ <div class="bp-stack" style="gap:12px">
+  <label class="bp-choice"><input type="checkbox" class="bp-check" checked><span>مسؤول شؤون الموظفين<small>يضيف الموظفين ويعدّل بيانات عملهم.</small></span></label>
+  <label class="bp-choice"><input type="checkbox" class="bp-check"><span>مراجع الحضور<small>يراجع أيام العمل ويعتمدها.</small></span></label>
+  <label class="bp-choice"><input type="checkbox" class="bp-check" checked><span>الاطلاع على الأجور<small>يرى الأجر الأساسي دون تعديله.</small></span></label>
+ </div>
+ <div class="bp-stack" style="gap:12px">
+  <label class="bp-choice"><input type="radio" name="pay" class="bp-radio" checked><span>أجر شهري</span></label>
+  <label class="bp-choice"><input type="radio" name="pay" class="bp-radio"><span>أجر يومي</span></label>
+ </div>
+ <div class="bp-stack" style="gap:12px">
+  <label class="bp-choice"><input type="checkbox" class="bp-switch" checked><span>يُدرج في كشوف الرواتب<small>يسري من دورة الرواتب القادمة.</small></span></label>
+  <label class="bp-choice"><input type="checkbox" class="bp-switch"><span>السماح بالعمل الإضافي</span></label>
+ </div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

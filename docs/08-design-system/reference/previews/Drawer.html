@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Drawer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:0px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div style="display:flex;justify-content:flex-end;height:520px;background:var(--overlay)">
+ <aside class="bp-drawer" aria-labelledby="dr-t">
+  <div class="bp-drawer__head"><h2 class="bp-card__title" id="dr-t" style="flex:1">تعديل بيانات العمل</h2><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إغلاق"><i data-icon="x"></i></button></div>
+  <div class="bp-drawer__body">
+   <div class="bp-alert"><i data-icon="info"></i><div class="bp-alert__body"><p class="bp-alert__text">التعديل يُسجَّل في سجل التغييرات باسمك.</p></div></div>
+   <div class="bp-field"><label class="bp-label">الفرع</label><div class="bp-control"><select class="bp-select"><option>فرع المعادي</option></select><i data-icon="chevron-down"></i></div></div>
+   <div class="bp-field"><label class="bp-label">القسم <span class="bp-opt">(اختياري)</span></label><div class="bp-control bp-control--lead"><input class="bp-input" value="المبيعات"><i data-icon="search"></i></div></div>
+   <div class="bp-field"><label class="bp-label">يسري من</label><div class="bp-control"><input class="bp-input" value="1 ديسمبر 2026"><i data-icon="calendar"></i></div><p class="bp-hint">البيانات الحالية تبقى سارية حتى هذا التاريخ.</p></div>
+  </div>
+  <div class="bp-drawer__foot"><button class="bp-btn bp-btn--primary">حفظ التعديل</button><button class="bp-btn bp-btn--ghost">إلغاء</button></div>
+ </aside>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>ScreenDirectory</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:0px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}.bp-shell{height:780px}.bp-main{overflow:hidden}</style></head>
+<body class="bp">
+<div class="bp-shell"><aside class="bp-sidebar"><button class="bp-ws"><span class="bp-avatar bp-avatar--logo" style="border-radius:6px">ن</span><span class="bp-ws__text"><strong>شركة النور للتجارة</strong><small>مساحة الشركة</small></span><i data-icon="chevrons-ud"></i></button>
+<button class="bp-search-trigger"><i data-icon="search" class="bp-icon--sm"></i><span>بحث أو انتقال…</span><span class="bp-kbd">Ctrl K</span></button>
+<nav class="bp-nav"><div class="bp-nav__group"><a class="bp-nav__item" href="#"><i data-icon="home"></i>الرئيسية</a></div>
+<div class="bp-nav__group"><p class="bp-nav__label">الموارد البشرية</p><a class="bp-nav__item" href="#" aria-current="page"><i data-icon="users"></i>الموظفون</a><a class="bp-nav__item" href="#"><i data-icon="clock"></i>الحضور<span class="bp-badge bp-badge--count bp-badge--warning">9</span></a><a class="bp-nav__item" href="#"><i data-icon="layers"></i>الهيكل التنظيمي</a><a class="bp-nav__item" href="#"><i data-icon="calendar"></i>سياسات الدوام</a></div>
+<div class="bp-nav__group"><p class="bp-nav__label">إدارة الشركة</p><a class="bp-nav__item" href="#"><i data-icon="key"></i>المستخدمون والصلاحيات</a><a class="bp-nav__item" href="#"><i data-icon="building"></i>الجهات والفروع</a><a class="bp-nav__item" href="#"><i data-icon="swatch"></i>هوية الشركة</a></div></nav>
+<div class="bp-userbar"><span class="bp-avatar bp-avatar--sm">م ع</span><span style="flex:1;font-size:13px;font-weight:500">منى عبد الرحمن</span><i data-icon="more"></i></div></aside>
+ <div class="bp-main"><div class="bp-topbar"><nav class="bp-crumbs"><a href="#">الموارد البشرية</a><i data-icon="chevron-left"></i><span aria-current="page">الموظفون</span></nav><span class="bp-spacer"></span><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="المساعدة"><i data-icon="help"></i></button><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="الإشعارات"><i data-icon="bell"></i></button></div>
+  <div class="bp-content">
+   <header class="bp-page-header"><div class="bp-page-header__row"><h1 class="bp-page-header__title">الموظفون</h1>
+    <div class="bp-page-header__actions"><button class="bp-btn bp-btn--secondary"><i data-icon="upload"></i>استيراد</button><button class="bp-btn bp-btn--primary"><i data-icon="plus"></i>إضافة موظف</button></div></div></header>
+   <div class="bp-tabs" role="tablist"><button class="bp-tab" aria-selected="true">الكل <span class="bp-badge bp-badge--count bp-badge--brand">128</span></button><button class="bp-tab" aria-selected="false">نشط <span class="bp-badge bp-badge--count">121</span></button><button class="bp-tab" aria-selected="false">يبدأ قريبًا <span class="bp-badge bp-badge--count">4</span></button><button class="bp-tab" aria-selected="false">انتهت خدمته <span class="bp-badge bp-badge--count">3</span></button></div>
+   <div class="bp-table-wrap"><div class="bp-toolbar"><div class="bp-control bp-control--lead"><input class="bp-input" placeholder="ابحث بالاسم أو الرمز…" aria-label="بحث في الموظفين"><i data-icon="search"></i></div>
+<button class="bp-filter bp-filter--on">الفرع: المعادي<i data-icon="x" class="bp-icon--sm"></i></button><button class="bp-filter">القسم<i data-icon="chevron-down" class="bp-icon--sm"></i></button><button class="bp-filter"><i data-icon="plus" class="bp-icon--sm"></i>فلتر</button>
+<span class="bp-spacer"></span><button class="bp-btn bp-btn--ghost bp-btn--sm"><i data-icon="columns"></i>الأعمدة</button><button class="bp-btn bp-btn--ghost bp-btn--sm"><i data-icon="download"></i>تصدير</button></div><div class="bp-table-scroll"><table class="bp-table"><thead><tr><th class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد الكل"></th>
+<th>الموظف<i data-icon="sort"></i></th><th>الوظيفة</th><th>القسم</th><th>الفرع</th><th>تاريخ البداية<i data-icon="sort"></i></th><th>الحالة</th><th class="bp-col-actions"><span class="bp-sr">إجراءات</span></th></tr></thead><tbody><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد منى عبد الرحمن"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">م ع</span><div><strong>منى عبد الرحمن</strong><small class="bp-code">EMP-0412</small></div></div></td>
+<td>مديرة مبيعات</td><td>المبيعات</td><td>فرع المعادي</td><td class="bp-muted">1 مارس 2024</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات منى عبد الرحمن"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد أحمد سامي"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">أ س</span><div><strong>أحمد سامي</strong><small class="bp-code">EMP-0398</small></div></div></td>
+<td>محاسب أول</td><td>المالية</td><td>المقر الرئيسي</td><td class="bp-muted">12 يناير 2023</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات أحمد سامي"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد سارة فؤاد"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">س ف</span><div><strong>سارة فؤاد</strong><small class="bp-code">EMP-0455</small></div></div></td>
+<td>أخصائية موارد بشرية</td><td>الموارد البشرية</td><td>المقر الرئيسي</td><td class="bp-muted">1 ديسمبر 2026</td><td><span class="bp-badge bp-badge--info">يبدأ قريبًا</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات سارة فؤاد"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد كريم حسن"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">ك ح</span><div><strong>كريم حسن</strong><small class="bp-code">EMP-0301</small></div></div></td>
+<td>مشرف مخزن</td><td>التشغيل</td><td>فرع مدينة نصر</td><td class="bp-muted">5 يونيو 2021</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات كريم حسن"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد هدى مصطفى"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">هـ م</span><div><strong>هدى مصطفى</strong><small class="bp-code">EMP-0420</small></div></div></td>
+<td>مندوبة مبيعات</td><td>المبيعات</td><td>فرع المعادي</td><td class="bp-muted">18 أغسطس 2024</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات هدى مصطفى"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد يوسف جمال"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">ي ج</span><div><strong>يوسف جمال</strong><small class="bp-code">EMP-0277</small></div></div></td>
+<td>سائق توزيع</td><td>التشغيل</td><td>فرع مدينة نصر</td><td class="bp-muted">3 فبراير 2020</td><td><span class="bp-badge">انتهت خدمته</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات يوسف جمال"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد نادين عادل"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">ن ع</span><div><strong>نادين عادل</strong><small class="bp-code">EMP-0431</small></div></div></td>
+<td>مسؤولة خدمة عملاء</td><td>المبيعات</td><td>فرع المعادي</td><td class="bp-muted">9 سبتمبر 2025</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات نادين عادل"><i data-icon="more"></i></button></td></tr></tbody></table></div><div class="bp-table-foot"><span>عرض 1 إلى 7 من 128</span><div class="bp-pager"><button aria-label="السابق"><i data-icon="chevron-right" class="bp-icon--sm"></i></button><button aria-current="page">1</button><button>2</button><button>3</button><span>…</span><button>19</button><button aria-label="التالي"><i data-icon="chevron-left" class="bp-icon--sm"></i></button></div></div></div>
+  </div></div></div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

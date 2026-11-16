@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>ScreenMobile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:0px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div style="display:flex;justify-content:center;gap:40px;padding:24px">
+ <div class="bp-phone">
+  <header class="bp-appbar"><span class="bp-avatar bp-avatar--logo" style="border-radius:6px">ن</span><h1 class="bp-appbar__title">الحضور</h1><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="بحث"><i data-icon="search"></i></button></header>
+  <div class="bp-phone__body">
+   <button class="bp-btn bp-btn--secondary bp-btn--lg bp-btn--block" style="justify-content:space-between"><span class="bp-row" style="gap:8px"><i data-icon="calendar"></i>الأحد 15 نوفمبر</span><i data-icon="chevron-down"></i></button>
+   <div class="bp-chips"><button class="bp-filter bp-filter--on">يحتاج مراجعة · 6</button><button class="bp-filter">جاهز · 14</button><button class="bp-filter">معتمد · 92</button></div>
+   <div class="bp-list"><a class="bp-list__row" href="#"><span class="bp-avatar">ك ح</span><div><strong style="font-weight:600">كريم حسن</strong><small>تأخر 25 د · 9:25 ص – 5:02 م</small></div><span class="bp-badge bp-badge--warning">مراجعة</span></a><a class="bp-list__row" href="#"><span class="bp-avatar">هـ م</span><div><strong style="font-weight:600">هدى مصطفى</strong><small>لا تسجيل خروج · 8:58 ص</small></div><span class="bp-badge bp-badge--warning">مراجعة</span></a><a class="bp-list__row" href="#"><span class="bp-avatar">ي ج</span><div><strong style="font-weight:600">يوسف جمال</strong><small>لا تسجيلات اليوم</small></div><span class="bp-badge bp-badge--danger">غياب محتمل</span></a><a class="bp-list__row" href="#"><span class="bp-avatar">ن ع</span><div><strong style="font-weight:600">نادين عادل</strong><small>عمل إضافي 1 س 20 د</small></div><span class="bp-badge bp-badge--warning">مراجعة</span></a></div>
+  </div><nav class="bp-bottomnav"><a href="#"><i data-icon="home"></i>الرئيسية</a><a href="#"><i data-icon="users"></i>الموظفون</a><a href="#" aria-current="page"><i data-icon="clock"></i>الحضور</a><a href="#"><i data-icon="menu"></i>المزيد</a></nav></div>
+ <div class="bp-phone">
+  <header class="bp-appbar"><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="رجوع"><i data-icon="arrow-right"></i></button><h1 class="bp-appbar__title">كريم حسن</h1><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="إجراءات أخرى"><i data-icon="more"></i></button></header>
+  <div class="bp-phone__body">
+   <div class="bp-row" style="justify-content:space-between"><span class="bp-muted">الأحد 15 نوفمبر · فرع مدينة نصر</span><span class="bp-badge bp-badge--warning">يحتاج مراجعة</span></div>
+   <div class="bp-alert bp-alert--warning"><i data-icon="alert"></i><div class="bp-alert__body"><p class="bp-alert__title">تأخر 25 دقيقة</p><p class="bp-alert__text">يتجاوز سماح السياسة (10 دقائق).</p></div></div>
+   <div class="bp-card"><div class="bp-card__body" style="padding-block:6px"><dl class="bp-dl" style="grid-template-columns:110px 1fr"><dt>المتوقع</dt><dd>9:00 ص – 5:00 م</dd><dt>الدخول</dt><dd>9:25 ص</dd><dt>الخروج</dt><dd>5:02 م</dd><dt>صافي العمل</dt><dd>7 س 37 د من 8 س</dd></dl></div></div>
+   <div class="bp-field"><label class="bp-label">ملاحظة <span class="bp-opt">(اختياري)</span></label><textarea class="bp-textarea" style="font-size:16px" placeholder="تظهر في سجل اليوم"></textarea></div>
+  </div>
+  <div class="bp-actionbar" style="padding:12px 16px 18px"><button class="bp-btn bp-btn--secondary bp-btn--lg" style="flex:1">تصحيح</button><button class="bp-btn bp-btn--primary bp-btn--lg" style="flex:2">اعتماد اليوم</button></div>
+ </div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

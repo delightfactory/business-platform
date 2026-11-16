@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Tabs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-grid">
+ <div class="bp-tabs" role="tablist">
+  <button class="bp-tab" role="tab" aria-selected="true">الكل <span class="bp-badge bp-badge--count bp-badge--brand">128</span></button>
+  <button class="bp-tab" role="tab" aria-selected="false">نشط <span class="bp-badge bp-badge--count">121</span></button>
+  <button class="bp-tab" role="tab" aria-selected="false">يبدأ قريبًا <span class="bp-badge bp-badge--count">4</span></button>
+  <button class="bp-tab" role="tab" aria-selected="false">انتهت خدمته <span class="bp-badge bp-badge--count">3</span></button>
+ </div>
+ <div class="bp-row">
+  <div class="bp-seg"><button aria-pressed="true"><i data-icon="list" class="bp-icon--sm"></i>جدول</button><button aria-pressed="false"><i data-icon="grid" class="bp-icon--sm"></i>بطاقات</button></div>
+  <div class="bp-seg"><button aria-pressed="false">يوم</button><button aria-pressed="true">أسبوع</button><button aria-pressed="false">شهر</button></div>
+ </div>
+ <nav class="bp-crumbs" aria-label="مسار الصفحة"><a href="#">الموارد البشرية</a><i data-icon="chevron-left"></i><a href="#">الموظفون</a><i data-icon="chevron-left"></i><span aria-current="page">منى عبد الرحمن</span></nav>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

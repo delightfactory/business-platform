@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Toast</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-grid" style="justify-items:start">
+ <div class="bp-toast" role="status"><i data-icon="check-circle"></i><span class="bp-toast__text">عُطّلت عضوية كريم حسن.</span><button class="bp-btn bp-btn--sm">تراجع</button><button class="bp-btn bp-btn--icon bp-btn--sm" aria-label="إغلاق" style="text-decoration:none"><i data-icon="x"></i></button></div>
+ <div class="bp-toast" role="status"><i data-icon="check-circle"></i><span class="bp-toast__text">أُرسلت الدعوة إلى sara@alnoor.example</span><button class="bp-btn bp-btn--icon bp-btn--sm" aria-label="إغلاق" style="text-decoration:none"><i data-icon="x"></i></button></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

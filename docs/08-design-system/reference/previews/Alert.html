@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>Alert</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--surface)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-grid" style="max-width:760px">
+ <div class="bp-alert bp-alert--warning"><i data-icon="alert"></i><div class="bp-alert__body"><p class="bp-alert__title">اقتربت من حد المستخدمين</p><p class="bp-alert__text">18 من 20 مقعدًا مستخدمة. الدعوات المعلّقة لا تُحتسب قبل قبولها.</p></div><button class="bp-btn bp-btn--secondary bp-btn--sm">طلب رفع الحد</button></div>
+ <div class="bp-alert bp-alert--danger"><i data-icon="x-circle"></i><div class="bp-alert__body"><p class="bp-alert__title">تعذر حفظ التعديل</p><p class="bp-alert__text">انقطع الاتصال قبل اكتمال الحفظ ولم يتغير شيء. أعد المحاولة.</p></div><button class="bp-btn bp-btn--secondary bp-btn--sm">إعادة المحاولة</button></div>
+ <div class="bp-alert bp-alert--info"><i data-icon="info"></i><div class="bp-alert__body"><p class="bp-alert__text">وحدة الحضور غير مفعّلة حاليًا. يمكنك مراجعة السجلات السابقة فقط.</p></div></div>
+ <div class="bp-alert bp-alert--success"><i data-icon="check-circle"></i><div class="bp-alert__body"><p class="bp-alert__text">اكتمل استيراد 46 موظفًا. 3 صفوف تحتاج تصحيحًا.</p></div><button class="bp-btn bp-btn--link">عرض الصفوف</button></div>
+ <div class="bp-alert"><i data-icon="info"></i><div class="bp-alert__body"><p class="bp-alert__text">الملف الوظيفي لا يحتاج إلى حساب دخول. يمكن ربطه لاحقًا.</p></div></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

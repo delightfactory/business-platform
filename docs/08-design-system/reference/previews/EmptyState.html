@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>EmptyState</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-cols">
+ <div class="bp-card"><div class="bp-empty"><span class="bp-empty__icon"><i data-icon="users" class="bp-icon--lg"></i></span><p class="bp-empty__title">لا يوجد موظفون بعد</p><p class="bp-empty__text">أضف أول موظف، أو استورد القائمة كاملة من ملف Excel.</p><div class="bp-row"><button class="bp-btn bp-btn--primary"><i data-icon="plus"></i>إضافة موظف</button><button class="bp-btn bp-btn--secondary">استيراد من ملف</button></div></div></div>
+ <div class="bp-card"><div class="bp-empty"><span class="bp-empty__icon"><i data-icon="search" class="bp-icon--lg"></i></span><p class="bp-empty__title">لا نتائج لـ «سلمى»</p><p class="bp-empty__text">جرّب اسمًا آخر أو رمز الموظف، أو أزل الفلاتر.</p><div class="bp-row"><button class="bp-btn bp-btn--secondary">مسح البحث والفلاتر</button></div></div></div>
+ <div class="bp-card"><div class="bp-card__body bp-stack">
+   <div class="bp-row"><span class="bp-skel" style="width:32px;height:32px;border-radius:50%"></span><div style="flex:1" class="bp-stack"><span class="bp-skel" style="width:55%"></span><span class="bp-skel" style="width:30%"></span></div></div>
+   <div class="bp-row"><span class="bp-skel" style="width:32px;height:32px;border-radius:50%"></span><div style="flex:1" class="bp-stack"><span class="bp-skel" style="width:45%"></span><span class="bp-skel" style="width:25%"></span></div></div>
+   <div class="bp-row"><span class="bp-skel" style="width:32px;height:32px;border-radius:50%"></span><div style="flex:1" class="bp-stack"><span class="bp-skel" style="width:60%"></span><span class="bp-skel" style="width:35%"></span></div></div>
+   <p class="demo-cap" style="margin:0">هيكل التحميل يحاكي شكل المحتوى القادم</p></div></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

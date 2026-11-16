@@ -2,6 +2,8 @@
 
 Status: design direction for implementation and device review. It is not UX acceptance. The [platform experience architecture](platform-experience-architecture.md) governs the application-wide shell and future Business Domain expansion; this document applies it to the current Operator and Tenant administration journeys.
 
+> Since 2026-11-16 the visual treatment and component choices for these journeys are governed by [Design System v2](../08-design-system/README.md) (ADR-011) and its [screen migration map](../08-design-system/screen-migration-map.md). This document remains the record of the Cube 0 journey analysis.
+
 ## Why this redesign is necessary
 
 The owner rejected the phone experience after trying the working product. The complaint covers page composition, visual hierarchy, terminology, navigation, action feedback, and the burden of scanning long pages. Fixing the menu button or styling the toast alone does not address it. The current screens often place navigation, summaries, creation forms, record actions, and success messages at similar visual weight. A user must inspect the page to discover the next task.

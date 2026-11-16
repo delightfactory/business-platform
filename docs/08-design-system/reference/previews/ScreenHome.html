@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>ScreenHome</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:0px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}.bp-shell{height:860px}.bp-main{overflow:hidden}</style></head>
+<body class="bp">
+<div class="bp-shell"><aside class="bp-sidebar"><button class="bp-ws"><span class="bp-avatar bp-avatar--logo" style="border-radius:6px">ن</span><span class="bp-ws__text"><strong>شركة النور للتجارة</strong><small>مساحة الشركة</small></span><i data-icon="chevrons-ud"></i></button>
+<button class="bp-search-trigger"><i data-icon="search" class="bp-icon--sm"></i><span>بحث أو انتقال…</span><span class="bp-kbd">Ctrl K</span></button>
+<nav class="bp-nav"><div class="bp-nav__group"><a class="bp-nav__item" href="#" aria-current="page"><i data-icon="home"></i>الرئيسية</a></div>
+<div class="bp-nav__group"><p class="bp-nav__label">الموارد البشرية</p><a class="bp-nav__item" href="#"><i data-icon="users"></i>الموظفون</a><a class="bp-nav__item" href="#"><i data-icon="clock"></i>الحضور<span class="bp-badge bp-badge--count bp-badge--warning">9</span></a><a class="bp-nav__item" href="#"><i data-icon="layers"></i>الهيكل التنظيمي</a><a class="bp-nav__item" href="#"><i data-icon="calendar"></i>سياسات الدوام</a></div>
+<div class="bp-nav__group"><p class="bp-nav__label">إدارة الشركة</p><a class="bp-nav__item" href="#"><i data-icon="key"></i>المستخدمون والصلاحيات</a><a class="bp-nav__item" href="#"><i data-icon="building"></i>الجهات والفروع</a><a class="bp-nav__item" href="#"><i data-icon="swatch"></i>هوية الشركة</a></div></nav>
+<div class="bp-userbar"><span class="bp-avatar bp-avatar--sm">م ع</span><span style="flex:1;font-size:13px;font-weight:500">منى عبد الرحمن</span><i data-icon="more"></i></div></aside>
+ <div class="bp-main"><div class="bp-topbar"><nav class="bp-crumbs"><span aria-current="page">الرئيسية</span></nav><span class="bp-spacer"></span><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="المساعدة"><i data-icon="help"></i></button><button class="bp-btn bp-btn--ghost bp-btn--icon" aria-label="الإشعارات"><i data-icon="bell"></i></button></div>
+  <div class="bp-content">
+   <header class="bp-page-header"><div class="bp-page-header__row"><h1 class="bp-page-header__title">صباح الخير يا منى</h1></div><p class="bp-page-header__desc">الأحد 15 نوفمبر 2026 · 4 أمور تنتظر قرارك اليوم.</p></header>
+   <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+    <div class="bp-stat"><p class="bp-stat__label"><i data-icon="users" class="bp-icon--sm"></i>الموظفون النشطون</p><p class="bp-stat__value">128</p><p class="bp-stat__foot">4 يبدأون خلال 30 يومًا</p></div>
+    <div class="bp-stat"><p class="bp-stat__label"><i data-icon="clock" class="bp-icon--sm"></i>حضور اليوم</p><p class="bp-stat__value">112 <small>من 121</small></p><div class="bp-meter"><span style="width:92%"></span></div></div>
+    <div class="bp-stat"><p class="bp-stat__label"><i data-icon="key" class="bp-icon--sm"></i>مقاعد المستخدمين</p><p class="bp-stat__value">18 <small>من 20</small></p><div class="bp-meter bp-meter--warning"><span style="width:90%"></span></div></div>
+    <div class="bp-stat"><p class="bp-stat__label"><i data-icon="building" class="bp-icon--sm"></i>الفروع</p><p class="bp-stat__value">3 <small>من 5</small></p><div class="bp-meter"><span style="width:60%"></span></div></div>
+   </div>
+   <div style="display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:24px;align-items:start">
+    <section class="bp-card"><div class="bp-card__head"><h2 class="bp-card__title">يحتاج إجراءً منك</h2><span class="bp-badge bp-badge--count bp-badge--warning">4</span></div>
+     <ul class="bp-list" style="border:0;border-radius:0 0 8px 8px"><li class="bp-list__row"><span class="bp-empty__icon" style="width:36px;height:36px;margin:0;background:var(--warning-subtle);border-color:transparent;color:var(--warning-text)"><i data-icon="clock"></i></span><div><strong style="font-weight:600">6 أيام حضور تحتاج مراجعة</strong><small>الحضور · أقدمها الخميس 12 نوفمبر</small></div><button class="bp-btn bp-btn--secondary bp-btn--sm">مراجعة</button></li><li class="bp-list__row"><span class="bp-empty__icon" style="width:36px;height:36px;margin:0;background:var(--warning-subtle);border-color:transparent;color:var(--warning-text)"><i data-icon="chart"></i></span><div><strong style="font-weight:600">3 طلبات عمل إضافي بانتظار الاعتماد</strong><small>الحضور · فرع المعادي</small></div><button class="bp-btn bp-btn--secondary bp-btn--sm">مراجعة</button></li><li class="bp-list__row"><span class="bp-empty__icon" style="width:36px;height:36px;margin:0;background:var(--danger-subtle);border-color:transparent;color:var(--danger-text)"><i data-icon="mail"></i></span><div><strong style="font-weight:600">دعوتان تعذر إرسالهما</strong><small>المستخدمون · تحقق من العنوان ثم أعد الإرسال</small></div><button class="bp-btn bp-btn--secondary bp-btn--sm">عرض الدعوات</button></li><li class="bp-list__row"><span class="bp-empty__icon" style="width:36px;height:36px;margin:0;background:var(--info-subtle);border-color:transparent;color:var(--info-text)"><i data-icon="calendar"></i></span><div><strong style="font-weight:600">سارة فؤاد تبدأ في 1 ديسمبر بلا سياسة دوام</strong><small>الموظفون · يلزم تكليف دوام قبل أول يوم</small></div><button class="bp-btn bp-btn--secondary bp-btn--sm">تكليف دوام</button></li></ul></section>
+    <div class="bp-stack" style="gap:24px">
+     <section class="bp-card"><div class="bp-card__head"><h2 class="bp-card__title">إعداد الشركة</h2><span class="bp-spacer"></span><span class="bp-muted" style="font-size:13px">4 من 5</span></div>
+      <div class="bp-card__body bp-stack" style="gap:10px"><div class="bp-meter"><span style="width:80%"></span></div>
+       <p class="bp-row" style="gap:8px;color:var(--text-muted)"><i data-icon="check-circle" style="color:var(--success-text)"></i>الجهات والفروع</p>
+       <p class="bp-row" style="gap:8px;color:var(--text-muted)"><i data-icon="check-circle" style="color:var(--success-text)"></i>دعوة فريق الإدارة</p>
+       <p class="bp-row" style="gap:8px;color:var(--text-muted)"><i data-icon="check-circle" style="color:var(--success-text)"></i>استيراد الموظفين</p>
+       <p class="bp-row" style="gap:8px;color:var(--text-muted)"><i data-icon="check-circle" style="color:var(--success-text)"></i>سياسات الدوام</p>
+       <p class="bp-row" style="gap:8px"><span style="width:18px;height:18px;border:1.5px solid var(--border-control);border-radius:50%"></span><span style="flex:1;font-weight:500">شعار ولون الشركة</span><a class="bp-btn bp-btn--link" href="#">إكمال</a></p></div></section>
+     <section class="bp-card"><div class="bp-card__head"><h2 class="bp-card__title">آخر النشاط</h2></div>
+      <div class="bp-card__body"><ol class="bp-timeline"><li><strong>اعتمد كريم حسن حضور 11 نوفمبر</strong><small>منذ ساعتين · 118 سجلًا</small></li><li><strong>أضاف أحمد سامي 3 موظفين</strong><small>أمس 4:10 م</small></li></ol></div></section>
+    </div></div>
+  </div></div></div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>

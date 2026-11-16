@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>DataTable</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<script src="../icons.js"></script>
+<style>html,body{margin:0}body{padding:20px;background:var(--canvas)}.demo-grid{display:grid;gap:20px}.demo-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}.demo-cap{color:var(--text-subtle);font-size:12px;line-height:18px;margin-bottom:8px}</style></head>
+<body class="bp">
+<div class="demo-grid" style="max-width:1180px;margin:auto">
+ <div class="bp-table-wrap"><div class="bp-toolbar"><div class="bp-control bp-control--lead"><input class="bp-input" placeholder="ابحث بالاسم أو الرمز…" aria-label="بحث في الموظفين"><i data-icon="search"></i></div>
+<button class="bp-filter bp-filter--on">الفرع: المعادي<i data-icon="x" class="bp-icon--sm"></i></button><button class="bp-filter">القسم<i data-icon="chevron-down" class="bp-icon--sm"></i></button><button class="bp-filter"><i data-icon="plus" class="bp-icon--sm"></i>فلتر</button>
+<span class="bp-spacer"></span><button class="bp-btn bp-btn--ghost bp-btn--sm"><i data-icon="columns"></i>الأعمدة</button><button class="bp-btn bp-btn--ghost bp-btn--sm"><i data-icon="download"></i>تصدير</button></div><div class="bp-table-scroll"><table class="bp-table"><thead><tr><th class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد الكل"></th>
+<th>الموظف<i data-icon="sort"></i></th><th>الوظيفة</th><th>القسم</th><th>الفرع</th><th>تاريخ البداية<i data-icon="sort"></i></th><th>الحالة</th><th class="bp-col-actions"><span class="bp-sr">إجراءات</span></th></tr></thead><tbody><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد منى عبد الرحمن"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">م ع</span><div><strong>منى عبد الرحمن</strong><small class="bp-code">EMP-0412</small></div></div></td>
+<td>مديرة مبيعات</td><td>المبيعات</td><td>فرع المعادي</td><td class="bp-muted">1 مارس 2024</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات منى عبد الرحمن"><i data-icon="more"></i></button></td></tr><tr aria-selected="true"><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" checked aria-label="تحديد أحمد سامي"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">أ س</span><div><strong>أحمد سامي</strong><small class="bp-code">EMP-0398</small></div></div></td>
+<td>محاسب أول</td><td>المالية</td><td>المقر الرئيسي</td><td class="bp-muted">12 يناير 2023</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات أحمد سامي"><i data-icon="more"></i></button></td></tr><tr aria-selected="true"><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" checked aria-label="تحديد سارة فؤاد"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">س ف</span><div><strong>سارة فؤاد</strong><small class="bp-code">EMP-0455</small></div></div></td>
+<td>أخصائية موارد بشرية</td><td>الموارد البشرية</td><td>المقر الرئيسي</td><td class="bp-muted">1 ديسمبر 2026</td><td><span class="bp-badge bp-badge--info">يبدأ قريبًا</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات سارة فؤاد"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد كريم حسن"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">ك ح</span><div><strong>كريم حسن</strong><small class="bp-code">EMP-0301</small></div></div></td>
+<td>مشرف مخزن</td><td>التشغيل</td><td>فرع مدينة نصر</td><td class="bp-muted">5 يونيو 2021</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات كريم حسن"><i data-icon="more"></i></button></td></tr><tr><td class="bp-col-check"><input type="checkbox" class="bp-check" style="margin:0" aria-label="تحديد هدى مصطفى"></td>
+<td><div class="bp-cell-main"><span class="bp-avatar">هـ م</span><div><strong>هدى مصطفى</strong><small class="bp-code">EMP-0420</small></div></div></td>
+<td>مندوبة مبيعات</td><td>المبيعات</td><td>فرع المعادي</td><td class="bp-muted">18 أغسطس 2024</td><td><span class="bp-badge bp-badge--success">نشط</span></td>
+<td class="bp-col-actions"><button class="bp-btn bp-btn--ghost bp-btn--icon bp-btn--sm" aria-label="إجراءات هدى مصطفى"><i data-icon="more"></i></button></td></tr></tbody></table></div><div class="bp-table-foot"><span>عرض 1 إلى 5 من 128</span><div class="bp-pager"><button aria-label="السابق"><i data-icon="chevron-right" class="bp-icon--sm"></i></button><button aria-current="page">1</button><button>2</button><button>3</button><span>…</span><button>19</button><button aria-label="التالي"><i data-icon="chevron-left" class="bp-icon--sm"></i></button></div></div></div>
+ <div class="bp-bulkbar" style="justify-self:center"><strong>تم تحديد 2</strong><span class="bp-spacer" style="flex:0 0 12px"></span><button class="bp-btn bp-btn--sm"><i data-icon="pin"></i>نقل إلى فرع</button><button class="bp-btn bp-btn--sm"><i data-icon="download"></i>تصدير المحدد</button><button class="bp-btn bp-btn--icon bp-btn--sm" aria-label="إلغاء التحديد"><i data-icon="x"></i></button></div>
+</div>
+<script>window.BP&&BP.init(document)</script>
+</body>
+</html>
